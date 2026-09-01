@@ -18,8 +18,7 @@ Ein gewöhnlicher Prozess läuft im Benutzermodus innerhalb seines virtuellen Ad
 
 Seitentabellen und Schutzbits setzen den Speicherzugriff durch. Wenn ein Thread auf eine ungültige oder unzulässige Adresse verweist, löst der Prozessor eine Trap in den Kernel aus. Dieser kann einen gültigen Seitenfehler beheben oder ein Signal wie `SIGSEGV` zustellen.
 
-:::single-choice{#kernel-privilege-user-mode-memory}
-Auf welchen Speicher kann ein Prozess im Benutzermodus gewöhnlich unmittelbar zugreifen?
+:::single-choice{#kernel-privilege-user-mode-memory} Auf welchen Speicher kann ein Prozess im Benutzermodus gewöhnlich unmittelbar zugreifen?
 
 ::option[Auf jede physische RAM-Adresse und den gesamten Kernelspeicher.]{#kernel-privilege-all-physical explanation="Privilegien und der Schutz des virtuellen Speichers verhindern diese Zugriffe."}
 ::option[Ausschließlich auf ein festes Byte, das beim Prozessstart ausgewählt wird.]{#kernel-privilege-one-byte explanation="Ein Prozess kann viele abgebildete Bereiche besitzen und dennoch unprivilegiert bleiben."}
@@ -32,8 +31,7 @@ Der Kernelmodus erlaubt die Ausführung privilegierter Anweisungen und den Zugri
 
 Andere Architekturen verwenden andere Bezeichnungen und Mechanismen, beispielsweise Exception Levels. Virtualisierung fügt Beziehungen zwischen Hypervisor und Gast hinzu, die nicht in eine einfache Zeichnung mit zwei Ringen passen. Entscheidend ist das kontrollierte Privileg und nicht die x86-Ringnummer selbst.
 
-:::single-choice{#kernel-privilege-x86-kernel-ring}
-In welchem x86-Schutzring läuft der Linux-Kernel gewöhnlich?
+:::single-choice{#kernel-privilege-x86-kernel-ring} In welchem x86-Schutzring läuft der Linux-Kernel gewöhnlich?
 
 ::option[Ring 3.]{#kernel-privilege-ring-three explanation="Ring 3 ist die herkömmliche Privilegienstufe des Benutzermodus."}
 ::option[Ring 0.]{#kernel-privilege-ring-zero .correct explanation="Der Kernel verwendet den privilegiertesten herkömmlichen x86-Ring."}
@@ -52,8 +50,7 @@ Der Prozessor speichert den Ausführungskontext, ändert das Privileg entspreche
 
 Die Anwendung wird nicht vorübergehend zu Kernelcode. Die CPU führt im Namen des Threads einen Kernelhandler mit vom Kernel gesteuerten Stacks und Abbildungen aus.
 
-:::single-choice{#kernel-privilege-system-call-transition}
-Was geschieht während eines Systemaufrufübergangs?
+:::single-choice{#kernel-privilege-system-call-transition} Was geschieht während eines Systemaufrufübergangs?
 
 ::option[Der Benutzercode der Anwendung erhält uneingeschränkte Ausführung in Ring 0.]{#kernel-privilege-user-ring-zero explanation="Nach dem kontrollierten Einstieg wird ausschließlich vertrauenswürdiger Kernelcode ausgeführt."}
 ::option[Der Prozess ändert seine UID dauerhaft auf null.]{#kernel-privilege-uid-zero explanation="Ein Übergang des Prozessormodus schreibt keine Benutzerzugangsdaten um."}
@@ -66,8 +63,7 @@ Eine Anwendung, die als Linux-Benutzer `root` läuft, führt ihre Anweisungen ge
 
 Capabilities, Namensräume, seccomp, Sicherheitsmodule und cgroups schränken weiter ein, was ein Prozess anfordern darf. Diese geschichtete Richtlinie ist von der Hardwaregrenze zwischen Benutzer- und Kernelmodus getrennt.
 
-:::single-choice{#kernel-privilege-root-distinction}
-Welche Aussage vergleicht die root-Identität und den Kernelmodus richtig?
+:::single-choice{#kernel-privilege-root-distinction} Welche Aussage vergleicht die root-Identität und den Kernelmodus richtig?
 
 ::option[root ist eine User-Space-Zugangsangabe; der Kernelmodus ist ein Ausführungsprivileg des Prozessors.]{#kernel-privilege-credential-versus-mode .correct explanation="Ein root-Prozess stellt autorisierte Anfragen aus dem Benutzermodus, während vertrauenswürdiger Kernelcode die privilegierte Ausführung übernimmt."}
 ::option[Jede Anweisung im Besitz von root wird als ladbarer Kernelcode ausgeführt.]{#kernel-privilege-root-kernel-code explanation="Das UID-Eigentum verwandelt eine ausführbare Datei nicht in ein Kernelmodul."}
@@ -80,8 +76,7 @@ Die Grenze begrenzt Schäden durch gewöhnliche Fehler und stellt einen Ort für
 
 Probleme mit spekulativer Ausführung und Seitenkanäle zeigen außerdem, dass Hardwareisolation fortlaufende Gegenmaßnahmen benötigt. Ein „anderer Ring“ ist eine Grundlage und kein vollständiger Sicherheitsbeweis.
 
-:::single-choice{#kernel-privilege-boundary-limit}
-Garantiert die Trennung von Benutzer- und Kernelmodus vollständige Systemsicherheit?
+:::single-choice{#kernel-privilege-boundary-limit} Garantiert die Trennung von Benutzer- und Kernelmodus vollständige Systemsicherheit?
 
 ::option[Ja; Kernel-Schwachstellen können Benutzerprozesse nicht beeinflussen.]{#kernel-privilege-no-kernel-vulns explanation="Eine Kernel-Schwachstelle kann das gesamte System gefährden."}
 ::option[Nein; Fehler in privilegiertem Code und Seitenkanäle können beabsichtigte Grenzen weiterhin überschreiten.]{#kernel-privilege-not-complete .correct explanation="Die Modusaufteilung verringert die Angriffsfläche, muss aber mit korrektem Kernelcode und zusätzlichen Gegenmaßnahmen kombiniert werden."}

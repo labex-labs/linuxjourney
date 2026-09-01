@@ -16,8 +16,7 @@ meta_keywords: "데비안 배포판, 데비안 리눅스, 데비안이란, 데�
 
 데비안 프로젝트는 리눅스 초기부터 존재해 왔으며, 신중한 엔지니어링, 개방성, 장기적인 신뢰성으로 명성을 쌓아왔습니다. 실제로 **데비안 리눅스 배포판**은 견고한 기본 시스템, 방대한 소프트웨어 컬렉션, 명확한 프로젝트 원칙을 제공하는 것으로 유명합니다.
 
-:::single-choice{#identify-debian-project-model}
-데비안은 주로 어떤 방식으로 개발되나요?
+:::single-choice{#identify-debian-project-model} 데비안은 주로 어떤 방식으로 개발되나요?
 
 ::option[한 상용 소프트웨어 회사가 개발합니다.]{#single-company explanation="데비안은 한 회사가 개발하지 않으며 전 세계의 자원봉사자와 기여자가 프로젝트를 유지합니다."}
 ::option[한 컴퓨터 하드웨어 제조사가 개발합니다.]{#hardware-manufacturer explanation="데비안은 다양한 하드웨어를 지원하지만 어떤 제조사도 개발을 소유하지 않으며 커뮤니티가 유지합니다."}
@@ -42,8 +41,7 @@ meta_keywords: "데비안 배포판, 데비안 리눅스, 데비안이란, 데�
 
 이러한 브랜치는 데비안이 왜 매우 다양한 사용자에게 서비스를 제공할 수 있는지 설명해 줍니다. 예측 가능한 시스템을 원하는 사람은 보통 Stable 을 선호하며, 개발자나 고급 사용자는 더 최신 소프트웨어를 위해 Testing 이나 Unstable 을 탐색할 수 있습니다.
 
-:::single-choice{#choose-debian-stable}
-신뢰성과 예측 가능한 업데이트를 우선하는 사용자에게 가장 적합한 데비안 브랜치는 무엇인가요?
+:::single-choice{#choose-debian-stable} 신뢰성과 예측 가능한 업데이트를 우선하는 사용자에게 가장 적합한 데비안 브랜치는 무엇인가요?
 
 ::option[Testing]{#testing-branch explanation="Testing은 다음 릴리스를 준비하는 더 새로운 패키지를 포함하며 개발 중 큰 변경을 받을 수 있습니다."}
 ::option[Unstable]{#unstable-branch explanation="Unstable은 새 패키지가 먼저 들어오고 자주 바뀌므로 예측 가능한 업데이트라는 목표와 맞지 않습니다."}
@@ -56,8 +54,7 @@ meta_keywords: "데비안 배포판, 데비안 리눅스, 데비안이란, 데�
 
 초보자에게 핵심 개념은 간단합니다. 데비안은 급격한 변화를 쫓지 않습니다. 새 패키지는 보통 Unstable에 들어오고 자격을 갖춘 패키지가 Testing으로 이동하며, 준비된 Testing 브랜치가 다음 Stable 릴리스가 됩니다. 이런 모델은 발전하면서도 신뢰성을 유지하도록 돕습니다.
 
-:::single-choice{#trace-debian-package-flow}
-데비안 패키지가 릴리스로 향하는 단순화된 경로를 올바르게 나타낸 것은 무엇인가요?
+:::single-choice{#trace-debian-package-flow} 데비안 패키지가 릴리스로 향하는 단순화된 경로를 올바르게 나타낸 것은 무엇인가요?
 
 ::option[Unstable → Testing → Stable]{#unstable-testing-stable .correct explanation="새 업로드는 Unstable에 들어오고 자격을 갖춘 패키지는 Testing으로 이동하며 준비된 Testing이 다음 Stable 릴리스가 됩니다."}
 ::option[Stable → Testing → Unstable]{#stable-testing-unstable explanation="Stable은 완성된 운영 릴리스이며 새 업로드의 시작점이 아닙니다. 개발은 Unstable에서 시작합니다."}
@@ -70,8 +67,7 @@ meta_keywords: "데비안 배포판, 데비안 리눅스, 데비안이란, 데�
 
 데비안은 매우 방대한 패키지 컬렉션을 보유하고 있어 사용자가 데스크톱 애플리케이션부터 개발 도구까지 동일한 패키지 시스템을 통해 모든 것을 설치할 수 있습니다. 예를 들어, 개발자는 종종 `build-essential`과 같은 패키지로 일반적인 빌드 도구를 설치합니다. 이 성숙한 패키지 시스템은 데비안이 널리 사용되고 신뢰받는 이유 중 하나입니다.
 
-:::single-choice{#recognize-apt-purpose}
-데비안 APT 도구 모음의 주된 용도는 무엇인가요?
+:::single-choice{#recognize-apt-purpose} 데비안 APT 도구 모음의 주된 용도는 무엇인가요?
 
 ::option[소프트웨어 패키지를 설치, 업데이트, 제거하고 관리합니다.]{#manage-packages .correct explanation="APT는 데비안 저장소의 소프트웨어 패키지를 관리해 일관된 방식으로 설치, 업데이트와 제거를 수행합니다."}
 ::option[업데이트할 때마다 새 리눅스 커널을 컴파일합니다.]{#compile-kernel explanation="APT가 패키지된 커널을 설치할 수는 있지만 목적은 더 넓은 패키지 관리이며 매번 커널을 컴파일하지 않습니다."}
@@ -95,8 +91,7 @@ meta_keywords: "데비안 배포판, 데비안 리눅스, 데비안이란, 데�
 
 즉, 데비안은 그 자체로 리눅스 배포판일 뿐만 아니라 리눅스 세계의 상당 부분을 지탱하는 기반이기도 합니다. APT, `.deb` 패키지, 릴리스 브랜치와 같은 데비안 개념을 배우면 해당 지식은 데비안 기반 시스템에도 그대로 적용됩니다. 초보자 중심의 데비안 기반 옵션을 원하신다면 [Ubuntu](https://labex.io/ko/lesson/ubuntu)를 확인해 보세요.
 
-:::single-choice{#transfer-debian-knowledge}
-데비안 패키지 관리 지식을 일부 다른 배포판에도 적용할 수 있는 이유는 무엇인가요?
+:::single-choice{#transfer-debian-knowledge} 데비안 패키지 관리 지식을 일부 다른 배포판에도 적용할 수 있는 이유는 무엇인가요?
 
 ::option[모든 리눅스 배포판이 같은 패키지와 저장소를 사용합니다.]{#identical-linux-packages explanation="리눅스 배포판은 서로 다른 패키지 형식, 도구와 저장소를 쓸 수 있으며 데비안 지식은 데비안 계열에 가장 직접적으로 적용됩니다."}
 ::option[데비안 기반 시스템이 흔히 `.deb`와 APT 전통을 공유합니다.]{#shared-package-traditions .correct explanation="데비안에서 파생된 배포판은 흔히 패키지 형식과 관련 도구를 유지합니다. 저장소는 달라도 핵심 개념은 적용됩니다."}

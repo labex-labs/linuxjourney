@@ -23,8 +23,7 @@ meta_keywords: "linux 引导加载程序，linux 中的引导加载程序，linu
 
 GRUB 可以显示多个内核和恢复条目。只有匹配的模块与 initramfs 仍然可用且经过测试时，后备内核才真正有用。加载程序通过自身支持的存储和文件系统模块读取文件，并不依赖尚未运行的 Linux VFS。
 
-:::single-choice{#bootloader-primary-handoff}
-Linux 引导加载程序通常把控制权交给什么？
+:::single-choice{#bootloader-primary-handoff} Linux 引导加载程序通常把控制权交给什么？
 
 ::option[所有服务都已运行的交互式用户 shell。]{#bootloader-user-shell explanation="只有内核和 init 系统启动后，用户空间 shell 才会出现。"}
 ::option[加载所需启动内容后的选定内核映像。]{#bootloader-selected-kernel .correct explanation="加载程序会在执行内核入口点前准备内核、参数，通常还有 initramfs。"}
@@ -49,16 +48,14 @@ Linux 引导加载程序通常把控制权交给什么？
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-`root=` 内核命令行参数有什么用途？
+:::single-choice{#bootloader-root-parameter} `root=` 内核命令行参数有什么用途？
 
 ::option[标识启动最终应使用的根文件系统。]{#bootloader-root-filesystem .correct explanation="内核或 initramfs 把该值作为定位和组装真实根目录的一部分来解释。"}
 ::option[设置 root 账户的登录密码。]{#bootloader-root-password explanation="绝不能把身份验证密钥作为普通内核命令行文本传递。"}
 ::option[把 PID 1 重命名为 `root`。]{#bootloader-root-pid explanation="进程命名与这个存储参数无关。"}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-`quiet` 参数通常请求什么？
+:::single-choice{#bootloader-quiet-parameter} `quiet` 参数通常请求什么？
 
 ::option[以只读方式访问每个已挂载文件系统。]{#bootloader-quiet-readonly explanation="初始根目录写入策略使用 `ro` 等参数，而不是 `quiet`。"}
 ::option[减少启动期间打印的内核消息。]{#bootloader-quiet-console .correct explanation="它会抑制许多信息性消息，但不能保证所有启动组件都完全静默。"}
@@ -71,8 +68,7 @@ GRUB 通常允许获授权的控制台用户编辑一个只用于本次启动的
 
 命令行参数可能通过 `/proc/cmdline`、启动日志和崩溃报告暴露敏感文本，也可能削弱安全性或使系统无法启动。绝不能把密钥放在其中，并应保留已知可用条目和控制台恢复路径。
 
-:::single-choice{#bootloader-temporary-edit}
-在 GRUB 菜单中交互编辑条目以启动一次，通常具有什么特性？
+:::single-choice{#bootloader-temporary-edit} 在 GRUB 菜单中交互编辑条目以启动一次，通常具有什么特性？
 
 ::option[它会自动重写每个已安装内核映像。]{#bootloader-rewrites-kernels explanation="更改命令文本不会修改内核二进制文件。"}
 ::option[它会永久禁用所有磁盘上的固件验证。]{#bootloader-disables-firmware explanation="固件策略是独立的，并不会普遍受到单条目编辑影响。"}
@@ -85,8 +81,7 @@ GRUB 通常允许获授权的控制台用户编辑一个只用于本次启动的
 
 应对配置源进行一项限定范围的更改，运行发行版文档规定的重新生成命令，检查输出并测试，同时保留较旧的已知可用条目和可启动恢复介质。Debian、Fedora、UEFI 和 BIOS 安装所用命令和输出路径会有所不同。
 
-:::single-choice{#bootloader-generated-config}
-为什么直接编辑生成的 `grub.cfg` 通常不可靠？
+:::single-choice{#bootloader-generated-config} 为什么直接编辑生成的 `grub.cfg` 通常不可靠？
 
 ::option[该文件绝不可能包含可读文本。]{#bootloader-config-binary explanation="GRUB 配置是文本，但仍要考虑生成文件的所有权。"}
 ::option[GRUB 只读取每个用户家目录中的文件。]{#bootloader-grub-home explanation="启动配置属于系统级内容，必须在用户家目录会话之前可用。"}

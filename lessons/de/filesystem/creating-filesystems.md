@@ -28,8 +28,7 @@ $ sudo mkfs.ext4 /dev/GEPRUEFTE-PARTITION
 
 Unterstützte Optionen, Standardwerte, Funktionsgruppen und Fragen vor dem Überschreiben unterscheiden sich zwischen Implementierungen. Lies das lokale Handbuch des konkreten Formatierungswerkzeugs, statt identisches Verhalten aller `mkfs`-Backends anzunehmen.
 
-:::single-choice{#creating-filesystems-mkfs-role}
-Was fordert `mkfs -t ext4 TARGET` an?
+:::single-choice{#creating-filesystems-mkfs-role} Was fordert `mkfs -t ext4 TARGET` an?
 
 ::option[Ein vorhandenes Dateisystem einhängen, ohne es zu verändern.]{#creating-filesystems-mount-existing explanation="Das Einhängen ist eine getrennte Operation; mkfs initialisiert Metadaten auf dem Gerät."}
 ::option[Ext4-Dateisystemstrukturen auf dem Ziel erstellen.]{#creating-filesystems-create-ext4 .correct explanation="Die Oberfläche wählt für das angegebene Blockgerät die ext4-Formatierungsimplementierung aus."}
@@ -50,8 +49,7 @@ $ sudo wipefs --no-act /dev/GEPRUEFTE-PARTITION
 
 Hänge jede relevante Ebene mit ihrem eigenen Werkzeug aus oder deaktiviere sie. Prüfe die Identität unmittelbar vor dem Formatierungsbefehl erneut, weil sich Aufzählungsnamen ändern können.
 
-:::single-choice{#creating-filesystems-wipefs-no-act}
-Was liefert `wipefs --no-act TARGET` in diesem Arbeitsablauf?
+:::single-choice{#creating-filesystems-wipefs-no-act} Was liefert `wipefs --no-act TARGET` in diesem Arbeitsablauf?
 
 ::option[Einen schreibgeschützten Bericht erkannter Signaturen.]{#creating-filesystems-signature-report .correct explanation="Der No-Act-Modus hilft, vorhandene Dateisystem-, Partitionstabellen-, RAID- oder andere Signaturen zu erkennen, ohne sie zu entfernen."}
 ::option[Ein neues leeres Dateisystem, das eingehängt werden kann.]{#creating-filesystems-wipefs-formats explanation="Das Untersuchen von Signaturen initialisiert kein neues Dateisystem."}
@@ -64,8 +62,7 @@ Wähle einen Typ, der von Distribution, Bootumgebung, Sicherungs- und Reparaturw
 
 Wähle ein Format nicht allein aufgrund seiner Beliebtheit. Ext4, XFS und Btrfs besitzen beispielsweise unterschiedliche Betriebsfunktionen und Wiederherstellungsverfahren. Ein Wechselmedium zum Datenaustausch kann ein anderes Format mit abweichender Unix-Berechtigungssemantik benötigen.
 
-:::single-choice{#creating-filesystems-type-choice}
-Was ist eine sinnvolle Grundlage für die Auswahl eines Dateisystemtyps?
+:::single-choice{#creating-filesystems-type-choice} Was ist eine sinnvolle Grundlage für die Auswahl eines Dateisystemtyps?
 
 ::option[Der Name, der sich am kürzesten tippen lässt.]{#creating-filesystems-shortest-name explanation="Die Befehlslänge sagt nichts über Haltbarkeit, Funktionen oder Unterstützung aus."}
 ::option[Das Versprechen, dass künftig kein Speicherausfall auftreten kann.]{#creating-filesystems-no-failure explanation="Kein Dateisystem verhindert Hardwareausfälle oder beseitigt die Notwendigkeit von Sicherungen."}
@@ -85,8 +82,7 @@ $ sudo blkid /dev/GEPRUEFTE-PARTITION
 
 Notiere die UUID für die spätere Einhängekonfiguration. Das Erstellen eines Dateisystems hängt es nicht ein, legt keine Anwendungsverzeichnisse an, spielt keine Sicherungen ein und macht die Einhängung nicht dauerhaft über Neustarts hinweg.
 
-:::single-choice{#creating-filesystems-after-mkfs}
-Was bleibt nach dem Erstellen eines Dateisystems ein getrennter Schritt?
+:::single-choice{#creating-filesystems-after-mkfs} Was bleibt nach dem Erstellen eines Dateisystems ein getrennter Schritt?
 
 ::option[Es am vorgesehenen Verzeichnis einhängen.]{#creating-filesystems-mount-separate .correct explanation="Das Formatieren schreibt Dateisystemstrukturen, während das Einhängen das Dateisystem mit dem sichtbaren Verzeichnisbaum verbindet."}
 ::option[Dem Blockgerät überhaupt eine Kapazität zuweisen.]{#creating-filesystems-capacity explanation="Die darunterliegende Partition oder das logische Gerät stellt bereits die zu formatierende Kapazität bereit."}

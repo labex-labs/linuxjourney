@@ -24,8 +24,7 @@ $ journalctl -k -b
 
 저장 장치 스택, 장치 상태, 케이블 또는 네트워크 경로, RAID 상태, 암호화 및 최근 이벤트를 확인하십시오. 장치가 고장 중이라면 반복 검사가 남은 수명을 소모할 수 있습니다. 가능하다면 복구 중심 도구로 이미지나 복제본을 만들고 그 사본에서 작업하십시오.
 
-:::single-choice{#filesystem-repair-first-response}
-하드웨어 장애 가능성이 있을 때 쓰기 가능한 파일 시스템 복구보다 먼저 해야 할 일은 무엇입니까?
+:::single-choice{#filesystem-repair-first-response} 하드웨어 장애 가능성이 있을 때 쓰기 가능한 파일 시스템 복구보다 먼저 해야 할 일은 무엇입니까?
 
 ::option[도구 하나가 종료 상태 0을 반환할 때까지 모든 복구 도구를 반복 실행합니다.]{#filesystem-repair-repeat-tools explanation="맞지 않는 도구와 반복된 쓰기는 손상을 더 키울 수 있습니다."}
 ::option[즉시 장치 위에 새 파티션 테이블을 만듭니다.]{#filesystem-repair-new-table explanation="레이아웃 메타데이터를 덮어쓰면 증거가 파괴되고 복구가 더 어려워질 수 있습니다."}
@@ -38,8 +37,7 @@ $ journalctl -k -b
 
 `lsblk -f`, `blkid`, `findmnt` 및 저장 장치 계층 도구로 대상을 매핑합니다. 감지 서명은 오래된 것일 수 있으므로 알려진 설정 및 백업과 대조하십시오.
 
-:::single-choice{#filesystem-repair-target-layer}
-ext4가 `/dev/sda1`에 저장되어 있다면 ext4 검사 도구는 일반적으로 어느 계층을 받아야 합니까?
+:::single-choice{#filesystem-repair-target-layer} ext4가 `/dev/sda1`에 저장되어 있다면 ext4 검사 도구는 일반적으로 어느 계층을 받아야 합니까?
 
 ::option[파티션 테이블과 관계없이 `/dev/sda`입니다.]{#filesystem-repair-whole-disk explanation="전체 디스크에는 파티션 테이블과 여러 하위 영역이 있을 수 있으며 ext4 인스턴스가 직접 들어 있지 않습니다."}
 ::option[안전하게 오프라인으로 만든 뒤 `/dev/sda1`입니다.]{#filesystem-repair-partition-target .correct explanation="검사 도구는 해당 파일 시스템이 직접 들어 있는 블록 장치에서 작동합니다."}
@@ -52,8 +50,7 @@ ext4가 `/dev/sda1`에 저장되어 있다면 ext4 검사 도구는 일반적으
 
 의존 서비스를 중지하고, 중첩 파일 시스템을 마운트 해제하고, 프로세스 작업 디렉터리를 옮기며, 필요한 상위 계층을 비활성화하십시오. 루트 파일 시스템은 복구 환경으로 부팅하거나 배포판이 문서화한 오프라인 검사 메커니즘을 사용합니다. 관련 네임스페이스에서 대상이 마운트되지 않았음을 `findmnt`로 확인하십시오.
 
-:::single-choice{#filesystem-repair-mounted-risk}
-복구 검사 도구가 파일 시스템에 쓰기 전에 일반적으로 마운트 해제해야 하는 이유는 무엇입니까?
+:::single-choice{#filesystem-repair-mounted-risk} 복구 검사 도구가 파일 시스템에 쓰기 전에 일반적으로 마운트 해제해야 하는 이유는 무엇입니까?
 
 ::option[커널과 검사 도구의 동시 갱신이 충돌해 메타데이터를 손상시킬 수 있기 때문입니다.]{#filesystem-repair-concurrent-writes .correct explanation="오프라인 뷰는 복구 작업 중 파일 시스템이 바뀌지 않게 합니다."}
 ::option[마운트 해제하면 손상된 모든 파일이 백업에서 자동 복원되기 때문입니다.]{#filesystem-repair-unmount-restores explanation="분리는 검사에 일관성을 제공하지만 데이터를 복원하지는 않습니다."}
@@ -66,8 +63,7 @@ ext4가 `/dev/sda1`에 저장되어 있다면 ext4 검사 도구는 일반적으
 
 비슷한 이름의 옵션도 의미가 다를 수 있습니다. 특히 다른 파일 시스템 안내서에서 복사한 `--repair` 또는 강제 옵션을 적용하지 마십시오. 설치된 설명서와 현재 프로젝트 또는 배포판의 복구 문서를 읽으십시오. 해당 구현에 신뢰할 수 있는 변경 없음 또는 진단 모드가 있다면 그 모드부터 시작하고 출력을 보존하며 제안된 수정 내용을 이해합니다.
 
-:::single-choice{#filesystem-repair-fsck-role}
-리눅스에서 `fsck`가 일반적으로 담당하는 것은 무엇입니까?
+:::single-choice{#filesystem-repair-fsck-role} 리눅스에서 `fsck`가 일반적으로 담당하는 것은 무엇입니까?
 
 ::option[파일 시스템 유형에 맞는 보조 도구로 검사를 전달합니다.]{#filesystem-repair-fsck-dispatch .correct explanation="실제 검증과 복구 로직은 형식별 도구 및 작업 흐름이 담당합니다."}
 ::option[검사 전에 모든 파일 시스템을 ext4로 변환합니다.]{#filesystem-repair-fsck-convert explanation="검사 도구는 기존 형식을 보존하고 이해해야 합니다."}
@@ -80,8 +76,7 @@ ext4가 `/dev/sda1`에 저장되어 있다면 ext4 검사 도구는 일반적으
 
 파일 시스템을 마운트할 수 있게 되었다고 해서 모든 파일이 올바르다는 뜻은 아닙니다. 손실되거나 손상된 애플리케이션 데이터는 백업에서 복원하고 애플리케이션 계층에서 검증하십시오.
 
-:::single-choice{#filesystem-repair-mountable-proof}
-복구 후 성공적으로 마운트되면 모든 애플리케이션 데이터가 올바르다는 사실이 증명됩니까?
+:::single-choice{#filesystem-repair-mountable-proof} 복구 후 성공적으로 마운트되면 모든 애플리케이션 데이터가 올바르다는 사실이 증명됩니까?
 
 ::option[아닙니다. 일관성 복구와 애플리케이션 수준 데이터 검증은 서로 다릅니다.]{#filesystem-repair-not-data-proof .correct explanation="파일 시스템이 구조적으로 마운트 가능해도 파일이나 트랜잭션이 누락되거나 손상된 상태일 수 있습니다."}
 ::option[그렇습니다. 마운트하면 모든 파일을 백업과 암호학적으로 검증합니다.]{#filesystem-repair-mount-verifies explanation="일반 마운트는 백업과 전체 비교를 수행하지 않습니다."}

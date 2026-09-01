@@ -18,8 +18,7 @@ Network File System（NFS）を使うと、クライアントはサーバーの 
 
 `showmount -e SERVER` は旧来の mount プロトコルを通じて提供される export を一覧表示できますが、すべての NFSv4 専用サーバーに対して決定的な情報ではありません。一覧取得に失敗しても、許可済み NFSv4 export が存在しないとは証明できません。
 
-:::single-choice{#nfs-showmount-limit}
-NFSv4 サーバーに対して `showmount -e` の結果が不完全になり得るのはなぜですか？
+:::single-choice{#nfs-showmount-limit} NFSv4 サーバーに対して `showmount -e` の結果が不完全になり得るのはなぜですか？
 
 ::option[公開されていない可能性のある旧式の export 一覧プロトコルへ問い合わせるから。]{#nfs-showmount-protocol .correct explanation="NFSv4 は、その独立した一覧サービスを提供しなくても動作できます。"}
 ::option[ローカル CPU の温度しか表示しないから。]{#nfs-showmount-temperature explanation="このコマンドが扱うのは NFS サーバーの export 情報です。"}
@@ -41,8 +40,7 @@ $ sudo mount -t nfs server.example.net:/srv/team /mnt/team
 $ findmnt --target /mnt/team
 ```
 
-:::single-choice{#nfs-mount-operands}
-mount コマンド内の `server.example.net:/srv/team` は何ですか？
+:::single-choice{#nfs-mount-operands} mount コマンド内の `server.example.net:/srv/team` は何ですか？
 
 ::option[リモート export を隠すローカルディレクトリ。]{#nfs-local-mountpoint explanation="例のローカルマウントポイントは `/mnt/team` です。"}
 ::option[インストールするクライアントパッケージ名。]{#nfs-package-name explanation="パッケージ名はディストリビューションごとに異なり、mount のコピー元オペランドではありません。"}
@@ -55,8 +53,7 @@ NFS のアクセスには、サーバーの export ルール、プロトコル�
 
 サーバーは通常、root squashing によりリモート root を非特権 ID へ割り当てます。権限エラーを解決するだけのために、この保護を無効にしないでください。ID、ディレクトリ所有権、export ポリシー、意図したセキュリティモデルを調べます。
 
-:::single-choice{#nfs-name-versus-id}
-表示名が同じ二人のユーザーでも、NFS 権限が異なる場合があるのはなぜですか？
+:::single-choice{#nfs-name-versus-id} 表示名が同じ二人のユーザーでも、NFS 権限が異なる場合があるのはなぜですか？
 
 ::option[NFS 権限が数値 ID の対応付けに依存する場合があるから。]{#nfs-numeric-mapping .correct explanation="名前が一致するだけでは、クライアントとサーバーが同じ UID とグループを解決するとは限りません。"}
 ::option[NFS がすべてのファイルシステム権限を無視するから。]{#nfs-ignores-permissions explanation="ファイルシステムと export の権限は、引き続き認可の一部です。"}
@@ -73,8 +70,7 @@ server.example.net:/srv/team /mnt/team nfs4 rw,_netdev,nofail,x-systemd.automoun
 
 fstab の編集前に復旧アクセスを確保し、非破壊的なパーサーまたは制御されたマウントテストで検証します。automount は可用性の振る舞いを改善しますが、認可、DNS、サーバー停止は解決しません。
 
-:::single-choice{#nfs-automount-benefit}
-NFS 共有をオンデマンドで automount する主な利点は何ですか？
+:::single-choice{#nfs-automount-benefit} NFS 共有をオンデマンドで automount する主な利点は何ですか？
 
 ::option[すべてのクライアントへ export の root アクセスを与える。]{#nfs-automount-root explanation="マウントのタイミングはサーバーの認可を上書きしません。"}
 ::option[初期ブート時にサーバーが利用可能でなくてもよくなる。]{#nfs-automount-boot .correct explanation="起動初期を必ず止めるのではなく、アクセス時に接続が開始されます。"}
@@ -92,8 +88,7 @@ $ findmnt --target /mnt/team
 
 強制または lazy unmount は、有効な参照を隠してアプリケーションエラーを引き起こす可能性があります。原因を診断済みで、明示的な復旧計画がある場合に限って使ってください。
 
-:::single-choice{#nfs-safe-unmount}
-通常の NFS アンマウント前に行うべきことはどれですか？
+:::single-choice{#nfs-safe-unmount} 通常の NFS アンマウント前に行うべきことはどれですか？
 
 ::option[共有を使うプロセスを調整し、重要な書き込みを終える。]{#nfs-coordinate-writers .correct explanation="利用中のファイルシステムをアプリケーションから取り除くと、I/O を中断したり作業を未完了にしたりする可能性があります。"}
 ::option[サーバー上の export ディレクトリを削除する。]{#nfs-delete-export explanation="クライアントのアンマウントに、サーバーデータの破壊は必要ありません。"}

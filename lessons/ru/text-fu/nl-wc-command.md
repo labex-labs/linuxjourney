@@ -30,8 +30,7 @@ $ wc colors.txt
 
 Последняя текстовая строка без завершающего перевода строки не учитывается `wc -l`, поскольку этот параметр считает символы перевода строки, а не визуально воспринимаемые строки.
 
-:::single-choice{#wc-default-columns}
-Что обозначают первые три числа в стандартном выводе `wc file.txt`?
+:::single-choice{#wc-default-columns} Что обозначают первые три числа в стандартном выводе `wc file.txt`?
 
 ::option[Строки, слова и байты — в таком порядке.]{#wc-lines-words-bytes .correct explanation="Стандартный вывод `wc` сообщает число переводов строк, слов и байтов перед именем файла."}
 ::option[Байты, слова и строки — в таком порядке.]{#wc-bytes-words-lines explanation="Это те же измерения, но в неверном порядке: число строк выводится первым."}
@@ -61,16 +60,14 @@ $ printf 'one two\n' | wc -w
 2
 ```
 
-:::single-choice{#wc-word-count-only}
-Какая команда выводит только число слов в `essay.txt`?
+:::single-choice{#wc-word-count-only} Какая команда выводит только число слов в `essay.txt`?
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="Параметр `-l` сообщает число переводов строк, а не слов."}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="Параметр `-w` выбирает подсчёт слов."}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="Параметр `-c` сообщает число байтов, а не разделённых пробелами слов."}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-Какой параметр просит `wc` считать символы, а не байты, в текущей локали?
+:::single-choice{#wc-characters-not-bytes} Какой параметр просит `wc` считать символы, а не байты, в текущей локали?
 
 ::option[`-m`]{#wc-character-option .correct explanation="Параметр `-m` сообщает число символов, которое может отличаться от числа байтов в многобайтовом тексте."}
 ::option[`-c`]{#wc-byte-option explanation="Параметр `-c` сообщает число байтов. В кодировках вроде UTF-8 один символ может занимать несколько байтов."}
@@ -100,8 +97,7 @@ $ nl notes.txt
 
 `nl` записывает нумерованный вывод и не изменяет `notes.txt`.
 
-:::single-choice{#nl-default-blank-lines}
-Как `nl notes.txt` по умолчанию обрабатывает пустые строки тела?
+:::single-choice{#nl-default-blank-lines} Как `nl notes.txt` по умолчанию обрабатывает пустые строки тела?
 
 ::option[Полностью удаляет каждую пустую строку из вывода.]{#nl-omit-blank explanation="Пустая строка остаётся в выводе, но по умолчанию номер ей не назначается."}
 ::option[Сохраняет их без номеров.]{#nl-preserve-unnumbered .correct explanation="Стандартный стиль тела нумерует непустые строки и пропускает пустые без номера."}
@@ -121,8 +117,7 @@ $ nl -ba notes.txt
 
 Другие параметры управляют форматированием. Например, `-w 3` задаёт ширину поля номера, а `-s ': '` изменяет разделитель после него.
 
-:::single-choice{#nl-number-all-lines}
-Какая команда нумерует каждую строку тела `notes.txt`, включая пустые?
+:::single-choice{#nl-number-all-lines} Какая команда нумерует каждую строку тела `notes.txt`, включая пустые?
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="Эта команда меняет ширину поля номера, но сохраняет стандартное правило нумерации только непустых строк."}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="Параметр `-b` выбирает стиль тела, а стиль `a` нумерует все строки."}

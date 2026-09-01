@@ -16,8 +16,7 @@ meta_keywords: "링크 상태 프로토콜, OSPF, 리눅스 네트워킹, 라우
 
 라우터는 호환되는 이웃을 찾고 인터페이스 유형, 영역, 타이머, 인증 및 기타 매개변수에 따라 프로토콜 인접 관계를 형성합니다. hello 패킷이 보인다고 완전한 인접 관계가 보장되지는 않습니다. 설정 불일치가 상태 머신을 더 이른 단계에서 멈출 수 있습니다.
 
-:::single-choice{#link-state-hello-limit}
-OSPF hello를 수신했다는 사실만으로 입증할 수 없는 것은 무엇입니까?
+:::single-choice{#link-state-hello-limit} OSPF hello를 수신했다는 사실만으로 입증할 수 없는 것은 무엇입니까?
 
 ::option[라우터가 완전히 동기화된 인접 관계를 형성했습니다.]{#link-state-not-full .correct explanation="영역, 타이머, 인증, MTU 및 기타 상태 때문에 완전한 데이터베이스 교환이 실패할 수 있습니다."}
 ::option[이웃이 프로토콜 메시지를 하나 이상 보냈습니다.]{#link-state-hello-sent explanation="hello 수신이 그 제한적인 사실을 직접 입증합니다."}
@@ -28,8 +27,7 @@ OSPF hello를 수신했다는 사실만으로 입증할 수 없는 것은 무엇
 
 각 라우터는 관련 상태에 대한 광고를 생성합니다. 이웃은 최신 정보를 원래 이웃 쌍 사이에만 두지 않고 정의된 영역이나 도메인 전체에 신뢰성 있게 플러딩합니다. 순서와 에이징 메커니즘으로 현재 정보를 구분하고 오래된 상태를 제거합니다.
 
-:::single-choice{#link-state-flooding-scope}
-링크 상태 정보를 하나의 이웃 너머로 플러딩하는 이유는 무엇입니까?
+:::single-choice{#link-state-flooding-scope} 링크 상태 정보를 하나의 이웃 너머로 플러딩하는 이유는 무엇입니까?
 
 ::option[모든 애플리케이션에 모든 라우터 암호 사본이 필요하기 때문입니다.]{#link-state-password-copy explanation="응용 자격 증명은 토폴로지 광고가 아닙니다."}
 ::option[Ethernet이 유니캐스트 프레임을 보낼 수 없기 때문입니다.]{#link-state-no-unicast explanation="Ethernet은 유니캐스트를 지원하며 여기서 플러딩은 라우팅 프로토콜 배포 메커니즘입니다."}
@@ -42,8 +40,7 @@ OSPF hello를 수신했다는 사실만으로 입증할 수 없는 것은 무엇
 
 “최단”은 라우터 수가 가장 적거나 측정된 응용 지연 시간이 가장 낮다는 뜻이 아니라 프로토콜 비용이 가장 낮다는 뜻입니다. 비용 설계는 운영 의도를 반영해야 합니다.
 
-:::single-choice{#link-state-shortest-meaning}
-링크 상태 경로 계산에서 “최단”은 무엇을 뜻합니까?
+:::single-choice{#link-state-shortest-meaning} 링크 상태 경로 계산에서 “최단”은 무엇을 뜻합니까?
 
 ::option[접두사를 쓴 문자가 가장 적은 경로입니다.]{#link-state-shortest-text explanation="텍스트 길이는 토폴로지 비용과 관계없습니다."}
 ::option[프로토콜 비용 합계가 가장 작은 경로입니다.]{#link-state-lowest-cost .correct explanation="비용 모델은 홉 수나 현재 지연 시간과 직접 대응하지 않을 수 있습니다."}
@@ -56,8 +53,7 @@ OSPF 영역은 토폴로지 플러딩 및 계산 범위를 제한하며 정상�
 
 링크 변경 후 감지, 광고 플러딩, SPF 계산, 경로 설치 및 전달 복구에 각각 시간이 걸립니다. 단순한 거리 벡터 설계보다 빠르게 수렴할 수 있지만 모든 장애나 설정에서 자동으로 보장되지는 않습니다.
 
-:::single-choice{#link-state-convergence-stages}
-OSPF 수렴 조사 중 무엇을 측정해야 합니까?
+:::single-choice{#link-state-convergence-stages} OSPF 수렴 조사 중 무엇을 측정해야 합니까?
 
 ::option[관리자가 터미널을 연 시각만 측정합니다.]{#link-state-terminal-time explanation="프로토콜 또는 전달 단계를 격리하지 못합니다."}
 ::option[라우터 이름의 알파벳 순서만 측정합니다.]{#link-state-router-names explanation="이름은 수렴 시간을 결정하지 않습니다."}

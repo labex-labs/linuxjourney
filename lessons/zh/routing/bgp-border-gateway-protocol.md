@@ -18,8 +18,7 @@ meta_keywords: "BGP, 边界网关协议, 边界网关协议路由, 互联网路�
 
 BGP 对等方通过 TCP 端口 179 建立会话。正常工作的 TCP 会话只是传输基础；BGP 能力、策略和路由交换也必须成功。
 
-:::single-choice{#bgp-external-session}
-外部 BGP 交换什么？
+:::single-choice{#bgp-external-session} 外部 BGP 交换什么？
 
 ::option[一台交换机内部的以太网帧校验和。]{#bgp-ethernet-fcs explanation="BGP 运行在 TCP 之上，交换网络层可达性。"}
 ::option[Web 浏览器之间的用户密码。]{#bgp-browser-passwords explanation="应用程序凭据不是路由属性。"}
@@ -30,8 +29,7 @@ BGP 对等方通过 TCP 端口 179 建立会话。正常工作的 TCP 会话只�
 
 一条通告包含前缀和属性。`AS_PATH` 列出经过的自治系统，并帮助检测环路。其他常见属性包括 `LOCAL_PREF`、`MED`、起源、下一跳和团体属性。其作用取决于方向、实现和策略。
 
-:::single-choice{#bgp-as-path-loop}
-`AS_PATH` 如何帮助防止自治系统间环路？
+:::single-choice{#bgp-as-path-loop} `AS_PATH` 如何帮助防止自治系统间环路？
 
 ::option[AS 可以拒绝已经包含自身编号的路径。]{#bgp-own-as-reject .correct explanation="路径矢量公开到达所通告前缀时经过的 AS 序列。"}
 ::option[它会加密穿越这些系统的每个数据包。]{#bgp-aspath-encryption explanation="该属性描述路由路径，不提供载荷加密。"}
@@ -44,8 +42,7 @@ BGP 的“最佳”路径是配置的决策流程中胜出的路径。运营方�
 
 BGP 选出候选项后，普通 IP 转发仍使用最长前缀匹配。对于相应目标，选中的 `/24` 会优先于覆盖它的 `/16`。
 
-:::single-choice{#bgp-best-path-meaning}
-BGP 最佳路径表示什么？
+:::single-choice{#bgp-best-path-meaning} BGP 最佳路径表示什么？
 
 ::option[在本地属性与策略决策流程中胜出的路由。]{#bgp-policy-winner .correct explanation="管理意图是域间路径选择的核心。"}
 ::option[在每种情况下物理电缆距离最短的路由。]{#bgp-shortest-cable explanation="BGP 没有完整的物理距离图。"}
@@ -56,8 +53,7 @@ BGP 最佳路径表示什么？
 
 通告前缀是在策略下声明可达性；它不会创建底层路由，也不能确保返回路径。发起前缀前，应确保转发有效、聚合行为正确、过滤与故障转移就绪，并且拥有授权。
 
-:::single-choice{#bgp-advertisement-limit}
-通告前缀无法保证什么？
+:::single-choice{#bgp-advertisement-limit} 通告前缀无法保证什么？
 
 ::option[对等方能够收到控制平面路由。]{#bgp-peers-control explanation="成功通告并被接受可以确定这一有限的控制平面事实。"}
 ::option[前缀包含地址位。]{#bgp-prefix-bits explanation="IP 前缀由地址位和长度定义。"}
@@ -70,8 +66,7 @@ BGP 最佳路径表示什么？
 
 BGP 变更需要分阶段推出、审查路由差异、保留带外访问和回滚，并验证控制平面与数据平面。
 
-:::single-choice{#bgp-rpki-limit}
-RPKI 起源验证检查什么？
+:::single-choice{#bgp-rpki-limit} RPKI 起源验证检查什么？
 
 ::option[每个数据包载荷是否不含恶意软件。]{#bgp-payload-malware explanation="RPKI 不检查应用程序内容。"}
 ::option[完整 AS 路径是否具有最低延迟。]{#bgp-path-latency explanation="起源验证不是性能选择或完整路径验证。"}

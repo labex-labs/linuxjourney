@@ -23,8 +23,7 @@ value: 128  64  32  16   8  4  2  1
 
 여덟 값을 모두 더하면 255입니다. 10진수 192는 `128 + 64`이므로 이진 표현은 `11000000`입니다.
 
-:::single-choice{#subnet-cheats-binary-192}
-10진수 192를 8비트 이진수로 나타내면 무엇입니까?
+:::single-choice{#subnet-cheats-binary-192} 10진수 192를 8비트 이진수로 나타내면 무엇입니까?
 
 ::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="128과 64 위치를 설정하고 나머지 위치는 0입니다."}
 ::option[`10101000`]{#subnet-cheats-168 explanation="이 패턴은 168입니다."}
@@ -42,8 +41,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 예를 들어 `/19`에는 완전한 접두사 비트 16개와 셋째 옥텟의 비트 3개가 있으므로 마스크는 `255.255.224.0`입니다.
 
-:::single-choice{#subnet-cheats-prefix-19}
-IPv4 `/19`에 해당하는 마스크는 무엇입니까?
+:::single-choice{#subnet-cheats-prefix-19} IPv4 `/19`에 해당하는 마스크는 무엇입니까?
 
 ::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="완전한 비트 16개와 추가 비트 3개가 255, 255, 224를 만듭니다."}
 ::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="접두사 길이는 비트 수이며 10진수 마스크 옥텟이 아닙니다."}
@@ -56,8 +54,7 @@ IPv4 `/19`에 해당하는 마스크는 무엇입니까?
 
 `198.51.100.77/27` 주소는 64부터 95까지의 블록에 속합니다.
 
-:::single-choice{#subnet-cheats-77-network}
-`198.51.100.77/27`의 네트워크 주소는 무엇입니까?
+:::single-choice{#subnet-cheats-77-network} `198.51.100.77/27`의 네트워크 주소는 무엇입니까?
 
 ::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="마지막 옥텟이 32부터 63까지인 블록입니다."}
 ::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="이 주소에는 호스트 비트가 포함돼 있어 블록 경계가 아닙니다."}
@@ -75,8 +72,7 @@ IPv4 `/19`에 해당하는 마스크는 무엇입니까?
 
 다시 변환할 때는 비트가 1인 자릿값만 더합니다. IPv4 옥텟 안에서 작업할 때는 항상 여덟 위치를 모두 유지하십시오.
 
-:::single-choice{#subnet-cheats-binary-123}
-10진수 123과 같은 8비트 값은 무엇입니까?
+:::single-choice{#subnet-cheats-binary-123} 10진수 123과 같은 8비트 값은 무엇입니까?
 
 ::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="숫자 값은 같지만 옥텟 표현에서는 여덟 위치를 유지해야 합니다."}
 ::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="설정된 위치를 더하면 64 + 32 + 16 + 8 + 2 + 1입니다."}

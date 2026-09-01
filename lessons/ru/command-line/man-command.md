@@ -22,8 +22,7 @@ $ man ls
 
 Страницы обычно содержат синопсис, описание, параметры, связанные файлы и перекрёстные ссылки, хотя точные разделы различаются.
 
-:::single-choice{#open-ls-manual}
-Какая команда открывает установленную man-страницу `ls`?
+:::single-choice{#open-ls-manual} Какая команда открывает установленную man-страницу `ls`?
 
 ::option[`help ls`]{#help-ls explanation="Bash `help` документирует встроенные команды и обычно не открывает страницу внешней `ls`."}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` ищет тему `ls` в базе руководств и показывает найденную страницу."}
@@ -41,16 +40,14 @@ $ man ls
 
 Просмотрщик зависит от системы и среды, поэтому клавиши не универсальны; указанные относятся к обычной настройке с `less`.
 
-:::single-choice{#search-man-page}
-Как в открытой через `less` man-странице начать поиск `--recursive` вперёд?
+:::single-choice{#search-man-page} Как в открытой через `less` man-странице начать поиск `--recursive` вперёд?
 
 ::option[Ввести `?--recursive` и Enter.]{#backward-man-search explanation="Знак вопроса начинает обратный поиск, то есть движется не в запрошенном направлении."}
 ::option[Ввести `/--recursive` и Enter.]{#forward-man-search .correct explanation="Косая черта начинает прямой поиск, а Enter отправляет шаблон."}
 ::option[Ввести `n--recursive` и Enter.]{#repeat-man-search explanation="`n` повторяет уже существующий поиск и таким образом новый шаблон не задаёт."}
 :::
 
-:::single-choice{#leave-man-page}
-Какая клавиша в обычном просмотрщике возвращает из man-страницы в оболочку?
+:::single-choice{#leave-man-page} Какая клавиша в обычном просмотрщике возвращает из man-страницы в оболочку?
 
 ::option[`G`]{#man-page-end explanation="Прописная `G` идёт в конец страницы в `less`, но не закрывает просмотрщик."}
 ::option[`n`]{#next-man-match explanation="`n` повторяет последний поиск и оставляет страницу открытой."}
@@ -76,8 +73,7 @@ $ man 1 passwd
 
 Первая команда открывает формат файла `passwd` из раздела 5, вторая — пользовательскую команду из раздела 1. Ссылки вида `passwd(5)` используют ту же запись `topic(section)` («тема(раздел)»).
 
-:::single-choice{#open-passwd-file-format}
-Какая команда открывает страницу раздела 5 о формате файла `passwd`?
+:::single-choice{#open-passwd-file-format} Какая команда открывает страницу раздела 5 о формате файла `passwd`?
 
 ::option[`man passwd 5`]{#section-after-topic explanation="В этой форме номер раздела должен предшествовать теме; порядок не запрашивает `passwd(5)`."}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Раздел `5` перед `passwd` явно выбирает страницу формата файла."}
@@ -93,8 +89,7 @@ $ man 1 passwd
 - попробуйте `NAME --help` для поддерживающей это внешней программы;
 - проверьте отдельный пакет документации дистрибутива.
 
-:::single-choice{#missing-builtin-manual}
-`type cd` сообщает, что `cd` встроена в Bash, а отдельной страницы нет. Что попробовать?
+:::single-choice{#missing-builtin-manual} `type cd` сообщает, что `cd` встроена в Bash, а отдельной страницы нет. Что попробовать?
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` суммирует записи базы man и не создаст отсутствующую отдельную страницу встроенной команды."}
 ::option[`file cd`]{#file-cd-name explanation="`file` классифицирует пути, а здесь `cd` разрешается как встроенная команда, не файл."}

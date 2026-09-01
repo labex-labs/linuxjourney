@@ -28,8 +28,7 @@ GNU `grep` は標準でパターンを基本正規表現として解釈し、選
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-正規表現として解釈せず、`products.txt` から文字列 `price: $5.00` を検索するコマンドはどれですか？
+:::single-choice{#grep-fixed-string} 正規表現として解釈せず、`products.txt` から文字列 `price: $5.00` を検索するコマンドはどれですか？
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` は固定文字列照合を選び、単一引用符はドル記号をシェル展開から保護します。"}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` は拡張正規表現を有効にし、`$` と `.` は文字どおりではなく特別な意味を持ちます。"}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 バックスラッシュはドットを文字どおりにし、正規表現でエスケープされていない `.` は任意の 1 文字に一致します。
 
-:::single-choice{#grep-literal-txt-suffix}
-文字どおりの接尾辞 `.txt` で終わる行に一致する拡張正規表現はどれですか？
+:::single-choice{#grep-literal-txt-suffix} 文字どおりの接尾辞 `.txt` で終わる行に一致する拡張正規表現はどれですか？
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="ドットがエスケープされていないため、文字どおりのピリオドではなく `txt` の前の任意の 1 文字に一致します。"}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` は文字どおりのピリオド、`$` は行末へ一致を固定します。"}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 `-e` は繰り返して、いずれかのパターンに一致する行を選べます。`-f patterns.txt` はファイルから 1 行 1 パターンで読みます。
 
-:::single-choice{#grep-hyphen-pattern}
-`-v` をオプションとして解釈させず、`settings.conf` からパターン `-v` を検索するコマンドはどれですか？
+:::single-choice{#grep-hyphen-pattern} `-v` をオプションとして解釈させず、`settings.conf` からパターン `-v` を検索するコマンドはどれですか？
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="引用符はシェル展開を防ぎますが、`grep` は渡された `-v` を一致反転オプションとして解釈できます。"}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="一致反転を有効にし、要求された形でパターンと入力を指定していません。"}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` は一致の総出現数ではなく選択された行を数えます。`fox fox` を含む 1 行も件数は 1 です。GNU `grep` で重ならない一致の出現数が必要なら、`grep -o PATTERN | wc -l` というパイプラインも使えます。
 
-:::single-choice{#grep-count-lines}
-`data.txt` に `error error` を含む行が 1 行、一致しない行が 2 行あります。`grep -c 'error' data.txt` は何を報告しますか？
+:::single-choice{#grep-count-lines} `data.txt` に `error error` を含む行が 1 行、一致しない行が 2 行あります。`grep -c 'error' data.txt` は何を報告しますか？
 
 ::option[`2`。1 行に単語が 2 回現れるため。]{#grep-count-occurrences explanation="`-c` は 1 行内の個々の一致ではなく、選択された行を数えます。"}
 ::option[`1`。一致する行がちょうど 1 行のため。]{#grep-count-one-line .correct explanation="パターンが同じ行に 2 回現れても、その行は 1 回だけ選択されます。"}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 権限エラーなどの診断は stderr へ送られ、照合入力にはなりません。すぐに権限を昇格するのではなく、検索範囲を絞り、権限を理解してください。
 
-:::single-choice{#grep-pipeline-input}
-`generate-report | grep 'failed'` で `grep` は何を検索しますか？
+:::single-choice{#grep-pipeline-input} `generate-report | grep 'failed'` で `grep` は何を検索しますか？
 
 ::option[現在のディレクトリにある `generate-report` というファイル。]{#grep-report-file explanation="左側はコマンドとして実行され、`grep` へファイルオペランドとして渡されません。"}
 ::option[`generate-report` が生成した stdout ストリーム。]{#grep-report-stdout .correct explanation="パイプが生成側の stdout を `grep` の stdin へ接続します。"}

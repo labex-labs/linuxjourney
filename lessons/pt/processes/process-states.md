@@ -25,16 +25,14 @@ O primeiro caractere de `STAT` é o estado principal. Os caracteres adicionais s
 
 Dormir é normal. Programas interativos e serviços passam grande parte do tempo aguardando entradas, temporizadores, tráfego de rede, bloqueios ou outros eventos, em vez de consumir CPU continuamente.
 
-:::single-choice{#process-states-runnable-code}
-O que significa o estado principal `R`?
+:::single-choice{#process-states-runnable-code} O que significa o estado principal `R`?
 
 ::option[Em execução em uma CPU ou pronto para executar.]{#process-states-r-running .correct explanation="`R` reúne tarefas atualmente em execução e tarefas executáveis que aguardam atendimento da CPU."}
 ::option[Coletado depois que seu pai recuperou o status.]{#process-states-r-reaped explanation="Um processo totalmente coletado deixa de aparecer como uma entrada comum da tabela de processos."}
 ::option[Aguardando em sono ininterruptível.]{#process-states-r-uninterruptible explanation="O sono ininterruptível é representado por `D`."}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-Qual estado principal representa um sono interrompível?
+:::single-choice{#process-states-interruptible-code} Qual estado principal representa um sono interrompível?
 
 ::option[`D`]{#process-states-sleep-d explanation="`D` indica sono ininterruptível."}
 ::option[`Z`]{#process-states-sleep-z explanation="`Z` indica um filho encerrado cujo status ainda não foi coletado."}
@@ -47,8 +45,7 @@ Qual estado principal representa um sono interrompível?
 
 Um estado `D` breve pode ser normal. Tarefas persistentes ou numerosas em `D` podem indicar E/S lenta, indisponível ou com falhas, mas o estado sozinho não identifica a causa. Inspecione o canal de espera, os logs do kernel, a integridade do armazenamento e da rede e o subsistema relevante antes de tirar conclusões.
 
-:::single-choice{#process-states-uninterruptible-code}
-Qual estado principal indica sono ininterruptível?
+:::single-choice{#process-states-uninterruptible-code} Qual estado principal indica sono ininterruptível?
 
 ::option[`T`]{#process-states-d-stopped explanation="`T` identifica uma tarefa interrompida."}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` é usado para uma tarefa que aguarda em um sono ininterruptível do kernel."}
@@ -62,8 +59,7 @@ Qual estado principal indica sono ininterruptível?
 
 Retome uma parada por controle de tarefas com `SIGCONT` quando for apropriado. Um zumbi não pode ser retomado nem encerrado, pois já não está executando; seu pai ou um coletor adotante precisa coletá-lo.
 
-:::single-choice{#process-states-zombie-code}
-O que o estado principal `Z` identifica?
+:::single-choice{#process-states-zombie-code} O que o estado principal `Z` identifica?
 
 ::option[Um processo encerrado cujo registro de encerramento aguarda coleta.]{#process-states-z-zombie .correct explanation="Um zumbi mantém um estado mínimo visível ao pai depois que a execução termina."}
 ::option[Um processo pausado por um sinal de suspensão do terminal.]{#process-states-z-terminal-stop explanation="Uma parada por controle de tarefas normalmente é mostrada como `T`."}

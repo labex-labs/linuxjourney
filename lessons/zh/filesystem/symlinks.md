@@ -30,8 +30,7 @@ $ ls -li myfile myfilelink
 $ readlink myfilelink
 ```
 
-:::single-choice{#symlinks-create-symbolic}
-哪个命令创建名为 `myfilelink`、目标文本为 `myfile` 的符号链接？
+:::single-choice{#symlinks-create-symbolic} 哪个命令创建名为 `myfilelink`、目标文本为 `myfile` 的符号链接？
 
 ::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="`-s` 选项请求创建符号链接，后面依次是目标和新链接名称。"}
 ::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="没有 `-s` 时，`ln` 请求为现有 inode 创建硬链接。"}
@@ -50,8 +49,7 @@ $ ln -s ../data/item tree/current/item
 
 整体移动 `tree` 层次仍能保持这一相对关系；只移动链接或目标则可能破坏关系。符号链接允许保存不存在的目标，此时称为悬空链接或断链。
 
-:::single-choice{#symlinks-relative-resolution}
-相对符号链接目标从哪里开始解析？
+:::single-choice{#symlinks-relative-resolution} 相对符号链接目标从哪里开始解析？
 
 ::option[创建它的用户的家目录。]{#symlinks-creator-home explanation="创建者身份不会成为永久解析基准。"}
 ::option[第一次列出它的 shell 的当前目录。]{#symlinks-listing-shell explanation="列出时的上下文不会重写已存储的目标关系。"}
@@ -73,8 +71,7 @@ $ ls -li myfile myhardlink
 
 硬链接不能跨越文件系统边界，因为 inode 编号只在其文件系统中有意义。Linux 还会限制普通用户为目录创建硬链接，也可能限制为不属于自己的文件创建链接，以防止循环和安全问题。
 
-:::single-choice{#symlinks-hard-link-inode}
-指向一个普通文件的两个硬链接共享什么？
+:::single-choice{#symlinks-hard-link-inode} 指向一个普通文件的两个硬链接共享什么？
 
 ::option[只有相似文件名，但文件数据彼此独立。]{#symlinks-separate-data explanation="这描述的是独立副本，而不是硬链接。"}
 ::option[存储在另一个符号链接 inode 中的路径名。]{#symlinks-stored-path explanation="保存路径文本是符号链接的定义机制。"}
@@ -93,8 +90,7 @@ $ rm -- myfilelink
 
 删除指向目录的符号链接时应避免末尾斜杠，因为根据命令不同，末尾斜杠路径解析可能会遵循目录语义。先用 `ls -ld -- LINK` 检查，再明确删除链接名称。
 
-:::single-choice{#symlinks-remove-symbolic}
-删除符号链接本身时通常会发生什么？
+:::single-choice{#symlinks-remove-symbolic} 删除符号链接本身时通常会发生什么？
 
 ::option[符号链接 inode 和名称被删除，目标保持不变。]{#symlinks-remove-link-only .correct explanation="取消符号链接不会操作其保存的目标文本所指向的对象。"}
 ::option[目标及其所有硬链接都会自动被删除。]{#symlinks-remove-target explanation="符号链接是独立文件系统对象，并不拥有其目标。"}
@@ -114,8 +110,7 @@ $ rm -- myfilelink
 
 `lrwxrwxrwx` 显示的权限并不是通用访问授权。访问由目录遍历、链接跟随策略和目标权限共同决定；在某些受保护目录规则中，符号链接所有权也很重要。
 
-:::single-choice{#symlinks-readlink-output}
-`readlink LINK` 默认打印什么？
+:::single-choice{#symlinks-readlink-output} `readlink LINK` 默认打印什么？
 
 ::option[符号链接中保存的路径名文本。]{#symlinks-readlink-target-text .correct explanation="它检查链接对象，而不会读取目标文件的内容。"}
 ::option[目标普通文件的完整字节内容。]{#symlinks-readlink-file-content explanation="要读取目标内容，应在有意识解析后使用文件读取命令。"}

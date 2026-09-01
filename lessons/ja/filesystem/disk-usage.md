@@ -28,8 +28,7 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 $ df -hT /var/log
 ```
 
-:::single-choice{#disk-usage-df-scope}
-`df` が主に報告するものは何ですか？
+:::single-choice{#disk-usage-df-scope} `df` が主に報告するものは何ですか？
 
 ::option[1 つのディレクトリ内にある各ファイルのバイト内容。]{#disk-usage-df-file-content explanation="ディレクトリツリーの使用量管理は、`du` などのツールが担います。"}
 ::option[ファイルシステム単位の容量、使用量、使用可能容量。]{#disk-usage-df-filesystem .correct explanation="df は全パス名を走査せず、マウント済みファイルシステムの割り当て統計を問い合わせます。"}
@@ -46,8 +45,7 @@ $ df -i /var
 
 大量の小さなファイルは、利用可能な inode を消費します。1 つの大きなファイルを削除すると多数のブロックが解放されますが、通常は inode 1 つしか解放されません。不要な小さなファイルを多数削除すれば、inode の圧力を緩和できます。ファイルシステムによってはメタデータを動的に割り当て、これらの概念を異なる形で報告します。
 
-:::single-choice{#disk-usage-inode-exhaustion}
-空きブロックはあるものの、空き inode がないファイルシステムでは何が起こり得ますか？
+:::single-choice{#disk-usage-inode-exhaustion} 空きブロックはあるものの、空き inode がないファイルシステムでは何が起こり得ますか？
 
 ::option[既存のすべてのファイルが自動的に 2 倍の大きさになる。]{#disk-usage-inode-double explanation="inode の枯渇は新しいメタデータの割り当てを妨げますが、既存の内容を拡大しません。"}
 ::option[新しいファイルの作成に失敗する。]{#disk-usage-inode-create-fail .correct explanation="ファイルデータ用の領域が残っていても、新しいファイルシステムオブジェクトにはメタデータが必要です。"}
@@ -70,8 +68,7 @@ $ sudo du -xhd1 /var | sort -h
 
 ここで示した GNU オプションは、人が読みやすい表示、最大深度 1、1 つのファイルシステムを意味します。パーミッションによって一部のツリーが見えず、合計が不完全になる場合があります。また `du` は、既定ではハードリンクされたファイルを 1 回だけ数え、見かけのサイズと割り当て済みブロックを区別でき、オプションによってスパースファイルの扱いも変わります。
 
-:::single-choice{#disk-usage-du-purpose}
-`/var/log` 以下の割り当て済み使用量を要約するコマンドはどれですか？
+:::single-choice{#disk-usage-du-purpose} `/var/log` 以下の割り当て済み使用量を要約するコマンドはどれですか？
 
 ::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="これは、そのパスを含むファイルシステムの inode 統計を報告します。"}
 ::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="du は指定したツリーをたどり、`-s` により人が読みやすい単位の要約を 1 つ出力します。"}
@@ -90,8 +87,7 @@ $ sudo du -xhd1 /var | sort -h
 
 削除されたまま開いているファイルは、権限のあるプロセスを `lsof +L1` などで調べます。未知のファイル記述子を切り詰めず、通常の手順で原因となるサービスを再起動するかシグナルを送ってください。
 
-:::single-choice{#disk-usage-deleted-open-file}
-`df` が使用中と示す容量を、パス名に基づく `du` で見つけられないことがあるのはなぜですか？
+:::single-choice{#disk-usage-deleted-open-file} `df` が使用中と示す容量を、パス名に基づく `du` で見つけられないことがあるのはなぜですか？
 
 ::option[`df` は常に全ファイルのサイズを 2 倍にするから。]{#disk-usage-df-doubles explanation="そのような普遍的な倍増規則はありません。"}
 ::option[削除されたファイルが実行中のプロセスに開かれたまま、割り当てを保持できるから。]{#disk-usage-open-deleted .correct explanation="ディレクトリエントリがなくなっても、最後の開いている参照が閉じるまで、ファイルシステムはブロックを保持します。"}
@@ -102,8 +98,7 @@ $ sudo du -xhd1 /var | sort -h
 
 `df` が満杯と報告したファイルシステムから始め、`findmnt` でマウント対象を特定し、その同じファイルシステム内へ `du` の検索範囲を絞ります。スナップショット、コンテナ層、ログ、パッケージキャッシュ、アプリケーションの保持方針も考慮してください。大きいという理由だけでファイルを削除せず、先に所有者、バックアップ、コンプライアンス、サービスの動作を確認します。
 
-:::single-choice{#disk-usage-safe-investigation}
-大きなファイルを見つけたとき、最も安全な対応はどれですか？
+:::single-choice{#disk-usage-safe-investigation} 大きなファイルを見つけたとき、最も安全な対応はどれですか？
 
 ::option[サービスが書き込み中でも、ただちに削除する。]{#disk-usage-delete-immediately explanation="必要なデータを失う可能性があり、ファイルが開いたままなら容量も解放されないことがあります。"}
 ::option[そのファイルを含むデバイスで `mkfs` を実行する。]{#disk-usage-mkfs-device explanation="フォーマットすると、1 ファイルの増大を解決するのではなく、ファイルシステム全体を破壊します。"}

@@ -20,8 +20,7 @@ MBR レイアウトでは、このセクターに小さなブートコード領�
 
 GPT ディスクから BIOS ブートすることもできますが、protective MBR だけではローダーの後続段階を格納できません。GRUB は通常、GPT 上の小さな BIOS Boot Partition に組み込み用コアコードを置きます。正確な配置は、インストールしたローダーによって決まります。
 
-:::single-choice{#boot-bios-legacy-first-sector}
-従来型 BIOS は、選択したブートディスクから最初に何を読み込むのが一般的ですか？
+:::single-choice{#boot-bios-legacy-first-sector} 従来型 BIOS は、選択したブートディスクから最初に何を読み込むのが一般的ですか？
 
 ::option[小さなブートコードを含む先頭ブートセクター。]{#boot-bios-boot-sector .correct explanation="従来のディスクブート経路では、ファームウェアは選択したディスクの先頭セクターにあるコードへ制御を渡します。"}
 ::option[Linux のルートファイルシステム全体。]{#boot-bios-entire-root explanation="第 1 段階のセクターは非常に小さく、カーネルやルートストレージは後続ソフトウェアが探します。"}
@@ -34,8 +33,7 @@ UEFI ファームウェアは EFI System Partition（ESP）上の定められた
 
 ESP に格納されるのはブートアプリケーションと補助ファイルであり、「起動情報のすべて」ではありません。ブート設計によって、カーネルイメージ、initramfs、ローダー設定は ESP 上にも別の場所にも置けます。UEFI システムでは GPT が一般的ですが、ファームウェアインターフェースとパーティションテーブル方式は別々の層です。
 
-:::single-choice{#boot-bios-uefi-esp}
-UEFI は EFI System Partition から何を読み込むのが一般的ですか？
+:::single-choice{#boot-bios-uefi-esp} UEFI は EFI System Partition から何を読み込むのが一般的ですか？
 
 ::option[ファームウェアのブートエントリで選択された EFI 実行ファイル。]{#boot-bios-efi-executable .correct explanation="UEFI のブート管理は、対応するシステムパーティション上の実行ファイルをファームウェアに指定します。"}
 ::option[任意の ext4 ホームディレクトリにある POSIX シェルスクリプト。]{#boot-bios-shell-script explanation="ファームウェアは、通常のユーザーシェルではなく、対応するブート経路から定められた形式の実行ファイルを読み込みます。"}
@@ -48,8 +46,7 @@ Secure Boot を有効にすると、UEFI は登録されたプラットフォー
 
 Secure Boot はディスクを暗号化せず、すべてのユーザー空間プログラムが安全だと証明するものでもありません。設定された信頼ポリシーの下で、未承認のプリブートコードが受け入れられるのを防ぐのに役立ちます。
 
-:::single-choice{#boot-bios-secure-boot-purpose}
-UEFI Secure Boot が主に強制するものは何ですか？
+:::single-choice{#boot-bios-secure-boot-purpose} UEFI Secure Boot が主に強制するものは何ですか？
 
 ::option[全ディスク上の全ファイルの自動暗号化。]{#boot-bios-secure-encryption explanation="ディスクの機密性を守るには、別の暗号化システムが必要です。"}
 ::option[署名に基づくブートチェーン実行ファイルの承認。]{#boot-bios-secure-signatures .correct explanation="ファームウェアと後続の検証済みコンポーネントは、登録済みの鍵とポリシーに従ってコードを受け入れます。"}
@@ -62,8 +59,7 @@ UEFI Secure Boot が主に強制するものは何ですか？
 
 Secure Boot、ストレージコントローラーのモード、TPM、仮想化、ブート順序を変える前に、既存の値と復旧キーを記録してください。ファームウェア設定の変更によって、暗号化ボリュームやインストール済み OS に一時的にアクセスできなくなることがあります。
 
-:::single-choice{#boot-bios-setup-key}
-ファームウェア設定を開く共通キーが存在しないのはなぜですか？
+:::single-choice{#boot-bios-setup-key} ファームウェア設定を開く共通キーが存在しないのはなぜですか？
 
 ::option[Linux がブートのたびに新しいキーを無作為に割り当てるから。]{#boot-bios-random-key explanation="OS がファームウェア初期起動時のキーを無作為に決めるわけではありません。"}
 ::option[キーと入力タイミングをシステムメーカーが決めるから。]{#boot-bios-vendor-key .correct explanation="ファームウェアの操作方法はモデルごとに異なるため、正規のデバイス文書を確認する必要があります。"}

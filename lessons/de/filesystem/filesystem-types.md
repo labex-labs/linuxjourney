@@ -18,8 +18,7 @@ Die Virtual-Filesystem-Schicht (VFS) des Kernels stellt gemeinsame Operationen w
 
 Dadurch kann ein Prozess über ein gemeinsames Modell aus Pfaden und Dateideskriptoren auf ext4, XFS, NFS, tmpfs und procfs zugreifen. Dennoch sind nicht alle Dateisystemfunktionen und Verhaltensweisen identisch: Groß-/Kleinschreibung, Sperren, Berechtigungen, Garantien beim Umbenennen, erweiterte Attribute und Fehlerbehandlung können sich unterscheiden.
 
-:::single-choice{#filesystem-types-vfs-role}
-Was ist die Hauptaufgabe des Linux-VFS?
+:::single-choice{#filesystem-types-vfs-role} Was ist die Hauptaufgabe des Linux-VFS?
 
 ::option[Jedes eingehängte Dateisystem auf dem Datenträger in ext4 umwandeln.]{#filesystem-types-vfs-convert-ext4 explanation="Die Abstraktion bewahrt die unterschiedlichen Dateisystemimplementierungen und Formate."}
 ::option[Jede Datei sichern, bevor eine Anwendung sie beschreibt.]{#filesystem-types-vfs-backup explanation="VFS leitet Operationen weiter und bietet keinen automatischen Sicherungsverlauf."}
@@ -32,8 +31,7 @@ Ein Journaling-Dateisystem zeichnet ausgewählte Aktualisierungen in einem Journ
 
 Es garantiert weder, dass die neuesten Anwendungsdaten erhalten geblieben sind, noch dass anwendungsbezogene Transaktionen über mehrere Dateien gültig sind oder die Speicherhardware jeden abgeschlossenen Schreibvorgang tatsächlich ausgeführt hat. Dateisysteme bieten unterschiedliche Datenmodi und Reihenfolgegarantien; Anwendungen müssen geeignete Flush- und atomare Aktualisierungsmuster verwenden. Ein Journal ist keine Sicherung und schützt nicht vor Löschen, Schadsoftware oder Geräteausfall.
 
-:::single-choice{#filesystem-types-journal-scope}
-Was hilft Dateisystem-Journaling nach einem Absturz in erster Linie wiederherzustellen?
+:::single-choice{#filesystem-types-journal-scope} Was hilft Dateisystem-Journaling nach einem Absturz in erster Linie wiederherzustellen?
 
 ::option[Konsistente Dateisystemmetadaten und aufgezeichnete Transaktionen.]{#filesystem-types-journal-consistency .correct explanation="Das Wiederholen des Journals hilft, Dateisystemstrukturen wieder in einen schlüssigen Zustand zu versetzen."}
 ::option[Jede historische Version jedes Benutzerdokuments.]{#filesystem-types-journal-versions explanation="Ein Journal ist kein versionierter Sicherungsspeicher."}
@@ -48,8 +46,7 @@ Was hilft Dateisystem-Journaling nach einem Absturz in erster Linie wiederherzus
 
 Funktionen benötigen betrieblichen Kontext. Ein Btrfs-Snapshot teilt anfangs Speicher mit seiner Quelle und ist keine unabhängige Sicherung, solange er auf demselben ausfallenden Gerät liegt. XFS und ext4 besitzen unterschiedliche Möglichkeiten zum Vergrößern, Verkleinern, Reparieren und Abstimmen. Bestätige vor Auswahl oder Änderung eines Root-Dateisystems die Unterstützung durch installierten Kernel, Bootumgebung und Wiederherstellungswerkzeuge.
 
-:::single-choice{#filesystem-types-btrfs-snapshot}
-Warum ist ein Btrfs-Snapshot auf demselben Gerät keine vollständige Sicherung?
+:::single-choice{#filesystem-types-btrfs-snapshot} Warum ist ein Btrfs-Snapshot auf demselben Gerät keine vollständige Sicherung?
 
 ::option[Snapshots löschen das ursprüngliche Subvolume immer sofort.]{#filesystem-types-snapshot-deletes explanation="Ein Snapshot erzeugt eine weitere Subvolume-Ansicht und entfernt seine Quelle nicht automatisch."}
 ::option[Er teilt dieselbe Speicherausfalldomäne wie das Original.]{#filesystem-types-snapshot-failure-domain .correct explanation="Geräteverlust oder schwere Dateisystemschäden können sowohl die Quelle als auch ihren lokalen Snapshot betreffen."}
@@ -62,8 +59,7 @@ Linux kann Austauschformate wie FAT-Varianten, exFAT und NTFS einhängen, doch i
 
 Netzwerkdateisysteme wie NFS und SMB hängen von einem Server und Netzwerkprotokoll ab und besitzen eigene Regeln für Caching und Identitäten. Virtuelle Dateisysteme wie tmpfs, procfs und sysfs verwenden kein gewöhnliches dauerhaftes Datenträgerformat: tmpfs speichert flüchtige Daten in speichergestützten Seiten, während procfs und sysfs Kernel-Schnittstellen bereitstellen.
 
-:::single-choice{#filesystem-types-procfs-category}
-Welche Beschreibung passt am besten zu procfs?
+:::single-choice{#filesystem-types-procfs-category} Welche Beschreibung passt am besten zu procfs?
 
 ::option[Ein Windows-Austauschformat für Wechselmedien.]{#filesystem-types-procfs-windows explanation="FAT oder exFAT entsprechen diesem Zweck eher; procfs ist eine Linux-Kernel-Schnittstelle."}
 ::option[Ein virtuelles Dateisystem, das Prozess- und Kernel-Schnittstellen bereitstellt.]{#filesystem-types-procfs-virtual .correct explanation="Procfs erzeugt eine aktive Kernel-Ansicht, statt gewöhnliche dauerhafte Dateien auf einem Datenträger zu speichern."}
@@ -80,8 +76,7 @@ $ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Alternative Ansichten sind `df -T` für die Speicherbelegung eingehängter Dateisysteme, `lsblk -f` für Blockgeräte und erkannte Dateisystemsignaturen sowie `/proc/filesystems` für vom laufenden Kernel unterstützte oder bekannte Typen. Diese beantworten verschiedene Fragen; ein nicht eingehängtes Dateisystem erscheint nicht in einer gewöhnlichen Liste eingehängter Dateisysteme.
 
-:::single-choice{#filesystem-types-findmnt-output}
-Welcher Befehl listet in dieser Lektion eingehängte Ziele direkt mit Quelle, Typ und Optionen auf?
+:::single-choice{#filesystem-types-findmnt-output} Welcher Befehl listet in dieser Lektion eingehängte Ziele direkt mit Quelle, Typ und Optionen auf?
 
 ::option[`findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS`]{#filesystem-types-findmnt .correct explanation="Findmnt liest die Einhängetabelle und formatiert die angeforderten Felder eingehängter Dateisysteme."}
 ::option[`lsblk -o NAME,SIZE,MODEL,SERIAL,ROTA`]{#filesystem-types-mkfs-destructive explanation="Dieser Befehl listet Hardwaredetails von Blockgeräten und nicht die tatsächlich eingehängten Dateisystemtypen und -optionen auf."}

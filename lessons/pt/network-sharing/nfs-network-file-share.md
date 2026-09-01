@@ -18,8 +18,7 @@ Instale os utilitários de cliente NFS da distribuição, normalmente empacotado
 
 `showmount -e SERVER` pode listar exports pelo protocolo antigo de montagem, mas não é autoridade para todo servidor somente NFSv4. Uma falha não prova que não exista export NFSv4 autorizado.
 
-:::single-choice{#nfs-showmount-limit}
-Por que `showmount -e` pode ser incompleto para NFSv4?
+:::single-choice{#nfs-showmount-limit} Por que `showmount -e` pode ser incompleto para NFSv4?
 
 ::option[Ele consulta um protocolo antigo de listagem que pode não estar exposto.]{#nfs-showmount-protocol .correct explanation="NFSv4 pode funcionar sem disponibilizar esse serviço separado."}
 ::option[Ele mostra apenas a temperatura da CPU local.]{#nfs-showmount-temperature explanation="O comando consulta exports de um servidor NFS."}
@@ -41,8 +40,7 @@ Especifique uma versão somente quando a política ou a compatibilidade exigirem
 $ findmnt --target /mnt/team
 ```
 
-:::single-choice{#nfs-mount-operands}
-No comando, o que é `server.example.net:/srv/team`?
+:::single-choice{#nfs-mount-operands} No comando, o que é `server.example.net:/srv/team`?
 
 ::option[O diretório local que oculta o export remoto.]{#nfs-local-mountpoint explanation="O ponto local é `/mnt/team`."}
 ::option[O nome do pacote cliente a instalar.]{#nfs-package-name explanation="Nomes de pacote variam e não são operandos de fonte."}
@@ -55,8 +53,7 @@ O acesso combina regras do export, segurança do protocolo, identidades numéric
 
 O servidor costuma mapear root remoto para identidade sem privilégio por root squashing. Não desative essa proteção para corrigir um erro; examine IDs, propriedade, política e modelo de segurança.
 
-:::single-choice{#nfs-name-versus-id}
-Por que usuários com o mesmo nome podem receber permissões NFS diferentes?
+:::single-choice{#nfs-name-versus-id} Por que usuários com o mesmo nome podem receber permissões NFS diferentes?
 
 ::option[As permissões podem depender do mapeamento numérico de identidade.]{#nfs-numeric-mapping .correct explanation="Nomes iguais não provam que cliente e servidor resolvam o mesmo UID e grupos."}
 ::option[NFS ignora todas as permissões de arquivos.]{#nfs-ignores-permissions explanation="Permissões do sistema e do export continuam na autorização."}
@@ -73,8 +70,7 @@ server.example.net:/srv/team /mnt/team nfs4 rw,_netdev,nofail,x-systemd.automoun
 
 Antes de editar fstab, preserve recuperação e valide com parser não destrutivo ou teste controlado. Automount melhora disponibilidade, mas não corrige autorização, DNS ou indisponibilidade.
 
-:::single-choice{#nfs-automount-benefit}
-Qual é um benefício principal do automount sob demanda?
+:::single-choice{#nfs-automount-benefit} Qual é um benefício principal do automount sob demanda?
 
 ::option[Ele concede root a todo cliente.]{#nfs-automount-root explanation="O momento da montagem não ignora autorização."}
 ::option[Ele evita exigir o servidor durante a inicialização inicial.]{#nfs-automount-boot .correct explanation="A conexão ocorre no acesso, em vez de bloquear necessariamente o boot."}
@@ -92,8 +88,7 @@ $ findmnt --target /mnt/team
 
 Desmontagem forçada ou lazy pode ocultar referências ativas e causar erros; reserve-a para falha diagnosticada com plano explícito.
 
-:::single-choice{#nfs-safe-unmount}
-O que deve preceder uma desmontagem NFS normal?
+:::single-choice{#nfs-safe-unmount} O que deve preceder uma desmontagem NFS normal?
 
 ::option[Coordenar processos usuários e concluir escritas importantes.]{#nfs-coordinate-writers .correct explanation="Remover um sistema ativo pode interromper I/O ou deixar trabalho incompleto."}
 ::option[Excluir o diretório exportado no servidor.]{#nfs-delete-export explanation="Desmontar no cliente não exige destruir dados."}

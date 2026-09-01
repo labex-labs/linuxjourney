@@ -30,8 +30,7 @@ $ readlink -f /sys/class/block/sda
 
 다른 저장 인터페이스를 사용하는 시스템에는 예시의 이름이 없을 수 있습니다.
 
-:::single-choice{#sysfs-canonical-device-tree}
-커널의 기본 장치 계층이 들어 있는 sysfs 하위 트리는 무엇입니까?
+:::single-choice{#sysfs-canonical-device-tree} 커널의 기본 장치 계층이 들어 있는 sysfs 하위 트리는 무엇입니까?
 
 ::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="sysfs는 사용자 인증 비밀 정보를 저장하는 곳이 아닙니다."}
 ::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="devices 하위 트리는 장치의 부모-자식 토폴로지를 나타내며 클래스 및 버스 뷰가 이곳을 가리킵니다."}
@@ -53,8 +52,7 @@ $ cat /sys/class/block/sda/size
 
 `dev`는 장치의 주 번호와 부 번호를 보고합니다. `ro`는 블록 장치의 읽기 전용 플래그를 보고합니다. 리눅스 블록 장치에서 `size`는 장치의 물리 섹터 크기와 관계없이 관례상 512바이트 섹터 단위로 표시됩니다. 특정 속성의 단위와 의미는 항상 커널 ABI 문서를 확인하십시오.
 
-:::single-choice{#sysfs-dev-attribute}
-블록 장치의 sysfs `dev` 속성에는 일반적으로 무엇이 들어 있습니까?
+:::single-choice{#sysfs-dev-attribute} 블록 장치의 sysfs `dev` 속성에는 일반적으로 무엇이 들어 있습니까?
 
 ::option[현재 장치에 저장된 모든 파일입니다.]{#sysfs-file-list explanation="파일 시스템 디렉터리 트리는 이 작은 장치 속성에 포함되지 않습니다."}
 ::option[하드웨어를 설치한 패키지 이름입니다.]{#sysfs-package-name explanation="하드웨어는 `dev` 속성으로 식별되는 패키지로 설치되지 않습니다."}
@@ -67,8 +65,7 @@ $ cat /sys/class/block/sda/size
 
 두 인터페이스는 서로 보완합니다. 어느 쪽도 모든 하드웨어 사실을 완전하게 담은 독립형 목록은 아니며, 검사하는 동안 장치가 사라질 수도 있습니다.
 
-:::single-choice{#sysfs-versus-dev}
-`/sys`와 `/dev`의 차이를 올바르게 설명한 것은 무엇입니까?
+:::single-choice{#sysfs-versus-dev} `/sys`와 `/dev`의 차이를 올바르게 설명한 것은 무엇입니까?
 
 ::option[`/sys`는 사용자 문서를 저장하고 `/dev`는 패키지 아카이브를 저장합니다.]{#sysfs-dev-user-files explanation="두 디렉터리 모두 그러한 일반 데이터 저장 역할을 하지 않습니다."}
 ::option[`/sys`는 커널 객체 속성을 노출하고 `/dev`는 입출력을 위한 장치 노드를 제공합니다.]{#sysfs-dev-distinction .correct explanation="sysfs는 객체와 제어 항목을 모델링하고 장치 노드는 작업을 문자 또는 블록 드라이버로 전달합니다."}
@@ -81,8 +78,7 @@ $ cat /sys/class/block/sda/size
 
 문서화된 ABI와 현재 값을 읽고, 설정을 영구 적용하는 방법을 파악하며, 권한이 있는 시스템에서만 테스트하십시오. `/sys` 전체의 권한을 재귀적으로 편집하거나 추측한 값을 쓰지 마십시오.
 
-:::single-choice{#sysfs-write-risk}
-sysfs 속성에 쓰는 작업이 운영상 중요한 이유는 무엇입니까?
+:::single-choice{#sysfs-write-risk} sysfs 속성에 쓰는 작업이 운영상 중요한 이유는 무엇입니까?
 
 ::option[모든 쓰기가 디스크에 일반 백업 사본을 만들기 때문입니다.]{#sysfs-backup-copy explanation="sysfs는 가상 파일 시스템이며 제어 변경을 자동으로 백업하지 않습니다."}
 ::option[속성이 쓰기 가능해도 sysfs가 모든 쓰기를 무시하기 때문입니다.]{#sysfs-ignore-writes explanation="쓰기 가능한 속성은 지원되는 제어 값을 받아들이기 위해 존재합니다."}

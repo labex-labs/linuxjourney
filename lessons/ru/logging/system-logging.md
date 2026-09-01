@@ -23,8 +23,7 @@ meta_keywords: "журналирование linux, syslog, rsyslogd, var log, �
 
 На хосте systemd `systemd-journald` обычно собирает стандартный вывод служб, сообщения ядра и сообщения journal-native или syslog. Демон syslog вроде rsyslog также может принимать сообщения и записывать традиционные текстовые файлы либо пересылать их. Приложения могут вести собственные файлы или внешнюю телеметрию.
 
-:::single-choice{#system-logging-distinct-roles}
-Какой компонент решает, где хранить или куда пересылать принятые сообщения?
+:::single-choice{#system-logging-distinct-roles} Какой компонент решает, где хранить или куда пересылать принятые сообщения?
 
 ::option[Текущий рабочий каталог терминала.]{#system-logging-cwd explanation="Каталог оболочки не задаёт системные маршруты журналов."}
 ::option[Имя файла работающего образа ядра.]{#system-logging-kernel-file explanation="Ядро выдаёт сообщения, но имя образа не является политикой маршрутизации."}
@@ -43,8 +42,7 @@ $ journalctl --disk-usage
 
 `/var/log/syslog` распространён в семействе Debian при совместимой маршрутизации, а `/var/log/messages` — в других системах. Оба могут отсутствовать на хосте только с journal. Дополнительные назначения определяются документацией приложения и конфигурацией unit.
 
-:::single-choice{#system-logging-file-absence}
-Что обязательно означает отсутствие `/var/log/syslog`?
+:::single-choice{#system-logging-file-absence} Что обязательно означает отсутствие `/var/log/syslog`?
 
 ::option[Хост может использовать другое настроенное место журналирования.]{#system-logging-other-destination .correct explanation="Система только с journal или другая политика syslog не обязана создавать этот файл."}
 ::option[Ядро никогда не выдавало сообщений.]{#system-logging-no-kernel explanation="Записи ядра могут находиться в journal или другом месте."}
@@ -62,8 +60,7 @@ $ journalctl -u ssh.service --since '1 hour ago'
 
 `-b` выбирает текущую загрузку, `-p` фильтрует приоритет, `-u` — unit. Имена units и сохранённые загрузки различаются. `journalctl --list-boots` показывает доступные загрузки, а `journalctl -f` следует новым записям при воспроизведении проблемы.
 
-:::single-choice{#system-logging-current-boot}
-Какой параметр ограничивает запрос `journalctl` текущей загрузкой?
+:::single-choice{#system-logging-current-boot} Какой параметр ограничивает запрос `journalctl` текущей загрузкой?
 
 ::option[`-b`]{#system-logging-boot-option .correct explanation="Без аргумента селектор boot выбирает текущую загрузку."}
 ::option[`-u`]{#system-logging-unit-option explanation="Этот параметр фильтрует по unit systemd."}
@@ -82,8 +79,7 @@ Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 
 Журналы могут содержать имена, адреса, пути, токены и другие чувствительные данные. Используйте минимальные права, редактируйте экспортируемые копии и сохраняйте оригиналы и временные метки при расследовании.
 
-:::single-choice{#system-logging-export-safety}
-Что нужно сделать перед внешней передачей фрагмента журнала?
+:::single-choice{#system-logging-export-safety} Что нужно сделать перед внешней передачей фрагмента журнала?
 
 ::option[Заменить каждую временную метку случайным значением.]{#system-logging-random-time explanation="Уничтожение времени мешает корреляции и не является разумным редактированием."}
 ::option[Проверить его на секреты и чувствительные идентификаторы.]{#system-logging-review-sensitive .correct explanation="Журналы часто содержат операционные или персональные данные, требующие контролируемого удаления."}

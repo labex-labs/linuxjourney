@@ -24,8 +24,7 @@ $ ps -ef | grep '[d]hclient'
 
 应使用主机上实际存在的工具。如果某个管理器拥有接口，应通过该管理器请求 DHCP，而不是启动单独的客户端。
 
-:::single-choice{#dhclient-second-client-risk}
-为什么要避免在已受管理的接口上启动 `dhclient`？
+:::single-choice{#dhclient-second-client-risk} 为什么要避免在已受管理的接口上启动 `dhclient`？
 
 ::option[DHCP 只能分配环回地址。]{#dhclient-loopback-only explanation="DHCP 通常会分配非环回网络配置。"}
 ::option[两个客户端可能会争用地址、路由、DNS 和租约。]{#dhclient-competing-state .correct explanation="通常只应由已经确定的配置所有者协调接口。"}
@@ -42,8 +41,7 @@ $ sudo dhclient -v enp1s0
 
 不指定接口运行时，可能会影响多个符合条件的接口。配置和租约路径因软件包与调用方式而异；常见名称包括 `dhclient.conf` 和 `dhclient.leases`，但不要假定固定位置。
 
-:::single-choice{#dhclient-interface-operand}
-手动请求时为什么要指定 `enp1s0`？
+:::single-choice{#dhclient-interface-operand} 手动请求时为什么要指定 `enp1s0`？
 
 ::option[只针对预期网络接口。]{#dhclient-scope-interface .correct explanation="未限定的客户端调用可能考虑超出预期的接口。"}
 ::option[为 DHCP 选择 TCP 端口 1。]{#dhclient-tcp-port explanation="DHCP 使用 UDP，接口名称不是端口。"}
@@ -54,8 +52,7 @@ $ sudo dhclient -v enp1s0
 
 `dhclient -r INTERFACE` 会请求释放租约，并可能移除可用配置。该操作会造成中断，而且不能保证服务器可达并收到释放消息。不要仅仅为了检查租约而释放它，尤其不能在远程管理路径上这样做。
 
-:::single-choice{#dhclient-release-effect}
-`dhclient -r enp1s0` 有什么运维风险？
+:::single-choice{#dhclient-release-effect} `dhclient -r enp1s0` 有什么运维风险？
 
 ::option[它只打印当前租约，不作更改。]{#dhclient-release-readonly explanation="释放是会改变状态的操作。"}
 ::option[它会无限期续订每个租约。]{#dhclient-release-renews explanation="释放与续订是相反的操作。"}
@@ -74,8 +71,7 @@ $ resolvectl status
 
 应检查管理器或客户端日志及租约有效期，再测试预期的名称解析和应用程序。DHCPACK 可能携带错误选项，成功分配地址也不能证明网关或 DNS 可达。
 
-:::single-choice{#dhclient-verify-state}
-获得租约后应该验证什么？
+:::single-choice{#dhclient-verify-state} 获得租约后应该验证什么？
 
 ::option[地址、路由、DNS、租约及应用程序行为。]{#dhclient-complete-verify .correct explanation="租约会配置多个必须协同工作的相关组件。"}
 ::option[只验证地址字符串是否出现。]{#dhclient-address-only explanation="路由、DNS、有效期和端到端功能仍可能有误。"}

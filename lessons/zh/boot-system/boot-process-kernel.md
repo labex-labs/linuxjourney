@@ -24,8 +24,7 @@ meta_keywords: "启动根目录，initramfs, 内核启动，启动分区，initr
 
 Initramfs 会把这些组件打包成与内核一起提供的早期用户空间环境。
 
-:::single-choice{#boot-kernel-initramfs-purpose}
-Initramfs 通常解决什么问题？
+:::single-choice{#boot-kernel-initramfs-purpose} Initramfs 通常解决什么问题？
 
 ::option[在真实根目录可用前，提供所需的早期工具和模块。]{#boot-kernel-early-tools .correct explanation="早期用户空间可以发现并组装仅凭内置支持无法访问的存储。"}
 ::option[把每个用户的永久家目录保存在固件中。]{#boot-kernel-home-firmware explanation="该归档是启动内容，而不是永久用户数据存储。"}
@@ -40,8 +39,7 @@ Initramfs 通常解决什么问题？
 
 Initramfs 必须与内核和启动设计匹配。即使内核映像本身有效，缺少模块、设备标识符过时，或遗漏加密和 LVM 工具，都可能使新安装的内核无法启动。
 
-:::single-choice{#boot-kernel-initramfs-format}
-现代 initramfs 通常以什么形式提供给内核？
+:::single-choice{#boot-kernel-initramfs-format} 现代 initramfs 通常以什么形式提供给内核？
 
 ::option[只能通过 HTTP 提供的交互式软件包仓库。]{#boot-kernel-http-repository explanation="早期用户空间可以配置网络访问，但这不是 initramfs 的定义格式。"}
 ::option[解包到初始根目录的 cpio 归档。]{#boot-kernel-cpio-archive .correct explanation="内核展开归档，并执行其中的早期用户空间初始化程序。"}
@@ -54,8 +52,7 @@ Initramfs 必须与内核和启动设计匹配。即使内核映像本身有效�
 
 初始 `ro` 命令行请求可以支持一致性检查和受控启动，但具体顺序取决于发行版。文件系统检查属于用户空间操作；策略允许时，initramfs 或后续 init 系统可以把根目录重新挂载为可读写。
 
-:::single-choice{#boot-kernel-root-switch}
-早期用户空间成功挂载预期真实根目录后，会发生什么？
+:::single-choice{#boot-kernel-root-switch} 早期用户空间成功挂载预期真实根目录后，会发生什么？
 
 ::option[每块磁盘上的分区表都会重新创建。]{#boot-kernel-recreate-tables explanation="切换根目录不会重新分区存储。"}
 ::option[内核退出，固件恢复普通进程调度。]{#boot-kernel-firmware-schedules explanation="控制权交接后，Linux 内核仍然负责进程和硬件。"}
@@ -68,8 +65,7 @@ Initramfs 必须与内核和启动设计匹配。即使内核映像本身有效�
 
 如果没有可用的 init 程序能够执行，内核就无法继续进入正常用户空间系统，通常会报告启动失败或 panic。应调试最早失败的层次：内核与命令行、initramfs 内容、根目录发现、根目录挂载或 PID 1 执行。
 
-:::single-choice{#boot-kernel-pid-one}
-在这一简化启动阶段中，内核最后一次主要交接是什么？
+:::single-choice{#boot-kernel-pid-one} 在这一简化启动阶段中，内核最后一次主要交接是什么？
 
 ::option[以 PID 1 执行第一个用户空间程序。]{#boot-kernel-exec-init .correct explanation="随后由 PID 1 启动服务并达到配置的系统状态。"}
 ::option[把 `/proc` 变成持久软件包数据库。]{#boot-kernel-proc-package explanation="Procfs 仍然是运行时内核接口。"}

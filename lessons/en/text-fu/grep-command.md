@@ -28,8 +28,7 @@ Use `-F` when the pattern should be treated as a fixed string rather than a regu
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-Which command searches `products.txt` for the literal text `price: $5.00` without treating pattern characters as regular-expression syntax?
+:::single-choice{#grep-fixed-string} Which command searches `products.txt` for the literal text `price: $5.00` without treating pattern characters as regular-expression syntax?
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` selects fixed-string matching, and single quotes protect the dollar sign from shell expansion."}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` enables extended regular expressions, where `$` and `.` have special meanings rather than being literal."}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 The backslash makes the dot literal; an unescaped `.` in a regular expression matches any single character.
 
-:::single-choice{#grep-literal-txt-suffix}
-Which extended regular expression matches lines ending with the literal suffix `.txt`?
+:::single-choice{#grep-literal-txt-suffix} Which extended regular expression matches lines ending with the literal suffix `.txt`?
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="The dot is unescaped, so it matches any one character before `txt`, not specifically a literal period."}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` matches a literal period and `$` anchors the match at the end of the line."}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 You can repeat `-e` to select lines matching any supplied pattern. Use `-f patterns.txt` to read one pattern per line from a file.
 
-:::single-choice{#grep-hyphen-pattern}
-Which command searches `settings.conf` for the pattern `-v` rather than interpreting it as an option?
+:::single-choice{#grep-hyphen-pattern} Which command searches `settings.conf` for the pattern `-v` rather than interpreting it as an option?
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="Quotes protect characters from shell expansion, but `grep` can still interpret the resulting `-v` argument as its invert-match option."}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="This enables inverted matching and does not supply `settings.conf` as both a pattern and an input in the requested way."}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` counts selected lines, not the total number of matches within those lines. A line containing `fox fox` contributes one to the count. When you specifically need nonoverlapping match occurrences with GNU `grep`, `grep -o PATTERN | wc -l` is one possible pipeline.
 
-:::single-choice{#grep-count-lines}
-`data.txt` has one line containing `error error` and two lines with no match. What does `grep -c 'error' data.txt` report?
+:::single-choice{#grep-count-lines} `data.txt` has one line containing `error error` and two lines with no match. What does `grep -c 'error' data.txt` report?
 
 ::option[`2`, because the word occurs twice on one line.]{#grep-count-occurrences explanation="`-c` counts selected lines, not individual matches within a line."}
 ::option[`1`, because exactly one line matches.]{#grep-count-one-line .correct explanation="The single line is selected once even though the pattern appears twice within it."}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 Diagnostics such as permission errors go to stderr and are not matching input. Narrow the search path and understand permissions rather than immediately elevating access.
 
-:::single-choice{#grep-pipeline-input}
-In `generate-report | grep 'failed'`, what input does `grep` search?
+:::single-choice{#grep-pipeline-input} In `generate-report | grep 'failed'`, what input does `grep` search?
 
 ::option[A file named `generate-report` in the current directory.]{#grep-report-file explanation="The left-hand word is executed as a command and is not passed to `grep` as a file operand."}
 ::option[The stdout stream produced by `generate-report`.]{#grep-report-stdout .correct explanation="The pipe connects the producer's stdout to `grep`'s stdin."}

@@ -23,8 +23,7 @@ function と syscall は、常に一対一ではありません。
 - 最適化された vDSO function は、完全な mode transition なしに一部の kernel-maintained data を得られる
 - 一つの system call が多数の高水準 API を支える場合がある
 
-:::single-choice{#system-calls-library-wrapper}
-一般的な libc の system-call wrapper は何をしますか？
+:::single-choice{#system-calls-library-wrapper} 一般的な libc の system-call wrapper は何をしますか？
 
 ::option[ABI argument を準備し、カーネルへ入り、結果を変換する。]{#system-calls-wrapper-role .correct explanation="wrapper は architecture 固有の calling convention を通常の library interface の背後へ隠します。"}
 ::option[application に kernel memory への無制限アクセスを与える。]{#system-calls-wrapper-unrestricted explanation="kernel entry は引き続き管理され、要求を検証します。"}
@@ -39,8 +38,7 @@ wrapper は system-call number と argument を architecture 定義の場所へ�
 
 現在の architecture で全 entry を「software interrupt」と呼ぶのは不正確です。trap、fast system-call instruction、supervisor call は関連する管理済み遷移を別の方法で実装します。
 
-:::single-choice{#system-calls-entry-result}
-system call の argument と authorization を検証するのは誰ですか？
+:::single-choice{#system-calls-entry-result} system call の argument と authorization を検証するのは誰ですか？
 
 ::option[process 起動前の shell prompt。]{#system-calls-shell-validates explanation="process は shell なしでも syscall を行え、kernel check は引き続き必要です。"}
 ::option[要求された service の kernel implementation。]{#system-calls-kernel-validates .correct explanation="privileged handler が pointer、object state、credential、policy を確認してから処理します。"}
@@ -53,8 +51,7 @@ system-call number と calling convention は architecture 固有です。同じ
 
 非特権 process は、動作中カーネルの syscall table へ任意の新規 handler を挿入できません。interface の拡張には kernel code と慎重な ABI design が必要です。seccomp などの機能は process が使える call を filter できますが、新しい kernel implementation は作りません。
 
-:::single-choice{#system-calls-number-portability}
-別 architecture の syscall number を application が hard-code すべきでないのはなぜですか？
+:::single-choice{#system-calls-number-portability} 別 architecture の syscall number を application が hard-code すべきでないのはなぜですか？
 
 ::option[number と calling convention が ABI 固有だから。]{#system-calls-abi-specific .correct explanation="一つの architecture で意味のある番号が、別の operation を示したり、別環境には存在しなかったりします。"}
 ::option[system call の名前が現在の作業ディレクトリから決まるから。]{#system-calls-directory-names explanation="pathname は syscall numbering ABI を定義しません。"}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace` は path、argument、environment 由来データ、network address、file content の断片、argument を通じて誤って渡した credential を露出する場合があります。trace は厳しい権限で保存し、incident-data policy に従って削除してください。
 
-:::single-choice{#system-calls-strace-purpose}
-`strace` が主に観測するものは何ですか？
+:::single-choice{#system-calls-strace-purpose} `strace` が主に観測するものは何ですか？
 
 ::option[application 内で実行された source-code line だけ。]{#system-calls-strace-source-lines explanation="source-level tracing には symbol を持つ debugger や instrumentation が必要です。"}
 ::option[user-kernel boundary の system call と signal。]{#system-calls-strace-boundary .correct explanation="trace 対象 process の要求、argument、結果、signal event を報告します。"}
@@ -91,8 +87,7 @@ tracing は timing を変え、大きな overhead を生む場合があります
 
 permission と ptrace security policy は trace 可能な process を制限します。許可なく別ユーザーや production process へ attach してはいけません。suspension と timing change が service behavior へ影響する可能性があります。
 
-:::single-choice{#system-calls-strace-failure}
-trace 内で一つの syscall が失敗したら、必ず application が壊れているという意味ですか？
+:::single-choice{#system-calls-strace-failure} trace 内で一つの syscall が失敗したら、必ず application が壊れているという意味ですか？
 
 ::option[はい。0 以外の return はすべて Linux を直ちに終了するからです。]{#system-calls-nonzero-terminates explanation="application は system failure なしに syscall error を日常的に処理します。"}
 ::option[いいえ。program は代替手段を probe し、想定済み error を処理することがあります。]{#system-calls-expected-failure .correct explanation="return を単独で見ず、control flow と application context の中で解釈します。"}

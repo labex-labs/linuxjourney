@@ -25,8 +25,7 @@ meta_keywords: "Linux パッケージ依存関係，共有ライブラリ，Linu
 
 ソルバーはこれらの規則を使い、設定済みリポジトリ、アーキテクチャ、インストール済み状態と互換性のあるパッケージバージョン群を選びます。解決策としてアップグレード、削除、提供元の選択が必要になる場合があるため、承認前に提案されたトランザクションを確認してください。
 
-:::single-choice{#package-dependencies-solver-role}
-リポジトリを認識する依存関係ソルバーが生成しようとするものは何ですか？
+:::single-choice{#package-dependencies-solver-role} リポジトリを認識する依存関係ソルバーが生成しようとするものは何ですか？
 
 ::option[整合したパッケージバージョンと必要な変更の組。]{#package-dependencies-consistent-set .correct explanation="ソルバーは、インストール済みおよび利用可能なパッケージ全体の宣言済み関係を評価します。"}
 ::option[インストール済みアプリケーションごとの新しいユーザーアカウント。]{#package-dependencies-user-account explanation="アカウント作成がパッケージのライフサイクル操作になる場合はありますが、依存関係解決の目的ではありません。"}
@@ -39,8 +38,7 @@ meta_keywords: "Linux パッケージ依存関係，共有ライブラリ，Linu
 
 ELF を使う Linux システムでは、実行ファイルが SONAME などの必要なライブラリ名を記録できます。プログラム起動時、動的リンカーが一致するインストール済みライブラリを探します。通常、パッケージメタデータは、この要件を互換ライブラリを提供するパッケージまたは機能への依存として表します。
 
-:::single-choice{#package-dependencies-shared-library}
-共有ライブラリとは何ですか？
+:::single-choice{#package-dependencies-shared-library} 共有ライブラリとは何ですか？
 
 ::option[複数のプログラムが読み込み、利用できるコンパイル済みコード。]{#package-dependencies-library-code .correct explanation="共有ライブラリは、各プログラムへ別々の実装を埋め込む代わりに、再利用可能なバイナリインターフェースを提供します。"}
 ::option[無関係なディストリビューション間で共有されるリポジトリ一覧。]{#package-dependencies-shared-repository explanation="リポジトリ設定と実行可能なライブラリコードは別の概念です。"}
@@ -53,8 +51,7 @@ ELF を使う Linux システムでは、実行ファイルが SONAME などの�
 
 パッケージ保守者はライブラリの関係を符号化し、ABI が変わるときの移行を調整します。ネイティブライブラリはパッケージマネージャーの管理下に置き、競合するバージョンが必要なソフトウェアには、対応する並行インストール、コンテナ、環境、ビルドの仕組みを使ってください。
 
-:::single-choice{#package-dependencies-filename-insufficient}
-似た名前のライブラリファイルが存在しても、プログラムが失敗する場合があるのはなぜですか？
+:::single-choice{#package-dependencies-filename-insufficient} 似た名前のライブラリファイルが存在しても、プログラムが失敗する場合があるのはなぜですか？
 
 ::option[Linux では各ライブラリを一つの実行ファイルしか使えないから。]{#package-dependencies-one-consumer explanation="共有ライブラリの主要な目的は、複数のプロセスやプログラムから利用できることです。"}
 ::option[パッケージの依存関係は最初のシステム起動前にしか適用されないから。]{#package-dependencies-boot-only explanation="依存関係はインストール、アップグレード、実行の全期間にわたって重要です。"}
@@ -67,8 +64,7 @@ ELF を使う Linux システムでは、実行ファイルが SONAME などの�
 
 まずパッケージマネージャーの診断を読み、信頼できるリポジトリのメタデータだけを更新し、保留または固定されたバージョンを調べ、提案された修復内容を確認します。低レベルのパッケージインストーラーは依存関係をすべて取得せずにアーカイブを展開できるため、通常のインストールでは完全なトランザクションを解決する高レベルのリポジトリーツールの方が一般に安全です。
 
-:::single-choice{#package-dependencies-low-level-limit}
-低レベルのアーカイブツールで一つのローカルパッケージをインストールする際の一般的な制限は何ですか？
+:::single-choice{#package-dependencies-low-level-limit} 低レベルのアーカイブツールで一つのローカルパッケージをインストールする際の一般的な制限は何ですか？
 
 ::option[不足しているリポジトリ依存関係をすべて取得し、解決しない場合がある。]{#package-dependencies-no-repository-resolution .correct explanation="低レベルツールはパッケージアーカイブとデータベースを管理しますが、依存関係の取得を高レベルマネージャーへ委ねる場合があります。"}
 ::option[常に Linux カーネルをソースから再コンパイルする。]{#package-dependencies-recompile-kernel explanation="パッケージアーカイブのインストールが、本質的にカーネルを再ビルドすることはありません。"}

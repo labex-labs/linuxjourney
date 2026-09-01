@@ -23,8 +23,7 @@ meta_keywords: "Linux 磁盘分区，parted 命令，sudo parted -l, gparted, gp
 
 工具能力会不断变化，因此应查阅本机手册和发行版文档。图形界面并不会让破坏性操作变得安全，它仍然修改相同的磁盘元数据。
 
-:::single-choice{#disk-partitioning-fdisk-gpt}
-关于当前 Linux `fdisk`，哪个说法正确？
+:::single-choice{#disk-partitioning-fdisk-gpt} 关于当前 Linux `fdisk`，哪个说法正确？
 
 ::option[它同时支持 MBR 和 GPT 分区表。]{#disk-partitioning-fdisk-supports-gpt .correct explanation="当前 util-linux fdisk 可以编辑 DOS/MBR、GPT 等多种布局。"}
 ::option[它只能编辑 GPT，完全不支持 MBR。]{#disk-partitioning-fdisk-only-gpt explanation="专注 GPT 的 `gdisk` 更接近这种描述；fdisk 支持多种标签类型。"}
@@ -45,8 +44,7 @@ $ sudo parted --list
 
 按照各层的文档流程卸载或停用所有相关内容。不能仅仅因为工具可以成功打开，就编辑正在运行系统所在磁盘的分区表。以可恢复的形式记录现有分区表，并确认备份位于不同故障域。
 
-:::single-choice{#disk-partitioning-target-identity}
-为什么不能把 `/dev/sdb` 这样的设备名作为唯一目标检查？
+:::single-choice{#disk-partitioning-target-identity} 为什么不能把 `/dev/sdb` 这样的设备名作为唯一目标检查？
 
 ::option[Linux 从不在 `/dev` 下公开整个磁盘。]{#disk-partitioning-no-whole-disks explanation="整个磁盘通常确实会在 `/dev` 下拥有块设备节点。"}
 ::option[设备或拓扑变化时，枚举名称可能改变。]{#disk-partitioning-enumeration-changes .correct explanation="字母按发现顺序分配，在后续会话中可能指向另一块磁盘。"}
@@ -70,8 +68,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 `print free` 显示当前条目和未分配区域。`parted` 命令可能立即更新磁盘元数据，而不是等到最终“保存”，因此必须把交互式提示符视为实时写权限。
 
-:::single-choice{#disk-partitioning-print-free}
-`parted` 中的 `print free` 有助于显示什么？
+:::single-choice{#disk-partitioning-print-free} `parted` 中的 `print free` 有助于显示什么？
 
 ::option[可以删除以安全缩小任意文件系统的文件。]{#disk-partitioning-free-files explanation="Parted 读取分区布局，而不是文件系统级文件分配。"}
 ::option[远程系统中存储的所有备份。]{#disk-partitioning-remote-backups explanation="远程备份清单不属于分区编辑器的职责。"}
@@ -90,8 +87,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 应采用工具建议的对齐方式，并了解端点是否包含在内以及如何舍入。使用 `print` 和 `lsblk` 检查结果，不要假定请求的十进制边界一定被精确记录。
 
-:::single-choice{#disk-partitioning-mkpart-effect}
-`parted` 的 `mkpart` 会创建什么？
+:::single-choice{#disk-partitioning-mkpart-effect} `parted` 的 `mkpart` 会创建什么？
 
 ::option[包含家目录的已挂载 ext4 文件系统。]{#disk-partitioning-mounted-filesystem explanation="创建分区后，格式化和挂载仍是独立操作。"}
 ::option[原分区内容的完整备份。]{#disk-partitioning-automatic-backup explanation="分区编辑器不会自动创建恢复备份。"}
@@ -109,8 +105,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 某些文件系统不支持缩小。加密、LVM、RAID 和嵌套布局还会增加更多必须按顺序操作的层。如果设备繁忙，内核也可能拒绝重新读取更改后的分区表，必须受控重启后才能使用新布局。
 
-:::single-choice{#disk-partitioning-shrink-order}
-文件系统支持缩小时，哪种顺序可以避免截断仍在使用的文件系统数据？
+:::single-choice{#disk-partitioning-shrink-order} 文件系统支持缩小时，哪种顺序可以避免截断仍在使用的文件系统数据？
 
 ::option[先缩短分区，再确认文件系统能否放得下。]{#disk-partitioning-shrink-partition-first explanation="先缩短外层容器可能截断文件系统结构和数据。"}
 ::option[先缩小文件系统，再缩短包含它的分区边界。]{#disk-partitioning-shrink-filesystem-first .correct explanation="外层块设备缩短前，内容必须先适应更小的范围。"}

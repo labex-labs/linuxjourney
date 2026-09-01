@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 자리 표시자 파일을 만들 때 유용하지만 `touch`는 파일에 텍스트를 추가하지 않습니다. 내용이 필요한 파일에는 텍스트 편집기나 쓰기용 명령어를 사용하세요.
 
-:::single-choice{#create-several-empty-files}
-아직 존재하지 않는 `one`, `two`, `three`라는 빈 파일 세 개를 만드는 명령어는 무엇인가요?
+:::single-choice{#create-several-empty-files} 아직 존재하지 않는 `one`, `two`, `three`라는 빈 파일 세 개를 만드는 명령어는 무엇인가요?
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="따옴표 때문에 공백이 포함된 파일 이름 하나로 처리되므로 세 파일이 아닌 한 파일을 대상으로 합니다."}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir`는 빈 일반 파일이 아니라 디렉터리를 만듭니다. 여기서는 `touch`를 사용해야 합니다."}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 `ls -l` 출력은 보통 접근 시간이 아니라 수정 시간을 보여 줍니다.
 
-:::single-choice{#touch-existing-file}
-이미 존재하는 `report.txt`에 `touch report.txt`를 실행하면 어떻게 되나요?
+:::single-choice{#touch-existing-file} 이미 존재하는 `report.txt`에 `touch report.txt`를 실행하면 어떻게 되나요?
 
 ::option[내용은 그대로 두고 타임스탬프를 업데이트합니다.]{#timestamps-only .correct explanation="기본적으로 `touch`는 기존 파일의 접근 시간과 수정 시간을 갱신하며 파일 데이터를 덮어쓰지 않습니다."}
 ::option[내용을 삭제해 파일을 비웁니다.]{#contents-deleted explanation="빈 파일 생성은 파일이 없을 때의 동작입니다. 기존 파일은 타임스탬프가 바뀌어도 내용을 유지합니다."}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-`notes.txt`의 수정 시간만 업데이트하는 명령어는 무엇인가요?
+:::single-choice{#change-modification-time-only} `notes.txt`의 수정 시간만 업데이트하는 명령어는 무엇인가요?
 
 ::option[`touch -a notes.txt`]{#access-only explanation="`-a`는 접근 시간만 바꾸므로 요청한 수정 시간을 선택하지 않습니다."}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="`-m`은 수정 시간만 변경하도록 제한하며 접근 시간은 그대로 둡니다."}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 여기서 `file1.txt`는 타임스탬프를 제공하고 `file2.txt`가 변경됩니다. `-t` 옵션을 사용하면 압축된 숫자 형식으로 시간을 지정할 수도 있습니다.
 
-:::single-choice{#copy-reference-timestamps}
-`source.txt`의 타임스탬프를 `target.txt`에 복사하는 명령어는 무엇인가요?
+:::single-choice{#copy-reference-timestamps} `source.txt`의 타임스탬프를 `target.txt`에 복사하는 명령어는 무엇인가요?
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="`-r` 다음 피연산자가 참조 파일이고 마지막 피연산자가 타임스탬프를 업데이트할 파일입니다."}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="두 파일의 역할을 뒤집었습니다. `target.txt`를 참조로 삼아 `source.txt`를 변경하게 됩니다."}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 파일이 없으면 이 명령어는 파일을 만들지 않습니다. 새 파일을 추가하지 않고 타임스탬프만 갱신해야 하는 스크립트에서 유용합니다.
 
-:::single-choice{#update-without-creating}
-`status.log`가 있으면 업데이트하되 없으면 만들지 않는 명령어는 무엇인가요?
+:::single-choice{#update-without-creating} `status.log`가 있으면 업데이트하되 없으면 만들지 않는 명령어는 무엇인가요?
 
 ::option[`touch -a status.log`]{#touch-access explanation="`-a`는 접근 시간을 선택하지만 없는 파일은 여전히 생성될 수 있으므로 생성 방지 조건을 충족하지 않습니다."}
 ::option[`touch -m status.log`]{#touch-modification explanation="`-m`은 수정 시간을 선택하지만 없는 파일의 생성을 막지 않습니다. 그 조건에는 `-c`를 사용합니다."}

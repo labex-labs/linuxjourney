@@ -24,8 +24,7 @@ $ help echo
 
 La salida describe la sintaxis y el comportamiento de la orden integrada. Ejecutar `help` sin argumentos enumera las órdenes para las que Bash dispone de ayuda.
 
-:::single-choice{#help-for-bash-cd}
-¿Qué orden muestra la entrada de ayuda de Bash para su orden integrada `cd`?
+:::single-choice{#help-for-bash-cd} ¿Qué orden muestra la entrada de ayuda de Bash para su orden integrada `cd`?
 
 ::option[`cd --help`]{#cd-help-option explanation="Algunas órdenes integradas pueden reconocer opciones, pero la interfaz de documentación específica de Bash es `help` seguida del nombre de la orden."}
 ::option[`help cd`]{#help-cd .correct explanation="La orden integrada `help` de Bash busca la documentación de la orden integrada indicada, en este caso `cd`."}
@@ -42,8 +41,7 @@ $ ls --help
 
 Aunque la mayoría de los desarrolladores siguen este estándar, no es universal. Probar `--help` suele ser un buen primer paso para un programa desconocido.
 
-:::single-choice{#quick-ls-usage}
-¿Qué orden suele mostrar un resumen rápido de uso proporcionado por el programa externo `ls`?
+:::single-choice{#quick-ls-usage} ¿Qué orden suele mostrar un resumen rápido de uso proporcionado por el programa externo `ls`?
 
 ::option[`help ls`]{#bash-help-ls explanation="`help` de Bash documenta órdenes integradas. En un sistema habitual no proporciona la página de uso del programa externo `ls`."}
 ::option[`ls --help`]{#ls-help .correct explanation="GNU `ls` sigue la convención habitual de `--help` y muestra su uso y sus opciones."}
@@ -63,8 +61,7 @@ ls is /usr/bin/ls
 
 El resultado exacto puede variar según los alias, funciones, programas instalados y el valor de `PATH`. Utiliza `type -a NAME` si quieres que Bash muestre todas las resoluciones conocidas, no solo la primera que usaría.
 
-:::single-choice{#identify-command-resolution}
-No sabes si `deploy` es un alias, una función, una orden integrada o un ejecutable. ¿Qué orden de Bash comprueba cómo se resuelve el nombre?
+:::single-choice{#identify-command-resolution} No sabes si `deploy` es un alias, una función, una orden integrada o un ejecutable. ¿Qué orden de Bash comprueba cómo se resuelve el nombre?
 
 ::option[`type deploy`]{#type-deploy .correct explanation="La orden integrada `type` informa de cómo interpreta Bash el nombre en el entorno actual de la shell."}
 ::option[`help deploy`]{#help-deploy explanation="`help` busca documentación de órdenes integradas de Bash. En general no identifica alias, funciones y archivos externos."}
@@ -80,8 +77,7 @@ No sabes si `deploy` es un alias, una función, una orden integrada o un ejecuta
 
 Las próximas lecciones examinan con más detalle las páginas del manual y las descripciones de una sola línea.
 
-:::single-choice{#choose-detailed-manual}
-Necesitas documentación detallada de la orden externa `ls`, no solo un resumen breve de uso. ¿Qué orden debes probar?
+:::single-choice{#choose-detailed-manual} Necesitas documentación detallada de la orden externa `ls`, no solo un resumen breve de uso. ¿Qué orden debes probar?
 
 ::option[`man ls`]{#man-ls .correct explanation="`man ls` abre la página del manual instalada, que normalmente describe con más detalle la sintaxis, las opciones y el comportamiento."}
 ::option[`whatis ls`]{#whatis-ls explanation="`whatis` está diseñado para mostrar descripciones concisas de las páginas del manual. No proporciona la documentación detallada solicitada."}

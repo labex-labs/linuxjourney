@@ -34,8 +34,7 @@ $ mv oldfile newfile
 $ mv old_directory_name new_directory_name
 ```
 
-:::single-choice{#rename-file-with-mv}
-哪个命令会把当前目录中的 `cat` 重命名为 `dog`？
+:::single-choice{#rename-file-with-mv} 哪个命令会把当前目录中的 `cat` 重命名为 `dog`？
 
 ::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` 把 `cat` 视为源路径，把 `dog` 视为新的目标路径。"}
 ::option[`mv dog cat`]{#rename-dog explanation="操作数顺序颠倒了；这会尝试把现有的 `dog` 重命名为 `cat`。"}
@@ -66,8 +65,7 @@ $ mv -t somedirectory/ file_1 file_2
 
 与 `cp` 命令不同，移动目录不需要递归选项。`mv` 默认支持目录。
 
-:::single-choice{#move-multiple-files}
-哪个命令会把 `file_1` 和 `file_2` 都移动到现有的 `archive/` 目录？
+:::single-choice{#move-multiple-files} 哪个命令会把 `file_1` 和 `file_2` 都移动到现有的 `archive/` 目录？
 
 ::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="不使用 GNU `-t` 时，多源移动要求目标目录放在最后；这里不是标准的多源形式。"}
 ::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` 移动文件或目录时不使用 `-r`；普通的多源形式已经能完成所需移动。"}
@@ -102,8 +100,7 @@ $ mv -t somedirectory/ file_1 file_2
 $ mv -v file1 file2 somedirectory/
 ```
 
-:::single-choice{#move-without-overwriting}
-哪个命令只会在不覆盖现有目标的情况下把 `draft.txt` 移入 `finished/`？
+:::single-choice{#move-without-overwriting} 哪个命令只会在不覆盖现有目标的情况下把 `draft.txt` 移入 `finished/`？
 
 ::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="`-i` 会在目标存在时询问操作；如果用户确认，仍可能发生覆盖。"}
 ::option[`mv -b draft.txt finished/`]{#backup-draft explanation="`-b` 允许替换，并保留原目标的备份，并不会阻止覆盖。"}
@@ -127,16 +124,14 @@ $ mv *.txt notes/
 
 用 `ls` 预览匹配项，可以在修改多个路径前发现过于宽泛的模式。
 
-:::single-choice{#move-directory-without-recursion}
-哪个命令会把 `project/` 目录移动到 `/srv/archive/`？
+:::single-choice{#move-directory-without-recursion} 哪个命令会把 `project/` 目录移动到 `/srv/archive/`？
 
 ::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` 不需要也不支持为此使用 `-r`；目录由普通移动操作处理。"}
 ::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="普通 `mv` 语法无需递归标志即可把目录移入现有目标目录。"}
 ::option[`cp project/ /srv/archive/`]{#copy-project explanation="普通 `cp` 不会移动目录，而且复制目录还需要递归选项；原目录也会保留。"}
 :::
 
-:::single-choice{#preview-text-file-move}
-你准备运行 `mv *.txt notes/`。哪个命令会预览相同通配符选中的路径？
+:::single-choice{#preview-text-file-move} 你准备运行 `mv *.txt notes/`。哪个命令会预览相同通配符选中的路径？
 
 ::option[`ls '*.txt'`]{#literal-text-pattern explanation="引号会阻止 shell 展开 `*`，因此这会查找名称中真的含星号的条目，而不是预览移动集合。"}
 ::option[`ls *.txt`]{#list-text-matches .correct explanation="shell 会像为 `mv` 一样为 `ls` 展开 `*.txt`，使你能先检查选中的非隐藏名称。"}

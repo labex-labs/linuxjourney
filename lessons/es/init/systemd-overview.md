@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 `/usr/lib/systemd/` puede existir en un sistema donde otro programa sea el PID 1, y un contenedor puede exponer su propio espacio de nombres de PID. `systemctl` también dispone de modos para el gestor de usuario y para sistemas remotos o contenedores, así que identifica a qué gestor se dirige cada operación.
 
-:::single-choice{#systemd-overview-detection}
-¿Qué identifica de la forma más directa a systemd como gestor de inicio del sistema?
+:::single-choice{#systemd-overview-detection} ¿Qué identifica de la forma más directa a systemd como gestor de inicio del sistema?
 
 ::option[Existe un directorio llamado `/usr/lib/systemd`.]{#systemd-overview-directory explanation="Las bibliotecas y los archivos de unidad pueden seguir instalados sin que systemd actúe como PID 1."}
 ::option[Un usuario ha ejecutado un comando llamado `systemctl`.]{#systemd-overview-command-executed explanation="El binario cliente puede existir aunque no haya disponible un gestor systemd del sistema."}
@@ -44,8 +43,7 @@ Una unidad es el modelo con nombre que systemd utiliza para representar un recur
 
 El estado de una unidad no siempre es «en ejecución». Un montaje puede estar montado, un temporizador esperando, un dispositivo presente y un objetivo activo después de alcanzar sus dependencias.
 
-:::single-choice{#systemd-overview-group-unit}
-¿Qué tipo de unidad suele agrupar otras unidades y proporcionar un punto de sincronización?
+:::single-choice{#systemd-overview-group-unit} ¿Qué tipo de unidad suele agrupar otras unidades y proporcionar un punto de sincronización?
 
 ::option[`.socket`]{#systemd-overview-socket explanation="Las unidades de socket exponen puntos de acceso IPC o de red y pueden activar servicios."}
 ::option[`.target`]{#systemd-overview-target .correct explanation="Las unidades de objetivo reúnen dependencias y representan hitos del arranque o del funcionamiento."}
@@ -62,8 +60,7 @@ Las unidades del sistema pueden cargarse desde rutas de la distribución y del a
 
 Las rutas exactas del proveedor pueden variar. La configuración local de mayor prioridad prevalece sobre los archivos de menor prioridad con el mismo nombre de unidad. Es preferible crear ajustes parciales con `systemctl edit UNIT` en lugar de copiar y modificar un archivo completo del proveedor, para que los cambios de las actualizaciones de paquetes sigan siendo visibles.
 
-:::single-choice{#systemd-overview-local-override}
-¿Dónde deberían residir normalmente los ajustes locales persistentes de las unidades del sistema?
+:::single-choice{#systemd-overview-local-override} ¿Dónde deberían residir normalmente los ajustes locales persistentes de las unidades del sistema?
 
 ::option[Dentro de `/proc/systemd/`.]{#systemd-overview-proc-systemd explanation="Procfs es una interfaz del kernel durante la ejecución, no un lugar para configuraciones persistentes de unidades."}
 ::option[Bajo `/etc/systemd/system/`.]{#systemd-overview-etc-system .correct explanation="La capa de configuración del administrador tiene prioridad sobre las unidades del proveedor instaladas por paquetes."}
@@ -76,8 +73,7 @@ Systemd construye una transacción a partir de las relaciones de dependencia. `W
 
 Una línea `After=network.target` no demuestra que la conectividad, el DNS o un punto remoto concreto estén disponibles. Los servicios deben usar la integración adecuada con el estado de red disponible o implementar sus propios mecanismos de reintento y disponibilidad.
 
-:::single-choice{#systemd-overview-after-semantics}
-¿Qué especifica por sí solo `After=other.service`?
+:::single-choice{#systemd-overview-after-semantics} ¿Qué especifica por sí solo `After=other.service`?
 
 ::option[Una garantía de que el punto de acceso de la aplicación del otro servicio funciona correctamente.]{#systemd-overview-after-health explanation="La finalización del orden y la disponibilidad de la aplicación son conceptos distintos."}
 ::option[El orden, si ambas unidades forman parte de la transacción.]{#systemd-overview-after-ordering .correct explanation="Se necesita un requisito independiente, como Wants o Requires, para incorporar la otra unidad."}
@@ -90,8 +86,7 @@ Una línea `After=network.target` no demuestra que la conectividad, el DNS o un 
 
 Los objetivos se parecen a los niveles de ejecución solo en términos generales de compatibilidad. Varios objetivos pueden estar activos simultáneamente, pueden crearse objetivos personalizados y que un objetivo esté activo no significa que todos los servicios de la máquina funcionen correctamente.
 
-:::single-choice{#systemd-overview-default-target}
-¿Qué selecciona normalmente `default.target`?
+:::single-choice{#systemd-overview-default-target} ¿Qué selecciona normalmente `default.target`?
 
 ::option[El dispositivo de bloques predeterminado que `mkfs` debe borrar.]{#systemd-overview-default-disk explanation="Los objetivos describen la activación de unidades, no la selección destructiva del almacenamiento."}
 ::option[El único objetivo que puede estar activo.]{#systemd-overview-only-target explanation="Los objetivos son agrupaciones y puede haber muchos activos durante un mismo arranque."}

@@ -29,8 +29,7 @@ UUID=130b882f-7d79-436d-a096-1e594c92bb76 /data ext4 defaults,nosuid,nodev 0 2
 
 字段内部的空白必须使用 fstab 语法转义，例如用 `\040` 表示空格。字段外的 `#` 表示注释开始。
 
-:::single-choice{#fstab-field-count}
-普通 `/etc/fstab` 条目包含多少个字段？
+:::single-choice{#fstab-field-count} 普通 `/etc/fstab` 条目包含多少个字段？
 
 ::option[四个。]{#fstab-four-fields explanation="来源、目标、类型和选项后面还有 dump 与 pass 字段。"}
 ::option[八个。]{#fstab-eight-fields explanation="八个并不是单条 fstab 记录的标准字段数。"}
@@ -48,8 +47,7 @@ $ sudo blkid
 
 只有确认标识符属于预期文件系统后，才能使用 `UUID=...`。重新格式化会创建新 UUID，块级克隆则可能复制原有 UUID。`PARTUUID=` 标识的是分区表条目，语义与之不同。
 
-:::single-choice{#fstab-uuid-source}
-来源字段中的 `UUID=...` 通常标识什么？
+:::single-choice{#fstab-uuid-source} 来源字段中的 `UUID=...` 通常标识什么？
 
 ::option[拥有挂载点的用户账户。]{#fstab-user-uuid explanation="账户身份不是通过文件系统 UUID 来源语法选择的。"}
 ::option[携带该 UUID 的文件系统元数据。]{#fstab-filesystem-uuid .correct explanation="Mount 会把文件系统标识符解析到可用块设备，而不依赖枚举名称。"}
@@ -62,8 +60,7 @@ $ sudo blkid
 
 对于 `fsck` 支持的文件系统，根文件系统传统上使用 pass `1`，其他受检查的本地文件系统使用 `2`。不同文件系统的惯例可能不同，例如某些类型不使用通用的启动期 fsck，因此应遵循已安装文件系统和发行版的文档，而不要机械地填写 `2`。
 
-:::single-choice{#fstab-pass-zero}
-第六个字段为 `0` 时请求什么？
+:::single-choice{#fstab-pass-zero} 第六个字段为 `0` 时请求什么？
 
 ::option[该条目不参与 fstab 控制的自动 fsck 顺序。]{#fstab-pass-zero-skip .correct explanation="Pass 为零会把条目排除在此字段控制的启动检查序列之外。"}
 ::option[在任何情况下都以只读方式挂载文件系统。]{#fstab-pass-zero-readonly explanation="只读行为属于挂载选项字段。"}
@@ -82,8 +79,7 @@ $ sudo blkid
 
 不要把凭据直接写进所有用户可读的 fstab 条目。应使用相关挂载辅助程序提供的受保护凭据机制。
 
-:::single-choice{#fstab-editing-recovery}
-为什么更改关键 fstab 条目前应确认救援访问方式？
+:::single-choice{#fstab-editing-recovery} 为什么更改关键 fstab 条目前应确认救援访问方式？
 
 ::option[编辑 fstab 总会立即擦除分区表。]{#fstab-no-partition-erase explanation="编辑文本本身不会重写磁盘分区，不过之后的挂载可能产生实际影响。"}
 ::option[此文件只能从另一个操作系统编辑。]{#fstab-other-os-only explanation="具备适当权限和保护措施时，可以在 Linux 上编辑它。"}
@@ -102,8 +98,7 @@ $ sudo findmnt --verify --verbose
 
 在基于 systemd 的系统上，编辑 fstab 后应重新加载管理器配置，使生成的挂载单元得到刷新，再按照本地文档验证依赖和启动行为。
 
-:::single-choice{#fstab-mount-a-limit}
-为什么单独使用 `mount -a` 不能完整验证 fstab？
+:::single-choice{#fstab-mount-a-limit} 为什么单独使用 `mount -a` 不能完整验证 fstab？
 
 ::option[它总会在挂载前重新格式化所有列出的设备。]{#fstab-mount-a-formats explanation="Mount 通常不会创建文件系统。"}
 ::option[它可能跳过条目，并执行范围广泛的真实挂载，而不只是检查语法。]{#fstab-mount-a-incomplete .correct explanation="已挂载或 `noauto` 记录可能不会被测试，而其他符合条件的来源会产生实际影响。"}

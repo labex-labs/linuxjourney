@@ -18,8 +18,7 @@ L’identifiant utilisateur réel désigne le compte qui a démarré le processu
 
 Pour une commande ordinaire lancée par Bob, l’identifiant utilisateur réel correspond normalement à l’UID de Bob. La création d’un autre processus ne crée pas un nouveau compte et ne modifie pas à elle seule cette identité.
 
-:::single-choice{#process-permissions-real-uid}
-Qu’est-ce que l’identifiant utilisateur réel d’un processus désigne normalement ?
+:::single-choice{#process-permissions-real-uid} Qu’est-ce que l’identifiant utilisateur réel d’un processus désigne normalement ?
 
 ::option[Le propriétaire du fichier ouvert le plus récemment.]{#process-permissions-real-opened-file explanation="L’ouverture d’un fichier ne remplace pas l’UID réel du processus par le propriétaire de ce fichier."}
 ::option[Le compte associé à l’appelant d’origine du processus.]{#process-permissions-real-caller .correct explanation="L’UID réel enregistre l’identité de l’utilisateur appelant héritée lors du lancement du processus."}
@@ -32,8 +31,7 @@ L’identifiant utilisateur effectif est l’identifiant employé pour de nombre
 
 Par exemple, un utilitaire de mot de passe soigneusement conçu peut s’exécuter avec un UID effectif élevé afin de mettre à jour des données d’authentification protégées. Il doit néanmoins faire respecter la politique selon l’appelant, le compte demandé, les résultats de PAM et d’autres éléments de contexte. La possession d’un UID effectif ne rend pas automatiquement légitime chaque opération demandée.
 
-:::single-choice{#process-permissions-effective-uid}
-Quel identifiant utilisateur sert à de nombreuses décisions de contrôle d’accès prises pour un processus ?
+:::single-choice{#process-permissions-effective-uid} Quel identifiant utilisateur sert à de nombreuses décisions de contrôle d’accès prises pour un processus ?
 
 ::option[L’identifiant utilisateur effectif.]{#process-permissions-effective-active .correct explanation="L’UID effectif est l’identifiant utilisateur actif consulté pour de nombreux contrôles d’autorisation."}
 ::option[Uniquement l’identifiant utilisateur sauvegardé.]{#process-permissions-effective-saved-only explanation="L’identifiant sauvegardé permet des transitions d’identifiants, mais n’est généralement pas l’identité active des contrôles d’accès."}
@@ -46,8 +44,7 @@ L’identifiant set-user-ID sauvegardé permet à un programme de conserver une 
 
 Cette approche est plus sûre que le maintien d’une autorité élevée pendant toute l’exécution, mais seulement si elle est correctement mise en œuvre. Les programmes doivent abandonner définitivement les privilèges lorsqu’ils ne sont plus nécessaires et contrôler l’échec de chaque appel qui modifie les identifiants.
 
-:::single-choice{#process-permissions-saved-uid}
-Pourquoi un programme privilégié peut-il conserver un identifiant set-user-ID sauvegardé ?
+:::single-choice{#process-permissions-saved-uid} Pourquoi un programme privilégié peut-il conserver un identifiant set-user-ID sauvegardé ?
 
 ::option[Pour changer son identité effective pendant des phases privilégiées et non privilégiées contrôlées.]{#process-permissions-saved-switch .correct explanation="L’identité sauvegardée peut permettre une réduction temporaire des privilèges et une restauration ultérieure autorisée."}
 ::option[Pour attribuer automatiquement cet UID à chaque fichier qu’il lit.]{#process-permissions-saved-file-owner explanation="La lecture d’un fichier ne lui attribue pas l’UID sauvegardé du processus."}
@@ -60,8 +57,7 @@ Les processus possèdent aussi des identifiants de groupe réels, effectifs, sau
 
 Employez des outils tels que `ps` et `/proc/PROCESS/status` pour examiner les identifiants sous Linux. La disponibilité des champs et leur format d’affichage varient ; consultez donc la documentation locale et ne modifiez pas les identifiants simplement pour expérimenter sur un système partagé.
 
-:::single-choice{#process-permissions-ordinary-identities}
-Pour la plupart des commandes ordinaires sans transition de privilèges, comment les UID réel et effectif se comparent-ils ?
+:::single-choice{#process-permissions-ordinary-identities} Pour la plupart des commandes ordinaires sans transition de privilèges, comment les UID réel et effectif se comparent-ils ?
 
 ::option[L’UID effectif vaut toujours zéro.]{#process-permissions-effective-root explanation="Les commandes ordinaires ne reçoivent pas automatiquement l’UID de root."}
 ::option[L’UID réel correspond toujours au propriétaire du fichier exécutable.]{#process-permissions-real-file-owner explanation="Le propriétaire de l’exécutable affecte le comportement setuid, et non l’UID réel ordinaire."}

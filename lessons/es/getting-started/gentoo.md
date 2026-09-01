@@ -16,8 +16,7 @@ Gentoo es una distribución de Linux diseñada para usuarios que desean un contr
 
 Ese diseño hace que Gentoo sea especialmente atractiva para usuarios avanzados que disfrutan ajustando, aprendiendo y personalizando sus sistemas en detalle.
 
-:::single-choice{#match-gentoo-user}
-¿Qué tipo de usuario encaja mejor con Gentoo?
+:::single-choice{#match-gentoo-user} ¿Qué tipo de usuario encaja mejor con Gentoo?
 
 ::option[Una persona comprometida con el aprendizaje que desea controlar el sistema en detalle]{#committed-system-builder .correct explanation="Gentoo recompensa a quienes desean tomar decisiones detalladas de compilación y configuración. Ese control también exige más tiempo e implicación."}
 ::option[Un principiante que quiere dedicar el mínimo esfuerzo posible a la configuración]{#minimal-setup-beginner explanation="Gentoo espera que el usuario se encargue de una parte considerable de la configuración y el mantenimiento. Una distribución con más valores predeterminados preparados encaja mejor con una configuración mínima."}
@@ -36,16 +35,14 @@ En el centro de Gentoo se encuentra **Portage**, su sistema de gestión de paque
 
 Una de las características más distintivas de Portage es el uso de **marcas USE**, que permiten habilitar o deshabilitar funciones opcionales antes de compilar el software. Esto proporciona un nivel de control muy preciso sobre el sistema resultante.
 
-:::single-choice{#identify-portage-role}
-¿Qué función cumple Portage en Gentoo?
+:::single-choice{#identify-portage-role} ¿Qué función cumple Portage en Gentoo?
 
 ::option[Proporciona únicamente el escritorio gráfico y el menú de aplicaciones]{#portage-desktop explanation="Un entorno de escritorio controla la interfaz gráfica. Portage gestiona el software de todo el sistema Gentoo."}
 ::option[Gestiona la instalación, las dependencias y el mantenimiento del software]{#portage-package-manager .correct explanation="Portage es el sistema de gestión de paquetes de Gentoo. Coordina los paquetes y las decisiones necesarias para compilarlos y mantenerlos."}
 ::option[Sustituye el núcleo Linux por un sistema operativo diferente]{#portage-kernel-replacement explanation="Portage puede gestionar paquetes relacionados con el núcleo, pero no sustituye Linux por otro sistema operativo. Su función es gestionar paquetes."}
 :::
 
-:::single-choice{#explain-use-flags}
-¿Qué controlan las marcas USE de Gentoo?
+:::single-choice{#explain-use-flags} ¿Qué controlan las marcas USE de Gentoo?
 
 ::option[La cantidad física de memoria instalada en el equipo]{#physical-memory explanation="La memoria instalada es una propiedad del hardware. Las marcas USE configuran funciones del software, no modifican componentes físicos."}
 ::option[Las funciones opcionales y dependencias incluidas al compilar paquetes]{#package-features .correct explanation="Las marcas USE expresan qué capacidades opcionales debe admitir un paquete. Esas decisiones también pueden cambiar las dependencias que instala Portage."}
@@ -58,8 +55,7 @@ Debido a que el software a menudo se construye localmente, Gentoo puede adaptars
 
 Este modelo basado en código fuente también convierte a Gentoo en una distribución educativa. Enseña a los usuarios más sobre dependencias, compilación y diseño de sistemas que muchas distribuciones convencionales.
 
-:::single-choice{#recognize-source-build-tradeoff}
-¿Qué contrapartida implica la personalización basada en código fuente de Gentoo?
+:::single-choice{#recognize-source-build-tradeoff} ¿Qué contrapartida implica la personalización basada en código fuente de Gentoo?
 
 ::option[Un mayor control exige más tiempo de compilación y más decisiones del usuario]{#control-for-time .correct explanation="La compilación local y la selección de funciones ofrecen un control detallado, pero también exigen tiempo y atención por parte del usuario."}
 ::option[Un menor control elimina la necesidad de comprender las dependencias]{#less-control explanation="Gentoo expone más decisiones sobre dependencias y compilación, no menos. Comprenderlas forma parte de su valor educativo."}

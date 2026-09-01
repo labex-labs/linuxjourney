@@ -29,8 +29,7 @@ Os fluxos padrão usam convencionalmente estes descritores de arquivo:
 - `1`: stdout (saída padrão)
 - `2`: stderr (erro padrão)
 
-:::single-choice{#stderr-not-in-stdout-file}
-Por que o erro de `ls /missing > results.txt` normalmente permanece no terminal?
+:::single-choice{#stderr-not-in-stdout-file} Por que o erro de `ls /missing > results.txt` normalmente permanece no terminal?
 
 ::option[`>` redireciona stdout, enquanto o diagnóstico é gravado em stderr.]{#stderr-separate-stream .correct explanation="Um `>` simples altera apenas o descritor de arquivo 1. O descritor 2 mantém seu destino atual no terminal."}
 ::option[`ls` espera o arquivo ser fechado antes de mostrar qualquer erro.]{#stderr-waits-for-close explanation="A questão não é o momento da saída. As mensagens comuns e de diagnóstico usam fluxos diferentes."}
@@ -47,8 +46,7 @@ $ ls /fake/directory 2> errors.txt
 
 O shell cria ou trunca `errors.txt` e o conecta ao descritor 2. Stdout mantém seu destino anterior. Use `2>> errors.txt` quando a saída de erro deva ser acrescentada.
 
-:::single-choice{#stderr-to-error-file}
-Qual comando substitui `errors.log` pelos diagnósticos de `find /restricted`, mantendo stdout em seu destino atual?
+:::single-choice{#stderr-to-error-file} Qual comando substitui `errors.log` pelos diagnósticos de `find /restricted`, mantendo stdout em seu destino atual?
 
 ::option[`find /restricted > errors.log`]{#stdout-errors-log explanation="Um `>` simples redireciona o descritor 1; portanto, ele captura resultados comuns, não especificamente os diagnósticos."}
 ::option[`find /restricted < errors.log`]{#stdin-errors-log explanation="O operador de menor fornece o arquivo como stdin. Ele não captura nenhum dos fluxos de saída."}
@@ -76,8 +74,7 @@ $ ls /fake/directory /etc/passwd 2>&1 > regular.txt
 
 Aqui, stderr primeiro duplica o destino original de stdout no terminal. Depois, stdout muda para `regular.txt`; assim, os dois fluxos terminam em lugares diferentes.
 
-:::single-choice{#stderr-combine-order}
-Qual redirecionamento do Bash envia stdout e stderr de `command` para `all.log`?
+:::single-choice{#stderr-combine-order} Qual redirecionamento do Bash envia stdout e stderr de `command` para `all.log`?
 
 ::option[`command 2>&1 > all.log`]{#stderr-before-stdout explanation="Essa forma primeiro conecta stderr ao destino antigo de stdout e depois redireciona somente stdout para o arquivo. Os fluxos terminam separados."}
 ::option[`command 2> all.log > /dev/null`]{#stderr-file-stdout-null explanation="Essa forma envia stderr para `all.log`, mas descarta stdout. Ela não combina os dois fluxos no arquivo."}
@@ -92,8 +89,7 @@ $ ls /fake/directory /etc/passwd &> combined.txt
 
 Use `&>>` para acrescentar os dois fluxos no Bash. É útil reconhecer a forma explícita `> file 2>&1`, pois ela também aparece em scripts e documentações do shell.
 
-:::single-choice{#stderr-bash-short-form}
-Qual comando do Bash acrescenta stdout e stderr de `build` a `build.log`?
+:::single-choice{#stderr-bash-short-form} Qual comando do Bash acrescenta stdout e stderr de `build` a `build.log`?
 
 ::option[`build &> build.log`]{#replace-both-build explanation="`&>` do Bash redireciona os dois fluxos, mas substitui um arquivo existente em vez de acrescentar a ele."}
 ::option[`build 2>> build.log`]{#append-errors-build explanation="Essa forma acrescenta apenas stderr. Stdout mantém seu destino anterior."}
@@ -110,8 +106,7 @@ $ ls /fake/directory 2> /dev/null
 
 Isso não faz o comando ter sucesso nem altera seu status de saída; apenas oculta o fluxo de diagnóstico. Durante uma investigação, preserve ou exiba stderr em vez de descartar as informações necessárias.
 
-:::single-choice{#stderr-dev-null-effect}
-O que `check-data 2> /dev/null` altera?
+:::single-choice{#stderr-dev-null-effect} O que `check-data 2> /dev/null` altera?
 
 ::option[Descarta stdout e transforma todos os erros em sucesso.]{#discard-stdout-success explanation="O descritor 2 é stderr, não stdout, e o redirecionamento não reescreve o status de saída do programa."}
 ::option[Descarta stderr, mas não força um status de saída bem-sucedido.]{#discard-stderr-only .correct explanation="O redirecionamento muda o destino dos diagnósticos. O programa continua determinando seu próprio status de sucesso ou falha."}

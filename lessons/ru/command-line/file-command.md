@@ -32,8 +32,7 @@ $ file /bin/ls
 
 Результат — классификация, а не гарантия. Необычный, неполный или повреждённый файл может получить общее описание `data` вместо точного типа.
 
-:::single-choice{#identify-misleading-extension}
-Файл `report.jpg` может не содержать изображение. Какая команда проверит вероятный тип содержимого?
+:::single-choice{#identify-misleading-extension} Файл `report.jpg` может не содержать изображение. Какая команда проверит вероятный тип содержимого?
 
 ::option[`ls report.jpg`]{#list-report explanation="`ls` подтверждает наличие имени и показывает метаданные, но не классифицирует содержимое."}
 ::option[`file report.jpg`]{#inspect-report .correct explanation="`file` исследует файл и сообщает вероятный тип, не полагаясь только на суффикс `.jpg`."}
@@ -57,8 +56,7 @@ archive.tar.gz: gzip compressed data
 $ file *
 ```
 
-:::single-choice{#inspect-multiple-files}
-Какая команда просит `file` проверить все нескрытые имена текущего каталога, совпавшие с `*`?
+:::single-choice{#inspect-multiple-files} Какая команда просит `file` проверить все нескрытые имена текущего каталога, совпавшие с `*`?
 
 ::option[`file *`]{#file-wildcard .correct explanation="Оболочка раскрывает `*` в подходящие нескрытые имена, а `file` исследует каждый получившийся аргумент."}
 ::option[`file .`]{#file-current-directory explanation="Одна точка обозначает сам текущий каталог, поэтому команда классифицирует каталог, а не каждую запись внутри."}
@@ -74,8 +72,7 @@ $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-:::single-choice{#show-mime-information}
-Какая команда выводит MIME-информацию для `index.html`?
+:::single-choice{#show-mime-information} Какая команда выводит MIME-информацию для `index.html`?
 
 ::option[`file -b index.html`]{#brief-index explanation="`-b` убирает имя из обычного описания, но не запрашивает MIME-формат."}
 ::option[`file -i index.html`]{#mime-index .correct explanation="Параметр `-i` запрашивает MIME-вывод, например `text/html` вместе со сведениями о кодировке."}
@@ -96,8 +93,7 @@ $ file -b notes.txt
 ASCII text
 ```
 
-:::single-choice{#omit-filename-from-output}
-Какая команда классифицирует `notes.txt`, но не выводит его имя?
+:::single-choice{#omit-filename-from-output} Какая команда классифицирует `notes.txt`, но не выводит его имя?
 
 ::option[`file -i notes.txt`]{#mime-notes explanation="`-i` запрашивает MIME-информацию, но вывод по-прежнему обычно содержит имя файла."}
 ::option[`file -z notes.txt`]{#compressed-notes explanation="`-z` просит по возможности заглянуть в сжатые данные, но не включает краткий вывод."}

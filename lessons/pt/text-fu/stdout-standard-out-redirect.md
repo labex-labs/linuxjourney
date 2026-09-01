@@ -23,8 +23,7 @@ Hello World
 
 Stdout é o descritor de arquivo `1`, um número que se torna útil ao redirecionar mais de um fluxo. Os programas também podem ter entrada padrão, ou stdin, e erro padrão, ou stderr; as próximas lições examinam esses fluxos.
 
-:::single-choice{#stdout-default-destination}
-Sem redirecionamento, para onde `echo Hello World` normalmente envia sua saída comum em um terminal interativo?
+:::single-choice{#stdout-default-destination} Sem redirecionamento, para onde `echo Hello World` normalmente envia sua saída comum em um terminal interativo?
 
 ::option[Para um arquivo chamado `stdout` no diretório atual.]{#stdout-file explanation="A saída padrão é um fluxo, não um arquivo chamado `stdout` criado automaticamente. Um arquivo só é usado quando há redirecionamento."}
 ::option[Para o terminal por meio da saída padrão.]{#stdout-terminal .correct explanation="O shell normalmente conecta stdout de um comando ao terminal; por isso, a saída de `echo` é exibida ali."}
@@ -48,8 +47,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-`notes.txt` já contém texto. O que `echo new > notes.txt` faz?
+:::single-choice{#stdout-replace-file} `notes.txt` já contém texto. O que `echo new > notes.txt` faz?
 
 ::option[Substitui o conteúdo do arquivo por `new`.]{#stdout-replace-existing .correct explanation="O shell trunca o destino existente para `>` e direciona a saída de `echo` para o arquivo agora vazio."}
 ::option[Acrescenta `new` depois do texto existente.]{#stdout-add-existing explanation="O acréscimo exige `>>`. Um único `>` não preserva o conteúdo anterior do destino."}
@@ -71,8 +69,7 @@ Another line
 
 Assim como `>`, `>>` cria um destino ausente. A diferença está na abertura de um arquivo existente: `>>` acrescenta em vez de truncar.
 
-:::single-choice{#stdout-append-file}
-Qual comando acrescenta `Finished` ao final de `status.log` sem apagar o conteúdo existente?
+:::single-choice{#stdout-append-file} Qual comando acrescenta `Finished` ao final de `status.log` sem apagar o conteúdo existente?
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="Um único `>` trunca o destino existente antes da gravação. Ele apagaria o conteúdo anterior do log."}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`echo` produz o texto, e `>>` acrescenta essa stdout ao arquivo de destino."}
@@ -90,8 +87,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-Quem normalmente interpreta `>` em `pwd > current-directory.txt`?
+:::single-choice{#stdout-shell-role} Quem normalmente interpreta `>` em `pwd > current-directory.txt`?
 
 ::option[O comando `pwd`, depois de receber `>` como argumento.]{#stdout-pwd-redirection explanation="O shell consome a sintaxe de redirecionamento; portanto, `pwd` normalmente não recebe `>` nem o destino como argumentos comuns."}
 ::option[O shell Bash, antes de iniciar `pwd`.]{#stdout-bash-redirection .correct explanation="O Bash abre o destino e conecta o descritor de arquivo 1 antes de executar o comando."}

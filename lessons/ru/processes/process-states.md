@@ -25,16 +25,14 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 Сон является нормальным состоянием. Интерактивные программы и службы большую часть времени ожидают ввод, таймеры, сетевой трафик, блокировки или другие события, а не непрерывно потребляют CPU.
 
-:::single-choice{#process-states-runnable-code}
-Что означает основное состояние `R`?
+:::single-choice{#process-states-runnable-code} Что означает основное состояние `R`?
 
 ::option[Выполняется на CPU или готово к выполнению.]{#process-states-r-running .correct explanation="R объединяет выполняемые сейчас задачи и готовые задачи, ожидающие обслуживания CPU."}
 ::option[Собрано после получения статуса родителем.]{#process-states-r-reaped explanation="Полностью собранный процесс больше не отображается как обычная запись таблицы процессов."}
 ::option[Ожидает в непрерываемом сне.]{#process-states-r-uninterruptible explanation="Непрерываемый сон обозначается D."}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-Какое основное состояние обозначает прерываемый сон?
+:::single-choice{#process-states-interruptible-code} Какое основное состояние обозначает прерываемый сон?
 
 ::option[`D`]{#process-states-sleep-d explanation="D обозначает непрерываемый сон."}
 ::option[`Z`]{#process-states-sleep-z explanation="Z обозначает завершившегося потомка, статус которого ещё не собран."}
@@ -47,8 +45,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 Краткое состояние `D` может быть нормальным. Постоянные или многочисленные задачи `D` способны указывать на медленный, недоступный или неисправный ввод-вывод, но одно состояние не определяет причину. До выводов проверьте канал ожидания, журналы ядра, состояние хранилища и сети и соответствующую подсистему.
 
-:::single-choice{#process-states-uninterruptible-code}
-Какое основное состояние обозначает непрерываемый сон?
+:::single-choice{#process-states-uninterruptible-code} Какое основное состояние обозначает непрерываемый сон?
 
 ::option[`T`]{#process-states-d-stopped explanation="T обозначает остановленную задачу."}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="D используется для задачи, ожидающей в непрерываемом сне ядра."}
@@ -62,8 +59,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 Когда это уместно, возобновите остановленное заданием выполнение через `SIGCONT`. Зомби нельзя возобновить или завершить, поскольку он уже не выполняется; его должен собрать родитель или принявший reaper.
 
-:::single-choice{#process-states-zombie-code}
-Что обозначает основное состояние `Z`?
+:::single-choice{#process-states-zombie-code} Что обозначает основное состояние `Z`?
 
 ::option[Завершившийся процесс, запись которого ожидает сбора.]{#process-states-z-zombie .correct explanation="После окончания выполнения зомби хранит минимальный видимый родителю статус."}
 ::option[Процесс, приостановленный терминальным сигналом suspend.]{#process-states-z-terminal-stop explanation="Остановка управлением заданиями обычно показывается как T."}

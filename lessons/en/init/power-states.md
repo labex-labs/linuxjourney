@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 An orderly shutdown asks services to stop, unmounts filesystems, and then changes the machine's power state. Do not treat a forced reboot or the physical power switch as an ordinary shortcut; either can interrupt writes and leave data or services inconsistent.
 
-:::single-choice{#power-states-orderly-poweroff}
-What should you do before powering off a remote production host?
+:::single-choice{#power-states-orderly-poweroff} What should you do before powering off a remote production host?
 
 ::option[Disconnect its management console before issuing the command.]{#power-states-remove-console explanation="A management console is useful recovery access and should remain available."}
 ::option[Force the power off so services cannot delay the operation.]{#power-states-force-first explanation="A forced operation can interrupt writes and should not be the normal method."}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 Do not assume that a warning makes the operation safe. Check active sessions and system-specific workloads, and follow the service or cluster's documented drain procedure when one exists.
 
-:::single-choice{#power-states-four-minute-schedule}
-Which command schedules a shutdown four minutes from now?
+:::single-choice{#power-states-four-minute-schedule} Which command schedules a shutdown four minutes from now?
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="The `-h` action combined with `+4` requests shutdown four minutes from now."}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="Without the plus sign, the time argument is not the documented relative-minute form."}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 Before rebooting, verify that encrypted disks, boot configuration, networking, and required services can recover without the current interactive session. Coordinate failover or workload migration first when other systems depend on the host.
 
-:::single-choice{#power-states-reboot-action}
-Which command requests an immediate orderly reboot through `shutdown`?
+:::single-choice{#power-states-reboot-action} Which command requests an immediate orderly reboot through `shutdown`?
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="The `-c` option cancels a pending shutdown."}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="The `-r` option selects reboot, and `now` schedules it immediately."}
@@ -89,8 +86,7 @@ Which command requests an immediate orderly reboot through `shutdown`?
 
 `halt`, `poweroff`, and `reboot` may be compatibility front ends to the init system, but their requested end states differ. A halt stops normal system operation; depending on the platform and implementation, it might leave power supplied. A power-off additionally requests that supported hardware remove power. Prefer the command that names the intended outcome, and consult the local manual because compatibility behavior can vary.
 
-:::single-choice{#power-states-halt-versus-poweroff}
-Why should you distinguish `halt` from `poweroff`?
+:::single-choice{#power-states-halt-versus-poweroff} Why should you distinguish `halt` from `poweroff`?
 
 ::option[Power-off requests removal of power, while halt may leave it supplied.]{#power-states-power-distinction .correct explanation="The requested final hardware state can differ even when both stop normal operation."}
 ::option[Halt always restarts services after they stop.]{#power-states-halt-restarts explanation="Halt is a stopping state, not a request to restart services."}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 These are starting points; use application-native health checks for the actual workload.
 
-:::single-choice{#power-states-post-reboot-check}
-What provides the strongest evidence that a rebooted application is ready?
+:::single-choice{#power-states-post-reboot-check} What provides the strongest evidence that a rebooted application is ready?
 
 ::option[Service state, logs, and its health check all succeed.]{#power-states-health-evidence .correct explanation="Multiple system and application checks verify the workload rather than only host access."}
 ::option[The chassis power indicator is illuminated.]{#power-states-light-on explanation="Hardware power does not establish application health."}

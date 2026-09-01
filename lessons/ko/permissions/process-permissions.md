@@ -18,8 +18,7 @@ Linux 권한 검사는 입력된 사용자 이름이 아니라 프로세스 자�
 
 사용자 Bob이 시작한 일반 명령의 실제 사용자 ID는 보통 Bob의 UID와 같습니다. 다른 프로세스를 만든다고 그 자체로 새 계정이 생기거나 이 신원이 바뀌지는 않습니다.
 
-:::single-choice{#process-permissions-real-uid}
-프로세스의 실제 사용자 ID는 일반적으로 무엇을 식별하나요?
+:::single-choice{#process-permissions-real-uid} 프로세스의 실제 사용자 ID는 일반적으로 무엇을 식별하나요?
 
 ::option[가장 최근에 연 파일의 소유자]{#process-permissions-real-opened-file explanation="파일을 열어도 프로세스의 실제 UID가 해당 파일 소유자로 바뀌지 않습니다."}
 ::option[프로세스의 원래 호출자와 연결된 계정]{#process-permissions-real-caller .correct explanation="실제 UID는 프로세스를 시작할 때 상속된 호출 사용자 신원을 기록합니다."}
@@ -32,8 +31,7 @@ Linux 권한 검사는 입력된 사용자 이름이 아니라 프로세스 자�
 
 예를 들어 신중하게 설계된 비밀번호 유틸리티는 보호된 인증 데이터를 갱신하기 위해 높은 유효 UID로 실행될 수 있습니다. 프로그램은 여전히 호출자, 요청 계정, PAM 결과, 다른 문맥에 따라 정책을 적용해야 합니다. 유효 UID를 가졌다고 요청한 모든 작업이 자동으로 정당해지는 것은 아닙니다.
 
-:::single-choice{#process-permissions-effective-uid}
-프로세스를 대신한 여러 접근 제어 결정에 사용되는 사용자 ID는 무엇인가요?
+:::single-choice{#process-permissions-effective-uid} 프로세스를 대신한 여러 접근 제어 결정에 사용되는 사용자 ID는 무엇인가요?
 
 ::option[유효 사용자 ID]{#process-permissions-effective-active .correct explanation="유효 UID는 여러 권한 검사에서 확인하는 활성 사용자 자격 증명입니다."}
 ::option[저장 사용자 ID만 사용]{#process-permissions-effective-saved-only explanation="저장 ID는 자격 증명 전환을 지원하지만 일반적으로 접근 검사의 활성 신원은 아닙니다."}
@@ -46,8 +44,7 @@ Linux 권한 검사는 입력된 사용자 이름이 아니라 프로세스 자�
 
 올바르게 구현하면 프로그램 전체에서 높은 권한을 유지하는 것보다 안전합니다. 더 이상 필요하지 않을 때 권한을 영구적으로 버리고 모든 자격 증명 변경 호출의 실패 여부를 확인해야 합니다.
 
-:::single-choice{#process-permissions-saved-uid}
-권한 프로그램이 저장 set-user-ID를 유지할 수 있는 이유는 무엇인가요?
+:::single-choice{#process-permissions-saved-uid} 권한 프로그램이 저장 set-user-ID를 유지할 수 있는 이유는 무엇인가요?
 
 ::option[통제된 권한 단계와 비권한 단계에서 유효 신원을 전환하기 위해]{#process-permissions-saved-switch .correct explanation="저장 신원은 일시적인 권한 축소와 허용된 나중 복원을 지원할 수 있습니다."}
 ::option[읽는 모든 파일에 해당 UID를 자동으로 할당하기 위해]{#process-permissions-saved-file-owner explanation="파일을 읽어도 소유권이 프로세스의 저장 UID로 바뀌지 않습니다."}
@@ -60,8 +57,7 @@ Linux 권한 검사는 입력된 사용자 이름이 아니라 프로세스 자�
 
 Linux에서는 `ps`와 `/proc/PROCESS/status` 같은 도구로 자격 증명을 확인합니다. 필드 제공 여부와 표시 형식이 다르므로 로컬 문서를 확인하고 공유 시스템에서 단순 실험을 위해 자격 증명을 바꾸지 마세요.
 
-:::single-choice{#process-permissions-ordinary-identities}
-권한 전환이 없는 대부분의 일반 명령에서 실제 UID와 유효 UID는 어떻게 비교되나요?
+:::single-choice{#process-permissions-ordinary-identities} 권한 전환이 없는 대부분의 일반 명령에서 실제 UID와 유효 UID는 어떻게 비교되나요?
 
 ::option[유효 UID는 항상 0입니다.]{#process-permissions-effective-root explanation="일반 명령은 자동으로 root의 UID를 받지 않습니다."}
 ::option[실제 UID는 항상 실행 파일 소유자와 같습니다.]{#process-permissions-real-file-owner explanation="실행 파일 소유자는 setuid 동작에 영향을 주며 일반 실제 UID에는 영향을 주지 않습니다."}

@@ -30,8 +30,7 @@ $ readlink -f /sys/class/block/sda
 
 The example name may not exist on systems using other storage interfaces.
 
-:::single-choice{#sysfs-canonical-device-tree}
-Which sysfs subtree contains the kernel's primary device hierarchy?
+:::single-choice{#sysfs-canonical-device-tree} Which sysfs subtree contains the kernel's primary device hierarchy?
 
 ::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="Sysfs is not a repository for user authentication secrets."}
 ::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="The devices subtree represents device parent-child topology; class and bus views link into it."}
@@ -53,8 +52,7 @@ $ cat /sys/class/block/sda/size
 
 `dev` reports the major and minor device numbers. `ro` reports the block device's read-only flag. For Linux block devices, `size` is conventionally expressed in 512-byte sectors, regardless of the device's physical sector size. Always consult the kernel ABI documentation for a specific attribute's units and meaning.
 
-:::single-choice{#sysfs-dev-attribute}
-What does a block device's sysfs `dev` attribute normally contain?
+:::single-choice{#sysfs-dev-attribute} What does a block device's sysfs `dev` attribute normally contain?
 
 ::option[Every file currently stored on the device.]{#sysfs-file-list explanation="A filesystem directory tree is not embedded in this small device attribute."}
 ::option[The package name that installed the hardware.]{#sysfs-package-name explanation="Hardware is not installed as a package identified by the `dev` attribute."}
@@ -67,8 +65,7 @@ What does a block device's sysfs `dev` attribute normally contain?
 
 The two interfaces complement each other. Neither contains a complete standalone inventory of all hardware facts, and a device can disappear while it is being inspected.
 
-:::single-choice{#sysfs-versus-dev}
-Which statement correctly distinguishes `/sys` from `/dev`?
+:::single-choice{#sysfs-versus-dev} Which statement correctly distinguishes `/sys` from `/dev`?
 
 ::option[`/sys` stores user documents; `/dev` stores package archives.]{#sysfs-dev-user-files explanation="Neither directory has those ordinary data-storage roles."}
 ::option[`/sys` exposes kernel-object attributes; `/dev` provides device nodes for I/O.]{#sysfs-dev-distinction .correct explanation="Sysfs models objects and controls, while device nodes route operations to character or block drivers."}
@@ -81,8 +78,7 @@ Some sysfs attributes are writable and can change power state, driver binding, q
 
 Read the documented ABI and current value, identify how the setting should be made persistent, and test only on an authorized system. Never recursively edit permissions or write guessed values across `/sys`.
 
-:::single-choice{#sysfs-write-risk}
-Why can writing to a sysfs attribute be operationally significant?
+:::single-choice{#sysfs-write-risk} Why can writing to a sysfs attribute be operationally significant?
 
 ::option[Every write creates an ordinary backup copy on disk.]{#sysfs-backup-copy explanation="Sysfs is virtual and does not provide automatic backups of control changes."}
 ::option[Sysfs ignores all writes even when an attribute is writable.]{#sysfs-ignore-writes explanation="Writable attributes exist specifically to accept supported control values."}

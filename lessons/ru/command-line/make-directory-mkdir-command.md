@@ -28,8 +28,7 @@ $ mkdir documents
 
 Если запись `documents` уже существует, `mkdir` сообщит об ошибке и не заменит её. Исследуйте существующую запись через `ls -ld documents`.
 
-:::single-choice{#create-one-directory}
-Какая команда создаёт каталог `documents` в текущем рабочем каталоге?
+:::single-choice{#create-one-directory} Какая команда создаёт каталог `documents` в текущем рабочем каталоге?
 
 ::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` создаёт запрошенный каталог по относительному пути `documents`."}
 ::option[`touch documents`]{#touch-documents explanation="`touch` создаёт пустой обычный файл, если путь отсутствует, а не каталог."}
@@ -44,8 +43,7 @@ $ mkdir documents
 $ mkdir books paintings
 ```
 
-:::single-choice{#create-separate-directories}
-Какая команда создаёт два соседних каталога `books` и `paintings`?
+:::single-choice{#create-separate-directories} Какая команда создаёт два соседних каталога `books` и `paintings`?
 
 ::option[`mkdir books/paintings`]{#nested-paintings explanation="Этот путь описывает `paintings` внутри `books`, а не два соседних каталога, и без существующего `books` завершится ошибкой."}
 ::option[`mkdir "books paintings"`]{#spaced-directory explanation="Кавычки объединяют слова в один путь, поэтому запрашивается один каталог с пробелом в имени."}
@@ -62,8 +60,7 @@ $ mkdir -p books/hemingway/favorites
 
 Команда создаёт недостающие части и не сообщает об ошибке только из-за уже существующего конечного каталога. Другие ошибки, например недостаток разрешений, всё равно возможны.
 
-:::single-choice{#create-nested-path}
-Ни одна часть `projects/app/src` ещё не существует. Какая команда создаст весь путь?
+:::single-choice{#create-nested-path} Ни одна часть `projects/app/src` ещё не существует. Какая команда создаст весь путь?
 
 ::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="Параметр `-p` создаёт каждого отсутствующего родителя перед конечным каталогом."}
 ::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="Без `-p` создать `src` невозможно, когда промежуточные каталоги отсутствуют."}
@@ -89,8 +86,7 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-:::single-choice{#set-directory-mode}
-Какая команда создаёт `public` с режимом разрешений `755`?
+:::single-choice{#set-directory-mode} Какая команда создаёт `public` с режимом разрешений `755`?
 
 ::option[`mkdir -p 755 public`]{#parents-755 explanation="`-p` воспринимает оставшиеся слова как пути и не задаёт режим `755`."}
 ::option[`mkdir -v 755 public`]{#verbose-755 explanation="`-v` печатает сообщения и не интерпретирует `755` как режим."}

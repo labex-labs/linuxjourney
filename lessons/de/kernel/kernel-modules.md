@@ -30,8 +30,7 @@ $ modinfo MODULE_NAME
 
 `modinfo` kann Dateiname, Aliase, Parameter, Lizenz, Beschreibung und Signaturinformationen anzeigen. Behandle Metadaten als Beschreibung und nicht als Beweis, dass das Modul vertrauenswürdig oder mit der Arbeitslast kompatibel ist.
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-Was zeigt `lsmod` an?
+:::single-choice{#kernel-modules-lsmod-purpose} Was zeigt `lsmod` an?
 
 ::option[Jedes in entfernten Paketquellen verfügbare Modulpaket.]{#kernel-modules-repository-list explanation="Für den Bestand von Paketquellen sind Abfragen der Paketverwaltung erforderlich."}
 ::option[Ausschließlich direkt in das Kernelabbild kompilierte Treiber.]{#kernel-modules-builtins explanation="Fest eingebaute Funktionen sind keine ladbaren Module und erscheinen gewöhnlich nicht in lsmod."}
@@ -50,8 +49,7 @@ $ sudo modprobe MODULE_NAME
 
 Bestätige vor dem Laden Herkunft, Signaturrichtlinie, Kompatibilität mit der Kernelveröffentlichung, Parameter, erwartete Hardwarebindung und Rücksetzweg des Moduls. Secure Boot oder Kernel-Lockdown können nicht signierte Module ablehnen; das Erzwingen inkompatiblen Codes birgt Absturz- und Kompromittierungsrisiken.
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-Warum wird `modprobe` gewöhnlich gegenüber einem direkten `insmod` bevorzugt?
+:::single-choice{#kernel-modules-modprobe-dependencies} Warum wird `modprobe` gewöhnlich gegenüber einem direkten `insmod` bevorzugt?
 
 ::option[Es führt das Modul vollständig im unprivilegierten User-Space aus.]{#kernel-modules-modprobe-userspace explanation="Das eingefügte Modul läuft als privilegierter Kernelcode."}
 ::option[Es garantiert, dass jedes Drittanbietermodul signiert und sicher ist.]{#kernel-modules-modprobe-guarantee explanation="Die Durchsetzung hängt von der Richtlinie ab, und eine gültige Signatur beweist nicht, dass keine Fehler vorhanden sind."}
@@ -74,8 +72,7 @@ example_module
 
 Hardwarealiase lösen häufig ein automatisches Laden ohne ausdrückliche Liste aus. Aktualisiere für Module, die während der frühen Startphase benötigt werden, nach Konfigurationsänderungen das initramfs gemäß dem dokumentierten Verfahren der Distribution.
 
-:::single-choice{#kernel-modules-options-versus-load}
-Was bewirkt eine `options`-Zeile in `/etc/modprobe.d/`?
+:::single-choice{#kernel-modules-options-versus-load} Was bewirkt eine `options`-Zeile in `/etc/modprobe.d/`?
 
 ::option[Sie garantiert allein durch diese Zeile, dass das Modul bei jedem Start geladen wird.]{#kernel-modules-options-autoload explanation="Anforderungen zum Laden beim Systemstart verwenden einen anderen Mechanismus wie die modules-load-Konfiguration oder Gerätealiase."}
 ::option[Sie legt Parameter fest, die beim Laden des benannten Moduls verwendet werden.]{#kernel-modules-options-parameters .correct explanation="Modprobe wendet konfigurierte Schlüssel-Wert-Argumente beim Einfügen an."}
@@ -92,8 +89,7 @@ blacklist example_module
 
 Blacklisting unterdrückt gewöhnlich das automatische Laden über die Aliase des Moduls. Es entlädt weder ein bereits geladenes Modul noch entfernt es das Modul aus einem initramfs. Auch verhindert es nicht zwangsläufig ein ausdrückliches Laden anhand des genauen Namens oder als Abhängigkeit. Sicherheitshärtung erfordert eine bedrohungsspezifische Kombination aus Modulverfügbarkeit, Signaturdurchsetzung, initramfs-Inhalt, Startparametern und Richtlinien.
 
-:::single-choice{#kernel-modules-blacklist-effect}
-Was unterdrückt eine einfache modprobe-`blacklist`-Zeile in erster Linie?
+:::single-choice{#kernel-modules-blacklist-effect} Was unterdrückt eine einfache modprobe-`blacklist`-Zeile in erster Linie?
 
 ::option[Das automatische Laden über die Aliase des Moduls.]{#kernel-modules-blacklist-aliases .correct explanation="Die Direktive ist kein allgemeines Verbot sämtlicher Wege, über die Code bereits geladen sein oder geladen werden kann."}
 ::option[Die Ausführung jedes User-Space-Programms mit einem ähnlichen Namen.]{#kernel-modules-blacklist-user-programs explanation="Die modprobe-Konfiguration gilt für die Auflösung von Kernelmodulen."}
@@ -112,8 +108,7 @@ Modprobe kann gegebenenfalls nun ungenutzte Abhängigkeiten entfernen. Der Kerne
 
 Erzwinge niemals das Entladen eines Moduls auf einem System, das du erhalten musst. Fehler beim Entfernen oder ausstehende Aktivität können den Kernel zum Absturz bringen oder Daten beschädigen.
 
-:::single-choice{#kernel-modules-remove-command}
-Welcher Befehl fordert die abhängigkeitsbewusste Entfernung eines Moduls anhand seines Namens an?
+:::single-choice{#kernel-modules-remove-command} Welcher Befehl fordert die abhängigkeitsbewusste Entfernung eines Moduls anhand seines Namens an?
 
 ::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="Lsmod ist ein schreibgeschütztes Auflistungswerkzeug und dient nicht zur Entfernung."}
 ::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="Uname meldet Kernelinformationen und verwaltet keine Module."}

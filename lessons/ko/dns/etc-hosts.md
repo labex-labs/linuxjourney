@@ -24,8 +24,7 @@ meta_keywords: "/etc/hosts, 리눅스 hosts, 호스트 이름 매핑, DNS 확인
 
 주석은 `#`으로 시작합니다. 일부 도구는 관례상 첫 이름을 정규 이름, 뒤의 이름을 별칭으로 취급하지만 애플리케이션 동작과 확인자 API는 다릅니다. 같은 이름에 중복되거나 충돌하는 항목을 피하십시오.
 
-:::single-choice{#hosts-file-entry-order}
-일반적인 `/etc/hosts` 매핑 줄의 처음에는 무엇이 나옵니까?
+:::single-choice{#hosts-file-entry-order} 일반적인 `/etc/hosts` 매핑 줄의 처음에는 무엇이 나옵니까?
 
 ::option[IP 주소입니다.]{#hosts-file-address-first .correct explanation="같은 줄에서 주소 뒤에 하나 이상의 이름이 옵니다."}
 ::option[DNS 레코드 TTL입니다.]{#hosts-file-ttl-first explanation="hosts 파일 항목은 DNS TTL 필드를 사용하지 않습니다."}
@@ -42,8 +41,7 @@ hosts: files dns
 
 정책을 조사하지 않고 files가 항상 먼저라고 가정하지 마십시오. 애플리케이션이 자체 DNS 라이브러리, 캐시, 프록시 또는 암호화된 확인자를 사용해 시스템 경로를 따르지 않을 수도 있습니다.
 
-:::single-choice{#hosts-file-nss-order}
-시스템 확인자가 DNS보다 먼저 `/etc/hosts`를 조회하는지는 무엇이 결정합니까?
+:::single-choice{#hosts-file-nss-order} 시스템 확인자가 DNS보다 먼저 `/etc/hosts`를 조회하는지는 무엇이 결정합니까?
 
 ::option[`/etc`의 파일 이름 알파벳 순서입니다.]{#hosts-file-alphabetical explanation="파일시스템 목록 순서는 이름 서비스 정책을 정의하지 않습니다."}
 ::option[Name Service Switch 정책의 소스 순서입니다.]{#hosts-file-nss-policy .correct explanation="hosts 데이터베이스 줄이 일반 libc 확인자 소스 순서를 제어합니다."}
@@ -60,8 +58,7 @@ $ getent ahosts app-test.example.net
 
 `dig`는 DNS를 직접 조회하며 일반적으로 `/etc/hosts` 매핑을 보고하지 않습니다. 이 차이는 유용합니다. `getent`는 성공하지만 `dig`는 실패하면 로컬 소스나 확인자 정책 차이를 나타낼 수 있습니다.
 
-:::single-choice{#hosts-file-getent-versus-dig}
-일반 시스템 이름 확인에서 hosts 파일 항목이 보이는지 확인하기에 더 적합한 도구는 무엇입니까?
+:::single-choice{#hosts-file-getent-versus-dig} 일반 시스템 이름 확인에서 hosts 파일 항목이 보이는지 확인하기에 더 적합한 도구는 무엇입니까?
 
 ::option[`dig`입니다. 항상 /etc/hosts를 먼저 읽기 때문입니다.]{#hosts-file-dig-first explanation="dig는 DNS 쿼리를 보내고 hosts 파일 조회 경로를 우회합니다."}
 ::option[`getent ahosts`입니다. 설정된 이름 서비스 소스를 사용하기 때문입니다.]{#hosts-file-getent .correct explanation="많은 네이티브 애플리케이션이 사용하는 확인자 경로를 반영합니다."}
@@ -74,8 +71,7 @@ $ getent ahosts app-test.example.net
 
 편집 후에는 애플리케이션이 캐시를 유지하거나 다른 확인자를 사용할 수 있으므로 정확한 애플리케이션을 테스트합니다. 영구적인 재정의는 목적보다 오래 조용히 남지 않도록 문서화하십시오.
 
-:::single-choice{#hosts-file-test-name}
-공용 서비스 이름을 덮어쓰지 않고 전용 테스트 이름을 사용해야 하는 이유는 무엇입니까?
+:::single-choice{#hosts-file-test-name} 공용 서비스 이름을 덮어쓰지 않고 전용 테스트 이름을 사용해야 하는 이유는 무엇입니까?
 
 ::option[공용 이름에는 점을 넣을 수 없기 때문입니다.]{#hosts-file-public-no-dots explanation="도메인 이름은 일반적으로 점으로 구분된 여러 레이블을 포함합니다."}
 ::option[전용 이름이 권위 DNS 영역을 자동으로 만들기 때문입니다.]{#hosts-file-auto-zone explanation="hosts 파일 항목은 로컬에 남으며 영역을 게시하지 않습니다."}
@@ -86,8 +82,7 @@ $ getent ahosts app-test.example.net
 
 `/etc/resolv.conf`는 전통적으로 DNS 확인자 설정을 나열하지만 흔히 NetworkManager, systemd-resolved, DHCP 또는 다른 관리자가 생성합니다. 심볼릭 링크와 파일 주석을 조사한 뒤 덮어써질 생성 출력 대신 소유하는 설정 소스를 변경하십시오.
 
-:::single-choice{#hosts-file-resolv-owner}
-`/etc/resolv.conf`를 편집하기 전에 무엇을 해야 합니까?
+:::single-choice{#hosts-file-resolv-owner} `/etc/resolv.conf`를 편집하기 전에 무엇을 해야 합니까?
 
 ::option[`/etc/hosts`와 모든 네트워크 경로를 삭제합니다.]{#hosts-file-delete-state explanation="관련 없는 파괴적 변경이며 연결을 제거할 수 있습니다."}
 ::option[모든 배포판이 영구 설정을 그 파일에 직접 저장한다고 가정합니다.]{#hosts-file-assume-direct explanation="많은 시스템이 파일을 동적으로 생성하거나 관리되는 스텁에 연결합니다."}

@@ -14,8 +14,7 @@ In Normal mode, Vim interprets keys as commands. Insert mode inserts typed text 
 
 Press `Esc` to leave Insert mode and return to Normal mode. If you are unsure which mode is active, pressing `Esc` is a safe way to reestablish Normal mode, although it can cancel a pending operation.
 
-:::single-choice{#vim-insert-return-normal}
-Which key normally returns from Insert mode to Normal mode?
+:::single-choice{#vim-insert-return-normal} Which key normally returns from Insert mode to Normal mode?
 
 ::option[`Esc`]{#vim-insert-escape .correct explanation="Escape ends the current insertion and returns Vim to Normal mode."}
 ::option[`Enter`]{#vim-insert-enter explanation="Enter inserts a line break while remaining in Insert mode."}
@@ -31,8 +30,7 @@ From Normal mode:
 
 For example, if the cursor is on `b` in `abc`, `i` begins before `b`, while `a` begins after `b`. Both commands change modes; the text you type afterward performs the insertion.
 
-:::single-choice{#vim-insert-before-cursor}
-Which Normal-mode key enters Insert mode immediately before the cursor?
+:::single-choice{#vim-insert-before-cursor} Which Normal-mode key enters Insert mode immediately before the cursor?
 
 ::option[`a`]{#vim-insert-a-after explanation="Lowercase `a` appends after the cursor rather than inserting before it."}
 ::option[`o`]{#vim-insert-o-below explanation="Lowercase `o` opens a new line below the current line before entering Insert mode."}
@@ -48,16 +46,14 @@ Uppercase commands target meaningful positions on the current line:
 
 On an indented line, `I` skips indentation and begins before the first nonblank text. Use `0i` if you specifically need to insert at column zero.
 
-:::single-choice{#vim-insert-first-nonblank}
-Which Normal-mode command begins insertion before the first nonblank character of the current line?
+:::single-choice{#vim-insert-first-nonblank} Which Normal-mode command begins insertion before the first nonblank character of the current line?
 
 ::option[`i`]{#vim-insert-lower-i explanation="Lowercase `i` uses the current cursor position and does not first target the line's initial text."}
 ::option[`A`]{#vim-insert-capital-a explanation="Uppercase `A` begins insertion at the end of the current line."}
 ::option[`I`]{#vim-insert-capital-i .correct explanation="Uppercase `I` moves to the first nonblank character and enters Insert mode before it."}
 :::
 
-:::single-choice{#vim-append-line-end}
-Which Normal-mode command moves to the end of the current line and enters Insert mode?
+:::single-choice{#vim-append-line-end} Which Normal-mode command moves to the end of the current line and enters Insert mode?
 
 ::option[`A`]{#vim-append-capital-a .correct explanation="Uppercase `A` combines an end-of-line jump with entry into Insert mode."}
 ::option[`$`]{#vim-move-line-end explanation="The dollar motion reaches the line end but remains in Normal mode."}
@@ -73,8 +69,7 @@ From Normal mode:
 
 Vim applies indentation according to current settings and filetype rules. A count can repeat the open-line operation, but first learn the single-line form so the resulting cursor position is predictable.
 
-:::single-choice{#vim-open-line-above}
-Which Normal-mode command opens a new line above the current line and enters Insert mode?
+:::single-choice{#vim-open-line-above} Which Normal-mode command opens a new line above the current line and enters Insert mode?
 
 ::option[`o`]{#vim-open-lower-o explanation="Lowercase `o` opens below the current line."}
 ::option[`O`]{#vim-open-upper-o .correct explanation="Uppercase `O` opens a new line above and starts insertion there."}

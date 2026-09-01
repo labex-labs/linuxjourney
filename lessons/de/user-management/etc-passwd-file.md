@@ -29,8 +29,7 @@ $ getent passwd root
 
 Der erste Befehl kann Kontonamen und Metadaten offenlegen. Prüfe die Ausgabe daher, bevor du sie öffentlich teilst.
 
-:::single-choice{#passwd-query-resolved-database}
-Welcher Befehl fragt die durch NSS aufgelöste passwd-Datenbank ab, statt nur die lokale Datei zu lesen?
+:::single-choice{#passwd-query-resolved-database} Welcher Befehl fragt die durch NSS aufgelöste passwd-Datenbank ab, statt nur die lokale Datei zu lesen?
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="Dies zeigt nur die lokale Datei an und enthält keine Konten, die ausschließlich von anderen NSS-Quellen bereitgestellt werden."}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="Die shadow-Datei enthält geschützte lokale Daten zur Passwortalterung und sollte zu diesem Zweck nicht angezeigt werden."}
@@ -57,16 +56,14 @@ Die sieben durch Doppelpunkte getrennten Felder sind:
 
 Der Kernel verlangt bei fehlerhaften oder absichtlich doppelten Einträgen keine eindeutigen UID-Werte. Konten mit derselben UID sind jedoch bei vielen Eigentums- und Berechtigungsentscheidungen nicht voneinander zu unterscheiden. Administratoren sollten Konto-UIDs gewöhnlich eindeutig halten.
 
-:::single-choice{#passwd-uid-field}
-Welches Feld enthält in `root:x:0:0:root:/root:/bin/bash` die UID?
+:::single-choice{#passwd-uid-field} Welches Feld enthält in `root:x:0:0:root:/root:/bin/bash` die UID?
 
 ::option[Das zweite Feld, `x`]{#passwd-second-password explanation="Das zweite Feld ist der Passwortplatzhalter und nicht die numerische Benutzeridentität."}
 ::option[Das vierte Feld, die zweite `0`]{#passwd-fourth-gid explanation="Feld 4 ist die primäre GID und nicht die UID."}
 ::option[Das dritte Feld, die erste `0`]{#passwd-third-uid .correct explanation="Feld 3 ist die UID, daher kennzeichnet die erste Null diesen Eintrag als UID 0."}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-Welches Feld eines passwd-Eintrags speichert die primäre GID des Kontos?
+:::single-choice{#passwd-primary-gid-field} Welches Feld eines passwd-Eintrags speichert die primäre GID des Kontos?
 
 ::option[Feld 5]{#passwd-gecos-five explanation="Das fünfte Feld ist das GECOS- oder Kommentarfeld."}
 ::option[Feld 4]{#passwd-gid-four .correct explanation="Das vierte durch Doppelpunkte getrennte Feld identifiziert die primäre Gruppe numerisch."}
@@ -79,8 +76,7 @@ Auf typischen Systemen mit Shadow-Passwörtern verweist `x` in Feld 2 passwortbe
 
 Das beweist nicht, dass sich das Konto mit überhaupt keiner Methode authentifizieren kann. SSH-Schlüssel, Zertifikate, Token oder dienstspezifische Mechanismen können davon unabhängig sein. Ebenso besitzt ein leeres Passwortfeld sicherheitsrelevantes Verhalten, das vom Authentifizierungsstapel abhängt. Erstelle oder „repariere“ es nicht manuell.
 
-:::single-choice{#passwd-x-placeholder}
-Was bedeutet `x` gewöhnlich in Feld 2 eines lokalen `/etc/passwd`-Eintrags?
+:::single-choice{#passwd-x-placeholder} Was bedeutet `x` gewöhnlich in Feld 2 eines lokalen `/etc/passwd`-Eintrags?
 
 ::option[Das Konto hat garantiert keine Authentifizierungsmethode.]{#passwd-no-auth-guarantee explanation="Der Platzhalter beschreibt nicht jede mögliche Authentifizierungsmethode und bedeutet für sich genommen nicht, dass das Konto unbrauchbar ist."}
 ::option[Das Home-Verzeichnis des Kontos wurde gelöscht.]{#passwd-home-deleted explanation="Informationen zum Home-Verzeichnis stehen in Feld 6 und haben nichts mit dem Platzhalter `x` zu tun."}
@@ -93,8 +89,7 @@ Viele Einträge repräsentieren Dienste und keine Menschen. Getrennte Dienstiden
 
 Leite den Zweck eines Kontos nicht allein aus seinem UID-Bereich ab, ohne die Richtlinien der Distribution zu prüfen. Die Zuweisungsbereiche unterscheiden sich, und zentral verwaltete Konten können anderen Konventionen folgen.
 
-:::single-choice{#passwd-nologin-shell}
-Was ist ein häufiger Zweck eines Anmeldeprogramms wie `/usr/sbin/nologin` in Feld 7?
+:::single-choice{#passwd-nologin-shell} Was ist ein häufiger Zweck eines Anmeldeprogramms wie `/usr/sbin/nologin` in Feld 7?
 
 ::option[Die Dateien des Kontos bei jedem Beenden eines Dienstes zu löschen.]{#passwd-nologin-delete explanation="Das Anmeldeprogramm entfernt nicht automatisch Dateien im Besitz des Kontos und verwaltet keine Dateien beim Herunterfahren von Diensten."}
 ::option[Eine gewöhnliche interaktive Shell über Anmeldewege zu verhindern, die dieses Feld berücksichtigen.]{#passwd-nologin-purpose .correct explanation="Ein Programm zur Verhinderung von Anmeldungen wird häufig für Dienstkonten verwendet, die über die normale Anmeldung keine interaktive Shell erhalten sollen."}

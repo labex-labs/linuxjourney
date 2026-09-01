@@ -24,8 +24,7 @@ Um sistema init geralmente:
 
 O limite exato varia. Gerenciamento de dispositivos, rede, logs e tarefas agendadas podem ser programas separados supervisionados pelo init, não código incorporado ao PID 1.
 
-:::single-choice{#boot-init-pid-one-role}
-Qual responsabilidade é especial para o PID 1 em seu namespace?
+:::single-choice{#boot-init-pid-one-role} Qual responsabilidade é especial para o PID 1 em seu namespace?
 
 ::option[Compilar todos os aplicativos a cada boot.]{#boot-init-compile-apps explanation="A inicialização normal usa programas instalados, em vez de recompilar todo o software."}
 ::option[Definir o tamanho físico dos setores do disco.]{#boot-init-sector-size explanation="O hardware e os drivers expõem a geometria do armazenamento antes que o init gerencie serviços."}
@@ -38,8 +37,7 @@ O sysvinit tradicional usa configurações como `/etc/inittab` e scripts de inic
 
 Não deduza o init ativo apenas porque `/etc/init.d/` existe; scripts de compatibilidade podem permanecer em sistemas cujo PID 1 usa outra implementação.
 
-:::single-choice{#boot-init-sysv-runlevel}
-O que representa um runlevel do System V?
+:::single-choice{#boot-init-sysv-runlevel} O que representa um runlevel do System V?
 
 ::option[Uma versão do kernel escolhida pelo carregador.]{#boot-init-runlevel-kernel explanation="A escolha do kernel pertence ao carregador e não é codificada por um runlevel."}
 ::option[Um modo de operação configurado associado a ações de serviços.]{#boot-init-runlevel-mode .correct explanation="Layouts SysV associam níveis a conjuntos e ordens de scripts de inicialização ou desligamento."}
@@ -54,8 +52,7 @@ O systemd é amplamente usado por distribuições atuais de uso geral. Ele model
 
 Outros projetos ativos incluem OpenRC, runit, s6 e BusyBox init. “Mais recente” não é uma regra útil de compatibilidade; identifique o sistema realmente em execução e consulte sua documentação.
 
-:::single-choice{#boot-init-systemd-unit-model}
-Como o systemd representa recursos gerenciados, como serviços e montagens?
+:::single-choice{#boot-init-systemd-unit-model} Como o systemd representa recursos gerenciados, como serviços e montagens?
 
 ::option[Como entradas de partição primária do MBR.]{#boot-init-systemd-partitions explanation="Metadados de partição não têm relação com units do gerenciador de serviços."}
 ::option[Como meros links físicos para o executável do PID 1.]{#boot-init-systemd-hard-links explanation="Units são objetos de configuração e execução, não simples aliases de inode."}
@@ -73,8 +70,7 @@ $ readlink /proc/1/exe
 
 Permissões, containers e namespaces afetam o que você vê. Um comando dentro de um container informa o PID 1 daquele namespace, não necessariamente o init do host. Depois de identificá-lo, use suas ferramentas nativas de estado e logs.
 
-:::single-choice{#boot-init-detect-running}
-Por que examinar o PID 1 é melhor que verificar se existe um diretório de scripts legados?
+:::single-choice{#boot-init-detect-running} Por que examinar o PID 1 é melhor que verificar se existe um diretório de scripts legados?
 
 ::option[O PID 1 sempre tem o mesmo nome em todo sistema Linux.]{#boot-init-same-name explanation="Systemd, sysvinit, BusyBox, programas init de containers e outros podem ocupar o PID 1."}
 ::option[Arquivos de compatibilidade podem existir mesmo quando outro init está em execução.]{#boot-init-compatibility-files .correct explanation="O executável ativo como PID 1 é uma evidência mais forte do sistema init em uso."}

@@ -18,8 +18,7 @@ Le noyau peut employer le swap avant l'épuisement complet de la RAM, selon la c
 
 Une utilisation intensive et prolongée du swap peut provoquer une forte latence ou un emballement des échanges, appelé thrashing. Diagnostiquez la demande de mémoire, les ensembles de travail, la pression et les limites applicatives au lieu de considérer un swap plus grand comme une solution universelle aux problèmes de performances.
 
-:::single-choice{#swap-space-anonymous-pages}
-Quel type de mémoire est un candidat privilégié au stockage dans le swap ?
+:::single-choice{#swap-space-anonymous-pages} Quel type de mémoire est un candidat privilégié au stockage dans le swap ?
 
 ::option[Tous les fichiers exécutables installés sous `/usr`.]{#swap-space-installed-files explanation="Les fichiers installés restent dans leurs systèmes de fichiers ; les pages propres mappées peuvent y être relues."}
 ::option[Les pages de mémoire anonyme inactives.]{#swap-space-anonymous-memory .correct explanation="Les pages anonymes ne possèdent pas de fichier de stockage ordinaire depuis lequel elles pourraient simplement être relues."}
@@ -38,8 +37,7 @@ $ free -h
 
 Elles affichent le swap actif configuré et les chiffres globaux de la mémoire. Une valeur « utilisée » non nulle ne constitue pas automatiquement un problème ; mettez-la en relation avec les débits d'entrée et de sortie du swap, la pression mémoire, la latence et le comportement de la charge.
 
-:::single-choice{#swap-space-show-active}
-Quelle commande répertorie les espaces de swap actifs dans une vue structurée ?
+:::single-choice{#swap-space-show-active} Quelle commande répertorie les espaces de swap actifs dans une vue structurée ?
 
 ::option[`swapon --show`]{#swap-space-swapon-show .correct explanation="Le mode show indique les périphériques ou fichiers de swap actifs ainsi que leur taille, utilisation et priorité lorsqu'elles sont disponibles."}
 ::option[`mkswap --all`]{#swap-space-mkswap-all explanation="Mkswap initialise les signatures de swap ; ce n'est pas la commande d'affichage en lecture seule des espaces actifs."}
@@ -63,8 +61,7 @@ Pour rendre l'activation persistante, employez l'UUID du swap dans `/etc/fstab`,
 UUID=UUID-SWAP-VÉRIFIÉ none swap sw 0 0
 ```
 
-:::single-choice{#swap-space-enable-command}
-Quelle commande active un espace de swap initialisé ?
+:::single-choice{#swap-space-enable-command} Quelle commande active un espace de swap initialisé ?
 
 ::option[`swapon`]{#swap-space-command-swapon .correct explanation="Swapon ajoute un périphérique ou fichier de swap valide à l'ensemble des espaces actifs du noyau."}
 ::option[`mkswap`]{#swap-space-command-mkswap explanation="Mkswap initialise la signature, mais n'active pas lui-même l'espace."}
@@ -79,8 +76,7 @@ Les périphériques de RAM compressée comme zram peuvent fournir un autre nivea
 
 Il n'existe aucune règle universelle imposant un swap deux fois plus grand que la RAM. Dimensionnez-le selon les pics de la charge, le comportement souhaité en cas d'échec, les besoins d'hibernation, la latence et l'endurance du stockage, la conception des vidages sur incident et la surveillance opérationnelle.
 
-:::single-choice{#swap-space-sizing-rule}
-Quelle est la meilleure base pour dimensionner le swap ?
+:::single-choice{#swap-space-sizing-rule} Quelle est la meilleure base pour dimensionner le swap ?
 
 ::option[Toujours exactement deux fois la RAM installée.]{#swap-space-twice-ram explanation="Cette ancienne règle empirique ne convient pas à toutes les charges ni aux quantités de mémoire modernes."}
 ::option[Les besoins mesurés de la charge, les objectifs d'hibernation et les règles en cas d'échec.]{#swap-space-sizing-requirements .correct explanation="La fonction du système et le comportement observé de la mémoire comptent davantage qu'un multiplicateur fixe de la RAM."}
@@ -97,8 +93,7 @@ $ sudo swapoff /dev/CIBLE-SWAP-VÉRIFIÉE
 
 Le noyau doit déplacer ailleurs les pages résidentes qui s'y trouvent. Si la RAM et le swap restant ne peuvent pas les accueillir, l'opération peut échouer ou créer une pression mémoire dangereuse. Arrêtez ou limitez d'abord les charges, surveillez la mémoire, ne supprimez l'entrée fstab persistante qu'après avoir vérifié la bonne cible, puis confirmez la désactivation avec `swapon --show` avant de réaffecter le stockage.
 
-:::single-choice{#swap-space-swapoff-capacity}
-Pourquoi `swapoff` peut-il échouer ou mettre en danger un système fortement chargé ?
+:::single-choice{#swap-space-swapoff-capacity} Pourquoi `swapoff` peut-il échouer ou mettre en danger un système fortement chargé ?
 
 ::option[Swapoff reformate toujours chaque module de RAM.]{#swap-space-formats-ram explanation="Il modifie la configuration du swap actif et ne formate pas le matériel de mémoire physique."}
 ::option[Les pages de cet espace doivent trouver de la place en RAM ou dans un autre swap.]{#swap-space-pages-need-capacity .correct explanation="La désactivation exige de déplacer les pages actives du swap pendant que le système continue de fonctionner."}

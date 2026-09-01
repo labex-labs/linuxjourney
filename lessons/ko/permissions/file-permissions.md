@@ -35,8 +35,7 @@ drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-`drwxr-xr-x`에서 첫 번째 `d`는 무엇을 나타내나요?
+:::single-choice{#file-permissions-type-character} `drwxr-xr-x`에서 첫 번째 `d`는 무엇을 나타내나요?
 
 ::option[객체가 심볼릭 링크입니다.]{#file-permissions-type-link explanation="심볼릭 링크는 일반적으로 파일 형식 위치에 `l`로 표시됩니다."}
 ::option[객체가 디렉터리입니다.]{#file-permissions-type-directory .correct explanation="첫 문자는 파일 형식이며 `d`는 디렉터리를 식별합니다."}
@@ -62,8 +61,7 @@ d | rwx | r-x | r-x
 
 파일 삭제는 주로 파일 자체의 쓰기 비트가 아니라 상위 디렉터리 권한의 지배를 받습니다.
 
-:::single-choice{#file-permissions-directory-execute}
-디렉터리의 실행 권한은 주로 무엇을 허용하나요?
+:::single-choice{#file-permissions-directory-execute} 디렉터리의 실행 권한은 주로 무엇을 허용하나요?
 
 ::option[디렉터리에 저장된 모든 일반 파일 실행]{#file-permissions-directory-run-files explanation="디렉터리 실행 비트는 안의 각 파일에 실행 권한을 부여하지 않습니다."}
 ::option[디렉터리 안 모든 파일 내용 변경]{#file-permissions-directory-edit-files explanation="파일 내용 쓰기는 파일 권한과 다른 접근 제어에 따라 달라집니다."}
@@ -82,16 +80,14 @@ d | rwx | r-x | r-x
 
 예제에서 소유자 묶음은 `rwx`, 그룹과 기타 사용자는 모두 `r-x`입니다. 소유자는 디렉터리를 읽고 쓰고 검색할 수 있습니다. 그룹과 기타 사용자는 읽고 검색할 수 있지만 일반 모드 비트를 통해 항목을 만들거나 제거할 수는 없습니다.
 
-:::single-choice{#file-permissions-triplet-order}
-파일 형식 문자 뒤에 권한 세 묶음은 어떤 순서로 나타나나요?
+:::single-choice{#file-permissions-triplet-order} 파일 형식 문자 뒤에 권한 세 묶음은 어떤 순서로 나타나나요?
 
 ::option[그룹, 소유자, 기타 사용자]{#file-permissions-order-group-first explanation="그룹 묶음은 첫 번째가 아니라 두 번째입니다."}
 ::option[기타 사용자, 그룹, 소유자]{#file-permissions-order-other-first explanation="기타 사용자 묶음은 마지막이고 소유자 묶음은 첫 번째입니다."}
 ::option[소유자, 그룹, 기타 사용자]{#file-permissions-order-owner-first .correct explanation="권한 문자 아홉 개는 항상 소유자, 그룹, 기타 사용자 순서입니다."}
 :::
 
-:::single-choice{#file-permissions-example-group}
-`drwxr-xr-x`에서 그룹 클래스는 어떤 일반 권한을 갖나요?
+:::single-choice{#file-permissions-example-group} `drwxr-xr-x`에서 그룹 클래스는 어떤 일반 권한을 갖나요?
 
 ::option[읽기와 쓰기]{#file-permissions-group-read-write explanation="그룹 묶음은 `r-x`이므로 쓰기 위치에 `-`가 있습니다."}
 ::option[쓰기와 실행]{#file-permissions-group-write-execute explanation="그룹 묶음의 첫 위치에는 `w`가 아니라 `r`이 있습니다."}

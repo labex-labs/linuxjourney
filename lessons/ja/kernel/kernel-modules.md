@@ -30,8 +30,7 @@ $ modinfo MODULE_NAME
 
 `modinfo` は filename、alias、parameter、license、description、signature information を表示できます。metadata は説明情報として扱い、module が信頼できる、または workload と互換だという証明にはしないでください。
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-`lsmod` は何を表示しますか？
+:::single-choice{#kernel-modules-lsmod-purpose} `lsmod` は何を表示しますか？
 
 ::option[remote repository で利用可能な全 module package。]{#kernel-modules-repository-list explanation="repository inventory には package-manager query が必要です。"}
 ::option[kernel image へ直接 compile された driver だけ。]{#kernel-modules-builtins explanation="built-in feature は loadable module ではなく、通常 lsmod に現れません。"}
@@ -50,8 +49,7 @@ $ sudo modprobe MODULE_NAME
 
 load 前に module provenance、signature policy、kernel release compatibility、parameter、想定する hardware binding、rollback を確認します。Secure Boot や kernel lockdown は unsigned module を拒否できます。非互換 code の強制は crash や compromise の危険があります。
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-通常、直接の `insmod` より `modprobe` が推奨されるのはなぜですか？
+:::single-choice{#kernel-modules-modprobe-dependencies} 通常、直接の `insmod` より `modprobe` が推奨されるのはなぜですか？
 
 ::option[module 全体を非特権ユーザー空間で実行するから。]{#kernel-modules-modprobe-userspace explanation="insert された module は privileged kernel code として動きます。"}
 ::option[すべての third-party module が署名済みで安全だと保証するから。]{#kernel-modules-modprobe-guarantee explanation="強制は policy に依存し、有効な signature も defect がないことは証明しません。"}
@@ -74,8 +72,7 @@ example_module
 
 hardware alias によって明示的な list なしでも自動 load される場合があります。early boot 内で必要な module は、設定変更後にディストリビューション指定手順で initramfs を更新します。
 
-:::single-choice{#kernel-modules-options-versus-load}
-`/etc/modprobe.d/` の `options` 行は何をしますか？
+:::single-choice{#kernel-modules-options-versus-load} `/etc/modprobe.d/` の `options` 行は何をしますか？
 
 ::option[その行だけで module が毎 boot 必ず load されるようにする。]{#kernel-modules-options-autoload explanation="boot-time load request には modules-load 設定や device alias など別の仕組みを使います。"}
 ::option[指定 module が load されるときに使う parameter を設定する。]{#kernel-modules-options-parameters .correct explanation="modprobe が insert 時に設定済み key-value argument を適用します。"}
@@ -92,8 +89,7 @@ blacklist example_module
 
 blacklist は通常、module alias を通じた自動 load を抑止します。すでに load 済み module を unload せず、initramfs からも取り除かず、正確な名前による明示 load や dependency としての load を必ず防ぐわけでもありません。security hardening には、threat 固有の module availability、signature enforcement、initramfs content、boot parameter、policy の組み合わせが必要です。
 
-:::single-choice{#kernel-modules-blacklist-effect}
-基本的な modprobe の `blacklist` 行が主に抑止するものは何ですか？
+:::single-choice{#kernel-modules-blacklist-effect} 基本的な modprobe の `blacklist` 行が主に抑止するものは何ですか？
 
 ::option[module alias を通じた自動 load。]{#kernel-modules-blacklist-aliases .correct explanation="この directive は、code がすでに load 済み、または load される全経路を普遍的に禁止するものではありません。"}
 ::option[似た名前を持つ全 user-space program の実行。]{#kernel-modules-blacklist-user-programs explanation="modprobe configuration が適用されるのは kernel module resolution です。"}
@@ -112,8 +108,7 @@ modprobe は適切な場合、使われなくなった dependency も削除で�
 
 維持すべき system で module を強制 unload してはいけません。削除 bug や outstanding activity が kernel crash または data corruption を起こす可能性があります。
 
-:::single-choice{#kernel-modules-remove-command}
-名前を指定し、dependency を考慮して module の削除を要求するコマンドはどれですか？
+:::single-choice{#kernel-modules-remove-command} 名前を指定し、dependency を考慮して module の削除を要求するコマンドはどれですか？
 
 ::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="lsmod は読み取り専用の一覧ツールで、削除の役割はありません。"}
 ::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="uname は kernel information を報告し、module は管理しません。"}

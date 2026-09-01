@@ -29,8 +29,7 @@ $ resolvectl query www.example.com
 
 Une application peut toujours utiliser sa propre bibliothèque ou un mandataire de résolution ; reproduisez donc le problème dans l'application lorsque les sorties diffèrent.
 
-:::single-choice{#dns-tools-system-resolver}
-Quelle commande exerce le chemin configuré du service de noms système ?
+:::single-choice{#dns-tools-system-resolver} Quelle commande exerce le chemin configuré du service de noms système ?
 
 ::option[`dig @SERVER NAME` uniquement.]{#dns-tools-dig-direct explanation="Dig envoie une requête DNS et ne lit normalement pas les correspondances du fichier hosts."}
 ::option[`ip link set down`]{#dns-tools-link-down explanation="Cette commande interrompt l'interface au lieu de tester la résolution."}
@@ -49,8 +48,7 @@ $ dig example.com MX
 
 La sortie indique le serveur répondant, l'état, les indicateurs, la question, la réponse, l'autorité, les données supplémentaires, le temps de requête et les métadonnées de transport. `+short` est pratique dans les scripts, mais masque des éléments nécessaires au diagnostic.
 
-:::single-choice{#dns-tools-record-type}
-Quelle requête demande des enregistrements d'adresses IPv6 ?
+:::single-choice{#dns-tools-record-type} Quelle requête demande des enregistrements d'adresses IPv6 ?
 
 ::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="Les enregistrements AAAA contiennent des adresses IPv6."}
 ::option[`dig NAME MX`]{#dns-tools-mx explanation="MX demande les enregistrements des échangeurs de courrier."}
@@ -67,8 +65,7 @@ $ dig @192.0.2.53 www.example.com A
 
 Comparez le résolveur récursif configuré, un second résolveur approuvé et chaque serveur d'autorité pour distinguer le cache de l'autorité. Un état `NOERROR` peut ne contenir aucune réponse du type demandé ; `NXDOMAIN` indique que le nom n'existe pas, et `SERVFAIL` que le serveur n'a pas pu terminer la requête.
 
-:::single-choice{#dns-tools-noerror-empty}
-`NOERROR` peut-il être accompagné d'une section de réponse vide ?
+:::single-choice{#dns-tools-noerror-empty} `NOERROR` peut-il être accompagné d'une section de réponse vide ?
 
 ::option[Oui, si le nom existe, mais ne possède pas le type d'enregistrement demandé.]{#dns-tools-noerror-nodata .correct explanation="L'état et le nombre de réponses doivent être interprétés ensemble."}
 ::option[Non, cet état garantit au moins un enregistrement d'adresse.]{#dns-tools-noerror-always-answer explanation="Le nom peut exister sans posséder de données du type demandé."}
@@ -81,8 +78,7 @@ Comparez le résolveur récursif configuré, un second résolveur approuvé et c
 
 `dig +trace NAME` effectue son propre parcours itératif depuis les indications de la racine. Son résultat peut différer d'un résolveur de production, car il contourne son cache, sa transmission, sa politique, sa validation DNSSEC et son emplacement réseau.
 
-:::single-choice{#dns-tools-aa-flag}
-Que signifie l'indicateur de réponse `aa` ?
+:::single-choice{#dns-tools-aa-flag} Que signifie l'indicateur de réponse `aa` ?
 
 ::option[La requête a utilisé deux adresses IPv4 identiques.]{#dns-tools-two-addresses explanation="Cet indicateur n'a aucun rapport avec le nombre de réponses ou la famille d'adresses."}
 ::option[La réponse a été chiffrée avec des identifiants applicatifs.]{#dns-tools-aa-encrypted explanation="Les indicateurs DNS n'établissent pas un transport chiffré."}
@@ -105,8 +101,7 @@ $ dig +tcp @192.0.2.53 example.com SOA
 
 Le DNS moderne peut utiliser UDP ou TCP sur le port 53 ; les deux doivent être autorisés selon les besoins. Une réponse UDP portant l'indicateur de troncature conduit les clients conformes à réessayer sur un transport adapté.
 
-:::single-choice{#dns-tools-tcp-test}
-Que change `dig +tcp` ?
+:::single-choice{#dns-tools-tcp-test} Que change `dig +tcp` ?
 
 ::option[La requête DNS utilise TCP au lieu de la tentative UDP par défaut.]{#dns-tools-use-tcp .correct explanation="Ce test aide à isoler le filtrage du transport et les réponses qui exigent un flux fiable plus grand."}
 ::option[La requête ne demande que des enregistrements de services TCP.]{#dns-tools-tcp-records explanation="Le type DNS demandé est précisé séparément."}

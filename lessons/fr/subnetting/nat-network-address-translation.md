@@ -18,8 +18,7 @@ Le NAT source remplace l’adresse source d’un paquet lorsqu’il quitte un r�
 
 Le traducteur suit les associations afin de pouvoir réécrire les paquets de réponse vers le terminal interne d’origine. Il achemine normalement le même flux de transport ; il n’a pas besoin d’ouvrir une connexion proxy distincte comme le ferait un proxy applicatif.
 
-:::single-choice{#nat-source-translation}
-Que modifie le NAT source sur un paquet sortant ?
+:::single-choice{#nat-source-translation} Que modifie le NAT source sur un paquet sortant ?
 
 ::option[Uniquement les permissions de fichiers de l’application de destination.]{#nat-file-permissions explanation="Le NAT agit sur les en-têtes réseau et de transport, et non sur les systèmes de fichiers distants."}
 ::option[L’adresse source et, dans un usage plusieurs-vers-un, souvent le port source.]{#nat-source-fields .correct explanation="L’association permet de relier le trafic de retour au flux interne d’origine."}
@@ -30,8 +29,7 @@ Que modifie le NAT source sur un paquet sortant ?
 
 Le NAT de destination réécrit l’adresse ou le port de destination, généralement pour publier un service interne par un terminal externe. Une règle de redirection de port peut associer un port TCP externe à une autre adresse et un autre port internes. Le trafic de retour exige une traduction inverse cohérente.
 
-:::single-choice{#nat-port-forward}
-Quelle forme de NAT met couramment en œuvre une redirection de port entrante ?
+:::single-choice{#nat-port-forward} Quelle forme de NAT met couramment en œuvre une redirection de port entrante ?
 
 ::option[Uniquement le NAT source avant la recherche de route.]{#nat-snat-port-forward explanation="La publication d’une destination interne exige une traduction des champs de destination."}
 ::option[Aucune traduction d’adresse ni de port.]{#nat-no-translation explanation="Une règle de redirection de port constitue par définition une politique de traduction."}
@@ -42,8 +40,7 @@ Quelle forme de NAT met couramment en œuvre une redirection de port entrante ?
 
 Le NAT n’est pas un pare-feu. Un traducteur avec état peut ne posséder aucune association pour un trafic entrant non sollicité, mais l’acheminement explicite, la traduction de destination, le filtrage et l’exposition de l’application déterminent ce qui est accessible. La politique de sécurité doit être exprimée et auditée par des règles de pare-feu, des services au moindre privilège et des contrôles de bout en bout plutôt que déduite de la réécriture des adresses.
 
-:::single-choice{#nat-not-firewall}
-Pourquoi le NAT ne doit-il pas être considéré comme une politique de sécurité à lui seul ?
+:::single-choice{#nat-not-firewall} Pourquoi le NAT ne doit-il pas être considéré comme une politique de sécurité à lui seul ?
 
 ::option[Le NAT chiffre automatiquement chaque charge utile.]{#nat-encrypts explanation="La traduction d’adresses n’assure aucune confidentialité de la charge utile."}
 ::option[Les règles de traduction et les règles de filtrage du trafic ont des rôles différents.]{#nat-filter-separate .correct explanation="L’accessibilité et l’autorisation exigent un filtrage et une politique de service explicites même en présence de traduction."}
@@ -63,8 +60,7 @@ $ sudo conntrack -L
 
 La deuxième commande exige les outils conntrack et des privilèges. Les modifications du jeu de règles peuvent interrompre l’accès distant ; employez donc un accès de récupération par la console, une configuration atomique, une validation et un retour en arrière.
 
-:::single-choice{#nat-trace-flow}
-Quel indice est nécessaire pour retrouver le client interne à l’origine d’un flux qui partage une adresse ?
+:::single-choice{#nat-trace-flow} Quel indice est nécessaire pour retrouver le client interne à l’origine d’un flux qui partage une adresse ?
 
 ::option[Uniquement l’adresse externe, sans heure ni port.]{#nat-address-only explanation="De nombreux clients et flux peuvent partager cette adresse."}
 ::option[Uniquement le nom d’hôte affiché du client.]{#nat-hostname-only explanation="Le traducteur associe des tuples de paquets, et pas nécessairement des noms d’hôtes."}

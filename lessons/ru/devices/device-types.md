@@ -28,8 +28,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 «Символьный» не означает, что каждый системный вызов передаёт ровно один символ. Приложения читают и пишут буферы, а блокирование, границы и управление определяет драйвер.
 
-:::single-choice{#device-types-character-marker}
-Какой первый символ режима обозначает символьный узел?
+:::single-choice{#device-types-character-marker} Какой первый символ режима обозначает символьный узел?
 
 ::option[`b`]{#device-types-marker-block explanation="`b` обозначает блочный узел."}
 ::option[`p`]{#device-types-marker-pipe explanation="`p` обозначает FIFO, или именованный канал."}
@@ -42,8 +41,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 Блочный узел не является смонтированной файловой системой. Он представляет устройство или логическую область; файловую систему создают на нём и монтируют отдельно. Сырая запись в неверный узел может уничтожить разделы, файловые системы и данные.
 
-:::single-choice{#device-types-block-marker}
-Что означает первый символ режима `b`?
+:::single-choice{#device-types-block-marker} Что означает первый символ режима `b`?
 
 ::option[Фоновое задание оболочки.]{#device-types-background-job explanation="Состояние задания не кодируется символом типа файловой системы."}
 ::option[Интерфейс блочного устройства.]{#device-types-block-device .correct explanation="Блочные специальные файлы предоставляют адресуемое хранение через блочную подсистему ядра."}
@@ -58,8 +56,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 Ни FIFO, ни Unix-сокет не используют major- и minor-номера для выбора аппаратного драйвера.
 
-:::single-choice{#device-types-pipe-socket-distinction}
-Какое утверждение правильно различает эти объекты IPC?
+:::single-choice{#device-types-pipe-socket-distinction} Какое утверждение правильно различает эти объекты IPC?
 
 ::option[`p` означает раздел диска, а `s` — SSD.]{#device-types-storage-letters explanation="Разделы обычно блочные, а буквы не кодируют технологию накопителя."}
 ::option[`p` означает FIFO, а `s` — узел Unix-сокета.]{#device-types-p-and-s .correct explanation="Это отдельные типы объектов файловой системы для локального межпроцессного взаимодействия."}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 GNU `stat` выводит `%t` и `%T` в шестнадцатеричном виде.
 
-:::single-choice{#device-types-major-minor-scope}
-Какие объекты используют major- и minor-номера для идентификации интерфейса ядра?
+:::single-choice{#device-types-major-minor-scope} Какие объекты используют major- и minor-номера для идентификации интерфейса ядра?
 
 ::option[Все обычные файлы и каталоги.]{#device-types-all-files explanation="Обычные файлы используют размер и метаданные, а не пару узла устройства."}
 ::option[Только символические ссылки с отсутствующей целью.]{#device-types-broken-symlinks explanation="Ссылки хранят текст пути и не становятся узлами при отсутствии цели."}

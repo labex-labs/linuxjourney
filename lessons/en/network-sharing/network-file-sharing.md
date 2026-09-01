@@ -22,8 +22,7 @@ Network file movement ranges from one-time copies to continuously mounted shares
 
 A copy is not automatically a backup. A backup design also needs independent retention, restore testing, integrity checks, and protection from the same deletion or compromise.
 
-:::single-choice{#file-sharing-one-time-ssh-copy}
-Which tool is suitable for a one-time file copy through SSH?
+:::single-choice{#file-sharing-one-time-ssh-copy} Which tool is suitable for a one-time file copy through SSH?
 
 ::option[`scp`]{#file-sharing-scp .correct explanation="SCP uses SSH authentication and transport for file copies."}
 ::option[`uptime`]{#file-sharing-uptime explanation="Uptime reports host runtime and load rather than transferring files."}
@@ -41,8 +40,7 @@ $ scp -- alice@example.net:/srv/outgoing/result.txt ./result.txt
 
 The first command pushes a local file; the second pulls a remote file. A colon distinguishes the remote host from its path. Quote paths that contain shell-sensitive characters and avoid ambiguous untrusted filenames.
 
-:::single-choice{#file-sharing-scp-pull-source}
-In an `scp` pull, where does the remote specification appear?
+:::single-choice{#file-sharing-scp-pull-source} In an `scp` pull, where does the remote specification appear?
 
 ::option[As the source before the local destination.]{#file-sharing-pull-source .correct explanation="Copy direction follows the source-to-destination operand order."}
 ::option[As the local destination after every option.]{#file-sharing-pull-destination explanation="The remote object being retrieved is the source operand."}
@@ -59,8 +57,7 @@ $ scp -r -- project/ alice@example.net:/srv/incoming/
 
 Before copying, inspect data size, symlinks, permissions, ownership requirements, free space, and destination naming. SCP is not a synchronization policy; repeated directory copies can leave files at the destination that no longer exist at the source.
 
-:::single-choice{#file-sharing-scp-recursive}
-What does `scp -r` request?
+:::single-choice{#file-sharing-scp-recursive} What does `scp -r` request?
 
 ::option[Removal of the remote destination before copying.]{#file-sharing-scp-remove explanation="Recursive mode traverses directories and does not define cleanup policy."}
 ::option[Recursive copying of a directory tree.]{#file-sharing-scp-tree .correct explanation="The flag is required when the selected source is a directory."}
@@ -73,8 +70,7 @@ SSH host-key verification protects against connecting to the wrong server. Treat
 
 After transfer, verify exit status, expected files, sizes, metadata, and—when integrity requirements demand it—independently calculated hashes at both ends. Confirm that the destination application can actually read the data.
 
-:::single-choice{#file-sharing-host-key-change}
-What should you do when SSH reports an unexpected changed host key?
+:::single-choice{#file-sharing-host-key-change} What should you do when SSH reports an unexpected changed host key?
 
 ::option[Disable host-key checking for every future transfer.]{#file-sharing-disable-checking explanation="This removes an important server-identity control."}
 ::option[Verify the new key through a trusted source before continuing.]{#file-sharing-verify-key .correct explanation="The warning can indicate a rebuilt host, wrong destination, or interception and should be investigated."}

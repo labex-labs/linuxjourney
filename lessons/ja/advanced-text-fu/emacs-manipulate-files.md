@@ -24,16 +24,14 @@ Emacs は、読み取り可能な既存ファイルをバッファーで開き�
 
 パス名の入力中は Tab 補完を使えます。ディレクトリを開くと、通常はテキストファイルとして扱わず、Emacs のディレクトリエディタである Dired が開きます。
 
-:::single-choice{#emacs-find-file-key}
-パス名の入力を求め、そのファイルを開く Emacs のキーシーケンスはどれですか？
+:::single-choice{#emacs-find-file-key} パス名の入力を求め、そのファイルを開く Emacs のキーシーケンスはどれですか？
 
 ::option[`C-x C-s`]{#emacs-file-save explanation="これは現在のファイルバッファーを保存するもので、別のパス名を開く入力は求めません。"}
 ::option[`C-x C-c`]{#emacs-file-exit explanation="これはファイルを開かず、Emacs の終了を始めます。"}
 ::option[`C-x C-f`]{#emacs-find-file .correct explanation="これは `find-file` を実行し、開くパス名をミニバッファーで求めます。"}
 :::
 
-:::single-choice{#emacs-find-missing-file}
-`C-x C-f` で存在しないパス名を開いた場合、通常、ディスク上のファイルはいつ作成されますか？
+:::single-choice{#emacs-find-missing-file} `C-x C-f` で存在しないパス名を開いた場合、通常、ディスク上のファイルはいつ作成されますか？
 
 ::option[新しいバッファーの保存に成功した後だけ。]{#emacs-file-created-on-save .correct explanation="ファイルが存在する前でもバッファーに編集内容を保持でき、保存時に作成されます。"}
 ::option[パス名を入力した直後。]{#emacs-file-created-immediately explanation="Emacs はまず新しいパス名に関連付けたバッファーを作り、ディスク上の作成は延期します。"}
@@ -50,8 +48,7 @@ C-x C-s
 
 バッファーに関連付けられたファイル名がなければ、Emacs が入力を求めます。書き込みに成功するとバッファーの変更済み表示が消え、失敗すると未保存のデータはバッファーに残り、エラーが報告されます。
 
-:::single-choice{#emacs-save-current-buffer}
-現在のファイルバッファーを保存するキーシーケンスはどれですか？
+:::single-choice{#emacs-save-current-buffer} 現在のファイルバッファーを保存するキーシーケンスはどれですか？
 
 ::option[`C-x C-s`]{#emacs-save-buffer-key .correct explanation="`C-x C-s` は現在のバッファーに対して `save-buffer` を実行します。"}
 ::option[`C-x C-w`]{#emacs-write-file-key explanation="これは別のファイル名を求め、バッファーが開くファイルを変更します。"}
@@ -68,8 +65,7 @@ C-x C-w
 
 これが Emacs の「名前を付けて保存」の動作です。別のコピーを書き込んだ後も元のパス名を開き続ける操作とは異なります。
 
-:::single-choice{#emacs-write-file-as}
-現在のバッファーで通常の「名前を付けて保存」を行うキーシーケンスはどれですか？
+:::single-choice{#emacs-write-file-as} 現在のバッファーで通常の「名前を付けて保存」を行うキーシーケンスはどれですか？
 
 ::option[`C-x C-f`]{#emacs-find-file-other explanation="これは別のバッファーへ切り替わる可能性のあるファイルを開く操作で、現在のバッファーの「名前を付けて保存」ではありません。"}
 ::option[`C-x k`]{#emacs-write-as-kill-buffer explanation="これはバッファーの破棄を尋ね、未保存の変更について確認することはありますが、新しい名前では保存しません。"}
@@ -86,8 +82,7 @@ C-x s
 
 通常、Emacs は対象となる変更済みバッファーごとに保存するか尋ねます。バッファー名を読み、意図的に回答してください。確認なしですべてを保存するショートカットではありません。
 
-:::single-choice{#emacs-save-some-buffers}
-通常、`C-x s` は何をしますか？
+:::single-choice{#emacs-save-some-buffers} 通常、`C-x s` は何をしますか？
 
 ::option[変更済みのファイルバッファーを保存するか確認します。]{#emacs-prompt-save-some .correct explanation="`save-some-buffers` は対象となる変更済みバッファーを確認し、どれを書き込むか尋ねます。"}
 ::option[名前を表示せず、すべてのバッファーを自動保存します。]{#emacs-silent-save-all explanation="通常の対話型コマンドは、すべてを無条件に書き込まず確認します。"}

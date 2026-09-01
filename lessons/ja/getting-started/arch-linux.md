@@ -16,8 +16,7 @@ Arch Linux は、利用者による制御と手を動かす作業で知られる
 
 予定されたメジャーリリースではなく、システムへ継続的に更新を届けるローリングリリース方式を採用します。
 
-:::single-choice{#recognize-rolling-release}
-Arch Linux のローリングリリース方式は何を意味しますか？
+:::single-choice{#recognize-rolling-release} Arch Linux のローリングリリース方式は何を意味しますか？
 
 ::option[導入済みシステムが継続的なパッケージ更新を受け取る]{#continuous-upgrades .correct explanation="独立したメジャーシステムリリースではなく、継続的な更新で進化し、保守された導入環境は最新状態を保てます。"}
 ::option[複数年ごとの固定アップグレード版を待つ]{#fixed-major-editions explanation="固定メジャー版はポイントリリース方式で、Arch は導入済みシステムを継続的に更新します。"}
@@ -30,8 +29,7 @@ Arch Linux のローリングリリース方式は何を意味しますか？
 
 好奇心のある中級・上級者によく勧められますが、[Linux ディストリビューションの選び方](https://labex.io/lesson/choosing-a-linux-distribution) で初心者へ最初に提案されることは通常ありません。
 
-:::single-choice{#match-arch-user}
-Arch Linux に最もよく合う利用者はどれですか？
+:::single-choice{#match-arch-user} Arch Linux に最もよく合う利用者はどれですか？
 
 ::option[すべての判断を自動で処理してほしい初心者]{#automatic-beginner explanation="多くの選択を利用者に委ねるため、準備済みの既定値が多いディストリビューションの方が適します。"}
 ::option[ソフトウェア更新を一切確認したくない利用者]{#ignore-updates explanation="ローリングシステムには能動的な保守と更新通知への注意が必要です。"}
@@ -50,16 +48,14 @@ Pacman は Arch のパッケージマネージャーで、ソフトウェアを�
 
 一般的な `sudo pacman -Syu` はパッケージデータベースを同期し、設定済みリポジトリから完全なアップグレードを行います。Arch は部分アップグレードをサポートしないため、対応するシステム更新を完了せずデータベースだけを更新してはいけません。Pacman は直接的で高速な、Arch の最小主義に合うツールです。
 
-:::single-choice{#identify-pacman-role}
-Arch Linux における Pacman の役割は何ですか？
+:::single-choice{#identify-pacman-role} Arch Linux における Pacman の役割は何ですか？
 
 ::option[ソフトウェアを管理せずデスクトップ配置だけを選ぶ]{#pacman-desktop-layout explanation="デスクトップ設定とパッケージ管理は別で、Pacman はデスクトップ部品を含むソフトウェアを管理します。"}
 ::option[ローリングリリースを固定版へ置き換える]{#pacman-fixed-releases explanation="パッケージ更新を通じてローリングシステムを支え、ポイントリリースへ変換しません。"}
 ::option[ソフトウェアパッケージを導入、更新、削除、追跡する]{#pacman-package-manager .correct explanation="Arch のパッケージマネージャーとして、導入済みパッケージとリポジトリを管理します。"}
 :::
 
-:::single-choice{#avoid-partial-upgrades}
-パッケージデータベースの更新後、Arch 利用者が完全なアップグレードを行うべきなのはなぜですか？
+:::single-choice{#avoid-partial-upgrades} パッケージデータベースの更新後、Arch 利用者が完全なアップグレードを行うべきなのはなぜですか？
 
 ::option[古いライブラリを保つには部分更新が推奨されるから]{#partial-upgrades-recommended explanation="Arch は部分アップグレードを明示的にサポートせず、新旧のライブラリと依存パッケージを混ぜると壊れる可能性があります。"}
 ::option[データベース更新が OS を自動で再インストールするから]{#refresh-reinstalls-system explanation="更新されるのはパッケージ情報だけで再インストールはしませんが、対応する完全更新を続ける必要があります。"}

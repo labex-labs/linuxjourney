@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 This changes the user owner of `myfile` to `patty` and leaves its group unchanged. Changing a file's user owner normally requires appropriate privilege, even if you currently own the file. This restriction prevents users from transferring files to evade quotas or other ownership-based controls.
 
-:::single-choice{#ownership-permissions-change-user}
-Which command changes the user owner of `myfile` to `patty` while leaving its group unchanged?
+:::single-choice{#ownership-permissions-change-user} Which command changes the user owner of `myfile` to `patty` while leaving its group unchanged?
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="A username alone as the `chown` ownership operand changes the user owner and preserves the group."}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` changes the group owner rather than the user owner."}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 Afterward, the group's mode bits apply when the kernel selects the group class; changing the group does not automatically add read, write, or execute bits.
 
-:::single-choice{#ownership-permissions-change-group}
-What does `chgrp whales myfile` change?
+:::single-choice{#ownership-permissions-change-group} What does `chgrp whales myfile` change?
 
 ::option[The user owner recorded for `myfile`.]{#ownership-permissions-group-not-user explanation="The user owner is changed with `chown`, not `chgrp`."}
 ::option[The members listed in the `whales` group.]{#ownership-permissions-group-members explanation="The command changes file metadata; it does not edit the system's group membership database."}
@@ -68,8 +66,7 @@ The command assigns `patty` as the user owner and `whales` as the group owner. V
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-Which ownership specification assigns user `patty` and group `whales` in one `chown` command?
+:::single-choice{#ownership-permissions-change-both} Which ownership specification assigns user `patty` and group `whales` in one `chown` command?
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="A colon separates the user and group names in the combined ownership specification."}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="A slash is not the introduced separator for a `chown` user and group operand."}
@@ -80,8 +77,7 @@ Which ownership specification assigns user `patty` and group `whales` in one `ch
 
 The `-R` option changes ownership recursively, but a broad recursive command can cross unexpected directory trees or affect service data. Confirm the exact target, understand symbolic-link behavior for your implementation, preview the tree, and verify a small sample before changing a large hierarchy. Avoid copying privileged ownership commands from examples onto real systems without reviewing their scope.
 
-:::single-choice{#ownership-permissions-mode-separate}
-After changing a file's group owner, what happens to its ordinary group permission bits?
+:::single-choice{#ownership-permissions-mode-separate} After changing a file's group owner, what happens to its ordinary group permission bits?
 
 ::option[They always become read and write automatically.]{#ownership-permissions-mode-read-write explanation="`chgrp` does not automatically select a fixed group mode."}
 ::option[They are copied from the owner's permission triplet.]{#ownership-permissions-mode-copied explanation="The owner and group triplets remain independent when ownership changes."}

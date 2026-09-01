@@ -24,8 +24,7 @@ Da mais baixa para a mais alta, as camadas OSI são:
 6. Apresentação: representação, transformação e codificação de dados.
 7. Aplicação: serviços de rede usados pelas aplicações.
 
-:::single-choice{#osi-network-layer-number}
-Qual camada OSI cuida do endereçamento lógico e do encaminhamento entre redes?
+:::single-choice{#osi-network-layer-number} Qual camada OSI cuida do endereçamento lógico e do encaminhamento entre redes?
 
 ::option[Camada 3, Rede.]{#osi-layer-three .correct explanation="A camada de rede descreve o endereçamento lógico e o encaminhamento entre redes."}
 ::option[Camada 1, Física.]{#osi-layer-one explanation="A camada física trata dos sinais e dos meios."}
@@ -36,8 +35,7 @@ Qual camada OSI cuida do endereçamento lógico e do encaminhamento entre redes?
 
 Afirmações como “um loop de Camada 2” ou “uma porta de Camada 4” identificam uma área funcional sem explicar todos os detalhes da implementação. Um protocolo real pode atravessar limites, e criptografia, túneis, proxies ou sobreposições podem criar várias camadas aninhadas.
 
-:::single-choice{#osi-model-purpose}
-Para que o modelo OSI é mais útil na solução cotidiana de problemas?
+:::single-choice{#osi-model-purpose} Para que o modelo OSI é mais útil na solução cotidiana de problemas?
 
 ::option[Garantir que todo protocolo tenha exatamente sete cabeçalhos.]{#osi-seven-headers explanation="As implementações não correspondem individualmente a sete cabeçalhos no meio de transmissão."}
 ::option[Substituir todas as capturas de pacotes por um diagrama.]{#osi-replace-captures explanation="O modelo orienta a investigação, mas não substitui as evidências."}
@@ -48,8 +46,7 @@ Para que o modelo OSI é mais útil na solução cotidiana de problemas?
 
 A suíte de protocolos da Internet e o modelo de referência OSI se desenvolveram por meio de histórias de padronização diferentes. O modelo TCP/IP prático geralmente agrupa as responsabilidades de sessão e apresentação do OSI em sua camada de aplicação e combina as questões físicas e de enlace de dados em uma camada de enlace ou de acesso à rede. Os mapeamentos são aproximados, não uma prova de que uma pilha foi implementada diretamente a partir da outra.
 
-:::single-choice{#osi-tcpip-mapping}
-Como um mapeamento das camadas OSI para TCP/IP deve ser interpretado?
+:::single-choice{#osi-tcpip-mapping} Como um mapeamento das camadas OSI para TCP/IP deve ser interpretado?
 
 ::option[Como uma regra exata que todo protocolo deve seguir.]{#osi-exact-rule explanation="As responsabilidades dos protocolos frequentemente atravessam limites conceituais."}
 ::option[Como evidência de que o TCP/IP usa sete camadas obrigatórias no meio de transmissão.]{#osi-tcp-seven explanation="O TCP/IP costuma ser apresentado com quatro ou cinco camadas."}
@@ -60,8 +57,7 @@ Como um mapeamento das camadas OSI para TCP/IP deve ser interpretado?
 
 Comece pelo sintoma e teste as suposições, em vez de verificar mecanicamente as camadas em ordem numérica. Uma falha na Web pode envolver o estado do enlace local, o roteamento IP, a acessibilidade do transporte, TLS, resolução de nomes, autenticação ou comportamento da aplicação. Evidências em uma camada podem orientar o próximo teste sem comprovar que as camadas superiores funcionam.
 
-:::single-choice{#osi-link-success-limit}
-O que um enlace Ethernet local funcionando comprova?
+:::single-choice{#osi-link-success-limit} O que um enlace Ethernet local funcionando comprova?
 
 ::option[Que todos os serviços HTTP remotos estão íntegros.]{#osi-link-proves-http explanation="O estado do enlace local não pode comprovar a integridade de uma aplicação remota."}
 ::option[Que o DNS não contém registros incorretos.]{#osi-link-proves-dns explanation="Os dados de nomes são independentes da conectividade básica do enlace."}

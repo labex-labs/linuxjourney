@@ -37,8 +37,7 @@ WantedBy=multi-user.target
 
 `ExecStart=` is not passed through a shell by default. Shell pipelines, redirections, variables, and quoting do not behave like an interactive command line unless an explicit shell is intentionally invoked.
 
-:::single-choice{#systemd-goals-install-section}
-What is the primary purpose of `[Install]` directives such as `WantedBy=`?
+:::single-choice{#systemd-goals-install-section} What is the primary purpose of `[Install]` directives such as `WantedBy=`?
 
 ::option[Guarantee that the service process is already running.]{#systemd-goals-install-running explanation="Runtime activation requires start or another triggering dependency."}
 ::option[Describe links or relationships created when the unit is enabled.]{#systemd-goals-enable-links .correct explanation="Install metadata is interpreted by enablement operations and is separate from current process state."}
@@ -66,8 +65,7 @@ $ systemctl cat UNIT.service
 $ systemctl show UNIT.service
 ```
 
-:::single-choice{#systemd-goals-list-units-versus-files}
-What does `list-unit-files` show that `list-units` does not primarily show?
+:::single-choice{#systemd-goals-list-units-versus-files} What does `list-unit-files` show that `list-units` does not primarily show?
 
 ::option[Only processes consuming the most CPU.]{#systemd-goals-cpu-processes explanation="Process resource ranking is outside these unit inventory commands."}
 ::option[Installed unit-file enablement states.]{#systemd-goals-unit-file-state .correct explanation="It reports whether unit files are enabled, disabled, static, masked, and related installation states."}
@@ -90,8 +88,7 @@ $ sudo systemctl daemon-reload
 
 `daemon-reload` rereads unit definitions and rebuilds dependencies. It does not reload application configuration or restart running services. Validate unit syntax and dependencies with `systemd-analyze verify` where appropriate, then review the effective merged unit.
 
-:::single-choice{#systemd-goals-daemon-reload}
-What does `systemctl daemon-reload` do?
+:::single-choice{#systemd-goals-daemon-reload} What does `systemctl daemon-reload` do?
 
 ::option[Forces every daemon to reread its application configuration.]{#systemd-goals-reload-all-apps explanation="Application reload is service-specific and separate from manager configuration."}
 ::option[Reboots the kernel into a new release.]{#systemd-goals-reload-kernel explanation="Kernel activation requires a boot, not a unit-definition reload."}
@@ -121,8 +118,7 @@ $ journalctl -u peanut.service -b
 
 “Active” is manager state, not proof that every application endpoint is healthy.
 
-:::single-choice{#systemd-goals-start-peanut}
-Which command starts `peanut.service` now without changing future enablement by itself?
+:::single-choice{#systemd-goals-start-peanut} Which command starts `peanut.service` now without changing future enablement by itself?
 
 ::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="Enable changes installation links but does not start the service unless combined with `--now`."}
 ::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="Start requests current runtime activation and is separate from enablement."}
@@ -142,8 +138,7 @@ Enable does not start the unit unless `--now` is added. Disable does not stop a 
 
 Masking links the unit to `/dev/null` and blocks ordinary activation, including dependency activation, until unmasked. It is stronger than disable and can break dependents; inspect reverse dependencies before using it.
 
-:::single-choice{#systemd-goals-disable-runtime}
-What happens to an already running service after `systemctl disable UNIT` without `--now`?
+:::single-choice{#systemd-goals-disable-runtime} What happens to an already running service after `systemctl disable UNIT` without `--now`?
 
 ::option[It is immediately killed with `SIGKILL`.]{#systemd-goals-disable-kills explanation="Disable alone does not request a current stop."}
 ::option[Its executable is deleted from the filesystem.]{#systemd-goals-disable-deletes explanation="Enablement operations manage links, not program package files."}

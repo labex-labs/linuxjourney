@@ -23,8 +23,7 @@ $ uname -r
 
 Esto no lista todos los kernels instalados y no cambia inmediatamente cuando se instala un paquete más reciente. El sistema debe arrancar la imagen nueva antes de que `uname -r` informe de ella. Consulta los paquetes instalados y las entradas de arranque con las herramientas propias de la distribución.
 
-:::single-choice{#kernel-installation-uname-release}
-¿Qué muestra `uname -r`?
+:::single-choice{#kernel-installation-uname-release} ¿Qué muestra `uname -r`?
 
 ::option[La cadena de versión del kernel que se está ejecutando actualmente.]{#kernel-installation-running-release .correct explanation="Informa del estado activo del kernel, no solo de la imagen más reciente almacenada en el disco."}
 ::option[Todos los paquetes de kernel disponibles en todos los repositorios.]{#kernel-installation-all-packages explanation="El inventario del repositorio corresponde al gestor de paquetes."}
@@ -37,8 +36,7 @@ Instala o conserva el paquete de seguimiento o metapaquete de kernel compatible 
 
 No conviertas directamente una cadena de versión de `uname -r` en un operando de `apt install` suponiendo que será válido. Consulta la documentación actual de la distribución e inspecciona los candidatos con el gestor de paquetes antes de instalar.
 
-:::single-choice{#kernel-installation-meta-package}
-¿Por qué resulta útil un metapaquete de kernel compatible?
+:::single-choice{#kernel-installation-meta-package} ¿Por qué resulta útil un metapaquete de kernel compatible?
 
 ::option[Garantiza que nunca sea necesario reiniciar.]{#kernel-installation-no-reboot explanation="Un kernel recién instalado solo se activa después de arrancarlo, salvo el alcance limitado de mecanismos especializados de parcheo en vivo."}
 ::option[Convierte todos los controladores externos al árbol en código integrado.]{#kernel-installation-convert-drivers explanation="Los módulos externos siguen necesitando compilaciones y firmas compatibles."}
@@ -57,8 +55,7 @@ Antes de una transacción del kernel:
 
 La transacción de paquetes debe generar un initramfs correspondiente y actualizar las entradas de arranque mediante los mecanismos de la distribución. Lee todos los errores; que un paquete figure como instalado no basta si falló la generación del initramfs o del cargador.
 
-:::single-choice{#kernel-installation-initramfs-error}
-¿Por qué un error al generar el initramfs impide considerar que la operación tuvo éxito?
+:::single-choice{#kernel-installation-initramfs-error} ¿Por qué un error al generar el initramfs impide considerar que la operación tuvo éxito?
 
 ::option[La generación del initramfs cambia la contraseña del shell del usuario.]{#kernel-installation-initramfs-password explanation="El flujo del archivo de arranque no está relacionado con los secretos de autenticación de las cuentas."}
 ::option[El kernel nuevo puede carecer de los módulos o herramientas iniciales necesarios para llegar al almacenamiento raíz.]{#kernel-installation-missing-early-tools .correct explanation="Una imagen puede estar instalada mientras falta o está obsoleto el artefacto del espacio de usuario inicial que necesita."}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 Utiliza herramientas equivalentes en sistemas que no usen systemd. Valida el almacenamiento, los sistemas de archivos, la red, los gráficos, los dispositivos de entrada, los módulos de seguridad, los módulos externos, los contenedores, las máquinas virtuales y la salud de las aplicaciones. Un indicador de inicio de sesión no constituye por sí solo una validación completa.
 
-:::single-choice{#kernel-installation-activation}
-¿Cuándo se convierte un paquete de kernel ordinario recién instalado en el kernel en ejecución?
+:::single-choice{#kernel-installation-activation} ¿Cuándo se convierte un paquete de kernel ordinario recién instalado en el kernel en ejecución?
 
 ::option[En cuanto se escribe `uname -r`.]{#kernel-installation-uname-activates explanation="Uname es de solo lectura y no puede cambiar de kernel."}
 ::option[Después de que la máquina arranca esa imagen del kernel.]{#kernel-installation-after-boot .correct explanation="Instalar archivos no sustituye el kernel que ya se está ejecutando en memoria."}
@@ -91,8 +87,7 @@ Usa el flujo de limpieza compatible del gestor de paquetes solo después de que 
 
 Eliminar archivos manualmente de `/boot` deja incoherentes los estados de los paquetes y del cargador. Si ya se ha agotado el espacio, crea un plan de recuperación antes de modificar archivos en lugar de borrar imágenes arbitrarias.
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-¿Qué kernel debe permanecer instalado durante la validación inicial de uno nuevo?
+:::single-choice{#kernel-installation-old-kernel-removal} ¿Qué kernel debe permanecer instalado durante la validación inicial de uno nuevo?
 
 ::option[Únicamente el kernel nuevo que aún no se ha probado.]{#kernel-installation-only-new explanation="Eliminar todas las alternativas antes de probar convierte un problema de compatibilidad en un incidente de recuperación."}
 ::option[Ningún archivo de kernel bajo la ruta de arranque.]{#kernel-installation-no-kernels explanation="La máquina necesita un artefacto de kernel que se pueda cargar para arrancar Linux."}

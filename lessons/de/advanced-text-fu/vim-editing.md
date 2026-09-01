@@ -28,8 +28,7 @@ Häufig verwendete Operatoren sind:
 
 `dw` löscht beispielsweise den von der Bewegung `w` erfassten Bereich, während `d$` vom Cursor bis einschließlich des Zeilenendes löscht. `2dw` wendet das Löschen auf zwei Wortbewegungen an.
 
-:::single-choice{#vim-edit-operator-motion}
-Was bewirkt `d$` im Normalmodus?
+:::single-choice{#vim-edit-operator-motion} Was bewirkt `d$` im Normalmodus?
 
 ::option[Es löscht ab dem Cursor die gesamte Datei.]{#vim-edit-delete-file-end explanation="Die Dollar-Bewegung zielt auf das Ende der aktuellen Zeile, nicht auf das Ende des gesamten Puffers."}
 ::option[Es löscht vom Cursor bis einschließlich des Zeilenendes.]{#vim-edit-delete-line-end .correct explanation="Der Operator `d` wird auf die Bewegung `$` zum Zeilenende angewendet."}
@@ -49,8 +48,7 @@ Einige Befehle dienen als praktische Kurzformen:
 
 Wird ein Operator wie in `dd` wiederholt, arbeitet er zeilenweise. Ein Zähler erweitert die Anzahl der betroffenen Zeilen.
 
-:::single-choice{#vim-edit-delete-three-lines}
-Welcher Befehl des Normalmodus löscht die aktuelle und die beiden folgenden Zeilen?
+:::single-choice{#vim-edit-delete-three-lines} Welcher Befehl des Normalmodus löscht die aktuelle und die beiden folgenden Zeilen?
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="Bei dieser Befehlsform steht der Zähler vor dem verdoppelten Operator."}
 ::option[`3x`]{#vim-edit-three-x explanation="Dieser Befehl löscht drei Zeichen ab dem Cursor, nicht drei vollständige Zeilen."}
@@ -69,8 +67,7 @@ Der Operator `c` entfernt den ausgewählten Text und wechselt anschließend in d
 
 Das Verhalten von `cw` ist historisch bedingt ein Sonderfall und entspricht häufig `ce`. Textobjekte wie `iw` können die beabsichtigte Grenze deutlicher ausdrücken.
 
-:::single-choice{#vim-edit-change-inner-word}
-Welcher Befehl des Normalmodus ersetzt das innere Wort unter dem Cursor, indem er es löscht und in den Einfügemodus wechselt?
+:::single-choice{#vim-edit-change-inner-word} Welcher Befehl des Normalmodus ersetzt das innere Wort unter dem Cursor, indem er es löscht und in den Einfügemodus wechselt?
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="Dieser Befehl löscht das innere Wort, bleibt jedoch im Normalmodus, statt die Eingabe des Ersatztexts zu beginnen."}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="Dieser Befehl kopiert das innere Wort, ohne den Puffer zu verändern oder in den Einfügemodus zu wechseln."}
@@ -88,8 +85,7 @@ Vim bezeichnet das Kopieren als **Yanking** und das Einfügen als **Putting**:
 
 Auch beim Löschen und Ändern wird Text in Registern gespeichert. Daher kann ein späteres `p` den zuletzt gelöschten Text anstelle eines zuvor kopierten Texts einfügen. In benannten Registern kannst du bestimmten Text gezielt aufbewahren. Beobachte am Anfang aber zunächst, was die jeweils letzte Operation gespeichert hat.
 
-:::single-choice{#vim-edit-yank-put-line}
-Welcher Befehl fügt die mit `yy` kopierte aktuelle Zeile unterhalb der aktuellen Zeile ein?
+:::single-choice{#vim-edit-yank-put-line} Welcher Befehl fügt die mit `yy` kopierte aktuelle Zeile unterhalb der aktuellen Zeile ein?
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="Bei zeilenweise kopiertem Text fügt das kleine `p` die gespeicherte Zeile unterhalb der aktuellen Zeile ein."}
 ::option[`P`]{#vim-edit-put-above explanation="Das große `P` fügt zeilenweisen Text oberhalb der aktuellen Zeile ein."}
@@ -107,8 +103,7 @@ Im Normalmodus:
 
 Der Rückgängig-Verlauf gilt für Änderungen am Puffer, nicht für reine Cursorbewegungen. Speichere Zwischenstände und prüfe deine Änderungen, statt dich auf einen unbegrenzten oder dauerhaften Rückgängig-Verlauf zu verlassen.
 
-:::single-choice{#vim-edit-redo-change}
-Welcher Befehl des Normalmodus stellt eine soeben rückgängig gemachte Änderung wieder her?
+:::single-choice{#vim-edit-redo-change} Welcher Befehl des Normalmodus stellt eine soeben rückgängig gemachte Änderung wieder her?
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="Im Normalmodus scrollt `Ctrl+U` ungefähr einen halben Bildschirm nach oben; es ist kein Wiederherstellen-Befehl."}
 ::option[`.`]{#vim-edit-dot-repeat explanation="Der Punkt führt die letzte Änderung als neue Aktion erneut aus, statt im Rückgängig-Verlauf vorwärtszugehen."}

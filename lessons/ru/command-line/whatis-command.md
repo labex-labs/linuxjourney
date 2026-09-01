@@ -23,8 +23,7 @@ cat (1)              - concatenate files and print on the standard output
 
 Это описание, а не список параметров или примеров. Для деталей используйте `man cat` или `cat --help`.
 
-:::single-choice{#describe-known-command}
-Вы знаете имя `cat` и хотите однострочное описание из руководства. Что запустить?
+:::single-choice{#describe-known-command} Вы знаете имя `cat` и хотите однострочное описание из руководства. Что запустить?
 
 ::option[`man cat`]{#manual-cat explanation="`man cat` открывает полную страницу, то есть даёт больше требуемого краткого напоминания."}
 ::option[`apropos cat`]{#apropos-cat explanation="`apropos` ищет ключевое слово в описаниях и может вернуть множество тем, то есть шире точного имени."}
@@ -43,8 +42,7 @@ passwd (5)           - the password file
 
 Число в скобках — раздел руководства. `passwd(1)` описывает пользовательскую команду, а `passwd(5)` — формат файла. Открыть их можно через `man 1 passwd` и `man 5 passwd`.
 
-:::single-choice{#interpret-whatis-section}
-Что обозначает `(5)` в `passwd (5) - the password file`?
+:::single-choice{#interpret-whatis-section} Что обозначает `(5)` в `passwd (5) - the password file`?
 
 ::option[Пятый параметр команды `passwd`.]{#fifth-option explanation="Число не является позицией параметра; параметры описаны внутри выбранной страницы."}
 ::option[Раздел руководства со страницей формата файла.]{#section-five .correct explanation="Раздел 5 посвящён форматам и соглашениям, поэтому `passwd(5)` ссылается на него."}
@@ -65,8 +63,7 @@ $ apropos password
 
 Используйте `apropos`, когда знаете задачу, но не имя команды; `whatis` — когда имя уже известно.
 
-:::single-choice{#search-by-purpose}
-Вы не знаете имя команды и хотите искать описание по слову `password`. Что подходит?
+:::single-choice{#search-by-purpose} Вы не знаете имя команды и хотите искать описание по слову `password`. Что подходит?
 
 ::option[`apropos password`]{#apropos-password .correct explanation="`apropos` ищет ключевое слово в именах и описаниях страниц, помогая найти темы."}
 ::option[`whatis password`]{#exact-password explanation="`whatis` ищет точную тему `password`, а не выполняет общий поиск по ключевому слову."}
@@ -77,8 +74,7 @@ $ apropos password
 
 Если `whatis` не находит подходящего, тема может не иметь установленной страницы или база устарела. Это не доказывает отсутствие исполняемого файла, псевдонима, функции или встроенной команды. Используйте `type NAME`, затем выберите подходящую справку.
 
-:::single-choice{#whatis-versus-type}
-`whatis deploy` не нашла описание. Какая команда проверяет разрешение `deploy` как псевдонима, функции, встроенной команды или файла?
+:::single-choice{#whatis-versus-type} `whatis deploy` не нашла описание. Какая команда проверяет разрешение `deploy` как псевдонима, функции, встроенной команды или файла?
 
 ::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="Изменение запроса к базе man не показывает все псевдонимы, функции, встроенные команды и разрешение путей Bash."}
 ::option[`man 5 deploy`]{#manual-five-deploy explanation="Это пытается открыть страницу раздела 5 и не определяет разрешение имени оболочкой."}

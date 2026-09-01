@@ -18,8 +18,7 @@ When a directory has the sticky bit set, Linux generally permits an entry to be 
 
 The restriction concerns directory entries. It does not prevent a file owner from editing file contents when the file's permissions otherwise allow that operation, and it does not make the directory private.
 
-:::single-choice{#sticky-bit-removal-rule}
-In a sticky shared directory, which ordinary user can normally remove a particular entry?
+:::single-choice{#sticky-bit-removal-rule} In a sticky shared directory, which ordinary user can normally remove a particular entry?
 
 ::option[Any user who can list the directory.]{#sticky-bit-any-reader explanation="Directory read permission can expose names but does not bypass the sticky ownership restriction."}
 ::option[The entry's owner, with required directory access.]{#sticky-bit-entry-owner .correct explanation="The entry owner is one of the identities normally permitted by the sticky-directory rule."}
@@ -39,8 +38,7 @@ The final lowercase `t` occupies the other execute position. It means that both 
 
 Because `/tmp` is commonly writable and searchable by everyone, multiple users can create entries there. The sticky bit prevents an ordinary user from removing another user's entries merely because the directory is world-writable. Applications must still create temporary objects securely because predictable names, unsafe links, and weak file modes create separate risks.
 
-:::single-choice{#sticky-bit-lowercase-t}
-What does lowercase `t` at the end of a directory mode indicate?
+:::single-choice{#sticky-bit-lowercase-t} What does lowercase `t` at the end of a directory mode indicate?
 
 ::option[Sticky is set and other execute is set.]{#sticky-bit-t-with-execute .correct explanation="Lowercase `t` combines the sticky special bit with the ordinary other execute bit."}
 ::option[Sticky is set but other execute is absent.]{#sticky-bit-t-without-execute explanation="That combination is displayed as uppercase `T`."}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 The leading `1` sets sticky, while `777` supplies the ordinary mode. This mode is appropriate only when the directory is intentionally shared by all local users. For a team directory, narrower group permissions may be preferable. Remove only the sticky bit with `chmod -t shared-directory`.
 
-:::single-choice{#sticky-bit-octal-value}
-Which leading octal value represents the sticky bit?
+:::single-choice{#sticky-bit-octal-value} Which leading octal value represents the sticky bit?
 
 ::option[`2`]{#sticky-bit-value-two explanation="A leading `2` represents setgid."}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="The sticky bit contributes `1` to the leading special-bits digit."}
@@ -75,8 +72,7 @@ Which leading octal value represents the sticky bit?
 
 Sticky does not grant write or search access; it only restricts removal and rename after ordinary permissions permit directory modification. Verify the directory's owner, group, ordinary mode, ACLs, and mount context together. Test with nonprivileged accounts in an isolated environment rather than altering `/tmp` on a working system.
 
-:::single-choice{#sticky-bit-access-scope}
-Does adding the sticky bit make a nonwritable directory writable to other users?
+:::single-choice{#sticky-bit-access-scope} Does adding the sticky bit make a nonwritable directory writable to other users?
 
 ::option[Yes; sticky automatically adds write for every class.]{#sticky-bit-adds-write explanation="The special bit does not rewrite the owner, group, or other write bits."}
 ::option[Yes; sticky disables the directory's other permission triplet.]{#sticky-bit-disables-other explanation="The other triplet continues to participate in normal access checks."}

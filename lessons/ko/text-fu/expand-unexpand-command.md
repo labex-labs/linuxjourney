@@ -22,8 +22,7 @@ $ expand sample.txt
 
 기본적으로 탭 정지 위치는 8열마다 있습니다. 따라서 1열의 탭과 6열의 탭은 서로 다른 수의 공백으로 확장되며 항상 공백 여덟 개로 바뀌지는 않습니다.
 
-:::single-choice{#expand-default-tab-stops}
-기본 설정에서 `expand`는 탭 문자를 어떻게 바꾸나요?
+:::single-choice{#expand-default-tab-stops} 기본 설정에서 `expand`는 탭 문자를 어떻게 바꾸나요?
 
 ::option[다음 기본 탭 정지 위치에 도달할 만큼 공백을 삽입합니다.]{#expand-next-stop .correct explanation="`expand`는 현재 열에서 필요한 공백 수를 계산해 탭 정렬을 보존합니다."}
 ::option[항상 정확히 공백 여덟 개를 삽입합니다.]{#expand-eight-spaces explanation="기본 정지 위치는 8열 간격이지만 필요한 공백 수는 현재 열에 따라 달라집니다."}
@@ -40,8 +39,7 @@ $ expand -t 4 sample.txt
 
 GNU `expand`는 명시적인 탭 위치를 쉼표로 구분한 목록도 받습니다. 각 줄의 첫 번째 비공백 문자 앞에 있는 탭만 변환하려면 `-i`를 사용합니다.
 
-:::single-choice{#expand-four-column-stops}
-4열마다 탭 정지 위치를 사용해 탭을 변환하는 명령어는 무엇인가요?
+:::single-choice{#expand-four-column-stops} 4열마다 탭 정지 위치를 사용해 탭을 변환하는 명령어는 무엇인가요?
 
 ::option[`expand -i 4 sample.txt`]{#expand-initial-four explanation="`-i` 옵션은 변환을 줄 앞쪽 탭으로 제한하며 `4`를 탭 정지 간격으로 받지 않습니다."}
 ::option[`unexpand -t 4 sample.txt`]{#unexpand-tabs-four explanation="`unexpand`는 적합한 공백을 탭으로 바꾸므로 요청한 작업과 반대 방향입니다."}
@@ -58,8 +56,7 @@ $ expand sample.txt > result.txt
 
 `expand sample.txt > sample.txt`를 사용하지 마세요. 쉘은 `expand`가 읽기 전에 대상 파일을 비우므로 원본 데이터를 잃을 수 있습니다. 별도로 쓴 결과를 확인한 뒤 적절한 파일 관리 단계로 원본을 의도적으로 교체할 수 있습니다.
 
-:::single-choice{#expand-safe-output-file}
-`sample.txt`를 읽기 전에 비우지 않고 확장한 텍스트를 저장하는 명령어는 무엇인가요?
+:::single-choice{#expand-safe-output-file} `sample.txt`를 읽기 전에 비우지 않고 확장한 텍스트를 저장하는 명령어는 무엇인가요?
 
 ::option[`expand sample.txt > sample.txt`]{#expand-same-file explanation="쉘은 `expand`를 시작하기 전에 출력용으로 `sample.txt`를 열고 비우므로 입력이 지워질 수 있습니다."}
 ::option[`expand sample.txt > result.txt`]{#expand-separate-result .correct explanation="입력과 출력 경로가 다르므로 쉘은 원본을 손상하지 않고 `result.txt`를 만들 수 있습니다."}
@@ -82,16 +79,14 @@ $ unexpand -a result.txt
 
 단순히 공백 여덟 개의 모든 연속 구간을 바꾸는 것은 아닙니다. `expand`와 마찬가지로 변환은 열 위치와 탭 정지 위치에 따라 달라집니다. 파일이 다른 규칙을 따르면 `-t 4` 또는 다른 탭 정지 지정을 사용하세요.
 
-:::single-choice{#unexpand-default-scope}
-`-a`가 없을 때 GNU `unexpand`는 일반적으로 어떤 공백의 변환을 고려하나요?
+:::single-choice{#unexpand-default-scope} `-a`가 없을 때 GNU `unexpand`는 일반적으로 어떤 공백의 변환을 고려하나요?
 
 ::option[파일 어디에나 있는 모든 공백 묶음입니다.]{#unexpand-every-group explanation="줄 전체의 공백을 고려하려면 `-a`가 필요하며 변환 여부는 여전히 탭 정지 위치에 따라 달라집니다."}
 ::option[마지막 단어 뒤에 있는 공백만입니다.]{#unexpand-trailing-blanks explanation="기본 범위는 줄 끝 공백이 아니라 초기 공백입니다."}
 ::option[첫 번째 비공백 문자 앞의 초기 공백만입니다.]{#unexpand-initial-blanks .correct explanation="GNU `unexpand`의 기본 동작은 각 줄의 선행 공백으로 제한됩니다."}
 :::
 
-:::single-choice{#unexpand-all-blanks}
-GNU `unexpand`가 첫 번째 비공백 문자 뒤의 공백도 고려하도록 하는 옵션은 무엇인가요?
+:::single-choice{#unexpand-all-blanks} GNU `unexpand`가 첫 번째 비공백 문자 뒤의 공백도 고려하도록 하는 옵션은 무엇인가요?
 
 ::option[`-i`]{#unexpand-initial-option explanation="`expand`에서 `-i`는 작업을 초기 탭으로 제한합니다. `unexpand`의 전체 공백 옵션이 아닙니다."}
 ::option[`-a`]{#unexpand-all-option .correct explanation="`-a` 옵션은 각 입력 줄 전체에서 적합한 공백을 변환하도록 합니다."}

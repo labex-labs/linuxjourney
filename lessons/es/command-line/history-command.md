@@ -25,8 +25,7 @@ $ history
 
 Cada línea tiene un número de historial seguido por el comando.
 
-:::single-choice{#show-command-history}
-¿Qué orden de Bash muestra la lista numerada del historial actual?
+:::single-choice{#show-command-history} ¿Qué orden de Bash muestra la lista numerada del historial actual?
 
 ::option[`clear`]{#clear-display explanation="`clear` renueva el área visible de la terminal. No muestra las órdenes anteriores."}
 ::option[`history -w`]{#write-history explanation="`history -w` escribe la lista actual en el archivo de historial. Su finalidad es guardarla, no mostrarla."}
@@ -44,8 +43,7 @@ El shell ofrece varios atajos para facilitar la reejecución de comandos.
 
 Las expansiones del historial que empiezan por `!` pueden ejecutar una orden en cuanto pulses Enter. Si existe alguna duda, inspecciona primero la coincidencia, sobre todo antes de añadir privilegios elevados o actuar sobre archivos importantes.
 
-:::single-choice{#repeat-most-recent-command}
-¿Qué expansión del historial de Bash repite la orden ejecutada más recientemente?
+:::single-choice{#repeat-most-recent-command} ¿Qué expansión del historial de Bash repite la orden ejecutada más recientemente?
 
 ::option[`!102`]{#event-number explanation="Esta expansión selecciona la orden con el número de historial 102. Esa entrada no tiene por qué ser la más reciente."}
 ::option[`!cat`]{#event-prefix explanation="Esta expansión selecciona la orden más reciente cuyo texto empiece por `cat`. No significa la orden más reciente de cualquier tipo."}
@@ -58,8 +56,7 @@ Uno de los atajos más poderosos del historial es `Ctrl-R`. Esto inicia una bús
 
 Si quieres editar el comando encontrado antes de ejecutarlo, presiona la tecla de flecha derecha o izquierda en lugar de Enter.
 
-:::single-choice{#search-before-executing}
-Recuerdas una parte de una orden anterior de Bash y quieres encontrarla de forma interactiva. ¿Qué debes pulsar primero?
+:::single-choice{#search-before-executing} Recuerdas una parte de una orden anterior de Bash y quieres encontrarla de forma interactiva. ¿Qué debes pulsar primero?
 
 ::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D` señala el fin de la entrada en muchos contextos de terminal y puede cerrar una shell inactiva. No inicia una búsqueda en el historial."}
 ::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` suele interrumpir o cancelar la operación actual. No busca en el historial de órdenes."}
@@ -83,8 +80,7 @@ $ history -w
 
 Vaciar la lista en memoria no garantiza por sí solo que las órdenes anteriores hayan desaparecido de todos los archivos, copias de seguridad u otras shells activas. El comportamiento también depende de la configuración de Bash y del momento en que las sesiones leen o escriben sus archivos.
 
-:::single-choice{#save-current-history-list}
-¿Qué orden escribe la lista actual del historial de Bash en su archivo configurado?
+:::single-choice{#save-current-history-list} ¿Qué orden escribe la lista actual del historial de Bash en su archivo configurado?
 
 ::option[`history -c`]{#clear-current-list explanation="La opción `-c` vacía la lista en memoria. No solicita guardar la lista actual."}
 ::option[`history -d 101`]{#delete-one-entry explanation="La opción `-d` elimina una entrada seleccionada del historial. No guarda la lista completa."}
@@ -105,8 +101,7 @@ El autocompletado con Tab evita volver a escribir. Empieza una orden o un nombre
 
 Las líneas de órdenes pueden guardarse en el historial, así que no introduzcas contraseñas, tokens ni otros secretos directamente en ellas cuando exista un método de entrada más seguro.
 
-:::single-choice{#distinguish-clear-from-history-clear}
-Quieres renovar la terminal visible sin eliminar el historial de órdenes en memoria. ¿Qué orden debes ejecutar?
+:::single-choice{#distinguish-clear-from-history-clear} Quieres renovar la terminal visible sin eliminar el historial de órdenes en memoria. ¿Qué orden debes ejecutar?
 
 ::option[`clear`]{#clear-visible-area .correct explanation="`clear` renueva el área visible de la terminal y deja intacta la lista del historial de Bash en memoria."}
 ::option[`history -c`]{#clear-memory explanation="Esta orden elimina las entradas de la lista actual en memoria. Modifica el historial en vez de limitarse a renovar la pantalla."}

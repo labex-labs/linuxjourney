@@ -23,8 +23,7 @@ meta_keywords: "Emacs, учебник Emacs, команды Emacs, тексто�
 - `C-a`: к началу строки.
 - `C-e`: к концу строки.
 
-:::single-choice{#emacs-edit-next-line}
-Какая клавиша Emacs перемещает point к следующей строке?
+:::single-choice{#emacs-edit-next-line} Какая клавиша Emacs перемещает point к следующей строке?
 
 ::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` перемещает к предыдущей строке, то есть в противоположном направлении."}
 ::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n`, сокращение от next-line, перемещает point вниз к позиции следующей экранной строки."}
@@ -42,8 +41,7 @@ meta_keywords: "Emacs, учебник Emacs, команды Emacs, тексто�
 
 На многих клавиатурах роль Meta выполняет Alt. Если такое сочетание недоступно, последовательное нажатие `Esc` и следующей клавиши часто отправляет эквивалентную Meta-команду.
 
-:::single-choice{#emacs-edit-buffer-end}
-Какая клавиша Emacs перемещает point в конец буфера?
+:::single-choice{#emacs-edit-buffer-end} Какая клавиша Emacs перемещает point в конец буфера?
 
 ::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` ведёт в конец текущей строки, а не всего буфера."}
 ::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` ведёт к началу буфера."}
@@ -56,8 +54,7 @@ meta_keywords: "Emacs, учебник Emacs, команды Emacs, тексто�
 
 В терминале `C-SPC` может кодироваться как `C-@`. Подсветка зависит от настроек transient-mark, но point и mark всё равно определяют область.
 
-:::single-choice{#emacs-edit-set-mark}
-Какая клавиша начинает определять region, устанавливая mark в позиции point?
+:::single-choice{#emacs-edit-set-mark} Какая клавиша начинает определять region, устанавливая mark в позиции point?
 
 ::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` вырезает уже определённую область, а не устанавливает начальную метку."}
 ::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` вставляет текст из kill ring и не начинает выделение."}
@@ -74,8 +71,7 @@ Emacs хранит вырезанный и скопированный текст
 
 Вырезание отличается от обычного удаления тем, что удалённый текст сохраняется для последующего yank.
 
-:::single-choice{#emacs-edit-copy-region}
-Какая клавиша копирует активную область в kill ring, не удаляя её?
+:::single-choice{#emacs-edit-copy-region} Какая клавиша копирует активную область в kill ring, не удаляя её?
 
 ::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`kill-ring-save`, привязанная к `M-w`, копирует область без удаления."}
 ::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` удаляет область, одновременно сохраняя её в kill ring."}
@@ -93,8 +89,7 @@ M-y
 
 Если после `C-y` выполнить несвязанную команду, у `M-y` уже не будет того же контекста yank-pop.
 
-:::single-choice{#emacs-edit-yank-latest}
-Какая клавиша вставляет в point последнюю запись kill ring?
+:::single-choice{#emacs-edit-yank-latest} Какая клавиша вставляет в point последнюю запись kill ring?
 
 ::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="Команда `yank`, привязанная к `C-y`, вставляет последний текст kill ring в текущий буфер."}
 ::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` обычно заменяет только что вставленную запись более ранней и зависит от предшествующего yank."}

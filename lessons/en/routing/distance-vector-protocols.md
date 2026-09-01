@@ -16,8 +16,7 @@ Distance-vector routing tells neighbors which destinations are reachable and a m
 
 If Router A advertises a distance of three to a prefix and Router B reaches A with cost one, B can derive distance four through A. The information describes a direction and metric, not a complete topology map, which is why the approach is sometimes called routing by rumor.
 
-:::single-choice{#distance-vector-derived-distance}
-If a neighbor advertises metric 3 and the link cost is 1, what metric is derived through it?
+:::single-choice{#distance-vector-derived-distance} If a neighbor advertises metric 3 and the link cost is 1, what metric is derived through it?
 
 ::option[2]{#distance-vector-two explanation="The link cost is added rather than subtracted."}
 ::option[31]{#distance-vector-thirty-one explanation="The values are metrics, not decimal digits to concatenate."}
@@ -28,8 +27,7 @@ If a neighbor advertises metric 3 and the link cost is 1, what metric is derived
 
 After a failure, neighbors can mistakenly advertise a route back to each other, gradually increasing its metric. Protocols mitigate this with finite infinity values, split horizon, route poisoning, poison reverse, triggered updates, and timers. These mechanisms reduce but do not turn every topology change into instantaneous convergence.
 
-:::single-choice{#distance-vector-split-horizon}
-What is split horizon intended to reduce?
+:::single-choice{#distance-vector-split-horizon} What is split horizon intended to reduce?
 
 ::option[The number of bits in every IPv4 address.]{#distance-vector-ip-bits explanation="IPv4 address size is fixed independently of routing updates."}
 ::option[Encryption overhead in application payloads.]{#distance-vector-encryption explanation="The technique concerns route advertisement direction."}
@@ -42,8 +40,7 @@ RIP uses hop count. A route with metric 16 is unreachable, so the largest usable
 
 RIPv2 uses periodic and triggered updates and supports CIDR information. It commonly multicasts updates rather than broadcasting an entire table in every circumstance. Authentication and filtering still require deliberate configuration.
 
-:::single-choice{#distance-vector-rip-infinity}
-What does RIP metric 16 represent?
+:::single-choice{#distance-vector-rip-infinity} What does RIP metric 16 represent?
 
 ::option[The fastest path with sixteen parallel links.]{#distance-vector-fastest-16 explanation="RIP treats the value as unreachable."}
 ::option[Infinity, meaning the destination is unreachable.]{#distance-vector-unreachable .correct explanation="RIP caps usable paths at 15 hops."}
@@ -54,8 +51,7 @@ What does RIP metric 16 represent?
 
 Check neighbor state, received and advertised prefixes, metric, next hop, route installation, and data-plane reachability. A route can be valid within RIP but lose to another route source under local preference policy.
 
-:::single-choice{#distance-vector-fewest-hop-limit}
-Why can RIP's lowest-hop route perform poorly?
+:::single-choice{#distance-vector-fewest-hop-limit} Why can RIP's lowest-hop route perform poorly?
 
 ::option[Hop count does not encode link bandwidth, latency, loss, or congestion.]{#distance-vector-hop-limited .correct explanation="A path with more hops can have better links and application performance."}
 ::option[RIP always chooses the route with the most hops.]{#distance-vector-most-hops explanation="Its metric prefers smaller usable hop counts."}

@@ -16,8 +16,7 @@ Das Internet Control Message Protocol transportiert zusammen mit IP Steuerungs-,
 
 Eine ICMP-Nachricht besitzt einen Typ, gegebenenfalls einen spezifischeren Code und eine Prüfsumme. Fehlermeldungen enthalten normalerweise einen Teil des auslösenden Pakets, damit der Sender den Fehler einem Datenstrom zuordnen kann.
 
-:::single-choice{#icmp-code-purpose}
-Was stellt ein ICMP-Code bereit?
+:::single-choice{#icmp-code-purpose} Was stellt ein ICMP-Code bereit?
 
 ::option[Einen dauerhaften DNS-Namen für den meldenden Router.]{#icmp-code-dns explanation="Namensauflösung ist nicht als Zweck dieses Felds codiert."}
 ::option[Eine spezifischere Bedeutung innerhalb eines ICMP-Nachrichtentyps.]{#icmp-code-specific .correct explanation="Codes für Destination Unreachable unterscheiden beispielsweise mehrere Fehlerursachen."}
@@ -28,8 +27,7 @@ Was stellt ein ICMP-Code bereit?
 
 Bei ICMPv4 ist Echo Request Typ 8 und Echo Reply Typ 0. Destination Unreachable ist Typ 3 und Time Exceeded Typ 11. ICMPv6 verwendet andere Typnummern. Ermittle deshalb vor der Interpretation einer Aufzeichnung immer die Adressfamilie.
 
-:::single-choice{#icmpv4-echo-request-type}
-Welchen Typ besitzt ICMPv4 Echo Request?
+:::single-choice{#icmpv4-echo-request-type} Welchen Typ besitzt ICMPv4 Echo Request?
 
 ::option[0]{#icmp-type-zero explanation="Typ null ist ICMPv4 Echo Reply."}
 ::option[11]{#icmp-type-eleven explanation="Typ elf ist ICMPv4 Time Exceeded."}
@@ -42,8 +40,7 @@ ICMP ist nicht bloß optionaler Ping-Datenverkehr. IPv4-Fehler zur erforderliche
 
 Filtere nach erforderlichem Typ, Richtung, Rate und Geltungsbereich, statt pauschale Annahmen anzuwenden. Angreifer können manche ICMP-Nachrichten fälschen; validiere deshalb den Kontext des zitierten Pakets und gleiche ihn mit lokalen Routen und Aufzeichnungen ab.
 
-:::single-choice{#icmp-block-all-risk}
-Warum kann das Blockieren sämtlichen ICMP-Verkehrs gültigen Datenverkehr beeinträchtigen?
+:::single-choice{#icmp-block-all-risk} Warum kann das Blockieren sämtlichen ICMP-Verkehrs gültigen Datenverkehr beeinträchtigen?
 
 ::option[Jede HTTP-Antwort wird innerhalb einer ICMP-Echo-Antwort transportiert.]{#icmp-http-echo explanation="HTTP verwendet normalerweise TCP oder QUIC und nicht ICMP Echo."}
 ::option[ICMP speichert alle Anwendungspasswörter.]{#icmp-passwords explanation="Es ist keine Anmeldedatendatenbank."}
@@ -54,8 +51,7 @@ Warum kann das Blockieren sämtlichen ICMP-Verkehrs gültigen Datenverkehr beein
 
 Keine ICMP-Antwort kann Filterung, Ratenbegrenzung, asymmetrisches Routing, eine fehlende Rückroute, einen ausgeschalteten Host oder ein Gerät bedeuten, das auf diese Nachricht schlicht nicht antwortet. Umgekehrt kann ein ICMP-Fehler von einem Zwischengerät statt vom endgültigen Ziel erzeugt werden.
 
-:::single-choice{#icmp-silence-meaning}
-Was beweist das Ausbleiben einer Echo Reply für sich allein?
+:::single-choice{#icmp-silence-meaning} Was beweist das Ausbleiben einer Echo Reply für sich allein?
 
 ::option[Die Zielanwendung ist sicher gestoppt.]{#icmp-silence-app-down explanation="Der Dienst kann funktionieren, während Echo-Datenverkehr gefiltert oder ignoriert wird."}
 ::option[Der Zielhostname wurde aus DNS gelöscht.]{#icmp-silence-dns-deleted explanation="Eine Prüfung einer numerischen Adresse kann unabhängig von DNS ohne Antwort bleiben."}

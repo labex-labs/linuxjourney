@@ -24,8 +24,7 @@ Eine Zeile beginnt mit einer IPv4- oder IPv6-Adresse, gefolgt von einem oder meh
 
 Kommentare beginnen mit `#`. Manche Werkzeuge behandeln den ersten Namen üblicherweise als kanonisch und spätere Namen als Aliase. Das Verhalten von Anwendungen und Resolver-APIs kann jedoch abweichen. Vermeide doppelte oder widersprüchliche Einträge für denselben Namen.
 
-:::single-choice{#hosts-file-entry-order}
-Was steht auf einer normalen Zuordnungszeile in `/etc/hosts` an erster Stelle?
+:::single-choice{#hosts-file-entry-order} Was steht auf einer normalen Zuordnungszeile in `/etc/hosts` an erster Stelle?
 
 ::option[Eine IP-Adresse.]{#hosts-file-address-first .correct explanation="Auf derselben Zeile folgen der Adresse ein oder mehrere Namen."}
 ::option[Die TTL eines DNS-Eintrags.]{#hosts-file-ttl-first explanation="Einträge der Hosts-Datei verwenden keine DNS-TTL-Felder."}
@@ -42,8 +41,7 @@ hosts: files dns
 
 Gehe nicht ohne Prüfung der Richtlinie davon aus, dass Dateien immer zuerst berücksichtigt werden. Anwendungen können außerdem eigene DNS-Bibliotheken, Caches, Proxys oder verschlüsselte Resolver verwenden und müssen dem Systempfad nicht folgen.
 
-:::single-choice{#hosts-file-nss-order}
-Was bestimmt, ob der Systemresolver `/etc/hosts` vor DNS berücksichtigt?
+:::single-choice{#hosts-file-nss-order} Was bestimmt, ob der Systemresolver `/etc/hosts` vor DNS berücksichtigt?
 
 ::option[Die alphabetische Reihenfolge der Dateinamen unter `/etc`.]{#hosts-file-alphabetical explanation="Die Auflistungsreihenfolge des Dateisystems definiert keine Namensdienstrichtlinie."}
 ::option[Die Reihenfolge der Quellen in der Name-Service-Switch-Richtlinie.]{#hosts-file-nss-policy .correct explanation="Die Datenbankzeile `hosts:` steuert die normale Quellenreihenfolge des libc-Resolvers."}
@@ -60,8 +58,7 @@ $ getent ahosts app-test.example.net
 
 `dig` fragt DNS direkt ab und zeigt normalerweise keine Zuordnungen aus `/etc/hosts` an. Dieser Unterschied ist nützlich: Wenn `getent` erfolgreich ist, `dig` jedoch nicht, kann dies auf eine lokale Quelle oder eine abweichende Resolver-Richtlinie hinweisen.
 
-:::single-choice{#hosts-file-getent-versus-dig}
-Welches Werkzeug eignet sich besser, um zu prüfen, ob die normale Systemauflösung einen Eintrag der Hosts-Datei erkennt?
+:::single-choice{#hosts-file-getent-versus-dig} Welches Werkzeug eignet sich besser, um zu prüfen, ob die normale Systemauflösung einen Eintrag der Hosts-Datei erkennt?
 
 ::option[`dig`, weil es immer zuerst `/etc/hosts` liest.]{#hosts-file-dig-first explanation="Dig sendet DNS-Abfragen und umgeht den Suchpfad der Hosts-Datei."}
 ::option[`getent ahosts`, weil es die konfigurierten Namensdienstquellen verwendet.]{#hosts-file-getent .correct explanation="Es spiegelt den Resolver-Pfad wider, den viele native Anwendungen verwenden."}
@@ -74,8 +71,7 @@ Bewahre erforderliche Einträge für localhost und die Hostidentität, prüfe di
 
 Teste nach der Bearbeitung die konkrete Anwendung, da sie einen Cache behalten oder einen anderen Resolver verwenden kann. Dokumentiere dauerhafte Überschreibungen, damit sie ihren Zweck nicht unbemerkt überdauern.
 
-:::single-choice{#hosts-file-test-name}
-Warum solltest du einen eigenen Testnamen verwenden, statt den Namen eines öffentlichen Dienstes zu überschreiben?
+:::single-choice{#hosts-file-test-name} Warum solltest du einen eigenen Testnamen verwenden, statt den Namen eines öffentlichen Dienstes zu überschreiben?
 
 ::option[Öffentliche Namen dürfen keine Punkte enthalten.]{#hosts-file-public-no-dots explanation="Domainnamen bestehen häufig aus mehreren durch Punkte getrennten Bezeichnungen."}
 ::option[Eigene Namen erzeugen automatisch autoritative DNS-Zonen.]{#hosts-file-auto-zone explanation="Ein Eintrag der Hosts-Datei bleibt lokal und veröffentlicht keine Zone."}
@@ -86,8 +82,7 @@ Warum solltest du einen eigenen Testnamen verwenden, statt den Namen eines öffe
 
 `/etc/resolv.conf` führt traditionell die Einstellungen des DNS-Resolvers auf, wird jedoch häufig von NetworkManager, systemd-resolved, DHCP oder einem anderen Manager erzeugt. Prüfe symbolische Links und Dateikommentare. Ändere anschließend die zuständige Konfigurationsquelle, statt eine erzeugte Ausgabe zu bearbeiten, die wieder überschrieben wird.
 
-:::single-choice{#hosts-file-resolv-owner}
-Was solltest du vor der Bearbeitung von `/etc/resolv.conf` tun?
+:::single-choice{#hosts-file-resolv-owner} Was solltest du vor der Bearbeitung von `/etc/resolv.conf` tun?
 
 ::option[`/etc/hosts` und alle Netzwerkrouten löschen.]{#hosts-file-delete-state explanation="Diese zerstörerischen Änderungen sind nicht relevant und können die Verbindung entfernen."}
 ::option[Annehmen, dass jede Distribution dauerhafte Einstellungen direkt dort speichert.]{#hosts-file-assume-direct explanation="Viele Systeme erzeugen die Datei dynamisch oder verlinken sie mit einem verwalteten Stub."}

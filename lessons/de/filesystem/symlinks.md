@@ -30,8 +30,7 @@ Der Symlink besitzt einen eigenen Inode und speichert den Text `myfile`. Wenn ei
 $ readlink myfilelink
 ```
 
-:::single-choice{#symlinks-create-symbolic}
-Welcher Befehl erstellt den symbolischen Link `myfilelink` mit dem Zieltext `myfile`?
+:::single-choice{#symlinks-create-symbolic} Welcher Befehl erstellt den symbolischen Link `myfilelink` mit dem Zieltext `myfile`?
 
 ::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="Die Option `-s` fordert einen symbolischen Link an, gefolgt von Ziel und neuem Linknamen."}
 ::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="Ohne `-s` fordert `ln` einen Hardlink auf den vorhandenen Inode an."}
@@ -50,8 +49,7 @@ $ ln -s ../data/item tree/current/item
 
 Das Verschieben der gesamten `tree`-Hierarchie erhält diese relative Beziehung. Wird nur der Link oder das Ziel verschoben, kann sie brechen. Ein Symlink darf ein nicht vorhandenes Ziel enthalten und heißt dann verwaist oder defekt.
 
-:::single-choice{#symlinks-relative-resolution}
-Von welchem Ort aus wird ein relatives Symlink-Ziel aufgelöst?
+:::single-choice{#symlinks-relative-resolution} Von welchem Ort aus wird ein relatives Symlink-Ziel aufgelöst?
 
 ::option[Vom Home-Verzeichnis des Benutzers, der es erstellt hat.]{#symlinks-creator-home explanation="Die Identität des Erstellers wird nicht zur dauerhaften Auflösungsbasis."}
 ::option[Vom aktuellen Verzeichnis der Shell, die es zuerst auflistet.]{#symlinks-listing-shell explanation="Der Kontext der Auflistung schreibt die gespeicherte Zielbeziehung nicht um."}
@@ -73,8 +71,7 @@ Beide Namen gehören zum selben Dateisystem und verweisen auf dieselbe Inode-Num
 
 Hardlinks können Dateisystemgrenzen nicht überschreiten, weil eine Inode-Nummer nur innerhalb ihres Dateisystems Bedeutung besitzt. Linux hindert gewöhnliche Benutzer außerdem daran, Hardlinks auf Verzeichnisse anzulegen, und kann Links auf Dateien einschränken, die ihnen nicht gehören. Dadurch werden Zyklen und Sicherheitsprobleme vermieden.
 
-:::single-choice{#symlinks-hard-link-inode}
-Was teilen zwei Hardlinks auf dieselbe gewöhnliche Datei?
+:::single-choice{#symlinks-hard-link-inode} Was teilen zwei Hardlinks auf dieselbe gewöhnliche Datei?
 
 ::option[Nur ähnliche Dateinamen bei getrennten Dateidaten.]{#symlinks-separate-data explanation="Das würde unabhängige Kopien und keine Hardlinks beschreiben."}
 ::option[Einen Pfadnamen, der in einem getrennten Symlink-Inode gespeichert ist.]{#symlinks-stored-path explanation="Gespeicherter Pfadtext ist der kennzeichnende Mechanismus eines symbolischen Links."}
@@ -93,8 +90,7 @@ Das Entfernen eines Hardlink-Namens verringert die Linkanzahl des gemeinsamen In
 
 Vermeide beim Entfernen eines Symlinks auf ein Verzeichnis einen abschließenden Schrägstrich, weil die Pfadauflösung dadurch abhängig vom Befehl der Verzeichnissemantik folgen kann. Untersuche ihn mit `ls -ld -- LINK` und entferne bewusst den Linknamen.
 
-:::single-choice{#symlinks-remove-symbolic}
-Was geschieht normalerweise, wenn du den Symlink selbst entfernst?
+:::single-choice{#symlinks-remove-symbolic} Was geschieht normalerweise, wenn du den Symlink selbst entfernst?
 
 ::option[Inode und Name des Symlinks werden entfernt, das Ziel bleibt erhalten.]{#symlinks-remove-link-only .correct explanation="Das Entfernen des symbolischen Links wirkt nicht auf das Objekt, das durch seinen gespeicherten Zieltext benannt wird."}
 ::option[Das Ziel und jeder Hardlink darauf werden automatisch gelöscht.]{#symlinks-remove-target explanation="Der Symlink ist ein getrenntes Dateisystemobjekt und besitzt sein Ziel nicht."}
@@ -114,8 +110,7 @@ Für gewöhnliche Untersuchungen:
 
 Als `lrwxrwxrwx` angezeigte Berechtigungen sind keine allgemeine Zugriffsgewährung. Der Zugriff wird durch Verzeichnisverfolgung, Richtlinie zum Folgen von Links und Zielberechtigungen entschieden; bei manchen Regeln für geschützte Verzeichnisse ist außerdem die Symlink-Eigentümerschaft relevant.
 
-:::single-choice{#symlinks-readlink-output}
-Was gibt `readlink LINK` standardmäßig aus?
+:::single-choice{#symlinks-readlink-output} Was gibt `readlink LINK` standardmäßig aus?
 
 ::option[Den im symbolischen Link gespeicherten Pfadtext.]{#symlinks-readlink-target-text .correct explanation="Der Befehl untersucht das Linkobjekt, ohne den Inhalt der Zieldatei zu lesen."}
 ::option[Den vollständigen Byteinhalt der gewöhnlichen Zieldatei.]{#symlinks-readlink-file-content explanation="Verwende nach bewusster Auflösung einen Dateilesebefehl für den Zielinhalt."}

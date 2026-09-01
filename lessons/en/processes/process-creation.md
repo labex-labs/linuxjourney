@@ -18,8 +18,7 @@ The `fork()` system call creates a child process based on the calling process. P
 
 The child gets logically separate process state. Linux can initially share physical memory pages using copy-on-write, copying a page only when one process modifies it. Open file descriptors are inherited and refer to the same underlying open file descriptions, so details such as file offsets can remain shared.
 
-:::single-choice{#process-creation-fork-result}
-What does a successful `fork()` create?
+:::single-choice{#process-creation-fork-result} What does a successful `fork()` create?
 
 ::option[A replacement program inside the same process only.]{#process-creation-fork-replacement explanation="Replacing the current program image is the role of an `exec` operation."}
 ::option[A child process with a new PID.]{#process-creation-fork-child .correct explanation="`fork()` establishes a separate child process and parent-child relationship."}
@@ -39,8 +38,7 @@ Many shell commands therefore follow a fork-exec pattern:
 
 Libraries and applications can expose higher-level interfaces such as `posix_spawn()`, and Linux has additional primitives such as `clone()`. The familiar fork-exec model remains useful without being the only possible interface.
 
-:::single-choice{#process-creation-exec-pid}
-What happens to a process's PID after a successful `execve()`?
+:::single-choice{#process-creation-exec-pid} What happens to a process's PID after a successful `execve()`?
 
 ::option[It becomes identical to the parent PID.]{#process-creation-exec-parent-pid explanation="Parent and child retain separate process IDs."}
 ::option[It remains the same while the program image is replaced.]{#process-creation-exec-same-pid .correct explanation="`execve()` transforms the calling process rather than creating another process."}
@@ -57,8 +55,7 @@ $ ps -o pid,ppid,stat,cmd
 
 If a shell starts `ps`, the shell's PID will normally appear as the `PPID` of that `ps` process. Timing matters: short-lived processes may exit before a separate observation captures them.
 
-:::single-choice{#process-creation-ppid}
-What does `PPID` represent in a process listing?
+:::single-choice{#process-creation-ppid} What does `PPID` represent in a process listing?
 
 ::option[The previous PID formerly assigned to the process.]{#process-creation-previous-pid explanation="PIDs can be reused, but `PPID` does not record identifier history."}
 ::option[The process's scheduling priority identifier.]{#process-creation-priority-id explanation="Scheduling priority is represented by other fields such as priority or nice value."}
@@ -71,8 +68,7 @@ The kernel starts the first user-space process with PID 1. Depending on the syst
 
 When a parent exits before its child, the child is reparented to an appropriate subreaper or the init process in its PID namespace. It does not need to terminate merely because its original parent ended.
 
-:::single-choice{#process-creation-pid-one}
-Which statement about PID 1 is accurate?
+:::single-choice{#process-creation-pid-one} Which statement about PID 1 is accurate?
 
 ::option[It must always be a program whose executable name is exactly `init`.]{#process-creation-pid-one-name explanation="The implementation can be `systemd`, another init, or a container-specific program."}
 ::option[It is the parent that directly created every process currently running.]{#process-creation-pid-one-direct explanation="Most processes are created through many generations of intermediate parents."}

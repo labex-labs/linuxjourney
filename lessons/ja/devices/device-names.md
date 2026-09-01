@@ -23,8 +23,7 @@ SCSI ディスク層を通じて提示されるディスクには、一般に `s
 
 文字は列挙順を反映しており、永続的な識別子ではありません。コントローラーの追加、ファームウェア上の順序変更、デバイスの接続によって、特定の文字が割り当てられるディスクは変わる可能性があります。
 
-:::single-choice{#device-names-sdb-first-partition}
-`sd` の命名パターンで、`/dev/sdb` のパーティション1を表すパスはどれですか？
+:::single-choice{#device-names-sdb-first-partition} `sd` の命名パターンで、`/dev/sdb` のパーティション1を表すパスはどれですか？
 
 ::option[`/dev/sda2`]{#device-names-sda-two explanation="これは現在 `/dev/sda` と名付けられたディスクのパーティション2を表します。"}
 ::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="`p` 区切りは、基本名がすでに数字で終わるパターンで使われ、通常の `sd` 名では使いません。"}
@@ -42,8 +41,7 @@ SCSI ディスク層を通じて提示されるディスクには、一般に `s
 
 NVMe デバイスは通常 `/dev/sdX` とは名付けられず、NVMe サブシステムの命名規則を使います。
 
-:::single-choice{#device-names-nvme-partition}
-`/dev/nvme0n1` のパーティション2を表すパスはどれですか？
+:::single-choice{#device-names-nvme-partition} `/dev/nvme0n1` のパーティション2を表すパスはどれですか？
 
 ::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="NVMe のパーティション名では、パーティション番号の前に `p` を挿入します。"}
 ::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="区切りがなければ、末尾の数字を名前空間番号と区別できません。"}
@@ -60,8 +58,7 @@ Linux は、物理ディスクと一対一には対応しないブロックデ�
 
 パーティション、暗号化層、RAID、論理ボリューム、ファイルシステムは積み重なった構造を形成します。名前だけから構造を推測せず、`lsblk` などのツールで親子関係を確認してください。
 
-:::single-choice{#device-names-device-mapper-link}
-device mapper のデバイスに説明的なリンクを提供することが多い場所はどれですか？
+:::single-choice{#device-names-device-mapper-link} device mapper のデバイスに説明的なリンクを提供することが多い場所はどれですか？
 
 ::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="LVM やディスク暗号化など device mapper の利用機能は、一般にこのディレクトリに名前付きリンクを公開します。"}
 ::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null` はキャラクターデバイスであり、マッピングされたブロックデバイス用のディレクトリではありません。"}
@@ -80,8 +77,7 @@ device mapper のデバイスに説明的なリンクを提供することが多
 
 何を安定させる必要があるかに合わせて識別子を選びます。ファイルシステム UUID が識別するのはファイルシステムであり、その下にある物理ディスクとは限りません。ファイルシステムを複製すると UUID も重複する場合があるため、依存する前に一意性を確認してください。
 
-:::single-choice{#device-names-persistent-config}
-デバイス固有の設定で、`/dev/disk/by-id/` のリンクが `/dev/sdX` より望ましいことが多いのはなぜですか？
+:::single-choice{#device-names-persistent-config} デバイス固有の設定で、`/dev/disk/by-id/` のリンクが `/dev/sdX` より望ましいことが多いのはなぜですか？
 
 ::option[破壊的な書き込みを自動的に元へ戻せるようにするから。]{#device-names-by-id-reversible explanation="安定した名前は、スナップショット、バックアップ、書き込み保護を提供しません。"}
 ::option[ブロックデバイスを通常ファイルへ変換するから。]{#device-names-by-id-regular explanation="この項目はシンボリックリンクであり、解決後もブロックデバイスノードを指します。"}
@@ -92,8 +88,7 @@ device mapper のデバイスに説明的なリンクを提供することが多
 
 `/dev/null`、`/dev/zero`、`/dev/urandom` などの名前は、物理ストレージではなくカーネルの疑似デバイスを表します。`/dev/null` は書き込みを破棄し、読み取りではファイル終端を返します。`/dev/zero` はゼロのバイト列を、`/dev/urandom` はカーネルの乱数生成器から得たバイト列を提供します。
 
-:::single-choice{#device-names-zero-read}
-`/dev/zero` から読み取ると何が得られますか？
+:::single-choice{#device-names-zero-read} `/dev/zero` から読み取ると何が得られますか？
 
 ::option[未使用ストレージデバイスの一覧。]{#device-names-zero-storage-list explanation="これはバイト列を生成するキャラクターデバイスであり、検出コマンドではありません。"}
 ::option[値がゼロのバイト列。]{#device-names-zero-bytes .correct explanation="zero 疑似デバイスは、要求された読み取りに対して null バイトを返します。"}

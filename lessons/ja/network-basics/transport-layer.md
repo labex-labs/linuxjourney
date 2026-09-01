@@ -16,8 +16,7 @@ meta_keywords: "Linux トランスポート層，TCP, UDP, TCP ハンドシェ�
 
 宛先ポートは、OS が待ち受けソケットへ通信を届けるのに役立ちます。接続やフローは1つのポートだけでなく、プロトコル、送信元・宛先アドレス、送信元・宛先ポートの組み合わせで識別します。そのため同じサーバーポートで多数のクライアントを同時に扱えます。
 
-:::single-choice{#transport-layer-many-clients}
-1つの TCP サーバーポートが複数のクライアントを同時に扱えるのはなぜですか？
+:::single-choice{#transport-layer-many-clients} 1つの TCP サーバーポートが複数のクライアントを同時に扱えるのはなぜですか？
 
 ::option[各接続が端点アドレスとポートの異なる組み合わせを持つから。]{#transport-layer-connection-tuple .correct explanation="完全なトランスポートの組み合わせが、同じ待ち受けポートを共有する同時接続を区別します。"}
 ::option[サーバーが各パケットの後にポート名を永久に変更するから。]{#transport-layer-renames-port explanation="待ち受けポートは一定のまま、受け入れた接続が異なる通信相手の組み合わせを持てます。"}
@@ -30,8 +29,7 @@ TCP は接続が存続する間、信頼性のある順序付きバイトスト�
 
 信頼性は絶対的な配送ではありません。タイムアウト、リセット、障害があり得て、確認応答もアプリケーションがデータを永続保存した証拠ではありません。
 
-:::single-choice{#transport-layer-tcp-boundaries}
-TCP ではアプリケーションメッセージの境界はどうなりますか？
+:::single-choice{#transport-layer-tcp-boundaries} TCP ではアプリケーションメッセージの境界はどうなりますか？
 
 ::option[書き込み境界を保持せず、順序付きバイトストリームとして公開する。]{#transport-layer-byte-stream .correct explanation="メッセージの区切りやサイズはアプリケーションプロトコルが定義します。"}
 ::option[各書き込みが必ず1個の IP パケットと1回の読み取りになる。]{#transport-layer-one-write-packet explanation="分割、バッファリング、受信 API はその対応を保持しません。"}
@@ -48,8 +46,7 @@ TCP ではアプリケーションメッセージの境界はどうなります�
 
 これにより両端にトランスポート状態を確立しますが、アプリケーションサーバーの認証や、要求操作の成功までは証明しません。
 
-:::single-choice{#transport-layer-handshake-order}
-通常の TCP 3ウェイハンドシェイクの順序はどれですか？
+:::single-choice{#transport-layer-handshake-order} 通常の TCP 3ウェイハンドシェイクの順序はどれですか？
 
 ::option[SYN、SYN-ACK、ACK。]{#transport-layer-syn-order .correct explanation="双方向の初期接続状態を同期し、確認応答します。"}
 ::option[ACK、ACK、SYN。]{#transport-layer-ack-ack-syn explanation="開始側が最初に同期を要求します。"}
@@ -60,8 +57,7 @@ TCP ではアプリケーションメッセージの境界はどうなります�
 
 UDP はデータグラム境界を保持し、チェックサムによるエラー検出を提供しますが、TCP のような接続状態、順序、再送、フロー制御、輻輳制御は提供しません。必要な信頼性や輻輳動作はアプリケーションが追加できます。UDP が自動的に高速とは限らず、性能は設計、ワークロード、経路、実装次第です。
 
-:::single-choice{#transport-layer-udp-boundaries}
-UDP がアプリケーションへ提供する性質はどれですか？
+:::single-choice{#transport-layer-udp-boundaries} UDP がアプリケーションへ提供する性質はどれですか？
 
 ::option[自動再送される順序付きバイトストリーム。]{#transport-layer-udp-stream explanation="これは基本 UDP ではなく TCP のようなサービスです。"}
 ::option[送信したデータグラム間の境界を保持すること。]{#transport-layer-udp-datagrams .correct explanation="失われない限り、受信 UDP データグラムは送信した1個のデータグラムに対応します。"}
@@ -79,8 +75,7 @@ $ ss -tn state established
 
 プロセス情報には権限が必要な場合があります。待ち受けソケットが証明するのはローカルのトランスポート境界での準備だけで、ファイアウォール、ルーティング、アドレスファミリー、TLS、アプリケーションの正常性は別に検査します。
 
-:::single-choice{#transport-layer-listener-proof}
-待ち受け中の TCP ソケットが確立する事実は何ですか？
+:::single-choice{#transport-layer-listener-proof} 待ち受け中の TCP ソケットが確立する事実は何ですか？
 
 ::option[すべてのリモートファイアウォールが接続を許可する。]{#transport-layer-all-firewalls explanation="ローカルソケット状態から経路全体の方針は分かりません。"}
 ::option[アプリケーションが全ヘルスチェックに合格した。]{#transport-layer-all-health explanation="待ち受けは、アプリケーショントランザクションの成功より弱い証拠です。"}

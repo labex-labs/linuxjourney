@@ -22,8 +22,7 @@ $ iostat -xz 1
 
 On common implementations, the first report contains averages since boot and later reports cover each interval. The `-x` option adds extended fields, while `-z` suppresses inactive devices. Allow several intervals to capture normal and problematic periods.
 
-:::single-choice{#iostat-first-report}
-What does the first `iostat` report commonly represent?
+:::single-choice{#iostat-first-report} What does the first `iostat` report commonly represent?
 
 ::option[Only operations from the final second of the command.]{#iostat-final-second explanation="That does not describe the initial cumulative report."}
 ::option[Activity averages since the system booted.]{#iostat-since-boot .correct explanation="Later reports are usually interval-specific, so the first must be interpreted separately."}
@@ -34,8 +33,7 @@ What does the first `iostat` report commonly represent?
 
 The CPU section commonly includes user (`%user`), system (`%system`), idle (`%idle`), I/O wait (`%iowait`), and virtual-machine steal (`%steal`) time. I/O wait is CPU idle time during which the system has an outstanding I/O request; it is not the percentage of a disk that is busy.
 
-:::single-choice{#iostat-iowait-meaning}
-What does `%iowait` describe?
+:::single-choice{#iostat-iowait-meaning} What does `%iowait` describe?
 
 ::option[The percentage of disk capacity already filled.]{#iostat-capacity explanation="Filesystem capacity and CPU time are different measurements."}
 ::option[CPU idle time while an I/O request is outstanding.]{#iostat-iowait-cpu .correct explanation="It is a CPU-time category and cannot identify a device by itself."}
@@ -53,8 +51,7 @@ Field names vary by sysstat version, but useful concepts include:
 
 High `%util` can indicate saturation for a simple serial device, but it does not translate directly into performance capacity for parallel storage, arrays, or virtual devices. Compare latency with the device design, workload pattern, and service objective.
 
-:::single-choice{#iostat-await-purpose}
-Which field is most directly associated with average I/O request latency?
+:::single-choice{#iostat-await-purpose} Which field is most directly associated with average I/O request latency?
 
 ::option[Device name.]{#iostat-device-name explanation="The name identifies the device but does not measure request duration."}
 ::option[`await`]{#iostat-await .correct explanation="Await reflects average time for requests, including queue and service time."}
@@ -72,8 +69,7 @@ $ findmnt
 
 Then correlate `iostat` intervals with application response time, database or filesystem metrics, and process-level I/O. Device-mapper, RAID, containers, and network-backed storage can add layers that require their own tools.
 
-:::single-choice{#iostat-high-util-conclusion}
-What should you do after seeing high `%util` on a device?
+:::single-choice{#iostat-high-util-conclusion} What should you do after seeing high `%util` on a device?
 
 ::option[Assume every filesystem is out of free space.]{#iostat-assume-full explanation="Busy time does not report filesystem capacity."}
 ::option[Delete files before identifying the mounted workload.]{#iostat-delete-first explanation="Deletion is a state-changing action unrelated to proving an I/O bottleneck."}

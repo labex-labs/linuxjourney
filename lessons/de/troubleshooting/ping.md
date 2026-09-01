@@ -22,8 +22,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 Verwende `-6`, um IPv6 auszuwählen. Erfasse die aufgelöste Adresse, weil ein Hostname mehrere Adressen zurückgeben kann und wiederholte Läufe unterschiedlich auswählen können.
 
-:::single-choice{#ping-count-option}
-Was fordert `-c 3` an?
+:::single-choice{#ping-count-option} Was fordert `-c 3` an?
 
 ::option[Eine Paketnutzlast von genau drei Megabyte.]{#ping-three-megabytes explanation="Die Paketgröße verwendet eine andere Option."}
 ::option[Drei dauerhafte Routen zum Ziel.]{#ping-three-routes explanation="Ping sendet Prüfdatenverkehr und installiert keine Routen."}
@@ -36,8 +35,7 @@ Was fordert `-c 3` an?
 
 Verlust kann in beiden Richtungen auftreten, und ICMP-Ratenbegrenzung kann dazu führen, dass Ping-Verlust vom Anwendungsverlust abweicht.
 
-:::single-choice{#ping-sequence-gap}
-Worauf kann eine fehlende Antwort zu `icmp_seq` hindeuten?
+:::single-choice{#ping-sequence-gap} Worauf kann eine fehlende Antwort zu `icmp_seq` hindeuten?
 
 ::option[Das Ziel hat seine MAC-Adresse dauerhaft geändert.]{#ping-sequence-mac explanation="Eine Sequenzlücke allein erlaubt keine solche Schlussfolgerung auf Verbindungsschicht."}
 ::option[Anfrage oder Antwort ging verloren, wurde gefiltert, über das Zeitlimit hinaus verzögert oder ratenbegrenzt.]{#ping-sequence-possibilities .correct explanation="Die Sequenzlücke bezeichnet eine ausgebliebene beobachtete Antwort, aber weder die genaue Richtung noch Ursache."}
@@ -48,8 +46,7 @@ Worauf kann eine fehlende Antwort zu `icmp_seq` hindeuten?
 
 Das Feld `time` ist die Umlaufzeit in Millisekunden vom Senden der Anfrage bis zum Empfang ihrer Antwort. Es verbindet ausgehende Verzögerung, entfernte Verarbeitung und Rückwegverzögerung. Ohne synchronisierte Messungen an den Endpunkten kann es keine Einweglatenz zeigen.
 
-:::single-choice{#ping-rtt-meaning}
-Was misst ein gemeldetes `time=23.7 ms`?
+:::single-choice{#ping-rtt-meaning} Was misst ein gemeldetes `time=23.7 ms`?
 
 ::option[Nur die Einweglatenz des ausgehenden Pfads.]{#ping-outbound-only explanation="Ping misst das vollständige Anfrage-Antwort-Intervall."}
 ::option[Die Betriebsdauer des Zielsystems.]{#ping-target-uptime explanation="Der Wert ist die Zeitmessung der Prüfung und keine Bootdauer."}
@@ -60,8 +57,7 @@ Was misst ein gemeldetes `time=23.7 ms`?
 
 Die angezeigte IPv4-TTL oder das IPv6-Hop-Limit ist der verbleibende Wert der empfangenen Antwort. Ohne den Anfangswert des Senders und die Rückroute zu kennen, ergibt seine Subtraktion keine genaue Hop-Anzahl. Eine Änderung kann einen anderen Antwortenden, Anfangswert oder Rückweg widerspiegeln.
 
-:::single-choice{#ping-received-ttl}
-Was ist die bei einer IPv4 Echo Reply ausgegebene TTL?
+:::single-choice{#ping-received-ttl} Was ist die bei einer IPv4 Echo Reply ausgegebene TTL?
 
 ::option[Der verbleibende Wert, als die Antwort den lokalen Host erreichte.]{#ping-remaining-ttl .correct explanation="Jeder Router auf dem Rückweg verringerte den Anfangswert des Senders."}
 ::option[Eine genaue Anzahl der Router in beiden Richtungen.]{#ping-exact-hop-count explanation="Die anfängliche TTL und der gerichtete Pfad werden durch dieses Feld allein nicht festgestellt."}
@@ -72,8 +68,7 @@ Was ist die bei einer IPv4 Echo Reply ausgegebene TTL?
 
 Wenn Ping erfolgreich ist, aber ein Dienst fehlschlägt, teste den tatsächlichen Port, TLS, das Protokoll und die Anfrage. Wenn Ping fehlschlägt, untersuche Namensauflösung, `ip route get`, Nachbarzustand, Firewallrichtlinie und Aufzeichnungen, bevor du den Host für ausgefallen erklärst.
 
-:::single-choice{#ping-success-limit}
-Was beweist ein erfolgreicher Ping nicht?
+:::single-choice{#ping-success-limit} Was beweist ein erfolgreicher Ping nicht?
 
 ::option[Dass ein Pfad für eine ICMP-Anfrage und -Antwort funktioniert hat.]{#ping-icmp-worked explanation="Dies ist der unmittelbare Beleg der Antworten."}
 ::option[Dass die Antwort eine Sequenznummer enthielt.]{#ping-sequence-present explanation="Die normale Ausgabe meldet die Antwortsequenz unmittelbar."}

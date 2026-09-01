@@ -44,8 +44,7 @@ $ sudo passwd -S bob
 $ id bob
 ```
 
-:::single-choice{#user-tools-create-home}
-新しいアカウントのホームディレクトリ作成を明示的に要求する `useradd` オプションはどれですか？
+:::single-choice{#user-tools-create-home} 新しいアカウントのホームディレクトリ作成を明示的に要求する `useradd` オプションはどれですか？
 
 ::option[`-M`]{#user-tools-no-home-option explanation="大文字の `-M` は、一般的な `useradd` 実装にホームディレクトリを作成しないよう明示します。"}
 ::option[`-s`]{#user-tools-shell-option explanation="`-s` はログインシェルを選び、それ自体ではホームディレクトリを作成しません。"}
@@ -68,8 +67,7 @@ $ sudo passwd bob
 
 パスワードは保護されたプロンプトだけで入力し、コマンド引数、シェル履歴、レッスンのメモ、チャットへ書いてはいけません。PAM ポリシーにより、弱いパスワードや再利用されたパスワードが拒否される場合があります。ディレクトリ管理されたアカウントには別のツールが必要なこともあります。
 
-:::single-choice{#user-tools-change-own-password}
-現在のユーザーが通常、対話的プロンプトを通じて自身のパスワードを変更するコマンドはどれですか？
+:::single-choice{#user-tools-change-own-password} 現在のユーザーが通常、対話的プロンプトを通じて自身のパスワードを変更するコマンドはどれですか？
 
 ::option[`useradd`]{#user-tools-add-not-password explanation="`useradd` はアカウントレコードを作成するもので、通常の対話的なパスワード変更コマンドではありません。"}
 ::option[`userdel`]{#user-tools-delete-not-password explanation="`userdel` はローカルアカウントを削除し、呼び出し元のパスワード変更とは無関係です。"}
@@ -90,8 +88,7 @@ $ sudo usermod -aG developers bob
 
 グループ変更は通常、古い資格情報で実行中のプロセスではなく、新しいログインセッションへ反映されます。
 
-:::single-choice{#user-tools-append-group}
-`bob` の他の補助グループ所属を置き換えず、補助グループ `developers` へ追加するコマンドはどれですか？
+:::single-choice{#user-tools-append-group} `bob` の他の補助グループ所属を置き換えず、補助グループ `developers` へ追加するコマンドはどれですか？
 
 ::option[`usermod -G developers bob`]{#user-tools-replace-groups explanation="`-a` がない `-G` は補助グループ一覧を置き換え、既存の所属を削除する場合があります。"}
 ::option[`usermod -aG developers bob`]{#user-tools-append-groups .correct explanation="`-a` オプションは `-G` で指定したグループを追加し、他の補助グループ所属を保持します。"}
@@ -104,8 +101,7 @@ $ sudo usermod -aG developers bob
 
 パスワードロックで、SSH 鍵、トークン、スケジュール済みジョブ、実行中プロセス、サービス固有の認証が必ず停止するわけではありません。アカウントを包括的に無効化するには、脅威とアクセス経路を定義し、アカウント失効、ログインシェル、サービスアクセス、鍵、セッション終了などを組み合わせたポリシーを適用します。
 
-:::single-choice{#user-tools-password-lock-scope}
-`passwd -l bob` が主にロックするものは何ですか？
+:::single-choice{#user-tools-password-lock-scope} `passwd -l bob` が主にロックするものは何ですか？
 
 ::option[そのアカウントのあらゆる認証経路と実行経路。]{#user-tools-lock-everything explanation="鍵、トークン、ジョブ、サービス、既存セッションには別の制御が必要な場合があります。"}
 ::option[Bob の UID が現在所有するすべてのファイル。]{#user-tools-lock-files explanation="パスワード状態はファイルシステムの所有権を変更せず、所有データを自動的にアクセス不能にしません。"}
@@ -126,8 +122,7 @@ $ sudo usermod -aG developers bob
 
 `userdel -r` は、設定されたホームとメールの場所の外にあるファイルまで削除するとは保証しません。アカウント削除後も、ファイルの数値所有権、データベース権限、アプリケーション識別情報、リモートディレクトリのレコードが残る場合があります。
 
-:::single-choice{#user-tools-userdel-r-scope}
-一般的な `userdel -r bob` は、単なる `userdel bob` に加えて何の削除を要求しますか？
+:::single-choice{#user-tools-userdel-r-scope} 一般的な `userdel -r bob` は、単なる `userdel bob` に加えて何の削除を要求しますか？
 
 ::option[マウントされた全ファイルシステム上で Bob の UID を持つすべてのファイル。]{#user-tools-delete-all-owned explanation="このツールが、すべてのストレージから UID 所有ファイルを一律に検出して消去することはありません。"}
 ::option[ユーザー名が同じ `bob` であるすべてのリモートアカウント。]{#user-tools-delete-remote explanation="`userdel` は該当するローカルアカウントデータベースを操作し、無関係なディレクトリサービスの識別情報は削除しません。"}

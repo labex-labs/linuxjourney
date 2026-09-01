@@ -24,8 +24,7 @@ $ sudo apt update
 
 This updates the local package indexes; it does not by itself install all available upgrades. Review the reported sources and authentication errors rather than ignoring failed entries.
 
-:::single-choice{#package-repositories-apt-update}
-What does `apt update` primarily refresh?
+:::single-choice{#package-repositories-apt-update} What does `apt update` primarily refresh?
 
 ::option[Every installed package binary without confirmation.]{#package-repositories-all-binaries explanation="Installing upgrades is a separate operation from refreshing metadata."}
 ::option[The passwords of users allowed to install packages.]{#package-repositories-user-passwords explanation="Repository index refresh does not modify local authentication credentials."}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 This is syntax illustration only; the reserved `.invalid` domain is not a usable repository.
 
-:::single-choice{#package-repositories-apt-locations}
-Where can APT read active repository definitions?
+:::single-choice{#package-repositories-apt-locations} Where can APT read active repository definitions?
 
 ::option[Only from `/etc/apt/sources.list`.]{#package-repositories-only-main-list explanation="APT also reads supported source files from `/etc/apt/sources.list.d/`."}
 ::option[Only from files inside each user's home directory.]{#package-repositories-only-home explanation="System APT source configuration normally resides under `/etc/apt`."}
@@ -67,8 +65,7 @@ APT verifies signed repository release metadata, then checks downloaded package 
 
 A valid signature establishes that the metadata came from a holder of an accepted signing key and was not modified undetected. It does not prove that the publisher's software is defect-free, nonmalicious, or appropriate for the system. Confirm the key fingerprint and source instructions through an independent trusted channel.
 
-:::single-choice{#package-repositories-signed-by}
-What is the security purpose of `Signed-By` in an APT source definition?
+:::single-choice{#package-repositories-signed-by} What is the security purpose of `Signed-By` in an APT source definition?
 
 ::option[Encrypt every installed package so root cannot read it.]{#package-repositories-package-encryption explanation="Repository signing provides origin and integrity checks, not secrecy from the local administrator."}
 ::option[Limit that source to selected signing keys.]{#package-repositories-key-scope .correct explanation="The field ties repository verification to selected keyring material rather than an unrestricted global key set."}
@@ -87,8 +84,7 @@ A repository can install packages and lifecycle scripts with system privileges, 
 
 Do not copy obsolete instructions that disable signature checks or pipe an unaudited remote script into a privileged shell.
 
-:::single-choice{#package-repositories-third-party-risk}
-Why does adding a third-party repository expand the system's trust boundary?
+:::single-choice{#package-repositories-third-party-risk} Why does adding a third-party repository expand the system's trust boundary?
 
 ::option[Its authenticated packages and scripts may be installed with system privileges.]{#package-repositories-privileged-install .correct explanation="Trusting the signing source can authorize code and lifecycle actions that affect the operating system."}
 ::option[It makes the Linux kernel stop enforcing file permissions.]{#package-repositories-disable-permissions explanation="Repository configuration does not disable the kernel's normal access-control mechanisms."}

@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` copia blocos, não necessariamente um byte por vez. Um `bs` maior pode reduzir a sobrecarga das chamadas de sistema, mas o valor ideal depende dos dispositivos, do alinhamento, do cache e da carga de trabalho. Ele não altera os dados lógicos copiados.
 
-:::single-choice{#dd-command-output-operand}
-Qual operando seleciona o destino gravado por `dd`?
+:::single-choice{#dd-command-output-operand} Qual operando seleciona o destino gravado por `dd`?
 
 ::option[`if=`]{#dd-command-input-file explanation="`if` identifica a origem de entrada."}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of` nomeia o fluxo ou arquivo de saída que recebe os dados copiados."}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 Isso solicita dois blocos de entrada de até 1 MiB cada, portanto copia no máximo 2 MiB. Leituras curtas podem complicar a multiplicação simples em fluxos como pipes; o `dd` do GNU oferece `iflag=fullblock` quando são necessários blocos de entrada completos. Diferencie unidades binárias e a sintaxe dos sufixos conforme a implementação local.
 
-:::single-choice{#dd-command-count-result}
-Para um arquivo comum, qual quantidade máxima `bs=1M count=2` solicita?
+:::single-choice{#dd-command-count-result} Para um arquivo comum, qual quantidade máxima `bs=1M count=2` solicita?
 
 ::option[1 MiB.]{#dd-command-one-mib explanation="Isso corresponderia a um bloco do tamanho selecionado."}
 ::option[2 MiB.]{#dd-command-two-mib .correct explanation="Dois blocos de entrada multiplicados por 1 MiB por bloco resultam em um máximo de 2 MiB."}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 O dispositivo de saída é sobrescrito desde o início. Inverter `if` e `of`, selecionar o disco do sistema ou usar um disco inteiro quando a intenção era uma partição pode destruir dados sem uma solicitação de confirmação.
 
-:::single-choice{#dd-command-target-verification}
-Qual é o motivo mais importante para verificar o modelo, o número de série, o tamanho e o uso ativo antes de uma gravação bruta em um dispositivo?
+:::single-choice{#dd-command-target-verification} Qual é o motivo mais importante para verificar o modelo, o número de série, o tamanho e o uso ativo antes de uma gravação bruta em um dispositivo?
 
 ::option[As letras dos dispositivos podem mudar, e `dd` sobrescreve o destino selecionado sem compreender seu conteúdo.]{#dd-command-target-can-change .correct explanation="As verificações de identidade e uso reduzem o risco de destruir outro disco ou uma pilha de armazenamento ativa."}
 ::option[`dd` se recusa a gravar se o rótulo do sistema de arquivos não corresponder à imagem.]{#dd-command-label-check explanation="A ferramenta não realiza essa verificação de segurança baseada no sistema de arquivos."}
@@ -85,8 +82,7 @@ Ler um dispositivo de bloco ativo enquanto seu sistema de arquivos está sendo a
 
 Uma imagem bruta do dispositivo copia blocos, incluindo os metadados do sistema de arquivos e regiões não utilizadas. Por isso, ela pode ser muito maior que um backup no nível dos arquivos e pode reproduzir identificadores que precisam ser alterados antes de montar um clone junto do original.
 
-:::single-choice{#dd-command-live-filesystem-image}
-Por que criar a imagem de um sistema de arquivos montado e em alteração pode não ser confiável?
+:::single-choice{#dd-command-live-filesystem-image} Por que criar a imagem de um sistema de arquivos montado e em alteração pode não ser confiável?
 
 ::option[Sistemas de arquivos montados nunca permitem leituras do dispositivo de bloco.]{#dd-command-mounted-no-read explanation="Leituras brutas podem ser possíveis, por isso a consistência precisa ser planejada, não presumida."}
 ::option[Blocos diferentes podem ser lidos em momentos diferentes do estado do sistema de arquivos.]{#dd-command-inconsistent-moments .correct explanation="Alterações simultâneas podem fazer a imagem de blocos coletada não representar um único ponto consistente no tempo."}
@@ -99,8 +95,7 @@ O comando terminar sem um erro de E/S não comprova que a origem e o destino pre
 
 Não divulgue passagens de sobrescrita com `dd` como apagamento seguro garantido para SSDs, camadas de tradução de flash, armazenamento com provisionamento dinâmico, snapshots ou setores remapeados. Use a sanitização compatível com o dispositivo e a plataforma junto com uma política explícita de destruição de dados.
 
-:::single-choice{#dd-command-success-meaning}
-O que um status de saída zero de `dd` não comprova por si só?
+:::single-choice{#dd-command-success-meaning} O que um status de saída zero de `dd` não comprova por si só?
 
 ::option[Que o comando interpretou todos os operandos fornecidos.]{#dd-command-parsed-operands explanation="Operandos inválidos normalmente causam um erro, não uma conclusão bem-sucedida."}
 ::option[Que o operador selecionou a origem e o destino pretendidos.]{#dd-command-does-not-prove-intent .correct explanation="A ferramenta pode copiar com sucesso para o destino errado, pois não consegue deduzir a intenção do operador."}

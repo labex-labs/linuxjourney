@@ -23,8 +23,7 @@ Ein Bootloader-Eintrag kann Folgendes angeben:
 
 GRUB kann mehrere Kernel und Wiederherstellungseinträge anbieten. Ein Ersatzkernel ist nur dann nützlich, wenn seine passenden Module und seine initramfs weiterhin verfügbar und erprobt sind. Der Bootloader liest Dateien mithilfe seiner unterstützten Speicher- und Dateisystemmodule; er stützt sich nicht auf das noch nicht laufende Linux-VFS.
 
-:::single-choice{#bootloader-primary-handoff}
-An was übergibt ein Linux-Bootloader normalerweise die Kontrolle?
+:::single-choice{#bootloader-primary-handoff} An was übergibt ein Linux-Bootloader normalerweise die Kontrolle?
 
 ::option[An eine interaktive Benutzershell, in der bereits alle Dienste laufen.]{#bootloader-user-shell explanation="Userspace-Shells erscheinen erst, nachdem Kernel und Init-System gestartet sind."}
 ::option[An das ausgewählte Kernel-Abbild, nachdem die erforderlichen Bootartefakte geladen wurden.]{#bootloader-selected-kernel .correct explanation="Der Bootloader bereitet Kernel, Parameter und häufig eine initramfs vor, bevor er den Einstiegspunkt des Kernels ausführt."}
@@ -49,16 +48,14 @@ So siehst du die beim aktuellen Start verwendete Befehlszeile:
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-Welchen Zweck hat der Kernel-Befehlszeilenparameter `root=`?
+:::single-choice{#bootloader-root-parameter} Welchen Zweck hat der Kernel-Befehlszeilenparameter `root=`?
 
 ::option[Er bezeichnet das Root-Dateisystem, das beim Booten letztlich verwendet werden soll.]{#bootloader-root-filesystem .correct explanation="Der Kernel oder die initramfs wertet den Wert aus, um das eigentliche Root-Dateisystem zu finden und zusammenzusetzen."}
 ::option[Er legt das Anmeldepasswort des Root-Kontos fest.]{#bootloader-root-password explanation="Authentifizierungsgeheimnisse dürfen nicht als gewöhnlicher Text in der Kernel-Befehlszeile übergeben werden."}
 ::option[Er benennt PID 1 in das Wort `root` um.]{#bootloader-root-pid explanation="Die Benennung von Prozessen hat nichts mit diesem Speicherparameter zu tun."}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-Was fordert der Parameter `quiet` normalerweise an?
+:::single-choice{#bootloader-quiet-parameter} Was fordert der Parameter `quiet` normalerweise an?
 
 ::option[Schreibgeschützten Zugriff auf jedes eingehängte Dateisystem.]{#bootloader-quiet-readonly explanation="Die anfängliche Schreibrichtlinie für das Root-Dateisystem verwendet Parameter wie `ro`, nicht `quiet`."}
 ::option[Weniger während des Bootens ausgegebene Kernelmeldungen.]{#bootloader-quiet-console .correct explanation="Der Parameter unterdrückt viele Informationsmeldungen, garantiert aber nicht, dass jede Bootkomponente still bleibt."}
@@ -71,8 +68,7 @@ GRUB erlaubt einem autorisierten Konsolenbenutzer häufig, einen Eintrag für ei
 
 Befehlszeilenparameter können vertraulichen Text über `/proc/cmdline`, Bootprotokolle und Absturzberichte offenlegen. Sie können außerdem die Sicherheit schwächen oder das System unbootbar machen. Hinterlege dort niemals Geheimnisse und bewahre einen bekanntermaßen funktionierenden Eintrag sowie einen Wiederherstellungsweg über die Konsole auf.
 
-:::single-choice{#bootloader-temporary-edit}
-Was ist eine typische Eigenschaft der interaktiven Bearbeitung eines GRUB-Menüeintrags für einen einzelnen Start?
+:::single-choice{#bootloader-temporary-edit} Was ist eine typische Eigenschaft der interaktiven Bearbeitung eines GRUB-Menüeintrags für einen einzelnen Start?
 
 ::option[Sie schreibt automatisch jedes installierte Kernel-Abbild neu.]{#bootloader-rewrites-kernels explanation="Das Ändern des Befehlstexts verändert keine Kernel-Binärdateien."}
 ::option[Sie deaktiviert die Firmware-Prüfung dauerhaft auf allen Datenträgern.]{#bootloader-disables-firmware explanation="Die Firmware-Richtlinie ist eine getrennte Ebene und wird durch das Bearbeiten eines Eintrags nicht allgemein verändert."}
@@ -85,8 +81,7 @@ Distributionen erzeugen die endgültige GRUB-Konfiguration meist aus Vorlagen, S
 
 Nimm eine begrenzte Änderung an der Konfigurationsquelle vor, führe den von der Distribution dokumentierten Befehl zur Neuerzeugung aus, prüfe seine Ausgabe und teste mit einem weiterhin vorhandenen älteren, bekanntermaßen funktionierenden Eintrag sowie einem bootfähigen Wiederherstellungsmedium. Befehl und Ausgabepfad unterscheiden sich zwischen Debian, Fedora sowie UEFI- und BIOS-Installationen.
 
-:::single-choice{#bootloader-generated-config}
-Warum ist die direkte Bearbeitung einer erzeugten `grub.cfg` normalerweise unzuverlässig?
+:::single-choice{#bootloader-generated-config} Warum ist die direkte Bearbeitung einer erzeugten `grub.cfg` normalerweise unzuverlässig?
 
 ::option[Die Datei kann niemals lesbaren Text enthalten.]{#bootloader-config-binary explanation="Die GRUB-Konfiguration ist Text, doch entscheidend ist weiterhin, dass sie erzeugt und verwaltet wird."}
 ::option[GRUB liest ausschließlich Dateien in den Home-Verzeichnissen der Benutzer.]{#bootloader-grub-home explanation="Die Bootkonfiguration gilt systemweit und muss verfügbar sein, bevor Benutzersitzungen der Home-Verzeichnisse beginnen."}

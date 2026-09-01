@@ -23,8 +23,7 @@ Una ruta de registro consta de varias partes distintas:
 
 En una máquina con systemd, `systemd-journald` suele recopilar la salida estándar de los servicios, los mensajes del kernel y los mensajes nativos del diario o de syslog. Un demonio syslog como rsyslog también puede recibir mensajes y escribir archivos de texto tradicionales o reenviarlos. Las aplicaciones pueden mantener en cambio sus propios archivos o telemetría externa.
 
-:::single-choice{#system-logging-distinct-roles}
-¿Qué componente decide dónde se almacenan o reenvían los mensajes aceptados?
+:::single-choice{#system-logging-distinct-roles} ¿Qué componente decide dónde se almacenan o reenvían los mensajes aceptados?
 
 ::option[El directorio de trabajo actual de la terminal.]{#system-logging-cwd explanation="Un directorio del shell no define las rutas de registro de todo el sistema."}
 ::option[El nombre de archivo de la imagen del kernel en ejecución.]{#system-logging-kernel-file explanation="El kernel puede emitir mensajes, pero el nombre de archivo de su imagen no es la política de enrutamiento."}
@@ -43,8 +42,7 @@ $ journalctl --disk-usage
 
 `/var/log/syslog` es habitual en sistemas de la familia Debian que utilizan un enrutamiento compatible, mientras que `/var/log/messages` es común en otros. Cualquiera de ellos puede faltar en una máquina que solo use el diario. La documentación de la aplicación y la configuración de sus unidades pueden indicar destinos adicionales.
 
-:::single-choice{#system-logging-file-absence}
-¿Qué significa necesariamente que falte el archivo `/var/log/syslog`?
+:::single-choice{#system-logging-file-absence} ¿Qué significa necesariamente que falte el archivo `/var/log/syslog`?
 
 ::option[La máquina puede utilizar otro destino de registro configurado.]{#system-logging-other-destination .correct explanation="Los sistemas que solo usan el diario y otras políticas de syslog no tienen por qué crear este archivo."}
 ::option[El kernel nunca ha producido ningún mensaje.]{#system-logging-no-kernel explanation="Los registros del kernel pueden estar en el diario o en otro destino."}
@@ -62,8 +60,7 @@ $ journalctl -u ssh.service --since '1 hour ago'
 
 `-b` selecciona el arranque actual, `-p` filtra por prioridad y `-u` filtra por unidad. Los nombres de las unidades y los arranques conservados varían según la máquina. Usa `journalctl --list-boots` para ver los arranques disponibles y `journalctl -f` para seguir los registros nuevos mientras reproduces un problema.
 
-:::single-choice{#system-logging-current-boot}
-¿Qué opción limita una consulta de `journalctl` al arranque actual?
+:::single-choice{#system-logging-current-boot} ¿Qué opción limita una consulta de `journalctl` al arranque actual?
 
 ::option[`-b`]{#system-logging-boot-option .correct explanation="Sin argumento, el selector de arranque elige el actual."}
 ::option[`-u`]{#system-logging-unit-option explanation="Esta opción filtra por una unidad de systemd."}
@@ -82,8 +79,7 @@ Contiene una marca de tiempo, la máquina, el programa y el PID, y después un m
 
 Los registros pueden contener nombres de usuario, direcciones, rutas, tokens u otros datos sensibles. Aplica el acceso con privilegios mínimos, elimina datos sensibles de las exportaciones y conserva los originales y sus marcas de tiempo durante una investigación.
 
-:::single-choice{#system-logging-export-safety}
-¿Qué debes hacer antes de compartir externamente un fragmento de un registro?
+:::single-choice{#system-logging-export-safety} ¿Qué debes hacer antes de compartir externamente un fragmento de un registro?
 
 ::option[Sustituir todas las marcas de tiempo por valores aleatorios.]{#system-logging-random-time explanation="Destruir la información temporal puede impedir la correlación y no constituye un método de ocultación adecuado."}
 ::option[Revisarlo en busca de secretos e identificadores sensibles.]{#system-logging-review-sensitive .correct explanation="Los registros suelen contener datos operativos o personales que requieren una eliminación controlada."}

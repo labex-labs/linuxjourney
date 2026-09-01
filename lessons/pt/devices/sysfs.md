@@ -30,8 +30,7 @@ $ readlink -f /sys/class/block/sda
 
 O nome do exemplo pode não existir em sistemas que usam outras interfaces de armazenamento.
 
-:::single-choice{#sysfs-canonical-device-tree}
-Qual subárvore do sysfs contém a hierarquia principal de dispositivos do kernel?
+:::single-choice{#sysfs-canonical-device-tree} Qual subárvore do sysfs contém a hierarquia principal de dispositivos do kernel?
 
 ::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="O sysfs não é um repositório de segredos de autenticação dos usuários."}
 ::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="A subárvore devices representa a topologia pai-filho dos dispositivos; as visualizações de classes e barramentos apontam para ela."}
@@ -53,8 +52,7 @@ $ cat /sys/class/block/sda/size
 
 `dev` informa os números maior e menor do dispositivo. `ro` informa o indicador de somente leitura do dispositivo de bloco. Para dispositivos de bloco do Linux, `size` é convencionalmente expresso em setores de 512 bytes, independentemente do tamanho de setor físico do dispositivo. Consulte sempre a documentação da ABI do kernel para conhecer as unidades e o significado de um atributo específico.
 
-:::single-choice{#sysfs-dev-attribute}
-O que o atributo `dev` de um dispositivo de bloco normalmente contém?
+:::single-choice{#sysfs-dev-attribute} O que o atributo `dev` de um dispositivo de bloco normalmente contém?
 
 ::option[Todos os arquivos atualmente armazenados no dispositivo.]{#sysfs-file-list explanation="Uma árvore de diretórios do sistema de arquivos não fica incorporada nesse pequeno atributo do dispositivo."}
 ::option[O nome do pacote que instalou o hardware.]{#sysfs-package-name explanation="O hardware não é instalado como um pacote identificado pelo atributo `dev`."}
@@ -67,8 +65,7 @@ O que o atributo `dev` de um dispositivo de bloco normalmente contém?
 
 As duas interfaces se complementam. Nenhuma contém, sozinha, um inventário completo de todos os dados do hardware, e um dispositivo pode desaparecer enquanto é inspecionado.
 
-:::single-choice{#sysfs-versus-dev}
-Qual afirmação diferencia corretamente `/sys` de `/dev`?
+:::single-choice{#sysfs-versus-dev} Qual afirmação diferencia corretamente `/sys` de `/dev`?
 
 ::option[`/sys` armazena documentos dos usuários; `/dev` armazena pacotes.]{#sysfs-dev-user-files explanation="Nenhum desses diretórios possui essas funções comuns de armazenamento de dados."}
 ::option[`/sys` expõe atributos de objetos do kernel; `/dev` fornece nós de dispositivos para E/S.]{#sysfs-dev-distinction .correct explanation="O sysfs modela objetos e controles, enquanto os nós de dispositivos encaminham operações para drivers de caractere ou de bloco."}
@@ -81,8 +78,7 @@ Alguns atributos do sysfs permitem escrita e podem alterar o estado de energia, 
 
 Leia a ABI documentada e o valor atual, identifique como tornar a configuração persistente e teste somente em um sistema autorizado. Nunca edite permissões recursivamente nem grave valores deduzidos em toda a árvore `/sys`.
 
-:::single-choice{#sysfs-write-risk}
-Por que gravar em um atributo do sysfs pode ser operacionalmente significativo?
+:::single-choice{#sysfs-write-risk} Por que gravar em um atributo do sysfs pode ser operacionalmente significativo?
 
 ::option[Toda gravação cria uma cópia de backup comum no disco.]{#sysfs-backup-copy explanation="O sysfs é virtual e não oferece backups automáticos das alterações de controle."}
 ::option[O sysfs ignora todas as gravações, mesmo quando um atributo permite escrita.]{#sysfs-ignore-writes explanation="Os atributos graváveis existem justamente para aceitar valores de controle compatíveis."}

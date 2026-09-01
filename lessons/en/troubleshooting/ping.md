@@ -22,8 +22,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 Use `-6` to select IPv6. Record the resolved address because a hostname can return several addresses and repeated runs can choose differently.
 
-:::single-choice{#ping-count-option}
-What does `-c 3` request?
+:::single-choice{#ping-count-option} What does `-c 3` request?
 
 ::option[A packet payload of exactly three megabytes.]{#ping-three-megabytes explanation="Packet size uses a different option."}
 ::option[Three permanent routes to the destination.]{#ping-three-routes explanation="Ping probes traffic and does not install routes."}
@@ -36,8 +35,7 @@ What does `-c 3` request?
 
 Loss can occur in either direction, and ICMP rate limiting can make ping loss differ from application loss.
 
-:::single-choice{#ping-sequence-gap}
-What can a missing `icmp_seq` reply indicate?
+:::single-choice{#ping-sequence-gap} What can a missing `icmp_seq` reply indicate?
 
 ::option[The destination permanently changed its MAC address.]{#ping-sequence-mac explanation="A sequence gap alone provides no such link-layer conclusion."}
 ::option[The request or reply was lost, filtered, delayed past the wait, or rate-limited.]{#ping-sequence-possibilities .correct explanation="The sequence gap identifies an absent observed reply but not the exact direction or cause."}
@@ -48,8 +46,7 @@ What can a missing `icmp_seq` reply indicate?
 
 The `time` field is round-trip time in milliseconds from sending the request to receiving its reply. It combines outbound delay, remote processing, and return delay. It cannot reveal one-way latency without synchronized endpoint measurements.
 
-:::single-choice{#ping-rtt-meaning}
-What does a reported `time=23.7 ms` measure?
+:::single-choice{#ping-rtt-meaning} What does a reported `time=23.7 ms` measure?
 
 ::option[Only the one-way outbound path latency.]{#ping-outbound-only explanation="Ping measures the complete request-and-reply interval."}
 ::option[The target's system uptime.]{#ping-target-uptime explanation="The value is timing for the probe, not boot duration."}
@@ -60,8 +57,7 @@ What does a reported `time=23.7 ms` measure?
 
 The displayed IPv4 TTL or IPv6 Hop Limit is the value remaining in the received reply. Without knowing the sender's initial value and return route, subtracting it does not yield an exact hop count. A change can reflect a different responder, initial value, or return path.
 
-:::single-choice{#ping-received-ttl}
-What is the TTL printed on an IPv4 Echo Reply?
+:::single-choice{#ping-received-ttl} What is the TTL printed on an IPv4 Echo Reply?
 
 ::option[The remaining value when the reply reached the local host.]{#ping-remaining-ttl .correct explanation="Each router on the return path decremented the sender's initial value."}
 ::option[An exact count of routers in both directions.]{#ping-exact-hop-count explanation="The initial TTL and directional path are not established by this field alone."}
@@ -72,8 +68,7 @@ What is the TTL printed on an IPv4 Echo Reply?
 
 If ping succeeds but a service fails, test the actual port, TLS, protocol, and request. If ping fails, inspect name resolution, `ip route get`, neighbor state, firewall policy, and captures before declaring the host down.
 
-:::single-choice{#ping-success-limit}
-What does a successful ping fail to prove?
+:::single-choice{#ping-success-limit} What does a successful ping fail to prove?
 
 ::option[That some ICMP request and reply path worked.]{#ping-icmp-worked explanation="That is the direct evidence supplied by replies."}
 ::option[That the reply contained a sequence number.]{#ping-sequence-present explanation="Normal output directly reports the reply sequence."}

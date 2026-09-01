@@ -18,8 +18,7 @@ An application protocol defines how peers interpret messages and state. HTTP def
 
 Not every application protocol adds one fixed “application header.” Some use textual fields, some binary records, some several nested formats, and some carry a continuous sequence of messages over one transport connection.
 
-:::single-choice{#application-layer-protocol-role}
-What does an application protocol primarily define?
+:::single-choice{#application-layer-protocol-role} What does an application protocol primarily define?
 
 ::option[The meaning and exchange rules of service messages.]{#application-layer-message-semantics .correct explanation="Peers need shared syntax, semantics, and state behavior to interoperate."}
 ::option[The voltage on every Ethernet cable.]{#application-layer-voltage explanation="Physical signaling belongs to lower-layer technology."}
@@ -30,8 +29,7 @@ What does an application protocol primarily define?
 
 A client initiates a request or connection to a service; a server listens or otherwise accepts it. These are roles in an interaction, not permanent device categories. One host can be a client for DNS and a server for SSH at the same time, and some protocols use peer-to-peer roles.
 
-:::single-choice{#application-layer-client-role}
-What makes a program the client in a typical request-response exchange?
+:::single-choice{#application-layer-client-role} What makes a program the client in a typical request-response exchange?
 
 ::option[It initiates a request to the service.]{#application-layer-client-initiates .correct explanation="Client and server describe interaction roles that one host can perform simultaneously for different services."}
 ::option[It must run on a laptop rather than a server.]{#application-layer-client-laptop explanation="Hardware category does not determine the protocol role."}
@@ -42,8 +40,7 @@ What makes a program the client in a typical request-response exchange?
 
 An application may resolve a service name to one or more IP addresses and choose a transport endpoint. Well-known ports provide defaults, not immutable proof of a protocol. HTTP commonly uses TCP port 80 and HTTPS TCP port 443, but either can run elsewhere. SMTP uses different ports and policies for relay and message submission.
 
-:::single-choice{#application-layer-port-limit}
-What does an open TCP port 443 prove by itself?
+:::single-choice{#application-layer-port-limit} What does an open TCP port 443 prove by itself?
 
 ::option[That a process accepted a TCP endpoint there, but its application behavior still needs testing.]{#application-layer-port-endpoint .correct explanation="Protocol exchange and TLS validation provide stronger application-layer evidence."}
 ::option[That the service is definitely a correctly configured HTTPS application.]{#application-layer-port-proves-https explanation="A port number does not validate protocol behavior, identity, or health."}
@@ -56,8 +53,7 @@ TLS can add confidentiality, integrity, and authenticated peer identity when cer
 
 For example, an HTTPS diagnosis can separately check resolution, TCP connection, TLS certificate and name, HTTP response, and application content. Success at one step narrows the problem but does not prove all later steps.
 
-:::single-choice{#application-layer-tls-limit}
-What does successful TLS certificate validation establish?
+:::single-choice{#application-layer-tls-limit} What does successful TLS certificate validation establish?
 
 ::option[That every user is authorized for every resource.]{#application-layer-tls-all-users explanation="Transport authentication does not replace application access policy."}
 ::option[Peer identity for the validated name and an authenticated secure channel.]{#application-layer-tls-identity .correct explanation="Application authorization and content correctness still require their own checks."}

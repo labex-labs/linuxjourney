@@ -16,8 +16,7 @@ meta_keywords: "Linux 传输层, TCP, UDP, TCP 握手, 网络端口, 数据分�
 
 目标端口帮助操作系统把流量送达监听套接字。标识连接或流量不能只靠一个端口：协议、源地址与目标地址、源端口与目标端口都很重要。因此，同一个服务器端口可以同时服务许多客户端。
 
-:::single-choice{#transport-layer-many-clients}
-一个 TCP 服务器端口如何同时处理多个客户端？
+:::single-choice{#transport-layer-many-clients} 一个 TCP 服务器端口如何同时处理多个客户端？
 
 ::option[每个连接具有不同的端点地址与端口组合。]{#transport-layer-connection-tuple .correct explanation="完整的传输层元组可以区分共享同一监听端口的并发连接。"}
 ::option[服务器会在每个数据包之后永久重命名端口。]{#transport-layer-renames-port explanation="监听端口可以保持不变，而已接受连接具有不同的对端元组。"}
@@ -30,8 +29,7 @@ meta_keywords: "Linux 传输层, TCP, UDP, TCP 握手, 网络端口, 数据分�
 
 可靠并不等于绝对送达。连接可能超时、重置或失败，收到确认也不能证明应用程序已将数据持久提交。
 
-:::single-choice{#transport-layer-tcp-boundaries}
-TCP 如何处理应用程序消息边界？
+:::single-choice{#transport-layer-tcp-boundaries} TCP 如何处理应用程序消息边界？
 
 ::option[TCP 提供有序字节流，但不保留写入边界。]{#transport-layer-byte-stream .correct explanation="应用层协议必须定义消息的分隔或长度。"}
 ::option[每次写入都会恰好变成一个 IP 数据包和一次读取。]{#transport-layer-one-write-packet explanation="分段、缓冲和接收 API 不会保留这种对应关系。"}
@@ -48,8 +46,7 @@ TCP 如何处理应用程序消息边界？
 
 该过程在两个端点中建立传输状态。它不会验证应用服务器的身份，也不能证明所请求的应用操作会成功。
 
-:::single-choice{#transport-layer-handshake-order}
-正常的 TCP 三次握手顺序是什么？
+:::single-choice{#transport-layer-handshake-order} 正常的 TCP 三次握手顺序是什么？
 
 ::option[SYN、SYN-ACK、ACK。]{#transport-layer-syn-order .correct explanation="这次交换会在两个方向同步并确认初始连接状态。"}
 ::option[ACK、ACK、SYN。]{#transport-layer-ack-ack-syn explanation="发起方首先请求同步。"}
@@ -60,8 +57,7 @@ TCP 如何处理应用程序消息边界？
 
 UDP 保留数据报边界，并提供基于校验和的错误检测，但不提供 TCP 式连接状态、排序、重传、流量控制或拥塞控制。应用程序可以自行添加所需的可靠性或拥塞行为。UDP 并不必然更快；性能取决于协议设计、工作负载、路径和实现。
 
-:::single-choice{#transport-layer-udp-boundaries}
-UDP 向应用程序提供哪项属性？
+:::single-choice{#transport-layer-udp-boundaries} UDP 向应用程序提供哪项属性？
 
 ::option[自动重传的有序字节流。]{#transport-layer-udp-stream explanation="这描述的是类似 TCP 的服务，而不是基础 UDP。"}
 ::option[保留所提交数据报之间的边界。]{#transport-layer-udp-datagrams .correct explanation="除非丢失，否则收到的一个 UDP 数据报对应发送的一个数据报。"}
@@ -79,8 +75,7 @@ $ ss -tn state established
 
 查看进程详情可能需要特权。监听套接字只能证明传输边界上的本地就绪状态；防火墙、路由、地址族、TLS 和应用程序健康仍需通过适当测试确认。
 
-:::single-choice{#transport-layer-listener-proof}
-监听中的 TCP 套接字能确定什么？
+:::single-choice{#transport-layer-listener-proof} 监听中的 TCP 套接字能确定什么？
 
 ::option[每个远程防火墙都允许连接。]{#transport-layer-all-firewalls explanation="本地套接字状态无法反映整条路径上的所有策略。"}
 ::option[应用程序已通过每项健康检查。]{#transport-layer-all-health explanation="监听状态提供的证据弱于成功完成一次应用程序事务。"}

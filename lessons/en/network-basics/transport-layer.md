@@ -16,8 +16,7 @@ The transport layer connects application endpoints across an IP network. TCP and
 
 A destination port helps the operating system deliver traffic to a listening socket. A connection or flow is identified by more than one port: protocol, source and destination addresses, and source and destination ports all matter. The same server port can therefore support many simultaneous clients.
 
-:::single-choice{#transport-layer-many-clients}
-How can one TCP server port handle several clients at once?
+:::single-choice{#transport-layer-many-clients} How can one TCP server port handle several clients at once?
 
 ::option[Each connection has a distinct combination of endpoint addresses and ports.]{#transport-layer-connection-tuple .correct explanation="The complete transport tuple distinguishes concurrent connections sharing a listening port."}
 ::option[The server permanently renames its port after each packet.]{#transport-layer-renames-port explanation="The listening port can remain stable while accepted connections have distinct peer tuples."}
@@ -30,8 +29,7 @@ TCP provides an ordered, reliable byte stream while a connection remains viable.
 
 Reliability is not absolute delivery. A connection can time out, reset, or fail, and an acknowledgement does not prove that an application durably committed the data.
 
-:::single-choice{#transport-layer-tcp-boundaries}
-What happens to application message boundaries in TCP?
+:::single-choice{#transport-layer-tcp-boundaries} What happens to application message boundaries in TCP?
 
 ::option[TCP exposes an ordered byte stream without preserving write boundaries.]{#transport-layer-byte-stream .correct explanation="The application protocol must define how messages are delimited or sized."}
 ::option[Every write becomes exactly one IP packet and one read.]{#transport-layer-one-write-packet explanation="Segmentation, buffering, and receiving APIs do not preserve that mapping."}
@@ -48,8 +46,7 @@ A normal TCP connection begins with a three-way handshake:
 
 This establishes transport state in both endpoints. It does not authenticate the application server or prove that the requested application operation will succeed.
 
-:::single-choice{#transport-layer-handshake-order}
-What is the normal TCP three-way handshake order?
+:::single-choice{#transport-layer-handshake-order} What is the normal TCP three-way handshake order?
 
 ::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="The exchange synchronizes and acknowledges initial connection state in both directions."}
 ::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="The initiator first requests synchronization."}
@@ -60,8 +57,7 @@ What is the normal TCP three-way handshake order?
 
 UDP preserves datagram boundaries and provides checksum-based error detection, but it does not provide TCP-style connection state, ordering, retransmission, flow control, or congestion control. An application can add any needed reliability or congestion behavior itself. UDP is not automatically faster; performance depends on protocol design, workload, path, and implementation.
 
-:::single-choice{#transport-layer-udp-boundaries}
-Which property does UDP provide to applications?
+:::single-choice{#transport-layer-udp-boundaries} Which property does UDP provide to applications?
 
 ::option[An automatically retransmitted ordered byte stream.]{#transport-layer-udp-stream explanation="That describes TCP-like services, not base UDP."}
 ::option[Preserved boundaries between submitted datagrams.]{#transport-layer-udp-datagrams .correct explanation="A received UDP datagram corresponds to one sent datagram, unless it is lost."}
@@ -79,8 +75,7 @@ $ ss -tn state established
 
 Process details can require privileges. A listening socket proves local readiness only at the transport boundary; firewall, routing, address family, TLS, and application health still need appropriate tests.
 
-:::single-choice{#transport-layer-listener-proof}
-What does a listening TCP socket establish?
+:::single-choice{#transport-layer-listener-proof} What does a listening TCP socket establish?
 
 ::option[Every remote firewall permits the connection.]{#transport-layer-all-firewalls explanation="Local socket state does not reveal all path policy."}
 ::option[The application has passed every health check.]{#transport-layer-all-health explanation="Listening is weaker evidence than a successful application transaction."}

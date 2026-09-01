@@ -18,8 +18,7 @@ Les mots de passe ne sont pas chiffrés de façon réversible pour être réaffi
 
 Propriétaire et permissions exacts varient, mais l'accès est souvent limité à root et à quelques composants autorisés. N'affichez, ne copiez, ne journalisez ni ne partagez le contenu pour simplement vérifier un état.
 
-:::single-choice{#shadow-restricted-reason}
-Pourquoi les données shadow sont-elles normalement protégées de la lecture générale ?
+:::single-choice{#shadow-restricted-reason} Pourquoi les données shadow sont-elles normalement protégées de la lecture générale ?
 
 ::option[Le fichier contient tous les mots de passe actuels en clair.]{#shadow-plaintext-passwords explanation="Les entrées correctes contiennent des hachages à sens unique ou des marqueurs, pas des mots de passe récupérables."}
 ::option[Des hachages divulgués peuvent subir des essais hors ligne.]{#shadow-offline-guessing .correct explanation="Un attaquant peut tester des mots de passe sans interagir avec le service de connexion."}
@@ -46,8 +45,7 @@ Les champs sont :
 
 Champs vides et valeurs spéciales ont des sens définis selon le champ et les outils. Utilisez les commandes de comptes plutôt qu'une édition visuelle.
 
-:::single-choice{#shadow-account-expiration-field}
-Quel champ contient la date d'expiration du compte en jours depuis le 01-01-1970 ?
+:::single-choice{#shadow-account-expiration-field} Quel champ contient la date d'expiration du compte en jours depuis le 01-01-1970 ?
 
 ::option[Le champ 3]{#shadow-field-three explanation="Il indique la date du dernier changement de mot de passe."}
 ::option[Le champ 8]{#shadow-field-eight .correct explanation="Le huitième champ contient le nombre absolu de jours d'expiration du compte."}
@@ -60,8 +58,7 @@ Un hachage valide au champ 2 permet la vérification locale. Une valeur commenç
 
 Ces marqueurs ne décrivent que la voie du mot de passe local. Clés SSH, certificats, jetons ou identifiants applicatifs peuvent rester utilisables. L'expiration du compte au champ 8 est également distincte du verrouillage du mot de passe.
 
-:::single-choice{#shadow-password-lock-scope}
-Que peut-on conclure sûrement d'un champ commençant par `!` ?
+:::single-choice{#shadow-password-lock-scope} Que peut-on conclure sûrement d'un champ commençant par `!` ?
 
 ::option[Le hachage Unix stocké est rendu inutilisable pour la vérification normale du mot de passe.]{#shadow-password-locked .correct explanation="Le préfixe `!` empêche le hachage de correspondre à un mot de passe fourni par cette voie."}
 ::option[Toutes les méthodes de connexion sont désactivées.]{#shadow-all-login-disabled explanation="D'autres méthodes peuvent être indépendantes."}
@@ -72,8 +69,7 @@ Que peut-on conclure sûrement d'un champ commençant par `!` ?
 
 Les champs 3 à 7 concernent le vieillissement du mot de passe. Le champ 8 expire le compte à une date absolue, indépendamment de l'âge du mot de passe. Ainsi, un maximum de 90 jours évolue depuis le dernier changement, tandis qu'une expiration de compte reste fixe.
 
-:::single-choice{#shadow-max-age-versus-expire}
-Quelle différence existe entre les champs 5 et 8 ?
+:::single-choice{#shadow-max-age-versus-expire} Quelle différence existe entre les champs 5 et 8 ?
 
 ::option[Le champ 5 contient le nom et le 8 le shell.]{#shadow-username-shell explanation="Le nom est au champ 1 et le shell figure dans `/etc/passwd`."}
 ::option[Le champ 5 contient le hachage et le 8 son sel.]{#shadow-hash-salt explanation="Le hachage encodé appartient au champ 2."}
@@ -89,8 +85,7 @@ $ sudo chage -l alice
 
 `passwd -S` résume l'état local et `chage -l` présente le vieillissement lisiblement. Utilisez `passwd`, `chage`, `usermod` et outils associés pour les changements. Si une réparation manuelle est inévitable, `vipw -s` verrouille la base ; validez avec `pwck` et gardez une session de récupération.
 
-:::single-choice{#shadow-list-aging-policy}
-Quelle commande liste lisiblement le vieillissement du mot de passe local d'`alice` ?
+:::single-choice{#shadow-list-aging-policy} Quelle commande liste lisiblement le vieillissement du mot de passe local d'`alice` ?
 
 ::option[`cat /etc/shadow`]{#shadow-cat-entire-file explanation="Cela expose toute la base et bien plus d'informations sensibles que nécessaire."}
 ::option[`passwd -d alice`]{#shadow-passwd-delete explanation="Cette opération supprime le hachage ; elle modifie un état sensible."}

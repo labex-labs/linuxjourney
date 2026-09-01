@@ -24,8 +24,7 @@ $ ip address show
 
 Dass eine Schnittstelle vorhanden oder administrativ aktiv ist, beweist keine Ende-zu-Ende-Verbindung.
 
-:::single-choice{#network-basics-host-interface}
-Was ist eine Netzwerkschnittstelle?
+:::single-choice{#network-basics-host-interface} Was ist eine Netzwerkschnittstelle?
 
 ::option[Eine dauerhafte Kopie jedes Pakets im Internet.]{#network-basics-interface-copy explanation="Eine Schnittstelle sendet und empfängt Datenverkehr; sie ist kein weltweites Paketarchiv."}
 ::option[Der Anschlusspunkt eines Hosts an ein Netzwerk oder eine virtuelle Verbindung.]{#network-basics-interface-attachment .correct explanation="Ein Host kann mehrere physische oder virtuelle Schnittstellen mit getrennter Konfiguration besitzen."}
@@ -36,8 +35,7 @@ Was ist eine Netzwerkschnittstelle?
 
 Ein lokales Netzwerk, kurz LAN, deckt eine begrenzte Umgebung wie ein Zuhause, Büro oder Rechenzentrumssegment ab. Ethernet-Switches leiten Frames zwischen Ports einer lokalen Verbindung weiter. Ein drahtloses LAN, kurz WLAN, verwendet drahtlose Verbindungstechnik. Kabelgebundene und drahtlose Schnittstellen können dennoch zum selben IP-Subnetz gehören, wenn eine Bridge oder ein Access Point sie verbindet.
 
-:::single-choice{#network-basics-wlan-relationship}
-In welchem Verhältnis steht ein WLAN zu einem LAN?
+:::single-choice{#network-basics-wlan-relationship} In welchem Verhältnis steht ein WLAN zu einem LAN?
 
 ::option[Ein WLAN ist immer ein getrenntes weltweites Internet.]{#network-basics-wlan-global explanation="Es ist ein lokales Netzwerk mit drahtloser Verbindungstechnik."}
 ::option[Ein WLAN ist eine von Routern verwendete Datenträgerpartition.]{#network-basics-wlan-disk explanation="Der Begriff beschreibt Vernetzung und keine Speicheraufteilung."}
@@ -50,8 +48,7 @@ Ein Router leitet Netzwerkschichtpakete gemäß seiner Routingtabelle zwischen I
 
 Ein Weitverkehrsnetz, kurz WAN, erstreckt sich über größere geografische oder administrative Grenzen. Ein Internetanbieter kann ein Kundennetz mit anderen Netzwerken verbinden, aber „WAN“ bezeichnet nicht einfach jedes Gerät außerhalb eines Hauses.
 
-:::single-choice{#network-basics-router-role}
-Was ist die kennzeichnende Aufgabe eines Routers?
+:::single-choice{#network-basics-router-role} Was ist die kennzeichnende Aufgabe eines Routers?
 
 ::option[Pakete zwischen Netzwerken der Netzwerkschicht weiterleiten.]{#network-basics-forward-networks .correct explanation="Routing wählt nächste Hops über Grenzen von IP-Netzwerken hinweg aus."}
 ::option[Die Dateien jedes Benutzers zwingend als Sicherung speichern.]{#network-basics-router-backup explanation="Dateiaufbewahrung ist nicht die kennzeichnende Routingfunktion."}
@@ -64,8 +61,7 @@ Anwendungen erzeugen Daten, die Protokollschichten zur Übertragung aufteilen un
 
 Eine Unterhaltung kann viele Pakete in beiden Richtungen umfassen. Verlust, Umordnung, Fragmentierung, erneute Übertragung und Pfadänderungen bedeuten, dass ein einzelnes aufgezeichnetes Paket selten die gesamte Anwendungstransaktion beschreibt.
 
-:::single-choice{#network-basics-router-frame}
-Was geschieht an einem Router-Hop normalerweise mit der Kapselung der Verbindungsschicht?
+:::single-choice{#network-basics-router-frame} Was geschieht an einem Router-Hop normalerweise mit der Kapselung der Verbindungsschicht?
 
 ::option[Der Router entfernt den eingehenden Frame und erstellt einen Frame für die nächste Verbindung.]{#network-basics-reframe .correct explanation="Das weitergeleitete IP-Paket wird in einem neuen, zur ausgehenden Schnittstelle passenden Frame der Verbindungsschicht transportiert."}
 ::option[Der gleiche Ethernet-Frame durchquert unverändert das gesamte Internet.]{#network-basics-same-frame explanation="Frames gelten für ihre jeweilige Verbindung und werden an gerouteten Hops ersetzt."}

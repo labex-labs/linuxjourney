@@ -24,8 +24,7 @@ Emacs는 관련된 수정 파일 방문 버퍼를 확인하고 저장할지 묻�
 
 `emacsclient` 작업 흐름이나 Emacs 서버에서는 정확한 프레임 및 서버 동작이 다를 수 있지만 수정된 버퍼 요청은 여전히 주의 깊게 확인해야 합니다.
 
-:::single-choice{#emacs-exit-key}
-수정된 버퍼를 확인하며 정상적인 Emacs 종료를 요청하는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-exit-key} 수정된 버퍼를 확인하며 정상적인 Emacs 종료를 요청하는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="선택한 버퍼 하나를 종료하며 Emacs 세션 종료를 요청하지 않습니다."}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="Emacs를 닫지 않고 대기 중인 명령이나 요청을 취소합니다."}
@@ -42,8 +41,7 @@ C-h C-h
 
 두 번째 키가 필요한 도움말 종류를 선택합니다.
 
-:::single-choice{#emacs-help-for-help}
-Emacs 도움말 시스템 사용법을 설명하는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-help-for-help} Emacs 도움말 시스템 사용법을 설명하는 키 시퀀스는 무엇인가요?
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="도움말 접두사 뒤에 다시 `C-h`를 누르면 도움말 디스패처 자체에 대한 도움말이 열립니다."}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="여기서 소개한 help-for-help 시퀀스가 아닙니다."}
@@ -62,8 +60,7 @@ Emacs 도움말 시스템 사용법을 설명하는 키 시퀀스는 무엇인�
 
 예를 들어 `C-h k C-x C-s`를 입력하면 save-buffer 키 바인딩의 문서를 볼 수 있습니다.
 
-:::single-choice{#emacs-describe-key}
-`C-x C-s`가 무엇을 하는지 알고 싶습니다. 해당 키 시퀀스 앞에 어떤 도움말 접두사를 입력해야 하나요?
+:::single-choice{#emacs-describe-key} `C-x C-s`가 무엇을 하는지 알고 싶습니다. 해당 키 시퀀스 앞에 어떤 도움말 접두사를 입력해야 하나요?
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key`는 키 시퀀스를 기다린 뒤 연결된 명령을 설명합니다."}
 ::option[`C-h f`]{#emacs-describe-function explanation="키 시퀀스를 읽어 바인딩을 확인하지 않고 함수 이름을 묻습니다."}
@@ -80,8 +77,7 @@ C-g
 
 이미 일어난 버퍼 변경을 실행 취소하거나 Emacs를 종료하지는 않습니다. 현재 상호작용을 멈추고 가능한 경우 일반 편집으로 제어를 돌려줍니다.
 
-:::single-choice{#emacs-cancel-pending-command}
-현재 Emacs 요청이나 대기 중인 명령을 일반적으로 취소하는 키는 무엇인가요?
+:::single-choice{#emacs-cancel-pending-command} 현재 Emacs 요청이나 대기 중인 명령을 일반적으로 취소하는 키는 무엇인가요?
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="현재 요청만 취소하지 않고 Emacs 종료 작업 흐름을 시작합니다."}
 ::option[`C-y`]{#emacs-cancel-yank explanation="킬 링에서 텍스트를 yank하며 명령을 취소하지 않습니다."}
@@ -98,8 +94,7 @@ C-/
 
 실행 취소 명령을 반복하면 최근 버퍼 변경을 거슬러 올라갑니다. 커서 이동만으로는 일반적으로 버퍼 변경이 되지 않습니다. Emacs 버전과 구성은 `undo-redo` 및 더 고급 기록 도구를 제공할 수 있으므로 실제 실행 취소 및 다시 실행 바인딩에 `C-h k`를 사용해 로컬 동작을 확인하세요.
 
-:::single-choice{#emacs-undo-change}
-최근 Emacs 버퍼 변경을 실행 취소하는 표준 키 바인딩은 무엇인가요?
+:::single-choice{#emacs-undo-change} 최근 Emacs 버퍼 변경을 실행 취소하는 표준 키 바인딩은 무엇인가요?
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/`는 일반 구성에서 `C-_` 및 `C-x u`와 함께 표준 실행 취소 바인딩입니다."}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="버퍼의 실행 취소 기록을 이동하지 않고 현재 버퍼를 저장합니다."}

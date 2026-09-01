@@ -23,8 +23,7 @@ $ ip route get 192.168.2.25
 
 Examine também regras de política e tabelas alternativas quando existirem. A consulta é evidência local e não envia tráfego.
 
-:::single-choice{#route-get-before-change}
-Por que executar `ip route get DESTINATION` antes de alterar uma rota?
+:::single-choice{#route-get-before-change} Por que executar `ip route get DESTINATION` antes de alterar uma rota?
 
 ::option[Ele registra a decisão local atual para comparação e rollback.]{#route-get-baseline .correct explanation="Interface, próximo salto e origem selecionados ajudam a definir a mudança pretendida."}
 ::option[Ele reserva permanentemente o destino em todos os roteadores.]{#route-get-reserves explanation="O comando faz uma consulta local e não muda estado remoto."}
@@ -41,8 +40,7 @@ $ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 O gateway deve ser alcançável pelo link relevante ou por um projeto on-link explícito. `add` falha quando já existe rota equivalente. `replace` cria ou altera, sendo útil para configuração idempotente, mas pode sobrescrever estado funcional; confira o alvo exato.
 
-:::single-choice{#route-add-existing}
-O que normalmente acontece se `ip route add` aponta para uma rota existente?
+:::single-choice{#route-add-existing} O que normalmente acontece se `ip route add` aponta para uma rota existente?
 
 ::option[Ele apaga silenciosamente o prefixo antigo.]{#route-add-deletes explanation="Add normalmente informa objeto existente em vez de substituí-lo."}
 ::option[Ele falha em vez de substituir a rota.]{#route-add-fails .correct explanation="Use `replace` deliberadamente somente após revisar a entrada afetada."}
@@ -59,8 +57,7 @@ $ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 Excluir somente pelo destino pode corresponder de forma ampla ou ambígua. Registre previamente o comando para restaurar a rota.
 
-:::single-choice{#route-delete-precision}
-Por que incluir próximo salto e dispositivo ao excluir uma rota?
+:::single-choice{#route-delete-precision} Por que incluir próximo salto e dispositivo ao excluir uma rota?
 
 ::option[Para identificar com maior precisão a entrada pretendida.]{#route-delete-exact .correct explanation="Atributos explícitos reduzem a chance de remover outra rota com o mesmo prefixo."}
 ::option[Para excluir também o adaptador físico.]{#route-delete-adapter explanation="Excluir a rota não remove o objeto de link do kernel."}
@@ -73,8 +70,7 @@ Por que incluir próximo salto e dispositivo ao excluir uma rota?
 
 Em host remoto, preserve console independente e use rollback que não dependa da rota alterada. Verifique depois a consulta, vizinhos, os dois sentidos do tráfego e o serviço real.
 
-:::single-choice{#route-runtime-persistence}
-O que pode acontecer com uma rota manual após recarregar o gerenciador?
+:::single-choice{#route-runtime-persistence} O que pode acontecer com uma rota manual após recarregar o gerenciador?
 
 ::option[Ela vira um recurso imutável do kernel.]{#route-manual-immutable explanation="Rotas de runtime podem ser removidas ou substituídas."}
 ::option[Ela aparece automaticamente em todo host da sub-rede.]{#route-manual-all-hosts explanation="O comando muda apenas o namespace atual."}

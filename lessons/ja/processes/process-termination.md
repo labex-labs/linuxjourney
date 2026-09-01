@@ -25,8 +25,7 @@ $ printf '%s\n' "$?"
 
 シェルの状態は限られた符号化範囲で、シグナル終了も表すため、完全な診断記録ではありません。各プログラムの終了コードは文書で確認します。
 
-:::single-choice{#process-termination-success-status}
-Unix の慣例で正常終了の成功を示す状態はどれですか？
+:::single-choice{#process-termination-success-status} Unix の慣例で正常終了の成功を示す状態はどれですか？
 
 ::option[`1`]{#process-termination-status-one explanation="多くのプログラムが一般的な失敗に1を使いますが、意味はコマンド固有です。"}
 ::option[`0`]{#process-termination-status-zero .correct explanation="正常な状態0が慣例上、処理の成功を示します。"}
@@ -39,8 +38,7 @@ Unix の慣例で正常終了の成功を示す状態はどれですか？
 
 待機は実行の調整にも使います。シェルはフォアグラウンドコマンドを待ってから次のプロンプトを出し、バックグラウンドジョブの待機は延期できます。長く動く親は、無関係な作業を止めず子を回収する設計が必要です。
 
-:::single-choice{#process-termination-wait-purpose}
-成功した wait 操作で親が取得できるものは何ですか？
+:::single-choice{#process-termination-wait-purpose} 成功した wait 操作で親が取得できるものは何ですか？
 
 ::option[子の終了情報。]{#process-termination-wait-status .correct explanation="wait 群は子が停止・終了した方法を報告し、完了した子を回収します。"}
 ::option[子の以前のアドレス空間のコピー。]{#process-termination-wait-memory explanation="大半のメモリはすでに解放され、wait() が親へ返すものではありません。"}
@@ -53,8 +51,7 @@ Unix の慣例で正常終了の成功を示す状態はどれですか？
 
 ゾンビへシグナルを送っても再び終了させられません。蓄積する場合は待機していない親を診断し、適切な運用手順で親を修正・再起動するか、回収するプロセスへ親を付け替えます。大量になると PID またはプロセス表の容量を使い切ることがあります。
 
-:::single-choice{#process-termination-zombie-definition}
-ゾンビプロセスに当てはまる説明はどれですか？
+:::single-choice{#process-termination-zombie-definition} ゾンビプロセスに当てはまる説明はどれですか？
 
 ::option[親がすでに終了した、実行中の子。]{#process-termination-zombie-orphan explanation="これは孤児となった子で、ゾンビ状態ではありません。"}
 ::option[実行を終えたが、終了記録をまだ回収されていない子。]{#process-termination-zombie-unreaped .correct explanation="実行は停止済みですが、親のためにカーネルが最小限の状態を保持します。"}
@@ -67,8 +64,7 @@ Unix の慣例で正常終了の成功を示す状態はどれですか？
 
 引き取ったプロセスが終了状態の回収責任を負います。サービスマネージャーやコンテナ環境では、新しい親が必ずホストの PID 1 だと思い込めません。
 
-:::single-choice{#process-termination-orphan-definition}
-プロセスが元の親より長く生きるとどうなりますか？
+:::single-choice{#process-termination-orphan-definition} プロセスが元の親より長く生きるとどうなりますか？
 
 ::option[適切な subreaper または名前空間の init プロセスへ付け替えられる。]{#process-termination-orphan-reparented .correct explanation="カーネルは引き取り先を割り当て、有効な親関係を保ちます。"}
 ::option[終了していなくても即座にゾンビになる。]{#process-termination-orphan-zombie explanation="ゾンビ状態は実行終了後、状態回収待ちになって初めて始まります。"}

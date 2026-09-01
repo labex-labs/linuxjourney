@@ -43,8 +43,7 @@ $ join people.txt surnames.txt
 
 Die Ausgabe enthält den gemeinsamen Schlüssel einmal, gefolgt von den übrigen Feldern der ersten und zweiten Datei. `join` verarbeitet jeweils zwei Dateien; drei gewöhnliche Dateioperanden bilden keine relationale Drei-Wege-Verknüpfung.
 
-:::single-choice{#join-default-key}
-Welche Datensätze kombiniert `join first.txt second.txt` ohne Feldoptionen?
+:::single-choice{#join-default-key} Welche Datensätze kombiniert `join first.txt second.txt` ohne Feldoptionen?
 
 ::option[Zeilen, deren erste durch Leerraum getrennte Felder gleich sind.]{#join-first-fields .correct explanation="Standardmäßig vergleicht `join` Feld 1 der beiden sortierten Eingaben."}
 ::option[Zeilen, die dieselbe physische Zeilennummer besitzen.]{#join-line-numbers explanation="Die Zuordnung richtet sich nach den Werten der Schlüsselfelder und nicht nur nach den Positionen der Datensätze."}
@@ -63,8 +62,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 Wenn Sortierung und Verknüpfung dieselbe Locale verwenden, bleiben die Kollationsregeln konsistent. Leite eine Sortierung nicht zurück in ihren eigenen Eingabepfad, da die Shell die Datei zuvor leeren würde.
 
-:::single-choice{#join-sort-requirement}
-Welche Vorbereitung benötigt `join` normalerweise für eine zuverlässige Zuordnung?
+:::single-choice{#join-sort-requirement} Welche Vorbereitung benötigt `join` normalerweise für eine zuverlässige Zuordnung?
 
 ::option[Beide Dateien müssen genau gleich viele physische Zeilen enthalten.]{#join-equal-line-count explanation="Die Eingabelängen dürfen unterschiedlich sein. Passende Schlüssel und nicht gleiche Zeilenzahlen bestimmen die verknüpfte Ausgabe."}
 ::option[Die Dateinamen müssen in alphabetischer Sortierung nebeneinanderliegen.]{#join-filename-order explanation="Die Inhaltsschlüssel müssen sortiert sein; die lexikalische Beziehung der Dateinamen ist ohne Bedeutung."}
@@ -100,8 +98,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 Verwende `-t CHARACTER`, wenn ein einzelnes Nicht-Leerzeichen wie `:` die Felder trennt. Optionen wie `-a 1` oder `-a 2` können nicht zugeordnete Zeilen einer Eingabe aufnehmen; standardmäßig werden nur passende Schlüssel ausgegeben.
 
-:::single-choice{#join-different-fields}
-Welche Optionen verbinden Feld 2 der ersten Datei mit Feld 1 der zweiten?
+:::single-choice{#join-different-fields} Welche Optionen verbinden Feld 2 der ersten Datei mit Feld 1 der zweiten?
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="Damit wird Feld 1 der ersten und Feld 2 der zweiten Eingabe gewählt – die umgekehrte Zuordnung."}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` wählt Feld 2 der ersten Datei; `-2 1` wählt Feld 1 der zweiten."}
@@ -126,8 +123,7 @@ $ split -l 500 large.txt part-
 
 So entstehen `part-aa`, `part-ab` und weitere Dateien mit jeweils höchstens 500 Zeilen.
 
-:::single-choice{#split-lines-with-prefix}
-Welcher Befehl teilt `large.txt` in Teile mit höchstens 500 Zeilen und dem Präfix `part-` auf?
+:::single-choice{#split-lines-with-prefix} Welcher Befehl teilt `large.txt` in Teile mit höchstens 500 Zeilen und dem Präfix `part-` auf?
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="Die Option `-b` wählt Bytes; bei gewöhnlichem Text wären die Teile damit deutlich kleiner als 500 Zeilen."}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` setzt die maximale Zeilenanzahl; der letzte Operand liefert das Präfix für die Ausgabedateien."}
@@ -144,8 +140,7 @@ $ split -b 10M archive.bin chunk-
 
 Damit werden Teile von 10 Mebibyte angefordert; nur das letzte kann kleiner sein. `split` erstellt weder ein Archivmanifest noch Metadaten zur Wiederzusammensetzung. Bewahre die Reihenfolge der Suffixe und verkette die Teile gegebenenfalls in dieser Reihenfolge.
 
-:::single-choice{#split-ten-mebibytes}
-Welcher Befehl teilt `archive.bin` mit dem Präfix `chunk-` in Teile von 10 MiB auf?
+:::single-choice{#split-ten-mebibytes} Welcher Befehl teilt `archive.bin` mit dem Präfix `chunk-` in Teile von 10 MiB auf?
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="Die Option `-l` erwartet eine Zeilenanzahl und kein Größensuffix für binäre Teile."}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` teilt keine Binäreingabe und unterstützt diesen Vorgang für Teilgrößen nicht."}

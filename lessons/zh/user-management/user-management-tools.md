@@ -44,8 +44,7 @@ $ sudo passwd -S bob
 $ id bob
 ```
 
-:::single-choice{#user-tools-create-home}
-哪个 `useradd` 选项会明确请求创建新账户的主目录？
+:::single-choice{#user-tools-create-home} 哪个 `useradd` 选项会明确请求创建新账户的主目录？
 
 ::option[`-M`]{#user-tools-no-home-option explanation="大写 `-M` 会明确告诉常见 `useradd` 实现不要创建主目录。"}
 ::option[`-s`]{#user-tools-shell-option explanation="`-s` 选项选择登录 shell，本身不会创建主目录。"}
@@ -68,8 +67,7 @@ $ sudo passwd bob
 
 只能在受保护的提示中输入密码，不要把密码放入命令参数、shell 历史、课程笔记或聊天。PAM 策略可能拒绝弱密码或重复使用的密码。目录服务管理的账户可能需要其他工具。
 
-:::single-choice{#user-tools-change-own-password}
-哪个命令通常让当前用户通过交互式提示更改自己的密码？
+:::single-choice{#user-tools-change-own-password} 哪个命令通常让当前用户通过交互式提示更改自己的密码？
 
 ::option[`useradd`]{#user-tools-add-not-password explanation="`useradd` 创建账户记录，不是普通的交互式密码更改命令。"}
 ::option[`userdel`]{#user-tools-delete-not-password explanation="`userdel` 删除本地账户，与更改调用用户的密码无关。"}
@@ -90,8 +88,7 @@ $ sudo usermod -aG developers bob
 
 组更改通常影响新的登录会话，而不是已在旧凭据集合下运行的进程。
 
-:::single-choice{#user-tools-append-group}
-哪个命令会把 `bob` 加入附加组 `developers`，而不替换他的其他附加成员身份？
+:::single-choice{#user-tools-append-group} 哪个命令会把 `bob` 加入附加组 `developers`，而不替换他的其他附加成员身份？
 
 ::option[`usermod -G developers bob`]{#user-tools-replace-groups explanation="没有 `-a` 时，`-G` 会替换附加组列表，并可能移除现有成员身份。"}
 ::option[`usermod -aG developers bob`]{#user-tools-append-groups .correct explanation="`-a` 选项会追加 `-G` 指定的组，同时保留其他附加成员身份。"}
@@ -104,8 +101,7 @@ $ sudo usermod -aG developers bob
 
 密码锁定不一定会阻止 SSH 密钥、令牌、计划任务、已经运行的进程或服务特定认证。要全面禁用账户，应先定义威胁和访问路径，再应用协调策略，其中可能包括账户过期、登录 shell、服务访问、密钥和会话终止。
 
-:::single-choice{#user-tools-password-lock-scope}
-`passwd -l bob` 主要锁定什么？
+:::single-choice{#user-tools-password-lock-scope} `passwd -l bob` 主要锁定什么？
 
 ::option[该账户的每一种可能认证和执行路径。]{#user-tools-lock-everything explanation="密钥、令牌、任务、服务和现有会话可能需要单独控制。"}
 ::option[当前由 Bob 的 UID 拥有的所有文件。]{#user-tools-lock-files explanation="密码状态不会改变文件系统所有权，也不会自动使所有数据无法访问。"}
@@ -126,8 +122,7 @@ $ sudo usermod -aG developers bob
 
 `userdel -r` 不保证删除配置主目录和邮件位置之外的文件。账户删除也可能留下文件的数值所有权、数据库权限、应用身份和远程目录记录。
 
-:::single-choice{#user-tools-userdel-r-scope}
-与普通 `userdel bob` 相比，常见的 `userdel -r bob` 还会请求删除什么？
+:::single-choice{#user-tools-userdel-r-scope} 与普通 `userdel bob` 相比，常见的 `userdel -r bob` 还会请求删除什么？
 
 ::option[每个已挂载文件系统中具有 Bob UID 的所有文件。]{#user-tools-delete-all-owned explanation="该工具不会普遍发现并擦除所有存储中由该 UID 拥有的文件。"}
 ::option[用户名同样为 `bob` 的每个远程账户。]{#user-tools-delete-remote explanation="`userdel` 操作相应的本地账户数据库，不会删除无关的目录服务身份。"}

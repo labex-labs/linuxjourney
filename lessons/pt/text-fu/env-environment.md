@@ -30,8 +30,7 @@ Algumas variáveis de ambiente comuns são:
 
 Os valores dependem do ambiente do processo atual; eles não são constantes universais. Uma variável não definida se expande para uma cadeia vazia, a menos que um comportamento mais rigoroso do shell esteja ativado.
 
-:::single-choice{#env-print-home-value}
-Qual comando do Bash mostra o valor de `HOME`, preservando-o como um único argumento?
+:::single-choice{#env-print-home-value} Qual comando do Bash mostra o valor de `HOME`, preservando-o como um único argumento?
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="Aspas simples impedem a expansão de parâmetros; portanto, esse comando mostra os caracteres literais `$HOME`."}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="O Bash expande `$HOME` dentro de aspas duplas, e `printf` recebe o valor completo como um único argumento."}
@@ -56,8 +55,7 @@ USER=pete
 
 Variáveis de ambiente podem conter credenciais, tokens, caminhos internos ou outros dados confidenciais. Não cole a saída completa de `env` em relatórios públicos ou logs sem revisá-la e ocultar os segredos.
 
-:::single-choice{#env-list-exported-values}
-Qual comando mostra o ambiente visível para um processo recém-iniciado?
+:::single-choice{#env-list-exported-values} Qual comando mostra o ambiente visível para um processo recém-iniciado?
 
 ::option[`env`]{#env-print-all .correct explanation="Sem um comando ou atribuições, `env` mostra o ambiente de nomes e valores recebido."}
 ::option[`alias`]{#env-alias-list explanation="`alias` lista definições de aliases, que fazem parte do estado do shell, não dos registros de ambiente exportados."}
@@ -82,8 +80,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 Não substitua acidentalmente `PATH` apenas pelo novo diretório nem acrescente diretórios graváveis não confiáveis. Qualquer um desses erros pode impedir a localização de comandos normais ou fazer um executável inesperado ser executado.
 
-:::single-choice{#env-prepend-path-directory}
-Qual comando acrescenta `/opt/coolapp/bin` antes do `PATH` existente para o processo Bash atual e seus futuros filhos?
+:::single-choice{#env-prepend-path-directory} Qual comando acrescenta `/opt/coolapp/bin` antes do `PATH` existente para o processo Bash atual e seus futuros filhos?
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="Essa forma descarta todos os diretórios de pesquisa existentes, dificultando a localização de comandos comuns."}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="Essa forma acrescenta o novo diretório ao início, preserva o valor anterior e exporta o resultado para processos filhos."}
@@ -107,8 +104,7 @@ test
 
 A atribuição normalmente dura até que você a remova ou o shell seja encerrado. Ela não modifica um ambiente de todo o sistema.
 
-:::single-choice{#env-export-inheritance}
-Qual é o principal efeito de `export TEST=test` no Bash?
+:::single-choice{#env-export-inheritance} Qual é o principal efeito de `export TEST=test` no Bash?
 
 ::option[Ele grava `TEST` na configuração do sistema de todos os usuários.]{#env-system-wide explanation="A atribuição afeta o shell atual e a herança por seus filhos, não todos os usuários nem todo o sistema operacional."}
 ::option[Ele marca `TEST=test` para herança por futuros processos filhos.]{#env-child-inheritance .correct explanation="`export` acrescenta a variável do shell ao ambiente que o Bash fornece aos comandos iniciados."}
@@ -131,8 +127,7 @@ $ env LANG=C sort names.txt
 
 Use `env -i COMMAND` para iniciar um comando com um ambiente inicialmente vazio e depois acrescente as atribuições necessárias. Muitos programas dependem de valores do ambiente; portanto, use essa opção conscientemente.
 
-:::single-choice{#env-one-command-value}
-Qual comando executa `sort names.txt` com `LANG=C` sem alterar permanentemente `LANG` no shell atual?
+:::single-choice{#env-one-command-value} Qual comando executa `sort names.txt` com `LANG=C` sem alterar permanentemente `LANG` no shell atual?
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` acrescenta a atribuição ao ambiente do comando iniciado, enquanto o shell pai mantém seu valor anterior."}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="Essa forma exporta `LANG=C` no shell atual e o mantém alterado depois que `sort` termina."}

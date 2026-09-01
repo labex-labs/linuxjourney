@@ -30,8 +30,7 @@ $ su - operator
 
 Quittez ce sous-shell lorsque le travail est terminé.
 
-:::single-choice{#root-su-login-shell}
-Quelle commande demande un shell de connexion comme `operator` ?
+:::single-choice{#root-su-login-shell} Quelle commande demande un shell de connexion comme `operator` ?
 
 ::option[`su - operator`]{#root-su-login-operator .correct explanation="Le tiret demande le comportement de connexion et un environnement orienté vers `operator`."}
 ::option[`su operator`]{#root-su-preserve-environment explanation="Cette forme change l'identité sans demander l'initialisation complète de connexion."}
@@ -48,8 +47,7 @@ $ sudo -u postgres id
 
 La politique contrôle l'appelant, l'hôte, la cible, la commande et d'autres conditions. L'authentification peut utiliser le mot de passe de l'appelant, un autre mécanisme ou aucune invite. Préférez une commande administrative étroitement définie à un shell privilégié durable.
 
-:::single-choice{#root-sudo-target-user}
-Que demande `sudo -u postgres id` ?
+:::single-choice{#root-sudo-target-user} Que demande `sudo -u postgres id` ?
 
 ::option[Renommer définitivement le compte courant en `postgres`.]{#root-sudo-rename explanation="`sudo` exécute une commande avec les attributs cibles sans renommer de compte."}
 ::option[Exécuter `id` avec `postgres` comme cible, sous réserve de la politique.]{#root-sudo-postgres-id .correct explanation="`-u` choisit l'identité cible et sudoers décide si la demande est permise."}
@@ -62,8 +60,7 @@ Que demande `sudo -u postgres id` ?
 
 La journalisation dépend de la configuration. L'enregistrement du lancement d'un shell ne fournit pas automatiquement l'historique complet de toutes les commandes saisies ; historique shell, audit système et enregistrement d'E/S sudo sont distincts.
 
-:::single-choice{#root-persistent-shell-risk}
-Pourquoi un shell root durable est-il plus risqué que l'élévation d'une commande comprise ?
+:::single-choice{#root-persistent-shell-risk} Pourquoi un shell root durable est-il plus risqué que l'élévation d'une commande comprise ?
 
 ::option[Il supprime automatiquement chaque commande de tous les audits.]{#root-shell-no-audit explanation="La journalisation varie ; tous les enregistrements ne sont pas automatiquement effacés."}
 ::option[Il interdit les chemins comportant plusieurs composants.]{#root-shell-path-limit explanation="Les privilèges n'imposent pas cette restriction."}
@@ -78,8 +75,7 @@ $ sudo -l
 
 Examinez les chemins de commandes, utilisateurs cibles permis et restrictions d'arguments. Une règle large ne constitue pas une permission pour un travail sans rapport.
 
-:::single-choice{#root-list-sudo-rules}
-Quelle commande liste les privilèges sudo de l'utilisateur appelant ?
+:::single-choice{#root-list-sudo-rules} Quelle commande liste les privilèges sudo de l'utilisateur appelant ?
 
 ::option[`sudo -i`]{#root-sudo-login explanation="Cette forme demande un shell cible de type connexion et peut étendre les privilèges."}
 ::option[`sudo -l`]{#root-sudo-list .correct explanation="L'option `-l` demande à sudo de lister les commandes autorisées par la politique."}
@@ -102,8 +98,7 @@ $ sudo visudo -f /etc/sudoers.d/application-admins
 
 N'utilisez ni redirection ordinaire ni flux d'édition non validé. Une erreur de syntaxe ou de permissions peut supprimer l'accès administratif. Gardez une voie de récupération vérifiée lors d'un changement distant.
 
-:::single-choice{#root-edit-sudoers-safely}
-Quel outil faut-il employer pour modifier et vérifier la politique sudoers principale ?
+:::single-choice{#root-edit-sudoers-safely} Quel outil faut-il employer pour modifier et vérifier la politique sudoers principale ?
 
 ::option[`cat`]{#root-cat-sudoers explanation="`cat` n'édite, ne verrouille ni ne valide la syntaxe."}
 ::option[`visudo`]{#root-visudo .correct explanation="`visudo` fournit le verrouillage et la validation conçus pour sudoers."}

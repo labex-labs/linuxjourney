@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 다른 프로그램이 PID 1인 시스템에도 `/usr/lib/systemd/`가 존재할 수 있고 컨테이너는 자체 PID 네임스페이스를 노출할 수 있습니다. `systemctl`에는 사용자 관리자와 원격/컨테이너 모드도 있으므로 작업이 어느 관리자를 대상으로 하는지 식별하십시오.
 
-:::single-choice{#systemd-overview-detection}
-systemd가 시스템 init 관리자임을 가장 직접적으로 식별하는 것은 무엇입니까?
+:::single-choice{#systemd-overview-detection} systemd가 시스템 init 관리자임을 가장 직접적으로 식별하는 것은 무엇입니까?
 
 ::option[`/usr/lib/systemd`라는 디렉터리가 존재합니다.]{#systemd-overview-directory explanation="systemd가 PID 1 역할을 하지 않아도 라이브러리와 단위 파일이 설치된 채 남을 수 있습니다."}
 ::option[사용자가 `systemctl`이라는 명령을 한 번 실행했습니다.]{#systemd-overview-command-executed explanation="시스템 systemd 관리자가 없어도 클라이언트 바이너리가 존재할 수 있습니다."}
@@ -44,8 +43,7 @@ systemd가 시스템 init 관리자임을 가장 직접적으로 식별하는 �
 
 단위 상태가 항상 “실행 중”인 것은 아닙니다. 마운트는 마운트된 상태, 타이머는 대기 상태, 장치는 존재 상태이며 대상은 의존성이 도달된 뒤 활성 상태일 수 있습니다.
 
-:::single-choice{#systemd-overview-group-unit}
-다른 단위를 일반적으로 묶고 동기화 지점을 제공하는 단위 유형은 무엇입니까?
+:::single-choice{#systemd-overview-group-unit} 다른 단위를 일반적으로 묶고 동기화 지점을 제공하는 단위 유형은 무엇입니까?
 
 ::option[`.socket`]{#systemd-overview-socket explanation="소켓 단위는 IPC 또는 네트워크 엔드포인트를 노출하고 서비스를 활성화할 수 있습니다."}
 ::option[`.target`]{#systemd-overview-target .correct explanation="대상 단위는 의존성을 모으고 부팅 또는 운영 이정표를 나타냅니다."}
@@ -62,8 +60,7 @@ systemd가 시스템 init 관리자임을 가장 직접적으로 식별하는 �
 
 정확한 공급업체 경로는 다를 수 있습니다. 우선순위가 높은 로컬 설정은 같은 단위 이름을 가진 낮은 우선순위 파일을 재정의합니다. 패키지 업데이트의 변경이 계속 보이도록 전체 공급업체 파일을 복사해 수정하지 말고 `systemctl edit UNIT`으로 만든 드롭인 재정의를 우선 사용하십시오.
 
-:::single-choice{#systemd-overview-local-override}
-영구적인 로컬 시스템 단위 재정의는 일반적으로 어디에 있어야 합니까?
+:::single-choice{#systemd-overview-local-override} 영구적인 로컬 시스템 단위 재정의는 일반적으로 어디에 있어야 합니까?
 
 ::option[`/proc/systemd/` 안입니다.]{#systemd-overview-proc-systemd explanation="procfs는 런타임 커널 인터페이스이며 영구 단위 설정이 아닙니다."}
 ::option[`/etc/systemd/system/` 아래입니다.]{#systemd-overview-etc-system .correct explanation="관리자 설정 계층은 패키지에서 제공한 공급업체 단위보다 우선합니다."}
@@ -76,8 +73,7 @@ systemd는 의존 관계에서 트랜잭션을 구성합니다. `Wants=`와 `Req
 
 `After=network.target` 줄은 사용 가능한 연결, DNS 또는 특정 원격 엔드포인트의 준비 완료를 증명하지 않습니다. 서비스는 적절한 network-online 통합을 사용하거나 자체 재시도 및 준비 상태 동작을 구현해야 합니다.
 
-:::single-choice{#systemd-overview-after-semantics}
-`After=other.service`만으로 지정되는 것은 무엇입니까?
+:::single-choice{#systemd-overview-after-semantics} `After=other.service`만으로 지정되는 것은 무엇입니까?
 
 ::option[다른 서비스의 애플리케이션 엔드포인트가 정상이라는 보장입니다.]{#systemd-overview-after-health explanation="순서 작업 완료와 애플리케이션 준비 상태는 서로 다른 개념입니다."}
 ::option[두 단위가 모두 트랜잭션에 포함될 때의 순서입니다.]{#systemd-overview-after-ordering .correct explanation="다른 단위를 포함하려면 Wants나 Requires 같은 별도 요구 관계가 필요합니다."}
@@ -90,8 +86,7 @@ systemd는 의존 관계에서 트랜잭션을 구성합니다. `Wants=`와 `Req
 
 대상은 넓은 호환성 수준에서만 런레벨과 비슷합니다. 여러 대상이 동시에 활성화될 수 있고 사용자 정의 대상을 만들 수 있으며, 대상이 활성 상태라고 해서 시스템의 모든 서비스가 정상이라는 뜻은 아닙니다.
 
-:::single-choice{#systemd-overview-default-target}
-`default.target`은 일반적으로 무엇을 선택합니까?
+:::single-choice{#systemd-overview-default-target} `default.target`은 일반적으로 무엇을 선택합니까?
 
 ::option[`mkfs`가 지울 기본 블록 장치입니다.]{#systemd-overview-default-disk explanation="대상은 파괴적인 저장 장치 선택이 아니라 단위 활성화를 설명합니다."}
 ::option[항상 활성 상태일 수 있는 유일한 대상입니다.]{#systemd-overview-only-target explanation="대상은 그룹이며 한 번의 부팅에서 여러 대상이 활성화될 수 있습니다."}

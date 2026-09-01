@@ -20,8 +20,7 @@ meta_keywords: "linux 磁盘，linux 分区，linux 分区类型，磁盘哪个�
 
 在普通布局中，分区边界不得重叠。从分区表角度看，所有条目之外的空间尚未分配，但其中仍可能残留旧签名或数据。更改分区表不会自动移动文件系统内容来匹配新边界。
 
-:::single-choice{#anatomy-disk-partition-table-role}
-什么内容告诉操作系统磁盘分区从哪里开始、在哪里结束？
+:::single-choice{#anatomy-disk-partition-table-role} 什么内容告诉操作系统磁盘分区从哪里开始、在哪里结束？
 
 ::option[当前 shell 的工作目录。]{#anatomy-disk-shell-directory explanation="Shell 路径与磁盘上的分区边界无关。"}
 ::option[磁盘的分区表。]{#anatomy-disk-table-boundaries .correct explanation="分区条目描述内核可以呈现为子块设备的区域。"}
@@ -34,8 +33,7 @@ meta_keywords: "linux 磁盘，linux 分区，linux 分区类型，磁盘哪个�
 
 使用 32 位扇区地址和 512 字节逻辑扇区时，MBR 常见的容量上限约为 2 TiB。精确寻址能力取决于扇区大小和工具支持。MBR 也没有 GPT 的冗余表头、分区表副本和每分区 GUID。
 
-:::single-choice{#anatomy-disk-mbr-more-than-four}
-MBR 中的哪个结构允许创建四个以上的可用分区？
+:::single-choice{#anatomy-disk-mbr-more-than-four} MBR 中的哪个结构允许创建四个以上的可用分区？
 
 ::option[包含更多主分区条目的日志分区。]{#anatomy-disk-mbr-journal explanation="文件系统日志与 MBR 表的四条目限制无关。"}
 ::option[包含逻辑分区的扩展分区。]{#anatomy-disk-mbr-extended .correct explanation="一个主条目可以定义扩展容器，其中以链式方式保存逻辑分区。"}
@@ -50,8 +48,7 @@ GUID 分区表（GPT）使用 64 位逻辑块地址，通常在磁盘开头附�
 
 GPT 通常用于 UEFI 启动磁盘，但分区方案与固件启动模式是不同概念。UEFI 系统还需要适当的启动文件和 EFI 系统分区；仅有 GPT 并不会让磁盘可启动。
 
-:::single-choice{#anatomy-disk-gpt-identifiers}
-GPT 分区条目包含哪些标识符？
+:::single-choice{#anatomy-disk-gpt-identifiers} GPT 分区条目包含哪些标识符？
 
 ::option[类型 GUID 和唯一分区 GUID。]{#anatomy-disk-gpt-guids .correct explanation="类型描述预期用途，唯一 GUID 则标识具体的分区条目。"}
 ::option[所有 GPT 分区共同使用的唯一一种通用类型。]{#anatomy-disk-gpt-one-type explanation="GPT 为不同分区用途定义了许多类型 GUID。"}
@@ -64,8 +61,7 @@ GPT 分区条目包含哪些标识符？
 
 例如，ext 文件系统使用 inode 和块组，其他文件系统则通过不同的树或分配结构组织元数据。不要把“引导块、一个超级块、inode 表、数据块”这一简化图套用到每一种文件系统。
 
-:::single-choice{#anatomy-disk-filesystem-layer}
-创建分区时会自动在其中创建文件系统吗？
+:::single-choice{#anatomy-disk-filesystem-layer} 创建分区时会自动在其中创建文件系统吗？
 
 ::option[不会；格式化或其他明确用途是独立步骤。]{#anatomy-disk-partition-not-filesystem .correct explanation="分区表只定义块区域，其中的内容仍然彼此独立。"}
 ::option[会；每个分区都会自动格式化为 ext4。]{#anatomy-disk-auto-ext4 explanation="分区工具不会统一创建 ext4 文件系统。"}
@@ -85,8 +81,7 @@ $ sudo parted --list
 
 设备名称可能变化，残留签名也可能干扰检测。以写模式打开任何分区工具前，应确认型号、序列号、容量、传输方式、持久链接、活动挂载、交换空间、RAID、LVM、加密和备份。
 
-:::single-choice{#anatomy-disk-lsblk-fields}
-哪个 `lsblk` 字段用于区分检测到的文件系统内容与分区表方案？
+:::single-choice{#anatomy-disk-lsblk-fields} 哪个 `lsblk` 字段用于区分检测到的文件系统内容与分区表方案？
 
 ::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` 报告检测到的文件系统或其他已识别内容签名，`PTTYPE` 则报告分区表方案。"}
 ::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` 标记内核块设备条目，并不专门标识内容格式。"}

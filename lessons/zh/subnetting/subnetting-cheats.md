@@ -23,8 +23,7 @@ value: 128  64  32  16   8  4  2  1
 
 八个位值相加得到 255。十进制 192 等于 `128 + 64`，因此其二进制表示是 `11000000`。
 
-:::single-choice{#subnet-cheats-binary-192}
-十进制 192 的八位二进制表示是什么？
+:::single-choice{#subnet-cheats-binary-192} 十进制 192 的八位二进制表示是什么？
 
 ::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="128 和 64 位置设为一，其余位置为零。"}
 ::option[`10101000`]{#subnet-cheats-168 explanation="该模式等于 168。"}
@@ -42,8 +41,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 例如，`/19` 包含 16 个完整前缀位，以及第三个八位组中的三个位，因此其掩码是 `255.255.224.0`。
 
-:::single-choice{#subnet-cheats-prefix-19}
-哪个掩码对应 IPv4 `/19`？
+:::single-choice{#subnet-cheats-prefix-19} 哪个掩码对应 IPv4 `/19`？
 
 ::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="十六个完整位再加三个位，得到 255、255 和 224。"}
 ::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="前缀长度是位数，而不是十进制掩码八位组。"}
@@ -56,8 +54,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 地址 `198.51.100.77/27` 位于 64 到 95 的块中。
 
-:::single-choice{#subnet-cheats-77-network}
-`198.51.100.77/27` 的网络地址是什么？
+:::single-choice{#subnet-cheats-77-network} `198.51.100.77/27` 的网络地址是什么？
 
 ::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="该块覆盖最后一个八位组的 32 到 63。"}
 ::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="该地址包含主机位，并不是块边界。"}
@@ -75,8 +72,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 反向转换时，只需把值为一的位置对应的位权相加。在 IPv4 八位组内进行计算时，始终保留全部八个位置。
 
-:::single-choice{#subnet-cheats-binary-123}
-哪个八位值等于十进制 123？
+:::single-choice{#subnet-cheats-binary-123} 哪个八位值等于十进制 123？
 
 ::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="数值相同，但八位组表示必须保留八个位置。"}
 ::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="设为一的位置相加为 64 + 32 + 16 + 8 + 2 + 1。"}

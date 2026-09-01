@@ -28,8 +28,7 @@ $ sudo mkfs.ext4 /dev/VERIFIED-PARTITION
 
 Supported options, defaults, feature sets, and overwrite prompts differ between implementations. Read the local manual for the exact formatter rather than assuming all `mkfs` back ends behave alike.
 
-:::single-choice{#creating-filesystems-mkfs-role}
-What does `mkfs -t ext4 TARGET` request?
+:::single-choice{#creating-filesystems-mkfs-role} What does `mkfs -t ext4 TARGET` request?
 
 ::option[Mounting an existing filesystem without changing it.]{#creating-filesystems-mount-existing explanation="Mounting is a separate operation; mkfs initializes on-device metadata."}
 ::option[Creation of ext4 filesystem structures on the target.]{#creating-filesystems-create-ext4 .correct explanation="The front end selects the ext4 formatting implementation for the specified block device."}
@@ -50,8 +49,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 Unmount or deactivate every relevant layer through its own tool. Recheck identity immediately before the formatter because enumeration names can change.
 
-:::single-choice{#creating-filesystems-wipefs-no-act}
-What does `wipefs --no-act TARGET` provide in this workflow?
+:::single-choice{#creating-filesystems-wipefs-no-act} What does `wipefs --no-act TARGET` provide in this workflow?
 
 ::option[A read-only report of recognized signatures.]{#creating-filesystems-signature-report .correct explanation="The no-act mode helps reveal existing filesystem, partition-table, RAID, or other signatures without removing them."}
 ::option[A new empty filesystem ready to mount.]{#creating-filesystems-wipefs-formats explanation="Signature inspection does not initialize a new filesystem."}
@@ -64,8 +62,7 @@ Choose a type supported by the distribution, boot environment, backup tooling, r
 
 Do not select a format solely because it is popular. For example, ext4, XFS, and Btrfs have different operational features and recovery procedures. A removable interoperability device may require another format with different Unix permission semantics.
 
-:::single-choice{#creating-filesystems-type-choice}
-Which is a sound basis for selecting a filesystem type?
+:::single-choice{#creating-filesystems-type-choice} Which is a sound basis for selecting a filesystem type?
 
 ::option[Whichever name is shortest to type.]{#creating-filesystems-shortest-name explanation="Command length says nothing about durability, features, or support."}
 ::option[A promise that no future storage failure can occur.]{#creating-filesystems-no-failure explanation="No filesystem eliminates hardware failure or the need for backups."}
@@ -85,8 +82,7 @@ $ sudo blkid /dev/VERIFIED-PARTITION
 
 Record the UUID for later mount configuration. Creating a filesystem does not mount it, create application directories, populate backups, or make it persistent across boot.
 
-:::single-choice{#creating-filesystems-after-mkfs}
-What remains a separate step after a filesystem is created?
+:::single-choice{#creating-filesystems-after-mkfs} What remains a separate step after a filesystem is created?
 
 ::option[Mounting it at an intended directory.]{#creating-filesystems-mount-separate .correct explanation="Formatting writes filesystem structures, while mounting attaches that filesystem to the visible directory tree."}
 ::option[Assigning the block device any capacity at all.]{#creating-filesystems-capacity explanation="The underlying partition or logical device already provides the capacity being formatted."}

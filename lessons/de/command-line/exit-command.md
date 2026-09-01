@@ -22,8 +22,7 @@ $ exit
 
 Ist diese Shell der Hauptprozess in einem grafischen Terminal-Tab, kann sich der Tab entsprechend den Terminaleinstellungen schließen. In einer SSH-Sitzung kehrst du nach dem Verlassen der entfernten Shell normalerweise zur lokalen Shell zurück. Hast du eine verschachtelte Shell gestartet, führt `exit` zur übergeordneten Shell zurück.
 
-:::single-choice{#leave-current-shell}
-Du hast Bash innerhalb einer anderen Shell gestartet und möchtest nun zur übergeordneten Shell zurückkehren. Welchen Befehl führst du in der verschachtelten Bash-Sitzung aus?
+:::single-choice{#leave-current-shell} Du hast Bash innerhalb einer anderen Shell gestartet und möchtest nun zur übergeordneten Shell zurückkehren. Welchen Befehl führst du in der verschachtelten Bash-Sitzung aus?
 
 ::option[`clear`]{#clear-nested explanation="`clear` erneuert den sichtbaren Terminalbereich, lässt die aktuelle Shell aber weiterlaufen."}
 ::option[`exit`]{#exit-nested .correct explanation="`exit` beendet die aktuelle Shell, sodass ihre übergeordnete Shell fortgesetzt werden kann."}
@@ -40,16 +39,14 @@ $ exit 0
 
 Konventionsgemäß bedeutet `0` Erfolg; ein von null verschiedener Wert steht für einen Fehler oder eine andere vom Programm definierte Bedingung. Erhält Bash kein numerisches Argument, beendet sie sich mit dem Status des letzten Befehls vor `exit`.
 
-:::single-choice{#return-success-status}
-Welcher Befehl beendet die aktuelle Shell und meldet ihrem Aufrufer ausdrücklich Erfolg?
+:::single-choice{#return-success-status} Welcher Befehl beendet die aktuelle Shell und meldet ihrem Aufrufer ausdrücklich Erfolg?
 
 ::option[`exit 0`]{#exit-zero .correct explanation="Der Status `0` meldet dem Aufrufer konventionsgemäß eine erfolgreiche Ausführung."}
 ::option[`exit 1`]{#exit-one explanation="Ein von null verschiedener Status steht konventionsgemäß für einen Fehler oder ein anderes außergewöhnliches Ergebnis, nicht für Erfolg."}
 ::option[`logout 0`]{#logout-zero explanation="Bash `logout` ist für eine Login-Shell gedacht und verwendet diese Form nicht zum Festlegen des verlangten Status."}
 :::
 
-:::single-choice{#exit-without-number}
-Welchen Status gibt `exit` in Bash zurück, wenn du keine Zahl angibst?
+:::single-choice{#exit-without-number} Welchen Status gibt `exit` in Bash zurück, wenn du keine Zahl angibst?
 
 ::option[Der Befehl gibt immer den Erfolgsstatus `0` zurück.]{#always-zero explanation="Die Erfolgskonvention zwingt ein `exit` ohne Argument nicht zu null. Bash bewahrt in diesem Fall einen vorherigen Status."}
 ::option[Der Befehl gibt immer den Fehlerstatus `1` zurück.]{#always-one explanation="Bash weist nicht jedem `exit` ohne Argument den Fehlerstatus `1` zu. Der vorangegangene Befehl bestimmt den Wert."}
@@ -66,8 +63,7 @@ $ logout
 
 In einer Bash-Shell ohne Login meldet `logout`, dass es sich nicht um eine Login-Shell handelt. Verwende dort stattdessen `exit`.
 
-:::single-choice{#leave-login-shell}
-Welches Bash-Builtin ist speziell zum Verlassen einer Login-Shell vorgesehen?
+:::single-choice{#leave-login-shell} Welches Bash-Builtin ist speziell zum Verlassen einer Login-Shell vorgesehen?
 
 ::option[`logout`]{#logout-login .correct explanation="Bash stellt `logout` zum Beenden einer Login-Shell bereit."}
 ::option[`unalias`]{#unalias-login explanation="`unalias` entfernt Aliasdefinitionen aus der aktuellen Shell. Die Sitzung beendet der Befehl nicht."}

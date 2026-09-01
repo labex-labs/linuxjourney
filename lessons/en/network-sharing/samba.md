@@ -18,8 +18,7 @@ Before installing or changing Samba, define the authorized clients, identities, 
 
 Access is controlled by both Samba policy and underlying filesystem permissions. Allowing writes in `smb.conf` cannot grant an account filesystem access it does not have.
 
-:::single-choice{#samba-two-permission-layers}
-What must allow a user to write through a Samba share?
+:::single-choice{#samba-two-permission-layers} What must allow a user to write through a Samba share?
 
 ::option[Only the share's displayed comment.]{#samba-comment-permission explanation="A comment is descriptive text and does not grant access."}
 ::option[Both Samba rules and filesystem permissions.]{#samba-policy-and-filesystem .correct explanation="The request must pass the protocol-level rules and local filesystem authorization."}
@@ -46,8 +45,7 @@ $ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 
 The set-group-ID bit helps new entries inherit the directory group, but collaborative access may also require an ACL or a carefully chosen create mask. Test the actual file and directory results rather than assuming inheritance is sufficient.
 
-:::single-choice{#samba-valid-users}
-What does `valid users = @teamshare` express?
+:::single-choice{#samba-valid-users} What does `valid users = @teamshare` express?
 
 ::option[Every anonymous network user receives write access.]{#samba-every-anonymous explanation="The rule restricts access rather than enabling guest writes."}
 ::option[The server must rename the share to `teamshare`.]{#samba-rename-share explanation="The visible share name remains the section name `[team]`."}
@@ -64,8 +62,7 @@ $ sudo smbpasswd -a alice
 
 Directory-domain deployments use a different identity design. Do not place passwords in shell history or configuration readable by unrelated users, and do not assume a Samba password is automatically identical to the Unix account password.
 
-:::single-choice{#samba-password-database}
-What does `smbpasswd -a alice` commonly do on a standalone server?
+:::single-choice{#samba-password-database} What does `smbpasswd -a alice` commonly do on a standalone server?
 
 ::option[Deletes the Unix user's home directory.]{#samba-delete-home explanation="The command manages Samba credentials and does not perform home-directory removal."}
 ::option[Adds or initializes Samba credentials for the account.]{#samba-add-credential .correct explanation="The SMB authentication database is managed separately from merely creating a Unix user."}
@@ -88,8 +85,7 @@ Test from a client with an explicit user:
 $ smbclient //server.example.net/team -U alice
 ```
 
-:::single-choice{#samba-testparm-purpose}
-Why run `testparm -s` before applying a Samba change?
+:::single-choice{#samba-testparm-purpose} Why run `testparm -s` before applying a Samba change?
 
 ::option[It copies every shared file to a backup server.]{#samba-testparm-backup explanation="The tool parses and reports configuration rather than copying share data."}
 ::option[It validates and displays the effective Samba configuration.]{#samba-testparm-validate .correct explanation="Parser output catches configuration errors and reveals interpreted settings before service impact."}
@@ -107,8 +103,7 @@ $ sudo mount -t cifs //server.example.net/team /mnt/team \
 
 Protect the credential file, confirm the dialect supported by both sides, and define UID, GID, permission, and encryption requirements deliberately. After mounting, verify with `findmnt`, perform authorized read/write tests, and unmount after coordinating active users.
 
-:::single-choice{#samba-command-line-password}
-Why avoid `password=...` directly in a mount command?
+:::single-choice{#samba-command-line-password} Why avoid `password=...` directly in a mount command?
 
 ::option[It can expose the secret through history or process arguments.]{#samba-password-exposure .correct explanation="A protected credential source reduces accidental disclosure, though it still requires careful permissions."}
 ::option[SMB supports no form of password authentication.]{#samba-no-passwords explanation="Password-based SMB authentication is common, although other identity systems also exist."}

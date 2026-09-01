@@ -25,8 +25,7 @@ $ history
 
 各行には履歴番号とコマンドが含まれます。
 
-:::single-choice{#show-command-history}
-現在の番号付き履歴一覧を表示する Bash コマンドはどれですか？
+:::single-choice{#show-command-history} 現在の番号付き履歴一覧を表示する Bash コマンドはどれですか？
 
 ::option[`clear`]{#clear-display explanation="`clear` は見えている端末領域を更新し、以前のコマンドは表示しません。"}
 ::option[`history -w`]{#write-history explanation="`history -w` は現在の一覧を履歴ファイルへ書き込みます。目的は表示ではなく保存です。"}
@@ -44,8 +43,7 @@ Bash には、コマンドを呼び出す、またはただちに実行するた
 
 `!` で始まる履歴展開は、Enter を押すとすぐにコマンドを実行することがあります。特に権限を高める場合や重要なファイルを操作する前は、少しでも疑問があれば一致結果を先に確認してください。
 
-:::single-choice{#repeat-most-recent-command}
-直近に実行したコマンドを繰り返す Bash の履歴展開はどれですか？
+:::single-choice{#repeat-most-recent-command} 直近に実行したコマンドを繰り返す Bash の履歴展開はどれですか？
 
 ::option[`!102`]{#event-number explanation="この展開は履歴番号 102 のコマンドを選びます。そのエントリが直近とは限りません。"}
 ::option[`!cat`]{#event-prefix explanation="これはテキストが `cat` で始まる直近のコマンドを選びます。種類を問わない直近のコマンドという意味ではありません。"}
@@ -58,8 +56,7 @@ Bash には、コマンドを呼び出す、またはただちに実行するた
 
 Enter を押すと表示中の一致を実行します。先に確認または編集する場合は、矢印キーを使ってコマンドを編集行へ置きます。
 
-:::single-choice{#search-before-executing}
-以前の Bash コマンドの一部を覚えており、対話的に探したい場合、最初に何を押しますか？
+:::single-choice{#search-before-executing} 以前の Bash コマンドの一部を覚えており、対話的に探したい場合、最初に何を押しますか？
 
 ::option[`Ctrl+D`]{#end-input explanation="多くの端末の文脈で `Ctrl+D` は入力終端を示し、待機中のシェルを終了することがあります。履歴検索は始めません。"}
 ::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` は通常、現在の操作を中断または取り消し、コマンド履歴は検索しません。"}
@@ -83,8 +80,7 @@ $ history -w
 
 メモリ内の一覧を消去しても、古いコマンドがすべてのファイル、バックアップ、ほかの動作中シェルから消えたとは限りません。履歴の動作は Bash の設定と、セッションがファイルを読み書きするタイミングにも依存します。
 
-:::single-choice{#save-current-history-list}
-現在の Bash 履歴一覧を設定済みの履歴ファイルへ書き込むコマンドはどれですか？
+:::single-choice{#save-current-history-list} 現在の Bash 履歴一覧を設定済みの履歴ファイルへ書き込むコマンドはどれですか？
 
 ::option[`history -c`]{#clear-current-list explanation="`-c` はメモリ内の一覧を消去し、現在の一覧の保存は要求しません。"}
 ::option[`history -d 101`]{#delete-one-entry explanation="`-d` は選択した履歴エントリを 1 つ削除し、一覧全体を保存しません。"}
@@ -105,8 +101,7 @@ Bash の履歴一覧は消去されません。端末によっては、以前の
 
 コマンドラインは履歴へ保存されることがあるため、より安全な入力方法が利用できる場合、パスワード、トークン、そのほかの秘密情報をコマンドへ直接書かないでください。
 
-:::single-choice{#distinguish-clear-from-history-clear}
-メモリ内のコマンド履歴を削除せず、見えている端末を更新したい場合、どのコマンドを実行しますか？
+:::single-choice{#distinguish-clear-from-history-clear} メモリ内のコマンド履歴を削除せず、見えている端末を更新したい場合、どのコマンドを実行しますか？
 
 ::option[`clear`]{#clear-visible-area .correct explanation="`clear` は Bash のメモリ内履歴一覧を維持したまま、見えている端末領域を更新します。"}
 ::option[`history -c`]{#clear-memory explanation="これは現在のメモリ内履歴一覧からエントリを削除します。表示だけでなく履歴を変更します。"}

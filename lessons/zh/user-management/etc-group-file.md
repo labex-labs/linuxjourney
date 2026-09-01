@@ -29,8 +29,7 @@ $ getent group developers
 
 组列表可能披露内部账户和角色名称，因此分享前应审查输出。
 
-:::single-choice{#group-query-resolved-database}
-哪个命令会查询 NSS 解析后的组数据库？
+:::single-choice{#group-query-resolved-database} 哪个命令会查询 NSS 解析后的组数据库？
 
 ::option[`getent group`]{#group-getent-all .correct explanation="`getent` 会查询已配置的 NSS 组记录来源。"}
 ::option[`cat /etc/group`]{#group-cat-local explanation="这只会读取本地组文件，可能遗漏其他来源提供的组。"}
@@ -52,16 +51,14 @@ developers:x:1500:alice,bob
 
 组密码是一项旧功能，在某些配置中由 `newgrp` 等工具使用。它不是授予 sudo 授权的常规机制，也不应通过手工字段编辑引入。
 
-:::single-choice{#group-gid-field}
-在 `developers:x:1500:alice,bob` 中，哪个字段包含 GID？
+:::single-choice{#group-gid-field} 在 `developers:x:1500:alice,bob` 中，哪个字段包含 GID？
 
 ::option[第二个字段 `x`]{#group-second-password explanation="字段 2 是组密码占位符，而不是数值身份。"}
 ::option[第四个字段 `alice,bob`]{#group-fourth-members explanation="字段 4 列出显式成员名称，而不是 GID。"}
 ::option[第三个字段 `1500`]{#group-third-gid .correct explanation="第三个冒号分隔字段是数值组 ID。"}
 :::
 
-:::single-choice{#group-explicit-member-field}
-本地组记录如何表示显式成员名称？
+:::single-choice{#group-explicit-member-field} 本地组记录如何表示显式成员名称？
 
 ::option[在字段 4 中用逗号分隔。]{#group-members-field-four .correct explanation="最后一个字段包含以逗号分隔的显式附加成员名称。"}
 ::option[在字段 2 中用空格分隔。]{#group-members-field-two explanation="字段 2 保留给密码相关数据或占位符，不是成员列表。"}
@@ -80,8 +77,7 @@ developers:x:1500:
 
 因此，只解析字段 4 会得到不完整的成员视图。
 
-:::single-choice{#group-primary-membership-visibility}
-Alice 的 passwd 记录使用 GID 1500 作为主 GID，但她的名称不在组 1500 的字段 4 中。她是该组成员吗？
+:::single-choice{#group-primary-membership-visibility} Alice 的 passwd 记录使用 GID 1500 作为主 GID，但她的名称不在组 1500 的字段 4 中。她是该组成员吗？
 
 ::option[不是，每一项成员关系都必须出现在 `/etc/group` 字段 4 中。]{#group-field-four-only explanation="这忽略了主 GID 成员身份，会漏算组成员。"}
 ::option[是，主组成员身份来自 passwd 记录的 GID 字段。]{#group-primary-from-passwd .correct explanation="组文件的显式列表主要用于附加成员身份；主成员身份记录在账户中。"}
@@ -99,8 +95,7 @@ $ groups alice
 
 对于当前进程，普通 `id` 会报告其凭据中实际存在的组。新配置的附加成员身份通常不会出现在已经运行的登录会话中；应启动新的已认证会话，或在合适时使用 `newgrp` 等有意配置的机制。
 
-:::single-choice{#group-current-process-credentials}
-哪个命令会报告当前进程的 UID、主 GID 和附加组？
+:::single-choice{#group-current-process-credentials} 哪个命令会报告当前进程的 UID、主 GID 和附加组？
 
 ::option[`id`]{#group-current-id .correct explanation="不带用户操作数时，`id` 会报告当前进程的身份凭据。"}
 ::option[`cat /etc/group`]{#group-current-cat explanation="本地文件列出记录，但不会显示哪些解析后的组已在当前进程中生效。"}

@@ -25,8 +25,7 @@ $ history
 
 Jede Zeile enthält eine Verlaufsnummer, gefolgt vom Befehl.
 
-:::single-choice{#show-command-history}
-Welcher Bash-Befehl zeigt die aktuelle nummerierte Verlaufsliste an?
+:::single-choice{#show-command-history} Welcher Bash-Befehl zeigt die aktuelle nummerierte Verlaufsliste an?
 
 ::option[`clear`]{#clear-display explanation="`clear` erneuert den sichtbaren Terminalbereich. Vorherige Befehle zeigt der Befehl nicht an."}
 ::option[`history -w`]{#write-history explanation="`history -w` schreibt die aktuelle Liste in die Verlaufsdatei. Diese Option dient dem Speichern, nicht dem Anzeigen."}
@@ -44,8 +43,7 @@ Bash bietet mehrere Möglichkeiten, Befehle zurückzuholen oder unmittelbar erne
 
 Verlaufserweiterungen mit `!` können einen Befehl ausführen, sobald du Enter drückst. Prüfe bei Zweifeln zuerst den Treffer – besonders bevor du erhöhte Rechte hinzufügst oder mit wichtigen Dateien arbeitest.
 
-:::single-choice{#repeat-most-recent-command}
-Welche Bash-Verlaufserweiterung wiederholt den zuletzt ausgeführten Befehl?
+:::single-choice{#repeat-most-recent-command} Welche Bash-Verlaufserweiterung wiederholt den zuletzt ausgeführten Befehl?
 
 ::option[`!102`]{#event-number explanation="Diese Erweiterung wählt den Befehl mit der Verlaufsnummer 102. Dieser Eintrag ist nicht zwangsläufig der neueste."}
 ::option[`!cat`]{#event-prefix explanation="Damit wird der neueste Befehl gewählt, dessen Text mit `cat` beginnt, nicht der neueste beliebige Befehl."}
@@ -58,8 +56,7 @@ Drücke `Ctrl+R`, um eine inkrementelle Rückwärtssuche zu starten, und gib ans
 
 Mit Enter führst du den angezeigten Treffer aus. Möchtest du ihn vorher prüfen oder bearbeiten, übernimmst du ihn mit einer Pfeiltaste in die Bearbeitungszeile.
 
-:::single-choice{#search-before-executing}
-Du erinnerst dich an einen Teil eines früheren Bash-Befehls und möchtest ihn interaktiv suchen. Was drückst du zuerst?
+:::single-choice{#search-before-executing} Du erinnerst dich an einen Teil eines früheren Bash-Befehls und möchtest ihn interaktiv suchen. Was drückst du zuerst?
 
 ::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D` signalisiert in vielen Terminalkontexten das Ende der Eingabe und kann eine unbeschäftigte Shell beenden. Eine Verlaufssuche startet es nicht."}
 ::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` unterbricht oder verwirft normalerweise den aktuellen Vorgang. Der Befehlsverlauf wird damit nicht durchsucht."}
@@ -83,8 +80,7 @@ $ history -w
 
 Das Leeren der Liste im Arbeitsspeicher garantiert nicht, dass ältere Befehle auch aus allen Dateien, Sicherungen oder anderen aktiven Shells verschwunden sind. Das genaue Verhalten hängt außerdem von den Bash-Einstellungen und davon ab, wann Sitzungen ihre Verlaufsdateien lesen oder schreiben.
 
-:::single-choice{#save-current-history-list}
-Welcher Befehl schreibt die aktuelle Bash-Verlaufsliste in die konfigurierte Verlaufsdatei?
+:::single-choice{#save-current-history-list} Welcher Befehl schreibt die aktuelle Bash-Verlaufsliste in die konfigurierte Verlaufsdatei?
 
 ::option[`history -c`]{#clear-current-list explanation="Die Option `-c` leert die Liste im Arbeitsspeicher. Sie fordert nicht das Speichern der aktuellen Liste an."}
 ::option[`history -d 101`]{#delete-one-entry explanation="Die Option `-d` entfernt einen ausgewählten Verlaufseintrag. Sie speichert nicht die vollständige Liste."}
@@ -105,8 +101,7 @@ Mit der Tab-Vervollständigung musst du weniger tippen. Beginne einen Befehl, Da
 
 Befehlszeilen können im Verlauf gespeichert werden. Gib Passwörter, Tokens und andere Geheimnisse deshalb nicht direkt in Befehlen an, wenn eine sicherere Eingabemethode verfügbar ist.
 
-:::single-choice{#distinguish-clear-from-history-clear}
-Du möchtest den sichtbaren Terminalbereich erneuern, ohne den Befehlsverlauf im Arbeitsspeicher zu löschen. Welchen Befehl führst du aus?
+:::single-choice{#distinguish-clear-from-history-clear} Du möchtest den sichtbaren Terminalbereich erneuern, ohne den Befehlsverlauf im Arbeitsspeicher zu löschen. Welchen Befehl führst du aus?
 
 ::option[`clear`]{#clear-visible-area .correct explanation="`clear` erneuert den sichtbaren Terminalbereich, lässt die Bash-Verlaufsliste im Arbeitsspeicher aber unverändert."}
 ::option[`history -c`]{#clear-memory explanation="Dieser Befehl entfernt Einträge aus der aktuellen Verlaufsliste im Arbeitsspeicher. Er verändert den Verlauf, statt nur die Anzeige zu erneuern."}

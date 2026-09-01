@@ -28,8 +28,7 @@ Um `c` identifica um dispositivo de caractere. Ele normalmente expõe uma interf
 
 “Caractere” não exige que cada chamada de sistema transfira exatamente um caractere. As aplicações podem ler ou gravar buffers, enquanto o driver define o bloqueio, o enquadramento e o comportamento de controle.
 
-:::single-choice{#device-types-character-marker}
-Qual primeiro caractere de modo identifica um nó de dispositivo de caractere?
+:::single-choice{#device-types-character-marker} Qual primeiro caractere de modo identifica um nó de dispositivo de caractere?
 
 ::option[`b`]{#device-types-marker-block explanation="O marcador `b` identifica um nó de dispositivo de bloco."}
 ::option[`p`]{#device-types-marker-pipe explanation="O marcador `p` identifica um FIFO, ou pipe nomeado."}
@@ -42,8 +41,7 @@ Um `b` identifica um dispositivo de bloco. Os dispositivos de bloco fornecem arm
 
 Um nó de bloco não é um sistema de arquivos montado. Ele representa um dispositivo de armazenamento ou uma região lógica; um sistema de arquivos pode ser criado nele e montado separadamente. Gravar dados brutos no nó de bloco errado pode destruir tabelas de partições, sistemas de arquivos ou dados dos usuários.
 
-:::single-choice{#device-types-block-marker}
-O que o primeiro caractere de modo `b` indica?
+:::single-choice{#device-types-block-marker} O que o primeiro caractere de modo `b` indica?
 
 ::option[Uma tarefa do shell em segundo plano.]{#device-types-background-job explanation="O estado das tarefas do shell não é codificado como um caractere de tipo do sistema de arquivos."}
 ::option[Uma interface de dispositivo de bloco.]{#device-types-block-device .correct explanation="Arquivos especiais de bloco expõem armazenamento endereçável por meio do subsistema de blocos do kernel."}
@@ -58,8 +56,7 @@ Um `s` identifica um nó de socket de domínio Unix. Ele nomeia um endpoint de s
 
 Nem um FIFO nem um nó de socket Unix usa números maiores e menores de dispositivos para selecionar um driver de hardware.
 
-:::single-choice{#device-types-pipe-socket-distinction}
-Qual afirmação diferencia corretamente esses tipos de objetos IPC?
+:::single-choice{#device-types-pipe-socket-distinction} Qual afirmação diferencia corretamente esses tipos de objetos IPC?
 
 ::option[`p` indica uma partição de disco, enquanto `s` indica armazenamento de estado sólido.]{#device-types-storage-letters explanation="As partições normalmente são dispositivos de bloco, e as letras não codificam a tecnologia de armazenamento."}
 ::option[`p` indica um FIFO, enquanto `s` indica um nó de socket de domínio Unix.]{#device-types-p-and-s .correct explanation="Esses são tipos distintos de objetos do sistema de arquivos usados para comunicação local entre processos."}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 Os valores `%t` e `%T` são mostrados em hexadecimal pelo `stat` do GNU.
 
-:::single-choice{#device-types-major-minor-scope}
-Quais objetos usam números maiores e menores para identificar uma interface de dispositivo do kernel?
+:::single-choice{#device-types-major-minor-scope} Quais objetos usam números maiores e menores para identificar uma interface de dispositivo do kernel?
 
 ::option[Todos os arquivos comuns e diretórios.]{#device-types-all-files explanation="Arquivos comuns usam tamanho e metadados do sistema de arquivos, não um par maior/menor de nó de dispositivo."}
 ::option[Somente links simbólicos cujos destinos não existem.]{#device-types-broken-symlinks explanation="Links simbólicos armazenam o texto de um caminho e não se tornam nós de dispositivos quando o destino está ausente."}

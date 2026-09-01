@@ -28,8 +28,7 @@ IPv6 주소는 16비트 16진수 그룹 여덟 개로 씁니다.
 
 생략한 그룹 수가 모호해지지 않도록 `::`는 한 번만 나타날 수 있습니다. `2001:db8::/32`는 문서 예시용으로 예약되어 있습니다.
 
-:::single-choice{#ipv6-double-colon-rule}
-IPv6 주소에 `::`가 최대 한 번만 나타날 수 있는 이유는 무엇입니까?
+:::single-choice{#ipv6-double-colon-rule} IPv6 주소에 `::`가 최대 한 번만 나타날 수 있는 이유는 무엇입니까?
 
 ::option[`::` 표시가 여러 개면 확장 방식이 모호해지기 때문입니다.]{#ipv6-compression-ambiguity .correct explanation="압축 표시 하나는 여덟 그룹을 채우는 데 필요한 정확한 그룹 수로 확장할 수 있습니다."}
 ::option[IPv6 주소에는 0비트가 하나뿐이기 때문입니다.]{#ipv6-one-zero explanation="주소에는 많은 0비트와 0 그룹이 있을 수 있습니다."}
@@ -47,8 +46,7 @@ IPv6 주소에 `::`가 최대 한 번만 나타날 수 있는 이유는 무엇�
 
 IPv6에는 브로드캐스트 주소가 없습니다. IPv4가 브로드캐스트로 처리하는 사용 사례를 멀티캐스트와 Neighbor Discovery가 담당합니다. 모든 링크에 같은 접두사가 있으므로 링크 로컬 목적지에는 `fe80::1%eth0` 같은 인터페이스 영역이 필요할 수 있습니다.
 
-:::single-choice{#ipv6-link-local-scope}
-`fe80::/10` 주소의 일반적인 범위는 무엇입니까?
+:::single-choice{#ipv6-link-local-scope} `fe80::/10` 주소의 일반적인 범위는 무엇입니까?
 
 ::option[전역 인터넷의 모든 호스트입니다.]{#ipv6-global-link-local explanation="전역 유니캐스트 주소가 라우팅되는 전역 범위를 제공합니다."}
 ::option[DNS 영역 파일에만 해당합니다.]{#ipv6-dns-only explanation="링크 로컬 주소는 인터페이스에 할당되고 네트워크에서 사용됩니다."}
@@ -59,8 +57,7 @@ IPv6에는 브로드캐스트 주소가 없습니다. IPv4가 브로드캐스트
 
 IPv6 CIDR 표기는 `/0`부터 `/128`까지의 접두사 길이를 사용합니다. `/64`는 대부분의 LAN 서브넷에서 사용하는 표준 크기이며 SLAAC(Stateless Address Autoconfiguration)를 지원합니다. 하나의 인터페이스에 링크 로컬, 안정적인 전역, 임시 개인 정보 보호 및 기타 주소가 동시에 있을 수 있고 각 주소에는 선호 수명과 유효 수명이 있습니다.
 
-:::single-choice{#ipv6-address-multiplicity}
-하나의 인터페이스에 IPv6 주소가 여러 개 표시될 수 있는 이유는 무엇입니까?
+:::single-choice{#ipv6-address-multiplicity} 하나의 인터페이스에 IPv6 주소가 여러 개 표시될 수 있는 이유는 무엇입니까?
 
 ::option[IPv6가 16진수 각 자리마다 하나의 주소를 요구하기 때문입니다.]{#ipv6-one-per-digit explanation="숫자 자리는 표현 방식이며 별도의 인터페이스 할당이 아닙니다."}
 ::option[서로 다른 범위와 개인 정보 보호 또는 수명 역할이 공존할 수 있기 때문입니다.]{#ipv6-several-roles .correct explanation="링크 로컬과 하나 이상의 전역 또는 임시 주소가 함께 있는 것은 정상입니다."}
@@ -73,8 +70,7 @@ IPv6 Neighbor Discovery는 주소 확인, 중복 주소 감지, 라우터 탐색
 
 ICMPv6를 모두 차단하면 필수 프로토콜 동작이 망가집니다. ICMPv6를 선택 사항으로 취급하지 말고 방화벽 정책에서 적절한 범위의 필수 메시지 유형을 허용해야 합니다.
 
-:::single-choice{#ipv6-default-router-source}
-IPv6 호스트는 일반적으로 기본 라우터를 동적으로 어떻게 알아냅니까?
+:::single-choice{#ipv6-default-router-source} IPv6 호스트는 일반적으로 기본 라우터를 동적으로 어떻게 알아냅니까?
 
 ::option[Router Advertisement를 통해 알아냅니다.]{#ipv6-router-advertisements .correct explanation="Router Discovery는 ICMPv6 Neighbor Discovery의 일부입니다."}
 ::option[Ethernet 브로드캐스트 주소에서 알아냅니다.]{#ipv6-ethernet-broadcast explanation="IPv6는 IP 브로드캐스트 주소를 사용하지 않습니다."}
@@ -94,8 +90,7 @@ $ ping -6 -c 3 2001:db8::25
 
 표시된 문서용 주소 대신 실제 할당된 테스트 주소를 사용하십시오. 듀얼 스택 애플리케이션은 IPv6가 고장이어도 IPv4로 성공할 수 있고 그 반대도 가능하므로 각 주소 계열과 DNS `A` 또는 `AAAA` 레코드를 명시적으로 테스트합니다.
 
-:::single-choice{#ipv6-dual-stack-test}
-듀얼 스택 서비스에서 IPv4와 IPv6를 별도로 테스트해야 하는 이유는 무엇입니까?
+:::single-choice{#ipv6-dual-stack-test} 듀얼 스택 서비스에서 IPv4와 IPv6를 별도로 테스트해야 하는 이유는 무엇입니까?
 
 ::option[모든 IPv6 패킷이 먼저 IPv4 브로드캐스트로 변해야 하기 때문입니다.]{#ipv6-becomes-ipv4 explanation="네이티브 IPv6와 IPv4는 서로 다른 프로토콜 경로입니다."}
 ::option[두 주소 계열의 DNS, 경로, 필터 및 장애가 다를 수 있기 때문입니다.]{#ipv6-independent-paths .correct explanation="성공적인 대체 경로가 선호 주소 계열의 고장을 숨길 수 있습니다."}

@@ -27,8 +27,7 @@ The lowercase `s` in the owner's execute position means both setuid and owner ex
 
 Do not assume every distribution has the same mode or authentication design. Inspect the actual system rather than relying on the example.
 
-:::single-choice{#setuid-lowercase-s}
-What does lowercase `s` in the owner's execute position indicate?
+:::single-choice{#setuid-lowercase-s} What does lowercase `s` in the owner's execute position indicate?
 
 ::option[Setuid is set but owner execute is absent.]{#setuid-s-without-execute explanation="That combination is displayed as uppercase `S`, not lowercase `s`."}
 ::option[The file has a sticky bit and group execute.]{#setuid-sticky-group explanation="The sticky bit appears in the other execute position, while setuid appears in the owner position."}
@@ -41,8 +40,7 @@ When the kernel honors setuid during execution, the new process normally gets an
 
 This mechanism can allow a carefully written program to validate a request and make a restricted change to protected state. For example, a local password-changing utility may need controlled access to authentication data that ordinary users cannot edit directly. Modern implementations also rely on PAM, file locking, policy, and other safeguards; setuid alone does not explain the complete workflow.
 
-:::single-choice{#setuid-effective-identity}
-When a setuid executable is honored, which identity is primarily taken from the file owner?
+:::single-choice{#setuid-effective-identity} When a setuid executable is honored, which identity is primarily taken from the file owner?
 
 ::option[The login name stored in `/etc/passwd`.]{#setuid-login-name explanation="Executing a file does not rewrite the caller's account record or login name."}
 ::option[The process's effective user ID.]{#setuid-effective-user .correct explanation="The set-user-ID execution mechanism changes the effective user identity used for many authorization checks."}
@@ -65,8 +63,7 @@ $ sudo chmod 4755 myfile
 
 Here, the leading `4` sets setuid and `755` sets the ordinary owner, group, and other bits. Remove setuid without otherwise changing the mode with `chmod u-s myfile`.
 
-:::single-choice{#setuid-octal-value}
-Which leading octal value represents the setuid special bit?
+:::single-choice{#setuid-octal-value} Which leading octal value represents the setuid special bit?
 
 ::option[`4`]{#setuid-octal-four .correct explanation="Setuid contributes value `4` in the leading special-bits digit."}
 ::option[`1`]{#setuid-octal-one explanation="A leading `1` represents the sticky bit."}
@@ -81,8 +78,7 @@ Linux normally does not honor setuid on interpreted scripts because doing so saf
 
 Never add setuid to an arbitrary shell, interpreter, or copied program as an experiment on a shared system. Audit existing setuid files and practice only in an isolated disposable environment.
 
-:::single-choice{#setuid-nosuid-mount}
-What is the purpose of mounting a filesystem with `nosuid`?
+:::single-choice{#setuid-nosuid-mount} What is the purpose of mounting a filesystem with `nosuid`?
 
 ::option[Remove every execute bit stored on files in that filesystem.]{#setuid-nosuid-remove-execute explanation="The option does not rewrite ordinary execute bits in file metadata."}
 ::option[Suppress setuid and setgid execution effects on that filesystem.]{#setuid-nosuid-suppress .correct explanation="The `nosuid` mount option prevents those special mode bits from granting their normal credential-changing execution behavior."}

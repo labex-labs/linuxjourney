@@ -29,8 +29,7 @@ ls: cannot access '/fake/directory': No such file or directory
 - `1`: stdout (표준 출력)
 - `2`: stderr (표준 오류)
 
-:::single-choice{#stderr-not-in-stdout-file}
-`ls /missing > results.txt`의 오류가 보통 터미널에 남는 이유는 무엇인가요?
+:::single-choice{#stderr-not-in-stdout-file} `ls /missing > results.txt`의 오류가 보통 터미널에 남는 이유는 무엇인가요?
 
 ::option[`>`는 stdout을 리디렉션하고 진단 메시지는 stderr에 쓰기 때문입니다.]{#stderr-separate-stream .correct explanation="일반 `>`는 파일 디스크립터 1만 바꾸므로 디스크립터 2는 기존 터미널 목적지를 유지합니다."}
 ::option[`ls`가 파일이 닫힐 때까지 기다린 뒤 오류를 출력하기 때문입니다.]{#stderr-waits-for-close explanation="출력 시점의 문제가 아니라 정상 메시지와 진단 메시지가 서로 다른 스트림을 사용하기 때문입니다."}
@@ -47,8 +46,7 @@ $ ls /fake/directory 2> errors.txt
 
 쉘은 `errors.txt`를 만들거나 잘라내고 디스크립터 2에 연결합니다. stdout은 기존 목적지를 유지합니다. 오류 출력을 추가하려면 `2>> errors.txt`를 사용합니다.
 
-:::single-choice{#stderr-to-error-file}
-stdout은 기존 목적지에 둔 채 `find /restricted`의 진단으로 `errors.log`를 교체하는 명령어는 무엇인가요?
+:::single-choice{#stderr-to-error-file} stdout은 기존 목적지에 둔 채 `find /restricted`의 진단으로 `errors.log`를 교체하는 명령어는 무엇인가요?
 
 ::option[`find /restricted > errors.log`]{#stdout-errors-log explanation="일반 `>`는 디스크립터 1을 리디렉션하므로 진단이 아니라 정상 결과를 캡처합니다."}
 ::option[`find /restricted < errors.log`]{#stdin-errors-log explanation="`<`는 파일을 stdin으로 제공하며 어느 출력 스트림도 캡처하지 않습니다."}
@@ -76,8 +74,7 @@ $ ls /fake/directory /etc/passwd 2>&1 > regular.txt
 
 여기서는 stderr가 먼저 stdout의 원래 터미널 목적지를 복제하고, 그 뒤 stdout만 `regular.txt`로 이동하므로 두 스트림이 다른 곳으로 갑니다.
 
-:::single-choice{#stderr-combine-order}
-`command`의 stdout과 stderr를 모두 `all.log`로 보내는 Bash 리디렉션은 무엇인가요?
+:::single-choice{#stderr-combine-order} `command`의 stdout과 stderr를 모두 `all.log`로 보내는 Bash 리디렉션은 무엇인가요?
 
 ::option[`command 2>&1 > all.log`]{#stderr-before-stdout explanation="먼저 stderr를 stdout의 이전 목적지에 연결한 뒤 stdout만 파일로 보내므로 두 스트림이 분리됩니다."}
 ::option[`command 2> all.log > /dev/null`]{#stderr-file-stdout-null explanation="stderr는 `all.log`로 보내지만 stdout은 버리므로 두 스트림을 파일에 결합하지 않습니다."}
@@ -92,8 +89,7 @@ $ ls /fake/directory /etc/passwd &> combined.txt
 
 Bash에서 두 스트림을 추가하려면 `&>>`를 사용합니다. 명시적인 `> file 2>&1` 형식도 쉘 스크립트와 문서에 자주 나오므로 알아둘 가치가 있습니다.
 
-:::single-choice{#stderr-bash-short-form}
-`build`의 stdout과 stderr를 모두 `build.log`에 추가하는 Bash 명령어는 무엇인가요?
+:::single-choice{#stderr-bash-short-form} `build`의 stdout과 stderr를 모두 `build.log`에 추가하는 Bash 명령어는 무엇인가요?
 
 ::option[`build &> build.log`]{#replace-both-build explanation="Bash의 `&>`는 두 스트림을 리디렉션하지만 기존 파일에 추가하지 않고 교체합니다."}
 ::option[`build 2>> build.log`]{#append-errors-build explanation="stderr만 추가하며 stdout은 기존 목적지를 유지합니다."}
@@ -110,8 +106,7 @@ $ ls /fake/directory 2> /dev/null
 
 이는 명령어를 성공하게 만들거나 종료 상태를 바꾸지 않고 진단 스트림만 숨깁니다. 문제 해결 중에는 필요한 정보를 버리지 말고 stderr를 보존하거나 표시하세요.
 
-:::single-choice{#stderr-dev-null-effect}
-`check-data 2> /dev/null`은 무엇을 바꾸나요?
+:::single-choice{#stderr-dev-null-effect} `check-data 2> /dev/null`은 무엇을 바꾸나요?
 
 ::option[stdout을 버리고 모든 오류를 성공으로 바꿉니다.]{#discard-stdout-success explanation="디스크립터 2는 stdout이 아니라 stderr이며 리디렉션은 프로그램 종료 상태를 다시 쓰지 않습니다."}
 ::option[stderr를 버리지만 성공 종료 상태를 강제하지는 않습니다.]{#discard-stderr-only .correct explanation="리디렉션은 진단 메시지가 갈 곳만 바꾸고 성공 또는 실패 상태는 프로그램이 결정합니다."}

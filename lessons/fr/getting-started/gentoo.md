@@ -16,8 +16,7 @@ Gentoo est une distribution Linux destinée aux personnes qui souhaitent maîtri
 
 Cette conception attire particulièrement les utilisateurs avancés qui aiment régler, apprendre et personnaliser leur système en détail.
 
-:::single-choice{#match-gentoo-user}
-À quel utilisateur Gentoo correspond-elle le mieux ?
+:::single-choice{#match-gentoo-user} À quel utilisateur Gentoo correspond-elle le mieux ?
 
 ::option[Une personne investie dans son apprentissage qui souhaite une maîtrise détaillée du système]{#committed-system-builder .correct explanation="Gentoo récompense les utilisateurs qui veulent choisir précisément les réglages de construction et de configuration. Cette maîtrise exige aussi davantage de temps et d'implication."}
 ::option[Un débutant qui souhaite le moins de configuration possible]{#minimal-setup-beginner explanation="Gentoo attend beaucoup de configuration et de maintenance de la part de l'utilisateur. Une distribution aux réglages préparés convient mieux à cet objectif."}
@@ -36,16 +35,14 @@ Au cœur de Gentoo se trouve **Portage**, son système de gestion des paquets. P
 
 L'une de ses fonctions les plus caractéristiques est l'emploi d'**indicateurs USE**, qui permettent d'activer ou désactiver les fonctionnalités facultatives avant la construction des logiciels. L'utilisateur maîtrise ainsi très finement le système obtenu.
 
-:::single-choice{#identify-portage-role}
-Quel est le rôle de Portage dans Gentoo ?
+:::single-choice{#identify-portage-role} Quel est le rôle de Portage dans Gentoo ?
 
 ::option[Il fournit uniquement le bureau graphique et le menu des applications]{#portage-desktop explanation="Un environnement de bureau régit l'interface graphique. Portage gère les logiciels dans tout le système Gentoo."}
 ::option[Il gère l'installation, les dépendances et la maintenance des logiciels]{#portage-package-manager .correct explanation="Portage est le système de gestion des paquets de Gentoo. Il coordonne les paquets et les choix nécessaires à leur construction et maintenance."}
 ::option[Il remplace le noyau Linux par un autre système d'exploitation]{#portage-kernel-replacement explanation="Portage peut gérer les paquets liés au noyau, mais ne remplace pas Linux par un autre système. Son rôle est la gestion des paquets."}
 :::
 
-:::single-choice{#explain-use-flags}
-Que contrôlent les indicateurs USE de Gentoo ?
+:::single-choice{#explain-use-flags} Que contrôlent les indicateurs USE de Gentoo ?
 
 ::option[La quantité physique de mémoire installée dans l'ordinateur]{#physical-memory explanation="La mémoire installée est une propriété matérielle. Les indicateurs USE configurent les fonctionnalités logicielles sans modifier les composants physiques."}
 ::option[Les fonctionnalités et dépendances facultatives incluses lors de la construction des paquets]{#package-features .correct explanation="Les indicateurs USE expriment les capacités facultatives que doit prendre en charge un paquet. Ces choix peuvent aussi modifier les dépendances installées par Portage."}
@@ -58,8 +55,7 @@ Comme les logiciels sont souvent construits localement, Gentoo peut s'adapter pr
 
 Ce modèle fait également de Gentoo une distribution éducative. Elle enseigne davantage les dépendances, la compilation et la conception du système que nombre de distributions généralistes.
 
-:::single-choice{#recognize-source-build-tradeoff}
-Quel compromis accompagne la personnalisation depuis les sources de Gentoo ?
+:::single-choice{#recognize-source-build-tradeoff} Quel compromis accompagne la personnalisation depuis les sources de Gentoo ?
 
 ::option[Une plus grande maîtrise exige davantage de temps de construction et de décisions]{#control-for-time .correct explanation="La construction locale et le choix des fonctionnalités procurent une maîtrise détaillée, mais réclament du temps et de l'attention."}
 ::option[Une maîtrise réduite supprime la nécessité de comprendre les dépendances]{#less-control explanation="Gentoo expose davantage de choix de dépendances et de construction, pas moins. Leur compréhension participe à sa valeur éducative."}

@@ -24,8 +24,7 @@ Lorsqu'un périphérique est ajouté, modifié, déplacé ou retiré, udev peut 
 
 Le noyau reste responsable du périphérique réel et de son pilote. Supprimer un nœud de `/dev` ne retire pas physiquement le matériel, et créer un nœud avec `mknod` ne fait ni apparaître un matériel non pris en charge ni associer un pilote.
 
-:::single-choice{#udev-kernel-event-input}
-Qu'est-ce qui déclenche normalement le traitement udev lors d'un changement de périphérique ?
+:::single-choice{#udev-kernel-event-input} Qu'est-ce qui déclenche normalement le traitement udev lors d'un changement de périphérique ?
 
 ::option[Une actualisation des dépôts de paquets par APT.]{#udev-apt-refresh explanation="Les mises à jour de métadonnées de paquets n'ont aucun rapport avec le traitement des événements matériels actifs."}
 ::option[Le renommage manuel de tous les fichiers sous `/dev`.]{#udev-manual-renaming explanation="La politique dynamique est pilotée par les événements du noyau et les règles, pas par un renommage manuel en masse."}
@@ -44,8 +43,7 @@ Les fichiers sont traités dans l'ordre lexical de leur nom ; selon l'implément
 
 Une règle peut toucher tous les périphériques correspondants : testez soigneusement sa portée. Ne modifiez pas directement les règles fournies par un paquet lorsqu'une surcharge ou une règle locale supplémentaire convient.
 
-:::single-choice{#udev-local-rules-directory}
-Quel répertoire est destiné aux règles udev locales et persistantes de l'administrateur ?
+:::single-choice{#udev-local-rules-directory} Quel répertoire est destiné aux règles udev locales et persistantes de l'administrateur ?
 
 ::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="Procfs ne fournit pas le répertoire persistant des règles locales."}
 ::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="La politique locale appartient sous `/etc`, séparément des règles des fournisseurs gérées par les paquets."}
@@ -62,8 +60,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 Utilisez un nœud présent sur le système actuel. `udevadm info --attribute-walk --name=...` affiche les attributs le long de la chaîne de parents sysfs, ce qui aide à construire une règle. `udevadm monitor --kernel --udev --property` observe les événements bruts et traités ; sa sortie peut exposer des identifiants, qu'il faut manipuler avec prudence.
 
-:::single-choice{#udev-info-purpose}
-Que demande `udevadm info --query=all --name=/dev/sda` ?
+:::single-choice{#udev-info-purpose} Que demande `udevadm info --query=all --name=/dev/sda` ?
 
 ::option[Une réécriture destructive de la table de partitions.]{#udev-info-partition-write explanation="Cette requête est une inspection ; elle ne formate ni ne repartitionne le stockage."}
 ::option[L'installation sur Internet d'un pilote manquant.]{#udev-info-install-driver explanation="L'inspection avec udevadm n'est pas un téléchargement de paquets."}
@@ -76,8 +73,7 @@ Le rechargement des fichiers de règles modifie le traitement des futurs événe
 
 Sauvegardez les règles locales, validez leur syntaxe, observez un périphérique de test connu et conservez un moyen de récupération avant de changer des permissions ou des noms. N'exécutez pas de longues tâches directement dans le traitement d'un événement udev ; déléguez-les à un service approprié.
 
-:::single-choice{#udev-reload-effect}
-Que modifie principalement le rechargement des règles udev ?
+:::single-choice{#udev-reload-effect} Que modifie principalement le rechargement des règles udev ?
 
 ::option[Le traitement des futurs événements qui correspondent.]{#udev-future-events .correct explanation="Le rechargement actualise les règles en mémoire ; un événement doit encore se produire ou être déclenché pour réévaluer le périphérique."}
 ::option[Le câblage physique de chaque périphérique connecté.]{#udev-physical-wiring explanation="Le chargement de règles logicielles ne peut pas changer les connexions matérielles."}

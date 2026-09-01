@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 Le shell démarre les commandes et établit la connexion. Elles peuvent fonctionner en parallèle : `less` commence à lire avant que `ls` ait tout produit.
 
-:::single-choice{#pipe-stream-connection}
-Dans `ls -la /etc | less`, quels flux `|` relie-t-il par défaut ?
+:::single-choice{#pipe-stream-connection} Dans `ls -la /etc | less`, quels flux `|` relie-t-il par défaut ?
 
 ::option[Stdin de `ls` à stdout de `less`.]{#pipe-reversed-streams explanation="Cela inverse producteur et consommateur ; les données vont de la sortie gauche vers l'entrée droite."}
 ::option[Stderr de `ls` aux deux flux de `less`.]{#pipe-stderr-both explanation="Un tube ordinaire ne relie pas stderr de la commande gauche."}
@@ -50,8 +49,7 @@ Les chemins trouvés traversent le tube, tandis que les erreurs d'autorisation r
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-Dans `find /etc -name "*.conf" | less`, où va normalement stderr de `find` sans autre redirection ?
+:::single-choice{#pipe-left-stderr} Dans `find /etc -name "*.conf" | less`, où va normalement stderr de `find` sans autre redirection ?
 
 ::option[Dans `less`, avec stdout.]{#pipe-errors-to-less explanation="Le tube ordinaire ne relie que stdout."}
 ::option[Dans un fichier `stderr`.]{#pipe-errors-to-file explanation="Aucune redirection ne crée ce fichier."}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 `listing.txt` reçoit la liste et stdout de `tee` reste relié au terminal. Par défaut, `tee` crée ou tronque le fichier.
 
-:::single-choice{#tee-display-and-save}
-Quelle commande affiche la sortie de `generate-report` et remplace aussi `report.txt` par cette sortie ?
+:::single-choice{#tee-display-and-save} Quelle commande affiche la sortie de `generate-report` et remplace aussi `report.txt` par cette sortie ?
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="Cette redirection écrit le fichier mais ne garde pas de copie pour le terminal."}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` copie stdin dans `report.txt` et sur sa sortie standard."}
@@ -82,8 +79,7 @@ Utilisez `-a` pour ajouter au lieu de remplacer :
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-Quelle commande affiche la date et l'ajoute à `activity.log` ?
+:::single-choice{#tee-append-log} Quelle commande affiche la date et l'ajoute à `activity.log` ?
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="`-a` fait ajouter `tee` au fichier tout en copiant l'entrée sur stdout."}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="Sans `-a`, `tee` remplace le fichier."}
@@ -100,8 +96,7 @@ $ ls -la /etc | tee etc-listing.txt | grep "conf"
 
 Ce pipeline produit la liste complète, l'enregistre dans `etc-listing.txt`, puis transmet le même flux à `grep`, qui n'affiche que les lignes contenant `conf`. Le fichier reçoit donc les données avant filtrage ; placez `tee` après `grep` pour ne conserver que les correspondances.
 
-:::single-choice{#tee-before-filter-result}
-Que contient `all.txt` après `produce | tee all.txt | grep error` ?
+:::single-choice{#tee-before-filter-result} Que contient `all.txt` après `produce | tee all.txt | grep error` ?
 
 ::option[Seulement les lignes retenues par `grep`.]{#tee-filtered-only explanation="`tee` précède `grep` et écrit donc l'entrée non filtrée."}
 ::option[Seulement stderr de `produce`.]{#tee-producer-stderr explanation="Le tube transporte stdout, pas stderr."}

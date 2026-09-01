@@ -25,8 +25,7 @@ $ ls /proc
 
 가시성과 접근은 자격 증명, 네임스페이스, 보안 정책, `hidepid` 같은 procfs 마운트 옵션에 따라 달라집니다. 디렉터리를 나열한 뒤 파일을 열기 전에 프로세스가 종료될 수 있으므로 사라짐은 검사 도구가 처리해야 하는 정상적인 경쟁 조건입니다.
 
-:::single-choice{#proc-filesystem-numeric-directory}
-숫자 디렉터리 `/proc/12345`는 일반적으로 무엇을 나타내나요?
+:::single-choice{#proc-filesystem-numeric-directory} 숫자 디렉터리 `/proc/12345`는 일반적으로 무엇을 나타내나요?
 
 ::option[번호가 12345인 디스크 블록]{#proc-filesystem-disk-block explanation="`/proc`는 원시 디스크 블록 디렉터리가 아니라 가상 커널 인터페이스입니다."}
 ::option[현재 PID 12345로 보이는 프로세스]{#proc-filesystem-pid-directory .correct explanation="프로세스별 procfs 데이터는 보이는 PID 이름의 디렉터리 아래에 모입니다."}
@@ -51,8 +50,7 @@ $ less /proc/12345/status
 
 이를 변화하는 관찰 결과로 다루세요. 커널 버전에 따라 필드가 다르고 여러 파일을 읽는 동안 프로세스 상태가 바뀔 수 있으며 일부 카운터에는 이름만으로 알 수 없는 미묘한 의미가 있습니다.
 
-:::single-choice{#proc-filesystem-status-file}
-PID 12345의 읽기 가능한 필드 중심 요약이 있는 경로는 무엇인가요?
+:::single-choice{#proc-filesystem-status-file} PID 12345의 읽기 가능한 필드 중심 요약이 있는 경로는 무엇인가요?
 
 ::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="프로세스별 파일은 최상위 `status` 디렉터리가 아니라 PID 이름 디렉터리 안에 있습니다."}
 ::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="프로세스별 `status` 인터페이스는 식별자, 상태, 메모리, 시그널, 자격 증명 필드를 제공합니다."}
@@ -71,8 +69,7 @@ PID 12345의 읽기 가능한 필드 중심 요약이 있는 경로는 무엇인
 
 특히 `/proc/sys` 아래 일부 파일은 쓰기 가능한 구성 인터페이스입니다. 일반 파일처럼 보인다는 이유로 쓰지 마세요. 승인된 시스템 변경 전에 매개변수, 범위, 지속 방식, 롤백을 이해하세요.
 
-:::single-choice{#proc-filesystem-system-interface}
-프로세스 하나의 상태가 아니라 시스템 전체 메모리 카운터를 제공하는 항목은 무엇인가요?
+:::single-choice{#proc-filesystem-system-interface} 프로세스 하나의 상태가 아니라 시스템 전체 메모리 카운터를 제공하는 항목은 무엇인가요?
 
 ::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="관찰 프로세스 자체의 프로세스별 상태로 해석됩니다."}
 ::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo`는 커널이 보고한 시스템 메모리 통계를 포함합니다."}
@@ -85,8 +82,7 @@ PID 12345의 읽기 가능한 필드 중심 요약이 있는 경로는 무엇인
 
 직접 읽는 프로그램은 형식을 올바르게 분석하고 사라진 프로세스를 허용하며 민감한 출력을 보호하고 읽기 한 번이 원자적인 시스템 스냅샷이라고 가정하지 않아야 합니다.
 
-:::single-choice{#proc-filesystem-live-data}
-검사 명령 두 개 사이에 `/proc/PID`가 사라질 수 있는 이유는 무엇인가요?
+:::single-choice{#proc-filesystem-live-data} 검사 명령 두 개 사이에 `/proc/PID`가 사라질 수 있는 이유는 무엇인가요?
 
 ::option[모든 procfs 파일은 매초 자동으로 이름이 바뀝니다.]{#proc-filesystem-renamed explanation="모든 procfs 항목에 주기적인 이름 변경 규칙은 없습니다."}
 ::option[`status`를 읽으면 프로세스 디렉터리가 삭제됩니다.]{#proc-filesystem-read-delete explanation="상태 검사는 읽기 전용이며 프로세스를 종료하거나 제거하지 않습니다."}

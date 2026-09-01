@@ -29,8 +29,7 @@ $ getent group developers
 
 Group lists can disclose internal account and role names, so review output before sharing it.
 
-:::single-choice{#group-query-resolved-database}
-Which command queries the NSS-resolved group database?
+:::single-choice{#group-query-resolved-database} Which command queries the NSS-resolved group database?
 
 ::option[`getent group`]{#group-getent-all .correct explanation="`getent` consults the configured NSS sources for group records."}
 ::option[`cat /etc/group`]{#group-cat-local explanation="This reads only the local group file and can omit groups supplied by other sources."}
@@ -52,16 +51,14 @@ developers:x:1500:alice,bob
 
 Group passwords are a legacy feature used by tools such as `newgrp` in some configurations. They are not the normal mechanism for granting sudo authorization and should not be introduced through manual field edits.
 
-:::single-choice{#group-gid-field}
-In `developers:x:1500:alice,bob`, which field contains the GID?
+:::single-choice{#group-gid-field} In `developers:x:1500:alice,bob`, which field contains the GID?
 
 ::option[The second field, `x`]{#group-second-password explanation="Field 2 is the group-password placeholder rather than the numeric identity."}
 ::option[The fourth field, `alice,bob`]{#group-fourth-members explanation="Field 4 lists explicit member names rather than the GID."}
 ::option[The third field, `1500`]{#group-third-gid .correct explanation="The third colon-separated field is the numeric group ID."}
 :::
 
-:::single-choice{#group-explicit-member-field}
-How are explicit member names represented in a local group record?
+:::single-choice{#group-explicit-member-field} How are explicit member names represented in a local group record?
 
 ::option[As a comma-separated list in field 4.]{#group-members-field-four .correct explanation="The final field contains explicit supplementary member names separated by commas."}
 ::option[As a space-separated list in field 2.]{#group-members-field-two explanation="Field 2 is reserved for password-related data or a placeholder, not the member list."}
@@ -80,8 +77,7 @@ developers:x:1500:
 
 This is why parsing field 4 alone produces an incomplete membership view.
 
-:::single-choice{#group-primary-membership-visibility}
-Alice's passwd record uses GID 1500 as its primary GID, but her name is absent from group 1500's field 4. Is she a member of that group?
+:::single-choice{#group-primary-membership-visibility} Alice's passwd record uses GID 1500 as its primary GID, but her name is absent from group 1500's field 4. Is she a member of that group?
 
 ::option[No, every membership must appear in `/etc/group` field 4.]{#group-field-four-only explanation="This ignores primary GID membership and would undercount group members."}
 ::option[Yes, primary membership comes from the passwd record's GID field.]{#group-primary-from-passwd .correct explanation="The group file's explicit list is mainly for supplementary memberships; primary membership is recorded with the account."}
@@ -99,8 +95,7 @@ $ groups alice
 
 For the current process, plain `id` reports the groups actually present in its credentials. A newly configured supplementary membership usually does not appear in an already running login session; start a new authenticated session or use a deliberately configured mechanism such as `newgrp` when appropriate.
 
-:::single-choice{#group-current-process-credentials}
-Which command reports the UID, primary GID, and supplementary groups of the current process?
+:::single-choice{#group-current-process-credentials} Which command reports the UID, primary GID, and supplementary groups of the current process?
 
 ::option[`id`]{#group-current-id .correct explanation="With no user operand, `id` reports identity credentials for the current process."}
 ::option[`cat /etc/group`]{#group-current-cat explanation="The local file lists records but does not show which resolved groups are active in the current process."}

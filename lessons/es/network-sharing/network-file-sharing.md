@@ -22,8 +22,7 @@ El movimiento de archivos por red abarca desde copias puntuales hasta recursos c
 
 Una copia no es automáticamente una copia de seguridad. Un diseño de copias de seguridad también necesita una conservación independiente, pruebas de restauración, comprobaciones de integridad y protección frente a la misma eliminación o vulneración.
 
-:::single-choice{#file-sharing-one-time-ssh-copy}
-¿Qué herramienta resulta apropiada para copiar un archivo una sola vez mediante SSH?
+:::single-choice{#file-sharing-one-time-ssh-copy} ¿Qué herramienta resulta apropiada para copiar un archivo una sola vez mediante SSH?
 
 ::option[`scp`]{#file-sharing-scp .correct explanation="SCP utiliza la autenticación y el transporte SSH para copiar archivos."}
 ::option[`uptime`]{#file-sharing-uptime explanation="Uptime informa del tiempo de actividad y la carga del host, no transfiere archivos."}
@@ -41,8 +40,7 @@ $ scp -- alice@example.net:/srv/outgoing/result.txt ./result.txt
 
 El primer comando envía un archivo local; el segundo obtiene un archivo remoto. Los dos puntos distinguen el host remoto de su ruta. Pon entre comillas las rutas que contengan caracteres especiales del shell y evita nombres de archivo no confiables que resulten ambiguos.
 
-:::single-choice{#file-sharing-scp-pull-source}
-En una descarga mediante `scp`, ¿dónde aparece la especificación remota?
+:::single-choice{#file-sharing-scp-pull-source} En una descarga mediante `scp`, ¿dónde aparece la especificación remota?
 
 ::option[Como origen antes del destino local.]{#file-sharing-pull-source .correct explanation="La dirección de la copia sigue el orden de operandos origen-destino."}
 ::option[Como destino local después de todas las opciones.]{#file-sharing-pull-destination explanation="El objeto remoto que se obtiene es el operando de origen."}
@@ -59,8 +57,7 @@ $ scp -r -- project/ alice@example.net:/srv/incoming/
 
 Antes de copiar, inspecciona el tamaño de los datos, los enlaces simbólicos, los permisos, los requisitos de propiedad, el espacio libre y los nombres de destino. SCP no es una política de sincronización; las copias repetidas de directorios pueden dejar en el destino archivos que ya no existen en el origen.
 
-:::single-choice{#file-sharing-scp-recursive}
-¿Qué solicita `scp -r`?
+:::single-choice{#file-sharing-scp-recursive} ¿Qué solicita `scp -r`?
 
 ::option[Eliminar el destino remoto antes de copiar.]{#file-sharing-scp-remove explanation="El modo recursivo recorre directorios y no define una política de limpieza."}
 ::option[Copiar recursivamente un árbol de directorios.]{#file-sharing-scp-tree .correct explanation="La opción es necesaria cuando el origen seleccionado es un directorio."}
@@ -73,8 +70,7 @@ La comprobación de la clave del host SSH protege frente a la conexión con el s
 
 Después de la transferencia, comprueba el estado de salida, los archivos esperados, los tamaños, los metadatos y, cuando los requisitos de integridad lo exijan, hashes calculados de forma independiente en ambos extremos. Confirma que la aplicación de destino pueda leer realmente los datos.
 
-:::single-choice{#file-sharing-host-key-change}
-¿Qué debes hacer cuando SSH informa de un cambio inesperado en la clave del host?
+:::single-choice{#file-sharing-host-key-change} ¿Qué debes hacer cuando SSH informa de un cambio inesperado en la clave del host?
 
 ::option[Deshabilitar la comprobación de claves de host para todas las transferencias futuras.]{#file-sharing-disable-checking explanation="Esto elimina un control importante de identidad del servidor."}
 ::option[Verificar la clave nueva mediante una fuente de confianza antes de continuar.]{#file-sharing-verify-key .correct explanation="La advertencia puede indicar que el host se reconstruyó, que el destino es incorrecto o que existe una interceptación, y debe investigarse."}

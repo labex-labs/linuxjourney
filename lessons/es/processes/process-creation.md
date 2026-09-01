@@ -18,8 +18,7 @@ La llamada al sistema `fork()` crea un proceso hijo basado en el proceso que la 
 
 El hijo obtiene un estado de proceso lógicamente independiente. Linux puede compartir inicialmente páginas de memoria física mediante copia en escritura y copiar una página únicamente cuando uno de los procesos la modifica. Los descriptores de archivos abiertos se heredan y se refieren a las mismas descripciones de archivos abiertas subyacentes, por lo que detalles como los desplazamientos pueden seguir compartidos.
 
-:::single-choice{#process-creation-fork-result}
-¿Qué crea un `fork()` correcto?
+:::single-choice{#process-creation-fork-result} ¿Qué crea un `fork()` correcto?
 
 ::option[Únicamente un programa de reemplazo dentro del mismo proceso.]{#process-creation-fork-replacement explanation="Sustituir la imagen del programa actual es la función de una operación `exec`."}
 ::option[Un proceso hijo con un PID nuevo.]{#process-creation-fork-child .correct explanation="`fork()` establece un proceso hijo independiente y una relación padre-hijo."}
@@ -39,8 +38,7 @@ Por tanto, muchas órdenes del shell siguen un patrón fork-exec:
 
 Las bibliotecas y aplicaciones pueden ofrecer interfaces de nivel superior como `posix_spawn()`, y Linux tiene primitivas adicionales como `clone()`. El conocido modelo fork-exec sigue siendo útil sin ser la única interfaz posible.
 
-:::single-choice{#process-creation-exec-pid}
-¿Qué ocurre con el PID de un proceso después de un `execve()` correcto?
+:::single-choice{#process-creation-exec-pid} ¿Qué ocurre con el PID de un proceso después de un `execve()` correcto?
 
 ::option[Pasa a ser idéntico al PID del padre.]{#process-creation-exec-parent-pid explanation="Padre e hijo conservan identificadores de proceso distintos."}
 ::option[Permanece igual mientras se sustituye la imagen del programa.]{#process-creation-exec-same-pid .correct explanation="`execve()` transforma el proceso que la invoca en vez de crear otro."}
@@ -57,8 +55,7 @@ $ ps -o pid,ppid,stat,cmd
 
 Si un shell inicia `ps`, el PID del shell suele aparecer como `PPID` de ese proceso `ps`. El momento importa: los procesos de corta duración pueden terminar antes de que otra observación consiga capturarlos.
 
-:::single-choice{#process-creation-ppid}
-¿Qué representa `PPID` en un listado de procesos?
+:::single-choice{#process-creation-ppid} ¿Qué representa `PPID` en un listado de procesos?
 
 ::option[El PID anterior asignado previamente al proceso.]{#process-creation-previous-pid explanation="Los PID pueden reutilizarse, pero `PPID` no registra el historial de identificadores."}
 ::option[El identificador de prioridad de planificación del proceso.]{#process-creation-priority-id explanation="La prioridad de planificación se representa mediante otros campos, como prioridad o valor nice."}
@@ -71,8 +68,7 @@ El kernel inicia el primer proceso del espacio de usuario con PID 1. Según el s
 
 Cuando un padre termina antes que su hijo, este se reasigna a un subreaper apropiado o al proceso init de su espacio de nombres PID. No necesita terminar simplemente porque haya finalizado su padre original.
 
-:::single-choice{#process-creation-pid-one}
-¿Qué afirmación sobre PID 1 es correcta?
+:::single-choice{#process-creation-pid-one} ¿Qué afirmación sobre PID 1 es correcta?
 
 ::option[Siempre debe ser un programa cuyo ejecutable se llame exactamente `init`.]{#process-creation-pid-one-name explanation="La implementación puede ser `systemd`, otro init o un programa específico de un contenedor."}
 ::option[Es el padre que creó directamente todos los procesos que se ejecutan actualmente.]{#process-creation-pid-one-direct explanation="La mayoría de los procesos se crean a través de muchas generaciones de padres intermedios."}

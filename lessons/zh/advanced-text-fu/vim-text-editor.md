@@ -27,16 +27,14 @@ $ command -v vi
 
 仅凭解析出的路径，无法判断 `vi` 和 `vim` 是否是同一实现。`type -a vi vim` 和编辑器的版本输出可以提供更多细节。
 
-:::single-choice{#vim-name-origin}
-Vim 这个名称是什么意思？
+:::single-choice{#vim-name-origin} Vim 这个名称是什么意思？
 
 ::option[Visual Input Manager]{#vim-visual-input explanation="这不是该编辑器名称的来源。"}
 ::option[Virtual Interface Mode]{#vim-virtual-interface explanation="Vim 确实使用模式，但这个短语并不是其名称的含义。"}
 ::option[Vi Improved]{#vim-vi-improved .correct explanation="Vim 最初是一款改进的 vi 兼容编辑器，其名称体现了这一点。"}
 :::
 
-:::single-choice{#vim-check-command}
-哪个命令会检查 Bash 当前能否解析名称 `vim`？
+:::single-choice{#vim-check-command} 哪个命令会检查 Bash 当前能否解析名称 `vim`？
 
 ::option[`vim --create`]{#vim-create-option explanation="这不是 shell 解析检查，也不是安装或发现 Vim 的方式。"}
 ::option[`command -v vim`]{#vim-command-resolution .correct explanation="如果该名称可用，这个 shell 内建命令会报告将要使用的命令。"}
@@ -61,8 +59,7 @@ $ vim filename.txt
 
 Vim 不会绕过文件系统权限。能够打开文件并不保证当前账户可以把更改保存到该路径。
 
-:::single-choice{#vim-open-missing-path}
-当 `vim draft.txt` 指定的路径还不存在时，通常会发生什么？
+:::single-choice{#vim-open-missing-path} 当 `vim draft.txt` 指定的路径还不存在时，通常会发生什么？
 
 ::option[Vim 打开一个新缓冲区，只有写入时才创建文件。]{#vim-new-buffer .correct explanation="缓冲区会记住路径名，但磁盘文件会延迟到成功保存时才创建。"}
 ::option[Vim 在打开界面前立即在磁盘上创建空文件。]{#vim-immediate-create explanation="新缓冲区会与路径名关联，但只有成功写入后才创建文件。"}
@@ -86,8 +83,7 @@ $ vimtutor
 
 帮助标签非常精确，所以标点符号可能很重要。在帮助链接上使用 `Ctrl+]` 可跟随链接，使用 `Ctrl+T` 返回。
 
-:::single-choice{#vim-guided-tutorial}
-安装了 Vim 引导教程时，哪个 shell 命令会启动它？
+:::single-choice{#vim-guided-tutorial} 安装了 Vim 引导教程时，哪个 shell 命令会启动它？
 
 ::option[`vim --quiz`]{#vim-quiz-option explanation="Vim 不使用该选项作为其标准引导教程界面。"}
 ::option[`vimtutor`]{#vim-tutor-command .correct explanation="`vimtutor` 会打开交互式教程的副本，以便安全地动手练习。"}
@@ -105,8 +101,7 @@ $ vim vim-practice.txt
 
 后续课程会介绍搜索、导航、插入、编辑和保存。在你学会安全离开之前，请记住 `Esc` 会返回普通模式，而输入 `:q!` 后按 Enter 会放弃当前窗口中未保存的更改。只有确实想丢弃这些更改时才使用该命令。
 
-:::single-choice{#vim-abandon-practice-changes}
-在可丢弃的练习文件中，哪个 Vim 命令会退出当前窗口并丢弃未保存的更改？
+:::single-choice{#vim-abandon-practice-changes} 在可丢弃的练习文件中，哪个 Vim 命令会退出当前窗口并丢弃未保存的更改？
 
 ::option[`:w`]{#vim-write-only explanation="`:w` 会写入缓冲区，但不会退出当前窗口。"}
 ::option[`:wq`]{#vim-write-quit explanation="`:wq` 会先保存更改再退出，因此不会丢弃它们。"}

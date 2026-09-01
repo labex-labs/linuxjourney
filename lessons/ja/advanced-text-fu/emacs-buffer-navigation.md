@@ -24,8 +24,7 @@ C-x b
 
 既定では、`C-x Right` が `next-buffer`、`C-x Left` が `previous-buffer` を実行し、選択中のウィンドウでバッファーを順番に切り替えます。
 
-:::single-choice{#emacs-switch-buffer-key}
-現在のウィンドウに表示するバッファー名の入力を求めるキーシーケンスはどれですか？
+:::single-choice{#emacs-switch-buffer-key} 現在のウィンドウに表示するバッファー名の入力を求めるキーシーケンスはどれですか？
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="これはファイルのパス名を求めて開くため、既存のバッファーを名前で選ぶ操作とは異なります。"}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` はバッファー名を読み、そのバッファーを選択中のウィンドウに表示します。"}
@@ -48,8 +47,7 @@ C-x 3
 
 新しいウィンドウには、初めは同じバッファーが表示されることがよくあります。各ウィンドウで個別にバッファーを切り替えられます。
 
-:::single-choice{#emacs-split-side-by-side}
-選択中の Emacs ウィンドウを左右に分割するキーシーケンスはどれですか？
+:::single-choice{#emacs-split-side-by-side} 選択中の Emacs ウィンドウを左右に分割するキーシーケンスはどれですか？
 
 ::option[`C-x 1`]{#emacs-window-one explanation="これはほかのウィンドウを削除し、選択中のウィンドウをフレーム内の唯一のウィンドウにします。"}
 ::option[`C-x 2`]{#emacs-window-below explanation="これは左右ではなく上下のウィンドウを作ります。"}
@@ -71,16 +69,14 @@ C-x o
 
 通常、ウィンドウを削除しても、表示していたバッファーは残ります。そのバッファーを別のウィンドウに再表示できます。
 
-:::single-choice{#emacs-select-other-window}
-ポイントとキーボードフォーカスを別の Emacs ウィンドウへ移すキーシーケンスはどれですか？
+:::single-choice{#emacs-select-other-window} ポイントとキーボードフォーカスを別の Emacs ウィンドウへ移すキーシーケンスはどれですか？
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="これは別のウィンドウへフォーカスを移さず、選択中のウィンドウを削除します。"}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` はフレーム内の別のウィンドウへ選択を切り替えます。"}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="これは選択中のウィンドウに表示するバッファーを変えますが、選択するウィンドウは変えません。"}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-選択中のウィンドウを残し、フレーム内のほかのウィンドウを削除するキーシーケンスはどれですか？
+:::single-choice{#emacs-keep-one-window} 選択中のウィンドウを残し、フレーム内のほかのウィンドウを削除するキーシーケンスはどれですか？
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` は、選択中のウィンドウをフレーム内の唯一のウィンドウにします。"}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="これは選択中のウィンドウを残さず、そのウィンドウ自体を削除します。"}
@@ -99,8 +95,7 @@ C-x k
 
 バッファーの破棄とウィンドウの削除は異なります。表示中のバッファーを破棄すると、Emacs は各ウィンドウに別のバッファーを表示します。一方、ウィンドウを削除しても、そのバッファーはそのまま残せます。
 
-:::single-choice{#emacs-kill-buffer-key}
-Emacs のバッファーを破棄するか尋ねるキーシーケンスはどれですか？
+:::single-choice{#emacs-kill-buffer-key} Emacs のバッファーを破棄するか尋ねるキーシーケンスはどれですか？
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="これはウィンドウ表示を削除しますが、通常バッファーは残します。"}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` は、必要な変更済みバッファーの確認後、選択したバッファーを Emacs から削除します。"}

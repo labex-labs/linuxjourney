@@ -25,16 +25,14 @@ The first character in `STAT` is the primary state. Additional characters are mo
 
 Sleeping is normal. Interactive programs and services spend much of their time waiting for input, timers, network traffic, locks, or other events rather than consuming CPU continuously.
 
-:::single-choice{#process-states-runnable-code}
-What does primary state `R` mean?
+:::single-choice{#process-states-runnable-code} What does primary state `R` mean?
 
 ::option[Running on a CPU or ready to run.]{#process-states-r-running .correct explanation="`R` combines currently executing and runnable tasks waiting for CPU service."}
 ::option[Reaped after its parent collected status.]{#process-states-r-reaped explanation="A fully reaped process no longer appears as a normal process-table entry."}
 ::option[Waiting in uninterruptible sleep.]{#process-states-r-uninterruptible explanation="Uninterruptible sleep is represented by `D`."}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-Which primary state represents interruptible sleep?
+:::single-choice{#process-states-interruptible-code} Which primary state represents interruptible sleep?
 
 ::option[`D`]{#process-states-sleep-d explanation="`D` denotes uninterruptible sleep."}
 ::option[`Z`]{#process-states-sleep-z explanation="`Z` denotes an exited child whose status has not been reaped."}
@@ -47,8 +45,7 @@ Which primary state represents interruptible sleep?
 
 A brief `D` state can be normal. Persistent or numerous `D` tasks can indicate slow, unavailable, or faulty I/O, but the state alone does not identify the cause. Inspect the wait channel, kernel logs, storage and network health, and the relevant subsystem before drawing conclusions.
 
-:::single-choice{#process-states-uninterruptible-code}
-Which primary state denotes uninterruptible sleep?
+:::single-choice{#process-states-uninterruptible-code} Which primary state denotes uninterruptible sleep?
 
 ::option[`T`]{#process-states-d-stopped explanation="`T` identifies a stopped task."}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` is used for a task waiting in an uninterruptible kernel sleep."}
@@ -62,8 +59,7 @@ Which primary state denotes uninterruptible sleep?
 
 Resume a job-control stop with `SIGCONT` when appropriate. A zombie cannot be resumed or killed because it is no longer executing; its parent or an adopting reaper must collect it.
 
-:::single-choice{#process-states-zombie-code}
-What does primary state `Z` identify?
+:::single-choice{#process-states-zombie-code} What does primary state `Z` identify?
 
 ::option[An exited process whose termination record awaits reaping.]{#process-states-z-zombie .correct explanation="A zombie retains minimal parent-visible status after execution has ended."}
 ::option[A process paused by a terminal suspend signal.]{#process-states-z-terminal-stop explanation="A job-control stop is normally shown as `T`."}

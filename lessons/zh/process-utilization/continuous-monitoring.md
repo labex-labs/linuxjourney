@@ -25,8 +25,7 @@ $ systemctl list-timers --all | grep sysstat
 
 确认发行版的 sysstat 数据目录中正在创建新的活动文件，并检查文件权限和保留策略。
 
-:::single-choice{#sar-installation-verification}
-安装 `sysstat` 后应该验证什么？
+:::single-choice{#sar-installation-verification} 安装 `sysstat` 后应该验证什么？
 
 ::option[数据收集已启用，并且活动文件正在更新。]{#sar-collector-updating .correct explanation="软件包已经安装和定期收集正在运行是两个不同条件。"}
 ::option[每个进程都已手动重启。]{#sar-restart-processes explanation="安装监控收集器并不要求重启所有工作负载。"}
@@ -43,8 +42,7 @@ $ sar -u 1 3
 
 其他常见报告包括运行队列和负载（`-q`）、内存（`-r`）、分页（`-B`）、块设备（`-d`）以及各 CPU 活动（`-P ALL`）。选项和字段会随 sysstat 版本而变化，因此应查阅 `sar --help` 或本机手册。
 
-:::single-choice{#sar-one-second-count}
-`sar -u 1 3` 请求什么？
+:::single-choice{#sar-one-second-count} `sar -u 1 3` 请求什么？
 
 ::option[每秒一份，共三份 CPU 报告。]{#sar-three-cpu-samples .correct explanation="第一个数字是采样间隔秒数，第二个数字是报告数量。"}
 ::option[一份恰好覆盖三天的报告。]{#sar-three-days explanation="这些操作数指定采样间隔和次数，而不是日期范围。"}
@@ -61,8 +59,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 应从报告标题确认文件的完整日期；两位数字后缀通常表示某月中的日期，在跨越多个保留周期时可能有歧义。保存的二进制格式也可能要求兼容的 sysstat 版本。
 
-:::single-choice{#sar-historical-file-option}
-哪个选项让 `sar` 读取指定的活动文件？
+:::single-choice{#sar-historical-file-option} 哪个选项让 `sar` 读取指定的活动文件？
 
 ::option[`-P`]{#sar-option-p explanation="该选项用于选择处理器报告，而不是输入文件。"}
 ::option[`-q`]{#sar-option-q explanation="该选项用于选择队列和负载报告。"}
@@ -75,8 +72,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 数据缺口可能表示主机停机、收集器失败，或数据已被保留策略删除。监控流程本身也要受到监控，以便在事故发生前就能发现证据缺失。
 
-:::single-choice{#sar-incident-method}
-事故复盘时应如何使用历史 `sar` 数据？
+:::single-choice{#sar-incident-method} 事故复盘时应如何使用历史 `sar` 数据？
 
 ::option[把单个最高计数器视为已经证实的根本原因。]{#sar-single-root explanation="单一相关性无法证明因果关系。"}
 ::option[在同一个已核实时间窗口内比较多项指标。]{#sar-correlate-window .correct explanation="对齐的信号有助于区分假设，并把系统行为与事故联系起来。"}

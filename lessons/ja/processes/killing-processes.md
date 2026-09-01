@@ -28,8 +28,7 @@ $ kill -TERM 12445
 
 `SIGTERM` の既定動作は終了ですが、プログラムは捕捉・無視できます。適切に設計されたサービスは新しい仕事の受け入れ停止、状態保存、リソース解放を行えますが、即時または正常な後始末の保証ではありません。
 
-:::single-choice{#killing-processes-default-signal}
-`kill PID` が既定で要求するシグナルはどれですか？
+:::single-choice{#killing-processes-default-signal} `kill PID` が既定で要求するシグナルはどれですか？
 
 ::option[`SIGKILL`]{#killing-processes-default-kill explanation="強制的で捕捉不能なシグナルは明示的に選ぶ必要があります。"}
 ::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="別のシグナルを指定しなければ、標準の終了要求を送ります。"}
@@ -48,8 +47,7 @@ $ ps -p 12445 -o pid,ppid,user,lstart,stat,cmd
 
 権限規則の範囲で自分のプロセスへ送信できます。他者のプロセスには通常、適切な権限が必要です。名前による広いコマンドは、全一致を確認するまで使わないでください。
 
-:::single-choice{#killing-processes-pid-reuse}
-シグナル送信直前に PID を調べるべきなのはなぜですか？
+:::single-choice{#killing-processes-pid-reuse} シグナル送信直前に PID を調べるべきなのはなぜですか？
 
 ::option[プロセスがファイルを読むたび PID が変わるから。]{#killing-processes-pid-read explanation="実行中プロセスは通常、生存中ずっと同じ PID を保ちます。"}
 ::option[以前のプロセス終了後、カーネルが PID を再利用できるから。]{#killing-processes-pid-reused .correct explanation="記憶した数値が、後に別の実行中プロセスを指す場合があります。"}
@@ -66,8 +64,7 @@ $ kill -0 12445
 
 成功は、その瞬間に PID のプロセスが存在し、呼び出し元に送信権限があることを意味します。失敗は不在または権限不足のどちらもあり得るため、すべてを「実行していない」と解釈せず、エラーと終了状態を確認します。瞬間的な検査なので、後の PID 再利用競合は防げません。
 
-:::single-choice{#killing-processes-signal-zero}
-`kill -0 PID` の成功がその瞬間に確立することは何ですか？
+:::single-choice{#killing-processes-signal-zero} `kill -0 PID` の成功がその瞬間に確立することは何ですか？
 
 ::option[プロセスが全後始末を終えて終了した。]{#killing-processes-zero-exited explanation="成功はシグナル可能な実行中対象を示し、終了完了ではありません。"}
 ::option[プロセスがその PID を永久に保つ。]{#killing-processes-zero-permanent explanation="検査は瞬間的で、終了後に PID は再利用できます。"}
@@ -86,8 +83,7 @@ $ kill -KILL 12445
 
 ほかのシグナルの意味は受信プログラムの契約次第です。`SIGHUP` は設定再読み込みを要求することが多い一方、既定の終了動作を保つプログラムもあります。`SIGSTOP` は後始末なしに停止し、`SIGCONT` は再開します。
 
-:::single-choice{#killing-processes-kill-tradeoff}
-`SIGKILL` の主な運用上の欠点は何ですか？
+:::single-choice{#killing-processes-kill-tradeoff} `SIGKILL` の主な運用上の欠点は何ですか？
 
 ::option[プロセス所有者だけが処理できる。]{#killing-processes-kill-owner-handler explanation="対象プロセスは SIGKILL のハンドラーを設定できません。"}
 ::option[一時停止するだけで終了しない。]{#killing-processes-kill-pauses explanation="停止は SIGSTOP で、SIGKILL は終了させます。"}

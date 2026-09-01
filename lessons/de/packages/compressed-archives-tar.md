@@ -28,8 +28,7 @@ $ gunzip report.txt.gz
 
 Verwende, sofern unterstützt, `gzip -k report.txt`, um die Eingabedatei zu behalten, oder nutze Standarddatenströme, wenn du ausdrückliche Kontrolle benötigst. Eine Dateinamenerweiterung ist eine Konvention und kein Beweis für das tatsächliche Format; Werkzeuge wie `file` können den Inhalt prüfen.
 
-:::single-choice{#tar-gzip-gzip-role}
-Was ist in dieser Lektion die Hauptaufgabe von `gzip`?
+:::single-choice{#tar-gzip-gzip-role} Was ist in dieser Lektion die Hauptaufgabe von `gzip`?
 
 ::option[Einen Verzeichnisbaum mit Dateimetadaten zu einem Archiv zusammenzufassen.]{#tar-gzip-directory-archive explanation="Tar übernimmt diese Archivierungsaufgabe, bevor die gzip-Komprimierung angewendet wird."}
 ::option[Einen einzelnen Eingabedatenstrom zu komprimieren.]{#tar-gzip-compress-stream .correct explanation="Gzip wandelt einen Bytestrom um und codiert nicht selbst eine Verzeichnishierarchie."}
@@ -50,8 +49,7 @@ $ tar -cvf project.tar file1 file2 directory1
 
 Pfade werden als Namen von Archivmitgliedern gespeichert. Erstelle Archive aus einem bewusst gewählten Arbeitsverzeichnis und vermeide, unbeabsichtigt Geheimnisse, Zwischenspeicher, Sockets oder weit gefasste absolute Pfade aufzunehmen.
 
-:::single-choice{#tar-gzip-create-option}
-Welche Option von `tar` erstellt ein neues Archiv?
+:::single-choice{#tar-gzip-create-option} Welche Option von `tar` erstellt ein neues Archiv?
 
 ::option[`-x`]{#tar-gzip-option-extract explanation="Die Operation `-x` extrahiert Archivmitglieder."}
 ::option[`-c`]{#tar-gzip-option-create .correct explanation="Die Erstellungsoperation schreibt aus den benannten Eingaben ein neues Archiv."}
@@ -68,8 +66,7 @@ $ tar -czvf project.tar.gz file1 file2 directory1
 
 Das Ergebnis ist ein einzelner gzip-komprimierter tar-Datenstrom. Komprimierung verschlüsselt das Archiv nicht und verbirgt seinen Inhalt nicht vor jemandem, der es lesen und dekomprimieren kann. Wenn Vertraulichkeit erforderlich ist, verwende einen geeigneten Arbeitsablauf mit authentifizierter Verschlüsselung und verwalte Schlüssel getrennt.
 
-:::single-choice{#tar-gzip-z-option}
-Was fordert `-z` im gezeigten `tar`-Befehl an?
+:::single-choice{#tar-gzip-z-option} Was fordert `-z` im gezeigten `tar`-Befehl an?
 
 ::option[Das Archiv mit einem Zero-Knowledge-Schlüssel zu verschlüsseln.]{#tar-gzip-z-encrypt explanation="Weder tar noch gzip bietet über diese Option eine Verschlüsselung."}
 ::option[Jedes Mitglied mit einer Länge von null zu verwerfen.]{#tar-gzip-z-zero explanation="Die Option wählt gzip aus und filtert Archivmitglieder nicht nach ihrer Größe."}
@@ -95,8 +92,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 Extrahiere ein ungeprüftes Archiv nicht als root. Prüfe, was erstellt wurde, bevor du ausgewählte Dateien an ihre endgültigen Orte verschiebst.
 
-:::single-choice{#tar-gzip-list-before-extract}
-Welche Operation listet Archivmitglieder auf, ohne sie zu extrahieren?
+:::single-choice{#tar-gzip-list-before-extract} Welche Operation listet Archivmitglieder auf, ohne sie zu extrahieren?
 
 ::option[`tar -czf download.tar.gz .`]{#tar-gzip-create-download explanation="Dies erstellt oder ersetzt aus dem aktuellen Verzeichnis ein Archiv."}
 ::option[`tar -xzf download.tar.gz`]{#tar-gzip-extract-download explanation="Die Operation `-x` schreibt Mitglieder in das Zielverzeichnis."}
@@ -107,8 +103,7 @@ Welche Operation listet Archivmitglieder auf, ohne sie zu extrahieren?
 
 Tar-Implementierungen können mit Komprimierern wie bzip2 und xz arbeiten, die in GNU tar gewöhnlich mit `-j` beziehungsweise `-J` ausgewählt werden. Formatunterstützung und automatische Erkennung unterscheiden sich. Lies daher `tar --help` oder das lokale Handbuch. ZIP ist ein getrenntes Archivformat, das mit Werkzeugen wie `zip` und `unzip` bedient wird.
 
-:::single-choice{#tar-gzip-archive-confidentiality}
-Macht die gzip-Komprimierung ein tar-Archiv vertraulich?
+:::single-choice{#tar-gzip-archive-confidentiality} Macht die gzip-Komprimierung ein tar-Archiv vertraulich?
 
 ::option[Nein; jeder mit Lesezugriff kann es gewöhnlich dekomprimieren.]{#tar-gzip-not-encryption .correct explanation="Komprimierung verändert Darstellung und Größe, bietet aber weder Zugriffskontrolle noch kryptografische Geheimhaltung."}
 ::option[Ja; gzip leitet einen Verschlüsselungsschlüssel aus dem Dateinamen ab.]{#tar-gzip-filename-key explanation="Gzip implementiert keinen solchen Verschlüsselungsmechanismus."}

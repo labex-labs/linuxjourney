@@ -45,8 +45,7 @@ ABC123
 
 Zeichen, die nicht in `SET1` vorkommen, bleiben unverändert.
 
-:::single-choice{#tr-map-characters}
-Was gibt `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` aus?
+:::single-choice{#tr-map-characters} Was gibt `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` aus?
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="Ziffern gehören nicht zum Quellsatz; `tr` ersetzt sie daher nicht durch Buchstaben."}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="`a`, `b` und `c` werden jeweils auf das Zeichen an derselben Position in `ABC` abgebildet; die Ziffern bleiben unverändert."}
@@ -78,8 +77,7 @@ $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-:::single-choice{#tr-delete-digits}
-Welcher Befehl entfernt jede Ziffer aus stdin und lässt andere Zeichen unverändert?
+:::single-choice{#tr-delete-digits} Welcher Befehl entfernt jede Ziffer aus stdin und lässt andere Zeichen unverändert?
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="Die Option `-d` löscht alle Zeichen der Ziffernklasse aus dem Eingabestrom."}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="Die Option `-s` komprimiert wiederholte Ziffern, lässt aber ein Zeichen jeder Folge bestehen."}
@@ -105,8 +103,7 @@ one
 Two
 ```
 
-:::single-choice{#tr-squeeze-spaces}
-Welcher Befehl reduziert jede Folge gewöhnlicher Leerzeichen in stdin auf ein Leerzeichen?
+:::single-choice{#tr-squeeze-spaces} Welcher Befehl reduziert jede Folge gewöhnlicher Leerzeichen in stdin auf ein Leerzeichen?
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="Die Option `-s` komprimiert Wiederholungen der Zeichen im angegebenen Satz, der hier ein gewöhnliches Leerzeichen enthält."}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="Die Option `-d` entfernt alle gewöhnlichen Leerzeichen, statt eines pro Folge zu bewahren."}
@@ -141,8 +138,7 @@ userexamplecom
 
 Auch der Zeilenumbruch wird entfernt, weil er nicht alphanumerisch ist. Ergänze oder bewahre Trennzeichen bewusst, wenn Datensatzgrenzen wichtig sind.
 
-:::single-choice{#tr-keep-alphanumeric}
-Was bewirkt `tr -cd '[:alnum:]'` mit stdin?
+:::single-choice{#tr-keep-alphanumeric} Was bewirkt `tr -cd '[:alnum:]'` mit stdin?
 
 ::option[Alphanumerische Zeichen werden gelöscht, alle anderen bleiben erhalten.]{#tr-delete-alnum explanation="Das Komplement verändert die von `-d` betroffenen Zeichen. Der alphanumerische Satz selbst bleibt erhalten."}
 ::option[Jedes nicht alphanumerische Zeichen wird gelöscht.]{#tr-delete-nonalnum .correct explanation="`-c` bildet das Komplement des alphanumerischen Satzes; `-d` löscht den daraus entstehenden nicht alphanumerischen Satz."}
@@ -174,8 +170,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 Leite stdout in eine andere Datei um, wenn du das Ergebnis speichern möchtest. Eine Umleitung zurück in den Eingabepfad würde ihn leeren, bevor `tr` ihn liest.
 
-:::single-choice{#tr-read-file-input}
-Welcher Befehl lässt `tr` `names.txt` als stdin lesen und Kleinbuchstaben in Großbuchstaben umwandeln?
+:::single-choice{#tr-read-file-input} Welcher Befehl lässt `tr` `names.txt` als stdin lesen und Kleinbuchstaben in Großbuchstaben umwandeln?
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` akzeptiert auf diese Weise keinen gewöhnlichen Eingabedateinamen; der zusätzliche Operand macht die Syntax ungültig."}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Dieser Befehl liest die Datei richtig, löscht Kleinbuchstaben aber, statt sie zu übersetzen."}

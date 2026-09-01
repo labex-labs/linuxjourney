@@ -24,8 +24,7 @@ The minibuffer offers completion for existing names. Entering a new name can cre
 
 By default, `C-x Right` runs `next-buffer` and `C-x Left` runs `previous-buffer`, cycling through buffers in the selected window.
 
-:::single-choice{#emacs-switch-buffer-key}
-Which key sequence prompts for a buffer name to display in the current window?
+:::single-choice{#emacs-switch-buffer-key} Which key sequence prompts for a buffer name to display in the current window?
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="This prompts for a file pathname and visits it, which is a different operation from choosing an existing buffer by name."}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` reads a buffer name and displays that buffer in the selected window."}
@@ -48,8 +47,7 @@ C-x 3
 
 The new window initially displays a buffer, often the same one. Switch buffers in either window independently.
 
-:::single-choice{#emacs-split-side-by-side}
-Which key sequence splits the selected Emacs window into left and right windows?
+:::single-choice{#emacs-split-side-by-side} Which key sequence splits the selected Emacs window into left and right windows?
 
 ::option[`C-x 1`]{#emacs-window-one explanation="This deletes other windows and makes the selected window the only one in its frame."}
 ::option[`C-x 2`]{#emacs-window-below explanation="This creates upper and lower windows rather than a side-by-side split."}
@@ -71,16 +69,14 @@ Use these commands to remove window displays:
 
 Deleting a window normally leaves its displayed buffer alive. You can show that buffer again in another window.
 
-:::single-choice{#emacs-select-other-window}
-Which key sequence moves point and keyboard focus to another Emacs window?
+:::single-choice{#emacs-select-other-window} Which key sequence moves point and keyboard focus to another Emacs window?
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="This deletes the selected window rather than moving focus to another one."}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` cycles selection to another window in the frame."}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="This changes which buffer the current window displays, not which window is selected."}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-Which key sequence keeps the selected window and deletes the other windows in its frame?
+:::single-choice{#emacs-keep-one-window} Which key sequence keeps the selected window and deletes the other windows in its frame?
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` makes the selected window the only window in the frame."}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="This deletes the selected window itself rather than preserving it."}
@@ -99,8 +95,7 @@ The current buffer is the default choice. If a file-visiting buffer has unsaved 
 
 Killing a buffer is different from deleting a window. Emacs replaces a killed buffer in any displaying window, while deleting a window can leave its buffer untouched.
 
-:::single-choice{#emacs-kill-buffer-key}
-Which key sequence prompts to kill an Emacs buffer?
+:::single-choice{#emacs-kill-buffer-key} Which key sequence prompts to kill an Emacs buffer?
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="This deletes a window display but normally leaves the buffer alive."}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` removes the selected buffer from Emacs after any required modified-buffer confirmation."}

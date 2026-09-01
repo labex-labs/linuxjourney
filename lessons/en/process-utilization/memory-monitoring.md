@@ -22,8 +22,7 @@ $ vmstat 1
 
 The first data row generally reports averages since boot; subsequent rows cover each interval. Stop with `Ctrl-C` after capturing a representative period. Units and available fields vary, so check `vmstat --unit` and the local manual.
 
-:::single-choice{#vmstat-interval-rows}
-Which rows are best for observing second-by-second changes from `vmstat 1`?
+:::single-choice{#vmstat-interval-rows} Which rows are best for observing second-by-second changes from `vmstat 1`?
 
 ::option[Later rows after the initial report.]{#vmstat-later-rows .correct explanation="Later rows describe each requested interval rather than the cumulative period."}
 ::option[Only the headings above the first data row.]{#vmstat-headings explanation="Headings define fields but contain no activity samples."}
@@ -42,8 +41,7 @@ $ free -h
 
 The `available` estimate is generally more useful than `free` alone because reclaimable cache can satisfy new allocations.
 
-:::single-choice{#vmstat-free-memory}
-Why can a low `free` value be normal on Linux?
+:::single-choice{#vmstat-free-memory} Why can a low `free` value be normal on Linux?
 
 ::option[The value always excludes all physical RAM.]{#vmstat-excludes-ram explanation="It is a memory field, though its exact unit should be checked."}
 ::option[The kernel can use idle memory for reclaimable caches.]{#vmstat-reclaimable-cache .correct explanation="Cached memory can often be reclaimed when applications need it."}
@@ -54,8 +52,7 @@ Why can a low `free` value be normal on Linux?
 
 `si` and `so` show swap-in and swap-out rates. Sustained paging combined with latency and memory reclaim activity can indicate pressure, but nonzero swap use (`swpd`) does not by itself prove a current problem. `bi` and `bo` report block input and output rates and are not limited to swap traffic.
 
-:::single-choice{#vmstat-swap-pressure}
-Which evidence better supports current memory-pressure diagnosis?
+:::single-choice{#vmstat-swap-pressure} Which evidence better supports current memory-pressure diagnosis?
 
 ::option[A nonzero `swpd` value with no other observations.]{#vmstat-swpd-alone explanation="Pages can remain in swap after earlier pressure, so the amount alone is insufficient."}
 ::option[Sustained paging correlated with reclaim activity and workload latency.]{#vmstat-correlated-pressure .correct explanation="Repeated, correlated evidence connects memory behavior to current impact."}
@@ -66,8 +63,7 @@ Which evidence better supports current memory-pressure diagnosis?
 
 CPU columns commonly include user (`us`), system (`sy`), idle (`id`), I/O wait (`wa`), and steal (`st`) percentages. System columns include interrupts (`in`) and context switches (`cs`) per second. Interpret spikes against a baseline; high context-switch rates can be normal for some workloads.
 
-:::single-choice{#vmstat-r-column}
-What does the `r` process field represent?
+:::single-choice{#vmstat-r-column} What does the `r` process field represent?
 
 ::option[Read-only mounted filesystems.]{#vmstat-readonly explanation="Filesystem mount flags are not represented by the process field."}
 ::option[Remote users with active shells.]{#vmstat-remote-users explanation="Login sessions are reported by other tools."}

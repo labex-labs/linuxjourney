@@ -43,8 +43,7 @@ $ join people.txt surnames.txt
 
 출력에는 공유 키가 한 번 나온 뒤 첫 번째와 두 번째 파일의 나머지 필드가 이어집니다. `join`은 한 번에 파일 두 개를 처리하며 일반 파일 피연산자 세 개를 3방향 관계형 조인으로 받지 않습니다.
 
-:::single-choice{#join-default-key}
-필드 옵션이 없을 때 `join first.txt second.txt`는 어떤 레코드를 결합하나요?
+:::single-choice{#join-default-key} 필드 옵션이 없을 때 `join first.txt second.txt`는 어떤 레코드를 결합하나요?
 
 ::option[공백으로 구분된 첫 번째 필드가 같은 줄입니다.]{#join-first-fields .correct explanation="기본 `join` 동작은 정렬된 두 입력의 필드 1을 비교합니다."}
 ::option[물리적으로 같은 줄 번호에 있는 줄입니다.]{#join-line-numbers explanation="일치는 단순한 레코드 위치가 아니라 키 필드 값을 기준으로 합니다."}
@@ -63,8 +62,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 정렬과 조인에 같은 로캘을 사용하면 배열 규칙이 일관되게 유지됩니다. 정렬 결과를 입력 파일 자체로 리디렉션하면 쉘이 먼저 파일을 비우므로 그렇게 하지 마세요.
 
-:::single-choice{#join-sort-requirement}
-`join`으로 안정적으로 일치 항목을 찾으려면 일반적으로 어떤 준비가 필요한가요?
+:::single-choice{#join-sort-requirement} `join`으로 안정적으로 일치 항목을 찾으려면 일반적으로 어떤 준비가 필요한가요?
 
 ::option[두 파일의 물리적인 줄 수가 정확히 같아야 합니다.]{#join-equal-line-count explanation="입력 길이는 달라도 됩니다. 같은 줄 수가 아니라 키 일치가 결합 결과를 결정합니다."}
 ::option[두 파일의 이름이 알파벳순으로 서로 이웃하게 정렬되어야 합니다.]{#join-filename-order explanation="내용의 키를 정렬해야 하며 두 파일 이름 사이의 사전식 관계는 무관합니다."}
@@ -100,8 +98,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 `:`처럼 공백이 아닌 한 문자가 필드를 구분할 때는 `-t CHARACTER`를 사용합니다. `-a 1`이나 `-a 2` 같은 옵션으로 한 입력에서 짝이 없는 줄을 포함할 수 있으며 기본 출력에는 키가 일치하는 항목만 들어갑니다.
 
-:::single-choice{#join-different-fields}
-첫 번째 파일의 필드 2를 두 번째 파일의 필드 1과 결합하는 옵션은 무엇인가요?
+:::single-choice{#join-different-fields} 첫 번째 파일의 필드 2를 두 번째 파일의 필드 1과 결합하는 옵션은 무엇인가요?
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="첫 번째 입력의 필드 1과 두 번째 입력의 필드 2를 선택하므로 요청한 매핑과 반대입니다."}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2`는 첫 번째 파일의 필드 2를, `-2 1`은 두 번째 파일의 필드 1을 선택합니다."}
@@ -126,8 +123,7 @@ $ split -l 500 large.txt part-
 
 각 조각에 최대 500줄이 들어가는 `part-aa`, `part-ab` 등이 만들어집니다.
 
-:::single-choice{#split-lines-with-prefix}
-`large.txt`를 최대 500줄씩, `part-` 접두사가 붙은 조각으로 나누는 명령어는 무엇인가요?
+:::single-choice{#split-lines-with-prefix} `large.txt`를 최대 500줄씩, `part-` 접두사가 붙은 조각으로 나누는 명령어는 무엇인가요?
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="`-b` 옵션은 바이트를 선택하므로 일반 텍스트에서 조각은 500줄보다 훨씬 작아집니다."}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500`은 최대 줄 수를 설정하고 마지막 피연산자는 출력 파일 이름 접두사를 제공합니다."}
@@ -144,8 +140,7 @@ $ split -b 10M archive.bin chunk-
 
 마지막 조각은 더 작을 수 있으며 그 외에는 10메비바이트 크기의 조각을 요청합니다. `split`은 아카이브 목록이나 재조립 메타데이터를 만들지 않습니다. 재구성해야 한다면 접미사의 순서를 보존하고 조각들을 순서대로 이어 붙이세요.
 
-:::single-choice{#split-ten-mebibytes}
-`archive.bin`을 `chunk-` 접두사를 사용하여 10MiB씩 나누는 명령어는 무엇인가요?
+:::single-choice{#split-ten-mebibytes} `archive.bin`을 `chunk-` 접두사를 사용하여 10MiB씩 나누는 명령어는 무엇인가요?
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="`-l` 옵션은 줄 수를 받으며 바이너리 조각의 바이트 크기 접미사를 받지 않습니다."}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join`은 바이너리 입력을 나누거나 이 조각 크기 작업을 지원하지 않습니다."}

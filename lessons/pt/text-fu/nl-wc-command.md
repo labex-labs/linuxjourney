@@ -30,8 +30,7 @@ Da esquerda para a direita:
 
 Uma linha final de texto sem uma nova linha de terminação não é contada por `wc -l`, pois essa opção conta caracteres de nova linha, não linhas percebidas visualmente.
 
-:::single-choice{#wc-default-columns}
-Na saída padrão de `wc file.txt`, o que os três primeiros números representam?
+:::single-choice{#wc-default-columns} Na saída padrão de `wc file.txt`, o que os três primeiros números representam?
 
 ::option[Linhas, palavras e bytes, nessa ordem.]{#wc-lines-words-bytes .correct explanation="A saída padrão de `wc` informa a quantidade de novas linhas, palavras e bytes antes do nome do arquivo."}
 ::option[Bytes, palavras e linhas, nessa ordem.]{#wc-bytes-words-lines explanation="Essas são as mesmas medidas na ordem errada. A quantidade de linhas aparece primeiro."}
@@ -61,16 +60,14 @@ $ printf 'one two\n' | wc -w
 2
 ```
 
-:::single-choice{#wc-word-count-only}
-Qual comando informa apenas a quantidade de palavras de `essay.txt`?
+:::single-choice{#wc-word-count-only} Qual comando informa apenas a quantidade de palavras de `essay.txt`?
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="A opção `-l` informa caracteres de nova linha, não palavras."}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="A opção `-w` seleciona a medida de contagem de palavras."}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="A opção `-c` informa bytes, não palavras delimitadas por espaços em branco."}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-Qual opção solicita que `wc` conte caracteres, não bytes, no locale atual?
+:::single-choice{#wc-characters-not-bytes} Qual opção solicita que `wc` conte caracteres, não bytes, no locale atual?
 
 ::option[`-m`]{#wc-character-option .correct explanation="A opção `-m` informa caracteres, que podem diferir de bytes em textos multibyte."}
 ::option[`-c`]{#wc-byte-option explanation="A opção `-c` informa bytes. Um caractere pode ocupar vários bytes em codificações como UTF-8."}
@@ -100,8 +97,7 @@ $ nl notes.txt
 
 `nl` grava uma saída numerada; ele não modifica `notes.txt`.
 
-:::single-choice{#nl-default-blank-lines}
-Como `nl notes.txt` trata as linhas vazias do corpo por padrão?
+:::single-choice{#nl-default-blank-lines} Como `nl notes.txt` trata as linhas vazias do corpo por padrão?
 
 ::option[Omite completamente cada linha vazia da saída.]{#nl-omit-blank explanation="A linha vazia permanece na saída, mas não recebe um número por padrão."}
 ::option[Preserva-as sem números de linha.]{#nl-preserve-unnumbered .correct explanation="O estilo padrão do corpo numera linhas não vazias e mantém as linhas vazias sem numeração."}
@@ -121,8 +117,7 @@ $ nl -ba notes.txt
 
 Outras opções controlam a formatação. Por exemplo, `-w 3` define a largura do campo numérico, e `-s ': '` muda o separador depois do número.
 
-:::single-choice{#nl-number-all-lines}
-Qual comando numera todas as linhas do corpo de `notes.txt`, inclusive as vazias?
+:::single-choice{#nl-number-all-lines} Qual comando numera todas as linhas do corpo de `notes.txt`, inclusive as vazias?
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="Essa forma muda a largura do campo numérico, mas mantém a regra padrão de numerar somente linhas não vazias."}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="A opção `-b` escolhe o estilo do corpo, e o estilo `a` numera todas as linhas."}

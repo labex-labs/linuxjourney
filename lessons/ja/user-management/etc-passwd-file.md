@@ -29,8 +29,7 @@ $ getent passwd root
 
 最初のコマンドではアカウント名とメタデータが開示される可能性があるため、出力を公開する前に確認してください。
 
-:::single-choice{#passwd-query-resolved-database}
-ローカルファイルだけを読むのではなく、NSS が解決する passwd データベースを問い合わせるコマンドはどれですか？
+:::single-choice{#passwd-query-resolved-database} ローカルファイルだけを読むのではなく、NSS が解決する passwd データベースを問い合わせるコマンドはどれですか？
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="これはローカルファイルだけを表示し、別の NSS 情報源だけが提供するアカウントは含みません。"}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="shadow ファイルには保護されたローカルのパスワード有効期限情報が含まれ、この目的で表示すべきではありません。"}
@@ -57,16 +56,14 @@ root:x:0:0:root:/root:/bin/bash
 
 不正な、または意図的に重複したレコードでは、カーネルが UID 値の一意性を強制するわけではありません。しかし、同じ UID を共有するアカウントは、多くの所有権と権限判断で区別できません。通常、管理者はアカウント UID を一意に保つべきです。
 
-:::single-choice{#passwd-uid-field}
-`root:x:0:0:root:/root:/bin/bash` で UID を含むフィールドはどれですか？
+:::single-choice{#passwd-uid-field} `root:x:0:0:root:/root:/bin/bash` で UID を含むフィールドはどれですか？
 
 ::option[第2フィールドの `x`]{#passwd-second-password explanation="第2フィールドはパスワードのプレースホルダーであり、数値のユーザー識別情報ではありません。"}
 ::option[第4フィールドの2番目の `0`]{#passwd-fourth-gid explanation="第4フィールドは UID ではなくプライマリ GID です。"}
 ::option[第3フィールドの最初の `0`]{#passwd-third-uid .correct explanation="第3フィールドが UID なので、最初の0はこのレコードが UID 0 であることを示します。"}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-passwd レコードでアカウントのプライマリ GID を保存するフィールドはどれですか？
+:::single-choice{#passwd-primary-gid-field} passwd レコードでアカウントのプライマリ GID を保存するフィールドはどれですか？
 
 ::option[第5フィールド]{#passwd-gecos-five explanation="第5フィールドは GECOS、つまりコメントフィールドです。"}
 ::option[第4フィールド]{#passwd-gid-four .correct explanation="コロン区切りの第4フィールドがプライマリグループを数値で識別します。"}
@@ -79,8 +76,7 @@ passwd レコードでアカウントのプライマリ GID を保存するフ�
 
 ただし、あらゆる方法で認証できないことを証明するものではありません。SSH 鍵、証明書、トークン、サービス固有の仕組みは独立している場合があります。同様に、空のパスワードフィールドは認証スタックに依存するセキュリティ上重要な動作を持つため、手動で作成したり「修正」したりしてはいけません。
 
-:::single-choice{#passwd-x-placeholder}
-ローカルの `/etc/passwd` レコードで、第2フィールドの `x` は一般に何を意味しますか？
+:::single-choice{#passwd-x-placeholder} ローカルの `/etc/passwd` レコードで、第2フィールドの `x` は一般に何を意味しますか？
 
 ::option[そのアカウントには認証方法が一切ないと保証される。]{#passwd-no-auth-guarantee explanation="このプレースホルダーはすべての認証方法を表さず、それ自体でアカウントが使用不能だという意味でもありません。"}
 ::option[アカウントのホームディレクトリが削除された。]{#passwd-home-deleted explanation="ホームディレクトリ情報は第6フィールドに保存され、`x` プレースホルダーとは無関係です。"}
@@ -93,8 +89,7 @@ passwd レコードでアカウントのプライマリ GID を保存するフ�
 
 ディストリビューションのポリシーを確認せず、UID の範囲だけからアカウントの用途を推測してはいけません。割り当て範囲は異なり、中央管理アカウントが別の慣習に従うこともあります。
 
-:::single-choice{#passwd-nologin-shell}
-第7フィールドで `/usr/sbin/nologin` のようなログインプログラムを指定する一般的な目的は何ですか？
+:::single-choice{#passwd-nologin-shell} 第7フィールドで `/usr/sbin/nologin` のようなログインプログラムを指定する一般的な目的は何ですか？
 
 ::option[サービス停止時にアカウントのファイルを削除する。]{#passwd-nologin-delete explanation="ログインプログラムは所有データを自動削除せず、サービス停止時のファイルも管理しません。"}
 ::option[このフィールドを尊重するログイン経路から、通常の対話的シェルを開始できないようにする。]{#passwd-nologin-purpose .correct explanation="非ログインプログラムは、通常のログインで対話的シェルを与えるべきでないサービスアカウントによく使われます。"}

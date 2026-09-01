@@ -32,8 +32,7 @@ $ rm notes.txt old-report.txt draft.md
 
 Check spelling and location before pressing Enter. A backup or version-control copy is a more dependable recovery plan than filesystem-recovery tools after deletion.
 
-:::single-choice{#remove-one-file}
-After confirming the target, which command removes the file `old-report.txt`?
+:::single-choice{#remove-one-file} After confirming the target, which command removes the file `old-report.txt`?
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` removes the named file entry. The operation normally does not place the file in a trash folder."}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` operates on empty directories, not regular files. It is not the command for this target."}
@@ -58,8 +57,7 @@ $ rm *.tmp
 
 The shell expands the pattern before `rm` starts. If the preview includes an unexpected file, correct the pattern instead of proceeding.
 
-:::single-choice{#preview-removal-pattern}
-You plan to remove `*.tmp`. Which command first shows the non-hidden pathnames selected by that pattern without deleting them?
+:::single-choice{#preview-removal-pattern} You plan to remove `*.tmp`. Which command first shows the non-hidden pathnames selected by that pattern without deleting them?
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="Verbose mode reports removals as they happen. It still deletes the matched files and is not a read-only preview."}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="Quotes prevent wildcard expansion, so this looks for a literal name containing `*` rather than previewing the intended targets."}
@@ -77,8 +75,7 @@ rm: remove regular file 'important.txt'? y
 
 The `-I` option is a less intrusive safeguard in GNU `rm`: it prompts once when a command would remove more than three files or operate recursively.
 
-:::single-choice{#confirm-each-removal}
-Which command asks for confirmation before removing each named file?
+:::single-choice{#confirm-each-removal} Which command asks for confirmation before removing each named file?
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="The `-i` option prompts before each removal, giving you a chance to reject the operation."}
 ::option[`rm -f important.txt`]{#force-important explanation="The `-f` option suppresses prompts and ignores a missing operand. It removes rather than adds confirmation."}
@@ -118,8 +115,7 @@ $ rmdir empty-directory
 
 `rmdir` fails when the directory is not empty, which protects its contents from recursive deletion.
 
-:::single-choice{#remove-empty-directory-only}
-Which command removes `old-cache/` only if that directory is empty?
+:::single-choice{#remove-empty-directory-only} Which command removes `old-cache/` only if that directory is empty?
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="Recursive `rm` removes the directory and its contents. It does not enforce the empty-directory condition."}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` succeeds only for an empty directory, so it does not recursively delete contained files."}
@@ -152,8 +148,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-After verifying the complete target, which command removes `old-project/` and everything below it while still allowing normal prompts?
+:::single-choice{#remove-nonempty-tree} After verifying the complete target, which command removes `old-project/` and everything below it while still allowing normal prompts?
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="Plain `rm` does not descend into a directory. It cannot remove a nonempty tree."}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="The `-r` option recursively removes the directory tree. Unlike `-rf`, this form does not add `-f` to suppress prompts."}

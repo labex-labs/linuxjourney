@@ -28,8 +28,7 @@ Vim の編集コマンドは、多くの場合、演算子と移動コマンド�
 
 たとえば `dw` は `w` の移動範囲を削除し、`d$` はカーソルから行末までを削除します。`2dw` は削除を 2 回分の単語移動に適用します。
 
-:::single-choice{#vim-edit-operator-motion}
-ノーマルモードで `d$` は何をしますか？
+:::single-choice{#vim-edit-operator-motion} ノーマルモードで `d$` は何をしますか？
 
 ::option[カーソル以降のファイル全体を削除します。]{#vim-edit-delete-file-end explanation="ドル記号の移動対象は現在行の末尾であり、バッファー全体の末尾ではありません。"}
 ::option[カーソルから行末までを削除します。]{#vim-edit-delete-line-end .correct explanation="`d` 演算子が `$` の行末移動へ適用されます。"}
@@ -49,8 +48,7 @@ Vim の編集コマンドは、多くの場合、演算子と移動コマンド�
 
 `dd` のように演算子を繰り返すと、行単位の操作になります。回数を付けると対象行数が増えます。
 
-:::single-choice{#vim-edit-delete-three-lines}
-現在行とその次の 2 行を削除するノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-edit-delete-three-lines} 現在行とその次の 2 行を削除するノーマルモードのコマンドはどれですか？
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="このコマンド形式では、回数は二重の演算子より前に置きます。"}
 ::option[`3x`]{#vim-edit-three-x explanation="これはカーソル下とその後の 3 文字を削除し、完全な 3 行は削除しません。"}
@@ -69,8 +67,7 @@ Vim の編集コマンドは、多くの場合、演算子と移動コマンド�
 
 `cw` の動作には歴史的な特殊例があり、多くの場合 `ce` のように動作します。`iw` などのテキストオブジェクトを使うと、意図した境界を明確にできます。
 
-:::single-choice{#vim-edit-change-inner-word}
-カーソル下の内側の単語を削除し、挿入モードへ入って置き換えるノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-edit-change-inner-word} カーソル下の内側の単語を削除し、挿入モードへ入って置き換えるノーマルモードのコマンドはどれですか？
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="これは内側の単語を削除しますが、置き換え入力を始めずノーマルモードのままです。"}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="これはバッファーを変更せず、挿入モードへも入らず、内側の単語をヤンクします。"}
@@ -88,8 +85,7 @@ Vim ではコピーを**ヤンク**、貼り付けを**プット**と呼びま�
 
 削除や変更でもテキストがレジスターへ保存されるため、後で `p` を使うと、以前にヤンクしたテキストではなく直近に削除したテキストが置かれることがあります。名前付きレジスターで特定のテキストを保持できますが、まずは直近の操作が何を保存したかを意識してください。
 
-:::single-choice{#vim-edit-yank-put-line}
-`yy` で現在行をヤンクした後、その行を現在行の下へ置くコマンドはどれですか？
+:::single-choice{#vim-edit-yank-put-line} `yy` で現在行をヤンクした後、その行を現在行の下へ置くコマンドはどれですか？
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="行単位でヤンクしたテキストでは、小文字の `p` が保存済みの行を現在行の下へ置きます。"}
 ::option[`P`]{#vim-edit-put-above explanation="大文字の `P` は行単位のテキストを現在行の上へ置きます。"}
@@ -107,8 +103,7 @@ Vim ではコピーを**ヤンク**、貼り付けを**プット**と呼びま�
 
 取り消し履歴が対象にするのはバッファーの変更であり、単なるカーソル移動ではありません。無制限または永続的な取り消し履歴に頼らず、保存のチェックポイントを作り、編集内容を確認してください。
 
-:::single-choice{#vim-edit-redo-change}
-取り消したばかりの変更をやり直すノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-edit-redo-change} 取り消したばかりの変更をやり直すノーマルモードのコマンドはどれですか？
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="ノーマルモードの `Ctrl+U` は約半画面上へスクロールするもので、やり直しではありません。"}
 ::option[`.`]{#vim-edit-dot-repeat explanation="ドットは取り消し履歴を前へ進むのではなく、直近の変更を新しい操作として繰り返します。"}

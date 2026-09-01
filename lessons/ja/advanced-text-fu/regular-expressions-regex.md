@@ -32,8 +32,7 @@ sally sells seashells
 
 マッチングツールが受け取る前にシェルが展開または分割しないよう、正規表現のパターンは引用符で囲んでください。正規表現はシェルのパス名展開とも異なります。正規表現の `*` は直前の要素を繰り返しますが、シェルの glob における `*` は、それ自体がパス名の文字列に一致するワイルドカードです。
 
-:::single-choice{#regex-versus-shell-star}
-`ab*` のような正規表現で、`*` は何をしますか？
+:::single-choice{#regex-versus-shell-star} `ab*` のような正規表現で、`*` は何をしますか？
 
 ::option[現在のディレクトリにある任意のファイル名に一致します。]{#regex-shell-glob explanation="これはコマンド文脈でのシェルのパス名展開であり、正規表現内の `*` の意味ではありません。"}
 ::option[直前の `b` を 0 回以上繰り返します。]{#regex-repeat-b .correct explanation="正規表現の量指定子は直前の要素に適用されるため、`ab*` は `a`、`ab`、`abb` などに一致します。"}
@@ -60,8 +59,7 @@ seashore$
 ^by the seashore$
 ```
 
-:::single-choice{#regex-complete-line}
-行全体が `by the seashore` である場合だけ一致するパターンはどれですか？
+:::single-choice{#regex-complete-line} 行全体が `by the seashore` である場合だけ一致するパターンはどれですか？
 
 ::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="キャレットは行頭からの一致を要求し、ドル記号は行末で終わることを要求します。"}
 ::option[`by the seashore`]{#regex-unanchored-line explanation="アンカーがないため、前後に別のテキストを含む長い行の途中にも一致します。"}
@@ -78,8 +76,7 @@ b.
 
 これは `by` に一致しますが、`ba` や `b7` にも一致します。`b` の後に 1 文字必要なので、`b` だけには一致しません。リテラルのピリオドには `\.` とエスケープするか、適切なブラケット式に入れてください。
 
-:::single-choice{#regex-dot-character}
-行全体を対象とするパターン `^b.$` に一致しない文字列はどれですか？
+:::single-choice{#regex-dot-character} 行全体を対象とするパターン `^b.$` に一致しない文字列はどれですか？
 
 ::option[`by`]{#regex-dot-by explanation="ドットが `y` に一致するため、2 文字の行はパターンを満たします。"}
 ::option[`b`]{#regex-dot-b .correct explanation="ドットは `b` の後に 1 文字を要求しますが、この文字列はそこで終わっています。"}
@@ -104,8 +101,7 @@ s[^e]lls
 
 最初の `s` の次の文字が `e` 以外でなければならないため、`salls` には一致しますが `sells` には一致しません。
 
-:::single-choice{#regex-negated-bracket}
-`[^e]` は何に一致しますか？
+:::single-choice{#regex-negated-bracket} `[^e]` は何に一致しますか？
 
 ::option[`e` 以外のちょうど 1 文字。]{#regex-not-e .correct explanation="ブラケット内先頭のキャレットは一覧の集合を補集合にしますが、ブラケット式が消費するのは 1 文字です。"}
 ::option[行頭の後に続く `e`。]{#regex-caret-e-anchor explanation="ブラケット式内先頭のキャレットは、行頭に固定するのではなく集合を否定します。"}
@@ -143,8 +139,7 @@ $ grep -E '^(cat|dog)s?$' animals.txt
 
 これは、行全体が `cat`、`cats`、`dog`、`dogs` のいずれかである行を選びます。BRE モードではこれらの演算子のエスケープ規則が異なるため、種類を確認せずにパターンをコピーしてはいけません。
 
-:::single-choice{#regex-extended-alternation}
-パターン `^(cat|dog)s?$` で拡張正規表現の構文を有効にするコマンドはどれですか？
+:::single-choice{#regex-extended-alternation} パターン `^(cat|dog)s?$` で拡張正規表現の構文を有効にするコマンドはどれですか？
 
 ::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F` はすべての正規表現演算子をリテラルテキストとして扱うため、グループ化、選択、任意の繰り返しが無効になります。"}
 ::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E` は拡張正規表現を選び、ここで示したグループ化、選択、任意の `s` を有効にします。"}

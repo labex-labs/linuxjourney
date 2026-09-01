@@ -23,8 +23,7 @@ The relationship is not always one function to one syscall:
 - an optimized vDSO function can obtain certain kernel-maintained data without a full mode transition
 - one system call can support many higher-level APIs
 
-:::single-choice{#system-calls-library-wrapper}
-What does a typical libc system-call wrapper do?
+:::single-choice{#system-calls-library-wrapper} What does a typical libc system-call wrapper do?
 
 ::option[Prepare ABI arguments, enter the kernel, and translate the result.]{#system-calls-wrapper-role .correct explanation="The wrapper hides architecture-specific calling conventions behind a normal library interface."}
 ::option[Give the application unrestricted access to kernel memory.]{#system-calls-wrapper-unrestricted explanation="The kernel entry remains controlled and validates the request."}
@@ -39,8 +38,7 @@ After completion, the kernel returns a value or an error indication. C library w
 
 Calling every entry a “software interrupt” is imprecise on current architectures; traps, fast system-call instructions, and supervisor calls implement related controlled transitions differently.
 
-:::single-choice{#system-calls-entry-result}
-Who validates a system call's arguments and authorization?
+:::single-choice{#system-calls-entry-result} Who validates a system call's arguments and authorization?
 
 ::option[The shell prompt before the process starts.]{#system-calls-shell-validates explanation="A process can make syscalls independently of a shell, and kernel checks remain necessary."}
 ::option[The kernel implementation of the requested service.]{#system-calls-kernel-validates .correct explanation="The privileged handler checks pointers, object state, credentials, and policy before acting."}
@@ -53,8 +51,7 @@ System-call numbers and calling conventions are architecture-specific. The same 
 
 An unprivileged process cannot insert arbitrary new handlers into the running kernel's syscall table. Extending the interface requires kernel code and careful ABI design. Features such as seccomp can filter which calls a process is allowed to make, but do not create new kernel implementations.
 
-:::single-choice{#system-calls-number-portability}
-Why should an application avoid hard-coding syscall numbers from another architecture?
+:::single-choice{#system-calls-number-portability} Why should an application avoid hard-coding syscall numbers from another architecture?
 
 ::option[Numbers and calling conventions are ABI-specific.]{#system-calls-abi-specific .correct explanation="A number meaningful on one architecture can identify another operation or be absent on another."}
 ::option[System calls are named from the current working directory.]{#system-calls-directory-names explanation="Pathnames do not define the syscall numbering ABI."}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace` can reveal paths, arguments, environment-derived data, network addresses, file content fragments, and credentials passed incorrectly through arguments. Store traces with restrictive permissions and remove them according to incident-data policy.
 
-:::single-choice{#system-calls-strace-purpose}
-What does `strace` primarily observe?
+:::single-choice{#system-calls-strace-purpose} What does `strace` primarily observe?
 
 ::option[Only source-code lines executed inside the application.]{#system-calls-strace-source-lines explanation="Source-level tracing requires debuggers or instrumentation with symbols."}
 ::option[System calls and signals at the user-kernel boundary.]{#system-calls-strace-boundary .correct explanation="It reports requests, arguments, results, and signal events for traced processes."}
@@ -91,8 +87,7 @@ Tracing changes timing and can impose substantial overhead. A failed call may be
 
 Permissions and ptrace security policy restrict which processes can be traced. Do not attach to another user's or a production process without authorization; suspension and timing changes can affect service behavior.
 
-:::single-choice{#system-calls-strace-failure}
-Does one failed syscall in a trace necessarily mean the application is broken?
+:::single-choice{#system-calls-strace-failure} Does one failed syscall in a trace necessarily mean the application is broken?
 
 ::option[Yes; every nonzero return immediately terminates Linux.]{#system-calls-nonzero-terminates explanation="Applications routinely handle syscall errors without system failure."}
 ::option[No; programs often probe alternatives and handle expected errors.]{#system-calls-expected-failure .correct explanation="Interpret the return in control-flow and application context rather than in isolation."}

@@ -48,8 +48,7 @@ $ chmod u=rw,g=r,o= myfile
 
 `chmod +x myfile` のようにクラスを省略すると、どのクラスが変更されるかにプロセスの umask が影響します。クラスを明記すれば、意図した結果を確認しやすくなります。
 
-:::single-choice{#modifying-permissions-remove-group-write}
-ほかのグループ権限ビットを変えず、グループの書き込み権限を削除するシンボリック形式はどれですか？
+:::single-choice{#modifying-permissions-remove-group-write} ほかのグループ権限ビットを変えず、グループの書き込み権限を削除するシンボリック形式はどれですか？
 
 ::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="これはグループではなく所有者クラスから書き込み権限を削除します。"}
 ::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="`g` がグループクラスを選び、`-` がビットを削除し、`w` が書き込み権限を指定します。"}
@@ -79,16 +78,14 @@ $ chmod 755 myfile
 
 `+` や `-` によるシンボリック操作と異なり、8進形式は通常権限の完全な組を指定します。特殊モードビットに使う任意の先頭桁は、後のレッスンで扱います。
 
-:::single-choice{#modifying-permissions-octal-read-value}
-読み取り権限を表す8進値はどれですか？
+:::single-choice{#modifying-permissions-octal-read-value} 読み取り権限を表す8進値はどれですか？
 
 ::option[`1`]{#modifying-permissions-value-one explanation="値 `1` は実行権限を表します。"}
 ::option[`2`]{#modifying-permissions-value-two explanation="値 `2` は書き込み権限を表します。"}
 ::option[`4`]{#modifying-permissions-value-four .correct explanation="読み取り権限はクラスの桁へ8進値 `4` を加えます。"}
 :::
 
-:::single-choice{#modifying-permissions-mode-640}
-`chmod 640 report` はどの通常権限を設定しますか？
+:::single-choice{#modifying-permissions-mode-640} `chmod 640 report` はどの通常権限を設定しますか？
 
 ::option[所有者は読み取り、グループは書き込み、その他は実行。]{#modifying-permissions-640-separated explanation="8進数の各桁はクラスごとの合計であり、読み取り、書き込み、実行を別々の列で表したものではありません。"}
 ::option[所有者は読み取り／実行、グループは書き込み、その他はなし。]{#modifying-permissions-640-wrong-sums explanation="所有者の `6` は読み取りと書き込み、グループの `4` は読み取りです。"}
@@ -101,8 +98,7 @@ $ chmod 755 myfile
 
 再帰的な変更には特に注意が必要です。対象ツリーを事前に確認し、シンボリックリンクとマウント済みファイルシステムを考慮し、小さな範囲でテストしてから `chmod -R` を使います。変更後は、意図したオブジェクトへ影響したと仮定せず、結果のモードを検証してください。
 
-:::single-choice{#modifying-permissions-least-privilege}
-`chmod 777` がアクセス問題への一般的な解決策として不適切なのはなぜですか？
+:::single-choice{#modifying-permissions-least-privilege} `chmod 777` がアクセス問題への一般的な解決策として不適切なのはなぜですか？
 
 ::option[所有者からすべての権限を削除するから。]{#modifying-permissions-777-removes explanation="各 `7` は読み取り、書き込み、実行を与え、所有者の権限を削除しません。"}
 ::option[所有者、グループ、その他へすべての基本権限を与えるから。]{#modifying-permissions-777-grants-all .correct explanation="三つのクラスすべてが `rwx` を受け取り、実際に必要なアクセスを超えることがよくあります。"}

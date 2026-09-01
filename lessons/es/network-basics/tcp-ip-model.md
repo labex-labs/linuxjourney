@@ -16,8 +16,7 @@ El modelo TCP/IP organiza en capas funcionales los protocolos que utilizan los h
 
 Los protocolos de aplicación definen los mensajes y el comportamiento de servicios como HTTP, DNS, SSH y SMTP. Esta capa también incluye muchas responsabilidades de representación y sesión que el modelo OSI trata por separado.
 
-:::single-choice{#tcpip-http-layer}
-¿En qué capa de TCP/IP se clasifica normalmente HTTP?
+:::single-choice{#tcpip-http-layer} ¿En qué capa de TCP/IP se clasifica normalmente HTTP?
 
 ::option[Internet.]{#tcpip-http-internet explanation="La capa de Internet gestiona el direccionamiento IP y el reenvío de paquetes."}
 ::option[Enlace.]{#tcpip-http-link explanation="La capa de enlace transporta el tráfico en un medio local."}
@@ -28,8 +27,7 @@ Los protocolos de aplicación definen los mensajes y el comportamiento de servic
 
 Los protocolos de transporte proporcionan comunicación entre los puntos finales de las aplicaciones. TCP ofrece un flujo de bytes fiable y ordenado con control de congestión y de flujo. UDP proporciona datagramas independientes sin las garantías de conexión, orden o retransmisión de TCP. Los números de puerto ayudan a identificar los puntos finales del transporte, pero un número de puerto por sí solo no demuestra qué aplicación está escuchando.
 
-:::single-choice{#tcpip-udp-property}
-¿Qué propiedad pertenece a UDP y no a TCP?
+:::single-choice{#tcpip-udp-property} ¿Qué propiedad pertenece a UDP y no a TCP?
 
 ::option[Datagramas independientes sin garantías de retransmisión integradas.]{#tcpip-udp-datagrams .correct explanation="Las aplicaciones que utilizan UDP deciden si añaden fiabilidad y de qué manera."}
 ::option[Entrega garantizada y ordenada de un único flujo de bytes.]{#tcpip-udp-ordered explanation="Esa es una propiedad del servicio TCP, siempre que la conexión tenga éxito."}
@@ -40,8 +38,7 @@ Los protocolos de transporte proporcionan comunicación entre los puntos finales
 
 El Protocolo de Internet transporta paquetes mediante direcciones IP de origen y destino. Los routers examinan la información de enrutamiento y reducen los límites de saltos mientras reenvían los paquetes hacia el destino. ICMP comunica información de control y de errores para el funcionamiento de IP. La entrega sigue siendo de mejor esfuerzo; las capas superiores o las aplicaciones se encargan de cualquier recuperación necesaria.
 
-:::single-choice{#tcpip-router-layer}
-¿Qué capa proporciona el destino IP que utilizan los routers?
+:::single-choice{#tcpip-router-layer} ¿Qué capa proporciona el destino IP que utilizan los routers?
 
 ::option[Internet.]{#tcpip-router-internet .correct explanation="La cabecera IP contiene el destino de la capa de red utilizado para el reenvío enrutado."}
 ::option[Aplicación.]{#tcpip-router-application explanation="Los mensajes de aplicación se transportan dentro de los datos de protocolos de capas inferiores."}
@@ -54,8 +51,7 @@ La capa de enlace envía un paquete IP a través de un enlace local mediante Eth
 
 Las cabeceras de enlace normalmente cambian en cada salto enrutado; las conversaciones de transporte y aplicación son de extremo a extremo salvo que un dispositivo intermedio las termine o transforme.
 
-:::single-choice{#tcpip-link-scope}
-¿Cuál es el ámbito normal de una trama de la capa de enlace?
+:::single-choice{#tcpip-link-scope} ¿Cuál es el ámbito normal de una trama de la capa de enlace?
 
 ::option[Un enlace o salto local.]{#tcpip-one-link .correct explanation="Un router elimina el encapsulado entrante y crea otro para el siguiente enlace."}
 ::option[Todas las sesiones de aplicaciones de Internet global.]{#tcpip-global-frame explanation="Las tramas no permanecen sin cambios al atravesar redes enrutadas."}

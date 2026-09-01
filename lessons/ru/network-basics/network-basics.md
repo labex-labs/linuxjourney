@@ -24,8 +24,7 @@ $ ip address show
 
 Наличие или административное состояние up не доказывает сквозную связность.
 
-:::single-choice{#network-basics-host-interface}
-Что такое сетевой интерфейс?
+:::single-choice{#network-basics-host-interface} Что такое сетевой интерфейс?
 
 ::option[Постоянная копия каждого пакета Интернета.]{#network-basics-interface-copy explanation="Интерфейс передаёт и принимает трафик, но не является глобальным архивом."}
 ::option[Точка подключения хоста к физическому или виртуальному соединению.]{#network-basics-interface-attachment .correct explanation="У хоста может быть несколько физических или виртуальных интерфейсов с отдельной конфигурацией."}
@@ -36,8 +35,7 @@ $ ip address show
 
 Local area network, или LAN, охватывает ограниченную среду: дом, офис или сегмент центра обработки данных. Ethernet-коммутаторы пересылают frames между портами локального link. Wireless LAN, или WLAN, использует беспроводную технологию. Проводной и беспроводной интерфейсы могут принадлежать одной IP-подсети, когда bridge или access point объединяет их.
 
-:::single-choice{#network-basics-wlan-relationship}
-Как WLAN связана с LAN?
+:::single-choice{#network-basics-wlan-relationship} Как WLAN связана с LAN?
 
 ::option[WLAN всегда является отдельным глобальным Интернетом.]{#network-basics-wlan-global explanation="Это локальная сеть с беспроводной link-технологией."}
 ::option[WLAN — раздел диска для маршрутизаторов.]{#network-basics-wlan-disk explanation="Термин описывает сеть, а не компоновку хранилища."}
@@ -50,8 +48,7 @@ Local area network, или LAN, охватывает ограниченную с
 
 Wide area network, или WAN, пересекает большие географические или административные границы. Интернет-провайдер соединяет сеть клиента с другими сетями, но WAN не означает просто каждое устройство вне одного дома.
 
-:::single-choice{#network-basics-router-role}
-Какова определяющая роль маршрутизатора?
+:::single-choice{#network-basics-router-role} Какова определяющая роль маршрутизатора?
 
 ::option[Пересылать пакеты между сетями network layer.]{#network-basics-forward-networks .correct explanation="Routing выбирает следующие hops через границы IP-сетей."}
 ::option[Хранить обязательную резервную копию файлов каждого пользователя.]{#network-basics-router-backup explanation="Хранение файлов не является определяющей функцией routing."}
@@ -64,8 +61,7 @@ Wide area network, или WAN, пересекает большие геогра�
 
 Разговор может состоять из множества пакетов в обе стороны. Потери, изменение порядка, фрагментация, повторная передача и смена пути означают, что один захваченный пакет редко описывает всю транзакцию приложения.
 
-:::single-choice{#network-basics-router-frame}
-Что обычно происходит с framing link layer на hop маршрутизатора?
+:::single-choice{#network-basics-router-frame} Что обычно происходит с framing link layer на hop маршрутизатора?
 
 ::option[Маршрутизатор снимает входящий frame и создаёт framing следующего link.]{#network-basics-reframe .correct explanation="Пересылаемый IP-пакет переносится в новом frame, подходящем исходящему интерфейсу."}
 ::option[Один Ethernet frame неизменно пересекает весь Интернет.]{#network-basics-same-frame explanation="Frames ограничены links и заменяются на routed hops."}

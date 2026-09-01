@@ -28,8 +28,7 @@ $ sudo lsof +D /mnt/usb
 
 Nützliche Spalten sind `COMMAND`, `PID`, `USER`, der Dateideskriptor (`FD`), Typ, Gerät und `NAME`. Ein Datensatz mit `cwd` im Feld `FD` zeigt an, dass der Prozess das Verzeichnis als sein aktuelles Arbeitsverzeichnis verwendet. Die Ausgabe ohne erhöhte Rechte kann für Prozesse anderer Benutzer unvollständig sein.
 
-:::single-choice{#lsof-cwd-record}
-Was zeigt `cwd` in der Spalte `FD` an?
+:::single-choice{#lsof-cwd-record} Was zeigt `cwd` in der Spalte `FD` an?
 
 ::option[Der Prozess verwendet dieses Verzeichnis als aktuelles Arbeitsverzeichnis.]{#lsof-current-directory .correct explanation="Das aktuelle Verzeichnis eines Prozesses kann ein eingehängtes Dateisystem belegt halten."}
 ::option[Die Datei wurde geschlossen, während in sie geschrieben wurde.]{#lsof-closed-write explanation="Die Kennzeichnung beschreibt eine Verzeichnisbeziehung und kein Schließereignis."}
@@ -52,8 +51,7 @@ $ sudo fuser -vm /mnt/usb
 
 Überprüfe mit Werkzeugen wie `findmnt --target /mnt/usb`, dass der Pfad der beabsichtigte Einhängepunkt ist. Bind-Mounts, Namensräume, Berechtigungen und Wettlaufsituationen können beeinflussen, was eine einzelne Abfrage zeigt.
 
-:::single-choice{#fuser-verbose-purpose}
-Warum solltest du während der Untersuchung `fuser -v` statt einfachem `fuser` verwenden?
+:::single-choice{#fuser-verbose-purpose} Warum solltest du während der Untersuchung `fuser -v` statt einfachem `fuser` verwenden?
 
 ::option[Der Befehl hängt das ausgewählte Dateisystem automatisch aus.]{#fuser-verbose-unmount explanation="Der ausführliche Modus meldet Details und fordert kein Aushängen an."}
 ::option[Er ergänzt Kontext wie Benutzer, Zugriffsart und Befehl.]{#fuser-verbose-details .correct explanation="Die zusätzlichen Spalten helfen zu beurteilen, welche Prozesse sicher koordiniert oder gestoppt werden können."}
@@ -72,8 +70,7 @@ Arbeite in einer überlegten Reihenfolge, statt sofort jede passende PID zu been
 
 `fuser -k` sendet ein Signal an passende Prozesse. Bei üblichen procps-Implementierungen ist das Standardsignal `SIGKILL`, sodass kein geordnetes Herunterfahren stattfindet. Falls eine ausdrücklich genehmigte Beendigung nötig ist, wähle ein geeignetes Signal, überprüfe PID und Eigentümer und berücksichtige, dass sich die Prozessmenge zwischen Untersuchung und Eingriff ändern kann.
 
-:::single-choice{#fuser-k-risk}
-Warum ist `fuser -k /mnt/usb` ein schlechter erster Schritt bei der Fehlersuche?
+:::single-choice{#fuser-k-risk} Warum ist `fuser -k /mnt/usb` ein schlechter erster Schritt bei der Fehlersuche?
 
 ::option[Der Befehl gibt nur den freien Speicherplatz des Dateisystems aus.]{#fuser-k-space explanation="Die Option zielt auf Prozesse, statt Kapazität zu melden."}
 ::option[Er kann mehrere passende Prozesse ohne geordnetes Aufräumen beenden.]{#fuser-k-kills .correct explanation="Die weitreichende Signalaktion kann Schreibvorgänge oder Dienste unterbrechen; Untersuchung und Koordination sollten daher zuerst erfolgen."}
@@ -91,8 +88,7 @@ $ sudo fuser -v 22/tcp
 $ sudo ss -lntp
 ```
 
-:::single-choice{#lsof-fuser-tool-choice}
-Welches Werkzeug eignet sich für eine detaillierte Liste offener Dateideskriptoren und der zugehörigen Prozesse?
+:::single-choice{#lsof-fuser-tool-choice} Welches Werkzeug eignet sich für eine detaillierte Liste offener Dateideskriptoren und der zugehörigen Prozesse?
 
 ::option[`lsof`]{#lsof-detailed-records .correct explanation="Seine Ausgabe ist nach Datensätzen offener Dateien und deren Prozessmetadaten organisiert."}
 ::option[`uptime`]{#lsof-uptime explanation="Uptime meldet Betriebsdauer und Lastmittelwerte, keine offenen Deskriptoren."}

@@ -16,8 +16,7 @@ meta_keywords: "리눅스 전송 계층, TCP, UDP, TCP 핸드셰이크, 네트�
 
 목적지 포트는 운영체제가 수신 소켓에 트래픽을 전달하는 데 도움이 됩니다. 연결이나 흐름은 포트 하나만으로 식별되지 않습니다. 프로토콜, 출발지와 목적지 주소, 출발지와 목적지 포트가 모두 중요합니다. 따라서 같은 서버 포트가 여러 클라이언트를 동시에 지원할 수 있습니다.
 
-:::single-choice{#transport-layer-many-clients}
-하나의 TCP 서버 포트가 여러 클라이언트를 동시에 처리할 수 있는 이유는 무엇입니까?
+:::single-choice{#transport-layer-many-clients} 하나의 TCP 서버 포트가 여러 클라이언트를 동시에 처리할 수 있는 이유는 무엇입니까?
 
 ::option[각 연결에 끝점 주소와 포트의 고유한 조합이 있기 때문입니다.]{#transport-layer-connection-tuple .correct explanation="전체 전송 튜플은 하나의 수신 포트를 공유하는 동시 연결을 구분합니다."}
 ::option[서버가 패킷마다 포트 이름을 영구적으로 바꾸기 때문입니다.]{#transport-layer-renames-port explanation="수신 포트는 그대로 유지되며 받아들인 연결은 서로 다른 통신 상대 튜플을 가질 수 있습니다."}
@@ -30,8 +29,7 @@ TCP는 연결이 유지되는 동안 순서 있고 신뢰할 수 있는 바이�
 
 신뢰성이 절대적인 전달을 뜻하지는 않습니다. 연결은 시간 초과되거나 재설정되거나 실패할 수 있으며, 확인 응답이 애플리케이션의 영구적인 데이터 반영을 입증하지는 않습니다.
 
-:::single-choice{#transport-layer-tcp-boundaries}
-TCP에서 응용 메시지 경계에는 어떤 일이 일어납니까?
+:::single-choice{#transport-layer-tcp-boundaries} TCP에서 응용 메시지 경계에는 어떤 일이 일어납니까?
 
 ::option[TCP는 쓰기 경계를 보존하지 않는 순서형 바이트 스트림을 제공합니다.]{#transport-layer-byte-stream .correct explanation="응용 프로토콜이 메시지 구분이나 크기 표현 방식을 정의해야 합니다."}
 ::option[모든 쓰기가 정확히 하나의 IP 패킷과 한 번의 읽기가 됩니다.]{#transport-layer-one-write-packet explanation="분할, 버퍼링 및 수신 API는 이런 대응을 보존하지 않습니다."}
@@ -48,8 +46,7 @@ TCP에서 응용 메시지 경계에는 어떤 일이 일어납니까?
 
 이 교환은 양쪽 끝점에 전송 상태를 수립합니다. 응용 서버를 인증하거나 요청한 응용 작업의 성공을 입증하지는 않습니다.
 
-:::single-choice{#transport-layer-handshake-order}
-일반적인 TCP 3방향 핸드셰이크 순서는 무엇입니까?
+:::single-choice{#transport-layer-handshake-order} 일반적인 TCP 3방향 핸드셰이크 순서는 무엇입니까?
 
 ::option[SYN, SYN-ACK, ACK입니다.]{#transport-layer-syn-order .correct explanation="이 교환은 양방향의 초기 연결 상태를 동기화하고 확인합니다."}
 ::option[ACK, ACK, SYN입니다.]{#transport-layer-ack-ack-syn explanation="시작 측이 먼저 동기화를 요청합니다."}
@@ -60,8 +57,7 @@ TCP에서 응용 메시지 경계에는 어떤 일이 일어납니까?
 
 UDP는 데이터그램 경계를 보존하고 체크섬 기반 오류 감지를 제공하지만 TCP와 같은 연결 상태, 순서, 재전송, 흐름 제어 또는 혼잡 제어는 제공하지 않습니다. 애플리케이션이 필요한 신뢰성이나 혼잡 동작을 직접 추가할 수 있습니다. UDP가 자동으로 더 빠른 것은 아니며 성능은 프로토콜 설계, 작업 부하, 경로 및 구현에 따라 달라집니다.
 
-:::single-choice{#transport-layer-udp-boundaries}
-UDP가 애플리케이션에 제공하는 특성은 무엇입니까?
+:::single-choice{#transport-layer-udp-boundaries} UDP가 애플리케이션에 제공하는 특성은 무엇입니까?
 
 ::option[자동 재전송되는 순서형 바이트 스트림입니다.]{#transport-layer-udp-stream explanation="기본 UDP가 아니라 TCP와 같은 서비스를 설명합니다."}
 ::option[제출한 데이터그램 사이의 경계를 보존합니다.]{#transport-layer-udp-datagrams .correct explanation="유실되지 않는다면 수신된 UDP 데이터그램은 보낸 데이터그램 하나에 대응합니다."}
@@ -79,8 +75,7 @@ $ ss -tn state established
 
 프로세스 세부 정보에는 권한이 필요할 수 있습니다. 수신 소켓은 전송 경계의 로컬 준비 상태만 입증합니다. 방화벽, 라우팅, 주소 계열, TLS 및 애플리케이션 상태는 적절한 테스트로 별도 확인해야 합니다.
 
-:::single-choice{#transport-layer-listener-proof}
-수신 중인 TCP 소켓이 확립하는 사실은 무엇입니까?
+:::single-choice{#transport-layer-listener-proof} 수신 중인 TCP 소켓이 확립하는 사실은 무엇입니까?
 
 ::option[모든 원격 방화벽이 연결을 허용합니다.]{#transport-layer-all-firewalls explanation="로컬 소켓 상태는 전체 경로의 정책을 보여 주지 않습니다."}
 ::option[애플리케이션이 모든 상태 검사를 통과했습니다.]{#transport-layer-all-health explanation="수신 상태는 성공한 응용 트랜잭션보다 약한 증거입니다."}

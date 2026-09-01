@@ -18,8 +18,7 @@ Routing erstellt oder wählt Informationen über erreichbare Präfixe aus. Die W
 
 Dies sind getrennte Belange von Steuerungs- und Datenebene. Eine Route kann bestehen, während eine Firewallrichtlinie die Weiterleitung blockiert, oder eine Weiterleitungsschnittstelle kann aktiv sein, während keine gültige Route existiert.
 
-:::single-choice{#router-forwarding-role}
-Was bewirkt die Paketweiterleitung?
+:::single-choice{#router-forwarding-role} Was bewirkt die Paketweiterleitung?
 
 ::option[Sie wendet Routinginformationen an, um ein Paket zu seinem nächsten Hop zu senden.]{#router-apply-route .correct explanation="Weiterleitung ist die paketweise Aktion anhand der ausgewählten Route und Richtlinie."}
 ::option[Sie erstellt für jedes Ziel eine dauerhafte Anwendungsanmeldung.]{#router-create-login explanation="Routing verwaltet keine entfernten Anwendungskonten."}
@@ -32,8 +31,7 @@ Eine Route verbindet ein Zielpräfix mit einer ausgehenden Schnittstelle, einem 
 
 Wenn keine geeignete Route besteht, verwirft der Router das Paket und kann eine ICMP-Nichterreichbarkeitsmeldung erzeugen. Eine Standardroute ist optional und muss nicht unmittelbar in das öffentliche Internet zeigen.
 
-:::single-choice{#router-default-route}
-Wann wird eine Standardroute ausgewählt?
+:::single-choice{#router-default-route} Wann wird eine Standardroute ausgewählt?
 
 ::option[Bevor zielspezifische Präfixe geprüft werden.]{#router-default-first explanation="Spezifischere geeignete Präfixe haben Vorrang."}
 ::option[Nur, wenn das Paket ein Ethernet-Broadcast ist.]{#router-default-broadcast explanation="Die IP-Routenauswahl beruht auf Zielen der Netzwerkschicht."}
@@ -46,8 +44,7 @@ Zwei Hosts im selben direkt erreichbaren Subnetz tauschen Frames gewöhnlich aus
 
 Ein Heim-„Router“ verbindet gewöhnlich IP-Router, Ethernet-Switch, WLAN-Access-Point, DHCP-Dienst, NAT und Firewall. Jede Funktion sollte getrennt diagnostiziert werden.
 
-:::single-choice{#router-same-subnet-path}
-Muss Datenverkehr zwischen zwei direkt erreichbaren Hosts ihren Standardrouter durchqueren?
+:::single-choice{#router-same-subnet-path} Muss Datenverkehr zwischen zwei direkt erreichbaren Hosts ihren Standardrouter durchqueren?
 
 ::option[Ja, weil jedes Paket einen WAN-Port erreichen muss.]{#router-always-wan explanation="Lokale direkte Zustellung kann unmittelbar über die Verbindung erfolgen."}
 ::option[Ja, sofern nicht beide Hosts öffentliche Adressen besitzen.]{#router-public-required explanation="Öffentlicher oder privater Bereich bestimmt nicht die grundlegende direkte Weiterleitung."}
@@ -58,8 +55,7 @@ Muss Datenverkehr zwischen zwei direkt erreichbaren Hosts ihren Standardrouter d
 
 Ein gerouteter Hop ist ein Weiterleitungsschritt auf Netzwerkschicht. IPv4-TTL und IPv6-Hop-Limit werden an jedem Router verringert und begrenzen dadurch Schleifen. Die Hop-Anzahl ist kein vollständiger Entfernungs- oder Qualitätsmesswert: Verbindungen unterscheiden sich in Bandbreite, Latenz, Verlust, Richtlinie und Überlastung.
 
-:::single-choice{#router-hop-count-limit}
-Was garantiert eine kleinere Hop-Anzahl nicht?
+:::single-choice{#router-hop-count-limit} Was garantiert eine kleinere Hop-Anzahl nicht?
 
 ::option[Dass mindestens ein gerouteter Schritt besteht.]{#router-hop-exists explanation="Eine positive Hop-Anzahl zeigt unmittelbar geroutete Durchquerung an."}
 ::option[Einen schnelleren oder besseren Anwendungspfad.]{#router-hop-not-quality .correct explanation="Weniger Router können dennoch langsamere, überlastete oder durch Richtlinien eingeschränkte Verbindungen durchqueren."}

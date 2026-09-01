@@ -18,8 +18,7 @@ Un serveur DHCP gère des étendues ou des pools d’adresses ainsi que l’éta
 
 DHCP est un protocole de la couche application transporté par UDP. Les serveurs DHCPv4 utilisent normalement le port UDP 67 et les clients le port 68.
 
-:::single-choice{#dhcp-relay-purpose}
-Que permet un relais DHCP ?
+:::single-choice{#dhcp-relay-purpose} Que permet un relais DHCP ?
 
 ::option[Que chaque client choisisse une adresse sans aucune politique.]{#dhcp-client-any-address explanation="Le serveur continue d’appliquer les règles relatives aux étendues et aux baux."}
 ::option[Que les clients d’un autre sous-réseau atteignent un serveur DHCP centralisé.]{#dhcp-central-server .correct explanation="Le relais transmet les échanges DHCP au-delà d’une frontière de routage et identifie le réseau du client."}
@@ -37,8 +36,7 @@ Le processus initial courant est désigné par l’acronyme DORA :
 
 Les détails de la diffusion et de l’unicast varient selon l’état du client, l’utilisation d’un relais et les capacités du serveur. Une offre ne constitue pas encore un bail final utilisable ; l’accusé de réception achève l’échange de sélection normal.
 
-:::single-choice{#dhcp-dora-order}
-Quel est l’ordre initial normal de DHCPv4 ?
+:::single-choice{#dhcp-dora-order} Quel est l’ordre initial normal de DHCPv4 ?
 
 ::option[OFFER, DISCOVER, ACK, REQUEST.]{#dhcp-wrong-order-one explanation="Un client effectue une découverte avant que le serveur ne fasse une offre, puis formule une demande avant l’accusé de réception."}
 ::option[DISCOVER, OFFER, REQUEST, ACK.]{#dhcp-correct-order .correct explanation="Cette séquence recherche, propose, sélectionne puis confirme."}
@@ -51,8 +49,7 @@ Un bail expire s’il n’est pas renouvelé. Un client commence normalement le 
 
 L’affichage d’une adresse attribuée dynamiquement ne prouve pas que son bail durera indéfiniment. Lors du diagnostic d’un changement, relevez le bail actif, sa durée de vie, le serveur et les options.
 
-:::single-choice{#dhcp-lease-expiration}
-Que devient un bail d’adresse DHCP s’il n’est pas renouvelé avec succès ?
+:::single-choice{#dhcp-lease-expiration} Que devient un bail d’adresse DHCP s’il n’est pas renouvelé avec succès ?
 
 ::option[Il devient une adresse MAC matérielle permanente.]{#dhcp-lease-mac explanation="Un bail IP ne modifie pas l’identité de la couche liaison."}
 ::option[Il finit par expirer, et le client doit cesser de le considérer comme valide.]{#dhcp-lease-expires .correct explanation="Le principe du bail permet de récupérer ou de modifier les adresses et les options conformément à la politique du serveur."}
@@ -71,8 +68,7 @@ $ resolvectl status
 
 La commande du résolveur varie selon le système. Examinez également les données de bail et les journaux du gestionnaire de réseau actif. Des adresses en double peuvent encore apparaître à cause de serveurs non autorisés, d’attributions statiques au sein d’un pool, d’un état périmé ou d’une configuration manuelle ; DHCP réduit les erreurs, mais ne peut empêcher à lui seul tous les conflits.
 
-:::single-choice{#dhcp-result-verification}
-Que faut-il vérifier après l’acceptation d’un bail DHCP ?
+:::single-choice{#dhcp-result-verification} Que faut-il vérifier après l’acceptation d’un bail DHCP ?
 
 ::option[Uniquement le nom affiché de l’interface.]{#dhcp-interface-name-only explanation="Le nom d’une interface ne renseigne ni sur l’adressage, ni sur le routage, ni sur la résolution."}
 ::option[Uniquement si le clavier répond.]{#dhcp-keyboard explanation="La saisie au clavier est sans rapport avec la configuration d’un bail réseau."}
@@ -83,8 +79,7 @@ Que faut-il vérifier après l’acceptation d’un bail DHCP ?
 
 Les hôtes IPv6 peuvent employer l’autoconfiguration sans état, DHCPv6, une configuration statique ou une combinaison de ces méthodes. DHCPv6 n’utilise pas l’échange DORA d’IPv4, et les informations sur le routeur par défaut proviennent normalement des annonces de routeur IPv6 plutôt que de DHCPv6.
 
-:::single-choice{#dhcp-ipv6-default-router}
-Où un hôte IPv6 obtient-il normalement les informations relatives à son routeur par défaut ?
+:::single-choice{#dhcp-ipv6-default-router} Où un hôte IPv6 obtient-il normalement les informations relatives à son routeur par défaut ?
 
 ::option[Dans les annonces de routeur IPv6.]{#dhcp-router-advertisement .correct explanation="DHCPv6 peut fournir d’autres paramètres, mais les routeurs s’annoncent au moyen de la découverte de voisins."}
 ::option[Dans la séquence de contrôle d’une trame Ethernet.]{#dhcp-ipv6-fcs explanation="La FCS détecte les altérations sur la liaison et ne contient aucune configuration de routeur."}

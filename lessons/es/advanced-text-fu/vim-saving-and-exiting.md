@@ -24,8 +24,7 @@ El guardado puede fallar porque el búfer no tenga nombre de archivo, el directo
 
 Usa `:w copy.txt` para escribir el búfer actual en otra ruta y mantener el nombre existente del búfer. Usa `:saveas copy.txt` cuando el búfer deba adoptar la ruta nueva.
 
-:::single-choice{#vim-save-without-quit}
-¿Qué orden de Vim escribe el búfer actual en su archivo asociado sin salir?
+:::single-choice{#vim-save-without-quit} ¿Qué orden de Vim escribe el búfer actual en su archivo asociado sin salir?
 
 ::option[`:q`]{#vim-save-q explanation="`:q` solicita salir y no guarda un búfer modificado."}
 ::option[`:w`]{#vim-save-w .correct explanation="La orden `:write` guarda el búfer actual y deja abierta la ventana de edición."}
@@ -42,8 +41,7 @@ Usa `:q` para cerrar la ventana actual cuando hacerlo no descarte cambios sin gu
 
 Si el búfer actual está modificado y sus cambios se perderían, Vim suele negarse y mostrar una advertencia. Esta protección permite guardar o reconsiderar la acción.
 
-:::single-choice{#vim-quit-clean-buffer}
-¿Qué orden cierra la ventana actual de Vim cuando no se perderán cambios sin guardar?
+:::single-choice{#vim-quit-clean-buffer} ¿Qué orden cierra la ventana actual de Vim cuando no se perderán cambios sin guardar?
 
 ::option[`:w`]{#vim-quit-w explanation="Esto guarda el búfer, pero deja abierta la ventana actual."}
 ::option[`:q`]{#vim-quit-q .correct explanation="La orden normal de salida cierra la ventana cuando las protecciones de Vim para búferes modificados lo permiten."}
@@ -60,8 +58,7 @@ Usa `:q!` únicamente cuando quieras cerrar deliberadamente la ventana actual y 
 
 El signo de exclamación ignora la advertencia sobre cambios sin guardar. Esos cambios del búfer no se escriben, así que comprueba que sean realmente prescindibles antes de pulsar Intro.
 
-:::single-choice{#vim-quit-discard-changes}
-El búfer actual tiene cambios que deliberadamente no quieres guardar. ¿Qué orden cierra la ventana actual y los descarta?
+:::single-choice{#vim-quit-discard-changes} El búfer actual tiene cambios que deliberadamente no quieres guardar. ¿Qué orden cierra la ventana actual y los descarta?
 
 ::option[`:q`]{#vim-discard-plain-q explanation="`:q` sin más suele negarse cuando salir implicaría perder cambios de un búfer modificado."}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq` guarda los cambios antes de salir, lo contrario de descartarlos."}
@@ -78,8 +75,7 @@ Usa `:wq` cuando el búfer deba guardarse y la ventana actual deba cerrarse desp
 
 Si el guardado falla, Vim no completa la salida solicitada. Resuelve el error en vez de dar por hecho que los datos llegaron al disco.
 
-:::single-choice{#vim-write-and-quit}
-¿Qué orden escribe el búfer actual y después cierra la ventana actual si el guardado tiene éxito?
+:::single-choice{#vim-write-and-quit} ¿Qué orden escribe el búfer actual y después cierra la ventana actual si el guardado tiene éxito?
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="Esto combina un guardado con una salida, y la salida depende de que se guarde correctamente."}
 ::option[`:q!`]{#vim-save-force-quit explanation="Esto sale descartando los cambios en vez de guardarlos."}
@@ -100,8 +96,7 @@ ZZ
 
 Esto difiere sutilmente de `:wq`, que solicita un guardado incluso cuando el búfer no ha cambiado. `ZQ` en mayúsculas es la forma correspondiente del modo Normal para salir sin guardar, similar a `:q!`.
 
-:::single-choice{#vim-write-if-modified-quit}
-¿Qué orden del modo Normal guarda únicamente si el búfer está modificado y después sale?
+:::single-choice{#vim-write-if-modified-quit} ¿Qué orden del modo Normal guarda únicamente si el búfer está modificado y después sale?
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="`ZZ` en mayúsculas realiza el comportamiento de guardar si se ha modificado y salir asociado a `:x`."}
 ::option[`zz`]{#vim-center-screen explanation="`zz` en minúsculas vuelve a centrar la línea actual en la ventana; no guarda ni sale."}

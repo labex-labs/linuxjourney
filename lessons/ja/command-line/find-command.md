@@ -30,8 +30,7 @@ $ find /home -name puppies.jpg
 
 既定で再帰的に検索します。現在のディレクトリツリーを検索する場合は、出発点に `.` を使います。
 
-:::single-choice{#search-current-tree}
-現在のディレクトリとその子孫から、`notes.txt` という名前の項目を検索するコマンドはどれですか？
+:::single-choice{#search-current-tree} 現在のディレクトリとその子孫から、`notes.txt` という名前の項目を検索するコマンドはどれですか？
 
 ::option[`find . -name notes.txt`]{#find-current-notes .correct explanation="ドットが現在のディレクトリを出発点として選び、`-name` が各項目のベース名をテストします。"}
 ::option[`find / -name notes.txt`]{#find-root-notes explanation="出発点の `/` はファイルシステムのルートから検索するため、現在のディレクトリツリーよりはるかに広い範囲になります。"}
@@ -56,8 +55,7 @@ $ find /home -type d -name MyFolder
 
 ここでは両方のテストを満たす必要があります。項目がディレクトリであり、ベース名が `MyFolder` でなければなりません。
 
-:::single-choice{#find-text-regular-files}
-現在のディレクトリ以下で、名前が `.txt` で終わる通常ファイルを検索するコマンドはどれですか？
+:::single-choice{#find-text-regular-files} 現在のディレクトリ以下で、名前が `.txt` で終わる通常ファイルを検索するコマンドはどれですか？
 
 ::option[`find . -type f -name "*.txt"`]{#text-files .correct explanation="`-type f` が通常ファイルを選び、引用済みの `-name` パターンを `find` が各項目に対して評価します。"}
 ::option[`find . -type d -name "*.txt"`]{#text-directories explanation="パターンは正しく引用されていますが、`-type d` は通常ファイルではなくディレクトリを選びます。"}
@@ -84,8 +82,7 @@ $ find . -type f -mtime +30
 
 `-mtime -7` は 7 未満、`-mtime +30` は 30 より大きい値に一致します。完全な 24 時間単位を使うため、カレンダーの日付が変わる午前 0 時を境界にはしません。
 
-:::single-choice{#find-recent-regular-files}
-`.` 以下で、変更からの経過時間が完全な 24 時間の 7 単位未満である通常ファイルを検索するコマンドはどれですか？
+:::single-choice{#find-recent-regular-files} `.` 以下で、変更からの経過時間が完全な 24 時間の 7 単位未満である通常ファイルを検索するコマンドはどれですか？
 
 ::option[`find . -type f -mtime -7`]{#recent-files .correct explanation="`-type f` が通常ファイルを選び、`-mtime -7` が完全な 24 時間単位で 7 未満の変更時刻を選びます。"}
 ::option[`find . -type f -mtime +7`]{#older-than-seven explanation="プラス記号は 7 単位より大きい経過時間を選ぶため、最近ではなく古いファイルを探します。"}
@@ -112,16 +109,14 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 `-delete` や、ファイルを変更する `-exec` コマンドなどの破壊的操作を使う前に、同じテストを `-print` で実行し、すべての結果を確認してください。出発点を狭くし、`-maxdepth N` を使うことでも検索範囲を制限できます。
 
-:::single-choice{#verify-before-delete}
-後で古い `.log` ファイルを削除する可能性のある `find` コマンドを作っています。最初に何をすべきですか？
+:::single-choice{#verify-before-delete} 後で古い `.log` ファイルを削除する可能性のある `find` コマンドを作っています。最初に何をすべきですか？
 
 ::option[すぐに `-delete` を追加し、消えたファイルを確認する。]{#delete-first explanation="削除は安全な事前確認ではなく、組み込みの undo もありません。追加前に完全な一致集合を確認します。"}
 ::option[同じテストを `-print` で実行し、すべての一致を確認する。]{#print-first .correct explanation="読み取り専用の一覧で出発点とテストを検証してから、破壊的操作を導入します。"}
 ::option[ログファイルを見逃さないよう `/` から検索する。]{#root-first explanation="`/` から始めると範囲が広がり、無関係または保護されたパスまで含む可能性があります。適切な最小範囲を使います。"}
 :::
 
-:::single-choice{#run-ls-for-each-match}
-`find . -name "*.log" -exec ls -l {} \;` で、`{}` は何を表しますか？
+:::single-choice{#run-ls-for-each-match} `find . -name "*.log" -exec ls -l {} \;` で、`{}` は何を表しますか？
 
 ::option[`ls -l` へ渡される現在の一致パス。]{#match-placeholder .correct explanation="この `-exec` 形式では、`ls -l` を呼び出す前に `find` が `{}` を現在の一致へ置き換えます。"}
 ::option[`find` コマンドを開始したディレクトリ。]{#starting-placeholder explanation="開始ディレクトリはコマンド先頭付近のドットで、`-exec` 内の波括弧は別の役割を持ちます。"}

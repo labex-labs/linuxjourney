@@ -18,8 +18,7 @@ Source NAT replaces a packet's source address as it leaves a network. Many-to-on
 
 The translator tracks mappings so reply packets can be rewritten back to the original internal endpoint. It normally forwards the same transport flow; it does not have to open a separate proxy connection as an application proxy would.
 
-:::single-choice{#nat-source-translation}
-What does source NAT change on an outbound packet?
+:::single-choice{#nat-source-translation} What does source NAT change on an outbound packet?
 
 ::option[Only the destination application's file permissions.]{#nat-file-permissions explanation="NAT operates on network and transport headers, not remote filesystems."}
 ::option[The source address and, in many-to-one use, often the source port.]{#nat-source-fields .correct explanation="The mapping lets return traffic be associated with the original internal flow."}
@@ -30,8 +29,7 @@ What does source NAT change on an outbound packet?
 
 Destination NAT rewrites the destination address or port, commonly to publish an internal service through an external endpoint. A port-forward rule might map an external TCP port to a different internal address and port. Return traffic needs consistent reverse translation.
 
-:::single-choice{#nat-port-forward}
-Which NAT form commonly implements an inbound port forward?
+:::single-choice{#nat-port-forward} Which NAT form commonly implements an inbound port forward?
 
 ::option[Source NAT only, before route lookup.]{#nat-snat-port-forward explanation="Publishing an internal destination requires destination-field translation."}
 ::option[No address or port translation at all.]{#nat-no-translation explanation="A port-forward rule is a translation policy by definition."}
@@ -42,8 +40,7 @@ Which NAT form commonly implements an inbound port forward?
 
 NAT is not a firewall. A stateful translator may lack a mapping for unsolicited inbound traffic, but explicit forwarding, destination translation, filtering, and application exposure determine what is reachable. Security policy should be expressed and audited with firewall rules, least-privilege services, and end-to-end controls rather than inferred from address rewriting.
 
-:::single-choice{#nat-not-firewall}
-Why should NAT not be treated as a security policy by itself?
+:::single-choice{#nat-not-firewall} Why should NAT not be treated as a security policy by itself?
 
 ::option[NAT automatically encrypts every payload.]{#nat-encrypts explanation="Address translation provides no payload confidentiality."}
 ::option[Translation rules and traffic-filtering rules have different purposes.]{#nat-filter-separate .correct explanation="Reachability and authorization require explicit filtering and service policy even when translation is present."}
@@ -63,8 +60,7 @@ $ sudo conntrack -L
 
 The second command requires conntrack tooling and privileges. Ruleset changes can disconnect remote access, so use console recovery, atomic configuration, validation, and rollback.
 
-:::single-choice{#nat-trace-flow}
-What evidence is needed to trace a shared-address flow back to an internal client?
+:::single-choice{#nat-trace-flow} What evidence is needed to trace a shared-address flow back to an internal client?
 
 ::option[Only the external address, with no time or port.]{#nat-address-only explanation="Many clients and flows can share that address."}
 ::option[Only the client's displayed hostname.]{#nat-hostname-only explanation="The translator maps packet tuples, not necessarily hostnames."}

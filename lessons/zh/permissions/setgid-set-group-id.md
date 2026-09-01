@@ -25,8 +25,7 @@ $ ls -l /path/to/program
 
 当内核在执行时采用该位，进程会根据可执行文件的组所有者获得有效组 ID。`nosuid` 挂载等控制可以抑制该行为，不能把它当作适用于每种文件类型和环境的普遍保证。
 
-:::single-choice{#setgid-executable-effect}
-采用可执行文件上的 setgid 时，哪个凭据来自该可执行文件的组所有者？
+:::single-choice{#setgid-executable-effect} 采用可执行文件上的 setgid 时，哪个凭据来自该可执行文件的组所有者？
 
 ::option[进程的有效组 ID。]{#setgid-effective-group .correct explanation="Set-group-ID 执行会把可执行文件所有者的组设为进程的有效组身份。"}
 ::option[进程的实际用户 ID。]{#setgid-real-user explanation="该位涉及组凭据，而不是调用者的实际用户身份。"}
@@ -46,8 +45,7 @@ $ ls -ld /srv/project
 drwxr-sr-x 2 root developers 4096 Jan 10 09:30 /srv/project
 ```
 
-:::single-choice{#setgid-directory-inheritance}
-`/srv/project` 上的 setgid 通常会让新建文件继承什么？
+:::single-choice{#setgid-directory-inheritance} `/srv/project` 上的 setgid 通常会让新建文件继承什么？
 
 ::option[目录的用户所有者。]{#setgid-inherit-user explanation="目录 setgid 影响组继承，不影响新目录项的用户所有者。"}
 ::option[目录的完整权限模式。]{#setgid-inherit-mode explanation="创建权限仍根据请求模式、umask 和任何 ACL 计算。"}
@@ -70,8 +68,7 @@ $ sudo chmod 2755 myfile
 
 使用 `chmod g-s myfile` 可只移除该特殊位。
 
-:::single-choice{#setgid-octal-value}
-Setgid 会为开头的特殊位八进制数字贡献哪个值？
+:::single-choice{#setgid-octal-value} Setgid 会为开头的特殊位八进制数字贡献哪个值？
 
 ::option[`4`]{#setgid-value-four explanation="值 `4` 表示特殊位数字中的 setuid。"}
 ::option[`1`]{#setgid-value-one explanation="值 `1` 表示 sticky bit。"}
@@ -82,8 +79,7 @@ Setgid 会为开头的特殊位八进制数字贡献哪个值？
 
 对于协作目录，应组合预期的组所有者、setgid 和范围严格的访问位。以代表性用户测试创建操作，并用 `ls -ld` 检查结果。不要为了处理组共享问题就让目录树对所有人可写；专用组、适当的 umask 或默认 ACL，再加上 setgid 目录，通常能提供更清晰的控制。
 
-:::single-choice{#setgid-directory-write-access}
-只设置 setgid 是否会让组成员获得在目录中创建文件的权限？
+:::single-choice{#setgid-directory-write-access} 只设置 setgid 是否会让组成员获得在目录中创建文件的权限？
 
 ::option[会；setgid 始终添加组读取、写入和执行。]{#setgid-adds-rwx explanation="该特殊位不会自动改变三个普通组权限位。"}
 ::option[会；setgid 会禁用针对组成员的所有检查。]{#setgid-disables-checks explanation="普通自主访问控制和其他安全检查仍然适用。"}

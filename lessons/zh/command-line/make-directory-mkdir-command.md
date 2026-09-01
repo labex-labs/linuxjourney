@@ -28,8 +28,7 @@ $ mkdir documents
 
 如果名为 `documents` 的条目已经存在，`mkdir` 会报告错误，而不会替换它。可以用 `ls -ld documents` 检查现有条目。
 
-:::single-choice{#create-one-directory}
-哪个命令会在当前工作目录中创建名为 `documents` 的目录？
+:::single-choice{#create-one-directory} 哪个命令会在当前工作目录中创建名为 `documents` 的目录？
 
 ::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` 会在相对路径 `documents` 处创建所需目录。"}
 ::option[`touch documents`]{#touch-documents explanation="路径缺失时，`touch` 创建的是空的普通文件，而不是目录。"}
@@ -44,8 +43,7 @@ $ mkdir documents
 $ mkdir books paintings
 ```
 
-:::single-choice{#create-separate-directories}
-哪个命令会创建两个同级目录 `books` 和 `paintings`？
+:::single-choice{#create-separate-directories} 哪个命令会创建两个同级目录 `books` 和 `paintings`？
 
 ::option[`mkdir books/paintings`]{#nested-paintings explanation="这个路径表示 `books` 中的 `paintings`，而不是两个同级目录；如果 `books` 不存在还会失败。"}
 ::option[`mkdir "books paintings"`]{#spaced-directory explanation="引号会把两个单词组合成一个路径，因此只会请求创建一个名称中含空格的目录。"}
@@ -62,8 +60,7 @@ $ mkdir -p books/hemingway/favorites
 
 这会创建路径中所有缺失的部分。如果最终目录已经存在，它也不会仅因此报告错误；但权限不足等其他错误仍可能发生。
 
-:::single-choice{#create-nested-path}
-`projects/app/src` 中的目录都还不存在。哪个命令会创建完整路径？
+:::single-choice{#create-nested-path} `projects/app/src` 中的目录都还不存在。哪个命令会创建完整路径？
 
 ::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="`-p` 会先创建每个缺失的父目录，再创建最终目录。"}
 ::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="不使用 `-p` 时，如果中间目录不存在，`mkdir` 就无法创建 `src`。"}
@@ -89,8 +86,7 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-:::single-choice{#set-directory-mode}
-哪个命令会创建权限模式为 `755` 的 `public`？
+:::single-choice{#set-directory-mode} 哪个命令会创建权限模式为 `755` 的 `public`？
 
 ::option[`mkdir -p 755 public`]{#parents-755 explanation="`-p` 会把剩余单词视为目录路径，因此不会把 `755` 设置为权限模式。"}
 ::option[`mkdir -v 755 public`]{#verbose-755 explanation="`-v` 会打印创建消息，并不会把 `755` 解释为权限模式。"}

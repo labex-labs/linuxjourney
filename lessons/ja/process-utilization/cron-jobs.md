@@ -24,8 +24,7 @@ Cron は、対話型シェルを使わずに、繰り返しスケジュールで
 
 日と曜日の両方を制限した場合、多くの cron 実装はどちらか一方が一致すると実行します。両方を使うスケジュールを作る前に、ローカル環境の動作を確認してください。
 
-:::single-choice{#cron-daily-eight-thirty}
-`30 8 * * * command` はいつ実行されますか？
+:::single-choice{#cron-daily-eight-thirty} `30 8 * * * command` はいつ実行されますか？
 
 ::option[8時間にわたって30分ごと。]{#cron-every-thirty explanation="各フィールドはスケジュール上の位置であり、期間を表す式ではありません。"}
 ::option[毎日 08:30。]{#cron-eight-thirty .correct explanation="分を30、時を8に固定し、3つの日付フィールドではすべての値を許可しています。"}
@@ -48,8 +47,7 @@ $ crontab -l
 
 `crontab -r` はユーザーの crontab 全体を削除し、エディターを開かずに実行される場合があります。1行だけを削除するために使わず、crontab を編集して残りのエントリーを確認してください。
 
-:::single-choice{#cron-list-current-user}
-現在のユーザーにインストールされている cron エントリーを一覧表示するコマンドはどれですか？
+:::single-choice{#cron-list-current-user} 現在のユーザーにインストールされている cron エントリーを一覧表示するコマンドはどれですか？
 
 ::option[`crontab -l`]{#cron-list .correct explanation="一覧表示オプションは、確認できるようインストール済みエントリーを出力します。"}
 ::option[`crontab -r`]{#cron-remove-all explanation="このオプションは表示ではなく、crontab を削除します。"}
@@ -62,8 +60,7 @@ Cron が提供する環境は限定的で、非対話型シェルを使うのが
 
 標準出力と標準エラーを管理されたログへリダイレクトするか、そのシステムに適した通知方法を使います。認証情報は厳しい権限で保護し、crontab のコマンドへ秘密情報を直接埋め込まないでください。
 
-:::single-choice{#cron-absolute-paths}
-cron コマンドで明示的なパスと環境設定を使うべきなのはなぜですか？
+:::single-choice{#cron-absolute-paths} cron コマンドで明示的なパスと環境設定を使うべきなのはなぜですか？
 
 ::option[Cron は常にユーザーの現在の端末内で実行されるから。]{#cron-current-terminal explanation="スケジュールされたジョブは、対話型セッションとは独立して実行されます。"}
 ::option[絶対パスを使うと、すべてのコマンドが root として実行されるから。]{#cron-path-root explanation="パスはファイルを選択しますが、権限を付与しません。"}
@@ -82,8 +79,7 @@ cron コマンドで明示的なパスと環境設定を使うべきなのはな
 
 ジョブのユーザーが安全に作成できるロックパスを選び、実行がスキップされてもよいかを決めてください。Cron は自動的に1インスタンスだけの実行を保証しません。
 
-:::single-choice{#cron-overlapping-runs}
-ジョブの実行時間がスケジュール間隔より長い場合、どのような危険がありますか？
+:::single-choice{#cron-overlapping-runs} ジョブの実行時間がスケジュール間隔より長い場合、どのような危険がありますか？
 
 ::option[複数のインスタンスが重複し、リソースを奪い合う可能性がある。]{#cron-overlap .correct explanation="前のプロセスがまだ動いている間に、cron が次の実行を開始することがあります。"}
 ::option[5つのスケジュールフィールドに、6つ目のロックフィールドが自動追加される。]{#cron-auto-lock explanation="crontab の構文に相互排他機能が自動追加されることはありません。"}
@@ -94,8 +90,7 @@ cron コマンドで明示的なパスと環境設定を使うべきなのはな
 
 Cron は単純な定期コマンドに適しています。systemd ホストでは、systemd タイマーにより依存関係との統合、停止中に逃した実行の補完、ランダムな遅延、ジャーナルへのログ記録を利用できます。複数のマシンにまたがってジョブを厳密に1回だけ実行する必要がある場合は、アプリケーションまたはクラスタ用スケジューラーの方が安全なことがあります。
 
-:::single-choice{#cron-cluster-exactly-once}
-ホストごとに動く通常の cron が、クラスタ全体で厳密に1回だけ実行するジョブに適さない場合があるのはなぜですか？
+:::single-choice{#cron-cluster-exactly-once} ホストごとに動く通常の cron が、クラスタ全体で厳密に1回だけ実行するジョブに適さない場合があるのはなぜですか？
 
 ::option[cron の各エントリーが1文字に制限されているから。]{#cron-one-character explanation="crontab のコマンドには通常のコマンドラインを記述できます。"}
 ::option[各ホストが独立して自分のコピーを起動できるから。]{#cron-each-host .correct explanation="ホスト全体で1回の実行を強制するには、分散協調の仕組みが必要です。"}

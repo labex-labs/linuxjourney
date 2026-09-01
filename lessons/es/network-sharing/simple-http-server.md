@@ -24,8 +24,7 @@ $ python3 -m http.server 8000 --directory /srv/temporary-share
 
 Cuando no hay un archivo de índice, el módulo normalmente genera un listado del directorio. Cualquier persona que pueda llegar al listener puede enumerar y descargar el contenido servido.
 
-:::single-choice{#http-server-directory-option}
-¿Por qué debes utilizar `--directory /srv/temporary-share`?
+:::single-choice{#http-server-directory-option} ¿Por qué debes utilizar `--directory /srv/temporary-share`?
 
 ::option[Cifra automáticamente todas las respuestas HTTP.]{#http-server-directory-tls explanation="La opción de directorio no añade TLS."}
 ::option[Crea una cuenta para cada persona que descarga.]{#http-server-directory-accounts explanation="El módulo básico no proporciona autenticación de usuarios."}
@@ -42,8 +41,7 @@ $ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
 
 Para compartir en una red de confianza, vincula deliberadamente a una dirección de interfaz apropiada y confirma la política del cortafuegos. Ejecutarlo sin una vinculación restrictiva suele escuchar en todas las interfaces disponibles, lo que puede exponer el directorio más allá de la red prevista.
 
-:::single-choice{#http-server-loopback-bind}
-¿Quién puede llegar normalmente a un servidor vinculado a `127.0.0.1`?
+:::single-choice{#http-server-loopback-bind} ¿Quién puede llegar normalmente a un servidor vinculado a `127.0.0.1`?
 
 ::option[Los clientes del mismo host.]{#http-server-local-clients .correct explanation="La vinculación a loopback es apropiada para pruebas locales o para utilizarse detrás de un túnel configurado deliberadamente."}
 ::option[Cualquier host de Internet público.]{#http-server-public explanation="Loopback es local al mismo espacio de nombres de red y no es una interfaz pública."}
@@ -60,8 +58,7 @@ $ curl -f http://127.0.0.1:8000/example.txt
 
 Para una prueba remota autorizada, utiliza la dirección de la interfaz seleccionada en lugar de loopback. Confirma tanto que el archivo previsto sea accesible como que uno situado fuera de la raíz de documentos no lo sea. Que el navegador funcione no demuestra por sí solo que la exposición o la confidencialidad sean apropiadas.
 
-:::single-choice{#http-server-default-port-command}
-¿Qué puerto se selecciona explícitamente en `python3 -m http.server 8000`?
+:::single-choice{#http-server-default-port-command} ¿Qué puerto se selecciona explícitamente en `python3 -m http.server 8000`?
 
 ::option[22]{#http-server-port-22 explanation="El puerto 22 suele asociarse con SSH y no se selecciona aquí."}
 ::option[8000]{#http-server-port-8000 .correct explanation="El operando posicional del puerto indica al módulo dónde escuchar."}
@@ -78,8 +75,7 @@ $ ss -ltn 'sport = :8000'
 
 Elimina las copias temporales según la política de tratamiento de datos y revierte cualquier regla temporal del cortafuegos. Para una distribución persistente, autenticada o expuesta a Internet, utiliza un servidor mantenido y configurado con control de acceso y TLS.
 
-:::single-choice{#http-server-completion-check}
-¿Qué debe ocurrir después de completar la transferencia temporal?
+:::single-choice{#http-server-completion-check} ¿Qué debe ocurrir después de completar la transferencia temporal?
 
 ::option[Detener el servidor y comprobar que el puerto ya no esté a la escucha.]{#http-server-stop-verify .correct explanation="La comprobación confirma que el servicio de red temporal terminó realmente."}
 ::option[Dejar el listener en ejecución por si alguien lo necesita más adelante.]{#http-server-leave-running explanation="La exposición innecesaria debe eliminarse cuando termina la finalidad autorizada."}

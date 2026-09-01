@@ -22,8 +22,7 @@ $ dmesg --human
 
 The buffer has finite capacity, so newer messages can overwrite older ones. Access may also be restricted to privileged users. `dmesg --follow` follows new kernel messages on implementations that support it; stop after a bounded reproduction.
 
-:::single-choice{#kernel-log-ring-buffer-limit}
-Why might an older kernel event be absent from current `dmesg` output?
+:::single-choice{#kernel-log-ring-buffer-limit} Why might an older kernel event be absent from current `dmesg` output?
 
 ::option[Kernel events can only contain one character.]{#kernel-log-one-character explanation="Kernel messages can contain normal diagnostic text and metadata."}
 ::option[`dmesg` permanently deletes every line after displaying it.]{#kernel-log-display-deletes explanation="A normal read does not consume all displayed kernel messages."}
@@ -34,8 +33,7 @@ Why might an older kernel event be absent from current `dmesg` output?
 
 Raw kernel timestamps are commonly relative to boot. `dmesg --ctime` or `--human` can render wall-clock times, but converted values depend on clock history and can be inaccurate if the clock changed after boot. Preserve boot-relative timing when precise sequencing matters.
 
-:::single-choice{#kernel-log-timestamp-caution}
-Why should converted `dmesg` wall-clock timestamps be treated carefully?
+:::single-choice{#kernel-log-timestamp-caution} Why should converted `dmesg` wall-clock timestamps be treated carefully?
 
 ::option[They always refer to a different machine.]{#kernel-log-other-machine explanation="They are derived locally, though clock changes can affect conversion."}
 ::option[They depend on mapping boot-relative time to a clock that may change.]{#kernel-log-clock-change .correct explanation="Time synchronization or manual clock changes can make the rendered wall time misleading."}
@@ -59,8 +57,7 @@ $ journalctl -k -b -1
 
 Traditional syslog routing may create `/var/log/kern.log` or another file, but this is configuration-dependent. A saved `/var/log/dmesg` file is also not universal and may represent only a boot-time snapshot.
 
-:::single-choice{#kernel-log-previous-boot}
-Which command requests kernel messages from the previous retained boot?
+:::single-choice{#kernel-log-previous-boot} Which command requests kernel messages from the previous retained boot?
 
 ::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="Kernel messages are selected with `-k`, and following does not choose the previous boot."}
 ::option[`dmesg --clear`]{#kernel-log-clear explanation="Clearing changes buffer state and does not retrieve an earlier boot."}
@@ -79,8 +76,7 @@ $ lsblk
 
 Use only tools relevant to the subsystem. Before reloading a driver, unbinding a device, or rebooting, assess storage, network, console, and service impact and preserve recovery access.
 
-:::single-choice{#kernel-log-warning-response}
-What is the best response to one kernel warning line?
+:::single-choice{#kernel-log-warning-response} What is the best response to one kernel warning line?
 
 ::option[Immediately unload every loaded driver.]{#kernel-log-unload-all explanation="This can disrupt critical devices and does not isolate the warning's cause."}
 ::option[Assume the entire machine must be replaced.]{#kernel-log-replace-machine explanation="A single record is insufficient evidence for that conclusion."}

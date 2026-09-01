@@ -20,8 +20,7 @@ Un système Linux se divise en trois grandes parties :
 - **Noyau Linux** — Cœur du système d'exploitation, il gère le matériel et facilite la communication entre logiciels et matériel.
 - **Espace utilisateur** — L'environnement dans lequel vous interagissez avec le système au moyen des applications et interfaces en ligne de commande.
 
-:::single-choice{#identify-hardware-manager}
-Quelle partie principale d'un système Linux gère le matériel ?
+:::single-choice{#identify-hardware-manager} Quelle partie principale d'un système Linux gère le matériel ?
 
 ::option[L'espace utilisateur]{#user-space explanation="Les applications et interfaces en ligne de commande s'exécutent dans l'espace utilisateur. Elles s'appuient sur le noyau pour accéder au matériel."}
 ::option[Le noyau Linux]{#linux-kernel .correct explanation="Le noyau Linux gère les ressources matérielles et la communication entre matériel et logiciels. Il est le cœur autour duquel une distribution est construite."}
@@ -34,8 +33,7 @@ Une distribution Linux réunit le noyau Linux, des utilitaires système, des bib
 
 Les distributions font des choix différents en matière de stabilité, fraîcheur des logiciels, expérience de bureau, gestion des paquets, assistance et philosophie du système. C'est pourquoi aucune distribution n'est la meilleure pour tout le monde.
 
-:::single-choice{#recognize-linux-distribution}
-Quelle description correspond le mieux à une distribution Linux ?
+:::single-choice{#recognize-linux-distribution} Quelle description correspond le mieux à une distribution Linux ?
 
 ::option[Un noyau distribué sans outils système, applications ni gestion des logiciels]{#kernel-only explanation="Le noyau seul n'est qu'une partie du système d'exploitation. Une distribution lui ajoute utilitaires, bibliothèques, applications et gestion des logiciels."}
 ::option[Un noyau accompagné d'outils système, d'applications et d'un système de gestion des logiciels]{#complete-distribution .correct explanation="Une distribution associe le noyau Linux aux logiciels de l'espace utilisateur nécessaires à un système exploitable. Elle comprend généralement aussi un gestionnaire de paquets."}
@@ -50,8 +48,7 @@ La meilleure distribution est généralement celle qui correspond à vos objecti
 
 Le modèle de publication décrit la manière dont une distribution fournit les mises à jour importantes. Les distributions stables ou à versions ponctuelles publient les changements en lots planifiés et privilégient la prévisibilité. Les distributions en publication continue livrent les nouveautés en permanence, ce qui signifie généralement des logiciels plus récents, mais aussi des changements plus fréquents.
 
-:::single-choice{#choose-release-style}
-Quel modèle convient le mieux à une personne qui privilégie les mises à jour planifiées et la prévisibilité ?
+:::single-choice{#choose-release-style} Quel modèle convient le mieux à une personne qui privilégie les mises à jour planifiées et la prévisibilité ?
 
 ::option[Une publication continue constamment mise à jour]{#rolling-release explanation="Une publication continue propose généralement des logiciels récents au moyen de mises à jour permanentes. Elle apporte davantage de changements que ne le demande l'objectif indiqué."}
 ::option[Un modèle stable ou à versions ponctuelles]{#stable-release .correct explanation="Ces modèles livrent les changements importants dans des versions planifiées, ce qui favorise un environnement prévisible."}
@@ -64,8 +61,7 @@ Si vous découvrez Linux, commencez par des distributions qui offrent une instal
 
 Adapté aux débutants ne signifie pas forcément simpliste. Cela veut généralement dire que la distribution propose des choix par défaut raisonnables, une grande communauté et peu de surprises au quotidien.
 
-:::single-choice{#prioritize-beginner-needs}
-Quelles qualités constituent le meilleur point de départ pour un nouvel utilisateur de Linux ?
+:::single-choice{#prioritize-beginner-needs} Quelles qualités constituent le meilleur point de départ pour un nouvel utilisateur de Linux ?
 
 ::option[Les paquets les plus récents, une configuration manuelle et peu de documentation]{#advanced-setup-qualities explanation="Les nouveautés et la configuration manuelle peuvent convenir à une personne expérimentée, mais le manque d'aide ajoute une difficulté évitable au débutant."}
 ::option[Une maîtrise maximale, une maintenance complexe et des surprises fréquentes]{#maximum-control-qualities explanation="Une maîtrise approfondie devient utile lorsque l'utilisateur connaît la méthode qu'il souhaite. Ce n'est pas le choix initial le plus favorable."}
@@ -122,8 +118,7 @@ Il est facile de passer trop de temps à chercher la meilleure distribution sans
 
 Une fois que vous maîtrisez une distribution Linux, passer à une autre devient beaucoup plus simple. L'étape importante consiste à commencer.
 
-:::single-choice{#take-practical-next-step}
-Après avoir déterminé vos objectifs, quelle est l'étape pratique suivante ?
+:::single-choice{#take-practical-next-step} Après avoir déterminé vos objectifs, quelle est l'étape pratique suivante ?
 
 ::option[Continuer à chercher jusqu'à ce qu'une distribution soit la meilleure pour tout le monde]{#search-universal-best explanation="La leçon établit que les besoins diffèrent selon les utilisateurs. Attendre un meilleur choix universel vous empêche d'acquérir une expérience utile."}
 ::option[Changer sans cesse avant d'apprendre les bases d'une distribution]{#switch-repeatedly explanation="Des changements fréquents compliquent l'acquisition des compétences fondamentales. Apprendre d'abord une distribution adaptée facilite les transitions ultérieures."}

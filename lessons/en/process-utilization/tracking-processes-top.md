@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 The first line contains the current time, uptime, logged-in user count, and 1-, 5-, and 15-minute load averages. The task line counts process states. Load average is not a direct CPU percentage; on Linux it reflects runnable tasks and tasks in uninterruptible sleep, so interpret it alongside CPU count, I/O activity, and latency.
 
-:::single-choice{#top-load-average-periods}
-What do the three load-average values in `top` represent?
+:::single-choice{#top-load-average-periods} What do the three load-average values in `top` represent?
 
 ::option[Average load over 1, 5, and 15 minutes.]{#top-one-five-fifteen .correct explanation="The values summarize progressively longer recent time windows."}
 ::option[CPU use by the three busiest processes.]{#top-three-processes explanation="Per-process CPU appears in the process table, not in these three summary values."}
@@ -48,8 +47,7 @@ Common CPU fields include:
 
 A high `wa` value can support an I/O-wait hypothesis, but it does not identify a device or prove that storage is the only bottleneck. Inspect device latency and application behavior before concluding.
 
-:::single-choice{#top-cpu-wa-meaning}
-What does the `wa` CPU field report?
+:::single-choice{#top-cpu-wa-meaning} What does the `wa` CPU field report?
 
 ::option[Time spent executing ordinary user code.]{#top-wa-user explanation="User-space execution is reported under `us`."}
 ::option[Memory pages written to swap since boot.]{#top-wa-swap explanation="Swap activity is not a CPU-time category."}
@@ -70,8 +68,7 @@ Important columns commonly include:
 
 `VIRT` is not the amount of physical RAM consumed. It can include mapped files, shared libraries, reserved address space, and swapped pages. Even `RES` should be interpreted carefully because shared pages complicate attribution.
 
-:::single-choice{#top-res-versus-virt}
-Which field is closer to a process's currently resident physical memory?
+:::single-choice{#top-res-versus-virt} Which field is closer to a process's currently resident physical memory?
 
 ::option[`TIME+`]{#top-time-field explanation="This field accumulates CPU time rather than memory."}
 ::option[`VIRT`]{#top-virt-field explanation="Virtual size includes address space that need not be resident in RAM."}
@@ -90,8 +87,7 @@ Inside `top`, press `P` to sort by CPU, `M` to sort by memory, `1` to toggle per
 
 Record the PID, command, timestamp, and several samples before taking action. A process briefly reaching the top can be normal, and terminating it can cause data loss or an outage.
 
-:::single-choice{#top-monitor-known-pid}
-Which invocation limits the display to PID 1234?
+:::single-choice{#top-monitor-known-pid} Which invocation limits the display to PID 1234?
 
 ::option[`top -u 1234`]{#top-user-filter explanation="The `-u` form filters by user rather than treating the value as a PID."}
 ::option[`top -d 1234`]{#top-delay-filter explanation="The `-d` option controls refresh delay on common implementations."}

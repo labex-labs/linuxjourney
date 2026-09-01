@@ -18,8 +18,7 @@ meta_keywords: "etc shadow, etc/shadow 文件在 linux, cat /etc/shadow, linux �
 
 确切的所有权和权限细节因系统而异，但访问通常仅限 root 和少数获准的系统组件。不要只为了检查账户状态就打印、复制、记录或分享 shadow 内容。
 
-:::single-choice{#shadow-restricted-reason}
-为什么本地 shadow 数据通常不允许一般读取访问？
+:::single-choice{#shadow-restricted-reason} 为什么本地 shadow 数据通常不允许一般读取访问？
 
 ::option[该文件包含每个用户未加密的当前密码。]{#shadow-plaintext-passwords explanation="正确的 shadow 条目存储单向密码哈希或特殊标记，而不是可取回的明文密码。"}
 ::option[密码哈希一旦泄露就可能遭到离线攻击。]{#shadow-offline-guessing .correct explanation="攻击者可以针对窃取的哈希测试密码猜测，而无需与登录服务交互。"}
@@ -48,8 +47,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 空字段和特殊数值都有既定含义，具体可能随字段和工具而异。请使用账户管理命令，不要凭目测编辑数值。
 
-:::single-choice{#shadow-account-expiration-field}
-哪个 shadow 字段把账户过期日期存储为自 1970-01-01 起的天数？
+:::single-choice{#shadow-account-expiration-field} 哪个 shadow 字段把账户过期日期存储为自 1970-01-01 起的天数？
 
 ::option[字段 3]{#shadow-field-three explanation="字段 3 记录上次更改密码的日期，而不是账户过期日期。"}
 ::option[字段 8]{#shadow-field-eight .correct explanation="第八个字段是账户过期日期的绝对天数。"}
@@ -62,8 +60,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 这些标记描述本地密码路径，而不是所有可能的认证方式。SSH 公钥、证书、令牌和应用特定凭据可能仍然可用，除非另行限制。字段 8 中的账户过期也不同于密码锁定。
 
-:::single-choice{#shadow-password-lock-scope}
-对于以 `!` 开头的 shadow 密码字段，可以安全得出什么结论？
+:::single-choice{#shadow-password-lock-scope} 对于以 `!` 开头的 shadow 密码字段，可以安全得出什么结论？
 
 ::option[存储的 Unix 密码哈希已无法用于普通密码验证。]{#shadow-password-locked .correct explanation="在哈希前加 `!` 会阻止它通过 shadow 密码路径与所提供密码匹配。"}
 ::option[该账户的每一种可能登录方式都已禁用。]{#shadow-all-login-disabled explanation="其他认证方式可能相互独立，因此仅凭密码标记不能证明账户被完全锁定。"}
@@ -76,8 +73,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 例如，最长密码期限为 90 天，并不等同于账户过期日期。前者相对于上次密码更改而移动，后者在管理员更改前是固定日期。
 
-:::single-choice{#shadow-max-age-versus-expire}
-shadow 字段 5 和字段 8 有什么区别？
+:::single-choice{#shadow-max-age-versus-expire} shadow 字段 5 和字段 8 有什么区别？
 
 ::option[字段 5 存储用户名，字段 8 存储登录 shell。]{#shadow-username-shell explanation="用户名是字段 1，登录 shell 记录在 `/etc/passwd` 中，而不是 shadow 记录中。"}
 ::option[字段 5 存储密码哈希，字段 8 存储其盐。]{#shadow-hash-salt explanation="密码哈希编码位于字段 2，期限字段不会另行存储其盐。"}
@@ -97,8 +93,7 @@ $ sudo chage -l alice
 
 使用 `passwd`、`chage`、`usermod` 和相关账户工具进行更改。如果无法避免手工修复本地 shadow 数据库，`vipw -s` 会提供锁定；请使用 `pwck` 验证账户数据库。远程更改认证前应保留恢复会话。
 
-:::single-choice{#shadow-list-aging-policy}
-哪个命令专门用于列出本地账户 `alice` 的可读密码期限信息？
+:::single-choice{#shadow-list-aging-policy} 哪个命令专门用于列出本地账户 `alice` 的可读密码期限信息？
 
 ::option[`cat /etc/shadow`]{#shadow-cat-entire-file explanation="这会暴露每一条本地 shadow 记录，披露的信息远超任务所需。"}
 ::option[`passwd -d alice`]{#shadow-passwd-delete explanation="`-d` 操作会删除密码哈希，是改变状态且安全敏感的操作，不是列表命令。"}

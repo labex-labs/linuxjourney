@@ -24,8 +24,7 @@ $ ps -ef | grep '[d]hclient'
 
 Verwende die auf dem Host vorhandenen Werkzeuge. Wenn ein Manager die Schnittstelle verwaltet, fordere DHCP über diesen Manager an, statt einen getrennten Client zu starten.
 
-:::single-choice{#dhclient-second-client-risk}
-Warum solltest du `dhclient` nicht auf einer bereits verwalteten Schnittstelle starten?
+:::single-choice{#dhclient-second-client-risk} Warum solltest du `dhclient` nicht auf einer bereits verwalteten Schnittstelle starten?
 
 ::option[DHCP kann nur Loopback-Adressen zuweisen.]{#dhclient-loopback-only explanation="DHCP weist gewöhnlich Netzwerkkonfiguration außerhalb von Loopback zu."}
 ::option[Zwei Clients können um Adressen, Routen, DNS und Leases konkurrieren.]{#dhclient-competing-state .correct explanation="Normalerweise sollte nur der ermittelte Konfigurationseigentümer die Schnittstelle abgleichen."}
@@ -42,8 +41,7 @@ $ sudo dhclient -v enp1s0
 
 Ein Lauf ohne Schnittstelle kann auf mehrere geeignete Schnittstellen wirken. Konfigurations- und Lease-Pfade unterscheiden sich je nach Paket und Aufruf; häufige Namen sind `dhclient.conf` und `dhclient.leases`, doch nimm keinen festen Speicherort an.
 
-:::single-choice{#dhclient-interface-operand}
-Warum solltest du bei einer manuellen Anfrage `enp1s0` angeben?
+:::single-choice{#dhclient-interface-operand} Warum solltest du bei einer manuellen Anfrage `enp1s0` angeben?
 
 ::option[Um nur auf die beabsichtigte Netzwerkschnittstelle zu zielen.]{#dhclient-scope-interface .correct explanation="Ein nicht eingeschränkter Clientaufruf kann mehr Schnittstellen als beabsichtigt berücksichtigen."}
 ::option[Um TCP-Port 1 für DHCP auszuwählen.]{#dhclient-tcp-port explanation="DHCP verwendet UDP, und der Schnittstellenname ist kein Port."}
@@ -54,8 +52,7 @@ Warum solltest du bei einer manuellen Anfrage `enp1s0` angeben?
 
 `dhclient -r INTERFACE` fordert die Freigabe an und kann verwendbare Konfiguration entfernen. Dies ist unterbrechend und garantiert nicht, dass der Server erreichbar ist und die Freigabe empfängt. Gib ein Lease nicht nur frei, um es zu untersuchen, insbesondere nicht auf einem Fernverwaltungspfad.
 
-:::single-choice{#dhclient-release-effect}
-Welches betriebliche Risiko birgt `dhclient -r enp1s0`?
+:::single-choice{#dhclient-release-effect} Welches betriebliche Risiko birgt `dhclient -r enp1s0`?
 
 ::option[Der Befehl gibt nur das aktuelle Lease aus, ohne Änderungen vorzunehmen.]{#dhclient-release-readonly explanation="Die Freigabe verändert den Zustand."}
 ::option[Er erneuert jedes Lease für einen unbegrenzten Zeitraum.]{#dhclient-release-renews explanation="Freigeben und Erneuern sind gegensätzliche Vorgänge."}
@@ -74,8 +71,7 @@ $ resolvectl status
 
 Untersuche die Protokolle des Managers oder Clients sowie die Lease-Laufzeit und teste anschließend die beabsichtigte Namensauflösung und Anwendung. Ein DHCPACK kann falsche Optionen enthalten, und die erfolgreiche Zuweisung einer Adresse beweist weder Gateway- noch DNS-Erreichbarkeit.
 
-:::single-choice{#dhclient-verify-state}
-Was sollte nach dem Bezug eines Leases überprüft werden?
+:::single-choice{#dhclient-verify-state} Was sollte nach dem Bezug eines Leases überprüft werden?
 
 ::option[Adresse, Routen, DNS, Lease und Anwendungsverhalten.]{#dhclient-complete-verify .correct explanation="Das Lease konfiguriert mehrere zusammengehörige Komponenten, die gemeinsam funktionieren müssen."}
 ::option[Nur, dass eine Adresszeichenfolge erscheint.]{#dhclient-address-only explanation="Routen, DNS, Laufzeit und Ende-zu-Ende-Funktion können weiterhin falsch sein."}

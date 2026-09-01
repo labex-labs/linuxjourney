@@ -23,8 +23,7 @@ $ uptime
 
 最后三个值分别是大约过去 1、5、15 分钟的平均负载。比较它们可以看出趋势：1 分钟值明显更大，可能表示负载正在上升；15 分钟值更大，则可能表示负载正在下降。
 
-:::single-choice{#cpu-uptime-windows}
-`uptime` 按什么顺序显示平均负载的时间窗口？
+:::single-choice{#cpu-uptime-windows} `uptime` 按什么顺序显示平均负载的时间窗口？
 
 ::option[15、5、1 秒。]{#cpu-windows-seconds explanation="这些值是分钟级平均值，而且不会按最长窗口优先显示。"}
 ::option[1、5、15 分钟。]{#cpu-windows-one-five-fifteen .correct explanation="最短的近期窗口最先显示，最长窗口最后显示。"}
@@ -43,8 +42,7 @@ $ nproc
 
 CPU 配额、亲和性、虚拟化和容器限制都可能减少特定工作负载实际可见的容量，所以主机 CPU 数量只能作为分析起点。
 
-:::single-choice{#cpu-load-not-percentage}
-为什么平均负载不是 CPU 利用率百分比？
+:::single-choice{#cpu-load-not-percentage} 为什么平均负载不是 CPU 利用率百分比？
 
 ::option[它只报告 CPU 时钟频率。]{#cpu-load-clock explanation="时钟速度是另一项硬件或频率调节指标。"}
 ::option[它只衡量可用物理内存。]{#cpu-load-memory explanation="内存可用量由其他指标报告。"}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 高负载同时伴随 CPU 繁忙，可能表明 CPU 需求较高。高负载若伴随大量阻塞任务、I/O 延迟或 I/O 等待现象，则指向其他受限资源。较低的平均利用率也可能掩盖单个 CPU 已饱和或短暂的延迟尖峰。
 
-:::single-choice{#cpu-high-load-next-step}
-观察到较高平均负载后，最佳的下一步是什么？
+:::single-choice{#cpu-high-load-next-step} 观察到较高平均负载后，最佳的下一步是什么？
 
 ::option[比较多次采集的 CPU、任务状态、I/O 和工作负载指标。]{#cpu-load-correlate .correct explanation="相互关联的样本可以区分造成负载的不同原因。"}
 ::option[不收集其他数据，立即重启。]{#cpu-load-reboot explanation="重启会消除证据并可能中断服务，却无法确定原因。"}
@@ -77,8 +74,7 @@ $ mpstat -P ALL 1
 
 没有通用规则要求负载始终低于 CPU 数量。批处理系统或许可以接受任务排队，而交互式服务可能在达到这一点之前就已经违反延迟目标。应为相同主机和工作负载建立基线，再比较响应时间、吞吐量、错误率、饱和度和资源使用情况。
 
-:::single-choice{#cpu-capacity-threshold}
-应该依据什么判断观察到的负载是否可以接受？
+:::single-choice{#cpu-capacity-threshold} 应该依据什么判断观察到的负载是否可以接受？
 
 ::option[负载值必须始终低于一。]{#cpu-below-one explanation="多核容量和工作负载目标使这个固定阈值并不可靠。"}
 ::option[仅依据 `uptime` 列出的用户数量。]{#cpu-user-count explanation="已登录的 shell 用户并不能代表全部工作负载需求。"}

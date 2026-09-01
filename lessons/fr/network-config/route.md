@@ -23,8 +23,7 @@ $ ip route get 192.168.2.25
 
 Examinez également les règles de routage par politiques et les tables secondaires lorsqu’elles existent. La recherche de route constitue une preuve locale ; elle n’envoie aucun trafic.
 
-:::single-choice{#route-get-before-change}
-Pourquoi exécuter `ip route get DESTINATION` avant de modifier une route ?
+:::single-choice{#route-get-before-change} Pourquoi exécuter `ip route get DESTINATION` avant de modifier une route ?
 
 ::option[Cette commande relève la décision locale actuelle afin de permettre une comparaison et un retour en arrière.]{#route-get-baseline .correct explanation="L’interface, le prochain saut et la source sélectionnés contribuent à définir la modification voulue."}
 ::option[Elle réserve définitivement la destination sur chaque routeur.]{#route-get-reserves explanation="La commande effectue une recherche locale et ne modifie aucun état distant."}
@@ -41,8 +40,7 @@ $ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 La passerelle doit être accessible par la liaison concernée ou conformément à une conception explicite et valide qui la considère comme directement connectée. `add` échoue lorsqu’une route équivalente existe déjà. `replace` crée ou modifie une route, ce qui convient aux configurations idempotentes, mais peut écraser un état fonctionnel ; examinez d’abord précisément la cible.
 
-:::single-choice{#route-add-existing}
-Que se passe-t-il généralement si `ip route add` vise une route qui existe déjà ?
+:::single-choice{#route-add-existing} Que se passe-t-il généralement si `ip route add` vise une route qui existe déjà ?
 
 ::option[La commande supprime silencieusement l’ancien préfixe de destination.]{#route-add-deletes explanation="Add signale normalement que l’objet existe au lieu de le remplacer."}
 ::option[Elle échoue au lieu de remplacer la route existante.]{#route-add-fails .correct explanation="N’utilisez délibérément `replace` qu’après avoir examiné l’entrée qui sera modifiée."}
@@ -59,8 +57,7 @@ $ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 Une suppression indiquant uniquement la destination peut avoir une portée plus large que prévu ou être ambiguë. Avant de retirer la route, relevez la commande d’origine qui permettra de la restaurer.
 
-:::single-choice{#route-delete-precision}
-Pourquoi inclure le prochain saut et le périphérique lors de la suppression d’une route ?
+:::single-choice{#route-delete-precision} Pourquoi inclure le prochain saut et le périphérique lors de la suppression d’une route ?
 
 ::option[Pour identifier plus précisément l’entrée visée.]{#route-delete-exact .correct explanation="Des attributs explicites réduisent le risque de supprimer une autre route possédant le même préfixe."}
 ::option[Pour supprimer également l’adaptateur réseau physique.]{#route-delete-adapter explanation="La suppression d’une route ne retire pas l’objet de liaison du noyau."}
@@ -73,8 +70,7 @@ Une commande `ip route` ne modifie que l’état actuel du noyau. NetworkManager
 
 Sur un hôte distant, conservez une console indépendante et utilisez un mécanisme de retour en arrière qui ne dépend pas de la route modifiée. Vérifiez ensuite la recherche de route, l’état des voisins, le trafic dans les deux sens et le service réel.
 
-:::single-choice{#route-runtime-persistence}
-Que peut-il arriver à une route ajoutée manuellement après le rechargement du gestionnaire de réseau ?
+:::single-choice{#route-runtime-persistence} Que peut-il arriver à une route ajoutée manuellement après le rechargement du gestionnaire de réseau ?
 
 ::option[Elle devient pour toujours une fonction immuable du noyau.]{#route-manual-immutable explanation="Les routes d’exécution peuvent être supprimées ou remplacées."}
 ::option[Elle apparaît automatiquement sur chaque hôte du sous-réseau.]{#route-manual-all-hosts explanation="La commande ne modifie que l’espace de noms réseau actuel."}

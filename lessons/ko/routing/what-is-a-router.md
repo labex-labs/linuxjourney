@@ -18,8 +18,7 @@ meta_keywords: "라우터, 네트워킹, 라우팅, 홉, 패킷 교환, 리눅�
 
 이 둘은 각각 제어 평면과 데이터 평면의 관심사입니다. 경로가 있어도 방화벽 정책이 전달을 막을 수 있고, 전달 인터페이스가 활성 상태여도 유효한 경로가 없을 수 있습니다.
 
-:::single-choice{#router-forwarding-role}
-패킷 전달은 무엇을 합니까?
+:::single-choice{#router-forwarding-role} 패킷 전달은 무엇을 합니까?
 
 ::option[라우팅 정보를 적용해 패킷을 다음 홉 방향으로 보냅니다.]{#router-apply-route .correct explanation="전달은 선택된 경로와 정책을 바탕으로 패킷마다 수행하는 동작입니다."}
 ::option[모든 목적지에 영구적인 애플리케이션 로그인을 만듭니다.]{#router-create-login explanation="라우팅은 원격 애플리케이션 계정을 관리하지 않습니다."}
@@ -32,8 +31,7 @@ meta_keywords: "라우터, 네트워킹, 라우팅, 홉, 패킷 교환, 리눅�
 
 적격 경로가 없으면 라우터는 패킷을 버리고 ICMP 도달 불가 메시지를 생성할 수 있습니다. 기본 경로는 선택 사항이며 공용 인터넷을 직접 가리킬 필요도 없습니다.
 
-:::single-choice{#router-default-route}
-기본 경로는 언제 선택됩니까?
+:::single-choice{#router-default-route} 기본 경로는 언제 선택됩니까?
 
 ::option[목적지별 접두사를 확인하기 전에 선택됩니다.]{#router-default-first explanation="더 구체적인 적격 접두사가 우선합니다."}
 ::option[패킷이 Ethernet 브로드캐스트일 때만 선택됩니다.]{#router-default-broadcast explanation="IP 경로 선택은 네트워크 계층 목적지를 기반으로 합니다."}
@@ -46,8 +44,7 @@ meta_keywords: "라우터, 네트워킹, 라우팅, 홉, 패킷 교환, 리눅�
 
 가정용 “라우터”는 흔히 IP 라우터, Ethernet 스위치, Wi-Fi 접근 지점, DHCP 서비스, NAT 및 방화벽을 결합합니다. 각 기능을 별도로 진단해야 합니다.
 
-:::single-choice{#router-same-subnet-path}
-링크상에 있는 두 호스트 사이의 트래픽은 반드시 기본 라우터를 통과해야 합니까?
+:::single-choice{#router-same-subnet-path} 링크상에 있는 두 호스트 사이의 트래픽은 반드시 기본 라우터를 통과해야 합니까?
 
 ::option[예. 모든 패킷이 WAN 포트에 도달해야 하기 때문입니다.]{#router-always-wan explanation="로컬 링크상 전송은 링크를 통해 직접 이뤄질 수 있습니다."}
 ::option[예. 두 호스트에 공인 주소가 있지 않은 한 그렇습니다.]{#router-public-required explanation="공인 또는 사설 범위는 기본 링크상 전달 여부를 결정하지 않습니다."}
@@ -58,8 +55,7 @@ meta_keywords: "라우터, 네트워킹, 라우팅, 홉, 패킷 교환, 리눅�
 
 라우팅 홉은 네트워크 계층 전달 단계입니다. IPv4 TTL과 IPv6 Hop Limit은 라우터마다 줄어들어 루프를 제한합니다. 홉 수는 완전한 거리나 품질 지표가 아닙니다. 링크마다 대역폭, 지연 시간, 손실, 정책 및 혼잡이 다릅니다.
 
-:::single-choice{#router-hop-count-limit}
-더 적은 홉 수가 보장하지 못하는 것은 무엇입니까?
+:::single-choice{#router-hop-count-limit} 더 적은 홉 수가 보장하지 못하는 것은 무엇입니까?
 
 ::option[라우팅 단계가 하나 이상 존재한다는 사실입니다.]{#router-hop-exists explanation="양의 홉 수는 라우팅 경유를 직접 나타냅니다."}
 ::option[더 빠르거나 더 나은 애플리케이션 경로입니다.]{#router-hop-not-quality .correct explanation="라우터가 적어도 더 느리거나 혼잡하거나 정책으로 제한된 링크를 통과할 수 있습니다."}

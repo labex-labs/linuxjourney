@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 파이프 연산자 `|`는 왼쪽 명령어의 stdout을 오른쪽 명령어의 stdin에 연결합니다. 쉘은 파이프라인 명령어들을 시작하고 스트림 연결을 구성합니다. 명령어는 동시에 작동할 수 있어 `ls`가 전체 목록을 만들기 전에 `less`가 읽기 시작할 수 있습니다.
 
-:::single-choice{#pipe-stream-connection}
-`ls -la /etc | less`에서 `|`는 기본적으로 어떤 스트림을 연결하나요?
+:::single-choice{#pipe-stream-connection} `ls -la /etc | less`에서 `|`는 기본적으로 어떤 스트림을 연결하나요?
 
 ::option[`ls`의 stdin을 `less`의 stdout에 연결합니다.]{#pipe-reversed-streams explanation="생산자와 소비자를 모두 반대로 설명했습니다. 데이터는 왼쪽 명령어의 출력에서 오른쪽 명령어의 입력으로 흐릅니다."}
 ::option[`ls`의 stderr를 `less`의 두 스트림에 연결합니다.]{#pipe-stderr-both explanation="일반 파이프는 왼쪽 명령어의 stderr를 연결하지 않고 오른쪽 명령어의 두 스트림을 대상으로 하지도 않습니다."}
@@ -50,8 +49,7 @@ $ find /etc -name "*.conf" | less
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-`find /etc -name "*.conf" | less`에서 별도 리디렉션이 없을 때 `find`의 stderr는 보통 어디로 가나요?
+:::single-choice{#pipe-left-stderr} `find /etc -name "*.conf" | less`에서 별도 리디렉션이 없을 때 `find`의 stderr는 보통 어디로 가나요?
 
 ::option[stdout과 같은 파이프를 통해 `less`로 갑니다.]{#pipe-errors-to-less explanation="일반 파이프는 stdout만 연결하고 stderr를 자동으로 결합하지 않습니다."}
 ::option[현재 디렉터리의 `stderr`라는 파일로 갑니다.]{#pipe-errors-to-file explanation="오류 파일 리디렉션이 없으므로 쉘은 그런 파일을 만들지 않습니다."}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 `listing.txt`가 목록을 받고 `tee`의 stdout은 터미널에 연결된 채로 남습니다. 기본적으로 `tee`는 `>`처럼 지정한 파일을 만들거나 잘라냅니다.
 
-:::single-choice{#tee-display-and-save}
-`generate-report` 출력을 표시하면서 같은 출력으로 `report.txt`를 교체하는 명령어는 무엇인가요?
+:::single-choice{#tee-display-and-save} `generate-report` 출력을 표시하면서 같은 출력으로 `report.txt`를 교체하는 명령어는 무엇인가요?
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="일반 출력 리디렉션은 파일에 쓰지만 터미널로 계속 흐르는 복사본을 남기지 않습니다."}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee`는 stdin을 `report.txt`와 stdout에 복사하며 이 파이프라인에서 stdout은 터미널입니다."}
@@ -82,8 +79,7 @@ $ ls | tee listing.txt
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-현재 날짜를 표시하면서 `activity.log`에 추가하는 명령어는 무엇인가요?
+:::single-choice{#tee-append-log} 현재 날짜를 표시하면서 `activity.log`에 추가하는 명령어는 무엇인가요?
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="`-a`는 `tee`가 파일에 추가하면서 입력을 stdout으로도 계속 복사하게 합니다."}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="`-a`가 없으면 기존 내용을 보존하지 않고 파일을 교체합니다."}
@@ -106,8 +102,7 @@ $ ls -la /etc | tee etc-listing.txt | grep "conf"
 
 파일에는 `grep`이 필터링하기 전 데이터가 들어갑니다. 일치하는 줄만 저장하려면 `tee`를 `grep` 뒤에 둡니다.
 
-:::single-choice{#tee-before-filter-result}
-`produce | tee all.txt | grep error`가 성공적으로 끝나면 `all.txt`에는 무엇이 들어 있나요?
+:::single-choice{#tee-before-filter-result} `produce | tee all.txt | grep error`가 성공적으로 끝나면 `all.txt`에는 무엇이 들어 있나요?
 
 ::option[`grep`과 일치한 줄만 들어 있습니다.]{#tee-filtered-only explanation="`tee`가 `grep` 앞에서 실행되므로 아래 단계의 일치 집합이 아니라 필터링 전 입력을 씁니다."}
 ::option[`produce`의 stderr만 들어 있습니다.]{#tee-producer-stderr explanation="일반 파이프는 `produce`의 stdout을 전달하며 stderr는 `tee` 입력이 아닙니다."}

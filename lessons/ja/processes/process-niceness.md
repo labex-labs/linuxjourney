@@ -22,8 +22,7 @@ Linux は異なる CPU コアで複数スレッドを同時実行し、1つの�
 
 CPU の割合を予約したり、即時実行を保証したりはしません。効果は比較可能な実行可能タスクが CPU 時間を競うときに最も見えます。リアルタイム方針、cgroup、CPU affinity、I/O 待ちなどが観測結果を左右する場合があります。
 
-:::single-choice{#process-niceness-lower-value}
-同じ通常スケジューリング方針で、相対的な CPU 重みが最も大きい nice 値はどれですか？
+:::single-choice{#process-niceness-lower-value} 同じ通常スケジューリング方針で、相対的な CPU 重みが最も大きい nice 値はどれですか？
 
 ::option[`10`]{#process-niceness-value-ten explanation="正の値はより nice で、通常0や負の値より重みが小さくなります。"}
 ::option[`19`]{#process-niceness-value-nineteen explanation="一般的な範囲で最も nice な端にあり、相対的な重みが小さい値です。"}
@@ -40,8 +39,7 @@ $ ps -o pid,ni,pri,stat,cmd -p 3245
 
 `NI` はユーザーから見える nice 値です。`PRI` などは導出されたスケジューラー優先度の場合があり、尺度はツールやクラスで異なるため、交換可能だと思わないでください。
 
-:::single-choice{#process-niceness-top-column}
-`top` で nice 値を通常表示する列はどれですか？
+:::single-choice{#process-niceness-top-column} `top` で nice 値を通常表示する列はどれですか？
 
 ::option[`PID`]{#process-niceness-column-pid explanation="プロセスを識別し、スケジューリング調整は示しません。"}
 ::option[`TTY`]{#process-niceness-column-tty explanation="制御端末の関連付けを識別します。"}
@@ -56,8 +54,7 @@ $ nice -n 5 long-computation
 
 要求する調整と対応構文はローカルのマニュアルで確認できます。非特権ユーザーは通常、値を増やしてコマンドをより nice にできます。値を下げ、有利な重みを与えるには適切な権限またはリソース制限設定が必要です。
 
-:::single-choice{#process-niceness-nice-command}
-`nice -n 5 long-computation` は何をしますか？
+:::single-choice{#process-niceness-nice-command} `nice -n 5 long-computation` は何をしますか？
 
 ::option[許可されれば nice 値5でコマンドを開始する。]{#process-niceness-start-five .correct explanation="nice は要求したスケジューリング調整を使って新しいコマンドを起動します。"}
 ::option[PID 5 を最小の nice 値へ変更する。]{#process-niceness-pid-five explanation="-n の後は対象 PID ではなく nice 値です。"}
@@ -72,8 +69,7 @@ $ renice -n 10 -p 3245
 
 PID `3245` へ nice 値 `10` を要求します。PID は再利用されるため対象を先に確認し、結果も検証します。権限は所有者、特権、リソース制限、システム方針次第です。自分のプロセスの値を増やすことは通常可能ですが、特権なしでは元へ戻せない場合があります。
 
-:::single-choice{#process-niceness-renice-purpose}
-既存プロセスの nice 値を変更するツールはどれですか？
+:::single-choice{#process-niceness-renice-purpose} 既存プロセスの nice 値を変更するツールはどれですか？
 
 ::option[`nice`]{#process-niceness-tool-nice explanation="主に調整値を付けて新しいコマンドを開始します。"}
 ::option[`kill`]{#process-niceness-tool-kill explanation="シグナルを送り、通常の niceness 編集ツールではありません。"}

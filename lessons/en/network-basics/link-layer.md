@@ -16,8 +16,7 @@ The link layer carries network-layer packets across one local medium or virtual 
 
 An Ethernet frame contains destination and source MAC addresses, an EtherType or length field, payload, and a frame check sequence trailer. Physical transmission also uses a preamble and start delimiter. The frame check sequence detects corruption on the link; it does not repair a damaged frame or protect it cryptographically.
 
-:::single-choice{#link-layer-fcs-purpose}
-What is the Ethernet frame check sequence used for?
+:::single-choice{#link-layer-fcs-purpose} What is the Ethernet frame check sequence used for?
 
 ::option[Detecting frame corruption on the link.]{#link-layer-detect-corruption .correct explanation="A receiver can discard a frame that fails the integrity check."}
 ::option[Encrypting the payload for all routed hops.]{#link-layer-fcs-encryption explanation="FCS is an error-detection code, not encryption or authentication."}
@@ -28,8 +27,7 @@ What is the Ethernet frame check sequence used for?
 
 An Ethernet switch learns which source MAC addresses appear on its ports and forwards known unicast frames toward the learned destination port. Broadcast and some unknown-destination traffic is flooded within the broadcast domain. VLANs can divide one switching system into separate logical link domains.
 
-:::single-choice{#link-layer-switch-learning}
-What information does an Ethernet switch normally learn from frames?
+:::single-choice{#link-layer-switch-learning} What information does an Ethernet switch normally learn from frames?
 
 ::option[Application passwords and HTTP cookies.]{#link-layer-switch-passwords explanation="A basic forwarding table uses link addresses, not application credentials."}
 ::option[Every router's complete Internet routing table.]{#link-layer-switch-routing-table explanation="Layer-2 switching and global route exchange are different functions."}
@@ -42,8 +40,7 @@ For IPv4 on Ethernet, Address Resolution Protocol maps an on-link IPv4 next-hop 
 
 For an off-link IP destination, the host resolves the default or selected gateway's MAC address—not the remote destination's MAC. IPv6 uses Neighbor Discovery over ICMPv6 rather than ARP.
 
-:::single-choice{#link-layer-remote-destination-mac}
-Which MAC address does a host use for an off-link IPv4 destination?
+:::single-choice{#link-layer-remote-destination-mac} Which MAC address does a host use for an off-link IPv4 destination?
 
 ::option[The selected next-hop router's MAC address.]{#link-layer-gateway-mac .correct explanation="The IP packet remains addressed to the remote host while the local frame goes to the router."}
 ::option[The remote server's MAC address across every router.]{#link-layer-remote-mac explanation="MAC addresses are local-link identifiers and are not carried end to end."}
@@ -60,8 +57,7 @@ $ ip neighbor show
 
 States such as `REACHABLE`, `STALE`, `DELAY`, `PROBE`, and `FAILED` describe the neighbor-unreachability process. `STALE` does not mean broken; it means the cached reachability confirmation is no longer recent and can be tested on use.
 
-:::single-choice{#link-layer-stale-neighbor}
-What does a `STALE` neighbor entry indicate?
+:::single-choice{#link-layer-stale-neighbor} What does a `STALE` neighbor entry indicate?
 
 ::option[The neighbor is permanently blocked by the firewall.]{#link-layer-stale-blocked explanation="The state does not describe firewall policy."}
 ::option[The MAC address has been written to disk as a backup.]{#link-layer-stale-backup explanation="Neighbor state is operational cache information."}
@@ -72,8 +68,7 @@ What does a `STALE` neighbor entry indicate?
 
 The sender places an IP packet inside a frame addressed to its next hop. The router validates and removes the incoming frame, processes the IP header, selects an outgoing route, and builds a new frame for that link. The receiver reverses encapsulation and delivers the transport payload to the appropriate socket.
 
-:::single-choice{#link-layer-router-reframing}
-What remains the same in ordinary forwarding while Ethernet framing changes at a router?
+:::single-choice{#link-layer-router-reframing} What remains the same in ordinary forwarding while Ethernet framing changes at a router?
 
 ::option[The IP destination, unless a middlebox such as NAT changes it.]{#link-layer-ip-destination .correct explanation="Ordinary routers forward toward the end IP destination while replacing hop-local frames."}
 ::option[The incoming frame check sequence.]{#link-layer-same-fcs explanation="A new outgoing frame receives its own link integrity value."}

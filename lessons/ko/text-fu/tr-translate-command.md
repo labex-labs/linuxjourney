@@ -45,8 +45,7 @@ ABC123
 
 `SET1`에 없는 문자는 변경되지 않은 채 통과합니다.
 
-:::single-choice{#tr-map-characters}
-`printf '%s\n' 'abc123' | tr 'abc' 'ABC'`는 무엇을 출력하나요?
+:::single-choice{#tr-map-characters} `printf '%s\n' 'abc123' | tr 'abc' 'ABC'`는 무엇을 출력하나요?
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="숫자는 원본 집합의 구성원이 아니므로 `tr`은 숫자를 문자로 바꾸지 않습니다."}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="`a`, `b`, `c`는 각각 `ABC`의 같은 위치 문자에 매핑되고 숫자는 바뀌지 않습니다."}
@@ -78,8 +77,7 @@ $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-:::single-choice{#tr-delete-digits}
-다른 문자는 그대로 두고 표준 입력에서 모든 숫자를 제거하는 명령어는 무엇인가요?
+:::single-choice{#tr-delete-digits} 다른 문자는 그대로 두고 표준 입력에서 모든 숫자를 제거하는 명령어는 무엇인가요?
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` 옵션은 입력 스트림에서 숫자 클래스에 속하는 모든 문자를 삭제합니다."}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` 옵션은 반복되는 숫자를 압축하지만 각 연속 구간에서 문자 하나는 남깁니다."}
@@ -105,8 +103,7 @@ one
 Two
 ```
 
-:::single-choice{#tr-squeeze-spaces}
-표준 입력에서 일반 공백의 모든 연속 구간을 공백 하나로 줄이는 명령어는 무엇인가요?
+:::single-choice{#tr-squeeze-spaces} 표준 입력에서 일반 공백의 모든 연속 구간을 공백 하나로 줄이는 명령어는 무엇인가요?
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="`-s` 옵션은 제공한 집합에 속하는 반복 문자를 압축하며 이 집합에는 일반 공백 하나가 있습니다."}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="`-d` 옵션은 연속 구간마다 하나를 남기지 않고 모든 일반 공백을 제거합니다."}
@@ -141,8 +138,7 @@ userexamplecom
 
 줄 바꿈도 영숫자가 아니므로 함께 제거됩니다. 레코드 경계가 중요하면 구분 기호를 의도적으로 추가하거나 보존하세요.
 
-:::single-choice{#tr-keep-alphanumeric}
-`tr -cd '[:alnum:]'`는 표준 입력에 무엇을 하나요?
+:::single-choice{#tr-keep-alphanumeric} `tr -cd '[:alnum:]'`는 표준 입력에 무엇을 하나요?
 
 ::option[영숫자를 삭제하고 나머지를 모두 유지합니다.]{#tr-delete-alnum explanation="여집합은 `-d`가 대상으로 삼는 문자를 바꾸므로 영숫자 집합 자체는 유지됩니다."}
 ::option[영숫자가 아닌 모든 문자를 삭제합니다.]{#tr-delete-nonalnum .correct explanation="`-c`가 영숫자 집합의 여집합을 만들고 `-d`가 그 결과인 비영숫자 집합을 삭제합니다."}
@@ -174,8 +170,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 결과를 저장하려면 표준 출력을 다른 파일로 리디렉션하세요. 입력 경로로 다시 리디렉션하면 쉘이 `tr`이 읽기 전에 파일을 비우므로 그렇게 하지 마세요.
 
-:::single-choice{#tr-read-file-input}
-`tr`이 `names.txt`를 표준 입력으로 읽고 소문자를 대문자로 변환하게 하는 명령어는 무엇인가요?
+:::single-choice{#tr-read-file-input} `tr`이 `names.txt`를 표준 입력으로 읽고 소문자를 대문자로 변환하게 하는 명령어는 무엇인가요?
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr`은 이런 방식으로 일반 입력 파일 이름을 받지 않으며 추가 피연산자로 인해 구문이 잘못됩니다."}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="파일은 올바르게 읽지만 소문자를 변환하지 않고 삭제합니다."}

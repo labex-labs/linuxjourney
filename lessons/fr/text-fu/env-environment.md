@@ -30,8 +30,7 @@ Variables courantes :
 
 Les valeurs dépendent du processus courant. Une variable absente devient une chaîne vide, sauf mode shell plus strict.
 
-:::single-choice{#env-print-home-value}
-Quelle commande Bash affiche `HOME` tout en préservant sa valeur comme un seul argument ?
+:::single-choice{#env-print-home-value} Quelle commande Bash affiche `HOME` tout en préservant sa valeur comme un seul argument ?
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="Les apostrophes empêchent le développement et affichent littéralement `$HOME`."}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash développe `$HOME` entre guillemets et `printf` reçoit toute la valeur comme un argument."}
@@ -54,8 +53,7 @@ USER=pete
 
 L'environnement peut contenir identifiants, jetons ou chemins internes. Relisez et masquez sa sortie avant de la publier.
 
-:::single-choice{#env-list-exported-values}
-Quelle commande affiche l'environnement visible par un nouveau processus ?
+:::single-choice{#env-list-exported-values} Quelle commande affiche l'environnement visible par un nouveau processus ?
 
 ::option[`env`]{#env-print-all .correct explanation="Sans commande ni affectation, `env` affiche les noms et valeurs reçus."}
 ::option[`alias`]{#env-alias-list explanation="`alias` liste l'état interne des alias du shell."}
@@ -78,8 +76,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 Ne remplacez pas accidentellement tout `PATH` et n'ajoutez pas de répertoire non fiable accessible en écriture.
 
-:::single-choice{#env-prepend-path-directory}
-Quelle commande ajoute `/opt/coolapp/bin` avant le `PATH` existant pour Bash et ses futurs enfants ?
+:::single-choice{#env-prepend-path-directory} Quelle commande ajoute `/opt/coolapp/bin` avant le `PATH` existant pour Bash et ses futurs enfants ?
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="Cette forme supprime tous les répertoires existants."}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="Elle place le nouveau répertoire en tête, conserve l'ancienne valeur et exporte le résultat."}
@@ -103,8 +100,7 @@ test
 
 Les futures commandes héritent de `TEST=test`, mais un enfant ne peut pas modifier ainsi l'environnement de son parent. L'affectation dure jusqu'à `unset` ou la fin du shell et n'est pas globale au système.
 
-:::single-choice{#env-export-inheritance}
-Quel est l'effet principal de `export TEST=test` dans Bash ?
+:::single-choice{#env-export-inheritance} Quel est l'effet principal de `export TEST=test` dans Bash ?
 
 ::option[Écrire `TEST` dans la configuration de tous les utilisateurs.]{#env-system-wide explanation="L'affectation ne concerne que le shell courant et ses enfants."}
 ::option[Marquer `TEST=test` pour l'héritage par les futurs enfants.]{#env-child-inheritance .correct explanation="`export` ajoute la variable à l'environnement transmis aux commandes lancées."}
@@ -127,8 +123,7 @@ $ env LANG=C sort names.txt
 
 La valeur de `LANG` dans le shell courant ne change pas durablement. `env -i COMMAND` démarre avec un environnement initialement vide ; beaucoup de programmes dépendent toutefois de variables, utilisez-le avec discernement.
 
-:::single-choice{#env-one-command-value}
-Quelle commande exécute `sort names.txt` avec `LANG=C` sans modifier durablement le shell courant ?
+:::single-choice{#env-one-command-value} Quelle commande exécute `sort names.txt` avec `LANG=C` sans modifier durablement le shell courant ?
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` ajoute la valeur à l'environnement de la commande, tandis que le parent conserve la sienne."}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="Cette forme laisse `LANG` modifiée dans le shell après `sort`."}

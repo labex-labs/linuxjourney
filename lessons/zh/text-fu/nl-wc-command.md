@@ -30,8 +30,7 @@ $ wc colors.txt
 
 如果最后一行文本没有结尾换行符，`wc -l` 不会把它计入，因为该选项统计的是换行符，而不是视觉上看到的行。
 
-:::single-choice{#wc-default-columns}
-`wc file.txt` 的默认输出中，前三个数字分别表示什么？
+:::single-choice{#wc-default-columns} `wc file.txt` 的默认输出中，前三个数字分别表示什么？
 
 ::option[依次为行数、单词数和字节数。]{#wc-lines-words-bytes .correct explanation="默认的 `wc` 输出会在文件名前依次报告换行符数、单词数和字节数。"}
 ::option[依次为字节数、单词数和行数。]{#wc-bytes-words-lines explanation="这些是同样的度量，但顺序错误；行数排在第一列。"}
@@ -61,16 +60,14 @@ $ printf 'one two\n' | wc -w
 2
 ```
 
-:::single-choice{#wc-word-count-only}
-哪个命令只报告 `essay.txt` 的单词数？
+:::single-choice{#wc-word-count-only} 哪个命令只报告 `essay.txt` 的单词数？
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="`-l` 报告换行符数，而不是单词数。"}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="`-w` 选项选择单词计数这一度量。"}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="`-c` 报告字节数，而不是由空白分隔的单词数。"}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-哪个选项会让 `wc` 根据当前 locale 统计字符而不是字节？
+:::single-choice{#wc-characters-not-bytes} 哪个选项会让 `wc` 根据当前 locale 统计字符而不是字节？
 
 ::option[`-m`]{#wc-character-option .correct explanation="`-m` 报告字符数；对于多字节文本，它可能与字节数不同。"}
 ::option[`-c`]{#wc-byte-option explanation="`-c` 报告字节数。在 UTF-8 等编码中，一个字符可能占用多个字节。"}
@@ -100,8 +97,7 @@ $ nl notes.txt
 
 `nl` 会写出带编号的结果；它不会修改 `notes.txt`。
 
-:::single-choice{#nl-default-blank-lines}
-默认情况下，`nl notes.txt` 如何处理正文中的空行？
+:::single-choice{#nl-default-blank-lines} 默认情况下，`nl notes.txt` 如何处理正文中的空行？
 
 ::option[从输出中完全省略每个空行。]{#nl-omit-blank explanation="空行会保留在输出中，但默认不分配编号。"}
 ::option[保留空行，但不为其编号。]{#nl-preserve-unnumbered .correct explanation="默认正文样式为非空行编号，并让空行不带编号地通过。"}
@@ -121,8 +117,7 @@ $ nl -ba notes.txt
 
 其他选项可以控制格式。例如，`-w 3` 设置编号字段宽度，`-s ': '` 更改编号后的分隔符。
 
-:::single-choice{#nl-number-all-lines}
-哪个命令会为 `notes.txt` 中的每一正文行编号，包括空行？
+:::single-choice{#nl-number-all-lines} 哪个命令会为 `notes.txt` 中的每一正文行编号，包括空行？
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="这会更改编号字段宽度，但仍保留默认的非空行编号规则。"}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="`-b` 选择正文样式，样式 `a` 会为所有正文行编号。"}

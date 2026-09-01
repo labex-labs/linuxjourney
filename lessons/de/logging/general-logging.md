@@ -23,8 +23,7 @@ $ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
 
 Anwendungsprotokolle können in eigenen Unterverzeichnissen oder einem externen Dienst liegen. Datensätze zu Authentifizierung, Audit, Paketen, Datenbanken und Webservern können absichtlich vom allgemeinen Strom getrennt sein.
 
-:::single-choice{#general-logs-universal-file}
-Warum solltest du nicht annehmen, dass `/var/log/messages` auf jedem Linux-Host vorhanden ist?
+:::single-choice{#general-logs-universal-file} Warum solltest du nicht annehmen, dass `/var/log/messages` auf jedem Linux-Host vorhanden ist?
 
 ::option[Allgemeine Protokollziele hängen von lokalen Datensammlern und der Weiterleitungsrichtlinie ab.]{#general-logs-local-routing .correct explanation="Ein reines Journal-System oder eine andere Syslog-Konfiguration kann andere Ziele verwenden."}
 ::option[Linux erlaubt nur eine Protokolldatei auf jedem Datenträger.]{#general-logs-one-file explanation="Systeme verwalten gewöhnlich viele Protokolldateien und Journalspeicher."}
@@ -42,8 +41,7 @@ $ sudo tail -n 100 /var/log/messages
 
 Verfolge während einer begrenzten Reproduktion neu angehängte Zeilen mit `tail -F FILE`. `-F` versucht den Zugriff erneut, wenn eine Datei bei der Rotation ersetzt wird, anders als eine einfache Momentaufnahme. Beende die Verfolgung mit `Ctrl-C` und lasse keine weitreichenden privilegierten Sitzungen offen.
 
-:::single-choice{#general-logs-tail-f-capability}
-Wofür ist `tail -F` während einer kontrollierten Reproduktion nützlich?
+:::single-choice{#general-logs-tail-f-capability} Wofür ist `tail -F` während einer kontrollierten Reproduktion nützlich?
 
 ::option[Zum Verfolgen einer benannten Datei über einen üblichen Rotationsaustausch hinweg.]{#general-logs-tail-follow .correct explanation="Das erneute Öffnen nach Namen hilft weiterzuarbeiten, nachdem die aktive Datei umbenannt und neu erstellt wurde."}
 ::option[Zum Ändern jedes Protokollschweregrads auf Debug.]{#general-logs-tail-debug explanation="Tail liest Dateiinhalte und konfiguriert keine Quellen neu."}
@@ -61,8 +59,7 @@ $ journalctl -u example.service --since '10 minutes ago' --grep='connection refu
 
 Groß-/Kleinschreibung, Formulierung, Ratenbegrenzungen und Lokalisierung können eine wörtliche Suche unvollständig machen. Erfasse sowohl erfolgreiche als auch fehlgeschlagene Ereignisse und bewahre umgebende Zeilen, weil die Ursache dem sichtbaren Fehler vorausgehen kann.
 
-:::single-choice{#general-logs-context-lines}
-Warum solltest du Zeilen um einen passenden Fehler herum einbeziehen?
+:::single-choice{#general-logs-context-lines} Warum solltest du Zeilen um einen passenden Fehler herum einbeziehen?
 
 ::option[Das vorherige Ereignis kann den späteren Fehler erklären.]{#general-logs-preceding-context .correct explanation="Zeitlicher Zusammenhang hilft, eine Abfolge zu rekonstruieren, statt eine Zeichenfolge als gesamten Vorfall zu behandeln."}
 ::option[Der Zusammenhang garantiert, dass der erste Treffer die Ursache ist.]{#general-logs-guaranteed-cause explanation="Weitere Belege müssen weiterhin verknüpft werden; Zusammenhang beweist keine Kausalität."}
@@ -79,8 +76,7 @@ $ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
 
 Ordne Ergebnisse nach den tatsächlichen Zeitstempeln und nicht nur nach der Endung. Bewahre vor dem Kopieren von Belegen Metadaten und beschränke den Zugriff, weil Protokolle personenbezogene Daten oder Anmeldedaten enthalten können.
 
-:::single-choice{#general-logs-rotation-boundary}
-Was solltest du prüfen, wenn ein Vorfall eine Protokollrotation überschreitet?
+:::single-choice{#general-logs-rotation-boundary} Was solltest du prüfen, wenn ein Vorfall eine Protokollrotation überschreitet?
 
 ::option[Nur die neu erstellte leere aktive Datei.]{#general-logs-active-only explanation="Frühere Datensätze können in rotierte Archive verschoben worden sein."}
 ::option[Aktive und archivierte Protokolle, geordnet nach Ereigniszeit.]{#general-logs-all-intervals .correct explanation="Die relevante Abfolge kann auf aktuelle und rotierte Dateien verteilt sein."}

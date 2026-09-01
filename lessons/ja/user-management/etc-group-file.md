@@ -29,8 +29,7 @@ $ getent group developers
 
 グループ一覧は内部のアカウント名や役割名を開示する場合があるため、共有前に出力を確認してください。
 
-:::single-choice{#group-query-resolved-database}
-NSS が解決するグループデータベースを問い合わせるコマンドはどれですか？
+:::single-choice{#group-query-resolved-database} NSS が解決するグループデータベースを問い合わせるコマンドはどれですか？
 
 ::option[`getent group`]{#group-getent-all .correct explanation="`getent` は設定済みの NSS 情報源からグループレコードを参照します。"}
 ::option[`cat /etc/group`]{#group-cat-local explanation="これはローカルのグループファイルだけを読み、別の情報源が提供するグループを省く場合があります。"}
@@ -52,16 +51,14 @@ developers:x:1500:alice,bob
 
 グループパスワードは、一部の構成で `newgrp` などが使う従来の機能です。sudo の認可を与える通常の仕組みではなく、フィールドの手動編集で導入すべきでもありません。
 
-:::single-choice{#group-gid-field}
-`developers:x:1500:alice,bob` で GID を含むフィールドはどれですか？
+:::single-choice{#group-gid-field} `developers:x:1500:alice,bob` で GID を含むフィールドはどれですか？
 
 ::option[第2フィールドの `x`]{#group-second-password explanation="第2フィールドはグループパスワードのプレースホルダーであり、数値の識別情報ではありません。"}
 ::option[第4フィールドの `alice,bob`]{#group-fourth-members explanation="第4フィールドは GID ではなく、明示的なメンバー名を列挙します。"}
 ::option[第3フィールドの `1500`]{#group-third-gid .correct explanation="コロンで区切られた第3フィールドが数値のグループ ID です。"}
 :::
 
-:::single-choice{#group-explicit-member-field}
-ローカルグループレコードで、明示的なメンバー名はどのように表されますか？
+:::single-choice{#group-explicit-member-field} ローカルグループレコードで、明示的なメンバー名はどのように表されますか？
 
 ::option[第4フィールドのコンマ区切り一覧。]{#group-members-field-four .correct explanation="最後のフィールドに、明示的な補助メンバー名をコンマで区切って記録します。"}
 ::option[第2フィールドの空白区切り一覧。]{#group-members-field-two explanation="第2フィールドはパスワード関連データまたはプレースホルダー用で、メンバー一覧ではありません。"}
@@ -80,8 +77,7 @@ developers:x:1500:
 
 したがって、第4フィールドだけを解析すると、所属関係を完全には把握できません。
 
-:::single-choice{#group-primary-membership-visibility}
-Alice の passwd レコードでは GID 1500 がプライマリ GID ですが、グループ1500の第4フィールドに名前がありません。Alice はそのグループのメンバーですか？
+:::single-choice{#group-primary-membership-visibility} Alice の passwd レコードでは GID 1500 がプライマリ GID ですが、グループ1500の第4フィールドに名前がありません。Alice はそのグループのメンバーですか？
 
 ::option[いいえ。すべての所属は `/etc/group` の第4フィールドに現れなければならない。]{#group-field-four-only explanation="これはプライマリ GID による所属を無視し、グループメンバーを少なく数えてしまいます。"}
 ::option[はい。プライマリ所属は passwd レコードの GID フィールドから得られる。]{#group-primary-from-passwd .correct explanation="グループファイルの明示的な一覧は主に補助所属用で、プライマリ所属はアカウント側に記録されます。"}
@@ -99,8 +95,7 @@ $ groups alice
 
 現在のプロセスについては、引数なしの `id` が資格情報に実際に含まれるグループを報告します。新しく設定した補助グループ所属は通常、すでに実行中のログインセッションには現れません。新しい認証済みセッションを開始するか、必要に応じて意図的に設定した `newgrp` などの仕組みを使います。
 
-:::single-choice{#group-current-process-credentials}
-現在のプロセスの UID、プライマリ GID、補助グループを報告するコマンドはどれですか？
+:::single-choice{#group-current-process-credentials} 現在のプロセスの UID、プライマリ GID、補助グループを報告するコマンドはどれですか？
 
 ::option[`id`]{#group-current-id .correct explanation="ユーザー引数なしの `id` は、現在のプロセスの識別資格情報を報告します。"}
 ::option[`cat /etc/group`]{#group-current-cat explanation="ローカルファイルはレコードを一覧表示しますが、現在のプロセスでどの解決済みグループが有効かは示しません。"}

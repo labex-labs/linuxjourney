@@ -18,8 +18,7 @@ Obtenez le code source depuis le canal authentifié de publication du projet en 
 
 Les instructions de construction sont du code exécutable. Un script `configure`, une définition de construction, un test ou un greffon de compilateur peut exécuter des commandes arbitraires en tant que votre utilisateur. Ne construisez pas de code source non fiable et n’exécutez pas la construction elle-même avec `sudo`.
 
-:::single-choice{#compile-source-code-build-privilege}
-Pourquoi l’étape de compilation doit-elle normalement s’exécuter sans `sudo` ?
+:::single-choice{#compile-source-code-build-privilege} Pourquoi l’étape de compilation doit-elle normalement s’exécuter sans `sudo` ?
 
 ::option[Les compilateurs refusent de produire du code machine pour l’utilisateur root.]{#compile-source-code-root-compiler explanation="Les compilateurs peuvent s’exécuter en tant que root, mais cela augmente inutilement le risque."}
 ::option[`sudo` supprime automatiquement chaque fichier objet produit.]{#compile-source-code-sudo-delete explanation="L’élévation des privilèges ne supprime pas intrinsèquement les résultats de construction."}
@@ -36,8 +35,7 @@ $ sudo apt install build-essential
 
 Cette commande installe un compilateur de base et des outils de construction, mais pas toutes les dépendances nécessaires à chaque projet. Les projets peuvent aussi exiger des environnements d’exécution de langages, des générateurs, des outils de systèmes de construction, des en-têtes de développement ou des versions précises de bibliothèques. Installez les prérequis depuis des dépôts de confiance et distinguez les dépendances de construction de celles nécessaires à l’exécution.
 
-:::single-choice{#compile-source-code-build-essential-scope}
-Que fournit `build-essential` sur un système de la famille Debian ?
+:::single-choice{#compile-source-code-build-essential-scope} Que fournit `build-essential` sur un système de la famille Debian ?
 
 ::option[Un ensemble de base d’outils courants de compilation et de construction.]{#compile-source-code-baseline-tools .correct explanation="Il fournit des outils fondamentaux, mais ne peut anticiper toutes les bibliothèques et tous les générateurs propres aux projets."}
 ::option[Chaque dépendance de chaque projet source.]{#compile-source-code-all-dependencies explanation="Les projets déclarent des exigences supplémentaires, parfois liées à une version précise."}
@@ -57,8 +55,7 @@ $ make
 
 Cette séquence n’est pas universelle. Les projets peuvent employer CMake, Meson, Ninja, des outils propres à un langage ou des scripts personnalisés. Suivez la documentation de la version exacte au lieu d’exécuter `./configure` uniquement par habitude. Un répertoire de construction distinct de l’arborescence source peut isoler les fichiers générés lorsque le système de construction le permet.
 
-:::single-choice{#compile-source-code-make-role}
-Dans la procédure traditionnelle, que fait `make` ?
+:::single-choice{#compile-source-code-make-role} Dans la procédure traditionnelle, que fait `make` ?
 
 ::option[Il enregistre chaque résultat dans la base des paquets de la distribution.]{#compile-source-code-make-package-db explanation="La compilation seule ne crée aucun enregistrement de propriété dans la base native des paquets."}
 ::option[Il télécharge automatiquement une publication source authentifiée.]{#compile-source-code-make-download explanation="L’acquisition et la vérification de la source précèdent la construction locale, sauf définition explicite contraire du projet."}
@@ -75,8 +72,7 @@ $ make check
 
 La cible réelle peut être `test`, `check` ou une commande distincte. Analysez les échecs au lieu d’installer un résultat non testé. Les tests peuvent nécessiter un accès réseau, des services, du matériel particulier ou une isolation ; examinez-les avant leur exécution comme tout autre code de construction.
 
-:::single-choice{#compile-source-code-test-failure}
-Que faut-il faire lorsque la suite de tests documentée échoue ?
+:::single-choice{#compile-source-code-test-failure} Que faut-il faire lorsque la suite de tests documentée échoue ?
 
 ::option[Exécuter immédiatement la même installation en tant que root.]{#compile-source-code-install-after-failure explanation="Les privilèges ne résolvent pas une erreur de justesse inconnue et en augmentent les conséquences."}
 ::option[Supprimer la base du gestionnaire de paquets pour éviter les conflits.]{#compile-source-code-delete-database explanation="La base native est sans rapport avec la résolution d’un échec de test du code source et ne doit pas être supprimée."}
@@ -96,8 +92,7 @@ Préférez l’une de ces méthodes contrôlées :
 
 `checkinstall` peut créer un paquet simple pour certaines procédures `make install`, mais il n’est pas universel et ne remplace pas une recette de paquet de qualité, examinée pour la distribution. Ne le considérez jamais comme une règle absolue. Avant toute copie privilégiée, examinez la liste des fichiers préparés, leur propriété, leurs permissions, leurs chemins ainsi que le plan de désinstallation ou de mise à niveau.
 
-:::single-choice{#compile-source-code-destdir-purpose}
-Quel est le but d’une installation intermédiaire prise en charge avec `DESTDIR` ?
+:::single-choice{#compile-source-code-destdir-purpose} Quel est le but d’une installation intermédiaire prise en charge avec `DESTDIR` ?
 
 ::option[Placer les fichiers destinés à l’installation sous une racine temporaire afin de les examiner ou de les empaqueter.]{#compile-source-code-stage-root .correct explanation="La préparation sépare la collecte des fichiers de leur écriture immédiate dans le préfixe du système actif."}
 ::option[Transformer le compilateur en dépôt de paquets distant.]{#compile-source-code-destdir-repository explanation="La variable redirige les chemins d’installation et ne publie pas de métadonnées de dépôt."}

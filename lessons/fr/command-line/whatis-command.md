@@ -23,8 +23,7 @@ cat (1)              - concatenate files and print on the standard output
 
 La sortie est une description et non une liste d'options ou d'exemples. Utilisez `man cat` ou `cat --help` pour davantage de détails.
 
-:::single-choice{#describe-known-command}
-Vous connaissez le nom `cat` et voulez sa description de manuel en une ligne. Quelle commande faut-il exécuter ?
+:::single-choice{#describe-known-command} Vous connaissez le nom `cat` et voulez sa description de manuel en une ligne. Quelle commande faut-il exécuter ?
 
 ::option[`man cat`]{#manual-cat explanation="`man cat` ouvre toute la page de manuel et fournit plus que le bref rappel demandé."}
 ::option[`apropos cat`]{#apropos-cat explanation="`apropos` recherche un mot-clé dans les descriptions et peut renvoyer de nombreux sujets ; elle est plus large qu'une recherche par nom exact."}
@@ -43,8 +42,7 @@ passwd (5)           - the password file
 
 Le nombre entre parenthèses est la section du manuel. Ici, `passwd(1)` décrit la commande utilisateur et `passwd(5)` un format de fichier. Ouvrez l'une d'elles avec `man 1 passwd` ou `man 5 passwd`.
 
-:::single-choice{#interpret-whatis-section}
-Dans la sortie `passwd (5) - the password file`, que désigne `(5)` ?
+:::single-choice{#interpret-whatis-section} Dans la sortie `passwd (5) - the password file`, que désigne `(5)` ?
 
 ::option[La cinquième option acceptée par la commande `passwd`.]{#fifth-option explanation="Ce nombre n'est pas une position d'option ; les options sont documentées à l'intérieur de la page choisie."}
 ::option[La section du manuel qui contient la page du format de fichier.]{#section-five .correct explanation="La section 5 est consacrée aux formats et conventions de fichiers ; `passwd(5)` désigne cette section."}
@@ -65,8 +63,7 @@ $ apropos password
 
 Utilisez `apropos` lorsque vous connaissez la tâche, mais pas le nom de la commande. Utilisez `whatis` lorsque vous connaissez déjà ce nom.
 
-:::single-choice{#search-by-purpose}
-Vous ignorez le nom de la commande, mais voulez rechercher le mot-clé `password` dans les descriptions des manuels. Quelle commande convient ?
+:::single-choice{#search-by-purpose} Vous ignorez le nom de la commande, mais voulez rechercher le mot-clé `password` dans les descriptions des manuels. Quelle commande convient ?
 
 ::option[`apropos password`]{#apropos-password .correct explanation="`apropos` recherche le mot-clé dans les noms et descriptions des pages, ce qui aide à découvrir les sujets pertinents."}
 ::option[`whatis password`]{#exact-password explanation="`whatis` cherche un sujet exact nommé `password` ; elle n'est pas l'interface générale de recherche par mot-clé."}
@@ -77,8 +74,7 @@ Vous ignorez le nom de la commande, mais voulez rechercher le mot-clé `password
 
 Si `whatis` ne trouve rien d'approprié, le sujet peut ne pas posséder de page installée ou la base peut être obsolète. Ce résultat ne prouve pas qu'aucun exécutable, alias, fonction ou commande intégrée de ce nom n'existe. Utilisez `type NAME` pour savoir comment Bash le résout, puis choisissez la source d'aide appropriée.
 
-:::single-choice{#whatis-versus-type}
-`whatis deploy` ne trouve aucune description. Quelle commande vérifie si Bash résout `deploy` comme alias, fonction, commande intégrée ou exécutable ?
+:::single-choice{#whatis-versus-type} `whatis deploy` ne trouve aucune description. Quelle commande vérifie si Bash résout `deploy` comme alias, fonction, commande intégrée ou exécutable ?
 
 ::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="Modifier la requête de la base manuelle ne montre pas tous les alias, fonctions, commandes intégrées et résolutions de chemins de Bash."}
 ::option[`man 5 deploy`]{#manual-five-deploy explanation="Cette commande tente d'ouvrir une page de section 5 ; elle ne détermine pas comment Bash résout le nom."}

@@ -22,8 +22,7 @@ $ nmcli connection show
 $ nmcli connection show --active
 ```
 
-:::single-choice{#networkmanager-device-profile}
-Что представляет собой профиль подключения NetworkManager?
+:::single-choice{#networkmanager-device-profile} Что представляет собой профиль подключения NetworkManager?
 
 ::option[Физический разъём, припаянный к сетевой карте.]{#networkmanager-physical-connector explanation="Это оборудование, а не профиль NetworkManager."}
 ::option[Сохранённый набор параметров, который можно активировать на устройстве.]{#networkmanager-stored-settings .correct explanation="Профили хранят постоянную конфигурацию отдельно от объекта интерфейса ядра."}
@@ -41,8 +40,7 @@ $ nmcli connection show 'Wired connection 1'
 
 Настройки профиля, текущие результаты DHCP и состояние ядра могут различаться. Сравните их с выводом `ip address`, `ip route` и средства разрешения имён. Устаревшая команда `nm-tool` не должна быть основой современного рабочего процесса.
 
-:::single-choice{#networkmanager-active-command}
-Какая команда перечисляет активные профили NetworkManager?
+:::single-choice{#networkmanager-active-command} Какая команда перечисляет активные профили NetworkManager?
 
 ::option[`nmcli device delete --all`]{#networkmanager-delete-all explanation="Это не команда проверки; она указывает на разрушительное намерение."}
 ::option[`nmcli connection show --active`]{#networkmanager-show-active .correct explanation="Она отфильтровывает сохранённые подключения, оставляя активированные в данный момент."}
@@ -60,8 +58,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 Изменение затрагивает постоянные данные профиля; активация может заменить действующие адреса, маршруты и DNS. Для удалённого изменения нужны консольный доступ, сохранённые исходные настройки и независимый откат по таймеру. Никогда не рассчитывайте, что изменяемое подключение само доставит команду собственного восстановления.
 
-:::single-choice{#networkmanager-modify-versus-up}
-В чём разница между `connection modify` и `connection up`?
+:::single-choice{#networkmanager-modify-versus-up} В чём разница между `connection modify` и `connection up`?
 
 ::option[Modify перезагружает хост, а up редактирует исходный код DNS.]{#networkmanager-reboot-source explanation="Ни одно из описаний не соответствует этим командам."}
 ::option[Modify изменяет настройки профиля, а up активирует профиль.]{#networkmanager-change-activate .correct explanation="Постоянное хранение и активация текущего состояния связаны, но являются разными операциями."}
@@ -72,8 +69,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 После активации проверьте состояние профиля, адреса и маршруты ядра, DNS, оба семейства адресов и требуемое приложение. Профили Wi-Fi, VPN, 802.1X и мобильных сетей могут содержать секреты. Ограничивайте права на профили и не выводите секретные поля в общие журналы или записи сеансов оболочки.
 
-:::single-choice{#networkmanager-verification}
-Что доказывает больше, чем сообщение NetworkManager «подключено»?
+:::single-choice{#networkmanager-verification} Что доказывает больше, чем сообщение NetworkManager «подключено»?
 
 ::option[В имени профиля есть слово Wired.]{#networkmanager-name-proof explanation="Метка не подтверждает работоспособность пути или службы."}
 ::option[Окно терминала осталось открытым.]{#networkmanager-terminal-open explanation="Терминал может сохраниться при некоторых частичных сбоях сети."}

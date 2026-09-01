@@ -29,8 +29,7 @@ $ sudo ls -la /mnt/mydrive
 
 Das Einhängen auf einem nicht leeren Verzeichnis verbirgt dessen vorhandene Einträge hinter dem neuen Dateisystem, bis dieses ausgehängt wird; die Einträge werden nicht gelöscht. Das kann Anwendungen verwirren und unsichtbar Speicherplatz belegen. Verwende deshalb einen leeren, eigens vorgesehenen Einhängepunkt.
 
-:::single-choice{#mount-umount-nonempty-target}
-Was geschieht mit vorhandenen Dateien eines Verzeichnisses, wenn dort ein anderes Dateisystem eingehängt wird?
+:::single-choice{#mount-umount-nonempty-target} Was geschieht mit vorhandenen Dateien eines Verzeichnisses, wenn dort ein anderes Dateisystem eingehängt wird?
 
 ::option[Sie werden automatisch in das neue Dateisystem kopiert.]{#mount-umount-copied-files explanation="Das Einhängen verändert die Verbindung im Namensraum und verschiebt keine Verzeichnisinhalte."}
 ::option[Sie werden vom Kernel dauerhaft gelöscht.]{#mount-umount-erased-files explanation="Die Dateien erscheinen nach dem Aushängen normalerweise wieder, weil sie nur verdeckt und nicht gelöscht wurden."}
@@ -55,8 +54,7 @@ $ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Einhängungen sind an einen Namespace gebunden. Eine in einem Container oder privaten Dienst-Namespace erzeugte Einhängung ist in der Ansicht eines anderen Prozesses möglicherweise nicht sichtbar.
 
-:::single-choice{#mount-umount-mount-role}
-Was bewirkt der Befehl `mount` in diesem Arbeitsablauf?
+:::single-choice{#mount-umount-mount-role} Was bewirkt der Befehl `mount` in diesem Arbeitsablauf?
 
 ::option[Er erstellt ein neues Dateisystem und löscht die Quelle.]{#mount-umount-format-source explanation="Das Erstellen eines Dateisystems ist eine getrennte zerstörerische `mkfs`-Operation."}
 ::option[Er verbindet eine Dateisystemquelle mit einem Verzeichnis in einem Mount-Namespace.]{#mount-umount-attach-filesystem .correct explanation="Die Pfadauflösung unterhalb des Ziels wechselt anschließend in das verbundene Dateisystem."}
@@ -80,8 +78,7 @@ $ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 
 Eine UUID bezeichnet das Dateisystem und nicht zwangsläufig den physischen Datenträger. Durch Neuformatierung ändert sie sich, während sie beim Klonen dupliziert werden kann. Prüfe ihre Eindeutigkeit, bevor du Original und Klon gleichzeitig mit demselben System verbindest.
 
-:::single-choice{#mount-umount-uuid-benefit}
-Warum ist eine Dateisystem-UUID für dauerhafte Konfigurationen häufig besser geeignet als `/dev/sdX`?
+:::single-choice{#mount-umount-uuid-benefit} Warum ist eine Dateisystem-UUID für dauerhafte Konfigurationen häufig besser geeignet als `/dev/sdX`?
 
 ::option[Sie verhindert jeden zukünftigen Ausfall von Speichergeräten.]{#mount-umount-uuid-no-failure explanation="Eine Kennung bietet weder Redundanz noch Integritätsreparatur oder Sicherung."}
 ::option[Sie garantiert, dass geklonte Dateisysteme verschiedene Kennungen besitzen.]{#mount-umount-uuid-clone-unique explanation="Ein Klon auf Blockebene kann die UUID kopieren und eine Kollision erzeugen."}
@@ -100,8 +97,7 @@ Der Befehl heißt `umount`, ohne das erste `n`. Ein erfolgreiches Aushängen tre
 
 Ein erfolgreiches Aushängen ist bei Wechselmedien nicht immer der letzte Schritt zum sicheren Entfernen. Desktop-Speicherstapel können eine Auswurf- oder Ausschaltaktion anbieten, die Geräte-Caches leert und ein USB-Gerät deaktiviert. Folge dem Ablauf der Plattform und Hardware.
 
-:::single-choice{#mount-umount-command-name}
-Welcher Befehl trennt `/mnt/mydrive`?
+:::single-choice{#mount-umount-command-name} Welcher Befehl trennt `/mnt/mydrive`?
 
 ::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` trennt das am angegebenen Ziel eingehängte Dateisystem."}
 ::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="Im Namen des Standardbefehls fehlt das erste `n`."}
@@ -119,8 +115,7 @@ $ sudo fuser -vm /mnt/mydrive
 
 Bewege Shells aus dem Baum heraus, beende die verantwortliche Anwendung geordnet und hänge untergeordnete Einhängungen vor dem Elternknoten aus. Verzögertes Aushängen und Force-Optionen besitzen besondere Semantik und können aktive Referenzen zurücklassen oder Datenverlust verursachen. Verwende sie nur mit dokumentierter Begründung für die Wiederherstellung.
 
-:::single-choice{#mount-umount-busy-cause}
-Welche Bedingung kann dazu führen, dass `umount` ein beschäftigtes Dateisystem meldet?
+:::single-choice{#mount-umount-busy-cause} Welche Bedingung kann dazu führen, dass `umount` ein beschäftigtes Dateisystem meldet?
 
 ::option[Der Name des Einhängepunktverzeichnisses enthält Kleinbuchstaben.]{#mount-umount-lowercase explanation="Die Groß-/Kleinschreibung eines Pfads erzeugt für sich allein keine aktive Dateisystemreferenz."}
 ::option[Ein Prozess besitzt sein aktuelles Arbeitsverzeichnis innerhalb der Einhängung.]{#mount-umount-cwd-busy .correct explanation="Der Prozess hält eine Referenz in das eingehängte Dateisystem und verhindert dadurch die gewöhnliche Trennung."}

@@ -29,8 +29,7 @@ networking start/running
 
 O Upstart informa tanto um **objetivo**, como `start` ou `stop`, quanto um **estado** atual, como `running` ou `waiting`. `stop/waiting` significa que a tarefa não está em execução e aguarda uma condição de início ou uma solicitação manual; isso não indica necessariamente um erro.
 
-:::single-choice{#upstart-jobs-stop-waiting}
-O que `stop/waiting` normalmente significa na saída de estado do Upstart?
+:::single-choice{#upstart-jobs-stop-waiting} O que `stop/waiting` normalmente significa na saída de estado do Upstart?
 
 ::option[A tarefa está em execução, mas não consome CPU.]{#upstart-jobs-running-idle explanation="Uma tarefa em execução normalmente mostraria um objetivo start e o estado running."}
 ::option[O objetivo da tarefa é permanecer parada, e nenhuma instância de processo está em execução.]{#upstart-jobs-stopped-waiting .correct explanation="A definição continua conhecida enquanto o Upstart aguarda uma condição ou comando futuro."}
@@ -48,8 +47,7 @@ $ sudo initctl stop JOB_NAME
 
 As tarefas podem definir várias instâncias identificadas por variáveis de ambiente. Nesse caso, forneça as variáveis exatas exigidas pela configuração e inclua-as de forma consistente ao consultar ou interromper uma instância. Iniciar tarefas de rede, armazenamento, autenticação ou acesso remoto pode prejudicar a sessão, portanto preserve o acesso de recuperação pelo console.
 
-:::single-choice{#upstart-jobs-start-command}
-Qual comando solicita manualmente que a tarefa `peanuts` seja iniciada?
+:::single-choice{#upstart-jobs-start-command} Qual comando solicita manualmente que a tarefa `peanuts` seja iniciada?
 
 ::option[`sudo initctl start peanuts`]{#upstart-jobs-start-peanuts .correct explanation="O subcomando start é seguido pelo nome configurado da tarefa e por eventuais variáveis de instância necessárias."}
 ::option[`sudo initctl peanuts start`]{#upstart-jobs-name-first explanation="A sintaxe de initctl coloca o subcomando antes do nome da tarefa."}
@@ -68,8 +66,7 @@ No Upstart, `restart` nem sempre equivale a uma nova sequência de `stop` e `sta
 
 Uma reinicialização causa interrupção e pode não devolver o serviço à operação. Verifique depois o endpoint real e os logs.
 
-:::single-choice{#upstart-jobs-restart-peanuts}
-Qual comando solicita a reinicialização da tarefa Upstart `peanuts` em execução?
+:::single-choice{#upstart-jobs-restart-peanuts} Qual comando solicita a reinicialização da tarefa Upstart `peanuts` em execução?
 
 ::option[`sudo initctl restart peanuts`]{#upstart-jobs-restart-command .correct explanation="O subcomando restart atua sobre a tarefa nomeada pela interface de controle do Upstart."}
 ::option[`sudo initctl emit peanuts`]{#upstart-jobs-emit-not-restart explanation="A emissão de um evento afeta todas as condições de tarefas correspondentes e não é uma solicitação direta de reinicialização."}
@@ -82,8 +79,7 @@ Antes de instalar um arquivo de tarefa modificado, use a ferramenta de validaç�
 
 A validação da sintaxe não comprova que os caminhos existam, as credenciais permitam a execução, os eventos ocorram ou o processo fique pronto. Teste em um ambiente com capacidade de recuperação.
 
-:::single-choice{#upstart-jobs-syntax-validation-limit}
-O que a validação da sintaxe da tarefa não comprova?
+:::single-choice{#upstart-jobs-syntax-validation-limit} O que a validação da sintaxe da tarefa não comprova?
 
 ::option[Que o serviço será iniciado com sucesso e ficará pronto.]{#upstart-jobs-runtime-not-proven .correct explanation="Os caminhos, as permissões, as dependências e o fluxo de eventos em tempo de execução exigem um teste controlado real."}
 ::option[Que o texto da configuração pode ser interpretado.]{#upstart-jobs-parse-purpose explanation="A interpretação é justamente a principal finalidade da validação da sintaxe."}
@@ -100,8 +96,7 @@ $ sudo initctl emit EVENT_NAME
 
 Todas as tarefas cujas expressões de início ou parada correspondam podem reagir. Um evento não é endereçado a uma única tarefa, e seus efeitos podem se propagar por outros eventos. Inspecione todas as configurações correspondentes antes de emitir um evento personalizado ou do sistema; não repita casualmente eventos essenciais de boot em um host de produção.
 
-:::single-choice{#upstart-jobs-emit-scope}
-O que pode acontecer quando `initctl emit EVENT_NAME` é executado?
+:::single-choice{#upstart-jobs-emit-scope} O que pode acontecer quando `initctl emit EVENT_NAME` é executado?
 
 ::option[Todas as expressões de tarefas correspondentes ao evento podem realizar transições.]{#upstart-jobs-event-matches .correct explanation="Os eventos são transmitidos ao modelo de dependências do Upstart, não enviados somente a um serviço nomeado."}
 ::option[Somente uma tarefa cujo nome seja exatamente igual ao evento pode responder.]{#upstart-jobs-event-name-only explanation="A correspondência é definida pelas expressões `start on` e `stop on`, não pela igualdade do nome da tarefa."}

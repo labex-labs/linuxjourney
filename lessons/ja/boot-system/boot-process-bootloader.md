@@ -23,8 +23,7 @@ meta_keywords: "linux ブートローダー, linux ブートローダー, linux 
 
 GRUB は複数のカーネルや復旧エントリを提示できます。予備カーネルが役立つのは、対応するモジュールと initramfs が残り、動作確認されている場合だけです。ローダーは自身が対応するストレージ・ファイルシステムモジュールを通じてファイルを読み、まだ動いていない Linux VFS には依存しません。
 
-:::single-choice{#bootloader-primary-handoff}
-Linux のブートローダーは通常、何へ制御を渡しますか？
+:::single-choice{#bootloader-primary-handoff} Linux のブートローダーは通常、何へ制御を渡しますか？
 
 ::option[全サービスが起動済みの対話型ユーザーシェル。]{#bootloader-user-shell explanation="ユーザー空間のシェルは、カーネルと init システムが起動した後に現れます。"}
 ::option[必要なブート成果物を読み込んだ後の、選択済みカーネルイメージ。]{#bootloader-selected-kernel .correct explanation="ローダーはカーネル、パラメータ、多くの場合 initramfs を準備し、カーネルのエントリポイントを実行します。"}
@@ -49,16 +48,14 @@ Linux のブートローダーは通常、何へ制御を渡しますか？
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-カーネルコマンドラインの `root=` パラメータは何のために使いますか？
+:::single-choice{#bootloader-root-parameter} カーネルコマンドラインの `root=` パラメータは何のために使いますか？
 
 ::option[ブートが最終的に使うルートファイルシステムを識別する。]{#bootloader-root-filesystem .correct explanation="カーネルまたは initramfs がこの値を解釈し、実際のルートの検出と構築に使います。"}
 ::option[root アカウントのログインパスワードを設定する。]{#bootloader-root-password explanation="認証用の秘密情報を通常のカーネルコマンドラインへ渡してはいけません。"}
 ::option[PID 1 の名前を `root` に変更する。]{#bootloader-root-pid explanation="プロセス名はこのストレージパラメータと無関係です。"}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-`quiet` パラメータは通常、何を要求しますか？
+:::single-choice{#bootloader-quiet-parameter} `quiet` パラメータは通常、何を要求しますか？
 
 ::option[マウント済み全ファイルシステムを読み取り専用にする。]{#bootloader-quiet-readonly explanation="ルートの初期書き込み方針には `ro` などを使い、`quiet` は使いません。"}
 ::option[ブート中に表示されるカーネルメッセージを減らす。]{#bootloader-quiet-console .correct explanation="多くの情報メッセージを抑制しますが、全ブートコンポーネントの完全な無表示を保証するものではありません。"}
@@ -71,8 +68,7 @@ GRUB では、権限のあるコンソール利用者が、メニューに示さ
 
 コマンドラインの機密文字列は `/proc/cmdline`、ブートログ、クラッシュ報告に露出し得ます。また、パラメータによってセキュリティを弱めたり、起動不能にしたりもできます。秘密情報は置かず、既知の正常なエントリとコンソールからの復旧手段を維持してください。
 
-:::single-choice{#bootloader-temporary-edit}
-GRUB メニューのエントリを対話的に編集して一度ブートするとき、一般的に当てはまるものはどれですか？
+:::single-choice{#bootloader-temporary-edit} GRUB メニューのエントリを対話的に編集して一度ブートするとき、一般的に当てはまるものはどれですか？
 
 ::option[インストール済みの全カーネルイメージを自動的に書き換える。]{#bootloader-rewrites-kernels explanation="コマンド文字列を変えても、カーネルのバイナリは変更されません。"}
 ::option[全ディスクのファームウェア検証を恒久的に無効にする。]{#bootloader-disables-firmware explanation="ファームウェアポリシーは別の層であり、一つのエントリ編集で一律に変更されるものではありません。"}
@@ -85,8 +81,7 @@ GRUB メニューのエントリを対話的に編集して一度ブートする
 
 対象を絞って設定元を変更し、ディストリビューション指定の再生成コマンドを実行して出力を確認します。既知の正常な旧エントリと起動可能な復旧メディアを残したままテストしてください。Debian、Fedora、UEFI、BIOS の各環境では、コマンドと出力先が異なります。
 
-:::single-choice{#bootloader-generated-config}
-生成済みの `grub.cfg` を直接編集する方法が通常は信頼できないのはなぜですか？
+:::single-choice{#bootloader-generated-config} 生成済みの `grub.cfg` を直接編集する方法が通常は信頼できないのはなぜですか？
 
 ::option[ファイルの内容は決して読めるテキストではないから。]{#bootloader-config-binary explanation="GRUB の設定はテキストですが、生成物であることが重要です。"}
 ::option[GRUB は各ユーザーのホームディレクトリにあるファイルしか読まないから。]{#bootloader-grub-home explanation="ブート設定はシステム全体のもので、ユーザーのホームセッションより前に利用できる必要があります。"}

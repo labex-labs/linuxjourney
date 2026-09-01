@@ -30,8 +30,7 @@ The symlink has its own inode and stores the text `myfile`. When a program follo
 $ readlink myfilelink
 ```
 
-:::single-choice{#symlinks-create-symbolic}
-Which command creates symbolic link `myfilelink` with target text `myfile`?
+:::single-choice{#symlinks-create-symbolic} Which command creates symbolic link `myfilelink` with target text `myfile`?
 
 ::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="The `-s` option requests a symbolic link, followed by target and new link name."}
 ::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="Without `-s`, `ln` requests a hard link to the existing inode."}
@@ -50,8 +49,7 @@ $ ln -s ../data/item tree/current/item
 
 Moving the entire `tree` hierarchy preserves this relative relationship. Moving only the link or target can break it. A symlink is allowed to contain a nonexistent target and is then called dangling or broken.
 
-:::single-choice{#symlinks-relative-resolution}
-From where is a relative symlink target resolved?
+:::single-choice{#symlinks-relative-resolution} From where is a relative symlink target resolved?
 
 ::option[The home directory of the user who created it.]{#symlinks-creator-home explanation="Creator identity does not become a permanent resolution base."}
 ::option[The current directory of whichever shell first lists it.]{#symlinks-listing-shell explanation="Listing context does not rewrite the stored target relationship."}
@@ -73,8 +71,7 @@ Both names map to the same filesystem and inode number. The link count becomes 2
 
 Hard links cannot cross filesystem boundaries because an inode number is meaningful only within its filesystem. Linux also restricts ordinary users from hard-linking directories and can restrict links to files they do not own, preventing cycles and security problems.
 
-:::single-choice{#symlinks-hard-link-inode}
-What do two hard links to one regular file share?
+:::single-choice{#symlinks-hard-link-inode} What do two hard links to one regular file share?
 
 ::option[Only similar filenames but separate file data.]{#symlinks-separate-data explanation="That would describe independent copies, not hard links."}
 ::option[A pathname stored inside a separate symlink inode.]{#symlinks-stored-path explanation="Path text is the defining mechanism of a symbolic link."}
@@ -93,8 +90,7 @@ Removing a hard-link name decrements the shared inode's link count. The filesyst
 
 Avoid a trailing slash when removing a symlink to a directory, because trailing-slash path resolution can follow directory semantics depending on the command. Inspect with `ls -ld -- LINK` and remove the link name deliberately.
 
-:::single-choice{#symlinks-remove-symbolic}
-What normally happens when you remove a symlink itself?
+:::single-choice{#symlinks-remove-symbolic} What normally happens when you remove a symlink itself?
 
 ::option[The symlink inode and name are removed while the target remains.]{#symlinks-remove-link-only .correct explanation="Unlinking the symbolic link does not operate on the object named by its stored target text."}
 ::option[The target and every hard link to it are erased automatically.]{#symlinks-remove-target explanation="The symlink is a separate filesystem object and does not own its target."}
@@ -114,8 +110,7 @@ For routine inspection:
 
 Permissions displayed as `lrwxrwxrwx` are not a general access grant. Access is decided through directory traversal, link-following policy, and target permissions; symlink ownership also matters for some protected-directory rules.
 
-:::single-choice{#symlinks-readlink-output}
-What does `readlink LINK` print by default?
+:::single-choice{#symlinks-readlink-output} What does `readlink LINK` print by default?
 
 ::option[The pathname text stored in the symbolic link.]{#symlinks-readlink-target-text .correct explanation="It inspects the link object without reading the target file's contents."}
 ::option[The complete byte content of the target regular file.]{#symlinks-readlink-file-content explanation="Use a file-reading command after intentional resolution for target content."}

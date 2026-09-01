@@ -24,8 +24,7 @@ Open Systems Interconnection（OSI）モデルは、7層の参照フレームワ
 6. プレゼンテーション層：データ表現、変換、符号化。
 7. アプリケーション層：アプリケーションが使うネットワークサービス。
 
-:::single-choice{#osi-network-layer-number}
-論理アドレスとネットワーク間転送を扱う OSI 層はどれですか？
+:::single-choice{#osi-network-layer-number} 論理アドレスとネットワーク間転送を扱う OSI 層はどれですか？
 
 ::option[第3層、ネットワーク層。]{#osi-layer-three .correct explanation="ネットワーク層は論理アドレスとネットワーク間転送を表します。"}
 ::option[第1層、物理層。]{#osi-layer-one explanation="物理層は信号と媒体を扱います。"}
@@ -36,8 +35,7 @@ Open Systems Interconnection（OSI）モデルは、7層の参照フレームワ
 
 「第2層のループ」「第4層のポート」のような表現は、実装の全詳細を説明せず機能領域を示します。実際のプロトコルは境界をまたぐことがあり、暗号化、トンネル、プロキシ、オーバーレイによって複数の層が入れ子になる場合もあります。
 
-:::single-choice{#osi-model-purpose}
-日常のトラブルシューティングで OSI モデルが最も役立つ用途はどれですか？
+:::single-choice{#osi-model-purpose} 日常のトラブルシューティングで OSI モデルが最も役立つ用途はどれですか？
 
 ::option[すべてのプロトコルに必ず7個のヘッダーがあると保証する。]{#osi-seven-headers explanation="実装は通信上の7ヘッダーと1対1に対応しません。"}
 ::option[すべてのパケットキャプチャーを図へ置き換える。]{#osi-replace-captures explanation="調査を導きますが、証拠の代わりにはなりません。"}
@@ -48,8 +46,7 @@ Open Systems Interconnection（OSI）モデルは、7層の参照フレームワ
 
 インターネットプロトコル群と OSI 参照モデルは異なる標準化の歴史を持ちます。実用的な TCP/IP モデルでは、OSI のセッション層とプレゼンテーション層の責任をアプリケーション層へまとめ、物理層とデータリンク層をリンク層またはネットワークアクセス層へまとめることが一般的です。対応は概算で、一方から他方が直接実装された証拠ではありません。
 
-:::single-choice{#osi-tcpip-mapping}
-OSI と TCP/IP の層の対応は、どう解釈すべきですか？
+:::single-choice{#osi-tcpip-mapping} OSI と TCP/IP の層の対応は、どう解釈すべきですか？
 
 ::option[すべてのプロトコルが従う厳密な規則として。]{#osi-exact-rule explanation="プロトコルの責任は概念上の境界をまたぐことがあります。"}
 ::option[TCP/IP が通信上で必ず7層を使う証拠として。]{#osi-tcp-seven explanation="TCP/IP は通常4層または5層で説明されます。"}
@@ -60,8 +57,7 @@ OSI と TCP/IP の層の対応は、どう解釈すべきですか？
 
 層を番号順に機械的に調べず、症状から始めて前提を検証します。Web の障害にはローカルリンク、IP ルーティング、トランスポート到達性、TLS、名前解決、認証、アプリケーション動作が関わる場合があります。ある層の証拠は次のテストを導きますが、上位層が動くことまでは証明しません。
 
-:::single-choice{#osi-link-success-limit}
-ローカル Ethernet リンクが動作することで証明できることは何ですか？
+:::single-choice{#osi-link-success-limit} ローカル Ethernet リンクが動作することで証明できることは何ですか？
 
 ::option[すべてのリモート HTTP サービスが正常である。]{#osi-link-proves-http explanation="ローカルリンク状態からリモートアプリケーションの正常性は分かりません。"}
 ::option[DNS に誤ったレコードがない。]{#osi-link-proves-dns explanation="名前データは基本的なリンク接続とは独立しています。"}

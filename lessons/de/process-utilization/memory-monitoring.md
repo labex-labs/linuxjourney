@@ -22,8 +22,7 @@ $ vmstat 1
 
 Die erste Datenzeile meldet im Allgemeinen Mittelwerte seit dem Bootvorgang; spätere Zeilen decken jeweils ein Intervall ab. Beende die Erfassung nach einem repräsentativen Zeitraum mit `Ctrl-C`. Einheiten und verfügbare Felder unterscheiden sich; prüfe deshalb `vmstat --unit` und die lokale Handbuchseite.
 
-:::single-choice{#vmstat-interval-rows}
-Welche Zeilen eignen sich am besten, um mit `vmstat 1` Änderungen von Sekunde zu Sekunde zu beobachten?
+:::single-choice{#vmstat-interval-rows} Welche Zeilen eignen sich am besten, um mit `vmstat 1` Änderungen von Sekunde zu Sekunde zu beobachten?
 
 ::option[Die späteren Zeilen nach dem ersten Bericht.]{#vmstat-later-rows .correct explanation="Spätere Zeilen beschreiben jeweils das angeforderte Intervall statt des kumulativen Zeitraums."}
 ::option[Nur die Überschriften oberhalb der ersten Datenzeile.]{#vmstat-headings explanation="Überschriften definieren Felder, enthalten aber keine Aktivitätsstichproben."}
@@ -42,8 +41,7 @@ $ free -h
 
 Die Schätzung `available` ist im Allgemeinen nützlicher als `free` allein, weil rückgewinnbarer Cache neue Speicherzuweisungen erfüllen kann.
 
-:::single-choice{#vmstat-free-memory}
-Warum kann ein niedriger `free`-Wert unter Linux normal sein?
+:::single-choice{#vmstat-free-memory} Warum kann ein niedriger `free`-Wert unter Linux normal sein?
 
 ::option[Der Wert schließt immer den gesamten physischen Arbeitsspeicher aus.]{#vmstat-excludes-ram explanation="Es handelt sich um ein Speicherfeld, dessen genaue Einheit allerdings geprüft werden sollte."}
 ::option[Der Kernel kann ungenutzten Speicher für rückgewinnbare Caches verwenden.]{#vmstat-reclaimable-cache .correct explanation="Zwischengespeicherter Speicher kann häufig zurückgewonnen werden, wenn Anwendungen ihn benötigen."}
@@ -54,8 +52,7 @@ Warum kann ein niedriger `free`-Wert unter Linux normal sein?
 
 `si` und `so` zeigen die Swap-in- und Swap-out-Raten. Anhaltendes Paging zusammen mit Latenz und Aktivität zur Speicherrückgewinnung kann auf Druck hindeuten. Eine von null verschiedene Swap-Nutzung (`swpd`) beweist für sich allein jedoch kein aktuelles Problem. `bi` und `bo` melden Blockeingabe- und Blockausgaberaten und sind nicht auf Swap-Verkehr beschränkt.
 
-:::single-choice{#vmstat-swap-pressure}
-Welche Belege stützen die Diagnose eines aktuellen Speicherdrucks besser?
+:::single-choice{#vmstat-swap-pressure} Welche Belege stützen die Diagnose eines aktuellen Speicherdrucks besser?
 
 ::option[Ein von null verschiedener `swpd`-Wert ohne weitere Beobachtungen.]{#vmstat-swpd-alone explanation="Seiten können nach früherem Druck im Swap verbleiben; die Menge allein reicht daher nicht aus."}
 ::option[Anhaltendes Paging in Verbindung mit Rückgewinnungsaktivität und Arbeitslastlatenz.]{#vmstat-correlated-pressure .correct explanation="Wiederholte, verknüpfte Belege verbinden das Speicherverhalten mit aktuellen Auswirkungen."}
@@ -66,8 +63,7 @@ Welche Belege stützen die Diagnose eines aktuellen Speicherdrucks besser?
 
 CPU-Spalten enthalten gewöhnlich die Prozentanteile für Benutzer (`us`), System (`sy`), Leerlauf (`id`), E/A-Wartezeit (`wa`) und entzogene Zeit (`st`). Systemspalten enthalten Interrupts (`in`) und Kontextwechsel (`cs`) pro Sekunde. Interpretiere Spitzen im Vergleich zu einer Grundlinie; hohe Kontextwechselraten können für manche Arbeitslasten normal sein.
 
-:::single-choice{#vmstat-r-column}
-Was stellt das Prozessfeld `r` dar?
+:::single-choice{#vmstat-r-column} Was stellt das Prozessfeld `r` dar?
 
 ::option[Schreibgeschützt eingehängte Dateisysteme.]{#vmstat-readonly explanation="Mount-Optionen von Dateisystemen werden durch das Prozessfeld nicht dargestellt."}
 ::option[Entfernte Benutzer mit aktiven Shells.]{#vmstat-remote-users explanation="Anmeldesitzungen werden von anderen Werkzeugen gemeldet."}

@@ -16,8 +16,7 @@ Red Hat Enterprise Linux, often called **RHEL**, is a commercial Linux distribut
 
 RHEL is one of the most important enterprise Linux distributions because it is used across servers, data centers, cloud systems, and regulated business environments. Its role is different from more general-purpose community distros because supportability and long-term lifecycle planning are central to its value.
 
-:::single-choice{#match-rhel-priorities}
-Which need most directly matches the design goals of RHEL?
+:::single-choice{#match-rhel-priorities} Which need most directly matches the design goals of RHEL?
 
 ::option[Continuous feature changes with no support lifecycle]{#continuous-unsupported-change explanation="RHEL follows a conservative, published lifecycle rather than continuous unsupported change. Predictability is part of its enterprise value."}
 ::option[Predictable releases with long-term professional support]{#predictable-enterprise-platform .correct explanation="RHEL is designed for organizations that need planned lifecycles, maintenance, and professional support. These qualities help production systems remain supportable over time."}
@@ -36,8 +35,7 @@ RHEL is closely connected to the broader Red Hat ecosystem. Fedora is the commun
 
 If you want to compare the two paths, see [Fedora](https://labex.io/lesson/fedora). For a broader overview of distro families, see [Choosing a Linux Distribution](https://labex.io/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#compare-fedora-and-rhel}
-How does Fedora relate to RHEL in the Red Hat ecosystem?
+:::single-choice{#compare-fedora-and-rhel} How does Fedora relate to RHEL in the Red Hat ecosystem?
 
 ::option[Fedora is an older RHEL release kept without security maintenance]{#fedora-old-rhel explanation="Fedora is a separate community distribution, not an expired RHEL version. It has its own releases and a faster pace."}
 ::option[Fedora is an upstream community project for technologies that may reach RHEL]{#fedora-upstream .correct explanation="Fedora is the faster-moving upstream community project. Red Hat draws from that ecosystem when developing its more conservative enterprise platform."}
@@ -50,8 +48,7 @@ RHEL uses the RPM package format and tools such as DNF to install, update, and m
 
 Package management is a core operational skill for RHEL administrators because long-term maintenance and predictable updates are central to how enterprise systems are run.
 
-:::single-choice{#relate-rpm-and-dnf}
-How do RPM and DNF work together on RHEL?
+:::single-choice{#relate-rpm-and-dnf} How do RPM and DNF work together on RHEL?
 
 ::option[RPM defines packaged software, while DNF manages repository content and dependencies]{#rpm-format-dnf-tool .correct explanation="RHEL software is distributed as RPM packages, and DNF is the higher-level tool commonly used to find, install, update, and remove that content."}
 ::option[DNF defines packaged software, while RPM manages the graphical desktop]{#dnf-format-rpm-desktop explanation="This reverses and misstates their roles. RPM is the package system, while DNF performs higher-level software management."}
@@ -64,8 +61,7 @@ One of the biggest reasons organizations choose RHEL is enterprise support. That
 
 For businesses, this support model can matter as much as the technical features of the distribution itself.
 
-:::single-choice{#use-published-lifecycle}
-Why is a published support lifecycle valuable to an organization?
+:::single-choice{#use-published-lifecycle} Why is a published support lifecycle valuable to an organization?
 
 ::option[It guarantees that every application will run without testing]{#guarantee-all-applications explanation="A supported operating system does not guarantee compatibility with every application. Organizations still need compatibility checks and testing."}
 ::option[It removes the need to install security updates during support]{#avoid-security-updates explanation="A support lifecycle provides access to maintenance and security updates; it does not make those updates unnecessary. Systems still need active maintenance."}

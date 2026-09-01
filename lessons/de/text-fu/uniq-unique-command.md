@@ -38,8 +38,7 @@ magazine
 
 Die Eingabedatei bleibt unverändert, weil das Ergebnis nach stdout geschrieben wird.
 
-:::single-choice{#uniq-collapse-adjacent}
-Was bewirkt `uniq reading.txt` standardmäßig?
+:::single-choice{#uniq-collapse-adjacent} Was bewirkt `uniq reading.txt` standardmäßig?
 
 ::option[Der Befehl sortiert die vollständige Datei und entfernt anschließend jeden wiederholten Wert.]{#uniq-auto-sort explanation="`uniq` erhält die Eingabereihenfolge und sortiert nicht. Getrennte Vorkommen bleiben getrennte Gruppen."}
 ::option[Der Befehl gibt aus jeder benachbarten Gruppe gleicher Zeilen eine Zeile aus.]{#uniq-one-per-group .correct explanation="Standardmäßig fasst `uniq` aufeinanderfolgende gleiche Zeilen zu einer Ausgabezeile zusammen."}
@@ -60,8 +59,7 @@ $ uniq -c reading.txt
 
 Diese Werte sind Lauflängen und keine globalen Häufigkeiten, sofern nicht zuvor alle gleichen Zeilen nebeneinander angeordnet wurden.
 
-:::single-choice{#uniq-count-groups}
-Was beschreibt die Zahl von `uniq -c`?
+:::single-choice{#uniq-count-groups} Was beschreibt die Zahl von `uniq -c`?
 
 ::option[Die Anzahl der Zeichen in jeder Eingabezeile.]{#uniq-character-count explanation="Zeichen zu zählen ist nicht Aufgabe von `uniq -c`; Werkzeuge wie `wc` ermitteln Zeichen- und Bytesummen."}
 ::option[Die Anzahl aufeinanderfolgender gleicher Zeilen in jeder Gruppe.]{#uniq-consecutive-count .correct explanation="`-c` stellt jeder zusammengefassten benachbarten Gruppe die Anzahl ihrer enthaltenen Zeilen voran."}
@@ -88,16 +86,14 @@ article
 
 GNU `uniq -D` gibt jede Zeile aus wiederholten Gruppen aus, während das kleine `-d` ihren Wert jeweils einmal ausgibt.
 
-:::single-choice{#uniq-only-singletons}
-Welcher Befehl gibt nur benachbarte Gruppen aus, die genau einmal vorkommen?
+:::single-choice{#uniq-only-singletons} Welcher Befehl gibt nur benachbarte Gruppen aus, die genau einmal vorkommen?
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="Dieser Befehl gibt jede Gruppe mit einer Anzahl aus, sowohl wiederholte als auch einmalige Gruppen."}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="Das kleine `-d` gibt je eine Zeile für wiederholte Gruppen aus und wählt damit das Gegenteil."}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="Die Option `-u` wählt Gruppen aus, deren benachbarte Lauflänge genau eins beträgt."}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-Welcher Befehl gibt für jede benachbarte Gruppe mit mehr als einem Vorkommen eine Zeile aus?
+:::single-choice{#uniq-one-per-duplicate-group} Welcher Befehl gibt für jede benachbarte Gruppe mit mehr als einem Vorkommen eine Zeile aus?
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="Die Option `-d` wählt wiederholte benachbarte Gruppen und gibt pro Gruppe eine repräsentative Zeile aus."}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="Das große GNU-`-D` gibt alle Zeilen wiederholter Gruppen aus und nicht nur eine repräsentative Zeile."}
@@ -143,8 +139,7 @@ paper
 
 Verwende für beide Schritte eine einheitliche Locale und Vergleichsregel. `sort -u reading.txt` kann ebenfalls in einem Befehl sortieren und je gleichem Sortierschlüssel eine Zeile bewahren.
 
-:::single-choice{#uniq-separated-duplicates}
-Gleiche Zeilen sind über `reading.txt` verteilt und die Ausgabereihenfolge darf sich ändern. Welche Pipeline erzeugt je vollständiger unterschiedlicher Zeile eine sortierte Kopie?
+:::single-choice{#uniq-separated-duplicates} Gleiche Zeilen sind über `reading.txt` verteilt und die Ausgabereihenfolge darf sich ändern. Welche Pipeline erzeugt je vollständiger unterschiedlicher Zeile eine sortierte Kopie?
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="Die Sortierung gruppiert gleiche vollständige Zeilen; anschließend fasst `uniq` jede benachbarte Gruppe zu einer Zeile zusammen."}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="`uniq` läuft, bevor getrennte gleiche Zeilen benachbart werden. Nach der späteren Sortierung können daher weiterhin doppelte Ausgabezeilen vorhanden sein."}

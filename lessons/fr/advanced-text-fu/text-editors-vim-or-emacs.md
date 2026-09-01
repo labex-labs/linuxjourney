@@ -27,8 +27,7 @@ $ command -v emacs
 
 Une sortie vide accompagnée d'un état différent de zéro signifie que ce nom n'a pas été trouvé par la recherche de commandes actuelle. Les systèmes minimaux peuvent fournir `vi`, tandis que d'autres proposent Nano, voire aucun éditeur interactif.
 
-:::single-choice{#editors-check-availability}
-Quelle commande vérifie si le shell actuel peut résoudre un exécutable nommé `vim` ?
+:::single-choice{#editors-check-availability} Quelle commande vérifie si le shell actuel peut résoudre un exécutable nommé `vim` ?
 
 ::option[`vim --install`]{#editors-vim-install explanation="Vim n'utilise pas cette commande comme vérification d'installation portable, et l'installation des paquets dépend de la distribution."}
 ::option[`file ~/.vimrc`]{#editors-file-vimrc explanation="Cette commande identifie le type d'un fichier de configuration s'il existe ; elle ne détermine pas si `vim` peut être résolu."}
@@ -45,8 +44,7 @@ Vim est un éditeur modal. Une même touche peut avoir un sens différent selon 
 
 Avec de la pratique, ce modèle rend les modifications répétitives au clavier efficaces, mais les nouveaux utilisateurs doivent surveiller le mode actif. Les leçons suivantes présentent les opérations de Vim une par une.
 
-:::single-choice{#editors-vim-modal-meaning}
-Que signifie le fait que Vim soit modal ?
+:::single-choice{#editors-vim-modal-meaning} Que signifie le fait que Vim soit modal ?
 
 ::option[Chaque fichier s'ouvre dans une fenêtre graphique distincte.]{#editors-vim-windows explanation="Les fenêtres et les tampons sont des concepts différents. Le caractère modal concerne la variation du rôle des touches selon l'état de l'éditeur."}
 ::option[Vim ne peut modifier qu'un seul type de fichier texte à la fois.]{#editors-vim-file-type explanation="Vim prend en charge de nombreux types de fichiers. Le terme modal décrit son modèle d'interaction, pas une restriction sur les fichiers."}
@@ -59,8 +57,7 @@ Emacs emploie généralement des combinaisons de touches et des commandes nommé
 
 Vim et Emacs vont tous deux bien au-delà de l'édition élémentaire grâce à leur configuration et à leurs extensions. Commencez par ouvrir, modifier, enregistrer et fermer un fichier texte brut avant d'ajouter des personnalisations.
 
-:::single-choice{#editors-emacs-buffer}
-Dans la terminologie d'Emacs, où se trouve normalement le texte modifiable d'un fichier ouvert ?
+:::single-choice{#editors-emacs-buffer} Dans la terminologie d'Emacs, où se trouve normalement le texte modifiable d'un fichier ouvert ?
 
 ::option[Dans un tampon.]{#editors-emacs-buffer-answer .correct explanation="Emacs ouvre un fichier dans un tampon, qui contient le texte affiché ou modifié."}
 ::option[Dans la table d'alias du shell.]{#editors-emacs-alias-table explanation="Les alias appartiennent à la résolution des commandes du shell et ne stockent pas le texte de l'éditeur."}
@@ -78,8 +75,7 @@ $ export EDITOR="$VISUAL"
 
 Ces variables expriment une préférence ; elles n'installent pas le programme. Indiquez une commande qui existe réellement et n'ajoutez ces exportations au fichier de démarrage approprié du shell qu'après les avoir testées.
 
-:::single-choice{#editors-editor-variable}
-Quel est l'effet de `export EDITOR=vim` ?
+:::single-choice{#editors-editor-variable} Quel est l'effet de `export EDITOR=vim` ?
 
 ::option[Il indique aux futurs processus enfants que `vim` est l'éditeur préféré.]{#editors-export-preference .correct explanation="L'exportation place cette préférence dans l'environnement hérité par les commandes lancées depuis le shell actuel."}
 ::option[Il installe Vim pour tous les utilisateurs du système.]{#editors-install-vim explanation="L'affectation d'une variable d'environnement n'installe aucun paquet et ne modifie pas le système des autres utilisateurs."}
@@ -97,8 +93,7 @@ $ vim editor-practice.txt
 
 Évitez de commencer avec une configuration système ou les données d'un autre utilisateur. Sauvegardez tout fichier important avant de le modifier, apprenez à enregistrer et à quitter, puis contrôlez le résultat avec une commande en lecture seule comme `cat` ou `diff`.
 
-:::single-choice{#editors-first-practice-file}
-Quel fichier est le plus sûr pour découvrir un éditeur inconnu ?
+:::single-choice{#editors-first-practice-file} Quel fichier est le plus sûr pour découvrir un éditeur inconnu ?
 
 ::option[Un fichier de démarrage critique ouvert en tant que root.]{#editors-boot-file explanation="Une modification accidentelle pourrait empêcher un démarrage normal, et les privilèges élevés aggravent les conséquences d'une erreur."}
 ::option[Un fichier texte jetable dans un répertoire qui vous appartient.]{#editors-disposable-file .correct explanation="Un fichier d'essai limite les conséquences d'une modification accidentelle pendant l'apprentissage de la navigation, de l'enregistrement et de la fermeture."}

@@ -21,8 +21,7 @@ meta_keywords: "Linux DNS, BIND, dnsmasq, PowerDNS, DNS 服务器设置, Linux �
 
 功能和软件包会发生变化，因此请查阅已安装版本的官方文档。只部署需要的角色，并禁用非预期的递归查询或区域服务。
 
-:::single-choice{#dns-setup-authoritative-role}
-哪种角色会为其服务的区域发布最终记录？
+:::single-choice{#dns-setup-authoritative-role} 哪种角色会为其服务的区域发布最终记录？
 
 ::option[权威 DNS 服务器。]{#dns-setup-authoritative .correct explanation="它从已配置的区域权威中作答，而不是递归查找任意名称。"}
 ::option[以太网交换机。]{#dns-setup-switch explanation="交换机转发链路层帧，并不发布 DNS 区域。"}
@@ -35,8 +34,7 @@ meta_keywords: "Linux DNS, BIND, dnsmasq, PowerDNS, DNS 服务器设置, Linux �
 
 绝不要向互联网开放不受限制的递归查询。开放解析器可能被用于反射攻击，并消耗本地资源。
 
-:::single-choice{#dns-setup-open-recursion}
-为什么要将递归查询限制给获准客户端？
+:::single-choice{#dns-setup-open-recursion} 为什么要将递归查询限制给获准客户端？
 
 ::option[递归 DNS 无法缓存任何记录。]{#dns-setup-no-cache explanation="缓存是递归解析器的核心功能。"}
 ::option[权威委派要求每位用户都是 root。]{#dns-setup-all-root explanation="DNS 委派不会授予操作系统权限。"}
@@ -54,8 +52,7 @@ $ named-checkzone example.com /etc/bind/zones/db.example.com
 
 请使用适合该主机的权限和路径运行。解析器检查成功并不能证明委派、序列号传播、DNSSEC 信任链、防火墙连通性或回答正确，因此还要进行受控查询。
 
-:::single-choice{#dns-setup-zone-validation-limit}
-区域语法检查成功无法证明什么？
+:::single-choice{#dns-setup-zone-validation-limit} 区域语法检查成功无法证明什么？
 
 ::option[委派和端到端权威回答正常工作。]{#dns-setup-not-end-to-end .correct explanation="父区域数据、服务激活、网络策略和运行时加载仍是彼此独立的环节。"}
 ::option[检查器可以解析区域文本。]{#dns-setup-parser-proves explanation="这正是检查器直接提供的证据。"}
@@ -74,8 +71,7 @@ $ dig @192.0.2.53 example.com SOA +norecurse +tcp
 
 对于递归服务，应测试允许和拒绝的客户端网络、DNSSEC 验证、缓存行为，以及上游依赖失效时的表现。
 
-:::single-choice{#dns-setup-norecurse-test}
-为什么使用 `+norecurse` 查询权威服务器？
+:::single-choice{#dns-setup-norecurse-test} 为什么使用 `+norecurse` 查询权威服务器？
 
 ::option[在不请求递归的情况下测试权威回答。]{#dns-setup-authority-only .correct explanation="这样可以把区域服务与任何递归行为区分开来。"}
 ::option[删除其区域中的每一条记录。]{#dns-setup-remove-records explanation="查询不会编辑权威数据。"}
@@ -86,8 +82,7 @@ $ dig @192.0.2.53 example.com SOA +norecurse +tcp
 
 监控查询失败、延迟、缓存行为、资源使用、区域传送、序列号一致性、DNSSEC 到期和委派健康状况。安全备份源配置和签名材料，同时验证全新实例能够加载区域并提供正确回答。及时修补仍受支持的版本，并限制控制接口、动态更新和区域传送访问权限。
 
-:::single-choice{#dns-setup-redundancy-verification}
-权威 DNS 冗余测试应包括什么？
+:::single-choice{#dns-setup-redundancy-verification} 权威 DNS 冗余测试应包括什么？
 
 ::option[查询每台服务器，并测试其中一台不可用时的运行情况。]{#dns-setup-test-each-server .correct explanation="列出多条 NS 记录并不能证明每项独立服务都可访问且数据是最新的。"}
 ::option[只检查所有服务器是否拥有相似的主机名。]{#dns-setup-hostname-similarity explanation="名称不能证明数据同步或服务可用。"}

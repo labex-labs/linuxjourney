@@ -27,8 +27,7 @@ cd [DIRECTORY]
 - **絶対パス**：ルートディレクトリ（`/`）から始まる完全なパス。例：`/home/pete/Desktop`
 - **相対パス**：現在位置を基準にするパス。`/home/pete/Documents` にいて `taxes` というサブディレクトリへ入るなら、`taxes/` を使える
 
-:::single-choice{#recognize-absolute-cd-path}
-絶対パスを正しく説明しているものはどれですか？
+:::single-choice{#recognize-absolute-cd-path} 絶対パスを正しく説明しているものはどれですか？
 
 ::option[シェルが現在使っているディレクトリから始まります]{#begins-at-current-directory explanation="シェルの現在位置に依存するパスは相対パスです。必ずしもルートから始まりません。"}
 ::option[親ディレクトリを含まず、最後のディレクトリ名だけを含みます]{#contains-final-name-only explanation="目的地名 1 つは通常、現在のディレクトリからの相対パスとして解釈されます。絶対パスは `/` からの経路を含みます。"}
@@ -52,8 +51,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-`cd` の後でシェルの現在位置を確認するコマンドはどれですか？
+:::single-choice{#verify-changed-directory} `cd` の後でシェルの現在位置を確認するコマンドはどれですか？
 
 ::option[`cd`]{#cd-command explanation="`cd` は現在のディレクトリを変更しますが、通常、結果の完全なパスは表示しません。`pwd` で確認します。"}
 ::option[`ls`]{#ls-command explanation="`ls` はディレクトリ内容を表示します。場所を調べる助けにはなりますが、場所そのものを報告するのは `pwd` です。"}
@@ -88,16 +86,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-`/home/pete/Pictures` から `/home/pete` へ移動するコマンドはどれですか？
+:::single-choice{#move-to-parent-directory} `/home/pete/Pictures` から `/home/pete` へ移動するコマンドはどれですか？
 
 ::option[`cd .`]{#cd-current explanation="`.` は現在のディレクトリを表すため、`/home/pete/Pictures` にとどまります。"}
 ::option[`cd -`]{#cd-previous explanation="`-` は直前の作業ディレクトリへ戻りますが、必ずしも親とは限りません。1 つ上へ行く場合は `..` を使います。"}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` は現在のディレクトリの親を表します。`Pictures` の親は `/home/pete` です。"}
 :::
 
-:::single-choice{#return-to-previous-directory}
-現在のディレクトリの直前に使っていたディレクトリへ戻るコマンドはどれですか？
+:::single-choice{#return-to-previous-directory} 現在のディレクトリの直前に使っていたディレクトリへ戻るコマンドはどれですか？
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` は直前の作業ディレクトリへ切り替えます。その場所はファイルシステム内のどこでもかまいません。"}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` は親ディレクトリへ移動します。親と直前のディレクトリは常に同じとは限りません。"}
@@ -128,8 +124,7 @@ $ cd ../..
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-`Vacation Photos` を 1 つのディレクトリ名として扱うコマンドはどれですか？
+:::single-choice{#enter-directory-with-spaces} `Vacation Photos` を 1 つのディレクトリ名として扱うコマンドはどれですか？
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="引用符がないため、シェルは `Vacation` と `Photos` を 1 つの名前ではなく別々の引数として渡します。"}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="行全体を引用すると、シェルはそれを 1 つのコマンド名として扱います。コマンド自体はパスの引用符の外に置きます。"}

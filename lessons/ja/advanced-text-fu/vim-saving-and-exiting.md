@@ -24,8 +24,7 @@ Vim では書き込みと終了は別の操作です。Ex コマンドを入力�
 
 `:w copy.txt` は、現在のバッファー名を維持したまま内容を別のパスへ書き込みます。バッファーにも新しいパス名を採用させる場合は `:saveas copy.txt` を使います。
 
-:::single-choice{#vim-save-without-quit}
-終了せず、現在のバッファーを関連付けられたファイルへ書き込む Vim コマンドはどれですか？
+:::single-choice{#vim-save-without-quit} 終了せず、現在のバッファーを関連付けられたファイルへ書き込む Vim コマンドはどれですか？
 
 ::option[`:q`]{#vim-save-q explanation="`:q` は終了を要求し、変更済みバッファーを書き込みません。"}
 ::option[`:w`]{#vim-save-w .correct explanation="`:write` コマンドは現在のバッファーを保存し、編集ウィンドウを開いたままにします。"}
@@ -42,8 +41,7 @@ Vim では書き込みと終了は別の操作です。Ex コマンドを入力�
 
 現在のバッファーが変更済みで、その変更が失われる場合、通常 Vim は処理を拒否して警告を報告します。この安全策によって、書き込むかどうかを再検討できます。
 
-:::single-choice{#vim-quit-clean-buffer}
-保存していない変更を失わない場合に、現在の Vim ウィンドウを終了するコマンドはどれですか？
+:::single-choice{#vim-quit-clean-buffer} 保存していない変更を失わない場合に、現在の Vim ウィンドウを終了するコマンドはどれですか？
 
 ::option[`:w`]{#vim-quit-w explanation="これはバッファーを書き込みますが、現在のウィンドウを開いたままにします。"}
 ::option[`:q`]{#vim-quit-q .correct explanation="通常の終了コマンドは、Vim の変更済みバッファー保護が許す場合にウィンドウを閉じます。"}
@@ -60,8 +58,7 @@ Vim では書き込みと終了は別の操作です。Ex コマンドを入力�
 
 感嘆符は、保存していない変更に対する警告を上書きします。そのバッファー変更は書き込まれないため、Enter を押す前に本当に不要か確認してください。
 
-:::single-choice{#vim-quit-discard-changes}
-現在のバッファーに、意図的に保存したくない変更があります。現在のウィンドウを終了し、その変更を破棄するコマンドはどれですか？
+:::single-choice{#vim-quit-discard-changes} 現在のバッファーに、意図的に保存したくない変更があります。現在のウィンドウを終了し、その変更を破棄するコマンドはどれですか？
 
 ::option[`:q`]{#vim-discard-plain-q explanation="通常の `:q` は、変更済みバッファーの内容を失うことになる場合、終了を拒否します。"}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq` は終了前に変更を書き込むため、破棄とは反対の動作です。"}
@@ -78,8 +75,7 @@ Vim では書き込みと終了は別の操作です。Ex コマンドを入力�
 
 書き込みに失敗すると、Vim は要求された終了を完了しません。データがディスクへ書かれたと思い込まず、エラーを解決してください。
 
-:::single-choice{#vim-write-and-quit}
-現在のバッファーを書き込み、成功した場合に現在のウィンドウを終了するコマンドはどれですか？
+:::single-choice{#vim-write-and-quit} 現在のバッファーを書き込み、成功した場合に現在のウィンドウを終了するコマンドはどれですか？
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="書き込みと終了を組み合わせ、書き込みが成功した場合にだけ終了します。"}
 ::option[`:q!`]{#vim-save-force-quit explanation="これは変更を書き込まず、破棄して終了します。"}
@@ -100,8 +96,7 @@ ZZ
 
 これは、バッファーが未変更でも書き込みを要求する `:wq` とはわずかに異なります。大文字の `ZQ` は、`:q!` と同様に、書き込まず終了するノーマルモードのコマンドです。
 
-:::single-choice{#vim-write-if-modified-quit}
-バッファーが変更済みの場合だけ書き込み、その後終了するノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-write-if-modified-quit} バッファーが変更済みの場合だけ書き込み、その後終了するノーマルモードのコマンドはどれですか？
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="大文字の `ZZ` は、`:x` に対応する「変更済みなら書き込んで終了」の動作を行います。"}
 ::option[`zz`]{#vim-center-screen explanation="小文字の `zz` は現在行をウィンドウ中央へ移動し、保存も終了もしません。"}

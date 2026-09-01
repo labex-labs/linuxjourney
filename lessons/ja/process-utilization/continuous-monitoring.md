@@ -25,8 +25,7 @@ $ systemctl list-timers --all | grep sysstat
 
 ディストリビューションの sysstat データディレクトリに新しい活動ファイルが作られていることを確認し、その権限と保存方針も見直してください。
 
-:::single-choice{#sar-installation-verification}
-`sysstat` のインストール後に何を確認すべきですか？
+:::single-choice{#sar-installation-verification} `sysstat` のインストール後に何を確認すべきですか？
 
 ::option[収集が有効で、活動ファイルが更新されていること。]{#sar-collector-updating .correct explanation="パッケージのインストールと、定期収集が実際に動いていることは別の条件です。"}
 ::option[すべてのプロセスを手動で再起動したこと。]{#sar-restart-processes explanation="監視コレクターのインストールに、全ワークロードの再起動は必要ありません。"}
@@ -43,8 +42,7 @@ $ sar -u 1 3
 
 ほかによく使うレポートには、実行キューとロード（`-q`）、メモリ（`-r`）、ページング（`-B`）、ブロックデバイス（`-d`）、CPU ごとの活動（`-P ALL`）があります。オプションとフィールドは sysstat のバージョンによって異なるため、`sar --help` またはローカルのマニュアルを確認してください。
 
-:::single-choice{#sar-one-second-count}
-`sar -u 1 3` は何を要求しますか？
+:::single-choice{#sar-one-second-count} `sar -u 1 3` は何を要求しますか？
 
 ::option[1秒間隔の CPU レポートを3回。]{#sar-three-cpu-samples .correct explanation="最初の数値は間隔の秒数、2番目はレポート回数です。"}
 ::option[ちょうど3日間を対象とするレポートを1回。]{#sar-three-days explanation="引数は日付範囲ではなく、サンプリング間隔と回数を指定します。"}
@@ -61,8 +59,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 レポートのヘッダーでファイルの完全な日付を確認してください。2桁の接尾辞は日付を表すことが多く、保存期間をまたぐと曖昧になる場合があります。また、保存されたバイナリ形式を読むには、互換性のある sysstat バージョンが必要なことがあります。
 
-:::single-choice{#sar-historical-file-option}
-指定した活動ファイルを `sar` に読み込ませるオプションはどれですか？
+:::single-choice{#sar-historical-file-option} 指定した活動ファイルを `sar` に読み込ませるオプションはどれですか？
 
 ::option[`-P`]{#sar-option-p explanation="これは入力ファイルではなく、プロセッサーレポートを選択します。"}
 ::option[`-q`]{#sar-option-q explanation="これはキューとロードのレポートを選択します。"}
@@ -75,8 +72,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 データの欠落は、ホストの停止、コレクターの障害、または保存期間による削除を意味することがあります。インシデント発生前に証拠の欠落へ気付けるよう、監視パイプライン自体も監視してください。
 
-:::single-choice{#sar-incident-method}
-インシデントレビューでは、`sar` の履歴データをどう使うべきですか？
+:::single-choice{#sar-incident-method} インシデントレビューでは、`sar` の履歴データをどう使うべきですか？
 
 ::option[単一のカウンターの最大値を、証明済みの根本原因として扱う。]{#sar-single-root explanation="1つの相関だけでは因果関係は確立できません。"}
 ::option[確認済みの同じ時間帯について複数の指標を比較する。]{#sar-correlate-window .correct explanation="時間をそろえたシグナルは、仮説の切り分けと、システムの挙動をインシデントへ結び付けるのに役立ちます。"}

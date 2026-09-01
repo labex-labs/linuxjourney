@@ -30,8 +30,7 @@ $ modinfo NOM_DU_MODULE
 
 `modinfo` peut afficher le nom du fichier, les alias, paramètres, la licence, la description et les informations de signature. Considérez ces métadonnées comme descriptives, pas comme une preuve de confiance ou de compatibilité avec la charge.
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-Qu'affiche `lsmod` ?
+:::single-choice{#kernel-modules-lsmod-purpose} Qu'affiche `lsmod` ?
 
 ::option[Tous les paquets de modules disponibles dans les dépôts distants.]{#kernel-modules-repository-list explanation="L'inventaire des dépôts exige des requêtes du gestionnaire de paquets."}
 ::option[Uniquement les pilotes compilés directement dans l'image du noyau.]{#kernel-modules-builtins explanation="Les fonctions intégrées ne sont pas des modules chargeables et n'apparaissent normalement pas dans lsmod."}
@@ -50,8 +49,7 @@ $ sudo modprobe NOM_DU_MODULE
 
 Avant le chargement, confirmez l'origine du module, la politique de signature, la compatibilité avec la version du noyau, les paramètres, l'association matérielle attendue et le retour arrière. Secure Boot ou le verrouillage du noyau peut rejeter les modules non signés ; forcer du code incompatible risque un plantage ou une compromission.
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-Pourquoi préfère-t-on normalement `modprobe` à l'emploi direct d'`insmod` ?
+:::single-choice{#kernel-modules-modprobe-dependencies} Pourquoi préfère-t-on normalement `modprobe` à l'emploi direct d'`insmod` ?
 
 ::option[Il exécute le module entièrement dans l'espace utilisateur non privilégié.]{#kernel-modules-modprobe-userspace explanation="Le module inséré s'exécute comme code privilégié du noyau."}
 ::option[Il garantit que chaque module tiers est signé et sûr.]{#kernel-modules-modprobe-guarantee explanation="L'application des signatures dépend des règles et une signature valide ne prouve pas l'absence de défauts."}
@@ -74,8 +72,7 @@ example_module
 
 Les alias matériels déclenchent souvent un chargement automatique sans liste explicite. Pour les modules nécessaires pendant le démarrage précoce, mettez à jour l'initramfs selon la procédure documentée de la distribution après les changements de configuration.
 
-:::single-choice{#kernel-modules-options-versus-load}
-Que fait une ligne `options` dans `/etc/modprobe.d/` ?
+:::single-choice{#kernel-modules-options-versus-load} Que fait une ligne `options` dans `/etc/modprobe.d/` ?
 
 ::option[Elle garantit à elle seule le chargement du module à chaque démarrage.]{#kernel-modules-options-autoload explanation="Les demandes de chargement au démarrage emploient un autre mécanisme, comme la configuration modules-load ou les alias de périphériques."}
 ::option[Elle définit les paramètres employés lors du chargement du module nommé.]{#kernel-modules-options-parameters .correct explanation="Modprobe applique les arguments clé-valeur configurés pendant l'insertion."}
@@ -92,8 +89,7 @@ blacklist example_module
 
 La liste noire supprime normalement le chargement automatique au moyen des alias du module. Elle ne décharge pas un module déjà actif, ne le retire pas d'un initramfs et n'empêche pas nécessairement un chargement explicite par son nom exact ou comme dépendance. Le renforcement de la sécurité exige une combinaison adaptée à la menace : disponibilité du module, application des signatures, contenu de l'initramfs, paramètres de démarrage et règles.
 
-:::single-choice{#kernel-modules-blacklist-effect}
-Que supprime principalement une ligne modprobe `blacklist` élémentaire ?
+:::single-choice{#kernel-modules-blacklist-effect} Que supprime principalement une ligne modprobe `blacklist` élémentaire ?
 
 ::option[Le chargement automatique par les alias du module.]{#kernel-modules-blacklist-aliases .correct explanation="La directive n'interdit pas universellement toutes les voies par lesquelles le code peut être ou devenir chargé."}
 ::option[L'exécution de chaque programme utilisateur portant un nom semblable.]{#kernel-modules-blacklist-user-programs explanation="La configuration modprobe s'applique à la résolution des modules du noyau."}
@@ -112,8 +108,7 @@ Modprobe peut retirer les dépendances désormais inutilisées lorsqu'il convien
 
 Ne forcez jamais le déchargement d'un module sur un système à préserver. Des bogues de retrait ou une activité encore en cours peuvent faire planter le noyau ou corrompre des données.
 
-:::single-choice{#kernel-modules-remove-command}
-Quelle commande demande le retrait, tenant compte des dépendances, d'un module nommé ?
+:::single-choice{#kernel-modules-remove-command} Quelle commande demande le retrait, tenant compte des dépendances, d'un module nommé ?
 
 ::option[`lsmod -r NOM_DU_MODULE`]{#kernel-modules-lsmod-remove explanation="Lsmod est un outil d'affichage en lecture seule et ne retire rien."}
 ::option[`uname -r NOM_DU_MODULE`]{#kernel-modules-uname-remove explanation="Uname indique des informations sur le noyau et ne gère pas les modules."}

@@ -25,8 +25,7 @@ uid=1000(alice) gid=1000(alice) groups=1000(alice),27(sudo)
 
 値はシステムによって異なります。人がログインするアカウントには `/home/alice` のようなホームディレクトリがあるのが一般的ですが、別のパスを使う場合や、通常のホームを持たない場合もあります。サービスアカウントは、対話的ログインではなく、制限された識別情報でソフトウェアを実行するために存在することがよくあります。
 
-:::single-choice{#users-uid-purpose}
-カーネルがユーザー識別情報を表すために主に使う識別子はどれですか？
+:::single-choice{#users-uid-purpose} カーネルがユーザー識別情報を表すために主に使う識別子はどれですか？
 
 ::option[ホームディレクトリのパス名]{#users-home-path explanation="ホームパスはアカウント設定であり、異なる場合や存在しない場合があります。カーネルのユーザー識別子ではありません。"}
 ::option[数値の UID]{#users-numeric-uid .correct explanation="アカウントデータベースは名前を数値 UID に対応付け、UID はプロセス資格情報と所有権記録で使われます。"}
@@ -46,8 +45,7 @@ $ groups alice
 
 これらのコマンドは、設定または名前解決された識別情報を報告します。ディレクトリサービスやキャッシュが関与する場合があるため、`/etc/group` を直接読んでも、有効な所属関係をすべて確認できるとは限りません。
 
-:::single-choice{#users-primary-supplementary-groups}
-一つの Linux アカウントは通常、どのようにグループへ参加しますか？
+:::single-choice{#users-primary-supplementary-groups} 一つの Linux アカウントは通常、どのようにグループへ参加しますか？
 
 ::option[存続期間中、厳密に一つのグループだけに所属できる。]{#users-single-group explanation="Linux プロセスは、プライマリグループに加えて補助グループの一覧を持てます。"}
 ::option[読み取れるファイルを所有するすべてのグループに所属する。]{#users-readable-groups explanation="ファイルの読み取り可否は権限と資格情報に従うもので、自動的にグループ所属を作るわけではありません。"}
@@ -60,8 +58,7 @@ $ groups alice
 
 これは「プロセスは常に、起動したユーザーとしてだけ動く」という説明より正確です。set-user-ID 実行ファイル、サービスマネージャー、コンテナ、名前空間、権限を変更するシステムコールによって、特定のコンテキストで見える、または有効な識別情報が変わる場合があります。
 
-:::single-choice{#users-process-access-identity}
-カーネルがプロセスとファイル権限を照合するとき、一般に考慮する情報はどれですか？
+:::single-choice{#users-process-access-identity} カーネルがプロセスとファイル権限を照合するとき、一般に考慮する情報はどれですか？
 
 ::option[プロセスの実効 UID、実効 GID、補助グループ。]{#users-effective-credentials .correct explanation="通常の任意アクセス制御では、これらの資格情報を所有権と権限データに照合します。"}
 ::option[プロセスを起動した端末の配色テーマ。]{#users-terminal-theme explanation="表示設定はファイルシステムの権限確認には関与しません。"}
@@ -74,8 +71,7 @@ $ groups alice
 
 日常の作業には非特権アカウントを使います。管理権限があると、パスの誤り、信頼できないコマンド、侵害されたソフトウェアによる影響が大きくなります。
 
-:::single-choice{#users-root-uid}
-伝統的に root アカウントを識別する数値 UID はどれですか？
+:::single-choice{#users-root-uid} 伝統的に root アカウントを識別する数値 UID はどれですか？
 
 ::option[`0`]{#users-uid-zero .correct explanation="Linux と Unix 系システムでは、伝統的に UID 0 をスーパーユーザー識別情報として予約します。"}
 ::option[`1000`]{#users-uid-thousand explanation="多くのディストリビューションは最初の通常ユーザーへ1000前後を割り当てますが、root の UID ではありません。"}
@@ -94,8 +90,7 @@ $ sudo -l
 
 管理コマンドは、作業に必要で、その影響を理解している場合だけ使ってください。権限エラーを消すためだけに `sudo` を使ったり、`/etc/shadow` のようなパスワードハッシュデータベースを気軽な練習として表示したりしてはいけません。
 
-:::single-choice{#users-sudo-policy}
-`sudo` は要求されたコマンドを実行する前に何をしますか？
+:::single-choice{#users-sudo-policy} `sudo` は要求されたコマンドを実行する前に何をしますか？
 
 ::option[要求された対象識別情報の使用が許可されるか、設定済みポリシーへ問い合わせる。]{#users-sudo-policy-check .correct explanation="`sudo` はポリシーに従って認可し、許可された場合に設定された対象の資格情報を確立します。"}
 ::option[すべてのローカルユーザーへ常に無制限の root アクセスを与える。]{#users-sudo-always-root explanation="認可はポリシーで制御され、拒否されたユーザーやコマンドに一律の root アクセスは与えられません。"}

@@ -22,8 +22,7 @@ $ vmstat 1
 
 첫 데이터 행은 일반적으로 부팅 이후의 평균을 보고하고 이후 행은 각 구간을 다룹니다. 대표 기간을 포착한 뒤 `Ctrl-C`로 중지합니다. 단위와 사용 가능한 필드는 다르므로 `vmstat --unit`과 로컬 설명서를 확인하십시오.
 
-:::single-choice{#vmstat-interval-rows}
-`vmstat 1`에서 초 단위 변화를 관찰하기에 가장 적합한 행은 무엇입니까?
+:::single-choice{#vmstat-interval-rows} `vmstat 1`에서 초 단위 변화를 관찰하기에 가장 적합한 행은 무엇입니까?
 
 ::option[초기 보고서 뒤의 이후 행입니다.]{#vmstat-later-rows .correct explanation="이후 행은 누적 기간이 아니라 요청한 각 구간을 설명합니다."}
 ::option[첫 데이터 행 위의 제목만 사용합니다.]{#vmstat-headings explanation="제목은 필드를 정의하지만 활동 표본은 포함하지 않습니다."}
@@ -42,8 +41,7 @@ $ free -h
 
 회수 가능한 캐시가 새 할당을 충족할 수 있으므로 일반적으로 `available` 추정값이 `free` 하나보다 더 유용합니다.
 
-:::single-choice{#vmstat-free-memory}
-리눅스에서 `free` 값이 낮아도 정상일 수 있는 이유는 무엇입니까?
+:::single-choice{#vmstat-free-memory} 리눅스에서 `free` 값이 낮아도 정상일 수 있는 이유는 무엇입니까?
 
 ::option[이 값이 항상 전체 물리 RAM을 제외하기 때문입니다.]{#vmstat-excludes-ram explanation="메모리 필드이며 정확한 단위는 확인해야 합니다."}
 ::option[커널이 유휴 메모리를 회수 가능한 캐시에 사용할 수 있기 때문입니다.]{#vmstat-reclaimable-cache .correct explanation="애플리케이션에 필요할 때 캐시 메모리를 회수할 수 있는 경우가 많습니다."}
@@ -54,8 +52,7 @@ $ free -h
 
 `si`와 `so`는 스왑 인 및 스왑 아웃 비율을 보여 줍니다. 지속적인 페이징이 지연 및 메모리 회수 활동과 함께 나타나면 압력을 나타낼 수 있지만 0이 아닌 스왑 사용량(`swpd`) 자체는 현재 문제를 증명하지 않습니다. `bi`와 `bo`는 블록 입력 및 출력 비율을 보고하며 스왑 트래픽에만 한정되지 않습니다.
 
-:::single-choice{#vmstat-swap-pressure}
-현재 메모리 압력 진단을 더 잘 뒷받침하는 증거는 무엇입니까?
+:::single-choice{#vmstat-swap-pressure} 현재 메모리 압력 진단을 더 잘 뒷받침하는 증거는 무엇입니까?
 
 ::option[다른 관찰 없이 `swpd` 값이 0보다 큽니다.]{#vmstat-swpd-alone explanation="이전 압력 후에도 페이지가 스왑에 남을 수 있으므로 양만으로는 충분하지 않습니다."}
 ::option[지속적인 페이징이 회수 활동 및 작업 부하 지연과 함께 나타납니다.]{#vmstat-correlated-pressure .correct explanation="반복되고 연결된 증거가 메모리 동작을 현재 영향과 연결합니다."}
@@ -66,8 +63,7 @@ $ free -h
 
 CPU 열에는 일반적으로 사용자(`us`), 시스템(`sy`), 유휴(`id`), 입출력 대기(`wa`) 및 스틸(`st`) 백분율이 있습니다. 시스템 열에는 초당 인터럽트(`in`)와 컨텍스트 전환(`cs`)이 있습니다. 기준선과 비교해 급증을 해석하십시오. 높은 컨텍스트 전환 비율이 일부 작업 부하에서는 정상일 수 있습니다.
 
-:::single-choice{#vmstat-r-column}
-`r` 프로세스 필드는 무엇을 나타냅니까?
+:::single-choice{#vmstat-r-column} `r` 프로세스 필드는 무엇을 나타냅니까?
 
 ::option[읽기 전용으로 마운트된 파일 시스템입니다.]{#vmstat-readonly explanation="파일 시스템 마운트 플래그는 프로세스 필드에 표현되지 않습니다."}
 ::option[활성 셸이 있는 원격 사용자입니다.]{#vmstat-remote-users explanation="로그인 세션은 다른 도구가 보고합니다."}

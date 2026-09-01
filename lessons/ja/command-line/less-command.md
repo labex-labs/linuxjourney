@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 `less` の動作中は、キー入力が通常のシェルコマンドを始めるのではなく、ページャーを制御します。ページャーを終了するとシェルへ戻ります。
 
-:::single-choice{#open-long-file}
-`/var/log/syslog` を対話型ページャーで開くコマンドはどれですか？
+:::single-choice{#open-long-file} `/var/log/syslog` を対話型ページャーで開くコマンドはどれですか？
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` はファイルをページャーで開き、その中を移動、検索し、終了してシェルへ戻れます。"}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat` はファイル全体を一度に標準出力へ送信し、対話型のページ操作は提供しません。"}
@@ -40,8 +39,7 @@ $ less /home/pete/Documents/text1
 - `u` で半画面上、`d` で半画面下へ移動する
 - `h` で組み込みヘルプを開く
 
-:::single-choice{#jump-to-file-end}
-`less` でファイル末尾へ直接移動するキーはどれですか？
+:::single-choice{#jump-to-file-end} `less` でファイル末尾へ直接移動するキーはどれですか？
 
 ::option[`g`]{#lowercase-g explanation="小文字の `g` はファイルの先頭へ移動し、大文字は反対方向へ移動します。"}
 ::option[`G`]{#uppercase-g .correct explanation="大文字の `G` は入力の末尾へ移動します。このコマンドは大文字と小文字を区別します。"}
@@ -57,8 +55,7 @@ $ less /home/pete/Documents/text1
 - `n`：同じ方向へ検索を繰り返す
 - `N`：反対方向へ検索を繰り返す
 
-:::single-choice{#repeat-search-direction}
-`error` を前方検索した後、同じ方向へ検索を繰り返すキーはどれですか？
+:::single-choice{#repeat-search-direction} `error` を前方検索した後、同じ方向へ検索を繰り返すキーはどれですか？
 
 ::option[`n`]{#same-search .correct explanation="小文字の `n` は直近の検索を元の方向へ繰り返します。ここでは前方です。"}
 ::option[`N`]{#opposite-search explanation="大文字の `N` は直近の検索を反対方向へ繰り返します。前方検索の後なら、一致箇所を後方へ移動します。"}
@@ -69,8 +66,7 @@ $ less /home/pete/Documents/text1
 
 `q` を押すと `less` を終了し、シェルプロンプトへ戻ります。
 
-:::single-choice{#quit-less}
-`less` を終了してシェルへ戻るキーはどれですか？
+:::single-choice{#quit-less} `less` を終了してシェルへ戻るキーはどれですか？
 
 ::option[`q`]{#less-quit .correct explanation="`q` コマンドはページャーを終了し、シェルプロンプトを復元します。"}
 ::option[`h`]{#less-help explanation="`h` は `less` 内のヘルプを開き、直接シェルへは戻りません。"}
@@ -99,8 +95,7 @@ $ less +F /var/log/syslog
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-`/var/log/syslog` を開き、新しい内容が届くたびに追跡するコマンドはどれですか？
+:::single-choice{#follow-growing-log} `/var/log/syslog` を開き、新しい内容が届くたびに追跡するコマンドはどれですか？
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="`+F` 初期コマンドは追跡モードへ入り、ログへ追加された新しい内容を `less` が表示します。"}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="`+G` は末尾から開きますが、その後に届く内容を継続して追跡しません。"}

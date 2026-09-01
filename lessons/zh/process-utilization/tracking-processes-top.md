@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 第一行包含当前时间、系统运行时长、已登录用户数，以及 1、5、15 分钟的平均负载。任务行统计各进程状态的数量。平均负载不是直接的 CPU 百分比；在 Linux 中，它反映可运行任务和不可中断睡眠任务的数量，因此需要结合 CPU 数量、I/O 活动和延迟来解读。
 
-:::single-choice{#top-load-average-periods}
-`top` 中的三个平均负载值分别表示什么？
+:::single-choice{#top-load-average-periods} `top` 中的三个平均负载值分别表示什么？
 
 ::option[过去 1、5、15 分钟的平均负载。]{#top-one-five-fifteen .correct explanation="这些值依次汇总逐渐变长的近期时间窗口。"}
 ::option[最繁忙的三个进程各自的 CPU 使用率。]{#top-three-processes explanation="每个进程的 CPU 使用率显示在进程表中，而不是这三个摘要值中。"}
@@ -48,8 +47,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 较高的 `wa` 值可以支持“I/O 等待”这一假设，但它既不能指出具体设备，也无法证明存储是唯一瓶颈。下结论前，应检查设备延迟和应用程序行为。
 
-:::single-choice{#top-cpu-wa-meaning}
-CPU 的 `wa` 字段报告什么？
+:::single-choice{#top-cpu-wa-meaning} CPU 的 `wa` 字段报告什么？
 
 ::option[执行普通用户代码所花的时间。]{#top-wa-user explanation="用户空间执行时间报告在 `us` 字段中。"}
 ::option[系统启动以来写入交换空间的内存页数。]{#top-wa-swap explanation="交换活动并不是 CPU 时间类别。"}
@@ -70,8 +68,7 @@ CPU 的 `wa` 字段报告什么？
 
 `VIRT` 并不是实际消耗的物理 RAM。它可能包括映射文件、共享库、预留的地址空间和已换出的内存页。即使是 `RES` 也要谨慎解读，因为共享内存页会使归属统计变得复杂。
 
-:::single-choice{#top-res-versus-virt}
-哪个字段更接近进程当前常驻的物理内存？
+:::single-choice{#top-res-versus-virt} 哪个字段更接近进程当前常驻的物理内存？
 
 ::option[`TIME+`]{#top-time-field explanation="该字段累计的是 CPU 时间，而不是内存。"}
 ::option[`VIRT`]{#top-virt-field explanation="虚拟大小包括不一定驻留在 RAM 中的地址空间。"}
@@ -90,8 +87,7 @@ $ top -p 1234,5678
 
 执行操作前，应记录 PID、命令、时间戳和多个样本。某个进程短暂排在首位可能是正常现象，贸然终止它可能造成数据丢失或服务中断。
 
-:::single-choice{#top-monitor-known-pid}
-哪个命令只显示 PID 1234？
+:::single-choice{#top-monitor-known-pid} 哪个命令只显示 PID 1234？
 
 ::option[`top -u 1234`]{#top-user-filter explanation="`-u` 形式按用户筛选，不会把该值当作 PID。"}
 ::option[`top -d 1234`]{#top-delay-filter explanation="在常见实现中，`-d` 选项控制刷新间隔。"}

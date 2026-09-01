@@ -27,8 +27,7 @@ $ getent passwd root
 
 Le fichier local ne contient pas forcément tous les comptes connus. NSS peut les résoudre depuis des fichiers, annuaires, bases système ou autres sources. `getent` interroge la base passwd résolue. La première commande `getent` peut révéler des noms et métadonnées : relisez sa sortie avant publication.
 
-:::single-choice{#passwd-query-resolved-database}
-Quelle commande interroge la base passwd résolue par NSS plutôt que le seul fichier local ?
+:::single-choice{#passwd-query-resolved-database} Quelle commande interroge la base passwd résolue par NSS plutôt que le seul fichier local ?
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="Cette commande affiche seulement le fichier local."}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="Le fichier shadow contient des données protégées et ne doit pas être affiché à cette fin."}
@@ -53,16 +52,14 @@ Les sept champs sont :
 
 Le noyau n'impose pas l'unicité des UID dans des enregistrements mal formés, mais deux comptes partageant un UID deviennent indistinguables pour de nombreux contrôles. Gardez-les normalement uniques.
 
-:::single-choice{#passwd-uid-field}
-Dans `root:x:0:0:root:/root:/bin/bash`, quel champ contient l'UID ?
+:::single-choice{#passwd-uid-field} Dans `root:x:0:0:root:/root:/bin/bash`, quel champ contient l'UID ?
 
 ::option[Le deuxième, `x`]{#passwd-second-password explanation="Le deuxième est l'indicateur de mot de passe, pas l'identité numérique."}
 ::option[Le quatrième, le second `0`]{#passwd-fourth-gid explanation="Le champ 4 est le GID principal."}
 ::option[Le troisième, le premier `0`]{#passwd-third-uid .correct explanation="Le champ 3 est l'UID ; ce zéro désigne donc l'UID 0."}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-Quel champ d'un enregistrement passwd contient le GID principal ?
+:::single-choice{#passwd-primary-gid-field} Quel champ d'un enregistrement passwd contient le GID principal ?
 
 ::option[Le champ 5]{#passwd-gecos-five explanation="Le cinquième est le champ GECOS ou commentaire."}
 ::option[Le champ 4]{#passwd-gid-four .correct explanation="Le quatrième champ identifie numériquement le groupe principal."}
@@ -75,8 +72,7 @@ Sur un système shadow courant, `x` dans le champ 2 renvoie les outils aux donn�
 
 Cela ne prouve pas l'impossibilité de toute authentification : clés SSH, certificats, jetons ou mécanismes de service peuvent être indépendants. Un champ vide dépend de la pile d'authentification ; ne le créez ni ne le « corrigez » manuellement.
 
-:::single-choice{#passwd-x-placeholder}
-Que signifie couramment `x` dans le champ 2 d'un `/etc/passwd` local ?
+:::single-choice{#passwd-x-placeholder} Que signifie couramment `x` dans le champ 2 d'un `/etc/passwd` local ?
 
 ::option[Que le compte n'a assurément aucun moyen d'authentification.]{#passwd-no-auth-guarantee explanation="L'indicateur ne décrit pas tous les mécanismes possibles."}
 ::option[Que le répertoire personnel a été supprimé.]{#passwd-home-deleted explanation="Le répertoire figure au champ 6 et n'a aucun rapport avec `x`."}
@@ -89,8 +85,7 @@ De nombreux enregistrements représentent des services plutôt que des personnes
 
 Ne déduisez pas leur rôle de la seule plage d'UID : les règles varient selon les distributions et les comptes centraux.
 
-:::single-choice{#passwd-nologin-shell}
-Quel est un rôle courant de `/usr/sbin/nologin` dans le champ 7 ?
+:::single-choice{#passwd-nologin-shell} Quel est un rôle courant de `/usr/sbin/nologin` dans le champ 7 ?
 
 ::option[Supprimer les fichiers du compte à l'arrêt d'un service.]{#passwd-nologin-delete explanation="Le programme de connexion ne gère ni fichiers ni arrêt du service."}
 ::option[Empêcher un shell interactif ordinaire par les chemins de connexion qui respectent ce champ.]{#passwd-nologin-purpose .correct explanation="Cette configuration convient aux comptes de service qui ne doivent pas recevoir de shell interactif."}

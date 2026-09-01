@@ -24,8 +24,7 @@ $ ps -ef | grep '[d]hclient'
 
 Use the tools that exist on the host. If a manager owns the interface, request DHCP through that manager rather than launching a separate client.
 
-:::single-choice{#dhclient-second-client-risk}
-Why avoid starting `dhclient` on an already managed interface?
+:::single-choice{#dhclient-second-client-risk} Why avoid starting `dhclient` on an already managed interface?
 
 ::option[DHCP can assign only loopback addresses.]{#dhclient-loopback-only explanation="DHCP commonly assigns non-loopback network configuration."}
 ::option[Two clients can compete over addresses, routes, DNS, and leases.]{#dhclient-competing-state .correct explanation="Only the identified configuration owner should normally reconcile the interface."}
@@ -42,8 +41,7 @@ $ sudo dhclient -v enp1s0
 
 Running without an interface can act on multiple eligible interfaces. Configuration and lease paths vary by package and invocation; common names include `dhclient.conf` and `dhclient.leases`, but do not assume one fixed location.
 
-:::single-choice{#dhclient-interface-operand}
-Why specify `enp1s0` in a manual request?
+:::single-choice{#dhclient-interface-operand} Why specify `enp1s0` in a manual request?
 
 ::option[To target only the intended network interface.]{#dhclient-scope-interface .correct explanation="An unqualified client invocation can consider more interfaces than intended."}
 ::option[To select TCP port 1 for DHCP.]{#dhclient-tcp-port explanation="DHCP uses UDP and the interface name is not a port."}
@@ -54,8 +52,7 @@ Why specify `enp1s0` in a manual request?
 
 `dhclient -r INTERFACE` requests release and can remove usable configuration. It is disruptive and does not guarantee the server is reachable to receive the release. Do not release a lease merely to inspect it, especially on a remote-management path.
 
-:::single-choice{#dhclient-release-effect}
-What is the operational risk of `dhclient -r enp1s0`?
+:::single-choice{#dhclient-release-effect} What is the operational risk of `dhclient -r enp1s0`?
 
 ::option[It only prints the current lease without changes.]{#dhclient-release-readonly explanation="Release is a state-changing action."}
 ::option[It renews every lease for an unlimited period.]{#dhclient-release-renews explanation="Releasing and renewing are opposite operations."}
@@ -74,8 +71,7 @@ $ resolvectl status
 
 Inspect the manager or client logs and lease lifetime, then test the intended name resolution and application. A DHCPACK can carry incorrect options, and successfully assigning an address does not prove gateway or DNS reachability.
 
-:::single-choice{#dhclient-verify-state}
-What should be verified after obtaining a lease?
+:::single-choice{#dhclient-verify-state} What should be verified after obtaining a lease?
 
 ::option[Address, routes, DNS, lease, and application behavior.]{#dhclient-complete-verify .correct explanation="The lease configures several related components that must work together."}
 ::option[Only that an address string appears.]{#dhclient-address-only explanation="Routes, DNS, lifetime, and end-to-end function can still be wrong."}

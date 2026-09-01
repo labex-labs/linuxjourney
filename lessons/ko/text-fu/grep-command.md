@@ -28,8 +28,7 @@ $ grep 'fox' sample.txt
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-패턴 문자를 정규 표현식 구문으로 처리하지 않고 `products.txt`에서 문자 그대로 `price: $5.00`을 검색하는 명령어는 무엇인가요?
+:::single-choice{#grep-fixed-string} 패턴 문자를 정규 표현식 구문으로 처리하지 않고 `products.txt`에서 문자 그대로 `price: $5.00`을 검색하는 명령어는 무엇인가요?
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F`는 고정 문자열 일치를 선택하고 작은따옴표는 달러 기호를 쉘 확장에서 보호합니다."}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E`는 확장 정규 표현식을 활성화하며 여기서는 `$`와 `.`가 문자 그대로가 아니라 특별한 의미를 갖습니다."}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 백슬래시는 점을 문자 그대로 만듭니다. 정규 표현식에서 이스케이프하지 않은 `.`은 임의의 문자 하나와 일치합니다.
 
-:::single-choice{#grep-literal-txt-suffix}
-문자 그대로 `.txt` 접미사로 끝나는 줄에 일치하는 확장 정규 표현식은 무엇인가요?
+:::single-choice{#grep-literal-txt-suffix} 문자 그대로 `.txt` 접미사로 끝나는 줄에 일치하는 확장 정규 표현식은 무엇인가요?
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="점이 이스케이프되지 않아 문자 그대로의 마침표가 아니라 `txt` 앞의 임의 문자 하나와 일치합니다."}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.`은 문자 그대로의 마침표와 일치하고 `$`는 줄 끝에 일치를 고정합니다."}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 `-e`를 반복하면 제공한 패턴 중 하나와 일치하는 줄을 선택할 수 있습니다. `-f patterns.txt`는 파일에서 한 줄에 하나씩 패턴을 읽습니다.
 
-:::single-choice{#grep-hyphen-pattern}
-`-v`를 옵션으로 해석하지 않고 `settings.conf`에서 해당 패턴을 검색하는 명령어는 무엇인가요?
+:::single-choice{#grep-hyphen-pattern} `-v`를 옵션으로 해석하지 않고 `settings.conf`에서 해당 패턴을 검색하는 명령어는 무엇인가요?
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="따옴표는 쉘 확장에서 문자를 보호하지만 `grep`은 전달된 `-v` 인자를 여전히 일치 반전 옵션으로 해석할 수 있습니다."}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="일치 반전을 활성화하며 요청한 방식으로 `settings.conf`를 패턴과 입력 모두로 제공하지 않습니다."}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c`는 한 줄 안의 전체 일치 횟수가 아니라 선택된 줄 수를 셉니다. `fox fox`가 들어 있는 한 줄은 개수에 1을 더합니다. GNU `grep`에서 겹치지 않는 일치 횟수가 필요하면 `grep -o PATTERN | wc -l` 같은 파이프라인을 사용할 수 있습니다.
 
-:::single-choice{#grep-count-lines}
-`data.txt`에는 `error error`가 들어 있는 줄 하나와 일치하지 않는 줄 두 개가 있습니다. `grep -c 'error' data.txt`는 무엇을 보고하나요?
+:::single-choice{#grep-count-lines} `data.txt`에는 `error error`가 들어 있는 줄 하나와 일치하지 않는 줄 두 개가 있습니다. `grep -c 'error' data.txt`는 무엇을 보고하나요?
 
 ::option[한 줄에 단어가 두 번 있으므로 `2`입니다.]{#grep-count-occurrences explanation="`-c`는 한 줄 안의 개별 일치가 아니라 선택된 줄을 셉니다."}
 ::option[정확히 한 줄이 일치하므로 `1`입니다.]{#grep-count-one-line .correct explanation="패턴이 한 줄 안에 두 번 나타나도 그 줄은 한 번만 선택됩니다."}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 권한 오류 같은 진단 메시지는 표준 오류로 가며 일치 대상으로 삼는 입력이 아닙니다. 곧바로 권한을 높이기보다는 검색 경로를 좁히고 권한을 이해하세요.
 
-:::single-choice{#grep-pipeline-input}
-`generate-report | grep 'failed'`에서 `grep`은 어떤 입력을 검색하나요?
+:::single-choice{#grep-pipeline-input} `generate-report | grep 'failed'`에서 `grep`은 어떤 입력을 검색하나요?
 
 ::option[현재 디렉터리에서 이름이 `generate-report`인 파일입니다.]{#grep-report-file explanation="왼쪽 단어는 명령어로 실행되며 `grep`에 파일 피연산자로 전달되지 않습니다."}
 ::option[`generate-report`가 만든 표준 출력 스트림입니다.]{#grep-report-stdout .correct explanation="파이프가 생성자의 표준 출력을 `grep`의 표준 입력에 연결합니다."}

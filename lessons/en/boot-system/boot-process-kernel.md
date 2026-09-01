@@ -24,8 +24,7 @@ A simple root filesystem can sometimes be mounted using drivers built into the k
 
 An initramfs packages these components into an early user-space environment supplied alongside the kernel.
 
-:::single-choice{#boot-kernel-initramfs-purpose}
-What problem does an initramfs commonly solve?
+:::single-choice{#boot-kernel-initramfs-purpose} What problem does an initramfs commonly solve?
 
 ::option[It supplies early tools and modules needed before the real root is available.]{#boot-kernel-early-tools .correct explanation="Early user space can discover and assemble storage that the kernel cannot access using built-in support alone."}
 ::option[It stores every user's permanent home directory in firmware.]{#boot-kernel-home-firmware explanation="The archive is a boot artifact and not permanent user-data storage."}
@@ -40,8 +39,7 @@ A legacy initrd is conceptually a filesystem image loaded into a RAM-backed bloc
 
 The initramfs must match the kernel and boot design. Missing modules, stale device identifiers, or omitted cryptographic and LVM tooling can make a newly installed kernel unbootable even when the kernel image itself is valid.
 
-:::single-choice{#boot-kernel-initramfs-format}
-How is a modern initramfs commonly presented to the kernel?
+:::single-choice{#boot-kernel-initramfs-format} How is a modern initramfs commonly presented to the kernel?
 
 ::option[As an interactive package repository over HTTP only.]{#boot-kernel-http-repository explanation="Network access can be configured in early user space, but it is not the defining initramfs format."}
 ::option[As a cpio-based archive unpacked into the initial root.]{#boot-kernel-cpio-archive .correct explanation="The kernel expands the archive and executes its early user-space initialization program."}
@@ -54,8 +52,7 @@ Early user space interprets parameters such as `root=`, waits for the necessary 
 
 The initial `ro` command-line request can support consistency checks and controlled startup, but the exact sequence is distribution-specific. Filesystem checks are user-space operations, and the initramfs or later init system can remount the root read-write when policy permits.
 
-:::single-choice{#boot-kernel-root-switch}
-What happens after early user space successfully mounts the intended real root?
+:::single-choice{#boot-kernel-root-switch} What happens after early user space successfully mounts the intended real root?
 
 ::option[The partition table is recreated on every disk.]{#boot-kernel-recreate-tables explanation="Root switching does not repartition storage."}
 ::option[The kernel exits and firmware resumes normal process scheduling.]{#boot-kernel-firmware-schedules explanation="The Linux kernel remains responsible for processes and hardware after the handoff."}
@@ -68,8 +65,7 @@ The kernel executes the configured init program, normally reached through a path
 
 If no usable init program can be executed, the kernel cannot proceed to a normal user-space system and typically reports a boot failure or panic. Debug the earliest failing layer: kernel and command line, initramfs content, root discovery, root mount, or PID 1 execution.
 
-:::single-choice{#boot-kernel-pid-one}
-What is the kernel's final major handoff in this simplified boot stage?
+:::single-choice{#boot-kernel-pid-one} What is the kernel's final major handoff in this simplified boot stage?
 
 ::option[Execute the first user-space program as PID 1.]{#boot-kernel-exec-init .correct explanation="PID 1 then brings up services and the configured system state."}
 ::option[Turn `/proc` into a persistent package database.]{#boot-kernel-proc-package explanation="Procfs remains a runtime kernel interface."}

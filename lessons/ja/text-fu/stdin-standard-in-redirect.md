@@ -22,8 +22,7 @@ meta_keywords: "stdin, 標準入力，stdin リダイレクト，cat stdin, stdi
 
 プログラムは、これらのストリームを使うかどうか、またどのように使うかを選べます。stdin を読み取るよう設計されたコマンドは、ファイルオペランドなどの入力元を指定しなければ、端末からの入力を待つことがよくあります。
 
-:::single-choice{#stdin-descriptor-number}
-慣例上、標準入力を表すファイルディスクリプタはどれですか？
+:::single-choice{#stdin-descriptor-number} 慣例上、標準入力を表すファイルディスクリプタはどれですか？
 
 ::option[`0`]{#stdin-fd-zero .correct explanation="標準入力には、慣例としてファイルディスクリプタ 0 が使われます。"}
 ::option[`1`]{#stdin-fd-one explanation="ファイルディスクリプタ 1 は、通常の結果を送る標準出力を表します。"}
@@ -43,8 +42,7 @@ Hello World
 
 入力ファイルが存在しない、または開けない場合、シェルはリダイレクトエラーを報告し、その入力でコマンドを起動しません。
 
-:::single-choice{#stdin-from-file}
-`sort` の標準入力を `names.txt` から読み取らせるコマンドはどれですか？
+:::single-choice{#stdin-from-file} `sort` の標準入力を `names.txt` から読み取らせるコマンドはどれですか？
 
 ::option[`sort < names.txt`]{#sort-stdin-file .correct explanation="Bash は `names.txt` を読み取り用に開き、ファイルディスクリプタ 0 で `sort` へ接続します。"}
 ::option[`sort > names.txt`]{#stdout-to-names explanation="大なり記号は stdout をファイルへリダイレクトし、そのファイルを切り詰めることがあります。入力としてファイルを渡すものではありません。"}
@@ -64,8 +62,7 @@ $ wc -l < peanuts.txt
 
 どちらも同じデータの行数を数えています。1 つ目では、`wc` はファイル名を引数として受け取るため、その名前を認識しています。2 つ目では stdin のストリームだけを受け取るため、表示するファイル名がありません。
 
-:::single-choice{#stdin-not-command-argument}
-`wc -l < peanuts.txt` の出力に通常 `peanuts.txt` が含まれないのはなぜですか？
+:::single-choice{#stdin-not-command-argument} `wc -l < peanuts.txt` の出力に通常 `peanuts.txt` が含まれないのはなぜですか？
 
 ::option[`wc` は行数を数え終えるとファイル名を削除するから。]{#stdin-delete-name explanation="このコマンドは元ファイルの名前を変更したり削除したりしません。異なるのは入力の接続方法だけです。"}
 ::option[`<` 演算子がコマンドの表示する単語をすべて隠すから。]{#stdin-hide-words explanation="入力リダイレクトは stdout をフィルタリングしません。ファイル名がないのは、`wc` がそれを引数として受け取っていないためです。"}
@@ -87,8 +84,7 @@ $ cat < peanuts.txt > banana.txt
 
 `cat` は stdin からバイトを読み取り、stdout へ書き出すため、`banana.txt` には元の内容が入ります。通常のファイルコピーなら `cp peanuts.txt banana.txt` のほうが意図を直接伝えられますが、ここでの例はストリームの接続を示すものです。
 
-:::single-choice{#stdin-and-stdout-files}
-`cat < input.txt > output.txt` では、どのファイルが stdin を供給し、どのファイルが stdout を受け取りますか？
+:::single-choice{#stdin-and-stdout-files} `cat < input.txt > output.txt` では、どのファイルが stdin を供給し、どのファイルが stdout を受け取りますか？
 
 ::option[`output.txt` が stdin を供給し、`input.txt` が stdout を受け取る。]{#stdin-output-stdout-input explanation="これはリダイレクト演算子の意味を逆にしています。入力の矢印はコマンドへ、出力の矢印はファイルへ向かいます。"}
 ::option[`input.txt` が stdin を供給し、`output.txt` が stdout を受け取る。]{#stdin-input-stdout-output .correct explanation="`<` リダイレクトは `input.txt` をディスクリプタ 0 用に開き、`>` は `output.txt` をディスクリプタ 1 用に開きます。"}

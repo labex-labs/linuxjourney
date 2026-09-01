@@ -18,8 +18,7 @@ Ein Routingprotokoll lernt Kandidaten in seiner eigenen Datenbank. Der Router w�
 
 Eine hergestellte Protokollnachbarschaft beweist nicht, dass das gewünschte Präfix gelernt, ausgewählt, installiert oder von der Weiterleitungsrichtlinie erlaubt wurde.
 
-:::single-choice{#routing-protocols-adjacency-limit}
-Was beweist eine hergestellte Routingnachbarschaft nicht?
+:::single-choice{#routing-protocols-adjacency-limit} Was beweist eine hergestellte Routingnachbarschaft nicht?
 
 ::option[Dass jede gewünschte Route installiert ist und erfolgreich weiterleitet.]{#routing-protocols-not-full-proof .correct explanation="Routenankündigung, Auswahl, Installation, Filterung und Datenebenenbetrieb sind getrennte Stufen."}
 ::option[Dass zwei Protokollteilnehmer überhaupt Steuernachrichten ausgetauscht haben.]{#routing-protocols-no-messages explanation="Die Herstellung einer Nachbarschaft erfordert normalerweise Protokollkommunikation."}
@@ -32,8 +31,7 @@ Interior Gateway Protocols arbeiten innerhalb einer administrativen Routingdomä
 
 Messwerte besitzen protokollspezifische Bedeutung. OSPF-Kosten, RIP-Hop-Anzahl und BGP-Attribute können nicht verglichen werden, als hätten sie eine allgemeingültige numerische Skala. Implementierungen verwenden Routenpräferenz oder administrative Distanz, um vor oder neben der protokollspezifischen Auswahl zwischen Quellen zu wählen.
 
-:::single-choice{#routing-protocols-metric-comparison}
-Kann eine RIP-Hop-Anzahl unmittelbar mit OSPF-Kosten verglichen werden?
+:::single-choice{#routing-protocols-metric-comparison} Kann eine RIP-Hop-Anzahl unmittelbar mit OSPF-Kosten verglichen werden?
 
 ::option[Ja, weil alle Routingmesswerte dieselben Einheiten verwenden.]{#routing-protocols-universal-metric explanation="Jedes Protokoll definiert seinen eigenen Messwert und Auswahlprozess."}
 ::option[Ja, aber nur, wenn beide Werte null sind.]{#routing-protocols-zero-metric explanation="Ihre Semantik bleibt unabhängig von einer angezeigten Zahl unterschiedlich."}
@@ -44,8 +42,7 @@ Kann eine RIP-Hop-Anzahl unmittelbar mit OSPF-Kosten verglichen werden?
 
 Distanzvektorprotokolle kündigen Erreichbarkeit und Entfernung über Nachbarn an und leiten Pfade aus Nachbarberichten ab. Link-State-Protokolle bilden Nachbarschaften, fluten Verbindungszustandsinformationen in einem Bereich, erstellen eine Topologiedatenbank und berechnen Kürzeste-Wege-Bäume. Moderne Protokolle enthalten Verfeinerungen, durch die einfache Kategorienzusammenfassungen unvollständig bleiben.
 
-:::single-choice{#routing-protocols-link-state-input}
-Was verwendet ein Link-State-Router für seine Pfadberechnung?
+:::single-choice{#routing-protocols-link-state-input} Was verwendet ein Link-State-Router für seine Pfadberechnung?
 
 ::option[Nur den Hostnamen seines Standardgateways.]{#routing-protocols-hostname-only explanation="Eine Topologieberechnung erfordert Verbindungs- und Präfixinformationen."}
 ::option[Eine synchronisierte Datenbank, die Verbindungen im Routingbereich beschreibt.]{#routing-protocols-link-database .correct explanation="Der Router führt einen Kürzeste-Wege-Algorithmus auf der gelernten Topologie aus."}
@@ -58,8 +55,7 @@ Nach einer Topologie- oder Richtlinienänderung erkennen Router sie, verbreiten 
 
 Während der Konvergenz können vorübergehender Verlust, Schleifen oder Blackholes auftreten. Miss Erkennung, Verbreitung, Berechnung und Installation getrennt und überprüfe sie mit Datenebenenprüfungen.
 
-:::single-choice{#routing-protocols-convergence}
-Was ist Routingkonvergenz?
+:::single-choice{#routing-protocols-convergence} Was ist Routingkonvergenz?
 
 ::option[Der Prozess, nach einer Änderung stabiles verwendbares Routing zu erreichen.]{#routing-protocols-stable-routing .correct explanation="Sie umfasst die Verbreitung auf der Steuerungsebene und die daraus folgenden Weiterleitungsaktualisierungen."}
 ::option[Die Anforderung, dass jeder Router eine identische globale Tabelle speichert.]{#routing-protocols-identical-table explanation="Richtlinie, Bereich und Rolle können bewusste Unterschiede erzeugen."}

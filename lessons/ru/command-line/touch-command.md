@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 Это удобно для заполнителей, но `touch` не добавляет текст. Для непустого файла используйте редактор или другую команду записи.
 
-:::single-choice{#create-several-empty-files}
-Какая команда создаёт три пустых файла `one`, `two` и `three`, если их ещё нет?
+:::single-choice{#create-several-empty-files} Какая команда создаёт три пустых файла `one`, `two` и `three`, если их ещё нет?
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="Кавычки превращают запись в одно имя с пробелами, поэтому команда работает с одним файлом, а не с тремя."}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` создаёт каталоги, а не пустые обычные файлы; для файлов нужна `touch`."}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 Вывод `ls -l` обычно показывает время изменения, а не доступа.
 
-:::single-choice{#touch-existing-file}
-Что произойдёт при `touch report.txt`, если `report.txt` уже существует?
+:::single-choice{#touch-existing-file} Что произойдёт при `touch report.txt`, если `report.txt` уже существует?
 
 ::option[Его временные метки обновятся без замены содержимого.]{#timestamps-only .correct explanation="По умолчанию `touch` обновляет время доступа и изменения существующего файла, не перезаписывая данные."}
 ::option[Содержимое удалится, и файл станет пустым.]{#contents-deleted explanation="Пустой файл создаётся лишь при отсутствии пути; существующий сохраняет содержимое при обновлении меток."}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-Какая команда обновляет только время изменения `notes.txt`?
+:::single-choice{#change-modification-time-only} Какая команда обновляет только время изменения `notes.txt`?
 
 ::option[`touch -a notes.txt`]{#access-only explanation="Параметр `-a` меняет только время доступа, а не запрошенное время изменения."}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="Параметр `-m` ограничивает действие временем изменения, оставляя время доступа прежним."}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 Здесь `file1.txt` предоставляет метки, а меняется `file2.txt`. Параметр `-t` задаёт время в компактном числовом формате.
 
-:::single-choice{#copy-reference-timestamps}
-Какая команда копирует временные метки `source.txt` в `target.txt`?
+:::single-choice{#copy-reference-timestamps} Какая команда копирует временные метки `source.txt` в `target.txt`?
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="После `-r` указывается файл-образец, а последний аргумент — файл, чьи метки обновляются."}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="Здесь роли поменяны: образцом станет `target.txt`, а обновится `source.txt`."}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 Если `existing-file.txt` отсутствует, команда его не создаст. Это полезно в сценариях, которым нужно обновить метку, не добавляя новый файл.
 
-:::single-choice{#update-without-creating}
-Какая команда обновляет `status.log`, если он существует, но не создаёт его при отсутствии?
+:::single-choice{#update-without-creating} Какая команда обновляет `status.log`, если он существует, но не создаёт его при отсутствии?
 
 ::option[`touch -a status.log`]{#touch-access explanation="`-a` выбирает время доступа, но отсутствующий файл всё равно может быть создан и нужного запрета не даёт."}
 ::option[`touch -m status.log`]{#touch-modification explanation="`-m` выбирает время изменения, но не запрещает создание отсутствующего файла; для этого нужен `-c`."}

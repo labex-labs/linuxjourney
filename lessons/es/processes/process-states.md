@@ -25,16 +25,14 @@ El primer carácter de `STAT` indica el estado principal. Los caracteres adicion
 
 La espera es normal. Los programas interactivos y los servicios pasan gran parte del tiempo esperando entradas, temporizadores, tráfico de red, bloqueos u otros sucesos, en lugar de consumir CPU continuamente.
 
-:::single-choice{#process-states-runnable-code}
-¿Qué significa el estado principal `R`?
+:::single-choice{#process-states-runnable-code} ¿Qué significa el estado principal `R`?
 
 ::option[Que la tarea se ejecuta en una CPU o está preparada para hacerlo.]{#process-states-r-running .correct explanation="`R` agrupa las tareas que se ejecutan en ese momento y las que esperan servicio de CPU estando preparadas para ejecutarse."}
 ::option[Que fue recolectada después de que su padre obtuviera el estado.]{#process-states-r-reaped explanation="Un proceso completamente recolectado ya no aparece como una entrada normal en la tabla de procesos."}
 ::option[Que espera en un estado de espera ininterrumpible.]{#process-states-r-uninterruptible explanation="La espera ininterrumpible se representa con `D`."}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-¿Qué estado principal representa la espera interrumpible?
+:::single-choice{#process-states-interruptible-code} ¿Qué estado principal representa la espera interrumpible?
 
 ::option[`D`]{#process-states-sleep-d explanation="`D` indica una espera ininterrumpible."}
 ::option[`Z`]{#process-states-sleep-z explanation="`Z` indica un proceso hijo que terminó y cuyo estado aún no se ha recolectado."}
@@ -47,8 +45,7 @@ La espera es normal. Los programas interactivos y los servicios pasan gran parte
 
 Un estado `D` breve puede ser normal. La presencia persistente o abundante de tareas en `D` puede indicar una E/S lenta, no disponible o defectuosa, pero el estado por sí solo no identifica la causa. Antes de extraer conclusiones, examina el canal de espera, los registros del kernel, el estado del almacenamiento y de la red, y el subsistema correspondiente.
 
-:::single-choice{#process-states-uninterruptible-code}
-¿Qué estado principal indica una espera ininterrumpible?
+:::single-choice{#process-states-uninterruptible-code} ¿Qué estado principal indica una espera ininterrumpible?
 
 ::option[`T`]{#process-states-d-stopped explanation="`T` identifica una tarea detenida."}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` se utiliza para una tarea que espera en un estado de espera ininterrumpible del kernel."}
@@ -62,8 +59,7 @@ Un estado `D` breve puede ser normal. La presencia persistente o abundante de ta
 
 Cuando corresponda, reanuda una tarea detenida por el control de trabajos con `SIGCONT`. Un zombi no se puede reanudar ni matar porque ya no se está ejecutando; su padre o un proceso recolector que lo haya adoptado debe recolectarlo.
 
-:::single-choice{#process-states-zombie-code}
-¿Qué identifica el estado principal `Z`?
+:::single-choice{#process-states-zombie-code} ¿Qué identifica el estado principal `Z`?
 
 ::option[Un proceso terminado cuyo registro de terminación espera ser recolectado.]{#process-states-z-zombie .correct explanation="Un zombi conserva una cantidad mínima de información de estado visible para su padre después de que la ejecución haya terminado."}
 ::option[Un proceso pausado por una señal de suspensión de la terminal.]{#process-states-z-terminal-stop explanation="Una detención por control de trabajos suele mostrarse como `T`."}

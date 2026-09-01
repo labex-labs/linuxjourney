@@ -23,8 +23,7 @@ Entre las herramientas habituales se encuentran:
 
 La compatibilidad de las herramientas evoluciona, así que utiliza el manual local y la documentación de la distribución. Una interfaz gráfica no hace seguras las operaciones destructivas; sigue cambiando los mismos metadatos del disco.
 
-:::single-choice{#disk-partitioning-fdisk-gpt}
-¿Qué afirmación sobre el `fdisk` actual de Linux es correcta?
+:::single-choice{#disk-partitioning-fdisk-gpt} ¿Qué afirmación sobre el `fdisk` actual de Linux es correcta?
 
 ::option[Admite tablas de particiones MBR y GPT.]{#disk-partitioning-fdisk-supports-gpt .correct explanation="El fdisk actual de util-linux puede editar diseños DOS/MBR y GPT, entre otros."}
 ::option[Solo puede editar GPT y nunca MBR.]{#disk-partitioning-fdisk-only-gpt explanation="`gdisk`, centrado en GPT, se aproxima más a esa descripción; fdisk admite varios tipos de etiquetas."}
@@ -45,8 +44,7 @@ Confirma el dispositivo completo mediante su identidad persistente, modelo, núm
 
 Desmonta o desactiva todas las capas pertinentes mediante sus procedimientos documentados. No edites la tabla de particiones del disco del sistema en ejecución solo porque la herramienta se abra correctamente. Registra la tabla existente en un formato restaurable y confirma que la copia de seguridad reside en otro dominio de fallo.
 
-:::single-choice{#disk-partitioning-target-identity}
-¿Por qué un nombre de dispositivo como `/dev/sdb` no basta como única comprobación del destino?
+:::single-choice{#disk-partitioning-target-identity} ¿Por qué un nombre de dispositivo como `/dev/sdb` no basta como única comprobación del destino?
 
 ::option[Porque Linux nunca expone discos completos bajo `/dev`.]{#disk-partitioning-no-whole-disks explanation="Los discos completos suelen tener nodos de bloques bajo `/dev`."}
 ::option[Porque los nombres de enumeración pueden cambiar al modificarse los dispositivos o la topología.]{#disk-partitioning-enumeration-changes .correct explanation="La letra se asigna según el orden de descubrimiento y puede referirse a otro disco en una sesión posterior."}
@@ -70,8 +68,7 @@ Después selecciona unidades de visualización coherentes y muestra la tabla:
 
 `print free` muestra las entradas actuales y las regiones sin asignar. Las órdenes de Parted pueden actualizar los metadatos del disco inmediatamente en vez de esperar a una operación final de «guardar», así que trata el prompt interactivo como acceso de escritura activo.
 
-:::single-choice{#disk-partitioning-print-free}
-¿Qué ayuda a mostrar `print free` en `parted`?
+:::single-choice{#disk-partitioning-print-free} ¿Qué ayuda a mostrar `print free` en `parted`?
 
 ::option[Archivos que pueden eliminarse para reducir de forma segura cualquier sistema de archivos.]{#disk-partitioning-free-files explanation="Parted lee el diseño de las particiones, no la asignación de archivos del sistema de archivos."}
 ::option[Todas las copias de seguridad almacenadas en sistemas remotos.]{#disk-partitioning-remote-backups explanation="El inventario de copias remotas está fuera del alcance de un editor de particiones."}
@@ -90,8 +87,7 @@ Esto crea una entrada de partición con un nombre, un tipo de contenido sugerido
 
 Utiliza la alineación recomendada por la herramienta y comprende si los extremos son inclusivos y cómo se redondean. Examina el resultado con `print` y `lsblk`; no supongas que un límite decimal solicitado se registró exactamente.
 
-:::single-choice{#disk-partitioning-mkpart-effect}
-¿Qué crea `mkpart` de `parted`?
+:::single-choice{#disk-partitioning-mkpart-effect} ¿Qué crea `mkpart` de `parted`?
 
 ::option[Un sistema de archivos ext4 montado que contiene un directorio personal.]{#disk-partitioning-mounted-filesystem explanation="Dar formato y montar son operaciones independientes posteriores a la creación de la partición."}
 ::option[Una copia de seguridad completa del contenido anterior de la partición.]{#disk-partitioning-automatic-backup explanation="Los editores de particiones no crean automáticamente una copia de recuperación."}
@@ -109,8 +105,7 @@ El orden es fundamental:
 
 Algunos sistemas de archivos no pueden reducirse. El cifrado, LVM, RAID y los diseños anidados añaden más capas ordenadas. El kernel también puede negarse a volver a leer una tabla modificada mientras los dispositivos estén ocupados, lo que exige un reinicio controlado antes de poder utilizar el nuevo diseño.
 
-:::single-choice{#disk-partitioning-shrink-order}
-Cuando un sistema de archivos admite la reducción, ¿qué orden evita cortar datos activos?
+:::single-choice{#disk-partitioning-shrink-order} Cuando un sistema de archivos admite la reducción, ¿qué orden evita cortar datos activos?
 
 ::option[Reducir primero la partición y después averiguar si cabe el sistema de archivos.]{#disk-partitioning-shrink-partition-first explanation="Acortar primero el contenedor puede truncar estructuras y datos del sistema de archivos."}
 ::option[Reducir primero el sistema de archivos y después el límite de la partición que lo contiene.]{#disk-partitioning-shrink-filesystem-first .correct explanation="El contenido debe caber dentro del intervalo menor antes de acortar el dispositivo de bloques exterior."}

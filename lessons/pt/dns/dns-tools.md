@@ -29,8 +29,7 @@ $ resolvectl query www.example.com
 
 Uma aplicação ainda pode usar uma biblioteca resolvedora ou um proxy próprio; portanto, reproduza o teste pela aplicação quando os resultados forem diferentes.
 
-:::single-choice{#dns-tools-system-resolver}
-Qual comando exercita o caminho configurado dos serviços de nomes do sistema?
+:::single-choice{#dns-tools-system-resolver} Qual comando exercita o caminho configurado dos serviços de nomes do sistema?
 
 ::option[Apenas `dig @SERVER NAME`.]{#dns-tools-dig-direct explanation="Dig envia uma consulta DNS e normalmente não lê os mapeamentos do arquivo hosts."}
 ::option[`ip link set down`]{#dns-tools-link-down explanation="Isso interrompe a interface em vez de testar a resolução."}
@@ -49,8 +48,7 @@ $ dig example.com MX
 
 A saída identifica o servidor que respondeu, o estado, os sinalizadores, a pergunta, a resposta, a autoridade, os dados adicionais, o tempo da consulta e os metadados do transporte. `+short` é conveniente para scripts, mas oculta evidências necessárias ao diagnóstico.
 
-:::single-choice{#dns-tools-record-type}
-Qual consulta solicita registros de endereço IPv6?
+:::single-choice{#dns-tools-record-type} Qual consulta solicita registros de endereço IPv6?
 
 ::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="Registros AAAA contêm endereços IPv6."}
 ::option[`dig NAME MX`]{#dns-tools-mx explanation="MX solicita registros de servidores de mensagens."}
@@ -67,8 +65,7 @@ $ dig @192.0.2.53 www.example.com A
 
 Compare o resolvedor recursivo configurado, um segundo resolvedor aprovado e cada servidor autoritativo ao diferenciar cache de autoridade. Um estado `NOERROR` pode não conter a resposta solicitada; `NXDOMAIN` significa que o nome consultado não existe, enquanto `SERVFAIL` significa que o servidor não conseguiu concluir a consulta.
 
-:::single-choice{#dns-tools-noerror-empty}
-`NOERROR` pode ter uma seção de resposta vazia?
+:::single-choice{#dns-tools-noerror-empty} `NOERROR` pode ter uma seção de resposta vazia?
 
 ::option[Sim, quando o nome existe, mas não possui os dados de registro solicitados.]{#dns-tools-noerror-nodata .correct explanation="O estado e a quantidade de respostas devem ser interpretados em conjunto."}
 ::option[Não, ele garante pelo menos um registro de endereço.]{#dns-tools-noerror-always-answer explanation="O nome pode existir sem dados do tipo solicitado."}
@@ -81,8 +78,7 @@ Compare o resolvedor recursivo configurado, um segundo resolvedor aprovado e cad
 
 `dig +trace NAME` realiza seu próprio percurso iterativo a partir das referências da raiz. Ele pode diferir de um resolvedor de produção porque ignora o cache, o encaminhamento, a política, a validação DNSSEC e a localização de rede desse resolvedor.
 
-:::single-choice{#dns-tools-aa-flag}
-O que o sinalizador de resposta `aa` significa?
+:::single-choice{#dns-tools-aa-flag} O que o sinalizador de resposta `aa` significa?
 
 ::option[A consulta usou dois endereços IPv4 idênticos.]{#dns-tools-two-addresses explanation="O sinalizador não tem relação com a quantidade de respostas nem com a família de endereços."}
 ::option[A resposta foi criptografada com credenciais da aplicação.]{#dns-tools-aa-encrypted explanation="Os sinalizadores DNS não estabelecem um transporte criptografado."}
@@ -105,8 +101,7 @@ $ dig +tcp @192.0.2.53 example.com SOA
 
 O DNS moderno pode usar a porta 53 por UDP ou TCP; ambos devem ser permitidos onde forem necessários. Uma resposta UDP com o sinalizador de truncamento leva clientes compatíveis a repetir a consulta por um transporte apropriado.
 
-:::single-choice{#dns-tools-tcp-test}
-O que `dig +tcp` altera?
+:::single-choice{#dns-tools-tcp-test} O que `dig +tcp` altera?
 
 ::option[Ele envia a consulta DNS usando TCP em vez da tentativa UDP padrão.]{#dns-tools-use-tcp .correct explanation="Isso ajuda a isolar a filtragem do transporte e respostas que exigem um fluxo confiável maior."}
 ::option[Ele solicita apenas registros de nomes de serviços TCP.]{#dns-tools-tcp-records explanation="O tipo DNS solicitado continua sendo especificado separadamente."}

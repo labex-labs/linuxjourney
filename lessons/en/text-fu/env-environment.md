@@ -30,8 +30,7 @@ Common environment variables include:
 
 Values depend on the current process environment; they are not universal constants. An unset variable expands to an empty string unless stricter shell behavior is enabled.
 
-:::single-choice{#env-print-home-value}
-Which Bash command prints the value of `HOME` while preserving it as one argument?
+:::single-choice{#env-print-home-value} Which Bash command prints the value of `HOME` while preserving it as one argument?
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="Single quotes prevent parameter expansion, so this prints the literal characters `$HOME`."}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash expands `$HOME` inside double quotes, and `printf` receives the complete value as one argument."}
@@ -56,8 +55,7 @@ USER=pete
 
 Environment variables can contain credentials, tokens, internal paths, or other sensitive data. Do not paste complete `env` output into public issues or logs without reviewing and redacting it.
 
-:::single-choice{#env-list-exported-values}
-Which command prints the environment visible to a newly started process?
+:::single-choice{#env-list-exported-values} Which command prints the environment visible to a newly started process?
 
 ::option[`env`]{#env-print-all .correct explanation="With no command or assignments, `env` prints the name-value environment it received."}
 ::option[`alias`]{#env-alias-list explanation="`alias` lists shell alias definitions, which are shell state rather than exported environment records."}
@@ -82,8 +80,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 Do not replace `PATH` accidentally with only the new directory, and do not add untrusted writable directories. Either mistake can prevent normal commands from resolving or cause an unexpected executable to run.
 
-:::single-choice{#env-prepend-path-directory}
-Which command adds `/opt/coolapp/bin` before the existing `PATH` for the current Bash process and its future children?
+:::single-choice{#env-prepend-path-directory} Which command adds `/opt/coolapp/bin` before the existing `PATH` for the current Bash process and its future children?
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="This discards every existing search directory, which can make ordinary commands difficult to find."}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="This prepends the new directory, retains the previous value, and exports the result for child processes."}
@@ -107,8 +104,7 @@ test
 
 The assignment normally lasts until you unset it or the shell exits. It does not modify a system-wide environment.
 
-:::single-choice{#env-export-inheritance}
-What is the main effect of `export TEST=test` in Bash?
+:::single-choice{#env-export-inheritance} What is the main effect of `export TEST=test` in Bash?
 
 ::option[It writes `TEST` into every user's system configuration.]{#env-system-wide explanation="The assignment affects the current shell and inheritance by its children, not every user or the whole operating system."}
 ::option[It marks `TEST=test` for inheritance by future child processes.]{#env-child-inheritance .correct explanation="`export` adds the shell variable to the environment Bash passes to commands it starts."}
@@ -131,8 +127,7 @@ $ env LANG=C sort names.txt
 
 Use `env -i COMMAND` to start a command with an initially empty environment, then add any required assignments. Many programs rely on environment values, so use that option deliberately.
 
-:::single-choice{#env-one-command-value}
-Which command runs `sort names.txt` with `LANG=C` without permanently changing the current shell's `LANG`?
+:::single-choice{#env-one-command-value} Which command runs `sort names.txt` with `LANG=C` without permanently changing the current shell's `LANG`?
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` adds the assignment to the environment of the command it starts, while the parent shell keeps its prior value."}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="This exports `LANG=C` in the current shell and leaves it changed after `sort` finishes."}

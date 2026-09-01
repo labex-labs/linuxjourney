@@ -24,16 +24,14 @@ Emacs öffnet eine vorhandene lesbare Datei in einem Puffer. Fehlt der angegeben
 
 Bei der Eingabe eines Pfads kannst du die Vervollständigung mit Tab verwenden. Beim Besuch eines Verzeichnisses öffnet Emacs normalerweise Dired, seinen Verzeichniseditor, statt das Verzeichnis als Textdatei zu behandeln.
 
-:::single-choice{#emacs-find-file-key}
-Welche Emacs-Tastenfolge fragt nach einem Pfad und besucht ihn?
+:::single-choice{#emacs-find-file-key} Welche Emacs-Tastenfolge fragt nach einem Pfad und besucht ihn?
 
 ::option[`C-x C-s`]{#emacs-file-save explanation="Diese Tastenfolge speichert den aktuellen dateibesuchenden Puffer und fragt nicht nach einem anderen zu besuchenden Pfad."}
 ::option[`C-x C-c`]{#emacs-file-exit explanation="Diese Tastenfolge leitet das Beenden von Emacs ein, statt eine Datei zu öffnen."}
 ::option[`C-x C-f`]{#emacs-find-file .correct explanation="Diese Tastenfolge führt `find-file` aus und fragt im Minipuffer nach dem zu besuchenden Pfad."}
 :::
 
-:::single-choice{#emacs-find-missing-file}
-Wann wird die Datei auf dem Datenträger normalerweise angelegt, wenn `C-x C-f` einen noch nicht vorhandenen Pfad besucht?
+:::single-choice{#emacs-find-missing-file} Wann wird die Datei auf dem Datenträger normalerweise angelegt, wenn `C-x C-f` einen noch nicht vorhandenen Pfad besucht?
 
 ::option[Erst nachdem der neue Puffer erfolgreich gespeichert wurde.]{#emacs-file-created-on-save .correct explanation="Der Puffer kann Änderungen aufnehmen, bevor eine Datei existiert; erst das Speichern legt sie an."}
 ::option[Sofort nach der Eingabe des Pfads.]{#emacs-file-created-immediately explanation="Emacs erstellt zunächst einen mit dem neuen Pfad verknüpften Puffer und verschiebt das Anlegen der Datei auf später."}
@@ -50,8 +48,7 @@ C-x C-s
 
 Ist dem Puffer kein Dateiname zugeordnet, fragt Emacs nach einem. Ein erfolgreicher Schreibvorgang entfernt die Änderungsmarkierung des Puffers. Bei einem Fehler bleiben die ungespeicherten Daten im Puffer erhalten und Emacs meldet den Fehler.
 
-:::single-choice{#emacs-save-current-buffer}
-Welche Tastenfolge speichert den aktuellen dateibesuchenden Puffer?
+:::single-choice{#emacs-save-current-buffer} Welche Tastenfolge speichert den aktuellen dateibesuchenden Puffer?
 
 ::option[`C-x C-s`]{#emacs-save-buffer-key .correct explanation="`C-x C-s` führt `save-buffer` für den aktuellen Puffer aus."}
 ::option[`C-x C-w`]{#emacs-write-file-key explanation="Diese Tastenfolge fragt nach einem anderen Dateinamen und ändert, welche Datei der Puffer besucht."}
@@ -68,8 +65,7 @@ C-x C-w
 
 Das entspricht in Emacs dem Verhalten von „Speichern unter“. Es unterscheidet sich davon, lediglich eine getrennte Kopie zu schreiben und weiterhin den ursprünglichen Pfad zu besuchen.
 
-:::single-choice{#emacs-write-file-as}
-Welche Tastenfolge führt für den aktuellen Puffer das übliche „Speichern unter“ aus?
+:::single-choice{#emacs-write-file-as} Welche Tastenfolge führt für den aktuellen Puffer das übliche „Speichern unter“ aus?
 
 ::option[`C-x C-f`]{#emacs-find-file-other explanation="Diese Tastenfolge besucht eine Datei und wechselt dabei möglicherweise zu einem anderen Puffer; sie ist kein „Speichern unter“ für den aktuellen Puffer."}
 ::option[`C-x k`]{#emacs-write-as-kill-buffer explanation="Diese Tastenfolge fragt nach dem Beenden eines Puffers und kann wegen ungespeicherter Änderungen nachfragen; sie speichert nicht unter einem neuen Namen."}
@@ -86,8 +82,7 @@ C-x s
 
 Emacs fragt normalerweise für jeden infrage kommenden geänderten Puffer, ob er gespeichert werden soll. Lies den Puffernamen und antworte bewusst; dies ist kein bedingungsloser Befehl zum Speichern aller Puffer.
 
-:::single-choice{#emacs-save-some-buffers}
-Was bewirkt `C-x s` normalerweise?
+:::single-choice{#emacs-save-some-buffers} Was bewirkt `C-x s` normalerweise?
 
 ::option[Es fragt nach dem Speichern geänderter dateibesuchender Puffer.]{#emacs-prompt-save-some .correct explanation="`save-some-buffers` prüft infrage kommende geänderte Puffer und fragt, welche davon geschrieben werden sollen."}
 ::option[Es speichert jeden Puffer stillschweigend, ohne Namen anzuzeigen.]{#emacs-silent-save-all explanation="Der normale interaktive Befehl fragt nach, statt jeden Puffer bedingungslos zu schreiben."}

@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 `/usr/lib/systemd/` pode existir em um sistema no qual outro programa é o PID 1, e um contêiner pode expor seu próprio namespace de PID. O `systemctl` também possui modos para gerenciador de usuário e para sistemas remotos ou contêineres; portanto, identifique qual gerenciador é o destino de uma operação.
 
-:::single-choice{#systemd-overview-detection}
-O que identifica mais diretamente o systemd como o gerenciador de init do sistema?
+:::single-choice{#systemd-overview-detection} O que identifica mais diretamente o systemd como o gerenciador de init do sistema?
 
 ::option[Existe um diretório chamado `/usr/lib/systemd`.]{#systemd-overview-directory explanation="Bibliotecas e arquivos de unidade podem permanecer instalados sem que o systemd atue como PID 1."}
 ::option[Um usuário executou um comando chamado `systemctl`.]{#systemd-overview-command-executed explanation="Um binário cliente pode existir mesmo quando nenhum gerenciador systemd do sistema está disponível."}
@@ -44,8 +43,7 @@ Uma unidade é o modelo nomeado do systemd para um recurso ou uma atividade. Ent
 
 O estado de uma unidade nem sempre é “em execução”. Uma montagem pode estar montada, um temporizador pode estar aguardando, um dispositivo pode estar presente e um alvo pode estar ativo depois que suas dependências são alcançadas.
 
-:::single-choice{#systemd-overview-group-unit}
-Qual tipo de unidade geralmente agrupa outras unidades e fornece um ponto de sincronização?
+:::single-choice{#systemd-overview-group-unit} Qual tipo de unidade geralmente agrupa outras unidades e fornece um ponto de sincronização?
 
 ::option[`.socket`]{#systemd-overview-socket explanation="Unidades de socket expõem pontos de extremidade de IPC ou rede e podem ativar serviços."}
 ::option[`.target`]{#systemd-overview-target .correct explanation="Unidades de alvo reúnem dependências e representam marcos de inicialização ou operação."}
@@ -62,8 +60,7 @@ Unidades do sistema podem ser carregadas de caminhos da distribuição e do admi
 
 Os caminhos exatos dos fornecedores podem variar. Configurações locais de prioridade mais alta substituem arquivos de prioridade mais baixa com o mesmo nome de unidade. Prefira substituições complementares criadas com `systemctl edit UNIT` a copiar e modificar um arquivo completo do fornecedor, para que as atualizações de pacotes continuem visíveis.
 
-:::single-choice{#systemd-overview-local-override}
-Onde normalmente devem ficar as substituições locais persistentes de unidades do sistema?
+:::single-choice{#systemd-overview-local-override} Onde normalmente devem ficar as substituições locais persistentes de unidades do sistema?
 
 ::option[Dentro de `/proc/systemd/`.]{#systemd-overview-proc-systemd explanation="O procfs é uma interface do kernel em tempo de execução, não uma configuração persistente de unidades."}
 ::option[Em `/etc/systemd/system/`.]{#systemd-overview-etc-system .correct explanation="A camada de configuração do administrador tem precedência sobre as unidades empacotadas pelo fornecedor."}
@@ -76,8 +73,7 @@ O systemd cria uma transação com base nos relacionamentos de dependência. `Wa
 
 Uma linha `After=network.target` não comprova que uma conectividade utilizável, o DNS ou um ponto de extremidade remoto específico estejam prontos. Os serviços devem usar a integração apropriada com o estado de rede online ou implementar seu próprio comportamento de repetição e prontidão.
 
-:::single-choice{#systemd-overview-after-semantics}
-O que `After=other.service` especifica por si só?
+:::single-choice{#systemd-overview-after-semantics} O que `After=other.service` especifica por si só?
 
 ::option[Uma garantia de que o ponto de extremidade da aplicação do outro serviço está íntegro.]{#systemd-overview-after-health explanation="A conclusão da ordenação e a prontidão da aplicação são conceitos diferentes."}
 ::option[A ordenação caso ambas as unidades façam parte da transação.]{#systemd-overview-after-ordering .correct explanation="Um requisito separado, como Wants ou Requires, é necessário para incluir a outra unidade."}
@@ -90,8 +86,7 @@ O que `After=other.service` especifica por si só?
 
 Os alvos se assemelham aos níveis de execução apenas em um sentido amplo de compatibilidade. Vários alvos podem estar ativos ao mesmo tempo, alvos personalizados podem ser criados, e a atividade de um alvo não significa que todos os serviços da máquina estejam íntegros.
 
-:::single-choice{#systemd-overview-default-target}
-O que `default.target` normalmente seleciona?
+:::single-choice{#systemd-overview-default-target} O que `default.target` normalmente seleciona?
 
 ::option[O dispositivo de bloco padrão que `mkfs` deve apagar.]{#systemd-overview-default-disk explanation="Alvos descrevem a ativação de unidades, não a seleção destrutiva de armazenamento."}
 ::option[O único alvo que pode estar ativo.]{#systemd-overview-only-target explanation="Alvos são agrupamentos, e muitos podem estar ativos em uma mesma inicialização."}

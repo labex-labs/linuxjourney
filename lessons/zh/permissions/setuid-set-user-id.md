@@ -27,8 +27,7 @@ $ ls -l /usr/bin/passwd
 
 不要假设每个发行版都有相同模式或认证设计。应检查实际系统，而不是依赖示例。
 
-:::single-choice{#setuid-lowercase-s}
-所有者执行位置的小写 `s` 表示什么？
+:::single-choice{#setuid-lowercase-s} 所有者执行位置的小写 `s` 表示什么？
 
 ::option[已设置 setuid，但没有所有者执行。]{#setuid-s-without-execute explanation="这种组合显示为大写 `S`，而不是小写 `s`。"}
 ::option[文件有 sticky bit 和组执行。]{#setuid-sticky-group explanation="sticky bit 出现在其他执行位置，而 setuid 出现在所有者位置。"}
@@ -41,8 +40,7 @@ $ ls -l /usr/bin/passwd
 
 这种机制可以让经过谨慎编写的程序验证请求，再对受保护状态进行受限更改。例如，本地密码更改工具可能需要受控访问普通用户无法直接编辑的认证数据。现代实现还依赖 PAM、文件锁、策略和其他保护措施；仅凭 setuid 无法解释完整工作流。
 
-:::single-choice{#setuid-effective-identity}
-采用 setuid 可执行文件时，主要从文件所有者取得哪个身份？
+:::single-choice{#setuid-effective-identity} 采用 setuid 可执行文件时，主要从文件所有者取得哪个身份？
 
 ::option[存储在 `/etc/passwd` 中的登录名。]{#setuid-login-name explanation="执行文件不会重写调用者的账户记录或登录名。"}
 ::option[进程的有效用户 ID。]{#setuid-effective-user .correct explanation="set-user-ID 执行机制会改变许多授权检查使用的有效用户身份。"}
@@ -65,8 +63,7 @@ $ sudo chmod 4755 myfile
 
 这里，开头的 `4` 设置 setuid，`755` 设置普通所有者、组和其他权限位。使用 `chmod u-s myfile` 可移除 setuid，而不改变其他模式位。
 
-:::single-choice{#setuid-octal-value}
-哪个开头的八进制值表示 setuid 特殊位？
+:::single-choice{#setuid-octal-value} 哪个开头的八进制值表示 setuid 特殊位？
 
 ::option[`4`]{#setuid-octal-four .correct explanation="Setuid 在开头的特殊位数字中贡献值 `4`。"}
 ::option[`1`]{#setuid-octal-one explanation="开头的 `1` 表示 sticky bit。"}
@@ -81,8 +78,7 @@ Linux 通常不会在解释型脚本上采用 setuid，因为安全实现会遇�
 
 绝不要为了在共享系统上试验，就给任意 shell、解释器或复制的程序添加 setuid。应审计现有 setuid 文件，并只在隔离的可丢弃环境中练习。
 
-:::single-choice{#setuid-nosuid-mount}
-使用 `nosuid` 挂载文件系统有什么作用？
+:::single-choice{#setuid-nosuid-mount} 使用 `nosuid` 挂载文件系统有什么作用？
 
 ::option[移除该文件系统中所有文件存储的执行位。]{#setuid-nosuid-remove-execute explanation="该选项不会重写文件元数据中的普通执行位。"}
 ::option[抑制该文件系统上的 setuid 和 setgid 执行效果。]{#setuid-nosuid-suppress .correct explanation="`nosuid` 挂载选项会阻止这些特殊模式位授予通常的凭据变更执行行为。"}

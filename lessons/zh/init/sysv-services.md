@@ -28,8 +28,7 @@ $ service --status-all
 
 其中的方括号标记和退出状态取决于包装程序，脚本也可能报告未知状态。对于单个服务，应检查脚本的用法输出或文档，而不要假定每项操作都存在。
 
-:::single-choice{#sysv-services-wrapper-purpose}
-`service` 命令通常包装什么？
+:::single-choice{#sysv-services-wrapper-purpose} `service` 命令通常包装什么？
 
 ::option[在每个服务文件上运行的磁盘分区编辑器。]{#sysv-services-partition-editor explanation="服务控制与存储分区无关。"}
 ::option[由脚本动态添加的内核系统调用。]{#sysv-services-new-syscall explanation="Init 脚本是用户空间进程控制程序。"}
@@ -49,8 +48,7 @@ $ sudo service SERVICE_NAME stop
 
 直接形式 `/etc/init.d/SERVICE_NAME ACTION` 可能存在，但如果主机的活动管理器提供兼容功能，应使用面向管理器的命令，让它能够跟踪状态和依赖关系。
 
-:::single-choice{#sysv-services-stop-peanut}
-哪个命令请求停止 SysV 服务 `peanut`？
+:::single-choice{#sysv-services-stop-peanut} 哪个命令请求停止 SysV 服务 `peanut`？
 
 ::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="传统操作数顺序先放服务名称，再放操作。"}
 ::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="这不是 SysV 服务包装程序语法。"}
@@ -68,8 +66,7 @@ $ sudo service SERVICE_NAME status
 $ sudo service SERVICE_NAME reload
 ```
 
-:::single-choice{#sysv-services-reload-versus-restart}
-为什么不能假定 `reload` 等同于 `restart`？
+:::single-choice{#sysv-services-reload-versus-restart} 为什么不能假定 `reload` 等同于 `restart`？
 
 ::option[Reload 总会关闭整个操作系统。]{#sysv-services-reload-shutdown explanation="这不是服务 reload 操作的通常含义。"}
 ::option[Restart 只打印配置，绝不改变进程状态。]{#sysv-services-restart-readonly explanation="Restart 通常会停止并启动服务。"}
@@ -82,8 +79,7 @@ $ sudo service SERVICE_NAME reload
 
 在理解发行版依赖元数据和管理工具前，不要手动创建 `S` 和 `K` 链接；手动链接可能被覆盖或顺序错误。
 
-:::single-choice{#sysv-services-start-versus-enable}
-`service SERVICE start` 一定会让服务在以后启动时自动运行吗？
+:::single-choice{#sysv-services-start-versus-enable} `service SERVICE start` 一定会让服务在以后启动时自动运行吗？
 
 ::option[会；每个 start 操作都会自动创建全部运行级别链接。]{#sysv-services-start-links explanation="包装程序不会普遍改变持久启用状态。"}
 ::option[不会；运行时状态与运行级别启用是分开的。]{#sysv-services-runtime-separate .correct explanation="启动链接或管理器策略独立于当前启动进程，决定未来是否激活。"}

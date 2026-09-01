@@ -18,8 +18,7 @@ Ein autonomes System ist eine Menge von Netzwerken unter gemeinsamer Routingverw
 
 BGP-Peers stellen eine Sitzung über TCP-Port 179 her. Eine funktionierende TCP-Sitzung ist nur die Transportgrundlage; auch BGP-Fähigkeiten, Richtlinien und Routenaustausch müssen erfolgreich sein.
 
-:::single-choice{#bgp-external-session}
-Was tauscht externes BGP aus?
+:::single-choice{#bgp-external-session} Was tauscht externes BGP aus?
 
 ::option[Ethernet-Frame-Prüfsummen innerhalb eines Switches.]{#bgp-ethernet-fcs explanation="BGP arbeitet oberhalb von TCP und tauscht Erreichbarkeit der Netzwerkschicht aus."}
 ::option[Benutzerpasswörter zwischen Webbrowsern.]{#bgp-browser-passwords explanation="Anmeldedaten von Anwendungen sind keine Routingattribute."}
@@ -30,8 +29,7 @@ Was tauscht externes BGP aus?
 
 Eine Ankündigung enthält ein Präfix und Attribute. `AS_PATH` listet durchquerte autonome Systeme auf und hilft, Schleifen zu erkennen. Weitere häufige Attribute sind `LOCAL_PREF`, `MED`, Ursprung, nächster Hop und Communities. Ihre Wirkung hängt von Richtung, Implementierung und Richtlinie ab.
 
-:::single-choice{#bgp-as-path-loop}
-Wie hilft `AS_PATH`, Schleifen zwischen autonomen Systemen zu verhindern?
+:::single-choice{#bgp-as-path-loop} Wie hilft `AS_PATH`, Schleifen zwischen autonomen Systemen zu verhindern?
 
 ::option[Ein AS kann einen Pfad ablehnen, der bereits seine eigene Nummer enthält.]{#bgp-own-as-reject .correct explanation="Der Pfadvektor macht die AS-Abfolge zum angekündigten Präfix sichtbar."}
 ::option[Es verschlüsselt jedes Paket, das diese Systeme durchquert.]{#bgp-aspath-encryption explanation="Das Attribut beschreibt einen Routingpfad und bietet keine Nutzlastverschlüsselung."}
@@ -44,8 +42,7 @@ Der „beste“ BGP-Pfad ist derjenige, der einen konfigurierten Entscheidungspr
 
 Nachdem BGP Kandidaten ausgewählt hat, verwendet die gewöhnliche IP-Weiterleitung weiterhin die längste Präfixübereinstimmung. Ein ausgewähltes `/24` wird für seine Ziele statt eines ausgewählten übergeordneten `/16` verwendet.
 
-:::single-choice{#bgp-best-path-meaning}
-Was stellt ein bester BGP-Pfad dar?
+:::single-choice{#bgp-best-path-meaning} Was stellt ein bester BGP-Pfad dar?
 
 ::option[Die Route, die den lokalen Attribut- und Richtlinienentscheidungsprozess gewinnt.]{#bgp-policy-winner .correct explanation="Administrative Absicht ist für die domänenübergreifende Pfadauswahl zentral."}
 ::option[In jedem Fall die physisch kürzeste Kabelroute.]{#bgp-shortest-cable explanation="BGP besitzt keine vollständige Karte physischer Entfernungen."}
@@ -56,8 +53,7 @@ Was stellt ein bester BGP-Pfad dar?
 
 Die Ankündigung eines Präfixes behauptet Erreichbarkeit gemäß einer Richtlinie; sie erstellt weder die zugrunde liegende Route noch stellt sie den Rückweg sicher. Sorge vor dem Ankündigen eines Präfixes für gültige Weiterleitung, korrektes Aggregationsverhalten, Filter, Failover und eine Autorisierung des Eigentümers.
 
-:::single-choice{#bgp-advertisement-limit}
-Was garantiert die Ankündigung eines Präfixes nicht?
+:::single-choice{#bgp-advertisement-limit} Was garantiert die Ankündigung eines Präfixes nicht?
 
 ::option[Dass Peers eine Route auf der Steuerungsebene empfangen können.]{#bgp-peers-control explanation="Erfolgreiche Ankündigung und Annahme können diese begrenzte Tatsache der Steuerungsebene belegen."}
 ::option[Dass das Präfix Adressbits enthält.]{#bgp-prefix-bits explanation="Ein IP-Präfix ist durch Adressbits und Länge definiert."}
@@ -70,8 +66,7 @@ Route Leaks und Hijacks können Datenverkehr weit über einen Router hinaus beei
 
 BGP-Änderungen erfordern schrittweise Einführung, Prüfung von Routendifferenzen, Out-of-Band-Zugang, Rücknahme sowie Überprüfung auf Steuerungs- und Datenebene.
 
-:::single-choice{#bgp-rpki-limit}
-Was prüft die RPKI-Ursprungsvalidierung?
+:::single-choice{#bgp-rpki-limit} Was prüft die RPKI-Ursprungsvalidierung?
 
 ::option[Ob jede Paketnutzlast frei von Schadsoftware ist.]{#bgp-payload-malware explanation="RPKI untersucht keine Anwendungsinhalte."}
 ::option[Ob der vollständige AS-Pfad die geringste Latenz besitzt.]{#bgp-path-latency explanation="Ursprungsvalidierung ist weder Leistungsauswahl noch vollständige Pfadvalidierung."}

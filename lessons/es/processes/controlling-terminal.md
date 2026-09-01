@@ -27,8 +27,7 @@ $ tty
 
 Este resultado está relacionado con el concepto más amplio de terminal de control, pero no es idéntico. Un proceso puede redirigir su entrada o salida estándar y seguir perteneciendo a una sesión con terminal de control.
 
-:::single-choice{#controlling-terminal-pts-meaning}
-¿Qué suele identificar un nombre como `pts/3`?
+:::single-choice{#controlling-terminal-pts-meaning} ¿Qué suele identificar un nombre como `pts/3`?
 
 ::option[Un ID de proceso asignado al tercer shell.]{#controlling-terminal-pts-pid explanation="Un PID es un metadato numérico de proceso y no se expresa como un nombre de dispositivo `pts/N`."}
 ::option[Un dispositivo pseudoterminal usado por una sesión interactiva.]{#controlling-terminal-pts-device .correct explanation="Las entradas de `/dev/pts` son dispositivos esclavos de pseudoterminal usados habitualmente por emuladores y sesiones remotas."}
@@ -41,8 +40,7 @@ Una terminal de control pertenece a una sesión, no únicamente a la orden que a
 
 Por ejemplo, al pulsar `Ctrl-C`, el controlador de la terminal suele enviar `SIGINT` al grupo de procesos en primer plano. Un grupo en segundo plano que intenta leer de la terminal puede recibir `SIGTTIN`. Estas reglas permiten al shell coordinar trabajos en primer y segundo plano.
 
-:::single-choice{#controlling-terminal-ctrl-c-target}
-¿A qué procesos dirige normalmente una terminal la señal generada por `Ctrl-C`?
+:::single-choice{#controlling-terminal-ctrl-c-target} ¿A qué procesos dirige normalmente una terminal la señal generada por `Ctrl-C`?
 
 ::option[A todos los procesos propiedad del usuario actual.]{#controlling-terminal-ctrl-c-user explanation="Las señales generadas por la terminal se limitan al grupo de procesos en primer plano, no a todos los procesos del usuario."}
 ::option[Únicamente al shell de inicio, sin importar el trabajo en primer plano.]{#controlling-terminal-ctrl-c-shell explanation="Mientras otro trabajo está en primer plano, el grupo de ese trabajo es el destino normal de la señal."}
@@ -61,8 +59,7 @@ Un nombre de terminal como `pts/3` identifica la terminal de control registrada 
 
 Muchos procesos de servicios no tienen terminal de control porque un gestor de servicios los inicia independientemente de una sesión interactiva. Sin embargo, la ausencia de TTY no demuestra por sí sola que un proceso sea un daemon, y un trabajo del shell en segundo plano puede conservar una terminal de control.
 
-:::single-choice{#controlling-terminal-question-mark}
-¿Qué significa normalmente `?` en la columna `TTY` de `ps`?
+:::single-choice{#controlling-terminal-question-mark} ¿Qué significa normalmente `?` en la columna `TTY` de `ps`?
 
 ::option[El proceso no tiene terminal de control.]{#controlling-terminal-no-tty .correct explanation="El signo de interrogación es la representación habitual cuando no hay una terminal de control asociada al proceso."}
 ::option[No se pudo leer la terminal del proceso porque está ocupada.]{#controlling-terminal-busy-tty explanation="El marcador representa la ausencia de terminal de control, no una contención temporal del dispositivo."}
@@ -75,8 +72,7 @@ Cuando desaparece una conexión de terminal, el kernel o el software de terminal
 
 Por tanto, cerrar una terminal no garantiza que todas las órdenes iniciadas desde ella terminen. Cuando importe la persistencia, consulta la sesión, el tratamiento de señales, las redirecciones y el supervisor del proceso.
 
-:::single-choice{#controlling-terminal-close-effect}
-¿Por qué es incorrecto afirmar que cerrar una terminal siempre termina todos los procesos iniciados en ella?
+:::single-choice{#controlling-terminal-close-effect} ¿Por qué es incorrecto afirmar que cerrar una terminal siempre termina todos los procesos iniciados en ella?
 
 ::option[Las terminales de Linux nunca generan señales al cerrarse.]{#controlling-terminal-never-signals explanation="Las señales de hangup son un comportamiento real de terminales y sesiones, aunque no garanticen la terminación."}
 ::option[Únicamente los procesos con PID numéricos pueden recibir hangups.]{#controlling-terminal-pid-hangup explanation="Todos los procesos normales tienen PID numéricos; este hecho no determina si sobreviven al cierre de una terminal."}

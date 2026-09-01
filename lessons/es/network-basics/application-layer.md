@@ -18,8 +18,7 @@ Un protocolo de aplicación define cómo interpretan los pares los mensajes y el
 
 No todos los protocolos de aplicación añaden una «cabecera de aplicación» fija. Algunos utilizan campos de texto, otros registros binarios, otros varios formatos anidados y algunos transportan una secuencia continua de mensajes a través de una única conexión de transporte.
 
-:::single-choice{#application-layer-protocol-role}
-¿Qué define principalmente un protocolo de aplicación?
+:::single-choice{#application-layer-protocol-role} ¿Qué define principalmente un protocolo de aplicación?
 
 ::option[El significado y las reglas de intercambio de los mensajes de un servicio.]{#application-layer-message-semantics .correct explanation="Los pares necesitan una sintaxis, una semántica y un comportamiento de estado compartidos para interoperar."}
 ::option[El voltaje de todos los cables Ethernet.]{#application-layer-voltage explanation="La señalización física pertenece a tecnologías de capas inferiores."}
@@ -30,8 +29,7 @@ No todos los protocolos de aplicación añaden una «cabecera de aplicación» f
 
 Un cliente inicia una solicitud o conexión con un servicio; un servidor escucha o la acepta de otra forma. Son funciones dentro de una interacción, no categorías permanentes de dispositivos. Un mismo host puede ser cliente de DNS y servidor de SSH al mismo tiempo, y algunos protocolos utilizan funciones entre pares.
 
-:::single-choice{#application-layer-client-role}
-¿Qué convierte a un programa en el cliente de un intercambio típico de solicitud y respuesta?
+:::single-choice{#application-layer-client-role} ¿Qué convierte a un programa en el cliente de un intercambio típico de solicitud y respuesta?
 
 ::option[Inicia una solicitud al servicio.]{#application-layer-client-initiates .correct explanation="Cliente y servidor describen funciones de interacción que un host puede realizar simultáneamente para servicios distintos."}
 ::option[Debe ejecutarse en un portátil y no en un servidor.]{#application-layer-client-laptop explanation="La categoría del hardware no determina la función en el protocolo."}
@@ -42,8 +40,7 @@ Un cliente inicia una solicitud o conexión con un servicio; un servidor escucha
 
 Una aplicación puede resolver el nombre de un servicio en una o varias direcciones IP y elegir un punto final de transporte. Los puertos conocidos proporcionan valores predeterminados, no pruebas inmutables de un protocolo. HTTP suele usar el puerto TCP 80 y HTTPS el puerto TCP 443, pero cualquiera puede ejecutarse en otro lugar. SMTP utiliza distintos puertos y políticas para la retransmisión y el envío de mensajes.
 
-:::single-choice{#application-layer-port-limit}
-¿Qué demuestra por sí solo un puerto TCP 443 abierto?
+:::single-choice{#application-layer-port-limit} ¿Qué demuestra por sí solo un puerto TCP 443 abierto?
 
 ::option[Que un proceso ha aceptado un punto final TCP allí, pero aún debe comprobarse su comportamiento de aplicación.]{#application-layer-port-endpoint .correct explanation="El intercambio del protocolo y la validación de TLS proporcionan pruebas más sólidas en la capa de aplicación."}
 ::option[Que el servicio es sin duda una aplicación HTTPS configurada correctamente.]{#application-layer-port-proves-https explanation="Un número de puerto no valida el comportamiento del protocolo, la identidad ni la salud."}
@@ -56,8 +53,7 @@ TLS puede proporcionar confidencialidad, integridad y autenticación de la ident
 
 Por ejemplo, un diagnóstico de HTTPS puede comprobar por separado la resolución, la conexión TCP, el certificado y el nombre TLS, la respuesta HTTP y el contenido de la aplicación. El éxito en un paso acota el problema, pero no demuestra que todos los pasos posteriores funcionen.
 
-:::single-choice{#application-layer-tls-limit}
-¿Qué establece una validación satisfactoria del certificado TLS?
+:::single-choice{#application-layer-tls-limit} ¿Qué establece una validación satisfactoria del certificado TLS?
 
 ::option[Que todos los usuarios están autorizados para todos los recursos.]{#application-layer-tls-all-users explanation="La autenticación del transporte no sustituye la política de acceso de la aplicación."}
 ::option[La identidad del par para el nombre validado y un canal seguro autenticado.]{#application-layer-tls-identity .correct explanation="La autorización de la aplicación y la corrección del contenido aún necesitan sus propias comprobaciones."}

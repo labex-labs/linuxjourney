@@ -22,8 +22,7 @@ $ iostat -xz 1
 
 Nas implementações comuns, o primeiro relatório contém médias desde o boot, e os relatórios posteriores abrangem cada intervalo. A opção `-x` acrescenta campos detalhados, enquanto `-z` omite dispositivos inativos. Aguarde vários intervalos para capturar períodos normais e problemáticos.
 
-:::single-choice{#iostat-first-report}
-O que o primeiro relatório de `iostat` normalmente representa?
+:::single-choice{#iostat-first-report} O que o primeiro relatório de `iostat` normalmente representa?
 
 ::option[Somente as operações do último segundo do comando.]{#iostat-final-second explanation="Isso não descreve o relatório acumulado inicial."}
 ::option[As médias de atividade desde a inicialização do sistema.]{#iostat-since-boot .correct explanation="Os relatórios posteriores normalmente são específicos do intervalo, portanto o primeiro precisa ser interpretado separadamente."}
@@ -34,8 +33,7 @@ O que o primeiro relatório de `iostat` normalmente representa?
 
 A seção da CPU normalmente inclui os tempos de usuário (`%user`), sistema (`%system`), ocioso (`%idle`), espera por E/S (`%iowait`) e tomado pela máquina virtual (`%steal`). A espera por E/S é o tempo ocioso da CPU durante o qual o sistema possui uma solicitação de E/S pendente; não é a porcentagem de ocupação de um disco.
 
-:::single-choice{#iostat-iowait-meaning}
-O que `%iowait` descreve?
+:::single-choice{#iostat-iowait-meaning} O que `%iowait` descreve?
 
 ::option[A porcentagem da capacidade do disco que já está ocupada.]{#iostat-capacity explanation="A capacidade do sistema de arquivos e o tempo de CPU são medições diferentes."}
 ::option[O tempo ocioso da CPU enquanto existe uma solicitação de E/S pendente.]{#iostat-iowait-cpu .correct explanation="Essa é uma categoria de tempo de CPU e, sozinha, não consegue identificar um dispositivo."}
@@ -53,8 +51,7 @@ Os nomes dos campos variam conforme a versão do sysstat, mas alguns conceitos �
 
 Um `%util` alto pode indicar saturação em um dispositivo serial simples, mas não se traduz diretamente na capacidade de desempenho de um armazenamento paralelo, arranjo ou dispositivo virtual. Compare a latência com o projeto do dispositivo, o padrão da carga de trabalho e o objetivo de serviço.
 
-:::single-choice{#iostat-await-purpose}
-Qual campo está mais diretamente associado à latência média das solicitações de E/S?
+:::single-choice{#iostat-await-purpose} Qual campo está mais diretamente associado à latência média das solicitações de E/S?
 
 ::option[Nome do dispositivo.]{#iostat-device-name explanation="O nome identifica o dispositivo, mas não mede a duração das solicitações."}
 ::option[`await`]{#iostat-await .correct explanation="Await representa o tempo médio das solicitações, incluindo o período na fila e de atendimento."}
@@ -72,8 +69,7 @@ $ findmnt
 
 Depois, relacione os intervalos de `iostat` ao tempo de resposta da aplicação, às métricas do banco de dados ou sistema de arquivos e à E/S no nível dos processos. Device mapper, RAID, contêineres e armazenamento apoiado por rede podem acrescentar camadas que exigem suas próprias ferramentas.
 
-:::single-choice{#iostat-high-util-conclusion}
-O que você deve fazer depois de observar um `%util` alto em um dispositivo?
+:::single-choice{#iostat-high-util-conclusion} O que você deve fazer depois de observar um `%util` alto em um dispositivo?
 
 ::option[Presumir que todos os sistemas de arquivos estejam sem espaço livre.]{#iostat-assume-full explanation="O tempo de ocupação não informa a capacidade do sistema de arquivos."}
 ::option[Excluir arquivos antes de identificar a carga de trabalho montada.]{#iostat-delete-first explanation="A exclusão altera o estado e não comprova um gargalo de E/S."}

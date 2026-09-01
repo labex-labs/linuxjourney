@@ -25,8 +25,7 @@ $ ls /proc
 
 可见性和访问权限取决于凭据、命名空间、安全策略以及 `hidepid` 等 procfs 挂载选项。进程可能在列出目录之后、打开其中某个文件之前退出，因此目录消失是检查工具必须妥善处理的正常竞态。
 
-:::single-choice{#proc-filesystem-numeric-directory}
-数字目录 `/proc/12345` 通常表示什么？
+:::single-choice{#proc-filesystem-numeric-directory} 数字目录 `/proc/12345` 通常表示什么？
 
 ::option[编号为 12345 的磁盘块。]{#proc-filesystem-disk-block explanation="`/proc` 是虚拟内核接口，不是存放原始磁盘块的目录。"}
 ::option[当前可见、PID 为 12345 的进程。]{#proc-filesystem-pid-directory .correct explanation="procfs 会把每个进程的数据集中在以其可见 PID 命名的目录下。"}
@@ -51,8 +50,7 @@ $ less /proc/12345/status
 
 应把这些内容视为不断变化的观察结果。字段可能随内核版本而异，进程也可能在读取多个文件期间改变状态，而且某些计数器还存在名称本身没有体现的细节。
 
-:::single-choice{#proc-filesystem-status-file}
-哪个路径包含 PID 12345 易于阅读的字段式摘要？
+:::single-choice{#proc-filesystem-status-file} 哪个路径包含 PID 12345 易于阅读的字段式摘要？
 
 ::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="每个进程的文件位于以 PID 命名的目录中，而不是顶层 `status` 目录下。"}
 ::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="每进程 `status` 接口会呈现标识符、状态、内存、信号和凭据字段。"}
@@ -71,8 +69,7 @@ $ less /proc/12345/status
 
 某些文件是可写的配置接口，尤其是 `/proc/sys` 下的文件。不要仅仅因为它们看起来像普通文件就向其中写入内容。进行已获授权的系统变更前，应先了解参数含义、作用范围、持久化机制和回滚方法。
 
-:::single-choice{#proc-filesystem-system-interface}
-哪个条目提供系统级内存计数器，而不是单个进程的状态？
+:::single-choice{#proc-filesystem-system-interface} 哪个条目提供系统级内存计数器，而不是单个进程的状态？
 
 ::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="该路径会解析为执行观察的进程自身的每进程状态。"}
 ::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo` 包含内核报告的系统内存统计信息。"}
@@ -85,8 +82,7 @@ Linux 上的 `ps`、`top` 和 `free` 等工具会从 procfs 和其他内核接�
 
 直接读取程序必须正确解析格式、容忍进程消失、保护敏感输出，并避免假定一次读取就是系统的原子快照。
 
-:::single-choice{#proc-filesystem-live-data}
-为什么 `/proc/PID` 可能会在两次检查命令之间消失？
+:::single-choice{#proc-filesystem-live-data} 为什么 `/proc/PID` 可能会在两次检查命令之间消失？
 
 ::option[每个 procfs 文件都会每秒自动重命名一次。]{#proc-filesystem-renamed explanation="procfs 不存在定期重命名所有条目的规则。"}
 ::option[读取 `status` 会删除进程目录。]{#proc-filesystem-read-delete explanation="检查状态是只读操作，不会终止进程或删除目录。"}

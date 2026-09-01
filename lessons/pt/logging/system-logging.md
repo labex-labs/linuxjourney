@@ -23,8 +23,7 @@ Um caminho de logging tem partes distintas:
 
 Em hosts systemd, `systemd-journald` costuma coletar saída de serviços, mensagens do kernel e mensagens nativas do journal ou syslog. Um daemon como rsyslog também pode receber mensagens, gravar arquivos de texto ou encaminhá-las. Aplicativos podem manter arquivos próprios ou telemetria externa.
 
-:::single-choice{#system-logging-distinct-roles}
-Qual componente decide onde mensagens aceitas são armazenadas ou encaminhadas?
+:::single-choice{#system-logging-distinct-roles} Qual componente decide onde mensagens aceitas são armazenadas ou encaminhadas?
 
 ::option[O diretório de trabalho atual do terminal.]{#system-logging-cwd explanation="Um diretório do shell não define rotas de logging do sistema."}
 ::option[O nome do arquivo da imagem de kernel.]{#system-logging-kernel-file explanation="O kernel emite mensagens, mas o nome de sua imagem não é a política de roteamento."}
@@ -43,8 +42,7 @@ $ journalctl --disk-usage
 
 `/var/log/syslog` é comum na família Debian com roteamento compatível, enquanto `/var/log/messages` aparece em outros sistemas. Ambos podem faltar em um host apenas com journal. A documentação do aplicativo e a unit podem revelar destinos adicionais.
 
-:::single-choice{#system-logging-file-absence}
-O que a ausência de `/var/log/syslog` significa necessariamente?
+:::single-choice{#system-logging-file-absence} O que a ausência de `/var/log/syslog` significa necessariamente?
 
 ::option[O host pode usar outro destino configurado.]{#system-logging-other-destination .correct explanation="Sistemas apenas com journal e políticas diferentes não precisam criar esse arquivo."}
 ::option[O kernel nunca produziu uma mensagem.]{#system-logging-no-kernel explanation="Registros do kernel podem estar no journal ou em outro destino."}
@@ -62,8 +60,7 @@ $ journalctl -u ssh.service --since '1 hour ago'
 
 `-b` seleciona o boot atual, `-p` filtra prioridade e `-u` filtra uma unit. Nomes e boots retidos variam. Use `journalctl --list-boots` para listar boots e `journalctl -f` para acompanhar novos registros ao reproduzir um problema.
 
-:::single-choice{#system-logging-current-boot}
-Qual opção limita uma consulta `journalctl` ao boot atual?
+:::single-choice{#system-logging-current-boot} Qual opção limita uma consulta `journalctl` ao boot atual?
 
 ::option[`-b`]{#system-logging-boot-option .correct explanation="Sem argumento, o seletor escolhe o boot atual."}
 ::option[`-u`]{#system-logging-unit-option explanation="Essa opção filtra por unit do systemd."}
@@ -82,8 +79,7 @@ Ela contém horário, host, programa e PID, depois a mensagem. Trate o texto com
 
 Logs podem conter usuários, endereços, caminhos, tokens e outros dados sensíveis. Aplique privilégio mínimo, remova dados de exportações e preserve originais e horários numa investigação.
 
-:::single-choice{#system-logging-export-safety}
-O que fazer antes de compartilhar externamente um trecho de log?
+:::single-choice{#system-logging-export-safety} O que fazer antes de compartilhar externamente um trecho de log?
 
 ::option[Substituir cada horário por um valor aleatório.]{#system-logging-random-time explanation="Destruir horários impede correlação e não é uma boa forma de anonimização."}
 ::option[Revisá-lo em busca de segredos e identificadores sensíveis.]{#system-logging-review-sensitive .correct explanation="Logs frequentemente contêm dados operacionais ou pessoais que exigem remoção controlada."}

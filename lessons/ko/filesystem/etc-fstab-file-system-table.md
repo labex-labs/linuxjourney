@@ -29,8 +29,7 @@ UUID=130b882f-7d79-436d-a096-1e594c92bb76 /data ext4 defaults,nosuid,nodev 0 2
 
 필드 안의 공백은 fstab 구문에 따라 공백의 경우 `\040`처럼 이스케이프해야 합니다. 필드 밖의 `#`은 주석을 시작합니다.
 
-:::single-choice{#fstab-field-count}
-일반적인 `/etc/fstab` 항목에는 필드가 몇 개 있습니까?
+:::single-choice{#fstab-field-count} 일반적인 `/etc/fstab` 항목에는 필드가 몇 개 있습니까?
 
 ::option[네 개입니다.]{#fstab-four-fields explanation="소스, 대상, 유형 및 옵션 뒤에 dump와 pass 필드가 이어집니다."}
 ::option[여덟 개입니다.]{#fstab-eight-fields explanation="여덟 개는 fstab 레코드 하나의 표준 필드 수가 아닙니다."}
@@ -48,8 +47,7 @@ $ sudo blkid
 
 `UUID=...`는 해당 식별자가 의도한 파일 시스템에 속하는지 확인한 뒤에만 사용하십시오. 다시 포맷하면 새 UUID가 생성되고 블록 수준 복제는 같은 UUID를 복사할 수 있습니다. `PARTUUID=`는 파일 시스템이 아니라 파티션 테이블 항목을 식별하며 의미가 다릅니다.
 
-:::single-choice{#fstab-uuid-source}
-소스 필드의 `UUID=...`는 일반적으로 무엇을 식별합니까?
+:::single-choice{#fstab-uuid-source} 소스 필드의 `UUID=...`는 일반적으로 무엇을 식별합니까?
 
 ::option[마운트 지점을 소유한 사용자 계정입니다.]{#fstab-user-uuid explanation="계정 식별자는 파일 시스템 UUID 소스 구문으로 선택하지 않습니다."}
 ::option[해당 UUID를 가진 파일 시스템 메타데이터입니다.]{#fstab-filesystem-uuid .correct explanation="mount는 열거 이름에 의존하지 않고 파일 시스템 식별자를 사용 가능한 블록 장치로 해석합니다."}
@@ -62,8 +60,7 @@ $ sudo blkid
 
 `fsck`가 지원하는 파일 시스템에서 루트 파일 시스템은 일반적으로 pass `1`을 사용하고 검사할 다른 로컬 파일 시스템은 pass `2`를 사용합니다. 일부 유형은 일반 부팅 시 fsck를 사용하지 않는 등 파일 시스템별 관행이 다를 수 있으므로 `2`를 기계적으로 지정하지 말고 설치된 파일 시스템과 배포판 문서를 따르십시오.
 
-:::single-choice{#fstab-pass-zero}
-여섯 번째 필드의 값 `0`은 무엇을 요청합니까?
+:::single-choice{#fstab-pass-zero} 여섯 번째 필드의 값 `0`은 무엇을 요청합니까?
 
 ::option[해당 항목을 fstab 기반 자동 fsck 순서에서 제외합니다.]{#fstab-pass-zero-skip .correct explanation="pass 0은 이 필드가 제어하는 부팅 시 검사 순서에서 항목을 제외합니다."}
 ::option[모든 상황에서 파일 시스템을 읽기 전용으로 마운트합니다.]{#fstab-pass-zero-readonly explanation="읽기 전용 동작은 마운트 옵션 필드에 지정합니다."}
@@ -82,8 +79,7 @@ $ sudo blkid
 
 누구나 읽을 수 있는 fstab 항목에 자격 증명을 직접 넣지 마십시오. 해당 마운트 보조 도구가 제공하는 보호된 자격 증명 메커니즘을 사용합니다.
 
-:::single-choice{#fstab-editing-recovery}
-중요한 fstab 항목을 변경하기 전에 복구 접근을 확인해야 하는 이유는 무엇입니까?
+:::single-choice{#fstab-editing-recovery} 중요한 fstab 항목을 변경하기 전에 복구 접근을 확인해야 하는 이유는 무엇입니까?
 
 ::option[fstab 편집이 항상 파티션 테이블을 즉시 지우기 때문입니다.]{#fstab-no-partition-erase explanation="텍스트 편집 자체는 디스크 파티션을 다시 쓰지 않지만 이후 마운트에는 영향이 있을 수 있습니다."}
 ::option[다른 운영체제에서만 파일을 편집할 수 있기 때문입니다.]{#fstab-other-os-only explanation="적절한 권한과 안전 조치를 사용하면 리눅스에서 편집할 수 있습니다."}
@@ -102,8 +98,7 @@ $ sudo findmnt --verify --verbose
 
 systemd 기반 시스템에서는 fstab을 편집한 뒤 관리자 설정을 다시 불러와 생성된 마운트 단위를 갱신하고, 로컬 문서에 따라 의존성과 부팅 동작을 검증하십시오.
 
-:::single-choice{#fstab-mount-a-limit}
-`mount -a`만으로 fstab을 완전히 검증할 수 없는 이유는 무엇입니까?
+:::single-choice{#fstab-mount-a-limit} `mount -a`만으로 fstab을 완전히 검증할 수 없는 이유는 무엇입니까?
 
 ::option[나열된 모든 장치를 마운트하기 전에 항상 다시 포맷하기 때문입니다.]{#fstab-mount-a-formats explanation="mount는 일반적으로 파일 시스템을 만들지 않습니다."}
 ::option[항목을 건너뛸 수 있고 구문만 검사하는 대신 광범위한 실제 마운트 작업을 수행하기 때문입니다.]{#fstab-mount-a-incomplete .correct explanation="이미 마운트되었거나 `noauto`인 레코드는 테스트되지 않을 수 있고 대상 소스에는 실제 영향이 생길 수 있습니다."}

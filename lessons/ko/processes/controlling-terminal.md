@@ -27,8 +27,7 @@ $ tty
 
 이 결과는 더 넓은 제어 터미널 개념과 관련 있지만 완전히 같지는 않습니다. 프로세스는 제어 터미널이 있는 세션에 남으면서 표준 입력이나 출력을 리디렉션할 수 있습니다.
 
-:::single-choice{#controlling-terminal-pts-meaning}
-`pts/3` 같은 이름은 일반적으로 무엇을 식별하나요?
+:::single-choice{#controlling-terminal-pts-meaning} `pts/3` 같은 이름은 일반적으로 무엇을 식별하나요?
 
 ::option[세 번째 쉘에 할당된 프로세스 ID]{#controlling-terminal-pts-pid explanation="PID는 숫자 프로세스 메타데이터이며 `pts/N` 장치 이름으로 표현되지 않습니다."}
 ::option[대화형 세션이 사용하는 의사 터미널 장치]{#controlling-terminal-pts-device .correct explanation="`/dev/pts` 아래 항목은 터미널 에뮬레이터와 원격 세션에서 흔히 사용하는 의사 터미널 슬레이브 장치입니다."}
@@ -41,8 +40,7 @@ $ tty
 
 예를 들어 `Ctrl-C`를 누르면 일반적으로 터미널 드라이버가 포그라운드 프로세스 그룹에 `SIGINT`를 보냅니다. 백그라운드 그룹이 터미널에서 읽으려 하면 `SIGTTIN`을 받을 수 있습니다. 이런 규칙으로 쉘은 포그라운드 및 백그라운드 작업을 조정합니다.
 
-:::single-choice{#controlling-terminal-ctrl-c-target}
-터미널은 일반적으로 `Ctrl-C`가 생성한 시그널을 어떤 프로세스에 보내나요?
+:::single-choice{#controlling-terminal-ctrl-c-target} 터미널은 일반적으로 `Ctrl-C`가 생성한 시그널을 어떤 프로세스에 보내나요?
 
 ::option[현재 사용자가 소유한 모든 프로세스]{#controlling-terminal-ctrl-c-user explanation="터미널 생성 시그널은 사용자의 모든 프로세스가 아니라 포그라운드 프로세스 그룹으로 제한됩니다."}
 ::option[포그라운드 작업과 관계없이 로그인 쉘만]{#controlling-terminal-ctrl-c-shell explanation="다른 작업이 포그라운드에 있으면 해당 작업 그룹이 일반적인 시그널 대상입니다."}
@@ -61,8 +59,7 @@ $ ps -o pid,tty,stat,cmd
 
 서비스 관리자가 대화형 로그인 세션과 독립적으로 시작하므로 많은 서비스 프로세스에는 제어 터미널이 없습니다. 하지만 TTY가 없다는 사실만으로 프로세스가 데몬임을 증명하지 못하고 백그라운드 쉘 작업에도 제어 터미널이 있을 수 있습니다.
 
-:::single-choice{#controlling-terminal-question-mark}
-`ps`의 `TTY` 열에 있는 `?`는 일반적으로 무엇을 뜻하나요?
+:::single-choice{#controlling-terminal-question-mark} `ps`의 `TTY` 열에 있는 `?`는 일반적으로 무엇을 뜻하나요?
 
 ::option[프로세스에 제어 터미널이 없습니다.]{#controlling-terminal-no-tty .correct explanation="물음표는 프로세스와 연결된 제어 터미널이 없을 때 사용하는 일반적인 표시입니다."}
 ::option[터미널이 바빠서 프로세스가 읽지 못했습니다.]{#controlling-terminal-busy-tty explanation="이 표시는 일시적인 장치 경합이 아니라 제어 터미널 부재를 나타냅니다."}
@@ -75,8 +72,7 @@ $ ps -o pid,tty,stat,cmd
 
 따라서 터미널을 닫는다고 그곳에서 시작한 모든 명령이 종료된다고 보장할 수 없습니다. 지속성이 중요하면 프로세스 세션, 시그널 처리, 리디렉션, 감독자를 확인하세요.
 
-:::single-choice{#controlling-terminal-close-effect}
-터미널을 닫으면 그곳에서 시작한 모든 프로세스가 항상 종료된다고 말할 수 없는 이유는 무엇인가요?
+:::single-choice{#controlling-terminal-close-effect} 터미널을 닫으면 그곳에서 시작한 모든 프로세스가 항상 종료된다고 말할 수 없는 이유는 무엇인가요?
 
 ::option[Linux 터미널은 닫힐 때 어떤 시그널도 생성하지 않습니다.]{#controlling-terminal-never-signals explanation="Hangup 시그널은 실제 터미널 및 세션 동작이지만 그 결과가 반드시 종료인 것은 아닙니다."}
 ::option[숫자 PID가 있는 프로세스만 hangup을 받을 수 있습니다.]{#controlling-terminal-pid-hangup explanation="모든 일반 프로세스에는 숫자 PID가 있으며 이 사실은 터미널 종료 후 생존 여부를 결정하지 않습니다."}

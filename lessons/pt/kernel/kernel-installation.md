@@ -23,8 +23,7 @@ $ uname -r
 
 Isso não lista todos os kernels instalados nem muda assim que um pacote novo é instalado. O sistema precisa iniciar a nova imagem antes que `uname -r` a informe. Consulte pacotes e entradas de boot com as ferramentas da distribuição.
 
-:::single-choice{#kernel-installation-uname-release}
-O que `uname -r` exibe?
+:::single-choice{#kernel-installation-uname-release} O que `uname -r` exibe?
 
 ::option[A identificação da versão do kernel em execução.]{#kernel-installation-running-release .correct explanation="O comando informa o estado ativo, não apenas a imagem mais nova no disco."}
 ::option[Todos os pacotes de kernel de todos os repositórios.]{#kernel-installation-all-packages explanation="O inventário dos repositórios pertence ao gerenciador de pacotes."}
@@ -37,8 +36,7 @@ Instale ou mantenha o meta-pacote de kernel compatível para continuar recebendo
 
 Não transforme diretamente uma string de versão de `uname -r` em um operando de `apt install` presumindo que ela seja válida. Consulte a documentação atual da distribuição e examine os candidatos com o gerenciador de pacotes antes da instalação.
 
-:::single-choice{#kernel-installation-meta-package}
-Por que um meta-pacote de kernel compatível é útil?
+:::single-choice{#kernel-installation-meta-package} Por que um meta-pacote de kernel compatível é útil?
 
 ::option[Ele garante que nunca será preciso reiniciar.]{#kernel-installation-no-reboot explanation="Um kernel instalado só fica ativo depois que o sistema inicia por ele, salvo o escopo limitado de live patching."}
 ::option[Ele converte todo driver externo em código incorporado.]{#kernel-installation-convert-drivers explanation="Módulos externos ainda exigem compilação e assinatura compatíveis."}
@@ -57,8 +55,7 @@ Antes da transação:
 
 A transação deve gerar um initramfs correspondente e atualizar entradas pelos hooks da distribuição. Leia todo erro; o pacote constar como instalado não basta se a geração falhou.
 
-:::single-choice{#kernel-installation-initramfs-error}
-Por que um erro de geração do initramfs impede considerar a instalação bem-sucedida?
+:::single-choice{#kernel-installation-initramfs-error} Por que um erro de geração do initramfs impede considerar a instalação bem-sucedida?
 
 ::option[A geração altera a senha do shell do usuário.]{#kernel-installation-initramfs-password explanation="O arquivo de boot não tem relação com segredos de autenticação."}
 ::option[O novo kernel pode ficar sem módulos ou ferramentas para alcançar a raiz.]{#kernel-installation-missing-early-tools .correct explanation="A imagem pode estar instalada enquanto seu espaço inicial está ausente ou desatualizado."}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 Use equivalentes em sistemas sem systemd. Valide armazenamento, rede, gráficos, entrada, módulos de segurança, módulos externos, containers, VMs e aplicativos. Um prompt de login não é validação completa.
 
-:::single-choice{#kernel-installation-activation}
-Quando um pacote comum de kernel recém-instalado passa a ser o kernel em execução?
+:::single-choice{#kernel-installation-activation} Quando um pacote comum de kernel recém-instalado passa a ser o kernel em execução?
 
 ::option[Assim que `uname -r` é digitado.]{#kernel-installation-uname-activates explanation="Uname é somente leitura e não troca kernels."}
 ::option[Depois que a máquina inicia por essa imagem.]{#kernel-installation-after-boot .correct explanation="Instalar arquivos não substitui o kernel já executado na memória."}
@@ -91,8 +87,7 @@ Use o fluxo de limpeza do gerenciador somente depois de validar o novo kernel. N
 
 Apagar manualmente arquivos de `/boot` deixa pacotes e carregador inconsistentes. Se já não houver espaço, prepare a recuperação antes de mudar arquivos.
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-Qual kernel deve permanecer instalado durante a validação inicial do novo?
+:::single-choice{#kernel-installation-old-kernel-removal} Qual kernel deve permanecer instalado durante a validação inicial do novo?
 
 ::option[Apenas o novo kernel ainda não testado.]{#kernel-installation-only-new explanation="Remover todas as alternativas antes do teste transforma incompatibilidade em incidente de recuperação."}
 ::option[Nenhum arquivo de kernel no caminho de boot.]{#kernel-installation-no-kernels explanation="A máquina precisa de um artefato carregável para iniciar Linux."}

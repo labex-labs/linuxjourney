@@ -24,8 +24,7 @@ $ initctl version
 
 Der letzte Befehl ist nur dort aussagekräftig erfolgreich, wo Upstarts Steuerungsdienst und Client vorhanden sind. Ein Verzeichnis wie `/usr/share/upstart` oder übrig gebliebene Dateien unter `/etc/init` sind schwache Belege, da Pakete und Migrationsreste bestehen bleiben können, nachdem ein anderes init-System übernommen hat.
 
-:::single-choice{#upstart-overview-active-evidence}
-Was ist der stärkste Beleg dafür, dass ein Host tatsächlich Upstart verwendet?
+:::single-choice{#upstart-overview-active-evidence} Was ist der stärkste Beleg dafür, dass ein Host tatsächlich Upstart verwendet?
 
 ::option[Ein Verzeichnisname enthält das Wort `upstart`.]{#upstart-overview-directory-only explanation="Installierte Dokumentation oder Überreste können auf einem System verbleiben, das ein anderes init verwendet."}
 ::option[Das System besitzt mindestens ein Shell-Skript.]{#upstart-overview-shell-script explanation="Shell-Skripte sind in allen init-Umgebungen verbreitet."}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 Dies verwendet Runlevel-Ereignisse als Kompatibilitätseingaben. Upstart kann abhängig davon, welche Ereignisse das System ausgibt, außerdem auf Dateisystem-, Geräte-, Netzwerk- oder anwendungsdefinierte Ereignisse reagieren.
 
-:::single-choice{#upstart-overview-start-on}
-Was definiert ein Upstart-Abschnitt `start on`?
+:::single-choice{#upstart-overview-start-on} Was definiert ein Upstart-Abschnitt `start on`?
 
 ::option[Die Kernelversion, die als Nächstes kompiliert werden muss.]{#upstart-overview-kernel-version explanation="Ereignisbedingungen eines Jobs wählen keinen Kernel-Build aus."}
 ::option[Den Ereignisausdruck, der das Ziel des Jobs in Richtung Start ändert.]{#upstart-overview-start-condition .correct explanation="Wenn der Ausdruck erfüllt ist, versucht Upstart den konfigurierten Startübergang des Jobs."}
@@ -61,8 +59,7 @@ Während des Systemstarts lädt Upstart Jobdefinitionen und empfängt Ereignisse
 
 Dieses Modell vermeidet eine einzige fest codierte globale Skriptreihenfolge, kann aber schwer zu diagnostizieren sein, wenn Ereignisnamen, Reihenfolge und Bedingungen implizit sind. Ereignisse sind standardmäßig keine dauerhafte Nachrichtenwarteschlange. Ein später hinzugefügter Job oder eine nachträglich geänderte Bedingung sollte daher nicht annehmen, dass jedes frühere Ereignis wiederholt wird.
 
-:::single-choice{#upstart-overview-event-chain}
-Wie kann ein Upstart-Job dazu führen, dass ein anderer Job startet?
+:::single-choice{#upstart-overview-event-chain} Wie kann ein Upstart-Job dazu führen, dass ein anderer Job startet?
 
 ::option[Er schreibt die ausführbare Binärdatei des anderen Jobs im Speicher um.]{#upstart-overview-rewrite-binary explanation="Die Koordination erfolgt über Ereignisse und nicht durch Codeänderung."}
 ::option[Jeder Job startet immer streng in Dateinamenreihenfolge.]{#upstart-overview-filename-order explanation="Upstart verwendet Ereignisausdrücke statt einer einzigen nach Dateinamen sortierten Startliste."}
@@ -73,8 +70,7 @@ Wie kann ein Upstart-Job dazu führen, dass ein anderer Job startet?
 
 Systemd kann eine begrenzte Kompatibilität für einige ältere Dienstskripte bereitstellen, führt die Upstart-Jobsyntax aber nicht als native systemd-Units aus. Übertrage bei einer Migration Lebenszyklusbedingungen, Umgebung, Respawn-Richtlinie, Protokollierung, Abhängigkeiten und Bereitschaftssemantik, statt Dateien mechanisch umzubenennen.
 
-:::single-choice{#upstart-overview-current-ubuntu}
-Welches init-System verwenden aktuelle Ubuntu-Standardveröffentlichungen?
+:::single-choice{#upstart-overview-current-ubuntu} Welches init-System verwenden aktuelle Ubuntu-Standardveröffentlichungen?
 
 ::option[Ausschließlich Upstart auf jeder Installation.]{#upstart-overview-current-upstart explanation="Dies galt nur für historische Veröffentlichungszeiträume und Konfigurationen."}
 ::option[systemd.]{#upstart-overview-current-systemd .correct explanation="Upstart gehört zu älteren Ubuntu-Generationen; aktuelle Veröffentlichungen verwenden systemd als PID 1."}

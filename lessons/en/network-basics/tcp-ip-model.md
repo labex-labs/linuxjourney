@@ -16,8 +16,7 @@ The TCP/IP model organizes the protocols used by Internet hosts into functional 
 
 Application protocols define messages and behavior for services such as HTTP, DNS, SSH, and SMTP. This layer also includes many representation and session responsibilities that the OSI model discusses separately.
 
-:::single-choice{#tcpip-http-layer}
-At which TCP/IP layer is HTTP normally classified?
+:::single-choice{#tcpip-http-layer} At which TCP/IP layer is HTTP normally classified?
 
 ::option[Internet.]{#tcpip-http-internet explanation="The Internet layer handles IP addressing and packet forwarding."}
 ::option[Link.]{#tcpip-http-link explanation="The link layer carries traffic on a local medium."}
@@ -28,8 +27,7 @@ At which TCP/IP layer is HTTP normally classified?
 
 Transport protocols provide communication between application endpoints. TCP offers a reliable ordered byte stream with congestion and flow control. UDP provides independent datagrams without TCP's connection, ordering, or retransmission guarantees. Port numbers help identify transport endpoints, but a port number alone does not prove which application is listening.
 
-:::single-choice{#tcpip-udp-property}
-Which property belongs to UDP rather than TCP?
+:::single-choice{#tcpip-udp-property} Which property belongs to UDP rather than TCP?
 
 ::option[Independent datagrams without built-in retransmission guarantees.]{#tcpip-udp-datagrams .correct explanation="Applications using UDP decide whether and how to add reliability."}
 ::option[Guaranteed in-order delivery of one byte stream.]{#tcpip-udp-ordered explanation="That is a TCP service property, subject to connection success."}
@@ -40,8 +38,7 @@ Which property belongs to UDP rather than TCP?
 
 Internet Protocol carries packets using source and destination IP addresses. Routers examine routing information and decrement hop limits while forwarding packets toward the destination. ICMP communicates control and error information for IP operation. Delivery remains best effort; higher layers or applications handle any required recovery.
 
-:::single-choice{#tcpip-router-layer}
-Which layer supplies the IP destination used by routers?
+:::single-choice{#tcpip-router-layer} Which layer supplies the IP destination used by routers?
 
 ::option[Internet.]{#tcpip-router-internet .correct explanation="The IP header contains the network-layer destination used for routed forwarding."}
 ::option[Application.]{#tcpip-router-application explanation="Application messages are carried inside lower-layer protocol data."}
@@ -54,8 +51,7 @@ The link layer sends an IP packet across one local link using Ethernet, Wi-Fi, a
 
 Link headers normally change at each routed hop; transport and application conversations are end-to-end unless a middlebox terminates or transforms them.
 
-:::single-choice{#tcpip-link-scope}
-What is the normal scope of a link-layer frame?
+:::single-choice{#tcpip-link-scope} What is the normal scope of a link-layer frame?
 
 ::option[One local link or hop.]{#tcpip-one-link .correct explanation="A router removes incoming framing and creates framing for the next link."}
 ::option[Every application session on the global Internet.]{#tcpip-global-frame explanation="Frames do not remain unchanged across routed networks."}

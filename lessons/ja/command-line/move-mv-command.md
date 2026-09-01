@@ -34,8 +34,7 @@ $ mv oldfile newfile
 $ mv old_directory_name new_directory_name
 ```
 
-:::single-choice{#rename-file-with-mv}
-現在のディレクトリで `cat` を `dog` へ名前変更するコマンドはどれですか？
+:::single-choice{#rename-file-with-mv} 現在のディレクトリで `cat` を `dog` へ名前変更するコマンドはどれですか？
 
 ::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` は `cat` をコピー元パス、`dog` を新しいコピー先パスとして扱います。"}
 ::option[`mv dog cat`]{#rename-dog explanation="オペランドの順序が逆で、既存の `dog` を `cat` へ名前変更しようとします。"}
@@ -64,8 +63,7 @@ $ mv -t somedirectory/ file_1 file_2
 
 `cp` とは異なり、`mv` でディレクトリを移動するために再帰オプションは必要ありません。
 
-:::single-choice{#move-multiple-files}
-`file_1` と `file_2` の両方を、既存の `archive/` ディレクトリへ移動するコマンドはどれですか？
+:::single-choice{#move-multiple-files} `file_1` と `file_2` の両方を、既存の `archive/` ディレクトリへ移動するコマンドはどれですか？
 
 ::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="GNU `-t` がなければ、複数のコピー元を移動するときは対象ディレクトリを最後に置きます。これは標準の複数コピー元形式ではありません。"}
 ::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` はファイルやディレクトリの移動に `-r` を使いません。通常の複数コピー元形式で処理できます。"}
@@ -100,8 +98,7 @@ $ mv -t somedirectory/ file_1 file_2
 $ mv -v file1 file2 somedirectory/
 ```
 
-:::single-choice{#move-without-overwriting}
-既存のコピー先を上書きしない場合だけ、`draft.txt` を `finished/` へ移動するコマンドはどれですか？
+:::single-choice{#move-without-overwriting} 既存のコピー先を上書きしない場合だけ、`draft.txt` を `finished/` へ移動するコマンドはどれですか？
 
 ::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="`-i` はコピー先が存在する場合に処理を尋ね、確認すれば上書きできます。"}
 ::option[`mv -b draft.txt finished/`]{#backup-draft explanation="`-b` は以前のコピー先をバックアップしながら置換を許可し、上書き自体は防ぎません。"}
@@ -125,16 +122,14 @@ $ mv *.txt notes/
 
 `ls` で一致結果を確認すると、複数のパス名を変更する前に、広すぎるパターンへ気付けます。
 
-:::single-choice{#move-directory-without-recursion}
-`project/` ディレクトリを `/srv/archive/` へ移動するコマンドはどれですか？
+:::single-choice{#move-directory-without-recursion} `project/` ディレクトリを `/srv/archive/` へ移動するコマンドはどれですか？
 
 ::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` はこの目的に `-r` を必要とせず、対応もしません。通常の移動操作でディレクトリを扱います。"}
 ::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="通常の `mv` 構文で、再帰フラグなしにディレクトリを既存の対象ディレクトリへ移動します。"}
 ::option[`cp project/ /srv/archive/`]{#copy-project explanation="通常の `cp` はディレクトリを移動せず、コピーには再帰オプションが必要です。元のディレクトリも残ります。"}
 :::
 
-:::single-choice{#preview-text-file-move}
-`mv *.txt notes/` を実行する前に、同じワイルドカードが選ぶパス名を確認するコマンドはどれですか？
+:::single-choice{#preview-text-file-move} `mv *.txt notes/` を実行する前に、同じワイルドカードが選ぶパス名を確認するコマンドはどれですか？
 
 ::option[`ls '*.txt'`]{#literal-text-pattern explanation="引用符が `*` の展開を防ぐため、移動対象ではなくアスタリスクを含むリテラル名を探します。"}
 ::option[`ls *.txt`]{#list-text-matches .correct explanation="シェルは `mv` と同様に `ls` の `*.txt` を展開し、選択される隠しファイル以外の名前を先に確認できます。"}

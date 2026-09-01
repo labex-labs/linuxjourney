@@ -27,8 +27,7 @@ Der Inode speichert normalerweise nicht den Namen des Verzeichniseintrags. Ein D
 
 `ctime` ist der Zeitpunkt der Inode-Statusänderung und nicht zwangsläufig die Erstellungszeit der Datei. Ein getrennter Geburts- oder Erstellungszeitstempel ist optional und möglicherweise nicht verfügbar.
 
-:::single-choice{#inodes-name-location}
-Wo ist die Pfadnamenkomponente einer gewöhnlichen Datei normalerweise mit ihrer Inode-Nummer verknüpft?
+:::single-choice{#inodes-name-location} Wo ist die Pfadnamenkomponente einer gewöhnlichen Datei normalerweise mit ihrer Inode-Nummer verknüpft?
 
 ::option[Im Prozess-Scheduler.]{#inodes-scheduler-name explanation="Der Zustand der CPU-Ablaufplanung implementiert keine Pfadauflösung des Dateisystems."}
 ::option[In einem Verzeichniseintrag.]{#inodes-directory-entry .correct explanation="Ein Verzeichnis ordnet innerhalb dieses Dateisystems einen Namen einer Inode-Nummer zu."}
@@ -51,8 +50,7 @@ $ stat path
 
 Eine Inode-Nummer ist nur innerhalb eines Dateisystems zu einem bestimmten Zeitpunkt eindeutig. Dieselbe Nummer kann in einem anderen Dateisystem vorkommen und nach der Freigabe eines Inodes erneut verwendet werden. Identifiziere ein Objekt zuverlässig durch Dateisystemidentität und Inode-Nummer gemeinsam, nicht allein anhand der Inode-Nummer.
 
-:::single-choice{#inodes-number-scope}
-In welchem Umfang ist eine Inode-Nummer eine Objektkennung?
+:::single-choice{#inodes-number-scope} In welchem Umfang ist eine Inode-Nummer eine Objektkennung?
 
 ::option[Für immer auf jedem Linux-System der Welt.]{#inodes-global-forever explanation="Inodes werden lokal in einem Dateisystem zugewiesen und ihre Kennungen können wiederverwendet werden."}
 ::option[In einem Dateisystem zu einem bestimmten Zeitpunkt.]{#inodes-one-filesystem .correct explanation="Andere Dateisysteme können dieselbe Nummer verwenden; freigegebene Inode-Nummern können später erneut vergeben werden."}
@@ -65,8 +63,7 @@ Mehrere Verzeichniseinträge können auf denselben Inode verweisen; dies sind Ha
 
 Auch nach dem Entfernen des letzten Verzeichniseintrags bleibt eine geöffnete Datei zugewiesen, bis die letzte Prozessreferenz geschlossen wird. Ihre Linkanzahl kann null sein, während ein Dateideskriptor weiterhin darauf zugreift. Das erklärt, warum das Löschen eines großen geöffneten Protokolls die von `df` gemeldete Belegung nicht sofort verringern muss.
 
-:::single-choice{#inodes-unlinked-open-file}
-Wann werden die Ressourcen einer nicht mehr verlinkten Datei normalerweise freigegeben?
+:::single-choice{#inodes-unlinked-open-file} Wann werden die Ressourcen einer nicht mehr verlinkten Datei normalerweise freigegeben?
 
 ::option[Sofort nach dem Entfernen eines beliebigen Hardlink-Namens.]{#inodes-one-link-removed explanation="Andere Hardlinks oder offene Referenzen können das Objekt am Leben halten."}
 ::option[Erst nach der Neuformatierung des gesamten Dateisystems.]{#inodes-reformat-only explanation="Gewöhnliche Unlink- und Close-Operationen geben nicht mehr verwendete Inodes und Blöcke frei."}
@@ -83,8 +80,7 @@ $ df -i
 
 Sind keine freien Inodes vorhanden, kann das Erstellen einer weiteren Datei fehlschlagen, obwohl `df -h` freie Blöcke meldet. Zuweisungsstrategien unterscheiden sich: Manche Dateisysteme reservieren Inode-Strukturen bei ihrer Erstellung, andere verwalten Metadaten dynamisch und können Inode-Kapazität anders melden.
 
-:::single-choice{#inodes-df-i-purpose}
-Was meldet `df -i`, wenn das Dateisystem eine Inode-Buchhaltung bereitstellt?
+:::single-choice{#inodes-df-i-purpose} Was meldet `df -i`, wenn das Dateisystem eine Inode-Buchhaltung bereitstellt?
 
 ::option[Den Inhalt jeder Datei in Inode-Reihenfolge.]{#inodes-df-i-content explanation="Df meldet zusammengefasste Dateisystemstatistiken und liest keine Dateiinhalte."}
 ::option[Verbrauchte und verfügbare Inode-Kapazität.]{#inodes-df-i-capacity .correct explanation="Die Inode-Ansicht hilft, die Erschöpfung von Metadatenobjekten unabhängig von Datenblöcken zu diagnostizieren."}
@@ -97,8 +93,7 @@ Gehe nicht davon aus, dass jeder Inode genau zwölf direkte sowie drei indirekte
 
 Verwende dateisystemspezifische Diagnosewerkzeuge nur in schreibgeschützten oder dokumentierten Modi, wenn die interne Zuordnung wichtig ist. Für die gewöhnliche Administration bieten `stat`, `find -inum`, `df -i` und linkbewusste Werkzeuge sicherere Abstraktionen.
 
-:::single-choice{#inodes-layout-portability}
-Warum solltest du nicht für jeden Inode eine feste Zeigerstruktur voraussetzen?
+:::single-choice{#inodes-layout-portability} Warum solltest du nicht für jeden Inode eine feste Zeigerstruktur voraussetzen?
 
 ::option[Inodes verweisen in keiner Weise auf Dateidaten.]{#inodes-no-data-reference explanation="Das Dateisystem muss das Objekt mit seinem Inhalt verknüpfen, auch wenn der Mechanismus variiert."}
 ::option[Dateisystemimplementierungen verwenden unterschiedliche Extent-, Baum- und Inline-Datenstrukturen.]{#inodes-format-specific-layout .correct explanation="Die Zuordnung vom Inode zum Inhalt auf dem Datenträger gehört zum Format des jeweiligen Dateisystems."}

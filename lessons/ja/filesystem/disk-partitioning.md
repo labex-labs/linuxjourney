@@ -23,8 +23,7 @@ meta_keywords: "Linux ディスクパーティショニング，parted コマン
 
 ツールの対応状況は変化するため、ローカルのマニュアルとディストリビューションの文書を確認してください。グラフィカルな画面でも、破壊的な操作が安全になるわけではありません。変更されるディスクメタデータは同じです。
 
-:::single-choice{#disk-partitioning-fdisk-gpt}
-現在の Linux `fdisk` について正しい説明はどれですか？
+:::single-choice{#disk-partitioning-fdisk-gpt} 現在の Linux `fdisk` について正しい説明はどれですか？
 
 ::option[MBR と GPT の両方のパーティションテーブルに対応しています。]{#disk-partitioning-fdisk-supports-gpt .correct explanation="現在の util-linux の fdisk は、DOS/MBR や GPT など複数の配置形式を編集できます。"}
 ::option[GPT だけを編集でき、MBR は一切扱えません。]{#disk-partitioning-fdisk-only-gpt explanation="この説明に近いのは GPT に特化した `gdisk` です。fdisk は複数のラベル形式に対応します。"}
@@ -45,8 +44,7 @@ $ sudo parted --list
 
 関連する層は、それぞれの文書化された手順でアンマウントまたは無効化します。ツールを正常に開けるという理由だけで、稼働中のシステムディスクのパーティションテーブルを編集してはいけません。既存のテーブルを復元可能な形式で記録し、バックアップが別の障害領域に保存されていることを確認します。
 
-:::single-choice{#disk-partitioning-target-identity}
-`/dev/sdb` のようなデバイス名だけでは、対象確認として不十分なのはなぜですか？
+:::single-choice{#disk-partitioning-target-identity} `/dev/sdb` のようなデバイス名だけでは、対象確認として不十分なのはなぜですか？
 
 ::option[Linux はデバイス全体を `/dev` 配下に公開しないから。]{#disk-partitioning-no-whole-disks explanation="通常、ディスク全体にも `/dev` 配下のブロックデバイスノードがあります。"}
 ::option[デバイスやトポロジーが変わると、列挙時の名前も変わり得るから。]{#disk-partitioning-enumeration-changes .correct explanation="文字は検出順に割り当てられるため、後のセッションでは別のディスクを指す場合があります。"}
@@ -70,8 +68,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 `print free` は、現在のエントリと未割り当て領域を表示します。`parted` のコマンドは、最後に「保存」する操作を待たず、その場でディスクメタデータを更新することがあります。対話プロンプトは、書き込み可能な状態だと考えて扱ってください。
 
-:::single-choice{#disk-partitioning-print-free}
-`parted` の `print free` は、何を表示するのに役立ちますか？
+:::single-choice{#disk-partitioning-print-free} `parted` の `print free` は、何を表示するのに役立ちますか？
 
 ::option[任意のファイルシステムを安全に縮小するため、削除できるファイル。]{#disk-partitioning-free-files explanation="parted が読み取るのはパーティション配置であり、ファイルシステム内部のファイル割り当てではありません。"}
 ::option[リモートシステム上に保存されたすべてのバックアップ。]{#disk-partitioning-remote-backups explanation="リモートバックアップの一覧は、パーティションエディターの対象外です。"}
@@ -90,8 +87,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 ツールが推奨するアラインメントを使用し、終了位置を含むかどうか、どのように丸められるかを理解してください。`print` と `lsblk` で結果を確認し、指定した十進数の境界がそのまま記録されたと思い込まないようにします。
 
-:::single-choice{#disk-partitioning-mkpart-effect}
-`parted` の `mkpart` が作成するものは何ですか？
+:::single-choice{#disk-partitioning-mkpart-effect} `parted` の `mkpart` が作成するものは何ですか？
 
 ::option[ホームディレクトリを含む、マウント済みの ext4 ファイルシステム。]{#disk-partitioning-mounted-filesystem explanation="フォーマットとマウントは、パーティション作成後に行う別の操作です。"}
 ::option[以前のパーティション内容を収めた完全なバックアップ。]{#disk-partitioning-automatic-backup explanation="パーティションエディターが復旧用バックアップを自動的に作ることはありません。"}
@@ -109,8 +105,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 縮小できないファイルシステムもあります。暗号化、LVM、RAID、入れ子になった構成では、順序を守るべき層がさらに増えます。また、デバイスの使用中はカーネルが変更後のテーブルの再読み込みを拒否し、新しい配置を利用する前に計画的な再起動が必要になる場合もあります。
 
-:::single-choice{#disk-partitioning-shrink-order}
-ファイルシステムが縮小に対応している場合、使用中のデータを切り落とさないための順序はどれですか？
+:::single-choice{#disk-partitioning-shrink-order} ファイルシステムが縮小に対応している場合、使用中のデータを切り落とさないための順序はどれですか？
 
 ::option[先にパーティションを縮小し、その後でファイルシステムが収まるかを確認する。]{#disk-partitioning-shrink-partition-first explanation="先にコンテナを短くすると、ファイルシステムの構造やデータを切り落とす可能性があります。"}
 ::option[先にファイルシステムを縮小し、その後で格納するパーティション境界を縮小する。]{#disk-partitioning-shrink-filesystem-first .correct explanation="外側のブロックデバイスを短くする前に、内容をより小さい範囲へ収める必要があります。"}

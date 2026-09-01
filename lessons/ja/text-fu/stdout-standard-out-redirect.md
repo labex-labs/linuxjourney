@@ -23,8 +23,7 @@ Hello World
 
 stdout はファイル記述子 `1` で、複数のストリームをリダイレクトするときに役立つ番号です。プログラムには標準入力の stdin と標準エラーの stderr もあります。次のレッスンで扱います。
 
-:::single-choice{#stdout-default-destination}
-リダイレクトなしの場合、対話型端末で `echo Hello World` は通常の出力をどこへ送りますか？
+:::single-choice{#stdout-default-destination} リダイレクトなしの場合、対話型端末で `echo Hello World` は通常の出力をどこへ送りますか？
 
 ::option[現在のディレクトリにある `stdout` というファイル。]{#stdout-file explanation="標準出力はストリームであり、`stdout` というファイルが自動作成されるわけではありません。ファイルは明示的にリダイレクトした場合だけ使われます。"}
 ::option[標準出力を通じて端末へ送ります。]{#stdout-terminal .correct explanation="通常、シェルはコマンドの stdout を端末へ接続するため、`echo` の結果がそこへ表示されます。"}
@@ -48,8 +47,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-`notes.txt` にすでにテキストがあります。`echo new > notes.txt` は何をしますか？
+:::single-choice{#stdout-replace-file} `notes.txt` にすでにテキストがあります。`echo new > notes.txt` は何をしますか？
 
 ::option[ファイル内容を `new` へ置き換えます。]{#stdout-replace-existing .correct explanation="シェルが `>` の既存コピー先を切り詰め、空になったファイルへ `echo` の出力を送ります。"}
 ::option[既存テキストの後に `new` を追加します。]{#stdout-add-existing explanation="追加には `>>` が必要で、1 つの `>` はコピー先の以前の内容を維持しません。"}
@@ -71,8 +69,7 @@ Another line
 
 `>` と同じく、`>>` も存在しないコピー先を作成します。既存ファイルの開き方が異なり、`>>` は切り詰めず追記します。
 
-:::single-choice{#stdout-append-file}
-`status.log` の既存内容を消さず、末尾へ `Finished` を追加するコマンドはどれですか？
+:::single-choice{#stdout-append-file} `status.log` の既存内容を消さず、末尾へ `Finished` を追加するコマンドはどれですか？
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="1 つの `>` は書き込み前に既存コピー先を切り詰め、以前のログ内容を消します。"}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`echo` がテキストを生成し、`>>` がその stdout をコピー先ファイルへ追記します。"}
@@ -90,8 +87,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-`pwd > current-directory.txt` の `>` を通常解釈するのは誰ですか？
+:::single-choice{#stdout-shell-role} `pwd > current-directory.txt` の `>` を通常解釈するのは誰ですか？
 
 ::option[`>` を引数として受け取った後の `pwd` コマンド。]{#stdout-pwd-redirection explanation="シェルがリダイレクト構文を消費するため、通常 `pwd` は `>` やコピー先を通常の引数として受け取りません。"}
 ::option[`pwd` を起動する前の Bash シェル。]{#stdout-bash-redirection .correct explanation="Bash がコマンドの実行前にコピー先を開き、ファイル記述子 1 を接続します。"}

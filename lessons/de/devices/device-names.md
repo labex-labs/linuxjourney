@@ -23,8 +23,7 @@ Datenträger, die über die SCSI-Datenträgerschicht bereitgestellt werden, verw
 
 Die Buchstaben spiegeln die Aufzählungsreihenfolge wider und sind keine dauerhafte Identität. Das Hinzufügen eines Controllers, eine geänderte Firmware-Reihenfolge oder das Anschließen eines Geräts kann verändern, welcher Datenträger einen bestimmten Buchstaben erhält.
 
-:::single-choice{#device-names-sdb-first-partition}
-Welcher Pfad bezeichnet im `sd`-Namensmuster Partition 1 auf `/dev/sdb`?
+:::single-choice{#device-names-sdb-first-partition} Welcher Pfad bezeichnet im `sd`-Namensmuster Partition 1 auf `/dev/sdb`?
 
 ::option[`/dev/sda2`]{#device-names-sda-two explanation="Dieser Pfad bezeichnet Partition 2 auf dem aktuell `/dev/sda` genannten Datenträger."}
 ::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="Das Trennzeichen `p` wird bei Mustern verwendet, deren Grundname bereits mit einer Ziffer endet, nicht bei gewöhnlichen `sd`-Namen."}
@@ -42,8 +41,7 @@ Einige Namen vollständiger Geräte enthalten bereits Ziffern. Ihre Partitionsna
 
 NVMe-Geräte heißen normalerweise nicht `/dev/sdX`, sondern folgen der Namenskonvention des NVMe-Subsystems.
 
-:::single-choice{#device-names-nvme-partition}
-Welcher Pfad bezeichnet Partition 2 von `/dev/nvme0n1`?
+:::single-choice{#device-names-nvme-partition} Welcher Pfad bezeichnet Partition 2 von `/dev/nvme0n1`?
 
 ::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="NVMe-Partitionsnamen fügen vor der Partitionsnummer ein `p` ein."}
 ::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="Ohne Trennzeichen wären die abschließenden Ziffern gegenüber der Namespace-Nummer mehrdeutig."}
@@ -60,8 +58,7 @@ Linux erstellt außerdem Blockgeräte, die keinem physischen Datenträger eins z
 
 Partitionen, Verschlüsselungsebenen, RAID, logische Volumes und Dateisysteme bilden einen Stapel. Verwende Werkzeuge wie `lsblk`, um Eltern-Kind-Beziehungen zu sehen, statt den Stapel allein aus einem Namen abzuleiten.
 
-:::single-choice{#device-names-device-mapper-link}
-Welcher Ort enthält häufig beschreibende Links für Device-Mapper-Geräte?
+:::single-choice{#device-names-device-mapper-link} Welcher Ort enthält häufig beschreibende Links für Device-Mapper-Geräte?
 
 ::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="Nutzer des Device Mappers wie LVM und Datenträgerverschlüsselung stellen in diesem Verzeichnis häufig benannte Links bereit."}
 ::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null` ist ein Zeichengerät und kein Verzeichnis abgebildeter Blockgeräte."}
@@ -80,8 +77,7 @@ Die Userspace-Geräteverwaltung erzeugt Links unter `/dev/disk/`, die häufig fo
 
 Wähle eine Kennung passend zu der Eigenschaft, die stabil bleiben muss. Eine Dateisystem-UUID identifiziert ein Dateisystem und nicht zwangsläufig den darunterliegenden physischen Datenträger. Beim Klonen eines Dateisystems kann dessen UUID dupliziert werden; prüfe deshalb ihre Eindeutigkeit, bevor du dich darauf verlässt.
 
-:::single-choice{#device-names-persistent-config}
-Warum sind Links unter `/dev/disk/by-id/` in gerätespezifischen Konfigurationen häufig besser geeignet als `/dev/sdX`?
+:::single-choice{#device-names-persistent-config} Warum sind Links unter `/dev/disk/by-id/` in gerätespezifischen Konfigurationen häufig besser geeignet als `/dev/sdX`?
 
 ::option[Sie machen zerstörerische Schreibvorgänge automatisch rückgängig.]{#device-names-by-id-reversible explanation="Ein stabiler Name stellt weder Snapshots noch Sicherungen oder Schreibschutz bereit."}
 ::option[Sie wandeln ein Blockgerät in eine gewöhnliche Datei um.]{#device-names-by-id-regular explanation="Der Eintrag ist ein symbolischer Link, der weiterhin auf einen Blockgeräteknoten verweist."}
@@ -92,8 +88,7 @@ Warum sind Links unter `/dev/disk/by-id/` in gerätespezifischen Konfigurationen
 
 Namen wie `/dev/null`, `/dev/zero` und `/dev/urandom` bezeichnen Kernel-Pseudogeräte statt physischen Speicher. `/dev/null` verwirft Schreibvorgänge und liefert beim Lesen sofort das Dateiende; `/dev/zero` stellt Nullbytes bereit; `/dev/urandom` liefert Bytes aus dem Zufallszahlengenerator des Kernels.
 
-:::single-choice{#device-names-zero-read}
-Was erzeugt das Lesen aus `/dev/zero`?
+:::single-choice{#device-names-zero-read} Was erzeugt das Lesen aus `/dev/zero`?
 
 ::option[Eine Liste unbenutzter Speichergeräte.]{#device-names-zero-storage-list explanation="Es ist ein byteserzeugendes Zeichengerät und kein Erkennungsbefehl."}
 ::option[Einen Strom von Bytes mit dem Wert null.]{#device-names-zero-bytes .correct explanation="Das Zero-Pseudogerät gibt bei Leseanforderungen Nullbytes zurück."}

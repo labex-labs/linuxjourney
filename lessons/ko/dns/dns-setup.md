@@ -21,8 +21,7 @@ DNS 소프트웨어는 보편적인 “최고의 서버”가 아니라 역할�
 
 기능과 패키징은 바뀌므로 설치된 버전의 공식 문서를 확인하십시오. 필요한 역할만 배포하고 의도하지 않은 재귀 또는 영역 서비스를 비활성화합니다.
 
-:::single-choice{#dns-setup-authoritative-role}
-제공하는 영역의 확정 레코드를 게시하는 역할은 무엇입니까?
+:::single-choice{#dns-setup-authoritative-role} 제공하는 영역의 확정 레코드를 게시하는 역할은 무엇입니까?
 
 ::option[권위 DNS 서버입니다.]{#dns-setup-authoritative .correct explanation="임의 이름을 재귀적으로 찾지 않고 설정된 영역 권위에서 응답합니다."}
 ::option[Ethernet 스위치입니다.]{#dns-setup-switch explanation="스위치는 링크 계층 프레임을 전달하며 DNS 영역을 게시하지 않습니다."}
@@ -35,8 +34,7 @@ DNS 소프트웨어는 보편적인 “최고의 서버”가 아니라 역할�
 
 제한 없는 재귀 기능을 인터넷에 공개하지 마십시오. 개방형 확인자는 반사 공격에 악용되고 로컬 리소스를 소모할 수 있습니다.
 
-:::single-choice{#dns-setup-open-recursion}
-재귀 쿼리를 승인된 클라이언트로 제한해야 하는 이유는 무엇입니까?
+:::single-choice{#dns-setup-open-recursion} 재귀 쿼리를 승인된 클라이언트로 제한해야 하는 이유는 무엇입니까?
 
 ::option[재귀 DNS는 어떤 레코드도 캐시할 수 없기 때문입니다.]{#dns-setup-no-cache explanation="캐싱은 재귀 확인자의 핵심 기능입니다."}
 ::option[권위 위임이 모든 사용자에게 root 권한을 요구하기 때문입니다.]{#dns-setup-all-root explanation="DNS 위임은 운영체제 권한을 부여하지 않습니다."}
@@ -54,8 +52,7 @@ $ named-checkzone example.com /etc/bind/zones/db.example.com
 
 호스트에 맞는 권한과 경로로 실행합니다. 파서 성공은 위임, 시리얼 전파, DNSSEC 체인, 방화벽 연결 또는 올바른 응답을 입증하지 않으므로 통제된 쿼리로 이어서 확인하십시오.
 
-:::single-choice{#dns-setup-zone-validation-limit}
-성공한 영역 구문 검사가 입증하지 못하는 것은 무엇입니까?
+:::single-choice{#dns-setup-zone-validation-limit} 성공한 영역 구문 검사가 입증하지 못하는 것은 무엇입니까?
 
 ::option[위임과 종단 간 권위 응답이 작동합니다.]{#dns-setup-not-end-to-end .correct explanation="상위 데이터, 서비스 활성화, 네트워크 정책 및 런타임 로딩은 별개입니다."}
 ::option[검사기가 영역 텍스트를 파싱할 수 있습니다.]{#dns-setup-parser-proves explanation="검사기가 직접 제공하는 증거입니다."}
@@ -74,8 +71,7 @@ $ dig @192.0.2.53 example.com SOA +norecurse +tcp
 
 재귀 서비스에서는 허용 및 거부된 클라이언트 네트워크, DNSSEC 검증, 캐시 동작 및 상위 의존성 장애를 테스트합니다.
 
-:::single-choice{#dns-setup-norecurse-test}
-권위 서버를 `+norecurse`로 조회하는 이유는 무엇입니까?
+:::single-choice{#dns-setup-norecurse-test} 권위 서버를 `+norecurse`로 조회하는 이유는 무엇입니까?
 
 ::option[재귀를 요청하지 않고 권위 응답을 테스트합니다.]{#dns-setup-authority-only .correct explanation="영역 서비스와 재귀 동작을 구분합니다."}
 ::option[영역의 모든 레코드를 제거합니다.]{#dns-setup-remove-records explanation="쿼리는 권위 데이터를 편집하지 않습니다."}
@@ -86,8 +82,7 @@ $ dig @192.0.2.53 example.com SOA +norecurse +tcp
 
 쿼리 실패, 지연 시간, 캐시 동작, 리소스 사용량, 영역 전송, 시리얼 일관성, DNSSEC 만료 및 위임 상태를 모니터링합니다. 소스 설정과 서명 자료를 안전하게 백업하되 새 인스턴스가 영역을 불러와 올바른 응답을 제공할 수 있는지도 검증합니다. 지원되는 버전을 패치하고 제어 인터페이스, 동적 갱신 및 전송 접근을 제한합니다.
 
-:::single-choice{#dns-setup-redundancy-verification}
-권위 DNS 이중화 테스트에는 무엇이 포함되어야 합니까?
+:::single-choice{#dns-setup-redundancy-verification} 권위 DNS 이중화 테스트에는 무엇이 포함되어야 합니까?
 
 ::option[각 서버를 조회하고 다른 서버를 사용할 수 없을 때의 작동을 테스트합니다.]{#dns-setup-test-each-server .correct explanation="여러 NS 레코드를 나열하는 것만으로 각 독립 서비스의 연결 가능성과 최신 상태가 입증되지는 않습니다."}
 ::option[모든 서버의 호스트 이름이 비슷한지만 확인합니다.]{#dns-setup-hostname-similarity explanation="이름은 데이터 동기화나 가용성을 입증하지 않습니다."}

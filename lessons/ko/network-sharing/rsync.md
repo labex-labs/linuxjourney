@@ -22,8 +22,7 @@ $ rsync -a -- source/ destination/
 
 `source/`의 후행 슬래시는 “이 디렉터리의 내용을 복사”한다는 뜻입니다. 슬래시가 없는 `rsync -a source destination/`은 `destination/source`를 만들거나 갱신합니다. 슬래시 위치를 바꿀 때는 항상 결과 경로를 미리 확인하십시오.
 
-:::single-choice{#rsync-source-trailing-slash}
-`rsync -a source/ destination/`에서 소스의 후행 슬래시는 무엇을 뜻합니까?
+:::single-choice{#rsync-source-trailing-slash} `rsync -a source/ destination/`에서 소스의 후행 슬래시는 무엇을 뜻합니까?
 
 ::option[전송 성공 후 소스를 삭제합니다.]{#rsync-delete-source explanation="소스를 제거하려면 별도의 명시적인 옵션과 정책이 필요합니다."}
 ::option[`source`의 내용을 대상에 복사합니다.]{#rsync-copy-contents .correct explanation="소스 슬래시를 제거하면 대상의 최상위 디렉터리 배치가 달라집니다."}
@@ -36,8 +35,7 @@ $ rsync -a -- source/ destination/
 
 아카이브 모드만으로는 하드 링크, ACL 또는 확장 속성이 보존되지 않습니다. 일반적으로 각각 `-H`, `-A` 및 `-X`가 필요합니다. 또한 아카이브 모드 자체는 이전 버전을 만들지 않습니다.
 
-:::single-choice{#rsync-archive-limit}
-`-a`만으로 포함되지 않는 메타데이터는 무엇입니까?
+:::single-choice{#rsync-archive-limit} `-a`만으로 포함되지 않는 메타데이터는 무엇입니까?
 
 ::option[하드 링크 관계입니다.]{#rsync-hard-links .correct explanation="하드 링크를 보존하려면 별도의 -H 옵션이 필요합니다."}
 ::option[디렉터리 재귀 순회입니다.]{#rsync-archive-recursion explanation="아카이브 모드에는 재귀 순회가 포함됩니다."}
@@ -54,8 +52,7 @@ $ rsync -a --dry-run --itemize-changes -- source/ destination/
 
 시험 실행은 현재 스캔을 바탕으로 동작을 예측하지만 실제 명령 전까지 파일이 바뀌지 않는다고 보장하지 않습니다. 정확한 명령을 저장하고 검토한 뒤 양쪽 끝점을 확인한 후에만 `--dry-run`을 제거해 실행합니다.
 
-:::single-choice{#rsync-dry-run-purpose}
-`--dry-run --itemize-changes`는 무엇을 제공합니까?
+:::single-choice{#rsync-dry-run-purpose} `--dry-run --itemize-changes`는 무엇을 제공합니까?
 
 ::option[다른 장치에 영구 보존되는 스냅샷입니다.]{#rsync-dry-backup explanation="시험 실행은 데이터를 복사하거나 독립적인 보존 사본을 만들지 않습니다."}
 ::option[소스 파일이 이후에 변경될 수 없다는 보장입니다.]{#rsync-dry-lock explanation="미리 보기는 소스 트리를 잠그지 않습니다."}
@@ -73,8 +70,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 현대의 rsync는 보통 이 형식에 SSH를 사용하지만 설정된 원격 셸, 호스트 키, 계정 권한 및 원격 rsync 설치 여부를 확인하십시오. `-z` 압축은 제한된 링크에서 압축 가능한 데이터에 도움이 될 수 있지만 이미 압축된 데이터에는 CPU를 낭비할 수 있습니다.
 
-:::single-choice{#rsync-pull-direction}
-원격 데이터를 로컬 디렉터리로 가져오는 피연산자 순서는 무엇입니까?
+:::single-choice{#rsync-pull-direction} 원격 데이터를 로컬 디렉터리로 가져오는 피연산자 순서는 무엇입니까?
 
 ::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="이 순서는 로컬 내용을 원격 대상으로 보냅니다."}
 ::option[`rsync --delete host local`]{#rsync-missing-path explanation="표시된 원격 경로 구문을 표현하지 못하며 관련 없는 파괴적 옵션까지 추가합니다."}
@@ -87,8 +83,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 실제 실행 후에는 종료 상태와 로그를 조사하고 예상 파일 수와 메타데이터를 비교하며 대표 콘텐츠나 복원을 테스트합니다. rsync 동기화만으로는 원치 않는 삭제나 손상도 복제되므로 완전한 백업 전략이 아닙니다.
 
-:::single-choice{#rsync-delete-effect}
-`--delete`는 동기화 중 무엇을 할 수 있습니까?
+:::single-choice{#rsync-delete-effect} `--delete`는 동기화 중 무엇을 할 수 있습니까?
 
 ::option[전송되는 모든 파일을 SSH 호스트 키로 암호화합니다.]{#rsync-delete-encrypt explanation="삭제 정책은 파일 암호화와 관계없습니다."}
 ::option[대상 파일시스템의 모든 변경을 막습니다.]{#rsync-delete-readonly explanation="이 옵션은 명시적으로 추가 대상 변경을 허용합니다."}

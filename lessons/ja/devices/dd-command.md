@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` はブロックをコピーするのであり、本質的に1バイトずつコピーするわけではありません。大きな `bs` はシステムコールのオーバーヘッドを減らせる場合がありますが、最適な値はデバイス、アライメント、キャッシュ、ワークロードによって異なります。コピーされる論理データ自体は変わりません。
 
-:::single-choice{#dd-command-output-operand}
-`dd` が書き込む宛先を選択するオペランドはどれですか？
+:::single-choice{#dd-command-output-operand} `dd` が書き込む宛先を選択するオペランドはどれですか？
 
 ::option[`if=`]{#dd-command-input-file explanation="`if` は入力元を指定します。"}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of` はコピーされたデータを受け取る出力ストリームまたはファイルを指定します。"}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 これは最大1 MiBの入力ブロックを2個要求するため、最大2 MiBをコピーします。パイプのようなストリームでは短い読み取りにより単純な掛け算どおりにならない場合があります。完全な入力ブロックが必要なら、GNU `dd` には `iflag=fullblock` があります。2進単位と接尾辞の構文は、ローカル実装に従って区別してください。
 
-:::single-choice{#dd-command-count-result}
-通常ファイルに対する `bs=1M count=2` は、最大でどれだけのコピーを要求しますか？
+:::single-choice{#dd-command-count-result} 通常ファイルに対する `bs=1M count=2` は、最大でどれだけのコピーを要求しますか？
 
 ::option[1 MiB。]{#dd-command-one-mib explanation="それは選択したサイズのブロック1個分です。"}
 ::option[2 MiB。]{#dd-command-two-mib .correct explanation="入力ブロック2個にブロックあたり1 MiBを掛けると、最大2 MiBになります。"}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 出力デバイスは先頭から上書きされます。`if` と `of` を逆にする、システムディスクを選ぶ、パーティションのつもりでディスク全体を指定するといった誤りは、確認プロンプトなしにデータを破壊します。
 
-:::single-choice{#dd-command-target-verification}
-生デバイスへ書き込む前に、モデル、シリアル、サイズ、使用状況を確認すべき最も強い理由はどれですか？
+:::single-choice{#dd-command-target-verification} 生デバイスへ書き込む前に、モデル、シリアル、サイズ、使用状況を確認すべき最も強い理由はどれですか？
 
 ::option[デバイス文字は変わり得るうえ、`dd` は内容を理解せず、選択された対象を上書きするから。]{#dd-command-target-can-change .correct explanation="識別情報と使用状況の確認により、別のディスクや稼働中のストレージ層を破壊する危険を減らせます。"}
 ::option[ファイルシステムラベルがイメージと一致しなければ、`dd` が書き込みを拒否するから。]{#dd-command-label-check explanation="このツールは、そのようなファイルシステムを理解した安全確認を行いません。"}
@@ -85,8 +82,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 生デバイスイメージは、ファイルシステムのメタデータや未使用領域を含むブロックをコピーします。そのため、ファイル単位のバックアップよりはるかに大きくなる場合があり、複製を元のデバイスと同時にマウントする前に変更すべき識別子まで複製する可能性があります。
 
-:::single-choice{#dd-command-live-filesystem-image}
-マウントされ、変化しているファイルシステムのイメージ作成が信頼できない場合があるのはなぜですか？
+:::single-choice{#dd-command-live-filesystem-image} マウントされ、変化しているファイルシステムのイメージ作成が信頼できない場合があるのはなぜですか？
 
 ::option[マウント済みファイルシステムはブロックデバイスからの読み取りを一切許可しないから。]{#dd-command-mounted-no-read explanation="生の読み取りが可能な場合があるからこそ、整合性は仮定せず計画する必要があります。"}
 ::option[ファイルシステムの異なる時点から別々のブロックを読み取る可能性があるから。]{#dd-command-inconsistent-moments .correct explanation="並行して変更されると、収集したブロックイメージが一つの整合した時点を表さなくなる可能性があります。"}
@@ -99,8 +95,7 @@ I/O エラーなしでコマンドが完了しても、意図した入力元と�
 
 SSD、フラッシュ変換層、シンプロビジョニングされたストレージ、スナップショット、再配置済みセクターに対して、`dd` の上書きを確実な安全消去として宣伝してはいけません。デバイスとプラットフォームが対応するサニタイズ機能を、明示的なデータ破棄ポリシーとともに使ってください。
 
-:::single-choice{#dd-command-success-meaning}
-`dd` の終了ステータスが0でも、それだけでは何を証明できませんか？
+:::single-choice{#dd-command-success-meaning} `dd` の終了ステータスが0でも、それだけでは何を証明できませんか？
 
 ::option[コマンドが指定された全オペランドを解析したこと。]{#dd-command-parsed-operands explanation="無効なオペランドは通常、正常完了ではなくエラーを引き起こします。"}
 ::option[操作した人が意図した入力元と出力先を選んだこと。]{#dd-command-does-not-prove-intent .correct explanation="ツールは操作意図を推測できないため、誤った対象へのコピーにも正常に成功できます。"}

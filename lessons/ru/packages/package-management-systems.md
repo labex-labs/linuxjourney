@@ -33,8 +33,7 @@ RPM family:    $ dnf info package-name
 
 Конфигурация репозиториев определяет, что могут обнаружить эти команды. Внимательно проверяйте имена источников, архитектуры, версии и ошибки подписей.
 
-:::single-choice{#package-management-systems-apt-show}
-Какая команда отображает сведения APT о `package-name`?
+:::single-choice{#package-management-systems-apt-show} Какая команда отображает сведения APT о `package-name`?
 
 ::option[`apt remove package-name`]{#package-management-systems-apt-remove-command explanation="Подкоманда `remove` предлагает удалить пакет."}
 ::option[`dnf search package-name`]{#package-management-systems-dnf-search-command explanation="Команда ищет в репозиториях семейства RPM и не является командой подробностей APT."}
@@ -52,8 +51,7 @@ RPM family:    $ sudo dnf install package-name
 
 Диспетчер предлагает зависимости и любые конфликты либо замены. Не подтверждайте автоматически, пока не проверите происхождение, версию и архитектуру пакета, объём загрузки, изменение диска, удаления и новые зависимости.
 
-:::single-choice{#package-management-systems-dnf-install}
-Какая современная команда устанавливает `package-name` из настроенных репозиториев семейства RPM?
+:::single-choice{#package-management-systems-dnf-install} Какая современная команда устанавливает `package-name` из настроенных репозиториев семейства RPM?
 
 ::option[`rpm -qa package-name`]{#package-management-systems-rpm-query-command explanation="Это запрос установленной базы RPM, а не запрос установки из репозитория."}
 ::option[`dnf install package-name`]{#package-management-systems-dnf-install-command .correct explanation="DNF — современный диспетчер репозиториев в Fedora и новых выпусках RHEL."}
@@ -71,8 +69,7 @@ RPM family:    $ sudo dnf remove package-name
 
 Удаление может повлиять на зависимые пакеты или оставить больше не используемые зависимости и конфигурацию. Проверяйте предлагаемую транзакцию, отличайте семантику remove от purge в системах семейства Debian и сохраняйте данные приложения согласно его собственному процессу резервного копирования и хранения. Удаление пакета не обещает удалить данные, созданные пользователями.
 
-:::single-choice{#package-management-systems-remove-review}
-Почему следует проверить транзакцию удаления до подтверждения?
+:::single-choice{#package-management-systems-remove-review} Почему следует проверить транзакцию удаления до подтверждения?
 
 ::option[Удаление всегда форматирует файловую систему, содержащую пакет.]{#package-management-systems-removal-format explanation="Диспетчеры пакетов удаляют управляемые файлы и состояние, но обычно не форматируют файловую систему."}
 ::option[Диспетчеры пакетов не могут показать предлагаемый набор изменений.]{#package-management-systems-no-proposal explanation="Интерактивные диспетчеры обычно показывают план транзакции именно для проверки."}
@@ -98,8 +95,7 @@ $ sudo dnf upgrade
 
 Команда обновления может изменить основные библиотеки, службы, ядра и зависимости. Используйте резервные копии, политику обслуживания, примечания к выпуску и подходящее системе планирование перезапуска или перезагрузки. Проверяйте семантику кодов завершения: например, некоторые операции проверки используют ненулевой код, чтобы сообщить о наличии обновлений, а не об ошибке выполнения.
 
-:::single-choice{#package-management-systems-apt-update-upgrade}
-Как связаны `apt update` и `apt upgrade`?
+:::single-choice{#package-management-systems-apt-update-upgrade} Как связаны `apt update` и `apt upgrade`?
 
 ::option[`update` удаляет пакеты, а `upgrade` восстанавливает их файлы конфигурации.]{#package-management-systems-apt-remove-restore explanation="Между командами нет такого отношения удаления и восстановления."}
 ::option[`update` обновляет метаданные, а `upgrade` применяет одобренный план обновления пакетов.]{#package-management-systems-apt-two-steps .correct explanation="APT разделяет обновление каталога и установку новых версий пакетов."}
@@ -110,8 +106,7 @@ $ sudo dnf upgrade
 
 В современной документации Fedora и RHEL используйте `dnf`. Команда `yum` в новой системе RHEL может вызывать совместимое поведение DNF, однако скриптам не следует определять реализацию только по имени исполняемого файла. На устаревших хостах проверяйте установленную версию и поддерживаемый синтаксис до переноса инструкций.
 
-:::single-choice{#package-management-systems-yum-current-rhel}
-Что обычно представляет собой `yum` в современной системе RHEL?
+:::single-choice{#package-management-systems-yum-current-rhel} Что обычно представляет собой `yum` в современной системе RHEL?
 
 ::option[Команду совместимости, работающую поверх DNF.]{#package-management-systems-yum-dnf-alias .correct explanation="Новые выпуски RHEL используют DNF, сохраняя имя команды yum для совместимости."}
 ::option[Низкоуровневый инструмент Debian для архивов `.deb`.]{#package-management-systems-yum-dpkg explanation="Системы Debian используют для собственных пакетов APT и dpkg, а не YUM."}

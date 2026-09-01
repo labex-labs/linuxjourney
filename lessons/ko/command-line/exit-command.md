@@ -22,8 +22,7 @@ $ exit
 
 현재 쉘이 그래픽 터미널 탭의 주 프로세스라면 터미널 설정에 따라 탭이 닫힐 수 있습니다. SSH에서는 원격 쉘을 나가 로컬 쉘로 돌아가고, 중첩 쉘에서는 상위 쉘로 돌아갑니다.
 
-:::single-choice{#leave-current-shell}
-다른 쉘 안에서 Bash를 시작했고 이제 상위 쉘로 돌아가려 합니다. 중첩된 Bash에서 어떤 명령어를 실행해야 하나요?
+:::single-choice{#leave-current-shell} 다른 쉘 안에서 Bash를 시작했고 이제 상위 쉘로 돌아가려 합니다. 중첩된 Bash에서 어떤 명령어를 실행해야 하나요?
 
 ::option[`clear`]{#clear-nested explanation="`clear`는 보이는 터미널 영역을 새로 고치지만 현재 쉘은 계속 실행합니다."}
 ::option[`exit`]{#exit-nested .correct explanation="`exit`는 현재 쉘을 종료해 상위 쉘이 다시 실행되게 합니다."}
@@ -40,16 +39,14 @@ $ exit 0
 
 관례상 `0`은 성공을, 0이 아닌 값은 실패나 프로그램이 정의한 다른 조건을 뜻합니다. Bash에 숫자를 주지 않으면 `exit` 직전에 실행한 마지막 명령어의 상태로 종료합니다.
 
-:::single-choice{#return-success-status}
-현재 쉘을 종료하면서 호출자에게 성공을 명시적으로 알리는 명령어는 무엇인가요?
+:::single-choice{#return-success-status} 현재 쉘을 종료하면서 호출자에게 성공을 명시적으로 알리는 명령어는 무엇인가요?
 
 ::option[`exit 0`]{#exit-zero .correct explanation="상태 `0`은 관례상 호출자에게 성공적인 완료를 나타냅니다."}
 ::option[`exit 1`]{#exit-one explanation="0이 아닌 상태는 관례상 성공이 아니라 실패나 다른 예외 조건을 나타냅니다."}
 ::option[`logout 0`]{#logout-zero explanation="Bash `logout`은 로그인 쉘용이며 이 형식으로 요청한 상태를 지정하지 않습니다."}
 :::
 
-:::single-choice{#exit-without-number}
-Bash에서 숫자를 지정하지 않은 `exit`는 어떤 상태를 반환하나요?
+:::single-choice{#exit-without-number} Bash에서 숫자를 지정하지 않은 `exit`는 어떤 상태를 반환하나요?
 
 ::option[항상 성공 상태 `0`을 반환합니다.]{#always-zero explanation="성공 관례가 숫자 없는 `exit`를 항상 0으로 만들지는 않으며 Bash는 이 경우 이전 상태를 유지합니다."}
 ::option[항상 실패 상태 `1`을 반환합니다.]{#always-one explanation="Bash는 숫자 없는 모든 `exit`에 실패 상태 1을 부여하지 않으며 이전 명령어가 값을 결정합니다."}
@@ -66,8 +63,7 @@ $ logout
 
 로그인 쉘이 아닌 Bash에서는 로그인 쉘이 아니라는 오류를 표시하므로 대신 `exit`를 사용합니다.
 
-:::single-choice{#leave-login-shell}
-로그인 쉘을 종료하도록 특별히 마련된 Bash 내장 명령어는 무엇인가요?
+:::single-choice{#leave-login-shell} 로그인 쉘을 종료하도록 특별히 마련된 Bash 내장 명령어는 무엇인가요?
 
 ::option[`logout`]{#logout-login .correct explanation="Bash는 로그인 쉘을 종료하기 위해 `logout`을 제공합니다."}
 ::option[`unalias`]{#unalias-login explanation="`unalias`는 현재 쉘에서 별칭 정의를 제거할 뿐 세션을 종료하지 않습니다."}

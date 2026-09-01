@@ -23,8 +23,7 @@ $ ip neighbor show dev enp1s0
 
 条目包含 IP 地址、链路层地址、设备和可达性状态。启动后邻居表可能为空，并随着流量需要本地下一跳而填充。
 
-:::single-choice{#arp-command-modern-view}
-哪个命令显示现代 Linux 邻居表状态？
+:::single-choice{#arp-command-modern-view} 哪个命令显示现代 Linux 邻居表状态？
 
 ::option[`pwd neighbor`]{#arp-command-pwd explanation="pwd 报告 shell 工作目录。"}
 ::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="它同时报告 IPv4 ARP 派生条目和 IPv6 邻居发现条目。"}
@@ -37,8 +36,7 @@ $ ip neighbor show dev enp1s0
 
 对于远程 IP 目标，主机解析的是所选网关地址，而不是远程主机的 MAC。
 
-:::single-choice{#arp-command-remote-target}
-对于链路外目标，主机会解析哪个 IPv4 邻居？
+:::single-choice{#arp-command-remote-target} 对于链路外目标，主机会解析哪个 IPv4 邻居？
 
 ::option[跨越所有路由器的最终远程服务器。]{#arp-command-final-server explanation="它的 MAC 地址在源链路上没有意义。"}
 ::option[解析器配置中列出的每台 DNS 服务器。]{#arp-command-all-dns explanation="邻居解析遵循所选路由，而不是解析器列表。"}
@@ -49,8 +47,7 @@ $ ip neighbor show dev enp1s0
 
 常见状态包括 `REACHABLE`、`STALE`、`DELAY`、`PROBE`、`INCOMPLETE` 和 `FAILED`。`STALE` 表示最近的可达性确认已经过期；协议栈仍可使用缓存地址，并按需探测。`FAILED` 表示解析或可达性检测未成功，但原因可能是链路、VLAN、地址、路由、过滤问题或对端已关闭。
 
-:::single-choice{#arp-command-stale-state}
-`STALE` 是否表示已知邻居不可达？
+:::single-choice{#arp-command-stale-state} `STALE` 是否表示已知邻居不可达？
 
 ::option[不是；它缺少最近确认，可以在使用时探测。]{#arp-command-stale-probe .correct explanation="该状态不等同于 FAILED。"}
 ::option[是，而且该条目永远无法再次使用。]{#arp-command-stale-dead explanation="过期条目仍是候选项，可以在可达性检查后转换状态。"}
@@ -63,8 +60,7 @@ $ ip neighbor show dev enp1s0
 
 ARP 没有内置身份验证，因此重复地址或伪造回复可能污染映射。交换机保护、分段、监控和更高层身份验证有助于降低影响。
 
-:::single-choice{#arp-command-flush-first}
-为什么不应把刷新整个邻居表作为第一项诊断步骤？
+:::single-choice{#arp-command-flush-first} 为什么不应把刷新整个邻居表作为第一项诊断步骤？
 
 ::option[邻居条目只存储在 DNS 根服务器中。]{#arp-command-neighbors-dns explanation="它们由本地网络协议栈维护。"}
 ::option[刷新会永久移除接口硬件。]{#arp-command-flush-hardware explanation="它移除缓存条目，而不是物理设备。"}

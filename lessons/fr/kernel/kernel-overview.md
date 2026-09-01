@@ -18,8 +18,7 @@ Les processeurs exécutent les instructions, la mémoire conserve l'état actif 
 
 Le noyau initialise et contrôle ces ressources au moyen du code d'architecture et des pilotes. Il traite les interruptions, la coordination DMA, les minuteurs et les événements de gestion de l'alimentation tout en imposant des limites d'accès entre les charges.
 
-:::single-choice{#kernel-overview-hardware-manager}
-Quelle couche coordonne normalement les pilotes de périphériques et les interruptions matérielles sous Linux ?
+:::single-choice{#kernel-overview-hardware-manager} Quelle couche coordonne normalement les pilotes de périphériques et les interruptions matérielles sous Linux ?
 
 ::option[Le fichier d'historique du shell de chaque utilisateur.]{#kernel-overview-shell-history explanation="L'historique consigne les commandes et ne traite pas l'exécution matérielle."}
 ::option[L'index du dépôt de paquets.]{#kernel-overview-repository-index explanation="Les métadonnées du dépôt décrivent les paquets logiciels, pas les événements matériels réels."}
@@ -39,8 +38,7 @@ Ses principales responsabilités comprennent :
 
 Linux est couramment décrit comme un noyau monolithique, car les services centraux et de nombreux pilotes s'exécutent dans un même espace d'adressage privilégié. Il est aussi modulaire : les composants pris en charge peuvent être chargés et déchargés comme modules du noyau. Un bogue dans du code privilégié peut compromettre tout le système ; les mises à jour du noyau et l'origine des modules sont donc essentielles à la sécurité.
 
-:::single-choice{#kernel-overview-scheduler-role}
-Que gère l'ordonnanceur du noyau ?
+:::single-choice{#kernel-overview-scheduler-role} Que gère l'ordonnanceur du noyau ?
 
 ::option[La prochaine page de documentation que l'utilisateur lira.]{#kernel-overview-documentation explanation="La navigation dans l'apprentissage ne relève pas de l'ordonnancement du noyau."}
 ::option[Les threads exécutables qui reçoivent du temps processeur.]{#kernel-overview-thread-scheduling .correct explanation="L'ordonnanceur choisit les contextes d'exécution selon les règles, priorités, affinités et processeurs disponibles."}
@@ -55,8 +53,7 @@ Les processus demandent du travail au noyau au moyen des appels système et inte
 
 L'utilisateur root de l'espace utilisateur possède de vastes autorisations selon les règles, mais s'exécute normalement toujours dans le mode utilisateur du processeur. L'identité de l'utilisateur et le mode de privilège du processeur sont des notions distinctes.
 
-:::single-choice{#kernel-overview-root-user-mode}
-Une application ordinaire appartenant à root exécute-t-elle toutes ses instructions en mode noyau ?
+:::single-choice{#kernel-overview-root-user-mode} Une application ordinaire appartenant à root exécute-t-elle toutes ses instructions en mode noyau ?
 
 ::option[Oui ; l'UID 0 transforme définitivement chaque instruction en ring 0.]{#kernel-overview-root-ring-zero explanation="Un processus root ordinaire reste un processus de l'espace utilisateur."}
 ::option[Oui ; les applications root deviennent automatiquement des modules chargeables du noyau.]{#kernel-overview-root-module explanation="L'UID propriétaire ne transforme pas un exécutable utilisateur en code du noyau."}
@@ -69,8 +66,7 @@ Le noyau présente des processus, fichiers, sockets et espaces d'adressage virtu
 
 Pendant un dépannage, demandez-vous quelle couche possède le comportement : application, bibliothèque, interface d'appel système, système de fichiers, pilote, sous-système du noyau, micrologiciel ou matériel. Des preuves recueillies dans la mauvaise couche peuvent conduire à des corrections erronées.
 
-:::single-choice{#kernel-overview-system-call-boundary}
-Qu'est-ce qu'un appel système ?
+:::single-choice{#kernel-overview-system-call-boundary} Qu'est-ce qu'un appel système ?
 
 ::option[Une demande contrôlée de l'espace utilisateur pour obtenir un service du noyau.]{#kernel-overview-controlled-request .correct explanation="Le processeur entre en mode noyau par une interface définie, où le noyau valide puis effectue l'opération."}
 ::option[Une commande directe qui contourne tous les contrôles d'accès.]{#kernel-overview-bypass-checks explanation="Les appels système sont précisément l'endroit où s'effectuent de nombreux contrôles de validation et d'autorisation."}

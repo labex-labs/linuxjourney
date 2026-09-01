@@ -22,8 +22,7 @@ $ nmcli connection show
 $ nmcli connection show --active
 ```
 
-:::single-choice{#networkmanager-device-profile}
-O que é um perfil de conexão do NetworkManager?
+:::single-choice{#networkmanager-device-profile} O que é um perfil de conexão do NetworkManager?
 
 ::option[Um conector físico soldado à placa de rede.]{#networkmanager-physical-connector explanation="Isso é hardware, não um perfil."}
 ::option[Um conjunto armazenado de definições que pode ser ativado num dispositivo.]{#networkmanager-stored-settings .correct explanation="Perfis persistem a configuração separadamente do objeto de interface do kernel."}
@@ -41,8 +40,7 @@ $ nmcli connection show 'Wired connection 1'
 
 Definições do perfil, resultados DHCP e estado do kernel podem diferir. Compare com `ip address`, `ip route` e o resolver. O obsoleto `nm-tool` não deve fundamentar um fluxo atual.
 
-:::single-choice{#networkmanager-active-command}
-Qual comando lista os perfis ativos?
+:::single-choice{#networkmanager-active-command} Qual comando lista os perfis ativos?
 
 ::option[`nmcli device delete --all`]{#networkmanager-delete-all explanation="Isso não é inspeção e sugere uma ação destrutiva."}
 ::option[`nmcli connection show --active`]{#networkmanager-show-active .correct explanation="Ele filtra as conexões armazenadas para as que estão ativadas."}
@@ -60,8 +58,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 Modificar muda dados persistentes; ativar pode substituir endereços, rotas e DNS ativos. Uma mudança remota exige console, definições originais salvas e rollback temporizado independente. Não dependa da conexão alterada para transportar sua própria recuperação.
 
-:::single-choice{#networkmanager-modify-versus-up}
-Qual é a diferença entre `connection modify` e `connection up`?
+:::single-choice{#networkmanager-modify-versus-up} Qual é a diferença entre `connection modify` e `connection up`?
 
 ::option[Modify reinicia o host; up edita o código-fonte do DNS.]{#networkmanager-reboot-source explanation="Nenhuma descrição corresponde aos comandos."}
 ::option[Modify muda as definições; up ativa um perfil.]{#networkmanager-change-activate .correct explanation="Persistência e ativação em runtime são operações relacionadas, mas separadas."}
@@ -72,8 +69,7 @@ Qual é a diferença entre `connection modify` e `connection up`?
 
 Depois da ativação, verifique perfil, endereços e rotas do kernel, DNS, ambas as famílias e o aplicativo. Perfis Wi-Fi, VPN, 802.1X e móveis podem conter segredos. Limite permissões e não imprima campos secretos em logs ou transcrições compartilhadas.
 
-:::single-choice{#networkmanager-verification}
-O que prova mais que o NetworkManager informar “conectado”?
+:::single-choice{#networkmanager-verification} O que prova mais que o NetworkManager informar “conectado”?
 
 ::option[O nome do perfil contém Wired.]{#networkmanager-name-proof explanation="Um rótulo não demonstra a saúde do caminho."}
 ::option[A janela do terminal continua aberta.]{#networkmanager-terminal-open explanation="Um terminal pode sobreviver a falhas parciais."}

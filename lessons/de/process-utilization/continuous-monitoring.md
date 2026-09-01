@@ -25,8 +25,7 @@ $ systemctl list-timers --all | grep sysstat
 
 Überprüfe, ob im sysstat-Datenverzeichnis der Distribution neue Aktivitätsdateien erstellt werden, und prüfe ihre Berechtigungen sowie die Aufbewahrungsrichtlinie.
 
-:::single-choice{#sar-installation-verification}
-Was solltest du nach der Installation von `sysstat` überprüfen?
+:::single-choice{#sar-installation-verification} Was solltest du nach der Installation von `sysstat` überprüfen?
 
 ::option[Dass die Erfassung aktiviert ist und Aktivitätsdateien aktualisiert werden.]{#sar-collector-updating .correct explanation="Paketinstallation und aktive regelmäßige Datenerfassung sind getrennte Bedingungen."}
 ::option[Dass jeder Prozess manuell neu gestartet wurde.]{#sar-restart-processes explanation="Die Installation eines Überwachungsdatensammlers erfordert keinen Neustart jeder Arbeitslast."}
@@ -43,8 +42,7 @@ $ sar -u 1 3
 
 Weitere häufige Berichte umfassen Ausführungswarteschlange und Last (`-q`), Arbeitsspeicher (`-r`), Paging (`-B`), Blockgeräte (`-d`) und Aktivität einzelner CPUs (`-P ALL`). Optionen und Felder unterscheiden sich je nach sysstat-Version; lies daher `sar --help` oder die lokale Handbuchseite.
 
-:::single-choice{#sar-one-second-count}
-Was fordert `sar -u 1 3` an?
+:::single-choice{#sar-one-second-count} Was fordert `sar -u 1 3` an?
 
 ::option[Drei CPU-Berichte in Abständen von einer Sekunde.]{#sar-three-cpu-samples .correct explanation="Die erste Zahl ist das Intervall in Sekunden, die zweite die Anzahl der Berichte."}
 ::option[Einen Bericht, der genau drei Tage abdeckt.]{#sar-three-days explanation="Die Operanden geben Stichprobenintervall und Anzahl und keinen Datumsbereich an."}
@@ -61,8 +59,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 Bestätige das vollständige Datum der Datei anhand der Berichtsüberschriften. Eine zweistellige Endung bezeichnet häufig einen Tag des Monats und kann über mehrere Aufbewahrungszeiträume hinweg mehrdeutig sein. Gespeicherte Binärformate können außerdem eine kompatible sysstat-Version erfordern.
 
-:::single-choice{#sar-historical-file-option}
-Welche Option weist `sar` an, eine bestimmte Aktivitätsdatei zu lesen?
+:::single-choice{#sar-historical-file-option} Welche Option weist `sar` an, eine bestimmte Aktivitätsdatei zu lesen?
 
 ::option[`-P`]{#sar-option-p explanation="Dies wählt die Prozessorberichterstattung und keine Eingabedatei aus."}
 ::option[`-q`]{#sar-option-q explanation="Dies wählt die Berichterstattung zu Warteschlange und Last aus."}
@@ -75,8 +72,7 @@ Bestimme Zeit und Zeitzone des Vorfalls und vergleiche anschließend mehrere Sig
 
 Lücken können bedeuten, dass der Host außer Betrieb war, die Erfassung fehlgeschlagen ist oder Daten durch die Aufbewahrung entfernt wurden. Überwache die Überwachungspipeline selbst, damit fehlende Belege schon vor einem Vorfall sichtbar werden.
 
-:::single-choice{#sar-incident-method}
-Wie sollten historische `sar`-Daten bei der Nachbereitung eines Vorfalls verwendet werden?
+:::single-choice{#sar-incident-method} Wie sollten historische `sar`-Daten bei der Nachbereitung eines Vorfalls verwendet werden?
 
 ::option[Den höchsten einzelnen Zähler als bewiesene Ursache behandeln.]{#sar-single-root explanation="Eine einzelne Korrelation belegt keine Kausalität."}
 ::option[Mehrere Messwerte über dasselbe bestätigte Zeitfenster vergleichen.]{#sar-correlate-window .correct explanation="Zeitlich ausgerichtete Signale helfen, Hypothesen zu unterscheiden und Systemverhalten mit dem Vorfall zu verbinden."}

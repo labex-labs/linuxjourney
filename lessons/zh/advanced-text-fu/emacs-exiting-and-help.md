@@ -24,8 +24,7 @@ Emacs 会检查相关的已修改文件缓冲区，并询问是否保存。请�
 
 在 `emacsclient` 工作流或 Emacs 服务器中，具体的框架和服务器行为可能不同，但仍应认真处理已修改缓冲区的提示。
 
-:::single-choice{#emacs-exit-key}
-哪个按键序列会请求正常退出 Emacs，并检查已修改缓冲区？
+:::single-choice{#emacs-exit-key} 哪个按键序列会请求正常退出 Emacs，并检查已修改缓冲区？
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="这会终止一个所选缓冲区，不会请求退出 Emacs 会话。"}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="这会取消待处理命令或提示，而不是关闭 Emacs。"}
@@ -42,8 +41,7 @@ C-h C-h
 
 第二个按键会选择需要的帮助类型。
 
-:::single-choice{#emacs-help-for-help}
-哪个按键序列会说明如何使用 Emacs 帮助系统？
+:::single-choice{#emacs-help-for-help} 哪个按键序列会说明如何使用 Emacs 帮助系统？
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="帮助前缀后再输入一个 `C-h`，会打开关于帮助分派器本身的帮助。"}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="这不是本课介绍的 help-for-help 序列。"}
@@ -62,8 +60,7 @@ C-h C-h
 
 例如，输入 `C-h k C-x C-s` 可以查看 save-buffer 按键绑定的文档。
 
-:::single-choice{#emacs-describe-key}
-你想了解 `C-x C-s` 的作用。应在该按键序列前输入哪个帮助前缀？
+:::single-choice{#emacs-describe-key} 你想了解 `C-x C-s` 的作用。应在该按键序列前输入哪个帮助前缀？
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key` 会等待一个按键序列，并说明绑定到它的命令。"}
 ::option[`C-h f`]{#emacs-describe-function explanation="这会提示输入函数名，而不是读取按键序列来识别其绑定。"}
@@ -80,8 +77,7 @@ C-g
 
 它不会撤销已经发生的缓冲区更改，也不会退出 Emacs。它会停止当前交互，并在可能时把控制权交还给普通编辑。
 
-:::single-choice{#emacs-cancel-pending-command}
-哪个按键通常会取消当前 Emacs 提示或待处理命令？
+:::single-choice{#emacs-cancel-pending-command} 哪个按键通常会取消当前 Emacs 提示或待处理命令？
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="这会启动 Emacs 退出流程，而不只是取消当前提示。"}
 ::option[`C-y`]{#emacs-cancel-yank explanation="这会从 kill ring 中 yank 文本，不会取消命令。"}
@@ -98,8 +94,7 @@ C-/
 
 重复撤销命令会沿最近的缓冲区更改向后移动。单纯移动光标通常不属于缓冲区更改。不同 Emacs 版本和配置可能提供 `undo-redo` 及更高级的历史工具；请对实际的撤销和重做绑定使用 `C-h k`，验证本地行为。
 
-:::single-choice{#emacs-undo-change}
-哪个按键序列是撤销最近 Emacs 缓冲区更改的标准绑定？
+:::single-choice{#emacs-undo-change} 哪个按键序列是撤销最近 Emacs 缓冲区更改的标准绑定？
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/` 是标准撤销绑定；常见配置中还有 `C-_` 和 `C-x u`。"}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="这会保存当前缓冲区，而不是遍历其撤销历史。"}

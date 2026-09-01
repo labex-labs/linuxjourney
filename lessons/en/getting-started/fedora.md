@@ -16,8 +16,7 @@ Fedora is a community-driven Linux distribution sponsored by Red Hat. It is know
 
 Fedora has a reputation for moving faster than more conservative distros while still aiming for quality and usability. That balance makes it appealing to users who want a modern Linux system without building everything from scratch.
 
-:::single-choice{#identify-fedora-project-model}
-Which statement correctly describes the Fedora Project?
+:::single-choice{#identify-fedora-project-model} Which statement correctly describes the Fedora Project?
 
 ::option[It is a discontinued version of Red Hat Enterprise Linux]{#discontinued-rhel explanation="Fedora is an active distribution with its own releases. It is upstream of RHEL rather than an obsolete RHEL version."}
 ::option[It is a distribution maintained by one hardware manufacturer]{#hardware-maintained explanation="Fedora collaborates with hardware vendors, but its development is community driven and sponsored by Red Hat."}
@@ -30,8 +29,7 @@ Fedora stands out because it often adopts new Linux features earlier than enterp
 
 It is also well known for offering a clean default experience. Fedora Workstation is especially popular among developers who want a modern desktop, current tooling, and good support for containers, virtualization, and other development workflows.
 
-:::single-choice{#match-fedora-user}
-Which user goal is the best match for Fedora Workstation?
+:::single-choice{#match-fedora-user} Which user goal is the best match for Fedora Workstation?
 
 ::option[Keep one enterprise release unchanged for many years]{#long-enterprise-lifecycle explanation="A long, conservative enterprise lifecycle is closer to RHEL's role. Fedora moves on a faster release and upgrade schedule."}
 ::option[Use current developer tools in a polished desktop system]{#current-developer-desktop .correct explanation="Fedora Workstation combines a curated desktop with current tools for development, containers, and virtualization. That directly matches this goal."}
@@ -44,8 +42,7 @@ Fedora plays an important role in the Red Hat ecosystem. New technologies and ch
 
 If you want to compare Fedora with enterprise-oriented options, see [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux). If you are still comparing families of distros, [Choosing a Linux Distribution](https://labex.io/lesson/choosing-a-linux-distribution) gives a broader overview.
 
-:::single-choice{#explain-fedora-upstream-role}
-What does Fedora's upstream relationship with RHEL mean?
+:::single-choice{#explain-fedora-upstream-role} What does Fedora's upstream relationship with RHEL mean?
 
 ::option[RHEL releases are copied unchanged into Fedora afterward]{#rhel-copied-to-fedora explanation="This reverses the relationship. Fedora moves faster and serves as an upstream source rather than a later copy of RHEL."}
 ::option[Fedora and RHEL always ship identical software versions]{#identical-software-versions explanation="The distributions have different release goals and schedules. RHEL selects and stabilizes technology rather than matching every Fedora version."}
@@ -58,8 +55,7 @@ Fedora follows a regular release cycle, with two major releases in most years an
 
 That makes Fedora a good fit for users who want up-to-date software but still want an organized, mainstream Linux distribution rather than a more manual rolling-release system.
 
-:::single-choice{#plan-fedora-upgrades}
-What maintenance should a Fedora user expect from its release model?
+:::single-choice{#plan-fedora-upgrades} What maintenance should a Fedora user expect from its release model?
 
 ::option[No version upgrades for the lifetime of the computer]{#no-version-upgrades explanation="Fedora versions have a limited support period. Staying supported requires moving to newer releases over time."}
 ::option[Regular upgrades to remain on a supported release]{#regular-release-upgrades .correct explanation="Fedora releases move on a relatively fast schedule and receive updates for about thirteen months. Users should plan regular version upgrades."}
@@ -72,8 +68,7 @@ Fedora uses the RPM package format and the DNF package manager to install, updat
 
 Package management in Fedora is straightforward, and it fits naturally with the broader Red Hat family of systems.
 
-:::single-choice{#identify-fedora-package-tool}
-Which tool does Fedora use for higher-level package management?
+:::single-choice{#identify-fedora-package-tool} Which tool does Fedora use for higher-level package management?
 
 ::option[APT]{#fedora-apt-tool explanation="APT is associated with Debian-based distributions. Fedora belongs to the RPM package family and uses DNF."}
 ::option[DNF]{#fedora-dnf-tool .correct explanation="DNF installs, updates, and removes packages from Fedora repositories. Fedora packages use the RPM format underneath."}

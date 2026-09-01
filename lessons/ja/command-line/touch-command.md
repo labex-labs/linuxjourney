@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 これはプレースホルダーの作成に便利ですが、`touch` はファイルへテキストを追加しません。空でないファイルが必要なら、テキストエディタや内容を書き込むための別のコマンドを使ってください。
 
-:::single-choice{#create-several-empty-files}
-まだ存在しない場合に、`one`、`two`、`three` という 3 つの空ファイルを作るコマンドはどれですか？
+:::single-choice{#create-several-empty-files} まだ存在しない場合に、`one`、`two`、`three` という 3 つの空ファイルを作るコマンドはどれですか？
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="引用符により、空白を含む 1 つのファイル名になります。このコマンドが対象にするのは 3 つではなく 1 ファイルです。"}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` は空の通常ファイルではなくディレクトリを作ります。ここでは `touch` を使います。"}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 通常、`ls -l` の出力が表示するのは、アクセス時刻ではなく変更時刻です。
 
-:::single-choice{#touch-existing-file}
-すでに存在する `report.txt` に `touch report.txt` を実行するとどうなりますか？
+:::single-choice{#touch-existing-file} すでに存在する `report.txt` に `touch report.txt` を実行するとどうなりますか？
 
 ::option[内容を置き換えず、タイムスタンプが更新されます。]{#timestamps-only .correct explanation="既定の `touch` は既存ファイルのアクセス時刻と変更時刻を更新し、データを上書きしません。"}
 ::option[内容が削除され、空のファイルになります。]{#contents-deleted explanation="空ファイルを作るのはファイルが存在しない場合です。既存ファイルでは、タイムスタンプを更新しても内容を維持します。"}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-`notes.txt` の変更時刻だけを更新するコマンドはどれですか？
+:::single-choice{#change-modification-time-only} `notes.txt` の変更時刻だけを更新するコマンドはどれですか？
 
 ::option[`touch -a notes.txt`]{#access-only explanation="`-a` はアクセス時刻だけを変更し、ここで求める変更時刻は選びません。"}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="`-m` は変更対象を変更時刻に限定し、アクセス時刻を変えません。"}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 ここでは `file1.txt` がタイムスタンプを提供し、`file2.txt` が変更されます。`-t` オプションでも、短い数値形式で時刻を指定できます。
 
-:::single-choice{#copy-reference-timestamps}
-`source.txt` のタイムスタンプを `target.txt` へコピーするコマンドはどれですか？
+:::single-choice{#copy-reference-timestamps} `source.txt` のタイムスタンプを `target.txt` へコピーするコマンドはどれですか？
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="`-r` では次のオペランドが参照ファイル、最後のオペランドがタイムスタンプを更新するファイルです。"}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="ファイルの役割が逆です。`target.txt` を参照として、`source.txt` を更新します。"}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 `existing-file.txt` が存在しなければ、このコマンドは作成しません。新しいファイルを導入せずにタイムスタンプを更新したいスクリプトで役立ちます。
 
-:::single-choice{#update-without-creating}
-`status.log` が存在すれば更新し、存在しなければ作成しないコマンドはどれですか？
+:::single-choice{#update-without-creating} `status.log` が存在すれば更新し、存在しなければ作成しないコマンドはどれですか？
 
 ::option[`touch -a status.log`]{#touch-access explanation="`-a` はアクセス時刻を選びますが、ファイルがなければ作成されることがあります。必要な作成抑止は行いません。"}
 ::option[`touch -m status.log`]{#touch-modification explanation="`-m` は変更時刻を選びますが、存在しないファイルの作成を防ぎません。その条件には `-c` を使います。"}

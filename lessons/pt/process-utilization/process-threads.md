@@ -18,8 +18,7 @@ As threads de um mesmo processo compartilham recursos como o espaço de endereç
 
 Processos separados normalmente possuem espaços de endereços distintos e se comunicam por mecanismos explícitos entre processos. Nenhum dos projetos é automaticamente mais rápido ou seguro; a carga de trabalho e a implementação determinam as compensações.
 
-:::single-choice{#threads-shared-resource}
-Qual recurso normalmente é compartilhado pelas threads de um mesmo processo?
+:::single-choice{#threads-shared-resource} Qual recurso normalmente é compartilhado pelas threads de um mesmo processo?
 
 ::option[O espaço de endereços virtual do processo.]{#threads-shared-address-space .correct explanation="As threads podem acessar a mesma memória do processo, sujeitas à sincronização do programa."}
 ::option[Uma instalação separada do kernel para cada thread.]{#threads-separate-kernel explanation="Todas as threads usam o kernel do sistema em execução."}
@@ -30,8 +29,7 @@ Qual recurso normalmente é compartilhado pelas threads de um mesmo processo?
 
 O Linux representa cada thread como uma tarefa escalonável com seu próprio ID de thread. O ID do líder do grupo de threads normalmente é apresentado como o ID do processo, enquanto todos os membros compartilham um ID de grupo de threads. As ferramentas usam rótulos como `PID`, `TID`, `LWP` e `SPID`; verifique as definições dos campos da ferramenta, em vez de presumir que todos os rótulos signifiquem a mesma coisa.
 
-:::single-choice{#threads-own-scheduling-state}
-O que cada thread mantém independentemente?
+:::single-choice{#threads-own-scheduling-state} O que cada thread mantém independentemente?
 
 ::option[A tabela completa de arquivos abertos do processo.]{#threads-open-files-shared explanation="As threads de um processo normalmente compartilham os descritores de arquivos abertos."}
 ::option[O banco de dados de usuários de todo o sistema.]{#threads-user-database explanation="Os bancos de dados de contas não são estados privados das threads."}
@@ -54,8 +52,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 As listagens de threads são snapshots. Uma thread pode terminar ou mudar de estado imediatamente depois.
 
-:::single-choice{#threads-ps-one-process}
-Qual comando lista as threads pertencentes ao PID 1234 com campos explícitos?
+:::single-choice{#threads-ps-one-process} Qual comando lista as threads pertencentes ao PID 1234 com campos explícitos?
 
 ::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="Essa saída não solicita linhas por thread."}
 ::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="A opção `-L` solicita linhas de threads para o processo selecionado."}
@@ -66,8 +63,7 @@ Qual comando lista as threads pertencentes ao PID 1234 com campos explícitos?
 
 O uso elevado de CPU em uma thread pode ficar oculto por uma média de todo o processo. Combine amostras de CPU no nível das threads com logs da aplicação, rastreamentos de pilha e ferramentas de profiling. Não anexe depuradores nem envie sinais a tarefas de produção sem compreender os impactos sobre pausas, permissões e serviços.
 
-:::single-choice{#threads-snapshot-limit}
-Por que uma listagem de threads de `ps` não deve ser tratada como estado permanente?
+:::single-choice{#threads-snapshot-limit} Por que uma listagem de threads de `ps` não deve ser tratada como estado permanente?
 
 ::option[`ps` cria uma thread substituta para cada linha.]{#threads-ps-creates explanation="O comando observa as tarefas; ele não clona cada uma que lista."}
 ::option[Os IDs de threads são idênticos em todos os hosts Linux.]{#threads-identical-ids explanation="Os identificadores são atribuídos dentro de um sistema em execução e não são universais."}

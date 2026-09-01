@@ -25,8 +25,7 @@ $ systemctl list-timers --all | grep sysstat
 
 Verify that new activity files are being created in the distribution's sysstat data directory and review their permissions and retention policy.
 
-:::single-choice{#sar-installation-verification}
-What should you verify after installing `sysstat`?
+:::single-choice{#sar-installation-verification} What should you verify after installing `sysstat`?
 
 ::option[That collection is enabled and activity files are updating.]{#sar-collector-updating .correct explanation="Package installation and active periodic collection are separate conditions."}
 ::option[That every process has been restarted manually.]{#sar-restart-processes explanation="Installing a monitoring collector does not require restarting every workload."}
@@ -43,8 +42,7 @@ $ sar -u 1 3
 
 Other common reports include run queue and load (`-q`), memory (`-r`), paging (`-B`), block devices (`-d`), and per-CPU activity (`-P ALL`). Options and fields vary with sysstat version, so consult `sar --help` or the local manual.
 
-:::single-choice{#sar-one-second-count}
-What does `sar -u 1 3` request?
+:::single-choice{#sar-one-second-count} What does `sar -u 1 3` request?
 
 ::option[Three CPU reports at one-second intervals.]{#sar-three-cpu-samples .correct explanation="The first number is interval seconds and the second is report count."}
 ::option[One report covering exactly three days.]{#sar-three-days explanation="The operands specify sampling interval and count, not a date range."}
@@ -61,8 +59,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 Confirm the file's full date from report headers; a two-digit suffix commonly refers to a day of the month and can be ambiguous across retention periods. Saved binary formats can also require a compatible sysstat version.
 
-:::single-choice{#sar-historical-file-option}
-Which option tells `sar` to read a specified activity file?
+:::single-choice{#sar-historical-file-option} Which option tells `sar` to read a specified activity file?
 
 ::option[`-P`]{#sar-option-p explanation="This selects processor reporting rather than an input file."}
 ::option[`-q`]{#sar-option-q explanation="This selects queue and load reporting."}
@@ -75,8 +72,7 @@ Establish the incident time and timezone, then compare several signals across th
 
 Gaps can mean the host was down, the collector failed, or retention removed data. Monitor the monitoring pipeline itself so missing evidence is visible before an incident.
 
-:::single-choice{#sar-incident-method}
-How should historical `sar` data be used during an incident review?
+:::single-choice{#sar-incident-method} How should historical `sar` data be used during an incident review?
 
 ::option[Treat the highest single counter as the proven root cause.]{#sar-single-root explanation="One correlation does not establish causation."}
 ::option[Compare multiple metrics over the same verified time window.]{#sar-correlate-window .correct explanation="Aligned signals help distinguish hypotheses and connect system behavior to the incident."}

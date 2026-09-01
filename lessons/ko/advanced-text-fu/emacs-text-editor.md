@@ -33,8 +33,7 @@ $ emacs
 $ emacs -nw
 ```
 
-:::single-choice{#emacs-terminal-start}
-그래픽 창 시스템 대신 현재 터미널 안에서 Emacs를 시작하는 명령어는 무엇인가요?
+:::single-choice{#emacs-terminal-start} 그래픽 창 시스템 대신 현재 터미널 안에서 Emacs를 시작하는 명령어는 무엇인가요?
 
 ::option[`emacs -w`]{#emacs-window-option explanation="여기서 소개한 문서화된 no-window-system 형식이 아닙니다."}
 ::option[`emacs -nw`]{#emacs-no-window .correct explanation="`-nw` 옵션은 Emacs에 그래픽 창 시스템을 사용하지 않고 터미널에서 실행하라고 지시합니다."}
@@ -51,8 +50,7 @@ $ emacs notes.txt
 
 파일이 존재하면 Emacs는 버퍼로 읽습니다. 파일이 없으면 해당 경로와 연결된 새 버퍼를 만들며 파일은 성공적으로 저장한 뒤에만 생성됩니다. 파일 시스템 권한은 여전히 쓰기 성공 여부를 결정합니다.
 
-:::single-choice{#emacs-open-file-buffer}
-`notes.txt`가 아직 존재하지 않을 때 `emacs notes.txt`는 일반적으로 무엇을 하나요?
+:::single-choice{#emacs-open-file-buffer} `notes.txt`가 아직 존재하지 않을 때 `emacs notes.txt`는 일반적으로 무엇을 하나요?
 
 ::option[해당 경로와 연결된 새 버퍼를 엽니다.]{#emacs-new-file-buffer .correct explanation="버퍼에 `notes.txt`의 새 텍스트를 담을 수 있고 실제 파일은 저장할 때까지 만들어지지 않습니다."}
 ::option[편집기를 시작하기 전에 디스크에 파일을 만듭니다.]{#emacs-immediate-file explanation="Emacs는 저장에 성공할 때까지 디스크 파일을 만들지 않고 새 버퍼를 경로와 연결할 수 있습니다."}
@@ -69,8 +67,7 @@ Emacs는 서로 관련되어 있지만 구별되는 객체를 사용합니다.
 
 여러 버퍼가 보이지 않은 채 존재할 수 있고 두 창이 같은 버퍼를 표시할 수도 있습니다. 창을 닫는다고 반드시 버퍼가 종료되거나 파일이 삭제되지는 않습니다.
 
-:::single-choice{#emacs-buffer-definition}
-Emacs 버퍼란 무엇인가요?
+:::single-choice{#emacs-buffer-definition} Emacs 버퍼란 무엇인가요?
 
 ::option[최상위 그래픽 애플리케이션 프레임입니다.]{#emacs-buffer-frame explanation="프레임은 최상위 표시 객체이며 버퍼는 편집기 내용이나 상태를 보관합니다."}
 ::option[편집 가능한 텍스트나 다른 편집기 상태를 보관하는 객체입니다.]{#emacs-buffer-content .correct explanation="방문한 파일 내용과 파일이 아닌 여러 보기가 Emacs 버퍼에 존재합니다."}
@@ -87,8 +84,7 @@ Emacs 문서는 간결한 표기법을 사용합니다.
 
 사용하는 터미널이 일부 키를 가로채거나 다시 매핑할 수 있습니다. `Esc` 뒤에 키를 누르는 동작이 Meta 조합을 대신하는 경우가 많습니다.
 
-:::single-choice{#emacs-key-sequence-notation}
-`C-x C-f`로 표시된 Emacs 키 시퀀스는 어떻게 입력하나요?
+:::single-choice{#emacs-key-sequence-notation} `C-x C-f`로 표시된 Emacs 키 시퀀스는 어떻게 입력하나요?
 
 ::option[Control을 누른 채 `x`를 누르고, 다음으로 Control을 누른 채 `f`를 누릅니다.]{#emacs-control-x-f .correct explanation="각 `C-` 접두사는 뒤의 키에 적용되며 두 조합을 차례로 입력합니다."}
 ::option[버퍼에 문자 그대로 `C-x C-f`를 입력합니다.]{#emacs-literal-key-text explanation="표기법은 삽입할 텍스트가 아니라 Control 키 이벤트를 설명합니다."}
@@ -101,8 +97,7 @@ Emacs 안에서 `C-h t`를 입력하면 대화형 튜토리얼이 열립니다. 
 
 Emacs가 메뉴나 시작 버퍼를 표시하더라도 중요한 파일에서 실험하는 것보다 튜토리얼이 더 체계적인 시작점입니다.
 
-:::single-choice{#emacs-open-tutorial}
-Emacs 내장 튜토리얼을 여는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-open-tutorial} Emacs 내장 튜토리얼을 여는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x C-s`]{#emacs-save-buffer explanation="현재 버퍼를 저장하며 튜토리얼을 열지 않습니다."}
 ::option[`C-x C-c`]{#emacs-exit-sequence explanation="레슨을 시작하는 대신 Emacs 종료를 시작합니다."}

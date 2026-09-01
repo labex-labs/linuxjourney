@@ -18,8 +18,7 @@ Linux 进程会形成父子关系。Shell 通常先创建子进程，再安排�
 
 子进程获得逻辑上独立的进程状态。Linux 最初可以使用写时复制共享物理内存页面，只有某个进程修改页面时才复制。打开的文件描述符会被继承，并引用相同的底层打开文件描述，因此文件偏移等细节可能继续共享。
 
-:::single-choice{#process-creation-fork-result}
-成功的 `fork()` 会创建什么？
+:::single-choice{#process-creation-fork-result} 成功的 `fork()` 会创建什么？
 
 ::option[只在同一进程内创建替代程序。]{#process-creation-fork-replacement explanation="替换当前程序映像是 `exec` 操作的职责。"}
 ::option[拥有新 PID 的子进程。]{#process-creation-fork-child .correct explanation="`fork()` 会建立独立的子进程和父子关系。"}
@@ -39,8 +38,7 @@ Linux 进程会形成父子关系。Shell 通常先创建子进程，再安排�
 
 库和应用程序可以提供 `posix_spawn()` 等更高层接口，Linux 也有 `clone()` 等其他原语。熟悉的 fork-exec 模型仍然有用，但不是唯一可能的接口。
 
-:::single-choice{#process-creation-exec-pid}
-成功执行 `execve()` 后，进程的 PID 会发生什么？
+:::single-choice{#process-creation-exec-pid} 成功执行 `execve()` 后，进程的 PID 会发生什么？
 
 ::option[变得与父进程 PID 相同。]{#process-creation-exec-parent-pid explanation="父进程和子进程仍然保留不同的进程 ID。"}
 ::option[程序映像被替换，但 PID 保持不变。]{#process-creation-exec-same-pid .correct explanation="`execve()` 会转换调用进程，而不是创建另一个进程。"}
@@ -57,8 +55,7 @@ $ ps -o pid,ppid,stat,cmd
 
 如果 shell 启动 `ps`，该 shell 的 PID 通常会显示为 `ps` 进程的 `PPID`。时机很重要：短生命周期进程可能在单独的观察命令捕获之前就已经退出。
 
-:::single-choice{#process-creation-ppid}
-进程列表中的 `PPID` 表示什么？
+:::single-choice{#process-creation-ppid} 进程列表中的 `PPID` 表示什么？
 
 ::option[之前曾分配给该进程的 PID。]{#process-creation-previous-pid explanation="PID 可以重复使用，但 `PPID` 不记录标识符历史。"}
 ::option[进程的调度优先级标识符。]{#process-creation-priority-id explanation="调度优先级由 priority 或 nice 值等其他字段表示。"}
@@ -71,8 +68,7 @@ $ ps -o pid,ppid,stat,cmd
 
 父进程先于子进程退出时，子进程会被重新指定给适当的 subreaper，或其 PID 命名空间中的 init 进程。它不必仅因原父进程结束而终止。
 
-:::single-choice{#process-creation-pid-one}
-关于 PID 1，哪个说法准确？
+:::single-choice{#process-creation-pid-one} 关于 PID 1，哪个说法准确？
 
 ::option[它必须始终是可执行名称恰好为 `init` 的程序。]{#process-creation-pid-one-name explanation="具体实现可以是 `systemd`、其他 init 或容器特定程序。"}
 ::option[它是直接创建当前每个运行进程的父进程。]{#process-creation-pid-one-direct explanation="大多数进程是经过许多代中间父进程创建的。"}

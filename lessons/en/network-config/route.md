@@ -23,8 +23,7 @@ $ ip route get 192.168.2.25
 
 Also inspect policy rules and alternate tables when present. The route lookup is local evidence; it does not send traffic.
 
-:::single-choice{#route-get-before-change}
-Why run `ip route get DESTINATION` before a route change?
+:::single-choice{#route-get-before-change} Why run `ip route get DESTINATION` before a route change?
 
 ::option[It records the current local decision for comparison and rollback.]{#route-get-baseline .correct explanation="The selected interface, next hop, and source help define the intended change."}
 ::option[It permanently reserves the destination on every router.]{#route-get-reserves explanation="The command performs a local lookup and changes no remote state."}
@@ -41,8 +40,7 @@ $ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 The gateway must be reachable according to the relevant link or an explicit valid on-link design. `add` fails when an equivalent route already exists. `replace` creates or changes a route, which is useful for idempotent configuration but can overwrite working state; preview the exact target first.
 
-:::single-choice{#route-add-existing}
-What commonly happens if `ip route add` targets a route that already exists?
+:::single-choice{#route-add-existing} What commonly happens if `ip route add` targets a route that already exists?
 
 ::option[It silently deletes the old destination prefix.]{#route-add-deletes explanation="Add normally reports an existing-object error rather than replacing it."}
 ::option[It fails instead of replacing the existing route.]{#route-add-fails .correct explanation="Use a deliberate `replace` only after reviewing which entry will change."}
@@ -59,8 +57,7 @@ $ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 A destination-only deletion can match more broadly than intended or be ambiguous. Capture the original command needed to restore the route before removing it.
 
-:::single-choice{#route-delete-precision}
-Why include next hop and device when deleting a route?
+:::single-choice{#route-delete-precision} Why include next hop and device when deleting a route?
 
 ::option[To identify the intended entry more precisely.]{#route-delete-exact .correct explanation="Explicit attributes reduce the chance of removing a different route with the same prefix."}
 ::option[To delete the physical network adapter as well.]{#route-delete-adapter explanation="Route deletion does not remove the kernel link object."}
@@ -73,8 +70,7 @@ An `ip route` command changes current kernel state only. NetworkManager, systemd
 
 For a remote host, preserve an independent console and use a rollback that does not depend on the route being changed. Then verify route lookup, neighbor state, both traffic directions, and the real service.
 
-:::single-choice{#route-runtime-persistence}
-What can happen to a manually added route after a network-manager reload?
+:::single-choice{#route-runtime-persistence} What can happen to a manually added route after a network-manager reload?
 
 ::option[It becomes an immutable kernel feature forever.]{#route-manual-immutable explanation="Runtime routes can be removed or replaced."}
 ::option[It automatically appears on every host in the subnet.]{#route-manual-all-hosts explanation="The command changes only the current network namespace."}

@@ -22,8 +22,7 @@ $ man ls
 
 マニュアルページには通常、概要、説明、オプション、関連ファイル、相互参照が含まれますが、正確な構成はページごとに異なります。
 
-:::single-choice{#open-ls-manual}
-インストール済みの `ls` マニュアルページを開くコマンドはどれですか？
+:::single-choice{#open-ls-manual} インストール済みの `ls` マニュアルページを開くコマンドはどれですか？
 
 ::option[`help ls`]{#help-ls explanation="Bash の `help` はシェル組み込みコマンドを説明し、通常は外部の `ls` マニュアルページを開きません。"}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` はマニュアルデータベースで `ls` というトピックを検索し、一致するページを表示します。"}
@@ -41,16 +40,14 @@ $ man ls
 
 ページャーはシステムや環境によって異なるため、正確なキーが常に同じとは限りません。上記は一般的な `less` 設定に適用されます。
 
-:::single-choice{#search-man-page}
-`less` で man ページを開いているとき、`--recursive` の前方検索を始める操作はどれですか？
+:::single-choice{#search-man-page} `less` で man ページを開いているとき、`--recursive` の前方検索を始める操作はどれですか？
 
 ::option[`?--recursive` と入力して Enter を押す。]{#backward-man-search explanation="疑問符は後方検索を始め、要求とは反対方向を探します。"}
 ::option[`/--recursive` と入力して Enter を押す。]{#forward-man-search .correct explanation="`less` ではスラッシュが前方検索を始め、Enter でパターンを確定します。"}
 ::option[`n--recursive` と入力して Enter を押す。]{#repeat-man-search explanation="`n` は既存の検索を繰り返すもので、この形式で新しい検索パターンは入力しません。"}
 :::
 
-:::single-choice{#leave-man-page}
-通常のページャーで man ページを開いているとき、シェルへ戻るキーはどれですか？
+:::single-choice{#leave-man-page} 通常のページャーで man ページを開いているとき、シェルへ戻るキーはどれですか？
 
 ::option[`G`]{#man-page-end explanation="大文字の `G` は `less` でページ末尾へ移動しますが、ページャーを閉じません。"}
 ::option[`n`]{#next-man-match explanation="`n` は直近の検索を繰り返し、マニュアルページを開いたままにします。"}
@@ -76,8 +73,7 @@ $ man 1 passwd
 
 最初のコマンドはセクション 5 の `passwd` ファイル形式ページ、2 番目はセクション 1 のユーザーコマンドページを開きます。`passwd(5)` のような参照も同じ `topic(section)` 表記を使います。
 
-:::single-choice{#open-passwd-file-format}
-`passwd` ファイル形式を説明するセクション 5 のページを開くコマンドはどれですか？
+:::single-choice{#open-passwd-file-format} `passwd` ファイル形式を説明するセクション 5 のページを開くコマンドはどれですか？
 
 ::option[`man passwd 5`]{#section-after-topic explanation="このコマンド形式ではセクション指定をトピックより前に置きます。この順序では `passwd(5)` を要求できません。"}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="セクション `5` を `passwd` より前に置くと、ファイル形式ページを明示的に選びます。"}
@@ -93,8 +89,7 @@ $ man 1 passwd
 - 外部プログラムが慣例に対応する場合は `NAME --help` を試す
 - ディストリビューションに別の文書パッケージがあるか確認する
 
-:::single-choice{#missing-builtin-manual}
-`type cd` が `cd` は Bash 組み込みコマンドだと報告し、個別の man ページがありません。次に試すコマンドはどれですか？
+:::single-choice{#missing-builtin-manual} `type cd` が `cd` は Bash 組み込みコマンドだと報告し、個別の man ページがありません。次に試すコマンドはどれですか？
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` はマニュアルデータベースの項目を要約し、組み込みコマンド用の欠けた個別ページは提供できません。"}
 ::option[`file cd`]{#file-cd-name explanation="`file` はファイルシステムオブジェクトを分類しますが、ここで `cd` はパスではなくシェル組み込みコマンドとして解決されています。"}

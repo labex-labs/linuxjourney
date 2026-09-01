@@ -22,8 +22,7 @@ $ vmstat 1
 
 通常、最初のデータ行は起動後の平均を示し、それ以降の行は各区間を示します。代表的な期間を取得したら `Ctrl-C` で停止します。単位や利用できるフィールドは実装によって異なるため、`vmstat --unit` とローカルのマニュアルを確認してください。
 
-:::single-choice{#vmstat-interval-rows}
-`vmstat 1` で1秒ごとの変化を観測するのに最適なのはどの行ですか？
+:::single-choice{#vmstat-interval-rows} `vmstat 1` で1秒ごとの変化を観測するのに最適なのはどの行ですか？
 
 ::option[最初のレポートより後の行。]{#vmstat-later-rows .correct explanation="後続の行は、累積期間ではなく指定した各区間を表します。"}
 ::option[最初のデータ行より上にある見出しだけ。]{#vmstat-headings explanation="見出しはフィールドを定義しますが、活動のサンプルは含みません。"}
@@ -42,8 +41,7 @@ $ free -h
 
 再利用可能なキャッシュを新しい割り当てに充てられるため、一般に `available` の推定値は `free` だけを見るより有用です。
 
-:::single-choice{#vmstat-free-memory}
-Linux で `free` の値が小さくても正常な場合があるのはなぜですか？
+:::single-choice{#vmstat-free-memory} Linux で `free` の値が小さくても正常な場合があるのはなぜですか？
 
 ::option[この値は常に物理 RAM の全量を除外するから。]{#vmstat-excludes-ram explanation="これはメモリのフィールドですが、正確な単位は確認する必要があります。"}
 ::option[カーネルが未使用メモリを再利用可能なキャッシュに使えるから。]{#vmstat-reclaimable-cache .correct explanation="キャッシュされたメモリは、アプリケーションが必要とするときに再利用できる場合があります。"}
@@ -54,8 +52,7 @@ Linux で `free` の値が小さくても正常な場合があるのはなぜで
 
 `si` と `so` は、スワップインとスワップアウトの速度を示します。遅延やメモリ回収活動を伴う継続的なページングは圧迫を示すことがありますが、スワップ使用量（`swpd`）がゼロでないだけでは、現在問題があるとは断定できません。`bi` と `bo` はブロック入力と出力の速度を報告し、スワップ通信だけに限定されません。
 
-:::single-choice{#vmstat-swap-pressure}
-現在のメモリ圧迫という診断をよりよく裏付ける証拠はどれですか？
+:::single-choice{#vmstat-swap-pressure} 現在のメモリ圧迫という診断をよりよく裏付ける証拠はどれですか？
 
 ::option[ほかに観測結果がない状態での、ゼロでない `swpd` 値。]{#vmstat-swpd-alone explanation="以前の圧迫後もページがスワップに残る場合があるため、その量だけでは不十分です。"}
 ::option[メモリ回収活動やワークロード遅延と相関する、継続的なページング。]{#vmstat-correlated-pressure .correct explanation="繰り返し得られた相関のある証拠によって、メモリの挙動と現在の影響を結び付けられます。"}
@@ -66,8 +63,7 @@ Linux で `free` の値が小さくても正常な場合があるのはなぜで
 
 CPU 列には一般に、ユーザー（`us`）、システム（`sy`）、アイドル（`id`）、I/O 待ち（`wa`）、スティール（`st`）の割合が含まれます。システム列には、1秒あたりの割り込み（`in`）とコンテキストスイッチ（`cs`）があります。急増はベースラインと比較して解釈してください。コンテキストスイッチ率が高くても、ワークロードによっては正常です。
 
-:::single-choice{#vmstat-r-column}
-プロセスフィールド `r` は何を表しますか？
+:::single-choice{#vmstat-r-column} プロセスフィールド `r` は何を表しますか？
 
 ::option[読み取り専用でマウントされたファイルシステム。]{#vmstat-readonly explanation="ファイルシステムのマウントフラグは、このプロセスフィールドには表れません。"}
 ::option[シェルを利用中のリモートユーザー。]{#vmstat-remote-users explanation="ログインセッションは別のツールで報告されます。"}

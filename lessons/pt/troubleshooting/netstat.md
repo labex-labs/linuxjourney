@@ -22,8 +22,7 @@ $ sudo ss -lntup
 
 `-l` seleciona listeners, `-n` evita resolução de nomes, `-t` e `-u` escolhem TCP e UDP, e `-p` solicita processos. UDP não tem conexão, portanto sockets vinculados não realizam handshake `LISTEN` como TCP.
 
-:::single-choice{#netstat-ss-numeric}
-Por que usar `-n` ao diagnosticar sockets?
+:::single-choice{#netstat-ss-numeric} Por que usar `-n` ao diagnosticar sockets?
 
 ::option[Ele cria um namespace de rede.]{#netstat-new-namespace explanation="A opção controla a resolução de nomes na saída."}
 ::option[Ele impede consultas de nomes de endereços e portas.]{#netstat-numeric-output .correct explanation="A saída numérica evita confundir mapeamento de serviço com identidade observada."}
@@ -34,8 +33,7 @@ Por que usar `-n` ao diagnosticar sockets?
 
 Um endpoint local combina endereço, protocolo de transporte e porta. Uma conexão TCP é distinguida por protocolo e endereços e portas de origem e destino. `/etc/services` mapeia nomes convencionais, mas não prova qual processo possui uma porta nem qual protocolo de aplicação fala.
 
-:::single-choice{#netstat-services-file-limit}
-O que uma entrada `https 443/tcp` em `/etc/services` estabelece?
+:::single-choice{#netstat-services-file-limit} O que uma entrada `https 443/tcp` em `/etc/services` estabelece?
 
 ::option[Que há um servidor HTTPS saudável ouvindo.]{#netstat-healthy-listener explanation="Um banco estático não prova estado de runtime."}
 ::option[O mapeamento convencional de nome para essa porta.]{#netstat-conventional-name .correct explanation="Proprietário e protocolo real exigem inspeção e teste."}
@@ -53,8 +51,7 @@ Estados comuns:
 
 Populações grandes ou crescentes de `CLOSE-WAIT` costumam apontar para o comportamento de limpeza da aplicação local. `TIME-WAIT` é um estado normal do protocolo; a quantidade e o impacto sobre os recursos determinam se há uma preocupação operacional.
 
-:::single-choice{#netstat-close-wait-owner}
-Qual lado ainda precisa fechar um socket em `CLOSE-WAIT`?
+:::single-choice{#netstat-close-wait-owner} Qual lado ainda precisa fechar um socket em `CLOSE-WAIT`?
 
 ::option[Todos os roteadores da Internet.]{#netstat-all-routers-close explanation="Roteadores não possuem o socket do endpoint."}
 ::option[O servidor DNS autoritativo.]{#netstat-dns-close explanation="DNS não participa do fechamento TCP local."}
@@ -67,8 +64,7 @@ O significado de `Recv-Q` e `Send-Q` depende do estado e do protocolo. Em socket
 
 Um snapshot não demonstra vazamento ou gargalo. Observe ao longo do tempo e correlacione processo, latência, retransmissões e limites.
 
-:::single-choice{#netstat-queue-snapshot}
-Por que um único snapshot de fila grande é insuficiente?
+:::single-choice{#netstat-queue-snapshot} Por que um único snapshot de fila grande é insuficiente?
 
 ::option[O Linux nunca armazena dados em filas.]{#netstat-no-queues explanation="A rede do kernel depende de filas de envio e recebimento."}
 ::option[Todo valor de fila é uma permissão de arquivo.]{#netstat-queue-permission explanation="Os campos descrevem estado de rede."}
@@ -86,8 +82,7 @@ $ ss -ltn 'sport = :443'
 
 Um listener prova prontidão local do transporte, não alcance remoto nem saúde do aplicativo. Continue com testes de rota, firewall, pacotes, TLS e aplicação.
 
-:::single-choice{#netstat-listener-limit}
-O que um listener TCP na porta 443 não prova?
+:::single-choice{#netstat-listener-limit} O que um listener TCP na porta 443 não prova?
 
 ::option[Que um socket local aceitou bind e listen.]{#netstat-listen-local explanation="Esse é exatamente o estado mostrado."}
 ::option[Que clientes remotos concluem uma solicitação HTTPS válida.]{#netstat-not-remote-proof .correct explanation="Caminho, TLS e aplicação continuam sem teste."}

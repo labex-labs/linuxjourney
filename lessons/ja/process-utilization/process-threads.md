@@ -18,8 +18,7 @@ meta_keywords: "Linux スレッド，プロセススレッド，ps スレッド�
 
 別々のプロセスは通常、異なるアドレス空間を持ち、明示的なプロセス間通信機構を通じて通信します。どちらの設計が自動的に高速または安全ということはなく、ワークロードと実装によってトレードオフが決まります。
 
-:::single-choice{#threads-shared-resource}
-同じプロセス内のスレッドが通常共有する資源はどれですか？
+:::single-choice{#threads-shared-resource} 同じプロセス内のスレッドが通常共有する資源はどれですか？
 
 ::option[プロセスの仮想アドレス空間。]{#threads-shared-address-space .correct explanation="プログラムの同期に従い、スレッドは同じプロセスメモリへアクセスできます。"}
 ::option[スレッドごとに独立したカーネルのインストール。]{#threads-separate-kernel explanation="すべてのスレッドは実行中のシステムカーネルを使います。"}
@@ -30,8 +29,7 @@ meta_keywords: "Linux スレッド，プロセススレッド，ps スレッド�
 
 Linux は各スレッドを、固有のスレッド ID を持つスケジュール可能なタスクとして表します。スレッドグループリーダーの ID は一般にプロセス ID として表示され、全メンバーが一つのスレッドグループ ID を共有します。ツールは `PID`、`TID`、`LWP`、`SPID` などのラベルを使うため、すべて同じ意味だと考えず、各ツールのフィールド定義を確認してください。
 
-:::single-choice{#threads-own-scheduling-state}
-各スレッドが独立して維持するものは何ですか？
+:::single-choice{#threads-own-scheduling-state} 各スレッドが独立して維持するものは何ですか？
 
 ::option[プロセスの完全なオープンファイルテーブル。]{#threads-open-files-shared explanation="一つのプロセス内のスレッドは通常、開いているファイル記述子を共有します。"}
 ::option[マシン全体のユーザーデータベース。]{#threads-user-database explanation="アカウントデータベースはスレッド固有の状態ではありません。"}
@@ -54,8 +52,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 スレッド一覧はスナップショットです。直後にスレッドが終了したり状態を変えたりする場合があります。
 
-:::single-choice{#threads-ps-one-process}
-PID 1234 に属するスレッドを明示的なフィールドで一覧表示するコマンドはどれですか？
+:::single-choice{#threads-ps-one-process} PID 1234 に属するスレッドを明示的なフィールドで一覧表示するコマンドはどれですか？
 
 ::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="この出力ではスレッドごとの行を要求していません。"}
 ::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="`-L` オプションは、選択したプロセスのスレッド行を要求します。"}
@@ -66,8 +63,7 @@ PID 1234 に属するスレッドを明示的なフィールドで一覧表示�
 
 一つのスレッドの高い CPU 使用率が、プロセス全体の平均に隠れる場合があります。スレッド単位の CPU サンプルを、アプリケーションログ、スタックトレース、プロファイリングツールと組み合わせてください。停止、権限、サービスへの影響を理解せず、本番タスクへデバッガーを接続したりシグナルを送ったりしてはいけません。
 
-:::single-choice{#threads-snapshot-limit}
-`ps` のスレッド一覧を永続的な状態として扱うべきでないのはなぜですか？
+:::single-choice{#threads-snapshot-limit} `ps` のスレッド一覧を永続的な状態として扱うべきでないのはなぜですか？
 
 ::option[`ps` が各行について代替スレッドを作成するから。]{#threads-ps-creates explanation="このコマンドはタスクを観察し、一覧にした各タスクを複製しません。"}
 ::option[スレッド ID がすべての Linux ホストで同一だから。]{#threads-identical-ids explanation="識別子は稼働中システム内で割り当てられ、普遍的ではありません。"}

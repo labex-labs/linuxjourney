@@ -23,8 +23,7 @@ $ ip neighbor show dev enp1s0
 
 Ein Eintrag enthält eine IP-Adresse, Verbindungsschichtadresse, ein Gerät und einen Erreichbarkeitszustand. Die Tabelle kann nach dem Bootvorgang leer sein und sich füllen, wenn Datenverkehr lokale nächste Hops benötigt.
 
-:::single-choice{#arp-command-modern-view}
-Welcher Befehl zeigt den Zustand der modernen Linux-Nachbartabelle an?
+:::single-choice{#arp-command-modern-view} Welcher Befehl zeigt den Zustand der modernen Linux-Nachbartabelle an?
 
 ::option[`pwd neighbor`]{#arp-command-pwd explanation="Pwd meldet das Arbeitsverzeichnis der Shell."}
 ::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="Er meldet sowohl aus IPv4-ARP abgeleitete als auch IPv6-Neighbor-Discovery-Einträge."}
@@ -37,8 +36,7 @@ Wenn eine direkt erreichbare IPv4-Zuordnung fehlt, sendet ein Host eine ARP-Anfr
 
 Bei einem entfernten IP-Ziel löst der Host die Adresse des ausgewählten Gateways auf und nicht die MAC-Adresse des entfernten Hosts.
 
-:::single-choice{#arp-command-remote-target}
-Welchen IPv4-Nachbarn löst ein Host für ein nicht direkt erreichbares Ziel auf?
+:::single-choice{#arp-command-remote-target} Welchen IPv4-Nachbarn löst ein Host für ein nicht direkt erreichbares Ziel auf?
 
 ::option[Den endgültigen entfernten Server über alle Router hinweg.]{#arp-command-final-server explanation="Seine MAC-Adresse besitzt auf der Quellverbindung keine Bedeutung."}
 ::option[Jeden in der Resolverkonfiguration aufgeführten DNS-Server.]{#arp-command-all-dns explanation="Nachbarauflösung folgt der ausgewählten Route und nicht der Resolverliste."}
@@ -49,8 +47,7 @@ Welchen IPv4-Nachbarn löst ein Host für ein nicht direkt erreichbares Ziel auf
 
 Häufige Zustände sind `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE` und `FAILED`. `STALE` bedeutet, dass die aktuelle Erreichbarkeitsbestätigung abgelaufen ist; die zwischengespeicherte Adresse kann weiterhin verwendet werden, während der Stack bei Bedarf prüft. `FAILED` zeigt an, dass Auflösung oder Erreichbarkeitserkennung nicht erfolgreich war. Ursachen können jedoch Verbindung, VLAN, Adresse, Route, Filterung oder ein ausgeschalteter Kommunikationspartner sein.
 
-:::single-choice{#arp-command-stale-state}
-Bedeutet `STALE`, dass der Nachbar nachweislich nicht erreichbar ist?
+:::single-choice{#arp-command-stale-state} Bedeutet `STALE`, dass der Nachbar nachweislich nicht erreichbar ist?
 
 ::option[Nein; es fehlt eine aktuelle Bestätigung, und bei Verwendung kann geprüft werden.]{#arp-command-stale-probe .correct explanation="Der Zustand entspricht nicht `FAILED`."}
 ::option[Ja, und der Eintrag kann nie wieder verwendet werden.]{#arp-command-stale-dead explanation="Veraltete Einträge bleiben Kandidaten und können nach Erreichbarkeitsprüfungen ihren Zustand wechseln."}
@@ -63,8 +60,7 @@ Statische Einträge und das Leeren des Caches verändern den Zustand und können
 
 ARP besitzt keine eingebaute Authentifizierung. Doppelte Adressen oder gefälschte Antworten können deshalb Zuordnungen vergiften. Schutzfunktionen von Switches, Segmentierung, Überwachung und Authentifizierung auf höheren Schichten helfen, die Auswirkungen zu begrenzen.
 
-:::single-choice{#arp-command-flush-first}
-Warum solltest du nicht als ersten Diagnoseschritt die gesamte Nachbartabelle leeren?
+:::single-choice{#arp-command-flush-first} Warum solltest du nicht als ersten Diagnoseschritt die gesamte Nachbartabelle leeren?
 
 ::option[Nachbareinträge werden nur auf DNS-Rootservern gespeichert.]{#arp-command-neighbors-dns explanation="Sie werden vom lokalen Netzwerkstack verwaltet."}
 ::option[Das Leeren entfernt die Schnittstellenhardware dauerhaft.]{#arp-command-flush-hardware explanation="Es entfernt Cacheeinträge und keine physischen Geräte."}

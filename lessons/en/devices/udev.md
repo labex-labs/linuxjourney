@@ -24,8 +24,7 @@ When a device is added, changed, moved, or removed, udev can:
 
 The kernel remains responsible for the actual device and its driver. Deleting a node from `/dev` does not physically remove hardware, and manually creating a node with `mknod` does not make unsupported hardware exist or bind a driver.
 
-:::single-choice{#udev-kernel-event-input}
-What normally triggers udev processing for a device change?
+:::single-choice{#udev-kernel-event-input} What normally triggers udev processing for a device change?
 
 ::option[A package repository refresh performed by APT.]{#udev-apt-refresh explanation="Package metadata updates are unrelated to live device event processing."}
 ::option[A user renaming every file under `/dev` manually.]{#udev-manual-renaming explanation="Dynamic policy is driven by kernel events and rules, not bulk manual renaming."}
@@ -44,8 +43,7 @@ Files are processed in lexical filename order, with same-named files in higher-p
 
 A rule can affect every matching device, so test scope carefully. Do not edit packaged rules directly when a local override or supplementary rule is appropriate.
 
-:::single-choice{#udev-local-rules-directory}
-Which directory is intended for persistent local administrator udev rules?
+:::single-choice{#udev-local-rules-directory} Which directory is intended for persistent local administrator udev rules?
 
 ::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="Procfs does not provide the persistent local rule directory."}
 ::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="Local policy belongs under `/etc`, separate from package-managed vendor rules."}
@@ -62,8 +60,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 Use a node that exists on the current system. `udevadm info --attribute-walk --name=...` can display attributes along the sysfs parent chain, which helps construct a rule. `udevadm monitor --kernel --udev --property` observes kernel and processed events; it may expose device identifiers, so handle captured output appropriately.
 
-:::single-choice{#udev-info-purpose}
-What does `udevadm info --query=all --name=/dev/sda` request?
+:::single-choice{#udev-info-purpose} What does `udevadm info --query=all --name=/dev/sda` request?
 
 ::option[A destructive rewrite of the disk's partition table.]{#udev-info-partition-write explanation="The query is an inspection operation and does not format or repartition storage."}
 ::option[Installation of a missing kernel driver from the internet.]{#udev-info-install-driver explanation="Udevadm inspection does not act as a package downloader."}
@@ -76,8 +73,7 @@ Reloading rule files affects future event processing; it does not automatically 
 
 Back up local rules, validate syntax, observe one known test device, and keep a recovery path before changing permissions or names. Avoid long-running work directly in udev event processing; delegate it to an appropriate service.
 
-:::single-choice{#udev-reload-effect}
-What does reloading udev rules primarily change?
+:::single-choice{#udev-reload-effect} What does reloading udev rules primarily change?
 
 ::option[How subsequent matching device events are processed.]{#udev-future-events .correct explanation="Reloading updates the in-memory rules; an event must still occur or be deliberately triggered for a device to be reevaluated."}
 ::option[The physical wiring of every attached device.]{#udev-physical-wiring explanation="Software rule loading cannot change hardware connections."}

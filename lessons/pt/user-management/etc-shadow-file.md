@@ -18,8 +18,7 @@ As senhas não são armazenadas de forma reversível, “criptografadas” para 
 
 Os detalhes exatos de propriedade e permissão variam, mas o acesso costuma ser limitado ao root e a componentes do sistema com autorização restrita. Não imprima, copie, registre nem compartilhe o conteúdo do shadow apenas para inspecionar o estado de uma conta.
 
-:::single-choice{#shadow-restricted-reason}
-Por que os dados locais do shadow normalmente são protegidos contra o acesso geral de leitura?
+:::single-choice{#shadow-restricted-reason} Por que os dados locais do shadow normalmente são protegidos contra o acesso geral de leitura?
 
 ::option[O arquivo contém a senha atual não criptografada de cada usuário.]{#shadow-plaintext-passwords explanation="Entradas shadow adequadas armazenam hashes unidirecionais de senhas ou marcadores especiais, não senhas em texto simples recuperável."}
 ::option[Hashes de senhas podem sofrer ataques offline caso sejam revelados.]{#shadow-offline-guessing .correct explanation="Um invasor pode testar tentativas de senha contra hashes roubados sem interagir com o serviço de login."}
@@ -48,8 +47,7 @@ Os campos são:
 
 Campos vazios e valores numéricos especiais têm significados definidos que podem variar conforme o campo e a ferramenta. Use comandos de gerenciamento de contas em vez de editar os valores visualmente.
 
-:::single-choice{#shadow-account-expiration-field}
-Qual campo do shadow armazena a data de expiração da conta em dias desde 1970-01-01?
+:::single-choice{#shadow-account-expiration-field} Qual campo do shadow armazena a data de expiração da conta em dias desde 1970-01-01?
 
 ::option[Campo 3]{#shadow-field-three explanation="O campo 3 registra a data da última alteração da senha, não a expiração da conta."}
 ::option[Campo 8]{#shadow-field-eight .correct explanation="O oitavo campo é a contagem absoluta de dias para a expiração da conta."}
@@ -62,8 +60,7 @@ Um hash válido no campo 2 permite a verificação da senha Unix local. Um valor
 
 Esses marcadores descrevem o caminho da senha local, não todos os métodos de autenticação possíveis. Chaves públicas SSH, certificados, tokens e credenciais específicas de aplicações podem continuar disponíveis se não forem restringidos separadamente. A expiração da conta no campo 8 também é distinta do bloqueio da senha.
 
-:::single-choice{#shadow-password-lock-scope}
-O que você pode concluir com segurança de um campo de senha do shadow iniciado por `!`?
+:::single-choice{#shadow-password-lock-scope} O que você pode concluir com segurança de um campo de senha do shadow iniciado por `!`?
 
 ::option[O hash de senha Unix armazenado foi inutilizado para a verificação normal de senhas.]{#shadow-password-locked .correct explanation="Adicionar `!` antes do hash impede que ele corresponda a uma senha fornecida pelo caminho de senha do shadow."}
 ::option[Todos os métodos de login possíveis para a conta estão desabilitados.]{#shadow-all-login-disabled explanation="Outros métodos de autenticação podem ser independentes, portanto o marcador de senha sozinho não comprova o bloqueio completo da conta."}
@@ -76,8 +73,7 @@ Os campos 3 a 7 dizem respeito à expiração da senha: quando ela foi alterada 
 
 Por exemplo, uma idade máxima de senha de 90 dias não é o mesmo que uma data de expiração da conta. A primeira se desloca em relação à última alteração da senha; a segunda é uma data fixa até que um administrador a modifique.
 
-:::single-choice{#shadow-max-age-versus-expire}
-Qual é a diferença entre os campos 5 e 8 do shadow?
+:::single-choice{#shadow-max-age-versus-expire} Qual é a diferença entre os campos 5 e 8 do shadow?
 
 ::option[O campo 5 armazena o nome de usuário; o campo 8 armazena o shell de login.]{#shadow-username-shell explanation="O nome de usuário fica no campo 1, e o shell de login é registrado em `/etc/passwd`, não no registro shadow."}
 ::option[O campo 5 armazena um hash de senha; o campo 8 armazena seu salt.]{#shadow-hash-salt explanation="A codificação do hash de senha fica no campo 2, e os campos de expiração não armazenam seu salt separadamente."}
@@ -97,8 +93,7 @@ $ sudo chage -l alice
 
 Use `passwd`, `chage`, `usermod` e ferramentas de contas relacionadas para realizar alterações. Se o reparo manual do banco de dados shadow local for inevitável, `vipw -s` oferece bloqueio; valide os bancos de dados de contas com `pwck`. Mantenha uma sessão de recuperação antes de alterar a autenticação remotamente.
 
-:::single-choice{#shadow-list-aging-policy}
-Qual comando foi projetado para listar informações legíveis sobre a expiração da senha da conta local `alice`?
+:::single-choice{#shadow-list-aging-policy} Qual comando foi projetado para listar informações legíveis sobre a expiração da senha da conta local `alice`?
 
 ::option[`cat /etc/shadow`]{#shadow-cat-entire-file explanation="Esse comando expõe todos os registros shadow locais e mais informações confidenciais do que a tarefa exige."}
 ::option[`passwd -d alice`]{#shadow-passwd-delete explanation="A operação `-d` remove o hash da senha e altera um estado sensível à segurança, em vez de apenas listar informações."}

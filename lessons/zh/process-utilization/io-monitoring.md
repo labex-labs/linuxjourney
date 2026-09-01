@@ -22,8 +22,7 @@ $ iostat -xz 1
 
 在常见实现中，第一份报告包含系统启动以来的平均值，后续报告则覆盖各自的采样间隔。`-x` 选项增加扩展字段，`-z` 则隐藏无活动设备。应等待多个间隔，以捕获正常和异常时段。
 
-:::single-choice{#iostat-first-report}
-第一份 `iostat` 报告通常表示什么？
+:::single-choice{#iostat-first-report} 第一份 `iostat` 报告通常表示什么？
 
 ::option[仅表示命令执行最后一秒内的操作。]{#iostat-final-second explanation="这并不是初始累计报告的含义。"}
 ::option[系统启动以来的活动平均值。]{#iostat-since-boot .correct explanation="后续报告通常针对各个采样间隔，因此第一份报告需要单独解读。"}
@@ -34,8 +33,7 @@ $ iostat -xz 1
 
 CPU 部分通常包括用户时间（`%user`）、系统时间（`%system`）、空闲时间（`%idle`）、I/O 等待时间（`%iowait`）和虚拟机窃取时间（`%steal`）。I/O 等待是系统存在尚未完成的 I/O 请求时 CPU 的空闲时间，并不是磁盘繁忙程度的百分比。
 
-:::single-choice{#iostat-iowait-meaning}
-`%iowait` 描述什么？
+:::single-choice{#iostat-iowait-meaning} `%iowait` 描述什么？
 
 ::option[磁盘容量已经占用的百分比。]{#iostat-capacity explanation="文件系统容量和 CPU 时间是两种不同指标。"}
 ::option[存在未完成 I/O 请求时 CPU 的空闲时间。]{#iostat-iowait-cpu .correct explanation="它是 CPU 时间类别，无法单独指出具体设备。"}
@@ -53,8 +51,7 @@ CPU 部分通常包括用户时间（`%user`）、系统时间（`%system`）、
 
 对于简单的串行设备，较高的 `%util` 可能表示已经饱和；但对于并行存储、阵列或虚拟设备，它不能直接换算为性能容量。应把延迟与设备设计、工作负载模式和服务目标进行比较。
 
-:::single-choice{#iostat-await-purpose}
-哪个字段与平均 I/O 请求延迟最直接相关？
+:::single-choice{#iostat-await-purpose} 哪个字段与平均 I/O 请求延迟最直接相关？
 
 ::option[设备名称。]{#iostat-device-name explanation="名称用于标识设备，并不衡量请求持续时间。"}
 ::option[`await`]{#iostat-await .correct explanation="`await` 反映请求的平均耗时，其中包括排队和服务时间。"}
@@ -72,8 +69,7 @@ $ findmnt
 
 然后将 `iostat` 的各个间隔与应用响应时间、数据库或文件系统指标以及进程级 I/O 相互关联。设备映射器、RAID、容器和网络后端存储都可能增加额外层次，需要使用各自对应的工具检查。
 
-:::single-choice{#iostat-high-util-conclusion}
-看到设备的 `%util` 较高后，应该怎么做？
+:::single-choice{#iostat-high-util-conclusion} 看到设备的 `%util` 较高后，应该怎么做？
 
 ::option[假定所有文件系统都没有可用空间。]{#iostat-assume-full explanation="繁忙时间并不表示文件系统容量。"}
 ::option[在识别挂载的工作负载前就删除文件。]{#iostat-delete-first explanation="删除是会改变状态的操作，与证明 I/O 瓶颈无关。"}

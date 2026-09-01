@@ -24,8 +24,7 @@ Nach dieser Definition wird `ll` als Befehl zu `ls -la` erweitert. Die Anführun
 
 Aliase eignen sich am besten für einfache Ersetzungen am Befehlsanfang. Verwende eine Shell-Funktion, wenn du Argumente strukturierter verarbeiten musst.
 
-:::single-choice{#define-ll-alias}
-Welcher Bash-Befehl definiert `ll` in der aktuellen Shell als Alias für `ls -la`?
+:::single-choice{#define-ll-alias} Welcher Bash-Befehl definiert `ll` in der aktuellen Shell als Alias für `ls -la`?
 
 ::option[`alias ll = 'ls -la'`]{#alias-spaces explanation="Leerzeichen um `=` teilen die Definition in einzelne Shell-Wörter. Bash erhält dadurch keine gültige Aliaszuweisung."}
 ::option[`alias ll='ls -la'`]{#alias-ll .correct explanation="Diese Form verwendet das erforderliche Muster `NAME=REPLACEMENT` und schützt die Ersetzung mit ihrem Leerzeichen durch Anführungszeichen."}
@@ -48,8 +47,7 @@ $ source ~/.bashrc
 
 Das Startverhalten kann je nach Shell, Login-Modus und Distributionskonfiguration variieren. Ein Zsh-Benutzer würde normalerweise die Zsh-Konfiguration statt der Bash-Datei `.bashrc` verwenden.
 
-:::single-choice{#persist-bash-alias}
-Wo sollte ein persönlicher Alias normalerweise definiert werden, damit ihn zukünftige interaktive Bash-Sitzungen ohne Login laden?
+:::single-choice{#persist-bash-alias} Wo sollte ein persönlicher Alias normalerweise definiert werden, damit ihn zukünftige interaktive Bash-Sitzungen ohne Login laden?
 
 ::option[In der Datei `~/.bashrc` des Benutzers.]{#bashrc-alias .correct explanation="Interaktive Bash-Sitzungen ohne Login lesen normalerweise `~/.bashrc`; deshalb ist sie der übliche Ort für persönliche Bash-Aliase."}
 ::option[In der ausführbaren Datei des Befehls, für den der Alias gilt.]{#edit-executable explanation="Eine installierte ausführbare Datei zu verändern hat nichts mit der Alias-Erweiterung der Shell zu tun und kann verwaltete Systemdateien beschädigen."}
@@ -73,8 +71,7 @@ $ type ll
 ll is aliased to 'ls -la'
 ```
 
-:::single-choice{#inspect-command-alias}
-Welcher Befehl zeigt, ob Bash `ll` derzeit als Alias, Funktion, Builtin oder ausführbare Datei auflöst?
+:::single-choice{#inspect-command-alias} Welcher Befehl zeigt, ob Bash `ll` derzeit als Alias, Funktion, Builtin oder ausführbare Datei auflöst?
 
 ::option[`file ll`]{#file-ll explanation="`file` klassifiziert einen Dateisystempfad. Ein Alias gehört zum Shell-Zustand und muss keiner Datei namens `ll` entsprechen."}
 ::option[`type ll`]{#type-ll .correct explanation="Das Builtin `type` meldet, wie die aktuelle Bash-Sitzung den Namen `ll` auflöst."}
@@ -92,8 +89,7 @@ $ command ls
 
 Das ist hilfreich, wenn du das normale Verhalten des zugrunde liegenden Befehls benötigst. Halte Aliase kurz und vorhersehbar und verstecke kein überraschendes oder destruktives Verhalten hinter vertrauten Befehlsnamen.
 
-:::single-choice{#bypass-ls-alias}
-In der aktuellen Bash-Sitzung existiert ein Alias namens `ls`. Welcher Befehl umgeht ihn für einen einzelnen Aufruf?
+:::single-choice{#bypass-ls-alias} In der aktuellen Bash-Sitzung existiert ein Alias namens `ls`. Welcher Befehl umgeht ihn für einen einzelnen Aufruf?
 
 ::option[`alias ls`]{#show-ls-alias explanation="Dieser Befehl gibt die Definition des Alias `ls` aus. Der zugrunde liegende Befehl wird nicht aufgerufen."}
 ::option[`command ls`]{#command-ls .correct explanation="Da `command` das Befehlswort ist, erweitert Bash das nachfolgende `ls` nicht als Alias und verwendet die normale Befehlsauflösung."}
@@ -108,8 +104,7 @@ $ unalias ll
 
 Bleibt die Definition in `~/.bashrc`, kann eine zukünftige Shell den Alias erneut anlegen. Entferne oder ändere daher auch diese Konfigurationszeile, wenn der Alias dauerhaft verschwinden soll.
 
-:::single-choice{#remove-current-alias}
-Welcher Befehl entfernt den Alias `ll` aus der aktuellen Bash-Sitzung?
+:::single-choice{#remove-current-alias} Welcher Befehl entfernt den Alias `ll` aus der aktuellen Bash-Sitzung?
 
 ::option[`unalias ll`]{#unalias-ll .correct explanation="`unalias` löscht den benannten Alias aus der Aliastabelle der aktuellen Shell."}
 ::option[`alias ll=''`]{#empty-ll explanation="Damit wird der Alias durch eine leere Erweiterung ersetzt, seine Definition aber nicht entfernt."}

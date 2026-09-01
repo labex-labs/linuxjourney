@@ -34,8 +34,7 @@ $ rm notes.txt old-report.txt draft.md
 
 Comprueba la ortografía y la ubicación antes de pulsar Enter. Una copia de seguridad o una versión almacenada en un sistema de control de versiones es un plan de recuperación más fiable que las herramientas de recuperación del sistema de archivos después de eliminar los datos.
 
-:::single-choice{#remove-one-file}
-Después de confirmar el destino, ¿qué orden elimina el archivo `old-report.txt`?
+:::single-choice{#remove-one-file} Después de confirmar el destino, ¿qué orden elimina el archivo `old-report.txt`?
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` elimina la entrada del archivo indicado. Normalmente la operación no lo envía a una papelera."}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` actúa sobre directorios vacíos, no sobre archivos normales. No es la orden apropiada para este destino."}
@@ -60,8 +59,7 @@ $ rm *.tmp
 
 Recuerda que el shell expande `*.tmp` antes de que `rm` se ejecute. Si el patrón coincide con más archivos de los esperados, `rm` recibirá todos ellos.
 
-:::single-choice{#preview-removal-pattern}
-Planeas eliminar `*.tmp`. ¿Qué orden muestra primero las rutas no ocultas seleccionadas por el patrón sin borrarlas?
+:::single-choice{#preview-removal-pattern} Planeas eliminar `*.tmp`. ¿Qué orden muestra primero las rutas no ocultas seleccionadas por el patrón sin borrarlas?
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="El modo detallado informa de las eliminaciones mientras ocurren. Sigue borrando los archivos coincidentes y no es una previsualización de solo lectura."}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="Las comillas impiden expandir el comodín, por lo que se busca un nombre literal que contenga `*` en vez de previsualizar los destinos previstos."}
@@ -79,8 +77,7 @@ rm: remove regular file 'important.txt'? y
 
 La opción `-I` es una protección menos intrusiva de GNU `rm`: pregunta una vez cuando la orden eliminaría más de tres archivos o actuaría de forma recursiva.
 
-:::single-choice{#confirm-each-removal}
-¿Qué orden solicita confirmación antes de eliminar cada archivo indicado?
+:::single-choice{#confirm-each-removal} ¿Qué orden solicita confirmación antes de eliminar cada archivo indicado?
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="La opción `-i` pregunta antes de cada eliminación, lo que permite rechazar la operación."}
 ::option[`rm -f important.txt`]{#force-important explanation="La opción `-f` suprime los prompts e ignora un operando ausente. Elimina confirmaciones en vez de añadirlas."}
@@ -120,8 +117,7 @@ $ rmdir empty-directory
 
 `rmdir` falla si el directorio no está vacío, lo que protege su contenido frente a una eliminación recursiva.
 
-:::single-choice{#remove-empty-directory-only}
-¿Qué orden elimina `old-cache/` únicamente si el directorio está vacío?
+:::single-choice{#remove-empty-directory-only} ¿Qué orden elimina `old-cache/` únicamente si el directorio está vacío?
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="`rm` recursivo elimina el directorio y su contenido. No impone la condición de que esté vacío."}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` solo tiene éxito con un directorio vacío, por lo que no elimina recursivamente los archivos que contenga."}
@@ -153,8 +149,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-Después de verificar el destino completo, ¿qué orden elimina `old-project/` y todo su contenido sin suprimir los prompts normales?
+:::single-choice{#remove-nonempty-tree} Después de verificar el destino completo, ¿qué orden elimina `old-project/` y todo su contenido sin suprimir los prompts normales?
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="Un `rm` sin opciones no desciende por un directorio. No puede eliminar un árbol que contenga elementos."}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="La opción `-r` elimina recursivamente el árbol del directorio. A diferencia de `-rf`, esta forma no añade `-f` para suprimir los prompts."}

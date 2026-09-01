@@ -18,8 +18,7 @@ Syslog 定义了许多类 Unix 系统采用的消息模型和传输惯例。Rsys
 
 严重级别具有顺序。在经典选择器语法中，`daemon.warning` 通常会匹配 daemon 设施中 warning 及所有更严重级别的消息，而不只是 warning。支持经典语法的实现可以使用等号修饰符进行精确匹配，例如 `daemon.=warning`。
 
-:::single-choice{#syslog-warning-selector}
-`daemon.warning` 这样的经典选择器通常匹配什么？
+:::single-choice{#syslog-warning-selector} `daemon.warning` 这样的经典选择器通常匹配什么？
 
 ::option[只匹配文本中包含 daemon 一词的消息。]{#syslog-text-daemon explanation="该选择器依据设施元数据，而不是搜索消息文本。"}
 ::option[来自所有设施的每条 debug 消息。]{#syslog-all-debug explanation="该选择器仅限 daemon 设施和指定的严重级别阈值。"}
@@ -40,8 +39,7 @@ kern.*                  /var/log/kern.log
 
 更改生产环境路由前，应检查所有被包含的文件，并验证已安装版本所用的确切语法。
 
-:::single-choice{#syslog-selector-action}
-在传统 rsyslog 规则中，哪一部分是操作？
+:::single-choice{#syslog-selector-action} 在传统 rsyslog 规则中，哪一部分是操作？
 
 ::option[左侧的设施和严重级别表达式。]{#syslog-left-selector explanation="这部分负责选择消息。"}
 ::option[右侧的目的地或操作。]{#syslog-right-action .correct explanation="操作决定将选中的记录发送到文件、远程目标还是其他输出。"}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 根据转发和路由配置，同一个事件可能同时出现在 journal 和文本文件中。`logger -s` 还会将消息复制到标准错误，但这不能证明消息已被持久存储。
 
-:::single-choice{#syslog-logger-tag}
-`logger -t lesson-test` 会向提交的消息添加什么？
+:::single-choice{#syslog-logger-tag} `logger -t lesson-test` 会向提交的消息添加什么？
 
 ::option[删除较早测试记录的请求。]{#syslog-tag-delete explanation="该选项设置标识标签，不管理保留策略。"}
 ::option[将标识符 `lesson-test` 作为消息标签。]{#syslog-tag-identifier .correct explanation="唯一标签使受控事件更容易在已配置的目的地中找到。"}
@@ -84,8 +81,7 @@ $ sudo rsyslogd -N1
 
 日志跨越不可信网络时，远程转发应使用经过身份验证的加密传输。UDP 传送没有端到端确认；关键审计要求需要采用能够处理队列、丢失、完整性、访问控制和接收端中断的设计。
 
-:::single-choice{#syslog-change-verification}
-什么足以证明新路由规则可以正常工作？
+:::single-choice{#syslog-change-verification} 什么足以证明新路由规则可以正常工作？
 
 ::option[配置文件的修改时间很新。]{#syslog-mtime explanation="时间戳不能证明语法有效或消息已经送达。"}
 ::option[发送端可以通过 ping 访问接收端。]{#syslog-ping explanation="仅有网络可达性不能验证日志协议或存储路径。"}

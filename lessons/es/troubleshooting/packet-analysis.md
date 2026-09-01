@@ -16,8 +16,7 @@ Una captura de paquetes registra el tráfico visible en un punto de observación
 
 Captura en la interfaz y el espacio de nombres de red por los que pasa realmente el flujo afectado. Los puentes, contenedores, VPN, enlaces agregados, VLAN y mecanismos de descarga pueden cambiar lo que muestra una interfaz. Utiliza `ip route get` e `ip link` para identificar candidatos antes de capturar.
 
-:::single-choice{#packet-analysis-interface-choice}
-¿Por qué importa la elección de la interfaz de captura?
+:::single-choice{#packet-analysis-interface-choice} ¿Por qué importa la elección de la interfaz de captura?
 
 ::option[Cada interfaz refleja automáticamente todo Internet.]{#packet-analysis-mirrors-internet explanation="Normalmente, un host solo ve el tráfico entregado a sus interfaces, que pasa por ellas o que se refleja hacia ellas."}
 ::option[Solo puede registrarse el tráfico visible en ese punto de observación.]{#packet-analysis-visible-point .correct explanation="Los espacios de nombres, túneles, puentes y rutas pueden situar el flujo relevante en otro lugar."}
@@ -35,8 +34,7 @@ $ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
 
 `-i` selecciona la interfaz, `-n` conserva los nombres numéricos, `-c` limita el número de paquetes, `-w` escribe los datos pcap y la expresión final es un filtro de captura. Establece además un límite de tiempo externo cuando pueda no haber tráfico.
 
-:::single-choice{#packet-analysis-count-bound}
-¿Qué hace `-c 100`?
+:::single-choice{#packet-analysis-count-bound} ¿Qué hace `-c 100`?
 
 ::option[Captura únicamente el puerto TCP 100.]{#packet-analysis-port-hundred explanation="La selección del puerto pertenece a la expresión de filtro."}
 ::option[Comprime el archivo hasta 100 bytes.]{#packet-analysis-compress-hundred explanation="La opción indica un número de paquetes, no un límite de tamaño de archivo."}
@@ -53,8 +51,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 Lee las marcas de tiempo, el protocolo, el origen, el destino, las banderas, los datos de secuencia o confirmación y la longitud según el protocolo. Una marca de tiempo de captura señala la observación en este host, no necesariamente el momento exacto de transmisión en otro lugar. La sincronización de los relojes importa al correlacionar capturas de varios sistemas.
 
-:::single-choice{#packet-analysis-read-file}
-¿Qué opción lee paquetes de un archivo pcap guardado?
+:::single-choice{#packet-analysis-read-file} ¿Qué opción lee paquetes de un archivo pcap guardado?
 
 ::option[`-r`]{#packet-analysis-option-read .correct explanation="La opción de lectura procesa un archivo de captura existente."}
 ::option[`-i`]{#packet-analysis-option-interface explanation="Esta opción selecciona una interfaz para una captura en vivo."}
@@ -67,8 +64,7 @@ No capturar ningún paquete puede deberse a una interfaz o un espacio de nombres
 
 TLS y otros sistemas de cifrado normalmente ocultan las cargas útiles de la aplicación, pero dejan metadatos útiles como los extremos, los tiempos, los tamaños, el comportamiento TCP y partes de las negociaciones. No intentes descifrar sin autorización ni recopiles claves privadas a la ligera.
 
-:::single-choice{#packet-analysis-no-packets}
-¿Qué demuestra una captura filtrada vacía?
+:::single-choice{#packet-analysis-no-packets} ¿Qué demuestra una captura filtrada vacía?
 
 ::option[Que la aplicación remota se eliminó permanentemente.]{#packet-analysis-empty-deleted explanation="Los errores en el punto de observación o el filtro pueden producir el mismo resultado."}
 ::option[Que no hay ningún tráfico en toda la red.]{#packet-analysis-empty-network explanation="Un filtro estrecho puede excluir tráfico ajeno."}
@@ -79,8 +75,7 @@ TLS y otros sistemas de cifrado normalmente ocultan las cargas útiles de la apl
 
 Almacena los archivos pcap con permisos restrictivos, registra la orden, el host, la interfaz, la zona horaria, el filtro y el intervalo del incidente, y calcula un hash de las pruebas cuando importe su integridad. Antes de compartir, minimiza o depura los datos mediante herramientas y procedimientos que conserven los campos necesarios; las cargas útiles e incluso los metadatos de los paquetes pueden identificar a usuarios y sistemas.
 
-:::single-choice{#packet-analysis-pcap-safety}
-¿Cómo debe tratarse un archivo pcap de un incidente?
+:::single-choice{#packet-analysis-pcap-safety} ¿Cómo debe tratarse un archivo pcap de un incidente?
 
 ::option[Como una prueba sensible con acceso restringido y procedencia documentada.]{#packet-analysis-sensitive-evidence .correct explanation="Las capturas pueden contener información confidencial y requieren controles tanto de integridad como de confidencialidad."}
 ::option[Como texto inofensivo que puede publicarse sin revisión.]{#packet-analysis-public explanation="Las capturas binarias pueden exponer cargas útiles, identidades e infraestructura."}

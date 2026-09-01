@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 即使某个系统的 PID 1 是其他程序，`/usr/lib/systemd/` 目录也可能存在；容器也可能提供自己的 PID 命名空间。`systemctl` 还支持用户管理器、远程管理器和容器管理器模式，因此要先确定操作所针对的管理器。
 
-:::single-choice{#systemd-overview-detection}
-哪项信息最能直接确认 systemd 是系统初始化管理器？
+:::single-choice{#systemd-overview-detection} 哪项信息最能直接确认 systemd 是系统初始化管理器？
 
 ::option[存在名为 `/usr/lib/systemd` 的目录。]{#systemd-overview-directory explanation="即使 systemd 没有充当 PID 1，系统中仍可能保留相关库和单元文件。"}
 ::option[某个用户执行过一次名为 `systemctl` 的命令。]{#systemd-overview-command-executed explanation="即使没有可用的系统级 systemd 管理器，客户端程序仍可能存在。"}
@@ -44,8 +43,7 @@ $ systemctl is-system-running
 
 单元的状态并不总是“正在运行”。挂载单元可以处于已挂载状态，定时器可以处于等待状态，设备可以处于已出现状态，而目标在其依赖关系满足后可以处于活动状态。
 
-:::single-choice{#systemd-overview-group-unit}
-哪种单元通常用于将其他单元分组，并提供同步点？
+:::single-choice{#systemd-overview-group-unit} 哪种单元通常用于将其他单元分组，并提供同步点？
 
 ::option[`.socket`]{#systemd-overview-socket explanation="套接字单元公开 IPC 或网络端点，并可激活服务。"}
 ::option[`.target`]{#systemd-overview-target .correct explanation="目标单元汇集依赖关系，并表示启动或运行过程中的里程碑。"}
@@ -62,8 +60,7 @@ $ systemctl is-system-running
 
 具体的厂商路径可能不同。具有更高优先级的本地配置会覆盖同名单元的低优先级文件。与其复制并修改完整的厂商文件，不如使用 `systemctl edit UNIT` 创建插入式覆盖配置，这样软件包更新带来的改动仍然可见。
 
-:::single-choice{#systemd-overview-local-override}
-持久的本地系统单元覆盖配置通常应放在哪里？
+:::single-choice{#systemd-overview-local-override} 持久的本地系统单元覆盖配置通常应放在哪里？
 
 ::option[`/proc/systemd/` 内。]{#systemd-overview-proc-systemd explanation="procfs 是运行时内核接口，不用于存放持久单元配置。"}
 ::option[`/etc/systemd/system/` 下。]{#systemd-overview-etc-system .correct explanation="管理员配置层的优先级高于软件包提供的厂商单元。"}
@@ -76,8 +73,7 @@ systemd 根据依赖关系构建事务。`Wants=` 和 `Requires=` 会以不同�
 
 `After=network.target` 并不能证明网络连接、DNS 或某个远程端点已经可用。服务必须采用适当的 network-online 集成机制，或自行实现重试和就绪检测。
 
-:::single-choice{#systemd-overview-after-semantics}
-`After=other.service` 本身规定了什么？
+:::single-choice{#systemd-overview-after-semantics} `After=other.service` 本身规定了什么？
 
 ::option[保证另一个服务的应用端点处于健康状态。]{#systemd-overview-after-health explanation="顺序上的完成与应用程序就绪是两个不同的概念。"}
 ::option[如果两个单元都在事务中，则规定它们的执行顺序。]{#systemd-overview-after-ordering .correct explanation="还需要 Wants 或 Requires 等独立的依赖项才能将另一个单元纳入事务。"}
@@ -90,8 +86,7 @@ systemd 根据依赖关系构建事务。`Wants=` 和 `Requires=` 会以不同�
 
 目标只是在粗略的兼容层面上类似运行级别。多个目标可以同时处于活动状态，也可以创建自定义目标；某个目标处于活动状态，并不表示计算机上的每项服务都健康。
 
-:::single-choice{#systemd-overview-default-target}
-`default.target` 通常选择什么？
+:::single-choice{#systemd-overview-default-target} `default.target` 通常选择什么？
 
 ::option[`mkfs` 应擦除的默认块设备。]{#systemd-overview-default-disk explanation="目标描述单元激活，而不是破坏性的存储设备选择。"}
 ::option[任何时候都只能有这一个目标处于活动状态。]{#systemd-overview-only-target explanation="目标用于分组，一次启动过程中可以有多个活动目标。"}

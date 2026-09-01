@@ -22,8 +22,7 @@ meta_keywords: "stdin, 표준입력, stdin 리디렉션, cat stdin, stdin 과 st
 
 프로그램은 이 스트림을 사용할지와 사용 방식을 선택할 수 있습니다. stdin을 읽도록 만든 명령어는 파일 피연산자나 다른 입력 소스가 없으면 흔히 터미널 입력을 기다립니다.
 
-:::single-choice{#stdin-descriptor-number}
-표준 입력을 관례상 나타내는 파일 디스크립터는 무엇인가요?
+:::single-choice{#stdin-descriptor-number} 표준 입력을 관례상 나타내는 파일 디스크립터는 무엇인가요?
 
 ::option[`0`]{#stdin-fd-zero .correct explanation="표준 입력은 관례상 파일 디스크립터 0입니다."}
 ::option[`1`]{#stdin-fd-one explanation="파일 디스크립터 1은 정상 결과를 위한 표준 출력을 나타냅니다."}
@@ -43,8 +42,7 @@ Hello World
 
 입력 파일이 없거나 열 수 없으면 쉘이 리디렉션 오류를 내고 해당 입력으로 명령어를 시작하지 않습니다.
 
-:::single-choice{#stdin-from-file}
-`sort`가 `names.txt`에서 표준 입력을 읽게 하는 명령어는 무엇인가요?
+:::single-choice{#stdin-from-file} `sort`가 `names.txt`에서 표준 입력을 읽게 하는 명령어는 무엇인가요?
 
 ::option[`sort < names.txt`]{#sort-stdin-file .correct explanation="Bash가 `names.txt`를 읽기용으로 열고 파일 디스크립터 0으로 `sort`에 연결합니다."}
 ::option[`sort > names.txt`]{#stdout-to-names explanation="`>`는 stdout을 파일로 리디렉션해 내용을 잘라낼 수 있으며 파일을 입력으로 제공하지 않습니다."}
@@ -64,8 +62,7 @@ $ wc -l < peanuts.txt
 
 두 형식은 같은 데이터의 줄을 셉니다. 첫 번째에서는 `wc`가 파일 이름을 인자로 받으므로 이름을 알고, 두 번째에서는 stdin 스트림만 받아 출력할 파일 이름이 없습니다.
 
-:::single-choice{#stdin-not-command-argument}
-`wc -l < peanuts.txt`가 보통 출력에서 `peanuts.txt`를 생략하는 이유는 무엇인가요?
+:::single-choice{#stdin-not-command-argument} `wc -l < peanuts.txt`가 보통 출력에서 `peanuts.txt`를 생략하는 이유는 무엇인가요?
 
 ::option[`wc`가 줄을 센 뒤 파일 이름을 삭제합니다.]{#stdin-delete-name explanation="명령어는 원본 파일의 이름을 바꾸거나 삭제하지 않으며 입력 연결만 달라집니다."}
 ::option[`<` 연산자가 명령어가 출력하는 모든 단어를 숨깁니다.]{#stdin-hide-words explanation="입력 리디렉션은 stdout을 필터링하지 않으며 `wc`가 파일 이름을 인자로 받지 않아 이름이 없습니다."}
@@ -87,8 +84,7 @@ $ cat < peanuts.txt > banana.txt
 
 `cat`은 stdin에서 바이트를 읽어 stdout으로 쓰므로 `banana.txt`가 원본 내용을 받습니다. 일반적인 파일 복사에는 `cp peanuts.txt banana.txt`가 의도를 더 직접적으로 전달하며, 이 예제는 스트림 연결을 보여 주기 위한 것입니다.
 
-:::single-choice{#stdin-and-stdout-files}
-`cat < input.txt > output.txt`에서 stdin을 제공하는 파일과 stdout을 받는 파일은 각각 무엇인가요?
+:::single-choice{#stdin-and-stdout-files} `cat < input.txt > output.txt`에서 stdin을 제공하는 파일과 stdout을 받는 파일은 각각 무엇인가요?
 
 ::option[`output.txt`가 stdin을 제공하고 `input.txt`가 stdout을 받습니다.]{#stdin-output-stdout-input explanation="리디렉션 연산자의 의미를 반대로 설명했습니다. 입력 화살표는 명령어 쪽으로, 출력 화살표는 파일 쪽으로 향합니다."}
 ::option[`input.txt`가 stdin을 제공하고 `output.txt`가 stdout을 받습니다.]{#stdin-input-stdout-output .correct explanation="`<`는 `input.txt`를 디스크립터 0으로 열고 `>`는 `output.txt`를 디스크립터 1로 엽니다."}

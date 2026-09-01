@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 秩序立ったシャットダウンでは、サービスに停止を要求し、ファイルシステムをアンマウントした後、マシンの電源状態を変えます。強制再起動や物理的な電源スイッチを通常の近道として使わないでください。書き込みが中断され、データやサービスが不整合になるおそれがあります。
 
-:::single-choice{#power-states-orderly-poweroff}
-リモートの本番ホストの電源を切る前に、何をすべきですか？
+:::single-choice{#power-states-orderly-poweroff} リモートの本番ホストの電源を切る前に、何をすべきですか？
 
 ::option[コマンドを実行する前に管理コンソールを切断する。]{#power-states-remove-console explanation="管理コンソールは復旧に役立つアクセス手段なので、利用できる状態に保つべきです。"}
 ::option[サービスに操作を遅らせないよう、強制的に電源を切る。]{#power-states-force-first explanation="強制操作は書き込みを中断する可能性があり、通常の方法にすべきではありません。"}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 警告を送れば安全だと思い込まないでください。アクティブなセッションとシステム固有のワークロードを確認し、サービスやクラスタに文書化されたドレイン手順があれば従います。
 
-:::single-choice{#power-states-four-minute-schedule}
-現在から4分後のシャットダウンを予約するコマンドはどれですか？
+:::single-choice{#power-states-four-minute-schedule} 現在から4分後のシャットダウンを予約するコマンドはどれですか？
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="-h 操作と +4 の組み合わせで、現在から4分後のシャットダウンを要求します。"}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="プラス記号がなければ、時刻引数は文書化された相対分数の形式ではありません。"}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 再起動前に、暗号化ディスク、起動設定、ネットワーク、必須サービスが現在の対話型セッションなしで復旧できることを確認してください。ほかのシステムがこのホストに依存する場合は、先にフェイルオーバーまたはワークロード移行を調整します。
 
-:::single-choice{#power-states-reboot-action}
-`shutdown` を通じて即時の秩序立った再起動を要求するコマンドはどれですか？
+:::single-choice{#power-states-reboot-action} `shutdown` を通じて即時の秩序立った再起動を要求するコマンドはどれですか？
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="-c オプションは保留中のシャットダウンを取り消します。"}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="-r オプションは再起動を選び、now は即時実行を予約します。"}
@@ -89,8 +86,7 @@ $ sudo reboot
 
 `halt`、`poweroff`、`reboot` は init システムへの互換フロントエンドの場合がありますが、要求する最終状態は異なります。halt は通常のシステム動作を停止しますが、プラットフォームと実装によっては電力が供給されたままになります。power-off はさらに、対応ハードウェアへ電力供給の停止を要求します。意図する結果を名前で表すコマンドを優先し、互換動作は環境によって異なるためローカルのマニュアルを確認してください。
 
-:::single-choice{#power-states-halt-versus-poweroff}
-`halt` と `poweroff` を区別すべきなのはなぜですか？
+:::single-choice{#power-states-halt-versus-poweroff} `halt` と `poweroff` を区別すべきなのはなぜですか？
 
 ::option[power-off は電力供給の停止を要求するが、halt では供給が続く場合があるから。]{#power-states-power-distinction .correct explanation="どちらも通常動作を停止しますが、要求する最終的なハードウェア状態は異なる場合があります。"}
 ::option[halt は停止後、必ずサービスを再起動するから。]{#power-states-halt-restarts explanation="halt は停止状態であり、サービスの再起動要求ではありません。"}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 これらは出発点です。実際のワークロードには、アプリケーション固有のヘルスチェックを使ってください。
 
-:::single-choice{#power-states-post-reboot-check}
-再起動したアプリケーションの準備が整ったことを示す最も強い証拠はどれですか？
+:::single-choice{#power-states-post-reboot-check} 再起動したアプリケーションの準備が整ったことを示す最も強い証拠はどれですか？
 
 ::option[サービスの状態、ログ、ヘルスチェックがすべて成功すること。]{#power-states-health-evidence .correct explanation="システムとアプリケーションの複数の検査により、ホストへのアクセスだけでなくワークロードも検証できます。"}
 ::option[筐体の電源ランプが点灯していること。]{#power-states-light-on explanation="ハードウェアへの通電は、アプリケーションの正常性を証明しません。"}

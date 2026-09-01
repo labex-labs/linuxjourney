@@ -18,8 +18,7 @@ Antes de instalar ou mudar, defina clientes autorizados, identidades, leitura e 
 
 O acesso é controlado pelas regras do Samba e pelas permissões do sistema de arquivos. Permitir escrita em `smb.conf` não concede acesso que a conta não possui localmente.
 
-:::single-choice{#samba-two-permission-layers}
-O que deve permitir a escrita por um compartilhamento Samba?
+:::single-choice{#samba-two-permission-layers} O que deve permitir a escrita por um compartilhamento Samba?
 
 ::option[Apenas o comentário exibido pelo compartilhamento.]{#samba-comment-permission explanation="Um comentário é texto descritivo e não concede acesso."}
 ::option[As regras do Samba e as permissões do sistema de arquivos.]{#samba-policy-and-filesystem .correct explanation="A solicitação precisa passar pela política do protocolo e pela autorização local."}
@@ -46,8 +45,7 @@ $ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 
 O bit set-group-ID ajuda novas entradas a herdar o grupo do diretório, mas o acesso colaborativo também pode exigir uma ACL ou uma máscara de criação escolhida cuidadosamente. Teste os resultados reais dos arquivos e diretórios em vez de presumir que a herança é suficiente.
 
-:::single-choice{#samba-valid-users}
-O que expressa `valid users = @teamshare`?
+:::single-choice{#samba-valid-users} O que expressa `valid users = @teamshare`?
 
 ::option[Todo usuário anônimo recebe escrita.]{#samba-every-anonymous explanation="A regra restringe o acesso, em vez de habilitar guest."}
 ::option[O servidor deve renomear o share para `teamshare`.]{#samba-rename-share explanation="O nome visível continua sendo a seção `[team]`."}
@@ -64,8 +62,7 @@ $ sudo smbpasswd -a alice
 
 Implantações em domínios de diretório usam outro projeto de identidade. Não coloque senhas no histórico do shell nem em configurações legíveis por usuários não relacionados e não presuma que uma senha do Samba seja automaticamente idêntica à senha da conta Unix.
 
-:::single-choice{#samba-password-database}
-O que `smbpasswd -a alice` costuma fazer num servidor standalone?
+:::single-choice{#samba-password-database} O que `smbpasswd -a alice` costuma fazer num servidor standalone?
 
 ::option[Excluir o diretório pessoal do usuário Unix.]{#samba-delete-home explanation="O comando gerencia credenciais Samba e não remove o home."}
 ::option[Adicionar ou inicializar credenciais Samba da conta.]{#samba-add-credential .correct explanation="O banco SMB é gerenciado separadamente da simples criação do usuário Unix."}
@@ -88,8 +85,7 @@ Teste a partir de um cliente com um usuário explícito:
 $ smbclient //server.example.net/team -U alice
 ```
 
-:::single-choice{#samba-testparm-purpose}
-Por que executar `testparm -s` antes de aplicar uma mudança?
+:::single-choice{#samba-testparm-purpose} Por que executar `testparm -s` antes de aplicar uma mudança?
 
 ::option[Ele copia todo arquivo compartilhado para backup.]{#samba-testparm-backup explanation="A ferramenta interpreta a configuração e não copia dados."}
 ::option[Ele valida e mostra a configuração efetiva do Samba.]{#samba-testparm-validate .correct explanation="A saída encontra erros e revela definições interpretadas antes do impacto."}
@@ -107,8 +103,7 @@ $ sudo mount -t cifs //server.example.net/team /mnt/team \
 
 Proteja o arquivo de credenciais, confirme o dialeto aceito pelos dois lados e defina deliberadamente os requisitos de UID, GID, permissões e criptografia. Depois da montagem, verifique-a com `findmnt`, faça testes autorizados de leitura e escrita e desmonte após coordenar os usuários ativos.
 
-:::single-choice{#samba-command-line-password}
-Por que evitar `password=...` diretamente no comando mount?
+:::single-choice{#samba-command-line-password} Por que evitar `password=...` diretamente no comando mount?
 
 ::option[O segredo pode aparecer no histórico ou nos argumentos do processo.]{#samba-password-exposure .correct explanation="Uma fonte protegida reduz divulgação acidental, mas ainda exige permissões cuidadosas."}
 ::option[SMB não aceita nenhuma autenticação por senha.]{#samba-no-passwords explanation="Autenticação SMB por senha é comum, embora existam outros sistemas."}

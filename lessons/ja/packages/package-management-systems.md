@@ -33,8 +33,7 @@ RPM family:    $ dnf info package-name
 
 これらのコマンドが検出できるものは、リポジトリ設定によって決まります。ソース名、アーキテクチャ、バージョン、署名エラーを注意深く読んでください。
 
-:::single-choice{#package-management-systems-apt-show}
-`package-name` の APT パッケージ詳細を表示するコマンドはどれですか？
+:::single-choice{#package-management-systems-apt-show} `package-name` の APT パッケージ詳細を表示するコマンドはどれですか？
 
 ::option[`apt remove package-name`]{#package-management-systems-apt-remove-command explanation="`remove` サブコマンドはパッケージのアンインストールを提案します。"}
 ::option[`dnf search package-name`]{#package-management-systems-dnf-search-command explanation="これは RPM 系リポジトリを検索するもので、APT の詳細表示コマンドではありません。"}
@@ -52,8 +51,7 @@ RPM family:    $ sudo dnf install package-name
 
 マネージャーは依存関係と、競合または置換を提案します。パッケージの出所、バージョン、アーキテクチャ、ダウンロードサイズ、ディスク上の変更、削除、新しくインストールされる依存関係を確認するまで、自動的に承認してはいけません。
 
-:::single-choice{#package-management-systems-dnf-install}
-設定済みの RPM 系リポジトリから `package-name` をインストールする現在のコマンドはどれですか？
+:::single-choice{#package-management-systems-dnf-install} 設定済みの RPM 系リポジトリから `package-name` をインストールする現在のコマンドはどれですか？
 
 ::option[`rpm -qa package-name`]{#package-management-systems-rpm-query-command explanation="これは RPM のインストール済みデータベースへの問い合わせであり、リポジトリからのインストール要求ではありません。"}
 ::option[`dnf install package-name`]{#package-management-systems-dnf-install-command .correct explanation="DNF は Fedora と最近の RHEL リリースで使われる、現在のリポジトリ対応マネージャーです。"}
@@ -71,8 +69,7 @@ RPM family:    $ sudo dnf remove package-name
 
 削除によって依存するパッケージへ影響したり、不要になった依存関係や設定が残ったりする場合があります。提案されたトランザクションを確認し、Debian 系では remove と purge の意味を区別し、アプリケーションデータはそのバックアップと保持手順に従って保全してください。パッケージ削除は、ユーザーが作成したデータの削除を保証しません。
 
-:::single-choice{#package-management-systems-remove-review}
-削除トランザクションを承認前に確認すべきなのはなぜですか？
+:::single-choice{#package-management-systems-remove-review} 削除トランザクションを承認前に確認すべきなのはなぜですか？
 
 ::option[削除すると、パッケージを含むファイルシステムが必ず再フォーマットされるから。]{#package-management-systems-removal-format explanation="パッケージマネージャーは管理対象ファイルと状態を削除しますが、通常はファイルシステムをフォーマットしません。"}
 ::option[パッケージマネージャーは提案された変更内容を表示できないから。]{#package-management-systems-no-proposal explanation="対話的マネージャーは通常、確認できるよう計画したトランザクションを表示します。"}
@@ -98,8 +95,7 @@ $ sudo dnf upgrade
 
 更新コマンドは主要ライブラリ、サービス、カーネル、依存関係を変更する場合があります。システムに応じたバックアップ、保守ポリシー、リリースノート、再起動計画を使ってください。コマンドの終了ステータスの意味も確認します。たとえば、一部の「更新確認」操作は、実行失敗ではなく更新が利用可能であることを非ゼロのステータスで報告します。
 
-:::single-choice{#package-management-systems-apt-update-upgrade}
-`apt update` と `apt upgrade` の関係はどれですか？
+:::single-choice{#package-management-systems-apt-update-upgrade} `apt update` と `apt upgrade` の関係はどれですか？
 
 ::option[`update` がパッケージを削除し、`upgrade` がその設定ファイルを復元する。]{#package-management-systems-apt-remove-restore explanation="二つのコマンドに、そのような削除と復元の関係はありません。"}
 ::option[`update` がメタデータを更新し、`upgrade` が承認されたパッケージアップグレード計画を適用する。]{#package-management-systems-apt-two-steps .correct explanation="APT はカタログの更新と、新しいパッケージバージョンのインストールを分離します。"}
@@ -110,8 +106,7 @@ $ sudo dnf upgrade
 
 現在の Fedora と RHEL の文書では `dnf` を使います。最近の RHEL システムで `yum` を実行すると DNF の互換動作を呼び出す場合がありますが、スクリプトでは実行ファイル名だけから実装を推測してはいけません。古いホストでは、手順を置き換える前にインストール済みバージョンと対応構文を確認します。
 
-:::single-choice{#package-management-systems-yum-current-rhel}
-現在の RHEL システムで `yum` が一般に表すものは何ですか？
+:::single-choice{#package-management-systems-yum-current-rhel} 現在の RHEL システムで `yum` が一般に表すものは何ですか？
 
 ::option[DNF が支える互換コマンド。]{#package-management-systems-yum-dnf-alias .correct explanation="最近の RHEL リリースは DNF を使いつつ、互換性のため yum コマンド名を維持します。"}
 ::option[Debian の低レベル `.deb` アーカイブツール。]{#package-management-systems-yum-dpkg explanation="Debian システムはネイティブパッケージ管理に YUM ではなく、APT や dpkg などを使います。"}

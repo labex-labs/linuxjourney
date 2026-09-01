@@ -18,8 +18,7 @@ Samba 在类 Unix 系统上实现服务器消息块协议，使 Linux、Windows�
 
 访问同时受 Samba 策略和底层文件系统权限控制。在 `smb.conf` 中允许写入，无法为本来没有文件系统访问权限的账户授予权限。
 
-:::single-choice{#samba-two-permission-layers}
-用户通过 Samba 共享写入时，哪些部分必须允许？
+:::single-choice{#samba-two-permission-layers} 用户通过 Samba 共享写入时，哪些部分必须允许？
 
 ::option[只有共享显示的注释。]{#samba-comment-permission explanation="注释是描述性文本，不会授予访问。"}
 ::option[Samba 规则与文件系统权限都必须允许。]{#samba-policy-and-filesystem .correct explanation="请求必须通过协议层规则和本地文件系统授权。"}
@@ -46,8 +45,7 @@ $ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 
 设置组 ID 位有助于新条目继承目录组，但协作访问可能还需要 ACL 或谨慎选择的创建掩码。应测试实际文件和目录结果，而不是假定继承已经足够。
 
-:::single-choice{#samba-valid-users}
-`valid users = @teamshare` 表达什么？
+:::single-choice{#samba-valid-users} `valid users = @teamshare` 表达什么？
 
 ::option[每个匿名网络用户都获得写权限。]{#samba-every-anonymous explanation="该规则限制访问，而不是启用来宾写入。"}
 ::option[服务器必须把共享重命名为 `teamshare`。]{#samba-rename-share explanation="可见共享名称仍是节名称 [team]。"}
@@ -64,8 +62,7 @@ $ sudo smbpasswd -a alice
 
 目录域部署使用不同的身份设计。不要把密码放入 shell 历史记录或无关用户可读的配置中，也不要假定 Samba 密码自动与 Unix 账户密码相同。
 
-:::single-choice{#samba-password-database}
-在独立服务器上，`smbpasswd -a alice` 通常会做什么？
+:::single-choice{#samba-password-database} 在独立服务器上，`smbpasswd -a alice` 通常会做什么？
 
 ::option[删除 Unix 用户的主目录。]{#samba-delete-home explanation="该命令管理 Samba 凭据，不会移除主目录。"}
 ::option[为账户添加或初始化 Samba 凭据。]{#samba-add-credential .correct explanation="SMB 身份验证数据库与仅创建 Unix 用户分开管理。"}
@@ -88,8 +85,7 @@ $ testparm -s
 $ smbclient //server.example.net/team -U alice
 ```
 
-:::single-choice{#samba-testparm-purpose}
-应用 Samba 更改前为什么运行 `testparm -s`？
+:::single-choice{#samba-testparm-purpose} 应用 Samba 更改前为什么运行 `testparm -s`？
 
 ::option[它会把每个共享文件复制到备份服务器。]{#samba-testparm-backup explanation="该工具解析并报告配置，而不是复制共享数据。"}
 ::option[它会验证并显示生效的 Samba 配置。]{#samba-testparm-validate .correct explanation="解析器输出可以在影响服务前发现配置错误并揭示解释后的设置。"}
@@ -107,8 +103,7 @@ $ sudo mount -t cifs //server.example.net/team /mnt/team \
 
 保护凭据文件，确认双方支持的方言，并有意定义 UID、GID、权限和加密要求。挂载后使用 `findmnt` 验证，执行获得授权的读写测试，并在协调活动用户后卸载。
 
-:::single-choice{#samba-command-line-password}
-为什么要避免直接在挂载命令中使用 `password=...`？
+:::single-choice{#samba-command-line-password} 为什么要避免直接在挂载命令中使用 `password=...`？
 
 ::option[秘密可能通过历史记录或进程参数暴露。]{#samba-password-exposure .correct explanation="受保护的凭据来源可以减少意外泄漏，但仍需谨慎设置权限。"}
 ::option[SMB 不支持任何形式的密码身份验证。]{#samba-no-passwords explanation="基于密码的 SMB 身份验证很常见，尽管也存在其他身份系统。"}

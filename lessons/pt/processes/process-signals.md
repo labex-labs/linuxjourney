@@ -23,8 +23,7 @@ Os sinais podem vir de vários lugares:
 
 O remetente precisa possuir as permissões adequadas, normalmente baseadas em credenciais ou capacidades. Portanto, os sinais são uma interface de controle intermediada pelo kernel, não mensagens irrestritas entre usuários arbitrários.
 
-:::single-choice{#process-signals-ctrl-c}
-Qual sinal um terminal normalmente gera para `Ctrl-C`?
+:::single-choice{#process-signals-ctrl-c} Qual sinal um terminal normalmente gera para `Ctrl-C`?
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` normalmente está associado ao caractere de suspensão do terminal, como `Ctrl-Z`."}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` retoma um processo interrompido, em vez de representar uma interrupção pelo teclado."}
@@ -43,8 +42,7 @@ As ações padrão variam: um sinal pode encerrar, encerrar e criar um core dump
 
 Os nomes dos sinais são mais portáveis e legíveis que os números. Embora arquiteturas Linux comuns usem 15 para `SIGTERM`, não presuma que todos os números de sinais, exceto os garantidos pelo padrão relevante, sejam idênticos em todos os lugares. Use `kill -l` para inspecionar o mapeamento local.
 
-:::single-choice{#process-signals-term-behavior}
-Por que um processo pode responder de forma ordenada a `SIGTERM`?
+:::single-choice{#process-signals-term-behavior} Por que um processo pode responder de forma ordenada a `SIGTERM`?
 
 ::option[Ele pode instalar um manipulador para esse sinal.]{#process-signals-term-handler .correct explanation="Ao contrário de `SIGKILL`, `SIGTERM` pode ser capturado para que um programa inicie sua própria lógica de encerramento."}
 ::option[O kernel sempre salva automaticamente todos os documentos abertos.]{#process-signals-term-kernel-save explanation="A limpeza da aplicação depende do código do programa; o kernel não compreende nem salva estados arbitrários de documentos."}
@@ -57,8 +55,7 @@ As threads possuem máscaras de sinais que podem bloquear temporariamente a entr
 
 Em um processo multithread, um sinal direcionado ao processo pode ser entregue a uma thread elegível que não o bloqueie; um sinal direcionado a uma thread tem como destino a thread especificada. Portanto, um projeto correto de sinais exige mais que verificar se “o processo o bloqueou”.
 
-:::single-choice{#process-signals-blocked-state}
-O que normalmente acontece quando um sinal bloqueável é gerado enquanto seu destino o bloqueia?
+:::single-choice{#process-signals-blocked-state} O que normalmente acontece quando um sinal bloqueável é gerado enquanto seu destino o bloqueia?
 
 ::option[Ele permanece pendente até que a entrega se torne possível.]{#process-signals-pending .correct explanation="O bloqueio adia o tratamento; o sinal pendente pode ser entregue depois que for desbloqueado."}
 ::option[Ele é convertido automaticamente em `SIGKILL`.]{#process-signals-convert-kill explanation="O kernel não transforma um sinal comum bloqueado em um sinal que não pode ser capturado."}
@@ -71,8 +68,7 @@ O que normalmente acontece quando um sinal bloqueável é gerado enquanto seu de
 
 Até mesmo `SIGKILL` pode não fazer uma tarefa desaparecer instantaneamente da perspectiva de um observador. Uma tarefa pode estar aguardando uma operação ininterruptível do kernel e, depois do encerramento, seu pai ainda precisa coletar seu status.
 
-:::single-choice{#process-signals-uncatchable-pair}
-Qual par não pode ser capturado, ignorado nem bloqueado?
+:::single-choice{#process-signals-uncatchable-pair} Qual par não pode ser capturado, ignorado nem bloqueado?
 
 ::option[`SIGKILL` e `SIGSTOP`]{#process-signals-kill-stop .correct explanation="O kernel reserva esses dois sinais para que um processo não possa substituir nem adiar suas ações fundamentais."}
 ::option[`SIGINT` e `SIGTERM`]{#process-signals-int-term explanation="Os dois podem ter manipuladores instalados pelo usuário e podem ser bloqueados."}

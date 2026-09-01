@@ -18,8 +18,7 @@ meta_keywords: "라우팅 프로토콜, 네트워크 수렴, 거리 벡터, 링�
 
 프로토콜 인접 관계가 수립됐다는 사실만으로 원하는 접두사가 학습, 선택, 설치됐거나 전달 정책에서 허용됐음을 입증할 수 없습니다.
 
-:::single-choice{#routing-protocols-adjacency-limit}
-수립된 라우팅 인접 관계만으로 입증할 수 없는 것은 무엇입니까?
+:::single-choice{#routing-protocols-adjacency-limit} 수립된 라우팅 인접 관계만으로 입증할 수 없는 것은 무엇입니까?
 
 ::option[원하는 모든 경로가 설치되어 성공적으로 전달 중이라는 사실입니다.]{#routing-protocols-not-full-proof .correct explanation="경로 광고, 선택, 설치, 필터링 및 데이터 평면 작동은 별도의 단계입니다."}
 ::option[두 프로토콜 화자가 제어 메시지를 교환했다는 사실입니다.]{#routing-protocols-no-messages explanation="인접 관계 수립에는 일반적으로 프로토콜 통신이 필요합니다."}
@@ -32,8 +31,7 @@ IGP(Interior Gateway Protocol)는 하나의 관리 라우팅 도메인 안에서
 
 메트릭의 의미는 프로토콜마다 다릅니다. OSPF 비용, RIP 홉 수 및 BGP 속성 집합을 하나의 보편적인 숫자 척도처럼 비교할 수 없습니다. 구현체는 프로토콜별 선택 전이나 그와 함께 경로 선호도 또는 관리 거리를 사용해 소스 사이에서 선택합니다.
 
-:::single-choice{#routing-protocols-metric-comparison}
-RIP 홉 수와 OSPF 비용을 직접 비교할 수 있습니까?
+:::single-choice{#routing-protocols-metric-comparison} RIP 홉 수와 OSPF 비용을 직접 비교할 수 있습니까?
 
 ::option[예. 모든 라우팅 메트릭이 같은 단위를 사용합니다.]{#routing-protocols-universal-metric explanation="각 프로토콜은 자체 메트릭과 선택 과정을 정의합니다."}
 ::option[예. 단, 두 값이 모두 0일 때만 가능합니다.]{#routing-protocols-zero-metric explanation="표시된 숫자와 관계없이 의미가 서로 다릅니다."}
@@ -44,8 +42,7 @@ RIP 홉 수와 OSPF 비용을 직접 비교할 수 있습니까?
 
 거리 벡터 프로토콜은 이웃을 통해 연결 가능성과 거리를 광고하고 이웃 보고에서 경로를 도출합니다. 링크 상태 프로토콜은 인접 관계를 만들고, 범위에 링크 상태 정보를 플러딩하고, 토폴로지 데이터베이스를 구축하고, 최단 경로 트리를 계산합니다. 현대 프로토콜에는 단순한 범주 요약으로 모두 설명하기 어려운 개선 사항이 있습니다.
 
-:::single-choice{#routing-protocols-link-state-input}
-링크 상태 라우터가 경로 계산에 사용하는 것은 무엇입니까?
+:::single-choice{#routing-protocols-link-state-input} 링크 상태 라우터가 경로 계산에 사용하는 것은 무엇입니까?
 
 ::option[기본 게이트웨이의 호스트 이름만 사용합니다.]{#routing-protocols-hostname-only explanation="토폴로지 계산에는 링크와 접두사 정보가 필요합니다."}
 ::option[라우팅 범위의 링크를 설명하는 동기화된 데이터베이스입니다.]{#routing-protocols-link-database .correct explanation="라우터는 학습한 토폴로지에서 최단 경로 알고리즘을 실행합니다."}
@@ -58,8 +55,7 @@ RIP 홉 수와 OSPF 비용을 직접 비교할 수 있습니까?
 
 수렴 중에는 일시적인 손실, 루프 또는 블랙홀이 발생할 수 있습니다. 감지, 전파, 계산 및 설치를 별도로 측정하고 데이터 평면 프로브로 검증하십시오.
 
-:::single-choice{#routing-protocols-convergence}
-라우팅 수렴이란 무엇입니까?
+:::single-choice{#routing-protocols-convergence} 라우팅 수렴이란 무엇입니까?
 
 ::option[변경 후 안정적이고 사용 가능한 라우팅에 도달하는 과정입니다.]{#routing-protocols-stable-routing .correct explanation="제어 전파와 그 결과인 전달 갱신을 포함합니다."}
 ::option[모든 라우터가 동일한 전역 테이블을 저장해야 한다는 요구 사항입니다.]{#routing-protocols-identical-table explanation="정책, 영역 및 역할로 의도적인 차이가 생길 수 있습니다."}

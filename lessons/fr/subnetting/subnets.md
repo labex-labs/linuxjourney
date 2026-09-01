@@ -22,8 +22,7 @@ IPv4 peut exprimer un préfixe de 24 bits par `/24` ou par le masque `255.255.25
 
 Pour l’adresse `192.168.1.8/24`, le préfixe réseau est `192.168.1.0/24`. Certains contextes comprennent `192.168.1.0/255.255.255.0`, mais la notation de préfixe CIDR est la forme compacte standard.
 
-:::single-choice{#subnets-mask-24}
-Quel masque décimal pointé correspond à `/24` ?
+:::single-choice{#subnets-mask-24} Quel masque décimal pointé correspond à `/24` ?
 
 ::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="Trois octets complets contiennent 24 bits un initiaux."}
 ::option[`255.255.0.255`]{#subnets-noncontiguous explanation="Les bits réseau ne sont pas contigus ; ce n’est pas le masque conventionnel `/24`."}
@@ -41,8 +40,7 @@ $ ip route show
 $ ip route get 192.168.1.50
 ```
 
-:::single-choice{#subnets-on-link-decision}
-Comment un hôte Linux détermine-t-il s’il doit envoyer directement ou par un routeur ?
+:::single-choice{#subnets-on-link-decision} Comment un hôte Linux détermine-t-il s’il doit envoyer directement ou par un routeur ?
 
 ::option[Il suppose toujours que les adresses terminées par `.1` sont locales.]{#subnets-dot-one explanation="Les conventions de numéros d’hôtes ne remplacent pas les préfixes et les routes configurés."}
 ::option[Il consulte les préfixes et la politique de routage.]{#subnets-route-policy .correct explanation="La route sélectionnée indique si la destination est directement connectée et quelle interface ou quel prochain saut employer."}
@@ -55,8 +53,7 @@ Un routeur doté des interfaces et des routes appropriées peut acheminer le tra
 
 La séparation en sous-réseaux crée un emplacement où appliquer des politiques de routage et de filtrage, mais ne constitue pas automatiquement une frontière de sécurité. Si l’acheminement est autorisé sans politique restrictive, des hôtes de sous-réseaux différents peuvent encore communiquer.
 
-:::single-choice{#subnets-security-boundary}
-La création de deux sous-réseaux bloque-t-elle automatiquement le trafic entre eux ?
+:::single-choice{#subnets-security-boundary} La création de deux sous-réseaux bloque-t-elle automatiquement le trafic entre eux ?
 
 ::option[Oui, car les routeurs ne peuvent pas relier des préfixes différents.]{#subnets-never-route explanation="Relier des préfixes est le rôle principal du routage."}
 ::option[Non ; les politiques de routage et de filtrage déterminent le trafic autorisé.]{#subnets-policy-required .correct explanation="La segmentation permet l’application de politiques, mais ne définit pas elle-même ces politiques."}
@@ -67,8 +64,7 @@ La création de deux sous-réseaux bloque-t-elle automatiquement le trafic entre
 
 Les sous-réseaux peuvent organiser l’attribution des adresses, limiter la portée des diffusions de la couche liaison, séparer les domaines de panne et fournir des frontières de politique. Ils peuvent aussi accroître la complexité du routage, du pare-feu, de DHCP, de la surveillance et de la documentation. Concevez les préfixes selon l’échelle, la croissance, la redondance et les exigences de sécurité réelles plutôt que de supposer qu’un réseau plus petit est toujours plus rapide.
 
-:::single-choice{#subnets-design-tradeoff}
-Quel est un véritable compromis de la création de sous-réseaux ?
+:::single-choice{#subnets-design-tradeoff} Quel est un véritable compromis de la création de sous-réseaux ?
 
 ::option[Les domaines de diffusion plus petits n’exigent ni routage ni documentation.]{#subnets-no-complexity explanation="Davantage de frontières exigent généralement une gestion accrue des routes, des politiques, des adresses et des services."}
 ::option[La segmentation peut améliorer l’organisation tout en augmentant la complexité des politiques.]{#subnets-tradeoff .correct explanation="Les frontières de sous-réseaux peuvent faciliter le contrôle, mais ajoutent un état opérationnel à maintenir."}

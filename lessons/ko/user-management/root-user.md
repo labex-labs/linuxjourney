@@ -30,8 +30,7 @@ $ su - operator
 
 대상 계정 작업이 끝나면 하위 쉘을 종료하세요.
 
-:::single-choice{#root-su-login-shell}
-`operator` 사용자로 로그인 형식 쉘을 요청하는 명령은 무엇인가요?
+:::single-choice{#root-su-login-shell} `operator` 사용자로 로그인 형식 쉘을 요청하는 명령은 무엇인가요?
 
 ::option[`su - operator`]{#root-su-login-operator .correct explanation="하이픈은 `operator`에 대한 로그인 쉘 동작과 대상 중심 환경을 요청합니다."}
 ::option[`su operator`]{#root-su-preserve-environment explanation="대상 신원으로 바꾸지만 여기서 소개한 완전한 로그인 형식 초기화를 요청하지 않습니다."}
@@ -50,8 +49,7 @@ $ sudo -u postgres id
 
 가능하면 오래 유지되는 권한 쉘보다 범위가 좁고 명확한 관리 명령 하나를 선호하세요. 범위가 작으면 실수한 명령이 높은 권한으로 실행될 가능성이 줄어듭니다.
 
-:::single-choice{#root-sudo-target-user}
-`sudo -u postgres id`는 무엇을 요청하나요?
+:::single-choice{#root-sudo-target-user} `sudo -u postgres id`는 무엇을 요청하나요?
 
 ::option[현재 계정의 이름을 영구적으로 `postgres`로 바꿉니다.]{#root-sudo-rename explanation="`sudo`는 대상 자격 증명으로 명령을 실행하며 계정 레코드의 이름을 바꾸지 않습니다."}
 ::option[정책에 따라 `postgres`를 대상 사용자로 하여 `id`를 실행합니다.]{#root-sudo-postgres-id .correct explanation="`-u` 옵션이 대상 신원을 선택하고 sudoers 정책이 요청 허용 여부를 결정합니다."}
@@ -64,8 +62,7 @@ $ sudo -u postgres id
 
 감사 동작은 구성에 따라 달라집니다. `sudo`는 일반적으로 호출을 기록하지만 쉘 시작 하나를 기록했다고 그 안에서 입력한 모든 명령의 완전한 기록이 자동으로 생기지는 않습니다. 쉘 기록, 시스템 감사, sudo 입출력 로깅은 각자의 정책을 가진 별도 메커니즘입니다.
 
-:::single-choice{#root-persistent-shell-risk}
-오래 유지되는 root 쉘이 이해한 명령 하나씩 권한을 높이는 것보다 위험한 이유는 무엇인가요?
+:::single-choice{#root-persistent-shell-risk} 오래 유지되는 root 쉘이 이해한 명령 하나씩 권한을 높이는 것보다 위험한 이유는 무엇인가요?
 
 ::option[Root 쉘은 모든 감사 시스템에서 모든 명령을 자동으로 삭제합니다.]{#root-shell-no-audit explanation="로깅은 구성에 따라 달라지므로 모든 감사 기록이 자동으로 지워진다는 주장은 정확하지 않습니다."}
 ::option[쉘이 구성 요소 하나보다 긴 파일 시스템 경로를 비활성화합니다.]{#root-shell-path-limit explanation="권한은 이런 경로 제한을 만들지 않습니다. 일반 작업에 적용되는 권한의 크기가 문제입니다."}
@@ -82,8 +79,7 @@ $ sudo -l
 
 명령 경로, 허용된 대상 사용자, 인자 제한을 검토하세요. 범위가 넓어 보이는 규칙을 관련 없는 작업의 허가로 여기지 마세요.
 
-:::single-choice{#root-list-sudo-rules}
-현재 호출 사용자가 사용할 수 있는 sudo 권한을 나열하는 명령은 무엇인가요?
+:::single-choice{#root-list-sudo-rules} 현재 호출 사용자가 사용할 수 있는 sudo 권한을 나열하는 명령은 무엇인가요?
 
 ::option[`sudo -i`]{#root-sudo-login explanation="대상의 로그인 형식 쉘을 요청하여 권한 범위를 늘릴 수 있으며 읽기 전용 정책 목록이 아닙니다."}
 ::option[`sudo -l`]{#root-sudo-list .correct explanation="소문자 `-l` 옵션은 sudo에 현재 정책이 허용하는 명령을 나열하도록 요청합니다."}
@@ -108,8 +104,7 @@ $ sudo visudo -f /etc/sudoers.d/application-admins
 
 일반 리디렉션이나 검증되지 않은 편집기 작업 흐름으로 sudoers를 편집하지 마세요. 구문이나 권한 실수로 관리 접근을 잃을 수 있습니다. 원격 권한을 바꿀 때는 확인된 다른 복구 경로를 유지하세요.
 
-:::single-choice{#root-edit-sudoers-safely}
-주 sudoers 정책을 편집하고 구문을 검사할 때 사용해야 하는 도구는 무엇인가요?
+:::single-choice{#root-edit-sudoers-safely} 주 sudoers 정책을 편집하고 구문을 검사할 때 사용해야 하는 도구는 무엇인가요?
 
 ::option[`cat`]{#root-cat-sudoers explanation="`cat`은 읽을 수 있는 텍스트를 표시하지만 sudoers 구문을 안전하게 편집하고 잠그거나 검증하지 않습니다."}
 ::option[`visudo`]{#root-visudo .correct explanation="`visudo`는 sudoers 정책 변경을 위해 설계된 잠금과 구문 검증을 제공합니다."}

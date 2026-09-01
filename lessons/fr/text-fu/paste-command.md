@@ -29,8 +29,7 @@ bob	viewer
 
 L'espacement est une tabulation. Contrairement à `cat`, qui écrit des fichiers complets à la suite, `paste` combine leurs lignes correspondantes.
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt` contient `A` puis `B`, et `second.txt` contient `1` puis `2`. Que produit `paste first.txt second.txt` par défaut ?
+:::single-choice{#paste-corresponding-lines} `first.txt` contient `A` puis `B`, et `second.txt` contient `1` puis `2`. Que produit `paste first.txt second.txt` par défaut ?
 
 ::option[`A`, `B`, `1` et `2` sur quatre lignes.]{#paste-concatenated-files explanation="Cela correspondrait à une concaténation ; `paste` combine les lignes correspondantes."}
 ::option[Les quatre valeurs sur une ligne sans séparateur.]{#paste-one-line-no-separator explanation="La sérialisation exige `-s` et le séparateur par défaut est une tabulation."}
@@ -49,8 +48,7 @@ bob:viewer
 
 Citez les délimiteurs ayant un sens pour le shell. `paste` peut parcourir plusieurs caractères, mais un seul suffit souvent à deux colonnes.
 
-:::single-choice{#paste-colon-delimiter}
-Quelle commande joint les lignes correspondantes de `names.txt` et `roles.txt` avec un deux-points ?
+:::single-choice{#paste-colon-delimiter} Quelle commande joint les lignes correspondantes de `names.txt` et `roles.txt` avec un deux-points ?
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="`-d` remplace la tabulation par le deux-points fourni."}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="`-s` sélectionne le mode série et `:` serait traité comme un chemin."}
@@ -76,8 +74,7 @@ The quick brown fox
 
 Avec plusieurs fichiers, chacun devient sa propre ligne de sortie.
 
-:::single-choice{#paste-serialize-with-spaces}
-Quelle commande joint toutes les lignes de `words.txt` en une ligne séparée par des espaces ?
+:::single-choice{#paste-serialize-with-spaces} Quelle commande joint toutes les lignes de `words.txt` en une ligne séparée par des espaces ?
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="En mode parallèle, un seul fichier conserve une ligne de sortie par ligne d'entrée."}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="Cette forme sérialise deux fichiers séparément avec des tabulations."}
@@ -97,8 +94,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-Que se passe-t-il lorsqu'un fichier se termine avant un autre en mode parallèle ?
+:::single-choice{#paste-unequal-files} Que se passe-t-il lorsqu'un fichier se termine avant un autre en mode parallèle ?
 
 ::option[`paste` utilise des champs vides jusqu'à la fin de l'entrée la plus longue.]{#paste-empty-fields .correct explanation="Le mode parallèle continue jusqu'à épuisement de tous les fichiers."}
 ::option[`paste` s'arrête et abandonne les lignes restantes.]{#paste-stop-shortest explanation="La commande continue jusqu'à l'entrée la plus longue."}
@@ -115,8 +111,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-Dans `producer | paste names.txt -`, que signifie l'opérande `-` ?
+:::single-choice{#paste-stdin-operand} Dans `producer | paste names.txt -`, que signifie l'opérande `-` ?
 
 ::option[Écrire le résultat sur stderr.]{#paste-write-stderr explanation="Le tiret désigne ici une source d'entrée."}
 ::option[Supprimer les délimiteurs.]{#paste-remove-delimiter explanation="Le délimiteur se contrôle avec `-d`."}

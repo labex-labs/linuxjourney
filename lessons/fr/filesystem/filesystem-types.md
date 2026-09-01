@@ -18,8 +18,7 @@ La couche Virtual Filesystem du noyau, ou VFS, fournit des opérations communes 
 
 Un même processus peut ainsi accéder à ext4, XFS, NFS, tmpfs et procfs au moyen d'un modèle commun de chemins et de descripteurs de fichiers. Cela ne rend pas toutes leurs fonctionnalités ni tous leurs comportements identiques : sensibilité à la casse, verrouillage, permissions, garanties de renommage, attributs étendus et gestion des erreurs peuvent différer.
 
-:::single-choice{#filesystem-types-vfs-role}
-Quel est le rôle principal du VFS de Linux ?
+:::single-choice{#filesystem-types-vfs-role} Quel est le rôle principal du VFS de Linux ?
 
 ::option[Convertir sur disque chaque système de fichiers monté en ext4.]{#filesystem-types-vfs-convert-ext4 explanation="L'abstraction conserve les implémentations et formats distincts des systèmes de fichiers."}
 ::option[Sauvegarder chaque fichier avant qu'une application ne l'écrive.]{#filesystem-types-vfs-backup explanation="Le VFS répartit les opérations et ne fournit pas automatiquement un historique de sauvegarde."}
@@ -32,8 +31,7 @@ Un système de fichiers journalisé consigne certaines mises à jour dans un jou
 
 Elle ne garantit ni la survie des dernières données applicatives, ni la validité des transactions applicatives portant sur plusieurs fichiers, ni le respect par le matériel de stockage de toutes les écritures déclarées terminées. Les systèmes de fichiers offrent différents modes de données et garanties d'ordonnancement ; les applications doivent employer les opérations de vidage et de mise à jour atomique appropriées. Un journal n'est pas une sauvegarde et ne protège ni contre la suppression, ni contre un logiciel malveillant, ni contre la panne d'un périphérique.
 
-:::single-choice{#filesystem-types-journal-scope}
-Que permet principalement de récupérer la journalisation d'un système de fichiers après une panne ?
+:::single-choice{#filesystem-types-journal-scope} Que permet principalement de récupérer la journalisation d'un système de fichiers après une panne ?
 
 ::option[Des métadonnées cohérentes et les transactions consignées du système de fichiers.]{#filesystem-types-journal-consistency .correct explanation="Le rejeu du journal aide à ramener les structures du système de fichiers dans un état cohérent."}
 ::option[Toutes les versions historiques de chaque document utilisateur.]{#filesystem-types-journal-versions explanation="Un journal n'est pas un stockage de sauvegardes versionnées."}
@@ -48,8 +46,7 @@ Que permet principalement de récupérer la journalisation d'un système de fich
 
 Les fonctionnalités doivent être évaluées dans leur contexte d'exploitation. Un instantané Btrfs partage initialement le stockage avec sa source et ne constitue pas une sauvegarde indépendante s'il reste sur le même périphérique défaillant. XFS et ext4 offrent des possibilités différentes d'agrandissement, réduction, réparation et réglage. Vérifiez la prise en charge par le noyau installé, l'environnement de démarrage et les outils de récupération avant de choisir ou de modifier un système de fichiers racine.
 
-:::single-choice{#filesystem-types-btrfs-snapshot}
-Pourquoi un instantané Btrfs situé sur le même périphérique n'est-il pas une sauvegarde complète ?
+:::single-choice{#filesystem-types-btrfs-snapshot} Pourquoi un instantané Btrfs situé sur le même périphérique n'est-il pas une sauvegarde complète ?
 
 ::option[Les instantanés suppriment toujours immédiatement le sous-volume d'origine.]{#filesystem-types-snapshot-deletes explanation="Un instantané crée une autre vue du sous-volume et ne supprime pas intrinsèquement sa source."}
 ::option[Il partage le même domaine de défaillance du stockage que l'original.]{#filesystem-types-snapshot-failure-domain .correct explanation="La perte du périphérique ou de graves dommages au système de fichiers peuvent toucher la source comme son instantané local."}
@@ -62,8 +59,7 @@ Linux peut monter des formats d'interopérabilité comme les variantes de FAT, e
 
 Les systèmes de fichiers réseau comme NFS et SMB dépendent d'un serveur et d'un protocole réseau, avec leurs propres règles de cache et d'identité. Les systèmes de fichiers virtuels comme tmpfs, procfs et sysfs n'emploient pas de format persistant ordinaire sur disque : tmpfs conserve des données volatiles dans des pages soutenues par la mémoire, tandis que procfs et sysfs exposent des interfaces du noyau.
 
-:::single-choice{#filesystem-types-procfs-category}
-Quelle description correspond le mieux à procfs ?
+:::single-choice{#filesystem-types-procfs-category} Quelle description correspond le mieux à procfs ?
 
 ::option[Un format d'échange Windows pour les supports amovibles.]{#filesystem-types-procfs-windows explanation="FAT ou exFAT correspondent mieux à cet usage ; procfs est une interface vers le noyau Linux."}
 ::option[Un système de fichiers virtuel qui expose les interfaces des processus et du noyau.]{#filesystem-types-procfs-virtual .correct explanation="Procfs génère une vue active du noyau au lieu de stocker des fichiers persistants ordinaires sur disque."}
@@ -80,8 +76,7 @@ $ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Parmi les autres vues figurent `df -T` pour l'utilisation de l'espace monté, `lsblk -f` pour les périphériques blocs et signatures détectées, et `/proc/filesystems` pour les types pris en charge ou connus du noyau en cours d'exécution. Ces commandes répondent à des questions différentes ; un système de fichiers non monté n'apparaît pas dans une liste ordinaire des systèmes montés.
 
-:::single-choice{#filesystem-types-findmnt-output}
-Quelle commande dresse directement la liste des cibles montées avec leur source, leur type et leurs options dans cette leçon ?
+:::single-choice{#filesystem-types-findmnt-output} Quelle commande dresse directement la liste des cibles montées avec leur source, leur type et leurs options dans cette leçon ?
 
 ::option[`findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS`]{#filesystem-types-findmnt .correct explanation="Findmnt lit la table des montages et met en forme les champs demandés pour les systèmes de fichiers montés."}
 ::option[`lsblk -o NAME,SIZE,MODEL,SERIAL,ROTA`]{#filesystem-types-mkfs-destructive explanation="Cette commande affiche des détails matériels sur les périphériques blocs plutôt que les types et options effectifs des systèmes montés."}

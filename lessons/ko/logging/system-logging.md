@@ -23,8 +23,7 @@ meta_keywords: "리눅스 배우는 방법, 리눅스 시스템 로깅, syslog, 
 
 systemd 호스트에서는 일반적으로 `systemd-journald`가 서비스의 표준 출력, 커널 메시지, 저널 네이티브 메시지 또는 syslog 메시지를 수집합니다. rsyslog 같은 syslog 데몬도 메시지를 받아 전통적인 텍스트 파일에 쓰거나 다른 곳으로 전달할 수 있습니다. 애플리케이션이 자체 파일이나 외부 텔레메트리를 직접 관리하기도 합니다.
 
-:::single-choice{#system-logging-distinct-roles}
-수신한 메시지를 어디에 저장하거나 전달할지 결정하는 구성 요소는 무엇입니까?
+:::single-choice{#system-logging-distinct-roles} 수신한 메시지를 어디에 저장하거나 전달할지 결정하는 구성 요소는 무엇입니까?
 
 ::option[터미널의 현재 작업 디렉터리입니다.]{#system-logging-cwd explanation="셸 디렉터리는 시스템 전체 로깅 경로를 정의하지 않습니다."}
 ::option[실행 중인 커널 이미지의 파일 이름입니다.]{#system-logging-kernel-file explanation="커널은 메시지를 내보낼 수 있지만 이미지 파일 이름은 라우팅 정책이 아닙니다."}
@@ -43,8 +42,7 @@ $ journalctl --disk-usage
 
 `/var/log/syslog`는 호환되는 라우팅을 사용하는 Debian 계열 시스템에서 흔하고, `/var/log/messages`는 다른 배포판에서 흔합니다. 저널만 사용하는 호스트에는 어느 파일도 없을 수 있습니다. 애플리케이션 문서와 유닛 설정에서 추가 대상을 확인할 수 있습니다.
 
-:::single-choice{#system-logging-file-absence}
-`/var/log/syslog` 파일이 없다는 사실이 반드시 뜻하는 것은 무엇입니까?
+:::single-choice{#system-logging-file-absence} `/var/log/syslog` 파일이 없다는 사실이 반드시 뜻하는 것은 무엇입니까?
 
 ::option[호스트가 설정된 다른 로깅 대상을 사용할 수 있습니다.]{#system-logging-other-destination .correct explanation="저널 전용 시스템과 다른 syslog 정책은 이 파일을 만들 필요가 없습니다."}
 ::option[커널이 지금까지 메시지를 한 번도 생성하지 않았습니다.]{#system-logging-no-kernel explanation="커널 레코드는 저널이나 다른 대상에 있을 수 있습니다."}
@@ -62,8 +60,7 @@ $ journalctl -u ssh.service --since '1 hour ago'
 
 `-b`는 현재 부팅을 선택하고, `-p`는 우선순위로 필터링하며, `-u`는 유닛으로 필터링합니다. 유닛 이름과 보존된 부팅 기록은 호스트마다 다릅니다. `journalctl --list-boots`로 사용 가능한 부팅을 확인하고, 문제를 재현하면서 `journalctl -f`로 새 레코드를 추적합니다.
 
-:::single-choice{#system-logging-current-boot}
-`journalctl` 쿼리를 현재 부팅으로 제한하는 옵션은 무엇입니까?
+:::single-choice{#system-logging-current-boot} `journalctl` 쿼리를 현재 부팅으로 제한하는 옵션은 무엇입니까?
 
 ::option[`-b`]{#system-logging-boot-option .correct explanation="인수를 지정하지 않은 부팅 선택자는 현재 부팅을 선택합니다."}
 ::option[`-u`]{#system-logging-unit-option explanation="systemd 유닛으로 필터링하는 옵션입니다."}
@@ -82,8 +79,7 @@ Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 
 로그에는 사용자 이름, 주소, 경로, 토큰 또는 기타 민감한 데이터가 포함될 수 있습니다. 최소 권한으로 접근하고, 외부로 내보내는 자료는 비식별화하며, 조사 중에는 원본과 타임스탬프를 보존하십시오.
 
-:::single-choice{#system-logging-export-safety}
-로그 일부를 외부에 공유하기 전에 무엇을 해야 합니까?
+:::single-choice{#system-logging-export-safety} 로그 일부를 외부에 공유하기 전에 무엇을 해야 합니까?
 
 ::option[모든 타임스탬프를 임의의 값으로 바꿉니다.]{#system-logging-random-time explanation="시간 정보를 훼손하면 상관관계를 찾지 못할 수 있으며 올바른 비식별화 방법이 아닙니다."}
 ::option[비밀 정보와 민감한 식별자가 있는지 검토합니다.]{#system-logging-review-sensitive .correct explanation="로그에는 통제된 비식별화가 필요한 운영 또는 개인 데이터가 자주 포함됩니다."}

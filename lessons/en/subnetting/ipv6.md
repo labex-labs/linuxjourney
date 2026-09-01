@@ -28,8 +28,7 @@ Leading zeros in each group can be omitted, and one consecutive run of zero grou
 
 Only one `::` may appear because otherwise the number of omitted groups would be ambiguous. `2001:db8::/32` is reserved for documentation examples.
 
-:::single-choice{#ipv6-double-colon-rule}
-Why can `::` appear at most once in an IPv6 address?
+:::single-choice{#ipv6-double-colon-rule} Why can `::` appear at most once in an IPv6 address?
 
 ::option[Multiple `::` markers would make expansion ambiguous.]{#ipv6-compression-ambiguity .correct explanation="One compression marker can be expanded to the exact number of groups needed to reach eight."}
 ::option[IPv6 addresses contain only one zero bit.]{#ipv6-one-zero explanation="An address can contain many zero bits and zero groups."}
@@ -47,8 +46,7 @@ Important addresses and ranges include:
 
 IPv6 has no broadcast address; multicast and Neighbor Discovery serve use cases that IPv4 often handles with broadcast. A link-local destination can require an interface zone such as `fe80::1%eth0` because the same prefix exists on every link.
 
-:::single-choice{#ipv6-link-local-scope}
-What is the normal scope of an `fe80::/10` address?
+:::single-choice{#ipv6-link-local-scope} What is the normal scope of an `fe80::/10` address?
 
 ::option[Every host on the global Internet.]{#ipv6-global-link-local explanation="Global unicast addresses serve routed global scope."}
 ::option[Only a DNS zone file.]{#ipv6-dns-only explanation="Link-local addresses are assigned to interfaces and used on networks."}
@@ -59,8 +57,7 @@ What is the normal scope of an `fe80::/10` address?
 
 IPv6 CIDR notation uses a prefix length from `/0` through `/128`. A `/64` is the standard size for most LAN subnets and supports Stateless Address Autoconfiguration. An interface can hold link-local, stable global, temporary privacy, and other addresses simultaneously, each with preferred and valid lifetimes.
 
-:::single-choice{#ipv6-address-multiplicity}
-Why might one interface show several IPv6 addresses?
+:::single-choice{#ipv6-address-multiplicity} Why might one interface show several IPv6 addresses?
 
 ::option[IPv6 requires one address for each hexadecimal digit.]{#ipv6-one-per-digit explanation="Digits are representation, not separate interface assignments."}
 ::option[Different scopes and privacy or lifetime roles can coexist.]{#ipv6-several-roles .correct explanation="Link-local and one or more global or temporary addresses are normal."}
@@ -73,8 +70,7 @@ IPv6 Neighbor Discovery uses ICMPv6 for address resolution, duplicate-address de
 
 Blocking all ICMPv6 breaks essential protocol behavior. Firewall policy should permit the required message types with appropriate scope rather than treating ICMPv6 as optional.
 
-:::single-choice{#ipv6-default-router-source}
-How does an IPv6 host normally learn a default router dynamically?
+:::single-choice{#ipv6-default-router-source} How does an IPv6 host normally learn a default router dynamically?
 
 ::option[Through Router Advertisements.]{#ipv6-router-advertisements .correct explanation="Router Discovery is part of ICMPv6 Neighbor Discovery."}
 ::option[From an Ethernet broadcast address.]{#ipv6-ethernet-broadcast explanation="IPv6 does not use an IP broadcast address."}
@@ -94,8 +90,7 @@ $ ping -6 -c 3 2001:db8::25
 
 Use a real assigned test address rather than the documentation address shown. A dual-stack application can succeed over IPv4 while IPv6 is broken, or the reverse, so test each family and its DNS `A` or `AAAA` records explicitly.
 
-:::single-choice{#ipv6-dual-stack-test}
-Why test IPv4 and IPv6 separately on a dual-stack service?
+:::single-choice{#ipv6-dual-stack-test} Why test IPv4 and IPv6 separately on a dual-stack service?
 
 ::option[Every IPv6 packet must first become an IPv4 broadcast.]{#ipv6-becomes-ipv4 explanation="Native IPv6 and IPv4 are distinct protocol paths."}
 ::option[The two families can have different DNS, routes, filters, and failures.]{#ipv6-independent-paths .correct explanation="A successful fallback can hide a broken preferred address family."}

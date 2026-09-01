@@ -24,8 +24,7 @@ $ wc colors.txt
 
 De gauche à droite : 2 retours à la ligne, 3 mots séparés par des blancs et 15 octets. Une dernière ligne sans retour final n'est pas comptée par `wc -l`, qui compte les caractères de nouvelle ligne.
 
-:::single-choice{#wc-default-columns}
-Dans la sortie par défaut de `wc file.txt`, que représentent les trois premiers nombres ?
+:::single-choice{#wc-default-columns} Dans la sortie par défaut de `wc file.txt`, que représentent les trois premiers nombres ?
 
 ::option[Lignes, mots et octets, dans cet ordre.]{#wc-lines-words-bytes .correct explanation="`wc` indique par défaut retours à la ligne, mots et octets avant le nom."}
 ::option[Octets, mots et lignes, dans cet ordre.]{#wc-bytes-words-lines explanation="Ce sont les mêmes mesures dans le mauvais ordre ; les lignes viennent d'abord."}
@@ -53,16 +52,14 @@ $ printf 'one two\n' | wc -w
 
 Octets et caractères coïncident en ASCII mais peuvent différer en UTF-8. Avec stdin sans nom de fichier, `wc` omet normalement le libellé.
 
-:::single-choice{#wc-word-count-only}
-Quelle commande ne donne que le nombre de mots de `essay.txt` ?
+:::single-choice{#wc-word-count-only} Quelle commande ne donne que le nombre de mots de `essay.txt` ?
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="`-l` compte les retours à la ligne."}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="`-w` sélectionne le comptage des mots."}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="`-c` compte les octets."}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-Quelle option demande à `wc` de compter les caractères plutôt que les octets selon la locale ?
+:::single-choice{#wc-characters-not-bytes} Quelle option demande à `wc` de compter les caractères plutôt que les octets selon la locale ?
 
 ::option[`-m`]{#wc-character-option .correct explanation="`-m` compte les caractères, qui peuvent occuper plusieurs octets."}
 ::option[`-c`]{#wc-byte-option explanation="`-c` compte les octets."}
@@ -90,8 +87,7 @@ $ nl notes.txt
 
 Par défaut, `nl` numérote les lignes non vides du corps. Il préserve la ligne vide sans la numéroter et ne modifie pas le fichier.
 
-:::single-choice{#nl-default-blank-lines}
-Comment `nl notes.txt` traite-t-il par défaut les lignes vides du corps ?
+:::single-choice{#nl-default-blank-lines} Comment `nl notes.txt` traite-t-il par défaut les lignes vides du corps ?
 
 ::option[Il les omet entièrement.]{#nl-omit-blank explanation="La ligne vide reste dans la sortie, mais sans numéro."}
 ::option[Il les préserve sans numéro.]{#nl-preserve-unnumbered .correct explanation="Le style par défaut numérote les lignes non vides et reproduit les vides sans numéro."}
@@ -111,8 +107,7 @@ $ nl -ba notes.txt
 
 `-w 3` fixe la largeur du champ numérique et `-s ': '` change le séparateur.
 
-:::single-choice{#nl-number-all-lines}
-Quelle commande numérote toutes les lignes du corps de `notes.txt`, y compris les vides ?
+:::single-choice{#nl-number-all-lines} Quelle commande numérote toutes les lignes du corps de `notes.txt`, y compris les vides ?
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="Cette option ne change que la largeur du nombre."}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="`-b` choisit le style du corps et `a` numérote toutes les lignes."}

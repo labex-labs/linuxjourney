@@ -16,8 +16,7 @@ meta_keywords: "DNS プロセス，DNS ルックアップ，ドメイン解決�
 
 システムの resolver は、設定された順序で `/etc/hosts`、DNS などの情報源を参照できます。search suffix によって短い名前が複数の候補名へ変換される場合もあります。recursive resolver は上流へ問い合わせる前に、正と負のキャッシュエントリを確認します。
 
-:::single-choice{#dns-process-cache-first}
-recursive resolver が問い合わせ時に authoritative server へ一切接続しない場合があるのはなぜですか？
+:::single-choice{#dns-process-cache-first} recursive resolver が問い合わせ時に authoritative server へ一切接続しない場合があるのはなぜですか？
 
 ::option[DNS では、すべての問い合わせがまずローカルで失敗する必要があるから。]{#dns-process-requires-failure explanation="resolver はキャッシュから直ちに回答できます。"}
 ::option[まだ有効な回答をキャッシュしているから。]{#dns-process-valid-cache .correct explanation="キャッシュにより、レコードの有効期間が切れるまで階層探索を繰り返さずに済みます。"}
@@ -28,8 +27,7 @@ recursive resolver が問い合わせ時に authoritative server へ一切接続
 
 キャッシュミス時、recursive resolver は root server へ問い合わせられます。DNS root には A から M まで 13 個の名前付きサーバー identity があり、anycast などの耐障害性を高める配置技術を使って、多数の物理インスタンスから提供されています。通常、その応答は最終的なホストアドレスではなく、該当する top-level domain の authoritative server を resolver へ紹介します。
 
-:::single-choice{#dns-process-root-response}
-キャッシュにない `www.example.com` の検索に、root server は通常何を返しますか？
+:::single-choice{#dns-process-root-response} キャッシュにない `www.example.com` の検索に、root server は通常何を返しますか？
 
 ::option[`com` top-level-domain server への referral。]{#dns-process-root-referral .correct explanation="root に全ホストの最終レコードを保存せず、階層に沿って責任を委任します。"}
 ::option[`www.example.com` でホストされる Web ページ。]{#dns-process-root-webpage explanation="DNS が返すのはリソースレコードデータであり、アプリケーションの内容ではありません。"}
@@ -40,8 +38,7 @@ recursive resolver が問い合わせ時に authoritative server へ一切接続
 
 resolver は `com` authoritative server へ問い合わせ、`example.com` に委任された authoritative name server を受け取ります。委任された子 zone の内部に名前を持つサーバーへ到達する必要がある場合、referral に glue address レコードが含まれることがあります。その後 resolver は、要求されたレコードを authoritative server へ問い合わせます。
 
-:::single-choice{#dns-process-glue-purpose}
-DNS glue はどの問題の解決に役立ちますか？
+:::single-choice{#dns-process-glue-purpose} DNS glue はどの問題の解決に役立ちますか？
 
 ::option[DNS 解決後に HTTP ペイロードを暗号化すること。]{#dns-process-glue-http explanation="ペイロード暗号化は TLS などのアプリケーションセキュリティが扱います。"}
 ::option[最速の Ethernet スイッチポートを選ぶこと。]{#dns-process-glue-switch explanation="glue は委任用のアドレスデータであり、リンク転送ポリシーではありません。"}
@@ -52,8 +49,7 @@ DNS glue はどの問題の解決に役立ちますか？
 
 回答に CNAME alias が含まれ、別の名前をさらに検索する場合や、アプリケーション固有レコードによって追加問い合わせが必要な場合があります。`A` の問い合わせが返すのは IPv4 address レコードと関連する chain data だけです。IPv6 アドレスは別の `AAAA` 問い合わせで取得します。最終応答には `NOERROR`、`NXDOMAIN`、`SERVFAIL` など、意味の異なる status が含まれます。
 
-:::single-choice{#dns-process-nxdomain-meaning}
-`NXDOMAIN` は何を報告しますか？
+:::single-choice{#dns-process-nxdomain-meaning} `NXDOMAIN` は何を報告しますか？
 
 ::option[authoritative な結果によれば、問い合わせたドメイン名が存在しない。]{#dns-process-name-does-not-exist .correct explanation="名前は存在するが要求したレコード型だけがない場合とは異なります。"}
 ::option[名前は存在し、常に空の A レコードを持つ。]{#dns-process-empty-a explanation="存在する名前に要求データがない場合、通常は NXDOMAIN ではなく no-data response になります。"}
@@ -66,8 +62,7 @@ DNS glue はどの問題の解決に役立ちますか？
 
 resolver は TTL の規則に従って結果をキャッシュし、stub へ返します。その後アプリケーションがアドレスを選び、自身のネットワーク・セキュリティプロトコルを試します。
 
-:::single-choice{#dns-process-dnssec-limit}
-DNSSEC の検証が提供しないものはどれですか？
+:::single-choice{#dns-process-dnssec-limit} DNSSEC の検証が提供しないものはどれですか？
 
 ::option[署名済み DNS データの完全性と origin authentication。]{#dns-process-dnssec-does-integrity explanation="これらは DNSSEC の中心的な目的です。"}
 ::option[署名された存在しないデータに対する authenticated denial。]{#dns-process-authenticated-denial explanation="署名付き否定の仕組みによって、その検証を提供できます。"}

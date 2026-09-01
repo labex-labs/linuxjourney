@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 `myfile`의 사용자 소유자를 `patty`로 바꾸고 그룹은 그대로 둡니다. 현재 파일을 소유하고 있어도 사용자 소유자를 바꾸려면 일반적으로 적절한 권한이 필요합니다. 이 제한은 사용자가 할당량이나 다른 소유권 기반 제어를 피하기 위해 파일을 넘기는 일을 막습니다.
 
-:::single-choice{#ownership-permissions-change-user}
-그룹은 바꾸지 않고 `myfile`의 사용자 소유자를 `patty`로 변경하는 명령은 무엇인가요?
+:::single-choice{#ownership-permissions-change-user} 그룹은 바꾸지 않고 `myfile`의 사용자 소유자를 `patty`로 변경하는 명령은 무엇인가요?
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="`chown` 소유권 피연산자에 사용자 이름만 지정하면 사용자 소유자를 바꾸고 그룹을 보존합니다."}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp`는 사용자 소유자가 아니라 그룹 소유자를 바꿉니다."}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 이후 커널이 그룹 클래스를 선택하면 그룹 모드 비트가 적용됩니다. 그룹을 바꾼다고 읽기, 쓰기, 실행 비트가 자동으로 추가되지는 않습니다.
 
-:::single-choice{#ownership-permissions-change-group}
-`chgrp whales myfile`은 무엇을 변경하나요?
+:::single-choice{#ownership-permissions-change-group} `chgrp whales myfile`은 무엇을 변경하나요?
 
 ::option[`myfile`에 기록된 사용자 소유자]{#ownership-permissions-group-not-user explanation="사용자 소유자는 `chgrp`가 아니라 `chown`으로 바꿉니다."}
 ::option[`whales` 그룹에 나열된 구성원]{#ownership-permissions-group-members explanation="파일 메타데이터를 변경하며 시스템 그룹 멤버십 데이터베이스를 편집하지 않습니다."}
@@ -68,8 +66,7 @@ $ sudo chown patty:whales myfile
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-`chown` 명령 하나에서 사용자 `patty`와 그룹 `whales`를 지정하는 소유권 표현은 무엇인가요?
+:::single-choice{#ownership-permissions-change-both} `chown` 명령 하나에서 사용자 `patty`와 그룹 `whales`를 지정하는 소유권 표현은 무엇인가요?
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="결합된 소유권 표현에서 콜론이 사용자 이름과 그룹 이름을 구분합니다."}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="슬래시는 `chown` 사용자와 그룹 피연산자에 여기서 소개한 구분 기호가 아닙니다."}
@@ -80,8 +77,7 @@ $ ls -l myfile
 
 `-R` 옵션은 소유권을 재귀적으로 바꾸지만 넓은 재귀 명령은 예상하지 않은 디렉터리 트리를 지나거나 서비스 데이터에 영향을 줄 수 있습니다. 정확한 대상을 확인하고 구현의 심볼릭 링크 동작을 이해하며 트리를 미리 살펴보고 큰 계층을 바꾸기 전에 작은 표본을 검증하세요. 범위를 검토하지 않고 예제의 권한 소유권 명령을 실제 시스템에 복사하지 마세요.
 
-:::single-choice{#ownership-permissions-mode-separate}
-파일의 그룹 소유자를 변경한 뒤 일반 그룹 권한 비트에는 어떤 일이 생기나요?
+:::single-choice{#ownership-permissions-mode-separate} 파일의 그룹 소유자를 변경한 뒤 일반 그룹 권한 비트에는 어떤 일이 생기나요?
 
 ::option[항상 자동으로 읽기와 쓰기가 됩니다.]{#ownership-permissions-mode-read-write explanation="`chgrp`는 고정된 그룹 모드를 자동으로 선택하지 않습니다."}
 ::option[소유자의 권한 묶음에서 복사됩니다.]{#ownership-permissions-mode-copied explanation="소유권이 바뀌어도 소유자와 그룹 묶음은 서로 독립적으로 남습니다."}

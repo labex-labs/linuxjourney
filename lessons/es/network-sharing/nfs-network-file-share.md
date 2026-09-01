@@ -18,8 +18,7 @@ Instala las utilidades cliente de NFS de la distribución, normalmente incluidas
 
 `showmount -e SERVER` puede enumerar exportaciones proporcionadas mediante el protocolo de montaje antiguo, pero no es concluyente para todos los servidores que solo usan NFSv4. Que la enumeración falle no demuestra que no exista una exportación NFSv4 autorizada.
 
-:::single-choice{#nfs-showmount-limit}
-¿Por qué puede estar incompleta la salida de `showmount -e` para un servidor NFSv4?
+:::single-choice{#nfs-showmount-limit} ¿Por qué puede estar incompleta la salida de `showmount -e` para un servidor NFSv4?
 
 ::option[Consulta un protocolo antiguo de enumeración de exportaciones que quizá no esté expuesto.]{#nfs-showmount-protocol .correct explanation="NFSv4 puede funcionar sin que ese servicio independiente de enumeración esté disponible."}
 ::option[Solo muestra la temperatura de la CPU local.]{#nfs-showmount-temperature explanation="La orden consulta información sobre las exportaciones de un servidor NFS."}
@@ -41,8 +40,7 @@ Especifica una versión solo cuando lo requieran la política o la compatibilida
 $ findmnt --target /mnt/team
 ```
 
-:::single-choice{#nfs-mount-operands}
-En la orden de montaje, ¿qué es `server.example.net:/srv/team`?
+:::single-choice{#nfs-mount-operands} En la orden de montaje, ¿qué es `server.example.net:/srv/team`?
 
 ::option[El directorio local que oculta la exportación remota.]{#nfs-local-mountpoint explanation="El punto de montaje local del ejemplo es `/mnt/team`."}
 ::option[El nombre del paquete cliente que se debe instalar.]{#nfs-package-name explanation="Los nombres de los paquetes dependen de la distribución y no son operandos del origen de montaje."}
@@ -55,8 +53,7 @@ El acceso NFS combina las reglas de exportación del servidor, la seguridad del 
 
 El servidor suele asignar la identidad root remota a una identidad sin privilegios mediante el aislamiento de root. No desactives esa protección solo para resolver un error de permisos; inspecciona los ID, la propiedad del directorio, la política de exportación y el modelo de seguridad previsto.
 
-:::single-choice{#nfs-name-versus-id}
-¿Por qué dos usuarios con el mismo nombre visible pueden recibir permisos NFS distintos?
+:::single-choice{#nfs-name-versus-id} ¿Por qué dos usuarios con el mismo nombre visible pueden recibir permisos NFS distintos?
 
 ::option[Los permisos NFS pueden depender de la asignación de identidades numéricas.]{#nfs-numeric-mapping .correct explanation="Que los nombres coincidan no demuestra que el cliente y el servidor resuelvan el mismo UID y los mismos grupos."}
 ::option[NFS ignora todos los permisos del sistema de archivos.]{#nfs-ignores-permissions explanation="Los permisos del sistema de archivos y de la exportación siguen formando parte de la autorización."}
@@ -73,8 +70,7 @@ server.example.net:/srv/team /mnt/team nfs4 rw,_netdev,nofail,x-systemd.automoun
 
 Antes de editar fstab, conserva un medio de acceso para la recuperación y valida con un analizador no destructivo o una prueba de montaje controlada. Un montaje automático mejora el comportamiento ante problemas de disponibilidad, pero no corrige la autorización, el DNS ni las caídas del servidor.
 
-:::single-choice{#nfs-automount-benefit}
-¿Cuál es una ventaja principal del montaje automático bajo demanda de un recurso NFS?
+:::single-choice{#nfs-automount-benefit} ¿Cuál es una ventaja principal del montaje automático bajo demanda de un recurso NFS?
 
 ::option[Concede a todos los clientes acceso root a la exportación.]{#nfs-automount-root explanation="El momento del montaje no anula la autorización del servidor."}
 ::option[Puede evitar que el servidor tenga que estar disponible durante el arranque inicial.]{#nfs-automount-boot .correct explanation="La conexión se activa al acceder en vez de bloquear necesariamente el inicio temprano."}
@@ -92,8 +88,7 @@ $ findmnt --target /mnt/team
 
 Un desmontaje forzado o diferido puede ocultar referencias activas y provocar errores en las aplicaciones; reserva esas opciones para un fallo diagnosticado y con un plan de recuperación explícito.
 
-:::single-choice{#nfs-safe-unmount}
-¿Qué debe preceder a un desmontaje NFS normal?
+:::single-choice{#nfs-safe-unmount} ¿Qué debe preceder a un desmontaje NFS normal?
 
 ::option[Coordinar los procesos que utilizan el recurso y terminar las escrituras importantes.]{#nfs-coordinate-writers .correct explanation="Retirar un sistema de archivos activo de las aplicaciones puede interrumpir la E/S o dejar trabajo incompleto."}
 ::option[Eliminar el directorio exportado en el servidor.]{#nfs-delete-export explanation="Desmontar en el cliente no exige destruir los datos del servidor."}

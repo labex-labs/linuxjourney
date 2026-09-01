@@ -18,8 +18,7 @@ Source NAT ersetzt die Quelladresse eines Pakets, wenn es ein Netzwerk verlässt
 
 Der Übersetzer verfolgt Zuordnungen, damit Antwortpakete zum ursprünglichen internen Endpunkt zurückübersetzt werden können. Er leitet normalerweise denselben Transportdatenstrom weiter und muss keine getrennte Proxyverbindung öffnen, wie es ein Anwendungsproxy tun würde.
 
-:::single-choice{#nat-source-translation}
-Was verändert Source NAT an einem ausgehenden Paket?
+:::single-choice{#nat-source-translation} Was verändert Source NAT an einem ausgehenden Paket?
 
 ::option[Nur die Dateiberechtigungen der Zielanwendung.]{#nat-file-permissions explanation="NAT wirkt auf Netzwerk- und Transportheader und nicht auf entfernte Dateisysteme."}
 ::option[Die Quelladresse und bei Many-to-one-Nutzung häufig den Quellport.]{#nat-source-fields .correct explanation="Die Zuordnung ermöglicht, Rückverkehr mit dem ursprünglichen internen Datenstrom zu verbinden."}
@@ -30,8 +29,7 @@ Was verändert Source NAT an einem ausgehenden Paket?
 
 Destination NAT schreibt Zieladresse oder -port um, gewöhnlich um einen internen Dienst über einen externen Endpunkt zu veröffentlichen. Eine Portweiterleitungsregel kann einen externen TCP-Port einer anderen internen Adresse und einem anderen Port zuordnen. Rückverkehr benötigt eine konsistente Rückübersetzung.
 
-:::single-choice{#nat-port-forward}
-Welche NAT-Form implementiert gewöhnlich eine eingehende Portweiterleitung?
+:::single-choice{#nat-port-forward} Welche NAT-Form implementiert gewöhnlich eine eingehende Portweiterleitung?
 
 ::option[Nur Source NAT vor der Routensuche.]{#nat-snat-port-forward explanation="Die Veröffentlichung eines internen Ziels erfordert die Übersetzung von Zielfeldern."}
 ::option[Überhaupt keine Adress- oder Portübersetzung.]{#nat-no-translation explanation="Eine Portweiterleitungsregel ist definitionsgemäß eine Übersetzungsrichtlinie."}
@@ -42,8 +40,7 @@ Welche NAT-Form implementiert gewöhnlich eine eingehende Portweiterleitung?
 
 NAT ist keine Firewall. Ein zustandsbehafteter Übersetzer besitzt möglicherweise keine Zuordnung für unaufgeforderten eingehenden Datenverkehr, doch ausdrückliche Weiterleitung, Zielübersetzung, Filterung und Anwendungsoffenlegung bestimmen die Erreichbarkeit. Sicherheitsrichtlinien sollten durch Firewallregeln, Dienste mit geringstmöglichen Berechtigungen und Ende-zu-Ende-Kontrollen ausgedrückt und auditiert werden, statt sie aus Adressumschreibung abzuleiten.
 
-:::single-choice{#nat-not-firewall}
-Warum sollte NAT nicht für sich allein als Sicherheitsrichtlinie behandelt werden?
+:::single-choice{#nat-not-firewall} Warum sollte NAT nicht für sich allein als Sicherheitsrichtlinie behandelt werden?
 
 ::option[NAT verschlüsselt automatisch jede Nutzlast.]{#nat-encrypts explanation="Adressübersetzung bietet keine Vertraulichkeit der Nutzlast."}
 ::option[Übersetzungs- und Verkehrsfilterregeln besitzen unterschiedliche Zwecke.]{#nat-filter-separate .correct explanation="Erreichbarkeit und Autorisierung erfordern auch bei vorhandener Übersetzung ausdrückliche Filter- und Dienstrichtlinien."}
@@ -63,8 +60,7 @@ $ sudo conntrack -L
 
 Der zweite Befehl erfordert Conntrack-Werkzeuge und erhöhte Berechtigungen. Änderungen am Regelsatz können den Fernzugriff trennen; verwende deshalb Konsolenwiederherstellung, atomare Konfiguration, Validierung und Rücknahme.
 
-:::single-choice{#nat-trace-flow}
-Welche Belege sind nötig, um einen Datenstrom mit gemeinsam genutzter Adresse zu einem internen Client zurückzuverfolgen?
+:::single-choice{#nat-trace-flow} Welche Belege sind nötig, um einen Datenstrom mit gemeinsam genutzter Adresse zu einem internen Client zurückzuverfolgen?
 
 ::option[Nur die externe Adresse ohne Zeit oder Port.]{#nat-address-only explanation="Viele Clients und Datenströme können diese Adresse gemeinsam verwenden."}
 ::option[Nur der angezeigte Hostname des Clients.]{#nat-hostname-only explanation="Der Übersetzer ordnet Pakettupel und nicht unbedingt Hostnamen zu."}

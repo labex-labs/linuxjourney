@@ -20,8 +20,7 @@ Linux の学習へようこそ。最初のステップは Linux シェルを理�
 
 シェルは高速で、スクリプト化でき、ほぼすべての Linux システムで利用できるため便利です。コマンドを学ぶにつれ、それらを組み合わせてファイルを調べ、ディレクトリを管理し、テキストを検索し、ソフトウェアをインストールし、繰り返し作業を自動化できます。
 
-:::single-choice{#distinguish-shell-and-terminal}
-端末とシェルの関係を正しく説明しているものはどれですか？
+:::single-choice{#distinguish-shell-and-terminal} 端末とシェルの関係を正しく説明しているものはどれですか？
 
 ::option[端末がウィンドウを提供し、その中でシェルが動作します。]{#shell-runs-in-terminal .correct explanation="端末は操作するためのインターフェースで、シェルはその中で動作するコマンド処理プログラムです。"}
 ::option[端末がコマンドを受け取り、シェルはその出力を表示するだけです。]{#terminal-accepts-commands explanation="役割が逆です。端末がインターフェースを提供し、シェルがコマンドを受け取って実行します。"}
@@ -40,8 +39,7 @@ pete@icebox:/home/pete $
 
 `$` 記号は、シェルが通常ユーザーからの入力を待っていることを示します。コマンド入力時にこの記号は入力しません。シェルが表示するものです。`#` が表示されていれば、通常はより強力で危険も大きい root ユーザーとして作業しています。
 
-:::single-choice{#interpret-dollar-prompt}
-例のプロンプト末尾にある `$` は何を示しますか？
+:::single-choice{#interpret-dollar-prompt} 例のプロンプト末尾にある `$` は何を示しますか？
 
 ::option[シェルが root ユーザーの権限で動作しています。]{#root-user-ready explanation="root のプロンプトは通常、`$` ではなく `#` で終わります。root アクセスには追加の権限と危険があります。"}
 ::option[シェルが通常ユーザーからの入力を待っています。]{#normal-user-ready .correct explanation="`$` は通常ユーザーのプロンプトを表し、シェルがコマンドを受け付ける準備ができていることを示します。"}
@@ -56,8 +54,7 @@ command options arguments
 
 たとえば `echo Hello World` では、`echo` がコマンドで、`Hello World` が渡されるテキストです。
 
-:::single-choice{#identify-command-name}
-`echo Hello World` で、コマンド名はどの部分ですか？
+:::single-choice{#identify-command-name} `echo Hello World` で、コマンド名はどの部分ですか？
 
 ::option[`Hello`]{#hello-command explanation="`Hello` はコマンド名の後にあるため、`echo` へ渡すテキストの一部です。"}
 ::option[`World`]{#world-command explanation="`World` も `echo` へ渡すテキストで、実行するコマンドの名前ではありません。"}
@@ -84,8 +81,7 @@ Hello from Bash
 
 複数の単語を 1 つのテキストとしてシェルに扱わせたいとき、引用符が役立ちます。
 
-:::single-choice{#group-words-with-quotes}
-`Hello from Bash` を、引用符で囲んだ 1 つのテキストとしてシェルに扱わせるコマンドはどれですか？
+:::single-choice{#group-words-with-quotes} `Hello from Bash` を、引用符で囲んだ 1 つのテキストとしてシェルに扱わせるコマンドはどれですか？
 
 ::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="引用符によって 3 つの単語が、`echo` へ渡す 1 つの引数にまとめられます。"}
 ::option[`echo Hello from Bash`]{#unquoted-words explanation="見える結果は同じですが、引用符がないため、シェルはそれらを別々の引数として扱います。"}

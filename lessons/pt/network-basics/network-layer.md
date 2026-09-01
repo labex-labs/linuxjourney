@@ -16,8 +16,7 @@ A camada de rede fornece endereçamento lógico e entrega de pacotes por melhor 
 
 Um cabeçalho IP inclui endereços de origem e destino, além dos campos necessários ao encaminhamento e ao processamento do protocolo. A carga útil geralmente contém um segmento TCP, um datagrama UDP ou uma mensagem ICMP. O IP não garante chegada, ordem nem ausência de duplicatas.
 
-:::single-choice{#network-layer-ip-service}
-Qual serviço de entrega o IP fornece por si só?
+:::single-choice{#network-layer-ip-service} Qual serviço de entrega o IP fornece por si só?
 
 ::option[Confirmações garantidas de transações da aplicação.]{#network-layer-guaranteed-commit explanation="O resultado de uma entrega IP não pode comprovar a persistência da aplicação."}
 ::option[Entrega de pacotes por melhor esforço.]{#network-layer-best-effort .correct explanation="As camadas superiores ou as aplicações acrescentam qualquer recuperação ou ordenação necessária."}
@@ -28,8 +27,7 @@ Qual serviço de entrega o IP fornece por si só?
 
 Um endereço e um comprimento de prefixo definem quais bits iniciais formam um prefixo de rede. Os hosts usam essas informações e suas rotas para decidir se um destino está no enlace ou exige um roteador de próximo salto. Uma sub-rede é um intervalo de endereços sob um prefixo e uma política; sub-redes não estão automaticamente conectadas a todas as outras sub-redes.
 
-:::single-choice{#network-layer-prefix-decision}
-O que ajuda um host a decidir se um destino IPv4 está no enlace?
+:::single-choice{#network-layer-prefix-decision} O que ajuda um host a decidir se um destino IPv4 está no enlace?
 
 ::option[A senha da aplicação no destino.]{#network-layer-password explanation="Os dados de autenticação não definem prefixos de rede."}
 ::option[A cor do cabo Ethernet.]{#network-layer-cable-color explanation="A aparência do cabo não possui semântica de endereçamento."}
@@ -46,8 +44,7 @@ $ ip route get 203.0.113.10
 
 Essa é uma consulta de rota local, não uma prova de que todos os roteadores seguintes possuem uma rota funcional nem de que o destino aceita tráfego.
 
-:::single-choice{#network-layer-longest-prefix}
-Qual rota normalmente vence entre as rotas elegíveis para o mesmo destino?
+:::single-choice{#network-layer-longest-prefix} Qual rota normalmente vence entre as rotas elegíveis para o mesmo destino?
 
 ::option[A rota cujo nome de interface vem primeiro em ordem alfabética.]{#network-layer-alphabetical explanation="A grafia da interface não é a regra de seleção."}
 ::option[A rota mais antiga, independentemente de seu prefixo.]{#network-layer-oldest explanation="A idade por si só não prevalece sobre a correspondência de prefixos."}
@@ -60,8 +57,7 @@ Cada pacote IPv4 possui um TTL e cada pacote IPv6, um Limite de Saltos. Um rotea
 
 Normalmente, os roteadores preservam os endereços IP de ponta a ponta, mas NAT, túneis, proxies e outros dispositivos intermediários podem transformar ou encapsular os pacotes. Os cabeçalhos da camada de enlace mudam em cada salto roteado de qualquer forma.
 
-:::single-choice{#network-layer-hop-limit}
-Por que o TTL ou o Limite de Saltos é reduzido pelos roteadores?
+:::single-choice{#network-layer-hop-limit} Por que o TTL ou o Limite de Saltos é reduzido pelos roteadores?
 
 ::option[Para aumentar as permissões de arquivo da aplicação.]{#network-layer-hop-permissions explanation="A contagem de saltos não tem relação com a autorização do sistema de arquivos."}
 ::option[Para converter todos os pacotes de IPv4 para IPv6.]{#network-layer-hop-convert explanation="A tradução de protocolos não é a finalidade do campo."}

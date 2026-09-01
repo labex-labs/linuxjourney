@@ -18,8 +18,7 @@ Quando um diretório possui o sticky bit, o Linux geralmente permite que uma ent
 
 A restrição diz respeito às entradas do diretório. Ela não impede que o proprietário de um arquivo edite seu conteúdo quando as permissões do arquivo permitem essa operação, nem torna o diretório privado.
 
-:::single-choice{#sticky-bit-removal-rule}
-Em um diretório compartilhado com sticky bit, qual usuário comum normalmente pode remover uma determinada entrada?
+:::single-choice{#sticky-bit-removal-rule} Em um diretório compartilhado com sticky bit, qual usuário comum normalmente pode remover uma determinada entrada?
 
 ::option[Qualquer usuário que consiga listar o diretório.]{#sticky-bit-any-reader explanation="A permissão de leitura do diretório pode revelar nomes, mas não ignora a restrição de propriedade do sticky bit."}
 ::option[O proprietário da entrada, com o acesso necessário ao diretório.]{#sticky-bit-entry-owner .correct explanation="O proprietário da entrada é uma das identidades normalmente permitidas pela regra do diretório com sticky bit."}
@@ -39,8 +38,7 @@ O `t` minúsculo final ocupa a posição de execução dos outros. Ele significa
 
 Como `/tmp` normalmente permite escrita e busca para todos, vários usuários podem criar entradas nele. O sticky bit impede que um usuário comum remova as entradas de outro usuário apenas porque o diretório permite escrita para todos. As aplicações ainda devem criar objetos temporários com segurança, pois nomes previsíveis, links inseguros e modos de arquivos fracos geram riscos separados.
 
-:::single-choice{#sticky-bit-lowercase-t}
-O que um `t` minúsculo no final do modo de um diretório indica?
+:::single-choice{#sticky-bit-lowercase-t} O que um `t` minúsculo no final do modo de um diretório indica?
 
 ::option[O sticky bit e a execução dos outros estão definidos.]{#sticky-bit-t-with-execute .correct explanation="O `t` minúsculo combina o bit especial sticky com o bit comum de execução dos outros."}
 ::option[O sticky bit está definido, mas a execução dos outros está ausente.]{#sticky-bit-t-without-execute explanation="Essa combinação é mostrada como `T` maiúsculo."}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 O `1` inicial define o sticky, enquanto `777` fornece o modo comum. Esse modo é apropriado somente quando o diretório é compartilhado intencionalmente por todos os usuários locais. Para um diretório de equipe, permissões de grupo mais restritas podem ser preferíveis. Remova somente o sticky bit com `chmod -t shared-directory`.
 
-:::single-choice{#sticky-bit-octal-value}
-Qual valor octal inicial representa o sticky bit?
+:::single-choice{#sticky-bit-octal-value} Qual valor octal inicial representa o sticky bit?
 
 ::option[`2`]{#sticky-bit-value-two explanation="Um `2` inicial representa o setgid."}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="O sticky bit contribui com `1` para o dígito inicial de bits especiais."}
@@ -75,8 +72,7 @@ Qual valor octal inicial representa o sticky bit?
 
 O sticky não concede acesso de escrita nem de busca; ele apenas restringe a remoção e a renomeação depois que as permissões comuns permitem modificar o diretório. Verifique em conjunto o proprietário, o grupo, o modo comum, as ACLs e o contexto de montagem do diretório. Teste com contas sem privilégios em um ambiente isolado, em vez de alterar `/tmp` em um sistema em uso.
 
-:::single-choice{#sticky-bit-access-scope}
-Adicionar o sticky bit torna um diretório sem permissão de escrita gravável por outros usuários?
+:::single-choice{#sticky-bit-access-scope} Adicionar o sticky bit torna um diretório sem permissão de escrita gravável por outros usuários?
 
 ::option[Sim; o sticky adiciona automaticamente a escrita para todas as classes.]{#sticky-bit-adds-write explanation="O bit especial não reescreve os bits de escrita do proprietário, do grupo nem dos outros."}
 ::option[Sim; o sticky desabilita o trio de permissões dos outros no diretório.]{#sticky-bit-disables-other explanation="O trio dos outros continua participando das verificações normais de acesso."}

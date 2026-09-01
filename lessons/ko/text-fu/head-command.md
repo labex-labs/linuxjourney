@@ -22,8 +22,7 @@ $ head events.log
 
 파일은 수정되지 않습니다. 파일이 10줄보다 짧으면 사용 가능한 모든 줄을 출력합니다.
 
-:::single-choice{#head-default-lines}
-기본적으로 `head events.log`는 무엇을 출력하나요?
+:::single-choice{#head-default-lines} 기본적으로 `head events.log`는 무엇을 출력하나요?
 
 ::option[마지막 10줄 또는 파일이 더 짧으면 모든 줄을 출력합니다.]{#head-last-ten explanation="입력의 끝을 표시하는 것은 `tail`의 역할입니다. `head`는 시작 부분을 선택합니다."}
 ::option[처음 10줄 또는 파일이 더 짧으면 모든 줄을 출력합니다.]{#head-first-ten .correct explanation="개수 옵션이 없으면 `head`는 입력의 처음 열 줄까지 선택합니다."}
@@ -40,8 +39,7 @@ $ head -n 15 events.log
 
 GNU `head`는 축약형 `-15`도 지원하지만 `-n 15`가 옵션의 의미를 더 분명하게 나타냅니다.
 
-:::single-choice{#head-five-lines}
-`report.txt`의 처음 다섯 줄을 표시하는 명령어는 무엇인가요?
+:::single-choice{#head-five-lines} `report.txt`의 처음 다섯 줄을 표시하는 명령어는 무엇인가요?
 
 ::option[`head -c 5 report.txt`]{#head-five-bytes explanation="`-c` 옵션은 줄이 아니라 바이트를 세므로 첫 줄 중간에서 멈출 수 있습니다."}
 ::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="`-n` 옵션은 줄 수를 선택하며 `5`는 처음 다섯 줄을 요청합니다."}
@@ -58,8 +56,7 @@ $ head -c 20 archive.bin
 
 처음 20바이트를 출력합니다. 텍스트 줄의 중간이나 멀티바이트 텍스트의 인코딩된 문자 중간에서 출력이 끝날 수 있습니다. 일반 텍스트를 미리 볼 때는 줄 모드를 사용하세요.
 
-:::single-choice{#head-first-bytes}
-`payload.bin`의 처음 100바이트를 표준 출력에 쓰는 명령어는 무엇인가요?
+:::single-choice{#head-first-bytes} `payload.bin`의 처음 100바이트를 표준 출력에 쓰는 명령어는 무엇인가요?
 
 ::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="`-c` 옵션은 바이트 수를 선택하므로 사용 가능한 처음 100바이트를 요청합니다."}
 ::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="`-n` 옵션은 바이트가 아니라 줄을 셉니다. 100바이트보다 훨씬 많거나 적게 출력할 수 있습니다."}
@@ -87,16 +84,14 @@ $ head -n 2 january.txt february.txt
 
 헤더를 숨기려면 `-q`를 사용하고 파일이 하나여도 헤더를 표시하려면 `-v`를 사용합니다.
 
-:::single-choice{#head-pipeline-preview}
-`generate-report | head -n 5`에서 `head`는 무엇을 읽나요?
+:::single-choice{#head-pipeline-preview} `generate-report | head -n 5`에서 `head`는 무엇을 읽나요?
 
 ::option[표준 입력을 통해 `generate-report`의 표준 출력을 읽습니다.]{#head-pipe-input .correct explanation="파이프는 생성자의 표준 출력을 `head`의 표준 입력에 연결하며 여기서 처음 다섯 줄을 선택합니다."}
 ::option[현재 디렉터리의 처음 다섯 파일 이름을 읽습니다.]{#head-directory-names explanation="디렉터리 나열 명령어는 사용되지 않았습니다. `head`는 파이프라인을 통해 스트림을 받습니다."}
 ::option[이름이 `generate-report`인 파일에서 5바이트를 읽습니다.]{#head-producer-file explanation="왼쪽은 명령어로 실행되며 `-n`은 바이트가 아니라 줄을 셉니다."}
 :::
 
-:::single-choice{#head-suppress-filename-headers}
-`head`가 여러 파일을 읽을 때 파일 이름 헤더를 숨기는 옵션은 무엇인가요?
+:::single-choice{#head-suppress-filename-headers} `head`가 여러 파일을 읽을 때 파일 이름 헤더를 숨기는 옵션은 무엇인가요?
 
 ::option[`-v`]{#head-verbose explanation="`-v` 옵션은 파일이 하나뿐이어도 헤더를 요청하므로 숨기기와 반대입니다."}
 ::option[`-c`]{#head-byte-option explanation="`-c` 옵션은 선택 단위를 바이트로 바꾸며 파일 이름 헤더를 제어하지 않습니다."}

@@ -35,8 +35,7 @@ drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-在 `drwxr-xr-x` 中，第一个 `d` 表示什么？
+:::single-choice{#file-permissions-type-character} 在 `drwxr-xr-x` 中，第一个 `d` 表示什么？
 
 ::option[该对象是符号链接。]{#file-permissions-type-link explanation="符号链接通常在文件类型位置显示为 `l`。"}
 ::option[该对象是目录。]{#file-permissions-type-directory .correct explanation="第一个字符是文件类型，`d` 标识目录。"}
@@ -62,8 +61,7 @@ d | rwx | r-x | r-x
 
 删除文件主要受父目录权限控制，而不是文件自身的写入位。
 
-:::single-choice{#file-permissions-directory-execute}
-目录的执行权限主要允许什么？
+:::single-choice{#file-permissions-directory-execute} 目录的执行权限主要允许什么？
 
 ::option[运行目录中存储的每个普通文件。]{#file-permissions-directory-run-files explanation="目录的执行位不会授予其中每个文件执行权限。"}
 ::option[更改目录中每个文件的内容。]{#file-permissions-directory-edit-files explanation="写入文件内容取决于文件权限和其他访问控制。"}
@@ -82,16 +80,14 @@ d | rwx | r-x | r-x
 
 在示例中，所有者三元组是 `rwx`，组和其他都是 `r-x`。所有者可以读取、写入和搜索目录。组和其他类别可以读取及搜索，但不能通过普通模式位创建或删除目录项。
 
-:::single-choice{#file-permissions-triplet-order}
-在文件类型字符之后，三个权限三元组按什么顺序出现？
+:::single-choice{#file-permissions-triplet-order} 在文件类型字符之后，三个权限三元组按什么顺序出现？
 
 ::option[组、所有者、其他。]{#file-permissions-order-group-first explanation="组三元组排在第二，而不是第一。"}
 ::option[其他、组、所有者。]{#file-permissions-order-other-first explanation="其他三元组排在最后，所有者三元组排在第一。"}
 ::option[所有者、组、其他。]{#file-permissions-order-owner-first .correct explanation="九个权限字符始终按所有者、组和其他的顺序显示三元组。"}
 :::
 
-:::single-choice{#file-permissions-example-group}
-在 `drwxr-xr-x` 中，组类别具有哪些普通权限？
+:::single-choice{#file-permissions-example-group} 在 `drwxr-xr-x` 中，组类别具有哪些普通权限？
 
 ::option[读取和写入。]{#file-permissions-group-read-write explanation="组三元组为 `r-x`，所以写入位置是 `-`。"}
 ::option[写入和执行。]{#file-permissions-group-write-execute explanation="组三元组的第一个位置是 `r`，而不是 `w`。"}

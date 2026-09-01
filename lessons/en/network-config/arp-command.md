@@ -23,8 +23,7 @@ $ ip neighbor show dev enp1s0
 
 An entry includes an IP address, link-layer address, device, and reachability state. The table can be empty after boot and populate as traffic needs local next hops.
 
-:::single-choice{#arp-command-modern-view}
-Which command displays modern Linux neighbor-table state?
+:::single-choice{#arp-command-modern-view} Which command displays modern Linux neighbor-table state?
 
 ::option[`pwd neighbor`]{#arp-command-pwd explanation="Pwd reports the shell working directory."}
 ::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="It reports both IPv4 ARP-derived and IPv6 Neighbor Discovery entries."}
@@ -37,8 +36,7 @@ When an on-link IPv4 mapping is absent, a host broadcasts an ARP request asking 
 
 For a remote IP destination, the host resolves the selected gateway's address rather than the remote host's MAC.
 
-:::single-choice{#arp-command-remote-target}
-Which IPv4 neighbor does a host resolve for an off-link destination?
+:::single-choice{#arp-command-remote-target} Which IPv4 neighbor does a host resolve for an off-link destination?
 
 ::option[The final remote server across all routers.]{#arp-command-final-server explanation="Its MAC address has no meaning on the source link."}
 ::option[Every DNS server listed in resolver configuration.]{#arp-command-all-dns explanation="Neighbor resolution follows the selected route, not the resolver list."}
@@ -49,8 +47,7 @@ Which IPv4 neighbor does a host resolve for an off-link destination?
 
 Common states include `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE`, and `FAILED`. `STALE` means recent reachability confirmation has expired; the cached address can still be used while the stack probes as needed. `FAILED` indicates resolution or reachability detection did not succeed, but causes can include link, VLAN, address, route, filtering, or the peer being down.
 
-:::single-choice{#arp-command-stale-state}
-Does `STALE` mean the neighbor is known to be unreachable?
+:::single-choice{#arp-command-stale-state} Does `STALE` mean the neighbor is known to be unreachable?
 
 ::option[No; it lacks recent confirmation and can be probed on use.]{#arp-command-stale-probe .correct explanation="The state is not equivalent to `FAILED`."}
 ::option[Yes, and the entry can never be used again.]{#arp-command-stale-dead explanation="Stale entries remain candidates and can transition after reachability checks."}
@@ -63,8 +60,7 @@ Static entries and cache flushes are state-changing and can disrupt active traff
 
 ARP has no built-in authentication, so duplicate addresses or spoofed replies can poison mappings. Switch protections, segmentation, monitoring, and higher-layer authentication help reduce impact.
 
-:::single-choice{#arp-command-flush-first}
-Why avoid flushing the whole neighbor table as the first diagnostic step?
+:::single-choice{#arp-command-flush-first} Why avoid flushing the whole neighbor table as the first diagnostic step?
 
 ::option[Neighbor entries are stored only in DNS root servers.]{#arp-command-neighbors-dns explanation="They are maintained by the local network stack."}
 ::option[A flush permanently removes the interface hardware.]{#arp-command-flush-hardware explanation="It removes cache entries, not physical devices."}

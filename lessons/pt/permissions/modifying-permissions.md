@@ -48,8 +48,7 @@ $ chmod u=rw,g=r,o= myfile
 
 Se a classe for omitida, como em `chmod +x myfile`, o umask do processo afeta quais classes são alteradas. Indicar a classe explicitamente facilita a revisão do resultado pretendido.
 
-:::single-choice{#modifying-permissions-remove-group-write}
-Qual modo simbólico remove a permissão de escrita do grupo sem alterar os outros bits desse grupo?
+:::single-choice{#modifying-permissions-remove-group-write} Qual modo simbólico remove a permissão de escrita do grupo sem alterar os outros bits desse grupo?
 
 ::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="Esse comando remove a permissão de escrita da classe do proprietário, não da classe do grupo."}
 ::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="`g` seleciona a classe do grupo, `-` remove um bit e `w` identifica a permissão de escrita."}
@@ -79,16 +78,14 @@ O modo `755` se expande da seguinte forma:
 
 Ao contrário das operações simbólicas com `+` ou `-`, um modo octal fornece o conjunto completo de permissões comuns. Uma lição posterior aborda o dígito inicial opcional usado para os bits de modo especiais.
 
-:::single-choice{#modifying-permissions-octal-read-value}
-Qual valor octal representa a permissão de leitura?
+:::single-choice{#modifying-permissions-octal-read-value} Qual valor octal representa a permissão de leitura?
 
 ::option[`1`]{#modifying-permissions-value-one explanation="O valor `1` representa a permissão de execução."}
 ::option[`2`]{#modifying-permissions-value-two explanation="O valor `2` representa a permissão de escrita."}
 ::option[`4`]{#modifying-permissions-value-four .correct explanation="A permissão de leitura contribui com o valor octal `4` para o dígito de uma classe."}
 :::
 
-:::single-choice{#modifying-permissions-mode-640}
-Quais permissões comuns `chmod 640 report` define?
+:::single-choice{#modifying-permissions-mode-640} Quais permissões comuns `chmod 640 report` define?
 
 ::option[Leitura para o proprietário, escrita para o grupo e execução para os outros.]{#modifying-permissions-640-separated explanation="Os dígitos octais são somas para cada classe, não colunas separadas de leitura, escrita e execução."}
 ::option[Leitura/execução para o proprietário, escrita para o grupo e nenhuma para os outros.]{#modifying-permissions-640-wrong-sums explanation="O valor `6` do proprietário é leitura mais escrita, enquanto o valor `4` do grupo é leitura."}
@@ -101,8 +98,7 @@ Conceda somente o acesso necessário aos usuários e serviços. Evite usar `chmo
 
 Alterações recursivas exigem cuidados adicionais. Examine previamente a árvore de destino, considere links simbólicos e sistemas de arquivos montados e teste em um escopo pequeno antes de usar `chmod -R`. Após uma alteração, verifique o modo resultante em vez de presumir que o comando afetou os objetos pretendidos.
 
-:::single-choice{#modifying-permissions-least-privilege}
-Por que `chmod 777` costuma ser uma solução geral inadequada para um problema de acesso?
+:::single-choice{#modifying-permissions-least-privilege} Por que `chmod 777` costuma ser uma solução geral inadequada para um problema de acesso?
 
 ::option[Ele remove todas as permissões do proprietário.]{#modifying-permissions-777-removes explanation="Cada `7` concede leitura, escrita e execução; ele não remove as permissões do proprietário."}
 ::option[Ele concede todas as permissões básicas ao proprietário, ao grupo e aos outros.]{#modifying-permissions-777-grants-all .correct explanation="As três classes recebem `rwx`, o que normalmente excede o acesso realmente necessário."}

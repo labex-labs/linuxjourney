@@ -44,8 +44,7 @@ bb
 
 공백, 탭, 문장 부호도 한 위치를 차지합니다. `cut`은 각 줄을 독립적으로 처리합니다.
 
-:::single-choice{#cut-first-character}
-`names.txt`의 모든 줄에서 첫 번째 문자를 출력하는 명령어는 무엇인가요?
+:::single-choice{#cut-first-character} `names.txt`의 모든 줄에서 첫 번째 문자를 출력하는 명령어는 무엇인가요?
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="`-c` 옵션은 문자 위치를 선택하며 위치 1은 각 줄의 첫 번째 문자입니다."}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="`-f` 옵션은 첫 번째 탭 구분 필드를 선택하며, 이 필드에는 여러 문자가 들어갈 수 있습니다."}
@@ -65,8 +64,7 @@ viewer
 
 문자 선택과 마찬가지로 목록에는 `1`, `1,3`, `2-4`, `-3`, `2-` 같은 값을 지정할 수 있습니다.
 
-:::single-choice{#cut-second-tab-field}
-`team.tsv`의 모든 줄에서 탭으로 구분된 두 번째 필드를 출력하는 명령어는 무엇인가요?
+:::single-choice{#cut-second-tab-field} `team.tsv`의 모든 줄에서 탭으로 구분된 두 번째 필드를 출력하는 명령어는 무엇인가요?
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="탭으로 구분된 두 번째 필드가 아니라 각 줄의 두 번째 문자 위치를 선택합니다."}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="`-d`가 없으면 필드 모드는 탭을 구분 기호로 사용하며 `-f 2`는 두 번째 필드를 선택합니다."}
@@ -86,8 +84,7 @@ bob
 
 이 형식의 구분 기호는 한 문자입니다. 따옴표로 묶지 않은 세미콜론은 쉘에서 제어 의미가 있으므로 `;`를 따옴표로 묶습니다.
 
-:::single-choice{#cut-semicolon-role-field}
-`team.txt`에서 세미콜론으로 구분된 두 번째 필드를 출력하는 명령어는 무엇인가요?
+:::single-choice{#cut-semicolon-role-field} `team.txt`에서 세미콜론으로 구분된 두 번째 필드를 출력하는 명령어는 무엇인가요?
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="콜론으로 구분된 필드를 선택하지만 파일은 세미콜론을 사용합니다."}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="따옴표로 묶은 세미콜론이 구분 기호를 설정하고 `-f 2`가 각 줄의 두 번째 필드를 선택합니다."}
@@ -106,8 +103,7 @@ viewer
 
 이 기능은 일반적인 CSV 파일을 검증하지 않습니다. CSV에는 따옴표로 묶은 구분 기호, 줄 바꿈, 이스케이프 규칙이 있을 수 있으며 한 문자 분할로는 이를 이해할 수 없습니다. 이런 데이터에는 CSV 전용 도구를 사용하세요.
 
-:::single-choice{#cut-suppress-undelimited}
-`cut -d ':' -f 1`에서 `-s`는 무엇을 하나요?
+:::single-choice{#cut-suppress-undelimited} `cut -d ':' -f 1`에서 `-s`는 무엇을 하나요?
 
 ::option[선택한 필드를 정렬한 뒤 출력합니다.]{#cut-s-sort explanation="`cut`은 입력을 정렬하지 않으며 `-s`는 순서와 관련이 없습니다."}
 ::option[연속된 구분 기호를 하나의 구분 기호로 처리합니다.]{#cut-s-squeeze explanation="`cut`에서 `-s`는 구분 기호를 합치지 않습니다. 빈 필드도 의미 있는 위치로 남습니다."}
@@ -124,8 +120,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-`generate-data | cut -d ':' -f 1`에서 `cut`은 어디에서 입력을 읽나요?
+:::single-choice{#cut-pipeline-input} `generate-data | cut -d ':' -f 1`에서 `cut`은 어디에서 입력을 읽나요?
 
 ::option[파이프를 통해 `generate-data`의 표준 출력에서 읽습니다.]{#cut-pipe-stdin .correct explanation="파이프는 생성자의 표준 출력을 `cut`의 표준 입력에 연결하며 별도의 입력 파일은 지정되지 않았습니다."}
 ::option[이름이 문자 그대로 `generate-data`인 파일에서 읽습니다.]{#cut-pipe-file explanation="`generate-data`는 파이프 왼쪽 명령어로 실행되며 `cut`에 파일 이름으로 전달되지 않습니다."}

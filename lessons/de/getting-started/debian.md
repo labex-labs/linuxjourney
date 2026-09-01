@@ -16,8 +16,7 @@ meta_keywords: "Debian-Distribution, Debian-Linux-Distribution, was ist Debian, 
 
 Das Debian-Projekt besteht seit den Anfängen von Linux und hat sich einen Ruf für sorgfältige Entwicklung, Offenheit und langfristige Zuverlässigkeit erarbeitet. In der Praxis ist die **Debian-Linux-Distribution** für ein solides Basissystem, eine riesige Softwaresammlung und klare Projektgrundsätze bekannt.
 
-:::single-choice{#identify-debian-project-model}
-Wie wird Debian hauptsächlich entwickelt?
+:::single-choice{#identify-debian-project-model} Wie wird Debian hauptsächlich entwickelt?
 
 ::option[Von einem einzigen kommerziellen Softwareunternehmen]{#single-company explanation="Debian wird nicht von einem einzelnen Unternehmen entwickelt. Freiwillige und Mitwirkende auf der ganzen Welt pflegen das Projekt."}
 ::option[Von einem einzigen Computerhardwarehersteller]{#hardware-manufacturer explanation="Debian unterstützt viele Arten von Hardware, aber kein Hardwarehersteller besitzt oder kontrolliert seine Entwicklung. Das Projekt wird von der Gemeinschaft gepflegt."}
@@ -42,8 +41,7 @@ Während des größten Teils von Debians Entwicklungszyklus wandern Pakete fortl
 
 Diese Zweige erklären, warum Debian sehr unterschiedlichen Nutzern dienen kann. Wer ein vorhersehbares System möchte, bevorzugt gewöhnlich Stable, während Entwickler und fortgeschrittene Nutzer Testing oder Unstable wegen neuerer Software erkunden können.
 
-:::single-choice{#choose-debian-stable}
-Welcher Debian-Zweig passt am besten zu einem Nutzer, für den Zuverlässigkeit und vorhersehbare Aktualisierungen an erster Stelle stehen?
+:::single-choice{#choose-debian-stable} Welcher Debian-Zweig passt am besten zu einem Nutzer, für den Zuverlässigkeit und vorhersehbare Aktualisierungen an erster Stelle stehen?
 
 ::option[Testing]{#testing-branch explanation="Testing enthält gewöhnlich neuere Pakete, die für eine zukünftige Veröffentlichung vorbereitet werden. Während der Entwicklung kann sich der Zweig noch deutlich verändern."}
 ::option[Unstable]{#unstable-branch explanation="Unstable erhält neue Paket-Uploads zuerst und ändert sich häufig. Das passt nicht zum Wunsch nach vorhersehbaren Aktualisierungen."}
@@ -56,8 +54,7 @@ Debian folgt einem veröffentlichungsbasierten Modell. Das Projekt veröffentlic
 
 Für Einsteiger ist der Grundgedanke einfach: Debian jagt keinen schnellen Veränderungen hinterher. Neue Pakete gelangen normalerweise zuerst in Unstable, geeignete Pakete wandern nach Testing und ein vorbereiteter Testing-Zweig wird später zur nächsten Stable-Veröffentlichung. Mit diesem Modell bleibt Debian zuverlässig und entwickelt sich zugleich mit der Zeit weiter.
 
-:::single-choice{#trace-debian-package-flow}
-Welche Reihenfolge stellt den vereinfachten Weg von Debian-Paketen bis zu einer Veröffentlichung am besten dar?
+:::single-choice{#trace-debian-package-flow} Welche Reihenfolge stellt den vereinfachten Weg von Debian-Paketen bis zu einer Veröffentlichung am besten dar?
 
 ::option[Unstable → Testing → Stable]{#unstable-testing-stable .correct explanation="Neue Uploads gelangen in Unstable, geeignete Pakete wandern nach Testing und ein vorbereiteter Testing-Zweig wird schließlich zur nächsten Stable-Veröffentlichung."}
 ::option[Stable → Testing → Unstable]{#stable-testing-unstable explanation="Stable ist die fertige produktive Veröffentlichung und nicht der Ausgangspunkt für neue Uploads. Die Entwicklung beginnt in Unstable."}
@@ -70,8 +67,7 @@ Die Paketverwaltung ist eine der größten Stärken von Debian. Debian verwendet
 
 Dank Debians sehr großer Paketsammlung können Nutzer über dasselbe Paketsystem alles von Desktop-Anwendungen bis zu Entwicklungswerkzeugen installieren. Entwickler installieren beispielsweise häufig verbreitete Build-Werkzeuge mit Paketen wie `build-essential`. Dieses ausgereifte Paketsystem ist ein Grund dafür, dass Debian so weitverbreitet ist und großes Vertrauen genießt.
 
-:::single-choice{#recognize-apt-purpose}
-Was ist der Hauptzweck von Debians APT-Werkzeugen?
+:::single-choice{#recognize-apt-purpose} Was ist der Hauptzweck von Debians APT-Werkzeugen?
 
 ::option[Softwarepakete installieren, aktualisieren, entfernen und verwalten]{#manage-packages .correct explanation="APT verwaltet Softwarepakete aus Debians Paketquellen. Es bietet eine einheitliche Möglichkeit, Software zu installieren, zu aktualisieren und zu entfernen."}
 ::option[Bei jeder Aktualisierung einen neuen Linux-Kernel kompilieren]{#compile-kernel explanation="APT kann fertig paketierte Kernel installieren, dient aber der umfassenderen Paketverwaltung. Es verlangt nicht, bei jeder Aktualisierung einen Kernel zu kompilieren."}
@@ -95,8 +91,7 @@ Debian ist auch deshalb wichtig, weil viele andere Linux-Distributionen auf sein
 
 Damit ist Debian nicht nur eine eigenständige Linux-Distribution, sondern auch die Grundlage für einen großen Teil der Linux-Welt. Wenn du Debian-Konzepte wie APT, `.deb`-Pakete oder Veröffentlichungszweige kennenlernst, lässt sich dieses Wissen häufig auch auf Debian-basierte Systeme übertragen. Wenn du eine stärker auf Einsteiger ausgerichtete Debian-basierte Option suchst, sieh dir [Ubuntu](https://labex.io/lesson/ubuntu) an.
 
-:::single-choice{#transfer-debian-knowledge}
-Warum lässt sich Wissen über Debians Paketverwaltung auf einige andere Distributionen übertragen?
+:::single-choice{#transfer-debian-knowledge} Warum lässt sich Wissen über Debians Paketverwaltung auf einige andere Distributionen übertragen?
 
 ::option[Jede Linux-Distribution verwendet identische Pakete und Paketquellen]{#identical-linux-packages explanation="Linux-Distributionen können unterschiedliche Paketformate, Werkzeuge und Paketquellen verwenden. Debian-Wissen lässt sich am unmittelbarsten innerhalb der Debian-Familie übertragen."}
 ::option[Debian-basierte Systeme teilen häufig die Tradition von `.deb` und APT]{#shared-package-traditions .correct explanation="Auf Debian aufbauende Distributionen behalten häufig sein Paketformat und die zugehörigen Werkzeuge bei. Die konkreten Paketquellen können sich unterscheiden, aber die grundlegenden Konzepte sind übertragbar."}

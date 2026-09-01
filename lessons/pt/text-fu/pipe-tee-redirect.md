@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 O shell inicia os comandos do pipeline e organiza a conexão do fluxo. Os comandos podem trabalhar simultaneamente: `less` pode começar a ler antes que `ls` produza toda a listagem.
 
-:::single-choice{#pipe-stream-connection}
-Em `ls -la /etc | less`, quais fluxos `|` conecta por padrão?
+:::single-choice{#pipe-stream-connection} Em `ls -la /etc | less`, quais fluxos `|` conecta por padrão?
 
 ::option[stdin de `ls` a stdout de `less`.]{#pipe-reversed-streams explanation="Essa resposta inverte o produtor e o consumidor. Os dados fluem da saída do comando à esquerda para a entrada do comando à direita."}
 ::option[stderr de `ls` aos dois fluxos de `less`.]{#pipe-stderr-both explanation="Um pipe simples não conecta stderr do comando à esquerda nem se dirige aos dois fluxos do comando à direita."}
@@ -50,8 +49,7 @@ Os caminhos correspondentes passam pelo pipe, enquanto os diagnósticos de permi
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-Em `find /etc -name "*.conf" | less`, para onde stderr de `find` normalmente vai quando não há outro redirecionamento?
+:::single-choice{#pipe-left-stderr} Em `find /etc -name "*.conf" | less`, para onde stderr de `find` normalmente vai quando não há outro redirecionamento?
 
 ::option[Para `less` pelo mesmo pipe de stdout.]{#pipe-errors-to-less explanation="O pipe comum conecta apenas stdout. Stderr não é combinada automaticamente com ela."}
 ::option[Para um arquivo chamado `stderr` no diretório atual.]{#pipe-errors-to-file explanation="Não há redirecionamento para um arquivo de erros; portanto, o shell não cria esse arquivo."}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 Aqui, `listing.txt` recebe a listagem e stdout de `tee` continua conectada ao terminal. Por padrão, `tee` cria ou trunca o arquivo indicado, assim como `>`.
 
-:::single-choice{#tee-display-and-save}
-Qual comando exibe a saída de `generate-report` e também substitui `report.txt` pela mesma saída?
+:::single-choice{#tee-display-and-save} Qual comando exibe a saída de `generate-report` e também substitui `report.txt` pela mesma saída?
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="Um redirecionamento simples grava o arquivo, mas não mantém uma cópia fluindo para o terminal."}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` copia stdin para `report.txt` e para stdout, que permanece conectada ao terminal neste pipeline."}
@@ -82,8 +79,7 @@ Use `-a` quando o conteúdo deva ser acrescentado ao arquivo em vez de substitu�
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-Qual comando exibe a data atual e a acrescenta a `activity.log`?
+:::single-choice{#tee-append-log} Qual comando exibe a data atual e a acrescenta a `activity.log`?
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="A opção `-a` faz `tee` acrescentar ao arquivo enquanto continua copiando a entrada para stdout."}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="Sem `-a`, `tee` substitui o arquivo existente em vez de preservar suas entradas anteriores."}
@@ -106,8 +102,7 @@ Esse pipeline:
 
 O arquivo contém os dados anteriores ao filtro de `grep`. Se quiser salvar apenas as linhas filtradas, coloque `tee` depois de `grep`.
 
-:::single-choice{#tee-before-filter-result}
-O que `all.txt` contém depois que `produce | tee all.txt | grep error` termina com sucesso?
+:::single-choice{#tee-before-filter-result} O que `all.txt` contém depois que `produce | tee all.txt | grep error` termina com sucesso?
 
 ::option[Apenas as linhas correspondentes em `grep`.]{#tee-filtered-only explanation="`tee` é executado antes de `grep`; portanto, ele grava a entrada não filtrada, não o conjunto de correspondências posterior."}
 ::option[Apenas stderr de `produce`.]{#tee-producer-stderr explanation="Um pipe simples transporta stdout de `produce`. Stderr não é a entrada de `tee`."}

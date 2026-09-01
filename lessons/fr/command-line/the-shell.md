@@ -20,8 +20,7 @@ Le terminal est la fenêtre ou l'application dans laquelle vous tapez, tandis qu
 
 Le shell est utile parce qu'il est rapide, scriptable et disponible sur presque tous les systèmes Linux. À mesure que vous apprendrez des commandes, vous pourrez les combiner pour inspecter des fichiers, gérer des répertoires, rechercher du texte, installer des logiciels et automatiser des tâches répétitives.
 
-:::single-choice{#distinguish-shell-and-terminal}
-Quelle affirmation décrit correctement la relation entre un terminal et un shell ?
+:::single-choice{#distinguish-shell-and-terminal} Quelle affirmation décrit correctement la relation entre un terminal et un shell ?
 
 ::option[Le terminal fournit la fenêtre, tandis que le shell s'exécute à l'intérieur.]{#shell-runs-in-terminal .correct explanation="Le terminal est l'interface utilisée, et le shell est le programme de traitement des commandes qui s'y exécute."}
 ::option[Le terminal accepte les commandes, tandis que le shell ne fait qu'afficher leur sortie.]{#terminal-accepts-commands explanation="Cette proposition inverse leurs rôles. Le terminal fournit l'interface, tandis que le shell accepte et exécute les commandes."}
@@ -40,8 +39,7 @@ pete@icebox:/home/pete $
 
 Le symbole `$` indique que le shell attend la saisie d'un utilisateur ordinaire. Vous ne tapez pas ce symbole lorsque vous entrez une commande : le shell l'affiche. Si vous voyez plutôt `#`, vous travaillez généralement comme utilisateur root, avec davantage de pouvoir et de risques.
 
-:::single-choice{#interpret-dollar-prompt}
-Que signifie le `$` à la fin de l'exemple d'invite ?
+:::single-choice{#interpret-dollar-prompt} Que signifie le `$` à la fin de l'exemple d'invite ?
 
 ::option[Le shell s'exécute avec les privilèges de l'utilisateur root.]{#root-user-ready explanation="Une invite root se termine généralement par `#`, et non par `$`. L'accès root apporte davantage de pouvoir et de risques."}
 ::option[Le shell attend la saisie d'un utilisateur ordinaire.]{#normal-user-ready .correct explanation="Le `$` marque l'invite d'un utilisateur ordinaire et indique que le shell attend une commande."}
@@ -56,8 +54,7 @@ command options arguments
 
 Par exemple, dans `echo Hello World`, `echo` est la commande et `Hello World` est le texte qui lui est transmis.
 
-:::single-choice{#identify-command-name}
-Dans `echo Hello World`, quelle partie est le nom de la commande ?
+:::single-choice{#identify-command-name} Dans `echo Hello World`, quelle partie est le nom de la commande ?
 
 ::option[`Hello`]{#hello-command explanation="`Hello` vient après le nom de la commande ; il fait donc partie du texte transmis à `echo`."}
 ::option[`World`]{#world-command explanation="`World` est lui aussi du texte transmis à `echo`, et non le nom de la commande exécutée."}
@@ -84,8 +81,7 @@ Hello from Bash
 
 Les guillemets sont utiles lorsque vous voulez que le shell traite plusieurs mots comme un seul fragment de texte.
 
-:::single-choice{#group-words-with-quotes}
-Quelle commande demande au shell de traiter `Hello from Bash` comme un seul fragment de texte entre guillemets ?
+:::single-choice{#group-words-with-quotes} Quelle commande demande au shell de traiter `Hello from Bash` comme un seul fragment de texte entre guillemets ?
 
 ::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="Les guillemets regroupent les trois mots en un seul argument transmis à `echo`."}
 ::option[`echo Hello from Bash`]{#unquoted-words explanation="Cette commande affiche visuellement les mêmes mots, mais le shell les traite comme des arguments distincts puisqu'ils ne sont pas entre guillemets."}

@@ -23,8 +23,7 @@ $ uname -r
 
 Dies listet weder jeden installierten Kernel auf noch ändert es sich unmittelbar, wenn ein neueres Paket installiert wird. Das System muss das neue Abbild starten, bevor `uname -r` es meldet. Frage installierte Pakete und Starteinträge mit den Werkzeugen der jeweiligen Distribution ab.
 
-:::single-choice{#kernel-installation-uname-release}
-Was zeigt `uname -r` an?
+:::single-choice{#kernel-installation-uname-release} Was zeigt `uname -r` an?
 
 ::option[Die Veröffentlichungszeichenfolge des derzeit laufenden Kernels.]{#kernel-installation-running-release .correct explanation="Der Befehl meldet den aktiven Kernelzustand und nicht bloß das neueste auf dem Datenträger gespeicherte Abbild."}
 ::option[Jedes in allen Paketquellen verfügbare Kernelpaket.]{#kernel-installation-all-packages explanation="Der Bestand einer Paketquelle gehört zur Paketverwaltung."}
@@ -37,8 +36,7 @@ Installiere oder behalte das unterstützte Kernel-Tracking- oder Metapaket der D
 
 Verwandle eine Versionszeichenfolge aus `uname -r` nicht unmittelbar in einen Operanden für `apt install` und gehe nicht davon aus, dass er gültig ist. Lies die aktuelle Dokumentation der Distribution und prüfe Kandidaten vor der Installation mit der Paketverwaltung.
 
-:::single-choice{#kernel-installation-meta-package}
-Warum ist ein unterstütztes Kernel-Metapaket nützlich?
+:::single-choice{#kernel-installation-meta-package} Warum ist ein unterstütztes Kernel-Metapaket nützlich?
 
 ::option[Es garantiert, dass niemals ein Neustart erforderlich ist.]{#kernel-installation-no-reboot explanation="Ein neu installierter Kernel wird erst nach dem Start dieses Kernels aktiv, abgesehen vom begrenzten Umfang spezieller Live-Patches."}
 ::option[Es wandelt jeden externen Treiber in fest eingebauten Code um.]{#kernel-installation-convert-drivers explanation="Externe Module benötigen weiterhin kompatible Builds und Signaturen."}
@@ -57,8 +55,7 @@ Vor einer Kerneltransaktion:
 
 Die Pakettransaktion sollte durch Distributions-Hooks ein passendes initramfs erzeugen und Starteinträge aktualisieren. Lies jeden Fehler; ein als installiert markiertes Paket reicht nicht aus, wenn die Erzeugung von initramfs oder Bootloader-Einträgen fehlgeschlagen ist.
 
-:::single-choice{#kernel-installation-initramfs-error}
-Warum muss ein Fehler bei der initramfs-Erzeugung die Annahme eines Erfolgs verhindern?
+:::single-choice{#kernel-installation-initramfs-error} Warum muss ein Fehler bei der initramfs-Erzeugung die Annahme eines Erfolgs verhindern?
 
 ::option[Die initramfs-Erzeugung ändert das Shell-Passwort des Benutzers.]{#kernel-installation-initramfs-password explanation="Der Arbeitsablauf für das Bootarchiv hat nichts mit Authentifizierungsgeheimnissen von Konten zu tun."}
 ::option[Dem neuen Kernel können frühe Module oder Werkzeuge fehlen, die zum Erreichen des Root-Speichers erforderlich sind.]{#kernel-installation-missing-early-tools .correct explanation="Ein Abbild kann installiert sein, während sein erforderliches frühes User-Space-Artefakt fehlt oder veraltet ist."}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 Verwende auf Systemen ohne systemd gleichwertige Werkzeuge. Validiere Speicher, Dateisysteme, Netzwerk, Grafik, Eingabe, Sicherheitsmodule, externe Module, Container, virtuelle Maschinen und den Zustand der Anwendungen. Eine Anmeldeaufforderung allein ist keine vollständige Validierung.
 
-:::single-choice{#kernel-installation-activation}
-Wann wird ein neu installiertes gewöhnliches Kernelpaket zum laufenden Kernel?
+:::single-choice{#kernel-installation-activation} Wann wird ein neu installiertes gewöhnliches Kernelpaket zum laufenden Kernel?
 
 ::option[Sobald `uname -r` eingegeben wird.]{#kernel-installation-uname-activates explanation="Uname ist schreibgeschützt und kann keine Kernel wechseln."}
 ::option[Nachdem der Computer dieses Kernelabbild gestartet hat.]{#kernel-installation-after-boot .correct explanation="Die Installation von Dateien ersetzt nicht den bereits im Speicher ausgeführten Kernel."}
@@ -91,8 +87,7 @@ Verwende den unterstützten Bereinigungsablauf der Paketverwaltung erst, nachdem
 
 Das manuelle Löschen aus `/boot` hinterlässt Paket- und Bootloaderzustand inkonsistent. Wenn der Speicherplatz bereits erschöpft ist, erstelle vor Dateiänderungen einen Wiederherstellungsplan, statt beliebige Abbilder zu löschen.
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-Welcher Kernel sollte während der ersten Validierung eines neuen Kernels installiert bleiben?
+:::single-choice{#kernel-installation-old-kernel-removal} Welcher Kernel sollte während der ersten Validierung eines neuen Kernels installiert bleiben?
 
 ::option[Ausschließlich der ungetestete neue Kernel.]{#kernel-installation-only-new explanation="Das Entfernen aller Fallbacks vor dem Test verwandelt ein Kompatibilitätsproblem in einen Wiederherstellungsvorfall."}
 ::option[Überhaupt keine Kerneldateien unter dem Bootpfad.]{#kernel-installation-no-kernels explanation="Der Computer benötigt ein ladbares Kernelartefakt, um Linux zu starten."}

@@ -21,8 +21,7 @@ DNS ソフトウェアは、普遍的な「最良のサーバー」ではなく�
 
 機能とパッケージは変化するため、インストール済みバージョンの公式文書を参照してください。必要な役割だけを配備し、意図しない recursion または zone service を無効にします。
 
-:::single-choice{#dns-setup-authoritative-role}
-自身が提供する zone の決定的なレコードを公開する役割はどれですか？
+:::single-choice{#dns-setup-authoritative-role} 自身が提供する zone の決定的なレコードを公開する役割はどれですか？
 
 ::option[Authoritative DNS server。]{#dns-setup-authoritative .correct explanation="任意の名前を再帰的に探すのではなく、設定された zone の権威データから応答します。"}
 ::option[Ethernet switch。]{#dns-setup-switch explanation="スイッチはリンク層フレームを転送し、DNS zone を公開しません。"}
@@ -35,8 +34,7 @@ zone、クライアント、問い合わせ量、更新方法、DNSSEC 要件、
 
 制限のない recursion をインターネットへ公開してはいけません。open resolver は reflection attack に悪用され、ローカルリソースも消費します。
 
-:::single-choice{#dns-setup-open-recursion}
-recursive 問い合わせを許可済みクライアントへ制限するのはなぜですか？
+:::single-choice{#dns-setup-open-recursion} recursive 問い合わせを許可済みクライアントへ制限するのはなぜですか？
 
 ::option[recursive DNS はどのレコードもキャッシュできないから。]{#dns-setup-no-cache explanation="キャッシュは recursive resolver の中心的な機能です。"}
 ::option[authoritative delegation により、全ユーザーが root になる必要があるから。]{#dns-setup-all-root explanation="DNS の委任は OS の権限を付与しません。"}
@@ -54,8 +52,7 @@ $ named-checkzone example.com /etc/bind/zones/db.example.com
 
 ホストに適した権限とパスで実行してください。parser が成功しても、委任、serial の伝播、DNSSEC chain、ファイアウォール越しの到達性、正しい回答は証明されないため、制御された問い合わせを続けて行います。
 
-:::single-choice{#dns-setup-zone-validation-limit}
-zone の構文検査に成功しても証明できないものはどれですか？
+:::single-choice{#dns-setup-zone-validation-limit} zone の構文検査に成功しても証明できないものはどれですか？
 
 ::option[委任とエンドツーエンドの authoritative answer が機能すること。]{#dns-setup-not-end-to-end .correct explanation="親側のデータ、サービスの有効化、ネットワークポリシー、実行時の読み込みは別々です。"}
 ::option[checker が zone text を解析できること。]{#dns-setup-parser-proves explanation="それが checker から直接得られる証拠です。"}
@@ -74,8 +71,7 @@ $ dig @192.0.2.53 example.com SOA +norecurse +tcp
 
 recursion については、許可済み・拒否対象のクライアントネットワーク、DNSSEC validation、cache behavior、上流依存先の障害をテストします。
 
-:::single-choice{#dns-setup-norecurse-test}
-authoritative server へ `+norecurse` で問い合わせるのはなぜですか？
+:::single-choice{#dns-setup-norecurse-test} authoritative server へ `+norecurse` で問い合わせるのはなぜですか？
 
 ::option[recursion を要求せず、authoritative answer をテストするため。]{#dns-setup-authority-only .correct explanation="zone service と recursive behavior を分離して確認できます。"}
 ::option[zone からすべてのレコードを削除するため。]{#dns-setup-remove-records explanation="問い合わせは authoritative data を編集しません。"}
@@ -86,8 +82,7 @@ authoritative server へ `+norecurse` で問い合わせるのはなぜですか
 
 問い合わせ失敗、遅延、キャッシュ動作、リソース使用量、zone transfer、serial の整合性、DNSSEC の期限、委任の健全性を監視します。元設定と署名用データを安全にバックアップしますが、新しいインスタンスが zone を読み込み、正しく応答できることも検証してください。対応中のバージョンへ patch を適用し、制御インターフェース、dynamic update、transfer access を制限します。
 
-:::single-choice{#dns-setup-redundancy-verification}
-authoritative DNS の冗長性テストには何を含めるべきですか？
+:::single-choice{#dns-setup-redundancy-verification} authoritative DNS の冗長性テストには何を含めるべきですか？
 
 ::option[各サーバーへの問い合わせと、別サーバー停止時の動作テスト。]{#dns-setup-test-each-server .correct explanation="複数の NS レコードがあるだけでは、各独立サービスが到達可能で最新だとは証明できません。"}
 ::option[全サーバーのホスト名が似ていることの確認だけ。]{#dns-setup-hostname-similarity explanation="名前からデータ同期や可用性は証明できません。"}

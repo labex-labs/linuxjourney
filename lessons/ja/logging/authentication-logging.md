@@ -25,8 +25,7 @@ $ sudo less /var/log/auth.log
 
 SSH unit は `ssh.service` または `sshd.service` の場合があります。アカウントとアクセスの詳細が含まれるため、通常レコードの権限は制限されています。
 
-:::single-choice{#auth-logs-file-location}
-Linux の認証イベントは、必ずどこに保存されますか？
+:::single-choice{#auth-logs-file-location} Linux の認証イベントは、必ずどこに保存されますか？
 
 ::option[ローカルのロギングポリシーが選んだ宛先。]{#auth-logs-local-policy .correct explanation="file、journal、集中 collector はディストリビューションと設定によって異なります。"}
 ::option[すべてのディストリビューションの `/var/log/auth.log`。]{#auth-logs-auth-only explanation="このパスは Debian 系では一般的ですが、普遍的ではありません。"}
@@ -43,8 +42,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 時刻、host、発信 program、PAM module と service、要求された session user、発信元 UID を識別できます。これだけでは UID 1000 の背後にいる人物を特定できず、悪意ある操作とも証明できません。障害時点で有効な account record から UID を解決し、terminal、remote address、session、周辺イベントと相関させます。
 
-:::single-choice{#auth-logs-uid-inference}
-このレコードの `uid=1000` から何が分かりますか？
+:::single-choice{#auth-logs-uid-inference} このレコードの `uid=1000` から何が分かりますか？
 
 ::option[root password が 1,000 回間違って入力された。]{#auth-logs-thousand-passwords explanation="この値は identity number であり、試行回数ではありません。"}
 ::option[開始プロセスに関連付けられた数値 account identity。]{#auth-logs-numeric-identity .correct explanation="操作を人へ帰属させるには、追加の session と account の証拠が必要です。"}
@@ -57,8 +55,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 `last` と `lastb` は、維持されていれば `wtmp` と `btmp` のレコードを要約できますが、これらの binary database にも retention と integrity の限界があります。journal、syslog、集中ログと照合してください。
 
-:::single-choice{#auth-logs-failed-attempts}
-失敗ログインの繰り返しは何と相関させるべきですか？
+:::single-choice{#auth-logs-failed-attempts} 失敗ログインの繰り返しは何と相関させるべきですか？
 
 ::option[ディスクの空き容量だけ。]{#auth-logs-disk-space explanation="容量から、認証試行の source、target、method は特定できません。"}
 ::option[source、target account、method、timing、成功 session。]{#auth-logs-correlated-fields .correct explanation="これらの詳細は、設定誤り、ユーザー操作ミス、scan、不正アクセスの区別に役立ちます。"}
@@ -69,8 +66,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 incident が疑われる場合、host time と timezone を記録し、元ログと metadata を保持し、export copy を安全に保護します。証拠をその場で編集してはいけません。account lock、firewall change、session termination は正当なアクセスを中断したり、攻撃者へ気付かせたりする可能性があるため、incident-response process に従い、復旧経路を維持します。
 
-:::single-choice{#auth-logs-preservation}
-調査中の認証証拠はどのように扱うべきですか？
+:::single-choice{#auth-logs-preservation} 調査中の認証証拠はどのように扱うべきですか？
 
 ::option[分かりやすくするため、元ファイルの疑わしい行を編集する。]{#auth-logs-edit-original explanation="発生元を変更すると証拠の integrity が損なわれます。"}
 ::option[誰でもユーザーを特定できるよう、完全なログを公開する。]{#auth-logs-publish explanation="認証レコードは機密性の高い identity と infrastructure の詳細を露出する場合があります。"}

@@ -27,8 +27,7 @@ Einen Pfad kannst du auf zwei Arten angeben: absolut oder relativ.
 - **Absoluter Pfad**: Der vollständige Pfad ab dem Wurzelverzeichnis (`/`), zum Beispiel `/home/pete/Desktop`.
 - **Relativer Pfad**: Ein Pfad, der von deinem aktuellen Standort ausgeht. Befindest du dich in `/home/pete/Documents` und möchtest das darin liegende Unterverzeichnis `taxes` öffnen, genügt `taxes/`.
 
-:::single-choice{#recognize-absolute-cd-path}
-Welche Aussage beschreibt einen absoluten Pfad richtig?
+:::single-choice{#recognize-absolute-cd-path} Welche Aussage beschreibt einen absoluten Pfad richtig?
 
 ::option[Er beginnt in dem Verzeichnis, das die Shell gerade verwendet.]{#begins-at-current-directory explanation="Ein Pfad, der vom aktuellen Standort der Shell abhängt, ist relativ. Er beginnt nicht zwangsläufig im Wurzelverzeichnis."}
 ::option[Er enthält nur den Namen des Zielverzeichnisses ohne übergeordnete Verzeichnisse.]{#contains-final-name-only explanation="Ein einzelner Zielname wird normalerweise relativ zum aktuellen Verzeichnis interpretiert. Ein absoluter Pfad enthält den Weg ab `/`."}
@@ -52,8 +51,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-Welcher Befehl bestätigt nach `cd` den aktuellen Standort der Shell?
+:::single-choice{#verify-changed-directory} Welcher Befehl bestätigt nach `cd` den aktuellen Standort der Shell?
 
 ::option[`cd`]{#cd-command explanation="`cd` ändert das aktuelle Verzeichnis, gibt dessen vollständigen Pfad aber normalerweise nicht aus. Verwende zur Bestätigung `pwd`."}
 ::option[`ls`]{#ls-command explanation="`ls` zeigt den Inhalt eines Verzeichnisses an. Damit kannst du den Ort untersuchen, doch den Ort selbst meldet `pwd`."}
@@ -88,16 +86,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-Welcher Befehl wechselt von `/home/pete/Pictures` nach `/home/pete`?
+:::single-choice{#move-to-parent-directory} Welcher Befehl wechselt von `/home/pete/Pictures` nach `/home/pete`?
 
 ::option[`cd .`]{#cd-current explanation="`.` steht für das aktuelle Verzeichnis. Dieser Befehl belässt die Shell in `/home/pete/Pictures`."}
 ::option[`cd -`]{#cd-previous explanation="`-` führt in das vorherige Arbeitsverzeichnis zurück, das nicht zwingend das übergeordnete ist. Für eine Ebene nach oben verwendest du `..`."}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` steht für das übergeordnete Verzeichnis. Das übergeordnete Verzeichnis von `Pictures` ist hier `/home/pete`."}
 :::
 
-:::single-choice{#return-to-previous-directory}
-Welcher Befehl kehrt in das unmittelbar zuvor verwendete Verzeichnis zurück?
+:::single-choice{#return-to-previous-directory} Welcher Befehl kehrt in das unmittelbar zuvor verwendete Verzeichnis zurück?
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` wechselt in das vorherige Arbeitsverzeichnis. Dieses kann sich an einer beliebigen Stelle im Dateisystem befinden."}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` wechselt in das übergeordnete Verzeichnis. Das übergeordnete und das vorherige Verzeichnis müssen nicht identisch sein."}
@@ -128,8 +124,7 @@ Setze einen Verzeichnisnamen mit Leerzeichen in Anführungszeichen:
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-Bei welchem Befehl wird `Vacation Photos` als ein einziger Verzeichnisname behandelt?
+:::single-choice{#enter-directory-with-spaces} Bei welchem Befehl wird `Vacation Photos` als ein einziger Verzeichnisname behandelt?
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="Ohne Anführungszeichen übergibt die Shell `Vacation` und `Photos` als getrennte Argumente statt als einen Verzeichnisnamen."}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="Steht die gesamte Zeile in Anführungszeichen, behandelt die Shell sie als einen einzigen Befehlsnamen. Nur der Pfad gehört in Anführungszeichen."}

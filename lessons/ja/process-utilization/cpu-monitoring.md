@@ -23,8 +23,7 @@ $ uptime
 
 最後の三つの値は、およそ1分、5分、15分の負荷平均です。比較すると方向性が分かります。1分値が非常に大きければ負荷が上昇している可能性があり、15分値の方が大きければ負荷が低下している可能性があります。
 
-:::single-choice{#cpu-uptime-windows}
-`uptime` は負荷平均の時間窓をどの順で表示しますか？
+:::single-choice{#cpu-uptime-windows} `uptime` は負荷平均の時間窓をどの順で表示しますか？
 
 ::option[15秒、5秒、1秒。]{#cpu-windows-seconds explanation="これらは分単位の平均であり、長いものから表示されるわけではありません。"}
 ::option[1分、5分、15分。]{#cpu-windows-one-five-fifteen .correct explanation="最も短い直近の時間窓が最初で、最も長いものが最後です。"}
@@ -43,8 +42,7 @@ $ nproc
 
 CPU クォータ、アフィニティ、仮想化、コンテナ制限によって、特定ワークロードから見える能力が減る場合があるため、ホストの CPU 数は出発点にすぎません。
 
-:::single-choice{#cpu-load-not-percentage}
-負荷平均が CPU 使用率ではないのはなぜですか？
+:::single-choice{#cpu-load-not-percentage} 負荷平均が CPU 使用率ではないのはなぜですか？
 
 ::option[CPU のクロック周波数だけを報告するから。]{#cpu-load-clock explanation="クロック速度は別のハードウェアまたはスケーリング指標です。"}
 ::option[空き物理メモリだけを測定するから。]{#cpu-load-memory explanation="メモリの空き状況はほかの指標で報告されます。"}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 高負荷かつ CPU が忙しければ、CPU 需要を示す場合があります。高負荷に加え、目立つブロック中タスク、I/O 遅延、I/O 待ちがあれば、別の資源制約を示します。平均使用率が低くても、一つの CPU の飽和や短い遅延スパイクが隠れる場合があります。
 
-:::single-choice{#cpu-high-load-next-step}
-高い負荷平均を観測した後の最善の手順はどれですか？
+:::single-choice{#cpu-high-load-next-step} 高い負荷平均を観測した後の最善の手順はどれですか？
 
 ::option[CPU、タスク状態、I/O、ワークロードを繰り返し測定して比較する。]{#cpu-load-correlate .correct explanation="関連する複数のサンプルにより、負荷について競合する説明を区別できます。"}
 ::option[ほかのデータを収集せず直ちに再起動する。]{#cpu-load-reboot explanation="再起動は原因を特定せずに証拠を消し、サービスを中断する可能性があります。"}
@@ -77,8 +74,7 @@ $ mpstat -P ALL 1
 
 負荷が常に CPU 数を下回らなければならないという普遍的な規則はありません。バッチシステムは待ち行列を許容する場合があり、対話的サービスはそれ以前に遅延目標へ違反する場合があります。同じホストとワークロードのベースラインを定め、応答時間、スループット、エラー率、飽和度、資源使用量を比較してください。
 
-:::single-choice{#cpu-capacity-threshold}
-観測した負荷が許容範囲かどうかを決めるものは何ですか？
+:::single-choice{#cpu-capacity-threshold} 観測した負荷が許容範囲かどうかを決めるものは何ですか？
 
 ::option[値を常に1未満に保つという要件。]{#cpu-below-one explanation="マルチコアの能力とワークロード目標により、この固定しきい値は信頼できません。"}
 ::option[`uptime` が表示するユーザー数だけ。]{#cpu-user-count explanation="ログイン中のシェルユーザーがすべてのワークロード需要を表すわけではありません。"}

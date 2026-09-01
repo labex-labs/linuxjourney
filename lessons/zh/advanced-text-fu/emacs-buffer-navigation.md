@@ -24,8 +24,7 @@ C-x b
 
 默认情况下，`C-x Right` 运行 `next-buffer`，`C-x Left` 运行 `previous-buffer`，在所选窗口中循环切换缓冲区。
 
-:::single-choice{#emacs-switch-buffer-key}
-哪个按键序列会提示输入要在当前窗口中显示的缓冲区名称？
+:::single-choice{#emacs-switch-buffer-key} 哪个按键序列会提示输入要在当前窗口中显示的缓冲区名称？
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="这会提示输入并访问文件路径，与按名称选择已有缓冲区是不同操作。"}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` 会读取缓冲区名称，并在所选窗口中显示该缓冲区。"}
@@ -48,8 +47,7 @@ C-x 3
 
 新窗口起初会显示一个缓冲区，通常与原窗口相同。可以在任一窗口中独立切换缓冲区。
 
-:::single-choice{#emacs-split-side-by-side}
-哪个按键序列会把所选 Emacs 窗口拆分为左右两个窗口？
+:::single-choice{#emacs-split-side-by-side} 哪个按键序列会把所选 Emacs 窗口拆分为左右两个窗口？
 
 ::option[`C-x 1`]{#emacs-window-one explanation="这会删除其他窗口，让所选窗口成为框架中唯一的窗口。"}
 ::option[`C-x 2`]{#emacs-window-below explanation="这会创建上下窗口，而不是左右并排拆分。"}
@@ -71,16 +69,14 @@ C-x o
 
 删除窗口通常会让它所显示的缓冲区继续存在。你可以在另一个窗口中再次显示该缓冲区。
 
-:::single-choice{#emacs-select-other-window}
-哪个按键序列会把 point 和键盘焦点移动到另一个 Emacs 窗口？
+:::single-choice{#emacs-select-other-window} 哪个按键序列会把 point 和键盘焦点移动到另一个 Emacs 窗口？
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="这会删除所选窗口，而不是把焦点移到另一个窗口。"}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` 会在框架中循环选择另一个窗口。"}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="这会改变当前窗口显示的缓冲区，而不是改变所选窗口。"}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-哪个按键序列会保留所选窗口，并删除其框架中的其他窗口？
+:::single-choice{#emacs-keep-one-window} 哪个按键序列会保留所选窗口，并删除其框架中的其他窗口？
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` 会让所选窗口成为框架中唯一的窗口。"}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="这会删除所选窗口本身，而不是保留它。"}
@@ -99,8 +95,7 @@ C-x k
 
 终止缓冲区与删除窗口不同。Emacs 会在任何显示该缓冲区的窗口中替换已终止缓冲区，而删除窗口可以让其缓冲区保持不变。
 
-:::single-choice{#emacs-kill-buffer-key}
-哪个按键序列会提示终止 Emacs 缓冲区？
+:::single-choice{#emacs-kill-buffer-key} 哪个按键序列会提示终止 Emacs 缓冲区？
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="这会删除窗口显示，但通常让缓冲区继续存在。"}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` 会在完成必要的已修改缓冲区确认后，从 Emacs 中移除所选缓冲区。"}

@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 示した RPM 問い合わせ形式の `p` は、インストール済みデータベースではなくパッケージファイルを問い合わせることを意味します。問い合わせ出力は確認に役立ちますが、スクリプトやプログラムが安全であることは証明できません。
 
-:::single-choice{#package-install-tools-native-format}
-Debian の `.deb` パッケージとインストール済みデータベースを管理する低レベルツールはどれですか？
+:::single-choice{#package-install-tools-native-format} Debian の `.deb` パッケージとインストール済みデータベースを管理する低レベルツールはどれですか？
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM は RPM 系システムで独自のネイティブ形式とデータベースを管理します。"}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="Tar はアーカイブを読めますが、Debian のインストール済みパッケージのライフサイクルは実装しません。"}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 確認前にトランザクションを確認します。APT では先頭の `./` により、ローカルの Debian アーカイブパスとリポジトリのパッケージ名を区別します。
 
-:::single-choice{#package-install-tools-local-dependencies}
-利用可能なリポジトリ依存関係を解決しながら、ローカルの `.deb` をインストールできるコマンドはどれですか？
+:::single-choice{#package-install-tools-local-dependencies} 利用可能なリポジトリ依存関係を解決しながら、ローカルの `.deb` をインストールできるコマンドはどれですか？
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l` はインストール済みパッケージの選択状態を一覧表示し、ローカル依存関係を解決するインストール手順ではありません。"}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="RPM の問い合わせ構文で Debian アーカイブをインストールすることはできません。"}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 Debian の `--remove` は通常、conffile と分類された設定ファイルを残します。`--purge` は、パッケージスクリプトと管理外データの扱いに従いつつ、それらも削除するよう要求します。どちらのコマンドもユーザーが作成したデータの削除を保証しません。関連パッケージを評価して完全なトランザクションを提示できるため、一般には高レベルの `apt remove` または `dnf remove` の方が適しています。
 
-:::single-choice{#package-install-tools-remove-operand}
-`dpkg --remove` はインストール済みパッケージについて何を引数として受け取りますか？
+:::single-choice{#package-install-tools-remove-operand} `dpkg --remove` はインストール済みパッケージについて何を引数として受け取りますか？
 
 ::option[リポジトリ索引の URL。]{#package-install-tools-remove-url explanation="リポジトリの場所は、低レベルの削除へ渡すパッケージ識別情報ではありません。"}
 ::option[インストール済みパッケージ名。]{#package-install-tools-remove-name .correct explanation="削除では、以前の `.deb` パスではなく、`example` のようなパッケージレコードを指定します。"}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 対象を絞った調査では、特定のパッケージ名を指定し、スクリプトの信頼性が重要なら機械可読形式を優先します。パッケージデータベースが記述するのは管理された状態です。ローカル管理者やアプリケーションが後からファイルを変更することもあるため、インストール済みファイルを記録済みメタデータと比較する必要がある場合は検証機能を使ってください。
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-RPM データベースにインストール済みとして記録された全パッケージを問い合わせるコマンドはどれですか？
+:::single-choice{#package-install-tools-rpm-list-installed} RPM データベースにインストール済みとして記録された全パッケージを問い合わせるコマンドはどれですか？
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q` は問い合わせモードを選び、`-a` は全インストール済みパッケージレコードを対象にします。"}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e` は読み取り専用一覧ではなく、パッケージ削除を要求します。"}

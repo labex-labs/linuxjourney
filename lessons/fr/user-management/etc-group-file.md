@@ -29,8 +29,7 @@ $ getent group developers
 
 Les listes peuvent révéler noms de comptes et rôles internes ; relisez-les avant partage.
 
-:::single-choice{#group-query-resolved-database}
-Quelle commande interroge la base de groupes résolue par NSS ?
+:::single-choice{#group-query-resolved-database} Quelle commande interroge la base de groupes résolue par NSS ?
 
 ::option[`getent group`]{#group-getent-all .correct explanation="`getent` consulte les sources NSS configurées pour les groupes."}
 ::option[`cat /etc/group`]{#group-cat-local explanation="Cette commande ne lit que le fichier local et peut omettre d'autres sources."}
@@ -50,16 +49,14 @@ developers:x:1500:alice,bob
 
 Les mots de passe de groupe sont une fonction ancienne utilisée par `newgrp` dans certaines configurations. Ils ne constituent pas le mécanisme normal d'autorisation sudo et ne doivent pas être introduits par édition manuelle.
 
-:::single-choice{#group-gid-field}
-Dans `developers:x:1500:alice,bob`, quel champ contient le GID ?
+:::single-choice{#group-gid-field} Dans `developers:x:1500:alice,bob`, quel champ contient le GID ?
 
 ::option[Le deuxième, `x`]{#group-second-password explanation="Le champ 2 est l'indicateur de mot de passe."}
 ::option[Le quatrième, `alice,bob`]{#group-fourth-members explanation="Le champ 4 recense les membres explicites."}
 ::option[Le troisième, `1500`]{#group-third-gid .correct explanation="Le troisième champ séparé par des deux-points est le GID numérique."}
 :::
 
-:::single-choice{#group-explicit-member-field}
-Comment les noms des membres explicites sont-ils représentés ?
+:::single-choice{#group-explicit-member-field} Comment les noms des membres explicites sont-ils représentés ?
 
 ::option[Comme une liste séparée par des virgules au champ 4.]{#group-members-field-four .correct explanation="Le dernier champ contient les noms des membres supplémentaires séparés par des virgules."}
 ::option[Comme une liste séparée par des espaces au champ 2.]{#group-members-field-two explanation="Le champ 2 concerne le mot de passe ou son indicateur."}
@@ -76,8 +73,7 @@ developers:x:1500:
 
 Analyser seulement le champ 4 donne une vue incomplète.
 
-:::single-choice{#group-primary-membership-visibility}
-Le passwd d'Alice utilise 1500 comme GID principal, mais son nom est absent du champ 4 du groupe. En est-elle membre ?
+:::single-choice{#group-primary-membership-visibility} Le passwd d'Alice utilise 1500 comme GID principal, mais son nom est absent du champ 4 du groupe. En est-elle membre ?
 
 ::option[Non, toute appartenance doit figurer au champ 4.]{#group-field-four-only explanation="Cela ignore l'appartenance principale et sous-estime les membres."}
 ::option[Oui, l'appartenance principale vient du champ GID de passwd.]{#group-primary-from-passwd .correct explanation="La liste explicite sert surtout aux appartenances supplémentaires ; le groupe principal est enregistré avec le compte."}
@@ -93,8 +89,7 @@ $ groups alice
 
 Ces commandes donnent une vue résolue. Sans opérande, `id` rapporte les groupes actifs dans les attributs du processus courant. Une nouvelle appartenance supplémentaire n'apparaît généralement pas dans une session déjà ouverte ; démarrez une nouvelle session authentifiée ou employez délibérément `newgrp` si adapté.
 
-:::single-choice{#group-current-process-credentials}
-Quelle commande indique l'UID, le GID principal et les groupes supplémentaires du processus courant ?
+:::single-choice{#group-current-process-credentials} Quelle commande indique l'UID, le GID principal et les groupes supplémentaires du processus courant ?
 
 ::option[`id`]{#group-current-id .correct explanation="Sans utilisateur, `id` décrit les attributs d'identité du processus courant."}
 ::option[`cat /etc/group`]{#group-current-cat explanation="Le fichier local ne montre pas les groupes résolus actifs dans ce processus."}

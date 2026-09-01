@@ -28,8 +28,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 「キャラクター」という名前でも、各システムコールが厳密に1文字ずつ転送する必要はありません。アプリケーションはバッファーを読み書きでき、ブロック、フレーミング、制御の動作はドライバーが定義します。
 
-:::single-choice{#device-types-character-marker}
-キャラクターデバイスノードを示すモードの先頭文字はどれですか？
+:::single-choice{#device-types-character-marker} キャラクターデバイスノードを示すモードの先頭文字はどれですか？
 
 ::option[`b`]{#device-types-marker-block explanation="`b` はブロックデバイスノードを示します。"}
 ::option[`p`]{#device-types-marker-pipe explanation="`p` は FIFO、つまり名前付きパイプを示します。"}
@@ -42,8 +41,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 ブロックノードは、マウント済みファイルシステムではありません。ストレージデバイスまたは論理領域を表しており、その上にファイルシステムを作成して別途マウントできます。誤ったブロックノードへ生データを書き込むと、パーティションテーブル、ファイルシステム、ユーザーデータが破壊される可能性があります。
 
-:::single-choice{#device-types-block-marker}
-モードの先頭文字 `b` は何を示しますか？
+:::single-choice{#device-types-block-marker} モードの先頭文字 `b` は何を示しますか？
 
 ::option[バックグラウンドで実行中のシェルジョブ。]{#device-types-background-job explanation="シェルジョブの状態は、ファイルシステムの種類を示す文字には符号化されません。"}
 ::option[ブロックデバイスインターフェース。]{#device-types-block-device .correct explanation="ブロック特殊ファイルは、カーネルのブロックサブシステムを通じてアドレス指定可能なストレージを公開します。"}
@@ -58,8 +56,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 FIFO も Unix ソケットノードも、ハードウェアドライバーの選択にデバイスのメジャー番号とマイナー番号を使いません。
 
-:::single-choice{#device-types-pipe-socket-distinction}
-これらの IPC オブジェクトを正しく区別している説明はどれですか？
+:::single-choice{#device-types-pipe-socket-distinction} これらの IPC オブジェクトを正しく区別している説明はどれですか？
 
 ::option[`p` はディスクパーティション、`s` はソリッドステートストレージを示す。]{#device-types-storage-letters explanation="パーティションは通常ブロックデバイスであり、これらの文字はストレージ技術を表しません。"}
 ::option[`p` は FIFO、`s` は Unix ドメインソケットノードを示す。]{#device-types-p-and-s .correct explanation="これらはローカルなプロセス間通信に使われる、別々のファイルシステムオブジェクトです。"}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 GNU `stat` では、`%t` と `%T` の値が16進数で表示されます。
 
-:::single-choice{#device-types-major-minor-scope}
-メジャー番号とマイナー番号を使ってカーネルデバイスインターフェースを識別するオブジェクトはどれですか？
+:::single-choice{#device-types-major-minor-scope} メジャー番号とマイナー番号を使ってカーネルデバイスインターフェースを識別するオブジェクトはどれですか？
 
 ::option[すべての通常ファイルとディレクトリ。]{#device-types-all-files explanation="通常ファイルは、デバイスノードのメジャー／マイナー番号の組ではなく、サイズやファイルシステムのメタデータを使います。"}
 ::option[リンク先が存在しないシンボリックリンクだけ。]{#device-types-broken-symlinks explanation="シンボリックリンクはパス文字列を保存し、リンク先がなくてもデバイスノードにはなりません。"}

@@ -16,8 +16,7 @@ Red Hat Enterprise Linux，通常被称为 **RHEL**，是由红帽公司（Red H
 
 RHEL 是最重要的企业级 Linux 发行版之一，因为它被广泛应用于服务器、数据中心、云系统和受监管的商业环境中。它的角色与更通用的社区发行版不同，因为可支持性和长期生命周期规划是其核心价值所在。
 
-:::single-choice{#match-rhel-priorities}
-以下哪种需求最直接符合 RHEL 的设计目标？
+:::single-choice{#match-rhel-priorities} 以下哪种需求最直接符合 RHEL 的设计目标？
 
 ::option[持续改变功能，但没有支持生命周期]{#continuous-unsupported-change explanation="RHEL 遵循保守且公开的生命周期，而不是持续进行不受支持的变化；可预测性正是其企业价值的一部分。"}
 ::option[可预测的版本和长期专业支持]{#predictable-enterprise-platform .correct explanation="RHEL 面向需要规划生命周期、维护和专业支持的组织，这些特性有助于生产系统长期保持可支持状态。"}
@@ -36,8 +35,7 @@ RHEL 与更广泛的红帽生态系统紧密相连。Fedora 是许多新技术�
 
 如果您想比较这两条路径，请参阅 [Fedora](https://labex.io/zh/lesson/fedora)。有关发行版系列的更广泛概述，请参阅 [选择 Linux 发行版](https://labex.io/zh/lesson/choosing-a-linux-distribution)。
 
-:::single-choice{#compare-fedora-and-rhel}
-在 Red Hat 生态系统中，Fedora 与 RHEL 是什么关系？
+:::single-choice{#compare-fedora-and-rhel} 在 Red Hat 生态系统中，Fedora 与 RHEL 是什么关系？
 
 ::option[Fedora 是停止安全维护后保留下来的旧版 RHEL]{#fedora-old-rhel explanation="Fedora 是独立的社区发行版，而不是过期的 RHEL 版本；它有自己的版本，并采用更快的更新节奏。"}
 ::option[Fedora 是上游社区项目，其中的技术可能进入 RHEL]{#fedora-upstream .correct explanation="Fedora 是更新较快的上游社区项目；Red Hat 在开发更保守的企业平台时会吸收该生态系统中的成果。"}
@@ -50,8 +48,7 @@ RHEL 使用 RPM 软件包格式以及 DNF 等工具来安装、更新和管理�
 
 软件包管理是 RHEL 管理员的一项核心操作技能，因为长期维护和可预测的更新是企业系统运行的核心。
 
-:::single-choice{#relate-rpm-and-dnf}
-在 RHEL 上，RPM 与 DNF 如何协同工作？
+:::single-choice{#relate-rpm-and-dnf} 在 RHEL 上，RPM 与 DNF 如何协同工作？
 
 ::option[RPM 定义打包的软件，DNF 管理仓库内容和依赖关系]{#rpm-format-dnf-tool .correct explanation="RHEL 软件以 RPM 软件包分发，而 DNF 是常用的高级工具，用于查找、安装、更新和删除这些内容。"}
 ::option[DNF 定义打包的软件，RPM 管理图形桌面]{#dnf-format-rpm-desktop explanation="这个说法颠倒并误解了二者的职责；RPM 是软件包系统，DNF 负责高级软件管理。"}
@@ -64,8 +61,7 @@ RHEL 使用 RPM 软件包格式以及 DNF 等工具来安装、更新和管理�
 
 对于企业而言，这种支持模式的重要性可能与发行版本身的技术特性同等重要。
 
-:::single-choice{#use-published-lifecycle}
-公开的支持生命周期为什么对组织有价值？
+:::single-choice{#use-published-lifecycle} 公开的支持生命周期为什么对组织有价值？
 
 ::option[它能保证每个应用程序无需测试即可运行]{#guarantee-all-applications explanation="受支持的操作系统并不能保证兼容所有应用程序；组织仍需要进行兼容性检查和测试。"}
 ::option[它让支持期内无需安装安全更新]{#avoid-security-updates explanation="支持生命周期会提供维护和安全更新，并不意味着不再需要更新；系统仍需主动维护。"}

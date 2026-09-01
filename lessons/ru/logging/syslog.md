@@ -18,8 +18,7 @@ Syslog определяет модель сообщений и транспор�
 
 Severities упорядочены. В классическом синтаксисе selector `daemon.warning` обычно совпадает с сообщениями daemon уровня warning и всеми более серьёзными, а не только warning. Точное совпадение в поддерживающих синтаксис реализациях использует модификатор равенства, например `daemon.=warning`.
 
-:::single-choice{#syslog-warning-selector}
-С чем обычно совпадает классический selector `daemon.warning`?
+:::single-choice{#syslog-warning-selector} С чем обычно совпадает классический selector `daemon.warning`?
 
 ::option[Только с сообщениями, текст которых содержит слово daemon.]{#syslog-text-daemon explanation="Selector использует метаданные facility, а не поиск текста."}
 ::option[С каждым debug-сообщением любой facility.]{#syslog-all-debug explanation="Selector ограничен facility daemon и порогом severity."}
@@ -40,8 +39,7 @@ kern.*                  /var/log/kern.log
 
 До изменения производственной маршрутизации изучите все включённые файлы и проверьте точный синтаксис установленной версии.
 
-:::single-choice{#syslog-selector-action}
-Что является action в традиционном правиле rsyslog?
+:::single-choice{#syslog-selector-action} Что является action в традиционном правиле rsyslog?
 
 ::option[Выражение facility и severity слева.]{#syslog-left-selector explanation="Эта часть выбирает сообщения."}
 ::option[Назначение или операция справа.]{#syslog-right-action .correct explanation="Action определяет отправку выбранных записей в файл, удалённую цель или другой вывод."}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 Одно событие может появиться и в journal, и в текстовом файле — в зависимости от пересылки и маршрутизации. `logger -s` также копирует сообщение в standard error, но не доказывает долговременную запись.
 
-:::single-choice{#syslog-logger-tag}
-Что добавляет `logger -t lesson-test` к сообщению?
+:::single-choice{#syslog-logger-tag} Что добавляет `logger -t lesson-test` к сообщению?
 
 ::option[Запрос удалить старые тестовые записи.]{#syslog-tag-delete explanation="Параметр задаёт тег и не управляет хранением."}
 ::option[Идентификатор `lesson-test` как тег сообщения.]{#syslog-tag-identifier .correct explanation="Уникальный тег облегчает поиск контролируемого события в настроенных назначениях."}
@@ -84,8 +81,7 @@ $ sudo rsyslogd -N1
 
 Удалённая пересылка через недоверенные сети должна использовать аутентифицированный зашифрованный транспорт. UDP не имеет сквозного подтверждения; критичный аудит должен учитывать очереди, потери, целостность, контроль доступа и недоступность получателя.
 
-:::single-choice{#syslog-change-verification}
-Что является достаточным доказательством работы нового правила маршрутизации?
+:::single-choice{#syslog-change-verification} Что является достаточным доказательством работы нового правила маршрутизации?
 
 ::option[Файл конфигурации имеет недавнее время изменения.]{#syslog-mtime explanation="Временная метка не доказывает корректный синтаксис или доставку."}
 ::option[Отправитель может выполнить ping получателя.]{#syslog-ping explanation="Одна сетевая доступность не проверяет протокол журналирования или путь хранения."}

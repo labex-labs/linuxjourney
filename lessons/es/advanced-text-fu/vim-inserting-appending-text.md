@@ -14,8 +14,7 @@ En el modo Normal, Vim interpreta las teclas como órdenes. El modo Insertar int
 
 Pulsa `Esc` para salir del modo Insertar y volver al modo Normal. Si no sabes qué modo está activo, pulsar `Esc` es una forma segura de restablecer el modo Normal, aunque puede cancelar una operación pendiente.
 
-:::single-choice{#vim-insert-return-normal}
-¿Qué tecla vuelve normalmente del modo Insertar al modo Normal?
+:::single-choice{#vim-insert-return-normal} ¿Qué tecla vuelve normalmente del modo Insertar al modo Normal?
 
 ::option[`Esc`]{#vim-insert-escape .correct explanation="Escape termina la inserción actual y devuelve Vim al modo Normal."}
 ::option[`Enter`]{#vim-insert-enter explanation="Intro inserta un salto de línea y permanece en el modo Insertar."}
@@ -31,8 +30,7 @@ Desde el modo Normal:
 
 Por ejemplo, si el cursor está sobre la `b` de `abc`, `i` comienza antes de `b`, mientras que `a` comienza después. Ambas órdenes cambian de modo; el texto que escribas a continuación realiza la inserción.
 
-:::single-choice{#vim-insert-before-cursor}
-¿Qué tecla del modo Normal entra en el modo Insertar inmediatamente antes del cursor?
+:::single-choice{#vim-insert-before-cursor} ¿Qué tecla del modo Normal entra en el modo Insertar inmediatamente antes del cursor?
 
 ::option[`a`]{#vim-insert-a-after explanation="La `a` minúscula añade después del cursor en vez de insertar antes."}
 ::option[`o`]{#vim-insert-o-below explanation="La `o` minúscula abre una línea nueva debajo de la actual antes de entrar en el modo Insertar."}
@@ -48,16 +46,14 @@ Las órdenes en mayúsculas apuntan a posiciones significativas de la línea act
 
 En una línea con sangría, `I` la omite y comienza antes del primer texto que no esté en blanco. Usa `0i` si necesitas específicamente insertar en la columna cero.
 
-:::single-choice{#vim-insert-first-nonblank}
-¿Qué orden del modo Normal comienza a insertar antes del primer carácter que no sea un espacio en blanco de la línea actual?
+:::single-choice{#vim-insert-first-nonblank} ¿Qué orden del modo Normal comienza a insertar antes del primer carácter que no sea un espacio en blanco de la línea actual?
 
 ::option[`i`]{#vim-insert-lower-i explanation="La `i` minúscula usa la posición actual del cursor y no apunta primero al texto inicial de la línea."}
 ::option[`A`]{#vim-insert-capital-a explanation="La `A` mayúscula comienza la inserción al final de la línea actual."}
 ::option[`I`]{#vim-insert-capital-i .correct explanation="La `I` mayúscula se desplaza al primer carácter que no esté en blanco y entra en el modo Insertar antes de él."}
 :::
 
-:::single-choice{#vim-append-line-end}
-¿Qué orden del modo Normal va al final de la línea actual y entra en el modo Insertar?
+:::single-choice{#vim-append-line-end} ¿Qué orden del modo Normal va al final de la línea actual y entra en el modo Insertar?
 
 ::option[`A`]{#vim-append-capital-a .correct explanation="La `A` mayúscula combina un salto al final de la línea con la entrada en el modo Insertar."}
 ::option[`$`]{#vim-move-line-end explanation="El movimiento con signo de dólar llega al final de la línea, pero permanece en el modo Normal."}
@@ -73,8 +69,7 @@ Desde el modo Normal:
 
 Vim aplica la sangría según la configuración actual y las reglas del tipo de archivo. Una cantidad puede repetir la operación de apertura de línea, pero aprende primero la forma de una sola línea para que la posición resultante del cursor sea predecible.
 
-:::single-choice{#vim-open-line-above}
-¿Qué orden del modo Normal abre una línea nueva encima de la actual y entra en el modo Insertar?
+:::single-choice{#vim-open-line-above} ¿Qué orden del modo Normal abre una línea nueva encima de la actual y entra en el modo Insertar?
 
 ::option[`o`]{#vim-open-lower-o explanation="La `o` minúscula abre una línea debajo de la actual."}
 ::option[`O`]{#vim-open-upper-o .correct explanation="La `O` mayúscula abre una línea nueva encima e inicia allí la inserción."}

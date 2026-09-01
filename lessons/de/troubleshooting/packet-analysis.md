@@ -16,8 +16,7 @@ Eine Paketaufzeichnung erfasst Datenverkehr, der an einem ausgewählten Beobacht
 
 Zeichne auf der Schnittstelle und im Netzwerknamensraum auf, die der betroffene Datenstrom tatsächlich durchquert. Bridges, Container, VPNs, Bonds, VLANs und Offloading können verändern, was eine Schnittstelle zeigt. Ermittle vor der Aufzeichnung mit `ip route get` und `ip link` mögliche Kandidaten.
 
-:::single-choice{#packet-analysis-interface-choice}
-Warum ist die Auswahl der Aufzeichnungsschnittstelle wichtig?
+:::single-choice{#packet-analysis-interface-choice} Warum ist die Auswahl der Aufzeichnungsschnittstelle wichtig?
 
 ::option[Jede Schnittstelle spiegelt automatisch das gesamte Internet.]{#packet-analysis-mirrors-internet explanation="Ein Host sieht normalerweise nur Datenverkehr, der über seine Schnittstellen zugestellt oder zu ihnen gespiegelt wird."}
 ::option[Nur an diesem Beobachtungspunkt sichtbarer Datenverkehr kann aufgezeichnet werden.]{#packet-analysis-visible-point .correct explanation="Namensräume, Tunnel, Bridges und Routing können den relevanten Datenstrom andernorts platzieren."}
@@ -35,8 +34,7 @@ $ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
 
 `-i` wählt die Schnittstelle, `-n` bewahrt numerische Namen, `-c` begrenzt die Paketanzahl, `-w` schreibt pcap-Daten, und der abschließende Ausdruck ist ein Aufzeichnungsfilter. Lege zusätzlich extern eine Zeitgrenze fest, falls kein Datenverkehr auftritt.
 
-:::single-choice{#packet-analysis-count-bound}
-Was bewirkt `-c 100`?
+:::single-choice{#packet-analysis-count-bound} Was bewirkt `-c 100`?
 
 ::option[Es zeichnet nur TCP-Port 100 auf.]{#packet-analysis-port-hundred explanation="Die Portauswahl gehört in den Filterausdruck."}
 ::option[Es komprimiert die Datei auf 100 Byte.]{#packet-analysis-compress-hundred explanation="Die Option bezeichnet eine Paketanzahl und keine Dateigrößengrenze."}
@@ -53,8 +51,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 Lies je nach Protokoll Zeitstempel, Protokoll, Quelle, Ziel, Kennzeichen, Sequenz- oder Bestätigungsdaten und Länge. Ein Aufzeichnungszeitstempel kennzeichnet die Beobachtung auf diesem Host und nicht zwangsläufig die genaue Sendezeit andernorts. Uhrsynchronisierung ist wichtig, wenn Aufzeichnungen mehrerer Systeme miteinander verknüpft werden.
 
-:::single-choice{#packet-analysis-read-file}
-Welche Option liest Pakete aus einer gespeicherten pcap-Datei?
+:::single-choice{#packet-analysis-read-file} Welche Option liest Pakete aus einer gespeicherten pcap-Datei?
 
 ::option[`-r`]{#packet-analysis-option-read .correct explanation="Die Leseoption verarbeitet eine bestehende Aufzeichnungsdatei."}
 ::option[`-i`]{#packet-analysis-option-interface explanation="Dies wählt eine Schnittstelle für eine Live-Aufzeichnung aus."}
@@ -67,8 +64,7 @@ Keine aufgezeichneten Pakete können eine falsche Schnittstelle oder einen falsc
 
 TLS und andere Verschlüsselung verbergen normalerweise Anwendungsnutzlasten, lassen jedoch nützliche Metadaten wie Endpunkte, Zeitverlauf, Größen, TCP-Verhalten und Teile von Handshakes sichtbar. Versuche keine unautorisierte Entschlüsselung und sammle private Schlüssel nicht leichtfertig.
 
-:::single-choice{#packet-analysis-no-packets}
-Was beweist eine leere gefilterte Aufzeichnung?
+:::single-choice{#packet-analysis-no-packets} Was beweist eine leere gefilterte Aufzeichnung?
 
 ::option[Die entfernte Anwendung wurde dauerhaft gelöscht.]{#packet-analysis-empty-deleted explanation="Fehler bei Beobachtungspunkt und Filter können dasselbe Ergebnis erzeugen."}
 ::option[Das gesamte Netzwerk besitzt keinen Datenverkehr.]{#packet-analysis-empty-network explanation="Ein enger Filter kann unabhängigen Datenverkehr ausschließen."}
@@ -79,8 +75,7 @@ Was beweist eine leere gefilterte Aufzeichnung?
 
 Speichere pcaps mit restriktiven Berechtigungen, erfasse Befehl, Host, Schnittstelle, Zeitzone, Filter und Vorfallszeitraum und hashe Belege, wenn Integrität wichtig ist. Minimiere oder bereinige Daten vor der Weitergabe mit Werkzeugen und Verfahren, die benötigte Felder erhalten; Paketnutzlasten und sogar Metadaten können Benutzer und Systeme identifizieren.
 
-:::single-choice{#packet-analysis-pcap-safety}
-Wie sollte eine pcap-Datei eines Vorfalls behandelt werden?
+:::single-choice{#packet-analysis-pcap-safety} Wie sollte eine pcap-Datei eines Vorfalls behandelt werden?
 
 ::option[Als vertraulicher Beleg mit beschränktem Zugriff und dokumentierter Herkunft.]{#packet-analysis-sensitive-evidence .correct explanation="Aufzeichnungen können vertrauliche Inhalte enthalten und benötigen sowohl Integritäts- als auch Vertraulichkeitskontrollen."}
 ::option[Als harmloser Text, der ohne Prüfung öffentlich hochgeladen werden kann.]{#packet-analysis-public explanation="Binäre Aufzeichnungen können Nutzlasten, Identitäten und Infrastruktur offenlegen."}

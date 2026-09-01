@@ -45,8 +45,7 @@ ABC123
 
 Los caracteres que no están en `SET1` pasan sin cambios.
 
-:::single-choice{#tr-map-characters}
-¿Qué imprime `printf '%s\n' 'abc123' | tr 'abc' 'ABC'`?
+:::single-choice{#tr-map-characters} ¿Qué imprime `printf '%s\n' 'abc123' | tr 'abc' 'ABC'`?
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="Los dígitos no pertenecen al conjunto de origen, por lo que `tr` no los sustituye por letras."}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="Cada uno de `a`, `b` y `c` se corresponde con el carácter de la misma posición en `ABC`; los dígitos no cambian."}
@@ -78,8 +77,7 @@ $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-:::single-choice{#tr-delete-digits}
-¿Qué orden elimina todos los dígitos de la entrada estándar y deja sin cambios los demás caracteres?
+:::single-choice{#tr-delete-digits} ¿Qué orden elimina todos los dígitos de la entrada estándar y deja sin cambios los demás caracteres?
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="La opción `-d` elimina del flujo de entrada todos los caracteres de la clase de dígitos."}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="La opción `-s` comprime los dígitos repetidos, pero deja un carácter de cada secuencia."}
@@ -105,8 +103,7 @@ one
 Two
 ```
 
-:::single-choice{#tr-squeeze-spaces}
-¿Qué orden reduce cada secuencia de espacios normales de la entrada estándar a un solo espacio?
+:::single-choice{#tr-squeeze-spaces} ¿Qué orden reduce cada secuencia de espacios normales de la entrada estándar a un solo espacio?
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="La opción `-s` comprime los miembros repetidos del conjunto proporcionado, que contiene un espacio normal."}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="La opción `-d` elimina todos los espacios normales en vez de conservar uno por secuencia."}
@@ -141,8 +138,7 @@ userexamplecom
 
 Esto también elimina el salto de línea porque no es alfanumérico. Añade o conserva separadores de forma deliberada cuando los límites de los registros sean importantes.
 
-:::single-choice{#tr-keep-alphanumeric}
-¿Qué hace `tr -cd '[:alnum:]'` con la entrada estándar?
+:::single-choice{#tr-keep-alphanumeric} ¿Qué hace `tr -cd '[:alnum:]'` con la entrada estándar?
 
 ::option[Elimina los caracteres alfanuméricos y conserva todos los demás.]{#tr-delete-alnum explanation="El complemento cambia los caracteres a los que se dirige `-d`. El propio conjunto alfanumérico se conserva."}
 ::option[Elimina todos los caracteres que no son alfanuméricos.]{#tr-delete-nonalnum .correct explanation="`-c` complementa el conjunto alfanumérico y `-d` elimina el conjunto resultante de caracteres no alfanuméricos."}
@@ -174,8 +170,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 Redirige la salida estándar a otro archivo si necesitas guardar el resultado. No la redirijas a la ruta de entrada, porque el shell la truncaría antes de que `tr` pudiera leerla.
 
-:::single-choice{#tr-read-file-input}
-¿Qué orden hace que `tr` lea `names.txt` como entrada estándar y convierta los caracteres en minúsculas a mayúsculas?
+:::single-choice{#tr-read-file-input} ¿Qué orden hace que `tr` lea `names.txt` como entrada estándar y convierta los caracteres en minúsculas a mayúsculas?
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` no acepta un nombre de archivo de entrada normal de este modo; el operando adicional hace que la sintaxis no sea válida."}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Esto lee el archivo correctamente, pero elimina las letras minúsculas en vez de traducirlas."}

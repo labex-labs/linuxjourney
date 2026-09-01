@@ -18,8 +18,7 @@ DHCP サーバーはスコープまたはアドレスプールとリース状態
 
 DHCP は UDP 上で運ばれるアプリケーション層プロトコルです。DHCPv4 サーバーは通常 UDP 67、クライアントは UDP 68 を使います。
 
-:::single-choice{#dhcp-relay-purpose}
-DHCP リレーによって何が可能になりますか？
+:::single-choice{#dhcp-relay-purpose} DHCP リレーによって何が可能になりますか？
 
 ::option[すべてのクライアントが方針なしで任意のアドレスを選ぶ。]{#dhcp-client-any-address explanation="サーバーは引き続きスコープとリース方針を適用します。"}
 ::option[別サブネットのクライアントが中央の DHCP サーバーへ到達する。]{#dhcp-central-server .correct explanation="リレーがルーティング境界を越えて DHCP 交換を転送し、クライアントネットワークを示します。"}
@@ -37,8 +36,7 @@ DHCP リレーによって何が可能になりますか？
 
 ブロードキャストとユニキャストの詳細は、クライアント状態、リレー利用、サーバー機能で異なります。OFFER はまだ最終的に利用可能なリースではなく、ACK で通常の選択交換が完了します。
 
-:::single-choice{#dhcp-dora-order}
-最初の DHCPv4 の通常の順序はどれですか？
+:::single-choice{#dhcp-dora-order} 最初の DHCPv4 の通常の順序はどれですか？
 
 ::option[OFFER、DISCOVER、ACK、REQUEST。]{#dhcp-wrong-order-one explanation="クライアントが探索してからサーバーが提示し、要求してから確認応答します。"}
 ::option[DISCOVER、OFFER、REQUEST、ACK。]{#dhcp-correct-order .correct explanation="探索、提示、選択、確定という順序です。"}
@@ -51,8 +49,7 @@ DHCP リレーによって何が可能になりますか？
 
 動的割り当てと表示されたアドレスが永久に続くとは限りません。変更を調査するときは、現在のリース、有効期間、サーバー、オプションを記録してください。
 
-:::single-choice{#dhcp-lease-expiration}
-正常に更新されなかった DHCP アドレスリースはどうなりますか？
+:::single-choice{#dhcp-lease-expiration} 正常に更新されなかった DHCP アドレスリースはどうなりますか？
 
 ::option[恒久的なハードウェア MAC アドレスになる。]{#dhcp-lease-mac explanation="IP リースはリンク層の識別情報を変えません。"}
 ::option[最終的に期限切れになり、クライアントは有効として扱うのをやめる。]{#dhcp-lease-expires .correct explanation="リース方式により、サーバー方針の下でアドレスとオプションを回収・変更できます。"}
@@ -71,8 +68,7 @@ $ resolvectl status
 
 リゾルバーのコマンドはシステムによって異なります。稼働中のネットワークマネージャーが持つリースデータとログも確認します。不正サーバー、プール内の静的割り当て、古い状態、手動設定による重複は依然起こり得ます。DHCP は間違いを減らしますが、単独で全競合を防げません。
 
-:::single-choice{#dhcp-result-verification}
-DHCP リースの受け入れ後に確認すべきものは何ですか？
+:::single-choice{#dhcp-result-verification} DHCP リースの受け入れ後に確認すべきものは何ですか？
 
 ::option[表示されたインターフェース名だけ。]{#dhcp-interface-name-only explanation="名前だけではアドレス、経路、名前解決を確立できません。"}
 ::option[キーボードが反応するかだけ。]{#dhcp-keyboard explanation="キーボード入力はネットワークリース設定と無関係です。"}
@@ -83,8 +79,7 @@ DHCP リースの受け入れ後に確認すべきものは何ですか？
 
 IPv6 ホストは Stateless Address Autoconfiguration、DHCPv6、静的設定、または組み合わせを使えます。DHCPv6 は IPv4 の DORA 交換を使わず、既定ルーター情報は通常 DHCPv6 ではなく IPv6 Router Advertisement から得ます。
 
-:::single-choice{#dhcp-ipv6-default-router}
-IPv6 ホストは通常、既定ルーター情報をどこから得ますか？
+:::single-choice{#dhcp-ipv6-default-router} IPv6 ホストは通常、既定ルーター情報をどこから得ますか？
 
 ::option[IPv6 Router Advertisement。]{#dhcp-router-advertisement .correct explanation="DHCPv6 はほかの設定を提供できますが、ルーターは Neighbor Discovery を通じて自身を通知します。"}
 ::option[Ethernet の FCS トレーラー。]{#dhcp-ipv6-fcs explanation="FCS はリンク破損を検出し、ルーター設定は運びません。"}

@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-¿Qué orden muestra el contenido de `/home/pete` sin cambiar a ese directorio?
+:::single-choice{#list-another-directory} ¿Qué orden muestra el contenido de `/home/pete` sin cambiar a ese directorio?
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="Al pasar una ruta de directorio a `ls`, se muestra su contenido. La shell permanece en su directorio de trabajo actual."}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` cambia el directorio de trabajo de la shell. Por sí sola no realiza la enumeración solicitada."}
@@ -47,8 +46,7 @@ $ ls -a
 
 Los archivos cuyos nombres empiezan por punto están ocultos de forma predeterminada y suelen guardar configuraciones, como `.bashrc`.
 
-:::single-choice{#show-hidden-files}
-¿Qué orden incluye los archivos ocultos en la lista?
+:::single-choice{#show-hidden-files} ¿Qué orden incluye los archivos ocultos en la lista?
 
 ::option[`ls -l`]{#long-format explanation="La opción `-l` añade columnas detalladas, pero no incluye por sí sola los nombres ocultos."}
 ::option[`ls -r`]{#reverse-order explanation="La opción `-r` invierte el orden. No cambia si se incluyen o no los archivos ocultos."}
@@ -84,8 +82,7 @@ Para tamaños de archivo más fáciles de leer, añade `-h` para salida legible 
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-¿Qué orden muestra detalles en formato largo con tamaños fáciles de leer?
+:::single-choice{#show-readable-file-details} ¿Qué orden muestra detalles en formato largo con tamaños fáciles de leer?
 
 ::option[`ls -la`]{#long-all explanation="Esta orden combina el formato largo con los archivos ocultos. No solicita unidades de tamaño fáciles de leer."}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` selecciona el formato largo y `-h` facilita la lectura de los tamaños. Las dos opciones pueden combinarse en una sola orden."}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-¿Qué orden clasifica por fecha de modificación y coloca al final los elementos más recientes?
+:::single-choice{#show-newest-files-last} ¿Qué orden clasifica por fecha de modificación y coloca al final los elementos más recientes?
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` clasifica por fecha de modificación y `-r` invierte ese orden. Juntas colocan los elementos antiguos antes que los nuevos."}
 ::option[`ls -lt`]{#time-default explanation="Esta orden clasifica por fecha de modificación, pero mantiene el orden predeterminado con los más recientes primero."}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`: Ordena por tamaño de archivo.
 - `-d`: Lista el directorio en sí en lugar de su contenido.
 
-:::single-choice{#list-directory-entry-itself}
-¿Qué orden muestra la entrada del directorio `projects/` en vez de su contenido?
+:::single-choice{#list-directory-entry-itself} ¿Qué orden muestra la entrada del directorio `projects/` en vez de su contenido?
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="La opción `-d` indica a `ls` que muestre la entrada del directorio en vez de abrirlo para enumerar su contenido."}
 ::option[`ls projects/`]{#directory-contents explanation="Sin `-d`, pasar una ruta de directorio hace que `ls` muestre los elementos que contiene."}

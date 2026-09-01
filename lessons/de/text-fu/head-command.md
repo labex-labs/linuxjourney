@@ -22,8 +22,7 @@ $ head events.log
 
 Die Datei wird dabei nicht verändert. Enthält sie weniger als 10 Zeilen, werden alle vorhandenen Zeilen ausgegeben.
 
-:::single-choice{#head-default-lines}
-Was gibt `head events.log` standardmäßig aus?
+:::single-choice{#head-default-lines} Was gibt `head events.log` standardmäßig aus?
 
 ::option[Die letzten 10 Zeilen oder bei einer kürzeren Datei alle Zeilen.]{#head-last-ten explanation="Das Ende einer Eingabe zeigt `tail` an. `head` wählt vom Anfang aus."}
 ::option[Die ersten 10 Zeilen oder bei einer kürzeren Datei alle Zeilen.]{#head-first-ten .correct explanation="Ohne Zähloption wählt `head` bis zu zehn Zeilen am Anfang der Eingabe aus."}
@@ -40,8 +39,7 @@ $ head -n 15 events.log
 
 GNU `head` akzeptiert auch die Kurzform `-15`; `-n 15` macht die Bedeutung der Option jedoch deutlicher.
 
-:::single-choice{#head-five-lines}
-Welcher Befehl zeigt die ersten fünf Zeilen von `report.txt` an?
+:::single-choice{#head-five-lines} Welcher Befehl zeigt die ersten fünf Zeilen von `report.txt` an?
 
 ::option[`head -c 5 report.txt`]{#head-five-bytes explanation="Die Option `-c` zählt Bytes statt Zeilen und kann daher mitten in der ersten Zeile enden."}
 ::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="Die Option `-n` wählt eine Zeilenanzahl; `5` fordert die ersten fünf Zeilen an."}
@@ -58,8 +56,7 @@ $ head -c 20 archive.bin
 
 Damit werden die ersten 20 Bytes ausgegeben. Die Ausgabe kann mitten in einer Textzeile oder bei Mehrbyte-Text mitten in einem kodierten Zeichen enden. Für gewöhnliche Textvorschauen eignet sich der Zeilenmodus besser.
 
-:::single-choice{#head-first-bytes}
-Welcher Befehl schreibt die ersten 100 Bytes von `payload.bin` nach stdout?
+:::single-choice{#head-first-bytes} Welcher Befehl schreibt die ersten 100 Bytes von `payload.bin` nach stdout?
 
 ::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="Die Option `-c` wählt eine Byteanzahl, sodass die ersten 100 verfügbaren Bytes angefordert werden."}
 ::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="Die Option `-n` zählt Zeilen, nicht Bytes. Dadurch können wesentlich mehr oder weniger als 100 Bytes entstehen."}
@@ -87,16 +84,14 @@ $ head -n 2 january.txt february.txt
 
 Mit `-q` unterdrückst du diese Kopfzeilen; `-v` zeigt sie auch bei nur einer Datei an.
 
-:::single-choice{#head-pipeline-preview}
-Was liest `head` in `generate-report | head -n 5`?
+:::single-choice{#head-pipeline-preview} Was liest `head` in `generate-report | head -n 5`?
 
 ::option[Über stdin die Standardausgabe von `generate-report`.]{#head-pipe-input .correct explanation="Die Pipe verbindet stdout des Erzeugers mit stdin von `head`, das daraus die ersten fünf Zeilen auswählt."}
 ::option[Die ersten fünf Dateinamen des aktuellen Verzeichnisses.]{#head-directory-names explanation="An der Pipeline ist kein Befehl zur Verzeichnisauflistung beteiligt. `head` erhält einen Datenstrom."}
 ::option[Fünf Bytes aus einer Datei namens `generate-report`.]{#head-producer-file explanation="Die linke Seite wird als Befehl ausgeführt; außerdem zählt `-n` Zeilen und nicht Bytes."}
 :::
 
-:::single-choice{#head-suppress-filename-headers}
-Welche Option unterdrückt Dateinamen-Kopfzeilen, wenn `head` mehrere Dateien liest?
+:::single-choice{#head-suppress-filename-headers} Welche Option unterdrückt Dateinamen-Kopfzeilen, wenn `head` mehrere Dateien liest?
 
 ::option[`-v`]{#head-verbose explanation="Die Option `-v` fordert Kopfzeilen selbst bei einer einzelnen Datei an und bewirkt damit das Gegenteil."}
 ::option[`-c`]{#head-byte-option explanation="Die Option `-c` ändert die Auswahleinheit in Bytes. Dateinamen-Kopfzeilen steuert sie nicht."}

@@ -27,8 +27,7 @@ Inode 通常不存储目录条目名称。文件系统还可能通过特定格�
 
 `ctime` 是 inode 状态变更时间，不一定是文件创建时间。单独的出生或创建时间戳是可选的，可能并不存在。
 
-:::single-choice{#inodes-name-location}
-普通文件的路径名组成部分通常在哪里与其 inode 编号关联？
+:::single-choice{#inodes-name-location} 普通文件的路径名组成部分通常在哪里与其 inode 编号关联？
 
 ::option[在进程调度器中。]{#inodes-scheduler-name explanation="CPU 调度状态并不实现文件系统路径名查找。"}
 ::option[在目录条目中。]{#inodes-directory-entry .correct explanation="目录会把名称映射到同一文件系统中的 inode 编号。"}
@@ -51,8 +50,7 @@ $ stat path
 
 Inode 编号只在某个文件系统的特定时刻内唯一。另一个文件系统可以使用相同编号，inode 释放后也可能复用该编号。要稳健地标识对象，应同时使用文件系统身份和 inode 编号，而不能只看 inode 编号。
 
-:::single-choice{#inodes-number-scope}
-Inode 编号在哪个范围内可以作为对象标识符？
+:::single-choice{#inodes-number-scope} Inode 编号在哪个范围内可以作为对象标识符？
 
 ::option[永久适用于世界上的每一台 Linux 系统。]{#inodes-global-forever explanation="Inode 分配局限于单个文件系统，而且标识符可以复用。"}
 ::option[某个文件系统的某个特定时刻。]{#inodes-one-filesystem .correct explanation="其他文件系统可以使用相同编号，释放后的 inode 编号也可能再次使用。"}
@@ -65,8 +63,7 @@ Inode 编号在哪个范围内可以作为对象标识符？
 
 即使最后一个目录条目已经删除，只要文件仍处于打开状态，它就会继续占用空间，直到最后一个进程引用关闭。其链接数可以为零，但文件描述符仍能访问它。这解释了为什么删除仍处于打开状态的大型日志后，`df` 用量可能不会立即下降。
 
-:::single-choice{#inodes-unlinked-open-file}
-已取消链接文件的资源通常在何时释放？
+:::single-choice{#inodes-unlinked-open-file} 已取消链接文件的资源通常在何时释放？
 
 ::option[任意一个硬链接名称被移除后立即释放。]{#inodes-one-link-removed explanation="其他硬链接或打开引用仍可能让对象保持有效。"}
 ::option[只有重新格式化整个文件系统后才释放。]{#inodes-reformat-only explanation="正常的取消链接和关闭操作会回收不再使用的 inode 与数据块。"}
@@ -83,8 +80,7 @@ $ df -i
 
 如果没有可用 inode，即使 `df -h` 显示还有可用数据块，创建文件也可能失败。分配策略有所不同：某些文件系统在创建时预分配 inode 结构，另一些动态管理元数据，并可能以不同方式报告 inode 容量。
 
-:::single-choice{#inodes-df-i-purpose}
-对于提供 inode 统计的文件系统，`df -i` 报告什么？
+:::single-choice{#inodes-df-i-purpose} 对于提供 inode 统计的文件系统，`df -i` 报告什么？
 
 ::option[按 inode 顺序显示每个文件的内容。]{#inodes-df-i-content explanation="Df 报告文件系统汇总统计，不会读取文件内容。"}
 ::option[已用和可用的 inode 容量。]{#inodes-df-i-capacity .correct explanation="Inode 视图有助于独立于数据块诊断元数据对象耗尽。"}
@@ -97,8 +93,7 @@ $ df -i
 
 需要研究内部映射时，只能以只读模式或文档规定的模式使用文件系统专用诊断工具。对于普通管理，`stat`、`find -inum`、`df -i` 和能够识别链接的工具提供了更安全的抽象。
 
-:::single-choice{#inodes-layout-portability}
-为什么不能假设每个 inode 都采用同一种固定指针布局？
+:::single-choice{#inodes-layout-portability} 为什么不能假设每个 inode 都采用同一种固定指针布局？
 
 ::option[Inode 从不以任何方式引用文件数据。]{#inodes-no-data-reference explanation="文件系统必须把对象与其内容关联，只是机制有所不同。"}
 ::option[不同文件系统实现使用不同的区段、树和内联数据结构。]{#inodes-format-specific-layout .correct explanation="从 inode 到内容的磁盘映射属于各文件系统格式的一部分。"}

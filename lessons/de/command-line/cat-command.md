@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 Der Befehl schreibt die gesamte Datei in die Standardausgabe, hier also ins Terminal. Das eignet sich gut für kurze Texte; lange Dateien können jedoch zu schnell vorbeiscrollen.
 
-:::single-choice{#display-short-file}
-Welcher Befehl zeigt `myfile.txt` vollständig im Terminal an?
+:::single-choice{#display-short-file} Welcher Befehl zeigt `myfile.txt` vollständig im Terminal an?
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file` meldet den wahrscheinlichen Dateityp. Der Befehl gibt nicht den vollständigen gespeicherten Text aus."}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch` aktualisiert Zeitstempel oder erstellt eine fehlende Datei. Der Befehl zeigt keinen Dateiinhalt an."}
@@ -46,8 +45,7 @@ $ cat dogfile birdfile > animals
 
 Die Shell erstellt `animals` beziehungsweise leert eine bereits vorhandene Datei, bevor sie `cat` ausführt, und leitet die kombinierte Ausgabe dorthin. Verwende deshalb keine der Eingabedateien zugleich als Ziel: Sie könnte geleert werden, bevor `cat` sie liest.
 
-:::single-choice{#combine-files-in-order}
-Welcher Befehl schreibt erst `part1`, dann `part2` in die neu erstellte oder ersetzte Datei `whole`?
+:::single-choice{#combine-files-in-order} Welcher Befehl schreibt erst `part1`, dann `part2` in die neu erstellte oder ersetzte Datei `whole`?
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="Eine Umleitung besitzt genau ein Ziel; die übrigen Wörter werden zu Operanden von `cat`. Dieser Befehl drückt die verlangte Ein- und Ausgabereihenfolge nicht aus."}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` gibt beide Dateien in der aufgeführten Reihenfolge aus und `>` leitet die kombinierte Ausgabe nach `whole` um."}
@@ -70,8 +68,7 @@ Mit `>>` hängst du neue Eingaben an, statt vorhandene Inhalte zu ersetzen:
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-Du möchtest weiteren Text am Ende einer vorhandenen `notes.txt` eingeben. Welcher Befehl startet diesen Vorgang, ohne die Datei zu leeren?
+:::single-choice{#append-terminal-input} Du möchtest weiteren Text am Ende einer vorhandenen `notes.txt` eingeben. Welcher Befehl startet diesen Vorgang, ohne die Datei zu leeren?
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="Ein einzelnes `>` leert das Ziel, bevor die Eingabe dorthin umgeleitet wird. Der vorhandene Text in `notes.txt` ginge verloren."}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="Der Operator `>>` öffnet das Ziel zum Anhängen. Der von `cat` gelesene Text wird daher hinter dem vorhandenen Inhalt ergänzt."}
@@ -95,8 +92,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-Welcher Befehl nummeriert nur die nicht leeren Ausgabezeilen von `notes.txt`?
+:::single-choice{#number-nonempty-lines} Welcher Befehl nummeriert nur die nicht leeren Ausgabezeilen von `notes.txt`?
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="Die Option `-b` nummeriert nicht leere Ausgabezeilen und lässt Leerzeilen unnummeriert."}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="Die Option `-n` nummeriert jede Ausgabezeile, auch leere Zeilen. Sie erfüllt daher nicht die Bedingung „nur nicht leere“."}
@@ -111,8 +107,7 @@ Verwende `cat`, wenn du die gesamte Ausgabe auf einmal sehen möchtest. Bei lang
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-Welcher Befehl eignet sich besser zum interaktiven Lesen einer langen Protokolldatei?
+:::single-choice{#choose-viewer-for-long-file} Welcher Befehl eignet sich besser zum interaktiven Lesen einer langen Protokolldatei?
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` ermöglicht Scrollen, Suchen und ein kontrolliertes Beenden und eignet sich deshalb zum interaktiven Lesen langer Dateien."}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` schreibt das gesamte Protokoll auf einmal ins Terminal. Bei einer langen Datei kann der Text vorbeiscrollen, bevor du ihn prüfen kannst."}

@@ -22,8 +22,7 @@ IPv4 wird als vier durch Punkte getrennte Acht-Bit-Oktette dargestellt:
 
 Jedes Oktett reicht von 0 bis 255, sodass die vollständige Adresse vier Byte enthält. Die Präfixlänge gibt an, wie viele führende Bits zum Netzwerkpräfix gehören, wie in `192.0.2.165/24`.
 
-:::single-choice{#ipv4-address-size}
-Wie groß ist eine IPv4-Adresse?
+:::single-choice{#ipv4-address-size} Wie groß ist eine IPv4-Adresse?
 
 ::option[32 Bit in vier Oktetten.]{#ipv4-thirty-two-bits .correct explanation="Vier Gruppen zu je acht Bit ergeben die punktgetrennte Dezimaldarstellung."}
 ::option[24 Bit in jedem Netzwerk.]{#ipv4-always-twenty-four explanation="Ein `/24` ist eine Präfixlänge und nicht die Größe jeder IPv4-Adresse."}
@@ -36,8 +35,7 @@ Nicht jede IPv4-Adresse ist weltweit routbar. Beispiele sind Loopback `127.0.0.0
 
 Private Adressen können in getrennten Netzwerken wiederverwendet werden. NAT kann sie für externe Kommunikation übersetzen, ist für die Kommunikation innerhalb der privaten gerouteten Domäne aber nicht erforderlich.
 
-:::single-choice{#ipv4-private-reuse}
-Warum kann `10.0.0.1` in vielen Organisationen vorkommen?
+:::single-choice{#ipv4-private-reuse} Warum kann `10.0.0.1` in vielen Organisationen vorkommen?
 
 ::option[Jede Instanz identifiziert denselben physischen Router.]{#ipv4-same-router explanation="Die Adresse besitzt innerhalb jedes Netzwerks Bedeutung und ist nicht weltweit eindeutig."}
 ::option[IPv4-Router ignorieren das erste Oktett.]{#ipv4-ignore-octet explanation="Alle Adressbits wirken an der Routenübereinstimmung mit."}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 Sie zeigt Präfix, Broadcast, Geltungsbereich, Kennzeichnung des dynamischen Ursprungs und Schnittstelle. Weitere Zeilen können gültige und bevorzugte Laufzeiten anzeigen. Eine Schnittstelle kann mehrere IPv4-Adressen besitzen.
 
-:::single-choice{#ipv4-ip-output-prefix}
-Was bedeutet `/24` in `192.0.2.165/24`?
+:::single-choice{#ipv4-ip-output-prefix} Was bedeutet `/24` in `192.0.2.165/24`?
 
 ::option[Die Adresse läuft nach 24 Sekunden ab.]{#ipv4-prefix-seconds explanation="Die Laufzeit wird getrennt gemeldet."}
 ::option[Die ersten 24 Adressbits bilden das Netzwerkpräfix.]{#ipv4-prefix-bits .correct explanation="Die verbleibenden acht Bits identifizieren Positionen innerhalb dieses Präfixes."}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 Lies den ausgewählten nächsten Hop, die Schnittstelle und Quelle und teste anschließend den tatsächlichen Anwendungspfad. Ändere auf einem entfernten Host keine Adressen ohne Konsolenzugang und Rücknahmeplan.
 
-:::single-choice{#ipv4-route-get-purpose}
-Was kann `ip route get DESTINATION` anzeigen?
+:::single-choice{#ipv4-route-get-purpose} Was kann `ip route get DESTINATION` anzeigen?
 
 ::option[Die Konfiguration jedes Routers entlang des vollständigen Internetpfads.]{#ipv4-all-router-config explanation="Eine lokale Suche fragt keine Konfigurationen nachgelagerter Geräte ab."}
 ::option[Die lokale Routenentscheidung einschließlich Schnittstelle und bevorzugter Quelle.]{#ipv4-route-decision .correct explanation="Der Befehl wertet die aktuelle Host-Routingrichtlinie für das angegebene Ziel aus."}

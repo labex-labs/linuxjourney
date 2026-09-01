@@ -24,8 +24,7 @@ Von links nach rechts sind die Felder Minute, Stunde, Tag des Monats, Monat und 
 
 Wenn sowohl der Tag des Monats als auch der Wochentag eingeschränkt sind, führen viele Cron-Implementierungen den Befehl aus, sobald eines der beiden Felder übereinstimmt. Bestätige die lokale Semantik, bevor du einen Zeitplan erstellst, der beide verwendet.
 
-:::single-choice{#cron-daily-eight-thirty}
-Wann wird `30 8 * * * command` ausgeführt?
+:::single-choice{#cron-daily-eight-thirty} Wann wird `30 8 * * * command` ausgeführt?
 
 ::option[Acht Stunden lang alle 30 Minuten.]{#cron-every-thirty explanation="Die Felder sind Positionen in einem Zeitplan und kein Dauerausdruck."}
 ::option[Jeden Tag um 08:30 Uhr.]{#cron-eight-thirty .correct explanation="Minute 30 und Stunde 8 sind festgelegt, während die drei Datumsfelder jeden Wert erlauben."}
@@ -48,8 +47,7 @@ $ crontab -l
 
 `crontab -r` entfernt die gesamte Crontab des Benutzers, möglicherweise ohne einen Editor zu öffnen. Verwende den Befehl nicht, um eine einzelne Zeile zu entfernen; bearbeite die Crontab und überprüfe die verbleibenden Einträge.
 
-:::single-choice{#cron-list-current-user}
-Welcher Befehl listet die installierten Cron-Einträge des aktuellen Benutzers auf?
+:::single-choice{#cron-list-current-user} Welcher Befehl listet die installierten Cron-Einträge des aktuellen Benutzers auf?
 
 ::option[`crontab -l`]{#cron-list .correct explanation="Die Auflistungsoption gibt die installierten Einträge zur Prüfung aus."}
 ::option[`crontab -r`]{#cron-remove-all explanation="Diese Option entfernt die Crontab, statt sie anzuzeigen."}
@@ -62,8 +60,7 @@ Cron stellt gewöhnlich eine eingeschränkte Umgebung und eine nicht interaktive
 
 Leite Standardausgabe und Standardfehler in ein kontrolliertes Protokoll um oder verwende einen für das System geeigneten Benachrichtigungsmechanismus. Schütze Anmeldedaten mit restriktiven Berechtigungen und bette Geheimnisse nicht direkt in einen Crontab-Befehl ein.
 
-:::single-choice{#cron-absolute-paths}
-Warum sollte ein Cron-Befehl ausdrückliche Pfade und Umgebungseinstellungen verwenden?
+:::single-choice{#cron-absolute-paths} Warum sollte ein Cron-Befehl ausdrückliche Pfade und Umgebungseinstellungen verwenden?
 
 ::option[Cron läuft immer im aktuellen Terminal des Benutzers.]{#cron-current-terminal explanation="Geplante Jobs laufen unabhängig von einer interaktiven Sitzung."}
 ::option[Absolute Pfade führen jeden Befehl als root aus.]{#cron-path-root explanation="Pfade wählen Dateien aus, gewähren aber keine Berechtigungen."}
@@ -82,8 +79,7 @@ Falls ein Lauf länger als sein Intervall dauern kann, entwirf ihn für Nebenlä
 
 Wähle einen Sperrpfad, den der Jobbenutzer sicher erstellen darf, und entscheide, ob ausgelassene Läufe akzeptabel sind. Cron garantiert nicht automatisch, dass nur eine Instanz läuft.
 
-:::single-choice{#cron-overlapping-runs}
-Welches Risiko besteht, wenn ein Job länger als sein Zeitplanintervall dauert?
+:::single-choice{#cron-overlapping-runs} Welches Risiko besteht, wenn ein Job länger als sein Zeitplanintervall dauert?
 
 ::option[Mehrere Instanzen können sich überschneiden und um Ressourcen konkurrieren.]{#cron-overlap .correct explanation="Cron kann einen neuen Lauf starten, während der vorige Prozess noch läuft."}
 ::option[Die fünf Zeitplanfelder erhalten automatisch ein sechstes Sperrfeld.]{#cron-auto-lock explanation="Die Crontab-Syntax fügt keinen automatischen gegenseitigen Ausschluss hinzu."}
@@ -94,8 +90,7 @@ Welches Risiko besteht, wenn ein Job länger als sein Zeitplanintervall dauert?
 
 Cron eignet sich für einfache wiederkehrende Befehle. Systemd-Timer können auf systemd-Hosts Abhängigkeitsintegration, dauerhaftes Nachholen verpasster Läufe, zufällige Verzögerungen und Journalprotokollierung bieten. Anwendungs- oder Cluster-Scheduler können sicherer sein, wenn ein Job über mehrere Rechner hinweg genau einmal laufen muss.
 
-:::single-choice{#cron-cluster-exactly-once}
-Warum kann gewöhnliches hostbezogenes Cron für einen Cluster-Job, der genau einmal laufen soll, ungeeignet sein?
+:::single-choice{#cron-cluster-exactly-once} Warum kann gewöhnliches hostbezogenes Cron für einen Cluster-Job, der genau einmal laufen soll, ungeeignet sein?
 
 ::option[Jeder Cron-Eintrag ist auf ein Zeichen beschränkt.]{#cron-one-character explanation="Crontab-Befehle können gewöhnliche Befehlszeilen enthalten."}
 ::option[Jeder Host kann unabhängig seine eigene Instanz starten.]{#cron-each-host .correct explanation="Ein verteilter Koordinierungsmechanismus ist nötig, um eine einzige Ausführung über alle Hosts hinweg durchzusetzen."}

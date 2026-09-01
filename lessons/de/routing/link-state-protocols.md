@@ -16,8 +16,7 @@ Link-State-Protokolle beschreiben lokale Verbindungen und Präfixe, verteilen di
 
 Router erkennen kompatible Nachbarn und bilden gemäß Schnittstellentyp, Bereich, Timern, Authentifizierung und weiteren Parametern Protokollnachbarschaften. Sichtbare Hello-Pakete garantieren keine vollständige Nachbarschaft; nicht übereinstimmende Konfiguration kann die Zustandsmaschine früher anhalten.
 
-:::single-choice{#link-state-hello-limit}
-Was beweist der Empfang eines OSPF-Hellos nicht?
+:::single-choice{#link-state-hello-limit} Was beweist der Empfang eines OSPF-Hellos nicht?
 
 ::option[Dass die Router eine vollständige synchronisierte Nachbarschaft gebildet haben.]{#link-state-not-full .correct explanation="Bereich, Timer, Authentifizierung, MTU und weiterer Zustand können den vollständigen Datenbankaustausch verhindern."}
 ::option[Dass der Nachbar mindestens eine Protokollnachricht gesendet hat.]{#link-state-hello-sent explanation="Der Empfang des Hellos beweist unmittelbar diese begrenzte Tatsache."}
@@ -28,8 +27,7 @@ Was beweist der Empfang eines OSPF-Hellos nicht?
 
 Jeder Router erzeugt Ankündigungen zu seinem relevanten Zustand. Nachbarn fluten neuere Informationen zuverlässig durch den festgelegten Bereich oder die Domäne, statt Aktualisierungen nur zwischen dem ursprünglichen Nachbarpaar zu behalten. Sequenz- und Alterungsmechanismen unterscheiden aktuelle Informationen und entfernen veralteten Zustand.
 
-:::single-choice{#link-state-flooding-scope}
-Warum werden Link-State-Informationen über einen Nachbarn hinaus geflutet?
+:::single-choice{#link-state-flooding-scope} Warum werden Link-State-Informationen über einen Nachbarn hinaus geflutet?
 
 ::option[Jede Anwendung benötigt eine Kopie aller Routerpasswörter.]{#link-state-password-copy explanation="Anmeldedaten von Anwendungen sind keine Topologieankündigungen."}
 ::option[Ethernet kann keine Unicast-Frames senden.]{#link-state-no-unicast explanation="Ethernet unterstützt Unicast; das Fluten ist hier ein Verteilungsmechanismus des Routingprotokolls."}
@@ -42,8 +40,7 @@ Nach dem Aufbau einer Link-State-Datenbank führt ein Router einen Kürzeste-Weg
 
 „Kürzeste“ bedeutet die niedrigsten Protokollkosten und nicht unbedingt die wenigsten Router oder die geringste gemessene Anwendungslatenz. Der Kostenentwurf muss die betriebliche Absicht widerspiegeln.
 
-:::single-choice{#link-state-shortest-meaning}
-Was bedeutet „kürzeste“ bei einer Link-State-Pfadberechnung?
+:::single-choice{#link-state-shortest-meaning} Was bedeutet „kürzeste“ bei einer Link-State-Pfadberechnung?
 
 ::option[Die Route, deren Präfix die wenigsten geschriebenen Zeichen besitzt.]{#link-state-shortest-text explanation="Textlänge hat nichts mit Topologiekosten zu tun."}
 ::option[Der Pfad mit der kleinsten Summe von Protokollkosten.]{#link-state-lowest-cost .correct explanation="Das Kostenmodell entspricht möglicherweise weder unmittelbar der Hop-Anzahl noch der aktuellen Latenz."}
@@ -56,8 +53,7 @@ OSPF-Bereiche begrenzen Topologieflutung und Berechnungsbereich; Area 0 dient im
 
 Nach einer Verbindungsänderung benötigen Erkennung, Fluten der Ankündigung, SPF-Berechnung, Routeninstallation und Wiederherstellung der Weiterleitung jeweils Zeit. Eine schnellere Konvergenz als bei einem einfachen Distanzvektorentwurf ist möglich, aber nicht bei jedem Fehler oder jeder Konfiguration automatisch gegeben.
 
-:::single-choice{#link-state-convergence-stages}
-Was sollte bei einer OSPF-Konvergenzuntersuchung gemessen werden?
+:::single-choice{#link-state-convergence-stages} Was sollte bei einer OSPF-Konvergenzuntersuchung gemessen werden?
 
 ::option[Nur der Zeitpunkt, zu dem ein Administrator ein Terminal geöffnet hat.]{#link-state-terminal-time explanation="Dies grenzt weder Protokoll- noch Weiterleitungsstufen ein."}
 ::option[Nur die alphabetische Reihenfolge der Routernamen.]{#link-state-router-names explanation="Namen bestimmen keine Konvergenzzeiten."}

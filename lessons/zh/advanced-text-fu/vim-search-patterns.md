@@ -22,8 +22,7 @@ Vim 会从当前光标位置开始按模式搜索。先进入普通模式并开�
 
 搜索使用 Vim 的正则表达式语法，因此 `.`、`*`、`[` 和 `\` 等字符可能具有特殊含义。如果模式的其余部分应以 very nomagic 方式处理，请在开头使用 `\V`；也可以有意转义特殊字符。
 
-:::single-choice{#vim-search-forward-key}
-在普通模式中，哪个命令会开始向前搜索 `pretty`？
+:::single-choice{#vim-search-forward-key} 在普通模式中，哪个命令会开始向前搜索 `pretty`？
 
 ::option[输入 `?pretty` 后按 Enter]{#vim-backward-pretty explanation="问号会从当前光标位置开始向后搜索。"}
 ::option[输入 `/pretty` 后按 Enter]{#vim-forward-pretty .correct explanation="斜杠开始向前搜索，Enter 提交模式。"}
@@ -40,8 +39,7 @@ Vim 会从当前光标位置开始按模式搜索。先进入普通模式并开�
 
 这并不天然表示“文件中的最后一个匹配项”。结果取决于当前光标位置。在 Vim 默认的 `wrapscan` 设置下，搜索可以在文件开头或末尾回绕；`:set nowrapscan` 会禁用这种回绕。
 
-:::single-choice{#vim-search-backward-key}
-普通模式中的哪个搜索前缀会从光标向前面的文本查找？
+:::single-choice{#vim-search-backward-key} 普通模式中的哪个搜索前缀会从光标向前面的文本查找？
 
 ::option[`/`]{#vim-slash-forward explanation="斜杠会从光标向后面的文本搜索，而不是查找之前的内容。"}
 ::option[`?`]{#vim-question-backward .correct explanation="问号会从当前光标位置开始向后进行模式搜索。"}
@@ -57,8 +55,7 @@ Vim 会从当前光标位置开始按模式搜索。先进入普通模式并开�
 
 因此，在 `/pretty` 之后，`n` 向前移动，`N` 向后移动；在 `?pretty` 之后，`n` 向后移动，`N` 向前移动。
 
-:::single-choice{#vim-repeat-backward-search}
-运行 `?error` 后，哪个按键会沿同一向后方向重复搜索？
+:::single-choice{#vim-repeat-backward-search} 运行 `?error` 后，哪个按键会沿同一向后方向重复搜索？
 
 ::option[`n`]{#vim-same-question-search .correct explanation="小写 `n` 会沿最近一次搜索的原始方向重复，此处原始方向是向后。"}
 ::option[`N`]{#vim-opposite-question-search explanation="大写 `N` 会反转原始搜索方向，因此在 `?` 搜索后会向前移动。"}
@@ -74,8 +71,7 @@ Vim 会从当前光标位置开始按模式搜索。先进入普通模式并开�
 
 这些命令会设置最近搜索模式，因此可以继续使用 `n` 和 `N`。
 
-:::single-choice{#vim-current-word-forward}
-普通模式中的哪个按键会向前搜索光标下的完整单词？
+:::single-choice{#vim-current-word-forward} 普通模式中的哪个按键会向前搜索光标下的完整单词？
 
 ::option[`#`]{#vim-hash-current-word explanation="井号会向后搜索光标下的单词。"}
 ::option[`*`]{#vim-star-current-word .correct explanation="星号命令会根据光标下的单词构建全词模式，并向前搜索。"}
@@ -95,8 +91,7 @@ Vim 选项可以改变大小写行为：
 
 启用搜索高亮时，`:nohlsearch` 会清除当前可见高亮，但不会删除搜索模式。下一次搜索或重复操作仍可再次高亮匹配项。
 
-:::single-choice{#vim-force-case-insensitive}
-哪个模式会强制一次针对 `error` 的 Vim 搜索忽略大小写，而不受当前大小写选项影响？
+:::single-choice{#vim-force-case-insensitive} 哪个模式会强制一次针对 `error` 的 Vim 搜索忽略大小写，而不受当前大小写选项影响？
 
 ::option[`/\Cerror`]{#vim-pattern-match-case explanation="大写 `\C` 会强制区分大小写，行为正好相反。"}
 ::option[`/:error`]{#vim-pattern-colon-error explanation="这里模式内的冒号是字面字符，并不控制大小写处理。"}

@@ -24,8 +24,7 @@ Las distribuciones de seguridad tienen más sentido cuando ya sabes por qué las
 
 Las herramientas de seguridad solo deben utilizarse en sistemas propios o para los que tengas permiso explícito de realizar pruebas. Una distribución especializada proporciona herramientas, no autorización, criterio ni las habilidades necesarias para usarlas de forma segura.
 
-:::single-choice{#confirm-testing-authorization}
-¿Qué debes confirmar antes de utilizar herramientas de pruebas de penetración en un sistema?
+:::single-choice{#confirm-testing-authorization} ¿Qué debes confirmar antes de utilizar herramientas de pruebas de penetración en un sistema?
 
 ::option[Que el sistema es tuyo o tienes permiso explícito para probarlo]{#authorized-system .correct explanation="Las pruebas de seguridad requieren una autorización clara del propietario del sistema. Disponer de una herramienta o distribución no concede permiso para usarla contra otros sistemas."}
 ::option[Que la distribución de seguridad incluye la herramienta que quieres ejecutar]{#tool-is-installed explanation="Que una herramienta esté disponible no establece el permiso. La autorización debe proceder del propietario del sistema que se va a probar."}
@@ -51,8 +50,7 @@ Kali destaca porque proporciona una gran colección de herramientas de seguridad
 
 Al mismo tiempo, Kali no se recomienda como un escritorio Linux de propósito general para nuevos usuarios. Incluso la propia documentación de Kali advierte que no es la distribución adecuada para personas que no están familiarizadas con Linux o que solo quieren un entorno de escritorio normal.
 
-:::single-choice{#match-kali-use-case}
-¿Qué situación encaja mejor con Kali Linux?
+:::single-choice{#match-kali-use-case} ¿Qué situación encaja mejor con Kali Linux?
 
 ::option[Un evaluador con experiencia necesita un entorno preparado para auditorías de seguridad]{#experienced-kali-user .correct explanation="Kali está diseñado para pruebas de penetración y auditorías de seguridad realizadas por usuarios que ya comprenden Linux y el trabajo que llevan a cabo."}
 ::option[Un usuario nuevo de Linux quiere un escritorio general para tareas cotidianas]{#general-desktop-beginner explanation="La propia documentación de Kali no lo recomienda como primer escritorio de uso general. Una distribución accesible para principiantes encaja mejor."}
@@ -71,8 +69,7 @@ En comparación con Kali, Parrot a menudo se siente un poco más amplio en su al
 
 BlackArch es potente, pero no es una opción para principiantes. Sus propias preguntas frecuentes dicen que si no estás familiarizado con Arch Linux, o con Linux en general, deberías evitar BlackArch debido a su curva de aprendizaje. Esto lo convierte en una mejor opción para usuarios avanzados que ya entienden Arch y desean un kit de herramientas de seguridad masivo.
 
-:::single-choice{#match-blackarch-user}
-¿Qué experiencia previa prepara mejor a una persona para utilizar BlackArch?
+:::single-choice{#match-blackarch-user} ¿Qué experiencia previa prepara mejor a una persona para utilizar BlackArch?
 
 ::option[Ninguna experiencia con Linux ni interés en la administración de sistemas]{#no-linux-experience explanation="BlackArch no está diseñado como primera introducción a Linux. Su base Arch y su gran conjunto de herramientas exigen conocimientos previos considerables."}
 ::option[Confianza previa con Arch Linux y su modelo de mantenimiento]{#arch-experience .correct explanation="BlackArch se apoya en Arch y presupone que el usuario sabe manejar ese entorno. Su propia documentación advierte a los recién llegados sobre la curva de aprendizaje."}
@@ -85,8 +82,7 @@ BlackArch es potente, pero no es una opción para principiantes. Sus propias pre
 
 Esto convierte a Tails en una importante distribución de Linux enfocada en la seguridad, pero por una razón diferente. Si tu objetivo es la privacidad, el anonimato o un uso más seguro desde computadoras no confiables, Tails puede ser la mejor opción. Si tu objetivo es realizar pruebas de penetración, Kali o Parrot suelen ser una elección más directa.
 
-:::single-choice{#match-tails-use-case}
-¿Qué objetivo encaja mejor con Tails?
+:::single-choice{#match-tails-use-case} ¿Qué objetivo encaja mejor con Tails?
 
 ::option[Cargar un gran repositorio de herramientas de penetración basado en Arch]{#blackarch-toolkit explanation="Un repositorio de herramientas de seguridad basado en Arch describe a BlackArch. Tails se centra en la privacidad portátil y la resistencia a la censura."}
 ::option[Usar un sistema portátil diseñado para la privacidad y para dejar pocos rastros locales]{#tails-privacy .correct explanation="Tails dirige la actividad de Internet a través de Tor y está diseñado para no dejar rastros en el equipo después de apagarlo. Su prioridad es la privacidad, no las pruebas de penetración."}

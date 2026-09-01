@@ -24,8 +24,7 @@ $ ip address show
 
 An interface being present or administratively up does not prove end-to-end connectivity.
 
-:::single-choice{#network-basics-host-interface}
-What is a network interface?
+:::single-choice{#network-basics-host-interface} What is a network interface?
 
 ::option[A permanent copy of every packet on the Internet.]{#network-basics-interface-copy explanation="An interface transmits and receives traffic; it is not a global packet archive."}
 ::option[A host's attachment point to a network or virtual link.]{#network-basics-interface-attachment .correct explanation="A host can have multiple physical or virtual interfaces with separate configuration."}
@@ -36,8 +35,7 @@ What is a network interface?
 
 A local area network, or LAN, covers a limited environment such as a home, office, or data center segment. Ethernet switches forward frames between ports on a local link. A wireless LAN, or WLAN, uses wireless link technology. Wired and wireless interfaces can still belong to the same IP subnet when a bridge or access point joins them.
 
-:::single-choice{#network-basics-wlan-relationship}
-How does a WLAN relate to a LAN?
+:::single-choice{#network-basics-wlan-relationship} How does a WLAN relate to a LAN?
 
 ::option[A WLAN is always a separate global Internet.]{#network-basics-wlan-global explanation="It is a local network using wireless link technology."}
 ::option[A WLAN is a disk partition used by routers.]{#network-basics-wlan-disk explanation="The term describes networking, not storage layout."}
@@ -50,8 +48,7 @@ A router forwards network-layer packets between IP networks according to its rou
 
 A wide area network, or WAN, spans larger geographic or administrative boundaries. An Internet service provider can connect a customer network to other networks, but “WAN” does not simply mean every device outside one house.
 
-:::single-choice{#network-basics-router-role}
-What is a router's defining role?
+:::single-choice{#network-basics-router-role} What is a router's defining role?
 
 ::option[Forward packets between network-layer networks.]{#network-basics-forward-networks .correct explanation="Routing selects next hops across IP network boundaries."}
 ::option[Store every user's files as a mandatory backup.]{#network-basics-router-backup explanation="File retention is not the defining routing function."}
@@ -64,8 +61,7 @@ Applications produce data that protocol layers divide and encapsulate for transm
 
 A conversation can involve many packets in both directions. Loss, reordering, fragmentation, retransmission, and path changes mean one captured packet rarely describes the whole application transaction.
 
-:::single-choice{#network-basics-router-frame}
-What normally happens to link-layer framing at a router hop?
+:::single-choice{#network-basics-router-frame} What normally happens to link-layer framing at a router hop?
 
 ::option[The router removes incoming framing and creates framing for the next link.]{#network-basics-reframe .correct explanation="The forwarded IP packet is carried in a new link-layer frame appropriate to the outgoing interface."}
 ::option[The same Ethernet frame crosses the entire Internet unchanged.]{#network-basics-same-frame explanation="Frames are scoped to their links and are replaced at routed hops."}

@@ -18,8 +18,7 @@ Los hilos de un proceso comparten recursos como el espacio de direcciones virtua
 
 Los procesos independientes suelen tener espacios de direcciones distintos y se comunican mediante mecanismos explícitos entre procesos. Ninguno de los diseños es automáticamente más rápido o seguro; la carga de trabajo y la implementación determinan las ventajas e inconvenientes.
 
-:::single-choice{#threads-shared-resource}
-¿Qué recurso comparten normalmente los hilos de un mismo proceso?
+:::single-choice{#threads-shared-resource} ¿Qué recurso comparten normalmente los hilos de un mismo proceso?
 
 ::option[El espacio de direcciones virtual del proceso.]{#threads-shared-address-space .correct explanation="Los hilos pueden acceder a la misma memoria del proceso, sujetos a la sincronización del programa."}
 ::option[Una instalación distinta del kernel para cada hilo.]{#threads-separate-kernel explanation="Todos los hilos utilizan el kernel del sistema en ejecución."}
@@ -30,8 +29,7 @@ Los procesos independientes suelen tener espacios de direcciones distintos y se 
 
 Linux representa cada hilo como una tarea planificable con su propio identificador de hilo. El identificador del líder del grupo de hilos suele presentarse como identificador de proceso, mientras que todos los miembros comparten un identificador de grupo de hilos. Las herramientas utilizan etiquetas como `PID`, `TID`, `LWP` y `SPID`; consulta las definiciones de campos de la herramienta en vez de suponer que todas significan lo mismo.
 
-:::single-choice{#threads-own-scheduling-state}
-¿Qué mantiene de forma independiente cada hilo?
+:::single-choice{#threads-own-scheduling-state} ¿Qué mantiene de forma independiente cada hilo?
 
 ::option[La tabla completa de archivos abiertos del proceso.]{#threads-open-files-shared explanation="Los hilos de un proceso suelen compartir los descriptores de archivo abiertos."}
 ::option[La base de datos de usuarios de todo el sistema.]{#threads-user-database explanation="Las bases de datos de cuentas no son estado privado de un hilo."}
@@ -54,8 +52,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 Los listados de hilos son instantáneas. Un hilo puede terminar o cambiar de estado inmediatamente después.
 
-:::single-choice{#threads-ps-one-process}
-¿Qué orden muestra los hilos pertenecientes al PID 1234 con campos explícitos?
+:::single-choice{#threads-ps-one-process} ¿Qué orden muestra los hilos pertenecientes al PID 1234 con campos explícitos?
 
 ::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="Esta salida no solicita filas para cada hilo."}
 ::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="La opción `-L` solicita filas de hilos para el proceso seleccionado."}
@@ -66,8 +63,7 @@ Los listados de hilos son instantáneas. Un hilo puede terminar o cambiar de est
 
 Una actividad de CPU alta en un hilo puede quedar oculta por el promedio de todo el proceso. Combina muestras de CPU a nivel de hilo con registros de la aplicación, trazas de pilas y herramientas de perfilado. No conectes depuradores ni envíes señales a tareas de producción sin comprender sus efectos sobre las pausas, los permisos y el servicio.
 
-:::single-choice{#threads-snapshot-limit}
-¿Por qué no debe tratarse un listado de hilos de `ps` como estado permanente?
+:::single-choice{#threads-snapshot-limit} ¿Por qué no debe tratarse un listado de hilos de `ps` como estado permanente?
 
 ::option[Porque `ps` crea un hilo de sustitución por cada fila.]{#threads-ps-creates explanation="La orden observa tareas; no clona cada una de las que muestra."}
 ::option[Porque los identificadores de hilos son idénticos en todos los equipos Linux.]{#threads-identical-ids explanation="Los identificadores se asignan dentro de un sistema en ejecución y no son universales."}

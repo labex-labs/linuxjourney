@@ -24,8 +24,7 @@ $ pgrep -a cat
 
 두 프로세스는 같은 프로그램을 실행하지만 서로 다른 입력 스트림, 메모리 내용, 자격 증명, 작업 디렉터리, 수명을 가질 수 있습니다. PID는 한 시점의 살아 있는 프로세스 하나를 식별하고 해당 프로세스가 종료된 뒤 재사용될 수 있습니다.
 
-:::single-choice{#process-details-program-versus-process}
-같은 프로그램의 실행 인스턴스 두 개를 구분하는 것은 무엇인가요?
+:::single-choice{#process-details-program-versus-process} 같은 프로그램의 실행 인스턴스 두 개를 구분하는 것은 무엇인가요?
 
 ::option[각 인스턴스마다 실행 파일을 하나씩 복사해야 합니다.]{#process-details-copied-executable explanation="여러 프로세스가 파일을 복제하지 않고 같은 실행 파일의 코드 페이지를 매핑하고 공유할 수 있습니다."}
 ::option[인스턴스 하나만 메모리나 열린 파일을 가질 수 있습니다.]{#process-details-one-instance-resources explanation="각 프로세스는 자체 메모리 매핑과 파일 디스크립터 테이블을 가질 수 있습니다."}
@@ -46,8 +45,7 @@ $ pgrep -a cat
 
 일부 기반 자원은 공유될 수 있습니다. 관련 프로세스가 매핑된 메모리를 공유할 수 있고 한 프로세스의 스레드는 주소 공간과 여러 프로세스 전체 자원을 공유합니다. 따라서 프로세스는 모든 바이트나 커널 객체가 물리적으로 비공개라는 뜻 없이 격리 경계를 제공합니다.
 
-:::single-choice{#process-details-kernel-state}
-Linux 프로세스의 스케줄링과 자격 증명 상태를 유지하는 구성 요소는 무엇인가요?
+:::single-choice{#process-details-kernel-state} Linux 프로세스의 스케줄링과 자격 증명 상태를 유지하는 구성 요소는 무엇인가요?
 
 ::option[커널]{#process-details-kernel .correct explanation="커널은 프로세스 상태를 추적하고 스케줄링, 메모리, 시그널, 접근 제어 규칙을 적용합니다."}
 ::option[실행 파일의 디렉터리]{#process-details-directory explanation="디렉터리는 이름과 inode 매핑을 저장하며 실행 중인 프로세스를 스케줄하지 않습니다."}
@@ -60,8 +58,7 @@ Linux 프로세스의 스케줄링과 자격 증명 상태를 유지하는 구�
 
 각 프로세스는 일반적으로 가상 주소 공간을 봅니다. 커널과 하드웨어는 가상 주소를 물리 메모리나 다른 기반 저장소에 매핑하고 보호를 적용하며 적절한 경우 페이지를 공유할 수 있습니다. 따라서 `ps`나 `top`의 메모리 수치가 해당 프로세스에만 귀속되는 고유한 물리 RAM 양과 자동으로 같지는 않습니다.
 
-:::single-choice{#process-details-scheduler-role}
-Linux 스케줄러는 무엇을 선택하나요?
+:::single-choice{#process-details-scheduler-role} Linux 스케줄러는 무엇을 선택하나요?
 
 ::option[사용 가능한 CPU에서 실행할 실행 가능 스레드]{#process-details-runnable-thread .correct explanation="스케줄링 정책은 실행 가능한 실행 문맥 중에서 선택하고 CPU 시간을 할당합니다."}
 ::option[디스크를 포맷할 때 기록할 파일 소유자]{#process-details-format-owner explanation="파일 시스템 소유권은 CPU 스케줄링과 관련이 없습니다."}
@@ -72,8 +69,7 @@ Linux 스케줄러는 무엇을 선택하나요?
 
 프로세스가 종료되면 커널은 대부분의 비공개 자원을 해제하고 남은 디스크립터를 닫으며 부모를 위해 종료 정보를 기록합니다. 부모가 종료 상태를 가져갈 때까지 작은 프로세스 테이블 레코드가 좀비로 남을 수 있습니다. 따라서 “프로세스 실행이 끝났다”와 “프로세스 테이블에서 모든 흔적이 사라졌다”가 항상 동시에 일어나지는 않습니다.
 
-:::single-choice{#process-details-exit-status}
-종료된 프로세스가 잠시 좀비로 남을 수 있는 이유는 무엇인가요?
+:::single-choice{#process-details-exit-status} 종료된 프로세스가 잠시 좀비로 남을 수 있는 이유는 무엇인가요?
 
 ::option[전체 메모리를 할당받은 채 여전히 명령을 실행하고 있습니다.]{#process-details-zombie-running explanation="좀비는 실행을 완료했고 일반적인 실행 주소 공간을 더 이상 유지하지 않습니다."}
 ::option[부모가 기록된 종료 상태를 아직 수집하지 않았습니다.]{#process-details-parent-wait .correct explanation="부모가 wait 작업을 수행할 때까지 커널이 최소 종료 정보를 유지합니다."}

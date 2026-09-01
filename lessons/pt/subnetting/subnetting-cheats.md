@@ -23,8 +23,7 @@ value: 128  64  32  16   8  4  2  1
 
 A soma dos oito valores produz 255. O decimal 192 é `128 + 64`, portanto sua representação binária é `11000000`.
 
-:::single-choice{#subnet-cheats-binary-192}
-Qual é a representação do decimal 192 em binário de oito bits?
+:::single-choice{#subnet-cheats-binary-192} Qual é a representação do decimal 192 em binário de oito bits?
 
 ::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="As posições 128 e 64 estão definidas, e as demais são zero."}
 ::option[`10101000`]{#subnet-cheats-168 explanation="Esse padrão equivale a 168."}
@@ -42,8 +41,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 Por exemplo, `/19` contém 16 bits completos de prefixo e mais três bits no terceiro octeto, portanto sua máscara é `255.255.224.0`.
 
-:::single-choice{#subnet-cheats-prefix-19}
-Qual máscara corresponde ao IPv4 `/19`?
+:::single-choice{#subnet-cheats-prefix-19} Qual máscara corresponde ao IPv4 `/19`?
 
 ::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="Dezesseis bits completos e mais três resultam em 255, 255 e 224."}
 ::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="Um comprimento de prefixo é uma contagem de bits, não um octeto decimal da máscara."}
@@ -56,8 +54,7 @@ No primeiro octeto da máscara que não seja 255, subtraia o valor da máscara d
 
 O endereço `198.51.100.77/27` pertence ao bloco de 64 a 95.
 
-:::single-choice{#subnet-cheats-77-network}
-Qual é o endereço de rede de `198.51.100.77/27`?
+:::single-choice{#subnet-cheats-77-network} Qual é o endereço de rede de `198.51.100.77/27`?
 
 ::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="Esse bloco abrange os valores de 32 a 63 no octeto final."}
 ::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="O endereço inclui bits de host e não é o limite do bloco."}
@@ -75,8 +72,7 @@ Para converter o decimal 123, selecione os maiores valores restantes sem ultrapa
 
 Para converter de volta, some apenas os valores posicionais cujos bits são um. Sempre mantenha as oito posições ao trabalhar dentro de um octeto IPv4.
 
-:::single-choice{#subnet-cheats-binary-123}
-Qual valor de oito bits equivale ao decimal 123?
+:::single-choice{#subnet-cheats-binary-123} Qual valor de oito bits equivale ao decimal 123?
 
 ::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="O valor numérico é semelhante, mas a representação do octeto deve manter oito posições."}
 ::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="As posições definidas somam 64 + 32 + 16 + 8 + 2 + 1."}

@@ -44,8 +44,7 @@ bb
 
 空格、制表符和标点符号同样会占用位置。`cut` 会独立处理每一行。
 
-:::single-choice{#cut-first-character}
-哪个命令会打印 `names.txt` 每一行的第一个字符？
+:::single-choice{#cut-first-character} 哪个命令会打印 `names.txt` 每一行的第一个字符？
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="`-c` 选择字符位置，而位置 1 就是每行的第一个字符。"}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="`-f` 选择第一个制表符分隔字段，其中可能包含多个字符。"}
@@ -65,8 +64,7 @@ viewer
 
 与字符选择一样，列表可以使用 `1`、`1,3`、`2-4`、`-3` 或 `2-` 等值。
 
-:::single-choice{#cut-second-tab-field}
-哪个命令会打印 `team.tsv` 每一行中以制表符分隔的第二个字段？
+:::single-choice{#cut-second-tab-field} 哪个命令会打印 `team.tsv` 每一行中以制表符分隔的第二个字段？
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="这会选择每行的第二个字符位置，而不是第二个制表符分隔字段。"}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="没有 `-d` 时，字段模式使用制表符作为分隔符，`-f 2` 选择第二个字段。"}
@@ -86,8 +84,7 @@ bob
 
 这种形式的分隔符是一个字符。需要给 `;` 加引号，因为未加引号的分号在 shell 中具有控制含义。
 
-:::single-choice{#cut-semicolon-role-field}
-哪个命令会打印 `team.txt` 中以分号分隔的第二个字段？
+:::single-choice{#cut-semicolon-role-field} 哪个命令会打印 `team.txt` 中以分号分隔的第二个字段？
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="这会选择以冒号分隔的字段，但该文件使用分号。"}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="加引号的分号设置分隔符，`-f 2` 选择每行的第二个字段。"}
@@ -106,8 +103,7 @@ viewer
 
 这并不能验证通用 CSV 文件。CSV 可能包含加引号的分隔符、嵌入换行符和转义规则，单字符切分无法理解这些结构；此类数据应使用支持 CSV 的工具。
 
-:::single-choice{#cut-suppress-undelimited}
-在 `cut -d ':' -f 1` 中，`-s` 有什么作用？
+:::single-choice{#cut-suppress-undelimited} 在 `cut -d ':' -f 1` 中，`-s` 有什么作用？
 
 ::option[打印前对选中的字段排序。]{#cut-s-sort explanation="`cut` 不会对输入排序，`-s` 也与顺序无关。"}
 ::option[把连续分隔符视为一个分隔符。]{#cut-s-squeeze explanation="`cut` 不会用 `-s` 合并分隔符；空字段仍是有意义的位置。"}
@@ -124,8 +120,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-在 `generate-data | cut -d ':' -f 1` 中，`cut` 从哪里读取输入？
+:::single-choice{#cut-pipeline-input} 在 `generate-data | cut -d ':' -f 1` 中，`cut` 从哪里读取输入？
 
 ::option[通过管道读取 `generate-data` 的 stdout。]{#cut-pipe-stdin .correct explanation="管道把生产者的 stdout 连接到 `cut` 的 stdin，而且没有指定其他输入文件。"}
 ::option[从字面名称为 `generate-data` 的文件读取。]{#cut-pipe-file explanation="`generate-data` 会作为管道左侧命令执行，并不会作为文件名传给 `cut`。"}

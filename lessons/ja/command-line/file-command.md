@@ -32,8 +32,7 @@ $ file /bin/ls
 
 結果は分類であり、保証ではありません。特殊、不完全、または損傷したファイルは、正確な種類ではなく `data` のような広い説明になる場合があります。
 
-:::single-choice{#identify-misleading-extension}
-`report.jpg` というファイルに画像が入っているとは限りません。内容の種類を推定するコマンドはどれですか？
+:::single-choice{#identify-misleading-extension} `report.jpg` というファイルに画像が入っているとは限りません。内容の種類を推定するコマンドはどれですか？
 
 ::option[`ls report.jpg`]{#list-report explanation="`ls` は名前の存在を確認し、メタデータを表示できますが、ファイル内容の種類は分類しません。"}
 ::option[`file report.jpg`]{#inspect-report .correct explanation="`file` コマンドはファイルを調べ、推定した種類を報告します。`.jpg` という接尾辞だけには依存しません。"}
@@ -57,8 +56,7 @@ archive.tar.gz: gzip compressed data
 $ file *
 ```
 
-:::single-choice{#inspect-multiple-files}
-現在のディレクトリで、`*` に一致する隠しファイル以外のすべての名前を `file` に調べさせるコマンドはどれですか？
+:::single-choice{#inspect-multiple-files} 現在のディレクトリで、`*` に一致する隠しファイル以外のすべての名前を `file` に調べさせるコマンドはどれですか？
 
 ::option[`file *`]{#file-wildcard .correct explanation="シェルが `*` を一致する隠しファイル以外の名前へ展開し、`file` が得られた各オペランドを調べます。"}
 ::option[`file .`]{#file-current-directory explanation="1 つのドットは現在のディレクトリ自体を表します。その中の各項目ではなく、そのディレクトリを分類します。"}
@@ -74,8 +72,7 @@ $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-:::single-choice{#show-mime-information}
-`index.html` の MIME 形式の情報を報告するコマンドはどれですか？
+:::single-choice{#show-mime-information} `index.html` の MIME 形式の情報を報告するコマンドはどれですか？
 
 ::option[`file -b index.html`]{#brief-index explanation="`-b` は通常の説明からファイル名を省きますが、MIME 形式の出力は要求しません。"}
 ::option[`file -i index.html`]{#mime-index .correct explanation="`-i` は `text/html` と文字セット情報のような MIME 形式の出力を要求します。"}
@@ -96,8 +93,7 @@ $ file -b notes.txt
 ASCII text
 ```
 
-:::single-choice{#omit-filename-from-output}
-`notes.txt` を分類し、出力からファイル名を省くコマンドはどれですか？
+:::single-choice{#omit-filename-from-output} `notes.txt` を分類し、出力からファイル名を省くコマンドはどれですか？
 
 ::option[`file -i notes.txt`]{#mime-notes explanation="`-i` は MIME 形式の情報を要求し、通常は出力にファイル名も含みます。"}
 ::option[`file -z notes.txt`]{#compressed-notes explanation="`-z` は可能な場合に圧縮データの中を調べ、簡潔な出力は有効にしません。"}

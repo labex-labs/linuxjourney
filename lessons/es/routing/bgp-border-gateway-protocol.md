@@ -18,8 +18,7 @@ Un sistema autónomo es un conjunto de redes bajo una administración común de 
 
 Los pares BGP establecen una sesión sobre el puerto TCP 179. Una sesión TCP que funciona es solo la base de transporte; las capacidades de BGP, las políticas y el intercambio de rutas también deben tener éxito.
 
-:::single-choice{#bgp-external-session}
-¿Qué intercambia BGP externo?
+:::single-choice{#bgp-external-session} ¿Qué intercambia BGP externo?
 
 ::option[Sumas de comprobación de tramas Ethernet dentro de un conmutador.]{#bgp-ethernet-fcs explanation="BGP opera por encima de TCP e intercambia accesibilidad de la capa de red."}
 ::option[Contraseñas de usuarios entre navegadores web.]{#bgp-browser-passwords explanation="Las credenciales de las aplicaciones no son atributos de enrutamiento."}
@@ -30,8 +29,7 @@ Los pares BGP establecen una sesión sobre el puerto TCP 179. Una sesión TCP qu
 
 Un anuncio incluye un prefijo y atributos. `AS_PATH` enumera los sistemas autónomos atravesados y ayuda a detectar bucles. Otros atributos habituales son `LOCAL_PREF`, `MED`, el origen, el siguiente salto y las comunidades. Su efecto depende de la dirección, la implementación y la política.
 
-:::single-choice{#bgp-as-path-loop}
-¿Cómo ayuda `AS_PATH` a evitar bucles entre sistemas autónomos?
+:::single-choice{#bgp-as-path-loop} ¿Cómo ayuda `AS_PATH` a evitar bucles entre sistemas autónomos?
 
 ::option[Un AS puede rechazar una ruta que ya contenga su propio número.]{#bgp-own-as-reject .correct explanation="El vector de ruta expone la secuencia de AS utilizada para llegar al prefijo anunciado."}
 ::option[Cifra todos los paquetes que atraviesan esos sistemas.]{#bgp-aspath-encryption explanation="El atributo describe la ruta de enrutamiento y no cifra la carga útil."}
@@ -44,8 +42,7 @@ La «mejor» ruta de BGP es la que gana un proceso de decisión configurado. Los
 
 Después de que BGP seleccione candidatos, el reenvío IP normal sigue aplicando la coincidencia del prefijo más largo. Un `/24` seleccionado se utiliza para sus destinos en lugar de un `/16` seleccionado que lo contenga.
 
-:::single-choice{#bgp-best-path-meaning}
-¿Qué representa una mejor ruta de BGP?
+:::single-choice{#bgp-best-path-meaning} ¿Qué representa una mejor ruta de BGP?
 
 ::option[La ruta que gana el proceso local de decisión de atributos y políticas.]{#bgp-policy-winner .correct explanation="La intención administrativa es esencial para seleccionar rutas entre dominios."}
 ::option[La ruta física de cables más corta en todos los casos.]{#bgp-shortest-cable explanation="BGP no dispone de un mapa completo de distancias físicas."}
@@ -56,8 +53,7 @@ Después de que BGP seleccione candidatos, el reenvío IP normal sigue aplicando
 
 Anunciar un prefijo afirma que es accesible según una política; no crea la ruta subyacente ni garantiza la ruta de retorno. Antes de originar un prefijo, comprueba el reenvío válido, el comportamiento de agregación, los filtros, la conmutación por error y la autorización de propiedad.
 
-:::single-choice{#bgp-advertisement-limit}
-¿Qué no garantiza anunciar un prefijo?
+:::single-choice{#bgp-advertisement-limit} ¿Qué no garantiza anunciar un prefijo?
 
 ::option[Que los pares puedan recibir una ruta del plano de control.]{#bgp-peers-control explanation="Un anuncio y una aceptación satisfactorios pueden establecer ese hecho limitado del plano de control."}
 ::option[Que el prefijo contenga bits de dirección.]{#bgp-prefix-bits explanation="Un prefijo IP se define mediante bits de dirección y una longitud."}
@@ -70,8 +66,7 @@ Las fugas y los secuestros de rutas pueden afectar al tráfico mucho más allá 
 
 Los cambios de BGP requieren un despliegue por etapas, revisión de diferencias entre rutas, acceso fuera de banda, reversión y comprobaciones de los planos de control y de datos.
 
-:::single-choice{#bgp-rpki-limit}
-¿Qué comprueba la validación de origen RPKI?
+:::single-choice{#bgp-rpki-limit} ¿Qué comprueba la validación de origen RPKI?
 
 ::option[Si todas las cargas útiles de los paquetes están libres de malware.]{#bgp-payload-malware explanation="RPKI no inspecciona el contenido de las aplicaciones."}
 ::option[Si la ruta AS completa tiene la menor latencia.]{#bgp-path-latency explanation="La validación de origen no selecciona por rendimiento ni valida toda la ruta."}

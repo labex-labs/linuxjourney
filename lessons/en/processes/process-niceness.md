@@ -22,8 +22,7 @@ The conventional nice range is `-20` through `19`:
 
 Niceness does not reserve a percentage of a CPU or guarantee immediate execution. Its effect is most visible when comparable runnable tasks contend for CPU time. Real-time policies, cgroups, CPU affinity, I/O waits, and other controls can dominate observed behavior.
 
-:::single-choice{#process-niceness-lower-value}
-Under the same ordinary scheduling policy, which nice value gives greater relative CPU weight?
+:::single-choice{#process-niceness-lower-value} Under the same ordinary scheduling policy, which nice value gives greater relative CPU weight?
 
 ::option[`10`]{#process-niceness-value-ten explanation="A positive value is nicer and normally carries less weight than zero or a negative value."}
 ::option[`19`]{#process-niceness-value-nineteen explanation="This is the nicest end of the conventional range and has relatively low weight."}
@@ -40,8 +39,7 @@ $ ps -o pid,ni,pri,stat,cmd -p 3245
 
 `NI` is the user-visible nice value. A `PRI` or similar column can be a derived scheduler priority and its scale varies by tool and scheduling class, so do not assume the two columns are interchangeable.
 
-:::single-choice{#process-niceness-top-column}
-Which `top` column normally displays the nice value?
+:::single-choice{#process-niceness-top-column} Which `top` column normally displays the nice value?
 
 ::option[`PID`]{#process-niceness-column-pid explanation="`PID` identifies a process rather than showing its scheduling adjustment."}
 ::option[`TTY`]{#process-niceness-column-tty explanation="`TTY` identifies a controlling terminal association."}
@@ -58,8 +56,7 @@ $ nice -n 5 long-computation
 
 The requested adjustment and accepted syntax can be checked in the local manual. A nonprivileged user can normally make a command nicer by increasing its value. Giving it a lower nice value, and therefore more favorable scheduling weight, requires appropriate privilege or configured resource limits.
 
-:::single-choice{#process-niceness-nice-command}
-What does `nice -n 5 long-computation` do?
+:::single-choice{#process-niceness-nice-command} What does `nice -n 5 long-computation` do?
 
 ::option[Starts the command with nice value 5, if permitted.]{#process-niceness-start-five .correct explanation="`nice` launches a new command using the requested scheduling adjustment."}
 ::option[Changes PID 5 to the lowest possible nice value.]{#process-niceness-pid-five explanation="The operand after `-n` is a nice value, not a PID target."}
@@ -76,8 +73,7 @@ $ renice -n 10 -p 3245
 
 This requests nice value `10` for PID `3245`. Verify the target first because PIDs can be reused, then confirm the resulting value. Permissions depend on ownership, privilege, resource limits, and system policy. Increasing the nice value is usually allowed for a process you own; reversing that change may not be allowed without privilege.
 
-:::single-choice{#process-niceness-renice-purpose}
-Which tool changes the nice value of an existing process?
+:::single-choice{#process-niceness-renice-purpose} Which tool changes the nice value of an existing process?
 
 ::option[`nice`]{#process-niceness-tool-nice explanation="`nice` primarily starts a new command with an adjusted value."}
 ::option[`kill`]{#process-niceness-tool-kill explanation="`kill` sends signals and does not serve as the ordinary niceness editor."}

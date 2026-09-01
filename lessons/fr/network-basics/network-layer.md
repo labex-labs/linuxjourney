@@ -16,8 +16,7 @@ La couche réseau fournit un adressage logique et une livraison des paquets au m
 
 Un en-tête IP contient les adresses source et destination ainsi que les champs nécessaires à l’acheminement et au traitement du protocole. La charge utile contient généralement un segment TCP, un datagramme UDP ou un message ICMP. IP ne garantit ni l’arrivée, ni l’ordre, ni l’absence de doublons.
 
-:::single-choice{#network-layer-ip-service}
-Quel service de livraison IP fournit-il à lui seul ?
+:::single-choice{#network-layer-ip-service} Quel service de livraison IP fournit-il à lui seul ?
 
 ::option[La validation garantie des transactions applicatives.]{#network-layer-guaranteed-commit explanation="Le résultat d’une livraison IP ne peut pas prouver la persistance des données dans l’application."}
 ::option[La livraison des paquets au mieux.]{#network-layer-best-effort .correct explanation="Les couches supérieures ou les applications ajoutent les mécanismes de récupération ou de remise en ordre nécessaires."}
@@ -28,8 +27,7 @@ Quel service de livraison IP fournit-il à lui seul ?
 
 Une adresse et une longueur de préfixe définissent les bits initiaux qui forment un préfixe réseau. Les hôtes utilisent ces informations et leurs routes pour déterminer si une destination se trouve sur la liaison locale ou nécessite un routeur de prochain saut. Un sous-réseau est une plage d’adresses régie par un préfixe et une politique ; les sous-réseaux ne sont pas automatiquement connectés à tous les autres sous-réseaux.
 
-:::single-choice{#network-layer-prefix-decision}
-Qu’est-ce qui aide un hôte à déterminer si une destination IPv4 se trouve sur la liaison locale ?
+:::single-choice{#network-layer-prefix-decision} Qu’est-ce qui aide un hôte à déterminer si une destination IPv4 se trouve sur la liaison locale ?
 
 ::option[Le mot de passe applicatif de la destination.]{#network-layer-password explanation="Les données d’authentification ne définissent pas les préfixes réseau."}
 ::option[La couleur du câble Ethernet.]{#network-layer-cable-color explanation="L’apparence d’un câble n’a aucune signification pour l’adressage."}
@@ -46,8 +44,7 @@ $ ip route get 203.0.113.10
 
 Il s’agit d’une recherche de route locale, et non d’une preuve que chaque routeur en aval possède une route fonctionnelle ou que la destination accepte le trafic.
 
-:::single-choice{#network-layer-longest-prefix}
-Quelle route l’emporte normalement parmi les routes admissibles vers une même destination ?
+:::single-choice{#network-layer-longest-prefix} Quelle route l’emporte normalement parmi les routes admissibles vers une même destination ?
 
 ::option[La route dont le nom d’interface arrive en premier dans l’ordre alphabétique.]{#network-layer-alphabetical explanation="L’orthographe du nom de l’interface ne constitue pas la règle de sélection."}
 ::option[La route la plus ancienne, quel que soit son préfixe.]{#network-layer-oldest explanation="L’ancienneté seule ne l’emporte pas sur la correspondance des préfixes."}
@@ -60,8 +57,7 @@ Chaque paquet IPv4 possède un TTL, et chaque paquet IPv6 une limite de sauts. U
 
 Les routeurs conservent normalement les adresses IP de bout en bout, mais le NAT, les tunnels, les proxys et d’autres équipements intermédiaires peuvent transformer ou encapsuler les paquets. Les en-têtes de la couche liaison changent à chaque saut routé dans tous les cas.
 
-:::single-choice{#network-layer-hop-limit}
-Pourquoi le TTL ou la limite de sauts est-il décrémenté par les routeurs ?
+:::single-choice{#network-layer-hop-limit} Pourquoi le TTL ou la limite de sauts est-il décrémenté par les routeurs ?
 
 ::option[Pour augmenter les permissions de fichiers de l’application.]{#network-layer-hop-permissions explanation="Le nombre de sauts est sans rapport avec les autorisations du système de fichiers."}
 ::option[Pour convertir chaque paquet IPv4 en IPv6.]{#network-layer-hop-convert explanation="La traduction de protocole n’est pas la fonction de ce champ."}

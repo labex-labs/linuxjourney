@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-Какая команда показывает содержимое `/home/pete`, не переходя в него?
+:::single-choice{#list-another-directory} Какая команда показывает содержимое `/home/pete`, не переходя в него?
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="Переданный `ls` путь каталога выводит его содержимое, а рабочий каталог оболочки остаётся прежним."}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` меняет рабочий каталог оболочки, но сама по себе не выполняет запрошенный вывод."}
@@ -47,8 +46,7 @@ $ ls -a
 
 Скрытые dotfiles часто хранят настройки, например `.bashrc`.
 
-:::single-choice{#show-hidden-files}
-Какая команда включает скрытые файлы в список?
+:::single-choice{#show-hidden-files} Какая команда включает скрытые файлы в список?
 
 ::option[`ls -l`]{#long-format explanation="`-l` добавляет подробные столбцы, но сам по себе не включает скрытые имена."}
 ::option[`ls -r`]{#reverse-order explanation="`-r` разворачивает порядок сортировки и не влияет на показ скрытых файлов."}
@@ -84,8 +82,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-Какая команда показывает длинный формат с удобочитаемыми размерами?
+:::single-choice{#show-readable-file-details} Какая команда показывает длинный формат с удобочитаемыми размерами?
 
 ::option[`ls -la`]{#long-all explanation="Она сочетает длинный формат со скрытыми файлами, но не запрашивает удобные единицы размера."}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` выбирает длинный формат, а `-h` делает размеры удобнее; флаги объединяются в одной команде."}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-Какая команда сортирует по времени изменения и помещает самые новые записи последними?
+:::single-choice{#show-newest-files-last} Какая команда сортирует по времени изменения и помещает самые новые записи последними?
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` сортирует по времени изменения, а `-r` разворачивает порядок, поэтому старые записи идут перед новыми."}
 ::option[`ls -lt`]{#time-default explanation="Она сортирует по времени, но сохраняет обычное направление от новых к старым."}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`: сортировать по размеру.
 - `-d`: показать сам каталог вместо его содержимого.
 
-:::single-choice{#list-directory-entry-itself}
-Какая команда показывает запись каталога `projects/`, а не его содержимое?
+:::single-choice{#list-directory-entry-itself} Какая команда показывает запись каталога `projects/`, а не его содержимое?
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="Параметр `-d` предписывает `ls` вывести саму запись каталога, не открывая его для просмотра содержимого."}
 ::option[`ls projects/`]{#directory-contents explanation="Без `-d` переданный путь каталога заставляет `ls` показать записи внутри него."}

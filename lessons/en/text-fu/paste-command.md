@@ -31,8 +31,7 @@ bob	viewer
 
 The visible spacing between columns is a tab. Unlike `cat`, which writes one complete file after another, `paste` combines corresponding input lines.
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt` contains `A` then `B`, and `second.txt` contains `1` then `2`. What does `paste first.txt second.txt` produce by default?
+:::single-choice{#paste-corresponding-lines} `first.txt` contains `A` then `B`, and `second.txt` contains `1` then `2`. What does `paste first.txt second.txt` produce by default?
 
 ::option[`A`, `B`, `1`, and `2` on four consecutive lines.]{#paste-concatenated-files explanation="That resembles writing the files one after another. `paste` instead combines corresponding lines."}
 ::option[`A`, `B`, `1`, and `2` on one line with no separators.]{#paste-one-line-no-separator explanation="One-line serialization requires `-s`, and the default separator is a tab rather than nothing."}
@@ -51,8 +50,7 @@ bob:viewer
 
 Quote delimiters that have shell meaning. `paste` can cycle through multiple delimiter characters when the list contains more than one, but a single character is easiest when building two columns.
 
-:::single-choice{#paste-colon-delimiter}
-Which command joins corresponding lines from `names.txt` and `roles.txt` with a colon?
+:::single-choice{#paste-colon-delimiter} Which command joins corresponding lines from `names.txt` and `roles.txt` with a colon?
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="The `-d` option replaces the default tab with the supplied colon for each pair of fields."}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="The `-s` option selects serial mode, and `:` would be treated as another input pathname rather than a delimiter."}
@@ -78,8 +76,7 @@ The quick brown fox
 
 If several files are supplied with `-s`, each file becomes its own output line.
 
-:::single-choice{#paste-serialize-with-spaces}
-Which command joins every line of `words.txt` into one space-separated output line?
+:::single-choice{#paste-serialize-with-spaces} Which command joins every line of `words.txt` into one space-separated output line?
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="In default parallel mode, a single input file still produces one output line per input line. The delimiter has nothing to join across files."}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="This serializes two files separately with the default tab, producing two output lines rather than the requested one-file space-separated result."}
@@ -99,8 +96,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-What happens when one file passed to parallel `paste` ends before another?
+:::single-choice{#paste-unequal-files} What happens when one file passed to parallel `paste` ends before another?
 
 ::option[`paste` uses empty fields for that file until the longest input ends.]{#paste-empty-fields .correct explanation="Parallel mode continues until all files are exhausted, representing missing lines from shorter inputs as empty fields."}
 ::option[`paste` stops immediately and discards remaining lines.]{#paste-stop-shortest explanation="`paste` continues through the longest input, so remaining lines are not discarded merely because another file ended."}
@@ -117,8 +113,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-In `producer | paste names.txt -`, what does the `-` operand mean?
+:::single-choice{#paste-stdin-operand} In `producer | paste names.txt -`, what does the `-` operand mean?
 
 ::option[Write the merged result to stderr.]{#paste-write-stderr explanation="A hyphen here identifies an input source. It does not redirect an output stream."}
 ::option[Remove delimiters between the two columns.]{#paste-remove-delimiter explanation="Delimiter selection is controlled with `-d`. The hyphen does not change the separator."}

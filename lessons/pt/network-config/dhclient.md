@@ -24,8 +24,7 @@ $ ps -ef | grep '[d]hclient'
 
 Use as ferramentas disponíveis no host. Se um gerenciador controla a interface, solicite DHCP por ele, em vez de iniciar outro cliente.
 
-:::single-choice{#dhclient-second-client-risk}
-Por que evitar `dhclient` numa interface já gerenciada?
+:::single-choice{#dhclient-second-client-risk} Por que evitar `dhclient` numa interface já gerenciada?
 
 ::option[DHCP só pode atribuir endereços loopback.]{#dhclient-loopback-only explanation="DHCP normalmente fornece configurações de rede não loopback."}
 ::option[Dois clientes podem disputar endereços, rotas, DNS e concessões.]{#dhclient-competing-state .correct explanation="Somente o proprietário identificado deve normalmente reconciliar a interface."}
@@ -42,8 +41,7 @@ $ sudo dhclient -v enp1s0
 
 Sem uma interface, o comando pode agir em várias interfaces elegíveis. Caminhos de configuração e concessão variam; nomes comuns incluem `dhclient.conf` e `dhclient.leases`, mas não presuma uma localização fixa.
 
-:::single-choice{#dhclient-interface-operand}
-Por que especificar `enp1s0` numa solicitação manual?
+:::single-choice{#dhclient-interface-operand} Por que especificar `enp1s0` numa solicitação manual?
 
 ::option[Para limitar a ação à interface pretendida.]{#dhclient-scope-interface .correct explanation="Uma invocação sem qualificação pode considerar mais interfaces que o desejado."}
 ::option[Para escolher a porta TCP 1 para DHCP.]{#dhclient-tcp-port explanation="DHCP usa UDP, e o nome da interface não é uma porta."}
@@ -54,8 +52,7 @@ Por que especificar `enp1s0` numa solicitação manual?
 
 `dhclient -r INTERFACE` solicita liberação e pode remover a configuração utilizável. É disruptivo e não garante que o servidor esteja acessível para receber o pedido. Não libere apenas para inspecionar, sobretudo no caminho de gerenciamento remoto.
 
-:::single-choice{#dhclient-release-effect}
-Qual é o risco operacional de `dhclient -r enp1s0`?
+:::single-choice{#dhclient-release-effect} Qual é o risco operacional de `dhclient -r enp1s0`?
 
 ::option[Ele apenas mostra a concessão atual sem mudanças.]{#dhclient-release-readonly explanation="A liberação altera o estado."}
 ::option[Ele renova toda concessão por tempo ilimitado.]{#dhclient-release-renews explanation="Liberar e renovar são operações opostas."}
@@ -74,8 +71,7 @@ $ resolvectl status
 
 Examine os logs do gerenciador ou do cliente e a duração da concessão e, em seguida, teste a resolução de nomes e a aplicação pretendidas. Um DHCPACK pode trazer opções incorretas, e a atribuição bem-sucedida de um endereço não comprova a acessibilidade do gateway nem do DNS.
 
-:::single-choice{#dhclient-verify-state}
-O que deve ser verificado após obter uma concessão?
+:::single-choice{#dhclient-verify-state} O que deve ser verificado após obter uma concessão?
 
 ::option[Endereço, rotas, DNS, concessão e comportamento do aplicativo.]{#dhclient-complete-verify .correct explanation="A concessão configura componentes relacionados que precisam funcionar juntos."}
 ::option[Apenas que uma string de endereço apareceu.]{#dhclient-address-only explanation="Rotas, DNS, validade e funcionamento ainda podem estar errados."}

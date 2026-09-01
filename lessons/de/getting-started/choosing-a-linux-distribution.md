@@ -20,8 +20,7 @@ Ein Linux-System besteht aus drei Hauptteilen:
 - **Linux-Kernel** – der Kern des Betriebssystems, der die Hardware verwaltet und die Kommunikation zwischen Software und Hardware ermöglicht.
 - **Userspace** – die Umgebung, in der du über Anwendungen und Befehlszeilenschnittstellen mit dem System arbeitest.
 
-:::single-choice{#identify-hardware-manager}
-Welcher Hauptteil eines Linux-Systems verwaltet die Hardware?
+:::single-choice{#identify-hardware-manager} Welcher Hauptteil eines Linux-Systems verwaltet die Hardware?
 
 ::option[Userspace]{#user-space explanation="Im Userspace laufen Anwendungen und Befehlszeilenschnittstellen. Diese Programme stützen sich beim Zugriff auf Hardware auf den Kernel."}
 ::option[Linux-Kernel]{#linux-kernel .correct explanation="Der Linux-Kernel verwaltet Hardwareressourcen und die Kommunikation zwischen Hardware und Software. Er ist der Kern, um den eine Distribution aufgebaut wird."}
@@ -34,8 +33,7 @@ Eine Linux-Distribution verbindet den Linux-Kernel mit Systemwerkzeugen, Bibliot
 
 Distributionen treffen unterschiedliche Entscheidungen zu Stabilität, Aktualität der Software, Desktop-Erlebnis, Paketverwaltung, Unterstützung und Systemphilosophie. Deshalb gibt es keine einzelne beste Linux-Distribution für alle.
 
-:::single-choice{#recognize-linux-distribution}
-Welche Beschreibung passt am besten zu einer Linux-Distribution?
+:::single-choice{#recognize-linux-distribution} Welche Beschreibung passt am besten zu einer Linux-Distribution?
 
 ::option[Ein Kernel ohne Systemwerkzeuge, Anwendungen oder Softwareverwaltung]{#kernel-only explanation="Der Kernel allein ist nur ein Teil eines Betriebssystems. Eine Distribution ergänzt Werkzeuge, Bibliotheken, Anwendungen und Softwareverwaltung."}
 ::option[Ein Kernel zusammen mit Systemwerkzeugen, Anwendungen und Softwareverwaltung]{#complete-distribution .correct explanation="Eine Distribution verbindet den Linux-Kernel mit der Userspace-Software für ein nutzbares Betriebssystem. Üblicherweise gehört auch ein Paketmanager dazu."}
@@ -50,8 +48,7 @@ Die beste Distribution ist meist diejenige, die zu deinen Zielen passt, und nich
 
 Das Veröffentlichungsmodell beschreibt, wie eine Distribution wichtige Softwareaktualisierungen ausliefert. Stabile oder Point-Release-Distributionen veröffentlichen Aktualisierungen in geplanten Paketen und legen Wert auf Vorhersehbarkeit. Rolling Releases liefern kontinuierlich Aktualisierungen und damit meist neuere Software, aber auch häufigere Veränderungen.
 
-:::single-choice{#choose-release-style}
-Welches Veröffentlichungsmodell passt zu jemandem, der geplante Aktualisierungen und Vorhersehbarkeit bevorzugt?
+:::single-choice{#choose-release-style} Welches Veröffentlichungsmodell passt zu jemandem, der geplante Aktualisierungen und Vorhersehbarkeit bevorzugt?
 
 ::option[Ein kontinuierlich aktualisiertes Rolling Release]{#rolling-release explanation="Ein Rolling Release liefert normalerweise neuere Software durch kontinuierliche Aktualisierungen. Damit gehen häufigere Veränderungen einher, als das genannte Ziel verlangt."}
 ::option[Ein stabiles oder Point-Release-Modell]{#stable-release .correct explanation="Stabile und Point-Release-Modelle liefern größere Änderungen in geplanten Veröffentlichungen und unterstützen damit eine besser vorhersehbare Umgebung."}
@@ -64,8 +61,7 @@ Wenn Linux für dich neu ist, beginne mit Distributionen, die eine reibungslose 
 
 Einsteigerfreundlich bedeutet nicht zwangsläufig simpel. Meist bedeutet es sinnvolle Standardwerte, eine große Community und weniger Überraschungen im Alltag.
 
-:::single-choice{#prioritize-beginner-needs}
-Welche Eigenschaften sind der beste Ausgangspunkt für einen neuen Linux-Nutzer?
+:::single-choice{#prioritize-beginner-needs} Welche Eigenschaften sind der beste Ausgangspunkt für einen neuen Linux-Nutzer?
 
 ::option[Neueste Pakete, manuelle Einrichtung und wenig Dokumentation]{#advanced-setup-qualities explanation="Neue Software und manuelle Einrichtung können zu erfahrenen Nutzern passen, doch wenig Anleitung erschwert Einsteigern die Arbeit unnötig."}
 ::option[Maximale Kontrolle, komplexe Wartung und häufige Überraschungen]{#maximum-control-qualities explanation="Tiefe Kontrolle kann wertvoll sein, sobald ein Nutzer seinen gewünschten Ablauf kennt. Sie ist nicht der unterstützendste Ausgangspunkt für eine erste Distribution."}
@@ -122,8 +118,7 @@ Man kann viel Zeit mit der Suche nach der besten Distribution verbringen und nie
 
 Sobald du eine Distribution verstehst, wird der Wechsel zu einer anderen deutlich einfacher. Entscheidend ist, anzufangen.
 
-:::single-choice{#take-practical-next-step}
-Was ist nach der Bestimmung deiner Ziele ein sinnvoller nächster Schritt?
+:::single-choice{#take-practical-next-step} Was ist nach der Bestimmung deiner Ziele ein sinnvoller nächster Schritt?
 
 ::option[Weitersuchen, bis eine Distribution für alle die beste ist]{#search-universal-best explanation="Die Lektion zeigt, dass verschiedene Nutzer unterschiedliche Anforderungen haben. Das Warten auf eine universell beste Wahl verhindert praktische Erfahrung."}
 ::option[Wiederholt wechseln, bevor du die Grundlagen einer Distribution lernst]{#switch-repeatedly explanation="Häufiges Wechseln erschwert den Aufbau grundlegender Fähigkeiten. Wenn du zuerst eine geeignete Distribution lernst, werden spätere Wechsel leichter."}

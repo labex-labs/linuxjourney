@@ -24,8 +24,7 @@ Linux 内核通过 uevent 向用户空间报告设备变化。在许多现代发
 
 内核仍负责实际设备及其驱动程序。从 `/dev` 删除节点不会在物理上移除硬件，使用 `mknod` 手动创建设备节点也不会让不受支持的硬件凭空出现或绑定驱动程序。
 
-:::single-choice{#udev-kernel-event-input}
-什么通常会触发 udev 处理设备变化？
+:::single-choice{#udev-kernel-event-input} 什么通常会触发 udev 处理设备变化？
 
 ::option[APT 执行的软件包仓库刷新。]{#udev-apt-refresh explanation="软件包元数据更新与实时设备事件处理无关。"}
 ::option[用户手动重命名 `/dev` 下的每个文件。]{#udev-manual-renaming explanation="动态策略由内核事件和规则驱动，而不是由批量手动重命名驱动。"}
@@ -44,8 +43,7 @@ Linux 内核通过 uevent 向用户空间报告设备变化。在许多现代发
 
 一条规则可能影响所有匹配设备，因此要仔细测试作用范围。当本地覆盖规则或补充规则足以满足需求时，不要直接编辑软件包提供的规则。
 
-:::single-choice{#udev-local-rules-directory}
-哪个目录用于存放持久的本地管理员 udev 规则？
+:::single-choice{#udev-local-rules-directory} 哪个目录用于存放持久的本地管理员 udev 规则？
 
 ::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="procfs 不提供持久的本地规则目录。"}
 ::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="本地策略应位于 /etc 下，与软件包管理的厂商规则分开。"}
@@ -62,8 +60,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 应使用当前系统上实际存在的节点。`udevadm info --attribute-walk --name=...` 可以显示 sysfs 父级链上的属性，有助于构造规则。`udevadm monitor --kernel --udev --property` 会观察内核事件和处理后的事件；输出可能暴露设备标识符，因此要妥善处理捕获内容。
 
-:::single-choice{#udev-info-purpose}
-`udevadm info --query=all --name=/dev/sda` 请求什么？
+:::single-choice{#udev-info-purpose} `udevadm info --query=all --name=/dev/sda` 请求什么？
 
 ::option[以破坏性方式重写磁盘分区表。]{#udev-info-partition-write explanation="该查询属于检查操作，不会格式化存储或重新分区。"}
 ::option[从互联网安装缺失的内核驱动程序。]{#udev-info-install-driver explanation="udevadm 检查不会充当软件下载工具。"}
@@ -76,8 +73,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 更改权限或名称前，应备份本地规则、验证语法、观察一个已知测试设备，并保留恢复通道。不要直接在 udev 事件处理中运行耗时工作；应将其交给适当的服务。
 
-:::single-choice{#udev-reload-effect}
-重新加载 udev 规则主要会改变什么？
+:::single-choice{#udev-reload-effect} 重新加载 udev 规则主要会改变什么？
 
 ::option[后续匹配设备事件的处理方式。]{#udev-future-events .correct explanation="重新加载会更新内存中的规则；设备仍需发生事件或被有意触发，才会重新评估。"}
 ::option[每个已连接设备的物理接线。]{#udev-physical-wiring explanation="加载软件规则无法改变硬件连接。"}

@@ -22,8 +22,7 @@ $ tail application.log
 
 Если файл содержит меньше 10 строк, выводятся все доступные. Сам файл не изменяется.
 
-:::single-choice{#tail-default-lines}
-Что по умолчанию выводит `tail application.log`?
+:::single-choice{#tail-default-lines} Что по умолчанию выводит `tail application.log`?
 
 ::option[До 10 начальных строк файла.]{#tail-first-ten explanation="Начало файла выбирает `head`; `tail` работает с концом."}
 ::option[Все строки, добавленные после запуска команды.]{#tail-follow-only explanation="Для непрерывного наблюдения нужен `-f` или родственный параметр. Обычный `tail` выводит снимок и завершается."}
@@ -46,8 +45,7 @@ $ tail -c 100 payload.bin
 
 В байтовом режиме вывод может начаться посередине текстовой строки или закодированного символа, поэтому для текста режим строк обычно понятнее.
 
-:::single-choice{#tail-twenty-lines}
-Какая команда выводит последние 20 строк `application.log`?
+:::single-choice{#tail-twenty-lines} Какая команда выводит последние 20 строк `application.log`?
 
 ::option[`tail -n 20 application.log`]{#tail-twenty-end .correct explanation="Параметр `-n` задаёт число строк, а `tail` берёт их с конца."}
 ::option[`head -n 20 application.log`]{#head-twenty-start explanation="Эта команда выбирает 20 строк с начала, а не с конца."}
@@ -64,8 +62,7 @@ $ tail -n +5 report.txt
 
 Эта команда пропускает первые четыре строки и начинает со строки 5. Приём полезен для удаления известного числа строк заголовка из потока.
 
-:::single-choice{#tail-start-line-five}
-Какая команда выводит `report.txt`, начиная со строки 5?
+:::single-choice{#tail-start-line-five} Какая команда выводит `report.txt`, начиная со строки 5?
 
 ::option[`tail -n +5 report.txt`]{#tail-from-five .correct explanation="Значение `+5` предписывает `tail` начать со строки 5 и продолжать до конца."}
 ::option[`tail -n 5 report.txt`]{#tail-final-five explanation="Без плюса выбираются последние пять строк независимо от их абсолютных номеров."}
@@ -82,8 +79,7 @@ $ tail -f application.log
 
 Нажмите `Ctrl+C`, чтобы прервать `tail` и вернуться в оболочку. Наблюдение за файлом лишь показывает новое содержимое и не гарантирует исправность записывающего журнал приложения или регистрацию всех важных событий именно в этом файле.
 
-:::single-choice{#tail-follow-file}
-Какая команда показывает текущее окончание `application.log` и продолжает ждать добавляемое содержимое?
+:::single-choice{#tail-follow-file} Какая команда показывает текущее окончание `application.log` и продолжает ждать добавляемое содержимое?
 
 ::option[`tail -f application.log`]{#tail-follow-app .correct explanation="Параметр `-f` оставляет `tail` активной и показывает добавляемые в файл данные."}
 ::option[`tail -n 0 application.log`]{#tail-zero-lines explanation="Команда изначально не выводит строк и завершается, поскольку параметр наблюдения отсутствует."}
@@ -100,8 +96,7 @@ $ tail -F application.log
 
 Используйте `-f`, если нужно следить за уже открытым файлом, и `-F`, если именованный журнал должен ротироваться. Это поведение GNU; другие реализации могут отличаться.
 
-:::single-choice{#tail-follow-rotated-name}
-Какой параметр в GNU/Linux лучше подходит для наблюдения за `application.log` при обычной ротации с переименованием и повторным созданием?
+:::single-choice{#tail-follow-rotated-name} Какой параметр в GNU/Linux лучше подходит для наблюдения за `application.log` при обычной ротации с переименованием и повторным созданием?
 
 ::option[`-n`]{#tail-rotation-lines explanation="Параметр `-n` меняет количество выводимых строк и не повторяет попытки открыть заменённый путь."}
 ::option[`-c`]{#tail-rotation-bytes explanation="Параметр `-c` меняет единицу выбора на байты и не обеспечивает наблюдение с учётом ротации."}

@@ -28,8 +28,7 @@ cd [DIRECTORY]
 
 - **相对路径**：基于你当前所在位置的路径。如果你在 `/home/pete/Documents`，想访问名为 `taxes` 的子目录，可以使用 `taxes/`。
 
-:::single-choice{#recognize-absolute-cd-path}
-以下哪项正确描述了绝对路径？
+:::single-choice{#recognize-absolute-cd-path} 以下哪项正确描述了绝对路径？
 
 ::option[它从 shell 当前所在的目录开始]{#begins-at-current-directory explanation="依赖 shell 当前位置的路径是相对路径，不一定从根目录开始。"}
 ::option[它只包含最终目录名，不含父目录]{#contains-final-name-only explanation="单个目标名称通常会相对于当前目录解释；绝对路径包含从 `/` 开始的完整路线。"}
@@ -53,8 +52,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-执行 `cd` 后，哪个命令可以确认 shell 当前所在的位置？
+:::single-choice{#verify-changed-directory} 执行 `cd` 后，哪个命令可以确认 shell 当前所在的位置？
 
 ::option[`cd`]{#cd-command explanation="`cd` 会改变当前目录，但通常不打印结果的完整路径；应使用 `pwd` 进行确认。"}
 ::option[`ls`]{#ls-command explanation="`ls` 显示目录内容，可以帮助查看当前位置，但报告位置本身的是 `pwd`。"}
@@ -89,16 +87,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-从 `/home/pete/Pictures` 出发，哪个命令会移动到 `/home/pete`？
+:::single-choice{#move-to-parent-directory} 从 `/home/pete/Pictures` 出发，哪个命令会移动到 `/home/pete`？
 
 ::option[`cd .`]{#cd-current explanation="`.` 表示当前目录，因此这个命令会让 shell 留在 `/home/pete/Pictures`。"}
 ::option[`cd -`]{#cd-previous explanation="`-` 返回上一个工作目录，而它不一定是父目录；目标在上一级时应使用 `..`。"}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` 表示当前目录的父目录；`Pictures` 的父目录是 `/home/pete`。"}
 :::
 
-:::single-choice{#return-to-previous-directory}
-哪个命令会返回当前目录之前刚使用过的目录？
+:::single-choice{#return-to-previous-directory} 哪个命令会返回当前目录之前刚使用过的目录？
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` 会切换到上一个工作目录，而这个目录可以位于文件系统中的任何位置。"}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` 移动到父目录；父目录与上一个访问的目录不一定相同。"}
@@ -129,8 +125,7 @@ $ cd ../..
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-哪个命令会把 `Vacation Photos` 视为一个目录名？
+:::single-choice{#enter-directory-with-spaces} 哪个命令会把 `Vacation Photos` 视为一个目录名？
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="没有引号时，shell 会把 `Vacation` 和 `Photos` 作为两个独立参数，而不是一个目录名。"}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="给整行加引号会让 shell 把它视为一个命令名；命令本身必须放在路径引号外。"}

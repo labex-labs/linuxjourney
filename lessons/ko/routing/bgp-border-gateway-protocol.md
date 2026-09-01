@@ -18,8 +18,7 @@ BGP(Border Gateway Protocol)는 인터넷의 경로 벡터 라우팅 프로토�
 
 BGP 피어는 TCP 포트 179를 통해 세션을 수립합니다. 작동하는 TCP 세션은 전송 기반일 뿐이며 BGP 기능, 정책 및 경로 교환도 성공해야 합니다.
 
-:::single-choice{#bgp-external-session}
-외부 BGP는 무엇을 교환합니까?
+:::single-choice{#bgp-external-session} 외부 BGP는 무엇을 교환합니까?
 
 ::option[하나의 스위치 안에서 Ethernet 프레임 체크섬을 교환합니다.]{#bgp-ethernet-fcs explanation="BGP는 TCP 위에서 작동하며 네트워크 계층 연결 가능성을 교환합니다."}
 ::option[웹 브라우저 사이에서 사용자 암호를 교환합니다.]{#bgp-browser-passwords explanation="응용 자격 증명은 라우팅 속성이 아닙니다."}
@@ -30,8 +29,7 @@ BGP 피어는 TCP 포트 179를 통해 세션을 수립합니다. 작동하는 T
 
 광고에는 접두사와 속성이 포함됩니다. `AS_PATH`는 통과한 자율 시스템을 나열해 루프 감지에 도움을 줍니다. 그 밖의 일반적인 속성에는 `LOCAL_PREF`, `MED`, origin, next hop 및 community가 있습니다. 속성의 효과는 방향, 구현 및 정책에 따라 달라집니다.
 
-:::single-choice{#bgp-as-path-loop}
-`AS_PATH`는 AS 간 루프를 막는 데 어떻게 도움이 됩니까?
+:::single-choice{#bgp-as-path-loop} `AS_PATH`는 AS 간 루프를 막는 데 어떻게 도움이 됩니까?
 
 ::option[AS가 자체 번호를 이미 포함한 경로를 거부할 수 있습니다.]{#bgp-own-as-reject .correct explanation="경로 벡터는 광고된 접두사에 도달하는 데 사용된 AS 순서를 보여 줍니다."}
 ::option[그 시스템을 통과하는 모든 패킷을 암호화합니다.]{#bgp-aspath-encryption explanation="이 속성은 라우팅 경로를 설명하며 페이로드 암호화를 제공하지 않습니다."}
@@ -44,8 +42,7 @@ BGP의 “최적” 경로는 설정된 결정 과정에서 이긴 경로입니�
 
 BGP가 후보를 선택한 뒤에는 일반적인 IP 전달에 여전히 최장 접두사 일치가 적용됩니다. 선택된 `/24`는 이를 포함하는 선택된 `/16` 대신 해당 목적지에 사용됩니다.
 
-:::single-choice{#bgp-best-path-meaning}
-BGP 최적 경로는 무엇을 나타냅니까?
+:::single-choice{#bgp-best-path-meaning} BGP 최적 경로는 무엇을 나타냅니까?
 
 ::option[로컬 속성과 정책 결정 과정에서 이긴 경로입니다.]{#bgp-policy-winner .correct explanation="관리 의도가 도메인 간 경로 선택의 핵심입니다."}
 ::option[모든 경우 물리 케이블 길이가 가장 짧은 경로입니다.]{#bgp-shortest-cable explanation="BGP에는 완전한 물리 거리 지도가 없습니다."}
@@ -56,8 +53,7 @@ BGP 최적 경로는 무엇을 나타냅니까?
 
 접두사 광고는 정책 아래 연결 가능성을 주장하지만 하위 경로를 만들거나 반환 경로를 보장하지 않습니다. 접두사를 생성하기 전에 유효한 전달, 집계 동작, 필터, 장애 조치 및 소유권 승인을 확인하십시오.
 
-:::single-choice{#bgp-advertisement-limit}
-접두사 광고만으로 보장할 수 없는 것은 무엇입니까?
+:::single-choice{#bgp-advertisement-limit} 접두사 광고만으로 보장할 수 없는 것은 무엇입니까?
 
 ::option[피어가 제어 평면 경로를 받을 수 있습니다.]{#bgp-peers-control explanation="성공적인 광고와 수락은 그 제한적인 제어 평면 사실을 확립할 수 있습니다."}
 ::option[접두사에 주소 비트가 포함됩니다.]{#bgp-prefix-bits explanation="IP 접두사는 주소 비트와 길이로 정의됩니다."}
@@ -70,8 +66,7 @@ BGP 최적 경로는 무엇을 나타냅니까?
 
 BGP 변경에는 단계적 배포, 경로 차이 검토, 대역 외 접근, 되돌리기 및 제어·데이터 평면 검증이 필요합니다.
 
-:::single-choice{#bgp-rpki-limit}
-RPKI 원본 검증은 무엇을 확인합니까?
+:::single-choice{#bgp-rpki-limit} RPKI 원본 검증은 무엇을 확인합니까?
 
 ::option[모든 패킷 페이로드에 악성 코드가 없는지 확인합니다.]{#bgp-payload-malware explanation="RPKI는 응용 콘텐츠를 조사하지 않습니다."}
 ::option[전체 AS 경로의 지연 시간이 가장 낮은지 확인합니다.]{#bgp-path-latency explanation="원본 검증은 성능 선택이나 전체 경로 검증이 아닙니다."}

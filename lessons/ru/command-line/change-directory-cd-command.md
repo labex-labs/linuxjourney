@@ -27,8 +27,7 @@ cd [DIRECTORY]
 - **Абсолютный путь** — полный путь от корневого каталога (`/`), например `/home/pete/Desktop`.
 - **Относительный путь** — путь от текущего положения. Находясь в `/home/pete/Documents`, в подкаталог `taxes` можно перейти по пути `taxes/`.
 
-:::single-choice{#recognize-absolute-cd-path}
-Какое утверждение правильно описывает абсолютный путь?
+:::single-choice{#recognize-absolute-cd-path} Какое утверждение правильно описывает абсолютный путь?
 
 ::option[Он начинается в каталоге, который сейчас использует оболочка.]{#begins-at-current-directory explanation="Путь, зависящий от текущего положения оболочки, является относительным и не обязательно начинается от корня."}
 ::option[Он содержит только имя конечного каталога без родителей.]{#contains-final-name-only explanation="Одиночное имя обычно интерпретируется относительно текущего каталога, а абсолютный путь включает маршрут от `/`."}
@@ -52,8 +51,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-Какая команда подтверждает текущее положение оболочки после `cd`?
+:::single-choice{#verify-changed-directory} Какая команда подтверждает текущее положение оболочки после `cd`?
 
 ::option[`cd`]{#cd-command explanation="`cd` меняет каталог, но обычно не выводит его полный путь; для проверки используйте `pwd`."}
 ::option[`ls`]{#ls-command explanation="`ls` показывает содержимое каталога, тогда как само положение сообщает `pwd`."}
@@ -88,16 +86,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-Какая команда из `/home/pete/Pictures` перемещает в `/home/pete`?
+:::single-choice{#move-to-parent-directory} Какая команда из `/home/pete/Pictures` перемещает в `/home/pete`?
 
 ::option[`cd .`]{#cd-current explanation="`.` обозначает текущий каталог, поэтому оболочка останется в `/home/pete/Pictures`."}
 ::option[`cd -`]{#cd-previous explanation="`-` возвращает в предыдущий рабочий каталог, который не обязательно является родительским; для уровня вверх нужен `..`."}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` обозначает родителя текущего каталога; родитель `Pictures` — `/home/pete`."}
 :::
 
-:::single-choice{#return-to-previous-directory}
-Какая команда возвращает в каталог, использованный непосредственно перед текущим?
+:::single-choice{#return-to-previous-directory} Какая команда возвращает в каталог, использованный непосредственно перед текущим?
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` переключает в предыдущий рабочий каталог, который может находиться где угодно в файловой системе."}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` переходит к родителю; предыдущий и родительский каталоги не всегда совпадают."}
@@ -128,8 +124,7 @@ $ cd ../..
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-Какая команда воспринимает `Vacation Photos` как одно имя каталога?
+:::single-choice{#enter-directory-with-spaces} Какая команда воспринимает `Vacation Photos` как одно имя каталога?
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="Без кавычек оболочка передаст `Vacation` и `Photos` как отдельные аргументы, а не одно имя."}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="Кавычки вокруг всей строки заставят оболочку искать команду с таким полным именем; сама команда должна быть вне кавычек пути."}

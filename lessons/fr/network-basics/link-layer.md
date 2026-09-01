@@ -16,8 +16,7 @@ La couche liaison transporte les paquets de la couche réseau sur un support loc
 
 Une trame Ethernet contient les adresses MAC de destination et source, un champ EtherType ou de longueur, une charge utile et une séquence de contrôle de trame en fin de trame. La transmission physique utilise également un préambule et un délimiteur de début. La séquence de contrôle détecte les altérations sur la liaison ; elle ne répare pas une trame endommagée et ne la protège pas par cryptographie.
 
-:::single-choice{#link-layer-fcs-purpose}
-À quoi sert la séquence de contrôle d’une trame Ethernet ?
+:::single-choice{#link-layer-fcs-purpose} À quoi sert la séquence de contrôle d’une trame Ethernet ?
 
 ::option[À détecter l’altération d’une trame sur la liaison.]{#link-layer-detect-corruption .correct explanation="Un récepteur peut abandonner une trame qui échoue au contrôle d’intégrité."}
 ::option[À chiffrer la charge utile sur tous les sauts routés.]{#link-layer-fcs-encryption explanation="La FCS est un code de détection d’erreurs, et non un mécanisme de chiffrement ou d’authentification."}
@@ -28,8 +27,7 @@ Une trame Ethernet contient les adresses MAC de destination et source, un champ 
 
 Un commutateur Ethernet apprend sur quels ports apparaissent les adresses MAC source et achemine les trames unicast connues vers le port associé à leur destination. Les diffusions et certains trafics dont la destination est inconnue sont propagés dans le domaine de diffusion. Les VLAN peuvent diviser un même système de commutation en domaines de liaison logiques distincts.
 
-:::single-choice{#link-layer-switch-learning}
-Quelles informations un commutateur Ethernet apprend-il normalement à partir des trames ?
+:::single-choice{#link-layer-switch-learning} Quelles informations un commutateur Ethernet apprend-il normalement à partir des trames ?
 
 ::option[Les mots de passe applicatifs et les cookies HTTP.]{#link-layer-switch-passwords explanation="Une table d’acheminement élémentaire emploie des adresses de liaison, et non des identifiants applicatifs."}
 ::option[La table de routage Internet complète de chaque routeur.]{#link-layer-switch-routing-table explanation="La commutation de couche 2 et l’échange de routes globales sont des fonctions différentes."}
@@ -42,8 +40,7 @@ Pour IPv4 sur Ethernet, le protocole ARP associe l’adresse IPv4 d’un prochai
 
 Pour une destination IP hors liaison, l’hôte résout l’adresse MAC de la passerelle par défaut ou sélectionnée, et non celle de la destination distante. IPv6 emploie la découverte de voisins sur ICMPv6 plutôt qu’ARP.
 
-:::single-choice{#link-layer-remote-destination-mac}
-Quelle adresse MAC un hôte utilise-t-il pour une destination IPv4 hors liaison ?
+:::single-choice{#link-layer-remote-destination-mac} Quelle adresse MAC un hôte utilise-t-il pour une destination IPv4 hors liaison ?
 
 ::option[L’adresse MAC du routeur choisi comme prochain saut.]{#link-layer-gateway-mac .correct explanation="Le paquet IP reste adressé à l’hôte distant tandis que la trame locale est envoyée au routeur."}
 ::option[L’adresse MAC du serveur distant à travers tous les routeurs.]{#link-layer-remote-mac explanation="Les adresses MAC identifient les interfaces sur une liaison locale et ne sont pas transportées de bout en bout."}
@@ -60,8 +57,7 @@ $ ip neighbor show
 
 Les états tels que `REACHABLE`, `STALE`, `DELAY`, `PROBE` et `FAILED` décrivent le processus de détection d’inaccessibilité des voisins. `STALE` ne signifie pas que la communication est interrompue ; il indique que la confirmation d’accessibilité mise en cache n’est plus récente et peut être vérifiée lors d’une utilisation.
 
-:::single-choice{#link-layer-stale-neighbor}
-Qu’indique l’état `STALE` d’une entrée de voisin ?
+:::single-choice{#link-layer-stale-neighbor} Qu’indique l’état `STALE` d’une entrée de voisin ?
 
 ::option[Que le voisin est définitivement bloqué par le pare-feu.]{#link-layer-stale-blocked explanation="Cet état ne décrit pas la politique du pare-feu."}
 ::option[Que l’adresse MAC a été enregistrée sur disque comme sauvegarde.]{#link-layer-stale-backup explanation="L’état d’un voisin est une information opérationnelle du cache."}
@@ -72,8 +68,7 @@ Qu’indique l’état `STALE` d’une entrée de voisin ?
 
 L’émetteur place un paquet IP dans une trame adressée à son prochain saut. Le routeur valide et retire la trame entrante, traite l’en-tête IP, choisit une route de sortie et construit une nouvelle trame pour cette liaison. Le destinataire retire les encapsulations dans l’ordre inverse et livre la charge utile de transport au socket approprié.
 
-:::single-choice{#link-layer-router-reframing}
-Qu’est-ce qui reste inchangé lors d’un acheminement ordinaire, tandis que la trame Ethernet change au niveau d’un routeur ?
+:::single-choice{#link-layer-router-reframing} Qu’est-ce qui reste inchangé lors d’un acheminement ordinaire, tandis que la trame Ethernet change au niveau d’un routeur ?
 
 ::option[La destination IP, sauf si un équipement intermédiaire tel qu’un dispositif NAT la modifie.]{#link-layer-ip-destination .correct explanation="Les routeurs ordinaires acheminent le trafic vers la destination IP finale tout en remplaçant les trames propres à chaque saut."}
 ::option[La séquence de contrôle de la trame entrante.]{#link-layer-same-fcs explanation="Une nouvelle trame sortante reçoit sa propre valeur d’intégrité de liaison."}

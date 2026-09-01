@@ -16,8 +16,7 @@ meta_keywords: "우분투 리눅스, 우분투 배포판, 우분투란, 우분�
 
 우분투는 더 복잡하거나 고급 설정부터 시작하지 않고 리눅스를 배우고자 하는 사람들에게 일반적인 출발점이 되었습니다. 개인용 컴퓨터, 개발 시스템, 클라우드 플랫폼, 서버 등에서 사용되며, 다른 배포판이 따라올 수 없는 범용성을 자랑합니다.
 
-:::single-choice{#identify-ubuntu-base}
-우분투의 기반이 되는 배포판은 무엇인가요?
+:::single-choice{#identify-ubuntu-base} 우분투의 기반이 되는 배포판은 무엇인가요?
 
 ::option[데비안 배포판]{#debian-base .correct explanation="우분투는 데비안을 기반으로 하며 패키징 방식의 많은 부분을 물려받은 뒤 자체 릴리스, 기본값과 지원 모델을 더합니다."}
 ::option[Fedora 배포판]{#ubuntu-fedora-base explanation="Fedora는 우분투의 기반이 아니라 Red Hat 생태계에 속하며 우분투는 데비안 계열입니다."}
@@ -30,8 +29,7 @@ meta_keywords: "우분투 리눅스, 우분투 배포판, 우분투란, 우분�
 
 우분투가 널리 알려진 또 다른 이유는 다양한 환경에서 작동하기 때문입니다. 노트북과 데스크톱, 가상 머신, 서버, 클라우드 플랫폼 전반에서 우분투를 볼 수 있습니다. 이러한 폭넓은 채택은 범용 리눅스 배포판으로서의 명성을 공고히 합니다.
 
-:::single-choice{#recognize-beginner-support}
-초보자가 문제를 해결하는 데 가장 직접적으로 도움이 되는 우분투의 특성은 무엇인가요?
+:::single-choice{#recognize-beginner-support} 초보자가 문제를 해결하는 데 가장 직접적으로 도움이 되는 우분투의 특성은 무엇인가요?
 
 ::option[설치할 프로그램마다 요구되는 수동 컴파일]{#manual-compilation explanation="우분투는 보통 패키지된 소프트웨어를 제공하므로 모든 프로그램을 직접 컴파일할 필요가 없으며 추가 빌드 작업은 문제 해결을 단순화하지 않습니다."}
 ::option[풍부한 문서와 큰 사용자 커뮤니티]{#documentation-community .correct explanation="문서와 커뮤니티 토론은 초보자가 설명과 문제 해결 도움을 찾을 곳을 늘려 학습 장벽을 낮춥니다."}
@@ -50,8 +48,7 @@ meta_keywords: "우분투 리눅스, 우분투 배포판, 우분투란, 우분�
 
 이러한 릴리스 모델은 우분투의 매력을 설명해 줍니다. 안정적인 기반을 원하는 사용자는 주로 LTS 를 선택하고, 최신 기능을 원하는 사용자는 더 빠른 주기로 제공되는 중간 릴리스를 사용할 수 있습니다.
 
-:::single-choice{#choose-ubuntu-lts}
-더 오래 유지되는 예측 가능한 기반이 필요한 시스템에 가장 적합한 우분투 릴리스 유형은 무엇인가요?
+:::single-choice{#choose-ubuntu-lts} 더 오래 유지되는 예측 가능한 기반이 필요한 시스템에 가장 적합한 우분투 릴리스 유형은 무엇인가요?
 
 ::option[중간 릴리스]{#interim-release explanation="중간 릴리스는 더 자주 나와 최신 기능을 빨리 제공하지만 지원 기간이 짧아 요구와 맞지 않습니다."}
 ::option[LTS 릴리스]{#lts-release .correct explanation="LTS 릴리스는 더 긴 지원을 위해 마련되며 안정적인 기반을 우선하는 시스템에서 흔히 선택합니다."}
@@ -64,8 +61,7 @@ meta_keywords: "우분투 리눅스, 우분투 배포판, 우분투란, 우분�
 
 패키지 관리는 성숙한 데비안 도구와 널리 문서화된 거대한 소프트웨어 환경을 결합했기 때문에 우분투의 실질적인 강점 중 하나입니다.
 
-:::single-choice{#identify-ubuntu-package-tool}
-우분투에서 소프트웨어 설치에 사용하는 패키지 관리 도구는 무엇인가요?
+:::single-choice{#identify-ubuntu-package-tool} 우분투에서 소프트웨어 설치에 사용하는 패키지 관리 도구는 무엇인가요?
 
 ::option[`.deb`]{#deb-format explanation="`.deb`는 데비안 기반 시스템의 패키지 형식이며 명령줄 패키지 관리 도구가 아닙니다."}
 ::option[`LTS`]{#lts-label explanation="LTS는 장기 지원 릴리스를 나타내며 소프트웨어 패키지를 설치하거나 관리하지 않습니다."}

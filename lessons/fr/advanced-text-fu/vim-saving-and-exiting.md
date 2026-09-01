@@ -24,8 +24,7 @@ Une écriture peut échouer si le tampon n'a pas de nom, si le répertoire n'est
 
 `:w copy.txt` écrit le tampon actuel vers un autre chemin tout en conservant son nom existant. Utilisez `:saveas copy.txt` si le tampon doit adopter le nouveau chemin.
 
-:::single-choice{#vim-save-without-quit}
-Quelle commande Vim écrit le tampon actuel dans son fichier associé sans quitter ?
+:::single-choice{#vim-save-without-quit} Quelle commande Vim écrit le tampon actuel dans son fichier associé sans quitter ?
 
 ::option[`:q`]{#vim-save-q explanation="`:q` demande la fermeture et n'écrit pas un tampon modifié."}
 ::option[`:w`]{#vim-save-w .correct explanation="La commande `:write` enregistre le tampon actuel et laisse la fenêtre d'édition ouverte."}
@@ -42,8 +41,7 @@ Utilisez `:q` pour fermer la fenêtre actuelle lorsqu'aucune modification non en
 
 Si le tampon actuel est modifié et que ses changements seraient perdus, Vim refuse normalement et affiche un avertissement. Cette protection vous laisse la possibilité d'écrire ou de reconsidérer l'opération.
 
-:::single-choice{#vim-quit-clean-buffer}
-Quelle commande ferme la fenêtre Vim actuelle lorsqu'aucune modification non enregistrée ne risque d'être perdue ?
+:::single-choice{#vim-quit-clean-buffer} Quelle commande ferme la fenêtre Vim actuelle lorsqu'aucune modification non enregistrée ne risque d'être perdue ?
 
 ::option[`:w`]{#vim-quit-w explanation="Cette commande écrit le tampon, mais laisse la fenêtre actuelle ouverte."}
 ::option[`:q`]{#vim-quit-q .correct explanation="La commande de fermeture ordinaire ferme la fenêtre lorsque les protections de Vim concernant les tampons modifiés l'autorisent."}
@@ -60,8 +58,7 @@ N'utilisez `:q!` que si vous souhaitez réellement fermer la fenêtre actuelle e
 
 Le point d'exclamation ignore l'avertissement relatif aux modifications non enregistrées. Celles-ci ne sont pas écrites ; vérifiez donc qu'elles sont bien jetables avant d'appuyer sur Entrée.
 
-:::single-choice{#vim-quit-discard-changes}
-Le tampon actuel contient des changements que vous ne souhaitez volontairement pas enregistrer. Quelle commande ferme la fenêtre en les abandonnant ?
+:::single-choice{#vim-quit-discard-changes} Le tampon actuel contient des changements que vous ne souhaitez volontairement pas enregistrer. Quelle commande ferme la fenêtre en les abandonnant ?
 
 ::option[`:q`]{#vim-discard-plain-q explanation="`:q` seul refuse normalement de fermer si l'opération ferait perdre les modifications du tampon."}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq` écrit les changements avant de quitter, soit l'inverse de leur abandon."}
@@ -78,8 +75,7 @@ Utilisez `:wq` lorsque le tampon doit être écrit, puis la fenêtre actuelle fe
 
 Si l'écriture échoue, Vim ne termine pas la fermeture demandée. Corrigez l'erreur au lieu de supposer que les données ont atteint le disque.
 
-:::single-choice{#vim-write-and-quit}
-Quelle commande écrit le tampon actuel, puis ferme la fenêtre si l'écriture réussit ?
+:::single-choice{#vim-write-and-quit} Quelle commande écrit le tampon actuel, puis ferme la fenêtre si l'écriture réussit ?
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="Cette commande combine l'écriture et la fermeture ; cette dernière dépend de la réussite de l'écriture."}
 ::option[`:q!`]{#vim-save-force-quit explanation="Cette commande quitte en abandonnant les changements au lieu de les écrire."}
@@ -100,8 +96,7 @@ ZZ
 
 Ce comportement diffère légèrement de `:wq`, qui demande une écriture même si le tampon n'a pas changé. `ZQ` en majuscules est la commande du mode Normal qui quitte sans écrire, comme `:q!`.
 
-:::single-choice{#vim-write-if-modified-quit}
-Quelle commande du mode Normal n'écrit que si le tampon est modifié, puis quitte ?
+:::single-choice{#vim-write-if-modified-quit} Quelle commande du mode Normal n'écrit que si le tampon est modifié, puis quitte ?
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="`ZZ` en majuscules produit le comportement « écrire si modifié, puis quitter » de `:x`."}
 ::option[`zz`]{#vim-center-screen explanation="`zz` en minuscules recentre la ligne actuelle dans la fenêtre ; cette commande n'enregistre pas et ne quitte pas."}

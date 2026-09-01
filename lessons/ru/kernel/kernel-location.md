@@ -23,8 +23,7 @@ meta_keywords: "расположение ядра linux, где находитс
 
 Имена различаются. Файл с `initrd` в современном дистрибутиве часто содержит архив initramfs. Название `vmlinuz` не раскрывает точное внутреннее сжатие или платформенный загрузочный формат; изучайте его средствами дистрибутива.
 
-:::single-choice{#kernel-location-vmlinuz}
-Что обычно содержит версионный файл `vmlinuz-*`?
+:::single-choice{#kernel-location-vmlinuz} Что обычно содержит версионный файл `vmlinuz-*`?
 
 ::option[Загружаемый образ ядра Linux.]{#kernel-location-kernel-image .correct explanation="Загрузчик или прошивка загружает этот специфичный архитектуре артефакт ядра."}
 ::option[Все загружаемые модули каждого установленного ядра.]{#kernel-location-all-modules explanation="Модули хранятся отдельно в дереве конкретного release."}
@@ -37,8 +36,7 @@ Initramfs должен содержать ранние модули и инст�
 
 `config-*` помогает понять, какие возможности встроены, модульны или отсутствуют. `System.map-*` помогает символизации и отладке, но на применение влияют рандомизация адресов, отдельная отладочная информация и инструменты дистрибутива. Это вспомогательные артефакты, а не альтернативные ядра.
 
-:::single-choice{#kernel-location-initramfs-match}
-Почему initramfs связан с конкретным release ядра и конфигурацией системы?
+:::single-choice{#kernel-location-initramfs-match} Почему initramfs связан с конкретным release ядра и конфигурацией системы?
 
 ::option[Он хранит постоянное содержимое каждой смонтированной файловой системы.]{#kernel-location-all-filesystems explanation="Initramfs — небольшая ранняя среда загрузки, а не полная резервная копия."}
 ::option[Он назначает новые UID пользователям при каждой загрузке.]{#kernel-location-user-ids explanation="Управление идентичностью учётных записей не является его обычной ролью."}
@@ -55,8 +53,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 В объединённой компоновке путь может разрешаться в `/usr/lib/modules/KERNEL_RELEASE`. Каждому установленному ядру нужны совместимое дерево модулей и индексы зависимостей. `modprobe` использует метаданные конкретного release, а не ищет произвольные `.ko` по всему диску.
 
-:::single-choice{#kernel-location-module-tree}
-Какой каталог традиционно содержит модули работающего release ядра?
+:::single-choice{#kernel-location-module-tree} Какой каталог традиционно содержит модули работающего release ядра?
 
 ::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="Домашние каталоги пользователей не являются стандартным системным деревом модулей."}
 ::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="Компонент release разделяет ABI модулей и зависимости каждого установленного ядра."}
@@ -69,8 +66,7 @@ Unified Kernel Image, или UKI, — единый подписанный исп
 
 Поэтому внешне пустая традиционная `/boot` не доказывает отсутствие установленного ядра. Используйте `findmnt`, базу пакетов, инструменты boot manager и конфигурацию загрузчика, чтобы сопоставить активные артефакты.
 
-:::single-choice{#kernel-location-uki}
-Что может объединять Unified Kernel Image?
+:::single-choice{#kernel-location-uki} Что может объединять Unified Kernel Image?
 
 ::option[Все домашние каталоги пользователей в заголовке GPT.]{#kernel-location-uki-homes explanation="UKI — загрузочный executable, а не контейнер пользовательских данных или таблица разделов."}
 ::option[Каждый установленный пакет в одном сценарии оболочки.]{#kernel-location-uki-packages explanation="Он упаковывает загрузочные компоненты, а не весь репозиторий ОС."}

@@ -22,8 +22,7 @@ $ head events.log
 
 O arquivo não é modificado. Se tiver menos de 10 linhas, todas as linhas disponíveis serão mostradas.
 
-:::single-choice{#head-default-lines}
-O que `head events.log` mostra por padrão?
+:::single-choice{#head-default-lines} O que `head events.log` mostra por padrão?
 
 ::option[As 10 últimas linhas, ou todas as linhas se o arquivo for menor.]{#head-last-ten explanation="Exibir o final da entrada é a função de `tail`. `head` seleciona a partir do início."}
 ::option[As 10 primeiras linhas, ou todas as linhas se o arquivo for menor.]{#head-first-ten .correct explanation="Sem uma opção de quantidade, `head` seleciona até as dez primeiras linhas da entrada."}
@@ -40,8 +39,7 @@ $ head -n 15 events.log
 
 O GNU `head` também aceita a forma compacta `-15`, mas `-n 15` deixa mais claro o significado da opção.
 
-:::single-choice{#head-five-lines}
-Qual comando exibe as cinco primeiras linhas de `report.txt`?
+:::single-choice{#head-five-lines} Qual comando exibe as cinco primeiras linhas de `report.txt`?
 
 ::option[`head -c 5 report.txt`]{#head-five-bytes explanation="A opção `-c` conta bytes, não linhas; portanto, ela pode parar no meio da primeira linha."}
 ::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="A opção `-n` seleciona uma quantidade de linhas, e `5` solicita as cinco primeiras."}
@@ -58,8 +56,7 @@ $ head -c 20 archive.bin
 
 Esse comando mostra os 20 primeiros bytes. A saída pode terminar no meio de uma linha de texto ou, em um texto multibyte, no meio de um caractere codificado. Use o modo de linhas para visualizações comuns de texto.
 
-:::single-choice{#head-first-bytes}
-Qual comando grava os 100 primeiros bytes de `payload.bin` em stdout?
+:::single-choice{#head-first-bytes} Qual comando grava os 100 primeiros bytes de `payload.bin` em stdout?
 
 ::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="A opção `-c` seleciona uma quantidade de bytes; portanto, são solicitados os primeiros 100 bytes disponíveis."}
 ::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="A opção `-n` conta linhas, não bytes. Ela pode produzir muito mais ou muito menos que 100 bytes."}
@@ -87,16 +84,14 @@ $ head -n 2 january.txt february.txt
 
 Use `-q` para suprimir esses cabeçalhos ou `-v` para mostrar um cabeçalho até mesmo para um único arquivo.
 
-:::single-choice{#head-pipeline-preview}
-Em `generate-report | head -n 5`, o que `head` lê?
+:::single-choice{#head-pipeline-preview} Em `generate-report | head -n 5`, o que `head` lê?
 
 ::option[Stdout de `generate-report` por meio de stdin.]{#head-pipe-input .correct explanation="O pipe conecta stdout do produtor a stdin de `head`, da qual são selecionadas as cinco primeiras linhas."}
 ::option[Os cinco primeiros nomes de arquivos do diretório atual.]{#head-directory-names explanation="Nenhum comando de listagem de diretório está envolvido. `head` recebe um fluxo pelo pipeline."}
 ::option[Cinco bytes de um arquivo chamado `generate-report`.]{#head-producer-file explanation="O lado esquerdo é executado como comando, e `-n` conta linhas, não bytes."}
 :::
 
-:::single-choice{#head-suppress-filename-headers}
-Qual opção suprime os cabeçalhos com nomes de arquivos quando `head` lê vários arquivos?
+:::single-choice{#head-suppress-filename-headers} Qual opção suprime os cabeçalhos com nomes de arquivos quando `head` lê vários arquivos?
 
 ::option[`-v`]{#head-verbose explanation="A opção `-v` solicita cabeçalhos mesmo quando há apenas um arquivo, o oposto da supressão."}
 ::option[`-c`]{#head-byte-option explanation="A opção `-c` altera a unidade de seleção para bytes. Ela não controla os cabeçalhos com nomes."}

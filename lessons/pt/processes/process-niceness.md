@@ -22,8 +22,7 @@ O intervalo convencional de nice vai de `-20` a `19`:
 
 Niceness não reserva uma porcentagem da CPU nem garante a execução imediata. Seu efeito é mais visível quando tarefas executáveis comparáveis disputam tempo de CPU. Políticas de tempo real, cgroups, afinidade de CPU, esperas por E/S e outros controles podem predominar no comportamento observado.
 
-:::single-choice{#process-niceness-lower-value}
-Sob a mesma política comum de escalonamento, qual valor nice oferece maior peso relativo da CPU?
+:::single-choice{#process-niceness-lower-value} Sob a mesma política comum de escalonamento, qual valor nice oferece maior peso relativo da CPU?
 
 ::option[`10`]{#process-niceness-value-ten explanation="Um valor positivo é mais gentil e normalmente possui menos peso que zero ou um valor negativo."}
 ::option[`19`]{#process-niceness-value-nineteen explanation="Esse é o extremo mais gentil do intervalo convencional e possui um peso relativamente baixo."}
@@ -40,8 +39,7 @@ $ ps -o pid,ni,pri,stat,cmd -p 3245
 
 `NI` é o valor nice visível ao usuário. Uma coluna `PRI` ou semelhante pode representar uma prioridade derivada do escalonador, e sua escala varia conforme a ferramenta e a classe de escalonamento; portanto, não presuma que as duas colunas sejam intercambiáveis.
 
-:::single-choice{#process-niceness-top-column}
-Qual coluna de `top` normalmente exibe o valor nice?
+:::single-choice{#process-niceness-top-column} Qual coluna de `top` normalmente exibe o valor nice?
 
 ::option[`PID`]{#process-niceness-column-pid explanation="`PID` identifica um processo, não mostra seu ajuste de escalonamento."}
 ::option[`TTY`]{#process-niceness-column-tty explanation="`TTY` identifica a associação com um terminal de controle."}
@@ -58,8 +56,7 @@ $ nice -n 5 long-computation
 
 O ajuste solicitado e a sintaxe aceita podem ser verificados no manual local. Um usuário sem privilégios normalmente pode tornar um comando mais gentil aumentando seu valor. Atribuir um valor nice menor e, portanto, um peso de escalonamento mais favorável exige privilégios adequados ou limites de recursos configurados.
 
-:::single-choice{#process-niceness-nice-command}
-O que `nice -n 5 long-computation` faz?
+:::single-choice{#process-niceness-nice-command} O que `nice -n 5 long-computation` faz?
 
 ::option[Inicia o comando com o valor nice 5, se permitido.]{#process-niceness-start-five .correct explanation="`nice` inicia um novo comando usando o ajuste de escalonamento solicitado."}
 ::option[Altera o PID 5 para o menor valor nice possível.]{#process-niceness-pid-five explanation="O operando após `-n` é um valor nice, não um PID de destino."}
@@ -76,8 +73,7 @@ $ renice -n 10 -p 3245
 
 Esse comando solicita o valor nice `10` para o PID `3245`. Verifique primeiro o destino, pois os PIDs podem ser reutilizados, e então confirme o valor resultante. As permissões dependem da propriedade, dos privilégios, dos limites de recursos e da política do sistema. Aumentar o valor nice normalmente é permitido para um processo que você possui; desfazer essa alteração pode não ser permitido sem privilégios.
 
-:::single-choice{#process-niceness-renice-purpose}
-Qual ferramenta altera o valor nice de um processo existente?
+:::single-choice{#process-niceness-renice-purpose} Qual ferramenta altera o valor nice de um processo existente?
 
 ::option[`nice`]{#process-niceness-tool-nice explanation="`nice` inicia principalmente um novo comando com um valor ajustado."}
 ::option[`kill`]{#process-niceness-tool-kill explanation="`kill` envia sinais e não é o editor comum de niceness."}

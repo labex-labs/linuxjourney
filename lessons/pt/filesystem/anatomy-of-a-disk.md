@@ -20,8 +20,7 @@ Uma tabela de partições registra posições iniciais, comprimentos, identifica
 
 Em layouts comuns, os limites das partições não devem se sobrepor. O espaço fora de todas as entradas é considerado não alocado pela tabela de partições, embora ainda possa conter assinaturas ou dados antigos. Alterar uma tabela não move automaticamente o conteúdo dos sistemas de arquivos para corresponder aos novos limites.
 
-:::single-choice{#anatomy-disk-partition-table-role}
-O que informa ao sistema operacional onde as partições do disco começam e terminam?
+:::single-choice{#anatomy-disk-partition-table-role} O que informa ao sistema operacional onde as partições do disco começam e terminam?
 
 ::option[O diretório de trabalho atual do shell.]{#anatomy-disk-shell-directory explanation="Um caminho do shell não tem função nos limites das partições em disco."}
 ::option[A tabela de partições do disco.]{#anatomy-disk-table-boundaries .correct explanation="As entradas das partições descrevem regiões que o kernel pode expor como dispositivos de bloco filhos."}
@@ -34,8 +33,7 @@ O esquema legado DOS/MBR armazena sua tabela principal no primeiro setor lógico
 
 Com endereços de setores de 32 bits e setores lógicos de 512 bytes, o MBR alcança um limite frequentemente citado de cerca de 2 TiB. O endereçamento exato depende do tamanho do setor e do suporte das ferramentas. O MBR também não possui as cópias redundantes do cabeçalho e da tabela nem os GUIDs por partição do GPT.
 
-:::single-choice{#anatomy-disk-mbr-more-than-four}
-Qual estrutura do MBR permite mais de quatro partições utilizáveis?
+:::single-choice{#anatomy-disk-mbr-more-than-four} Qual estrutura do MBR permite mais de quatro partições utilizáveis?
 
 ::option[Uma partição de journal contendo mais entradas principais.]{#anatomy-disk-mbr-journal explanation="O journaling do sistema de arquivos não tem relação com as quatro entradas da tabela MBR."}
 ::option[Uma partição estendida contendo partições lógicas.]{#anatomy-disk-mbr-extended .correct explanation="Uma entrada principal pode definir um contêiner estendido, dentro do qual as partições lógicas são encadeadas."}
@@ -50,8 +48,7 @@ Cada entrada GPT inclui um GUID de tipo de partição e um GUID exclusivo da par
 
 O GPT normalmente é usado em discos de boot UEFI, mas o particionamento e o modo de inicialização do firmware são conceitos distintos. Um sistema UEFI também precisa dos arquivos de boot apropriados e de uma EFI System Partition; somente o GPT não torna um disco inicializável.
 
-:::single-choice{#anatomy-disk-gpt-identifiers}
-Quais identificadores uma entrada de partição GPT inclui?
+:::single-choice{#anatomy-disk-gpt-identifiers} Quais identificadores uma entrada de partição GPT inclui?
 
 ::option[Um GUID de tipo e um GUID exclusivo da partição.]{#anatomy-disk-gpt-guids .correct explanation="O tipo descreve o uso pretendido, enquanto o GUID exclusivo identifica aquela entrada específica de partição."}
 ::option[Somente um tipo universal compartilhado por todas as partições GPT.]{#anatomy-disk-gpt-one-type explanation="O GPT define muitos GUIDs de tipo para diferentes finalidades de partições."}
@@ -64,8 +61,7 @@ Após o particionamento, uma ferramenta de criação de sistemas de arquivos gra
 
 Por exemplo, os sistemas de arquivos ext usam inodes e grupos de blocos, enquanto outros sistemas organizam metadados por diferentes árvores ou estruturas de alocação. Não aplique um diagrama simplificado de “bloco de boot, um superbloco, tabela de inodes e blocos de dados” a todos os sistemas de arquivos.
 
-:::single-choice{#anatomy-disk-filesystem-layer}
-Criar uma partição cria automaticamente um sistema de arquivos dentro dela?
+:::single-choice{#anatomy-disk-filesystem-layer} Criar uma partição cria automaticamente um sistema de arquivos dentro dela?
 
 ::option[Não; formatá-la ou atribuir-lhe outro uso explícito é uma etapa separada.]{#anatomy-disk-partition-not-filesystem .correct explanation="A tabela de partições apenas define uma região de blocos; seu conteúdo permanece independente."}
 ::option[Sim; toda partição é formatada automaticamente como ext4.]{#anatomy-disk-auto-ext4 explanation="As ferramentas de particionamento não criam universalmente um sistema de arquivos ext4."}
@@ -85,8 +81,7 @@ $ sudo parted --list
 
 Os nomes dos dispositivos podem mudar, e assinaturas antigas podem confundir a detecção. Confirme modelo, número de série, tamanho, transporte, links persistentes, montagens ativas, swap, RAID, LVM, criptografia e backups antes de abrir qualquer ferramenta de particionamento no modo de escrita.
 
-:::single-choice{#anatomy-disk-lsblk-fields}
-Qual campo de `lsblk` diferencia o conteúdo detectado de um sistema de arquivos do esquema da tabela de partições?
+:::single-choice{#anatomy-disk-lsblk-fields} Qual campo de `lsblk` diferencia o conteúdo detectado de um sistema de arquivos do esquema da tabela de partições?
 
 ::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` informa um sistema de arquivos detectado ou outra assinatura de conteúdo reconhecida, enquanto `PTTYPE` informa o esquema da tabela."}
 ::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` identifica a entrada de dispositivo de bloco do kernel e não indica especificamente o formato do conteúdo."}

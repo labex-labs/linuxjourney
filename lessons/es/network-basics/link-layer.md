@@ -16,8 +16,7 @@ La capa de enlace transporta paquetes de la capa de red a través de un medio lo
 
 Una trama Ethernet contiene direcciones MAC de destino y origen, un campo EtherType o de longitud, una carga útil y un tráiler con una secuencia de comprobación de trama. La transmisión física también utiliza un preámbulo y un delimitador de inicio. La secuencia de comprobación detecta daños en el enlace; no repara una trama dañada ni la protege criptográficamente.
 
-:::single-choice{#link-layer-fcs-purpose}
-¿Para qué se utiliza la secuencia de comprobación de una trama Ethernet?
+:::single-choice{#link-layer-fcs-purpose} ¿Para qué se utiliza la secuencia de comprobación de una trama Ethernet?
 
 ::option[Para detectar daños en la trama dentro del enlace.]{#link-layer-detect-corruption .correct explanation="Un receptor puede descartar una trama que no supere la comprobación de integridad."}
 ::option[Para cifrar la carga útil en todos los saltos enrutados.]{#link-layer-fcs-encryption explanation="FCS es un código de detección de errores, no cifrado ni autenticación."}
@@ -28,8 +27,7 @@ Una trama Ethernet contiene direcciones MAC de destino y origen, un campo EtherT
 
 Un conmutador Ethernet aprende qué direcciones MAC de origen aparecen en sus puertos y reenvía las tramas unicast conocidas hacia el puerto del destino aprendido. El tráfico broadcast y parte del tráfico de destino desconocido se inunda dentro del dominio de difusión. Las VLAN pueden dividir un mismo sistema de conmutación en dominios lógicos de enlace independientes.
 
-:::single-choice{#link-layer-switch-learning}
-¿Qué información aprende normalmente un conmutador Ethernet de las tramas?
+:::single-choice{#link-layer-switch-learning} ¿Qué información aprende normalmente un conmutador Ethernet de las tramas?
 
 ::option[Las contraseñas de las aplicaciones y las cookies HTTP.]{#link-layer-switch-passwords explanation="Una tabla básica de reenvío utiliza direcciones de enlace, no credenciales de aplicaciones."}
 ::option[La tabla completa de enrutamiento de Internet de todos los routers.]{#link-layer-switch-routing-table explanation="La conmutación de capa 2 y el intercambio global de rutas son funciones distintas."}
@@ -42,8 +40,7 @@ Para IPv4 sobre Ethernet, el Protocolo de resolución de direcciones relaciona u
 
 Para un destino IP fuera del enlace, el host resuelve la dirección MAC de la puerta de enlace predeterminada o seleccionada, no la dirección MAC del destino remoto. IPv6 utiliza el descubrimiento de vecinos sobre ICMPv6 en lugar de ARP.
 
-:::single-choice{#link-layer-remote-destination-mac}
-¿Qué dirección MAC utiliza un host para un destino IPv4 situado fuera del enlace?
+:::single-choice{#link-layer-remote-destination-mac} ¿Qué dirección MAC utiliza un host para un destino IPv4 situado fuera del enlace?
 
 ::option[La dirección MAC del router seleccionado como siguiente salto.]{#link-layer-gateway-mac .correct explanation="El paquete IP sigue dirigido al host remoto, mientras que la trama local se dirige al router."}
 ::option[La dirección MAC del servidor remoto a través de todos los routers.]{#link-layer-remote-mac explanation="Las direcciones MAC son identificadores del enlace local y no se transportan de extremo a extremo."}
@@ -60,8 +57,7 @@ $ ip neighbor show
 
 Estados como `REACHABLE`, `STALE`, `DELAY`, `PROBE` y `FAILED` describen el proceso de detección de inaccesibilidad de vecinos. `STALE` no significa averiado; indica que la confirmación de accesibilidad en caché ya no es reciente y puede comprobarse al utilizarla.
 
-:::single-choice{#link-layer-stale-neighbor}
-¿Qué indica una entrada de vecino con estado `STALE`?
+:::single-choice{#link-layer-stale-neighbor} ¿Qué indica una entrada de vecino con estado `STALE`?
 
 ::option[El cortafuegos bloquea permanentemente al vecino.]{#link-layer-stale-blocked explanation="El estado no describe la política del cortafuegos."}
 ::option[La dirección MAC se ha escrito en el disco como copia de seguridad.]{#link-layer-stale-backup explanation="El estado de los vecinos es información operativa en caché."}
@@ -72,8 +68,7 @@ Estados como `REACHABLE`, `STALE`, `DELAY`, `PROBE` y `FAILED` describen el proc
 
 El emisor coloca un paquete IP dentro de una trama dirigida al siguiente salto. El router valida y retira la trama entrante, procesa la cabecera IP, selecciona una ruta de salida y construye una trama nueva para ese enlace. El receptor deshace el encapsulado y entrega la carga útil de transporte al socket correspondiente.
 
-:::single-choice{#link-layer-router-reframing}
-¿Qué permanece igual durante el reenvío ordinario mientras cambia el encapsulado Ethernet en un router?
+:::single-choice{#link-layer-router-reframing} ¿Qué permanece igual durante el reenvío ordinario mientras cambia el encapsulado Ethernet en un router?
 
 ::option[El destino IP, salvo que lo cambie un dispositivo intermedio como NAT.]{#link-layer-ip-destination .correct explanation="Los routers ordinarios reenvían hacia el destino IP final mientras sustituyen las tramas locales de cada salto."}
 ::option[La secuencia de comprobación de la trama entrante.]{#link-layer-same-fcs explanation="Una trama de salida nueva recibe su propio valor de integridad del enlace."}

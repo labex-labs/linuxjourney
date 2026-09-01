@@ -18,8 +18,7 @@ Un mensaje syslog contiene una instalación que describe la categoría general d
 
 Las gravedades están ordenadas. En la sintaxis clásica de selectores, `daemon.warning` suele coincidir con los mensajes de demonios de gravedad warning y con todos los niveles más graves, no solo con warning. En las implementaciones compatibles con la sintaxis clásica, la coincidencia exacta utiliza un modificador de igualdad, como `daemon.=warning`.
 
-:::single-choice{#syslog-warning-selector}
-¿Con qué suele coincidir un selector clásico como `daemon.warning`?
+:::single-choice{#syslog-warning-selector} ¿Con qué suele coincidir un selector clásico como `daemon.warning`?
 
 ::option[Únicamente con mensajes cuyo texto contenga la palabra daemon.]{#syslog-text-daemon explanation="Este selector utiliza los metadatos de la instalación, no una búsqueda en el texto del mensaje."}
 ::option[Con todos los mensajes de depuración de todas las instalaciones.]{#syslog-all-debug explanation="El selector se limita a la instalación daemon y a un umbral de gravedad."}
@@ -40,8 +39,7 @@ La primera línea dirige todas las prioridades de dos instalaciones de autentica
 
 Inspecciona todos los archivos incluidos y valida la sintaxis exacta que utilice la versión instalada antes de cambiar el enrutamiento de producción.
 
-:::single-choice{#syslog-selector-action}
-En una regla tradicional de rsyslog, ¿qué es la acción?
+:::single-choice{#syslog-selector-action} En una regla tradicional de rsyslog, ¿qué es la acción?
 
 ::option[La expresión de instalación y gravedad de la izquierda.]{#syslog-left-selector explanation="Esa parte selecciona los mensajes."}
 ::option[El destino o la operación de la derecha.]{#syslog-right-action .correct explanation="La acción determina si los registros seleccionados van a un archivo, un destino remoto u otra salida."}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 El mismo evento puede aparecer en el diario y en un archivo de texto según el reenvío y el enrutamiento. `logger -s` también copia el mensaje al error estándar; no demuestra que se haya almacenado de forma persistente.
 
-:::single-choice{#syslog-logger-tag}
-¿Qué añade `logger -t lesson-test` al mensaje enviado?
+:::single-choice{#syslog-logger-tag} ¿Qué añade `logger -t lesson-test` al mensaje enviado?
 
 ::option[Una solicitud para borrar los registros de pruebas anteriores.]{#syslog-tag-delete explanation="La opción establece una etiqueta identificativa y no gestiona la conservación."}
 ::option[El identificador `lesson-test` como etiqueta del mensaje.]{#syslog-tag-identifier .correct explanation="Una etiqueta única permite localizar el evento controlado con más facilidad en los destinos configurados."}
@@ -84,8 +81,7 @@ Solo después de validarla debes recargar el servicio mediante su gestor. Envía
 
 El reenvío remoto debe utilizar un transporte autenticado y cifrado cuando los registros atraviesen redes que no sean de confianza. La entrega mediante UDP no tiene confirmación de extremo a extremo; los requisitos de auditoría esenciales necesitan un diseño que tenga en cuenta las colas, las pérdidas, la integridad, el control de acceso y las interrupciones del receptor.
 
-:::single-choice{#syslog-change-verification}
-¿Qué constituye una prueba suficiente de que una regla nueva de enrutamiento funciona?
+:::single-choice{#syslog-change-verification} ¿Qué constituye una prueba suficiente de que una regla nueva de enrutamiento funciona?
 
 ::option[El archivo de configuración tiene una fecha de modificación reciente.]{#syslog-mtime explanation="Una marca de tiempo no demuestra que la sintaxis sea válida ni que se produzca la entrega."}
 ::option[El emisor puede hacer ping al receptor.]{#syslog-ping explanation="La conectividad de red por sí sola no comprueba el protocolo de registro ni la ruta de almacenamiento."}

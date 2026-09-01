@@ -22,8 +22,7 @@ $ dmesg --human
 
 该缓冲区容量有限，因此新消息可能覆盖旧消息。访问也可能仅限特权用户。支持 `dmesg --follow` 的实现可以用它跟踪新内核消息；完成有限时间的重现后应停止跟踪。
 
-:::single-choice{#kernel-log-ring-buffer-limit}
-为什么较早的内核事件可能没有出现在当前 `dmesg` 输出中？
+:::single-choice{#kernel-log-ring-buffer-limit} 为什么较早的内核事件可能没有出现在当前 `dmesg` 输出中？
 
 ::option[内核事件只能包含一个字符。]{#kernel-log-one-character explanation="内核消息可以包含普通诊断文本和元数据。"}
 ::option[`dmesg` 显示每一行后都会永久删除它。]{#kernel-log-display-deletes explanation="正常读取不会消耗所有已显示的内核消息。"}
@@ -34,8 +33,7 @@ $ dmesg --human
 
 原始内核时间戳通常以启动时间为基准。`dmesg --ctime` 或 `--human` 可以渲染墙上时钟时间，但转换值取决于时钟历史；如果启动后时钟发生变化，结果可能不准确。在精确事件排序很重要时，应保留相对于启动的时间。
 
-:::single-choice{#kernel-log-timestamp-caution}
-为什么应谨慎看待转换后的 `dmesg` 墙上时钟时间戳？
+:::single-choice{#kernel-log-timestamp-caution} 为什么应谨慎看待转换后的 `dmesg` 墙上时钟时间戳？
 
 ::option[它们始终指向另一台计算机。]{#kernel-log-other-machine explanation="它们在本地派生，但时钟变化会影响转换。"}
 ::option[它们依赖于将启动相对时间映射到可能发生变化的时钟。]{#kernel-log-clock-change .correct explanation="时间同步或手动更改时钟可能使渲染的墙上时间产生误导。"}
@@ -59,8 +57,7 @@ $ journalctl -k -b -1
 
 传统 syslog 路由可能创建 `/var/log/kern.log` 或其他文件，但这取决于配置。保存的 `/var/log/dmesg` 文件也并非普遍存在，而且可能只代表启动时的快照。
 
-:::single-choice{#kernel-log-previous-boot}
-哪个命令请求查看上一次已保留启动的内核消息？
+:::single-choice{#kernel-log-previous-boot} 哪个命令请求查看上一次已保留启动的内核消息？
 
 ::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="内核消息使用 -k 选择，而跟踪操作不会选择上一次启动。"}
 ::option[`dmesg --clear`]{#kernel-log-clear explanation="清除会改变缓冲区状态，而不会取回早先启动记录。"}
@@ -79,8 +76,7 @@ $ lsblk
 
 只使用与相关子系统有关的工具。重新加载驱动程序、解除设备绑定或重启前，应评估对存储、网络、控制台和服务的影响，并保留恢复通道。
 
-:::single-choice{#kernel-log-warning-response}
-面对一条内核警告，最佳响应是什么？
+:::single-choice{#kernel-log-warning-response} 面对一条内核警告，最佳响应是什么？
 
 ::option[立即卸载所有已加载的驱动程序。]{#kernel-log-unload-all explanation="这可能中断关键设备，也无法隔离警告原因。"}
 ::option[认定必须更换整台计算机。]{#kernel-log-replace-machine explanation="单条记录不足以支持这种结论。"}

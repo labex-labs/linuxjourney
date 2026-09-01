@@ -43,8 +43,7 @@ $ join people.txt surnames.txt
 
 The output contains the shared key once, then the remaining fields from the first and second files. `join` processes two files at a time; it does not accept three ordinary file operands as a three-way relational join.
 
-:::single-choice{#join-default-key}
-With no field options, which records does `join first.txt second.txt` combine?
+:::single-choice{#join-default-key} With no field options, which records does `join first.txt second.txt` combine?
 
 ::option[Lines whose first blank-separated fields are equal.]{#join-first-fields .correct explanation="Default `join` behavior compares field 1 from each of the two sorted inputs."}
 ::option[Lines that occupy the same physical line number.]{#join-line-numbers explanation="Matching is based on key-field values, not simply on record positions."}
@@ -63,8 +62,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 Using the same locale for sorting and joining keeps collation rules consistent. Do not redirect a sort back to its own input pathname, because the shell would truncate that file first.
 
-:::single-choice{#join-sort-requirement}
-What preparation does `join` normally require for reliable matching?
+:::single-choice{#join-sort-requirement} What preparation does `join` normally require for reliable matching?
 
 ::option[Both files must contain exactly the same number of physical lines.]{#join-equal-line-count explanation="Input lengths can differ. Key matches, not equal line counts, determine joined output."}
 ::option[Both files must use filenames that sort next to each other alphabetically.]{#join-filename-order explanation="The content keys need sorting; the lexical relationship between the two filenames is irrelevant."}
@@ -100,8 +98,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 Use `-t CHARACTER` when a single nonblank character, such as `:`, separates fields. Options such as `-a 1` or `-a 2` can include unpaired lines from one input; the default output contains matched keys only.
 
-:::single-choice{#join-different-fields}
-Which options join field 2 of the first file to field 1 of the second?
+:::single-choice{#join-different-fields} Which options join field 2 of the first file to field 1 of the second?
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="This selects field 1 from the first input and field 2 from the second, the reverse of the requested mapping."}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` chooses field 2 from file one, and `-2 1` chooses field 1 from file two."}
@@ -126,8 +123,7 @@ $ split -l 500 large.txt part-
 
 This produces `part-aa`, `part-ab`, and so on, with at most 500 lines in each piece.
 
-:::single-choice{#split-lines-with-prefix}
-Which command splits `large.txt` into pieces of at most 500 lines named with the prefix `part-`?
+:::single-choice{#split-lines-with-prefix} Which command splits `large.txt` into pieces of at most 500 lines named with the prefix `part-`?
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="The `-b` option selects bytes, so these pieces would be far smaller than 500 lines in ordinary text."}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` sets the maximum line count, and the final operand supplies the output filename prefix."}
@@ -144,8 +140,7 @@ $ split -b 10M archive.bin chunk-
 
 This requests pieces of 10 mebibytes except for a potentially smaller final piece. `split` does not create an archive manifest or reassembly metadata; preserve the ordering of suffixes and concatenate the pieces in order when reconstruction is appropriate.
 
-:::single-choice{#split-ten-mebibytes}
-Which command splits `archive.bin` into pieces of 10 MiB using the prefix `chunk-`?
+:::single-choice{#split-ten-mebibytes} Which command splits `archive.bin` into pieces of 10 MiB using the prefix `chunk-`?
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="The `-l` option expects a line count, not a byte-size suffix for binary chunks."}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` does not split binary input or accept this piece-size operation."}

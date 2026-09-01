@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 Solange `less` aktiv ist, steuern Tastendrücke den Pager, statt gewöhnliche Shell-Befehle zu starten. Erst nach dem Beenden des Pagers kehrst du zur Shell zurück.
 
-:::single-choice{#open-long-file}
-Welcher Befehl öffnet `/var/log/syslog` in einem interaktiven Pager?
+:::single-choice{#open-long-file} Welcher Befehl öffnet `/var/log/syslog` in einem interaktiven Pager?
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` öffnet die Datei in einem Pager, in dem du navigieren und suchen kannst, bevor du zur Shell zurückkehrst."}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat` sendet die gesamte Datei auf einmal an die Standardausgabe. Interaktive Navigation steht dabei nicht zur Verfügung."}
@@ -40,8 +39,7 @@ Verwende bei geöffnetem Pager diese Tasten:
 - Mit `u` gehst du einen halben Bildschirm nach oben, mit `d` einen halben Bildschirm nach unten.
 - Mit `h` öffnest du die integrierte Hilfe.
 
-:::single-choice{#jump-to-file-end}
-Welche Taste springt in `less` direkt ans Dateiende?
+:::single-choice{#jump-to-file-end} Welche Taste springt in `less` direkt ans Dateiende?
 
 ::option[`g`]{#lowercase-g explanation="Das kleine `g` springt an den Dateianfang. Die großgeschriebene Variante bewegt sich in die entgegengesetzte Richtung."}
 ::option[`G`]{#uppercase-g .correct explanation="Das große `G` springt ans Ende der Eingabe. Bei diesem Befehl wird zwischen Groß- und Kleinschreibung unterschieden."}
@@ -57,8 +55,7 @@ Gib `/` gefolgt von einem Muster ein und drücke Enter, um vorwärts zu suchen. 
 - `n`: Wiederholt die Suche in derselben Richtung.
 - `N`: Wiederholt die Suche in der entgegengesetzten Richtung.
 
-:::single-choice{#repeat-search-direction}
-Welche Taste wiederholt nach einer Vorwärtssuche nach `error` die Suche in derselben Richtung?
+:::single-choice{#repeat-search-direction} Welche Taste wiederholt nach einer Vorwärtssuche nach `error` die Suche in derselben Richtung?
 
 ::option[`n`]{#same-search .correct explanation="Das kleine `n` wiederholt die letzte Suche in ihrer ursprünglichen Richtung, hier also vorwärts."}
 ::option[`N`]{#opposite-search explanation="Das große `N` wiederholt die letzte Suche in der Gegenrichtung. Nach einer Vorwärtssuche bewegt es sich rückwärts durch die Treffer."}
@@ -69,8 +66,7 @@ Welche Taste wiederholt nach einer Vorwärtssuche nach `error` die Suche in ders
 
 Drücke `q`, um `less` zu beenden und zur Shell-Eingabeaufforderung zurückzukehren.
 
-:::single-choice{#quit-less}
-Welche Taste beendet `less` und kehrt zur Shell zurück?
+:::single-choice{#quit-less} Welche Taste beendet `less` und kehrt zur Shell zurück?
 
 ::option[`q`]{#less-quit .correct explanation="Der Befehl `q` beendet den Pager und stellt die Shell-Eingabeaufforderung wieder her."}
 ::option[`h`]{#less-help explanation="Die Taste `h` öffnet die Hilfe innerhalb von `less`. Sie führt nicht direkt zur Shell zurück."}
@@ -99,8 +95,7 @@ Auch Befehlsausgaben lassen sich über eine Pipe an `less` senden:
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-Welcher Befehl öffnet `/var/log/syslog` und verfolgt neue Inhalte, sobald sie eintreffen?
+:::single-choice{#follow-growing-log} Welcher Befehl öffnet `/var/log/syslog` und verfolgt neue Inhalte, sobald sie eintreffen?
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="Der anfängliche Befehl `+F` aktiviert den Folgemodus, sodass `less` neu angehängte Protokollinhalte anzeigt."}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="Der anfängliche Befehl `+G` öffnet die Datei am Ende, verfolgt später eintreffende Inhalte aber nicht fortlaufend."}

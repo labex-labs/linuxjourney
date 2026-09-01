@@ -18,8 +18,7 @@ Une adresse MAC Ethernet comporte 48 bits, généralement écrits sous la forme 
 
 Les adresses MAC ne sont pas garanties permanentes ni mondialement uniques. Un logiciel peut attribuer une adresse administrée localement, les interfaces virtuelles génèrent des adresses et les fonctions de confidentialité Wi-Fi peuvent les rendre aléatoires. Les routeurs remplacent normalement les trames Ethernet à chaque saut ; un serveur distant ne reçoit donc pas l'adresse source Ethernet locale d'origine.
 
-:::single-choice{#network-addressing-mac-scope}
-Quelle est la portée normale d'une adresse MAC Ethernet dans la livraison des paquets ?
+:::single-choice{#network-addressing-mac-scope} Quelle est la portée normale d'une adresse MAC Ethernet dans la livraison des paquets ?
 
 ::option[La liaison locale actuelle.]{#network-addressing-local-link .correct explanation="Les routeurs créent une nouvelle encapsulation de la couche liaison pour les sauts suivants."}
 ::option[Chaque saut routé jusqu'au serveur Internet final.]{#network-addressing-all-hops explanation="La trame d'origine ne traverse pas les routeurs sans changement."}
@@ -32,8 +31,7 @@ Une adresse IPv4 comporte 32 bits, soit quatre octets, tandis qu'une adresse IPv
 
 Une même interface peut posséder plusieurs adresses IP, et une adresse peut changer par DHCP, adressage de confidentialité, basculement ou administration. Les adresses IPv4 privées peuvent être réutilisées dans des réseaux distincts ; les règles de routage public et de NAT déterminent l'accessibilité externe.
 
-:::single-choice{#network-addressing-ipv4-size}
-Quelle est la taille d'une adresse IPv4 ?
+:::single-choice{#network-addressing-ipv4-size} Quelle est la taille d'une adresse IPv4 ?
 
 ::option[32 bits répartis en quatre octets.]{#network-addressing-thirty-two .correct explanation="Chaque composant décimal affiché représente huit bits."}
 ::option[4 bits dans un seul chiffre hexadécimal.]{#network-addressing-four-bits explanation="Quatre bits ne représentent qu'un seul chiffre hexadécimal."}
@@ -52,8 +50,7 @@ $ getent ahosts example.com
 
 Les réponses DNS peuvent changer ou être mises en cache, et une résolution réussie ne prouve pas que le service est accessible.
 
-:::single-choice{#network-addressing-getent-purpose}
-Pourquoi employer `getent ahosts` pendant un contrôle de résolution des noms ?
+:::single-choice{#network-addressing-getent-purpose} Pourquoi employer `getent ahosts` pendant un contrôle de résolution des noms ?
 
 ::option[La commande attribue définitivement l'adresse renvoyée à chaque interface.]{#network-addressing-getent-assign explanation="Elle interroge des bases de données et ne configure pas les interfaces."}
 ::option[Elle demande des adresses au chemin de services de noms configuré du système.]{#network-addressing-system-resolver .correct explanation="Celui-ci peut inclure les fichiers locaux et le DNS selon les règles de l'hôte."}
@@ -71,8 +68,7 @@ $ ip -brief address
 
 Examinez ensuite les routes et l'état des voisins lors d'un diagnostic d'accessibilité. Ne déduisez jamais l'interface ou l'adresse source correcte de son seul nom ; le choix des routes, les règles de politique, espaces de noms et tunnels peuvent modifier le trajet.
 
-:::single-choice{#network-addressing-ip-link-versus-address}
-Quelle vue de commande se concentre sur les adresses IP attribuées ?
+:::single-choice{#network-addressing-ip-link-versus-address} Quelle vue de commande se concentre sur les adresses IP attribuées ?
 
 ::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="L'objet address affiche les adresses IPv4 et IPv6 attribuées aux interfaces."}
 ::option[Uniquement `ip -brief link`.]{#network-addressing-link-only explanation="La vue link se concentre sur l'interface et son état à la couche liaison."}

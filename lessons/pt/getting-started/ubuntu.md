@@ -16,8 +16,7 @@ O Ubuntu é uma das distribuições Linux mais utilizadas. Desenvolvido pela Can
 
 O Ubuntu tornou-se um ponto de partida comum para pessoas que desejam aprender Linux sem começar por uma configuração mais manual ou avançada. É utilizado em computadores pessoais, sistemas de desenvolvimento, plataformas em nuvem e servidores, o que lhe confere um alcance que poucas outras distribuições conseguem igualar.
 
-:::single-choice{#identify-ubuntu-base}
-Qual distribuição fornece a base do Ubuntu?
+:::single-choice{#identify-ubuntu-base} Qual distribuição fornece a base do Ubuntu?
 
 ::option[A distribuição Debian]{#debian-base .correct explanation="O Ubuntu é construído a partir do Debian e herda boa parte de seu modelo de empacotamento. Depois, acrescenta lançamentos, padrões e suporte próprios."}
 ::option[A distribuição Fedora]{#ubuntu-fedora-base explanation="O Fedora pertence ao ecossistema Red Hat e não forma a base do Ubuntu. O Ubuntu faz parte da família Debian."}
@@ -30,8 +29,7 @@ O Ubuntu é popular porque tenta tornar o Linux prático para o uso diário. Ofe
 
 Outra razão pela qual o Ubuntu é tão visível é que funciona em muitos ambientes. Vê-lo-á em portáteis e desktops, em máquinas virtuais, em servidores e em plataformas em nuvem. Essa ampla adoção reforça a sua reputação como uma distribuição Linux de uso geral.
 
-:::single-choice{#recognize-beginner-support}
-Qual característica do Ubuntu ajuda mais diretamente um iniciante a resolver problemas?
+:::single-choice{#recognize-beginner-support} Qual característica do Ubuntu ajuda mais diretamente um iniciante a resolver problemas?
 
 ::option[Compilação manual obrigatória de cada programa instalado]{#manual-compilation explanation="O Ubuntu normalmente oferece software empacotado, sem exigir que todo programa seja compilado à mão. Trabalho adicional de compilação não simplificaria a solução de problemas."}
 ::option[Documentação extensa e uma grande comunidade de usuários]{#documentation-community .correct explanation="A documentação e as discussões da comunidade oferecem muitos lugares para encontrar explicações e ajuda. Isso reduz a barreira de aprendizagem."}
@@ -50,8 +48,7 @@ O Ubuntu utiliza dois tipos principais de lançamento. Publica uma nova versão 
 
 Este modelo de lançamento ajuda a explicar o apelo do Ubuntu. Os utilizadores que desejam uma base fiável escolhem frequentemente a LTS, enquanto os utilizadores que desejam funcionalidades mais recentes podem utilizar os lançamentos intermédios que chegam num cronograma mais rápido.
 
-:::single-choice{#choose-ubuntu-lts}
-Qual tipo de lançamento do Ubuntu é mais adequado a um sistema que precisa de uma base previsível e duradoura?
+:::single-choice{#choose-ubuntu-lts} Qual tipo de lançamento do Ubuntu é mais adequado a um sistema que precisa de uma base previsível e duradoura?
 
 ::option[Um lançamento intermediário]{#interim-release explanation="Lançamentos intermediários chegam com maior frequência e oferecem novos recursos mais cedo. Seu período de suporte menor não corresponde à prioridade indicada."}
 ::option[Um lançamento LTS]{#lts-release .correct explanation="Os lançamentos LTS foram concebidos para suporte mais longo e são escolhidos com frequência por sistemas que priorizam uma base confiável."}
@@ -64,8 +61,7 @@ Como um sistema baseado em Debian, o Ubuntu utiliza o formato de pacote `.deb` e
 
 A gestão de pacotes é um dos pontos fortes práticos do Ubuntu, porque combina ferramentas maduras do Debian com um ambiente de software grande e amplamente documentado.
 
-:::single-choice{#identify-ubuntu-package-tool}
-Qual item é a ferramenta de gerenciamento de pacotes usada para instalar software no Ubuntu?
+:::single-choice{#identify-ubuntu-package-tool} Qual item é a ferramenta de gerenciamento de pacotes usada para instalar software no Ubuntu?
 
 ::option[`.deb`]{#deb-format explanation="`.deb` identifica o formato de pacote usado por sistemas baseados no Debian. Ele não é a ferramenta de linha de comando para gerenciar pacotes."}
 ::option[`LTS`]{#lts-label explanation="LTS identifica um lançamento com suporte de longo prazo. Ele não instala nem gerencia pacotes de software."}

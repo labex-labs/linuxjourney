@@ -18,8 +18,7 @@ NAT de origen sustituye la dirección de origen de un paquete cuando sale de una
 
 El traductor mantiene las correspondencias para poder volver a traducir los paquetes de respuesta al punto final interno original. Normalmente reenvía el mismo flujo de transporte; no tiene que abrir una conexión proxy independiente como haría un proxy de aplicación.
 
-:::single-choice{#nat-source-translation}
-¿Qué cambia NAT de origen en un paquete saliente?
+:::single-choice{#nat-source-translation} ¿Qué cambia NAT de origen en un paquete saliente?
 
 ::option[Únicamente los permisos de archivo de la aplicación de destino.]{#nat-file-permissions explanation="NAT opera sobre las cabeceras de red y transporte, no sobre sistemas de archivos remotos."}
 ::option[La dirección de origen y, en el uso de muchos a uno, normalmente también el puerto de origen.]{#nat-source-fields .correct explanation="La correspondencia permite asociar el tráfico de retorno con el flujo interno original."}
@@ -30,8 +29,7 @@ El traductor mantiene las correspondencias para poder volver a traducir los paqu
 
 NAT de destino reescribe la dirección o el puerto de destino, normalmente para publicar un servicio interno mediante un punto final externo. Una regla de reenvío de puertos puede asignar un puerto TCP externo a otra dirección y puerto internos. El tráfico de retorno necesita una traducción inversa coherente.
 
-:::single-choice{#nat-port-forward}
-¿Qué modalidad de NAT suele implementar un reenvío de puertos entrante?
+:::single-choice{#nat-port-forward} ¿Qué modalidad de NAT suele implementar un reenvío de puertos entrante?
 
 ::option[Únicamente NAT de origen, antes de consultar la ruta.]{#nat-snat-port-forward explanation="Publicar un destino interno requiere traducir los campos del destino."}
 ::option[Ninguna traducción de direcciones o puertos.]{#nat-no-translation explanation="Una regla de reenvío de puertos es, por definición, una política de traducción."}
@@ -42,8 +40,7 @@ NAT de destino reescribe la dirección o el puerto de destino, normalmente para 
 
 NAT no es un cortafuegos. Un traductor con estado puede carecer de una correspondencia para tráfico entrante no solicitado, pero el reenvío explícito, la traducción de destino, el filtrado y la exposición de las aplicaciones determinan qué es accesible. La política de seguridad debe expresarse y auditarse mediante reglas de cortafuegos, servicios con privilegios mínimos y controles de extremo a extremo, no deducirse de la reescritura de direcciones.
 
-:::single-choice{#nat-not-firewall}
-¿Por qué no debe tratarse NAT como una política de seguridad por sí sola?
+:::single-choice{#nat-not-firewall} ¿Por qué no debe tratarse NAT como una política de seguridad por sí sola?
 
 ::option[NAT cifra automáticamente todas las cargas útiles.]{#nat-encrypts explanation="La traducción de direcciones no proporciona confidencialidad de la carga útil."}
 ::option[Las reglas de traducción y las reglas de filtrado del tráfico tienen finalidades distintas.]{#nat-filter-separate .correct explanation="La accesibilidad y la autorización requieren políticas explícitas de filtrado y de servicios incluso cuando existe traducción."}
@@ -63,8 +60,7 @@ $ sudo conntrack -L
 
 El segundo comando requiere las herramientas conntrack y privilegios. Los cambios en el conjunto de reglas pueden interrumpir el acceso remoto, así que utiliza recuperación mediante consola, configuración atómica, validación y reversión.
 
-:::single-choice{#nat-trace-flow}
-¿Qué pruebas se necesitan para rastrear un flujo de dirección compartida hasta un cliente interno?
+:::single-choice{#nat-trace-flow} ¿Qué pruebas se necesitan para rastrear un flujo de dirección compartida hasta un cliente interno?
 
 ::option[Únicamente la dirección externa, sin hora ni puerto.]{#nat-address-only explanation="Muchos clientes y flujos pueden compartir esa dirección."}
 ::option[Únicamente el nombre de host que muestra el cliente.]{#nat-hostname-only explanation="El traductor asigna tuplas de paquetes, no necesariamente nombres de host."}

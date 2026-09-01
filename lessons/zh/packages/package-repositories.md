@@ -24,8 +24,7 @@ $ sudo apt update
 
 该命令更新本地软件包索引，本身不会安装所有可用升级。应检查报告的软件源和身份验证错误，而不能忽略失败条目。
 
-:::single-choice{#package-repositories-apt-update}
-`apt update` 主要刷新什么？
+:::single-choice{#package-repositories-apt-update} `apt update` 主要刷新什么？
 
 ::option[无需确认就更新每个已安装软件包的二进制文件。]{#package-repositories-all-binaries explanation="安装升级与刷新元数据是不同操作。"}
 ::option[允许安装软件包的用户密码。]{#package-repositories-user-passwords explanation="刷新仓库索引不会修改本地身份验证凭据。"}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 这只是语法示例；保留的 `.invalid` 域名不是可用仓库。
 
-:::single-choice{#package-repositories-apt-locations}
-APT 可以从哪里读取活动仓库定义？
+:::single-choice{#package-repositories-apt-locations} APT 可以从哪里读取活动仓库定义？
 
 ::option[只能从 `/etc/apt/sources.list` 读取。]{#package-repositories-only-main-list explanation="APT 还会读取 `/etc/apt/sources.list.d/` 下受支持的源文件。"}
 ::option[只能从每个用户家目录内的文件读取。]{#package-repositories-only-home explanation="系统 APT 软件源配置通常位于 `/etc/apt` 下。"}
@@ -67,8 +65,7 @@ APT 会验证已签名的仓库发行元数据，再依据经过身份验证的�
 
 有效签名表明元数据来自获接受签名密钥的持有者，而且没有在未被发现的情况下修改。它不能证明发布者的软件没有缺陷、没有恶意或适合当前系统。应通过独立且受信任的渠道确认密钥指纹和软件源说明。
 
-:::single-choice{#package-repositories-signed-by}
-APT 软件源定义中的 `Signed-By` 有什么安全用途？
+:::single-choice{#package-repositories-signed-by} APT 软件源定义中的 `Signed-By` 有什么安全用途？
 
 ::option[加密每个已安装软件包，使 root 也无法读取。]{#package-repositories-package-encryption explanation="仓库签名提供来源和完整性检查，并不对本地管理员保密。"}
 ::option[把该软件源限定到选定的签名密钥。]{#package-repositories-key-scope .correct explanation="该字段把仓库验证绑定到选定密钥环，而不是不受限制的全局密钥集合。"}
@@ -87,8 +84,7 @@ APT 软件源定义中的 `Signed-By` 有什么安全用途？
 
 不要照搬禁用签名检查的过时说明，也不要把未经审核的远程脚本通过管道送入特权 shell。
 
-:::single-choice{#package-repositories-third-party-risk}
-为什么添加第三方仓库会扩大系统的信任边界？
+:::single-choice{#package-repositories-third-party-risk} 为什么添加第三方仓库会扩大系统的信任边界？
 
 ::option[其经过身份验证的软件包和脚本可能以系统权限安装。]{#package-repositories-privileged-install .correct explanation="信任签名来源可能授权影响操作系统的代码和生命周期操作。"}
 ::option[它会让 Linux 内核停止实施文件权限。]{#package-repositories-disable-permissions explanation="仓库配置不会禁用内核的常规访问控制机制。"}

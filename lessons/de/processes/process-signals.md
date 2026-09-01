@@ -23,8 +23,7 @@ Signale können aus mehreren Quellen stammen:
 
 Der Sender muss über die entsprechende Berechtigung verfügen, die gewöhnlich auf Zugangsdaten oder Capabilities beruht. Signale sind daher eine vom Kernel vermittelte Steuerungsschnittstelle und keine uneingeschränkten Nachrichten zwischen beliebigen Benutzern.
 
-:::single-choice{#process-signals-ctrl-c}
-Welches Signal erzeugt ein Terminal gewöhnlich bei `Ctrl-C`?
+:::single-choice{#process-signals-ctrl-c} Welches Signal erzeugt ein Terminal gewöhnlich bei `Ctrl-C`?
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` ist gewöhnlich mit dem Terminalzeichen zum Anhalten wie `Ctrl-Z` verbunden."}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` setzt einen angehaltenen Prozess fort und steht nicht für eine Unterbrechung über die Tastatur."}
@@ -43,8 +42,7 @@ Die Standardaktionen unterscheiden sich: Ein Signal kann beenden, beenden und ei
 
 Signalnamen sind portabler und lesbarer als Nummern. Obwohl verbreitete Linux-Architekturen `SIGTERM` als 15 verwenden, solltest du nicht annehmen, dass alle Signalenummern außer den vom jeweiligen Standard garantierten überall identisch sind. Verwende `kill -l`, um die lokale Zuordnung zu prüfen.
 
-:::single-choice{#process-signals-term-behavior}
-Warum kann ein Prozess geordnet auf `SIGTERM` reagieren?
+:::single-choice{#process-signals-term-behavior} Warum kann ein Prozess geordnet auf `SIGTERM` reagieren?
 
 ::option[Er kann für dieses Signal einen Handler einrichten.]{#process-signals-term-handler .correct explanation="Anders als `SIGKILL` kann `SIGTERM` abgefangen werden, sodass ein Programm seine eigene Logik zum Herunterfahren einleiten kann."}
 ::option[Der Kernel speichert automatisch jedes geöffnete Dokument.]{#process-signals-term-kernel-save explanation="Die Bereinigung durch eine Anwendung hängt von ihrem Programmcode ab; der Kernel versteht und speichert keinen beliebigen Dokumentzustand."}
@@ -57,8 +55,7 @@ Threads besitzen Signalmasken, die die Zustellung ausgewählter Signale vorüber
 
 In einem Prozess mit mehreren Threads kann ein an den Prozess gerichtetes Signal einem geeigneten Thread zugestellt werden, der es nicht blockiert; ein an einen Thread gerichtetes Signal zielt auf den angegebenen Thread. Eine korrekte Signalgestaltung erfordert daher mehr als die Prüfung, ob „der Prozess es blockiert“.
 
-:::single-choice{#process-signals-blocked-state}
-Was geschieht gewöhnlich, wenn ein blockierbares Signal erzeugt wird, während sein Ziel es blockiert?
+:::single-choice{#process-signals-blocked-state} Was geschieht gewöhnlich, wenn ein blockierbares Signal erzeugt wird, während sein Ziel es blockiert?
 
 ::option[Es bleibt ausstehend, bis eine Zustellung möglich wird.]{#process-signals-pending .correct explanation="Die Blockierung verschiebt die Behandlung; das ausstehende Signal kann nach seiner Freigabe zugestellt werden."}
 ::option[Es wird automatisch in `SIGKILL` umgewandelt.]{#process-signals-convert-kill explanation="Der Kernel eskaliert ein gewöhnliches blockiertes Signal nicht zu einem nicht abfangbaren Signal."}
@@ -71,8 +68,7 @@ Was geschieht gewöhnlich, wenn ein blockierbares Signal erzeugt wird, während 
 
 Selbst `SIGKILL` lässt eine Aufgabe aus Sicht eines Beobachters möglicherweise nicht sofort verschwinden. Eine Aufgabe kann in einem nicht unterbrechbaren Kernelvorgang warten, und nach der Beendigung muss ihr Elternprozess den Status weiterhin aufräumen.
 
-:::single-choice{#process-signals-uncatchable-pair}
-Welches Paar kann weder abgefangen noch ignoriert oder blockiert werden?
+:::single-choice{#process-signals-uncatchable-pair} Welches Paar kann weder abgefangen noch ignoriert oder blockiert werden?
 
 ::option[`SIGKILL` und `SIGSTOP`]{#process-signals-kill-stop .correct explanation="Der Kernel behält diese beiden Signale vor, damit ein Prozess ihre grundlegenden Aktionen weder überschreiben noch aufschieben kann."}
 ::option[`SIGINT` und `SIGTERM`]{#process-signals-int-term explanation="Für beide können benutzerdefinierte Handler eingerichtet werden, und beide lassen sich blockieren."}

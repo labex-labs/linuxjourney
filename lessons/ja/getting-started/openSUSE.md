@@ -22,16 +22,14 @@ openSUSE は、柔軟性、強力な管理ツール、複数のリリース選�
 
 同じディストロ系統のまま、自分に合う方式を選べる柔軟性があります。
 
-:::single-choice{#choose-opensuse-leap}
-従来型の定期リリースを望む人に最適な openSUSE の選択肢はどれですか？
+:::single-choice{#choose-opensuse-leap} 従来型の定期リリースを望む人に最適な openSUSE の選択肢はどれですか？
 
 ::option[Tumbleweed]{#tumbleweed-release explanation="継続的に更新されるローリングリリースで、新しいパッケージを優先する人に向きます。"}
 ::option[YaST]{#yast-not-release explanation="YaST はインストールと設定のツールであり、リリース方式ではありません。"}
 ::option[Leap]{#leap-release .correct explanation="通常のリリース方式と保守的なシステム基盤を重視し、要望に合います。"}
 :::
 
-:::single-choice{#recognize-tumbleweed-model}
-Tumbleweed と Leap の違いは何ですか？
+:::single-choice{#recognize-tumbleweed-model} Tumbleweed と Leap の違いは何ですか？
 
 ::option[テスト済みのパッケージ更新を継続的に提供する]{#continuous-tested-updates .correct explanation="Tumbleweed はテスト済みスナップショットを継続的に公開するため、通常のメジャーリリースを待たず新しいソフトウェアを受け取れます。"}
 ::option[固定されたメジャーリリースだけでソフトウェアを受け取る]{#fixed-major-releases explanation="固定された通常リリースは Leap に近く、Tumbleweed は継続的に更新します。"}
@@ -44,8 +42,7 @@ openSUSE は RPM パッケージ形式と `zypper` などのツールを使い�
 
 系統の比較には [Linux ディストリビューションの選び方](https://labex.io/lesson/choosing-a-linux-distribution) を参照してください。
 
-:::single-choice{#identify-zypper-role}
-openSUSE で `zypper` は何に使いますか？
+:::single-choice{#identify-zypper-role} openSUSE で `zypper` は何に使いますか？
 
 ::option[グラフィカルデスクトップの壁紙テーマを選ぶ]{#zypper-wallpaper explanation="外観はデスクトップツールで設定し、zypper はソフトウェアパッケージを管理します。"}
 ::option[ソフトウェアパッケージを導入、更新、削除する]{#zypper-package-tool .correct explanation="RPM リポジトリと連携する openSUSE のコマンドラインパッケージ管理ツールです。"}
@@ -58,8 +55,7 @@ openSUSE の代表的な機能 **YaST** は、ソフトウェア、サービス�
 
 すべてを手動設定せず、強力なシステム管理機能を使いたい人に openSUSE が選ばれる大きな理由です。
 
-:::single-choice{#identify-yast-purpose}
-YaST は何を提供するために設計されていますか？
+:::single-choice{#identify-yast-purpose} YaST は何を提供するために設計されていますか？
 
 ::option[最新アプリケーションだけを含むローリングリポジトリ]{#yast-repository explanation="ローリング方式を提供するのは Tumbleweed で、YaST は管理・設定ツールです。"}
 ::option[Debian・Ubuntu と共有するパッケージ形式]{#yast-package-format explanation="openSUSE は RPM、Debian 系は .deb を使い、YaST 自体はパッケージ形式ではありません。"}

@@ -27,16 +27,14 @@ $ command -v vi
 
 Les chemins résolus ne permettent pas à eux seuls de savoir si `vi` et `vim` sont la même implémentation. `type -a vi vim` et les informations de version de l'éditeur peuvent fournir davantage de détails.
 
-:::single-choice{#vim-name-origin}
-Que signifie le nom Vim ?
+:::single-choice{#vim-name-origin} Que signifie le nom Vim ?
 
 ::option[Visual Input Manager]{#vim-visual-input explanation="Ce développement n'est pas à l'origine du nom de l'éditeur."}
 ::option[Virtual Interface Mode]{#vim-virtual-interface explanation="Vim utilise bien des modes, mais cette expression n'est pas la signification de son nom."}
 ::option[Vi Improved]{#vim-vi-improved .correct explanation="Vim est né comme un éditeur amélioré compatible avec vi, ce que rappelle son nom."}
 :::
 
-:::single-choice{#vim-check-command}
-Quelle commande vérifie si Bash peut actuellement résoudre le nom `vim` ?
+:::single-choice{#vim-check-command} Quelle commande vérifie si Bash peut actuellement résoudre le nom `vim` ?
 
 ::option[`vim --create`]{#vim-create-option explanation="Cette option ne vérifie pas la résolution par le shell et ne sert ni à installer ni à découvrir Vim."}
 ::option[`command -v vim`]{#vim-command-resolution .correct explanation="Cette commande intégrée au shell indique la commande qui serait employée pour ce nom, si elle est disponible."}
@@ -61,8 +59,7 @@ Si `filename.txt` existe et est lisible, Vim charge son contenu dans un tampon. 
 
 Vim ne contourne pas les permissions du système de fichiers. Ouvrir un fichier ne garantit donc pas que votre compte pourra enregistrer les modifications à cet emplacement.
 
-:::single-choice{#vim-open-missing-path}
-Que se passe-t-il normalement lorsque `vim draft.txt` indique un chemin qui n'existe pas encore ?
+:::single-choice{#vim-open-missing-path} Que se passe-t-il normalement lorsque `vim draft.txt` indique un chemin qui n'existe pas encore ?
 
 ::option[Vim ouvre un nouveau tampon et ne crée le fichier que lors de son enregistrement.]{#vim-new-buffer .correct explanation="Le chemin est mémorisé pour le tampon, mais la création sur le disque attend un enregistrement réussi."}
 ::option[Vim crée un fichier vide sur le disque avant d'ouvrir son interface.]{#vim-immediate-create explanation="Le nouveau tampon est associé au chemin, mais le fichier n'est créé qu'après une écriture réussie."}
@@ -86,8 +83,7 @@ Dans Vim, passez en mode Normal avec `Esc`, tapez `:help`, puis appuyez sur Entr
 
 Les étiquettes de l'aide sont précises ; la ponctuation peut donc compter. Utilisez `Ctrl+]` sur un lien de l'aide pour le suivre et `Ctrl+T` pour revenir.
 
-:::single-choice{#vim-guided-tutorial}
-Quelle commande du shell lance le tutoriel guidé de Vim lorsqu'il est installé ?
+:::single-choice{#vim-guided-tutorial} Quelle commande du shell lance le tutoriel guidé de Vim lorsqu'il est installé ?
 
 ::option[`vim --quiz`]{#vim-quiz-option explanation="Cette option n'est pas l'interface standard du tutoriel guidé de Vim."}
 ::option[`vimtutor`]{#vim-tutor-command .correct explanation="`vimtutor` ouvre une copie du tutoriel interactif conçu pour un apprentissage pratique sans risque."}
@@ -105,8 +101,7 @@ $ vim vim-practice.txt
 
 Les leçons suivantes présentent la recherche, la navigation, l'insertion, la modification et l'enregistrement. Tant que vous ne savez pas quitter sans risque, retenez que `Esc` ramène au mode Normal et que `:q!`, suivi d'Entrée, abandonne les modifications non enregistrées de la fenêtre actuelle. N'utilisez cette commande que si vous souhaitez réellement perdre ces changements.
 
-:::single-choice{#vim-abandon-practice-changes}
-Dans un fichier d'essai jetable, quelle commande Vim ferme la fenêtre actuelle en abandonnant ses modifications non enregistrées ?
+:::single-choice{#vim-abandon-practice-changes} Dans un fichier d'essai jetable, quelle commande Vim ferme la fenêtre actuelle en abandonnant ses modifications non enregistrées ?
 
 ::option[`:w`]{#vim-write-only explanation="`:w` écrit le tampon, mais ne ferme pas la fenêtre actuelle."}
 ::option[`:wq`]{#vim-write-quit explanation="`:wq` enregistre les modifications avant de quitter ; elle ne les abandonne donc pas."}

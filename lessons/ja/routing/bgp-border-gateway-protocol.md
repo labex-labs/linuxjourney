@@ -18,8 +18,7 @@ Border Gateway Protocol（BGP）は、インターネットの path-vector ル�
 
 BGP peer は TCP ポート 179 上でセッションを確立します。TCP セッションが機能することはトランスポートの土台にすぎず、BGP の capability、ポリシー、ルート交換も成功する必要があります。
 
-:::single-choice{#bgp-external-session}
-external BGP は何を交換しますか？
+:::single-choice{#bgp-external-session} external BGP は何を交換しますか？
 
 ::option[一つのスイッチ内の Ethernet フレームチェックサム。]{#bgp-ethernet-fcs explanation="BGP は TCP より上で動作し、ネットワーク層の到達可能性を交換します。"}
 ::option[Web ブラウザー間のユーザーパスワード。]{#bgp-browser-passwords explanation="アプリケーションの認証情報はルーティング属性ではありません。"}
@@ -30,8 +29,7 @@ external BGP は何を交換しますか？
 
 広告にはプレフィックスと属性が含まれます。`AS_PATH` は通過した自律システムを列挙し、ループ検出に役立ちます。ほかの一般的な属性には、`LOCAL_PREF`、`MED`、origin、next hop、community があります。その効果は方向、実装、ポリシーによって異なります。
 
-:::single-choice{#bgp-as-path-loop}
-`AS_PATH` は AS 間ループの防止にどう役立ちますか？
+:::single-choice{#bgp-as-path-loop} `AS_PATH` は AS 間ループの防止にどう役立ちますか？
 
 ::option[AS は、自身の番号をすでに含む経路を拒否できる。]{#bgp-own-as-reject .correct explanation="path vector が、広告されたプレフィックスまでに使った AS の並びを公開します。"}
 ::option[それらのシステムを通る全パケットを暗号化する。]{#bgp-aspath-encryption explanation="この属性はルーティング経路を記述するもので、ペイロードを暗号化しません。"}
@@ -44,8 +42,7 @@ BGP の「best」path は、設定された判断処理を勝ち抜いた経路�
 
 BGP が候補を選んだ後も、通常の IP 転送では最長プレフィックス一致を適用します。選択済みの `/24` は、その宛先に対して、選択済みの包含する `/16` より優先されます。
 
-:::single-choice{#bgp-best-path-meaning}
-BGP の best path は何を表しますか？
+:::single-choice{#bgp-best-path-meaning} BGP の best path は何を表しますか？
 
 ::option[ローカルの属性とポリシーの判断処理を勝ち抜いたルート。]{#bgp-policy-winner .correct explanation="ドメイン間の経路選択では、管理上の意図が中心になります。"}
 ::option[あらゆる場合に物理ケーブル距離が最短のルート。]{#bgp-shortest-cable explanation="BGP は物理距離の完全な地図を持ちません。"}
@@ -56,8 +53,7 @@ BGP の best path は何を表しますか？
 
 プレフィックスの広告は、ポリシーの下で到達可能だと表明しますが、基盤となるルートを作るわけでも、復路を保証するわけでもありません。プレフィックスを originate する前に、有効な転送、集約動作、フィルター、failover、所有権の承認を確認してください。
 
-:::single-choice{#bgp-advertisement-limit}
-プレフィックスを広告しても保証できないものはどれですか？
+:::single-choice{#bgp-advertisement-limit} プレフィックスを広告しても保証できないものはどれですか？
 
 ::option[peer がコントロールプレーンのルートを受信できること。]{#bgp-peers-control explanation="広告と受け入れが成功すれば、その限定的なコントロールプレーンの事実は確認できます。"}
 ::option[プレフィックスにアドレスビットが含まれること。]{#bgp-prefix-bits explanation="IP プレフィックスはアドレスビットと長さで定義されます。"}
@@ -70,8 +66,7 @@ route leak と hijack は、一つのルーターをはるかに超える通信�
 
 BGP の変更には、段階的な展開、ルート差分の確認、帯域外アクセス、ロールバック、コントロールプレーンとデータプレーン双方の検証が必要です。
 
-:::single-choice{#bgp-rpki-limit}
-RPKI origin validation は何を確認しますか？
+:::single-choice{#bgp-rpki-limit} RPKI origin validation は何を確認しますか？
 
 ::option[すべてのパケットペイロードにマルウェアがないこと。]{#bgp-payload-malware explanation="RPKI はアプリケーション内容を検査しません。"}
 ::option[完全な AS path の遅延が最小であること。]{#bgp-path-latency explanation="origin validation は性能選択でも、完全な経路検証でもありません。"}

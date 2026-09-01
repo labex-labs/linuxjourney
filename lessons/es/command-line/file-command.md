@@ -32,8 +32,7 @@ $ file /bin/ls
 
 El resultado es una clasificación, no una garantía. Un archivo poco común, incompleto o dañado puede recibir una descripción general como `data` en vez de un tipo preciso.
 
-:::single-choice{#identify-misleading-extension}
-Un archivo llamado `report.jpg` podría no contener una imagen. ¿Qué orden comprueba su tipo de contenido probable?
+:::single-choice{#identify-misleading-extension} Un archivo llamado `report.jpg` podría no contener una imagen. ¿Qué orden comprueba su tipo de contenido probable?
 
 ::option[`ls report.jpg`]{#list-report explanation="`ls` confirma que el nombre existe y puede mostrar metadatos, pero no clasifica el contenido del archivo."}
 ::option[`file report.jpg`]{#inspect-report .correct explanation="La orden `file` examina el archivo e informa de un tipo probable. No se basa únicamente en el sufijo `.jpg`."}
@@ -57,8 +56,7 @@ También puedes pasar un comodín de la shell. La shell expande `*` a los nombre
 $ file *
 ```
 
-:::single-choice{#inspect-multiple-files}
-¿Qué orden pide a `file` que inspeccione todos los nombres no ocultos del directorio actual que coincidan con `*`?
+:::single-choice{#inspect-multiple-files} ¿Qué orden pide a `file` que inspeccione todos los nombres no ocultos del directorio actual que coincidan con `*`?
 
 ::option[`file *`]{#file-wildcard .correct explanation="La shell expande `*` a los nombres no ocultos que coincidan y `file` inspecciona cada operando resultante."}
 ::option[`file .`]{#file-current-directory explanation="Un solo punto representa el directorio actual. Esta orden clasifica ese directorio en vez de cada elemento que contiene."}
@@ -74,8 +72,7 @@ $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-:::single-choice{#show-mime-information}
-¿Qué orden muestra información al estilo MIME para `index.html`?
+:::single-choice{#show-mime-information} ¿Qué orden muestra información al estilo MIME para `index.html`?
 
 ::option[`file -b index.html`]{#brief-index explanation="La opción `-b` omite el nombre del archivo en la descripción habitual. No solicita específicamente una salida al estilo MIME."}
 ::option[`file -i index.html`]{#mime-index .correct explanation="La opción `-i` solicita una salida al estilo MIME, como `text/html` junto con la información del juego de caracteres."}
@@ -96,8 +93,7 @@ $ file -b notes.txt
 ASCII text
 ```
 
-:::single-choice{#omit-filename-from-output}
-¿Qué orden clasifica `notes.txt`, pero omite su nombre en la salida?
+:::single-choice{#omit-filename-from-output} ¿Qué orden clasifica `notes.txt`, pero omite su nombre en la salida?
 
 ::option[`file -i notes.txt`]{#mime-notes explanation="La opción `-i` solicita información al estilo MIME. Normalmente la salida sigue incluyendo el nombre del archivo."}
 ::option[`file -z notes.txt`]{#compressed-notes explanation="La opción `-z` pide a `file` que examine los datos comprimidos cuando sea posible. No activa la salida breve."}

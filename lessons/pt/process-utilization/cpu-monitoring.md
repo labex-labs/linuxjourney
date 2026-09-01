@@ -23,8 +23,7 @@ $ uptime
 
 Os três valores finais são as médias de carga durante aproximadamente 1, 5 e 15 minutos. Compará-los mostra a direção: um valor de 1 minuto muito maior pode indicar carga crescente, enquanto um valor de 15 minutos maior pode indicar uma carga em queda.
 
-:::single-choice{#cpu-uptime-windows}
-Em que ordem `uptime` exibe os intervalos de carga média?
+:::single-choice{#cpu-uptime-windows} Em que ordem `uptime` exibe os intervalos de carga média?
 
 ::option[15, 5 e 1 segundos.]{#cpu-windows-seconds explanation="Os valores são médias em escala de minutos e não aparecem do mais longo para o mais curto."}
 ::option[1, 5 e 15 minutos.]{#cpu-windows-one-five-fifteen .correct explanation="O intervalo recente mais curto aparece primeiro, e o mais longo aparece por último."}
@@ -43,8 +42,7 @@ $ nproc
 
 Cotas de CPU, afinidade, virtualização e limites de contêineres podem reduzir a capacidade visível para determinada carga de trabalho, portanto a quantidade de CPUs do host é apenas um ponto de partida.
 
-:::single-choice{#cpu-load-not-percentage}
-Por que a carga média não é uma porcentagem de utilização da CPU?
+:::single-choice{#cpu-load-not-percentage} Por que a carga média não é uma porcentagem de utilização da CPU?
 
 ::option[Ela informa somente a frequência do clock da CPU.]{#cpu-load-clock explanation="A velocidade do clock é uma métrica separada de hardware ou escalonamento."}
 ::option[Ela mede somente a memória física livre.]{#cpu-load-memory explanation="A disponibilidade de memória é informada por outras métricas."}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 Uma carga alta com CPUs ocupadas pode indicar demanda de CPU. Uma carga alta com muitas tarefas bloqueadas, latência de E/S ou observações de espera por E/S aponta para outro recurso limitado. Uma utilização média baixa também pode ocultar uma única CPU saturada ou um pico breve de latência.
 
-:::single-choice{#cpu-high-load-next-step}
-Qual é a melhor próxima etapa após observar uma carga média alta?
+:::single-choice{#cpu-high-load-next-step} Qual é a melhor próxima etapa após observar uma carga média alta?
 
 ::option[Comparar medições repetidas de CPU, estados das tarefas, E/S e carga de trabalho.]{#cpu-load-correlate .correct explanation="Amostras relacionadas diferenciam as possíveis explicações para a carga."}
 ::option[Reiniciar imediatamente sem coletar outros dados.]{#cpu-load-reboot explanation="A reinicialização remove evidências e pode interromper serviços sem identificar a causa."}
@@ -77,8 +74,7 @@ Qual é a melhor próxima etapa após observar uma carga média alta?
 
 Não existe uma regra universal de que a carga sempre deva permanecer abaixo da quantidade de CPUs. Sistemas em lote podem aceitar filas, enquanto serviços interativos podem violar metas de latência antes desse ponto. Estabeleça uma linha de base para o mesmo host e a mesma carga de trabalho e depois compare tempo de resposta, throughput, taxa de erros, saturação e uso de recursos.
 
-:::single-choice{#cpu-capacity-threshold}
-O que deve determinar se a carga observada é aceitável?
+:::single-choice{#cpu-capacity-threshold} O que deve determinar se a carga observada é aceitável?
 
 ::option[Uma exigência de que o valor sempre permaneça abaixo de um.]{#cpu-below-one explanation="A capacidade de vários núcleos e os objetivos da carga de trabalho tornam esse limite fixo pouco confiável."}
 ::option[Somente a quantidade de usuários listados por `uptime`.]{#cpu-user-count explanation="Os usuários conectados por shells não representam toda a demanda da carga de trabalho."}

@@ -22,8 +22,7 @@ $ vmstat 1
 
 第一行数据通常报告系统启动以来的平均值，后续各行覆盖每个采样间隔。捕获到具有代表性的时段后，按 `Ctrl-C` 停止。单位和可用字段会有差异，因此应检查 `vmstat --unit` 和本机手册。
 
-:::single-choice{#vmstat-interval-rows}
-`vmstat 1` 的哪些行最适合观察逐秒变化？
+:::single-choice{#vmstat-interval-rows} `vmstat 1` 的哪些行最适合观察逐秒变化？
 
 ::option[初始报告之后的各行。]{#vmstat-later-rows .correct explanation="后续各行描述指定的每个采样间隔，而不是累计时段。"}
 ::option[只有第一行数据上方的标题。]{#vmstat-headings explanation="标题定义字段，但不包含活动样本。"}
@@ -42,8 +41,7 @@ $ free -h
 
 `available` 估算值通常比单独的 `free` 更有用，因为可回收缓存可以用于满足新的内存分配。
 
-:::single-choice{#vmstat-free-memory}
-为什么 Linux 上较低的 `free` 值可能是正常现象？
+:::single-choice{#vmstat-free-memory} 为什么 Linux 上较低的 `free` 值可能是正常现象？
 
 ::option[该值总是排除全部物理 RAM。]{#vmstat-excludes-ram explanation="它是内存字段，不过应确认具体单位。"}
 ::option[内核可以把空闲内存用于可回收缓存。]{#vmstat-reclaimable-cache .correct explanation="应用需要内存时，缓存内存通常可以被回收。"}
@@ -54,8 +52,7 @@ $ free -h
 
 `si` 和 `so` 显示换入和换出速率。持续分页若同时伴随延迟和内存回收活动，可能表示存在压力；但交换空间使用量（`swpd`）非零本身并不能证明当前有问题。`bi` 和 `bo` 报告块输入与输出速率，并不限于交换流量。
 
-:::single-choice{#vmstat-swap-pressure}
-哪项证据更能支持当前存在内存压力的诊断？
+:::single-choice{#vmstat-swap-pressure} 哪项证据更能支持当前存在内存压力的诊断？
 
 ::option[`swpd` 非零，且没有其他观察结果。]{#vmstat-swpd-alone explanation="早期压力过后，内存页仍可能留在交换空间，因此单看使用量并不充分。"}
 ::option[持续分页，并且与内存回收活动和工作负载延迟相关。]{#vmstat-correlated-pressure .correct explanation="反复出现且相互关联的证据，能够把内存行为与当前影响联系起来。"}
@@ -66,8 +63,7 @@ $ free -h
 
 CPU 列通常包括用户（`us`）、系统（`sy`）、空闲（`id`）、I/O 等待（`wa`）和窃取（`st`）百分比。系统列包括每秒中断数（`in`）和上下文切换数（`cs`）。应依据基线解读尖峰；对于某些工作负载，较高的上下文切换率可能完全正常。
 
-:::single-choice{#vmstat-r-column}
-进程字段 `r` 表示什么？
+:::single-choice{#vmstat-r-column} 进程字段 `r` 表示什么？
 
 ::option[以只读方式挂载的文件系统。]{#vmstat-readonly explanation="进程字段不表示文件系统挂载标志。"}
 ::option[拥有活动 shell 的远程用户。]{#vmstat-remote-users explanation="登录会话由其他工具报告。"}

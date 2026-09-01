@@ -22,8 +22,7 @@ $ exit
 
 Se esse shell for o processo principal de uma aba do terminal gráfico, a aba poderá ser fechada de acordo com as configurações do terminal. Em uma sessão SSH, sair do shell remoto normalmente leva você de volta ao shell local. Se você iniciou um shell aninhado, `exit` retorna ao shell pai.
 
-:::single-choice{#leave-current-shell}
-Você iniciou o Bash dentro de outro shell e agora quer retornar ao shell pai. Qual comando deve executar na sessão aninhada do Bash?
+:::single-choice{#leave-current-shell} Você iniciou o Bash dentro de outro shell e agora quer retornar ao shell pai. Qual comando deve executar na sessão aninhada do Bash?
 
 ::option[`clear`]{#clear-nested explanation="`clear` atualiza a área visível do terminal, mas mantém o shell atual em execução."}
 ::option[`exit`]{#exit-nested .correct explanation="`exit` encerra o shell atual, permitindo que o shell pai retome o controle."}
@@ -40,16 +39,14 @@ $ exit 0
 
 Por convenção, `0` significa sucesso, e um valor diferente de zero representa falha ou outra condição definida pelo programa. Se o Bash não receber um argumento numérico, ele sairá com o status do último comando executado antes de `exit`.
 
-:::single-choice{#return-success-status}
-Qual comando encerra o shell atual e informa explicitamente sucesso ao processo chamador?
+:::single-choice{#return-success-status} Qual comando encerra o shell atual e informa explicitamente sucesso ao processo chamador?
 
 ::option[`exit 0`]{#exit-zero .correct explanation="Por convenção, o status `0` informa ao chamador uma conclusão bem-sucedida."}
 ::option[`exit 1`]{#exit-one explanation="Por convenção, um status diferente de zero indica falha ou outro resultado excepcional, não sucesso."}
 ::option[`logout 0`]{#logout-zero explanation="O `logout` do Bash serve para um shell de login e não usa essa forma para definir o status solicitado."}
 :::
 
-:::single-choice{#exit-without-number}
-No Bash, qual status `exit` devolve quando você não fornece um número?
+:::single-choice{#exit-without-number} No Bash, qual status `exit` devolve quando você não fornece um número?
 
 ::option[Ele sempre devolve o status de sucesso `0`.]{#always-zero explanation="A convenção de sucesso não obriga um `exit` sem argumento a retornar zero. Nesse caso, o Bash preserva um status anterior."}
 ::option[Ele sempre devolve o status de falha `1`.]{#always-one explanation="O Bash não atribui o status de falha `1` a todo `exit` sem argumento. O comando anterior determina o valor."}
@@ -66,8 +63,7 @@ $ logout
 
 Em um shell do Bash que não seja de login, `logout` informa que ele não é um shell de login; nesse caso, use `exit`.
 
-:::single-choice{#leave-login-shell}
-Qual comando interno do Bash se destina especificamente a sair de um shell de login?
+:::single-choice{#leave-login-shell} Qual comando interno do Bash se destina especificamente a sair de um shell de login?
 
 ::option[`logout`]{#logout-login .correct explanation="O Bash fornece `logout` para encerrar um shell de login."}
 ::option[`unalias`]{#unalias-login explanation="`unalias` remove definições de aliases do shell atual. Ele não encerra a sessão."}

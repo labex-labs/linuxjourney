@@ -24,8 +24,7 @@ O minibuffer oferece conclusão para os nomes existentes. Inserir um novo nome p
 
 Por padrão, `C-x Right` executa `next-buffer`, e `C-x Left` executa `previous-buffer`, percorrendo os buffers na janela selecionada.
 
-:::single-choice{#emacs-switch-buffer-key}
-Qual sequência de teclas solicita um nome de buffer para exibi-lo na janela atual?
+:::single-choice{#emacs-switch-buffer-key} Qual sequência de teclas solicita um nome de buffer para exibi-lo na janela atual?
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="Essa sequência solicita um caminho e o visita, uma operação diferente de escolher pelo nome um buffer existente."}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` lê um nome e exibe esse buffer na janela selecionada."}
@@ -48,8 +47,7 @@ C-x 3
 
 A nova janela inicialmente exibe um buffer, muitas vezes o mesmo. Você pode alternar os buffers de cada janela independentemente.
 
-:::single-choice{#emacs-split-side-by-side}
-Qual sequência de teclas divide a janela selecionada do Emacs em janelas à esquerda e à direita?
+:::single-choice{#emacs-split-side-by-side} Qual sequência de teclas divide a janela selecionada do Emacs em janelas à esquerda e à direita?
 
 ::option[`C-x 1`]{#emacs-window-one explanation="Essa sequência exclui as outras janelas e torna a selecionada a única de seu frame."}
 ::option[`C-x 2`]{#emacs-window-below explanation="Essa sequência cria janelas superior e inferior, não uma divisão lado a lado."}
@@ -71,16 +69,14 @@ Use estes comandos para remover exibições:
 
 Excluir uma janela normalmente mantém vivo o buffer exibido nela. Você pode mostrar esse buffer novamente em outra janela.
 
-:::single-choice{#emacs-select-other-window}
-Qual sequência de teclas move o ponto e o foco do teclado para outra janela do Emacs?
+:::single-choice{#emacs-select-other-window} Qual sequência de teclas move o ponto e o foco do teclado para outra janela do Emacs?
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="Essa sequência exclui a janela selecionada, em vez de mover o foco para outra."}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` alterna a seleção para outra janela do frame."}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="Essa sequência muda o buffer exibido pela janela atual, não a janela selecionada."}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-Qual sequência de teclas preserva a janela selecionada e exclui as outras janelas de seu frame?
+:::single-choice{#emacs-keep-one-window} Qual sequência de teclas preserva a janela selecionada e exclui as outras janelas de seu frame?
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` torna a janela selecionada a única do frame."}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="Essa sequência exclui a própria janela selecionada, em vez de preservá-la."}
@@ -99,8 +95,7 @@ O buffer atual é a escolha padrão. Se um buffer associado a um arquivo possuir
 
 Encerrar um buffer é diferente de excluir uma janela. O Emacs substitui um buffer encerrado em qualquer janela que o exiba, enquanto excluir uma janela pode manter o buffer intacto.
 
-:::single-choice{#emacs-kill-buffer-key}
-Qual sequência de teclas solicita o encerramento de um buffer do Emacs?
+:::single-choice{#emacs-kill-buffer-key} Qual sequência de teclas solicita o encerramento de um buffer do Emacs?
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="Essa sequência exclui uma janela de exibição, mas normalmente mantém o buffer vivo."}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` remove o buffer selecionado do Emacs depois de qualquer confirmação necessária sobre modificações."}

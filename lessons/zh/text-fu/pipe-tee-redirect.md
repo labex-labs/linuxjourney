@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 shell 会启动管道中的命令并建立数据流连接。命令可以并发工作：`ls` 还没生成完整列表时，`less` 就能开始读取。
 
-:::single-choice{#pipe-stream-connection}
-在 `ls -la /etc | less` 中，`|` 默认连接哪两条流？
+:::single-choice{#pipe-stream-connection} 在 `ls -la /etc | less` 中，`|` 默认连接哪两条流？
 
 ::option[`ls` 的 stdin 到 `less` 的 stdout。]{#pipe-reversed-streams explanation="这颠倒了生产者、消费者及两条流；数据从左侧命令的输出流向右侧命令的输入。"}
 ::option[`ls` 的 stderr 到 `less` 的两条流。]{#pipe-stderr-both explanation="普通管道不连接左侧命令的 stderr，也不会同时指向右侧命令的两条流。"}
@@ -50,8 +49,7 @@ $ find /etc -name "*.conf" | less
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-在 `find /etc -name "*.conf" | less` 中，如果没有其他重定向，`find` 的 stderr 通常去哪里？
+:::single-choice{#pipe-left-stderr} 在 `find /etc -name "*.conf" | less` 中，如果没有其他重定向，`find` 的 stderr 通常去哪里？
 
 ::option[通过与 stdout 相同的管道进入 `less`。]{#pipe-errors-to-less explanation="普通管道只连接 stdout，不会自动把 stderr 合并进去。"}
 ::option[进入当前目录中名为 `stderr` 的文件。]{#pipe-errors-to-file explanation="命令中没有错误文件重定向，因此 shell 不会创建这样的文件。"}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 这里 `listing.txt` 会收到列表，`tee` 的 stdout 仍连接到终端。默认情况下，`tee` 会像 `>` 一样创建或清空指定文件。
 
-:::single-choice{#tee-display-and-save}
-哪个命令会显示 `generate-report` 的输出，同时用相同输出替换 `report.txt`？
+:::single-choice{#tee-display-and-save} 哪个命令会显示 `generate-report` 的输出，同时用相同输出替换 `report.txt`？
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="普通输出重定向会写入文件，但不会让副本继续流向终端。"}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` 会把 stdin 复制到 `report.txt` 和自己的 stdout；在这个管道中，stdout 仍是终端。"}
@@ -82,8 +79,7 @@ $ ls | tee listing.txt
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-哪个命令会显示当前日期，并把它追加到 `activity.log`？
+:::single-choice{#tee-append-log} 哪个命令会显示当前日期，并把它追加到 `activity.log`？
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="`-a` 让 `tee` 追加文件，同时继续把输入复制到 stdout。"}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="没有 `-a` 时，`tee` 会替换现有文件，而不是保留早先记录。"}
@@ -108,8 +104,7 @@ $ ls -la /etc | tee etc-listing.txt | grep "conf"
 
 文件包含 `grep` 过滤前的数据。如果只想把筛选出的行写入文件，应把 `tee` 放在 `grep` 后面。
 
-:::single-choice{#tee-before-filter-result}
-`produce | tee all.txt | grep error` 成功结束后，`all.txt` 包含什么？
+:::single-choice{#tee-before-filter-result} `produce | tee all.txt | grep error` 成功结束后，`all.txt` 包含什么？
 
 ::option[只包含 `grep` 匹配的行。]{#tee-filtered-only explanation="`tee` 位于 `grep` 之前，因此写入的是未过滤输入，而不是下游匹配集合。"}
 ::option[只包含 `produce` 的 stderr。]{#tee-producer-stderr explanation="普通管道传递 `produce` 的 stdout；其 stderr 并不是 `tee` 的输入。"}

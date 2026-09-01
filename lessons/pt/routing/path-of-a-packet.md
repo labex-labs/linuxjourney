@@ -16,8 +16,7 @@ O caminho de um pacote é uma sequência de decisões locais. O host de origem, 
 
 Para um destino abrangido por uma rota conectada, a origem seleciona uma interface e um IP de origem. Em seguida, resolve o endereço de enlace do destino — ARP para IPv4 sobre Ethernet ou Descoberta de Vizinhos para IPv6 — e envia um quadro que transporta o pacote IP. Um switch pode encaminhar o quadro sem se tornar um salto IP.
 
-:::single-choice{#packet-path-switch-hop}
-Um switch Ethernet comum conta como um salto de roteamento IP?
+:::single-choice{#packet-path-switch-hop} Um switch Ethernet comum conta como um salto de roteamento IP?
 
 ::option[Não; ele encaminha quadros locais sem reduzir o campo de saltos do IP.]{#packet-path-switch-not-hop .correct explanation="Um salto roteado ocorre quando um roteador processa e encaminha o pacote IP."}
 ::option[Sim; todo switch substitui o destino IP.]{#packet-path-switch-replaces-ip explanation="O encaminhamento de Camada 2 normalmente não reescreve os destinos IP."}
@@ -28,8 +27,7 @@ Um switch Ethernet comum conta como um salto de roteamento IP?
 
 Para um destino fora do enlace, a rota selecionada identifica um roteador de próximo salto. O destino IP continua sendo o ponto de extremidade remoto, enquanto o destino do quadro local é o endereço de enlace do gateway. O host resolve o gateway, não o servidor remoto, em seu enlace local.
 
-:::single-choice{#packet-path-gateway-mac}
-O endereço MAC de quem é usado no primeiro quadro Ethernet para um servidor fora do enlace?
+:::single-choice{#packet-path-gateway-mac} O endereço MAC de quem é usado no primeiro quadro Ethernet para um servidor fora do enlace?
 
 ::option[O endereço do servidor remoto através de todas as redes intermediárias.]{#packet-path-remote-mac explanation="O endereço de enlace remoto não possui significado na LAN de origem."}
 ::option[Um valor calculado a partir do nome DNS do servidor.]{#packet-path-dns-mac explanation="Nomes DNS não codificam o MAC do próximo salto local."}
@@ -40,8 +38,7 @@ O endereço MAC de quem é usado no primeiro quadro Ethernet para um servidor fo
 
 Um roteador remove o enquadramento de enlace recebido, valida e processa o cabeçalho IP, reduz o TTL ou o Limite de Saltos, consulta o destino, aplica a política e cria um novo enquadramento para o enlace de saída. No IPv4, o processamento da soma de verificação do cabeçalho reflete a alteração do TTL. Se o campo de saltos chegar a zero, o roteador descarta o pacote e pode retornar uma mensagem ICMP de tempo excedido.
 
-:::single-choice{#packet-path-router-change}
-Qual campo IP é alterado por todo salto roteado normal?
+:::single-choice{#packet-path-router-change} Qual campo IP é alterado por todo salto roteado normal?
 
 ::option[O nome de usuário da aplicação.]{#packet-path-username explanation="Roteadores não precisam de dados de contas da aplicação para o encaminhamento básico."}
 ::option[O TTL do IPv4 ou o Limite de Saltos do IPv6.]{#packet-path-hop-field .correct explanation="Cada roteador reduz o campo para limitar os loops de roteamento."}
@@ -52,8 +49,7 @@ Qual campo IP é alterado por todo salto roteado normal?
 
 O roteamento comum preserva os endereços IP de origem e destino, mas o NAT pode reescrevê-los, e túneis podem encapsular o pacote original. Firewalls podem descartar o tráfego silenciosamente ou rejeitá-lo. As MTUs dos enlaces também diferem; roteadores IPv4 às vezes podem fragmentar pacotes, enquanto roteadores IPv6 não fragmentam pacotes encaminhados e dependem da Descoberta da MTU do Caminho.
 
-:::single-choice{#packet-path-address-change-exception}
-Quando os endereços IP de ponta a ponta podem mudar ao longo de um caminho?
+:::single-choice{#packet-path-address-change-exception} Quando os endereços IP de ponta a ponta podem mudar ao longo de um caminho?
 
 ::option[Sempre que um switch Ethernet aprende um MAC de origem.]{#packet-path-switch-learning-ip explanation="O aprendizado do switch afeta uma tabela de encaminhamento de enlace, não os endereços dos pontos de extremidade IP."}
 ::option[Quando uma política de NAT traduz os cabeçalhos dos pacotes.]{#packet-path-nat-change .correct explanation="A tradução é uma função de dispositivo intermediário além do encaminhamento de rotas comum."}
@@ -64,8 +60,7 @@ Quando os endereços IP de ponta a ponta podem mudar ao longo de um caminho?
 
 O destino realiza sua própria consulta de rota para a resposta. O caminho de retorno pode usar roteadores diferentes devido a políticas de roteamento, balanceamento de carga ou falhas. Firewalls com estado e NAT precisam considerar o fluxo observado; por isso, a assimetria pode importar operacionalmente mesmo quando é permitida pelo IP.
 
-:::single-choice{#packet-path-return-symmetry}
-Uma resposta precisa atravessar os mesmos roteadores na ordem inversa?
+:::single-choice{#packet-path-return-symmetry} Uma resposta precisa atravessar os mesmos roteadores na ordem inversa?
 
 ::option[Sim, porque o IP registra a rota completa de saída em cada pacote.]{#packet-path-records-route explanation="Pacotes IP comuns não transportam uma rota inversa completa obrigatória."}
 ::option[Sim, a menos que a origem e o destino compartilhem um nome de host.]{#packet-path-hostname-symmetry explanation="Os nomes não impõem simetria de caminho."}

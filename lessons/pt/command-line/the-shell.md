@@ -20,8 +20,7 @@ O terminal é a janela ou o aplicativo em que você digita, enquanto o shell é 
 
 O shell é útil porque é rápido, permite criar scripts e está disponível em quase todos os sistemas Linux. À medida que aprender mais comandos, você poderá combiná-los para inspecionar arquivos, gerenciar diretórios, pesquisar textos, instalar programas e automatizar tarefas repetitivas.
 
-:::single-choice{#distinguish-shell-and-terminal}
-Qual afirmação descreve corretamente a relação entre um terminal e um shell?
+:::single-choice{#distinguish-shell-and-terminal} Qual afirmação descreve corretamente a relação entre um terminal e um shell?
 
 ::option[O terminal fornece a janela, enquanto o shell é executado dentro dela.]{#shell-runs-in-terminal .correct explanation="O terminal é a interface usada por você, e o shell é o programa que processa comandos dentro dela."}
 ::option[O terminal recebe os comandos, enquanto o shell apenas exibe a saída.]{#terminal-accepts-commands explanation="Essa afirmação inverte as funções. O terminal fornece a interface, enquanto o shell recebe e executa os comandos."}
@@ -40,8 +39,7 @@ pete@icebox:/home/pete $
 
 O símbolo `$` indica que o shell está pronto para receber sua entrada como um usuário comum. Você não digita esse símbolo ao inserir comandos; ele é mostrado pelo shell. Se vir `#`, normalmente estará trabalhando como usuário root, que tem mais poder e também envolve mais riscos.
 
-:::single-choice{#interpret-dollar-prompt}
-O que o `$` no final do prompt de exemplo indica?
+:::single-choice{#interpret-dollar-prompt} O que o `$` no final do prompt de exemplo indica?
 
 ::option[O shell está sendo executado com os privilégios do usuário root.]{#root-user-ready explanation="Um prompt de root normalmente termina em `#`, não em `$`. O acesso root traz mais poder e riscos."}
 ::option[O shell está aguardando uma entrada de um usuário comum.]{#normal-user-ready .correct explanation="O `$` identifica o prompt de um usuário comum e mostra que o shell está pronto para receber um comando."}
@@ -56,8 +54,7 @@ command options arguments
 
 Por exemplo, em `echo Hello World`, `echo` é o comando e `Hello World` é o texto fornecido a ele.
 
-:::single-choice{#identify-command-name}
-Em `echo Hello World`, qual parte é o nome do comando?
+:::single-choice{#identify-command-name} Em `echo Hello World`, qual parte é o nome do comando?
 
 ::option[`Hello`]{#hello-command explanation="`Hello` vem depois do nome do comando e, portanto, faz parte do texto fornecido a `echo`."}
 ::option[`World`]{#world-command explanation="`World` também é um texto fornecido a `echo`, não o nome do comando executado."}
@@ -84,8 +81,7 @@ Hello from Bash
 
 As aspas são úteis quando você quer que o shell trate várias palavras como um único trecho de texto.
 
-:::single-choice{#group-words-with-quotes}
-Qual comando faz o shell tratar `Hello from Bash` como um único trecho de texto entre aspas?
+:::single-choice{#group-words-with-quotes} Qual comando faz o shell tratar `Hello from Bash` como um único trecho de texto entre aspas?
 
 ::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="As aspas agrupam as três palavras em um único argumento fornecido a `echo`."}
 ::option[`echo Hello from Bash`]{#unquoted-words explanation="Esse comando mostra as mesmas palavras, mas o shell as trata como argumentos separados, pois não estão entre aspas."}

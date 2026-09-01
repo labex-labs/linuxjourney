@@ -23,8 +23,7 @@ Os discos apresentados pela camada de discos SCSI normalmente usam nomes `sd`. I
 
 As letras refletem a enumeração, não uma identidade permanente. Adicionar um controlador, alterar a ordem do firmware ou conectar um dispositivo pode mudar qual disco recebe determinada letra.
 
-:::single-choice{#device-names-sdb-first-partition}
-No padrão de nomes `sd`, qual caminho indica a partição 1 de `/dev/sdb`?
+:::single-choice{#device-names-sdb-first-partition} No padrão de nomes `sd`, qual caminho indica a partição 1 de `/dev/sdb`?
 
 ::option[`/dev/sda2`]{#device-names-sda-two explanation="Esse caminho indica a partição 2 do disco atualmente chamado `/dev/sda`."}
 ::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="O separador `p` é usado em padrões cujo nome base já termina em um dígito, não em nomes `sd` comuns."}
@@ -42,8 +41,7 @@ Alguns nomes de dispositivos inteiros já contêm dígitos, portanto os nomes de
 
 Os dispositivos NVMe normalmente não são chamados `/dev/sdX`; eles usam a convenção de nomes do subsistema NVMe.
 
-:::single-choice{#device-names-nvme-partition}
-Qual caminho indica a partição 2 de `/dev/nvme0n1`?
+:::single-choice{#device-names-nvme-partition} Qual caminho indica a partição 2 de `/dev/nvme0n1`?
 
 ::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="Os nomes de partições NVMe inserem `p` antes do número da partição."}
 ::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="Sem um separador, os dígitos finais seriam ambíguos em relação ao número do namespace."}
@@ -60,8 +58,7 @@ O Linux também cria dispositivos de bloco que não correspondem individualmente
 
 Partições, camadas de criptografia, RAID, volumes lógicos e sistemas de arquivos formam uma pilha. Use ferramentas como `lsblk` para visualizar as relações entre pais e filhos, em vez de deduzir a pilha apenas pelo nome.
 
-:::single-choice{#device-names-device-mapper-link}
-Qual local normalmente fornece links descritivos para dispositivos do device mapper?
+:::single-choice{#device-names-device-mapper-link} Qual local normalmente fornece links descritivos para dispositivos do device mapper?
 
 ::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="Aplicações do device mapper, como LVM e criptografia de disco, normalmente expõem links nomeados nesse diretório."}
 ::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null` é um dispositivo de caractere, não um diretório de dispositivos de bloco mapeados."}
@@ -80,8 +77,7 @@ O gerenciamento de dispositivos no espaço do usuário cria links em `/dev/disk/
 
 Escolha um identificador que corresponda ao que precisa permanecer estável. O UUID de um sistema de arquivos identifica o sistema de arquivos, não necessariamente o disco físico abaixo dele. Clonar um sistema de arquivos pode duplicar seu UUID, portanto verifique a exclusividade antes de depender dele.
 
-:::single-choice{#device-names-persistent-config}
-Por que links em `/dev/disk/by-id/` muitas vezes são preferíveis a `/dev/sdX` em configurações específicas de dispositivos?
+:::single-choice{#device-names-persistent-config} Por que links em `/dev/disk/by-id/` muitas vezes são preferíveis a `/dev/sdX` em configurações específicas de dispositivos?
 
 ::option[Eles tornam gravações destrutivas automaticamente reversíveis.]{#device-names-by-id-reversible explanation="Um nome estável não fornece snapshots, backups nem proteção contra gravação."}
 ::option[Eles convertem um dispositivo de bloco em um arquivo comum.]{#device-names-by-id-regular explanation="A entrada é um link simbólico que ainda aponta para um nó de dispositivo de bloco."}
@@ -92,8 +88,7 @@ Por que links em `/dev/disk/by-id/` muitas vezes são preferíveis a `/dev/sdX` 
 
 Nomes como `/dev/null`, `/dev/zero` e `/dev/urandom` descrevem pseudodispositivos do kernel, não armazenamento físico. `/dev/null` descarta gravações e retorna fim de arquivo nas leituras; `/dev/zero` fornece bytes zero; `/dev/urandom` fornece bytes do gerador de números aleatórios do kernel.
 
-:::single-choice{#device-names-zero-read}
-O que a leitura de `/dev/zero` produz?
+:::single-choice{#device-names-zero-read} O que a leitura de `/dev/zero` produz?
 
 ::option[Uma lista de dispositivos de armazenamento não utilizados.]{#device-names-zero-storage-list explanation="Esse é um dispositivo de caractere que produz bytes, não um comando de descoberta."}
 ::option[Um fluxo de bytes com valor zero.]{#device-names-zero-bytes .correct explanation="O pseudodispositivo zero retorna bytes nulos nas leituras solicitadas."}

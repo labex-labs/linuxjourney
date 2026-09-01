@@ -22,8 +22,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 使用 `-6` 选择 IPv6。请记录解析出的地址，因为一个主机名可以返回多个地址，而重复运行时可能选择不同地址。
 
-:::single-choice{#ping-count-option}
-`-c 3` 要求什么？
+:::single-choice{#ping-count-option} `-c 3` 要求什么？
 
 ::option[数据包载荷恰好为三兆字节。]{#ping-three-megabytes explanation="数据包大小使用另一个选项。"}
 ::option[到目的地的三条永久路由。]{#ping-three-routes explanation="ping 探测流量，并不会安装路由。"}
@@ -36,8 +35,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 丢包可能发生在任一方向，ICMP 速率限制也可能让 ping 丢包率与应用程序丢包率不同。
 
-:::single-choice{#ping-sequence-gap}
-缺少某个 `icmp_seq` 应答可能表示什么？
+:::single-choice{#ping-sequence-gap} 缺少某个 `icmp_seq` 应答可能表示什么？
 
 ::option[目的地永久更改了 MAC 地址。]{#ping-sequence-mac explanation="单凭序列缺口无法得出这种链路层结论。"}
 ::option[请求或应答丢失、被过滤、延迟超过等待时间或受到速率限制。]{#ping-sequence-possibilities .correct explanation="序列缺口只表明没有观察到应答，无法确定具体方向或原因。"}
@@ -48,8 +46,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 `time` 字段是从发送请求到收到应答的往返时间，单位为毫秒。它包含去程时延、远端处理时间和返程时延。没有同步的端点测量，就无法用它得知单向延迟。
 
-:::single-choice{#ping-rtt-meaning}
-报告的 `time=23.7 ms` 测量了什么？
+:::single-choice{#ping-rtt-meaning} 报告的 `time=23.7 ms` 测量了什么？
 
 ::option[只有去程路径的单向延迟。]{#ping-outbound-only explanation="ping 测量完整的请求与应答间隔。"}
 ::option[目标系统的运行时间。]{#ping-target-uptime explanation="该值是探测计时，而不是开机时长。"}
@@ -60,8 +57,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 显示的 IPv4 TTL 或 IPv6 Hop Limit 是收到应答时的剩余值。如果不知道发送方的初始值和返回路由，就不能通过减法得到准确跳数。数值变化可能表示响应方、初始值或返回路径发生变化。
 
-:::single-choice{#ping-received-ttl}
-IPv4 回显应答中显示的 TTL 是什么？
+:::single-choice{#ping-received-ttl} IPv4 回显应答中显示的 TTL 是什么？
 
 ::option[应答到达本地主机时的剩余值。]{#ping-remaining-ttl .correct explanation="返回路径上的每台路由器都递减了发送方的初始值。"}
 ::option[两个方向经过的路由器准确总数。]{#ping-exact-hop-count explanation="仅凭该字段无法确定初始 TTL 和各方向路径。"}
@@ -72,8 +68,7 @@ IPv4 回显应答中显示的 TTL 是什么？
 
 如果 ping 成功但服务失败，应测试实际端口、TLS、协议和请求。如果 ping 失败，应先检查名称解析、`ip route get`、邻居状态、防火墙策略和抓包，再断言主机已停机。
 
-:::single-choice{#ping-success-limit}
-ping 成功无法证明什么？
+:::single-choice{#ping-success-limit} ping 成功无法证明什么？
 
 ::option[某条 ICMP 请求与应答路径正常。]{#ping-icmp-worked explanation="应答直接提供了这一证据。"}
 ::option[应答中包含序列号。]{#ping-sequence-present explanation="正常输出会直接报告应答序列。"}

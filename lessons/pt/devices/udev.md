@@ -24,8 +24,7 @@ Quando um dispositivo é adicionado, alterado, movido ou removido, o udev pode:
 
 O kernel continua responsável pelo dispositivo real e por seu driver. Excluir um nó de `/dev` não remove fisicamente o hardware, e criar manualmente um nó com `mknod` não faz um hardware sem suporte existir nem associa um driver a ele.
 
-:::single-choice{#udev-kernel-event-input}
-O que normalmente aciona o processamento do udev para uma alteração de dispositivo?
+:::single-choice{#udev-kernel-event-input} O que normalmente aciona o processamento do udev para uma alteração de dispositivo?
 
 ::option[Uma atualização dos repositórios de pacotes realizada pelo APT.]{#udev-apt-refresh explanation="As atualizações dos metadados de pacotes não têm relação com o processamento de eventos ativos de dispositivos."}
 ::option[Um usuário renomeando manualmente todos os arquivos em `/dev`.]{#udev-manual-renaming explanation="A política dinâmica é orientada por eventos do kernel e regras, não por uma renomeação manual em massa."}
@@ -44,8 +43,7 @@ Os arquivos são processados na ordem lexical dos nomes, e arquivos com o mesmo 
 
 Uma regra pode afetar todos os dispositivos correspondentes, portanto teste seu escopo cuidadosamente. Não edite diretamente regras de pacotes quando uma substituição local ou uma regra suplementar for apropriada.
 
-:::single-choice{#udev-local-rules-directory}
-Qual diretório é destinado às regras udev locais persistentes do administrador?
+:::single-choice{#udev-local-rules-directory} Qual diretório é destinado às regras udev locais persistentes do administrador?
 
 ::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="O procfs não fornece o diretório local persistente de regras."}
 ::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="A política local pertence a `/etc`, separada das regras de fornecedores gerenciadas por pacotes."}
@@ -62,8 +60,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 Use um nó que exista no sistema atual. `udevadm info --attribute-walk --name=...` pode exibir atributos ao longo da cadeia de pais no sysfs, o que ajuda a construir uma regra. `udevadm monitor --kernel --udev --property` observa eventos do kernel e eventos processados; ele pode expor identificadores de dispositivos, portanto trate adequadamente a saída capturada.
 
-:::single-choice{#udev-info-purpose}
-O que `udevadm info --query=all --name=/dev/sda` solicita?
+:::single-choice{#udev-info-purpose} O que `udevadm info --query=all --name=/dev/sda` solicita?
 
 ::option[Uma regravação destrutiva da tabela de partições do disco.]{#udev-info-partition-write explanation="A consulta é uma operação de inspeção e não formata nem reparticiona o armazenamento."}
 ::option[A instalação pela Internet de um driver ausente do kernel.]{#udev-info-install-driver explanation="A inspeção com udevadm não funciona como um gerenciador de downloads de pacotes."}
@@ -76,8 +73,7 @@ Recarregar os arquivos de regras afeta o processamento dos eventos futuros; isso
 
 Faça backup das regras locais, valide a sintaxe, observe um único dispositivo de teste conhecido e mantenha um caminho de recuperação antes de alterar permissões ou nomes. Evite trabalhos demorados diretamente no processamento de eventos do udev; delegue-os a um serviço apropriado.
 
-:::single-choice{#udev-reload-effect}
-O que a recarga das regras udev altera principalmente?
+:::single-choice{#udev-reload-effect} O que a recarga das regras udev altera principalmente?
 
 ::option[A forma como os eventos posteriores correspondentes de dispositivos são processados.]{#udev-future-events .correct explanation="A recarga atualiza as regras em memória; ainda é necessário que ocorra um evento ou que ele seja acionado deliberadamente para um dispositivo ser reavaliado."}
 ::option[A conexão física de todos os dispositivos conectados.]{#udev-physical-wiring explanation="Carregar regras de software não pode alterar conexões de hardware."}

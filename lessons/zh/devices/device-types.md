@@ -28,8 +28,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 “字符”并不要求每次系统调用恰好传输一个字符。应用程序可以读写缓冲区，而阻塞、成帧和控制行为由驱动程序定义。
 
-:::single-choice{#device-types-character-marker}
-模式中的哪个首字符表示字符设备节点？
+:::single-choice{#device-types-character-marker} 模式中的哪个首字符表示字符设备节点？
 
 ::option[`b`]{#device-types-marker-block explanation="b 标记表示块设备节点。"}
 ::option[`p`]{#device-types-marker-pipe explanation="p 标记表示 FIFO，也就是命名管道。"}
@@ -42,8 +41,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 块设备节点不是已挂载的文件系统。它表示一个存储设备或逻辑区域；可以在其上创建文件系统，再单独挂载。向错误的块设备节点写入原始数据可能破坏分区表、文件系统或用户数据。
 
-:::single-choice{#device-types-block-marker}
-模式的第一个字符 `b` 表示什么？
+:::single-choice{#device-types-block-marker} 模式的第一个字符 `b` 表示什么？
 
 ::option[后台 shell 作业。]{#device-types-background-job explanation="shell 作业状态不会编码成文件系统类型字符。"}
 ::option[块设备接口。]{#device-types-block-device .correct explanation="块特殊文件通过内核块子系统公开可寻址存储。"}
@@ -58,8 +56,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 FIFO 和 Unix 套接字节点都不会通过主设备号和次设备号选择硬件驱动程序。
 
-:::single-choice{#device-types-pipe-socket-distinction}
-哪项说法正确区分了这两种 IPC 对象类型？
+:::single-choice{#device-types-pipe-socket-distinction} 哪项说法正确区分了这两种 IPC 对象类型？
 
 ::option[`p` 表示磁盘分区，`s` 表示固态存储。]{#device-types-storage-letters explanation="分区通常属于块设备，而且这些字母不编码存储技术。"}
 ::option[`p` 表示 FIFO，`s` 表示 Unix 域套接字节点。]{#device-types-p-and-s .correct explanation="这是用于本地进程间通信的两种不同文件系统对象类型。"}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 GNU `stat` 会以十六进制显示 `%t` 和 `%T` 的值。
 
-:::single-choice{#device-types-major-minor-scope}
-哪些对象使用主设备号和次设备号标识内核设备接口？
+:::single-choice{#device-types-major-minor-scope} 哪些对象使用主设备号和次设备号标识内核设备接口？
 
 ::option[每个普通文件和目录。]{#device-types-all-files explanation="普通文件使用大小和文件系统元数据，而不是设备节点的主次设备号。"}
 ::option[只有目标缺失的符号链接。]{#device-types-broken-symlinks explanation="符号链接存储路径文本，不会因为目标缺失而变成设备节点。"}

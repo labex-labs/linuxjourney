@@ -23,8 +23,7 @@ meta_keywords: "리눅스 시스템 호출, syscall, syscall 테이블, 커널 �
 - 최적화된 vDSO 함수는 전체 모드 전환 없이 커널이 유지하는 일부 데이터를 가져올 수 있음
 - 시스템 호출 하나가 여러 상위 수준 API를 지원할 수 있음
 
-:::single-choice{#system-calls-library-wrapper}
-일반적인 libc 시스템 호출 래퍼는 무엇을 합니까?
+:::single-choice{#system-calls-library-wrapper} 일반적인 libc 시스템 호출 래퍼는 무엇을 합니까?
 
 ::option[ABI 인수를 준비하고 커널에 진입한 뒤 결과를 변환합니다.]{#system-calls-wrapper-role .correct explanation="래퍼는 아키텍처별 호출 규칙을 일반 라이브러리 인터페이스 뒤에 숨깁니다."}
 ::option[애플리케이션에 커널 메모리의 제한 없는 접근 권한을 부여합니다.]{#system-calls-wrapper-unrestricted explanation="커널 진입은 계속 제어되며 요청을 검증합니다."}
@@ -39,8 +38,7 @@ meta_keywords: "리눅스 시스템 호출, syscall, syscall 테이블, 커널 �
 
 현재 아키텍처의 모든 진입을 “소프트웨어 인터럽트”라고 부르는 것은 정확하지 않습니다. 트랩, 고속 시스템 호출 명령어 및 감독자 호출은 서로 다른 방식으로 관련된 제어 전환을 구현합니다.
 
-:::single-choice{#system-calls-entry-result}
-시스템 호출의 인수와 권한을 검증하는 것은 누구입니까?
+:::single-choice{#system-calls-entry-result} 시스템 호출의 인수와 권한을 검증하는 것은 누구입니까?
 
 ::option[프로세스 시작 전의 셸 프롬프트입니다.]{#system-calls-shell-validates explanation="프로세스는 셸과 독립적으로 시스템 호출을 수행할 수 있으며 커널 검사는 계속 필요합니다."}
 ::option[요청된 서비스의 커널 구현입니다.]{#system-calls-kernel-validates .correct explanation="특권 핸들러는 작업 전에 포인터, 객체 상태, 자격 증명 및 정책을 검사합니다."}
@@ -53,8 +51,7 @@ meta_keywords: "리눅스 시스템 호출, syscall, syscall 테이블, 커널 �
 
 비특권 프로세스는 실행 중인 커널의 syscall 테이블에 임의의 새 핸들러를 삽입할 수 없습니다. 인터페이스 확장에는 커널 코드와 신중한 ABI 설계가 필요합니다. seccomp 같은 기능은 프로세스가 수행할 수 있는 호출을 필터링하지만 새 커널 구현을 만들지는 않습니다.
 
-:::single-choice{#system-calls-number-portability}
-애플리케이션이 다른 아키텍처의 syscall 번호를 하드 코딩해서는 안 되는 이유는 무엇입니까?
+:::single-choice{#system-calls-number-portability} 애플리케이션이 다른 아키텍처의 syscall 번호를 하드 코딩해서는 안 되는 이유는 무엇입니까?
 
 ::option[번호와 호출 규칙이 ABI별로 다르기 때문입니다.]{#system-calls-abi-specific .correct explanation="한 아키텍처에서 의미 있는 번호가 다른 곳에서는 다른 작업을 나타내거나 존재하지 않을 수 있습니다."}
 ::option[시스템 호출 이름이 현재 작업 디렉터리에서 정해지기 때문입니다.]{#system-calls-directory-names explanation="경로 이름은 syscall 번호 ABI를 정의하지 않습니다."}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace`에는 경로, 인수, 환경에서 파생된 데이터, 네트워크 주소, 파일 내용 일부 및 인수로 잘못 전달된 자격 증명이 나타날 수 있습니다. 추적 파일을 제한적인 권한으로 저장하고 사고 데이터 정책에 따라 제거하십시오.
 
-:::single-choice{#system-calls-strace-purpose}
-`strace`가 주로 관찰하는 것은 무엇입니까?
+:::single-choice{#system-calls-strace-purpose} `strace`가 주로 관찰하는 것은 무엇입니까?
 
 ::option[애플리케이션 안에서 실행된 소스 코드 줄만 관찰합니다.]{#system-calls-strace-source-lines explanation="소스 수준 추적에는 심볼을 갖춘 디버거나 계측이 필요합니다."}
 ::option[사용자-커널 경계의 시스템 호출과 신호입니다.]{#system-calls-strace-boundary .correct explanation="추적된 프로세스의 요청, 인수, 결과 및 신호 이벤트를 보고합니다."}
@@ -91,8 +87,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 권한과 ptrace 보안 정책은 추적할 수 있는 프로세스를 제한합니다. 승인 없이 다른 사용자나 운영 프로세스에 연결하지 마십시오. 정지와 타이밍 변화가 서비스 동작에 영향을 줄 수 있습니다.
 
-:::single-choice{#system-calls-strace-failure}
-추적에서 시스템 호출 하나가 실패하면 애플리케이션이 반드시 고장 났다는 뜻입니까?
+:::single-choice{#system-calls-strace-failure} 추적에서 시스템 호출 하나가 실패하면 애플리케이션이 반드시 고장 났다는 뜻입니까?
 
 ::option[그렇습니다. 0이 아닌 모든 반환은 즉시 리눅스를 종료합니다.]{#system-calls-nonzero-terminates explanation="애플리케이션은 시스템 실패 없이 시스템 호출 오류를 흔히 처리합니다."}
 ::option[아닙니다. 프로그램은 대안을 탐색하고 예상된 오류를 처리하는 경우가 많습니다.]{#system-calls-expected-failure .correct explanation="반환값을 따로 보지 말고 제어 흐름과 애플리케이션 맥락에서 해석해야 합니다."}

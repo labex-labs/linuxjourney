@@ -32,8 +32,7 @@ Veja um exemplo simplificado dessa estrutura:
 |-- var
 ```
 
-:::single-choice{#identify-root-subdirectories}
-Na árvore de diretórios acima, qual é a relação de `home` e `etc` com `/`?
+:::single-choice{#identify-root-subdirectories} Na árvore de diretórios acima, qual é a relação de `home` e `etc` com `/`?
 
 ::option[Eles são subdiretórios que se ramificam a partir de `/`.]{#root-subdirectories .correct explanation="Os dois diretórios aparecem diretamente abaixo de `/` na árvore. O sistema de arquivos se ramifica em subdiretórios a partir da raiz."}
 ::option[Eles são arquivos armazenados dentro do diretório `bin`.]{#files-inside-bin explanation="A árvore coloca `home` e `etc` ao lado de `bin`, não dentro dele. Neste exemplo, eles são diretórios, e não arquivos."}
@@ -52,8 +51,7 @@ Por exemplo, se houver uma pasta chamada `pete` dentro de `/home` e uma pasta `M
 
 Um caminho que começa com `/` é absoluto porque parte do diretório raiz. Um caminho como `Movies` é relativo porque depende da sua localização atual.
 
-:::single-choice{#recognize-absolute-path}
-O que torna `/home/pete/Movies` um caminho absoluto?
+:::single-choice{#recognize-absolute-path} O que torna `/home/pete/Movies` um caminho absoluto?
 
 ::option[Ele contém vários nomes de diretórios separados por `/`.]{#contains-directories explanation="Tanto caminhos absolutos quanto relativos podem conter vários nomes de diretórios. O ponto inicial, e não a quantidade de nomes, determina o tipo do caminho."}
 ::option[Ele termina em um diretório chamado `Movies`.]{#ends-with-movies explanation="O nome do destino não determina se um caminho é absoluto. Um caminho absoluto é identificado por seu ponto inicial na raiz."}
@@ -64,8 +62,7 @@ O que torna `/home/pete/Movies` um caminho absoluto?
 
 `pwd` significa “print working directory”, ou “exibir o diretório de trabalho”. Seu diretório de trabalho é aquele em que o shell se encontra no momento. Os comandos que usam caminhos relativos partem dessa localização.
 
-:::single-choice{#expand-pwd-name}
-O que significa `pwd`?
+:::single-choice{#expand-pwd-name} O que significa `pwd`?
 
 ::option[Print working directory]{#print-working-directory .correct explanation="O nome descreve exatamente o que o comando faz: exibe o diretório de trabalho atual do shell."}
 ::option[Present working directory]{#present-working-directory explanation="Na linguagem comum, a localização atual pode ser chamada de diretório presente, mas essa não é a expansão de `pwd`."}
@@ -85,8 +82,7 @@ A saída é um caminho absoluto. Neste exemplo, o shell está no diretório pess
 
 A saída exata pode ser diferente em seu sistema porque o nome do usuário, o diretório pessoal e a localização atual podem variar. O comando `pwd` apenas exibe informações; ele não altera o diretório de trabalho. Já `cd` muda o diretório em que o shell se encontra.
 
-:::single-choice{#check-location-without-changing-it}
-Qual ação verifica seu diretório atual sem alterá-lo?
+:::single-choice{#check-location-without-changing-it} Qual ação verifica seu diretório atual sem alterá-lo?
 
 ::option[Executar `cd` e ler o diretório para o qual ele muda.]{#run-cd explanation="O comando `cd` altera o diretório de trabalho. Ele não atende ao requisito de verificar a localização sem modificá-la."}
 ::option[Inserir `/home/pete` e usar o caminho como um comando.]{#run-path explanation="Um caminho absoluto identifica uma localização, mas o caminho sozinho não é o comando que informa seu diretório atual."}

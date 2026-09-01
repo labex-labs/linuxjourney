@@ -24,8 +24,7 @@ $ ps -ef | grep '[d]hclient'
 
 ホストに存在するツールを使ってください。マネージャーがインターフェースを管理しているなら、別のクライアントを起動せず、そのマネージャーを通じて DHCP を要求します。
 
-:::single-choice{#dhclient-second-client-risk}
-すでに管理されているインターフェースで `dhclient` を起動すべきでないのはなぜですか？
+:::single-choice{#dhclient-second-client-risk} すでに管理されているインターフェースで `dhclient` を起動すべきでないのはなぜですか？
 
 ::option[DHCP はループバックアドレスしか割り当てられないから。]{#dhclient-loopback-only explanation="DHCP は一般に、ループバックではないネットワーク設定を割り当てます。"}
 ::option[二つのクライアントがアドレス、ルート、DNS、リースを巡って競合するから。]{#dhclient-competing-state .correct explanation="通常、特定した一つの設定管理主体だけがインターフェースを整合させるべきです。"}
@@ -42,8 +41,7 @@ $ sudo dhclient -v enp1s0
 
 インターフェースを指定せずに実行すると、複数の対象インターフェースへ作用する場合があります。設定とリースのパスはパッケージや呼び出し方によって異なります。一般的な名前には `dhclient.conf` と `dhclient.leases` がありますが、一つの固定場所を想定しないでください。
 
-:::single-choice{#dhclient-interface-operand}
-手動要求で `enp1s0` を指定するのはなぜですか？
+:::single-choice{#dhclient-interface-operand} 手動要求で `enp1s0` を指定するのはなぜですか？
 
 ::option[目的のネットワークインターフェースだけを対象にするため。]{#dhclient-scope-interface .correct explanation="対象を指定しないクライアント実行は、意図した以上のインターフェースを検討する場合があります。"}
 ::option[DHCP に TCP ポート 1 を選ぶため。]{#dhclient-tcp-port explanation="DHCP は UDP を使い、インターフェース名はポートではありません。"}
@@ -54,8 +52,7 @@ $ sudo dhclient -v enp1s0
 
 `dhclient -r INTERFACE` はリースの解放を要求し、利用中の設定を取り除く場合があります。これは通信を中断する操作であり、サーバーが解放通知を受け取れるとも限りません。リースを確認するだけの目的で、特にリモート管理経路上のリースを解放してはいけません。
 
-:::single-choice{#dhclient-release-effect}
-`dhclient -r enp1s0` には、どのような運用上の危険がありますか？
+:::single-choice{#dhclient-release-effect} `dhclient -r enp1s0` には、どのような運用上の危険がありますか？
 
 ::option[変更せず現在のリースを表示するだけ。]{#dhclient-release-readonly explanation="リースの解放は状態を変更する操作です。"}
 ::option[すべてのリースを無期限に更新する。]{#dhclient-release-renews explanation="解放と更新は反対の操作です。"}
@@ -74,8 +71,7 @@ $ resolvectl status
 
 マネージャーまたはクライアントのログとリース期間を確認し、目的の名前解決とアプリケーションをテストします。DHCPACK に誤ったオプションが含まれる場合もあり、アドレスの割り当て成功だけではゲートウェイや DNS への到達性は証明できません。
 
-:::single-choice{#dhclient-verify-state}
-リース取得後に検証すべきものはどれですか？
+:::single-choice{#dhclient-verify-state} リース取得後に検証すべきものはどれですか？
 
 ::option[アドレス、ルート、DNS、リース、アプリケーションの動作。]{#dhclient-complete-verify .correct explanation="リースは相互に関連する複数の要素を設定するため、それらが連携して動く必要があります。"}
 ::option[アドレス文字列が表示されることだけ。]{#dhclient-address-only explanation="ルート、DNS、有効期間、エンドツーエンドの動作が誤っている可能性は残ります。"}

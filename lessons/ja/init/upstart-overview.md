@@ -24,8 +24,7 @@ $ initctl version
 
 最後のコマンドが意味のある形で成功するのは、Upstart の制御サービスとクライアントが存在する環境だけです。`/usr/share/upstart` のようなディレクトリや `/etc/init` に残るファイルは弱い証拠です。別の init システムへ移行した後も、パッケージや移行時の残骸が残ることがあります。
 
-:::single-choice{#upstart-overview-active-evidence}
-ホストが実際に Upstart を使っていることを示す最も強い証拠はどれですか？
+:::single-choice{#upstart-overview-active-evidence} ホストが実際に Upstart を使っていることを示す最も強い証拠はどれですか？
 
 ::option[ディレクトリ名に `upstart` という語が含まれていること。]{#upstart-overview-directory-only explanation="別の init を使うシステムにも、インストール済み文書や残骸が残ることがあります。"}
 ::option[システムに少なくとも1つシェルスクリプトがあること。]{#upstart-overview-shell-script explanation="シェルスクリプトはどの init 環境でも一般的です。"}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 この例は、互換性のための入力としてランレベルイベントを使っています。システムが何をイベントとして発行するかによって、Upstart はファイルシステム、デバイス、ネットワーク、アプリケーション定義のイベントにも反応できます。
 
-:::single-choice{#upstart-overview-start-on}
-Upstart の `start on` スタンザは何を定義しますか？
+:::single-choice{#upstart-overview-start-on} Upstart の `start on` スタンザは何を定義しますか？
 
 ::option[次にコンパイルすべきカーネルのバージョン。]{#upstart-overview-kernel-version explanation="ジョブのイベント条件はカーネルビルドを選択しません。"}
 ::option[ジョブの目標を開始へ変えるイベント式。]{#upstart-overview-start-condition .correct explanation="式が満たされると、Upstart は設定されたジョブの開始移行を試みます。"}
@@ -61,8 +59,7 @@ Upstart の `start on` スタンザは何を定義しますか？
 
 このモデルでは、単一の固定されたグローバルなスクリプト順序を避けられます。一方、イベント名、順序、条件が暗黙的な場合は診断が難しくなります。イベントは既定では永続的なメッセージキューではないため、後から追加したジョブや変更した条件で、過去のすべてのイベントが再送されるとは考えないでください。
 
-:::single-choice{#upstart-overview-event-chain}
-ある Upstart ジョブが、別のジョブの開始につながる仕組みはどれですか？
+:::single-choice{#upstart-overview-event-chain} ある Upstart ジョブが、別のジョブの開始につながる仕組みはどれですか？
 
 ::option[別のジョブの実行ファイルをメモリ上で書き換える。]{#upstart-overview-rewrite-binary explanation="連携はコードの変更ではなく、イベントを通じて行われます。"}
 ::option[すべてのジョブが必ずファイル名順に開始される。]{#upstart-overview-filename-order explanation="Upstart はファイル名順の単一起動リストではなく、イベント式を使います。"}
@@ -73,8 +70,7 @@ Upstart の `start on` スタンザは何を定義しますか？
 
 Systemd は一部の古いサービススクリプトに限定的な互換性を提供できますが、Upstart のジョブ構文をネイティブな systemd ユニットとして実行するわけではありません。移行時はファイル名を機械的に変えるのではなく、ライフサイクル条件、環境、再生成方針、ログ、依存関係、準備完了の意味を明示的に変換してください。
 
-:::single-choice{#upstart-overview-current-ubuntu}
-現在の標準的な Ubuntu リリースが使う init システムはどれですか？
+:::single-choice{#upstart-overview-current-ubuntu} 現在の標準的な Ubuntu リリースが使う init システムはどれですか？
 
 ::option[すべてのインストールで Upstart だけを使う。]{#upstart-overview-current-upstart explanation="それが当てはまるのは、過去の特定リリースと構成だけです。"}
 ::option[systemd。]{#upstart-overview-current-systemd .correct explanation="Upstart は古い世代の Ubuntu で使われ、現在のリリースは PID 1 として systemd を使います。"}

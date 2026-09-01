@@ -24,8 +24,7 @@ Un paquet binaire peut contenir des exécutables, des bibliothèques, de la docu
 
 Tous les paquets ne sont pas des applications interactives. Un paquet peut fournir une bibliothèque, un composant du noyau, des données linguistiques, des polices, des symboles de débogage ou des métadonnées qui dépendent d’un ensemble d’autres paquets.
 
-:::single-choice{#software-distribution-package-metadata}
-Quelle information relève normalement des métadonnées d’un paquet plutôt que d’un exécutable applicatif ?
+:::single-choice{#software-distribution-package-metadata} Quelle information relève normalement des métadonnées d’un paquet plutôt que d’un exécutable applicatif ?
 
 ::option[Les instructions du processeur qui mettent en œuvre l’application.]{#software-distribution-executable-code explanation="Les instructions compilées appartiennent au contenu utile du paquet, et non aux métadonnées de dépendances."}
 ::option[Les relations de dépendances déclarées.]{#software-distribution-dependencies .correct explanation="Les paquets décrivent leurs exigences ou leurs conflits afin que les outils de gestion puissent raisonner sur l’installation."}
@@ -38,8 +37,7 @@ Un projet en amont développe et publie le code source d’origine. Les maintene
 
 L’infrastructure de construction de la distribution produit des paquets pour les versions et architectures prises en charge. Les outils du dépôt publient des métadonnées et des signatures que les clients peuvent vérifier. Les responsabilités exactes varient : certains projets en amont publient leurs propres paquets, tandis que les distributions peuvent les construire indépendamment à partir du code source.
 
-:::single-choice{#software-distribution-maintainer-role}
-Quelle tâche incombe couramment au mainteneur d’un paquet de distribution ?
+:::single-choice{#software-distribution-maintainer-role} Quelle tâche incombe couramment au mainteneur d’un paquet de distribution ?
 
 ::option[Adapter le code source en amont aux règles de construction et de dépendances de la distribution.]{#software-distribution-maintainer-integrates .correct explanation="Les mainteneurs adaptent les logiciels aux politiques, aux constructions, aux dépendances et aux environnements pris en charge par la distribution."}
 ::option[Choisir le mot de passe du compte local de chaque utilisateur.]{#software-distribution-maintainer-passwords explanation="Les données d’authentification locales sont sans rapport avec la maintenance des paquets."}
@@ -55,8 +53,7 @@ Deux formats natifs largement utilisés sont :
 
 Il existe d’autres formats natifs et multiplateformes. Une extension de fichier correspondante ne garantit pas à elle seule la compatibilité : l’architecture du paquet, la version de la distribution, les versions des bibliothèques, les politiques, les signatures et les dépendances comptent également.
 
-:::single-choice{#software-distribution-debian-format}
-Quel format de paquet natif Debian et Ubuntu utilisent-ils ?
+:::single-choice{#software-distribution-debian-format} Quel format de paquet natif Debian et Ubuntu utilisent-ils ?
 
 ::option[`.deb`]{#software-distribution-format-deb .correct explanation="Les outils de la famille Debian emploient le format d’archive `.deb`."}
 ::option[`.rpm`]{#software-distribution-format-rpm explanation="RPM est natif de Fedora, RHEL et des familles de distributions apparentées."}
@@ -69,8 +66,7 @@ Un gestionnaire de paquets enregistre l’état installé et coordonne les chang
 
 La confiance dépend toujours de la configuration des dépôts et des clés de signature. Un paquet valide du point de vue cryptographique prouve son association avec une clé de confiance, mais pas qu’un logiciel tiers arbitraire est sûr ou adapté. Privilégiez si possible les dépôts de la distribution et évaluez toute source externe avant de lui accorder des privilèges d’installation.
 
-:::single-choice{#software-distribution-package-manager-benefit}
-Quel est l’un des avantages d’une installation depuis un dépôt de paquets de confiance ?
+:::single-choice{#software-distribution-package-manager-benefit} Quel est l’un des avantages d’une installation depuis un dépôt de paquets de confiance ?
 
 ::option[Le gestionnaire peut suivre les versions et résoudre les dépendances déclarées.]{#software-distribution-managed-lifecycle .correct explanation="Les métadonnées du dépôt et les enregistrements de l’état installé permettent de coordonner l’installation, les mises à jour et la suppression."}
 ::option[Chaque programme installé devient insensible aux failles de sécurité.]{#software-distribution-no-vulnerabilities explanation="La gestion des paquets facilite les mises à jour, mais ne peut garantir l’absence de défauts."}

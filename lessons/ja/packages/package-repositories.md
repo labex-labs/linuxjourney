@@ -24,8 +24,7 @@ $ sudo apt update
 
 これはローカルのパッケージ索引を更新するもので、利用可能なアップグレードをすべてインストールする操作ではありません。失敗した項目を無視せず、報告された情報源と認証エラーを確認してください。
 
-:::single-choice{#package-repositories-apt-update}
-`apt update` が主に更新するものは何ですか？
+:::single-choice{#package-repositories-apt-update} `apt update` が主に更新するものは何ですか？
 
 ::option[確認なしに、インストール済みのすべてのパッケージバイナリ。]{#package-repositories-all-binaries explanation="アップグレードのインストールは、メタデータの更新とは別の操作です。"}
 ::option[パッケージのインストールを許可されたユーザーのパスワード。]{#package-repositories-user-passwords explanation="リポジトリ索引の更新はローカル認証情報を変更しません。"}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 これは構文例にすぎず、予約された `.invalid` ドメインは利用可能なリポジトリではありません。
 
-:::single-choice{#package-repositories-apt-locations}
-APT はどこから有効なリポジトリ定義を読み取れますか？
+:::single-choice{#package-repositories-apt-locations} APT はどこから有効なリポジトリ定義を読み取れますか？
 
 ::option[`/etc/apt/sources.list` だけ。]{#package-repositories-only-main-list explanation="APT は `/etc/apt/sources.list.d/` 以下の対応するソースファイルも読み取ります。"}
 ::option[各ユーザーのホームディレクトリ内のファイルだけ。]{#package-repositories-only-home explanation="システムの APT ソース設定は通常 `/etc/apt` 以下にあります。"}
@@ -67,8 +65,7 @@ APT は署名されたリポジトリのリリースメタデータを検証し�
 
 有効な署名から分かるのは、受け入れた署名鍵の所有者からメタデータが届き、検出されない変更を受けていないことです。公開者のソフトウェアに欠陥や悪意がなく、そのシステムに適していることまでは証明しません。鍵のフィンガープリントとソースの手順は、独立した信頼できる経路で確認してください。
 
-:::single-choice{#package-repositories-signed-by}
-APT ソース定義における `Signed-By` のセキュリティ上の目的は何ですか？
+:::single-choice{#package-repositories-signed-by} APT ソース定義における `Signed-By` のセキュリティ上の目的は何ですか？
 
 ::option[インストール済みの全パッケージを暗号化し、root からも読めなくする。]{#package-repositories-package-encryption explanation="リポジトリ署名は出所と整合性の確認を提供し、ローカル管理者からの秘匿性は提供しません。"}
 ::option[そのソースで使える署名鍵を選択したものに限定する。]{#package-repositories-key-scope .correct explanation="このフィールドは、制限のないグローバル鍵集合ではなく、選択したキーリング資料へリポジトリ検証を結び付けます。"}
@@ -87,8 +84,7 @@ APT ソース定義における `Signed-By` のセキュリティ上の目的は
 
 署名確認を無効化したり、監査していないリモートスクリプトを特権シェルへパイプしたりする古い手順をコピーしてはいけません。
 
-:::single-choice{#package-repositories-third-party-risk}
-第三者リポジトリの追加がシステムの信頼境界を広げるのはなぜですか？
+:::single-choice{#package-repositories-third-party-risk} 第三者リポジトリの追加がシステムの信頼境界を広げるのはなぜですか？
 
 ::option[認証済みのパッケージとスクリプトがシステム権限でインストールされ得るから。]{#package-repositories-privileged-install .correct explanation="署名ソースを信頼すると、オペレーティングシステムへ影響するコードとライフサイクル操作を認可できます。"}
 ::option[Linux カーネルがファイル権限を強制しなくなるから。]{#package-repositories-disable-permissions explanation="リポジトリ設定はカーネルの通常のアクセス制御機構を無効にしません。"}

@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 위 RPM 조회 형식에서 `p`는 설치된 데이터베이스가 아니라 “패키지 파일을 조회”한다는 뜻입니다. 조회 출력은 패키지 검토에 도움이 되지만 스크립트나 프로그램이 안전하다는 사실을 증명하지는 못합니다.
 
-:::single-choice{#package-install-tools-native-format}
-데비안 `.deb` 패키지와 설치 데이터베이스를 관리하는 저수준 도구는 무엇입니까?
+:::single-choice{#package-install-tools-native-format} 데비안 `.deb` 패키지와 설치 데이터베이스를 관리하는 저수준 도구는 무엇입니까?
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM은 RPM 계열 시스템에서 자체 네이티브 형식과 데이터베이스를 관리합니다."}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="tar는 아카이브를 읽을 수 있지만 데비안의 설치 패키지 수명 주기를 구현하지는 않습니다."}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 확정하기 전에 트랜잭션을 검토하십시오. APT에서는 앞의 `./`가 로컬 데비안 아카이브 경로를 저장소 패키지 이름과 구분합니다.
 
-:::single-choice{#package-install-tools-local-dependencies}
-사용 가능한 저장소 의존성을 해결하면서 로컬 `.deb` 파일을 설치할 수 있는 명령은 무엇입니까?
+:::single-choice{#package-install-tools-local-dependencies} 사용 가능한 저장소 의존성을 해결하면서 로컬 `.deb` 파일을 설치할 수 있는 명령은 무엇입니까?
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l`은 설치 패키지 선택 항목을 나열하며 로컬 의존성을 해결하는 설치 작업 흐름이 아닙니다."}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="RPM 조회 구문은 데비안 아카이브를 설치하지 않습니다."}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 데비안의 `--remove`는 보통 conffile로 분류된 설정 파일을 유지합니다. `--purge`는 패키지 스크립트와 관리되지 않는 데이터의 영향을 받지만 이러한 설정 파일도 제거하도록 요청합니다. 어느 명령도 사용자가 만든 데이터의 삭제를 보장하지 않습니다. 관련 패키지를 평가하고 전체 트랜잭션을 보여 줄 수 있으므로 일반적으로 고수준 `apt remove` 또는 `dnf remove`가 더 좋습니다.
 
-:::single-choice{#package-install-tools-remove-operand}
-`dpkg --remove`는 설치된 패키지를 제거할 때 어떤 피연산자를 요구합니까?
+:::single-choice{#package-install-tools-remove-operand} `dpkg --remove`는 설치된 패키지를 제거할 때 어떤 피연산자를 요구합니까?
 
 ::option[저장소 인덱스의 URL입니다.]{#package-install-tools-remove-url explanation="저장소 위치는 저수준 제거 명령에 전달하는 패키지 식별자가 아닙니다."}
 ::option[설치된 패키지 이름입니다.]{#package-install-tools-remove-name .correct explanation="제거는 이전 `.deb` 경로가 아니라 `example` 같은 패키지 레코드를 대상으로 합니다."}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 대상을 좁혀 검사할 때는 특정 패키지 이름을 사용하고, 스크립트의 안정성이 중요하다면 기계 판독 형식을 사용하십시오. 패키지 데이터베이스는 관리되는 상태를 설명하지만 로컬 관리자나 애플리케이션이 나중에 파일을 변경할 수도 있습니다. 설치 파일을 기록된 메타데이터와 비교해야 한다면 검증 기능을 사용하십시오.
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-RPM 데이터베이스에 설치된 것으로 기록된 모든 패키지를 조회하는 명령은 무엇입니까?
+:::single-choice{#package-install-tools-rpm-list-installed} RPM 데이터베이스에 설치된 것으로 기록된 모든 패키지를 조회하는 명령은 무엇입니까?
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q`는 조회 모드를 선택하고 `-a`는 모든 설치 패키지 레코드로 범위를 넓힙니다."}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e`는 읽기 전용 목록이 아니라 패키지 제거를 요청합니다."}

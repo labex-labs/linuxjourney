@@ -29,8 +29,7 @@ $ getent passwd root
 
 첫 번째 명령은 계정 이름과 메타데이터를 노출할 수 있으므로 공개적으로 공유하기 전에 출력을 검토하세요.
 
-:::single-choice{#passwd-query-resolved-database}
-로컬 파일만 읽지 않고 NSS로 해석된 passwd 데이터베이스를 질의하는 명령은 무엇인가요?
+:::single-choice{#passwd-query-resolved-database} 로컬 파일만 읽지 않고 NSS로 해석된 passwd 데이터베이스를 질의하는 명령은 무엇인가요?
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="로컬 파일만 표시하며 다른 NSS 출처에서만 제공되는 계정을 포함하지 않습니다."}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="shadow 파일에는 보호된 로컬 비밀번호 만료 데이터가 있으며 이 목적으로 표시해서는 안 됩니다."}
@@ -57,16 +56,14 @@ root:x:0:0:root:/root:/bin/bash
 
 커널은 잘못되었거나 의도적으로 중복된 레코드에서 UID 값이 고유할 것을 강제하지 않지만 같은 UID를 공유하는 계정은 여러 소유권 및 권한 결정에서 구분되지 않습니다. 관리자는 일반적으로 계정 UID를 고유하게 유지해야 합니다.
 
-:::single-choice{#passwd-uid-field}
-`root:x:0:0:root:/root:/bin/bash`에서 UID가 들어 있는 필드는 무엇인가요?
+:::single-choice{#passwd-uid-field} `root:x:0:0:root:/root:/bin/bash`에서 UID가 들어 있는 필드는 무엇인가요?
 
 ::option[두 번째 필드 `x`]{#passwd-second-password explanation="두 번째 필드는 숫자 사용자 신원이 아니라 비밀번호 자리 표시자입니다."}
 ::option[네 번째 필드인 두 번째 `0`]{#passwd-fourth-gid explanation="필드 4는 UID가 아니라 기본 GID입니다."}
 ::option[세 번째 필드인 첫 번째 `0`]{#passwd-third-uid .correct explanation="필드 3이 UID이므로 첫 번째 0은 이 레코드를 UID 0으로 식별합니다."}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-passwd 레코드에서 계정의 기본 GID를 저장하는 필드는 무엇인가요?
+:::single-choice{#passwd-primary-gid-field} passwd 레코드에서 계정의 기본 GID를 저장하는 필드는 무엇인가요?
 
 ::option[필드 5]{#passwd-gecos-five explanation="다섯 번째 필드는 GECOS 또는 설명 필드입니다."}
 ::option[필드 4]{#passwd-gid-four .correct explanation="콜론으로 구분된 네 번째 필드가 기본 그룹을 숫자로 식별합니다."}
@@ -79,8 +76,7 @@ passwd 레코드에서 계정의 기본 GID를 저장하는 필드는 무엇인�
 
 그렇다고 계정이 모든 방식으로 인증할 수 없다는 뜻은 아닙니다. SSH 키, 인증서, 토큰 또는 서비스별 메커니즘은 별개일 수 있습니다. 빈 비밀번호 필드도 인증 스택에 따라 보안에 민감한 동작을 하므로 직접 만들거나 “고치지” 마세요.
 
-:::single-choice{#passwd-x-placeholder}
-로컬 `/etc/passwd` 레코드의 필드 2에서 `x`는 일반적으로 무엇을 뜻하나요?
+:::single-choice{#passwd-x-placeholder} 로컬 `/etc/passwd` 레코드의 필드 2에서 `x`는 일반적으로 무엇을 뜻하나요?
 
 ::option[계정에 인증 방법이 전혀 없음을 보장합니다.]{#passwd-no-auth-guarantee explanation="자리 표시자는 가능한 모든 인증 방법을 설명하지 않으며 그 자체로 계정을 사용할 수 없다는 뜻도 아닙니다."}
 ::option[계정의 홈 디렉터리가 삭제되었습니다.]{#passwd-home-deleted explanation="홈 디렉터리 정보는 필드 6에 저장되며 `x` 자리 표시자와 관련이 없습니다."}
@@ -93,8 +89,7 @@ passwd 레코드에서 계정의 기본 GID를 저장하는 필드는 무엇인�
 
 배포판 정책을 확인하지 않고 UID 범위만으로 계정 목적을 추론하지 마세요. 할당 범위는 다양하며 중앙 관리 계정은 다른 규칙을 따를 수 있습니다.
 
-:::single-choice{#passwd-nologin-shell}
-필드 7에서 `/usr/sbin/nologin` 같은 로그인 프로그램의 일반적인 목적은 무엇인가요?
+:::single-choice{#passwd-nologin-shell} 필드 7에서 `/usr/sbin/nologin` 같은 로그인 프로그램의 일반적인 목적은 무엇인가요?
 
 ::option[서비스가 멈출 때마다 계정 파일을 삭제합니다.]{#passwd-nologin-delete explanation="로그인 프로그램은 소유 데이터를 자동으로 제거하거나 서비스 종료 파일을 관리하지 않습니다."}
 ::option[해당 필드를 따르는 로그인 경로를 통한 일반 대화형 쉘을 막습니다.]{#passwd-nologin-purpose .correct explanation="로그인 불가 프로그램은 일반 로그인을 통해 대화형 쉘을 받아서는 안 되는 서비스 계정에 흔히 사용됩니다."}

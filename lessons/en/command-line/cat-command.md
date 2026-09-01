@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 The command writes the entire file to standard output. This works well for short text, but a long file may scroll past too quickly.
 
-:::single-choice{#display-short-file}
-Which command displays all of `myfile.txt` in the terminal?
+:::single-choice{#display-short-file} Which command displays all of `myfile.txt` in the terminal?
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file` reports the likely file type. It does not print the complete text stored in the file."}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch` updates timestamps or creates a missing file. It does not display the file's contents."}
@@ -46,8 +45,7 @@ $ cat dogfile birdfile > animals
 
 The shell creates `animals` or truncates it before running `cat`, then sends the combined output there. Do not use one of the input files as this destination, because it may be emptied before `cat` reads it.
 
-:::single-choice{#combine-files-in-order}
-Which command writes `part1` followed by `part2` into a new or replaced file named `whole`?
+:::single-choice{#combine-files-in-order} Which command writes `part1` followed by `part2` into a new or replaced file named `whole`?
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="Redirection has one destination, while the other words become operands to `cat`. This does not express the requested input and output order."}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` emits the two files in the order listed, and `>` redirects that combined output to `whole`."}
@@ -70,8 +68,7 @@ Use `>>` to append new input instead of replacing existing contents:
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-You want to type more text at the end of an existing `notes.txt`. Which command starts that operation without truncating the file?
+:::single-choice{#append-terminal-input} You want to type more text at the end of an existing `notes.txt`. Which command starts that operation without truncating the file?
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="A single `>` redirects input after truncating the destination. Existing text in `notes.txt` would be lost."}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="The `>>` operator opens the destination for appending, so text read by `cat` is added after the existing contents."}
@@ -95,8 +92,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-Which command numbers only the nonempty output lines from `notes.txt`?
+:::single-choice{#number-nonempty-lines} Which command numbers only the nonempty output lines from `notes.txt`?
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="The `-b` option numbers nonempty output lines while leaving empty lines unnumbered."}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="The `-n` option numbers every output line, including empty ones. It does not meet the nonempty-only condition."}
@@ -111,8 +107,7 @@ Use `cat` when you want the entire output at once. For a long file, `less` is us
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-Which command is better suited to interactively reading a long log file?
+:::single-choice{#choose-viewer-for-long-file} Which command is better suited to interactively reading a long log file?
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` provides scrolling, searching, and a controlled exit, making it suitable for interactive reading of long files."}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` writes the entire log to the terminal at once. A long file may scroll past before you can inspect it."}

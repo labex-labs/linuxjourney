@@ -25,8 +25,7 @@ meta_keywords: "Linux 软件包依赖项，共享库，Linux 软件包，软件�
 
 这些规则让求解器能够从已配置仓库、架构和已安装状态中选择一组兼容的软件包版本。一个方案可能需要升级、移除软件包或在提供者之间作出选择，因此批准前应检查建议的事务。
 
-:::single-choice{#package-dependencies-solver-role}
-能够访问仓库的依赖求解器会尝试生成什么？
+:::single-choice{#package-dependencies-solver-role} 能够访问仓库的依赖求解器会尝试生成什么？
 
 ::option[一组一致的软件包版本和必要变更。]{#package-dependencies-consistent-set .correct explanation="求解器会评估已安装和可用软件包之间声明的关系。"}
 ::option[为每个已安装应用程序创建一个新用户账户。]{#package-dependencies-user-account explanation="创建账户可能是软件包生命周期操作，但不是依赖解析的目的。"}
@@ -39,8 +38,7 @@ meta_keywords: "Linux 软件包依赖项，共享库，Linux 软件包，软件�
 
 在基于 ELF 的 Linux 系统上，可执行文件可以记录所需的库名称，例如 SONAME。程序启动时，动态链接器会查找匹配的已安装库。软件包元数据通常把这一要求表示为对提供兼容库的软件包或能力的依赖。
 
-:::single-choice{#package-dependencies-shared-library}
-什么是共享库？
+:::single-choice{#package-dependencies-shared-library} 什么是共享库？
 
 ::option[多个程序可以加载并使用的已编译代码。]{#package-dependencies-library-code .correct explanation="共享库提供可复用的二进制接口，无需在每个程序中嵌入独立实现。"}
 ::option[不相关发行版共同使用的仓库列表。]{#package-dependencies-shared-repository explanation="仓库配置与可执行库代码是不同概念。"}
@@ -53,8 +51,7 @@ meta_keywords: "Linux 软件包依赖项，共享库，Linux 软件包，软件�
 
 软件包维护者会编码库关系，并在 ABI 变化时协调过渡。应让原生库继续受包管理器控制；需要冲突版本的软件应使用受支持的并行安装、容器、环境或构建机制。
 
-:::single-choice{#package-dependencies-filename-insufficient}
-存在名称相似的库文件时，程序为什么仍可能失败？
+:::single-choice{#package-dependencies-filename-insufficient} 存在名称相似的库文件时，程序为什么仍可能失败？
 
 ::option[Linux 只允许一个可执行文件使用每个库。]{#package-dependencies-one-consumer explanation="共享库的核心用途之一就是供多个进程和程序使用。"}
 ::option[软件包依赖只在系统第一次启动前有效。]{#package-dependencies-boot-only explanation="依赖关系在安装、升级和运行期间始终相关。"}
@@ -67,8 +64,7 @@ meta_keywords: "Linux 软件包依赖项，共享库，Linux 软件包，软件�
 
 应先阅读包管理器诊断信息，只刷新受信任的仓库元数据，检查被保持或固定的版本，并审查建议的修复。低层软件包安装器可以解包归档，却不一定获取所有依赖项；普通安装通常使用高层仓库工具更安全，因为它会解析完整事务。
 
-:::single-choice{#package-dependencies-low-level-limit}
-使用低层归档工具安装一个本地软件包时，常见限制是什么？
+:::single-choice{#package-dependencies-low-level-limit} 使用低层归档工具安装一个本地软件包时，常见限制是什么？
 
 ::option[它可能不会获取并求解所有缺失的仓库依赖项。]{#package-dependencies-no-repository-resolution .correct explanation="低层工具管理软件包归档和数据库，但可能把依赖获取留给高层管理器。"}
 ::option[它总会从源代码重新编译 Linux 内核。]{#package-dependencies-recompile-kernel explanation="安装软件包归档本身不会重新构建内核。"}

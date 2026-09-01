@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 コマンドはファイル全体を標準出力へ書き込みます。短いテキストには適していますが、長いファイルは速すぎて画面から流れ去ることがあります。
 
-:::single-choice{#display-short-file}
-`myfile.txt` の全内容を端末へ表示するコマンドはどれですか？
+:::single-choice{#display-short-file} `myfile.txt` の全内容を端末へ表示するコマンドはどれですか？
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file` はファイルの種類を推定して報告し、保存されたテキスト全体は表示しません。"}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch` はタイムスタンプを更新するか、存在しないファイルを作り、内容は表示しません。"}
@@ -46,8 +45,7 @@ $ cat dogfile birdfile > animals
 
 シェルは `cat` を実行する前に `animals` を作成または切り詰め、そこへ結合した出力を送ります。入力ファイルの 1 つを出力先にすると、`cat` が読む前に空になる可能性があるため、使用しないでください。
 
-:::single-choice{#combine-files-in-order}
-`part1` に続けて `part2` を、新規または置換される `whole` ファイルへ書き込むコマンドはどれですか？
+:::single-choice{#combine-files-in-order} `part1` に続けて `part2` を、新規または置換される `whole` ファイルへ書き込むコマンドはどれですか？
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="リダイレクト先は 1 つで、そのほかの単語は `cat` のオペランドになります。要求された入出力順を表しません。"}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` は一覧の順に 2 ファイルを出力し、`>` が結合出力を `whole` へリダイレクトします。"}
@@ -70,8 +68,7 @@ $ cat > newfile.txt
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-既存の `notes.txt` の末尾へ追加するテキストを入力したい場合、ファイルを切り詰めずに操作を始めるコマンドはどれですか？
+:::single-choice{#append-terminal-input} 既存の `notes.txt` の末尾へ追加するテキストを入力したい場合、ファイルを切り詰めずに操作を始めるコマンドはどれですか？
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="1 つの `>` は出力先を切り詰めてから入力をリダイレクトするため、`notes.txt` の既存テキストを失います。"}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="`>>` 演算子は出力先を追記用に開き、`cat` が読むテキストを既存内容の後へ追加します。"}
@@ -95,8 +92,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-`notes.txt` の空でない出力行だけに番号を付けるコマンドはどれですか？
+:::single-choice{#number-nonempty-lines} `notes.txt` の空でない出力行だけに番号を付けるコマンドはどれですか？
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="`-b` は空でない出力行に番号を付け、空行には番号を付けません。"}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="`-n` は空行を含むすべての出力行に番号を付け、空でない行だけという条件を満たしません。"}
@@ -111,8 +107,7 @@ $ cat -s messy.txt
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-長いログファイルを対話的に読むのに適したコマンドはどれですか？
+:::single-choice{#choose-viewer-for-long-file} 長いログファイルを対話的に読むのに適したコマンドはどれですか？
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` はスクロール、検索、制御された終了を提供し、長いファイルを対話的に読むのに適しています。"}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` はログ全体を一度に端末へ書き込み、確認前に画面から流れ去ることがあります。"}

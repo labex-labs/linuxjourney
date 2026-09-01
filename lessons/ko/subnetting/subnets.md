@@ -22,8 +22,7 @@ IPv4는 24비트 접두사를 `/24` 또는 마스크 `255.255.255.0`으로 표�
 
 `192.168.1.8/24` 주소의 네트워크 접두사는 `192.168.1.0/24`입니다. 일부 환경에서는 `192.168.1.0/255.255.255.0` 표기도 이해하지만 CIDR 접두사 표기가 표준적인 간결한 형식입니다.
 
-:::single-choice{#subnets-mask-24}
-`/24`에 해당하는 점으로 구분한 10진수 마스크는 무엇입니까?
+:::single-choice{#subnets-mask-24} `/24`에 해당하는 점으로 구분한 10진수 마스크는 무엇입니까?
 
 ::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="가득 찬 옥텟 세 개에 앞쪽 1비트 24개가 들어 있습니다."}
 ::option[`255.255.0.255`]{#subnets-noncontiguous explanation="네트워크 비트가 연속되지 않아 일반적인 /24 마스크가 아닙니다."}
@@ -41,8 +40,7 @@ $ ip route show
 $ ip route get 192.168.1.50
 ```
 
-:::single-choice{#subnets-on-link-decision}
-리눅스 호스트는 직접 전송할지 라우터를 통할지 어떻게 결정합니까?
+:::single-choice{#subnets-on-link-decision} 리눅스 호스트는 직접 전송할지 라우터를 통할지 어떻게 결정합니까?
 
 ::option[`.1`로 끝나는 주소는 항상 로컬이라고 가정합니다.]{#subnets-dot-one explanation="호스트 번호 관례는 설정된 접두사와 경로를 대신하지 않습니다."}
 ::option[접두사와 라우팅 정책을 조회합니다.]{#subnets-route-policy .correct explanation="선택된 경로가 목적지가 링크상에 있는지와 어느 인터페이스 또는 다음 홉을 사용할지 식별합니다."}
@@ -55,8 +53,7 @@ $ ip route get 192.168.1.50
 
 서브넷 분리는 라우팅 및 필터링 정책을 적용할 위치를 만들지만 자동으로 보안 경계가 되지는 않습니다. 제한적인 정책 없이 전달이 허용되면 서로 다른 서브넷의 호스트도 통신할 수 있습니다.
 
-:::single-choice{#subnets-security-boundary}
-서브넷을 두 개 만들면 둘 사이의 트래픽이 자동으로 차단됩니까?
+:::single-choice{#subnets-security-boundary} 서브넷을 두 개 만들면 둘 사이의 트래픽이 자동으로 차단됩니까?
 
 ::option[예. 라우터는 서로 다른 접두사를 연결할 수 없기 때문입니다.]{#subnets-never-route explanation="접두사를 연결하는 것은 라우팅의 주요 역할입니다."}
 ::option[아니요. 라우팅과 필터링 정책이 허용되는 트래픽을 결정합니다.]{#subnets-policy-required .correct explanation="분할은 정책 적용을 가능하게 하지만 그 정책 자체를 정의하지는 않습니다."}
@@ -67,8 +64,7 @@ $ ip route get 192.168.1.50
 
 서브넷팅은 주소 할당을 구성하고, 링크 계층 브로드캐스트 범위를 제한하고, 장애 도메인을 분리하며, 정책 경계를 제공할 수 있습니다. 동시에 라우팅, 방화벽, DHCP, 모니터링 및 문서화 복잡성을 더할 수 있습니다. 작을수록 항상 빠르다고 가정하지 말고 실제 규모, 성장, 이중화 및 보안 요구 사항에 맞춰 접두사를 설계하십시오.
 
-:::single-choice{#subnets-design-tradeoff}
-실제 서브넷팅의 절충점은 무엇입니까?
+:::single-choice{#subnets-design-tradeoff} 실제 서브넷팅의 절충점은 무엇입니까?
 
 ::option[브로드캐스트 도메인이 작아지면 라우팅이나 문서가 필요 없습니다.]{#subnets-no-complexity explanation="경계가 늘면 일반적으로 더 많은 경로, 정책, 주소 및 서비스 관리가 필요합니다."}
 ::option[분할은 구성을 개선하면서 정책 복잡성을 높일 수 있습니다.]{#subnets-tradeoff .correct explanation="서브넷 경계는 제어에 도움이 되지만 유지해야 할 운영 상태를 추가합니다."}

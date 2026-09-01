@@ -24,8 +24,7 @@ réseau   11000000.10101000.00000001.00000000
 
 Un ET bit à bit conserve les bits de l’adresse lorsque le masque vaut un et efface les bits d’hôte. Le résultat est `192.168.1.0/24`.
 
-:::single-choice{#subnet-math-network-operation}
-Quelle opération trouve une adresse réseau IPv4 à partir d’une adresse et d’un masque ?
+:::single-choice{#subnet-math-network-operation} Quelle opération trouve une adresse réseau IPv4 à partir d’une adresse et d’un masque ?
 
 ::option[La concaténation de chaînes décimales.]{#subnet-math-concatenation explanation="La jonction des octets affichés n’applique pas les bits du préfixe."}
 ::option[La soustraction des ports de transport.]{#subnet-math-port-subtraction explanation="Les ports sont sans rapport avec le préfixe réseau."}
@@ -42,8 +41,7 @@ Pour le préfixe `/p`, la partie hôte comporte `32 - p` bits. Le nombre total d
 
 Un `/24` contient donc `2^8 = 256` adresses. Dans un sous-réseau de diffusion traditionnel, la valeur d’hôte entièrement nulle est l’adresse réseau et la valeur entièrement à un est la diffusion dirigée, ce qui laisse 254 adresses d’hôtes unicast ordinaires.
 
-:::single-choice{#subnet-math-24-total}
-Combien d’adresses au total contient un `/24` IPv4 ?
+:::single-choice{#subnet-math-24-total} Combien d’adresses au total contient un `/24` IPv4 ?
 
 ::option[24]{#subnet-math-total-24 explanation="La longueur du préfixe compte les bits réseau, et non les adresses."}
 ::option[256]{#subnet-math-total-256 .correct explanation="Huit bits d’hôte produisent 2^8 valeurs d’adresses distinctes."}
@@ -60,8 +58,7 @@ diffusion :  192.168.1.191
 plage :      192.168.1.129 à 192.168.1.190
 ```
 
-:::single-choice{#subnet-math-165-network}
-Quelle est l’adresse réseau de `192.168.1.165/26` ?
+:::single-choice{#subnet-math-165-network} Quelle est l’adresse réseau de `192.168.1.165/26` ?
 
 ::option[`192.168.1.0`]{#subnet-math-network-zero explanation="Il s’agit du premier bloc `/26`, qui couvre 0 à 63."}
 ::option[`192.168.1.165`]{#subnet-math-network-self explanation="L’adresse fournie possède des bits d’hôte non nuls dans le `/26`."}
@@ -72,8 +69,7 @@ Quelle est l’adresse réseau de `192.168.1.165/26` ?
 
 Le raccourci `2^bits_hôte - 2` n’est pas universel. Les préfixes IPv4 `/31` sont définis pour les liaisons point à point, où les deux adresses peuvent servir de terminaux et où aucune diffusion dirigée n’est nécessaire. Un `/32` identifie une route d’hôte ou une adresse d’interface unique. La technologie réseau et l’usage du protocole déterminent les adresses attribuables.
 
-:::single-choice{#subnet-math-31-exception}
-Pourquoi ne faut-il pas soustraire deux adresses de chaque préfixe IPv4 ?
+:::single-choice{#subnet-math-31-exception} Pourquoi ne faut-il pas soustraire deux adresses de chaque préfixe IPv4 ?
 
 ::option[Les adresses IPv4 ne possèdent aucun bit d’hôte, quel que soit le préfixe.]{#subnet-math-no-host-bits explanation="La plupart des préfixes laissent un ou plusieurs bits d’hôte."}
 ::option[Les liaisons point à point `/31` peuvent employer les deux adresses comme terminaux.]{#subnet-math-31-both .correct explanation="Le modèle point à point n’a pas besoin des réservations traditionnelles d’adresse réseau et de diffusion dirigée."}
@@ -84,8 +80,7 @@ Pourquoi ne faut-il pas soustraire deux adresses de chaque préfixe IPv4 ?
 
 Employez un outil ou une bibliothèque indépendante pour contrôler le travail manuel, puis comparez avec la configuration réelle des interfaces et des routes. Un préfixe mathématiquement valide peut toujours chevaucher un autre sous-réseau ou enfreindre un plan d’attribution.
 
-:::single-choice{#subnet-math-valid-not-safe}
-Qu’est-ce qu’un calcul de sous-réseau correct ne prouve pas ?
+:::single-choice{#subnet-math-valid-not-safe} Qu’est-ce qu’un calcul de sous-réseau correct ne prouve pas ?
 
 ::option[Que le plan d’adressage ne possède aucun chevauchement ni conflit de politique.]{#subnet-math-no-conflict .correct explanation="Des indices sur l’attribution opérationnelle et le routage restent nécessaires."}
 ::option[Que les adresses IPv4 contiennent 32 bits.]{#subnet-math-proves-size explanation="Le calcul repose sur cette taille fixe."}

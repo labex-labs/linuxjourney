@@ -30,8 +30,7 @@ El enlace simbólico tiene su propio inodo y almacena el texto `myfile`. Cuando 
 $ readlink myfilelink
 ```
 
-:::single-choice{#symlinks-create-symbolic}
-¿Qué orden crea el enlace simbólico `myfilelink` con el texto de destino `myfile`?
+:::single-choice{#symlinks-create-symbolic} ¿Qué orden crea el enlace simbólico `myfilelink` con el texto de destino `myfile`?
 
 ::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="La opción `-s` solicita un enlace simbólico, seguida del destino y el nombre del enlace nuevo."}
 ::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="Sin `-s`, `ln` solicita un enlace duro al inodo existente."}
@@ -50,8 +49,7 @@ $ ln -s ../data/item tree/current/item
 
 Mover toda la jerarquía `tree` conserva esta relación relativa. Mover solo el enlace o el destino puede romperla. Un enlace simbólico puede contener un destino inexistente y entonces se denomina colgante o roto.
 
-:::single-choice{#symlinks-relative-resolution}
-¿Desde dónde se resuelve el destino relativo de un enlace simbólico?
+:::single-choice{#symlinks-relative-resolution} ¿Desde dónde se resuelve el destino relativo de un enlace simbólico?
 
 ::option[Desde el directorio personal del usuario que lo creó.]{#symlinks-creator-home explanation="La identidad del creador no se convierte en una base permanente de resolución."}
 ::option[Desde el directorio actual del primer shell que lo muestra.]{#symlinks-listing-shell explanation="El contexto del listado no reescribe la relación de destino almacenada."}
@@ -73,8 +71,7 @@ Ambos nombres se corresponden con el mismo sistema de archivos y número de inod
 
 Los enlaces duros no pueden cruzar límites de sistemas de archivos porque un número de inodo solo tiene significado dentro del suyo. Linux también impide normalmente que los usuarios creen enlaces duros a directorios y puede restringir enlaces a archivos que no poseen para evitar ciclos y problemas de seguridad.
 
-:::single-choice{#symlinks-hard-link-inode}
-¿Qué comparten dos enlaces duros a un archivo normal?
+:::single-choice{#symlinks-hard-link-inode} ¿Qué comparten dos enlaces duros a un archivo normal?
 
 ::option[Únicamente nombres parecidos, pero datos de archivo distintos.]{#symlinks-separate-data explanation="Eso describiría copias independientes, no enlaces duros."}
 ::option[Una ruta almacenada dentro de un inodo de enlace simbólico distinto.]{#symlinks-stored-path explanation="El texto de una ruta es el mecanismo que define un enlace simbólico."}
@@ -93,8 +90,7 @@ Eliminar el nombre de un enlace duro reduce el recuento de enlaces del inodo com
 
 Evita una barra final al eliminar un enlace simbólico a un directorio, porque la resolución de rutas con barra final puede seguir la semántica de directorios según la orden. Examina con `ls -ld -- LINK` y elimina deliberadamente el nombre del enlace.
 
-:::single-choice{#symlinks-remove-symbolic}
-¿Qué ocurre normalmente al eliminar el propio enlace simbólico?
+:::single-choice{#symlinks-remove-symbolic} ¿Qué ocurre normalmente al eliminar el propio enlace simbólico?
 
 ::option[Se eliminan el inodo y el nombre del enlace mientras permanece el destino.]{#symlinks-remove-link-only .correct explanation="Desenlazar el enlace simbólico no actúa sobre el objeto indicado por el texto de destino almacenado."}
 ::option[Se eliminan automáticamente el destino y todos sus enlaces duros.]{#symlinks-remove-target explanation="El enlace simbólico es un objeto independiente y no posee su destino."}
@@ -114,8 +110,7 @@ Para una inspección habitual:
 
 Los permisos mostrados como `lrwxrwxrwx` no son una concesión general de acceso. El acceso se decide mediante el recorrido de directorios, la política de seguimiento y los permisos del destino; la propiedad del enlace también importa para algunas reglas de directorios protegidos.
 
-:::single-choice{#symlinks-readlink-output}
-¿Qué imprime de forma predeterminada `readlink LINK`?
+:::single-choice{#symlinks-readlink-output} ¿Qué imprime de forma predeterminada `readlink LINK`?
 
 ::option[El texto de ruta almacenado en el enlace simbólico.]{#symlinks-readlink-target-text .correct explanation="Examina el objeto de enlace sin leer el contenido del archivo de destino."}
 ::option[Todo el contenido en bytes del archivo normal de destino.]{#symlinks-readlink-file-content explanation="Utiliza una orden de lectura después de resolver deliberadamente el destino para obtener su contenido."}

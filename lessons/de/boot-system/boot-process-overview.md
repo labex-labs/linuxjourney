@@ -18,8 +18,7 @@ Die Plattform-Firmware initialisiert genügend Zustand von CPU, Arbeitsspeicher 
 
 Die Firmware versteht nicht zwangsläufig das installierte Linux-Root-Dateisystem. Sie findet einen Bootpfad gemäß ihrer Schnittstelle, beispielsweise BIOS-Bootcode auf einem ausgewählten Datenträger oder einen UEFI-Booteintrag, der auf eine EFI-Datei auf einer EFI-Systempartition verweist.
 
-:::single-choice{#boot-overview-first-stage}
-Welche Komponente beginnt auf einem typischen PC nach dem Zurücksetzen mit der Initialisierung der Plattform?
+:::single-choice{#boot-overview-first-stage} Welche Komponente beginnt auf einem typischen PC nach dem Zurücksetzen mit der Initialisierung der Plattform?
 
 ::option[Die interaktive Shell des Benutzers.]{#boot-overview-shell explanation="Eine Shell wird erst viel später durch Userspace-Dienste oder den Anmeldevorgang gestartet."}
 ::option[Die Plattform-Firmware wie BIOS oder UEFI.]{#boot-overview-firmware .correct explanation="Die Firmware stellt den frühen Hardwarezustand her und wählt das nächste Bootziel aus, bevor Linux ausgeführt wird."}
@@ -32,8 +31,7 @@ Ein Bootloader wie GRUB kann Einträge anzeigen, einen ausgewählten Linux-Kerne
 
 Die ausgewählten Artefakte müssen zusammenpassen: Kernel-Version, Inhalt der initramfs, Root-Kennung, Sicherheitssignaturen und Befehlszeilenoptionen beeinflussen, ob die nächste Übergabe gelingt.
 
-:::single-choice{#boot-overview-loader-role}
-Was gehört häufig zu den Aufgaben eines Linux-Bootloaders?
+:::single-choice{#boot-overview-loader-role} Was gehört häufig zu den Aufgaben eines Linux-Bootloaders?
 
 ::option[Einen ausgewählten Kernel laden und seine Befehlszeile übergeben.]{#boot-overview-load-kernel .correct explanation="Der Bootloader bereitet das Kernel-Abbild und seine Parameter vor, häufig zusammen mit einer initramfs."}
 ::option[Bei jedem Start alle Benutzerkonten von Grund auf neu anlegen.]{#boot-overview-create-users explanation="Dauerhafte Kontendatenbanken sind Userspace-Konfiguration und werden nicht vom Bootloader neu erstellt."}
@@ -46,8 +44,7 @@ Der Kernel dekomprimiert oder verschiebt sich nach Bedarf, initialisiert zentral
 
 Sobald das vorgesehene Root-Dateisystem verfügbar ist, wechselt der frühe Userspace dorthin und der Kernel führt das konfigurierte erste Userspace-Programm aus. Einzelheiten wie die Zuständigkeit für Dateisystemprüfungen oder das erneute Einhängen mit Schreibzugriff gehören zum Bootdesign der jeweiligen Distribution und nicht zu einer universellen Abfolge.
 
-:::single-choice{#boot-overview-initramfs-purpose}
-Warum kann ein System eine initramfs verwenden?
+:::single-choice{#boot-overview-initramfs-purpose} Warum kann ein System eine initramfs verwenden?
 
 ::option[Um die Desktop-Sitzung jedes Benutzers dauerhaft in der Firmware zu speichern.]{#boot-overview-desktop-firmware explanation="Eine initramfs ist ein Dateisystemabbild für den Systemstart und kein Firmware-Speicher für Sitzungen."}
 ::option[Um frühe Werkzeuge und Treiber bereitzustellen, die zum Erreichen des eigentlichen Root-Dateisystems nötig sind.]{#boot-overview-early-root-tools .correct explanation="Der frühe Userspace kann verschlüsselten, logischen, netzgebundenen oder treiberabhängigen Root-Speicher zusammensetzen."}
@@ -60,8 +57,7 @@ Der erste Userspace-Prozess erhält PID 1. Auf vielen Distributionen ist dies sy
 
 Das Erreichen von PID 1 bedeutet nicht, dass das System vollständig bereit ist. Dienste können noch starten, Speicher kann noch eingehängt und das Netzwerk konfiguriert werden. Eine grafische oder Konsolenanmeldung ist nur einer von mehreren möglichen Zielzuständen.
 
-:::single-choice{#boot-overview-final-stage}
-Was leitet die hauptsächliche Initialisierung des Userspace ein?
+:::single-choice{#boot-overview-final-stage} Was leitet die hauptsächliche Initialisierung des Userspace ein?
 
 ::option[Das Anlegen des Protective MBR des Datenträgers bei jedem Start.]{#boot-overview-create-mbr explanation="Das Erstellen einer Partitionstabelle ist keine normale, wiederkehrende Bootstufe."}
 ::option[Das Löschen aller Kernel-Befehlszeilenparameter.]{#boot-overview-delete-command-line explanation="Der Kernel wertet seine Befehlszeile aus und stellt sie bereit; eine solche Löschung ist nicht erforderlich."}

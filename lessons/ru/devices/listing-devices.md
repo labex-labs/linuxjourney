@@ -30,8 +30,7 @@ $ lsusb -t
 
 Доступен подробный вывод дескрипторов, но для некоторых данных нужны повышенные права чтения. Не выдавайте широкие разрешения USB лишь ради отсутствия предупреждений.
 
-:::single-choice{#listing-devices-usb-tree}
-Какая команда показывает USB в виде дерева топологии?
+:::single-choice{#listing-devices-usb-tree} Какая команда показывает USB в виде дерева топологии?
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="Она перечисляет функции PCI и драйверы, а не USB-топологию."}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="Это не представленная команда дерева USB."}
@@ -54,8 +53,7 @@ $ lspci -k
 
 Наличие контроллера в списке не доказывает готовность каждого устройства за ним. При диагностике проверяйте привязку драйвера и журналы ядра.
 
-:::single-choice{#listing-devices-pci-driver}
-Какая команда добавляет к списку PCI сведения о драйверах ядра?
+:::single-choice{#listing-devices-pci-driver} Какая команда добавляет к списку PCI сведения о драйверах ядра?
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="`-k` показывает активный драйвер и модули, способные обслуживать каждое PCI-устройство."}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="Она описывает USB-иерархию и драйверы интерфейсов."}
@@ -78,8 +76,7 @@ $ lsscsi
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-Что прежде всего перечисляет `lsscsi`?
+:::single-choice{#listing-devices-lsscsi-scope} Что прежде всего перечисляет `lsscsi`?
 
 ::option[Исключительно все NVMe namespace и контроллеры.]{#listing-devices-only-nvme explanation="NVMe использует собственную подсистему и инструменты, хотя блочные виды видны иначе."}
 ::option[Только файлы с суффиксом `.scsi`.]{#listing-devices-scsi-extension explanation="Команда обращается к интерфейсам ядра, а не расширениям имён."}
@@ -92,8 +89,7 @@ $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 
 Утилиты могут поставляться отдельными пакетами `usbutils`, `pciutils` и `lsscsi`. Если команды нет, используйте менеджер пакетов дистрибутива, а не неизвестную замену.
 
-:::single-choice{#listing-devices-listed-not-working}
-Доказывает ли наличие устройства в `lspci`, что его драйвер активен и работает правильно?
+:::single-choice{#listing-devices-listed-not-working} Доказывает ли наличие устройства в `lspci`, что его драйвер активен и работает правильно?
 
 ::option[Нет; нужно также проверить привязку драйвера и сообщения ядра.]{#listing-devices-needs-correlation .correct explanation="Перечисление доказывает видимость функции PCI, но не успех инициализации более высокого уровня."}
 ::option[Да; перечисление PCI полностью тестирует функции.]{#listing-devices-complete-test explanation="Список не упражняет каждую аппаратную функцию и не проверяет службу."}

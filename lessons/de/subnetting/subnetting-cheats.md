@@ -23,8 +23,7 @@ value: 128  64  32  16   8  4  2  1
 
 Die Summe aller acht Werte ergibt 255. Dezimal 192 ist `128 + 64`, daher lautet seine Binärdarstellung `11000000`.
 
-:::single-choice{#subnet-cheats-binary-192}
-Wie lautet Dezimal 192 in achtstelliger Binärdarstellung?
+:::single-choice{#subnet-cheats-binary-192} Wie lautet Dezimal 192 in achtstelliger Binärdarstellung?
 
 ::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="Die Stellen 128 und 64 sind gesetzt, die übrigen Stellen null."}
 ::option[`10101000`]{#subnet-cheats-168 explanation="Dieses Muster entspricht 168."}
@@ -42,8 +41,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 `/19` enthält beispielsweise 16 vollständige Präfixbits sowie drei Bits im dritten Oktett. Die Maske lautet daher `255.255.224.0`.
 
-:::single-choice{#subnet-cheats-prefix-19}
-Welche Maske entspricht IPv4-`/19`?
+:::single-choice{#subnet-cheats-prefix-19} Welche Maske entspricht IPv4-`/19`?
 
 ::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="Sechzehn vollständige Bits plus drei weitere ergeben 255, 255 und 224."}
 ::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="Eine Präfixlänge ist eine Bitanzahl und kein dezimales Maskenoktett."}
@@ -56,8 +54,7 @@ Subtrahiere im ersten Maskenoktett, das nicht 255 ist, den Maskenwert von 256, u
 
 Die Adresse `198.51.100.77/27` liegt im Block von 64 bis 95.
 
-:::single-choice{#subnet-cheats-77-network}
-Wie lautet die Netzwerkadresse für `198.51.100.77/27`?
+:::single-choice{#subnet-cheats-77-network} Wie lautet die Netzwerkadresse für `198.51.100.77/27`?
 
 ::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="Dieser Block umfasst im letzten Oktett die Werte 32 bis 63."}
 ::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="Die Adresse enthält Hostbits und ist keine Blockgrenze."}
@@ -75,8 +72,7 @@ Wähle zur Umwandlung von Dezimal 123 jeweils die größten verbleibenden Werte,
 
 Wandle zurück, indem du nur die Stellenwerte addierst, deren Bits eins sind. Bewahre bei der Arbeit innerhalb eines IPv4-Oktetts stets alle acht Positionen.
 
-:::single-choice{#subnet-cheats-binary-123}
-Welcher Acht-Bit-Wert entspricht Dezimal 123?
+:::single-choice{#subnet-cheats-binary-123} Welcher Acht-Bit-Wert entspricht Dezimal 123?
 
 ::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="Der Zahlenwert ist ähnlich, doch die Oktettdarstellung muss acht Positionen bewahren."}
 ::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="Die gesetzten Stellen ergeben 64 + 32 + 16 + 8 + 2 + 1."}

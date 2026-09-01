@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 Команда меняет пользователя-владельца `myfile` на `patty` и оставляет группу прежней. Для изменения пользователя-владельца обычно нужны соответствующие привилегии, даже если файл принадлежит вам. Такое ограничение не позволяет пользователям передавать файлы ради обхода квот и других механизмов, основанных на владении.
 
-:::single-choice{#ownership-permissions-change-user}
-Какая команда меняет пользователя-владельца `myfile` на `patty`, оставляя группу без изменений?
+:::single-choice{#ownership-permissions-change-user} Какая команда меняет пользователя-владельца `myfile` на `patty`, оставляя группу без изменений?
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="Одно имя пользователя в операнде владельца chown меняет пользователя-владельца и сохраняет группу."}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="chgrp изменяет группу-владельца, а не пользователя-владельца."}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 После этого биты режима группы применяются, когда ядро выбирает класс группы; изменение группы не добавляет автоматически права чтения, записи или выполнения.
 
-:::single-choice{#ownership-permissions-change-group}
-Что изменяет `chgrp whales myfile`?
+:::single-choice{#ownership-permissions-change-group} Что изменяет `chgrp whales myfile`?
 
 ::option[Записанного пользователя-владельца `myfile`.]{#ownership-permissions-group-not-user explanation="Пользователя-владельца меняют chown, а не chgrp."}
 ::option[Список участников группы `whales`.]{#ownership-permissions-group-members explanation="Команда изменяет метаданные файла, а не системную базу членства в группах."}
@@ -68,8 +66,7 @@ $ sudo chown patty:whales myfile
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-Какая спецификация владения назначает пользователя `patty` и группу `whales` одной командой `chown`?
+:::single-choice{#ownership-permissions-change-both} Какая спецификация владения назначает пользователя `patty` и группу `whales` одной командой `chown`?
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="Двоеточие разделяет имена пользователя и группы в объединённой спецификации владения."}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="Косая черта не является указанным разделителем пользователя и группы в операнде chown."}
@@ -80,8 +77,7 @@ $ ls -l myfile
 
 Параметр `-R` рекурсивно меняет владельцев, но широкая рекурсивная команда может перейти в неожиданные деревья каталогов или затронуть данные служб. Подтвердите точную цель, разберитесь с поведением вашей реализации для символических ссылок, предварительно просмотрите дерево и проверьте небольшой образец до изменения большой иерархии. Не переносите привилегированные команды владения из примеров в настоящую систему без проверки их области действия.
 
-:::single-choice{#ownership-permissions-mode-separate}
-Что происходит с обычными битами прав группы после изменения группы-владельца файла?
+:::single-choice{#ownership-permissions-mode-separate} Что происходит с обычными битами прав группы после изменения группы-владельца файла?
 
 ::option[Они всегда автоматически становятся чтением и записью.]{#ownership-permissions-mode-read-write explanation="chgrp не задаёт автоматически фиксированный режим группы."}
 ::option[Они копируются из тройки прав владельца.]{#ownership-permissions-mode-copied explanation="При изменении владения тройки владельца и группы остаются независимыми."}

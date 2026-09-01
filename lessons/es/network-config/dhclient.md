@@ -24,8 +24,7 @@ $ ps -ef | grep '[d]hclient'
 
 Utiliza las herramientas que existan en la máquina. Si un gestor controla la interfaz, solicita DHCP mediante ese gestor en lugar de iniciar otro cliente.
 
-:::single-choice{#dhclient-second-client-risk}
-¿Por qué debes evitar iniciar `dhclient` en una interfaz ya gestionada?
+:::single-choice{#dhclient-second-client-risk} ¿Por qué debes evitar iniciar `dhclient` en una interfaz ya gestionada?
 
 ::option[DHCP solo puede asignar direcciones loopback.]{#dhclient-loopback-only explanation="DHCP suele asignar configuraciones de red que no son loopback."}
 ::option[Dos clientes pueden competir por las direcciones, las rutas, DNS y los arrendamientos.]{#dhclient-competing-state .correct explanation="Normalmente, solo el propietario identificado de la configuración debe reconciliar la interfaz."}
@@ -42,8 +41,7 @@ $ sudo dhclient -v enp1s0
 
 La ejecución sin indicar una interfaz puede actuar sobre varias interfaces válidas. Las rutas de configuración y arrendamientos varían según el paquete y la invocación; entre los nombres habituales se encuentran `dhclient.conf` y `dhclient.leases`, pero no supongas que existe una única ubicación fija.
 
-:::single-choice{#dhclient-interface-operand}
-¿Por qué debes indicar `enp1s0` en una solicitud manual?
+:::single-choice{#dhclient-interface-operand} ¿Por qué debes indicar `enp1s0` en una solicitud manual?
 
 ::option[Para dirigirte únicamente a la interfaz de red prevista.]{#dhclient-scope-interface .correct explanation="Una invocación del cliente sin especificar puede tener en cuenta más interfaces de las previstas."}
 ::option[Para seleccionar el puerto TCP 1 para DHCP.]{#dhclient-tcp-port explanation="DHCP utiliza UDP y el nombre de la interfaz no es un puerto."}
@@ -54,8 +52,7 @@ La ejecución sin indicar una interfaz puede actuar sobre varias interfaces vál
 
 `dhclient -r INTERFACE` solicita la liberación y puede eliminar una configuración utilizable. Es una operación que causa interrupciones y no garantiza que el servidor sea accesible para recibir la liberación. No liberes un arrendamiento únicamente para inspeccionarlo, sobre todo si forma parte de una ruta de administración remota.
 
-:::single-choice{#dhclient-release-effect}
-¿Cuál es el riesgo operativo de `dhclient -r enp1s0`?
+:::single-choice{#dhclient-release-effect} ¿Cuál es el riesgo operativo de `dhclient -r enp1s0`?
 
 ::option[Solo muestra el arrendamiento actual sin realizar cambios.]{#dhclient-release-readonly explanation="La liberación es una acción que modifica el estado."}
 ::option[Renueva todos los arrendamientos durante un periodo ilimitado.]{#dhclient-release-renews explanation="Liberar y renovar son operaciones opuestas."}
@@ -74,8 +71,7 @@ $ resolvectl status
 
 Inspecciona los registros del gestor o del cliente y la duración del arrendamiento, y después prueba la resolución de nombres y la aplicación previstas. Un DHCPACK puede contener opciones incorrectas, y asignar correctamente una dirección no demuestra que la puerta de enlace o DNS sean accesibles.
 
-:::single-choice{#dhclient-verify-state}
-¿Qué debe comprobarse después de obtener un arrendamiento?
+:::single-choice{#dhclient-verify-state} ¿Qué debe comprobarse después de obtener un arrendamiento?
 
 ::option[La dirección, las rutas, DNS, el arrendamiento y el comportamiento de la aplicación.]{#dhclient-complete-verify .correct explanation="El arrendamiento configura varios componentes relacionados que deben funcionar conjuntamente."}
 ::option[Únicamente que aparezca una cadena de dirección.]{#dhclient-address-only explanation="Las rutas, DNS, la duración y el funcionamiento de extremo a extremo aún pueden ser incorrectos."}

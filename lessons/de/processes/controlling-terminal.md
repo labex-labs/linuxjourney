@@ -27,8 +27,7 @@ $ tty
 
 Dieses Ergebnis hängt mit dem umfassenderen Konzept des steuernden Terminals zusammen, ist aber nicht mit ihm identisch. Ein Prozess kann seine Standardeingabe oder -ausgabe umleiten und dennoch zu einer Sitzung mit steuerndem Terminal gehören.
 
-:::single-choice{#controlling-terminal-pts-meaning}
-Was kennzeichnet ein Name wie `pts/3` gewöhnlich?
+:::single-choice{#controlling-terminal-pts-meaning} Was kennzeichnet ein Name wie `pts/3` gewöhnlich?
 
 ::option[Eine Prozess-ID, die der dritten Shell zugewiesen wurde.]{#controlling-terminal-pts-pid explanation="Eine PID ist eine numerische Prozessmetadatenangabe und wird nicht als Gerätename `pts/N` ausgedrückt."}
 ::option[Ein Pseudo-Terminalgerät, das von einer interaktiven Sitzung verwendet wird.]{#controlling-terminal-pts-device .correct explanation="Einträge unter `/dev/pts` sind Pseudo-Terminal-Slave-Geräte, die häufig von Terminalemulatoren und entfernten Sitzungen verwendet werden."}
@@ -41,8 +40,7 @@ Ein steuerndes Terminal gehört zu einer Sitzung und nicht bloß zu dem Befehl, 
 
 Das Drücken von `Ctrl-C` veranlasst den Terminaltreiber beispielsweise gewöhnlich, `SIGINT` an die Vordergrundprozessgruppe zu senden. Eine Hintergrundgruppe, die vom Terminal zu lesen versucht, kann `SIGTTIN` empfangen. Diese Regeln ermöglichen der Shell die Koordination von Vordergrund- und Hintergrundjobs.
 
-:::single-choice{#controlling-terminal-ctrl-c-target}
-An welche Prozesse richtet ein Terminal gewöhnlich das durch `Ctrl-C` erzeugte Signal?
+:::single-choice{#controlling-terminal-ctrl-c-target} An welche Prozesse richtet ein Terminal gewöhnlich das durch `Ctrl-C` erzeugte Signal?
 
 ::option[An jeden Prozess, der dem aktuellen Benutzer gehört.]{#controlling-terminal-ctrl-c-user explanation="Vom Terminal erzeugte Signale sind auf die Vordergrundprozessgruppe begrenzt und nicht auf alle Prozesse eines Benutzers gerichtet."}
 ::option[Unabhängig vom Vordergrundjob ausschließlich an die Anmelde-Shell.]{#controlling-terminal-ctrl-c-shell explanation="Während ein anderer Job im Vordergrund läuft, ist gewöhnlich dessen Gruppe das Signalziel."}
@@ -61,8 +59,7 @@ Ein Terminalname wie `pts/3` bezeichnet das für diesen Prozess erfasste steuern
 
 Viele Dienstprozesse besitzen kein steuerndes Terminal, weil ein Dienstmanager sie unabhängig von einer interaktiven Anmeldesitzung startet. Ein fehlendes TTY beweist für sich allein jedoch nicht, dass ein Prozess ein Daemon ist, und ein Hintergrundjob der Shell kann weiterhin ein steuerndes Terminal besitzen.
 
-:::single-choice{#controlling-terminal-question-mark}
-Was bedeutet `?` in der Spalte `TTY` von `ps` gewöhnlich?
+:::single-choice{#controlling-terminal-question-mark} Was bedeutet `?` in der Spalte `TTY` von `ps` gewöhnlich?
 
 ::option[Der Prozess besitzt kein steuerndes Terminal.]{#controlling-terminal-no-tty .correct explanation="Ein Fragezeichen ist die übliche Darstellung, wenn dem Prozess kein steuerndes Terminal zugeordnet ist."}
 ::option[Das Terminal des Prozesses konnte nicht gelesen werden, weil es belegt ist.]{#controlling-terminal-busy-tty explanation="Die Markierung steht für das Fehlen eines steuernden Terminals und nicht für eine vorübergehende Gerätebelegung."}
@@ -75,8 +72,7 @@ Wenn eine Terminalverbindung verschwindet, kann der Kernel oder die Terminal-/Si
 
 Das Schließen eines Terminals garantiert daher nicht, dass sich jeder darin gestartete Befehl beendet. Prüfe die Sitzung, Signalbehandlung, Umleitungen und den Supervisor eines Prozesses, wenn sein Fortbestehen wichtig ist.
 
-:::single-choice{#controlling-terminal-close-effect}
-Warum ist die Aussage ungenau, das Schließen eines Terminals beende immer jeden darin gestarteten Prozess?
+:::single-choice{#controlling-terminal-close-effect} Warum ist die Aussage ungenau, das Schließen eines Terminals beende immer jeden darin gestarteten Prozess?
 
 ::option[Linux-Terminals erzeugen beim Schließen niemals Signale.]{#controlling-terminal-never-signals explanation="Hangup-Signale sind ein reales Terminal- und Sitzungsverhalten, auch wenn sie nicht garantiert zur Beendigung führen."}
 ::option[Nur Prozesse mit numerischen PIDs können Hangups empfangen.]{#controlling-terminal-pid-hangup explanation="Alle gewöhnlichen Prozesse besitzen numerische PIDs; diese Tatsache bestimmt nicht, ob sie ein Terminal überleben."}

@@ -29,8 +29,7 @@ Die Standardströme verwenden konventionsgemäß diese Dateideskriptoren:
 - `1`: stdout (Standardausgabe)
 - `2`: stderr (Standardfehlerausgabe)
 
-:::single-choice{#stderr-not-in-stdout-file}
-Warum bleibt der Fehler von `ls /missing > results.txt` normalerweise im Terminal sichtbar?
+:::single-choice{#stderr-not-in-stdout-file} Warum bleibt der Fehler von `ls /missing > results.txt` normalerweise im Terminal sichtbar?
 
 ::option[`>` leitet stdout um, während die Diagnose nach stderr geschrieben wird.]{#stderr-separate-stream .correct explanation="Ein einfaches `>` verändert nur Dateideskriptor 1. Dateideskriptor 2 behält sein bisheriges Ziel, das Terminal."}
 ::option[`ls` wartet mit der Fehlerausgabe, bis die Datei geschlossen wurde.]{#stderr-waits-for-close explanation="Es geht nicht um den Zeitpunkt. Reguläre Ausgaben und Diagnosen verwenden unterschiedliche Ausgabeströme."}
@@ -47,8 +46,7 @@ $ ls /fake/directory 2> errors.txt
 
 Die Shell erstellt oder leert `errors.txt` und verbindet die Datei mit Deskriptor 2. Stdout behält sein bisheriges Ziel. Verwende stattdessen `2>> errors.txt`, wenn Fehlerausgaben angehängt werden sollen.
 
-:::single-choice{#stderr-to-error-file}
-Welcher Befehl ersetzt `errors.log` durch Diagnosen von `find /restricted`, während stdout mit seinem bisherigen Ziel verbunden bleibt?
+:::single-choice{#stderr-to-error-file} Welcher Befehl ersetzt `errors.log` durch Diagnosen von `find /restricted`, während stdout mit seinem bisherigen Ziel verbunden bleibt?
 
 ::option[`find /restricted > errors.log`]{#stdout-errors-log explanation="Ein einfaches `>` leitet Deskriptor 1 um und erfasst damit reguläre Ergebnisse statt gezielt Diagnosen."}
 ::option[`find /restricted < errors.log`]{#stdin-errors-log explanation="Das Kleiner-als-Zeichen stellt die Datei als stdin bereit. Keiner der Ausgabeströme wird damit erfasst."}
@@ -76,8 +74,7 @@ $ ls /fake/directory /etc/passwd 2>&1 > regular.txt
 
 Hier dupliziert stderr zuerst das ursprüngliche Terminalziel von stdout. Danach wird nur stdout nach `regular.txt` verschoben; die Ströme enden an unterschiedlichen Orten.
 
-:::single-choice{#stderr-combine-order}
-Welche Bash-Umleitung sendet stdout und stderr von `command` gemeinsam nach `all.log`?
+:::single-choice{#stderr-combine-order} Welche Bash-Umleitung sendet stdout und stderr von `command` gemeinsam nach `all.log`?
 
 ::option[`command 2>&1 > all.log`]{#stderr-before-stdout explanation="Damit wird stderr zuerst mit dem alten stdout-Ziel verbunden und anschließend nur stdout in die Datei umgeleitet. Die Ströme bleiben getrennt."}
 ::option[`command 2> all.log > /dev/null`]{#stderr-file-stdout-null explanation="Dieser Befehl sendet stderr nach `all.log`, verwirft aber stdout. Beide Ströme werden nicht in der Datei zusammengeführt."}
@@ -92,8 +89,7 @@ $ ls /fake/directory /etc/passwd &> combined.txt
 
 Mit `&>>` hängst du beide Ströme in Bash an. Die ausdrückliche Form `> file 2>&1` solltest du ebenfalls erkennen, da sie häufig in Shell-Skripten und Dokumentationen vorkommt.
 
-:::single-choice{#stderr-bash-short-form}
-Welcher Bash-Befehl hängt stdout und stderr von `build` gemeinsam an `build.log` an?
+:::single-choice{#stderr-bash-short-form} Welcher Bash-Befehl hängt stdout und stderr von `build` gemeinsam an `build.log` an?
 
 ::option[`build &> build.log`]{#replace-both-build explanation="Bash `&>` leitet beide Ströme um, ersetzt aber eine vorhandene Datei, statt an sie anzuhängen."}
 ::option[`build 2>> build.log`]{#append-errors-build explanation="Damit wird nur stderr angehängt. Stdout behält sein bisheriges Ziel."}
@@ -110,8 +106,7 @@ $ ls /fake/directory 2> /dev/null
 
 Dadurch wird der Befehl weder erfolgreich noch sein Beendigungsstatus verändert; lediglich der Diagnosestrom bleibt unsichtbar. Bei der Fehlersuche solltest du stderr bewahren oder anzeigen, statt benötigte Informationen zu verwerfen.
 
-:::single-choice{#stderr-dev-null-effect}
-Was verändert `check-data 2> /dev/null`?
+:::single-choice{#stderr-dev-null-effect} Was verändert `check-data 2> /dev/null`?
 
 ::option[Der Befehl verwirft stdout und macht aus jedem Fehler einen Erfolg.]{#discard-stdout-success explanation="Deskriptor 2 ist stderr, nicht stdout, und eine Umleitung verändert den Beendigungsstatus des Programms nicht."}
 ::option[Der Befehl verwirft stderr, erzwingt aber keinen erfolgreichen Beendigungsstatus.]{#discard-stderr-only .correct explanation="Die Umleitung verändert das Ziel der Diagnosen. Erfolg oder Misserfolg bestimmt weiterhin das Programm selbst."}

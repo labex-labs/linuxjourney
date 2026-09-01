@@ -20,8 +20,7 @@ Linux 系统分为三个主要部分：
 - **Linux 内核** - 作为操作系统的核心，内核负责管理硬件并促进软件与硬件之间的通信。
 - **用户空间** - 这是你（用户）通过应用程序和命令行界面与系统交互的环境。
 
-:::single-choice{#identify-hardware-manager}
-Linux 系统的哪个主要部分负责管理硬件？
+:::single-choice{#identify-hardware-manager} Linux 系统的哪个主要部分负责管理硬件？
 
 ::option[用户空间]{#user-space explanation="应用程序和命令行界面在用户空间运行，它们需要依靠内核来使用硬件。"}
 ::option[Linux 内核]{#linux-kernel .correct explanation="Linux 内核管理硬件资源以及软硬件之间的通信，是发行版所围绕的核心。"}
@@ -34,8 +33,7 @@ Linux 发行版将 Linux 内核与系统工具、库、应用程序以及通常�
 
 不同的 Linux 发行版在稳定性、软件新鲜度、桌面体验、软件包管理、支持和系统理念方面有不同的侧重。这就是为什么没有对每个人来说都最好的 Linux 发行版。
 
-:::single-choice{#recognize-linux-distribution}
-以下哪项描述最符合 Linux 发行版？
+:::single-choice{#recognize-linux-distribution} 以下哪项描述最符合 Linux 发行版？
 
 ::option[不带系统工具、应用程序和软件管理功能而单独分发的内核]{#kernel-only explanation="内核只是操作系统的一部分；发行版还会加入工具、库、应用程序和软件管理功能。"}
 ::option[与系统工具、应用程序和软件管理功能打包在一起的内核]{#complete-distribution .correct explanation="发行版把 Linux 内核与构成可用操作系统所需的用户空间软件结合起来，通常也包含软件包管理器。"}
@@ -50,8 +48,7 @@ Linux 发行版将 Linux 内核与系统工具、库、应用程序以及通常�
 
 发布风格描述了发行版提供主要软件更新的方式。稳定版或点发布（point-release）发行版按计划分批发布更新，注重可预测性。滚动更新（rolling-release）发行版持续提供更新，这意味着软件更新，但也意味着更频繁的变动。
 
-:::single-choice{#choose-release-style}
-如果用户最看重按计划更新和可预测性，哪种发布方式最合适？
+:::single-choice{#choose-release-style} 如果用户最看重按计划更新和可预测性，哪种发布方式最合适？
 
 ::option[持续更新的滚动发布]{#rolling-release explanation="滚动发布通过持续更新提供较新的软件，同时也会带来比目标所需更频繁的变化。"}
 ::option[稳定版或点发布模式]{#stable-release .correct explanation="稳定版和点发布模式在计划好的版本中交付主要变化，因而能提供更可预测的环境。"}
@@ -64,8 +61,7 @@ Linux 发行版将 Linux 内核与系统工具、库、应用程序以及通常�
 
 对初学者友好并不意味着功能简单。它通常意味着该发行版具有合理的默认设置、庞大的社区，并且在日常使用中不会出现太多意外。
 
-:::single-choice{#prioritize-beginner-needs}
-对于 Linux 新用户，哪些特性最适合作为选择起点？
+:::single-choice{#prioritize-beginner-needs} 对于 Linux 新用户，哪些特性最适合作为选择起点？
 
 ::option[最新的软件包、手动配置和有限的文档]{#advanced-setup-qualities explanation="新软件和手动配置可能适合有经验的用户，但缺少指导会给初学者增添不必要的困难。"}
 ::option[最大的控制权、复杂的维护和频繁的意外变化]{#maximum-control-qualities explanation="用户明确所需工作流程后，深度控制会很有价值；但它并不是首次选择发行版时最友好的默认条件。"}
@@ -122,8 +118,7 @@ Ubuntu 也广泛用于服务器，特别是当用户需要庞大的生态系统�
 
 一旦你了解了一个 Linux 发行版，转向另一个就会容易得多。重要的一步是开始。
 
-:::single-choice{#take-practical-next-step}
-明确自己的目标后，接下来可以采取什么实际步骤？
+:::single-choice{#take-practical-next-step} 明确自己的目标后，接下来可以采取什么实际步骤？
 
 ::option[继续寻找，直到出现一个适合所有人的最佳发行版]{#search-universal-best explanation="不同用户有不同需求，不存在普遍最佳的选择；一味等待只会妨碍你获得实际经验。"}
 ::option[还没学会任何发行版的基础就反复切换]{#switch-repeatedly explanation="频繁切换会让基础技能更难建立；先学会一个合适的发行版，以后再更换会容易得多。"}

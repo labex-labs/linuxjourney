@@ -30,8 +30,7 @@ Algunas variables de entorno habituales son:
 
 Los valores dependen del entorno del proceso actual; no son constantes universales. Una variable no definida se expande a una cadena vacía, salvo que se active un comportamiento más estricto de la shell.
 
-:::single-choice{#env-print-home-value}
-¿Qué orden de Bash muestra el valor de `HOME` y lo conserva como un único argumento?
+:::single-choice{#env-print-home-value} ¿Qué orden de Bash muestra el valor de `HOME` y lo conserva como un único argumento?
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="Las comillas simples impiden la expansión de parámetros, por lo que se muestran los caracteres literales `$HOME`."}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash expande `$HOME` dentro de las comillas dobles y `printf` recibe el valor completo como un único argumento."}
@@ -56,8 +55,7 @@ USER=pete
 
 Las variables de entorno pueden contener credenciales, tokens, rutas internas u otros datos sensibles. No pegues toda la salida de `env` en incidencias o registros públicos sin revisarla y ocultar los datos necesarios.
 
-:::single-choice{#env-list-exported-values}
-¿Qué orden muestra el entorno visible para un proceso recién iniciado?
+:::single-choice{#env-list-exported-values} ¿Qué orden muestra el entorno visible para un proceso recién iniciado?
 
 ::option[`env`]{#env-print-all .correct explanation="Sin una orden ni asignaciones, `env` muestra el entorno de nombres y valores que ha recibido."}
 ::option[`alias`]{#env-alias-list explanation="`alias` enumera definiciones de alias, que forman parte del estado de la shell y no de los registros de entorno exportados."}
@@ -82,8 +80,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 No sustituyas accidentalmente `PATH` por un único directorio nuevo ni añadas directorios no fiables con permisos de escritura. Cualquiera de esos errores puede impedir encontrar órdenes normales o hacer que se ejecute un programa inesperado.
 
-:::single-choice{#env-prepend-path-directory}
-¿Qué orden añade `/opt/coolapp/bin` antes del `PATH` existente para el proceso actual de Bash y sus futuros hijos?
+:::single-choice{#env-prepend-path-directory} ¿Qué orden añade `/opt/coolapp/bin` antes del `PATH` existente para el proceso actual de Bash y sus futuros hijos?
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="Esta orden descarta todos los directorios de búsqueda existentes, lo que puede dificultar encontrar órdenes normales."}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="Esta orden antepone el directorio nuevo, conserva el valor anterior y exporta el resultado a los procesos hijo."}
@@ -107,8 +104,7 @@ test
 
 La asignación suele durar hasta que elimines la variable o termine la shell. No modifica el entorno de todo el sistema.
 
-:::single-choice{#env-export-inheritance}
-¿Cuál es el efecto principal de `export TEST=test` en Bash?
+:::single-choice{#env-export-inheritance} ¿Cuál es el efecto principal de `export TEST=test` en Bash?
 
 ::option[Escribe `TEST` en la configuración del sistema de todos los usuarios.]{#env-system-wide explanation="La asignación afecta a la shell actual y a la herencia de sus hijos, no a todos los usuarios ni al sistema operativo completo."}
 ::option[Marca `TEST=test` para que lo hereden los futuros procesos hijo.]{#env-child-inheritance .correct explanation="`export` añade la variable de la shell al entorno que Bash pasa a las órdenes que inicia."}
@@ -131,8 +127,7 @@ $ env LANG=C sort names.txt
 
 Utiliza `env -i COMMAND` para iniciar una orden con un entorno inicialmente vacío y añade después las asignaciones necesarias. Muchos programas dependen de valores del entorno, así que usa esta opción deliberadamente.
 
-:::single-choice{#env-one-command-value}
-¿Qué orden ejecuta `sort names.txt` con `LANG=C` sin cambiar de forma permanente el valor de `LANG` de la shell actual?
+:::single-choice{#env-one-command-value} ¿Qué orden ejecuta `sort names.txt` con `LANG=C` sin cambiar de forma permanente el valor de `LANG` de la shell actual?
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` añade la asignación al entorno de la orden que inicia, mientras que la shell padre conserva su valor anterior."}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="Esta orden exporta `LANG=C` en la shell actual y deja el valor cambiado después de que termine `sort`."}

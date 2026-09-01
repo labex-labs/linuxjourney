@@ -25,8 +25,7 @@ $ history
 
 Chaque ligne contient un numéro d'historique suivi de la commande.
 
-:::single-choice{#show-command-history}
-Quelle commande Bash affiche la liste actuelle et numérotée de l'historique ?
+:::single-choice{#show-command-history} Quelle commande Bash affiche la liste actuelle et numérotée de l'historique ?
 
 ::option[`clear`]{#clear-display explanation="`clear` rafraîchit la zone visible du terminal ; elle n'affiche pas les commandes précédentes."}
 ::option[`history -w`]{#write-history explanation="`history -w` écrit la liste actuelle dans le fichier d'historique. Elle sert à l'enregistrer, pas à l'afficher."}
@@ -44,8 +43,7 @@ Bash fournit plusieurs raccourcis pour rappeler ou exécuter immédiatement des 
 
 Les développements d'historique qui commencent par `!` peuvent exécuter une commande dès l'appui sur Entrée. En cas de doute, inspectez d'abord la correspondance, surtout avant d'ajouter des privilèges ou d'agir sur des fichiers importants.
 
-:::single-choice{#repeat-most-recent-command}
-Quel développement de l'historique Bash répète la dernière commande exécutée ?
+:::single-choice{#repeat-most-recent-command} Quel développement de l'historique Bash répète la dernière commande exécutée ?
 
 ::option[`!102`]{#event-number explanation="Ce développement sélectionne la commande portant le numéro 102, qui n'est pas nécessairement la plus récente."}
 ::option[`!cat`]{#event-prefix explanation="Ce développement choisit la commande la plus récente dont le texte commence par `cat`, pas la dernière commande de n'importe quel type."}
@@ -58,8 +56,7 @@ Appuyez sur `Ctrl+R` pour commencer une recherche incrémentale inversée, puis 
 
 Entrée exécute la correspondance affichée. Pour l'examiner ou la modifier d'abord, utilisez une touche fléchée afin de placer la commande sur la ligne d'édition.
 
-:::single-choice{#search-before-executing}
-Vous vous souvenez d'une partie d'une ancienne commande Bash et voulez la retrouver interactivement. Quelle touche devez-vous utiliser d'abord ?
+:::single-choice{#search-before-executing} Vous vous souvenez d'une partie d'une ancienne commande Bash et voulez la retrouver interactivement. Quelle touche devez-vous utiliser d'abord ?
 
 ::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D` signale une fin d'entrée dans de nombreux contextes et peut fermer un shell inactif ; elle ne lance pas une recherche d'historique."}
 ::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` interrompt ou annule normalement l'opération actuelle ; elle ne recherche pas dans l'historique."}
@@ -83,8 +80,7 @@ $ history -w
 
 Effacer la liste en mémoire ne garantit pas à lui seul la disparition des anciennes commandes de chaque fichier, sauvegarde ou autre shell actif. Le comportement dépend aussi des réglages de Bash et du moment où les sessions lisent ou écrivent leurs fichiers.
 
-:::single-choice{#save-current-history-list}
-Quelle commande écrit la liste d'historique Bash actuelle dans le fichier configuré ?
+:::single-choice{#save-current-history-list} Quelle commande écrit la liste d'historique Bash actuelle dans le fichier configuré ?
 
 ::option[`history -c`]{#clear-current-list explanation="L'option `-c` efface la liste en mémoire ; elle ne demande pas d'enregistrer son contenu actuel."}
 ::option[`history -d 101`]{#delete-one-entry explanation="L'option `-d` supprime une entrée choisie ; elle n'enregistre pas toute la liste."}
@@ -105,8 +101,7 @@ La complétion par Tab évite aussi de tout ressaisir. Commencez une commande ou
 
 Les lignes de commande pouvant être conservées dans l'historique, n'y placez pas directement de mots de passe, jetons ou autres secrets lorsqu'une méthode de saisie plus sûre existe.
 
-:::single-choice{#distinguish-clear-from-history-clear}
-Vous voulez rafraîchir l'affichage du terminal sans supprimer l'historique des commandes en mémoire. Quelle commande faut-il exécuter ?
+:::single-choice{#distinguish-clear-from-history-clear} Vous voulez rafraîchir l'affichage du terminal sans supprimer l'historique des commandes en mémoire. Quelle commande faut-il exécuter ?
 
 ::option[`clear`]{#clear-visible-area .correct explanation="`clear` rafraîchit la zone visible du terminal tout en laissant intacte la liste d'historique Bash en mémoire."}
 ::option[`history -c`]{#clear-memory explanation="Cette commande retire les entrées de la liste en mémoire ; elle modifie l'historique au lieu de seulement rafraîchir l'affichage."}

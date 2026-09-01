@@ -24,8 +24,7 @@ A veces se puede montar un sistema de archivos raíz sencillo mediante controlad
 
 Un initramfs empaqueta estos componentes en un entorno de espacio de usuario inicial que se proporciona junto con el kernel.
 
-:::single-choice{#boot-kernel-initramfs-purpose}
-¿Qué problema resuelve habitualmente un initramfs?
+:::single-choice{#boot-kernel-initramfs-purpose} ¿Qué problema resuelve habitualmente un initramfs?
 
 ::option[Proporciona herramientas y módulos iniciales necesarios antes de que esté disponible la raíz real.]{#boot-kernel-early-tools .correct explanation="El espacio de usuario inicial puede descubrir y ensamblar almacenamiento al que el kernel no puede acceder solo con su soporte integrado."}
 ::option[Almacena permanentemente en firmware el directorio personal de cada usuario.]{#boot-kernel-home-firmware explanation="El archivo es un elemento de arranque, no almacenamiento permanente de datos de usuarios."}
@@ -40,8 +39,7 @@ Un initrd heredado es conceptualmente una imagen de sistema de archivos cargada 
 
 El initramfs debe corresponder al kernel y al diseño de arranque. La ausencia de módulos, identificadores de dispositivos obsoletos o la omisión de herramientas criptográficas y de LVM pueden hacer que un kernel recién instalado no arranque aunque su imagen sea válida.
 
-:::single-choice{#boot-kernel-initramfs-format}
-¿Cómo se presenta habitualmente un initramfs moderno al kernel?
+:::single-choice{#boot-kernel-initramfs-format} ¿Cómo se presenta habitualmente un initramfs moderno al kernel?
 
 ::option[Únicamente como un repositorio interactivo de paquetes mediante HTTP.]{#boot-kernel-http-repository explanation="El acceso a red puede configurarse en el espacio de usuario inicial, pero no define el formato de initramfs."}
 ::option[Como un archivo basado en cpio que se desempaqueta en la raíz inicial.]{#boot-kernel-cpio-archive .correct explanation="El kernel expande el archivo y ejecuta su programa inicial del espacio de usuario."}
@@ -54,8 +52,7 @@ El espacio de usuario inicial interpreta parámetros como `root=`, espera los di
 
 La solicitud inicial `ro` de la línea de órdenes puede facilitar comprobaciones de coherencia y un inicio controlado, pero la secuencia exacta depende de la distribución. Las comprobaciones de sistemas de archivos son operaciones del espacio de usuario, y el initramfs o el sistema init posterior puede volver a montar la raíz en lectura y escritura cuando la política lo permita.
 
-:::single-choice{#boot-kernel-root-switch}
-¿Qué ocurre después de que el espacio de usuario inicial monte correctamente la raíz real prevista?
+:::single-choice{#boot-kernel-root-switch} ¿Qué ocurre después de que el espacio de usuario inicial monte correctamente la raíz real prevista?
 
 ::option[Se vuelve a crear la tabla de particiones de todos los discos.]{#boot-kernel-recreate-tables explanation="Cambiar la raíz no vuelve a particionar el almacenamiento."}
 ::option[El kernel termina y el firmware reanuda la planificación normal de procesos.]{#boot-kernel-firmware-schedules explanation="El kernel de Linux sigue siendo responsable de los procesos y el hardware después de la transferencia."}
@@ -68,8 +65,7 @@ El kernel ejecuta el programa init configurado, normalmente alcanzado mediante u
 
 Si no se puede ejecutar un programa init utilizable, el kernel no puede continuar hacia un sistema normal de usuario y suele comunicar un fallo de arranque o panic. Depura la primera capa que falle: kernel y línea de órdenes, contenido de initramfs, descubrimiento de la raíz, montaje de la raíz o ejecución del PID 1.
 
-:::single-choice{#boot-kernel-pid-one}
-¿Cuál es la última gran transferencia del kernel en esta etapa simplificada del arranque?
+:::single-choice{#boot-kernel-pid-one} ¿Cuál es la última gran transferencia del kernel en esta etapa simplificada del arranque?
 
 ::option[Ejecutar el primer programa del espacio de usuario como PID 1.]{#boot-kernel-exec-init .correct explanation="El PID 1 inicia después los servicios y el estado configurado del sistema."}
 ::option[Convertir `/proc` en una base de datos persistente de paquetes.]{#boot-kernel-proc-package explanation="Procfs sigue siendo una interfaz del kernel durante la ejecución."}

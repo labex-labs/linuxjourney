@@ -24,16 +24,14 @@ Emacs opens an existing readable file in a buffer or prepares a new file-visitin
 
 You can use Tab completion while entering a pathname. Visiting a directory normally opens Dired, Emacs's directory editor, rather than treating the directory as a text file.
 
-:::single-choice{#emacs-find-file-key}
-Which Emacs key sequence prompts for a pathname and visits it?
+:::single-choice{#emacs-find-file-key} Which Emacs key sequence prompts for a pathname and visits it?
 
 ::option[`C-x C-s`]{#emacs-file-save explanation="This saves the current file-visiting buffer and does not prompt to visit another pathname."}
 ::option[`C-x C-c`]{#emacs-file-exit explanation="This begins exiting Emacs rather than opening a file."}
 ::option[`C-x C-f`]{#emacs-find-file .correct explanation="This runs `find-file`, prompting in the minibuffer for the pathname to visit."}
 :::
 
-:::single-choice{#emacs-find-missing-file}
-When `C-x C-f` visits a pathname that does not exist, when is the disk file normally created?
+:::single-choice{#emacs-find-missing-file} When `C-x C-f` visits a pathname that does not exist, when is the disk file normally created?
 
 ::option[Only after the new buffer is successfully saved.]{#emacs-file-created-on-save .correct explanation="The buffer can hold edits before any file exists, and saving performs the creation."}
 ::option[Immediately when the pathname is entered.]{#emacs-file-created-immediately explanation="Emacs first creates a buffer associated with the new pathname; disk creation is deferred."}
@@ -50,8 +48,7 @@ C-x C-s
 
 If the buffer has no associated filename, Emacs prompts for one. A successful write clears the buffer's modified indicator; a failure leaves the unsaved data in the buffer and reports an error.
 
-:::single-choice{#emacs-save-current-buffer}
-Which key sequence saves the current file-visiting buffer?
+:::single-choice{#emacs-save-current-buffer} Which key sequence saves the current file-visiting buffer?
 
 ::option[`C-x C-s`]{#emacs-save-buffer-key .correct explanation="`C-x C-s` runs `save-buffer` for the current buffer."}
 ::option[`C-x C-w`]{#emacs-write-file-key explanation="This prompts for another filename and changes which file the buffer visits."}
@@ -68,8 +65,7 @@ C-x C-w
 
 This is the Emacs “Save As” behavior. It differs from merely writing a separate copy while continuing to visit the original pathname.
 
-:::single-choice{#emacs-write-file-as}
-Which key sequence performs the usual Save As operation for the current buffer?
+:::single-choice{#emacs-write-file-as} Which key sequence performs the usual Save As operation for the current buffer?
 
 ::option[`C-x C-f`]{#emacs-find-file-other explanation="This visits a file, potentially switching to another buffer; it is not Save As for the current buffer."}
 ::option[`C-x k`]{#emacs-write-as-kill-buffer explanation="This asks to kill a buffer and can prompt about unsaved changes; it does not save under a new name."}
@@ -86,8 +82,7 @@ C-x s
 
 Emacs normally asks whether to save each eligible modified buffer. Read the buffer name and answer deliberately; this is not an unconditional save-all shortcut.
 
-:::single-choice{#emacs-save-some-buffers}
-What does `C-x s` normally do?
+:::single-choice{#emacs-save-some-buffers} What does `C-x s` normally do?
 
 ::option[Prompts about saving modified file-visiting buffers.]{#emacs-prompt-save-some .correct explanation="`save-some-buffers` reviews eligible modified buffers and asks which should be written."}
 ::option[Silently saves every buffer without showing names.]{#emacs-silent-save-all explanation="The normal interactive command prompts rather than unconditionally writing every buffer."}

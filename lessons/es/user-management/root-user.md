@@ -30,8 +30,7 @@ $ su - operator
 
 Sal del subshell cuando termines el trabajo específico de esa cuenta.
 
-:::single-choice{#root-su-login-shell}
-¿Qué orden solicita un shell de inicio de sesión como el usuario `operator`?
+:::single-choice{#root-su-login-shell} ¿Qué orden solicita un shell de inicio de sesión como el usuario `operator`?
 
 ::option[`su - operator`]{#root-su-login-operator .correct explanation="El guion solicita el comportamiento de un shell de inicio de sesión y un entorno orientado al usuario `operator`."}
 ::option[`su operator`]{#root-su-preserve-environment explanation="Esto cambia a la identidad de destino, pero no solicita la inicialización completa de inicio de sesión presentada aquí."}
@@ -50,8 +49,7 @@ Esto no significa que la solicitud vaya a permitirse. La política de sudo contr
 
 Cuando sea práctico, prefiere una orden administrativa de ámbito reducido a un shell con privilegios de larga duración. Un ámbito menor reduce la probabilidad de que órdenes accidentales se ejecuten con autoridad elevada.
 
-:::single-choice{#root-sudo-target-user}
-¿Qué solicita `sudo -u postgres id`?
+:::single-choice{#root-sudo-target-user} ¿Qué solicita `sudo -u postgres id`?
 
 ::option[Cambiar permanentemente el nombre de la cuenta actual a `postgres`.]{#root-sudo-rename explanation="`sudo` ejecuta una orden con credenciales de destino; no cambia el nombre de los registros de cuentas."}
 ::option[Ejecutar `id` con `postgres` como usuario de destino, sujeto a la política.]{#root-sudo-postgres-id .correct explanation="La opción `-u` selecciona la identidad de destino y la política sudoers decide si se permite la solicitud."}
@@ -64,8 +62,7 @@ Cuando sea práctico, prefiere una orden administrativa de ámbito reducido a un
 
 El comportamiento de auditoría depende de la configuración. `sudo` suele registrar las invocaciones, pero un único inicio registrado de un shell no proporciona automáticamente un registro completo de todas las órdenes escritas dentro de él. El historial del shell, la auditoría del sistema y el registro de entrada y salida de sudo son mecanismos separados con políticas propias.
 
-:::single-choice{#root-persistent-shell-risk}
-¿Por qué un shell root de larga duración es más arriesgado que elevar una orden conocida cada vez?
+:::single-choice{#root-persistent-shell-risk} ¿Por qué un shell root de larga duración es más arriesgado que elevar una orden conocida cada vez?
 
 ::option[Los shells root eliminan automáticamente todas las órdenes de todos los sistemas de auditoría.]{#root-shell-no-audit explanation="El registro varía según la configuración; no es correcto afirmar que todos los registros de auditoría se borran automáticamente."}
 ::option[El shell desactiva las rutas del sistema de archivos con más de un componente.]{#root-shell-path-limit explanation="Los privilegios no imponen esta restricción de rutas; el problema es la autoridad aplicada a operaciones normales."}
@@ -82,8 +79,7 @@ $ sudo -l
 
 Revisa las rutas de las órdenes, los usuarios de destino permitidos y las restricciones de argumentos. Una regla que parezca amplia no debe interpretarse como permiso para realizar trabajo no relacionado.
 
-:::single-choice{#root-list-sudo-rules}
-¿Qué orden enumera los privilegios sudo disponibles para el usuario que la invoca actualmente?
+:::single-choice{#root-list-sudo-rules} ¿Qué orden enumera los privilegios sudo disponibles para el usuario que la invoca actualmente?
 
 ::option[`sudo -i`]{#root-sudo-login explanation="Esto solicita un shell de inicio de sesión de destino y puede ampliar el ámbito de privilegios; no es una lista de solo lectura de la política."}
 ::option[`sudo -l`]{#root-sudo-list .correct explanation="La opción `-l` minúscula pide a sudo que enumere las órdenes permitidas por su política actual."}
@@ -108,8 +104,7 @@ $ sudo visudo -f /etc/sudoers.d/application-admins
 
 No edites sudoers con una redirección normal ni con un flujo de editor sin validación. Un error de sintaxis o permisos puede eliminar el acceso administrativo. Mantén disponible otra vía de recuperación verificada cuando cambies autorizaciones remotas.
 
-:::single-choice{#root-edit-sudoers-safely}
-¿Qué herramienta debe usarse para editar y comprobar la sintaxis de la política sudoers principal?
+:::single-choice{#root-edit-sudoers-safely} ¿Qué herramienta debe usarse para editar y comprobar la sintaxis de la política sudoers principal?
 
 ::option[`cat`]{#root-cat-sudoers explanation="`cat` puede mostrar texto legible, pero no edita, bloquea ni valida de forma segura la sintaxis de sudoers."}
 ::option[`visudo`]{#root-visudo .correct explanation="`visudo` proporciona bloqueo y validación de sintaxis diseñados para cambiar la política sudoers."}

@@ -24,8 +24,7 @@ Le minibuffer propose la complétion des noms existants. La saisie d'un nouveau 
 
 Par défaut, `C-x Droite` exécute `next-buffer` et `C-x Gauche` exécute `previous-buffer`, ce qui fait défiler les tampons dans la fenêtre sélectionnée.
 
-:::single-choice{#emacs-switch-buffer-key}
-Quelle séquence de touches demande le nom du tampon à afficher dans la fenêtre actuelle ?
+:::single-choice{#emacs-switch-buffer-key} Quelle séquence de touches demande le nom du tampon à afficher dans la fenêtre actuelle ?
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="Cette séquence demande un chemin et ouvre ce fichier, ce qui diffère du choix d'un tampon existant par son nom."}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` lit un nom de tampon et affiche celui-ci dans la fenêtre sélectionnée."}
@@ -48,8 +47,7 @@ C-x 3
 
 La nouvelle fenêtre affiche initialement un tampon, souvent le même. Vous pouvez changer indépendamment le tampon de chaque fenêtre.
 
-:::single-choice{#emacs-split-side-by-side}
-Quelle séquence de touches divise la fenêtre Emacs sélectionnée en fenêtres gauche et droite ?
+:::single-choice{#emacs-split-side-by-side} Quelle séquence de touches divise la fenêtre Emacs sélectionnée en fenêtres gauche et droite ?
 
 ::option[`C-x 1`]{#emacs-window-one explanation="Cette séquence supprime les autres fenêtres et fait de la fenêtre sélectionnée la seule de son cadre."}
 ::option[`C-x 2`]{#emacs-window-below explanation="Cette séquence crée des fenêtres supérieure et inférieure, et non une division côte à côte."}
@@ -71,16 +69,14 @@ Utilisez les commandes suivantes pour retirer des affichages de fenêtres :
 
 La suppression d'une fenêtre laisse normalement en vie le tampon qu'elle affichait. Vous pourrez donc le réafficher dans une autre fenêtre.
 
-:::single-choice{#emacs-select-other-window}
-Quelle séquence de touches déplace le point et le focus clavier vers une autre fenêtre Emacs ?
+:::single-choice{#emacs-select-other-window} Quelle séquence de touches déplace le point et le focus clavier vers une autre fenêtre Emacs ?
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="Cette séquence supprime la fenêtre sélectionnée au lieu de déplacer le focus vers une autre."}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` sélectionne à tour de rôle une autre fenêtre du cadre."}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="Cette séquence change le tampon affiché par la fenêtre actuelle, pas la fenêtre sélectionnée."}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-Quelle séquence de touches conserve la fenêtre sélectionnée et supprime les autres fenêtres de son cadre ?
+:::single-choice{#emacs-keep-one-window} Quelle séquence de touches conserve la fenêtre sélectionnée et supprime les autres fenêtres de son cadre ?
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` fait de la fenêtre sélectionnée la seule fenêtre du cadre."}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="Cette séquence supprime la fenêtre sélectionnée elle-même au lieu de la conserver."}
@@ -99,8 +95,7 @@ Le tampon actuel est proposé par défaut. Si un tampon associé à un fichier c
 
 Fermer un tampon diffère de supprimer une fenêtre. Emacs remplace un tampon fermé dans toutes les fenêtres qui l'affichaient, tandis que la suppression d'une fenêtre peut laisser son tampon intact.
 
-:::single-choice{#emacs-kill-buffer-key}
-Quelle séquence de touches demande quel tampon Emacs fermer ?
+:::single-choice{#emacs-kill-buffer-key} Quelle séquence de touches demande quel tampon Emacs fermer ?
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="Cette séquence supprime l'affichage d'une fenêtre, mais laisse normalement le tampon en vie."}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` retire le tampon choisi d'Emacs après toute confirmation requise concernant ses modifications."}

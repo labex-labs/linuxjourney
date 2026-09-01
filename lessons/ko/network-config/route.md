@@ -23,8 +23,7 @@ $ ip route get 192.168.2.25
 
 정책 규칙과 대체 테이블이 있다면 함께 조사합니다. 경로 조회는 로컬 증거이며 트래픽을 보내지 않습니다.
 
-:::single-choice{#route-get-before-change}
-경로 변경 전에 `ip route get DESTINATION`을 실행하는 이유는 무엇입니까?
+:::single-choice{#route-get-before-change} 경로 변경 전에 `ip route get DESTINATION`을 실행하는 이유는 무엇입니까?
 
 ::option[비교와 되돌리기를 위해 현재 로컬 결정을 기록합니다.]{#route-get-baseline .correct explanation="선택된 인터페이스, 다음 홉 및 출발지는 의도한 변경을 정의하는 데 도움이 됩니다."}
 ::option[모든 라우터에서 목적지를 영구적으로 예약합니다.]{#route-get-reserves explanation="이 명령은 로컬 조회를 수행하며 원격 상태를 바꾸지 않습니다."}
@@ -41,8 +40,7 @@ $ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 게이트웨이는 관련 링크 또는 명시적으로 유효한 링크상 설계에 따라 연결 가능해야 합니다. `add`는 동등한 경로가 이미 있으면 실패합니다. `replace`는 경로를 만들거나 변경하므로 멱등 설정에 유용하지만 작동 중인 상태를 덮어쓸 수 있습니다. 정확한 대상을 먼저 확인하십시오.
 
-:::single-choice{#route-add-existing}
-`ip route add`가 이미 존재하는 경로를 대상으로 하면 일반적으로 어떻게 됩니까?
+:::single-choice{#route-add-existing} `ip route add`가 이미 존재하는 경로를 대상으로 하면 일반적으로 어떻게 됩니까?
 
 ::option[기존 목적지 접두사를 조용히 삭제합니다.]{#route-add-deletes explanation="add는 교체하지 않고 일반적으로 기존 객체 오류를 보고합니다."}
 ::option[기존 경로를 교체하지 않고 실패합니다.]{#route-add-fails .correct explanation="변경할 항목을 검토한 뒤에만 의도적으로 replace를 사용하십시오."}
@@ -59,8 +57,7 @@ $ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 목적지만 지정한 삭제는 의도보다 넓게 일치하거나 모호할 수 있습니다. 경로를 제거하기 전에 복원에 필요한 원래 명령을 기록하십시오.
 
-:::single-choice{#route-delete-precision}
-경로 삭제 시 다음 홉과 장치를 함께 지정하는 이유는 무엇입니까?
+:::single-choice{#route-delete-precision} 경로 삭제 시 다음 홉과 장치를 함께 지정하는 이유는 무엇입니까?
 
 ::option[의도한 항목을 더 정확하게 식별하기 위해서입니다.]{#route-delete-exact .correct explanation="명시적인 속성은 같은 접두사의 다른 경로를 제거할 가능성을 줄입니다."}
 ::option[물리 네트워크 어댑터도 함께 삭제하기 위해서입니다.]{#route-delete-adapter explanation="경로 삭제는 커널 링크 객체를 제거하지 않습니다."}
@@ -73,8 +70,7 @@ $ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 원격 호스트에서는 독립적인 콘솔을 보존하고 변경하는 경로에 의존하지 않는 되돌리기를 사용합니다. 그런 다음 경로 조회, 이웃 상태, 양방향 트래픽 및 실제 서비스를 검증합니다.
 
-:::single-choice{#route-runtime-persistence}
-네트워크 관리자 다시 불러오기 후 수동으로 추가한 경로에는 어떤 일이 생길 수 있습니까?
+:::single-choice{#route-runtime-persistence} 네트워크 관리자 다시 불러오기 후 수동으로 추가한 경로에는 어떤 일이 생길 수 있습니까?
 
 ::option[영원히 변경할 수 없는 커널 기능이 됩니다.]{#route-manual-immutable explanation="런타임 경로는 제거되거나 교체될 수 있습니다."}
 ::option[서브넷의 모든 호스트에 자동으로 나타납니다.]{#route-manual-all-hosts explanation="명령은 현재 네트워크 네임스페이스만 바꿉니다."}

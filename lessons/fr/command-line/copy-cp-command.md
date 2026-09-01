@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 Dans le second exemple, les données copiées prennent le nom `mycoolfile_backup`.
 
-:::single-choice{#copy-file-under-new-name}
-Quelle commande copie `draft.txt` vers un fichier nommé `final.txt` tout en conservant `draft.txt` ?
+:::single-choice{#copy-file-under-new-name} Quelle commande copie `draft.txt` vers un fichier nommé `final.txt` tout en conservant `draft.txt` ?
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` renomme ou déplace le chemin original ; elle ne laisse pas la copie source demandée en place."}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="La source et la destination sont inversées. Cette commande copierait `final.txt` vers `draft.txt`."}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 Lorsque vous fournissez plusieurs sources, le dernier argument doit être un répertoire.
 
-:::single-choice{#copy-multiple-files}
-Quelle commande copie `a.txt` et `b.txt` dans le répertoire existant `archive/` ?
+:::single-choice{#copy-multiple-files} Quelle commande copie `a.txt` et `b.txt` dans le répertoire existant `archive/` ?
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="Dans cette forme de `cp`, le répertoire de destination doit se trouver à la fin. Le placer en premier change l'interprétation des opérandes."}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="Avec plusieurs sources, `cp` traite le dernier répertoire existant comme destination de tous les fichiers qui le précèdent."}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-Avant de copier `*.jpg`, quelle commande montre les noms non cachés auxquels le motif correspond actuellement ?
+:::single-choice{#preview-copy-pattern} Avant de copier `*.jpg`, quelle commande montre les noms non cachés auxquels le motif correspond actuellement ?
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="Si plusieurs noms correspondent, cette commande tente une copie sans destination claire ; elle ne constitue pas une prévisualisation."}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="Le shell développe le même motif pour `ls`, ce qui permet d'examiner les noms correspondants avant de les copier."}
@@ -112,8 +109,7 @@ Le mode archive, `-a`, convient aux copies de type sauvegarde. Il copie récursi
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-Vous voulez une copie récursive de type sauvegarde de `project/`, avec conservation des liens et de nombreux attributs. Quelle commande convient ?
+:::single-choice{#archive-directory-tree} Vous voulez une copie récursive de type sauvegarde de `project/`, avec conservation des liens et de nombreux attributs. Quelle commande convient ?
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` conserve certains attributs, mais ne rend pas à elle seule la copie d'un répertoire récursive."}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` contrôle les copies selon l'état de la destination, mais n'active pas à elle seule la récursivité."}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 Avec GNU `cp`, `-f` demande de tenter de supprimer une destination existante si elle ne peut pas être ouverte en écriture, puis de recommencer la copie. Cette option ne remplace pas une vérification attentive des cibles. Des alias peuvent aussi ajouter des options comme `-i` ; examinez une demande inattendue au lieu de supposer une configuration précise.
 
-:::single-choice{#skip-existing-destination}
-Quelle commande copie `report.txt` dans `backup/`, mais ignore une destination existante portant le même nom ?
+:::single-choice{#skip-existing-destination} Quelle commande copie `report.txt` dans `backup/`, mais ignore une destination existante portant le même nom ?
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="L'option `-n` empêche `cp` d'écraser un fichier de destination existant."}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` demande une confirmation ; le résultat dépend donc de la réponse et n'ignore pas automatiquement chaque destination existante."}

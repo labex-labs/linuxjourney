@@ -30,8 +30,7 @@ $ find /home -name puppies.jpg
 
 La récursivité est le comportement par défaut. Utilisez `.` comme point de départ pour rechercher dans l'arborescence du répertoire actuel.
 
-:::single-choice{#search-current-tree}
-Quelle commande recherche dans le répertoire actuel et ses descendants les entrées nommées `notes.txt` ?
+:::single-choice{#search-current-tree} Quelle commande recherche dans le répertoire actuel et ses descendants les entrées nommées `notes.txt` ?
 
 ::option[`find . -name notes.txt`]{#find-current-notes .correct explanation="Le point choisit le répertoire actuel comme départ, et `-name` teste le nom de base de chaque entrée."}
 ::option[`find / -name notes.txt`]{#find-root-notes explanation="Le chemin de départ `/` lance la recherche depuis la racine du système de fichiers, une portée beaucoup plus large."}
@@ -56,8 +55,7 @@ $ find /home -type d -name MyFolder
 
 Les deux tests doivent être vrais : l'entrée doit être un répertoire dont le nom de base est `MyFolder`.
 
-:::single-choice{#find-text-regular-files}
-Quelle commande trouve sous le répertoire actuel les fichiers ordinaires dont le nom se termine par `.txt` ?
+:::single-choice{#find-text-regular-files} Quelle commande trouve sous le répertoire actuel les fichiers ordinaires dont le nom se termine par `.txt` ?
 
 ::option[`find . -type f -name "*.txt"`]{#text-files .correct explanation="`-type f` sélectionne les fichiers ordinaires, tandis que `find` évalue le motif `-name` cité pour chaque entrée."}
 ::option[`find . -type d -name "*.txt"`]{#text-directories explanation="Le motif est correctement cité, mais `-type d` sélectionne des répertoires plutôt que des fichiers ordinaires."}
@@ -84,8 +82,7 @@ $ find . -type f -mtime +30
 
 `-mtime -7` correspond à une valeur inférieure à 7, et `-mtime +30` à une valeur supérieure à 30. Ces tests utilisent des périodes complètes de 24 heures, pas les limites de minuit du calendrier.
 
-:::single-choice{#find-recent-regular-files}
-Quelle commande trouve sous `.` les fichiers ordinaires dont l'âge de modification est inférieur à sept périodes complètes de 24 heures ?
+:::single-choice{#find-recent-regular-files} Quelle commande trouve sous `.` les fichiers ordinaires dont l'âge de modification est inférieur à sept périodes complètes de 24 heures ?
 
 ::option[`find . -type f -mtime -7`]{#recent-files .correct explanation="`-type f` sélectionne les fichiers ordinaires et `-mtime -7` les âges inférieurs à sept périodes complètes de 24 heures."}
 ::option[`find . -type f -mtime +7`]{#older-than-seven explanation="Le signe plus sélectionne les âges supérieurs à sept unités ; il recherche donc des fichiers plus anciens."}
@@ -110,16 +107,14 @@ Dans la forme `\;`, `{}` est remplacé par un chemin correspondant à chaque inv
 
 Avant une action destructive comme `-delete` ou une commande `-exec` qui modifie des fichiers, exécutez les mêmes tests avec `-print` et inspectez tous les résultats. Un chemin de départ plus étroit et `-maxdepth N` peuvent aussi limiter la recherche.
 
-:::single-choice{#verify-before-delete}
-Vous préparez une commande `find` susceptible de supprimer ensuite d'anciens fichiers `.log`. Que devez-vous faire d'abord ?
+:::single-choice{#verify-before-delete} Vous préparez une commande `find` susceptible de supprimer ensuite d'anciens fichiers `.log`. Que devez-vous faire d'abord ?
 
 ::option[Ajouter immédiatement `-delete` et vérifier quels fichiers disparaissent.]{#delete-first explanation="La suppression n'est pas une prévisualisation sûre et ne possède pas d'annulation intégrée. Vérifiez tout l'ensemble avant de l'ajouter."}
 ::option[Exécuter les mêmes tests avec `-print` et inspecter chaque résultat.]{#print-first .correct explanation="Une liste en lecture seule vérifie le point de départ et les tests avant l'introduction d'une action destructive."}
 ::option[Commencer à `/` pour ne manquer aucun journal.]{#root-first explanation="Un départ à `/` élargit la portée et peut inclure des chemins sans rapport ou protégés. Choisissez le point de départ pertinent le plus étroit."}
 :::
 
-:::single-choice{#run-ls-for-each-match}
-Dans `find . -name "*.log" -exec ls -l {} \;`, que représente `{}` ?
+:::single-choice{#run-ls-for-each-match} Dans `find . -name "*.log" -exec ls -l {} \;`, que représente `{}` ?
 
 ::option[Le chemin actuellement correspondant, fourni à `ls -l`.]{#match-placeholder .correct explanation="Dans cette forme de `-exec`, `find` remplace `{}` par la correspondance actuelle avant d'invoquer `ls -l`."}
 ::option[Le répertoire depuis lequel `find` a été lancé.]{#starting-placeholder explanation="Le répertoire de départ est le point situé au début de la commande ; les accolades jouent un autre rôle dans `-exec`."}

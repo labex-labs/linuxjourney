@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 Isso é útil para criar marcadores de posição, mas `touch` não adiciona texto a um arquivo. Use um editor de texto ou outro comando destinado à gravação de conteúdo quando precisar de um arquivo não vazio.
 
-:::single-choice{#create-several-empty-files}
-Qual comando cria três arquivos vazios chamados `one`, `two` e `three`, caso ainda não existam?
+:::single-choice{#create-several-empty-files} Qual comando cria três arquivos vazios chamados `one`, `two` e `three`, caso ainda não existam?
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="As aspas transformam o texto em um único nome de arquivo com espaços. Esse comando se refere a um arquivo, não a três."}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` cria diretórios, não arquivos comuns vazios. Use `touch` para os arquivos solicitados."}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 A saída de `ls -l` normalmente mostra a hora de modificação, não a hora de acesso.
 
-:::single-choice{#touch-existing-file}
-O que acontece ao executar `touch report.txt` quando `report.txt` já existe?
+:::single-choice{#touch-existing-file} O que acontece ao executar `touch report.txt` quando `report.txt` já existe?
 
 ::option[Seus carimbos de data e hora são atualizados sem substituir o conteúdo.]{#timestamps-only .correct explanation="Por padrão, `touch` atualiza as horas de acesso e modificação de um arquivo existente. Ele não sobrescreve os dados."}
 ::option[Seu conteúdo é excluído e o arquivo se torna vazio.]{#contents-deleted explanation="A criação de um arquivo vazio é o comportamento para um arquivo ausente. Um arquivo existente preserva o conteúdo quando `touch` atualiza seus horários."}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-Qual comando atualiza apenas a hora de modificação de `notes.txt`?
+:::single-choice{#change-modification-time-only} Qual comando atualiza apenas a hora de modificação de `notes.txt`?
 
 ::option[`touch -a notes.txt`]{#access-only explanation="A opção `-a` altera somente a hora de acesso. Ela não seleciona a hora de modificação solicitada."}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="A opção `-m` restringe a alteração à hora de modificação. A hora de acesso permanece inalterada."}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 Aqui, `file1.txt` fornece os horários e `file2.txt` é o arquivo alterado. A opção `-t` é outra maneira de fornecer um horário, usando um formato numérico compacto.
 
-:::single-choice{#copy-reference-timestamps}
-Qual comando copia os carimbos de data e hora de `source.txt` para `target.txt`?
+:::single-choice{#copy-reference-timestamps} Qual comando copia os carimbos de data e hora de `source.txt` para `target.txt`?
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="Com `-r`, o operando seguinte é o arquivo de referência e o último é o arquivo cujos horários serão atualizados."}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="Esse comando inverte as funções dos arquivos. Ele usaria `target.txt` como referência e atualizaria `source.txt`."}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 Se `existing-file.txt` estiver ausente, esse comando não o criará. Esse comportamento pode ser útil em scripts que devem atualizar um horário sem introduzir um novo arquivo.
 
-:::single-choice{#update-without-creating}
-Qual comando atualiza `status.log` se ele existir, mas não o cria se estiver ausente?
+:::single-choice{#update-without-creating} Qual comando atualiza `status.log` se ele existir, mas não o cria se estiver ausente?
 
 ::option[`touch -a status.log`]{#touch-access explanation="A opção `-a` seleciona a hora de acesso, mas um arquivo ausente ainda pode ser criado. Ela não oferece o comportamento solicitado."}
 ::option[`touch -m status.log`]{#touch-modification explanation="A opção `-m` seleciona a hora de modificação, mas não impede a criação de um arquivo ausente. Use `-c` para essa condição."}

@@ -22,8 +22,7 @@ $ man ls
 
 Handbuchseiten enthalten häufig eine Übersicht der Syntax, eine Beschreibung, Optionen, zugehörige Dateien und Querverweise. Die genauen Abschnitte können jedoch variieren.
 
-:::single-choice{#open-ls-manual}
-Welcher Befehl öffnet die installierte Handbuchseite für `ls`?
+:::single-choice{#open-ls-manual} Welcher Befehl öffnet die installierte Handbuchseite für `ls`?
 
 ::option[`help ls`]{#help-ls explanation="Bash `help` dokumentiert Shell-Builtins und öffnet normalerweise nicht die Handbuchseite des externen Programms `ls`."}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` sucht im Handbuchbestand nach dem Thema `ls` und zeigt die passende Seite an."}
@@ -43,16 +42,14 @@ Innerhalb einer Manpage:
 
 Je nach System oder Umgebung kann ein anderer Pager zum Einsatz kommen. Die genannten Tasten gelten für die verbreitete Konfiguration mit `less`.
 
-:::single-choice{#search-man-page}
-Wie startest du in einer mit `less` geöffneten Manpage eine Vorwärtssuche nach `--recursive`?
+:::single-choice{#search-man-page} Wie startest du in einer mit `less` geöffneten Manpage eine Vorwärtssuche nach `--recursive`?
 
 ::option[Gib `?--recursive` ein und drücke Enter.]{#backward-man-search explanation="Ein Fragezeichen beginnt eine Rückwärtssuche und sucht damit in der entgegengesetzten Richtung."}
 ::option[Gib `/--recursive` ein und drücke Enter.]{#forward-man-search .correct explanation="Ein Schrägstrich beginnt in `less` eine Vorwärtssuche; mit Enter sendest du das Muster ab."}
 ::option[Gib `n--recursive` ein und drücke Enter.]{#repeat-man-search explanation="Die Taste `n` wiederholt eine vorhandene Suche. Auf diese Weise wird kein neues Suchmuster eingeführt."}
 :::
 
-:::single-choice{#leave-man-page}
-Welche Taste kehrt aus einer im üblichen Pager geöffneten Manpage zur Shell zurück?
+:::single-choice{#leave-man-page} Welche Taste kehrt aus einer im üblichen Pager geöffneten Manpage zur Shell zurück?
 
 ::option[`G`]{#man-page-end explanation="Das große `G` springt in `less` ans Seitenende. Der Pager bleibt geöffnet."}
 ::option[`n`]{#next-man-match explanation="Die Taste `n` wiederholt die letzte Suche und lässt die Handbuchseite geöffnet."}
@@ -78,8 +75,7 @@ $ man 1 passwd
 
 Der erste Befehl öffnet die Dateiformatseite zu `passwd` aus Abschnitt 5, der zweite die Benutzerbefehlsseite aus Abschnitt 1. Verweise wie `passwd(5)` verwenden dieselbe Schreibweise `topic(section)`.
 
-:::single-choice{#open-passwd-file-format}
-Welcher Befehl öffnet die Seite aus Abschnitt 5, die das Dateiformat `passwd` dokumentiert?
+:::single-choice{#open-passwd-file-format} Welcher Befehl öffnet die Seite aus Abschnitt 5, die das Dateiformat `passwd` dokumentiert?
 
 ::option[`man passwd 5`]{#section-after-topic explanation="Bei dieser Befehlsform gehört der Abschnitt vor das Thema. Diese Reihenfolge fordert nicht `passwd(5)` an."}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Wenn Abschnitt `5` vor `passwd` steht, wird gezielt die Dateiformatseite ausgewählt."}
@@ -95,8 +91,7 @@ Nicht für jeden Befehlsnamen ist eine eigene Handbuchseite installiert. Meldet 
 - Probiere bei einem externen Programm `NAME --help`, sofern es diese Konvention unterstützt.
 - Prüfe, ob deine Distribution ein separates Dokumentationspaket anbietet.
 
-:::single-choice{#missing-builtin-manual}
-`type cd` meldet, dass `cd` ein Bash-Builtin ist, und es ist keine eigene Manpage verfügbar. Welchen Befehl solltest du als Nächstes versuchen?
+:::single-choice{#missing-builtin-manual} `type cd` meldet, dass `cd` ein Bash-Builtin ist, und es ist keine eigene Manpage verfügbar. Welchen Befehl solltest du als Nächstes versuchen?
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` fasst Einträge aus der Handbuchdatenbank zusammen. Eine fehlende eigene Seite für das Builtin kann es nicht bereitstellen."}
 ::option[`file cd`]{#file-cd-name explanation="`file` klassifiziert Dateisystemobjekte; hier wird `cd` jedoch als Shell-Builtin und nicht als Pfad aufgelöst."}

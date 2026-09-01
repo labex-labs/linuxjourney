@@ -16,8 +16,7 @@ Link-state protocols describe local links and prefixes, distribute those descrip
 
 Routers discover compatible neighbors and form protocol adjacencies according to interface type, area, timers, authentication, and other parameters. Seeing hello packets does not guarantee a full adjacency; mismatched configuration can stop the state machine earlier.
 
-:::single-choice{#link-state-hello-limit}
-What does receiving an OSPF hello fail to prove?
+:::single-choice{#link-state-hello-limit} What does receiving an OSPF hello fail to prove?
 
 ::option[That the routers formed a full synchronized adjacency.]{#link-state-not-full .correct explanation="Area, timers, authentication, MTU, and other state can prevent full database exchange."}
 ::option[That the neighbor sent at least one protocol message.]{#link-state-hello-sent explanation="Receiving the hello directly proves that limited fact."}
@@ -28,8 +27,7 @@ What does receiving an OSPF hello fail to prove?
 
 Each router originates advertisements about its relevant state. Neighbors reliably flood newer information through the defined area or domain, rather than keeping updates only between the original neighboring pair. Sequence and aging mechanisms distinguish current information and remove stale state.
 
-:::single-choice{#link-state-flooding-scope}
-Why is link-state information flooded beyond one neighbor?
+:::single-choice{#link-state-flooding-scope} Why is link-state information flooded beyond one neighbor?
 
 ::option[Every application needs a copy of all router passwords.]{#link-state-password-copy explanation="Application credentials are not topology advertisements."}
 ::option[Ethernet cannot send unicast frames.]{#link-state-no-unicast explanation="Ethernet supports unicast; flooding here is a routing-protocol distribution mechanism."}
@@ -42,8 +40,7 @@ After building a link-state database, a router runs a shortest-path-first algori
 
 “Shortest” means lowest protocol cost, not necessarily fewest routers or lowest measured application latency. Cost design must reflect operational intent.
 
-:::single-choice{#link-state-shortest-meaning}
-What does “shortest” mean in a link-state path calculation?
+:::single-choice{#link-state-shortest-meaning} What does “shortest” mean in a link-state path calculation?
 
 ::option[The route whose prefix has the fewest written characters.]{#link-state-shortest-text explanation="Text length is unrelated to topology cost."}
 ::option[The path with the smallest sum of protocol costs.]{#link-state-lowest-cost .correct explanation="The cost model may or may not correspond directly to hop count or current latency."}
@@ -56,8 +53,7 @@ OSPF areas limit topology flooding and calculation scope, with Area 0 serving as
 
 After a link change, detection, advertisement flooding, SPF calculation, route installation, and forwarding recovery each take time. Faster convergence than a simple distance-vector design is possible, but not automatic under every failure or configuration.
 
-:::single-choice{#link-state-convergence-stages}
-What should be measured during an OSPF convergence investigation?
+:::single-choice{#link-state-convergence-stages} What should be measured during an OSPF convergence investigation?
 
 ::option[Only the time at which an administrator opened a terminal.]{#link-state-terminal-time explanation="That does not isolate protocol or forwarding stages."}
 ::option[Only the alphabetical order of router names.]{#link-state-router-names explanation="Names do not determine convergence timing."}

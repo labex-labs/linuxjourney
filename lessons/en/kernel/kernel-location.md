@@ -23,8 +23,7 @@ A traditional distribution layout can contain:
 
 Names vary. An `initrd`-named file on a modern distribution often contains an initramfs archive. The `vmlinuz` naming convention does not tell you the exact internal compression or platform boot format; inspect it with distribution tooling.
 
-:::single-choice{#kernel-location-vmlinuz}
-What does a versioned `vmlinuz-*` file normally contain?
+:::single-choice{#kernel-location-vmlinuz} What does a versioned `vmlinuz-*` file normally contain?
 
 ::option[A bootable Linux kernel image.]{#kernel-location-kernel-image .correct explanation="The boot loader or firmware loads this architecture-specific kernel artifact."}
 ::option[Every loadable module for all installed kernels.]{#kernel-location-all-modules explanation="Modules are stored separately in a release-specific module tree."}
@@ -37,8 +36,7 @@ The initramfs must contain the early modules and tools required by its matching 
 
 `config-*` helps explain which features were built in, modular, or omitted. `System.map-*` can help symbolization and debugging, but address randomization, split debug information, and distribution tooling affect how it is used. These files are supporting artifacts, not alternate kernels.
 
-:::single-choice{#kernel-location-initramfs-match}
-Why is an initramfs tied to a particular kernel release and system configuration?
+:::single-choice{#kernel-location-initramfs-match} Why is an initramfs tied to a particular kernel release and system configuration?
 
 ::option[It stores the permanent contents of every mounted filesystem.]{#kernel-location-all-filesystems explanation="An initramfs is a small early boot environment, not a full system backup."}
 ::option[It assigns new UIDs to users during every boot.]{#kernel-location-user-ids explanation="Account identity management is outside its normal role."}
@@ -55,8 +53,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 On merged filesystem layouts this can resolve into `/usr/lib/modules/KERNEL_RELEASE`. Each installed kernel needs a compatible module tree and dependency indexes. `modprobe` uses release-specific metadata rather than searching arbitrary `.ko` files across the disk.
 
-:::single-choice{#kernel-location-module-tree}
-Which directory conventionally holds modules for the running kernel release?
+:::single-choice{#kernel-location-module-tree} Which directory conventionally holds modules for the running kernel release?
 
 ::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="User home directories are not the standard system module tree."}
 ::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="The release component separates module ABI and dependency data for each installed kernel."}
@@ -69,8 +66,7 @@ A Unified Kernel Image, or UKI, is one signed EFI executable that can bundle a k
 
 Therefore, an empty-looking traditional `/boot` layout does not prove that no kernel is installed. Use `findmnt`, the package database, boot-manager tools, and the loader's configuration to map the active artifacts.
 
-:::single-choice{#kernel-location-uki}
-What can a Unified Kernel Image combine?
+:::single-choice{#kernel-location-uki} What can a Unified Kernel Image combine?
 
 ::option[All user home directories in a GPT header.]{#kernel-location-uki-homes explanation="A UKI is a boot executable, not a user-data container or partition table."}
 ::option[Every installed package into one shell script.]{#kernel-location-uki-packages explanation="It packages boot components rather than the complete operating system repository."}

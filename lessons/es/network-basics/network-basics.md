@@ -24,8 +24,7 @@ $ ip address show
 
 Que una interfaz esté presente o administrativamente activa no demuestra que haya conectividad de extremo a extremo.
 
-:::single-choice{#network-basics-host-interface}
-¿Qué es una interfaz de red?
+:::single-choice{#network-basics-host-interface} ¿Qué es una interfaz de red?
 
 ::option[Una copia permanente de todos los paquetes de Internet.]{#network-basics-interface-copy explanation="Una interfaz transmite y recibe tráfico; no es un archivo global de paquetes."}
 ::option[El punto de conexión de un host a una red o un enlace virtual.]{#network-basics-interface-attachment .correct explanation="Un host puede tener varias interfaces físicas o virtuales con configuraciones independientes."}
@@ -36,8 +35,7 @@ Que una interfaz esté presente o administrativamente activa no demuestra que ha
 
 Una red de área local, o LAN, abarca un entorno limitado como una vivienda, una oficina o un segmento de un centro de datos. Los conmutadores Ethernet reenvían tramas entre puertos de un enlace local. Una red LAN inalámbrica, o WLAN, utiliza tecnología de enlace inalámbrico. Las interfaces cableadas e inalámbricas pueden seguir perteneciendo a la misma subred IP cuando un puente o un punto de acceso las une.
 
-:::single-choice{#network-basics-wlan-relationship}
-¿Qué relación tiene una WLAN con una LAN?
+:::single-choice{#network-basics-wlan-relationship} ¿Qué relación tiene una WLAN con una LAN?
 
 ::option[Una WLAN siempre es un Internet global independiente.]{#network-basics-wlan-global explanation="Es una red local que utiliza tecnología de enlace inalámbrico."}
 ::option[Una WLAN es una partición de disco que utilizan los routers.]{#network-basics-wlan-disk explanation="El término describe redes, no la disposición del almacenamiento."}
@@ -50,8 +48,7 @@ Un router reenvía paquetes de la capa de red entre redes IP según su tabla de 
 
 Una red de área amplia, o WAN, abarca límites geográficos o administrativos mayores. Un proveedor de servicios de Internet puede conectar la red de un cliente con otras redes, pero «WAN» no significa simplemente todos los dispositivos situados fuera de una vivienda.
 
-:::single-choice{#network-basics-router-role}
-¿Cuál es la función que define a un router?
+:::single-choice{#network-basics-router-role} ¿Cuál es la función que define a un router?
 
 ::option[Reenviar paquetes entre redes de la capa de red.]{#network-basics-forward-networks .correct explanation="El enrutamiento selecciona los siguientes saltos a través de los límites de las redes IP."}
 ::option[Almacenar obligatoriamente todos los archivos de los usuarios como copia de seguridad.]{#network-basics-router-backup explanation="La conservación de archivos no es la función que define el enrutamiento."}
@@ -64,8 +61,7 @@ Las aplicaciones producen datos que las capas de protocolos dividen y encapsulan
 
 Una conversación puede incluir muchos paquetes en ambas direcciones. Las pérdidas, los cambios de orden, la fragmentación, las retransmisiones y los cambios de ruta hacen que un único paquete capturado rara vez describa toda la transacción de una aplicación.
 
-:::single-choice{#network-basics-router-frame}
-¿Qué ocurre normalmente con el encapsulado de la capa de enlace en el salto de un router?
+:::single-choice{#network-basics-router-frame} ¿Qué ocurre normalmente con el encapsulado de la capa de enlace en el salto de un router?
 
 ::option[El router elimina el encapsulado entrante y crea otro para el siguiente enlace.]{#network-basics-reframe .correct explanation="El paquete IP reenviado se transporta en una trama nueva de la capa de enlace apropiada para la interfaz de salida."}
 ::option[La misma trama Ethernet atraviesa todo Internet sin cambiar.]{#network-basics-same-frame explanation="Las tramas están limitadas a sus enlaces y se sustituyen en los saltos enrutados."}

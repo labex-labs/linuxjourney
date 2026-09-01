@@ -28,8 +28,7 @@ $ sudo lsof +D /mnt/usb
 
 유용한 열에는 `COMMAND`, `PID`, `USER`, 파일 디스크립터(`FD`), 유형, 장치 및 `NAME`이 있습니다. `FD`가 `cwd`인 레코드는 프로세스가 해당 디렉터리를 현재 작업 디렉터리로 사용함을 나타냅니다. 비특권 출력은 다른 사용자가 소유한 프로세스에 대해 불완전할 수 있습니다.
 
-:::single-choice{#lsof-cwd-record}
-`FD` 열의 `cwd`는 무엇을 나타냅니까?
+:::single-choice{#lsof-cwd-record} `FD` 열의 `cwd`는 무엇을 나타냅니까?
 
 ::option[프로세스가 해당 디렉터리를 현재 작업 디렉터리로 사용합니다.]{#lsof-current-directory .correct explanation="프로세스의 현재 디렉터리는 마운트된 파일 시스템을 사용 중 상태로 유지할 수 있습니다."}
 ::option[쓰는 도중 파일이 닫혔습니다.]{#lsof-closed-write explanation="이 표시는 닫기 이벤트가 아니라 디렉터리 관계를 설명합니다."}
@@ -52,8 +51,7 @@ $ sudo fuser -vm /mnt/usb
 
 `findmnt --target /mnt/usb` 같은 도구로 경로가 의도한 마운트 지점인지 검증하십시오. 바인드 마운트, 네임스페이스, 권한 및 경쟁 상태 때문에 한 번의 조회 결과가 불완전할 수 있습니다.
 
-:::single-choice{#fuser-verbose-purpose}
-조사 중에 일반 `fuser` 대신 `fuser -v`를 사용하는 이유는 무엇입니까?
+:::single-choice{#fuser-verbose-purpose} 조사 중에 일반 `fuser` 대신 `fuser -v`를 사용하는 이유는 무엇입니까?
 
 ::option[선택한 파일 시스템을 자동으로 마운트 해제합니다.]{#fuser-verbose-unmount explanation="상세 모드는 정보를 보고할 뿐 마운트 해제를 요청하지 않습니다."}
 ::option[사용자, 접근 유형 및 명령 같은 맥락을 추가합니다.]{#fuser-verbose-details .correct explanation="추가 열은 어떤 프로세스를 조정하거나 중지해도 안전한지 판단하는 데 도움을 줍니다."}
@@ -72,8 +70,7 @@ $ sudo fuser -vm /mnt/usb
 
 `fuser -k`는 일치하는 프로세스에 신호를 보냅니다. 일반적인 procps 구현의 기본 신호는 `SIGKILL`이므로 질서 있는 종료를 제공하지 않습니다. 명시적으로 승인된 종료가 필요하다면 적절한 신호를 선택하고 PID와 소유자를 검증하며, 검사와 작업 사이에 프로세스 집합이 바뀔 수 있음을 이해하십시오.
 
-:::single-choice{#fuser-k-risk}
-`fuser -k /mnt/usb`가 좋지 않은 첫 문제 해결 단계인 이유는 무엇입니까?
+:::single-choice{#fuser-k-risk} `fuser -k /mnt/usb`가 좋지 않은 첫 문제 해결 단계인 이유는 무엇입니까?
 
 ::option[파일 시스템 여유 공간만 출력하기 때문입니다.]{#fuser-k-space explanation="이 옵션은 용량을 보고하는 대신 프로세스를 대상으로 합니다."}
 ::option[질서 있는 정리 없이 일치하는 여러 프로세스를 종료할 수 있기 때문입니다.]{#fuser-k-kills .correct explanation="광범위한 신호 작업은 쓰기나 서비스를 중단할 수 있으므로 먼저 조사하고 조정해야 합니다."}
@@ -91,8 +88,7 @@ $ sudo fuser -v 22/tcp
 $ sudo ss -lntp
 ```
 
-:::single-choice{#lsof-fuser-tool-choice}
-열린 파일 디스크립터와 소유 프로세스의 상세 목록에 적합한 도구는 무엇입니까?
+:::single-choice{#lsof-fuser-tool-choice} 열린 파일 디스크립터와 소유 프로세스의 상세 목록에 적합한 도구는 무엇입니까?
 
 ::option[`lsof`]{#lsof-detailed-records .correct explanation="출력은 열린 파일 레코드와 해당 프로세스 메타데이터를 중심으로 구성됩니다."}
 ::option[`uptime`]{#lsof-uptime explanation="uptime은 열린 디스크립터가 아니라 가동 시간과 부하 평균을 보고합니다."}

@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 有序关机会要求服务停止、卸载文件系统，然后改变计算机的电源状态。不要把强制重启或按下物理电源开关当作普通的快捷方式；两者都可能中断写入，使数据或服务处于不一致状态。
 
-:::single-choice{#power-states-orderly-poweroff}
-关闭远程生产主机的电源之前应该做什么？
+:::single-choice{#power-states-orderly-poweroff} 关闭远程生产主机的电源之前应该做什么？
 
 ::option[执行命令前断开其管理控制台。]{#power-states-remove-console explanation="管理控制台是很有用的恢复通道，应保持可用。"}
 ::option[强制关机，避免服务延迟操作。]{#power-states-force-first explanation="强制操作可能中断写入，不应作为常规方法。"}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 不要认为发出警告就意味着操作必然安全。应检查活动会话和系统特有的工作负载；如果服务或集群有规定的排空流程，也要遵循该流程。
 
-:::single-choice{#power-states-four-minute-schedule}
-哪个命令会安排在四分钟后关机？
+:::single-choice{#power-states-four-minute-schedule} 哪个命令会安排在四分钟后关机？
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="-h 操作与 +4 结合，会请求从现在起四分钟后关机。"}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="没有加号时，时间参数并不是文档规定的相对分钟形式。"}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 重启前，应确认加密磁盘、启动配置、网络和必需服务能够在没有当前交互式会话的情况下恢复。如果其他系统依赖该主机，应先协调故障转移或迁移工作负载。
 
-:::single-choice{#power-states-reboot-action}
-哪个命令会通过 `shutdown` 请求立即进行有序重启？
+:::single-choice{#power-states-reboot-action} 哪个命令会通过 `shutdown` 请求立即进行有序重启？
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="-c 选项会取消待执行的关机。"}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="-r 选项选择重启，now 则将操作安排为立即执行。"}
@@ -89,8 +86,7 @@ $ sudo reboot
 
 `halt`、`poweroff` 和 `reboot` 可能是初始化系统的兼容前端，但它们请求的最终状态不同。停止系统会终止正常系统运行；视平台和实现而定，此时可能仍然供电。关闭电源还会请求受支持的硬件切断供电。应优先选择能准确表达预期结果的命令，并查阅本地手册，因为兼容行为可能不同。
 
-:::single-choice{#power-states-halt-versus-poweroff}
-为什么应该区分 `halt` 和 `poweroff`？
+:::single-choice{#power-states-halt-versus-poweroff} 为什么应该区分 `halt` 和 `poweroff`？
 
 ::option[关闭电源会请求切断供电，而停止系统可能仍保持供电。]{#power-states-power-distinction .correct explanation="即使两者都会停止正常运行，请求的最终硬件状态仍可能不同。"}
 ::option[停止系统后总会重新启动服务。]{#power-states-halt-restarts explanation="停止系统是一种停止状态，并不是重启服务的请求。"}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 这些命令只是起点；对于实际工作负载，还应使用应用程序自身的健康检查。
 
-:::single-choice{#power-states-post-reboot-check}
-什么最能证明重启后的应用程序已经就绪？
+:::single-choice{#power-states-post-reboot-check} 什么最能证明重启后的应用程序已经就绪？
 
 ::option[服务状态、日志和应用程序健康检查全部正常。]{#power-states-health-evidence .correct explanation="结合多项系统和应用检查，才能验证工作负载，而不只是主机访问能力。"}
 ::option[机箱电源指示灯亮起。]{#power-states-light-on explanation="硬件已通电并不能证明应用程序健康。"}

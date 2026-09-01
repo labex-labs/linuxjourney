@@ -28,8 +28,7 @@ Los ceros iniciales de cada grupo pueden omitirse y una secuencia contigua de gr
 
 Solo puede aparecer un `::`, porque de otro modo la cantidad de grupos omitidos sería ambigua. `2001:db8::/32` está reservado para ejemplos de documentación.
 
-:::single-choice{#ipv6-double-colon-rule}
-¿Por qué `::` puede aparecer como máximo una vez en una dirección IPv6?
+:::single-choice{#ipv6-double-colon-rule} ¿Por qué `::` puede aparecer como máximo una vez en una dirección IPv6?
 
 ::option[Usar varios marcadores `::` haría ambigua la expansión.]{#ipv6-compression-ambiguity .correct explanation="Un marcador de compresión puede expandirse a la cantidad exacta de grupos necesarios para alcanzar ocho."}
 ::option[Las direcciones IPv6 solo contienen un bit cero.]{#ipv6-one-zero explanation="Una dirección puede contener muchos bits cero y grupos cero."}
@@ -47,8 +46,7 @@ Entre las direcciones e intervalos importantes se encuentran:
 
 IPv6 no tiene una dirección de broadcast; multicast y el descubrimiento de vecinos cubren casos de uso que IPv4 suele gestionar mediante broadcast. Un destino link-local puede necesitar una zona de interfaz como `fe80::1%eth0`, porque el mismo prefijo existe en todos los enlaces.
 
-:::single-choice{#ipv6-link-local-scope}
-¿Cuál es el ámbito normal de una dirección `fe80::/10`?
+:::single-choice{#ipv6-link-local-scope} ¿Cuál es el ámbito normal de una dirección `fe80::/10`?
 
 ::option[Todos los hosts de Internet global.]{#ipv6-global-link-local explanation="Las direcciones unicast globales sirven para el ámbito global enrutado."}
 ::option[Únicamente un archivo de zona DNS.]{#ipv6-dns-only explanation="Las direcciones link-local se asignan a interfaces y se utilizan en redes."}
@@ -59,8 +57,7 @@ IPv6 no tiene una dirección de broadcast; multicast y el descubrimiento de veci
 
 La notación CIDR de IPv6 utiliza una longitud de prefijo desde `/0` hasta `/128`. Un `/64` es el tamaño estándar para la mayoría de las subredes LAN y admite la configuración automática de direcciones sin estado. Una interfaz puede contener simultáneamente direcciones link-local, globales estables, temporales de privacidad y de otros tipos, cada una con una duración preferida y válida.
 
-:::single-choice{#ipv6-address-multiplicity}
-¿Por qué puede mostrar una interfaz varias direcciones IPv6?
+:::single-choice{#ipv6-address-multiplicity} ¿Por qué puede mostrar una interfaz varias direcciones IPv6?
 
 ::option[IPv6 necesita una dirección para cada dígito hexadecimal.]{#ipv6-one-per-digit explanation="Los dígitos son una representación, no asignaciones distintas de la interfaz."}
 ::option[Pueden coexistir distintos ámbitos y funciones de privacidad o duración.]{#ipv6-several-roles .correct explanation="Es normal tener una dirección link-local y una o varias direcciones globales o temporales."}
@@ -73,8 +70,7 @@ El descubrimiento de vecinos de IPv6 utiliza ICMPv6 para resolver direcciones, d
 
 Bloquear todo ICMPv6 rompe funciones esenciales del protocolo. La política del cortafuegos debe permitir los tipos de mensajes necesarios con el ámbito apropiado en lugar de tratar ICMPv6 como opcional.
 
-:::single-choice{#ipv6-default-router-source}
-¿Cómo aprende normalmente un host IPv6 un router predeterminado de forma dinámica?
+:::single-choice{#ipv6-default-router-source} ¿Cómo aprende normalmente un host IPv6 un router predeterminado de forma dinámica?
 
 ::option[Mediante anuncios de router.]{#ipv6-router-advertisements .correct explanation="El descubrimiento de routers forma parte del descubrimiento de vecinos ICMPv6."}
 ::option[Mediante una dirección broadcast de Ethernet.]{#ipv6-ethernet-broadcast explanation="IPv6 no utiliza una dirección broadcast IP."}
@@ -94,8 +90,7 @@ $ ping -6 -c 3 2001:db8::25
 
 Utiliza una dirección de prueba asignada realmente, no la dirección de documentación mostrada. Una aplicación de pila doble puede funcionar mediante IPv4 mientras IPv6 está averiado, o al contrario, así que prueba explícitamente cada familia y sus registros DNS `A` o `AAAA`.
 
-:::single-choice{#ipv6-dual-stack-test}
-¿Por qué deben probarse IPv4 e IPv6 por separado en un servicio de pila doble?
+:::single-choice{#ipv6-dual-stack-test} ¿Por qué deben probarse IPv4 e IPv6 por separado en un servicio de pila doble?
 
 ::option[Todos los paquetes IPv6 deben convertirse primero en broadcast IPv4.]{#ipv6-becomes-ipv4 explanation="IPv6 e IPv4 nativos son rutas de protocolo distintas."}
 ::option[Las dos familias pueden tener DNS, rutas, filtros y fallos diferentes.]{#ipv6-independent-paths .correct explanation="Una alternativa satisfactoria puede ocultar que la familia de direcciones preferida está averiada."}

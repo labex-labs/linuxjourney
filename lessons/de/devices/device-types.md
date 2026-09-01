@@ -28,8 +28,7 @@ Ein `c` bezeichnet ein Zeichengerät. Es stellt normalerweise eine stromorientie
 
 „Zeichen“ bedeutet nicht, dass jeder Systemaufruf genau ein Zeichen übertragen muss. Anwendungen können Puffer lesen oder schreiben, während der Treiber Blockierung, Rahmung und Steuerverhalten festlegt.
 
-:::single-choice{#device-types-character-marker}
-Welches erste Moduszeichen bezeichnet einen Zeichengeräteknoten?
+:::single-choice{#device-types-character-marker} Welches erste Moduszeichen bezeichnet einen Zeichengeräteknoten?
 
 ::option[`b`]{#device-types-marker-block explanation="Das Zeichen `b` bezeichnet einen Blockgeräteknoten."}
 ::option[`p`]{#device-types-marker-pipe explanation="Das Zeichen `p` bezeichnet eine FIFO, also eine benannte Pipe."}
@@ -42,8 +41,7 @@ Ein `b` bezeichnet ein Blockgerät. Blockgeräte stellen über die Blockschicht 
 
 Ein Blockgeräteknoten ist kein eingehängtes Dateisystem. Er stellt ein Speichergerät oder einen logischen Bereich dar; darauf kann getrennt ein Dateisystem erstellt und eingehängt werden. Das Schreiben von Rohdaten auf den falschen Blockgeräteknoten kann Partitionstabellen, Dateisysteme oder Benutzerdaten zerstören.
 
-:::single-choice{#device-types-block-marker}
-Was bedeutet das erste Moduszeichen `b`?
+:::single-choice{#device-types-block-marker} Was bedeutet das erste Moduszeichen `b`?
 
 ::option[Einen Hintergrundjob der Shell.]{#device-types-background-job explanation="Der Zustand eines Shelljobs ist nicht als Dateisystem-Typzeichen codiert."}
 ::option[Eine Blockgeräteschnittstelle.]{#device-types-block-device .correct explanation="Besondere Blockdateien stellen über das Blocksubsystem des Kernels adressierbaren Speicher bereit."}
@@ -58,8 +56,7 @@ Ein `s` bezeichnet den Knoten eines Unix-Domain-Sockets. Er benennt einen lokale
 
 Weder eine FIFO noch ein Unix-Socket-Knoten verwendet Major- und Minor-Nummern zur Auswahl eines Hardwaretreibers.
 
-:::single-choice{#device-types-pipe-socket-distinction}
-Welche Aussage unterscheidet diese IPC-Objekttypen richtig?
+:::single-choice{#device-types-pipe-socket-distinction} Welche Aussage unterscheidet diese IPC-Objekttypen richtig?
 
 ::option[`p` bezeichnet eine Datenträgerpartition, `s` einen Solid-State-Speicher.]{#device-types-storage-letters explanation="Partitionen sind normalerweise Blockgeräte; die Buchstaben codieren keine Speichertechnologie."}
 ::option[`p` bezeichnet eine FIFO, `s` den Knoten eines Unix-Domain-Sockets.]{#device-types-p-and-s .correct explanation="Dies sind getrennte Dateisystemobjekttypen für die lokale Interprozesskommunikation."}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 GNU `stat` gibt die Werte `%t` und `%T` hexadezimal aus.
 
-:::single-choice{#device-types-major-minor-scope}
-Welche Objekte verwenden Major- und Minor-Nummern zur Identifikation einer Kernel-Geräteschnittstelle?
+:::single-choice{#device-types-major-minor-scope} Welche Objekte verwenden Major- und Minor-Nummern zur Identifikation einer Kernel-Geräteschnittstelle?
 
 ::option[Jede gewöhnliche Datei und jedes Verzeichnis.]{#device-types-all-files explanation="Gewöhnliche Dateien verwenden Größe und Dateisystemmetadaten statt eines Major-/Minor-Paars für Geräteknoten."}
 ::option[Nur symbolische Links, deren Ziel fehlt.]{#device-types-broken-symlinks explanation="Symbolische Links speichern Pfadtext und werden bei einem fehlenden Ziel nicht zu Geräteknoten."}

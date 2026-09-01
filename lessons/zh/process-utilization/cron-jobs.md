@@ -24,8 +24,7 @@ Cron 会按照周期性计划运行命令，不依赖交互式 shell。自动化
 
 如果月中日期和星期字段都受到限制，许多 cron 实现会在其中任意一个字段匹配时运行。构建同时使用这两个字段的计划前，应确认本地语义。
 
-:::single-choice{#cron-daily-eight-thirty}
-`30 8 * * * command` 何时运行？
+:::single-choice{#cron-daily-eight-thirty} `30 8 * * * command` 何时运行？
 
 ::option[连续八小时，每 30 分钟运行一次。]{#cron-every-thirty explanation="各字段表示计划中的位置，而不是持续时间表达式。"}
 ::option[每天 08:30 运行。]{#cron-eight-thirty .correct explanation="分钟固定为 30，小时固定为 8，三个日期字段则允许每个值。"}
@@ -48,8 +47,7 @@ $ crontab -l
 
 `crontab -r` 会删除用户的整个 crontab，而且可能不会打开编辑器。不要用它删除某一行；应编辑 crontab，并验证其余条目仍然存在。
 
-:::single-choice{#cron-list-current-user}
-哪个命令列出当前用户已安装的 cron 条目？
+:::single-choice{#cron-list-current-user} 哪个命令列出当前用户已安装的 cron 条目？
 
 ::option[`crontab -l`]{#cron-list .correct explanation="列出选项会打印已安装条目以供检查。"}
 ::option[`crontab -r`]{#cron-remove-all explanation="该选项会删除 crontab，而不是显示内容。"}
@@ -62,8 +60,7 @@ Cron 通常只提供有限的环境和非交互式 shell。应使用命令和文
 
 把标准输出和错误重定向到受控日志，或使用适合系统的通知机制。用严格权限保护凭据，避免把密钥直接嵌入 crontab 命令。
 
-:::single-choice{#cron-absolute-paths}
-为什么 cron 命令应该使用明确路径和环境设置？
+:::single-choice{#cron-absolute-paths} 为什么 cron 命令应该使用明确路径和环境设置？
 
 ::option[Cron 总是在用户当前终端内运行。]{#cron-current-terminal explanation="计划作业独立于交互式会话运行。"}
 ::option[绝对路径会让所有命令以 root 身份运行。]{#cron-path-root explanation="路径用于选择文件，并不会授予权限。"}
@@ -82,8 +79,7 @@ Cron 通常只提供有限的环境和非交互式 shell。应使用命令和文
 
 锁文件路径应允许作业用户安全创建，还要确定能否接受跳过运行。Cron 不会自动保证同一时刻只有一个实例运行。
 
-:::single-choice{#cron-overlapping-runs}
-作业执行时间超过计划间隔时会有什么风险？
+:::single-choice{#cron-overlapping-runs} 作业执行时间超过计划间隔时会有什么风险？
 
 ::option[多个实例可能重叠运行并争用资源。]{#cron-overlap .correct explanation="上一个进程仍在运行时，Cron 可以启动下一次执行。"}
 ::option[五个计划字段会自动增加第六个锁字段。]{#cron-auto-lock explanation="Crontab 语法不会自动增加互斥机制。"}
@@ -94,8 +90,7 @@ Cron 通常只提供有限的环境和非交互式 shell。应使用命令和文
 
 Cron 适合简单的周期性命令。在 systemd 主机上，systemd 定时器可以提供依赖集成、错过时间后的补跑、随机延迟和日志集成。如果作业必须在多台机器上全局只执行一次，应用或集群调度器可能更安全。
 
-:::single-choice{#cron-cluster-exactly-once}
-为什么普通的逐主机 cron 可能不适合需要集群全局恰好执行一次的作业？
+:::single-choice{#cron-cluster-exactly-once} 为什么普通的逐主机 cron 可能不适合需要集群全局恰好执行一次的作业？
 
 ::option[每个 cron 条目只能包含一个字符。]{#cron-one-character explanation="Crontab 命令可以包含普通命令行。"}
 ::option[每台主机都可能独立启动自己的副本。]{#cron-each-host .correct explanation="要确保跨主机只执行一次，需要分布式协调机制。"}

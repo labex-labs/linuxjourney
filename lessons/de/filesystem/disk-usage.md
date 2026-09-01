@@ -28,8 +28,7 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 $ df -hT /var/log
 ```
 
-:::single-choice{#disk-usage-df-scope}
-Was meldet `df` in erster Linie?
+:::single-choice{#disk-usage-df-scope} Was meldet `df` in erster Linie?
 
 ::option[Den Byteinhalt jeder Datei in einem Verzeichnis.]{#disk-usage-df-file-content explanation="Die Buchhaltung eines Verzeichnisbaums ist Aufgabe von Werkzeugen wie `du`."}
 ::option[Kapazität, Belegung und verfügbaren Platz auf Dateisystemebene.]{#disk-usage-df-filesystem .correct explanation="Df fragt Zuweisungsstatistiken eingehängter Dateisysteme ab, statt jeden Pfadnamen zu durchlaufen."}
@@ -46,8 +45,7 @@ $ df -i /var
 
 Eine große Anzahl kleiner Dateien kann die verfügbaren Inodes verbrauchen. Das Löschen einer großen Datei gibt viele Blöcke, aber im Allgemeinen nur einen Inode frei; das Löschen vieler unnötiger kleiner Dateien kann Inode-Druck verringern. Manche Dateisysteme weisen Metadaten dynamisch zu und melden diese Konzepte anders.
 
-:::single-choice{#disk-usage-inode-exhaustion}
-Was kann geschehen, wenn ein Dateisystem freie Blöcke, aber keine freien Inodes besitzt?
+:::single-choice{#disk-usage-inode-exhaustion} Was kann geschehen, wenn ein Dateisystem freie Blöcke, aber keine freien Inodes besitzt?
 
 ::option[Jede vorhandene Datei verdoppelt automatisch ihre Größe.]{#disk-usage-inode-double explanation="Inode-Erschöpfung verhindert die Zuweisung neuer Metadaten und vergrößert vorhandene Inhalte nicht."}
 ::option[Das Erstellen einer weiteren Datei kann fehlschlagen.]{#disk-usage-inode-create-fail .correct explanation="Ein neues Dateisystemobjekt benötigt Metadaten, auch wenn noch Platz für Dateidaten vorhanden ist."}
@@ -70,8 +68,7 @@ $ sudo du -xhd1 /var | sort -h
 
 Die hier gezeigten GNU-Optionen stehen für menschenlesbare Ausgabe, maximale Tiefe eins und ein einziges Dateisystem. Berechtigungen können Unterbäume verbergen und eine unvollständige Summe erzeugen. `du` kann außerdem standardmäßig hart verlinkte Dateien nur einmal zählen, scheinbare Größe von zugewiesenen Blöcken unterscheiden und Sparse-Dateien abhängig von den Optionen verschieden behandeln.
 
-:::single-choice{#disk-usage-du-purpose}
-Welcher Befehl fasst die zugewiesene Belegung unter `/var/log` zusammen?
+:::single-choice{#disk-usage-du-purpose} Welcher Befehl fasst die zugewiesene Belegung unter `/var/log` zusammen?
 
 ::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="Dieser Befehl meldet Inode-Statistiken des enthaltenden Dateisystems."}
 ::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du durchläuft den angegebenen Baum; `-s` gibt eine einzelne Zusammenfassung in menschenlesbaren Einheiten aus."}
@@ -90,8 +87,7 @@ Häufige Ursachen sind:
 
 Untersuche gelöschte, aber geöffnete Dateien bei autorisierten Prozessen mit einem Werkzeug wie `lsof +L1`. Starte den verantwortlichen Dienst über sein normales Verfahren neu oder sende ihm ein passendes Signal, statt unbekannte Deskriptoren zu kürzen.
 
-:::single-choice{#disk-usage-deleted-open-file}
-Warum kann `df` belegten Platz anzeigen, den das pfadbasierte `du` nicht findet?
+:::single-choice{#disk-usage-deleted-open-file} Warum kann `df` belegten Platz anzeigen, den das pfadbasierte `du` nicht findet?
 
 ::option[`df` multipliziert jede Dateigröße immer mit zwei.]{#disk-usage-df-doubles explanation="Es gibt keine universelle Verdoppelungsregel."}
 ::option[Eine gelöschte Datei kann für einen laufenden Prozess geöffnet und zugewiesen bleiben.]{#disk-usage-open-deleted .correct explanation="Der Verzeichniseintrag ist entfernt, doch das Dateisystem behält die Blöcke bis zum Schließen der letzten offenen Referenz."}
@@ -102,8 +98,7 @@ Warum kann `df` belegten Platz anzeigen, den das pfadbasierte `du` nicht findet?
 
 Beginne beim von `df` gemeldeten vollen Dateisystem, bestimme sein Einhängeziel mit `findmnt` und grenze `du`-Suchen anschließend auf dasselbe Dateisystem ein. Berücksichtige Snapshots, Containerschichten, Protokolle, Paket-Caches und Aufbewahrungsrichtlinien von Anwendungen. Lösche Dateien nicht allein aufgrund ihrer Größe; kläre zuerst Eigentümerschaft, Sicherung, Compliance und Dienstverhalten.
 
-:::single-choice{#disk-usage-safe-investigation}
-Was ist die sicherste Reaktion auf eine gefundene große Datei?
+:::single-choice{#disk-usage-safe-investigation} Was ist die sicherste Reaktion auf eine gefundene große Datei?
 
 ::option[Sie sofort löschen, während der Dienst sie beschreibt.]{#disk-usage-delete-immediately explanation="Dadurch können benötigte Daten verloren gehen; der Speicher wird möglicherweise nicht frei, solange die Datei geöffnet bleibt."}
 ::option[`mkfs` auf dem enthaltenden Gerät ausführen.]{#disk-usage-mkfs-device explanation="Eine Formatierung würde das Dateisystem zerstören, statt das Wachstum einer Datei zu beheben."}

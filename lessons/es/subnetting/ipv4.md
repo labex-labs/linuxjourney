@@ -22,8 +22,7 @@ IPv4 se representa como cuatro octetos de ocho bits separados por puntos:
 
 Cada octeto abarca de 0 a 255, por lo que la dirección completa contiene cuatro bytes. La longitud del prefijo indica cuántos bits iniciales pertenecen al prefijo de red, como en `192.0.2.165/24`.
 
-:::single-choice{#ipv4-address-size}
-¿Qué tamaño tiene una dirección IPv4?
+:::single-choice{#ipv4-address-size} ¿Qué tamaño tiene una dirección IPv4?
 
 ::option[32 bits en cuatro octetos.]{#ipv4-thirty-two-bits .correct explanation="Cuatro grupos de ocho bits producen la representación decimal con puntos."}
 ::option[24 bits en todas las redes.]{#ipv4-always-twenty-four explanation="Un `/24` es una longitud de prefijo, no el tamaño de todas las direcciones IPv4."}
@@ -36,8 +35,7 @@ No todas las direcciones IPv4 pueden enrutarse globalmente. Entre los ejemplos s
 
 Las direcciones privadas pueden reutilizarse en redes distintas. NAT puede traducirlas para la comunicación externa, pero no es necesario para comunicarse dentro del dominio privado enrutado.
 
-:::single-choice{#ipv4-private-reuse}
-¿Por qué puede aparecer `10.0.0.1` en muchas organizaciones?
+:::single-choice{#ipv4-private-reuse} ¿Por qué puede aparecer `10.0.0.1` en muchas organizaciones?
 
 ::option[Todas las instancias identifican el mismo router físico.]{#ipv4-same-router explanation="La dirección tiene significado dentro de cada red y no es globalmente única."}
 ::option[Los routers IPv4 ignoran el primer octeto.]{#ipv4-ignore-octet explanation="Todos los bits de la dirección participan en la coincidencia de rutas."}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 Muestra el prefijo, el broadcast, el ámbito, el indicador de origen dinámico y la interfaz. Otras líneas pueden mostrar las duraciones válida y preferida. Una interfaz puede contener varias direcciones IPv4.
 
-:::single-choice{#ipv4-ip-output-prefix}
-¿Qué significa `/24` en `192.0.2.165/24`?
+:::single-choice{#ipv4-ip-output-prefix} ¿Qué significa `/24` en `192.0.2.165/24`?
 
 ::option[La dirección caduca después de 24 segundos.]{#ipv4-prefix-seconds explanation="La duración se informa por separado."}
 ::option[Los primeros 24 bits de la dirección forman el prefijo de red.]{#ipv4-prefix-bits .correct explanation="Los ocho bits restantes identifican posiciones dentro de ese prefijo."}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 Interpreta el siguiente salto, la interfaz y el origen seleccionados, y después prueba la ruta real de la aplicación. No modifiques direcciones en una máquina remota sin acceso mediante consola y un plan de reversión.
 
-:::single-choice{#ipv4-route-get-purpose}
-¿Qué puede mostrar `ip route get DESTINATION`?
+:::single-choice{#ipv4-route-get-purpose} ¿Qué puede mostrar `ip route get DESTINATION`?
 
 ::option[La configuración de todos los routers de la ruta completa de Internet.]{#ipv4-all-router-config explanation="Una consulta local no examina las configuraciones de los dispositivos posteriores."}
 ::option[La decisión de ruta local, incluidas la interfaz y la dirección de origen preferida.]{#ipv4-route-decision .correct explanation="Evalúa la política de enrutamiento actual del host para el destino proporcionado."}

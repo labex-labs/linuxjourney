@@ -48,8 +48,7 @@ $ chmod u=rw,g=r,o= myfile
 
 Если класс опущен, как в `chmod +x myfile`, маска процесса umask влияет на изменяемые классы. Явное указание класса облегчает проверку требуемого результата.
 
-:::single-choice{#modifying-permissions-remove-group-write}
-Какой символический режим удаляет у группы право записи, не меняя остальные биты группы?
+:::single-choice{#modifying-permissions-remove-group-write} Какой символический режим удаляет у группы право записи, не меняя остальные биты группы?
 
 ::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="Команда удаляет право записи у класса владельца, а не группы."}
 ::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="`g` выбирает класс группы, `-` удаляет бит, а `w` обозначает право записи."}
@@ -79,16 +78,14 @@ $ chmod 755 myfile
 
 В отличие от символических операций `+` и `-`, восьмеричный режим задаёт полный набор обычных прав. Необязательная начальная цифра специальных битов режима рассматривается в последующем уроке.
 
-:::single-choice{#modifying-permissions-octal-read-value}
-Какое восьмеричное значение обозначает право чтения?
+:::single-choice{#modifying-permissions-octal-read-value} Какое восьмеричное значение обозначает право чтения?
 
 ::option[`1`]{#modifying-permissions-value-one explanation="Значение 1 обозначает право выполнения."}
 ::option[`2`]{#modifying-permissions-value-two explanation="Значение 2 обозначает право записи."}
 ::option[`4`]{#modifying-permissions-value-four .correct explanation="Право чтения добавляет к цифре класса восьмеричное значение 4."}
 :::
 
-:::single-choice{#modifying-permissions-mode-640}
-Какие обычные права задаёт `chmod 640 report`?
+:::single-choice{#modifying-permissions-mode-640} Какие обычные права задаёт `chmod 640 report`?
 
 ::option[Владельцу чтение, группе запись, остальным выполнение.]{#modifying-permissions-640-separated explanation="Восьмеричные цифры являются суммами прав каждого класса, а не отдельными столбцами чтения, записи и выполнения."}
 ::option[Владельцу чтение и выполнение, группе запись, остальным ничего.]{#modifying-permissions-640-wrong-sums explanation="Значение владельца `6` — чтение плюс запись, а значение группы `4` — чтение."}
@@ -101,8 +98,7 @@ $ chmod 755 myfile
 
 Рекурсивные изменения требуют особой осторожности. Предварительно просмотрите целевое дерево, учтите символические ссылки и подключённые файловые системы и протестируйте небольшой участок до использования `chmod -R`. После изменения проверьте результирующий режим, а не предполагайте, что команда затронула требуемые объекты.
 
-:::single-choice{#modifying-permissions-least-privilege}
-Почему `chmod 777` обычно является плохим универсальным решением проблемы доступа?
+:::single-choice{#modifying-permissions-least-privilege} Почему `chmod 777` обычно является плохим универсальным решением проблемы доступа?
 
 ::option[Команда удаляет все права владельца.]{#modifying-permissions-777-removes explanation="Каждая цифра 7 предоставляет чтение, запись и выполнение, а не удаляет права владельца."}
 ::option[Команда предоставляет все основные права владельцу, группе и остальным.]{#modifying-permissions-777-grants-all .correct explanation="Все три класса получают `rwx`, что обычно превышает действительно необходимый доступ."}

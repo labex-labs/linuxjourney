@@ -30,8 +30,7 @@ O link simbólico possui seu próprio inode e armazena o texto `myfile`. Quando 
 $ readlink myfilelink
 ```
 
-:::single-choice{#symlinks-create-symbolic}
-Qual comando cria o link simbólico `myfilelink` com o texto de destino `myfile`?
+:::single-choice{#symlinks-create-symbolic} Qual comando cria o link simbólico `myfilelink` com o texto de destino `myfile`?
 
 ::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="A opção `-s` solicita um link simbólico, seguida pelo destino e pelo nome do novo link."}
 ::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="Sem `-s`, `ln` solicita um link físico para o inode existente."}
@@ -50,8 +49,7 @@ $ ln -s ../data/item tree/current/item
 
 Mover toda a hierarquia `tree` preserva essa relação relativa. Mover apenas o link ou o destino pode quebrá-la. Um link simbólico pode conter um destino inexistente e, nesse caso, é chamado de pendente ou quebrado.
 
-:::single-choice{#symlinks-relative-resolution}
-A partir de onde um destino relativo de link simbólico é resolvido?
+:::single-choice{#symlinks-relative-resolution} A partir de onde um destino relativo de link simbólico é resolvido?
 
 ::option[Do diretório pessoal do usuário que o criou.]{#symlinks-creator-home explanation="A identidade de quem criou o link não se torna uma base permanente de resolução."}
 ::option[Do diretório atual do primeiro shell que o listar.]{#symlinks-listing-shell explanation="O contexto da listagem não reescreve a relação armazenada do destino."}
@@ -73,8 +71,7 @@ Os dois nomes apontam para o mesmo sistema de arquivos e número de inode. A con
 
 Links físicos não podem atravessar os limites dos sistemas de arquivos, pois um número de inode só possui significado dentro de seu sistema. O Linux também impede usuários comuns de criar links físicos para diretórios e pode restringir links para arquivos que eles não possuem, evitando ciclos e problemas de segurança.
 
-:::single-choice{#symlinks-hard-link-inode}
-O que dois links físicos para um mesmo arquivo comum compartilham?
+:::single-choice{#symlinks-hard-link-inode} O que dois links físicos para um mesmo arquivo comum compartilham?
 
 ::option[Somente nomes parecidos, mas dados de arquivos separados.]{#symlinks-separate-data explanation="Isso descreveria cópias independentes, não links físicos."}
 ::option[Um caminho armazenado em um inode separado de link simbólico.]{#symlinks-stored-path explanation="O texto do caminho é o mecanismo que define um link simbólico."}
@@ -93,8 +90,7 @@ Remover o nome de um link físico reduz a contagem de links do inode compartilha
 
 Evite uma barra final ao remover um link simbólico para um diretório, pois a resolução de caminhos com barra final pode seguir a semântica de diretórios, dependendo do comando. Inspecione com `ls -ld -- LINK` e remova deliberadamente o nome do link.
 
-:::single-choice{#symlinks-remove-symbolic}
-O que normalmente acontece quando você remove o próprio link simbólico?
+:::single-choice{#symlinks-remove-symbolic} O que normalmente acontece quando você remove o próprio link simbólico?
 
 ::option[O inode e o nome do link simbólico são removidos, enquanto o destino permanece.]{#symlinks-remove-link-only .correct explanation="Desvincular o link simbólico não atua sobre o objeto indicado pelo texto de destino armazenado."}
 ::option[O destino e todos os links físicos para ele são apagados automaticamente.]{#symlinks-remove-target explanation="O link simbólico é um objeto separado do sistema de arquivos e não é proprietário de seu destino."}
@@ -114,8 +110,7 @@ Para a inspeção comum:
 
 As permissões mostradas como `lrwxrwxrwx` não são uma concessão geral de acesso. O acesso é decidido pela travessia dos diretórios, pela política de seguimento dos links e pelas permissões do destino; a propriedade dos links simbólicos também importa para algumas regras de diretórios protegidos.
 
-:::single-choice{#symlinks-readlink-output}
-O que `readlink LINK` imprime por padrão?
+:::single-choice{#symlinks-readlink-output} O que `readlink LINK` imprime por padrão?
 
 ::option[O texto do caminho armazenado no link simbólico.]{#symlinks-readlink-target-text .correct explanation="Ele inspeciona o objeto de link sem ler o conteúdo do arquivo de destino."}
 ::option[Todo o conteúdo em bytes do arquivo comum de destino.]{#symlinks-readlink-file-content explanation="Use um comando de leitura de arquivos após resolver o destino intencionalmente para obter seu conteúdo."}

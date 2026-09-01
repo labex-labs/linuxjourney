@@ -18,8 +18,7 @@ The kernel can use swap before RAM is completely exhausted, depending on workloa
 
 Heavy sustained swapping can cause severe latency or thrashing. Diagnose memory demand, working sets, pressure, and application limits rather than treating a larger swap area as a universal performance fix.
 
-:::single-choice{#swap-space-anonymous-pages}
-Which memory is a primary candidate for storage in swap?
+:::single-choice{#swap-space-anonymous-pages} Which memory is a primary candidate for storage in swap?
 
 ::option[Every executable file installed under `/usr`.]{#swap-space-installed-files explanation="Installed files remain in their filesystems; clean mapped pages can be reread from there."}
 ::option[Inactive anonymous memory pages.]{#swap-space-anonymous-memory .correct explanation="Anonymous pages lack an ordinary backing file from which they can simply be reread."}
@@ -38,8 +37,7 @@ $ free -h
 
 These show configured active swap and aggregate memory figures. A nonzero “used” value is not automatically a problem; correlate it with swap-in/out rates, memory pressure, latency, and workload behavior.
 
-:::single-choice{#swap-space-show-active}
-Which command lists active swap areas in a structured view?
+:::single-choice{#swap-space-show-active} Which command lists active swap areas in a structured view?
 
 ::option[`swapon --show`]{#swap-space-swapon-show .correct explanation="The show mode reports active swap files or devices and their size, use, and priority where available."}
 ::option[`mkswap --all`]{#swap-space-mkswap-all explanation="Mkswap initializes swap signatures and is not the read-only active listing command."}
@@ -63,8 +61,7 @@ For persistence, use the swap UUID in `/etc/fstab` with type and options appropr
 UUID=VERIFIED-SWAP-UUID none swap sw 0 0
 ```
 
-:::single-choice{#swap-space-enable-command}
-Which command activates an initialized swap area?
+:::single-choice{#swap-space-enable-command} Which command activates an initialized swap area?
 
 ::option[`swapon`]{#swap-space-command-swapon .correct explanation="Swapon adds a valid swap device or file to the kernel's active swap set."}
 ::option[`mkswap`]{#swap-space-command-mkswap explanation="Mkswap initializes the signature but does not itself activate the area."}
@@ -79,8 +76,7 @@ Compressed RAM devices such as zram can provide another swap tier with different
 
 There is no universal rule that swap must equal twice RAM. Size it from workload peaks, desired failure behavior, hibernation needs, storage latency and endurance, crash-dump design, and operational monitoring.
 
-:::single-choice{#swap-space-sizing-rule}
-Which is the best basis for swap sizing?
+:::single-choice{#swap-space-sizing-rule} Which is the best basis for swap sizing?
 
 ::option[Always exactly twice the installed RAM.]{#swap-space-twice-ram explanation="That historical heuristic is not suitable for every workload or modern memory size."}
 ::option[Measured workload needs, hibernation goals, and failure policy.]{#swap-space-sizing-requirements .correct explanation="System purpose and observed memory behavior matter more than a fixed RAM multiplier."}
@@ -97,8 +93,7 @@ $ sudo swapoff /dev/VERIFIED-SWAP-TARGET
 
 The kernel must move its resident swapped pages elsewhere. If RAM and remaining swap cannot accommodate them, the operation can fail or create dangerous memory pressure. Stop or constrain workloads first, monitor memory, remove the persistent fstab entry only after verifying the correct target, and confirm deactivation with `swapon --show` before repurposing storage.
 
-:::single-choice{#swap-space-swapoff-capacity}
-Why can `swapoff` fail or endanger a heavily loaded system?
+:::single-choice{#swap-space-swapoff-capacity} Why can `swapoff` fail or endanger a heavily loaded system?
 
 ::option[Swapoff always reformats every RAM module.]{#swap-space-formats-ram explanation="It changes active swap configuration and does not format physical memory hardware."}
 ::option[Pages in that area need capacity in RAM or other swap.]{#swap-space-pages-need-capacity .correct explanation="Deactivation requires relocating live swapped pages while the system continues operating."}

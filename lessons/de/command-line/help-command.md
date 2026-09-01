@@ -24,8 +24,7 @@ $ help echo
 
 Die Ausgabe beschreibt Syntax und Verhalten des Builtins. `help` ohne Argument listet die Builtins auf, für die Bash Hilfe bereithält.
 
-:::single-choice{#help-for-bash-cd}
-Welcher Befehl zeigt den Bash-Hilfeeintrag für das eingebaute `cd` an?
+:::single-choice{#help-for-bash-cd} Welcher Befehl zeigt den Bash-Hilfeeintrag für das eingebaute `cd` an?
 
 ::option[`cd --help`]{#cd-help-option explanation="Einige Builtins erkennen Optionen, doch die dafür vorgesehene Bash-Dokumentationsschnittstelle ist `help` gefolgt vom Namen des Builtins."}
 ::option[`help cd`]{#help-cd .correct explanation="Das Bash-Builtin `help` sucht die Dokumentation für das benannte Builtin, hier also `cd`."}
@@ -42,8 +41,7 @@ $ ls --help
 
 Diese Konvention ist verbreitet, aber nicht universell. Lies Ausgabe und Beendigungsstatus, statt anzunehmen, dass jedes Programm dieselbe Option unterstützt.
 
-:::single-choice{#quick-ls-usage}
-Welcher Befehl gibt üblicherweise eine kurze Nutzungsübersicht des externen Programms `ls` aus?
+:::single-choice{#quick-ls-usage} Welcher Befehl gibt üblicherweise eine kurze Nutzungsübersicht des externen Programms `ls` aus?
 
 ::option[`help ls`]{#bash-help-ls explanation="Bash `help` dokumentiert Shell-Builtins. Auf einem typischen System enthält es keine Nutzungsseite des externen Programms `ls`."}
 ::option[`ls --help`]{#ls-help .correct explanation="GNU `ls` folgt der verbreiteten Konvention `--help` und gibt seine Nutzung und Optionen aus."}
@@ -63,8 +61,7 @@ ls is /usr/bin/ls
 
 Das genaue Ergebnis kann durch Aliase, Funktionen, installierte Programme und `PATH` variieren. Mit `type -a NAME` zeigt Bash alle bekannten Auflösungen statt nur der zuerst verwendeten an.
 
-:::single-choice{#identify-command-resolution}
-Du weißt nicht, ob `deploy` ein Alias, eine Funktion, ein Builtin oder eine ausführbare Datei ist. Welcher Bash-Befehl prüft die Auflösung des Namens?
+:::single-choice{#identify-command-resolution} Du weißt nicht, ob `deploy` ein Alias, eine Funktion, ein Builtin oder eine ausführbare Datei ist. Welcher Bash-Befehl prüft die Auflösung des Namens?
 
 ::option[`type deploy`]{#type-deploy .correct explanation="Das Builtin `type` meldet, wie Bash den Befehlsnamen in der aktuellen Shell-Umgebung interpretiert."}
 ::option[`help deploy`]{#help-deploy explanation="`help` sucht nach Bash-Builtin-Dokumentation. Aliase, Funktionen und externe Dateien identifiziert es im Allgemeinen nicht."}
@@ -80,8 +77,7 @@ Du weißt nicht, ob `deploy` ein Alias, eine Funktion, ein Builtin oder eine aus
 
 Die nächsten Lektionen behandeln Handbuchseiten und Kurzbeschreibungen ausführlicher.
 
-:::single-choice{#choose-detailed-manual}
-Du benötigst eine ausführliche Dokumentation des externen Befehls `ls`, nicht nur eine kurze Nutzungsübersicht. Welchen Befehl solltest du versuchen?
+:::single-choice{#choose-detailed-manual} Du benötigst eine ausführliche Dokumentation des externen Befehls `ls`, nicht nur eine kurze Nutzungsübersicht. Welchen Befehl solltest du versuchen?
 
 ::option[`man ls`]{#man-ls .correct explanation="`man ls` öffnet die installierte Handbuchseite, die normalerweise Syntax, Optionen und Verhalten ausführlicher beschreibt."}
 ::option[`whatis ls`]{#whatis-ls explanation="`whatis` zeigt knappe Beschreibungen von Handbuchseiten. Die verlangte ausführliche Dokumentation liefert es nicht."}

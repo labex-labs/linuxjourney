@@ -24,8 +24,7 @@ network  11000000.10101000.00000001.00000000
 
 비트 AND 연산은 마스크가 1인 주소 비트는 유지하고 호스트 비트는 지웁니다. 결과는 `192.168.1.0/24`입니다.
 
-:::single-choice{#subnet-math-network-operation}
-주소와 마스크에서 IPv4 네트워크 주소를 찾는 연산은 무엇입니까?
+:::single-choice{#subnet-math-network-operation} 주소와 마스크에서 IPv4 네트워크 주소를 찾는 연산은 무엇입니까?
 
 ::option[10진수 문자열 연결입니다.]{#subnet-math-concatenation explanation="표시된 옥텟을 이어 붙이는 것은 접두사 비트를 적용하지 않습니다."}
 ::option[전송 포트 빼기입니다.]{#subnet-math-port-subtraction explanation="포트는 네트워크 접두사와 관계없습니다."}
@@ -42,8 +41,7 @@ network  11000000.10101000.00000001.00000000
 
 따라서 `/24`에는 `2^8 = 256`개의 주소가 있습니다. 전통적인 브로드캐스트 서브넷에서는 호스트 값이 모두 0인 주소가 네트워크 주소이고 모두 1인 주소가 지향성 브로드캐스트이므로 일반 유니캐스트 호스트 주소 254개가 남습니다.
 
-:::single-choice{#subnet-math-24-total}
-IPv4 `/24`에는 총 몇 개의 주소가 있습니까?
+:::single-choice{#subnet-math-24-total} IPv4 `/24`에는 총 몇 개의 주소가 있습니까?
 
 ::option[24개입니다.]{#subnet-math-total-24 explanation="접두사 길이는 주소 수가 아니라 네트워크 비트 수입니다."}
 ::option[256개입니다.]{#subnet-math-total-256 .correct explanation="호스트 비트 8개로 2^8개의 고유한 주소 값을 만듭니다."}
@@ -60,8 +58,7 @@ broadcast: 192.168.1.191
 range:     192.168.1.129 through 192.168.1.190
 ```
 
-:::single-choice{#subnet-math-165-network}
-`192.168.1.165/26`의 네트워크 주소는 무엇입니까?
+:::single-choice{#subnet-math-165-network} `192.168.1.165/26`의 네트워크 주소는 무엇입니까?
 
 ::option[`192.168.1.0`]{#subnet-math-network-zero explanation="0부터 63까지를 포함하는 첫 번째 /26 블록입니다."}
 ::option[`192.168.1.165`]{#subnet-math-network-self explanation="제공된 주소에는 /26 안에서 0이 아닌 호스트 비트가 있습니다."}
@@ -72,8 +69,7 @@ range:     192.168.1.129 through 192.168.1.190
 
 `2^host_bits - 2`라는 단축 공식은 보편적이지 않습니다. IPv4 `/31` 접두사는 두 주소를 모두 끝점으로 사용할 수 있고 지향성 브로드캐스트가 필요 없는 지점 간 링크를 위해 정의됐습니다. `/32`는 하나의 호스트 경로나 인터페이스 주소를 식별합니다. 어느 주소를 할당할 수 있는지는 네트워크 기술과 프로토콜 용도에 따라 달라집니다.
 
-:::single-choice{#subnet-math-31-exception}
-모든 IPv4 접두사에서 주소 두 개를 빼면 안 되는 이유는 무엇입니까?
+:::single-choice{#subnet-math-31-exception} 모든 IPv4 접두사에서 주소 두 개를 빼면 안 되는 이유는 무엇입니까?
 
 ::option[IPv4 주소에는 어떤 접두사에서도 호스트 비트가 없기 때문입니다.]{#subnet-math-no-host-bits explanation="대부분의 접두사에는 하나 이상의 호스트 비트가 남습니다."}
 ::option[`/31` 지점 간 링크는 두 주소를 모두 끝점으로 사용할 수 있기 때문입니다.]{#subnet-math-31-both .correct explanation="지점 간 모델에는 전통적인 네트워크 및 지향성 브로드캐스트 예약이 필요하지 않습니다."}
@@ -84,8 +80,7 @@ range:     192.168.1.129 through 192.168.1.190
 
 독립적인 도구나 라이브러리로 수동 계산을 확인한 다음 실제 인터페이스 및 경로 설정과 비교합니다. 수학적으로 유효한 접두사도 다른 서브넷과 충돌하거나 할당 계획을 위반할 수 있습니다.
 
-:::single-choice{#subnet-math-valid-not-safe}
-올바른 서브넷 계산만으로 입증할 수 없는 것은 무엇입니까?
+:::single-choice{#subnet-math-valid-not-safe} 올바른 서브넷 계산만으로 입증할 수 없는 것은 무엇입니까?
 
 ::option[주소 계획에 중복이나 정책 충돌이 없다는 사실입니다.]{#subnet-math-no-conflict .correct explanation="운영 할당 및 라우팅 증거가 여전히 필요합니다."}
 ::option[IPv4 주소가 32비트라는 사실입니다.]{#subnet-math-proves-size explanation="계산은 그 고정 크기를 기반으로 합니다."}

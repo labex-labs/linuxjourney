@@ -29,8 +29,7 @@ $ sudo ls -la /mnt/mydrive
 
 在非空目录上挂载文件系统，会把原有条目隐藏在新文件系统之后，直到卸载为止；原有条目不会被删除。这可能使应用程序困惑，并在不可见处占用磁盘空间，因此应使用空的专用挂载点。
 
-:::single-choice{#mount-umount-nonempty-target}
-在一个目录上挂载另一个文件系统后，其中已有的文件会怎样？
+:::single-choice{#mount-umount-nonempty-target} 在一个目录上挂载另一个文件系统后，其中已有的文件会怎样？
 
 ::option[它们会自动复制到新文件系统。]{#mount-umount-copied-files explanation="挂载改变命名空间中的附加关系，不会迁移目录内容。"}
 ::option[内核会永久删除它们。]{#mount-umount-erased-files explanation="这些文件只是被遮挡，卸载后通常会重新出现。"}
@@ -55,8 +54,7 @@ $ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 挂载受命名空间限制。在容器或私有服务命名空间中创建的挂载，可能不会出现在另一个进程的视图中。
 
-:::single-choice{#mount-umount-mount-role}
-在所示工作流程中，`mount` 命令会做什么？
+:::single-choice{#mount-umount-mount-role} 在所示工作流程中，`mount` 命令会做什么？
 
 ::option[创建新文件系统并擦除来源。]{#mount-umount-format-source explanation="创建文件系统是独立且具有破坏性的 `mkfs` 操作。"}
 ::option[把文件系统来源附加到挂载命名空间中的目录。]{#mount-umount-attach-filesystem .correct explanation="之后在目标下进行路径查找时，会进入附加的文件系统。"}
@@ -80,8 +78,7 @@ $ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 
 UUID 标识文件系统，而不一定标识物理磁盘。重新格式化会改变它，克隆则可能复制它。把原始文件系统和克隆件同时附加到一个系统前，应确认 UUID 唯一。
 
-:::single-choice{#mount-umount-uuid-benefit}
-为什么在持久配置中，文件系统 UUID 通常优于 `/dev/sdX`？
+:::single-choice{#mount-umount-uuid-benefit} 为什么在持久配置中，文件系统 UUID 通常优于 `/dev/sdX`？
 
 ::option[它能防止所有存储设备发生故障。]{#mount-umount-uuid-no-failure explanation="标识符不提供冗余、完整性修复或备份。"}
 ::option[它能保证克隆的文件系统具有不同标识符。]{#mount-umount-uuid-clone-unique explanation="块级克隆会复制 UUID，从而造成冲突。"}
@@ -100,8 +97,7 @@ $ sudo umount /mnt/mydrive
 
 对于可移动介质，成功卸载不一定就是安全移除的最后一步。桌面存储栈可能提供弹出或断电操作，用于刷新设备缓存并禁用 USB 设备。应遵循平台和硬件的工作流程。
 
-:::single-choice{#mount-umount-command-name}
-哪个命令会分离 `/mnt/mydrive`？
+:::single-choice{#mount-umount-command-name} 哪个命令会分离 `/mnt/mydrive`？
 
 ::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` 会分离挂载到指定目标的文件系统。"}
 ::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="标准命令名称省略了第一个 `n`。"}
@@ -119,8 +115,7 @@ $ sudo fuser -vm /mnt/mydrive
 
 让 shell 离开该目录树，干净地停止相关应用程序，并先卸载子挂载再卸载父挂载。延迟卸载和强制选项有专门语义，可能留下活动引用或造成数据丢失；只有在具备文档支持的恢复理由时才能使用。
 
-:::single-choice{#mount-umount-busy-cause}
-哪种情况会让 `umount` 报告文件系统繁忙？
+:::single-choice{#mount-umount-busy-cause} 哪种情况会让 `umount` 报告文件系统繁忙？
 
 ::option[挂载点目录名包含小写字母。]{#mount-umount-lowercase explanation="路径大小写本身不会创建活动文件系统引用。"}
 ::option[某个进程的当前工作目录位于该挂载中。]{#mount-umount-cwd-busy .correct explanation="该进程保留了指向已挂载文件系统的引用，从而阻止普通分离。"}

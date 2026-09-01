@@ -33,8 +33,7 @@ In einer grafischen Sitzung kann dadurch ein grafischer Frame entstehen. Verwend
 $ emacs -nw
 ```
 
-:::single-choice{#emacs-terminal-start}
-Welcher Befehl startet Emacs im aktuellen Terminal, anstatt ein grafisches Fenstersystem zu verwenden?
+:::single-choice{#emacs-terminal-start} Welcher Befehl startet Emacs im aktuellen Terminal, anstatt ein grafisches Fenstersystem zu verwenden?
 
 ::option[`emacs -w`]{#emacs-window-option explanation="Dies ist nicht die hier vorgestellte dokumentierte Form für den Betrieb ohne Fenstersystem."}
 ::option[`emacs -nw`]{#emacs-no-window .correct explanation="Die Option `-nw` weist Emacs an, kein grafisches Fenstersystem zu verwenden und im Terminal zu laufen."}
@@ -51,8 +50,7 @@ $ emacs notes.txt
 
 Existiert die Datei, liest Emacs sie in einen Puffer ein. Fehlt sie, erstellt Emacs einen neuen Puffer, der diesem Pfad zugeordnet ist. Die eigentliche Datei entsteht erst nach erfolgreichem Speichern. Ob das Schreiben gelingt, hängt weiterhin von den Dateisystemberechtigungen ab.
 
-:::single-choice{#emacs-open-file-buffer}
-Was bewirkt `emacs notes.txt` normalerweise, wenn `notes.txt` noch nicht existiert?
+:::single-choice{#emacs-open-file-buffer} Was bewirkt `emacs notes.txt` normalerweise, wenn `notes.txt` noch nicht existiert?
 
 ::option[Es öffnet einen neuen Puffer, der diesem Pfad zugeordnet ist.]{#emacs-new-file-buffer .correct explanation="Der Puffer kann neuen Text für `notes.txt` aufnehmen; die eigentliche Datei wird erst beim Speichern angelegt."}
 ::option[Es legt die Datei auf dem Datenträger an, bevor der Editor startet.]{#emacs-immediate-file explanation="Emacs kann einen neuen Puffer mit dem Pfad verknüpfen, ohne die Datei vor einem erfolgreichen Speichervorgang anzulegen."}
@@ -69,8 +67,7 @@ Emacs verwendet miteinander verbundene, aber unterschiedliche Objekte:
 
 Mehrere Puffer können vorhanden sein, ohne sichtbar zu sein, und zwei Fenster können denselben Puffer anzeigen. Das Schließen eines Fensters beendet nicht zwangsläufig seinen Puffer und löscht keine Datei.
 
-:::single-choice{#emacs-buffer-definition}
-Was ist ein Emacs-Puffer?
+:::single-choice{#emacs-buffer-definition} Was ist ein Emacs-Puffer?
 
 ::option[Ein eigenständiger grafischer Anwendungs-Frame.]{#emacs-buffer-frame explanation="Ein Frame ist das übergeordnete Anzeigeobjekt; ein Puffer enthält Editorinhalt oder -zustand."}
 ::option[Ein Objekt, das bearbeitbaren Text oder einen anderen Editorzustand enthält.]{#emacs-buffer-content .correct explanation="Die Inhalte besuchter Dateien und viele Ansichten ohne zugehörige Datei befinden sich in Emacs-Puffern."}
@@ -87,8 +84,7 @@ Die Emacs-Dokumentation verwendet eine kompakte Schreibweise:
 
 Je nach Terminal können manche Tasten abgefangen oder anders zugeordnet werden. Häufig kann `Esc` gefolgt von einer Taste einen Meta-Tastenakkord ersetzen.
 
-:::single-choice{#emacs-key-sequence-notation}
-Wie gibst du die Emacs-Tastenfolge `C-x C-f` ein?
+:::single-choice{#emacs-key-sequence-notation} Wie gibst du die Emacs-Tastenfolge `C-x C-f` ein?
 
 ::option[Halte für `x` Strg gedrückt und anschließend erneut für `f`.]{#emacs-control-x-f .correct explanation="Jedes Präfix `C-` gilt für die jeweils folgende Taste; die beiden Tastenkombinationen werden nacheinander eingegeben."}
 ::option[Tippe die wörtlichen Zeichen `C-x C-f` in den Puffer.]{#emacs-literal-key-text explanation="Die Notation beschreibt Ereignisse mit der Steuerungstaste und keinen einzufügenden Text."}
@@ -101,8 +97,7 @@ Gib in Emacs `C-h t` ein, um das interaktive Tutorial zu öffnen. Es vermittelt 
 
 Falls Emacs ein Menü oder einen Willkommenspuffer anzeigt, ist das Tutorial ein besser strukturierter Einstieg als das Experimentieren mit einer wichtigen Datei.
 
-:::single-choice{#emacs-open-tutorial}
-Welche Emacs-Tastenfolge öffnet das integrierte Tutorial?
+:::single-choice{#emacs-open-tutorial} Welche Emacs-Tastenfolge öffnet das integrierte Tutorial?
 
 ::option[`C-x C-s`]{#emacs-save-buffer explanation="Diese Tastenfolge speichert den aktuellen Puffer; sie öffnet nicht das Tutorial."}
 ::option[`C-x C-c`]{#emacs-exit-sequence explanation="Diese Tastenfolge leitet das Beenden von Emacs ein, statt eine Lektion zu starten."}

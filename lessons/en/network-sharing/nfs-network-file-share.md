@@ -18,8 +18,7 @@ Install the distribution's NFS client utilities, commonly packaged as `nfs-commo
 
 `showmount -e SERVER` can list exports provided through the older mount protocol, but it is not authoritative for every NFSv4-only server. A failed listing does not prove that no authorized NFSv4 export exists.
 
-:::single-choice{#nfs-showmount-limit}
-Why can `showmount -e` be incomplete for an NFSv4 server?
+:::single-choice{#nfs-showmount-limit} Why can `showmount -e` be incomplete for an NFSv4 server?
 
 ::option[It queries an older export-listing protocol that may not be exposed.]{#nfs-showmount-protocol .correct explanation="NFSv4 can operate without making that separate listing service available."}
 ::option[It only displays local CPU temperature.]{#nfs-showmount-temperature explanation="The command concerns NFS server export information."}
@@ -41,8 +40,7 @@ Specify a version only when policy or compatibility requires it, for example `-o
 $ findmnt --target /mnt/team
 ```
 
-:::single-choice{#nfs-mount-operands}
-In the mount command, what is `server.example.net:/srv/team`?
+:::single-choice{#nfs-mount-operands} In the mount command, what is `server.example.net:/srv/team`?
 
 ::option[The local directory that hides the remote export.]{#nfs-local-mountpoint explanation="The local mount point in the example is `/mnt/team`."}
 ::option[The name of the client package to install.]{#nfs-package-name explanation="Package names are distribution-specific and are not mount source operands."}
@@ -55,8 +53,7 @@ NFS access combines server export rules, protocol security, numeric identities o
 
 The server commonly maps remote root to an unprivileged identity through root squashing. Do not disable that protection merely to fix a permission error; inspect IDs, directory ownership, export policy, and the intended security model.
 
-:::single-choice{#nfs-name-versus-id}
-Why can two users with the same displayed name receive different NFS permissions?
+:::single-choice{#nfs-name-versus-id} Why can two users with the same displayed name receive different NFS permissions?
 
 ::option[NFS permissions can depend on numeric identity mapping.]{#nfs-numeric-mapping .correct explanation="Name agreement alone does not establish that client and server resolve the same UID and groups."}
 ::option[NFS ignores all filesystem permissions.]{#nfs-ignores-permissions explanation="Filesystem and export permissions remain part of authorization."}
@@ -73,8 +70,7 @@ server.example.net:/srv/team /mnt/team nfs4 rw,_netdev,nofail,x-systemd.automoun
 
 Before editing fstab, preserve recovery access and validate with a non-destructive parser or a controlled mount test. An automount improves availability behavior but does not fix authorization, DNS, or server outages.
 
-:::single-choice{#nfs-automount-benefit}
-What is a primary benefit of on-demand automounting for an NFS share?
+:::single-choice{#nfs-automount-benefit} What is a primary benefit of on-demand automounting for an NFS share?
 
 ::option[It grants every client root access to the export.]{#nfs-automount-root explanation="Mount timing does not override server authorization."}
 ::option[It can avoid requiring the server to be available during initial boot.]{#nfs-automount-boot .correct explanation="The connection is triggered on access rather than necessarily blocking early startup."}
@@ -92,8 +88,7 @@ $ findmnt --target /mnt/team
 
 A forced or lazy unmount can hide active references and risk application errors; reserve such options for a diagnosed failure with an explicit recovery plan.
 
-:::single-choice{#nfs-safe-unmount}
-What should precede a normal NFS unmount?
+:::single-choice{#nfs-safe-unmount} What should precede a normal NFS unmount?
 
 ::option[Coordinate processes using the share and finish important writes.]{#nfs-coordinate-writers .correct explanation="Removing a live filesystem from applications can interrupt I/O or leave work incomplete."}
 ::option[Delete the export directory on the server.]{#nfs-delete-export explanation="Client unmounting does not require destroying server data."}

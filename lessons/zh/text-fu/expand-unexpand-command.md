@@ -22,8 +22,7 @@ $ expand sample.txt
 
 默认情况下，制表位每隔 8 列出现一次。因此，位于第 1 列的制表符与位于第 6 列的制表符会展开成不同数量的空格；它并非总是替换为八个空格。
 
-:::single-choice{#expand-default-tab-stops}
-使用默认设置时，`expand` 如何替换一个制表符？
+:::single-choice{#expand-default-tab-stops} 使用默认设置时，`expand` 如何替换一个制表符？
 
 ::option[插入足够的空格，使位置到达下一个默认制表位。]{#expand-next-stop .correct explanation="`expand` 会根据当前列计算所需的空格数，从而保持制表位对齐。"}
 ::option[始终插入恰好八个空格。]{#expand-eight-spaces explanation="默认制表位相隔八列，但所需空格数取决于当前列。"}
@@ -40,8 +39,7 @@ $ expand -t 4 sample.txt
 
 GNU `expand` 也接受以逗号分隔的明确制表位列表。如果只想转换每行第一个非空白字符之前的制表符，请使用 `-i`。
 
-:::single-choice{#expand-four-column-stops}
-哪个命令会使用每四列一个的制表位来转换制表符？
+:::single-choice{#expand-four-column-stops} 哪个命令会使用每四列一个的制表位来转换制表符？
 
 ::option[`expand -i 4 sample.txt`]{#expand-initial-four explanation="`-i` 选项把转换限制在行首制表符，而且不把 `4` 作为制表位间隔。"}
 ::option[`unexpand -t 4 sample.txt`]{#unexpand-tabs-four explanation="`unexpand` 把适合的空格转换为制表符，方向与题目要求相反。"}
@@ -58,8 +56,7 @@ $ expand sample.txt > result.txt
 
 不要使用 `expand sample.txt > sample.txt`。shell 会在 `expand` 读取文件之前截断目标文件，因而可能丢失源数据。确认另行写出的结果正确后，再通过适当的文件管理操作有意替换原文件。
 
-:::single-choice{#expand-safe-output-file}
-哪个命令能保存展开后的文本，又不会在读取 `sample.txt` 之前将其截断？
+:::single-choice{#expand-safe-output-file} 哪个命令能保存展开后的文本，又不会在读取 `sample.txt` 之前将其截断？
 
 ::option[`expand sample.txt > sample.txt`]{#expand-same-file explanation="shell 会在启动 `expand` 前打开并截断 `sample.txt` 作为输出，这可能清空输入。"}
 ::option[`expand sample.txt > result.txt`]{#expand-separate-result .correct explanation="输入和输出路径不同，shell 可以创建 `result.txt` 而不破坏源文件。"}
@@ -82,16 +79,14 @@ $ unexpand -a result.txt
 
 这并不是简单地把每一串八个空格都替换掉。和 `expand` 一样，转换取决于列位置和制表位。如果文件采用其他约定，请使用 `-t 4` 或其他制表位设置。
 
-:::single-choice{#unexpand-default-scope}
-不使用 `-a` 时，GNU `unexpand` 通常会考虑转换哪些空格？
+:::single-choice{#unexpand-default-scope} 不使用 `-a` 时，GNU `unexpand` 通常会考虑转换哪些空格？
 
 ::option[文件中任何位置的每一组空格。]{#unexpand-every-group explanation="要检查整行中的空白，需要使用 `-a`，而且转换仍取决于制表位位置。"}
 ::option[只转换最后一个单词之后的空格。]{#unexpand-trailing-blanks explanation="默认范围是行首空白，并非特指行尾空白。"}
 ::option[只转换第一个非空白字符之前的行首空白。]{#unexpand-initial-blanks .correct explanation="GNU `unexpand` 的默认行为仅处理每行开头的空白。"}
 :::
 
-:::single-choice{#unexpand-all-blanks}
-哪个选项会让 GNU `unexpand` 也考虑第一个非空白字符之后的空白？
+:::single-choice{#unexpand-all-blanks} 哪个选项会让 GNU `unexpand` 也考虑第一个非空白字符之后的空白？
 
 ::option[`-i`]{#unexpand-initial-option explanation="对于 `expand`，`-i` 会把处理范围限制为行首制表符；它不是 `unexpand` 的全空白选项。"}
 ::option[`-a`]{#unexpand-all-option .correct explanation="`-a` 选项允许转换每一输入行中所有符合条件的空白。"}

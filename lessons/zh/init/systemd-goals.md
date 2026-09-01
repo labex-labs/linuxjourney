@@ -37,8 +37,7 @@ WantedBy=multi-user.target
 
 默认情况下，`ExecStart=` 不会交给 shell 执行。除非有意显式调用 shell，否则 shell 管道、重定向、变量和引号的行为与交互式命令行不同。
 
-:::single-choice{#systemd-goals-install-section}
-`WantedBy=` 等 `[Install]` 指令的主要用途是什么？
+:::single-choice{#systemd-goals-install-section} `WantedBy=` 等 `[Install]` 指令的主要用途是什么？
 
 ::option[保证服务进程已经运行。]{#systemd-goals-install-running explanation="运行时激活需要 start 请求或其他触发依赖关系。"}
 ::option[描述启用单元时创建的链接或关系。]{#systemd-goals-enable-links .correct explanation="启用操作会解释安装元数据，而安装元数据与当前进程状态相互独立。"}
@@ -66,8 +65,7 @@ $ systemctl cat UNIT.service
 $ systemctl show UNIT.service
 ```
 
-:::single-choice{#systemd-goals-list-units-versus-files}
-`list-unit-files` 会显示哪项并非 `list-units` 主要展示的信息？
+:::single-choice{#systemd-goals-list-units-versus-files} `list-unit-files` 会显示哪项并非 `list-units` 主要展示的信息？
 
 ::option[只显示 CPU 占用最高的进程。]{#systemd-goals-cpu-processes explanation="进程资源排名不属于这些单元清单命令的用途。"}
 ::option[已安装单元文件的启用状态。]{#systemd-goals-unit-file-state .correct explanation="它会报告单元文件处于启用、禁用、静态、屏蔽等安装状态。"}
@@ -90,8 +88,7 @@ $ sudo systemctl daemon-reload
 
 `daemon-reload` 会重新读取单元定义并重建依赖关系。它不会重新加载应用程序配置，也不会重启正在运行的服务。适当时可用 `systemd-analyze verify` 验证单元语法和依赖关系，然后检查合并后实际生效的单元。
 
-:::single-choice{#systemd-goals-daemon-reload}
-`systemctl daemon-reload` 会做什么？
+:::single-choice{#systemd-goals-daemon-reload} `systemctl daemon-reload` 会做什么？
 
 ::option[强制每个守护进程重新读取其应用程序配置。]{#systemd-goals-reload-all-apps explanation="应用程序重新加载是服务特有的操作，与管理器配置相互独立。"}
 ::option[将内核重启到新版本。]{#systemd-goals-reload-kernel explanation="启用新内核需要启动系统，而不是重新加载单元定义。"}
@@ -121,8 +118,7 @@ $ journalctl -u peanut.service -b
 
 “活动”只是管理器状态，不能证明每个应用端点都健康。
 
-:::single-choice{#systemd-goals-start-peanut}
-哪个命令会立即启动 `peanut.service`，但本身不改变其未来的启用状态？
+:::single-choice{#systemd-goals-start-peanut} 哪个命令会立即启动 `peanut.service`，但本身不改变其未来的启用状态？
 
 ::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="enable 会更改安装链接，但除非同时使用 --now，否则不会启动服务。"}
 ::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="start 请求当前运行时激活，它与启用状态相互独立。"}
@@ -142,8 +138,7 @@ $ sudo systemctl disable peanut.service
 
 屏蔽操作会将单元链接到 `/dev/null`，在取消屏蔽前阻止普通激活，包括依赖关系触发的激活。它比禁用更强，并可能破坏依赖该单元的其他单元；使用前应检查反向依赖关系。
 
-:::single-choice{#systemd-goals-disable-runtime}
-对已在运行的服务执行不带 `--now` 的 `systemctl disable UNIT` 后，会发生什么？
+:::single-choice{#systemd-goals-disable-runtime} 对已在运行的服务执行不带 `--now` 的 `systemctl disable UNIT` 后，会发生什么？
 
 ::option[服务会立即被 `SIGKILL` 终止。]{#systemd-goals-disable-kills explanation="仅执行 disable 不会请求停止当前服务。"}
 ::option[服务的可执行文件会从文件系统中删除。]{#systemd-goals-disable-deletes explanation="启用操作管理的是链接，而不是程序包文件。"}

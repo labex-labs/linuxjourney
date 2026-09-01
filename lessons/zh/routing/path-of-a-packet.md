@@ -16,8 +16,7 @@ meta_keywords: "数据包路径, 网络通信, ARP, IP 地址, MAC 地址, 路�
 
 对于由直连路由覆盖的目标，源主机会选择接口和源 IP。然后，它解析目标的链路地址——以太网上的 IPv4 使用 ARP，IPv6 使用邻居发现——再发送承载 IP 数据包的帧。交换机可以转发该帧，而不会成为 IP 跳点。
 
-:::single-choice{#packet-path-switch-hop}
-普通以太网交换机算作 IP 路由跳点吗？
+:::single-choice{#packet-path-switch-hop} 普通以太网交换机算作 IP 路由跳点吗？
 
 ::option[不算；它转发本地帧，不会递减 IP 跳数字段。]{#packet-path-switch-not-hop .correct explanation="只有路由器处理并转发 IP 数据包时才构成路由跳点。"}
 ::option[算；每台交换机都会替换 IP 目标。]{#packet-path-switch-replaces-ip explanation="二层转发通常不会重写 IP 目标。"}
@@ -28,8 +27,7 @@ meta_keywords: "数据包路径, 网络通信, ARP, IP 地址, MAC 地址, 路�
 
 对于链路外目标，所选路由会标识下一跳路由器。IP 目标仍是远程端点，而本地帧的目标则是网关的链路地址。主机在本地链路上解析的是网关，而不是远程服务器。
 
-:::single-choice{#packet-path-gateway-mac}
-发送到链路外服务器的第一个以太网帧使用谁的 MAC 地址？
+:::single-choice{#packet-path-gateway-mac} 发送到链路外服务器的第一个以太网帧使用谁的 MAC 地址？
 
 ::option[跨越所有中间网络使用远程服务器的地址。]{#packet-path-remote-mac explanation="远程链路地址在源 LAN 上没有意义。"}
 ::option[根据服务器 DNS 名称计算出的值。]{#packet-path-dns-mac explanation="DNS 名称不会编码本地下一跳 MAC。"}
@@ -40,8 +38,7 @@ meta_keywords: "数据包路径, 网络通信, ARP, IP 地址, MAC 地址, 路�
 
 路由器会移除传入链路帧、验证并处理 IP 标头、递减 TTL 或 Hop Limit、查找目标、应用策略，再为传出链路创建新帧。对于 IPv4，标头校验和处理会反映 TTL 的变化。如果跳数字段到达零，路由器会丢弃数据包，并可以返回 ICMP 超时消息。
 
-:::single-choice{#packet-path-router-change}
-每个正常路由跳点都会更改哪个 IP 字段？
+:::single-choice{#packet-path-router-change} 每个正常路由跳点都会更改哪个 IP 字段？
 
 ::option[应用程序用户名。]{#packet-path-username explanation="基本转发不需要路由器了解应用程序账户数据。"}
 ::option[IPv4 TTL 或 IPv6 Hop Limit。]{#packet-path-hop-field .correct explanation="每台路由器都会递减该字段，以限制路由环路。"}
@@ -52,8 +49,7 @@ meta_keywords: "数据包路径, 网络通信, ARP, IP 地址, MAC 地址, 路�
 
 普通路由会保留源和目标 IP 地址，但 NAT 可以重写它们，隧道则可以封装原始数据包。防火墙可能静默丢弃或明确拒绝流量。不同链路的 MTU 也不相同；IPv4 路由器有时可以对数据包分片，而 IPv6 路由器不会对转发的数据包分片，而是依赖路径 MTU 发现。
 
-:::single-choice{#packet-path-address-change-exception}
-端到端 IP 地址何时可能沿路径改变？
+:::single-choice{#packet-path-address-change-exception} 端到端 IP 地址何时可能沿路径改变？
 
 ::option[以太网交换机每次学习源 MAC 时。]{#packet-path-switch-learning-ip explanation="交换机学习影响链路转发表，而不是 IP 端点地址。"}
 ::option[NAT 策略转换数据包标头时。]{#packet-path-nat-change .correct explanation="转换是普通路由转发之外的中间设备功能。"}
@@ -64,8 +60,7 @@ meta_keywords: "数据包路径, 网络通信, ARP, IP 地址, MAC 地址, 路�
 
 目标会为响应执行自己的路由查找。由于路由策略、负载均衡或故障，返回路径可能经过不同的路由器。有状态防火墙和 NAT 必须考虑观察到的流，因此即使 IP 允许路径不对称，它在运维上仍可能产生影响。
 
-:::single-choice{#packet-path-return-symmetry}
-回复必须按相反顺序经过相同的路由器吗？
+:::single-choice{#packet-path-return-symmetry} 回复必须按相反顺序经过相同的路由器吗？
 
 ::option[必须，因为 IP 会在每个数据包中记录完整的出站路由。]{#packet-path-records-route explanation="普通 IP 数据包不携带强制性的完整反向路由。"}
 ::option[必须，除非源和目标共享一个主机名。]{#packet-path-hostname-symmetry explanation="名称不会强制路径对称。"}

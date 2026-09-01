@@ -23,8 +23,7 @@ Hello World
 
 Stdout correspond au descripteur de fichier `1`, utile lorsque plusieurs flux sont redirigés. Les programmes disposent aussi de stdin et stderr, étudiés dans les prochaines leçons.
 
-:::single-choice{#stdout-default-destination}
-Sans redirection, où `echo Hello World` envoie-t-elle normalement sa sortie dans un terminal interactif ?
+:::single-choice{#stdout-default-destination} Sans redirection, où `echo Hello World` envoie-t-elle normalement sa sortie dans un terminal interactif ?
 
 ::option[Dans un fichier `stdout` du répertoire courant.]{#stdout-file explanation="La sortie standard est un flux, pas un fichier créé automatiquement."}
 ::option[Vers le terminal par la sortie standard.]{#stdout-terminal .correct explanation="Le shell relie normalement stdout au terminal, où `echo` s'affiche."}
@@ -46,8 +45,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-`notes.txt` contient déjà du texte. Que fait `echo new > notes.txt` ?
+:::single-choice{#stdout-replace-file} `notes.txt` contient déjà du texte. Que fait `echo new > notes.txt` ?
 
 ::option[Elle remplace son contenu par `new`.]{#stdout-replace-existing .correct explanation="Avec `>`, le shell tronque la destination avant d'y diriger la sortie."}
 ::option[Elle ajoute `new` après le texte existant.]{#stdout-add-existing explanation="L'ajout exige `>>` ; `>` ne préserve pas l'ancien contenu."}
@@ -69,8 +67,7 @@ Another line
 
 Comme `>`, `>>` crée une destination absente, mais ajoute au lieu de tronquer.
 
-:::single-choice{#stdout-append-file}
-Quelle commande ajoute `Finished` à `status.log` sans effacer son contenu ?
+:::single-choice{#stdout-append-file} Quelle commande ajoute `Finished` à `status.log` sans effacer son contenu ?
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="`>` tronque la destination."}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`>>` ajoute la sortie de `echo` au fichier."}
@@ -86,8 +83,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-Qui interprète normalement `>` dans `pwd > current-directory.txt` ?
+:::single-choice{#stdout-shell-role} Qui interprète normalement `>` dans `pwd > current-directory.txt` ?
 
 ::option[La commande `pwd`, qui reçoit `>` comme argument.]{#stdout-pwd-redirection explanation="Le shell consomme cette syntaxe ; `pwd` ne la reçoit pas comme argument."}
 ::option[Le shell Bash avant de lancer `pwd`.]{#stdout-bash-redirection .correct explanation="Bash ouvre la destination et relie le descripteur 1 avant l'exécution."}

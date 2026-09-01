@@ -23,8 +23,7 @@ $ uptime
 
 마지막 세 값은 약 1분, 5분 및 15분의 부하 평균입니다. 서로 비교하면 방향을 알 수 있습니다. 1분 값이 훨씬 크면 부하가 증가 중일 수 있고 15분 값이 더 크면 부하가 감소 중일 수 있습니다.
 
-:::single-choice{#cpu-uptime-windows}
-`uptime`은 부하 평균 시간 구간을 어떤 순서로 표시합니까?
+:::single-choice{#cpu-uptime-windows} `uptime`은 부하 평균 시간 구간을 어떤 순서로 표시합니까?
 
 ::option[15초, 5초 및 1초입니다.]{#cpu-windows-seconds explanation="값은 분 단위 평균이며 가장 긴 구간부터 출력하지 않습니다."}
 ::option[1분, 5분 및 15분입니다.]{#cpu-windows-one-five-fifteen .correct explanation="가장 짧은 최근 구간이 먼저, 가장 긴 구간이 마지막에 나타납니다."}
@@ -43,8 +42,7 @@ $ nproc
 
 CPU 할당량, 선호도, 가상화 및 컨테이너 제한 때문에 특정 작업 부하에 보이는 용량이 줄어들 수 있으므로 호스트 CPU 수는 시작점일 뿐입니다.
 
-:::single-choice{#cpu-load-not-percentage}
-부하 평균이 CPU 사용률 백분율이 아닌 이유는 무엇입니까?
+:::single-choice{#cpu-load-not-percentage} 부하 평균이 CPU 사용률 백분율이 아닌 이유는 무엇입니까?
 
 ::option[CPU 클록 주파수만 보고하기 때문입니다.]{#cpu-load-clock explanation="클록 속도는 별도의 하드웨어 또는 스케일링 지표입니다."}
 ::option[여유 물리 메모리만 측정하기 때문입니다.]{#cpu-load-memory explanation="메모리 가용성은 다른 지표가 보고합니다."}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 높은 부하와 바쁜 CPU가 함께 보이면 CPU 수요를 나타낼 수 있습니다. 높은 부하와 눈에 띄는 차단 작업, 입출력 지연 또는 입출력 대기 관찰이 함께 보이면 다른 리소스가 제한됐을 수 있습니다. 낮은 평균 사용률도 포화된 CPU 하나나 짧은 지연 급증을 숨길 수 있습니다.
 
-:::single-choice{#cpu-high-load-next-step}
-높은 부하 평균을 관찰한 뒤 가장 좋은 다음 단계는 무엇입니까?
+:::single-choice{#cpu-high-load-next-step} 높은 부하 평균을 관찰한 뒤 가장 좋은 다음 단계는 무엇입니까?
 
 ::option[CPU, 작업 상태, 입출력 및 작업 부하 측정값을 반복 수집해 비교합니다.]{#cpu-load-correlate .correct explanation="서로 연결된 표본은 부하에 대한 여러 경쟁 가설을 구분합니다."}
 ::option[다른 데이터를 수집하지 않고 즉시 재부팅합니다.]{#cpu-load-reboot explanation="재부팅은 증거를 없애고 원인을 식별하지 못한 채 서비스를 중단할 수 있습니다."}
@@ -77,8 +74,7 @@ $ mpstat -P ALL 1
 
 부하가 항상 CPU 수보다 낮아야 한다는 보편적인 규칙은 없습니다. 일괄 처리 시스템은 대기열을 허용할 수 있지만 대화형 서비스는 그 이전에 지연 목표를 위반할 수 있습니다. 같은 호스트와 작업 부하의 기준선을 수립한 뒤 응답 시간, 처리량, 오류율, 포화도 및 리소스 사용을 비교하십시오.
 
-:::single-choice{#cpu-capacity-threshold}
-관찰된 부하가 허용 가능한지 결정하는 기준은 무엇입니까?
+:::single-choice{#cpu-capacity-threshold} 관찰된 부하가 허용 가능한지 결정하는 기준은 무엇입니까?
 
 ::option[값이 항상 1보다 낮아야 한다는 요구 사항입니다.]{#cpu-below-one explanation="다중 코어 용량과 작업 부하 목표 때문에 이 고정 임계값은 신뢰하기 어렵습니다."}
 ::option[`uptime`에 표시된 사용자 수만 사용합니다.]{#cpu-user-count explanation="로그인한 셸 사용자가 모든 작업 부하 수요를 나타내지는 않습니다."}

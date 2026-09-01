@@ -16,8 +16,7 @@ DNS は、クライアント向けの再帰処理と権威データの公開を�
 
 アプリケーションまたは OS 内の stub resolver は、設定済み recursive resolver へ問い合わせます。recursive resolver はキャッシュを使い、必要なら反復問い合わせを行って、最終回答、エラー、または referral の結果を返します。応答に authoritative-answer フラグを付けられるのは、応答サーバーがそのデータへ権威を持つ場合だけです。再帰処理を行うだけで権威サーバーになるわけではありません。
 
-:::single-choice{#dns-components-recursive-role}
-recursive resolver は stub client のために何をしますか？
+:::single-choice{#dns-components-recursive-role} recursive resolver は stub client のために何をしますか？
 
 ::option[キャッシュとほかの name server を使って、最終的な DNS 結果を取得する。]{#dns-components-recursive-result .correct explanation="クライアントは複数段階の検索作業を recursive service に委ねます。"}
 ::option[パケット経路上の全ネットワークルーターを置き換える。]{#dns-components-replaces-router explanation="名前解決と IP 転送は別の仕組みです。"}
@@ -28,8 +27,7 @@ recursive resolver は stub client のために何をしますか？
 
 authoritative server は、自身が権威を持つ zone データから応答します。一つの zone には、データを同期した複数の authoritative server を用意し、障害要因の独立性も考慮すべきです。authoritative-only server は、任意のクライアントに対して再帰処理を行う必要はありません。
 
-:::single-choice{#dns-components-authoritative-role}
-サーバーがある zone に対して authoritative になる条件は何ですか？
+:::single-choice{#dns-components-authoritative-role} サーバーがある zone に対して authoritative になる条件は何ですか？
 
 ::option[一度だけ公開 resolver 経由でその zone を問い合わせたこと。]{#dns-components-once-queried explanation="問い合わせやキャッシュによって権威が与えられることはありません。"}
 ::option[関連する委任と設定の下で、その zone データを提供すること。]{#dns-components-serves-zone .correct explanation="権威は DNS の委任とサーバーに読み込まれた zone から生じ、キャッシュコピーの所有からは生じません。"}
@@ -42,8 +40,7 @@ zone は、DNS 名前空間のうち管理上サービスを提供する部分�
 
 zone apex には通常、SOA レコードと NS の集合があります。親側の委任データは子の authoritative server を特定し、bailiwick 内のサーバー名へ到達するための glue address レコードを伴うことがあります。
 
-:::single-choice{#dns-components-zone-meaning}
-DNS zone とは何ですか？
+:::single-choice{#dns-components-zone-meaning} DNS zone とは何ですか？
 
 ::option[管理上サービスを提供する名前空間の一部分。]{#dns-components-admin-portion .correct explanation="保存先の実装にかかわらず、レコードと委任を含められます。"}
 ::option[すべてのクライアントに必須の単一テキストファイル。]{#dns-components-client-file explanation="権威サーバーは複数の保存形式を使え、クライアントが全 zone を保持するわけでもありません。"}
@@ -60,8 +57,7 @@ www.example.com.  300  IN  A  192.0.2.25
 
 owner は `www.example.com.`、TTL は 300 秒、class は Internet、type は IPv4 address、RDATA はそのアドレスです。zone file 構文にはフィールドの省略と相対名の規則があるため、origin を慎重に扱う必要があります。
 
-:::single-choice{#dns-components-mx-type}
-mail exchanger の優先度とホスト名を公開するレコード型はどれですか？
+:::single-choice{#dns-components-mx-type} mail exchanger の優先度とホスト名を公開するレコード型はどれですか？
 
 ::option[`A`]{#dns-components-a explanation="A レコードは IPv4 アドレスを保存します。"}
 ::option[`NS`]{#dns-components-ns explanation="NS レコードは authoritative name server を識別します。"}
@@ -72,8 +68,7 @@ mail exchanger の優先度とホスト名を公開するレコード型はど�
 
 正のレコードは TTL によってキャッシュ再利用期間を制限します。存在しない名前が証明された場合などの negative answer も、SOA から導かれる規則に従ってキャッシュできます。計画変更の直前に TTL を下げても、キャッシュが低い値を観測した後に取得したレコードにしか影響しません。以前に長い TTL でキャッシュされたものは、期限まで残ります。
 
-:::single-choice{#dns-components-lower-ttl-timing}
-計画したアドレス変更より十分前に DNS TTL を下げるのはなぜですか？
+:::single-choice{#dns-components-lower-ttl-timing} 計画したアドレス変更より十分前に DNS TTL を下げるのはなぜですか？
 
 ::option[TTL がサーバーの Ethernet MTU を変更するから。]{#dns-components-ttl-mtu explanation="キャッシュ期間とリンク上のパケットサイズは無関係です。"}
 ::option[低い TTL によって新しいアプリケーションの正常性が保証されるから。]{#dns-components-ttl-health explanation="影響するのはキャッシュ動作であり、サービスの正しさではありません。"}

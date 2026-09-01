@@ -22,8 +22,7 @@ $ nmcli connection show
 $ nmcli connection show --active
 ```
 
-:::single-choice{#networkmanager-device-profile}
-什么是 NetworkManager 连接配置文件？
+:::single-choice{#networkmanager-device-profile} 什么是 NetworkManager 连接配置文件？
 
 ::option[焊接在网卡上的物理连接器。]{#networkmanager-physical-connector explanation="这是硬件，不是 NetworkManager 配置文件。"}
 ::option[可以在设备上激活的一组已存储设置。]{#networkmanager-stored-settings .correct explanation="配置文件独立于内核接口对象持久保存配置。"}
@@ -41,8 +40,7 @@ $ nmcli connection show 'Wired connection 1'
 
 配置文件设置、运行时 DHCP 结果和内核状态可能不同。应与 `ip address`、`ip route` 和解析器相互比较。已弃用的 `nm-tool` 不应作为现代工作流程的基础。
 
-:::single-choice{#networkmanager-active-command}
-哪个命令列出活动的 NetworkManager 配置文件？
+:::single-choice{#networkmanager-active-command} 哪个命令列出活动的 NetworkManager 配置文件？
 
 ::option[`nmcli device delete --all`]{#networkmanager-delete-all explanation="这不是检查命令，而且表达了破坏性意图。"}
 ::option[`nmcli connection show --active`]{#networkmanager-show-active .correct explanation="它会将已存储连接过滤为当前已激活的连接。"}
@@ -60,8 +58,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 修改会改变持久配置文件数据；激活可能替换实时地址、路由和 DNS。远程更改需要控制台访问、保存的原始设置和独立的定时回滚。绝不能依靠正在更改的连接来承载它自己的恢复命令。
 
-:::single-choice{#networkmanager-modify-versus-up}
-`connection modify` 与 `connection up` 有什么区别？
+:::single-choice{#networkmanager-modify-versus-up} `connection modify` 与 `connection up` 有什么区别？
 
 ::option[modify 重启主机；up 编辑 DNS 源代码。]{#networkmanager-reboot-source explanation="两种描述都不符合这些命令。"}
 ::option[modify 更改配置文件设置；up 激活配置文件。]{#networkmanager-change-activate .correct explanation="持久性与运行时激活相互关联，但属于不同操作。"}
@@ -72,8 +69,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 激活后，应验证配置文件状态、内核地址与路由、DNS、两个地址族及预期应用程序。Wi-Fi、VPN、802.1X 和移动网络配置文件可能包含秘密。应限制配置文件权限，避免把秘密字段打印到共享日志或 shell 记录中。
 
-:::single-choice{#networkmanager-verification}
-什么比 NetworkManager 报告“已连接”更能证明连接正常？
+:::single-choice{#networkmanager-verification} 什么比 NetworkManager 报告“已连接”更能证明连接正常？
 
 ::option[配置文件名称包含 Wired 一词。]{#networkmanager-name-proof explanation="标签无法证明路径或服务健康。"}
 ::option[终端窗口仍然打开。]{#networkmanager-terminal-open explanation="某些部分网络故障不会立即关闭终端。"}

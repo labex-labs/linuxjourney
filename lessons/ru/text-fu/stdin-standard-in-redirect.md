@@ -22,8 +22,7 @@ meta_keywords: "stdin, стандартный ввод, перенаправле
 
 Программа сама выбирает, использовать ли эти потоки и каким образом. Команда, предназначенная для чтения stdin, часто ожидает ввод из терминала, если ей не передан файл или другой источник данных.
 
-:::single-choice{#stdin-descriptor-number}
-Какой файловый дескриптор по соглашению обозначает стандартный ввод?
+:::single-choice{#stdin-descriptor-number} Какой файловый дескриптор по соглашению обозначает стандартный ввод?
 
 ::option[`0`]{#stdin-fd-zero .correct explanation="Стандартный ввод по соглашению соответствует файловому дескриптору 0."}
 ::option[`1`]{#stdin-fd-one explanation="Файловый дескриптор 1 по соглашению обозначает стандартный вывод — поток обычных результатов."}
@@ -43,8 +42,7 @@ Hello World
 
 Если входной файл не существует или его нельзя открыть, оболочка сообщает об ошибке перенаправления и не запускает команду с таким вводом.
 
-:::single-choice{#stdin-from-file}
-Какая команда заставляет `sort` читать стандартный ввод из `names.txt`?
+:::single-choice{#stdin-from-file} Какая команда заставляет `sort` читать стандартный ввод из `names.txt`?
 
 ::option[`sort < names.txt`]{#sort-stdin-file .correct explanation="Bash открывает `names.txt` для чтения и подключает его к `sort` через файловый дескриптор 0."}
 ::option[`sort > names.txt`]{#stdout-to-names explanation="Знак больше перенаправляет stdout в файл и может усечь его. Он не предоставляет файл как ввод."}
@@ -64,8 +62,7 @@ $ wc -l < peanuts.txt
 
 Обе формы подсчитывают строки в одних и тех же данных. В первой форме `wc` знает имя файла, потому что получает его как аргумент. Во второй команда получает только поток через stdin, поэтому ей нечего выводить в качестве имени файла.
 
-:::single-choice{#stdin-not-command-argument}
-Почему `wc -l < peanuts.txt` обычно не выводит `peanuts.txt`?
+:::single-choice{#stdin-not-command-argument} Почему `wc -l < peanuts.txt` обычно не выводит `peanuts.txt`?
 
 ::option[`wc` удаляет имя файла после подсчёта строк.]{#stdin-delete-name explanation="Команда не переименовывает и не удаляет исходный файл — изменяется только подключение ввода."}
 ::option[Оператор `<` скрывает каждое слово, выводимое командой.]{#stdin-hide-words explanation="Перенаправление ввода не фильтрует stdout. Имя отсутствует, потому что `wc` не получила его как аргумент."}
@@ -87,8 +84,7 @@ $ cat < peanuts.txt > banana.txt
 
 `cat` читает байты из stdin и записывает их в stdout, поэтому `banana.txt` получает содержимое исходного файла. Для обычного копирования файлов команда `cp peanuts.txt banana.txt` яснее выражает намерение; данный пример иллюстрирует соединения потоков.
 
-:::single-choice{#stdin-and-stdout-files}
-Какой файл в `cat < input.txt > output.txt` предоставляет stdin, а какой получает stdout?
+:::single-choice{#stdin-and-stdout-files} Какой файл в `cat < input.txt > output.txt` предоставляет stdin, а какой получает stdout?
 
 ::option[`output.txt` предоставляет stdin, а `input.txt` получает stdout.]{#stdin-output-stdout-input explanation="Здесь значения операторов перенаправления перепутаны. Для ввода стрелка направлена к команде, а для вывода — к файлу."}
 ::option[`input.txt` предоставляет stdin, а `output.txt` получает stdout.]{#stdin-input-stdout-output .correct explanation="Перенаправление `<` открывает `input.txt` для дескриптора 0, а `>` открывает `output.txt` для дескриптора 1."}

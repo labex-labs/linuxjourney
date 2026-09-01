@@ -30,8 +30,7 @@ $ lsusb -t
 
 詳細なディスクリプター出力も利用できますが、一部の詳細には高い読み取り権限が必要です。調査コマンドの警告を消すためだけに、USB デバイスへ広範な権限を与えてはいけません。
 
-:::single-choice{#listing-devices-usb-tree}
-USB デバイスをトポロジーツリーとして表示するコマンドはどれですか？
+:::single-choice{#listing-devices-usb-tree} USB デバイスをトポロジーツリーとして表示するコマンドはどれですか？
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="これは USB トポロジーではなく、PCI 機能とカーネルドライバー情報を一覧表示します。"}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="これはここで紹介した USB ツリー用コマンドではありません。"}
@@ -54,8 +53,7 @@ $ lspci -k
 
 PCI コントローラーが一覧に現れても、その配下のすべてのデバイスが初期化済みで正常とは限りません。トラブルシューティングでは、ドライバーのバインドとカーネルログを確認します。
 
-:::single-choice{#listing-devices-pci-driver}
-PCI の一覧にカーネルドライバー情報を追加するコマンドはどれですか？
+:::single-choice{#listing-devices-pci-driver} PCI の一覧にカーネルドライバー情報を追加するコマンドはどれですか？
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="`-k` オプションは、各 PCI デバイスで稼働中のカーネルドライバーと、処理可能なモジュールを表示します。"}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="これは USB の階層とインターフェースドライバーを示します。"}
@@ -78,8 +76,7 @@ $ lsscsi
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-`lsscsi` が主に一覧表示するものは何ですか？
+:::single-choice{#listing-devices-lsscsi-scope} `lsscsi` が主に一覧表示するものは何ですか？
 
 ::option[すべての NVMe 名前空間とコントローラーだけ。]{#listing-devices-only-nvme explanation="NVMe には独自のサブシステムとツールがありますが、関連するブロックビューが別の場所に現れることはあります。"}
 ::option[名前が `.scsi` で終わるファイルだけ。]{#listing-devices-scsi-extension explanation="このコマンドはファイル名の拡張子ではなく、カーネルデバイスインターフェースを問い合わせます。"}
@@ -92,8 +89,7 @@ $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 
 これらのユーティリティーは別々にパッケージ化され、一般には `usbutils`、`pciutils`、`lsscsi` などのパッケージで提供されます。コマンドがない場合は、出所不明の代替物をダウンロードせず、ディストリビューションのパッケージマネージャーを使ってください。
 
-:::single-choice{#listing-devices-listed-not-working}
-`lspci` にデバイスが表示されれば、ドライバーが有効で正常に動作していると証明できますか？
+:::single-choice{#listing-devices-listed-not-working} `lspci` にデバイスが表示されれば、ドライバーが有効で正常に動作していると証明できますか？
 
 ::option[いいえ。ドライバーのバインドと関連するカーネルメッセージも確認する。]{#listing-devices-needs-correlation .correct explanation="列挙によって分かるのは PCI 機能が見えていることだけで、上位層の初期化成功までは分かりません。"}
 ::option[はい。PCI の列挙では完全な機能テストを実行する。]{#listing-devices-complete-test explanation="一覧表示は、すべてのハードウェア機能を動作させたり、サービスの挙動を検証したりしません。"}

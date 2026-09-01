@@ -18,8 +18,7 @@ Para entender cómo se creó Linux, debemos remontarnos a 1969, cuando Ken Thomp
 
 ![Línea de tiempo de Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-:::single-choice{#understand-unix-portability}
-¿Cuál fue un resultado importante de reescribir UNIX en C?
+:::single-choice{#understand-unix-portability} ¿Cuál fue un resultado importante de reescribir UNIX en C?
 
 ::option[Se convirtió en el núcleo libre creado para el sistema GNU.]{#unix-became-gnu-kernel explanation="UNIX existía antes que el proyecto GNU y no era el núcleo de GNU. Más tarde, GNU comenzó a desarrollar un núcleo distinto llamado Hurd."}
 ::option[Se volvió más fácil trasladarlo entre distintos sistemas de hardware.]{#portable-across-hardware .correct explanation="Escribir UNIX en C lo hizo más portátil. Esa portabilidad ayudó a que se extendiera más allá del hardware original."}
@@ -28,8 +27,7 @@ Para entender cómo se creó Linux, debemos remontarnos a 1969, cuando Ken Thomp
 
 Más de una década después, Richard Stallman inició el proyecto GNU. GNU es un acrónimo recursivo de «GNU's Not UNIX» y su objetivo era crear un sistema operativo tipo UNIX completamente libre y de código abierto. El proyecto produjo muchos componentes esenciales y la Licencia Pública General de GNU (GPL), pero su propio núcleo, GNU Hurd, no estaba listo para un uso general cuando Linux apareció.
 
-:::single-choice{#identify-gnu-missing-component}
-¿Qué componente principal de GNU no estaba listo cuando apareció Linux?
+:::single-choice{#identify-gnu-missing-component} ¿Qué componente principal de GNU no estaba listo cuando apareció Linux?
 
 ::option[Un núcleo listo para producción]{#gnu-kernel .correct explanation="GNU había producido muchos componentes del sistema, pero su propio núcleo, GNU Hurd, no estaba listo para un uso general."}
 ::option[Una licencia de software libre]{#gnu-license explanation="El proyecto GNU ya había creado la Licencia Pública General de GNU. El componente que faltaba era un núcleo utilizable."}
@@ -40,8 +38,7 @@ Más de una década después, Richard Stallman inició el proyecto GNU. GNU es u
 
 El núcleo es el componente central de un sistema operativo. Actúa como puente para que el hardware se comunique con el software. Gestiona recursos del sistema como la CPU, la memoria y los dispositivos periféricos. Además de las herramientas y aplicaciones que utilizan las personas, un sistema operativo completo necesita este componente central encargado de administrar los recursos.
 
-:::single-choice{#recognize-kernel-role}
-¿Cuál de estas responsabilidades corresponde al núcleo del sistema operativo?
+:::single-choice{#recognize-kernel-role} ¿Cuál de estas responsabilidades corresponde al núcleo del sistema operativo?
 
 ::option[Escribir cada orden introducida en el intérprete]{#write-shell-commands explanation="Las personas o los scripts proporcionan las órdenes. El núcleo aporta los recursos de bajo nivel necesarios cuando los programas las ejecutan."}
 ::option[Elegir la licencia de cada aplicación instalada]{#choose-software-licenses explanation="Los autores y distribuidores eligen las licencias de las aplicaciones. Seleccionar licencias no es una tarea de gestión de recursos del núcleo."}
@@ -56,8 +53,7 @@ Así llegamos a 1991, cuando un estudiante finlandés llamado Linus Torvalds com
 
 _Linus Torvalds en 2018 (Fuente: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
 
-:::single-choice{#identify-linux-kernel-creator}
-¿Quién comenzó a desarrollar el núcleo Linux en 1991?
+:::single-choice{#identify-linux-kernel-creator} ¿Quién comenzó a desarrollar el núcleo Linux en 1991?
 
 ::option[Richard Stallman]{#richard-stallman explanation="Richard Stallman inició el proyecto GNU. GNU aportó muchos componentes del sistema, pero Linus Torvalds comenzó el núcleo Linux."}
 ::option[Dennis Ritchie]{#dennis-ritchie explanation="Dennis Ritchie ayudó a desarrollar UNIX y el lenguaje C. El proyecto del núcleo Linux lo inició Linus Torvalds años después."}

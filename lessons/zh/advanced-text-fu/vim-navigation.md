@@ -25,8 +25,7 @@ Vim 提供无需鼠标即可在终端中使用的键盘移动命令。有些 Vim
 
 方向键通常也能完成类似移动，但 `h`、`j`、`k` 和 `l` 能让双手靠近其他命令。在发生换行显示的行上，`j` 和 `k` 通常按文件行移动；`gj` 和 `gk` 则按屏幕上显示的行移动。
 
-:::single-choice{#vim-navigation-down}
-在普通模式中，哪个按键会让光标向下移动一行？
+:::single-choice{#vim-navigation-down} 在普通模式中，哪个按键会让光标向下移动一行？
 
 ::option[`k`]{#vim-nav-k-up explanation="`k` 移动命令会向上移动一行。"}
 ::option[`l`]{#vim-nav-l-right explanation="`l` 移动命令会向右移动一个字符。"}
@@ -44,8 +43,7 @@ Vim 提供无需鼠标即可在终端中使用的键盘移动命令。有些 Vim
 
 `5j` 向下移动五行；如果位置允许，`3l` 向右移动三个字符。计数也可以与单词移动和编辑命令组合。
 
-:::single-choice{#vim-navigation-count}
-普通模式中的 `4k` 会做什么？
+:::single-choice{#vim-navigation-count} 普通模式中的 `4k` 会做什么？
 
 ::option[如果可以，向下移动四行。]{#vim-nav-four-down explanation="向下移动使用 `j`；`k` 的方向相反。"}
 ::option[如果可以，向上移动四行。]{#vim-nav-four-up .correct explanation="计数 `4` 会把向上的 `k` 移动重复四次。"}
@@ -62,8 +60,7 @@ Vim 提供无需鼠标即可在终端中使用的键盘移动命令。有些 Vim
 
 大写的 `W`、`B` 和 `E` 使用由空白分隔的 WORD，对标点的处理方式不同。可以添加计数来跨越多个单词，例如 `3w`。
 
-:::single-choice{#vim-navigation-next-words}
-普通模式中的哪个命令会向前移动到第三个后续单词位置的开头？
+:::single-choice{#vim-navigation-next-words} 普通模式中的哪个命令会向前移动到第三个后续单词位置的开头？
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="该计数会把“下一个单词”移动重复三次。"}
 ::option[`w3`]{#vim-nav-word-three explanation="这种命令形式要求计数位于移动命令之前；把 `3` 放在后面不能表达所需移动。"}
@@ -80,8 +77,7 @@ Vim 提供无需鼠标即可在终端中使用的键盘移动命令。有些 Vim
 
 对于有缩进的行，`0` 和 `^` 的区别很重要。
 
-:::single-choice{#vim-navigation-first-nonblank}
-哪个移动命令会到达缩进行的第一个非空白字符？
+:::single-choice{#vim-navigation-first-nonblank} 哪个移动命令会到达缩进行的第一个非空白字符？
 
 ::option[`0`]{#vim-nav-column-zero explanation="零会移动到第一列，其中可能包含缩进空白。"}
 ::option[`$`]{#vim-nav-line-end explanation="美元符号移动命令的目标是行尾。"}
@@ -100,8 +96,7 @@ Vim 提供无需鼠标即可在终端中使用的键盘移动命令。有些 Vim
 
 输入命令 `:42` 后按 Enter，也可以跳转到第 42 行。
 
-:::single-choice{#vim-navigation-file-end}
-普通模式中的哪个命令会移动到缓冲区最后一行？
+:::single-choice{#vim-navigation-file-end} 普通模式中的哪个命令会移动到缓冲区最后一行？
 
 ::option[`gg`]{#vim-nav-first-line explanation="小写 `gg` 会移动到第一行，而不是最后一行。"}
 ::option[`$`]{#vim-nav-current-line-end explanation="美元符号移动命令会到达当前行末尾，而不是文件末尾。"}

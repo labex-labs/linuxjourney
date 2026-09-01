@@ -16,8 +16,7 @@ Logs de texto sem limite podem esgotar um sistema de arquivos; exclusões agress
 
 Uma rotação típica renomeia o arquivo ativo, cria outro, opcionalmente pede ao aplicativo que o reabra, comprime gerações antigas e remove as excedentes. Tudo depende da configuração. Rotação não é backup: cópias retidas ainda podem ser apagadas, corrompidas ou perdidas com o host.
 
-:::single-choice{#logrotate-not-backup}
-Por que rotação não substitui backup ou arquivamento?
+:::single-choice{#logrotate-not-backup} Por que rotação não substitui backup ou arquivamento?
 
 ::option[Arquivos rotacionados continuam sujeitos à retenção local e a falhas do host.]{#logrotate-local-retention .correct explanation="A rotação controla gerações de trabalho, mas não cria uma cópia durável independente."}
 ::option[A rotação só processa arquivos de imagem.]{#logrotate-images explanation="A ferramenta foi projetada principalmente para logs."}
@@ -42,8 +41,7 @@ O arquivo principal costuma ser `/etc/logrotate.conf`, com trechos de pacotes ou
 
 Isso solicita avaliação diária, sete rotações, compressão adiada por uma geração, tolerância a arquivo ausente ou vazio e um novo arquivo com modo e proprietário explícitos. A rotação real também depende do estado registrado e do agendador.
 
-:::single-choice{#logrotate-rotate-seven}
-O que especifica `rotate 7`?
+:::single-choice{#logrotate-rotate-seven} O que especifica `rotate 7`?
 
 ::option[Manter até sete gerações rotacionadas.]{#logrotate-seven-generations .correct explanation="Gerações mais antigas são removidas quando a retenção é excedida."}
 ::option[Executar o aplicativo sete vezes ao dia.]{#logrotate-run-seven explanation="A diretiva controla gerações, não a execução do aplicativo."}
@@ -56,8 +54,7 @@ Depois da renomeação, um daemon pode continuar escrevendo pelo descritor abert
 
 `copytruncate` copia e trunca o original quando o aplicativo não consegue reabrir logs. Escritas podem ser perdidas ou duplicadas nessa janela; é um compromisso, não um padrão universalmente seguro.
 
-:::single-choice{#logrotate-open-descriptor}
-Por que um aplicativo pode precisar reabrir o log após a rotação?
+:::single-choice{#logrotate-open-descriptor} Por que um aplicativo pode precisar reabrir o log após a rotação?
 
 ::option[Seu descritor aberto ainda pode apontar para o arquivo renomeado.]{#logrotate-descriptor-renamed .correct explanation="Reabrir faz novas escritas usarem o caminho ativo recém-criado."}
 ::option[A compressão encerra automaticamente todo aplicativo.]{#logrotate-compression-stops explanation="Compressão não gerencia o ciclo de vida do processo escritor."}
@@ -74,8 +71,7 @@ $ sudo logrotate -d /etc/logrotate.conf
 
 A saída de depuração não comprova que permissões, scripts, espaço livre ou a reabertura pela aplicação funcionarão durante uma execução real. Teste uma nova regra em um ambiente controlado e, depois da execução, examine o arquivo ativo, a geração rotacionada, a propriedade, a compressão, a saída da aplicação e o estado do logrotate. `-f` força uma rotação e altera o estado; não o confunda com uma execução de teste.
 
-:::single-choice{#logrotate-debug-mode}
-O que `logrotate -d` oferece?
+:::single-choice{#logrotate-debug-mode} O que `logrotate -d` oferece?
 
 ::option[Exclusão permanente de todos os logs vencidos.]{#logrotate-debug-delete explanation="O modo debug informa decisões sem executar a rotação."}
 ::option[Rotação forçada de produção independentemente da política.]{#logrotate-debug-force explanation="A opção de força é `-f` e altera o estado."}
@@ -86,8 +82,7 @@ O que `logrotate -d` oferece?
 
 Logrotate gerencia arquivos nomeados por suas políticas. O journal tem configuração própria de tamanho e retenção; bancos e serviços remotos têm outros controles. Monitore capacidade e saúde do logging para detectar writers travados ou rotação falha antes de esgotar espaço.
 
-:::single-choice{#logrotate-journal-retention}
-Uma regra logrotate aplica automaticamente a retenção do journal?
+:::single-choice{#logrotate-journal-retention} Uma regra logrotate aplica automaticamente a retenção do journal?
 
 ::option[Não; o journal tem configurações e limites próprios.]{#logrotate-journal-separate .correct explanation="Logrotate gerencia apenas caminhos selecionados por políticas de arquivo."}
 ::option[Sim; todos os logs compartilham um mecanismo.]{#logrotate-all-logs explanation="Rotação de arquivos e retenção do journal são mecanismos separados."}

@@ -23,8 +23,7 @@ Una entrada del cargador puede identificar:
 
 GRUB puede presentar varios kernels y entradas de recuperación. Un kernel alternativo solo resulta útil si sus módulos e initramfs correspondientes siguen disponibles y se han probado. El cargador lee archivos mediante sus módulos compatibles de almacenamiento y sistemas de archivos; no depende del VFS de Linux, que todavía no está en ejecución.
 
-:::single-choice{#bootloader-primary-handoff}
-¿A qué transfiere normalmente el control un cargador de arranque de Linux?
+:::single-choice{#bootloader-primary-handoff} ¿A qué transfiere normalmente el control un cargador de arranque de Linux?
 
 ::option[A un shell interactivo de usuario con todos los servicios ya en ejecución.]{#bootloader-user-shell explanation="Los shells del espacio de usuario solo aparecen después de iniciarse el kernel y el sistema init."}
 ::option[A la imagen de kernel seleccionada después de cargar los elementos de arranque necesarios.]{#bootloader-selected-kernel .correct explanation="El cargador prepara el kernel, los parámetros y, a menudo, un initramfs antes de ejecutar el punto de entrada del kernel."}
@@ -49,16 +48,14 @@ Examina la línea utilizada en el arranque actual con:
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-¿Cuál es la finalidad del parámetro `root=` de la línea de órdenes del kernel?
+:::single-choice{#bootloader-root-parameter} ¿Cuál es la finalidad del parámetro `root=` de la línea de órdenes del kernel?
 
 ::option[Identificar el sistema de archivos raíz que deberá utilizar finalmente el arranque.]{#bootloader-root-filesystem .correct explanation="El kernel o initramfs interpreta el valor como parte de la localización y ensamblaje de la raíz real."}
 ::option[Establecer la contraseña de inicio de sesión de la cuenta root.]{#bootloader-root-password explanation="Los secretos de autenticación no deben pasarse como texto ordinario en la línea de órdenes del kernel."}
 ::option[Cambiar el nombre del PID 1 a la palabra `root`.]{#bootloader-root-pid explanation="El nombre de los procesos no guarda relación con este parámetro de almacenamiento."}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-¿Qué solicita normalmente el parámetro `quiet`?
+:::single-choice{#bootloader-quiet-parameter} ¿Qué solicita normalmente el parámetro `quiet`?
 
 ::option[Acceso de solo lectura a todos los sistemas de archivos montados.]{#bootloader-quiet-readonly explanation="La política inicial de escritura de la raíz utiliza parámetros como `ro`, no `quiet`."}
 ::option[Reducir los mensajes del kernel impresos durante el arranque.]{#bootloader-quiet-console .correct explanation="Suprime muchos mensajes informativos, pero no garantiza el silencio de todos los componentes del arranque."}
@@ -71,8 +68,7 @@ GRUB suele permitir que un usuario de consola autorizado edite una entrada para 
 
 Los parámetros pueden exponer texto confidencial mediante `/proc/cmdline`, los registros de arranque y los informes de fallos. También pueden debilitar la seguridad o hacer imposible arrancar el sistema. Nunca introduzcas secretos y conserva una entrada válida conocida y una vía de recuperación mediante consola.
 
-:::single-choice{#bootloader-temporary-edit}
-¿Cuál es una propiedad habitual de editar interactivamente una entrada de GRUB para un arranque?
+:::single-choice{#bootloader-temporary-edit} ¿Cuál es una propiedad habitual de editar interactivamente una entrada de GRUB para un arranque?
 
 ::option[Reescribe automáticamente todas las imágenes de kernel instaladas.]{#bootloader-rewrites-kernels explanation="Cambiar el texto de las órdenes no modifica los binarios del kernel."}
 ::option[Deshabilita permanentemente la verificación del firmware en todos los discos.]{#bootloader-disables-firmware explanation="La política del firmware es independiente y una edición de una entrada no la modifica universalmente."}
@@ -85,8 +81,7 @@ Las distribuciones suelen generar la configuración final de GRUB a partir de pl
 
 Realiza un cambio limitado en la fuente, ejecuta la orden de regeneración documentada por la distribución, examina su salida y prueba conservando una entrada anterior válida y un medio de recuperación arrancable. La orden y la ruta de salida difieren entre Debian, Fedora y las instalaciones UEFI y BIOS.
 
-:::single-choice{#bootloader-generated-config}
-¿Por qué suele ser poco fiable editar directamente un `grub.cfg` generado?
+:::single-choice{#bootloader-generated-config} ¿Por qué suele ser poco fiable editar directamente un `grub.cfg` generado?
 
 ::option[Porque el archivo nunca puede contener texto legible.]{#bootloader-config-binary explanation="La configuración de GRUB es texto, pero sigue importando que sea un archivo generado."}
 ::option[Porque GRUB solo lee archivos en el directorio personal de cada usuario.]{#bootloader-grub-home explanation="La configuración de arranque pertenece al sistema y debe estar disponible antes de las sesiones personales."}

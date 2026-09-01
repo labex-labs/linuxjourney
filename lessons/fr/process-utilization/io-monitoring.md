@@ -22,8 +22,7 @@ $ iostat -xz 1
 
 Sur les implémentations courantes, le premier rapport contient les moyennes depuis le démarrage et les suivants couvrent chaque intervalle. L’option `-x` ajoute des champs étendus, tandis que `-z` masque les périphériques inactifs. Laissez passer plusieurs intervalles afin de saisir des périodes normales et problématiques.
 
-:::single-choice{#iostat-first-report}
-Que représente couramment le premier rapport d’`iostat` ?
+:::single-choice{#iostat-first-report} Que représente couramment le premier rapport d’`iostat` ?
 
 ::option[Uniquement les opérations de la dernière seconde de la commande.]{#iostat-final-second explanation="Cela ne décrit pas le rapport cumulatif initial."}
 ::option[Les moyennes d’activité depuis le démarrage du système.]{#iostat-since-boot .correct explanation="Les rapports suivants concernent généralement chaque intervalle ; le premier doit donc être interprété séparément."}
@@ -34,8 +33,7 @@ Que représente couramment le premier rapport d’`iostat` ?
 
 La section du processeur comprend couramment le temps utilisateur (`%user`), système (`%system`), d’inactivité (`%idle`), d’attente d’entrées-sorties (`%iowait`) et de vol par une machine virtuelle (`%steal`). L’attente d’entrées-sorties est le temps d’inactivité du processeur pendant lequel le système possède une requête d’entrée-sortie en attente ; ce n’est pas le pourcentage d’occupation d’un disque.
 
-:::single-choice{#iostat-iowait-meaning}
-Que décrit `%iowait` ?
+:::single-choice{#iostat-iowait-meaning} Que décrit `%iowait` ?
 
 ::option[Le pourcentage de la capacité du disque déjà rempli.]{#iostat-capacity explanation="La capacité du système de fichiers et le temps processeur sont des mesures différentes."}
 ::option[Le temps d’inactivité du processeur pendant qu’une requête d’entrée-sortie est en attente.]{#iostat-iowait-cpu .correct explanation="Il s’agit d’une catégorie de temps processeur qui ne peut identifier un périphérique à elle seule."}
@@ -53,8 +51,7 @@ Les noms des champs varient selon la version de sysstat, mais les notions utiles
 
 Une valeur `%util` élevée peut signaler la saturation d’un périphérique série simple, mais ne se traduit pas directement en capacité de performances pour un stockage parallèle, une grappe ou un périphérique virtuel. Comparez la latence à la conception du périphérique, au profil de la charge et à l’objectif de service.
 
-:::single-choice{#iostat-await-purpose}
-Quel champ est le plus directement associé à la latence moyenne des requêtes d’entrée-sortie ?
+:::single-choice{#iostat-await-purpose} Quel champ est le plus directement associé à la latence moyenne des requêtes d’entrée-sortie ?
 
 ::option[Le nom du périphérique.]{#iostat-device-name explanation="Le nom identifie le périphérique, mais ne mesure pas la durée des requêtes."}
 ::option[`await`]{#iostat-await .correct explanation="Await reflète le temps moyen des requêtes, y compris l’attente dans la file et le service."}
@@ -72,8 +69,7 @@ $ findmnt
 
 Mettez ensuite les intervalles d’`iostat` en relation avec le temps de réponse de l’application, les mesures de la base de données ou du système de fichiers et les entrées-sorties des processus. Device Mapper, RAID, les conteneurs et le stockage réseau peuvent ajouter des couches qui nécessitent leurs propres outils.
 
-:::single-choice{#iostat-high-util-conclusion}
-Que faire après avoir observé une valeur `%util` élevée sur un périphérique ?
+:::single-choice{#iostat-high-util-conclusion} Que faire après avoir observé une valeur `%util` élevée sur un périphérique ?
 
 ::option[Supposer que chaque système de fichiers manque d’espace libre.]{#iostat-assume-full explanation="Le temps d’occupation n’indique pas la capacité du système de fichiers."}
 ::option[Supprimer des fichiers avant d’identifier la charge montée.]{#iostat-delete-first explanation="La suppression modifie l’état et ne prouve pas un goulot d’étranglement des entrées-sorties."}

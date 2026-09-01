@@ -16,8 +16,7 @@ meta_keywords: "модель TCP/IP, уровни tcp ip, сети tcp ip, ур�
 
 Прикладные протоколы определяют сообщения и поведение HTTP, DNS, SSH, SMTP и других служб. Сюда также относятся многие обязанности представления и сеанса, которые OSI обсуждает отдельно.
 
-:::single-choice{#tcpip-http-layer}
-К какому уровню TCP/IP обычно относится HTTP?
+:::single-choice{#tcpip-http-layer} К какому уровню TCP/IP обычно относится HTTP?
 
 ::option[Интернет-уровень.]{#tcpip-http-internet explanation="Интернет-уровень обрабатывает IP-адресацию и пересылку пакетов."}
 ::option[Канальный.]{#tcpip-http-link explanation="Канальный уровень переносит трафик по локальной среде."}
@@ -28,8 +27,7 @@ meta_keywords: "модель TCP/IP, уровни tcp ip, сети tcp ip, ур�
 
 Транспортные протоколы связывают конечные точки приложений. TCP предоставляет надёжный упорядоченный поток байтов с управлением congestion и flow. UDP предоставляет независимые datagrams без соединения, порядка и гарантий повторной передачи TCP. Номера портов помогают определить транспортные endpoints, но один номер не доказывает, какое приложение слушает.
 
-:::single-choice{#tcpip-udp-property}
-Какое свойство принадлежит UDP, а не TCP?
+:::single-choice{#tcpip-udp-property} Какое свойство принадлежит UDP, а не TCP?
 
 ::option[Независимые datagrams без встроенной гарантии повторной передачи.]{#tcpip-udp-datagrams .correct explanation="Приложения UDP сами решают, добавлять ли надёжность и каким способом."}
 ::option[Гарантированная доставка одного потока байтов по порядку.]{#tcpip-udp-ordered explanation="Это свойство TCP при успешном соединении."}
@@ -40,8 +38,7 @@ meta_keywords: "модель TCP/IP, уровни tcp ip, сети tcp ip, ур�
 
 Internet Protocol переносит пакеты с исходным и конечным IP-адресами. Маршрутизаторы изучают routing и уменьшают hop limit, пересылая пакеты к цели. ICMP передаёт управляющие сообщения и ошибки работы IP. Доставка остаётся best effort; нужное восстановление выполняют верхние уровни или приложения.
 
-:::single-choice{#tcpip-router-layer}
-Какой уровень предоставляет IP-назначение для маршрутизаторов?
+:::single-choice{#tcpip-router-layer} Какой уровень предоставляет IP-назначение для маршрутизаторов?
 
 ::option[Интернет-уровень.]{#tcpip-router-internet .correct explanation="IP-заголовок содержит network-layer назначение для routed forwarding."}
 ::option[Прикладной.]{#tcpip-router-application explanation="Сообщения приложения переносятся внутри данных нижних протоколов."}
@@ -54,8 +51,7 @@ Internet Protocol переносит пакеты с исходным и кон�
 
 Link-заголовки обычно меняются на каждом routed hop; транспортные и прикладные разговоры являются сквозными, если middlebox не завершает или не преобразует их.
 
-:::single-choice{#tcpip-link-scope}
-Какова обычная область frame канального уровня?
+:::single-choice{#tcpip-link-scope} Какова обычная область frame канального уровня?
 
 ::option[Одно локальное соединение или hop.]{#tcpip-one-link .correct explanation="Маршрутизатор удаляет входящий framing и создаёт новый для следующего link."}
 ::option[Каждый прикладной сеанс глобального Интернета.]{#tcpip-global-frame explanation="Frames не сохраняются неизменными между routed networks."}

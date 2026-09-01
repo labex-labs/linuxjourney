@@ -23,8 +23,7 @@ cat (1)              - concatenate files and print on the standard output
 
 결과는 설명이며 명령어 옵션이나 예제 목록이 아닙니다. 자세한 정보가 필요하면 `man cat` 또는 `cat --help`를 사용합니다.
 
-:::single-choice{#describe-known-command}
-`cat`이라는 이름을 알고 있고 한 줄짜리 매뉴얼 페이지 설명이 필요합니다. 어떤 명령어를 실행해야 하나요?
+:::single-choice{#describe-known-command} `cat`이라는 이름을 알고 있고 한 줄짜리 매뉴얼 페이지 설명이 필요합니다. 어떤 명령어를 실행해야 하나요?
 
 ::option[`man cat`]{#manual-cat explanation="`man cat`은 전체 매뉴얼 페이지를 열므로 요청한 한 줄 알림보다 많은 정보를 제공합니다."}
 ::option[`apropos cat`]{#apropos-cat explanation="`apropos`는 설명에서 키워드를 검색해 여러 관련 주제를 반환할 수 있으므로 정확한 이름 조회보다 범위가 넓습니다."}
@@ -43,8 +42,7 @@ passwd (5)           - the password file
 
 괄호 안의 숫자는 매뉴얼 페이지 섹션 번호입니다. 여기서 `passwd(1)`은 사용자 명령어를, `passwd(5)`는 파일 형식을 설명합니다. `man 1 passwd` 또는 `man 5 passwd`로 원하는 페이지를 명시적으로 열 수 있습니다.
 
-:::single-choice{#interpret-whatis-section}
-`passwd (5) - the password file` 출력에서 `(5)`는 무엇을 나타내나요?
+:::single-choice{#interpret-whatis-section} `passwd (5) - the password file` 출력에서 `(5)`는 무엇을 나타내나요?
 
 ::option[`passwd` 명령어가 받는 다섯 번째 옵션입니다.]{#fifth-option explanation="숫자는 옵션 위치가 아니며 옵션은 선택한 매뉴얼 페이지 안에서 설명합니다."}
 ::option[파일 형식 페이지가 들어 있는 매뉴얼 섹션입니다.]{#section-five .correct explanation="섹션 5는 파일 형식과 규칙에 사용되므로 `passwd(5)`는 해당 매뉴얼 섹션을 뜻합니다."}
@@ -65,8 +63,7 @@ $ apropos password
 
 작업은 알지만 명령어 이름을 모르면 `apropos`를, 이름을 이미 알고 있으면 `whatis`를 사용합니다.
 
-:::single-choice{#search-by-purpose}
-명령어 이름은 모르지만 매뉴얼 설명에서 `password`라는 키워드를 찾고 싶습니다. 어떤 명령어가 알맞나요?
+:::single-choice{#search-by-purpose} 명령어 이름은 모르지만 매뉴얼 설명에서 `password`라는 키워드를 찾고 싶습니다. 어떤 명령어가 알맞나요?
 
 ::option[`apropos password`]{#apropos-password .correct explanation="`apropos`는 매뉴얼 페이지 이름과 설명에서 키워드를 검색해 관련 주제를 찾도록 돕습니다."}
 ::option[`whatis password`]{#exact-password explanation="`whatis`는 정확히 `password`라는 매뉴얼 주제를 찾으며 일반 키워드 검색 인터페이스가 아닙니다."}
@@ -77,8 +74,7 @@ $ apropos password
 
 `whatis`가 적절한 항목이 없다고 하면 주제의 매뉴얼 페이지가 설치되지 않았거나 데이터베이스가 오래되었을 수 있습니다. 그렇다고 같은 이름의 실행 파일, 별칭, 함수 또는 내장 명령어가 없다는 뜻은 아닙니다. `type NAME`으로 Bash가 이름을 해석하는 방식을 확인한 뒤 알맞은 도움말을 선택하세요.
 
-:::single-choice{#whatis-versus-type}
-`whatis deploy`가 매뉴얼 설명을 찾지 못했습니다. Bash가 `deploy`를 별칭, 함수, 내장 명령어 또는 실행 파일로 해석하는지 확인하는 명령어는 무엇인가요?
+:::single-choice{#whatis-versus-type} `whatis deploy`가 매뉴얼 설명을 찾지 못했습니다. Bash가 `deploy`를 별칭, 함수, 내장 명령어 또는 실행 파일로 해석하는지 확인하는 명령어는 무엇인가요?
 
 ::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="매뉴얼 데이터베이스 쿼리를 바꿔도 Bash의 모든 별칭, 함수, 내장 명령어와 경로 해석은 보여 주지 않습니다."}
 ::option[`man 5 deploy`]{#manual-five-deploy explanation="섹션 5 페이지를 열려고 할 뿐 Bash가 명령어 이름을 어떻게 해석하는지 확인하지 않습니다."}

@@ -22,8 +22,7 @@ Le déplacement de fichiers sur le réseau va de la copie ponctuelle aux partage
 
 Une copie n’est pas automatiquement une sauvegarde. Une stratégie de sauvegarde doit également prévoir une conservation indépendante, des tests de restauration, des contrôles d’intégrité et une protection contre la même suppression ou compromission.
 
-:::single-choice{#file-sharing-one-time-ssh-copy}
-Quel outil convient à une copie ponctuelle de fichiers par SSH ?
+:::single-choice{#file-sharing-one-time-ssh-copy} Quel outil convient à une copie ponctuelle de fichiers par SSH ?
 
 ::option[`scp`]{#file-sharing-scp .correct explanation="SCP emploie l’authentification et le transport SSH pour copier des fichiers."}
 ::option[`uptime`]{#file-sharing-uptime explanation="Uptime indique la durée de fonctionnement et la charge de l’hôte au lieu de transférer des fichiers."}
@@ -41,8 +40,7 @@ $ scp -- alice@example.net:/srv/outgoing/result.txt ./result.txt
 
 La première commande envoie un fichier local ; la seconde récupère un fichier distant. Les deux-points séparent l’hôte distant de son chemin. Placez entre guillemets les chemins qui contiennent des caractères interprétés par le shell et évitez les noms de fichiers non fiables ou ambigus.
 
-:::single-choice{#file-sharing-scp-pull-source}
-Lors d’une récupération avec `scp`, où apparaît la spécification distante ?
+:::single-choice{#file-sharing-scp-pull-source} Lors d’une récupération avec `scp`, où apparaît la spécification distante ?
 
 ::option[Comme source, avant la destination locale.]{#file-sharing-pull-source .correct explanation="Le sens de la copie suit l’ordre des opérandes source et destination."}
 ::option[Comme destination locale après chaque option.]{#file-sharing-pull-destination explanation="L’objet distant récupéré constitue l’opérande source."}
@@ -59,8 +57,7 @@ $ scp -r -- project/ alice@example.net:/srv/incoming/
 
 Avant la copie, examinez la taille des données, les liens symboliques, les permissions, les exigences de propriété, l’espace libre et le nom de la destination. SCP ne définit pas de politique de synchronisation : des copies répétées de répertoires peuvent laisser à la destination des fichiers qui n’existent plus à la source.
 
-:::single-choice{#file-sharing-scp-recursive}
-Que demande `scp -r` ?
+:::single-choice{#file-sharing-scp-recursive} Que demande `scp -r` ?
 
 ::option[La suppression de la destination distante avant la copie.]{#file-sharing-scp-remove explanation="Le mode récursif parcourt les répertoires et ne définit aucune politique de nettoyage."}
 ::option[La copie récursive d’une arborescence de répertoires.]{#file-sharing-scp-tree .correct explanation="Cette option est nécessaire lorsque la source sélectionnée est un répertoire."}
@@ -73,8 +70,7 @@ La vérification de la clé d’hôte SSH empêche de se connecter au mauvais se
 
 Après le transfert, vérifiez l’état de sortie, les fichiers attendus, leurs tailles, leurs métadonnées et, lorsque les exigences d’intégrité le demandent, les condensats calculés indépendamment aux deux extrémités. Confirmez que l’application de destination peut réellement lire les données.
 
-:::single-choice{#file-sharing-host-key-change}
-Que faire lorsque SSH signale une modification inattendue de la clé d’hôte ?
+:::single-choice{#file-sharing-host-key-change} Que faire lorsque SSH signale une modification inattendue de la clé d’hôte ?
 
 ::option[Désactiver la vérification des clés d’hôtes pour tous les transferts futurs.]{#file-sharing-disable-checking explanation="Cela supprime un contrôle important de l’identité du serveur."}
 ::option[Vérifier la nouvelle clé auprès d’une source de confiance avant de continuer.]{#file-sharing-verify-key .correct explanation="L’avertissement peut révéler un hôte reconstruit, une mauvaise destination ou une interception et doit être examiné."}

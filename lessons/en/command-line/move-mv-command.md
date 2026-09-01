@@ -34,8 +34,7 @@ The same operand order renames a directory:
 $ mv old_directory_name new_directory_name
 ```
 
-:::single-choice{#rename-file-with-mv}
-Which command renames `cat` to `dog` in the current directory?
+:::single-choice{#rename-file-with-mv} Which command renames `cat` to `dog` in the current directory?
 
 ::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` treats `cat` as the source pathname and `dog` as its new destination pathname."}
 ::option[`mv dog cat`]{#rename-dog explanation="The operand order is reversed. This would try to rename an existing `dog` to `cat`."}
@@ -64,8 +63,7 @@ $ mv -t somedirectory/ file_1 file_2
 
 Unlike `cp`, `mv` does not need a recursive option for a directory.
 
-:::single-choice{#move-multiple-files}
-Which command moves both `file_1` and `file_2` into the existing `archive/` directory?
+:::single-choice{#move-multiple-files} Which command moves both `file_1` and `file_2` into the existing `archive/` directory?
 
 ::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="Without GNU `-t`, a multi-source move expects the target directory last. This operand order is not the standard multi-source form."}
 ::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` does not use `-r` to move files or directories. The normal multi-source form already handles the requested move."}
@@ -100,8 +98,7 @@ By default, `mv` can replace an existing destination. Inspect source and destina
 $ mv -v file1 file2 somedirectory/
 ```
 
-:::single-choice{#move-without-overwriting}
-Which command moves `draft.txt` into `finished/` only when it will not overwrite an existing destination?
+:::single-choice{#move-without-overwriting} Which command moves `draft.txt` into `finished/` only when it will not overwrite an existing destination?
 
 ::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="The `-i` option asks what to do when a destination exists. An overwrite can still occur if the user confirms it."}
 ::option[`mv -b draft.txt finished/`]{#backup-draft explanation="The `-b` option permits replacement while keeping a backup of the previous destination. It does not prevent overwriting."}
@@ -125,16 +122,14 @@ $ mv *.txt notes/
 
 Previewing the matches with `ls` helps you catch an overly broad pattern before changing several pathnames.
 
-:::single-choice{#move-directory-without-recursion}
-Which command moves the `project/` directory into `/srv/archive/`?
+:::single-choice{#move-directory-without-recursion} Which command moves the `project/` directory into `/srv/archive/`?
 
 ::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` does not need or support `-r` for this purpose. Directories are handled by the ordinary move operation."}
 ::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="The ordinary `mv` syntax moves a directory to an existing target directory without a recursive flag."}
 ::option[`cp project/ /srv/archive/`]{#copy-project explanation="A plain `cp` does not move the directory and would require a recursive option to copy it. The original would also remain."}
 :::
 
-:::single-choice{#preview-text-file-move}
-You plan to run `mv *.txt notes/`. Which command previews the pathnames selected by the same wildcard?
+:::single-choice{#preview-text-file-move} You plan to run `mv *.txt notes/`. Which command previews the pathnames selected by the same wildcard?
 
 ::option[`ls '*.txt'`]{#literal-text-pattern explanation="Quotes keep the shell from expanding `*`, so this looks for a literal name containing an asterisk rather than previewing the move set."}
 ::option[`ls *.txt`]{#list-text-matches .correct explanation="The shell expands `*.txt` for `ls` just as it would for `mv`, allowing you to inspect the selected non-hidden names first."}

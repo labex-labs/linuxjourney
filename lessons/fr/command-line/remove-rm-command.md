@@ -32,8 +32,7 @@ $ rm notes.txt old-report.txt draft.md
 
 Vérifiez l'orthographe et l'emplacement avant d'appuyer sur Entrée. Une sauvegarde ou une copie sous contrôle de version offre une récupération plus fiable que les outils de restauration du système de fichiers après la suppression.
 
-:::single-choice{#remove-one-file}
-Après avoir confirmé la cible, quelle commande supprime le fichier `old-report.txt` ?
+:::single-choice{#remove-one-file} Après avoir confirmé la cible, quelle commande supprime le fichier `old-report.txt` ?
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` supprime l'entrée de fichier indiquée. L'opération ne place normalement pas le fichier dans une corbeille."}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` agit sur les répertoires vides, pas sur les fichiers ordinaires ; elle ne convient pas à cette cible."}
@@ -58,8 +57,7 @@ $ rm *.tmp
 
 Le shell développe le motif avant le lancement de `rm`. Si la prévisualisation contient un fichier inattendu, corrigez le motif au lieu de poursuivre.
 
-:::single-choice{#preview-removal-pattern}
-Vous prévoyez de supprimer `*.tmp`. Quelle commande affiche d'abord, sans les supprimer, les chemins non cachés sélectionnés ?
+:::single-choice{#preview-removal-pattern} Vous prévoyez de supprimer `*.tmp`. Quelle commande affiche d'abord, sans les supprimer, les chemins non cachés sélectionnés ?
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="Le mode détaillé rapporte les suppressions à mesure qu'elles se produisent ; il supprime toujours les fichiers et n'est pas une prévisualisation en lecture seule."}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="Les guillemets empêchent le développement du joker ; cette commande cherche donc un nom littéral contenant `*`."}
@@ -77,8 +75,7 @@ rm: remove regular file 'important.txt'? y
 
 Avec GNU `rm`, `-I` est une protection moins intrusive : elle demande une confirmation unique si la commande doit supprimer plus de trois fichiers ou agir récursivement.
 
-:::single-choice{#confirm-each-removal}
-Quelle commande demande une confirmation avant de supprimer chaque fichier nommé ?
+:::single-choice{#confirm-each-removal} Quelle commande demande une confirmation avant de supprimer chaque fichier nommé ?
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="L'option `-i` demande confirmation avant chaque suppression, ce qui permet de refuser l'opération."}
 ::option[`rm -f important.txt`]{#force-important explanation="L'option `-f` supprime les demandes et ignore une cible absente ; elle retire la confirmation au lieu de l'ajouter."}
@@ -118,8 +115,7 @@ $ rmdir empty-directory
 
 `rmdir` échoue si le répertoire n'est pas vide, ce qui protège son contenu d'une suppression récursive.
 
-:::single-choice{#remove-empty-directory-only}
-Quelle commande supprime `old-cache/` uniquement si ce répertoire est vide ?
+:::single-choice{#remove-empty-directory-only} Quelle commande supprime `old-cache/` uniquement si ce répertoire est vide ?
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="`rm` récursif supprime le répertoire et son contenu ; il n'impose pas que le répertoire soit vide."}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` ne réussit que pour un répertoire vide et ne supprime donc pas récursivement les fichiers qu'il contient."}
@@ -152,8 +148,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-Après avoir vérifié toute la cible, quelle commande supprime `old-project/` et tout son contenu tout en conservant les demandes normales ?
+:::single-choice{#remove-nonempty-tree} Après avoir vérifié toute la cible, quelle commande supprime `old-project/` et tout son contenu tout en conservant les demandes normales ?
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="`rm` sans option ne descend pas dans un répertoire et ne peut pas supprimer une arborescence non vide."}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="L'option `-r` supprime récursivement l'arborescence. Contrairement à `-rf`, cette forme n'ajoute pas `-f` pour supprimer les demandes."}

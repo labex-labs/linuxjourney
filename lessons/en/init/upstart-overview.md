@@ -24,8 +24,7 @@ $ initctl version
 
 The last command succeeds meaningfully only where the Upstart control service and client are present. A directory such as `/usr/share/upstart` or leftover files under `/etc/init` is weak evidence because packages and migration remnants can remain after another init system takes over.
 
-:::single-choice{#upstart-overview-active-evidence}
-What is the strongest evidence that a host actually uses Upstart?
+:::single-choice{#upstart-overview-active-evidence} What is the strongest evidence that a host actually uses Upstart?
 
 ::option[A directory name contains the word `upstart`.]{#upstart-overview-directory-only explanation="Installed documentation or remnants can remain on a system using another init."}
 ::option[The system has at least one shell script.]{#upstart-overview-shell-script explanation="Shell scripts are common to all init environments."}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 This uses runlevel events as compatibility inputs. Upstart can also react to filesystem, device, network, or application-defined events depending on what the system emits.
 
-:::single-choice{#upstart-overview-start-on}
-What does an Upstart `start on` stanza define?
+:::single-choice{#upstart-overview-start-on} What does an Upstart `start on` stanza define?
 
 ::option[The kernel version that must be compiled next.]{#upstart-overview-kernel-version explanation="Job event conditions do not select a kernel build."}
 ::option[The event expression that changes the job's goal toward starting.]{#upstart-overview-start-condition .correct explanation="When the expression is satisfied, Upstart attempts the configured job start transition."}
@@ -61,8 +59,7 @@ During startup, Upstart loads job definitions and receives events. Matching `sta
 
 This model avoids one hard-coded global script sequence, but it can be difficult to diagnose when event names, ordering, and conditions are implicit. Events are not a durable message queue by default, so a job added or condition changed later should not assume every past event will be replayed.
 
-:::single-choice{#upstart-overview-event-chain}
-How can one Upstart job lead to another job starting?
+:::single-choice{#upstart-overview-event-chain} How can one Upstart job lead to another job starting?
 
 ::option[It rewrites the other job's executable binary in memory.]{#upstart-overview-rewrite-binary explanation="Coordination occurs through events, not code modification."}
 ::option[Every job always starts strictly in filename order.]{#upstart-overview-filename-order explanation="Upstart uses event expressions rather than one filename-sequenced startup list."}
@@ -73,8 +70,7 @@ How can one Upstart job lead to another job starting?
 
 Systemd can provide limited compatibility for some legacy service scripts, but it does not execute Upstart job syntax as native systemd units. When migrating, translate lifecycle conditions, environment, respawn policy, logging, dependencies, and readiness semantics rather than mechanically renaming files.
 
-:::single-choice{#upstart-overview-current-ubuntu}
-Which init system is used by current standard Ubuntu releases?
+:::single-choice{#upstart-overview-current-ubuntu} Which init system is used by current standard Ubuntu releases?
 
 ::option[Upstart exclusively on every installation.]{#upstart-overview-current-upstart explanation="That was true only for historical release periods and configurations."}
 ::option[systemd.]{#upstart-overview-current-systemd .correct explanation="Upstart belongs to older Ubuntu generations; current releases use systemd as PID 1."}

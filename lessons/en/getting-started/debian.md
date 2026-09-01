@@ -16,8 +16,7 @@ meta_keywords: "debian distro, debian linux distribution, what is debian, debian
 
 The Debian Project has existed since the early days of Linux and has built a reputation for careful engineering, openness, and long-term reliability. In practice, the **Debian Linux distribution** is known for providing a solid base system, a huge software collection, and clear project principles.
 
-:::single-choice{#identify-debian-project-model}
-How is Debian primarily developed?
+:::single-choice{#identify-debian-project-model} How is Debian primarily developed?
 
 ::option[By one commercial software company]{#single-company explanation="Debian is not developed by a single company. Volunteers and contributors around the world maintain the project."}
 ::option[By one computer hardware manufacturer]{#hardware-manufacturer explanation="Debian supports many kinds of hardware, but no hardware manufacturer owns its development. The project is community maintained."}
@@ -42,8 +41,7 @@ During most of Debian's development cycle, packages flow continuously through Un
 
 These branches help explain why Debian can serve very different users. Someone who wants a predictable system will usually prefer Stable, while developers and advanced users may explore Testing or Unstable for newer software.
 
-:::single-choice{#choose-debian-stable}
-Which Debian branch best fits a user who prioritizes reliability and predictable updates?
+:::single-choice{#choose-debian-stable} Which Debian branch best fits a user who prioritizes reliability and predictable updates?
 
 ::option[Testing]{#testing-branch explanation="Testing usually has newer packages that are being prepared for a future release. It can still change significantly during development."}
 ::option[Unstable]{#unstable-branch explanation="Unstable receives new package uploads first and changes frequently. That does not match a priority of predictable updates."}
@@ -56,8 +54,7 @@ Debian follows a release-based model. The project periodically publishes a new S
 
 For beginners, the main idea is simple: Debian does not chase rapid change. New packages normally enter Unstable, qualifying packages move into Testing, and a prepared Testing branch later becomes the next Stable release. This model helps Debian stay reliable while still moving forward over time.
 
-:::single-choice{#trace-debian-package-flow}
-Which sequence best represents the simplified path of Debian packages toward a release?
+:::single-choice{#trace-debian-package-flow} Which sequence best represents the simplified path of Debian packages toward a release?
 
 ::option[Unstable → Testing → Stable]{#unstable-testing-stable .correct explanation="New uploads enter Unstable, qualifying packages move into Testing, and a prepared Testing branch eventually becomes the next Stable release."}
 ::option[Stable → Testing → Unstable]{#stable-testing-unstable explanation="Stable is the finished production release, not the starting place for new uploads. Development begins in Unstable."}
@@ -70,8 +67,7 @@ Package management is one of Debian's biggest strengths. Debian uses the `.deb` 
 
 Because Debian has a very large package collection, users can install everything from desktop applications to development tools through the same package system. For example, developers often install common build tools with packages such as `build-essential`. This mature package system is one reason Debian is so widely used and trusted.
 
-:::single-choice{#recognize-apt-purpose}
-What is the main purpose of Debian's APT toolset?
+:::single-choice{#recognize-apt-purpose} What is the main purpose of Debian's APT toolset?
 
 ::option[Install, update, remove, and manage software packages]{#manage-packages .correct explanation="APT manages software packages from Debian repositories. It provides a consistent way to install, update, and remove software."}
 ::option[Compile a new Linux kernel for every update]{#compile-kernel explanation="APT can install packaged kernels, but its purpose is broader package management. It does not require compiling a kernel for every update."}
@@ -95,8 +91,7 @@ Debian is also important because many other Linux distributions are built from i
 
 This means Debian is not only a Linux distribution in its own right, but also a foundation for a large part of the Linux world. When you learn Debian concepts such as APT, `.deb` packages, or release branches, that knowledge often transfers to Debian-based systems as well. If you want a more beginner-focused Debian-based option, see [Ubuntu](https://labex.io/lesson/ubuntu).
 
-:::single-choice{#transfer-debian-knowledge}
-Why can Debian package-management knowledge transfer to some other distributions?
+:::single-choice{#transfer-debian-knowledge} Why can Debian package-management knowledge transfer to some other distributions?
 
 ::option[Every Linux distribution uses identical packages and repositories]{#identical-linux-packages explanation="Linux distributions can use different package formats, tools, and repositories. Debian knowledge transfers most directly within the Debian family."}
 ::option[Debian-based systems often share `.deb` and APT traditions]{#shared-package-traditions .correct explanation="Distributions built from Debian commonly retain its package format and related tools. The exact repositories may differ, but the core concepts transfer."}

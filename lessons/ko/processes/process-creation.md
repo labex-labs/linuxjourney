@@ -18,8 +18,7 @@ Linux 프로세스는 부모-자식 관계를 형성합니다. 쉘은 일반적�
 
 자식은 논리적으로 분리된 프로세스 상태를 받습니다. Linux는 처음에 copy-on-write로 물리 메모리 페이지를 공유하고 한 프로세스가 페이지를 수정할 때만 복사할 수 있습니다. 열린 파일 디스크립터는 상속되고 같은 기반 열린 파일 설명을 가리키므로 파일 오프셋 같은 세부 사항이 공유될 수 있습니다.
 
-:::single-choice{#process-creation-fork-result}
-성공한 `fork()`는 무엇을 만드나요?
+:::single-choice{#process-creation-fork-result} 성공한 `fork()`는 무엇을 만드나요?
 
 ::option[같은 프로세스 안의 대체 프로그램만 만듭니다.]{#process-creation-fork-replacement explanation="현재 프로그램 이미지를 교체하는 것은 `exec` 작업의 역할입니다."}
 ::option[새 PID를 가진 자식 프로세스를 만듭니다.]{#process-creation-fork-child .correct explanation="`fork()`는 별도의 자식 프로세스와 부모-자식 관계를 설정합니다."}
@@ -39,8 +38,7 @@ Linux 프로세스는 부모-자식 관계를 형성합니다. 쉘은 일반적�
 
 라이브러리와 애플리케이션은 `posix_spawn()` 같은 상위 수준 인터페이스를 제공할 수 있고 Linux에는 `clone()` 같은 추가 기본 요소도 있습니다. 익숙한 fork-exec 모델은 유일한 인터페이스는 아니지만 여전히 유용합니다.
 
-:::single-choice{#process-creation-exec-pid}
-`execve()`가 성공하면 프로세스 PID에는 어떤 일이 생기나요?
+:::single-choice{#process-creation-exec-pid} `execve()`가 성공하면 프로세스 PID에는 어떤 일이 생기나요?
 
 ::option[부모 PID와 같아집니다.]{#process-creation-exec-parent-pid explanation="부모와 자식은 별도의 프로세스 ID를 유지합니다."}
 ::option[프로그램 이미지가 교체되는 동안 그대로 유지됩니다.]{#process-creation-exec-same-pid .correct explanation="`execve()`는 다른 프로세스를 만들지 않고 호출 프로세스를 변환합니다."}
@@ -57,8 +55,7 @@ $ ps -o pid,ppid,stat,cmd
 
 쉘이 `ps`를 시작하면 일반적으로 쉘의 PID가 해당 `ps` 프로세스의 `PPID`로 나타납니다. 시점이 중요합니다. 수명이 짧은 프로세스는 별도 관찰에서 잡기 전에 종료될 수 있습니다.
 
-:::single-choice{#process-creation-ppid}
-프로세스 목록에서 `PPID`는 무엇을 나타내나요?
+:::single-choice{#process-creation-ppid} 프로세스 목록에서 `PPID`는 무엇을 나타내나요?
 
 ::option[이전에 프로세스에 할당되었던 PID]{#process-creation-previous-pid explanation="PID는 재사용될 수 있지만 `PPID`는 식별자 기록을 저장하지 않습니다."}
 ::option[프로세스의 스케줄링 우선순위 식별자]{#process-creation-priority-id explanation="스케줄링 우선순위는 priority나 nice 값 같은 다른 필드로 표현됩니다."}
@@ -71,8 +68,7 @@ $ ps -o pid,ppid,stat,cmd
 
 부모가 자식보다 먼저 종료되면 자식은 적절한 subreaper 또는 해당 PID 네임스페이스의 init 프로세스로 부모가 재지정됩니다. 원래 부모가 끝났다는 이유만으로 종료될 필요는 없습니다.
 
-:::single-choice{#process-creation-pid-one}
-PID 1에 대한 정확한 설명은 무엇인가요?
+:::single-choice{#process-creation-pid-one} PID 1에 대한 정확한 설명은 무엇인가요?
 
 ::option[실행 파일 이름이 반드시 정확히 `init`인 프로그램이어야 합니다.]{#process-creation-pid-one-name explanation="구현은 `systemd`, 다른 init 또는 컨테이너 전용 프로그램일 수 있습니다."}
 ::option[현재 실행 중인 모든 프로세스를 직접 만든 부모입니다.]{#process-creation-pid-one-direct explanation="대부분의 프로세스는 여러 세대의 중간 부모를 통해 만들어집니다."}

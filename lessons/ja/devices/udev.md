@@ -24,8 +24,7 @@ Linux カーネルは uevent を通じて、デバイスの変化をユーザー
 
 実際のデバイスとドライバーを担当するのは、引き続きカーネルです。`/dev` からノードを削除してもハードウェアが物理的に取り外されるわけではなく、`mknod` でノードを手動作成しても、未対応のハードウェアが出現したりドライバーがバインドされたりはしません。
 
-:::single-choice{#udev-kernel-event-input}
-デバイスの変化に対する udev の処理は、通常何によって開始されますか？
+:::single-choice{#udev-kernel-event-input} デバイスの変化に対する udev の処理は、通常何によって開始されますか？
 
 ::option[APT によるパッケージリポジトリの更新。]{#udev-apt-refresh explanation="パッケージメタデータの更新は、稼働中のデバイスイベント処理とは無関係です。"}
 ::option[ユーザーが `/dev` 以下の全ファイルを手動で改名すること。]{#udev-manual-renaming explanation="動的ポリシーは、手動の一括改名ではなくカーネルイベントとルールによって駆動されます。"}
@@ -44,8 +43,7 @@ Linux カーネルは uevent を通じて、デバイスの変化をユーザー
 
 一つのルールが一致するすべてのデバイスへ影響し得るため、範囲を慎重にテストします。ローカルな上書きまたは補足ルールで対応できる場合は、パッケージのルールを直接編集してはいけません。
 
-:::single-choice{#udev-local-rules-directory}
-ローカル管理者の永続的な udev ルールを置くためのディレクトリはどれですか？
+:::single-choice{#udev-local-rules-directory} ローカル管理者の永続的な udev ルールを置くためのディレクトリはどれですか？
 
 ::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="Procfs は永続的なローカルルール用ディレクトリを提供しません。"}
 ::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="ローカルポリシーは、パッケージ管理されるベンダールールと分けて `/etc` 以下へ置きます。"}
@@ -62,8 +60,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 現在のシステムに存在するノードを使ってください。`udevadm info --attribute-walk --name=...` は sysfs の親階層に沿って属性を表示でき、ルールの作成に役立ちます。`udevadm monitor --kernel --udev --property` はカーネルイベントと処理済みイベントを監視します。デバイス識別子が現れる場合があるため、記録した出力は適切に扱ってください。
 
-:::single-choice{#udev-info-purpose}
-`udevadm info --query=all --name=/dev/sda` は何を要求しますか？
+:::single-choice{#udev-info-purpose} `udevadm info --query=all --name=/dev/sda` は何を要求しますか？
 
 ::option[ディスクのパーティションテーブルを破壊的に書き換えること。]{#udev-info-partition-write explanation="これは調査用の問い合わせであり、ストレージのフォーマットや再パーティションは行いません。"}
 ::option[不足しているカーネルドライバーをインターネットからインストールすること。]{#udev-info-install-driver explanation="Udevadm の調査機能はパッケージダウンローダーではありません。"}
@@ -76,8 +73,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 権限や名前を変更する前に、ローカルルールをバックアップし、構文を検証し、既知のテストデバイス一つを観察し、復旧手段を確保します。udev のイベント処理内で長時間かかる作業を直接行わず、適切なサービスへ委ねてください。
 
-:::single-choice{#udev-reload-effect}
-udev ルールの再読み込みによって主に変わるものは何ですか？
+:::single-choice{#udev-reload-effect} udev ルールの再読み込みによって主に変わるものは何ですか？
 
 ::option[それ以降に一致するデバイスイベントの処理方法。]{#udev-future-events .correct explanation="再読み込みはメモリ上のルールを更新します。デバイスを再評価するには、その後にイベントが起きるか、意図的に発生させる必要があります。"}
 ::option[接続されたすべてのデバイスの物理配線。]{#udev-physical-wiring explanation="ソフトウェアのルールを読み込んでも、ハードウェア接続は変更できません。"}

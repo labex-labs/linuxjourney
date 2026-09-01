@@ -44,8 +44,7 @@ bb
 
 Espaços, tabulações e sinais de pontuação também ocupam posições. `cut` processa cada linha independentemente.
 
-:::single-choice{#cut-first-character}
-Qual comando mostra o primeiro caractere de cada linha de `names.txt`?
+:::single-choice{#cut-first-character} Qual comando mostra o primeiro caractere de cada linha de `names.txt`?
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="A opção `-c` seleciona posições de caracteres, e a posição 1 é o primeiro caractere de cada linha."}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="A opção `-f` seleciona o primeiro campo delimitado por tabulação, que pode conter mais de um caractere."}
@@ -65,8 +64,7 @@ viewer
 
 Assim como na seleção de caracteres, uma lista pode incluir valores como `1`, `1,3`, `2-4`, `-3` ou `2-`.
 
-:::single-choice{#cut-second-tab-field}
-Qual comando mostra o segundo campo delimitado por tabulação de cada linha de `team.tsv`?
+:::single-choice{#cut-second-tab-field} Qual comando mostra o segundo campo delimitado por tabulação de cada linha de `team.tsv`?
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="Esse comando seleciona a segunda posição de caractere de cada linha, não o segundo campo separado por tabulação."}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="Sem `-d`, o modo de campos usa a tabulação como delimitador, e `-f 2` seleciona o segundo campo."}
@@ -86,8 +84,7 @@ bob
 
 O delimitador dessa forma é um único caractere. Coloque `;` entre aspas, pois um ponto e vírgula sem aspas possui significado de controle no shell.
 
-:::single-choice{#cut-semicolon-role-field}
-Qual comando mostra o segundo campo delimitado por ponto e vírgula de `team.txt`?
+:::single-choice{#cut-semicolon-role-field} Qual comando mostra o segundo campo delimitado por ponto e vírgula de `team.txt`?
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="Esse comando seleciona campos separados por dois-pontos, mas o arquivo usa ponto e vírgula."}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="O ponto e vírgula entre aspas define o delimitador, e `-f 2` seleciona o segundo campo de cada linha."}
@@ -106,8 +103,7 @@ viewer
 
 Isso não valida um arquivo CSV genérico. CSV pode conter delimitadores entre aspas, novas linhas incorporadas e regras de escape que uma divisão por um único caractere não compreende; use uma ferramenta compatível com CSV para esses dados.
 
-:::single-choice{#cut-suppress-undelimited}
-O que `-s` faz em `cut -d ':' -f 1`?
+:::single-choice{#cut-suppress-undelimited} O que `-s` faz em `cut -d ':' -f 1`?
 
 ::option[Classifica os campos selecionados antes de mostrá-los.]{#cut-s-sort explanation="`cut` não classifica a entrada, e `-s` não tem relação com a ordenação."}
 ::option[Trata delimitadores consecutivos como um único separador.]{#cut-s-squeeze explanation="`cut` não usa `-s` para agrupar delimitadores. Campos vazios continuam sendo posições significativas."}
@@ -124,8 +120,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-Em `generate-data | cut -d ':' -f 1`, de onde `cut` lê sua entrada?
+:::single-choice{#cut-pipeline-input} Em `generate-data | cut -d ':' -f 1`, de onde `cut` lê sua entrada?
 
 ::option[De stdout de `generate-data` por meio do pipe.]{#cut-pipe-stdin .correct explanation="O pipe conecta stdout do produtor a stdin de `cut`, e nenhum arquivo de entrada separado foi indicado."}
 ::option[De um arquivo cujo nome literal é `generate-data`.]{#cut-pipe-file explanation="`generate-data` é executado como o comando à esquerda do pipeline. Ele não é fornecido a `cut` como nome de arquivo."}

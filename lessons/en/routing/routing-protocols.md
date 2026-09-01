@@ -18,8 +18,7 @@ A routing protocol learns candidates in its own database. The router selects rou
 
 A protocol adjacency being established does not prove that the desired prefix was learned, selected, installed, or permitted by forwarding policy.
 
-:::single-choice{#routing-protocols-adjacency-limit}
-What does an established routing adjacency fail to prove?
+:::single-choice{#routing-protocols-adjacency-limit} What does an established routing adjacency fail to prove?
 
 ::option[That every desired route is installed and forwarding successfully.]{#routing-protocols-not-full-proof .correct explanation="Route advertisement, selection, installation, filtering, and data-plane operation are separate stages."}
 ::option[That two protocol speakers exchanged any control messages.]{#routing-protocols-no-messages explanation="Establishing adjacency normally requires protocol communication."}
@@ -32,8 +31,7 @@ Interior gateway protocols operate within an administrative routing domain. Exam
 
 Metrics have protocol-specific meaning. An OSPF cost, RIP hop count, and BGP attribute set cannot be compared as if they shared one universal numerical scale. Implementations use route preference or administrative distance to choose between sources before or alongside protocol-specific selection.
 
-:::single-choice{#routing-protocols-metric-comparison}
-Can a RIP hop count be directly compared with an OSPF cost?
+:::single-choice{#routing-protocols-metric-comparison} Can a RIP hop count be directly compared with an OSPF cost?
 
 ::option[Yes, because all routing metrics use the same units.]{#routing-protocols-universal-metric explanation="Each protocol defines its own metric and selection process."}
 ::option[Yes, but only when both values are zero.]{#routing-protocols-zero-metric explanation="Their semantics remain different regardless of a displayed number."}
@@ -44,8 +42,7 @@ Can a RIP hop count be directly compared with an OSPF cost?
 
 Distance-vector protocols advertise reachability and distance through neighbors, deriving paths from neighbor reports. Link-state protocols form adjacencies, flood link-state information through a scope, build a topology database, and calculate shortest-path trees. Modern protocols include refinements that make simple category summaries incomplete.
 
-:::single-choice{#routing-protocols-link-state-input}
-What does a link-state router use for its path calculation?
+:::single-choice{#routing-protocols-link-state-input} What does a link-state router use for its path calculation?
 
 ::option[Only the hostname of its default gateway.]{#routing-protocols-hostname-only explanation="A topology calculation requires link and prefix information."}
 ::option[A synchronized database describing links in the routing scope.]{#routing-protocols-link-database .correct explanation="The router runs a shortest-path algorithm over the learned topology."}
@@ -58,8 +55,7 @@ After a topology or policy change, routers detect it, propagate control informat
 
 During convergence, transient loss, loops, or black holes can occur. Measure detection, propagation, calculation, and installation separately and verify with data-plane probes.
 
-:::single-choice{#routing-protocols-convergence}
-What is routing convergence?
+:::single-choice{#routing-protocols-convergence} What is routing convergence?
 
 ::option[The process of reaching stable usable routing after a change.]{#routing-protocols-stable-routing .correct explanation="It includes control propagation and the resulting forwarding updates."}
 ::option[A requirement that every router store an identical global table.]{#routing-protocols-identical-table explanation="Policy, area, and role can create intentional differences."}

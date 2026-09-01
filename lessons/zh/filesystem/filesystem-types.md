@@ -18,8 +18,7 @@ Linux 支持许多文件系统实现，它们的磁盘格式、网络协议、�
 
 因此，一个进程可以通过统一的路径名和文件描述符模型访问 ext4、XFS、NFS、tmpfs 和 procfs。这并不会让所有文件系统的功能或行为完全一致；大小写敏感性、锁定、权限、重命名保证、扩展属性和错误处理都可能不同。
 
-:::single-choice{#filesystem-types-vfs-role}
-Linux VFS 的主要作用是什么？
+:::single-choice{#filesystem-types-vfs-role} Linux VFS 的主要作用是什么？
 
 ::option[把每个已挂载文件系统在磁盘上转换为 ext4。]{#filesystem-types-vfs-convert-ext4 explanation="这一抽象会保留不同的文件系统实现和格式。"}
 ::option[在应用程序写入每个文件前自动备份它。]{#filesystem-types-vfs-backup explanation="VFS 分派操作，不提供自动备份历史。"}
@@ -32,8 +31,7 @@ Linux VFS 的主要作用是什么？
 
 它并不保证最新的应用数据一定保留下来、多文件应用事务一定有效，或存储硬件确实完成了所有已确认写入。文件系统提供不同的数据模式和顺序保证，而应用程序必须采用适当的刷新和原子更新方式。日志不是备份，无法防止删除、恶意软件或设备故障。
 
-:::single-choice{#filesystem-types-journal-scope}
-文件系统日志主要帮助在崩溃后恢复什么？
+:::single-choice{#filesystem-types-journal-scope} 文件系统日志主要帮助在崩溃后恢复什么？
 
 ::option[一致的文件系统元数据和已记录事务。]{#filesystem-types-journal-consistency .correct explanation="日志重放有助于使文件系统结构恢复到协调一致的状态。"}
 ::option[每份用户文档的所有历史版本。]{#filesystem-types-journal-versions explanation="日志并不是带版本的备份存储。"}
@@ -48,8 +46,7 @@ Linux VFS 的主要作用是什么？
 
 各项功能必须结合运维环境理解。Btrfs 快照最初与源数据共享存储；如果仍位于同一块可能故障的设备上，它并不是独立备份。XFS 和 ext4 的扩容、缩容、修复和调优能力也不同。选择或更改根文件系统前，应确认已安装内核、启动环境和恢复工具对它的支持。
 
-:::single-choice{#filesystem-types-btrfs-snapshot}
-为什么同一设备上的 Btrfs 快照不是完整备份？
+:::single-choice{#filesystem-types-btrfs-snapshot} 为什么同一设备上的 Btrfs 快照不是完整备份？
 
 ::option[快照总会立即删除原始子卷。]{#filesystem-types-snapshot-deletes explanation="快照会创建另一个子卷视图，本身不会删除源子卷。"}
 ::option[它与原始数据处于同一个存储故障域。]{#filesystem-types-snapshot-failure-domain .correct explanation="设备丢失或严重的文件系统损坏可能同时影响源数据和本地快照。"}
@@ -62,8 +59,7 @@ Linux 可以挂载 FAT 变体、exFAT 和 NTFS 等互操作格式，但它们的
 
 NFS 和 SMB 等网络文件系统依赖服务器和网络协议，并拥有各自的缓存与身份规则。tmpfs、procfs 和 sysfs 等虚拟文件系统不使用普通的持久磁盘格式：tmpfs 在内存后端页面中保存易失数据，procfs 和 sysfs 则公开内核接口。
 
-:::single-choice{#filesystem-types-procfs-category}
-哪个描述最符合 procfs？
+:::single-choice{#filesystem-types-procfs-category} 哪个描述最符合 procfs？
 
 ::option[用于可移动介质的 Windows 交换格式。]{#filesystem-types-procfs-windows explanation="FAT 或 exFAT 更符合这种用途；procfs 面向 Linux 内核。"}
 ::option[公开进程和内核接口的虚拟文件系统。]{#filesystem-types-procfs-virtual .correct explanation="Procfs 生成实时内核视图，而不是在磁盘上保存普通持久文件。"}
@@ -80,8 +76,7 @@ $ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 其他视图包括：用 `df -T` 查看已挂载空间统计，用 `lsblk -f` 查看块设备和检测到的文件系统签名，以及用 `/proc/filesystems` 查看运行中内核支持或已知的类型。这些视图回答的是不同问题；未挂载的文件系统不会出现在普通的已挂载文件系统列表中。
 
-:::single-choice{#filesystem-types-findmnt-output}
-本课所示的哪个命令会直接列出挂载目标、来源、类型和选项？
+:::single-choice{#filesystem-types-findmnt-output} 本课所示的哪个命令会直接列出挂载目标、来源、类型和选项？
 
 ::option[`findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS`]{#filesystem-types-findmnt .correct explanation="Findmnt 读取挂载表，并格式化请求的已挂载文件系统字段。"}
 ::option[`lsblk -o NAME,SIZE,MODEL,SERIAL,ROTA`]{#filesystem-types-mkfs-destructive explanation="该命令列出块设备硬件信息，而不是实际挂载的文件系统类型和选项。"}

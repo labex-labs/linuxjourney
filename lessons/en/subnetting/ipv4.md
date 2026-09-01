@@ -22,8 +22,7 @@ IPv4 is displayed as four eight-bit octets separated by dots:
 
 Each octet ranges from 0 through 255, so the complete address contains four bytes. The prefix length identifies how many leading bits belong to the network prefix, as in `192.0.2.165/24`.
 
-:::single-choice{#ipv4-address-size}
-How large is an IPv4 address?
+:::single-choice{#ipv4-address-size} How large is an IPv4 address?
 
 ::option[32 bits in four octets.]{#ipv4-thirty-two-bits .correct explanation="Four groups of eight bits produce the dotted-decimal representation."}
 ::option[24 bits in every network.]{#ipv4-always-twenty-four explanation="A `/24` is one prefix length, not the size of every IPv4 address."}
@@ -36,8 +35,7 @@ Not every IPv4 address is globally routable. Examples include loopback `127.0.0.
 
 Private addresses can be reused in separate networks. NAT may translate them for external communication, but NAT is not required for communication within the private routed domain.
 
-:::single-choice{#ipv4-private-reuse}
-Why can `10.0.0.1` appear in many organizations?
+:::single-choice{#ipv4-private-reuse} Why can `10.0.0.1` appear in many organizations?
 
 ::option[Every instance identifies the same physical router.]{#ipv4-same-router explanation="The address has meaning within each network and is not globally unique."}
 ::option[IPv4 routers ignore the first octet.]{#ipv4-ignore-octet explanation="All address bits participate in route matching."}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 It shows prefix, broadcast, scope, dynamic origin marker, and interface. Additional lines can show valid and preferred lifetimes. An interface can hold several IPv4 addresses.
 
-:::single-choice{#ipv4-ip-output-prefix}
-What does `/24` mean in `192.0.2.165/24`?
+:::single-choice{#ipv4-ip-output-prefix} What does `/24` mean in `192.0.2.165/24`?
 
 ::option[The address expires after 24 seconds.]{#ipv4-prefix-seconds explanation="Lifetime is reported separately."}
 ::option[The first 24 address bits form the network prefix.]{#ipv4-prefix-bits .correct explanation="The remaining eight bits identify positions within that prefix."}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 Read the selected next hop, interface, and source, then test the real application path. Do not alter addresses on a remote host without console access and a rollback plan.
 
-:::single-choice{#ipv4-route-get-purpose}
-What can `ip route get DESTINATION` show?
+:::single-choice{#ipv4-route-get-purpose} What can `ip route get DESTINATION` show?
 
 ::option[Every router's configuration along the complete Internet path.]{#ipv4-all-router-config explanation="A local lookup does not query downstream device configurations."}
 ::option[The local route decision, including interface and preferred source.]{#ipv4-route-decision .correct explanation="It evaluates current host routing policy for the supplied destination."}

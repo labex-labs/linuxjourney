@@ -18,8 +18,7 @@ meta_keywords: "粘位，linux 粘位，unix 文件权限 粘位，chmod +t, /tm
 
 该限制针对目录项。如果文件权限原本允许，sticky bit 不会阻止文件所有者编辑文件内容，也不会让目录变为私有。
 
-:::single-choice{#sticky-bit-removal-rule}
-在设置 sticky bit 的共享目录中，哪个普通用户通常可以删除某个目录项？
+:::single-choice{#sticky-bit-removal-rule} 在设置 sticky bit 的共享目录中，哪个普通用户通常可以删除某个目录项？
 
 ::option[任何能够列出目录的用户。]{#sticky-bit-any-reader explanation="目录读取权限可能暴露名称，但不会绕过 sticky 所施加的所有权限制。"}
 ::option[拥有所需目录访问权限的该目录项所有者。]{#sticky-bit-entry-owner .correct explanation="目录项所有者是 sticky 目录规则通常允许的身份之一。"}
@@ -39,8 +38,7 @@ drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 
 因为 `/tmp` 通常允许所有人写入和搜索，多个用户都可以在其中创建目录项。Sticky bit 会阻止普通用户仅因为目录对所有人可写就删除其他用户的目录项。应用程序仍必须安全创建临时对象，因为可预测名称、不安全链接和宽松文件模式会带来独立风险。
 
-:::single-choice{#sticky-bit-lowercase-t}
-目录模式末尾的小写 `t` 表示什么？
+:::single-choice{#sticky-bit-lowercase-t} 目录模式末尾的小写 `t` 表示什么？
 
 ::option[已设置 sticky，同时也设置了其他执行。]{#sticky-bit-t-with-execute .correct explanation="小写 `t` 组合了 sticky 特殊位和普通的其他执行位。"}
 ::option[已设置 sticky，但没有其他执行。]{#sticky-bit-t-without-execute explanation="这种组合显示为大写 `T`。"}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 开头的 `1` 设置 sticky，`777` 提供普通模式。只有目录确实有意供所有本地用户共享时，这种模式才合适。对于团队目录，范围更窄的组权限可能更好。使用 `chmod -t shared-directory` 可只移除 sticky bit。
 
-:::single-choice{#sticky-bit-octal-value}
-哪个开头的八进制值表示 sticky bit？
+:::single-choice{#sticky-bit-octal-value} 哪个开头的八进制值表示 sticky bit？
 
 ::option[`2`]{#sticky-bit-value-two explanation="开头的 `2` 表示 setgid。"}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="Sticky bit 为开头的特殊位数字贡献 `1`。"}
@@ -75,8 +72,7 @@ $ chmod 1777 shared-directory
 
 Sticky 不会授予写入或搜索访问；它只会在普通权限允许修改目录后，限制删除和重命名操作。应一起验证目录的所有者、组、普通模式、ACL 和挂载上下文。请在隔离环境中使用非特权账户测试，不要修改运行中系统的 `/tmp`。
 
-:::single-choice{#sticky-bit-access-scope}
-添加 sticky bit 是否会让其他用户可以写入原本不可写的目录？
+:::single-choice{#sticky-bit-access-scope} 添加 sticky bit 是否会让其他用户可以写入原本不可写的目录？
 
 ::option[会；sticky 会自动为每个类别添加写入。]{#sticky-bit-adds-write explanation="该特殊位不会重写所有者、组或其他写入位。"}
 ::option[会；sticky 会禁用目录的其他权限三元组。]{#sticky-bit-disables-other explanation="其他三元组仍然参与普通访问检查。"}

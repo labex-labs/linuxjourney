@@ -28,8 +28,7 @@ $ sudo mkfs.ext4 /dev/VERIFIED-PARTITION
 
 利用できるオプション、既定値、機能セット、上書き確認は実装ごとに異なります。すべての `mkfs` バックエンドが同じ動作をすると思い込まず、実際に使うフォーマッターのローカルマニュアルを読んでください。
 
-:::single-choice{#creating-filesystems-mkfs-role}
-`mkfs -t ext4 TARGET` は、何を要求するコマンドですか？
+:::single-choice{#creating-filesystems-mkfs-role} `mkfs -t ext4 TARGET` は、何を要求するコマンドですか？
 
 ::option[既存のファイルシステムを変更せずにマウントすること。]{#creating-filesystems-mount-existing explanation="マウントは別の操作です。mkfs はデバイス上のメタデータを初期化します。"}
 ::option[対象に ext4 ファイルシステムの構造を作成すること。]{#creating-filesystems-create-ext4 .correct explanation="フロントエンドが、指定したブロックデバイスに対する ext4 のフォーマット実装を選択します。"}
@@ -50,8 +49,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 関連する層は、それぞれに対応するツールでアンマウントまたは無効化します。列挙時の名前は変わり得るため、フォーマッターを実行する直前にもう一度対象を確認してください。
 
-:::single-choice{#creating-filesystems-wipefs-no-act}
-この手順で `wipefs --no-act TARGET` が提供するものは何ですか？
+:::single-choice{#creating-filesystems-wipefs-no-act} この手順で `wipefs --no-act TARGET` が提供するものは何ですか？
 
 ::option[認識されたシグネチャの読み取り専用レポート。]{#creating-filesystems-signature-report .correct explanation="no-act モードでは、ファイルシステム、パーティションテーブル、RAID などのシグネチャを削除せずに確認できます。"}
 ::option[マウント可能な、新しい空のファイルシステム。]{#creating-filesystems-wipefs-formats explanation="シグネチャを調べるだけでは、新しいファイルシステムは初期化されません。"}
@@ -64,8 +62,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 単に広く使われているという理由だけで形式を選んではいけません。たとえば ext4、XFS、Btrfs では運用上の機能や復旧手順が異なります。相互運用のためのリムーバブルデバイスでは、Unix のパーミッションとは異なる意味を持つ別形式が必要になることもあります。
 
-:::single-choice{#creating-filesystems-type-choice}
-ファイルシステムの種類を選ぶ際の、妥当な基準はどれですか？
+:::single-choice{#creating-filesystems-type-choice} ファイルシステムの種類を選ぶ際の、妥当な基準はどれですか？
 
 ::option[入力する名前が最も短いもの。]{#creating-filesystems-shortest-name explanation="コマンド名の長さから、耐久性、機能、対応状況は判断できません。"}
 ::option[今後ストレージ障害が一切起きないという保証。]{#creating-filesystems-no-failure explanation="ハードウェア障害やバックアップの必要性をなくせるファイルシステムはありません。"}
@@ -85,8 +82,7 @@ $ sudo blkid /dev/VERIFIED-PARTITION
 
 後でマウントを設定できるよう、UUID を記録します。ファイルシステムを作成しても、マウント、アプリケーション用ディレクトリの作成、バックアップ内容の復元、起動後も有効な永続設定は行われません。
 
-:::single-choice{#creating-filesystems-after-mkfs}
-ファイルシステムを作成した後も、別途必要な手順はどれですか？
+:::single-choice{#creating-filesystems-after-mkfs} ファイルシステムを作成した後も、別途必要な手順はどれですか？
 
 ::option[目的のディレクトリへマウントすること。]{#creating-filesystems-mount-separate .correct explanation="フォーマットはファイルシステム構造を書き込み、マウントはそのファイルシステムを見えるディレクトリツリーへ接続します。"}
 ::option[ブロックデバイスへ何らかの容量を割り当てること。]{#creating-filesystems-capacity explanation="フォーマット対象の容量は、基になるパーティションや論理デバイスがすでに提供しています。"}

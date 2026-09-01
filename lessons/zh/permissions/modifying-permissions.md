@@ -48,8 +48,7 @@ $ chmod u=rw,g=r,o= myfile
 
 如果像 `chmod +x myfile` 那样省略类别，进程 umask 会影响更改哪些类别。明确写出类别，更便于审查预期结果。
 
-:::single-choice{#modifying-permissions-remove-group-write}
-哪个符号模式会移除组写入权限，而不改变组的其他权限位？
+:::single-choice{#modifying-permissions-remove-group-write} 哪个符号模式会移除组写入权限，而不改变组的其他权限位？
 
 ::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="这会从所有者类别移除写入权限，而不是组类别。"}
 ::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="`g` 选择组类别，`-` 移除权限位，`w` 指定写入权限。"}
@@ -79,16 +78,14 @@ $ chmod 755 myfile
 
 与符号模式中的 `+` 或 `-` 操作不同，八进制模式会提供完整的普通权限集合。后续课程会介绍用于特殊模式位的可选首位数字。
 
-:::single-choice{#modifying-permissions-octal-read-value}
-哪个八进制值表示读取权限？
+:::single-choice{#modifying-permissions-octal-read-value} 哪个八进制值表示读取权限？
 
 ::option[`1`]{#modifying-permissions-value-one explanation="值 `1` 表示执行权限。"}
 ::option[`2`]{#modifying-permissions-value-two explanation="值 `2` 表示写入权限。"}
 ::option[`4`]{#modifying-permissions-value-four .correct explanation="读取权限为一个类别的数字贡献八进制值 `4`。"}
 :::
 
-:::single-choice{#modifying-permissions-mode-640}
-`chmod 640 report` 会设置哪些普通权限？
+:::single-choice{#modifying-permissions-mode-640} `chmod 640 report` 会设置哪些普通权限？
 
 ::option[所有者读取、组写入、其他执行。]{#modifying-permissions-640-separated explanation="八进制数字是每个类别权限值的总和，而不是独立的读、写、执行列。"}
 ::option[所有者读取/执行、组写入、其他无权限。]{#modifying-permissions-640-wrong-sums explanation="所有者值 `6` 是读取加写入，组值 `4` 是读取。"}
@@ -101,8 +98,7 @@ $ chmod 755 myfile
 
 递归更改需要格外谨慎。使用 `chmod -R` 前，应预览目标树、考虑符号链接和挂载文件系统，并在小范围内测试。更改后应验证结果模式，而不是假设命令影响了预期对象。
 
-:::single-choice{#modifying-permissions-least-privilege}
-为什么 `chmod 777` 通常不是解决访问问题的好方法？
+:::single-choice{#modifying-permissions-least-privilege} 为什么 `chmod 777` 通常不是解决访问问题的好方法？
 
 ::option[它会移除所有者的全部权限。]{#modifying-permissions-777-removes explanation="每个 `7` 都授予读取、写入和执行，不会移除所有者权限。"}
 ::option[它会向所有者、组和其他授予所有基本权限。]{#modifying-permissions-777-grants-all .correct explanation="三个类别全部获得 `rwx`，通常超出实际需要的访问范围。"}

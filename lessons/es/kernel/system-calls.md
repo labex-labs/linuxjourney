@@ -23,8 +23,7 @@ La relación no siempre es de una función por cada llamada al sistema:
 - una función vDSO optimizada puede obtener ciertos datos mantenidos por el kernel sin una transición completa de modo
 - una llamada al sistema puede dar soporte a muchas API de mayor nivel
 
-:::single-choice{#system-calls-library-wrapper}
-¿Qué hace un envoltorio típico de libc para una llamada al sistema?
+:::single-choice{#system-calls-library-wrapper} ¿Qué hace un envoltorio típico de libc para una llamada al sistema?
 
 ::option[Prepara los argumentos de la ABI, entra en el kernel y traduce el resultado.]{#system-calls-wrapper-role .correct explanation="El envoltorio oculta las convenciones de llamada específicas de la arquitectura tras una interfaz de biblioteca normal."}
 ::option[Concede a la aplicación acceso sin restricciones a la memoria del kernel.]{#system-calls-wrapper-unrestricted explanation="La entrada al kernel sigue estando controlada y valida la solicitud."}
@@ -39,8 +38,7 @@ Al terminar, el kernel devuelve un valor o una indicación de error. Los envolto
 
 Llamar «interrupción de software» a todas las entradas es impreciso en las arquitecturas actuales; las trampas, las instrucciones rápidas de llamadas al sistema y las llamadas al supervisor implementan de maneras distintas transiciones controladas relacionadas.
 
-:::single-choice{#system-calls-entry-result}
-¿Quién valida los argumentos y la autorización de una llamada al sistema?
+:::single-choice{#system-calls-entry-result} ¿Quién valida los argumentos y la autorización de una llamada al sistema?
 
 ::option[El indicador del shell antes de que se inicie el proceso.]{#system-calls-shell-validates explanation="Un proceso puede realizar llamadas al sistema sin depender de un shell, y las comprobaciones del kernel siguen siendo necesarias."}
 ::option[La implementación en el kernel del servicio solicitado.]{#system-calls-kernel-validates .correct explanation="El manejador privilegiado comprueba los punteros, el estado de los objetos, las credenciales y la política antes de actuar."}
@@ -53,8 +51,7 @@ Los números de las llamadas al sistema y sus convenciones de llamada son espec�
 
 Un proceso sin privilegios no puede insertar manejadores arbitrarios nuevos en la tabla de llamadas al sistema del kernel activo. Ampliar la interfaz requiere código del kernel y un diseño cuidadoso de la ABI. Funciones como seccomp pueden filtrar qué llamadas tiene permitido realizar un proceso, pero no crean nuevas implementaciones en el kernel.
 
-:::single-choice{#system-calls-number-portability}
-¿Por qué debe una aplicación evitar codificar directamente números de llamadas al sistema de otra arquitectura?
+:::single-choice{#system-calls-number-portability} ¿Por qué debe una aplicación evitar codificar directamente números de llamadas al sistema de otra arquitectura?
 
 ::option[Los números y las convenciones de llamada son específicos de la ABI.]{#system-calls-abi-specific .correct explanation="Un número con un significado en una arquitectura puede identificar otra operación o no existir en otra."}
 ::option[Las llamadas al sistema reciben sus nombres del directorio de trabajo actual.]{#system-calls-directory-names explanation="Los nombres de ruta no definen la ABI de numeración de llamadas al sistema."}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace` puede revelar rutas, argumentos, datos derivados del entorno, direcciones de red, fragmentos del contenido de archivos y credenciales pasadas incorrectamente mediante argumentos. Almacena los rastros con permisos restrictivos y elimínalos de acuerdo con la política de datos de incidentes.
 
-:::single-choice{#system-calls-strace-purpose}
-¿Qué observa principalmente `strace`?
+:::single-choice{#system-calls-strace-purpose} ¿Qué observa principalmente `strace`?
 
 ::option[Únicamente las líneas de código fuente ejecutadas dentro de la aplicación.]{#system-calls-strace-source-lines explanation="El rastreo en el nivel del código fuente requiere depuradores o instrumentación con símbolos."}
 ::option[Las llamadas al sistema y las señales en el límite entre el usuario y el kernel.]{#system-calls-strace-boundary .correct explanation="Informa de solicitudes, argumentos, resultados y eventos de señales de los procesos rastreados."}
@@ -91,8 +87,7 @@ El rastreo altera los tiempos y puede imponer una sobrecarga considerable. Una l
 
 Los permisos y la política de seguridad de ptrace restringen qué procesos pueden rastrearse. No te conectes al proceso de otro usuario o a uno de producción sin autorización; las suspensiones y los cambios de tiempos pueden afectar al comportamiento del servicio.
 
-:::single-choice{#system-calls-strace-failure}
-¿Significa necesariamente que la aplicación está averiada el hecho de que falle una llamada al sistema en un rastro?
+:::single-choice{#system-calls-strace-failure} ¿Significa necesariamente que la aplicación está averiada el hecho de que falle una llamada al sistema en un rastro?
 
 ::option[Sí; cualquier valor de retorno distinto de cero termina Linux inmediatamente.]{#system-calls-nonzero-terminates explanation="Las aplicaciones gestionan habitualmente errores de llamadas al sistema sin que falle el sistema."}
 ::option[No; los programas suelen probar alternativas y gestionar errores esperados.]{#system-calls-expected-failure .correct explanation="Interpreta el valor devuelto en el contexto del flujo de control y de la aplicación, no de forma aislada."}

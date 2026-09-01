@@ -16,8 +16,7 @@ A captura registra tráfego visível em um ponto de observação. Ela revela tro
 
 Capture na interface e no namespace pelos quais o fluxo afetado realmente passa. Bridges, containers, VPNs, bonds, VLANs e offload mudam o que uma interface mostra. Use `ip route get` e `ip link` para identificar candidatas.
 
-:::single-choice{#packet-analysis-interface-choice}
-Por que a escolha da interface de captura importa?
+:::single-choice{#packet-analysis-interface-choice} Por que a escolha da interface de captura importa?
 
 ::option[Toda interface espelha automaticamente a Internet inteira.]{#packet-analysis-mirrors-internet explanation="Um host normalmente vê apenas tráfego entregue ou espelhado às suas interfaces."}
 ::option[Apenas o tráfego visível nesse ponto pode ser registrado.]{#packet-analysis-visible-point .correct explanation="Namespaces, túneis, bridges e rotas podem colocar o fluxo em outro lugar."}
@@ -35,8 +34,7 @@ $ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
 
 `-i` seleciona interface, `-n` mantém números, `-c` limita pacotes, `-w` grava pcap e a expressão final filtra. Defina também um limite externo de tempo quando puder não haver tráfego.
 
-:::single-choice{#packet-analysis-count-bound}
-O que `-c 100` faz?
+:::single-choice{#packet-analysis-count-bound} O que `-c 100` faz?
 
 ::option[Captura apenas a porta TCP 100.]{#packet-analysis-port-hundred explanation="A porta pertence à expressão de filtro."}
 ::option[Comprime o arquivo para 100 bytes.]{#packet-analysis-compress-hundred explanation="A opção limita quantidade de pacotes, não tamanho."}
@@ -53,8 +51,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 Leia horários, protocolo, origem, destino, flags, sequência, acknowledgements e tamanho conforme o protocolo. O horário marca a observação neste host, não necessariamente o envio exato em outro. Sincronização importa ao correlacionar vários sistemas.
 
-:::single-choice{#packet-analysis-read-file}
-Qual opção lê pacotes de um pcap salvo?
+:::single-choice{#packet-analysis-read-file} Qual opção lê pacotes de um pcap salvo?
 
 ::option[`-r`]{#packet-analysis-option-read .correct explanation="A opção read processa um arquivo de captura existente."}
 ::option[`-i`]{#packet-analysis-option-interface explanation="Essa opção seleciona uma interface ativa."}
@@ -67,8 +64,7 @@ Nenhum pacote pode significar interface ou namespace errado, perda de captura, f
 
 TLS e outras criptografias ocultam payloads, mas deixam metadados como endpoints, tempos, tamanhos, comportamento TCP e partes do handshake. Não tente descriptografia não autorizada nem colete chaves privadas casualmente.
 
-:::single-choice{#packet-analysis-no-packets}
-O que uma captura filtrada vazia prova?
+:::single-choice{#packet-analysis-no-packets} O que uma captura filtrada vazia prova?
 
 ::option[Que o aplicativo remoto foi apagado permanentemente.]{#packet-analysis-empty-deleted explanation="Erros no ponto ou filtro produzem o mesmo resultado."}
 ::option[Que toda a rede tem tráfego zero.]{#packet-analysis-empty-network explanation="Um filtro estreito exclui tráfego alheio."}
@@ -79,8 +75,7 @@ O que uma captura filtrada vazia prova?
 
 Guarde pcaps com permissões restritas, registre comando, host, interface, fuso, filtro e janela e calcule hash quando a integridade importar. Antes de compartilhar, minimize ou sanitize preservando campos necessários; payload e metadados podem identificar pessoas e sistemas.
 
-:::single-choice{#packet-analysis-pcap-safety}
-Como tratar um pcap de incidente?
+:::single-choice{#packet-analysis-pcap-safety} Como tratar um pcap de incidente?
 
 ::option[Como evidência sensível, com acesso restrito e procedência documentada.]{#packet-analysis-sensitive-evidence .correct explanation="Capturas podem conter conteúdo confidencial e exigem integridade e confidencialidade."}
 ::option[Como texto inofensivo para publicação sem revisão.]{#packet-analysis-public explanation="Capturas binárias expõem payloads, identidades e infraestrutura."}

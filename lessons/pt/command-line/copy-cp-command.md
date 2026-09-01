@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 No segundo exemplo, os dados copiados recebem o nome `mycoolfile_backup`.
 
-:::single-choice{#copy-file-under-new-name}
-Qual comando copia `draft.txt` para um arquivo chamado `final.txt`, mantendo `draft.txt`?
+:::single-choice{#copy-file-under-new-name} Qual comando copia `draft.txt` para um arquivo chamado `final.txt`, mantendo `draft.txt`?
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` renomeia ou move o caminho original. Ele não mantém a cópia de origem solicitada."}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="A origem e o destino estão invertidos. Esse comando copiaria de `final.txt` para `draft.txt`."}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 O último argumento deve ser um diretório quando você fornece mais de uma origem.
 
-:::single-choice{#copy-multiple-files}
-Qual comando copia `a.txt` e `b.txt` para o diretório existente `archive/`?
+:::single-choice{#copy-multiple-files} Qual comando copia `a.txt` e `b.txt` para o diretório existente `archive/`?
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="Nessa forma de `cp`, o diretório de destino deve ficar no final. Colocá-lo primeiro altera a interpretação dos operandos."}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="Com várias origens, `cp` trata o último diretório existente como destino de todos os arquivos anteriores."}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-Antes de copiar `*.jpg`, qual comando mostra os nomes não ocultos aos quais o padrão corresponde no momento?
+:::single-choice{#preview-copy-pattern} Antes de copiar `*.jpg`, qual comando mostra os nomes não ocultos aos quais o padrão corresponde no momento?
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="Esse comando tenta realizar uma cópia sem um destino claro quando há várias correspondências. Ele não é uma operação de visualização."}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="O shell expande o mesmo padrão para `ls`, permitindo inspecionar os nomes correspondentes antes de copiá-los."}
@@ -112,8 +109,7 @@ O modo de arquivamento, `-a`, é útil para cópias de backup. Ele copia recursi
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-Você quer uma cópia recursiva de `project/` no estilo de backup, preservando links e muitos atributos. Qual comando atende a esse objetivo?
+:::single-choice{#archive-directory-tree} Você quer uma cópia recursiva de `project/` no estilo de backup, preservando links e muitos atributos. Qual comando atende a esse objetivo?
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` preserva determinados atributos, mas não torna a cópia de um diretório recursiva por si só."}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` controla quando os arquivos são copiados conforme o estado do destino. Ele não ativa por si só a cópia recursiva de diretórios."}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 A opção `-f` instrui o GNU `cp` a tentar remover um destino existente quando não conseguir abri-lo para gravação e depois repetir a cópia. Ela não substitui a verificação cuidadosa dos destinos. Aliases do shell também podem acrescentar opções como `-i`; portanto, investigue uma solicitação inesperada em vez de presumir uma configuração específica.
 
-:::single-choice{#skip-existing-destination}
-Qual comando copia `report.txt` para `backup/`, mas ignora um destino existente com o mesmo nome?
+:::single-choice{#skip-existing-destination} Qual comando copia `report.txt` para `backup/`, mas ignora um destino existente com o mesmo nome?
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="A opção `-n` impede que `cp` sobrescreva um arquivo existente no destino."}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` pergunta antes de sobrescrever; portanto, o resultado depende da resposta. Ele não ignora automaticamente todos os destinos existentes."}

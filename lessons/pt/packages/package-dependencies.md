@@ -25,8 +25,7 @@ Os metadados de um pacote podem expressar mais do que um simples nome obrigatór
 
 Essas regras permitem que um resolvedor escolha um conjunto de versões de pacotes compatível com os repositórios configurados, a arquitetura e o estado instalado. Uma solução pode exigir atualizações, remoções ou a escolha entre provedores; por isso, examine a transação proposta antes de aprová-la.
 
-:::single-choice{#package-dependencies-solver-role}
-O que um resolvedor de dependências que conhece os repositórios procura produzir?
+:::single-choice{#package-dependencies-solver-role} O que um resolvedor de dependências que conhece os repositórios procura produzir?
 
 ::option[Um conjunto coerente de versões de pacotes e alterações necessárias.]{#package-dependencies-consistent-set .correct explanation="O resolvedor avalia as relações declaradas entre os pacotes instalados e disponíveis."}
 ::option[Uma nova conta de usuário para cada aplicativo instalado.]{#package-dependencies-user-account explanation="A criação de contas pode ser uma ação do ciclo de vida de um pacote, mas não é a finalidade da resolução de dependências."}
@@ -39,8 +38,7 @@ Uma biblioteca compartilhada contém código compilado que vários programas pod
 
 Em sistemas Linux baseados em ELF, um executável pode registrar o nome de uma biblioteca necessária, como um SONAME. O vinculador dinâmico localiza uma biblioteca instalada correspondente quando o programa é iniciado. Em geral, os metadados do pacote representam esse requisito como uma dependência do pacote ou recurso que fornece a biblioteca compatível.
 
-:::single-choice{#package-dependencies-shared-library}
-O que é uma biblioteca compartilhada?
+:::single-choice{#package-dependencies-shared-library} O que é uma biblioteca compartilhada?
 
 ::option[Código compilado que vários programas podem carregar e usar.]{#package-dependencies-library-code .correct explanation="Uma biblioteca compartilhada fornece interfaces binárias reutilizáveis, em vez de incorporar uma implementação separada em cada programa."}
 ::option[Uma lista de repositórios compartilhada entre distribuições não relacionadas.]{#package-dependencies-shared-repository explanation="A configuração de repositórios e o código de bibliotecas executáveis são conceitos diferentes."}
@@ -53,8 +51,7 @@ A existência de um arquivo com nome semelhante ao da biblioteca não é suficie
 
 Os mantenedores de pacotes codificam as relações entre bibliotecas e coordenam as transições quando uma ABI muda. Mantenha as bibliotecas nativas sob o controle do gerenciador de pacotes; para software que precise de uma versão incompatível, use mecanismos compatíveis de instalação paralela, contêiner, ambiente ou compilação.
 
-:::single-choice{#package-dependencies-filename-insufficient}
-Por que um programa ainda pode falhar quando existe um arquivo de biblioteca com nome semelhante?
+:::single-choice{#package-dependencies-filename-insufficient} Por que um programa ainda pode falhar quando existe um arquivo de biblioteca com nome semelhante?
 
 ::option[Porque o Linux permite que apenas um executável use cada biblioteca.]{#package-dependencies-one-consumer explanation="Uma das finalidades essenciais das bibliotecas compartilhadas é atender a vários processos e programas."}
 ::option[Porque as dependências de pacotes só se aplicam antes da primeira inicialização do sistema.]{#package-dependencies-boot-only explanation="As dependências continuam relevantes durante instalações, atualizações e execução."}
@@ -67,8 +64,7 @@ Um problema de dependência pode surgir de repositórios misturados, operações
 
 Primeiro, leia os diagnósticos do gerenciador de pacotes, atualize apenas os metadados de repositórios confiáveis, inspecione versões retidas ou fixadas e examine o reparo proposto. Um instalador de baixo nível pode desempacotar um arquivo sem obter todas as dependências; uma ferramenta de repositório de nível mais alto costuma ser mais segura para instalações comuns, pois resolve a transação completa.
 
-:::single-choice{#package-dependencies-low-level-limit}
-Qual é uma limitação comum de instalar um pacote local com uma ferramenta de baixo nível para arquivos de pacote?
+:::single-choice{#package-dependencies-low-level-limit} Qual é uma limitação comum de instalar um pacote local com uma ferramenta de baixo nível para arquivos de pacote?
 
 ::option[Ela pode não obter nem resolver todas as dependências ausentes nos repositórios.]{#package-dependencies-no-repository-resolution .correct explanation="As ferramentas de baixo nível gerenciam arquivos e bancos de dados de pacotes, mas podem deixar a obtenção de dependências para um gerenciador de nível mais alto."}
 ::option[Ela sempre recompila o kernel do Linux a partir do código-fonte.]{#package-dependencies-recompile-kernel explanation="Instalar um arquivo de pacote não implica recompilar o kernel."}

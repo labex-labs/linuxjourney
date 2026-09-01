@@ -38,8 +38,7 @@ magazine
 
 결과는 표준 출력으로 가므로 입력 파일은 변경되지 않습니다.
 
-:::single-choice{#uniq-collapse-adjacent}
-기본적으로 `uniq reading.txt`는 무엇을 하나요?
+:::single-choice{#uniq-collapse-adjacent} 기본적으로 `uniq reading.txt`는 무엇을 하나요?
 
 ::option[전체 파일을 정렬한 뒤 모든 반복 값을 제거합니다.]{#uniq-auto-sort explanation="`uniq`는 입력 순서를 유지하고 정렬하지 않습니다. 떨어져 있는 같은 값은 별도 그룹으로 남습니다."}
 ::option[인접한 동일 줄 그룹마다 한 줄을 출력합니다.]{#uniq-one-per-group .correct explanation="기본 `uniq`는 연속된 동일 줄을 출력 줄 하나로 압축합니다."}
@@ -60,8 +59,7 @@ $ uniq -c reading.txt
 
 동일한 줄을 먼저 인접하게 만들지 않았다면 이 값은 전체 합계가 아니라 연속 구간의 길이입니다.
 
-:::single-choice{#uniq-count-groups}
-`uniq -c`의 개수는 무엇을 나타내나요?
+:::single-choice{#uniq-count-groups} `uniq -c`의 개수는 무엇을 나타내나요?
 
 ::option[각 입력 줄의 문자 수입니다.]{#uniq-character-count explanation="문자 수 세기는 `uniq -c`의 목적이 아니며 `wc` 같은 도구가 문자와 바이트 합계를 다룹니다."}
 ::option[각 그룹에서 연속된 동일 줄의 수입니다.]{#uniq-consecutive-count .correct explanation="`-c`는 압축된 각 인접 그룹 앞에 그 그룹에 포함된 줄 수를 붙입니다."}
@@ -88,16 +86,14 @@ article
 
 GNU `uniq -D`는 반복 그룹의 모든 줄을 출력하지만 소문자 `-d`는 각 반복 그룹의 값을 한 번만 출력합니다.
 
-:::single-choice{#uniq-only-singletons}
-인접 그룹 중 정확히 한 번만 나타난 그룹만 출력하는 명령어는 무엇인가요?
+:::single-choice{#uniq-only-singletons} 인접 그룹 중 정확히 한 번만 나타난 그룹만 출력하는 명령어는 무엇인가요?
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="반복 그룹과 단일 그룹을 모두 개수와 함께 출력합니다."}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="소문자 `-d`는 반대로 각 반복 그룹에서 한 줄을 출력합니다."}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="`-u` 옵션은 인접 연속 길이가 정확히 1인 그룹을 선택합니다."}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-두 번 이상 나타난 인접 그룹마다 한 줄을 출력하는 명령어는 무엇인가요?
+:::single-choice{#uniq-one-per-duplicate-group} 두 번 이상 나타난 인접 그룹마다 한 줄을 출력하는 명령어는 무엇인가요?
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="`-d` 옵션은 반복되는 인접 그룹을 선택하고 그룹마다 대표 줄 하나를 출력합니다."}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="GNU 대문자 `-D`는 대표 줄 하나만이 아니라 반복 그룹에 속한 모든 줄을 출력합니다."}
@@ -143,8 +139,7 @@ paper
 
 두 단계에서 일관된 로캘과 비교 정책을 사용하세요. `sort -u reading.txt`도 한 명령어로 정렬하고 동일 정렬 키마다 한 줄을 유지할 수 있습니다.
 
-:::single-choice{#uniq-separated-duplicates}
-같은 줄이 `reading.txt` 곳곳에 흩어져 있고 출력 순서가 바뀌어도 됩니다. 서로 다른 전체 줄마다 정렬된 사본 하나를 만드는 파이프라인은 무엇인가요?
+:::single-choice{#uniq-separated-duplicates} 같은 줄이 `reading.txt` 곳곳에 흩어져 있고 출력 순서가 바뀌어도 됩니다. 서로 다른 전체 줄마다 정렬된 사본 하나를 만드는 파이프라인은 무엇인가요?
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="정렬이 같은 전체 줄을 그룹화하고 `uniq`가 각 인접 그룹을 한 줄로 압축합니다."}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="떨어진 동일 줄이 인접하기 전에 `uniq`가 실행되므로 나중에 정렬해도 출력에 중복 줄이 남을 수 있습니다."}

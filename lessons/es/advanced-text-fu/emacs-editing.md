@@ -23,8 +23,7 @@ Las flechas y otras teclas de navegación de la plataforma pueden funcionar, per
 - `C-a`: va al principio de la línea.
 - `C-e`: va al final de la línea.
 
-:::single-choice{#emacs-edit-next-line}
-¿Qué tecla de Emacs lleva el punto a la línea siguiente?
+:::single-choice{#emacs-edit-next-line} ¿Qué tecla de Emacs lleva el punto a la línea siguiente?
 
 ::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` va a la línea anterior, en la dirección opuesta."}
 ::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n`, de `next-line`, desplaza el punto hacia abajo hasta la posición de la línea de pantalla siguiente."}
@@ -42,8 +41,7 @@ Las órdenes Meta se desplazan por unidades mayores:
 
 En muchos teclados, Alt actúa como Meta. Cuando esa combinación no está disponible, pulsar `Esc` y después la tecla siguiente suele enviar la orden Meta equivalente.
 
-:::single-choice{#emacs-edit-buffer-end}
-¿Qué tecla de Emacs lleva el punto al final del búfer?
+:::single-choice{#emacs-edit-buffer-end} ¿Qué tecla de Emacs lleva el punto al final del búfer?
 
 ::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` va al final de la línea actual, no de todo el búfer."}
 ::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` va al principio del búfer."}
@@ -56,8 +54,7 @@ La **marca** es una posición guardada del búfer. El texto entre el punto y la 
 
 En una terminal, `C-SPC` puede codificarse como `C-@`. El resaltado depende de la configuración de marca transitoria, pero el punto y la marca siguen definiendo una región.
 
-:::single-choice{#emacs-edit-set-mark}
-¿Qué tecla comienza a definir una región al establecer la marca en el punto?
+:::single-choice{#emacs-edit-set-mark} ¿Qué tecla comienza a definir una región al establecer la marca en el punto?
 
 ::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` elimina una región ya definida; no es la orden inicial para establecer la marca."}
 ::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` inserta texto del anillo de eliminaciones y no inicia una selección."}
@@ -74,8 +71,7 @@ Emacs almacena el texto eliminado y copiado en el **anillo de eliminaciones**:
 
 Esta eliminación conserva el texto para insertarlo posteriormente, a diferencia de una eliminación normal.
 
-:::single-choice{#emacs-edit-copy-region}
-¿Qué tecla copia la región activa al anillo de eliminaciones sin quitarla?
+:::single-choice{#emacs-edit-copy-region} ¿Qué tecla copia la región activa al anillo de eliminaciones sin quitarla?
 
 ::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`kill-ring-save`, asociado a `M-w`, copia la región sin eliminarla."}
 ::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` elimina la región mientras la guarda en el anillo."}
@@ -93,8 +89,7 @@ M-y
 
 Si después de `C-y` se ejecuta otra orden no relacionada, `M-y` deja de tener el mismo contexto para sustituir la inserción.
 
-:::single-choice{#emacs-edit-yank-latest}
-¿Qué tecla inserta en el punto la entrada más reciente del anillo de eliminaciones?
+:::single-choice{#emacs-edit-yank-latest} ¿Qué tecla inserta en el punto la entrada más reciente del anillo de eliminaciones?
 
 ::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="`yank`, asociado a `C-y`, inserta en el búfer actual el texto más reciente del anillo."}
 ::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` suele sustituir una entrada recién insertada por otra anterior; depende del contexto de inserción precedente."}

@@ -24,8 +24,7 @@ $ python3 -m http.server 8000 --directory /srv/temporary-share
 
 没有索引文件时，该模块通常会生成目录列表。任何能够访问监听器的人都可能枚举并下载所提供的内容。
 
-:::single-choice{#http-server-directory-option}
-为什么使用 `--directory /srv/temporary-share`？
+:::single-choice{#http-server-directory-option} 为什么使用 `--directory /srv/temporary-share`？
 
 ::option[它会自动加密每个 HTTP 响应。]{#http-server-directory-tls explanation="directory 选项不会添加 TLS。"}
 ::option[它会为每个下载者创建账户。]{#http-server-directory-accounts explanation="基础模块不提供用户身份验证。"}
@@ -42,8 +41,7 @@ $ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
 
 要在可信网络上共享，应有意绑定到适当接口地址，并确认防火墙策略。不使用限制性绑定运行时通常会监听所有可用接口，可能将目录公开到预期网络之外。
 
-:::single-choice{#http-server-loopback-bind}
-谁通常可以访问绑定到 `127.0.0.1` 的服务器？
+:::single-choice{#http-server-loopback-bind} 谁通常可以访问绑定到 `127.0.0.1` 的服务器？
 
 ::option[同一主机上的客户端。]{#http-server-local-clients .correct explanation="环回绑定适合本地测试，或在有意配置的隧道后使用。"}
 ::option[公网中的任何主机。]{#http-server-public explanation="环回地址只属于同一网络命名空间，不是公网接口。"}
@@ -60,8 +58,7 @@ $ curl -f http://127.0.0.1:8000/example.txt
 
 进行经过授权的远程测试时，应使用所选接口地址而不是环回地址。既要确认预期文件可访问，也要确认文档根目录以外的文件不可访问。浏览器成功本身不能证明公开范围或机密性合适。
 
-:::single-choice{#http-server-default-port-command}
-`python3 -m http.server 8000` 明确选择了哪个端口？
+:::single-choice{#http-server-default-port-command} `python3 -m http.server 8000` 明确选择了哪个端口？
 
 ::option[22]{#http-server-port-22 explanation="端口 22 通常与 SSH 关联，此处没有选择它。"}
 ::option[8000]{#http-server-port-8000 .correct explanation="位置端口操作数告诉模块在哪里监听。"}
@@ -78,8 +75,7 @@ $ ss -ltn 'sport = :8000'
 
 按照数据处理策略移除临时副本，并撤销所有临时防火墙规则。对于持久、需要身份验证或面向互联网的分发，应使用配置了访问控制和 TLS、持续维护的服务器。
 
-:::single-choice{#http-server-completion-check}
-临时传输完成后应该做什么？
+:::single-choice{#http-server-completion-check} 临时传输完成后应该做什么？
 
 ::option[停止服务并确认端口不再监听。]{#http-server-stop-verify .correct explanation="验证可以确认临时网络服务确实已经结束。"}
 ::option[保留监听器运行，以防以后有人需要。]{#http-server-leave-running explanation="授权用途结束后应移除不必要的暴露。"}

@@ -24,8 +24,7 @@ Depois dessa definição, inserir `ll` como comando o expande para `ls -la`. As 
 
 Aliases são mais adequados para substituições simples do prefixo de um comando. Use uma função do shell quando precisar processar argumentos de maneira mais estruturada.
 
-:::single-choice{#define-ll-alias}
-Qual comando do Bash define `ll` como um alias de `ls -la` no shell atual?
+:::single-choice{#define-ll-alias} Qual comando do Bash define `ll` como um alias de `ls -la` no shell atual?
 
 ::option[`alias ll = 'ls -la'`]{#alias-spaces explanation="Os espaços ao redor de `=` dividem a definição em palavras separadas; assim, o Bash não recebe uma atribuição de alias válida."}
 ::option[`alias ll='ls -la'`]{#alias-ll .correct explanation="Essa forma usa `NAME=REPLACEMENT` e coloca entre aspas a substituição que contém um espaço."}
@@ -48,8 +47,7 @@ $ source ~/.bashrc
 
 O comportamento de inicialização pode variar conforme o shell, o modo de login e a configuração da distribuição. Um usuário do Zsh, por exemplo, normalmente usaria a configuração do Zsh, não o `.bashrc` do Bash.
 
-:::single-choice{#persist-bash-alias}
-Onde um alias pessoal normalmente deve ser definido para que futuras sessões interativas não iniciadas como login do Bash o carreguem?
+:::single-choice{#persist-bash-alias} Onde um alias pessoal normalmente deve ser definido para que futuras sessões interativas não iniciadas como login do Bash o carreguem?
 
 ::option[No arquivo `~/.bashrc` do usuário.]{#bashrc-alias .correct explanation="O Bash interativo não iniciado como login normalmente lê `~/.bashrc`, tornando-o o local convencional para aliases pessoais."}
 ::option[No arquivo executável usado pelo comando que recebe o alias.]{#edit-executable explanation="Alterar um executável instalado não tem relação com a expansão de aliases e pode danificar arquivos gerenciados do sistema."}
@@ -73,8 +71,7 @@ $ type ll
 ll is aliased to 'ls -la'
 ```
 
-:::single-choice{#inspect-command-alias}
-Qual comando mostra se o Bash atualmente resolve `ll` como alias, função, comando interno ou executável?
+:::single-choice{#inspect-command-alias} Qual comando mostra se o Bash atualmente resolve `ll` como alias, função, comando interno ou executável?
 
 ::option[`file ll`]{#file-ll explanation="`file` classifica um caminho no sistema de arquivos. Um alias existe no estado do shell e não precisa corresponder a um arquivo chamado `ll`."}
 ::option[`type ll`]{#type-ll .correct explanation="O comando interno `type` informa como a sessão atual do Bash resolve o nome `ll`."}
@@ -92,8 +89,7 @@ $ command ls
 
 Isso é útil quando você precisa do comportamento normal do comando subjacente. Mantenha os aliases curtos e previsíveis e evite ocultar comportamentos surpreendentes ou destrutivos por trás de nomes conhecidos.
 
-:::single-choice{#bypass-ls-alias}
-A sessão atual do Bash possui um alias chamado `ls`. Qual comando ignora esse alias em uma invocação?
+:::single-choice{#bypass-ls-alias} A sessão atual do Bash possui um alias chamado `ls`. Qual comando ignora esse alias em uma invocação?
 
 ::option[`alias ls`]{#show-ls-alias explanation="Esse comando mostra a definição do alias `ls`. Ele não invoca o comando subjacente."}
 ::option[`command ls`]{#command-ls .correct explanation="Como `command` é a palavra de comando, o Bash não expande o `ls` seguinte como alias e aplica a resolução normal."}
@@ -108,8 +104,7 @@ $ unalias ll
 
 Se a definição continuar em `~/.bashrc`, um shell futuro poderá recriá-la. Remova ou altere também essa linha de configuração quando quiser excluir o alias permanentemente.
 
-:::single-choice{#remove-current-alias}
-Qual comando remove o alias `ll` da sessão atual do Bash?
+:::single-choice{#remove-current-alias} Qual comando remove o alias `ll` da sessão atual do Bash?
 
 ::option[`unalias ll`]{#unalias-ll .correct explanation="`unalias` exclui o alias indicado da tabela de aliases do shell atual."}
 ::option[`alias ll=''`]{#empty-ll explanation="Esse comando substitui o alias por uma expansão vazia, em vez de remover sua definição."}

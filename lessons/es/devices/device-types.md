@@ -28,8 +28,7 @@ Una `c` identifica un dispositivo de caracteres. Suele exponer una interfaz orie
 
 «Carácter» no exige que cada llamada al sistema transfiera exactamente un carácter. Las aplicaciones pueden leer o escribir búferes, mientras que el controlador define el bloqueo, el encuadre y el comportamiento de control.
 
-:::single-choice{#device-types-character-marker}
-¿Qué primer carácter del modo identifica un nodo de dispositivo de caracteres?
+:::single-choice{#device-types-character-marker} ¿Qué primer carácter del modo identifica un nodo de dispositivo de caracteres?
 
 ::option[`b`]{#device-types-marker-block explanation="El marcador `b` identifica un nodo de dispositivo de bloques."}
 ::option[`p`]{#device-types-marker-pipe explanation="El marcador `p` identifica una FIFO o tubería con nombre."}
@@ -42,8 +41,7 @@ Una `b` identifica un dispositivo de bloques. Los dispositivos de bloques propor
 
 Un nodo de bloques no es un sistema de archivos montado. Representa un dispositivo de almacenamiento o una región lógica; se puede crear un sistema de archivos en él y montarlo por separado. Escribir datos sin procesar en el nodo de bloques equivocado puede destruir tablas de particiones, sistemas de archivos o datos de usuarios.
 
-:::single-choice{#device-types-block-marker}
-¿Qué indica el primer carácter de modo `b`?
+:::single-choice{#device-types-block-marker} ¿Qué indica el primer carácter de modo `b`?
 
 ::option[Un trabajo del shell en segundo plano.]{#device-types-background-job explanation="El estado de los trabajos del shell no se codifica como un carácter de tipo del sistema de archivos."}
 ::option[Una interfaz de dispositivo de bloques.]{#device-types-block-device .correct explanation="Los archivos especiales de bloques exponen almacenamiento direccionable mediante el subsistema de bloques del kernel."}
@@ -58,8 +56,7 @@ Una `s` identifica un nodo de socket de dominio Unix. Da nombre a un extremo de 
 
 Ni una FIFO ni un nodo de socket Unix utilizan números mayor y menor de dispositivo para seleccionar un controlador de hardware.
 
-:::single-choice{#device-types-pipe-socket-distinction}
-¿Qué afirmación distingue correctamente estos tipos de objetos de comunicación entre procesos?
+:::single-choice{#device-types-pipe-socket-distinction} ¿Qué afirmación distingue correctamente estos tipos de objetos de comunicación entre procesos?
 
 ::option[`p` marca una partición de disco y `s` marca almacenamiento de estado sólido.]{#device-types-storage-letters explanation="Las particiones suelen ser dispositivos de bloques y las letras no codifican la tecnología de almacenamiento."}
 ::option[`p` marca una FIFO y `s` marca un nodo de socket de dominio Unix.]{#device-types-p-and-s .correct explanation="Son tipos distintos de objetos del sistema de archivos utilizados para la comunicación local entre procesos."}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 GNU `stat` muestra los valores `%t` y `%T` en hexadecimal.
 
-:::single-choice{#device-types-major-minor-scope}
-¿Qué objetos utilizan números mayor y menor para identificar una interfaz de dispositivo del kernel?
+:::single-choice{#device-types-major-minor-scope} ¿Qué objetos utilizan números mayor y menor para identificar una interfaz de dispositivo del kernel?
 
 ::option[Todos los archivos normales y directorios.]{#device-types-all-files explanation="Los archivos normales utilizan el tamaño y los metadatos del sistema de archivos, no un par mayor/menor de nodo de dispositivo."}
 ::option[Únicamente los enlaces simbólicos cuyo destino no existe.]{#device-types-broken-symlinks explanation="Los enlaces simbólicos almacenan texto de ruta y no se convierten en nodos de dispositivo cuando falta el destino."}

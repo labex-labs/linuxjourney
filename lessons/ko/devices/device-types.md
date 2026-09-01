@@ -28,8 +28,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 “문자”라고 해서 각 시스템 호출이 정확히 한 문자만 전송해야 하는 것은 아닙니다. 애플리케이션은 버퍼를 읽거나 쓸 수 있으며, 블로킹, 프레이밍 및 제어 동작은 드라이버가 정의합니다.
 
-:::single-choice{#device-types-character-marker}
-문자 장치 노드를 나타내는 첫 번째 모드 문자는 무엇입니까?
+:::single-choice{#device-types-character-marker} 문자 장치 노드를 나타내는 첫 번째 모드 문자는 무엇입니까?
 
 ::option[`b`]{#device-types-marker-block explanation="`b` 표시는 블록 장치 노드를 나타냅니다."}
 ::option[`p`]{#device-types-marker-pipe explanation="`p` 표시는 FIFO, 즉 이름 있는 파이프를 나타냅니다."}
@@ -42,8 +41,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 블록 노드는 마운트된 파일 시스템이 아닙니다. 저장 장치 또는 논리 영역을 나타내며, 그 위에 파일 시스템을 만들고 별도로 마운트할 수 있습니다. 잘못된 블록 노드에 원시 데이터를 쓰면 파티션 테이블, 파일 시스템 또는 사용자 데이터가 파괴될 수 있습니다.
 
-:::single-choice{#device-types-block-marker}
-첫 번째 모드 문자 `b`는 무엇을 나타냅니까?
+:::single-choice{#device-types-block-marker} 첫 번째 모드 문자 `b`는 무엇을 나타냅니까?
 
 ::option[백그라운드 셸 작업입니다.]{#device-types-background-job explanation="셸 작업 상태는 파일 시스템 유형 문자로 인코딩되지 않습니다."}
 ::option[블록 장치 인터페이스입니다.]{#device-types-block-device .correct explanation="블록 특수 파일은 커널 블록 하위 시스템을 통해 주소 지정 가능한 저장 공간을 노출합니다."}
@@ -58,8 +56,7 @@ prw------- 1 user user      ... /tmp/example-fifo
 
 FIFO와 유닉스 소켓 노드는 모두 하드웨어 드라이버를 선택하는 데 장치 주 번호와 부 번호를 사용하지 않습니다.
 
-:::single-choice{#device-types-pipe-socket-distinction}
-이 IPC 객체 유형을 올바르게 구분한 설명은 무엇입니까?
+:::single-choice{#device-types-pipe-socket-distinction} 이 IPC 객체 유형을 올바르게 구분한 설명은 무엇입니까?
 
 ::option[`p`는 디스크 파티션을, `s`는 솔리드 스테이트 저장 장치를 나타냅니다.]{#device-types-storage-letters explanation="파티션은 일반적으로 블록 장치이며 이 문자들은 저장 기술을 나타내지 않습니다."}
 ::option[`p`는 FIFO를, `s`는 유닉스 도메인 소켓 노드를 나타냅니다.]{#device-types-p-and-s .correct explanation="이들은 로컬 프로세스 간 통신에 사용되는 서로 다른 파일 시스템 객체 유형입니다."}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 GNU `stat`은 `%t`와 `%T` 값을 16진수로 표시합니다.
 
-:::single-choice{#device-types-major-minor-scope}
-커널 장치 인터페이스를 식별하는 데 주 번호와 부 번호를 사용하는 객체는 무엇입니까?
+:::single-choice{#device-types-major-minor-scope} 커널 장치 인터페이스를 식별하는 데 주 번호와 부 번호를 사용하는 객체는 무엇입니까?
 
 ::option[모든 일반 파일과 디렉터리입니다.]{#device-types-all-files explanation="일반 파일은 장치 노드의 주 번호와 부 번호 쌍 대신 크기 및 파일 시스템 메타데이터를 사용합니다."}
 ::option[대상이 없는 심볼릭 링크만 해당합니다.]{#device-types-broken-symlinks explanation="심볼릭 링크는 경로 텍스트를 저장하며 대상이 없어도 장치 노드가 되지 않습니다."}

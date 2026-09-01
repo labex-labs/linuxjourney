@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 Ein geordnetes Herunterfahren fordert Dienste zum Stoppen auf, hängt Dateisysteme aus und ändert anschließend den Energiezustand des Rechners. Behandle einen erzwungenen Neustart oder den physischen Netzschalter nicht als gewöhnliche Abkürzung; beides kann Schreibvorgänge unterbrechen und Daten oder Dienste in einem inkonsistenten Zustand hinterlassen.
 
-:::single-choice{#power-states-orderly-poweroff}
-Was solltest du tun, bevor du einen entfernten Produktionshost ausschaltest?
+:::single-choice{#power-states-orderly-poweroff} Was solltest du tun, bevor du einen entfernten Produktionshost ausschaltest?
 
 ::option[Seine Verwaltungskonsole trennen, bevor du den Befehl ausführst.]{#power-states-remove-console explanation="Eine Verwaltungskonsole ist ein nützlicher Wiederherstellungszugang und sollte verfügbar bleiben."}
 ::option[Das Ausschalten erzwingen, damit Dienste den Vorgang nicht verzögern können.]{#power-states-force-first explanation="Ein erzwungener Vorgang kann Schreiboperationen unterbrechen und sollte nicht das normale Verfahren sein."}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 Nimm nicht an, dass eine Warnung den Vorgang sicher macht. Prüfe aktive Sitzungen und systemspezifische Arbeitslasten und befolge das dokumentierte Verfahren zum Leeren des Dienstes oder Clusters, sofern eines existiert.
 
-:::single-choice{#power-states-four-minute-schedule}
-Welcher Befehl plant das Herunterfahren in vier Minuten?
+:::single-choice{#power-states-four-minute-schedule} Welcher Befehl plant das Herunterfahren in vier Minuten?
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="Die Aktion `-h` zusammen mit `+4` fordert das Herunterfahren in vier Minuten an."}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="Ohne das Pluszeichen ist das Zeitargument nicht die dokumentierte Form für relative Minuten."}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 Prüfe vor dem Neustart, ob verschlüsselte Datenträger, Bootkonfiguration, Netzwerk und erforderliche Dienste ohne die aktuelle interaktive Sitzung wiederhergestellt werden können. Koordiniere zuerst Failover oder die Verlagerung von Arbeitslasten, wenn andere Systeme vom Host abhängen.
 
-:::single-choice{#power-states-reboot-action}
-Welcher Befehl fordert über `shutdown` einen sofortigen geordneten Neustart an?
+:::single-choice{#power-states-reboot-action} Welcher Befehl fordert über `shutdown` einen sofortigen geordneten Neustart an?
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="Die Option `-c` bricht ein anstehendes Herunterfahren ab."}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="Die Option `-r` wählt den Neustart, und `now` plant ihn sofort."}
@@ -89,8 +86,7 @@ Welcher Befehl fordert über `shutdown` einen sofortigen geordneten Neustart an?
 
 `halt`, `poweroff` und `reboot` können Kompatibilitäts-Frontends für das init-System sein, ihre angeforderten Endzustände unterscheiden sich jedoch. Anhalten beendet den normalen Systembetrieb; abhängig von Plattform und Implementierung kann die Stromversorgung bestehen bleiben. Ausschalten fordert zusätzlich an, dass unterstützte Hardware die Stromversorgung beendet. Bevorzuge den Befehl, der das beabsichtigte Ergebnis benennt, und lies das lokale Handbuch, da das Kompatibilitätsverhalten abweichen kann.
 
-:::single-choice{#power-states-halt-versus-poweroff}
-Warum solltest du `halt` und `poweroff` unterscheiden?
+:::single-choice{#power-states-halt-versus-poweroff} Warum solltest du `halt` und `poweroff` unterscheiden?
 
 ::option[Power-off fordert das Abschalten der Stromversorgung an, während sie bei Halt bestehen bleiben kann.]{#power-states-power-distinction .correct explanation="Der angeforderte abschließende Hardwarezustand kann sich unterscheiden, obwohl beide den normalen Betrieb beenden."}
 ::option[Halt startet Dienste nach dem Stoppen immer neu.]{#power-states-halt-restarts explanation="Halt ist ein Stoppzustand und keine Anforderung zum Neustart von Diensten."}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 Dies sind Ausgangspunkte; verwende für die tatsächliche Arbeitslast anwendungseigene Zustandsprüfungen.
 
-:::single-choice{#power-states-post-reboot-check}
-Was liefert den stärksten Beleg dafür, dass eine neu gestartete Anwendung bereit ist?
+:::single-choice{#power-states-post-reboot-check} Was liefert den stärksten Beleg dafür, dass eine neu gestartete Anwendung bereit ist?
 
 ::option[Dienstzustand, Protokolle und ihre Zustandsprüfung sind alle erfolgreich.]{#power-states-health-evidence .correct explanation="Mehrere System- und Anwendungsprüfungen bestätigen die Arbeitslast und nicht nur den Hostzugang."}
 ::option[Die Betriebsanzeige am Gehäuse leuchtet.]{#power-states-light-on explanation="Die Stromversorgung der Hardware belegt nicht den Zustand der Anwendung."}

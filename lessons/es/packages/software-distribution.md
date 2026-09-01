@@ -24,8 +24,7 @@ Un paquete binario puede contener ejecutables, bibliotecas, documentación, conf
 
 No todos los paquetes son aplicaciones interactivas. Un paquete puede proporcionar una biblioteca, un componente del kernel, datos de idioma, fuentes, símbolos de depuración o metadatos que dependan de un conjunto de otros paquetes.
 
-:::single-choice{#software-distribution-package-metadata}
-¿Qué información suele ser un metadato del paquete en vez de un ejecutable de la aplicación?
+:::single-choice{#software-distribution-package-metadata} ¿Qué información suele ser un metadato del paquete en vez de un ejecutable de la aplicación?
 
 ::option[Las instrucciones de CPU que implementan la aplicación.]{#software-distribution-executable-code explanation="Las instrucciones compiladas forman parte del contenido del paquete, no de los metadatos de dependencias."}
 ::option[Las relaciones de dependencia declaradas.]{#software-distribution-dependencies .correct explanation="Los paquetes describen los paquetes necesarios o incompatibles para que las herramientas de gestión puedan razonar sobre la instalación."}
@@ -38,8 +37,7 @@ Un proyecto original desarrolla y publica el código fuente inicial. Después, l
 
 La infraestructura de compilación de la distribución produce paquetes para las versiones y arquitecturas compatibles. Las herramientas del repositorio publican metadatos y firmas que los clientes pueden verificar. Las responsabilidades exactas varían: algunos proyectos originales publican sus propios paquetes, mientras que las distribuciones pueden compilar por separado a partir del código fuente.
 
-:::single-choice{#software-distribution-maintainer-role}
-¿Qué tarea suele corresponder al mantenedor de un paquete de una distribución?
+:::single-choice{#software-distribution-maintainer-role} ¿Qué tarea suele corresponder al mantenedor de un paquete de una distribución?
 
 ::option[Adaptar el código fuente original a las reglas de compilación y dependencias de la distribución.]{#software-distribution-maintainer-integrates .correct explanation="Los mantenedores adaptan el software a las políticas, compilaciones, dependencias y entornos compatibles de la distribución."}
 ::option[Elegir la contraseña local de la cuenta de cada usuario.]{#software-distribution-maintainer-passwords explanation="Los datos de autenticación locales no guardan relación con el mantenimiento de paquetes."}
@@ -55,8 +53,7 @@ Dos formatos nativos muy utilizados son:
 
 Existen otros formatos nativos y formatos que abarcan varias distribuciones. Una extensión de archivo coincidente no garantiza por sí sola la compatibilidad: también importan la arquitectura del paquete, la versión de la distribución, las versiones de las bibliotecas, las políticas, las firmas y las dependencias.
 
-:::single-choice{#software-distribution-debian-format}
-¿Qué formato de paquete nativo utilizan Debian y Ubuntu?
+:::single-choice{#software-distribution-debian-format} ¿Qué formato de paquete nativo utilizan Debian y Ubuntu?
 
 ::option[`.deb`]{#software-distribution-format-deb .correct explanation="Las herramientas de paquetes de la familia Debian utilizan el formato de archivo `.deb`."}
 ::option[`.rpm`]{#software-distribution-format-rpm explanation="RPM es nativo de Fedora, RHEL y familias de distribuciones relacionadas."}
@@ -69,8 +66,7 @@ Un gestor de paquetes registra el estado instalado y coordina los cambios entre 
 
 La confianza sigue dependiendo de la configuración de los repositorios y de las claves de firma. Un paquete criptográficamente válido demuestra su asociación con una clave de confianza, no que cualquier software de terceros sea seguro o apropiado. Cuando sea posible, prefiere los repositorios de la distribución y evalúa cualquier fuente externa antes de concederle privilegios de instalación.
 
-:::single-choice{#software-distribution-package-manager-benefit}
-¿Cuál es una ventaja de instalar mediante un repositorio de paquetes de confianza?
+:::single-choice{#software-distribution-package-manager-benefit} ¿Cuál es una ventaja de instalar mediante un repositorio de paquetes de confianza?
 
 ::option[El gestor puede controlar las versiones y resolver las dependencias declaradas.]{#software-distribution-managed-lifecycle .correct explanation="Los metadatos del repositorio y los registros del estado instalado permiten coordinar la instalación, las actualizaciones y la eliminación."}
 ::option[Todos los programas instalados quedan inmunizados frente a fallos de seguridad.]{#software-distribution-no-vulnerabilities explanation="La gestión de paquetes facilita las actualizaciones, pero no puede garantizar que el software carezca de fallos."}

@@ -23,8 +23,7 @@ cat (1)              - concatenate files and print on the standard output
 
 输出是描述，而不是命令选项或示例列表。需要更多细节时，请使用 `man cat` 或 `cat --help`。
 
-:::single-choice{#describe-known-command}
-你知道名称 `cat`，并想查看它的一行手册页描述。应该运行哪个命令？
+:::single-choice{#describe-known-command} 你知道名称 `cat`，并想查看它的一行手册页描述。应该运行哪个命令？
 
 ::option[`man cat`]{#manual-cat explanation="`man cat` 会打开完整手册页，提供的内容多于所需的一行提示。"}
 ::option[`apropos cat`]{#apropos-cat explanation="`apropos` 会按关键词搜索描述，可能返回许多相关主题，范围比准确名称查找更广。"}
@@ -43,8 +42,7 @@ passwd (5)           - the password file
 
 括号中的数字是手册章节。这里 `passwd(1)` 说明用户命令，`passwd(5)` 说明文件格式。可以用 `man 1 passwd` 或 `man 5 passwd` 明确打开其中一页。
 
-:::single-choice{#interpret-whatis-section}
-在输出 `passwd (5) - the password file` 中，`(5)` 表示什么？
+:::single-choice{#interpret-whatis-section} 在输出 `passwd (5) - the password file` 中，`(5)` 表示什么？
 
 ::option[`passwd` 命令接受的第五个选项。]{#fifth-option explanation="该数字不是选项位置；选项记录在所选手册页内部。"}
 ::option[包含文件格式页面的手册章节。]{#section-five .correct explanation="第 5 节用于记录文件格式和约定，因此 `passwd(5)` 指向该手册章节。"}
@@ -65,8 +63,7 @@ $ apropos password
 
 不知道命令名但知道任务时，请使用 `apropos`；已经知道名称时，请使用 `whatis`。
 
-:::single-choice{#search-by-purpose}
-你不知道命令名，但想在手册描述中搜索关键词 `password`。哪个命令适合这项任务？
+:::single-choice{#search-by-purpose} 你不知道命令名，但想在手册描述中搜索关键词 `password`。哪个命令适合这项任务？
 
 ::option[`apropos password`]{#apropos-password .correct explanation="`apropos` 会在手册页名称和描述中搜索关键词，帮助发现相关主题。"}
 ::option[`whatis password`]{#exact-password explanation="`whatis` 会查找准确名为 `password` 的手册主题，并不是通用关键词搜索接口。"}
@@ -77,8 +74,7 @@ $ apropos password
 
 如果 `whatis` 报告没有合适条目，该主题可能没有已安装的手册页，或者手册数据库已经过期。这个结果并不能证明不存在同名可执行文件、别名、函数或内建命令。请用 `type NAME` 查看 Bash 如何解析命令名，再选择合适的帮助来源。
 
-:::single-choice{#whatis-versus-type}
-`whatis deploy` 找不到手册描述。哪个命令会检查 Bash 是否把 `deploy` 解析为别名、函数、内建命令或可执行文件？
+:::single-choice{#whatis-versus-type} `whatis deploy` 找不到手册描述。哪个命令会检查 Bash 是否把 `deploy` 解析为别名、函数、内建命令或可执行文件？
 
 ::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="改变手册数据库查询方式，并不能显示 Bash 中所有别名、函数、内建命令和路径解析结果。"}
 ::option[`man 5 deploy`]{#manual-five-deploy explanation="这会尝试打开第 5 节页面，并不能确定 Bash 如何解析命令名。"}

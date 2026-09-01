@@ -24,8 +24,7 @@ meta_keywords: "最佳网络安全 Linux 发行版，网络安全 Linux, Kali Li
 
 安全工具只能用于自己拥有或已获得明确测试许可的系统。专用发行版提供的是工具，而不是授权、判断能力或安全使用工具所需的技能。
 
-:::single-choice{#confirm-testing-authorization}
-对某个系统使用渗透测试工具前，必须确认什么？
+:::single-choice{#confirm-testing-authorization} 对某个系统使用渗透测试工具前，必须确认什么？
 
 ::option[你拥有该系统，或已获得明确的测试许可]{#authorized-system .correct explanation="安全测试需要系统所有者的明确授权；拥有工具或发行版并不会产生测试他人系统的许可。"}
 ::option[安全发行版已经包含你想运行的工具]{#tool-is-installed explanation="工具是否可用并不能证明获得许可；授权必须来自被测试系统的所有者。"}
@@ -51,8 +50,7 @@ Kali 的突出之处在于它在一个地方提供了大量的安全工具，并
 
 同时，Kali 不建议作为新用户的通用 Linux 桌面。即使是 Kali 自己的文档也警告说，对于不熟悉 Linux 或只想使用普通桌面环境的人来说，它不是合适的发行版。
 
-:::single-choice{#match-kali-use-case}
-哪种情况最适合使用 Kali Linux？
+:::single-choice{#match-kali-use-case} 哪种情况最适合使用 Kali Linux？
 
 ::option[有经验的测试人员需要准备好的安全审计环境]{#experienced-kali-user .correct explanation="Kali 面向已经理解 Linux 和所执行工作的用户，专用于渗透测试与安全审计。"}
 ::option[Linux 新用户想要处理日常任务的通用桌面]{#general-desktop-beginner explanation="Kali 官方文档不建议把它作为首个通用桌面；对初学者友好的发行版更合适。"}
@@ -71,8 +69,7 @@ Kali 的突出之处在于它在一个地方提供了大量的安全工具，并
 
 BlackArch 功能强大，但它不是初学者的首选。其常见问题解答（FAQ）指出，如果你不熟悉 Arch Linux 或 Linux，由于学习曲线陡峭，你应该避免使用 BlackArch。这使得它更适合已经了解 Arch 并需要海量安全工具库的高级用户。
 
-:::single-choice{#match-blackarch-user}
-哪种背景最有助于使用 BlackArch？
+:::single-choice{#match-blackarch-user} 哪种背景最有助于使用 BlackArch？
 
 ::option[没有 Linux 经验，也不想了解系统管理]{#no-linux-experience explanation="BlackArch 并非 Linux 入门发行版；它的 Arch 基础和庞大工具集需要大量既有知识。"}
 ::option[已经熟悉 Arch Linux 及其维护模式]{#arch-experience .correct explanation="BlackArch 构建在 Arch 之上，并假定用户能够驾驭该环境；其官方指南也提醒新用户注意学习曲线。"}
@@ -85,8 +82,7 @@ BlackArch 功能强大，但它不是初学者的首选。其常见问题解答�
 
 这使得 Tails 成为一个重要的以安全为重点的 Linux 发行版，但原因不同。如果你的目标是隐私、匿名或在不可信计算机上更安全地使用，Tails 可能是最合适的选择。如果你的目标是渗透测试，Kali 或 Parrot 通常是更直接的选择。
 
-:::single-choice{#match-tails-use-case}
-哪项目标最适合 Tails？
+:::single-choice{#match-tails-use-case} 哪项目标最适合 Tails？
 
 ::option[加载一个基于 Arch 的大型渗透测试工具仓库]{#blackarch-toolkit explanation="基于 Arch 的安全工具仓库描述的是 BlackArch；Tails 注重便携隐私和抗审查。"}
 ::option[使用为保护隐私和尽量不留本地痕迹而设计的便携系统]{#tails-privacy .correct explanation="Tails 通过 Tor 转发网络活动，并被设计为关机后不在计算机上留下痕迹；它关注隐私而不是渗透测试。"}

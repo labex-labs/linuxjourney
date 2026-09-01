@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 Das ist praktisch für Platzhalter. `touch` fügt einer Datei jedoch keinen Text hinzu. Für eine nicht leere Datei benötigst du einen Texteditor oder einen anderen Befehl, der Inhalte schreibt.
 
-:::single-choice{#create-several-empty-files}
-Welcher Befehl erstellt drei leere Dateien namens `one`, `two` und `three`, sofern sie noch nicht existieren?
+:::single-choice{#create-several-empty-files} Welcher Befehl erstellt drei leere Dateien namens `one`, `two` und `three`, sofern sie noch nicht existieren?
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="Durch die Anführungszeichen entsteht ein einzelner Dateiname mit Leerzeichen. Der Befehl bezieht sich daher auf eine statt auf drei Dateien."}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` erstellt Verzeichnisse und keine leeren regulären Dateien. Für die verlangten Dateien verwendest du `touch`."}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 Die Ausgabe von `ls -l` zeigt normalerweise die Änderungszeit, nicht die Zugriffszeit.
 
-:::single-choice{#touch-existing-file}
-Was geschieht bei `touch report.txt`, wenn `report.txt` bereits existiert?
+:::single-choice{#touch-existing-file} Was geschieht bei `touch report.txt`, wenn `report.txt` bereits existiert?
 
 ::option[Die Zeitstempel werden aktualisiert, ohne den Inhalt zu ersetzen.]{#timestamps-only .correct explanation="Standardmäßig aktualisiert `touch` die Zugriffs- und Änderungszeit einer vorhandenen Datei. Die gespeicherten Daten werden nicht überschrieben."}
 ::option[Der Inhalt wird gelöscht und die Datei wird geleert.]{#contents-deleted explanation="Eine leere Datei wird nur angelegt, wenn sie fehlt. Bei einer vorhandenen Datei aktualisiert `touch` die Zeitstempel und erhält den Inhalt."}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-Welcher Befehl aktualisiert ausschließlich die Änderungszeit von `notes.txt`?
+:::single-choice{#change-modification-time-only} Welcher Befehl aktualisiert ausschließlich die Änderungszeit von `notes.txt`?
 
 ::option[`touch -a notes.txt`]{#access-only explanation="Die Option `-a` ändert nur die Zugriffszeit. Sie wählt nicht die hier verlangte Änderungszeit aus."}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="Die Option `-m` beschränkt die Änderung auf die Änderungszeit. Die Zugriffszeit bleibt unverändert."}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 Hier liefert `file1.txt` die Zeitstempel, während `file2.txt` geändert wird. Mit `-t` kannst du eine Zeit außerdem in einem kompakten numerischen Format angeben.
 
-:::single-choice{#copy-reference-timestamps}
-Welcher Befehl kopiert die Zeitstempel von `source.txt` nach `target.txt`?
+:::single-choice{#copy-reference-timestamps} Welcher Befehl kopiert die Zeitstempel von `source.txt` nach `target.txt`?
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="Bei `-r` ist der nächste Operand die Referenzdatei; der letzte Operand bezeichnet die Datei, deren Zeitstempel aktualisiert werden."}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="Damit wären die Rollen vertauscht: `target.txt` würde als Referenz dienen und `source.txt` würde aktualisiert."}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 Fehlt `existing-file.txt`, legt dieser Befehl sie nicht an. Dieses Verhalten ist in Skripten hilfreich, die einen Zeitstempel aktualisieren sollen, ohne versehentlich eine neue Datei zu erzeugen.
 
-:::single-choice{#update-without-creating}
-Welcher Befehl aktualisiert `status.log`, falls die Datei existiert, legt sie aber nicht an, wenn sie fehlt?
+:::single-choice{#update-without-creating} Welcher Befehl aktualisiert `status.log`, falls die Datei existiert, legt sie aber nicht an, wenn sie fehlt?
 
 ::option[`touch -a status.log`]{#touch-access explanation="Die Option `-a` wählt die Zugriffszeit aus, eine fehlende Datei kann aber weiterhin angelegt werden. Sie verhindert das Erstellen nicht."}
 ::option[`touch -m status.log`]{#touch-modification explanation="Die Option `-m` wählt die Änderungszeit aus, verhindert jedoch nicht das Anlegen einer fehlenden Datei. Dafür dient `-c`."}

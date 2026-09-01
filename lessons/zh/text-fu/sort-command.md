@@ -41,8 +41,7 @@ elephant
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-不使用键或数值选项时，`sort animals.txt` 会做什么？
+:::single-choice{#sort-lines-ascending} 不使用键或数值选项时，`sort animals.txt` 会做什么？
 
 ::option[根据当前 locale 排列完整的输入行。]{#sort-locale-lines .correct explanation="默认情况下，`sort` 使用当前 locale 的排序规则比较完整的行。"}
 ::option[排列每行内部的单词，但保持各行顺序不变。]{#sort-words-within-lines explanation="`sort` 把每一行视为一条记录，不会重新排列单行内部的单词。"}
@@ -62,8 +61,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-哪个命令会按反向顺序排列 `animals.txt`？
+:::single-choice{#sort-reverse-order} 哪个命令会按反向顺序排列 `animals.txt`？
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="`-n` 请求数值比较，并不表示反向顺序。"}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="`-u` 会抑制重复键，并不反转输出。"}
@@ -83,8 +81,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 需要时可以组合选项。`sort -nr scores.txt` 会按数值比较，并把较大的值放在前面。
 
-:::single-choice{#sort-numbers-descending}
-哪个命令会把 `scores.txt` 中的数值行按从大到小排列？
+:::single-choice{#sort-numbers-descending} 哪个命令会把 `scores.txt` 中的数值行按从大到小排列？
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="它选择数值比较，但默认方向会把较小的值放在前面。"}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n` 选择数值比较，`-r` 将其反转，从而得到数值降序。"}
@@ -104,8 +101,7 @@ alice:30
 
 这里，`-t ':'` 选择分隔符，`-k 2,2` 把键限制在字段 2，附加的 `n` 则对该键进行数值比较。如果没有末尾的 `,2`，从字段 2 开始的键通常会一直延续到行尾。
 
-:::single-choice{#sort-second-colon-field}
-哪个命令会只按 `users.txt` 中以冒号分隔的第二个字段进行数值排序？
+:::single-choice{#sort-second-colon-field} 哪个命令会只按 `users.txt` 中以冒号分隔的第二个字段进行数值排序？
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="这使用默认的空白分隔字段，并选择字段 1，而不是以冒号分隔的第二字段。"}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut` 会提取字段 2，但不会按该键对原始记录排序。"}
@@ -136,8 +132,7 @@ $ sort -o names.txt names.txt
 
 如果原始数据很重要，请保留备份，或先写入另一个文件并验证结果。
 
-:::single-choice{#sort-safe-same-file}
-在 GNU/Linux 上，哪个命令会让 `sort` 把排序结果安全地写回 `names.txt`，而不会先被 shell 重定向截断？
+:::single-choice{#sort-safe-same-file} 在 GNU/Linux 上，哪个命令会让 `sort` 把排序结果安全地写回 `names.txt`，而不会先被 shell 重定向截断？
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="GNU `sort` 会在按需读取后管理 `-o` 输出，因此 shell 不会通过 `>` 预先截断输入。"}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="shell 会在启动 `sort` 前截断 `names.txt`，所以该命令可能丢失输入。"}

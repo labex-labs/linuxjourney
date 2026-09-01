@@ -20,8 +20,7 @@ Dans une disposition MBR, ce secteur contient une petite zone de code d'amorçag
 
 Le démarrage BIOS depuis un disque GPT est possible, mais le MBR protecteur ne contient pas à lui seul les étapes ultérieures du chargeur. Sur GPT, GRUB utilise couramment une petite partition BIOS Boot pour son code principal intégré. La disposition exacte dépend du chargeur installé.
 
-:::single-choice{#boot-bios-legacy-first-sector}
-Que charge généralement en premier un BIOS historique depuis le disque de démarrage choisi ?
+:::single-choice{#boot-bios-legacy-first-sector} Que charge généralement en premier un BIOS historique depuis le disque de démarrage choisi ?
 
 ::option[Le secteur d'amorçage initial contenant un petit code de démarrage.]{#boot-bios-boot-sector .correct explanation="Le parcours historique du micrologiciel transfère le contrôle au code situé dans le premier secteur du disque choisi."}
 ::option[L'intégralité du système de fichiers racine Linux dans la mémoire du micrologiciel.]{#boot-bios-entire-root explanation="Le secteur de première étape est minuscule ; un logiciel ultérieur localise le noyau et le stockage racine."}
@@ -34,8 +33,7 @@ Le micrologiciel UEFI peut comprendre un système de fichiers défini dans une p
 
 L'ESP contient des applications de démarrage et leurs fichiers associés, pas « toutes les informations de démarrage ». Les images du noyau, les fichiers initramfs et la configuration du chargeur peuvent se trouver sur cette partition ou ailleurs selon la conception. GPT est conventionnel sur les systèmes UEFI, mais l'interface du micrologiciel et le schéma de table de partitions restent deux couches distinctes.
 
-:::single-choice{#boot-bios-uefi-esp}
-Que charge généralement l'UEFI depuis une partition système EFI ?
+:::single-choice{#boot-bios-uefi-esp} Que charge généralement l'UEFI depuis une partition système EFI ?
 
 ::option[Un exécutable EFI choisi par une entrée de démarrage du micrologiciel.]{#boot-bios-efi-executable .correct explanation="La gestion du démarrage UEFI indique au micrologiciel un fichier exécutable situé sur une partition système prise en charge."}
 ::option[Un script shell POSIX provenant de n'importe quel répertoire personnel ext4.]{#boot-bios-shell-script explanation="Le micrologiciel charge des formats exécutables définis depuis des chemins de démarrage pris en charge ; il n'exécute pas un shell utilisateur ordinaire."}
@@ -48,8 +46,7 @@ Lorsque Secure Boot est activé, l'UEFI vérifie les signatures de la chaîne de
 
 Secure Boot ne chiffre pas le disque et ne prouve pas que tous les programmes de l'espace utilisateur sont sûrs. Il contribue à empêcher l'acceptation de code non autorisé avant le démarrage selon la politique de confiance configurée.
 
-:::single-choice{#boot-bios-secure-boot-purpose}
-Que fait principalement respecter UEFI Secure Boot ?
+:::single-choice{#boot-bios-secure-boot-purpose} Que fait principalement respecter UEFI Secure Boot ?
 
 ::option[Le chiffrement automatique de tous les fichiers de tous les disques.]{#boot-bios-secure-encryption explanation="La confidentialité du disque nécessite un système de chiffrement distinct."}
 ::option[L'autorisation par signature des exécutables de la chaîne de démarrage.]{#boot-bios-secure-signatures .correct explanation="Le micrologiciel et les composants vérifiés ultérieurs acceptent le code selon les clés et la politique enregistrées."}
@@ -62,8 +59,7 @@ Les touches d'accès à la configuration dépendent du fabricant et du modèle. 
 
 Notez les valeurs existantes et les clés de récupération avant de modifier Secure Boot, le mode du contrôleur de stockage, le TPM, la virtualisation ou l'ordre de démarrage. Un changement du micrologiciel peut rendre temporairement inaccessibles les volumes chiffrés ou le système installé.
 
-:::single-choice{#boot-bios-setup-key}
-Pourquoi n'existe-t-il pas de touche universelle pour accéder à la configuration du micrologiciel ?
+:::single-choice{#boot-bios-setup-key} Pourquoi n'existe-t-il pas de touche universelle pour accéder à la configuration du micrologiciel ?
 
 ::option[Linux attribue une nouvelle touche aléatoire après chaque démarrage.]{#boot-bios-random-key explanation="Le système d'exploitation ne définit pas aléatoirement la touche de démarrage précoce du micrologiciel."}
 ::option[La touche et le moment de l'appui sont choisis par le fabricant du système.]{#boot-bios-vendor-key .correct explanation="Les interfaces de micrologiciel varient selon les modèles ; la documentation officielle de l'appareil est donc nécessaire."}

@@ -24,8 +24,7 @@ $ sudo apt update
 
 Esto actualiza los índices locales de paquetes; no instala por sí solo todas las actualizaciones disponibles. Revisa las fuentes y los errores de autenticación comunicados en vez de ignorar las entradas fallidas.
 
-:::single-choice{#package-repositories-apt-update}
-¿Qué actualiza principalmente `apt update`?
+:::single-choice{#package-repositories-apt-update} ¿Qué actualiza principalmente `apt update`?
 
 ::option[Todos los binarios de paquetes instalados sin confirmación.]{#package-repositories-all-binaries explanation="La instalación de actualizaciones es una operación distinta de la actualización de metadatos."}
 ::option[Las contraseñas de los usuarios autorizados para instalar paquetes.]{#package-repositories-user-passwords explanation="La actualización de los índices de repositorios no modifica las credenciales de autenticación locales."}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 Esto solo ilustra la sintaxis; el dominio reservado `.invalid` no es un repositorio utilizable.
 
-:::single-choice{#package-repositories-apt-locations}
-¿Dónde puede leer APT definiciones activas de repositorios?
+:::single-choice{#package-repositories-apt-locations} ¿Dónde puede leer APT definiciones activas de repositorios?
 
 ::option[Únicamente en `/etc/apt/sources.list`.]{#package-repositories-only-main-list explanation="APT también lee archivos de fuentes compatibles en `/etc/apt/sources.list.d/`."}
 ::option[Únicamente en archivos situados dentro del directorio personal de cada usuario.]{#package-repositories-only-home explanation="La configuración de fuentes de APT para el sistema suele residir bajo `/etc/apt`."}
@@ -67,8 +65,7 @@ APT verifica los metadatos firmados de la versión del repositorio y después co
 
 Una firma válida demuestra que los metadatos proceden del poseedor de una clave de firma aceptada y que no se modificaron sin ser detectados. No demuestra que el software del editor carezca de defectos, sea inofensivo o resulte apropiado para el sistema. Confirma la huella de la clave y las instrucciones de la fuente a través de un canal de confianza independiente.
 
-:::single-choice{#package-repositories-signed-by}
-¿Qué finalidad de seguridad tiene `Signed-By` en una definición de fuente de APT?
+:::single-choice{#package-repositories-signed-by} ¿Qué finalidad de seguridad tiene `Signed-By` en una definición de fuente de APT?
 
 ::option[Cifrar todos los paquetes instalados para que el usuario root no pueda leerlos.]{#package-repositories-package-encryption explanation="La firma de repositorios comprueba el origen y la integridad, pero no oculta información al administrador local."}
 ::option[Limitar esa fuente a determinadas claves de firma.]{#package-repositories-key-scope .correct explanation="El campo vincula la verificación del repositorio a un llavero seleccionado en vez de a un conjunto global de claves sin restricciones."}
@@ -87,8 +84,7 @@ Un repositorio puede instalar paquetes y scripts de ciclo de vida con privilegio
 
 No copies instrucciones obsoletas que desactiven las comprobaciones de firmas ni canalices un script remoto sin auditar hacia un shell con privilegios.
 
-:::single-choice{#package-repositories-third-party-risk}
-¿Por qué añadir un repositorio de terceros amplía el límite de confianza del sistema?
+:::single-choice{#package-repositories-third-party-risk} ¿Por qué añadir un repositorio de terceros amplía el límite de confianza del sistema?
 
 ::option[Porque sus paquetes y scripts autenticados pueden instalarse con privilegios del sistema.]{#package-repositories-privileged-install .correct explanation="Confiar en la fuente de firma puede autorizar código y acciones del ciclo de vida que afectan al sistema operativo."}
 ::option[Porque hace que el kernel de Linux deje de aplicar permisos de archivos.]{#package-repositories-disable-permissions explanation="Configurar un repositorio no desactiva los mecanismos normales de control de acceso del kernel."}

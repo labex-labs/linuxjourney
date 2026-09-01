@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 Esse comando altera o usuário proprietário de `myfile` para `patty` e mantém seu grupo inalterado. Alterar o usuário proprietário de um arquivo normalmente exige privilégios adequados, mesmo que você seja seu proprietário atual. Essa restrição impede que usuários transfiram arquivos para evitar cotas ou outros controles baseados em propriedade.
 
-:::single-choice{#ownership-permissions-change-user}
-Qual comando altera o usuário proprietário de `myfile` para `patty`, mantendo seu grupo inalterado?
+:::single-choice{#ownership-permissions-change-user} Qual comando altera o usuário proprietário de `myfile` para `patty`, mantendo seu grupo inalterado?
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="Somente um nome de usuário como operando de propriedade de `chown` altera o usuário proprietário e preserva o grupo."}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` altera o grupo proprietário, não o usuário proprietário."}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 Depois disso, os bits de modo do grupo se aplicam quando o kernel seleciona a classe do grupo; alterar o grupo não adiciona automaticamente bits de leitura, escrita ou execução.
 
-:::single-choice{#ownership-permissions-change-group}
-O que `chgrp whales myfile` altera?
+:::single-choice{#ownership-permissions-change-group} O que `chgrp whales myfile` altera?
 
 ::option[O usuário proprietário registrado para `myfile`.]{#ownership-permissions-group-not-user explanation="O usuário proprietário é alterado com `chown`, não com `chgrp`."}
 ::option[Os membros listados no grupo `whales`.]{#ownership-permissions-group-members explanation="O comando altera os metadados do arquivo; ele não edita o banco de dados de associações a grupos do sistema."}
@@ -68,8 +66,7 @@ O comando atribui `patty` como usuário proprietário e `whales` como grupo prop
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-Qual especificação de propriedade atribui o usuário `patty` e o grupo `whales` em um único comando `chown`?
+:::single-choice{#ownership-permissions-change-both} Qual especificação de propriedade atribui o usuário `patty` e o grupo `whales` em um único comando `chown`?
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="Dois-pontos separam os nomes do usuário e do grupo na especificação conjunta de propriedade."}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="Uma barra não é o separador apresentado para um operando de usuário e grupo de `chown`."}
@@ -80,8 +77,7 @@ Qual especificação de propriedade atribui o usuário `patty` e o grupo `whales
 
 A opção `-R` altera a propriedade recursivamente, mas um comando recursivo amplo pode atravessar árvores de diretórios inesperadas ou afetar dados de serviços. Confirme o destino exato, entenda o comportamento de sua implementação para links simbólicos, examine previamente a árvore e verifique uma pequena amostra antes de alterar uma hierarquia extensa. Não copie comandos privilegiados de propriedade de exemplos para sistemas reais sem revisar seu escopo.
 
-:::single-choice{#ownership-permissions-mode-separate}
-Depois de alterar o grupo proprietário de um arquivo, o que acontece com seus bits comuns de permissão do grupo?
+:::single-choice{#ownership-permissions-mode-separate} Depois de alterar o grupo proprietário de um arquivo, o que acontece com seus bits comuns de permissão do grupo?
 
 ::option[Eles sempre se tornam automaticamente leitura e escrita.]{#ownership-permissions-mode-read-write explanation="`chgrp` não seleciona automaticamente um modo fixo para o grupo."}
 ::option[Eles são copiados do trio de permissões do proprietário.]{#ownership-permissions-mode-copied explanation="Os trios do proprietário e do grupo permanecem independentes quando a propriedade é alterada."}

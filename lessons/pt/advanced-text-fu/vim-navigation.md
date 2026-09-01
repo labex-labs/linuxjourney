@@ -25,8 +25,7 @@ Os movimentos fundamentais do modo Normal são:
 
 As teclas de seta normalmente realizam movimentos semelhantes, mas `h`, `j`, `k` e `l` mantêm suas mãos próximas dos outros comandos. Em uma linha visual quebrada, `j` e `k` normalmente se movem pelas linhas do arquivo; `gj` e `gk` se movem pelas linhas exibidas na tela.
 
-:::single-choice{#vim-navigation-down}
-No modo Normal, qual tecla move o cursor uma linha para baixo?
+:::single-choice{#vim-navigation-down} No modo Normal, qual tecla move o cursor uma linha para baixo?
 
 ::option[`k`]{#vim-nav-k-up explanation="O movimento `k` sobe uma linha."}
 ::option[`l`]{#vim-nav-l-right explanation="O movimento `l` avança um caractere para a direita."}
@@ -44,8 +43,7 @@ Digite uma quantidade positiva antes de muitos movimentos para repeti-los. Por e
 
 `5j` desce cinco linhas, enquanto `3l` avança três posições de caracteres para a direita quando possível. As quantidades também se combinam com palavras e comandos de edição.
 
-:::single-choice{#vim-navigation-count}
-O que `4k` faz no modo Normal?
+:::single-choice{#vim-navigation-count} O que `4k` faz no modo Normal?
 
 ::option[Desce quatro linhas quando possível.]{#vim-nav-four-down explanation="O movimento para baixo usa `j`; `k` segue na direção oposta."}
 ::option[Sobe quatro linhas quando possível.]{#vim-nav-four-up .correct explanation="A quantidade `4` repete quatro vezes o movimento `k` para cima."}
@@ -62,8 +60,7 @@ Alguns movimentos úteis por palavras são:
 
 `W`, `B` e `E` maiúsculos usam WORDS delimitadas por espaços em branco e tratam a pontuação de forma diferente. Use uma quantidade para percorrer várias palavras, como `3w`.
 
-:::single-choice{#vim-navigation-next-words}
-Qual comando do modo Normal avança até o início da terceira posição de palavra seguinte?
+:::single-choice{#vim-navigation-next-words} Qual comando do modo Normal avança até o início da terceira posição de palavra seguinte?
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="A quantidade aplica três vezes o movimento para a palavra seguinte."}
 ::option[`w3`]{#vim-nav-word-three explanation="Nessa forma, as quantidades precedem os movimentos; colocar `3` depois não expressa o deslocamento solicitado."}
@@ -80,8 +77,7 @@ Estes movimentos indicam posições da linha atual:
 
 A diferença entre `0` e `^` importa em linhas com recuo.
 
-:::single-choice{#vim-navigation-first-nonblank}
-Qual movimento vai ao primeiro caractere não vazio de uma linha recuada?
+:::single-choice{#vim-navigation-first-nonblank} Qual movimento vai ao primeiro caractere não vazio de uma linha recuada?
 
 ::option[`0`]{#vim-nav-column-zero explanation="Zero vai à primeira coluna, que pode conter espaços de recuo."}
 ::option[`$`]{#vim-nav-line-end explanation="O movimento cifrão indica o final da linha."}
@@ -100,8 +96,7 @@ Use estes comandos do modo Normal para saltos maiores:
 
 O comando `:42`, seguido de Enter, é outra forma de ir à linha 42.
 
-:::single-choice{#vim-navigation-file-end}
-Qual comando do modo Normal vai à última linha do buffer?
+:::single-choice{#vim-navigation-file-end} Qual comando do modo Normal vai à última linha do buffer?
 
 ::option[`gg`]{#vim-nav-first-line explanation="`gg` minúsculo vai à primeira linha, não à última."}
 ::option[`$`]{#vim-nav-current-line-end explanation="O movimento cifrão vai ao final da linha atual, não ao final do arquivo."}

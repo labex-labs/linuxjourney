@@ -16,8 +16,7 @@ Red Hat Enterprise Linux（**RHEL**）は、Red Hat が企業用途向けに開�
 
 RHEL はサーバー、データセンター、クラウド、規制対象の業務環境で使われます。汎用のコミュニティディストロとは異なり、サポート可能性と長期的なライフサイクル計画が価値の中心です。
 
-:::single-choice{#match-rhel-priorities}
-RHEL の設計目標に最も直接合う必要条件はどれですか？
+:::single-choice{#match-rhel-priorities} RHEL の設計目標に最も直接合う必要条件はどれですか？
 
 ::option[サポート期間のない継続的な機能変更]{#continuous-unsupported-change explanation="RHEL は継続的で無保証な変更ではなく、保守的で公表済みのライフサイクルに従います。"}
 ::option[予測可能なリリースと長期の専門サポート]{#predictable-enterprise-platform .correct explanation="計画されたライフサイクル、保守、専門サポートを必要とする組織向けで、本番システムを長期にわたりサポート可能にします。"}
@@ -36,8 +35,7 @@ RHEL は Red Hat エコシステムと密接です。Fedora は多くの新技�
 
 比較には [Fedora](https://labex.io/lesson/fedora)、ディストロ系統の概要には [Linux ディストリビューションの選び方](https://labex.io/lesson/choosing-a-linux-distribution) を参照してください。
 
-:::single-choice{#compare-fedora-and-rhel}
-Red Hat エコシステムで、Fedora は RHEL とどう関係しますか？
+:::single-choice{#compare-fedora-and-rhel} Red Hat エコシステムで、Fedora は RHEL とどう関係しますか？
 
 ::option[セキュリティ保守なしで残された古い RHEL リリース]{#fedora-old-rhel explanation="Fedora は期限切れの RHEL ではなく、独自のリリースと速い進行を持つ別のコミュニティディストリビューションです。"}
 ::option[RHEL に入る可能性がある技術の上流コミュニティプロジェクト]{#fedora-upstream .correct explanation="Fedora は速く進む上流コミュニティで、Red Hat はそこからより保守的な企業プラットフォームを開発します。"}
@@ -50,8 +48,7 @@ RHEL は RPM パッケージ形式と DNF などのツールでソフトウェ�
 
 長期保守と予測可能な更新が企業運用の中心なので、パッケージ管理は RHEL 管理者の中核技能です。
 
-:::single-choice{#relate-rpm-and-dnf}
-RHEL で RPM と DNF はどう連携しますか？
+:::single-choice{#relate-rpm-and-dnf} RHEL で RPM と DNF はどう連携しますか？
 
 ::option[RPM がパッケージ化されたソフトウェアを定義し、DNF がリポジトリ内容と依存関係を管理する]{#rpm-format-dnf-tool .correct explanation="ソフトウェアは RPM として配布され、DNF は検索、導入、更新、削除を行う上位ツールです。"}
 ::option[DNF がパッケージを定義し、RPM がグラフィカルデスクトップを管理する]{#dnf-format-rpm-desktop explanation="役割が逆で誤っています。RPM がパッケージシステムで、DNF が上位のソフトウェア管理を行います。"}
@@ -62,8 +59,7 @@ RHEL で RPM と DNF はどう連携しますか？
 
 企業が RHEL を選ぶ大きな理由は、長期計画、セキュリティ更新へのアクセス、各メジャーリリースで何年にもわたるライフサイクルを含む企業向けサポートです。企業にとって、このモデルは技術機能と同じほど重要になり得ます。
 
-:::single-choice{#use-published-lifecycle}
-公表されたサポートライフサイクルが組織に有用なのはなぜですか？
+:::single-choice{#use-published-lifecycle} 公表されたサポートライフサイクルが組織に有用なのはなぜですか？
 
 ::option[すべてのアプリケーションがテストなしで動くと保証するから]{#guarantee-all-applications explanation="支援付き OS でも全アプリケーションとの互換性は保証せず、確認とテストが必要です。"}
 ::option[サポート中のセキュリティ更新が不要になるから]{#avoid-security-updates explanation="ライフサイクルは保守と更新を提供しますが、更新自体が不要になるわけではありません。"}

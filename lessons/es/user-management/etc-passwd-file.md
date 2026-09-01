@@ -29,8 +29,7 @@ $ getent passwd root
 
 La primera orden puede revelar nombres y metadatos de cuentas, así que revisa la salida antes de compartirla públicamente.
 
-:::single-choice{#passwd-query-resolved-database}
-¿Qué orden consulta la base de datos passwd resuelta por NSS en vez de leer únicamente el archivo local?
+:::single-choice{#passwd-query-resolved-database} ¿Qué orden consulta la base de datos passwd resuelta por NSS en vez de leer únicamente el archivo local?
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="Esto muestra únicamente el archivo local y no incluye cuentas proporcionadas exclusivamente por otros orígenes NSS."}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="El archivo shadow contiene datos locales protegidos de contraseñas y caducidad y no debe mostrarse con este fin."}
@@ -57,16 +56,14 @@ Los siete campos separados por dos puntos son:
 
 El kernel no exige que los UID sean únicos en registros mal formados o duplicados deliberadamente, pero las cuentas que comparten un UID son indistinguibles para muchas decisiones de propiedad y permisos. Los administradores deben mantener normalmente los UID de las cuentas únicos.
 
-:::single-choice{#passwd-uid-field}
-En `root:x:0:0:root:/root:/bin/bash`, ¿qué campo contiene el UID?
+:::single-choice{#passwd-uid-field} En `root:x:0:0:root:/root:/bin/bash`, ¿qué campo contiene el UID?
 
 ::option[El segundo campo, `x`]{#passwd-second-password explanation="El segundo campo es el marcador de contraseña, no la identidad numérica del usuario."}
 ::option[El cuarto campo, el segundo `0`]{#passwd-fourth-gid explanation="El campo 4 es el GID principal, no el UID."}
 ::option[El tercer campo, el primer `0`]{#passwd-third-uid .correct explanation="El campo 3 es el UID, por lo que el primer cero identifica este registro con el UID 0."}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-¿Qué campo de un registro passwd almacena el GID principal de la cuenta?
+:::single-choice{#passwd-primary-gid-field} ¿Qué campo de un registro passwd almacena el GID principal de la cuenta?
 
 ::option[El campo 5]{#passwd-gecos-five explanation="El quinto campo es GECOS o comentario."}
 ::option[El campo 4]{#passwd-gid-four .correct explanation="El cuarto campo separado por dos puntos identifica numéricamente el grupo principal."}
@@ -79,8 +76,7 @@ En los sistemas habituales con contraseñas shadow, `x` en el campo 2 dirige las
 
 Esto no demuestra que la cuenta no pueda autenticarse por ningún método. Las claves SSH, los certificados, los tokens o los mecanismos específicos de un servicio pueden ser independientes. Del mismo modo, un campo de contraseña vacío tiene un comportamiento sensible para la seguridad que depende de la pila de autenticación; no lo crees ni lo «corrijas» manualmente.
 
-:::single-choice{#passwd-x-placeholder}
-¿Qué significa habitualmente `x` en el campo 2 de un registro local de `/etc/passwd`?
+:::single-choice{#passwd-x-placeholder} ¿Qué significa habitualmente `x` en el campo 2 de un registro local de `/etc/passwd`?
 
 ::option[La cuenta no tiene garantizado ningún método de autenticación.]{#passwd-no-auth-guarantee explanation="El marcador no describe todos los métodos de autenticación posibles ni significa por sí mismo que la cuenta no pueda usarse."}
 ::option[Se ha eliminado el directorio personal de la cuenta.]{#passwd-home-deleted explanation="La información del directorio personal se almacena en el campo 6 y no está relacionada con el marcador `x`."}
@@ -93,8 +89,7 @@ Muchos registros representan servicios en vez de personas. Las identidades de se
 
 No deduzcas el propósito de una cuenta únicamente por su intervalo de UID sin consultar la política de la distribución. Los intervalos de asignación varían y las cuentas gestionadas centralmente pueden seguir convenciones distintas.
 
-:::single-choice{#passwd-nologin-shell}
-¿Cuál es un propósito habitual de un programa de inicio de sesión como `/usr/sbin/nologin` en el campo 7?
+:::single-choice{#passwd-nologin-shell} ¿Cuál es un propósito habitual de un programa de inicio de sesión como `/usr/sbin/nologin` en el campo 7?
 
 ::option[Eliminar los archivos de la cuenta cada vez que se detiene un servicio.]{#passwd-nologin-delete explanation="El programa de inicio de sesión no elimina automáticamente datos propiedad de la cuenta ni gestiona archivos al detener servicios."}
 ::option[Impedir un shell interactivo normal mediante rutas de inicio de sesión que respetan el campo.]{#passwd-nologin-purpose .correct explanation="Un programa que impide iniciar sesión se usa habitualmente para cuentas de servicio que no deben recibir un shell interactivo mediante un inicio de sesión normal."}

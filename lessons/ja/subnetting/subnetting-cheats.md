@@ -23,8 +23,7 @@ value: 128  64  32  16   8  4  2  1
 
 8個の値をすべて足すと255になります。10進数の192は `128 + 64` なので、2進表記は `11000000` です。
 
-:::single-choice{#subnet-cheats-binary-192}
-10進数の192を8ビットの2進数で表したものはどれですか？
+:::single-choice{#subnet-cheats-binary-192} 10進数の192を8ビットの2進数で表したものはどれですか？
 
 ::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="128と64の位置が1で、残りの位置が0です。"}
 ::option[`10101000`]{#subnet-cheats-168 explanation="このパターンは168です。"}
@@ -42,8 +41,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 たとえば `/19` には、完全な16個のプレフィックスビットと、第3オクテットの3ビットが含まれるため、マスクは `255.255.224.0` です。
 
-:::single-choice{#subnet-cheats-prefix-19}
-IPv4 の `/19` に対応するマスクはどれですか？
+:::single-choice{#subnet-cheats-prefix-19} IPv4 の `/19` に対応するマスクはどれですか？
 
 ::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="完全な16ビットに3ビットを加えると、255、255、224になります。"}
 ::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="プレフィックス長はビット数であり、マスクのオクテットにそのまま入る10進数ではありません。"}
@@ -56,8 +54,7 @@ IPv4 の `/19` に対応するマスクはどれですか？
 
 アドレス `198.51.100.77/27` は64から95までのブロックに入ります。
 
-:::single-choice{#subnet-cheats-77-network}
-`198.51.100.77/27` のネットワークアドレスはどれですか？
+:::single-choice{#subnet-cheats-77-network} `198.51.100.77/27` のネットワークアドレスはどれですか？
 
 ::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="このブロックは最後のオクテットが32から63までの値を含みます。"}
 ::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="このアドレスにはホストビットが含まれており、ブロック境界ではありません。"}
@@ -75,8 +72,7 @@ IPv4 の `/19` に対応するマスクはどれですか？
 
 10進数に戻すときは、ビットが1になっている位取りだけを足します。IPv4 のオクテットを扱うときは、常に8個すべての位置を残してください。
 
-:::single-choice{#subnet-cheats-binary-123}
-10進数の123に等しい8ビットの値はどれですか？
+:::single-choice{#subnet-cheats-binary-123} 10進数の123に等しい8ビットの値はどれですか？
 
 ::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="数値としては同じですが、オクテット表記では8個の位置を保つ必要があります。"}
 ::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="1になっている位置を足すと 64 + 32 + 16 + 8 + 2 + 1 になります。"}

@@ -28,8 +28,7 @@ $ kill -TERM 12445
 
 L’action par défaut de `SIGTERM` est la terminaison, mais un programme peut l’intercepter ou l’ignorer. Un service bien conçu peut employer un gestionnaire pour cesser d’accepter du travail, enregistrer l’état approprié et libérer les ressources de l’application. Il s’agit d’une possibilité, pas d’une garantie de nettoyage immédiat ou réussi.
 
-:::single-choice{#killing-processes-default-signal}
-Quel signal `kill PID` demande-t-il par défaut ?
+:::single-choice{#killing-processes-default-signal} Quel signal `kill PID` demande-t-il par défaut ?
 
 ::option[`SIGKILL`]{#killing-processes-default-kill explanation="Le signal forcé impossible à intercepter doit être choisi explicitement."}
 ::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="Sans autre opérande de signal, `kill` envoie la demande standard de terminaison."}
@@ -48,8 +47,7 @@ Vérifiez son utilisateur, son heure de démarrage, sa commande, son parent, son
 
 Vous pouvez envoyer des signaux aux processus que vous possédez, sous réserve des règles d’identifiants. L’envoi d’un signal au processus d’un autre utilisateur nécessite généralement les privilèges appropriés. N’employez pas de commande large fondée sur un nom avant d’avoir examiné chaque correspondance.
 
-:::single-choice{#killing-processes-pid-reuse}
-Pourquoi faut-il examiner un PID immédiatement avant de lui envoyer un signal ?
+:::single-choice{#killing-processes-pid-reuse} Pourquoi faut-il examiner un PID immédiatement avant de lui envoyer un signal ?
 
 ::option[Le PID change chaque fois que le processus lit un fichier.]{#killing-processes-pid-read explanation="Un processus actif conserve normalement le même PID pendant toute sa durée de vie."}
 ::option[Le noyau peut réutiliser un PID après la fin du processus précédent.]{#killing-processes-pid-reused .correct explanation="Un PID numérique mémorisé peut désigner ultérieurement un autre processus actif."}
@@ -66,8 +64,7 @@ $ kill -0 12445
 
 Une réussite signifie qu’un processus possédant ce PID existe et que l’appelant est autorisé à lui envoyer un signal à cet instant. Un échec est ambigu : le processus peut ne pas exister ou l’appelant manquer de permission. Examinez l’erreur et l’état de sortie au lieu de traduire chaque échec par « ne s’exécute pas ». Ce contrôle n’est qu’instantané et ne supprime pas une éventuelle concurrence liée à la réutilisation ultérieure du PID.
 
-:::single-choice{#killing-processes-signal-zero}
-Qu’établit la réussite de `kill -0 PID` à cet instant ?
+:::single-choice{#killing-processes-signal-zero} Qu’établit la réussite de `kill -0 PID` à cet instant ?
 
 ::option[Le processus a terminé tout son nettoyage et s’est arrêté.]{#killing-processes-zero-exited explanation="La réussite indique une cible active à laquelle un signal peut être envoyé, et non une terminaison achevée."}
 ::option[Le processus conservera définitivement ce PID.]{#killing-processes-zero-permanent explanation="Le contrôle est instantané et les PID peuvent être réutilisés après la fin."}
@@ -86,8 +83,7 @@ $ kill -KILL 12445
 
 Les autres signaux n’ont de sens que selon le contrat du programme destinataire. `SIGHUP` demande souvent un rechargement de la configuration, mais certains programmes conservent son comportement par défaut de terminaison. `SIGSTOP` suspend sans nettoyage et `SIGCONT` reprend un processus arrêté.
 
-:::single-choice{#killing-processes-kill-tradeoff}
-Quel est le principal inconvénient opérationnel de `SIGKILL` ?
+:::single-choice{#killing-processes-kill-tradeoff} Quel est le principal inconvénient opérationnel de `SIGKILL` ?
 
 ::option[Il ne peut être traité que par le propriétaire du processus.]{#killing-processes-kill-owner-handler explanation="Aucun processus cible ne peut installer de gestionnaire pour `SIGKILL`."}
 ::option[Il suspend le processus sans jamais le terminer.]{#killing-processes-kill-pauses explanation="`SIGSTOP` suspend ; `SIGKILL` termine."}

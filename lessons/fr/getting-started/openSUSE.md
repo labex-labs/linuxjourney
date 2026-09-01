@@ -22,16 +22,14 @@ openSUSE est connue pour ses deux grandes approches : Leap et Tumbleweed. Leap e
 
 Cette distinction donne à openSUSE une flexibilité inhabituelle. Les utilisateurs choisissent le style qui leur convient sans devoir passer à une tout autre famille de distributions.
 
-:::single-choice{#choose-opensuse-leap}
-Quelle option openSUSE convient le mieux à une personne qui souhaite des versions traditionnelles et régulières ?
+:::single-choice{#choose-opensuse-leap} Quelle option openSUSE convient le mieux à une personne qui souhaite des versions traditionnelles et régulières ?
 
 ::option[Tumbleweed]{#tumbleweed-release explanation="Tumbleweed est la publication continue d'openSUSE. Elle convient mieux aux personnes qui privilégient les paquets récents."}
 ::option[YaST]{#yast-not-release explanation="YaST est un outil d'installation et de configuration, pas un modèle de publication d'openSUSE. Il sert à administrer le système."}
 ::option[Leap]{#leap-release .correct explanation="Leap suit un modèle de versions régulières et privilégie une base système plus prudente. Cela correspond à la préférence indiquée."}
 :::
 
-:::single-choice{#recognize-tumbleweed-model}
-Qu'est-ce qui distingue Tumbleweed de Leap ?
+:::single-choice{#recognize-tumbleweed-model} Qu'est-ce qui distingue Tumbleweed de Leap ?
 
 ::option[Elle fournit en permanence des mises à jour de paquets testées]{#continuous-tested-updates .correct explanation="Tumbleweed est une publication continue qui diffuse régulièrement des instantanés testés. Les utilisateurs reçoivent les nouveautés sans attendre une grande version régulière."}
 ::option[Elle ne reçoit les logiciels qu'au moyen de grandes versions fixes]{#fixed-major-releases explanation="Les versions régulières fixes correspondent davantage à Leap. Tumbleweed est mise à jour en continu."}
@@ -44,8 +42,7 @@ openSUSE emploie le format RPM et des outils comme `zypper` pour installer, mett
 
 Comprendre les familles de paquets aide à comparer les distributions. Pour une comparaison plus large, consultez [Choisir une distribution Linux](https://labex.io/fr/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#identify-zypper-role}
-À quoi sert `zypper` dans openSUSE ?
+:::single-choice{#identify-zypper-role} À quoi sert `zypper` dans openSUSE ?
 
 ::option[À choisir entre les thèmes de fond d'écran du bureau]{#zypper-wallpaper explanation="L'apparence du bureau se configure avec ses propres outils. `zypper` gère plutôt les paquets logiciels."}
 ::option[À installer, mettre à jour et supprimer les paquets logiciels]{#zypper-package-tool .correct explanation="`zypper` est l'outil de gestion des paquets en ligne de commande d'openSUSE. Il agit sur les logiciels distribués par les dépôts RPM."}
@@ -58,8 +55,7 @@ Comprendre les familles de paquets aide à comparer les distributions. Pour une 
 
 C'est l'une des principales raisons pour lesquelles openSUSE attire les personnes qui veulent de puissants outils d'administration sans tout configurer manuellement.
 
-:::single-choice{#identify-yast-purpose}
-Que YaST est-il conçu pour fournir ?
+:::single-choice{#identify-yast-purpose} Que YaST est-il conçu pour fournir ?
 
 ::option[Un dépôt continu ne contenant que les applications les plus récentes]{#yast-repository explanation="Tumbleweed fournit le modèle de dépôt continu. YaST est un outil d'administration et de configuration, pas une branche logicielle."}
 ::option[Un format de paquets partagé avec les systèmes Debian et Ubuntu]{#yast-package-format explanation="openSUSE emploie les paquets RPM, tandis que les systèmes basés sur Debian emploient `.deb`. YaST n'est pas un format de paquets."}

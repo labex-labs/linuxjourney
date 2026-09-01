@@ -23,8 +23,7 @@ cat (1)              - concatenate files and print on the standard output
 
 Die Ausgabe ist eine Beschreibung, keine Liste von Befehlsoptionen oder Beispielen. Verwende `man cat` oder `cat --help`, wenn du weitere Einzelheiten benötigst.
 
-:::single-choice{#describe-known-command}
-Du kennst den Namen `cat` und möchtest seine einzeilige Beschreibung aus dem Handbuch sehen. Welchen Befehl führst du aus?
+:::single-choice{#describe-known-command} Du kennst den Namen `cat` und möchtest seine einzeilige Beschreibung aus dem Handbuch sehen. Welchen Befehl führst du aus?
 
 ::option[`man cat`]{#manual-cat explanation="`man cat` öffnet die vollständige Handbuchseite und liefert damit mehr als die verlangte einzeilige Erinnerung."}
 ::option[`apropos cat`]{#apropos-cat explanation="`apropos` durchsucht Beschreibungen nach einem Stichwort und kann zahlreiche verwandte Themen liefern. Das ist breiter als eine genaue Namenssuche."}
@@ -43,8 +42,7 @@ passwd (5)           - the password file
 
 Die Zahl in Klammern bezeichnet den Handbuchabschnitt. Hier beschreibt `passwd(1)` den Benutzerbefehl und `passwd(5)` ein Dateiformat. Mit `man 1 passwd` oder `man 5 passwd` öffnest du eine Seite gezielt.
 
-:::single-choice{#interpret-whatis-section}
-Was bezeichnet `(5)` in der Ausgabe `passwd (5) - the password file`?
+:::single-choice{#interpret-whatis-section} Was bezeichnet `(5)` in der Ausgabe `passwd (5) - the password file`?
 
 ::option[Die fünfte Option, die der Befehl `passwd` akzeptiert.]{#fifth-option explanation="Die Zahl ist keine Optionsposition. Optionen werden innerhalb einer ausgewählten Handbuchseite dokumentiert."}
 ::option[Den Handbuchabschnitt, der die Dateiformatseite enthält.]{#section-five .correct explanation="Abschnitt 5 behandelt Dateiformate und Konventionen; `passwd(5)` verweist daher auf diesen Handbuchabschnitt."}
@@ -65,8 +63,7 @@ $ apropos password
 
 Verwende `apropos`, wenn du die Aufgabe, aber nicht den Befehlsnamen kennst. `whatis` eignet sich, wenn der Name bereits bekannt ist.
 
-:::single-choice{#search-by-purpose}
-Du kennst den Befehlsnamen nicht, möchtest aber Handbuchbeschreibungen nach dem Stichwort `password` durchsuchen. Welcher Befehl passt dazu?
+:::single-choice{#search-by-purpose} Du kennst den Befehlsnamen nicht, möchtest aber Handbuchbeschreibungen nach dem Stichwort `password` durchsuchen. Welcher Befehl passt dazu?
 
 ::option[`apropos password`]{#apropos-password .correct explanation="`apropos` durchsucht Namen und Beschreibungen von Handbuchseiten nach dem Stichwort und hilft so beim Entdecken passender Themen."}
 ::option[`whatis password`]{#exact-password explanation="`whatis` sucht nach einem genauen Handbuchthema namens `password`. Es ist keine allgemeine Stichwortsuche."}
@@ -77,8 +74,7 @@ Du kennst den Befehlsnamen nicht, möchtest aber Handbuchbeschreibungen nach dem
 
 Meldet `whatis`, dass nichts Passendes vorhanden ist, besitzt das Thema möglicherweise keine installierte Handbuchseite oder die Datenbank ist veraltet. Das beweist nicht, dass keine ausführbare Datei, kein Alias, keine Funktion oder kein Builtin dieses Namens existiert. Prüfe mit `type NAME`, wie Bash den Befehlsnamen auflöst, und wähle danach eine passende Hilfequelle.
 
-:::single-choice{#whatis-versus-type}
-`whatis deploy` findet keine Handbuchbeschreibung. Welcher Befehl prüft, ob Bash `deploy` als Alias, Funktion, Builtin oder ausführbare Datei auflöst?
+:::single-choice{#whatis-versus-type} `whatis deploy` findet keine Handbuchbeschreibung. Welcher Befehl prüft, ob Bash `deploy` als Alias, Funktion, Builtin oder ausführbare Datei auflöst?
 
 ::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="Eine veränderte Abfrage der Handbuchdatenbank zeigt nicht alle Aliase, Funktionen, Builtins und Pfadauflösungen von Bash an."}
 ::option[`man 5 deploy`]{#manual-five-deploy explanation="Damit versuchst du, eine Seite aus Abschnitt 5 zu öffnen. Die Namensauflösung durch Bash wird nicht bestimmt."}

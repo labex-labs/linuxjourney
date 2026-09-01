@@ -16,8 +16,7 @@ meta_keywords: "traceroute, traceroute Linux, Linux-Vernetzung, Netzwerkfehlersu
 
 Prüfungen beginnen mit einem Hop-Limit von eins, das schrittweise erhöht wird. Der erste Router verringert eins auf null und kann einen ICMP-Fehler zurückgeben. Ein Limit von zwei erreicht vor dem Ablauf den zweiten Router, und der Vorgang läuft weiter, bis das Ziel antwortet oder der Höchstwert erreicht ist.
 
-:::single-choice{#traceroute-expiring-field}
-Welches Feld lässt aufeinanderfolgende Prüfungen an späteren Routern ablaufen?
+:::single-choice{#traceroute-expiring-field} Welches Feld lässt aufeinanderfolgende Prüfungen an späteren Routern ablaufen?
 
 ::option[Die DNS-Cache-TTL des Zielnamens.]{#traceroute-dns-ttl explanation="Die Laufzeit eines DNS-Datensatzes steuert keine Paketweiterleitungs-Hops."}
 ::option[Die Ethernet-Quell-MAC-Adresse.]{#traceroute-source-mac explanation="Verbindungsadressen enthalten keinen Ende-zu-Ende-Hop-Zähler."}
@@ -36,8 +35,7 @@ $ traceroute -T -p 443 -n example.com
 
 Berechtigungen und unterstützte Optionen unterscheiden sich. Verwende für das Ziel autorisierte Methoden und erfasse die Methode beim Vergleich von Ergebnissen.
 
-:::single-choice{#traceroute-default-destination-response}
-Was beendet gewöhnlich ein herkömmliches Linux-UDP-traceroute?
+:::single-choice{#traceroute-default-destination-response} Was beendet gewöhnlich ein herkömmliches Linux-UDP-traceroute?
 
 ::option[Eine ICMP-Port-Unreachable-Antwort des Ziels.]{#traceroute-port-unreachable .correct explanation="Hohe UDP-Ports sind normalerweise unbenutzt, sodass sich das Ziel durch diesen Fehler erkennen lässt."}
 ::option[Eine vorgeschriebene HTTP-200-Antwort von jedem Router.]{#traceroute-http-every-router explanation="Router geben Netzwerksteuerungsfehler und keine HTTP-Antworten zurück."}
@@ -48,8 +46,7 @@ Was beendet gewöhnlich ein herkömmliches Linux-UDP-traceroute?
 
 Ein Sternchen bedeutet, dass vor dem Zeitlimit keine Antwort für diese Prüfung beobachtet wurde. Der Router kann Transitverkehr weiterleiten und zugleich Diagnoseantworten filtern oder ratenbegrenzen. Wenn spätere Hops antworten, hat der stille Hop eindeutig zumindest manche Prüfungen weitergeleitet.
 
-:::single-choice{#traceroute-asterisk-meaning}
-Was beweist `*` an einem Hop?
+:::single-choice{#traceroute-asterisk-meaning} Was beweist `*` an einem Hop?
 
 ::option[Der Router verwirft dauerhaft alle Transitpakete.]{#traceroute-star-all-drop explanation="Spätere Antworten können die fortgesetzte Weiterleitung belegen."}
 ::option[Nur, dass vor dem Prüfzeitlimit keine passende Antwort eintraf.]{#traceroute-star-no-response .correct explanation="Filterung, Ratenbegrenzung, Verlust und Rückwegprobleme können sämtlich Schweigen verursachen."}
@@ -62,8 +59,7 @@ Die Zeiten pro Hop messen Umlaufzeiten zu Steuerantworten und nicht die vom Link
 
 Der Rückweg jeder ICMP-Antwort kann vom Hinweg abweichen. Wiederhole Tests und setze sie zu Anwendungszeitmessungen an den Endpunkten in Beziehung, bevor du einen Engpass benennst.
 
-:::single-choice{#traceroute-hop-rtt-limit}
-Warum sollten RTT-Werte benachbarter Hops nicht als genaue Verbindungslatenz voneinander abgezogen werden?
+:::single-choice{#traceroute-hop-rtt-limit} Warum sollten RTT-Werte benachbarter Hops nicht als genaue Verbindungslatenz voneinander abgezogen werden?
 
 ::option[Traceroute meldet alle Zeiten in Byte statt Millisekunden.]{#traceroute-times-bytes explanation="Die angezeigten Prüfzeiten werden normalerweise in Millisekunden angegeben."}
 ::option[Antworten können unterschiedliche Rückwege und Verarbeitung der Steuerungsebene verwenden.]{#traceroute-rtt-asymmetry .correct explanation="Die Messungen sind getrennte Ende-zu-Hop-Umlaufzeiten und keine synchronisierten Einwegstichproben einer Verbindung."}
@@ -74,8 +70,7 @@ Warum sollten RTT-Werte benachbarter Hops nicht als genaue Verbindungslatenz von
 
 Ein traceroute kann das Ziel erreichen, während der Dienst blockiert ist, und der Dienst kann funktionieren, während Zwischenrouter ihre Antworten verbergen. Teste dieselbe Adressfamilie, dasselbe Ziel, Transportprotokoll und denselben Port wie die Anwendung und verwende traceroute anschließend als unterstützenden Pfadbeleg.
 
-:::single-choice{#traceroute-service-proof}
-Beweist ein abgeschlossenes traceroute, dass ein HTTPS-Dienst fehlerfrei ist?
+:::single-choice{#traceroute-service-proof} Beweist ein abgeschlossenes traceroute, dass ein HTTPS-Dienst fehlerfrei ist?
 
 ::option[Ja, weil jeder Hop das Serverzertifikat validiert.]{#traceroute-validates-cert explanation="Router führen nicht die TLS-Validierung des Clients aus."}
 ::option[Nein; Transport-, TLS- und HTTP-Verhalten benötigen eigene Tests.]{#traceroute-not-app-proof .correct explanation="Pfaderkennung und Anwendungszustand sind unterschiedliche Diagnoseschichten."}

@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 所示 RPM 查询形式中的 `p` 表示查询软件包文件，而不是已安装数据库。查询输出有助于审查软件包，但不能证明其中的脚本或程序安全。
 
-:::single-choice{#package-install-tools-native-format}
-哪个低层工具管理 Debian `.deb` 软件包及其已安装数据库？
+:::single-choice{#package-install-tools-native-format} 哪个低层工具管理 Debian `.deb` 软件包及其已安装数据库？
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM 在 RPM 家族系统上管理自身的原生格式和数据库。"}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="Tar 可以读取归档，但不实现 Debian 已安装软件包生命周期。"}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 确认前应审查事务。前导 `./` 可以让 APT 区分本地 Debian 归档路径与仓库软件包名称。
 
-:::single-choice{#package-install-tools-local-dependencies}
-所示哪个命令可以安装本地 `.deb`，并解析仓库中可用的依赖项？
+:::single-choice{#package-install-tools-local-dependencies} 所示哪个命令可以安装本地 `.deb`，并解析仓库中可用的依赖项？
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l` 列出已安装软件包选择，并不是解析本地依赖的安装流程。"}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="RPM 查询语法不会安装 Debian 归档。"}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 在 Debian 上，`--remove` 通常保留归类为 conffile 的配置文件；`--purge` 还请求移除这些文件，但仍受软件包脚本和非受管数据影响。两个命令都不保证删除用户创建的数据。高层 `apt remove` 或 `dnf remove` 通常更合适，因为它们可以评估相关软件包并呈现完整事务。
 
-:::single-choice{#package-install-tools-remove-operand}
-`dpkg --remove` 期望用什么作为已安装软件包的操作数？
+:::single-choice{#package-install-tools-remove-operand} `dpkg --remove` 期望用什么作为已安装软件包的操作数？
 
 ::option[仓库索引的 URL。]{#package-install-tools-remove-url explanation="仓库位置不是传给低层移除操作的软件包身份。"}
 ::option[已安装软件包名称。]{#package-install-tools-remove-name .correct explanation="移除操作针对 `example` 这样的软件包记录，而不需要原来的 `.deb` 路径。"}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 进行定向检查时，应优先指定具体软件包名称；脚本要求可靠性时，应使用机器可读格式。软件包数据库描述受管理状态，但本地管理员或应用程序之后仍可修改文件，因此需要将已安装文件与记录元数据比较时，应使用验证功能。
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-哪个命令查询 RPM 数据库中记录的所有已安装软件包？
+:::single-choice{#package-install-tools-rpm-list-installed} 哪个命令查询 RPM 数据库中记录的所有已安装软件包？
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q` 选择查询模式，`-a` 将查询扩展到所有已安装软件包记录。"}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e` 请求移除软件包，而不是只读列出。"}

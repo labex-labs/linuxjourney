@@ -18,8 +18,7 @@ TCP/IP のアプリケーション層には、アプリケーションがネッ�
 
 すべてが固定された1個の「アプリケーションヘッダー」を加えるわけではありません。テキストフィールド、バイナリレコード、入れ子の形式、1つのトランスポート接続上で続く一連のメッセージなど、方式はさまざまです。
 
-:::single-choice{#application-layer-protocol-role}
-アプリケーションプロトコルが主に定義するものは何ですか？
+:::single-choice{#application-layer-protocol-role} アプリケーションプロトコルが主に定義するものは何ですか？
 
 ::option[サービスメッセージの意味と交換規則。]{#application-layer-message-semantics .correct explanation="相互運用には、共通の構文、意味、状態の動作が必要です。"}
 ::option[すべての Ethernet ケーブルの電圧。]{#application-layer-voltage explanation="物理信号は下位層の技術に属します。"}
@@ -30,8 +29,7 @@ TCP/IP のアプリケーション層には、アプリケーションがネッ�
 
 クライアントはサービスへ要求または接続を開始し、サーバーは待ち受けるか、それを受け入れます。これは対話内の役割であり、恒久的なデバイス分類ではありません。1つのホストが DNS のクライアントと SSH のサーバーを同時に担え、ピアツーピアの役割を使うプロトコルもあります。
 
-:::single-choice{#application-layer-client-role}
-一般的な要求・応答の交換で、プログラムをクライアントにするものは何ですか？
+:::single-choice{#application-layer-client-role} 一般的な要求・応答の交換で、プログラムをクライアントにするものは何ですか？
 
 ::option[サービスへの要求を開始すること。]{#application-layer-client-initiates .correct explanation="クライアントとサーバーは対話の役割で、1つのホストがサービスごとに同時に異なる役割を担えます。"}
 ::option[サーバーではなくノート PC 上で動くこと。]{#application-layer-client-laptop explanation="ハードウェア分類はプロトコル上の役割を決めません。"}
@@ -42,8 +40,7 @@ TCP/IP のアプリケーション層には、アプリケーションがネッ�
 
 アプリケーションはサービス名を1つ以上の IP アドレスへ解決し、トランスポート端点を選べます。周知ポートは既定値であり、プロトコルの不変の証拠ではありません。HTTP は一般に TCP 80、HTTPS は TCP 443 を使いますが、別の場所でも動かせます。SMTP は中継とメッセージ送信で異なるポートと方針を使います。
 
-:::single-choice{#application-layer-port-limit}
-開いている TCP ポート 443 だけで証明できることは何ですか？
+:::single-choice{#application-layer-port-limit} 開いている TCP ポート 443 だけで証明できることは何ですか？
 
 ::option[あるプロセスがそこで TCP 端点を受け入れたが、アプリケーション動作はさらにテストが必要である。]{#application-layer-port-endpoint .correct explanation="プロトコル交換と TLS 検証の方が、より強いアプリケーション層の証拠になります。"}
 ::option[正しく設定された HTTPS アプリケーションであることが確実である。]{#application-layer-port-proves-https explanation="ポート番号ではプロトコル動作、識別情報、正常性を検証できません。"}
@@ -56,8 +53,7 @@ TCP/IP のアプリケーション層には、アプリケーションがネッ�
 
 HTTPS の診断では、名前解決、TCP 接続、TLS 証明書と名前、HTTP 応答、アプリケーション内容を別々に確認できます。1段階の成功は問題範囲を狭めますが、後の全段階を証明しません。
 
-:::single-choice{#application-layer-tls-limit}
-TLS 証明書の検証成功は何を確立しますか？
+:::single-choice{#application-layer-tls-limit} TLS 証明書の検証成功は何を確立しますか？
 
 ::option[全ユーザーが全リソースへ許可されること。]{#application-layer-tls-all-users explanation="トランスポート認証はアプリケーションのアクセス方針を置き換えません。"}
 ::option[検証した名前に対する通信相手の識別と、認証済みの安全な通信路。]{#application-layer-tls-identity .correct explanation="アプリケーションの認可と内容の正しさには、別の検査が必要です。"}

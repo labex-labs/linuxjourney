@@ -18,8 +18,7 @@ An autonomous system is a set of networks under a common routing administration,
 
 BGP peers establish a session over TCP port 179. A working TCP session is only the transport foundation; BGP capabilities, policies, and route exchange must also succeed.
 
-:::single-choice{#bgp-external-session}
-What does external BGP exchange?
+:::single-choice{#bgp-external-session} What does external BGP exchange?
 
 ::option[Ethernet frame checksums within one switch.]{#bgp-ethernet-fcs explanation="BGP operates above TCP and exchanges network-layer reachability."}
 ::option[User passwords between web browsers.]{#bgp-browser-passwords explanation="Application credentials are not routing attributes."}
@@ -30,8 +29,7 @@ What does external BGP exchange?
 
 An advertisement includes a prefix and attributes. `AS_PATH` lists autonomous systems traversed and helps detect loops. Other common attributes include `LOCAL_PREF`, `MED`, origin, next hop, and communities. Their effect depends on direction, implementation, and policy.
 
-:::single-choice{#bgp-as-path-loop}
-How does `AS_PATH` help prevent inter-AS loops?
+:::single-choice{#bgp-as-path-loop} How does `AS_PATH` help prevent inter-AS loops?
 
 ::option[An AS can reject a path that already contains its own number.]{#bgp-own-as-reject .correct explanation="The path vector exposes the AS sequence used to reach the advertised prefix."}
 ::option[It encrypts every packet crossing those systems.]{#bgp-aspath-encryption explanation="The attribute describes routing path and provides no payload encryption."}
@@ -44,8 +42,7 @@ BGP's “best” path is the path that wins a configured decision process. Opera
 
 After BGP selects candidates, normal IP forwarding still applies longest-prefix matching. A selected `/24` is used for its destinations instead of a selected covering `/16`.
 
-:::single-choice{#bgp-best-path-meaning}
-What does a BGP best path represent?
+:::single-choice{#bgp-best-path-meaning} What does a BGP best path represent?
 
 ::option[The route that wins the local attribute and policy decision process.]{#bgp-policy-winner .correct explanation="Administrative intent is central to interdomain path selection."}
 ::option[The physically shortest cable route in every case.]{#bgp-shortest-cable explanation="BGP has no complete physical-distance map."}
@@ -56,8 +53,7 @@ What does a BGP best path represent?
 
 Advertising a prefix asserts reachability under policy; it does not create the underlying route or ensure the return path. Before originating a prefix, ensure valid forwarding, aggregation behavior, filters, failover, and ownership authorization.
 
-:::single-choice{#bgp-advertisement-limit}
-What does advertising a prefix fail to guarantee?
+:::single-choice{#bgp-advertisement-limit} What does advertising a prefix fail to guarantee?
 
 ::option[That peers can receive a control-plane route.]{#bgp-peers-control explanation="Successful advertisement and acceptance can establish that limited control-plane fact."}
 ::option[That the prefix contains address bits.]{#bgp-prefix-bits explanation="An IP prefix is defined by address bits and length."}
@@ -70,8 +66,7 @@ Route leaks and hijacks can affect traffic far beyond one router. Operators use 
 
 BGP changes require staged rollout, route-diff review, out-of-band access, rollback, and both control- and data-plane verification.
 
-:::single-choice{#bgp-rpki-limit}
-What does RPKI origin validation check?
+:::single-choice{#bgp-rpki-limit} What does RPKI origin validation check?
 
 ::option[Whether every packet payload is malware-free.]{#bgp-payload-malware explanation="RPKI does not inspect application content."}
 ::option[Whether the complete AS path has the lowest latency.]{#bgp-path-latency explanation="Origin validation is not performance selection or full path validation."}

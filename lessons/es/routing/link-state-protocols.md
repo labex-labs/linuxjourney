@@ -16,8 +16,7 @@ Los protocolos de estado de enlace describen los enlaces y prefijos locales, dis
 
 Los routers descubren vecinos compatibles y forman adyacencias del protocolo según el tipo de interfaz, el área, los temporizadores, la autenticación y otros parámetros. Ver paquetes hello no garantiza una adyacencia completa; una configuración que no coincida puede detener antes la máquina de estados.
 
-:::single-choice{#link-state-hello-limit}
-¿Qué no demuestra recibir un hello de OSPF?
+:::single-choice{#link-state-hello-limit} ¿Qué no demuestra recibir un hello de OSPF?
 
 ::option[Que los routers hayan formado una adyacencia completa y sincronizada.]{#link-state-not-full .correct explanation="El área, los temporizadores, la autenticación, la MTU y otros estados pueden impedir el intercambio completo de bases de datos."}
 ::option[Que el vecino haya enviado al menos un mensaje del protocolo.]{#link-state-hello-sent explanation="Recibir el hello demuestra directamente ese hecho limitado."}
@@ -28,8 +27,7 @@ Los routers descubren vecinos compatibles y forman adyacencias del protocolo seg
 
 Cada router origina anuncios sobre su estado pertinente. Los vecinos difunden de forma fiable la información más reciente por el área o dominio definido, en lugar de mantener las actualizaciones únicamente entre la pareja original de vecinos. Los mecanismos de secuencia y envejecimiento distinguen la información actual y eliminan el estado obsoleto.
 
-:::single-choice{#link-state-flooding-scope}
-¿Por qué se difunde la información de estado de enlace más allá de un vecino?
+:::single-choice{#link-state-flooding-scope} ¿Por qué se difunde la información de estado de enlace más allá de un vecino?
 
 ::option[Todas las aplicaciones necesitan una copia de las contraseñas de los routers.]{#link-state-password-copy explanation="Las credenciales de las aplicaciones no son anuncios de topología."}
 ::option[Ethernet no puede enviar tramas unicast.]{#link-state-no-unicast explanation="Ethernet admite unicast; aquí la difusión es un mecanismo de distribución del protocolo de enrutamiento."}
@@ -42,8 +40,7 @@ Después de construir una base de datos de estado de enlace, el router ejecuta u
 
 «Más corta» significa con menor coste del protocolo, no necesariamente con menos routers ni con menor latencia medida por la aplicación. El diseño de costes debe reflejar la intención operativa.
 
-:::single-choice{#link-state-shortest-meaning}
-¿Qué significa «más corta» en un cálculo de rutas de estado de enlace?
+:::single-choice{#link-state-shortest-meaning} ¿Qué significa «más corta» en un cálculo de rutas de estado de enlace?
 
 ::option[La ruta cuyo prefijo tiene menos caracteres escritos.]{#link-state-shortest-text explanation="La longitud del texto no está relacionada con el coste de la topología."}
 ::option[La ruta con la menor suma de costes del protocolo.]{#link-state-lowest-cost .correct explanation="El modelo de costes puede corresponder o no directamente con la cantidad de saltos o la latencia actual."}
@@ -56,8 +53,7 @@ Las áreas OSPF limitan el ámbito de difusión y cálculo de la topología; el 
 
 Después de un cambio de enlace, la detección, la difusión de anuncios, el cálculo SPF, la instalación de rutas y la recuperación del reenvío requieren tiempo. Es posible converger más rápidamente que con un diseño sencillo de vector de distancia, pero no ocurre automáticamente ante todos los fallos o configuraciones.
 
-:::single-choice{#link-state-convergence-stages}
-¿Qué debe medirse durante una investigación de convergencia de OSPF?
+:::single-choice{#link-state-convergence-stages} ¿Qué debe medirse durante una investigación de convergencia de OSPF?
 
 ::option[Únicamente el momento en que un administrador abrió una terminal.]{#link-state-terminal-time explanation="Eso no aísla las etapas del protocolo o del reenvío."}
 ::option[Únicamente el orden alfabético de los nombres de los routers.]{#link-state-router-names explanation="Los nombres no determinan los tiempos de convergencia."}

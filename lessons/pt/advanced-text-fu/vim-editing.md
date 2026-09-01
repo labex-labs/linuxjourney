@@ -28,8 +28,7 @@ Alguns operadores comuns são:
 
 Por exemplo, `dw` exclui pelo movimento `w`, enquanto `d$` exclui do cursor até o final da linha. `2dw` aplica a exclusão ao longo de dois movimentos por palavras.
 
-:::single-choice{#vim-edit-operator-motion}
-No modo Normal, o que `d$` faz?
+:::single-choice{#vim-edit-operator-motion} No modo Normal, o que `d$` faz?
 
 ::option[Exclui o arquivo inteiro a partir do cursor.]{#vim-edit-delete-file-end explanation="O movimento cifrão indica o final da linha atual, não o final de todo o buffer."}
 ::option[Exclui do cursor até o final da linha.]{#vim-edit-delete-line-end .correct explanation="O operador `d` se aplica ao movimento `$` para o final da linha."}
@@ -49,8 +48,7 @@ Alguns comandos são atalhos convenientes:
 
 Repetir um operador, como em `dd`, torna a ação orientada por linha. Uma quantidade amplia o número de linhas.
 
-:::single-choice{#vim-edit-delete-three-lines}
-Qual comando do modo Normal exclui a linha atual e as duas linhas seguintes?
+:::single-choice{#vim-edit-delete-three-lines} Qual comando do modo Normal exclui a linha atual e as duas linhas seguintes?
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="Nessa forma, a quantidade deve vir antes do operador repetido."}
 ::option[`3x`]{#vim-edit-three-x explanation="Essa forma exclui três caracteres sob e depois do cursor, não três linhas completas."}
@@ -69,8 +67,7 @@ O operador `c` remove o texto selecionado e entra no modo de Inserção para que
 
 O comportamento de `cw` possui um caso especial histórico e frequentemente age como `ce`. Objetos de texto como `iw` podem deixar o limite pretendido mais claro.
 
-:::single-choice{#vim-edit-change-inner-word}
-Qual comando do modo Normal substitui a palavra interna sob o cursor, excluindo-a e entrando no modo de Inserção?
+:::single-choice{#vim-edit-change-inner-word} Qual comando do modo Normal substitui a palavra interna sob o cursor, excluindo-a e entrando no modo de Inserção?
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="Essa forma exclui a palavra interna, mas permanece no modo Normal em vez de iniciar o texto de substituição."}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="Essa forma copia a palavra interna sem alterar o buffer nem entrar no modo de Inserção."}
@@ -88,8 +85,7 @@ O Vim chama a cópia de **yank** e a colagem de **put**:
 
 Exclusões e alterações também armazenam texto em registros; por isso, um `p` posterior pode inserir o texto excluído mais recentemente, não uma cópia anterior. Registros nomeados permitem preservar textos específicos, mas comece observando o que a última operação armazenou.
 
-:::single-choice{#vim-edit-yank-put-line}
-Depois que `yy` copia a linha atual, qual comando insere essa linha abaixo da atual?
+:::single-choice{#vim-edit-yank-put-line} Depois que `yy` copia a linha atual, qual comando insere essa linha abaixo da atual?
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="Para texto copiado como linha, `p` minúsculo insere a linha armazenada abaixo da atual."}
 ::option[`P`]{#vim-edit-put-above explanation="`P` maiúsculo insere o texto por linha acima da linha atual."}
@@ -107,8 +103,7 @@ No modo Normal:
 
 O histórico de desfazer se aplica a alterações no buffer, não apenas a movimentos do cursor. Salve pontos de controle e examine as edições em vez de depender de um histórico ilimitado ou permanente.
 
-:::single-choice{#vim-edit-redo-change}
-Qual comando do modo Normal refaz uma alteração que acabou de ser desfeita?
+:::single-choice{#vim-edit-redo-change} Qual comando do modo Normal refaz uma alteração que acabou de ser desfeita?
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="No modo Normal, `Ctrl+U` rola para cima aproximadamente meia tela; ele não refaz."}
 ::option[`.`]{#vim-edit-dot-repeat explanation="O ponto repete a última alteração como uma nova ação, em vez de avançar pelo histórico de desfazer."}

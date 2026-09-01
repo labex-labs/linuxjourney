@@ -28,8 +28,7 @@ $ sudo lsof +D /mnt/usb
 
 Les colonnes utiles comprennent `COMMAND`, `PID`, `USER`, le descripteur de fichier (`FD`), le type, le périphérique et `NAME`. Un enregistrement dont le champ `FD` vaut `cwd` indique que le processus emploie ce répertoire comme répertoire de travail actuel. La sortie sans privilèges peut être incomplète pour les processus appartenant à d’autres utilisateurs.
 
-:::single-choice{#lsof-cwd-record}
-Qu’indique `cwd` dans la colonne `FD` ?
+:::single-choice{#lsof-cwd-record} Qu’indique `cwd` dans la colonne `FD` ?
 
 ::option[Le processus emploie ce répertoire comme répertoire de travail actuel.]{#lsof-current-directory .correct explanation="Le répertoire actuel d’un processus peut maintenir un système de fichiers monté occupé."}
 ::option[Le fichier a été fermé pendant son écriture.]{#lsof-closed-write explanation="Ce marqueur décrit une relation avec un répertoire, et non un événement de fermeture."}
@@ -52,8 +51,7 @@ $ sudo fuser -vm /mnt/usb
 
 Vérifiez que le chemin est bien le point de montage voulu avec un outil tel que `findmnt --target /mnt/usb`. Les montages liés, les espaces de noms, les permissions et les conditions de concurrence peuvent influencer ce qu’une requête unique révèle.
 
-:::single-choice{#fuser-verbose-purpose}
-Pourquoi employer `fuser -v` plutôt que `fuser` seul pendant une investigation ?
+:::single-choice{#fuser-verbose-purpose} Pourquoi employer `fuser -v` plutôt que `fuser` seul pendant une investigation ?
 
 ::option[La commande démonte automatiquement le système de fichiers sélectionné.]{#fuser-verbose-unmount explanation="Le mode détaillé affiche des informations et ne demande aucun démontage."}
 ::option[Elle ajoute des informations telles que l’utilisateur, le type d’accès et la commande.]{#fuser-verbose-details .correct explanation="Ces colonnes supplémentaires aident à évaluer les processus qui peuvent être coordonnés ou arrêtés sans risque."}
@@ -72,8 +70,7 @@ Suivez une séquence délibérée au lieu de tuer immédiatement chaque PID corr
 
 `fuser -k` envoie un signal aux processus correspondants. Sur les implémentations procps courantes, le signal par défaut est `SIGKILL` et ne permet donc pas un arrêt ordonné. Si une terminaison explicitement approuvée est nécessaire, choisissez un signal adapté, vérifiez le PID et son propriétaire, et gardez à l’esprit que l’ensemble des processus peut changer entre l’examen et l’action.
 
-:::single-choice{#fuser-k-risk}
-Pourquoi `fuser -k /mnt/usb` constitue-t-il une mauvaise première étape de dépannage ?
+:::single-choice{#fuser-k-risk} Pourquoi `fuser -k /mnt/usb` constitue-t-il une mauvaise première étape de dépannage ?
 
 ::option[La commande affiche uniquement l’espace libre du système de fichiers.]{#fuser-k-space explanation="Cette option cible des processus au lieu d’indiquer la capacité."}
 ::option[Elle peut tuer plusieurs processus correspondants sans nettoyage ordonné.]{#fuser-k-kills .correct explanation="Cette action large peut interrompre des écritures ou des services ; l’investigation et la coordination doivent donc la précéder."}
@@ -91,8 +88,7 @@ $ sudo fuser -v 22/tcp
 $ sudo ss -lntp
 ```
 
-:::single-choice{#lsof-fuser-tool-choice}
-Quel outil convient à une liste détaillée des descripteurs de fichiers ouverts et de leurs processus propriétaires ?
+:::single-choice{#lsof-fuser-tool-choice} Quel outil convient à une liste détaillée des descripteurs de fichiers ouverts et de leurs processus propriétaires ?
 
 ::option[`lsof`]{#lsof-detailed-records .correct explanation="Sa sortie s’organise autour des enregistrements de fichiers ouverts et des métadonnées de leurs processus."}
 ::option[`uptime`]{#lsof-uptime explanation="Uptime indique la durée de fonctionnement et les charges moyennes, et non les descripteurs ouverts."}

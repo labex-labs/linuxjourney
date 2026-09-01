@@ -18,8 +18,7 @@ Prozessoren führen Anweisungen aus, Speicher hält aktive Zustände und Control
 
 Der Kernel initialisiert und steuert diese Ressourcen durch Architekturcode und Gerätetreiber. Er behandelt Interrupts, DMA-Koordination, Zeitgeber und Energieverwaltungsereignisse und setzt dabei Zugriffsgrenzen zwischen Arbeitslasten durch.
 
-:::single-choice{#kernel-overview-hardware-manager}
-Welche Schicht koordiniert unter Linux gewöhnlich Gerätetreiber und Hardware-Interrupts?
+:::single-choice{#kernel-overview-hardware-manager} Welche Schicht koordiniert unter Linux gewöhnlich Gerätetreiber und Hardware-Interrupts?
 
 ::option[Die Shell-Verlaufsdatei jedes Benutzers.]{#kernel-overview-shell-history explanation="Ein Verlauf erfasst Befehle und verarbeitet keine Hardwareausführung."}
 ::option[Der Index einer Paketquelle.]{#kernel-overview-repository-index explanation="Paketquellenmetadaten beschreiben Softwarepakete und keine aktiven Hardwareereignisse."}
@@ -39,8 +38,7 @@ Zu den wichtigsten Zuständigkeiten gehören:
 
 Linux wird gewöhnlich als monolithischer Kernel bezeichnet, weil zentrale Dienste und viele Treiber in einem einzigen privilegierten Kerneladressraum laufen. Zugleich ist er modular: Unterstützte Komponenten können als Kernelmodule geladen und entladen werden. Ein Fehler in privilegiertem Kernelcode kann das gesamte System gefährden, wodurch Kernelaktualisierungen und die Herkunft von Modulen sicherheitskritisch sind.
 
-:::single-choice{#kernel-overview-scheduler-role}
-Was verwaltet der Kernel-Scheduler?
+:::single-choice{#kernel-overview-scheduler-role} Was verwaltet der Kernel-Scheduler?
 
 ::option[Welche Dokumentationsseite ein Benutzer als Nächstes liest.]{#kernel-overview-documentation explanation="Die Lernnavigation gehört nicht zum Kernel-Scheduling."}
 ::option[Welche ausführungsbereiten Threads CPU-Ausführungszeit erhalten.]{#kernel-overview-thread-scheduling .correct explanation="Der Scheduler wählt Ausführungskontexte anhand von Richtlinie, Priorität, Affinität und CPU-Verfügbarkeit aus."}
@@ -55,8 +53,7 @@ Prozesse fordern Kernelarbeit über Systemaufrufe an und interagieren mit bereit
 
 root im User-Space besitzt aufgrund von Richtlinien weitreichende Berechtigungen, führt seine Anweisungen aber gewöhnlich weiterhin im Benutzermodus des Prozessors aus. Benutzeridentität und CPU-Privilegienmodus sind getrennte Konzepte.
 
-:::single-choice{#kernel-overview-root-user-mode}
-Führt eine gewöhnliche Anwendung im Besitz von root alle ihre Anweisungen im Kernelmodus aus?
+:::single-choice{#kernel-overview-root-user-mode} Führt eine gewöhnliche Anwendung im Besitz von root alle ihre Anweisungen im Kernelmodus aus?
 
 ::option[Ja; UID 0 wandelt jede Anweisung dauerhaft in Ring 0 um.]{#kernel-overview-root-ring-zero explanation="Ein gewöhnlicher root-Prozess bleibt ein User-Space-Prozess."}
 ::option[Ja; root-Anwendungen werden automatisch zu ladbaren Kernelmodulen.]{#kernel-overview-root-module explanation="Eine ausführbare Benutzerdatei wird durch die UID ihres Eigentümers nicht in Kernelcode umgewandelt."}
@@ -69,8 +66,7 @@ Der Kernel stellt virtuelle Prozesse, Dateien, Sockets und Adressräume bereit, 
 
 Frage bei der Fehlersuche, welcher Schicht das Verhalten gehört: Anwendung, Bibliothek, Systemaufrufschnittstelle, Dateisystem, Treiber, Kernel-Subsystem, Firmware oder Hardware. Belege aus der falschen Schicht können zu falschen Lösungen führen.
 
-:::single-choice{#kernel-overview-system-call-boundary}
-Was ist ein Systemaufruf?
+:::single-choice{#kernel-overview-system-call-boundary} Was ist ein Systemaufruf?
 
 ::option[Eine kontrollierte Anfrage aus dem User-Space an einen Kerneldienst.]{#kernel-overview-controlled-request .correct explanation="Der Prozessor tritt an einer festgelegten Schnittstelle in den Kernelmodus ein, wo der Kernel den Vorgang validiert und ausführt."}
 ::option[Ein direkter Befehl, der jede Zugriffskontrolle umgeht.]{#kernel-overview-bypass-checks explanation="Gerade bei Systemaufrufen finden viele Validierungs- und Autorisierungsprüfungen statt."}

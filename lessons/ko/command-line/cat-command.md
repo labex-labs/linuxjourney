@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 이 명령어는 파일 전체를 표준 출력으로 보냅니다. 짧은 텍스트에는 적합하지만 긴 파일은 너무 빨리 지나갈 수 있습니다.
 
-:::single-choice{#display-short-file}
-`myfile.txt` 전체를 터미널에 표시하는 명령어는 무엇인가요?
+:::single-choice{#display-short-file} `myfile.txt` 전체를 터미널에 표시하는 명령어는 무엇인가요?
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file`은 예상 파일 유형을 알려 줄 뿐 파일에 저장된 전체 텍스트를 출력하지 않습니다."}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch`는 타임스탬프를 갱신하거나 없는 파일을 만들며 파일 내용을 표시하지 않습니다."}
@@ -46,8 +45,7 @@ $ cat dogfile birdfile > animals
 
 쉘은 `cat`을 실행하기 전에 `animals`를 만들거나 비운 뒤 결합된 출력을 그곳으로 보냅니다. 입력 파일 중 하나를 목적지로 사용하면 `cat`이 읽기 전에 파일이 비워질 수 있으므로 피해야 합니다.
 
-:::single-choice{#combine-files-in-order}
-`part1` 다음에 `part2`가 오도록 결합해 새로 만들거나 교체한 `whole`에 쓰는 명령어는 무엇인가요?
+:::single-choice{#combine-files-in-order} `part1` 다음에 `part2`가 오도록 결합해 새로 만들거나 교체한 `whole`에 쓰는 명령어는 무엇인가요?
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="리디렉션 목적지는 하나뿐이고 다른 단어는 `cat`의 피연산자가 됩니다. 요청한 입출력 순서를 나타내지 않습니다."}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat`이 두 파일을 적힌 순서대로 출력하고 `>`가 그 결합된 출력을 `whole`로 보냅니다."}
@@ -70,8 +68,7 @@ $ cat > newfile.txt
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-기존 `notes.txt`의 끝에 텍스트를 더 입력하려 합니다. 파일을 비우지 않고 작업을 시작하는 명령어는 무엇인가요?
+:::single-choice{#append-terminal-input} 기존 `notes.txt`의 끝에 텍스트를 더 입력하려 합니다. 파일을 비우지 않고 작업을 시작하는 명령어는 무엇인가요?
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="`>` 하나는 목적지를 먼저 비운 뒤 입력을 리디렉션하므로 기존 텍스트가 사라집니다."}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="`>>`는 목적지를 추가 모드로 열어 `cat`이 읽은 텍스트를 기존 내용 뒤에 붙입니다."}
@@ -95,8 +92,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-`notes.txt`에서 비어 있지 않은 출력 줄에만 번호를 매기는 명령어는 무엇인가요?
+:::single-choice{#number-nonempty-lines} `notes.txt`에서 비어 있지 않은 출력 줄에만 번호를 매기는 명령어는 무엇인가요?
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="`-b`는 비어 있지 않은 출력 줄에 번호를 매기고 빈 줄에는 번호를 붙이지 않습니다."}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="`-n`은 빈 줄을 포함한 모든 출력 줄에 번호를 매기므로 조건에 맞지 않습니다."}
@@ -111,8 +107,7 @@ $ cat -s messy.txt
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-긴 로그 파일을 대화형으로 읽기에 더 적합한 명령어는 무엇인가요?
+:::single-choice{#choose-viewer-for-long-file} 긴 로그 파일을 대화형으로 읽기에 더 적합한 명령어는 무엇인가요?
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less`는 스크롤과 검색, 제어된 종료를 제공하므로 긴 파일을 대화형으로 읽기에 알맞습니다."}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat`은 로그 전체를 한꺼번에 터미널에 써서 살펴보기 전에 긴 내용이 지나갈 수 있습니다."}

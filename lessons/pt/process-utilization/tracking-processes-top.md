@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 A primeira linha contém o horário atual, o tempo em atividade, a quantidade de usuários conectados e as médias de carga de 1, 5 e 15 minutos. A linha de tarefas conta os estados dos processos. A carga média não é uma porcentagem direta de CPU; no Linux, ela representa tarefas executáveis e tarefas em sono ininterruptível, portanto interprete-a junto com a quantidade de CPUs, a atividade de E/S e a latência.
 
-:::single-choice{#top-load-average-periods}
-O que os três valores de carga média em `top` representam?
+:::single-choice{#top-load-average-periods} O que os três valores de carga média em `top` representam?
 
 ::option[A carga média durante 1, 5 e 15 minutos.]{#top-one-five-fifteen .correct explanation="Os valores resumem intervalos recentes de tempo progressivamente maiores."}
 ::option[O uso da CPU pelos três processos mais ocupados.]{#top-three-processes explanation="A CPU por processo aparece na tabela de processos, não nesses três valores de resumo."}
@@ -48,8 +47,7 @@ Alguns campos comuns da CPU são:
 
 Um valor alto de `wa` pode sustentar uma hipótese de espera por E/S, mas não identifica um dispositivo nem comprova que o armazenamento seja o único gargalo. Inspecione a latência do dispositivo e o comportamento da aplicação antes de concluir.
 
-:::single-choice{#top-cpu-wa-meaning}
-O que o campo de CPU `wa` informa?
+:::single-choice{#top-cpu-wa-meaning} O que o campo de CPU `wa` informa?
 
 ::option[O tempo gasto executando código comum do usuário.]{#top-wa-user explanation="A execução no espaço do usuário é informada em `us`."}
 ::option[As páginas de memória gravadas no swap desde o boot.]{#top-wa-swap explanation="A atividade de swap não é uma categoria de tempo de CPU."}
@@ -70,8 +68,7 @@ As colunas importantes normalmente incluem:
 
 `VIRT` não é a quantidade de RAM física consumida. Ele pode incluir arquivos mapeados, bibliotecas compartilhadas, espaço de endereços reservado e páginas no swap. Até mesmo `RES` deve ser interpretado com cuidado, pois as páginas compartilhadas complicam a atribuição.
 
-:::single-choice{#top-res-versus-virt}
-Qual campo se aproxima mais da memória física atualmente residente de um processo?
+:::single-choice{#top-res-versus-virt} Qual campo se aproxima mais da memória física atualmente residente de um processo?
 
 ::option[`TIME+`]{#top-time-field explanation="Esse campo acumula tempo de CPU, não memória."}
 ::option[`VIRT`]{#top-virt-field explanation="O tamanho virtual inclui espaço de endereços que não precisa estar residente na RAM."}
@@ -90,8 +87,7 @@ Dentro de `top`, pressione `P` para ordenar por CPU, `M` para ordenar por memór
 
 Registre o PID, o comando, o timestamp e várias amostras antes de agir. Um processo chegar brevemente ao topo pode ser normal, e encerrá-lo pode causar perda de dados ou uma indisponibilidade.
 
-:::single-choice{#top-monitor-known-pid}
-Qual invocação limita a exibição ao PID 1234?
+:::single-choice{#top-monitor-known-pid} Qual invocação limita a exibição ao PID 1234?
 
 ::option[`top -u 1234`]{#top-user-filter explanation="A forma `-u` filtra por usuário, em vez de tratar o valor como um PID."}
 ::option[`top -d 1234`]{#top-delay-filter explanation="A opção `-d` controla o intervalo de atualização nas implementações comuns."}

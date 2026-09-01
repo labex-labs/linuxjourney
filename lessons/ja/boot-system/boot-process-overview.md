@@ -18,8 +18,7 @@ meta_keywords: "Linux ブートプロセス，Linux 起動プロセス，Linux �
 
 ファームウェアが、インストール済み Linux のルートファイルシステムを必ず理解できるとは限りません。BIOS なら選択したディスク上のブートコード、UEFI なら EFI System Partition 上の EFI 実行ファイルを指すブートエントリというように、それぞれのインターフェースに従ってブート経路を見つけます。
 
-:::single-choice{#boot-overview-first-stage}
-一般的な PC で、リセット後にプラットフォームの初期化を始めるコンポーネントはどれですか？
+:::single-choice{#boot-overview-first-stage} 一般的な PC で、リセット後にプラットフォームの初期化を始めるコンポーネントはどれですか？
 
 ::option[ユーザーが操作するシェル。]{#boot-overview-shell explanation="シェルは、ユーザー空間のサービスやログイン処理によって、もっと後の段階で起動されます。"}
 ::option[BIOS や UEFI などのプラットフォームファームウェア。]{#boot-overview-firmware .correct explanation="ファームウェアは Linux が動き始める前に、初期のハードウェア状態を整えて次のブート対象を選びます。"}
@@ -32,8 +31,7 @@ GRUB などのローダーは、起動エントリを表示し、選択された
 
 選択する成果物の間には整合性が必要です。カーネルのバージョン、initramfs の内容、ルートの識別子、セキュリティ署名、コマンドラインオプションのすべてが、次の引き継ぎの成否に影響します。
 
-:::single-choice{#boot-overview-loader-role}
-Linux のブートローダーが一般に担う役割はどれですか？
+:::single-choice{#boot-overview-loader-role} Linux のブートローダーが一般に担う役割はどれですか？
 
 ::option[選択したカーネルを読み込み、そのコマンドラインを渡す。]{#boot-overview-load-kernel .correct explanation="ローダーはカーネルイメージとパラメータを準備し、多くの場合は initramfs も一緒に用意します。"}
 ::option[ブートのたびに全ユーザーアカウントを一から作る。]{#boot-overview-create-users explanation="永続的なアカウントデータベースはユーザー空間の設定であり、ローダーが毎回作り直すものではありません。"}
@@ -46,8 +44,7 @@ Linux のブートローダーが一般に担う役割はどれですか？
 
 目的のルートが利用可能になると、初期ユーザー空間はそこへ切り替わり、カーネルが設定された最初のユーザー空間プログラムを実行します。ファイルシステム検査や読み書き可能な再マウントを誰が行うかといった詳細は、普遍的な一つの手順ではなく、ディストリビューションのブート設計によって決まります。
 
-:::single-choice{#boot-overview-initramfs-purpose}
-システムが initramfs を使うのはなぜですか？
+:::single-choice{#boot-overview-initramfs-purpose} システムが initramfs を使うのはなぜですか？
 
 ::option[全ユーザーのデスクトップセッションをファームウェアへ永続保存するため。]{#boot-overview-desktop-firmware explanation="initramfs はブート時のファイルシステムイメージであり、ファームウェア上のセッション保存領域ではありません。"}
 ::option[実際のルートファイルシステムへ到達するための初期ツールとドライバーを提供するため。]{#boot-overview-early-root-tools .correct explanation="初期ユーザー空間は、暗号化、論理化、ネットワーク化されたルートや、特定ドライバーを要するルートストレージを組み立てられます。"}
@@ -60,8 +57,7 @@ Linux のブートローダーが一般に担う役割はどれですか？
 
 PID 1 に到達しても、システム全体の準備が完了したとは限りません。サービスの起動、ストレージのマウント、ネットワーク設定がまだ進行中かもしれず、グラフィカルログインやコンソールログインも、到達し得る状態の一つにすぎません。
 
-:::single-choice{#boot-overview-final-stage}
-主要なユーザー空間初期化の段階は、何によって始まりますか？
+:::single-choice{#boot-overview-final-stage} 主要なユーザー空間初期化の段階は、何によって始まりますか？
 
 ::option[ブートのたびにディスクの protective MBR を作成すること。]{#boot-overview-create-mbr explanation="パーティションテーブルの作成は、通常繰り返されるブート段階ではありません。"}
 ::option[カーネルの全コマンドラインパラメータを削除すること。]{#boot-overview-delete-command-line explanation="カーネルはコマンドラインを解析して公開するため、このような削除は必要ありません。"}

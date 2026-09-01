@@ -16,8 +16,7 @@ Ubuntu ist eine der am weitesten verbreiteten Linux-Distributionen. Es wird von 
 
 Ubuntu ist zu einem verbreiteten Ausgangspunkt für Menschen geworden, die Linux kennenlernen möchten, ohne mit einer stärker manuellen oder fortgeschrittenen Einrichtung zu beginnen. Es wird auf privaten Computern, Entwicklungssystemen, Cloud-Plattformen und Servern eingesetzt und erreicht damit eine Verbreitung, mit der nur wenige andere Distributionen mithalten können.
 
-:::single-choice{#identify-ubuntu-base}
-Welche Distribution bildet die Grundlage von Ubuntu?
+:::single-choice{#identify-ubuntu-base} Welche Distribution bildet die Grundlage von Ubuntu?
 
 ::option[Die Debian-Distribution]{#debian-base .correct explanation="Ubuntu baut auf Debian auf und übernimmt einen großen Teil von Debians Ansatz zur Paketierung. Ubuntu ergänzt diesen um eigene Veröffentlichungen, Voreinstellungen und ein eigenes Supportmodell."}
 ::option[Die Fedora-Distribution]{#ubuntu-fedora-base explanation="Fedora gehört zum Red-Hat-Ökosystem und bildet nicht die Grundlage von Ubuntu. Ubuntu gehört zur Debian-Familie."}
@@ -30,8 +29,7 @@ Ubuntu ist beliebt, weil es Linux für den täglichen Einsatz praktisch machen m
 
 Ein weiterer Grund für Ubuntus hohe Sichtbarkeit ist sein Einsatz in vielen verschiedenen Umgebungen. Du findest es auf Laptops und Desktops, in virtuellen Maschinen, auf Servern und auf Cloud-Plattformen. Diese breite Verbreitung stärkt seinen Ruf als vielseitig einsetzbare Linux-Distribution.
 
-:::single-choice{#recognize-beginner-support}
-Welche Eigenschaft von Ubuntu hilft einem Einsteiger am unmittelbarsten bei der Lösung von Problemen?
+:::single-choice{#recognize-beginner-support} Welche Eigenschaft von Ubuntu hilft einem Einsteiger am unmittelbarsten bei der Lösung von Problemen?
 
 ::option[Die vorgeschriebene manuelle Kompilierung jedes installierten Programms]{#manual-compilation explanation="Ubuntu stellt Software gewöhnlich als Pakete bereit, statt die manuelle Kompilierung jedes Programms zu verlangen. Zusätzlicher Aufwand beim Erstellen würde die Fehlersuche nicht vereinfachen."}
 ::option[Eine umfangreiche Dokumentation und eine große Nutzergemeinschaft]{#documentation-community .correct explanation="Dokumentation und Diskussionen in der Gemeinschaft bieten Einsteigern viele Anlaufstellen für Erklärungen und Hilfe bei der Fehlersuche. Das senkt die Einstiegshürde."}
@@ -50,8 +48,7 @@ Ubuntu verwendet zwei Hauptarten von Veröffentlichungen. Alle sechs Monate ersc
 
 Dieses Veröffentlichungsmodell erklärt einen Teil von Ubuntus Attraktivität. Nutzer, die eine zuverlässige Grundlage möchten, wählen häufig LTS, während Nutzer mit Interesse an neueren Funktionen die in kürzeren Abständen erscheinenden Zwischenversionen verwenden können.
 
-:::single-choice{#choose-ubuntu-lts}
-Welche Art von Ubuntu-Veröffentlichung eignet sich am besten für ein System, das eine langlebigere, vorhersehbare Grundlage benötigt?
+:::single-choice{#choose-ubuntu-lts} Welche Art von Ubuntu-Veröffentlichung eignet sich am besten für ein System, das eine langlebigere, vorhersehbare Grundlage benötigt?
 
 ::option[Eine Zwischenversion]{#interim-release explanation="Zwischenversionen erscheinen häufiger und stellen neuere Funktionen früher bereit. Ihr kürzerer Supportzeitraum entspricht nicht der genannten Priorität."}
 ::option[Eine LTS-Veröffentlichung]{#lts-release .correct explanation="LTS-Veröffentlichungen sind für längeren Support vorgesehen und werden häufig für Systeme ausgewählt, bei denen eine zuverlässige Grundlage im Vordergrund steht."}
@@ -64,8 +61,7 @@ Als Debian-basiertes System verwendet Ubuntu das Paketformat `.deb` und die Pake
 
 Die Paketverwaltung ist eine der praktischen Stärken von Ubuntu, weil sie ausgereifte Debian-Werkzeuge mit einer großen und ausführlich dokumentierten Softwareumgebung verbindet.
 
-:::single-choice{#identify-ubuntu-package-tool}
-Welcher Eintrag bezeichnet das Paketverwaltungswerkzeug, mit dem Software unter Ubuntu installiert wird?
+:::single-choice{#identify-ubuntu-package-tool} Welcher Eintrag bezeichnet das Paketverwaltungswerkzeug, mit dem Software unter Ubuntu installiert wird?
 
 ::option[`.deb`]{#deb-format explanation="`.deb` bezeichnet das Paketformat Debian-basierter Systeme. Es ist nicht das Werkzeug zur Paketverwaltung auf der Befehlszeile."}
 ::option[`LTS`]{#lts-label explanation="LTS kennzeichnet eine Long-Term-Support-Veröffentlichung. Es installiert oder verwaltet keine Softwarepakete."}

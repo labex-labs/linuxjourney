@@ -27,8 +27,7 @@ ls: cannot access '/fake/directory': No such file or directory
 - `1`: stdout (标准输出)
 - `2`：stderr（标准错误）
 
-:::single-choice{#stderr-not-in-stdout-file}
-为什么 `ls /missing > results.txt` 的错误通常仍显示在终端？
+:::single-choice{#stderr-not-in-stdout-file} 为什么 `ls /missing > results.txt` 的错误通常仍显示在终端？
 
 ::option[`>` 重定向 stdout，而诊断信息写入 stderr。]{#stderr-separate-stream .correct explanation="普通 `>` 只改变文件描述符 1，文件描述符 2 仍保持原来的终端目标。"}
 ::option[`ls` 会等待文件关闭后才打印错误。]{#stderr-waits-for-close explanation="问题与时机无关；正常消息和诊断消息使用不同输出流。"}
@@ -45,8 +44,7 @@ $ ls /fake/directory 2> errors.txt
 
 shell 会创建或清空 `errors.txt`，并把它连接到描述符 2。stdout 保持原目标。需要追加错误输出时，请改用 `2>> errors.txt`。
 
-:::single-choice{#stderr-to-error-file}
-哪个命令会用 `find /restricted` 的诊断信息替换 `errors.log`，同时让 stdout 保持原目标？
+:::single-choice{#stderr-to-error-file} 哪个命令会用 `find /restricted` 的诊断信息替换 `errors.log`，同时让 stdout 保持原目标？
 
 ::option[`find /restricted > errors.log`]{#stdout-errors-log explanation="普通 `>` 重定向描述符 1，因此捕获的是正常结果，而不是专门重定向诊断信息。"}
 ::option[`find /restricted < errors.log`]{#stdin-errors-log explanation="小于号会把文件作为 stdin 提供，并不会捕获任何输出流。"}
@@ -74,8 +72,7 @@ $ ls /fake/directory /etc/passwd 2>&1 > regular.txt
 
 这里 stderr 先复制 stdout 原来的终端目标，随后只有 stdout 移动到 `regular.txt`，两条流最终位于不同位置。
 
-:::single-choice{#stderr-combine-order}
-哪个 Bash 重定向会把 `command` 的 stdout 和 stderr 都发送到 `all.log`？
+:::single-choice{#stderr-combine-order} 哪个 Bash 重定向会把 `command` 的 stdout 和 stderr 都发送到 `all.log`？
 
 ::option[`command 2>&1 > all.log`]{#stderr-before-stdout explanation="它先把 stderr 连接到 stdout 的旧目标，再只把 stdout 重定向到文件；两条流最终会分开。"}
 ::option[`command 2> all.log > /dev/null`]{#stderr-file-stdout-null explanation="它把 stderr 发往 `all.log`，却丢弃 stdout，并没有把两条流合并到文件。"}
@@ -90,8 +87,7 @@ $ ls /fake/directory /etc/passwd &> combined.txt
 
 在 Bash 中使用 `&>>` 可以追加两条流。显式的 `> file 2>&1` 形式也很重要，因为 shell 脚本和文档中经常使用它。
 
-:::single-choice{#stderr-bash-short-form}
-哪个 Bash 命令会把 `build` 的 stdout 和 stderr 都追加到 `build.log`？
+:::single-choice{#stderr-bash-short-form} 哪个 Bash 命令会把 `build` 的 stdout 和 stderr 都追加到 `build.log`？
 
 ::option[`build &> build.log`]{#replace-both-build explanation="Bash 的 `&>` 会重定向两条流，但会替换现有文件，而不是追加。"}
 ::option[`build 2>> build.log`]{#append-errors-build explanation="它只追加 stderr，stdout 仍保留原目标。"}
@@ -108,8 +104,7 @@ $ ls /fake/directory 2> /dev/null
 
 这不会让命令成功，也不会改变退出状态，只会隐藏诊断流。排障期间应保留或显示 stderr，而不是丢弃所需信息。
 
-:::single-choice{#stderr-dev-null-effect}
-`check-data 2> /dev/null` 改变了什么？
+:::single-choice{#stderr-dev-null-effect} `check-data 2> /dev/null` 改变了什么？
 
 ::option[它会丢弃 stdout，并把所有错误转为成功。]{#discard-stdout-success explanation="描述符 2 是 stderr 而非 stdout，重定向也不会改写程序的退出状态。"}
 ::option[它会丢弃 stderr，但不会强制返回成功状态。]{#discard-stderr-only .correct explanation="重定向改变的是诊断信息的去向；程序仍自行决定成功或失败状态。"}

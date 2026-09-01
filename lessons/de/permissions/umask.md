@@ -37,8 +37,7 @@ $ umask 027
 
 Jede oktale Position steht für Eigentümer, Gruppe und andere. Ein Maskenbit entfernt die entsprechende angeforderte Berechtigung: `2` maskiert Schreiben, `4` maskiert Lesen und `1` maskiert Ausführen.
 
-:::single-choice{#umask-command-purpose}
-Was ändert `umask 027` in der aktuellen Shell?
+:::single-choice{#umask-command-purpose} Was ändert `umask 027` in der aktuellen Shell?
 
 ::option[Die Berechtigungen aller bereits vorhandenen Dateien.]{#umask-existing-files explanation="Eine umask beeinflusst Erstellungsanfragen; sie führt nicht nachträglich `chmod` auf bestehenden Objekten aus."}
 ::option[Die Maske, die später aus dieser Shell gestartete Befehle erben.]{#umask-current-shell-mask .correct explanation="Die Shell setzt die umask ihres Prozesses, und Kindprozesse erben diesen Wert gewöhnlich."}
@@ -58,16 +57,14 @@ Verzeichnis:     0777 maskiert durch 0022 -> 0755 (rwxr-xr-x)
 
 Die umask entfernt ausschließlich angeforderte Bits. Sie kann keine Ausführungsberechtigung hinzufügen, wenn eine Anwendung sie nicht angefordert hat. Eine Anwendung kann außerdem einen stärker eingeschränkten Ausgangsmodus anfordern, wodurch ein restriktiveres Ergebnis entsteht.
 
-:::single-choice{#umask-file-mode-022}
-Welcher Modus entsteht, wenn ein Programm für eine reguläre Datei den Modus `0666` anfordert und die umask `0022` lautet?
+:::single-choice{#umask-file-mode-022} Welcher Modus entsteht, wenn ein Programm für eine reguläre Datei den Modus `0666` anfordert und die umask `0022` lautet?
 
 ::option[`0666`]{#umask-file-0666 explanation="Die von `0666` angeforderten Schreibbits für Gruppe und andere werden von der Maske `0022` entfernt."}
 ::option[`0755`]{#umask-file-0755 explanation="Für die reguläre Datei wurden keine Ausführungsbits angefordert, daher kann die umask sie nicht hinzufügen."}
 ::option[`0644`]{#umask-file-0644 .correct explanation="Nach dem Entfernen der Schreibberechtigung für Gruppe und andere aus `0666` bleiben Lesen/Schreiben für den Eigentümer und reiner Lesezugriff für Gruppe und andere."}
 :::
 
-:::single-choice{#umask-directory-mode-027}
-Welcher Modus entsteht, wenn ein Programm für ein Verzeichnis `0777` anfordert und die umask `0027` lautet?
+:::single-choice{#umask-directory-mode-027} Welcher Modus entsteht, wenn ein Programm für ein Verzeichnis `0777` anfordert und die umask `0027` lautet?
 
 ::option[`0777`]{#umask-directory-0777 explanation="Die angeforderte Gruppenschreibberechtigung und die Berechtigungen für andere werden von der von null verschiedenen Maske gefiltert."}
 ::option[`0640`]{#umask-directory-0640 explanation="Dieses Ergebnis entfernt zusätzlich Ausführungsbits, die die Maske `0027` weder beim Eigentümer noch bei der Gruppe entfernt."}
@@ -80,8 +77,7 @@ Die Änderung der umask in einer Shell verändert weder deren Elternprozess noch
 
 Um einen bevorzugten Wert dauerhaft festzulegen, konfiguriere ihn an der für deine Umgebung geeigneten Stelle für Anmeldung, Shell, PAM, Dienstmanager oder Anwendung. Der richtige Ort variiert, und Dienste können ihre eigene umask festlegen. Gehe nicht davon aus, dass die Bearbeitung einer einzelnen Datei für eine interaktive Shell jeden Prozess auf dem System steuert.
 
-:::single-choice{#umask-existing-file-effect}
-Was geschieht mit einer bestehenden Datei, wenn du eine neue umask festlegst?
+:::single-choice{#umask-existing-file-effect} Was geschieht mit einer bestehenden Datei, wenn du eine neue umask festlegst?
 
 ::option[Ihr aktueller Modus bleibt unverändert.]{#umask-existing-unchanged .correct explanation="Eine neue umask filtert spätere Erstellungsanfragen und ändert keine bereits auf Dateisystemobjekten gespeicherten Modi."}
 ::option[Ihr Modus wird aus `0666` neu berechnet.]{#umask-existing-recalculated explanation="Bestehende Objekte werden weder neu erstellt noch automatisch durch die neue Maske verarbeitet."}

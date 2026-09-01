@@ -16,8 +16,7 @@ Distanzvektorrouting teilt Nachbarn mit, welche Ziele erreichbar sind, und besch
 
 Wenn Router A eine Entfernung von drei zu einem Präfix ankündigt und Router B A mit Kosten von eins erreicht, kann B über A die Entfernung vier ableiten. Die Information beschreibt eine Richtung und einen Messwert und keine vollständige Topologiekarte. Deshalb wird der Ansatz mitunter als Routing nach Hörensagen bezeichnet.
 
-:::single-choice{#distance-vector-derived-distance}
-Welcher Messwert wird abgeleitet, wenn ein Nachbar den Wert 3 ankündigt und die Verbindungskosten 1 betragen?
+:::single-choice{#distance-vector-derived-distance} Welcher Messwert wird abgeleitet, wenn ein Nachbar den Wert 3 ankündigt und die Verbindungskosten 1 betragen?
 
 ::option[2]{#distance-vector-two explanation="Die Verbindungskosten werden addiert und nicht subtrahiert."}
 ::option[31]{#distance-vector-thirty-one explanation="Die Werte sind Messwerte und keine aneinanderzureihenden Dezimalziffern."}
@@ -28,8 +27,7 @@ Welcher Messwert wird abgeleitet, wenn ein Nachbar den Wert 3 ankündigt und die
 
 Nach einem Fehler können Nachbarn einander fälschlich eine Route zurückmelden und ihren Messwert schrittweise erhöhen. Protokolle begrenzen dies durch endliche Unendlichkeitswerte, Split Horizon, Route Poisoning, Poison Reverse, ausgelöste Aktualisierungen und Timer. Diese Mechanismen verringern Probleme, machen aber nicht jede Topologieänderung zu einer sofortigen Konvergenz.
 
-:::single-choice{#distance-vector-split-horizon}
-Was soll Split Horizon verringern?
+:::single-choice{#distance-vector-split-horizon} Was soll Split Horizon verringern?
 
 ::option[Die Anzahl der Bits in jeder IPv4-Adresse.]{#distance-vector-ip-bits explanation="Die Größe einer IPv4-Adresse ist unabhängig von Routingaktualisierungen festgelegt."}
 ::option[Verschlüsselungsaufwand in Anwendungsnutzlasten.]{#distance-vector-encryption explanation="Das Verfahren betrifft die Richtung von Routenankündigungen."}
@@ -42,8 +40,7 @@ RIP verwendet die Hop-Anzahl. Eine Route mit Messwert 16 ist nicht erreichbar, s
 
 RIPv2 verwendet regelmäßige und ausgelöste Aktualisierungen und unterstützt CIDR-Informationen. Es sendet Aktualisierungen gewöhnlich per Multicast, statt unter allen Umständen eine vollständige Tabelle als Broadcast zu senden. Authentifizierung und Filterung erfordern weiterhin bewusste Konfiguration.
 
-:::single-choice{#distance-vector-rip-infinity}
-Was stellt der RIP-Messwert 16 dar?
+:::single-choice{#distance-vector-rip-infinity} Was stellt der RIP-Messwert 16 dar?
 
 ::option[Den schnellsten Pfad mit sechzehn parallelen Verbindungen.]{#distance-vector-fastest-16 explanation="RIP behandelt den Wert als nicht erreichbar."}
 ::option[Unendlich, also ein nicht erreichbares Ziel.]{#distance-vector-unreachable .correct explanation="RIP begrenzt verwendbare Pfade auf 15 Hops."}
@@ -54,8 +51,7 @@ Was stellt der RIP-Messwert 16 dar?
 
 Prüfe Nachbarzustand, empfangene und angekündigte Präfixe, Messwert, nächsten Hop, Routeninstallation und Erreichbarkeit auf der Datenebene. Eine Route kann innerhalb von RIP gültig sein, aber gemäß der lokalen Präferenzrichtlinie gegen eine andere Routenquelle verlieren.
 
-:::single-choice{#distance-vector-fewest-hop-limit}
-Warum kann die RIP-Route mit den wenigsten Hops schlecht funktionieren?
+:::single-choice{#distance-vector-fewest-hop-limit} Warum kann die RIP-Route mit den wenigsten Hops schlecht funktionieren?
 
 ::option[Die Hop-Anzahl codiert weder Verbindungsbandbreite noch Latenz, Verlust oder Überlastung.]{#distance-vector-hop-limited .correct explanation="Ein Pfad mit mehr Hops kann bessere Verbindungen und Anwendungsleistung besitzen."}
 ::option[RIP wählt immer die Route mit den meisten Hops.]{#distance-vector-most-hops explanation="Sein Messwert bevorzugt kleinere verwendbare Hop-Anzahlen."}

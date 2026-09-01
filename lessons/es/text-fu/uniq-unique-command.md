@@ -38,8 +38,7 @@ magazine
 
 El archivo de entrada no cambia porque el resultado se envía a la salida estándar.
 
-:::single-choice{#uniq-collapse-adjacent}
-¿Qué hace `uniq reading.txt` de forma predeterminada?
+:::single-choice{#uniq-collapse-adjacent} ¿Qué hace `uniq reading.txt` de forma predeterminada?
 
 ::option[Ordena el archivo completo y después elimina todos los valores repetidos.]{#uniq-auto-sort explanation="`uniq` conserva el orden de entrada y no ordena. Las copias separadas siguen siendo grupos diferentes."}
 ::option[Imprime una línea de cada grupo adyacente de líneas iguales.]{#uniq-one-per-group .correct explanation="De forma predeterminada, `uniq` reduce cada secuencia de líneas iguales consecutivas a una línea de salida."}
@@ -60,8 +59,7 @@ $ uniq -c reading.txt
 
 Estas cantidades representan longitudes de secuencias, no totales globales, salvo que antes se hayan colocado juntas todas las líneas iguales.
 
-:::single-choice{#uniq-count-groups}
-¿Qué representa la cantidad de `uniq -c`?
+:::single-choice{#uniq-count-groups} ¿Qué representa la cantidad de `uniq -c`?
 
 ::option[La cantidad de caracteres de cada línea de entrada.]{#uniq-character-count explanation="Contar caracteres no es el propósito de `uniq -c`; herramientas como `wc` calculan totales de caracteres y bytes."}
 ::option[La cantidad de líneas iguales consecutivas de cada grupo.]{#uniq-consecutive-count .correct explanation="`-c` antepone a cada grupo adyacente agrupado la cantidad de líneas que contenía."}
@@ -88,16 +86,14 @@ article
 
 `uniq -D` de GNU imprime todas las líneas de los grupos repetidos, mientras que `-d` en minúscula imprime una vez el valor de cada grupo repetido.
 
-:::single-choice{#uniq-only-singletons}
-¿Qué orden imprime únicamente los grupos adyacentes que aparecen exactamente una vez?
+:::single-choice{#uniq-only-singletons} ¿Qué orden imprime únicamente los grupos adyacentes que aparecen exactamente una vez?
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="Esto imprime todos los grupos con una cantidad, incluidos los repetidos y los de una sola línea."}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="`-d` en minúscula imprime una línea por cada grupo repetido, la selección contraria."}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="La opción `-u` selecciona los grupos cuya secuencia adyacente tiene una longitud exacta de uno."}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-¿Qué orden imprime una línea por cada grupo adyacente que aparece más de una vez?
+:::single-choice{#uniq-one-per-duplicate-group} ¿Qué orden imprime una línea por cada grupo adyacente que aparece más de una vez?
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="La opción `-d` selecciona grupos adyacentes repetidos y emite una línea representativa por grupo."}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="`-D` en mayúscula de GNU imprime todas las líneas que pertenecen a grupos repetidos, no solo una representativa."}
@@ -143,8 +139,7 @@ paper
 
 Usa una configuración regional y una política de comparación uniformes en ambos pasos. `sort -u reading.txt` también puede ordenar y conservar una línea por cada clave de ordenación igual en una sola orden.
 
-:::single-choice{#uniq-separated-duplicates}
-Hay líneas iguales dispersas por `reading.txt` y el orden de salida puede cambiar. ¿Qué tubería produce una copia ordenada de cada línea completa distinta?
+:::single-choice{#uniq-separated-duplicates} Hay líneas iguales dispersas por `reading.txt` y el orden de salida puede cambiar. ¿Qué tubería produce una copia ordenada de cada línea completa distinta?
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="La ordenación reúne líneas completas iguales y después `uniq` reduce cada grupo adyacente a una línea."}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="`uniq` se ejecuta antes de que las líneas iguales separadas queden juntas, por lo que la ordenación posterior puede dejar líneas de salida duplicadas."}

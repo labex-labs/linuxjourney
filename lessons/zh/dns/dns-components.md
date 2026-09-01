@@ -16,8 +16,7 @@ DNS 将面向客户端的递归查询职责与权威发布职责分开。理解�
 
 应用程序或操作系统中的存根解析器将查询发送给已配置的递归解析器。递归解析器利用缓存，并在必要时执行迭代查询，最终返回查询结果、错误或转介结果。只有应答服务器对相关数据具有权威时，其回复才能带有权威应答标志；仅仅执行递归查询并不会使服务器成为权威。
 
-:::single-choice{#dns-components-recursive-role}
-递归解析器为存根客户端做什么？
+:::single-choice{#dns-components-recursive-role} 递归解析器为存根客户端做什么？
 
 ::option[利用缓存和其他名称服务器取得最终 DNS 结果。]{#dns-components-recursive-result .correct explanation="客户端把多步骤查询工作委托给递归服务。"}
 ::option[取代数据包路径上的每一台网络路由器。]{#dns-components-replaces-router explanation="名称解析与 IP 转发是彼此独立的。"}
@@ -28,8 +27,7 @@ DNS 将面向客户端的递归查询职责与权威发布职责分开。理解�
 
 权威服务器从自己有权管理的区域数据中作答。一个区域应配置多台数据同步的权威服务器，并考虑彼此独立的故障风险。仅提供权威服务的服务器无须为任意客户端执行递归查询。
 
-:::single-choice{#dns-components-authoritative-role}
-服务器因何成为某个区域的权威服务器？
+:::single-choice{#dns-components-authoritative-role} 服务器因何成为某个区域的权威服务器？
 
 ::option[它曾经通过公共解析器查询过该区域。]{#dns-components-once-queried explanation="查询或缓存并不会赋予权威。"}
 ::option[它依据相关委派和配置提供该区域的数据。]{#dns-components-serves-zone .correct explanation="权威来自 DNS 委派和服务器加载的区域，而不是来自一份缓存副本。"}
@@ -42,8 +40,7 @@ DNS 将面向客户端的递归查询职责与权威发布职责分开。理解�
 
 区域顶点通常拥有一条 SOA 记录和一组 NS 记录。父区域的委派数据标识子区域的权威服务器；有时还会附带粘合地址记录，以便访问名称位于该子区域内的服务器。
 
-:::single-choice{#dns-components-zone-meaning}
-什么是 DNS 区域？
+:::single-choice{#dns-components-zone-meaning} 什么是 DNS 区域？
 
 ::option[命名空间中由某个管理主体提供服务的一部分。]{#dns-components-admin-portion .correct explanation="无论采用何种存储后端，它都可以包含记录和委派。"}
 ::option[每台客户端上都必须存在的单个文本文件。]{#dns-components-client-file explanation="权威实现可以使用多种存储形式，客户端也不会保存每个区域。"}
@@ -60,8 +57,7 @@ www.example.com.  300  IN  A  192.0.2.25
 
 所有者是 `www.example.com.`，TTL 为 300 秒，类是 Internet，类型是 IPv4 地址，RDATA 则是该地址。区域文件语法中的字段省略和相对名称规则要求你谨慎处理起点（origin）。
 
-:::single-choice{#dns-components-mx-type}
-哪种记录类型会发布邮件交换器的优先级和主机名？
+:::single-choice{#dns-components-mx-type} 哪种记录类型会发布邮件交换器的优先级和主机名？
 
 ::option[`A`]{#dns-components-a explanation="A 记录保存 IPv4 地址。"}
 ::option[`NS`]{#dns-components-ns explanation="NS 记录标识权威名称服务器。"}
@@ -72,8 +68,7 @@ www.example.com.  300  IN  A  192.0.2.25
 
 正面记录使用 TTL 限制缓存复用时间。经过确认的名称不存在等否定回答，也可以按照源自 SOA 的规则缓存。在计划变更前不久降低 TTL，只会影响缓存看到较低 TTL 后获取的记录；先前以较长 TTL 缓存的记录仍会保留到过期。
 
-:::single-choice{#dns-components-lower-ttl-timing}
-为什么要在计划更改地址之前很早就降低 DNS TTL？
+:::single-choice{#dns-components-lower-ttl-timing} 为什么要在计划更改地址之前很早就降低 DNS TTL？
 
 ::option[TTL 会修改服务器的以太网 MTU。]{#dns-components-ttl-mtu explanation="缓存生命周期与链路数据包大小无关。"}
 ::option[较低的 TTL 能保证新应用程序健康。]{#dns-components-ttl-health explanation="它影响缓存行为，而不是服务正确性。"}

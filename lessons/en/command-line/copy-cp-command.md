@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 In the second example, the copied data receives the name `mycoolfile_backup`.
 
-:::single-choice{#copy-file-under-new-name}
-Which command copies `draft.txt` to a file named `final.txt` while keeping `draft.txt`?
+:::single-choice{#copy-file-under-new-name} Which command copies `draft.txt` to a file named `final.txt` while keeping `draft.txt`?
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` renames or moves the original pathname. It does not leave the requested source copy in place."}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="Source and destination are reversed here. This would copy from `final.txt` to `draft.txt`."}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 The final argument must be a directory when you provide more than one source.
 
-:::single-choice{#copy-multiple-files}
-Which command copies `a.txt` and `b.txt` into the existing `archive/` directory?
+:::single-choice{#copy-multiple-files} Which command copies `a.txt` and `b.txt` into the existing `archive/` directory?
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="For this form of `cp`, the destination directory belongs at the end. Placing it first changes how the operands are interpreted."}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="With multiple sources, `cp` treats the final existing directory as the destination for every preceding file."}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-Before copying `*.jpg`, which command shows the non-hidden names that the pattern currently matches?
+:::single-choice{#preview-copy-pattern} Before copying `*.jpg`, which command shows the non-hidden names that the pattern currently matches?
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="This attempts a copy without a clear destination when several names match. It is not a preview operation."}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="The shell expands the same pattern for `ls`, letting you inspect the matching names before copying them."}
@@ -112,8 +109,7 @@ Archive mode, `-a`, is useful for backup-style copies. It copies recursively whi
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-You want a recursive backup-style copy of `project/` that preserves links and many attributes. Which command fits that goal?
+:::single-choice{#archive-directory-tree} You want a recursive backup-style copy of `project/` that preserves links and many attributes. Which command fits that goal?
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` preserves selected attributes, but it does not by itself make a directory copy recursive."}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` controls when files are copied based on destination state. It does not by itself enable recursive directory copying."}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 The `-f` option tells GNU `cp` to try removing an existing destination if it cannot open that file for writing, then retry the copy. It is not a substitute for checking targets carefully. Shell aliases can also add options such as `-i`, so inspect an unexpected prompt rather than assuming a particular configuration.
 
-:::single-choice{#skip-existing-destination}
-Which command copies `report.txt` into `backup/` but skips an existing destination of the same name?
+:::single-choice{#skip-existing-destination} Which command copies `report.txt` into `backup/` but skips an existing destination of the same name?
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="The `-n` option prevents `cp` from overwriting an existing destination file."}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` asks before an overwrite, so the result depends on the response. It does not automatically skip every existing destination."}

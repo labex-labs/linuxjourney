@@ -18,8 +18,7 @@ Die reale Benutzer-ID kennzeichnet das Konto, das den Prozess oder seine überge
 
 Bei einem gewöhnlichen, von Benutzer Bob gestarteten Befehl entspricht die reale Benutzer-ID normalerweise Bobs UID. Das Erstellen eines weiteren Prozesses erzeugt weder ein neues Konto noch ändert es diese Identität von selbst.
 
-:::single-choice{#process-permissions-real-uid}
-Was kennzeichnet die reale Benutzer-ID eines Prozesses gewöhnlich?
+:::single-choice{#process-permissions-real-uid} Was kennzeichnet die reale Benutzer-ID eines Prozesses gewöhnlich?
 
 ::option[Den Eigentümer der zuletzt geöffneten Datei.]{#process-permissions-real-opened-file explanation="Das Öffnen einer Datei ersetzt die reale UID des Prozesses nicht durch den Eigentümer dieser Datei."}
 ::option[Das Konto, das mit dem ursprünglichen Aufrufer des Prozesses verbunden ist.]{#process-permissions-real-caller .correct explanation="Die reale UID erfasst die beim Start des Prozesses übernommene Benutzeridentität des Aufrufers."}
@@ -32,8 +31,7 @@ Die effektive Benutzer-ID ist die Benutzerzugangsangabe, die für viele Dateisys
 
 Ein sorgfältig entwickeltes Passwortwerkzeug kann beispielsweise mit erhöhter effektiver UID laufen, um geschützte Authentifizierungsdaten zu aktualisieren. Das Programm muss dennoch Richtlinien anhand des Aufrufers, des angeforderten Kontos, der PAM-Ergebnisse und weiterer Zusammenhänge durchsetzen. Der Besitz einer effektiven UID macht nicht automatisch jeden angeforderten Vorgang rechtmäßig.
 
-:::single-choice{#process-permissions-effective-uid}
-Welche Benutzer-ID wird für viele Zugriffsentscheidungen im Namen eines Prozesses verwendet?
+:::single-choice{#process-permissions-effective-uid} Welche Benutzer-ID wird für viele Zugriffsentscheidungen im Namen eines Prozesses verwendet?
 
 ::option[Die effektive Benutzer-ID.]{#process-permissions-effective-active .correct explanation="Die effektive UID ist die aktive Benutzerzugangsangabe, die bei vielen Autorisierungsprüfungen herangezogen wird."}
 ::option[Ausschließlich die gespeicherte Benutzer-ID.]{#process-permissions-effective-saved-only explanation="Die gespeicherte ID unterstützt Übergänge zwischen Zugangsdaten, ist aber im Allgemeinen nicht die aktive Identität für Zugriffsprüfungen."}
@@ -46,8 +44,7 @@ Mit der gespeicherten Set-User-ID kann ein Programm eine Identität behalten, di
 
 Das ist sicherer, als während des gesamten Programms erhöhte Befugnisse beizubehalten – allerdings nur bei korrekter Umsetzung. Programme sollten Privilegien dauerhaft ablegen, sobald sie nicht mehr benötigt werden, und jeden Aufruf zur Änderung von Zugangsdaten auf Fehler prüfen.
 
-:::single-choice{#process-permissions-saved-uid}
-Warum kann ein privilegiertes Programm eine gespeicherte Set-User-ID behalten?
+:::single-choice{#process-permissions-saved-uid} Warum kann ein privilegiertes Programm eine gespeicherte Set-User-ID behalten?
 
 ::option[Um seine effektive Identität für kontrollierte privilegierte und unprivilegierte Phasen zu wechseln.]{#process-permissions-saved-switch .correct explanation="Die gespeicherte Identität kann eine vorübergehende Verringerung der Privilegien und eine später erlaubte Wiederherstellung unterstützen."}
 ::option[Um diese UID automatisch jeder gelesenen Datei zuzuweisen.]{#process-permissions-saved-file-owner explanation="Das Lesen einer Datei ändert ihr Eigentum nicht in die gespeicherte UID des Prozesses."}
@@ -60,8 +57,7 @@ Prozesse besitzen außerdem reale, effektive, gespeicherte und ergänzende Grupp
 
 Verwende unter Linux Werkzeuge wie `ps` und `/proc/PROCESS/status`, um Zugangsdaten zu prüfen. Verfügbare Felder und Anzeigeformate unterscheiden sich. Lies daher die lokale Dokumentation und ändere Zugangsdaten nicht bloß zum Experimentieren auf einem gemeinsam genutzten System.
 
-:::single-choice{#process-permissions-ordinary-identities}
-Wie verhalten sich bei den meisten gewöhnlichen Befehlen ohne Privilegienübergang die reale und die effektive UID zueinander?
+:::single-choice{#process-permissions-ordinary-identities} Wie verhalten sich bei den meisten gewöhnlichen Befehlen ohne Privilegienübergang die reale und die effektive UID zueinander?
 
 ::option[Die effektive UID ist immer null.]{#process-permissions-effective-root explanation="Gewöhnliche Befehle erhalten nicht automatisch die UID von root."}
 ::option[Die reale UID entspricht immer dem Eigentümer der ausführbaren Datei.]{#process-permissions-real-file-owner explanation="Der Eigentümer der ausführbaren Datei beeinflusst das setuid-Verhalten und nicht die gewöhnliche reale UID."}

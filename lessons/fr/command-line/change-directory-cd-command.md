@@ -27,8 +27,7 @@ Un chemin peut être absolu ou relatif.
 - **Chemin absolu** : chemin complet qui part du répertoire racine (`/`), par exemple `/home/pete/Desktop`.
 - **Chemin relatif** : chemin fondé sur l'emplacement actuel. Si vous vous trouvez dans `/home/pete/Documents` et souhaitez accéder au sous-répertoire `taxes`, vous pouvez utiliser `taxes/`.
 
-:::single-choice{#recognize-absolute-cd-path}
-Quelle affirmation décrit correctement un chemin absolu ?
+:::single-choice{#recognize-absolute-cd-path} Quelle affirmation décrit correctement un chemin absolu ?
 
 ::option[Il part du répertoire actuellement utilisé par le shell.]{#begins-at-current-directory explanation="Un chemin qui dépend de l'emplacement actuel du shell est relatif ; il ne part pas nécessairement de la racine."}
 ::option[Il ne contient que le nom du répertoire final, sans ses parents.]{#contains-final-name-only explanation="Un nom de destination seul est normalement interprété par rapport au répertoire actuel. Un chemin absolu inclut son parcours depuis `/`."}
@@ -52,8 +51,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-Quelle commande confirme l'emplacement actuel du shell après `cd` ?
+:::single-choice{#verify-changed-directory} Quelle commande confirme l'emplacement actuel du shell après `cd` ?
 
 ::option[`cd`]{#cd-command explanation="`cd` change le répertoire actuel, mais n'affiche normalement pas le chemin complet obtenu. Utilisez `pwd` pour le confirmer."}
 ::option[`ls`]{#ls-command explanation="`ls` affiche le contenu d'un répertoire. Elle aide à inspecter un emplacement, mais `pwd` indique l'emplacement lui-même."}
@@ -88,16 +86,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-Depuis `/home/pete/Pictures`, quelle commande mène à `/home/pete` ?
+:::single-choice{#move-to-parent-directory} Depuis `/home/pete/Pictures`, quelle commande mène à `/home/pete` ?
 
 ::option[`cd .`]{#cd-current explanation="`.` représente le répertoire actuel ; cette commande laisse donc le shell dans `/home/pete/Pictures`."}
 ::option[`cd -`]{#cd-previous explanation="`-` revient au répertoire de travail précédent, qui n'est pas nécessairement le parent. Utilisez `..` pour remonter d'un niveau."}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` représente le parent du répertoire actuel. Le parent de `Pictures` est `/home/pete`."}
 :::
 
-:::single-choice{#return-to-previous-directory}
-Quelle commande revient au répertoire utilisé juste avant le répertoire actuel ?
+:::single-choice{#return-to-previous-directory} Quelle commande revient au répertoire utilisé juste avant le répertoire actuel ?
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` revient au répertoire de travail précédent, qui peut se trouver n'importe où dans le système de fichiers."}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` remonte au répertoire parent. Le parent et le répertoire précédent ne sont pas toujours identiques."}
@@ -128,8 +124,7 @@ Accédez à un répertoire dont le nom contient des espaces en le plaçant entre
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-Quelle commande traite `Vacation Photos` comme un seul nom de répertoire ?
+:::single-choice{#enter-directory-with-spaces} Quelle commande traite `Vacation Photos` comme un seul nom de répertoire ?
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="Sans guillemets, le shell transmet `Vacation` et `Photos` comme deux arguments au lieu d'un seul nom."}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="Placer toute la ligne entre guillemets la transforme en un unique nom de commande. La commande doit rester hors des guillemets du chemin."}

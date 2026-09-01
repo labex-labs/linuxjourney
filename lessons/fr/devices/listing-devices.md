@@ -30,8 +30,7 @@ $ lsusb -t
 
 Une sortie détaillée des descripteurs existe, mais certains éléments exigent un accès en lecture privilégié. N'accordez pas de larges permissions USB uniquement pour faire taire une commande d'inspection.
 
-:::single-choice{#listing-devices-usb-tree}
-Quelle commande affiche les périphériques USB sous forme d'arborescence topologique ?
+:::single-choice{#listing-devices-usb-tree} Quelle commande affiche les périphériques USB sous forme d'arborescence topologique ?
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="Cette commande liste les fonctions PCI et leurs pilotes, pas la topologie USB."}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="Ce n'est pas la commande d'arborescence USB présentée."}
@@ -54,8 +53,7 @@ $ lspci -k
 
 La présence d'un contrôleur PCI dans la liste ne prouve pas que chaque périphérique sous-jacent est initialisé ou sain. Vérifiez l'association du pilote et les journaux du noyau lors d'un diagnostic.
 
-:::single-choice{#listing-devices-pci-driver}
-Quelle commande ajoute les informations sur le pilote du noyau à une liste PCI ?
+:::single-choice{#listing-devices-pci-driver} Quelle commande ajoute les informations sur le pilote du noyau à une liste PCI ?
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="L'option `-k` affiche le pilote actif et les modules capables de gérer chaque périphérique PCI."}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="Cette commande décrit la hiérarchie USB et les pilotes d'interfaces."}
@@ -78,8 +76,7 @@ Pour une hiérarchie orientée stockage qui inclut de nombreux types bloc, utili
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-Que liste principalement `lsscsi` ?
+:::single-choice{#listing-devices-lsscsi-scope} Que liste principalement `lsscsi` ?
 
 ::option[Exclusivement tous les espaces de noms et contrôleurs NVMe.]{#listing-devices-only-nvme explanation="NVMe utilise son propre sous-système et ses outils, même si des vues bloc associées peuvent apparaître ailleurs."}
 ::option[Uniquement les fichiers dont le nom se termine par `.scsi`.]{#listing-devices-scsi-extension explanation="La commande interroge les interfaces de périphériques du noyau et non les extensions de noms."}
@@ -92,8 +89,7 @@ Les descriptions proviennent souvent de bases locales d'identifiants et peuvent 
 
 Ces utilitaires peuvent être distribués dans des paquets séparés, souvent `usbutils`, `pciutils` et `lsscsi`. Si une commande manque, utilisez le gestionnaire de paquets de la distribution plutôt qu'un remplacement inconnu.
 
-:::single-choice{#listing-devices-listed-not-working}
-La présence d'un périphérique dans `lspci` prouve-t-elle que son pilote est actif et fonctionne correctement ?
+:::single-choice{#listing-devices-listed-not-working} La présence d'un périphérique dans `lspci` prouve-t-elle que son pilote est actif et fonctionne correctement ?
 
 ::option[Non ; il faut aussi inspecter l'association du pilote et les messages du noyau.]{#listing-devices-needs-correlation .correct explanation="L'énumération prouve qu'une fonction PCI est visible, pas que son initialisation de haut niveau a réussi."}
 ::option[Oui ; l'énumération PCI réalise un test fonctionnel complet.]{#listing-devices-complete-test explanation="La liste n'exerce pas chaque fonction matérielle et ne valide pas le comportement des services."}

@@ -16,8 +16,7 @@ Les protocoles à état des liens décrivent les liens et préfixes locaux, dist
 
 Les routeurs découvrent des voisins compatibles et forment des adjacences de protocole selon le type d’interface, la zone, les minuteurs, l’authentification et d’autres paramètres. L’observation de paquets hello ne garantit pas une adjacence complète ; une configuration incompatible peut arrêter plus tôt la machine à états.
 
-:::single-choice{#link-state-hello-limit}
-Qu’est-ce que la réception d’un paquet hello OSPF ne prouve pas ?
+:::single-choice{#link-state-hello-limit} Qu’est-ce que la réception d’un paquet hello OSPF ne prouve pas ?
 
 ::option[Que les routeurs ont formé une adjacence entièrement synchronisée.]{#link-state-not-full .correct explanation="La zone, les minuteurs, l’authentification, la MTU et d’autres états peuvent empêcher l’échange complet de la base."}
 ::option[Que le voisin a envoyé au moins un message de protocole.]{#link-state-hello-sent explanation="La réception du paquet hello prouve directement ce fait limité."}
@@ -28,8 +27,7 @@ Qu’est-ce que la réception d’un paquet hello OSPF ne prouve pas ?
 
 Chaque routeur produit des annonces sur son état pertinent. Les voisins diffusent de manière fiable les informations plus récentes dans la zone ou le domaine défini au lieu de limiter les mises à jour à la paire de voisins d’origine. Des mécanismes de séquence et de vieillissement distinguent les informations actuelles et retirent les états périmés.
 
-:::single-choice{#link-state-flooding-scope}
-Pourquoi les informations d’état des liens sont-elles diffusées au-delà d’un seul voisin ?
+:::single-choice{#link-state-flooding-scope} Pourquoi les informations d’état des liens sont-elles diffusées au-delà d’un seul voisin ?
 
 ::option[Chaque application a besoin d’une copie de tous les mots de passe des routeurs.]{#link-state-password-copy explanation="Les identifiants applicatifs ne constituent pas des annonces de topologie."}
 ::option[Ethernet ne peut pas envoyer de trames unicast.]{#link-state-no-unicast explanation="Ethernet prend en charge l’unicast ; la diffusion est ici un mécanisme de distribution du protocole de routage."}
@@ -42,8 +40,7 @@ Après avoir construit une base d’état des liens, un routeur exécute un algo
 
 « Plus court » signifie le coût de protocole le plus faible, et pas nécessairement le plus petit nombre de routeurs ou la plus faible latence applicative mesurée. La conception des coûts doit refléter l’intention opérationnelle.
 
-:::single-choice{#link-state-shortest-meaning}
-Que signifie « plus court » dans le calcul d’un chemin à état des liens ?
+:::single-choice{#link-state-shortest-meaning} Que signifie « plus court » dans le calcul d’un chemin à état des liens ?
 
 ::option[La route dont le préfixe comporte le moins de caractères écrits.]{#link-state-shortest-text explanation="La longueur du texte est sans rapport avec le coût de la topologie."}
 ::option[Le chemin dont la somme des coûts de protocole est la plus faible.]{#link-state-lowest-cost .correct explanation="Le modèle de coût peut correspondre ou non directement au nombre de sauts ou à la latence actuelle."}
@@ -56,8 +53,7 @@ Les zones OSPF limitent la diffusion de la topologie et le périmètre du calcul
 
 Après un changement de liaison, la détection, la diffusion des annonces, le calcul SPF, l’installation des routes et la reprise de l’acheminement prennent chacun du temps. Une convergence plus rapide qu’avec une conception simple à vecteur de distance est possible, mais pas automatique pour chaque panne ou configuration.
 
-:::single-choice{#link-state-convergence-stages}
-Que faut-il mesurer pendant l’analyse d’une convergence OSPF ?
+:::single-choice{#link-state-convergence-stages} Que faut-il mesurer pendant l’analyse d’une convergence OSPF ?
 
 ::option[Uniquement l’heure à laquelle un administrateur a ouvert un terminal.]{#link-state-terminal-time explanation="Cela n’isole aucune étape du protocole ou de l’acheminement."}
 ::option[Uniquement l’ordre alphabétique des noms des routeurs.]{#link-state-router-names explanation="Les noms ne déterminent pas la durée de la convergence."}

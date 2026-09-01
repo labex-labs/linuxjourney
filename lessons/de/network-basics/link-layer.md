@@ -16,8 +16,7 @@ Die Verbindungsschicht transportiert Pakete der Netzwerkschicht über ein lokale
 
 Ein Ethernet-Frame enthält Ziel- und Quell-MAC-Adressen, ein EtherType- oder Längenfeld, Nutzlast und eine Frame Check Sequence als Abschluss. Die physische Übertragung verwendet außerdem eine Präambel und einen Startbegrenzer. Die Frame Check Sequence erkennt Beschädigungen auf der Verbindung; sie repariert weder einen beschädigten Frame noch schützt sie ihn kryptografisch.
 
-:::single-choice{#link-layer-fcs-purpose}
-Wofür wird die Ethernet Frame Check Sequence verwendet?
+:::single-choice{#link-layer-fcs-purpose} Wofür wird die Ethernet Frame Check Sequence verwendet?
 
 ::option[Zum Erkennen von Framebeschädigungen auf der Verbindung.]{#link-layer-detect-corruption .correct explanation="Ein Empfänger kann einen Frame verwerfen, der die Integritätsprüfung nicht besteht."}
 ::option[Zum Verschlüsseln der Nutzlast für alle gerouteten Hops.]{#link-layer-fcs-encryption explanation="FCS ist ein Fehlererkennungscode und keine Verschlüsselung oder Authentifizierung."}
@@ -28,8 +27,7 @@ Wofür wird die Ethernet Frame Check Sequence verwendet?
 
 Ein Ethernet-Switch lernt, an welchen Ports Quell-MAC-Adressen erscheinen, und leitet bekannte Unicast-Frames zum erlernten Zielport weiter. Broadcasts und mancher Datenverkehr mit unbekanntem Ziel werden innerhalb der Broadcast-Domäne geflutet. VLANs können ein Switching-System in getrennte logische Verbindungsdomänen unterteilen.
 
-:::single-choice{#link-layer-switch-learning}
-Welche Informationen lernt ein Ethernet-Switch normalerweise aus Frames?
+:::single-choice{#link-layer-switch-learning} Welche Informationen lernt ein Ethernet-Switch normalerweise aus Frames?
 
 ::option[Anwendungspasswörter und HTTP-Cookies.]{#link-layer-switch-passwords explanation="Eine grundlegende Weiterleitungstabelle verwendet Verbindungsadressen und keine Anmeldedaten von Anwendungen."}
 ::option[Die vollständige Internet-Routingtabelle jedes Routers.]{#link-layer-switch-routing-table explanation="Switching auf Schicht 2 und weltweiter Routenaustausch sind unterschiedliche Funktionen."}
@@ -42,8 +40,7 @@ Bei IPv4 über Ethernet ordnet das Address Resolution Protocol einer direkt erre
 
 Bei einem nicht direkt erreichbaren IP-Ziel löst der Host die MAC-Adresse des standardmäßigen oder ausgewählten Gateways auf – nicht die MAC-Adresse des entfernten Ziels. IPv6 verwendet statt ARP die Neighbor Discovery über ICMPv6.
 
-:::single-choice{#link-layer-remote-destination-mac}
-Welche MAC-Adresse verwendet ein Host für ein nicht direkt erreichbares IPv4-Ziel?
+:::single-choice{#link-layer-remote-destination-mac} Welche MAC-Adresse verwendet ein Host für ein nicht direkt erreichbares IPv4-Ziel?
 
 ::option[Die MAC-Adresse des ausgewählten Next-Hop-Routers.]{#link-layer-gateway-mac .correct explanation="Das IP-Paket bleibt an den entfernten Host adressiert, während der lokale Frame an den Router geht."}
 ::option[Die MAC-Adresse des entfernten Servers über jeden Router hinweg.]{#link-layer-remote-mac explanation="MAC-Adressen sind Kennungen lokaler Verbindungen und werden nicht von Ende zu Ende übertragen."}
@@ -60,8 +57,7 @@ $ ip neighbor show
 
 Zustände wie `REACHABLE`, `STALE`, `DELAY`, `PROBE` und `FAILED` beschreiben den Prozess zur Erkennung nicht erreichbarer Nachbarn. `STALE` bedeutet nicht defekt; es bedeutet, dass die zwischengespeicherte Erreichbarkeitsbestätigung nicht mehr aktuell ist und bei Verwendung geprüft werden kann.
 
-:::single-choice{#link-layer-stale-neighbor}
-Was zeigt ein Nachbareintrag mit dem Zustand `STALE` an?
+:::single-choice{#link-layer-stale-neighbor} Was zeigt ein Nachbareintrag mit dem Zustand `STALE` an?
 
 ::option[Der Nachbar wird dauerhaft von der Firewall blockiert.]{#link-layer-stale-blocked explanation="Der Zustand beschreibt keine Firewallrichtlinie."}
 ::option[Die MAC-Adresse wurde als Sicherung auf den Datenträger geschrieben.]{#link-layer-stale-backup explanation="Nachbarzustand ist eine betriebliche Cacheinformation."}
@@ -72,8 +68,7 @@ Was zeigt ein Nachbareintrag mit dem Zustand `STALE` an?
 
 Der Sender legt ein IP-Paket in einen Frame, der an seinen nächsten Hop adressiert ist. Der Router validiert und entfernt den eingehenden Frame, verarbeitet den IP-Header, wählt eine ausgehende Route und erstellt einen neuen Frame für diese Verbindung. Der Empfänger kehrt die Kapselung um und übergibt die Transportnutzlast an den passenden Socket.
 
-:::single-choice{#link-layer-router-reframing}
-Was bleibt bei gewöhnlicher Weiterleitung gleich, während sich die Ethernet-Kapselung an einem Router ändert?
+:::single-choice{#link-layer-router-reframing} Was bleibt bei gewöhnlicher Weiterleitung gleich, während sich die Ethernet-Kapselung an einem Router ändert?
 
 ::option[Das IP-Ziel, sofern keine Middlebox wie NAT es verändert.]{#link-layer-ip-destination .correct explanation="Gewöhnliche Router leiten zum endgültigen IP-Ziel weiter und ersetzen dabei die hoplokalen Frames."}
 ::option[Die Frame Check Sequence des eingehenden Frames.]{#link-layer-same-fcs explanation="Ein neuer ausgehender Frame erhält seinen eigenen Integritätswert für die Verbindung."}

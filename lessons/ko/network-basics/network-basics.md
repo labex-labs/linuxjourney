@@ -24,8 +24,7 @@ $ ip address show
 
 인터페이스가 존재하거나 관리상 활성 상태라는 사실만으로 종단 간 연결이 입증되지는 않습니다.
 
-:::single-choice{#network-basics-host-interface}
-네트워크 인터페이스란 무엇입니까?
+:::single-choice{#network-basics-host-interface} 네트워크 인터페이스란 무엇입니까?
 
 ::option[인터넷의 모든 패킷을 영구적으로 복사한 것입니다.]{#network-basics-interface-copy explanation="인터페이스는 트래픽을 송수신하며 전역 패킷 아카이브가 아닙니다."}
 ::option[호스트가 네트워크나 가상 링크에 연결되는 지점입니다.]{#network-basics-interface-attachment .correct explanation="호스트에는 별도 설정을 가진 여러 물리 또는 가상 인터페이스가 있을 수 있습니다."}
@@ -36,8 +35,7 @@ $ ip address show
 
 LAN(Local Area Network)은 가정, 사무실 또는 데이터 센터 세그먼트 같은 제한된 환경을 포괄합니다. Ethernet 스위치는 로컬 링크의 포트 사이에서 프레임을 전달합니다. WLAN(Wireless LAN)은 무선 링크 기술을 사용합니다. 브리지나 접근 지점이 둘을 연결하면 유선 및 무선 인터페이스가 같은 IP 서브넷에 속할 수도 있습니다.
 
-:::single-choice{#network-basics-wlan-relationship}
-WLAN은 LAN과 어떤 관계입니까?
+:::single-choice{#network-basics-wlan-relationship} WLAN은 LAN과 어떤 관계입니까?
 
 ::option[WLAN은 언제나 별도의 전역 인터넷입니다.]{#network-basics-wlan-global explanation="무선 링크 기술을 사용하는 로컬 네트워크입니다."}
 ::option[WLAN은 라우터가 사용하는 디스크 파티션입니다.]{#network-basics-wlan-disk explanation="이 용어는 저장소 배치가 아니라 네트워킹을 설명합니다."}
@@ -50,8 +48,7 @@ WLAN은 LAN과 어떤 관계입니까?
 
 WAN(Wide Area Network)은 더 넓은 지리적 또는 관리적 경계에 걸쳐 있습니다. 인터넷 서비스 제공자는 고객 네트워크를 다른 네트워크와 연결할 수 있지만 “WAN”이 단순히 한 집 밖의 모든 장치를 뜻하지는 않습니다.
 
-:::single-choice{#network-basics-router-role}
-라우터를 정의하는 역할은 무엇입니까?
+:::single-choice{#network-basics-router-role} 라우터를 정의하는 역할은 무엇입니까?
 
 ::option[네트워크 계층 네트워크 사이에서 패킷을 전달합니다.]{#network-basics-forward-networks .correct explanation="라우팅은 IP 네트워크 경계를 가로지르는 다음 홉을 선택합니다."}
 ::option[모든 사용자의 파일을 필수 백업으로 저장합니다.]{#network-basics-router-backup explanation="파일 보존은 라우팅을 정의하는 기능이 아닙니다."}
@@ -64,8 +61,7 @@ WAN(Wide Area Network)은 더 넓은 지리적 또는 관리적 경계에 걸쳐
 
 하나의 통신에는 양방향으로 많은 패킷이 포함될 수 있습니다. 손실, 순서 변경, 단편화, 재전송 및 경로 변경이 발생할 수 있으므로 캡처한 패킷 하나만으로 전체 애플리케이션 트랜잭션을 설명할 수 있는 경우는 드뭅니다.
 
-:::single-choice{#network-basics-router-frame}
-라우터 홉에서 링크 계층 프레이밍에는 일반적으로 어떤 일이 일어납니까?
+:::single-choice{#network-basics-router-frame} 라우터 홉에서 링크 계층 프레이밍에는 일반적으로 어떤 일이 일어납니까?
 
 ::option[라우터가 수신 프레이밍을 제거하고 다음 링크에 맞는 프레이밍을 만듭니다.]{#network-basics-reframe .correct explanation="전달되는 IP 패킷은 출력 인터페이스에 맞는 새 링크 계층 프레임에 실립니다."}
 ::option[같은 Ethernet 프레임이 인터넷 전체를 변경 없이 통과합니다.]{#network-basics-same-frame explanation="프레임은 해당 링크 범위에 속하며 라우팅 홉에서 교체됩니다."}

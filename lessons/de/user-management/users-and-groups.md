@@ -25,8 +25,7 @@ uid=1000(alice) gid=1000(alice) groups=1000(alice),27(sudo)
 
 Die Werte unterscheiden sich je nach System. Menschliche Anmeldekonten besitzen häufig Home-Verzeichnisse wie `/home/alice`, doch Konten können einen anderen Pfad oder überhaupt kein gewöhnliches Home-Verzeichnis verwenden. Dienstkonten dienen oft dazu, Software unter einer eingeschränkten Identität auszuführen, und nicht der interaktiven Anmeldung.
 
-:::single-choice{#users-uid-purpose}
-Welche Kennung verwendet der Kernel hauptsächlich, um eine Benutzeridentität darzustellen?
+:::single-choice{#users-uid-purpose} Welche Kennung verwendet der Kernel hauptsächlich, um eine Benutzeridentität darzustellen?
 
 ::option[Den Pfad eines Home-Verzeichnisses]{#users-home-path explanation="Ein Home-Pfad gehört zur Kontokonfiguration und kann variieren oder fehlen; er ist nicht die Benutzerkennung des Kernels."}
 ::option[Eine numerische UID]{#users-numeric-uid .correct explanation="Kontodatenbanken ordnen Namen numerischen UIDs zu, die in Prozesszugangsdaten und Eigentumsangaben verwendet werden."}
@@ -46,8 +45,7 @@ $ groups alice
 
 Diese Befehle geben konfigurierte oder aufgelöste Identitätsinformationen aus. Verzeichnisdienste und Zwischenspeicher können daran beteiligt sein, weshalb das direkte Lesen von `/etc/group` nicht immer die vollständigen wirksamen Mitgliedschaften zeigt.
 
-:::single-choice{#users-primary-supplementary-groups}
-Wie kann ein Linux-Konto gewöhnlich an Gruppen beteiligt sein?
+:::single-choice{#users-primary-supplementary-groups} Wie kann ein Linux-Konto gewöhnlich an Gruppen beteiligt sein?
 
 ::option[Es kann während seiner gesamten Lebensdauer genau einer Gruppe angehören.]{#users-single-group explanation="Linux-Prozesse können eine primäre Gruppe und zusätzlich eine Liste ergänzender Gruppen besitzen."}
 ::option[Es gehört jeder Gruppe an, deren Dateien es lesen kann.]{#users-readable-groups explanation="Die Lesbarkeit von Dateien ergibt sich aus Berechtigungen und Zugangsdaten; sie erzeugt nicht automatisch eine Gruppenmitgliedschaft."}
@@ -60,8 +58,7 @@ Ein Prozess besitzt Zugangsdaten wie reale und effektive UIDs und GIDs sowie erg
 
 Das ist genauer als die Aussage, ein Prozess laufe immer nur „als der Benutzer, der ihn gestartet hat“. Ausführbare Dateien mit Set-User-ID, Dienstmanager, Container, Namensräume und Systemaufrufe zur Änderung von Privilegien können beeinflussen, welche Identitäten in einem bestimmten Kontext sichtbar oder wirksam sind.
 
-:::single-choice{#users-process-access-identity}
-Welche Informationen werden gewöhnlich berücksichtigt, wenn der Kernel einen Prozess anhand von Dateiberechtigungen prüft?
+:::single-choice{#users-process-access-identity} Welche Informationen werden gewöhnlich berücksichtigt, wenn der Kernel einen Prozess anhand von Dateiberechtigungen prüft?
 
 ::option[Die effektive UID, die effektive GID und die ergänzenden Gruppen des Prozesses.]{#users-effective-credentials .correct explanation="Diese Zugangsdaten werden bei gewöhnlichen Prüfungen der frei bestimmbaren Zugriffskontrolle mit Eigentums- und Berechtigungsangaben verglichen."}
 ::option[Das Farbschema des Terminals, das den Prozess gestartet hat.]{#users-terminal-theme explanation="Anzeigeeinstellungen spielen bei der Prüfung von Dateisystemberechtigungen keine Rolle."}
@@ -74,8 +71,7 @@ Das traditionell `root` genannte Konto besitzt die UID 0. Viele Linux-Berechtigu
 
 Für die tägliche Arbeit solltest du ein unprivilegiertes Konto verwenden. Administrative Rechte vergrößern die Auswirkungen von Fehlern bei Pfadangaben, nicht vertrauenswürdigen Befehlen und kompromittierter Software.
 
-:::single-choice{#users-root-uid}
-Welche numerische UID kennzeichnet traditionell das root-Konto?
+:::single-choice{#users-root-uid} Welche numerische UID kennzeichnet traditionell das root-Konto?
 
 ::option[`0`]{#users-uid-zero .correct explanation="Linux und Unix-ähnliche Systeme reservieren die UID 0 traditionell für die Superuser-Identität."}
 ::option[`1000`]{#users-uid-thousand explanation="Viele Distributionen weisen dem ersten gewöhnlichen menschlichen Konto einen Wert nahe 1000 zu, doch dies ist nicht die UID von root."}
@@ -94,8 +90,7 @@ $ sudo -l
 
 Verwende einen erlaubten administrativen Befehl nur, wenn die Aufgabe ihn erfordert und du seine Auswirkungen verstehst. Nutze `sudo` nicht bloß, um eine Berechtigungsfehlermeldung zu unterdrücken, und zeige Datenbanken mit Passwort-Hashes wie `/etc/shadow` nicht als beiläufige Übung an.
 
-:::single-choice{#users-sudo-policy}
-Was tut `sudo`, bevor es einen angeforderten Befehl ausführt?
+:::single-choice{#users-sudo-policy} Was tut `sudo`, bevor es einen angeforderten Befehl ausführt?
 
 ::option[Es prüft anhand der konfigurierten Richtlinie, ob die angeforderte Zielidentität verwendet werden darf.]{#users-sudo-policy-check .correct explanation="`sudo` autorisiert gemäß einer Richtlinie und richtet bei erteilter Erlaubnis anschließend die konfigurierten Zielzugangsdaten ein."}
 ::option[Es gewährt jedem lokalen Benutzer immer uneingeschränkten root-Zugriff.]{#users-sudo-always-root explanation="Die Autorisierung wird durch Richtlinien gesteuert, und abgelehnte Benutzer oder Befehle erhalten keinen pauschalen root-Zugriff."}

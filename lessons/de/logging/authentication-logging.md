@@ -25,8 +25,7 @@ $ sudo less /var/log/auth.log
 
 Die SSH-Unit kann `ssh.service` oder `sshd.service` heißen. Berechtigungen beschränken diese Datensätze gewöhnlich, weil sie Konto- und Zugriffsdetails offenlegen.
 
-:::single-choice{#auth-logs-file-location}
-Wo müssen Linux-Authentifizierungsereignisse immer gespeichert sein?
+:::single-choice{#auth-logs-file-location} Wo müssen Linux-Authentifizierungsereignisse immer gespeichert sein?
 
 ::option[Am durch die lokale Protokollierungsrichtlinie ausgewählten Ziel.]{#auth-logs-local-policy .correct explanation="Dateien, Journal und zentrale Datensammler unterscheiden sich je nach Distribution und Konfiguration."}
 ::option[Auf jeder Distribution in `/var/log/auth.log`.]{#auth-logs-auth-only explanation="Dieser Pfad ist auf Systemen der Debian-Familie verbreitet, aber nicht allgemeingültig."}
@@ -43,8 +42,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 Dies bezeichnet Zeit, Host, ausgebendes Programm, PAM-Modul und -Dienst, angeforderten Sitzungsbenutzer sowie ursprüngliche UID. Es identifiziert für sich allein weder den Menschen hinter UID 1000 noch beweist es eine böswillige Handlung. Löse die UID anhand der zum Zeitpunkt des Vorfalls gültigen Kontodatensätze auf und verknüpfe Terminal, entfernte Adresse, Sitzung und umgebende Ereignisse.
 
-:::single-choice{#auth-logs-uid-inference}
-Was belegt `uid=1000` in diesem Datensatz?
+:::single-choice{#auth-logs-uid-inference} Was belegt `uid=1000` in diesem Datensatz?
 
 ::option[Dass das root-Passwort tausendmal falsch eingegeben wurde.]{#auth-logs-thousand-passwords explanation="Der Wert ist eine Identitätsnummer und keine Anzahl von Versuchen."}
 ::option[Die numerische Kontoidentität, die dem auslösenden Prozess zugeordnet ist.]{#auth-logs-numeric-identity .correct explanation="Zur Zuordnung der Handlung zu einer Person sind weitere Sitzungs- und Kontobelege erforderlich."}
@@ -57,8 +55,7 @@ Suche in einem begrenzten Zeitraum sowohl nach angenommenen als auch abgelehnten
 
 `last` und `lastb` können, sofern sie geführt werden, Datensätze aus `wtmp` und `btmp` zusammenfassen. Diese Binärdatenbanken besitzen jedoch eigene Aufbewahrungs- und Integritätsgrenzen. Vergleiche sie mit Journal- oder Syslog-Datensätzen und zentralen Quellen.
 
-:::single-choice{#auth-logs-failed-attempts}
-Womit sollten wiederholte fehlgeschlagene Anmeldungen verknüpft werden?
+:::single-choice{#auth-logs-failed-attempts} Womit sollten wiederholte fehlgeschlagene Anmeldungen verknüpft werden?
 
 ::option[Nur mit dem gesamten freien Datenträgerspeicher.]{#auth-logs-disk-space explanation="Kapazität identifiziert weder Quelle, Ziel noch Methode eines Authentifizierungsversuchs."}
 ::option[Mit Quelle, Zielkonto, Methode, Zeitverlauf und erfolgreichen Sitzungen.]{#auth-logs-correlated-fields .correct explanation="Diese Angaben helfen, Fehlkonfiguration, Benutzerfehler, Scans und unbefugten Zugriff zu unterscheiden."}
@@ -69,8 +66,7 @@ Womit sollten wiederholte fehlgeschlagene Anmeldungen verknüpft werden?
 
 Falls ein Vorfall vermutet wird, erfasse Hostzeit und Zeitzone, bewahre ursprüngliche Protokolle samt Metadaten und sichere jede exportierte Kopie. Bearbeite Belege nicht an Ort und Stelle. Kontosperren, Firewalländerungen und das Beenden von Sitzungen können berechtigten Zugriff unterbrechen oder einen Angreifer warnen. Befolge deshalb den Prozess zur Vorfallsreaktion und erhalte einen Wiederherstellungszugang.
 
-:::single-choice{#auth-logs-preservation}
-Wie sollten Authentifizierungsbelege während einer Untersuchung behandelt werden?
+:::single-choice{#auth-logs-preservation} Wie sollten Authentifizierungsbelege während einer Untersuchung behandelt werden?
 
 ::option[Verdächtige Zeilen zur Verdeutlichung in der Originaldatei bearbeiten.]{#auth-logs-edit-original explanation="Das Ändern der Quelle beschädigt die Integrität der Belege."}
 ::option[Das vollständige Protokoll veröffentlichen, damit jeder Benutzer identifizieren kann.]{#auth-logs-publish explanation="Authentifizierungsdatensätze können vertrauliche Identitäten und Infrastrukturdetails offenlegen."}

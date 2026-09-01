@@ -18,8 +18,7 @@ Platform firmware initializes enough CPU, memory, and device state to choose a b
 
 Firmware does not necessarily understand the installed Linux root filesystem. It locates a boot path according to its interface—for example, BIOS boot code on a selected disk or a UEFI boot entry pointing to an EFI executable on an EFI System Partition.
 
-:::single-choice{#boot-overview-first-stage}
-Which component begins platform initialization after reset on a typical PC?
+:::single-choice{#boot-overview-first-stage} Which component begins platform initialization after reset on a typical PC?
 
 ::option[The user's interactive shell.]{#boot-overview-shell explanation="A shell is started much later by user-space services or login processing."}
 ::option[Platform firmware such as BIOS or UEFI.]{#boot-overview-firmware .correct explanation="Firmware establishes early hardware state and selects the next boot target before Linux runs."}
@@ -32,8 +31,7 @@ A loader such as GRUB can present entries, load a selected Linux kernel and init
 
 The selected artifacts must agree: kernel version, initramfs content, root identifier, security signatures, and command-line options all affect whether the next handoff succeeds.
 
-:::single-choice{#boot-overview-loader-role}
-What is a common responsibility of a Linux boot loader?
+:::single-choice{#boot-overview-loader-role} What is a common responsibility of a Linux boot loader?
 
 ::option[Load a selected kernel and pass its command line.]{#boot-overview-load-kernel .correct explanation="The loader prepares the kernel image and parameters, often together with an initramfs."}
 ::option[Create all user accounts from scratch on every boot.]{#boot-overview-create-users explanation="Persistent account databases are user-space configuration and not recreated by the loader."}
@@ -46,8 +44,7 @@ The kernel decompresses or relocates as required, initializes core subsystems, p
 
 After the intended root is available, early user space switches to it and the kernel executes the configured first user-space program. Details such as who performs filesystem checks or read-write remounting belong to the distribution's boot design rather than one universal sequence.
 
-:::single-choice{#boot-overview-initramfs-purpose}
-Why might a system use an initramfs?
+:::single-choice{#boot-overview-initramfs-purpose} Why might a system use an initramfs?
 
 ::option[To preserve every user's desktop session permanently in firmware.]{#boot-overview-desktop-firmware explanation="An initramfs is a boot-time filesystem image, not firmware session storage."}
 ::option[To provide early tools and drivers needed to reach the real root filesystem.]{#boot-overview-early-root-tools .correct explanation="Early user space can assemble encrypted, logical, networked, or driver-dependent root storage."}
@@ -60,8 +57,7 @@ The first user-space process receives PID 1. On many distributions it is systemd
 
 Reaching PID 1 does not mean the system is fully ready. Services can still be starting, storage can be mounting, network configuration can be pending, and a graphical or console login is only one possible target state.
 
-:::single-choice{#boot-overview-final-stage}
-What begins the main user-space initialization stage?
+:::single-choice{#boot-overview-final-stage} What begins the main user-space initialization stage?
 
 ::option[Creation of the disk's protective MBR on every boot.]{#boot-overview-create-mbr explanation="Partition-table creation is not a normal recurring boot stage."}
 ::option[Deletion of all kernel command-line parameters.]{#boot-overview-delete-command-line explanation="The kernel parses and exposes its command line rather than requiring such deletion."}

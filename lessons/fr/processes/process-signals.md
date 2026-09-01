@@ -23,8 +23,7 @@ Les signaux peuvent provenir de plusieurs sources :
 
 L’émetteur doit posséder les permissions appropriées, généralement fondées sur les identifiants ou les capacités. Les signaux sont donc une interface de contrôle médiée par le noyau, et non des messages sans restriction entre utilisateurs arbitraires.
 
-:::single-choice{#process-signals-ctrl-c}
-Quel signal un terminal produit-il normalement pour `Ctrl-C` ?
+:::single-choice{#process-signals-ctrl-c} Quel signal un terminal produit-il normalement pour `Ctrl-C` ?
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` est normalement associé au caractère de suspension du terminal tel que `Ctrl-Z`."}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` reprend un processus arrêté au lieu de représenter une interruption au clavier."}
@@ -43,8 +42,7 @@ Les actions par défaut diffèrent : un signal peut terminer, terminer et créer
 
 Les noms de signaux sont plus portables et lisibles que leurs numéros. Même si les architectures Linux courantes emploient le numéro 15 pour `SIGTERM`, ne supposez pas que tous les numéros, hormis ceux garantis par la norme concernée, soient identiques partout. Employez `kill -l` pour examiner l’association locale.
 
-:::single-choice{#process-signals-term-behavior}
-Pourquoi un processus peut-il répondre proprement à `SIGTERM` ?
+:::single-choice{#process-signals-term-behavior} Pourquoi un processus peut-il répondre proprement à `SIGTERM` ?
 
 ::option[Il peut installer un gestionnaire pour ce signal.]{#process-signals-term-handler .correct explanation="Contrairement à `SIGKILL`, `SIGTERM` peut être intercepté afin que le programme lance sa propre logique d’arrêt."}
 ::option[Le noyau enregistre toujours automatiquement chaque document ouvert.]{#process-signals-term-kernel-save explanation="Le nettoyage de l’application dépend de son code ; le noyau ne comprend pas et n’enregistre pas un état documentaire arbitraire."}
@@ -57,8 +55,7 @@ Les threads possèdent des masques de signaux capables de bloquer temporairement
 
 Dans un processus multithread, un signal adressé au processus peut être délivré à un thread admissible qui ne le bloque pas ; un signal adressé à un thread vise celui qui est désigné. Une conception correcte des signaux exige donc davantage que de vérifier si « le processus l’a bloqué ».
 
-:::single-choice{#process-signals-blocked-state}
-Que se passe-t-il normalement lorsqu’un signal pouvant être bloqué est produit tandis que sa cible le bloque ?
+:::single-choice{#process-signals-blocked-state} Que se passe-t-il normalement lorsqu’un signal pouvant être bloqué est produit tandis que sa cible le bloque ?
 
 ::option[Il reste en attente jusqu’à ce que sa délivrance devienne possible.]{#process-signals-pending .correct explanation="Le blocage retarde le traitement ; le signal en attente peut être délivré après son déblocage."}
 ::option[Il est automatiquement converti en `SIGKILL`.]{#process-signals-convert-kill explanation="Le noyau ne transforme pas un signal ordinaire bloqué en signal impossible à intercepter."}
@@ -71,8 +68,7 @@ Que se passe-t-il normalement lorsqu’un signal pouvant être bloqué est produ
 
 Même `SIGKILL` peut ne pas faire disparaître immédiatement une tâche du point de vue d’un observateur. Une tâche peut attendre dans une opération non interruptible du noyau, puis son parent doit encore récupérer son état après sa terminaison.
 
-:::single-choice{#process-signals-uncatchable-pair}
-Quelle paire ne peut être ni interceptée, ni ignorée, ni bloquée ?
+:::single-choice{#process-signals-uncatchable-pair} Quelle paire ne peut être ni interceptée, ni ignorée, ni bloquée ?
 
 ::option[`SIGKILL` et `SIGSTOP`]{#process-signals-kill-stop .correct explanation="Le noyau réserve ces deux signaux afin qu’un processus ne puisse pas annuler ou retarder leurs actions fondamentales."}
 ::option[`SIGINT` et `SIGTERM`]{#process-signals-int-term explanation="Tous deux peuvent posséder un gestionnaire installé par l’utilisateur et être bloqués."}

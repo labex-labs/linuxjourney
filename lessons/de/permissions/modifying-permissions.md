@@ -48,8 +48,7 @@ $ chmod u=rw,g=r,o= myfile
 
 Wenn die Klasse wie in `chmod +x myfile` weggelassen wird, beeinflusst die umask des Prozesses, welche Klassen geändert werden. Die ausdrückliche Angabe der Klasse macht das beabsichtigte Ergebnis leichter überprüfbar.
 
-:::single-choice{#modifying-permissions-remove-group-write}
-Welcher symbolische Modus entfernt die Schreibberechtigung der Gruppe, ohne deren andere Bits zu ändern?
+:::single-choice{#modifying-permissions-remove-group-write} Welcher symbolische Modus entfernt die Schreibberechtigung der Gruppe, ohne deren andere Bits zu ändern?
 
 ::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="Dies entfernt die Schreibberechtigung der Eigentümerklasse und nicht der Gruppenklasse."}
 ::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="Das `g` wählt die Gruppenklasse aus, `-` entfernt ein Bit und `w` bezeichnet die Schreibberechtigung."}
@@ -79,16 +78,14 @@ Der Modus `755` wird wie folgt aufgeschlüsselt:
 
 Anders als symbolische Operationen mit `+` oder `-` gibt ein oktaler Modus den vollständigen gewöhnlichen Berechtigungssatz an. Eine spätere Lektion behandelt die optionale führende Ziffer für besondere Modusbits.
 
-:::single-choice{#modifying-permissions-octal-read-value}
-Welcher oktale Wert steht für die Leseberechtigung?
+:::single-choice{#modifying-permissions-octal-read-value} Welcher oktale Wert steht für die Leseberechtigung?
 
 ::option[`1`]{#modifying-permissions-value-one explanation="Der Wert `1` steht für die Ausführungsberechtigung."}
 ::option[`2`]{#modifying-permissions-value-two explanation="Der Wert `2` steht für die Schreibberechtigung."}
 ::option[`4`]{#modifying-permissions-value-four .correct explanation="Die Leseberechtigung trägt den oktalen Wert `4` zur Ziffer einer Klasse bei."}
 :::
 
-:::single-choice{#modifying-permissions-mode-640}
-Welche gewöhnlichen Berechtigungen setzt `chmod 640 report`?
+:::single-choice{#modifying-permissions-mode-640} Welche gewöhnlichen Berechtigungen setzt `chmod 640 report`?
 
 ::option[Eigentümer lesen, Gruppe schreiben, andere ausführen.]{#modifying-permissions-640-separated explanation="Oktale Ziffern sind Summen für jede Klasse und keine getrennten Spalten für Lesen, Schreiben und Ausführen."}
 ::option[Eigentümer lesen/ausführen, Gruppe schreiben, andere keine.]{#modifying-permissions-640-wrong-sums explanation="Der Eigentümerwert `6` bedeutet Lesen plus Schreiben, während der Gruppenwert `4` Lesen bedeutet."}
@@ -101,8 +98,7 @@ Gewähre nur den Zugriff, den Benutzer und Dienste benötigen. Vermeide `chmod 7
 
 Rekursive Änderungen erfordern besondere Vorsicht. Zeige den Zielbaum vorab an, berücksichtige symbolische Links und eingehängte Dateisysteme und teste in einem kleinen Umfang, bevor du `chmod -R` verwendest. Überprüfe nach einer Änderung den resultierenden Modus, statt anzunehmen, der Befehl habe die beabsichtigten Objekte beeinflusst.
 
-:::single-choice{#modifying-permissions-least-privilege}
-Warum ist `chmod 777` gewöhnlich eine schlechte allgemeine Lösung für ein Zugriffsproblem?
+:::single-choice{#modifying-permissions-least-privilege} Warum ist `chmod 777` gewöhnlich eine schlechte allgemeine Lösung für ein Zugriffsproblem?
 
 ::option[Es entfernt alle Berechtigungen des Eigentümers.]{#modifying-permissions-777-removes explanation="Jede `7` gewährt Lesen, Schreiben und Ausführen; sie entfernt keine Eigentümerberechtigungen."}
 ::option[Es gewährt Eigentümer, Gruppe und anderen jede grundlegende Berechtigung.]{#modifying-permissions-777-grants-all .correct explanation="Alle drei Klassen erhalten `rwx`, was den tatsächlich erforderlichen Zugriff häufig übersteigt."}

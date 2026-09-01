@@ -22,16 +22,14 @@ openSUSE 以两种主要的发布方式而闻名：Leap 和 Tumbleweed。Leap �
 
 这种划分赋予了 openSUSE 非凡的灵活性。用户可以选择适合自己的风格，而不必完全切换到另一个发行版系列。
 
-:::single-choice{#choose-opensuse-leap}
-如果用户想要传统的常规发行版本，哪个 openSUSE 选项最合适？
+:::single-choice{#choose-opensuse-leap} 如果用户想要传统的常规发行版本，哪个 openSUSE 选项最合适？
 
 ::option[Tumbleweed]{#tumbleweed-release explanation="Tumbleweed 是 openSUSE 持续更新的滚动发布版本，更适合优先使用较新软件包的用户。"}
 ::option[YaST]{#yast-not-release explanation="YaST 是安装和配置工具，而不是 openSUSE 的发布模式；它可用于管理系统。"}
 ::option[Leap]{#leap-release .correct explanation="Leap 遵循常规发布模式，并强调较为保守的系统基础，符合这里的偏好。"}
 :::
 
-:::single-choice{#recognize-tumbleweed-model}
-Tumbleweed 与 Leap 的主要区别是什么？
+:::single-choice{#recognize-tumbleweed-model} Tumbleweed 与 Leap 的主要区别是什么？
 
 ::option[它持续提供经过测试的软件包更新]{#continuous-tested-updates .correct explanation="Tumbleweed 是滚动发布版本，会持续发布经过测试的快照；用户无需等待常规主要版本即可获得新软件。"}
 ::option[它只通过固定的主要版本获得软件]{#fixed-major-releases explanation="固定的常规版本更接近 Leap 的方式；Tumbleweed 会持续更新。"}
@@ -44,8 +42,7 @@ openSUSE 使用 RPM 软件包格式以及 `zypper` 等工具来安装、更新�
 
 在比较 Linux 发行版时，了解软件包系列非常有帮助。如果您想进行更广泛的比较，请参阅 [选择 Linux 发行版](https://labex.io/zh/lesson/choosing-a-linux-distribution)。
 
-:::single-choice{#identify-zypper-role}
-`zypper` 在 openSUSE 上用于什么？
+:::single-choice{#identify-zypper-role} `zypper` 在 openSUSE 上用于什么？
 
 ::option[选择图形桌面的壁纸主题]{#zypper-wallpaper explanation="桌面外观通过桌面工具配置；`zypper` 管理的是软件包。"}
 ::option[安装、更新和删除软件包]{#zypper-package-tool .correct explanation="`zypper` 是 openSUSE 的命令行软件包管理工具，与通过 RPM 仓库分发的软件配合使用。"}
@@ -58,8 +55,7 @@ openSUSE 最著名的功能之一是 **YaST**。YaST 是一个管理和设置工
 
 这是 openSUSE 吸引那些希望拥有强大的系统管理工具而无需手动配置所有内容的用户的核心原因。
 
-:::single-choice{#identify-yast-purpose}
-YaST 的设计目标是什么？
+:::single-choice{#identify-yast-purpose} YaST 的设计目标是什么？
 
 ::option[提供只包含最新应用程序的滚动仓库]{#yast-repository explanation="Tumbleweed 提供滚动仓库模式；YaST 是管理和配置工具，不是软件分支。"}
 ::option[提供与 Debian、Ubuntu 共用的软件包格式]{#yast-package-format explanation="openSUSE 使用 RPM 软件包，而 Debian 系统使用 `.deb`；YaST 本身也不是软件包格式。"}

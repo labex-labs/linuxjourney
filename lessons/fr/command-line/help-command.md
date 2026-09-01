@@ -24,8 +24,7 @@ $ help echo
 
 La sortie décrit sa syntaxe et son comportement. Sans argument, `help` liste les commandes intégrées pour lesquelles Bash possède une aide.
 
-:::single-choice{#help-for-bash-cd}
-Quelle commande affiche l'entrée d'aide de Bash pour sa commande intégrée `cd` ?
+:::single-choice{#help-for-bash-cd} Quelle commande affiche l'entrée d'aide de Bash pour sa commande intégrée `cd` ?
 
 ::option[`cd --help`]{#cd-help-option explanation="Certaines commandes intégrées reconnaissent des options, mais l'interface de documentation dédiée de Bash est `help` suivie du nom."}
 ::option[`help cd`]{#help-cd .correct explanation="La commande intégrée `help` de Bash recherche la documentation de la commande intégrée nommée, ici `cd`."}
@@ -42,8 +41,7 @@ $ ls --help
 
 Cette convention est fréquente, mais pas universelle. Lisez la sortie et l'état de terminaison au lieu de supposer que tous les programmes prennent en charge la même option.
 
-:::single-choice{#quick-ls-usage}
-Quelle commande affiche généralement un résumé rapide fourni par le programme externe `ls` ?
+:::single-choice{#quick-ls-usage} Quelle commande affiche généralement un résumé rapide fourni par le programme externe `ls` ?
 
 ::option[`help ls`]{#bash-help-ls explanation="`help` documente les commandes intégrées au shell. Sur un système typique, elle ne fournit pas la page d'utilisation du programme externe `ls`."}
 ::option[`ls --help`]{#ls-help .correct explanation="GNU `ls` suit la convention courante `--help` et affiche son utilisation ainsi que ses options."}
@@ -63,8 +61,7 @@ ls is /usr/bin/ls
 
 Le résultat exact dépend des alias, fonctions, programmes installés et de `PATH`. Utilisez `type -a NAME` pour afficher toutes les résolutions connues plutôt que la première seulement.
 
-:::single-choice{#identify-command-resolution}
-Vous ignorez si `deploy` est un alias, une fonction, une commande intégrée ou un exécutable. Quelle commande Bash vérifie sa résolution ?
+:::single-choice{#identify-command-resolution} Vous ignorez si `deploy` est un alias, une fonction, une commande intégrée ou un exécutable. Quelle commande Bash vérifie sa résolution ?
 
 ::option[`type deploy`]{#type-deploy .correct explanation="La commande intégrée `type` indique comment Bash interprète ce nom dans l'environnement actuel du shell."}
 ::option[`help deploy`]{#help-deploy explanation="`help` recherche la documentation des commandes intégrées à Bash ; elle n'identifie généralement pas les alias, fonctions et fichiers externes."}
@@ -80,8 +77,7 @@ Vous ignorez si `deploy` est un alias, une fonction, une commande intégrée ou 
 
 Les leçons suivantes étudient plus précisément les pages de manuel et les descriptions brèves.
 
-:::single-choice{#choose-detailed-manual}
-Vous avez besoin de la documentation détaillée de la commande externe `ls`, pas seulement d'un résumé. Quelle commande faut-il essayer ?
+:::single-choice{#choose-detailed-manual} Vous avez besoin de la documentation détaillée de la commande externe `ls`, pas seulement d'un résumé. Quelle commande faut-il essayer ?
 
 ::option[`man ls`]{#man-ls .correct explanation="`man ls` ouvre la page de manuel installée, qui décrit normalement plus complètement la syntaxe, les options et le comportement."}
 ::option[`whatis ls`]{#whatis-ls explanation="`whatis` affiche des descriptions concises de pages de manuel ; elle ne fournit pas la documentation détaillée demandée."}

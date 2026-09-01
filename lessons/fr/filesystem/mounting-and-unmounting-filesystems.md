@@ -29,8 +29,7 @@ $ sudo ls -la /mnt/mydrive
 
 Monter un système de fichiers sur un répertoire non vide masque les entrées existantes derrière le nouveau système jusqu'au démontage ; cela ne les supprime pas. Ce comportement peut perturber les applications et consommer de l'espace disque de façon invisible. Employez donc un point de montage vide et réservé à cet usage.
 
-:::single-choice{#mount-umount-nonempty-target}
-Que deviennent les fichiers existants d'un répertoire lorsqu'un autre système de fichiers y est monté ?
+:::single-choice{#mount-umount-nonempty-target} Que deviennent les fichiers existants d'un répertoire lorsqu'un autre système de fichiers y est monté ?
 
 ::option[Ils sont automatiquement copiés dans le nouveau système de fichiers.]{#mount-umount-copied-files explanation="Le montage change le rattachement dans l'espace de noms et ne déplace pas le contenu du répertoire."}
 ::option[Ils sont définitivement effacés par le noyau.]{#mount-umount-erased-files explanation="Les fichiers réapparaissent normalement après le démontage, car ils étaient masqués et non supprimés."}
@@ -55,8 +54,7 @@ $ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Les montages sont propres à un espace de noms. Un montage créé dans un conteneur ou dans l'espace privé d'un service peut ne pas apparaître dans la vue d'un autre processus.
 
-:::single-choice{#mount-umount-mount-role}
-Que fait la commande `mount` dans la méthode présentée ?
+:::single-choice{#mount-umount-mount-role} Que fait la commande `mount` dans la méthode présentée ?
 
 ::option[Elle crée un nouveau système de fichiers et efface la source.]{#mount-umount-format-source explanation="La création d'un système de fichiers est une opération destructive `mkfs` distincte."}
 ::option[Elle attache une source de système de fichiers à un répertoire dans un espace de noms de montage.]{#mount-umount-attach-filesystem .correct explanation="La recherche des chemins sous la cible entre alors dans le système de fichiers attaché."}
@@ -80,8 +78,7 @@ $ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 
 Un UUID identifie le système de fichiers, pas nécessairement le disque physique. Un reformatage le modifie, tandis qu'un clonage peut le dupliquer. Vérifiez son unicité avant d'attacher l'original et sa copie au même système.
 
-:::single-choice{#mount-umount-uuid-benefit}
-Pourquoi l'UUID d'un système de fichiers est-il souvent préférable à `/dev/sdX` dans une configuration persistante ?
+:::single-choice{#mount-umount-uuid-benefit} Pourquoi l'UUID d'un système de fichiers est-il souvent préférable à `/dev/sdX` dans une configuration persistante ?
 
 ::option[Il empêche toute panne future des périphériques de stockage.]{#mount-umount-uuid-no-failure explanation="Un identifiant ne fournit ni redondance, ni réparation de l'intégrité, ni sauvegarde."}
 ::option[Il garantit que les systèmes de fichiers clonés possèdent des identifiants différents.]{#mount-umount-uuid-clone-unique explanation="Une copie au niveau des blocs peut reproduire l'UUID et créer un conflit."}
@@ -100,8 +97,7 @@ La commande s'écrit `umount`, sans le premier `n`. Un démontage réussi détac
 
 Un démontage réussi n'est pas toujours la dernière opération nécessaire au retrait sûr d'un support amovible. Les piles de stockage des environnements de bureau peuvent proposer une action d'éjection ou de mise hors tension qui vide les caches du périphérique et désactive un appareil USB. Suivez la procédure de la plateforme et du matériel.
 
-:::single-choice{#mount-umount-command-name}
-Quelle commande détache `/mnt/mydrive` ?
+:::single-choice{#mount-umount-command-name} Quelle commande détache `/mnt/mydrive` ?
 
 ::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` détache le système de fichiers monté sur la cible indiquée."}
 ::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="Le nom de la commande standard omet le premier `n`."}
@@ -119,8 +115,7 @@ $ sudo fuser -vm /mnt/mydrive
 
 Sortez les shells de l'arborescence, arrêtez proprement l'application responsable et démontez les montages enfants avant leur parent. Le démontage différé et les options de forçage possèdent une sémantique particulière et peuvent laisser des références actives ou entraîner une perte de données ; ne les employez qu'en suivant un raisonnement de récupération documenté.
 
-:::single-choice{#mount-umount-busy-cause}
-Quelle situation peut amener `umount` à signaler qu'un système de fichiers est occupé ?
+:::single-choice{#mount-umount-busy-cause} Quelle situation peut amener `umount` à signaler qu'un système de fichiers est occupé ?
 
 ::option[Le nom du répertoire de point de montage contient des lettres minuscules.]{#mount-umount-lowercase explanation="La casse du chemin ne crée pas à elle seule une référence active au système de fichiers."}
 ::option[Le répertoire de travail actuel d'un processus se trouve dans le montage.]{#mount-umount-cwd-busy .correct explanation="Le processus conserve une référence dans le système de fichiers monté, ce qui empêche son détachement ordinaire."}

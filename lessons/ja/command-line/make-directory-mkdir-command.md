@@ -28,8 +28,7 @@ $ mkdir documents
 
 `documents` という項目がすでに存在する場合、`mkdir` は置換せずエラーを報告します。`ls -ld documents` で既存の項目を調べてください。
 
-:::single-choice{#create-one-directory}
-現在の作業ディレクトリに `documents` というディレクトリを作成するコマンドはどれですか？
+:::single-choice{#create-one-directory} 現在の作業ディレクトリに `documents` というディレクトリを作成するコマンドはどれですか？
 
 ::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` は相対パス `documents` に、要求されたディレクトリを作成します。"}
 ::option[`touch documents`]{#touch-documents explanation="`touch` はパスが存在しない場合に空の通常ファイルを作成し、ディレクトリは作りません。"}
@@ -44,8 +43,7 @@ $ mkdir documents
 $ mkdir books paintings
 ```
 
-:::single-choice{#create-separate-directories}
-`books` と `paintings` という 2 つの同階層のディレクトリを作成するコマンドはどれですか？
+:::single-choice{#create-separate-directories} `books` と `paintings` という 2 つの同階層のディレクトリを作成するコマンドはどれですか？
 
 ::option[`mkdir books/paintings`]{#nested-paintings explanation="このパス名は同階層の 2 ディレクトリではなく、`books` の中の `paintings` を表します。`books` がなければ失敗もします。"}
 ::option[`mkdir "books paintings"`]{#spaced-directory explanation="引用符が単語を 1 つのパス名へまとめるため、空白を含む名前のディレクトリを 1 つ要求します。"}
@@ -62,8 +60,7 @@ $ mkdir -p books/hemingway/favorites
 
 パスの存在しない部分を作成します。最後のディレクトリがすでに存在するという理由だけではエラーを報告しませんが、権限不足などのほかのエラーは発生し得ます。
 
-:::single-choice{#create-nested-path}
-`projects/app/src` のどの部分もまだ存在しません。完全なディレクトリパスを作るコマンドはどれですか？
+:::single-choice{#create-nested-path} `projects/app/src` のどの部分もまだ存在しません。完全なディレクトリパスを作るコマンドはどれですか？
 
 ::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="`-p` は最後のディレクトリを作る前に、存在しない各親ディレクトリを作成します。"}
 ::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="`-p` がなければ、中間ディレクトリが存在しない状態で `src` を作成できません。"}
@@ -89,8 +86,7 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-:::single-choice{#set-directory-mode}
-パーミッションモード `755` で `public` を作成するコマンドはどれですか？
+:::single-choice{#set-directory-mode} パーミッションモード `755` で `public` を作成するコマンドはどれですか？
 
 ::option[`mkdir -p 755 public`]{#parents-755 explanation="`-p` は残りの単語をディレクトリのパス名として扱い、`755` をパーミッションモードには設定しません。"}
 ::option[`mkdir -v 755 public`]{#verbose-755 explanation="`-v` は作成メッセージを表示し、`755` をパーミッションモードとしては解釈しません。"}

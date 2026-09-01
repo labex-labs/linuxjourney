@@ -24,8 +24,7 @@ As entradas podem representar armazenamento físico, terminais, interfaces de en
 
 O primeiro caractere de uma listagem longa identifica o tipo de objeto do sistema de arquivos. Os nós de dispositivos de caractere e de bloco aparecem como `c` e `b`; lições posteriores examinam esses tipos e seus números maiores e menores.
 
-:::single-choice{#dev-directory-device-node-purpose}
-O que acontece quando um programa abre um nó de dispositivo em `/dev`?
+:::single-choice{#dev-directory-device-node-purpose} O que acontece quando um programa abre um nó de dispositivo em `/dev`?
 
 ::option[Ele sempre lê um arquivo comum do disco que contém uma cópia do hardware.]{#dev-directory-ordinary-copy explanation="Um nó de dispositivo é um objeto especial e não armazena uma cópia dos dados do dispositivo como um arquivo comum."}
 ::option[Ele acessa uma interface implementada por um driver do kernel.]{#dev-directory-kernel-interface .correct explanation="As operações no nó de dispositivo são encaminhadas, por sua identidade, ao comportamento de um driver do kernel."}
@@ -42,8 +41,7 @@ $ command > /dev/null
 
 Outros exemplos conhecidos incluem `/dev/zero`, que produz bytes zero, e `/dev/urandom`, que fornece bytes aleatórios por meio do subsistema de aleatoriedade do kernel. Cada um possui uma semântica específica; não deduza seu comportamento apenas pelo nome do arquivo.
 
-:::single-choice{#dev-directory-null-behavior}
-O que `/dev/null` faz com os dados gravados nele?
+:::single-choice{#dev-directory-null-behavior} O que `/dev/null` faz com os dados gravados nele?
 
 ::option[Armazena os dados até a próxima reinicialização.]{#dev-directory-null-temporary-storage explanation="O dispositivo null é um destino de descarte e não atua como armazenamento temporário."}
 ::option[Envia os dados para todos os terminais com usuários conectados.]{#dev-directory-null-broadcast explanation="A transmissão para terminais não tem relação com o pseudodispositivo null."}
@@ -56,8 +54,7 @@ Em sistemas Linux modernos, o `devtmpfs`, apoiado pelo kernel, pode preencher os
 
 Links estáveis, como as entradas em `/dev/disk/by-id/` ou `/dev/disk/by-uuid/`, podem ser mais seguros em configurações do que nomes baseados na ordem de detecção, como `/dev/sda`, que podem mudar quando a topologia do hardware ou a ordem de descoberta é alterada.
 
-:::single-choice{#dev-directory-persistent-link}
-Por que um administrador pode preferir `/dev/disk/by-id/...` a `/dev/sda` em uma configuração?
+:::single-choice{#dev-directory-persistent-link} Por que um administrador pode preferir `/dev/disk/by-id/...` a `/dev/sda` em uma configuração?
 
 ::option[O link baseado em identificador depende menos da ordem de descoberta dos dispositivos.]{#dev-directory-stable-identifier .correct explanation="Os links persistentes são derivados das propriedades do dispositivo, não de uma letra atribuída pela ordem de enumeração."}
 ::option[O link faz automaticamente um backup de todos os blocos do dispositivo.]{#dev-directory-link-backup explanation="Um link simbólico nomeia o mesmo dispositivo e não cria dados de backup."}
@@ -70,8 +67,7 @@ Ferramentas comuns podem abrir nós de dispositivos, mas isso não torna seguras
 
 Use primeiro ferramentas de descoberta somente para leitura, confirme o nó exato e a identidade do dispositivo e siga a documentação específica dele. Nunca faça experiências redirecionando dados para uma entrada desconhecida de `/dev` em um sistema importante.
 
-:::single-choice{#dev-directory-direct-write-risk}
-Por que você deve evitar gravar dados arbitrários em um nó de dispositivo desconhecido?
+:::single-choice{#dev-directory-direct-write-risk} Por que você deve evitar gravar dados arbitrários em um nó de dispositivo desconhecido?
 
 ::option[Todo nó de dispositivo certamente é um arquivo de texto inofensivo.]{#dev-directory-harmless-text explanation="Os nós de dispositivos não são, justamente, arquivos de texto comuns."}
 ::option[A operação pode afetar diretamente o hardware, o armazenamento ou outra interface do kernel.]{#dev-directory-write-impact .correct explanation="As gravações em dispositivos invocam operações definidas pelo driver e podem ter efeitos destrutivos ou prejudiciais."}

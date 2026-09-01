@@ -16,8 +16,7 @@ meta_keywords: "distribution Debian, Debian Linux, branches Debian, versions Deb
 
 Le projet Debian existe depuis les débuts de Linux et s'est forgé une réputation de rigueur technique, d'ouverture et de fiabilité à long terme. En pratique, la **distribution Linux Debian** est connue pour sa base solide, son immense collection de logiciels et la clarté de ses principes.
 
-:::single-choice{#identify-debian-project-model}
-Qui développe principalement Debian ?
+:::single-choice{#identify-debian-project-model} Qui développe principalement Debian ?
 
 ::option[Une seule entreprise de logiciels commerciaux]{#single-company explanation="Debian n'est pas développé par une seule entreprise. Des bénévoles et contributeurs du monde entier entretiennent le projet."}
 ::option[Un seul fabricant de matériel informatique]{#hardware-manufacturer explanation="Debian prend en charge de nombreux matériels, mais aucun fabricant ne possède son développement. Le projet est entretenu par la communauté."}
@@ -42,8 +41,7 @@ Pendant la majeure partie du cycle de développement, les paquets passent contin
 
 Ces branches expliquent comment Debian peut servir des utilisateurs très différents. Une personne qui souhaite un système prévisible préférera généralement Stable, tandis que les développeurs et utilisateurs avancés pourront explorer Testing ou Unstable pour des logiciels plus récents.
 
-:::single-choice{#choose-debian-stable}
-Quelle branche Debian convient le mieux à une personne qui privilégie la fiabilité et des mises à jour prévisibles ?
+:::single-choice{#choose-debian-stable} Quelle branche Debian convient le mieux à une personne qui privilégie la fiabilité et des mises à jour prévisibles ?
 
 ::option[Testing]{#testing-branch explanation="Testing possède généralement des paquets plus récents préparés pour une future version, mais peut encore changer considérablement pendant le développement."}
 ::option[Unstable]{#unstable-branch explanation="Unstable reçoit les nouveaux paquets en premier et change souvent. Cela ne correspond pas à l'objectif de mises à jour prévisibles."}
@@ -56,8 +54,7 @@ Debian suit un modèle fondé sur des versions. Le projet publie périodiquement
 
 Pour les débutants, l'idée principale est simple : Debian ne poursuit pas le changement rapide. Les nouveaux paquets entrent normalement dans Unstable, ceux qui satisfont les critères passent dans Testing, puis une branche Testing préparée devient la prochaine Stable. Ce modèle aide Debian à rester fiable tout en progressant dans le temps.
 
-:::single-choice{#trace-debian-package-flow}
-Quelle suite représente le mieux le parcours simplifié des paquets Debian vers une version ?
+:::single-choice{#trace-debian-package-flow} Quelle suite représente le mieux le parcours simplifié des paquets Debian vers une version ?
 
 ::option[Unstable → Testing → Stable]{#unstable-testing-stable .correct explanation="Les nouveaux paquets entrent dans Unstable, ceux qui remplissent les critères passent dans Testing, puis une Testing préparée devient la prochaine Stable."}
 ::option[Stable → Testing → Unstable]{#stable-testing-unstable explanation="Stable est la version de production achevée, pas le point de départ des nouveaux paquets. Le développement commence dans Unstable."}
@@ -70,8 +67,7 @@ La gestion des paquets est l'un des grands atouts de Debian. La distribution emp
 
 Grâce à l'immense collection de paquets, les utilisateurs installent par le même système aussi bien des applications de bureau que des outils de développement. Par exemple, les développeurs obtiennent souvent les outils courants de compilation au moyen de paquets comme `build-essential`. La maturité de ce système contribue à la large utilisation et à la confiance dont bénéficie Debian.
 
-:::single-choice{#recognize-apt-purpose}
-Quel est le rôle principal des outils APT de Debian ?
+:::single-choice{#recognize-apt-purpose} Quel est le rôle principal des outils APT de Debian ?
 
 ::option[Installer, mettre à jour, supprimer et gérer des paquets logiciels]{#manage-packages .correct explanation="APT gère les paquets des dépôts Debian. Il fournit une méthode cohérente pour installer, mettre à jour et supprimer les logiciels."}
 ::option[Compiler un nouveau noyau Linux à chaque mise à jour]{#compile-kernel explanation="APT peut installer des noyaux déjà empaquetés, mais son rôle couvre toute la gestion des paquets. Il n'impose pas de compiler un noyau à chaque mise à jour."}
@@ -95,8 +91,7 @@ Debian est également important parce que de nombreuses autres distributions s'a
 
 Debian est donc à la fois une distribution Linux à part entière et la fondation d'une grande partie de l'univers Linux. Les concepts que vous y apprenez, comme APT, les paquets `.deb` ou les branches de publication, se transfèrent souvent aux systèmes dérivés. Si vous recherchez une option Debian davantage tournée vers les débutants, consultez [Ubuntu](https://labex.io/fr/lesson/ubuntu).
 
-:::single-choice{#transfer-debian-knowledge}
-Pourquoi les connaissances sur la gestion des paquets Debian peuvent-elles se transférer à certaines autres distributions ?
+:::single-choice{#transfer-debian-knowledge} Pourquoi les connaissances sur la gestion des paquets Debian peuvent-elles se transférer à certaines autres distributions ?
 
 ::option[Toutes les distributions Linux emploient des paquets et dépôts identiques]{#identical-linux-packages explanation="Les distributions peuvent employer des formats, outils et dépôts différents. Les connaissances Debian se transfèrent surtout au sein de sa famille."}
 ::option[Les systèmes basés sur Debian partagent souvent les traditions de `.deb` et d'APT]{#shared-package-traditions .correct explanation="Les distributions issues de Debian conservent couramment son format de paquets et ses outils associés. Les dépôts précis peuvent différer, mais les concepts fondamentaux se transfèrent."}

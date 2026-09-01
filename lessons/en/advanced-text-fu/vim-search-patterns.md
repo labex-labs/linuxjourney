@@ -22,8 +22,7 @@ In Normal mode, type `/`, enter a pattern, and press Enter. Vim moves to the nex
 
 Searches use Vim's regular-expression syntax, so characters such as `.`, `*`, `[`, and `\` can have special meaning. Use `\V` at the start when the rest of a pattern should be treated as very nomagic, or escape special characters deliberately.
 
-:::single-choice{#vim-search-forward-key}
-From Normal mode, which command starts a forward search for `pretty`?
+:::single-choice{#vim-search-forward-key} From Normal mode, which command starts a forward search for `pretty`?
 
 ::option[`?pretty` followed by Enter]{#vim-backward-pretty explanation="A question mark begins a backward search from the current cursor position."}
 ::option[`/pretty` followed by Enter]{#vim-forward-pretty .correct explanation="A slash begins a forward search, and Enter submits the pattern."}
@@ -40,8 +39,7 @@ Type `?`, enter a pattern, and press Enter to move to the preceding match before
 
 This does not inherently mean “the final match in the file.” The result depends on the current cursor position. With Vim's default `wrapscan` setting, a search can wrap at the beginning or end; `:set nowrapscan` disables that wrapping.
 
-:::single-choice{#vim-search-backward-key}
-Which Normal-mode search prefix looks toward earlier text from the cursor?
+:::single-choice{#vim-search-backward-key} Which Normal-mode search prefix looks toward earlier text from the cursor?
 
 ::option[`/`]{#vim-slash-forward explanation="A slash searches forward from the cursor rather than toward preceding text."}
 ::option[`?`]{#vim-question-backward .correct explanation="A question mark starts a backward pattern search from the current cursor position."}
@@ -57,8 +55,7 @@ After either kind of search:
 
 Therefore, after `/pretty`, `n` moves forward and `N` backward. After `?pretty`, `n` moves backward and `N` forward.
 
-:::single-choice{#vim-repeat-backward-search}
-After running `?error`, which key repeats the search in the same backward direction?
+:::single-choice{#vim-repeat-backward-search} After running `?error`, which key repeats the search in the same backward direction?
 
 ::option[`n`]{#vim-same-question-search .correct explanation="Lowercase `n` repeats the most recent search in its original direction, which is backward here."}
 ::option[`N`]{#vim-opposite-question-search explanation="Uppercase `N` reverses the original search direction, so it would move forward after a `?` search."}
@@ -74,8 +71,7 @@ In Normal mode, place the cursor on a word and use:
 
 These commands set the latest search pattern, so `n` and `N` can continue from it.
 
-:::single-choice{#vim-current-word-forward}
-Which Normal-mode key searches forward for the whole word under the cursor?
+:::single-choice{#vim-current-word-forward} Which Normal-mode key searches forward for the whole word under the cursor?
 
 ::option[`#`]{#vim-hash-current-word explanation="The hash key searches backward for the word under the cursor."}
 ::option[`*`]{#vim-star-current-word .correct explanation="The star command builds a whole-word pattern from the word under the cursor and searches forward."}
@@ -95,8 +91,7 @@ For example, `/\cerror` matches `error`, `Error`, and `ERROR` regardless of the 
 
 When search highlighting is enabled, `:nohlsearch` clears the current visual highlights without deleting the search pattern. The next search or repeat can highlight matches again.
 
-:::single-choice{#vim-force-case-insensitive}
-Which pattern forces one Vim search for `error` to ignore case regardless of the current case options?
+:::single-choice{#vim-force-case-insensitive} Which pattern forces one Vim search for `error` to ignore case regardless of the current case options?
 
 ::option[`/\Cerror`]{#vim-pattern-match-case explanation="Uppercase `\C` forces case-sensitive matching, the opposite behavior."}
 ::option[`/:error`]{#vim-pattern-colon-error explanation="A colon inside this pattern is a literal character here and does not select case handling."}

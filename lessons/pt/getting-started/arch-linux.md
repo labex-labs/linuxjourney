@@ -16,8 +16,7 @@ O Arch Linux é uma distribuição Linux leve e desenvolvida de forma independen
 
 Ao contrário de distribuições com lançamentos principais agendados, o Arch segue um modelo de "rolling release" (lançamento contínuo). Isso significa que o sistema recebe atualizações constantes em vez de esperar por grandes saltos de versão.
 
-:::single-choice{#recognize-rolling-release}
-O que significa o modelo de lançamento contínuo do Arch Linux?
+:::single-choice{#recognize-rolling-release} O que significa o modelo de lançamento contínuo do Arch Linux?
 
 ::option[O sistema instalado recebe atualizações contínuas de pacotes]{#continuous-upgrades .correct explanation="O Arch evolui por atualizações constantes de pacotes, não por grandes versões separadas do sistema. Uma instalação mantida pode permanecer atualizada ao longo do tempo."}
 ::option[O sistema espera por edições fixas de atualização a cada vários anos]{#fixed-major-editions explanation="Edições principais fixas descrevem um modelo de lançamentos pontuais. O Arch atualiza continuamente o sistema instalado."}
@@ -30,8 +29,7 @@ O Arch Linux é popular porque oferece aos usuários um alto grau de controle. M
 
 Isso torna o Arch uma recomendação comum para usuários intermediários e avançados curiosos, embora geralmente não seja a primeira distribuição sugerida para iniciantes que estão comparando opções em [Escolhendo uma Distribuição Linux](https://labex.io/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#match-arch-user}
-Qual usuário combina melhor com o Arch Linux?
+:::single-choice{#match-arch-user} Qual usuário combina melhor com o Arch Linux?
 
 ::option[Um iniciante que deseja que toda decisão seja automática]{#automatic-beginner explanation="O Arch deixa deliberadamente muitas escolhas para o usuário. Uma distribuição com padrões mais preparados atende melhor a uma configuração totalmente automática."}
 ::option[Um usuário que nunca deseja revisar atualizações de software]{#ignore-updates explanation="Um sistema Arch contínuo exige manutenção ativa e atenção aos avisos de atualização. Ignorá-los conflita com essa responsabilidade."}
@@ -50,16 +48,14 @@ O Arch usa o Pacman como seu gerenciador de pacotes. O Pacman instala, atualiza,
 
 Um comando comum é `sudo pacman -Syu`, que sincroniza os bancos de dados e realiza uma atualização completa dos pacotes nos repositórios configurados. O Arch não oferece suporte a atualizações parciais; por isso, não se deve atualizar os bancos de dados sem concluir a atualização correspondente do sistema. O Pacman é valorizado por ser direto, rápido e alinhado ao design minimalista do Arch.
 
-:::single-choice{#identify-pacman-role}
-Qual é o papel do Pacman no Arch Linux?
+:::single-choice{#identify-pacman-role} Qual é o papel do Pacman no Arch Linux?
 
 ::option[Escolher o layout do desktop sem gerenciar software]{#pacman-desktop-layout explanation="A configuração do desktop é separada do gerenciamento de pacotes. O Pacman gerencia os pacotes que podem fornecer os componentes do desktop."}
 ::option[Substituir o lançamento contínuo por edições fixas]{#pacman-fixed-releases explanation="O Pacman sustenta o sistema contínuo do Arch por meio de atualizações. Ele não transforma o Arch em uma distribuição de lançamentos pontuais."}
 ::option[Instalar, atualizar, remover e rastrear pacotes de software]{#pacman-package-manager .correct explanation="O Pacman é o gerenciador de pacotes do Arch Linux. Ele mantém os pacotes instalados e trabalha com os repositórios da distribuição."}
 :::
 
-:::single-choice{#avoid-partial-upgrades}
-Por que um usuário do Arch deve concluir uma atualização completa depois de atualizar os bancos de pacotes?
+:::single-choice{#avoid-partial-upgrades} Por que um usuário do Arch deve concluir uma atualização completa depois de atualizar os bancos de pacotes?
 
 ::option[Atualizações parciais são recomendadas para preservar bibliotecas antigas]{#partial-upgrades-recommended explanation="O Arch não oferece suporte a atualizações parciais. Misturar bibliotecas novas com pacotes dependentes antigos pode danificar o sistema."}
 ::option[Atualizar os bancos de pacotes reinstala automaticamente o sistema]{#refresh-reinstalls-system explanation="A atualização do banco apenas renova as informações de pacotes. Ela não reinstala o Arch, mas deve ser seguida pela atualização completa correspondente."}

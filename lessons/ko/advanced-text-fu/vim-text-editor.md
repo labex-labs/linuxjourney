@@ -27,16 +27,14 @@ $ command -v vi
 
 해석된 경로만으로 `vi`와 `vim`이 같은 구현인지 알 수는 없습니다. `type -a vi vim`과 편집기의 버전 출력으로 더 자세히 확인할 수 있습니다.
 
-:::single-choice{#vim-name-origin}
-Vim이라는 이름은 무엇을 뜻하나요?
+:::single-choice{#vim-name-origin} Vim이라는 이름은 무엇을 뜻하나요?
 
 ::option[Visual Input Manager]{#vim-visual-input explanation="이 확장은 편집기 이름의 기원이 아닙니다."}
 ::option[Virtual Interface Mode]{#vim-virtual-interface explanation="Vim이 모드를 사용하기는 하지만 이 문구가 이름을 나타내지는 않습니다."}
 ::option[Vi Improved]{#vim-vi-improved .correct explanation="Vim은 향상된 vi 호환 편집기로 시작했으며 그 사실이 이름에 반영되어 있습니다."}
 :::
 
-:::single-choice{#vim-check-command}
-Bash가 현재 `vim`이라는 이름을 해석할 수 있는지 확인하는 명령어는 무엇인가요?
+:::single-choice{#vim-check-command} Bash가 현재 `vim`이라는 이름을 해석할 수 있는지 확인하는 명령어는 무엇인가요?
 
 ::option[`vim --create`]{#vim-create-option explanation="쉘 해석 확인 명령이 아니며 Vim을 설치하거나 찾는 방법도 아닙니다."}
 ::option[`command -v vim`]{#vim-command-resolution .correct explanation="쉘 내장 명령은 사용할 수 있을 때 해당 이름에 사용될 명령을 보고합니다."}
@@ -61,8 +59,7 @@ $ vim filename.txt
 
 Vim은 파일 시스템 권한을 우회하지 않습니다. 파일을 열 수 있다고 해서 계정이 그 경로에 변경 사항을 저장할 수 있다는 뜻은 아닙니다.
 
-:::single-choice{#vim-open-missing-path}
-`vim draft.txt`에서 아직 존재하지 않는 경로를 지정하면 일반적으로 어떻게 되나요?
+:::single-choice{#vim-open-missing-path} `vim draft.txt`에서 아직 존재하지 않는 경로를 지정하면 일반적으로 어떻게 되나요?
 
 ::option[Vim이 새 버퍼를 열고 쓸 때만 파일을 만듭니다.]{#vim-new-buffer .correct explanation="버퍼가 경로를 기억하지만 디스크 파일 생성은 성공적인 저장까지 미뤄집니다."}
 ::option[Vim이 인터페이스를 열기 전에 디스크에 빈 파일을 만듭니다.]{#vim-immediate-create explanation="새 버퍼가 경로와 연결되지만 파일은 성공적으로 쓰기 전까지 만들어지지 않습니다."}
@@ -86,8 +83,7 @@ Vim 안에서는 `Esc`로 일반 모드에 들어가 `:help`를 입력하고 Ent
 
 도움말 태그는 정확하므로 문장 부호가 중요할 수 있습니다. 도움말 링크에서 `Ctrl+]`를 누르면 링크를 따라가고 `Ctrl+T`를 누르면 돌아옵니다.
 
-:::single-choice{#vim-guided-tutorial}
-설치되어 있을 때 Vim의 안내형 튜토리얼을 시작하는 쉘 명령어는 무엇인가요?
+:::single-choice{#vim-guided-tutorial} 설치되어 있을 때 Vim의 안내형 튜토리얼을 시작하는 쉘 명령어는 무엇인가요?
 
 ::option[`vim --quiz`]{#vim-quiz-option explanation="Vim은 이 옵션을 표준 안내형 튜토리얼 인터페이스로 사용하지 않습니다."}
 ::option[`vimtutor`]{#vim-tutor-command .correct explanation="`vimtutor`는 안전한 실습을 위해 설계된 대화형 튜토리얼 사본을 엽니다."}
@@ -105,8 +101,7 @@ $ vim vim-practice.txt
 
 이어지는 레슨에서는 검색, 탐색, 삽입, 편집, 저장을 소개합니다. 안전하게 나가는 방법을 익힐 때까지 `Esc`가 일반 모드로 돌아가고 `:q!` 뒤에 Enter를 누르면 현재 창의 저장하지 않은 변경을 버린다는 점을 기억하세요. 변경을 버리려는 의도가 있을 때만 이 명령을 사용합니다.
 
-:::single-choice{#vim-abandon-practice-changes}
-일회용 연습 파일에서 현재 창을 종료하고 저장하지 않은 변경을 버리는 Vim 명령은 무엇인가요?
+:::single-choice{#vim-abandon-practice-changes} 일회용 연습 파일에서 현재 창을 종료하고 저장하지 않은 변경을 버리는 Vim 명령은 무엇인가요?
 
 ::option[`:w`]{#vim-write-only explanation="`:w`는 버퍼를 쓰지만 현재 창을 종료하지 않습니다."}
 ::option[`:wq`]{#vim-write-quit explanation="`:wq`는 종료하기 전에 변경을 저장하므로 변경을 버리지 않습니다."}

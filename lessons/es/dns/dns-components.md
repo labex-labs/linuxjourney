@@ -16,8 +16,7 @@ DNS separa la función de recursión orientada al cliente de la publicación aut
 
 Un resolver stub de una aplicación o sistema operativo envía consultas a un resolver recursivo configurado. Este devuelve una respuesta final, un error o el resultado de una referencia después de utilizar la caché y, cuando sea necesario, realizar consultas iterativas. Su respuesta solo puede incluir el indicador de respuesta autoritativa cuando el servidor que responde tiene autoridad sobre los datos; la recursión por sí sola no lo convierte en autoritativo.
 
-:::single-choice{#dns-components-recursive-role}
-¿Qué hace un resolver recursivo por un cliente stub?
+:::single-choice{#dns-components-recursive-role} ¿Qué hace un resolver recursivo por un cliente stub?
 
 ::option[Obtiene un resultado DNS final mediante la caché y otros servidores de nombres.]{#dns-components-recursive-result .correct explanation="El cliente delega en el servicio recursivo el trabajo de búsqueda de varios pasos."}
 ::option[Sustituye todos los routers de la ruta de los paquetes.]{#dns-components-replaces-router explanation="La resolución de nombres y el reenvío IP son aspectos independientes."}
@@ -28,8 +27,7 @@ Un resolver stub de una aplicación o sistema operativo envía consultas a un re
 
 Un servidor autoritativo responde a partir de los datos de las zonas sobre las que tiene autoridad. Una zona debe disponer de varios servidores autoritativos con datos sincronizados y consideraciones independientes sobre fallos. Un servidor exclusivamente autoritativo no tiene por qué realizar recursión para clientes arbitrarios.
 
-:::single-choice{#dns-components-authoritative-role}
-¿Qué hace que un servidor sea autoritativo para una zona?
+:::single-choice{#dns-components-authoritative-role} ¿Qué hace que un servidor sea autoritativo para una zona?
 
 ::option[Consultó una vez la zona mediante un resolver público.]{#dns-components-once-queried explanation="Consultar o almacenar en caché no concede autoridad."}
 ::option[Sirve los datos de la zona según la delegación y configuración pertinentes.]{#dns-components-serves-zone .correct explanation="La autoridad procede de la delegación DNS y de la zona cargada en el servidor, no de tener una copia en caché."}
@@ -42,8 +40,7 @@ Una zona es una parte del espacio de nombres DNS servida administrativamente. Co
 
 El vértice de la zona normalmente tiene un registro SOA y un conjunto NS. Los datos de delegación en un padre identifican los servidores autoritativos de la zona hija, a veces acompañados de registros de dirección glue necesarios para llegar a nombres de servidores incluidos en la propia delegación.
 
-:::single-choice{#dns-components-zone-meaning}
-¿Qué es una zona DNS?
+:::single-choice{#dns-components-zone-meaning} ¿Qué es una zona DNS?
 
 ::option[Una parte del espacio de nombres servida administrativamente.]{#dns-components-admin-portion .correct explanation="Puede contener registros y delegaciones con independencia del sistema de almacenamiento."}
 ::option[Un único archivo de texto obligatorio en todos los clientes.]{#dns-components-client-file explanation="Las implementaciones autoritativas pueden utilizar varias formas de almacenamiento y los clientes no contienen todas las zonas."}
@@ -60,8 +57,7 @@ www.example.com.  300  IN  A  192.0.2.25
 
 El propietario es `www.example.com.`, el TTL es de 300 segundos, la clase es Internet, el tipo es dirección IPv4 y RDATA es la dirección. La omisión de campos y las reglas de nombres relativos de la sintaxis de los archivos de zona exigen tratar cuidadosamente el origen.
 
-:::single-choice{#dns-components-mx-type}
-¿Qué tipo de registro publica la preferencia y los nombres de los servidores de correo?
+:::single-choice{#dns-components-mx-type} ¿Qué tipo de registro publica la preferencia y los nombres de los servidores de correo?
 
 ::option[`A`]{#dns-components-a explanation="Un registro A almacena una dirección IPv4."}
 ::option[`NS`]{#dns-components-ns explanation="Los registros NS identifican servidores de nombres autoritativos."}
@@ -72,8 +68,7 @@ El propietario es `www.example.com.`, el TTL es de 300 segundos, la clase es Int
 
 Los registros positivos utilizan TTL para limitar su reutilización desde la caché. Las respuestas negativas, como un nombre cuya inexistencia se ha demostrado, también pueden almacenarse en caché según reglas derivadas del SOA. Reducir un TTL poco antes de un cambio planificado solo afecta a los registros obtenidos después de que las cachés vean el valor menor; los TTL más largos que ya están almacenados permanecen hasta que caducan.
 
-:::single-choice{#dns-components-lower-ttl-timing}
-¿Por qué debes reducir un TTL de DNS con suficiente antelación a un cambio de dirección planificado?
+:::single-choice{#dns-components-lower-ttl-timing} ¿Por qué debes reducir un TTL de DNS con suficiente antelación a un cambio de dirección planificado?
 
 ::option[El TTL modifica la MTU Ethernet del servidor.]{#dns-components-ttl-mtu explanation="La duración de la caché y el tamaño de los paquetes del enlace no están relacionados."}
 ::option[Un TTL menor garantiza que la aplicación nueva funcione correctamente.]{#dns-components-ttl-health explanation="Afecta al comportamiento de la caché, no a la corrección del servicio."}

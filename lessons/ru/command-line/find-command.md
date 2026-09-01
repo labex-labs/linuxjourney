@@ -30,8 +30,7 @@ $ find /home -name puppies.jpg
 
 Рекурсия включена по умолчанию. Точка `.` начинает поиск с текущего дерева.
 
-:::single-choice{#search-current-tree}
-Какая команда ищет в текущем каталоге и потомках записи `notes.txt`?
+:::single-choice{#search-current-tree} Какая команда ищет в текущем каталоге и потомках записи `notes.txt`?
 
 ::option[`find . -name notes.txt`]{#find-current-notes .correct explanation="Точка задаёт текущий каталог, а `-name` проверяет базовое имя каждой записи."}
 ::option[`find / -name notes.txt`]{#find-root-notes explanation="Начало `/` ищет от корня всей файловой системы, что намного шире текущего дерева."}
@@ -56,8 +55,7 @@ $ find /home -type d -name MyFolder
 
 Здесь оба теста обязаны быть истинными: запись должна быть каталогом с базовым именем `MyFolder`.
 
-:::single-choice{#find-text-regular-files}
-Какая команда находит под текущим каталогом обычные файлы с именами на `.txt`?
+:::single-choice{#find-text-regular-files} Какая команда находит под текущим каталогом обычные файлы с именами на `.txt`?
 
 ::option[`find . -type f -name "*.txt"`]{#text-files .correct explanation="`-type f` выбирает обычные файлы, а заключённый в кавычки шаблон `-name` проверяется `find` для каждой записи."}
 ::option[`find . -type d -name "*.txt"`]{#text-directories explanation="Шаблон оформлен верно, но `-type d` выбирает каталоги, а не обычные файлы."}
@@ -84,8 +82,7 @@ $ find . -type f -mtime +30
 
 `-mtime -7` означает значение меньше 7, а `-mtime +30` — больше 30. Это полные сутки, а не границы календарной полуночи.
 
-:::single-choice{#find-recent-regular-files}
-Какая команда находит под `.` обычные файлы, изменённые менее семи полных 24-часовых периодов назад?
+:::single-choice{#find-recent-regular-files} Какая команда находит под `.` обычные файлы, изменённые менее семи полных 24-часовых периодов назад?
 
 ::option[`find . -type f -mtime -7`]{#recent-files .correct explanation="`-type f` выбирает обычные файлы, а `-mtime -7` — возраст изменения меньше семи полных суток."}
 ::option[`find . -type f -mtime +7`]{#older-than-seven explanation="Плюс выбирает возраст больше семи единиц, то есть более старые, а не недавние файлы."}
@@ -110,16 +107,14 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 Перед разрушительным `-delete` или меняющей файлы командой `-exec` выполните те же тесты с `-print` и проверьте каждый результат. Более узкий путь и `-maxdepth N` также ограничивают поиск.
 
-:::single-choice{#verify-before-delete}
-Вы разрабатываете `find`, который позже может удалять старые `.log`. Что сделать сначала?
+:::single-choice{#verify-before-delete} Вы разрабатываете `find`, который позже может удалять старые `.log`. Что сделать сначала?
 
 ::option[Сразу добавить `-delete` и посмотреть, что исчезнет.]{#delete-first explanation="Удаление не является безопасным просмотром и не имеет встроенной отмены; сначала проверьте весь набор."}
 ::option[Выполнить те же тесты с `-print` и проверить каждое совпадение.]{#print-first .correct explanation="Вывод без изменений проверяет начальный путь и тесты до добавления разрушительного действия."}
 ::option[Начать с `/`, чтобы не пропустить журналы.]{#root-first explanation="Начало от `/` расширяет область на несвязанные и защищённые пути; выбирайте самый узкий подходящий корень."}
 :::
 
-:::single-choice{#run-ls-for-each-match}
-Что обозначает `{}` в `find . -name "*.log" -exec ls -l {} \;`?
+:::single-choice{#run-ls-for-each-match} Что обозначает `{}` в `find . -name "*.log" -exec ls -l {} \;`?
 
 ::option[Текущий совпавший путь, передаваемый `ls -l`.]{#match-placeholder .correct explanation="В этой форме `-exec` команда `find` подставляет в `{}` текущее совпадение перед запуском `ls -l`."}
 ::option[Каталог, из которого была запущена `find`.]{#starting-placeholder explanation="Начальный каталог обозначен точкой в начале, а фигурные скобки имеют другую роль внутри `-exec`."}

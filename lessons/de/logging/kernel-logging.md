@@ -22,8 +22,7 @@ $ dmesg --human
 
 Der Puffer besitzt eine begrenzte Kapazität, sodass neuere Meldungen ältere überschreiben können. Der Zugriff kann außerdem auf privilegierte Benutzer beschränkt sein. `dmesg --follow` verfolgt bei Implementierungen, die dies unterstützen, neue Kernelmeldungen; beende es nach einer begrenzten Reproduktion.
 
-:::single-choice{#kernel-log-ring-buffer-limit}
-Warum kann ein älteres Kernelereignis in der aktuellen `dmesg`-Ausgabe fehlen?
+:::single-choice{#kernel-log-ring-buffer-limit} Warum kann ein älteres Kernelereignis in der aktuellen `dmesg`-Ausgabe fehlen?
 
 ::option[Kernelereignisse dürfen nur ein Zeichen enthalten.]{#kernel-log-one-character explanation="Kernelmeldungen können gewöhnlichen Diagnosetext und Metadaten enthalten."}
 ::option[`dmesg` löscht jede Zeile dauerhaft, nachdem sie angezeigt wurde.]{#kernel-log-display-deletes explanation="Ein gewöhnlicher Lesevorgang verbraucht nicht alle angezeigten Kernelmeldungen."}
@@ -34,8 +33,7 @@ Warum kann ein älteres Kernelereignis in der aktuellen `dmesg`-Ausgabe fehlen?
 
 Rohe Kernelzeitstempel sind gewöhnlich relativ zum Bootvorgang. `dmesg --ctime` oder `--human` kann sie als Uhrzeiten darstellen, doch umgerechnete Werte hängen vom Verlauf der Systemuhr ab und können ungenau sein, wenn sich die Uhr nach dem Bootvorgang geändert hat. Bewahre die bootrelative Zeitangabe, wenn eine genaue Reihenfolge wichtig ist.
 
-:::single-choice{#kernel-log-timestamp-caution}
-Warum solltest du umgerechnete Uhrzeitstempel von `dmesg` mit Bedacht behandeln?
+:::single-choice{#kernel-log-timestamp-caution} Warum solltest du umgerechnete Uhrzeitstempel von `dmesg` mit Bedacht behandeln?
 
 ::option[Sie beziehen sich immer auf einen anderen Rechner.]{#kernel-log-other-machine explanation="Sie werden lokal abgeleitet, doch Uhränderungen können die Umrechnung beeinflussen."}
 ::option[Sie beruhen auf der Zuordnung bootrelativer Zeit zu einer Uhr, die sich ändern kann.]{#kernel-log-clock-change .correct explanation="Zeitsynchronisierung oder manuelle Uhränderungen können die dargestellte Uhrzeit irreführend machen."}
@@ -59,8 +57,7 @@ $ journalctl -k -b -1
 
 Herkömmliche Syslog-Weiterleitung kann `/var/log/kern.log` oder eine andere Datei erstellen, doch dies hängt von der Konfiguration ab. Auch eine gespeicherte Datei `/var/log/dmesg` ist nicht allgemeingültig und stellt möglicherweise nur eine Momentaufnahme vom Bootvorgang dar.
 
-:::single-choice{#kernel-log-previous-boot}
-Welcher Befehl fordert Kernelmeldungen des vorherigen aufbewahrten Bootvorgangs an?
+:::single-choice{#kernel-log-previous-boot} Welcher Befehl fordert Kernelmeldungen des vorherigen aufbewahrten Bootvorgangs an?
 
 ::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="Kernelmeldungen werden mit `-k` ausgewählt, und das Verfolgen wählt keinen vorherigen Bootvorgang."}
 ::option[`dmesg --clear`]{#kernel-log-clear explanation="Das Leeren verändert den Pufferzustand und ruft keinen früheren Bootvorgang ab."}
@@ -79,8 +76,7 @@ $ lsblk
 
 Verwende nur Werkzeuge, die für das Subsystem relevant sind. Beurteile vor dem Neuladen eines Treibers, dem Trennen eines Geräts oder einem Neustart die Auswirkungen auf Speicher, Netzwerk, Konsole und Dienste und bewahre einen Wiederherstellungszugang.
 
-:::single-choice{#kernel-log-warning-response}
-Was ist die beste Reaktion auf eine einzelne Kernelwarnung?
+:::single-choice{#kernel-log-warning-response} Was ist die beste Reaktion auf eine einzelne Kernelwarnung?
 
 ::option[Sofort jeden geladenen Treiber entladen.]{#kernel-log-unload-all explanation="Dies kann wichtige Geräte unterbrechen und grenzt die Ursache der Warnung nicht ein."}
 ::option[Annehmen, dass der gesamte Rechner ersetzt werden muss.]{#kernel-log-replace-machine explanation="Ein einzelner Datensatz reicht für diese Schlussfolgerung nicht aus."}

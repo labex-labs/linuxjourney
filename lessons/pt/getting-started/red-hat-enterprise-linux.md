@@ -16,8 +16,7 @@ O Red Hat Enterprise Linux, frequentemente chamado de **RHEL**, é uma distribui
 
 O RHEL é uma das distribuições Linux corporativas mais importantes, pois é utilizado em servidores, data centers, sistemas em nuvem e ambientes de negócios regulamentados. Seu papel difere das distribuições comunitárias de uso geral, pois a capacidade de suporte e o planejamento de ciclo de vida de longo prazo são fundamentais para o seu valor.
 
-:::single-choice{#match-rhel-priorities}
-Qual necessidade corresponde mais diretamente aos objetivos do RHEL?
+:::single-choice{#match-rhel-priorities} Qual necessidade corresponde mais diretamente aos objetivos do RHEL?
 
 ::option[Mudanças contínuas de recursos sem ciclo de suporte]{#continuous-unsupported-change explanation="O RHEL segue um ciclo de vida conservador e publicado, em vez de mudanças contínuas sem suporte. A previsibilidade faz parte de seu valor corporativo."}
 ::option[Lançamentos previsíveis com suporte profissional de longo prazo]{#predictable-enterprise-platform .correct explanation="O RHEL foi criado para organizações que precisam de ciclos planejados, manutenção e suporte profissional. Essas qualidades mantêm sistemas de produção amparados ao longo do tempo."}
@@ -36,8 +35,7 @@ O RHEL está intimamente ligado ao ecossistema mais amplo da Red Hat. O Fedora �
 
 Se você deseja comparar os dois caminhos, veja [Fedora](https://labex.io/lesson/fedora). Para uma visão geral mais ampla das famílias de distribuições, veja [Escolhendo uma Distribuição Linux](https://labex.io/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#compare-fedora-and-rhel}
-Como o Fedora se relaciona ao RHEL no ecossistema Red Hat?
+:::single-choice{#compare-fedora-and-rhel} Como o Fedora se relaciona ao RHEL no ecossistema Red Hat?
 
 ::option[O Fedora é uma versão antiga do RHEL mantida sem atualizações de segurança]{#fedora-old-rhel explanation="O Fedora é uma distribuição comunitária independente, não uma versão expirada do RHEL. Ele tem lançamentos próprios e um ritmo mais rápido."}
 ::option[O Fedora é um projeto comunitário upstream para tecnologias que podem chegar ao RHEL]{#fedora-upstream .correct explanation="O Fedora é o projeto comunitário upstream de evolução mais rápida. A Red Hat usa esse ecossistema ao desenvolver sua plataforma corporativa mais conservadora."}
@@ -50,8 +48,7 @@ O RHEL utiliza o formato de pacote RPM e ferramentas como o DNF para instalar, a
 
 O gerenciamento de pacotes é uma habilidade operacional fundamental para administradores RHEL, pois a manutenção de longo prazo e as atualizações previsíveis são centrais para o funcionamento dos sistemas corporativos.
 
-:::single-choice{#relate-rpm-and-dnf}
-Como RPM e DNF trabalham juntos no RHEL?
+:::single-choice{#relate-rpm-and-dnf} Como RPM e DNF trabalham juntos no RHEL?
 
 ::option[O RPM define o software empacotado, enquanto o DNF gerencia repositórios e dependências]{#rpm-format-dnf-tool .correct explanation="O software do RHEL é distribuído em pacotes RPM, e o DNF é a ferramenta de alto nível usada para localizar, instalar, atualizar e remover esse conteúdo."}
 ::option[O DNF define o software empacotado, enquanto o RPM gerencia o desktop gráfico]{#dnf-format-rpm-desktop explanation="Essa opção inverte e distorce os papéis. O RPM é o sistema de pacotes, enquanto o DNF faz o gerenciamento de software em alto nível."}
@@ -64,8 +61,7 @@ Uma das maiores razões pelas quais as organizações escolhem o RHEL é o supor
 
 Para as empresas, esse modelo de suporte pode ser tão importante quanto os recursos técnicos da própria distribuição.
 
-:::single-choice{#use-published-lifecycle}
-Por que um ciclo de suporte publicado é valioso para uma organização?
+:::single-choice{#use-published-lifecycle} Por que um ciclo de suporte publicado é valioso para uma organização?
 
 ::option[Ele garante que todo aplicativo funcionará sem testes]{#guarantee-all-applications explanation="Um sistema operacional com suporte não garante compatibilidade com todo aplicativo. As organizações ainda precisam verificar e testar a compatibilidade."}
 ::option[Ele elimina a necessidade de instalar atualizações de segurança]{#avoid-security-updates explanation="O ciclo de suporte oferece acesso a manutenção e atualizações de segurança; ele não as torna desnecessárias. Os sistemas ainda exigem manutenção ativa."}

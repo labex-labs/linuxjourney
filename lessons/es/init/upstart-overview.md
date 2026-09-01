@@ -24,8 +24,7 @@ $ initctl version
 
 El último comando solo ofrece un resultado significativo cuando están presentes el servicio de control y el cliente de Upstart. Un directorio como `/usr/share/upstart` o archivos residuales bajo `/etc/init` son indicios débiles, porque los paquetes y restos de una migración pueden permanecer después de que otro sistema de inicio tome el control.
 
-:::single-choice{#upstart-overview-active-evidence}
-¿Cuál es la prueba más sólida de que una máquina usa realmente Upstart?
+:::single-choice{#upstart-overview-active-evidence} ¿Cuál es la prueba más sólida de que una máquina usa realmente Upstart?
 
 ::option[El nombre de un directorio contiene la palabra `upstart`.]{#upstart-overview-directory-only explanation="La documentación instalada o los restos pueden permanecer en un sistema que usa otro sistema de inicio."}
 ::option[El sistema tiene al menos un script de shell.]{#upstart-overview-shell-script explanation="Los scripts de shell son habituales en todos los entornos de inicio."}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 Este ejemplo utiliza eventos de niveles de ejecución como entradas de compatibilidad. Upstart también puede reaccionar a eventos del sistema de archivos, de dispositivos, de la red o definidos por aplicaciones, según lo que emita el sistema.
 
-:::single-choice{#upstart-overview-start-on}
-¿Qué define una sección `start on` de Upstart?
+:::single-choice{#upstart-overview-start-on} ¿Qué define una sección `start on` de Upstart?
 
 ::option[La versión del kernel que debe compilarse a continuación.]{#upstart-overview-kernel-version explanation="Las condiciones de eventos de los trabajos no seleccionan una compilación del kernel."}
 ::option[La expresión de eventos que orienta el objetivo del trabajo hacia su inicio.]{#upstart-overview-start-condition .correct explanation="Cuando se satisface la expresión, Upstart intenta realizar la transición de inicio configurada para el trabajo."}
@@ -61,8 +59,7 @@ Durante el arranque, Upstart carga las definiciones de los trabajos y recibe eve
 
 Este modelo evita una única secuencia global de scripts codificada de forma rígida, pero puede ser difícil de diagnosticar cuando los nombres, el orden y las condiciones de los eventos son implícitos. De forma predeterminada, los eventos no constituyen una cola de mensajes persistente, por lo que un trabajo añadido o una condición modificada posteriormente no deben suponer que todos los eventos pasados se volverán a reproducir.
 
-:::single-choice{#upstart-overview-event-chain}
-¿Cómo puede un trabajo de Upstart provocar que se inicie otro?
+:::single-choice{#upstart-overview-event-chain} ¿Cómo puede un trabajo de Upstart provocar que se inicie otro?
 
 ::option[Reescribe en memoria el binario ejecutable del otro trabajo.]{#upstart-overview-rewrite-binary explanation="La coordinación se realiza mediante eventos, no modificando el código."}
 ::option[Todos los trabajos siempre se inician estrictamente según el orden de sus nombres de archivo.]{#upstart-overview-filename-order explanation="Upstart utiliza expresiones de eventos en lugar de una lista de inicio ordenada por nombres de archivo."}
@@ -73,8 +70,7 @@ Este modelo evita una única secuencia global de scripts codificada de forma rí
 
 Systemd puede ofrecer compatibilidad limitada con algunos scripts de servicio antiguos, pero no ejecuta la sintaxis de los trabajos de Upstart como unidades nativas de systemd. Al migrar, traduce las condiciones del ciclo de vida, el entorno, la política de reaparición, el registro, las dependencias y la semántica de disponibilidad en lugar de limitarte a cambiar el nombre de los archivos.
 
-:::single-choice{#upstart-overview-current-ubuntu}
-¿Qué sistema de inicio utilizan las versiones estándar actuales de Ubuntu?
+:::single-choice{#upstart-overview-current-ubuntu} ¿Qué sistema de inicio utilizan las versiones estándar actuales de Ubuntu?
 
 ::option[Upstart de forma exclusiva en todas las instalaciones.]{#upstart-overview-current-upstart explanation="Eso solo fue cierto durante determinados periodos y configuraciones de versiones antiguas."}
 ::option[systemd.]{#upstart-overview-current-systemd .correct explanation="Upstart pertenece a generaciones anteriores de Ubuntu; las versiones actuales utilizan systemd como PID 1."}

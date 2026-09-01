@@ -27,8 +27,7 @@ Das kleingeschriebene `s` an der Ausführungsposition des Eigentümers bedeutet,
 
 Gehe nicht davon aus, dass jede Distribution denselben Modus oder denselben Authentifizierungsaufbau besitzt. Prüfe das tatsächliche System, statt dich auf das Beispiel zu verlassen.
 
-:::single-choice{#setuid-lowercase-s}
-Was zeigt ein kleingeschriebenes `s` an der Ausführungsposition des Eigentümers an?
+:::single-choice{#setuid-lowercase-s} Was zeigt ein kleingeschriebenes `s` an der Ausführungsposition des Eigentümers an?
 
 ::option[Setuid ist gesetzt, aber die Ausführungsberechtigung des Eigentümers fehlt.]{#setuid-s-without-execute explanation="Diese Kombination wird als großgeschriebenes `S` und nicht als kleingeschriebenes `s` dargestellt."}
 ::option[Die Datei besitzt ein Sticky-Bit und die Gruppenausführungsberechtigung.]{#setuid-sticky-group explanation="Das Sticky-Bit erscheint an der Ausführungsposition für andere, während setuid an der Eigentümerposition steht."}
@@ -41,8 +40,7 @@ Wenn der Kernel setuid bei der Ausführung berücksichtigt, erhält der neue Pro
 
 Dieser Mechanismus kann einem sorgfältig geschriebenen Programm ermöglichen, eine Anfrage zu validieren und eine begrenzte Änderung an geschützten Zuständen vorzunehmen. Ein lokales Werkzeug zur Passwortänderung kann beispielsweise kontrollierten Zugriff auf Authentifizierungsdaten benötigen, die gewöhnliche Benutzer nicht direkt bearbeiten dürfen. Moderne Implementierungen stützen sich außerdem auf PAM, Dateisperren, Richtlinien und weitere Schutzmaßnahmen; setuid allein erklärt nicht den gesamten Arbeitsablauf.
 
-:::single-choice{#setuid-effective-identity}
-Welche Identität wird bei einer berücksichtigten setuid-Datei hauptsächlich vom Dateieigentümer übernommen?
+:::single-choice{#setuid-effective-identity} Welche Identität wird bei einer berücksichtigten setuid-Datei hauptsächlich vom Dateieigentümer übernommen?
 
 ::option[Der in `/etc/passwd` gespeicherte Anmeldename.]{#setuid-login-name explanation="Die Ausführung einer Datei schreibt weder den Kontoeintrag noch den Anmeldenamen des Aufrufers um."}
 ::option[Die effektive Benutzer-ID des Prozesses.]{#setuid-effective-user .correct explanation="Der Set-User-ID-Ausführungsmechanismus ändert die effektive Benutzeridentität, die für viele Autorisierungsprüfungen verwendet wird."}
@@ -65,8 +63,7 @@ $ sudo chmod 4755 myfile
 
 Hier setzt die führende `4` setuid, während `755` die gewöhnlichen Bits für Eigentümer, Gruppe und andere festlegt. Entferne setuid mit `chmod u-s myfile`, ohne den restlichen Modus zu ändern.
 
-:::single-choice{#setuid-octal-value}
-Welcher führende oktale Wert steht für das besondere setuid-Bit?
+:::single-choice{#setuid-octal-value} Welcher führende oktale Wert steht für das besondere setuid-Bit?
 
 ::option[`4`]{#setuid-octal-four .correct explanation="Setuid trägt den Wert `4` zur führenden Ziffer für besondere Bits bei."}
 ::option[`1`]{#setuid-octal-one explanation="Eine führende `1` steht für das Sticky-Bit."}
@@ -81,8 +78,7 @@ Linux berücksichtigt setuid bei interpretierten Skripten gewöhnlich nicht, wei
 
 Füge niemals einer beliebigen Shell, einem Interpreter oder einem kopierten Programm experimentell setuid auf einem gemeinsam genutzten System hinzu. Prüfe bestehende setuid-Dateien und übe ausschließlich in einer isolierten, entbehrlichen Umgebung.
 
-:::single-choice{#setuid-nosuid-mount}
-Welchen Zweck hat das Einhängen eines Dateisystems mit `nosuid`?
+:::single-choice{#setuid-nosuid-mount} Welchen Zweck hat das Einhängen eines Dateisystems mit `nosuid`?
 
 ::option[Alle auf Dateien dieses Dateisystems gespeicherten Ausführungsbits zu entfernen.]{#setuid-nosuid-remove-execute explanation="Die Option schreibt gewöhnliche Ausführungsbits in Dateimetadaten nicht um."}
 ::option[Die Ausführungswirkung von setuid und setgid auf diesem Dateisystem zu unterdrücken.]{#setuid-nosuid-suppress .correct explanation="Die Einhängeoption `nosuid` verhindert, dass diese besonderen Modusbits ihr gewöhnliches Verhalten zur Änderung von Zugangsdaten bei der Ausführung entfalten."}

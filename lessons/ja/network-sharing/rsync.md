@@ -22,8 +22,7 @@ $ rsync -a -- source/ destination/
 
 `source/` の末尾スラッシュは「このディレクトリの内容をコピーする」という意味です。スラッシュがない `rsync -a source destination/` は、`destination/source` を作成または更新します。スラッシュの付け方を変えるときは、必ず結果のパスを事前確認してください。
 
-:::single-choice{#rsync-source-trailing-slash}
-`rsync -a source/ destination/` のコピー元にある末尾スラッシュは、何を意味しますか？
+:::single-choice{#rsync-source-trailing-slash} `rsync -a source/ destination/` のコピー元にある末尾スラッシュは、何を意味しますか？
 
 ::option[転送成功後にコピー元を削除する。]{#rsync-delete-source explanation="コピー元を削除するには、別の明示的なオプションとポリシーが必要です。"}
 ::option[`source` の内容をコピー先へコピーする。]{#rsync-copy-contents .correct explanation="コピー元のスラッシュを外すと、コピー先の最上位レイアウトが変わります。"}
@@ -36,8 +35,7 @@ $ rsync -a -- source/ destination/
 
 アーカイブモードだけでは、ハードリンク、ACL、拡張属性は保持しません。それぞれ通常は `-H`、`-A`、`-X` が必要です。また、履歴世代も自動的には作りません。
 
-:::single-choice{#rsync-archive-limit}
-`-a` だけでは保持されないメタデータはどれですか？
+:::single-choice{#rsync-archive-limit} `-a` だけでは保持されないメタデータはどれですか？
 
 ::option[ハードリンクの関係。]{#rsync-hard-links .correct explanation="ハードリンクの保持には、別途 `-H` オプションが必要です。"}
 ::option[ディレクトリの再帰処理。]{#rsync-archive-recursion explanation="アーカイブモードには再帰的な探索が含まれます。"}
@@ -54,8 +52,7 @@ $ rsync -a --dry-run --itemize-changes -- source/ destination/
 
 dry run は現在のスキャンに基づく動作を予測しますが、本番コマンドの前にファイルが変化しないとは保証しません。正確なコマンドを保存して出力を確認し、両エンドポイントを確認してから `--dry-run` を外して実行してください。
 
-:::single-choice{#rsync-dry-run-purpose}
-`--dry-run --itemize-changes` から何が得られますか？
+:::single-choice{#rsync-dry-run-purpose} `--dry-run --itemize-changes` から何が得られますか？
 
 ::option[別デバイスに保持される永続スナップショット。]{#rsync-dry-backup explanation="dry run ではデータコピーも独立した保存も作成されません。"}
 ::option[コピー元ファイルが後で変化しないという保証。]{#rsync-dry-lock explanation="事前確認をしても、コピー元ツリーはロックされません。"}
@@ -73,8 +70,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 現代の rsync はこの形式で通常 SSH を使いますが、設定済みリモートシェル、ホスト鍵、アカウント権限、リモート側の rsync の有無を確認してください。`-z` の圧縮は、帯域の狭い回線で圧縮しやすいデータには役立ちますが、圧縮済みデータには CPU を浪費する場合があります。
 
-:::single-choice{#rsync-pull-direction}
-リモートデータをローカルディレクトリへ取得するオペランド順はどれですか？
+:::single-choice{#rsync-pull-direction} リモートデータをローカルディレクトリへ取得するオペランド順はどれですか？
 
 ::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="この順序はローカルの内容をリモートのコピー先へ送信します。"}
 ::option[`rsync --delete host local`]{#rsync-missing-path explanation="示されたリモートパス構文になっておらず、無関係な破壊的オプションも追加されています。"}
@@ -87,8 +83,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 本番実行後は終了状態とログを調べ、想定ファイル数とメタデータを比較し、代表的な内容または復元をテストします。rsync の同期だけでは、望ましくない削除や破損も複製されるため、完全なバックアップ戦略にはなりません。
 
-:::single-choice{#rsync-delete-effect}
-同期中に `--delete` が行う可能性のある操作はどれですか？
+:::single-choice{#rsync-delete-effect} 同期中に `--delete` が行う可能性のある操作はどれですか？
 
 ::option[SSH ホスト鍵で全転送ファイルを暗号化する。]{#rsync-delete-encrypt explanation="削除ポリシーはファイル暗号化と無関係です。"}
 ::option[コピー先ファイルシステムへの全変更を防止する。]{#rsync-delete-readonly explanation="このオプションは、むしろ追加のコピー先変更を明示的に許可します。"}

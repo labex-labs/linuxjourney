@@ -32,8 +32,7 @@ $ rm notes.txt old-report.txt draft.md
 
 До Enter проверьте написание и расположение. Резервная копия или система контроля версий надёжнее попыток восстановления после удаления.
 
-:::single-choice{#remove-one-file}
-Какая команда после проверки цели удаляет `old-report.txt`?
+:::single-choice{#remove-one-file} Какая команда после проверки цели удаляет `old-report.txt`?
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` удаляет указанную запись; обычно она не попадает в корзину."}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` работает с пустыми каталогами, а не обычными файлами."}
@@ -58,8 +57,7 @@ $ rm *.tmp
 
 Оболочка раскрывает шаблон до запуска `rm`. При неожиданном совпадении исправьте шаблон и не продолжайте.
 
-:::single-choice{#preview-removal-pattern}
-Какая команда без удаления показывает нескрытые пути, выбранные шаблоном `*.tmp`?
+:::single-choice{#preview-removal-pattern} Какая команда без удаления показывает нескрытые пути, выбранные шаблоном `*.tmp`?
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="Подробный режим сообщает об удалениях во время их выполнения и не является просмотром."}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="Кавычки запрещают раскрытие, поэтому ищется буквальное имя со `*`."}
@@ -77,8 +75,7 @@ rm: remove regular file 'important.txt'? y
 
 GNU `rm -I` запрашивает один раз, если удаляется больше трёх файлов или операция рекурсивна.
 
-:::single-choice{#confirm-each-removal}
-Какая команда спрашивает подтверждение перед удалением каждого файла?
+:::single-choice{#confirm-each-removal} Какая команда спрашивает подтверждение перед удалением каждого файла?
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="Параметр `-i` задаёт вопрос перед каждым удалением, позволяя отказаться."}
 ::option[`rm -f important.txt`]{#force-important explanation="`-f` подавляет вопросы и игнорирует отсутствующий аргумент, а не добавляет подтверждение."}
@@ -118,8 +115,7 @@ $ rmdir empty-directory
 
 Она завершается ошибкой для непустого каталога, защищая содержимое от рекурсивного удаления.
 
-:::single-choice{#remove-empty-directory-only}
-Какая команда удаляет `old-cache/` только при его пустоте?
+:::single-choice{#remove-empty-directory-only} Какая команда удаляет `old-cache/` только при его пустоте?
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="Рекурсивная `rm` удаляет каталог вместе с содержимым и не требует пустоты."}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` успешна только для пустого каталога и не удаляет файлы рекурсивно."}
@@ -152,8 +148,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-Какая команда после полной проверки удаляет `old-project/` со всем содержимым, сохраняя обычные запросы?
+:::single-choice{#remove-nonempty-tree} Какая команда после полной проверки удаляет `old-project/` со всем содержимым, сохраняя обычные запросы?
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="Обычная `rm` не спускается в каталог и не удаляет непустое дерево."}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="`-r` рекурсивно удаляет дерево, но в отличие от `-rf` не добавляет подавляющий вопросы `-f`."}

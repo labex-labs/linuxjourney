@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 最初の行には現在時刻、稼働時間、ログイン中ユーザー数、1分、5分、15分の負荷平均があります。タスク行はプロセス状態を数えます。負荷平均は CPU 使用率そのものではありません。Linux では実行可能なタスクと割り込み不能スリープ中のタスクを反映するため、CPU 数、I/O 活動、遅延と合わせて解釈します。
 
-:::single-choice{#top-load-average-periods}
-`top` の三つの負荷平均値は何を表しますか？
+:::single-choice{#top-load-average-periods} `top` の三つの負荷平均値は何を表しますか？
 
 ::option[1分、5分、15分間の平均負荷。]{#top-one-five-fifteen .correct explanation="これらの値は、徐々に長くなる直近の時間窓を要約します。"}
 ::option[最も忙しい三つのプロセスによる CPU 使用率。]{#top-three-processes explanation="プロセスごとの CPU は、この三つの概要値ではなくプロセステーブルに表示されます。"}
@@ -48,8 +47,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 高い `wa` 値は I/O 待ちという仮説を支持しますが、デバイスの特定や、ストレージが唯一のボトルネックであることまでは証明しません。結論を出す前にデバイス遅延とアプリケーションの動作を調べます。
 
-:::single-choice{#top-cpu-wa-meaning}
-CPU フィールド `wa` は何を報告しますか？
+:::single-choice{#top-cpu-wa-meaning} CPU フィールド `wa` は何を報告しますか？
 
 ::option[通常のユーザーコードを実行した時間。]{#top-wa-user explanation="ユーザー空間での実行は `us` に報告されます。"}
 ::option[起動後に swap へ書き込まれたメモリページ数。]{#top-wa-swap explanation="Swap 活動は CPU 時間の分類ではありません。"}
@@ -70,8 +68,7 @@ CPU フィールド `wa` は何を報告しますか？
 
 `VIRT` は消費している物理 RAM 量ではありません。マッピング済みファイル、共有ライブラリ、予約済みアドレス空間、swap されたページを含む場合があります。共有ページは割り当てを複雑にするため、`RES` も慎重に解釈する必要があります。
 
-:::single-choice{#top-res-versus-virt}
-プロセスの現在の常駐物理メモリにより近いフィールドはどれですか？
+:::single-choice{#top-res-versus-virt} プロセスの現在の常駐物理メモリにより近いフィールドはどれですか？
 
 ::option[`TIME+`]{#top-time-field explanation="これはメモリではなく CPU 時間を累積します。"}
 ::option[`VIRT`]{#top-virt-field explanation="仮想サイズには RAM に常駐する必要のないアドレス空間も含まれます。"}
@@ -90,8 +87,7 @@ $ top -p 1234,5678
 
 操作する前に PID、コマンド、タイムスタンプ、複数のサンプルを記録します。プロセスが一時的に最上位へ来るのは正常な場合があり、終了させるとデータ損失や障害を引き起こす可能性があります。
 
-:::single-choice{#top-monitor-known-pid}
-表示を PID 1234 に限定する呼び出しはどれですか？
+:::single-choice{#top-monitor-known-pid} 表示を PID 1234 に限定する呼び出しはどれですか？
 
 ::option[`top -u 1234`]{#top-user-filter explanation="`-u` 形式は値を PID とせず、ユーザーで絞り込みます。"}
 ::option[`top -d 1234`]{#top-delay-filter explanation="一般的な実装の `-d` は更新間隔を制御します。"}

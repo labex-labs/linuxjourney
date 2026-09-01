@@ -18,8 +18,7 @@ O ID de usuário real identifica a conta que iniciou o processo ou sua sessão d
 
 Para um comando comum iniciado pelo usuário Bob, o ID de usuário real normalmente corresponde ao UID de Bob. Criar outro processo não cria uma nova conta nem altera essa identidade por si só.
 
-:::single-choice{#process-permissions-real-uid}
-O que o ID de usuário real de um processo normalmente identifica?
+:::single-choice{#process-permissions-real-uid} O que o ID de usuário real de um processo normalmente identifica?
 
 ::option[O proprietário do arquivo aberto mais recentemente.]{#process-permissions-real-opened-file explanation="Abrir um arquivo não substitui o UID real do processo pelo proprietário desse arquivo."}
 ::option[A conta associada ao solicitante original do processo.]{#process-permissions-real-caller .correct explanation="O UID real registra a identidade do usuário solicitante herdada quando o processo é iniciado."}
@@ -32,8 +31,7 @@ O ID de usuário efetivo é a credencial de usuário utilizada em muitas verific
 
 Por exemplo, um utilitário de senhas cuidadosamente desenvolvido pode ser executado com um UID efetivo elevado para atualizar dados de autenticação protegidos. O programa ainda deve aplicar a política com base no solicitante, na conta requisitada, nos resultados do PAM e em outros contextos. Possuir um UID efetivo não torna automaticamente legítimas todas as operações solicitadas.
 
-:::single-choice{#process-permissions-effective-uid}
-Qual ID de usuário é usado em muitas decisões de controle de acesso realizadas em nome de um processo?
+:::single-choice{#process-permissions-effective-uid} Qual ID de usuário é usado em muitas decisões de controle de acesso realizadas em nome de um processo?
 
 ::option[O ID de usuário efetivo.]{#process-permissions-effective-active .correct explanation="O UID efetivo é a credencial de usuário ativa consultada em muitas verificações de autorização."}
 ::option[Somente o ID de usuário salvo.]{#process-permissions-effective-saved-only explanation="O ID salvo oferece suporte a transições de credenciais, mas geralmente não é a identidade ativa nas verificações de acesso."}
@@ -46,8 +44,7 @@ O ID set-user-ID salvo permite que um programa mantenha uma identidade que poder
 
 Isso é mais seguro do que manter autoridade elevada durante todo o programa, mas apenas quando implementado corretamente. Os programas devem descartar os privilégios permanentemente quando eles deixarem de ser necessários e verificar se cada chamada de alteração de credenciais falhou.
 
-:::single-choice{#process-permissions-saved-uid}
-Por que um programa privilegiado pode manter um ID set-user-ID salvo?
+:::single-choice{#process-permissions-saved-uid} Por que um programa privilegiado pode manter um ID set-user-ID salvo?
 
 ::option[Para alternar sua identidade efetiva entre fases privilegiadas e não privilegiadas controladas.]{#process-permissions-saved-switch .correct explanation="A identidade salva pode permitir uma redução temporária de privilégios e sua restauração posterior quando permitida."}
 ::option[Para atribuir automaticamente esse UID a todos os arquivos que ele ler.]{#process-permissions-saved-file-owner explanation="Ler um arquivo não altera sua propriedade para o UID salvo do processo."}
@@ -60,8 +57,7 @@ Os processos também possuem credenciais de grupo reais, efetivas, salvas e supl
 
 Use ferramentas como `ps` e `/proc/PROCESS/status` para inspecionar credenciais no Linux. A disponibilidade dos campos e os formatos de exibição variam, portanto consulte a documentação local e evite alterar credenciais apenas para fazer experiências em um sistema compartilhado.
 
-:::single-choice{#process-permissions-ordinary-identities}
-Na maioria dos comandos comuns sem uma transição de privilégios, como os UIDs real e efetivo se comparam?
+:::single-choice{#process-permissions-ordinary-identities} Na maioria dos comandos comuns sem uma transição de privilégios, como os UIDs real e efetivo se comparam?
 
 ::option[O UID efetivo é sempre zero.]{#process-permissions-effective-root explanation="Comandos comuns não recebem automaticamente o UID do root."}
 ::option[O UID real sempre corresponde ao proprietário do arquivo executável.]{#process-permissions-real-file-owner explanation="O proprietário do executável afeta o comportamento setuid, não o UID real comum."}

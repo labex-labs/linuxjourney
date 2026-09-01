@@ -31,8 +31,7 @@ bob	viewer
 
 O espaço visível entre as colunas é uma tabulação. Ao contrário de `cat`, que grava um arquivo completo depois do outro, `paste` combina as linhas correspondentes das entradas.
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt` contém `A` e depois `B`, enquanto `second.txt` contém `1` e depois `2`. O que `paste first.txt second.txt` produz por padrão?
+:::single-choice{#paste-corresponding-lines} `first.txt` contém `A` e depois `B`, enquanto `second.txt` contém `1` e depois `2`. O que `paste first.txt second.txt` produz por padrão?
 
 ::option[`A`, `B`, `1` e `2` em quatro linhas consecutivas.]{#paste-concatenated-files explanation="Isso se assemelha à gravação dos arquivos um após o outro. `paste` combina as linhas correspondentes."}
 ::option[`A`, `B`, `1` e `2` em uma única linha, sem separadores.]{#paste-one-line-no-separator explanation="A serialização em uma linha exige `-s`, e o separador padrão é uma tabulação, não a ausência de separador."}
@@ -51,8 +50,7 @@ bob:viewer
 
 Coloque entre aspas delimitadores que tenham significado para o shell. `paste` pode alternar entre vários caracteres delimitadores quando a lista contém mais de um, mas um único caractere é a opção mais simples ao criar duas colunas.
 
-:::single-choice{#paste-colon-delimiter}
-Qual comando une as linhas correspondentes de `names.txt` e `roles.txt` com dois-pontos?
+:::single-choice{#paste-colon-delimiter} Qual comando une as linhas correspondentes de `names.txt` e `roles.txt` com dois-pontos?
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="A opção `-d` substitui a tabulação padrão pelos dois-pontos fornecidos entre cada par de campos."}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="A opção `-s` seleciona o modo serial, e `:` seria tratado como outro caminho de entrada, não como delimitador."}
@@ -78,8 +76,7 @@ The quick brown fox
 
 Se vários arquivos forem fornecidos com `-s`, cada arquivo se tornará sua própria linha de saída.
 
-:::single-choice{#paste-serialize-with-spaces}
-Qual comando une todas as linhas de `words.txt` em uma única linha de saída separada por espaços?
+:::single-choice{#paste-serialize-with-spaces} Qual comando une todas as linhas de `words.txt` em uma única linha de saída separada por espaços?
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="No modo paralelo padrão, um único arquivo ainda produz uma linha de saída para cada linha de entrada. O delimitador não tem arquivos para unir."}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="Essa forma serializa dois arquivos separadamente com a tabulação padrão, produzindo duas linhas, não o resultado solicitado."}
@@ -99,8 +96,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-O que acontece quando um arquivo fornecido ao `paste` paralelo termina antes de outro?
+:::single-choice{#paste-unequal-files} O que acontece quando um arquivo fornecido ao `paste` paralelo termina antes de outro?
 
 ::option[`paste` usa campos vazios para esse arquivo até o fim da entrada mais longa.]{#paste-empty-fields .correct explanation="O modo paralelo continua até que todos os arquivos terminem, representando como campos vazios as linhas ausentes das entradas mais curtas."}
 ::option[`paste` para imediatamente e descarta as linhas restantes.]{#paste-stop-shortest explanation="`paste` continua até o fim da entrada mais longa; portanto, as linhas restantes não são descartadas porque outro arquivo terminou."}
@@ -117,8 +113,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-Em `producer | paste names.txt -`, o que significa o operando `-`?
+:::single-choice{#paste-stdin-operand} Em `producer | paste names.txt -`, o que significa o operando `-`?
 
 ::option[Gravar o resultado mesclado em stderr.]{#paste-write-stderr explanation="Aqui, o hífen identifica uma fonte de entrada. Ele não redireciona um fluxo de saída."}
 ::option[Remover os delimitadores entre as duas colunas.]{#paste-remove-delimiter explanation="A seleção do delimitador é controlada por `-d`. O hífen não altera o separador."}

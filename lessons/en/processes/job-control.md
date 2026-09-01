@@ -25,8 +25,7 @@ The shell returns a prompt without waiting for the job to finish. Background sta
 
 A background job that attempts to read from the controlling terminal is normally stopped with `SIGTTIN` because it is not the terminal's foreground process group.
 
-:::single-choice{#job-control-ampersand-effect}
-What does a trailing `&` ask an interactive shell to do?
+:::single-choice{#job-control-ampersand-effect} What does a trailing `&` ask an interactive shell to do?
 
 ::option[Guarantee that the job survives logout and system restart.]{#job-control-survive-restart explanation="Backgrounding alone provides neither durable supervision nor restart persistence."}
 ::option[Run the pipeline as a background job without waiting before the next prompt.]{#job-control-background-job .correct explanation="The shell starts the job asynchronously and remains available for more commands."}
@@ -48,8 +47,7 @@ The bracketed number is a shell job ID, not a PID. A `%` prefix forms a job spec
 
 Because the job table belongs to one shell, another terminal's shell normally cannot list or address these jobs through its own `jobs`, `fg`, or `bg` builtins.
 
-:::single-choice{#job-control-jobs-scope}
-What does the `jobs` builtin list?
+:::single-choice{#job-control-jobs-scope} What does the `jobs` builtin list?
 
 ::option[Jobs tracked by the current shell session.]{#job-control-jobs-current-shell .correct explanation="Job IDs and state are maintained by the interactive shell that started or adopted those jobs."}
 ::option[Every process currently visible on the system.]{#job-control-jobs-all-processes explanation="System-wide process inspection belongs to tools such as `ps`; the shell job table is narrower."}
@@ -74,8 +72,7 @@ $ bg
 
 `bg` sends a continuation signal and leaves the job outside the terminal foreground. It is useful only for a stopped job; a command already running in the background does not need to be resumed.
 
-:::single-choice{#job-control-bg-purpose}
-What does `bg %3` do to stopped job 3?
+:::single-choice{#job-control-bg-purpose} What does `bg %3` do to stopped job 3?
 
 ::option[Moves its files into a directory named `bg`.]{#job-control-bg-files explanation="`bg` is a shell job-control builtin and does not move filesystem objects."}
 ::option[Continues it as a background job.]{#job-control-bg-continue .correct explanation="The shell resumes the selected stopped job without assigning it the terminal foreground."}
@@ -92,8 +89,7 @@ $ fg %1
 
 Without an operand, `fg` normally selects the current job marked `+`. A stopped job is continued as it enters the foreground.
 
-:::single-choice{#job-control-fg-effect}
-What does `fg %1` do?
+:::single-choice{#job-control-fg-effect} What does `fg %1` do?
 
 ::option[Assigns job 1 to the terminal foreground and waits for it.]{#job-control-fg-foreground .correct explanation="The shell foregrounds the selected job so it can interact with the terminal."}
 ::option[Changes job 1 into PID 1.]{#job-control-fg-pid-one explanation="A shell job ID does not replace or rewrite process IDs."}
@@ -110,8 +106,7 @@ $ kill -TERM %1
 
 This normally signals the job's process group rather than just one pipeline member. Inspect the selected job first and use `SIGTERM` before considering forceful escalation. Job specifications are shell syntax; scripts and external tools more commonly work with verified PIDs or process-group IDs.
 
-:::single-choice{#job-control-job-specification}
-Which operand refers to shell job 1 rather than process ID 1?
+:::single-choice{#job-control-job-specification} Which operand refers to shell job 1 rather than process ID 1?
 
 ::option[`1`]{#job-control-plain-one explanation="A plain numeric operand to `kill` is normally interpreted as a PID."}
 ::option[`#1`]{#job-control-hash-one explanation="A hash prefix is not the introduced syntax for a shell job ID."}

@@ -24,8 +24,7 @@ $ pgrep -a cat
 
 Both processes execute the same program, but they can have different input streams, memory contents, credentials, working directories, and lifetimes. A PID identifies one live process at a time and can later be reused after that process exits.
 
-:::single-choice{#process-details-program-versus-process}
-What distinguishes two running instances of the same program?
+:::single-choice{#process-details-program-versus-process} What distinguishes two running instances of the same program?
 
 ::option[The executable file must be copied once for each instance.]{#process-details-copied-executable explanation="Multiple processes can map and share the same executable file's code pages without duplicating the file."}
 ::option[Only one instance can have memory or open files.]{#process-details-one-instance-resources explanation="Every process can have its own memory mappings and file-descriptor table."}
@@ -46,8 +45,7 @@ The kernel maintains the information required to schedule and control each proce
 
 Some underlying resources can be shared. Related processes may share mapped memory, and threads in one process share an address space and many process-wide resources. A process therefore provides isolation boundaries without implying that every byte or kernel object is physically private.
 
-:::single-choice{#process-details-kernel-state}
-Which component maintains scheduling and credential state for Linux processes?
+:::single-choice{#process-details-kernel-state} Which component maintains scheduling and credential state for Linux processes?
 
 ::option[The kernel.]{#process-details-kernel .correct explanation="The kernel tracks process state and applies scheduling, memory, signal, and access-control rules."}
 ::option[The executable file's directory.]{#process-details-directory explanation="A directory stores a name-to-inode mapping and does not schedule running processes."}
@@ -60,8 +58,7 @@ Runnable threads compete for CPU time. The kernel scheduler chooses which thread
 
 Each process normally sees a virtual address space. The kernel and hardware map virtual addresses to physical memory or other backing storage, enforce protections, and can share pages where appropriate. A memory figure in `ps` or `top` is therefore not automatically the amount of unique physical RAM attributable to that process.
 
-:::single-choice{#process-details-scheduler-role}
-What does the Linux scheduler select?
+:::single-choice{#process-details-scheduler-role} What does the Linux scheduler select?
 
 ::option[Which runnable thread executes on an available CPU.]{#process-details-runnable-thread .correct explanation="Scheduling policy chooses among runnable execution contexts and assigns CPU time."}
 ::option[Which file owner is recorded when a disk is formatted.]{#process-details-format-owner explanation="Filesystem ownership is unrelated to CPU scheduling."}
@@ -72,8 +69,7 @@ What does the Linux scheduler select?
 
 When a process exits, the kernel releases most of its private resources, closes remaining descriptors, and records termination information for its parent. A small process-table record can remain as a zombie until the parent retrieves the exit status. This means “the process has finished executing” and “every trace has disappeared from the process table” are not always simultaneous.
 
-:::single-choice{#process-details-exit-status}
-Why can an exited process briefly remain as a zombie?
+:::single-choice{#process-details-exit-status} Why can an exited process briefly remain as a zombie?
 
 ::option[It is still executing instructions with full memory allocated.]{#process-details-zombie-running explanation="A zombie has completed execution and no longer retains a normal running address space."}
 ::option[Its parent has not yet collected the recorded termination status.]{#process-details-parent-wait .correct explanation="The kernel retains minimal exit information until the parent performs a wait operation."}

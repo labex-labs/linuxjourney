@@ -28,8 +28,7 @@ Verwende `-F`, wenn das Muster als feste Zeichenfolge statt als regulärer Ausdr
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-Welcher Befehl durchsucht `products.txt` nach dem wörtlichen Text `price: $5.00`, ohne Musterzeichen als Syntax eines regulären Ausdrucks zu behandeln?
+:::single-choice{#grep-fixed-string} Welcher Befehl durchsucht `products.txt` nach dem wörtlichen Text `price: $5.00`, ohne Musterzeichen als Syntax eines regulären Ausdrucks zu behandeln?
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` wählt die Suche nach festen Zeichenfolgen; einfache Anführungszeichen schützen das Dollarzeichen vor der Shell-Erweiterung."}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` aktiviert erweiterte reguläre Ausdrücke, in denen `$` und `.` eine besondere statt einer wörtlichen Bedeutung besitzen."}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 Der Backslash macht den Punkt wörtlich; ein ungeschütztes `.` steht in einem regulären Ausdruck für ein beliebiges einzelnes Zeichen.
 
-:::single-choice{#grep-literal-txt-suffix}
-Welcher erweiterte reguläre Ausdruck passt auf Zeilen, die mit der wörtlichen Endung `.txt` enden?
+:::single-choice{#grep-literal-txt-suffix} Welcher erweiterte reguläre Ausdruck passt auf Zeilen, die mit der wörtlichen Endung `.txt` enden?
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="Der Punkt ist nicht geschützt und steht daher für ein beliebiges Zeichen vor `txt`, nicht speziell für einen wörtlichen Punkt."}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` passt auf einen wörtlichen Punkt; `$` verankert den Treffer am Zeilenende."}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 Du kannst `-e` mehrfach verwenden, um Zeilen auszuwählen, die zu einem der angegebenen Muster passen. Mit `-f patterns.txt` liest du ein Muster pro Zeile aus einer Datei.
 
-:::single-choice{#grep-hyphen-pattern}
-Welcher Befehl durchsucht `settings.conf` nach dem Muster `-v`, statt es als Option zu interpretieren?
+:::single-choice{#grep-hyphen-pattern} Welcher Befehl durchsucht `settings.conf` nach dem Muster `-v`, statt es als Option zu interpretieren?
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="Anführungszeichen schützen vor Shell-Erweiterungen, doch `grep` kann das entstandene Argument `-v` weiterhin als Option zur Umkehrung der Auswahl interpretieren."}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="Dieser Befehl aktiviert die umgekehrte Auswahl und stellt `settings.conf` nicht auf die verlangte Weise zugleich als Muster und Eingabe bereit."}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` zählt ausgewählte Zeilen, nicht sämtliche Treffer innerhalb dieser Zeilen. Eine Zeile mit `fox fox` trägt eins zur Anzahl bei. Benötigst du mit GNU `grep` ausdrücklich nicht überlappende einzelne Treffer, ist `grep -o PATTERN | wc -l` eine mögliche Pipeline.
 
-:::single-choice{#grep-count-lines}
-`data.txt` enthält eine Zeile mit `error error` und zwei Zeilen ohne Treffer. Was meldet `grep -c 'error' data.txt`?
+:::single-choice{#grep-count-lines} `data.txt` enthält eine Zeile mit `error error` und zwei Zeilen ohne Treffer. Was meldet `grep -c 'error' data.txt`?
 
 ::option[`2`, weil das Wort zweimal in einer Zeile vorkommt.]{#grep-count-occurrences explanation="`-c` zählt ausgewählte Zeilen und nicht einzelne Treffer innerhalb einer Zeile."}
 ::option[`1`, weil genau eine Zeile passt.]{#grep-count-one-line .correct explanation="Die eine Zeile wird einmal ausgewählt, obwohl das Muster darin zweimal vorkommt."}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 Diagnosen wie Berechtigungsfehler fließen nach stderr und sind keine durchsuchte Eingabe. Grenze den Suchpfad ein und verstehe Berechtigungen, bevor du den Zugriff erhöhst.
 
-:::single-choice{#grep-pipeline-input}
-Welche Eingabe durchsucht `grep` in `generate-report | grep 'failed'`?
+:::single-choice{#grep-pipeline-input} Welche Eingabe durchsucht `grep` in `generate-report | grep 'failed'`?
 
 ::option[Eine Datei namens `generate-report` im aktuellen Verzeichnis.]{#grep-report-file explanation="Das Wort links wird als Befehl ausgeführt und nicht als Dateioperand an `grep` übergeben."}
 ::option[Den von `generate-report` erzeugten stdout-Strom.]{#grep-report-stdout .correct explanation="Die Pipe verbindet stdout des Erzeugers mit stdin von `grep`."}

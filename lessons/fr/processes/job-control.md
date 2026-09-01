@@ -25,8 +25,7 @@ Le shell rend l’invite sans attendre la fin de la tâche. L’état en arrièr
 
 Une tâche en arrière-plan qui tente de lire le terminal de contrôle est normalement arrêtée par `SIGTTIN`, car elle n’est pas le groupe de processus au premier plan du terminal.
 
-:::single-choice{#job-control-ampersand-effect}
-Que demande un `&` final à un shell interactif ?
+:::single-choice{#job-control-ampersand-effect} Que demande un `&` final à un shell interactif ?
 
 ::option[Garantir que la tâche survit à la déconnexion et au redémarrage du système.]{#job-control-survive-restart explanation="L’exécution en arrière-plan ne fournit ni supervision durable ni persistance après redémarrage."}
 ::option[Exécuter le pipeline comme tâche en arrière-plan sans attendre avant l’invite suivante.]{#job-control-background-job .correct explanation="Le shell démarre la tâche de manière asynchrone et reste disponible pour d’autres commandes."}
@@ -48,8 +47,7 @@ Le nombre entre crochets est un identifiant de tâche du shell, et non un PID. L
 
 Comme la table des tâches appartient à un shell, celui d’un autre terminal ne peut normalement ni répertorier ni viser ces tâches avec ses propres commandes intégrées `jobs`, `fg` ou `bg`.
 
-:::single-choice{#job-control-jobs-scope}
-Que répertorie la commande intégrée `jobs` ?
+:::single-choice{#job-control-jobs-scope} Que répertorie la commande intégrée `jobs` ?
 
 ::option[Les tâches suivies par la session du shell actuel.]{#job-control-jobs-current-shell .correct explanation="Les identifiants et l’état des tâches sont conservés par le shell interactif qui a lancé ou adopté ces tâches."}
 ::option[Chaque processus actuellement visible sur le système.]{#job-control-jobs-all-processes explanation="Les outils tels que `ps` examinent les processus de tout le système ; la table des tâches du shell est plus étroite."}
@@ -74,8 +72,7 @@ $ bg
 
 `bg` envoie un signal de reprise et laisse la tâche hors du premier plan du terminal. Cette commande ne sert qu’à une tâche arrêtée ; une commande déjà en cours d’exécution en arrière-plan n’a pas besoin d’être reprise.
 
-:::single-choice{#job-control-bg-purpose}
-Que fait `bg %3` à la tâche 3 arrêtée ?
+:::single-choice{#job-control-bg-purpose} Que fait `bg %3` à la tâche 3 arrêtée ?
 
 ::option[La commande déplace ses fichiers dans un répertoire nommé `bg`.]{#job-control-bg-files explanation="`bg` est une commande intégrée de contrôle des tâches et ne déplace pas d’objets du système de fichiers."}
 ::option[Elle la reprend comme tâche en arrière-plan.]{#job-control-bg-continue .correct explanation="Le shell reprend la tâche arrêtée sélectionnée sans lui attribuer le premier plan du terminal."}
@@ -92,8 +89,7 @@ $ fg %1
 
 Sans opérande, `fg` sélectionne normalement la tâche actuelle marquée par `+`. Une tâche arrêtée est reprise lorsqu’elle passe au premier plan.
 
-:::single-choice{#job-control-fg-effect}
-Que fait `fg %1` ?
+:::single-choice{#job-control-fg-effect} Que fait `fg %1` ?
 
 ::option[Elle attribue le premier plan du terminal à la tâche 1 et l’attend.]{#job-control-fg-foreground .correct explanation="Le shell place la tâche sélectionnée au premier plan afin qu’elle puisse interagir avec le terminal."}
 ::option[Elle transforme la tâche 1 en PID 1.]{#job-control-fg-pid-one explanation="Un identifiant de tâche du shell ne remplace ni ne réécrit les identifiants de processus."}
@@ -110,8 +106,7 @@ $ kill -TERM %1
 
 Cela envoie normalement le signal au groupe de processus de la tâche plutôt qu’à un seul membre du pipeline. Examinez d’abord la tâche sélectionnée et employez `SIGTERM` avant d’envisager une escalade forcée. Les spécifications de tâches appartiennent à la syntaxe du shell ; les scripts et les outils externes emploient plus couramment des PID ou des identifiants de groupes de processus vérifiés.
 
-:::single-choice{#job-control-job-specification}
-Quel opérande désigne la tâche 1 du shell plutôt que le processus de PID 1 ?
+:::single-choice{#job-control-job-specification} Quel opérande désigne la tâche 1 du shell plutôt que le processus de PID 1 ?
 
 ::option[`1`]{#job-control-plain-one explanation="Un opérande numérique simple de `kill` est normalement interprété comme un PID."}
 ::option[`#1`]{#job-control-hash-one explanation="Le préfixe dièse n’est pas la syntaxe présentée pour un identifiant de tâche du shell."}

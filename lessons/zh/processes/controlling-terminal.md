@@ -27,8 +27,7 @@ $ tty
 
 该结果与更广义的控制终端概念相关，但并不完全相同。进程可以重定向标准输入或输出，同时仍处于拥有控制终端的会话中。
 
-:::single-choice{#controlling-terminal-pts-meaning}
-`pts/3` 这样的名称通常标识什么？
+:::single-choice{#controlling-terminal-pts-meaning} `pts/3` 这样的名称通常标识什么？
 
 ::option[分配给第三个 shell 的进程 ID。]{#controlling-terminal-pts-pid explanation="PID 是数值进程元数据，不会表示为 `pts/N` 设备名称。"}
 ::option[交互式会话使用的伪终端设备。]{#controlling-terminal-pts-device .correct explanation="`/dev/pts` 下的目录项是终端模拟器和远程会话常用的伪终端从设备。"}
@@ -41,8 +40,7 @@ $ tty
 
 例如，按下 `Ctrl-C` 通常会让终端驱动程序向前台进程组发送 `SIGINT`。尝试从终端读取的后台组可能收到 `SIGTTIN`。这些规则让 shell 能够协调前台和后台作业。
 
-:::single-choice{#controlling-terminal-ctrl-c-target}
-终端通常会把 `Ctrl-C` 生成的信号发送给哪些进程？
+:::single-choice{#controlling-terminal-ctrl-c-target} 终端通常会把 `Ctrl-C` 生成的信号发送给哪些进程？
 
 ::option[当前用户拥有的每个进程。]{#controlling-terminal-ctrl-c-user explanation="终端生成的信号仅限于前台进程组，而不是用户的所有进程。"}
 ::option[无论前台作业是什么都只发送给登录 shell。]{#controlling-terminal-ctrl-c-shell explanation="另一个作业位于前台时，该作业的进程组才是通常的信号目标。"}
@@ -61,8 +59,7 @@ $ ps -o pid,tty,stat,cmd
 
 许多服务进程没有控制终端，因为服务管理器会独立于交互式登录会话启动它们。不过，缺少 TTY 本身并不能证明进程是守护进程，后台 shell 作业也仍然可以拥有控制终端。
 
-:::single-choice{#controlling-terminal-question-mark}
-`ps` 的 `TTY` 列中，`?` 通常表示什么？
+:::single-choice{#controlling-terminal-question-mark} `ps` 的 `TTY` 列中，`?` 通常表示什么？
 
 ::option[进程没有控制终端。]{#controlling-terminal-no-tty .correct explanation="没有控制终端与进程关联时，通常用问号显示。"}
 ::option[终端正忙，无法读取。]{#controlling-terminal-busy-tty explanation="该标记表示缺少控制终端，而不是临时设备争用。"}
@@ -75,8 +72,7 @@ $ ps -o pid,tty,stat,cmd
 
 因此，关闭终端并不保证从中启动的每个命令都会退出。需要确认持久性时，应检查进程的会话、信号处理、重定向和监督程序。
 
-:::single-choice{#controlling-terminal-close-effect}
-为什么“关闭终端始终会终止从中启动的每个进程”这一说法不准确？
+:::single-choice{#controlling-terminal-close-effect} 为什么“关闭终端始终会终止从中启动的每个进程”这一说法不准确？
 
 ::option[Linux 终端关闭时从不生成任何信号。]{#controlling-terminal-never-signals explanation="挂断信号确实是终端和会话行为，但结果并不保证一定终止。"}
 ::option[只有带数值 PID 的进程才能收到挂断信号。]{#controlling-terminal-pid-hangup explanation="所有普通进程都有数值 PID；这并不决定它们是否能在终端关闭后存活。"}

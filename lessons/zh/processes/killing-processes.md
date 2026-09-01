@@ -28,8 +28,7 @@ $ kill -TERM 12445
 
 `SIGTERM` 的默认动作是终止进程，但程序可以捕获或忽略它。设计良好的服务可以通过信号处理程序停止接收新任务、保存适当的状态，并释放应用程序资源。不过，这只是一种可能性，并不保证清理工作一定能立即完成或成功完成。
 
-:::single-choice{#killing-processes-default-signal}
-`kill PID` 默认请求发送哪个信号？
+:::single-choice{#killing-processes-default-signal} `kill PID` 默认请求发送哪个信号？
 
 ::option[`SIGKILL`]{#killing-processes-default-kill explanation="必须显式选择这个不可捕获的强制终止信号。"}
 ::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="未提供其他信号操作数时，`kill` 会发送标准的终止请求。"}
@@ -48,8 +47,7 @@ $ ps -p 12445 -o pid,ppid,user,lstart,stat,cmd
 
 在凭据规则允许的范围内，你可以向自己拥有的进程发送信号。向其他用户的进程发送信号通常需要相应权限。在使用范围宽泛的按名称匹配命令前，必须先检查每一个匹配结果。
 
-:::single-choice{#killing-processes-pid-reuse}
-为什么应该在发送信号前立即检查 PID？
+:::single-choice{#killing-processes-pid-reuse} 为什么应该在发送信号前立即检查 PID？
 
 ::option[进程每读取一次文件，PID 就会改变。]{#killing-processes-pid-read explanation="一个活动进程在其整个生命周期中通常保持同一个 PID。"}
 ::option[先前的进程退出后，内核可以重复使用它的 PID。]{#killing-processes-pid-reused .correct explanation="记住的数字 PID 之后可能会指向另一个活动进程。"}
@@ -66,8 +64,7 @@ $ kill -0 12445
 
 命令成功表示此刻存在使用该 PID 的进程，并且调用者有权向它发送信号。失败的含义并不唯一：进程可能不存在，也可能是调用者没有权限。应检查错误信息和退出状态，不要把每一次失败都理解成“进程未运行”。这也只是瞬时检查，无法消除之后发生 PID 复用竞态的可能性。
 
-:::single-choice{#killing-processes-signal-zero}
-`kill -0 PID` 成功时，能够确定当下的什么情况？
+:::single-choice{#killing-processes-signal-zero} `kill -0 PID` 成功时，能够确定当下的什么情况？
 
 ::option[进程已完成全部清理并退出。]{#killing-processes-zero-exited explanation="成功表示存在可发送信号的活动目标，而不是进程已经终止。"}
 ::option[该进程将永久保留这个 PID。]{#killing-processes-zero-permanent explanation="这项检查只反映瞬时状态，进程退出后 PID 仍可能被复用。"}
@@ -86,8 +83,7 @@ $ kill -KILL 12445
 
 其他信号的意义取决于接收程序的约定。`SIGHUP` 经常用于请求重新加载配置，但有些程序仍保留它默认的终止行为。`SIGSTOP` 会在不清理的情况下暂停进程，而 `SIGCONT` 会让已暂停的进程继续运行。
 
-:::single-choice{#killing-processes-kill-tradeoff}
-`SIGKILL` 在实际操作中的主要缺点是什么？
+:::single-choice{#killing-processes-kill-tradeoff} `SIGKILL` 在实际操作中的主要缺点是什么？
 
 ::option[只有进程所有者才能处理它。]{#killing-processes-kill-owner-handler explanation="任何目标进程都无法为 `SIGKILL` 安装处理程序。"}
 ::option[它只会暂停进程，永远不会终止进程。]{#killing-processes-kill-pauses explanation="`SIGSTOP` 用于暂停，而 `SIGKILL` 用于终止。"}

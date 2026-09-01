@@ -20,8 +20,7 @@ La terminal es la ventana o aplicación donde escribes, mientras que la shell es
 
 La shell resulta útil porque es rápida, se puede automatizar con scripts y está disponible en casi todos los sistemas Linux. A medida que aprendas más órdenes, podrás combinarlas para inspeccionar archivos, gestionar directorios, buscar texto, instalar software y automatizar tareas repetitivas.
 
-:::single-choice{#distinguish-shell-and-terminal}
-¿Qué afirmación describe correctamente la relación entre una terminal y una shell?
+:::single-choice{#distinguish-shell-and-terminal} ¿Qué afirmación describe correctamente la relación entre una terminal y una shell?
 
 ::option[La terminal proporciona la ventana y la shell se ejecuta en su interior.]{#shell-runs-in-terminal .correct explanation="La terminal es la interfaz que utilizas y la shell es el programa que procesa órdenes en su interior."}
 ::option[La terminal acepta las órdenes y la shell solo muestra el resultado.]{#terminal-accepts-commands explanation="Esta opción invierte sus funciones. La terminal proporciona la interfaz, mientras que la shell acepta y ejecuta las órdenes."}
@@ -40,8 +39,7 @@ pete@icebox:/home/pete $
 
 El símbolo `$` indica que la shell está lista para aceptar la entrada de un usuario normal. No debes escribir este símbolo al introducir órdenes; lo muestra la propia shell. Si ves `#` en su lugar, normalmente estás trabajando como root, un usuario con más poder y también más riesgos.
 
-:::single-choice{#interpret-dollar-prompt}
-¿Qué indica el símbolo `$` al final del prompt del ejemplo?
+:::single-choice{#interpret-dollar-prompt} ¿Qué indica el símbolo `$` al final del prompt del ejemplo?
 
 ::option[La shell se ejecuta con los privilegios del usuario root.]{#root-user-ready explanation="Un prompt de root suele terminar en `#`, no en `$`. El acceso como root conlleva más poder y también más riesgos."}
 ::option[La shell espera la entrada de un usuario normal.]{#normal-user-ready .correct explanation="El símbolo `$` identifica un prompt de usuario normal e indica que la shell está lista para recibir una orden."}
@@ -56,8 +54,7 @@ command options arguments
 
 Por ejemplo, en `echo Hello World`, `echo` es la orden y `Hello World` es el texto que se le pasa.
 
-:::single-choice{#identify-command-name}
-En `echo Hello World`, ¿qué parte es el nombre de la orden?
+:::single-choice{#identify-command-name} En `echo Hello World`, ¿qué parte es el nombre de la orden?
 
 ::option[`Hello`]{#hello-command explanation="`Hello` aparece después del nombre de la orden, por lo que forma parte del texto que se pasa a `echo`."}
 ::option[`World`]{#world-command explanation="`World` también es texto que se pasa a `echo`, no el nombre de la orden que se ejecuta."}
@@ -84,8 +81,7 @@ Hello from Bash
 
 Las comillas son útiles cuando quieres que la shell trate varias palabras como un único fragmento de texto.
 
-:::single-choice{#group-words-with-quotes}
-¿Qué orden hace que la shell trate `Hello from Bash` como un único fragmento de texto entre comillas?
+:::single-choice{#group-words-with-quotes} ¿Qué orden hace que la shell trate `Hello from Bash` como un único fragmento de texto entre comillas?
 
 ::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="Las comillas agrupan las tres palabras en un único argumento que se pasa a `echo`."}
 ::option[`echo Hello from Bash`]{#unquoted-words explanation="Esta orden muestra las mismas palabras, pero la shell las trata como argumentos separados porque no están entre comillas."}

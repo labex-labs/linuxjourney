@@ -22,8 +22,7 @@ $ iostat -xz 1
 
 一般的な実装では、最初のレポートが起動後の平均を含み、それ以降が各区間を表します。`-x` は拡張フィールドを追加し、`-z` は非活動デバイスを省略します。正常な時間帯と問題のある時間帯を捉えるため、複数の区間を観測してください。
 
-:::single-choice{#iostat-first-report}
-`iostat` の最初のレポートは一般に何を表しますか？
+:::single-choice{#iostat-first-report} `iostat` の最初のレポートは一般に何を表しますか？
 
 ::option[コマンドの最後の1秒だけに発生した操作。]{#iostat-final-second explanation="これは最初の累積レポートを表す説明ではありません。"}
 ::option[システム起動後の活動平均。]{#iostat-since-boot .correct explanation="後続レポートは通常区間ごとなので、最初のレポートは別に解釈する必要があります。"}
@@ -34,8 +33,7 @@ $ iostat -xz 1
 
 CPU セクションには通常、ユーザー（`%user`）、システム（`%system`）、アイドル（`%idle`）、I/O 待ち（`%iowait`）、仮想マシンの steal（`%steal`）時間があります。I/O 待ちは、未完了の I/O 要求が存在する間の CPU アイドル時間であり、ディスクがビジーである割合ではありません。
 
-:::single-choice{#iostat-iowait-meaning}
-`%iowait` は何を表しますか？
+:::single-choice{#iostat-iowait-meaning} `%iowait` は何を表しますか？
 
 ::option[すでに使用されているディスク容量の割合。]{#iostat-capacity explanation="ファイルシステム容量と CPU 時間は別の測定値です。"}
 ::option[I/O 要求が未完了である間の CPU アイドル時間。]{#iostat-iowait-cpu .correct explanation="これは CPU 時間の分類であり、それだけでデバイスを特定できません。"}
@@ -53,8 +51,7 @@ CPU セクションには通常、ユーザー（`%user`）、システム（`%s
 
 高い `%util` は単純な直列デバイスの飽和を示す場合がありますが、並列ストレージ、アレイ、仮想デバイスの性能容量へそのまま換算できません。遅延をデバイス設計、ワークロードパターン、サービス目標と比較してください。
 
-:::single-choice{#iostat-await-purpose}
-平均 I/O 要求遅延と最も直接関連するフィールドはどれですか？
+:::single-choice{#iostat-await-purpose} 平均 I/O 要求遅延と最も直接関連するフィールドはどれですか？
 
 ::option[デバイス名。]{#iostat-device-name explanation="名前はデバイスを識別しますが、要求時間は測定しません。"}
 ::option[`await`]{#iostat-await .correct explanation="Await はキュー待ちとサービス時間を含む要求の平均時間を反映します。"}
@@ -72,8 +69,7 @@ $ findmnt
 
 次に `iostat` の区間を、アプリケーション応答時間、データベースまたはファイルシステム指標、プロセス単位の I/O と照合します。Device mapper、RAID、コンテナ、ネットワーク接続ストレージは層を追加し、それぞれ固有のツールが必要になる場合があります。
 
-:::single-choice{#iostat-high-util-conclusion}
-デバイスで高い `%util` を確認した後はどうすべきですか？
+:::single-choice{#iostat-high-util-conclusion} デバイスで高い `%util` を確認した後はどうすべきですか？
 
 ::option[すべてのファイルシステムで空き容量がないと仮定する。]{#iostat-assume-full explanation="ビジー時間はファイルシステム容量を報告しません。"}
 ::option[マウントされたワークロードを特定する前にファイルを削除する。]{#iostat-delete-first explanation="削除は状態変更を伴う操作であり、I/O ボトルネックの証明とは無関係です。"}

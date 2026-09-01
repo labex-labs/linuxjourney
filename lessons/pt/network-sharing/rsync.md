@@ -22,8 +22,7 @@ $ rsync -a -- source/ destination/
 
 A barra em `source/` significa “copie o conteúdo deste diretório”. Sem ela, `rsync -a source destination/` cria ou atualiza `destination/source`. Sempre preveja os caminhos ao mudar a barra.
 
-:::single-choice{#rsync-source-trailing-slash}
-O que significa a barra final em `rsync -a source/ destination/`?
+:::single-choice{#rsync-source-trailing-slash} O que significa a barra final em `rsync -a source/ destination/`?
 
 ::option[Excluir a origem após uma transferência bem-sucedida.]{#rsync-delete-source explanation="Remover a origem exige outra opção e política explícita."}
 ::option[Copiar o conteúdo de `source` para o destino.]{#rsync-copy-contents .correct explanation="Remover a barra muda o layout de nível superior no destino."}
@@ -36,8 +35,7 @@ O modo archive, `-a`, equivale a um conjunto de opções recursivas e de preserv
 
 O modo archive não inclui a preservação de hard links, ACLs nem atributos estendidos; eles normalmente exigem `-H`, `-A` e `-X`. Ele também não cria versões históricas por si só.
 
-:::single-choice{#rsync-archive-limit}
-Qual metadado não está incluído em `-a` sozinho?
+:::single-choice{#rsync-archive-limit} Qual metadado não está incluído em `-a` sozinho?
 
 ::option[Relações de hard links.]{#rsync-hard-links .correct explanation="Preservar hard links exige a opção `-H`."}
 ::option[Recursão de diretórios.]{#rsync-archive-recursion explanation="Archive inclui percurso recursivo."}
@@ -54,8 +52,7 @@ $ rsync -a --dry-run --itemize-changes -- source/ destination/
 
 Uma execução de teste prevê ações usando a varredura atual; ela não pode garantir que os arquivos não mudarão antes do comando real. Salve e revise o comando exato e só o execute sem `--dry-run` depois de confirmar os dois pontos de extremidade.
 
-:::single-choice{#rsync-dry-run-purpose}
-O que `--dry-run --itemize-changes` oferece?
+:::single-choice{#rsync-dry-run-purpose} O que `--dry-run --itemize-changes` oferece?
 
 ::option[Um snapshot permanente em outro dispositivo.]{#rsync-dry-backup explanation="O dry run não copia dados nem cria retenção independente."}
 ::option[Garantia de que a origem não mudará depois.]{#rsync-dry-lock explanation="A previsão não bloqueia a árvore."}
@@ -73,8 +70,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 Rsync moderno costuma usar SSH nessa forma, mas confirme shell remoto, chave do host, privilégios e disponibilidade do rsync remoto. `-z` pode ajudar dados compressíveis em link limitado, mas desperdiçar CPU em dados já comprimidos.
 
-:::single-choice{#rsync-pull-direction}
-Qual ordem puxa dados remotos para um diretório local?
+:::single-choice{#rsync-pull-direction} Qual ordem puxa dados remotos para um diretório local?
 
 ::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="Essa ordem envia conteúdo local ao destino remoto."}
 ::option[`rsync --delete host local`]{#rsync-missing-path explanation="Isso não expressa o caminho remoto mostrado e acrescenta opção destrutiva."}
@@ -87,8 +83,7 @@ Qual ordem puxa dados remotos para um diretório local?
 
 Depois da execução real, examine o status de saída e os logs, compare as quantidades de arquivos e os metadados esperados e teste um conteúdo ou uma restauração representativa. A sincronização com rsync, por si só, replica exclusões ou corrupções indesejadas e não constitui uma estratégia completa de backup.
 
-:::single-choice{#rsync-delete-effect}
-O que `--delete` pode fazer durante a sincronização?
+:::single-choice{#rsync-delete-effect} O que `--delete` pode fazer durante a sincronização?
 
 ::option[Criptografar todo arquivo com a chave do host SSH.]{#rsync-delete-encrypt explanation="Política de exclusão não é criptografia."}
 ::option[Impedir todas as mudanças no destino.]{#rsync-delete-readonly explanation="Ela autoriza mudanças adicionais no destino."}

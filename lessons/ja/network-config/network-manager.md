@@ -22,8 +22,7 @@ $ nmcli connection show
 $ nmcli connection show --active
 ```
 
-:::single-choice{#networkmanager-device-profile}
-NetworkManager の接続プロファイルとは何ですか？
+:::single-choice{#networkmanager-device-profile} NetworkManager の接続プロファイルとは何ですか？
 
 ::option[ネットワークカードにはんだ付けされた物理コネクター。]{#networkmanager-physical-connector explanation="それはハードウェアであり、NetworkManager のプロファイルではありません。"}
 ::option[デバイス上で有効化できる、保存済みの設定一式。]{#networkmanager-stored-settings .correct explanation="プロファイルは、カーネルのインターフェースオブジェクトとは別に永続設定を保持します。"}
@@ -41,8 +40,7 @@ $ nmcli connection show 'Wired connection 1'
 
 プロファイル設定、実行時の DHCP 結果、カーネル状態は異なる場合があります。`ip address`、`ip route`、リゾルバーとも比較してください。非推奨の `nm-tool` を現代的な作業手順の基盤にすべきではありません。
 
-:::single-choice{#networkmanager-active-command}
-有効な NetworkManager プロファイルを一覧表示するコマンドはどれですか？
+:::single-choice{#networkmanager-active-command} 有効な NetworkManager プロファイルを一覧表示するコマンドはどれですか？
 
 ::option[`nmcli device delete --all`]{#networkmanager-delete-all explanation="これは調査用コマンドではなく、破壊的な意図を示しています。"}
 ::option[`nmcli connection show --active`]{#networkmanager-show-active .correct explanation="保存済み接続を、現在有効化されているものだけに絞って表示します。"}
@@ -60,8 +58,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 変更操作は永続的なプロファイルデータを書き換えます。有効化すると稼働中のアドレス、ルート、DNS が置き換わる可能性があります。リモート変更では、コンソールアクセス、保存した元設定、独立した時間指定のロールバックが必要です。変更対象の接続に、その接続自身の復旧コマンドを運ばせないでください。
 
-:::single-choice{#networkmanager-modify-versus-up}
-`connection modify` と `connection up` の違いは何ですか？
+:::single-choice{#networkmanager-modify-versus-up} `connection modify` と `connection up` の違いは何ですか？
 
 ::option[modify はホストを再起動し、up は DNS のソースコードを編集する。]{#networkmanager-reboot-source explanation="どちらもコマンドの説明として正しくありません。"}
 ::option[modify はプロファイル設定を変更し、up はプロファイルを有効化する。]{#networkmanager-change-activate .correct explanation="永続設定と実行時の有効化は、関連していますが別々の操作です。"}
@@ -72,8 +69,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 有効化後は、プロファイル状態、カーネルのアドレスとルート、DNS、両方のアドレスファミリー、目的のアプリケーションを検証します。Wi-Fi、VPN、802.1X、モバイル用のプロファイルには秘密情報が含まれる場合があります。プロファイルの権限を制限し、共有ログやシェル記録に秘密フィールドを出力しないでください。
 
-:::single-choice{#networkmanager-verification}
-NetworkManager が「接続済み」と報告する以上の証拠になるものはどれですか？
+:::single-choice{#networkmanager-verification} NetworkManager が「接続済み」と報告する以上の証拠になるものはどれですか？
 
 ::option[プロファイル名に Wired という単語が含まれること。]{#networkmanager-name-proof explanation="ラベルから、経路やサービスの健全性は確認できません。"}
 ::option[端末ウィンドウが開いたままであること。]{#networkmanager-terminal-open explanation="部分的なネットワーク障害があっても、端末が残る場合があります。"}

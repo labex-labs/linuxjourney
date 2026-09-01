@@ -27,8 +27,7 @@ inode에는 일반적으로 디렉터리 항목의 이름이 저장되지 않습
 
 `ctime`은 inode 상태 변경 시간이며 반드시 파일 생성 시간은 아닙니다. 별도의 생성 타임스탬프는 선택 사항이며 제공되지 않을 수 있습니다.
 
-:::single-choice{#inodes-name-location}
-일반 파일의 경로 이름 구성 요소는 보통 어디에서 inode 번호와 연결됩니까?
+:::single-choice{#inodes-name-location} 일반 파일의 경로 이름 구성 요소는 보통 어디에서 inode 번호와 연결됩니까?
 
 ::option[프로세스 스케줄러입니다.]{#inodes-scheduler-name explanation="CPU 스케줄링 상태는 파일 시스템 경로 조회를 구현하지 않습니다."}
 ::option[디렉터리 항목입니다.]{#inodes-directory-entry .correct explanation="디렉터리는 해당 파일 시스템 안에서 이름을 inode 번호에 매핑합니다."}
@@ -51,8 +50,7 @@ $ stat path
 
 inode 번호는 특정 시점의 한 파일 시스템 안에서만 고유합니다. 다른 파일 시스템에 같은 번호가 있을 수 있고 inode가 해제된 뒤 번호를 다시 사용할 수도 있습니다. 객체를 안정적으로 식별하려면 inode 번호만 사용하지 말고 파일 시스템 식별 정보와 inode 번호를 함께 사용하십시오.
 
-:::single-choice{#inodes-number-scope}
-inode 번호는 어느 범위에서 객체 식별자입니까?
+:::single-choice{#inodes-number-scope} inode 번호는 어느 범위에서 객체 식별자입니까?
 
 ::option[전 세계 모든 리눅스 시스템에서 영원히 고유합니다.]{#inodes-global-forever explanation="inode 할당은 파일 시스템에 국한되며 식별자를 다시 사용할 수 있습니다."}
 ::option[특정 시점의 한 파일 시스템 안입니다.]{#inodes-one-filesystem .correct explanation="다른 파일 시스템에서 같은 번호를 사용할 수 있고 해제된 inode 번호는 나중에 재사용될 수 있습니다."}
@@ -65,8 +63,7 @@ inode 번호는 어느 범위에서 객체 식별자입니까?
 
 마지막 디렉터리 항목을 제거한 뒤에도 열린 파일은 마지막 프로세스 참조가 닫힐 때까지 할당된 상태로 남습니다. 링크 수가 0이어도 파일 디스크립터를 통해 계속 접근할 수 있습니다. 이 때문에 열린 대용량 로그를 삭제해도 `df` 사용량이 즉시 줄지 않을 수 있습니다.
 
-:::single-choice{#inodes-unlinked-open-file}
-링크가 해제된 파일의 리소스는 일반적으로 언제 해제됩니까?
+:::single-choice{#inodes-unlinked-open-file} 링크가 해제된 파일의 리소스는 일반적으로 언제 해제됩니까?
 
 ::option[하드 링크 이름 하나를 제거한 직후입니다.]{#inodes-one-link-removed explanation="다른 하드 링크나 열린 참조가 객체를 유지할 수 있습니다."}
 ::option[전체 파일 시스템을 다시 포맷할 때만 해제됩니다.]{#inodes-reformat-only explanation="일반적인 링크 해제와 닫기 작업이 사용되지 않는 inode와 블록을 회수합니다."}
@@ -83,8 +80,7 @@ $ df -i
 
 여유 inode가 없으면 `df -h`에 여유 블록이 표시되어도 새 파일 생성이 실패할 수 있습니다. 할당 방식은 서로 다릅니다. 일부 파일 시스템은 생성 시 inode 구조를 미리 할당하지만 다른 파일 시스템은 메타데이터를 동적으로 관리하고 inode 용량을 다르게 보고할 수 있습니다.
 
-:::single-choice{#inodes-df-i-purpose}
-파일 시스템이 inode 회계를 제공할 때 `df -i`가 보고하는 것은 무엇입니까?
+:::single-choice{#inodes-df-i-purpose} 파일 시스템이 inode 회계를 제공할 때 `df -i`가 보고하는 것은 무엇입니까?
 
 ::option[inode 순서로 모든 파일의 내용을 보고합니다.]{#inodes-df-i-content explanation="df는 전체 파일 시스템 통계를 보고하며 파일 내용을 읽지 않습니다."}
 ::option[사용 중인 inode와 사용 가능한 inode 용량입니다.]{#inodes-df-i-capacity .correct explanation="inode 뷰는 데이터 블록과 별개인 메타데이터 객체 고갈을 진단하는 데 도움을 줍니다."}
@@ -97,8 +93,7 @@ $ df -i
 
 내부 매핑이 중요할 때는 파일 시스템별 진단 도구를 읽기 전용 또는 문서화된 모드로만 사용하십시오. 일반적인 관리에는 `stat`, `find -inum`, `df -i` 및 링크를 인식하는 도구가 더 안전한 추상화를 제공합니다.
 
-:::single-choice{#inodes-layout-portability}
-모든 inode에 하나의 고정 포인터 레이아웃이 있다고 가정해서는 안 되는 이유는 무엇입니까?
+:::single-choice{#inodes-layout-portability} 모든 inode에 하나의 고정 포인터 레이아웃이 있다고 가정해서는 안 되는 이유는 무엇입니까?
 
 ::option[inode가 어떤 방식으로도 파일 데이터를 참조하지 않기 때문입니다.]{#inodes-no-data-reference explanation="메커니즘은 달라도 파일 시스템은 객체를 콘텐츠와 연결해야 합니다."}
 ::option[파일 시스템 구현마다 서로 다른 익스텐트, 트리 및 인라인 데이터 구조를 사용하기 때문입니다.]{#inodes-format-specific-layout .correct explanation="inode에서 콘텐츠로의 디스크 내 매핑은 각 파일 시스템 형식의 일부입니다."}

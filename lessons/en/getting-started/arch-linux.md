@@ -16,8 +16,7 @@ Arch Linux is a lightweight, independently developed Linux distribution known fo
 
 Unlike distributions with scheduled major releases, Arch follows a rolling release model. That means the system receives continuous updates rather than waiting for big version jumps.
 
-:::single-choice{#recognize-rolling-release}
-What does Arch Linux's rolling release model mean?
+:::single-choice{#recognize-rolling-release} What does Arch Linux's rolling release model mean?
 
 ::option[The installed system receives continuous package upgrades]{#continuous-upgrades .correct explanation="Arch evolves through ongoing package upgrades rather than separate major system releases. A maintained installation can stay current over time."}
 ::option[The system waits for fixed multi-year upgrade editions]{#fixed-major-editions explanation="Fixed major editions describe a point-release model. Arch instead updates the installed system continuously."}
@@ -30,8 +29,7 @@ Arch Linux is popular because it gives users a high degree of control. Many peop
 
 That makes Arch a common recommendation for curious intermediate and advanced users, even though it is usually not the first distro suggested to beginners comparing options in [Choosing a Linux Distribution](https://labex.io/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#match-arch-user}
-Which user is the best match for Arch Linux?
+:::single-choice{#match-arch-user} Which user is the best match for Arch Linux?
 
 ::option[A beginner who wants every decision handled automatically]{#automatic-beginner explanation="Arch deliberately leaves many choices to the user. A distribution with more prepared defaults better fits fully automatic setup."}
 ::option[A user who never wants to review software updates]{#ignore-updates explanation="A rolling Arch system requires active maintenance and attention to update notices. Ignoring updates conflicts with that responsibility."}
@@ -50,16 +48,14 @@ Arch uses Pacman as its package manager. Pacman installs, updates, removes, and 
 
 A common command is `sudo pacman -Syu`, which synchronizes package databases and performs a full upgrade of packages from configured repositories. Arch does not support partial upgrades, so users should avoid refreshing package databases without completing the corresponding system upgrade. Pacman is valued because it is direct, fast, and closely aligned with Arch's minimalist design.
 
-:::single-choice{#identify-pacman-role}
-What is Pacman's role on Arch Linux?
+:::single-choice{#identify-pacman-role} What is Pacman's role on Arch Linux?
 
 ::option[Choose the desktop layout without managing software]{#pacman-desktop-layout explanation="Desktop configuration is separate from package management. Pacman manages the software packages that can provide desktop components."}
 ::option[Replace the rolling release model with fixed editions]{#pacman-fixed-releases explanation="Pacman supports Arch's rolling system through package upgrades. It does not convert Arch into a point-release distribution."}
 ::option[Install, update, remove, and track software packages]{#pacman-package-manager .correct explanation="Pacman is Arch Linux's package manager. It maintains installed packages and works with the distribution's repositories."}
 :::
 
-:::single-choice{#avoid-partial-upgrades}
-Why should an Arch user complete a full upgrade after refreshing package databases?
+:::single-choice{#avoid-partial-upgrades} Why should an Arch user complete a full upgrade after refreshing package databases?
 
 ::option[Partial upgrades are the recommended way to preserve old libraries]{#partial-upgrades-recommended explanation="Arch explicitly does not support partial upgrades. Mixing newer libraries with older dependent packages can break the system."}
 ::option[Refreshing package databases automatically reinstalls the operating system]{#refresh-reinstalls-system explanation="A database refresh only updates package information. It does not reinstall Arch, but it should be followed by the matching full upgrade."}

@@ -29,8 +29,7 @@ $ getent passwd root
 
 O primeiro comando pode revelar nomes de contas e metadados, portanto revise a saída antes de compartilhá-la publicamente.
 
-:::single-choice{#passwd-query-resolved-database}
-Qual comando consulta o banco de dados passwd resolvido pelo NSS, em vez de ler apenas o arquivo local?
+:::single-choice{#passwd-query-resolved-database} Qual comando consulta o banco de dados passwd resolvido pelo NSS, em vez de ler apenas o arquivo local?
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="Esse comando exibe apenas o arquivo local e não inclui contas fornecidas exclusivamente por outras fontes do NSS."}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="O arquivo shadow contém dados protegidos de senhas e expiração de contas locais e não deve ser exibido para essa finalidade."}
@@ -57,16 +56,14 @@ Os sete campos separados por dois-pontos são:
 
 O kernel não exige que os valores de UID sejam exclusivos em registros malformados ou deliberadamente duplicados, mas contas que compartilham um UID tornam-se indistinguíveis em muitas decisões de propriedade e permissões. Em geral, os administradores devem manter os UIDs das contas exclusivos.
 
-:::single-choice{#passwd-uid-field}
-Em `root:x:0:0:root:/root:/bin/bash`, qual campo contém o UID?
+:::single-choice{#passwd-uid-field} Em `root:x:0:0:root:/root:/bin/bash`, qual campo contém o UID?
 
 ::option[O segundo campo, `x`]{#passwd-second-password explanation="O segundo campo é o marcador da senha, não a identidade numérica do usuário."}
 ::option[O quarto campo, o segundo `0`]{#passwd-fourth-gid explanation="O campo 4 é o GID primário, não o UID."}
 ::option[O terceiro campo, o primeiro `0`]{#passwd-third-uid .correct explanation="O campo 3 é o UID, portanto o primeiro zero identifica esse registro como UID 0."}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-Qual campo de um registro passwd armazena o GID primário da conta?
+:::single-choice{#passwd-primary-gid-field} Qual campo de um registro passwd armazena o GID primário da conta?
 
 ::option[Campo 5]{#passwd-gecos-five explanation="O quinto campo é o campo GECOS ou de comentário."}
 ::option[Campo 4]{#passwd-gid-four .correct explanation="O quarto campo separado por dois-pontos identifica numericamente o grupo primário."}
@@ -79,8 +76,7 @@ Em sistemas comuns com senhas shadow, `x` no campo 2 direciona as ferramentas de
 
 Isso não prova que a conta não possa se autenticar por qualquer método. Chaves SSH, certificados, tokens ou mecanismos específicos de serviços podem ser independentes. Da mesma forma, um campo de senha vazio possui um comportamento sensível à segurança que depende da pilha de autenticação; não o crie nem tente “corrigi-lo” manualmente.
 
-:::single-choice{#passwd-x-placeholder}
-O que `x` geralmente significa no campo 2 de um registro local de `/etc/passwd`?
+:::single-choice{#passwd-x-placeholder} O que `x` geralmente significa no campo 2 de um registro local de `/etc/passwd`?
 
 ::option[A conta certamente não possui nenhum método de autenticação.]{#passwd-no-auth-guarantee explanation="O marcador não descreve todos os métodos de autenticação possíveis nem significa, por si só, que a conta não possa ser usada."}
 ::option[O diretório pessoal da conta foi excluído.]{#passwd-home-deleted explanation="As informações do diretório pessoal ficam no campo 6 e não têm relação com o marcador `x`."}
@@ -93,8 +89,7 @@ Muitos registros representam serviços, não pessoas. Identidades de serviço se
 
 Não deduza a finalidade de uma conta apenas pelo intervalo de UID sem verificar a política da distribuição. Os intervalos de alocação variam, e contas gerenciadas centralmente podem seguir convenções diferentes.
 
-:::single-choice{#passwd-nologin-shell}
-Qual é uma finalidade comum de um programa de login como `/usr/sbin/nologin` no campo 7?
+:::single-choice{#passwd-nologin-shell} Qual é uma finalidade comum de um programa de login como `/usr/sbin/nologin` no campo 7?
 
 ::option[Excluir os arquivos da conta sempre que um serviço for interrompido.]{#passwd-nologin-delete explanation="O programa de login não remove automaticamente os dados pertencentes à conta nem gerencia arquivos de encerramento de serviços."}
 ::option[Impedir um shell interativo comum pelos caminhos de login que respeitam esse campo.]{#passwd-nologin-purpose .correct explanation="Um programa que não permite login é usado com frequência para contas de serviço que não devem receber um shell interativo pelo login normal."}

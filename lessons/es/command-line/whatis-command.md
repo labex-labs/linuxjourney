@@ -23,8 +23,7 @@ cat (1)              - concatenate files and print on the standard output
 
 La salida es una descripción, no una lista de opciones ni ejemplos. Utiliza `man cat` o `cat --help` cuando necesites más detalles.
 
-:::single-choice{#describe-known-command}
-Conoces el nombre `cat` y quieres su descripción de una línea en el manual. ¿Qué orden debes ejecutar?
+:::single-choice{#describe-known-command} Conoces el nombre `cat` y quieres su descripción de una línea en el manual. ¿Qué orden debes ejecutar?
 
 ::option[`man cat`]{#manual-cat explanation="`man cat` abre la página completa del manual. Proporciona más información que el recordatorio de una línea solicitado."}
 ::option[`apropos cat`]{#apropos-cat explanation="`apropos` busca una palabra clave en las descripciones y puede devolver muchos temas relacionados. Es más amplio que una consulta por nombre exacto."}
@@ -43,8 +42,7 @@ passwd (5)           - the password file
 
 El número entre paréntesis es la sección del manual. Aquí, `passwd(1)` describe la orden de usuario y `passwd(5)`, un formato de archivo. Puedes abrirlas explícitamente con `man 1 passwd` o `man 5 passwd`.
 
-:::single-choice{#interpret-whatis-section}
-En la salida `passwd (5) - the password file`, ¿qué identifica `(5)`?
+:::single-choice{#interpret-whatis-section} En la salida `passwd (5) - the password file`, ¿qué identifica `(5)`?
 
 ::option[La quinta opción que acepta la orden `passwd`.]{#fifth-option explanation="El número no es la posición de una opción. Las opciones se documentan dentro de la página del manual elegida."}
 ::option[La sección del manual que contiene la página del formato de archivo.]{#section-five .correct explanation="La sección 5 se utiliza para formatos de archivo y convenciones, por lo que `passwd(5)` hace referencia a esa sección."}
@@ -65,8 +63,7 @@ $ apropos password
 
 Utiliza `apropos` cuando conoces la tarea, pero no el nombre de la orden. Utiliza `whatis` cuando ya conoces el nombre.
 
-:::single-choice{#search-by-purpose}
-No conoces el nombre de una orden, pero quieres buscar la palabra clave `password` en las descripciones del manual. ¿Qué orden sirve para esta tarea?
+:::single-choice{#search-by-purpose} No conoces el nombre de una orden, pero quieres buscar la palabra clave `password` en las descripciones del manual. ¿Qué orden sirve para esta tarea?
 
 ::option[`apropos password`]{#apropos-password .correct explanation="`apropos` busca la palabra clave en los nombres y descripciones de las páginas del manual, lo que ayuda a descubrir temas pertinentes."}
 ::option[`whatis password`]{#exact-password explanation="`whatis` busca un tema exacto del manual llamado `password`. No es la interfaz general de búsqueda por palabras clave."}
@@ -77,8 +74,7 @@ No conoces el nombre de una orden, pero quieres buscar la palabra clave `passwor
 
 Si `whatis` informa de que no hay nada apropiado, quizá el tema no tenga instalada una página del manual o la base de datos esté desactualizada. Este resultado no demuestra que no exista un ejecutable, alias, función u orden integrada con ese nombre. Utiliza `type NAME` para ver cómo resuelve Bash el nombre y elige después la fuente de ayuda adecuada.
 
-:::single-choice{#whatis-versus-type}
-`whatis deploy` no encuentra ninguna descripción del manual. ¿Qué orden comprueba si Bash resuelve `deploy` como alias, función, orden integrada o ejecutable?
+:::single-choice{#whatis-versus-type} `whatis deploy` no encuentra ninguna descripción del manual. ¿Qué orden comprueba si Bash resuelve `deploy` como alias, función, orden integrada o ejecutable?
 
 ::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="Cambiar la consulta de la base de datos del manual no muestra todos los alias, funciones, órdenes integradas y resoluciones de rutas de Bash."}
 ::option[`man 5 deploy`]{#manual-five-deploy explanation="Esta orden intenta abrir una página de la sección 5. No determina cómo resuelve Bash el nombre de la orden."}

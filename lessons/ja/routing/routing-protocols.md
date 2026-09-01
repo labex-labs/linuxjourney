@@ -18,8 +18,7 @@ meta_keywords: "ルーティングプロトコル，ネットワークコンバ�
 
 プロトコルの adjacency が確立していても、目的のプレフィックスが学習、選択、導入され、転送ポリシーで許可されたことまでは証明できません。
 
-:::single-choice{#routing-protocols-adjacency-limit}
-ルーティングの adjacency が確立していても証明できないものはどれですか？
+:::single-choice{#routing-protocols-adjacency-limit} ルーティングの adjacency が確立していても証明できないものはどれですか？
 
 ::option[目的の全ルートが導入され、正常に転送されていること。]{#routing-protocols-not-full-proof .correct explanation="ルートの広告、選択、導入、フィルタリング、データプレーン動作は別々の段階です。"}
 ::option[二つのプロトコル話者が何らかの制御メッセージを交換したこと。]{#routing-protocols-no-messages explanation="adjacency の確立には通常、プロトコル通信が必要です。"}
@@ -32,8 +31,7 @@ Interior gateway protocol は一つの管理ルーティングドメイン内で
 
 メトリックの意味はプロトコルごとに異なります。OSPF の cost、RIP の hop count、BGP の属性集合を、一つの共通数値尺度のように比較することはできません。実装は、プロトコル固有の選択前または選択と並行して、route preference や administrative distance により情報源間を選びます。
 
-:::single-choice{#routing-protocols-metric-comparison}
-RIP の hop count と OSPF の cost を直接比較できますか？
+:::single-choice{#routing-protocols-metric-comparison} RIP の hop count と OSPF の cost を直接比較できますか？
 
 ::option[はい。すべてのルーティングメトリックは同じ単位だからです。]{#routing-protocols-universal-metric explanation="各プロトコルが独自のメトリックと選択処理を定義します。"}
 ::option[はい。ただし両方の値が 0 の場合だけです。]{#routing-protocols-zero-metric explanation="表示値にかかわらず、意味は異なります。"}
@@ -44,8 +42,7 @@ RIP の hop count と OSPF の cost を直接比較できますか？
 
 距離ベクトルプロトコルは近隣を通じて到達可能性と距離を広告し、近隣の報告から経路を導きます。リンクステートプロトコルは adjacency を形成し、スコープ内にリンクステート情報をフラッディングし、トポロジーデータベースを構築して最短経路木を計算します。現代的なプロトコルには多くの改良があり、単純な分類だけでは説明しきれない場合があります。
 
-:::single-choice{#routing-protocols-link-state-input}
-リンクステートルーターは、経路計算に何を使いますか？
+:::single-choice{#routing-protocols-link-state-input} リンクステートルーターは、経路計算に何を使いますか？
 
 ::option[デフォルトゲートウェイのホスト名だけ。]{#routing-protocols-hostname-only explanation="トポロジー計算にはリンクとプレフィックスの情報が必要です。"}
 ::option[ルーティングスコープ内のリンクを記述する同期済みデータベース。]{#routing-protocols-link-database .correct explanation="ルーターは学習したトポロジー上で最短経路アルゴリズムを実行します。"}
@@ -58,8 +55,7 @@ RIP の hop count と OSPF の cost を直接比較できますか？
 
 収束中は、一時的な損失、ループ、ブラックホールが発生することがあります。検出、伝播、計算、導入を別々に測定し、データプレーンのプローブでも検証してください。
 
-:::single-choice{#routing-protocols-convergence}
-ルーティングの収束とは何ですか？
+:::single-choice{#routing-protocols-convergence} ルーティングの収束とは何ですか？
 
 ::option[変更後に安定した利用可能なルーティングへ到達する過程。]{#routing-protocols-stable-routing .correct explanation="制御情報の伝播と、その結果としての転送更新が含まれます。"}
 ::option[すべてのルーターが同一のグローバルテーブルを持つという要件。]{#routing-protocols-identical-table explanation="ポリシー、area、役割によって意図的な差が生まれます。"}

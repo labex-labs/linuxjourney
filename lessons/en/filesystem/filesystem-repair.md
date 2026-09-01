@@ -24,8 +24,7 @@ $ journalctl -k -b
 
 Check the storage stack, device health, cables or network path, RAID state, encryption, and recent events. If the device is failing, repeated scans can consume its remaining life. Capture an image or clone with a recovery-oriented tool and work on the copy when feasible.
 
-:::single-choice{#filesystem-repair-first-response}
-What should precede a write-capable filesystem repair when hardware failure is possible?
+:::single-choice{#filesystem-repair-first-response} What should precede a write-capable filesystem repair when hardware failure is possible?
 
 ::option[Repeatedly run every repair tool until one exits zero.]{#filesystem-repair-repeat-tools explanation="Using mismatched tools and repeated writes can compound damage."}
 ::option[Create a new partition table over the device immediately.]{#filesystem-repair-new-table explanation="Overwriting layout metadata destroys evidence and can make recovery harder."}
@@ -38,8 +37,7 @@ Determine whether the filesystem lives on a partition, logical volume, RAID devi
 
 Use `lsblk -f`, `blkid`, `findmnt`, and storage-layer tools to map the target. Detection signatures can be stale, so reconcile them with known configuration and backups.
 
-:::single-choice{#filesystem-repair-target-layer}
-If ext4 is stored on `/dev/sda1`, which layer should its ext4 checker normally receive?
+:::single-choice{#filesystem-repair-target-layer} If ext4 is stored on `/dev/sda1`, which layer should its ext4 checker normally receive?
 
 ::option[`/dev/sda` regardless of its partition table.]{#filesystem-repair-whole-disk explanation="The whole disk contains the partition table and possibly several child regions, not the ext4 instance directly."}
 ::option[`/dev/sda1` after it is safely offline.]{#filesystem-repair-partition-target .correct explanation="The checker operates on the block device that directly contains that filesystem."}
@@ -52,8 +50,7 @@ Most traditional consistency checkers require the filesystem to be unmounted. A 
 
 Stop dependent services, unmount nested filesystems, move process working directories, and deactivate higher layers as required. For the root filesystem, boot a rescue environment or use the distribution's documented offline check mechanism. Confirm with `findmnt` that the target is not mounted in the relevant namespace.
 
-:::single-choice{#filesystem-repair-mounted-risk}
-Why should a filesystem normally be unmounted before a repair checker writes to it?
+:::single-choice{#filesystem-repair-mounted-risk} Why should a filesystem normally be unmounted before a repair checker writes to it?
 
 ::option[Concurrent kernel and checker updates can conflict and corrupt metadata.]{#filesystem-repair-concurrent-writes .correct explanation="An offline view prevents the filesystem from changing underneath the repair operation."}
 ::option[Unmounting automatically restores every damaged file from backup.]{#filesystem-repair-unmount-restores explanation="Detachment provides consistency for checking but is not data restoration."}
@@ -66,8 +63,7 @@ Why should a filesystem normally be unmounted before a repair checker writes to 
 
 Options with similar names can have different semantics. In particular, do not apply `--repair` or force flags copied from another filesystem's guide. Read the installed manual and current project or distribution recovery documentation. Begin with a no-modification or diagnostic mode if that implementation provides a reliable one, capture output, and understand the proposed fixes.
 
-:::single-choice{#filesystem-repair-fsck-role}
-What is `fsck` on Linux commonly responsible for?
+:::single-choice{#filesystem-repair-fsck-role} What is `fsck` on Linux commonly responsible for?
 
 ::option[Dispatching checks to a helper appropriate for the filesystem type.]{#filesystem-repair-fsck-dispatch .correct explanation="Actual validation and repair logic belongs to format-specific tools and workflows."}
 ::option[Converting every filesystem into ext4 before checking it.]{#filesystem-repair-fsck-convert explanation="A checker must preserve and understand the existing format."}
@@ -80,8 +76,7 @@ Record the repair tool, version, options, output, and exit status. After repair,
 
 A filesystem becoming mountable does not prove every file is correct. Restore lost or damaged application data from backups and validate at the application layer.
 
-:::single-choice{#filesystem-repair-mountable-proof}
-Does a successful mount after repair prove that all application data is correct?
+:::single-choice{#filesystem-repair-mountable-proof} Does a successful mount after repair prove that all application data is correct?
 
 ::option[No; consistency repair and application-level data validation are different.]{#filesystem-repair-not-data-proof .correct explanation="The filesystem can be structurally mountable while files or transactions remain missing or damaged."}
 ::option[Yes; mounting cryptographically verifies every file against a backup.]{#filesystem-repair-mount-verifies explanation="Ordinary mount does not perform a full backup comparison."}

@@ -32,8 +32,7 @@ $ ps
 
 정확한 열과 선택 기본값은 `ps` 구현과 환경에 따라 다릅니다.
 
-:::single-choice{#ps-command-pid-meaning}
-`PID` 열은 무엇을 식별하나요?
+:::single-choice{#ps-command-pid-meaning} `PID` 열은 무엇을 식별하나요?
 
 ::option[프로세스의 현재 디렉터리 번호]{#ps-command-pid-directory explanation="현재 디렉터리는 파일 시스템 참조이며 PID로 표현되지 않습니다."}
 ::option[누적 CPU 시간(초)]{#ps-command-pid-cpu explanation="CPU 사용량은 `TIME` 같은 별도 필드에 표시됩니다."}
@@ -56,8 +55,7 @@ $ ps aux
 
 옵션 의미가 상호작용할 수 있으므로 각 문자를 독립적인 명령으로 보지 말고 전체 조합을 해석하세요.
 
-:::single-choice{#ps-command-aux-user-format}
-`ps aux`에서 사용자 중심 출력 형식을 요청하는 옵션은 무엇인가요?
+:::single-choice{#ps-command-aux-user-format} `ps aux`에서 사용자 중심 출력 형식을 요청하는 옵션은 무엇인가요?
 
 ::option[`u`]{#ps-command-aux-u .correct explanation="BSD 형식 `u` 옵션은 사용자 중심의 출력 열 집합을 선택합니다."}
 ::option[`x`]{#ps-command-aux-x explanation="`x` 옵션은 특히 제어 터미널이 없는 프로세스 등 프로세스 선택에 영향을 줍니다."}
@@ -77,8 +75,7 @@ $ ps -ef
 
 출력에는 일반적으로 `UID`, `PID`, `PPID`, 시작 시간, 명령 정보가 포함됩니다. `PPID`는 부모 프로세스 ID입니다. 이 목록은 본질적으로 계층적이지 않습니다. 부모-자식 배치가 중요하면 지원되는 경우 `--forest` 같은 옵션이나 `pstree` 같은 전용 트리 보기를 사용하세요.
 
-:::single-choice{#ps-command-ef-selection}
-`ps -ef`에서 `-e`는 무엇을 요청하나요?
+:::single-choice{#ps-command-ef-selection} `ps -ef`에서 `-e`는 무엇을 요청하나요?
 
 ::option[중단할 때까지 매초 갱신]{#ps-command-e-refresh explanation="`ps`는 스냅샷을 만듭니다. 지속 갱신은 `top` 같은 도구의 기능입니다."}
 ::option[호출자에게 보이는 모든 프로세스를 포함하는 선택]{#ps-command-e-every .correct explanation="표준 형식 `-e` 옵션은 선택 가능한 모든 프로세스로 스냅샷 범위를 넓힙니다."}
@@ -95,8 +92,7 @@ $ top
 
 `top`은 변하는 CPU 및 메모리 소비자를 식별하는 데 도움이 되지만 값은 표본이므로 흔들릴 수 있습니다. 여러 번 관찰하여 의심되는 문제를 확인하고 백분율을 시스템의 CPU 수, 메모리 계산, 작업 부하와 연결하세요.
 
-:::single-choice{#ps-command-snapshot-versus-top}
-여기서 소개한 도구 중 기본적으로 프로세스 표시를 주기적으로 갱신하는 것은 무엇인가요?
+:::single-choice{#ps-command-snapshot-versus-top} 여기서 소개한 도구 중 기본적으로 프로세스 표시를 주기적으로 갱신하는 것은 무엇인가요?
 
 ::option[`top`]{#ps-command-top-refresh .correct explanation="`top`은 일정 간격으로 표시를 갱신하는 대화형 모니터입니다."}
 ::option[`ps -ef`]{#ps-command-ps-ef-snapshot explanation="전체 형식 프로세스 스냅샷을 출력한 뒤 종료합니다."}

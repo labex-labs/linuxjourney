@@ -29,8 +29,7 @@ $ getent passwd root
 
 第一个命令可能披露账户名称和元数据，因此公开分享前应审查输出。
 
-:::single-choice{#passwd-query-resolved-database}
-哪个命令会查询 NSS 解析后的 passwd 数据库，而不只是读取本地文件？
+:::single-choice{#passwd-query-resolved-database} 哪个命令会查询 NSS 解析后的 passwd 数据库，而不只是读取本地文件？
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="这只会显示本地文件，不包含仅由其他 NSS 来源提供的账户。"}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="shadow 文件包含受保护的本地密码和期限数据，不应为此目的显示。"}
@@ -57,16 +56,14 @@ root:x:0:0:root:/root:/bin/bash
 
 对于格式错误或有意重复的记录，内核并不要求 UID 值唯一；但共享 UID 的账户在许多所有权和权限决策中无法区分。管理员通常应保持账户 UID 唯一。
 
-:::single-choice{#passwd-uid-field}
-在 `root:x:0:0:root:/root:/bin/bash` 中，哪个字段包含 UID？
+:::single-choice{#passwd-uid-field} 在 `root:x:0:0:root:/root:/bin/bash` 中，哪个字段包含 UID？
 
 ::option[第二个字段 `x`]{#passwd-second-password explanation="第二个字段是密码占位符，不是数值用户身份。"}
 ::option[第四个字段，即第二个 `0`]{#passwd-fourth-gid explanation="字段 4 是主 GID，而不是 UID。"}
 ::option[第三个字段，即第一个 `0`]{#passwd-third-uid .correct explanation="字段 3 是 UID，因此第一个零表示该记录的 UID 为 0。"}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-passwd 记录的哪个字段存储账户的主 GID？
+:::single-choice{#passwd-primary-gid-field} passwd 记录的哪个字段存储账户的主 GID？
 
 ::option[字段 5]{#passwd-gecos-five explanation="第五个字段是 GECOS 或注释字段。"}
 ::option[字段 4]{#passwd-gid-four .correct explanation="第四个冒号分隔字段以数值表示主组。"}
@@ -79,8 +76,7 @@ passwd 记录的哪个字段存储账户的主 GID？
 
 这并不能证明账户无法通过任何方式认证。SSH 密钥、证书、令牌或服务特定机制可能彼此独立。同样，空密码字段具有取决于认证栈的安全敏感行为；不要手工创建或“修复”它。
 
-:::single-choice{#passwd-x-placeholder}
-本地 `/etc/passwd` 记录字段 2 中的 `x` 通常表示什么？
+:::single-choice{#passwd-x-placeholder} 本地 `/etc/passwd` 记录字段 2 中的 `x` 通常表示什么？
 
 ::option[保证该账户没有任何认证方式。]{#passwd-no-auth-guarantee explanation="该占位符并不描述每一种可能的认证方式，本身也不表示账户不可用。"}
 ::option[该账户的主目录已被删除。]{#passwd-home-deleted explanation="主目录信息位于字段 6，与 `x` 占位符无关。"}
@@ -93,8 +89,7 @@ passwd 记录的哪个字段存储账户的主 GID？
 
 不要只凭 UID 范围推断账户用途，应检查发行版策略。分配范围各不相同，集中管理的账户也可能遵循不同约定。
 
-:::single-choice{#passwd-nologin-shell}
-字段 7 中 `/usr/sbin/nologin` 之类的登录程序通常有什么用途？
+:::single-choice{#passwd-nologin-shell} 字段 7 中 `/usr/sbin/nologin` 之类的登录程序通常有什么用途？
 
 ::option[每当服务停止时删除账户的文件。]{#passwd-nologin-delete explanation="登录程序不会自动删除所有数据或管理服务停止文件。"}
 ::option[阻止通过遵循该字段的登录路径获得普通交互式 shell。]{#passwd-nologin-purpose .correct explanation="非登录程序常用于不应通过普通登录获得交互式 shell 的服务账户。"}

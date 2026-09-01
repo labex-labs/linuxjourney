@@ -27,8 +27,7 @@ $ ls -l /usr/bin/passwd
 
 모든 배포판이 같은 모드나 인증 설계를 사용한다고 가정하지 마세요. 예제에 의존하지 말고 실제 시스템을 확인합니다.
 
-:::single-choice{#setuid-lowercase-s}
-소유자 실행 위치의 소문자 `s`는 무엇을 나타내나요?
+:::single-choice{#setuid-lowercase-s} 소유자 실행 위치의 소문자 `s`는 무엇을 나타내나요?
 
 ::option[Setuid는 설정되었지만 소유자 실행은 없습니다.]{#setuid-s-without-execute explanation="이 조합은 소문자 `s`가 아니라 대문자 `S`로 표시됩니다."}
 ::option[파일에 sticky 비트와 그룹 실행이 있습니다.]{#setuid-sticky-group explanation="sticky 비트는 기타 사용자 실행 위치에 나타나고 setuid는 소유자 위치에 나타납니다."}
@@ -41,8 +40,7 @@ $ ls -l /usr/bin/passwd
 
 이 메커니즘은 신중하게 작성된 프로그램이 요청을 검증하고 보호된 상태에 제한된 변경을 수행하도록 할 수 있습니다. 예를 들어 로컬 비밀번호 변경 유틸리티는 일반 사용자가 직접 편집할 수 없는 인증 데이터에 통제된 접근이 필요할 수 있습니다. 현대 구현은 PAM, 파일 잠금, 정책 및 다른 보호 장치에도 의존하므로 setuid만으로 전체 작업 흐름을 설명할 수 없습니다.
 
-:::single-choice{#setuid-effective-identity}
-Setuid 실행 파일이 적용될 때 파일 소유자에서 주로 가져오는 신원은 무엇인가요?
+:::single-choice{#setuid-effective-identity} Setuid 실행 파일이 적용될 때 파일 소유자에서 주로 가져오는 신원은 무엇인가요?
 
 ::option[`/etc/passwd`에 저장된 로그인 이름]{#setuid-login-name explanation="파일 실행은 호출자의 계정 레코드나 로그인 이름을 다시 쓰지 않습니다."}
 ::option[프로세스의 유효 사용자 ID]{#setuid-effective-user .correct explanation="set-user-ID 실행 메커니즘은 여러 권한 검사에 쓰이는 유효 사용자 신원을 바꿉니다."}
@@ -65,8 +63,7 @@ $ sudo chmod 4755 myfile
 
 선행 `4`는 setuid를 설정하고 `755`는 일반 소유자, 그룹, 기타 사용자 비트를 설정합니다. 다른 모드를 바꾸지 않고 setuid를 제거하려면 `chmod u-s myfile`을 사용합니다.
 
-:::single-choice{#setuid-octal-value}
-Setuid 특수 비트를 나타내는 선행 8진수 값은 무엇인가요?
+:::single-choice{#setuid-octal-value} Setuid 특수 비트를 나타내는 선행 8진수 값은 무엇인가요?
 
 ::option[`4`]{#setuid-octal-four .correct explanation="Setuid는 선행 특수 비트 숫자에 값 `4`를 더합니다."}
 ::option[`1`]{#setuid-octal-one explanation="선행 `1`은 sticky 비트를 나타냅니다."}
@@ -81,8 +78,7 @@ Linux는 일반적으로 해석형 스크립트의 setuid를 적용하지 않습
 
 공유 시스템에서 임의의 쉘, 인터프리터 또는 복사한 프로그램에 실험으로 setuid를 추가하지 마세요. 기존 setuid 파일을 감사하고 격리된 일회용 환경에서만 연습합니다.
 
-:::single-choice{#setuid-nosuid-mount}
-`nosuid`로 파일 시스템을 마운트하는 목적은 무엇인가요?
+:::single-choice{#setuid-nosuid-mount} `nosuid`로 파일 시스템을 마운트하는 목적은 무엇인가요?
 
 ::option[파일 시스템의 파일에 저장된 모든 실행 비트 제거]{#setuid-nosuid-remove-execute explanation="이 옵션은 파일 메타데이터의 일반 실행 비트를 다시 쓰지 않습니다."}
 ::option[해당 파일 시스템에서 setuid 및 setgid 실행 효과 억제]{#setuid-nosuid-suppress .correct explanation="`nosuid` 마운트 옵션은 이 특수 모드 비트가 일반적인 자격 증명 변경 실행 동작을 부여하지 못하게 합니다."}

@@ -30,8 +30,7 @@ $ lsusb -t
 
 还可以查看详细的描述符输出，但部分信息需要较高的读取权限。不要仅仅为了消除检查命令的权限提示，就授予范围过大的 USB 设备权限。
 
-:::single-choice{#listing-devices-usb-tree}
-哪个命令以拓扑树形式显示 USB 设备？
+:::single-choice{#listing-devices-usb-tree} 哪个命令以拓扑树形式显示 USB 设备？
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="它列出 PCI 功能和内核驱动程序信息，而不是 USB 拓扑。"}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="这不是本课介绍的 USB 树命令。"}
@@ -54,8 +53,7 @@ $ lspci -k
 
 PCI 控制器出现在列表中，并不能证明其后的每个设备都已初始化或处于健康状态。排查问题时应检查驱动程序绑定和内核日志。
 
-:::single-choice{#listing-devices-pci-driver}
-哪个命令会在 PCI 列表中添加内核驱动程序信息？
+:::single-choice{#listing-devices-pci-driver} 哪个命令会在 PCI 列表中添加内核驱动程序信息？
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="-k 选项显示当前内核驱动程序和能够处理每个 PCI 设备的模块。"}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="它描述 USB 层次结构和接口驱动程序。"}
@@ -78,8 +76,7 @@ $ lsscsi
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-`lsscsi` 主要列出什么？
+:::single-choice{#listing-devices-lsscsi-scope} `lsscsi` 主要列出什么？
 
 ::option[只列出每个 NVMe 命名空间和控制器。]{#listing-devices-only-nvme explanation="NVMe 使用自己的子系统和工具，尽管相关块设备视图可能出现在其他地方。"}
 ::option[只列出名称以 `.scsi` 结尾的文件。]{#listing-devices-scsi-extension explanation="该命令查询内核设备接口，而不是文件扩展名。"}
@@ -92,8 +89,7 @@ $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 
 这些实用工具可能分别打包，常见软件包包括 `usbutils`、`pciutils` 和 `lsscsi`。命令缺失时，应使用发行版软件包管理器，而不是下载来源不明的替代程序。
 
-:::single-choice{#listing-devices-listed-not-working}
-在 `lspci` 中看到设备，是否能证明它的驱动程序已活动并正常工作？
+:::single-choice{#listing-devices-listed-not-working} 在 `lspci` 中看到设备，是否能证明它的驱动程序已活动并正常工作？
 
 ::option[不能；还应检查驱动程序绑定和相关内核消息。]{#listing-devices-needs-correlation .correct explanation="枚举只能证明 PCI 功能可见，不能证明更高层的初始化成功。"}
 ::option[能；PCI 枚举会执行完整功能测试。]{#listing-devices-complete-test explanation="列表不会运行每项硬件功能，也不会验证服务行为。"}

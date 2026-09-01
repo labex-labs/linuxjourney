@@ -29,8 +29,7 @@ $ getent group developers
 
 Gruppenlisten können interne Konto- und Rollennamen offenlegen. Prüfe die Ausgabe daher, bevor du sie teilst.
 
-:::single-choice{#group-query-resolved-database}
-Welcher Befehl fragt die durch NSS aufgelöste Gruppendatenbank ab?
+:::single-choice{#group-query-resolved-database} Welcher Befehl fragt die durch NSS aufgelöste Gruppendatenbank ab?
 
 ::option[`getent group`]{#group-getent-all .correct explanation="`getent` fragt die konfigurierten NSS-Quellen nach Gruppeneinträgen ab."}
 ::option[`cat /etc/group`]{#group-cat-local explanation="Dies liest nur die lokale Gruppendatei und kann Gruppen aus anderen Quellen auslassen."}
@@ -52,16 +51,14 @@ developers:x:1500:alice,bob
 
 Gruppenpasswörter sind eine Altlast, die in einigen Konfigurationen von Werkzeugen wie `newgrp` verwendet wird. Sie sind nicht der übliche Mechanismus, um sudo-Autorisierungen zu gewähren, und sollten nicht durch manuelle Änderungen an Feldern eingeführt werden.
 
-:::single-choice{#group-gid-field}
-Welches Feld enthält in `developers:x:1500:alice,bob` die GID?
+:::single-choice{#group-gid-field} Welches Feld enthält in `developers:x:1500:alice,bob` die GID?
 
 ::option[Das zweite Feld, `x`]{#group-second-password explanation="Feld 2 ist der Platzhalter für das Gruppenpasswort und nicht die numerische Identität."}
 ::option[Das vierte Feld, `alice,bob`]{#group-fourth-members explanation="Feld 4 listet ausdrückliche Mitgliedsnamen auf und nicht die GID."}
 ::option[Das dritte Feld, `1500`]{#group-third-gid .correct explanation="Das dritte durch Doppelpunkte getrennte Feld ist die numerische Gruppen-ID."}
 :::
 
-:::single-choice{#group-explicit-member-field}
-Wie werden ausdrückliche Mitgliedsnamen in einem lokalen Gruppeneintrag dargestellt?
+:::single-choice{#group-explicit-member-field} Wie werden ausdrückliche Mitgliedsnamen in einem lokalen Gruppeneintrag dargestellt?
 
 ::option[Als durch Kommas getrennte Liste in Feld 4.]{#group-members-field-four .correct explanation="Das letzte Feld enthält ausdrückliche ergänzende Mitgliedsnamen, die durch Kommas getrennt sind."}
 ::option[Als durch Leerzeichen getrennte Liste in Feld 2.]{#group-members-field-two explanation="Feld 2 ist für passwortbezogene Daten oder einen Platzhalter vorgesehen und nicht für die Mitgliederliste."}
@@ -80,8 +77,7 @@ developers:x:1500:
 
 Deshalb ergibt die alleinige Auswertung von Feld 4 eine unvollständige Ansicht der Mitgliedschaften.
 
-:::single-choice{#group-primary-membership-visibility}
-Alices passwd-Eintrag verwendet die GID 1500 als primäre GID, aber ihr Name fehlt in Feld 4 der Gruppe 1500. Ist sie Mitglied dieser Gruppe?
+:::single-choice{#group-primary-membership-visibility} Alices passwd-Eintrag verwendet die GID 1500 als primäre GID, aber ihr Name fehlt in Feld 4 der Gruppe 1500. Ist sie Mitglied dieser Gruppe?
 
 ::option[Nein, jede Mitgliedschaft muss in Feld 4 von `/etc/group` stehen.]{#group-field-four-only explanation="Dies ignoriert die Mitgliedschaft über die primäre GID und würde zu wenige Gruppenmitglieder zählen."}
 ::option[Ja, die primäre Mitgliedschaft stammt aus dem GID-Feld des passwd-Eintrags.]{#group-primary-from-passwd .correct explanation="Die ausdrückliche Liste der Gruppendatei dient hauptsächlich ergänzenden Mitgliedschaften; die primäre Mitgliedschaft wird beim Konto erfasst."}
@@ -99,8 +95,7 @@ $ groups alice
 
 Für den aktuellen Prozess gibt ein einfaches `id` die Gruppen aus, die tatsächlich in seinen Zugangsdaten vorhanden sind. Eine neu konfigurierte ergänzende Mitgliedschaft erscheint gewöhnlich nicht in einer bereits laufenden Anmeldesitzung. Starte eine neue authentifizierte Sitzung oder verwende gegebenenfalls einen bewusst konfigurierten Mechanismus wie `newgrp`.
 
-:::single-choice{#group-current-process-credentials}
-Welcher Befehl gibt die UID, die primäre GID und die ergänzenden Gruppen des aktuellen Prozesses aus?
+:::single-choice{#group-current-process-credentials} Welcher Befehl gibt die UID, die primäre GID und die ergänzenden Gruppen des aktuellen Prozesses aus?
 
 ::option[`id`]{#group-current-id .correct explanation="Ohne Benutzeroperand gibt `id` die Identitätszugangsdaten des aktuellen Prozesses aus."}
 ::option[`cat /etc/group`]{#group-current-cat explanation="Die lokale Datei listet Einträge auf, zeigt aber nicht, welche aufgelösten Gruppen im aktuellen Prozess aktiv sind."}

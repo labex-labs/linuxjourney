@@ -23,8 +23,7 @@ meta_keywords: "имена устройств linux, имя устройства
 
 Буквы отражают перечисление, а не постоянную личность. Новый контроллер, порядок прошивки или подключённое устройство могут изменить букву диска.
 
-:::single-choice{#device-names-sdb-first-partition}
-Какой путь в схеме `sd` обозначает раздел 1 на `/dev/sdb`?
+:::single-choice{#device-names-sdb-first-partition} Какой путь в схеме `sd` обозначает раздел 1 на `/dev/sdb`?
 
 ::option[`/dev/sda2`]{#device-names-sda-two explanation="Это раздел 2 диска, который сейчас называется `/dev/sda`."}
 ::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="Разделитель `p` используется, когда базовое имя уже оканчивается цифрой, а не для обычного `sd`."}
@@ -42,8 +41,7 @@ meta_keywords: "имена устройств linux, имя устройства
 
 NVMe обычно не называется `/dev/sdX`, а использует соглашение своей подсистемы.
 
-:::single-choice{#device-names-nvme-partition}
-Какой путь обозначает раздел 2 устройства `/dev/nvme0n1`?
+:::single-choice{#device-names-nvme-partition} Какой путь обозначает раздел 2 устройства `/dev/nvme0n1`?
 
 ::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="В именах разделов NVMe перед номером ставится `p`."}
 ::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="Без разделителя конечные цифры неоднозначны с номером namespace."}
@@ -60,8 +58,7 @@ Linux создаёт блочные устройства без однознач
 
 Разделы, шифрование, RAID, логические тома и файловые системы образуют стек. Смотрите связи через `lsblk`, а не выводите их только из имени.
 
-:::single-choice{#device-names-device-mapper-link}
-Где обычно находятся описательные ссылки для device-mapper?
+:::single-choice{#device-names-device-mapper-link} Где обычно находятся описательные ссылки для device-mapper?
 
 ::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="LVM и шифрование часто публикуют именованные ссылки device mapper в этом каталоге."}
 ::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null` — символьное устройство, а не каталог отображённых блочных устройств."}
@@ -80,8 +77,7 @@ Linux создаёт блочные устройства без однознач
 
 Выбирайте идентификатор согласно тому, что должно быть стабильным. UUID файловой системы определяет файловую систему, не обязательно физический диск. Клонирование может продублировать UUID, поэтому проверяйте уникальность.
 
-:::single-choice{#device-names-persistent-config}
-Почему ссылки `/dev/disk/by-id/` часто лучше `/dev/sdX` в конфигурации конкретного устройства?
+:::single-choice{#device-names-persistent-config} Почему ссылки `/dev/disk/by-id/` часто лучше `/dev/sdX` в конфигурации конкретного устройства?
 
 ::option[Они автоматически делают разрушительную запись обратимой.]{#device-names-by-id-reversible explanation="Стабильное имя не создаёт снимки, копии или защиту записи."}
 ::option[Они превращают блочное устройство в обычный файл.]{#device-names-by-id-regular explanation="Это символическая ссылка, которая по-прежнему ведёт к блочному узлу."}
@@ -92,8 +88,7 @@ Linux создаёт блочные устройства без однознач
 
 `/dev/null`, `/dev/zero` и `/dev/urandom` обозначают псевдоустройства ядра, а не физическое хранилище. `/dev/null` отбрасывает запись и возвращает конец файла при чтении; `/dev/zero` выдаёт нули; `/dev/urandom` — байты генератора ядра.
 
-:::single-choice{#device-names-zero-read}
-Что выдаёт чтение из `/dev/zero`?
+:::single-choice{#device-names-zero-read} Что выдаёт чтение из `/dev/zero`?
 
 ::option[Список неиспользуемых накопителей.]{#device-names-zero-storage-list explanation="Это выдающее байты символьное устройство, а не команда обнаружения."}
 ::option[Поток байтов со значением ноль.]{#device-names-zero-bytes .correct explanation="Нулевое псевдоустройство возвращает null-байты при чтении."}

@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 Un arrêt ordonné demande aux services de s'arrêter, démonte les systèmes de fichiers, puis change l'état d'alimentation de la machine. Ne considérez pas le redémarrage forcé ou l'interrupteur physique comme des raccourcis ordinaires : ils peuvent interrompre les écritures et laisser les données ou services incohérents.
 
-:::single-choice{#power-states-orderly-poweroff}
-Que faut-il faire avant de mettre hors tension un hôte de production distant ?
+:::single-choice{#power-states-orderly-poweroff} Que faut-il faire avant de mettre hors tension un hôte de production distant ?
 
 ::option[Déconnecter sa console de gestion avant d'exécuter la commande.]{#power-states-remove-console explanation="Une console de gestion constitue un accès de récupération utile et doit rester disponible."}
 ::option[Forcer l'arrêt afin que les services ne puissent pas le retarder.]{#power-states-force-first explanation="Une opération forcée peut interrompre des écritures et ne doit pas être la méthode normale."}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 Ne supposez pas qu'un avertissement rend l'opération sûre. Vérifiez les sessions actives et les charges propres au système, puis suivez la procédure documentée de drainage du service ou de la grappe lorsqu'elle existe.
 
-:::single-choice{#power-states-four-minute-schedule}
-Quelle commande planifie un arrêt dans quatre minutes ?
+:::single-choice{#power-states-four-minute-schedule} Quelle commande planifie un arrêt dans quatre minutes ?
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="L'action `-h` associée à `+4` demande un arrêt dans quatre minutes."}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="Sans le signe plus, l'argument de temps n'est pas la forme documentée des minutes relatives."}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 Avant le redémarrage, vérifiez que les disques chiffrés, la configuration d'amorçage, le réseau et les services nécessaires peuvent revenir sans la session interactive actuelle. Coordonnez d'abord le basculement ou la migration des charges lorsque d'autres systèmes dépendent de l'hôte.
 
-:::single-choice{#power-states-reboot-action}
-Quelle commande demande un redémarrage ordonné immédiat au moyen de `shutdown` ?
+:::single-choice{#power-states-reboot-action} Quelle commande demande un redémarrage ordonné immédiat au moyen de `shutdown` ?
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="L'option `-c` annule un arrêt en attente."}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="L'option `-r` sélectionne le redémarrage et `now` le planifie immédiatement."}
@@ -89,8 +86,7 @@ Quelle commande demande un redémarrage ordonné immédiat au moyen de `shutdown
 
 `halt`, `poweroff` et `reboot` peuvent être des interfaces de compatibilité vers le système d'initialisation, mais leurs états finaux demandés diffèrent. Un arrêt met fin au fonctionnement normal ; selon la plateforme et l'implémentation, l'alimentation peut rester fournie. Une mise hors tension demande en plus au matériel pris en charge de couper l'alimentation. Préférez la commande qui nomme le résultat voulu et consultez le manuel local, car le comportement de compatibilité peut varier.
 
-:::single-choice{#power-states-halt-versus-poweroff}
-Pourquoi faut-il distinguer `halt` de `poweroff` ?
+:::single-choice{#power-states-halt-versus-poweroff} Pourquoi faut-il distinguer `halt` de `poweroff` ?
 
 ::option[Poweroff demande la coupure de l'alimentation, tandis que halt peut la laisser fournie.]{#power-states-power-distinction .correct explanation="L'état matériel final demandé peut différer même si les deux mettent fin au fonctionnement normal."}
 ::option[Halt redémarre toujours les services après les avoir arrêtés.]{#power-states-halt-restarts explanation="Halt est un état d'arrêt, pas une demande de redémarrage des services."}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 Ces commandes constituent des points de départ ; employez les contrôles de santé propres à la charge réelle.
 
-:::single-choice{#power-states-post-reboot-check}
-Quelle preuve démontre le mieux qu'une application redémarrée est disponible ?
+:::single-choice{#power-states-post-reboot-check} Quelle preuve démontre le mieux qu'une application redémarrée est disponible ?
 
 ::option[L'état du service, les journaux et son contrôle de santé réussissent tous.]{#power-states-health-evidence .correct explanation="Plusieurs contrôles système et applicatifs vérifient la charge plutôt que le seul accès à l'hôte."}
 ::option[Le voyant d'alimentation du châssis est allumé.]{#power-states-light-on explanation="L'alimentation du matériel n'établit pas la santé de l'application."}

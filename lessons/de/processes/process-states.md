@@ -25,16 +25,14 @@ Das erste Zeichen in `STAT` ist der primäre Zustand. Weitere Zeichen sind Modif
 
 Schlafen ist normal. Interaktive Programme und Dienste verbringen einen großen Teil ihrer Zeit damit, auf Eingaben, Zeitgeber, Netzwerkverkehr, Sperren oder andere Ereignisse zu warten, statt fortlaufend CPU zu verbrauchen.
 
-:::single-choice{#process-states-runnable-code}
-Was bedeutet der primäre Zustand `R`?
+:::single-choice{#process-states-runnable-code} Was bedeutet der primäre Zustand `R`?
 
 ::option[Auf einer CPU laufend oder zur Ausführung bereit.]{#process-states-r-running .correct explanation="`R` umfasst sowohl aktuell ausgeführte Aufgaben als auch ausführungsbereite Aufgaben, die auf CPU-Zeit warten."}
 ::option[Aufgeräumt, nachdem der Elternprozess den Status abgeholt hat.]{#process-states-r-reaped explanation="Ein vollständig aufgeräumter Prozess erscheint nicht mehr als gewöhnlicher Eintrag in der Prozesstabelle."}
 ::option[In nicht unterbrechbarem Schlaf wartend.]{#process-states-r-uninterruptible explanation="Nicht unterbrechbarer Schlaf wird durch `D` dargestellt."}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-Welcher primäre Zustand steht für unterbrechbaren Schlaf?
+:::single-choice{#process-states-interruptible-code} Welcher primäre Zustand steht für unterbrechbaren Schlaf?
 
 ::option[`D`]{#process-states-sleep-d explanation="`D` steht für nicht unterbrechbaren Schlaf."}
 ::option[`Z`]{#process-states-sleep-z explanation="`Z` steht für einen beendeten Kindprozess, dessen Status noch nicht aufgeräumt wurde."}
@@ -47,8 +45,7 @@ Welcher primäre Zustand steht für unterbrechbaren Schlaf?
 
 Ein kurzer Zustand `D` kann normal sein. Dauerhaft oder zahlreich in `D` befindliche Aufgaben können auf langsame, nicht verfügbare oder fehlerhafte E/A hindeuten, doch der Zustand allein bestimmt nicht die Ursache. Prüfe den Wartekanal, Kernelprotokolle, den Zustand von Speicher und Netzwerk sowie das betreffende Subsystem, bevor du Schlüsse ziehst.
 
-:::single-choice{#process-states-uninterruptible-code}
-Welcher primäre Zustand steht für nicht unterbrechbaren Schlaf?
+:::single-choice{#process-states-uninterruptible-code} Welcher primäre Zustand steht für nicht unterbrechbaren Schlaf?
 
 ::option[`T`]{#process-states-d-stopped explanation="`T` kennzeichnet eine angehaltene Aufgabe."}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` wird für eine Aufgabe verwendet, die in einem nicht unterbrechbaren Kernel-Schlaf wartet."}
@@ -62,8 +59,7 @@ Welcher primäre Zustand steht für nicht unterbrechbaren Schlaf?
 
 Setze einen Jobsteuerungsstopp gegebenenfalls mit `SIGCONT` fort. Ein Zombie kann weder fortgesetzt noch beendet werden, da er nicht mehr läuft; sein Elternprozess oder ein adoptierender Reaper muss ihn aufräumen.
 
-:::single-choice{#process-states-zombie-code}
-Was kennzeichnet der primäre Zustand `Z`?
+:::single-choice{#process-states-zombie-code} Was kennzeichnet der primäre Zustand `Z`?
 
 ::option[Einen beendeten Prozess, dessen Beendigungseintrag noch auf das Aufräumen wartet.]{#process-states-z-zombie .correct explanation="Ein Zombie bewahrt nach dem Ende der Ausführung einen minimalen, für den Elternprozess sichtbaren Status auf."}
 ::option[Einen durch ein Terminal-Anhaltesignal pausierten Prozess.]{#process-states-z-terminal-stop explanation="Ein Jobsteuerungsstopp wird gewöhnlich als `T` angezeigt."}

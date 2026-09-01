@@ -16,8 +16,7 @@ meta_keywords: "网络层, IP 地址, 子网, Linux 网络, 数据包路由, 数
 
 IP 标头包含源地址和目标地址，以及转发与协议处理所需的字段。其载荷通常包含 TCP 段、UDP 数据报或 ICMP 消息。IP 不保证数据包到达、按序传送或不重复。
 
-:::single-choice{#network-layer-ip-service}
-IP 本身提供哪种传送服务？
+:::single-choice{#network-layer-ip-service} IP 本身提供哪种传送服务？
 
 ::option[保证应用程序事务完成提交。]{#network-layer-guaranteed-commit explanation="IP 传送结果不能证明应用程序已持久保存数据。"}
 ::option[尽力而为的数据包传送。]{#network-layer-best-effort .correct explanation="所需的恢复或排序由更高层或应用程序添加。"}
@@ -28,8 +27,7 @@ IP 本身提供哪种传送服务？
 
 地址和前缀长度共同定义从开头起哪些位组成网络前缀。主机使用这些信息和路由，判断目标是否在链路上，还是需要经过下一跳路由器。子网是某个前缀与策略下的地址范围；不同子网不会自动相互连接。
 
-:::single-choice{#network-layer-prefix-decision}
-什么帮助主机判断 IPv4 目标是否位于本地链路？
+:::single-choice{#network-layer-prefix-decision} 什么帮助主机判断 IPv4 目标是否位于本地链路？
 
 ::option[目标的应用程序密码。]{#network-layer-password explanation="身份验证数据不定义网络前缀。"}
 ::option[以太网电缆的颜色。]{#network-layer-cable-color explanation="电缆外观没有寻址语义。"}
@@ -46,8 +44,7 @@ $ ip route get 203.0.113.10
 
 这只是本地路由查询，不能证明每台下游路由器都有正常路由，也不能证明目标会接受流量。
 
-:::single-choice{#network-layer-longest-prefix}
-在到达同一目标的合格路由中，通常哪一条胜出？
+:::single-choice{#network-layer-longest-prefix} 在到达同一目标的合格路由中，通常哪一条胜出？
 
 ::option[接口名称按字母排序最靠前的路由。]{#network-layer-alphabetical explanation="接口拼写不是选择规则。"}
 ::option[最旧的路由，无论其前缀如何。]{#network-layer-oldest explanation="仅凭存在时间不能凌驾于前缀匹配之上。"}
@@ -60,8 +57,7 @@ $ ip route get 203.0.113.10
 
 路由器通常保留端到端 IP 地址，但 NAT、隧道、代理和其他中间设备可能转换或封装数据包。无论如何，链路层标头都会在每个路由跳点改变。
 
-:::single-choice{#network-layer-hop-limit}
-为什么路由器要递减 TTL 或 Hop Limit？
+:::single-choice{#network-layer-hop-limit} 为什么路由器要递减 TTL 或 Hop Limit？
 
 ::option[提高应用程序的文件权限。]{#network-layer-hop-permissions explanation="跳数与文件系统授权无关。"}
 ::option[把每个数据包从 IPv4 转换为 IPv6。]{#network-layer-hop-convert explanation="协议转换不是该字段的用途。"}

@@ -32,8 +32,7 @@ sally sells seashells
 
 Setze Regex-Muster in Anführungszeichen, damit die Shell sie nicht erweitert oder aufteilt, bevor das Werkzeug sie erhält. Regex unterscheidet sich außerdem von der Shell-Pfaderweiterung: In einem regulären Ausdruck wiederholt `*` das vorangehende Element; in einem Shell-Glob ist `*` selbst ein Platzhalter für eine Zeichenfolge in Pfadnamen.
 
-:::single-choice{#regex-versus-shell-star}
-Was bewirkt `*` in einem regulären Ausdruck wie `ab*`?
+:::single-choice{#regex-versus-shell-star} Was bewirkt `*` in einem regulären Ausdruck wie `ab*`?
 
 ::option[Es passt auf jeden Dateinamen im aktuellen Verzeichnis.]{#regex-shell-glob explanation="Das beschreibt die Pfaderweiterung der Shell in einem Befehlskontext, nicht die Bedeutung von `*` innerhalb eines regulären Ausdrucks."}
 ::option[Es wiederholt das vorangehende `b` nullmal oder beliebig oft.]{#regex-repeat-b .correct explanation="Ein Regex-Quantifizierer bezieht sich auf das unmittelbar vorangehende Element; `ab*` passt daher auf `a`, `ab`, `abb` und so weiter."}
@@ -60,8 +59,7 @@ Kombiniere beide Anker, wenn die gesamte Zeile dem Muster entsprechen muss:
 ^by the seashore$
 ```
 
-:::single-choice{#regex-complete-line}
-Welches Muster passt ausschließlich auf eine Zeile, deren vollständiger Text `by the seashore` lautet?
+:::single-choice{#regex-complete-line} Welches Muster passt ausschließlich auf eine Zeile, deren vollständiger Text `by the seashore` lautet?
 
 ::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="Das Caret erzwingt den Beginn am Zeilenanfang; das Dollarzeichen erzwingt das Ende mit der Zeile."}
 ::option[`by the seashore`]{#regex-unanchored-line explanation="Ohne Anker kann diese Zeichenfolge innerhalb einer längeren Zeile mit zusätzlichem Text davor oder danach passen."}
@@ -78,8 +76,7 @@ b.
 
 Das passt auf `by`, könnte aber auch `ba` oder `b7` treffen. Auf ein einzelnes `b` passt es nicht, weil danach ein Zeichen erforderlich ist. Einen wörtlichen Punkt schützt du als `\.` oder setzt ihn in einen geeigneten Klammerausdruck.
 
-:::single-choice{#regex-dot-character}
-Welche Zeichenfolge wird vom Ganzzeilenmuster `^b.$` nicht getroffen?
+:::single-choice{#regex-dot-character} Welche Zeichenfolge wird vom Ganzzeilenmuster `^b.$` nicht getroffen?
 
 ::option[`by`]{#regex-dot-by explanation="Der Punkt passt auf `y`; die zwei Zeichen lange Zeichenfolge erfüllt das Muster."}
 ::option[`b`]{#regex-dot-b .correct explanation="Der Punkt erfordert ein Zeichen nach `b`, doch diese Zeichenfolge endet sofort."}
@@ -104,8 +101,7 @@ s[^e]lls
 
 Das passt auf `salls`, aber nicht auf `sells`, weil das Zeichen hinter dem ersten `s` kein `e` sein darf.
 
-:::single-choice{#regex-negated-bracket}
-Worauf passt `[^e]`?
+:::single-choice{#regex-negated-bracket} Worauf passt `[^e]`?
 
 ::option[Auf genau ein Zeichen außer `e`.]{#regex-not-e .correct explanation="Ein führendes Caret innerhalb der Klammern bildet das Komplement der aufgeführten Menge; der Ausdruck verbraucht weiterhin genau ein Zeichen."}
 ::option[Auf den Zeilenanfang, gefolgt von `e`.]{#regex-caret-e-anchor explanation="Innerhalb eines Klammerausdrucks negiert ein führendes Caret die Menge, statt eine Zeile zu verankern."}
@@ -143,8 +139,7 @@ $ grep -E '^(cat|dog)s?$' animals.txt
 
 Damit werden vollständige Zeilen `cat`, `cats`, `dog` oder `dogs` ausgewählt. Im BRE-Modus gelten für diese Operatoren andere Maskierungsregeln; übertrage ein Muster daher nicht ungeprüft zwischen Varianten.
 
-:::single-choice{#regex-extended-alternation}
-Welcher Befehl aktiviert für das Muster `^(cat|dog)s?$` die erweiterte Regex-Syntax?
+:::single-choice{#regex-extended-alternation} Welcher Befehl aktiviert für das Muster `^(cat|dog)s?$` die erweiterte Regex-Syntax?
 
 ::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F` behandelt alle Regex-Operatoren als wörtlichen Text; Gruppierung, Alternative und optionale Wiederholung sind damit deaktiviert."}
 ::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E` wählt erweiterte reguläre Ausdrücke und aktiviert die gezeigte Gruppierung, Alternative und das optionale `s`."}

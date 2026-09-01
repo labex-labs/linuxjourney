@@ -22,8 +22,7 @@ IPv4 s’affiche sous forme de quatre octets de huit bits séparés par des poin
 
 Chaque octet va de 0 à 255 ; l’adresse complète contient donc quatre octets. La longueur du préfixe indique combien de bits initiaux appartiennent au préfixe réseau, comme dans `192.0.2.165/24`.
 
-:::single-choice{#ipv4-address-size}
-Quelle est la taille d’une adresse IPv4 ?
+:::single-choice{#ipv4-address-size} Quelle est la taille d’une adresse IPv4 ?
 
 ::option[32 bits répartis en quatre octets.]{#ipv4-thirty-two-bits .correct explanation="Quatre groupes de huit bits produisent la représentation décimale pointée."}
 ::option[24 bits dans chaque réseau.]{#ipv4-always-twenty-four explanation="Un `/24` est une longueur de préfixe, et non la taille de chaque adresse IPv4."}
@@ -36,8 +35,7 @@ Toutes les adresses IPv4 ne sont pas routables globalement. Citons la boucle loc
 
 Les adresses privées peuvent être réutilisées dans des réseaux distincts. Le NAT peut les traduire pour une communication externe, mais n’est pas nécessaire à la communication au sein du domaine privé routé.
 
-:::single-choice{#ipv4-private-reuse}
-Pourquoi `10.0.0.1` peut-elle apparaître dans de nombreuses organisations ?
+:::single-choice{#ipv4-private-reuse} Pourquoi `10.0.0.1` peut-elle apparaître dans de nombreuses organisations ?
 
 ::option[Chaque instance identifie le même routeur physique.]{#ipv4-same-router explanation="Cette adresse prend son sens dans chaque réseau et n’est pas globalement unique."}
 ::option[Les routeurs IPv4 ignorent le premier octet.]{#ipv4-ignore-octet explanation="Tous les bits d’adresse participent à la correspondance des routes."}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 Elle montre le préfixe, la diffusion, la portée, le marqueur d’origine dynamique et l’interface. D’autres lignes peuvent indiquer les durées de vie valide et privilégiée. Une interface peut porter plusieurs adresses IPv4.
 
-:::single-choice{#ipv4-ip-output-prefix}
-Que signifie `/24` dans `192.0.2.165/24` ?
+:::single-choice{#ipv4-ip-output-prefix} Que signifie `/24` dans `192.0.2.165/24` ?
 
 ::option[L’adresse expire après 24 secondes.]{#ipv4-prefix-seconds explanation="La durée de vie est indiquée séparément."}
 ::option[Les 24 premiers bits de l’adresse forment le préfixe réseau.]{#ipv4-prefix-bits .correct explanation="Les huit bits restants identifient des positions au sein de ce préfixe."}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 Lisez le prochain saut, l’interface et la source sélectionnés, puis testez le chemin réel de l’application. Ne modifiez pas les adresses d’un hôte distant sans accès à la console ni plan de retour en arrière.
 
-:::single-choice{#ipv4-route-get-purpose}
-Que peut afficher `ip route get DESTINATION` ?
+:::single-choice{#ipv4-route-get-purpose} Que peut afficher `ip route get DESTINATION` ?
 
 ::option[La configuration de chaque routeur sur tout le chemin Internet.]{#ipv4-all-router-config explanation="Une recherche locale n’interroge pas la configuration des périphériques en aval."}
 ::option[La décision de routage locale, notamment l’interface et la source privilégiée.]{#ipv4-route-decision .correct explanation="La commande évalue la politique de routage actuelle de l’hôte pour la destination fournie."}

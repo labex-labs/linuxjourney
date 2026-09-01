@@ -27,16 +27,14 @@ $ command -v vi
 
 An den aufgelösten Pfaden allein erkennst du nicht, ob `vi` und `vim` dieselbe Implementierung sind. `type -a vi vim` und die Versionsausgabe der Editoren liefern weitere Hinweise.
 
-:::single-choice{#vim-name-origin}
-Wofür steht der Name Vim?
+:::single-choice{#vim-name-origin} Wofür steht der Name Vim?
 
 ::option[Visual Input Manager]{#vim-visual-input explanation="Diese Auflösung ist nicht der Ursprung des Editornamens."}
 ::option[Virtual Interface Mode]{#vim-virtual-interface explanation="Vim verwendet zwar Modi, doch für diesen Ausdruck steht sein Name nicht."}
 ::option[Vi Improved]{#vim-vi-improved .correct explanation="Vim begann als verbesserter vi-kompatibler Editor; diese Herkunft spiegelt sich in seinem Namen wider."}
 :::
 
-:::single-choice{#vim-check-command}
-Welcher Befehl prüft, ob Bash den Namen `vim` derzeit auflösen kann?
+:::single-choice{#vim-check-command} Welcher Befehl prüft, ob Bash den Namen `vim` derzeit auflösen kann?
 
 ::option[`vim --create`]{#vim-create-option explanation="Dies ist keine Prüfung der Shell-Auflösung und auch kein Verfahren zum Installieren oder Auffinden von Vim."}
 ::option[`command -v vim`]{#vim-command-resolution .correct explanation="Das Shell-Builtin meldet den für den Namen verwendeten Befehl, sofern einer verfügbar ist."}
@@ -61,8 +59,7 @@ Existiert `filename.txt` und ist lesbar, lädt Vim ihren Inhalt in einen Puffer.
 
 Vim umgeht keine Dateisystemberechtigungen. Eine Datei öffnen zu können bedeutet nicht automatisch, dass dein Konto Änderungen unter ihrem Pfad speichern darf.
 
-:::single-choice{#vim-open-missing-path}
-Was geschieht normalerweise, wenn `vim draft.txt` einen noch nicht vorhandenen Pfad bezeichnet?
+:::single-choice{#vim-open-missing-path} Was geschieht normalerweise, wenn `vim draft.txt` einen noch nicht vorhandenen Pfad bezeichnet?
 
 ::option[Vim öffnet einen neuen Puffer und erstellt die Datei erst beim Schreiben.]{#vim-new-buffer .correct explanation="Der Pfad wird für den Puffer vorgemerkt; die Datei auf dem Datenträger entsteht erst durch einen erfolgreichen Speichervorgang."}
 ::option[Vim erstellt sofort eine leere Datei auf dem Datenträger und öffnet danach die Oberfläche.]{#vim-immediate-create explanation="Der neue Puffer wird mit dem Pfad verknüpft, doch die Datei wird erst beim erfolgreichen Schreiben erstellt."}
@@ -86,8 +83,7 @@ Wechsle innerhalb von Vim mit `Esc` in den Normalmodus, gib `:help` ein und drü
 
 Hilfetags sind genau, weshalb auch Satzzeichen eine Rolle spielen können. Mit `Ctrl+]` folgst du einem Hilfelink, mit `Ctrl+T` kehrst du zurück.
 
-:::single-choice{#vim-guided-tutorial}
-Welcher Shell-Befehl startet Vims angeleitetes Tutorial, sofern es installiert ist?
+:::single-choice{#vim-guided-tutorial} Welcher Shell-Befehl startet Vims angeleitetes Tutorial, sofern es installiert ist?
 
 ::option[`vim --quiz`]{#vim-quiz-option explanation="Vim verwendet diese Option nicht als Standardschnittstelle für sein angeleitetes Tutorial."}
 ::option[`vimtutor`]{#vim-tutor-command .correct explanation="`vimtutor` öffnet eine Kopie des interaktiven Tutorials für sichere praktische Übungen."}
@@ -105,8 +101,7 @@ $ vim vim-practice.txt
 
 Die folgenden Lektionen führen Suche, Navigation, Einfügen, Bearbeiten und Speichern ein. Bis du sicher beenden kannst, merke dir: `Esc` führt in den Normalmodus zurück; `:q!` gefolgt von Enter verwirft ungespeicherte Änderungen im aktuellen Fenster. Verwende den Befehl nur, wenn du diese Änderungen bewusst aufgeben möchtest.
 
-:::single-choice{#vim-abandon-practice-changes}
-Welcher Vim-Befehl beendet bei einer entbehrlichen Übungsdatei das aktuelle Fenster und verwirft ungespeicherte Änderungen?
+:::single-choice{#vim-abandon-practice-changes} Welcher Vim-Befehl beendet bei einer entbehrlichen Übungsdatei das aktuelle Fenster und verwirft ungespeicherte Änderungen?
 
 ::option[`:w`]{#vim-write-only explanation="`:w` schreibt den Puffer, beendet aber nicht das aktuelle Fenster."}
 ::option[`:wq`]{#vim-write-quit explanation="`:wq` speichert Änderungen vor dem Beenden und verwirft sie daher nicht."}

@@ -16,8 +16,7 @@ meta_keywords: "链路状态协议, OSPF, Linux 网络, 路由协议, 网络拓�
 
 路由器发现兼容邻居，并根据接口类型、区域、计时器、身份验证和其他参数建立协议邻接关系。看到 hello 数据包并不保证已经形成完整邻接关系；配置不匹配可能让状态机提前停止。
 
-:::single-choice{#link-state-hello-limit}
-收到 OSPF hello 无法证明什么？
+:::single-choice{#link-state-hello-limit} 收到 OSPF hello 无法证明什么？
 
 ::option[路由器已经形成完全同步的邻接关系。]{#link-state-not-full .correct explanation="区域、计时器、身份验证、MTU 和其他状态都可能阻止完整数据库交换。"}
 ::option[邻居至少发送过一条协议消息。]{#link-state-hello-sent explanation="收到 hello 可以直接证明这一有限事实。"}
@@ -28,8 +27,7 @@ meta_keywords: "链路状态协议, OSPF, Linux 网络, 路由协议, 网络拓�
 
 每台路由器都会发出有关自身相关状态的通告。邻居会在规定的区域或域内可靠地泛洪较新的信息，而不只是在最初的一对邻居之间保留更新。序列和老化机制用于区分当前信息并移除过期状态。
 
-:::single-choice{#link-state-flooding-scope}
-为什么链路状态信息要泛洪到一个邻居之外？
+:::single-choice{#link-state-flooding-scope} 为什么链路状态信息要泛洪到一个邻居之外？
 
 ::option[每个应用程序都需要所有路由器密码的副本。]{#link-state-password-copy explanation="应用程序凭据不是拓扑通告。"}
 ::option[以太网无法发送单播帧。]{#link-state-no-unicast explanation="以太网支持单播；这里的泛洪是路由协议分发机制。"}
@@ -42,8 +40,7 @@ meta_keywords: "链路状态协议, OSPF, Linux 网络, 路由协议, 网络拓�
 
 “最短”指协议开销之和最低，并不一定表示路由器最少或实测应用程序延迟最低。开销设计必须反映运维意图。
 
-:::single-choice{#link-state-shortest-meaning}
-链路状态路径计算中的“最短”是什么意思？
+:::single-choice{#link-state-shortest-meaning} 链路状态路径计算中的“最短”是什么意思？
 
 ::option[前缀书写字符最少的路由。]{#link-state-shortest-text explanation="文本长度与拓扑开销无关。"}
 ::option[协议开销总和最小的路径。]{#link-state-lowest-cost .correct explanation="开销模型不一定直接对应跳数或当前延迟。"}
@@ -56,8 +53,7 @@ OSPF 区域会限制拓扑泛洪和计算范围，在正常区域间设计中，
 
 链路变化后，检测、通告泛洪、SPF 计算、路由安装和转发恢复都需要时间。它可以比简单距离矢量设计更快地收敛，但并非在每种故障或配置下都自动如此。
 
-:::single-choice{#link-state-convergence-stages}
-调查 OSPF 收敛时应该测量什么？
+:::single-choice{#link-state-convergence-stages} 调查 OSPF 收敛时应该测量什么？
 
 ::option[只测量管理员打开终端的时间。]{#link-state-terminal-time explanation="这无法隔离协议或转发阶段。"}
 ::option[只检查路由器名称的字母顺序。]{#link-state-router-names explanation="名称不决定收敛时间。"}

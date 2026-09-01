@@ -18,8 +18,7 @@ A normal process executes in user mode within its virtual address space. It can 
 
 Page tables and protection bits enforce memory access. If a thread references an invalid or disallowed address, the processor traps into the kernel, which can resolve a valid page fault or deliver a signal such as `SIGSEGV`.
 
-:::single-choice{#kernel-privilege-user-mode-memory}
-What memory can a user-mode process normally access directly?
+:::single-choice{#kernel-privilege-user-mode-memory} What memory can a user-mode process normally access directly?
 
 ::option[Every physical RAM address and all kernel memory.]{#kernel-privilege-all-physical explanation="Those accesses are prevented by privilege and virtual-memory protection."}
 ::option[Only one fixed byte selected when the process starts.]{#kernel-privilege-one-byte explanation="A process can have many mapped regions while remaining unprivileged."}
@@ -32,8 +31,7 @@ Kernel mode permits execution of privileged instructions and access to protected
 
 Other architectures use different names and mechanisms, such as exception levels. Virtualization adds hypervisor and guest relationships that do not fit a simple two-ring drawing. The essential idea is controlled privilege, not the x86 ring numbers themselves.
 
-:::single-choice{#kernel-privilege-x86-kernel-ring}
-Which x86 protection ring normally executes the Linux kernel?
+:::single-choice{#kernel-privilege-x86-kernel-ring} Which x86 protection ring normally executes the Linux kernel?
 
 ::option[Ring 3.]{#kernel-privilege-ring-three explanation="Ring 3 is the conventional user-mode privilege level."}
 ::option[Ring 0.]{#kernel-privilege-ring-zero .correct explanation="The kernel uses the most privileged traditional x86 ring."}
@@ -52,8 +50,7 @@ The processor saves execution context, changes privilege according to configured
 
 The application does not temporarily become kernel code. The CPU executes a kernel handler on behalf of the thread, with kernel-controlled stacks and mappings.
 
-:::single-choice{#kernel-privilege-system-call-transition}
-What happens during a system-call transition?
+:::single-choice{#kernel-privilege-system-call-transition} What happens during a system-call transition?
 
 ::option[The application's user code receives unrestricted ring 0 execution.]{#kernel-privilege-user-ring-zero explanation="Only trusted kernel code executes after the controlled entry."}
 ::option[The process permanently changes its UID to zero.]{#kernel-privilege-uid-zero explanation="Processor mode transition does not rewrite user credentials."}
@@ -66,8 +63,7 @@ An application running as Linux user `root` still normally executes in user mode
 
 Capabilities, namespaces, seccomp, security modules, and cgroups further constrain what a process can request. This layered policy is separate from the hardware user/kernel mode boundary.
 
-:::single-choice{#kernel-privilege-root-distinction}
-Which statement correctly compares root identity and kernel mode?
+:::single-choice{#kernel-privilege-root-distinction} Which statement correctly compares root identity and kernel mode?
 
 ::option[Root is a user-space credential; kernel mode is a processor execution privilege.]{#kernel-privilege-credential-versus-mode .correct explanation="A root process makes authorized requests from user mode, while trusted kernel code performs privileged execution."}
 ::option[Every root-owned instruction runs as loadable kernel code.]{#kernel-privilege-root-kernel-code explanation="UID ownership does not transform an executable into a kernel module."}
@@ -80,8 +76,7 @@ The boundary limits damage from ordinary bugs and provides a point for access ch
 
 Speculative-execution issues and side channels also show that hardware isolation requires ongoing mitigation; “different ring” is a foundation, not a complete security proof.
 
-:::single-choice{#kernel-privilege-boundary-limit}
-Does user/kernel mode separation guarantee complete system security?
+:::single-choice{#kernel-privilege-boundary-limit} Does user/kernel mode separation guarantee complete system security?
 
 ::option[Yes; kernel vulnerabilities cannot affect user processes.]{#kernel-privilege-no-kernel-vulns explanation="A kernel vulnerability can compromise the whole system."}
 ::option[No; privileged-code flaws and side channels can still cross intended boundaries.]{#kernel-privilege-not-complete .correct explanation="The mode split reduces attack surface but must be combined with correct kernel code and additional mitigations."}

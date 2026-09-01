@@ -16,8 +16,7 @@ Red Hat Enterprise Linux(흔히 **RHEL**이라 함) 는 Red Hat 이 기업용으
 
 RHEL 은 서버, 데이터 센터, 클라우드 시스템 및 규제 대상 비즈니스 환경 전반에서 사용되기 때문에 가장 중요한 기업용 리눅스 배포판 중 하나입니다. 지원 가능성과 장기적인 수명 주기 계획이 가치의 핵심이기 때문에 일반적인 커뮤니티 배포판과는 역할이 다릅니다.
 
-:::single-choice{#match-rhel-priorities}
-RHEL의 설계 목표와 가장 직접적으로 맞는 요구는 무엇인가요?
+:::single-choice{#match-rhel-priorities} RHEL의 설계 목표와 가장 직접적으로 맞는 요구는 무엇인가요?
 
 ::option[지원 수명 주기 없이 계속되는 기능 변경]{#continuous-unsupported-change explanation="RHEL은 지원되지 않는 지속 변화 대신 보수적이고 공개된 수명 주기를 따르며 예측 가능성이 기업 가치의 일부입니다."}
 ::option[장기 전문 지원이 제공되는 예측 가능한 릴리스]{#predictable-enterprise-platform .correct explanation="RHEL은 계획된 수명 주기, 유지 관리와 전문 지원이 필요한 조직을 위해 설계되어 운영 시스템을 오래 지원할 수 있게 합니다."}
@@ -36,8 +35,7 @@ RHEL 은 더 넓은 Red Hat 생태계와 밀접하게 연결되어 있습니다.
 
 두 경로를 비교하려면 [Fedora](https://labex.io/ko/lesson/fedora)를 참조하십시오. 배포판 제품군에 대한 더 넓은 개요는 [리눅스 배포판 선택하기](https://labex.io/ko/lesson/choosing-a-linux-distribution)를 참조하십시오.
 
-:::single-choice{#compare-fedora-and-rhel}
-Red Hat 생태계에서 Fedora는 RHEL과 어떤 관계인가요?
+:::single-choice{#compare-fedora-and-rhel} Red Hat 생태계에서 Fedora는 RHEL과 어떤 관계인가요?
 
 ::option[Fedora는 보안 유지 관리가 끝난 이전 RHEL 릴리스입니다.]{#fedora-old-rhel explanation="Fedora는 만료된 RHEL 버전이 아니라 자체 릴리스와 더 빠른 주기를 지닌 별도 커뮤니티 배포판입니다."}
 ::option[Fedora는 나중에 RHEL에 들어갈 수 있는 기술의 업스트림 커뮤니티 프로젝트입니다.]{#fedora-upstream .correct explanation="Fedora는 더 빠르게 움직이는 업스트림 커뮤니티 프로젝트이며 Red Hat은 더 보수적인 기업 플랫폼을 개발할 때 이 생태계를 활용합니다."}
@@ -50,8 +48,7 @@ RHEL 은 RPM 패키지 형식과 DNF 와 같은 도구를 사용하여 소프트
 
 장기적인 유지 관리와 예측 가능한 업데이트가 기업 시스템 운영 방식의 핵심이기 때문에 패키지 관리는 RHEL 관리자에게 핵심적인 운영 기술입니다.
 
-:::single-choice{#relate-rpm-and-dnf}
-RHEL에서 RPM과 DNF는 어떻게 함께 작동하나요?
+:::single-choice{#relate-rpm-and-dnf} RHEL에서 RPM과 DNF는 어떻게 함께 작동하나요?
 
 ::option[RPM은 패키지된 소프트웨어를 정의하고 DNF는 저장소 내용과 의존성을 관리합니다.]{#rpm-format-dnf-tool .correct explanation="RHEL 소프트웨어는 RPM 패키지로 배포되며 DNF는 이를 찾고 설치하고 업데이트하고 제거하는 상위 도구입니다."}
 ::option[DNF는 패키지된 소프트웨어를 정의하고 RPM은 그래픽 데스크톱을 관리합니다.]{#dnf-format-rpm-desktop explanation="역할을 뒤집고 잘못 설명했습니다. RPM은 패키지 시스템이고 DNF가 상위 소프트웨어 관리를 수행합니다."}
@@ -64,8 +61,7 @@ RHEL에서 RPM과 DNF는 어떻게 함께 작동하나요?
 
 기업의 경우 이 지원 모델은 배포판 자체의 기술적 기능만큼 중요할 수 있습니다.
 
-:::single-choice{#use-published-lifecycle}
-공개된 지원 수명 주기가 조직에 가치 있는 이유는 무엇인가요?
+:::single-choice{#use-published-lifecycle} 공개된 지원 수명 주기가 조직에 가치 있는 이유는 무엇인가요?
 
 ::option[테스트 없이 모든 애플리케이션이 실행된다고 보장합니다.]{#guarantee-all-applications explanation="지원 운영체제라고 해서 모든 애플리케이션의 호환성을 보장하지 않으므로 여전히 호환성 검사와 테스트가 필요합니다."}
 ::option[지원 기간에는 보안 업데이트를 설치하지 않아도 됩니다.]{#avoid-security-updates explanation="지원 수명 주기는 유지 관리와 보안 업데이트를 제공할 뿐 업데이트 필요성을 없애지 않으며 시스템은 계속 관리해야 합니다."}

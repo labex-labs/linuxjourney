@@ -23,8 +23,7 @@ $ ip -brief address show
 
 Os nomes podem ser derivados do hardware, como `enp1s0`, tradicionais, como `eth0`, ou definidos pelo administrador. Nunca presuma que `eth0` exista ou identifique um adaptador específico.
 
-:::single-choice{#interfaces-name-assumption}
-Por que um script deve descobrir a interface em vez de presumir `eth0`?
+:::single-choice{#interfaces-name-assumption} Por que um script deve descobrir a interface em vez de presumir `eth0`?
 
 ::option[Toda interface precisa se chamar `lo`.]{#interfaces-all-loopback explanation="Loopback é uma interface especial, não o nome de todos os links."}
 ::option[Sistemas Linux podem usar vários esquemas de nomes.]{#interfaces-naming-varies .correct explanation="Nomes derivados do hardware, virtuais e personalizados tornam `eth0` pouco confiável."}
@@ -42,8 +41,7 @@ $ ip -s link show dev enp1s0
 
 As estatísticas revelam erros, descartes e contadores, mas precisam de intervalo e linha de base para ter significado.
 
-:::single-choice{#interfaces-up-limit}
-O que o estado administrativo `UP` não prova?
+:::single-choice{#interfaces-up-limit} O que o estado administrativo `UP` não prova?
 
 ::option[Que a conectividade de ponta a ponta funciona.]{#interfaces-up-not-connectivity .correct explanation="Ainda podem existir falhas de camada inferior, endereço, rota, filtro, nome ou serviço."}
 ::option[Que o administrador habilitou a interface.]{#interfaces-up-does-prove explanation="Esse é o significado direto do estado."}
@@ -61,8 +59,7 @@ $ sudo ip address add 192.0.2.10/24 dev enp1s0
 
 Eles afetam o estado atual e podem conflitar com um gerenciador que reaplique seu perfil. Derrubar a interface de acesso remoto pode encerrar a conexão. Antes de mudar, confirme o dispositivo, preserve console, registre o estado e prepare rollback testado ou temporizado.
 
-:::single-choice{#interfaces-ip-address-add-persistence}
-`ip address add` garante sozinho persistência após reiniciar?
+:::single-choice{#interfaces-ip-address-add-persistence} `ip address add` garante sozinho persistência após reiniciar?
 
 ::option[Não; o sistema de configuração ativo também precisa guardar a definição.]{#interfaces-manager-persistence .correct explanation="NetworkManager, systemd-networkd, ifupdown ou outro proprietário aplica a política persistente."}
 ::option[Sim; toda mudança do kernel edita todos os perfis.]{#interfaces-runtime-always-persistent explanation="Mudanças de runtime não atualizam universalmente a configuração persistente."}
@@ -81,8 +78,7 @@ $ nmcli device status
 
 Use somente comandos do gerenciador identificado. Dois gerenciadores no mesmo link podem competir e sobrescrever estados.
 
-:::single-choice{#interfaces-config-owner}
-O que deve preceder uma mudança persistente na interface?
+:::single-choice{#interfaces-config-owner} O que deve preceder uma mudança persistente na interface?
 
 ::option[Editar todos os arquivos de rede possíveis.]{#interfaces-edit-all explanation="Definições concorrentes criam conflitos e reaplicações imprevisíveis."}
 ::option[Identificar qual gerenciador controla a interface.]{#interfaces-identify-owner .correct explanation="A fonte e o método corretos dependem desse proprietário."}
@@ -93,8 +89,7 @@ O que deve preceder uma mudança persistente na interface?
 
 Verifique link, endereços e validade, rotas escolhidas, resolver, vizinhos e o aplicativo real. Para mudança persistente, teste reinício controlado do serviço ou do sistema somente com recuperação disponível.
 
-:::single-choice{#interfaces-change-verification}
-O que é evidência melhor que apenas ver o novo endereço em `ip address`?
+:::single-choice{#interfaces-change-verification} O que é evidência melhor que apenas ver o novo endereço em `ip address`?
 
 ::option[O nome da interface contém um dígito.]{#interfaces-digit explanation="O nome não valida o caminho."}
 ::option[O prompt continua com a mesma cor.]{#interfaces-prompt-color explanation="A aparência do terminal não tem relação com a rede."}

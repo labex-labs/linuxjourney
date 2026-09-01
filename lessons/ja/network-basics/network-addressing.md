@@ -18,8 +18,7 @@ Ethernet の MAC アドレスは48ビットで、通常 `00:c4:b5:45:b2:43` の�
 
 MAC アドレスは恒久的または世界で一意とは限りません。ソフトウェアがローカル管理アドレスを割り当て、仮想インターフェースがアドレスを生成し、Wi-Fi のプライバシー機能がランダム化する場合があります。ルーターは通常ホップごとに Ethernet フレームを置き換えるため、リモートサーバーは元のローカル Ethernet 送信元アドレスを受け取りません。
 
-:::single-choice{#network-addressing-mac-scope}
-パケット配送における Ethernet MAC アドレスの通常の範囲はどこですか？
+:::single-choice{#network-addressing-mac-scope} パケット配送における Ethernet MAC アドレスの通常の範囲はどこですか？
 
 ::option[現在のローカルリンク。]{#network-addressing-local-link .correct explanation="ルーターは後続ホップ用に新しいリンク層フレームを作ります。"}
 ::option[最終的なインターネットサーバーまでの全ルーターホップ。]{#network-addressing-all-hops explanation="元のフレームは変更なしでルーターを通過しません。"}
@@ -32,8 +31,7 @@ IPv4 は32ビット（4オクテット）、IPv6 は128ビットです。通常 
 
 1つのインターフェースが複数の IP アドレスを持て、DHCP、プライバシーアドレス、フェイルオーバー、管理操作で変わる場合があります。プライベート IPv4 は別々のネットワークで再利用でき、外部到達性は公開ルーティングと NAT の方針で決まります。
 
-:::single-choice{#network-addressing-ipv4-size}
-IPv4 アドレスの大きさはどれですか？
+:::single-choice{#network-addressing-ipv4-size} IPv4 アドレスの大きさはどれですか？
 
 ::option[4オクテットの32ビット。]{#network-addressing-thirty-two .correct explanation="表示される各10進要素が8ビットを表します。"}
 ::option[1つの16進数字の4ビット。]{#network-addressing-four-bits explanation="4ビットで表せるのは16進数字1桁だけです。"}
@@ -52,8 +50,7 @@ $ getent ahosts example.com
 
 DNS 応答は変化・キャッシュされることがあり、名前解決の成功はサービス到達性を証明しません。
 
-:::single-choice{#network-addressing-getent-purpose}
-名前解決の確認で `getent ahosts` を使う理由は何ですか？
+:::single-choice{#network-addressing-getent-purpose} 名前解決の確認で `getent ahosts` を使う理由は何ですか？
 
 ::option[返されたアドレスを全インターフェースへ永久に割り当てる。]{#network-addressing-getent-assign explanation="データベースを照会するだけで、インターフェースを設定しません。"}
 ::option[システムで設定された名前サービス経路へアドレスを問い合わせる。]{#network-addressing-system-resolver .correct explanation="ホストの方針に従い、ローカルファイルや DNS などを含められます。"}
@@ -71,8 +68,7 @@ $ ip -brief address
 
 到達性を診断するときは、さらに経路と近隣状態を調べます。名前だけから正しい送信元インターフェースやアドレスを推測してはいけません。経路選択、ポリシールール、名前空間、トンネルで経路が変わる場合があります。
 
-:::single-choice{#network-addressing-ip-link-versus-address}
-割り当て済み IP アドレスを中心に表示するコマンドはどれですか？
+:::single-choice{#network-addressing-ip-link-versus-address} 割り当て済み IP アドレスを中心に表示するコマンドはどれですか？
 
 ::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="address オブジェクトはインターフェースの IPv4・IPv6 割り当てを表示します。"}
 ::option[`ip -brief link` だけ。]{#network-addressing-link-only explanation="link ビューはインターフェースとリンク層の状態を中心に表示します。"}

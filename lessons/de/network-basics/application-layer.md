@@ -18,8 +18,7 @@ Ein Anwendungsprotokoll definiert, wie Kommunikationspartner Nachrichten und Zus
 
 Nicht jedes Anwendungsprotokoll fügt einen einzigen festen „Anwendungsheader“ hinzu. Manche verwenden Textfelder, manche binäre Datensätze, manche mehrere verschachtelte Formate, und manche transportieren eine fortlaufende Nachrichtenfolge über eine Transportverbindung.
 
-:::single-choice{#application-layer-protocol-role}
-Was definiert ein Anwendungsprotokoll in erster Linie?
+:::single-choice{#application-layer-protocol-role} Was definiert ein Anwendungsprotokoll in erster Linie?
 
 ::option[Bedeutung und Austauschregeln von Dienstnachrichten.]{#application-layer-message-semantics .correct explanation="Kommunikationspartner benötigen gemeinsame Syntax, Semantik und Zustandsverhalten, um zusammenzuarbeiten."}
 ::option[Die Spannung auf jedem Ethernet-Kabel.]{#application-layer-voltage explanation="Physische Signalisierung gehört zu Technologien niedrigerer Schichten."}
@@ -30,8 +29,7 @@ Was definiert ein Anwendungsprotokoll in erster Linie?
 
 Ein Client beginnt eine Anfrage oder Verbindung zu einem Dienst; ein Server lauscht oder nimmt sie auf andere Weise an. Dies sind Rollen in einer Interaktion und keine dauerhaften Gerätekategorien. Ein Host kann gleichzeitig Client für DNS und Server für SSH sein, und manche Protokolle verwenden gleichrangige Peer-to-Peer-Rollen.
 
-:::single-choice{#application-layer-client-role}
-Was macht ein Programm bei einem typischen Anfrage-Antwort-Austausch zum Client?
+:::single-choice{#application-layer-client-role} Was macht ein Programm bei einem typischen Anfrage-Antwort-Austausch zum Client?
 
 ::option[Es beginnt eine Anfrage an den Dienst.]{#application-layer-client-initiates .correct explanation="Client und Server bezeichnen Interaktionsrollen, die ein Host gleichzeitig für unterschiedliche Dienste ausüben kann."}
 ::option[Es muss auf einem Laptop statt einem Server laufen.]{#application-layer-client-laptop explanation="Die Hardwarekategorie bestimmt nicht die Protokollrolle."}
@@ -42,8 +40,7 @@ Was macht ein Programm bei einem typischen Anfrage-Antwort-Austausch zum Client?
 
 Eine Anwendung kann einen Dienstnamen in eine oder mehrere IP-Adressen auflösen und einen Transportendpunkt auswählen. Bekannte Ports stellen Standardwerte bereit und sind kein unveränderlicher Protokollbeweis. HTTP verwendet häufig TCP-Port 80 und HTTPS TCP-Port 443, doch beide können andernorts laufen. SMTP verwendet unterschiedliche Ports und Richtlinien für Weiterleitung und Nachrichteneinreichung.
 
-:::single-choice{#application-layer-port-limit}
-Was beweist ein offener TCP-Port 443 für sich allein?
+:::single-choice{#application-layer-port-limit} Was beweist ein offener TCP-Port 443 für sich allein?
 
 ::option[Dass ein Prozess dort einen TCP-Endpunkt angenommen hat; sein Anwendungsverhalten muss weiterhin getestet werden.]{#application-layer-port-endpoint .correct explanation="Protokollaustausch und TLS-Validierung liefern stärkere Belege auf Anwendungsschicht."}
 ::option[Dass der Dienst sicher eine korrekt konfigurierte HTTPS-Anwendung ist.]{#application-layer-port-proves-https explanation="Eine Portnummer validiert weder Protokollverhalten noch Identität oder Zustand."}
@@ -56,8 +53,7 @@ TLS kann Vertraulichkeit, Integrität und authentifizierte Identität des Kommun
 
 Eine HTTPS-Diagnose kann beispielsweise Namensauflösung, TCP-Verbindung, TLS-Zertifikat und -Name, HTTP-Antwort sowie Anwendungsinhalt getrennt prüfen. Erfolg in einem Schritt grenzt das Problem ein, beweist aber nicht alle späteren Schritte.
 
-:::single-choice{#application-layer-tls-limit}
-Was belegt eine erfolgreiche Validierung des TLS-Zertifikats?
+:::single-choice{#application-layer-tls-limit} Was belegt eine erfolgreiche Validierung des TLS-Zertifikats?
 
 ::option[Dass jeder Benutzer für jede Ressource autorisiert ist.]{#application-layer-tls-all-users explanation="Transportauthentifizierung ersetzt keine Anwendungszugriffsrichtlinie."}
 ::option[Die Identität des Kommunikationspartners für den validierten Namen und einen authentifizierten sicheren Kanal.]{#application-layer-tls-identity .correct explanation="Anwendungsautorisierung und inhaltliche Korrektheit benötigen weiterhin eigene Prüfungen."}

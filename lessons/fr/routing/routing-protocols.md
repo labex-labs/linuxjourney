@@ -18,8 +18,7 @@ Un protocole de routage apprend des routes candidates dans sa propre base. Le ro
 
 L’établissement d’une adjacence de protocole ne prouve pas que le préfixe voulu a été appris, sélectionné, installé ou autorisé par la politique d’acheminement.
 
-:::single-choice{#routing-protocols-adjacency-limit}
-Qu’est-ce qu’une adjacence de routage établie ne prouve pas ?
+:::single-choice{#routing-protocols-adjacency-limit} Qu’est-ce qu’une adjacence de routage établie ne prouve pas ?
 
 ::option[Que chaque route voulue est installée et achemine correctement.]{#routing-protocols-not-full-proof .correct explanation="L’annonce, la sélection, l’installation, le filtrage et le fonctionnement du plan de données sont des étapes distinctes."}
 ::option[Que deux participants au protocole ont échangé des messages de contrôle.]{#routing-protocols-no-messages explanation="L’établissement d’une adjacence nécessite normalement une communication de protocole."}
@@ -32,8 +31,7 @@ Les protocoles de passerelle intérieure fonctionnent au sein d’un domaine de 
 
 Les métriques possèdent un sens propre à chaque protocole. Un coût OSPF, un nombre de sauts RIP et un ensemble d’attributs BGP ne peuvent pas être comparés comme s’ils partageaient une échelle numérique universelle. Les implémentations emploient une préférence de route ou une distance administrative pour choisir entre les sources avant ou parallèlement à la sélection propre au protocole.
 
-:::single-choice{#routing-protocols-metric-comparison}
-Peut-on comparer directement un nombre de sauts RIP à un coût OSPF ?
+:::single-choice{#routing-protocols-metric-comparison} Peut-on comparer directement un nombre de sauts RIP à un coût OSPF ?
 
 ::option[Oui, car toutes les métriques de routage emploient les mêmes unités.]{#routing-protocols-universal-metric explanation="Chaque protocole définit sa propre métrique et son propre processus de sélection."}
 ::option[Oui, mais uniquement lorsque les deux valeurs sont nulles.]{#routing-protocols-zero-metric explanation="Leur sémantique reste différente quelle que soit la valeur affichée."}
@@ -44,8 +42,7 @@ Peut-on comparer directement un nombre de sauts RIP à un coût OSPF ?
 
 Les protocoles à vecteur de distance annoncent l’accessibilité et la distance par leurs voisins, puis déduisent les chemins de leurs rapports. Les protocoles à état des liens forment des adjacences, diffusent les informations d’état des liens dans un périmètre, construisent une base de topologie et calculent des arbres de plus courts chemins. Les protocoles modernes comportent des raffinements qui rendent ces catégories simples incomplètes.
 
-:::single-choice{#routing-protocols-link-state-input}
-Qu’emploie un routeur à état des liens pour calculer ses chemins ?
+:::single-choice{#routing-protocols-link-state-input} Qu’emploie un routeur à état des liens pour calculer ses chemins ?
 
 ::option[Uniquement le nom d’hôte de sa passerelle par défaut.]{#routing-protocols-hostname-only explanation="Un calcul de topologie exige des informations sur les liens et les préfixes."}
 ::option[Une base synchronisée qui décrit les liens du périmètre de routage.]{#routing-protocols-link-database .correct explanation="Le routeur exécute un algorithme de plus court chemin sur la topologie apprise."}
@@ -58,8 +55,7 @@ Après un changement de topologie ou de politique, les routeurs le détectent, p
 
 Pendant la convergence, des pertes, des boucles ou des trous noirs temporaires peuvent survenir. Mesurez séparément la détection, la propagation, le calcul et l’installation, puis vérifiez avec des sondes du plan de données.
 
-:::single-choice{#routing-protocols-convergence}
-Qu’est-ce que la convergence du routage ?
+:::single-choice{#routing-protocols-convergence} Qu’est-ce que la convergence du routage ?
 
 ::option[Le processus permettant d’atteindre un routage stable et utilisable après un changement.]{#routing-protocols-stable-routing .correct explanation="Elle comprend la propagation du contrôle et les mises à jour d’acheminement qui en résultent."}
 ::option[L’obligation pour chaque routeur de conserver une table globale identique.]{#routing-protocols-identical-table explanation="La politique, les zones et les rôles peuvent créer des différences intentionnelles."}

@@ -18,8 +18,7 @@ meta_keywords: "NAT, 网络地址转换, Linux 网络, 私有 IP, 公网 IP, Lin
 
 转换器会跟踪映射，以便把回复数据包转换回原始内部端点。它通常转发同一个传输流，不必像应用程序代理那样建立单独的代理连接。
 
-:::single-choice{#nat-source-translation}
-源 NAT 会更改出站数据包的什么内容？
+:::single-choice{#nat-source-translation} 源 NAT 会更改出站数据包的什么内容？
 
 ::option[只更改目标应用程序的文件权限。]{#nat-file-permissions explanation="NAT 操作网络和传输标头，而不是远程文件系统。"}
 ::option[更改源地址；在多对一使用中通常还会更改源端口。]{#nat-source-fields .correct explanation="该映射使返回流量能够与原始内部流关联。"}
@@ -30,8 +29,7 @@ meta_keywords: "NAT, 网络地址转换, Linux 网络, 私有 IP, 公网 IP, Lin
 
 目标 NAT 会重写目标地址或端口，常用于通过外部端点发布内部服务。端口转发规则可以把外部 TCP 端口映射到不同的内部地址和端口。返回流量需要进行一致的反向转换。
 
-:::single-choice{#nat-port-forward}
-哪种 NAT 形式通常用于实现入站端口转发？
+:::single-choice{#nat-port-forward} 哪种 NAT 形式通常用于实现入站端口转发？
 
 ::option[仅在路由查找前执行源 NAT。]{#nat-snat-port-forward explanation="发布内部目标需要转换目标字段。"}
 ::option[完全不进行地址或端口转换。]{#nat-no-translation explanation="按照定义，端口转发规则就是转换策略。"}
@@ -42,8 +40,7 @@ meta_keywords: "NAT, 网络地址转换, Linux 网络, 私有 IP, 公网 IP, Lin
 
 NAT 不是防火墙。有状态转换器可能没有与未经请求的入站流量对应的映射，但显式转发、目标转换、过滤和应用程序暴露共同决定哪些内容可达。安全策略应通过防火墙规则、最小权限服务和端到端控制明确表达并接受审计，而不能从地址重写中推断。
 
-:::single-choice{#nat-not-firewall}
-为什么不能把 NAT 本身视为安全策略？
+:::single-choice{#nat-not-firewall} 为什么不能把 NAT 本身视为安全策略？
 
 ::option[NAT 会自动加密每个载荷。]{#nat-encrypts explanation="地址转换不提供载荷机密性。"}
 ::option[转换规则与流量过滤规则的用途不同。]{#nat-filter-separate .correct explanation="即使存在转换，可达性和授权仍需要明确的过滤与服务策略。"}
@@ -63,8 +60,7 @@ $ sudo conntrack -L
 
 第二条命令需要 conntrack 工具和特权。更改规则集可能中断远程访问，因此应准备控制台恢复、原子配置、验证和回滚。
 
-:::single-choice{#nat-trace-flow}
-将共享地址流量追溯到内部客户端需要什么证据？
+:::single-choice{#nat-trace-flow} 将共享地址流量追溯到内部客户端需要什么证据？
 
 ::option[只需要外部地址，不需要时间或端口。]{#nat-address-only explanation="许多客户端和流都可能共享该地址。"}
 ::option[只需要客户端显示的主机名。]{#nat-hostname-only explanation="转换器映射数据包元组，并不一定映射主机名。"}

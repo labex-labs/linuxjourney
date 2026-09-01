@@ -24,8 +24,7 @@ meta_keywords: "사이버 보안 리눅스 배포판, 보안 리눅스, 칼리 �
 
 보안 도구는 자신이 소유하거나 명시적인 테스트 허가를 받은 시스템에서만 사용해야 합니다. 전문 배포판은 도구를 제공할 뿐 이를 사용할 권한, 판단력 또는 안전한 사용 기술까지 제공하지는 않습니다.
 
-:::single-choice{#confirm-testing-authorization}
-시스템에서 모의 해킹 도구를 사용하기 전에 무엇을 확인해야 하나요?
+:::single-choice{#confirm-testing-authorization} 시스템에서 모의 해킹 도구를 사용하기 전에 무엇을 확인해야 하나요?
 
 ::option[시스템을 소유했거나 명시적인 테스트 허가를 받았습니다.]{#authorized-system .correct explanation="보안 테스트에는 시스템 소유자의 명확한 허가가 필요하며 도구나 배포판을 갖고 있다고 다른 시스템에 사용할 권한이 생기지 않습니다."}
 ::option[보안 배포판에 실행하려는 도구가 설치되어 있습니다.]{#tool-is-installed explanation="도구가 있다는 사실은 허가를 뜻하지 않으며 권한은 테스트 대상 시스템의 소유자에게 받아야 합니다."}
@@ -51,8 +50,7 @@ Kali 는 한곳에서 방대한 보안 도구 모음을 제공하며 가상 머�
 
 동시에, Kali 는 초보자를 위한 일반적인 리눅스 데스크톱으로는 권장되지 않습니다. Kali 공식 문서에서도 리눅스에 익숙하지 않거나 일반적인 데스크톱 환경을 원하는 사람에게는 적합하지 않다고 경고합니다.
 
-:::single-choice{#match-kali-use-case}
-Kali Linux와 가장 잘 맞는 상황은 무엇인가요?
+:::single-choice{#match-kali-use-case} Kali Linux와 가장 잘 맞는 상황은 무엇인가요?
 
 ::option[숙련된 테스터에게 준비된 보안 감사 환경이 필요합니다.]{#experienced-kali-user .correct explanation="Kali는 리눅스와 수행할 작업을 이미 이해하는 사용자의 모의 해킹 및 보안 감사를 위해 맞춤화되어 있습니다."}
 ::option[새 리눅스 사용자가 일상 작업용 일반 데스크톱을 원합니다.]{#general-desktop-beginner explanation="Kali 공식 문서도 첫 일반 데스크톱으로 권장하지 않으며 초보자용 배포판이 더 알맞습니다."}
@@ -71,8 +69,7 @@ Kali 와 비교했을 때, Parrot 은 범위가 조금 더 넓게 느껴집니�
 
 BlackArch 는 강력하지만 초보자를 위한 옵션은 아닙니다. 자체 FAQ 에 따르면 Arch Linux 나 리눅스 전반에 익숙하지 않다면 학습 곡선 때문에 BlackArch 를 피해야 한다고 명시되어 있습니다. 따라서 이미 Arch 를 이해하고 방대한 보안 툴킷을 원하는 고급 사용자에게 더 적합합니다.
 
-:::single-choice{#match-blackarch-user}
-BlackArch 사용을 가장 잘 준비해 주는 배경은 무엇인가요?
+:::single-choice{#match-blackarch-user} BlackArch 사용을 가장 잘 준비해 주는 배경은 무엇인가요?
 
 ::option[리눅스 경험도 없고 시스템 관리에도 관심이 없습니다.]{#no-linux-experience explanation="BlackArch는 리눅스 입문용이 아니며 Arch 기반과 큰 도구 모음에는 상당한 사전 지식이 필요합니다."}
 ::option[Arch Linux와 그 유지 관리 모델을 자신 있게 다룰 수 있습니다.]{#arch-experience .correct explanation="BlackArch는 Arch를 기반으로 하고 그 환경을 다룰 수 있다고 가정하며 공식 안내도 초보자에게 학습 곡선을 경고합니다."}
@@ -85,8 +82,7 @@ BlackArch 사용을 가장 잘 준비해 주는 배경은 무엇인가요?
 
 이로 인해 Tails 는 중요한 보안 중심 리눅스 배포판이지만, 그 이유는 다릅니다. 목표가 개인정보 보호, 익명성 또는 신뢰할 수 없는 컴퓨터에서의 안전한 사용이라면 Tails 가 가장 적합할 수 있습니다. 모의 해킹이 목표라면 Kali 나 Parrot 이 더 직접적인 선택입니다.
 
-:::single-choice{#match-tails-use-case}
-Tails와 가장 잘 맞는 목표는 무엇인가요?
+:::single-choice{#match-tails-use-case} Tails와 가장 잘 맞는 목표는 무엇인가요?
 
 ::option[방대한 Arch 기반 모의 해킹 도구 저장소를 불러옵니다.]{#blackarch-toolkit explanation="Arch 기반 보안 도구 저장소는 BlackArch를 설명하며 Tails는 휴대 가능한 개인정보 보호와 검열 저항에 집중합니다."}
 ::option[개인정보 보호와 최소한의 로컬 흔적을 위해 설계된 휴대용 시스템을 사용합니다.]{#tails-privacy .correct explanation="Tails는 인터넷 활동을 Tor로 보내고 종료 뒤 컴퓨터에 흔적을 남기지 않도록 설계되어 모의 해킹보다 개인정보 보호에 집중합니다."}

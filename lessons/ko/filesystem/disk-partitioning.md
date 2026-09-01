@@ -23,8 +23,7 @@ meta_keywords: "리눅스 디스크 파티셔닝, parted 명령어, sudo parted 
 
 도구 지원은 계속 발전하므로 로컬 설명서와 배포판 문서를 사용하십시오. 그래픽 인터페이스라고 해서 파괴적인 작업이 안전해지는 것은 아닙니다. 같은 디스크 메타데이터를 변경합니다.
 
-:::single-choice{#disk-partitioning-fdisk-gpt}
-현재 리눅스 `fdisk`에 대한 정확한 설명은 무엇입니까?
+:::single-choice{#disk-partitioning-fdisk-gpt} 현재 리눅스 `fdisk`에 대한 정확한 설명은 무엇입니까?
 
 ::option[MBR과 GPT 파티션 테이블을 모두 지원합니다.]{#disk-partitioning-fdisk-supports-gpt .correct explanation="현재 util-linux fdisk는 DOS/MBR과 GPT를 비롯한 여러 레이블 유형을 편집할 수 있습니다."}
 ::option[GPT만 편집할 수 있고 MBR은 편집할 수 없습니다.]{#disk-partitioning-fdisk-only-gpt explanation="GPT 중심의 `gdisk`가 이 설명에 더 가깝고 fdisk는 여러 레이블 유형을 지원합니다."}
@@ -45,8 +44,7 @@ $ sudo parted --list
 
 각 계층의 문서화된 절차에 따라 관련 계층을 모두 마운트 해제하거나 비활성화하십시오. 도구가 성공적으로 열린다는 이유만으로 실행 중인 시스템 디스크의 파티션 테이블을 편집하지 마십시오. 기존 테이블을 복원 가능한 형태로 기록하고 백업이 다른 장애 영역에 있는지 확인하십시오.
 
-:::single-choice{#disk-partitioning-target-identity}
-`/dev/sdb` 같은 장치 이름만으로 대상을 확인하기에 부족한 이유는 무엇입니까?
+:::single-choice{#disk-partitioning-target-identity} `/dev/sdb` 같은 장치 이름만으로 대상을 확인하기에 부족한 이유는 무엇입니까?
 
 ::option[리눅스가 전체 디스크를 `/dev` 아래에 절대 노출하지 않기 때문입니다.]{#disk-partitioning-no-whole-disks explanation="전체 디스크에는 일반적으로 `/dev` 아래의 블록 노드가 있습니다."}
 ::option[장치나 토폴로지가 바뀌면 열거 이름도 바뀔 수 있기 때문입니다.]{#disk-partitioning-enumeration-changes .correct explanation="문자는 검색 순서에 따라 배정되므로 나중 세션에는 다른 디스크를 가리킬 수 있습니다."}
@@ -70,8 +68,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 `print free`는 현재 항목과 할당되지 않은 영역을 보여 줍니다. Parted 명령은 최종 “저장” 작업을 기다리지 않고 디스크 메타데이터를 즉시 갱신할 수 있으므로 대화형 프롬프트를 실시간 쓰기 접근으로 취급하십시오.
 
-:::single-choice{#disk-partitioning-print-free}
-`parted`의 `print free`가 표시하는 데 도움을 주는 것은 무엇입니까?
+:::single-choice{#disk-partitioning-print-free} `parted`의 `print free`가 표시하는 데 도움을 주는 것은 무엇입니까?
 
 ::option[파일 시스템을 안전하게 축소하기 위해 삭제할 수 있는 파일입니다.]{#disk-partitioning-free-files explanation="Parted는 파일 시스템 수준의 파일 할당이 아니라 파티션 레이아웃을 읽습니다."}
 ::option[원격 시스템에 저장된 모든 백업입니다.]{#disk-partitioning-remote-backups explanation="원격 백업 목록은 파티션 편집기의 범위 밖입니다."}
@@ -90,8 +87,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 도구가 권장하는 정렬을 사용하고 끝점이 포함되는지와 반올림 방식을 이해하십시오. `print`와 `lsblk`로 결과를 검사하고 요청한 십진 경계가 정확히 기록되었다고 가정하지 마십시오.
 
-:::single-choice{#disk-partitioning-mkpart-effect}
-`parted`의 `mkpart`가 만드는 것은 무엇입니까?
+:::single-choice{#disk-partitioning-mkpart-effect} `parted`의 `mkpart`가 만드는 것은 무엇입니까?
 
 ::option[홈 디렉터리가 들어 있고 마운트된 ext4 파일 시스템입니다.]{#disk-partitioning-mounted-filesystem explanation="포맷과 마운트는 파티션 생성 후의 별도 작업입니다."}
 ::option[이전 파티션 내용의 완전한 백업입니다.]{#disk-partitioning-automatic-backup explanation="파티션 편집기는 복구 백업을 자동으로 만들지 않습니다."}
@@ -109,8 +105,7 @@ $ sudo parted /dev/VERIFIED-DISK
 
 일부 파일 시스템은 축소할 수 없습니다. 암호화, LVM, RAID 및 중첩 레이아웃에는 순서를 지켜야 하는 계층이 더 많습니다. 장치가 사용 중이면 커널이 변경된 테이블을 다시 읽지 못할 수 있으므로 새 레이아웃을 사용하기 전에 제어된 재부팅이 필요할 수 있습니다.
 
-:::single-choice{#disk-partitioning-shrink-order}
-파일 시스템이 축소를 지원할 때 활성 파일 시스템 데이터를 잘라내지 않는 순서는 무엇입니까?
+:::single-choice{#disk-partitioning-shrink-order} 파일 시스템이 축소를 지원할 때 활성 파일 시스템 데이터를 잘라내지 않는 순서는 무엇입니까?
 
 ::option[먼저 파티션을 줄인 다음 파일 시스템이 들어맞는지 확인합니다.]{#disk-partitioning-shrink-partition-first explanation="컨테이너부터 줄이면 파일 시스템 구조와 데이터가 잘릴 수 있습니다."}
 ::option[먼저 파일 시스템을 축소한 다음 그것을 포함하는 파티션 경계를 줄입니다.]{#disk-partitioning-shrink-filesystem-first .correct explanation="바깥 블록 장치를 줄이기 전에 콘텐츠가 더 작은 범위 안에 들어가야 합니다."}

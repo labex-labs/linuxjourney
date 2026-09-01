@@ -25,8 +25,7 @@ Ein kleingeschriebenes `s` bedeutet, dass sowohl setgid als auch die Gruppenausf
 
 Wenn der Kernel dieses Bit bei der Ausführung berücksichtigt, erhält der Prozess eine effektive Gruppen-ID, die sich aus dem Gruppeneigentümer der ausführbaren Datei ableitet. Kontrollen wie das Einhängen mit `nosuid` können dieses Verhalten unterdrücken. Es darf nicht als allgemeine Garantie über sämtliche Dateitypen und Umgebungen hinweg betrachtet werden.
 
-:::single-choice{#setgid-executable-effect}
-Welche Zugangsdaten stammen vom Gruppeneigentümer einer ausführbaren Datei, wenn setgid berücksichtigt wird?
+:::single-choice{#setgid-executable-effect} Welche Zugangsdaten stammen vom Gruppeneigentümer einer ausführbaren Datei, wenn setgid berücksichtigt wird?
 
 ::option[Die effektive Gruppen-ID des Prozesses.]{#setgid-effective-group .correct explanation="Die Set-Group-ID-Ausführung richtet die Gruppe des Eigentümers der ausführbaren Datei als effektive Gruppenidentität des Prozesses ein."}
 ::option[Die reale Benutzer-ID des Prozesses.]{#setgid-real-user explanation="Das Bit betrifft die Gruppenzugangsdaten und nicht die reale Benutzeridentität des Aufrufers."}
@@ -46,8 +45,7 @@ $ ls -ld /srv/project
 drwxr-sr-x 2 root developers 4096 Jan 10 09:30 /srv/project
 ```
 
-:::single-choice{#setgid-directory-inheritance}
-Was erbt eine neu erstellte Datei gewöhnlich durch setgid auf `/srv/project`?
+:::single-choice{#setgid-directory-inheritance} Was erbt eine neu erstellte Datei gewöhnlich durch setgid auf `/srv/project`?
 
 ::option[Den Benutzereigentümer des Verzeichnisses.]{#setgid-inherit-user explanation="Setgid auf einem Verzeichnis beeinflusst die Gruppenvererbung und nicht den Benutzereigentümer des neuen Eintrags."}
 ::option[Den vollständigen Berechtigungsmodus des Verzeichnisses.]{#setgid-inherit-mode explanation="Erstellungsberechtigungen werden weiterhin aus dem angeforderten Modus, der umask und möglichen ACLs berechnet."}
@@ -70,8 +68,7 @@ $ sudo chmod 2755 myfile
 
 Entferne ausschließlich das besondere Bit mit `chmod g-s myfile`.
 
-:::single-choice{#setgid-octal-value}
-Welchen Wert trägt setgid zur führenden oktalen Ziffer für besondere Bits bei?
+:::single-choice{#setgid-octal-value} Welchen Wert trägt setgid zur führenden oktalen Ziffer für besondere Bits bei?
 
 ::option[`4`]{#setgid-value-four explanation="Der Wert `4` steht in der Ziffer für besondere Bits für setuid."}
 ::option[`1`]{#setgid-value-one explanation="Der Wert `1` steht für das Sticky-Bit."}
@@ -82,8 +79,7 @@ Welchen Wert trägt setgid zur führenden oktalen Ziffer für besondere Bits bei
 
 Kombiniere für ein gemeinsam genutztes Verzeichnis den beabsichtigten Gruppeneigentümer, setgid und eng ausgewählte Zugriffsbits. Teste die Erstellung als repräsentative Benutzer und prüfe die Ergebnisse mit `ls -ld`. Mache einen Baum nicht für alle beschreibbar, nur um Probleme bei der gemeinsamen Gruppennutzung zu lösen. Eine eigene Gruppe, eine passende umask oder Standard-ACL und ein setgid-Verzeichnis bieten gewöhnlich eine klarere Kontrolle.
 
-:::single-choice{#setgid-directory-write-access}
-Erhalten Gruppenmitglieder allein durch das Setzen von setgid die Berechtigung, Dateien in einem Verzeichnis zu erstellen?
+:::single-choice{#setgid-directory-write-access} Erhalten Gruppenmitglieder allein durch das Setzen von setgid die Berechtigung, Dateien in einem Verzeichnis zu erstellen?
 
 ::option[Ja; setgid fügt immer Lesen, Schreiben und Ausführen für die Gruppe hinzu.]{#setgid-adds-rwx explanation="Das besondere Bit ändert die drei gewöhnlichen Gruppenberechtigungsbits nicht automatisch."}
 ::option[Ja; setgid deaktiviert alle Prüfungen für Gruppenmitglieder.]{#setgid-disables-checks explanation="Gewöhnliche frei bestimmbare und zusätzliche Sicherheitsprüfungen gelten weiterhin."}

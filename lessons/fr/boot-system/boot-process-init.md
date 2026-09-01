@@ -24,8 +24,7 @@ Un système init :
 
 La frontière exacte varie. La gestion des périphériques, le réseau, la journalisation et les tâches planifiées peuvent être des programmes distincts supervisés par init plutôt que du code intégré au PID 1.
 
-:::single-choice{#boot-init-pid-one-role}
-Quelle responsabilité est propre au PID 1 dans son espace de noms de PID ?
+:::single-choice{#boot-init-pid-one-role} Quelle responsabilité est propre au PID 1 dans son espace de noms de PID ?
 
 ::option[Compiler chaque application depuis ses sources à chaque démarrage.]{#boot-init-compile-apps explanation="Le démarrage normal des services utilise des programmes installés au lieu de reconstruire tous les logiciels."}
 ::option[Définir la taille des secteurs physiques du disque.]{#boot-init-sector-size explanation="Le matériel de stockage et ses pilotes exposent la géométrie des secteurs avant qu'init ne gère les services."}
@@ -38,8 +37,7 @@ Le sysvinit traditionnel emploie une configuration comme `/etc/inittab` et des s
 
 Ne déduisez pas le système init actif de la seule existence de `/etc/init.d/` ; des scripts de compatibilité peuvent subsister alors que le PID 1 appartient à une autre implémentation.
 
-:::single-choice{#boot-init-sysv-runlevel}
-Que représente un niveau d'exécution System V ?
+:::single-choice{#boot-init-sysv-runlevel} Que représente un niveau d'exécution System V ?
 
 ::option[Un numéro de version du noyau choisi par le chargeur.]{#boot-init-runlevel-kernel explanation="Le choix du noyau relève du chargeur et n'est pas codé par un niveau d'exécution init."}
 ::option[Un mode de fonctionnement configuré et associé à des actions sur les services.]{#boot-init-runlevel-mode .correct explanation="Les dispositions SysV associent les niveaux à des ensembles de scripts de démarrage ou d'arrêt et à leur ordre."}
@@ -54,8 +52,7 @@ systemd est très répandu dans les distributions généralistes actuelles. Il m
 
 Parmi les autres conceptions actives d'init et de supervision figurent OpenRC, runit, s6 et l'init de BusyBox. « Le plus récent » n'est pas une règle de compatibilité utile : identifiez ce qu'exécute réellement le système et consultez sa documentation.
 
-:::single-choice{#boot-init-systemd-unit-model}
-Comment systemd représente-t-il les ressources gérées comme les services et les montages ?
+:::single-choice{#boot-init-systemd-unit-model} Comment systemd représente-t-il les ressources gérées comme les services et les montages ?
 
 ::option[Comme des entrées de partitions primaires MBR.]{#boot-init-systemd-partitions explanation="Les métadonnées de partitionnement du disque n'ont aucun rapport avec les unités du gestionnaire de services."}
 ::option[Uniquement comme des liens physiques vers l'exécutable du PID 1.]{#boot-init-systemd-hard-links explanation="Les unités sont des objets de configuration et d'exécution, pas de simples alias d'inodes."}
@@ -73,8 +70,7 @@ $ readlink /proc/1/exe
 
 Les permissions, conteneurs et espaces de noms influencent ce que vous voyez. Une commande exécutée dans un conteneur indique le PID 1 de cet espace de noms, pas nécessairement l'init de l'hôte. Une fois le système identifié, utilisez ses outils natifs d'état et de journalisation au lieu de mélanger les commandes de plusieurs familles d'init.
 
-:::single-choice{#boot-init-detect-running}
-Pourquoi l'inspection du PID 1 est-elle préférable à la recherche d'un ancien répertoire de scripts ?
+:::single-choice{#boot-init-detect-running} Pourquoi l'inspection du PID 1 est-elle préférable à la recherche d'un ancien répertoire de scripts ?
 
 ::option[Le PID 1 porte toujours le même nom d'exécutable sur tous les systèmes Linux.]{#boot-init-same-name explanation="systemd, sysvinit, BusyBox, les programmes init de conteneurs et d'autres peuvent occuper le PID 1."}
 ::option[Des fichiers de compatibilité peuvent exister même si une autre implémentation d'init fonctionne.]{#boot-init-compatibility-files .correct explanation="L'exécutable actif du PID 1 constitue une preuve plus forte du système init réellement utilisé."}

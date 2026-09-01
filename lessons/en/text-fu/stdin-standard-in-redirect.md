@@ -22,8 +22,7 @@ By convention, the three standard streams use these file descriptor numbers:
 
 A program can choose whether and how to use these streams. A command designed to read stdin often waits for terminal input when no file operand or other input source is supplied.
 
-:::single-choice{#stdin-descriptor-number}
-Which file descriptor conventionally represents standard input?
+:::single-choice{#stdin-descriptor-number} Which file descriptor conventionally represents standard input?
 
 ::option[`0`]{#stdin-fd-zero .correct explanation="Standard input is conventionally file descriptor 0."}
 ::option[`1`]{#stdin-fd-one explanation="File descriptor 1 conventionally represents standard output, the stream for regular results."}
@@ -43,8 +42,7 @@ The shell handles `< peanuts.txt`; `cat` simply reads file descriptor 0. The pat
 
 If the input file does not exist or cannot be opened, the shell reports the redirection error and does not start the command with that input.
 
-:::single-choice{#stdin-from-file}
-Which command makes `sort` read its standard input from `names.txt`?
+:::single-choice{#stdin-from-file} Which command makes `sort` read its standard input from `names.txt`?
 
 ::option[`sort < names.txt`]{#sort-stdin-file .correct explanation="Bash opens `names.txt` for reading and connects it to `sort` on file descriptor 0."}
 ::option[`sort > names.txt`]{#stdout-to-names explanation="A greater-than operator redirects stdout to the file and can truncate it. It does not supply the file as input."}
@@ -64,8 +62,7 @@ $ wc -l < peanuts.txt
 
 Both forms count lines in the same data. In the first form, `wc` knows the filename because it received it as an argument. In the second, it only receives a stream on stdin, so it has no filename to print.
 
-:::single-choice{#stdin-not-command-argument}
-Why does `wc -l < peanuts.txt` normally omit `peanuts.txt` from its output?
+:::single-choice{#stdin-not-command-argument} Why does `wc -l < peanuts.txt` normally omit `peanuts.txt` from its output?
 
 ::option[`wc` deletes the filename after it finishes counting lines.]{#stdin-delete-name explanation="The command does not rename or delete the source file. Only its input connection differs."}
 ::option[The `<` operator hides every word printed by the command.]{#stdin-hide-words explanation="Input redirection does not filter stdout. The filename is absent because `wc` never received it as an argument."}
@@ -87,8 +84,7 @@ The shell performs two independent connections:
 
 `cat` reads bytes from stdin and writes them to stdout, so `banana.txt` receives the source content. For ordinary file copying, `cp peanuts.txt banana.txt` communicates the intent more directly; this example is about stream connections.
 
-:::single-choice{#stdin-and-stdout-files}
-In `cat < input.txt > output.txt`, which file supplies stdin and which receives stdout?
+:::single-choice{#stdin-and-stdout-files} In `cat < input.txt > output.txt`, which file supplies stdin and which receives stdout?
 
 ::option[`output.txt` supplies stdin; `input.txt` receives stdout.]{#stdin-output-stdout-input explanation="This reverses the meanings of the redirection operators. The arrows point toward the command for input and toward the file for output."}
 ::option[`input.txt` supplies stdin; `output.txt` receives stdout.]{#stdin-input-stdout-output .correct explanation="The `<` redirection opens `input.txt` for descriptor 0, and `>` opens `output.txt` for descriptor 1."}

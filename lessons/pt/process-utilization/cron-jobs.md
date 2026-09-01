@@ -24,8 +24,7 @@ Da esquerda para a direita, os campos são minuto, hora, dia do mês, mês e dia
 
 Quando os campos de dia do mês e dia da semana estão restritos, muitas implementações do cron executam quando qualquer um deles corresponde. Confirme a semântica local antes de criar uma agenda que use os dois.
 
-:::single-choice{#cron-daily-eight-thirty}
-Quando `30 8 * * * command` é executado?
+:::single-choice{#cron-daily-eight-thirty} Quando `30 8 * * * command` é executado?
 
 ::option[A cada 30 minutos durante oito horas.]{#cron-every-thirty explanation="Os campos são posições em uma agenda, não uma expressão de duração."}
 ::option[Às 08:30 todos os dias.]{#cron-eight-thirty .correct explanation="O minuto 30 e a hora 8 são fixos, enquanto os três campos de data permitem todos os valores."}
@@ -48,8 +47,7 @@ $ crontab -l
 
 `crontab -r` remove todo o crontab do usuário e pode fazer isso sem abrir um editor. Não o use para remover uma única linha; edite o crontab e verifique as entradas restantes.
 
-:::single-choice{#cron-list-current-user}
-Qual comando lista as entradas cron instaladas do usuário atual?
+:::single-choice{#cron-list-current-user} Qual comando lista as entradas cron instaladas do usuário atual?
 
 ::option[`crontab -l`]{#cron-list .correct explanation="A opção de listagem imprime as entradas instaladas para inspeção."}
 ::option[`crontab -r`]{#cron-remove-all explanation="Essa opção remove o crontab, em vez de exibi-lo."}
@@ -62,8 +60,7 @@ O cron normalmente fornece um ambiente limitado e um shell não interativo. Use 
 
 Redirecione a saída e o erro padrão para um log controlado ou use um mecanismo de notificação adequado ao sistema. Proteja as credenciais com permissões restritivas e evite incorporar segredos diretamente a um comando do crontab.
 
-:::single-choice{#cron-absolute-paths}
-Por que um comando cron deve usar caminhos e configurações de ambiente explícitos?
+:::single-choice{#cron-absolute-paths} Por que um comando cron deve usar caminhos e configurações de ambiente explícitos?
 
 ::option[O cron sempre é executado dentro do terminal atual do usuário.]{#cron-current-terminal explanation="As tarefas agendadas são executadas independentemente de uma sessão interativa."}
 ::option[Caminhos absolutos fazem todos os comandos serem executados como root.]{#cron-path-root explanation="Os caminhos selecionam arquivos, mas não concedem privilégios."}
@@ -82,8 +79,7 @@ Se uma execução puder durar mais que seu intervalo, projete-a para concorrênc
 
 Escolha um caminho de bloqueio que o usuário da tarefa possa criar com segurança e decida se execuções ignoradas são aceitáveis. O cron não garante automaticamente que apenas uma instância seja executada.
 
-:::single-choice{#cron-overlapping-runs}
-Qual risco existe quando uma tarefa demora mais que o intervalo de sua agenda?
+:::single-choice{#cron-overlapping-runs} Qual risco existe quando uma tarefa demora mais que o intervalo de sua agenda?
 
 ::option[Várias instâncias podem se sobrepor e disputar recursos.]{#cron-overlap .correct explanation="O cron pode iniciar uma nova ocorrência enquanto o processo anterior ainda está em execução."}
 ::option[Os cinco campos da agenda recebem automaticamente um sexto campo de bloqueio.]{#cron-auto-lock explanation="A sintaxe do crontab não acrescenta exclusão mútua automática."}
@@ -94,8 +90,7 @@ Qual risco existe quando uma tarefa demora mais que o intervalo de sua agenda?
 
 O cron é apropriado para comandos recorrentes simples. Os timers do systemd podem oferecer integração de dependências, execução posterior persistente, atraso aleatório e registro no journal em hosts com systemd. Agendadores de aplicações ou clusters podem ser mais seguros quando uma tarefa precisa ser executada exatamente uma vez em várias máquinas.
 
-:::single-choice{#cron-cluster-exactly-once}
-Por que o cron comum por host pode ser inadequado para uma tarefa de cluster executada exatamente uma vez?
+:::single-choice{#cron-cluster-exactly-once} Por que o cron comum por host pode ser inadequado para uma tarefa de cluster executada exatamente uma vez?
 
 ::option[Toda entrada cron é limitada a um caractere.]{#cron-one-character explanation="Os comandos do crontab podem conter linhas de comando comuns."}
 ::option[Cada host pode iniciar independentemente sua própria cópia.]{#cron-each-host .correct explanation="É necessário um mecanismo de coordenação distribuído para garantir uma única execução entre os hosts."}

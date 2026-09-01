@@ -25,16 +25,14 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 대기는 정상입니다. 대화형 프로그램과 서비스는 CPU를 계속 사용하기보다 입력, 타이머, 네트워크 트래픽, 잠금 또는 다른 이벤트를 기다리는 데 많은 시간을 보냅니다.
 
-:::single-choice{#process-states-runnable-code}
-기본 상태 `R`은 무엇을 뜻하나요?
+:::single-choice{#process-states-runnable-code} 기본 상태 `R`은 무엇을 뜻하나요?
 
 ::option[CPU에서 실행 중이거나 실행할 준비가 됨]{#process-states-r-running .correct explanation="`R`은 현재 실행 중인 작업과 CPU 서비스를 기다리는 실행 가능 작업을 함께 나타냅니다."}
 ::option[부모가 상태를 수집한 뒤 수거됨]{#process-states-r-reaped explanation="완전히 수거된 프로세스는 더 이상 일반 프로세스 테이블 항목으로 나타나지 않습니다."}
 ::option[중단 불가능한 대기 중]{#process-states-r-uninterruptible explanation="중단 불가능한 대기는 `D`로 표현됩니다."}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-중단 가능한 대기를 나타내는 기본 상태는 무엇인가요?
+:::single-choice{#process-states-interruptible-code} 중단 가능한 대기를 나타내는 기본 상태는 무엇인가요?
 
 ::option[`D`]{#process-states-sleep-d explanation="`D`는 중단 불가능한 대기를 나타냅니다."}
 ::option[`Z`]{#process-states-sleep-z explanation="`Z`는 상태가 수거되지 않은 종료 자식을 나타냅니다."}
@@ -47,8 +45,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 짧은 `D` 상태는 정상일 수 있습니다. 지속되거나 많은 `D` 작업은 느리거나 사용할 수 없거나 결함 있는 입출력을 나타낼 수 있지만 상태만으로 원인을 식별하지 못합니다. 결론을 내리기 전에 대기 채널, 커널 로그, 저장소 및 네트워크 상태, 관련 하위 시스템을 확인하세요.
 
-:::single-choice{#process-states-uninterruptible-code}
-중단 불가능한 대기를 나타내는 기본 상태는 무엇인가요?
+:::single-choice{#process-states-uninterruptible-code} 중단 불가능한 대기를 나타내는 기본 상태는 무엇인가요?
 
 ::option[`T`]{#process-states-d-stopped explanation="`T`는 정지된 작업을 식별합니다."}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D`는 중단 불가능한 커널 대기 중인 작업에 사용됩니다."}
@@ -62,8 +59,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 적절한 경우 `SIGCONT`로 작업 제어 정지를 재개합니다. 좀비는 더 이상 실행하지 않으므로 재개하거나 종료할 수 없습니다. 부모나 입양한 수거 프로세스가 수집해야 합니다.
 
-:::single-choice{#process-states-zombie-code}
-기본 상태 `Z`는 무엇을 식별하나요?
+:::single-choice{#process-states-zombie-code} 기본 상태 `Z`는 무엇을 식별하나요?
 
 ::option[종료했으며 종료 레코드가 수거를 기다리는 프로세스]{#process-states-z-zombie .correct explanation="좀비는 실행이 끝난 뒤 부모에게 보이는 최소 상태를 유지합니다."}
 ::option[터미널 일시 중단 시그널로 일시 정지된 프로세스]{#process-states-z-terminal-stop explanation="작업 제어 정지는 일반적으로 `T`로 표시됩니다."}

@@ -23,8 +23,7 @@ $ ip -brief address show
 
 インターフェース名には、`enp1s0` のようなハードウェア由来の予測可能な名前、`eth0` のような従来名、管理者が定義した名前があります。`eth0` が必ず存在する、または特定のアダプターを示すとは決めつけないでください。
 
-:::single-choice{#interfaces-name-assumption}
-スクリプトで `eth0` を決め打ちせず、検出すべきなのはなぜですか？
+:::single-choice{#interfaces-name-assumption} スクリプトで `eth0` を決め打ちせず、検出すべきなのはなぜですか？
 
 ::option[すべてのインターフェースは `lo` という名前でなければならないから。]{#interfaces-all-loopback explanation="ループバックは特殊なインターフェースの一つであり、全リンクの名前ではありません。"}
 ::option[Linux システムでは複数の命名方式が使われるから。]{#interfaces-naming-varies .correct explanation="ハードウェア由来名、仮想デバイス名、カスタム名があるため、固定した `eth0` という想定は信頼できません。"}
@@ -42,8 +41,7 @@ $ ip -s link show dev enp1s0
 
 統計表示からエラー、破棄、カウンターを確認できますが、値を意味のあるものにするには観測期間と基準値が必要です。
 
-:::single-choice{#interfaces-up-limit}
-管理状態が `UP` でも証明できないことはどれですか？
+:::single-choice{#interfaces-up-limit} 管理状態が `UP` でも証明できないことはどれですか？
 
 ::option[エンドツーエンドの接続が機能すること。]{#interfaces-up-not-connectivity .correct explanation="下位層、アドレス、ルーティング、フィルタリング、名前解決、サービスの障害は残り得ます。"}
 ::option[管理者がインターフェースを有効にしたこと。]{#interfaces-up-does-prove explanation="それがこの状態の直接的な意味です。"}
@@ -61,8 +59,7 @@ $ sudo ip address add 192.0.2.10/24 dev enp1s0
 
 これらは現在のカーネル状態を変更するため、後でプロファイルを再適用するネットワークマネージャーと競合する場合があります。リモート管理に使うインターフェースを停止すると、即座にアクセスを失う可能性があります。変更前に対象デバイスを確認し、コンソールアクセスを確保し、現在の状態を記録して、時間指定または検証済みのロールバックを用意してください。
 
-:::single-choice{#interfaces-ip-address-add-persistence}
-`ip address add` だけで、再起動後も設定が残ると保証できますか？
+:::single-choice{#interfaces-ip-address-add-persistence} `ip address add` だけで、再起動後も設定が残ると保証できますか？
 
 ::option[いいえ。稼働中の設定システムにもその設定を保存する必要があります。]{#interfaces-manager-persistence .correct explanation="NetworkManager、systemd-networkd、ifupdown など、管理主体が永続ポリシーを適用します。"}
 ::option[はい。カーネルの変更は常に全管理プロファイルを編集するからです。]{#interfaces-runtime-always-persistent explanation="カーネルの実行時変更が、永続設定を一律に更新するわけではありません。"}
@@ -81,8 +78,7 @@ $ nmcli device status
 
 特定した管理システムに存在するコマンドだけを使ってください。二つのマネージャーが同じリンクを制御すると競合し、互いの状態を上書きする場合があります。
 
-:::single-choice{#interfaces-config-owner}
-インターフェースの永続設定を変更する前に、何をすべきですか？
+:::single-choice{#interfaces-config-owner} インターフェースの永続設定を変更する前に、何をすべきですか？
 
 ::option[考えられるすべてのネットワーク設定ファイルを編集する。]{#interfaces-edit-all explanation="競合する定義を作ると、再適用時の動作が予測できなくなります。"}
 ::option[どのネットワークマネージャーがインターフェースを管理しているか特定する。]{#interfaces-identify-owner .correct explanation="正しい設定元と適用方法は、その管理主体によって決まります。"}
@@ -93,8 +89,7 @@ $ nmcli device status
 
 リンク状態、割り当てアドレスと有効期間、選択されるルート、リゾルバー状態、近隣への到達性、実際のアプリケーションを確認します。永続変更の場合、復旧経路があるときに限り、制御されたサービス再起動または再起動でテストしてください。
 
-:::single-choice{#interfaces-change-verification}
-`ip address` に新しいアドレスが表示されることより、強い証拠になるのはどれですか？
+:::single-choice{#interfaces-change-verification} `ip address` に新しいアドレスが表示されることより、強い証拠になるのはどれですか？
 
 ::option[インターフェース名に数字が含まれていること。]{#interfaces-digit explanation="命名規則は、エンドツーエンドの検証にはなりません。"}
 ::option[シェルプロンプトの色が変わっていないこと。]{#interfaces-prompt-color explanation="端末の外観はネットワーク動作と無関係です。"}

@@ -22,8 +22,7 @@ $ iostat -xz 1
 
 Bei üblichen Implementierungen enthält der erste Bericht Mittelwerte seit dem Bootvorgang, während spätere Berichte jeweils ein Intervall abdecken. Die Option `-x` ergänzt erweiterte Felder, und `-z` unterdrückt inaktive Geräte. Lasse mehrere Intervalle verstreichen, um normale und problematische Zeiträume zu erfassen.
 
-:::single-choice{#iostat-first-report}
-Was stellt der erste `iostat`-Bericht üblicherweise dar?
+:::single-choice{#iostat-first-report} Was stellt der erste `iostat`-Bericht üblicherweise dar?
 
 ::option[Nur Vorgänge aus der letzten Sekunde des Befehls.]{#iostat-final-second explanation="Dies beschreibt nicht den anfänglichen kumulativen Bericht."}
 ::option[Aktivitätsmittelwerte seit dem Systemstart.]{#iostat-since-boot .correct explanation="Spätere Berichte beziehen sich normalerweise auf einzelne Intervalle; der erste muss daher gesondert interpretiert werden."}
@@ -34,8 +33,7 @@ Was stellt der erste `iostat`-Bericht üblicherweise dar?
 
 Der CPU-Abschnitt enthält häufig Benutzerzeit (`%user`), Systemzeit (`%system`), Leerlaufzeit (`%idle`), E/A-Wartezeit (`%iowait`) und von virtuellen Maschinen entzogene Zeit (`%steal`). E/A-Wartezeit ist CPU-Leerlaufzeit, während im System eine E/A-Anforderung noch nicht abgeschlossen ist; sie ist nicht der Prozentsatz, zu dem ein Datenträger ausgelastet ist.
 
-:::single-choice{#iostat-iowait-meaning}
-Was beschreibt `%iowait`?
+:::single-choice{#iostat-iowait-meaning} Was beschreibt `%iowait`?
 
 ::option[Den Prozentsatz der bereits belegten Datenträgerkapazität.]{#iostat-capacity explanation="Dateisystemkapazität und CPU-Zeit sind unterschiedliche Messungen."}
 ::option[CPU-Leerlaufzeit, während eine E/A-Anforderung noch nicht abgeschlossen ist.]{#iostat-iowait-cpu .correct explanation="Es handelt sich um eine CPU-Zeitkategorie, die für sich allein kein Gerät identifizieren kann."}
@@ -53,8 +51,7 @@ Feldnamen unterscheiden sich je nach sysstat-Version, doch nützliche Konzepte s
 
 Ein hoher `%util`-Wert kann bei einem einfachen seriellen Gerät auf Sättigung hindeuten, lässt sich aber bei parallelem Speicher, Arrays oder virtuellen Geräten nicht unmittelbar in Leistungskapazität übersetzen. Vergleiche die Latenz mit dem Geräteaufbau, Arbeitslastmuster und Dienstziel.
 
-:::single-choice{#iostat-await-purpose}
-Welches Feld steht am unmittelbarsten mit der durchschnittlichen Latenz von E/A-Anforderungen in Verbindung?
+:::single-choice{#iostat-await-purpose} Welches Feld steht am unmittelbarsten mit der durchschnittlichen Latenz von E/A-Anforderungen in Verbindung?
 
 ::option[Der Gerätename.]{#iostat-device-name explanation="Der Name identifiziert das Gerät, misst aber nicht die Dauer von Anforderungen."}
 ::option[`await`]{#iostat-await .correct explanation="Await bildet die durchschnittliche Dauer von Anforderungen einschließlich Warteschlangen- und Bedienzeit ab."}
@@ -72,8 +69,7 @@ $ findmnt
 
 Setze anschließend `iostat`-Intervalle zu Anwendungsantwortzeit, Datenbank- oder Dateisystemmesswerten und E/A auf Prozessebene in Beziehung. Device Mapper, RAID, Container und netzwerkgestützter Speicher können weitere Schichten hinzufügen, die eigene Werkzeuge erfordern.
 
-:::single-choice{#iostat-high-util-conclusion}
-Was solltest du tun, nachdem du einen hohen `%util`-Wert auf einem Gerät gesehen hast?
+:::single-choice{#iostat-high-util-conclusion} Was solltest du tun, nachdem du einen hohen `%util`-Wert auf einem Gerät gesehen hast?
 
 ::option[Annehmen, dass auf jedem Dateisystem der freie Speicherplatz erschöpft ist.]{#iostat-assume-full explanation="Auslastungszeit meldet nicht die Dateisystemkapazität."}
 ::option[Dateien löschen, bevor du die eingehängte Arbeitslast ermittelt hast.]{#iostat-delete-first explanation="Löschen verändert den Zustand und hat nichts mit dem Beleg eines E/A-Engpasses zu tun."}

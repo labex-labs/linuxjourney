@@ -25,8 +25,7 @@ $ printf '%s\n' "$?"
 
 Shells expose a limited encoded status range and also represent signal termination, so this value is not a complete diagnostic record. Programs should document their own exit codes.
 
-:::single-choice{#process-termination-success-status}
-By Unix convention, which normal exit status indicates success?
+:::single-choice{#process-termination-success-status} By Unix convention, which normal exit status indicates success?
 
 ::option[`1`]{#process-termination-status-one explanation="Many programs use `1` for a general failure, although meanings are command-specific."}
 ::option[`0`]{#process-termination-status-zero .correct explanation="A normal status of zero conventionally signals successful completion."}
@@ -39,8 +38,7 @@ The kernel records how a child terminated and notifies its parent. The parent us
 
 Waiting can also coordinate execution: a shell waits for a foreground command before displaying another prompt, while it can defer waiting for a background job. A well-designed long-running parent must arrange to reap children without blocking unrelated work.
 
-:::single-choice{#process-termination-wait-purpose}
-What does a successful wait operation let a parent retrieve?
+:::single-choice{#process-termination-wait-purpose} What does a successful wait operation let a parent retrieve?
 
 ::option[The child's termination information.]{#process-termination-wait-status .correct explanation="The wait family reports how a child stopped or terminated and reaps a completed child."}
 ::option[A copy of the child's former address space.]{#process-termination-wait-memory explanation="Most process memory has already been released and is not returned to the parent by `wait()`."}
@@ -53,8 +51,7 @@ After a child exits but before its termination record is reaped, it appears as a
 
 Sending a signal to a zombie cannot make it exit again. Fix persistent zombie accumulation by diagnosing the parent that is failing to wait, restarting or correcting that parent through an appropriate operational procedure, or allowing reparenting to a process that will reap it. Large numbers can exhaust PID or process-table capacity.
 
-:::single-choice{#process-termination-zombie-definition}
-Which description matches a zombie process?
+:::single-choice{#process-termination-zombie-definition} Which description matches a zombie process?
 
 ::option[A running child whose parent has already exited.]{#process-termination-zombie-orphan explanation="That describes an orphaned child, not a zombie state."}
 ::option[A completed child whose termination record has not been reaped.]{#process-termination-zombie-unreaped .correct explanation="The process has stopped executing, but the kernel retains minimal status for its parent."}
@@ -67,8 +64,7 @@ If a parent exits while its child remains, the kernel reparents that child to an
 
 The adopting process becomes responsible for collecting termination status. Modern service managers and container environments make it important not to assume that the new parent is always the host's PID 1.
 
-:::single-choice{#process-termination-orphan-definition}
-What happens when a process outlives its original parent?
+:::single-choice{#process-termination-orphan-definition} What happens when a process outlives its original parent?
 
 ::option[It is reparented to an eligible subreaper or namespace init process.]{#process-termination-orphan-reparented .correct explanation="The kernel preserves a valid parent relationship by assigning an adopting process."}
 ::option[It immediately becomes a zombie even if it has not exited.]{#process-termination-orphan-zombie explanation="Zombie state begins only after execution has ended and status awaits collection."}

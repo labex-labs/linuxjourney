@@ -24,8 +24,7 @@ Entries can represent physical storage, terminals, input interfaces, logical dev
 
 The first character of a long listing identifies the filesystem object type. Character and block device nodes appear as `c` and `b`; later lessons examine these types and their major and minor numbers.
 
-:::single-choice{#dev-directory-device-node-purpose}
-What happens when a program opens a device node under `/dev`?
+:::single-choice{#dev-directory-device-node-purpose} What happens when a program opens a device node under `/dev`?
 
 ::option[It always reads an ordinary disk file containing a hardware copy.]{#dev-directory-ordinary-copy explanation="A device node is a special object and does not store a copy of the device's data as a regular file."}
 ::option[It accesses an interface implemented by a kernel driver.]{#dev-directory-kernel-interface .correct explanation="Device-node operations are routed through the node's device identity to kernel driver behavior."}
@@ -42,8 +41,7 @@ $ command > /dev/null
 
 Other familiar examples include `/dev/zero`, which produces zero bytes, and `/dev/urandom`, which provides random bytes through the kernel random subsystem. Each has specific semantics; do not infer behavior only from its filename.
 
-:::single-choice{#dev-directory-null-behavior}
-What does `/dev/null` do with data written to it?
+:::single-choice{#dev-directory-null-behavior} What does `/dev/null` do with data written to it?
 
 ::option[It stores the data until the next reboot.]{#dev-directory-null-temporary-storage explanation="The null device is a sink and does not act as temporary storage."}
 ::option[It sends the data to every logged-in terminal.]{#dev-directory-null-broadcast explanation="Terminal broadcasting is unrelated to the null pseudo-device."}
@@ -56,8 +54,7 @@ On modern Linux systems, the kernel-backed `devtmpfs` can populate basic device 
 
 Stable links such as entries under `/dev/disk/by-id/` or `/dev/disk/by-uuid/` can be safer in configuration than detection-order names such as `/dev/sda`, which can change when hardware topology or discovery order changes.
 
-:::single-choice{#dev-directory-persistent-link}
-Why might an administrator prefer `/dev/disk/by-id/...` over `/dev/sda` in configuration?
+:::single-choice{#dev-directory-persistent-link} Why might an administrator prefer `/dev/disk/by-id/...` over `/dev/sda` in configuration?
 
 ::option[The identifier-based link is less dependent on device discovery order.]{#dev-directory-stable-identifier .correct explanation="Persistent links are derived from device properties instead of a letter assigned by enumeration order."}
 ::option[The link automatically backs up every block on the device.]{#dev-directory-link-backup explanation="A symbolic link names the same device and does not create backup data."}
@@ -70,8 +67,7 @@ Standard tools can open device nodes, but that does not make arbitrary reads and
 
 Use read-only discovery tools first, confirm the exact node and device identity, and follow device-specific documentation. Never experiment by redirecting data into an unfamiliar `/dev` entry on a system you care about.
 
-:::single-choice{#dev-directory-direct-write-risk}
-Why should you avoid writing arbitrary data to an unfamiliar device node?
+:::single-choice{#dev-directory-direct-write-risk} Why should you avoid writing arbitrary data to an unfamiliar device node?
 
 ::option[Every device node is guaranteed to be a harmless text file.]{#dev-directory-harmless-text explanation="Device nodes are specifically not ordinary text files."}
 ::option[The operation can directly affect hardware, storage, or another kernel interface.]{#dev-directory-write-impact .correct explanation="Device writes invoke driver-defined operations and can cause destructive or disruptive effects."}

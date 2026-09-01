@@ -20,8 +20,7 @@ Un sistema Linux se divide en tres partes principales:
 - **Kernel de Linux** - Como núcleo del sistema operativo, el kernel gestiona el hardware y facilita la comunicación entre el software y el hardware.
 - **Espacio de usuario (User Space)** - Este es el entorno donde tú, el usuario, interactúas con el sistema a través de aplicaciones e interfaces de línea de comandos.
 
-:::single-choice{#identify-hardware-manager}
-¿Qué parte principal de un sistema Linux gestiona el hardware?
+:::single-choice{#identify-hardware-manager} ¿Qué parte principal de un sistema Linux gestiona el hardware?
 
 ::option[El espacio de usuario]{#user-space explanation="En el espacio de usuario se ejecutan las aplicaciones y las interfaces de línea de comandos. Esos programas dependen del núcleo para trabajar con el hardware."}
 ::option[El núcleo Linux]{#linux-kernel .correct explanation="El núcleo Linux gestiona los recursos de hardware y la comunicación entre este y el software. Es el componente central sobre el que se construye una distribución."}
@@ -34,8 +33,7 @@ Una distribución de Linux agrupa el kernel de Linux con utilidades del sistema,
 
 Las diferentes distribuciones de Linux toman decisiones distintas sobre estabilidad, novedad del software, experiencia de escritorio, gestión de paquetes, soporte y filosofía del sistema. Es por eso que no existe una única mejor distro de Linux para todos.
 
-:::single-choice{#recognize-linux-distribution}
-¿Qué descripción representa mejor una distribución de Linux?
+:::single-choice{#recognize-linux-distribution} ¿Qué descripción representa mejor una distribución de Linux?
 
 ::option[Un núcleo distribuido sin herramientas del sistema, aplicaciones ni gestión de software]{#kernel-only explanation="El núcleo por sí solo es solo una parte de un sistema operativo. Una distribución añade utilidades, bibliotecas, aplicaciones y gestión de software."}
 ::option[Un núcleo empaquetado con herramientas del sistema, aplicaciones y gestión de software]{#complete-distribution .correct explanation="Una distribución combina el núcleo Linux con el software del espacio de usuario necesario para obtener un sistema operativo utilizable. También suele incluir un gestor de paquetes."}
@@ -50,8 +48,7 @@ La mejor distro de Linux suele ser la que se ajusta a tus objetivos, no la que t
 
 El estilo de lanzamiento describe cómo una distro entrega actualizaciones importantes de software. Las distros estables o de lanzamiento puntual publican actualizaciones en lotes planificados y se centran en la previsibilidad. Las distros de lanzamiento continuo (rolling-release) entregan actualizaciones continuamente, lo que generalmente significa software más nuevo pero también cambios más frecuentes.
 
-:::single-choice{#choose-release-style}
-¿Qué modelo de lanzamiento se adapta mejor a alguien que prioriza las actualizaciones planificadas y la previsibilidad?
+:::single-choice{#choose-release-style} ¿Qué modelo de lanzamiento se adapta mejor a alguien que prioriza las actualizaciones planificadas y la previsibilidad?
 
 ::option[Un lanzamiento continuo que se actualiza constantemente]{#rolling-release explanation="Un lanzamiento continuo suele ofrecer software más nuevo mediante actualizaciones constantes. También introduce cambios con más frecuencia de la que requiere este objetivo."}
 ::option[Un modelo estable o de lanzamientos puntuales]{#stable-release .correct explanation="Los modelos estables y de lanzamientos puntuales entregan los cambios importantes en versiones planificadas. Esto favorece un entorno más previsible."}
@@ -64,8 +61,7 @@ Si eres nuevo en Linux, comienza con distros que ofrezcan un proceso de instalac
 
 Ser apto para principiantes no siempre significa ser simplista. Por lo general, significa que la distro tiene valores predeterminados sensatos, una gran comunidad y menos sorpresas durante el uso diario.
 
-:::single-choice{#prioritize-beginner-needs}
-¿Qué cualidades constituyen el mejor punto de partida para una persona nueva en Linux?
+:::single-choice{#prioritize-beginner-needs} ¿Qué cualidades constituyen el mejor punto de partida para una persona nueva en Linux?
 
 ::option[Paquetes muy recientes, configuración manual y documentación limitada]{#advanced-setup-qualities explanation="El software reciente y la configuración manual pueden convenir a alguien con experiencia, pero la falta de orientación añade dificultades evitables para un principiante."}
 ::option[Control máximo, mantenimiento complejo y cambios inesperados frecuentes]{#maximum-control-qualities explanation="Un control profundo puede ser valioso cuando ya se conoce el flujo de trabajo deseado. No es la opción inicial que más ayuda al elegir una primera distribución."}
@@ -122,8 +118,7 @@ Es fácil pasar demasiado tiempo buscando la mejor distro de Linux y nunca empez
 
 Una vez que entiendes una distro de Linux, pasar a otra se vuelve mucho más fácil. El paso importante es comenzar.
 
-:::single-choice{#take-practical-next-step}
-Después de identificar tus objetivos, ¿cuál es un siguiente paso práctico?
+:::single-choice{#take-practical-next-step} Después de identificar tus objetivos, ¿cuál es un siguiente paso práctico?
 
 ::option[Seguir buscando hasta que una distribución sea la mejor para todo el mundo]{#search-universal-best explanation="La lección establece que cada persona tiene necesidades diferentes. Esperar una opción universal impide adquirir experiencia útil."}
 ::option[Cambiar repetidamente antes de aprender los fundamentos de alguna distribución]{#switch-repeatedly explanation="Cambiar con frecuencia dificulta el desarrollo de habilidades básicas. Aprender primero una distribución adecuada facilita los cambios posteriores."}

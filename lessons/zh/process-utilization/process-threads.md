@@ -18,8 +18,7 @@ meta_keywords: "Linux 线程，进程线程，ps 显示线程，ps m, 多线程�
 
 不同进程通常拥有各自独立的地址空间，并通过明确的进程间通信机制交换数据。这两种设计都不会天然更快或更安全；取舍取决于工作负载和实现方式。
 
-:::single-choice{#threads-shared-resource}
-同一进程中的线程通常共享哪项资源？
+:::single-choice{#threads-shared-resource} 同一进程中的线程通常共享哪项资源？
 
 ::option[进程的虚拟地址空间。]{#threads-shared-address-space .correct explanation="线程可以访问同一进程内存，但程序必须进行适当同步。"}
 ::option[每个线程各自独立的一套内核。]{#threads-separate-kernel explanation="所有线程都使用当前正在运行的系统内核。"}
@@ -30,8 +29,7 @@ meta_keywords: "Linux 线程，进程线程，ps 显示线程，ps m, 多线程�
 
 Linux 把每个线程表示为拥有自己线程 ID 的可调度任务。线程组首进程的 ID 通常显示为进程 ID，而所有成员共享一个线程组 ID。不同工具会使用 `PID`、`TID`、`LWP` 和 `SPID` 等标签；应检查工具的字段定义，不要假定所有标签含义相同。
 
-:::single-choice{#threads-own-scheduling-state}
-每个线程独立维护什么？
+:::single-choice{#threads-own-scheduling-state} 每个线程独立维护什么？
 
 ::option[进程完整的打开文件表。]{#threads-open-files-shared explanation="同一进程中的线程通常共享打开的文件描述符。"}
 ::option[机器的系统级用户数据库。]{#threads-user-database explanation="账户数据库并不是线程私有状态。"}
@@ -54,8 +52,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 线程列表只是快照。线程可能在下一刻退出或改变状态。
 
-:::single-choice{#threads-ps-one-process}
-哪个命令会使用明确字段列出 PID 1234 所属的线程？
+:::single-choice{#threads-ps-one-process} 哪个命令会使用明确字段列出 PID 1234 所属的线程？
 
 ::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="该输出并未请求逐线程显示。"}
 ::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="`-L` 选项会为选中的进程请求线程记录。"}
@@ -66,8 +63,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 单个线程的高 CPU 使用率可能被进程级平均值掩盖。应把线程级 CPU 样本与应用日志、栈跟踪和性能剖析工具结合起来。不了解暂停、权限和服务影响时，不要对生产任务附加调试器或发送信号。
 
-:::single-choice{#threads-snapshot-limit}
-为什么不应把 `ps` 线程列表视为永久状态？
+:::single-choice{#threads-snapshot-limit} 为什么不应把 `ps` 线程列表视为永久状态？
 
 ::option[`ps` 会为显示的每一行创建替代线程。]{#threads-ps-creates explanation="该命令只是观察任务，不会克隆列出的线程。"}
 ::option[所有 Linux 主机上的线程 ID 都完全相同。]{#threads-identical-ids explanation="标识符在运行中的系统内分配，并不具有全局通用性。"}

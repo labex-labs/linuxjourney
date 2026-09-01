@@ -29,8 +29,7 @@ $ sudo ls -la /mnt/mydrive
 
 Mounting on a nonempty directory hides its existing entries behind the new filesystem until unmounted; it does not delete them. This can confuse applications and consume disk space invisibly, so use an empty, dedicated mount point.
 
-:::single-choice{#mount-umount-nonempty-target}
-What happens to existing files in a directory when another filesystem is mounted there?
+:::single-choice{#mount-umount-nonempty-target} What happens to existing files in a directory when another filesystem is mounted there?
 
 ::option[They are automatically copied into the new filesystem.]{#mount-umount-copied-files explanation="Mounting changes namespace attachment and does not migrate directory contents."}
 ::option[They are permanently erased by the kernel.]{#mount-umount-erased-files explanation="The files normally reappear after unmounting because they were obscured, not deleted."}
@@ -55,8 +54,7 @@ $ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Mounts are namespace-scoped. A mount created in a container or private service namespace might not appear in another process's view.
 
-:::single-choice{#mount-umount-mount-role}
-What does the `mount` command do in the shown workflow?
+:::single-choice{#mount-umount-mount-role} What does the `mount` command do in the shown workflow?
 
 ::option[Creates a new filesystem and erases the source.]{#mount-umount-format-source explanation="Filesystem creation is a separate destructive `mkfs` operation."}
 ::option[Attaches a filesystem source to a directory in a mount namespace.]{#mount-umount-attach-filesystem .correct explanation="Path lookup beneath the target then enters the attached filesystem."}
@@ -80,8 +78,7 @@ $ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 
 A UUID identifies the filesystem, not necessarily the physical disk. Reformatting changes it, while cloning can duplicate it. Verify uniqueness before attaching original and clone to the same system.
 
-:::single-choice{#mount-umount-uuid-benefit}
-Why is a filesystem UUID often preferable to `/dev/sdX` for persistent configuration?
+:::single-choice{#mount-umount-uuid-benefit} Why is a filesystem UUID often preferable to `/dev/sdX` for persistent configuration?
 
 ::option[It prevents all storage devices from ever failing.]{#mount-umount-uuid-no-failure explanation="An identifier does not provide redundancy, integrity repair, or backup."}
 ::option[It guarantees cloned filesystems have different identifiers.]{#mount-umount-uuid-clone-unique explanation="A block-level clone can copy the UUID and create a collision."}
@@ -100,8 +97,7 @@ The command is spelled `umount`, without the first `n`. Successful unmount detac
 
 A successful unmount is not always the final safe-removal operation for removable media. Desktop storage stacks may offer an eject or power-off action that flushes device caches and disables a USB device. Follow the platform and hardware workflow.
 
-:::single-choice{#mount-umount-command-name}
-Which command detaches `/mnt/mydrive`?
+:::single-choice{#mount-umount-command-name} Which command detaches `/mnt/mydrive`?
 
 ::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` detaches the filesystem mounted at the specified target."}
 ::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="The standard command name omits the first `n`."}
@@ -119,8 +115,7 @@ $ sudo fuser -vm /mnt/mydrive
 
 Move shells out of the tree, stop the responsible application cleanly, and unmount child mounts before the parent. Lazy unmount and force options have specialized semantics and can leave active references or risk data loss; use them only with documented recovery reasoning.
 
-:::single-choice{#mount-umount-busy-cause}
-Which condition can make `umount` report that a filesystem is busy?
+:::single-choice{#mount-umount-busy-cause} Which condition can make `umount` report that a filesystem is busy?
 
 ::option[The mount point directory name contains lowercase letters.]{#mount-umount-lowercase explanation="Path casing alone does not create an active filesystem reference."}
 ::option[A process has its current working directory inside the mount.]{#mount-umount-cwd-busy .correct explanation="The process retains a reference into the mounted filesystem, preventing ordinary detachment."}

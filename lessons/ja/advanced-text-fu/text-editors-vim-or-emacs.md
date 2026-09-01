@@ -27,8 +27,7 @@ $ command -v emacs
 
 結果が空で終了状態が 0 以外なら、その名前は現在のコマンド検索では見つかっていません。最小構成のシステムでは `vi` だけが提供されることもあれば、Nano が含まれる場合や、対話型エディタがまったくない場合もあります。
 
-:::single-choice{#editors-check-availability}
-現在のシェルが `vim` という実行可能ファイルを解決できるか確認するコマンドはどれですか？
+:::single-choice{#editors-check-availability} 現在のシェルが `vim` という実行可能ファイルを解決できるか確認するコマンドはどれですか？
 
 ::option[`vim --install`]{#editors-vim-install explanation="Vim はこのコマンドを移植可能なインストール確認として使わず、パッケージのインストール方法もディストリビューションごとに異なります。"}
 ::option[`file ~/.vimrc`]{#editors-file-vimrc explanation="これは設定パスが存在する場合にその種類を判定しますが、`vim` を解決できるかは調べません。"}
@@ -45,8 +44,7 @@ Vim はモードを持つエディタです。同じキーでも、現在のモ�
 
 練習すれば、このモデルによって繰り返しのキーボード編集を効率よく行えますが、初心者は現在のモードを意識する必要があります。後続のレッスンで、Vim の操作を 1 つずつ紹介します。
 
-:::single-choice{#editors-vim-modal-meaning}
-Vim がモードを持つとは、どういう意味ですか？
+:::single-choice{#editors-vim-modal-meaning} Vim がモードを持つとは、どういう意味ですか？
 
 ::option[すべてのファイルが別々のグラフィカルウィンドウで開く。]{#editors-vim-windows explanation="ウィンドウとバッファーは別の概念です。モードとは、エディタの状態によってキーの動作が変わることを指します。"}
 ::option[Vim は一度に 1 種類のテキストファイルしか編集できない。]{#editors-vim-file-type explanation="Vim は多くのファイル形式に対応します。モードは操作モデルを表し、ファイルの制限ではありません。"}
@@ -59,8 +57,7 @@ Emacs は一般に、拡張可能な環境の中でキーの組み合わせと�
 
 Vim と Emacs はどちらも、設定や拡張によって基本編集をはるかに超える機能を利用できます。カスタマイズを追加する前に、プレーンテキストファイルを開く、変更する、保存する、閉じるという操作から始めてください。
 
-:::single-choice{#editors-emacs-buffer}
-Emacs の用語では、開いたファイルの編集可能なテキストは通常どこに保持されますか？
+:::single-choice{#editors-emacs-buffer} Emacs の用語では、開いたファイルの編集可能なテキストは通常どこに保持されますか？
 
 ::option[バッファー内。]{#editors-emacs-buffer-answer .correct explanation="Emacs はファイルをバッファーで開き、そこに表示または編集するテキストを保持します。"}
 ::option[シェルのエイリアステーブル内。]{#editors-emacs-alias-table explanation="エイリアスはシェルのコマンド解決に属し、エディタのテキストは保存しません。"}
@@ -78,8 +75,7 @@ $ export EDITOR="$VISUAL"
 
 これらの変数が表すのは設定上の希望であり、プログラムをインストールするものではありません。実際に存在するコマンドを使い、テストしてから適切なシェル起動ファイルへ export を記述してください。
 
-:::single-choice{#editors-editor-variable}
-`export EDITOR=vim` は何をしますか？
+:::single-choice{#editors-editor-variable} `export EDITOR=vim` は何をしますか？
 
 ::option[今後の子プロセスに、`vim` が優先するエディタ値だと伝えます。]{#editors-export-preference .correct explanation="export は、現在のシェルから起動するコマンドが継承する環境へ設定値を置きます。"}
 ::option[システムの全ユーザーに Vim をインストールします。]{#editors-install-vim explanation="環境変数の代入は、パッケージをインストールせず、ほかのユーザーのシステムも変更しません。"}
@@ -97,8 +93,7 @@ $ vim editor-practice.txt
 
 システム設定やほかのユーザーのデータから始めないでください。重要なファイルを変更する前にはバックアップを作り、保存と終了の方法を理解し、`cat` や `diff` などの読み取り専用コマンドで結果を確認します。
 
-:::single-choice{#editors-first-practice-file}
-慣れていないエディタを最初に練習するファイルとして、最も安全なものはどれですか？
+:::single-choice{#editors-first-practice-file} 慣れていないエディタを最初に練習するファイルとして、最も安全なものはどれですか？
 
 ::option[root で開いた重要なブート設定ファイル。]{#editors-boot-file explanation="誤った変更で通常起動できなくなるおそれがあり、権限を高めるほどミスの影響も大きくなります。"}
 ::option[自分が所有するディレクトリ内の使い捨てテキストファイル。]{#editors-disposable-file .correct explanation="練習用ファイルなら、移動、保存、終了を学ぶ間に誤編集しても影響を限定できます。"}

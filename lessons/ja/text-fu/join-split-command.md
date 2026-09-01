@@ -43,8 +43,7 @@ $ join people.txt surnames.txt
 
 出力には共有キーが 1 回、その後に第 1、第 2 ファイルの残りのフィールドが入ります。`join` が一度に処理するのは 2 ファイルで、3 つの通常ファイルを 3 方向の関係結合としては受け取りません。
 
-:::single-choice{#join-default-key}
-フィールドオプションなしの `join first.txt second.txt` はどのレコードを結合しますか？
+:::single-choice{#join-default-key} フィールドオプションなしの `join first.txt second.txt` はどのレコードを結合しますか？
 
 ::option[先頭の空白区切りフィールドが等しい行。]{#join-first-fields .correct explanation="`join` の標準動作は、並べ替え済みの 2 入力からフィールド 1 を比較します。"}
 ::option[物理的な行番号が同じ行。]{#join-line-numbers explanation="一致は単なるレコード位置ではなく、キーフィールドの値に基づきます。"}
@@ -63,8 +62,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 並べ替えと結合で同じロケールを使えば照合規則が一致します。シェルが先にファイルを切り詰めるため、並べ替え結果を同じ入力パスへリダイレクトしないでください。
 
-:::single-choice{#join-sort-requirement}
-`join` が確実に一致を処理するため、通常どの準備が必要ですか？
+:::single-choice{#join-sort-requirement} `join` が確実に一致を処理するため、通常どの準備が必要ですか？
 
 ::option[両ファイルの物理的な行数を完全に同じにする。]{#join-equal-line-count explanation="入力の長さは異なっても構いません。結合出力は行数ではなくキーの一致で決まります。"}
 ::option[2 つのファイル名をアルファベット順で隣り合わせにする。]{#join-filename-order explanation="並べ替える必要があるのは内容のキーで、ファイル名同士の辞書順は無関係です。"}
@@ -100,8 +98,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 コロンなど 1 文字の非空白区切りには `-t CHARACTER` を使います。`-a 1` や `-a 2` は片方にしかない行を含められますが、標準では一致したキーだけを出力します。
 
-:::single-choice{#join-different-fields}
-第 1 ファイルのフィールド 2 と第 2 ファイルのフィールド 1 を結合するオプションはどれですか？
+:::single-choice{#join-different-fields} 第 1 ファイルのフィールド 2 と第 2 ファイルのフィールド 1 を結合するオプションはどれですか？
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="第 1 入力のフィールド 1 と第 2 入力のフィールド 2 を選ぶため、要求と逆です。"}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` は第 1 ファイルのフィールド 2、`-2 1` は第 2 ファイルのフィールド 1 を選びます。"}
@@ -122,8 +119,7 @@ GNU の標準動作では 1 ファイルにつき最大 1000 行、接頭辞 `x`
 $ split -l 500 large.txt part-
 ```
 
-:::single-choice{#split-lines-with-prefix}
-`large.txt` を最大 500 行ずつ、接頭辞 `part-` の断片へ分割するコマンドはどれですか？
+:::single-choice{#split-lines-with-prefix} `large.txt` を最大 500 行ずつ、接頭辞 `part-` の断片へ分割するコマンドはどれですか？
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="`-b` はバイトを選ぶため、通常のテキストでは 500 行よりはるかに小さな断片になります。"}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` が最大行数を設定し、最後のオペランドが出力ファイル名の接頭辞です。"}
@@ -140,8 +136,7 @@ $ split -b 10M archive.bin chunk-
 
 最後の断片だけ小さくなる可能性があります。`split` はアーカイブの目録や再構築用メタデータを作らないため、接尾辞の順序を保ち、必要なら順番に連結してください。
 
-:::single-choice{#split-ten-mebibytes}
-`archive.bin` を接頭辞 `chunk-`、10 MiB ずつに分割するコマンドはどれですか？
+:::single-choice{#split-ten-mebibytes} `archive.bin` を接頭辞 `chunk-`、10 MiB ずつに分割するコマンドはどれですか？
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="`-l` は行数を取り、バイナリ断片のバイトサイズ接尾辞は指定しません。"}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` はバイナリ入力を分割せず、この断片サイズ操作も受け付けません。"}

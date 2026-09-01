@@ -23,8 +23,7 @@ Les touches fléchées et d'autres touches de navigation de la plateforme peuven
 - `C-a` : aller au début de la ligne ;
 - `C-e` : aller à la fin de la ligne.
 
-:::single-choice{#emacs-edit-next-line}
-Quelle touche Emacs déplace le point vers la ligne suivante ?
+:::single-choice{#emacs-edit-next-line} Quelle touche Emacs déplace le point vers la ligne suivante ?
 
 ::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` va à la ligne précédente, dans le sens opposé."}
 ::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n`, pour « next-line », descend le point à la position correspondante de la ligne d'écran suivante."}
@@ -42,8 +41,7 @@ Les commandes Méta parcourent des unités plus grandes :
 
 Sur de nombreux claviers, Alt joue le rôle de Méta. Si cette combinaison n'est pas disponible, appuyer sur `Esc`, puis sur la touche suivante envoie souvent la commande Méta équivalente.
 
-:::single-choice{#emacs-edit-buffer-end}
-Quelle touche Emacs déplace le point à la fin du tampon ?
+:::single-choice{#emacs-edit-buffer-end} Quelle touche Emacs déplace le point à la fin du tampon ?
 
 ::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` va à la fin de la ligne actuelle, pas à celle de tout le tampon."}
 ::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` va au début du tampon."}
@@ -56,8 +54,7 @@ La **marque** est une position mémorisée dans le tampon. Le texte entre le poi
 
 Dans un terminal, `C-SPC` peut être codé sous la forme `C-@`. Le surlignage dépend des réglages de marque transitoire, mais le point et la marque définissent toujours une région.
 
-:::single-choice{#emacs-edit-set-mark}
-Quelle touche commence à définir une région en plaçant la marque au point ?
+:::single-choice{#emacs-edit-set-mark} Quelle touche commence à définir une région en plaçant la marque au point ?
 
 ::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` coupe une région déjà définie ; cette commande ne place pas la marque initiale."}
 ::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` insère du texte provenant du kill ring et ne commence pas une sélection."}
@@ -74,8 +71,7 @@ Emacs stocke les textes coupés et copiés dans le **kill ring** :
 
 La coupe va au-delà d'une suppression ordinaire, car le texte retiré est conservé en vue d'un collage ultérieur.
 
-:::single-choice{#emacs-edit-copy-region}
-Quelle touche copie la région active dans le kill ring sans la retirer ?
+:::single-choice{#emacs-edit-copy-region} Quelle touche copie la région active dans le kill ring sans la retirer ?
 
 ::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`kill-ring-save`, associé à `M-w`, copie la région sans la supprimer."}
 ::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` retire la région tout en l'enregistrant dans le kill ring."}
@@ -93,8 +89,7 @@ M-y
 
 Si une autre commande sans rapport intervient après `C-y`, `M-y` ne dispose plus du même contexte de remplacement de collage.
 
-:::single-choice{#emacs-edit-yank-latest}
-Quelle touche insère au point l'entrée la plus récente du kill ring ?
+:::single-choice{#emacs-edit-yank-latest} Quelle touche insère au point l'entrée la plus récente du kill ring ?
 
 ::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="`yank`, associé à `C-y`, insère le dernier texte du kill ring dans le tampon actuel."}
 ::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` remplace normalement une entrée qui vient d'être collée par une entrée plus ancienne ; cette commande dépend du collage précédent."}

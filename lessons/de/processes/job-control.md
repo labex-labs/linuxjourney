@@ -25,8 +25,7 @@ Die Shell zeigt wieder eine Eingabeaufforderung an, ohne auf die Beendigung des 
 
 Ein Hintergrundjob, der vom steuernden Terminal zu lesen versucht, wird gewöhnlich mit `SIGTTIN` angehalten, da er nicht zur Vordergrundprozessgruppe des Terminals gehört.
 
-:::single-choice{#job-control-ampersand-effect}
-Wozu fordert ein abschließendes `&` eine interaktive Shell auf?
+:::single-choice{#job-control-ampersand-effect} Wozu fordert ein abschließendes `&` eine interaktive Shell auf?
 
 ::option[Zu garantieren, dass der Job Abmeldung und Systemneustart überlebt.]{#job-control-survive-restart explanation="Das Ausführen im Hintergrund bietet weder dauerhafte Überwachung noch Beständigkeit über einen Neustart hinweg."}
 ::option[Die Pipeline als Hintergrundjob auszuführen, ohne vor der nächsten Eingabeaufforderung zu warten.]{#job-control-background-job .correct explanation="Die Shell startet den Job asynchron und bleibt für weitere Befehle verfügbar."}
@@ -48,8 +47,7 @@ Die Zahl in eckigen Klammern ist eine Shell-Job-ID und keine PID. Ein vorangeste
 
 Da die Jobtabelle zu einer einzelnen Shell gehört, kann die Shell eines anderen Terminals diese Jobs gewöhnlich nicht mit ihren eigenen Built-ins `jobs`, `fg` oder `bg` auflisten oder ansprechen.
 
-:::single-choice{#job-control-jobs-scope}
-Was listet das Built-in `jobs` auf?
+:::single-choice{#job-control-jobs-scope} Was listet das Built-in `jobs` auf?
 
 ::option[Von der aktuellen Shell-Sitzung verfolgte Jobs.]{#job-control-jobs-current-shell .correct explanation="Job-IDs und Zustand werden von der interaktiven Shell verwaltet, die diese Jobs gestartet oder übernommen hat."}
 ::option[Jeden derzeit auf dem System sichtbaren Prozess.]{#job-control-jobs-all-processes explanation="Die systemweite Prozessprüfung gehört zu Werkzeugen wie `ps`; die Jobtabelle der Shell ist enger gefasst."}
@@ -74,8 +72,7 @@ $ bg
 
 `bg` sendet ein Fortsetzungssignal und lässt den Job außerhalb des Terminalvordergrunds. Es ist nur für einen angehaltenen Job nützlich; ein bereits im Hintergrund laufender Befehl muss nicht fortgesetzt werden.
 
-:::single-choice{#job-control-bg-purpose}
-Was bewirkt `bg %3` bei dem angehaltenen Job 3?
+:::single-choice{#job-control-bg-purpose} Was bewirkt `bg %3` bei dem angehaltenen Job 3?
 
 ::option[Es verschiebt seine Dateien in ein Verzeichnis namens `bg`.]{#job-control-bg-files explanation="`bg` ist ein Built-in zur Jobsteuerung der Shell und verschiebt keine Dateisystemobjekte."}
 ::option[Es setzt ihn als Hintergrundjob fort.]{#job-control-bg-continue .correct explanation="Die Shell setzt den ausgewählten angehaltenen Job fort, ohne ihn dem Terminalvordergrund zuzuweisen."}
@@ -92,8 +89,7 @@ $ fg %1
 
 Ohne Operanden wählt `fg` gewöhnlich den mit `+` markierten aktuellen Job aus. Ein angehaltener Job wird beim Wechsel in den Vordergrund fortgesetzt.
 
-:::single-choice{#job-control-fg-effect}
-Was bewirkt `fg %1`?
+:::single-choice{#job-control-fg-effect} Was bewirkt `fg %1`?
 
 ::option[Es weist Job 1 dem Terminalvordergrund zu und wartet auf ihn.]{#job-control-fg-foreground .correct explanation="Die Shell holt den ausgewählten Job in den Vordergrund, damit er mit dem Terminal interagieren kann."}
 ::option[Es wandelt Job 1 in PID 1 um.]{#job-control-fg-pid-one explanation="Eine Shell-Job-ID ersetzt oder verändert keine Prozess-IDs."}
@@ -110,8 +106,7 @@ $ kill -TERM %1
 
 Dies signalisiert gewöhnlich die Prozessgruppe des Jobs und nicht nur ein einzelnes Mitglied der Pipeline. Prüfe zuerst den ausgewählten Job und verwende `SIGTERM`, bevor du eine erzwungene Eskalation in Betracht ziehst. Jobspezifikationen sind Shell-Syntax; Skripte und externe Werkzeuge arbeiten häufiger mit überprüften PIDs oder Prozessgruppen-IDs.
 
-:::single-choice{#job-control-job-specification}
-Welcher Operand bezeichnet Shell-Job 1 und nicht Prozess-ID 1?
+:::single-choice{#job-control-job-specification} Welcher Operand bezeichnet Shell-Job 1 und nicht Prozess-ID 1?
 
 ::option[`1`]{#job-control-plain-one explanation="Ein einfacher numerischer Operand für `kill` wird gewöhnlich als PID interpretiert."}
 ::option[`#1`]{#job-control-hash-one explanation="Ein Rautenzeichen ist nicht die hier eingeführte Syntax für eine Shell-Job-ID."}

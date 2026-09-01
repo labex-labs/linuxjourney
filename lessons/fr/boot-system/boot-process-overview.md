@@ -18,8 +18,7 @@ Le micrologiciel de la plateforme initialise suffisamment le processeur, la mém
 
 Le micrologiciel ne comprend pas nécessairement le système de fichiers racine Linux installé. Il localise un chemin de démarrage selon son interface : par exemple, du code BIOS sur un disque choisi ou une entrée UEFI pointant vers un exécutable EFI dans une partition système EFI.
 
-:::single-choice{#boot-overview-first-stage}
-Quel composant commence l'initialisation de la plateforme après la réinitialisation d'un PC typique ?
+:::single-choice{#boot-overview-first-stage} Quel composant commence l'initialisation de la plateforme après la réinitialisation d'un PC typique ?
 
 ::option[Le shell interactif de l'utilisateur.]{#boot-overview-shell explanation="Un shell est lancé bien plus tard par les services de l'espace utilisateur ou le processus de connexion."}
 ::option[Le micrologiciel de la plateforme, comme le BIOS ou l'UEFI.]{#boot-overview-firmware .correct explanation="Le micrologiciel établit l'état matériel initial et choisit la cible de démarrage suivante avant l'exécution de Linux."}
@@ -32,8 +31,7 @@ Un chargeur comme GRUB peut présenter des entrées, charger en mémoire le noya
 
 Les artefacts choisis doivent être cohérents : la version du noyau, le contenu de l'initramfs, l'identifiant de la racine, les signatures de sécurité et les options de ligne de commande influencent tous la réussite du passage de relais suivant.
 
-:::single-choice{#boot-overview-loader-role}
-Quelle responsabilité incombe couramment à un chargeur de démarrage Linux ?
+:::single-choice{#boot-overview-loader-role} Quelle responsabilité incombe couramment à un chargeur de démarrage Linux ?
 
 ::option[Charger le noyau choisi et lui transmettre sa ligne de commande.]{#boot-overview-load-kernel .correct explanation="Le chargeur prépare l'image du noyau et ses paramètres, souvent avec un initramfs."}
 ::option[Recréer tous les comptes utilisateur à chaque démarrage.]{#boot-overview-create-users explanation="Les bases persistantes de comptes relèvent de la configuration en espace utilisateur et ne sont pas recréées par le chargeur."}
@@ -46,8 +44,7 @@ Le noyau se décompresse ou se reloge selon les besoins, initialise ses sous-sys
 
 Une fois la racine voulue disponible, l'espace utilisateur précoce bascule vers celle-ci et le noyau exécute le premier programme configuré de l'espace utilisateur. L'entité qui vérifie les systèmes de fichiers ou les remonte en lecture-écriture dépend de la conception de démarrage de la distribution, et non d'une séquence universelle.
 
-:::single-choice{#boot-overview-initramfs-purpose}
-Pourquoi un système peut-il utiliser un initramfs ?
+:::single-choice{#boot-overview-initramfs-purpose} Pourquoi un système peut-il utiliser un initramfs ?
 
 ::option[Pour conserver définitivement dans le micrologiciel la session graphique de chaque utilisateur.]{#boot-overview-desktop-firmware explanation="Un initramfs est une image de système de fichiers utilisée au démarrage, pas un stockage de sessions dans le micrologiciel."}
 ::option[Pour fournir les premiers outils et pilotes nécessaires à l'accès au véritable système de fichiers racine.]{#boot-overview-early-root-tools .correct explanation="L'espace utilisateur précoce peut assembler une racine chiffrée, logique, en réseau ou dépendante d'un pilote."}
@@ -60,8 +57,7 @@ Le premier processus de l'espace utilisateur reçoit le PID 1. Sur de nombreuses
 
 Atteindre le PID 1 ne signifie pas que le système est entièrement prêt. Des services peuvent encore démarrer, des supports être montés, la configuration réseau rester en attente, et une connexion graphique ou en console n'est qu'un état cible possible.
 
-:::single-choice{#boot-overview-final-stage}
-Qu'est-ce qui commence la principale étape d'initialisation de l'espace utilisateur ?
+:::single-choice{#boot-overview-final-stage} Qu'est-ce qui commence la principale étape d'initialisation de l'espace utilisateur ?
 
 ::option[La création du MBR protecteur du disque à chaque démarrage.]{#boot-overview-create-mbr explanation="La création de la table de partitions n'est pas une étape récurrente du démarrage normal."}
 ::option[La suppression de tous les paramètres de la ligne de commande du noyau.]{#boot-overview-delete-command-line explanation="Le noyau analyse et expose sa ligne de commande ; une telle suppression n'est pas requise."}

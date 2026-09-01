@@ -26,8 +26,7 @@ $ ls -ld /*
 
 Muitas distribuições atuais usam um layout `/usr` unificado, no qual `/bin`, `/sbin` e `/lib` são links simbólicos para os diretórios correspondentes em `/usr`. Use a descoberta de comandos e os registros de pacotes em vez de presumir se um caminho é um diretório físico ou um link.
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-Qual diretório contém convencionalmente a configuração do sistema específica do host?
+:::single-choice{#filesystem-hierarchy-configuration-directory} Qual diretório contém convencionalmente a configuração do sistema específica do host?
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="O procfs apresenta interfaces ativas de processos e do kernel, não arquivos persistentes de configuração do host."}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="A configuração do sistema e dos serviços é convencionalmente organizada em `/etc`."}
@@ -42,8 +41,7 @@ Qual diretório contém convencionalmente a configuração do sistema específic
 
 Apesar do nome, `/usr` não é o local onde normalmente ficam os arquivos pessoais de cada usuário. Os gerenciadores de pacotes da distribuição geralmente controlam grande parte desse diretório, portanto copiar arquivos compilados localmente para `/usr/bin` pode entrar em conflito com os pacotes gerenciados.
 
-:::single-choice{#filesystem-hierarchy-local-software}
-Qual prefixo é convencionalmente reservado ao software instalado localmente fora do conteúdo de `/usr` gerenciado pela distribuição?
+:::single-choice{#filesystem-hierarchy-local-software} Qual prefixo é convencionalmente reservado ao software instalado localmente fora do conteúdo de `/usr` gerenciado pela distribuição?
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="A hierarquia local separa o software instalado pelo administrador da árvore principal `/usr` da distribuição."}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="O procfs é uma interface virtual do kernel, não um prefixo persistente de software."}
@@ -58,8 +56,7 @@ Qual prefixo é convencionalmente reservado ao software instalado localmente for
 
 O caminho do diretório pessoal vem das informações da conta, não apenas da combinação de `/home` com um nome de usuário. Use `getent passwd USER` ou o diretório pessoal resolvido pelo shell em vez de codificar suposições.
 
-:::single-choice{#filesystem-hierarchy-root-home}
-Qual é o diretório pessoal convencional da conta root?
+:::single-choice{#filesystem-hierarchy-root-home} Qual é o diretório pessoal convencional da conta root?
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="Diretórios pessoais comuns muitas vezes ficam em `/home`, mas o root possui um caminho convencional distinto."}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="O diretório pessoal da conta privilegiada fica convencionalmente diretamente abaixo da raiz do sistema de arquivos."}
@@ -75,8 +72,7 @@ Qual é o diretório pessoal convencional da conta root?
 
 A política de limpeza de `/tmp` varia; não presuma que os arquivos persistam até a reinicialização nem que sempre sejam excluídos durante ela. As aplicações devem criar arquivos temporários com segurança, em vez de usar nomes previsíveis.
 
-:::single-choice{#filesystem-hierarchy-log-path}
-Qual caminho armazena convencionalmente os arquivos de log do sistema?
+:::single-choice{#filesystem-hierarchy-log-path} Qual caminho armazena convencionalmente os arquivos de log do sistema?
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` é destinado à configuração, não a dados comuns de log que se acumulam."}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="Os logs são uma categoria de dados mutáveis do sistema, organizada na hierarquia de dados variáveis."}
@@ -93,8 +89,7 @@ Qual caminho armazena convencionalmente os arquivos de log do sistema?
 
 Essas são convenções, não concessões de permissões. Montar outro sistema de arquivos sobre um diretório não vazio oculta temporariamente o conteúdo anterior do diretório até que ele seja desmontado.
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-Qual caminho normalmente expõe o modelo de dispositivos do kernel por meio do sysfs?
+:::single-choice{#filesystem-hierarchy-sysfs-path} Qual caminho normalmente expõe o modelo de dispositivos do kernel por meio do sysfs?
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` é destinado aos dados servidos pelo sistema."}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="O sysfs é convencionalmente montado em `/sys` e apresenta dispositivos, drivers, barramentos e atributos."}

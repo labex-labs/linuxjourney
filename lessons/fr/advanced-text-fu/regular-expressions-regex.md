@@ -32,8 +32,7 @@ sally sells seashells
 
 Placez les motifs regex entre guillemets simples afin que le shell ne les développe ni ne les découpe avant que l'outil de recherche ne les reçoive. Une regex diffère aussi du développement des noms de chemins par le shell : dans une regex, `*` répète l'élément précédent ; dans un motif glob du shell, `*` est lui-même un joker représentant une suite de caractères d'un chemin.
 
-:::single-choice{#regex-versus-shell-star}
-Quel est le rôle de `*` dans une expression régulière telle que `ab*` ?
+:::single-choice{#regex-versus-shell-star} Quel est le rôle de `*` dans une expression régulière telle que `ab*` ?
 
 ::option[Il correspond à n'importe quel fichier du répertoire courant.]{#regex-shell-glob explanation="Cela décrit le développement des chemins par le shell dans une commande, et non le sens de `*` dans une regex."}
 ::option[Il répète le `b` précédent zéro ou plusieurs fois.]{#regex-repeat-b .correct explanation="Un quantificateur regex s'applique à l'élément qui le précède immédiatement : `ab*` correspond donc à `a`, `ab`, `abb`, etc."}
@@ -60,8 +59,7 @@ Combinez les deux ancres lorsque la ligne entière doit correspondre au motif :
 ^by the seashore$
 ```
 
-:::single-choice{#regex-complete-line}
-Quel motif correspond uniquement à une ligne dont le texte complet est `by the seashore` ?
+:::single-choice{#regex-complete-line} Quel motif correspond uniquement à une ligne dont le texte complet est `by the seashore` ?
 
 ::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="L'accent circonflexe impose le début de la ligne, tandis que le signe dollar impose que la correspondance se termine avec elle."}
 ::option[`by the seashore`]{#regex-unanchored-line explanation="Sans ancres, cette suite peut apparaître au milieu d'une ligne plus longue, avec du texte avant ou après."}
@@ -78,8 +76,7 @@ b.
 
 Ce motif correspond à `by`, mais aussi à `ba` ou `b7`. Il ne correspond pas à un `b` isolé, car un caractère est requis après celui-ci. Pour rechercher un point littéral, échappez-le sous la forme `\.` ou placez-le dans une expression entre crochets adaptée.
 
-:::single-choice{#regex-dot-character}
-Quelle chaîne ne correspond pas au motif de ligne complète `^b.$` ?
+:::single-choice{#regex-dot-character} Quelle chaîne ne correspond pas au motif de ligne complète `^b.$` ?
 
 ::option[`by`]{#regex-dot-by explanation="Le point correspond à `y` ; cette ligne de deux caractères satisfait donc le motif."}
 ::option[`b`]{#regex-dot-b .correct explanation="Le point exige un caractère après `b`, mais cette chaîne se termine immédiatement."}
@@ -104,8 +101,7 @@ s[^e]lls
 
 Ce motif correspond à `salls`, mais pas à `sells`, car le caractère qui suit le premier `s` ne peut pas être `e`.
 
-:::single-choice{#regex-negated-bracket}
-À quoi correspond `[^e]` ?
+:::single-choice{#regex-negated-bracket} À quoi correspond `[^e]` ?
 
 ::option[À exactement un caractère autre que `e`.]{#regex-not-e .correct explanation="Un accent circonflexe placé en tête entre crochets prend le complément de l'ensemble indiqué, mais l'expression consomme toujours un seul caractère."}
 ::option[Au début d'une ligne suivi de `e`.]{#regex-caret-e-anchor explanation="Au début d'une expression entre crochets, l'accent circonflexe inverse l'ensemble au lieu d'ancrer la ligne."}
@@ -143,8 +139,7 @@ $ grep -E '^(cat|dog)s?$' animals.txt
 
 Cette commande sélectionne les lignes complètes égales à `cat`, `cats`, `dog` ou `dogs`. En mode BRE, ces opérateurs suivent d'autres règles d'échappement : ne recopiez donc pas un motif d'une variante à l'autre sans les vérifier.
 
-:::single-choice{#regex-extended-alternation}
-Quelle commande active la syntaxe regex étendue pour le motif `^(cat|dog)s?$` ?
+:::single-choice{#regex-extended-alternation} Quelle commande active la syntaxe regex étendue pour le motif `^(cat|dog)s?$` ?
 
 ::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F` traite tous les opérateurs regex comme du texte littéral ; le regroupement, l'alternative et la répétition facultative sont donc désactivés."}
 ::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E` sélectionne les expressions régulières étendues et active ici le regroupement, l'alternative et le `s` facultatif."}

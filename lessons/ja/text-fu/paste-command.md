@@ -27,8 +27,7 @@ bob	viewer
 
 列間の空白はタブです。ファイル全体を順番に書く `cat` と異なり、`paste` は対応する入力行を結合します。
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt` に `A`、`B`、`second.txt` に `1`、`2` が順に入っています。`paste first.txt second.txt` の標準出力はどれですか？
+:::single-choice{#paste-corresponding-lines} `first.txt` に `A`、`B`、`second.txt` に `1`、`2` が順に入っています。`paste first.txt second.txt` の標準出力はどれですか？
 
 ::option[`A`、`B`、`1`、`2` を 4 行に順に表示する。]{#paste-concatenated-files explanation="これはファイルを順番に書く動作です。`paste` は対応する行を結合します。"}
 ::option[`A`、`B`、`1`、`2` を区切りなしで 1 行に表示する。]{#paste-one-line-no-separator explanation="1 行への直列化には `-s` が必要で、標準の区切りはなしではなくタブです。"}
@@ -47,8 +46,7 @@ bob:viewer
 
 シェルで意味を持つ区切り文字は引用します。`paste` は複数文字のリストを順に使えますが、2 列なら 1 文字が分かりやすいでしょう。
 
-:::single-choice{#paste-colon-delimiter}
-`names.txt` と `roles.txt` の対応する行をコロンで結ぶコマンドはどれですか？
+:::single-choice{#paste-colon-delimiter} `names.txt` と `roles.txt` の対応する行をコロンで結ぶコマンドはどれですか？
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="`-d` は各フィールド間の標準タブを指定されたコロンへ置き換えます。"}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="`-s` は直列モードを選び、`:` は区切りではなく入力パスとして扱われます。"}
@@ -72,8 +70,7 @@ The quick brown fox
 
 複数ファイルを `-s` へ渡すと、各ファイルがそれぞれ 1 出力行になります。
 
-:::single-choice{#paste-serialize-with-spaces}
-`words.txt` の全行を空白区切りの 1 行にするコマンドはどれですか？
+:::single-choice{#paste-serialize-with-spaces} `words.txt` の全行を空白区切りの 1 行にするコマンドはどれですか？
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="標準の並列モードでは、入力が 1 ファイルなら入力行ごとに出力され、ファイル間を結ぶ区切りは働きません。"}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="2 ファイルを標準のタブで別々に直列化し、要求された 1 ファイルの空白区切り結果にはなりません。"}
@@ -93,8 +90,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-並列 `paste` に渡した 1 ファイルが他より先に終わるとどうなりますか？
+:::single-choice{#paste-unequal-files} 並列 `paste` に渡した 1 ファイルが他より先に終わるとどうなりますか？
 
 ::option[最長の入力が終わるまで、そのファイルには空フィールドを使う。]{#paste-empty-fields .correct explanation="並列モードはすべてのファイルが尽きるまで続き、短い入力の不足行を空フィールドで表します。"}
 ::option[直ちに停止し、残りの行を捨てる。]{#paste-stop-shortest explanation="最長の入力まで続くため、別のファイルが終わっても残りの行は捨てません。"}
@@ -111,8 +107,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-`producer | paste names.txt -` で `-` は何を意味しますか？
+:::single-choice{#paste-stdin-operand} `producer | paste names.txt -` で `-` は何を意味しますか？
 
 ::option[結合結果を stderr へ書く。]{#paste-write-stderr explanation="ここでハイフンは入力元を示し、出力ストリームはリダイレクトしません。"}
 ::option[2 列間の区切り文字を削除する。]{#paste-remove-delimiter explanation="区切りは `-d` で選び、ハイフンは区切りを変えません。"}

@@ -16,8 +16,7 @@ Fedora 는 Red Hat 이 후원하는 커뮤니티 주도형 리눅스 배포판�
 
 Fedora 는 보수적인 배포판보다 빠르게 발전하면서도 품질과 사용성을 유지하는 것으로 정평이 나 있습니다. 이러한 균형 덕분에 모든 것을 처음부터 구축하지 않고도 현대적인 리눅스 시스템을 원하는 사용자들에게 매력적입니다.
 
-:::single-choice{#identify-fedora-project-model}
-Fedora 프로젝트를 올바르게 설명한 것은 무엇인가요?
+:::single-choice{#identify-fedora-project-model} Fedora 프로젝트를 올바르게 설명한 것은 무엇인가요?
 
 ::option[지원이 중단된 Red Hat Enterprise Linux 버전입니다.]{#discontinued-rhel explanation="Fedora는 자체 릴리스를 제공하는 활성 배포판이며 오래된 RHEL 버전이 아니라 RHEL의 업스트림입니다."}
 ::option[한 하드웨어 제조사가 유지하는 배포판입니다.]{#hardware-maintained explanation="Fedora가 하드웨어 업체와 협력하기는 하지만 개발은 커뮤니티가 주도하고 Red Hat이 후원합니다."}
@@ -30,8 +29,7 @@ Fedora 는 기업용 배포판보다 새로운 리눅스 기능을 더 빨리 �
 
 또한 깔끔한 기본 환경을 제공하는 것으로도 잘 알려져 있습니다. Fedora Workstation 은 현대적인 데스크톱, 최신 도구, 컨테이너, 가상화 및 기타 개발 워크플로우에 대한 우수한 지원을 원하는 개발자들 사이에서 특히 인기가 높습니다.
 
-:::single-choice{#match-fedora-user}
-Fedora Workstation과 가장 잘 맞는 사용자 목표는 무엇인가요?
+:::single-choice{#match-fedora-user} Fedora Workstation과 가장 잘 맞는 사용자 목표는 무엇인가요?
 
 ::option[하나의 기업용 릴리스를 수년 동안 바꾸지 않고 유지합니다.]{#long-enterprise-lifecycle explanation="길고 보수적인 기업 수명 주기는 RHEL의 역할에 더 가깝고 Fedora는 더 빠른 릴리스와 업그레이드 일정을 따릅니다."}
 ::option[세련된 데스크톱 시스템에서 최신 개발 도구를 사용합니다.]{#current-developer-desktop .correct explanation="Fedora Workstation은 잘 구성된 데스크톱과 최신 개발, 컨테이너, 가상화 도구를 결합하므로 이 목표와 직접 맞습니다."}
@@ -44,8 +42,7 @@ Fedora 는 Red Hat 생태계에서 중요한 역할을 합니다. 새로운 기�
 
 Fedora 를 기업용 옵션과 비교하고 싶다면 [Red Hat Enterprise Linux](https://labex.io/ko/lesson/red-hat-enterprise-linux)를 참조하세요. 배포판 계열을 비교 중이라면 [리눅스 배포판 선택하기](https://labex.io/ko/lesson/choosing-a-linux-distribution)에서 더 넓은 개요를 확인할 수 있습니다.
 
-:::single-choice{#explain-fedora-upstream-role}
-Fedora와 RHEL의 업스트림 관계는 무엇을 뜻하나요?
+:::single-choice{#explain-fedora-upstream-role} Fedora와 RHEL의 업스트림 관계는 무엇을 뜻하나요?
 
 ::option[RHEL 릴리스를 나중에 Fedora로 그대로 복사합니다.]{#rhel-copied-to-fedora explanation="관계를 반대로 설명했습니다. Fedora는 더 빠르게 움직이며 RHEL의 나중 복사본이 아니라 업스트림 역할을 합니다."}
 ::option[Fedora와 RHEL은 항상 같은 소프트웨어 버전을 제공합니다.]{#identical-software-versions explanation="두 배포판은 릴리스 목표와 일정이 다르며 RHEL은 Fedora의 모든 버전을 맞추는 대신 기술을 선택해 안정화합니다."}
@@ -58,8 +55,7 @@ Fedora 는 정기적인 릴리스 주기를 따르며, 대부분의 해에 두 �
 
 이로 인해 Fedora 는 최신 소프트웨어를 원하면서도 수동적인 롤링 릴리스 시스템보다는 체계적이고 주류인 리눅스 배포판을 선호하는 사용자에게 적합합니다.
 
-:::single-choice{#plan-fedora-upgrades}
-Fedora 사용자는 릴리스 모델에 따라 어떤 유지 관리를 예상해야 하나요?
+:::single-choice{#plan-fedora-upgrades} Fedora 사용자는 릴리스 모델에 따라 어떤 유지 관리를 예상해야 하나요?
 
 ::option[컴퓨터 수명 동안 버전 업그레이드가 필요 없습니다.]{#no-version-upgrades explanation="Fedora 버전의 지원 기간은 제한되어 있으므로 계속 지원받으려면 시간이 지나면서 새 릴리스로 이동해야 합니다."}
 ::option[지원되는 릴리스를 유지하기 위한 정기 업그레이드]{#regular-release-upgrades .correct explanation="Fedora는 비교적 빠른 주기로 릴리스되고 약 13개월 동안 업데이트되므로 정기적인 버전 업그레이드를 계획해야 합니다."}
@@ -72,8 +68,7 @@ Fedora 는 소프트웨어를 설치, 업데이트 및 제거하기 위해 RPM �
 
 Fedora 의 패키지 관리는 직관적이며, 더 넓은 Red Hat 계열 시스템과 자연스럽게 호환됩니다.
 
-:::single-choice{#identify-fedora-package-tool}
-Fedora가 상위 수준의 패키지 관리에 사용하는 도구는 무엇인가요?
+:::single-choice{#identify-fedora-package-tool} Fedora가 상위 수준의 패키지 관리에 사용하는 도구는 무엇인가요?
 
 ::option[APT]{#fedora-apt-tool explanation="APT는 데비안 기반 배포판과 관련된 도구이며 Fedora는 RPM 패키지 계열에 속해 DNF를 사용합니다."}
 ::option[DNF]{#fedora-dnf-tool .correct explanation="DNF는 Fedora 저장소의 패키지를 설치, 업데이트, 제거하며 그 아래에서 RPM 형식을 사용합니다."}

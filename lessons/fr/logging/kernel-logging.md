@@ -22,8 +22,7 @@ $ dmesg --human
 
 Le tampon possède une capacité finie ; les nouveaux messages peuvent donc écraser les plus anciens. Son accès peut aussi être limité aux utilisateurs privilégiés. `dmesg --follow` suit les nouveaux messages sur les implémentations qui le prennent en charge ; arrêtez-le après une reproduction limitée.
 
-:::single-choice{#kernel-log-ring-buffer-limit}
-Pourquoi un ancien événement du noyau peut-il être absent de la sortie actuelle de `dmesg` ?
+:::single-choice{#kernel-log-ring-buffer-limit} Pourquoi un ancien événement du noyau peut-il être absent de la sortie actuelle de `dmesg` ?
 
 ::option[Les événements du noyau ne peuvent contenir qu'un seul caractère.]{#kernel-log-one-character explanation="Les messages du noyau peuvent contenir du texte de diagnostic et des métadonnées ordinaires."}
 ::option[`dmesg` supprime définitivement chaque ligne après l'avoir affichée.]{#kernel-log-display-deletes explanation="Une lecture normale ne consomme pas tous les messages affichés du noyau."}
@@ -34,8 +33,7 @@ Pourquoi un ancien événement du noyau peut-il être absent de la sortie actuel
 
 Les horodatages bruts du noyau sont généralement relatifs au démarrage. `dmesg --ctime` ou `--human` peut les afficher selon l'heure murale, mais les valeurs converties dépendent de l'historique de l'horloge et peuvent être inexactes si celle-ci a changé après le démarrage. Préservez le temps relatif au démarrage lorsqu'un séquençage précis est important.
 
-:::single-choice{#kernel-log-timestamp-caution}
-Pourquoi faut-il interpréter prudemment les horodatages d'heure murale convertis par `dmesg` ?
+:::single-choice{#kernel-log-timestamp-caution} Pourquoi faut-il interpréter prudemment les horodatages d'heure murale convertis par `dmesg` ?
 
 ::option[Ils désignent toujours une autre machine.]{#kernel-log-other-machine explanation="Ils sont calculés localement, même si les changements d'horloge peuvent influencer la conversion."}
 ::option[Ils dépendent de l'association du temps relatif au démarrage à une horloge susceptible de changer.]{#kernel-log-clock-change .correct explanation="La synchronisation du temps ou une modification manuelle de l'horloge peut rendre l'heure affichée trompeuse."}
@@ -59,8 +57,7 @@ $ journalctl -k -b -1
 
 Le routage syslog traditionnel peut créer `/var/log/kern.log` ou un autre fichier, mais cela dépend de la configuration. Un fichier `/var/log/dmesg` enregistré n'est pas non plus universel et peut ne représenter qu'un instantané du démarrage.
 
-:::single-choice{#kernel-log-previous-boot}
-Quelle commande demande les messages du noyau du démarrage précédent conservé ?
+:::single-choice{#kernel-log-previous-boot} Quelle commande demande les messages du noyau du démarrage précédent conservé ?
 
 ::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="Les messages du noyau se sélectionnent avec `-k`, et le suivi ne choisit pas le démarrage précédent."}
 ::option[`dmesg --clear`]{#kernel-log-clear explanation="L'effacement change l'état du tampon et ne récupère pas un ancien démarrage."}
@@ -79,8 +76,7 @@ $ lsblk
 
 N'employez que les outils pertinents pour le sous-système. Avant de recharger un pilote, dissocier un périphérique ou redémarrer, évaluez l'impact sur le stockage, le réseau, la console et les services, puis préservez l'accès de récupération.
 
-:::single-choice{#kernel-log-warning-response}
-Quelle est la meilleure réaction à une seule ligne d'avertissement du noyau ?
+:::single-choice{#kernel-log-warning-response} Quelle est la meilleure réaction à une seule ligne d'avertissement du noyau ?
 
 ::option[Décharger immédiatement tous les pilotes actifs.]{#kernel-log-unload-all explanation="Cela peut interrompre des périphériques essentiels et n'isole pas la cause de l'avertissement."}
 ::option[Supposer que toute la machine doit être remplacée.]{#kernel-log-replace-machine explanation="Un seul enregistrement ne suffit pas à établir cette conclusion."}

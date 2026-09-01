@@ -23,8 +23,7 @@ $ ip neighbor show dev enp1s0
 
 Uma entrada inclui IP, endereço da camada de enlace, dispositivo e estado de alcance. A tabela pode estar vazia após o boot e ser preenchida conforme o tráfego exige próximos saltos locais.
 
-:::single-choice{#arp-command-modern-view}
-Qual comando mostra o estado moderno da tabela de vizinhos?
+:::single-choice{#arp-command-modern-view} Qual comando mostra o estado moderno da tabela de vizinhos?
 
 ::option[`pwd neighbor`]{#arp-command-pwd explanation="Pwd informa o diretório de trabalho do shell."}
 ::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="Ele informa entradas derivadas de ARP IPv4 e Neighbor Discovery IPv6."}
@@ -37,8 +36,7 @@ Quando falta o mapeamento de um IPv4 no mesmo link, o host transmite uma solicit
 
 Para um destino IP remoto, o host resolve o endereço do gateway escolhido, não o MAC do host remoto.
 
-:::single-choice{#arp-command-remote-target}
-Qual vizinho IPv4 o host resolve para um destino fora do link?
+:::single-choice{#arp-command-remote-target} Qual vizinho IPv4 o host resolve para um destino fora do link?
 
 ::option[O servidor remoto final, atravessando todos os roteadores.]{#arp-command-final-server explanation="O MAC do servidor remoto não tem significado no link de origem."}
 ::option[Todo servidor DNS configurado no resolver.]{#arp-command-all-dns explanation="A resolução de vizinhos segue a rota escolhida, não a lista DNS."}
@@ -49,8 +47,7 @@ Qual vizinho IPv4 o host resolve para um destino fora do link?
 
 Estados comuns incluem `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE` e `FAILED`. `STALE` significa que a confirmação recente expirou; o endereço armazenado ainda pode ser usado enquanto a pilha testa conforme necessário. `FAILED` indica que a resolução ou detecção não teve êxito, com causas possíveis em link, VLAN, endereço, rota, filtro ou peer desligado.
 
-:::single-choice{#arp-command-stale-state}
-`STALE` significa que o vizinho é sabidamente inalcançável?
+:::single-choice{#arp-command-stale-state} `STALE` significa que o vizinho é sabidamente inalcançável?
 
 ::option[Não; falta confirmação recente e ele pode ser testado ao ser usado.]{#arp-command-stale-probe .correct explanation="Esse estado não equivale a `FAILED`."}
 ::option[Sim, e a entrada nunca mais pode ser usada.]{#arp-command-stale-dead explanation="Entradas stale continuam candidatas e podem mudar após testes."}
@@ -63,8 +60,7 @@ Entradas estáticas e limpezas mudam o estado, podem interromper tráfego e apag
 
 ARP não tem autenticação embutida; endereços duplicados ou respostas falsas podem envenenar mapeamentos. Proteções do switch, segmentação, monitoramento e autenticação em camadas superiores reduzem o impacto.
 
-:::single-choice{#arp-command-flush-first}
-Por que não limpar toda a tabela como primeiro diagnóstico?
+:::single-choice{#arp-command-flush-first} Por que não limpar toda a tabela como primeiro diagnóstico?
 
 ::option[As entradas ficam apenas nos servidores DNS raiz.]{#arp-command-neighbors-dns explanation="Elas são mantidas pela pilha local."}
 ::option[A limpeza remove permanentemente o hardware.]{#arp-command-flush-hardware explanation="Ela remove cache, não dispositivos físicos."}

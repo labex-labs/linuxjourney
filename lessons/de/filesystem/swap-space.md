@@ -18,8 +18,7 @@ Abhängig von Arbeitslast, Speicherdruck, cgroups und einstellbaren Werten wie S
 
 Starkes dauerhaftes Swapping kann erhebliche Latenz oder Thrashing verursachen. Untersuche Speicherbedarf, Working Sets, Druck und Anwendungslimits, statt einen größeren Swap-Bereich als universelle Leistungsverbesserung zu behandeln.
 
-:::single-choice{#swap-space-anonymous-pages}
-Welcher Speicher ist ein hauptsächlicher Kandidat für die Ablage in Swap?
+:::single-choice{#swap-space-anonymous-pages} Welcher Speicher ist ein hauptsächlicher Kandidat für die Ablage in Swap?
 
 ::option[Jede unter `/usr` installierte ausführbare Datei.]{#swap-space-installed-files explanation="Installierte Dateien bleiben in ihren Dateisystemen; saubere abgebildete Seiten können von dort erneut gelesen werden."}
 ::option[Inaktive anonyme Speicherseiten.]{#swap-space-anonymous-memory .correct explanation="Anonyme Seiten besitzen keine gewöhnliche zugrunde liegende Datei, aus der sie einfach erneut gelesen werden können."}
@@ -38,8 +37,7 @@ $ free -h
 
 Sie zeigen konfigurierte aktive Swap-Bereiche und zusammengefasste Speicherwerte. Ein Wert größer null bei „used“ ist nicht automatisch ein Problem. Setze ihn mit Swap-in-/Swap-out-Raten, Speicherdruck, Latenz und dem Verhalten der Arbeitslast in Beziehung.
 
-:::single-choice{#swap-space-show-active}
-Welcher Befehl listet aktive Swap-Bereiche in einer strukturierten Ansicht auf?
+:::single-choice{#swap-space-show-active} Welcher Befehl listet aktive Swap-Bereiche in einer strukturierten Ansicht auf?
 
 ::option[`swapon --show`]{#swap-space-swapon-show .correct explanation="Der Show-Modus meldet aktive Swap-Dateien oder -Geräte und, soweit verfügbar, Größe, Nutzung und Priorität."}
 ::option[`mkswap --all`]{#swap-space-mkswap-all explanation="Mkswap initialisiert Swap-Signaturen und ist kein schreibgeschützter Befehl zur Auflistung aktiver Bereiche."}
@@ -63,8 +61,7 @@ Verwende für eine dauerhafte Konfiguration die Swap-UUID mit einem zur lokalen 
 UUID=GEPRUEFTE-SWAP-UUID none swap sw 0 0
 ```
 
-:::single-choice{#swap-space-enable-command}
-Welcher Befehl aktiviert einen initialisierten Swap-Bereich?
+:::single-choice{#swap-space-enable-command} Welcher Befehl aktiviert einen initialisierten Swap-Bereich?
 
 ::option[`swapon`]{#swap-space-command-swapon .correct explanation="Swapon fügt der aktiven Swap-Gruppe des Kernels ein gültiges Swap-Gerät oder eine gültige Swap-Datei hinzu."}
 ::option[`mkswap`]{#swap-space-command-mkswap explanation="Mkswap initialisiert die Signatur, aktiviert den Bereich aber nicht selbst."}
@@ -79,8 +76,7 @@ Komprimierte RAM-Geräte wie zram können eine weitere Swap-Stufe mit anderen CP
 
 Es gibt keine universelle Regel, nach der Swap das Doppelte des RAM betragen muss. Dimensioniere ihn anhand von Lastspitzen, gewünschtem Fehlerverhalten, Anforderungen des Ruhezustands, Speicherlatenz und -haltbarkeit, Crash-Dump-Konzept und betrieblicher Überwachung.
 
-:::single-choice{#swap-space-sizing-rule}
-Was ist die beste Grundlage für die Dimensionierung von Swap?
+:::single-choice{#swap-space-sizing-rule} Was ist die beste Grundlage für die Dimensionierung von Swap?
 
 ::option[Immer genau das Doppelte des installierten RAM.]{#swap-space-twice-ram explanation="Diese historische Faustregel passt nicht zu jeder Arbeitslast oder modernen Speichergröße."}
 ::option[Gemessene Anforderungen der Arbeitslast, Ziele des Ruhezustands und Fehlerrichtlinie.]{#swap-space-sizing-requirements .correct explanation="Systemzweck und beobachtetes Speicherverhalten sind wichtiger als ein fester RAM-Multiplikator."}
@@ -97,8 +93,7 @@ $ sudo swapoff /dev/GEPRUEFTES-SWAP-ZIEL
 
 Der Kernel muss die darin vorhandenen ausgelagerten Seiten an anderer Stelle unterbringen. Wenn RAM und verbleibender Swap dafür nicht ausreichen, kann der Vorgang fehlschlagen oder gefährlichen Speicherdruck erzeugen. Beende oder begrenze zuerst Arbeitslasten, überwache den Speicher, entferne den dauerhaften fstab-Eintrag erst nach Prüfung des richtigen Ziels und bestätige die Deaktivierung mit `swapon --show`, bevor du den Speicher anders verwendest.
 
-:::single-choice{#swap-space-swapoff-capacity}
-Warum kann `swapoff` auf einem stark ausgelasteten System fehlschlagen oder es gefährden?
+:::single-choice{#swap-space-swapoff-capacity} Warum kann `swapoff` auf einem stark ausgelasteten System fehlschlagen oder es gefährden?
 
 ::option[Swapoff formatiert immer jedes RAM-Modul neu.]{#swap-space-formats-ram explanation="Der Befehl verändert die aktive Swap-Konfiguration und formatiert keine physische Speicherhardware."}
 ::option[Seiten in diesem Bereich benötigen Kapazität im RAM oder in anderem Swap.]{#swap-space-pages-need-capacity .correct explanation="Die Deaktivierung erfordert das Verschieben aktiver ausgelagerter Seiten, während das System weiterläuft."}

@@ -16,8 +16,7 @@ El enrutamiento por vector de distancia indica a los vecinos qué destinos son a
 
 Si el router A anuncia una distancia de tres hasta un prefijo y el router B llega a A con un coste de uno, B puede derivar una distancia de cuatro a través de A. La información describe una dirección y una métrica, no un mapa completo de la topología, por lo que este enfoque a veces se denomina enrutamiento por rumores.
 
-:::single-choice{#distance-vector-derived-distance}
-Si un vecino anuncia la métrica 3 y el coste del enlace es 1, ¿qué métrica se deriva a través de él?
+:::single-choice{#distance-vector-derived-distance} Si un vecino anuncia la métrica 3 y el coste del enlace es 1, ¿qué métrica se deriva a través de él?
 
 ::option[2]{#distance-vector-two explanation="El coste del enlace se suma, no se resta."}
 ::option[31]{#distance-vector-thirty-one explanation="Los valores son métricas, no dígitos decimales que deban concatenarse."}
@@ -28,8 +27,7 @@ Si un vecino anuncia la métrica 3 y el coste del enlace es 1, ¿qué métrica s
 
 Después de un fallo, los vecinos pueden anunciarse por error una ruta mutuamente y aumentar su métrica de forma gradual. Los protocolos mitigan este problema mediante valores finitos de infinito, horizonte dividido, envenenamiento de rutas, inversa envenenada, actualizaciones activadas y temporizadores. Estos mecanismos reducen el problema, pero no convierten todos los cambios de topología en una convergencia instantánea.
 
-:::single-choice{#distance-vector-split-horizon}
-¿Qué pretende reducir el horizonte dividido?
+:::single-choice{#distance-vector-split-horizon} ¿Qué pretende reducir el horizonte dividido?
 
 ::option[La cantidad de bits de todas las direcciones IPv4.]{#distance-vector-ip-bits explanation="El tamaño de una dirección IPv4 es fijo e independiente de las actualizaciones de enrutamiento."}
 ::option[La sobrecarga de cifrado de las cargas útiles de las aplicaciones.]{#distance-vector-encryption explanation="La técnica se ocupa de la dirección de los anuncios de rutas."}
@@ -42,8 +40,7 @@ RIP utiliza la cantidad de saltos. Una ruta con métrica 16 es inaccesible, por 
 
 RIPv2 utiliza actualizaciones periódicas y activadas, y admite información CIDR. Suele enviar las actualizaciones mediante multicast en lugar de difundir una tabla completa en todas las circunstancias. La autenticación y el filtrado aún requieren una configuración deliberada.
 
-:::single-choice{#distance-vector-rip-infinity}
-¿Qué representa la métrica 16 de RIP?
+:::single-choice{#distance-vector-rip-infinity} ¿Qué representa la métrica 16 de RIP?
 
 ::option[La ruta más rápida con dieciséis enlaces paralelos.]{#distance-vector-fastest-16 explanation="RIP trata el valor como inaccesible."}
 ::option[Infinito, lo que significa que el destino es inaccesible.]{#distance-vector-unreachable .correct explanation="RIP limita las rutas utilizables a 15 saltos."}
@@ -54,8 +51,7 @@ RIPv2 utiliza actualizaciones periódicas y activadas, y admite información CID
 
 Comprueba el estado del vecino, los prefijos recibidos y anunciados, la métrica, el siguiente salto, la instalación de la ruta y la accesibilidad del plano de datos. Una ruta puede ser válida dentro de RIP, pero perder frente a otra fuente de rutas debido a la política local de preferencias.
 
-:::single-choice{#distance-vector-fewest-hop-limit}
-¿Por qué puede rendir mal la ruta de RIP con menos saltos?
+:::single-choice{#distance-vector-fewest-hop-limit} ¿Por qué puede rendir mal la ruta de RIP con menos saltos?
 
 ::option[La cantidad de saltos no representa el ancho de banda, la latencia, las pérdidas ni la congestión de los enlaces.]{#distance-vector-hop-limited .correct explanation="Una ruta con más saltos puede tener mejores enlaces y rendimiento para la aplicación."}
 ::option[RIP siempre elige la ruta con más saltos.]{#distance-vector-most-hops explanation="Su métrica prefiere cantidades menores de saltos utilizables."}

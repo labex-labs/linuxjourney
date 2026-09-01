@@ -16,8 +16,7 @@ Eine gewöhnliche Anwendung fragt den Stub-Resolver des Betriebssystems. Dieser 
 
 Der Systemresolver kann `/etc/hosts`, DNS und andere Quellen in der konfigurierten Reihenfolge berücksichtigen. Suchsuffixe können einen kurzen Namen in mehrere mögliche Namen umwandeln. Ein rekursiver Resolver prüft anschließend positive und negative Cacheeinträge, bevor er Abfragen an übergeordnete Server sendet.
 
-:::single-choice{#dns-process-cache-first}
-Warum muss ein rekursiver Resolver für eine Abfrage möglicherweise keinen autoritativen Server kontaktieren?
+:::single-choice{#dns-process-cache-first} Warum muss ein rekursiver Resolver für eine Abfrage möglicherweise keinen autoritativen Server kontaktieren?
 
 ::option[DNS verlangt, dass jede Abfrage zuerst lokal fehlschlägt.]{#dns-process-requires-failure explanation="Ein Resolver kann unmittelbar aus seinem Cache antworten."}
 ::option[Er besitzt eine noch gültige zwischengespeicherte Antwort.]{#dns-process-valid-cache .correct explanation="Caching vermeidet die erneute Abfrage der Hierarchie, bis die Lebensdauer des Eintrags abläuft."}
@@ -28,8 +27,7 @@ Warum muss ein rekursiver Resolver für eine Abfrage möglicherweise keinen auto
 
 Bei einem Cache-Fehlschlag kann ein rekursiver Resolver einen Root-Server fragen. Die DNS-Wurzel besitzt 13 benannte Serveridentitäten von A bis M, die durch Anycast und andere ausfallsichere Bereitstellungstechniken von vielen physischen Instanzen bedient werden. Die Antwort verweist den Resolver normalerweise an autoritative Server der betreffenden Top-Level-Domain, statt die endgültige Hostadresse zurückzugeben.
 
-:::single-choice{#dns-process-root-response}
-Was gibt ein Root-Server bei einer nicht zwischengespeicherten Abfrage nach `www.example.com` normalerweise zurück?
+:::single-choice{#dns-process-root-response} Was gibt ein Root-Server bei einer nicht zwischengespeicherten Abfrage nach `www.example.com` normalerweise zurück?
 
 ::option[Eine Weiterleitung zu den Servern der Top-Level-Domain `com`.]{#dns-process-root-referral .correct explanation="Die Hierarchie delegiert die Zuständigkeit, statt jeden endgültigen Hosteintrag an der Wurzel zu speichern."}
 ::option[Die unter `www.example.com` bereitgestellte Webseite.]{#dns-process-root-webpage explanation="DNS liefert Resource-Record-Daten und keine Anwendungsinhalte."}
@@ -40,8 +38,7 @@ Was gibt ein Root-Server bei einer nicht zwischengespeicherten Abfrage nach `www
 
 Der Resolver fragt einen autoritativen `com`-Server. Dieser gibt die delegierten autoritativen Nameserver für `example.com` zurück. Die Weiterleitung kann Glue-Adresseinträge enthalten, wenn sie zum Erreichen eines Servers erforderlich sind, dessen Name innerhalb der delegierten untergeordneten Zone liegt. Danach fragt der Resolver einen autoritativen Server nach dem gewünschten Eintrag.
 
-:::single-choice{#dns-process-glue-purpose}
-Welches Problem hilft DNS-Glue zu lösen?
+:::single-choice{#dns-process-glue-purpose} Welches Problem hilft DNS-Glue zu lösen?
 
 ::option[Die Verschlüsselung von HTTP-Inhalten nach der DNS-Auflösung.]{#dns-process-glue-http explanation="TLS oder andere Anwendungssicherheit verschlüsselt die Inhalte."}
 ::option[Die Auswahl des schnellsten Ports eines Ethernet-Switches.]{#dns-process-glue-switch explanation="Glue sind Adressdaten einer Delegierung und keine Richtlinie für die Weiterleitung auf der Sicherungsschicht."}
@@ -52,8 +49,7 @@ Welches Problem hilft DNS-Glue zu lösen?
 
 Eine Antwort kann einen CNAME-Alias enthalten, der eine weitere Namensauflösung verlangt, oder anwendungsspezifische Einträge, die zusätzliche Abfragen auslösen. Eine Abfrage nach `A` liefert ausschließlich IPv4-Adresseinträge und zugehörige Kettendaten; IPv6-Adressen werden mit einer getrennten `AAAA`-Abfrage abgerufen. Die endgültige Antwort trägt einen Status wie `NOERROR`, `NXDOMAIN` oder `SERVFAIL`, die jeweils unterschiedliche Bedeutungen besitzen.
 
-:::single-choice{#dns-process-nxdomain-meaning}
-Was meldet `NXDOMAIN`?
+:::single-choice{#dns-process-nxdomain-meaning} Was meldet `NXDOMAIN`?
 
 ::option[Der abgefragte Domainname existiert gemäß einem autoritativen Ergebnis nicht.]{#dns-process-name-does-not-exist .correct explanation="Das unterscheidet sich von einem vorhandenen Namen, dem lediglich der angeforderte Eintragstyp fehlt."}
 ::option[Der Name existiert und besitzt immer einen leeren A-Eintrag.]{#dns-process-empty-a explanation="Ein vorhandener Name ohne angeforderte Daten erzeugt normalerweise eine No-Data-Antwort und kein NXDOMAIN."}
@@ -66,8 +62,7 @@ Ein validierender rekursiver Resolver kann mit DNSSEC-Signaturen und der Vertrau
 
 Der Resolver speichert Ergebnisse innerhalb der TTL-Regeln zwischen und gibt sie an den Stub zurück. Die Anwendung wählt anschließend eine Adresse aus und versucht ihre eigenen Netzwerk- und Sicherheitsprotokolle.
 
-:::single-choice{#dns-process-dnssec-limit}
-Was bietet eine DNSSEC-Validierung nicht?
+:::single-choice{#dns-process-dnssec-limit} Was bietet eine DNSSEC-Validierung nicht?
 
 ::option[Integrität und Ursprungsauthentifizierung für signierte DNS-Daten.]{#dns-process-dnssec-does-integrity explanation="Dies sind zentrale Ziele von DNSSEC."}
 ::option[Eine authentifizierte Nichtvorhandenseinsauskunft für signierte, nicht vorhandene Daten.]{#dns-process-authenticated-denial explanation="Signierte Mechanismen für Nichtvorhandensein können diese Validierung bereitstellen."}

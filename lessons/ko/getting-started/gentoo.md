@@ -16,8 +16,7 @@ meta_keywords: "젠투 배포판, 젠투 리눅스 배포판, 젠투란 무엇�
 
 이러한 설계 덕분에 젠투는 시스템을 세밀하게 조정하고, 학습하며, 커스터마이징하는 것을 즐기는 고급 사용자들에게 특히 매력적입니다.
 
-:::single-choice{#match-gentoo-user}
-젠투와 가장 잘 맞는 사용자는 누구인가요?
+:::single-choice{#match-gentoo-user} 젠투와 가장 잘 맞는 사용자는 누구인가요?
 
 ::option[세밀한 시스템 제어를 원하는 열정적인 학습자]{#committed-system-builder .correct explanation="젠투는 자세한 빌드와 설정 결정을 원하는 사용자에게 보람을 주지만 그 제어에는 더 많은 시간과 참여가 필요합니다."}
 ::option[가능한 한 적은 설정 작업을 원하는 초보자]{#minimal-setup-beginner explanation="젠투는 상당한 설정과 유지 관리를 사용자에게 요구하므로 준비된 기본값이 많은 배포판이 최소 설정에 더 알맞습니다."}
@@ -36,16 +35,14 @@ meta_keywords: "젠투 배포판, 젠투 리눅스 배포판, 젠투란 무엇�
 
 포티지의 가장 독특한 특징 중 하나는 **USE 플래그 (USE flags)**를 사용하는 것입니다. 이를 통해 사용자는 소프트웨어를 빌드하기 전에 선택적 기능을 활성화하거나 비활성화할 수 있습니다. 이는 결과물인 시스템에 대해 매우 정밀한 제어 수준을 제공합니다.
 
-:::single-choice{#identify-portage-role}
-젠투에서 Portage의 역할은 무엇인가요?
+:::single-choice{#identify-portage-role} 젠투에서 Portage의 역할은 무엇인가요?
 
 ::option[그래픽 데스크톱과 애플리케이션 메뉴만 제공합니다.]{#portage-desktop explanation="그래픽 인터페이스는 데스크톱 환경이 제어하며 Portage는 젠투 시스템 전반의 소프트웨어를 관리합니다."}
 ::option[소프트웨어 설치, 의존성과 유지 관리를 관리합니다.]{#portage-package-manager .correct explanation="Portage는 젠투의 패키지 관리 시스템이며 패키지와 이를 빌드하고 유지하는 과정의 선택을 조정합니다."}
 ::option[리눅스 커널을 다른 운영체제로 바꿉니다.]{#portage-kernel-replacement explanation="Portage가 커널 관련 패키지를 관리할 수는 있지만 리눅스를 다른 운영체제로 바꾸지 않으며 역할은 패키지 관리입니다."}
 :::
 
-:::single-choice{#explain-use-flags}
-젠투 USE 플래그는 무엇을 제어하나요?
+:::single-choice{#explain-use-flags} 젠투 USE 플래그는 무엇을 제어하나요?
 
 ::option[컴퓨터에 설치된 물리적 메모리 용량]{#physical-memory explanation="설치된 메모리는 하드웨어 속성이며 USE 플래그는 물리적 구성 요소가 아니라 소프트웨어 기능을 설정합니다."}
 ::option[패키지 빌드에 포함할 선택 기능과 의존성]{#package-features .correct explanation="USE 플래그는 패키지가 지원할 선택 기능을 나타내며 이 선택에 따라 Portage가 설치할 의존성도 달라질 수 있습니다."}
@@ -58,8 +55,7 @@ meta_keywords: "젠투 배포판, 젠투 리눅스 배포판, 젠투란 무엇�
 
 또한 이러한 소스 기반 모델은 젠투를 교육적인 배포판으로 만듭니다. 젠투는 많은 주류 배포판보다 의존성, 컴파일, 시스템 설계에 대해 더 많은 것을 사용자에게 가르쳐 줍니다.
 
-:::single-choice{#recognize-source-build-tradeoff}
-젠투의 소스 기반 커스터마이징에는 어떤 절충이 따르나요?
+:::single-choice{#recognize-source-build-tradeoff} 젠투의 소스 기반 커스터마이징에는 어떤 절충이 따르나요?
 
 ::option[더 큰 제어권에는 더 긴 빌드 시간과 더 많은 사용자 결정이 필요합니다.]{#control-for-time .correct explanation="로컬 빌드와 기능 선택은 세밀한 제어를 제공하지만 사용자에게 시간과 주의도 요구합니다."}
 ::option[제어가 줄어 의존성을 이해할 필요가 없어집니다.]{#less-control explanation="젠투는 의존성과 빌드 선택을 줄이는 것이 아니라 더 많이 드러내며 이를 이해하는 것이 학습 가치의 일부입니다."}

@@ -28,8 +28,7 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 $ df -hT /var/log
 ```
 
-:::single-choice{#disk-usage-df-scope}
-`df` 主要报告什么？
+:::single-choice{#disk-usage-df-scope} `df` 主要报告什么？
 
 ::option[一个目录中每个文件的字节内容。]{#disk-usage-df-file-content explanation="目录树统计属于 `du` 等工具的职责。"}
 ::option[文件系统级容量、已用空间和可用空间。]{#disk-usage-df-filesystem .correct explanation="Df 查询已挂载文件系统的分配统计，而不是遍历每个路径名。"}
@@ -46,8 +45,7 @@ $ df -i /var
 
 大量小文件可能耗尽可用 inode。删除一个大文件可以释放许多数据块，但通常只释放一个 inode；删除大量不再需要的小文件则有助于缓解 inode 压力。某些文件系统动态分配元数据，并以不同方式报告这些概念。
 
-:::single-choice{#disk-usage-inode-exhaustion}
-文件系统仍有可用数据块、但没有可用 inode 时，可能发生什么？
+:::single-choice{#disk-usage-inode-exhaustion} 文件系统仍有可用数据块、但没有可用 inode 时，可能发生什么？
 
 ::option[所有现有文件都会自动变成原来的两倍大。]{#disk-usage-inode-double explanation="Inode 耗尽会阻止分配新元数据，不会扩大现有内容。"}
 ::option[创建新文件可能失败。]{#disk-usage-inode-create-fail .correct explanation="即使仍有空间保存文件数据，新的文件系统对象也需要元数据。"}
@@ -70,8 +68,7 @@ $ sudo du -xhd1 /var | sort -h
 
 这里所示的 GNU 选项分别表示便于阅读的输出、最大深度一层，以及只遍历一个文件系统。权限可能隐藏子树，使总数不完整。默认情况下，`du` 也可能只统计一次硬链接文件；它还能区分表观大小与已分配数据块，并会根据选项以不同方式处理稀疏文件。
 
-:::single-choice{#disk-usage-du-purpose}
-哪个命令汇总 `/var/log` 下已分配的用量？
+:::single-choice{#disk-usage-du-purpose} 哪个命令汇总 `/var/log` 下已分配的用量？
 
 ::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="该命令报告路径所在文件系统的 inode 统计。"}
 ::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du 遍历指定目录树，`-s` 以便于阅读的单位输出一项汇总。"}
@@ -90,8 +87,7 @@ $ sudo du -xhd1 /var | sort -h
 
 对于已删除但仍打开的文件，可以使用 `lsof +L1` 等工具检查已获授权的进程。应通过常规流程重启相关服务或向其发送信号，而不要截断未知文件描述符。
 
-:::single-choice{#disk-usage-deleted-open-file}
-为什么 `df` 可能显示仍有空间被占用，而基于路径名的 `du` 找不到它？
+:::single-choice{#disk-usage-deleted-open-file} 为什么 `df` 可能显示仍有空间被占用，而基于路径名的 `du` 找不到它？
 
 ::option[`df` 总会把每个文件大小乘以二。]{#disk-usage-df-doubles explanation="不存在这种通用倍增规则。"}
 ::option[已删除文件可能仍被运行中进程打开并占用空间。]{#disk-usage-open-deleted .correct explanation="目录条目已经消失，但在最后一个打开引用关闭前，文件系统仍会保留数据块。"}
@@ -102,8 +98,7 @@ $ sudo du -xhd1 /var | sort -h
 
 从 `df` 报告已满的文件系统开始，用 `findmnt` 确定挂载目标，再把 `du` 搜索限定在同一文件系统中逐步缩小范围。还应考虑快照、容器层、日志、软件包缓存和应用保留策略。不要只因为文件很大就删除它；应先确定其所有者、备份、合规要求和服务行为。
 
-:::single-choice{#disk-usage-safe-investigation}
-发现大文件后，最安全的处理方式是什么？
+:::single-choice{#disk-usage-safe-investigation} 发现大文件后，最安全的处理方式是什么？
 
 ::option[在服务仍写入时立即删除。]{#disk-usage-delete-immediately explanation="这可能丢失必要数据；如果文件仍打开，也可能不会释放空间。"}
 ::option[对所在设备运行 `mkfs`。]{#disk-usage-mkfs-device explanation="格式化会摧毁文件系统，而不能解决单个文件增长问题。"}

@@ -29,8 +29,7 @@ UUID=130b882f-7d79-436d-a096-1e594c92bb76 /data ext4 defaults,nosuid,nodev 0 2
 
 Los espacios en blanco dentro de un campo deben escaparse mediante sintaxis de fstab, como `\040` para un espacio. Un `#` inicia un comentario fuera de un campo.
 
-:::single-choice{#fstab-field-count}
-¿Cuántos campos contiene una entrada normal de `/etc/fstab`?
+:::single-choice{#fstab-field-count} ¿Cuántos campos contiene una entrada normal de `/etc/fstab`?
 
 ::option[Cuatro.]{#fstab-four-fields explanation="A la fuente, el destino, el tipo y las opciones les siguen los campos dump y pass."}
 ::option[Ocho.]{#fstab-eight-fields explanation="Ocho no es el número estándar de campos de un registro de fstab."}
@@ -48,8 +47,7 @@ $ sudo blkid
 
 Utiliza `UUID=...` únicamente después de confirmar que el identificador pertenece al sistema de archivos pretendido. Volver a darle formato crea un UUID nuevo y los clones a nivel de bloques pueden duplicarlo. `PARTUUID=` identifica en cambio una entrada de la tabla de particiones y tiene una semántica diferente.
 
-:::single-choice{#fstab-uuid-source}
-¿Qué identifica normalmente `UUID=...` en el campo de fuente?
+:::single-choice{#fstab-uuid-source} ¿Qué identifica normalmente `UUID=...` en el campo de fuente?
 
 ::option[La cuenta de usuario propietaria del punto de montaje.]{#fstab-user-uuid explanation="La identidad de la cuenta no se selecciona mediante la sintaxis de fuente del UUID del sistema de archivos."}
 ::option[Los metadatos del sistema de archivos que contienen ese UUID.]{#fstab-filesystem-uuid .correct explanation="Mount resuelve el identificador del sistema de archivos a un dispositivo de bloques disponible en vez de depender del nombre de enumeración."}
@@ -62,8 +60,7 @@ Utiliza `UUID=...` únicamente después de confirmar que el identificador perten
 
 En sistemas de archivos compatibles con `fsck`, el sistema raíz utiliza convencionalmente pass `1` y los demás sistemas locales comprobados, pass `2`. Las prácticas específicas pueden diferir; por ejemplo, algunos tipos no utilizan el fsck genérico durante el arranque. Sigue la documentación del sistema de archivos y la distribución instalados en vez de asignar `2` mecánicamente.
 
-:::single-choice{#fstab-pass-zero}
-¿Qué solicita el valor `0` en el sexto campo?
+:::single-choice{#fstab-pass-zero} ¿Qué solicita el valor `0` en el sexto campo?
 
 ::option[Omitir para esa entrada el orden automático de fsck mediante fstab.]{#fstab-pass-zero-skip .correct explanation="Pass cero excluye la entrada de la secuencia de comprobación durante el arranque gobernada por este campo."}
 ::option[Montar el sistema de archivos como solo lectura en todas las circunstancias.]{#fstab-pass-zero-readonly explanation="El comportamiento de solo lectura pertenece al campo de opciones de montaje."}
@@ -82,8 +79,7 @@ Una entrada no válida de la raíz, del arranque o de una red necesaria puede in
 
 No introduzcas credenciales directamente en una entrada de fstab legible por todos. Utiliza el mecanismo protegido de credenciales del auxiliar de montaje correspondiente.
 
-:::single-choice{#fstab-editing-recovery}
-¿Por qué debe confirmarse el acceso de rescate antes de cambiar una entrada crítica de fstab?
+:::single-choice{#fstab-editing-recovery} ¿Por qué debe confirmarse el acceso de rescate antes de cambiar una entrada crítica de fstab?
 
 ::option[Porque editar fstab siempre borra inmediatamente la tabla de particiones.]{#fstab-no-partition-erase explanation="Editar el texto no reescribe las particiones, aunque los montajes posteriores pueden tener efectos."}
 ::option[Porque el archivo solo puede editarse desde otro sistema operativo.]{#fstab-other-os-only explanation="Puede editarse en Linux con privilegios y salvaguardas apropiados."}
@@ -102,8 +98,7 @@ Después prueba la entrada nueva concreta bajo condiciones controladas, confírm
 
 En sistemas basados en systemd, vuelve a cargar la configuración del gestor después de editar fstab para actualizar las unidades de montaje generadas y verifica después las dependencias y el comportamiento de arranque conforme a la documentación local.
 
-:::single-choice{#fstab-mount-a-limit}
-¿Por qué `mount -a` no constituye por sí solo una validación completa de fstab?
+:::single-choice{#fstab-mount-a-limit} ¿Por qué `mount -a` no constituye por sí solo una validación completa de fstab?
 
 ::option[Porque siempre vuelve a dar formato a todos los dispositivos antes de montarlos.]{#fstab-mount-a-formats explanation="Mount no suele crear sistemas de archivos."}
 ::option[Porque puede omitir entradas y realizar amplias operaciones reales de montaje en vez de comprobar solo la sintaxis.]{#fstab-mount-a-incomplete .correct explanation="Los registros ya montados o con `noauto` pueden no probarse, mientras que las fuentes aptas pueden tener efectos reales."}

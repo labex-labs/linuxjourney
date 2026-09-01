@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` copia bloques, no necesariamente un byte cada vez. Un `bs` mayor puede reducir la sobrecarga de las llamadas al sistema, pero el valor óptimo depende de los dispositivos, la alineación, la caché y la carga de trabajo. No cambia los datos lógicos copiados.
 
-:::single-choice{#dd-command-output-operand}
-¿Qué operando selecciona el destino en el que escribe `dd`?
+:::single-choice{#dd-command-output-operand} ¿Qué operando selecciona el destino en el que escribe `dd`?
 
 ::option[`if=`]{#dd-command-input-file explanation="`if` identifica la fuente de entrada."}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of` designa el flujo o archivo de salida que recibe los datos copiados."}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 Esto solicita dos bloques de entrada de hasta 1 MiB cada uno, por lo que copia como máximo 2 MiB. Las lecturas cortas pueden complicar la multiplicación sencilla en flujos como las tuberías; GNU `dd` ofrece `iflag=fullblock` cuando se necesitan bloques de entrada completos. Distingue las unidades binarias y la sintaxis de los sufijos conforme a la implementación local.
 
-:::single-choice{#dd-command-count-result}
-Para un archivo normal, ¿qué cantidad máxima solicita `bs=1M count=2`?
+:::single-choice{#dd-command-count-result} Para un archivo normal, ¿qué cantidad máxima solicita `bs=1M count=2`?
 
 ::option[1 MiB.]{#dd-command-one-mib explanation="Eso correspondería a un bloque del tamaño seleccionado."}
 ::option[2 MiB.]{#dd-command-two-mib .correct explanation="Dos bloques de entrada multiplicados por 1 MiB por bloque dan un máximo de 2 MiB."}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 El dispositivo de salida se sobrescribe desde el principio. Invertir `if` y `of`, seleccionar el disco del sistema o utilizar un disco completo cuando se pretendía usar una partición puede destruir datos sin pedir confirmación.
 
-:::single-choice{#dd-command-target-verification}
-¿Cuál es la razón más importante para verificar el modelo, el número de serie, el tamaño y el uso activo antes de escribir en un dispositivo sin procesar?
+:::single-choice{#dd-command-target-verification} ¿Cuál es la razón más importante para verificar el modelo, el número de serie, el tamaño y el uso activo antes de escribir en un dispositivo sin procesar?
 
 ::option[Las letras de los dispositivos pueden cambiar y `dd` sobrescribe el destino seleccionado sin comprender su contenido.]{#dd-command-target-can-change .correct explanation="Comprobar la identidad y el uso reduce el riesgo de destruir otro disco o una pila de almacenamiento activa."}
 ::option[`dd` se niega a escribir si la etiqueta del sistema de archivos no coincide con la imagen.]{#dd-command-label-check explanation="La herramienta no realiza esa comprobación de seguridad basada en el sistema de archivos."}
@@ -85,8 +82,7 @@ Leer un dispositivo de bloques activo mientras cambia su sistema de archivos pue
 
 Una imagen sin procesar copia bloques, incluidos los metadatos del sistema de archivos y las regiones sin usar, por lo que puede ser mucho mayor que una copia de seguridad basada en archivos y puede reproducir identificadores que deban cambiarse antes de montar un clon junto al original.
 
-:::single-choice{#dd-command-live-filesystem-image}
-¿Por qué puede ser poco fiable crear una imagen de un sistema de archivos montado que está cambiando?
+:::single-choice{#dd-command-live-filesystem-image} ¿Por qué puede ser poco fiable crear una imagen de un sistema de archivos montado que está cambiando?
 
 ::option[Los sistemas de archivos montados nunca permiten leer el dispositivo de bloques.]{#dd-command-mounted-no-read explanation="Las lecturas sin procesar pueden ser posibles, por lo que la coherencia debe planificarse en vez de darse por supuesta."}
 ::option[Pueden leerse bloques distintos correspondientes a momentos diferentes del estado del sistema de archivos.]{#dd-command-inconsistent-moments .correct explanation="Las modificaciones simultáneas pueden hacer que la imagen de bloques recopilada no represente un único instante coherente."}
@@ -99,8 +95,7 @@ Que la orden termine sin un error de E/S no demuestra que se eligieran la fuente
 
 No anuncies pasadas de sobrescritura con `dd` como un borrado seguro garantizado para SSD, capas de traducción flash, almacenamiento de aprovisionamiento fino, instantáneas o sectores reasignados. Utiliza la sanitización compatible con el dispositivo y la plataforma junto con una política explícita de destrucción de datos.
 
-:::single-choice{#dd-command-success-meaning}
-¿Qué no demuestra por sí solo un estado de salida cero de `dd`?
+:::single-choice{#dd-command-success-meaning} ¿Qué no demuestra por sí solo un estado de salida cero de `dd`?
 
 ::option[Que la orden analizó todos los operandos proporcionados.]{#dd-command-parsed-operands explanation="Los operandos no válidos suelen provocar un error, no una finalización correcta."}
 ::option[Que el operador seleccionó la fuente y el destino pretendidos.]{#dd-command-does-not-prove-intent .correct explanation="La herramienta puede copiar correctamente al destino equivocado porque no puede deducir la intención del operador."}

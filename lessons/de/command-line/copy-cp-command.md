@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 Im zweiten Beispiel erhält die Kopie den Namen `mycoolfile_backup`.
 
-:::single-choice{#copy-file-under-new-name}
-Welcher Befehl kopiert `draft.txt` nach `final.txt`, während `draft.txt` erhalten bleibt?
+:::single-choice{#copy-file-under-new-name} Welcher Befehl kopiert `draft.txt` nach `final.txt`, während `draft.txt` erhalten bleibt?
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` benennt den ursprünglichen Pfad um oder verschiebt ihn. Die verlangte Quelle bleibt dabei nicht als Kopie erhalten."}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="Hier sind Quelle und Ziel vertauscht. Der Befehl würde `final.txt` nach `draft.txt` kopieren."}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 Bei mehreren Quellen muss das letzte Argument ein Verzeichnis sein.
 
-:::single-choice{#copy-multiple-files}
-Welcher Befehl kopiert `a.txt` und `b.txt` in das vorhandene Verzeichnis `archive/`?
+:::single-choice{#copy-multiple-files} Welcher Befehl kopiert `a.txt` und `b.txt` in das vorhandene Verzeichnis `archive/`?
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="Bei dieser Form von `cp` gehört das Zielverzeichnis ans Ende. An erster Stelle werden die Operanden anders interpretiert."}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="Bei mehreren Quellen behandelt `cp` das letzte vorhandene Verzeichnis als gemeinsames Ziel aller vorherigen Dateien."}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-Welcher Befehl zeigt vor dem Kopieren die nicht versteckten Namen an, auf die `*.jpg` derzeit passt?
+:::single-choice{#preview-copy-pattern} Welcher Befehl zeigt vor dem Kopieren die nicht versteckten Namen an, auf die `*.jpg` derzeit passt?
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="Dieser Befehl versucht bei mehreren Treffern ohne eindeutiges Ziel zu kopieren. Er dient nicht als Vorschau."}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="Die Shell erweitert für `ls` dasselbe Muster, sodass du die passenden Namen vor dem Kopieren prüfen kannst."}
@@ -112,8 +109,7 @@ Der Archivmodus `-a` eignet sich für sicherungsähnliche Kopien. Er kopiert rek
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-Du möchtest `project/` rekursiv und sicherungsähnlich kopieren und dabei Links sowie zahlreiche Attribute erhalten. Welcher Befehl passt dazu?
+:::single-choice{#archive-directory-tree} Du möchtest `project/` rekursiv und sicherungsähnlich kopieren und dabei Links sowie zahlreiche Attribute erhalten. Welcher Befehl passt dazu?
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` erhält ausgewählte Attribute, macht das Kopieren eines Verzeichnisses für sich allein aber nicht rekursiv."}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` steuert anhand des Zielzustands, wann Dateien kopiert werden. Rekursives Kopieren wird dadurch allein nicht aktiviert."}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 Die Option `-f` weist GNU `cp` an, ein vorhandenes Ziel zu entfernen und den Kopiervorgang erneut zu versuchen, falls die Datei nicht zum Schreiben geöffnet werden kann. Sie ersetzt keine sorgfältige Zielprüfung. Auch Shell-Aliase können Optionen wie `-i` ergänzen; untersuche eine unerwartete Nachfrage, statt von einer bestimmten Konfiguration auszugehen.
 
-:::single-choice{#skip-existing-destination}
-Welcher Befehl kopiert `report.txt` nach `backup/`, überspringt aber ein bereits vorhandenes Ziel gleichen Namens?
+:::single-choice{#skip-existing-destination} Welcher Befehl kopiert `report.txt` nach `backup/`, überspringt aber ein bereits vorhandenes Ziel gleichen Namens?
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="Die Option `-n` verhindert, dass `cp` eine vorhandene Zieldatei überschreibt."}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` fragt vor dem Überschreiben nach, sodass das Ergebnis von der Antwort abhängt. Vorhandene Ziele werden nicht automatisch immer übersprungen."}

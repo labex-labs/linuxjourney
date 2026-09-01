@@ -18,8 +18,7 @@ Un protocolo de enrutamiento aprende candidatos en su propia base de datos. El r
 
 Que se haya establecido una adyacencia del protocolo no demuestra que el prefijo deseado se haya aprendido, seleccionado, instalado o permitido por la política de reenvío.
 
-:::single-choice{#routing-protocols-adjacency-limit}
-¿Qué no demuestra una adyacencia de enrutamiento establecida?
+:::single-choice{#routing-protocols-adjacency-limit} ¿Qué no demuestra una adyacencia de enrutamiento establecida?
 
 ::option[Que todas las rutas deseadas estén instaladas y reenvíen correctamente.]{#routing-protocols-not-full-proof .correct explanation="El anuncio, la selección, la instalación, el filtrado y el funcionamiento del plano de datos son etapas independientes."}
 ::option[Que dos participantes del protocolo hayan intercambiado algún mensaje de control.]{#routing-protocols-no-messages explanation="Establecer una adyacencia normalmente requiere comunicación del protocolo."}
@@ -32,8 +31,7 @@ Los protocolos de puerta de enlace interior operan dentro de un dominio administ
 
 Las métricas tienen un significado específico de cada protocolo. Un coste OSPF, una cantidad de saltos RIP y un conjunto de atributos BGP no pueden compararse como si compartieran una escala numérica universal. Las implementaciones utilizan preferencias de ruta o distancias administrativas para elegir entre fuentes antes de la selección específica del protocolo o junto con ella.
 
-:::single-choice{#routing-protocols-metric-comparison}
-¿Puede compararse directamente una cantidad de saltos RIP con un coste OSPF?
+:::single-choice{#routing-protocols-metric-comparison} ¿Puede compararse directamente una cantidad de saltos RIP con un coste OSPF?
 
 ::option[Sí, porque todas las métricas de enrutamiento utilizan las mismas unidades.]{#routing-protocols-universal-metric explanation="Cada protocolo define su propia métrica y su propio proceso de selección."}
 ::option[Sí, pero solo cuando ambos valores son cero.]{#routing-protocols-zero-metric explanation="Su semántica sigue siendo distinta con independencia del número mostrado."}
@@ -44,8 +42,7 @@ Las métricas tienen un significado específico de cada protocolo. Un coste OSPF
 
 Los protocolos de vector de distancia anuncian accesibilidad y distancia mediante sus vecinos, y derivan las rutas de los informes de estos. Los protocolos de estado de enlace forman adyacencias, difunden información del estado de los enlaces en un ámbito, construyen una base de datos de topología y calculan árboles de rutas más cortas. Los protocolos modernos incluyen mejoras que hacen que las descripciones sencillas de las categorías sean incompletas.
 
-:::single-choice{#routing-protocols-link-state-input}
-¿Qué utiliza un router de estado de enlace para calcular sus rutas?
+:::single-choice{#routing-protocols-link-state-input} ¿Qué utiliza un router de estado de enlace para calcular sus rutas?
 
 ::option[Únicamente el nombre de host de su puerta de enlace predeterminada.]{#routing-protocols-hostname-only explanation="Un cálculo de topología necesita información de enlaces y prefijos."}
 ::option[Una base de datos sincronizada que describe los enlaces del ámbito de enrutamiento.]{#routing-protocols-link-database .correct explanation="El router ejecuta un algoritmo de la ruta más corta sobre la topología aprendida."}
@@ -58,8 +55,7 @@ Después de un cambio de topología o política, los routers lo detectan, propag
 
 Durante la convergencia pueden producirse pérdidas transitorias, bucles o agujeros negros. Mide por separado la detección, la propagación, el cálculo y la instalación, y comprueba el resultado mediante pruebas del plano de datos.
 
-:::single-choice{#routing-protocols-convergence}
-¿Qué es la convergencia del enrutamiento?
+:::single-choice{#routing-protocols-convergence} ¿Qué es la convergencia del enrutamiento?
 
 ::option[El proceso de alcanzar un enrutamiento estable y utilizable después de un cambio.]{#routing-protocols-stable-routing .correct explanation="Incluye la propagación del control y las actualizaciones de reenvío resultantes."}
 ::option[La obligación de que todos los routers almacenen una tabla global idéntica.]{#routing-protocols-identical-table explanation="Las políticas, las áreas y las funciones pueden crear diferencias deliberadas."}

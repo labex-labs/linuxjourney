@@ -22,8 +22,7 @@ $ sudo ss -lntup
 
 `-l` selecciona listeners, `-n` evita la resolución de nombres, `-t` y `-u` seleccionan TCP y UDP, y `-p` solicita datos de procesos. UDP no usa conexiones, por lo que sus sockets vinculados sin conexión no tienen negociaciones `LISTEN` como TCP.
 
-:::single-choice{#netstat-ss-numeric}
-¿Por qué se utiliza `-n` al diagnosticar sockets?
+:::single-choice{#netstat-ss-numeric} ¿Por qué se utiliza `-n` al diagnosticar sockets?
 
 ::option[Crea un nuevo espacio de nombres de red.]{#netstat-new-namespace explanation="La opción controla la resolución de nombres en la salida."}
 ::option[Evita buscar nombres para las direcciones y los puertos.]{#netstat-numeric-output .correct explanation="La salida numérica evita confundir una asignación de nombre de servicio con la identidad observada del protocolo."}
@@ -34,8 +33,7 @@ $ sudo ss -lntup
 
 Un extremo de socket local combina una dirección, un protocolo de transporte y un puerto. Una conexión TCP se distingue por el protocolo y las direcciones y puertos de origen y destino. `/etc/services` asigna nombres convencionales a números, pero no demuestra qué proceso posee un puerto en ese momento ni qué protocolo de aplicación utiliza.
 
-:::single-choice{#netstat-services-file-limit}
-¿Qué establece una entrada de `/etc/services` como `https 443/tcp`?
+:::single-choice{#netstat-services-file-limit} ¿Qué establece una entrada de `/etc/services` como `https 443/tcp`?
 
 ::option[Que un servidor HTTPS en buen estado está a la escucha en ese momento.]{#netstat-healthy-listener explanation="Una base de datos estática de nombres no demuestra el estado de ejecución."}
 ::option[La asignación convencional de un nombre de servicio a ese puerto.]{#netstat-conventional-name .correct explanation="La propiedad del socket y el comportamiento real del protocolo requieren inspección y pruebas en ejecución."}
@@ -53,8 +51,7 @@ Algunos estados habituales son:
 
 Una población grande o creciente de `CLOSE-WAIT` suele apuntar al comportamiento de limpieza de la aplicación local. `TIME-WAIT` es un estado normal del protocolo; su cantidad y el impacto sobre los recursos determinan si supone un problema operativo.
 
-:::single-choice{#netstat-close-wait-owner}
-¿Qué lado todavía debe cerrar un socket en `CLOSE-WAIT`?
+:::single-choice{#netstat-close-wait-owner} ¿Qué lado todavía debe cerrar un socket en `CLOSE-WAIT`?
 
 ::option[Todos los routers de Internet.]{#netstat-all-routers-close explanation="Los routers no son propietarios del socket del extremo."}
 ::option[El servidor DNS autoritativo.]{#netstat-dns-close explanation="El servicio de nombres no guarda relación con el cierre TCP local."}
@@ -67,8 +64,7 @@ El significado de `Recv-Q` y `Send-Q` depende del estado y el protocolo. En sock
 
 Una sola instantánea no permite confirmar una fuga o un cuello de botella. Toma muestras a lo largo del tiempo y correlaciónalas con el comportamiento del proceso, la latencia de la aplicación, las retransmisiones y los límites de recursos.
 
-:::single-choice{#netstat-queue-snapshot}
-¿Por qué una sola instantánea de una cola de sockets grande no basta para diagnosticar?
+:::single-choice{#netstat-queue-snapshot} ¿Por qué una sola instantánea de una cola de sockets grande no basta para diagnosticar?
 
 ::option[Linux nunca almacena datos en colas de sockets.]{#netstat-no-queues explanation="La red del kernel depende de colas de envío y recepción."}
 ::option[Cada valor de cola es un permiso del sistema de archivos.]{#netstat-queue-permission explanation="Los campos describen el estado de la red."}
@@ -86,8 +82,7 @@ $ ss -ltn 'sport = :443'
 
 Un listener demuestra que el transporte local está preparado, no que sea accesible de forma remota ni que la aplicación funcione correctamente. Continúa con pruebas de ruta, cortafuegos, paquetes, TLS y aplicación adecuadas para el síntoma.
 
-:::single-choice{#netstat-listener-limit}
-¿Qué no demuestra un listener TCP en el puerto 443?
+:::single-choice{#netstat-listener-limit} ¿Qué no demuestra un listener TCP en el puerto 443?
 
 ::option[Que un socket local aceptó las operaciones bind y listen.]{#netstat-listen-local explanation="Ese es precisamente el estado local que se muestra."}
 ::option[Que los clientes remotos pueden completar una solicitud HTTPS válida.]{#netstat-not-remote-proof .correct explanation="La política de la ruta, TLS y el comportamiento de la aplicación siguen sin probarse."}

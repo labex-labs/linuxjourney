@@ -24,8 +24,7 @@ $ python3 -m http.server 8000 --directory /srv/temporary-share
 
 En l’absence de fichier d’index, le module génère normalement une liste du répertoire. Toute personne pouvant atteindre le socket en écoute peut être en mesure d’énumérer et de télécharger le contenu servi.
 
-:::single-choice{#http-server-directory-option}
-Pourquoi utiliser `--directory /srv/temporary-share` ?
+:::single-choice{#http-server-directory-option} Pourquoi utiliser `--directory /srv/temporary-share` ?
 
 ::option[Cette option chiffre automatiquement chaque réponse HTTP.]{#http-server-directory-tls explanation="L’option de répertoire n’ajoute pas TLS."}
 ::option[Elle crée un compte pour chaque personne qui télécharge.]{#http-server-directory-accounts explanation="Le module de base ne fournit pas d’authentification des utilisateurs."}
@@ -42,8 +41,7 @@ $ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
 
 Pour un partage sur un réseau de confiance, liez-le délibérément à l’adresse d’interface appropriée et vérifiez la politique du pare-feu. Une exécution sans liaison restrictive écoute généralement sur toutes les interfaces disponibles, ce qui peut exposer le répertoire au-delà du réseau prévu.
 
-:::single-choice{#http-server-loopback-bind}
-Qui peut normalement atteindre un serveur lié à `127.0.0.1` ?
+:::single-choice{#http-server-loopback-bind} Qui peut normalement atteindre un serveur lié à `127.0.0.1` ?
 
 ::option[Les clients du même hôte.]{#http-server-local-clients .correct explanation="La liaison à la boucle locale convient aux tests locaux ou à une utilisation derrière un tunnel configuré délibérément."}
 ::option[N’importe quel hôte de l’Internet public.]{#http-server-public explanation="La boucle locale appartient au même espace de noms réseau et n’est pas une interface publique."}
@@ -60,8 +58,7 @@ $ curl -f http://127.0.0.1:8000/example.txt
 
 Pour un test distant autorisé, employez l’adresse d’interface choisie plutôt que la boucle locale. Confirmez à la fois que le fichier prévu est accessible et qu’un fichier situé hors de la racine documentaire ne l’est pas. La réussite dans un navigateur ne prouve pas à elle seule que l’exposition est appropriée ou confidentielle.
 
-:::single-choice{#http-server-default-port-command}
-Quel port est explicitement sélectionné dans `python3 -m http.server 8000` ?
+:::single-choice{#http-server-default-port-command} Quel port est explicitement sélectionné dans `python3 -m http.server 8000` ?
 
 ::option[22]{#http-server-port-22 explanation="Le port 22 est généralement associé à SSH et n’est pas sélectionné ici."}
 ::option[8000]{#http-server-port-8000 .correct explanation="L’opérande positionnel du port indique au module où écouter."}
@@ -78,8 +75,7 @@ $ ss -ltn 'sport = :8000'
 
 Supprimez les copies temporaires conformément à la politique de gestion des données et annulez toute règle temporaire du pare-feu. Pour une distribution persistante, authentifiée ou exposée à Internet, employez un serveur maintenu et configuré avec un contrôle d’accès et TLS.
 
-:::single-choice{#http-server-completion-check}
-Que faut-il faire après la fin du transfert temporaire ?
+:::single-choice{#http-server-completion-check} Que faut-il faire après la fin du transfert temporaire ?
 
 ::option[Arrêter le serveur et vérifier que le port n’est plus en écoute.]{#http-server-stop-verify .correct explanation="Cette vérification confirme que le service réseau temporaire est réellement arrêté."}
 ::option[Laisser le socket en écoute au cas où quelqu’un en aurait besoin plus tard.]{#http-server-leave-running explanation="Une exposition inutile doit être supprimée lorsque l’usage autorisé prend fin."}

@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 Пока `less` активен, клавиши управляют просмотрщиком, а не запускают обычные команды оболочки. После выхода вы возвращаетесь в оболочку.
 
-:::single-choice{#open-long-file}
-Какая команда открывает `/var/log/syslog` в интерактивном просмотрщике?
+:::single-choice{#open-long-file} Какая команда открывает `/var/log/syslog` в интерактивном просмотрщике?
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` открывает файл для перемещения, поиска и последующего возврата в оболочку."}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat` сразу отправляет весь файл в стандартный вывод и не предоставляет интерактивную навигацию."}
@@ -40,8 +39,7 @@ $ less /home/pete/Documents/text1
 - `u` для движения на пол-экрана вверх и `d` — вниз.
 - `h` для встроенной справки.
 
-:::single-choice{#jump-to-file-end}
-Какая клавиша сразу переходит к концу файла в `less`?
+:::single-choice{#jump-to-file-end} Какая клавиша сразу переходит к концу файла в `less`?
 
 ::option[`g`]{#lowercase-g explanation="Строчная `g` ведёт к началу; прописная форма движется в противоположную сторону."}
 ::option[`G`]{#uppercase-g .correct explanation="Прописная `G` переходит в конец ввода; команда чувствительна к регистру."}
@@ -57,8 +55,7 @@ $ less /home/pete/Documents/text1
 - `n`: повторить в том же направлении.
 - `N`: повторить в противоположном направлении.
 
-:::single-choice{#repeat-search-direction}
-Какая клавиша после прямого поиска `error` повторяет его в том же направлении?
+:::single-choice{#repeat-search-direction} Какая клавиша после прямого поиска `error` повторяет его в том же направлении?
 
 ::option[`n`]{#same-search .correct explanation="Строчная `n` повторяет последний поиск в его исходном, здесь прямом, направлении."}
 ::option[`N`]{#opposite-search explanation="Прописная `N` повторяет поиск в обратном направлении, поэтому после прямого поиска движется назад."}
@@ -69,8 +66,7 @@ $ less /home/pete/Documents/text1
 
 Нажмите `q`, чтобы закрыть `less` и вернуться к приглашению оболочки.
 
-:::single-choice{#quit-less}
-Какая клавиша выходит из `less` и возвращает в оболочку?
+:::single-choice{#quit-less} Какая клавиша выходит из `less` и возвращает в оболочку?
 
 ::option[`q`]{#less-quit .correct explanation="Команда `q` закрывает просмотрщик и восстанавливает приглашение оболочки."}
 ::option[`h`]{#less-help explanation="`h` открывает справку внутри `less` и не возвращает прямо в оболочку."}
@@ -99,8 +95,7 @@ $ less +F /var/log/syslog
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-Какая команда открывает `/var/log/syslog` и следит за поступающим содержимым?
+:::single-choice{#follow-growing-log} Какая команда открывает `/var/log/syslog` и следит за поступающим содержимым?
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="Начальная команда `+F` включает режим слежения и показывает дописываемое содержимое."}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="`+G` открывает конец, но не продолжает следить за будущими строками."}

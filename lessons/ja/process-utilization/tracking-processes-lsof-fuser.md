@@ -28,8 +28,7 @@ $ sudo lsof +D /mnt/usb
 
 便利な列には `COMMAND`、`PID`、`USER`、ファイル記述子（`FD`）、種別、デバイス、`NAME` があります。`FD` が `cwd` のレコードは、そのプロセスがディレクトリを現在の作業ディレクトリとして使っていることを示します。非特権での出力は、ほかのユーザーが所有するプロセスについて不完全な場合があります。
 
-:::single-choice{#lsof-cwd-record}
-`FD` 列の `cwd` は何を示しますか？
+:::single-choice{#lsof-cwd-record} `FD` 列の `cwd` は何を示しますか？
 
 ::option[プロセスがそのディレクトリを現在の作業ディレクトリとして使っている。]{#lsof-current-directory .correct explanation="プロセスの現在ディレクトリにより、マウントされたファイルシステムがビジー状態のままになる場合があります。"}
 ::option[書き込み中にファイルが閉じられた。]{#lsof-closed-write explanation="このマーカーはディレクトリとの関係を表し、close イベントではありません。"}
@@ -52,8 +51,7 @@ $ sudo fuser -vm /mnt/usb
 
 `findmnt --target /mnt/usb` などで、そのパスが意図したマウントポイントであることを確認します。Bind mount、名前空間、権限、競合状態により、一度の問い合わせで見える内容が変わる場合があります。
 
-:::single-choice{#fuser-verbose-purpose}
-調査中に単なる `fuser` ではなく `fuser -v` を使う理由は何ですか？
+:::single-choice{#fuser-verbose-purpose} 調査中に単なる `fuser` ではなく `fuser -v` を使う理由は何ですか？
 
 ::option[選択したファイルシステムを自動的にアンマウントする。]{#fuser-verbose-unmount explanation="詳細モードは情報を報告するだけで、アンマウントを要求しません。"}
 ::option[ユーザー、アクセス種別、コマンドなどのコンテキストを追加する。]{#fuser-verbose-details .correct explanation="追加列により、どのプロセスを調整または停止してよいか判断しやすくなります。"}
@@ -72,8 +70,7 @@ $ sudo fuser -vm /mnt/usb
 
 `fuser -k` は一致するプロセスへシグナルを送ります。一般的な procps 実装の既定シグナルは `SIGKILL` なので、正常な終了処理を行えません。明示的に承認された終了が必要なら、適切なシグナルを選び、PID と所有者を確認し、調査から操作までの間にプロセス集合が変わり得ることを理解してください。
 
-:::single-choice{#fuser-k-risk}
-`fuser -k /mnt/usb` が最初のトラブルシューティング手順として不適切なのはなぜですか？
+:::single-choice{#fuser-k-risk} `fuser -k /mnt/usb` が最初のトラブルシューティング手順として不適切なのはなぜですか？
 
 ::option[ファイルシステムの空き容量だけを表示するから。]{#fuser-k-space explanation="このオプションは容量を報告するのではなく、プロセスを対象にします。"}
 ::option[正常な後処理なしに、複数の一致プロセスを終了させる可能性があるから。]{#fuser-k-kills .correct explanation="広範なシグナル操作は書き込みやサービスを中断するため、先に調査と調整が必要です。"}
@@ -91,8 +88,7 @@ $ sudo fuser -v 22/tcp
 $ sudo ss -lntp
 ```
 
-:::single-choice{#lsof-fuser-tool-choice}
-開いているファイル記述子と所有プロセスの詳細一覧に適したツールはどれですか？
+:::single-choice{#lsof-fuser-tool-choice} 開いているファイル記述子と所有プロセスの詳細一覧に適したツールはどれですか？
 
 ::option[`lsof`]{#lsof-detailed-records .correct explanation="出力はオープンファイルレコードと、そのプロセスメタデータを中心に構成されます。"}
 ::option[`uptime`]{#lsof-uptime explanation="Uptime は稼働時間と負荷平均を報告し、開いている記述子は示しません。"}

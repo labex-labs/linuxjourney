@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 Enquanto `less` estiver ativo, as teclas controlarão o paginador em vez de iniciar comandos comuns do shell. Você retornará ao shell quando sair do paginador.
 
-:::single-choice{#open-long-file}
-Qual comando abre `/var/log/syslog` em um paginador interativo?
+:::single-choice{#open-long-file} Qual comando abre `/var/log/syslog` em um paginador interativo?
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` abre o arquivo em um paginador para que você possa percorrê-lo, pesquisá-lo e voltar ao shell."}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat` envia o arquivo inteiro à saída padrão de uma vez. Ele não oferece controles interativos de paginação."}
@@ -40,8 +39,7 @@ Use estas teclas enquanto o paginador estiver aberto:
 - Pressione `u` para subir meia tela ou `d` para descer meia tela.
 - Pressione `h` para abrir a ajuda integrada.
 
-:::single-choice{#jump-to-file-end}
-Qual tecla leva diretamente ao final de um arquivo no `less`?
+:::single-choice{#jump-to-file-end} Qual tecla leva diretamente ao final de um arquivo no `less`?
 
 ::option[`g`]{#lowercase-g explanation="`g` minúsculo leva ao início do arquivo. A forma maiúscula segue na direção oposta."}
 ::option[`G`]{#uppercase-g .correct explanation="`G` maiúsculo leva ao final da entrada. O comando diferencia maiúsculas de minúsculas."}
@@ -57,8 +55,7 @@ Digite `/`, seguido de um padrão, e pressione Enter para pesquisar para a frent
 - `n`: repete a pesquisa na mesma direção.
 - `N`: repete a pesquisa na direção oposta.
 
-:::single-choice{#repeat-search-direction}
-Depois de uma pesquisa para a frente por `error`, qual tecla repete a pesquisa na mesma direção?
+:::single-choice{#repeat-search-direction} Depois de uma pesquisa para a frente por `error`, qual tecla repete a pesquisa na mesma direção?
 
 ::option[`n`]{#same-search .correct explanation="`n` minúsculo repete a pesquisa mais recente em sua direção original. Neste caso, a direção é para a frente."}
 ::option[`N`]{#opposite-search explanation="`N` maiúsculo repete a pesquisa mais recente na direção oposta. Depois de uma pesquisa para a frente, ele percorre os resultados para trás."}
@@ -69,8 +66,7 @@ Depois de uma pesquisa para a frente por `error`, qual tecla repete a pesquisa n
 
 Pressione `q` para sair de `less` e retornar ao prompt do shell.
 
-:::single-choice{#quit-less}
-Qual tecla encerra `less` e retorna ao shell?
+:::single-choice{#quit-less} Qual tecla encerra `less` e retorna ao shell?
 
 ::option[`q`]{#less-quit .correct explanation="O comando `q` encerra o paginador e restaura o prompt do shell."}
 ::option[`h`]{#less-help explanation="A tecla `h` abre a ajuda dentro de `less`. Ela não retorna diretamente ao shell."}
@@ -99,8 +95,7 @@ Os comandos também podem enviar sua saída por um pipe para `less`:
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-Qual comando abre `/var/log/syslog` e acompanha o novo conteúdo conforme ele chega?
+:::single-choice{#follow-growing-log} Qual comando abre `/var/log/syslog` e acompanha o novo conteúdo conforme ele chega?
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="O comando inicial `+F` entra no modo de acompanhamento, fazendo `less` exibir o novo conteúdo acrescentado ao log."}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="O comando inicial `+G` abre no final, mas não continua acompanhando o conteúdo que chegar depois."}

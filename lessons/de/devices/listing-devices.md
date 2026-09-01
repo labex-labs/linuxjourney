@@ -30,8 +30,7 @@ $ lsusb -t
 
 Eine ausführliche Ausgabe der Deskriptoren ist verfügbar, doch manche Angaben erfordern erhöhte Leseberechtigungen. Vergib keine umfassenden USB-Geräteberechtigungen, nur damit ein Untersuchungsbefehl weniger Meldungen ausgibt.
 
-:::single-choice{#listing-devices-usb-tree}
-Welcher Befehl zeigt USB-Geräte als Topologiebaum an?
+:::single-choice{#listing-devices-usb-tree} Welcher Befehl zeigt USB-Geräte als Topologiebaum an?
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="Dieser Befehl listet PCI-Funktionen und Kernel-Treiberinformationen statt der USB-Topologie auf."}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="Dies ist nicht der hier vorgestellte Befehl für den USB-Baum."}
@@ -54,8 +53,7 @@ $ lspci -k
 
 Das Erscheinen eines PCI-Controllers in dieser Liste beweist nicht, dass jedes dahinterliegende Gerät initialisiert oder funktionsfähig ist. Prüfe bei der Fehlersuche die Treiberbindung und Kernel-Protokolle.
 
-:::single-choice{#listing-devices-pci-driver}
-Welcher Befehl ergänzt eine PCI-Auflistung um Kernel-Treiberinformationen?
+:::single-choice{#listing-devices-pci-driver} Welcher Befehl ergänzt eine PCI-Auflistung um Kernel-Treiberinformationen?
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="Die Option `-k` zeigt für jedes PCI-Gerät den aktiven Kernel-Treiber und geeignete Module an."}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="Dieser Befehl beschreibt die USB-Hierarchie und Schnittstellentreiber."}
@@ -78,8 +76,7 @@ Verwende für eine speicherbezogene Hierarchie mit vielen Blockgerätetypen zus�
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-Was listet `lsscsi` in erster Linie auf?
+:::single-choice{#listing-devices-lsscsi-scope} Was listet `lsscsi` in erster Linie auf?
 
 ::option[Ausschließlich sämtliche NVMe-Namespaces und -Controller.]{#listing-devices-only-nvme explanation="NVMe verwendet ein eigenes Subsystem und eigene Werkzeuge, auch wenn verwandte Blockansichten an anderer Stelle erscheinen können."}
 ::option[Nur Dateien, deren Namen mit `.scsi` enden.]{#listing-devices-scsi-extension explanation="Der Befehl fragt Kernel-Geräteschnittstellen und keine Dateinamenerweiterungen ab."}
@@ -92,8 +89,7 @@ Beschreibungen stammen häufig aus lokalen ID-Datenbanken und können allgemein 
 
 Die Dienstprogramme können getrennt paketiert sein, üblicherweise in Paketen wie `usbutils`, `pciutils` und `lsscsi`. Fehlt ein Befehl, installiere ihn über den Paketmanager der Distribution, statt unbekannte Ersatzprogramme herunterzuladen.
 
-:::single-choice{#listing-devices-listed-not-working}
-Beweist das Erscheinen eines Geräts in `lspci`, dass sein Treiber aktiv ist und richtig funktioniert?
+:::single-choice{#listing-devices-listed-not-working} Beweist das Erscheinen eines Geräts in `lspci`, dass sein Treiber aktiv ist und richtig funktioniert?
 
 ::option[Nein; prüfe zusätzlich Treiberbindung und relevante Kernelmeldungen.]{#listing-devices-needs-correlation .correct explanation="Die Aufzählung belegt, dass eine PCI-Funktion sichtbar ist, nicht dass ihre weitergehende Initialisierung erfolgreich war."}
 ::option[Ja; die PCI-Aufzählung führt einen vollständigen Funktionstest aus.]{#listing-devices-complete-test explanation="Die Auflistung übt nicht jede Hardwarefunktion aus und überprüft kein Dienstverhalten."}

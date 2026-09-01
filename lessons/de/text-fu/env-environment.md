@@ -30,8 +30,7 @@ Häufige Umgebungsvariablen sind:
 
 Die Werte hängen von der Umgebung des aktuellen Prozesses ab und sind keine universellen Konstanten. Eine nicht gesetzte Variable wird als leere Zeichenfolge erweitert, sofern kein strengeres Shell-Verhalten aktiviert ist.
 
-:::single-choice{#env-print-home-value}
-Welcher Bash-Befehl gibt den Wert von `HOME` aus und bewahrt ihn als ein Argument?
+:::single-choice{#env-print-home-value} Welcher Bash-Befehl gibt den Wert von `HOME` aus und bewahrt ihn als ein Argument?
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="Einfache Anführungszeichen verhindern die Parametererweiterung, sodass die wörtlichen Zeichen `$HOME` ausgegeben werden."}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash erweitert `$HOME` in doppelten Anführungszeichen; `printf` erhält den vollständigen Wert als ein Argument."}
@@ -56,8 +55,7 @@ USER=pete
 
 Umgebungsvariablen können Zugangsdaten, Tokens, interne Pfade oder andere vertrauliche Daten enthalten. Veröffentliche keine vollständige `env`-Ausgabe in Issues oder Protokollen, ohne sie zu prüfen und sensible Werte zu entfernen.
 
-:::single-choice{#env-list-exported-values}
-Welcher Befehl gibt die Umgebung aus, die ein neu gestarteter Prozess sieht?
+:::single-choice{#env-list-exported-values} Welcher Befehl gibt die Umgebung aus, die ein neu gestarteter Prozess sieht?
 
 ::option[`env`]{#env-print-all .correct explanation="Ohne Befehl oder Zuweisungen gibt `env` die empfangene Name-Wert-Umgebung aus."}
 ::option[`alias`]{#env-alias-list explanation="`alias` listet Shell-Aliasdefinitionen auf. Sie gehören zum Shell-Zustand und nicht zu exportierten Umgebungseinträgen."}
@@ -82,8 +80,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 Ersetze `PATH` nicht versehentlich ausschließlich durch das neue Verzeichnis und füge keine nicht vertrauenswürdigen beschreibbaren Verzeichnisse hinzu. Andernfalls können normale Befehle unauffindbar werden oder unerwartete Programme ausgeführt werden.
 
-:::single-choice{#env-prepend-path-directory}
-Welcher Befehl setzt `/opt/coolapp/bin` vor den vorhandenen `PATH` der aktuellen Bash und ihrer künftigen Kindprozesse?
+:::single-choice{#env-prepend-path-directory} Welcher Befehl setzt `/opt/coolapp/bin` vor den vorhandenen `PATH` der aktuellen Bash und ihrer künftigen Kindprozesse?
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="Damit gehen alle vorhandenen Suchverzeichnisse verloren, sodass gewöhnliche Befehle schwer auffindbar werden können."}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="Diese Form setzt das neue Verzeichnis voran, bewahrt den bisherigen Wert und exportiert das Ergebnis für Kindprozesse."}
@@ -107,8 +104,7 @@ test
 
 Die Zuweisung bleibt normalerweise bestehen, bis du sie mit unset entfernst oder die Shell beendest. Eine systemweite Umgebung verändert sie nicht.
 
-:::single-choice{#env-export-inheritance}
-Was ist die wichtigste Wirkung von `export TEST=test` in Bash?
+:::single-choice{#env-export-inheritance} Was ist die wichtigste Wirkung von `export TEST=test` in Bash?
 
 ::option[Der Befehl schreibt `TEST` in die Systemkonfiguration aller Benutzer.]{#env-system-wide explanation="Die Zuweisung betrifft die aktuelle Shell und die Vererbung an ihre Kinder, nicht alle Benutzer oder das gesamte Betriebssystem."}
 ::option[Der Befehl markiert `TEST=test` zur Vererbung an künftige Kindprozesse.]{#env-child-inheritance .correct explanation="`export` nimmt die Shell-Variable in die Umgebung auf, die Bash an neu gestartete Befehle übergibt."}
@@ -131,8 +127,7 @@ $ env LANG=C sort names.txt
 
 Mit `env -i COMMAND` startest du einen Befehl mit einer zunächst leeren Umgebung und kannst anschließend erforderliche Zuweisungen ergänzen. Viele Programme sind auf Umgebungswerte angewiesen; verwende diese Option daher bewusst.
 
-:::single-choice{#env-one-command-value}
-Welcher Befehl führt `sort names.txt` mit `LANG=C` aus, ohne `LANG` der aktuellen Shell dauerhaft zu ändern?
+:::single-choice{#env-one-command-value} Welcher Befehl führt `sort names.txt` mit `LANG=C` aus, ohne `LANG` der aktuellen Shell dauerhaft zu ändern?
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` ergänzt die Zuweisung in der Umgebung des gestarteten Befehls; die Eltern-Shell behält ihren bisherigen Wert."}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="Damit wird `LANG=C` in der aktuellen Shell exportiert und bleibt auch nach dem Ende von `sort` gesetzt."}

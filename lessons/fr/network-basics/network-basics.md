@@ -24,8 +24,7 @@ $ ip address show
 
 La présence d'une interface ou son état administrativement actif ne prouve pas une connectivité de bout en bout.
 
-:::single-choice{#network-basics-host-interface}
-Qu'est-ce qu'une interface réseau ?
+:::single-choice{#network-basics-host-interface} Qu'est-ce qu'une interface réseau ?
 
 ::option[Une copie permanente de chaque paquet d'Internet.]{#network-basics-interface-copy explanation="Une interface transmet et reçoit du trafic ; ce n'est pas une archive mondiale de paquets."}
 ::option[Le point de rattachement d'un hôte à un réseau ou à une liaison virtuelle.]{#network-basics-interface-attachment .correct explanation="Un hôte peut posséder plusieurs interfaces physiques ou virtuelles configurées séparément."}
@@ -36,8 +35,7 @@ Qu'est-ce qu'une interface réseau ?
 
 Un réseau local, ou LAN, couvre un environnement limité comme un domicile, un bureau ou un segment de centre de données. Les commutateurs Ethernet transmettent les trames entre les ports d'une liaison locale. Un réseau local sans fil, ou WLAN, emploie une technologie de liaison radio. Des interfaces filaires et sans fil peuvent néanmoins appartenir au même sous-réseau IP lorsqu'un pont ou un point d'accès les réunit.
 
-:::single-choice{#network-basics-wlan-relationship}
-Quelle relation un WLAN entretient-il avec un LAN ?
+:::single-choice{#network-basics-wlan-relationship} Quelle relation un WLAN entretient-il avec un LAN ?
 
 ::option[Un WLAN est toujours un Internet mondial distinct.]{#network-basics-wlan-global explanation="Il s'agit d'un réseau local qui emploie une technologie de liaison sans fil."}
 ::option[Un WLAN est une partition de disque employée par les routeurs.]{#network-basics-wlan-disk explanation="Le terme décrit le réseau, pas l'organisation du stockage."}
@@ -50,8 +48,7 @@ Un routeur transmet des paquets de la couche réseau entre des réseaux IP selon
 
 Un réseau étendu, ou WAN, franchit de plus grandes limites géographiques ou administratives. Un fournisseur d'accès à Internet peut relier le réseau d'un client à d'autres réseaux, mais « WAN » ne signifie pas simplement tout appareil situé hors d'une maison.
 
-:::single-choice{#network-basics-router-role}
-Quel est le rôle caractéristique d'un routeur ?
+:::single-choice{#network-basics-router-role} Quel est le rôle caractéristique d'un routeur ?
 
 ::option[Transmettre les paquets entre les réseaux de la couche réseau.]{#network-basics-forward-networks .correct explanation="Le routage choisit les sauts suivants au-delà des frontières des réseaux IP."}
 ::option[Stocker obligatoirement tous les fichiers des utilisateurs comme sauvegarde.]{#network-basics-router-backup explanation="La conservation des fichiers n'est pas la fonction qui définit le routage."}
@@ -64,8 +61,7 @@ Les applications produisent des données que les couches de protocoles découpen
 
 Une conversation peut comporter de nombreux paquets dans les deux directions. Les pertes, changements d'ordre, fragmentations, retransmissions et modifications de chemin signifient qu'un seul paquet capturé décrit rarement toute la transaction applicative.
 
-:::single-choice{#network-basics-router-frame}
-Que devient normalement l'encapsulation de la couche liaison au passage d'un routeur ?
+:::single-choice{#network-basics-router-frame} Que devient normalement l'encapsulation de la couche liaison au passage d'un routeur ?
 
 ::option[Le routeur retire la trame entrante et crée une trame pour la liaison suivante.]{#network-basics-reframe .correct explanation="Le paquet IP transmis est transporté dans une nouvelle trame adaptée à l'interface de sortie."}
 ::option[La même trame Ethernet traverse tout Internet sans changer.]{#network-basics-same-frame explanation="Les trames sont limitées à leurs liaisons et remplacées aux sauts routés."}

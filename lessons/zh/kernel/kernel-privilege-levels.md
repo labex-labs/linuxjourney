@@ -18,8 +18,7 @@ meta_keywords: "Linux 特权级别, 内核模式, 用户模式, 保护环, 系�
 
 页表和保护位负责实施内存访问控制。如果线程引用无效或不允许访问的地址，处理器会陷入内核；内核可以解决有效的缺页异常，也可以发送 `SIGSEGV` 等信号。
 
-:::single-choice{#kernel-privilege-user-mode-memory}
-用户模式进程通常可以直接访问哪些内存？
+:::single-choice{#kernel-privilege-user-mode-memory} 用户模式进程通常可以直接访问哪些内存？
 
 ::option[每个物理 RAM 地址和全部内核内存。]{#kernel-privilege-all-physical explanation="特权机制和虚拟内存保护会阻止这些访问。"}
 ::option[只能访问进程启动时选定的一个固定字节。]{#kernel-privilege-one-byte explanation="非特权进程仍然可以拥有许多映射区域。"}
@@ -32,8 +31,7 @@ meta_keywords: "Linux 特权级别, 内核模式, 用户模式, 保护环, 系�
 
 其他架构使用不同的名称和机制，例如异常级别。虚拟化还会引入无法用简单双环图表示的虚拟机监控程序与客户机关系。核心思想是受控特权，而不是 x86 环编号本身。
 
-:::single-choice{#kernel-privilege-x86-kernel-ring}
-Linux 内核通常在哪个 x86 保护环中执行？
+:::single-choice{#kernel-privilege-x86-kernel-ring} Linux 内核通常在哪个 x86 保护环中执行？
 
 ::option[Ring 3。]{#kernel-privilege-ring-three explanation="Ring 3 是传统的用户模式特权级别。"}
 ::option[Ring 0。]{#kernel-privilege-ring-zero .correct explanation="内核使用传统 x86 中特权最高的保护环。"}
@@ -52,8 +50,7 @@ Linux 内核通常在哪个 x86 保护环中执行？
 
 应用程序并不会暂时变成内核代码。CPU 只是代表该线程执行内核处理程序，并使用由内核控制的栈和映射。
 
-:::single-choice{#kernel-privilege-system-call-transition}
-系统调用转换期间会发生什么？
+:::single-choice{#kernel-privilege-system-call-transition} 系统调用转换期间会发生什么？
 
 ::option[应用程序的用户代码获得不受限制的 ring 0 执行权限。]{#kernel-privilege-user-ring-zero explanation="通过受控入口后，只有可信内核代码会执行。"}
 ::option[进程永久将自己的 UID 改为零。]{#kernel-privilege-uid-zero explanation="处理器模式转换不会改写用户凭据。"}
@@ -66,8 +63,7 @@ Linux 内核通常在哪个 x86 保护环中执行？
 
 能力、命名空间、seccomp、安全模块和 cgroup 会进一步约束进程可以发出哪些请求。这些分层策略与硬件层面的用户/内核模式边界相互独立。
 
-:::single-choice{#kernel-privilege-root-distinction}
-哪项说法正确比较了 root 身份与内核模式？
+:::single-choice{#kernel-privilege-root-distinction} 哪项说法正确比较了 root 身份与内核模式？
 
 ::option[Root 是用户空间凭据；内核模式是处理器执行特权。]{#kernel-privilege-credential-versus-mode .correct explanation="root 进程从用户模式发出经过授权的请求，而可信内核代码负责特权执行。"}
 ::option[root 拥有的每条指令都作为可加载内核代码运行。]{#kernel-privilege-root-kernel-code explanation="UID 所有权不会把可执行文件转变成内核模块。"}
@@ -80,8 +76,7 @@ Linux 内核通常在哪个 x86 保护环中执行？
 
 推测执行问题和侧信道也说明，硬件隔离需要持续缓解措施；“位于不同保护环”只是基础，并非完整的安全证明。
 
-:::single-choice{#kernel-privilege-boundary-limit}
-用户/内核模式隔离是否能保证系统绝对安全？
+:::single-choice{#kernel-privilege-boundary-limit} 用户/内核模式隔离是否能保证系统绝对安全？
 
 ::option[能；内核漏洞无法影响用户进程。]{#kernel-privilege-no-kernel-vulns explanation="内核漏洞可能危及整个系统。"}
 ::option[不能；特权代码缺陷和侧信道仍可能跨越预期边界。]{#kernel-privilege-not-complete .correct explanation="模式划分能缩小攻击面，但还必须结合正确的内核代码和其他缓解措施。"}

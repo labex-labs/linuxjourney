@@ -22,8 +22,7 @@ $ expand sample.txt
 
 Standardmäßig liegen Tabulatorstopps alle 8 Spalten. Ein Tabulator in Spalte 1 wird daher anders erweitert als einer in Spalte 6; er wird nicht immer durch acht Leerzeichen ersetzt.
 
-:::single-choice{#expand-default-tab-stops}
-Wie ersetzt `expand` mit Standardeinstellungen ein Tabulatorzeichen?
+:::single-choice{#expand-default-tab-stops} Wie ersetzt `expand` mit Standardeinstellungen ein Tabulatorzeichen?
 
 ::option[Der Befehl fügt genügend Leerzeichen bis zum nächsten standardmäßigen Tabulatorstopp ein.]{#expand-next-stop .correct explanation="`expand` erhält die Ausrichtung an Tabulatorstopps, indem es die nötigen Leerzeichen ab der aktuellen Spalte berechnet."}
 ::option[Der Befehl fügt immer genau acht Leerzeichen ein.]{#expand-eight-spaces explanation="Die Standardstopps liegen acht Spalten auseinander, doch die Anzahl der Leerzeichen hängt von der aktuellen Spalte ab."}
@@ -40,8 +39,7 @@ $ expand -t 4 sample.txt
 
 GNU `expand` akzeptiert außerdem eine kommagetrennte Liste ausdrücklicher Tabulatorpositionen. Mit `-i` werden nur Tabulatoren vor dem ersten Nicht-Leerzeichen jeder Zeile umgewandelt.
 
-:::single-choice{#expand-four-column-stops}
-Welcher Befehl wandelt Tabulatoren mit Stopps alle vier Spalten um?
+:::single-choice{#expand-four-column-stops} Welcher Befehl wandelt Tabulatoren mit Stopps alle vier Spalten um?
 
 ::option[`expand -i 4 sample.txt`]{#expand-initial-four explanation="Die Option `-i` beschränkt die Umwandlung auf anfängliche Tabulatoren und verwendet `4` nicht als Stoppabstand."}
 ::option[`unexpand -t 4 sample.txt`]{#unexpand-tabs-four explanation="`unexpand` wandelt passende Leerzeichen in Tabulatoren um und arbeitet damit in die entgegengesetzte Richtung."}
@@ -58,8 +56,7 @@ $ expand sample.txt > result.txt
 
 Verwende nicht `expand sample.txt > sample.txt`. Die Shell leert das Ziel, bevor `expand` es lesen kann, sodass die Quelldaten verloren gehen können. Nach Prüfung eines getrennt geschriebenen Ergebnisses kannst du das Original bewusst mit einem geeigneten Dateiverwaltungsschritt ersetzen.
 
-:::single-choice{#expand-safe-output-file}
-Welcher Befehl speichert den erweiterten Text, ohne `sample.txt` vor dem Lesen zu leeren?
+:::single-choice{#expand-safe-output-file} Welcher Befehl speichert den erweiterten Text, ohne `sample.txt` vor dem Lesen zu leeren?
 
 ::option[`expand sample.txt > sample.txt`]{#expand-same-file explanation="Die Shell öffnet und leert `sample.txt` für die Ausgabe, bevor sie `expand` startet, und kann dadurch die Eingabe löschen."}
 ::option[`expand sample.txt > result.txt`]{#expand-separate-result .correct explanation="Eingabe- und Ausgabepfad unterscheiden sich, sodass die Shell `result.txt` erstellen kann, ohne die Quelle zu zerstören."}
@@ -82,16 +79,14 @@ $ unexpand -a result.txt
 
 Dabei wird nicht einfach jede Folge aus acht Leerzeichen ersetzt. Wie bei `expand` hängt die Umwandlung von Spaltenpositionen und Tabulatorstopps ab. Verwende `-t 4` oder eine andere Stoppangabe, wenn die Datei einer abweichenden Konvention folgt.
 
-:::single-choice{#unexpand-default-scope}
-Welche Leerzeichen berücksichtigt GNU `unexpand` ohne `-a` normalerweise zur Umwandlung?
+:::single-choice{#unexpand-default-scope} Welche Leerzeichen berücksichtigt GNU `unexpand` ohne `-a` normalerweise zur Umwandlung?
 
 ::option[Jede Gruppe von Leerzeichen an beliebiger Stelle der Datei.]{#unexpand-every-group explanation="Für Leerzeichen in der gesamten Zeile ist `-a` nötig; auch dann hängt die Umwandlung von den Tabulatorpositionen ab."}
 ::option[Nur Leerzeichen nach dem letzten Wort.]{#unexpand-trailing-blanks explanation="Der Standardbereich betrifft anfängliche Leerzeichen und nicht speziell nachgestellte Leerzeichen."}
 ::option[Nur anfängliche Leerzeichen vor dem ersten Nicht-Leerzeichen.]{#unexpand-initial-blanks .correct explanation="GNU `unexpand` beschränkt sich standardmäßig auf führende Leerzeichen jeder Zeile."}
 :::
 
-:::single-choice{#unexpand-all-blanks}
-Welche Option weist GNU `unexpand` an, auch Leerzeichen nach dem ersten Nicht-Leerzeichen zu berücksichtigen?
+:::single-choice{#unexpand-all-blanks} Welche Option weist GNU `unexpand` an, auch Leerzeichen nach dem ersten Nicht-Leerzeichen zu berücksichtigen?
 
 ::option[`-i`]{#unexpand-initial-option explanation="Bei `expand` beschränkt `-i` die Arbeit auf anfängliche Tabulatoren. Für `unexpand` ist es nicht die Option für alle Leerzeichen."}
 ::option[`-a`]{#unexpand-all-option .correct explanation="Die Option `-a` aktiviert die Umwandlung geeigneter Leerzeichen in der gesamten Eingabezeile."}

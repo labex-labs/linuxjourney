@@ -30,8 +30,7 @@ $ modinfo MODULE_NAME
 
 `modinfo` can show filename, aliases, parameters, license, description, and signature information. Treat metadata as descriptive, not proof that the module is trustworthy or compatible with the workload.
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-What does `lsmod` display?
+:::single-choice{#kernel-modules-lsmod-purpose} What does `lsmod` display?
 
 ::option[Every module package available in remote repositories.]{#kernel-modules-repository-list explanation="Package-manager queries are needed for repository inventory."}
 ::option[Only drivers compiled directly into the kernel image.]{#kernel-modules-builtins explanation="Built-in features are not loadable modules and normally do not appear in lsmod."}
@@ -50,8 +49,7 @@ $ sudo modprobe MODULE_NAME
 
 Before loading, confirm module provenance, signature policy, kernel release compatibility, parameters, expected hardware binding, and rollback. Secure Boot or kernel lockdown can reject unsigned modules; forcing incompatible code risks a crash or compromise.
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-Why is `modprobe` normally preferred over direct `insmod`?
+:::single-choice{#kernel-modules-modprobe-dependencies} Why is `modprobe` normally preferred over direct `insmod`?
 
 ::option[It runs the module entirely in unprivileged user space.]{#kernel-modules-modprobe-userspace explanation="The inserted module executes as privileged kernel code."}
 ::option[It guarantees that every third-party module is signed and safe.]{#kernel-modules-modprobe-guarantee explanation="Enforcement depends on policy, and a valid signature does not prove absence of defects."}
@@ -74,8 +72,7 @@ example_module
 
 Hardware aliases often trigger automatic loading without an explicit list. For modules needed inside early boot, update the initramfs through the distribution's documented process after configuration changes.
 
-:::single-choice{#kernel-modules-options-versus-load}
-What does an `options` line in `/etc/modprobe.d/` do?
+:::single-choice{#kernel-modules-options-versus-load} What does an `options` line in `/etc/modprobe.d/` do?
 
 ::option[Guarantees the module is loaded at every boot by that line alone.]{#kernel-modules-options-autoload explanation="Boot-time load requests use another mechanism such as modules-load configuration or device aliases."}
 ::option[Sets parameters used when the named module is loaded.]{#kernel-modules-options-parameters .correct explanation="Modprobe applies configured key-value arguments during insertion."}
@@ -92,8 +89,7 @@ blacklist example_module
 
 Blacklisting normally suppresses automatic loading through the module's aliases. It does not unload an already loaded module, remove it from an initramfs, or necessarily prevent an explicit load by exact name or loading as a dependency. Security hardening requires a threat-specific combination of module availability, signature enforcement, initramfs content, boot parameters, and policy.
 
-:::single-choice{#kernel-modules-blacklist-effect}
-What does a basic modprobe `blacklist` line primarily suppress?
+:::single-choice{#kernel-modules-blacklist-effect} What does a basic modprobe `blacklist` line primarily suppress?
 
 ::option[Automatic loading through the module's aliases.]{#kernel-modules-blacklist-aliases .correct explanation="The directive is not a universal prohibition on every route by which code can already be or become loaded."}
 ::option[Execution of every user-space program with a similar name.]{#kernel-modules-blacklist-user-programs explanation="Modprobe configuration applies to kernel module resolution."}
@@ -112,8 +108,7 @@ Modprobe can remove now-unused dependencies as appropriate. The kernel refuses r
 
 Never force-unload a module on a system you need to preserve. Removal bugs or outstanding activity can crash the kernel or corrupt data.
 
-:::single-choice{#kernel-modules-remove-command}
-Which command requests dependency-aware removal of a module by name?
+:::single-choice{#kernel-modules-remove-command} Which command requests dependency-aware removal of a module by name?
 
 ::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="Lsmod is a read-only listing tool and has no removal role."}
 ::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="Uname reports kernel information and does not manage modules."}

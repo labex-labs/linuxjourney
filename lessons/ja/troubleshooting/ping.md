@@ -22,8 +22,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 IPv6 を選ぶには `-6` を使います。ホスト名は複数のアドレスを返し、実行ごとに異なるものが選ばれる場合があるため、解決されたアドレスを記録してください。
 
-:::single-choice{#ping-count-option}
-`-c 3` は何を指定しますか？
+:::single-choice{#ping-count-option} `-c 3` は何を指定しますか？
 
 ::option[パケットのペイロードを正確に 3 メガバイトにする。]{#ping-three-megabytes explanation="パケットサイズには別のオプションを使います。"}
 ::option[宛先への永続ルートを三つ作る。]{#ping-three-routes explanation="ping は通信を試すだけで、ルートを追加しません。"}
@@ -36,8 +35,7 @@ IPv6 を選ぶには `-6` を使います。ホスト名は複数のアドレス
 
 損失は往路でも復路でも起こり得ます。また ICMP のレート制限により、ping の損失率がアプリケーションの損失率と異なる場合があります。
 
-:::single-choice{#ping-sequence-gap}
-`icmp_seq` の応答が一つ欠けている場合、何が考えられますか？
+:::single-choice{#ping-sequence-gap} `icmp_seq` の応答が一つ欠けている場合、何が考えられますか？
 
 ::option[宛先が MAC アドレスを恒久的に変更した。]{#ping-sequence-mac explanation="シーケンスの欠落だけでは、リンク層についてそのような結論は出せません。"}
 ::option[要求または応答の損失、フィルタリング、待ち時間を超える遅延、レート制限。]{#ping-sequence-possibilities .correct explanation="欠落から分かるのは応答を観測できなかったことだけで、方向や正確な原因までは特定できません。"}
@@ -48,8 +46,7 @@ IPv6 を選ぶには `-6` を使います。ホスト名は複数のアドレス
 
 `time` フィールドは、要求の送信から応答の受信までの往復時間をミリ秒で示します。往路の遅延、相手側での処理、復路の遅延が含まれます。両端で時刻を同期して測定しない限り、片道の遅延は分かりません。
 
-:::single-choice{#ping-rtt-meaning}
-表示された `time=23.7 ms` は何を測っていますか？
+:::single-choice{#ping-rtt-meaning} 表示された `time=23.7 ms` は何を測っていますか？
 
 ::option[往路だけの片道遅延。]{#ping-outbound-only explanation="ping が測るのは、要求と応答を合わせた全区間です。"}
 ::option[対象システムの稼働時間。]{#ping-target-uptime explanation="この値は試行の所要時間であり、起動後の経過時間ではありません。"}
@@ -60,8 +57,7 @@ IPv6 を選ぶには `-6` を使います。ホスト名は複数のアドレス
 
 表示される IPv4 の TTL または IPv6 の Hop Limit は、受信した応答に残っていた値です。送信側の初期値と復路が分からなければ、引き算で正確なホップ数を求めることはできません。値の変化は、応答元、初期値、復路の違いを反映している可能性があります。
 
-:::single-choice{#ping-received-ttl}
-IPv4 の Echo Reply に表示される TTL は何ですか？
+:::single-choice{#ping-received-ttl} IPv4 の Echo Reply に表示される TTL は何ですか？
 
 ::option[応答がローカルホストへ届いた時点の残り値。]{#ping-remaining-ttl .correct explanation="復路上の各ルーターが、送信側の初期値を一つずつ減らしています。"}
 ::option[往復両方向にあるルーターの正確な数。]{#ping-exact-hop-count explanation="このフィールドだけでは、初期 TTL も方向別の経路も確定しません。"}
@@ -72,8 +68,7 @@ IPv4 の Echo Reply に表示される TTL は何ですか？
 
 ping が成功してもサービスが失敗する場合は、実際のポート、TLS、プロトコル、要求をテストしてください。ping が失敗した場合も、ホスト停止と断定する前に、名前解決、`ip route get`、近隣状態、ファイアウォールポリシー、キャプチャを調べます。
 
-:::single-choice{#ping-success-limit}
-ping が成功しても証明できないものはどれですか？
+:::single-choice{#ping-success-limit} ping が成功しても証明できないものはどれですか？
 
 ::option[一部の ICMP 要求・応答の経路が機能したこと。]{#ping-icmp-worked explanation="これは、応答から直接得られる証拠です。"}
 ::option[応答にシーケンス番号が含まれていたこと。]{#ping-sequence-present explanation="通常の出力には、応答のシーケンスが直接表示されます。"}

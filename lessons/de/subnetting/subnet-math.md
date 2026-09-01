@@ -24,8 +24,7 @@ network  11000000.10101000.00000001.00000000
 
 Ein bitweises UND bewahrt Adressbits dort, wo die Maske eins ist, und löscht Hostbits. Das Ergebnis lautet `192.168.1.0/24`.
 
-:::single-choice{#subnet-math-network-operation}
-Welche Operation bestimmt eine IPv4-Netzwerkadresse aus Adresse und Maske?
+:::single-choice{#subnet-math-network-operation} Welche Operation bestimmt eine IPv4-Netzwerkadresse aus Adresse und Maske?
 
 ::option[Aneinanderreihung dezimaler Zeichenfolgen.]{#subnet-math-concatenation explanation="Das Verbinden ausgegebener Oktette wendet keine Präfixbits an."}
 ::option[Subtraktion von Transportports.]{#subnet-math-port-subtraction explanation="Ports haben nichts mit dem Netzwerkpräfix zu tun."}
@@ -42,8 +41,7 @@ Für das Präfix `/p` enthält der Hostanteil `32 - p` Bits. Die Gesamtzahl der 
 
 Ein `/24` enthält daher `2^8 = 256` Adressen. In einem herkömmlichen Broadcast-Subnetz ist der ausschließlich aus Nullen bestehende Hostwert die Netzwerkadresse und der ausschließlich aus Einsen bestehende Wert der gerichtete Broadcast. Damit bleiben 254 gewöhnliche Unicast-Hostadressen.
 
-:::single-choice{#subnet-math-24-total}
-Wie viele Adressen enthält ein IPv4-`/24` insgesamt?
+:::single-choice{#subnet-math-24-total} Wie viele Adressen enthält ein IPv4-`/24` insgesamt?
 
 ::option[24]{#subnet-math-total-24 explanation="Die Präfixlänge zählt Netzwerkbits und keine Adressen."}
 ::option[256]{#subnet-math-total-256 .correct explanation="Acht Hostbits erzeugen 2^8 unterschiedliche Adresswerte."}
@@ -60,8 +58,7 @@ broadcast: 192.168.1.191
 range:     192.168.1.129 through 192.168.1.190
 ```
 
-:::single-choice{#subnet-math-165-network}
-Wie lautet die Netzwerkadresse für `192.168.1.165/26`?
+:::single-choice{#subnet-math-165-network} Wie lautet die Netzwerkadresse für `192.168.1.165/26`?
 
 ::option[`192.168.1.0`]{#subnet-math-network-zero explanation="Dies ist der erste `/26`-Block, der 0 bis 63 umfasst."}
 ::option[`192.168.1.165`]{#subnet-math-network-self explanation="Die angegebene Adresse besitzt innerhalb des `/26` von null verschiedene Hostbits."}
@@ -72,8 +69,7 @@ Wie lautet die Netzwerkadresse für `192.168.1.165/26`?
 
 Die Abkürzung `2^host_bits - 2` gilt nicht allgemein. IPv4-`/31`-Präfixe sind für Punkt-zu-Punkt-Verbindungen definiert, bei denen beide Adressen Endpunkte sein können und kein gerichteter Broadcast benötigt wird. Ein `/32` identifiziert eine einzelne Hostroute oder Schnittstellenadresse. Netzwerktechnik und Protokollverwendung bestimmen, welche Adressen zuweisbar sind.
 
-:::single-choice{#subnet-math-31-exception}
-Warum solltest du nicht von jedem IPv4-Präfix zwei Adressen abziehen?
+:::single-choice{#subnet-math-31-exception} Warum solltest du nicht von jedem IPv4-Präfix zwei Adressen abziehen?
 
 ::option[IPv4-Adressen enthalten bei keinem Präfix Hostbits.]{#subnet-math-no-host-bits explanation="Die meisten Präfixe lassen mindestens ein Hostbit."}
 ::option[Punkt-zu-Punkt-Verbindungen mit `/31` können beide Adressen als Endpunkte verwenden.]{#subnet-math-31-both .correct explanation="Das Punkt-zu-Punkt-Modell benötigt keine herkömmliche Reservierung für Netzwerk und gerichteten Broadcast."}
@@ -84,8 +80,7 @@ Warum solltest du nicht von jedem IPv4-Präfix zwei Adressen abziehen?
 
 Verwende ein unabhängiges Werkzeug oder eine Bibliothek, um die manuelle Arbeit zu prüfen, und vergleiche anschließend mit der tatsächlichen Schnittstellen- und Routenkonfiguration. Ein mathematisch gültiges Präfix kann dennoch mit einem anderen Subnetz überlappen oder einen Vergabeplan verletzen.
 
-:::single-choice{#subnet-math-valid-not-safe}
-Was beweist eine korrekte Subnetzberechnung nicht?
+:::single-choice{#subnet-math-valid-not-safe} Was beweist eine korrekte Subnetzberechnung nicht?
 
 ::option[Dass der Adressplan keine Überlappung oder keinen Richtlinienkonflikt besitzt.]{#subnet-math-no-conflict .correct explanation="Betriebliche Vergabe- und Routingbelege sind weiterhin erforderlich."}
 ::option[Dass IPv4-Adressen 32 Bit enthalten.]{#subnet-math-proves-size explanation="Die Berechnung beruht auf dieser festen Größe."}

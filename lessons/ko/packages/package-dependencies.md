@@ -25,8 +25,7 @@ meta_keywords: "리눅스 패키지 의존성, 공유 라이브러리, 리눅스
 
 이 규칙을 바탕으로 의존성 해결기는 설정된 저장소, 아키텍처 및 설치 상태와 호환되는 패키지 버전 집합을 선택합니다. 해결 과정에는 업그레이드, 제거 또는 제공자 선택이 필요할 수 있으므로 승인하기 전에 제안된 트랜잭션을 검토하십시오.
 
-:::single-choice{#package-dependencies-solver-role}
-저장소를 인식하는 의존성 해결기가 만들려는 것은 무엇입니까?
+:::single-choice{#package-dependencies-solver-role} 저장소를 인식하는 의존성 해결기가 만들려는 것은 무엇입니까?
 
 ::option[일관된 패키지 버전 및 필수 변경 사항의 집합입니다.]{#package-dependencies-consistent-set .correct explanation="해결기는 설치되어 있거나 사용 가능한 여러 패키지에 선언된 관계를 평가합니다."}
 ::option[설치된 애플리케이션마다 하나씩 만드는 새 사용자 계정입니다.]{#package-dependencies-user-account explanation="계정 생성은 패키지 수명 주기 작업일 수 있지만 의존성 해결의 목적은 아닙니다."}
@@ -39,8 +38,7 @@ meta_keywords: "리눅스 패키지 의존성, 공유 라이브러리, 리눅스
 
 ELF 기반 리눅스 시스템에서 실행 파일은 SONAME 같은 필수 라이브러리 이름을 기록할 수 있습니다. 프로그램이 시작될 때 동적 링커는 일치하는 설치 라이브러리를 찾습니다. 패키지 메타데이터는 보통 이 요구 사항을 호환 라이브러리를 제공하는 패키지 또는 기능에 대한 의존성으로 표현합니다.
 
-:::single-choice{#package-dependencies-shared-library}
-공유 라이브러리란 무엇입니까?
+:::single-choice{#package-dependencies-shared-library} 공유 라이브러리란 무엇입니까?
 
 ::option[여러 프로그램이 불러와 사용할 수 있는 컴파일된 코드입니다.]{#package-dependencies-library-code .correct explanation="공유 라이브러리는 각 프로그램에 별도 구현을 내장하는 대신 재사용 가능한 바이너리 인터페이스를 제공합니다."}
 ::option[서로 관련 없는 배포판끼리 공유하는 저장소 목록입니다.]{#package-dependencies-shared-repository explanation="저장소 설정과 실행 가능한 라이브러리 코드는 서로 다른 개념입니다."}
@@ -53,8 +51,7 @@ ELF 기반 리눅스 시스템에서 실행 파일은 SONAME 같은 필수 라�
 
 패키지 유지 관리자는 라이브러리 관계를 인코딩하고 ABI가 변경될 때 전환 과정을 조정합니다. 네이티브 라이브러리는 패키지 관리자의 통제 아래 두십시오. 충돌하는 버전이 필요한 소프트웨어에는 지원되는 병렬 설치, 컨테이너, 환경 또는 빌드 메커니즘을 사용하십시오.
 
-:::single-choice{#package-dependencies-filename-insufficient}
-이름이 비슷한 라이브러리 파일이 있어도 프로그램이 실패할 수 있는 이유는 무엇입니까?
+:::single-choice{#package-dependencies-filename-insufficient} 이름이 비슷한 라이브러리 파일이 있어도 프로그램이 실패할 수 있는 이유는 무엇입니까?
 
 ::option[리눅스에서는 각 라이브러리를 실행 파일 하나만 사용할 수 있기 때문입니다.]{#package-dependencies-one-consumer explanation="공유 라이브러리의 핵심 목적은 여러 프로세스와 프로그램이 함께 사용하는 것입니다."}
 ::option[패키지 의존성은 시스템이 처음 부팅되기 전까지만 적용되기 때문입니다.]{#package-dependencies-boot-only explanation="의존성은 설치, 업그레이드 및 실행 전체 과정에서 계속 중요합니다."}
@@ -67,8 +64,7 @@ ELF 기반 리눅스 시스템에서 실행 파일은 SONAME 같은 필수 라�
 
 먼저 패키지 관리자의 진단을 읽고, 신뢰하는 저장소 메타데이터만 갱신하며, 보류되거나 핀으로 고정된 버전을 확인한 뒤 제안된 복구 내용을 검토하십시오. 저수준 패키지 설치 도구는 모든 의존성을 가져오지 않고도 아카이브를 풀 수 있습니다. 일반적인 설치에서는 전체 트랜잭션의 의존성을 해결하는 고수준 저장소 도구가 대체로 더 안전합니다.
 
-:::single-choice{#package-dependencies-low-level-limit}
-저수준 아카이브 도구로 로컬 패키지 하나를 설치할 때 흔한 한계는 무엇입니까?
+:::single-choice{#package-dependencies-low-level-limit} 저수준 아카이브 도구로 로컬 패키지 하나를 설치할 때 흔한 한계는 무엇입니까?
 
 ::option[누락된 저장소 의존성을 모두 가져와 해결하지 못할 수 있습니다.]{#package-dependencies-no-repository-resolution .correct explanation="저수준 도구는 패키지 아카이브와 데이터베이스를 관리하지만 의존성 가져오기는 고수준 관리자에 맡길 수 있습니다."}
 ::option[항상 리눅스 커널을 소스에서 다시 컴파일합니다.]{#package-dependencies-recompile-kernel explanation="패키지 아카이브를 설치한다고 해서 본질적으로 커널을 다시 빌드하지는 않습니다."}

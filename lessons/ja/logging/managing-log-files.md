@@ -16,8 +16,7 @@ meta_keywords: "logrotate, Linux ログ，ログ管理，ログローテーシ�
 
 一般的な rotation は、有効ファイルを rename し、代わりを作り、必要に応じてアプリケーションへ reopen を要求し、古い世代を圧縮し、retention を超えたファイルを削除します。これらの手順は設定に依存します。保持コピーも削除・破損し、同じホストとともに失われるため、rotation は backup ではありません。
 
-:::single-choice{#logrotate-not-backup}
-log rotation が backup や archival の代わりにならないのはなぜですか？
+:::single-choice{#logrotate-not-backup} log rotation が backup や archival の代わりにならないのはなぜですか？
 
 ::option[rotation 済みファイルもローカル retention とホスト障害の影響を受けるから。]{#logrotate-local-retention .correct explanation="rotation は作業ログの世代を制御しますが、独立した永続コピーは作りません。"}
 ::option[rotation が image file しか処理できないから。]{#logrotate-images explanation="この utility は主に log file を対象に設計されています。"}
@@ -42,8 +41,7 @@ main file は通常 `/etc/logrotate.conf` で、package または application sn
 
 これは daily evaluation、7 世代の retention、1 世代遅らせた compression、log が存在しないまたは空の場合の許容、明示的な mode と ownership の新規ファイルを要求します。実際の rotation は、記録された state と scheduler が logrotate を呼び出す方法にも依存します。
 
-:::single-choice{#logrotate-rotate-seven}
-`rotate 7` は何を指定しますか？
+:::single-choice{#logrotate-rotate-seven} `rotate 7` は何を指定しますか？
 
 ::option[policy の下で最大 7 世代の rotation 済みファイルを保持する。]{#logrotate-seven-generations .correct explanation="設定された retention を超えると、古い世代が削除されます。"}
 ::option[アプリケーションを一日 7 回実行する。]{#logrotate-run-seven explanation="この directive が制御するのは保持世代であり、アプリケーションの実行ではありません。"}
@@ -56,8 +54,7 @@ main file は通常 `/etc/logrotate.conf` で、package または application sn
 
 `copytruncate` はログを reopen できないアプリケーション向けに、ファイルをコピーして元ファイルをその場で truncate します。copy と truncate の間に write が失われたり重複したりする可能性があるため、普遍的に安全な default ではなく妥協策です。
 
-:::single-choice{#logrotate-open-descriptor}
-rotation 後にアプリケーションへ reopen signal が必要な場合があるのはなぜですか？
+:::single-choice{#logrotate-open-descriptor} rotation 後にアプリケーションへ reopen signal が必要な場合があるのはなぜですか？
 
 ::option[開いている descriptor が rename 済みファイルを参照し続けるから。]{#logrotate-descriptor-renamed .correct explanation="reopen すると、以後の write が新しく作られた有効パスを使います。"}
 ::option[compression が自動的に全アプリケーションプロセスを停止するから。]{#logrotate-compression-stops explanation="compression は writer の process lifecycle を自動管理しません。"}
@@ -74,8 +71,7 @@ $ sudo logrotate -d /etc/logrotate.conf
 
 debug 出力は、本番実行時に permission、script、free space、application reopen が成功することを証明しません。新しい rule は管理された環境でテストし、実行後に active file、rotated generation、ownership、compression、application output、logrotate status を確認します。`-f` は rotation を強制する状態変更オプションで、dry run と取り違えないでください。
 
-:::single-choice{#logrotate-debug-mode}
-`logrotate -d` から何が得られますか？
+:::single-choice{#logrotate-debug-mode} `logrotate -d` から何が得られますか？
 
 ::option[期限切れログすべての恒久的な削除。]{#logrotate-debug-delete explanation="debug mode は rotation を行わず、予定する判断を報告します。"}
 ::option[policy を無視した強制 production rotation。]{#logrotate-debug-force explanation="force option は状態を変更する `-f` です。"}
@@ -86,8 +82,7 @@ debug 出力は、本番実行時に permission、script、free space、applicat
 
 logrotate が管理するのは policy で指定した file です。systemd journal は独自の size と retention 設定を持ち、database と remote logging service にも別の lifecycle control があります。filesystem capacity と logging health を監視し、停止した writer や失敗した rotation を容量枯渇前に検出してください。
 
-:::single-choice{#logrotate-journal-retention}
-logrotate rule は systemd journal の retention も自動的に強制しますか？
+:::single-choice{#logrotate-journal-retention} logrotate rule は systemd journal の retention も自動的に強制しますか？
 
 ::option[いいえ。journal storage には独自の設定と上限があります。]{#logrotate-journal-separate .correct explanation="logrotate が管理するのは、file policy で選択したパスだけです。"}
 ::option[はい。全ログが一つの retention engine を共有するからです。]{#logrotate-all-logs explanation="file rotation と journal retention は別の仕組みです。"}

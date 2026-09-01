@@ -23,8 +23,7 @@ Disks presented through the SCSI disk layer commonly use `sd` names. This includ
 
 Letters reflect enumeration, not a durable identity. Adding a controller, changing firmware order, or attaching a device can change which disk receives a particular letter.
 
-:::single-choice{#device-names-sdb-first-partition}
-Under the `sd` naming pattern, which path denotes partition 1 on `/dev/sdb`?
+:::single-choice{#device-names-sdb-first-partition} Under the `sd` naming pattern, which path denotes partition 1 on `/dev/sdb`?
 
 ::option[`/dev/sda2`]{#device-names-sda-two explanation="This denotes partition 2 on the disk currently named `/dev/sda`."}
 ::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="The `p` separator is used by patterns whose base name already ends in a digit, not ordinary `sd` names."}
@@ -42,8 +41,7 @@ Some whole-device names already contain digits, so their partition names use `p`
 
 NVMe devices are not normally named `/dev/sdX`; they use the NVMe subsystem's naming convention.
 
-:::single-choice{#device-names-nvme-partition}
-Which path denotes partition 2 of `/dev/nvme0n1`?
+:::single-choice{#device-names-nvme-partition} Which path denotes partition 2 of `/dev/nvme0n1`?
 
 ::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="NVMe partition names insert `p` before the partition number."}
 ::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="Without a separator, the trailing digits would be ambiguous with the namespace number."}
@@ -60,8 +58,7 @@ Linux also creates block devices that do not map one-to-one to a physical disk:
 
 Partitions, encryption layers, RAID, logical volumes, and filesystems form a stack. Use tools such as `lsblk` to see parent-child relationships instead of inferring the stack from a name alone.
 
-:::single-choice{#device-names-device-mapper-link}
-Which location commonly provides descriptive links for device-mapper devices?
+:::single-choice{#device-names-device-mapper-link} Which location commonly provides descriptive links for device-mapper devices?
 
 ::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="Device-mapper users such as LVM and disk encryption commonly expose named links in this directory."}
 ::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null` is a character device, not a directory of mapped block devices."}
@@ -80,8 +77,7 @@ User-space device management creates links under `/dev/disk/`, commonly grouped 
 
 Choose an identifier that matches what must remain stable. A filesystem UUID identifies a filesystem, not necessarily the physical disk beneath it. Cloning a filesystem can duplicate its UUID, so verify uniqueness before relying on it.
 
-:::single-choice{#device-names-persistent-config}
-Why are `/dev/disk/by-id/` links often preferable to `/dev/sdX` in device-specific configuration?
+:::single-choice{#device-names-persistent-config} Why are `/dev/disk/by-id/` links often preferable to `/dev/sdX` in device-specific configuration?
 
 ::option[They make destructive writes automatically reversible.]{#device-names-by-id-reversible explanation="A stable name does not provide snapshots, backups, or write protection."}
 ::option[They convert a block device into a regular file.]{#device-names-by-id-regular explanation="The entry is a symbolic link that still resolves to a block device node."}
@@ -92,8 +88,7 @@ Why are `/dev/disk/by-id/` links often preferable to `/dev/sdX` in device-specif
 
 Names such as `/dev/null`, `/dev/zero`, and `/dev/urandom` describe kernel pseudo-devices rather than physical storage. `/dev/null` discards writes and returns end-of-file on reads; `/dev/zero` supplies zero bytes; `/dev/urandom` supplies bytes from the kernel random-number generator.
 
-:::single-choice{#device-names-zero-read}
-What does reading from `/dev/zero` produce?
+:::single-choice{#device-names-zero-read} What does reading from `/dev/zero` produce?
 
 ::option[A listing of unused storage devices.]{#device-names-zero-storage-list explanation="It is a byte-producing character device, not a discovery command."}
 ::option[A stream of zero-valued bytes.]{#device-names-zero-bytes .correct explanation="The zero pseudo-device returns null bytes for requested reads."}

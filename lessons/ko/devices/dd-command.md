@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd`는 블록을 복사하며 본질적으로 한 번에 한 바이트씩 복사하는 것은 아닙니다. `bs`를 크게 하면 시스템 호출 오버헤드를 줄일 수 있지만 최적값은 장치, 정렬, 캐싱 및 작업 부하에 따라 달라집니다. 복사되는 논리 데이터 자체는 바뀌지 않습니다.
 
-:::single-choice{#dd-command-output-operand}
-`dd`가 기록할 대상을 선택하는 피연산자는 무엇입니까?
+:::single-choice{#dd-command-output-operand} `dd`가 기록할 대상을 선택하는 피연산자는 무엇입니까?
 
 ::option[`if=`]{#dd-command-input-file explanation="`if`는 입력 소스를 식별합니다."}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of`는 복사된 데이터를 받을 출력 스트림 또는 파일의 이름을 지정합니다."}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 이 명령은 각각 최대 1 MiB인 입력 블록 두 개를 요청하므로 최대 2 MiB를 복사합니다. 파이프 같은 스트림에서는 짧은 읽기 때문에 단순한 곱셈 결과와 달라질 수 있습니다. 완전한 입력 블록이 필요할 때 GNU `dd`는 `iflag=fullblock`을 제공합니다. 바이너리 단위와 접미사 구문은 로컬 구현에 따라 구분하십시오.
 
-:::single-choice{#dd-command-count-result}
-일반 파일에서 `bs=1M count=2`가 요청하는 최대 크기는 얼마입니까?
+:::single-choice{#dd-command-count-result} 일반 파일에서 `bs=1M count=2`가 요청하는 최대 크기는 얼마입니까?
 
 ::option[1 MiB입니다.]{#dd-command-one-mib explanation="선택한 크기의 블록 하나에 해당합니다."}
 ::option[2 MiB입니다.]{#dd-command-two-mib .correct explanation="입력 블록 두 개에 블록당 1 MiB를 곱하면 최대 2 MiB입니다."}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 출력 장치는 시작 부분부터 덮어씁니다. `if`와 `of`를 뒤바꾸거나, 시스템 디스크를 선택하거나, 파티션을 의도했는데 전체 디스크를 사용하면 확인 메시지 없이 데이터가 파괴될 수 있습니다.
 
-:::single-choice{#dd-command-target-verification}
-원시 장치에 쓰기 전에 모델, 일련번호, 크기 및 사용 상태를 확인해야 하는 가장 중요한 이유는 무엇입니까?
+:::single-choice{#dd-command-target-verification} 원시 장치에 쓰기 전에 모델, 일련번호, 크기 및 사용 상태를 확인해야 하는 가장 중요한 이유는 무엇입니까?
 
 ::option[장치 문자는 바뀔 수 있고 `dd`는 내용의 의미를 모른 채 선택된 대상을 덮어쓰기 때문입니다.]{#dd-command-target-can-change .correct explanation="식별 정보와 사용 상태를 확인하면 다른 디스크나 활성 저장 장치 스택을 파괴할 위험을 줄일 수 있습니다."}
 ::option[파일 시스템 레이블이 이미지와 일치하지 않으면 `dd`가 쓰기를 거부하기 때문입니다.]{#dd-command-label-check explanation="이 도구에는 그러한 파일 시스템 인식 안전 검사가 없습니다."}
@@ -85,8 +82,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 원시 장치 이미지는 파일 시스템 메타데이터와 사용되지 않는 영역을 포함해 블록을 복사하므로 파일 수준 백업보다 훨씬 클 수 있습니다. 또한 원본과 함께 복제본을 마운트하기 전에 변경해야 하는 식별자를 그대로 복제할 수 있습니다.
 
-:::single-choice{#dd-command-live-filesystem-image}
-마운트되어 변경 중인 파일 시스템을 이미지로 만들면 신뢰하기 어려운 이유는 무엇입니까?
+:::single-choice{#dd-command-live-filesystem-image} 마운트되어 변경 중인 파일 시스템을 이미지로 만들면 신뢰하기 어려운 이유는 무엇입니까?
 
 ::option[마운트된 파일 시스템에서는 블록 장치를 절대 읽을 수 없기 때문입니다.]{#dd-command-mounted-no-read explanation="원시 읽기가 가능할 수 있으므로 일관성을 가정하지 말고 계획해야 합니다."}
 ::option[서로 다른 블록이 파일 시스템 상태의 서로 다른 시점에서 읽힐 수 있기 때문입니다.]{#dd-command-inconsistent-moments .correct explanation="동시 변경 때문에 수집한 블록 이미지가 일관된 단일 시점을 나타내지 못할 수 있습니다."}
@@ -99,8 +95,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 SSD, 플래시 변환 계층, 씬 프로비저닝 저장 장치, 스냅샷 또는 재매핑된 섹터에서 `dd` 덮어쓰기 패스를 보장된 보안 삭제 방법으로 소개하지 마십시오. 장치와 플랫폼이 지원하는 삭제 기능을 명시적인 데이터 폐기 정책과 함께 사용하십시오.
 
-:::single-choice{#dd-command-success-meaning}
-`dd`의 종료 상태가 0이라는 사실만으로 증명할 수 없는 것은 무엇입니까?
+:::single-choice{#dd-command-success-meaning} `dd`의 종료 상태가 0이라는 사실만으로 증명할 수 없는 것은 무엇입니까?
 
 ::option[명령이 제공된 모든 피연산자를 구문 분석했다는 사실입니다.]{#dd-command-parsed-operands explanation="잘못된 피연산자는 보통 성공적인 완료가 아니라 오류를 일으킵니다."}
 ::option[작업자가 의도한 소스와 대상을 선택했다는 사실입니다.]{#dd-command-does-not-prove-intent .correct explanation="도구는 작업자의 의도를 추론할 수 없으므로 잘못된 대상에도 성공적으로 복사할 수 있습니다."}

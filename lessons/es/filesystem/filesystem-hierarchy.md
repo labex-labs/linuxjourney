@@ -26,8 +26,7 @@ $ ls -ld /*
 
 Muchas distribuciones actuales utilizan un diseño `/usr` fusionado en el que `/bin`, `/sbin` y `/lib` son enlaces simbólicos a los directorios correspondientes bajo `/usr`. Utiliza el descubrimiento de órdenes y los registros de paquetes en vez de suponer si una ruta es un directorio físico o un enlace.
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-¿Qué directorio contiene convencionalmente la configuración del sistema específica del equipo?
+:::single-choice{#filesystem-hierarchy-configuration-directory} ¿Qué directorio contiene convencionalmente la configuración del sistema específica del equipo?
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="Procfs presenta interfaces activas de procesos y del kernel, no archivos persistentes de configuración del equipo."}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="La configuración del sistema y de los servicios se organiza convencionalmente bajo `/etc`."}
@@ -42,8 +41,7 @@ Muchas distribuciones actuales utilizan un diseño `/usr` fusionado en el que `/
 
 A pesar de su nombre, `/usr` no es el lugar donde suelen residir los archivos personales de cada usuario. Los gestores de paquetes de las distribuciones suelen ser propietarios de gran parte de su contenido, por lo que copiar archivos compilados localmente en `/usr/bin` puede entrar en conflicto con paquetes gestionados.
 
-:::single-choice{#filesystem-hierarchy-local-software}
-¿Qué prefijo se reserva convencionalmente para software instalado localmente fuera del contenido de `/usr` gestionado por la distribución?
+:::single-choice{#filesystem-hierarchy-local-software} ¿Qué prefijo se reserva convencionalmente para software instalado localmente fuera del contenido de `/usr` gestionado por la distribución?
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="La jerarquía local separa el software instalado por el administrador del árbol `/usr` principal de la distribución."}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="Procfs es una interfaz virtual del kernel, no un prefijo persistente de software."}
@@ -58,8 +56,7 @@ A pesar de su nombre, `/usr` no es el lugar donde suelen residir los archivos pe
 
 Una ruta personal procede de la información de la cuenta, no simplemente de unir `/home` con un nombre de usuario. Utiliza `getent passwd USER` o el directorio personal resuelto por el shell en vez de codificar supuestos.
 
-:::single-choice{#filesystem-hierarchy-root-home}
-¿Cuál es el directorio personal convencional de la cuenta root?
+:::single-choice{#filesystem-hierarchy-root-home} ¿Cuál es el directorio personal convencional de la cuenta root?
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="Los directorios personales ordinarios suelen aparecer bajo `/home`, pero root tiene una ruta convencional distinta."}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="El directorio personal de la cuenta privilegiada se sitúa convencionalmente directamente bajo la raíz del sistema de archivos."}
@@ -75,8 +72,7 @@ Una ruta personal procede de la información de la cuenta, no simplemente de uni
 
 La política de limpieza de `/tmp` varía; no supongas que los archivos persisten hasta el reinicio ni que siempre se eliminan al reiniciar. Las aplicaciones deben crear archivos temporales de forma segura en vez de utilizar nombres predecibles.
 
-:::single-choice{#filesystem-hierarchy-log-path}
-¿Qué ruta almacena convencionalmente archivos de registro del sistema?
+:::single-choice{#filesystem-hierarchy-log-path} ¿Qué ruta almacena convencionalmente archivos de registro del sistema?
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` contiene configuración, no datos ordinarios de registros que se acumulan."}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="Los registros son una categoría de datos cambiantes del sistema organizada bajo la jerarquía de datos variables."}
@@ -93,8 +89,7 @@ La política de limpieza de `/tmp` varía; no supongas que los archivos persiste
 
 Son convenciones, no concesiones de permisos. Montar otro sistema de archivos sobre un directorio no vacío oculta temporalmente el contenido anterior del directorio hasta que se desmonta.
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-¿Qué ruta expone normalmente el modelo de dispositivos del kernel mediante sysfs?
+:::single-choice{#filesystem-hierarchy-sysfs-path} ¿Qué ruta expone normalmente el modelo de dispositivos del kernel mediante sysfs?
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` está destinado a los datos servidos por el sistema."}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="Sysfs se monta convencionalmente en `/sys` y presenta dispositivos, controladores, buses y atributos."}

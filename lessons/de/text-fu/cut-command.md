@@ -44,8 +44,7 @@ bb
 
 Leerzeichen, Tabulatoren und Satzzeichen belegen ebenfalls Positionen. `cut` verarbeitet jede Zeile unabhängig.
 
-:::single-choice{#cut-first-character}
-Welcher Befehl gibt das erste Zeichen jeder Zeile von `names.txt` aus?
+:::single-choice{#cut-first-character} Welcher Befehl gibt das erste Zeichen jeder Zeile von `names.txt` aus?
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="Die Option `-c` wählt Zeichenpositionen aus; Position 1 ist das erste Zeichen jeder Zeile."}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="Die Option `-f` wählt das erste tabulatorgetrennte Feld aus, das mehr als ein Zeichen enthalten kann."}
@@ -65,8 +64,7 @@ viewer
 
 Wie bei der Zeichenauswahl kann eine Liste Werte wie `1`, `1,3`, `2-4`, `-3` oder `2-` enthalten.
 
-:::single-choice{#cut-second-tab-field}
-Welcher Befehl gibt das zweite tabulatorgetrennte Feld jeder Zeile von `team.tsv` aus?
+:::single-choice{#cut-second-tab-field} Welcher Befehl gibt das zweite tabulatorgetrennte Feld jeder Zeile von `team.tsv` aus?
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="Damit wird aus jeder Zeile die zweite Zeichenposition ausgewählt, nicht das zweite tabulatorgetrennte Feld."}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="Ohne `-d` verwendet der Feldmodus einen Tabulator als Trennzeichen; `-f 2` wählt das zweite Feld."}
@@ -86,8 +84,7 @@ bob
 
 Das Trennzeichen dieser Form besteht aus einem Zeichen. Setze `;` in Anführungszeichen, weil ein ungeschütztes Semikolon in der Shell eine Steuerbedeutung besitzt.
 
-:::single-choice{#cut-semicolon-role-field}
-Welcher Befehl gibt das zweite semikolongetrennte Feld von `team.txt` aus?
+:::single-choice{#cut-semicolon-role-field} Welcher Befehl gibt das zweite semikolongetrennte Feld von `team.txt` aus?
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="Dieser Befehl wählt durch Doppelpunkte getrennte Felder aus; die Datei verwendet jedoch Semikolons."}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="Das geschützte Semikolon legt das Trennzeichen fest; `-f 2` wählt das zweite Feld jeder Zeile aus."}
@@ -106,8 +103,7 @@ viewer
 
 Damit wird keine allgemeine CSV-Datei ausgewertet. CSV kann geschützte Trennzeichen, eingebettete Zeilenumbrüche und Maskierungsregeln enthalten, die eine Aufteilung an einem einzelnen Zeichen nicht versteht. Verwende für solche Daten ein CSV-fähiges Werkzeug.
 
-:::single-choice{#cut-suppress-undelimited}
-Was bewirkt `-s` bei `cut -d ':' -f 1`?
+:::single-choice{#cut-suppress-undelimited} Was bewirkt `-s` bei `cut -d ':' -f 1`?
 
 ::option[Die ausgewählten Felder werden vor der Ausgabe sortiert.]{#cut-s-sort explanation="`cut` sortiert seine Eingabe nicht; `-s` hat nichts mit der Reihenfolge zu tun."}
 ::option[Aufeinanderfolgende Trennzeichen werden als ein Trennzeichen behandelt.]{#cut-s-squeeze explanation="`cut` verwendet `-s` nicht zum Zusammenfassen von Trennzeichen. Leere Felder bleiben eigenständige Positionen."}
@@ -124,8 +120,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-Woher liest `cut` in `generate-data | cut -d ':' -f 1` seine Eingabe?
+:::single-choice{#cut-pipeline-input} Woher liest `cut` in `generate-data | cut -d ':' -f 1` seine Eingabe?
 
 ::option[Über die Pipe aus stdout von `generate-data`.]{#cut-pipe-stdin .correct explanation="Die Pipe verbindet stdout des Erzeugers mit stdin von `cut`; eine separate Eingabedatei ist nicht benannt."}
 ::option[Aus einer Datei mit dem wörtlichen Namen `generate-data`.]{#cut-pipe-file explanation="`generate-data` wird als linker Pipeline-Befehl ausgeführt und nicht als Dateiname an `cut` übergeben."}

@@ -24,8 +24,7 @@ O Emacs verifica os buffers modificados relevantes associados a arquivos e pergu
 
 Em um fluxo com `emacsclient` ou um servidor do Emacs, o comportamento exato do frame e do servidor pode variar, mas as perguntas sobre buffers modificados continuam merecendo atenção.
 
-:::single-choice{#emacs-exit-key}
-Qual sequência de teclas solicita uma saída normal do Emacs e verifica os buffers modificados?
+:::single-choice{#emacs-exit-key} Qual sequência de teclas solicita uma saída normal do Emacs e verifica os buffers modificados?
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="Essa sequência encerra um buffer selecionado e não solicita a saída da sessão do Emacs."}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="Essa tecla cancela um comando ou uma pergunta pendente, em vez de fechar o Emacs."}
@@ -42,8 +41,7 @@ C-h C-h
 
 A segunda tecla escolhe o tipo de ajuda necessária.
 
-:::single-choice{#emacs-help-for-help}
-Qual sequência de teclas explica como usar o sistema de ajuda do Emacs?
+:::single-choice{#emacs-help-for-help} Qual sequência de teclas explica como usar o sistema de ajuda do Emacs?
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="O prefixo de ajuda seguido de outro `C-h` abre a explicação do próprio seletor de ajuda."}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="Essa não é a sequência de ajuda sobre a ajuda apresentada aqui."}
@@ -62,8 +60,7 @@ Alguns comandos úteis de ajuda são:
 
 Por exemplo, digite `C-h k C-x C-s` para ver a documentação da associação de `save-buffer`.
 
-:::single-choice{#emacs-describe-key}
-Você quer descobrir o que `C-x C-s` faz. Qual prefixo de ajuda deve inserir antes dessa sequência?
+:::single-choice{#emacs-describe-key} Você quer descobrir o que `C-x C-s` faz. Qual prefixo de ajuda deve inserir antes dessa sequência?
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key` aguarda uma sequência e explica o comando associado a ela."}
 ::option[`C-h f`]{#emacs-describe-function explanation="Essa forma solicita um nome de função, em vez de ler uma sequência para identificar sua associação."}
@@ -80,8 +77,7 @@ C-g
 
 Ele não desfaz alterações do buffer que já ocorreram nem sai do Emacs. Ele interrompe a interação atual e devolve o controle à edição comum quando possível.
 
-:::single-choice{#emacs-cancel-pending-command}
-Qual tecla normalmente cancela a pergunta ou o comando pendente atual do Emacs?
+:::single-choice{#emacs-cancel-pending-command} Qual tecla normalmente cancela a pergunta ou o comando pendente atual do Emacs?
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="Essa sequência inicia o fluxo de saída do Emacs, em vez de apenas cancelar a pergunta atual."}
 ::option[`C-y`]{#emacs-cancel-yank explanation="Essa tecla cola texto do kill ring e não cancela um comando."}
@@ -98,8 +94,7 @@ C-/
 
 Comandos repetidos de desfazer percorrem para trás as alterações recentes do buffer. O movimento do cursor por si só normalmente não é uma alteração. Versões e configurações do Emacs podem oferecer `undo-redo` e ferramentas de histórico mais avançadas; use `C-h k` nas associações reais de desfazer e refazer para verificar o comportamento local.
 
-:::single-choice{#emacs-undo-change}
-Qual sequência é uma associação padrão para desfazer uma alteração recente do buffer no Emacs?
+:::single-choice{#emacs-undo-change} Qual sequência é uma associação padrão para desfazer uma alteração recente do buffer no Emacs?
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/` é uma associação padrão para desfazer, junto com `C-_` e `C-x u` em configurações comuns."}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="Essa sequência salva o buffer atual, não percorre seu histórico de desfazer."}

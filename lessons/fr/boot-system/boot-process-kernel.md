@@ -24,8 +24,7 @@ Un système de fichiers racine simple peut parfois être monté grâce aux pilot
 
 Un initramfs rassemble ces composants dans un environnement précoce en espace utilisateur fourni avec le noyau.
 
-:::single-choice{#boot-kernel-initramfs-purpose}
-Quel problème un initramfs résout-il couramment ?
+:::single-choice{#boot-kernel-initramfs-purpose} Quel problème un initramfs résout-il couramment ?
 
 ::option[Il fournit les premiers outils et modules nécessaires avant que la véritable racine soit disponible.]{#boot-kernel-early-tools .correct explanation="L'espace utilisateur précoce peut découvrir et assembler un stockage auquel le noyau ne peut pas accéder avec sa seule prise en charge intégrée."}
 ::option[Il stocke définitivement dans le micrologiciel le répertoire personnel de chaque utilisateur.]{#boot-kernel-home-firmware explanation="Cette archive est un artefact de démarrage, pas un stockage permanent de données utilisateur."}
@@ -40,8 +39,7 @@ Un ancien initrd est conceptuellement une image de système de fichiers chargée
 
 L'initramfs doit correspondre au noyau et à la conception du démarrage. Des modules absents, des identifiants de périphériques obsolètes ou l'omission des outils cryptographiques et LVM peuvent rendre un nouveau noyau impossible à démarrer, même si son image est valide.
 
-:::single-choice{#boot-kernel-initramfs-format}
-Sous quelle forme un initramfs moderne est-il généralement présenté au noyau ?
+:::single-choice{#boot-kernel-initramfs-format} Sous quelle forme un initramfs moderne est-il généralement présenté au noyau ?
 
 ::option[Comme un dépôt de paquets interactif accessible uniquement par HTTP.]{#boot-kernel-http-repository explanation="Le réseau peut être configuré dans l'espace utilisateur précoce, mais il ne définit pas le format de l'initramfs."}
 ::option[Comme une archive fondée sur cpio, extraite dans la racine initiale.]{#boot-kernel-cpio-archive .correct explanation="Le noyau développe l'archive et exécute son programme d'initialisation précoce en espace utilisateur."}
@@ -54,8 +52,7 @@ L'espace utilisateur précoce interprète des paramètres comme `root=`, attend 
 
 La demande initiale `ro` de la ligne de commande peut faciliter les contrôles de cohérence et un démarrage maîtrisé, mais la séquence exacte dépend de la distribution. Les vérifications de systèmes de fichiers sont des opérations de l'espace utilisateur ; l'initramfs ou le système init ultérieur peut remonter la racine en lecture-écriture si la politique l'autorise.
 
-:::single-choice{#boot-kernel-root-switch}
-Que se passe-t-il après le montage réussi de la véritable racine par l'espace utilisateur précoce ?
+:::single-choice{#boot-kernel-root-switch} Que se passe-t-il après le montage réussi de la véritable racine par l'espace utilisateur précoce ?
 
 ::option[La table de partitions de chaque disque est recréée.]{#boot-kernel-recreate-tables explanation="Le changement de racine ne repartitionne pas le stockage."}
 ::option[Le noyau s'arrête et le micrologiciel reprend l'ordonnancement des processus.]{#boot-kernel-firmware-schedules explanation="Le noyau Linux reste responsable des processus et du matériel après le passage de relais."}
@@ -68,8 +65,7 @@ Le noyau exécute le programme init configuré, normalement atteint par un chemi
 
 Si aucun programme init utilisable ne peut être exécuté, le noyau ne peut pas atteindre un système normal en espace utilisateur et signale généralement un échec du démarrage ou une panique. Déboguez la première couche qui échoue : noyau et ligne de commande, contenu de l'initramfs, découverte ou montage de la racine, puis exécution du PID 1.
 
-:::single-choice{#boot-kernel-pid-one}
-Quel est le dernier grand passage de relais du noyau dans cette étape simplifiée du démarrage ?
+:::single-choice{#boot-kernel-pid-one} Quel est le dernier grand passage de relais du noyau dans cette étape simplifiée du démarrage ?
 
 ::option[Exécuter le premier programme de l'espace utilisateur avec le PID 1.]{#boot-kernel-exec-init .correct explanation="Le PID 1 lance ensuite les services et l'état configuré du système."}
 ::option[Transformer `/proc` en base persistante de paquets.]{#boot-kernel-proc-package explanation="Procfs reste une interface d'exécution du noyau."}

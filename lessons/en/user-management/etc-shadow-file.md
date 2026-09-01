@@ -18,8 +18,7 @@ Passwords are not stored reversibly “encrypted” for later display. A local p
 
 Exact ownership and permission details vary, but access is commonly limited to root and narrowly authorized system components. Do not print, copy, log, or share shadow contents merely to inspect account status.
 
-:::single-choice{#shadow-restricted-reason}
-Why is local shadow data normally protected from general read access?
+:::single-choice{#shadow-restricted-reason} Why is local shadow data normally protected from general read access?
 
 ::option[The file contains every user's unencrypted current password.]{#shadow-plaintext-passwords explanation="Proper shadow entries store one-way password hashes or special markers, not retrievable plaintext passwords."}
 ::option[Password hashes can be attacked offline if they are disclosed.]{#shadow-offline-guessing .correct explanation="An attacker can test password guesses against stolen hashes without interacting with the login service."}
@@ -48,8 +47,7 @@ The fields are:
 
 Empty fields and special numeric values have defined meanings that can vary by field and tooling. Use account-management commands instead of editing values by sight.
 
-:::single-choice{#shadow-account-expiration-field}
-Which shadow field stores the account expiration date as days since 1970-01-01?
+:::single-choice{#shadow-account-expiration-field} Which shadow field stores the account expiration date as days since 1970-01-01?
 
 ::option[Field 3]{#shadow-field-three explanation="Field 3 records the last password-change date rather than account expiration."}
 ::option[Field 8]{#shadow-field-eight .correct explanation="The eighth field is the absolute account-expiration day count."}
@@ -62,8 +60,7 @@ A valid hash in field 2 supports local Unix-password verification. A value begin
 
 These markers describe the local password path, not every possible authentication method. SSH public keys, certificates, tokens, and application-specific credentials can remain usable unless separately restricted. Account expiration in field 8 is also distinct from password locking.
 
-:::single-choice{#shadow-password-lock-scope}
-What can you safely conclude from a shadow password field that begins with `!`?
+:::single-choice{#shadow-password-lock-scope} What can you safely conclude from a shadow password field that begins with `!`?
 
 ::option[The stored Unix password hash has been made unusable for normal password verification.]{#shadow-password-locked .correct explanation="Prefixing the hash with `!` prevents it from matching a supplied password through the shadow password path."}
 ::option[Every possible login method for the account is disabled.]{#shadow-all-login-disabled explanation="Other authentication methods can be independent, so the password marker alone does not prove a complete account lockout."}
@@ -76,8 +73,7 @@ Fields 3 through 7 concern password aging: when the password last changed, when 
 
 For example, a 90-day maximum password age is not the same as an account expiration date. The former moves relative to the last password change; the latter is a fixed date until an administrator changes it.
 
-:::single-choice{#shadow-max-age-versus-expire}
-What is the difference between shadow fields 5 and 8?
+:::single-choice{#shadow-max-age-versus-expire} What is the difference between shadow fields 5 and 8?
 
 ::option[Field 5 stores the username; field 8 stores the login shell.]{#shadow-username-shell explanation="Username is field 1, and the login shell is recorded in `/etc/passwd`, not the shadow record."}
 ::option[Field 5 stores a password hash; field 8 stores its salt.]{#shadow-hash-salt explanation="The password hash encoding belongs in field 2, and aging fields do not separately store its salt."}
@@ -97,8 +93,7 @@ $ sudo chage -l alice
 
 Use `passwd`, `chage`, `usermod`, and related account tools for changes. If manual repair of the local shadow database is unavoidable, `vipw -s` provides locking; validate account databases with `pwck`. Maintain a recovery session before remote authentication changes.
 
-:::single-choice{#shadow-list-aging-policy}
-Which command is designed to list readable password-aging information for the local account `alice`?
+:::single-choice{#shadow-list-aging-policy} Which command is designed to list readable password-aging information for the local account `alice`?
 
 ::option[`cat /etc/shadow`]{#shadow-cat-entire-file explanation="This exposes every local shadow record and more sensitive information than the task requires."}
 ::option[`passwd -d alice`]{#shadow-passwd-delete explanation="The `-d` operation removes the password hash and is a state-changing, security-sensitive action rather than a listing command."}

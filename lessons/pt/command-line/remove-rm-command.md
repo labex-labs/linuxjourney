@@ -32,8 +32,7 @@ $ rm notes.txt old-report.txt draft.md
 
 Verifique a grafia e a localização antes de pressionar Enter. Um backup ou uma cópia no controle de versão oferece um plano de recuperação mais confiável do que ferramentas de recuperação do sistema de arquivos após a exclusão.
 
-:::single-choice{#remove-one-file}
-Depois de confirmar o destino, qual comando remove o arquivo `old-report.txt`?
+:::single-choice{#remove-one-file} Depois de confirmar o destino, qual comando remove o arquivo `old-report.txt`?
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` remove a entrada de arquivo indicada. Normalmente, a operação não coloca o arquivo em uma lixeira."}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` atua em diretórios vazios, não em arquivos comuns. Ele não é o comando para este destino."}
@@ -58,8 +57,7 @@ $ rm *.tmp
 
 O shell expande o padrão antes que `rm` seja iniciado. Se a visualização incluir um arquivo inesperado, corrija o padrão em vez de prosseguir.
 
-:::single-choice{#preview-removal-pattern}
-Você pretende remover `*.tmp`. Qual comando mostra primeiro, sem excluí-los, os caminhos não ocultos selecionados pelo padrão?
+:::single-choice{#preview-removal-pattern} Você pretende remover `*.tmp`. Qual comando mostra primeiro, sem excluí-los, os caminhos não ocultos selecionados pelo padrão?
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="O modo detalhado informa as remoções enquanto elas acontecem. Ele ainda exclui os arquivos correspondentes e não é uma visualização somente para leitura."}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="As aspas impedem a expansão do curinga; portanto, esse comando procura um nome literal com `*`, em vez de mostrar os destinos pretendidos."}
@@ -77,8 +75,7 @@ rm: remove regular file 'important.txt'? y
 
 A opção `-I` é uma salvaguarda menos intrusiva no GNU `rm`: ela pergunta uma vez quando um comando removeria mais de três arquivos ou atuaria recursivamente.
 
-:::single-choice{#confirm-each-removal}
-Qual comando solicita confirmação antes de remover cada arquivo indicado?
+:::single-choice{#confirm-each-removal} Qual comando solicita confirmação antes de remover cada arquivo indicado?
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="A opção `-i` pergunta antes de cada remoção, oferecendo a oportunidade de rejeitar a operação."}
 ::option[`rm -f important.txt`]{#force-important explanation="A opção `-f` suprime perguntas e ignora um operando ausente. Ela elimina, em vez de acrescentar, a confirmação."}
@@ -118,8 +115,7 @@ $ rmdir empty-directory
 
 `rmdir` falha quando o diretório não está vazio, protegendo seu conteúdo contra uma exclusão recursiva.
 
-:::single-choice{#remove-empty-directory-only}
-Qual comando remove `old-cache/` somente se esse diretório estiver vazio?
+:::single-choice{#remove-empty-directory-only} Qual comando remove `old-cache/` somente se esse diretório estiver vazio?
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="`rm` recursivo remove o diretório e seu conteúdo. Ele não impõe a condição de diretório vazio."}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` só tem sucesso para um diretório vazio; portanto, ele não exclui recursivamente os arquivos contidos."}
@@ -152,8 +148,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-Depois de verificar o destino completo, qual comando remove `old-project/` e tudo abaixo dele sem suprimir as perguntas normais?
+:::single-choice{#remove-nonempty-tree} Depois de verificar o destino completo, qual comando remove `old-project/` e tudo abaixo dele sem suprimir as perguntas normais?
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="`rm` sem opção recursiva não entra em um diretório. Ele não consegue remover uma árvore não vazia."}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="A opção `-r` remove recursivamente a árvore de diretórios. Ao contrário de `rm -rf`, essa forma não acrescenta `-f` para suprimir perguntas."}

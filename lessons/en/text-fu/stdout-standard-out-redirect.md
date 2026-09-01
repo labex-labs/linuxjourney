@@ -23,8 +23,7 @@ Hello World
 
 Stdout is file descriptor `1`, a number that becomes useful when you redirect more than one stream. Programs can also have standard input, or stdin, and standard error, or stderr; the next lessons examine those streams.
 
-:::single-choice{#stdout-default-destination}
-Without redirection, where does `echo Hello World` normally send its regular output in an interactive terminal?
+:::single-choice{#stdout-default-destination} Without redirection, where does `echo Hello World` normally send its regular output in an interactive terminal?
 
 ::option[To a file named `stdout` in the current directory.]{#stdout-file explanation="Standard output is a stream, not an automatically created file named `stdout`. A file is used only when you redirect to one."}
 ::option[To the terminal through standard output.]{#stdout-terminal .correct explanation="The shell normally connects a command's stdout to the terminal, so `echo` is displayed there."}
@@ -48,8 +47,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-`notes.txt` already contains text. What does `echo new > notes.txt` do?
+:::single-choice{#stdout-replace-file} `notes.txt` already contains text. What does `echo new > notes.txt` do?
 
 ::option[It replaces the file's contents with `new`.]{#stdout-replace-existing .correct explanation="The shell truncates the existing destination for `>` and directs `echo` output into the now-empty file."}
 ::option[It adds `new` after the existing text.]{#stdout-add-existing explanation="Appending requires `>>`. A single `>` does not preserve the destination's previous contents."}
@@ -71,8 +69,7 @@ Another line
 
 Like `>`, `>>` creates a missing destination. The difference is how an existing file is opened: `>>` appends instead of truncating.
 
-:::single-choice{#stdout-append-file}
-Which command adds `Finished` to the end of `status.log` without erasing existing content?
+:::single-choice{#stdout-append-file} Which command adds `Finished` to the end of `status.log` without erasing existing content?
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="A single `>` truncates an existing destination before writing. It would erase the earlier log content."}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`echo` produces the text, and `>>` appends that stdout to the destination file."}
@@ -90,8 +87,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-Who normally interprets `>` in `pwd > current-directory.txt`?
+:::single-choice{#stdout-shell-role} Who normally interprets `>` in `pwd > current-directory.txt`?
 
 ::option[The `pwd` command after receiving `>` as an argument.]{#stdout-pwd-redirection explanation="The shell consumes the redirection syntax, so `pwd` normally does not receive `>` or the destination as ordinary arguments."}
 ::option[The Bash shell before it starts `pwd`.]{#stdout-bash-redirection .correct explanation="Bash opens the destination and connects file descriptor 1 before executing the command."}

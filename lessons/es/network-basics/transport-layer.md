@@ -16,8 +16,7 @@ La capa de transporte conecta los puntos finales de las aplicaciones a través d
 
 Un puerto de destino ayuda al sistema operativo a entregar el tráfico a un socket a la escucha. Una conexión o un flujo se identifica mediante algo más que un puerto: importan el protocolo, las direcciones de origen y destino y los puertos de origen y destino. Por tanto, un mismo puerto de servidor puede atender simultáneamente a muchos clientes.
 
-:::single-choice{#transport-layer-many-clients}
-¿Cómo puede un único puerto de servidor TCP atender a varios clientes a la vez?
+:::single-choice{#transport-layer-many-clients} ¿Cómo puede un único puerto de servidor TCP atender a varios clientes a la vez?
 
 ::option[Cada conexión tiene una combinación distinta de direcciones y puertos de sus puntos finales.]{#transport-layer-connection-tuple .correct explanation="La tupla completa de transporte distingue las conexiones simultáneas que comparten un puerto a la escucha."}
 ::option[El servidor cambia permanentemente el nombre de su puerto después de cada paquete.]{#transport-layer-renames-port explanation="El puerto a la escucha puede permanecer estable mientras las conexiones aceptadas tienen tuplas de pares distintas."}
@@ -30,8 +29,7 @@ TCP proporciona un flujo de bytes ordenado y fiable mientras la conexión siga s
 
 Fiabilidad no significa entrega absoluta. Una conexión puede agotar su tiempo de espera, restablecerse o fallar, y una confirmación no demuestra que una aplicación haya guardado los datos de forma duradera.
 
-:::single-choice{#transport-layer-tcp-boundaries}
-¿Qué ocurre con los límites de los mensajes de una aplicación en TCP?
+:::single-choice{#transport-layer-tcp-boundaries} ¿Qué ocurre con los límites de los mensajes de una aplicación en TCP?
 
 ::option[TCP expone un flujo de bytes ordenado sin conservar los límites de las escrituras.]{#transport-layer-byte-stream .correct explanation="El protocolo de aplicación debe definir cómo se delimitan o dimensionan los mensajes."}
 ::option[Cada escritura se convierte exactamente en un paquete IP y una lectura.]{#transport-layer-one-write-packet explanation="La segmentación, el almacenamiento en búfer y las API de recepción no conservan esa correspondencia."}
@@ -48,8 +46,7 @@ Una conexión TCP normal comienza con un intercambio de tres pasos:
 
 Esto establece el estado de transporte en ambos puntos finales. No autentica al servidor de la aplicación ni demuestra que la operación solicitada a la aplicación vaya a tener éxito.
 
-:::single-choice{#transport-layer-handshake-order}
-¿Cuál es el orden normal del intercambio TCP de tres pasos?
+:::single-choice{#transport-layer-handshake-order} ¿Cuál es el orden normal del intercambio TCP de tres pasos?
 
 ::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="El intercambio sincroniza y confirma el estado inicial de la conexión en ambas direcciones."}
 ::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="El iniciador solicita primero la sincronización."}
@@ -60,8 +57,7 @@ Esto establece el estado de transporte en ambos puntos finales. No autentica al 
 
 UDP conserva los límites de los datagramas y proporciona detección de errores mediante sumas de comprobación, pero no ofrece el estado de conexión, el orden, la retransmisión, el control de flujo ni el control de congestión de TCP. Una aplicación puede añadir por sí misma la fiabilidad o el comportamiento de congestión que necesite. UDP no es automáticamente más rápido; el rendimiento depende del diseño del protocolo, la carga de trabajo, la ruta y la implementación.
 
-:::single-choice{#transport-layer-udp-boundaries}
-¿Qué propiedad ofrece UDP a las aplicaciones?
+:::single-choice{#transport-layer-udp-boundaries} ¿Qué propiedad ofrece UDP a las aplicaciones?
 
 ::option[Un flujo de bytes ordenado que se retransmite automáticamente.]{#transport-layer-udp-stream explanation="Eso describe servicios similares a TCP, no UDP básico."}
 ::option[La conservación de los límites entre los datagramas enviados.]{#transport-layer-udp-datagrams .correct explanation="Un datagrama UDP recibido corresponde a un datagrama enviado, salvo que se pierda."}
@@ -79,8 +75,7 @@ $ ss -tn state established
 
 Los detalles de los procesos pueden requerir privilegios. Un socket a la escucha solo demuestra disponibilidad local en el límite de transporte; el cortafuegos, el enrutamiento, la familia de direcciones, TLS y la salud de la aplicación aún requieren las pruebas apropiadas.
 
-:::single-choice{#transport-layer-listener-proof}
-¿Qué establece un socket TCP a la escucha?
+:::single-choice{#transport-layer-listener-proof} ¿Qué establece un socket TCP a la escucha?
 
 ::option[Que todos los cortafuegos remotos permiten la conexión.]{#transport-layer-all-firewalls explanation="El estado del socket local no revela todas las políticas de la ruta."}
 ::option[Que la aplicación ha superado todas las comprobaciones de salud.]{#transport-layer-all-health explanation="Escuchar constituye una prueba más débil que una transacción satisfactoria de la aplicación."}

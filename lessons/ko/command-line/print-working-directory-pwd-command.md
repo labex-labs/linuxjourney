@@ -32,8 +32,7 @@ Linux에서 파일과 디렉토리는 파일 시스템이라는 계층 구조로
 |-- var
 ```
 
-:::single-choice{#identify-root-subdirectories}
-위 디렉터리 트리에서 `home`과 `etc`는 `/`와 어떤 관계인가요?
+:::single-choice{#identify-root-subdirectories} 위 디렉터리 트리에서 `home`과 `etc`는 `/`와 어떤 관계인가요?
 
 ::option[`/`에서 갈라져 나온 하위 디렉터리입니다.]{#root-subdirectories .correct explanation="두 디렉터리는 트리에서 `/` 바로 아래에 있습니다. 파일 시스템은 루트에서 하위 디렉터리로 갈라집니다."}
 ::option[`bin` 디렉터리 안에 저장된 파일입니다.]{#files-inside-bin explanation="트리에서 `home`과 `etc`는 `bin` 안이 아니라 그 옆에 있습니다. 이 예에서 둘은 파일이 아닌 디렉터리입니다."}
@@ -52,8 +51,7 @@ Linux에서 파일과 디렉토리는 파일 시스템이라는 계층 구조로
 
 `/`로 시작하는 경로는 루트 디렉토리에서 시작하기 때문에 절대 경로입니다. `Movies`와 같은 경로는 현재 위치에 따라 달라지므로 상대 경로입니다.
 
-:::single-choice{#recognize-absolute-path}
-`/home/pete/Movies`가 절대 경로인 이유는 무엇인가요?
+:::single-choice{#recognize-absolute-path} `/home/pete/Movies`가 절대 경로인 이유는 무엇인가요?
 
 ::option[여러 디렉터리 이름이 `/`로 구분되어 있기 때문입니다.]{#contains-directories explanation="절대 경로와 상대 경로 모두 여러 디렉터리 이름을 포함할 수 있습니다. 이름의 개수가 아니라 시작점이 경로 유형을 결정합니다."}
 ::option[`Movies`라는 디렉터리에서 끝나기 때문입니다.]{#ends-with-movies explanation="목적지 이름은 절대 경로 여부를 결정하지 않습니다. 절대 경로는 루트에서 시작하는 것으로 구분합니다."}
@@ -64,8 +62,7 @@ Linux에서 파일과 디렉토리는 파일 시스템이라는 계층 구조로
 
 `pwd`의 전체 의미는 "print working directory"입니다. 작업 디렉토리는 현재 셸이 위치한 디렉토리입니다. 상대 경로를 사용하는 명령어들은 이 위치에서 시작합니다.
 
-:::single-choice{#expand-pwd-name}
-`pwd`는 무엇의 약자인가요?
+:::single-choice{#expand-pwd-name} `pwd`는 무엇의 약자인가요?
 
 ::option[Print working directory]{#print-working-directory .correct explanation="이 이름은 명령어의 동작을 그대로 나타냅니다. 쉘의 현재 작업 디렉터리를 출력합니다."}
 ::option[Present working directory]{#present-working-directory explanation="일상적인 표현으로 현재 디렉터리라고 할 수는 있지만, 이는 `pwd`의 원래 단어 풀이가 아닙니다."}
@@ -85,8 +82,7 @@ $ pwd
 
 실제 출력은 사용자 이름, 홈 디렉터리, 현재 위치에 따라 시스템마다 다를 수 있습니다. `pwd`는 정보만 출력하고 작업 디렉터리를 바꾸지 않습니다. 반면 `cd`는 쉘이 위치한 디렉터리를 변경합니다.
 
-:::single-choice{#check-location-without-changing-it}
-현재 디렉터리를 바꾸지 않고 확인하는 방법은 무엇인가요?
+:::single-choice{#check-location-without-changing-it} 현재 디렉터리를 바꾸지 않고 확인하는 방법은 무엇인가요?
 
 ::option[`cd`를 실행하고 이동한 디렉터리를 확인합니다.]{#run-cd explanation="`cd`는 작업 디렉터리를 변경하므로 위치를 바꾸지 않고 확인한다는 조건에 맞지 않습니다."}
 ::option[`/home/pete`를 입력해 경로 자체를 명령어로 실행합니다.]{#run-path explanation="절대 경로는 위치를 나타내지만, 경로 자체가 현재 디렉터리를 알려 주는 명령어는 아닙니다."}

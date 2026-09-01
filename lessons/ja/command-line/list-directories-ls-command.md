@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-`/home/pete` へ移動せず、その内容を一覧表示するコマンドはどれですか？
+:::single-choice{#list-another-directory} `/home/pete` へ移動せず、その内容を一覧表示するコマンドはどれですか？
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="`ls` にディレクトリパスを渡すと、その内容を一覧表示します。シェルは現在の作業ディレクトリにとどまります。"}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` はシェルの作業ディレクトリを変更し、それだけでは要求された一覧表示を行いません。"}
@@ -47,8 +46,7 @@ $ ls -a
 
 ドットファイルは既定で隠され、`.bashrc` のように設定を保存することがよくあります。
 
-:::single-choice{#show-hidden-files}
-隠しファイルを一覧に含めるコマンドはどれですか？
+:::single-choice{#show-hidden-files} 隠しファイルを一覧に含めるコマンドはどれですか？
 
 ::option[`ls -l`]{#long-format explanation="`-l` は詳細な列を追加しますが、それだけでは隠しファイル名を含めません。"}
 ::option[`ls -r`]{#reverse-order explanation="`-r` は並び順を逆にしますが、隠しファイルを含めるかどうかは変えません。"}
@@ -84,8 +82,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-人が読みやすいサイズで長い形式の詳細を表示するコマンドはどれですか？
+:::single-choice{#show-readable-file-details} 人が読みやすいサイズで長い形式の詳細を表示するコマンドはどれですか？
 
 ::option[`ls -la`]{#long-all explanation="これは長い形式と隠しファイルを組み合わせますが、人が読みやすいサイズ単位は要求しません。"}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` が長い形式を選び、`-h` がサイズを読みやすくします。フラグは 1 つのコマンドで組み合わせられます。"}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-変更時刻で並べ、最新の項目を最後にするコマンドはどれですか？
+:::single-choice{#show-newest-files-last} 変更時刻で並べ、最新の項目を最後にするコマンドはどれですか？
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` が変更時刻で並べ、`-r` がその順序を反転します。組み合わせると古い項目が新しい項目より前になります。"}
 ::option[`ls -lt`]{#time-default explanation="変更時刻で並べますが、既定の新しいものが先の方向を維持します。最新の項目を最後にはしません。"}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`：ファイルサイズで並べる
 - `-d`：ディレクトリの内容ではなく、ディレクトリ自体を一覧表示する
 
-:::single-choice{#list-directory-entry-itself}
-`projects/` の内容ではなく、そのディレクトリエントリ自体を表示するコマンドはどれですか？
+:::single-choice{#list-directory-entry-itself} `projects/` の内容ではなく、そのディレクトリエントリ自体を表示するコマンドはどれですか？
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="`-d` は `ls` に、ディレクトリを開いて内容を表示せず、エントリ自体を表示するよう指示します。"}
 ::option[`ls projects/`]{#directory-contents explanation="`-d` なしでディレクトリパスを渡すと、`ls` はその中の項目を表示します。"}

@@ -18,8 +18,7 @@ Eine Syslog-Nachricht enthält eine Facility, die ihre grobe Quellkategorie besc
 
 Schweregrade sind geordnet. In der klassischen Selektorsyntax entspricht `daemon.warning` normalerweise Daemon-Nachrichten mit dem Schweregrad Warnung und allen schwerwiegenderen Stufen, nicht nur Warnungen. Eine genaue Übereinstimmung verwendet bei Implementierungen, die die klassische Syntax unterstützen, einen Gleichheitsmodifikator wie `daemon.=warning`.
 
-:::single-choice{#syslog-warning-selector}
-Was erfasst ein klassischer Selektor wie `daemon.warning` normalerweise?
+:::single-choice{#syslog-warning-selector} Was erfasst ein klassischer Selektor wie `daemon.warning` normalerweise?
 
 ::option[Nur Nachrichten, deren Text das Wort daemon enthält.]{#syslog-text-daemon explanation="Facility-Metadaten und keine Suche im Nachrichtentext steuern diesen Selektor."}
 ::option[Jede Debug-Nachricht jeder Facility.]{#syslog-all-debug explanation="Der Selektor ist auf die Facility daemon und einen Schweregradschwellenwert beschränkt."}
@@ -40,8 +39,7 @@ Die erste Zeile leitet alle Prioritäten zweier Authentifizierungs-Facilities we
 
 Untersuche alle eingebundenen Dateien und validiere die genaue Syntax der installierten Version, bevor du die Weiterleitung in einer Produktionsumgebung änderst.
 
-:::single-choice{#syslog-selector-action}
-Was ist in einer herkömmlichen Rsyslog-Regel die Aktion?
+:::single-choice{#syslog-selector-action} Was ist in einer herkömmlichen Rsyslog-Regel die Aktion?
 
 ::option[Der Facility- und Schweregradausdruck auf der linken Seite.]{#syslog-left-selector explanation="Dieser Teil wählt Nachrichten aus."}
 ::option[Das Ziel oder der Vorgang auf der rechten Seite.]{#syslog-right-action .correct explanation="Die Aktion bestimmt, ob ausgewählte Datensätze an eine Datei, ein entferntes Ziel oder eine andere Ausgabe gehen."}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 Dasselbe Ereignis kann abhängig von Weiterleitung und Routing im Journal und in einer Textdatei erscheinen. `logger -s` kopiert die Nachricht zusätzlich in die Standardfehlerausgabe; dies beweist keine dauerhafte Speicherung.
 
-:::single-choice{#syslog-logger-tag}
-Was fügt `logger -t lesson-test` der eingereichten Nachricht hinzu?
+:::single-choice{#syslog-logger-tag} Was fügt `logger -t lesson-test` der eingereichten Nachricht hinzu?
 
 ::option[Eine Anforderung, ältere Testdatensätze zu löschen.]{#syslog-tag-delete explanation="Die Option setzt ein identifizierendes Tag und verwaltet keine Aufbewahrung."}
 ::option[Die Kennung `lesson-test` als Nachrichtentag.]{#syslog-tag-identifier .correct explanation="Ein eindeutiges Tag erleichtert das Auffinden des kontrollierten Ereignisses an den konfigurierten Zielen."}
@@ -84,8 +81,7 @@ Erst nach der Validierung solltest du den Dienst über seinen Manager neu laden.
 
 Bei der Weiterleitung über nicht vertrauenswürdige Netzwerke sollte authentifizierter, verschlüsselter Transport verwendet werden. UDP-Zustellung besitzt keine Ende-zu-Ende-Bestätigung. Kritische Audit-Anforderungen benötigen daher einen Entwurf, der Warteschlangen, Verluste, Integrität, Zugriffskontrolle und Ausfälle des Empfängers berücksichtigt.
 
-:::single-choice{#syslog-change-verification}
-Welche Belege reichen aus, dass eine neue Weiterleitungsregel funktioniert?
+:::single-choice{#syslog-change-verification} Welche Belege reichen aus, dass eine neue Weiterleitungsregel funktioniert?
 
 ::option[Die Konfigurationsdatei besitzt einen aktuellen Änderungszeitpunkt.]{#syslog-mtime explanation="Ein Zeitstempel beweist weder gültige Syntax noch Zustellung."}
 ::option[Der Sender kann den Empfänger mit einem Ping erreichen.]{#syslog-ping explanation="Netzwerkerreichbarkeit allein überprüft weder das Protokollierungsprotokoll noch den Speicherpfad."}

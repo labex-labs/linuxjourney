@@ -14,8 +14,7 @@ En mode Normal, Vim interprète les touches comme des commandes. Le mode Inserti
 
 Appuyez sur `Esc` pour quitter le mode Insertion et revenir au mode Normal. Si vous ignorez quel mode est actif, `Esc` rétablit sans risque le mode Normal, même si cette touche peut annuler une opération en attente.
 
-:::single-choice{#vim-insert-return-normal}
-Quelle touche permet normalement de revenir du mode Insertion au mode Normal ?
+:::single-choice{#vim-insert-return-normal} Quelle touche permet normalement de revenir du mode Insertion au mode Normal ?
 
 ::option[`Esc`]{#vim-insert-escape .correct explanation="Échap termine l'insertion actuelle et ramène Vim au mode Normal."}
 ::option[`Entrée`]{#vim-insert-enter explanation="Entrée insère un saut de ligne tout en restant en mode Insertion."}
@@ -31,8 +30,7 @@ Depuis le mode Normal :
 
 Par exemple, si le curseur se trouve sur `b` dans `abc`, `i` commence avant `b`, tandis que `a` commence après. Les deux commandes changent de mode ; le texte tapé ensuite réalise l'insertion.
 
-:::single-choice{#vim-insert-before-cursor}
-Quelle touche du mode Normal passe en mode Insertion juste avant le curseur ?
+:::single-choice{#vim-insert-before-cursor} Quelle touche du mode Normal passe en mode Insertion juste avant le curseur ?
 
 ::option[`a`]{#vim-insert-a-after explanation="Le `a` minuscule ajoute après le curseur au lieu d'insérer avant lui."}
 ::option[`o`]{#vim-insert-o-below explanation="Le `o` minuscule ouvre une nouvelle ligne sous la ligne actuelle avant de passer au mode Insertion."}
@@ -48,16 +46,14 @@ Les commandes en majuscule ciblent des positions significatives de la ligne actu
 
 Sur une ligne indentée, `I` ignore l'indentation et commence avant le premier texte non blanc. Utilisez `0i` si vous devez précisément insérer à la colonne zéro.
 
-:::single-choice{#vim-insert-first-nonblank}
-Quelle commande du mode Normal commence l'insertion avant le premier caractère non blanc de la ligne actuelle ?
+:::single-choice{#vim-insert-first-nonblank} Quelle commande du mode Normal commence l'insertion avant le premier caractère non blanc de la ligne actuelle ?
 
 ::option[`i`]{#vim-insert-lower-i explanation="Le `i` minuscule utilise la position actuelle du curseur sans cibler d'abord le premier texte de la ligne."}
 ::option[`A`]{#vim-insert-capital-a explanation="Le `A` majuscule commence l'insertion à la fin de la ligne actuelle."}
 ::option[`I`]{#vim-insert-capital-i .correct explanation="Le `I` majuscule va au premier caractère non blanc et passe en mode Insertion avant lui."}
 :::
 
-:::single-choice{#vim-append-line-end}
-Quelle commande du mode Normal va à la fin de la ligne actuelle et passe en mode Insertion ?
+:::single-choice{#vim-append-line-end} Quelle commande du mode Normal va à la fin de la ligne actuelle et passe en mode Insertion ?
 
 ::option[`A`]{#vim-append-capital-a .correct explanation="Le `A` majuscule combine un saut en fin de ligne et le passage au mode Insertion."}
 ::option[`$`]{#vim-move-line-end explanation="Le déplacement dollar atteint la fin de ligne, mais reste en mode Normal."}
@@ -73,8 +69,7 @@ Depuis le mode Normal :
 
 Vim applique l'indentation selon les réglages actifs et les règles du type de fichier. Un nombre peut répéter l'ouverture de ligne, mais apprenez d'abord la forme simple afin de prévoir la position résultante du curseur.
 
-:::single-choice{#vim-open-line-above}
-Quelle commande du mode Normal ouvre une nouvelle ligne au-dessus de la ligne actuelle et passe au mode Insertion ?
+:::single-choice{#vim-open-line-above} Quelle commande du mode Normal ouvre une nouvelle ligne au-dessus de la ligne actuelle et passe au mode Insertion ?
 
 ::option[`o`]{#vim-open-lower-o explanation="Le `o` minuscule ouvre une ligne sous la ligne actuelle."}
 ::option[`O`]{#vim-open-upper-o .correct explanation="Le `O` majuscule ouvre une nouvelle ligne au-dessus et y commence l'insertion."}

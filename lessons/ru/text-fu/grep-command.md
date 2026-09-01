@@ -28,8 +28,7 @@ $ grep 'fox' sample.txt
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-Какая команда ищет в `products.txt` буквальный текст `price: $5.00`, не интерпретируя символы шаблона как синтаксис регулярного выражения?
+:::single-choice{#grep-fixed-string} Какая команда ищет в `products.txt` буквальный текст `price: $5.00`, не интерпретируя символы шаблона как синтаксис регулярного выражения?
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` выбирает поиск фиксированной строки, а одинарные кавычки защищают знак доллара от подстановки оболочки."}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` включает расширенные регулярные выражения, где `$` и `.` имеют специальные, а не буквальные значения."}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 Обратная косая черта делает точку буквальной; неэкранированная `.` в регулярном выражении совпадает с любым одним символом.
 
-:::single-choice{#grep-literal-txt-suffix}
-Какое расширенное регулярное выражение совпадает со строками, оканчивающимися буквальным суффиксом `.txt`?
+:::single-choice{#grep-literal-txt-suffix} Какое расширенное регулярное выражение совпадает со строками, оканчивающимися буквальным суффиксом `.txt`?
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="Точка не экранирована, поэтому совпадает с любым одним символом перед `txt`, а не обязательно с буквальной точкой."}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` совпадает с буквальной точкой, а `$` привязывает совпадение к концу строки."}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 Параметр `-e` можно повторять, выбирая строки, совпавшие с любым указанным шаблоном. `-f patterns.txt` читает по одному шаблону из каждой строки файла.
 
-:::single-choice{#grep-hyphen-pattern}
-Какая команда ищет в `settings.conf` шаблон `-v`, а не интерпретирует его как параметр?
+:::single-choice{#grep-hyphen-pattern} Какая команда ищет в `settings.conf` шаблон `-v`, а не интерпретирует его как параметр?
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="Кавычки защищают символы от подстановок оболочки, но `grep` всё равно может интерпретировать полученный аргумент `-v` как параметр обращения совпадений."}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="Эта команда включает обратный поиск и не передаёт `settings.conf` требуемым образом одновременно как шаблон и ввод."}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` считает выбранные строки, а не общее число совпадений внутри них. Строка с `fox fox` добавляет к счёту единицу. Если нужно число неперекрывающихся вхождений в GNU `grep`, можно использовать конвейер `grep -o PATTERN | wc -l`.
 
-:::single-choice{#grep-count-lines}
-В `data.txt` одна строка содержит `error error`, а две строки не совпадают. Что сообщит `grep -c 'error' data.txt`?
+:::single-choice{#grep-count-lines} В `data.txt` одна строка содержит `error error`, а две строки не совпадают. Что сообщит `grep -c 'error' data.txt`?
 
 ::option[`2`, потому что слово дважды встречается в одной строке.]{#grep-count-occurrences explanation="`-c` считает выбранные строки, а не отдельные совпадения внутри строки."}
 ::option[`1`, потому что совпадает ровно одна строка.]{#grep-count-one-line .correct explanation="Одна строка выбирается один раз, хотя шаблон встречается в ней дважды."}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 Диагностические сообщения вроде ошибок доступа поступают в stderr и не являются входом для сопоставления. Сужайте область поиска и разбирайтесь с правами, а не повышайте доступ без необходимости.
 
-:::single-choice{#grep-pipeline-input}
-Какие данные ищет `grep` в `generate-report | grep 'failed'`?
+:::single-choice{#grep-pipeline-input} Какие данные ищет `grep` в `generate-report | grep 'failed'`?
 
 ::option[Файл `generate-report` в текущем каталоге.]{#grep-report-file explanation="Слово слева выполняется как команда и не передаётся `grep` как файловый операнд."}
 ::option[Поток stdout, созданный командой `generate-report`.]{#grep-report-stdout .correct explanation="Конвейер подключает stdout производителя к stdin команды `grep`."}

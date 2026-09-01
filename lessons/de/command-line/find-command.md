@@ -30,8 +30,7 @@ $ find /home -name puppies.jpg
 
 Die Suche ist standardmäßig rekursiv. Verwende `.` als Startpfad, um den aktuellen Verzeichnisbaum zu durchsuchen.
 
-:::single-choice{#search-current-tree}
-Welcher Befehl durchsucht das aktuelle Verzeichnis und seine Nachkommen nach Einträgen namens `notes.txt`?
+:::single-choice{#search-current-tree} Welcher Befehl durchsucht das aktuelle Verzeichnis und seine Nachkommen nach Einträgen namens `notes.txt`?
 
 ::option[`find . -name notes.txt`]{#find-current-notes .correct explanation="Der Punkt wählt das aktuelle Verzeichnis als Startpfad; `-name` prüft den Basisnamen jedes Eintrags."}
 ::option[`find / -name notes.txt`]{#find-root-notes explanation="Der Startpfad `/` durchsucht ab der Wurzel des Dateisystems und damit einen viel größeren Bereich als den aktuellen Verzeichnisbaum."}
@@ -56,8 +55,7 @@ $ find /home -type d -name MyFolder
 
 Hier müssen beide Tests zutreffen: Der Eintrag muss ein Verzeichnis sein und sein Basisname muss `MyFolder` lauten.
 
-:::single-choice{#find-text-regular-files}
-Welcher Befehl findet unterhalb des aktuellen Verzeichnisses reguläre Dateien, deren Namen auf `.txt` enden?
+:::single-choice{#find-text-regular-files} Welcher Befehl findet unterhalb des aktuellen Verzeichnisses reguläre Dateien, deren Namen auf `.txt` enden?
 
 ::option[`find . -type f -name "*.txt"`]{#text-files .correct explanation="`-type f` wählt reguläre Dateien aus; das in Anführungszeichen gesetzte `-name`-Muster wird von `find` für jeden Eintrag ausgewertet."}
 ::option[`find . -type d -name "*.txt"`]{#text-directories explanation="Das Muster ist korrekt geschützt, aber `-type d` wählt Verzeichnisse statt regulärer Dateien aus."}
@@ -84,8 +82,7 @@ $ find . -type f -mtime +30
 
 `-mtime -7` entspricht einem Wert unter 7, `-mtime +30` einem Wert über 30. Da vollständige 24-Stunden-Zeiträume zählen, orientieren sich diese Tests nicht an Kalendertagen um Mitternacht.
 
-:::single-choice{#find-recent-regular-files}
-Welcher Befehl findet unterhalb von `.` reguläre Dateien, deren Änderungsalter weniger als sieben vollständige 24-Stunden-Zeiträume beträgt?
+:::single-choice{#find-recent-regular-files} Welcher Befehl findet unterhalb von `.` reguläre Dateien, deren Änderungsalter weniger als sieben vollständige 24-Stunden-Zeiträume beträgt?
 
 ::option[`find . -type f -mtime -7`]{#recent-files .correct explanation="`-type f` wählt reguläre Dateien aus; `-mtime -7` wählt ein Änderungsalter unter sieben vollständigen 24-Stunden-Zeiträumen."}
 ::option[`find . -type f -mtime +7`]{#older-than-seven explanation="Das Pluszeichen wählt ein Alter über sieben Einheiten aus. Damit werden ältere statt kürzlich geänderter Dateien gesucht."}
@@ -112,16 +109,14 @@ Bei der Form mit `\;` wird `{}` in jedem Befehlsaufruf durch einen passenden Pfa
 
 Bevor du eine destruktive Aktion wie `-delete` oder einen dateiverändernden `-exec`-Befehl verwendest, führe dieselben Tests mit `-print` aus und prüfe jedes Ergebnis. Ein engerer Startpfad und `-maxdepth N` können die Suche zusätzlich begrenzen.
 
-:::single-choice{#verify-before-delete}
-Du entwickelst einen `find`-Befehl, der später alte `.log`-Dateien löschen soll. Was solltest du zuerst tun?
+:::single-choice{#verify-before-delete} Du entwickelst einen `find`-Befehl, der später alte `.log`-Dateien löschen soll. Was solltest du zuerst tun?
 
 ::option[Füge sofort `-delete` hinzu und prüfe, welche Dateien verschwinden.]{#delete-first explanation="Eine Löschung ist keine sichere Vorschau und lässt sich nicht eingebaut rückgängig machen. Prüfe die vollständige Treffermenge, bevor du sie hinzufügst."}
 ::option[Führe dieselben Tests mit `-print` aus und prüfe jeden Treffer.]{#print-first .correct explanation="Eine schreibgeschützte Auflistung bestätigt Startpfad und Tests, bevor eine destruktive Aktion ergänzt wird."}
 ::option[Starte die Suche bei `/`, damit keine Protokolldatei übersehen wird.]{#root-first explanation="Der Start bei `/` vergrößert den Umfang und kann unabhängige oder geschützte Pfade einschließen. Verwende den engsten geeigneten Startpunkt."}
 :::
 
-:::single-choice{#run-ls-for-each-match}
-Wofür steht `{}` in `find . -name "*.log" -exec ls -l {} \;`?
+:::single-choice{#run-ls-for-each-match} Wofür steht `{}` in `find . -name "*.log" -exec ls -l {} \;`?
 
 ::option[Für den aktuellen passenden Pfad, der an `ls -l` übergeben wird.]{#match-placeholder .correct explanation="Bei dieser `-exec`-Form ersetzt `find` `{}` vor dem Aufruf von `ls -l` durch den aktuellen Treffer."}
 ::option[Für das Verzeichnis, in dem der `find`-Befehl gestartet wurde.]{#starting-placeholder explanation="Das Startverzeichnis ist der Punkt am Anfang des Befehls. Die geschweiften Klammern haben innerhalb von `-exec` eine andere Aufgabe."}

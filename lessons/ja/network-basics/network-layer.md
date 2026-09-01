@@ -16,8 +16,7 @@ meta_keywords: "ネットワーク層，IP アドレス，サブネット，Linu
 
 IP ヘッダーには送信元・宛先アドレスと、転送・プロトコル処理に必要なフィールドがあります。ペイロードは一般に TCP セグメント、UDP データグラム、ICMP メッセージを含みます。IP は到着、順序、重複がないことを保証しません。
 
-:::single-choice{#network-layer-ip-service}
-IP 自体が提供する配送サービスはどれですか？
+:::single-choice{#network-layer-ip-service} IP 自体が提供する配送サービスはどれですか？
 
 ::option[アプリケーショントランザクションの確定保証。]{#network-layer-guaranteed-commit explanation="IP の配送結果ではアプリケーションの永続化を証明できません。"}
 ::option[ベストエフォートのパケット配送。]{#network-layer-best-effort .correct explanation="必要な復旧や順序は上位層またはアプリケーションが追加します。"}
@@ -28,8 +27,7 @@ IP 自体が提供する配送サービスはどれですか？
 
 アドレスとプレフィックス長は、先頭から何ビットがネットワークプレフィックスかを定義します。ホストはこの情報と経路から、宛先がリンク上にあるか、次ホップルーターが必要かを判断します。サブネットはプレフィックスと方針に基づくアドレス範囲で、すべての別サブネットへ自動接続されるわけではありません。
 
-:::single-choice{#network-layer-prefix-decision}
-IPv4 宛先がリンク上にあるかをホストが判断する助けになるものはどれですか？
+:::single-choice{#network-layer-prefix-decision} IPv4 宛先がリンク上にあるかをホストが判断する助けになるものはどれですか？
 
 ::option[宛先アプリケーションのパスワード。]{#network-layer-password explanation="認証データはネットワークプレフィックスを定義しません。"}
 ::option[Ethernet ケーブルの色。]{#network-layer-cable-color explanation="ケーブルの外観にはアドレス上の意味がありません。"}
@@ -46,8 +44,7 @@ $ ip route get 203.0.113.10
 
 これはローカルの経路検索であり、下流の全ルーターに有効な経路があることや、宛先が通信を受け入れることの証明ではありません。
 
-:::single-choice{#network-layer-longest-prefix}
-同じ宛先へ到達できる経路のうち、通常どれが優先されますか？
+:::single-choice{#network-layer-longest-prefix} 同じ宛先へ到達できる経路のうち、通常どれが優先されますか？
 
 ::option[インターフェース名がアルファベット順で最初の経路。]{#network-layer-alphabetical explanation="インターフェース名の綴りは選択規則ではありません。"}
 ::option[プレフィックスに関係なく最も古い経路。]{#network-layer-oldest explanation="経路の古さだけでプレフィックス一致を上書きしません。"}
@@ -60,8 +57,7 @@ $ ip route get 203.0.113.10
 
 通常ルーターは端から端までの IP アドレスを保ちますが、NAT、トンネル、プロキシなどのミドルボックスはパケットを変換・包み込むことがあります。リンク層ヘッダーはどの場合もルーターホップごとに変わります。
 
-:::single-choice{#network-layer-hop-limit}
-ルーターが TTL または Hop Limit を減らすのはなぜですか？
+:::single-choice{#network-layer-hop-limit} ルーターが TTL または Hop Limit を減らすのはなぜですか？
 
 ::option[アプリケーションのファイル権限を増やすため。]{#network-layer-hop-permissions explanation="ホップ数はファイルシステムの認可とは無関係です。"}
 ::option[全パケットを IPv4 から IPv6 へ変換するため。]{#network-layer-hop-convert explanation="プロトコル変換はこのフィールドの目的ではありません。"}

@@ -14,8 +14,7 @@ No modo Normal, o Vim interpreta as teclas como comandos. O modo de Inserção i
 
 Pressione `Esc` para sair do modo de Inserção e retornar ao modo Normal. Se não souber qual modo está ativo, pressionar `Esc` é uma forma segura de restabelecer o modo Normal, embora possa cancelar uma operação pendente.
 
-:::single-choice{#vim-insert-return-normal}
-Qual tecla normalmente retorna do modo de Inserção ao modo Normal?
+:::single-choice{#vim-insert-return-normal} Qual tecla normalmente retorna do modo de Inserção ao modo Normal?
 
 ::option[`Esc`]{#vim-insert-escape .correct explanation="Escape encerra a inserção atual e retorna o Vim ao modo Normal."}
 ::option[`Enter`]{#vim-insert-enter explanation="Enter insere uma quebra de linha e permanece no modo de Inserção."}
@@ -31,8 +30,7 @@ A partir do modo Normal:
 
 Por exemplo, se o cursor estiver sobre `b` em `abc`, `i` começa antes de `b`, enquanto `a` começa depois. Os dois comandos mudam de modo; o texto digitado em seguida realiza a inserção.
 
-:::single-choice{#vim-insert-before-cursor}
-Qual tecla do modo Normal entra no modo de Inserção imediatamente antes do cursor?
+:::single-choice{#vim-insert-before-cursor} Qual tecla do modo Normal entra no modo de Inserção imediatamente antes do cursor?
 
 ::option[`a`]{#vim-insert-a-after explanation="`a` minúsculo acrescenta depois do cursor, em vez de inserir antes dele."}
 ::option[`o`]{#vim-insert-o-below explanation="`o` minúsculo abre uma nova linha abaixo da atual antes de entrar no modo de Inserção."}
@@ -48,16 +46,14 @@ Comandos em maiúsculas indicam posições significativas da linha atual:
 
 Em uma linha recuada, `I` ignora o recuo e começa antes do primeiro texto não vazio. Use `0i` se precisar especificamente inserir na coluna zero.
 
-:::single-choice{#vim-insert-first-nonblank}
-Qual comando do modo Normal começa a inserção antes do primeiro caractere não vazio da linha atual?
+:::single-choice{#vim-insert-first-nonblank} Qual comando do modo Normal começa a inserção antes do primeiro caractere não vazio da linha atual?
 
 ::option[`i`]{#vim-insert-lower-i explanation="`i` minúsculo usa a posição atual do cursor e não vai primeiro ao texto inicial da linha."}
 ::option[`A`]{#vim-insert-capital-a explanation="`A` maiúsculo começa a inserção no final da linha atual."}
 ::option[`I`]{#vim-insert-capital-i .correct explanation="`I` maiúsculo vai ao primeiro caractere não vazio e entra no modo de Inserção antes dele."}
 :::
 
-:::single-choice{#vim-append-line-end}
-Qual comando do modo Normal vai ao final da linha atual e entra no modo de Inserção?
+:::single-choice{#vim-append-line-end} Qual comando do modo Normal vai ao final da linha atual e entra no modo de Inserção?
 
 ::option[`A`]{#vim-append-capital-a .correct explanation="`A` maiúsculo combina um salto ao final da linha com a entrada no modo de Inserção."}
 ::option[`$`]{#vim-move-line-end explanation="O movimento cifrão chega ao final da linha, mas permanece no modo Normal."}
@@ -73,8 +69,7 @@ A partir do modo Normal:
 
 O Vim aplica o recuo conforme as configurações atuais e as regras do tipo de arquivo. Uma quantidade pode repetir a operação de abertura, mas primeiro aprenda a forma de uma única linha para que a posição resultante do cursor seja previsível.
 
-:::single-choice{#vim-open-line-above}
-Qual comando do modo Normal abre uma nova linha acima da atual e entra no modo de Inserção?
+:::single-choice{#vim-open-line-above} Qual comando do modo Normal abre uma nova linha acima da atual e entra no modo de Inserção?
 
 ::option[`o`]{#vim-open-lower-o explanation="`o` minúsculo abre abaixo da linha atual."}
 ::option[`O`]{#vim-open-upper-o .correct explanation="`O` maiúsculo abre uma nova linha acima e inicia a inserção nela."}

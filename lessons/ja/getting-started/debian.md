@@ -16,8 +16,7 @@ meta_keywords: "Debian ディストリビューション，Debian Linux, Debian 
 
 Debian プロジェクトは Linux の初期から存在し、慎重な設計、開放性、長期的な信頼性で評価を築いてきました。実用上、**Debian Linux ディストリビューション**は、堅実な基本システム、膨大なソフトウェア、明確なプロジェクト原則を提供することで知られます。
 
-:::single-choice{#identify-debian-project-model}
-Debian は主にどのように開発されていますか？
+:::single-choice{#identify-debian-project-model} Debian は主にどのように開発されていますか？
 
 ::option[1つの商用ソフトウェア企業によって]{#single-company explanation="Debian は単一企業による開発ではなく、世界中のボランティアと貢献者が保守しています。"}
 ::option[1つのコンピューターハードウェアメーカーによって]{#hardware-manufacturer explanation="Debian は多様なハードウェアに対応しますが、メーカーが開発を所有するのではなく、コミュニティが保守しています。"}
@@ -42,8 +41,7 @@ Debian は複数のブランチを保守し、安定性と新しいソフトウ�
 
 予測可能なシステムには通常 Stable が適し、より新しいソフトウェアを求める開発者や上級者は Testing または Unstable を検討できます。
 
-:::single-choice{#choose-debian-stable}
-信頼性と予測可能な更新を優先する利用者に最適な Debian ブランチはどれですか？
+:::single-choice{#choose-debian-stable} 信頼性と予測可能な更新を優先する利用者に最適な Debian ブランチはどれですか？
 
 ::option[Testing]{#testing-branch explanation="Testing は将来のリリースへ向けた新しいパッケージを含み、開発中に大きく変化することがあります。"}
 ::option[Unstable]{#unstable-branch explanation="Unstable は新しいパッケージを最初に受け取り頻繁に変わるため、予測可能性の要件に合いません。"}
@@ -56,8 +54,7 @@ Debian はリリース型のモデルを採用します。パッケージが開�
 
 基本的には、新しいパッケージが Unstable に入り、条件を満たすと Testing へ移り、準備された Testing が後に次の Stable になります。このモデルにより、信頼性を保ちながら時間とともに前進できます。
 
-:::single-choice{#trace-debian-package-flow}
-Debian パッケージがリリースへ向かう単純化した順序はどれですか？
+:::single-choice{#trace-debian-package-flow} Debian パッケージがリリースへ向かう単純化した順序はどれですか？
 
 ::option[Unstable → Testing → Stable]{#unstable-testing-stable .correct explanation="新規アップロードは Unstable に入り、条件を満たすと Testing へ移り、準備された Testing が最終的に次の Stable になります。"}
 ::option[Stable → Testing → Unstable]{#stable-testing-unstable explanation="Stable は完成済みの本番リリースで、新規アップロードの出発点ではありません。開発は Unstable から始まります。"}
@@ -70,8 +67,7 @@ Debian は `.deb` パッケージ形式と **APT** ツール群を使い、ソ�
 
 非常に大きなパッケージコレクションがあり、デスクトップアプリケーションから開発ツールまで同じ仕組みで導入できます。たとえば開発者は `build-essential` などで一般的なビルドツールを導入します。この成熟した仕組みも、Debian が広く使われ信頼される理由です。
 
-:::single-choice{#recognize-apt-purpose}
-Debian の APT ツール群の主な目的は何ですか？
+:::single-choice{#recognize-apt-purpose} Debian の APT ツール群の主な目的は何ですか？
 
 ::option[ソフトウェアパッケージをインストール、更新、削除、管理する]{#manage-packages .correct explanation="APT は Debian リポジトリのパッケージを管理し、一貫した方法でソフトウェアを導入、更新、削除します。"}
 ::option[更新のたびに新しい Linux カーネルをコンパイルする]{#compile-kernel explanation="APT はパッケージ化されたカーネルも導入できますが、目的はより広いパッケージ管理で、毎回のコンパイルは不要です。"}
@@ -95,8 +91,7 @@ Debian の成果を基に作られた多くの **Debian ベースのディスト
 
 APT、`.deb`、リリースブランチを学ぶと、その知識は Debian ベースのシステムにも応用できる場合があります。初心者向けの選択肢は [Ubuntu](https://labex.io/lesson/ubuntu) も参照してください。
 
-:::single-choice{#transfer-debian-knowledge}
-Debian のパッケージ管理知識を一部の別ディストリビューションへ応用できるのはなぜですか？
+:::single-choice{#transfer-debian-knowledge} Debian のパッケージ管理知識を一部の別ディストリビューションへ応用できるのはなぜですか？
 
 ::option[すべての Linux ディストリビューションが同じパッケージとリポジトリを使うから]{#identical-linux-packages explanation="形式、ツール、リポジトリは異なる場合があり、知識は主に Debian 系で直接応用できます。"}
 ::option[Debian ベースのシステムが `.deb` と APT の伝統を共有することが多いから]{#shared-package-traditions .correct explanation="Debian から派生したシステムはパッケージ形式と関連ツールを引き継ぐことが多く、リポジトリが違っても中核概念を応用できます。"}

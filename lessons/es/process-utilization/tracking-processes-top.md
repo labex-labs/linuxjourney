@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 La primera línea contiene la hora actual, el tiempo de actividad, el número de usuarios con sesión iniciada y los promedios de carga de 1, 5 y 15 minutos. La línea de tareas cuenta los estados de los procesos. El promedio de carga no es un porcentaje directo de CPU; en Linux refleja las tareas preparadas para ejecutarse y las que están en espera ininterrumpible, así que interprétalo junto con el número de CPU, la actividad de E/S y la latencia.
 
-:::single-choice{#top-load-average-periods}
-¿Qué representan los tres valores de promedio de carga de `top`?
+:::single-choice{#top-load-average-periods} ¿Qué representan los tres valores de promedio de carga de `top`?
 
 ::option[La carga media durante 1, 5 y 15 minutos.]{#top-one-five-fifteen .correct explanation="Los valores resumen intervalos recientes de duración progresivamente mayor."}
 ::option[El uso de CPU de los tres procesos con más actividad.]{#top-three-processes explanation="La CPU de cada proceso aparece en la tabla de procesos, no en estos tres valores de resumen."}
@@ -48,8 +47,7 @@ Entre los campos habituales de CPU se encuentran:
 
 Un valor alto de `wa` puede respaldar una hipótesis de espera de E/S, pero no identifica un dispositivo ni demuestra que el almacenamiento sea el único cuello de botella. Examina la latencia del dispositivo y el comportamiento de la aplicación antes de concluir.
 
-:::single-choice{#top-cpu-wa-meaning}
-¿Qué comunica el campo de CPU `wa`?
+:::single-choice{#top-cpu-wa-meaning} ¿Qué comunica el campo de CPU `wa`?
 
 ::option[El tiempo dedicado a ejecutar código ordinario del usuario.]{#top-wa-user explanation="La ejecución en el espacio de usuario se comunica mediante `us`."}
 ::option[Las páginas de memoria escritas en el intercambio desde el arranque.]{#top-wa-swap explanation="La actividad de intercambio no es una categoría de tiempo de CPU."}
@@ -70,8 +68,7 @@ Entre las columnas importantes suelen encontrarse:
 
 `VIRT` no es la cantidad de RAM física consumida. Puede incluir archivos mapeados, bibliotecas compartidas, espacio de direcciones reservado y páginas intercambiadas. Incluso `RES` debe interpretarse con cuidado porque las páginas compartidas complican la atribución.
 
-:::single-choice{#top-res-versus-virt}
-¿Qué campo se aproxima más a la memoria física actualmente residente de un proceso?
+:::single-choice{#top-res-versus-virt} ¿Qué campo se aproxima más a la memoria física actualmente residente de un proceso?
 
 ::option[`TIME+`]{#top-time-field explanation="Este campo acumula tiempo de CPU, no memoria."}
 ::option[`VIRT`]{#top-virt-field explanation="El tamaño virtual incluye espacio de direcciones que no tiene por qué residir en RAM."}
@@ -90,8 +87,7 @@ Dentro de `top`, pulsa `P` para ordenar por CPU, `M` para ordenar por memoria, `
 
 Registra el PID, la orden, la marca de tiempo y varias muestras antes de actuar. Que un proceso alcance brevemente la primera posición puede ser normal, y terminarlo puede provocar pérdida de datos o una interrupción del servicio.
 
-:::single-choice{#top-monitor-known-pid}
-¿Qué invocación limita la pantalla al PID 1234?
+:::single-choice{#top-monitor-known-pid} ¿Qué invocación limita la pantalla al PID 1234?
 
 ::option[`top -u 1234`]{#top-user-filter explanation="La forma `-u` filtra por usuario en vez de tratar el valor como un PID."}
 ::option[`top -d 1234`]{#top-delay-filter explanation="La opción `-d` controla el intervalo de actualización en las implementaciones habituales."}

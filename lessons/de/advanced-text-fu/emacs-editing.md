@@ -23,8 +23,7 @@ Pfeiltasten und andere Navigationstasten der Plattform funktionieren möglicherw
 - `C-a`: An den Zeilenanfang.
 - `C-e`: Ans Zeilenende.
 
-:::single-choice{#emacs-edit-next-line}
-Welche Emacs-Taste verschiebt den Eingabepunkt in die nächste Zeile?
+:::single-choice{#emacs-edit-next-line} Welche Emacs-Taste verschiebt den Eingabepunkt in die nächste Zeile?
 
 ::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` bewegt sich in die entgegengesetzte Richtung zur vorherigen Zeile."}
 ::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n` für „next-line“ bewegt den Eingabepunkt nach unten an die entsprechende Position der nächsten Bildschirmzeile."}
@@ -42,8 +41,7 @@ Meta-Befehle bewegen sich über größere Einheiten:
 
 Auf vielen Tastaturen übernimmt Alt die Meta-Funktion. Ist diese Tastenkombination nicht verfügbar, bewirkt das Drücken von `Esc` und danach der betreffenden Taste häufig denselben Meta-Befehl.
 
-:::single-choice{#emacs-edit-buffer-end}
-Welche Emacs-Taste verschiebt den Eingabepunkt an das Ende des Puffers?
+:::single-choice{#emacs-edit-buffer-end} Welche Emacs-Taste verschiebt den Eingabepunkt an das Ende des Puffers?
 
 ::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` bewegt sich nur an das Ende der aktuellen Zeile, nicht des gesamten Puffers."}
 ::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` bewegt sich an den Anfang des Puffers."}
@@ -56,8 +54,7 @@ Die **Marke** („mark“) ist eine gespeicherte Position im Puffer. Der Text zw
 
 In einem Terminal kann `C-SPC` als `C-@` codiert sein. Ob der Bereich hervorgehoben wird, hängt von den Einstellungen für „transient mark“ ab; Eingabepunkt und Marke legen dennoch einen Bereich fest.
 
-:::single-choice{#emacs-edit-set-mark}
-Welche Taste beginnt das Festlegen eines Bereichs, indem sie die Marke am Eingabepunkt setzt?
+:::single-choice{#emacs-edit-set-mark} Welche Taste beginnt das Festlegen eines Bereichs, indem sie die Marke am Eingabepunkt setzt?
 
 ::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` killt einen bereits festgelegten Bereich; es ist nicht der anfängliche Befehl zum Setzen der Marke."}
 ::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` fügt Text aus dem Kill Ring ein und beginnt keine Auswahl."}
@@ -74,8 +71,7 @@ Emacs speichert gekillten und kopierten Text im **Kill Ring**:
 
 Killen ist mehr als gewöhnliches Löschen, weil der entfernte Text für späteres Yanken aufbewahrt wird.
 
-:::single-choice{#emacs-edit-copy-region}
-Welche Taste kopiert den aktiven Bereich in den Kill Ring, ohne ihn zu entfernen?
+:::single-choice{#emacs-edit-copy-region} Welche Taste kopiert den aktiven Bereich in den Kill Ring, ohne ihn zu entfernen?
 
 ::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`kill-ring-save`, gebunden an `M-w`, kopiert den Bereich, ohne ihn zu löschen."}
 ::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` entfernt den Bereich und speichert ihn dabei im Kill Ring."}
@@ -93,8 +89,7 @@ M-y
 
 Wird nach `C-y` ein anderer, unabhängiger Befehl ausgeführt, besitzt `M-y` nicht mehr denselben „yank-pop“-Kontext.
 
-:::single-choice{#emacs-edit-yank-latest}
-Welche Taste fügt den neuesten Eintrag des Kill Rings am Eingabepunkt ein?
+:::single-choice{#emacs-edit-yank-latest} Welche Taste fügt den neuesten Eintrag des Kill Rings am Eingabepunkt ein?
 
 ::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="`yank`, gebunden an `C-y`, fügt den neuesten Text aus dem Kill Ring in den aktuellen Puffer ein."}
 ::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` ersetzt normalerweise einen soeben eingefügten Eintrag durch einen älteren und benötigt dafür den vorausgehenden Yank-Kontext."}

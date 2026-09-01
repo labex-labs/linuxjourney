@@ -28,8 +28,7 @@ A `c` identifies a character device. It usually exposes a stream-oriented or dev
 
 “Character” does not require each system call to transfer exactly one character. Applications can read or write buffers, while the driver defines blocking, framing, and control behavior.
 
-:::single-choice{#device-types-character-marker}
-Which first mode character identifies a character device node?
+:::single-choice{#device-types-character-marker} Which first mode character identifies a character device node?
 
 ::option[`b`]{#device-types-marker-block explanation="The `b` marker identifies a block device node."}
 ::option[`p`]{#device-types-marker-pipe explanation="The `p` marker identifies a FIFO, or named pipe."}
@@ -42,8 +41,7 @@ A `b` identifies a block device. Block devices provide addressable storage in bl
 
 A block node is not a mounted filesystem. It represents a storage device or logical region; a filesystem can be created on it and mounted separately. Writing raw data to the wrong block node can destroy partition tables, filesystems, or user data.
 
-:::single-choice{#device-types-block-marker}
-What does first mode character `b` indicate?
+:::single-choice{#device-types-block-marker} What does first mode character `b` indicate?
 
 ::option[A background shell job.]{#device-types-background-job explanation="Shell job state is not encoded as a filesystem type character."}
 ::option[A block device interface.]{#device-types-block-device .correct explanation="Block special files expose addressable storage through the kernel block subsystem."}
@@ -58,8 +56,7 @@ An `s` identifies a Unix-domain socket node. It names a local socket endpoint an
 
 Neither a FIFO nor a Unix socket node uses device major and minor numbers to select a hardware driver.
 
-:::single-choice{#device-types-pipe-socket-distinction}
-Which statement correctly distinguishes these IPC object types?
+:::single-choice{#device-types-pipe-socket-distinction} Which statement correctly distinguishes these IPC object types?
 
 ::option[`p` marks a disk partition, while `s` marks solid-state storage.]{#device-types-storage-letters explanation="Partitions are normally block devices, and the letters do not encode storage technology."}
 ::option[`p` marks a FIFO, while `s` marks a Unix-domain socket node.]{#device-types-p-and-s .correct explanation="These are separate filesystem object types used for local interprocess communication."}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 The `%t` and `%T` values are shown in hexadecimal by GNU `stat`.
 
-:::single-choice{#device-types-major-minor-scope}
-Which objects use major and minor numbers to identify a kernel device interface?
+:::single-choice{#device-types-major-minor-scope} Which objects use major and minor numbers to identify a kernel device interface?
 
 ::option[Every regular file and directory.]{#device-types-all-files explanation="Regular files use size and filesystem metadata rather than a device-node major/minor pair."}
 ::option[Only symbolic links whose targets are missing.]{#device-types-broken-symlinks explanation="Symbolic links store path text and do not become device nodes when a target is absent."}

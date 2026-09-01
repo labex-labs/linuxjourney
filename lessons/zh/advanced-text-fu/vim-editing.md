@@ -28,8 +28,7 @@ Vim 编辑命令通常把操作符与移动命令或文本对象组合起来。�
 
 例如，`dw` 会删除 `w` 移动命令覆盖的范围，`d$` 则从光标删除到行尾。`2dw` 会把删除操作应用于两次单词移动。
 
-:::single-choice{#vim-edit-operator-motion}
-在普通模式中，`d$` 会做什么？
+:::single-choice{#vim-edit-operator-motion} 在普通模式中，`d$` 会做什么？
 
 ::option[从光标开始删除整个文件。]{#vim-edit-delete-file-end explanation="美元符号移动命令指向当前行末尾，而不是整个缓冲区末尾。"}
 ::option[从光标删除到行尾。]{#vim-edit-delete-line-end .correct explanation="`d` 操作符会作用于 `$` 表示的行尾移动范围。"}
@@ -49,8 +48,7 @@ Vim 编辑命令通常把操作符与移动命令或文本对象组合起来。�
 
 像 `dd` 这样重复操作符会使其按行工作。添加计数可以扩大行数。
 
-:::single-choice{#vim-edit-delete-three-lines}
-普通模式中的哪个命令会删除当前行及其后两行？
+:::single-choice{#vim-edit-delete-three-lines} 普通模式中的哪个命令会删除当前行及其后两行？
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="在这种命令形式中，计数应位于重复操作符之前。"}
 ::option[`3x`]{#vim-edit-three-x explanation="这会删除光标下及其后的三个字符，而不是三整行。"}
@@ -69,8 +67,7 @@ Vim 编辑命令通常把操作符与移动命令或文本对象组合起来。�
 
 `cw` 的行为有一个历史特例，通常与 `ce` 相似。`iw` 等文本对象可以更清楚地表达预期边界。
 
-:::single-choice{#vim-edit-change-inner-word}
-普通模式中的哪个命令会删除光标下的内部单词，并进入插入模式以进行替换？
+:::single-choice{#vim-edit-change-inner-word} 普通模式中的哪个命令会删除光标下的内部单词，并进入插入模式以进行替换？
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="这会删除内部单词，但仍停留在普通模式，不会开始输入替代文本。"}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="这会抽取内部单词，不更改缓冲区，也不进入插入模式。"}
@@ -88,8 +85,7 @@ Vim 把复制称为**抽取（yank）**，把粘贴称为**放置（put）**：
 
 删除和更改也会把文本存入寄存器，因此后续的 `p` 可能会放置最近删除的文本，而不是更早抽取的内容。具名寄存器可以保留特定文本，但开始时应先留意最近一次操作存储了什么。
 
-:::single-choice{#vim-edit-yank-put-line}
-使用 `yy` 抽取当前行后，哪个命令会把该行放在当前行下方？
+:::single-choice{#vim-edit-yank-put-line} 使用 `yy` 抽取当前行后，哪个命令会把该行放在当前行下方？
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="对于按行抽取的文本，小写 `p` 会把存储的行放在当前行下方。"}
 ::option[`P`]{#vim-edit-put-above explanation="大写 `P` 会把行式文本放在当前行上方。"}
@@ -107,8 +103,7 @@ Vim 把复制称为**抽取（yank）**，把粘贴称为**放置（put）**：
 
 撤销历史适用于缓冲区更改，而不只是光标移动。应保存检查点并审查编辑结果，不要依赖无限或永久的撤销历史。
 
-:::single-choice{#vim-edit-redo-change}
-普通模式中的哪个命令会重做刚刚撤销的更改？
+:::single-choice{#vim-edit-redo-change} 普通模式中的哪个命令会重做刚刚撤销的更改？
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="在普通模式中，`Ctrl+U` 会向上滚动大约半屏，并不是重做。"}
 ::option[`.`]{#vim-edit-dot-repeat explanation="点号会把最近一次更改作为新操作重复，而不是在撤销历史中向前移动。"}

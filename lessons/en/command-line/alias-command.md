@@ -24,8 +24,7 @@ After this definition, entering `ll` as a command expands to `ls -la`. The quote
 
 Aliases are best for simple command-prefix substitutions. Use a shell function when you need to process arguments in a more structured way.
 
-:::single-choice{#define-ll-alias}
-Which Bash command defines `ll` as an alias for `ls -la` in the current shell?
+:::single-choice{#define-ll-alias} Which Bash command defines `ll` as an alias for `ls -la` in the current shell?
 
 ::option[`alias ll = 'ls -la'`]{#alias-spaces explanation="Spaces around `=` split the definition into separate shell words, so Bash does not receive a valid alias assignment."}
 ::option[`alias ll='ls -la'`]{#alias-ll .correct explanation="This uses the required `NAME=REPLACEMENT` form and quotes the replacement containing a space."}
@@ -48,8 +47,7 @@ $ source ~/.bashrc
 
 Shell startup behavior can vary by shell, login mode, and distribution configuration. A Zsh user, for example, would normally use Zsh configuration rather than Bash's `.bashrc`.
 
-:::single-choice{#persist-bash-alias}
-Where should a personal alias normally be defined so future interactive non-login Bash sessions load it?
+:::single-choice{#persist-bash-alias} Where should a personal alias normally be defined so future interactive non-login Bash sessions load it?
 
 ::option[In the user's `~/.bashrc` file.]{#bashrc-alias .correct explanation="Interactive non-login Bash normally reads `~/.bashrc`, making it the conventional location for personal Bash aliases."}
 ::option[In the executable file used by the aliased command.]{#edit-executable explanation="Changing an installed executable is unrelated to shell alias expansion and can damage managed system files."}
@@ -73,8 +71,7 @@ $ type ll
 ll is aliased to 'ls -la'
 ```
 
-:::single-choice{#inspect-command-alias}
-Which command shows whether Bash currently resolves `ll` as an alias, function, builtin, or executable?
+:::single-choice{#inspect-command-alias} Which command shows whether Bash currently resolves `ll` as an alias, function, builtin, or executable?
 
 ::option[`file ll`]{#file-ll explanation="`file` classifies a filesystem pathname. An alias exists in shell state and need not correspond to a file named `ll`."}
 ::option[`type ll`]{#type-ll .correct explanation="The `type` builtin reports how the current Bash session resolves the name `ll`."}
@@ -92,8 +89,7 @@ $ command ls
 
 This is useful when you need the underlying command's normal behavior. Keep aliases short and predictable, and avoid hiding surprising or destructive behavior behind familiar command names.
 
-:::single-choice{#bypass-ls-alias}
-The current Bash session has an alias named `ls`. Which command bypasses that alias for one invocation?
+:::single-choice{#bypass-ls-alias} The current Bash session has an alias named `ls`. Which command bypasses that alias for one invocation?
 
 ::option[`alias ls`]{#show-ls-alias explanation="This prints the definition of the `ls` alias. It does not invoke the underlying command."}
 ::option[`command ls`]{#command-ls .correct explanation="Because `command` is the command word, Bash does not expand the following `ls` as an alias and invokes normal command resolution."}
@@ -108,8 +104,7 @@ $ unalias ll
 
 If the definition remains in `~/.bashrc`, a future shell can create it again. Remove or change that configuration line as well when you want the alias gone permanently.
 
-:::single-choice{#remove-current-alias}
-Which command removes the alias `ll` from the current Bash session?
+:::single-choice{#remove-current-alias} Which command removes the alias `ll` from the current Bash session?
 
 ::option[`unalias ll`]{#unalias-ll .correct explanation="`unalias` deletes the named alias from the current shell's alias table."}
 ::option[`alias ll=''`]{#empty-ll explanation="This replaces the alias with an empty expansion rather than removing its definition."}

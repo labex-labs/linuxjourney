@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 这会把 `myfile` 的用户所有者改为 `patty`，组保持不变。即使当前拥有该文件，更改其用户所有者通常也需要适当权限。这项限制能防止用户通过转移文件来规避配额或其他基于所有权的控制。
 
-:::single-choice{#ownership-permissions-change-user}
-哪个命令会把 `myfile` 的用户所有者改为 `patty`，同时保持组不变？
+:::single-choice{#ownership-permissions-change-user} 哪个命令会把 `myfile` 的用户所有者改为 `patty`，同时保持组不变？
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="在 `chown` 所有权操作数中只提供用户名，会更改用户所有者并保留组。"}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` 更改组所有者，而不是用户所有者。"}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 之后，当内核选择组类别时会应用组模式位；更改组不会自动添加读取、写入或执行位。
 
-:::single-choice{#ownership-permissions-change-group}
-`chgrp whales myfile` 会更改什么？
+:::single-choice{#ownership-permissions-change-group} `chgrp whales myfile` 会更改什么？
 
 ::option[`myfile` 记录的用户所有者。]{#ownership-permissions-group-not-user explanation="用户所有者使用 `chown` 更改，而不是 `chgrp`。"}
 ::option[`whales` 组中列出的成员。]{#ownership-permissions-group-members explanation="该命令更改文件元数据，不会编辑系统组成员数据库。"}
@@ -68,8 +66,7 @@ $ sudo chown patty:whales myfile
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-哪个所有权说明会在一个 `chown` 命令中指定用户 `patty` 和组 `whales`？
+:::single-choice{#ownership-permissions-change-both} 哪个所有权说明会在一个 `chown` 命令中指定用户 `patty` 和组 `whales`？
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="冒号在组合所有权说明中分隔用户和组名称。"}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="斜杠不是本课介绍的 `chown` 用户和组操作数分隔符。"}
@@ -80,8 +77,7 @@ $ ls -l myfile
 
 `-R` 选项会递归更改所有权，但范围过大的递归命令可能跨越意外目录树或影响服务数据。更改大型层次结构前，应确认准确目标、了解当前实现的符号链接行为、预览目录树，并在小样本上验证。不要在未审查范围的情况下，把示例中的特权所有权命令复制到真实系统上。
 
-:::single-choice{#ownership-permissions-mode-separate}
-更改文件的组所有者后，其普通组权限位会发生什么？
+:::single-choice{#ownership-permissions-mode-separate} 更改文件的组所有者后，其普通组权限位会发生什么？
 
 ::option[始终自动变为可读写。]{#ownership-permissions-mode-read-write explanation="`chgrp` 不会自动选择固定的组模式。"}
 ::option[从所有者权限三元组复制而来。]{#ownership-permissions-mode-copied explanation="更改所有权时，所有者和组三元组仍然彼此独立。"}

@@ -28,8 +28,7 @@ $ kill -TERM 12445
 
 `SIGTERM` has a default action of termination, but a program can catch or ignore it. A well-designed service can use a handler to stop accepting work, save appropriate state, and release application resources. That is a possibility, not a guarantee of immediate or successful cleanup.
 
-:::single-choice{#killing-processes-default-signal}
-Which signal does `kill PID` request by default?
+:::single-choice{#killing-processes-default-signal} Which signal does `kill PID` request by default?
 
 ::option[`SIGKILL`]{#killing-processes-default-kill explanation="The forceful uncatchable signal must be selected explicitly."}
 ::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="Without another signal operand, `kill` sends the standard termination request."}
@@ -48,8 +47,7 @@ Check its user, start time, command, parent, service ownership, and operational 
 
 You may signal processes you own, subject to credential rules. Signaling another user's process normally requires appropriate privilege. Do not use a broad name-based command until you have reviewed every match.
 
-:::single-choice{#killing-processes-pid-reuse}
-Why should you inspect a PID immediately before signaling it?
+:::single-choice{#killing-processes-pid-reuse} Why should you inspect a PID immediately before signaling it?
 
 ::option[A PID changes every time the process reads a file.]{#killing-processes-pid-read explanation="A live process normally retains the same PID throughout its lifetime."}
 ::option[The kernel can reuse a PID after its earlier process exits.]{#killing-processes-pid-reused .correct explanation="A remembered numeric PID can later refer to a different live process."}
@@ -66,8 +64,7 @@ $ kill -0 12445
 
 A successful result means a process with that PID exists and the caller is permitted to signal it at that instant. Failure is ambiguous: the process might not exist, or the caller might lack permission. Examine the error and exit status rather than translating every failure into “not running.” It is also only a momentary check and cannot eliminate a later PID-reuse race.
 
-:::single-choice{#killing-processes-signal-zero}
-What does successful `kill -0 PID` establish at that moment?
+:::single-choice{#killing-processes-signal-zero} What does successful `kill -0 PID` establish at that moment?
 
 ::option[The process has completed all cleanup and exited.]{#killing-processes-zero-exited explanation="Success indicates a signalable live target, not completed termination."}
 ::option[The process will retain that PID permanently.]{#killing-processes-zero-permanent explanation="The check is instantaneous and PIDs can be reused after exit."}
@@ -86,8 +83,7 @@ $ kill -KILL 12445
 
 Other signals are meaningful only according to the receiving program's contract. `SIGHUP` often requests configuration reload, but some programs retain its default termination behavior. `SIGSTOP` pauses without cleanup and `SIGCONT` resumes a stopped process.
 
-:::single-choice{#killing-processes-kill-tradeoff}
-What is the main operational drawback of `SIGKILL`?
+:::single-choice{#killing-processes-kill-tradeoff} What is the main operational drawback of `SIGKILL`?
 
 ::option[It can be handled only by the process owner.]{#killing-processes-kill-owner-handler explanation="No target process can install a handler for `SIGKILL`."}
 ::option[It pauses the process but never terminates it.]{#killing-processes-kill-pauses explanation="`SIGSTOP` pauses; `SIGKILL` terminates."}

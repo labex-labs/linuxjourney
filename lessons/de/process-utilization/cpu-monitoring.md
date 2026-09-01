@@ -23,8 +23,7 @@ $ uptime
 
 Die letzten drei Werte sind Lastmittelwerte über ungefähr 1, 5 und 15 Minuten. Ihr Vergleich zeigt die Richtung: Ein deutlich größerer 1-Minuten-Wert kann auf steigende Last hindeuten, während ein größerer 15-Minuten-Wert auf fallende Last hinweisen kann.
 
-:::single-choice{#cpu-uptime-windows}
-In welcher Reihenfolge zeigt `uptime` die Zeitfenster der Lastmittelwerte an?
+:::single-choice{#cpu-uptime-windows} In welcher Reihenfolge zeigt `uptime` die Zeitfenster der Lastmittelwerte an?
 
 ::option[15, 5 und 1 Sekunde.]{#cpu-windows-seconds explanation="Die Werte sind Mittelwerte über Minuten und werden nicht mit dem längsten zuerst ausgegeben."}
 ::option[1, 5 und 15 Minuten.]{#cpu-windows-one-five-fifteen .correct explanation="Das kürzeste vergangene Zeitfenster steht zuerst und das längste zuletzt."}
@@ -43,8 +42,7 @@ $ nproc
 
 CPU-Kontingente, Affinität, Virtualisierung und Containergrenzen können die für eine bestimmte Arbeitslast sichtbare Kapazität verringern. Die CPU-Anzahl des Hosts ist daher nur ein Ausgangspunkt.
 
-:::single-choice{#cpu-load-not-percentage}
-Warum ist der Lastmittelwert kein CPU-Auslastungsprozentwert?
+:::single-choice{#cpu-load-not-percentage} Warum ist der Lastmittelwert kein CPU-Auslastungsprozentwert?
 
 ::option[Er meldet nur die CPU-Taktfrequenz.]{#cpu-load-clock explanation="Die Taktfrequenz ist ein getrennter Hardware- oder Skalierungsmesswert."}
 ::option[Er misst nur freien physischen Arbeitsspeicher.]{#cpu-load-memory explanation="Die Speicherverfügbarkeit wird durch andere Messwerte gemeldet."}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 Hohe Last bei ausgelasteten CPUs kann auf CPU-Bedarf hindeuten. Hohe Last zusammen mit auffällig vielen blockierten Tasks, E/A-Latenz oder beobachteter E/A-Wartezeit weist auf eine andere eingeschränkte Ressource hin. Eine niedrige durchschnittliche Auslastung kann außerdem eine gesättigte einzelne CPU oder eine kurze Latenzspitze verbergen.
 
-:::single-choice{#cpu-high-load-next-step}
-Was ist der beste nächste Schritt, nachdem du einen hohen Lastmittelwert beobachtet hast?
+:::single-choice{#cpu-high-load-next-step} Was ist der beste nächste Schritt, nachdem du einen hohen Lastmittelwert beobachtet hast?
 
 ::option[Wiederholte CPU-, Taskzustands-, E/A- und Arbeitslastmessungen vergleichen.]{#cpu-load-correlate .correct explanation="Miteinander verknüpfte Stichproben unterscheiden konkurrierende Erklärungen für die Last."}
 ::option[Sofort neu starten, ohne weitere Daten zu erfassen.]{#cpu-load-reboot explanation="Ein Neustart beseitigt Belege und kann Dienste unterbrechen, ohne die Ursache zu ermitteln."}
@@ -77,8 +74,7 @@ Was ist der beste nächste Schritt, nachdem du einen hohen Lastmittelwert beobac
 
 Es gibt keine allgemeingültige Regel, nach der die Last immer unter der CPU-Anzahl bleiben muss. Stapelverarbeitungssysteme können Warteschlangen akzeptieren, während interaktive Dienste schon vorher ihre Latenzziele verfehlen können. Erstelle eine Grundlinie für denselben Host und dieselbe Arbeitslast und vergleiche anschließend Antwortzeit, Durchsatz, Fehlerrate, Sättigung und Ressourcennutzung.
 
-:::single-choice{#cpu-capacity-threshold}
-Woran solltest du entscheiden, ob die beobachtete Last akzeptabel ist?
+:::single-choice{#cpu-capacity-threshold} Woran solltest du entscheiden, ob die beobachtete Last akzeptabel ist?
 
 ::option[An der Vorgabe, dass der Wert immer unter eins bleiben muss.]{#cpu-below-one explanation="Mehrkernkapazität und Arbeitslastziele machen diesen festen Schwellenwert unzuverlässig."}
 ::option[Allein an der von `uptime` angezeigten Benutzeranzahl.]{#cpu-user-count explanation="Angemeldete Shellbenutzer stellen nicht den gesamten Arbeitslastbedarf dar."}

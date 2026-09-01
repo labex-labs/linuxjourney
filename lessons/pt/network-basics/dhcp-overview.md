@@ -18,8 +18,7 @@ Um servidor DHCP gerencia escopos ou conjuntos de endereços e o estado das conc
 
 O DHCP é um protocolo da camada de aplicação transportado sobre UDP. Servidores DHCPv4 normalmente usam a porta UDP 67, e clientes, a porta 68.
 
-:::single-choice{#dhcp-relay-purpose}
-O que um retransmissor DHCP possibilita?
+:::single-choice{#dhcp-relay-purpose} O que um retransmissor DHCP possibilita?
 
 ::option[Que cada cliente escolha um endereço sem qualquer política.]{#dhcp-client-any-address explanation="O servidor ainda aplica a política de escopo e concessão."}
 ::option[Que clientes em outra sub-rede alcancem um servidor DHCP centralizado.]{#dhcp-central-server .correct explanation="O retransmissor encaminha as trocas DHCP através de um limite de roteamento e identifica a rede do cliente."}
@@ -37,8 +36,7 @@ O processo inicial comum é lembrado como DORA:
 
 Os detalhes de broadcast e unicast variam conforme o estado do cliente, o uso de retransmissores e os recursos do servidor. Uma oferta ainda não é a concessão final utilizável; a confirmação conclui a troca normal de seleção.
 
-:::single-choice{#dhcp-dora-order}
-Qual é a ordem inicial normal do DHCPv4?
+:::single-choice{#dhcp-dora-order} Qual é a ordem inicial normal do DHCPv4?
 
 ::option[OFFER, DISCOVER, ACK, REQUEST.]{#dhcp-wrong-order-one explanation="Um cliente descobre antes de um servidor oferecer, e solicita antes da confirmação."}
 ::option[DISCOVER, OFFER, REQUEST, ACK.]{#dhcp-correct-order .correct explanation="A sequência procura, propõe, seleciona e confirma."}
@@ -51,8 +49,7 @@ Uma concessão expira se não for renovada. Normalmente, o cliente começa a ren
 
 Um endereço exibido como atribuído dinamicamente não comprova que sua concessão permanecerá para sempre. Ao solucionar alterações, registre a concessão ativa, sua duração, o servidor e as opções.
 
-:::single-choice{#dhcp-lease-expiration}
-O que acontece com a concessão de um endereço DHCP sem uma renovação bem-sucedida?
+:::single-choice{#dhcp-lease-expiration} O que acontece com a concessão de um endereço DHCP sem uma renovação bem-sucedida?
 
 ::option[Ela se torna um endereço MAC de hardware permanente.]{#dhcp-lease-mac explanation="Uma concessão IP não altera a identidade da camada de enlace."}
 ::option[Ela acaba expirando, e o cliente deve deixar de tratá-la como válida.]{#dhcp-lease-expires .correct explanation="As concessões permitem que endereços e opções sejam recuperados ou alterados conforme a política do servidor."}
@@ -71,8 +68,7 @@ $ resolvectl status
 
 O comando do resolvedor varia conforme o sistema. Inspecione também os dados da concessão e os logs do gerenciador de rede ativo. Endereços duplicados ainda podem ocorrer por servidores não autorizados, atribuições estáticas dentro de um conjunto, estado obsoleto ou configuração manual; o DHCP reduz erros, mas não pode impedir todo conflito por si só.
 
-:::single-choice{#dhcp-result-verification}
-O que deve ser verificado depois que uma concessão DHCP é aceita?
+:::single-choice{#dhcp-result-verification} O que deve ser verificado depois que uma concessão DHCP é aceita?
 
 ::option[Apenas o nome exibido da interface.]{#dhcp-interface-name-only explanation="O nome de uma interface não comprova o endereçamento, o roteamento nem a resolução."}
 ::option[Apenas se o teclado responde.]{#dhcp-keyboard explanation="A entrada do teclado não tem relação com a configuração da concessão de rede."}
@@ -83,8 +79,7 @@ O que deve ser verificado depois que uma concessão DHCP é aceita?
 
 Hosts IPv6 podem usar Configuração Automática de Endereço sem Estado, DHCPv6, configuração estática ou combinações. O DHCPv6 não usa a troca DORA do IPv4, e as informações do roteador padrão normalmente vêm dos Anúncios de Roteador IPv6, não do DHCPv6.
 
-:::single-choice{#dhcp-ipv6-default-router}
-Onde um host IPv6 normalmente aprende as informações de seu roteador padrão?
+:::single-choice{#dhcp-ipv6-default-router} Onde um host IPv6 normalmente aprende as informações de seu roteador padrão?
 
 ::option[Nos Anúncios de Roteador IPv6.]{#dhcp-router-advertisement .correct explanation="O DHCPv6 pode fornecer outras configurações, mas os roteadores se anunciam por meio da Descoberta de Vizinhos."}
 ::option[Em um trailer FCS do Ethernet.]{#dhcp-ipv6-fcs explanation="A FCS detecta corrupção no enlace e não transporta configuração de roteadores."}

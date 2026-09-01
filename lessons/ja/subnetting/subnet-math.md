@@ -24,8 +24,7 @@ network  11000000.10101000.00000001.00000000
 
 ビット単位の AND 演算では、マスクが1の位置にあるアドレスビットを残し、ホストビットを0にします。結果は `192.168.1.0/24` です。
 
-:::single-choice{#subnet-math-network-operation}
-IPv4 アドレスとマスクからネットワークアドレスを求める演算はどれですか？
+:::single-choice{#subnet-math-network-operation} IPv4 アドレスとマスクからネットワークアドレスを求める演算はどれですか？
 
 ::option[10進文字列の連結。]{#subnet-math-concatenation explanation="表示されたオクテットを連結しても、プレフィックスのビットは適用されません。"}
 ::option[トランスポート層ポートの減算。]{#subnet-math-port-subtraction explanation="ポートはネットワークプレフィックスとは無関係です。"}
@@ -42,8 +41,7 @@ IPv4 アドレスとマスクからネットワークアドレスを求める演
 
 したがって、`/24` には `2^8 = 256` 個のアドレスがあります。従来のブロードキャストサブネットでは、ホスト部がすべて0の値はネットワークアドレス、すべて1の値はディレクテッドブロードキャストとなり、通常のユニキャストホストアドレスは254個残ります。
 
-:::single-choice{#subnet-math-24-total}
-IPv4 の `/24` に含まれる総アドレス数はいくつですか？
+:::single-choice{#subnet-math-24-total} IPv4 の `/24` に含まれる総アドレス数はいくつですか？
 
 ::option[24]{#subnet-math-total-24 explanation="プレフィックス長はネットワークビット数であり、アドレス数ではありません。"}
 ::option[256]{#subnet-math-total-256 .correct explanation="8個のホストビットから 2^8 通りの異なるアドレス値が得られます。"}
@@ -60,8 +58,7 @@ broadcast: 192.168.1.191
 range:     192.168.1.129 through 192.168.1.190
 ```
 
-:::single-choice{#subnet-math-165-network}
-`192.168.1.165/26` のネットワークアドレスはどれですか？
+:::single-choice{#subnet-math-165-network} `192.168.1.165/26` のネットワークアドレスはどれですか？
 
 ::option[`192.168.1.0`]{#subnet-math-network-zero explanation="これは 0 から 63 までを含む最初の `/26` ブロックです。"}
 ::option[`192.168.1.165`]{#subnet-math-network-self explanation="指定されたアドレスは `/26` 内のホストビットが0ではありません。"}
@@ -72,8 +69,7 @@ range:     192.168.1.129 through 192.168.1.190
 
 `2^ホストビット数 - 2` という近道が常に使えるわけではありません。IPv4 の `/31` プレフィックスはポイントツーポイントリンク用に定義されており、両方のアドレスをエンドポイントとして使用できるため、ディレクテッドブロードキャストは不要です。`/32` は一つのホストルートまたはインターフェースアドレスを識別します。どのアドレスを割り当てられるかは、ネットワーク技術とプロトコル上の用途によって決まります。
 
-:::single-choice{#subnet-math-31-exception}
-すべての IPv4 プレフィックスでアドレス数から2を引くべきではないのはなぜですか？
+:::single-choice{#subnet-math-31-exception} すべての IPv4 プレフィックスでアドレス数から2を引くべきではないのはなぜですか？
 
 ::option[どのプレフィックスでも IPv4 アドレスにはホストビットがないから。]{#subnet-math-no-host-bits explanation="ほとんどのプレフィックスには一つ以上のホストビットが残ります。"}
 ::option[`/31` のポイントツーポイントリンクでは両方のアドレスをエンドポイントに使えるから。]{#subnet-math-31-both .correct explanation="ポイントツーポイントモデルでは、従来のネットワークアドレスとディレクテッドブロードキャストの予約は不要です。"}
@@ -84,8 +80,7 @@ range:     192.168.1.129 through 192.168.1.190
 
 手計算は別のツールやライブラリで確認し、さらに実際のインターフェースや経路の設定と比較してください。数学的に正しいプレフィックスでも、別のサブネットと重複したり、割り当て計画に反したりする可能性があります。
 
-:::single-choice{#subnet-math-valid-not-safe}
-サブネット計算が正しいだけでは証明できないことはどれですか？
+:::single-choice{#subnet-math-valid-not-safe} サブネット計算が正しいだけでは証明できないことはどれですか？
 
 ::option[アドレス計画に重複やポリシー上の競合がないこと。]{#subnet-math-no-conflict .correct explanation="実際の割り当てとルーティングの証拠も必要です。"}
 ::option[IPv4 アドレスが32ビットであること。]{#subnet-math-proves-size explanation="計算はその固定された大きさを前提にしています。"}

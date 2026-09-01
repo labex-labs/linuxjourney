@@ -16,8 +16,7 @@ Une application ordinaire interroge le résolveur stub du système d'exploitatio
 
 Le résolveur du système peut consulter `/etc/hosts`, le DNS et d'autres sources dans l'ordre configuré. Les suffixes de recherche peuvent transformer un nom court en plusieurs noms candidats. Le résolveur récursif vérifie ensuite ses caches positif et négatif avant d'envoyer du trafic en amont.
 
-:::single-choice{#dns-process-cache-first}
-Pourquoi un résolveur récursif peut-il ne contacter aucun serveur faisant autorité pour une requête ?
+:::single-choice{#dns-process-cache-first} Pourquoi un résolveur récursif peut-il ne contacter aucun serveur faisant autorité pour une requête ?
 
 ::option[Le DNS exige que chaque requête échoue d'abord localement.]{#dns-process-requires-failure explanation="Un résolveur peut répondre immédiatement depuis son cache."}
 ::option[Il possède une réponse en cache encore valide.]{#dns-process-valid-cache .correct explanation="La mise en cache évite de répéter le parcours hiérarchique jusqu'à l'expiration de l'enregistrement."}
@@ -28,8 +27,7 @@ Pourquoi un résolveur récursif peut-il ne contacter aucun serveur faisant auto
 
 En cas d'absence en cache, le résolveur récursif peut interroger un serveur racine. La racine DNS comporte 13 identités de serveurs nommées de A à M, servies par de nombreuses instances physiques grâce à l'anycast et d'autres techniques résilientes. La réponse renvoie normalement le résolveur vers les serveurs du domaine de premier niveau pertinent au lieu de fournir l'adresse finale.
 
-:::single-choice{#dns-process-root-response}
-Que renvoie normalement un serveur racine pour une recherche non mise en cache de `www.example.com` ?
+:::single-choice{#dns-process-root-response} Que renvoie normalement un serveur racine pour une recherche non mise en cache de `www.example.com` ?
 
 ::option[Un renvoi vers les serveurs du domaine de premier niveau `com`.]{#dns-process-root-referral .correct explanation="La hiérarchie délègue les responsabilités au lieu de stocker chaque enregistrement d'hôte final à la racine."}
 ::option[La page Web hébergée sur `www.example.com`.]{#dns-process-root-webpage explanation="Le DNS renvoie des enregistrements de ressources et non du contenu applicatif."}
@@ -40,8 +38,7 @@ Que renvoie normalement un serveur racine pour une recherche non mise en cache d
 
 Le résolveur interroge un serveur faisant autorité pour `com`, qui renvoie les serveurs délégués de `example.com`. Le renvoi peut inclure des enregistrements d'adresse glue lorsqu'ils sont nécessaires pour joindre un serveur dont le nom se trouve dans l'enfant délégué. Le résolveur interroge ensuite un serveur d'autorité pour l'enregistrement demandé.
 
-:::single-choice{#dns-process-glue-purpose}
-Quel problème les données glue du DNS contribuent-elles à résoudre ?
+:::single-choice{#dns-process-glue-purpose} Quel problème les données glue du DNS contribuent-elles à résoudre ?
 
 ::option[Le chiffrement des données HTTP après la résolution DNS.]{#dns-process-glue-http explanation="TLS ou d'autres mécanismes applicatifs assurent le chiffrement du contenu."}
 ::option[Le choix du port de commutateur Ethernet le plus rapide.]{#dns-process-glue-switch explanation="Les données glue sont des adresses de délégation, pas une politique de transfert sur le lien."}
@@ -52,8 +49,7 @@ Quel problème les données glue du DNS contribuent-elles à résoudre ?
 
 Une réponse peut contenir un alias CNAME qui nécessite la recherche d'un autre nom, ou des enregistrements propres à l'application qui entraînent d'autres requêtes. Une demande `A` ne renvoie que les adresses IPv4 et les données liées à leur chaîne ; une requête `AAAA` distincte obtient les adresses IPv6. La réponse finale porte un état comme `NOERROR`, `NXDOMAIN` ou `SERVFAIL`, chacun ayant un sens différent.
 
-:::single-choice{#dns-process-nxdomain-meaning}
-Que signale `NXDOMAIN` ?
+:::single-choice{#dns-process-nxdomain-meaning} Que signale `NXDOMAIN` ?
 
 ::option[Le nom de domaine interrogé n'existe pas selon une réponse faisant autorité.]{#dns-process-name-does-not-exist .correct explanation="Ce cas diffère d'un nom existant qui ne possède simplement pas le type d'enregistrement demandé."}
 ::option[Le nom existe et possède toujours un enregistrement A vide.]{#dns-process-empty-a explanation="Un nom existant sans les données demandées produit normalement une réponse sans données, pas NXDOMAIN."}
@@ -66,8 +62,7 @@ Un résolveur récursif validant peut utiliser les signatures DNSSEC et la chaî
 
 Le résolveur met les résultats en cache selon les règles de TTL et les renvoie au stub. L'application choisit ensuite une adresse et tente ses propres protocoles réseau et de sécurité.
 
-:::single-choice{#dns-process-dnssec-limit}
-Que ne fournit pas la validation DNSSEC ?
+:::single-choice{#dns-process-dnssec-limit} Que ne fournit pas la validation DNSSEC ?
 
 ::option[L'intégrité et l'authentification de l'origine des données DNS signées.]{#dns-process-dnssec-does-integrity explanation="Il s'agit d'objectifs fondamentaux de DNSSEC."}
 ::option[Le déni authentifié de données inexistantes signées.]{#dns-process-authenticated-denial explanation="Les mécanismes de déni signé peuvent fournir cette validation."}

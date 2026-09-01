@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 该命令会把整个文件写入标准输出，此处也就是终端。这很适合短文本，但长文件可能会滚动得太快。
 
-:::single-choice{#display-short-file}
-哪个命令会在终端中显示 `myfile.txt` 的全部内容？
+:::single-choice{#display-short-file} 哪个命令会在终端中显示 `myfile.txt` 的全部内容？
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file` 报告文件可能的类型，不会打印其中保存的完整文本。"}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch` 更新时间戳或创建缺失文件，不会显示文件内容。"}
@@ -48,8 +47,7 @@ $ cat dogfile birdfile > animals
 
 shell 会在运行 `cat` 前创建或清空 `animals`，再把合并后的输出发送到其中。不要把任何输入文件用作这个目标，否则它可能在 `cat` 读取前就被清空。
 
-:::single-choice{#combine-files-in-order}
-哪个命令会把 `part1` 后接 `part2` 的内容写入新建或替换的 `whole`？
+:::single-choice{#combine-files-in-order} 哪个命令会把 `part1` 后接 `part2` 的内容写入新建或替换的 `whole`？
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="重定向只能有一个目标，其他单词会成为 `cat` 的操作数；这没有表达所需的输入输出顺序。"}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` 按列出的顺序输出两个文件，`>` 再把合并结果重定向到 `whole`。"}
@@ -72,8 +70,7 @@ $ cat > newfile.txt
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-你想在现有 `notes.txt` 末尾继续输入文本。哪个命令会开始这一操作而不清空文件？
+:::single-choice{#append-terminal-input} 你想在现有 `notes.txt` 末尾继续输入文本。哪个命令会开始这一操作而不清空文件？
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="单个 `>` 会在重定向输入前清空目标，导致 `notes.txt` 中的已有文本丢失。"}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="`>>` 以追加方式打开目标，因此 `cat` 读取的文本会添加到现有内容之后。"}
@@ -97,8 +94,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-哪个命令只给 `notes.txt` 输出中的非空行编号？
+:::single-choice{#number-nonempty-lines} 哪个命令只给 `notes.txt` 输出中的非空行编号？
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="`-b` 只给非空输出行编号，空行不会获得行号。"}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="`-n` 会给包括空行在内的每个输出行编号，不符合只处理非空行的要求。"}
@@ -113,8 +109,7 @@ $ cat -s messy.txt
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-哪个命令更适合交互式阅读很长的日志文件？
+:::single-choice{#choose-viewer-for-long-file} 哪个命令更适合交互式阅读很长的日志文件？
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` 支持滚动、搜索和可控退出，适合交互式阅读长文件。"}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` 会一次把整个日志写到终端，长文件可能在你检查前就滚过屏幕。"}

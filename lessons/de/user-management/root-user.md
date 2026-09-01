@@ -30,8 +30,7 @@ $ su - operator
 
 Beende die Subshell, sobald die Arbeit für das Zielkonto abgeschlossen ist.
 
-:::single-choice{#root-su-login-shell}
-Welcher Befehl fordert eine Shell im Anmeldestil als Benutzer `operator` an?
+:::single-choice{#root-su-login-shell} Welcher Befehl fordert eine Shell im Anmeldestil als Benutzer `operator` an?
 
 ::option[`su - operator`]{#root-su-login-operator .correct explanation="Der Bindestrich fordert das Verhalten einer Anmelde-Shell und eine auf `operator` ausgerichtete Umgebung an."}
 ::option[`su operator`]{#root-su-preserve-environment explanation="Dies wechselt zur Zielidentität, fordert aber nicht die hier vorgestellte vollständige Initialisierung im Anmeldestil an."}
@@ -50,8 +49,7 @@ Das bedeutet nicht, dass die Anfrage genehmigt wird. Die sudo-Richtlinie berück
 
 Bevorzuge nach Möglichkeit einen einzelnen, eng begrenzten administrativen Befehl gegenüber einer langlebigen privilegierten Shell. Der kleinere Umfang verringert das Risiko, dass versehentliche Befehle mit erhöhten Rechten ausgeführt werden.
 
-:::single-choice{#root-sudo-target-user}
-Was fordert `sudo -u postgres id` an?
+:::single-choice{#root-sudo-target-user} Was fordert `sudo -u postgres id` an?
 
 ::option[Das aktuelle Konto dauerhaft in `postgres` umzubenennen.]{#root-sudo-rename explanation="`sudo` führt einen Befehl mit Zielzugangsdaten aus; es benennt keine Kontoeinträge um."}
 ::option[`id` mit `postgres` als Zielbenutzer auszuführen, sofern die Richtlinie dies erlaubt.]{#root-sudo-postgres-id .correct explanation="Die Option `-u` wählt die Zielidentität aus, während die sudoers-Richtlinie entscheidet, ob die Anfrage erlaubt wird."}
@@ -64,8 +62,7 @@ Befehle wie `su -`, `sudo -s` oder `sudo -i` können eine privilegierte Shell er
 
 Das Auditverhalten hängt von der Konfiguration ab. `sudo` protokolliert Aufrufe häufig, doch ein einzelner protokollierter Shell-Start liefert nicht automatisch eine vollständige Aufzeichnung jedes in dieser Shell eingegebenen Befehls. Shell-Verlauf, System-Auditing und sudo-E/A-Protokollierung sind getrennte Mechanismen mit eigenen Richtlinien.
 
-:::single-choice{#root-persistent-shell-risk}
-Warum ist eine langlebige root-Shell riskanter, als jeweils nur einen verstandenen Befehl mit erhöhten Rechten auszuführen?
+:::single-choice{#root-persistent-shell-risk} Warum ist eine langlebige root-Shell riskanter, als jeweils nur einen verstandenen Befehl mit erhöhten Rechten auszuführen?
 
 ::option[root-Shells löschen automatisch jeden Befehl aus allen Audit-Systemen.]{#root-shell-no-audit explanation="Die Protokollierung hängt von der Konfiguration ab; die Behauptung, alle Audit-Aufzeichnungen würden automatisch gelöscht, ist falsch."}
 ::option[Die Shell deaktiviert Dateisystempfade, die aus mehr als einer Komponente bestehen.]{#root-shell-path-limit explanation="Privilegien führen nicht zu dieser Pfadeinschränkung; problematisch sind die auf gewöhnliche Vorgänge angewendeten Befugnisse."}
@@ -82,8 +79,7 @@ $ sudo -l
 
 Prüfe Befehlspfade, erlaubte Zielbenutzer und Einschränkungen für Argumente. Eine weit gefasst wirkende Regel solltest du nicht als Erlaubnis für sachfremde Arbeiten behandeln.
 
-:::single-choice{#root-list-sudo-rules}
-Welcher Befehl listet die sudo-Berechtigungen auf, die dem aktuell aufrufenden Benutzer zur Verfügung stehen?
+:::single-choice{#root-list-sudo-rules} Welcher Befehl listet die sudo-Berechtigungen auf, die dem aktuell aufrufenden Benutzer zur Verfügung stehen?
 
 ::option[`sudo -i`]{#root-sudo-login explanation="Dies fordert eine Ziel-Shell im Anmeldestil an und kann den Umfang der Privilegien erhöhen; es ist keine schreibgeschützte Richtlinienauflistung."}
 ::option[`sudo -l`]{#root-sudo-list .correct explanation="Die kleingeschriebene Option `-l` fordert sudo auf, die von seiner aktuellen Richtlinie erlaubten Befehle aufzulisten."}
@@ -108,8 +104,7 @@ $ sudo visudo -f /etc/sudoers.d/application-admins
 
 Bearbeite sudoers nicht mit einer gewöhnlichen Umleitung oder einem Editor-Arbeitsablauf ohne Validierung. Ein Syntax- oder Berechtigungsfehler kann den administrativen Zugriff entfernen. Halte beim Ändern einer entfernten Autorisierung einen weiteren verifizierten Wiederherstellungsweg bereit.
 
-:::single-choice{#root-edit-sudoers-safely}
-Welches Werkzeug solltest du verwenden, um die sudoers-Hauptrichtlinie zu bearbeiten und ihre Syntax zu prüfen?
+:::single-choice{#root-edit-sudoers-safely} Welches Werkzeug solltest du verwenden, um die sudoers-Hauptrichtlinie zu bearbeiten und ihre Syntax zu prüfen?
 
 ::option[`cat`]{#root-cat-sudoers explanation="`cat` kann lesbaren Text anzeigen, bearbeitet, sperrt oder validiert die sudoers-Syntax aber nicht sicher."}
 ::option[`visudo`]{#root-visudo .correct explanation="`visudo` bietet Sperrung und Syntaxvalidierung speziell für Änderungen an sudoers-Richtlinien."}

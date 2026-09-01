@@ -30,8 +30,7 @@ $ readlink -f /sys/class/block/sda
 
 Ce nom d'exemple peut être absent sur les systèmes qui utilisent d'autres interfaces de stockage.
 
-:::single-choice{#sysfs-canonical-device-tree}
-Quelle sous-arborescence de sysfs contient la hiérarchie principale des périphériques du noyau ?
+:::single-choice{#sysfs-canonical-device-tree} Quelle sous-arborescence de sysfs contient la hiérarchie principale des périphériques du noyau ?
 
 ::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="Sysfs n'est pas un dépôt de secrets d'authentification utilisateur."}
 ::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="La sous-arborescence devices représente la topologie parent-enfant ; les vues par classe et bus y renvoient."}
@@ -53,8 +52,7 @@ $ cat /sys/class/block/sda/size
 
 `dev` indique les numéros majeur et mineur. `ro` indique l'état de lecture seule. Pour les périphériques bloc Linux, `size` s'exprime conventionnellement en secteurs de 512 octets, quelle que soit la taille des secteurs physiques. Consultez toujours la documentation ABI du noyau pour les unités et le sens d'un attribut précis.
 
-:::single-choice{#sysfs-dev-attribute}
-Que contient normalement l'attribut sysfs `dev` d'un périphérique bloc ?
+:::single-choice{#sysfs-dev-attribute} Que contient normalement l'attribut sysfs `dev` d'un périphérique bloc ?
 
 ::option[Tous les fichiers actuellement stockés sur le périphérique.]{#sysfs-file-list explanation="L'arborescence d'un système de fichiers n'est pas intégrée dans ce petit attribut."}
 ::option[Le nom du paquet qui a installé le matériel.]{#sysfs-package-name explanation="Le matériel n'est pas installé comme un paquet identifié par l'attribut `dev`."}
@@ -67,8 +65,7 @@ Que contient normalement l'attribut sysfs `dev` d'un périphérique bloc ?
 
 Ces deux interfaces se complètent. Aucune ne constitue à elle seule un inventaire exhaustif de tous les faits matériels, et un périphérique peut disparaître pendant son inspection.
 
-:::single-choice{#sysfs-versus-dev}
-Quelle affirmation distingue correctement `/sys` de `/dev` ?
+:::single-choice{#sysfs-versus-dev} Quelle affirmation distingue correctement `/sys` de `/dev` ?
 
 ::option[`/sys` stocke les documents utilisateur et `/dev` les archives de paquets.]{#sysfs-dev-user-files explanation="Aucun de ces répertoires n'a ces rôles ordinaires de stockage de données."}
 ::option[`/sys` expose les attributs des objets du noyau ; `/dev` fournit des nœuds pour les E/S.]{#sysfs-dev-distinction .correct explanation="Sysfs modélise les objets et contrôles, tandis que les nœuds acheminent les opérations vers des pilotes caractère ou bloc."}
@@ -81,8 +78,7 @@ Certains attributs sysfs sont inscriptibles et peuvent modifier l'état d'alimen
 
 Lisez l'ABI documentée et la valeur actuelle, déterminez comment rendre le réglage persistant, et ne testez que sur un système autorisé. Ne modifiez jamais récursivement les permissions et n'écrivez pas de valeurs devinées dans `/sys`.
 
-:::single-choice{#sysfs-write-risk}
-Pourquoi une écriture dans un attribut sysfs peut-elle être importante pour l'exploitation ?
+:::single-choice{#sysfs-write-risk} Pourquoi une écriture dans un attribut sysfs peut-elle être importante pour l'exploitation ?
 
 ::option[Chaque écriture crée une copie de sauvegarde ordinaire sur le disque.]{#sysfs-backup-copy explanation="Sysfs est virtuel et ne fournit pas de sauvegarde automatique des changements de contrôle."}
 ::option[Sysfs ignore toutes les écritures, même dans un attribut inscriptible.]{#sysfs-ignore-writes explanation="Les attributs inscriptibles existent précisément pour accepter des valeurs de contrôle prises en charge."}

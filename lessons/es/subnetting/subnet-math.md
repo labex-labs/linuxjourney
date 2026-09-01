@@ -24,8 +24,7 @@ network  11000000.10101000.00000001.00000000
 
 Una operación AND bit a bit conserva los bits de la dirección donde la máscara vale uno y pone a cero los bits de host. El resultado es `192.168.1.0/24`.
 
-:::single-choice{#subnet-math-network-operation}
-¿Qué operación obtiene una dirección de red IPv4 a partir de una dirección y una máscara?
+:::single-choice{#subnet-math-network-operation} ¿Qué operación obtiene una dirección de red IPv4 a partir de una dirección y una máscara?
 
 ::option[Concatenación de cadenas decimales.]{#subnet-math-concatenation explanation="Unir los octetos mostrados no aplica los bits del prefijo."}
 ::option[Resta de puertos de transporte.]{#subnet-math-port-subtraction explanation="Los puertos no están relacionados con el prefijo de red."}
@@ -42,8 +41,7 @@ Para el prefijo `/p`, la parte de host contiene `32 - p` bits. La cantidad total
 
 Por tanto, un `/24` contiene `2^8 = 256` direcciones. En una subred tradicional con broadcast, el valor de host con todos los bits a cero es la dirección de red y el valor con todos los bits a uno es el broadcast dirigido, por lo que quedan 254 direcciones ordinarias de host unicast.
 
-:::single-choice{#subnet-math-24-total}
-¿Cuántas direcciones totales contiene un `/24` de IPv4?
+:::single-choice{#subnet-math-24-total} ¿Cuántas direcciones totales contiene un `/24` de IPv4?
 
 ::option[24]{#subnet-math-total-24 explanation="La longitud del prefijo cuenta bits de red, no direcciones."}
 ::option[256]{#subnet-math-total-256 .correct explanation="Ocho bits de host producen 2^8 valores de dirección distintos."}
@@ -60,8 +58,7 @@ broadcast: 192.168.1.191
 range:     192.168.1.129 through 192.168.1.190
 ```
 
-:::single-choice{#subnet-math-165-network}
-¿Cuál es la dirección de red de `192.168.1.165/26`?
+:::single-choice{#subnet-math-165-network} ¿Cuál es la dirección de red de `192.168.1.165/26`?
 
 ::option[`192.168.1.0`]{#subnet-math-network-zero explanation="Ese es el primer bloque `/26`, que abarca de 0 a 63."}
 ::option[`192.168.1.165`]{#subnet-math-network-self explanation="La dirección proporcionada tiene bits de host distintos de cero dentro del `/26`."}
@@ -72,8 +69,7 @@ range:     192.168.1.129 through 192.168.1.190
 
 El atajo `2^host_bits - 2` no es universal. Los prefijos IPv4 `/31` están definidos para enlaces punto a punto donde ambas direcciones pueden ser puntos finales y no se necesita broadcast dirigido. Un `/32` identifica una ruta de host o una dirección de interfaz. La tecnología de red y el uso del protocolo determinan qué direcciones pueden asignarse.
 
-:::single-choice{#subnet-math-31-exception}
-¿Por qué no debes restar dos direcciones de todos los prefijos IPv4?
+:::single-choice{#subnet-math-31-exception} ¿Por qué no debes restar dos direcciones de todos los prefijos IPv4?
 
 ::option[Las direcciones IPv4 no contienen bits de host en ningún prefijo.]{#subnet-math-no-host-bits explanation="La mayoría de los prefijos dejan uno o varios bits de host."}
 ::option[Los enlaces punto a punto `/31` pueden utilizar ambas direcciones como puntos finales.]{#subnet-math-31-both .correct explanation="El modelo punto a punto no necesita las reservas tradicionales de red y broadcast dirigido."}
@@ -84,8 +80,7 @@ El atajo `2^host_bits - 2` no es universal. Los prefijos IPv4 `/31` están defin
 
 Utiliza una herramienta o biblioteca independiente para comprobar el trabajo manual y compáralo después con la configuración real de las interfaces y las rutas. Un prefijo matemáticamente válido aún puede entrar en conflicto con otra subred o incumplir un plan de asignación.
 
-:::single-choice{#subnet-math-valid-not-safe}
-¿Qué no demuestra un cálculo correcto de subred?
+:::single-choice{#subnet-math-valid-not-safe} ¿Qué no demuestra un cálculo correcto de subred?
 
 ::option[Que el plan de direcciones no tenga solapamientos ni conflictos de políticas.]{#subnet-math-no-conflict .correct explanation="Aún se necesitan pruebas de la asignación operativa y el enrutamiento."}
 ::option[Que las direcciones IPv4 contengan 32 bits.]{#subnet-math-proves-size explanation="El cálculo se basa en ese tamaño fijo."}

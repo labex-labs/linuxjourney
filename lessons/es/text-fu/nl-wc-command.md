@@ -30,8 +30,7 @@ De izquierda a derecha:
 
 Una última línea de texto sin un salto de línea final no se cuenta con `wc -l`, porque esta opción cuenta caracteres de nueva línea, no las líneas percibidas visualmente.
 
-:::single-choice{#wc-default-columns}
-En la salida predeterminada de `wc file.txt`, ¿qué representan los tres primeros números?
+:::single-choice{#wc-default-columns} En la salida predeterminada de `wc file.txt`, ¿qué representan los tres primeros números?
 
 ::option[Líneas, palabras y bytes, en ese orden.]{#wc-lines-words-bytes .correct explanation="La salida predeterminada de `wc` muestra el recuento de saltos de línea, palabras y bytes antes del nombre de archivo."}
 ::option[Bytes, palabras y líneas, en ese orden.]{#wc-bytes-words-lines explanation="Son las mismas medidas en un orden incorrecto. El recuento de líneas aparece primero."}
@@ -61,16 +60,14 @@ $ printf 'one two\n' | wc -w
 2
 ```
 
-:::single-choice{#wc-word-count-only}
-¿Qué orden muestra únicamente el recuento de palabras de `essay.txt`?
+:::single-choice{#wc-word-count-only} ¿Qué orden muestra únicamente el recuento de palabras de `essay.txt`?
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="La opción `-l` muestra caracteres de nueva línea, no palabras."}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="La opción `-w` selecciona la medida de recuento de palabras."}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="La opción `-c` muestra bytes, no palabras delimitadas por espacios en blanco."}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-¿Qué opción pide a `wc` que cuente caracteres en vez de bytes con la configuración regional actual?
+:::single-choice{#wc-characters-not-bytes} ¿Qué opción pide a `wc` que cuente caracteres en vez de bytes con la configuración regional actual?
 
 ::option[`-m`]{#wc-character-option .correct explanation="La opción `-m` muestra caracteres, que pueden diferir de los bytes en texto multibyte."}
 ::option[`-c`]{#wc-byte-option explanation="La opción `-c` muestra bytes. Un carácter puede ocupar varios bytes en codificaciones como UTF-8."}
@@ -100,8 +97,7 @@ $ nl notes.txt
 
 `nl` escribe una salida numerada; no modifica `notes.txt`.
 
-:::single-choice{#nl-default-blank-lines}
-¿Cómo trata `nl notes.txt` las líneas vacías del cuerpo de forma predeterminada?
+:::single-choice{#nl-default-blank-lines} ¿Cómo trata `nl notes.txt` las líneas vacías del cuerpo de forma predeterminada?
 
 ::option[Omite por completo cada línea vacía de la salida.]{#nl-omit-blank explanation="La línea vacía permanece en la salida, pero no se le asigna un número de forma predeterminada."}
 ::option[Las conserva sin números de línea.]{#nl-preserve-unnumbered .correct explanation="El estilo predeterminado del cuerpo numera las líneas no vacías y deja pasar las vacías sin numerarlas."}
@@ -121,8 +117,7 @@ $ nl -ba notes.txt
 
 Otras opciones controlan el formato. Por ejemplo, `-w 3` establece la anchura del campo numérico y `-s ': '` cambia el separador posterior al número.
 
-:::single-choice{#nl-number-all-lines}
-¿Qué orden numera todas las líneas del cuerpo de `notes.txt`, incluidas las vacías?
+:::single-choice{#nl-number-all-lines} ¿Qué orden numera todas las líneas del cuerpo de `notes.txt`, incluidas las vacías?
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="Esto cambia la anchura del campo numérico, pero conserva la regla predeterminada de numerar líneas no vacías."}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="La opción `-b` elige el estilo del cuerpo y el estilo `a` numera todas las líneas."}

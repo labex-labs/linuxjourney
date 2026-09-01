@@ -23,8 +23,7 @@ valeur : 128  64  32  16   8  4  2  1
 
 L’addition des huit valeurs donne 255. Le nombre décimal 192 vaut `128 + 64` ; sa représentation binaire est donc `11000000`.
 
-:::single-choice{#subnet-cheats-binary-192}
-Quelle est la représentation binaire sur huit bits du nombre décimal 192 ?
+:::single-choice{#subnet-cheats-binary-192} Quelle est la représentation binaire sur huit bits du nombre décimal 192 ?
 
 ::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="Les positions 128 et 64 sont à un et les autres à zéro."}
 ::option[`10101000`]{#subnet-cheats-168 explanation="Ce motif vaut 168."}
@@ -42,8 +41,7 @@ décimal :   0  128  192  224  240  248  252  254  255
 
 Par exemple, `/19` contient 16 bits de préfixe complets et trois bits supplémentaires dans le troisième octet ; son masque est donc `255.255.224.0`.
 
-:::single-choice{#subnet-cheats-prefix-19}
-Quel masque correspond au préfixe IPv4 `/19` ?
+:::single-choice{#subnet-cheats-prefix-19} Quel masque correspond au préfixe IPv4 `/19` ?
 
 ::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="Seize bits complets et trois supplémentaires donnent 255, 255 et 224."}
 ::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="Une longueur de préfixe est un nombre de bits, et non un octet décimal du masque."}
@@ -56,8 +54,7 @@ Dans le premier octet du masque différent de 255, soustrayez sa valeur de 256 p
 
 L’adresse `198.51.100.77/27` se trouve dans le bloc allant de 64 à 95.
 
-:::single-choice{#subnet-cheats-77-network}
-Quelle est l’adresse réseau de `198.51.100.77/27` ?
+:::single-choice{#subnet-cheats-77-network} Quelle est l’adresse réseau de `198.51.100.77/27` ?
 
 ::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="Ce bloc couvre les valeurs du dernier octet allant de 32 à 63."}
 ::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="Cette adresse contient des bits d’hôte et ne constitue pas la limite du bloc."}
@@ -75,8 +72,7 @@ Pour convertir le nombre décimal 123, sélectionnez successivement les plus gra
 
 Pour revenir au décimal, additionnez uniquement les valeurs de position dont les bits valent un. Conservez toujours les huit positions lorsque vous travaillez dans un octet IPv4.
 
-:::single-choice{#subnet-cheats-binary-123}
-Quelle valeur sur huit bits correspond au nombre décimal 123 ?
+:::single-choice{#subnet-cheats-binary-123} Quelle valeur sur huit bits correspond au nombre décimal 123 ?
 
 ::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="La valeur numérique est semblable, mais la représentation d’un octet doit conserver huit positions."}
 ::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="Les positions à un donnent 64 + 32 + 16 + 8 + 2 + 1."}

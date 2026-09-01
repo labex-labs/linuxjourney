@@ -32,8 +32,7 @@ Linux では、ファイルとディレクトリはファイルシステムと�
 |-- var
 ```
 
-:::single-choice{#identify-root-subdirectories}
-上のディレクトリツリーで、`home` と `etc` は `/` とどのような関係にありますか？
+:::single-choice{#identify-root-subdirectories} 上のディレクトリツリーで、`home` と `etc` は `/` とどのような関係にありますか？
 
 ::option[`/` から枝分かれするサブディレクトリです。]{#root-subdirectories .correct explanation="どちらもツリー内で `/` の直下にあります。ファイルシステムはルートからサブディレクトリへ枝分かれします。"}
 ::option[`bin` ディレクトリ内に保存されたファイルです。]{#files-inside-bin explanation="ツリーでは `home` と `etc` は `bin` の中ではなく、同じ階層にあります。この例ではファイルではなくディレクトリです。"}
@@ -52,8 +51,7 @@ Linux では、ファイルとディレクトリはファイルシステムと�
 
 `/` で始まるパスは、ルートディレクトリから始まるため絶対パスです。`Movies` のようなパスは現在位置によって意味が変わるため、相対パスです。
 
-:::single-choice{#recognize-absolute-path}
-`/home/pete/Movies` が絶対パスである理由は何ですか？
+:::single-choice{#recognize-absolute-path} `/home/pete/Movies` が絶対パスである理由は何ですか？
 
 ::option[`/` で区切られた複数のディレクトリ名を含むから。]{#contains-directories explanation="絶対パスと相対パスのどちらも複数のディレクトリ名を含められます。種類を決めるのは名前の数ではなく出発点です。"}
 ::option[`Movies` という名前のディレクトリで終わるから。]{#ends-with-movies explanation="目的地の名前によって絶対パスかどうかは決まりません。絶対パスはルートから始まることで識別します。"}
@@ -64,8 +62,7 @@ Linux では、ファイルとディレクトリはファイルシステムと�
 
 `pwd` は「print working directory」の略です。作業ディレクトリとは、現在シェルがいるディレクトリです。相対パスを使うコマンドは、この場所を出発点にします。
 
-:::single-choice{#expand-pwd-name}
-`pwd` は何の略ですか？
+:::single-choice{#expand-pwd-name} `pwd` は何の略ですか？
 
 ::option[Print working directory]{#print-working-directory .correct explanation="名前が表すとおり、シェルの現在の作業ディレクトリを表示するコマンドです。"}
 ::option[Present working directory]{#present-working-directory explanation="日常会話では現在位置を present directory と呼べますが、`pwd` の展開ではありません。"}
@@ -85,8 +82,7 @@ $ pwd
 
 ユーザー名、ホームディレクトリ、現在位置は異なる場合があるため、実際の出力もシステムによって変わります。`pwd` は情報を表示するだけで、作業ディレクトリは変更しません。一方、`cd` はシェルの作業ディレクトリを変更します。
 
-:::single-choice{#check-location-without-changing-it}
-現在のディレクトリを変更せずに確認する操作はどれですか？
+:::single-choice{#check-location-without-changing-it} 現在のディレクトリを変更せずに確認する操作はどれですか？
 
 ::option[`cd` を実行し、移動先のディレクトリを読む。]{#run-cd explanation="`cd` は作業ディレクトリを変更するため、場所を変えずに確認するという要件を満たしません。"}
 ::option[`/home/pete` と入力し、そのパスをコマンドとして使う。]{#run-path explanation="絶対パスは場所を識別しますが、パス自体は現在のディレクトリを報告するコマンドではありません。"}

@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 Die erste Zeile enthält die aktuelle Uhrzeit, Betriebsdauer, Anzahl angemeldeter Benutzer und die Lastmittelwerte über 1, 5 und 15 Minuten. Die Taskzeile zählt die Prozesszustände. Der Lastmittelwert ist kein unmittelbarer CPU-Prozentwert; unter Linux umfasst er ausführbare Tasks und Tasks in nicht unterbrechbarem Schlaf. Beurteile ihn deshalb zusammen mit CPU-Anzahl, E/A-Aktivität und Latenz.
 
-:::single-choice{#top-load-average-periods}
-Was stellen die drei Lastmittelwerte in `top` dar?
+:::single-choice{#top-load-average-periods} Was stellen die drei Lastmittelwerte in `top` dar?
 
 ::option[Die durchschnittliche Last über 1, 5 und 15 Minuten.]{#top-one-five-fifteen .correct explanation="Die Werte fassen zunehmend längere vergangene Zeitfenster zusammen."}
 ::option[Die CPU-Auslastung durch die drei aktivsten Prozesse.]{#top-three-processes explanation="Die CPU-Auslastung einzelner Prozesse erscheint in der Prozesstabelle und nicht in diesen drei Übersichtswerten."}
@@ -48,8 +47,7 @@ Häufige CPU-Felder sind:
 
 Ein hoher `wa`-Wert kann eine Hypothese über E/A-Wartezeit stützen, identifiziert aber weder ein Gerät noch beweist er, dass Speicher der einzige Engpass ist. Untersuche Gerätelatenz und Anwendungsverhalten, bevor du eine Schlussfolgerung ziehst.
 
-:::single-choice{#top-cpu-wa-meaning}
-Was meldet das CPU-Feld `wa`?
+:::single-choice{#top-cpu-wa-meaning} Was meldet das CPU-Feld `wa`?
 
 ::option[Zeit, die mit der Ausführung gewöhnlichen Benutzercodes verbracht wurde.]{#top-wa-user explanation="Die Ausführung im Userspace wird unter `us` gemeldet."}
 ::option[Die Anzahl der seit dem Bootvorgang in den Swap geschriebenen Speicherseiten.]{#top-wa-swap explanation="Swap-Aktivität ist keine CPU-Zeitkategorie."}
@@ -70,8 +68,7 @@ Wichtige Spalten sind häufig:
 
 `VIRT` ist nicht die Menge des verbrauchten physischen Arbeitsspeichers. Der Wert kann abgebildete Dateien, gemeinsam genutzte Bibliotheken, reservierten Adressraum und ausgelagerte Seiten umfassen. Selbst `RES` ist mit Bedacht zu interpretieren, da gemeinsam genutzte Seiten die Zuordnung erschweren.
 
-:::single-choice{#top-res-versus-virt}
-Welches Feld kommt dem aktuell residenten physischen Speicher eines Prozesses am nächsten?
+:::single-choice{#top-res-versus-virt} Welches Feld kommt dem aktuell residenten physischen Speicher eines Prozesses am nächsten?
 
 ::option[`TIME+`]{#top-time-field explanation="Dieses Feld summiert CPU-Zeit und keinen Speicher."}
 ::option[`VIRT`]{#top-virt-field explanation="Die virtuelle Größe umfasst Adressraum, der nicht im Arbeitsspeicher resident sein muss."}
@@ -90,8 +87,7 @@ Drücke innerhalb von `top` bei üblichen procps-ng-Implementierungen `P` zum So
 
 Notiere PID, Befehl, Zeitstempel und mehrere Stichproben, bevor du eingreifst. Dass ein Prozess kurz an der Spitze erscheint, kann normal sein; ihn zu beenden kann Datenverlust oder einen Ausfall verursachen.
 
-:::single-choice{#top-monitor-known-pid}
-Welcher Aufruf beschränkt die Anzeige auf PID 1234?
+:::single-choice{#top-monitor-known-pid} Welcher Aufruf beschränkt die Anzeige auf PID 1234?
 
 ::option[`top -u 1234`]{#top-user-filter explanation="Die Form `-u` filtert nach Benutzer, statt den Wert als PID zu behandeln."}
 ::option[`top -d 1234`]{#top-delay-filter explanation="Die Option `-d` steuert bei üblichen Implementierungen das Aktualisierungsintervall."}

@@ -30,8 +30,7 @@ $ ls -li myfile myfilelink
 $ readlink myfilelink
 ```
 
-:::single-choice{#symlinks-create-symbolic}
-対象テキストが `myfile` のシンボリックリンク `myfilelink` を作るコマンドはどれですか？
+:::single-choice{#symlinks-create-symbolic} 対象テキストが `myfile` のシンボリックリンク `myfilelink` を作るコマンドはどれですか？
 
 ::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="`-s` オプションはシンボリックリンクを要求し、その後に対象と新しいリンク名を指定します。"}
 ::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="`-s` がなければ、`ln` は既存 inode へのハードリンクを要求します。"}
@@ -50,8 +49,7 @@ $ ln -s ../data/item tree/current/item
 
 `tree` 階層全体を移動しても、この相対関係は保たれます。リンクまたは対象だけを移動すると壊れることがあります。存在しない対象をシンボリックリンクに保存することもでき、その状態を dangling link または broken link と呼びます。
 
-:::single-choice{#symlinks-relative-resolution}
-シンボリックリンクの相対的な対象は、どこを基準に解決されますか？
+:::single-choice{#symlinks-relative-resolution} シンボリックリンクの相対的な対象は、どこを基準に解決されますか？
 
 ::option[作成したユーザーのホームディレクトリ。]{#symlinks-creator-home explanation="作成者の識別情報が、永続的な解決基準になることはありません。"}
 ::option[最初に一覧表示したシェルの現在のディレクトリ。]{#symlinks-listing-shell explanation="一覧表示時のコンテキストによって、保存された対象関係が書き換わることはありません。"}
@@ -73,8 +71,7 @@ $ ls -li myfile myhardlink
 
 inode 番号はそのファイルシステム内でだけ意味を持つため、ハードリンクはファイルシステムの境界を越えられません。また Linux は、循環やセキュリティ上の問題を防ぐため、一般ユーザーによるディレクトリへのハードリンクを制限し、所有していないファイルへのリンクも制限する場合があります。
 
-:::single-choice{#symlinks-hard-link-inode}
-1 つの通常ファイルに対する 2 つのハードリンクが共有するものは何ですか？
+:::single-choice{#symlinks-hard-link-inode} 1 つの通常ファイルに対する 2 つのハードリンクが共有するものは何ですか？
 
 ::option[似たファイル名だけで、ファイルデータは別々。]{#symlinks-separate-data explanation="それは独立したコピーであり、ハードリンクではありません。"}
 ::option[別のシンボリックリンク inode 内に保存されたパス名。]{#symlinks-stored-path explanation="パステキストを保存するのは、シンボリックリンクを特徴付ける仕組みです。"}
@@ -93,8 +90,7 @@ $ rm -- myfilelink
 
 ディレクトリへのシンボリックリンクを削除する際は、末尾にスラッシュを付けないでください。コマンドによっては、末尾のスラッシュによるパス解決でディレクトリとしてリンクをたどる場合があります。`ls -ld -- LINK` で調べ、リンク名を意図的に削除してください。
 
-:::single-choice{#symlinks-remove-symbolic}
-通常、シンボリックリンク自体を削除するとどうなりますか？
+:::single-choice{#symlinks-remove-symbolic} 通常、シンボリックリンク自体を削除するとどうなりますか？
 
 ::option[シンボリックリンクの inode と名前が削除され、対象は残ります。]{#symlinks-remove-link-only .correct explanation="シンボリックリンクの unlink は、保存された対象テキストが指すオブジェクトを操作しません。"}
 ::option[対象と、それに対するすべてのハードリンクが自動的に消去されます。]{#symlinks-remove-target explanation="シンボリックリンクは別のファイルシステムオブジェクトであり、対象を所有していません。"}
@@ -114,8 +110,7 @@ $ rm -- myfilelink
 
 `lrwxrwxrwx` と表示されるパーミッションは、一般的なアクセス許可を意味しません。アクセスは、ディレクトリの探索、リンク追跡方針、対象のパーミッションによって決まり、一部の保護ディレクトリ規則ではシンボリックリンクの所有権も関係します。
 
-:::single-choice{#symlinks-readlink-output}
-既定で `readlink LINK` が出力するものは何ですか？
+:::single-choice{#symlinks-readlink-output} 既定で `readlink LINK` が出力するものは何ですか？
 
 ::option[シンボリックリンクに保存されたパス名テキスト。]{#symlinks-readlink-target-text .correct explanation="対象ファイルの内容を読まず、リンクオブジェクトを調べます。"}
 ::option[対象となる通常ファイルの全バイト内容。]{#symlinks-readlink-file-content explanation="対象の内容には、意図的に解決した後でファイル読み取りコマンドを使います。"}

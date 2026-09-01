@@ -22,8 +22,7 @@ Por convenção, os três fluxos padrão usam estes números de descritores de a
 
 Um programa pode escolher se e como usará esses fluxos. Um comando projetado para ler stdin costuma aguardar a entrada do terminal quando não recebe um operando de arquivo nem outra fonte de entrada.
 
-:::single-choice{#stdin-descriptor-number}
-Qual descritor de arquivo representa convencionalmente a entrada padrão?
+:::single-choice{#stdin-descriptor-number} Qual descritor de arquivo representa convencionalmente a entrada padrão?
 
 ::option[`0`]{#stdin-fd-zero .correct explanation="A entrada padrão é convencionalmente o descritor de arquivo 0."}
 ::option[`1`]{#stdin-fd-one explanation="O descritor de arquivo 1 representa convencionalmente a saída padrão, o fluxo dos resultados comuns."}
@@ -43,8 +42,7 @@ O shell trata `< peanuts.txt`; `cat` simplesmente lê o descritor de arquivo 0. 
 
 Se o arquivo de entrada não existir ou não puder ser aberto, o shell informará o erro de redirecionamento e não iniciará o comando com essa entrada.
 
-:::single-choice{#stdin-from-file}
-Qual comando faz `sort` ler sua entrada padrão de `names.txt`?
+:::single-choice{#stdin-from-file} Qual comando faz `sort` ler sua entrada padrão de `names.txt`?
 
 ::option[`sort < names.txt`]{#sort-stdin-file .correct explanation="O Bash abre `names.txt` para leitura e o conecta a `sort` no descritor de arquivo 0."}
 ::option[`sort > names.txt`]{#stdout-to-names explanation="O operador de maior redireciona stdout para o arquivo e pode truncá-lo. Ele não fornece o arquivo como entrada."}
@@ -64,8 +62,7 @@ $ wc -l < peanuts.txt
 
 As duas formas contam as linhas nos mesmos dados. Na primeira, `wc` conhece o nome do arquivo porque o recebeu como argumento. Na segunda, ele recebe apenas um fluxo em stdin e, portanto, não possui um nome de arquivo para mostrar.
 
-:::single-choice{#stdin-not-command-argument}
-Por que `wc -l < peanuts.txt` normalmente omite `peanuts.txt` da saída?
+:::single-choice{#stdin-not-command-argument} Por que `wc -l < peanuts.txt` normalmente omite `peanuts.txt` da saída?
 
 ::option[`wc` exclui o nome do arquivo depois de terminar a contagem das linhas.]{#stdin-delete-name explanation="O comando não renomeia nem exclui o arquivo de origem. Apenas sua conexão de entrada é diferente."}
 ::option[O operador `<` oculta todas as palavras mostradas pelo comando.]{#stdin-hide-words explanation="O redirecionamento de entrada não filtra stdout. O nome está ausente porque `wc` nunca o recebeu como argumento."}
@@ -87,8 +84,7 @@ O shell realiza duas conexões independentes:
 
 `cat` lê bytes de stdin e os grava em stdout; assim, `banana.txt` recebe o conteúdo da origem. Para uma cópia comum de arquivo, `cp peanuts.txt banana.txt` comunica a intenção mais diretamente; este exemplo trata das conexões entre fluxos.
 
-:::single-choice{#stdin-and-stdout-files}
-Em `cat < input.txt > output.txt`, qual arquivo fornece stdin e qual recebe stdout?
+:::single-choice{#stdin-and-stdout-files} Em `cat < input.txt > output.txt`, qual arquivo fornece stdin e qual recebe stdout?
 
 ::option[`output.txt` fornece stdin; `input.txt` recebe stdout.]{#stdin-output-stdout-input explanation="Essa resposta inverte os significados dos operadores. As setas apontam para o comando na entrada e para o arquivo na saída."}
 ::option[`input.txt` fornece stdin; `output.txt` recebe stdout.]{#stdin-input-stdout-output .correct explanation="O redirecionamento `<` abre `input.txt` para o descritor 0, e `>` abre `output.txt` para o descritor 1."}

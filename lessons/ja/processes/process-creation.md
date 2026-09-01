@@ -18,8 +18,7 @@ Linux のプロセスは親子関係を形成します。シェルは通常、�
 
 子は論理的に独立したプロセス状態を得ます。Linux は最初、copy-on-write で物理メモリページを共有し、一方が変更したときだけコピーできます。開いたファイル記述子は継承され、同じ基盤の open file description を参照するため、ファイルオフセットなどが共有されたままの場合があります。
 
-:::single-choice{#process-creation-fork-result}
-成功した `fork()` は何を作りますか？
+:::single-choice{#process-creation-fork-result} 成功した `fork()` は何を作りますか？
 
 ::option[同じプロセス内の置き換え用プログラムだけ。]{#process-creation-fork-replacement explanation="現在のプログラムイメージを置き換えるのは exec 操作です。"}
 ::option[新しい PID を持つ子プロセス。]{#process-creation-fork-child .correct explanation="fork() は別の子プロセスと親子関係を作ります。"}
@@ -39,8 +38,7 @@ Linux のプロセスは親子関係を形成します。シェルは通常、�
 
 ライブラリやアプリケーションは `posix_spawn()` などの上位インターフェースを公開でき、Linux には `clone()` など追加の仕組みもあります。fork-exec は唯一の方法ではありませんが、理解に有用なモデルです。
 
-:::single-choice{#process-creation-exec-pid}
-`execve()` が成功した後、プロセスの PID はどうなりますか？
+:::single-choice{#process-creation-exec-pid} `execve()` が成功した後、プロセスの PID はどうなりますか？
 
 ::option[親の PID と同じになる。]{#process-creation-exec-parent-pid explanation="親と子は別々のプロセス ID を保ちます。"}
 ::option[プログラムイメージが置き換わっても PID は同じまま。]{#process-creation-exec-same-pid .correct explanation="execve() は別プロセスを作らず、呼び出し元を変換します。"}
@@ -57,8 +55,7 @@ $ ps -o pid,ppid,stat,cmd
 
 シェルが `ps` を開始すると、通常そのシェルの PID が `ps` の `PPID` に現れます。短命なプロセスは別の観測までに終了する場合があるため、タイミングが重要です。
 
-:::single-choice{#process-creation-ppid}
-プロセス一覧の `PPID` は何を表しますか？
+:::single-choice{#process-creation-ppid} プロセス一覧の `PPID` は何を表しますか？
 
 ::option[以前そのプロセスへ割り当てられていた PID。]{#process-creation-previous-pid explanation="PID は再利用されますが、PPID は識別子の履歴ではありません。"}
 ::option[プロセスのスケジューリング優先度 ID。]{#process-creation-priority-id explanation="優先度は priority や nice 値など別のフィールドで表します。"}
@@ -71,8 +68,7 @@ $ ps -o pid,ppid,stat,cmd
 
 親が子より先に終了すると、子は PID 名前空間内の適切な subreaper または init プロセスへ付け替えられます。元の親が終わっても、子が終了する必要はありません。
 
-:::single-choice{#process-creation-pid-one}
-PID 1 について正しい説明はどれですか？
+:::single-choice{#process-creation-pid-one} PID 1 について正しい説明はどれですか？
 
 ::option[実行ファイル名が必ず正確に `init` である。]{#process-creation-pid-one-name explanation="systemd、別の init、コンテナ固有のプログラムなどを使えます。"}
 ::option[現在実行中の全プロセスを直接作った親である。]{#process-creation-pid-one-direct explanation="大半のプロセスは何世代もの中間の親を通じて作られます。"}

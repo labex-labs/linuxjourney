@@ -30,8 +30,7 @@ $ modinfo MODULE_NAME
 
 `modinfo` 可以显示文件名、别名、参数、许可证、描述和签名信息。应把元数据视为描述，而不是模块可信或适合当前工作负载的证明。
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-`lsmod` 显示什么？
+:::single-choice{#kernel-modules-lsmod-purpose} `lsmod` 显示什么？
 
 ::option[远程仓库中可用的每个模块软件包。]{#kernel-modules-repository-list explanation="查询仓库清单需要使用软件包管理器。"}
 ::option[只显示直接编译进内核映像的驱动程序。]{#kernel-modules-builtins explanation="内置功能不是可加载模块，通常不会出现在 lsmod 中。"}
@@ -50,8 +49,7 @@ $ sudo modprobe MODULE_NAME
 
 加载前，应确认模块来源、签名策略、内核版本兼容性、参数、预期硬件绑定和回滚方案。安全启动或内核锁定可能拒绝未签名模块；强行加载不兼容代码可能导致崩溃或系统失陷。
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-为什么通常优先使用 `modprobe` 而不是直接使用 `insmod`？
+:::single-choice{#kernel-modules-modprobe-dependencies} 为什么通常优先使用 `modprobe` 而不是直接使用 `insmod`？
 
 ::option[它会让模块完全在非特权用户空间中运行。]{#kernel-modules-modprobe-userspace explanation="插入的模块会作为特权内核代码执行。"}
 ::option[它保证每个第三方模块都经过签名且安全。]{#kernel-modules-modprobe-guarantee explanation="是否强制签名取决于策略，而且有效签名也不能证明不存在缺陷。"}
@@ -74,8 +72,7 @@ example_module
 
 硬件别名通常会触发自动加载，无需显式列表。对于早期启动阶段所需的模块，修改配置后应按照发行版规定的流程更新 initramfs。
 
-:::single-choice{#kernel-modules-options-versus-load}
-`/etc/modprobe.d/` 中的 `options` 行会做什么？
+:::single-choice{#kernel-modules-options-versus-load} `/etc/modprobe.d/` 中的 `options` 行会做什么？
 
 ::option[仅凭该行就保证每次启动都加载模块。]{#kernel-modules-options-autoload explanation="启动时加载请求使用 modules-load 配置或设备别名等其他机制。"}
 ::option[设置加载指定模块时使用的参数。]{#kernel-modules-options-parameters .correct explanation="modprobe 会在插入模块时应用配置的键值参数。"}
@@ -92,8 +89,7 @@ blacklist example_module
 
 黑名单通常会阻止通过模块别名自动加载。它不会卸载已加载模块，不会将模块从 initramfs 中移除，也不一定能阻止按确切名称显式加载或作为依赖项加载。安全加固需要结合具体威胁，从模块可用性、签名强制、initramfs 内容、启动参数和策略等方面采取措施。
 
-:::single-choice{#kernel-modules-blacklist-effect}
-基本的 modprobe `blacklist` 行主要阻止什么？
+:::single-choice{#kernel-modules-blacklist-effect} 基本的 modprobe `blacklist` 行主要阻止什么？
 
 ::option[通过模块别名自动加载。]{#kernel-modules-blacklist-aliases .correct explanation="该指令并不能普遍禁止代码已经加载或可能加载的所有途径。"}
 ::option[执行所有名称相似的用户空间程序。]{#kernel-modules-blacklist-user-programs explanation="modprobe 配置仅用于内核模块解析。"}
@@ -112,8 +108,7 @@ modprobe 可以根据情况移除不再使用的依赖项。当普通引用跟�
 
 绝不要在需要保持稳定的系统上强制卸载模块。移除缺陷或未完成的活动可能导致内核崩溃或数据损坏。
 
-:::single-choice{#kernel-modules-remove-command}
-哪个命令会按名称请求以依赖感知方式移除模块？
+:::single-choice{#kernel-modules-remove-command} 哪个命令会按名称请求以依赖感知方式移除模块？
 
 ::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="lsmod 是只读列表工具，不负责移除模块。"}
 ::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="uname 报告内核信息，不管理模块。"}

@@ -24,8 +24,7 @@ $ journalctl -k -b
 
 Vérifiez la pile de stockage, l'état du périphérique, les câbles ou le chemin réseau, l'état du RAID, le chiffrement et les événements récents. Si le périphérique est défaillant, des analyses répétées peuvent épuiser sa durée de vie restante. Lorsque c'est possible, capturez une image ou un clone avec un outil orienté récupération et travaillez sur la copie.
 
-:::single-choice{#filesystem-repair-first-response}
-Que faut-il faire avant une réparation capable d'écrire lorsque le matériel pourrait être défaillant ?
+:::single-choice{#filesystem-repair-first-response} Que faut-il faire avant une réparation capable d'écrire lorsque le matériel pourrait être défaillant ?
 
 ::option[Exécuter chaque outil de réparation en boucle jusqu'à ce que l'un renvoie zéro.]{#filesystem-repair-repeat-tools explanation="L'emploi d'outils inadaptés et les écritures répétées peuvent aggraver les dommages."}
 ::option[Créer immédiatement une nouvelle table de partitions par-dessus le périphérique.]{#filesystem-repair-new-table explanation="Écraser les métadonnées d'organisation détruit des preuves et peut compliquer la récupération."}
@@ -38,8 +37,7 @@ Déterminez si le système de fichiers réside sur une partition, un volume logi
 
 Utilisez `lsblk -f`, `blkid`, `findmnt` et les outils des différentes couches de stockage pour cartographier la cible. Les signatures détectées peuvent être obsolètes ; rapprochez-les donc de la configuration connue et des sauvegardes.
 
-:::single-choice{#filesystem-repair-target-layer}
-Si ext4 se trouve sur `/dev/sda1`, quelle couche son vérificateur doit-il normalement recevoir ?
+:::single-choice{#filesystem-repair-target-layer} Si ext4 se trouve sur `/dev/sda1`, quelle couche son vérificateur doit-il normalement recevoir ?
 
 ::option[`/dev/sda`, quelle que soit sa table de partitions.]{#filesystem-repair-whole-disk explanation="Le disque entier contient la table de partitions et éventuellement plusieurs régions enfants, pas directement l'instance ext4."}
 ::option[`/dev/sda1`, après sa mise hors ligne sans risque.]{#filesystem-repair-partition-target .correct explanation="Le vérificateur agit sur le périphérique bloc qui contient directement le système de fichiers."}
@@ -52,8 +50,7 @@ La plupart des vérificateurs traditionnels de cohérence exigent que le systèm
 
 Arrêtez les services dépendants, démontez les systèmes imbriqués, déplacez les répertoires de travail des processus et désactivez les couches supérieures selon les besoins. Pour le système de fichiers racine, démarrez un environnement de secours ou employez le mécanisme de vérification hors ligne documenté par la distribution. Confirmez avec `findmnt` que la cible n'est pas montée dans l'espace de noms concerné.
 
-:::single-choice{#filesystem-repair-mounted-risk}
-Pourquoi faut-il normalement démonter un système de fichiers avant qu'un vérificateur de réparation n'y écrive ?
+:::single-choice{#filesystem-repair-mounted-risk} Pourquoi faut-il normalement démonter un système de fichiers avant qu'un vérificateur de réparation n'y écrive ?
 
 ::option[Les mises à jour simultanées du noyau et du vérificateur peuvent entrer en conflit et corrompre les métadonnées.]{#filesystem-repair-concurrent-writes .correct explanation="Une vue hors ligne empêche le système de fichiers de changer pendant l'opération de réparation."}
 ::option[Le démontage restaure automatiquement chaque fichier endommagé depuis une sauvegarde.]{#filesystem-repair-unmount-restores explanation="Le détachement assure la stabilité nécessaire à la vérification, mais ne restaure pas les données."}
@@ -66,8 +63,7 @@ Pourquoi faut-il normalement démonter un système de fichiers avant qu'un véri
 
 Des options aux noms similaires peuvent posséder une sémantique différente. N'appliquez surtout pas des options `--repair` ou de forçage copiées depuis le guide d'un autre système de fichiers. Lisez le manuel installé ainsi que la documentation actuelle du projet ou de la distribution relative à la récupération. Commencez par un mode sans modification ou de diagnostic si l'implémentation en fournit un fiable, capturez sa sortie et comprenez les corrections proposées.
 
-:::single-choice{#filesystem-repair-fsck-role}
-De quoi `fsck` est-il couramment responsable sous Linux ?
+:::single-choice{#filesystem-repair-fsck-role} De quoi `fsck` est-il couramment responsable sous Linux ?
 
 ::option[De déléguer les vérifications à un assistant adapté au type du système de fichiers.]{#filesystem-repair-fsck-dispatch .correct explanation="La logique réelle de validation et de réparation appartient aux outils et méthodes propres au format."}
 ::option[De convertir chaque système de fichiers en ext4 avant de le vérifier.]{#filesystem-repair-fsck-convert explanation="Un vérificateur doit préserver et comprendre le format existant."}
@@ -80,8 +76,7 @@ Consignez l'outil de réparation, sa version, ses options, sa sortie et son éta
 
 Le fait qu'un système de fichiers puisse de nouveau être monté ne prouve pas que tous ses fichiers sont corrects. Restaurez les données applicatives perdues ou endommagées depuis les sauvegardes et validez-les au niveau de l'application.
 
-:::single-choice{#filesystem-repair-mountable-proof}
-Un montage réussi après réparation prouve-t-il que toutes les données applicatives sont correctes ?
+:::single-choice{#filesystem-repair-mountable-proof} Un montage réussi après réparation prouve-t-il que toutes les données applicatives sont correctes ?
 
 ::option[Non ; la réparation de cohérence et la validation des données au niveau applicatif sont distinctes.]{#filesystem-repair-not-data-proof .correct explanation="Le système de fichiers peut être structurellement montable alors que des fichiers ou transactions restent absents ou endommagés."}
 ::option[Oui ; le montage vérifie cryptographiquement chaque fichier par rapport à une sauvegarde.]{#filesystem-repair-mount-verifies explanation="Un montage ordinaire n'effectue pas de comparaison complète avec une sauvegarde."}

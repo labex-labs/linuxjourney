@@ -23,8 +23,7 @@ La relation n'est pas toujours d'une fonction à un appel système :
 - une fonction vDSO optimisée peut obtenir certaines données entretenues par le noyau sans transition de mode complète ;
 - un appel système peut prendre en charge de nombreuses API de plus haut niveau.
 
-:::single-choice{#system-calls-library-wrapper}
-Que fait une enveloppe d'appel système typique de libc ?
+:::single-choice{#system-calls-library-wrapper} Que fait une enveloppe d'appel système typique de libc ?
 
 ::option[Elle prépare les arguments de l'ABI, entre dans le noyau et traduit le résultat.]{#system-calls-wrapper-role .correct explanation="L'enveloppe masque les conventions d'appel propres à l'architecture derrière une interface de bibliothèque ordinaire."}
 ::option[Elle donne à l'application un accès illimité à la mémoire du noyau.]{#system-calls-wrapper-unrestricted explanation="L'entrée dans le noyau reste contrôlée et valide la demande."}
@@ -39,8 +38,7 @@ Après l'opération, le noyau renvoie une valeur ou l'indication d'une erreur. L
 
 Décrire chaque entrée comme une « interruption logicielle » manque de précision sur les architectures actuelles ; les exceptions, instructions rapides d'appel système et appels superviseur mettent en œuvre des transitions contrôlées apparentées, mais différentes.
 
-:::single-choice{#system-calls-entry-result}
-Qui valide les arguments et l'autorisation d'un appel système ?
+:::single-choice{#system-calls-entry-result} Qui valide les arguments et l'autorisation d'un appel système ?
 
 ::option[L'invite du shell avant le démarrage du processus.]{#system-calls-shell-validates explanation="Un processus peut effectuer des appels système sans shell et les contrôles du noyau restent nécessaires."}
 ::option[L'implémentation du service demandé dans le noyau.]{#system-calls-kernel-validates .correct explanation="Le gestionnaire privilégié vérifie les pointeurs, l'état des objets, les identifiants et les règles avant d'agir."}
@@ -53,8 +51,7 @@ Les numéros d'appels système et conventions d'appel sont propres à l'architec
 
 Un processus non privilégié ne peut pas insérer arbitrairement de nouveaux gestionnaires dans la table des appels du noyau actif. Étendre l'interface exige du code dans le noyau et une conception soigneuse de l'ABI. Des fonctions comme seccomp peuvent filtrer les appels autorisés à un processus, mais ne créent pas de nouvelles implémentations dans le noyau.
 
-:::single-choice{#system-calls-number-portability}
-Pourquoi une application doit-elle éviter de coder en dur les numéros d'appels système d'une autre architecture ?
+:::single-choice{#system-calls-number-portability} Pourquoi une application doit-elle éviter de coder en dur les numéros d'appels système d'une autre architecture ?
 
 ::option[Les numéros et conventions d'appel sont propres à l'ABI.]{#system-calls-abi-specific .correct explanation="Un numéro qui désigne une opération sur une architecture peut en identifier une autre ou être absent ailleurs."}
 ::option[Les appels système sont nommés depuis le répertoire de travail actuel.]{#system-calls-directory-names explanation="Les chemins ne définissent pas l'ABI de numérotation des appels système."}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace` peut révéler des chemins, arguments, données issues de l'environnement, adresses réseau, fragments du contenu des fichiers et identifiants incorrectement passés comme arguments. Conservez les traces avec des permissions restrictives et supprimez-les selon les règles relatives aux données d'incident.
 
-:::single-choice{#system-calls-strace-purpose}
-Qu'observe principalement `strace` ?
+:::single-choice{#system-calls-strace-purpose} Qu'observe principalement `strace` ?
 
 ::option[Uniquement les lignes du code source exécutées dans l'application.]{#system-calls-strace-source-lines explanation="Le traçage au niveau du code source exige un débogueur ou une instrumentation avec des symboles."}
 ::option[Les appels système et signaux à la frontière entre utilisateur et noyau.]{#system-calls-strace-boundary .correct explanation="Il indique les demandes, arguments, résultats et événements de signaux des processus tracés."}
@@ -91,8 +87,7 @@ Le traçage modifie le déroulement temporel et peut imposer un surcoût importa
 
 Les permissions et règles de sécurité ptrace limitent les processus qu'il est possible de tracer. Ne vous attachez pas au processus d'un autre utilisateur ou à un processus de production sans autorisation ; la suspension et les changements temporels peuvent modifier le comportement du service.
 
-:::single-choice{#system-calls-strace-failure}
-L'échec d'un seul appel système dans une trace signifie-t-il nécessairement que l'application est cassée ?
+:::single-choice{#system-calls-strace-failure} L'échec d'un seul appel système dans une trace signifie-t-il nécessairement que l'application est cassée ?
 
 ::option[Oui ; toute valeur de retour non nulle arrête immédiatement Linux.]{#system-calls-nonzero-terminates explanation="Les applications traitent couramment les erreurs d'appels système sans défaillance du système."}
 ::option[Non ; les programmes sondent souvent plusieurs possibilités et traitent des erreurs attendues.]{#system-calls-expected-failure .correct explanation="Interprétez le retour dans le contexte du flux de contrôle et de l'application plutôt qu'isolément."}

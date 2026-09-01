@@ -22,8 +22,7 @@ $ man ls
 
 Las páginas suelen incluir una sinopsis, una descripción, opciones, archivos relacionados y referencias cruzadas, aunque las secciones exactas varían.
 
-:::single-choice{#open-ls-manual}
-¿Qué orden abre la página del manual instalada para `ls`?
+:::single-choice{#open-ls-manual} ¿Qué orden abre la página del manual instalada para `ls`?
 
 ::option[`help ls`]{#help-ls explanation="`help` de Bash documenta órdenes integradas y normalmente no abre la página del manual del programa externo `ls`."}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` busca el tema `ls` en la base de datos del manual y muestra la página coincidente."}
@@ -43,16 +42,14 @@ En muchos sistemas, `man` muestra las páginas mediante un paginador como `less`
 
 El paginador puede variar según el sistema o el entorno, así que estas teclas no están garantizadas en todos los casos. Los controles anteriores corresponden a la configuración habitual con `less`.
 
-:::single-choice{#search-man-page}
-Con una página man abierta en `less`, ¿qué inicia una búsqueda hacia delante de `--recursive`?
+:::single-choice{#search-man-page} Con una página man abierta en `less`, ¿qué inicia una búsqueda hacia delante de `--recursive`?
 
 ::option[Escribir `?--recursive` y pulsar Enter.]{#backward-man-search explanation="El signo de interrogación inicia una búsqueda hacia atrás. Busca en la dirección opuesta a la solicitada."}
 ::option[Escribir `/--recursive` y pulsar Enter.]{#forward-man-search .correct explanation="Una barra inicia una búsqueda hacia delante en `less` y Enter envía el patrón."}
 ::option[Escribir `n--recursive` y pulsar Enter.]{#repeat-man-search explanation="La tecla `n` repite una búsqueda existente. No introduce de esta forma un patrón de búsqueda nuevo."}
 :::
 
-:::single-choice{#leave-man-page}
-Con una página man abierta en el paginador habitual, ¿qué tecla devuelve el control a la shell?
+:::single-choice{#leave-man-page} Con una página man abierta en el paginador habitual, ¿qué tecla devuelve el control a la shell?
 
 ::option[`G`]{#man-page-end explanation="La `G` mayúscula lleva al final de la página en `less`. No cierra el paginador."}
 ::option[`n`]{#next-man-match explanation="La tecla `n` repite la búsqueda más reciente. La página del manual permanece abierta."}
@@ -78,8 +75,7 @@ $ man 1 passwd
 
 La primera orden abre la página del formato de archivo `passwd` en la sección 5. La segunda abre la página de la orden de usuario en la sección 1. Las referencias como `passwd(5)` utilizan la misma notación `topic(section)`.
 
-:::single-choice{#open-passwd-file-format}
-¿Qué orden abre la página de la sección 5 que documenta el formato del archivo `passwd`?
+:::single-choice{#open-passwd-file-format} ¿Qué orden abre la página de la sección 5 que documenta el formato del archivo `passwd`?
 
 ::option[`man passwd 5`]{#section-after-topic explanation="En esta forma de la orden, el selector de sección debe aparecer antes del tema. Este orden no solicita `passwd(5)`."}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Al colocar la sección `5` antes de `passwd`, se selecciona específicamente la página del formato de archivo."}
@@ -95,8 +91,7 @@ No todos los nombres de órdenes tienen una página del manual independiente ins
 - Prueba `NAME --help` si un programa externo admite esa convención.
 - Comprueba si tu distribución ofrece un paquete de documentación independiente.
 
-:::single-choice{#missing-builtin-manual}
-`type cd` indica que `cd` es una orden integrada de Bash y no hay una página man independiente. ¿Qué orden debes probar a continuación?
+:::single-choice{#missing-builtin-manual} `type cd` indica que `cd` es una orden integrada de Bash y no hay una página man independiente. ¿Qué orden debes probar a continuación?
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` resume entradas de la base de datos del manual. No puede proporcionar una página independiente inexistente para la orden integrada."}
 ::option[`file cd`]{#file-cd-name explanation="`file` clasifica objetos del sistema de archivos, pero aquí `cd` se resuelve como una orden integrada, no como una ruta."}

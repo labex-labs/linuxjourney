@@ -39,8 +39,7 @@ elephant
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-キーや数値オプションなしの `sort animals.txt` は何をしますか？
+:::single-choice{#sort-lines-ascending} キーや数値オプションなしの `sort animals.txt` は何をしますか？
 
 ::option[現在のロケールに従って入力の行全体を並べる。]{#sort-locale-lines .correct explanation="標準の `sort` は有効なロケールの照合規則で行全体を比較します。"}
 ::option[各行内の単語だけを並べ、行順は固定する。]{#sort-words-within-lines explanation="`sort` は各行をレコードとして扱い、個々の行内の単語は並べ替えません。"}
@@ -60,8 +59,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-`animals.txt` を逆順に並べるコマンドはどれですか？
+:::single-choice{#sort-reverse-order} `animals.txt` を逆順に並べるコマンドはどれですか？
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="`-n` は数値比較を指定し、逆順を意味しません。"}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="`-u` は重複キーを抑制し、出力を逆順にはしません。"}
@@ -81,8 +79,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 必要ならオプションを組み合わせます。`sort -nr scores.txt` は数値で比較し、大きい値から並べます。
 
-:::single-choice{#sort-numbers-descending}
-`scores.txt` の数値行を大きい順に並べるコマンドはどれですか？
+:::single-choice{#sort-numbers-descending} `scores.txt` の数値行を大きい順に並べるコマンドはどれですか？
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="数値比較ですが、標準の方向では小さい値から並びます。"}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n` が数値比較、`-r` が逆順を指定し、数値の降順になります。"}
@@ -102,8 +99,7 @@ alice:30
 
 `-t ':'` が区切り、`-k 2,2` がキーをフィールド 2 だけに限定し、末尾の `n` が数値比較を指定します。`,2` がない場合、フィールド 2 から始まるキーは通常、行末まで続きます。
 
-:::single-choice{#sort-second-colon-field}
-`users.txt` の第 2 コロン区切りフィールドだけを数値順にするコマンドはどれですか？
+:::single-choice{#sort-second-colon-field} `users.txt` の第 2 コロン区切りフィールドだけを数値順にするコマンドはどれですか？
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="標準の空白区切りでフィールド 1 を選び、2 番目のコロン区切りフィールドではありません。"}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut` はフィールド 2 を抽出しますが、元のレコードをそのキーで並べ替えません。"}
@@ -130,8 +126,7 @@ $ sort -o names.txt names.txt
 
 元データが重要なら、バックアップを取るか、別に書いた結果を検証してください。
 
-:::single-choice{#sort-safe-same-file}
-GNU/Linux で、シェルリダイレクトによる切り詰めを避け、並べ替え結果を `names.txt` へ安全に書き戻すコマンドはどれですか？
+:::single-choice{#sort-safe-same-file} GNU/Linux で、シェルリダイレクトによる切り詰めを避け、並べ替え結果を `names.txt` へ安全に書き戻すコマンドはどれですか？
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="GNU `sort` は必要に応じて読み取った後に `-o` 出力を管理するため、シェルが `>` で先に入力を切り詰めません。"}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="シェルは `sort` を起動する前に `names.txt` を切り詰めるため、入力を失う恐れがあります。"}

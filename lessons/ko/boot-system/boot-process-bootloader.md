@@ -23,8 +23,7 @@ meta_keywords: "리눅스 부트 로더, GRUB, 리눅스 부팅, 커널 매개�
 
 GRUB은 여러 커널과 복구 항목을 표시할 수 있습니다. 대체 커널은 그에 맞는 모듈과 initramfs가 남아 있고 테스트된 경우에만 유용합니다. 로더는 지원되는 저장 장치 및 파일 시스템 모듈을 통해 파일을 읽으며 아직 실행되지 않은 리눅스 VFS에 의존하지 않습니다.
 
-:::single-choice{#bootloader-primary-handoff}
-리눅스 부트 로더는 일반적으로 어디로 제어권을 넘깁니까?
+:::single-choice{#bootloader-primary-handoff} 리눅스 부트 로더는 일반적으로 어디로 제어권을 넘깁니까?
 
 ::option[모든 서비스가 실행 중인 대화형 사용자 셸입니다.]{#bootloader-user-shell explanation="사용자 공간 셸은 커널과 init 시스템이 시작된 뒤에야 나타납니다."}
 ::option[필수 부팅 결과물을 불러온 뒤 선택한 커널 이미지입니다.]{#bootloader-selected-kernel .correct explanation="로더는 커널 진입점을 실행하기 전에 커널, 매개변수 및 흔히 initramfs를 준비합니다."}
@@ -49,16 +48,14 @@ GRUB은 여러 커널과 복구 항목을 표시할 수 있습니다. 대체 커
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-`root=` 커널 명령줄 매개변수의 목적은 무엇입니까?
+:::single-choice{#bootloader-root-parameter} `root=` 커널 명령줄 매개변수의 목적은 무엇입니까?
 
 ::option[부팅 과정이 최종적으로 사용할 루트 파일 시스템을 식별합니다.]{#bootloader-root-filesystem .correct explanation="커널 또는 initramfs는 실제 루트를 찾고 구성하는 과정에서 이 값을 해석합니다."}
 ::option[root 계정의 로그인 암호를 설정합니다.]{#bootloader-root-password explanation="인증 비밀 정보는 일반 커널 명령줄 텍스트로 전달해서는 안 됩니다."}
 ::option[PID 1의 이름을 `root`로 바꿉니다.]{#bootloader-root-pid explanation="프로세스 이름은 이 저장 장치 매개변수와 관련이 없습니다."}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-`quiet` 매개변수는 일반적으로 무엇을 요청합니까?
+:::single-choice{#bootloader-quiet-parameter} `quiet` 매개변수는 일반적으로 무엇을 요청합니까?
 
 ::option[마운트된 모든 파일 시스템에 읽기 전용 접근을 적용합니다.]{#bootloader-quiet-readonly explanation="초기 루트 쓰기 정책에는 `quiet`가 아니라 `ro` 같은 매개변수를 사용합니다."}
 ::option[부팅 중 출력되는 커널 메시지를 줄입니다.]{#bootloader-quiet-console .correct explanation="여러 정보 메시지를 억제하지만 모든 부팅 구성 요소가 완전히 조용해진다고 보장하지 않습니다."}
@@ -71,8 +68,7 @@ GRUB은 일반적으로 권한이 있는 콘솔 사용자가 메뉴에 표시된
 
 명령줄 매개변수의 민감한 텍스트는 `/proc/cmdline`, 부팅 로그 및 크래시 보고서에 노출될 수 있습니다. 보안을 약화시키거나 시스템을 부팅 불가 상태로 만들 수도 있습니다. 비밀 정보를 넣지 말고 정상 작동이 확인된 항목과 콘솔 복구 경로를 보존하십시오.
 
-:::single-choice{#bootloader-temporary-edit}
-한 번의 부팅을 위해 GRUB 메뉴 항목을 대화형으로 편집할 때의 일반적인 특징은 무엇입니까?
+:::single-choice{#bootloader-temporary-edit} 한 번의 부팅을 위해 GRUB 메뉴 항목을 대화형으로 편집할 때의 일반적인 특징은 무엇입니까?
 
 ::option[설치된 모든 커널 이미지를 자동으로 다시 씁니다.]{#bootloader-rewrites-kernels explanation="명령 텍스트를 변경해도 커널 바이너리는 수정되지 않습니다."}
 ::option[모든 디스크에서 펌웨어 검증을 영구 비활성화합니다.]{#bootloader-disables-firmware explanation="펌웨어 정책은 별개이며 항목 하나의 편집으로 보편적으로 바뀌지 않습니다."}
@@ -85,8 +81,7 @@ GRUB은 일반적으로 권한이 있는 콘솔 사용자가 메뉴에 표시된
 
 범위가 좁은 원본 변경을 수행하고 배포판이 문서화한 재생성 명령을 실행하며 출력을 검사하십시오. 정상 작동이 확인된 이전 항목과 부팅 가능한 복구 미디어를 유지한 상태에서 테스트합니다. 명령과 출력 경로는 데비안, 페도라, UEFI 및 BIOS 설치에 따라 다릅니다.
 
-:::single-choice{#bootloader-generated-config}
-생성된 `grub.cfg`를 직접 편집하는 방식이 일반적으로 신뢰하기 어려운 이유는 무엇입니까?
+:::single-choice{#bootloader-generated-config} 생성된 `grub.cfg`를 직접 편집하는 방식이 일반적으로 신뢰하기 어려운 이유는 무엇입니까?
 
 ::option[파일에 읽을 수 있는 텍스트가 절대 포함되지 않기 때문입니다.]{#bootloader-config-binary explanation="GRUB 설정은 텍스트이지만 생성되는 파일이라는 소유 관계가 중요합니다."}
 ::option[GRUB이 각 사용자의 홈 디렉터리 안의 파일만 읽기 때문입니다.]{#bootloader-grub-home explanation="부팅 설정은 시스템 수준이며 사용자 홈 세션보다 먼저 사용할 수 있어야 합니다."}

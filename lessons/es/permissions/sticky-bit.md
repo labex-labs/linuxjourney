@@ -18,8 +18,7 @@ Cuando un directorio tiene establecido el bit sticky, Linux suele permitir elimi
 
 La restricción afecta a las entradas del directorio. No impide que el propietario de un archivo edite su contenido si sus permisos permiten la operación, ni convierte el directorio en privado.
 
-:::single-choice{#sticky-bit-removal-rule}
-En un directorio compartido con sticky, ¿qué usuario normal puede eliminar normalmente una entrada concreta?
+:::single-choice{#sticky-bit-removal-rule} En un directorio compartido con sticky, ¿qué usuario normal puede eliminar normalmente una entrada concreta?
 
 ::option[Cualquier usuario que pueda enumerar el directorio.]{#sticky-bit-any-reader explanation="El permiso de lectura del directorio puede revelar nombres, pero no evita la restricción de propiedad del bit sticky."}
 ::option[El propietario de la entrada, con el acceso necesario al directorio.]{#sticky-bit-entry-owner .correct explanation="El propietario de la entrada es una de las identidades que suele permitir la regla de un directorio sticky."}
@@ -39,8 +38,7 @@ La `t` minúscula final ocupa la posición de ejecución de otros. Significa que
 
 Como `/tmp` suele permitir escritura y búsqueda a todo el mundo, varios usuarios pueden crear entradas en él. El bit sticky impide que un usuario normal elimine las entradas de otro simplemente porque el directorio permite escritura a todos. Las aplicaciones aún deben crear objetos temporales de forma segura, porque los nombres predecibles, los enlaces inseguros y los modos débiles de archivo plantean riesgos distintos.
 
-:::single-choice{#sticky-bit-lowercase-t}
-¿Qué indica una `t` minúscula al final del modo de un directorio?
+:::single-choice{#sticky-bit-lowercase-t} ¿Qué indica una `t` minúscula al final del modo de un directorio?
 
 ::option[Sticky y la ejecución de otros están establecidos.]{#sticky-bit-t-with-execute .correct explanation="La `t` minúscula combina el bit especial sticky con el bit normal de ejecución de otros."}
 ::option[Sticky está establecido, pero falta la ejecución de otros.]{#sticky-bit-t-without-execute explanation="Esa combinación se muestra con una `T` mayúscula."}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 El `1` inicial establece sticky y `777` proporciona el modo normal. Este modo solo es apropiado cuando el directorio se comparte intencionadamente entre todos los usuarios locales. Para un directorio de equipo pueden ser preferibles permisos de grupo más restringidos. Elimina únicamente el bit sticky con `chmod -t shared-directory`.
 
-:::single-choice{#sticky-bit-octal-value}
-¿Qué valor octal inicial representa el bit sticky?
+:::single-choice{#sticky-bit-octal-value} ¿Qué valor octal inicial representa el bit sticky?
 
 ::option[`2`]{#sticky-bit-value-two explanation="Un `2` inicial representa setgid."}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="El bit sticky aporta `1` al dígito inicial de bits especiales."}
@@ -75,8 +72,7 @@ El `1` inicial establece sticky y `777` proporciona el modo normal. Este modo so
 
 Sticky no concede acceso de escritura ni búsqueda; solo restringe la eliminación y el cambio de nombre después de que los permisos normales permitan modificar el directorio. Verifica conjuntamente el propietario, el grupo, el modo normal, las ACL y el contexto de montaje del directorio. Prueba con cuentas sin privilegios en un entorno aislado en vez de modificar `/tmp` en un sistema operativo.
 
-:::single-choice{#sticky-bit-access-scope}
-¿Añadir el bit sticky hace que un directorio sin permiso de escritura pase a permitirla a otros usuarios?
+:::single-choice{#sticky-bit-access-scope} ¿Añadir el bit sticky hace que un directorio sin permiso de escritura pase a permitirla a otros usuarios?
 
 ::option[Sí; sticky añade automáticamente escritura a todas las clases.]{#sticky-bit-adds-write explanation="El bit especial no reescribe los bits de escritura de propietario, grupo u otros."}
 ::option[Sí; sticky desactiva el triplete de permisos de otros del directorio.]{#sticky-bit-disables-other explanation="El triplete de otros sigue participando en las comprobaciones normales de acceso."}

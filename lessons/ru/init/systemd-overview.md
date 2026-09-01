@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 `/usr/lib/systemd/` может существовать при другом PID 1, а контейнер способен предоставлять собственное пространство PID. У `systemctl` также есть режимы пользовательского менеджера, удалённой системы и контейнера, поэтому определяйте цель операции.
 
-:::single-choice{#systemd-overview-detection}
-Что наиболее прямо определяет systemd как системный менеджер init?
+:::single-choice{#systemd-overview-detection} Что наиболее прямо определяет systemd как системный менеджер init?
 
 ::option[Существует каталог `/usr/lib/systemd`.]{#systemd-overview-directory explanation="Библиотеки и unit-файлы могут оставаться установленными, когда systemd не действует как PID 1."}
 ::option[Пользователь выполнил одну команду `systemctl`.]{#systemd-overview-command-executed explanation="Клиентская программа может существовать без доступного системного менеджера systemd."}
@@ -44,8 +43,7 @@ Unit — именованная модель ресурса или действ�
 
 Состояние unit не всегда «running»: mount может быть смонтирован, timer — ждать, device — присутствовать, target — оставаться активным после достижения зависимостей.
 
-:::single-choice{#systemd-overview-group-unit}
-Какой тип unit обычно группирует другие units и предоставляет точку синхронизации?
+:::single-choice{#systemd-overview-group-unit} Какой тип unit обычно группирует другие units и предоставляет точку синхронизации?
 
 ::option[`.socket`]{#systemd-overview-socket explanation="Socket units предоставляют IPC- или сетевые конечные точки и могут активировать службы."}
 ::option[`.target`]{#systemd-overview-target .correct explanation="Target units собирают зависимости и представляют этапы загрузки или работы."}
@@ -62,8 +60,7 @@ Unit — именованная модель ресурса или действ�
 
 Точный путь поставщика может различаться. Более приоритетная локальная конфигурация переопределяет файл с тем же именем ниже. Предпочитайте drop-in через `systemctl edit UNIT` копированию и изменению целого файла поставщика, чтобы обновления пакета оставались видимыми.
 
-:::single-choice{#systemd-overview-local-override}
-Где обычно должны находиться постоянные локальные переопределения системных units?
+:::single-choice{#systemd-overview-local-override} Где обычно должны находиться постоянные локальные переопределения системных units?
 
 ::option[Внутри `/proc/systemd/`.]{#systemd-overview-proc-systemd explanation="Procfs — runtime-интерфейс ядра, а не постоянная конфигурация units."}
 ::option[В `/etc/systemd/system/`.]{#systemd-overview-etc-system .correct explanation="Уровень конфигурации администратора имеет приоритет над пакетными units поставщика."}
@@ -76,8 +73,7 @@ Systemd строит транзакцию из связей зависимост
 
 `After=network.target` не доказывает готовность соединения, DNS или конкретной удалённой точки. Службы должны применять подходящую интеграцию network-online либо собственные повторы и проверку готовности.
 
-:::single-choice{#systemd-overview-after-semantics}
-Что само по себе задаёт `After=other.service`?
+:::single-choice{#systemd-overview-after-semantics} Что само по себе задаёт `After=other.service`?
 
 ::option[Гарантию здоровья конечной точки другого приложения.]{#systemd-overview-after-health explanation="Завершение упорядочивания и готовность приложения — разные понятия."}
 ::option[Порядок, если обе units входят в транзакцию.]{#systemd-overview-after-ordering .correct explanation="Для добавления другой unit нужна отдельная зависимость Wants или Requires."}
@@ -90,8 +86,7 @@ Systemd строит транзакцию из связей зависимост
 
 Targets похожи на runlevel лишь на общем уровне совместимости. Одновременно могут быть активны несколько targets, можно создавать пользовательские, а активность target не означает здоровье каждой службы машины.
 
-:::single-choice{#systemd-overview-default-target}
-Что обычно выбирает `default.target`?
+:::single-choice{#systemd-overview-default-target} Что обычно выбирает `default.target`?
 
 ::option[Блочное устройство по умолчанию, которое должен стереть `mkfs`.]{#systemd-overview-default-disk explanation="Targets описывают активацию units, а не выбор хранилища для разрушительных операций."}
 ::option[Единственную target, которая может быть активна.]{#systemd-overview-only-target explanation="Targets являются группами, и в одной загрузке могут быть активны многие."}

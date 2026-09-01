@@ -24,8 +24,7 @@ $ ip address show
 
 インターフェースが存在し、管理上 up であっても、端から端までの接続は証明できません。
 
-:::single-choice{#network-basics-host-interface}
-ネットワークインターフェースとは何ですか？
+:::single-choice{#network-basics-host-interface} ネットワークインターフェースとは何ですか？
 
 ::option[インターネット上の全パケットを永久保存したコピー。]{#network-basics-interface-copy explanation="インターフェースは通信を送受信し、世界規模のパケット保管庫ではありません。"}
 ::option[ホストがネットワークまたは仮想リンクへ接続する点。]{#network-basics-interface-attachment .correct explanation="1つのホストは、別々の設定を持つ複数の物理・仮想インターフェースを持てます。"}
@@ -36,8 +35,7 @@ $ ip address show
 
 LAN（ローカルエリアネットワーク）は、家庭、オフィス、データセンターの区画など限られた範囲を扱います。Ethernet スイッチはローカルリンクのポート間でフレームを転送します。WLAN は無線リンク技術を使う LAN です。ブリッジやアクセスポイントが接続すれば、有線と無線のインターフェースを同じ IP サブネットに含めることもできます。
 
-:::single-choice{#network-basics-wlan-relationship}
-WLAN と LAN はどのような関係ですか？
+:::single-choice{#network-basics-wlan-relationship} WLAN と LAN はどのような関係ですか？
 
 ::option[WLAN は常に別の世界規模インターネットである。]{#network-basics-wlan-global explanation="無線リンク技術を使うローカルネットワークです。"}
 ::option[WLAN はルーターが使うディスクパーティションである。]{#network-basics-wlan-disk explanation="ネットワークを表す用語で、ストレージ構成ではありません。"}
@@ -50,8 +48,7 @@ WLAN と LAN はどのような関係ですか？
 
 WAN（広域ネットワーク）は、より大きな地理的・管理的境界にまたがります。ISP は顧客ネットワークをほかのネットワークへ接続できますが、WAN は単に「家の外の全デバイス」を意味しません。
 
-:::single-choice{#network-basics-router-role}
-ルーターを定義する役割は何ですか？
+:::single-choice{#network-basics-router-role} ルーターを定義する役割は何ですか？
 
 ::option[ネットワーク層のネットワーク間でパケットを転送する。]{#network-basics-forward-networks .correct explanation="ルーティングは IP ネットワーク境界を越える次のホップを選びます。"}
 ::option[全利用者のファイルを必ずバックアップとして保存する。]{#network-basics-router-backup explanation="ファイル保存はルーティングを定義する機能ではありません。"}
@@ -64,8 +61,7 @@ WAN（広域ネットワーク）は、より大きな地理的・管理的境�
 
 1つの会話には双方向の多数のパケットが関わります。損失、順序変更、断片化、再送、経路変更があるため、1個の取得パケットだけではアプリケーションのトランザクション全体を説明できないことが普通です。
 
-:::single-choice{#network-basics-router-frame}
-ルーターホップでは通常、リンク層のフレームに何が起こりますか？
+:::single-choice{#network-basics-router-frame} ルーターホップでは通常、リンク層のフレームに何が起こりますか？
 
 ::option[受信フレームを外し、次のリンク用のフレームを作る。]{#network-basics-reframe .correct explanation="転送する IP パケットを、送信インターフェースに適した新しいリンク層フレームへ入れます。"}
 ::option[同じ Ethernet フレームがインターネット全体を変更なしで渡る。]{#network-basics-same-frame explanation="フレームの範囲はリンク内で、ルーターホップごとに置き換えられます。"}

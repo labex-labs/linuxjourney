@@ -32,8 +32,7 @@ $ file /bin/ls
 
 Its result is a classification, not a guarantee. An unusual, incomplete, or damaged file may receive a broad description such as `data` instead of a precise type.
 
-:::single-choice{#identify-misleading-extension}
-A file named `report.jpg` may not contain an image. Which command checks its likely content type?
+:::single-choice{#identify-misleading-extension} A file named `report.jpg` may not contain an image. Which command checks its likely content type?
 
 ::option[`ls report.jpg`]{#list-report explanation="`ls` confirms that the name exists and can show metadata, but it does not classify the file's contents."}
 ::option[`file report.jpg`]{#inspect-report .correct explanation="The `file` command examines the file and reports a likely type. It does not rely only on the `.jpg` suffix."}
@@ -57,8 +56,7 @@ You can also pass a shell wildcard. The shell expands `*` into matching names be
 $ file *
 ```
 
-:::single-choice{#inspect-multiple-files}
-Which command asks `file` to inspect every non-hidden name matched by `*` in the current directory?
+:::single-choice{#inspect-multiple-files} Which command asks `file` to inspect every non-hidden name matched by `*` in the current directory?
 
 ::option[`file *`]{#file-wildcard .correct explanation="The shell expands `*` to matching non-hidden names, and `file` inspects each resulting operand."}
 ::option[`file .`]{#file-current-directory explanation="A single dot names the current directory itself. This command classifies that directory rather than each entry inside it."}
@@ -74,8 +72,7 @@ $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-:::single-choice{#show-mime-information}
-Which command reports MIME-style information for `index.html`?
+:::single-choice{#show-mime-information} Which command reports MIME-style information for `index.html`?
 
 ::option[`file -b index.html`]{#brief-index explanation="The `-b` option omits the filename from the usual description. It does not specifically request MIME-style output."}
 ::option[`file -i index.html`]{#mime-index .correct explanation="The `-i` option requests MIME-style output, such as `text/html` plus character-set information."}
@@ -96,8 +93,7 @@ $ file -b notes.txt
 ASCII text
 ```
 
-:::single-choice{#omit-filename-from-output}
-Which command classifies `notes.txt` but omits its filename from the output?
+:::single-choice{#omit-filename-from-output} Which command classifies `notes.txt` but omits its filename from the output?
 
 ::option[`file -i notes.txt`]{#mime-notes explanation="The `-i` option requests MIME-style information. The output still normally includes the filename."}
 ::option[`file -z notes.txt`]{#compressed-notes explanation="The `-z` option asks `file` to look inside compressed data when possible. It does not enable brief output."}

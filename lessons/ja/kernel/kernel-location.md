@@ -23,8 +23,7 @@ Linux ディストリビューションは通常、boot 可能な kernel artifac
 
 名前は環境によって異なります。現代のディストリビューションで `initrd` と名付けられた file も、initramfs archive を含む場合があります。`vmlinuz` という命名規則だけでは、内部 compression や platform boot format は分かりません。ディストリビューションのツールで調べてください。
 
-:::single-choice{#kernel-location-vmlinuz}
-version 付き `vmlinuz-*` ファイルには通常何が含まれますか？
+:::single-choice{#kernel-location-vmlinuz} version 付き `vmlinuz-*` ファイルには通常何が含まれますか？
 
 ::option[boot 可能な Linux kernel image。]{#kernel-location-kernel-image .correct explanation="boot loader または firmware が、この architecture 固有 kernel artifact を読み込みます。"}
 ::option[インストール済み全カーネルのすべての loadable module。]{#kernel-location-all-modules explanation="module は release 固有の module tree へ別に保存されます。"}
@@ -37,8 +36,7 @@ initramfs には、対応するカーネルと root-storage design に必要な 
 
 `config-*` は、どの機能が built-in、modular、または省略されたかを理解する助けになります。`System.map-*` は symbolization と debugging に役立ちますが、address randomization、split debug information、distribution tooling によって使い方が変わります。これらは補助 artifact であり、代替 kernel ではありません。
 
-:::single-choice{#kernel-location-initramfs-match}
-initramfs が特定の kernel release と system configuration に結び付くのはなぜですか？
+:::single-choice{#kernel-location-initramfs-match} initramfs が特定の kernel release と system configuration に結び付くのはなぜですか？
 
 ::option[全 mounted filesystem の恒久的な内容を保存するから。]{#kernel-location-all-filesystems explanation="initramfs は小さな early boot environment であり、完全な system backup ではありません。"}
 ::option[boot のたびにユーザーへ新しい UID を割り当てるから。]{#kernel-location-user-ids explanation="account identity management は通常の役割ではありません。"}
@@ -55,8 +53,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 merged filesystem layout では、`/usr/lib/modules/KERNEL_RELEASE` へ解決される場合があります。インストール済みの各 kernel には、互換 module tree と dependency index が必要です。`modprobe` は release 固有 metadata を使い、disk 全体の任意の `.ko` file を検索するわけではありません。
 
-:::single-choice{#kernel-location-module-tree}
-動作中 kernel release の module を慣例的に格納する directory はどれですか？
+:::single-choice{#kernel-location-module-tree} 動作中 kernel release の module を慣例的に格納する directory はどれですか？
 
 ::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="ユーザーの home directory は標準的な system module tree ではありません。"}
 ::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="release component が、インストール済み kernel ごとの module ABI と dependency data を分離します。"}
@@ -69,8 +66,7 @@ Unified Kernel Image（UKI）は、kernel、initrd、command line、metadata を
 
 したがって、従来の `/boot` layout が空に見えても、kernel がインストールされていないとは限りません。`findmnt`、package database、boot-manager tool、loader 設定を使い、active artifact を対応付けます。
 
-:::single-choice{#kernel-location-uki}
-Unified Kernel Image が一つにまとめられるものはどれですか？
+:::single-choice{#kernel-location-uki} Unified Kernel Image が一つにまとめられるものはどれですか？
 
 ::option[GPT header 内の全ユーザー home directory。]{#kernel-location-uki-homes explanation="UKI は boot executable であり、user-data container や partition table ではありません。"}
 ::option[インストール済み全 package を一つにした shell script。]{#kernel-location-uki-packages explanation="まとめるのは boot component であり、OS repository 全体ではありません。"}

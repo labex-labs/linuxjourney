@@ -32,8 +32,7 @@ $ ps
 
 正確な列と既定の選択条件は `ps` の実装や環境で異なります。
 
-:::single-choice{#ps-command-pid-meaning}
-`PID` 列は何を識別しますか？
+:::single-choice{#ps-command-pid-meaning} `PID` 列は何を識別しますか？
 
 ::option[プロセスの現在のディレクトリ番号。]{#ps-command-pid-directory explanation="現在のディレクトリはファイルシステム参照で、PID では表しません。"}
 ::option[秒単位の累積 CPU 時間。]{#ps-command-pid-cpu explanation="CPU 使用時間は TIME など別のフィールドに表示します。"}
@@ -56,8 +55,7 @@ $ ps aux
 
 オプションの意味は相互作用するため、各文字を独立したコマンドと考えず、組み合わせ全体を解釈してください。
 
-:::single-choice{#ps-command-aux-user-format}
-`ps aux` でユーザー指向の出力形式を要求するオプションはどれですか？
+:::single-choice{#ps-command-aux-user-format} `ps aux` でユーザー指向の出力形式を要求するオプションはどれですか？
 
 ::option[`u`]{#ps-command-aux-u .correct explanation="BSD 形式の u はユーザー指向の出力列を選びます。"}
 ::option[`x`]{#ps-command-aux-x explanation="x は特に制御端末のないプロセスなど、選択対象へ影響します。"}
@@ -77,8 +75,7 @@ $ ps -ef
 
 通常は `UID`、`PID`、`PPID`、開始時刻、コマンド情報を含みます。`PPID` は親プロセス ID です。この一覧は本質的に階層表示ではありません。親子関係が重要なら、対応環境で `--forest`、または `pstree` を使います。
 
-:::single-choice{#ps-command-ef-selection}
-`ps -ef` の `-e` は何を要求しますか？
+:::single-choice{#ps-command-ef-selection} `ps -ef` の `-e` は何を要求しますか？
 
 ::option[中断するまで毎秒更新すること。]{#ps-command-e-refresh explanation="ps はスナップショットを生成し、継続更新は top などの機能です。"}
 ::option[呼び出し元から見えるすべてのプロセスを含む選択。]{#ps-command-e-every .correct explanation="標準形式の -e は、選択可能な全プロセスへスナップショットを広げます。"}
@@ -95,8 +92,7 @@ $ top
 
 CPU とメモリの消費が変化するプロセスを見つけられますが、値は変動するサンプルです。複数回観測し、割合を CPU 数、メモリ計算、ワークロードと関連付けて疑わしい問題を確認してください。
 
-:::single-choice{#ps-command-snapshot-versus-top}
-ここで紹介したうち、既定でプロセス表示を定期更新するツールはどれですか？
+:::single-choice{#ps-command-snapshot-versus-top} ここで紹介したうち、既定でプロセス表示を定期更新するツールはどれですか？
 
 ::option[`top`]{#ps-command-top-refresh .correct explanation="top は一定間隔で表示を更新する対話型モニターです。"}
 ::option[`ps -ef`]{#ps-command-ps-ef-snapshot explanation="完全形式のプロセススナップショットを出力して終了します。"}

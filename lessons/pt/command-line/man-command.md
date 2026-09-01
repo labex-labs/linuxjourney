@@ -22,8 +22,7 @@ $ man ls
 
 As páginas de manual normalmente incluem uma sinopse, descrição, opções, arquivos relacionados e referências cruzadas, embora as seções exatas variem.
 
-:::single-choice{#open-ls-manual}
-Qual comando abre a página de manual instalada de `ls`?
+:::single-choice{#open-ls-manual} Qual comando abre a página de manual instalada de `ls`?
 
 ::option[`help ls`]{#help-ls explanation="O `help` do Bash documenta comandos internos do shell e normalmente não abre a página de manual do programa externo `ls`."}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` procura o tópico `ls` no banco de dados de manuais e exibe a página correspondente."}
@@ -43,16 +42,14 @@ Dentro de uma página man:
 
 O paginador pode variar conforme o sistema ou ambiente; por isso, suas teclas exatas não são garantidas em todos os lugares. Os controles acima se aplicam à configuração comum com `less`.
 
-:::single-choice{#search-man-page}
-Com uma página man aberta em `less`, o que inicia uma pesquisa para a frente por `--recursive`?
+:::single-choice{#search-man-page} Com uma página man aberta em `less`, o que inicia uma pesquisa para a frente por `--recursive`?
 
 ::option[Digitar `?--recursive` e pressionar Enter.]{#backward-man-search explanation="Um ponto de interrogação inicia uma pesquisa para trás. Ele procura na direção oposta à solicitada."}
 ::option[Digitar `/--recursive` e pressionar Enter.]{#forward-man-search .correct explanation="Uma barra inicia uma pesquisa para a frente em `less`, e Enter envia o padrão."}
 ::option[Digitar `n--recursive` e pressionar Enter.]{#repeat-man-search explanation="A tecla `n` repete uma pesquisa existente. Ela não introduz um novo padrão dessa maneira."}
 :::
 
-:::single-choice{#leave-man-page}
-Com uma página man aberta no paginador usual, qual tecla retorna ao shell?
+:::single-choice{#leave-man-page} Com uma página man aberta no paginador usual, qual tecla retorna ao shell?
 
 ::option[`G`]{#man-page-end explanation="`G` maiúsculo leva ao final da página em `less`. Ele não fecha o paginador."}
 ::option[`n`]{#next-man-match explanation="A tecla `n` repete a pesquisa mais recente. Ela mantém a página de manual aberta."}
@@ -78,8 +75,7 @@ $ man 1 passwd
 
 O primeiro comando abre a página do formato de arquivo `passwd` na seção 5. O segundo abre a página do comando de usuário na seção 1. Referências como `passwd(5)` usam a mesma notação `tópico(seção)`.
 
-:::single-choice{#open-passwd-file-format}
-Qual comando abre a página da seção 5 que documenta o formato do arquivo `passwd`?
+:::single-choice{#open-passwd-file-format} Qual comando abre a página da seção 5 que documenta o formato do arquivo `passwd`?
 
 ::option[`man passwd 5`]{#section-after-topic explanation="Nessa forma do comando, o seletor da seção deve vir antes do tópico. Essa ordem não solicita `passwd(5)`."}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Colocar a seção `5` antes de `passwd` seleciona especificamente a página do formato de arquivo."}
@@ -95,8 +91,7 @@ Nem todo nome de comando possui uma página de manual instalada separadamente. S
 - Tente `NAME --help` quando um programa externo aceitar essa convenção.
 - Verifique se a distribuição oferece um pacote separado de documentação.
 
-:::single-choice{#missing-builtin-manual}
-`type cd` informa que `cd` é um comando interno do Bash e não há uma página man separada. Qual comando você deve tentar em seguida?
+:::single-choice{#missing-builtin-manual} `type cd` informa que `cd` é um comando interno do Bash e não há uma página man separada. Qual comando você deve tentar em seguida?
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` resume entradas do banco de dados de manuais. Ele não pode fornecer uma página dedicada ausente para o comando interno."}
 ::option[`file cd`]{#file-cd-name explanation="`file` classifica objetos do sistema de arquivos, mas neste caso `cd` é resolvido como comando interno, não como caminho."}

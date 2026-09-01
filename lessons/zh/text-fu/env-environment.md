@@ -30,8 +30,7 @@ $ printf '%s\n' "$HOME"
 
 值取决于当前进程环境，并不是通用常量。除非启用了更严格的 shell 行为，未设置变量会展开为空字符串。
 
-:::single-choice{#env-print-home-value}
-哪个 Bash 命令会打印 `HOME` 的值，同时保留它作为一个参数？
+:::single-choice{#env-print-home-value} 哪个 Bash 命令会打印 `HOME` 的值，同时保留它作为一个参数？
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="单引号会阻止参数展开，因此打印的是字面字符 `$HOME`。"}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash 会在双引号内展开 `$HOME`，`printf` 收到完整值作为一个参数。"}
@@ -56,8 +55,7 @@ USER=pete
 
 环境变量可能包含凭据、令牌、内部路径或其他敏感数据。把完整 `env` 输出粘贴到公开问题或日志前，必须先审查并遮盖敏感值。
 
-:::single-choice{#env-list-exported-values}
-哪个命令会打印新启动进程能够看到的环境？
+:::single-choice{#env-list-exported-values} 哪个命令会打印新启动进程能够看到的环境？
 
 ::option[`env`]{#env-print-all .correct explanation="不带命令和赋值时，`env` 会打印它收到的名称—值环境。"}
 ::option[`alias`]{#env-alias-list explanation="`alias` 列出 shell 别名定义；它们属于 shell 状态，而不是已导出的环境记录。"}
@@ -84,8 +82,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 不要意外用新目录完全替换 `PATH`，也不要加入不受信任的可写目录。前者可能让正常命令无法解析，后者可能导致运行意外的可执行文件。
 
-:::single-choice{#env-prepend-path-directory}
-哪个命令会在当前 Bash 进程及其未来子进程中，把 `/opt/coolapp/bin` 加到现有 `PATH` 前面？
+:::single-choice{#env-prepend-path-directory} 哪个命令会在当前 Bash 进程及其未来子进程中，把 `/opt/coolapp/bin` 加到现有 `PATH` 前面？
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="这会丢弃所有现有搜索目录，可能导致普通命令难以找到。"}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="这会把新目录放在前面，保留旧值，并把结果导出给子进程。"}
@@ -109,8 +106,7 @@ test
 
 该赋值通常持续到取消设置或 shell 退出为止，并不会修改系统级环境。
 
-:::single-choice{#env-export-inheritance}
-在 Bash 中，`export TEST=test` 的主要效果是什么？
+:::single-choice{#env-export-inheritance} 在 Bash 中，`export TEST=test` 的主要效果是什么？
 
 ::option[把 `TEST` 写入所有用户的系统配置。]{#env-system-wide explanation="赋值影响当前 shell 和其子进程的继承，而不是所有用户或整个操作系统。"}
 ::option[标记 `TEST=test`，供未来子进程继承。]{#env-child-inheritance .correct explanation="`export` 会把 shell 变量加入 Bash 传给所启动命令的环境。"}
@@ -133,8 +129,7 @@ $ env LANG=C sort names.txt
 
 使用 `env -i COMMAND` 可让命令从初始空环境启动，再添加所需赋值。许多程序依赖环境值，因此应谨慎使用。
 
-:::single-choice{#env-one-command-value}
-哪个命令会以 `LANG=C` 运行 `sort names.txt`，但不永久改变当前 shell 的 `LANG`？
+:::single-choice{#env-one-command-value} 哪个命令会以 `LANG=C` 运行 `sort names.txt`，但不永久改变当前 shell 的 `LANG`？
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` 会把赋值加入所启动命令的环境，父 shell 保留原值。"}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="这会在当前 shell 中导出 `LANG=C`，并在 `sort` 结束后继续保留改动。"}

@@ -22,8 +22,7 @@ $ exit
 
 如果该 shell 是图形终端标签页中的主进程，标签页可能会按终端设置关闭。在 SSH 会话中，离开远程 shell 通常会返回本地 shell。如果启动了嵌套 shell，`exit` 会返回其父 shell。
 
-:::single-choice{#leave-current-shell}
-你在另一个 shell 内启动了 Bash，现在想返回父 shell。应在嵌套 Bash 会话中运行哪个命令？
+:::single-choice{#leave-current-shell} 你在另一个 shell 内启动了 Bash，现在想返回父 shell。应在嵌套 Bash 会话中运行哪个命令？
 
 ::option[`clear`]{#clear-nested explanation="`clear` 会刷新可见终端区域，但当前 shell 仍会运行。"}
 ::option[`exit`]{#exit-nested .correct explanation="`exit` 会终止当前 shell，让父 shell 恢复运行。"}
@@ -40,16 +39,14 @@ $ exit 0
 
 按约定，`0` 表示成功，非零值表示失败或程序定义的其他情况。如果 Bash 没有收到数字参数，它会使用运行 `exit` 前最后一条命令的状态退出。
 
-:::single-choice{#return-success-status}
-哪个命令会终止当前 shell，并明确向调用者报告成功？
+:::single-choice{#return-success-status} 哪个命令会终止当前 shell，并明确向调用者报告成功？
 
 ::option[`exit 0`]{#exit-zero .correct explanation="状态 `0` 按约定向调用者报告成功完成。"}
 ::option[`exit 1`]{#exit-one explanation="非零状态按约定表示失败或其他异常结果，而不是成功。"}
 ::option[`logout 0`]{#logout-zero explanation="Bash 的 `logout` 用于登录 shell，并不使用这种形式设置所需状态。"}
 :::
 
-:::single-choice{#exit-without-number}
-在 Bash 中，不提供数字时，`exit` 会返回什么状态？
+:::single-choice{#exit-without-number} 在 Bash 中，不提供数字时，`exit` 会返回什么状态？
 
 ::option[始终返回成功状态 `0`。]{#always-zero explanation="成功约定并不会强制不带参数的 `exit` 返回零；此时 Bash 会保留此前的状态。"}
 ::option[始终返回失败状态 `1`。]{#always-one explanation="Bash 不会让每个裸 `exit` 都返回失败状态 `1`；返回值由前一条命令决定。"}
@@ -66,8 +63,7 @@ $ logout
 
 在非登录 Bash shell 中，`logout` 会报告它不是登录 shell；此时应使用 `exit`。
 
-:::single-choice{#leave-login-shell}
-哪个 Bash 内建命令专门用于离开登录 shell？
+:::single-choice{#leave-login-shell} 哪个 Bash 内建命令专门用于离开登录 shell？
 
 ::option[`logout`]{#logout-login .correct explanation="Bash 提供 `logout` 来终止登录 shell。"}
 ::option[`unalias`]{#unalias-login explanation="`unalias` 会从当前 shell 删除别名定义，并不会结束会话。"}

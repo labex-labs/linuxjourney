@@ -16,8 +16,7 @@ Le routage interdomaine sans classe représente une plage d’adresses par une l
 
 Dans `10.42.3.17/24`, les 24 premiers bits constituent le préfixe réseau et huit bits restent variables dans la plage. Le réseau canonique est `10.42.3.0/24` ; l’adresse d’hôte fournie peut néanmoins s’écrire avec le préfixe lors de la configuration d’une interface.
 
-:::single-choice{#cidr-prefix-meaning}
-Que précise `/24` dans une valeur CIDR IPv4 ?
+:::single-choice{#cidr-prefix-meaning} Que précise `/24` dans une valeur CIDR IPv4 ?
 
 ::option[Vingt-quatre bits initiaux de préfixe réseau.]{#cidr-24-prefix-bits .correct explanation="Les huit bits restants parmi les 32 bits IPv4 varient au sein du préfixe."}
 ::option[Vingt-quatre adresses utilisables dans chaque sous-réseau.]{#cidr-24-addresses explanation="Un `/24` contient 256 valeurs d’adresses au total."}
@@ -35,8 +34,7 @@ dernière : 123.12.25.255
 
 Dans un usage de diffusion traditionnel, la première est l’adresse réseau et la dernière la diffusion dirigée. N’appliquez pas aveuglément le raccourci « moins deux » aux liaisons point à point `/31` ou aux routes d’hôtes `/32`.
 
-:::single-choice{#cidr-23-total}
-Combien d’adresses IPv4 au total un `/23` contient-il ?
+:::single-choice{#cidr-23-total} Combien d’adresses IPv4 au total un `/23` contient-il ?
 
 ::option[512]{#cidr-total-512 .correct explanation="Neuf bits variables créent 2^9 combinaisons."}
 ::option[23]{#cidr-total-23 explanation="Le numéro du préfixe compte les bits fixes, et non les adresses."}
@@ -47,8 +45,7 @@ Combien d’adresses IPv4 au total un `/23` contient-il ?
 
 Un préfixe doit commencer sur sa limite binaire. Un `/23` avance par blocs de deux dans le troisième octet lorsque les octets précédents sont fixes ; `123.12.24.0/23` est donc aligné, tandis que `123.12.25.0/23` se réduit à la même plage canonique `123.12.24.0/23`.
 
-:::single-choice{#cidr-canonical-25}
-Quel est le réseau canonique `/23` qui contient `123.12.25.0` ?
+:::single-choice{#cidr-canonical-25} Quel est le réseau canonique `/23` qui contient `123.12.25.0` ?
 
 ::option[`123.12.25.0/23` uniquement, à partir de 25.]{#cidr-25-unaligned explanation="Le dernier bit du préfixe regroupe les valeurs du troisième octet par paires alignées."}
 ::option[`123.12.0.0/23`]{#cidr-third-zero explanation="Cela décrit une autre plage `/23`."}
@@ -59,8 +56,7 @@ Quel est le réseau canonique `/23` qui contient `123.12.25.0` ?
 
 CIDR peut annoncer un agrégat unique pour plusieurs préfixes contigus, de même taille et correctement alignés. Par exemple, `192.0.2.0/25` et `192.0.2.128/25` se combinent en `192.0.2.0/24`. L’agrégation n’est sûre que si le routeur annonceur peut atteindre correctement tout l’agrégat ou possède une politique qui prévient les boucles et les trous noirs.
 
-:::single-choice{#cidr-aggregate-two-25s}
-Quel agrégat couvre les deux moitiés de `192.0.2.0/24` ?
+:::single-choice{#cidr-aggregate-two-25s} Quel agrégat couvre les deux moitiés de `192.0.2.0/24` ?
 
 ::option[`192.0.2.0/26`]{#cidr-aggregate-26 explanation="Un `/26` ne couvre que 64 adresses, moins que chacune des moitiés."}
 ::option[`192.0.3.0/25`]{#cidr-aggregate-other explanation="Cette plage se trouve hors de la plage d’adresses indiquée."}
@@ -71,8 +67,7 @@ Quel agrégat couvre les deux moitiés de `192.0.2.0/24` ?
 
 Lorsque des routes se chevauchent, l’acheminement sélectionne normalement la route admissible dont le préfixe correspondant est le plus long. Une route `/24` est plus spécifique qu’une route `/16` qui la couvre, tandis qu’une route par défaut `/0` ne l’emporte que si aucune route admissible plus spécifique ne correspond.
 
-:::single-choice{#cidr-route-specificity}
-Pour la destination `10.42.3.8`, quelle route admissible est la plus spécifique ?
+:::single-choice{#cidr-route-specificity} Pour la destination `10.42.3.8`, quelle route admissible est la plus spécifique ?
 
 ::option[`10.42.3.0/24`]{#cidr-route-24 .correct explanation="La correspondance sur 24 bits est plus longue, donc plus spécifique, que `/8`."}
 ::option[`10.0.0.0/8`]{#cidr-route-8 explanation="Cette route correspond, mais fixe moins de bits de destination."}

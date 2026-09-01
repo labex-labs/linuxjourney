@@ -27,16 +27,14 @@ $ command -v vi
 
 La ruta resuelta no permite por sí sola determinar si `vi` y `vim` son la misma implementación. `type -a vi vim` y la salida de versión del editor pueden proporcionar más detalles.
 
-:::single-choice{#vim-name-origin}
-¿Qué significa el nombre Vim?
+:::single-choice{#vim-name-origin} ¿Qué significa el nombre Vim?
 
 ::option[Visual Input Manager]{#vim-visual-input explanation="Esta expansión no es el origen del nombre del editor."}
 ::option[Virtual Interface Mode]{#vim-virtual-interface explanation="Vim usa modos, pero esta frase no es lo que representa su nombre."}
 ::option[Vi Improved]{#vim-vi-improved .correct explanation="Vim comenzó como un editor mejorado compatible con vi, algo que refleja su nombre."}
 :::
 
-:::single-choice{#vim-check-command}
-¿Qué orden comprueba si Bash puede resolver actualmente el nombre `vim`?
+:::single-choice{#vim-check-command} ¿Qué orden comprueba si Bash puede resolver actualmente el nombre `vim`?
 
 ::option[`vim --create`]{#vim-create-option explanation="Esta no es la comprobación de resolución del shell ni la forma de instalar o descubrir Vim."}
 ::option[`command -v vim`]{#vim-command-resolution .correct explanation="La orden integrada del shell muestra la orden que se usaría para ese nombre, si hay alguna disponible."}
@@ -61,8 +59,7 @@ Si `filename.txt` existe y puede leerse, Vim carga su contenido en un búfer. Si
 
 Vim no evita los permisos del sistema de archivos. Abrir un archivo no garantiza que tu cuenta pueda guardar cambios en su ruta.
 
-:::single-choice{#vim-open-missing-path}
-¿Qué ocurre normalmente cuando `vim draft.txt` indica una ruta que todavía no existe?
+:::single-choice{#vim-open-missing-path} ¿Qué ocurre normalmente cuando `vim draft.txt` indica una ruta que todavía no existe?
 
 ::option[Vim abre un búfer nuevo y crea el archivo únicamente cuando se guarda.]{#vim-new-buffer .correct explanation="La ruta se recuerda para el búfer, mientras que la creación en disco se aplaza hasta que se guarda correctamente."}
 ::option[Vim crea un archivo vacío en disco antes de abrir la interfaz.]{#vim-immediate-create explanation="El búfer nuevo se asocia a la ruta, pero el archivo no se crea hasta que se guarda correctamente."}
@@ -86,8 +83,7 @@ Dentro de Vim, entra en el modo Normal con `Esc`, escribe `:help` y pulsa Intro 
 
 Las etiquetas de ayuda son precisas, por lo que la puntuación puede importar. Usa `Ctrl+]` sobre un enlace de ayuda para seguirlo y `Ctrl+T` para volver.
 
-:::single-choice{#vim-guided-tutorial}
-¿Qué orden del shell inicia el tutorial guiado de Vim cuando está instalado?
+:::single-choice{#vim-guided-tutorial} ¿Qué orden del shell inicia el tutorial guiado de Vim cuando está instalado?
 
 ::option[`vim --quiz`]{#vim-quiz-option explanation="Vim no usa esta opción como interfaz estándar de su tutorial guiado."}
 ::option[`vimtutor`]{#vim-tutor-command .correct explanation="`vimtutor` abre una copia del tutorial interactivo diseñado para practicar con seguridad."}
@@ -105,8 +101,7 @@ $ vim vim-practice.txt
 
 Las lecciones siguientes presentan las búsquedas, la navegación, la inserción, la edición y el guardado. Hasta que sepas salir con seguridad, recuerda que `Esc` vuelve al modo Normal y que `:q!`, seguido de Intro, descarta los cambios no guardados de la ventana actual. Usa esta orden únicamente cuando quieras descartar esos cambios.
 
-:::single-choice{#vim-abandon-practice-changes}
-En un archivo de práctica desechable, ¿qué orden de Vim cierra la ventana actual y descarta sus cambios sin guardar?
+:::single-choice{#vim-abandon-practice-changes} En un archivo de práctica desechable, ¿qué orden de Vim cierra la ventana actual y descarta sus cambios sin guardar?
 
 ::option[`:w`]{#vim-write-only explanation="`:w` guarda el búfer, pero no cierra la ventana actual."}
 ::option[`:wq`]{#vim-write-quit explanation="`:wq` guarda los cambios antes de salir, por lo que no los descarta."}

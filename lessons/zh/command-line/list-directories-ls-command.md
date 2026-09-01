@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-哪个命令可以在不进入 `/home/pete` 的情况下列出其内容？
+:::single-choice{#list-another-directory} 哪个命令可以在不进入 `/home/pete` 的情况下列出其内容？
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="向 `ls` 传入目录路径会列出该目录的内容，而 shell 仍停留在当前工作目录。"}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` 会改变 shell 的工作目录，本身不会执行所需的内容列举。"}
@@ -47,8 +46,7 @@ $ ls -a
 
 点文件默认隐藏，常用于保存 `.bashrc` 等配置。
 
-:::single-choice{#show-hidden-files}
-哪个命令会在列表中包含隐藏文件？
+:::single-choice{#show-hidden-files} 哪个命令会在列表中包含隐藏文件？
 
 ::option[`ls -l`]{#long-format explanation="`-l` 会添加详细信息列，但本身不会包含隐藏名称。"}
 ::option[`ls -r`]{#reverse-order explanation="`-r` 会反转排序顺序，并不改变是否包含隐藏文件。"}
@@ -84,8 +82,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-哪个命令会显示长格式详情和易读的大小？
+:::single-choice{#show-readable-file-details} 哪个命令会显示长格式详情和易读的大小？
 
 ::option[`ls -la`]{#long-all explanation="它组合了长格式和隐藏文件，但没有要求使用易读的大小单位。"}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` 选择长格式，`-h` 让大小更易读；两个标志可以组合在一个命令中。"}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-哪个命令按修改时间排序，并把最新条目放在最后？
+:::single-choice{#show-newest-files-last} 哪个命令按修改时间排序，并把最新条目放在最后？
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` 按修改时间排序，`-r` 再反转顺序；组合后旧条目会排在新条目前面。"}
 ::option[`ls -lt`]{#time-default explanation="它会按修改时间排序，但保留默认的最新优先顺序，不会把最新条目放在最后。"}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`：按文件大小排序。
 - `-d`：列出目录本身，而非其内容。
 
-:::single-choice{#list-directory-entry-itself}
-哪个命令会列出 `projects/` 目录条目本身，而不是其中的内容？
+:::single-choice{#list-directory-entry-itself} 哪个命令会列出 `projects/` 目录条目本身，而不是其中的内容？
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="`-d` 选项让 `ls` 显示目录条目本身，而不是打开目录列出内容。"}
 ::option[`ls projects/`]{#directory-contents explanation="不使用 `-d` 时，把目录路径传给 `ls` 会显示该目录中的条目。"}

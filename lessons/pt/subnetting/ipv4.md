@@ -22,8 +22,7 @@ O IPv4 é exibido como quatro octetos de oito bits separados por pontos:
 
 Cada octeto varia de 0 a 255, portanto o endereço completo contém quatro bytes. O comprimento do prefixo identifica quantos bits iniciais pertencem ao prefixo de rede, como em `192.0.2.165/24`.
 
-:::single-choice{#ipv4-address-size}
-Qual é o tamanho de um endereço IPv4?
+:::single-choice{#ipv4-address-size} Qual é o tamanho de um endereço IPv4?
 
 ::option[32 bits em quatro octetos.]{#ipv4-thirty-two-bits .correct explanation="Quatro grupos de oito bits produzem a representação decimal pontuada."}
 ::option[24 bits em todas as redes.]{#ipv4-always-twenty-four explanation="Um `/24` é um comprimento de prefixo, não o tamanho de todo endereço IPv4."}
@@ -36,8 +35,7 @@ Nem todo endereço IPv4 é roteável globalmente. Alguns exemplos são loopback 
 
 Endereços privados podem ser reutilizados em redes separadas. O NAT pode traduzi-los para comunicação externa, mas não é necessário para a comunicação dentro do domínio privado roteado.
 
-:::single-choice{#ipv4-private-reuse}
-Por que `10.0.0.1` pode aparecer em muitas organizações?
+:::single-choice{#ipv4-private-reuse} Por que `10.0.0.1` pode aparecer em muitas organizações?
 
 ::option[Toda ocorrência identifica o mesmo roteador físico.]{#ipv4-same-router explanation="O endereço possui significado dentro de cada rede e não é globalmente exclusivo."}
 ::option[Os roteadores IPv4 ignoram o primeiro octeto.]{#ipv4-ignore-octet explanation="Todos os bits do endereço participam da correspondência de rotas."}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 Ela mostra prefixo, broadcast, escopo, marcador de origem dinâmica e interface. Linhas adicionais podem mostrar as durações válida e preferencial. Uma interface pode conter vários endereços IPv4.
 
-:::single-choice{#ipv4-ip-output-prefix}
-O que `/24` significa em `192.0.2.165/24`?
+:::single-choice{#ipv4-ip-output-prefix} O que `/24` significa em `192.0.2.165/24`?
 
 ::option[O endereço expira depois de 24 segundos.]{#ipv4-prefix-seconds explanation="A duração é informada separadamente."}
 ::option[Os primeiros 24 bits do endereço formam o prefixo de rede.]{#ipv4-prefix-bits .correct explanation="Os oito bits restantes identificam posições dentro desse prefixo."}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 Leia o próximo salto, a interface e a origem selecionados e depois teste o caminho real da aplicação. Não altere endereços em um host remoto sem acesso ao console e um plano de reversão.
 
-:::single-choice{#ipv4-route-get-purpose}
-O que `ip route get DESTINATION` pode mostrar?
+:::single-choice{#ipv4-route-get-purpose} O que `ip route get DESTINATION` pode mostrar?
 
 ::option[A configuração de todos os roteadores no caminho completo pela Internet.]{#ipv4-all-router-config explanation="Uma consulta local não examina as configurações dos dispositivos seguintes."}
 ::option[A decisão de rota local, inclusive a interface e a origem preferida.]{#ipv4-route-decision .correct explanation="Ele avalia a política de roteamento atual do host para o destino fornecido."}

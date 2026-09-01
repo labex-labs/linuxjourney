@@ -30,8 +30,7 @@ $ modinfo MODULE_NAME
 
 `modinfo` pode mostrar arquivo, aliases, parâmetros, licença, descrição e assinatura. Esses metadados são descritivos, não prova de confiança ou compatibilidade com a carga de trabalho.
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-O que `lsmod` exibe?
+:::single-choice{#kernel-modules-lsmod-purpose} O que `lsmod` exibe?
 
 ::option[Todos os pacotes de módulos disponíveis em repositórios remotos.]{#kernel-modules-repository-list explanation="O inventário dos repositórios exige consultas ao gerenciador de pacotes."}
 ::option[Apenas drivers incorporados diretamente à imagem do kernel.]{#kernel-modules-builtins explanation="Recursos incorporados não são módulos carregáveis e normalmente não aparecem em lsmod."}
@@ -50,8 +49,7 @@ $ sudo modprobe MODULE_NAME
 
 Antes de carregar, confirme procedência, política de assinatura, compatibilidade da versão, parâmetros, vínculo esperado com hardware e rollback. Secure Boot ou lockdown podem rejeitar módulos não assinados; forçar código incompatível arrisca travamento ou comprometimento.
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-Por que normalmente se prefere `modprobe` a `insmod` direto?
+:::single-choice{#kernel-modules-modprobe-dependencies} Por que normalmente se prefere `modprobe` a `insmod` direto?
 
 ::option[Ele executa o módulo inteiramente no espaço do usuário.]{#kernel-modules-modprobe-userspace explanation="O módulo inserido é executado como código privilegiado do kernel."}
 ::option[Ele garante que todo módulo de terceiros é assinado e seguro.]{#kernel-modules-modprobe-guarantee explanation="A imposição depende da política, e assinatura válida não prova ausência de falhas."}
@@ -74,8 +72,7 @@ example_module
 
 Aliases de hardware muitas vezes acionam carregamento automático sem lista explícita. Para módulos necessários no início do boot, atualize o initramfs pelo processo documentado da distribuição.
 
-:::single-choice{#kernel-modules-options-versus-load}
-O que faz uma linha `options` em `/etc/modprobe.d/`?
+:::single-choice{#kernel-modules-options-versus-load} O que faz uma linha `options` em `/etc/modprobe.d/`?
 
 ::option[Garante sozinha que o módulo será carregado em todo boot.]{#kernel-modules-options-autoload explanation="Pedidos de carregamento usam outro mecanismo, como modules-load ou aliases de dispositivos."}
 ::option[Define parâmetros usados quando o módulo nomeado é carregado.]{#kernel-modules-options-parameters .correct explanation="Modprobe aplica os argumentos de chave e valor configurados durante a inserção."}
@@ -92,8 +89,7 @@ blacklist example_module
 
 Isso normalmente suprime o carregamento automático pelos aliases. Não descarrega um módulo ativo, não o remove do initramfs nem necessariamente impede uma carga explícita pelo nome ou como dependência. Hardening exige uma combinação específica de disponibilidade, assinaturas, initramfs, parâmetros de boot e política.
 
-:::single-choice{#kernel-modules-blacklist-effect}
-O que uma linha básica `blacklist` do modprobe suprime principalmente?
+:::single-choice{#kernel-modules-blacklist-effect} O que uma linha básica `blacklist` do modprobe suprime principalmente?
 
 ::option[O carregamento automático pelos aliases do módulo.]{#kernel-modules-blacklist-aliases .correct explanation="A diretiva não é uma proibição universal de todas as rotas pelas quais o código pode ser carregado."}
 ::option[A execução de todo programa de usuário com nome parecido.]{#kernel-modules-blacklist-user-programs explanation="A configuração do modprobe se aplica à resolução de módulos do kernel."}
@@ -112,8 +108,7 @@ Modprobe pode remover dependências que ficaram sem uso. O kernel recusa quando 
 
 Nunca force a remoção em um sistema que precisa preservar. Falhas ou atividades pendentes podem travar o kernel ou corromper dados.
 
-:::single-choice{#kernel-modules-remove-command}
-Qual comando solicita a remoção de um módulo pelo nome considerando dependências?
+:::single-choice{#kernel-modules-remove-command} Qual comando solicita a remoção de um módulo pelo nome considerando dependências?
 
 ::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="Lsmod apenas lista e não remove módulos."}
 ::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="Uname informa dados do kernel e não gerencia módulos."}

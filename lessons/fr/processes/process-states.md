@@ -25,16 +25,14 @@ Le premier caractère de `STAT` est l’état principal. Les caractères supplé
 
 Le sommeil est normal. Les programmes interactifs et les services passent une grande partie de leur temps à attendre une entrée, un minuteur, du trafic réseau, un verrou ou d’autres événements plutôt qu’à consommer continuellement du processeur.
 
-:::single-choice{#process-states-runnable-code}
-Que signifie l’état principal `R` ?
+:::single-choice{#process-states-runnable-code} Que signifie l’état principal `R` ?
 
 ::option[En cours d’exécution sur un processeur ou prêt à s’exécuter.]{#process-states-r-running .correct explanation="`R` regroupe les tâches actuellement exécutées et celles qui attendent le processeur dans une file d’exécution."}
 ::option[Récupéré après que son parent a recueilli son état.]{#process-states-r-reaped explanation="Un processus entièrement récupéré n’apparaît plus comme une entrée normale de la table des processus."}
 ::option[En attente dans un sommeil non interruptible.]{#process-states-r-uninterruptible explanation="Le sommeil non interruptible est représenté par `D`."}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-Quel état principal représente le sommeil interruptible ?
+:::single-choice{#process-states-interruptible-code} Quel état principal représente le sommeil interruptible ?
 
 ::option[`D`]{#process-states-sleep-d explanation="`D` désigne le sommeil non interruptible."}
 ::option[`Z`]{#process-states-sleep-z explanation="`Z` désigne un enfant terminé dont l’état n’a pas été récupéré."}
@@ -47,8 +45,7 @@ Quel état principal représente le sommeil interruptible ?
 
 Un bref état `D` peut être normal. Des tâches nombreuses ou durablement en `D` peuvent signaler des entrées-sorties lentes, indisponibles ou défaillantes, mais l’état seul n’en identifie pas la cause. Examinez le canal d’attente, les journaux du noyau, la santé du stockage et du réseau ainsi que le sous-système concerné avant de conclure.
 
-:::single-choice{#process-states-uninterruptible-code}
-Quel état principal désigne le sommeil non interruptible ?
+:::single-choice{#process-states-uninterruptible-code} Quel état principal désigne le sommeil non interruptible ?
 
 ::option[`T`]{#process-states-d-stopped explanation="`T` identifie une tâche arrêtée."}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` désigne une tâche en attente dans un sommeil non interruptible du noyau."}
@@ -62,8 +59,7 @@ Quel état principal désigne le sommeil non interruptible ?
 
 Reprenez un arrêt de contrôle des tâches avec `SIGCONT` lorsque cela convient. Un zombie ne peut être ni repris ni tué, car il ne s’exécute plus ; son parent ou un récupérateur adoptant doit le recueillir.
 
-:::single-choice{#process-states-zombie-code}
-Qu’identifie l’état principal `Z` ?
+:::single-choice{#process-states-zombie-code} Qu’identifie l’état principal `Z` ?
 
 ::option[Un processus terminé dont l’enregistrement de fin attend d’être récupéré.]{#process-states-z-zombie .correct explanation="Un zombie conserve un état minimal visible par le parent après la fin de son exécution."}
 ::option[Un processus suspendu par un signal du terminal.]{#process-states-z-terminal-stop explanation="Un arrêt de contrôle des tâches s’affiche normalement sous la forme `T`."}

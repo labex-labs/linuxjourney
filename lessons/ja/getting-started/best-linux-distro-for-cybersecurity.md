@@ -24,8 +24,7 @@ Linux 初心者には、必ずしも最良の出発点ではありません。[U
 
 セキュリティツールは、自分が所有するシステム、またはテストする明示的な許可を得たシステムだけで使ってください。専用ディストリビューションはツールを提供しますが、許可、判断力、安全に使う技能は提供しません。
 
-:::single-choice{#confirm-testing-authorization}
-システムでペネトレーションテスト用ツールを使う前に、何を確認する必要がありますか？
+:::single-choice{#confirm-testing-authorization} システムでペネトレーションテスト用ツールを使う前に、何を確認する必要がありますか？
 
 ::option[そのシステムを所有しているか、テストする明示的な許可があること]{#authorized-system .correct explanation="セキュリティテストには所有者の明確な許可が必要で、ツールやディストリビューションを持つだけでは他者のシステムをテストする権限になりません。"}
 ::option[使いたいツールがセキュリティディストリビューションに含まれること]{#tool-is-installed explanation="ツールの有無は許可を証明せず、対象システムの所有者から承認を得る必要があります。"}
@@ -47,8 +46,7 @@ Linux 初心者には、必ずしも最良の出発点ではありません。[U
 
 多数のツールを1か所にまとめ、仮想マシンや ARM デバイスなど多くの環境で利用できます。一方、Linux に不慣れな人や通常のデスクトップが欲しい人には、一般用途の最初の Linux として推奨されません。
 
-:::single-choice{#match-kali-use-case}
-Kali Linux に最もよく合う状況はどれですか？
+:::single-choice{#match-kali-use-case} Kali Linux に最もよく合う状況はどれですか？
 
 ::option[経験を持つテスターが、準備済みのセキュリティ監査環境を必要としている]{#experienced-kali-user .correct explanation="すでに Linux と作業内容を理解する利用者のペネトレーションテスト・監査向けです。"}
 ::option[Linux 初心者が日常作業用の一般的なデスクトップを求めている]{#general-desktop-beginner explanation="Kali 自身の文書も最初の一般用途デスクトップには推奨せず、初心者向けディストリビューションの方が適します。"}
@@ -67,8 +65,7 @@ Kali より範囲が少し広く、セキュリティに加えてプライバシ
 
 強力ですが初心者向けではありません。Arch または Linux に不慣れなら学習曲線のため避けるよう公式 FAQ も案内しており、Arch を理解する上級者向けです。
 
-:::single-choice{#match-blackarch-user}
-BlackArch を使う準備として最も適した経験はどれですか？
+:::single-choice{#match-blackarch-user} BlackArch を使う準備として最も適した経験はどれですか？
 
 ::option[Linux 経験がなく、システム管理にも関心がない]{#no-linux-experience explanation="Linux の最初の入門向けではなく、Arch の基盤と大きなツール群には相当な予備知識が必要です。"}
 ::option[Arch Linux とその保守方式を扱える自信がある]{#arch-experience .correct explanation="Arch を基盤とし、その環境を扱えることを前提にしており、公式案内も初心者へ学習曲線を警告しています。"}
@@ -81,8 +78,7 @@ BlackArch を使う準備として最も適した経験はどれですか？
 
 匿名性や信頼できないコンピューターでの安全性が目的なら Tails、ペネトレーションテストなら通常は Kali または Parrot がより直接的です。
 
-:::single-choice{#match-tails-use-case}
-Tails に最もよく合う目的はどれですか？
+:::single-choice{#match-tails-use-case} Tails に最もよく合う目的はどれですか？
 
 ::option[Arch ベースの大規模なペネトレーションテストツール群を読み込む]{#blackarch-toolkit explanation="これは BlackArch の特徴で、Tails は携帯可能なプライバシーと検閲耐性を重視します。"}
 ::option[プライバシーと最小限のローカル痕跡を目的とする携帯システムを使う]{#tails-privacy .correct explanation="インターネット通信を Tor 経由にし、終了後に痕跡を残さない設計で、ペネトレーションテストよりプライバシーを重視します。"}

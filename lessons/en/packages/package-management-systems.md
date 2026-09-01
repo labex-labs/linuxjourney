@@ -33,8 +33,7 @@ RPM family:    $ dnf info package-name
 
 Repository configuration determines what these commands can discover. Read source names, architectures, versions, and signing errors carefully.
 
-:::single-choice{#package-management-systems-apt-show}
-Which command displays APT package details for `package-name`?
+:::single-choice{#package-management-systems-apt-show} Which command displays APT package details for `package-name`?
 
 ::option[`apt remove package-name`]{#package-management-systems-apt-remove-command explanation="The `remove` subcommand proposes uninstalling the package."}
 ::option[`dnf search package-name`]{#package-management-systems-dnf-search-command explanation="This searches RPM-family repositories and is not the APT detail command."}
@@ -52,8 +51,7 @@ RPM family:    $ sudo dnf install package-name
 
 The manager proposes dependencies and any conflicts or replacements. Do not confirm automatically until you have reviewed package origin, version, architecture, download size, disk change, removals, and newly installed dependencies.
 
-:::single-choice{#package-management-systems-dnf-install}
-Which current command installs `package-name` from configured RPM-family repositories?
+:::single-choice{#package-management-systems-dnf-install} Which current command installs `package-name` from configured RPM-family repositories?
 
 ::option[`rpm -qa package-name`]{#package-management-systems-rpm-query-command explanation="This is an RPM installed-database query, not a repository install request."}
 ::option[`dnf install package-name`]{#package-management-systems-dnf-install-command .correct explanation="DNF is the current repository-aware manager on Fedora and recent RHEL releases."}
@@ -71,8 +69,7 @@ RPM family:    $ sudo dnf remove package-name
 
 Removal can affect dependent packages or leave now-unused dependencies and configuration. Review the proposed transaction, distinguish remove from purge semantics on Debian-family systems, and preserve application data according to its own backup and retention procedure. Package removal does not promise to delete user-created data.
 
-:::single-choice{#package-management-systems-remove-review}
-Why should you review a removal transaction before confirming it?
+:::single-choice{#package-management-systems-remove-review} Why should you review a removal transaction before confirming it?
 
 ::option[Removal always reformats the filesystem containing the package.]{#package-management-systems-removal-format explanation="Package managers remove managed files and state; they do not ordinarily format a filesystem."}
 ::option[Package managers cannot display a proposed change set.]{#package-management-systems-no-proposal explanation="Interactive managers normally show the planned transaction precisely so it can be reviewed."}
@@ -98,8 +95,7 @@ $ sudo dnf upgrade
 
 An update command can change core libraries, services, kernels, and dependencies. Use backups, maintenance policy, release notes, and restart or reboot planning appropriate to the system. Check command exit semantics: for example, some “check update” operations use a nonzero status to report that updates are available rather than an execution failure.
 
-:::single-choice{#package-management-systems-apt-update-upgrade}
-What is the relationship between `apt update` and `apt upgrade`?
+:::single-choice{#package-management-systems-apt-update-upgrade} What is the relationship between `apt update` and `apt upgrade`?
 
 ::option[`update` removes packages; `upgrade` restores their configuration files.]{#package-management-systems-apt-remove-restore explanation="Neither command has that remove-and-restore relationship."}
 ::option[`update` refreshes metadata; `upgrade` applies an approved package upgrade plan.]{#package-management-systems-apt-two-steps .correct explanation="APT separates catalog refresh from installation of newer package versions."}
@@ -110,8 +106,7 @@ What is the relationship between `apt update` and `apt upgrade`?
 
 Use `dnf` in current Fedora and RHEL documentation. A `yum` command on a recent RHEL system can invoke DNF compatibility behavior, but scripts should not infer the implementation from the executable name alone. On legacy hosts, verify the installed version and supported syntax before translating instructions.
 
-:::single-choice{#package-management-systems-yum-current-rhel}
-What does `yum` commonly represent on a current RHEL system?
+:::single-choice{#package-management-systems-yum-current-rhel} What does `yum` commonly represent on a current RHEL system?
 
 ::option[A compatibility command backed by DNF.]{#package-management-systems-yum-dnf-alias .correct explanation="Recent RHEL releases use DNF while preserving the yum command name for compatibility."}
 ::option[The Debian low-level `.deb` archive tool.]{#package-management-systems-yum-dpkg explanation="Debian systems use tools such as APT and dpkg rather than YUM for native package management."}

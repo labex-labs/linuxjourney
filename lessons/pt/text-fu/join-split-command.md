@@ -43,8 +43,7 @@ $ join people.txt surnames.txt
 
 A saída contém uma vez a chave compartilhada, seguida dos campos restantes do primeiro e do segundo arquivo. `join` processa dois arquivos de cada vez; ele não aceita três operandos comuns como uma união relacional de três vias.
 
-:::single-choice{#join-default-key}
-Sem opções de campo, quais registros `join first.txt second.txt` combina?
+:::single-choice{#join-default-key} Sem opções de campo, quais registros `join first.txt second.txt` combina?
 
 ::option[Linhas cujos primeiros campos separados por espaços são iguais.]{#join-first-fields .correct explanation="O comportamento padrão de `join` compara o campo 1 de cada uma das duas entradas ordenadas."}
 ::option[Linhas que ocupam o mesmo número físico nos arquivos.]{#join-line-numbers explanation="A correspondência se baseia nos valores dos campos-chave, não apenas nas posições dos registros."}
@@ -63,8 +62,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 Usar o mesmo locale na ordenação e na união mantém as regras de comparação consistentes. Não redirecione a saída de `sort` para seu próprio caminho de entrada, pois o shell truncaria esse arquivo primeiro.
 
-:::single-choice{#join-sort-requirement}
-Que preparação `join` normalmente exige para uma correspondência confiável?
+:::single-choice{#join-sort-requirement} Que preparação `join` normalmente exige para uma correspondência confiável?
 
 ::option[Os dois arquivos precisam conter exatamente a mesma quantidade de linhas físicas.]{#join-equal-line-count explanation="As entradas podem ter tamanhos diferentes. As correspondências de chaves, não a quantidade igual de linhas, determinam a saída."}
 ::option[Os nomes dos dois arquivos precisam ficar lado a lado em ordem alfabética.]{#join-filename-order explanation="As chaves do conteúdo precisam estar ordenadas; a relação lexical entre os nomes dos arquivos é irrelevante."}
@@ -100,8 +98,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 Use `-t CHARACTER` quando um único caractere não vazio, como `:`, separar os campos. Opções como `-a 1` ou `-a 2` podem incluir linhas sem pares de uma das entradas; por padrão, a saída contém apenas chaves correspondentes.
 
-:::single-choice{#join-different-fields}
-Quais opções unem o campo 2 do primeiro arquivo ao campo 1 do segundo?
+:::single-choice{#join-different-fields} Quais opções unem o campo 2 do primeiro arquivo ao campo 1 do segundo?
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="Essa forma seleciona o campo 1 da primeira entrada e o campo 2 da segunda, o inverso do mapeamento solicitado."}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` escolhe o campo 2 do primeiro arquivo, e `-2 1` escolhe o campo 1 do segundo."}
@@ -126,8 +123,7 @@ $ split -l 500 large.txt part-
 
 Isso produz `part-aa`, `part-ab` e assim por diante, com no máximo 500 linhas em cada parte.
 
-:::single-choice{#split-lines-with-prefix}
-Qual comando divide `large.txt` em partes de no máximo 500 linhas, com nomes iniciados por `part-`?
+:::single-choice{#split-lines-with-prefix} Qual comando divide `large.txt` em partes de no máximo 500 linhas, com nomes iniciados por `part-`?
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="A opção `-b` seleciona bytes; portanto, essas partes seriam muito menores que 500 linhas em um texto comum."}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` define a quantidade máxima de linhas, e o último operando fornece o prefixo dos arquivos de saída."}
@@ -144,8 +140,7 @@ $ split -b 10M archive.bin chunk-
 
 Esse comando solicita partes de 10 mebibytes, com exceção de uma possível parte final menor. `split` não cria um manifesto nem metadados de remontagem; preserve a ordem dos sufixos e concatene as partes nessa ordem quando a reconstrução for apropriada.
 
-:::single-choice{#split-ten-mebibytes}
-Qual comando divide `archive.bin` em partes de 10 MiB com o prefixo `chunk-`?
+:::single-choice{#split-ten-mebibytes} Qual comando divide `archive.bin` em partes de 10 MiB com o prefixo `chunk-`?
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="A opção `-l` espera uma quantidade de linhas, não um sufixo de tamanho em bytes para partes binárias."}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` não divide uma entrada binária nem oferece essa operação de tamanho de partes."}

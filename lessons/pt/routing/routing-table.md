@@ -24,8 +24,7 @@ default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
 
 A rota `/24` conectada envia os destinos correspondentes diretamente por `eth0`. A rota padrão usa o gateway de próximo salto `192.168.224.2`. `proto` descreve como a rota foi instalada, `src` é uma origem preferida para o tráfego correspondente, e uma métrica ajuda a classificar rotas que, de outra forma, seriam comparáveis.
 
-:::single-choice{#routing-table-via-meaning}
-O que `via 192.168.224.2` indica?
+:::single-choice{#routing-table-via-meaning} O que `via 192.168.224.2` indica?
 
 ::option[A única aplicação autorizada a usar a rota.]{#routing-table-application explanation="A autorização da aplicação não é codificada pela palavra-chave `via`."}
 ::option[O gateway de próximo salto da rota.]{#routing-table-next-hop .correct explanation="O pacote é enquadrado para esse roteador no enlace enquanto mantém seu destino IP."}
@@ -36,8 +35,7 @@ O que `via 192.168.224.2` indica?
 
 Uma rota com `scope link` e sem próximo salto `via` trata o prefixo como diretamente acessível pela interface. Uma rota padrão corresponde a todos os endereços, mas perde para qualquer rota elegível mais específica.
 
-:::single-choice{#routing-table-connected-route}
-Como um destino conectado com `scope link` é normalmente alcançado?
+:::single-choice{#routing-table-connected-route} Como um destino conectado com `scope link` é normalmente alcançado?
 
 ::option[Pelo gateway padrão, mesmo quando uma rota conectada corresponde.]{#routing-table-connected-default explanation="O prefixo conectado é mais específico e não possui operando de gateway."}
 ::option[Convertendo o destino em um servidor DNS.]{#routing-table-connected-dns explanation="O serviço de nomes não faz parte de uma rota IP já selecionada."}
@@ -48,8 +46,7 @@ Como um destino conectado com `scope link` é normalmente alcançado?
 
 A seleção de rotas considera as regras de política e escolhe o prefixo elegível mais longo. As métricas classificam rotas dentro de conjuntos comparáveis apropriados; uma rota padrão de métrica baixa não substitui uma `/24` correspondente apenas porque seu número é menor.
 
-:::single-choice{#routing-table-prefix-before-default}
-Qual rota normalmente corresponde de forma mais específica a `192.168.224.50`?
+:::single-choice{#routing-table-prefix-before-default} Qual rota normalmente corresponde de forma mais específica a `192.168.224.50`?
 
 ::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="O prefixo correspondente de 24 bits é o mais longo entre as rotas listadas."}
 ::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="A rota padrão possui comprimento de prefixo zero."}
@@ -67,8 +64,7 @@ $ ip route show table all
 
 Namespaces de rede e VRFs também podem conter estados separados. Execute a inspeção no mesmo contexto do processo afetado.
 
-:::single-choice{#routing-table-policy-limit}
-Por que `ip route show` por si só pode não explicar o caminho de uma aplicação?
+:::single-choice{#routing-table-policy-limit} Por que `ip route show` por si só pode não explicar o caminho de uma aplicação?
 
 ::option[Regras de política ou outro namespace de rede podem selecionar um estado de roteamento diferente.]{#routing-table-policy-context .correct explanation="A consulta efetiva depende dos atributos do pacote e do contexto de rede do processo."}
 ::option[As tabelas de roteamento do Linux não contêm prefixos de destino.]{#routing-table-no-prefixes explanation="Os prefixos de destino são chaves fundamentais das rotas."}
@@ -86,8 +82,7 @@ $ ip route get 203.0.113.10 from 192.168.224.10
 
 O resultado prevê a consulta local naquele momento. Ele não envia uma sondagem nem comprova a acessibilidade do vizinho, dos saltos seguintes, do firewall ou da aplicação.
 
-:::single-choice{#routing-table-route-get-limit}
-O que `ip route get` não faz?
+:::single-choice{#routing-table-route-get-limit} O que `ip route get` não faz?
 
 ::option[Exibir a interface local e o próximo salto escolhidos.]{#routing-table-get-does-interface explanation="Esses são campos principais do resultado da consulta."}
 ::option[Avaliar a política atual de rotas locais para um destino.]{#routing-table-get-does-policy explanation="O comando realiza uma consulta de rota no kernel."}

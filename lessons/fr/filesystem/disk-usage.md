@@ -28,8 +28,7 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 $ df -hT /var/log
 ```
 
-:::single-choice{#disk-usage-df-scope}
-Qu'indique principalement `df` ?
+:::single-choice{#disk-usage-df-scope} Qu'indique principalement `df` ?
 
 ::option[Le contenu en octets de chaque fichier d'un répertoire.]{#disk-usage-df-file-content explanation="La comptabilité d'une arborescence de répertoires relève d'outils comme `du`."}
 ::option[La capacité, l'utilisation et l'espace disponible au niveau du système de fichiers.]{#disk-usage-df-filesystem .correct explanation="Df interroge les statistiques d'allocation des systèmes de fichiers montés au lieu de parcourir chaque chemin."}
@@ -46,8 +45,7 @@ $ df -i /var
 
 Un grand nombre de petits fichiers peut consommer tous les inodes disponibles. Supprimer un gros fichier libère de nombreux blocs, mais généralement un seul inode ; supprimer de nombreux petits fichiers inutiles peut réduire la pression sur les inodes. Certains systèmes de fichiers allouent leurs métadonnées dynamiquement et présentent ces notions différemment.
 
-:::single-choice{#disk-usage-inode-exhaustion}
-Que peut-il se produire lorsqu'un système de fichiers possède des blocs libres, mais plus aucun inode libre ?
+:::single-choice{#disk-usage-inode-exhaustion} Que peut-il se produire lorsqu'un système de fichiers possède des blocs libres, mais plus aucun inode libre ?
 
 ::option[Chaque fichier existant double automatiquement de taille.]{#disk-usage-inode-double explanation="L'épuisement des inodes empêche l'allocation de nouvelles métadonnées et n'agrandit pas le contenu existant."}
 ::option[La création d'un autre fichier peut échouer.]{#disk-usage-inode-create-fail .correct explanation="Un nouvel objet du système de fichiers a besoin de métadonnées même s'il reste de la place pour ses données."}
@@ -70,8 +68,7 @@ $ sudo du -xhd1 /var | sort -h
 
 Les options GNU présentées signifient respectivement sortie lisible, profondeur maximale d'un niveau et limitation à un système de fichiers. Les permissions peuvent masquer des sous-arborescences et produire un total incomplet. Par défaut, `du` peut aussi ne compter qu'une seule fois les fichiers possédant plusieurs liens physiques, distinguer la taille apparente des blocs alloués et traiter les fichiers creux différemment selon les options.
 
-:::single-choice{#disk-usage-du-purpose}
-Quelle commande résume l'espace alloué sous `/var/log` ?
+:::single-choice{#disk-usage-du-purpose} Quelle commande résume l'espace alloué sous `/var/log` ?
 
 ::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="Cette commande indique les statistiques d'inodes du système de fichiers qui contient le chemin."}
 ::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du parcourt l'arborescence indiquée et `-s` produit un seul résumé dans des unités lisibles."}
@@ -90,8 +87,7 @@ Parmi les causes courantes figurent :
 
 Pour les fichiers supprimés mais encore ouverts, examinez les processus autorisés avec un outil comme `lsof +L1` ; redémarrez ou signalez le service responsable selon sa procédure normale au lieu de tronquer des descripteurs inconnus.
 
-:::single-choice{#disk-usage-deleted-open-file}
-Pourquoi `df` peut-il signaler de l'espace utilisé qu'un `du` fondé sur les chemins ne trouve pas ?
+:::single-choice{#disk-usage-deleted-open-file} Pourquoi `df` peut-il signaler de l'espace utilisé qu'un `du` fondé sur les chemins ne trouve pas ?
 
 ::option[`df` multiplie toujours la taille de chaque fichier par deux.]{#disk-usage-df-doubles explanation="Il n'existe aucune règle universelle de doublement."}
 ::option[Un fichier supprimé peut rester ouvert et alloué à un processus actif.]{#disk-usage-open-deleted .correct explanation="L'entrée de répertoire a disparu, mais le système de fichiers conserve les blocs jusqu'à la fermeture de la dernière référence ouverte."}
@@ -102,8 +98,7 @@ Pourquoi `df` peut-il signaler de l'espace utilisé qu'un `du` fondé sur les ch
 
 Partez du système de fichiers plein signalé par `df`, identifiez sa cible de montage avec `findmnt`, puis réduisez la portée des recherches `du` sur ce même système. Tenez compte des instantanés, couches de conteneurs, journaux, caches de paquets et règles de conservation des applications. Ne supprimez pas un fichier au seul motif qu'il est volumineux ; déterminez d'abord son propriétaire, sa sauvegarde, les obligations de conformité et le comportement du service.
 
-:::single-choice{#disk-usage-safe-investigation}
-Quelle est la réaction la plus sûre après avoir trouvé un fichier volumineux ?
+:::single-choice{#disk-usage-safe-investigation} Quelle est la réaction la plus sûre après avoir trouvé un fichier volumineux ?
 
 ::option[Le supprimer immédiatement pendant que le service y écrit.]{#disk-usage-delete-immediately explanation="Cela peut détruire des données nécessaires et ne pas libérer d'espace si le fichier reste ouvert."}
 ::option[Exécuter `mkfs` sur le périphérique qui le contient.]{#disk-usage-mkfs-device explanation="Le formatage détruirait le système de fichiers au lieu de résoudre la croissance d'un seul fichier."}

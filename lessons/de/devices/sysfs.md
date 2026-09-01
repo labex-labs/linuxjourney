@@ -30,8 +30,7 @@ $ readlink -f /sys/class/block/sda
 
 Der Beispielname ist auf Systemen mit anderen Speicherschnittstellen möglicherweise nicht vorhanden.
 
-:::single-choice{#sysfs-canonical-device-tree}
-Welcher sysfs-Unterbaum enthält die hauptsächliche Gerätehierarchie des Kernels?
+:::single-choice{#sysfs-canonical-device-tree} Welcher sysfs-Unterbaum enthält die hauptsächliche Gerätehierarchie des Kernels?
 
 ::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="Sysfs ist kein Speicherort für Authentifizierungsgeheimnisse von Benutzern."}
 ::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="Der Unterbaum devices stellt die Eltern-Kind-Topologie der Geräte dar; Klassen- und Busansichten verweisen dorthin."}
@@ -53,8 +52,7 @@ $ cat /sys/class/block/sda/size
 
 `dev` meldet die Major- und Minor-Gerätenummern. `ro` zeigt das Schreibschutzkennzeichen des Blockgeräts. Bei Linux-Blockgeräten wird `size` üblicherweise in 512-Byte-Sektoren ausgedrückt, unabhängig von der physischen Sektorgröße des Geräts. Schlage Einheit und Bedeutung eines konkreten Attributs immer in der Kernel-ABI-Dokumentation nach.
 
-:::single-choice{#sysfs-dev-attribute}
-Was enthält das sysfs-Attribut `dev` eines Blockgeräts normalerweise?
+:::single-choice{#sysfs-dev-attribute} Was enthält das sysfs-Attribut `dev` eines Blockgeräts normalerweise?
 
 ::option[Jede aktuell auf dem Gerät gespeicherte Datei.]{#sysfs-file-list explanation="Ein Dateisystem-Verzeichnisbaum ist nicht in dieses kleine Geräteattribut eingebettet."}
 ::option[Den Paketnamen, mit dem die Hardware installiert wurde.]{#sysfs-package-name explanation="Hardware wird nicht als Paket installiert, das durch das Attribut `dev` bezeichnet wird."}
@@ -67,8 +65,7 @@ Was enthält das sysfs-Attribut `dev` eines Blockgeräts normalerweise?
 
 Die beiden Schnittstellen ergänzen sich. Keine von ihnen enthält für sich allein ein vollständiges Inventar aller Hardwareeigenschaften, und ein Gerät kann während der Untersuchung verschwinden.
 
-:::single-choice{#sysfs-versus-dev}
-Welche Aussage unterscheidet `/sys` richtig von `/dev`?
+:::single-choice{#sysfs-versus-dev} Welche Aussage unterscheidet `/sys` richtig von `/dev`?
 
 ::option[`/sys` speichert Benutzerdokumente, `/dev` Paketarchive.]{#sysfs-dev-user-files explanation="Keines der beiden Verzeichnisse besitzt diese Rollen zur gewöhnlichen Datenspeicherung."}
 ::option[`/sys` stellt Attribute von Kernel-Objekten bereit; `/dev` bietet Geräteknoten für Ein-/Ausgabe.]{#sysfs-dev-distinction .correct explanation="Sysfs bildet Objekte und Steuerelemente ab, während Geräteknoten Operationen an Zeichen- oder Blocktreiber weiterleiten."}
@@ -81,8 +78,7 @@ Einige sysfs-Attribute sind beschreibbar und können Energiezustand, Treiberbind
 
 Lies die dokumentierte ABI und den aktuellen Wert, ermittle, wie die Einstellung dauerhaft vorgenommen werden soll, und teste nur auf einem autorisierten System. Ändere unter `/sys` niemals rekursiv Berechtigungen und schreibe dort keine geratenen Werte.
 
-:::single-choice{#sysfs-write-risk}
-Warum kann das Schreiben in ein sysfs-Attribut betrieblich bedeutsam sein?
+:::single-choice{#sysfs-write-risk} Warum kann das Schreiben in ein sysfs-Attribut betrieblich bedeutsam sein?
 
 ::option[Jeder Schreibvorgang legt eine gewöhnliche Sicherungskopie auf dem Datenträger an.]{#sysfs-backup-copy explanation="Sysfs ist virtuell und erstellt keine automatischen Sicherungen von Steueränderungen."}
 ::option[Sysfs ignoriert alle Schreibvorgänge, auch wenn ein Attribut beschreibbar ist.]{#sysfs-ignore-writes explanation="Beschreibbare Attribute sind gerade dazu vorhanden, unterstützte Steuerwerte anzunehmen."}

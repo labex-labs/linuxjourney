@@ -16,8 +16,7 @@ Le modèle TCP/IP organise en couches fonctionnelles les protocoles employés pa
 
 Les protocoles applicatifs définissent les messages et comportements de services comme HTTP, DNS, SSH et SMTP. Cette couche comprend également de nombreuses responsabilités de représentation et de session que le modèle OSI décrit séparément.
 
-:::single-choice{#tcpip-http-layer}
-Dans quelle couche TCP/IP classe-t-on normalement HTTP ?
+:::single-choice{#tcpip-http-layer} Dans quelle couche TCP/IP classe-t-on normalement HTTP ?
 
 ::option[Internet.]{#tcpip-http-internet explanation="La couche Internet traite l'adressage IP et la transmission des paquets."}
 ::option[Liaison.]{#tcpip-http-link explanation="La couche liaison transporte le trafic sur un support local."}
@@ -28,8 +27,7 @@ Dans quelle couche TCP/IP classe-t-on normalement HTTP ?
 
 Les protocoles de transport fournissent la communication entre les terminaux applicatifs. TCP offre un flux d'octets fiable et ordonné avec contrôle de congestion et de flux. UDP fournit des datagrammes indépendants sans les garanties de connexion, d'ordre ou de retransmission de TCP. Les numéros de ports aident à identifier les terminaux de transport, mais un port seul ne prouve pas l'application à l'écoute.
 
-:::single-choice{#tcpip-udp-property}
-Quelle propriété appartient à UDP plutôt qu'à TCP ?
+:::single-choice{#tcpip-udp-property} Quelle propriété appartient à UDP plutôt qu'à TCP ?
 
 ::option[Des datagrammes indépendants sans garantie intégrée de retransmission.]{#tcpip-udp-datagrams .correct explanation="Les applications qui emploient UDP choisissent si elles ajoutent une fiabilité et de quelle manière."}
 ::option[La livraison garantie et ordonnée d'un flux d'octets unique.]{#tcpip-udp-ordered explanation="Il s'agit d'une propriété du service TCP, sous réserve d'une connexion réussie."}
@@ -40,8 +38,7 @@ Quelle propriété appartient à UDP plutôt qu'à TCP ?
 
 Internet Protocol transporte des paquets avec des adresses IP source et destination. Les routeurs examinent les informations de routage et diminuent la limite de sauts en transmettant les paquets vers leur destination. ICMP communique les informations de contrôle et d'erreur nécessaires au fonctionnement d'IP. La livraison reste au mieux ; les couches supérieures ou les applications prennent en charge toute récupération nécessaire.
 
-:::single-choice{#tcpip-router-layer}
-Quelle couche fournit l'adresse IP de destination employée par les routeurs ?
+:::single-choice{#tcpip-router-layer} Quelle couche fournit l'adresse IP de destination employée par les routeurs ?
 
 ::option[Internet.]{#tcpip-router-internet .correct explanation="L'en-tête IP contient la destination de la couche réseau employée pour la transmission routée."}
 ::option[Application.]{#tcpip-router-application explanation="Les messages applicatifs sont transportés dans les données des protocoles inférieurs."}
@@ -54,8 +51,7 @@ La couche liaison envoie un paquet IP sur une liaison locale au moyen d'Ethernet
 
 Les en-têtes de liaison changent normalement à chaque saut routé ; les conversations de transport et d'application sont de bout en bout, sauf si un équipement intermédiaire les termine ou les transforme.
 
-:::single-choice{#tcpip-link-scope}
-Quelle est la portée normale d'une trame de la couche liaison ?
+:::single-choice{#tcpip-link-scope} Quelle est la portée normale d'une trame de la couche liaison ?
 
 ::option[Une liaison ou un saut local.]{#tcpip-one-link .correct explanation="Un routeur retire l'encapsulation entrante et en crée une nouvelle pour la liaison suivante."}
 ::option[Chaque session applicative de tout Internet.]{#tcpip-global-frame explanation="Les trames ne restent pas inchangées à travers les réseaux routés."}

@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 The `p` in the shown RPM query forms means “query a package file” rather than the installed database. Query output helps review a package but cannot prove that its scripts or programs are safe.
 
-:::single-choice{#package-install-tools-native-format}
-Which low-level tool manages Debian `.deb` packages and their installed database?
+:::single-choice{#package-install-tools-native-format} Which low-level tool manages Debian `.deb` packages and their installed database?
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM manages its own native format and database on RPM-family systems."}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="Tar can read archives but does not implement the Debian installed-package lifecycle."}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 Review the transaction before confirming. A leading `./` distinguishes a local Debian archive path from a repository package name in APT.
 
-:::single-choice{#package-install-tools-local-dependencies}
-Which shown command can install a local `.deb` while resolving available repository dependencies?
+:::single-choice{#package-install-tools-local-dependencies} Which shown command can install a local `.deb` while resolving available repository dependencies?
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l` lists installed-package selections and is not the local dependency-resolving install workflow."}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="RPM query syntax does not install a Debian archive."}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 On Debian, `--remove` normally retains configuration files classified as conffiles; `--purge` requests their removal as well, subject to package scripts and unmanaged data. Neither command guarantees deletion of user-created data. Higher-level `apt remove` or `dnf remove` is generally better because it can evaluate related packages and present a complete transaction.
 
-:::single-choice{#package-install-tools-remove-operand}
-What operand does `dpkg --remove` expect for an installed package?
+:::single-choice{#package-install-tools-remove-operand} What operand does `dpkg --remove` expect for an installed package?
 
 ::option[The URL of the repository index.]{#package-install-tools-remove-url explanation="Repository location is not the package identity passed to low-level removal."}
 ::option[The installed package name.]{#package-install-tools-remove-name .correct explanation="Removal addresses the package record, such as `example`, rather than requiring its former `.deb` path."}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 For targeted inspection, prefer a specific package name and machine-readable format where scripting reliability matters. Package databases describe managed state; local administrators or applications can still modify files afterward, so use verification features when you need to compare installed files with recorded metadata.
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-Which command queries all packages recorded as installed in the RPM database?
+:::single-choice{#package-install-tools-rpm-list-installed} Which command queries all packages recorded as installed in the RPM database?
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q` selects query mode and `-a` expands it to all installed package records."}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e` requests package removal rather than a read-only listing."}

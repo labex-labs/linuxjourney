@@ -25,8 +25,7 @@ $ sleep 1000 &
 
 バックグラウンドジョブが制御端末を読もうとすると、端末のフォアグラウンドプロセスグループではないため、通常 `SIGTTIN` で停止します。
 
-:::single-choice{#job-control-ampersand-effect}
-末尾の `&` は対話型シェルへ何を要求しますか？
+:::single-choice{#job-control-ampersand-effect} 末尾の `&` は対話型シェルへ何を要求しますか？
 
 ::option[ログアウトとシステム再起動後もジョブが残ることを保証する。]{#job-control-survive-restart explanation="バックグラウンド化だけでは永続的な監督も再起動後の存続も提供しません。"}
 ::option[次のプロンプトまで待たず、パイプラインをバックグラウンドジョブとして動かす。]{#job-control-background-job .correct explanation="ジョブを非同期で開始し、シェルで次のコマンドを使えるようにします。"}
@@ -48,8 +47,7 @@ $ jobs
 
 ジョブ表は1つのシェルに属するため、通常別端末のシェルは自身の `jobs`、`fg`、`bg` でこれらを一覧・操作できません。
 
-:::single-choice{#job-control-jobs-scope}
-`jobs` 組み込みは何を一覧表示しますか？
+:::single-choice{#job-control-jobs-scope} `jobs` 組み込みは何を一覧表示しますか？
 
 ::option[現在のシェルセッションが追跡するジョブ。]{#job-control-jobs-current-shell .correct explanation="ジョブ ID と状態は、そのジョブを開始または引き取った対話型シェルが保持します。"}
 ::option[システム上で現在見える全プロセス。]{#job-control-jobs-all-processes explanation="システム全体のプロセス検査は ps などの役割で、シェルのジョブ表はより限定的です。"}
@@ -74,8 +72,7 @@ $ bg
 
 `bg` は続行シグナルを送り、ジョブを端末のフォアグラウンド外に残します。停止中ジョブに使うもので、すでにバックグラウンドで実行中のコマンドを再開する必要はありません。
 
-:::single-choice{#job-control-bg-purpose}
-`bg %3` は停止中のジョブ3へ何をしますか？
+:::single-choice{#job-control-bg-purpose} `bg %3` は停止中のジョブ3へ何をしますか？
 
 ::option[ファイルを `bg` というディレクトリへ移す。]{#job-control-bg-files explanation="シェルのジョブ制御組み込みで、ファイルを移動しません。"}
 ::option[バックグラウンドジョブとして続行する。]{#job-control-bg-continue .correct explanation="端末のフォアグラウンドへ割り当てず、選択した停止中ジョブを再開します。"}
@@ -92,8 +89,7 @@ $ fg %1
 
 引数なしでは通常 `+` の現在ジョブを選び、停止中ジョブはフォアグラウンドへ入ると続行されます。
 
-:::single-choice{#job-control-fg-effect}
-`fg %1` は何をしますか？
+:::single-choice{#job-control-fg-effect} `fg %1` は何をしますか？
 
 ::option[ジョブ1を端末のフォアグラウンドへ割り当て、待機する。]{#job-control-fg-foreground .correct explanation="選択したジョブをフォアグラウンドにし、端末と対話できるようにします。"}
 ::option[ジョブ1を PID 1 へ変更する。]{#job-control-fg-pid-one explanation="シェルジョブ ID はプロセス ID を置き換えません。"}
@@ -110,8 +106,7 @@ $ kill -TERM %1
 
 通常、パイプラインの1要素だけでなくジョブのプロセスグループへ送ります。選択ジョブを先に確認し、強制的な段階へ進む前に `SIGTERM` を使ってください。ジョブ指定はシェル構文で、スクリプトや外部ツールは通常、検証済み PID またはプロセスグループ ID を使います。
 
-:::single-choice{#job-control-job-specification}
-プロセス ID 1 ではなく、シェルジョブ1を指す引数はどれですか？
+:::single-choice{#job-control-job-specification} プロセス ID 1 ではなく、シェルジョブ1を指す引数はどれですか？
 
 ::option[`1`]{#job-control-plain-one explanation="kill の通常の数値引数は PID と解釈されます。"}
 ::option[`#1`]{#job-control-hash-one explanation="ハッシュ接頭辞は、紹介したシェルジョブ ID 構文ではありません。"}

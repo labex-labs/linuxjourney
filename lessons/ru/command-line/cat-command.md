@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 Команда записывает весь файл в стандартный вывод. Это удобно для короткого текста, но длинный файл может слишком быстро прокрутиться.
 
-:::single-choice{#display-short-file}
-Какая команда выводит весь `myfile.txt` в терминал?
+:::single-choice{#display-short-file} Какая команда выводит весь `myfile.txt` в терминал?
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file` сообщает вероятный тип, но не печатает полный текст файла."}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch` обновляет метки или создаёт отсутствующий файл и не показывает содержимое."}
@@ -46,8 +45,7 @@ $ cat dogfile birdfile > animals
 
 До запуска `cat` оболочка создаёт `animals` или обнуляет существующий файл, а затем направляет туда вывод. Не используйте входной файл как это назначение: он может быть очищен до чтения.
 
-:::single-choice{#combine-files-in-order}
-Какая команда записывает `part1`, затем `part2` в новый или заменяемый файл `whole`?
+:::single-choice{#combine-files-in-order} Какая команда записывает `part1`, затем `part2` в новый или заменяемый файл `whole`?
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="У перенаправления одно назначение, а остальные слова становятся аргументами `cat`; нужный порядок входа и выхода здесь не задан."}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` выводит файлы в указанном порядке, а `>` направляет объединённый результат в `whole`."}
@@ -70,8 +68,7 @@ $ cat > newfile.txt
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-Вы хотите дописать текст в конец существующего `notes.txt`. Какая команда начинает операцию без обнуления файла?
+:::single-choice{#append-terminal-input} Вы хотите дописать текст в конец существующего `notes.txt`. Какая команда начинает операцию без обнуления файла?
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="Один `>` открывает назначение после обнуления, поэтому существующий текст будет потерян."}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="Оператор `>>` открывает файл для добавления, и прочитанный `cat` текст помещается после существующего."}
@@ -95,8 +92,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-Какая команда нумерует только непустые строки вывода `notes.txt`?
+:::single-choice{#number-nonempty-lines} Какая команда нумерует только непустые строки вывода `notes.txt`?
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="Параметр `-b` нумерует непустые строки и оставляет пустые без номера."}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="Параметр `-n` нумерует все строки, включая пустые, поэтому условие не выполняется."}
@@ -111,8 +107,7 @@ $ cat -s messy.txt
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-Какая команда лучше подходит для интерактивного чтения длинного журнала?
+:::single-choice{#choose-viewer-for-long-file} Какая команда лучше подходит для интерактивного чтения длинного журнала?
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` предоставляет прокрутку, поиск и управляемый выход, поэтому удобен для длинных файлов."}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` сразу печатает весь журнал, и длинный текст может прокрутиться до просмотра."}

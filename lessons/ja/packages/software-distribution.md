@@ -24,8 +24,7 @@ Linux ソフトウェアは一般に、ディストリビューション固有�
 
 すべてのパッケージが対話的アプリケーションとは限りません。ライブラリ、カーネルコンポーネント、言語データ、フォント、デバッグシンボル、ほかのパッケージ群へ依存するメタデータを提供する場合もあります。
 
-:::single-choice{#software-distribution-package-metadata}
-アプリケーションの実行ファイルではなく、通常パッケージメタデータに当たる情報はどれですか？
+:::single-choice{#software-distribution-package-metadata} アプリケーションの実行ファイルではなく、通常パッケージメタデータに当たる情報はどれですか？
 
 ::option[アプリケーションを実装する CPU 命令。]{#software-distribution-executable-code explanation="コンパイル済み命令は依存関係メタデータではなく、パッケージのペイロード内容です。"}
 ::option[宣言された依存関係。]{#software-distribution-dependencies .correct explanation="管理ツールがインストールを判断できるよう、パッケージは必要または競合するパッケージを記述します。"}
@@ -38,8 +37,7 @@ upstream プロジェクトは元のソースコードを開発し、リリー�
 
 ディストリビューションのビルド基盤は、対応リリースとアーキテクチャ向けのパッケージを生成します。リポジトリーツールは、クライアントが検証できるメタデータと署名を公開します。正確な役割分担は異なり、upstream プロジェクト自身がパッケージを公開する場合も、ディストリビューションがソースから独自にビルドする場合もあります。
 
-:::single-choice{#software-distribution-maintainer-role}
-ディストリビューションのパッケージ保守者が一般に担当する作業はどれですか？
+:::single-choice{#software-distribution-maintainer-role} ディストリビューションのパッケージ保守者が一般に担当する作業はどれですか？
 
 ::option[upstream のソースをディストリビューションのビルド規則と依存関係規則へ適合させる。]{#software-distribution-maintainer-integrates .correct explanation="保守者はソフトウェアをディストリビューションのポリシー、ビルド、依存関係、対応環境へ適合させます。"}
 ::option[全ユーザーのローカルアカウントパスワードを選ぶ。]{#software-distribution-maintainer-passwords explanation="ローカルの認証データはパッケージ保守とは無関係です。"}
@@ -55,8 +53,7 @@ upstream プロジェクトは元のソースコードを開発し、リリー�
 
 ほかのネイティブ形式やディストリビューション横断形式もあります。ファイル名の拡張子が一致するだけでは互換性を保証できません。パッケージのアーキテクチャ、ディストリビューションのリリース、ライブラリのバージョン、ポリシー、署名、依存関係も適合する必要があります。
 
-:::single-choice{#software-distribution-debian-format}
-Debian と Ubuntu が使うネイティブパッケージ形式はどれですか？
+:::single-choice{#software-distribution-debian-format} Debian と Ubuntu が使うネイティブパッケージ形式はどれですか？
 
 ::option[`.deb`]{#software-distribution-format-deb .correct explanation="Debian 系のパッケージツールは `.deb` アーカイブ形式を使います。"}
 ::option[`.rpm`]{#software-distribution-format-rpm explanation="RPM は Fedora、RHEL、関連するディストリビューション系列のネイティブ形式です。"}
@@ -69,8 +66,7 @@ Debian と Ubuntu が使うネイティブパッケージ形式はどれです�
 
 信頼性は、それでもリポジトリ設定と署名鍵に依存します。暗号学的に有効なパッケージから分かるのは、信頼された鍵との関連であり、任意のサードパーティーソフトウェアが安全または適切であることではありません。可能ならディストリビューションのリポジトリを優先し、外部情報源へインストール権限を与える前に評価してください。
 
-:::single-choice{#software-distribution-package-manager-benefit}
-信頼されたパッケージリポジトリを通じてインストールする利点の一つは何ですか？
+:::single-choice{#software-distribution-package-manager-benefit} 信頼されたパッケージリポジトリを通じてインストールする利点の一つは何ですか？
 
 ::option[マネージャーがバージョンを追跡し、宣言された依存関係を解決できる。]{#software-distribution-managed-lifecycle .correct explanation="リポジトリメタデータとインストール済み状態の記録により、インストール、更新、削除を調整できます。"}
 ::option[インストールしたすべてのプログラムにセキュリティ上の欠陥がなくなる。]{#software-distribution-no-vulnerabilities explanation="パッケージ管理は更新を支えますが、ソフトウェアに欠陥がないことは保証できません。"}

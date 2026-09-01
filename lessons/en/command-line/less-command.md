@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 While `less` is active, keystrokes control the pager rather than starting ordinary shell commands. You return to the shell when you quit the pager.
 
-:::single-choice{#open-long-file}
-Which command opens `/var/log/syslog` in an interactive pager?
+:::single-choice{#open-long-file} Which command opens `/var/log/syslog` in an interactive pager?
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` opens the file in a pager so you can move through it, search it, and quit back to the shell."}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat` sends the whole file to standard output at once. It does not provide interactive paging controls."}
@@ -40,8 +39,7 @@ Use these keys while the pager is open:
 - Press `u` to move up half a screen or `d` to move down half a screen.
 - Press `h` to open the built-in help.
 
-:::single-choice{#jump-to-file-end}
-Which key jumps directly to the end of a file in `less`?
+:::single-choice{#jump-to-file-end} Which key jumps directly to the end of a file in `less`?
 
 ::option[`g`]{#lowercase-g explanation="Lowercase `g` jumps to the beginning of the file. The uppercase form goes in the opposite direction."}
 ::option[`G`]{#uppercase-g .correct explanation="Uppercase `G` jumps to the end of the input. The command is case-sensitive."}
@@ -57,8 +55,7 @@ Type `/` followed by a pattern and press Enter to search forward. Begin with `?`
 - `n`: Repeat the search in the same direction.
 - `N`: Repeat the search in the opposite direction.
 
-:::single-choice{#repeat-search-direction}
-After a forward search for `error`, which key repeats the search in the same direction?
+:::single-choice{#repeat-search-direction} After a forward search for `error`, which key repeats the search in the same direction?
 
 ::option[`n`]{#same-search .correct explanation="Lowercase `n` repeats the most recent search in its original direction. Here, that direction is forward."}
 ::option[`N`]{#opposite-search explanation="Uppercase `N` repeats the most recent search in the opposite direction. After a forward search, it moves backward through matches."}
@@ -69,8 +66,7 @@ After a forward search for `error`, which key repeats the search in the same dir
 
 Press `q` to quit `less` and return to the shell prompt.
 
-:::single-choice{#quit-less}
-Which key exits `less` and returns to the shell?
+:::single-choice{#quit-less} Which key exits `less` and returns to the shell?
 
 ::option[`q`]{#less-quit .correct explanation="The `q` command quits the pager and restores the shell prompt."}
 ::option[`h`]{#less-help explanation="The `h` key opens help inside `less`. It does not return directly to the shell."}
@@ -99,8 +95,7 @@ Commands can also send output through a pipe to `less`:
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-Which command opens `/var/log/syslog` and follows new content as it arrives?
+:::single-choice{#follow-growing-log} Which command opens `/var/log/syslog` and follows new content as it arrives?
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="The `+F` initial command enters follow mode, so `less` displays new content appended to the log."}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="The `+G` initial command opens at the end, but it does not keep following content that arrives later."}

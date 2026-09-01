@@ -37,8 +37,7 @@ $ umask 027
 
 각 8진수 위치는 소유자, 그룹, 기타 사용자에 대응합니다. 마스크 비트는 대응하는 요청 권한을 제거합니다. `2`는 쓰기, `4`는 읽기, `1`은 실행을 가립니다.
 
-:::single-choice{#umask-command-purpose}
-`umask 027`은 현재 쉘에서 무엇을 변경하나요?
+:::single-choice{#umask-command-purpose} `umask 027`은 현재 쉘에서 무엇을 변경하나요?
 
 ::option[이미 존재하는 모든 파일의 권한]{#umask-existing-files explanation="umask는 생성 요청에 영향을 주며 기존 객체에 소급해 `chmod`를 실행하지 않습니다."}
 ::option[이후 해당 쉘에서 시작한 명령이 상속하는 마스크]{#umask-current-shell-mask .correct explanation="쉘이 프로세스 umask를 설정하고 자식 프로세스는 일반적으로 그 값을 상속합니다."}
@@ -58,16 +57,14 @@ directory:    0777 masked by 0022 -> 0755 (rwxr-xr-x)
 
 umask는 요청된 비트만 제거합니다. 애플리케이션이 실행 권한을 요청하지 않았다면 추가할 수 없습니다. 애플리케이션이 더 제한적인 시작 모드를 요청하면 결과도 더 제한적일 수 있습니다.
 
-:::single-choice{#umask-file-mode-022}
-프로그램이 일반 파일에 모드 `0666`을 요청하고 umask가 `0022`이면 어떤 모드가 되나요?
+:::single-choice{#umask-file-mode-022} 프로그램이 일반 파일에 모드 `0666`을 요청하고 umask가 `0022`이면 어떤 모드가 되나요?
 
 ::option[`0666`]{#umask-file-0666 explanation="`0666`이 요청한 그룹과 기타 사용자 쓰기 비트는 마스크 `0022`로 제거됩니다."}
 ::option[`0755`]{#umask-file-0755 explanation="일반 파일에 실행 비트를 요청하지 않았으므로 umask가 이를 추가할 수 없습니다."}
 ::option[`0644`]{#umask-file-0644 .correct explanation="`0666`에서 그룹과 기타 사용자 쓰기를 제거하면 소유자 읽기/쓰기와 그룹 및 기타 사용자 읽기만 남습니다."}
 :::
 
-:::single-choice{#umask-directory-mode-027}
-프로그램이 디렉터리에 `0777`을 요청하고 umask가 `0027`이면 어떤 모드가 되나요?
+:::single-choice{#umask-directory-mode-027} 프로그램이 디렉터리에 `0777`을 요청하고 umask가 `0027`이면 어떤 모드가 되나요?
 
 ::option[`0777`]{#umask-directory-0777 explanation="요청된 그룹 쓰기와 기타 사용자 권한은 0이 아닌 마스크로 걸러집니다."}
 ::option[`0640`]{#umask-directory-0640 explanation="이 결과는 마스크 `0027`이 소유자나 그룹에서 제거하지 않는 실행 비트도 제거합니다."}
@@ -80,8 +77,7 @@ umask는 요청된 비트만 제거합니다. 애플리케이션이 실행 권�
 
 선호 값을 지속하려면 환경에 맞는 로그인, 쉘, PAM, 서비스 관리자 또는 애플리케이션 구성에 설정합니다. 올바른 위치는 다양하고 서비스가 자체 umask를 설정할 수 있습니다. 대화형 쉘 파일 하나를 편집하면 시스템의 모든 프로세스를 제어한다고 가정하지 마세요.
 
-:::single-choice{#umask-existing-file-effect}
-새 umask를 설정하면 기존 파일에 어떤 일이 생기나요?
+:::single-choice{#umask-existing-file-effect} 새 umask를 설정하면 기존 파일에 어떤 일이 생기나요?
 
 ::option[현재 모드가 바뀌지 않습니다.]{#umask-existing-unchanged .correct explanation="새 umask는 이후 생성 요청을 걸러내며 파일 시스템 객체에 이미 저장된 모드를 수정하지 않습니다."}
 ::option[모드가 `0666`을 기준으로 다시 계산됩니다.]{#umask-existing-recalculated explanation="기존 객체는 다시 생성되거나 새 마스크를 자동으로 통과하지 않습니다."}

@@ -22,8 +22,7 @@ meta_keywords: "stdin, 标准输入，重定向 stdin, cat stdin, stdin 和 stdo
 
 程序可以自行决定是否以及如何使用这些流。当没有提供文件操作数或其他输入源时，设计为读取 stdin 的命令通常会等待终端输入。
 
-:::single-choice{#stdin-descriptor-number}
-按约定，哪个文件描述符表示标准输入？
+:::single-choice{#stdin-descriptor-number} 按约定，哪个文件描述符表示标准输入？
 
 ::option[`0`]{#stdin-fd-zero .correct explanation="标准输入按约定使用文件描述符 0。"}
 ::option[`1`]{#stdin-fd-one explanation="文件描述符 1 按约定表示标准输出，即承载正常结果的数据流。"}
@@ -43,8 +42,7 @@ shell 负责处理 `< peanuts.txt`；`cat` 只会读取文件描述符 0。该�
 
 如果输入文件不存在或无法打开，shell 会报告重定向错误，也不会以这份输入启动命令。
 
-:::single-choice{#stdin-from-file}
-哪个命令会让 `sort` 从 `names.txt` 读取标准输入？
+:::single-choice{#stdin-from-file} 哪个命令会让 `sort` 从 `names.txt` 读取标准输入？
 
 ::option[`sort < names.txt`]{#sort-stdin-file .correct explanation="Bash 会打开 `names.txt` 进行读取，并在文件描述符 0 上把它连接到 `sort`。"}
 ::option[`sort > names.txt`]{#stdout-to-names explanation="大于号会把 stdout 重定向到文件，并可能清空文件；它不会把文件作为输入。"}
@@ -64,8 +62,7 @@ $ wc -l < peanuts.txt
 
 两种形式都统计相同数据中的行数。第一种形式中，`wc` 收到文件名参数，所以知道文件名；第二种形式中，它只从 stdin 收到数据流，没有可打印的文件名。
 
-:::single-choice{#stdin-not-command-argument}
-为什么 `wc -l < peanuts.txt` 的输出通常不包含 `peanuts.txt`？
+:::single-choice{#stdin-not-command-argument} 为什么 `wc -l < peanuts.txt` 的输出通常不包含 `peanuts.txt`？
 
 ::option[`wc` 会在统计完成后删除文件名。]{#stdin-delete-name explanation="命令不会重命名或删除源文件，变化的只是输入连接方式。"}
 ::option[`<` 运算符会隐藏命令打印的所有单词。]{#stdin-hide-words explanation="输入重定向不会过滤 stdout；没有文件名是因为 `wc` 从未收到它作为参数。"}
@@ -87,8 +84,7 @@ shell 会建立两条互相独立的连接：
 
 `cat` 从 stdin 读取字节并写入 stdout，因此 `banana.txt` 会收到源内容。普通文件复制用 `cp peanuts.txt banana.txt` 能更直接地表达意图；本例用于说明数据流连接。
 
-:::single-choice{#stdin-and-stdout-files}
-在 `cat < input.txt > output.txt` 中，哪个文件提供 stdin，哪个文件接收 stdout？
+:::single-choice{#stdin-and-stdout-files} 在 `cat < input.txt > output.txt` 中，哪个文件提供 stdin，哪个文件接收 stdout？
 
 ::option[`output.txt` 提供 stdin，`input.txt` 接收 stdout。]{#stdin-output-stdout-input explanation="这颠倒了重定向运算符的含义；输入箭头指向命令，输出箭头指向文件。"}
 ::option[`input.txt` 提供 stdin，`output.txt` 接收 stdout。]{#stdin-input-stdout-output .correct explanation="`<` 会为描述符 0 打开 `input.txt`，`>` 会为描述符 1 打开 `output.txt`。"}

@@ -21,8 +21,7 @@ Un logiciel DNS doit être choisi selon son rôle et les exigences d'exploitatio
 
 Les capacités et paquets évoluent ; consultez la documentation officielle de la version installée. Ne déployez que le rôle nécessaire et désactivez toute récursion ou tout service de zone involontaire.
 
-:::single-choice{#dns-setup-authoritative-role}
-Quel rôle publie les enregistrements définitifs des zones qu'il sert ?
+:::single-choice{#dns-setup-authoritative-role} Quel rôle publie les enregistrements définitifs des zones qu'il sert ?
 
 ::option[Un serveur DNS faisant autorité.]{#dns-setup-authoritative .correct explanation="Il répond depuis l'autorité de zone configurée au lieu de résoudre récursivement des noms arbitraires."}
 ::option[Un commutateur Ethernet.]{#dns-setup-switch explanation="Un commutateur transfère des trames de couche liaison et ne publie pas de zones DNS."}
@@ -35,8 +34,7 @@ Définissez les zones, clients, volumes de requêtes, mécanismes de mise à jou
 
 N'exposez jamais une récursion sans restriction à Internet. Les résolveurs ouverts servent aux attaques par réflexion et consomment les ressources locales.
 
-:::single-choice{#dns-setup-open-recursion}
-Pourquoi limiter les requêtes récursives aux clients autorisés ?
+:::single-choice{#dns-setup-open-recursion} Pourquoi limiter les requêtes récursives aux clients autorisés ?
 
 ::option[Le DNS récursif ne peut mettre aucun enregistrement en cache.]{#dns-setup-no-cache explanation="La mise en cache est une fonction essentielle du résolveur récursif."}
 ::option[Les délégations d'autorité exigent que chaque utilisateur soit root.]{#dns-setup-all-root explanation="La délégation DNS n'accorde aucun privilège du système d'exploitation."}
@@ -54,8 +52,7 @@ $ named-checkzone example.com /etc/bind/zones/db.example.com
 
 Exécutez-les avec les permissions et chemins appropriés. La réussite de l'analyse ne prouve pas la délégation, la propagation du numéro de série, la chaîne DNSSEC, l'accessibilité au travers du pare-feu ni la justesse des réponses ; poursuivez avec des requêtes contrôlées.
 
-:::single-choice{#dns-setup-zone-validation-limit}
-Qu'est-ce qu'une vérification de syntaxe de zone réussie ne prouve pas ?
+:::single-choice{#dns-setup-zone-validation-limit} Qu'est-ce qu'une vérification de syntaxe de zone réussie ne prouve pas ?
 
 ::option[Que la délégation et les réponses d'autorité de bout en bout fonctionnent.]{#dns-setup-not-end-to-end .correct explanation="Les données du parent, l'activation du service, la politique réseau et le chargement à l'exécution restent distincts."}
 ::option[Que l'outil peut analyser le texte de la zone.]{#dns-setup-parser-proves explanation="C'est précisément ce que prouve directement le vérificateur."}
@@ -74,8 +71,7 @@ $ dig @192.0.2.53 example.com SOA +norecurse +tcp
 
 Pour la récursion, testez les réseaux clients autorisés et refusés, la validation DNSSEC, le cache et l'échec des dépendances en amont.
 
-:::single-choice{#dns-setup-norecurse-test}
-Pourquoi interroger un serveur d'autorité avec `+norecurse` ?
+:::single-choice{#dns-setup-norecurse-test} Pourquoi interroger un serveur d'autorité avec `+norecurse` ?
 
 ::option[Pour tester ses réponses d'autorité sans demander de récursion.]{#dns-setup-authority-only .correct explanation="Cette option sépare le service de zone de tout comportement récursif."}
 ::option[Pour retirer tous les enregistrements de sa zone.]{#dns-setup-remove-records explanation="Une requête ne modifie pas les données d'autorité."}
@@ -86,8 +82,7 @@ Pourquoi interroger un serveur d'autorité avec `+norecurse` ?
 
 Surveillez les échecs et temps de requêtes, le cache, les ressources, transferts de zones, numéros de série, expirations DNSSEC et l'état des délégations. Sauvegardez en sécurité les sources de configuration et le matériel de signature, puis vérifiez qu'une nouvelle instance peut charger les zones et servir les bonnes réponses. Maintenez des versions prises en charge et limitez les interfaces de contrôle, les mises à jour dynamiques et l'accès aux transferts.
 
-:::single-choice{#dns-setup-redundancy-verification}
-Que doit comprendre le test de redondance d'un DNS faisant autorité ?
+:::single-choice{#dns-setup-redundancy-verification} Que doit comprendre le test de redondance d'un DNS faisant autorité ?
 
 ::option[Interroger chaque serveur et tester le fonctionnement lorsqu'un autre est indisponible.]{#dns-setup-test-each-server .correct explanation="La présence de plusieurs enregistrements NS ne prouve pas que chaque service indépendant est joignable et à jour."}
 ::option[Vérifier uniquement que tous les serveurs portent des noms similaires.]{#dns-setup-hostname-similarity explanation="Les noms ne prouvent ni la synchronisation des données ni la disponibilité."}

@@ -29,8 +29,7 @@ $ resolvectl query www.example.com
 
 应用程序仍可能使用私有解析器库或代理，所以当输出不同时，还应通过该应用程序重现问题。
 
-:::single-choice{#dns-tools-system-resolver}
-哪个命令会使用已配置的系统名称服务路径？
+:::single-choice{#dns-tools-system-resolver} 哪个命令会使用已配置的系统名称服务路径？
 
 ::option[只有 `dig @SERVER NAME`。]{#dns-tools-dig-direct explanation="Dig 发送 DNS 查询，通常不会读取 hosts 文件映射。"}
 ::option[`ip link set down`]{#dns-tools-link-down explanation="这会中断接口，而不是测试解析。"}
@@ -49,8 +48,7 @@ $ dig example.com MX
 
 输出会标识响应服务器、状态、标志、问题、回答、权威数据、附加数据、查询时间和传输元数据。`+short` 便于脚本使用，却隐藏了诊断所需的证据。
 
-:::single-choice{#dns-tools-record-type}
-哪条查询请求 IPv6 地址记录？
+:::single-choice{#dns-tools-record-type} 哪条查询请求 IPv6 地址记录？
 
 ::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="AAAA 记录包含 IPv6 地址。"}
 ::option[`dig NAME MX`]{#dns-tools-mx explanation="MX 请求邮件交换器记录。"}
@@ -67,8 +65,7 @@ $ dig @192.0.2.53 www.example.com A
 
 在区分缓存与权威时，应比较已配置的递归解析器、第二个获准解析器和每台权威服务器。`NOERROR` 状态也可能没有所请求的回答；`NXDOMAIN` 表示查询的名称不存在，而 `SERVFAIL` 表示服务器无法完成查询。
 
-:::single-choice{#dns-tools-noerror-empty}
-`NOERROR` 的回答区可以为空吗？
+:::single-choice{#dns-tools-noerror-empty} `NOERROR` 的回答区可以为空吗？
 
 ::option[可以，名称存在但缺少所请求的记录数据时便会如此。]{#dns-tools-noerror-nodata .correct explanation="必须结合状态与回答数量进行解释。"}
 ::option[不可以，它保证至少有一条地址记录。]{#dns-tools-noerror-always-answer explanation="名称可能存在，但没有请求类型的数据。"}
@@ -81,8 +78,7 @@ $ dig @192.0.2.53 www.example.com A
 
 `dig +trace NAME` 从根提示开始自行执行迭代查询。它可能与生产解析器得出不同结果，因为它绕过了该解析器的缓存、转发、策略、DNSSEC 验证和网络位置。
 
-:::single-choice{#dns-tools-aa-flag}
-`aa` 响应标志表示什么？
+:::single-choice{#dns-tools-aa-flag} `aa` 响应标志表示什么？
 
 ::option[查询使用了两个相同的 IPv4 地址。]{#dns-tools-two-addresses explanation="该标志与回答数量或地址族无关。"}
 ::option[响应使用应用程序凭据加密。]{#dns-tools-aa-encrypted explanation="DNS 标志无法建立加密传输。"}
@@ -105,8 +101,7 @@ $ dig +tcp @192.0.2.53 example.com SOA
 
 现代 DNS 可以使用 UDP 或 TCP 53 端口；需要时应同时放行两者。带有截断标志的 UDP 回答会促使合规客户端通过合适的传输方式重试。
 
-:::single-choice{#dns-tools-tcp-test}
-`dig +tcp` 改变了什么？
+:::single-choice{#dns-tools-tcp-test} `dig +tcp` 改变了什么？
 
 ::option[它使用 TCP 发送 DNS 查询，而不是默认先尝试 UDP。]{#dns-tools-use-tcp .correct explanation="这有助于区分传输过滤问题，以及需要更大可靠字节流的响应。"}
 ::option[它只请求 TCP 服务名称记录。]{#dns-tools-tcp-records explanation="请求的 DNS 类型仍需另行指定。"}

@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` copie des blocs, pas nécessairement un octet à la fois. Une grande valeur de `bs` peut réduire le coût des appels système, mais la valeur optimale dépend des périphériques, de l'alignement, du cache et de la charge. Elle ne change pas les données logiques copiées.
 
-:::single-choice{#dd-command-output-operand}
-Quel opérande choisit la destination écrite par `dd` ?
+:::single-choice{#dd-command-output-operand} Quel opérande choisit la destination écrite par `dd` ?
 
 ::option[`if=`]{#dd-command-input-file explanation="`if` identifie la source d'entrée."}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of` nomme le flux ou fichier de sortie qui reçoit les données copiées."}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 Cette commande demande deux blocs d'entrée d'au plus 1 Mio chacun, soit au maximum 2 Mio. Des lectures courtes compliquent cette multiplication pour des flux comme les tubes ; GNU `dd` fournit `iflag=fullblock` lorsque des blocs d'entrée complets sont requis. Distinguez les unités binaires et la syntaxe des suffixes selon l'implémentation locale.
 
-:::single-choice{#dd-command-count-result}
-Pour un fichier ordinaire, quelle quantité maximale demande `bs=1M count=2` ?
+:::single-choice{#dd-command-count-result} Pour un fichier ordinaire, quelle quantité maximale demande `bs=1M count=2` ?
 
 ::option[1 Mio.]{#dd-command-one-mib explanation="Cela correspondrait à un seul bloc de la taille choisie."}
 ::option[2 Mio.]{#dd-command-two-mib .correct explanation="Deux blocs d'entrée multipliés par 1 Mio par bloc donnent un maximum de 2 Mio."}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 Le périphérique de sortie est écrasé depuis son début. Inverser `if` et `of`, choisir le disque système ou utiliser un disque entier lorsqu'une partition était visée peut détruire des données sans confirmation.
 
-:::single-choice{#dd-command-target-verification}
-Quelle est la raison la plus importante de vérifier modèle, numéro de série, taille et utilisation active avant une écriture brute ?
+:::single-choice{#dd-command-target-verification} Quelle est la raison la plus importante de vérifier modèle, numéro de série, taille et utilisation active avant une écriture brute ?
 
 ::option[Les lettres peuvent changer et `dd` écrase la cible sans comprendre son contenu.]{#dd-command-target-can-change .correct explanation="Les contrôles d'identité et d'utilisation réduisent le risque de détruire un autre disque ou une pile de stockage active."}
 ::option[`dd` refuse d'écrire si l'étiquette du système de fichiers ne correspond pas à l'image.]{#dd-command-label-check explanation="L'outil ne réalise aucune vérification de sécurité fondée sur le système de fichiers."}
@@ -85,8 +82,7 @@ Lire un périphérique actif pendant que son système de fichiers change peut pr
 
 Une image brute copie les blocs, y compris les métadonnées et régions inutilisées. Elle peut donc être beaucoup plus grande qu'une sauvegarde par fichiers et reproduire des identifiants à modifier avant de monter un clone à côté de l'original.
 
-:::single-choice{#dd-command-live-filesystem-image}
-Pourquoi l'imagerie d'un système monté et en cours de modification peut-elle être peu fiable ?
+:::single-choice{#dd-command-live-filesystem-image} Pourquoi l'imagerie d'un système monté et en cours de modification peut-elle être peu fiable ?
 
 ::option[Les systèmes montés n'autorisent jamais la lecture du périphérique bloc.]{#dd-command-mounted-no-read explanation="Les lectures brutes peuvent être possibles ; leur cohérence doit donc être planifiée plutôt que présumée."}
 ::option[Différents blocs peuvent être lus à des instants différents de l'état du système de fichiers.]{#dd-command-inconsistent-moments .correct explanation="Les modifications concurrentes peuvent empêcher l'image de représenter un seul instant cohérent."}
@@ -99,8 +95,7 @@ Une fin sans erreur d'E/S ne prouve pas que les bonnes source et cible ont été
 
 Ne présentez pas les passes d'écrasement de `dd` comme un effacement sûr garanti pour les SSD, les couches de traduction flash, le stockage à allocation fine, les instantanés ou les secteurs remappés. Utilisez la méthode de nettoyage prise en charge par le périphérique et la plateforme, selon une politique explicite de destruction.
 
-:::single-choice{#dd-command-success-meaning}
-Qu'est-ce qu'un état de terminaison nul de `dd` ne prouve pas à lui seul ?
+:::single-choice{#dd-command-success-meaning} Qu'est-ce qu'un état de terminaison nul de `dd` ne prouve pas à lui seul ?
 
 ::option[Que la commande a analysé tous les opérandes fournis.]{#dd-command-parsed-operands explanation="Des opérandes invalides provoquent normalement une erreur plutôt qu'une fin réussie."}
 ::option[Que l'opérateur a choisi les source et destination voulues.]{#dd-command-does-not-prove-intent .correct explanation="L'outil peut réussir à copier vers la mauvaise cible, car il ne peut pas déduire l'intention de l'opérateur."}

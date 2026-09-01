@@ -16,8 +16,7 @@ Internet Control Message Protocol transporte des informations de contrôle, d'er
 
 Un message ICMP possède un type, éventuellement un code plus précis, et une somme de contrôle. Les erreurs incluent normalement une partie du paquet déclencheur afin que l'expéditeur les associe à un flux.
 
-:::single-choice{#icmp-code-purpose}
-Que fournit un code ICMP ?
+:::single-choice{#icmp-code-purpose} Que fournit un code ICMP ?
 
 ::option[Un nom DNS permanent pour le routeur déclarant.]{#icmp-code-dns explanation="La résolution de noms n'est pas la fonction de ce champ."}
 ::option[Une signification plus précise au sein d'un type de message ICMP.]{#icmp-code-specific .correct explanation="Les codes Destination Unreachable distinguent par exemple plusieurs causes d'échec."}
@@ -28,8 +27,7 @@ Que fournit un code ICMP ?
 
 Pour ICMPv4, Echo Request est le type 8, Echo Reply le type 0, Destination Unreachable le type 3 et Time Exceeded le type 11. ICMPv6 emploie d'autres numéros : identifiez toujours la famille d'adresses avant d'interpréter une capture.
 
-:::single-choice{#icmpv4-echo-request-type}
-Quel est le type ICMPv4 Echo Request ?
+:::single-choice{#icmpv4-echo-request-type} Quel est le type ICMPv4 Echo Request ?
 
 ::option[0]{#icmp-type-zero explanation="Le type zéro correspond à Echo Reply en ICMPv4."}
 ::option[11]{#icmp-type-eleven explanation="Le type onze correspond à Time Exceeded."}
@@ -42,8 +40,7 @@ ICMP n'est pas seulement le trafic facultatif de `ping`. Les erreurs IPv4 signal
 
 Filtrez selon le type nécessaire, le sens, le débit et la portée. Certains messages peuvent être usurpés ; validez le contexte cité avec les routes locales et les captures.
 
-:::single-choice{#icmp-block-all-risk}
-Pourquoi le blocage de tout ICMP peut-il casser un trafic valide ?
+:::single-choice{#icmp-block-all-risk} Pourquoi le blocage de tout ICMP peut-il casser un trafic valide ?
 
 ::option[Chaque réponse HTTP est transportée dans un Echo Reply.]{#icmp-http-echo explanation="HTTP utilise normalement TCP ou QUIC."}
 ::option[ICMP stocke tous les mots de passe applicatifs.]{#icmp-passwords explanation="ICMP n'est pas une base d'identifiants."}
@@ -54,8 +51,7 @@ Pourquoi le blocage de tout ICMP peut-il casser un trafic valide ?
 
 Une absence de réponse peut signifier filtrage, limitation de débit, routage asymétrique, absence de route retour, hôte arrêté ou refus de répondre. Inversement, une erreur ICMP peut provenir d'un équipement intermédiaire.
 
-:::single-choice{#icmp-silence-meaning}
-Que prouve à lui seul l'absence d'Echo Reply ?
+:::single-choice{#icmp-silence-meaning} Que prouve à lui seul l'absence d'Echo Reply ?
 
 ::option[Que l'application cible est certainement arrêtée.]{#icmp-silence-app-down explanation="Le service peut fonctionner tandis que l'écho est filtré ou ignoré."}
 ::option[Que le nom de destination a été supprimé du DNS.]{#icmp-silence-dns-deleted explanation="Une sonde vers une adresse numérique peut rester muette indépendamment du DNS."}

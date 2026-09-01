@@ -23,8 +23,7 @@ $ uname -r
 
 Cette commande ne répertorie pas tous les noyaux installés et ne change pas immédiatement lorsqu'un paquet plus récent est installé. Le système doit démarrer la nouvelle image avant que `uname -r` ne l'affiche. Interrogez les paquets installés et les entrées d'amorçage avec les outils propres à la distribution.
 
-:::single-choice{#kernel-installation-uname-release}
-Qu'affiche `uname -r` ?
+:::single-choice{#kernel-installation-uname-release} Qu'affiche `uname -r` ?
 
 ::option[La chaîne de version du noyau actuellement en cours d'exécution.]{#kernel-installation-running-release .correct explanation="La commande indique l'état réel du noyau, pas simplement l'image la plus récente stockée sur le disque."}
 ::option[Tous les paquets de noyaux disponibles dans tous les dépôts.]{#kernel-installation-all-packages explanation="L'inventaire des dépôts relève du gestionnaire de paquets."}
@@ -37,8 +36,7 @@ Installez ou conservez le paquet de suivi ou méta-paquet du noyau pris en charg
 
 Ne transformez pas directement la chaîne de `uname -r` en opérande d'`apt install` en supposant qu'elle convient. Consultez la documentation actuelle de la distribution et examinez les candidats avec le gestionnaire de paquets avant l'installation.
 
-:::single-choice{#kernel-installation-meta-package}
-Pourquoi un méta-paquet de noyau pris en charge est-il utile ?
+:::single-choice{#kernel-installation-meta-package} Pourquoi un méta-paquet de noyau pris en charge est-il utile ?
 
 ::option[Il garantit qu'aucun redémarrage ne sera jamais nécessaire.]{#kernel-installation-no-reboot explanation="Un noyau nouvellement installé ne devient actif qu'après un démarrage sur celui-ci, hormis la portée particulière des correctifs à chaud."}
 ::option[Il convertit tous les pilotes externes en code intégré au noyau.]{#kernel-installation-convert-drivers explanation="Les modules externes exigent toujours une construction compatible et une signature."}
@@ -57,8 +55,7 @@ Avant une transaction concernant le noyau :
 
 La transaction des paquets doit générer un initramfs correspondant et mettre à jour les entrées d'amorçage par les hooks de la distribution. Lisez chaque erreur : l'état installé du paquet ne suffit pas si la génération de l'initramfs ou du chargeur a échoué.
 
-:::single-choice{#kernel-installation-initramfs-error}
-Pourquoi une erreur de génération de l'initramfs interdit-elle de conclure à la réussite ?
+:::single-choice{#kernel-installation-initramfs-error} Pourquoi une erreur de génération de l'initramfs interdit-elle de conclure à la réussite ?
 
 ::option[La génération de l'initramfs change le mot de passe du shell de l'utilisateur.]{#kernel-installation-initramfs-password explanation="Le processus de l'archive de démarrage est sans rapport avec les secrets d'authentification des comptes."}
 ::option[Le nouveau noyau peut ne pas disposer des modules ou outils précoces nécessaires pour atteindre le stockage racine.]{#kernel-installation-missing-early-tools .correct explanation="Une image peut être installée alors que son artefact requis de l'espace utilisateur précoce est absent ou obsolète."}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 Employez les outils équivalents sur les systèmes sans systemd. Validez le stockage, les systèmes de fichiers, le réseau, l'affichage, les périphériques d'entrée, les modules de sécurité, les modules externes, les conteneurs, les machines virtuelles et la santé applicative. Une invite de connexion seule ne constitue pas une validation complète.
 
-:::single-choice{#kernel-installation-activation}
-Quand un paquet ordinaire de noyau nouvellement installé devient-il le noyau en cours d'exécution ?
+:::single-choice{#kernel-installation-activation} Quand un paquet ordinaire de noyau nouvellement installé devient-il le noyau en cours d'exécution ?
 
 ::option[Dès que `uname -r` est saisi.]{#kernel-installation-uname-activates explanation="Uname agit en lecture seule et ne peut pas changer de noyau."}
 ::option[Après que la machine a démarré cette image du noyau.]{#kernel-installation-after-boot .correct explanation="L'installation des fichiers ne remplace pas le noyau déjà exécuté en mémoire."}
@@ -91,8 +87,7 @@ N'employez le mécanisme de nettoyage pris en charge par le gestionnaire de paqu
 
 Une suppression manuelle dans `/boot` rend incohérents l'état des paquets et celui du chargeur. Si l'espace est déjà épuisé, préparez une récupération avant de modifier les fichiers au lieu de supprimer des images arbitraires.
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-Quel noyau doit rester installé pendant la validation initiale d'un nouveau ?
+:::single-choice{#kernel-installation-old-kernel-removal} Quel noyau doit rester installé pendant la validation initiale d'un nouveau ?
 
 ::option[Uniquement le nouveau noyau non testé.]{#kernel-installation-only-new explanation="Supprimer toutes les solutions de repli avant le test transforme un problème de compatibilité en incident de récupération."}
 ::option[Aucun fichier de noyau sous le chemin de démarrage.]{#kernel-installation-no-kernels explanation="La machine a besoin d'un artefact de noyau chargeable pour démarrer Linux."}

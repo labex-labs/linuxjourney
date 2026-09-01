@@ -16,8 +16,7 @@ O modelo TCP/IP organiza os protocolos usados pelos hosts da Internet em camadas
 
 Os protocolos de aplicação definem mensagens e comportamentos para serviços como HTTP, DNS, SSH e SMTP. Essa camada também inclui muitas responsabilidades de representação e sessão que o modelo OSI apresenta separadamente.
 
-:::single-choice{#tcpip-http-layer}
-Em qual camada TCP/IP o HTTP normalmente é classificado?
+:::single-choice{#tcpip-http-layer} Em qual camada TCP/IP o HTTP normalmente é classificado?
 
 ::option[Internet.]{#tcpip-http-internet explanation="A camada de Internet cuida do endereçamento IP e do encaminhamento de pacotes."}
 ::option[Enlace.]{#tcpip-http-link explanation="A camada de enlace transporta o tráfego em um meio local."}
@@ -28,8 +27,7 @@ Em qual camada TCP/IP o HTTP normalmente é classificado?
 
 Os protocolos de transporte fornecem comunicação entre pontos de extremidade das aplicações. O TCP oferece um fluxo de bytes confiável e ordenado, com controle de congestionamento e de fluxo. O UDP fornece datagramas independentes, sem as garantias de conexão, ordenação ou retransmissão do TCP. Os números de porta ajudam a identificar pontos de extremidade do transporte, mas um número de porta por si só não comprova qual aplicação está escutando.
 
-:::single-choice{#tcpip-udp-property}
-Qual propriedade pertence ao UDP, e não ao TCP?
+:::single-choice{#tcpip-udp-property} Qual propriedade pertence ao UDP, e não ao TCP?
 
 ::option[Datagramas independentes sem garantias integradas de retransmissão.]{#tcpip-udp-datagrams .correct explanation="As aplicações que usam UDP decidem se e como adicionar confiabilidade."}
 ::option[Entrega garantida e em ordem de um único fluxo de bytes.]{#tcpip-udp-ordered explanation="Essa é uma propriedade do serviço TCP, sujeita ao sucesso da conexão."}
@@ -40,8 +38,7 @@ Qual propriedade pertence ao UDP, e não ao TCP?
 
 O Protocolo de Internet transporta pacotes usando endereços IP de origem e destino. Os roteadores examinam as informações de roteamento e reduzem os limites de saltos enquanto encaminham os pacotes em direção ao destino. O ICMP comunica informações de controle e erro para a operação do IP. A entrega continua sendo de melhor esforço; as camadas superiores ou as aplicações cuidam de qualquer recuperação necessária.
 
-:::single-choice{#tcpip-router-layer}
-Qual camada fornece o destino IP usado pelos roteadores?
+:::single-choice{#tcpip-router-layer} Qual camada fornece o destino IP usado pelos roteadores?
 
 ::option[Internet.]{#tcpip-router-internet .correct explanation="O cabeçalho IP contém o destino da camada de rede usado no encaminhamento roteado."}
 ::option[Aplicação.]{#tcpip-router-application explanation="As mensagens da aplicação são transportadas dentro dos dados de protocolo das camadas inferiores."}
@@ -54,8 +51,7 @@ A camada de enlace envia um pacote IP através de um enlace local usando Etherne
 
 Os cabeçalhos de enlace normalmente mudam em cada salto roteado; as conversas de transporte e aplicação são de ponta a ponta, a menos que um dispositivo intermediário as encerre ou transforme.
 
-:::single-choice{#tcpip-link-scope}
-Qual é o escopo normal de um quadro da camada de enlace?
+:::single-choice{#tcpip-link-scope} Qual é o escopo normal de um quadro da camada de enlace?
 
 ::option[Um enlace ou salto local.]{#tcpip-one-link .correct explanation="Um roteador remove o enquadramento recebido e cria outro para o próximo enlace."}
 ::option[Todas as sessões de aplicação na Internet global.]{#tcpip-global-frame explanation="Os quadros não permanecem inalterados através de redes roteadas."}

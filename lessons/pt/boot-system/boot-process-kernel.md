@@ -24,8 +24,7 @@ Depois que o controle chega ao kernel Linux, ele inicializa gerenciamento de mem
 
 Um initramfs reúne esses componentes em um ambiente inicial do espaço do usuário fornecido junto com o kernel.
 
-:::single-choice{#boot-kernel-initramfs-purpose}
-Que problema um initramfs costuma resolver?
+:::single-choice{#boot-kernel-initramfs-purpose} Que problema um initramfs costuma resolver?
 
 ::option[Ele fornece ferramentas e módulos iniciais necessários antes que a raiz real esteja disponível.]{#boot-kernel-early-tools .correct explanation="O espaço inicial pode descobrir e montar armazenamento que o kernel não acessa apenas com o suporte incorporado."}
 ::option[Ele guarda permanentemente no firmware o diretório pessoal de cada usuário.]{#boot-kernel-home-firmware explanation="Esse arquivo é um artefato de boot, não armazenamento permanente de dados do usuário."}
@@ -40,8 +39,7 @@ Um initrd legado é, conceitualmente, uma imagem de sistema de arquivos carregad
 
 O initramfs deve corresponder ao kernel e ao projeto de boot. Módulos ausentes, identificadores antigos ou ferramentas de criptografia e LVM omitidas podem tornar um kernel novo incapaz de iniciar, mesmo que sua imagem seja válida.
 
-:::single-choice{#boot-kernel-initramfs-format}
-Como um initramfs moderno costuma ser apresentado ao kernel?
+:::single-choice{#boot-kernel-initramfs-format} Como um initramfs moderno costuma ser apresentado ao kernel?
 
 ::option[Como um repositório interativo de pacotes apenas por HTTP.]{#boot-kernel-http-repository explanation="A rede pode ser configurada no espaço inicial, mas não define o formato do initramfs."}
 ::option[Como um arquivo baseado em cpio, descompactado na raiz inicial.]{#boot-kernel-cpio-archive .correct explanation="O kernel expande o arquivo e executa seu programa de inicialização do espaço inicial do usuário."}
@@ -54,8 +52,7 @@ O espaço inicial interpreta parâmetros como `root=`, espera pelos dispositivos
 
 A solicitação inicial `ro` pode permitir verificações de consistência e uma inicialização controlada, mas a sequência exata depende da distribuição. Verificações de sistema de arquivos são operações do espaço do usuário, e o initramfs ou o sistema init posterior pode remontar a raiz para leitura e escrita quando permitido.
 
-:::single-choice{#boot-kernel-root-switch}
-O que acontece depois que o espaço inicial monta com êxito a raiz real pretendida?
+:::single-choice{#boot-kernel-root-switch} O que acontece depois que o espaço inicial monta com êxito a raiz real pretendida?
 
 ::option[A tabela de partições é recriada em todos os discos.]{#boot-kernel-recreate-tables explanation="A troca de raiz não reparticiona o armazenamento."}
 ::option[O kernel termina e o firmware volta a escalonar processos.]{#boot-kernel-firmware-schedules explanation="O kernel Linux continua responsável por processos e hardware depois da transferência."}
@@ -68,8 +65,7 @@ O kernel executa o programa init configurado, normalmente acessado por um caminh
 
 Se nenhum programa init utilizável puder ser executado, o kernel não consegue chegar a um sistema normal e costuma relatar falha ou panic. Investigue a primeira camada que falhou: kernel e linha de comando, conteúdo do initramfs, descoberta e montagem da raiz ou execução do PID 1.
 
-:::single-choice{#boot-kernel-pid-one}
-Qual é a última grande transferência do kernel nessa etapa simplificada?
+:::single-choice{#boot-kernel-pid-one} Qual é a última grande transferência do kernel nessa etapa simplificada?
 
 ::option[Executar o primeiro programa do espaço do usuário como PID 1.]{#boot-kernel-exec-init .correct explanation="Depois disso, o PID 1 inicia os serviços e o estado configurado do sistema."}
 ::option[Transformar `/proc` em um banco persistente de pacotes.]{#boot-kernel-proc-package explanation="Procfs continua sendo uma interface de tempo de execução do kernel."}

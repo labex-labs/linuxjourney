@@ -22,8 +22,7 @@ Gib im Normalmodus `/` und danach ein Muster ein und drücke Enter. Vim bewegt s
 
 Suchen verwenden Vims Syntax regulärer Ausdrücke. Zeichen wie `.`, `*`, `[` und `\` können daher eine besondere Bedeutung besitzen. Setze `\V` an den Anfang, wenn der Rest des Musters als „very nomagic“ behandelt werden soll, oder schütze Sonderzeichen gezielt.
 
-:::single-choice{#vim-search-forward-key}
-Welcher Befehl startet im Normalmodus eine Vorwärtssuche nach `pretty`?
+:::single-choice{#vim-search-forward-key} Welcher Befehl startet im Normalmodus eine Vorwärtssuche nach `pretty`?
 
 ::option[`?pretty`, gefolgt von Enter]{#vim-backward-pretty explanation="Ein Fragezeichen startet ab der aktuellen Cursorposition eine Rückwärtssuche."}
 ::option[`/pretty`, gefolgt von Enter]{#vim-forward-pretty .correct explanation="Ein Schrägstrich beginnt eine Vorwärtssuche; mit Enter sendest du das Muster ab."}
@@ -40,8 +39,7 @@ Gib `?` und danach ein Muster ein und drücke Enter, um zum vorherigen Treffer v
 
 Das bedeutet nicht grundsätzlich „der letzte Treffer in der Datei“. Das Ergebnis hängt von der aktuellen Cursorposition ab. Mit Vims Standardeinstellung `wrapscan` kann eine Suche am Anfang oder Ende umbrechen; `:set nowrapscan` deaktiviert dieses Verhalten.
 
-:::single-choice{#vim-search-backward-key}
-Welches Suchpräfix des Normalmodus sucht vom Cursor aus in früherem Text?
+:::single-choice{#vim-search-backward-key} Welches Suchpräfix des Normalmodus sucht vom Cursor aus in früherem Text?
 
 ::option[`/`]{#vim-slash-forward explanation="Ein Schrägstrich sucht vom Cursor aus vorwärts statt in vorhergehendem Text."}
 ::option[`?`]{#vim-question-backward .correct explanation="Ein Fragezeichen startet ab der aktuellen Cursorposition eine rückwärts gerichtete Mustersuche."}
@@ -57,8 +55,7 @@ Nach beiden Sucharten gilt:
 
 Nach `/pretty` bewegt sich `n` daher vorwärts und `N` rückwärts. Nach `?pretty` bewegt sich `n` rückwärts und `N` vorwärts.
 
-:::single-choice{#vim-repeat-backward-search}
-Welche Taste wiederholt nach `?error` die Suche in derselben Rückwärtsrichtung?
+:::single-choice{#vim-repeat-backward-search} Welche Taste wiederholt nach `?error` die Suche in derselben Rückwärtsrichtung?
 
 ::option[`n`]{#vim-same-question-search .correct explanation="Das kleine `n` wiederholt die letzte Suche in ihrer ursprünglichen Richtung, hier also rückwärts."}
 ::option[`N`]{#vim-opposite-question-search explanation="Das große `N` kehrt die ursprüngliche Suchrichtung um und bewegt sich nach einer `?`-Suche daher vorwärts."}
@@ -74,8 +71,7 @@ Setze den Cursor im Normalmodus auf ein Wort und verwende:
 
 Diese Befehle setzen das aktuelle Suchmuster, sodass `n` und `N` daran anschließen können.
 
-:::single-choice{#vim-current-word-forward}
-Welche Taste des Normalmodus sucht vorwärts nach dem vollständigen Wort unter dem Cursor?
+:::single-choice{#vim-current-word-forward} Welche Taste des Normalmodus sucht vorwärts nach dem vollständigen Wort unter dem Cursor?
 
 ::option[`#`]{#vim-hash-current-word explanation="Die Rautetaste sucht rückwärts nach dem Wort unter dem Cursor."}
 ::option[`*`]{#vim-star-current-word .correct explanation="Der Sternbefehl bildet aus dem Wort unter dem Cursor ein Ganzwortmuster und sucht vorwärts."}
@@ -95,8 +91,7 @@ Beispielsweise passt `/\cerror` unabhängig von den aktuellen Optionen auf `erro
 
 Ist die Suchhervorhebung aktiv, entfernt `:nohlsearch` die aktuell sichtbaren Markierungen, ohne das Suchmuster zu löschen. Die nächste Suche oder Wiederholung kann Treffer erneut hervorheben.
 
-:::single-choice{#vim-force-case-insensitive}
-Welches Muster zwingt eine einzelne Vim-Suche nach `error`, unabhängig von den aktuellen Optionen die Großschreibung zu ignorieren?
+:::single-choice{#vim-force-case-insensitive} Welches Muster zwingt eine einzelne Vim-Suche nach `error`, unabhängig von den aktuellen Optionen die Großschreibung zu ignorieren?
 
 ::option[`/\Cerror`]{#vim-pattern-match-case explanation="Das große `\C` erzwingt die Beachtung der Groß- und Kleinschreibung und damit das Gegenteil."}
 ::option[`/:error`]{#vim-pattern-colon-error explanation="Ein Doppelpunkt im Muster ist hier ein wörtliches Zeichen und wählt kein Verhalten für die Großschreibung aus."}

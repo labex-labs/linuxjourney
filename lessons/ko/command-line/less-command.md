@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 `less`가 실행 중일 때 누르는 키는 일반 쉘 명령어를 시작하는 대신 페이저를 제어합니다. 페이저를 종료하면 쉘로 돌아옵니다.
 
-:::single-choice{#open-long-file}
-`/var/log/syslog`를 대화형 페이저로 여는 명령어는 무엇인가요?
+:::single-choice{#open-long-file} `/var/log/syslog`를 대화형 페이저로 여는 명령어는 무엇인가요?
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less`는 파일을 페이저로 열어 이동하고 검색한 뒤 쉘로 돌아갈 수 있게 합니다."}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat`은 파일 전체를 표준 출력으로 한꺼번에 보내므로 대화형 페이징 제어를 제공하지 않습니다."}
@@ -40,8 +39,7 @@ $ less /home/pete/Documents/text1
 - **반 페이지 이동**: `u` 키로 위로, `d` 키로 아래로 반 페이지씩 이동합니다.
 - **도움말 메뉴**: `less` 안에서 명령어가 기억나지 않으면 `h` 키를 눌러 도움말 요약을 볼 수 있습니다.
 
-:::single-choice{#jump-to-file-end}
-`less`에서 파일 끝으로 바로 이동하는 키는 무엇인가요?
+:::single-choice{#jump-to-file-end} `less`에서 파일 끝으로 바로 이동하는 키는 무엇인가요?
 
 ::option[`g`]{#lowercase-g explanation="소문자 `g`는 파일의 시작으로 이동하며 대문자는 반대 방향으로 이동합니다."}
 ::option[`G`]{#uppercase-g .correct explanation="대문자 `G`는 입력의 끝으로 이동합니다. 이 명령은 대소문자를 구분합니다."}
@@ -57,8 +55,7 @@ $ less /home/pete/Documents/text1
 - `n`: 같은 방향으로 검색을 반복합니다.
 - `N`: 반대 방향으로 검색을 반복합니다.
 
-:::single-choice{#repeat-search-direction}
-`error`를 앞으로 검색한 뒤 같은 방향으로 검색을 반복하는 키는 무엇인가요?
+:::single-choice{#repeat-search-direction} `error`를 앞으로 검색한 뒤 같은 방향으로 검색을 반복하는 키는 무엇인가요?
 
 ::option[`n`]{#same-search .correct explanation="소문자 `n`은 최근 검색을 원래 방향으로 반복합니다. 여기서는 앞으로 검색합니다."}
 ::option[`N`]{#opposite-search explanation="대문자 `N`은 최근 검색을 반대 방향으로 반복하므로 앞으로 검색한 뒤에는 이전 일치 항목으로 이동합니다."}
@@ -69,8 +66,7 @@ $ less /home/pete/Documents/text1
 
 `q` 키를 눌러 `less`를 종료하고 쉘 프롬프트로 돌아갑니다.
 
-:::single-choice{#quit-less}
-`less`를 종료하고 쉘로 돌아가는 키는 무엇인가요?
+:::single-choice{#quit-less} `less`를 종료하고 쉘로 돌아가는 키는 무엇인가요?
 
 ::option[`q`]{#less-quit .correct explanation="`q` 명령은 페이저를 종료하고 쉘 프롬프트로 돌아갑니다."}
 ::option[`h`]{#less-help explanation="`h`는 `less` 안에서 도움말을 열며 곧바로 쉘로 돌아가지 않습니다."}
@@ -99,8 +95,7 @@ $ less +F /var/log/syslog
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-`/var/log/syslog`를 열고 새 내용이 들어올 때마다 계속 표시하는 명령어는 무엇인가요?
+:::single-choice{#follow-growing-log} `/var/log/syslog`를 열고 새 내용이 들어올 때마다 계속 표시하는 명령어는 무엇인가요?
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="`+F` 초기 명령은 추적 모드로 들어가 로그 뒤에 추가되는 새 내용을 표시합니다."}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="`+G`는 파일 끝에서 시작하지만 나중에 들어오는 내용을 계속 추적하지는 않습니다."}

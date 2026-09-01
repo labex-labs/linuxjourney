@@ -26,8 +26,7 @@ $ ls -ld /*
 
 현재 여러 배포판은 `/bin`, `/sbin` 및 `/lib`가 대응하는 `/usr` 디렉터리를 가리키는 심볼릭 링크인 병합된 `/usr` 레이아웃을 사용합니다. 경로가 실제 디렉터리인지 링크인지 가정하지 말고 명령 검색 기능과 패키지 레코드를 사용하십시오.
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-호스트별 시스템 설정이 일반적으로 들어 있는 디렉터리는 무엇입니까?
+:::single-choice{#filesystem-hierarchy-configuration-directory} 호스트별 시스템 설정이 일반적으로 들어 있는 디렉터리는 무엇입니까?
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="procfs는 영구적인 호스트 설정 파일이 아니라 실시간 프로세스와 커널 인터페이스를 제공합니다."}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="시스템과 서비스 설정은 일반적으로 `/etc` 아래에 구성됩니다."}
@@ -42,8 +41,7 @@ $ ls -ld /*
 
 이름과 달리 `/usr`은 일반적으로 개별 사용자의 개인 파일이 있는 곳이 아닙니다. 배포판 패키지 관리자는 대개 이 영역의 많은 부분을 소유하므로 로컬에서 컴파일한 파일을 `/usr/bin`에 복사하면 관리 패키지와 충돌할 수 있습니다.
 
-:::single-choice{#filesystem-hierarchy-local-software}
-배포판이 관리하는 `/usr` 콘텐츠 외부에서 로컬로 설치한 소프트웨어를 위해 일반적으로 예약된 접두사는 무엇입니까?
+:::single-choice{#filesystem-hierarchy-local-software} 배포판이 관리하는 `/usr` 콘텐츠 외부에서 로컬로 설치한 소프트웨어를 위해 일반적으로 예약된 접두사는 무엇입니까?
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="로컬 계층은 관리자가 설치한 소프트웨어를 배포판의 기본 `/usr` 트리와 분리합니다."}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="procfs는 가상 커널 인터페이스이며 영구적인 소프트웨어 접두사가 아닙니다."}
@@ -58,8 +56,7 @@ $ ls -ld /*
 
 홈 경로는 단순히 `/home`과 사용자 이름을 합친 값이 아니라 계정 정보에서 가져옵니다. 경로를 하드 코딩하지 말고 `getent passwd USER` 또는 셸이 해석한 홈을 사용하십시오.
 
-:::single-choice{#filesystem-hierarchy-root-home}
-root 계정의 일반적인 홈 디렉터리는 무엇입니까?
+:::single-choice{#filesystem-hierarchy-root-home} root 계정의 일반적인 홈 디렉터리는 무엇입니까?
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="일반 사용자의 홈 디렉터리는 흔히 `/home` 아래에 있지만 root에는 별도의 일반 경로가 있습니다."}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="특권 계정의 홈은 일반적으로 파일 시스템 루트 바로 아래에 있습니다."}
@@ -75,8 +72,7 @@ root 계정의 일반적인 홈 디렉터리는 무엇입니까?
 
 `/tmp` 정리 정책은 시스템마다 다릅니다. 파일이 재부팅할 때까지 유지되거나 항상 재부팅 시 삭제된다고 가정하지 마십시오. 애플리케이션은 예측 가능한 이름 대신 안전한 임시 파일 생성 방식을 사용해야 합니다.
 
-:::single-choice{#filesystem-hierarchy-log-path}
-시스템 로그 파일을 일반적으로 저장하는 경로는 무엇입니까?
+:::single-choice{#filesystem-hierarchy-log-path} 시스템 로그 파일을 일반적으로 저장하는 경로는 무엇입니까?
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc`는 누적되는 일반 로그 데이터가 아니라 설정을 위한 곳입니다."}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="로그는 가변 데이터 계층 아래에 구성되는 변경되는 시스템 데이터의 한 종류입니다."}
@@ -93,8 +89,7 @@ root 계정의 일반적인 홈 디렉터리는 무엇입니까?
 
 이들은 관례이지 권한을 부여하는 규칙이 아닙니다. 비어 있지 않은 디렉터리에 다른 파일 시스템을 마운트하면 마운트 해제할 때까지 그 디렉터리의 기존 내용이 일시적으로 가려집니다.
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-sysfs를 통해 커널 장치 모델을 일반적으로 노출하는 경로는 무엇입니까?
+:::single-choice{#filesystem-hierarchy-sysfs-path} sysfs를 통해 커널 장치 모델을 일반적으로 노출하는 경로는 무엇입니까?
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv`는 시스템이 제공하는 데이터를 위한 곳입니다."}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="sysfs는 일반적으로 `/sys`에 마운트되어 장치, 드라이버, 버스 및 속성을 제공합니다."}

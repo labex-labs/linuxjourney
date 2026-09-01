@@ -32,8 +32,7 @@ sally sells seashells
 
 请为正则表达式模式加引号，避免 shell 在匹配工具收到它们之前进行展开或拆分。正则表达式也不同于 shell 路径名展开：在正则表达式中，`*` 重复它前面的原子；在 shell glob 中，`*` 本身就是匹配一串路径名字符的通配符。
 
-:::single-choice{#regex-versus-shell-star}
-在 `ab*` 这样的正则表达式中，`*` 有什么作用？
+:::single-choice{#regex-versus-shell-star} 在 `ab*` 这样的正则表达式中，`*` 有什么作用？
 
 ::option[匹配当前目录中的任意文件名。]{#regex-shell-glob explanation="这描述的是命令上下文中的 shell 路径名展开，而不是正则表达式里 `*` 的含义。"}
 ::option[让前面的 `b` 重复零次或多次。]{#regex-repeat-b .correct explanation="正则量词作用于紧邻它之前的原子，因此 `ab*` 可以匹配 `a`、`ab`、`abb` 等。"}
@@ -60,8 +59,7 @@ seashore$
 ^by the seashore$
 ```
 
-:::single-choice{#regex-complete-line}
-哪个模式只匹配完整文本为 `by the seashore` 的行？
+:::single-choice{#regex-complete-line} 哪个模式只匹配完整文本为 `by the seashore` 的行？
 
 ::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="脱字符要求匹配从行首开始，美元符号要求匹配在行尾结束。"}
 ::option[`by the seashore`]{#regex-unanchored-line explanation="没有锚点时，该字符序列也可能匹配前后还有其他文本的较长行。"}
@@ -78,8 +76,7 @@ b.
 
 它能匹配 `by`，也可能匹配 `ba` 或 `b7`。它不能匹配单独的 `b`，因为后面必须还有一个字符。若要匹配字面句点，请写成 `\.`，或把它放入适当的方括号表达式。
 
-:::single-choice{#regex-dot-character}
-以下哪个字符串不会被完整行模式 `^b.$` 匹配？
+:::single-choice{#regex-dot-character} 以下哪个字符串不会被完整行模式 `^b.$` 匹配？
 
 ::option[`by`]{#regex-dot-by explanation="点号会匹配 `y`，所以这个两字符行符合模式。"}
 ::option[`b`]{#regex-dot-b .correct explanation="点号要求 `b` 后面还有一个字符，但该字符串立即结束。"}
@@ -104,8 +101,7 @@ s[^e]lls
 
 它会匹配 `salls`，但不会匹配 `sells`，因为第一个 `s` 后面的字符不能是 `e`。
 
-:::single-choice{#regex-negated-bracket}
-`[^e]` 会匹配什么？
+:::single-choice{#regex-negated-bracket} `[^e]` 会匹配什么？
 
 ::option[恰好一个不是 `e` 的字符。]{#regex-not-e .correct explanation="方括号内开头的脱字符会对列出的集合取补集，而方括号表达式仍然消耗一个字符。"}
 ::option[行首后跟一个 `e`。]{#regex-caret-e-anchor explanation="在方括号表达式内，开头的脱字符会对集合取反，而不是锚定行首。"}
@@ -143,8 +139,7 @@ $ grep -E '^(cat|dog)s?$' animals.txt
 
 它会选择完整内容等于 `cat`、`cats`、`dog` 或 `dogs` 的行。在 BRE 模式中，这些运算符的转义规则不同，因此不要在未检查的情况下跨风格复制模式。
 
-:::single-choice{#regex-extended-alternation}
-哪个命令会为模式 `^(cat|dog)s?$` 启用扩展正则表达式语法？
+:::single-choice{#regex-extended-alternation} 哪个命令会为模式 `^(cat|dog)s?$` 启用扩展正则表达式语法？
 
 ::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F` 会把所有正则运算符视为字面文本，因此分组、选择和可选重复都不会生效。"}
 ::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E` 选择扩展正则表达式，从而启用这里的分组、选择和可选 `s`。"}

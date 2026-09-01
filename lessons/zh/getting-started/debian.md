@@ -16,8 +16,7 @@ meta_keywords: "debian 发行版，debian linux 发行版，什么是 debian, de
 
 Debian 项目自 Linux 早期便已存在，并以严谨的工程设计、开放性和长期可靠性而闻名。实际上，**Debian Linux 发行版**以提供坚实的基础系统、庞大的软件库和清晰的项目原则而著称。
 
-:::single-choice{#identify-debian-project-model}
-Debian 主要以什么方式开发？
+:::single-choice{#identify-debian-project-model} Debian 主要以什么方式开发？
 
 ::option[由一家商业软件公司开发]{#single-company explanation="Debian 并非由单一公司开发，而是由世界各地的志愿者和贡献者共同维护。"}
 ::option[由一家计算机硬件制造商开发]{#hardware-manufacturer explanation="Debian 支持多种硬件，但并不归任何硬件制造商所有；该项目由社区维护。"}
@@ -42,8 +41,7 @@ Debian 的一个主要特点是其分支模型。Debian 不仅提供单一的软
 
 这些分支有助于解释为什么 Debian 能够服务于非常不同的用户群体。追求可预测系统的用户通常会选择稳定版，而开发者和高级用户则可能会探索测试版或不稳定版以获取更新的软件。
 
-:::single-choice{#choose-debian-stable}
-如果用户最看重可靠性和可预测的更新，哪个 Debian 分支最合适？
+:::single-choice{#choose-debian-stable} 如果用户最看重可靠性和可预测的更新，哪个 Debian 分支最合适？
 
 ::option[Testing]{#testing-branch explanation="Testing 通常包含为未来版本准备的较新软件包，在开发期间仍可能发生重要变化。"}
 ::option[Unstable]{#unstable-branch explanation="Unstable 最先接收新上传的软件包并频繁变化，不符合可预测更新这一需求。"}
@@ -56,8 +54,7 @@ Debian 遵循基于发布的模型。项目在软件包经过开发和测试成�
 
 对于初学者来说，核心理念很简单：Debian 不追求快速变化。新软件包通常先进入 Unstable，符合条件的软件包再进入 Testing，准备就绪的 Testing 分支随后成为下一个 Stable 版本。这种模型让 Debian 在保持可靠性的同时逐步前进。
 
-:::single-choice{#trace-debian-package-flow}
-以下哪一顺序最能表示 Debian 软件包走向正式版本的简化路径？
+:::single-choice{#trace-debian-package-flow} 以下哪一顺序最能表示 Debian 软件包走向正式版本的简化路径？
 
 ::option[Unstable → Testing → Stable]{#unstable-testing-stable .correct explanation="新上传的软件包进入 Unstable，符合条件后进入 Testing，而准备就绪的 Testing 分支最终成为下一个 Stable 版本。"}
 ::option[Stable → Testing → Unstable]{#stable-testing-unstable explanation="Stable 是已经完成的生产版本，不是新软件包的起点；开发从 Unstable 开始。"}
@@ -70,8 +67,7 @@ Debian 遵循基于发布的模型。项目在软件包经过开发和测试成�
 
 由于 Debian 拥有庞大的软件包集合，用户可以通过相同的软件包系统安装从桌面应用程序到开发工具的所有内容。例如，开发者经常使用 `build-essential` 等软件包来安装常用的构建工具。这种成熟的软件包系统是 Debian 被广泛使用和信任的原因之一。
 
-:::single-choice{#recognize-apt-purpose}
-Debian 的 APT 工具集主要用于什么？
+:::single-choice{#recognize-apt-purpose} Debian 的 APT 工具集主要用于什么？
 
 ::option[安装、更新、删除和管理软件包]{#manage-packages .correct explanation="APT 管理 Debian 软件仓库中的软件包，为安装、更新和删除软件提供一致的方法。"}
 ::option[每次更新都编译一个新 Linux 内核]{#compile-kernel explanation="APT 可以安装已经打包的内核，但它的用途是更广泛的软件包管理，并不要求每次更新都编译内核。"}
@@ -95,8 +91,7 @@ Debian 的重要性还在于许多其他 Linux 发行版都是基于它的工作
 
 这意味着 Debian 不仅本身是一个 Linux 发行版，还是 Linux 世界很大一部分的基础。当你学习 APT、`.deb` 软件包或发布分支等 Debian 概念时，这些知识通常也适用于基于 Debian 的系统。如果你想要一个更适合初学者的基于 Debian 的选项，请参阅 [Ubuntu](https://labex.io/zh/lesson/ubuntu)。
 
-:::single-choice{#transfer-debian-knowledge}
-为什么 Debian 的软件包管理知识可以迁移到某些其他发行版？
+:::single-choice{#transfer-debian-knowledge} 为什么 Debian 的软件包管理知识可以迁移到某些其他发行版？
 
 ::option[每个 Linux 发行版都使用完全相同的软件包和仓库]{#identical-linux-packages explanation="不同 Linux 发行版可以使用不同的软件包格式、工具和仓库；Debian 知识最直接地适用于 Debian 家族。"}
 ::option[基于 Debian 的系统通常继承 `.deb` 和 APT 传统]{#shared-package-traditions .correct explanation="从 Debian 衍生的发行版通常保留其软件包格式和相关工具；具体仓库可能不同，但核心概念可以迁移。"}

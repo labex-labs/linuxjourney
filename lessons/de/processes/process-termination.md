@@ -25,8 +25,7 @@ $ printf '%s\n' "$?"
 
 Shells stellen einen begrenzten codierten Statusbereich bereit und bilden außerdem Signalbeendigungen ab. Dieser Wert ist daher kein vollständiger Diagnosebericht. Programme sollten ihre eigenen Beendigungscodes dokumentieren.
 
-:::single-choice{#process-termination-success-status}
-Welcher normale Beendigungsstatus bedeutet gemäß Unix-Konvention Erfolg?
+:::single-choice{#process-termination-success-status} Welcher normale Beendigungsstatus bedeutet gemäß Unix-Konvention Erfolg?
 
 ::option[`1`]{#process-termination-status-one explanation="Viele Programme verwenden `1` für einen allgemeinen Fehler, auch wenn die Bedeutungen befehlsspezifisch sind."}
 ::option[`0`]{#process-termination-status-zero .correct explanation="Ein normaler Status von null kennzeichnet konventionsgemäß den erfolgreichen Abschluss."}
@@ -39,8 +38,7 @@ Der Kernel erfasst, wie sich ein Kindprozess beendet hat, und benachrichtigt des
 
 Warten kann außerdem die Ausführung koordinieren: Eine Shell wartet auf einen Vordergrundbefehl, bevor sie eine neue Eingabeaufforderung anzeigt, kann das Warten auf einen Hintergrundjob aber aufschieben. Ein gut entwickelter langlebiger Elternprozess muss Kindprozesse aufräumen, ohne unabhängige Arbeit zu blockieren.
 
-:::single-choice{#process-termination-wait-purpose}
-Welche Informationen kann ein Elternprozess mit einem erfolgreichen wait-Vorgang abrufen?
+:::single-choice{#process-termination-wait-purpose} Welche Informationen kann ein Elternprozess mit einem erfolgreichen wait-Vorgang abrufen?
 
 ::option[Die Beendigungsinformationen des Kindprozesses.]{#process-termination-wait-status .correct explanation="Die wait-Familie meldet, wie ein Kindprozess angehalten oder beendet wurde, und räumt einen abgeschlossenen Kindprozess auf."}
 ::option[Eine Kopie des früheren Adressraums des Kindprozesses.]{#process-termination-wait-memory explanation="Der größte Teil des Prozessspeichers wurde bereits freigegeben und wird dem Elternprozess nicht durch `wait()` zurückgegeben."}
@@ -53,8 +51,7 @@ Nachdem sich ein Kindprozess beendet hat, aber bevor sein Beendigungseintrag auf
 
 Ein Signal an einen Zombie kann ihn nicht noch einmal beenden. Diagnostiziere bei einer dauerhaften Ansammlung von Zombies den Elternprozess, der nicht wartet, starte oder korrigiere diesen Elternprozess nach einem geeigneten Betriebsverfahren oder ermögliche die neue Elternzuordnung zu einem Prozess, der den Zombie aufräumt. Eine große Zahl kann die Kapazität für PIDs oder Prozesstabelleneinträge erschöpfen.
 
-:::single-choice{#process-termination-zombie-definition}
-Welche Beschreibung passt zu einem Zombie-Prozess?
+:::single-choice{#process-termination-zombie-definition} Welche Beschreibung passt zu einem Zombie-Prozess?
 
 ::option[Ein laufender Kindprozess, dessen Elternprozess sich bereits beendet hat.]{#process-termination-zombie-orphan explanation="Das beschreibt einen verwaisten Kindprozess und keinen Zombie-Zustand."}
 ::option[Ein abgeschlossener Kindprozess, dessen Beendigungseintrag noch nicht aufgeräumt wurde.]{#process-termination-zombie-unreaped .correct explanation="Der Prozess führt nichts mehr aus, doch der Kernel bewahrt einen minimalen Status für seinen Elternprozess auf."}
@@ -67,8 +64,7 @@ Wenn sich ein Elternprozess beendet, während sein Kind weiterläuft, ordnet der
 
 Der adoptierende Prozess wird für das Abholen des Beendigungsstatus verantwortlich. Moderne Dienstmanager und Containerumgebungen machen es wichtig, nicht anzunehmen, dass der neue Elternprozess immer PID 1 des Hosts ist.
 
-:::single-choice{#process-termination-orphan-definition}
-Was geschieht, wenn ein Prozess seinen ursprünglichen Elternprozess überlebt?
+:::single-choice{#process-termination-orphan-definition} Was geschieht, wenn ein Prozess seinen ursprünglichen Elternprozess überlebt?
 
 ::option[Er wird einem geeigneten Subreaper oder dem init-Prozess seines Namensraums als Kind zugeordnet.]{#process-termination-orphan-reparented .correct explanation="Der Kernel bewahrt eine gültige Elternbeziehung, indem er einen adoptierenden Prozess zuweist."}
 ::option[Er wird sofort zum Zombie, selbst wenn er sich noch nicht beendet hat.]{#process-termination-orphan-zombie explanation="Der Zombie-Zustand beginnt erst, nachdem die Ausführung beendet ist und der Status auf seine Abholung wartet."}

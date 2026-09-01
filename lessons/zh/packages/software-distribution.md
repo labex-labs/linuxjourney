@@ -24,8 +24,7 @@ Linux 软件通常以软件包形式交付，并由发行版特有的工具管�
 
 并非每个软件包都是交互式应用程序。软件包也可以提供库、内核组件、语言数据、字体、调试符号，或依赖其他一组软件包的元数据。
 
-:::single-choice{#software-distribution-package-metadata}
-哪项信息通常属于软件包元数据，而不是应用程序可执行文件？
+:::single-choice{#software-distribution-package-metadata} 哪项信息通常属于软件包元数据，而不是应用程序可执行文件？
 
 ::option[实现应用程序的 CPU 指令。]{#software-distribution-executable-code explanation="编译后的指令属于软件包载荷内容，而不是依赖元数据。"}
 ::option[声明的依赖关系。]{#software-distribution-dependencies .correct explanation="软件包描述必需或冲突的软件包，使管理工具能够推理安装方案。"}
@@ -38,8 +37,7 @@ Linux 软件通常以软件包形式交付，并由发行版特有的工具管�
 
 发行版构建基础设施会为受支持的版本和架构生成软件包。仓库工具发布客户端可以验证的元数据和签名。具体职责有所不同：某些上游项目自行发布软件包，而发行版也可能独立从源代码构建。
 
-:::single-choice{#software-distribution-maintainer-role}
-哪项任务通常属于发行版软件包维护者？
+:::single-choice{#software-distribution-maintainer-role} 哪项任务通常属于发行版软件包维护者？
 
 ::option[把上游源代码适配到发行版的构建和依赖规则。]{#software-distribution-maintainer-integrates .correct explanation="维护者使软件符合发行版策略、构建、依赖和受支持环境。"}
 ::option[选择每个用户的本地账户密码。]{#software-distribution-maintainer-passwords explanation="本地身份验证数据与软件包维护无关。"}
@@ -55,8 +53,7 @@ Linux 软件通常以软件包形式交付，并由发行版特有的工具管�
 
 此外还存在其他原生和跨发行版格式。仅有匹配的文件扩展名并不能保证兼容性；还要考虑软件包架构、发行版版本、库版本、策略、签名和依赖项。
 
-:::single-choice{#software-distribution-debian-format}
-Debian 和 Ubuntu 使用哪种原生软件包格式？
+:::single-choice{#software-distribution-debian-format} Debian 和 Ubuntu 使用哪种原生软件包格式？
 
 ::option[`.deb`]{#software-distribution-format-deb .correct explanation="Debian 家族的软件包工具使用 `.deb` 归档格式。"}
 ::option[`.rpm`]{#software-distribution-format-rpm explanation="RPM 是 Fedora、RHEL 和相关发行版家族的原生格式。"}
@@ -69,8 +66,7 @@ Debian 和 Ubuntu 使用哪种原生软件包格式？
 
 信任仍取决于仓库配置和签名密钥。加密签名有效只能证明软件包与受信任密钥关联，并不能证明任意第三方软件一定安全或适合当前系统。应尽可能优先使用发行版仓库，并在授予安装权限前评估任何外部来源。
 
-:::single-choice{#software-distribution-package-manager-benefit}
-通过受信任软件包仓库安装有什么优势？
+:::single-choice{#software-distribution-package-manager-benefit} 通过受信任软件包仓库安装有什么优势？
 
 ::option[管理器可以跟踪版本并解析声明的依赖项。]{#software-distribution-managed-lifecycle .correct explanation="仓库元数据和已安装状态记录支持协调安装、更新和卸载。"}
 ::option[每个已安装程序都会免疫所有安全漏洞。]{#software-distribution-no-vulnerabilities explanation="软件包管理支持更新，但无法保证软件没有缺陷。"}

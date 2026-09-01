@@ -28,8 +28,7 @@ Hay dos formas de especificar una ruta: absoluta y relativa.
 
 - **Ruta relativa**: Una ruta basada en tu ubicación actual. Si estás en `/home/pete/Documents` y quieres acceder a un subdirectorio llamado `taxes`, puedes usar `taxes/`.
 
-:::single-choice{#recognize-absolute-cd-path}
-¿Qué afirmación describe correctamente una ruta absoluta?
+:::single-choice{#recognize-absolute-cd-path} ¿Qué afirmación describe correctamente una ruta absoluta?
 
 ::option[Comienza en el directorio que esté usando la shell en ese momento]{#begins-at-current-directory explanation="Una ruta que depende de la ubicación actual de la shell es relativa. No tiene por qué comenzar en la raíz."}
 ::option[Contiene únicamente el nombre del directorio final, sin sus directorios padre]{#contains-final-name-only explanation="Un único nombre de destino suele interpretarse en relación con el directorio actual. Una ruta absoluta incluye el recorrido desde `/`."}
@@ -53,8 +52,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-¿Qué orden confirma la ubicación actual de la shell después de ejecutar `cd`?
+:::single-choice{#verify-changed-directory} ¿Qué orden confirma la ubicación actual de la shell después de ejecutar `cd`?
 
 ::option[`cd`]{#cd-command explanation="`cd` cambia el directorio actual, pero normalmente no muestra la ruta completa resultante. Utiliza `pwd` para confirmarla."}
 ::option[`ls`]{#ls-command explanation="`ls` muestra el contenido de un directorio. Puede ayudar a inspeccionar una ubicación, pero `pwd` informa de la propia ubicación."}
@@ -89,16 +87,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-Desde `/home/pete/Pictures`, ¿qué orden te lleva a `/home/pete`?
+:::single-choice{#move-to-parent-directory} Desde `/home/pete/Pictures`, ¿qué orden te lleva a `/home/pete`?
 
 ::option[`cd .`]{#cd-current explanation="`.` representa el directorio actual. Esta orden deja la shell en `/home/pete/Pictures`."}
 ::option[`cd -`]{#cd-previous explanation="`-` vuelve al directorio de trabajo anterior, que no tiene por qué ser el padre. Utiliza `..` cuando el destino está un nivel por encima."}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` representa el padre del directorio actual. Desde `Pictures`, su padre es `/home/pete`."}
 :::
 
-:::single-choice{#return-to-previous-directory}
-¿Qué orden vuelve al directorio que se utilizó inmediatamente antes del actual?
+:::single-choice{#return-to-previous-directory} ¿Qué orden vuelve al directorio que se utilizó inmediatamente antes del actual?
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` cambia al directorio de trabajo anterior. Ese directorio puede estar en cualquier lugar del sistema de archivos."}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` sube al directorio padre. El padre y el directorio anterior no siempre son la misma ubicación."}
@@ -129,8 +125,7 @@ Ve a un directorio cuyo nombre contiene espacios citándolo:
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-¿Qué orden trata `Vacation Photos` como un único nombre de directorio?
+:::single-choice{#enter-directory-with-spaces} ¿Qué orden trata `Vacation Photos` como un único nombre de directorio?
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="Sin comillas, la shell pasa `Vacation` y `Photos` como argumentos separados, no como un único nombre de directorio."}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="Al entrecomillar toda la línea, la shell la trata como un único nombre de orden. La orden debe quedar fuera de las comillas de la ruta."}

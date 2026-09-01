@@ -18,8 +18,7 @@ Passwörter werden nicht umkehrbar „verschlüsselt“ gespeichert, um sie spä
 
 Die genauen Eigentums- und Berechtigungsangaben unterscheiden sich, doch der Zugriff ist gewöhnlich auf root und eng begrenzte autorisierte Systemkomponenten beschränkt. Gib shadow-Inhalte nicht allein zur Prüfung eines Kontostatus aus, kopiere, protokolliere oder teile sie nicht.
 
-:::single-choice{#shadow-restricted-reason}
-Warum sind lokale shadow-Daten gewöhnlich vor allgemeinem Lesezugriff geschützt?
+:::single-choice{#shadow-restricted-reason} Warum sind lokale shadow-Daten gewöhnlich vor allgemeinem Lesezugriff geschützt?
 
 ::option[Die Datei enthält das aktuelle Passwort jedes Benutzers im Klartext.]{#shadow-plaintext-passwords explanation="Ordnungsgemäße shadow-Einträge speichern Einweg-Passwort-Hashes oder besondere Markierungen und keine abrufbaren Klartextpasswörter."}
 ::option[Offengelegte Passwort-Hashes können offline angegriffen werden.]{#shadow-offline-guessing .correct explanation="Ein Angreifer kann Passwortversuche gegen gestohlene Hashes prüfen, ohne mit dem Anmeldedienst zu interagieren."}
@@ -48,8 +47,7 @@ Die Felder sind:
 
 Leere Felder und besondere numerische Werte besitzen festgelegte Bedeutungen, die je nach Feld und Werkzeug variieren können. Verwende Werkzeuge zur Kontoverwaltung, statt Werte nach Augenmaß zu bearbeiten.
 
-:::single-choice{#shadow-account-expiration-field}
-Welches shadow-Feld speichert das Ablaufdatum des Kontos als Tage seit dem 01.01.1970?
+:::single-choice{#shadow-account-expiration-field} Welches shadow-Feld speichert das Ablaufdatum des Kontos als Tage seit dem 01.01.1970?
 
 ::option[Feld 3]{#shadow-field-three explanation="Feld 3 erfasst das Datum der letzten Passwortänderung und nicht den Ablauf des Kontos."}
 ::option[Feld 8]{#shadow-field-eight .correct explanation="Das achte Feld ist die absolute Tageszahl für den Ablauf des Kontos."}
@@ -62,8 +60,7 @@ Ein gültiger Hash in Feld 2 ermöglicht die lokale Prüfung eines Unix-Passwort
 
 Diese Markierungen beschreiben den lokalen Passwortweg und nicht jede mögliche Authentifizierungsmethode. Öffentliche SSH-Schlüssel, Zertifikate, Token und anwendungsspezifische Zugangsdaten können weiter nutzbar bleiben, sofern sie nicht gesondert eingeschränkt werden. Auch der Ablauf eines Kontos in Feld 8 unterscheidet sich von der Passwortsperre.
 
-:::single-choice{#shadow-password-lock-scope}
-Was kannst du aus einem shadow-Passwortfeld, das mit `!` beginnt, sicher schließen?
+:::single-choice{#shadow-password-lock-scope} Was kannst du aus einem shadow-Passwortfeld, das mit `!` beginnt, sicher schließen?
 
 ::option[Der gespeicherte Unix-Passwort-Hash wurde für die normale Passwortprüfung unbrauchbar gemacht.]{#shadow-password-locked .correct explanation="Wird dem Hash `!` vorangestellt, kann er über den shadow-Passwortweg nicht mehr mit einem eingegebenen Passwort übereinstimmen."}
 ::option[Jede mögliche Anmeldemethode für das Konto wurde deaktiviert.]{#shadow-all-login-disabled explanation="Andere Authentifizierungsmethoden können unabhängig sein. Die Passwortmarkierung allein beweist daher keine vollständige Kontosperre."}
@@ -76,8 +73,7 @@ Die Felder 3 bis 7 betreffen die Passwortalterung: wann das Passwort zuletzt ge�
 
 Ein Höchstalter des Passworts von 90 Tagen ist beispielsweise nicht dasselbe wie ein Ablaufdatum des Kontos. Ersteres verschiebt sich relativ zur letzten Passwortänderung, letzteres bleibt ein festes Datum, bis ein Administrator es ändert.
 
-:::single-choice{#shadow-max-age-versus-expire}
-Worin unterscheiden sich die shadow-Felder 5 und 8?
+:::single-choice{#shadow-max-age-versus-expire} Worin unterscheiden sich die shadow-Felder 5 und 8?
 
 ::option[Feld 5 speichert den Benutzernamen; Feld 8 speichert die Anmelde-Shell.]{#shadow-username-shell explanation="Der Benutzername steht in Feld 1, und die Anmelde-Shell wird in `/etc/passwd` und nicht im shadow-Eintrag erfasst."}
 ::option[Feld 5 speichert einen Passwort-Hash; Feld 8 speichert dessen Salt.]{#shadow-hash-salt explanation="Die Codierung des Passwort-Hashes gehört in Feld 2, und Alterungsfelder speichern dessen Salt nicht getrennt."}
@@ -97,8 +93,7 @@ $ sudo chage -l alice
 
 Verwende `passwd`, `chage`, `usermod` und verwandte Kontowerkzeuge für Änderungen. Wenn eine manuelle Reparatur der lokalen shadow-Datenbank unvermeidbar ist, bietet `vipw -s` eine Sperrung; validiere Kontodatenbanken mit `pwck`. Halte eine Wiederherstellungssitzung aufrecht, bevor du eine entfernte Authentifizierung änderst.
 
-:::single-choice{#shadow-list-aging-policy}
-Welcher Befehl ist dafür vorgesehen, lesbare Informationen zur Passwortalterung des lokalen Kontos `alice` aufzulisten?
+:::single-choice{#shadow-list-aging-policy} Welcher Befehl ist dafür vorgesehen, lesbare Informationen zur Passwortalterung des lokalen Kontos `alice` aufzulisten?
 
 ::option[`cat /etc/shadow`]{#shadow-cat-entire-file explanation="Dies legt jeden lokalen shadow-Eintrag und damit mehr vertrauliche Informationen offen, als die Aufgabe erfordert."}
 ::option[`passwd -d alice`]{#shadow-passwd-delete explanation="Die Operation `-d` entfernt den Passwort-Hash und ist eine zustandsverändernde, sicherheitskritische Aktion statt eines Auflistungsbefehls."}

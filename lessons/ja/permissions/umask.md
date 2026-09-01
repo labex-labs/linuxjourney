@@ -37,8 +37,7 @@ $ umask 027
 
 各8進位置は、所有者、グループ、その他に対応します。マスクのビットは、要求された対応権限を削除します。`2` は書き込み、`4` は読み取り、`1` は実行をマスクします。
 
-:::single-choice{#umask-command-purpose}
-`umask 027` は現在のシェルで何を変更しますか？
+:::single-choice{#umask-command-purpose} `umask 027` は現在のシェルで何を変更しますか？
 
 ::option[すでに存在するすべてのファイルの権限。]{#umask-existing-files explanation="Umask は作成要求へ影響し、既存オブジェクトに対して遡って `chmod` を実行しません。"}
 ::option[それ以降にそのシェルから開始するコマンドが継承するマスク。]{#umask-current-shell-mask .correct explanation="シェルは自身のプロセス umask を設定し、子プロセスは通常その値を継承します。"}
@@ -58,16 +57,14 @@ directory:    0777 masked by 0022 -> 0755 (rwxr-xr-x)
 
 umask は要求されたビットを削除するだけです。アプリケーションが要求しなかった実行権限を追加することはできません。アプリケーションがさらに制限された開始モードを要求すれば、結果もさらに制限されます。
 
-:::single-choice{#umask-file-mode-022}
-プログラムが通常ファイルにモード `0666` を要求し、umask が `0022` の場合、結果のモードはどれですか？
+:::single-choice{#umask-file-mode-022} プログラムが通常ファイルにモード `0666` を要求し、umask が `0022` の場合、結果のモードはどれですか？
 
 ::option[`0666`]{#umask-file-0666 explanation="`0666` が要求したグループとその他の書き込みビットは、マスク `0022` によって削除されます。"}
 ::option[`0755`]{#umask-file-0755 explanation="通常ファイルでは実行ビットが要求されていないため、umask が追加することはできません。"}
 ::option[`0644`]{#umask-file-0644 .correct explanation="`0666` からグループとその他の書き込みを除くと、所有者は読み書き、グループとその他は読み取りのみになります。"}
 :::
 
-:::single-choice{#umask-directory-mode-027}
-プログラムがディレクトリに `0777` を要求し、umask が `0027` の場合、結果のモードはどれですか？
+:::single-choice{#umask-directory-mode-027} プログラムがディレクトリに `0777` を要求し、umask が `0027` の場合、結果のモードはどれですか？
 
 ::option[`0777`]{#umask-directory-0777 explanation="要求されたグループ書き込みとその他の権限は、ゼロではないマスクによって除外されます。"}
 ::option[`0640`]{#umask-directory-0640 explanation="その結果では、マスク `0027` が所有者やグループから削除しない実行ビットまで除かれています。"}
@@ -80,8 +77,7 @@ umask は要求されたビットを削除するだけです。アプリケー�
 
 望む値を永続化するには、環境に適したログイン、シェル、PAM、サービスマネージャー、アプリケーションの設定へ記述します。正しい場所は異なり、サービスが独自の umask を設定する場合もあります。一つの対話的シェル設定ファイルを編集すれば、システム上のすべてのプロセスを制御できると考えてはいけません。
 
-:::single-choice{#umask-existing-file-effect}
-新しい umask を設定すると、既存ファイルには何が起こりますか？
+:::single-choice{#umask-existing-file-effect} 新しい umask を設定すると、既存ファイルには何が起こりますか？
 
 ::option[現在のモードは変わらない。]{#umask-existing-unchanged .correct explanation="新しい umask は後の作成要求を除外するもので、ファイルシステムオブジェクトにすでに保存されたモードは変更しません。"}
 ::option[モードが `0666` から再計算される。]{#umask-existing-recalculated explanation="既存オブジェクトが再作成されたり、新しいマスクを自動的に通過したりすることはありません。"}

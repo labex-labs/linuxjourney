@@ -31,8 +31,7 @@ bob	viewer
 
 El espacio visible entre columnas es una tabulación. A diferencia de `cat`, que escribe un archivo completo después de otro, `paste` combina las líneas correspondientes.
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt` contiene `A` y después `B`, mientras que `second.txt` contiene `1` y después `2`. ¿Qué produce `paste first.txt second.txt` de forma predeterminada?
+:::single-choice{#paste-corresponding-lines} `first.txt` contiene `A` y después `B`, mientras que `second.txt` contiene `1` y después `2`. ¿Qué produce `paste first.txt second.txt` de forma predeterminada?
 
 ::option[`A`, `B`, `1` y `2` en cuatro líneas consecutivas.]{#paste-concatenated-files explanation="Esto se parece a escribir los archivos uno detrás de otro. `paste` combina en cambio las líneas correspondientes."}
 ::option[`A`, `B`, `1` y `2` en una sola línea sin separadores.]{#paste-one-line-no-separator explanation="La serialización en una sola línea necesita `-s` y el separador predeterminado es una tabulación, no la ausencia de separador."}
@@ -51,8 +50,7 @@ bob:viewer
 
 Entrecomilla los delimitadores que tengan significado para la shell. `paste` puede recorrer varios caracteres delimitadores si la lista contiene más de uno, pero un único carácter es la opción más sencilla al construir dos columnas.
 
-:::single-choice{#paste-colon-delimiter}
-¿Qué orden une con dos puntos las líneas correspondientes de `names.txt` y `roles.txt`?
+:::single-choice{#paste-colon-delimiter} ¿Qué orden une con dos puntos las líneas correspondientes de `names.txt` y `roles.txt`?
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="La opción `-d` sustituye la tabulación predeterminada por los dos puntos proporcionados entre cada par de campos."}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="La opción `-s` selecciona el modo serial y `:` se trataría como otra ruta de entrada, no como delimitador."}
@@ -78,8 +76,7 @@ The quick brown fox
 
 Si proporcionas varios archivos con `-s`, cada uno se convierte en su propia línea de salida.
 
-:::single-choice{#paste-serialize-with-spaces}
-¿Qué orden une todas las líneas de `words.txt` en una única línea separada por espacios?
+:::single-choice{#paste-serialize-with-spaces} ¿Qué orden une todas las líneas de `words.txt` en una única línea separada por espacios?
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="En el modo paralelo predeterminado, un único archivo sigue produciendo una línea de salida por línea de entrada. El delimitador no tiene campos de archivos diferentes que unir."}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="Esta orden serializa dos archivos por separado con la tabulación predeterminada y produce dos líneas de salida, no el resultado solicitado."}
@@ -99,8 +96,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-¿Qué ocurre cuando un archivo pasado a `paste` en modo paralelo termina antes que otro?
+:::single-choice{#paste-unequal-files} ¿Qué ocurre cuando un archivo pasado a `paste` en modo paralelo termina antes que otro?
 
 ::option[`paste` utiliza campos vacíos para ese archivo hasta que termina la entrada más larga.]{#paste-empty-fields .correct explanation="El modo paralelo continúa hasta agotar todos los archivos y representa con campos vacíos las líneas ausentes de las entradas más cortas."}
 ::option[`paste` se detiene de inmediato y descarta las líneas restantes.]{#paste-stop-shortest explanation="`paste` continúa hasta finalizar la entrada más larga, por lo que no descarta las líneas restantes solo porque haya terminado otro archivo."}
@@ -117,8 +113,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-En `producer | paste names.txt -`, ¿qué significa el operando `-`?
+:::single-choice{#paste-stdin-operand} En `producer | paste names.txt -`, ¿qué significa el operando `-`?
 
 ::option[Escribir el resultado combinado en stderr.]{#paste-write-stderr explanation="Aquí el guion identifica una fuente de entrada. No redirige ningún flujo de salida."}
 ::option[Eliminar los delimitadores entre las dos columnas.]{#paste-remove-delimiter explanation="El delimitador se selecciona con `-d`. El guion no cambia el separador."}

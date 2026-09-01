@@ -34,8 +34,7 @@ Mit derselben Operandenreihenfolge benennst du ein Verzeichnis um:
 $ mv old_directory_name new_directory_name
 ```
 
-:::single-choice{#rename-file-with-mv}
-Welcher Befehl benennt `cat` im aktuellen Verzeichnis in `dog` um?
+:::single-choice{#rename-file-with-mv} Welcher Befehl benennt `cat` im aktuellen Verzeichnis in `dog` um?
 
 ::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` behandelt `cat` als Quellpfad und `dog` als seinen neuen Zielpfad."}
 ::option[`mv dog cat`]{#rename-dog explanation="Hier sind die Operanden vertauscht. Der Befehl würde versuchen, ein vorhandenes `dog` in `cat` umzubenennen."}
@@ -64,8 +63,7 @@ $ mv -t somedirectory/ file_1 file_2
 
 Anders als `cp` benötigt `mv` für ein Verzeichnis keine rekursive Option.
 
-:::single-choice{#move-multiple-files}
-Welcher Befehl verschiebt `file_1` und `file_2` in das vorhandene Verzeichnis `archive/`?
+:::single-choice{#move-multiple-files} Welcher Befehl verschiebt `file_1` und `file_2` in das vorhandene Verzeichnis `archive/`?
 
 ::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="Ohne GNU-Option `-t` erwartet ein Verschieben mehrerer Quellen das Zielverzeichnis am Ende. Diese Reihenfolge entspricht nicht der üblichen Form."}
 ::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` verwendet zum Verschieben von Dateien oder Verzeichnissen kein `-r`. Die normale Form für mehrere Quellen erledigt den Vorgang bereits."}
@@ -100,8 +98,7 @@ Standardmäßig kann `mv` ein vorhandenes Ziel ersetzen. Prüfe Quell- und Zielp
 $ mv -v file1 file2 somedirectory/
 ```
 
-:::single-choice{#move-without-overwriting}
-Welcher Befehl verschiebt `draft.txt` nur dann nach `finished/`, wenn dabei kein vorhandenes Ziel überschrieben wird?
+:::single-choice{#move-without-overwriting} Welcher Befehl verschiebt `draft.txt` nur dann nach `finished/`, wenn dabei kein vorhandenes Ziel überschrieben wird?
 
 ::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="Die Option `-i` fragt bei einem vorhandenen Ziel nach. Bestätigt der Benutzer, kann es dennoch überschrieben werden."}
 ::option[`mv -b draft.txt finished/`]{#backup-draft explanation="Die Option `-b` erlaubt das Ersetzen und bewahrt das frühere Ziel als Sicherung. Sie verhindert die Überschreibung nicht."}
@@ -125,16 +122,14 @@ $ mv *.txt notes/
 
 Wenn du die Treffer vorher mit `ls` prüfst, kannst du ein zu weit gefasstes Muster erkennen, bevor du mehrere Pfade veränderst.
 
-:::single-choice{#move-directory-without-recursion}
-Welcher Befehl verschiebt das Verzeichnis `project/` nach `/srv/archive/`?
+:::single-choice{#move-directory-without-recursion} Welcher Befehl verschiebt das Verzeichnis `project/` nach `/srv/archive/`?
 
 ::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` benötigt und unterstützt für diesen Zweck kein `-r`. Verzeichnisse werden vom gewöhnlichen Verschiebevorgang erfasst."}
 ::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="Die normale `mv`-Syntax verschiebt ein Verzeichnis ohne rekursives Flag in ein vorhandenes Zielverzeichnis."}
 ::option[`cp project/ /srv/archive/`]{#copy-project explanation="Ein einfaches `cp` verschiebt das Verzeichnis nicht und bräuchte zum Kopieren eine rekursive Option. Außerdem bliebe das Original erhalten."}
 :::
 
-:::single-choice{#preview-text-file-move}
-Du möchtest `mv *.txt notes/` ausführen. Welcher Befehl zeigt zuvor die vom selben Platzhalter ausgewählten Pfade an?
+:::single-choice{#preview-text-file-move} Du möchtest `mv *.txt notes/` ausführen. Welcher Befehl zeigt zuvor die vom selben Platzhalter ausgewählten Pfade an?
 
 ::option[`ls '*.txt'`]{#literal-text-pattern explanation="Die Anführungszeichen verhindern, dass die Shell `*` erweitert. So wird nach einem wörtlichen Namen mit Sternchen gesucht, statt die Verschiebemenge anzuzeigen."}
 ::option[`ls *.txt`]{#list-text-matches .correct explanation="Die Shell erweitert `*.txt` für `ls` genauso wie für `mv`, sodass du die ausgewählten nicht versteckten Namen zuerst prüfen kannst."}

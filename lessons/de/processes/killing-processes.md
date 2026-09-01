@@ -28,8 +28,7 @@ $ kill -TERM 12445
 
 Die Standardaktion von `SIGTERM` ist die Beendigung, doch ein Programm kann das Signal abfangen oder ignorieren. Ein gut entwickelter Dienst kann einen Handler verwenden, um keine neue Arbeit mehr anzunehmen, geeigneten Zustand zu speichern und Anwendungsressourcen freizugeben. Das ist eine Möglichkeit und keine Garantie für sofortige oder erfolgreiche Bereinigung.
 
-:::single-choice{#killing-processes-default-signal}
-Welches Signal fordert `kill PID` standardmäßig an?
+:::single-choice{#killing-processes-default-signal} Welches Signal fordert `kill PID` standardmäßig an?
 
 ::option[`SIGKILL`]{#killing-processes-default-kill explanation="Das erzwungene, nicht abfangbare Signal muss ausdrücklich ausgewählt werden."}
 ::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="Ohne einen anderen Signaloperanden sendet `kill` die standardmäßige Beendigungsanforderung."}
@@ -48,8 +47,7 @@ Prüfe Benutzer, Startzeit, Befehl, Elternprozess, Dienstzugehörigkeit und betr
 
 Du darfst vorbehaltlich der Regeln für Zugangsdaten Prozesse signalisieren, die dir gehören. Das Signalisieren des Prozesses eines anderen Benutzers erfordert gewöhnlich entsprechende Privilegien. Verwende keinen weit gefassten namensbasierten Befehl, bevor du jede Übereinstimmung geprüft hast.
 
-:::single-choice{#killing-processes-pid-reuse}
-Warum solltest du eine PID unmittelbar vor dem Senden eines Signals prüfen?
+:::single-choice{#killing-processes-pid-reuse} Warum solltest du eine PID unmittelbar vor dem Senden eines Signals prüfen?
 
 ::option[Eine PID ändert sich jedes Mal, wenn der Prozess eine Datei liest.]{#killing-processes-pid-read explanation="Ein laufender Prozess behält gewöhnlich während seiner gesamten Lebensdauer dieselbe PID."}
 ::option[Der Kernel kann eine PID wiederverwenden, nachdem ihr früherer Prozess beendet wurde.]{#killing-processes-pid-reused .correct explanation="Eine gemerkte numerische PID kann später einen anderen laufenden Prozess bezeichnen."}
@@ -66,8 +64,7 @@ $ kill -0 12445
 
 Ein erfolgreiches Ergebnis bedeutet, dass in diesem Augenblick ein Prozess mit dieser PID existiert und der Aufrufer ihm ein Signal senden darf. Ein Fehler ist mehrdeutig: Der Prozess ist möglicherweise nicht vorhanden oder dem Aufrufer fehlt die Berechtigung. Prüfe die Fehlermeldung und den Beendigungsstatus, statt jeden Fehler als „läuft nicht“ zu deuten. Außerdem ist dies nur eine Momentaufnahme und kann ein späteres Rennen durch PID-Wiederverwendung nicht ausschließen.
 
-:::single-choice{#killing-processes-signal-zero}
-Was bestätigt ein erfolgreiches `kill -0 PID` in diesem Augenblick?
+:::single-choice{#killing-processes-signal-zero} Was bestätigt ein erfolgreiches `kill -0 PID` in diesem Augenblick?
 
 ::option[Der Prozess hat jede Bereinigung abgeschlossen und wurde beendet.]{#killing-processes-zero-exited explanation="Erfolg bedeutet ein signalisierbares laufendes Ziel und nicht eine abgeschlossene Beendigung."}
 ::option[Der Prozess behält diese PID dauerhaft.]{#killing-processes-zero-permanent explanation="Die Prüfung gilt für einen einzelnen Zeitpunkt, und PIDs können nach der Beendigung wiederverwendet werden."}
@@ -86,8 +83,7 @@ $ kill -KILL 12445
 
 Andere Signale sind nur gemäß dem Vertrag des empfangenden Programms sinnvoll. `SIGHUP` fordert häufig das Neuladen der Konfiguration an, doch einige Programme behalten seine standardmäßige Beendigungswirkung bei. `SIGSTOP` hält ohne Bereinigung an und `SIGCONT` setzt einen angehaltenen Prozess fort.
 
-:::single-choice{#killing-processes-kill-tradeoff}
-Was ist der wichtigste betriebliche Nachteil von `SIGKILL`?
+:::single-choice{#killing-processes-kill-tradeoff} Was ist der wichtigste betriebliche Nachteil von `SIGKILL`?
 
 ::option[Es kann nur vom Prozesseigentümer behandelt werden.]{#killing-processes-kill-owner-handler explanation="Kein Zielprozess kann einen Handler für `SIGKILL` einrichten."}
 ::option[Es hält den Prozess an, beendet ihn aber niemals.]{#killing-processes-kill-pauses explanation="`SIGSTOP` hält an; `SIGKILL` beendet."}

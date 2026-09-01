@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-Quelle commande liste le contenu de `/home/pete` sans s'y déplacer ?
+:::single-choice{#list-another-directory} Quelle commande liste le contenu de `/home/pete` sans s'y déplacer ?
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="Fournir un chemin de répertoire à `ls` affiche son contenu. Le shell reste dans son répertoire de travail actuel."}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` change le répertoire de travail du shell ; elle ne réalise pas à elle seule la liste demandée."}
@@ -47,8 +46,7 @@ $ ls -a
 
 Les fichiers pointés sont masqués par défaut et contiennent souvent une configuration, comme `.bashrc`.
 
-:::single-choice{#show-hidden-files}
-Quelle commande inclut les fichiers cachés dans la liste ?
+:::single-choice{#show-hidden-files} Quelle commande inclut les fichiers cachés dans la liste ?
 
 ::option[`ls -l`]{#long-format explanation="L'option `-l` ajoute des colonnes détaillées, mais n'inclut pas à elle seule les noms cachés."}
 ::option[`ls -r`]{#reverse-order explanation="L'option `-r` inverse l'ordre de tri ; elle ne change pas l'inclusion des fichiers cachés."}
@@ -84,8 +82,7 @@ Pour des tailles plus faciles à lire, ajoutez `-h` :
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-Quelle commande affiche les détails au format long avec des tailles lisibles ?
+:::single-choice{#show-readable-file-details} Quelle commande affiche les détails au format long avec des tailles lisibles ?
 
 ::option[`ls -la`]{#long-all explanation="Cette commande combine le format long et les fichiers cachés ; elle ne demande pas d'unités de taille lisibles."}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` sélectionne le format long et `-h` rend les tailles plus lisibles. Ces options se combinent dans une commande."}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-Quelle commande trie par date de modification, puis place les éléments les plus récents en dernier ?
+:::single-choice{#show-newest-files-last} Quelle commande trie par date de modification, puis place les éléments les plus récents en dernier ?
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` trie par date de modification, tandis que `-r` inverse cet ordre. Ensemble, ils placent les éléments anciens avant les récents."}
 ::option[`ls -lt`]{#time-default explanation="Cette commande trie par date de modification en conservant l'ordre récent d'abord ; elle ne place pas les plus récents en dernier."}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S` : trier par taille de fichier ;
 - `-d` : lister le répertoire lui-même plutôt que son contenu.
 
-:::single-choice{#list-directory-entry-itself}
-Quelle commande liste l'entrée du répertoire `projects/` au lieu de son contenu ?
+:::single-choice{#list-directory-entry-itself} Quelle commande liste l'entrée du répertoire `projects/` au lieu de son contenu ?
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="L'option `-d` demande à `ls` d'afficher l'entrée du répertoire elle-même plutôt que d'en ouvrir le contenu."}
 ::option[`ls projects/`]{#directory-contents explanation="Sans `-d`, fournir le chemin d'un répertoire à `ls` affiche les éléments qu'il contient."}

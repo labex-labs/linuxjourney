@@ -16,8 +16,7 @@ El Sistema de nombres de dominio es una base de datos distribuida y jerárquica,
 
 DNS hace algo más que traducir un nombre de host en una dirección IP. Un registro `A` contiene una dirección IPv4, `AAAA` una dirección IPv6, `MX` datos de enrutamiento de correo, `NS` nombres de servidores autoritativos, y muchos otros tipos transportan datos distintos. Un nombre puede tener varios registros o no tener ningún registro de dirección.
 
-:::single-choice{#dns-purpose-beyond-address}
-¿Por qué DNS es algo más que una lista de nombres de host y direcciones?
+:::single-choice{#dns-purpose-beyond-address} ¿Por qué DNS es algo más que una lista de nombres de host y direcciones?
 
 ::option[Asigna permanentemente direcciones MAC a todas las tramas Ethernet.]{#dns-mac-frames explanation="El descubrimiento de vecinos de la capa de enlace no utiliza DNS de esta manera."}
 ::option[Almacena registros con tipos para varias clases de datos de servicios y delegación.]{#dns-typed-records .correct explanation="Los registros de direcciones, correo, autoridad, alias y políticas tienen semánticas distintas."}
@@ -28,8 +27,7 @@ DNS hace algo más que traducir un nombre de host en una dirección IP. Un regis
 
 Un nombre de dominio completo identifica una ruta en el árbol DNS. En `www.example.com.`, el punto final representa la raíz, `com` está debajo de ella, `example` está debajo de `com` y `www` es un nombre dentro de ese dominio. El punto final suele omitirse en las interfaces de usuario, pero importa al distinguir nombres absolutos de nombres localmente relativos en la configuración.
 
-:::single-choice{#dns-trailing-dot}
-¿Qué representa el punto final de `www.example.com.`?
+:::single-choice{#dns-trailing-dot} ¿Qué representa el punto final de `www.example.com.`?
 
 ::option[La raíz DNS y un nombre absoluto.]{#dns-root-dot .correct explanation="El punto termina la ruta completa desde el nodo indicado hasta la raíz."}
 ::option[Un comodín para todos los dominios de nivel superior.]{#dns-dot-wildcard explanation="Un comodín utiliza una etiqueta como `*`, no el terminador de la raíz."}
@@ -40,8 +38,7 @@ Un nombre de dominio completo identifica una ruta en el árbol DNS. En `www.exam
 
 La autoridad DNS se delega hacia abajo en la jerarquía. Los servidores raíz dirigen los resolvers a los servidores de los dominios de nivel superior, que a su vez los dirigen a los servidores autoritativos de las zonas delegadas. Las organizaciones gestionan sus propios datos autoritativos sin almacenar todo el espacio de nombres global en un único servidor central.
 
-:::single-choice{#dns-authoritative-data}
-¿Quién proporciona los datos definitivos de una zona DNS delegada?
+:::single-choice{#dns-authoritative-data} ¿Quién proporciona los datos definitivos de una zona DNS delegada?
 
 ::option[Cualquier navegador que haya visitado antes el sitio.]{#dns-browser-authority explanation="La caché de un navegador no es autoritativa para la zona."}
 ::option[Los servidores de nombres autoritativos configurados para la zona.]{#dns-authoritative-servers .correct explanation="La delegación identifica los servidores responsables de responder de forma autoritativa."}
@@ -54,8 +51,7 @@ El resolver stub de un host suele enviar una consulta a un resolver recursivo. E
 
 Que DNS funcione no demuestra la salud de la ruta, el transporte, TLS o la aplicación. Un fallo de DNS también puede producirse antes de cualquier consulta externa, porque `/etc/hosts`, los sufijos de búsqueda, las cachés locales o la política de servicios de nombres afectan al resolver del sistema.
 
-:::single-choice{#dns-cache-ttl-role}
-¿Qué controla principalmente el TTL de un registro DNS?
+:::single-choice{#dns-cache-ttl-role} ¿Qué controla principalmente el TTL de un registro DNS?
 
 ::option[Cuántos routers puede atravesar un paquete IP.]{#dns-ip-hop-limit explanation="El TTL o Hop Limit de IP es otro campo de protocolo."}
 ::option[Durante cuánto tiempo debe funcionar correctamente la aplicación.]{#dns-app-health-time explanation="La caché DNS no garantiza la disponibilidad del servicio."}

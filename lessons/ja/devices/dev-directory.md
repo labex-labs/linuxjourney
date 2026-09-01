@@ -24,8 +24,7 @@ $ ls -l /dev
 
 長形式一覧の先頭文字は、ファイルシステムオブジェクトの種類を示します。キャラクターデバイスノードは `c`、ブロックデバイスノードは `b` です。これらの種類とメジャー番号、マイナー番号は後のレッスンで扱います。
 
-:::single-choice{#dev-directory-device-node-purpose}
-プログラムが `/dev` 以下のデバイスノードを開くと、何が起こりますか？
+:::single-choice{#dev-directory-device-node-purpose} プログラムが `/dev` 以下のデバイスノードを開くと、何が起こりますか？
 
 ::option[ハードウェアのコピーを収めた通常のディスクファイルを必ず読み取る。]{#dev-directory-ordinary-copy explanation="デバイスノードは特別なオブジェクトであり、デバイスデータのコピーを通常ファイルとして保存しません。"}
 ::option[カーネルドライバーが実装するインターフェースにアクセスする。]{#dev-directory-kernel-interface .correct explanation="デバイスノードへの操作は、そのノードのデバイス識別情報を通じてカーネルドライバーの処理へ送られます。"}
@@ -42,8 +41,7 @@ $ command > /dev/null
 
 よく使うほかの例には、ゼロのバイト列を生成する `/dev/zero` や、カーネルの乱数サブシステムを通じてランダムなバイト列を提供する `/dev/urandom` があります。それぞれ固有の動作を持つため、ファイル名だけから挙動を推測してはいけません。
 
-:::single-choice{#dev-directory-null-behavior}
-`/dev/null` は書き込まれたデータをどうしますか？
+:::single-choice{#dev-directory-null-behavior} `/dev/null` は書き込まれたデータをどうしますか？
 
 ::option[次回の再起動まで保存する。]{#dev-directory-null-temporary-storage explanation="null デバイスはデータの捨て先であり、一時ストレージとしては動作しません。"}
 ::option[ログイン中のすべての端末へ送信する。]{#dev-directory-null-broadcast explanation="端末への一斉送信は null 疑似デバイスとは無関係です。"}
@@ -56,8 +54,7 @@ $ command > /dev/null
 
 `/dev/disk/by-id/` や `/dev/disk/by-uuid/` 以下のような安定したリンクは、ハードウェア構成や検出順によって変わり得る `/dev/sda` のような検出順依存の名前より、設定で安全に使える場合があります。
 
-:::single-choice{#dev-directory-persistent-link}
-設定で `/dev/sda` より `/dev/disk/by-id/...` を選ぶ利点は何ですか？
+:::single-choice{#dev-directory-persistent-link} 設定で `/dev/sda` より `/dev/disk/by-id/...` を選ぶ利点は何ですか？
 
 ::option[識別子に基づくリンクはデバイスの検出順に左右されにくい。]{#dev-directory-stable-identifier .correct explanation="永続リンクは、列挙順に割り当てられる文字ではなく、デバイスの属性から作られます。"}
 ::option[リンクがデバイス上の全ブロックを自動的にバックアップする。]{#dev-directory-link-backup explanation="シンボリックリンクは同じデバイスを指すだけで、バックアップデータは作りません。"}
@@ -70,8 +67,7 @@ $ command > /dev/null
 
 まず読み取り専用の検出ツールを使い、正確なノードとデバイス識別情報を確認してから、デバイス固有の文書に従ってください。大切なシステムで、未知の `/dev` 項目へデータをリダイレクトして実験してはいけません。
 
-:::single-choice{#dev-directory-direct-write-risk}
-未知のデバイスノードへ任意のデータを書き込むべきでないのはなぜですか？
+:::single-choice{#dev-directory-direct-write-risk} 未知のデバイスノードへ任意のデータを書き込むべきでないのはなぜですか？
 
 ::option[すべてのデバイスノードが無害なテキストファイルであると保証されているから。]{#dev-directory-harmless-text explanation="デバイスノードはまさに、通常のテキストファイルとは異なるオブジェクトです。"}
 ::option[操作がハードウェア、ストレージ、または別のカーネルインターフェースへ直接影響し得るから。]{#dev-directory-write-impact .correct explanation="デバイスへの書き込みはドライバーが定義した操作を呼び出し、破壊的または妨害的な結果を招くことがあります。"}

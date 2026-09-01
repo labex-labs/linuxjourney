@@ -18,8 +18,7 @@ meta_keywords: "리눅스 스왑, mkswap, swapon, swapoff, /etc/fstab, 가상 �
 
 지속적으로 많은 스왑을 사용하면 심각한 지연이나 스래싱이 생길 수 있습니다. 스왑 영역을 늘리는 것을 보편적인 성능 해결책으로 취급하지 말고 메모리 수요, 작업 집합, 압력 및 애플리케이션 제한을 진단하십시오.
 
-:::single-choice{#swap-space-anonymous-pages}
-스왑 저장 공간의 주요 후보가 되는 메모리는 무엇입니까?
+:::single-choice{#swap-space-anonymous-pages} 스왑 저장 공간의 주요 후보가 되는 메모리는 무엇입니까?
 
 ::option[`/usr` 아래에 설치된 모든 실행 파일입니다.]{#swap-space-installed-files explanation="설치된 파일은 파일 시스템에 남아 있으며 깨끗하게 매핑된 페이지는 그곳에서 다시 읽을 수 있습니다."}
 ::option[비활성 익명 메모리 페이지입니다.]{#swap-space-anonymous-memory .correct explanation="익명 페이지에는 단순히 다시 읽을 수 있는 일반 백업 파일이 없습니다."}
@@ -38,8 +37,7 @@ $ free -h
 
 이 명령들은 설정되어 활성화된 스왑과 전체 메모리 수치를 보여 줍니다. “사용 중” 값이 0보다 크다고 해서 자동으로 문제가 있는 것은 아닙니다. 스왑 입출력 비율, 메모리 압력, 지연 및 작업 부하 동작과 함께 살펴보십시오.
 
-:::single-choice{#swap-space-show-active}
-활성 스왑 영역을 구조화된 뷰로 나열하는 명령은 무엇입니까?
+:::single-choice{#swap-space-show-active} 활성 스왑 영역을 구조화된 뷰로 나열하는 명령은 무엇입니까?
 
 ::option[`swapon --show`]{#swap-space-swapon-show .correct explanation="show 모드는 활성 스왑 파일이나 장치와 가능한 경우 크기, 사용량 및 우선순위를 보고합니다."}
 ::option[`mkswap --all`]{#swap-space-mkswap-all explanation="mkswap은 스왑 서명을 초기화하며 읽기 전용 활성 목록 명령이 아닙니다."}
@@ -63,8 +61,7 @@ $ sudo swapon /dev/VERIFIED-SWAP-TARGET
 UUID=VERIFIED-SWAP-UUID none swap sw 0 0
 ```
 
-:::single-choice{#swap-space-enable-command}
-초기화된 스왑 영역을 활성화하는 명령은 무엇입니까?
+:::single-choice{#swap-space-enable-command} 초기화된 스왑 영역을 활성화하는 명령은 무엇입니까?
 
 ::option[`swapon`]{#swap-space-command-swapon .correct explanation="swapon은 유효한 스왑 장치나 파일을 커널의 활성 스왑 집합에 추가합니다."}
 ::option[`mkswap`]{#swap-space-command-mkswap explanation="mkswap은 서명을 초기화하지만 영역을 활성화하지는 않습니다."}
@@ -79,8 +76,7 @@ zram 같은 압축 RAM 장치는 CPU와 용량의 절충이 다른 또 하나의
 
 스왑이 항상 RAM의 두 배여야 한다는 보편적인 규칙은 없습니다. 작업 부하 최고점, 원하는 장애 동작, 최대 절전 모드 요구 사항, 저장 장치 지연과 내구성, 크래시 덤프 설계 및 운영 모니터링에 따라 용량을 정하십시오.
 
-:::single-choice{#swap-space-sizing-rule}
-스왑 용량을 정하는 가장 좋은 기준은 무엇입니까?
+:::single-choice{#swap-space-sizing-rule} 스왑 용량을 정하는 가장 좋은 기준은 무엇입니까?
 
 ::option[항상 설치된 RAM의 정확히 두 배입니다.]{#swap-space-twice-ram explanation="이 오래된 경험 법칙은 모든 작업 부하나 최신 메모리 크기에 적합하지 않습니다."}
 ::option[측정된 작업 부하 요구 사항, 최대 절전 모드 목표 및 장애 정책입니다.]{#swap-space-sizing-requirements .correct explanation="고정된 RAM 배수보다 시스템 목적과 관찰된 메모리 동작이 중요합니다."}
@@ -97,8 +93,7 @@ $ sudo swapoff /dev/VERIFIED-SWAP-TARGET
 
 커널은 그 영역에 있는 스왑 페이지를 다른 곳으로 옮겨야 합니다. RAM과 남은 스왑에 페이지를 수용할 공간이 없으면 작업이 실패하거나 위험한 메모리 압력을 만들 수 있습니다. 먼저 작업 부하를 중지하거나 제한하고 메모리를 모니터링하십시오. 올바른 대상을 검증한 뒤에만 영구 fstab 항목을 제거하고, 저장 공간을 다른 용도로 사용하기 전에 `swapon --show`로 비활성화를 확인합니다.
 
-:::single-choice{#swap-space-swapoff-capacity}
-`swapoff`가 심하게 부하된 시스템에서 실패하거나 위험을 일으킬 수 있는 이유는 무엇입니까?
+:::single-choice{#swap-space-swapoff-capacity} `swapoff`가 심하게 부하된 시스템에서 실패하거나 위험을 일으킬 수 있는 이유는 무엇입니까?
 
 ::option[swapoff가 항상 모든 RAM 모듈을 다시 포맷하기 때문입니다.]{#swap-space-formats-ram explanation="활성 스왑 설정을 변경하며 물리 메모리 하드웨어를 포맷하지 않습니다."}
 ::option[해당 영역의 페이지를 수용할 RAM이나 다른 스왑 공간이 필요하기 때문입니다.]{#swap-space-pages-need-capacity .correct explanation="비활성화하려면 시스템이 계속 작동하는 동안 살아 있는 스왑 페이지를 다른 곳으로 옮겨야 합니다."}

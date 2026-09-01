@@ -41,8 +41,7 @@ Die Textreihenfolge richtet sich nach der aktuellen Locale, was Großschreibung,
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-Was bewirkt `sort animals.txt` ohne Schlüssel- oder Zahlenoption?
+:::single-choice{#sort-lines-ascending} Was bewirkt `sort animals.txt` ohne Schlüssel- oder Zahlenoption?
 
 ::option[Der Befehl ordnet vollständige Eingabezeilen nach der aktuellen Locale.]{#sort-locale-lines .correct explanation="Standardmäßig vergleicht `sort` ganze Zeilen nach den Kollationsregeln der aktiven Locale."}
 ::option[Der Befehl ordnet Wörter innerhalb jeder Zeile, behält aber die Zeilenreihenfolge bei.]{#sort-words-within-lines explanation="`sort` behandelt jede Zeile als Datensatz und ordnet keine Wörter innerhalb einzelner Zeilen neu."}
@@ -62,8 +61,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-Welcher Befehl sortiert `animals.txt` in umgekehrter Reihenfolge?
+:::single-choice{#sort-reverse-order} Welcher Befehl sortiert `animals.txt` in umgekehrter Reihenfolge?
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="Die Option `-n` fordert einen numerischen Vergleich an. Für eine umgekehrte Reihenfolge steht sie nicht."}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="Die Option `-u` unterdrückt doppelte Schlüssel. Die Ausgabe wird dadurch nicht umgekehrt."}
@@ -83,8 +81,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 Kombiniere Optionen bei Bedarf. `sort -nr scores.txt` vergleicht numerisch und setzt größere Werte zuerst.
 
-:::single-choice{#sort-numbers-descending}
-Welcher Befehl sortiert numerische Zeilen in `scores.txt` vom größten zum kleinsten Wert?
+:::single-choice{#sort-numbers-descending} Welcher Befehl sortiert numerische Zeilen in `scores.txt` vom größten zum kleinsten Wert?
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="Der numerische Vergleich ist gewählt, doch die Standardrichtung setzt kleinere Werte zuerst."}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n` wählt den numerischen Vergleich; `-r` kehrt ihn um und erzeugt eine absteigende Zahlenreihenfolge."}
@@ -104,8 +101,7 @@ alice:30
 
 Hier legt `-t ':'` das Trennzeichen fest, `-k 2,2` begrenzt den Schlüssel auf Feld 2 und das angehängte `n` vergleicht diesen Schlüssel numerisch. Ohne das abschließende `,2` reicht ein bei Feld 2 beginnender Schlüssel normalerweise bis zum Zeilenende.
 
-:::single-choice{#sort-second-colon-field}
-Welcher Befehl sortiert `users.txt` numerisch und ausschließlich nach dem zweiten durch Doppelpunkte getrennten Feld?
+:::single-choice{#sort-second-colon-field} Welcher Befehl sortiert `users.txt` numerisch und ausschließlich nach dem zweiten durch Doppelpunkte getrennten Feld?
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="Dieser Befehl verwendet die standardmäßigen leerraumgetrennten Felder und wählt Feld 1 statt des zweiten Doppelpunktfelds."}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut` extrahiert Feld 2, sortiert aber die ursprünglichen Datensätze nicht nach diesem Schlüssel."}
@@ -136,8 +132,7 @@ $ sort -o names.txt names.txt
 
 Bewahre eine Sicherung auf oder schreibe und prüfe zunächst ein separates Ergebnis, wenn die Originaldaten wichtig sind.
 
-:::single-choice{#sort-safe-same-file}
-Welcher Befehl weist `sort` unter GNU/Linux an, das sortierte Ergebnis sicher nach `names.txt` zurückzuschreiben, ohne dass eine Shell-Umleitung die Datei zuvor leert?
+:::single-choice{#sort-safe-same-file} Welcher Befehl weist `sort` unter GNU/Linux an, das sortierte Ergebnis sicher nach `names.txt` zurückzuschreiben, ohne dass eine Shell-Umleitung die Datei zuvor leert?
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="GNU `sort` verwaltet die Ausgabe mit `-o` nach dem nötigen Lesen selbst; die Shell leert die Eingabe nicht vorab durch `>`."}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="Die Shell leert `names.txt`, bevor sie `sort` startet, sodass die Eingabe verloren gehen kann."}

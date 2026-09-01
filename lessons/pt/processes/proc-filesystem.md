@@ -25,8 +25,7 @@ Os nomes numéricos dos diretórios correspondem aos IDs de processos visíveis 
 
 A visibilidade e o acesso dependem das credenciais, dos namespaces, da política de segurança e das opções de montagem do procfs, como `hidepid`. Um processo pode terminar entre a listagem de um diretório e a abertura de um de seus arquivos, portanto o desaparecimento é uma condição de corrida normal que as ferramentas de inspeção precisam tratar.
 
-:::single-choice{#proc-filesystem-numeric-directory}
-O que o diretório numérico `/proc/12345` normalmente representa?
+:::single-choice{#proc-filesystem-numeric-directory} O que o diretório numérico `/proc/12345` normalmente representa?
 
 ::option[O bloco de disco de número 12345.]{#proc-filesystem-disk-block explanation="`/proc` é uma interface virtual do kernel, não um diretório de blocos brutos do disco."}
 ::option[O processo atualmente visível com o PID 12345.]{#proc-filesystem-pid-directory .correct explanation="Os dados por processo do procfs são agrupados em um diretório nomeado pelo PID visível."}
@@ -51,8 +50,7 @@ Ele inclui campos como nome do processo, estado, IDs, credenciais, contadores de
 
 Trate essas informações como observações mutáveis. Os campos podem variar conforme a versão do kernel, um processo pode mudar de estado durante a leitura de vários arquivos, e alguns contadores possuem detalhes que seus nomes, sozinhos, não revelam.
 
-:::single-choice{#proc-filesystem-status-file}
-Qual caminho contém um resumo legível organizado em campos para o PID 12345?
+:::single-choice{#proc-filesystem-status-file} Qual caminho contém um resumo legível organizado em campos para o PID 12345?
 
 ::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="Os arquivos de cada processo ficam dentro do diretório nomeado pelo PID, não em um diretório `status` do nível superior."}
 ::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="A interface `status` do processo apresenta identificadores, estado, memória, sinais e campos de credenciais."}
@@ -71,8 +69,7 @@ Nem toda entrada de `/proc` pertence a um processo. Alguns exemplos são:
 
 Alguns arquivos, especialmente em `/proc/sys`, são interfaces de configuração graváveis. Não grave neles apenas porque parecem arquivos comuns. Compreenda o parâmetro, o escopo, o mecanismo de persistência e a reversão antes de realizar uma alteração autorizada no sistema.
 
-:::single-choice{#proc-filesystem-system-interface}
-Qual entrada fornece contadores de memória de todo o sistema, não o estado de um único processo?
+:::single-choice{#proc-filesystem-system-interface} Qual entrada fornece contadores de memória de todo o sistema, não o estado de um único processo?
 
 ::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="Esse caminho aponta para o estado do próprio processo observador."}
 ::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo` contém estatísticas da memória do sistema fornecidas pelo kernel."}
@@ -85,8 +82,7 @@ As implementações Linux de ferramentas como `ps`, `top` e `free` obtêm grande
 
 Leitores diretos precisam interpretar os formatos corretamente, tolerar processos ausentes, proteger saídas confidenciais e evitar presumir que uma leitura seja um snapshot atômico do sistema.
 
-:::single-choice{#proc-filesystem-live-data}
-Por que `/proc/PID` pode desaparecer entre dois comandos de inspeção?
+:::single-choice{#proc-filesystem-live-data} Por que `/proc/PID` pode desaparecer entre dois comandos de inspeção?
 
 ::option[Todo arquivo do procfs é renomeado automaticamente uma vez por segundo.]{#proc-filesystem-renamed explanation="Não existe uma regra de renomeação periódica para todas as entradas do procfs."}
 ::option[A leitura de `status` exclui o diretório do processo.]{#proc-filesystem-read-delete explanation="A inspeção do status é somente para leitura e não encerra nem remove o processo."}

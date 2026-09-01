@@ -16,8 +16,7 @@ meta_keywords: "DNS 过程, DNS 查询, 域名解析, Linux DNS, 生产服务器
 
 系统解析器可以按照配置的顺序查询 `/etc/hosts`、DNS 和其他来源。搜索后缀可能把一个短名称转换成多个候选名称。递归解析器随后会先检查正面和否定缓存条目，再决定是否发送上游流量。
 
-:::single-choice{#dns-process-cache-first}
-为什么递归解析器可能完全不联系任何权威服务器？
+:::single-choice{#dns-process-cache-first} 为什么递归解析器可能完全不联系任何权威服务器？
 
 ::option[DNS 要求每次查询必须先在本地失败。]{#dns-process-requires-failure explanation="解析器可以立即用缓存作答。"}
 ::option[它拥有一条仍然有效的缓存答案。]{#dns-process-valid-cache .correct explanation="缓存可以避免在记录生命周期结束前重复遍历 DNS 层级。"}
@@ -28,8 +27,7 @@ meta_keywords: "DNS 过程, DNS 查询, 域名解析, Linux DNS, 生产服务器
 
 缓存未命中时，递归解析器可以查询根服务器。DNS 根拥有 A 到 M 共 13 个具名服务器标识，并通过任播等弹性部署技术由许多物理实例提供服务。其响应通常会把解析器转介给相关顶级域的权威服务器，而不是直接返回最终主机地址。
 
-:::single-choice{#dns-process-root-response}
-对于未缓存的 `www.example.com` 查询，根服务器通常会返回什么？
+:::single-choice{#dns-process-root-response} 对于未缓存的 `www.example.com` 查询，根服务器通常会返回什么？
 
 ::option[指向 `com` 顶级域服务器的转介。]{#dns-process-root-referral .correct explanation="DNS 层级通过委派划分职责，而不是在根中存储每个最终主机记录。"}
 ::option[`www.example.com` 托管的网页。]{#dns-process-root-webpage explanation="DNS 返回资源记录数据，而不是应用程序内容。"}
@@ -40,8 +38,7 @@ meta_keywords: "DNS 过程, DNS 查询, 域名解析, Linux DNS, 生产服务器
 
 解析器询问 `com` 权威服务器，后者返回 `example.com` 受委派的权威名称服务器。如果需要访问名称位于受委派子区域内的服务器，转介中可以包含粘合地址记录。随后，解析器向一台权威服务器查询所请求的记录。
 
-:::single-choice{#dns-process-glue-purpose}
-DNS 粘合记录帮助解决什么问题？
+:::single-choice{#dns-process-glue-purpose} DNS 粘合记录帮助解决什么问题？
 
 ::option[在 DNS 解析后加密 HTTP 载荷。]{#dns-process-glue-http explanation="TLS 或其他应用安全机制负责载荷加密。"}
 ::option[选择最快的以太网交换机端口。]{#dns-process-glue-switch explanation="粘合记录是委派地址数据，不是链路转发策略。"}
@@ -52,8 +49,7 @@ DNS 粘合记录帮助解决什么问题？
 
 回答中可能包含需要再次查询名称的 CNAME 别名，也可能包含会引发更多查询的应用专用记录。查询 `A` 只会返回 IPv4 地址记录及相关链路数据；必须另行查询 `AAAA` 才能获取 IPv6 地址。最终响应会带有 `NOERROR`、`NXDOMAIN` 或 `SERVFAIL` 等状态，而这些状态各有不同含义。
 
-:::single-choice{#dns-process-nxdomain-meaning}
-`NXDOMAIN` 表示什么？
+:::single-choice{#dns-process-nxdomain-meaning} `NXDOMAIN` 表示什么？
 
 ::option[根据权威结果，查询的域名不存在。]{#dns-process-name-does-not-exist .correct explanation="这不同于名称存在但没有所请求的记录类型。"}
 ::option[名称存在，并且始终有一条空的 A 记录。]{#dns-process-empty-a explanation="名称存在但没有请求的数据时，通常产生无数据响应，而不是 NXDOMAIN。"}
@@ -66,8 +62,7 @@ DNS 粘合记录帮助解决什么问题？
 
 解析器按照 TTL 规则缓存结果并将其返回给存根解析器。应用程序随后选择一个地址，并尝试自己的网络协议与安全协议。
 
-:::single-choice{#dns-process-dnssec-limit}
-DNSSEC 验证不提供什么？
+:::single-choice{#dns-process-dnssec-limit} DNSSEC 验证不提供什么？
 
 ::option[已签名 DNS 数据的完整性和来源认证。]{#dns-process-dnssec-does-integrity explanation="这些正是 DNSSEC 的核心目标。"}
 ::option[对已签名的不存在数据进行认证否定。]{#dns-process-authenticated-denial explanation="签名否定机制可以提供这种验证。"}

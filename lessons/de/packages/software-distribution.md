@@ -24,8 +24,7 @@ Ein Binärpaket kann ausführbare Dateien, Bibliotheken, Dokumentation, Standard
 
 Nicht jedes Paket ist eine interaktive Anwendung. Ein Paket kann eine Bibliothek, eine Kernelkomponente, Sprachdaten, Schriftarten, Debug-Symbole oder Metadaten bereitstellen, die von einer Sammlung anderer Pakete abhängen.
 
-:::single-choice{#software-distribution-package-metadata}
-Welche Information ist gewöhnlich Paketmetadaten und keine ausführbare Anwendungsdatei?
+:::single-choice{#software-distribution-package-metadata} Welche Information ist gewöhnlich Paketmetadaten und keine ausführbare Anwendungsdatei?
 
 ::option[Die CPU-Anweisungen, die die Anwendung implementieren.]{#software-distribution-executable-code explanation="Kompilierte Anweisungen sind Nutzinhalt des Pakets und keine Abhängigkeitsmetadaten."}
 ::option[Deklarierte Abhängigkeitsbeziehungen.]{#software-distribution-dependencies .correct explanation="Pakete beschreiben erforderliche oder in Konflikt stehende Pakete, damit Verwaltungswerkzeuge über die Installation entscheiden können."}
@@ -38,8 +37,7 @@ Ein Upstream-Projekt entwickelt und veröffentlicht den ursprünglichen Quellcod
 
 Die Build-Infrastruktur der Distribution erzeugt Pakete für unterstützte Veröffentlichungen und Architekturen. Werkzeuge für Paketquellen veröffentlichen Metadaten und Signaturen, die Clients überprüfen können. Die genauen Zuständigkeiten unterscheiden sich: Einige Upstream-Projekte veröffentlichen eigene Pakete, während Distributionen unabhängig aus dem Quellcode bauen können.
 
-:::single-choice{#software-distribution-maintainer-role}
-Welche Aufgabe gehört gewöhnlich zu den Tätigkeiten eines Distributionspaketbetreuers?
+:::single-choice{#software-distribution-maintainer-role} Welche Aufgabe gehört gewöhnlich zu den Tätigkeiten eines Distributionspaketbetreuers?
 
 ::option[Upstream-Quellcode an Build- und Abhängigkeitsregeln der Distribution anzupassen.]{#software-distribution-maintainer-integrates .correct explanation="Betreuer passen Software an Distributionsrichtlinien, Builds, Abhängigkeiten und unterstützte Umgebungen an."}
 ::option[Das lokale Kontopasswort jedes Benutzers auszuwählen.]{#software-distribution-maintainer-passwords explanation="Lokale Authentifizierungsdaten haben nichts mit der Paketpflege zu tun."}
@@ -55,8 +53,7 @@ Zwei weitverbreitete native Formate sind:
 
 Es gibt weitere native und distributionsübergreifende Formate. Eine passende Dateinamenerweiterung allein garantiert keine Kompatibilität: Paketarchitektur, Distributionsveröffentlichung, Bibliotheksversionen, Richtlinien, Signaturen und Abhängigkeiten spielen ebenfalls eine Rolle.
 
-:::single-choice{#software-distribution-debian-format}
-Welches native Paketformat verwenden Debian und Ubuntu?
+:::single-choice{#software-distribution-debian-format} Welches native Paketformat verwenden Debian und Ubuntu?
 
 ::option[`.deb`]{#software-distribution-format-deb .correct explanation="Paketwerkzeuge der Debian-Familie verwenden das Archivformat `.deb`."}
 ::option[`.rpm`]{#software-distribution-format-rpm explanation="RPM ist das native Format von Fedora, RHEL und verwandten Distributionsfamilien."}
@@ -69,8 +66,7 @@ Eine Paketverwaltung erfasst den installierten Zustand und koordiniert Änderung
 
 Das Vertrauen hängt weiterhin von der Konfiguration der Paketquellen und den Signaturschlüsseln ab. Ein kryptografisch gültiges Paket beweist die Verbindung mit einem vertrauenswürdigen Schlüssel, nicht aber, dass beliebige Drittanbietersoftware sicher oder geeignet ist. Bevorzuge nach Möglichkeit die Paketquellen der Distribution und bewerte jede externe Quelle, bevor du ihr Installationsrechte gewährst.
 
-:::single-choice{#software-distribution-package-manager-benefit}
-Was ist ein Vorteil der Installation über eine vertrauenswürdige Paketquelle?
+:::single-choice{#software-distribution-package-manager-benefit} Was ist ein Vorteil der Installation über eine vertrauenswürdige Paketquelle?
 
 ::option[Die Verwaltung kann Versionen verfolgen und deklarierte Abhängigkeiten auflösen.]{#software-distribution-managed-lifecycle .correct explanation="Metadaten der Paketquelle und Aufzeichnungen des installierten Zustands unterstützen koordinierte Installation, Aktualisierung und Entfernung."}
 ::option[Jedes installierte Programm wird gegen Sicherheitslücken immun.]{#software-distribution-no-vulnerabilities explanation="Die Paketverwaltung unterstützt Aktualisierungen, kann aber keine fehlerfreie Software garantieren."}

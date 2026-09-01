@@ -18,8 +18,7 @@ meta_keywords: "网络寻址, MAC 地址, IP 地址, 主机名, 网络标识符,
 
 MAC 地址不保证永久不变或全球唯一。软件可以分配本地管理地址，虚拟接口会生成地址，Wi-Fi 隐私功能也可能将地址随机化。路由器通常在每一跳替换以太网帧，因此远程服务器不会收到原始本地以太网源地址。
 
-:::single-choice{#network-addressing-mac-scope}
-在数据包传送中，以太网 MAC 地址的正常作用范围是什么？
+:::single-choice{#network-addressing-mac-scope} 在数据包传送中，以太网 MAC 地址的正常作用范围是什么？
 
 ::option[当前本地链路。]{#network-addressing-local-link .correct explanation="路由器会为后续跳点创建新的链路层帧。"}
 ::option[到最终互联网服务器的每个路由跳点。]{#network-addressing-all-hops explanation="原始帧不会原封不动地跨越路由器。"}
@@ -32,8 +31,7 @@ IPv4 地址为 32 位，即四个八位组；IPv6 地址为 128 位。IP 地址�
 
 一个接口可以拥有多个 IP 地址，地址也可能因为 DHCP、隐私寻址、故障转移或管理操作而改变。私有 IPv4 地址可以在不同网络中重复使用；外部可达性由公网路由和 NAT 策略决定。
 
-:::single-choice{#network-addressing-ipv4-size}
-IPv4 地址有多大？
+:::single-choice{#network-addressing-ipv4-size} IPv4 地址有多大？
 
 ::option[32 位，由四个八位组组成。]{#network-addressing-thirty-two .correct explanation="显示的每个十进制部分表示八位。"}
 ::option[4 位，由一个十六进制数字组成。]{#network-addressing-four-bits explanation="四位只能表示一个十六进制数字。"}
@@ -52,8 +50,7 @@ $ getent ahosts example.com
 
 DNS 答案可能改变或被缓存，而且解析成功并不能证明服务可达。
 
-:::single-choice{#network-addressing-getent-purpose}
-检查名称解析时为什么使用 `getent ahosts`？
+:::single-choice{#network-addressing-getent-purpose} 检查名称解析时为什么使用 `getent ahosts`？
 
 ::option[它会把返回的地址永久分配给每个接口。]{#network-addressing-getent-assign explanation="该命令查询数据库，不会配置接口。"}
 ::option[它通过系统配置的名称服务路径查询地址。]{#network-addressing-system-resolver .correct explanation="根据主机策略，这条路径可以包括本地文件和 DNS。"}
@@ -71,8 +68,7 @@ $ ip -brief address
 
 诊断可达性时，再检查路由和邻居状态。绝不要只根据名称推断正确的源接口或地址；路由选择、策略规则、命名空间和隧道都可能改变路径。
 
-:::single-choice{#network-addressing-ip-link-versus-address}
-哪个命令视图重点显示已分配的 IP 地址？
+:::single-choice{#network-addressing-ip-link-versus-address} 哪个命令视图重点显示已分配的 IP 地址？
 
 ::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="address 对象显示接口上的 IPv4 和 IPv6 分配。"}
 ::option[只使用 `ip -brief link`。]{#network-addressing-link-only explanation="link 视图重点显示接口和链路层状态。"}

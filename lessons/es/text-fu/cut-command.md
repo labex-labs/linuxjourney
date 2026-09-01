@@ -44,8 +44,7 @@ bb
 
 Los espacios, tabuladores y signos de puntuación también ocupan posiciones. `cut` procesa cada línea de forma independiente.
 
-:::single-choice{#cut-first-character}
-¿Qué orden muestra el primer carácter de cada línea de `names.txt`?
+:::single-choice{#cut-first-character} ¿Qué orden muestra el primer carácter de cada línea de `names.txt`?
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="La opción `-c` selecciona posiciones de caracteres y la posición 1 es el primer carácter de cada línea."}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="La opción `-f` selecciona el primer campo delimitado por tabuladores, que puede contener más de un carácter."}
@@ -65,8 +64,7 @@ viewer
 
 Al igual que en la selección de caracteres, una lista puede incluir valores como `1`, `1,3`, `2-4`, `-3` o `2-`.
 
-:::single-choice{#cut-second-tab-field}
-¿Qué orden muestra el segundo campo delimitado por tabuladores de cada línea de `team.tsv`?
+:::single-choice{#cut-second-tab-field} ¿Qué orden muestra el segundo campo delimitado por tabuladores de cada línea de `team.tsv`?
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="Esta orden selecciona la segunda posición de carácter de cada línea, no el segundo campo separado por tabuladores."}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="Sin `-d`, el modo de campos utiliza una tabulación como delimitador y `-f 2` selecciona el segundo campo."}
@@ -86,8 +84,7 @@ bob
 
 El delimitador de esta forma es un único carácter. Entrecomilla `;` porque un punto y coma sin comillas tiene un significado de control en la shell.
 
-:::single-choice{#cut-semicolon-role-field}
-¿Qué orden muestra el segundo campo delimitado por punto y coma de `team.txt`?
+:::single-choice{#cut-semicolon-role-field} ¿Qué orden muestra el segundo campo delimitado por punto y coma de `team.txt`?
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="Esta orden selecciona campos separados por dos puntos, pero el archivo utiliza puntos y comas."}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="El punto y coma entrecomillado establece el delimitador y `-f 2` selecciona el segundo campo de cada línea."}
@@ -106,8 +103,7 @@ viewer
 
 Esto no valida un archivo CSV general. Un CSV puede contener delimitadores entre comillas, saltos de línea incrustados y reglas de escape que una separación por un solo carácter no comprende; utiliza una herramienta compatible con CSV para esos datos.
 
-:::single-choice{#cut-suppress-undelimited}
-¿Qué hace `-s` en `cut -d ':' -f 1`?
+:::single-choice{#cut-suppress-undelimited} ¿Qué hace `-s` en `cut -d ':' -f 1`?
 
 ::option[Ordena los campos seleccionados antes de mostrarlos.]{#cut-s-sort explanation="`cut` no ordena la entrada y `-s` no está relacionado con el orden."}
 ::option[Trata varios delimitadores consecutivos como un único separador.]{#cut-s-squeeze explanation="`cut` no utiliza `-s` para comprimir delimitadores. Los campos vacíos siguen ocupando posiciones significativas."}
@@ -124,8 +120,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-En `generate-data | cut -d ':' -f 1`, ¿de dónde lee `cut` la entrada?
+:::single-choice{#cut-pipeline-input} En `generate-data | cut -d ':' -f 1`, ¿de dónde lee `cut` la entrada?
 
 ::option[De stdout de `generate-data` a través de la tubería.]{#cut-pipe-stdin .correct explanation="La tubería conecta stdout del productor con stdin de `cut` y no se indica ningún archivo de entrada independiente."}
 ::option[De un archivo cuyo nombre literal es `generate-data`.]{#cut-pipe-file explanation="`generate-data` se ejecuta como orden izquierda de la tubería. No se pasa a `cut` como nombre de archivo."}

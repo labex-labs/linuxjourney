@@ -24,8 +24,7 @@ $ pgrep -a cat
 
 同じプログラムを実行していても、入力ストリーム、メモリ内容、認証情報、作業ディレクトリ、寿命は異なり得ます。PID は一度に1つの実行中プロセスを識別し、その終了後は再利用される場合があります。
 
-:::single-choice{#process-details-program-versus-process}
-同じプログラムを実行する2つのインスタンスを区別するものは何ですか？
+:::single-choice{#process-details-program-versus-process} 同じプログラムを実行する2つのインスタンスを区別するものは何ですか？
 
 ::option[インスタンスごとに実行ファイルを1つコピーする必要がある。]{#process-details-copied-executable explanation="複数プロセスはファイルを複製せず、同じ実行ファイルのコードページをマップして共有できます。"}
 ::option[メモリや開いたファイルを持てるのは1つのインスタンスだけである。]{#process-details-one-instance-resources explanation="各プロセスが独自のメモリマッピングとファイル記述子表を持てます。"}
@@ -46,8 +45,7 @@ $ pgrep -a cat
 
 基になるリソースを共有する場合もあります。関連プロセスがマップ済みメモリを共有でき、同じプロセス内のスレッドはアドレス空間と多くのプロセス全体リソースを共有します。プロセスは分離境界を提供しますが、全バイトやカーネルオブジェクトが物理的に専有されるとは限りません。
 
-:::single-choice{#process-details-kernel-state}
-Linux プロセスのスケジューリング状態と認証情報を保持する構成要素はどれですか？
+:::single-choice{#process-details-kernel-state} Linux プロセスのスケジューリング状態と認証情報を保持する構成要素はどれですか？
 
 ::option[カーネル。]{#process-details-kernel .correct explanation="カーネルがプロセス状態を追跡し、スケジューリング、メモリ、シグナル、アクセス制御規則を適用します。"}
 ::option[実行ファイルがあるディレクトリ。]{#process-details-directory explanation="ディレクトリは名前と inode の対応を保存し、実行中プロセスをスケジュールしません。"}
@@ -60,8 +58,7 @@ Linux プロセスのスケジューリング状態と認証情報を保持す�
 
 通常、各プロセスには仮想アドレス空間が見えます。カーネルとハードウェアが仮想アドレスを物理メモリなどへ対応付け、保護を適用し、必要に応じてページを共有します。そのため `ps` や `top` のメモリ値が、そのプロセスだけに帰属する物理 RAM 量とは限りません。
 
-:::single-choice{#process-details-scheduler-role}
-Linux スケジューラーは何を選択しますか？
+:::single-choice{#process-details-scheduler-role} Linux スケジューラーは何を選択しますか？
 
 ::option[利用可能な CPU で実行する、実行可能なスレッド。]{#process-details-runnable-thread .correct explanation="スケジューリング方針が実行可能なコンテキストから選び、CPU 時間を割り当てます。"}
 ::option[ディスクのフォーマット時に記録するファイル所有者。]{#process-details-format-owner explanation="ファイルシステム所有権は CPU スケジューリングと無関係です。"}
@@ -72,8 +69,7 @@ Linux スケジューラーは何を選択しますか？
 
 プロセス終了時、カーネルは大半の私有リソースを解放し、残る記述子を閉じ、親のために終了情報を記録します。親が終了状態を取得するまで、小さなプロセス表の記録がゾンビとして残る場合があります。そのため「実行を終えた」と「プロセス表から全痕跡が消えた」は必ずしも同時ではありません。
 
-:::single-choice{#process-details-exit-status}
-終了したプロセスが一時的にゾンビとして残るのはなぜですか？
+:::single-choice{#process-details-exit-status} 終了したプロセスが一時的にゾンビとして残るのはなぜですか？
 
 ::option[全メモリを割り当てたまま命令を実行しているから。]{#process-details-zombie-running explanation="ゾンビは実行を完了し、通常の実行中アドレス空間を保持しません。"}
 ::option[親が記録済みの終了状態をまだ回収していないから。]{#process-details-parent-wait .correct explanation="親が wait 操作を行うまで、カーネルが最小限の終了情報を保持します。"}

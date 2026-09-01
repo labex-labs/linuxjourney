@@ -28,8 +28,7 @@ $ sudo lsof +D /mnt/usb
 
 Entre las columnas útiles se encuentran `COMMAND`, `PID`, `USER`, el descriptor de archivo (`FD`), el tipo, el dispositivo y `NAME`. Un registro cuyo `FD` sea `cwd` indica que el proceso utiliza el directorio como directorio de trabajo actual. La salida sin privilegios puede estar incompleta para procesos de otros usuarios.
 
-:::single-choice{#lsof-cwd-record}
-¿Qué indica `cwd` en la columna `FD`?
+:::single-choice{#lsof-cwd-record} ¿Qué indica `cwd` en la columna `FD`?
 
 ::option[Que el proceso utiliza ese directorio como directorio de trabajo actual.]{#lsof-current-directory .correct explanation="El directorio actual de un proceso puede mantener ocupado un sistema de archivos montado."}
 ::option[Que el archivo se cerró mientras se escribía.]{#lsof-closed-write explanation="El marcador describe una relación con un directorio, no un suceso de cierre."}
@@ -52,8 +51,7 @@ $ sudo fuser -vm /mnt/usb
 
 Comprueba con herramientas como `findmnt --target /mnt/usb` que la ruta sea el punto de montaje pretendido. Los montajes enlazados, los espacios de nombres, los permisos y las condiciones de carrera pueden afectar a lo que revela una sola consulta.
 
-:::single-choice{#fuser-verbose-purpose}
-¿Por qué utilizar `fuser -v` en vez de `fuser` sin opciones durante una investigación?
+:::single-choice{#fuser-verbose-purpose} ¿Por qué utilizar `fuser -v` en vez de `fuser` sin opciones durante una investigación?
 
 ::option[Porque desmonta automáticamente el sistema de archivos seleccionado.]{#fuser-verbose-unmount explanation="El modo detallado comunica información y no solicita un desmontaje."}
 ::option[Porque añade contexto como el usuario, el tipo de acceso y la orden.]{#fuser-verbose-details .correct explanation="Las columnas adicionales ayudan a evaluar con qué procesos es seguro coordinarse o cuáles se pueden detener."}
@@ -72,8 +70,7 @@ Sigue una secuencia deliberada en vez de matar de inmediato todos los PID coinci
 
 `fuser -k` envía una señal a los procesos coincidentes. En las implementaciones habituales de procps, la señal predeterminada es `SIGKILL`, por lo que no permite un cierre ordenado. Si resulta necesaria una terminación aprobada explícitamente, elige una señal apropiada, verifica el PID y el propietario, y comprende que el conjunto de procesos puede cambiar entre la inspección y la acción.
 
-:::single-choice{#fuser-k-risk}
-¿Por qué `fuser -k /mnt/usb` es un mal primer paso para resolver un problema?
+:::single-choice{#fuser-k-risk} ¿Por qué `fuser -k /mnt/usb` es un mal primer paso para resolver un problema?
 
 ::option[Porque solo muestra el espacio libre del sistema de archivos.]{#fuser-k-space explanation="La opción se dirige a procesos, no comunica capacidad."}
 ::option[Porque puede matar varios procesos coincidentes sin una limpieza ordenada.]{#fuser-k-kills .correct explanation="La acción amplia de señalización puede interrumpir escrituras o servicios, así que primero deben investigarse y coordinarse."}
@@ -91,8 +88,7 @@ $ sudo fuser -v 22/tcp
 $ sudo ss -lntp
 ```
 
-:::single-choice{#lsof-fuser-tool-choice}
-¿Qué herramienta resulta adecuada para obtener una lista detallada de descriptores de archivos abiertos y sus procesos propietarios?
+:::single-choice{#lsof-fuser-tool-choice} ¿Qué herramienta resulta adecuada para obtener una lista detallada de descriptores de archivos abiertos y sus procesos propietarios?
 
 ::option[`lsof`]{#lsof-detailed-records .correct explanation="Su salida se organiza alrededor de registros de archivos abiertos y los metadatos de sus procesos."}
 ::option[`uptime`]{#lsof-uptime explanation="Uptime comunica el tiempo de actividad y los promedios de carga, no descriptores abiertos."}

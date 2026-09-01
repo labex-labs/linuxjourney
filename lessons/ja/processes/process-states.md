@@ -25,16 +25,14 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 スリープは正常です。対話型プログラムやサービスは継続的に CPU を消費せず、入力、タイマー、ネットワーク通信、ロックなどを待つ時間が多くあります。
 
-:::single-choice{#process-states-runnable-code}
-主状態 `R` は何を意味しますか？
+:::single-choice{#process-states-runnable-code} 主状態 `R` は何を意味しますか？
 
 ::option[CPU 上で実行中、または実行準備済み。]{#process-states-r-running .correct explanation="現在実行中と CPU サービスを待つ実行可能なタスクをまとめて表します。"}
 ::option[親が状態を回収した後のプロセス。]{#process-states-r-reaped explanation="完全に回収されたプロセスは通常のプロセス表エントリーとして現れません。"}
 ::option[割り込み不可能なスリープで待機中。]{#process-states-r-uninterruptible explanation="割り込み不可能なスリープは D です。"}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-割り込み可能なスリープを表す主状態はどれですか？
+:::single-choice{#process-states-interruptible-code} 割り込み可能なスリープを表す主状態はどれですか？
 
 ::option[`D`]{#process-states-sleep-d explanation="D は割り込み不可能なスリープです。"}
 ::option[`Z`]{#process-states-sleep-z explanation="Z は終了したが状態を回収されていない子です。"}
@@ -47,8 +45,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 短時間なら正常です。長く続く、または多数の `D` は遅い・利用不能・故障した I/O を示す場合がありますが、状態だけでは原因を特定できません。結論前に待機チャネル、カーネルログ、ストレージとネットワークの正常性、関連サブシステムを調べます。
 
-:::single-choice{#process-states-uninterruptible-code}
-割り込み不可能なスリープを示す主状態はどれですか？
+:::single-choice{#process-states-uninterruptible-code} 割り込み不可能なスリープを示す主状態はどれですか？
 
 ::option[`T`]{#process-states-d-stopped explanation="T は停止したタスクです。"}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="割り込み不可能なカーネルスリープで待つタスクに使います。"}
@@ -62,8 +59,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 適切なら `SIGCONT` でジョブ制御による停止を再開します。ゾンビはすでに実行していないため、再開も kill もできず、親または引き取った reaper が回収します。
 
-:::single-choice{#process-states-zombie-code}
-主状態 `Z` は何を識別しますか？
+:::single-choice{#process-states-zombie-code} 主状態 `Z` は何を識別しますか？
 
 ::option[終了記録の回収を待つ、終了済みプロセス。]{#process-states-z-zombie .correct explanation="実行終了後も、親から見える最小限の状態を保持しています。"}
 ::option[端末の一時停止シグナルで停止したプロセス。]{#process-states-z-terminal-stop explanation="ジョブ制御による停止は通常 T です。"}

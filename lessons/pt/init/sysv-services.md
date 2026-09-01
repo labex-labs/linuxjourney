@@ -28,8 +28,7 @@ $ service --status-all
 
 Seus marcadores entre colchetes e status de saída são específicos da interface, e um script pode informar um estado desconhecido. Para um serviço, inspecione a saída de uso do script ou sua documentação, em vez de presumir que todas as ações existam.
 
-:::single-choice{#sysv-services-wrapper-purpose}
-O que o comando `service` normalmente encapsula?
+:::single-choice{#sysv-services-wrapper-purpose} O que o comando `service` normalmente encapsula?
 
 ::option[Um editor de partições de disco executado em cada arquivo de serviço.]{#sysv-services-partition-editor explanation="O controle de serviços não tem relação com o particionamento do armazenamento."}
 ::option[Uma chamada de sistema do kernel acrescentada dinamicamente pelo script.]{#sysv-services-new-syscall explanation="Os scripts init são programas de controle de processos no espaço do usuário."}
@@ -49,8 +48,7 @@ Substitua o marcador somente depois de identificar o serviço, seus dependentes,
 
 A forma direta `/etc/init.d/SERVICE_NAME ACTION` pode existir, mas, em um host cujo gerenciador ativo oferece compatibilidade, use o comando voltado ao gerenciador para que ele acompanhe o estado e as dependências.
 
-:::single-choice{#sysv-services-stop-peanut}
-Qual comando solicita a interrupção do serviço SysV `peanut`?
+:::single-choice{#sysv-services-stop-peanut} Qual comando solicita a interrupção do serviço SysV `peanut`?
 
 ::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="A ordem convencional dos operandos coloca o nome do serviço antes da ação."}
 ::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="Essa não é a sintaxe da interface de serviços SysV."}
@@ -68,8 +66,7 @@ $ sudo service SERVICE_NAME status
 $ sudo service SERVICE_NAME reload
 ```
 
-:::single-choice{#sysv-services-reload-versus-restart}
-Por que não se deve presumir que `reload` seja equivalente a `restart`?
+:::single-choice{#sysv-services-reload-versus-restart} Por que não se deve presumir que `reload` seja equivalente a `restart`?
 
 ::option[Reload sempre desliga todo o sistema operacional.]{#sysv-services-reload-shutdown explanation="Esse não é o significado normal de uma ação de recarga de serviço."}
 ::option[Restart apenas imprime a configuração e nunca altera o estado dos processos.]{#sysv-services-restart-readonly explanation="Restart normalmente interrompe e inicia o serviço."}
@@ -82,8 +79,7 @@ Iniciar um serviço agora não necessariamente o habilita para runlevels futuros
 
 Não crie links `S` e `K` manualmente antes de compreender os metadados de dependências e a ferramenta de gerenciamento da distribuição; links manuais podem ser sobrescritos ou ordenados incorretamente.
 
-:::single-choice{#sysv-services-start-versus-enable}
-`service SERVICE start` necessariamente habilita o serviço nos boots futuros?
+:::single-choice{#sysv-services-start-versus-enable} `service SERVICE start` necessariamente habilita o serviço nos boots futuros?
 
 ::option[Sim; toda ação start cria automaticamente todos os links de runlevels.]{#sysv-services-start-links explanation="A interface não altera universalmente a ativação persistente."}
 ::option[Não; o estado em tempo de execução e a ativação nos runlevels são separados.]{#sysv-services-runtime-separate .correct explanation="Os links de boot ou a política do gerenciador determinam a ativação futura independentemente do início atual do processo."}

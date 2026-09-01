@@ -24,8 +24,7 @@ $ initctl version
 
 最后一条命令只有在 Upstart 控制服务和客户端存在时才会返回有意义的结果。`/usr/share/upstart` 等目录或 `/etc/init` 下残留文件是较弱证据，因为其他 init 系统接管后，软件包和迁移残留仍可能存在。
 
-:::single-choice{#upstart-overview-active-evidence}
-主机确实使用 Upstart 的最有力证据是什么？
+:::single-choice{#upstart-overview-active-evidence} 主机确实使用 Upstart 的最有力证据是什么？
 
 ::option[某个目录名称包含 `upstart`。]{#upstart-overview-directory-only explanation="已安装文档或残留内容可能保留在使用其他 init 的系统上。"}
 ::option[系统至少有一个 shell 脚本。]{#upstart-overview-shell-script explanation="Shell 脚本在所有 init 环境中都很常见。"}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 该示例把运行级别事件用作兼容输入。Upstart 还可以响应文件系统、设备、网络或应用程序定义的事件，具体取决于系统会发出什么。
 
-:::single-choice{#upstart-overview-start-on}
-Upstart 的 `start on` 段定义什么？
+:::single-choice{#upstart-overview-start-on} Upstart 的 `start on` 段定义什么？
 
 ::option[接下来必须编译的内核版本。]{#upstart-overview-kernel-version explanation="作业事件条件不选择内核构建。"}
 ::option[让作业目标转向启动的事件表达式。]{#upstart-overview-start-condition .correct explanation="表达式满足时，Upstart 会尝试执行配置的作业启动转换。"}
@@ -61,8 +59,7 @@ Upstart 的 `start on` 段定义什么？
 
 该模型避免使用一套硬编码的全局脚本顺序，但事件名称、顺序和条件隐含时可能难以诊断。事件默认不是持久消息队列，因此后来新增作业或更改条件时，不能假定所有过去事件都会重放。
 
-:::single-choice{#upstart-overview-event-chain}
-一个 Upstart 作业如何促使另一个作业启动？
+:::single-choice{#upstart-overview-event-chain} 一个 Upstart 作业如何促使另一个作业启动？
 
 ::option[在内存中重写另一个作业的可执行二进制文件。]{#upstart-overview-rewrite-binary explanation="协调通过事件完成，而不是修改代码。"}
 ::option[每个作业总是严格按照文件名顺序启动。]{#upstart-overview-filename-order explanation="Upstart 使用事件表达式，而不是一份按文件名排序的启动列表。"}
@@ -73,8 +70,7 @@ Upstart 的 `start on` 段定义什么？
 
 Systemd 可以为某些旧式服务脚本提供有限兼容性，但不会把 Upstart 作业语法作为原生 systemd 单元执行。迁移时，应翻译生命周期条件、环境、重生策略、日志、依赖和就绪语义，而不是机械地重命名文件。
 
-:::single-choice{#upstart-overview-current-ubuntu}
-当前标准 Ubuntu 版本使用哪种 init 系统？
+:::single-choice{#upstart-overview-current-ubuntu} 当前标准 Ubuntu 版本使用哪种 init 系统？
 
 ::option[每次安装都只使用 Upstart。]{#upstart-overview-current-upstart explanation="这只适用于历史时期的版本和配置。"}
 ::option[systemd。]{#upstart-overview-current-systemd .correct explanation="Upstart 属于较早 Ubuntu 世代，当前版本使用 systemd 作为 PID 1。"}

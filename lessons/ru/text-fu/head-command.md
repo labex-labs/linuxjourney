@@ -22,8 +22,7 @@ $ head events.log
 
 Файл при этом не изменяется. Если в нём меньше 10 строк, выводятся все доступные строки.
 
-:::single-choice{#head-default-lines}
-Что по умолчанию выводит `head events.log`?
+:::single-choice{#head-default-lines} Что по умолчанию выводит `head events.log`?
 
 ::option[Последние 10 строк либо все строки, если файл короче.]{#head-last-ten explanation="Вывод конца входных данных — задача `tail`; `head` выбирает начало."}
 ::option[Первые 10 строк либо все строки, если файл короче.]{#head-first-ten .correct explanation="Без параметра количества `head` выбирает до десяти первых строк входных данных."}
@@ -40,8 +39,7 @@ $ head -n 15 events.log
 
 GNU `head` также принимает компактную форму `-15`, однако `-n 15` яснее выражает назначение параметра.
 
-:::single-choice{#head-five-lines}
-Какая команда выводит первые пять строк `report.txt`?
+:::single-choice{#head-five-lines} Какая команда выводит первые пять строк `report.txt`?
 
 ::option[`head -c 5 report.txt`]{#head-five-bytes explanation="Параметр `-c` считает байты, а не строки, поэтому вывод может закончиться внутри первой строки."}
 ::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="Параметр `-n` задаёт количество строк, а `5` запрашивает первые пять."}
@@ -58,8 +56,7 @@ $ head -c 20 archive.bin
 
 Команда выводит первые 20 байтов. Вывод может завершиться посередине текстовой строки или, для многобайтового текста, внутри закодированного символа. Для обычного предварительного просмотра текста используйте режим строк.
 
-:::single-choice{#head-first-bytes}
-Какая команда записывает первые 100 байтов `payload.bin` в stdout?
+:::single-choice{#head-first-bytes} Какая команда записывает первые 100 байтов `payload.bin` в stdout?
 
 ::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="Параметр `-c` выбирает количество байтов, поэтому запрашиваются первые 100 доступных байтов."}
 ::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="Параметр `-n` считает строки, а не байты, и может вывести намного больше или меньше 100 байтов."}
@@ -87,16 +84,14 @@ $ head -n 2 january.txt february.txt
 
 Используйте `-q`, чтобы подавить заголовки, или `-v`, чтобы показать заголовок даже для одного файла.
 
-:::single-choice{#head-pipeline-preview}
-Что читает `head` в `generate-report | head -n 5`?
+:::single-choice{#head-pipeline-preview} Что читает `head` в `generate-report | head -n 5`?
 
 ::option[Stdout команды `generate-report` через stdin.]{#head-pipe-input .correct explanation="Конвейер подключает stdout производителя к stdin команды `head`, которая выбирает первые пять строк."}
 ::option[Первые пять имён файлов в текущем каталоге.]{#head-directory-names explanation="Команда просмотра каталога отсутствует; `head` получает поток через конвейер."}
 ::option[Пять байтов из файла `generate-report`.]{#head-producer-file explanation="Левая часть выполняется как команда, а `-n` считает строки, а не байты."}
 :::
 
-:::single-choice{#head-suppress-filename-headers}
-Какой параметр подавляет заголовки с именами файлов, когда `head` читает несколько файлов?
+:::single-choice{#head-suppress-filename-headers} Какой параметр подавляет заголовки с именами файлов, когда `head` читает несколько файлов?
 
 ::option[`-v`]{#head-verbose explanation="Параметр `-v` требует заголовки даже для одного файла — это противоположное действие."}
 ::option[`-c`]{#head-byte-option explanation="Параметр `-c` переключает единицу выбора на байты и не управляет заголовками файлов."}

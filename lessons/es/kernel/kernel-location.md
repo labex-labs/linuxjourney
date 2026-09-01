@@ -23,8 +23,7 @@ Una disposición tradicional de una distribución puede contener:
 
 Los nombres varían. En una distribución moderna, un archivo cuyo nombre contiene `initrd` suele incluir un archivo initramfs. La convención de nombres `vmlinuz` no revela la compresión interna exacta ni el formato de arranque de la plataforma; inspecciónalo con las herramientas de la distribución.
 
-:::single-choice{#kernel-location-vmlinuz}
-¿Qué contiene normalmente un archivo `vmlinuz-*` asociado a una versión?
+:::single-choice{#kernel-location-vmlinuz} ¿Qué contiene normalmente un archivo `vmlinuz-*` asociado a una versión?
 
 ::option[Una imagen arrancable del kernel de Linux.]{#kernel-location-kernel-image .correct explanation="El cargador de arranque o el firmware carga este artefacto del kernel específico de la arquitectura."}
 ::option[Todos los módulos cargables de todos los kernels instalados.]{#kernel-location-all-modules explanation="Los módulos se almacenan por separado en un árbol específico de cada versión."}
@@ -37,8 +36,7 @@ El initramfs debe contener los módulos y las herramientas iniciales que necesit
 
 `config-*` ayuda a determinar qué funciones se integraron, se compilaron como módulos o se omitieron. `System.map-*` puede ayudar con la interpretación de símbolos y la depuración, pero la aleatorización de direcciones, la información de depuración separada y las herramientas de la distribución afectan a su uso. Estos archivos son artefactos auxiliares, no kernels alternativos.
 
-:::single-choice{#kernel-location-initramfs-match}
-¿Por qué está vinculado un initramfs a una versión concreta del kernel y a la configuración del sistema?
+:::single-choice{#kernel-location-initramfs-match} ¿Por qué está vinculado un initramfs a una versión concreta del kernel y a la configuración del sistema?
 
 ::option[Almacena permanentemente el contenido de todos los sistemas de archivos montados.]{#kernel-location-all-filesystems explanation="Un initramfs es un pequeño entorno de arranque inicial, no una copia de seguridad completa del sistema."}
 ::option[Asigna UID nuevos a los usuarios durante cada arranque.]{#kernel-location-user-ids explanation="La gestión de identidades de las cuentas queda fuera de su función habitual."}
@@ -55,8 +53,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 En disposiciones con sistemas de archivos combinados, esta ruta puede resolverse como `/usr/lib/modules/KERNEL_RELEASE`. Cada kernel instalado necesita un árbol de módulos compatible y sus índices de dependencias. `modprobe` utiliza metadatos específicos de la versión en lugar de buscar archivos `.ko` arbitrarios por todo el disco.
 
-:::single-choice{#kernel-location-module-tree}
-¿Qué directorio contiene convencionalmente los módulos de la versión del kernel en ejecución?
+:::single-choice{#kernel-location-module-tree} ¿Qué directorio contiene convencionalmente los módulos de la versión del kernel en ejecución?
 
 ::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="Los directorios personales de los usuarios no son el árbol estándar de módulos del sistema."}
 ::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="El componente de versión separa la ABI de los módulos y los datos de dependencias de cada kernel instalado."}
@@ -69,8 +66,7 @@ Una imagen unificada del kernel, o UKI, es un único ejecutable EFI firmado que 
 
 Por tanto, que una disposición tradicional de `/boot` parezca vacía no demuestra que no haya ningún kernel instalado. Utiliza `findmnt`, la base de datos de paquetes, las herramientas del gestor de arranque y la configuración del cargador para relacionar los artefactos activos.
 
-:::single-choice{#kernel-location-uki}
-¿Qué puede combinar una imagen unificada del kernel?
+:::single-choice{#kernel-location-uki} ¿Qué puede combinar una imagen unificada del kernel?
 
 ::option[Todos los directorios personales de los usuarios en una cabecera GPT.]{#kernel-location-uki-homes explanation="Una UKI es un ejecutable de arranque, no un contenedor de datos de usuarios ni una tabla de particiones."}
 ::option[Todos los paquetes instalados en un único script de shell.]{#kernel-location-uki-packages explanation="Empaqueta componentes de arranque, no el repositorio completo del sistema operativo."}

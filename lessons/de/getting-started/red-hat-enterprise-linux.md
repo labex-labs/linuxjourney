@@ -16,8 +16,7 @@ Red Hat Enterprise Linux, häufig **RHEL** genannt, ist eine kommerzielle Linux-
 
 RHEL gehört zu den wichtigsten Linux-Distributionen für Unternehmen, weil es auf Servern, in Rechenzentren, in Cloud-Systemen und in regulierten Geschäftsumgebungen eingesetzt wird. Seine Rolle unterscheidet sich von allgemeineren, gemeinschaftlich entwickelten Distributionen, da Supportfähigkeit und langfristige Lebenszyklusplanung im Zentrum seines Nutzens stehen.
 
-:::single-choice{#match-rhel-priorities}
-Welcher Bedarf entspricht am unmittelbarsten den Entwicklungszielen von RHEL?
+:::single-choice{#match-rhel-priorities} Welcher Bedarf entspricht am unmittelbarsten den Entwicklungszielen von RHEL?
 
 ::option[Fortlaufende Funktionsänderungen ohne Supportlebenszyklus]{#continuous-unsupported-change explanation="RHEL folgt einem konservativen, veröffentlichten Lebenszyklus und keinen fortlaufenden Änderungen ohne Support. Vorhersehbarkeit ist Teil seines Nutzens für Unternehmen."}
 ::option[Vorhersehbare Veröffentlichungen mit langfristigem professionellem Support]{#predictable-enterprise-platform .correct explanation="RHEL ist für Organisationen gedacht, die geplante Lebenszyklen, Wartung und professionelle Unterstützung benötigen. Diese Eigenschaften sorgen dafür, dass Produktivsysteme langfristig unterstützt werden können."}
@@ -36,8 +35,7 @@ RHEL ist eng mit dem breiteren Red-Hat-Ökosystem verbunden. Fedora ist das Geme
 
 Wenn du die beiden Wege vergleichen möchtest, sieh dir [Fedora](https://labex.io/lesson/fedora) an. Einen breiteren Überblick über Distributionsfamilien bietet [Eine Linux-Distribution auswählen](https://labex.io/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#compare-fedora-and-rhel}
-In welcher Beziehung steht Fedora im Red-Hat-Ökosystem zu RHEL?
+:::single-choice{#compare-fedora-and-rhel} In welcher Beziehung steht Fedora im Red-Hat-Ökosystem zu RHEL?
 
 ::option[Fedora ist eine ältere RHEL-Veröffentlichung, die ohne Sicherheitswartung beibehalten wird]{#fedora-old-rhel explanation="Fedora ist eine eigenständige Gemeinschaftsdistribution und keine abgelaufene RHEL-Version. Sie besitzt eigene Veröffentlichungen und ein schnelleres Entwicklungstempo."}
 ::option[Fedora ist ein vorgelagertes Gemeinschaftsprojekt für Technologien, die später RHEL erreichen können]{#fedora-upstream .correct explanation="Fedora ist das schneller fortschreitende, vorgelagerte Gemeinschaftsprojekt. Red Hat greift bei der Entwicklung seiner konservativeren Unternehmensplattform auf dieses Ökosystem zurück."}
@@ -50,8 +48,7 @@ RHEL verwendet das RPM-Paketformat und Werkzeuge wie DNF, um Software zu install
 
 Die Paketverwaltung gehört zu den grundlegenden praktischen Fähigkeiten für RHEL-Administratoren, weil langfristige Wartung und vorhersehbare Aktualisierungen entscheidend für den Betrieb von Unternehmenssystemen sind.
 
-:::single-choice{#relate-rpm-and-dnf}
-Wie arbeiten RPM und DNF unter RHEL zusammen?
+:::single-choice{#relate-rpm-and-dnf} Wie arbeiten RPM und DNF unter RHEL zusammen?
 
 ::option[RPM definiert paketierte Software, während DNF Inhalte aus Paketquellen und Abhängigkeiten verwaltet]{#rpm-format-dnf-tool .correct explanation="RHEL-Software wird als RPM-Pakete verteilt, und DNF ist das übergeordnete Werkzeug, mit dem diese Inhalte gewöhnlich gesucht, installiert, aktualisiert und entfernt werden."}
 ::option[DNF definiert paketierte Software, während RPM den grafischen Desktop verwaltet]{#dnf-format-rpm-desktop explanation="Das vertauscht und verfälscht ihre Aufgaben. RPM ist das Paketsystem, während DNF die übergeordnete Softwareverwaltung übernimmt."}
@@ -64,8 +61,7 @@ Einer der wichtigsten Gründe, warum sich Organisationen für RHEL entscheiden, 
 
 Für Unternehmen kann dieses Supportmodell genauso wichtig sein wie die technischen Funktionen der Distribution selbst.
 
-:::single-choice{#use-published-lifecycle}
-Warum ist ein veröffentlichter Supportlebenszyklus für eine Organisation wertvoll?
+:::single-choice{#use-published-lifecycle} Warum ist ein veröffentlichter Supportlebenszyklus für eine Organisation wertvoll?
 
 ::option[Er garantiert, dass jede Anwendung ohne Tests ausgeführt werden kann]{#guarantee-all-applications explanation="Ein unterstütztes Betriebssystem garantiert nicht die Kompatibilität mit jeder Anwendung. Organisationen müssen weiterhin die Kompatibilität prüfen und Tests durchführen."}
 ::option[Er macht Sicherheitsaktualisierungen während des Supportzeitraums überflüssig]{#avoid-security-updates explanation="Ein Supportlebenszyklus bietet Zugriff auf Wartungs- und Sicherheitsaktualisierungen; er macht diese Aktualisierungen nicht überflüssig. Systeme müssen weiterhin aktiv gewartet werden."}

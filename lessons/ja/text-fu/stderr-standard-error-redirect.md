@@ -29,8 +29,7 @@ ls: cannot access '/fake/directory': No such file or directory
 - `1`：stdout（標準出力）
 - `2`：stderr（標準エラー）
 
-:::single-choice{#stderr-not-in-stdout-file}
-`ls /missing > results.txt` のエラーが通常、端末に残るのはなぜですか？
+:::single-choice{#stderr-not-in-stdout-file} `ls /missing > results.txt` のエラーが通常、端末に残るのはなぜですか？
 
 ::option[`>` は stdout をリダイレクトし、診断は stderr へ書かれるから。]{#stderr-separate-stream .correct explanation="通常の `>` が変更するのはファイルディスクリプタ 1 だけです。ファイルディスクリプタ 2 は端末という既存の出力先を保ちます。"}
 ::option[`ls` はファイルが閉じるまでエラーを表示しないから。]{#stderr-waits-for-close explanation="問題はタイミングではありません。通常のメッセージと診断メッセージは異なる出力ストリームを使います。"}
@@ -47,8 +46,7 @@ $ ls /fake/directory 2> errors.txt
 
 シェルは `errors.txt` を作成または切り詰め、ディスクリプタ 2 へ接続します。stdout の出力先は変わりません。エラー出力を追記する場合は `2>> errors.txt` を使います。
 
-:::single-choice{#stderr-to-error-file}
-`find /restricted` の診断で `errors.log` を置き換え、stdout の出力先は変えないコマンドはどれですか？
+:::single-choice{#stderr-to-error-file} `find /restricted` の診断で `errors.log` を置き換え、stdout の出力先は変えないコマンドはどれですか？
 
 ::option[`find /restricted > errors.log`]{#stdout-errors-log explanation="通常の `>` はディスクリプタ 1 をリダイレクトするため、診断ではなく通常の結果を取り込みます。"}
 ::option[`find /restricted < errors.log`]{#stdin-errors-log explanation="小なり記号はファイルを stdin として渡します。どちらの出力ストリームも取り込みません。"}
@@ -76,8 +74,7 @@ $ ls /fake/directory /etc/passwd 2>&1 > regular.txt
 
 ここでは stderr が最初に stdout の元の端末出力先を複製します。その後 stdout だけが `regular.txt` へ移るため、2 つのストリームは別の場所へ送られます。
 
-:::single-choice{#stderr-combine-order}
-`command` の stdout と stderr を両方とも `all.log` へ送る Bash のリダイレクトはどれですか？
+:::single-choice{#stderr-combine-order} `command` の stdout と stderr を両方とも `all.log` へ送る Bash のリダイレクトはどれですか？
 
 ::option[`command 2>&1 > all.log`]{#stderr-before-stdout explanation="これは stderr を stdout の元の出力先へ接続してから stdout だけをファイルへ移すため、ストリームが分かれます。"}
 ::option[`command 2> all.log > /dev/null`]{#stderr-file-stdout-null explanation="stderr は `all.log` へ送りますが、stdout は破棄します。両方をファイルへまとめていません。"}
@@ -92,8 +89,7 @@ $ ls /fake/directory /etc/passwd &> combined.txt
 
 Bash で両方を追記するには `&>>` を使います。`> file 2>&1` という明示的な形も、シェルスクリプトや文書でよく使われるため覚えておきましょう。
 
-:::single-choice{#stderr-bash-short-form}
-`build` の stdout と stderr を両方とも `build.log` へ追記する Bash コマンドはどれですか？
+:::single-choice{#stderr-bash-short-form} `build` の stdout と stderr を両方とも `build.log` へ追記する Bash コマンドはどれですか？
 
 ::option[`build &> build.log`]{#replace-both-build explanation="Bash の `&>` は両方をリダイレクトしますが、既存ファイルへ追記せず置き換えます。"}
 ::option[`build 2>> build.log`]{#append-errors-build explanation="これは stderr だけを追記します。stdout の出力先は変わりません。"}
@@ -110,8 +106,7 @@ $ ls /fake/directory 2> /dev/null
 
 これはコマンドを成功させるものでも、終了ステータスを変えるものでもなく、診断ストリームを隠すだけです。トラブルシューティング中は、必要な情報を破棄せず保存または表示しましょう。
 
-:::single-choice{#stderr-dev-null-effect}
-`check-data 2> /dev/null` は何を変更しますか？
+:::single-choice{#stderr-dev-null-effect} `check-data 2> /dev/null` は何を変更しますか？
 
 ::option[stdout を破棄し、すべてのエラーを成功に変える。]{#discard-stdout-success explanation="ディスクリプタ 2 は stdout ではなく stderr であり、リダイレクトはプログラムの終了ステータスを書き換えません。"}
 ::option[stderr を破棄するが、終了ステータスを強制的に成功にはしない。]{#discard-stderr-only .correct explanation="リダイレクトは診断の出力先を変えます。成功か失敗かは引き続きプログラム自身が決めます。"}

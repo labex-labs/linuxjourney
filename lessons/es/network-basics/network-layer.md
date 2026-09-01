@@ -16,8 +16,7 @@ La capa de red proporciona direccionamiento lógico y entrega de paquetes de mej
 
 Una cabecera IP incluye las direcciones de origen y destino, además de los campos necesarios para el reenvío y el procesamiento del protocolo. La carga útil suele contener un segmento TCP, un datagrama UDP o un mensaje ICMP. IP no garantiza la llegada, el orden ni la ausencia de duplicados.
 
-:::single-choice{#network-layer-ip-service}
-¿Qué servicio de entrega proporciona IP por sí solo?
+:::single-choice{#network-layer-ip-service} ¿Qué servicio de entrega proporciona IP por sí solo?
 
 ::option[Confirmaciones garantizadas de las transacciones de las aplicaciones.]{#network-layer-guaranteed-commit explanation="El resultado de una entrega IP no puede demostrar la persistencia en una aplicación."}
 ::option[Entrega de paquetes de mejor esfuerzo.]{#network-layer-best-effort .correct explanation="Las capas superiores o las aplicaciones añaden la recuperación o el orden que necesiten."}
@@ -28,8 +27,7 @@ Una cabecera IP incluye las direcciones de origen y destino, además de los camp
 
 Una dirección y una longitud de prefijo definen qué bits iniciales forman un prefijo de red. Los hosts utilizan esta información y sus rutas para decidir si un destino está en el enlace o necesita un router como siguiente salto. Una subred es un intervalo de direcciones bajo un prefijo y una política; las subredes no se conectan automáticamente con todas las demás.
 
-:::single-choice{#network-layer-prefix-decision}
-¿Qué ayuda a un host a decidir si un destino IPv4 está en el enlace?
+:::single-choice{#network-layer-prefix-decision} ¿Qué ayuda a un host a decidir si un destino IPv4 está en el enlace?
 
 ::option[La contraseña de la aplicación del destino.]{#network-layer-password explanation="Los datos de autenticación no definen los prefijos de red."}
 ::option[El color del cable Ethernet.]{#network-layer-cable-color explanation="El aspecto del cable no tiene ningún significado de direccionamiento."}
@@ -46,8 +44,7 @@ $ ip route get 203.0.113.10
 
 Esta es una consulta de ruta local, no demuestra que todos los routers posteriores tengan una ruta válida ni que el destino acepte tráfico.
 
-:::single-choice{#network-layer-longest-prefix}
-¿Qué ruta suele imponerse entre las rutas válidas hacia el mismo destino?
+:::single-choice{#network-layer-longest-prefix} ¿Qué ruta suele imponerse entre las rutas válidas hacia el mismo destino?
 
 ::option[La ruta cuyo nombre de interfaz aparece primero alfabéticamente.]{#network-layer-alphabetical explanation="La ortografía de la interfaz no es la regla de selección."}
 ::option[La ruta más antigua, independientemente de su prefijo.]{#network-layer-oldest explanation="La antigüedad por sí sola no prevalece sobre la coincidencia de prefijos."}
@@ -60,8 +57,7 @@ Cada paquete IPv4 tiene un TTL y cada paquete IPv6 un Hop Limit. Los routers lo 
 
 Normalmente, los routers conservan las direcciones IP de extremo a extremo, pero NAT, los túneles, los proxies y otros dispositivos intermedios pueden transformar o envolver los paquetes. Las cabeceras de la capa de enlace cambian en cada salto enrutado en cualquier caso.
 
-:::single-choice{#network-layer-hop-limit}
-¿Por qué reducen los routers el TTL o Hop Limit?
+:::single-choice{#network-layer-hop-limit} ¿Por qué reducen los routers el TTL o Hop Limit?
 
 ::option[Para aumentar los permisos de archivo de la aplicación.]{#network-layer-hop-permissions explanation="El recuento de saltos no está relacionado con la autorización del sistema de archivos."}
 ::option[Para convertir todos los paquetes de IPv4 a IPv6.]{#network-layer-hop-convert explanation="La traducción de protocolos no es la finalidad del campo."}

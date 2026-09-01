@@ -18,8 +18,7 @@ Linux の認可確認は、入力されたユーザー名へ直接作用する�
 
 ユーザー Bob が開始した通常コマンドでは、実ユーザー ID は通常 Bob の UID と等しくなります。別のプロセスを作成するだけで、新しいアカウントが作られたり、この識別情報が変わったりはしません。
 
-:::single-choice{#process-permissions-real-uid}
-プロセスの実ユーザー ID は通常何を識別しますか？
+:::single-choice{#process-permissions-real-uid} プロセスの実ユーザー ID は通常何を識別しますか？
 
 ::option[最後に開いたファイルの所有者。]{#process-permissions-real-opened-file explanation="ファイルを開いても、プロセスの実 UID がそのファイルの所有者へ置き換わることはありません。"}
 ::option[プロセスの元の呼び出し元に関連するアカウント。]{#process-permissions-real-caller .correct explanation="実 UID は、プロセス起動時に継承された呼び出し元ユーザーの識別情報を記録します。"}
@@ -32,8 +31,7 @@ Linux の認可確認は、入力されたユーザー名へ直接作用する�
 
 たとえば、慎重に設計されたパスワードツールは、保護された認証データを更新できるよう、昇格済みの実効 UID で動くことがあります。それでもプログラムは、呼び出し元、要求対象のアカウント、PAM の結果などのコンテキストに基づいてポリシーを強制しなければなりません。ある実効 UID を持つだけで、要求されたすべての操作が正当になるわけではありません。
 
-:::single-choice{#process-permissions-effective-uid}
-プロセスのために行われる多くのアクセス制御判断で使われるユーザー ID はどれですか？
+:::single-choice{#process-permissions-effective-uid} プロセスのために行われる多くのアクセス制御判断で使われるユーザー ID はどれですか？
 
 ::option[実効ユーザー ID。]{#process-permissions-effective-active .correct explanation="実効 UID は、多くの認可確認で参照される有効なユーザー資格情報です。"}
 ::option[保存ユーザー ID だけ。]{#process-permissions-effective-saved-only explanation="保存 ID は資格情報の移行を支えますが、通常、アクセス確認で有効な識別情報ではありません。"}
@@ -46,8 +44,7 @@ Linux の認可確認は、入力されたユーザー名へ直接作用する�
 
 正しく実装されている場合、プログラム全体で昇格権限を維持するより安全です。不要になった権限は恒久的に破棄し、資格情報を変更するすべての呼び出しが成功したか確認しなければなりません。
 
-:::single-choice{#process-permissions-saved-uid}
-特権プログラムが保存 set-user-ID を保持する理由は何ですか？
+:::single-choice{#process-permissions-saved-uid} 特権プログラムが保存 set-user-ID を保持する理由は何ですか？
 
 ::option[制御された特権段階と非特権段階で、実効識別情報を切り替えるため。]{#process-permissions-saved-switch .correct explanation="保存済み識別情報により、権限を一時的に下げ、許可された後の時点で復元できます。"}
 ::option[読み取るすべてのファイルへその UID を自動割り当てするため。]{#process-permissions-saved-file-owner explanation="ファイルを読み取っても、その所有権がプロセスの保存 UID へ変わることはありません。"}
@@ -60,8 +57,7 @@ Linux の認可確認は、入力されたユーザー名へ直接作用する�
 
 Linux では `ps` や `/proc/PROCESS/status` などで資格情報を調べられます。利用可能なフィールドと表示形式は異なるため、ローカル文書を参照し、共有システムでの実験のためだけに資格情報を変更してはいけません。
 
-:::single-choice{#process-permissions-ordinary-identities}
-権限移行のない通常コマンドでは、実 UID と実効 UID はどのような関係になりますか？
+:::single-choice{#process-permissions-ordinary-identities} 権限移行のない通常コマンドでは、実 UID と実効 UID はどのような関係になりますか？
 
 ::option[実効 UID は常に0である。]{#process-permissions-effective-root explanation="通常コマンドが自動的に root の UID を受け取ることはありません。"}
 ::option[実 UID は常に実行ファイルの所有者と等しい。]{#process-permissions-real-file-owner explanation="実行ファイルの所有者が影響するのは setuid の動作であり、通常の実 UID ではありません。"}

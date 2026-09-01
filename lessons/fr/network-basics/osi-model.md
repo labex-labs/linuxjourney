@@ -24,8 +24,7 @@ De la plus basse à la plus haute, les couches OSI sont :
 6. Présentation : représentation, transformation et encodage des données.
 7. Application : services réseau employés par les applications.
 
-:::single-choice{#osi-network-layer-number}
-Quelle couche OSI traite l'adressage logique et la transmission entre réseaux ?
+:::single-choice{#osi-network-layer-number} Quelle couche OSI traite l'adressage logique et la transmission entre réseaux ?
 
 ::option[La couche 3, Réseau.]{#osi-layer-three .correct explanation="La couche réseau décrit l'adressage logique et la transmission entre les réseaux."}
 ::option[La couche 1, Physique.]{#osi-layer-one explanation="La couche physique concerne les signaux et les supports."}
@@ -36,8 +35,7 @@ Quelle couche OSI traite l'adressage logique et la transmission entre réseaux ?
 
 Des expressions comme « boucle de couche 2 » ou « port de couche 4 » désignent une zone fonctionnelle sans expliquer chaque détail de l'implémentation. Un protocole réel peut franchir des limites, et le chiffrement, les tunnels, mandataires ou surcouches peuvent créer plusieurs couches imbriquées.
 
-:::single-choice{#osi-model-purpose}
-À quoi le modèle OSI sert-il le plus dans le dépannage quotidien ?
+:::single-choice{#osi-model-purpose} À quoi le modèle OSI sert-il le plus dans le dépannage quotidien ?
 
 ::option[À garantir que chaque protocole possède exactement sept en-têtes.]{#osi-seven-headers explanation="Les implémentations ne correspondent pas une à une à sept en-têtes sur le réseau."}
 ::option[À remplacer toutes les captures de paquets par un diagramme.]{#osi-replace-captures explanation="Le modèle guide l'enquête, mais ne remplace pas les preuves."}
@@ -48,8 +46,7 @@ Des expressions comme « boucle de couche 2 » ou « port de couche 4 » désign
 
 La suite de protocoles Internet et le modèle de référence OSI sont issus d'histoires de normalisation différentes. Le modèle pratique TCP/IP regroupe souvent dans sa couche application les responsabilités de session et de présentation d'OSI et réunit les aspects physiques et de liaison dans une couche liaison ou accès réseau. Les correspondances sont approximatives et ne prouvent pas que l'une des piles a été directement implémentée à partir de l'autre.
 
-:::single-choice{#osi-tcpip-mapping}
-Comment faut-il interpréter une correspondance entre couches OSI et TCP/IP ?
+:::single-choice{#osi-tcpip-mapping} Comment faut-il interpréter une correspondance entre couches OSI et TCP/IP ?
 
 ::option[Comme une règle exacte à laquelle chaque protocole doit obéir.]{#osi-exact-rule explanation="Les responsabilités des protocoles franchissent souvent les limites conceptuelles."}
 ::option[Comme la preuve que TCP/IP emploie obligatoirement sept couches sur le réseau.]{#osi-tcp-seven explanation="TCP/IP est couramment présenté avec quatre ou cinq couches."}
@@ -60,8 +57,7 @@ Comment faut-il interpréter une correspondance entre couches OSI et TCP/IP ?
 
 Partez du symptôme et testez les hypothèses plutôt que de vérifier mécaniquement les couches dans l'ordre numérique. Une défaillance web peut concerner l'état de la liaison locale, le routage IP, l'accessibilité du transport, TLS, la résolution des noms, l'authentification ou le comportement applicatif. Une preuve dans une couche peut guider le test suivant sans démontrer que les couches supérieures fonctionnent.
 
-:::single-choice{#osi-link-success-limit}
-Que prouve une liaison Ethernet locale qui fonctionne ?
+:::single-choice{#osi-link-success-limit} Que prouve une liaison Ethernet locale qui fonctionne ?
 
 ::option[Que tous les services HTTP distants sont sains.]{#osi-link-proves-http explanation="L'état de la liaison locale ne permet pas d'établir la santé d'une application distante."}
 ::option[Que le DNS ne contient aucun enregistrement incorrect.]{#osi-link-proves-dns explanation="Les données de noms sont indépendantes de la connectivité élémentaire de la liaison."}

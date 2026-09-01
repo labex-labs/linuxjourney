@@ -24,16 +24,14 @@ Emacs ouvre un fichier existant et lisible dans un tampon, ou prépare un nouvea
 
 Vous pouvez utiliser la complétion avec Tab pendant la saisie d'un chemin. L'ouverture d'un répertoire lance normalement Dired, l'éditeur de répertoires d'Emacs, au lieu de traiter ce répertoire comme un fichier texte.
 
-:::single-choice{#emacs-find-file-key}
-Quelle séquence de touches Emacs demande un chemin puis l'ouvre ?
+:::single-choice{#emacs-find-file-key} Quelle séquence de touches Emacs demande un chemin puis l'ouvre ?
 
 ::option[`C-x C-s`]{#emacs-file-save explanation="Cette séquence enregistre le tampon actuel associé à un fichier et ne demande pas d'ouvrir un autre chemin."}
 ::option[`C-x C-c`]{#emacs-file-exit explanation="Cette séquence commence à quitter Emacs au lieu d'ouvrir un fichier."}
 ::option[`C-x C-f`]{#emacs-find-file .correct explanation="Cette séquence exécute `find-file` et demande dans le minibuffer le chemin à ouvrir."}
 :::
 
-:::single-choice{#emacs-find-missing-file}
-Lorsque `C-x C-f` ouvre un chemin inexistant, quand le fichier est-il normalement créé sur le disque ?
+:::single-choice{#emacs-find-missing-file} Lorsque `C-x C-f` ouvre un chemin inexistant, quand le fichier est-il normalement créé sur le disque ?
 
 ::option[Seulement après l'enregistrement réussi du nouveau tampon.]{#emacs-file-created-on-save .correct explanation="Le tampon peut contenir des modifications avant l'existence du fichier ; l'enregistrement réalise sa création."}
 ::option[Immédiatement après la saisie du chemin.]{#emacs-file-created-immediately explanation="Emacs crée d'abord un tampon associé au nouveau chemin ; la création sur le disque est différée."}
@@ -50,8 +48,7 @@ C-x C-s
 
 Si le tampon n'a pas de nom de fichier associé, Emacs en demande un. Une écriture réussie efface l'indicateur de modification du tampon ; en cas d'échec, les données non enregistrées restent dans le tampon et une erreur est signalée.
 
-:::single-choice{#emacs-save-current-buffer}
-Quelle séquence de touches enregistre le tampon actuel associé à un fichier ?
+:::single-choice{#emacs-save-current-buffer} Quelle séquence de touches enregistre le tampon actuel associé à un fichier ?
 
 ::option[`C-x C-s`]{#emacs-save-buffer-key .correct explanation="`C-x C-s` exécute `save-buffer` pour le tampon actuel."}
 ::option[`C-x C-w`]{#emacs-write-file-key explanation="Cette séquence demande un autre nom de fichier et change le fichier ouvert par le tampon."}
@@ -68,8 +65,7 @@ C-x C-w
 
 Il s'agit du comportement « Enregistrer sous » d'Emacs. Il diffère de la simple écriture d'une copie séparée tout en continuant à ouvrir le chemin d'origine.
 
-:::single-choice{#emacs-write-file-as}
-Quelle séquence de touches réalise l'opération habituelle « Enregistrer sous » pour le tampon actuel ?
+:::single-choice{#emacs-write-file-as} Quelle séquence de touches réalise l'opération habituelle « Enregistrer sous » pour le tampon actuel ?
 
 ::option[`C-x C-f`]{#emacs-find-file-other explanation="Cette séquence ouvre un fichier, éventuellement dans un autre tampon ; elle n'enregistre pas le tampon actuel sous un nouveau nom."}
 ::option[`C-x k`]{#emacs-write-as-kill-buffer explanation="Cette séquence demande de fermer un tampon et peut interroger sur les modifications non enregistrées ; elle n'enregistre pas sous un nouveau nom."}
@@ -86,8 +82,7 @@ C-x s
 
 Emacs demande normalement s'il faut enregistrer chaque tampon modifié concerné. Lisez son nom et répondez avec discernement : ce n'est pas un raccourci qui enregistre tout sans confirmation.
 
-:::single-choice{#emacs-save-some-buffers}
-Que fait normalement `C-x s` ?
+:::single-choice{#emacs-save-some-buffers} Que fait normalement `C-x s` ?
 
 ::option[Il demande quels tampons modifiés associés à des fichiers doivent être enregistrés.]{#emacs-prompt-save-some .correct explanation="`save-some-buffers` examine les tampons modifiés concernés et demande lesquels doivent être écrits."}
 ::option[Il enregistre silencieusement tous les tampons sans afficher leurs noms.]{#emacs-silent-save-all explanation="La commande interactive normale pose des questions au lieu d'écrire tous les tampons sans condition."}

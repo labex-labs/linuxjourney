@@ -16,8 +16,7 @@ O Sistema de Nomes de Domínio é um banco de dados distribuído e hierárquico 
 
 O DNS faz mais do que traduzir um nome de host em um endereço IP. Um registro `A` contém um endereço IPv4, `AAAA` um endereço IPv6, `MX` dados de roteamento de mensagens, `NS` nomes de servidores autoritativos, e muitos outros tipos transportam dados diferentes. Um nome pode ter vários registros ou nenhum registro de endereço.
 
-:::single-choice{#dns-purpose-beyond-address}
-Por que o DNS é mais do que uma lista de nomes de host e endereços?
+:::single-choice{#dns-purpose-beyond-address} Por que o DNS é mais do que uma lista de nomes de host e endereços?
 
 ::option[Ele atribui permanentemente endereços MAC a todos os quadros Ethernet.]{#dns-mac-frames explanation="A descoberta de vizinhos da camada de enlace não usa o DNS dessa maneira."}
 ::option[Ele armazena registros tipados para vários tipos de dados de serviços e delegação.]{#dns-typed-records .correct explanation="Registros de endereço, mensagens, autoridade, alias e políticas possuem semânticas distintas."}
@@ -28,8 +27,7 @@ Por que o DNS é mais do que uma lista de nomes de host e endereços?
 
 Um nome de domínio totalmente qualificado identifica um caminho na árvore DNS. Em `www.example.com.`, o ponto final representa a raiz, `com` está abaixo dela, `example` está abaixo de `com`, e `www` é um nome dentro desse domínio. O ponto final costuma ser omitido nas interfaces de usuário, mas é importante para diferenciar nomes absolutos de nomes localmente relativos na configuração.
 
-:::single-choice{#dns-trailing-dot}
-O que o ponto final em `www.example.com.` representa?
+:::single-choice{#dns-trailing-dot} O que o ponto final em `www.example.com.` representa?
 
 ::option[A raiz do DNS e um nome absoluto.]{#dns-root-dot .correct explanation="O ponto encerra o caminho completo entre o nó nomeado e a raiz."}
 ::option[Um curinga para todos os domínios de primeiro nível.]{#dns-dot-wildcard explanation="Um curinga usa um rótulo como `*`, não o terminador da raiz."}
@@ -40,8 +38,7 @@ O que o ponto final em `www.example.com.` representa?
 
 A autoridade do DNS é delegada ao longo da hierarquia. Servidores raiz direcionam os resolvedores para servidores de domínios de primeiro nível, que os direcionam aos servidores autoritativos das zonas delegadas. As organizações gerenciam seus próprios dados autoritativos sem armazenar todo o espaço global de nomes em um servidor central.
 
-:::single-choice{#dns-authoritative-data}
-Quem fornece os dados definitivos de uma zona DNS delegada?
+:::single-choice{#dns-authoritative-data} Quem fornece os dados definitivos de uma zona DNS delegada?
 
 ::option[Qualquer navegador que já tenha visitado o site.]{#dns-browser-authority explanation="O cache de um navegador não é autoritativo para a zona."}
 ::option[Os servidores de nomes autoritativos configurados para a zona.]{#dns-authoritative-servers .correct explanation="A delegação identifica os servidores responsáveis por responder com autoridade."}
@@ -54,8 +51,7 @@ O resolvedor stub de um host geralmente envia uma consulta a um resolvedor recur
 
 O sucesso do DNS não comprova a integridade da rota, do transporte, do TLS nem da aplicação. Uma falha de DNS também pode ocorrer antes de qualquer consulta externa, pois `/etc/hosts`, sufixos de pesquisa, caches locais ou políticas de serviços de nomes afetam o resolvedor do sistema.
 
-:::single-choice{#dns-cache-ttl-role}
-O que o TTL de um registro DNS controla principalmente?
+:::single-choice{#dns-cache-ttl-role} O que o TTL de um registro DNS controla principalmente?
 
 ::option[Quantos roteadores um pacote IP pode atravessar.]{#dns-ip-hop-limit explanation="O TTL ou o Limite de Saltos do IP é um campo de protocolo diferente."}
 ::option[Por quanto tempo a aplicação deve permanecer íntegra.]{#dns-app-health-time explanation="O cache DNS não fornece garantia de disponibilidade do serviço."}

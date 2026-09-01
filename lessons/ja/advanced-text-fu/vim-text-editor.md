@@ -27,16 +27,14 @@ $ command -v vi
 
 解決されたパスだけでは、`vi` と `vim` が同じ実装かどうかは分かりません。`type -a vi vim` とエディタのバージョン出力から、さらに詳しい情報を得られます。
 
-:::single-choice{#vim-name-origin}
-Vim という名前は何を意味しますか？
+:::single-choice{#vim-name-origin} Vim という名前は何を意味しますか？
 
 ::option[Visual Input Manager]{#vim-visual-input explanation="これはエディタ名の由来ではありません。"}
 ::option[Virtual Interface Mode]{#vim-virtual-interface explanation="Vim はモードを使いますが、この語句が名前を表すわけではありません。"}
 ::option[Vi Improved]{#vim-vi-improved .correct explanation="Vim は vi 互換エディタの改良版として始まり、そのことが名前に表れています。"}
 :::
 
-:::single-choice{#vim-check-command}
-Bash が現在 `vim` という名前を解決できるか確認するコマンドはどれですか？
+:::single-choice{#vim-check-command} Bash が現在 `vim` という名前を解決できるか確認するコマンドはどれですか？
 
 ::option[`vim --create`]{#vim-create-option explanation="これはシェルの解決確認ではなく、Vim をインストールまたは検出する方法でもありません。"}
 ::option[`command -v vim`]{#vim-command-resolution .correct explanation="このシェル組み込みコマンドは、その名前で使われるコマンドがあれば報告します。"}
@@ -61,8 +59,7 @@ $ vim filename.txt
 
 Vim がファイルシステムのパーミッションを回避することはありません。ファイルを開けても、そのパスへ変更を保存できるとは限りません。
 
-:::single-choice{#vim-open-missing-path}
-まだ存在しないパスを `vim draft.txt` で指定すると、通常どうなりますか？
+:::single-choice{#vim-open-missing-path} まだ存在しないパスを `vim draft.txt` で指定すると、通常どうなりますか？
 
 ::option[Vim が新しいバッファーを開き、書き込んだときにだけファイルを作成します。]{#vim-new-buffer .correct explanation="パス名はバッファーに記憶されますが、ディスク上の作成は保存に成功するまで行われません。"}
 ::option[Vim はインターフェースを開く前に、ディスク上へ空のファイルを作成します。]{#vim-immediate-create explanation="新しいバッファーはパス名に関連付けられますが、保存に成功するまでファイルは作成されません。"}
@@ -86,8 +83,7 @@ Vim 内では `Esc` でノーマルモードに入り、`:help` と入力して 
 
 ヘルプタグは厳密なので、句読記号が重要なことがあります。ヘルプ内のリンクで `Ctrl+]` を押すと移動し、`Ctrl+T` で戻ります。
 
-:::single-choice{#vim-guided-tutorial}
-インストールされている場合、Vim のガイド付きチュートリアルを開始するシェルコマンドはどれですか？
+:::single-choice{#vim-guided-tutorial} インストールされている場合、Vim のガイド付きチュートリアルを開始するシェルコマンドはどれですか？
 
 ::option[`vim --quiz`]{#vim-quiz-option explanation="Vim はこのオプションを標準のガイド付きチュートリアルには使いません。"}
 ::option[`vimtutor`]{#vim-tutor-command .correct explanation="`vimtutor` は、安全に実践できるよう設計された対話型チュートリアルのコピーを開きます。"}
@@ -105,8 +101,7 @@ $ vim vim-practice.txt
 
 後続のレッスンで、検索、移動、挿入、編集、保存を紹介します。安全に終了する方法を覚えるまでは、`Esc` でノーマルモードへ戻り、`:q!` と入力して Enter を押すと、現在のウィンドウで保存していない変更を破棄できることを覚えておいてください。このコマンドは、その変更を意図的に破棄する場合にだけ使います。
 
-:::single-choice{#vim-abandon-practice-changes}
-使い捨ての練習ファイルで、現在のウィンドウを終了し、保存していない変更を破棄する Vim コマンドはどれですか？
+:::single-choice{#vim-abandon-practice-changes} 使い捨ての練習ファイルで、現在のウィンドウを終了し、保存していない変更を破棄する Vim コマンドはどれですか？
 
 ::option[`:w`]{#vim-write-only explanation="`:w` はバッファーを書き込みますが、現在のウィンドウは終了しません。"}
 ::option[`:wq`]{#vim-write-quit explanation="`:wq` は終了前に変更を保存するため、破棄しません。"}

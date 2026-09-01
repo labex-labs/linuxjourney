@@ -48,8 +48,7 @@ $ chmod u=rw,g=r,o= myfile
 
 If the class is omitted, as in `chmod +x myfile`, the process umask affects which classes are changed. Naming the class explicitly makes the intended result easier to review.
 
-:::single-choice{#modifying-permissions-remove-group-write}
-Which symbolic mode removes group write permission without changing the other group bits?
+:::single-choice{#modifying-permissions-remove-group-write} Which symbolic mode removes group write permission without changing the other group bits?
 
 ::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="This removes write permission from the owner class rather than the group class."}
 ::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="The `g` selects the group class, `-` removes a bit, and `w` identifies write permission."}
@@ -79,16 +78,14 @@ The mode `755` expands as follows:
 
 Unlike `+` or `-` symbolic operations, an octal mode supplies the complete ordinary permission set. A later lesson covers the optional leading digit used for special mode bits.
 
-:::single-choice{#modifying-permissions-octal-read-value}
-Which octal value represents read permission?
+:::single-choice{#modifying-permissions-octal-read-value} Which octal value represents read permission?
 
 ::option[`1`]{#modifying-permissions-value-one explanation="The value `1` represents execute permission."}
 ::option[`2`]{#modifying-permissions-value-two explanation="The value `2` represents write permission."}
 ::option[`4`]{#modifying-permissions-value-four .correct explanation="Read permission contributes the octal value `4` to a class digit."}
 :::
 
-:::single-choice{#modifying-permissions-mode-640}
-What ordinary permissions does `chmod 640 report` set?
+:::single-choice{#modifying-permissions-mode-640} What ordinary permissions does `chmod 640 report` set?
 
 ::option[Owner read, group write, other execute.]{#modifying-permissions-640-separated explanation="Octal digits are sums for each class, not separate read, write, and execute columns."}
 ::option[Owner read/execute, group write, other none.]{#modifying-permissions-640-wrong-sums explanation="Owner value `6` is read plus write, while group value `4` is read."}
@@ -101,8 +98,7 @@ Grant only the access that users and services require. Avoid using `chmod 777` a
 
 Recursive changes deserve extra care. Preview the target tree, account for symbolic links and mounted filesystems, and test on a small scope before using `chmod -R`. After a change, verify the resulting mode rather than assuming the command affected the intended objects.
 
-:::single-choice{#modifying-permissions-least-privilege}
-Why is `chmod 777` usually a poor general fix for an access problem?
+:::single-choice{#modifying-permissions-least-privilege} Why is `chmod 777` usually a poor general fix for an access problem?
 
 ::option[It removes all permissions from the owner.]{#modifying-permissions-777-removes explanation="Each `7` grants read, write, and execute; it does not remove the owner's permissions."}
 ::option[It grants every basic permission to owner, group, and other.]{#modifying-permissions-777-grants-all .correct explanation="All three classes receive `rwx`, which commonly exceeds the access actually required."}

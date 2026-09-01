@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 Die Shell startet die Pipeline-Befehle und richtet die Stromverbindung ein. Die Befehle können gleichzeitig arbeiten: `less` kann bereits lesen, bevor `ls` seine gesamte Auflistung erzeugt hat.
 
-:::single-choice{#pipe-stream-connection}
-Welche Ströme verbindet `|` in `ls -la /etc | less` standardmäßig?
+:::single-choice{#pipe-stream-connection} Welche Ströme verbindet `|` in `ls -la /etc | less` standardmäßig?
 
 ::option[stdin von `ls` mit stdout von `less`.]{#pipe-reversed-streams explanation="Damit wären Erzeuger, Verbraucher und beide Ströme vertauscht. Die Daten fließen von der Ausgabe des linken Befehls zur Eingabe des rechten."}
 ::option[stderr von `ls` mit beiden Strömen von `less`.]{#pipe-stderr-both explanation="Eine gewöhnliche Pipe verbindet stderr des linken Befehls nicht und zielt auch nicht auf beide Ströme des rechten."}
@@ -50,8 +49,7 @@ Passende Pfade fließen durch die Pipe, während Berechtigungsdiagnosen weiterhi
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-Wohin fließt stderr von `find` in `find /etc -name "*.conf" | less` normalerweise, wenn keine weitere Umleitung vorhanden ist?
+:::single-choice{#pipe-left-stderr} Wohin fließt stderr von `find` in `find /etc -name "*.conf" | less` normalerweise, wenn keine weitere Umleitung vorhanden ist?
 
 ::option[Durch dieselbe Pipe wie stdout nach `less`.]{#pipe-errors-to-less explanation="Die gewöhnliche Pipe verbindet nur stdout. Stderr wird nicht automatisch damit zusammengeführt."}
 ::option[In eine Datei namens `stderr` im aktuellen Verzeichnis.]{#pipe-errors-to-file explanation="Es ist keine Umleitung in eine Fehlerdatei angegeben, daher erstellt die Shell keine solche Datei."}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 Hier erhält `listing.txt` die Auflistung, während stdout von `tee` mit dem Terminal verbunden bleibt. Standardmäßig erstellt oder leert `tee` die benannte Datei wie `>`.
 
-:::single-choice{#tee-display-and-save}
-Welcher Befehl zeigt die Ausgabe von `generate-report` an und ersetzt zugleich `report.txt` durch dieselbe Ausgabe?
+:::single-choice{#tee-display-and-save} Welcher Befehl zeigt die Ausgabe von `generate-report` an und ersetzt zugleich `report.txt` durch dieselbe Ausgabe?
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="Eine einfache Ausgabeumleitung schreibt zwar die Datei, lässt aber keine Kopie zum Terminal weiterfließen."}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` kopiert stdin nach `report.txt` und in seine Standardausgabe, die in dieser Pipeline mit dem Terminal verbunden bleibt."}
@@ -82,8 +79,7 @@ Verwende `-a`, wenn die Datei ergänzt statt ersetzt werden soll:
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-Welcher Befehl zeigt das aktuelle Datum an und hängt es an `activity.log` an?
+:::single-choice{#tee-append-log} Welcher Befehl zeigt das aktuelle Datum an und hängt es an `activity.log` an?
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="Mit der Option `-a` hängt `tee` an die Datei an und kopiert die Eingabe weiterhin nach stdout."}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="Ohne `-a` ersetzt `tee` die vorhandene Datei, statt frühere Einträge zu erhalten."}
@@ -106,8 +102,7 @@ Diese Pipeline:
 
 Die Datei enthält die Daten vor der Filterung durch `grep`. Soll sie nur die gefilterten Zeilen enthalten, setze `tee` hinter `grep`.
 
-:::single-choice{#tee-before-filter-result}
-Was enthält `all.txt`, nachdem `produce | tee all.txt | grep error` erfolgreich beendet wurde?
+:::single-choice{#tee-before-filter-result} Was enthält `all.txt`, nachdem `produce | tee all.txt | grep error` erfolgreich beendet wurde?
 
 ::option[Nur die von `grep` gefundenen Zeilen.]{#tee-filtered-only explanation="`tee` läuft vor `grep` und schreibt deshalb die ungefilterte Eingabe statt der nachfolgenden Treffermenge."}
 ::option[Nur stderr von `produce`.]{#tee-producer-stderr explanation="Eine gewöhnliche Pipe überträgt stdout von `produce`. Dessen stderr ist nicht die Eingabe von `tee`."}

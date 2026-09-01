@@ -30,8 +30,7 @@ $ printf '%s\n' "$HOME"
 
 값은 현재 프로세스 환경에 따라 달라지며 보편적인 상수가 아닙니다. 더 엄격한 쉘 동작을 켜지 않았다면 설정되지 않은 변수는 빈 문자열로 확장됩니다.
 
-:::single-choice{#env-print-home-value}
-`HOME` 값을 하나의 인자로 보존하면서 출력하는 Bash 명령어는 무엇인가요?
+:::single-choice{#env-print-home-value} `HOME` 값을 하나의 인자로 보존하면서 출력하는 Bash 명령어는 무엇인가요?
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="작은따옴표는 매개변수 확장을 막으므로 문자 그대로 `$HOME`을 출력합니다."}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash는 큰따옴표 안에서 `$HOME`을 확장하고 `printf`는 전체 값을 한 인자로 받습니다."}
@@ -56,8 +55,7 @@ USER=pete
 
 환경 변수에는 자격 증명, 토큰, 내부 경로나 그 밖의 민감한 데이터가 들어 있을 수 있습니다. 전체 `env` 출력을 검토하고 가리지 않은 채 공개 이슈나 로그에 붙여 넣지 마세요.
 
-:::single-choice{#env-list-exported-values}
-새로 시작한 프로세스에 보이는 환경을 출력하는 명령어는 무엇인가요?
+:::single-choice{#env-list-exported-values} 새로 시작한 프로세스에 보이는 환경을 출력하는 명령어는 무엇인가요?
 
 ::option[`env`]{#env-print-all .correct explanation="명령어나 할당 없이 실행한 `env`는 자신이 받은 이름-값 환경을 출력합니다."}
 ::option[`alias`]{#env-alias-list explanation="`alias`는 내보낸 환경 레코드가 아니라 쉘 상태인 별칭 정의를 나열합니다."}
@@ -82,8 +80,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 실수로 `PATH`를 새 디렉터리 하나로 교체하거나 신뢰할 수 없는 쓰기 가능 디렉터리를 추가하지 마세요. 정상 명령어를 찾지 못하게 하거나 예상하지 않은 실행 파일이 실행될 수 있습니다.
 
-:::single-choice{#env-prepend-path-directory}
-현재 Bash와 이후 자식 프로세스의 기존 `PATH` 앞에 `/opt/coolapp/bin`을 추가하는 명령어는 무엇인가요?
+:::single-choice{#env-prepend-path-directory} 현재 Bash와 이후 자식 프로세스의 기존 `PATH` 앞에 `/opt/coolapp/bin`을 추가하는 명령어는 무엇인가요?
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="기존 검색 디렉터리를 모두 버려 일반 명령어를 찾기 어려워질 수 있습니다."}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="새 디렉터리를 앞에 추가하고 기존 값을 유지하며 결과를 자식 프로세스에 내보냅니다."}
@@ -107,8 +104,7 @@ test
 
 현재 Bash에는 `TEST` 변수가 있고 시작하는 명령어는 `TEST=test`를 물려받습니다. 자식 프로세스가 이 방식으로 상위 환경을 바꿀 수는 없습니다. 할당은 보통 `unset`하거나 쉘이 종료될 때까지 유지되며 시스템 전체 환경을 수정하지 않습니다.
 
-:::single-choice{#env-export-inheritance}
-Bash에서 `export TEST=test`의 주된 효과는 무엇인가요?
+:::single-choice{#env-export-inheritance} Bash에서 `export TEST=test`의 주된 효과는 무엇인가요?
 
 ::option[모든 사용자의 시스템 설정에 `TEST`를 씁니다.]{#env-system-wide explanation="현재 쉘과 자식의 상속에만 영향을 주며 모든 사용자나 운영체제 전체에는 적용되지 않습니다."}
 ::option[이후 자식 프로세스가 `TEST=test`를 물려받도록 표시합니다.]{#env-child-inheritance .correct explanation="`export`는 Bash가 시작하는 명령어에 전달할 환경에 쉘 변수를 추가합니다."}
@@ -131,8 +127,7 @@ $ env LANG=C sort names.txt
 
 `env -i COMMAND`는 처음에 빈 환경으로 명령어를 시작한 뒤 필요한 할당만 추가할 때 사용합니다. 여러 프로그램이 환경 값에 의존하므로 의도적으로 사용하세요.
 
-:::single-choice{#env-one-command-value}
-현재 쉘의 `LANG`을 영구 변경하지 않고 `LANG=C`로 `sort names.txt`를 실행하는 명령어는 무엇인가요?
+:::single-choice{#env-one-command-value} 현재 쉘의 `LANG`을 영구 변경하지 않고 `LANG=C`로 `sort names.txt`를 실행하는 명령어는 무엇인가요?
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env`는 시작하는 명령어의 환경에 할당을 추가하고 상위 쉘은 이전 값을 유지합니다."}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="현재 쉘에서 `LANG=C`를 내보내므로 `sort`가 끝난 뒤에도 값이 바뀐 채로 남습니다."}

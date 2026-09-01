@@ -33,8 +33,7 @@ $ emacs
 $ emacs -nw
 ```
 
-:::single-choice{#emacs-terminal-start}
-グラフィカルなウィンドウシステムを使わず、現在の端末内で Emacs を起動するコマンドはどれですか？
+:::single-choice{#emacs-terminal-start} グラフィカルなウィンドウシステムを使わず、現在の端末内で Emacs を起動するコマンドはどれですか？
 
 ::option[`emacs -w`]{#emacs-window-option explanation="これは、ここで紹介した no-window-system の形式ではありません。"}
 ::option[`emacs -nw`]{#emacs-no-window .correct explanation="`-nw` オプションは、グラフィカルなウィンドウシステムを使わず端末上で実行するよう Emacs に指示します。"}
@@ -51,8 +50,7 @@ $ emacs notes.txt
 
 ファイルが存在すれば、Emacs はバッファーへ読み込みます。存在しなければ、そのパス名に関連付けた新しいバッファーを作ります。ファイルが実際に作成されるのは、保存に成功した後です。書き込みが成功するかどうかは、引き続きファイルシステムのパーミッションによって決まります。
 
-:::single-choice{#emacs-open-file-buffer}
-まだ存在しない `notes.txt` に対して `emacs notes.txt` を実行すると、通常どうなりますか？
+:::single-choice{#emacs-open-file-buffer} まだ存在しない `notes.txt` に対して `emacs notes.txt` を実行すると、通常どうなりますか？
 
 ::option[そのパス名に関連付けた新しいバッファーを開きます。]{#emacs-new-file-buffer .correct explanation="バッファーに `notes.txt` 用の新しいテキストを保持でき、実際のファイル作成は保存まで延期されます。"}
 ::option[エディタの起動前にディスク上へファイルを作成します。]{#emacs-immediate-file explanation="保存に成功するまでディスクファイルを作らず、新しいバッファーをパス名へ関連付けられます。"}
@@ -69,8 +67,7 @@ Emacs では、関連しながらも異なるオブジェクトを使います�
 
 複数のバッファーが見えない状態で存在でき、2 つのウィンドウに同じバッファーを表示することもできます。ウィンドウを閉じても、そのバッファーが破棄されたりファイルが削除されたりするとは限りません。
 
-:::single-choice{#emacs-buffer-definition}
-Emacs のバッファーとは何ですか？
+:::single-choice{#emacs-buffer-definition} Emacs のバッファーとは何ですか？
 
 ::option[最上位のグラフィカルアプリケーションフレーム。]{#emacs-buffer-frame explanation="フレームが最上位の表示オブジェクトであり、バッファーはエディタの内容や状態を保持します。"}
 ::option[編集可能なテキストやほかのエディタ状態を保持するオブジェクト。]{#emacs-buffer-content .correct explanation="開いたファイルの内容と多くのファイル以外の表示は、Emacs のバッファーに置かれます。"}
@@ -87,8 +84,7 @@ Emacs の文書では短い表記を使います。
 
 端末によっては一部のキーが横取りまたは再割り当てされることがあります。`Esc` に続いてキーを押す操作が、Meta の組み合わせの代わりになることもあります。
 
-:::single-choice{#emacs-key-sequence-notation}
-`C-x C-f` と表記された Emacs のキーシーケンスは、どのように入力しますか？
+:::single-choice{#emacs-key-sequence-notation} `C-x C-f` と表記された Emacs のキーシーケンスは、どのように入力しますか？
 
 ::option[Control を押しながら `x`、次に Control を押しながら `f` を押します。]{#emacs-control-x-f .correct explanation="各 `C-` 接頭辞は直後のキーに適用され、2 つの組み合わせを順番に入力します。"}
 ::option[リテラル文字列 `C-x C-f` をバッファーへ入力します。]{#emacs-literal-key-text explanation="この表記は、挿入するテキストではなくコントロールキーのイベントを表します。"}
@@ -101,8 +97,7 @@ Emacs 内で `C-h t` と入力すると、対話型チュートリアルが開�
 
 Emacs がメニューやウェルカムバッファーを表示しても、重要なファイルで試行錯誤するより、チュートリアルの方が体系的な出発点になります。
 
-:::single-choice{#emacs-open-tutorial}
-Emacs の組み込みチュートリアルを開くキーシーケンスはどれですか？
+:::single-choice{#emacs-open-tutorial} Emacs の組み込みチュートリアルを開くキーシーケンスはどれですか？
 
 ::option[`C-x C-s`]{#emacs-save-buffer explanation="このシーケンスは現在のバッファーを保存し、チュートリアルは開きません。"}
 ::option[`C-x C-c`]{#emacs-exit-sequence explanation="このシーケンスはレッスンではなく、Emacs の終了を始めます。"}

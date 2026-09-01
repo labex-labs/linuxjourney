@@ -35,8 +35,7 @@ drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-`drwxr-xr-x` の先頭にある `d` は何を示しますか？
+:::single-choice{#file-permissions-type-character} `drwxr-xr-x` の先頭にある `d` は何を示しますか？
 
 ::option[オブジェクトがシンボリックリンクである。]{#file-permissions-type-link explanation="シンボリックリンクは通常、ファイル種別の位置に `l` と表示されます。"}
 ::option[オブジェクトがディレクトリである。]{#file-permissions-type-directory .correct explanation="先頭文字はファイル種別で、`d` はディレクトリを識別します。"}
@@ -62,8 +61,7 @@ d | rwx | r-x | r-x
 
 ファイルの削除は主に、ファイル自身の書き込みビットではなく、親ディレクトリの権限によって決まります。
 
-:::single-choice{#file-permissions-directory-execute}
-ディレクトリの実行権限が主に許可するものは何ですか？
+:::single-choice{#file-permissions-directory-execute} ディレクトリの実行権限が主に許可するものは何ですか？
 
 ::option[ディレクトリ内にあるすべての通常ファイルの実行。]{#file-permissions-directory-run-files explanation="ディレクトリの実行ビットは、内部の各ファイルへ実行権限を与えません。"}
 ::option[ディレクトリ内にあるすべてのファイル内容の変更。]{#file-permissions-directory-edit-files explanation="ファイル内容の書き込みは、各ファイルの権限とほかのアクセス制御によって決まります。"}
@@ -82,16 +80,14 @@ d | rwx | r-x | r-x
 
 例では、所有者のトリプレットが `rwx`、グループとその他が `r-x` です。所有者はディレクトリを読み取り、書き込み、検索できます。グループとその他は読み取りと検索ができますが、通常のモードビットではディレクトリを通じてエントリーを作成・削除できません。
 
-:::single-choice{#file-permissions-triplet-order}
-ファイル種別文字の後に、三つの権限トリプレットはどの順序で並びますか？
+:::single-choice{#file-permissions-triplet-order} ファイル種別文字の後に、三つの権限トリプレットはどの順序で並びますか？
 
 ::option[グループ、所有者、その他。]{#file-permissions-order-group-first explanation="グループのトリプレットは最初ではなく2番目です。"}
 ::option[その他、グループ、所有者。]{#file-permissions-order-other-first explanation="その他は最後で、所有者のトリプレットが最初です。"}
 ::option[所有者、グループ、その他。]{#file-permissions-order-owner-first .correct explanation="9個の権限文字は常に、所有者、グループ、その他の順でトリプレットを示します。"}
 :::
 
-:::single-choice{#file-permissions-example-group}
-`drwxr-xr-x` でグループクラスが持つ通常の権限はどれですか？
+:::single-choice{#file-permissions-example-group} `drwxr-xr-x` でグループクラスが持つ通常の権限はどれですか？
 
 ::option[読み取りと書き込み。]{#file-permissions-group-read-write explanation="グループのトリプレットは `r-x` なので、書き込み位置は `-` です。"}
 ::option[書き込みと実行。]{#file-permissions-group-write-execute explanation="グループのトリプレットは、先頭位置に `w` ではなく `r` を持ちます。"}

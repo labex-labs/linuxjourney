@@ -45,8 +45,7 @@ ABC123
 
 不在 `SET1` 中的字符会原样通过。
 
-:::single-choice{#tr-map-characters}
-`printf '%s\n' 'abc123' | tr 'abc' 'ABC'` 会输出什么？
+:::single-choice{#tr-map-characters} `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` 会输出什么？
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="数字不属于源集合，因此 `tr` 不会用字母替换它们。"}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="`a`、`b` 和 `c` 分别映射到 `ABC` 中相同位置的字符，数字保持不变。"}
@@ -78,8 +77,7 @@ $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-:::single-choice{#tr-delete-digits}
-哪个命令会从 stdin 中删除每个数字，同时让其他字符保持不变？
+:::single-choice{#tr-delete-digits} 哪个命令会从 stdin 中删除每个数字，同时让其他字符保持不变？
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` 选项会从输入流中删除数字字符类里的所有字符。"}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` 会压缩重复数字，但每一连续组仍会保留一个字符。"}
@@ -105,8 +103,7 @@ one
 Two
 ```
 
-:::single-choice{#tr-squeeze-spaces}
-哪个命令会把 stdin 中每一连续的普通空格压缩为一个空格？
+:::single-choice{#tr-squeeze-spaces} 哪个命令会把 stdin 中每一连续的普通空格压缩为一个空格？
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="`-s` 选项压缩所给集合中的重复字符，这里的集合只包含一个普通空格。"}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="`-d` 会删除所有普通空格，而不是每一连续组保留一个。"}
@@ -141,8 +138,7 @@ userexamplecom
 
 这也会删除换行符，因为换行符不是字母或数字。如果记录边界很重要，请有意添加或保留分隔符。
 
-:::single-choice{#tr-keep-alphanumeric}
-`tr -cd '[:alnum:]'` 会对 stdin 做什么？
+:::single-choice{#tr-keep-alphanumeric} `tr -cd '[:alnum:]'` 会对 stdin 做什么？
 
 ::option[删除字母和数字，保留其他所有字符。]{#tr-delete-alnum explanation="补集会改变 `-d` 的目标；字母数字集合本身会被保留。"}
 ::option[删除所有非字母数字字符。]{#tr-delete-nonalnum .correct explanation="`-c` 对字母数字集合取补集，`-d` 再删除得到的非字母数字集合。"}
@@ -174,8 +170,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 需要保存结果时，请把 stdout 重定向到另一个文件。不要重定向回输入路径，因为 shell 会在 `tr` 读取之前将其截断。
 
-:::single-choice{#tr-read-file-input}
-哪个命令会让 `tr` 从 stdin 读取 `names.txt`，并把小写字符转换为大写？
+:::single-choice{#tr-read-file-input} 哪个命令会让 `tr` 从 stdin 读取 `names.txt`，并把小写字符转换为大写？
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` 不以这种方式接受普通输入文件名；多出的操作数会使语法无效。"}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="这会正确读取文件，但会删除小写字母而不是转换它们。"}

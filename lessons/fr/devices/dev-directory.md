@@ -24,8 +24,7 @@ Les entrées peuvent représenter du stockage physique, des terminaux, des inter
 
 Le premier caractère d'une liste longue indique le type d'objet. Les nœuds de périphériques caractère et bloc apparaissent comme `c` et `b` ; les leçons suivantes étudient ces types et leurs numéros majeur et mineur.
 
-:::single-choice{#dev-directory-device-node-purpose}
-Que se passe-t-il lorsqu'un programme ouvre un nœud de périphérique sous `/dev` ?
+:::single-choice{#dev-directory-device-node-purpose} Que se passe-t-il lorsqu'un programme ouvre un nœud de périphérique sous `/dev` ?
 
 ::option[Il lit toujours un fichier ordinaire qui contient une copie du matériel.]{#dev-directory-ordinary-copy explanation="Un nœud est un objet spécial ; il ne stocke pas une copie des données du périphérique comme un fichier ordinaire."}
 ::option[Il accède à une interface mise en œuvre par un pilote du noyau.]{#dev-directory-kernel-interface .correct explanation="Les opérations sur le nœud sont acheminées vers le comportement d'un pilote du noyau selon l'identité du périphérique."}
@@ -42,8 +41,7 @@ $ command > /dev/null
 
 Parmi les autres exemples, `/dev/zero` produit des octets nuls et `/dev/urandom` fournit des octets aléatoires par le sous-système du noyau. Chacun possède une sémantique précise ; ne déduisez pas son comportement de son seul nom.
 
-:::single-choice{#dev-directory-null-behavior}
-Que fait `/dev/null` des données qui y sont écrites ?
+:::single-choice{#dev-directory-null-behavior} Que fait `/dev/null` des données qui y sont écrites ?
 
 ::option[Il les stocke jusqu'au prochain redémarrage.]{#dev-directory-null-temporary-storage explanation="Le périphérique null est un puits et ne constitue pas un stockage temporaire."}
 ::option[Il les envoie à tous les terminaux connectés.]{#dev-directory-null-broadcast explanation="La diffusion vers les terminaux n'a aucun rapport avec ce pseudo-périphérique."}
@@ -56,8 +54,7 @@ Sur les systèmes Linux modernes, le `devtmpfs` soutenu par le noyau peut créer
 
 Des liens stables comme `/dev/disk/by-id/` ou `/dev/disk/by-uuid/` sont plus sûrs dans une configuration que des noms dépendant de l'ordre de détection comme `/dev/sda`, lequel peut changer avec la topologie ou l'ordre de découverte.
 
-:::single-choice{#dev-directory-persistent-link}
-Pourquoi un administrateur peut-il préférer `/dev/disk/by-id/...` à `/dev/sda` dans une configuration ?
+:::single-choice{#dev-directory-persistent-link} Pourquoi un administrateur peut-il préférer `/dev/disk/by-id/...` à `/dev/sda` dans une configuration ?
 
 ::option[Le lien fondé sur un identifiant dépend moins de l'ordre de découverte.]{#dev-directory-stable-identifier .correct explanation="Les liens persistants proviennent des propriétés du périphérique plutôt que d'une lettre attribuée selon l'ordre d'énumération."}
 ::option[Le lien sauvegarde automatiquement chaque bloc du périphérique.]{#dev-directory-link-backup explanation="Un lien symbolique désigne le même périphérique et ne crée aucune sauvegarde."}
@@ -70,8 +67,7 @@ Les outils standard peuvent ouvrir les nœuds, mais les lectures et écritures a
 
 Commencez par des outils de découverte en lecture seule, confirmez le nœud et l'identité exacte du périphérique, puis suivez sa documentation. N'envoyez jamais de données vers une entrée `/dev` inconnue sur un système important.
 
-:::single-choice{#dev-directory-direct-write-risk}
-Pourquoi faut-il éviter d'écrire des données arbitraires dans un nœud inconnu ?
+:::single-choice{#dev-directory-direct-write-risk} Pourquoi faut-il éviter d'écrire des données arbitraires dans un nœud inconnu ?
 
 ::option[Chaque nœud est nécessairement un fichier texte inoffensif.]{#dev-directory-harmless-text explanation="Les nœuds de périphériques ne sont précisément pas des fichiers texte ordinaires."}
 ::option[L'opération peut agir directement sur le matériel, le stockage ou une autre interface du noyau.]{#dev-directory-write-impact .correct explanation="Les écritures invoquent des opérations définies par le pilote et peuvent avoir des effets destructeurs ou perturbateurs."}

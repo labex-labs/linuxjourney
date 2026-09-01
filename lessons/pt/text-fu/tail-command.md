@@ -22,8 +22,7 @@ $ tail application.log
 
 Se o arquivo tiver menos de 10 linhas, todas as linhas disponíveis serão mostradas. O arquivo em si não é alterado.
 
-:::single-choice{#tail-default-lines}
-O que `tail application.log` exibe por padrão?
+:::single-choice{#tail-default-lines} O que `tail application.log` exibe por padrão?
 
 ::option[Até as 10 linhas iniciais do arquivo.]{#tail-first-ten explanation="O início de um arquivo é selecionado por `head`. `tail` trabalha a partir do final."}
 ::option[Todas as linhas acrescentadas depois que o comando é iniciado.]{#tail-follow-only explanation="O acompanhamento contínuo exige `-f` ou uma opção relacionada. `tail` sem opções mostra uma captura e termina."}
@@ -46,8 +45,7 @@ $ tail -c 100 payload.bin
 
 O modo de bytes pode começar no meio de uma linha de texto ou de um caractere codificado; por isso, o modo de linhas costuma ser mais claro para textos.
 
-:::single-choice{#tail-twenty-lines}
-Qual comando exibe as 20 linhas finais de `application.log`?
+:::single-choice{#tail-twenty-lines} Qual comando exibe as 20 linhas finais de `application.log`?
 
 ::option[`tail -n 20 application.log`]{#tail-twenty-end .correct explanation="A opção `-n` seleciona uma quantidade de linhas, e `tail` as obtém do final."}
 ::option[`head -n 20 application.log`]{#head-twenty-start explanation="Esse comando seleciona 20 linhas do início, não do final."}
@@ -64,8 +62,7 @@ $ tail -n +5 report.txt
 
 Esse comando ignora as quatro primeiras linhas e começa na linha 5. Ele é útil para remover uma quantidade conhecida de linhas de cabeçalho de um fluxo.
 
-:::single-choice{#tail-start-line-five}
-Qual comando mostra `report.txt` a partir da linha 5?
+:::single-choice{#tail-start-line-five} Qual comando mostra `report.txt` a partir da linha 5?
 
 ::option[`tail -n +5 report.txt`]{#tail-from-five .correct explanation="A quantidade `+5` instrui `tail` a começar na linha 5 e continuar até o final."}
 ::option[`tail -n 5 report.txt`]{#tail-final-five explanation="Sem um sinal de adição, esse comando seleciona as cinco linhas finais, independentemente de seus números absolutos."}
@@ -82,8 +79,7 @@ $ tail -f application.log
 
 Pressione `Ctrl+C` para interromper `tail` e retornar ao shell. Acompanhar um arquivo apenas exibe o conteúdo novo; isso não garante que o aplicativo produtor do log esteja saudável nem que todos os eventos relevantes usem esse arquivo.
 
-:::single-choice{#tail-follow-file}
-Qual comando mostra o final atual de `application.log` e continua aguardando conteúdo acrescentado?
+:::single-choice{#tail-follow-file} Qual comando mostra o final atual de `application.log` e continua aguardando conteúdo acrescentado?
 
 ::option[`tail -f application.log`]{#tail-follow-app .correct explanation="A opção `-f` mantém `tail` ativo e exibe os dados acrescentados ao arquivo."}
 ::option[`tail -n 0 application.log`]{#tail-zero-lines explanation="Esse comando inicialmente não mostra linhas e termina, pois nenhuma opção de acompanhamento foi fornecida."}
@@ -100,8 +96,7 @@ $ tail -F application.log
 
 Use `-f` quando quiser acompanhar o arquivo atualmente aberto e `-F` quando for esperado que um log identificado pelo nome seja rotacionado. Esses são comportamentos do GNU; outras implementações podem ser diferentes.
 
-:::single-choice{#tail-follow-rotated-name}
-No GNU/Linux, qual opção é mais adequada para acompanhar `application.log` durante uma rotação comum por renomeação e recriação?
+:::single-choice{#tail-follow-rotated-name} No GNU/Linux, qual opção é mais adequada para acompanhar `application.log` durante uma rotação comum por renomeação e recriação?
 
 ::option[`-n`]{#tail-rotation-lines explanation="A opção `-n` altera a quantidade de linhas exibidas. Ela não tenta novamente um caminho substituído."}
 ::option[`-c`]{#tail-rotation-bytes explanation="A opção `-c` altera a unidade de seleção para bytes. Ela não oferece acompanhamento consciente da rotação."}

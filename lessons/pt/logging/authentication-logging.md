@@ -25,8 +25,7 @@ $ sudo less /var/log/auth.log
 
 A unit pode se chamar `ssh.service` ou `sshd.service`. O acesso costuma ser restrito porque os registros expõem contas e detalhes de acesso.
 
-:::single-choice{#auth-logs-file-location}
-Onde os eventos de autenticação Linux devem sempre ser armazenados?
+:::single-choice{#auth-logs-file-location} Onde os eventos de autenticação Linux devem sempre ser armazenados?
 
 ::option[No destino escolhido pela política local de logging.]{#auth-logs-local-policy .correct explanation="Arquivos, journal e coletores centralizados variam por distribuição e configuração."}
 ::option[Em `/var/log/auth.log` em toda distribuição.]{#auth-logs-auth-only explanation="Esse caminho é comum na família Debian, mas não é universal."}
@@ -43,8 +42,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 Ele identifica horário, host, programa, módulo e serviço PAM, usuário solicitado e UID de origem. Sozinho, não identifica a pessoa por trás do UID 1000 nem prova malícia. Resolva o UID conforme as contas válidas na data e correlacione terminal, endereço remoto, sessão e eventos próximos.
 
-:::single-choice{#auth-logs-uid-inference}
-O que `uid=1000` estabelece nesse registro?
+:::single-choice{#auth-logs-uid-inference} O que `uid=1000` estabelece nesse registro?
 
 ::option[Que a senha root foi digitada errada mil vezes.]{#auth-logs-thousand-passwords explanation="O valor é um identificador, não uma contagem de tentativas."}
 ::option[A identidade numérica da conta associada ao processo iniciador.]{#auth-logs-numeric-identity .correct explanation="Outras evidências de sessão e conta são necessárias para atribuir a ação a uma pessoa."}
@@ -57,8 +55,7 @@ Pesquise tentativas aceitas e rejeitadas num intervalo limitado. Para SSH, exami
 
 `last` e `lastb` podem resumir `wtmp` e `btmp`, quando mantidos, mas esses bancos binários têm limites de retenção e integridade. Compare-os com journal, syslog e fontes centralizadas.
 
-:::single-choice{#auth-logs-failed-attempts}
-Com o que tentativas repetidas de login devem ser correlacionadas?
+:::single-choice{#auth-logs-failed-attempts} Com o que tentativas repetidas de login devem ser correlacionadas?
 
 ::option[Apenas com o espaço livre total do disco.]{#auth-logs-disk-space explanation="A capacidade não identifica fonte, alvo ou método."}
 ::option[Com fonte, conta-alvo, método, horário e sessões bem-sucedidas.]{#auth-logs-correlated-fields .correct explanation="Esses detalhes ajudam a distinguir erro, configuração, varredura e acesso indevido."}
@@ -69,8 +66,7 @@ Com o que tentativas repetidas de login devem ser correlacionadas?
 
 Se houver suspeita de incidente, registre hora e fuso do host, preserve logs originais e metadados e proteja as cópias. Não edite evidências. Bloquear contas, mudar firewall e encerrar sessões pode interromper acesso legítimo ou alertar um invasor; siga o processo de resposta e mantenha recuperação.
 
-:::single-choice{#auth-logs-preservation}
-Como tratar evidências de autenticação durante uma investigação?
+:::single-choice{#auth-logs-preservation} Como tratar evidências de autenticação durante uma investigação?
 
 ::option[Editar linhas suspeitas no arquivo original para maior clareza.]{#auth-logs-edit-original explanation="Alterar a fonte compromete a integridade da evidência."}
 ::option[Publicar o log completo para que todos identifiquem os usuários.]{#auth-logs-publish explanation="Os registros podem expor identidades e detalhes da infraestrutura."}

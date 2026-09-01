@@ -22,8 +22,7 @@ Der konventionelle Nice-Bereich reicht von `-20` bis `19`:
 
 Niceness reserviert weder einen Prozentsatz einer CPU noch garantiert sie eine sofortige Ausführung. Ihre Wirkung ist am deutlichsten, wenn vergleichbare ausführungsbereite Aufgaben um CPU-Zeit konkurrieren. Echtzeitrichtlinien, cgroups, CPU-Affinität, E/A-Wartezeiten und andere Kontrollen können das beobachtete Verhalten stärker bestimmen.
 
-:::single-choice{#process-niceness-lower-value}
-Welcher Nice-Wert verleiht unter derselben gewöhnlichen Scheduling-Richtlinie ein größeres relatives CPU-Gewicht?
+:::single-choice{#process-niceness-lower-value} Welcher Nice-Wert verleiht unter derselben gewöhnlichen Scheduling-Richtlinie ein größeres relatives CPU-Gewicht?
 
 ::option[`10`]{#process-niceness-value-ten explanation="Ein positiver Wert ist netter und besitzt gewöhnlich weniger Gewicht als null oder ein negativer Wert."}
 ::option[`19`]{#process-niceness-value-nineteen explanation="Dies ist das netteste Ende des konventionellen Bereichs und besitzt ein vergleichsweise geringes Gewicht."}
@@ -40,8 +39,7 @@ $ ps -o pid,ni,pri,stat,cmd -p 3245
 
 `NI` ist der für Benutzer sichtbare Nice-Wert. Eine Spalte `PRI` oder eine ähnliche Spalte kann eine abgeleitete Scheduler-Priorität darstellen, deren Skala sich je nach Werkzeug und Scheduling-Klasse unterscheidet. Gehe daher nicht davon aus, dass beide Spalten austauschbar sind.
 
-:::single-choice{#process-niceness-top-column}
-Welche Spalte von `top` zeigt gewöhnlich den Nice-Wert an?
+:::single-choice{#process-niceness-top-column} Welche Spalte von `top` zeigt gewöhnlich den Nice-Wert an?
 
 ::option[`PID`]{#process-niceness-column-pid explanation="`PID` kennzeichnet einen Prozess und zeigt nicht seine Scheduling-Anpassung an."}
 ::option[`TTY`]{#process-niceness-column-tty explanation="`TTY` kennzeichnet die Zuordnung zu einem steuernden Terminal."}
@@ -58,8 +56,7 @@ $ nice -n 5 long-computation
 
 Die angeforderte Anpassung und die akzeptierte Syntax kannst du im lokalen Handbuch prüfen. Ein unprivilegierter Benutzer kann einen Befehl gewöhnlich netter machen, indem er seinen Wert erhöht. Ein niedrigerer Nice-Wert und damit ein günstigeres Scheduling-Gewicht erfordern entsprechende Privilegien oder konfigurierte Ressourcenlimits.
 
-:::single-choice{#process-niceness-nice-command}
-Was bewirkt `nice -n 5 long-computation`?
+:::single-choice{#process-niceness-nice-command} Was bewirkt `nice -n 5 long-computation`?
 
 ::option[Es startet den Befehl mit Nice-Wert 5, sofern dies erlaubt ist.]{#process-niceness-start-five .correct explanation="`nice` startet einen neuen Befehl mit der angeforderten Scheduling-Anpassung."}
 ::option[Es ändert PID 5 auf den niedrigstmöglichen Nice-Wert.]{#process-niceness-pid-five explanation="Der Operand nach `-n` ist ein Nice-Wert und kein PID-Ziel."}
@@ -76,8 +73,7 @@ $ renice -n 10 -p 3245
 
 Dies fordert den Nice-Wert `10` für PID `3245` an. Prüfe zuerst das Ziel, da PIDs wiederverwendet werden können, und bestätige anschließend den resultierenden Wert. Berechtigungen hängen von Eigentum, Privilegien, Ressourcenlimits und Systemrichtlinien ab. Die Erhöhung des Nice-Werts ist für einen eigenen Prozess gewöhnlich erlaubt; das Rückgängigmachen dieser Änderung kann ohne Privilegien untersagt sein.
 
-:::single-choice{#process-niceness-renice-purpose}
-Welches Werkzeug ändert den Nice-Wert eines bestehenden Prozesses?
+:::single-choice{#process-niceness-renice-purpose} Welches Werkzeug ändert den Nice-Wert eines bestehenden Prozesses?
 
 ::option[`nice`]{#process-niceness-tool-nice explanation="`nice` startet hauptsächlich einen neuen Befehl mit einem angepassten Wert."}
 ::option[`kill`]{#process-niceness-tool-kill explanation="`kill` sendet Signale und dient nicht als gewöhnlicher Niceness-Editor."}

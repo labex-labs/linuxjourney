@@ -16,8 +16,7 @@ Une capture enregistre le trafic visible depuis un point d'observation. Elle ré
 
 Capturez sur l'interface et dans l'espace de noms où passe réellement le flux touché. Ponts, conteneurs, VPN, agrégats, VLAN et déchargement peuvent modifier ce qu'une interface montre. Utilisez `ip route get` et `ip link` pour repérer les candidates.
 
-:::single-choice{#packet-analysis-interface-choice}
-Pourquoi le choix de l'interface de capture importe-t-il ?
+:::single-choice{#packet-analysis-interface-choice} Pourquoi le choix de l'interface de capture importe-t-il ?
 
 ::option[Chaque interface reflète automatiquement tout Internet.]{#packet-analysis-mirrors-internet explanation="Un hôte ne voit normalement que le trafic livré ou répliqué vers ses interfaces."}
 ::option[Seul le trafic visible à ce point d'observation peut être enregistré.]{#packet-analysis-visible-point .correct explanation="Espaces de noms, tunnels, ponts et routage peuvent placer le flux ailleurs."}
@@ -35,8 +34,7 @@ $ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
 
 `-i` choisit l'interface, `-n` garde les valeurs numériques, `-c` borne le nombre, `-w` écrit le pcap, et l'expression finale filtre la capture. Ajoutez aussi une limite de temps externe lorsque le trafic peut être absent.
 
-:::single-choice{#packet-analysis-count-bound}
-Que fait `-c 100` ?
+:::single-choice{#packet-analysis-count-bound} Que fait `-c 100` ?
 
 ::option[Il capture seulement le port TCP 100.]{#packet-analysis-port-hundred explanation="Le port se choisit dans l'expression de filtre."}
 ::option[Il compresse le fichier à 100 octets.]{#packet-analysis-compress-hundred explanation="Cette option compte les paquets, pas la taille du fichier."}
@@ -53,8 +51,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 Lisez horodatage, protocole, source, destination, indicateurs, séquences, acquittements et longueur selon le protocole. L'horodatage marque l'observation sur cet hôte, pas forcément l'émission exacte ailleurs. La synchronisation des horloges compte pour corréler plusieurs systèmes.
 
-:::single-choice{#packet-analysis-read-file}
-Quelle option lit les paquets d'un fichier pcap enregistré ?
+:::single-choice{#packet-analysis-read-file} Quelle option lit les paquets d'un fichier pcap enregistré ?
 
 ::option[`-r`]{#packet-analysis-option-read .correct explanation="L'option read traite un fichier de capture existant."}
 ::option[`-i`]{#packet-analysis-option-interface explanation="Cette option choisit une interface de capture en direct."}
@@ -67,8 +64,7 @@ Une capture vide peut venir d'une mauvaise interface ou d'un mauvais espace de n
 
 TLS masque normalement les charges utiles mais laisse des métadonnées utiles : extrémités, temps, tailles, comportement TCP et parties des négociations. Ne tentez aucun déchiffrement non autorisé et ne collectez pas de clés privées sans précaution.
 
-:::single-choice{#packet-analysis-no-packets}
-Que prouve une capture filtrée vide ?
+:::single-choice{#packet-analysis-no-packets} Que prouve une capture filtrée vide ?
 
 ::option[Que l'application distante a été définitivement supprimée.]{#packet-analysis-empty-deleted explanation="Une erreur de point d'observation ou de filtre produit le même résultat."}
 ::option[Que tout le réseau ne transporte aucun trafic.]{#packet-analysis-empty-network explanation="Un filtre étroit peut exclure tout le trafic sans rapport."}
@@ -79,8 +75,7 @@ Que prouve une capture filtrée vide ?
 
 Stockez les pcaps avec des permissions restrictives. Notez commande, hôte, interface, fuseau horaire, filtre et fenêtre d'incident, et hachez les preuves si leur intégrité compte. Avant partage, réduisez ou assainissez les données tout en préservant les champs nécessaires ; charges utiles et métadonnées peuvent identifier utilisateurs et systèmes.
 
-:::single-choice{#packet-analysis-pcap-safety}
-Comment faut-il traiter un pcap d'incident ?
+:::single-choice{#packet-analysis-pcap-safety} Comment faut-il traiter un pcap d'incident ?
 
 ::option[Comme une preuve sensible, avec accès restreint et provenance documentée.]{#packet-analysis-sensitive-evidence .correct explanation="Une capture peut contenir des informations confidentielles et exige intégrité comme confidentialité."}
 ::option[Comme un texte inoffensif publiable sans examen.]{#packet-analysis-public explanation="Les captures binaires peuvent révéler charges utiles, identités et infrastructure."}

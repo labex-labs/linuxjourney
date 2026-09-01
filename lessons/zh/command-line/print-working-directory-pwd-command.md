@@ -32,8 +32,7 @@ meta_keywords: "pwd 命令, linux pwd, 显示当前工作目录, 当前目录 li
 |-- var
 ```
 
-:::single-choice{#identify-root-subdirectories}
-在上面的目录树中，`home` 和 `etc` 与 `/` 是什么关系？
+:::single-choice{#identify-root-subdirectories} 在上面的目录树中，`home` 和 `etc` 与 `/` 是什么关系？
 
 ::option[它们是从 `/` 分支出来的子目录。]{#root-subdirectories .correct explanation="这两个目录都直接出现在 `/` 下方；文件系统从根目录向下分支形成子目录。"}
 ::option[它们是存放在 `bin` 目录中的文件。]{#files-inside-bin explanation="目录树把 `home` 和 `etc` 放在与 `bin` 同一层，而不是其内部；在本例中它们是目录而非文件。"}
@@ -52,8 +51,7 @@ meta_keywords: "pwd 命令, linux pwd, 显示当前工作目录, 当前目录 li
 
 以 `/` 开头的路径是绝对路径，因为它从根目录开始。像 `Movies` 这样的路径是相对路径，因为它依赖于你当前的位置。
 
-:::single-choice{#recognize-absolute-path}
-为什么 `/home/pete/Movies` 是绝对路径？
+:::single-choice{#recognize-absolute-path} 为什么 `/home/pete/Movies` 是绝对路径？
 
 ::option[它包含多个以 `/` 分隔的目录名。]{#contains-directories explanation="绝对路径和相对路径都可以包含多个目录名；决定路径类型的是起点，而不是名称数量。"}
 ::option[它以名为 `Movies` 的目录结尾。]{#ends-with-movies explanation="目标名称并不决定路径是否绝对；绝对路径由其根目录起点来识别。"}
@@ -64,8 +62,7 @@ meta_keywords: "pwd 命令, linux pwd, 显示当前工作目录, 当前目录 li
 
 `pwd` 的完整形式是“print working directory”（打印当前工作目录）。你的工作目录是你的 shell 当前所在的目录。使用相对路径的命令都是从这个位置开始的。
 
-:::single-choice{#expand-pwd-name}
-`pwd` 代表什么？
+:::single-choice{#expand-pwd-name} `pwd` 代表什么？
 
 ::option[Print working directory]{#print-working-directory .correct explanation="这个名称准确描述了命令的作用：打印 shell 的当前工作目录。"}
 ::option[Present working directory]{#present-working-directory explanation="日常表达中可以把当前位置称为 present directory，但这不是 `pwd` 的完整名称。"}
@@ -85,8 +82,7 @@ $ pwd
 
 具体输出可能因用户名、主目录和当前位置不同而有所差异。`pwd` 只打印信息，不会改变工作目录；相比之下，`cd` 会改变 shell 所在的目录。
 
-:::single-choice{#check-location-without-changing-it}
-哪项操作可以在不改变当前位置的情况下检查当前目录？
+:::single-choice{#check-location-without-changing-it} 哪项操作可以在不改变当前位置的情况下检查当前目录？
 
 ::option[运行 `cd`，再查看它切换到的目录。]{#run-cd explanation="`cd` 会改变工作目录，因此不满足在不改变位置的情况下进行检查这一要求。"}
 ::option[输入 `/home/pete`，把这个路径当成命令。]{#run-path explanation="绝对路径可以标识位置，但路径本身并不是报告当前目录的命令。"}

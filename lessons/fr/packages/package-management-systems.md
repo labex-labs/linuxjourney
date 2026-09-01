@@ -33,8 +33,7 @@ RPM family:    $ dnf info package-name
 
 La configuration des dépôts détermine ce que ces commandes peuvent découvrir. Lisez attentivement les noms des sources, les architectures, les versions et les erreurs de signature.
 
-:::single-choice{#package-management-systems-apt-show}
-Quelle commande affiche les détails APT de `package-name` ?
+:::single-choice{#package-management-systems-apt-show} Quelle commande affiche les détails APT de `package-name` ?
 
 ::option[`apt remove package-name`]{#package-management-systems-apt-remove-command explanation="La sous-commande `remove` propose de désinstaller le paquet."}
 ::option[`dnf search package-name`]{#package-management-systems-dnf-search-command explanation="Cette commande recherche dans les dépôts de la famille RPM et n’est pas la commande de détails d’APT."}
@@ -52,8 +51,7 @@ RPM family:    $ sudo dnf install package-name
 
 Le gestionnaire propose les dépendances ainsi que les conflits ou remplacements éventuels. Ne confirmez pas automatiquement avant d’avoir examiné l’origine, la version et l’architecture du paquet, le volume téléchargé, la variation de l’espace disque, les suppressions et les nouvelles dépendances installées.
 
-:::single-choice{#package-management-systems-dnf-install}
-Quelle commande actuelle installe `package-name` depuis les dépôts configurés de la famille RPM ?
+:::single-choice{#package-management-systems-dnf-install} Quelle commande actuelle installe `package-name` depuis les dépôts configurés de la famille RPM ?
 
 ::option[`rpm -qa package-name`]{#package-management-systems-rpm-query-command explanation="Il s’agit d’une requête sur la base des paquets RPM installés, et non d’une demande d’installation depuis un dépôt."}
 ::option[`dnf install package-name`]{#package-management-systems-dnf-install-command .correct explanation="DNF est le gestionnaire actuel qui connaît les dépôts sur Fedora et les versions récentes de RHEL."}
@@ -71,8 +69,7 @@ RPM family:    $ sudo dnf remove package-name
 
 La suppression peut affecter les paquets dépendants ou laisser des dépendances et une configuration désormais inutilisées. Examinez la transaction proposée, distinguez la suppression de la purge sur les systèmes de la famille Debian et préservez les données de l’application conformément à sa propre procédure de sauvegarde et de conservation. La suppression d’un paquet ne garantit pas celle des données créées par les utilisateurs.
 
-:::single-choice{#package-management-systems-remove-review}
-Pourquoi faut-il examiner une transaction de suppression avant de la confirmer ?
+:::single-choice{#package-management-systems-remove-review} Pourquoi faut-il examiner une transaction de suppression avant de la confirmer ?
 
 ::option[La suppression reformate toujours le système de fichiers qui contient le paquet.]{#package-management-systems-removal-format explanation="Les gestionnaires suppriment des fichiers et un état gérés ; ils ne formatent normalement pas le système de fichiers."}
 ::option[Les gestionnaires de paquets ne peuvent pas afficher les changements proposés.]{#package-management-systems-no-proposal explanation="Les gestionnaires interactifs affichent normalement la transaction prévue précisément pour permettre son examen."}
@@ -98,8 +95,7 @@ $ sudo dnf upgrade
 
 Une commande de mise à jour peut modifier les bibliothèques essentielles, les services, les noyaux et les dépendances. Employez les sauvegardes, la politique de maintenance, les notes de version et la planification des redémarrages adaptées au système. Vérifiez la sémantique de l’état de sortie : certaines opérations de contrôle, par exemple, emploient un état non nul pour signaler que des mises à jour sont disponibles plutôt qu’un échec d’exécution.
 
-:::single-choice{#package-management-systems-apt-update-upgrade}
-Quelle est la relation entre `apt update` et `apt upgrade` ?
+:::single-choice{#package-management-systems-apt-update-upgrade} Quelle est la relation entre `apt update` et `apt upgrade` ?
 
 ::option[`update` supprime des paquets ; `upgrade` restaure leurs fichiers de configuration.]{#package-management-systems-apt-remove-restore explanation="Ces commandes n’entretiennent pas cette relation de suppression et de restauration."}
 ::option[`update` actualise les métadonnées ; `upgrade` applique un plan approuvé de mise à niveau des paquets.]{#package-management-systems-apt-two-steps .correct explanation="APT sépare l’actualisation du catalogue de l’installation de versions plus récentes des paquets."}
@@ -110,8 +106,7 @@ Quelle est la relation entre `apt update` et `apt upgrade` ?
 
 Employez `dnf` dans la documentation actuelle de Fedora et RHEL. Sur un système RHEL récent, la commande `yum` peut appeler le comportement de compatibilité de DNF, mais les scripts ne doivent pas déduire l’implémentation du seul nom de l’exécutable. Sur les anciens hôtes, vérifiez la version installée et la syntaxe prise en charge avant d’adapter les instructions.
 
-:::single-choice{#package-management-systems-yum-current-rhel}
-Que représente couramment `yum` sur un système RHEL actuel ?
+:::single-choice{#package-management-systems-yum-current-rhel} Que représente couramment `yum` sur un système RHEL actuel ?
 
 ::option[Une commande de compatibilité reposant sur DNF.]{#package-management-systems-yum-dnf-alias .correct explanation="Les versions récentes de RHEL emploient DNF tout en conservant le nom de commande yum pour la compatibilité."}
 ::option[L’outil Debian de bas niveau pour les archives `.deb`.]{#package-management-systems-yum-dpkg explanation="Les systèmes Debian emploient notamment APT et dpkg, et non YUM, pour la gestion native des paquets."}

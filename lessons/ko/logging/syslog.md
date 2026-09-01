@@ -18,8 +18,7 @@ syslog 메시지는 대략적인 소스 범주를 설명하는 퍼실리티와 e
 
 심각도에는 순서가 있습니다. 고전적인 선택자 구문에서 `daemon.warning`은 일반적으로 warning뿐 아니라 daemon의 warning 이상으로 심각한 모든 메시지와 일치합니다. 고전 구문을 지원하는 구현체에서는 `daemon.=warning`처럼 등호 한정자를 사용해 정확히 일치시킬 수 있습니다.
 
-:::single-choice{#syslog-warning-selector}
-`daemon.warning` 같은 고전적인 선택자는 일반적으로 무엇과 일치합니까?
+:::single-choice{#syslog-warning-selector} `daemon.warning` 같은 고전적인 선택자는 일반적으로 무엇과 일치합니까?
 
 ::option[텍스트에 daemon이라는 단어가 있는 메시지만 일치합니다.]{#syslog-text-daemon explanation="메시지 텍스트 검색이 아니라 퍼실리티 메타데이터가 이 선택자를 결정합니다."}
 ::option[모든 퍼실리티의 모든 debug 메시지와 일치합니다.]{#syslog-all-debug explanation="이 선택자는 daemon 퍼실리티와 심각도 임계값으로 제한됩니다."}
@@ -40,8 +39,7 @@ kern.*                  /var/log/kern.log
 
 프로덕션 라우팅을 변경하기 전에 포함된 모든 파일을 검사하고 설치된 버전에서 사용하는 정확한 구문을 검증하십시오.
 
-:::single-choice{#syslog-selector-action}
-전통적인 rsyslog 규칙에서 동작은 어느 부분입니까?
+:::single-choice{#syslog-selector-action} 전통적인 rsyslog 규칙에서 동작은 어느 부분입니까?
 
 ::option[왼쪽의 퍼실리티 및 심각도 표현식입니다.]{#syslog-left-selector explanation="이 부분은 메시지를 선택합니다."}
 ::option[오른쪽의 대상 또는 작업입니다.]{#syslog-right-action .correct explanation="동작은 선택된 레코드를 파일, 원격 대상 또는 다른 출력 중 어디로 보낼지 결정합니다."}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 전달 및 라우팅 설정에 따라 같은 이벤트가 저널과 텍스트 파일에 모두 나타날 수 있습니다. `logger -s`는 메시지를 표준 오류에도 복사할 뿐, 영구 저장을 입증하지는 않습니다.
 
-:::single-choice{#syslog-logger-tag}
-`logger -t lesson-test`는 전송하는 메시지에 무엇을 추가합니까?
+:::single-choice{#syslog-logger-tag} `logger -t lesson-test`는 전송하는 메시지에 무엇을 추가합니까?
 
 ::option[오래된 테스트 레코드를 지우라는 요청을 추가합니다.]{#syslog-tag-delete explanation="이 옵션은 식별 태그를 설정하며 보존을 관리하지 않습니다."}
 ::option[메시지 태그로 `lesson-test` 식별자를 추가합니다.]{#syslog-tag-identifier .correct explanation="고유한 태그를 사용하면 설정된 대상에서 통제된 이벤트를 쉽게 찾을 수 있습니다."}
@@ -84,8 +81,7 @@ $ sudo rsyslogd -N1
 
 신뢰할 수 없는 네트워크를 통과해 원격으로 전달할 때는 인증되고 암호화된 전송을 사용해야 합니다. UDP 전송에는 종단 간 확인 응답이 없습니다. 중요한 감사 요구 사항에는 큐, 손실, 무결성, 접근 제어 및 수신기 장애를 고려한 설계가 필요합니다.
 
-:::single-choice{#syslog-change-verification}
-새 라우팅 규칙이 작동한다는 충분한 증거는 무엇입니까?
+:::single-choice{#syslog-change-verification} 새 라우팅 규칙이 작동한다는 충분한 증거는 무엇입니까?
 
 ::option[설정 파일의 수정 시간이 최근입니다.]{#syslog-mtime explanation="타임스탬프만으로는 구문 유효성이나 전송을 입증할 수 없습니다."}
 ::option[송신자가 ping으로 수신자에 도달할 수 있습니다.]{#syslog-ping explanation="네트워크 연결만으로는 로깅 프로토콜이나 저장 경로를 검증할 수 없습니다."}

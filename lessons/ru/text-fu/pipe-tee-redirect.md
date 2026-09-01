@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 Оболочка запускает команды конвейера и настраивает соединение потоков. Команды могут работать одновременно: `less` начнёт чтение ещё до того, как `ls` сформирует весь список.
 
-:::single-choice{#pipe-stream-connection}
-Какие потоки по умолчанию соединяет `|` в `ls -la /etc | less`?
+:::single-choice{#pipe-stream-connection} Какие потоки по умолчанию соединяет `|` в `ls -la /etc | less`?
 
 ::option[stdin команды `ls` со stdout команды `less`.]{#pipe-reversed-streams explanation="Здесь перепутаны и производитель, и потребитель. Данные идут из вывода левой команды во ввод правой."}
 ::option[stderr команды `ls` с обоими потоками `less`.]{#pipe-stderr-both explanation="Обычный конвейер не подключает stderr левой команды и не направляет данные в оба потока правой."}
@@ -50,8 +49,7 @@ $ find /etc -name "*.conf" | less
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-Куда обычно направляется stderr команды `find` в `find /etc -name "*.conf" | less`, если других перенаправлений нет?
+:::single-choice{#pipe-left-stderr} Куда обычно направляется stderr команды `find` в `find /etc -name "*.conf" | less`, если других перенаправлений нет?
 
 ::option[В `less` через тот же конвейер, что и stdout.]{#pipe-errors-to-less explanation="Обычный конвейер подключает только stdout. Stderr не объединяется с ним автоматически."}
 ::option[В файл `stderr` в текущем каталоге.]{#pipe-errors-to-file explanation="Перенаправление в файл ошибок не указано, поэтому оболочка не создаёт такой файл."}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 Здесь `listing.txt` получает список, а stdout команды `tee` остаётся подключённым к терминалу. По умолчанию `tee` создаёт или усекает указанный файл, как и `>`.
 
-:::single-choice{#tee-display-and-save}
-Какая команда отображает вывод `generate-report` и одновременно заменяет им содержимое `report.txt`?
+:::single-choice{#tee-display-and-save} Какая команда отображает вывод `generate-report` и одновременно заменяет им содержимое `report.txt`?
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="Обычное перенаправление вывода записывает файл, но не оставляет копию потока для терминала."}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` копирует stdin в `report.txt` и в свой stdout, который в этом конвейере остаётся терминалом."}
@@ -82,8 +79,7 @@ $ ls | tee listing.txt
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-Какая команда отображает текущую дату и добавляет её в `activity.log`?
+:::single-choice{#tee-append-log} Какая команда отображает текущую дату и добавляет её в `activity.log`?
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="Параметр `-a` заставляет `tee` добавлять данные в файл, продолжая копировать ввод в stdout."}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="Без `-a` команда `tee` заменяет существующий файл, а не сохраняет предыдущие записи."}
@@ -106,8 +102,7 @@ $ ls -la /etc | tee etc-listing.txt | grep "conf"
 
 Файл содержит данные до фильтрации командой `grep`. Если в файл нужны только отфильтрованные строки, поместите `tee` после `grep`.
 
-:::single-choice{#tee-before-filter-result}
-Что будет содержать `all.txt` после успешного выполнения `produce | tee all.txt | grep error`?
+:::single-choice{#tee-before-filter-result} Что будет содержать `all.txt` после успешного выполнения `produce | tee all.txt | grep error`?
 
 ::option[Только строки, совпавшие с условием `grep`.]{#tee-filtered-only explanation="`tee` выполняется до `grep`, поэтому записывает неотфильтрованный ввод, а не набор последующих совпадений."}
 ::option[Только stderr команды `produce`.]{#tee-producer-stderr explanation="Обычный конвейер передаёт stdout команды `produce`. Её stderr не является вводом `tee`."}

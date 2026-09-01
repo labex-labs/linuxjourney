@@ -25,8 +25,7 @@ O `s` minúsculo significa que tanto o setgid quanto a execução do grupo estã
 
 Quando o kernel respeita esse bit durante a execução, o processo recebe um ID de grupo efetivo baseado no grupo proprietário do executável. O comportamento pode ser suprimido por controles como uma montagem `nosuid` e não deve ser tratado como uma garantia universal para todos os tipos de arquivo ou ambientes.
 
-:::single-choice{#setgid-executable-effect}
-Quando o setgid de um executável é respeitado, qual credencial vem do grupo proprietário do executável?
+:::single-choice{#setgid-executable-effect} Quando o setgid de um executável é respeitado, qual credencial vem do grupo proprietário do executável?
 
 ::option[O ID de grupo efetivo do processo.]{#setgid-effective-group .correct explanation="A execução set-group-ID estabelece o grupo proprietário do executável como a identidade de grupo efetiva do processo."}
 ::option[O ID de usuário real do processo.]{#setgid-real-user explanation="O bit diz respeito à credencial de grupo, não à identidade de usuário real do solicitante."}
@@ -46,8 +45,7 @@ $ ls -ld /srv/project
 drwxr-sr-x 2 root developers 4096 Jan 10 09:30 /srv/project
 ```
 
-:::single-choice{#setgid-directory-inheritance}
-O que o setgid em `/srv/project` normalmente faz um arquivo recém-criado herdar?
+:::single-choice{#setgid-directory-inheritance} O que o setgid em `/srv/project` normalmente faz um arquivo recém-criado herdar?
 
 ::option[O usuário proprietário do diretório.]{#setgid-inherit-user explanation="O setgid de diretório afeta a herança do grupo, não o usuário proprietário da nova entrada."}
 ::option[O modo completo de permissões do diretório.]{#setgid-inherit-mode explanation="As permissões de criação ainda são calculadas a partir do modo solicitado, do umask e de eventuais ACLs."}
@@ -70,8 +68,7 @@ $ sudo chmod 2755 myfile
 
 Remova somente o bit especial com `chmod g-s myfile`.
 
-:::single-choice{#setgid-octal-value}
-Qual valor o setgid acrescenta ao dígito octal inicial de bits especiais?
+:::single-choice{#setgid-octal-value} Qual valor o setgid acrescenta ao dígito octal inicial de bits especiais?
 
 ::option[`4`]{#setgid-value-four explanation="O valor `4` representa o setuid no dígito de bits especiais."}
 ::option[`1`]{#setgid-value-one explanation="O valor `1` representa o sticky bit."}
@@ -82,8 +79,7 @@ Qual valor o setgid acrescenta ao dígito octal inicial de bits especiais?
 
 Em um diretório colaborativo, combine o grupo proprietário pretendido, o setgid e bits de acesso escolhidos com cuidado. Teste a criação como usuários representativos e inspecione os resultados com `ls -ld`. Evite tornar uma árvore gravável por todos apenas para resolver problemas de compartilhamento por grupo; um grupo dedicado, um umask ou uma ACL padrão apropriados e um diretório setgid normalmente oferecem um controle mais claro.
 
-:::single-choice{#setgid-directory-write-access}
-Definir apenas o setgid concede aos membros do grupo permissão para criar arquivos em um diretório?
+:::single-choice{#setgid-directory-write-access} Definir apenas o setgid concede aos membros do grupo permissão para criar arquivos em um diretório?
 
 ::option[Sim; o setgid sempre adiciona leitura, escrita e execução para o grupo.]{#setgid-adds-rwx explanation="O bit especial não altera automaticamente os três bits de permissão comuns do grupo."}
 ::option[Sim; o setgid desabilita todas as verificações para os membros do grupo.]{#setgid-disables-checks explanation="As verificações de segurança comuns e adicionais continuam sendo aplicadas."}

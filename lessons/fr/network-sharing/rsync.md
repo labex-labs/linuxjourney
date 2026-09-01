@@ -22,8 +22,7 @@ $ rsync -a -- source/ destination/
 
 La barre oblique finale de `source/` signifie « copier le contenu de ce répertoire ». Sans elle, `rsync -a source destination/` crée ou met à jour `destination/source`. Prévisualisez toujours les chemins produits lorsque vous modifiez la présence de cette barre.
 
-:::single-choice{#rsync-source-trailing-slash}
-Que signifie la barre oblique finale dans `rsync -a source/ destination/` ?
+:::single-choice{#rsync-source-trailing-slash} Que signifie la barre oblique finale dans `rsync -a source/ destination/` ?
 
 ::option[Supprimer la source après un transfert réussi.]{#rsync-delete-source explanation="La suppression de la source exige une option et une politique explicites distinctes."}
 ::option[Copier le contenu de `source` dans la destination.]{#rsync-copy-contents .correct explanation="Le retrait de la barre après la source modifie l’organisation de premier niveau à la destination."}
@@ -36,8 +35,7 @@ Le mode archive, `-a`, équivaut à un ensemble d’options récursives et de co
 
 Le mode archive ne conserve pas les liens physiques, les ACL ni les attributs étendus ; ceux-ci nécessitent généralement `-H`, `-A` et `-X`. Il ne crée pas non plus de versions historiques à lui seul.
 
-:::single-choice{#rsync-archive-limit}
-Quelle métadonnée n’est pas incluse dans `-a` à elle seule ?
+:::single-choice{#rsync-archive-limit} Quelle métadonnée n’est pas incluse dans `-a` à elle seule ?
 
 ::option[Les relations entre liens physiques.]{#rsync-hard-links .correct explanation="La conservation des liens physiques nécessite l’option distincte `-H`."}
 ::option[Le parcours récursif des répertoires.]{#rsync-archive-recursion explanation="Le mode archive inclut le parcours récursif."}
@@ -54,8 +52,7 @@ $ rsync -a --dry-run --itemize-changes -- source/ destination/
 
 Une simulation prédit les actions à partir de l’analyse actuelle ; elle ne garantit pas que les fichiers resteront inchangés avant la vraie commande. Enregistrez et examinez la commande exacte, puis ne la relancez sans `--dry-run` qu’après avoir confirmé les deux extrémités.
 
-:::single-choice{#rsync-dry-run-purpose}
-Que fournit `--dry-run --itemize-changes` ?
+:::single-choice{#rsync-dry-run-purpose} Que fournit `--dry-run --itemize-changes` ?
 
 ::option[Un instantané permanent conservé sur un autre périphérique.]{#rsync-dry-backup explanation="Une simulation ne crée aucune copie des données ni conservation indépendante."}
 ::option[La garantie que les fichiers source ne pourront pas changer ensuite.]{#rsync-dry-lock explanation="La prévisualisation ne verrouille pas l’arborescence source."}
@@ -73,8 +70,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 Cette forme de rsync moderne emploie couramment SSH, mais vérifiez le shell distant configuré, la clé d’hôte, les privilèges du compte et la disponibilité de rsync sur l’hôte distant. La compression avec `-z` peut aider pour des données compressibles sur une liaison limitée, mais gaspiller du temps processeur pour des données déjà compressées.
 
-:::single-choice{#rsync-pull-direction}
-Quel ordre des opérandes récupère des données distantes dans un répertoire local ?
+:::single-choice{#rsync-pull-direction} Quel ordre des opérandes récupère des données distantes dans un répertoire local ?
 
 ::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="Cet ordre envoie le contenu local vers la destination distante."}
 ::option[`rsync --delete host local`]{#rsync-missing-path explanation="Cette commande n’exprime pas la syntaxe du chemin distant présentée et ajoute une option destructive sans rapport."}
@@ -87,8 +83,7 @@ Quel ordre des opérandes récupère des données distantes dans un répertoire 
 
 Après l’exécution réelle, examinez l’état de sortie et les journaux, comparez le nombre de fichiers et les métadonnées attendus, puis testez un contenu représentatif ou une restauration. La synchronisation rsync reproduit à elle seule les suppressions ou les altérations indésirables et ne constitue pas une stratégie de sauvegarde complète.
 
-:::single-choice{#rsync-delete-effect}
-Que peut faire `--delete` pendant la synchronisation ?
+:::single-choice{#rsync-delete-effect} Que peut faire `--delete` pendant la synchronisation ?
 
 ::option[Chiffrer chaque fichier transféré avec la clé d’hôte SSH.]{#rsync-delete-encrypt explanation="La politique de suppression est sans rapport avec le chiffrement des fichiers."}
 ::option[Empêcher toute modification du système de fichiers de destination.]{#rsync-delete-readonly explanation="Elle autorise explicitement des modifications supplémentaires à la destination."}

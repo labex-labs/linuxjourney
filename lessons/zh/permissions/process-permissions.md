@@ -18,8 +18,7 @@ Linux 授权检查作用于进程凭据，而不是直接作用于输入的用�
 
 对于用户 Bob 启动的普通命令，实际用户 ID 通常等于 Bob 的 UID。创建另一个进程本身不会创建新账户或改变该身份。
 
-:::single-choice{#process-permissions-real-uid}
-进程的实际用户 ID 通常标识什么？
+:::single-choice{#process-permissions-real-uid} 进程的实际用户 ID 通常标识什么？
 
 ::option[最近打开文件的所有者。]{#process-permissions-real-opened-file explanation="打开文件不会用该文件所有者替换进程的实际 UID。"}
 ::option[与进程原始调用者关联的账户。]{#process-permissions-real-caller .correct explanation="实际 UID 记录进程启动时继承的调用用户身份。"}
@@ -32,8 +31,7 @@ Linux 授权检查作用于进程凭据，而不是直接作用于输入的用�
 
 例如，经过谨慎设计的密码工具可以使用提升后的有效 UID 运行，以更新受保护的认证数据。程序仍必须根据调用者、请求的账户、PAM 结果和其他上下文实施策略。拥有有效 UID 并不自动表示每项请求操作都合理。
 
-:::single-choice{#process-permissions-effective-uid}
-代表进程进行的许多访问控制决策使用哪个用户 ID？
+:::single-choice{#process-permissions-effective-uid} 代表进程进行的许多访问控制决策使用哪个用户 ID？
 
 ::option[有效用户 ID。]{#process-permissions-effective-active .correct explanation="有效 UID 是许多授权检查查询的活动用户凭据。"}
 ::option[只使用保存的用户 ID。]{#process-permissions-effective-saved-only explanation="保存的 ID 支持凭据转换，但通常不是访问检查的活动身份。"}
@@ -46,8 +44,7 @@ Linux 授权检查作用于进程凭据，而不是直接作用于输入的用�
 
 如果实现正确，这比整个程序始终保留提升权限更安全。不再需要权限时，程序应永久放弃它，并检查每一次改变凭据的调用是否失败。
 
-:::single-choice{#process-permissions-saved-uid}
-为什么特权程序可以保留保存的 set-user-ID？
+:::single-choice{#process-permissions-saved-uid} 为什么特权程序可以保留保存的 set-user-ID？
 
 ::option[在受控的特权与非特权阶段之间切换有效身份。]{#process-permissions-saved-switch .correct explanation="保存的身份可以支持暂时降低权限，以及之后获准的恢复。"}
 ::option[自动把该 UID 分配给它读取的每个文件。]{#process-permissions-saved-file-owner explanation="读取文件不会把其所有权改为进程保存的 UID。"}
@@ -60,8 +57,7 @@ Linux 授权检查作用于进程凭据，而不是直接作用于输入的用�
 
 在 Linux 上，可以使用 `ps` 和 `/proc/PROCESS/status` 等工具检查凭据。可用字段和显示格式各不相同，因此应查阅本地文档，不要只为在共享系统上实验就改变凭据。
 
-:::single-choice{#process-permissions-ordinary-identities}
-对于大多数没有权限转换的普通命令，实际 UID 和有效 UID 有何关系？
+:::single-choice{#process-permissions-ordinary-identities} 对于大多数没有权限转换的普通命令，实际 UID 和有效 UID 有何关系？
 
 ::option[有效 UID 始终为零。]{#process-permissions-effective-root explanation="普通命令不会自动获得 root 的 UID。"}
 ::option[实际 UID 始终等于可执行文件所有者。]{#process-permissions-real-file-owner explanation="可执行文件所有者影响 setuid 行为，而不影响普通实际 UID。"}

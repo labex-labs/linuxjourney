@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-Welcher Befehl listet den Inhalt von `/home/pete` auf, ohne dorthin zu wechseln?
+:::single-choice{#list-another-directory} Welcher Befehl listet den Inhalt von `/home/pete` auf, ohne dorthin zu wechseln?
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="Wenn du `ls` einen Verzeichnispfad übergibst, listet der Befehl dessen Inhalt auf. Die Shell bleibt in ihrem aktuellen Arbeitsverzeichnis."}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` ändert das Arbeitsverzeichnis der Shell. Der Befehl führt für sich allein nicht die gewünschte Auflistung aus."}
@@ -47,8 +46,7 @@ $ ls -a
 
 Solche Dotfiles sind standardmäßig verborgen und speichern häufig Konfigurationen, beispielsweise `.bashrc`.
 
-:::single-choice{#show-hidden-files}
-Welcher Befehl nimmt versteckte Dateien in die Auflistung auf?
+:::single-choice{#show-hidden-files} Welcher Befehl nimmt versteckte Dateien in die Auflistung auf?
 
 ::option[`ls -l`]{#long-format explanation="Die Option `-l` ergänzt detaillierte Spalten, nimmt für sich allein aber keine versteckten Namen auf."}
 ::option[`ls -r`]{#reverse-order explanation="Die Option `-r` kehrt die Sortierreihenfolge um. Sie ändert nicht, ob versteckte Dateien angezeigt werden."}
@@ -84,8 +82,7 @@ Ergänze `-h`, um leichter lesbare Dateigrößen zu erhalten:
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-Welcher Befehl zeigt Details im Langformat und Größen in menschenlesbarer Form an?
+:::single-choice{#show-readable-file-details} Welcher Befehl zeigt Details im Langformat und Größen in menschenlesbarer Form an?
 
 ::option[`ls -la`]{#long-all explanation="Diese Kombination zeigt das Langformat und versteckte Dateien. Sie fordert keine menschenlesbaren Größeneinheiten an."}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` wählt das Langformat, während `-h` die Größen lesbarer darstellt. Beide Optionen lassen sich in einem Befehl kombinieren."}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-Welcher Befehl sortiert nach Änderungszeit und stellt die neuesten Einträge zuletzt dar?
+:::single-choice{#show-newest-files-last} Welcher Befehl sortiert nach Änderungszeit und stellt die neuesten Einträge zuletzt dar?
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` sortiert nach Änderungszeit und `-r` kehrt die Reihenfolge um. Zusammen erscheinen ältere Einträge vor neueren."}
 ::option[`ls -lt`]{#time-default explanation="Dieser Befehl sortiert nach Änderungszeit, behält aber die standardmäßige Reihenfolge mit den neuesten Einträgen zuerst bei."}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`: Sortiert nach Dateigröße.
 - `-d`: Listet das Verzeichnis selbst statt seines Inhalts auf.
 
-:::single-choice{#list-directory-entry-itself}
-Welcher Befehl listet den Verzeichniseintrag `projects/` statt seines Inhalts auf?
+:::single-choice{#list-directory-entry-itself} Welcher Befehl listet den Verzeichniseintrag `projects/` statt seines Inhalts auf?
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="Die Option `-d` weist `ls` an, den Verzeichniseintrag selbst anzuzeigen, statt das Verzeichnis für eine Inhaltsauflistung zu öffnen."}
 ::option[`ls projects/`]{#directory-contents explanation="Ohne `-d` zeigt `ls` bei einem übergebenen Verzeichnispfad die darin enthaltenen Einträge an."}

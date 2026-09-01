@@ -22,8 +22,7 @@ $ rsync -a -- source/ destination/
 
 Der abschließende Schrägstrich bei `source/` bedeutet „kopiere den Inhalt dieses Verzeichnisses“. Ohne ihn erstellt oder aktualisiert `rsync -a source destination/` den Pfad `destination/source`. Prüfe bei einer Änderung der Schrägstriche immer die entstehenden Pfade vorab.
 
-:::single-choice{#rsync-source-trailing-slash}
-Was bedeutet der abschließende Schrägstrich in `rsync -a source/ destination/`?
+:::single-choice{#rsync-source-trailing-slash} Was bedeutet der abschließende Schrägstrich in `rsync -a source/ destination/`?
 
 ::option[Die Quelle nach einer erfolgreichen Übertragung löschen.]{#rsync-delete-source explanation="Das Entfernen der Quelle erfordert eine getrennte ausdrückliche Option und Richtlinie."}
 ::option[Den Inhalt von `source` in das Ziel kopieren.]{#rsync-copy-contents .correct explanation="Das Entfernen des Schrägstrichs an der Quelle verändert die oberste Zielstruktur."}
@@ -36,8 +35,7 @@ Der Archivmodus `-a` entspricht einer Sammlung rekursiver und metadatenerhaltend
 
 Der Archivmodus umfasst nicht die Erhaltung harter Links, ACLs oder erweiterter Attribute; dafür werden gewöhnlich `-H`, `-A` und `-X` benötigt. Er erstellt außerdem nicht von selbst historische Versionen.
 
-:::single-choice{#rsync-archive-limit}
-Welche Metadaten sind in `-a` allein nicht enthalten?
+:::single-choice{#rsync-archive-limit} Welche Metadaten sind in `-a` allein nicht enthalten?
 
 ::option[Beziehungen harter Links.]{#rsync-hard-links .correct explanation="Die Erhaltung harter Links erfordert die getrennte Option `-H`."}
 ::option[Rekursives Durchlaufen von Verzeichnissen.]{#rsync-archive-recursion explanation="Der Archivmodus umfasst rekursives Durchlaufen."}
@@ -54,8 +52,7 @@ $ rsync -a --dry-run --itemize-changes -- source/ destination/
 
 Ein Probelauf sagt Aktionen anhand der aktuellen Erfassung voraus; er kann nicht garantieren, dass sich Dateien vor dem tatsächlichen Befehl nicht ändern. Speichere und prüfe den genauen Befehl und führe ihn erst nach Bestätigung beider Endpunkte ohne `--dry-run` aus.
 
-:::single-choice{#rsync-dry-run-purpose}
-Was bietet `--dry-run --itemize-changes`?
+:::single-choice{#rsync-dry-run-purpose} Was bietet `--dry-run --itemize-changes`?
 
 ::option[Eine dauerhafte Momentaufnahme auf einem anderen Gerät.]{#rsync-dry-backup explanation="Ein Probelauf erstellt weder eine Datenkopie noch unabhängige Aufbewahrung."}
 ::option[Eine Garantie, dass sich Quelldateien später nicht ändern können.]{#rsync-dry-lock explanation="Die Vorschau sperrt den Quellbaum nicht."}
@@ -73,8 +70,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 Modernes rsync verwendet für diese Form gewöhnlich SSH. Bestätige dennoch die konfigurierte entfernte Shell, den Hostschlüssel, Kontoberechtigungen und die Verfügbarkeit von rsync auf dem entfernten Host. Komprimierung mit `-z` kann bei komprimierbaren Daten über eine eingeschränkte Verbindung helfen, aber für bereits komprimierte Daten CPU verschwenden.
 
-:::single-choice{#rsync-pull-direction}
-Welche Operandenreihenfolge ruft entfernte Daten in ein lokales Verzeichnis ab?
+:::single-choice{#rsync-pull-direction} Welche Operandenreihenfolge ruft entfernte Daten in ein lokales Verzeichnis ab?
 
 ::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="Diese Reihenfolge überträgt lokale Inhalte zum entfernten Ziel."}
 ::option[`rsync --delete host local`]{#rsync-missing-path explanation="Dies drückt nicht die gezeigte Syntax für entfernte Pfade aus und fügt eine unabhängige destruktive Option hinzu."}
@@ -87,8 +83,7 @@ Welche Operandenreihenfolge ruft entfernte Daten in ein lokales Verzeichnis ab?
 
 Untersuche nach dem tatsächlichen Lauf Exit-Status und Protokolle, vergleiche erwartete Dateianzahlen und Metadaten und teste repräsentative Inhalte oder die Wiederherstellung. Rsync-Synchronisierung allein spiegelt unerwünschte Löschung oder Beschädigung und ist keine vollständige Sicherungsstrategie.
 
-:::single-choice{#rsync-delete-effect}
-Was kann `--delete` während der Synchronisierung bewirken?
+:::single-choice{#rsync-delete-effect} Was kann `--delete` während der Synchronisierung bewirken?
 
 ::option[Jede übertragene Datei mit dem SSH-Hostschlüssel verschlüsseln.]{#rsync-delete-encrypt explanation="Die Löschrichtlinie hat nichts mit Dateiverschlüsselung zu tun."}
 ::option[Alle Änderungen am Zieldateisystem verhindern.]{#rsync-delete-readonly explanation="Die Option erlaubt ausdrücklich zusätzliche Zieländerungen."}

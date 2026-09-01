@@ -18,8 +18,7 @@ El enrutamiento construye o selecciona información sobre los prefijos accesible
 
 Son aspectos independientes de los planos de control y de datos. Puede existir una ruta mientras la política del cortafuegos bloquea el reenvío, o una interfaz de reenvío puede estar activa sin que exista una ruta válida.
 
-:::single-choice{#router-forwarding-role}
-¿Qué hace el reenvío de paquetes?
+:::single-choice{#router-forwarding-role} ¿Qué hace el reenvío de paquetes?
 
 ::option[Aplica la información de enrutamiento para enviar un paquete hacia su siguiente salto.]{#router-apply-route .correct explanation="El reenvío es la acción aplicada a cada paquete según la ruta y la política seleccionadas."}
 ::option[Crea un inicio de sesión permanente en la aplicación para todos los destinos.]{#router-create-login explanation="El enrutamiento no gestiona cuentas de aplicaciones remotas."}
@@ -32,8 +31,7 @@ Una ruta asocia un prefijo de destino con una interfaz de salida, un siguiente s
 
 Si no existe ninguna ruta válida, el router descarta el paquete y puede generar un mensaje ICMP de destino inaccesible. Una ruta predeterminada es opcional y no tiene por qué apuntar directamente a Internet público.
 
-:::single-choice{#router-default-route}
-¿Cuándo se selecciona una ruta predeterminada?
+:::single-choice{#router-default-route} ¿Cuándo se selecciona una ruta predeterminada?
 
 ::option[Antes de comprobar cualquier prefijo específico del destino.]{#router-default-first explanation="Los prefijos válidos más específicos tienen prioridad."}
 ::option[Únicamente cuando el paquete es un broadcast Ethernet.]{#router-default-broadcast explanation="La selección de rutas IP se basa en destinos de la capa de red."}
@@ -46,8 +44,7 @@ Dos hosts de la misma subred en el enlace suelen intercambiar tramas sin enviar 
 
 Un «router» doméstico suele combinar un router IP, un conmutador Ethernet, un punto de acceso Wi-Fi, servicio DHCP, NAT y un cortafuegos. Cada función debe diagnosticarse por separado.
 
-:::single-choice{#router-same-subnet-path}
-¿Debe atravesar el router predeterminado el tráfico entre dos hosts situados en el mismo enlace?
+:::single-choice{#router-same-subnet-path} ¿Debe atravesar el router predeterminado el tráfico entre dos hosts situados en el mismo enlace?
 
 ::option[Sí, porque todos los paquetes deben llegar a un puerto WAN.]{#router-always-wan explanation="La entrega local en el enlace puede realizarse directamente."}
 ::option[Sí, salvo que ambos hosts tengan direcciones públicas.]{#router-public-required explanation="Que el ámbito sea público o privado no determina el reenvío básico en el enlace."}
@@ -58,8 +55,7 @@ Un «router» doméstico suele combinar un router IP, un conmutador Ethernet, un
 
 Un salto enrutado es un paso de reenvío en la capa de red. El TTL de IPv4 y el Hop Limit de IPv6 se reducen en cada router, lo que limita los bucles. La cantidad de saltos no es una medida completa de distancia o calidad: los enlaces difieren en ancho de banda, latencia, pérdidas, políticas y congestión.
 
-:::single-choice{#router-hop-count-limit}
-¿Qué no garantiza una cantidad menor de saltos?
+:::single-choice{#router-hop-count-limit} ¿Qué no garantiza una cantidad menor de saltos?
 
 ::option[Que exista al menos un paso enrutado.]{#router-hop-exists explanation="Una cantidad positiva de saltos indica directamente un recorrido enrutado."}
 ::option[Una ruta de aplicación más rápida o mejor.]{#router-hop-not-quality .correct explanation="Menos routers aún pueden atravesar enlaces más lentos, congestionados o restringidos por políticas."}

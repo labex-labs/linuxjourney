@@ -16,8 +16,7 @@ meta_keywords: "ICMP, ICMP 协议, 网络故障排除, ICMP 类型, Linux 网络
 
 ICMP 消息包含类型、适用时更具体的代码以及校验和。错误消息通常会包含触发该错误的数据包的一部分，使发送方能够将错误与某个流关联起来。
 
-:::single-choice{#icmp-code-purpose}
-ICMP 代码提供什么？
+:::single-choice{#icmp-code-purpose} ICMP 代码提供什么？
 
 ::option[报告错误的路由器的永久 DNS 名称。]{#icmp-code-dns explanation="名称解析并不是该字段编码的用途。"}
 ::option[某种 ICMP 消息类型内更具体的含义。]{#icmp-code-specific .correct explanation="例如，目的不可达代码可区分多种失败原因。"}
@@ -28,8 +27,7 @@ ICMP 代码提供什么？
 
 在 ICMPv4 中，回显请求是类型 8，回显应答是类型 0。目的不可达是类型 3，超时是类型 11。ICMPv6 使用不同的类型编号，所以解释抓包前务必先确认地址族。
 
-:::single-choice{#icmpv4-echo-request-type}
-ICMPv4 回显请求的类型编号是什么？
+:::single-choice{#icmpv4-echo-request-type} ICMPv4 回显请求的类型编号是什么？
 
 ::option[0]{#icmp-type-zero explanation="类型 0 是 ICMPv4 回显应答。"}
 ::option[11]{#icmp-type-eleven explanation="类型 11 是 ICMPv4 超时。"}
@@ -42,8 +40,7 @@ ICMP 并不只是可有可无的 ping 流量。IPv4 的“需要分片”错误�
 
 应按必需的类型、方向、速率和范围进行过滤，而不是一概阻止。攻击者可以伪造某些 ICMP 消息，因此要验证所引用数据包的上下文，并结合本地路由与抓包互相印证。
 
-:::single-choice{#icmp-block-all-risk}
-为什么阻止所有 ICMP 会破坏有效流量？
+:::single-choice{#icmp-block-all-risk} 为什么阻止所有 ICMP 会破坏有效流量？
 
 ::option[每个 HTTP 响应都封装在 ICMP 回显应答中。]{#icmp-http-echo explanation="HTTP 通常使用 TCP 或 QUIC，而不是 ICMP 回显。"}
 ::option[ICMP 存储所有应用程序密码。]{#icmp-passwords explanation="它不是凭据数据库。"}
@@ -54,8 +51,7 @@ ICMP 并不只是可有可无的 ping 流量。IPv4 的“需要分片”错误�
 
 没有 ICMP 响应可能意味着过滤、速率限制、非对称路由、缺少返回路由、主机停机，或者设备根本不回答该消息。反过来，ICMP 错误也可能来自中间设备，而不是最终目的地。
 
-:::single-choice{#icmp-silence-meaning}
-没有回显应答本身能证明什么？
+:::single-choice{#icmp-silence-meaning} 没有回显应答本身能证明什么？
 
 ::option[目标应用程序肯定已经停止。]{#icmp-silence-app-down explanation="即使回显流量被过滤或忽略，服务仍可能正常工作。"}
 ::option[目的主机名已从 DNS 中删除。]{#icmp-silence-dns-deleted explanation="使用数字地址的探测也可能在与 DNS 无关的情况下没有响应。"}

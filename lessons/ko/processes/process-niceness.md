@@ -22,8 +22,7 @@ Linux는 서로 다른 CPU 코어에서 스레드를 동시에 실행하고 한 
 
 Niceness는 CPU 백분율을 예약하거나 즉시 실행을 보장하지 않습니다. 비교 가능한 실행 가능 작업이 CPU 시간을 놓고 경쟁할 때 효과가 가장 잘 보입니다. 실시간 정책, cgroups, CPU 선호도, 입출력 대기, 다른 제어가 관찰된 동작을 지배할 수 있습니다.
 
-:::single-choice{#process-niceness-lower-value}
-같은 일반 스케줄링 정책에서 상대적인 CPU 가중치가 더 큰 nice 값은 무엇인가요?
+:::single-choice{#process-niceness-lower-value} 같은 일반 스케줄링 정책에서 상대적인 CPU 가중치가 더 큰 nice 값은 무엇인가요?
 
 ::option[`10`]{#process-niceness-value-ten explanation="양수 값은 더 nice하며 일반적으로 0이나 음수보다 가중치가 작습니다."}
 ::option[`19`]{#process-niceness-value-nineteen explanation="관례적인 범위에서 가장 nice한 끝이며 상대 가중치가 낮습니다."}
@@ -40,8 +39,7 @@ $ ps -o pid,ni,pri,stat,cmd -p 3245
 
 `NI`는 사용자가 보는 nice 값입니다. `PRI`나 비슷한 열은 계산된 스케줄러 우선순위일 수 있고 척도가 도구와 스케줄링 클래스에 따라 다르므로 두 열을 서로 바꿔 쓸 수 있다고 가정하지 마세요.
 
-:::single-choice{#process-niceness-top-column}
-일반적으로 `top`에서 nice 값을 표시하는 열은 무엇인가요?
+:::single-choice{#process-niceness-top-column} 일반적으로 `top`에서 nice 값을 표시하는 열은 무엇인가요?
 
 ::option[`PID`]{#process-niceness-column-pid explanation="`PID`는 스케줄링 조정이 아니라 프로세스를 식별합니다."}
 ::option[`TTY`]{#process-niceness-column-tty explanation="`TTY`는 제어 터미널 연결을 식별합니다."}
@@ -58,8 +56,7 @@ $ nice -n 5 long-computation
 
 요청 조정값과 허용되는 구문은 로컬 매뉴얼에서 확인할 수 있습니다. 권한이 없는 사용자는 일반적으로 값을 높여 명령을 더 nice하게 만들 수 있습니다. nice 값을 낮춰 더 유리한 스케줄링 가중치를 주려면 적절한 권한이나 구성된 자원 제한이 필요합니다.
 
-:::single-choice{#process-niceness-nice-command}
-`nice -n 5 long-computation`은 무엇을 하나요?
+:::single-choice{#process-niceness-nice-command} `nice -n 5 long-computation`은 무엇을 하나요?
 
 ::option[허용되면 nice 값 5로 명령을 시작합니다.]{#process-niceness-start-five .correct explanation="`nice`는 요청한 스케줄링 조정값으로 새 명령을 시작합니다."}
 ::option[PID 5를 가능한 가장 낮은 nice 값으로 바꿉니다.]{#process-niceness-pid-five explanation="`-n` 뒤의 피연산자는 PID 대상이 아니라 nice 값입니다."}
@@ -76,8 +73,7 @@ $ renice -n 10 -p 3245
 
 PID `3245`에 nice 값 `10`을 요청합니다. PID를 재사용할 수 있으므로 먼저 대상을 검증하고 결과 값을 확인하세요. 권한은 소유권, privilege, 자원 제한, 시스템 정책에 따라 달라집니다. 자신이 소유한 프로세스의 nice 값을 높이는 것은 보통 허용되지만 권한 없이 그 변경을 되돌리지 못할 수 있습니다.
 
-:::single-choice{#process-niceness-renice-purpose}
-기존 프로세스의 nice 값을 변경하는 도구는 무엇인가요?
+:::single-choice{#process-niceness-renice-purpose} 기존 프로세스의 nice 값을 변경하는 도구는 무엇인가요?
 
 ::option[`nice`]{#process-niceness-tool-nice explanation="`nice`는 주로 조정된 값으로 새 명령을 시작합니다."}
 ::option[`kill`]{#process-niceness-tool-kill explanation="`kill`은 시그널을 보내며 일반 niceness 편집 도구가 아닙니다."}

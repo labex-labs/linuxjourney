@@ -22,8 +22,7 @@ $ man ls
 
 Les pages de manuel contiennent généralement un synopsis, une description, des options, des fichiers associés et des renvois, même si leurs sections exactes varient.
 
-:::single-choice{#open-ls-manual}
-Quelle commande ouvre la page de manuel installée de `ls` ?
+:::single-choice{#open-ls-manual} Quelle commande ouvre la page de manuel installée de `ls` ?
 
 ::option[`help ls`]{#help-ls explanation="`help` documente les commandes intégrées à Bash et n'ouvre normalement pas le manuel du programme externe `ls`."}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` recherche le sujet `ls` dans la base des manuels et affiche la page correspondante."}
@@ -41,16 +40,14 @@ Sur de nombreux systèmes, `man` affiche les pages dans une visionneuse comme `l
 
 La visionneuse peut varier selon le système ou l'environnement ; ces touches ne sont donc pas garanties partout. Elles s'appliquent à la configuration courante avec `less`.
 
-:::single-choice{#search-man-page}
-Dans une page de manuel ouverte avec `less`, qu'est-ce qui lance une recherche vers l'avant de `--recursive` ?
+:::single-choice{#search-man-page} Dans une page de manuel ouverte avec `less`, qu'est-ce qui lance une recherche vers l'avant de `--recursive` ?
 
 ::option[Saisir `?--recursive` puis Entrée.]{#backward-man-search explanation="Le point d'interrogation lance une recherche vers l'arrière, dans le sens opposé à celui demandé."}
 ::option[Saisir `/--recursive` puis Entrée.]{#forward-man-search .correct explanation="La barre oblique lance une recherche vers l'avant dans `less`, et Entrée soumet le motif."}
 ::option[Saisir `n--recursive` puis Entrée.]{#repeat-man-search explanation="La touche `n` répète une recherche existante ; elle n'introduit pas ainsi un nouveau motif."}
 :::
 
-:::single-choice{#leave-man-page}
-Dans une page de manuel ouverte avec la visionneuse habituelle, quelle touche revient au shell ?
+:::single-choice{#leave-man-page} Dans une page de manuel ouverte avec la visionneuse habituelle, quelle touche revient au shell ?
 
 ::option[`G`]{#man-page-end explanation="Le `G` majuscule va à la fin de la page dans `less`, sans fermer la visionneuse."}
 ::option[`n`]{#next-man-match explanation="La touche `n` répète la recherche la plus récente et laisse la page ouverte."}
@@ -76,8 +73,7 @@ $ man 1 passwd
 
 La première commande ouvre la page du format de fichier `passwd` en section 5 ; la seconde, celle de la commande utilisateur en section 1. Une référence comme `passwd(5)` suit la même notation `sujet(section)`.
 
-:::single-choice{#open-passwd-file-format}
-Quelle commande ouvre la page de section 5 qui documente le format du fichier `passwd` ?
+:::single-choice{#open-passwd-file-format} Quelle commande ouvre la page de section 5 qui documente le format du fichier `passwd` ?
 
 ::option[`man passwd 5`]{#section-after-topic explanation="Dans cette forme, la section se place avant le sujet ; cet ordre ne demande pas `passwd(5)`."}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Placer la section `5` avant `passwd` sélectionne précisément la page du format de fichier."}
@@ -93,8 +89,7 @@ Tous les noms de commandes ne possèdent pas une page installée séparément. S
 - essayez `NAME --help` si un programme externe suit cette convention ;
 - vérifiez si votre distribution propose un paquet de documentation séparé.
 
-:::single-choice{#missing-builtin-manual}
-`type cd` indique que `cd` est intégrée à Bash et aucune page séparée n'est disponible. Quelle commande faut-il essayer ensuite ?
+:::single-choice{#missing-builtin-manual} `type cd` indique que `cd` est intégrée à Bash et aucune page séparée n'est disponible. Quelle commande faut-il essayer ensuite ?
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` résume les entrées de la base des manuels ; elle ne peut pas fournir une page dédiée absente pour la commande intégrée."}
 ::option[`file cd`]{#file-cd-name explanation="`file` classe des objets du système de fichiers, alors qu'ici `cd` est résolue comme commande intégrée et non comme chemin."}

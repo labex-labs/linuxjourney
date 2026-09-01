@@ -24,8 +24,7 @@ init 시스템은 일반적으로 다음 작업을 수행합니다.
 
 정확한 경계는 시스템마다 다릅니다. 장치 관리, 네트워킹, 로깅 및 예약 작업은 PID 1에 내장된 코드가 아니라 init이 감독하는 별도 프로그램일 수 있습니다.
 
-:::single-choice{#boot-init-pid-one-role}
-PID 네임스페이스에서 PID 1에 특별히 부여되는 책임은 무엇입니까?
+:::single-choice{#boot-init-pid-one-role} PID 네임스페이스에서 PID 1에 특별히 부여되는 책임은 무엇입니까?
 
 ::option[부팅할 때마다 모든 애플리케이션을 소스에서 컴파일합니다.]{#boot-init-compile-apps explanation="일반적인 서비스 시작은 모든 소프트웨어를 다시 빌드하지 않고 설치된 프로그램을 사용합니다."}
 ::option[디스크의 물리 섹터 크기를 정의합니다.]{#boot-init-sector-size explanation="init이 서비스를 관리하기 전에 저장 하드웨어와 드라이버가 섹터 구조를 노출합니다."}
@@ -38,8 +37,7 @@ PID 네임스페이스에서 PID 1에 특별히 부여되는 책임은 무엇입
 
 `/etc/init.d/`가 있다는 이유만으로 호스트의 활성 init 시스템을 추정하지 마십시오. PID 1이 다른 구현인 시스템에도 호환성 스크립트가 남아 있을 수 있습니다.
 
-:::single-choice{#boot-init-sysv-runlevel}
-System V 런레벨은 무엇을 나타냅니까?
+:::single-choice{#boot-init-sysv-runlevel} System V 런레벨은 무엇을 나타냅니까?
 
 ::option[부트 로더가 선택한 커널 버전 번호입니다.]{#boot-init-runlevel-kernel explanation="커널 선택은 로더의 역할이며 init 런레벨로 인코딩되지 않습니다."}
 ::option[서비스 작업과 연결된 설정 운영 모드입니다.]{#boot-init-runlevel-mode .correct explanation="SysV 레이아웃은 레벨을 시작 또는 종료 스크립트 집합 및 순서와 연결합니다."}
@@ -54,8 +52,7 @@ systemd는 현재 여러 범용 배포판에서 널리 사용됩니다. 서비�
 
 그 밖에 활발히 사용되는 init 및 감독 설계로 OpenRC, runit, s6 및 BusyBox init이 있습니다. “가장 최신”이라는 기준은 호환성 규칙으로 유용하지 않습니다. 실제 시스템이 무엇을 실행하는지 식별하고 해당 문서를 사용하십시오.
 
-:::single-choice{#boot-init-systemd-unit-model}
-systemd는 서비스와 마운트 같은 관리 리소스를 어떻게 표현합니까?
+:::single-choice{#boot-init-systemd-unit-model} systemd는 서비스와 마운트 같은 관리 리소스를 어떻게 표현합니까?
 
 ::option[MBR 주 파티션 항목으로 표현합니다.]{#boot-init-systemd-partitions explanation="디스크 파티션 메타데이터는 서비스 관리자 단위와 관련이 없습니다."}
 ::option[PID 1 실행 파일을 가리키는 하드 링크로만 표현합니다.]{#boot-init-systemd-hard-links explanation="단위는 단순한 inode 별칭이 아니라 설정 및 런타임 객체입니다."}
@@ -73,8 +70,7 @@ $ readlink /proc/1/exe
 
 권한, 컨테이너 및 네임스페이스에 따라 보이는 결과가 달라집니다. 컨테이너 안에서 실행한 명령은 호스트 init이 아니라 해당 네임스페이스의 PID 1을 보고합니다. 식별한 뒤에는 다른 init 계열의 명령을 섞지 말고 고유한 상태 및 로그 도구를 사용하십시오.
 
-:::single-choice{#boot-init-detect-running}
-레거시 스크립트 디렉터리의 존재를 확인하는 것보다 PID 1을 검사하는 편이 나은 이유는 무엇입니까?
+:::single-choice{#boot-init-detect-running} 레거시 스크립트 디렉터리의 존재를 확인하는 것보다 PID 1을 검사하는 편이 나은 이유는 무엇입니까?
 
 ::option[모든 리눅스 시스템에서 PID 1의 실행 파일 이름이 같기 때문입니다.]{#boot-init-same-name explanation="systemd, sysvinit, BusyBox, 컨테이너 init 프로그램 등이 PID 1을 차지할 수 있습니다."}
 ::option[다른 init 구현이 실행 중이어도 호환성 파일이 존재할 수 있기 때문입니다.]{#boot-init-compatibility-files .correct explanation="실행 중인 PID 1 실행 파일이 활성 init 시스템을 보여 주는 더 강한 증거입니다."}

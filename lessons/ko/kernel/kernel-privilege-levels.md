@@ -18,8 +18,7 @@ meta_keywords: "리눅스 권한 수준, 커널 모드, 사용자 모드, 보호
 
 페이지 테이블과 보호 비트가 메모리 접근을 적용합니다. 스레드가 유효하지 않거나 허용되지 않은 주소를 참조하면 프로세서가 커널로 트랩하고, 커널은 유효한 페이지 폴트를 해결하거나 `SIGSEGV` 같은 신호를 전달할 수 있습니다.
 
-:::single-choice{#kernel-privilege-user-mode-memory}
-사용자 모드 프로세스가 일반적으로 직접 접근할 수 있는 메모리는 무엇입니까?
+:::single-choice{#kernel-privilege-user-mode-memory} 사용자 모드 프로세스가 일반적으로 직접 접근할 수 있는 메모리는 무엇입니까?
 
 ::option[모든 물리 RAM 주소와 전체 커널 메모리입니다.]{#kernel-privilege-all-physical explanation="권한과 가상 메모리 보호가 그러한 접근을 막습니다."}
 ::option[프로세스 시작 시 선택된 고정된 한 바이트뿐입니다.]{#kernel-privilege-one-byte explanation="프로세스는 비특권 상태에서도 여러 매핑 영역을 가질 수 있습니다."}
@@ -32,8 +31,7 @@ meta_keywords: "리눅스 권한 수준, 커널 모드, 사용자 모드, 보호
 
 다른 아키텍처는 예외 수준 같은 서로 다른 이름과 메커니즘을 사용합니다. 가상화는 단순한 두 링 그림으로 표현할 수 없는 하이퍼바이저 및 게스트 관계를 추가합니다. 핵심 개념은 x86 링 번호 자체가 아니라 제어된 권한입니다.
 
-:::single-choice{#kernel-privilege-x86-kernel-ring}
-리눅스 커널은 일반적으로 어느 x86 보호 링에서 실행됩니까?
+:::single-choice{#kernel-privilege-x86-kernel-ring} 리눅스 커널은 일반적으로 어느 x86 보호 링에서 실행됩니까?
 
 ::option[링 3입니다.]{#kernel-privilege-ring-three explanation="링 3은 일반적인 사용자 모드 권한 수준입니다."}
 ::option[링 0입니다.]{#kernel-privilege-ring-zero .correct explanation="커널은 전통적인 x86에서 가장 높은 권한을 가진 링을 사용합니다."}
@@ -52,8 +50,7 @@ meta_keywords: "리눅스 권한 수준, 커널 모드, 사용자 모드, 보호
 
 애플리케이션이 일시적으로 커널 코드가 되는 것은 아닙니다. CPU가 커널이 제어하는 스택과 매핑을 사용해 해당 스레드를 대신하여 커널 핸들러를 실행합니다.
 
-:::single-choice{#kernel-privilege-system-call-transition}
-시스템 호출 전환 중에는 어떤 일이 일어납니까?
+:::single-choice{#kernel-privilege-system-call-transition} 시스템 호출 전환 중에는 어떤 일이 일어납니까?
 
 ::option[애플리케이션의 사용자 코드가 제한 없는 링 0 실행 권한을 받습니다.]{#kernel-privilege-user-ring-zero explanation="제어된 진입 후에는 신뢰되는 커널 코드만 실행됩니다."}
 ::option[프로세스의 UID가 영구적으로 0으로 바뀝니다.]{#kernel-privilege-uid-zero explanation="프로세서 모드 전환은 사용자 자격 증명을 다시 쓰지 않습니다."}
@@ -66,8 +63,7 @@ meta_keywords: "리눅스 권한 수준, 커널 모드, 사용자 모드, 보호
 
 capability, 네임스페이스, seccomp, 보안 모듈 및 cgroup은 프로세스가 요청할 수 있는 작업을 추가로 제한합니다. 이러한 계층적 정책은 하드웨어 사용자/커널 모드 경계와 별개입니다.
 
-:::single-choice{#kernel-privilege-root-distinction}
-root 식별 정보와 커널 모드를 올바르게 비교한 설명은 무엇입니까?
+:::single-choice{#kernel-privilege-root-distinction} root 식별 정보와 커널 모드를 올바르게 비교한 설명은 무엇입니까?
 
 ::option[root는 사용자 공간 자격 증명이고 커널 모드는 프로세서 실행 권한입니다.]{#kernel-privilege-credential-versus-mode .correct explanation="root 프로세스는 사용자 모드에서 권한 있는 요청을 보내고 신뢰되는 커널 코드가 특권 실행을 수행합니다."}
 ::option[root가 소유한 모든 명령어는 로드 가능한 커널 코드로 실행됩니다.]{#kernel-privilege-root-kernel-code explanation="UID 소유권은 실행 파일을 커널 모듈로 바꾸지 않습니다."}
@@ -80,8 +76,7 @@ root 식별 정보와 커널 모드를 올바르게 비교한 설명은 무엇�
 
 추측 실행 문제와 부채널도 하드웨어 격리에 지속적인 완화 조치가 필요함을 보여 줍니다. “서로 다른 링”은 기반일 뿐 완전한 보안의 증명이 아닙니다.
 
-:::single-choice{#kernel-privilege-boundary-limit}
-사용자/커널 모드 분리가 완전한 시스템 보안을 보장합니까?
+:::single-choice{#kernel-privilege-boundary-limit} 사용자/커널 모드 분리가 완전한 시스템 보안을 보장합니까?
 
 ::option[그렇습니다. 커널 취약점은 사용자 프로세스에 영향을 줄 수 없습니다.]{#kernel-privilege-no-kernel-vulns explanation="커널 취약점은 전체 시스템을 손상시킬 수 있습니다."}
 ::option[아닙니다. 특권 코드 결함과 부채널은 의도한 경계를 여전히 넘을 수 있습니다.]{#kernel-privilege-not-complete .correct explanation="모드 구분은 공격 표면을 줄이지만 올바른 커널 코드와 추가 완화 조치를 함께 사용해야 합니다."}

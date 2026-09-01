@@ -23,8 +23,7 @@ A logging path has several distinct parts:
 
 On a systemd host, `systemd-journald` commonly collects service standard output, kernel messages, and journal-native or syslog messages. A syslog daemon such as rsyslog may also receive messages and write traditional text files or forward them. Applications can instead maintain their own files or external telemetry.
 
-:::single-choice{#system-logging-distinct-roles}
-Which component decides where accepted messages are stored or forwarded?
+:::single-choice{#system-logging-distinct-roles} Which component decides where accepted messages are stored or forwarded?
 
 ::option[The terminal's current working directory.]{#system-logging-cwd explanation="A shell directory does not define system-wide logging routes."}
 ::option[The filename of the running kernel image.]{#system-logging-kernel-file explanation="The kernel can emit messages, but its image filename is not the routing policy."}
@@ -43,8 +42,7 @@ $ journalctl --disk-usage
 
 `/var/log/syslog` is common on Debian-family systems using compatible routing, while `/var/log/messages` is common elsewhere. Either may be absent on a journal-only host. Application documentation and unit configuration can identify additional destinations.
 
-:::single-choice{#system-logging-file-absence}
-What does a missing `/var/log/syslog` file necessarily mean?
+:::single-choice{#system-logging-file-absence} What does a missing `/var/log/syslog` file necessarily mean?
 
 ::option[The host may use another configured logging destination.]{#system-logging-other-destination .correct explanation="Journal-only systems and different syslog policies need not create this file."}
 ::option[The kernel has never produced a message.]{#system-logging-no-kernel explanation="Kernel records may be present in the journal or another destination."}
@@ -62,8 +60,7 @@ $ journalctl -u ssh.service --since '1 hour ago'
 
 `-b` selects the current boot, `-p` filters by priority, and `-u` filters by a unit. Unit names and retained boots differ by host. Use `journalctl --list-boots` to see available boots and `journalctl -f` to follow new records while reproducing an issue.
 
-:::single-choice{#system-logging-current-boot}
-Which option limits a `journalctl` query to the current boot?
+:::single-choice{#system-logging-current-boot} Which option limits a `journalctl` query to the current boot?
 
 ::option[`-b`]{#system-logging-boot-option .correct explanation="Without an argument, the boot selector chooses the current boot."}
 ::option[`-u`]{#system-logging-unit-option explanation="This filters by a systemd unit."}
@@ -82,8 +79,7 @@ It contains a timestamp, host, program and PID, then a message. Treat message te
 
 Logs may contain usernames, addresses, paths, tokens, or other sensitive data. Use least-privilege access, redact exports, and preserve originals and timestamps during an investigation.
 
-:::single-choice{#system-logging-export-safety}
-What should you do before sharing a log excerpt externally?
+:::single-choice{#system-logging-export-safety} What should you do before sharing a log excerpt externally?
 
 ::option[Replace every timestamp with a random value.]{#system-logging-random-time explanation="Destroying timing information can prevent correlation and is not a sound redaction method."}
 ::option[Review it for secrets and sensitive identifiers.]{#system-logging-review-sensitive .correct explanation="Logs often contain operational or personal data that requires controlled redaction."}

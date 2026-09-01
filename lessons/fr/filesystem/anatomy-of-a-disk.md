@@ -20,8 +20,7 @@ Une table de partitions consigne les positions de départ, longueurs, identifian
 
 Dans une organisation ordinaire, les limites des partitions ne doivent pas se chevaucher. L'espace qui n'appartient à aucune entrée est non alloué du point de vue de la table, même s'il peut encore contenir d'anciennes signatures ou données. Modifier la table ne déplace pas automatiquement le contenu des systèmes de fichiers pour le faire correspondre aux nouvelles limites.
 
-:::single-choice{#anatomy-disk-partition-table-role}
-Qu'est-ce qui indique au système d'exploitation où les partitions d'un disque commencent et se terminent ?
+:::single-choice{#anatomy-disk-partition-table-role} Qu'est-ce qui indique au système d'exploitation où les partitions d'un disque commencent et se terminent ?
 
 ::option[Le répertoire de travail actuel du shell.]{#anatomy-disk-shell-directory explanation="Un chemin du shell ne joue aucun rôle dans les limites de partitions inscrites sur le disque."}
 ::option[La table de partitions du disque.]{#anatomy-disk-table-boundaries .correct explanation="Les entrées de partition décrivent les régions que le noyau peut exposer comme périphériques blocs enfants."}
@@ -34,8 +33,7 @@ L'ancien schéma DOS/MBR stocke sa table principale dans le premier secteur logi
 
 Avec des adresses de secteurs sur 32 bits et des secteurs logiques de 512 octets, MBR atteint une limite souvent donnée à environ 2 Tio. L'adressage exact dépend de la taille des secteurs et de la prise en charge par les outils. MBR ne possède pas non plus les copies redondantes d'en-tête et de table, ni les GUID propres à chaque partition qu'offre GPT.
 
-:::single-choice{#anatomy-disk-mbr-more-than-four}
-Quelle structure MBR permet de disposer de plus de quatre partitions utilisables ?
+:::single-choice{#anatomy-disk-mbr-more-than-four} Quelle structure MBR permet de disposer de plus de quatre partitions utilisables ?
 
 ::option[Une partition de journal contenant davantage d'entrées principales.]{#anatomy-disk-mbr-journal explanation="La journalisation d'un système de fichiers est sans rapport avec les quatre entrées de la table MBR."}
 ::option[Une partition étendue contenant des partitions logiques.]{#anatomy-disk-mbr-extended .correct explanation="Une entrée principale peut définir un conteneur étendu dans lequel les partitions logiques sont chaînées."}
@@ -50,8 +48,7 @@ Chaque entrée GPT comprend un GUID de type de partition et un GUID unique de pa
 
 GPT est normalement utilisé pour les disques de démarrage UEFI, mais le partitionnement et le mode de démarrage du micrologiciel sont deux notions distinctes. Un système UEFI a également besoin des fichiers d'amorçage appropriés et d'une partition système EFI ; GPT seul ne rend pas un disque amorçable.
 
-:::single-choice{#anatomy-disk-gpt-identifiers}
-Quels identifiants une entrée de partition GPT contient-elle ?
+:::single-choice{#anatomy-disk-gpt-identifiers} Quels identifiants une entrée de partition GPT contient-elle ?
 
 ::option[Un GUID de type et un GUID de partition unique.]{#anatomy-disk-gpt-guids .correct explanation="Le type décrit l'usage prévu, tandis que le GUID unique identifie cette entrée de partition particulière."}
 ::option[Un seul type universel partagé par toutes les partitions GPT.]{#anatomy-disk-gpt-one-type explanation="GPT définit de nombreux GUID de type correspondant à différents usages des partitions."}
@@ -64,8 +61,7 @@ Après le partitionnement, un outil de création de système de fichiers écrit 
 
 Par exemple, les systèmes de fichiers ext emploient des inodes et des groupes de blocs, tandis que d'autres organisent leurs métadonnées au moyen d'arbres ou de structures d'allocation différents. N'appliquez pas à tous les systèmes de fichiers un même schéma simplifié composé d'un « bloc de démarrage, un superbloc, une table d'inodes et des blocs de données ».
 
-:::single-choice{#anatomy-disk-filesystem-layer}
-La création d'une partition crée-t-elle automatiquement un système de fichiers à l'intérieur ?
+:::single-choice{#anatomy-disk-filesystem-layer} La création d'une partition crée-t-elle automatiquement un système de fichiers à l'intérieur ?
 
 ::option[Non ; le formatage ou un autre usage explicite constitue une étape distincte.]{#anatomy-disk-partition-not-filesystem .correct explanation="La table de partitions ne définit qu'une région de blocs ; son contenu reste indépendant."}
 ::option[Oui ; chaque partition est automatiquement formatée en ext4.]{#anatomy-disk-auto-ext4 explanation="Les outils de partitionnement ne créent pas systématiquement un système de fichiers ext4."}
@@ -85,8 +81,7 @@ $ sudo parted --list
 
 Les noms des périphériques peuvent changer et d'anciennes signatures peuvent perturber la détection. Vérifiez modèle, numéro de série, taille, transport, liens persistants, montages actifs, swap, RAID, LVM, chiffrement et sauvegardes avant d'ouvrir un outil de partitionnement en mode écriture.
 
-:::single-choice{#anatomy-disk-lsblk-fields}
-Quel champ de `lsblk` distingue le contenu de système de fichiers détecté du schéma de la table de partitions ?
+:::single-choice{#anatomy-disk-lsblk-fields} Quel champ de `lsblk` distingue le contenu de système de fichiers détecté du schéma de la table de partitions ?
 
 ::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` indique un système de fichiers ou une autre signature de contenu reconnue, tandis que `PTTYPE` indique le schéma de la table."}
 ::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` désigne l'entrée de périphérique bloc du noyau et n'identifie pas précisément le format du contenu."}

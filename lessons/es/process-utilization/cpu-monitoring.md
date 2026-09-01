@@ -23,8 +23,7 @@ $ uptime
 
 Los tres valores finales son promedios de carga de aproximadamente 1, 5 y 15 minutos. Compararlos muestra la tendencia: un valor de 1 minuto mucho mayor puede indicar que la carga aumenta, mientras que un valor de 15 minutos mayor puede indicar que disminuye.
 
-:::single-choice{#cpu-uptime-windows}
-¿En qué orden muestra `uptime` los intervalos del promedio de carga?
+:::single-choice{#cpu-uptime-windows} ¿En qué orden muestra `uptime` los intervalos del promedio de carga?
 
 ::option[15, 5 y 1 segundos.]{#cpu-windows-seconds explanation="Los valores son promedios a escala de minutos y no se muestran del más largo al más corto."}
 ::option[1, 5 y 15 minutos.]{#cpu-windows-one-five-fifteen .correct explanation="El intervalo reciente más corto aparece primero y el más largo, al final."}
@@ -43,8 +42,7 @@ $ nproc
 
 Las cuotas de CPU, la afinidad, la virtualización y los límites de contenedores pueden reducir la capacidad visible para una carga de trabajo concreta, por lo que el número de CPU del equipo es solo un punto de partida.
 
-:::single-choice{#cpu-load-not-percentage}
-¿Por qué el promedio de carga no es un porcentaje de utilización de CPU?
+:::single-choice{#cpu-load-not-percentage} ¿Por qué el promedio de carga no es un porcentaje de utilización de CPU?
 
 ::option[Porque solo comunica la frecuencia de reloj de la CPU.]{#cpu-load-clock explanation="La velocidad del reloj es una métrica distinta del hardware o del escalado."}
 ::option[Porque solo mide la memoria física libre.]{#cpu-load-memory explanation="La disponibilidad de memoria se comunica mediante otras métricas."}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 Una carga alta con las CPU ocupadas puede indicar demanda de CPU. Una carga alta con una cantidad notable de tareas bloqueadas, latencia de E/S u observaciones de espera de E/S apunta a otro recurso limitado. Una utilización media baja también puede ocultar una CPU saturada o un pico breve de latencia.
 
-:::single-choice{#cpu-high-load-next-step}
-¿Cuál es el mejor paso después de observar un promedio de carga alto?
+:::single-choice{#cpu-high-load-next-step} ¿Cuál es el mejor paso después de observar un promedio de carga alto?
 
 ::option[Comparar mediciones repetidas de CPU, estados de tareas, E/S y carga de trabajo.]{#cpu-load-correlate .correct explanation="Las muestras relacionadas permiten distinguir explicaciones contrapuestas de la carga."}
 ::option[Reiniciar de inmediato sin recopilar otros datos.]{#cpu-load-reboot explanation="Reiniciar elimina pruebas y puede interrumpir servicios sin identificar la causa."}
@@ -77,8 +74,7 @@ Una carga alta con las CPU ocupadas puede indicar demanda de CPU. Una carga alta
 
 No existe una regla universal que exija mantener siempre la carga por debajo del número de CPU. Los sistemas por lotes pueden aceptar colas, mientras que los servicios interactivos pueden incumplir sus objetivos de latencia antes de alcanzar ese punto. Establece una referencia para el mismo equipo y la misma carga de trabajo y compara después el tiempo de respuesta, el rendimiento, la tasa de errores, la saturación y el uso de recursos.
 
-:::single-choice{#cpu-capacity-threshold}
-¿Qué debe determinar si la carga observada es aceptable?
+:::single-choice{#cpu-capacity-threshold} ¿Qué debe determinar si la carga observada es aceptable?
 
 ::option[El requisito de que el valor permanezca siempre por debajo de uno.]{#cpu-below-one explanation="La capacidad multinúcleo y los objetivos de la carga de trabajo hacen que este umbral fijo sea poco fiable."}
 ::option[Únicamente el número de usuarios que muestra `uptime`.]{#cpu-user-count explanation="Los usuarios con una sesión de shell iniciada no representan toda la demanda de la carga de trabajo."}

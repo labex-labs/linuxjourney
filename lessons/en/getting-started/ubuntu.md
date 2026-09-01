@@ -16,8 +16,7 @@ Ubuntu is one of the most widely used Linux distributions. Developed by Canonica
 
 Ubuntu has become a common starting point for people who want to learn Linux without beginning from a more manual or advanced setup. It is used on personal computers, development systems, cloud platforms, and servers, which gives it a reach that few other distros can match.
 
-:::single-choice{#identify-ubuntu-base}
-Which distribution provides Ubuntu's foundation?
+:::single-choice{#identify-ubuntu-base} Which distribution provides Ubuntu's foundation?
 
 ::option[The Debian distribution]{#debian-base .correct explanation="Ubuntu is built from Debian and inherits much of Debian's packaging approach. Ubuntu then adds its own releases, defaults, and support model."}
 ::option[The Fedora distribution]{#ubuntu-fedora-base explanation="Fedora belongs to the Red Hat ecosystem rather than forming Ubuntu's base. Ubuntu is part of the Debian family."}
@@ -30,8 +29,7 @@ Ubuntu is popular because it tries to make Linux practical for everyday use. It 
 
 Another reason Ubuntu is so visible is that it works across many environments. You will see it on laptops and desktops, in virtual machines, on servers, and across cloud platforms. That broad adoption reinforces its reputation as a general-purpose Linux distribution.
 
-:::single-choice{#recognize-beginner-support}
-Which Ubuntu quality most directly helps a beginner solve problems?
+:::single-choice{#recognize-beginner-support} Which Ubuntu quality most directly helps a beginner solve problems?
 
 ::option[Required manual compilation for each installed program]{#manual-compilation explanation="Ubuntu normally provides packaged software rather than requiring every program to be compiled manually. Extra build work would not simplify troubleshooting."}
 ::option[Extensive documentation and a large user community]{#documentation-community .correct explanation="Documentation and community discussions give beginners many places to find explanations and troubleshooting help. This lowers the barrier to learning."}
@@ -50,8 +48,7 @@ Ubuntu uses two main release types. It publishes a new release every six months,
 
 This release model helps explain Ubuntu's appeal. Users who want a dependable base often choose LTS, while users who want newer features can use the interim releases that arrive on a faster schedule.
 
-:::single-choice{#choose-ubuntu-lts}
-Which Ubuntu release type best fits a system that needs a longer-lived, predictable base?
+:::single-choice{#choose-ubuntu-lts} Which Ubuntu release type best fits a system that needs a longer-lived, predictable base?
 
 ::option[An interim release]{#interim-release explanation="Interim releases arrive more frequently and expose newer features sooner. Their shorter support period does not match the stated priority."}
 ::option[An LTS release]{#lts-release .correct explanation="LTS releases are intended for longer support and are commonly selected for systems that prioritize a dependable base."}
@@ -64,8 +61,7 @@ As a Debian-based system, Ubuntu uses the `.deb` package format and the `apt` pa
 
 Package management is one of Ubuntu's practical strengths because it combines mature Debian tooling with a large, widely documented software environment.
 
-:::single-choice{#identify-ubuntu-package-tool}
-Which item is the package-management tool used to install software on Ubuntu?
+:::single-choice{#identify-ubuntu-package-tool} Which item is the package-management tool used to install software on Ubuntu?
 
 ::option[`.deb`]{#deb-format explanation="`.deb` identifies the package format used by Debian-based systems. It is not the command-line package-management tool."}
 ::option[`LTS`]{#lts-label explanation="LTS labels a Long Term Support release. It does not install or manage software packages."}

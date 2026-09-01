@@ -24,8 +24,7 @@ meta_keywords: "부팅 루트, initramfs, 커널 부팅, 부트 파티션, 리�
 
 initramfs는 이러한 구성 요소를 커널과 함께 제공되는 초기 사용자 공간 환경으로 묶습니다.
 
-:::single-choice{#boot-kernel-initramfs-purpose}
-initramfs가 일반적으로 해결하는 문제는 무엇입니까?
+:::single-choice{#boot-kernel-initramfs-purpose} initramfs가 일반적으로 해결하는 문제는 무엇입니까?
 
 ::option[실제 루트를 사용할 수 있기 전에 필요한 초기 도구와 모듈을 제공합니다.]{#boot-kernel-early-tools .correct explanation="초기 사용자 공간은 커널 내장 지원만으로 접근할 수 없는 저장 장치를 검색하고 구성할 수 있습니다."}
 ::option[모든 사용자의 영구 홈 디렉터리를 펌웨어에 저장합니다.]{#boot-kernel-home-firmware explanation="이 아카이브는 부팅 결과물이며 영구 사용자 데이터 저장소가 아닙니다."}
@@ -40,8 +39,7 @@ initramfs가 일반적으로 해결하는 문제는 무엇입니까?
 
 initramfs는 커널 및 부팅 설계와 맞아야 합니다. 누락된 모듈, 오래된 장치 식별자 또는 빠진 암호화 및 LVM 도구 때문에 커널 이미지 자체가 유효해도 새로 설치한 커널을 부팅하지 못할 수 있습니다.
 
-:::single-choice{#boot-kernel-initramfs-format}
-최신 initramfs는 일반적으로 어떤 형태로 커널에 제공됩니까?
+:::single-choice{#boot-kernel-initramfs-format} 최신 initramfs는 일반적으로 어떤 형태로 커널에 제공됩니까?
 
 ::option[HTTP로만 제공되는 대화형 패키지 저장소입니다.]{#boot-kernel-http-repository explanation="초기 사용자 공간에서 네트워크 접근을 설정할 수 있지만 그것이 initramfs 형식을 정의하지는 않습니다."}
 ::option[초기 루트에 풀리는 cpio 기반 아카이브입니다.]{#boot-kernel-cpio-archive .correct explanation="커널은 아카이브를 확장하고 초기 사용자 공간 초기화 프로그램을 실행합니다."}
@@ -54,8 +52,7 @@ initramfs는 커널 및 부팅 설계와 맞아야 합니다. 누락된 모듈, 
 
 초기 `ro` 명령줄 요청은 일관성 검사와 제어된 시작을 지원할 수 있지만 정확한 순서는 배포판별로 다릅니다. 파일 시스템 검사는 사용자 공간 작업이며 정책에서 허용하면 initramfs나 이후 init 시스템이 루트를 읽기-쓰기로 다시 마운트할 수 있습니다.
 
-:::single-choice{#boot-kernel-root-switch}
-초기 사용자 공간이 의도한 실제 루트를 성공적으로 마운트한 뒤에는 어떻게 됩니까?
+:::single-choice{#boot-kernel-root-switch} 초기 사용자 공간이 의도한 실제 루트를 성공적으로 마운트한 뒤에는 어떻게 됩니까?
 
 ::option[모든 디스크의 파티션 테이블을 다시 만듭니다.]{#boot-kernel-recreate-tables explanation="루트 전환은 저장 장치를 다시 파티셔닝하지 않습니다."}
 ::option[커널이 종료되고 펌웨어가 일반 프로세스 스케줄링을 재개합니다.]{#boot-kernel-firmware-schedules explanation="제어권 전달 후에도 리눅스 커널이 프로세스와 하드웨어를 계속 담당합니다."}
@@ -68,8 +65,7 @@ initramfs는 커널 및 부팅 설계와 맞아야 합니다. 누락된 모듈, 
 
 사용 가능한 init 프로그램을 실행할 수 없으면 커널은 정상적인 사용자 공간 시스템으로 진행할 수 없고 일반적으로 부팅 실패나 패닉을 보고합니다. 커널과 명령줄, initramfs 내용, 루트 검색, 루트 마운트 또는 PID 1 실행 가운데 가장 먼저 실패한 계층을 디버깅하십시오.
 
-:::single-choice{#boot-kernel-pid-one}
-단순화한 이 부팅 단계에서 커널이 수행하는 마지막 주요 제어권 전달은 무엇입니까?
+:::single-choice{#boot-kernel-pid-one} 단순화한 이 부팅 단계에서 커널이 수행하는 마지막 주요 제어권 전달은 무엇입니까?
 
 ::option[첫 사용자 공간 프로그램을 PID 1로 실행합니다.]{#boot-kernel-exec-init .correct explanation="그 뒤 PID 1이 서비스와 설정된 시스템 상태를 구성합니다."}
 ::option[`/proc`를 영구 패키지 데이터베이스로 바꿉니다.]{#boot-kernel-proc-package explanation="procfs는 계속 런타임 커널 인터페이스입니다."}

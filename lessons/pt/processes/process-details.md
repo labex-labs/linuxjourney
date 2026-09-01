@@ -24,8 +24,7 @@ $ pgrep -a cat
 
 Os dois processos executam o mesmo programa, mas podem ter fluxos de entrada, conteúdos de memória, credenciais, diretórios de trabalho e durações diferentes. Um PID identifica um processo ativo por vez e pode ser reutilizado mais tarde, depois que esse processo termina.
 
-:::single-choice{#process-details-program-versus-process}
-O que diferencia duas instâncias em execução do mesmo programa?
+:::single-choice{#process-details-program-versus-process} O que diferencia duas instâncias em execução do mesmo programa?
 
 ::option[O arquivo executável precisa ser copiado uma vez para cada instância.]{#process-details-copied-executable explanation="Vários processos podem mapear e compartilhar as páginas de código do mesmo arquivo executável sem duplicar o arquivo."}
 ::option[Somente uma instância pode possuir memória ou arquivos abertos.]{#process-details-one-instance-resources explanation="Cada processo pode ter seus próprios mapeamentos de memória e sua própria tabela de descritores de arquivos."}
@@ -46,8 +45,7 @@ O kernel mantém as informações necessárias para escalonar e controlar cada p
 
 Alguns recursos subjacentes podem ser compartilhados. Processos relacionados podem compartilhar memória mapeada, e as threads de um mesmo processo compartilham um espaço de endereços e muitos recursos do processo. Portanto, um processo oferece limites de isolamento sem implicar que cada byte ou objeto do kernel seja fisicamente privado.
 
-:::single-choice{#process-details-kernel-state}
-Qual componente mantém os estados de escalonamento e credenciais dos processos Linux?
+:::single-choice{#process-details-kernel-state} Qual componente mantém os estados de escalonamento e credenciais dos processos Linux?
 
 ::option[O kernel.]{#process-details-kernel .correct explanation="O kernel acompanha o estado dos processos e aplica regras de escalonamento, memória, sinais e controle de acesso."}
 ::option[O diretório do arquivo executável.]{#process-details-directory explanation="Um diretório armazena um mapeamento de nomes para inodes e não escalona processos em execução."}
@@ -60,8 +58,7 @@ As threads executáveis disputam tempo de CPU. O escalonador do kernel escolhe q
 
 Cada processo normalmente enxerga um espaço de endereços virtual. O kernel e o hardware mapeiam endereços virtuais para a memória física ou outro armazenamento de apoio, aplicam proteções e podem compartilhar páginas quando apropriado. Portanto, um valor de memória em `ps` ou `top` não é automaticamente a quantidade de RAM física exclusiva atribuída àquele processo.
 
-:::single-choice{#process-details-scheduler-role}
-O que o escalonador do Linux seleciona?
+:::single-choice{#process-details-scheduler-role} O que o escalonador do Linux seleciona?
 
 ::option[Qual thread executável será executada em uma CPU disponível.]{#process-details-runnable-thread .correct explanation="A política de escalonamento escolhe entre contextos executáveis e atribui tempo de CPU."}
 ::option[Qual proprietário de arquivo é registrado quando um disco é formatado.]{#process-details-format-owner explanation="A propriedade do sistema de arquivos não tem relação com o escalonamento da CPU."}
@@ -72,8 +69,7 @@ O que o escalonador do Linux seleciona?
 
 Quando um processo termina, o kernel libera a maioria de seus recursos privados, fecha os descritores restantes e registra informações de encerramento para o processo pai. Um pequeno registro na tabela de processos pode permanecer como zumbi até que o pai recupere o status de saída. Isso significa que “o processo terminou a execução” e “todos os vestígios desapareceram da tabela de processos” nem sempre ocorrem simultaneamente.
 
-:::single-choice{#process-details-exit-status}
-Por que um processo encerrado pode permanecer brevemente como zumbi?
+:::single-choice{#process-details-exit-status} Por que um processo encerrado pode permanecer brevemente como zumbi?
 
 ::option[Ele ainda está executando instruções com toda a memória alocada.]{#process-details-zombie-running explanation="Um zumbi terminou a execução e não mantém mais um espaço de endereços em funcionamento normal."}
 ::option[Seu pai ainda não coletou o status de encerramento registrado.]{#process-details-parent-wait .correct explanation="O kernel mantém informações mínimas de saída até que o pai realize uma operação wait."}

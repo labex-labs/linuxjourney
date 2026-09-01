@@ -18,8 +18,7 @@ Un protocole applicatif définit la manière dont les pairs interprètent les me
 
 Tous les protocoles applicatifs n'ajoutent pas un unique « en-tête applicatif » fixe. Certains emploient des champs textuels, d'autres des enregistrements binaires ou plusieurs formats imbriqués, et certains transportent une suite continue de messages sur une même connexion de transport.
 
-:::single-choice{#application-layer-protocol-role}
-Que définit principalement un protocole applicatif ?
+:::single-choice{#application-layer-protocol-role} Que définit principalement un protocole applicatif ?
 
 ::option[Le sens et les règles d'échange des messages d'un service.]{#application-layer-message-semantics .correct explanation="Les pairs ont besoin d'une syntaxe, d'une sémantique et d'un comportement d'état communs pour interagir."}
 ::option[La tension de chaque câble Ethernet.]{#application-layer-voltage explanation="La signalisation physique relève des technologies des couches inférieures."}
@@ -30,8 +29,7 @@ Que définit principalement un protocole applicatif ?
 
 Un client initie une demande ou une connexion à un service ; un serveur écoute ou l'accepte d'une autre manière. Il s'agit de rôles dans une interaction, pas de catégories permanentes d'appareils. Un même hôte peut être client pour le DNS et serveur pour SSH simultanément, et certains protocoles emploient des rôles pair à pair.
 
-:::single-choice{#application-layer-client-role}
-Qu'est-ce qui fait d'un programme le client dans un échange demande-réponse typique ?
+:::single-choice{#application-layer-client-role} Qu'est-ce qui fait d'un programme le client dans un échange demande-réponse typique ?
 
 ::option[Il initie une demande vers le service.]{#application-layer-client-initiates .correct explanation="Client et serveur décrivent des rôles d'interaction qu'un même hôte peut remplir simultanément pour différents services."}
 ::option[Il doit s'exécuter sur un ordinateur portable plutôt que sur un serveur.]{#application-layer-client-laptop explanation="La catégorie du matériel ne détermine pas le rôle dans le protocole."}
@@ -42,8 +40,7 @@ Qu'est-ce qui fait d'un programme le client dans un échange demande-réponse ty
 
 Une application peut résoudre le nom d'un service vers une ou plusieurs adresses IP, puis choisir un terminal de transport. Les ports bien connus fournissent des valeurs par défaut, pas la preuve immuable d'un protocole. HTTP emploie couramment le port TCP 80 et HTTPS le port TCP 443, mais tous deux peuvent fonctionner ailleurs. SMTP utilise différents ports et règles pour le relais et la soumission des messages.
 
-:::single-choice{#application-layer-port-limit}
-Que prouve à lui seul un port TCP 443 ouvert ?
+:::single-choice{#application-layer-port-limit} Que prouve à lui seul un port TCP 443 ouvert ?
 
 ::option[Qu'un processus y a accepté un terminal TCP, mais que son comportement applicatif doit encore être testé.]{#application-layer-port-endpoint .correct explanation="L'échange du protocole et la validation TLS fournissent des preuves plus solides au niveau applicatif."}
 ::option[Que le service est certainement une application HTTPS correctement configurée.]{#application-layer-port-proves-https explanation="Un numéro de port ne valide ni le comportement du protocole, ni l'identité, ni la santé."}
@@ -56,8 +53,7 @@ TLS peut ajouter confidentialité, intégrité et identité authentifiée du pai
 
 Un diagnostic HTTPS peut par exemple contrôler séparément la résolution, la connexion TCP, le certificat et le nom TLS, la réponse HTTP et le contenu applicatif. La réussite d'une étape réduit le problème sans prouver toutes les suivantes.
 
-:::single-choice{#application-layer-tls-limit}
-Qu'établit la validation réussie d'un certificat TLS ?
+:::single-choice{#application-layer-tls-limit} Qu'établit la validation réussie d'un certificat TLS ?
 
 ::option[Que chaque utilisateur est autorisé pour toutes les ressources.]{#application-layer-tls-all-users explanation="L'authentification du transport ne remplace pas les règles d'accès de l'application."}
 ::option[L'identité du pair pour le nom validé et un canal sécurisé authentifié.]{#application-layer-tls-identity .correct explanation="L'autorisation applicative et la justesse du contenu exigent encore leurs propres contrôles."}

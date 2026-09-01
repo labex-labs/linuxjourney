@@ -24,8 +24,7 @@ Init 系统通常会：
 
 具体边界有所不同。设备管理、网络、日志和定时任务可以是由 init 监管的独立程序，而不是直接内置到 PID 1 中。
 
-:::single-choice{#boot-init-pid-one-role}
-在自身 PID 命名空间中，哪项职责是 PID 1 所特有的？
+:::single-choice{#boot-init-pid-one-role} 在自身 PID 命名空间中，哪项职责是 PID 1 所特有的？
 
 ::option[每次启动时从源代码编译所有应用程序。]{#boot-init-compile-apps explanation="普通服务启动使用已安装程序，不会重新构建所有软件。"}
 ::option[定义磁盘的物理扇区大小。]{#boot-init-sector-size explanation="在 init 管理服务前，存储硬件和驱动程序已经公开扇区几何信息。"}
@@ -38,8 +37,7 @@ Init 系统通常会：
 
 不能仅仅因为存在 `/etc/init.d/` 就推断主机正在使用哪种 init 系统；即使 PID 1 是其他实现，兼容脚本也可能保留。
 
-:::single-choice{#boot-init-sysv-runlevel}
-System V 运行级别表示什么？
+:::single-choice{#boot-init-sysv-runlevel} System V 运行级别表示什么？
 
 ::option[由引导加载程序选择的内核版本号。]{#boot-init-runlevel-kernel explanation="内核选择属于加载程序职责，不由 init 运行级别编码。"}
 ::option[与服务操作关联的已配置运行模式。]{#boot-init-runlevel-mode .correct explanation="SysV 布局把级别与启动或关闭脚本的集合及顺序关联起来。"}
@@ -54,8 +52,7 @@ Systemd 被当前许多通用发行版广泛使用。它把服务、套接字、
 
 其他仍在使用的 init 和监管设计包括 OpenRC、runit、s6 和 BusyBox init。“最新”并不是有用的兼容性规则；应识别实际系统运行的内容并使用其文档。
 
-:::single-choice{#boot-init-systemd-unit-model}
-Systemd 如何表示服务和挂载等受管资源？
+:::single-choice{#boot-init-systemd-unit-model} Systemd 如何表示服务和挂载等受管资源？
 
 ::option[表示为 MBR 主分区条目。]{#boot-init-systemd-partitions explanation="磁盘分区元数据与服务管理器单元无关。"}
 ::option[只表示为指向 PID 1 可执行文件的硬链接。]{#boot-init-systemd-hard-links explanation="单元是配置和运行时对象，不只是 inode 别名。"}
@@ -73,8 +70,7 @@ $ readlink /proc/1/exe
 
 权限、容器和命名空间会影响看到的内容。在容器中运行命令时，报告的是该命名空间中的 PID 1，不一定是主机 init。识别后，应使用其原生状态和日志工具，不要混用其他 init 家族的命令。
 
-:::single-choice{#boot-init-detect-running}
-为什么检查 PID 1 比查看是否存在旧式脚本目录更可靠？
+:::single-choice{#boot-init-detect-running} 为什么检查 PID 1 比查看是否存在旧式脚本目录更可靠？
 
 ::option[每个 Linux 系统的 PID 1 可执行文件名称都相同。]{#boot-init-same-name explanation="Systemd、sysvinit、BusyBox、容器 init 程序等都可能占据 PID 1。"}
 ::option[即使正在运行另一种 init 实现，兼容文件也可能存在。]{#boot-init-compatibility-files .correct explanation="活动 PID 1 可执行文件是判断当前 init 系统更有力的证据。"}

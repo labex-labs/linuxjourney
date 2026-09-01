@@ -18,8 +18,7 @@ meta_keywords: "粘着ビット，粘着ビット linux, unix ファイルパー
 
 この制限が関係するのはディレクトリエントリーです。ファイルの権限が許可している場合に、ファイル所有者が内容を編集することまでは防がず、ディレクトリを非公開にするものでもありません。
 
-:::single-choice{#sticky-bit-removal-rule}
-Sticky bit のある共有ディレクトリで、通常、特定のエントリーを削除できる一般ユーザーは誰ですか？
+:::single-choice{#sticky-bit-removal-rule} Sticky bit のある共有ディレクトリで、通常、特定のエントリーを削除できる一般ユーザーは誰ですか？
 
 ::option[ディレクトリを一覧表示できるすべてのユーザー。]{#sticky-bit-any-reader explanation="ディレクトリの読み取り権限で名前が見えても、sticky bit の所有権制限は回避できません。"}
 ::option[必要なディレクトリアクセスを持つ、そのエントリーの所有者。]{#sticky-bit-entry-owner .correct explanation="エントリー所有者は、sticky ディレクトリの規則で通常許可される識別情報の一つです。"}
@@ -39,8 +38,7 @@ drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 
 `/tmp` は一般に全ユーザーが書き込み・検索できるため、複数ユーザーがエントリーを作成できます。Sticky bit により、ディレクトリが全ユーザー書き込み可能であるという理由だけで、通常ユーザーが別ユーザーのエントリーを削除することを防ぎます。それでもアプリケーションは一時オブジェクトを安全に作成しなければなりません。予測可能な名前、安全でないリンク、弱いファイルモードには別の危険があるためです。
 
-:::single-choice{#sticky-bit-lowercase-t}
-ディレクトリモードの末尾にある小文字 `t` は何を示しますか？
+:::single-choice{#sticky-bit-lowercase-t} ディレクトリモードの末尾にある小文字 `t` は何を示しますか？
 
 ::option[Sticky bit とその他の実行権限が設定されている。]{#sticky-bit-t-with-execute .correct explanation="小文字 `t` は sticky 特殊ビットと通常のその他実行ビットを組み合わせて表します。"}
 ::option[Sticky bit は設定されているが、その他の実行権限はない。]{#sticky-bit-t-without-execute explanation="その組み合わせは大文字 `T` で表示されます。"}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 先頭の `1` が sticky bit を設定し、`777` が通常モードを指定します。このモードが適切なのは、そのディレクトリを意図的にすべてのローカルユーザーで共有する場合だけです。チーム用ディレクトリでは、より狭いグループ権限の方が適切な場合があります。Sticky bit だけを削除するには `chmod -t shared-directory` を使います。
 
-:::single-choice{#sticky-bit-octal-value}
-Sticky bit を表す先頭の8進値はどれですか？
+:::single-choice{#sticky-bit-octal-value} Sticky bit を表す先頭の8進値はどれですか？
 
 ::option[`2`]{#sticky-bit-value-two explanation="先頭の `2` は setgid を表します。"}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="Sticky bit は先頭の特殊ビット桁へ `1` を加えます。"}
@@ -75,8 +72,7 @@ Sticky bit を表す先頭の8進値はどれですか？
 
 Sticky bit は書き込み権限や検索権限を与えません。通常権限がディレクトリの変更を許可した後で、特定の削除・改名操作を制限するだけです。ディレクトリの所有者、グループ、通常モード、ACL、マウントのコンテキストをまとめて確認してください。稼働中システムの `/tmp` を変更せず、隔離環境で非特権アカウントを使ってテストします。
 
-:::single-choice{#sticky-bit-access-scope}
-Sticky bit を追加すると、書き込み不可のディレクトリが他のユーザーから書き込み可能になりますか？
+:::single-choice{#sticky-bit-access-scope} Sticky bit を追加すると、書き込み不可のディレクトリが他のユーザーから書き込み可能になりますか？
 
 ::option[はい。sticky bit はすべてのクラスへ自動的に書き込み権限を追加する。]{#sticky-bit-adds-write explanation="特殊ビットが所有者、グループ、その他の書き込みビットを書き換えることはありません。"}
 ::option[はい。sticky bit はディレクトリのその他権限トリプレットを無効にする。]{#sticky-bit-disables-other explanation="その他のトリプレットは通常のアクセス確認へ引き続き参加します。"}

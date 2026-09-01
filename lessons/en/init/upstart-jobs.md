@@ -29,8 +29,7 @@ networking start/running
 
 Upstart reports both a **goal** such as `start` or `stop` and a current **state** such as `running` or `waiting`. `stop/waiting` means the job is not running and is waiting for a start condition or manual request; it does not necessarily indicate an error.
 
-:::single-choice{#upstart-jobs-stop-waiting}
-What does `stop/waiting` normally mean in Upstart status output?
+:::single-choice{#upstart-jobs-stop-waiting} What does `stop/waiting` normally mean in Upstart status output?
 
 ::option[The job is running but consuming no CPU.]{#upstart-jobs-running-idle explanation="A running job would normally show a start goal and running state."}
 ::option[The job's goal is stopped and no process instance is running.]{#upstart-jobs-stopped-waiting .correct explanation="The definition remains known while Upstart waits for a future condition or command."}
@@ -48,8 +47,7 @@ $ sudo initctl stop JOB_NAME
 
 Jobs can define multiple instances keyed by environment variables. In that case, supply the exact variables required by the configuration, and include them consistently when querying or stopping an instance. Starting network, storage, authentication, or remote-access jobs can disrupt the session, so preserve console recovery.
 
-:::single-choice{#upstart-jobs-start-command}
-Which command manually requests that job `peanuts` start?
+:::single-choice{#upstart-jobs-start-command} Which command manually requests that job `peanuts` start?
 
 ::option[`sudo initctl start peanuts`]{#upstart-jobs-start-peanuts .correct explanation="The start subcommand is followed by the configured job name and any required instance variables."}
 ::option[`sudo initctl peanuts start`]{#upstart-jobs-name-first explanation="Initctl syntax places the subcommand before the job name."}
@@ -68,8 +66,7 @@ On Upstart, `restart` is not always equivalent to a fresh `stop` followed by `st
 
 A restart causes interruption and can fail to return the service to operation. Verify the actual endpoint and logs afterward.
 
-:::single-choice{#upstart-jobs-restart-peanuts}
-Which command requests a restart of running Upstart job `peanuts`?
+:::single-choice{#upstart-jobs-restart-peanuts} Which command requests a restart of running Upstart job `peanuts`?
 
 ::option[`sudo initctl restart peanuts`]{#upstart-jobs-restart-command .correct explanation="The restart subcommand operates on the named job through the Upstart control interface."}
 ::option[`sudo initctl emit peanuts`]{#upstart-jobs-emit-not-restart explanation="Emitting an event affects any matching job conditions and is not a direct restart request."}
@@ -82,8 +79,7 @@ Before installing a modified job file, use the validation tool supplied by the l
 
 Syntax validation cannot prove that paths exist, credentials permit execution, events arrive, or the process becomes ready. Test in a recovery-capable environment.
 
-:::single-choice{#upstart-jobs-syntax-validation-limit}
-What does job syntax validation fail to prove?
+:::single-choice{#upstart-jobs-syntax-validation-limit} What does job syntax validation fail to prove?
 
 ::option[That the service will start successfully and become ready.]{#upstart-jobs-runtime-not-proven .correct explanation="Runtime paths, permissions, dependencies, and event flow require an actual controlled test."}
 ::option[That the configuration text can be parsed at all.]{#upstart-jobs-parse-purpose explanation="Parsing is precisely the main purpose of syntax validation."}
@@ -100,8 +96,7 @@ $ sudo initctl emit EVENT_NAME
 
 Every job whose start or stop expression matches can react. An event is not addressed to one job, and its effects can cascade through further events. Inspect all matching configurations before emitting a custom or system event; do not replay core boot events casually on a production host.
 
-:::single-choice{#upstart-jobs-emit-scope}
-What can happen when `initctl emit EVENT_NAME` runs?
+:::single-choice{#upstart-jobs-emit-scope} What can happen when `initctl emit EVENT_NAME` runs?
 
 ::option[All job expressions matching that event can transition.]{#upstart-jobs-event-matches .correct explanation="Events are broadcast into Upstart's dependency model rather than sent only to one named service."}
 ::option[Only a job whose name exactly equals the event can respond.]{#upstart-jobs-event-name-only explanation="Matching is defined by `start on` and `stop on` expressions, not job-name equality."}

@@ -28,8 +28,7 @@ $ grep 'fox' sample.txt
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-哪个命令会在 `products.txt` 中搜索字面文本 `price: $5.00`，而不把模式字符视为正则表达式语法？
+:::single-choice{#grep-fixed-string} 哪个命令会在 `products.txt` 中搜索字面文本 `price: $5.00`，而不把模式字符视为正则表达式语法？
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` 选择固定字符串匹配，单引号则防止 shell 展开美元符号。"}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` 启用扩展正则表达式，其中 `$` 和 `.` 具有特殊含义，不再是字面字符。"}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 反斜杠使点号按字面含义匹配；在正则表达式中，未转义的 `.` 会匹配任意单个字符。
 
-:::single-choice{#grep-literal-txt-suffix}
-哪个扩展正则表达式会匹配以字面后缀 `.txt` 结尾的行？
+:::single-choice{#grep-literal-txt-suffix} 哪个扩展正则表达式会匹配以字面后缀 `.txt` 结尾的行？
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="点号未转义，所以它会匹配 `txt` 前面的任意单个字符，而不一定是字面句点。"}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` 匹配字面句点，`$` 把匹配锚定在行尾。"}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 可以重复使用 `-e`，选择与任一所给模式匹配的行。使用 `-f patterns.txt` 可从文件中每行读取一个模式。
 
-:::single-choice{#grep-hyphen-pattern}
-哪个命令会在 `settings.conf` 中搜索模式 `-v`，而不是把它解释为选项？
+:::single-choice{#grep-hyphen-pattern} 哪个命令会在 `settings.conf` 中搜索模式 `-v`，而不是把它解释为选项？
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="引号会防止 shell 展开字符，但 `grep` 仍可能把得到的 `-v` 参数解释为反向匹配选项。"}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="这会启用反向匹配，并没有按题目要求同时提供模式和输入文件。"}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` 统计的是所选行，不是这些行中的匹配总次数。包含 `fox fox` 的一行只会贡献一次计数。如果确实需要使用 GNU `grep` 统计非重叠匹配次数，`grep -o PATTERN | wc -l` 是一种可选管道。
 
-:::single-choice{#grep-count-lines}
-`data.txt` 有一行包含 `error error`，另有两行不匹配。`grep -c 'error' data.txt` 会报告什么？
+:::single-choice{#grep-count-lines} `data.txt` 有一行包含 `error error`，另有两行不匹配。`grep -c 'error' data.txt` 会报告什么？
 
 ::option[`2`，因为该单词在一行中出现两次。]{#grep-count-occurrences explanation="`-c` 统计所选行，而不是一行内的单独匹配次数。"}
 ::option[`1`，因为恰好有一行匹配。]{#grep-count-one-line .correct explanation="即使模式在该行中出现两次，这一行也只会被选择一次。"}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 权限错误等诊断信息会写入 stderr，不属于匹配输入。应缩小搜索路径并了解权限，而不是立即提升访问权限。
 
-:::single-choice{#grep-pipeline-input}
-在 `generate-report | grep 'failed'` 中，`grep` 搜索的输入是什么？
+:::single-choice{#grep-pipeline-input} 在 `generate-report | grep 'failed'` 中，`grep` 搜索的输入是什么？
 
 ::option[当前目录中名为 `generate-report` 的文件。]{#grep-report-file explanation="左侧的名称会作为命令执行，不会作为文件操作数传给 `grep`。"}
 ::option[`generate-report` 产生的 stdout 流。]{#grep-report-stdout .correct explanation="管道会把生产者的 stdout 连接到 `grep` 的 stdin。"}

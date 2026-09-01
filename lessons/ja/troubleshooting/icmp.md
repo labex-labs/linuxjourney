@@ -16,8 +16,7 @@ Internet Control Message Protocol（ICMP）は、IP とともに制御、エラ�
 
 ICMP メッセージにはタイプ、必要に応じてさらに詳しいコード、そしてチェックサムがあります。エラーメッセージには通常、送信側がエラーを通信フローと対応付けられるよう、原因となったパケットの一部が含まれます。
 
-:::single-choice{#icmp-code-purpose}
-ICMP のコードは何を示しますか？
+:::single-choice{#icmp-code-purpose} ICMP のコードは何を示しますか？
 
 ::option[報告元ルーターの永続的な DNS 名。]{#icmp-code-dns explanation="このフィールドは名前解決を目的として符号化されるものではありません。"}
 ::option[ICMP メッセージタイプの中で、より具体的な意味。]{#icmp-code-specific .correct explanation="たとえば Destination Unreachable のコードは、複数の失敗理由を区別します。"}
@@ -28,8 +27,7 @@ ICMP のコードは何を示しますか？
 
 ICMPv4 では Echo Request がタイプ 8、Echo Reply がタイプ 0 です。Destination Unreachable はタイプ 3、Time Exceeded はタイプ 11 です。ICMPv6 では異なるタイプ番号を使うため、キャプチャを解釈する前に必ずアドレスファミリーを特定してください。
 
-:::single-choice{#icmpv4-echo-request-type}
-ICMPv4 の Echo Request のタイプ番号はどれですか？
+:::single-choice{#icmpv4-echo-request-type} ICMPv4 の Echo Request のタイプ番号はどれですか？
 
 ::option[0]{#icmp-type-zero explanation="タイプ 0 は ICMPv4 の Echo Reply です。"}
 ::option[11]{#icmp-type-eleven explanation="タイプ 11 は ICMPv4 の Time Exceeded です。"}
@@ -42,8 +40,7 @@ ICMP は、単なる任意の ping トラフィックではありません。IPv
 
 一律に遮断するのではなく、必要なタイプ、方向、レート、スコープに基づいてフィルタリングしてください。一部の ICMP は攻撃者が偽装できるため、引用されたパケットの文脈を検証し、ローカルルートやキャプチャとも照合します。
 
-:::single-choice{#icmp-block-all-risk}
-ICMP をすべて遮断すると、正当な通信が壊れる可能性があるのはなぜですか？
+:::single-choice{#icmp-block-all-risk} ICMP をすべて遮断すると、正当な通信が壊れる可能性があるのはなぜですか？
 
 ::option[すべての HTTP 応答が ICMP Echo Reply 内で運ばれるから。]{#icmp-http-echo explanation="HTTP は通常、ICMP Echo ではなく TCP または QUIC を使います。"}
 ::option[ICMP に全アプリケーションのパスワードが保存されるから。]{#icmp-passwords explanation="ICMP は認証情報データベースではありません。"}
@@ -54,8 +51,7 @@ ICMP をすべて遮断すると、正当な通信が壊れる可能性がある
 
 ICMP 応答がない原因には、フィルタリング、レート制限、非対称ルーティング、戻り経路の欠落、ホスト停止、そのメッセージに単に応答しない機器などがあります。反対に、ICMP エラーは最終宛先ではなく、中継機器が生成することもあります。
 
-:::single-choice{#icmp-silence-meaning}
-Echo Reply がないという事実だけから、何が証明できますか？
+:::single-choice{#icmp-silence-meaning} Echo Reply がないという事実だけから、何が証明できますか？
 
 ::option[対象アプリケーションが確実に停止している。]{#icmp-silence-app-down explanation="Echo トラフィックが遮断または無視されていても、サービスは動作している場合があります。"}
 ::option[宛先ホスト名が DNS から削除されている。]{#icmp-silence-dns-deleted explanation="数値アドレスへの試行は、DNS とは無関係に無応答になることがあります。"}

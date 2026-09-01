@@ -18,8 +18,7 @@ Wenn das Sticky-Bit auf einem Verzeichnis gesetzt ist, erlaubt Linux das Entfern
 
 Die Einschränkung betrifft Verzeichniseinträge. Sie hindert einen Dateieigentümer nicht daran, den Dateiinhalt zu bearbeiten, wenn die Dateiberechtigungen diesen Vorgang anderweitig erlauben, und macht das Verzeichnis nicht privat.
 
-:::single-choice{#sticky-bit-removal-rule}
-Welcher gewöhnliche Benutzer kann in einem gemeinsam genutzten Verzeichnis mit Sticky-Bit einen bestimmten Eintrag normalerweise entfernen?
+:::single-choice{#sticky-bit-removal-rule} Welcher gewöhnliche Benutzer kann in einem gemeinsam genutzten Verzeichnis mit Sticky-Bit einen bestimmten Eintrag normalerweise entfernen?
 
 ::option[Jeder Benutzer, der das Verzeichnis auflisten kann.]{#sticky-bit-any-reader explanation="Die Leseberechtigung eines Verzeichnisses kann Namen sichtbar machen, umgeht aber nicht die Eigentumsbeschränkung des Sticky-Bits."}
 ::option[Der Eigentümer des Eintrags, sofern der erforderliche Verzeichniszugriff besteht.]{#sticky-bit-entry-owner .correct explanation="Der Eigentümer des Eintrags gehört zu den Identitäten, denen die Regel eines Verzeichnisses mit Sticky-Bit das Entfernen gewöhnlich erlaubt."}
@@ -39,8 +38,7 @@ Das abschließende kleingeschriebene `t` steht an der Ausführungsposition für 
 
 Da `/tmp` gewöhnlich für alle beschreibbar und durchsuchbar ist, können mehrere Benutzer dort Einträge erstellen. Das Sticky-Bit verhindert, dass ein gewöhnlicher Benutzer die Einträge eines anderen allein deshalb entfernen kann, weil das Verzeichnis für alle beschreibbar ist. Anwendungen müssen temporäre Objekte weiterhin sicher erstellen, da vorhersehbare Namen, unsichere Links und schwache Dateimodi getrennte Risiken darstellen.
 
-:::single-choice{#sticky-bit-lowercase-t}
-Was zeigt ein kleingeschriebenes `t` am Ende eines Verzeichnismodus an?
+:::single-choice{#sticky-bit-lowercase-t} Was zeigt ein kleingeschriebenes `t` am Ende eines Verzeichnismodus an?
 
 ::option[Sticky-Bit und Ausführungsberechtigung für andere sind gesetzt.]{#sticky-bit-t-with-execute .correct explanation="Ein kleingeschriebenes `t` verbindet das besondere Sticky-Bit mit dem gewöhnlichen Ausführungsbit für andere."}
 ::option[Das Sticky-Bit ist gesetzt, aber die Ausführungsberechtigung für andere fehlt.]{#sticky-bit-t-without-execute explanation="Diese Kombination wird als großgeschriebenes `T` dargestellt."}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 Die führende `1` setzt Sticky, während `777` den gewöhnlichen Modus angibt. Dieser Modus ist nur dann angemessen, wenn das Verzeichnis bewusst von allen lokalen Benutzern gemeinsam verwendet wird. Für ein Teamverzeichnis können engere Gruppenberechtigungen besser geeignet sein. Entferne ausschließlich das Sticky-Bit mit `chmod -t shared-directory`.
 
-:::single-choice{#sticky-bit-octal-value}
-Welcher führende oktale Wert steht für das Sticky-Bit?
+:::single-choice{#sticky-bit-octal-value} Welcher führende oktale Wert steht für das Sticky-Bit?
 
 ::option[`2`]{#sticky-bit-value-two explanation="Eine führende `2` steht für setgid."}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="Das Sticky-Bit trägt `1` zur führenden Ziffer für besondere Bits bei."}
@@ -75,8 +72,7 @@ Welcher führende oktale Wert steht für das Sticky-Bit?
 
 Sticky gewährt weder Schreib- noch Suchzugriff; es schränkt nur das Entfernen und Umbenennen ein, nachdem die gewöhnlichen Berechtigungen eine Änderung des Verzeichnisses erlauben. Prüfe Eigentümer, Gruppe, gewöhnlichen Modus, ACLs und Einhängekontext des Verzeichnisses gemeinsam. Teste in einer isolierten Umgebung mit unprivilegierten Konten, statt `/tmp` auf einem laufenden System zu verändern.
 
-:::single-choice{#sticky-bit-access-scope}
-Macht das Hinzufügen des Sticky-Bits ein nicht beschreibbares Verzeichnis für andere Benutzer beschreibbar?
+:::single-choice{#sticky-bit-access-scope} Macht das Hinzufügen des Sticky-Bits ein nicht beschreibbares Verzeichnis für andere Benutzer beschreibbar?
 
 ::option[Ja; Sticky fügt automatisch für jede Klasse die Schreibberechtigung hinzu.]{#sticky-bit-adds-write explanation="Das besondere Bit schreibt die Schreibbits für Eigentümer, Gruppe oder andere nicht um."}
 ::option[Ja; Sticky deaktiviert das Berechtigungstripel für andere.]{#sticky-bit-disables-other explanation="Das Tripel für andere ist weiterhin an gewöhnlichen Zugriffsprüfungen beteiligt."}

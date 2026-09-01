@@ -30,8 +30,7 @@ $ find /home -name puppies.jpg
 
 Recursion is the default. Use `.` as the starting path when you want to search the current directory tree.
 
-:::single-choice{#search-current-tree}
-Which command searches the current directory and its descendants for entries named `notes.txt`?
+:::single-choice{#search-current-tree} Which command searches the current directory and its descendants for entries named `notes.txt`?
 
 ::option[`find . -name notes.txt`]{#find-current-notes .correct explanation="The dot selects the current directory as the starting path, and `-name` tests each entry's basename."}
 ::option[`find / -name notes.txt`]{#find-root-notes explanation="A starting path of `/` searches from the filesystem root, which is much broader than the current directory tree."}
@@ -56,8 +55,7 @@ $ find /home -type d -name MyFolder
 
 Both tests must be true here: the entry must be a directory and its basename must be `MyFolder`.
 
-:::single-choice{#find-text-regular-files}
-Which command finds regular files whose names end in `.txt` below the current directory?
+:::single-choice{#find-text-regular-files} Which command finds regular files whose names end in `.txt` below the current directory?
 
 ::option[`find . -type f -name "*.txt"`]{#text-files .correct explanation="`-type f` selects regular files, while the quoted `-name` pattern is evaluated by `find` for every entry."}
 ::option[`find . -type d -name "*.txt"`]{#text-directories explanation="The pattern is quoted correctly, but `-type d` selects directories rather than regular files."}
@@ -84,8 +82,7 @@ $ find . -type f -mtime +30
 
 `-mtime -7` matches a value less than 7, while `-mtime +30` matches a value greater than 30. Because complete 24-hour periods are used, these tests are not based on calendar-midnight boundaries.
 
-:::single-choice{#find-recent-regular-files}
-Which command finds regular files below `.` whose modification age is less than seven complete 24-hour periods?
+:::single-choice{#find-recent-regular-files} Which command finds regular files below `.` whose modification age is less than seven complete 24-hour periods?
 
 ::option[`find . -type f -mtime -7`]{#recent-files .correct explanation="`-type f` selects regular files, and `-mtime -7` selects modification ages below seven complete 24-hour periods."}
 ::option[`find . -type f -mtime +7`]{#older-than-seven explanation="The plus sign selects ages greater than seven units. It looks for older rather than recent files."}
@@ -112,16 +109,14 @@ For the `\;` form, `{}` is replaced by one matching pathname for each command in
 
 Before using a destructive action such as `-delete` or an `-exec` command that changes files, run the same tests with `-print` and inspect every result. A narrower starting path and `-maxdepth N` can also limit the search.
 
-:::single-choice{#verify-before-delete}
-You are developing a `find` command that may later delete old `.log` files. What should you do first?
+:::single-choice{#verify-before-delete} You are developing a `find` command that may later delete old `.log` files. What should you do first?
 
 ::option[Add `-delete` immediately and check which files disappear.]{#delete-first explanation="Deletion is not a safe preview and has no built-in undo. Verify the complete match set before adding it."}
 ::option[Run the same tests with `-print` and inspect every match.]{#print-first .correct explanation="A read-only listing verifies the starting path and tests before a destructive action is introduced."}
 ::option[Search from `/` so the command cannot miss any log files.]{#root-first explanation="Starting at `/` broadens the scope and can include unrelated or protected paths. Use the narrowest appropriate starting point."}
 :::
 
-:::single-choice{#run-ls-for-each-match}
-In `find . -name "*.log" -exec ls -l {} \;`, what does `{}` represent?
+:::single-choice{#run-ls-for-each-match} In `find . -name "*.log" -exec ls -l {} \;`, what does `{}` represent?
 
 ::option[The current matching pathname supplied to `ls -l`.]{#match-placeholder .correct explanation="For this `-exec` form, `find` substitutes the current match for `{}` before invoking `ls -l`."}
 ::option[The directory where the `find` command was started.]{#starting-placeholder explanation="The starting directory is the dot near the beginning of the command. The braces have a different role inside `-exec`."}

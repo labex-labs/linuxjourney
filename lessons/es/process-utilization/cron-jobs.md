@@ -24,8 +24,7 @@ De izquierda a derecha, los campos son minuto, hora, día del mes, mes y día de
 
 Cuando están restringidos tanto el día del mes como el día de la semana, muchas implementaciones de cron ejecutan la orden si cualquiera de los campos coincide. Confirma la semántica local antes de crear un horario que utilice ambos.
 
-:::single-choice{#cron-daily-eight-thirty}
-¿Cuándo se ejecuta `30 8 * * * command`?
+:::single-choice{#cron-daily-eight-thirty} ¿Cuándo se ejecuta `30 8 * * * command`?
 
 ::option[Cada 30 minutos durante ocho horas.]{#cron-every-thirty explanation="Los campos son posiciones de un horario, no una expresión de duración."}
 ::option[A las 08:30 todos los días.]{#cron-eight-thirty .correct explanation="El minuto 30 y la hora 8 son fijos, mientras que los tres campos de fecha permiten todos los valores."}
@@ -48,8 +47,7 @@ $ crontab -l
 
 `crontab -r` elimina todo el crontab del usuario y puede hacerlo sin abrir un editor. No lo utilices para eliminar una sola línea; edita el crontab y verifica las entradas restantes.
 
-:::single-choice{#cron-list-current-user}
-¿Qué orden muestra las entradas de cron instaladas para el usuario actual?
+:::single-choice{#cron-list-current-user} ¿Qué orden muestra las entradas de cron instaladas para el usuario actual?
 
 ::option[`crontab -l`]{#cron-list .correct explanation="La opción de listado imprime las entradas instaladas para examinarlas."}
 ::option[`crontab -r`]{#cron-remove-all explanation="Esta opción elimina el crontab en vez de mostrarlo."}
@@ -62,8 +60,7 @@ Cron suele proporcionar un entorno limitado y un shell no interactivo. Utiliza r
 
 Redirige la salida estándar y los errores a un registro controlado o utiliza un mecanismo de notificación apropiado para el sistema. Protege las credenciales con permisos restrictivos y evita incrustar secretos directamente en una orden del crontab.
 
-:::single-choice{#cron-absolute-paths}
-¿Por qué debe utilizar una orden de cron rutas y ajustes de entorno explícitos?
+:::single-choice{#cron-absolute-paths} ¿Por qué debe utilizar una orden de cron rutas y ajustes de entorno explícitos?
 
 ::option[Porque cron siempre se ejecuta dentro de la terminal actual del usuario.]{#cron-current-terminal explanation="Los trabajos programados se ejecutan independientemente de una sesión interactiva."}
 ::option[Porque las rutas absolutas hacen que todas las órdenes se ejecuten como root.]{#cron-path-root explanation="Las rutas seleccionan archivos, pero no conceden privilegios."}
@@ -82,8 +79,7 @@ Si una ejecución puede durar más que su intervalo, diseña el trabajo para la 
 
 Elige una ruta de bloqueo que el usuario del trabajo pueda crear de forma segura y decide si resulta aceptable omitir ejecuciones. Cron no garantiza automáticamente que solo se ejecute una instancia.
 
-:::single-choice{#cron-overlapping-runs}
-¿Qué riesgo existe cuando un trabajo tarda más que su intervalo programado?
+:::single-choice{#cron-overlapping-runs} ¿Qué riesgo existe cuando un trabajo tarda más que su intervalo programado?
 
 ::option[Varias instancias pueden solaparse y competir por recursos.]{#cron-overlap .correct explanation="Cron puede iniciar una ejecución nueva mientras el proceso anterior sigue activo."}
 ::option[Los cinco campos del horario reciben automáticamente un sexto campo de bloqueo.]{#cron-auto-lock explanation="La sintaxis de crontab no añade exclusión mutua automática."}
@@ -94,8 +90,7 @@ Elige una ruta de bloqueo que el usuario del trabajo pueda crear de forma segura
 
 Cron resulta apropiado para órdenes recurrentes sencillas. Los temporizadores de systemd pueden proporcionar integración de dependencias, recuperación persistente de ejecuciones omitidas, retrasos aleatorios y registros en el journal en equipos con systemd. Los planificadores de aplicaciones o clústeres pueden ser más seguros cuando un trabajo deba ejecutarse exactamente una vez entre varios equipos.
 
-:::single-choice{#cron-cluster-exactly-once}
-¿Por qué puede ser inadecuado el cron ordinario de cada equipo para un trabajo de clúster que deba ejecutarse exactamente una vez?
+:::single-choice{#cron-cluster-exactly-once} ¿Por qué puede ser inadecuado el cron ordinario de cada equipo para un trabajo de clúster que deba ejecutarse exactamente una vez?
 
 ::option[Porque cada entrada de cron está limitada a un carácter.]{#cron-one-character explanation="Las órdenes de crontab pueden contener líneas de órdenes normales."}
 ::option[Porque cada equipo puede iniciar su propia copia de forma independiente.]{#cron-each-host .correct explanation="Se necesita un mecanismo de coordinación distribuida para imponer una sola ejecución entre los equipos."}

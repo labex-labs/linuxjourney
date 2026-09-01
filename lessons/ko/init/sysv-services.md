@@ -28,8 +28,7 @@ $ service --status-all
 
 대괄호 표식과 종료 상태는 래퍼마다 다르고 스크립트가 알 수 없는 상태를 보고할 수도 있습니다. 서비스 하나에 대해서는 모든 작업이 있다고 가정하지 말고 스크립트의 사용법 출력이나 문서를 검사하십시오.
 
-:::single-choice{#sysv-services-wrapper-purpose}
-`service` 명령은 일반적으로 무엇을 감쌉니까?
+:::single-choice{#sysv-services-wrapper-purpose} `service` 명령은 일반적으로 무엇을 감쌉니까?
 
 ::option[모든 서비스 파일에서 실행되는 디스크 파티션 편집기입니다.]{#sysv-services-partition-editor explanation="서비스 제어는 저장 장치 파티셔닝과 관련이 없습니다."}
 ::option[스크립트가 동적으로 추가한 커널 시스템 호출입니다.]{#sysv-services-new-syscall explanation="init 스크립트는 사용자 공간 프로세스 제어 프로그램입니다."}
@@ -49,8 +48,7 @@ $ sudo service SERVICE_NAME stop
 
 직접 호출하는 `/etc/init.d/SERVICE_NAME ACTION` 형태도 있을 수 있지만 활성 관리자가 호환성을 제공하는 호스트에서는 상태와 의존성을 추적할 수 있도록 관리자 인터페이스 명령을 사용하십시오.
 
-:::single-choice{#sysv-services-stop-peanut}
-SysV 서비스 `peanut`의 중지를 요청하는 명령은 무엇입니까?
+:::single-choice{#sysv-services-stop-peanut} SysV 서비스 `peanut`의 중지를 요청하는 명령은 무엇입니까?
 
 ::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="일반적인 피연산자 순서는 작업보다 서비스 이름을 먼저 둡니다."}
 ::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="SysV 서비스 래퍼 구문이 아닙니다."}
@@ -68,8 +66,7 @@ $ sudo service SERVICE_NAME status
 $ sudo service SERVICE_NAME reload
 ```
 
-:::single-choice{#sysv-services-reload-versus-restart}
-`reload`를 `restart`와 같다고 가정해서는 안 되는 이유는 무엇입니까?
+:::single-choice{#sysv-services-reload-versus-restart} `reload`를 `restart`와 같다고 가정해서는 안 되는 이유는 무엇입니까?
 
 ::option[reload가 항상 전체 운영체제를 종료하기 때문입니다.]{#sysv-services-reload-shutdown explanation="서비스 다시 불러오기 작업의 일반적인 의미가 아닙니다."}
 ::option[restart는 설정만 출력하고 프로세스 상태를 절대 바꾸지 않기 때문입니다.]{#sysv-services-restart-readonly explanation="restart는 일반적으로 서비스를 중지한 뒤 시작합니다."}
@@ -82,8 +79,7 @@ $ sudo service SERVICE_NAME reload
 
 배포판의 의존성 메타데이터와 관리 도구를 이해하기 전에는 `S`와 `K` 링크를 직접 만들지 마십시오. 수동 링크는 덮어써지거나 잘못된 순서로 배치될 수 있습니다.
 
-:::single-choice{#sysv-services-start-versus-enable}
-`service SERVICE start`가 이후 부팅에서 서비스를 반드시 활성화합니까?
+:::single-choice{#sysv-services-start-versus-enable} `service SERVICE start`가 이후 부팅에서 서비스를 반드시 활성화합니까?
 
 ::option[그렇습니다. 모든 start 작업이 모든 런레벨 링크를 자동으로 만듭니다.]{#sysv-services-start-links explanation="래퍼가 영구 활성화를 보편적으로 변경하지는 않습니다."}
 ::option[아닙니다. 런타임 상태와 런레벨 활성화는 별개입니다.]{#sysv-services-runtime-separate .correct explanation="현재 프로세스 시작과 별개로 부팅 링크나 관리자 정책이 이후 활성화를 결정합니다."}

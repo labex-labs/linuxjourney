@@ -30,8 +30,7 @@ $ modinfo MODULE_NAME
 
 `modinfo` показывает файл, aliases, параметры, лицензию, описание и сведения о подписи. Метаданные описательны, но не доказывают доверие или совместимость с нагрузкой.
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-Что показывает `lsmod`?
+:::single-choice{#kernel-modules-lsmod-purpose} Что показывает `lsmod`?
 
 ::option[Каждый пакет модулей в удалённых репозиториях.]{#kernel-modules-repository-list explanation="Для инвентаризации репозитория нужны запросы менеджера пакетов."}
 ::option[Только драйверы, встроенные прямо в образ ядра.]{#kernel-modules-builtins explanation="Встроенные функции не являются загружаемыми модулями и обычно не появляются в lsmod."}
@@ -50,8 +49,7 @@ $ sudo modprobe MODULE_NAME
 
 До загрузки подтвердите происхождение, политику подписей, совместимость с release ядра, параметры, ожидаемую привязку оборудования и откат. Secure Boot или kernel lockdown могут отклонить неподписанный модуль; принудительное внедрение несовместимого кода грозит сбоем или компрометацией.
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-Почему `modprobe` обычно предпочтительнее прямого `insmod`?
+:::single-choice{#kernel-modules-modprobe-dependencies} Почему `modprobe` обычно предпочтительнее прямого `insmod`?
 
 ::option[Он выполняет модуль полностью в непривилегированном пользовательском пространстве.]{#kernel-modules-modprobe-userspace explanation="Вставленный модуль выполняется как привилегированный код ядра."}
 ::option[Он гарантирует подпись и безопасность каждого стороннего модуля.]{#kernel-modules-modprobe-guarantee explanation="Принудительность зависит от политики, а действительная подпись не доказывает отсутствие дефектов."}
@@ -74,8 +72,7 @@ example_module
 
 Аппаратные aliases часто вызывают автоматическую загрузку без явного списка. Для модулей ранней загрузки после изменения конфигурации обновите initramfs документированным способом дистрибутива.
 
-:::single-choice{#kernel-modules-options-versus-load}
-Что делает строка `options` в `/etc/modprobe.d/`?
+:::single-choice{#kernel-modules-options-versus-load} Что делает строка `options` в `/etc/modprobe.d/`?
 
 ::option[Сама по себе гарантирует загрузку модуля при каждом старте.]{#kernel-modules-options-autoload explanation="Для загрузки при старте используется другой механизм, например modules-load или aliases устройств."}
 ::option[Задаёт параметры, используемые при загрузке именованного модуля.]{#kernel-modules-options-parameters .correct explanation="Modprobe применяет настроенные пары ключ-значение во время вставки."}
@@ -92,8 +89,7 @@ blacklist example_module
 
 Обычно blacklist подавляет автоматическую загрузку через aliases. Он не выгружает уже загруженный модуль, не удаляет его из initramfs и не обязательно предотвращает явную загрузку по имени или как зависимости. Для усиления защиты нужна специфичная угрозе комбинация доступности модулей, проверки подписей, содержимого initramfs, параметров загрузки и политики.
 
-:::single-choice{#kernel-modules-blacklist-effect}
-Что прежде всего подавляет базовая строка `blacklist` modprobe?
+:::single-choice{#kernel-modules-blacklist-effect} Что прежде всего подавляет базовая строка `blacklist` modprobe?
 
 ::option[Автоматическую загрузку через aliases модуля.]{#kernel-modules-blacklist-aliases .correct explanation="Директива не является универсальным запретом всех путей загрузки кода."}
 ::option[Выполнение каждой пользовательской программы с похожим именем.]{#kernel-modules-blacklist-user-programs explanation="Конфигурация modprobe относится к разрешению модулей ядра."}
@@ -112,8 +108,7 @@ Modprobe может удалить ставшие ненужными завис�
 
 Никогда не выгружайте модуль принудительно в системе, которую нужно сохранить. Ошибка удаления или незавершённая активность может уронить ядро или повредить данные.
 
-:::single-choice{#kernel-modules-remove-command}
-Какая команда запрашивает учитывающее зависимости удаление модуля по имени?
+:::single-choice{#kernel-modules-remove-command} Какая команда запрашивает учитывающее зависимости удаление модуля по имени?
 
 ::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="Lsmod — средство вывода только для чтения и не удаляет модули."}
 ::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="Uname сообщает сведения о ядре и не управляет модулями."}

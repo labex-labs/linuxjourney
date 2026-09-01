@@ -23,8 +23,7 @@ Verbreitete Werkzeuge sind:
 
 Die Unterstützung der Werkzeuge entwickelt sich weiter. Verwende deshalb das lokale Handbuch und die Distributionsdokumentation. Eine grafische Oberfläche macht zerstörerische Operationen nicht sicher; sie verändert dieselben Datenträgermetadaten.
 
-:::single-choice{#disk-partitioning-fdisk-gpt}
-Welche Aussage über aktuelles Linux-`fdisk` trifft zu?
+:::single-choice{#disk-partitioning-fdisk-gpt} Welche Aussage über aktuelles Linux-`fdisk` trifft zu?
 
 ::option[Es unterstützt MBR- und GPT-Partitionstabellen.]{#disk-partitioning-fdisk-supports-gpt .correct explanation="Aktuelles util-linux fdisk kann unter anderem DOS-/MBR- und GPT-Strukturen bearbeiten."}
 ::option[Es kann ausschließlich GPT und niemals MBR bearbeiten.]{#disk-partitioning-fdisk-only-gpt explanation="Das auf GPT ausgerichtete `gdisk` entspricht dieser Beschreibung eher; fdisk unterstützt mehrere Label-Typen."}
@@ -45,8 +44,7 @@ Bestätige das vollständige Gerät anhand dauerhafter Identität, Modell, Serie
 
 Hänge alle betreffenden Ebenen gemäß ihren dokumentierten Verfahren aus oder deaktiviere sie. Bearbeite die Partitionstabelle des laufenden Systemdatenträgers nicht nur deshalb, weil sich das Werkzeug erfolgreich öffnen lässt. Zeichne die vorhandene Tabelle in wiederherstellbarer Form auf und bestätige, dass deine Sicherung in einer anderen Ausfalldomäne liegt.
 
-:::single-choice{#disk-partitioning-target-identity}
-Warum reicht ein Gerätename wie `/dev/sdb` als einzige Zielprüfung nicht aus?
+:::single-choice{#disk-partitioning-target-identity} Warum reicht ein Gerätename wie `/dev/sdb` als einzige Zielprüfung nicht aus?
 
 ::option[Linux stellt niemals vollständige Datenträger unter `/dev` bereit.]{#disk-partitioning-no-whole-disks explanation="Vollständige Datenträger besitzen häufig Blockgeräteknoten unter `/dev`."}
 ::option[Aufzählungsnamen können sich bei Änderungen an Geräten oder Topologie ändern.]{#disk-partitioning-enumeration-changes .correct explanation="Ein Buchstabe wird anhand der Erkennungsreihenfolge vergeben und kann in einer späteren Sitzung einen anderen Datenträger bezeichnen."}
@@ -70,8 +68,7 @@ Wähle anschließend konsistente Anzeigeeinheiten und gib die Tabelle aus:
 
 `print free` zeigt vorhandene Einträge und nicht zugewiesene Bereiche. Parted-Befehle können Datenträgermetadaten sofort aktualisieren, statt auf einen abschließenden Speichervorgang zu warten. Behandle die interaktive Eingabeaufforderung daher als aktiven Schreibzugriff.
 
-:::single-choice{#disk-partitioning-print-free}
-Was hilft `print free` in `parted` anzuzeigen?
+:::single-choice{#disk-partitioning-print-free} Was hilft `print free` in `parted` anzuzeigen?
 
 ::option[Dateien, die zum sicheren Verkleinern jedes Dateisystems gelöscht werden können.]{#disk-partitioning-free-files explanation="Parted liest die Partitionsstruktur und nicht die Dateizuweisung innerhalb eines Dateisystems."}
 ::option[Jede auf entfernten Systemen gespeicherte Sicherung.]{#disk-partitioning-remote-backups explanation="Das Inventar entfernter Sicherungen liegt außerhalb der Aufgaben eines Partitionierungswerkzeugs."}
@@ -90,8 +87,7 @@ Dadurch entsteht ein Partitionseintrag mit Name, vorgeschlagenem Inhaltstyp, Sta
 
 Nutze die vom Werkzeug empfohlene Ausrichtung und verstehe, ob Endpunkte eingeschlossen und wie sie gerundet werden. Prüfe das Ergebnis mit `print` und `lsblk`; gehe nicht davon aus, dass eine angeforderte Dezimalgrenze exakt gespeichert wurde.
 
-:::single-choice{#disk-partitioning-mkpart-effect}
-Was erstellt `mkpart` von `parted`?
+:::single-choice{#disk-partitioning-mkpart-effect} Was erstellt `mkpart` von `parted`?
 
 ::option[Ein eingehängtes ext4-Dateisystem mit einem Home-Verzeichnis.]{#disk-partitioning-mounted-filesystem explanation="Formatieren und Einhängen sind getrennte Operationen nach der Partitionserstellung."}
 ::option[Eine vollständige Sicherung des vorherigen Partitionsinhalts.]{#disk-partitioning-automatic-backup explanation="Partitionierungswerkzeuge erstellen nicht automatisch eine Wiederherstellungssicherung."}
@@ -109,8 +105,7 @@ Die Reihenfolge ist entscheidend:
 
 Manche Dateisysteme lassen sich nicht verkleinern. Verschlüsselung, LVM, RAID und verschachtelte Strukturen fügen weitere geordnete Ebenen hinzu. Der Kernel kann sich außerdem weigern, eine geänderte Tabelle bei beschäftigten Geräten neu einzulesen, sodass ein kontrollierter Neustart nötig wird, bevor die neue Struktur nutzbar ist.
 
-:::single-choice{#disk-partitioning-shrink-order}
-Welche Reihenfolge verhindert bei einem verkleinerbaren Dateisystem das Abschneiden aktiver Dateisystemdaten?
+:::single-choice{#disk-partitioning-shrink-order} Welche Reihenfolge verhindert bei einem verkleinerbaren Dateisystem das Abschneiden aktiver Dateisystemdaten?
 
 ::option[Zuerst die Partition verkleinern und danach prüfen, ob das Dateisystem hineinpasst.]{#disk-partitioning-shrink-partition-first explanation="Das frühzeitige Verkürzen des Containers kann Dateisystemstrukturen und Daten abschneiden."}
 ::option[Zuerst das Dateisystem verkleinern und danach die Grenze seiner enthaltenden Partition reduzieren.]{#disk-partitioning-shrink-filesystem-first .correct explanation="Der Inhalt muss in den kleineren Bereich passen, bevor das äußere Blockgerät verkürzt wird."}

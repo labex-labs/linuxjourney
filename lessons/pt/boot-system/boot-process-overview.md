@@ -18,8 +18,7 @@ O firmware da plataforma inicializa CPU, memória e dispositivos o suficiente pa
 
 O firmware não precisa compreender o sistema de arquivos raiz do Linux instalado. Ele encontra um caminho conforme sua interface — por exemplo, código de boot BIOS no disco escolhido ou uma entrada UEFI que aponta para um executável EFI em uma Partição de Sistema EFI.
 
-:::single-choice{#boot-overview-first-stage}
-Qual componente começa a inicialização da plataforma depois da reinicialização de um PC típico?
+:::single-choice{#boot-overview-first-stage} Qual componente começa a inicialização da plataforma depois da reinicialização de um PC típico?
 
 ::option[O shell interativo do usuário.]{#boot-overview-shell explanation="Um shell é iniciado muito mais tarde por serviços do espaço do usuário ou pelo processo de login."}
 ::option[O firmware da plataforma, como BIOS ou UEFI.]{#boot-overview-firmware .correct explanation="O firmware estabelece o estado inicial do hardware e escolhe o próximo alvo de boot antes da execução do Linux."}
@@ -32,8 +31,7 @@ Um carregador como o GRUB pode apresentar entradas, carregar na memória um kern
 
 Os artefatos escolhidos precisam ser compatíveis: versão do kernel, conteúdo do initramfs, identificador da raiz, assinaturas de segurança e opções da linha de comando afetam o êxito da transferência seguinte.
 
-:::single-choice{#boot-overview-loader-role}
-Qual é uma responsabilidade comum de um carregador de boot Linux?
+:::single-choice{#boot-overview-loader-role} Qual é uma responsabilidade comum de um carregador de boot Linux?
 
 ::option[Carregar o kernel escolhido e passar sua linha de comando.]{#boot-overview-load-kernel .correct explanation="O carregador prepara a imagem do kernel e seus parâmetros, muitas vezes junto com um initramfs."}
 ::option[Criar todas as contas de usuário do zero a cada boot.]{#boot-overview-create-users explanation="Os bancos persistentes de contas são configuração do espaço do usuário e não são recriados pelo carregador."}
@@ -46,8 +44,7 @@ O kernel se descompacta ou reposiciona conforme necessário, inicializa subsiste
 
 Depois que a raiz pretendida está disponível, o espaço inicial muda para ela e o kernel executa o primeiro programa configurado do espaço do usuário. Detalhes como quem verifica sistemas de arquivos ou remonta a raiz para leitura e escrita pertencem ao projeto de boot da distribuição, não a uma sequência universal.
 
-:::single-choice{#boot-overview-initramfs-purpose}
-Por que um sistema pode usar um initramfs?
+:::single-choice{#boot-overview-initramfs-purpose} Por que um sistema pode usar um initramfs?
 
 ::option[Para preservar permanentemente no firmware a sessão de desktop de cada usuário.]{#boot-overview-desktop-firmware explanation="Um initramfs é uma imagem de sistema de arquivos usada durante o boot, não armazenamento de sessões no firmware."}
 ::option[Para fornecer ferramentas e drivers iniciais necessários para alcançar o sistema de arquivos raiz real.]{#boot-overview-early-root-tools .correct explanation="O espaço inicial pode montar armazenamento raiz criptografado, lógico, em rede ou dependente de drivers."}
@@ -60,8 +57,7 @@ O primeiro processo do espaço do usuário recebe o PID 1. Em muitas distribuiç
 
 Chegar ao PID 1 não significa que o sistema esteja completamente pronto. Serviços ainda podem estar iniciando, unidades podem estar sendo montadas, a rede pode continuar pendente, e um login gráfico ou no console é apenas um dos estados de destino possíveis.
 
-:::single-choice{#boot-overview-final-stage}
-O que inicia a principal etapa de inicialização do espaço do usuário?
+:::single-choice{#boot-overview-final-stage} O que inicia a principal etapa de inicialização do espaço do usuário?
 
 ::option[A criação do MBR protetor do disco a cada boot.]{#boot-overview-create-mbr explanation="Criar a tabela de partições não é uma etapa recorrente normal do boot."}
 ::option[A exclusão de todos os parâmetros da linha de comando do kernel.]{#boot-overview-delete-command-line explanation="O kernel interpreta e expõe sua linha de comando, sem exigir essa exclusão."}

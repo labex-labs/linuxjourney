@@ -22,8 +22,7 @@ $ sudo ss -lntup
 
 `-l` 选择监听器，`-n` 避免名称查询，`-t` 和 `-u` 分别选择 TCP 与 UDP，`-p` 请求进程数据。UDP 是无连接协议，因此未连接但已绑定的 UDP 套接字没有 TCP 风格的 `LISTEN` 握手。
 
-:::single-choice{#netstat-ss-numeric}
-排查套接字问题时为什么使用 `-n`？
+:::single-choice{#netstat-ss-numeric} 排查套接字问题时为什么使用 `-n`？
 
 ::option[它会创建新的网络命名空间。]{#netstat-new-namespace explanation="该选项控制输出中的名称解析。"}
 ::option[它会阻止地址和端口名称查询。]{#netstat-numeric-output .correct explanation="数字输出避免把服务名映射与观察到的协议身份混淆。"}
@@ -34,8 +33,7 @@ $ sudo ss -lntup
 
 本地套接字端点由地址、传输协议和端口组合而成。一个 TCP 连接由协议、源地址与端口以及目的地址与端口共同区分。`/etc/services` 把约定俗成的名称映射为数字，但不能证明当前由哪个进程占用某个端口，也不能证明该进程实际使用哪种应用层协议。
 
-:::single-choice{#netstat-services-file-limit}
-`/etc/services` 中的 `https 443/tcp` 条目能确定什么？
+:::single-choice{#netstat-services-file-limit} `/etc/services` 中的 `https 443/tcp` 条目能确定什么？
 
 ::option[当前有一台健康的 HTTPS 服务器正在监听。]{#netstat-healthy-listener explanation="静态名称数据库无法证明运行时状态。"}
 ::option[该端口约定俗成的服务名映射。]{#netstat-conventional-name .correct explanation="套接字所有者与实际协议行为需要运行时检查和测试。"}
@@ -53,8 +51,7 @@ $ sudo ss -lntup
 
 大量或持续增长的 `CLOSE-WAIT` 往往指向本地应用程序的清理行为。`TIME-WAIT` 是正常的协议状态；其数量和资源影响决定它在运维上是否值得担忧。
 
-:::single-choice{#netstat-close-wait-owner}
-套接字处于 `CLOSE-WAIT` 时，哪一方仍需将其关闭？
+:::single-choice{#netstat-close-wait-owner} 套接字处于 `CLOSE-WAIT` 时，哪一方仍需将其关闭？
 
 ::option[互联网上的每一台路由器。]{#netstat-all-routers-close explanation="路由器并不拥有端点套接字。"}
 ::option[DNS 权威服务器。]{#netstat-dns-close explanation="名称服务与本地 TCP 关闭处理无关。"}
@@ -67,8 +64,7 @@ $ sudo ss -lntup
 
 单次快照无法证实泄漏或瓶颈。应持续采样，并结合进程行为、应用程序延迟、重传和资源限制进行分析。
 
-:::single-choice{#netstat-queue-snapshot}
-为什么单次出现较大的套接字队列不足以完成诊断？
+:::single-choice{#netstat-queue-snapshot} 为什么单次出现较大的套接字队列不足以完成诊断？
 
 ::option[Linux 从不在套接字队列中存储数据。]{#netstat-no-queues explanation="内核网络功能依赖发送和接收队列。"}
 ::option[每个队列值都是一种文件系统权限。]{#netstat-queue-permission explanation="这些字段描述网络状态。"}
@@ -86,8 +82,7 @@ $ ss -ltn 'sport = :443'
 
 监听器只能证明本地传输层已经就绪，无法证明远程可达性或应用程序健康。随后应根据症状执行适当的路由、防火墙、数据包、TLS 和应用程序测试。
 
-:::single-choice{#netstat-listener-limit}
-443 端口上的 TCP 监听器无法证明什么？
+:::single-choice{#netstat-listener-limit} 443 端口上的 TCP 监听器无法证明什么？
 
 ::option[某个本地套接字成功执行了绑定和监听操作。]{#netstat-listen-local explanation="这正是所显示的本地状态。"}
 ::option[远程客户端可以完成有效的 HTTPS 请求。]{#netstat-not-remote-proof .correct explanation="路径策略、TLS 和应用程序行为都尚未经过测试。"}

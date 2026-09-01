@@ -45,8 +45,7 @@ ABC123
 
 Characters not in `SET1` pass through unchanged.
 
-:::single-choice{#tr-map-characters}
-What does `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` print?
+:::single-choice{#tr-map-characters} What does `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` print?
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="Digits are not members of the source set, so `tr` does not replace them with letters."}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="Each of `a`, `b`, and `c` maps to the character at the same position in `ABC`; the digits are unchanged."}
@@ -78,8 +77,7 @@ $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-:::single-choice{#tr-delete-digits}
-Which command removes every digit from stdin while leaving other characters unchanged?
+:::single-choice{#tr-delete-digits} Which command removes every digit from stdin while leaving other characters unchanged?
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="The `-d` option deletes all characters in the digit class from the input stream."}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="The `-s` option collapses repeated digits but leaves one character from each run."}
@@ -105,8 +103,7 @@ one
 Two
 ```
 
-:::single-choice{#tr-squeeze-spaces}
-Which command reduces every run of ordinary spaces in stdin to one space?
+:::single-choice{#tr-squeeze-spaces} Which command reduces every run of ordinary spaces in stdin to one space?
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="The `-s` option squeezes repeated members of the supplied set, which contains one ordinary space."}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="The `-d` option removes all ordinary spaces rather than preserving one per run."}
@@ -141,8 +138,7 @@ userexamplecom
 
 This also removes the newline because a newline is not alphanumeric. Add or preserve separators deliberately when record boundaries matter.
 
-:::single-choice{#tr-keep-alphanumeric}
-What does `tr -cd '[:alnum:]'` do to stdin?
+:::single-choice{#tr-keep-alphanumeric} What does `tr -cd '[:alnum:]'` do to stdin?
 
 ::option[Deletes alphanumeric characters and keeps everything else.]{#tr-delete-alnum explanation="The complement changes which characters `-d` targets. The alphanumeric set itself is retained."}
 ::option[Deletes every character that is not alphanumeric.]{#tr-delete-nonalnum .correct explanation="`-c` complements the alphanumeric set, and `-d` deletes the resulting non-alphanumeric set."}
@@ -174,8 +170,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 Redirect stdout to a different file if you need to save the result. Do not redirect back to the input pathname, because the shell would truncate it before `tr` reads.
 
-:::single-choice{#tr-read-file-input}
-Which command makes `tr` read `names.txt` as stdin and convert lowercase characters to uppercase?
+:::single-choice{#tr-read-file-input} Which command makes `tr` read `names.txt` as stdin and convert lowercase characters to uppercase?
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` does not take an ordinary input filename this way; the extra operand makes the syntax invalid."}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="This reads the file correctly but deletes lowercase letters rather than translating them."}

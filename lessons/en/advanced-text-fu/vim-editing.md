@@ -28,8 +28,7 @@ Common operators include:
 
 For example, `dw` deletes through the `w` motion, while `d$` deletes from the cursor through the end of the line. `2dw` applies the delete across two word motions.
 
-:::single-choice{#vim-edit-operator-motion}
-In Normal mode, what does `d$` do?
+:::single-choice{#vim-edit-operator-motion} In Normal mode, what does `d$` do?
 
 ::option[Deletes the complete file from the cursor onward.]{#vim-edit-delete-file-end explanation="The dollar motion targets the current line's end, not the end of the entire buffer."}
 ::option[Deletes from the cursor through the end of the line.]{#vim-edit-delete-line-end .correct explanation="The `d` operator applies to the `$` end-of-line motion."}
@@ -49,8 +48,7 @@ Some commands are convenient shortcuts:
 
 Repeating an operator, as in `dd`, makes it linewise. A count expands the number of lines.
 
-:::single-choice{#vim-edit-delete-three-lines}
-Which Normal-mode command deletes the current line and the next two lines?
+:::single-choice{#vim-edit-delete-three-lines} Which Normal-mode command deletes the current line and the next two lines?
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="The count belongs before the doubled operator in this command form."}
 ::option[`3x`]{#vim-edit-three-x explanation="This deletes three characters under and after the cursor, not three complete lines."}
@@ -69,8 +67,7 @@ The `c` operator removes the selected text and enters Insert mode so you can typ
 
 The behavior of `cw` has a historical special case and often acts like `ce`. Text objects such as `iw` can make the intended boundary clearer.
 
-:::single-choice{#vim-edit-change-inner-word}
-Which Normal-mode command replaces the inner word under the cursor by deleting it and entering Insert mode?
+:::single-choice{#vim-edit-change-inner-word} Which Normal-mode command replaces the inner word under the cursor by deleting it and entering Insert mode?
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="This deletes the inner word but remains in Normal mode instead of starting replacement text."}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="This yanks the inner word without changing the buffer or entering Insert mode."}
@@ -88,8 +85,7 @@ Vim calls copying **yanking** and pasting **putting**:
 
 Deletes and changes also store text in registers, so a later `p` may put the most recently deleted text rather than an earlier yank. Named registers let you preserve specific text, but begin by watching what the latest operation stored.
 
-:::single-choice{#vim-edit-yank-put-line}
-After `yy` yanks the current line, which command puts that line below the current line?
+:::single-choice{#vim-edit-yank-put-line} After `yy` yanks the current line, which command puts that line below the current line?
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="For linewise yanked text, lowercase `p` puts the stored line below the current line."}
 ::option[`P`]{#vim-edit-put-above explanation="Uppercase `P` puts linewise text above the current line."}
@@ -107,8 +103,7 @@ In Normal mode:
 
 Undo history applies to buffer changes, not merely cursor motions. Save checkpoints and review edits rather than depending on an unlimited or permanent undo history.
 
-:::single-choice{#vim-edit-redo-change}
-Which Normal-mode command redoes a change that was just undone?
+:::single-choice{#vim-edit-redo-change} Which Normal-mode command redoes a change that was just undone?
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="In Normal mode, `Ctrl+U` scrolls upward by about half a screen; it is not redo."}
 ::option[`.`]{#vim-edit-dot-repeat explanation="The dot repeats the latest change as a new action rather than traversing forward through undo history."}

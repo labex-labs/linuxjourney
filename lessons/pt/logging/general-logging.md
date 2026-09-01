@@ -23,8 +23,7 @@ $ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
 
 Logs de aplicativos podem ficar em subdiretórios próprios ou serviços externos. Registros de autenticação, auditoria, pacotes, banco de dados e servidor web podem ser separados do fluxo geral.
 
-:::single-choice{#general-logs-universal-file}
-Por que não se deve presumir que `/var/log/messages` exista em todo host Linux?
+:::single-choice{#general-logs-universal-file} Por que não se deve presumir que `/var/log/messages` exista em todo host Linux?
 
 ::option[Os destinos dependem dos coletores e da política local.]{#general-logs-local-routing .correct explanation="Um sistema apenas com journal ou outra configuração syslog pode usar destinos diferentes."}
 ::option[O Linux permite apenas um arquivo de log por disco.]{#general-logs-one-file explanation="Sistemas mantêm rotineiramente vários arquivos e armazenamentos de journal."}
@@ -42,8 +41,7 @@ $ sudo tail -n 100 /var/log/messages
 
 Acompanhe linhas novas durante uma reprodução limitada com `tail -F FILE`. `-F` tenta novamente quando o arquivo é substituído na rotação. Pare com `Ctrl-C` e não deixe sessões privilegiadas amplas abertas.
 
-:::single-choice{#general-logs-tail-f-capability}
-Para que `tail -F` é útil durante uma reprodução controlada?
+:::single-choice{#general-logs-tail-f-capability} Para que `tail -F` é útil durante uma reprodução controlada?
 
 ::option[Acompanhar um arquivo pelo nome quando ele é substituído na rotação.]{#general-logs-tail-follow .correct explanation="A repetição por nome permite continuar quando o arquivo ativo é renomeado e recriado."}
 ::option[Mudar a gravidade de todo log para debug.]{#general-logs-tail-debug explanation="Tail lê conteúdo e não reconfigura as fontes."}
@@ -61,8 +59,7 @@ $ journalctl -u example.service --since '10 minutes ago' --grep='connection refu
 
 Maiúsculas, redação, limites de frequência e localização podem tornar a busca literal incompleta. Registre eventos bem-sucedidos e falhos e mantenha as linhas próximas, pois a causa pode preceder o erro visível.
 
-:::single-choice{#general-logs-context-lines}
-Por que incluir linhas ao redor de um erro encontrado?
+:::single-choice{#general-logs-context-lines} Por que incluir linhas ao redor de um erro encontrado?
 
 ::option[Um evento anterior pode explicar a falha posterior.]{#general-logs-preceding-context .correct explanation="O contexto temporal ajuda a reconstruir a sequência, em vez de tratar uma string como todo o incidente."}
 ::option[O contexto garante que o primeiro resultado seja a causa.]{#general-logs-guaranteed-cause explanation="Ainda é preciso correlacionar evidências; contexto não prova causalidade."}
@@ -79,8 +76,7 @@ $ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
 
 Ordene pelos horários reais, não apenas pelos sufixos. Antes de copiar evidências, preserve metadados e restrinja acesso, pois logs podem conter dados pessoais ou credenciais.
 
-:::single-choice{#general-logs-rotation-boundary}
-O que verificar quando um incidente atravessa uma rotação?
+:::single-choice{#general-logs-rotation-boundary} O que verificar quando um incidente atravessa uma rotação?
 
 ::option[Apenas o novo arquivo ativo vazio.]{#general-logs-active-only explanation="Registros anteriores podem ter sido movidos para arquivos rotacionados."}
 ::option[Logs ativos e arquivados ordenados pelo horário dos eventos.]{#general-logs-all-intervals .correct explanation="A sequência relevante pode estar dividida entre arquivos atuais e antigos."}

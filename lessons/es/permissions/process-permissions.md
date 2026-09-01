@@ -18,8 +18,7 @@ El ID de usuario real identifica la cuenta que inició el proceso o su sesión d
 
 En una orden normal iniciada por el usuario Bob, el ID de usuario real suele coincidir con el UID de Bob. Crear otro proceso no crea una cuenta nueva ni cambia por sí solo esta identidad.
 
-:::single-choice{#process-permissions-real-uid}
-¿Qué identifica normalmente el ID de usuario real de un proceso?
+:::single-choice{#process-permissions-real-uid} ¿Qué identifica normalmente el ID de usuario real de un proceso?
 
 ::option[El propietario del archivo abierto más recientemente.]{#process-permissions-real-opened-file explanation="Abrir un archivo no sustituye el UID real del proceso por el propietario de ese archivo."}
 ::option[La cuenta asociada al llamador original del proceso.]{#process-permissions-real-caller .correct explanation="El UID real registra la identidad de usuario llamadora heredada cuando se inicia el proceso."}
@@ -32,8 +31,7 @@ El ID de usuario efectivo es la credencial de usuario que se emplea en muchas co
 
 Por ejemplo, una utilidad de contraseñas cuidadosamente diseñada puede ejecutarse con un UID efectivo elevado para actualizar datos protegidos de autenticación. El programa todavía debe aplicar la política según el llamador, la cuenta solicitada, los resultados de PAM y otro contexto. Poseer un UID efectivo no hace que todas las operaciones solicitadas sean automáticamente legítimas.
 
-:::single-choice{#process-permissions-effective-uid}
-¿Qué ID de usuario se usa en muchas decisiones de control de acceso realizadas en nombre de un proceso?
+:::single-choice{#process-permissions-effective-uid} ¿Qué ID de usuario se usa en muchas decisiones de control de acceso realizadas en nombre de un proceso?
 
 ::option[El ID de usuario efectivo.]{#process-permissions-effective-active .correct explanation="El UID efectivo es la credencial de usuario activa que se consulta en muchas comprobaciones de autorización."}
 ::option[Únicamente el ID de usuario guardado.]{#process-permissions-effective-saved-only explanation="El ID guardado permite transiciones de credenciales, pero no suele ser la identidad activa en las comprobaciones de acceso."}
@@ -46,8 +44,7 @@ El ID set-user-ID guardado permite que un programa conserve una identidad que pu
 
 Esto es más seguro que mantener autoridad elevada durante todo el programa, pero solo si se implementa correctamente. Los programas deben descartar los privilegios de forma permanente cuando ya no sean necesarios y comprobar si falla cada llamada que cambia credenciales.
 
-:::single-choice{#process-permissions-saved-uid}
-¿Por qué puede un programa con privilegios conservar un ID set-user-ID guardado?
+:::single-choice{#process-permissions-saved-uid} ¿Por qué puede un programa con privilegios conservar un ID set-user-ID guardado?
 
 ::option[Para cambiar su identidad efectiva entre fases controladas con y sin privilegios.]{#process-permissions-saved-switch .correct explanation="La identidad guardada puede permitir una reducción temporal de privilegios y una restauración posterior permitida."}
 ::option[Para asignar automáticamente ese UID a todos los archivos que lee.]{#process-permissions-saved-file-owner explanation="Leer un archivo no cambia su propiedad al UID guardado del proceso."}
@@ -60,8 +57,7 @@ Los procesos también tienen credenciales de grupo reales, efectivas, guardadas 
 
 Usa herramientas como `ps` y `/proc/PROCESS/status` para consultar las credenciales en Linux. La disponibilidad de los campos y los formatos de visualización varían, así que consulta la documentación local y no cambies credenciales simplemente para experimentar en un sistema compartido.
 
-:::single-choice{#process-permissions-ordinary-identities}
-Para la mayoría de las órdenes normales sin transición de privilegios, ¿cómo se comparan los UID real y efectivo?
+:::single-choice{#process-permissions-ordinary-identities} Para la mayoría de las órdenes normales sin transición de privilegios, ¿cómo se comparan los UID real y efectivo?
 
 ::option[El UID efectivo siempre es cero.]{#process-permissions-effective-root explanation="Las órdenes normales no reciben automáticamente el UID de root."}
 ::option[El UID real siempre coincide con el propietario del archivo ejecutable.]{#process-permissions-real-file-owner explanation="El propietario del ejecutable afecta al comportamiento setuid, no al UID real normal."}

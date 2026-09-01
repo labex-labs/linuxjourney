@@ -22,8 +22,7 @@ IPv4 は、8 ビットのオクテット4個をドットで区切って表示し
 
 各オクテットの範囲は 0 から 255 までなので、アドレス全体は4バイトです。`192.0.2.165/24` のように、プレフィックス長は先頭から何ビットがネットワークプレフィックスに属するかを示します。
 
-:::single-choice{#ipv4-address-size}
-IPv4 アドレスの大きさはいくつですか？
+:::single-choice{#ipv4-address-size} IPv4 アドレスの大きさはいくつですか？
 
 ::option[4個のオクテットから成る32ビット。]{#ipv4-thirty-two-bits .correct explanation="8ビットのグループ4個がドット区切り10進表記を構成します。"}
 ::option[すべてのネットワークで24ビット。]{#ipv4-always-twenty-four explanation="`/24` はプレフィックス長の一つであり、すべての IPv4 アドレスの大きさではありません。"}
@@ -36,8 +35,7 @@ IPv4 アドレスの大きさはいくつですか？
 
 プライベートアドレスは、互いに独立したネットワークで再利用できます。外部と通信する際に NAT で変換することはありますが、プライベートなルーティングドメイン内で通信するだけなら NAT は必須ではありません。
 
-:::single-choice{#ipv4-private-reuse}
-なぜ `10.0.0.1` は多くの組織で使えるのですか？
+:::single-choice{#ipv4-private-reuse} なぜ `10.0.0.1` は多くの組織で使えるのですか？
 
 ::option[どの `10.0.0.1` も同じ物理ルーターを識別するから。]{#ipv4-same-router explanation="アドレスは各ネットワーク内で意味を持ち、世界で一意ではありません。"}
 ::option[IPv4 ルーターは先頭のオクテットを無視するから。]{#ipv4-ignore-octet explanation="経路照合にはアドレスの全ビットが関与します。"}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 ここにはプレフィックス、ブロードキャスト、スコープ、動的に取得したことを示す印、インターフェースが表示されています。後続の行に、有効期間と優先期間が表示される場合もあります。一つのインターフェースに複数の IPv4 アドレスを持たせることもできます。
 
-:::single-choice{#ipv4-ip-output-prefix}
-`192.0.2.165/24` の `/24` は何を意味しますか？
+:::single-choice{#ipv4-ip-output-prefix} `192.0.2.165/24` の `/24` は何を意味しますか？
 
 ::option[アドレスが24秒後に失効する。]{#ipv4-prefix-seconds explanation="有効期間は別に表示されます。"}
 ::option[アドレスの先頭24ビットがネットワークプレフィックスを構成する。]{#ipv4-prefix-bits .correct explanation="残りの8ビットは、そのプレフィックス内の位置を識別します。"}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 選択されたネクストホップ、インターフェース、送信元を確認し、その後で実際のアプリケーション経路をテストしてください。コンソールアクセスと切り戻し計画がない状態で、リモートホストのアドレスを変更してはいけません。
 
-:::single-choice{#ipv4-route-get-purpose}
-`ip route get DESTINATION` では何を確認できますか？
+:::single-choice{#ipv4-route-get-purpose} `ip route get DESTINATION` では何を確認できますか？
 
 ::option[インターネット上の経路にある全ルーターの設定。]{#ipv4-all-router-config explanation="ローカルな経路検索では、後段の機器の設定までは問い合わせません。"}
 ::option[インターフェースや優先送信元を含む、ローカルホストのルーティング判断。]{#ipv4-route-decision .correct explanation="指定した宛先に対して、現在のホストのルーティングポリシーを評価します。"}

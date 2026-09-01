@@ -27,8 +27,7 @@ $ tty
 
 この結果は制御端末という広い概念と関連しますが、同一ではありません。プロセスは制御端末を持つセッションに残りながら、標準入力や出力をリダイレクトできます。
 
-:::single-choice{#controlling-terminal-pts-meaning}
-`pts/3` のような名前は通常何を識別しますか？
+:::single-choice{#controlling-terminal-pts-meaning} `pts/3` のような名前は通常何を識別しますか？
 
 ::option[3番目のシェルへ割り当てたプロセス ID。]{#controlling-terminal-pts-pid explanation="PID は数値のプロセスメタデータで、pts/N 形式のデバイス名ではありません。"}
 ::option[対話型セッションが使う疑似端末デバイス。]{#controlling-terminal-pts-device .correct explanation="/dev/pts 下の項目は、端末エミュレーターやリモートセッションでよく使う疑似端末のスレーブデバイスです。"}
@@ -41,8 +40,7 @@ $ tty
 
 たとえば `Ctrl-C` を押すと、通常は端末ドライバーがフォアグラウンドプロセスグループへ `SIGINT` を送ります。バックグラウンドグループが端末を読み取ろうとすると `SIGTTIN` を受け取る場合があります。この規則でシェルがフォアグラウンド・バックグラウンドジョブを調整します。
 
-:::single-choice{#controlling-terminal-ctrl-c-target}
-端末は通常、`Ctrl-C` で生成したシグナルをどのプロセスへ送りますか？
+:::single-choice{#controlling-terminal-ctrl-c-target} 端末は通常、`Ctrl-C` で生成したシグナルをどのプロセスへ送りますか？
 
 ::option[現在のユーザーが所有する全プロセス。]{#controlling-terminal-ctrl-c-user explanation="端末生成シグナルはユーザーの全プロセスではなく、フォアグラウンドプロセスグループが対象です。"}
 ::option[フォアグラウンドジョブに関係なく、ログインシェルだけ。]{#controlling-terminal-ctrl-c-shell explanation="別のジョブがフォアグラウンドなら、そのジョブのグループが通常の対象です。"}
@@ -61,8 +59,7 @@ $ ps -o pid,tty,stat,cmd
 
 サービスマネージャーが対話型ログインと独立して起動するため、多くのサービスプロセスは制御端末を持ちません。ただし TTY がないだけでデーモンとは断定できず、バックグラウンドのシェルジョブにも制御端末は残ります。
 
-:::single-choice{#controlling-terminal-question-mark}
-`ps` の `TTY` 列にある `?` は通常何を意味しますか？
+:::single-choice{#controlling-terminal-question-mark} `ps` の `TTY` 列にある `?` は通常何を意味しますか？
 
 ::option[プロセスに制御端末がない。]{#controlling-terminal-no-tty .correct explanation="制御端末が関連付けられていない場合の一般的な表示です。"}
 ::option[端末が使用中で読み取れない。]{#controlling-terminal-busy-tty explanation="一時的なデバイス競合ではなく、制御端末がないことを表します。"}
@@ -75,8 +72,7 @@ $ ps -o pid,tty,stat,cmd
 
 そのため、端末を閉じても、そこで開始した全コマンドが終了するとは限りません。永続性が重要なら、セッション、シグナル処理、リダイレクト、監督プロセスを調べます。
 
-:::single-choice{#controlling-terminal-close-effect}
-端末を閉じるとそこで開始した全プロセスが必ず終了する、という説明が不正確なのはなぜですか？
+:::single-choice{#controlling-terminal-close-effect} 端末を閉じるとそこで開始した全プロセスが必ず終了する、という説明が不正確なのはなぜですか？
 
 ::option[Linux 端末は閉じるとき一切シグナルを生成しないから。]{#controlling-terminal-never-signals explanation="ハングアップシグナルは実在しますが、結果が必ず終了になるわけではありません。"}
 ::option[数値 PID を持つプロセスだけがハングアップを受け取れるから。]{#controlling-terminal-pid-hangup explanation="通常の全プロセスが数値 PID を持ち、それは端末からの生存を決めません。"}

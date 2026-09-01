@@ -18,8 +18,7 @@ A syslog message carries a facility describing its broad source category and a s
 
 Severities are ordered. In classic selector syntax, `daemon.warning` normally matches daemon messages at warning and all more severe levels, not warning alone. Exact matching uses an equals modifier in implementations that support the classic syntax, such as `daemon.=warning`.
 
-:::single-choice{#syslog-warning-selector}
-What does a classic selector such as `daemon.warning` normally match?
+:::single-choice{#syslog-warning-selector} What does a classic selector such as `daemon.warning` normally match?
 
 ::option[Only messages whose text contains the word daemon.]{#syslog-text-daemon explanation="Facility metadata, not message-text search, drives this selector."}
 ::option[Every debug message from every facility.]{#syslog-all-debug explanation="The selector is limited to the daemon facility and a severity threshold."}
@@ -40,8 +39,7 @@ The first line routes all priorities from two authentication facilities. The sec
 
 Inspect all included files and validate the exact syntax used by the installed version before changing production routing.
 
-:::single-choice{#syslog-selector-action}
-In a traditional rsyslog rule, what is the action?
+:::single-choice{#syslog-selector-action} In a traditional rsyslog rule, what is the action?
 
 ::option[The facility and severity expression on the left.]{#syslog-left-selector explanation="That part selects messages."}
 ::option[The destination or operation on the right.]{#syslog-right-action .correct explanation="The action determines whether selected records go to a file, remote target, or another output."}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 The same event can appear in the journal and a text file, depending on forwarding and routing. `logger -s` also copies the message to standard error; it does not prove durable storage.
 
-:::single-choice{#syslog-logger-tag}
-What does `logger -t lesson-test` add to the submitted message?
+:::single-choice{#syslog-logger-tag} What does `logger -t lesson-test` add to the submitted message?
 
 ::option[A request to erase older test records.]{#syslog-tag-delete explanation="The option sets an identifying tag and does not manage retention."}
 ::option[The identifier `lesson-test` as the message tag.]{#syslog-tag-identifier .correct explanation="A unique tag makes the controlled event easier to locate in configured destinations."}
@@ -84,8 +81,7 @@ Only after validation should you reload the service through its manager. Send a 
 
 Remote forwarding should use authenticated, encrypted transport when logs cross untrusted networks. UDP delivery has no end-to-end acknowledgement; critical audit requirements need a design that accounts for queues, loss, integrity, access control, and receiver outages.
 
-:::single-choice{#syslog-change-verification}
-What is sufficient evidence that a new routing rule works?
+:::single-choice{#syslog-change-verification} What is sufficient evidence that a new routing rule works?
 
 ::option[The configuration file has a recent modification time.]{#syslog-mtime explanation="A timestamp does not prove valid syntax or delivery."}
 ::option[The sender can reach the receiver with a ping.]{#syslog-ping explanation="Network reachability alone does not verify the logging protocol or storage path."}

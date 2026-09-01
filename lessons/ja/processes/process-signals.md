@@ -21,8 +21,7 @@ meta_keywords: "Linux シグナル，Linux プロセスシグナル，シグナ�
 
 送信側には通常、認証情報や capability に基づく適切な権限が必要です。シグナルはカーネルを介する制御インターフェースで、任意のユーザー間の無制限なメッセージではありません。
 
-:::single-choice{#process-signals-ctrl-c}
-端末が `Ctrl-C` で通常生成するシグナルはどれですか？
+:::single-choice{#process-signals-ctrl-c} 端末が `Ctrl-C` で通常生成するシグナルはどれですか？
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="通常は Ctrl-Z などの端末一時停止文字に関連します。"}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="停止したプロセスを再開するもので、キーボード割り込みではありません。"}
@@ -41,8 +40,7 @@ meta_keywords: "Linux シグナル，Linux プロセスシグナル，シグナ�
 
 名前は番号より移植性と可読性に優れます。一般的な Linux では `SIGTERM` が15でも、関連規格が保証しない番号が全環境で同じとは限りません。ローカルの対応は `kill -l` で調べます。
 
-:::single-choice{#process-signals-term-behavior}
-プロセスが `SIGTERM` へ穏やかに応答できるのはなぜですか？
+:::single-choice{#process-signals-term-behavior} プロセスが `SIGTERM` へ穏やかに応答できるのはなぜですか？
 
 ::option[そのシグナルのハンドラーを設定できるから。]{#process-signals-term-handler .correct explanation="SIGKILL と異なり捕捉できるため、独自の終了処理を開始できます。"}
 ::option[カーネルが開いた全文書を必ず自動保存するから。]{#process-signals-term-kernel-save explanation="後始末はプログラムのコード次第で、カーネルは任意の文書状態を理解して保存しません。"}
@@ -55,8 +53,7 @@ meta_keywords: "Linux シグナル，Linux プロセスシグナル，シグナ�
 
 マルチスレッドプロセスでは、プロセス宛てシグナルは遮断していない適格なスレッドへ配送され、スレッド宛てシグナルは指定スレッドを対象にします。そのため「プロセスが遮断したか」だけでは不十分です。
 
-:::single-choice{#process-signals-blocked-state}
-遮断可能なシグナルが対象による遮断中に生成されると、通常どうなりますか？
+:::single-choice{#process-signals-blocked-state} 遮断可能なシグナルが対象による遮断中に生成されると、通常どうなりますか？
 
 ::option[配送可能になるまで保留される。]{#process-signals-pending .correct explanation="遮断は処理を延期し、解除後に保留シグナルを配送できます。"}
 ::option[自動的に `SIGKILL` へ変換される。]{#process-signals-convert-kill explanation="カーネルは通常の遮断済みシグナルを捕捉不能なものへ昇格させません。"}
@@ -69,8 +66,7 @@ meta_keywords: "Linux シグナル，Linux プロセスシグナル，シグナ�
 
 それでも観測上、タスクが即座に消えない場合があります。割り込み不可能なカーネル操作を待っていることがあり、終了後も親が状態を回収する必要があります。
 
-:::single-choice{#process-signals-uncatchable-pair}
-捕捉、無視、遮断できない組み合わせはどれですか？
+:::single-choice{#process-signals-uncatchable-pair} 捕捉、無視、遮断できない組み合わせはどれですか？
 
 ::option[`SIGKILL` と `SIGSTOP`]{#process-signals-kill-stop .correct explanation="プロセスが基本動作を上書き・延期できないよう、カーネルがこの2つを予約しています。"}
 ::option[`SIGINT` と `SIGTERM`]{#process-signals-int-term explanation="どちらもユーザーハンドラーを設定でき、遮断もできます。"}

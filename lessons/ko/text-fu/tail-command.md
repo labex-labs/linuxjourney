@@ -22,8 +22,7 @@ $ tail application.log
 
 파일이 10줄보다 짧으면 사용 가능한 모든 줄을 출력합니다. 파일 자체는 변경되지 않습니다.
 
-:::single-choice{#tail-default-lines}
-기본적으로 `tail application.log`는 무엇을 표시하나요?
+:::single-choice{#tail-default-lines} 기본적으로 `tail application.log`는 무엇을 표시하나요?
 
 ::option[파일의 처음 10줄까지 표시합니다.]{#tail-first-ten explanation="파일 시작 부분은 `head`가 선택합니다. `tail`은 끝에서부터 작동합니다."}
 ::option[명령어가 시작된 뒤 추가되는 모든 줄을 표시합니다.]{#tail-follow-only explanation="계속 추적하려면 `-f`나 관련 옵션이 필요합니다. 일반 `tail`은 현재 상태를 출력하고 종료합니다."}
@@ -46,8 +45,7 @@ $ tail -c 100 payload.bin
 
 바이트 모드는 텍스트 줄이나 인코딩된 문자의 중간에서 시작할 수 있으므로 텍스트에는 보통 줄 모드가 더 명확합니다.
 
-:::single-choice{#tail-twenty-lines}
-`application.log`의 마지막 20줄을 표시하는 명령어는 무엇인가요?
+:::single-choice{#tail-twenty-lines} `application.log`의 마지막 20줄을 표시하는 명령어는 무엇인가요?
 
 ::option[`tail -n 20 application.log`]{#tail-twenty-end .correct explanation="`-n` 옵션은 줄 수를 선택하고 `tail`은 끝에서 해당 줄들을 가져옵니다."}
 ::option[`head -n 20 application.log`]{#head-twenty-start explanation="끝이 아니라 시작 부분에서 20줄을 선택합니다."}
@@ -64,8 +62,7 @@ $ tail -n +5 report.txt
 
 처음 네 줄을 건너뛰고 5번째 줄에서 시작합니다. 스트림에서 정해진 수의 헤더 줄을 제거할 때 유용합니다.
 
-:::single-choice{#tail-start-line-five}
-`report.txt`를 5번째 줄부터 출력하는 명령어는 무엇인가요?
+:::single-choice{#tail-start-line-five} `report.txt`를 5번째 줄부터 출력하는 명령어는 무엇인가요?
 
 ::option[`tail -n +5 report.txt`]{#tail-from-five .correct explanation="`+5`는 `tail`에 5번째 줄부터 끝까지 계속 출력하라고 지시합니다."}
 ::option[`tail -n 5 report.txt`]{#tail-final-five explanation="더하기 기호가 없으면 절대 줄 번호와 관계없이 마지막 다섯 줄을 선택합니다."}
@@ -82,8 +79,7 @@ $ tail -f application.log
 
 `Ctrl+C`를 눌러 `tail`을 중단하고 쉘로 돌아갑니다. 파일 추적은 새 내용만 보여 줄 뿐 로그를 만드는 애플리케이션이 정상인지 또는 모든 관련 이벤트가 그 파일을 사용하는지는 보장하지 않습니다.
 
-:::single-choice{#tail-follow-file}
-`application.log`의 현재 끝을 표시한 뒤 추가되는 내용을 계속 기다리는 명령어는 무엇인가요?
+:::single-choice{#tail-follow-file} `application.log`의 현재 끝을 표시한 뒤 추가되는 내용을 계속 기다리는 명령어는 무엇인가요?
 
 ::option[`tail -f application.log`]{#tail-follow-app .correct explanation="`-f` 옵션은 `tail`을 계속 실행하고 파일에 추가되는 데이터를 표시합니다."}
 ::option[`tail -n 0 application.log`]{#tail-zero-lines explanation="처음에 어떤 줄도 출력하지 않으며 추적 옵션이 없으므로 종료됩니다."}
@@ -100,8 +96,7 @@ $ tail -F application.log
 
 현재 열린 파일을 계속 추적하려면 `-f`를 사용하고 이름이 지정된 로그가 로테이션될 것으로 예상되면 `-F`를 사용합니다. 이는 GNU 동작이며 다른 구현은 다를 수 있습니다.
 
-:::single-choice{#tail-follow-rotated-name}
-GNU/Linux에서 일반적인 이름 변경 후 재생성 방식의 로그 로테이션을 거쳐 `application.log`를 추적하는 데 더 적합한 옵션은 무엇인가요?
+:::single-choice{#tail-follow-rotated-name} GNU/Linux에서 일반적인 이름 변경 후 재생성 방식의 로그 로테이션을 거쳐 `application.log`를 추적하는 데 더 적합한 옵션은 무엇인가요?
 
 ::option[`-n`]{#tail-rotation-lines explanation="`-n` 옵션은 표시할 줄 수를 바꾸며 교체된 경로를 다시 시도하지 않습니다."}
 ::option[`-c`]{#tail-rotation-bytes explanation="`-c` 옵션은 선택 단위를 바이트로 바꾸며 로테이션을 고려한 추적을 제공하지 않습니다."}

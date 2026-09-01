@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 `less` 运行期间，按键会控制分页器，而不是启动普通 shell 命令。退出分页器后才会返回 shell。
 
-:::single-choice{#open-long-file}
-哪个命令会在交互式分页器中打开 `/var/log/syslog`？
+:::single-choice{#open-long-file} 哪个命令会在交互式分页器中打开 `/var/log/syslog`？
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` 会在分页器中打开文件，供你移动、搜索，再退出回到 shell。"}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat` 会一次把整个文件发送到标准输出，不提供交互式分页控制。"}
@@ -40,8 +39,7 @@ $ less /home/pete/Documents/text1
 - **移动半页**：按 `u` 向上移动半页，按 `d` 向下移动半页。
 - **帮助菜单**：如果在 `less` 中忘记命令，按 `h` 显示帮助摘要。
 
-:::single-choice{#jump-to-file-end}
-哪个按键会直接跳到 `less` 中文件的末尾？
+:::single-choice{#jump-to-file-end} 哪个按键会直接跳到 `less` 中文件的末尾？
 
 ::option[`g`]{#lowercase-g explanation="小写 `g` 会跳到文件开头，大写形式则向相反方向移动。"}
 ::option[`G`]{#uppercase-g .correct explanation="大写 `G` 会跳到输入末尾；该命令区分大小写。"}
@@ -57,8 +55,7 @@ $ less /home/pete/Documents/text1
 - `n`：按相同方向重复搜索。
 - `N`：按相反方向重复搜索。
 
-:::single-choice{#repeat-search-direction}
-向前搜索 `error` 后，哪个按键会按相同方向继续搜索？
+:::single-choice{#repeat-search-direction} 向前搜索 `error` 后，哪个按键会按相同方向继续搜索？
 
 ::option[`n`]{#same-search .correct explanation="小写 `n` 会按原方向重复最近的搜索；这里的方向是向前。"}
 ::option[`N`]{#opposite-search explanation="大写 `N` 会按相反方向重复最近的搜索；向前搜索后，它会向后查找匹配项。"}
@@ -71,8 +68,7 @@ $ less /home/pete/Documents/text1
 
 按 `q` 退出 `less` 并返回 shell 提示符。
 
-:::single-choice{#quit-less}
-哪个按键会退出 `less` 并返回 shell？
+:::single-choice{#quit-less} 哪个按键会退出 `less` 并返回 shell？
 
 ::option[`q`]{#less-quit .correct explanation="`q` 命令会退出分页器并恢复 shell 提示符。"}
 ::option[`h`]{#less-help explanation="`h` 会在 `less` 中打开帮助，不会直接返回 shell。"}
@@ -101,8 +97,7 @@ $ less +F /var/log/syslog
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-哪个命令会打开 `/var/log/syslog` 并跟踪随后写入的新内容？
+:::single-choice{#follow-growing-log} 哪个命令会打开 `/var/log/syslog` 并跟踪随后写入的新内容？
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="`+F` 初始命令会进入跟踪模式，因此 `less` 会显示追加到日志的新内容。"}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="`+G` 初始命令会从末尾打开文件，但不会继续跟踪随后到达的内容。"}

@@ -24,8 +24,7 @@ network  11000000.10101000.00000001.00000000
 
 Uma operação AND bit a bit mantém os bits do endereço onde a máscara é um e zera os bits do host. O resultado é `192.168.1.0/24`.
 
-:::single-choice{#subnet-math-network-operation}
-Qual operação encontra um endereço de rede IPv4 a partir de um endereço e uma máscara?
+:::single-choice{#subnet-math-network-operation} Qual operação encontra um endereço de rede IPv4 a partir de um endereço e uma máscara?
 
 ::option[Concatenação de strings decimais.]{#subnet-math-concatenation explanation="Juntar os octetos impressos não aplica os bits do prefixo."}
 ::option[Subtração de portas de transporte.]{#subnet-math-port-subtraction explanation="As portas não têm relação com o prefixo de rede."}
@@ -42,8 +41,7 @@ Para o prefixo `/p`, a parte do host contém `32 - p` bits. A quantidade total d
 
 Portanto, um `/24` contém `2^8 = 256` endereços. Em uma sub-rede de broadcast tradicional, o valor de host formado apenas por zeros é o endereço de rede, e o valor formado apenas por uns é o broadcast direcionado, restando 254 endereços de host unicast comuns.
 
-:::single-choice{#subnet-math-24-total}
-Quantos endereços totais existem em um `/24` IPv4?
+:::single-choice{#subnet-math-24-total} Quantos endereços totais existem em um `/24` IPv4?
 
 ::option[24]{#subnet-math-total-24 explanation="O comprimento do prefixo conta bits de rede, não endereços."}
 ::option[256]{#subnet-math-total-256 .correct explanation="Oito bits de host produzem 2^8 valores distintos de endereço."}
@@ -60,8 +58,7 @@ broadcast: 192.168.1.191
 range:     192.168.1.129 through 192.168.1.190
 ```
 
-:::single-choice{#subnet-math-165-network}
-Qual é o endereço de rede de `192.168.1.165/26`?
+:::single-choice{#subnet-math-165-network} Qual é o endereço de rede de `192.168.1.165/26`?
 
 ::option[`192.168.1.0`]{#subnet-math-network-zero explanation="Esse é o primeiro bloco `/26`, que abrange de 0 a 63."}
 ::option[`192.168.1.165`]{#subnet-math-network-self explanation="O endereço fornecido possui bits de host diferentes de zero dentro do `/26`."}
@@ -72,8 +69,7 @@ Qual é o endereço de rede de `192.168.1.165/26`?
 
 O atalho `2^host_bits - 2` não é universal. Prefixos IPv4 `/31` são definidos para enlaces ponto a ponto nos quais ambos os endereços podem ser pontos de extremidade e nenhum broadcast direcionado é necessário. Um `/32` identifica uma rota de host ou um endereço de interface. A tecnologia de rede e o uso do protocolo determinam quais endereços podem ser atribuídos.
 
-:::single-choice{#subnet-math-31-exception}
-Por que você não deve subtrair dois endereços de todo prefixo IPv4?
+:::single-choice{#subnet-math-31-exception} Por que você não deve subtrair dois endereços de todo prefixo IPv4?
 
 ::option[Endereços IPv4 não contêm bits de host em nenhum prefixo.]{#subnet-math-no-host-bits explanation="A maioria dos prefixos deixa um ou mais bits de host."}
 ::option[Enlaces ponto a ponto `/31` podem usar os dois endereços como pontos de extremidade.]{#subnet-math-31-both .correct explanation="O modelo ponto a ponto não precisa das reservas tradicionais de endereço de rede e broadcast direcionado."}
@@ -84,8 +80,7 @@ Por que você não deve subtrair dois endereços de todo prefixo IPv4?
 
 Use uma ferramenta ou biblioteca independente para conferir o trabalho manual e depois compare com a configuração real das interfaces e rotas. Um prefixo matematicamente válido ainda pode entrar em conflito com outra sub-rede ou violar um plano de alocação.
 
-:::single-choice{#subnet-math-valid-not-safe}
-O que um cálculo correto de sub-rede não consegue comprovar?
+:::single-choice{#subnet-math-valid-not-safe} O que um cálculo correto de sub-rede não consegue comprovar?
 
 ::option[Que o plano de endereços não possui sobreposição nem conflito de políticas.]{#subnet-math-no-conflict .correct explanation="Ainda são necessárias evidências operacionais da alocação e do roteamento."}
 ::option[Que endereços IPv4 contêm 32 bits.]{#subnet-math-proves-size explanation="O cálculo se baseia nesse tamanho fixo."}

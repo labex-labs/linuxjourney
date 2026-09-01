@@ -16,8 +16,7 @@ Ubuntu 是最广泛使用的 Linux 发行版之一。它由 Canonical 公司开�
 
 对于那些希望学习 Linux 但又不想从手动配置或高级设置开始的人来说，Ubuntu 已成为一个常见的起点。它被应用于个人电脑、开发系统、云平台和服务器，其覆盖范围是其他发行版难以企及的。
 
-:::single-choice{#identify-ubuntu-base}
-哪个发行版为 Ubuntu 提供了基础？
+:::single-choice{#identify-ubuntu-base} 哪个发行版为 Ubuntu 提供了基础？
 
 ::option[Debian 发行版]{#debian-base .correct explanation="Ubuntu 基于 Debian 构建，并继承了 Debian 的许多软件包管理方式；在此基础上，Ubuntu 又加入自己的版本、默认设置和支持模式。"}
 ::option[Fedora 发行版]{#ubuntu-fedora-base explanation="Fedora 属于 Red Hat 生态系统，并不是 Ubuntu 的基础；Ubuntu 属于 Debian 家族。"}
@@ -30,8 +29,7 @@ Ubuntu 之所以受欢迎，是因为它致力于让 Linux 在日常使用中变
 
 Ubuntu 备受瞩目的另一个原因是它适用于多种环境。你可以在笔记本电脑、台式机、虚拟机、服务器以及各种云平台上看到它的身影。这种广泛的采用巩固了它作为通用 Linux 发行版的声誉。
 
-:::single-choice{#recognize-beginner-support}
-Ubuntu 的哪项特性最能直接帮助初学者解决问题？
+:::single-choice{#recognize-beginner-support} Ubuntu 的哪项特性最能直接帮助初学者解决问题？
 
 ::option[每个安装的程序都必须手动编译]{#manual-compilation explanation="Ubuntu 通常提供打包好的软件，不要求手动编译每个程序；额外的构建工作并不会让故障排查更简单。"}
 ::option[丰富的文档和庞大的用户社区]{#documentation-community .correct explanation="文档和社区讨论为初学者提供了许多查找解释和排障帮助的渠道，从而降低了学习门槛。"}
@@ -50,8 +48,7 @@ Ubuntu 使用两种主要的发布类型。它每六个月发布一个新版本�
 
 这种发布模式有助于解释 Ubuntu 的吸引力。想要可靠基础的用户通常会选择 LTS，而想要新功能的用户则可以使用更新频率更快的过渡版本。
 
-:::single-choice{#choose-ubuntu-lts}
-如果系统需要寿命较长且可预测的基础，哪类 Ubuntu 版本最合适？
+:::single-choice{#choose-ubuntu-lts} 如果系统需要寿命较长且可预测的基础，哪类 Ubuntu 版本最合适？
 
 ::option[过渡版本]{#interim-release explanation="过渡版本发布得更频繁，能更早提供新功能，但较短的支持期并不符合这里的需求。"}
 ::option[LTS 版本]{#lts-release .correct explanation="LTS 版本旨在提供较长期的支持，通常用于优先考虑可靠基础的系统。"}
@@ -64,8 +61,7 @@ Ubuntu 使用两种主要的发布类型。它每六个月发布一个新版本�
 
 软件包管理是 Ubuntu 的实用优势之一，因为它将成熟的 Debian 工具与广泛且文档齐全的软件环境结合在了一起。
 
-:::single-choice{#identify-ubuntu-package-tool}
-在 Ubuntu 上安装软件时使用的软件包管理工具是哪一项？
+:::single-choice{#identify-ubuntu-package-tool} 在 Ubuntu 上安装软件时使用的软件包管理工具是哪一项？
 
 ::option[`.deb`]{#deb-format explanation="`.deb` 表示 Debian 系系统使用的软件包格式，而不是命令行软件包管理工具。"}
 ::option[`LTS`]{#lts-label explanation="LTS 表示长期支持版本，并不负责安装或管理软件包。"}

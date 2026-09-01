@@ -18,8 +18,7 @@ Threads eines Prozesses nutzen Ressourcen wie den virtuellen Adressraum und offe
 
 Getrennte Prozesse besitzen normalerweise unterschiedliche Adressräume und kommunizieren über ausdrückliche Interprozessmechanismen. Keine der beiden Bauweisen ist automatisch schneller oder sicherer; Arbeitslast und Implementierung bestimmen den Kompromiss.
 
-:::single-choice{#threads-shared-resource}
-Welche Ressource wird normalerweise von Threads desselben Prozesses gemeinsam genutzt?
+:::single-choice{#threads-shared-resource} Welche Ressource wird normalerweise von Threads desselben Prozesses gemeinsam genutzt?
 
 ::option[Der virtuelle Adressraum des Prozesses.]{#threads-shared-address-space .correct explanation="Threads können auf denselben Prozessspeicher zugreifen, unter Beachtung der Programmsynchronisierung."}
 ::option[Eine eigene Kernelinstallation für jeden Thread.]{#threads-separate-kernel explanation="Alle Threads verwenden den laufenden Systemkernel."}
@@ -30,8 +29,7 @@ Welche Ressource wird normalerweise von Threads desselben Prozesses gemeinsam ge
 
 Linux stellt jeden Thread als ein planbares Task mit eigener Thread-ID dar. Die ID des Threadgruppenleiters wird gewöhnlich als Prozess-ID angezeigt, während alle Mitglieder eine Threadgruppen-ID gemeinsam haben. Werkzeuge verwenden Bezeichnungen wie `PID`, `TID`, `LWP` und `SPID`; prüfe die Felddefinitionen des Werkzeugs, statt anzunehmen, dass jede Bezeichnung dasselbe bedeutet.
 
-:::single-choice{#threads-own-scheduling-state}
-Was verwaltet jeder Thread unabhängig?
+:::single-choice{#threads-own-scheduling-state} Was verwaltet jeder Thread unabhängig?
 
 ::option[Die vollständige Tabelle offener Dateien des Prozesses.]{#threads-open-files-shared explanation="Threads eines Prozesses nutzen offene Dateideskriptoren normalerweise gemeinsam."}
 ::option[Die systemweite Benutzerdatenbank des Rechners.]{#threads-user-database explanation="Kontendatenbanken sind kein privater Threadzustand."}
@@ -54,8 +52,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 Threadauflistungen sind Momentaufnahmen. Ein Thread kann unmittelbar danach enden oder seinen Zustand ändern.
 
-:::single-choice{#threads-ps-one-process}
-Welcher Befehl listet die Threads von PID 1234 mit ausdrücklichen Feldern auf?
+:::single-choice{#threads-ps-one-process} Welcher Befehl listet die Threads von PID 1234 mit ausdrücklichen Feldern auf?
 
 ::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="Diese Ausgabe fordert keine einzelnen Threadzeilen an."}
 ::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="Die Option `-L` fordert Threadzeilen für den ausgewählten Prozess an."}
@@ -66,8 +63,7 @@ Welcher Befehl listet die Threads von PID 1234 mit ausdrücklichen Feldern auf?
 
 Eine hohe CPU-Auslastung eines einzelnen Threads kann durch einen prozessweiten Mittelwert verborgen werden. Verknüpfe CPU-Stichproben auf Threadebene mit Anwendungsprotokollen, Stacktraces und Profiling-Werkzeugen. Hänge keine Debugger an Produktions-Tasks und sende ihnen keine Signale, ohne die Auswirkungen von Pausen, Berechtigungen und Diensten zu verstehen.
 
-:::single-choice{#threads-snapshot-limit}
-Warum solltest du eine Threadauflistung von `ps` nicht als dauerhaften Zustand betrachten?
+:::single-choice{#threads-snapshot-limit} Warum solltest du eine Threadauflistung von `ps` nicht als dauerhaften Zustand betrachten?
 
 ::option[`ps` erzeugt für jede Zeile einen Ersatz-Thread.]{#threads-ps-creates explanation="Der Befehl beobachtet Tasks und klont nicht jeden aufgelisteten Task."}
 ::option[Thread-IDs sind auf jedem Linux-Host identisch.]{#threads-identical-ids explanation="Kennungen werden innerhalb eines laufenden Systems vergeben und sind nicht universell."}

@@ -18,8 +18,7 @@ meta_keywords: "sticky 비트, sticky bit linux, unix 파일 권한 sticky 비�
 
 이 제한은 디렉터리 항목을 다룹니다. 파일 권한이 허용한다면 파일 소유자가 파일 내용을 편집하는 일을 막지 않고 디렉터리를 비공개로 만들지도 않습니다.
 
-:::single-choice{#sticky-bit-removal-rule}
-Sticky가 설정된 공유 디렉터리에서 특정 항목을 일반적으로 제거할 수 있는 일반 사용자는 누구인가요?
+:::single-choice{#sticky-bit-removal-rule} Sticky가 설정된 공유 디렉터리에서 특정 항목을 일반적으로 제거할 수 있는 일반 사용자는 누구인가요?
 
 ::option[디렉터리 목록을 볼 수 있는 모든 사용자]{#sticky-bit-any-reader explanation="디렉터리 읽기 권한은 이름을 노출할 수 있지만 sticky 소유권 제한을 우회하지 않습니다."}
 ::option[필요한 디렉터리 접근 권한을 가진 항목 소유자]{#sticky-bit-entry-owner .correct explanation="항목 소유자는 sticky 디렉터리 규칙에서 일반적으로 허용되는 신원 중 하나입니다."}
@@ -39,8 +38,7 @@ drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 
 `/tmp`는 일반적으로 모두가 쓰고 검색할 수 있으므로 여러 사용자가 항목을 만들 수 있습니다. sticky 비트는 디렉터리가 모두에게 쓰기 가능하다는 이유만으로 일반 사용자가 다른 사용자의 항목을 제거하지 못하게 합니다. 예측 가능한 이름, 안전하지 않은 링크, 약한 파일 모드는 별도의 위험이므로 애플리케이션은 여전히 임시 객체를 안전하게 만들어야 합니다.
 
-:::single-choice{#sticky-bit-lowercase-t}
-디렉터리 모드 끝의 소문자 `t`는 무엇을 나타내나요?
+:::single-choice{#sticky-bit-lowercase-t} 디렉터리 모드 끝의 소문자 `t`는 무엇을 나타내나요?
 
 ::option[Sticky와 기타 사용자 실행이 모두 설정되어 있습니다.]{#sticky-bit-t-with-execute .correct explanation="소문자 `t`는 sticky 특수 비트와 일반 기타 사용자 실행 비트를 결합합니다."}
 ::option[Sticky는 설정되었지만 기타 사용자 실행은 없습니다.]{#sticky-bit-t-without-execute explanation="이 조합은 대문자 `T`로 표시됩니다."}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 선행 `1`은 sticky를 설정하고 `777`은 일반 모드를 제공합니다. 이 모드는 디렉터리를 모든 로컬 사용자가 의도적으로 공유할 때만 적절합니다. 팀 디렉터리에는 더 좁은 그룹 권한이 나을 수 있습니다. `chmod -t shared-directory`로 sticky 비트만 제거합니다.
 
-:::single-choice{#sticky-bit-octal-value}
-Sticky 비트를 나타내는 선행 8진수 값은 무엇인가요?
+:::single-choice{#sticky-bit-octal-value} Sticky 비트를 나타내는 선행 8진수 값은 무엇인가요?
 
 ::option[`2`]{#sticky-bit-value-two explanation="선행 `2`는 setgid를 나타냅니다."}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="Sticky 비트는 선행 특수 비트 숫자에 `1`을 더합니다."}
@@ -75,8 +72,7 @@ Sticky 비트를 나타내는 선행 8진수 값은 무엇인가요?
 
 Sticky는 쓰기나 검색 접근을 부여하지 않습니다. 일반 권한이 디렉터리 수정을 허용한 뒤 제거와 이름 변경을 제한할 뿐입니다. 디렉터리 소유자, 그룹, 일반 모드, ACL, 마운트 문맥을 함께 확인하세요. 작동 중인 시스템의 `/tmp`를 바꾸지 말고 격리된 환경의 비권한 계정으로 시험합니다.
 
-:::single-choice{#sticky-bit-access-scope}
-Sticky 비트를 추가하면 쓰기 불가능한 디렉터리가 다른 사용자에게 쓰기 가능해지나요?
+:::single-choice{#sticky-bit-access-scope} Sticky 비트를 추가하면 쓰기 불가능한 디렉터리가 다른 사용자에게 쓰기 가능해지나요?
 
 ::option[예. sticky는 모든 클래스에 쓰기를 자동으로 추가합니다.]{#sticky-bit-adds-write explanation="특수 비트는 소유자, 그룹, 기타 사용자 쓰기 비트를 다시 쓰지 않습니다."}
 ::option[예. sticky는 디렉터리의 기타 사용자 권한 묶음을 비활성화합니다.]{#sticky-bit-disables-other explanation="기타 사용자 묶음은 일반 접근 검사에 계속 참여합니다."}

@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 La orden escribe todo el archivo en la salida estándar. Funciona bien con textos cortos, pero un archivo largo puede desplazarse demasiado rápido por la pantalla.
 
-:::single-choice{#display-short-file}
-¿Qué orden muestra todo el contenido de `myfile.txt` en la terminal?
+:::single-choice{#display-short-file} ¿Qué orden muestra todo el contenido de `myfile.txt` en la terminal?
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file` informa del tipo probable del archivo. No imprime todo el texto que contiene."}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch` actualiza las marcas de tiempo o crea un archivo ausente. No muestra el contenido del archivo."}
@@ -48,8 +47,7 @@ $ cat dogfile birdfile > animals
 
 La shell crea `animals` o lo trunca antes de ejecutar `cat`, y después envía allí la salida combinada. No utilices uno de los archivos de entrada como destino, pues podría vaciarse antes de que `cat` lo lea.
 
-:::single-choice{#combine-files-in-order}
-¿Qué orden escribe `part1` seguido de `part2` en un archivo nuevo o sustituido llamado `whole`?
+:::single-choice{#combine-files-in-order} ¿Qué orden escribe `part1` seguido de `part2` en un archivo nuevo o sustituido llamado `whole`?
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="La redirección tiene un único destino y las demás palabras se convierten en operandos de `cat`. Esta orden no expresa las entradas ni el orden solicitados."}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` emite los dos archivos en el orden indicado y `>` redirige esa salida combinada a `whole`."}
@@ -72,8 +70,7 @@ Para agregar texto a un archivo en lugar de sobrescribirlo, usa `>>`.
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-Quieres escribir más texto al final de un `notes.txt` existente. ¿Qué orden inicia la operación sin truncar el archivo?
+:::single-choice{#append-terminal-input} Quieres escribir más texto al final de un `notes.txt` existente. ¿Qué orden inicia la operación sin truncar el archivo?
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="Un solo `>` redirige la entrada después de truncar el destino. Se perdería el texto existente en `notes.txt`."}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="El operador `>>` abre el destino para añadir contenido, por lo que el texto leído por `cat` se coloca después del contenido existente."}
@@ -97,8 +94,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-¿Qué orden numera únicamente las líneas no vacías de la salida de `notes.txt`?
+:::single-choice{#number-nonempty-lines} ¿Qué orden numera únicamente las líneas no vacías de la salida de `notes.txt`?
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="La opción `-b` numera las líneas no vacías y deja sin numerar las líneas vacías."}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="La opción `-n` numera todas las líneas, incluidas las vacías. No cumple la condición de numerar solo las que contienen texto."}
@@ -113,8 +109,7 @@ Usa `cat` para archivos cortos. Para archivos largos, usa `less` para poder desp
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-¿Qué orden resulta más adecuada para leer de forma interactiva un archivo de registro largo?
+:::single-choice{#choose-viewer-for-long-file} ¿Qué orden resulta más adecuada para leer de forma interactiva un archivo de registro largo?
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` permite desplazarse, buscar y salir de forma controlada, por lo que es apropiado para leer interactivamente archivos largos."}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` escribe todo el registro de una vez en la terminal. Un archivo largo podría desplazarse antes de que puedas examinarlo."}

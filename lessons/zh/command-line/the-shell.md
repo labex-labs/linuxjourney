@@ -20,8 +20,7 @@ meta_keywords: "linux shell, bash shell, 命令行, linux 终端, shell 提示�
 
 Shell 很有用，因为它速度快、可编写脚本，并且几乎在所有 Linux 系统上都可用。随着你学习更多命令，你可以将它们组合起来检查文件、管理目录、搜索文本、安装软件以及自动化重复的工作。
 
-:::single-choice{#distinguish-shell-and-terminal}
-以下哪项正确描述了终端与 shell 的关系？
+:::single-choice{#distinguish-shell-and-terminal} 以下哪项正确描述了终端与 shell 的关系？
 
 ::option[终端提供窗口，shell 在其中运行。]{#shell-runs-in-terminal .correct explanation="终端是你使用的界面，shell 则是在其中运行并处理命令的程序。"}
 ::option[终端接受命令，shell 只显示命令输出。]{#terminal-accepts-commands explanation="这个说法颠倒了二者的职责；终端提供界面，shell 接受并执行命令。"}
@@ -40,8 +39,7 @@ pete@icebox:/home/pete $
 
 `$` 符号表示 shell 已准备好接受你作为普通用户的输入。输入命令时不需要输入这个符号；它是 shell 显示的。如果你看到 `#`，通常表示你以 root 用户身份工作，拥有更高权限但风险也更大。
 
-:::single-choice{#interpret-dollar-prompt}
-示例提示符末尾的 `$` 表示什么？
+:::single-choice{#interpret-dollar-prompt} 示例提示符末尾的 `$` 表示什么？
 
 ::option[shell 正以 root 用户权限运行。]{#root-user-ready explanation="root 提示符通常以 `#` 而不是 `$` 结尾；root 权限更大，风险也更高。"}
 ::option[shell 正在等待普通用户输入。]{#normal-user-ready .correct explanation="`$` 表示普通用户提示符，说明 shell 已准备好接收命令。"}
@@ -56,8 +54,7 @@ command options arguments
 
 例如，在 `echo Hello World` 中，`echo` 是命令，`Hello World` 是传递给它的文本。
 
-:::single-choice{#identify-command-name}
-在 `echo Hello World` 中，哪一部分是命令名？
+:::single-choice{#identify-command-name} 在 `echo Hello World` 中，哪一部分是命令名？
 
 ::option[`Hello`]{#hello-command explanation="`Hello` 位于命令名之后，是传递给 `echo` 的文本之一。"}
 ::option[`World`]{#world-command explanation="`World` 同样是传递给 `echo` 的文本，而不是所执行命令的名称。"}
@@ -84,8 +81,7 @@ Hello from Bash
 
 当你希望 shell 将多个单词视为一段文本时，使用引号非常有用。
 
-:::single-choice{#group-words-with-quotes}
-哪个命令会让 shell 把 `Hello from Bash` 视为一段加引号的文本？
+:::single-choice{#group-words-with-quotes} 哪个命令会让 shell 把 `Hello from Bash` 视为一段加引号的文本？
 
 ::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="引号把三个单词组合成一个参数，再传递给 `echo`。"}
 ::option[`echo Hello from Bash`]{#unquoted-words explanation="它会显示相同的文字，但由于没有引号，shell 会把三个单词视为不同参数。"}

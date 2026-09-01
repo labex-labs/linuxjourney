@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 This is useful for creating placeholders, but `touch` does not add text to a file. Use a text editor or another command designed to write content when you need a nonempty file.
 
-:::single-choice{#create-several-empty-files}
-Which command creates three empty files named `one`, `two`, and `three` if they do not already exist?
+:::single-choice{#create-several-empty-files} Which command creates three empty files named `one`, `two`, and `three` if they do not already exist?
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="The quotation marks make this a single filename containing spaces. This command addresses one file rather than three."}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` creates directories rather than empty regular files. Use `touch` for the files requested here."}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 The `ls -l` output normally displays the modification time, not the access time.
 
-:::single-choice{#touch-existing-file}
-What happens when you run `touch report.txt` and `report.txt` already exists?
+:::single-choice{#touch-existing-file} What happens when you run `touch report.txt` and `report.txt` already exists?
 
 ::option[Its timestamps are updated without replacing its contents.]{#timestamps-only .correct explanation="By default, `touch` updates the access and modification times of an existing file. It does not overwrite the file's data."}
 ::option[Its contents are deleted and the file becomes empty.]{#contents-deleted explanation="Creating an empty file is the missing-file behavior. An existing file keeps its contents when `touch` updates its timestamps."}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-Which command updates only the modification time of `notes.txt`?
+:::single-choice{#change-modification-time-only} Which command updates only the modification time of `notes.txt`?
 
 ::option[`touch -a notes.txt`]{#access-only explanation="The `-a` option changes only the access time. It does not select the modification time requested here."}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="The `-m` option limits the change to the modification time. The access time is left unchanged."}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 Here, `file1.txt` supplies the timestamps and `file2.txt` is the file that changes. The `-t` option is another way to provide a time, using a compact numeric format.
 
-:::single-choice{#copy-reference-timestamps}
-Which command copies the timestamps of `source.txt` to `target.txt`?
+:::single-choice{#copy-reference-timestamps} Which command copies the timestamps of `source.txt` to `target.txt`?
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="With `-r`, the next operand is the reference file and the final operand is the file whose timestamps are updated."}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="This reverses the roles of the files. It would use `target.txt` as the reference and update `source.txt`."}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 If `existing-file.txt` is missing, this command does not create it. This behavior can be useful in scripts that should update a timestamp without introducing a new file.
 
-:::single-choice{#update-without-creating}
-Which command updates `status.log` if it exists but does not create it if it is missing?
+:::single-choice{#update-without-creating} Which command updates `status.log` if it exists but does not create it if it is missing?
 
 ::option[`touch -a status.log`]{#touch-access explanation="The `-a` option selects the access time, but a missing file can still be created. It does not provide the required no-create behavior."}
 ::option[`touch -m status.log`]{#touch-modification explanation="The `-m` option selects the modification time, but it does not prevent creation of a missing file. Use `-c` for that condition."}

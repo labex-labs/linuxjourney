@@ -23,8 +23,7 @@ Uma entrada do carregador pode identificar:
 
 O GRUB pode apresentar vários kernels e entradas de recuperação. Um kernel alternativo só é útil quando seus módulos e initramfs correspondentes continuam disponíveis e testados. O carregador lê arquivos por seus próprios módulos de armazenamento e sistema de arquivos; ele não depende do VFS do Linux, que ainda não está em execução.
 
-:::single-choice{#bootloader-primary-handoff}
-Para onde um carregador de boot Linux normalmente transfere o controle?
+:::single-choice{#bootloader-primary-handoff} Para onde um carregador de boot Linux normalmente transfere o controle?
 
 ::option[Para um shell interativo com todos os serviços já em execução.]{#bootloader-user-shell explanation="Shells do espaço do usuário só aparecem depois que o kernel e o sistema init são iniciados."}
 ::option[Para a imagem de kernel escolhida, após carregar os artefatos necessários.]{#bootloader-selected-kernel .correct explanation="O carregador prepara o kernel, seus parâmetros e, em geral, um initramfs antes de executar o ponto de entrada do kernel."}
@@ -49,16 +48,14 @@ Veja a linha usada no boot atual com:
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-Qual é a finalidade do parâmetro `root=` na linha de comando do kernel?
+:::single-choice{#bootloader-root-parameter} Qual é a finalidade do parâmetro `root=` na linha de comando do kernel?
 
 ::option[Identificar o sistema de arquivos raiz que o boot deve usar.]{#bootloader-root-filesystem .correct explanation="O kernel ou o initramfs interpreta esse valor para localizar e montar a raiz real."}
 ::option[Definir a senha de login da conta root.]{#bootloader-root-password explanation="Segredos de autenticação não devem ser passados como texto comum na linha de comando do kernel."}
 ::option[Renomear o PID 1 para a palavra `root`.]{#bootloader-root-pid explanation="O nome de processos não tem relação com esse parâmetro de armazenamento."}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-O que o parâmetro `quiet` normalmente solicita?
+:::single-choice{#bootloader-quiet-parameter} O que o parâmetro `quiet` normalmente solicita?
 
 ::option[Acesso somente leitura a todo sistema de arquivos montado.]{#bootloader-quiet-readonly explanation="A política inicial de escrita da raiz usa parâmetros como `ro`, não `quiet`."}
 ::option[Redução das mensagens do kernel exibidas durante o boot.]{#bootloader-quiet-console .correct explanation="Ele suprime muitas mensagens informativas, mas não garante silêncio de todos os componentes."}
@@ -71,8 +68,7 @@ O GRUB normalmente permite que um usuário autorizado no console edite uma entra
 
 Parâmetros podem expor texto sensível em `/proc/cmdline`, logs de boot e relatórios de falha. Também podem enfraquecer a segurança ou impedir o boot. Nunca coloque segredos ali; preserve uma entrada funcional e um caminho de recuperação pelo console.
 
-:::single-choice{#bootloader-temporary-edit}
-Qual é uma característica comum da edição interativa de uma entrada do GRUB para um boot?
+:::single-choice{#bootloader-temporary-edit} Qual é uma característica comum da edição interativa de uma entrada do GRUB para um boot?
 
 ::option[Ela reescreve automaticamente todas as imagens de kernel instaladas.]{#bootloader-rewrites-kernels explanation="Alterar o texto do comando não modifica os binários do kernel."}
 ::option[Ela desativa permanentemente a verificação do firmware em todos os discos.]{#bootloader-disables-firmware explanation="A política do firmware é separada e não é alterada universalmente por uma edição de entrada."}
@@ -85,8 +81,7 @@ As distribuições costumam gerar a configuração final do GRUB a partir de mod
 
 Faça uma alteração limitada na fonte, execute o comando de geração documentado pela distribuição, confira a saída e teste mantendo uma entrada antiga funcional e uma mídia de recuperação. Comando e caminho de saída variam entre Debian, Fedora, instalações UEFI e BIOS.
 
-:::single-choice{#bootloader-generated-config}
-Por que editar diretamente um `grub.cfg` gerado costuma ser pouco confiável?
+:::single-choice{#bootloader-generated-config} Por que editar diretamente um `grub.cfg` gerado costuma ser pouco confiável?
 
 ::option[O arquivo nunca pode conter texto legível.]{#bootloader-config-binary explanation="A configuração do GRUB é texto, mas ainda pertence a um processo de geração."}
 ::option[O GRUB lê apenas arquivos no diretório pessoal de cada usuário.]{#bootloader-grub-home explanation="A configuração de boot é do sistema e precisa estar disponível antes das sessões de usuário."}

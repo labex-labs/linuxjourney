@@ -24,8 +24,7 @@ Emacs checks relevant modified file-visiting buffers and asks whether to save th
 
 In an `emacsclient` workflow or an Emacs server, the exact frame and server behavior can differ, but modified-buffer prompts still deserve careful attention.
 
-:::single-choice{#emacs-exit-key}
-Which key sequence requests a normal Emacs exit and checks modified buffers?
+:::single-choice{#emacs-exit-key} Which key sequence requests a normal Emacs exit and checks modified buffers?
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="This kills one selected buffer and does not request that the Emacs session exit."}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="This cancels a pending command or prompt rather than closing Emacs."}
@@ -42,8 +41,7 @@ C-h C-h
 
 The second key chooses the type of help you need.
 
-:::single-choice{#emacs-help-for-help}
-Which key sequence explains how to use the Emacs help system?
+:::single-choice{#emacs-help-for-help} Which key sequence explains how to use the Emacs help system?
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="The help prefix followed by another `C-h` opens help about the help dispatcher itself."}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="This is not the help-for-help sequence introduced here."}
@@ -62,8 +60,7 @@ Useful help commands include:
 
 For example, type `C-h k C-x C-s` to see documentation for the save-buffer binding.
 
-:::single-choice{#emacs-describe-key}
-You want to learn what `C-x C-s` does. Which help prefix should you enter before that key sequence?
+:::single-choice{#emacs-describe-key} You want to learn what `C-x C-s` does. Which help prefix should you enter before that key sequence?
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key` waits for a key sequence and explains the command bound to it."}
 ::option[`C-h f`]{#emacs-describe-function explanation="This prompts for a function name rather than reading a key sequence to identify its binding."}
@@ -80,8 +77,7 @@ C-g
 
 It does not undo buffer changes that have already happened and does not exit Emacs. It stops the current interaction and returns control to ordinary editing when possible.
 
-:::single-choice{#emacs-cancel-pending-command}
-Which key normally cancels the current Emacs prompt or pending command?
+:::single-choice{#emacs-cancel-pending-command} Which key normally cancels the current Emacs prompt or pending command?
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="This initiates the Emacs exit workflow rather than merely cancelling the current prompt."}
 ::option[`C-y`]{#emacs-cancel-yank explanation="This yanks text from the kill ring and does not cancel a command."}
@@ -98,8 +94,7 @@ C-/
 
 Repeated undo commands walk backward through recent buffer changes. Cursor movement alone is not normally a buffer change. Emacs versions and configurations can offer `undo-redo` and more advanced history tools; use `C-h k` on your actual undo and redo bindings to verify local behavior.
 
-:::single-choice{#emacs-undo-change}
-Which key sequence is a standard binding for undoing a recent Emacs buffer change?
+:::single-choice{#emacs-undo-change} Which key sequence is a standard binding for undoing a recent Emacs buffer change?
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/` is a standard undo binding, alongside `C-_` and `C-x u` in common configurations."}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="This saves the current buffer rather than traversing its undo history."}

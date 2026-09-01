@@ -35,8 +35,7 @@ Il existe également d’autres types de fichiers spéciaux. Les neuf caractère
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-Dans `drwxr-xr-x`, qu’indique le premier `d` ?
+:::single-choice{#file-permissions-type-character} Dans `drwxr-xr-x`, qu’indique le premier `d` ?
 
 ::option[L’objet est un lien symbolique.]{#file-permissions-type-link explanation="Un lien symbolique est normalement représenté par `l` à la position du type de fichier."}
 ::option[L’objet est un répertoire.]{#file-permissions-type-directory .correct explanation="Le premier caractère indique le type de fichier, et `d` désigne un répertoire."}
@@ -62,8 +61,7 @@ Pour un répertoire, ces permissions concernent ses entrées :
 
 La suppression d’un fichier dépend principalement des permissions de son répertoire parent, et non de son propre bit d’écriture.
 
-:::single-choice{#file-permissions-directory-execute}
-Que permet principalement la permission d’exécution sur un répertoire ?
+:::single-choice{#file-permissions-directory-execute} Que permet principalement la permission d’exécution sur un répertoire ?
 
 ::option[Exécuter chaque fichier ordinaire conservé dans le répertoire.]{#file-permissions-directory-run-files explanation="Le bit d’exécution d’un répertoire n’accorde pas cette permission à chaque fichier qu’il contient."}
 ::option[Modifier le contenu de chaque fichier du répertoire.]{#file-permissions-directory-edit-files explanation="L’écriture dans les fichiers dépend de leurs permissions et d’autres contrôles d’accès."}
@@ -82,16 +80,14 @@ Le noyau sélectionne une seule classe applicable ; il ne combine pas les trois 
 
 Dans l’exemple, le triplet du propriétaire est `rwx`, tandis que ceux du groupe et des autres sont `r-x`. Le propriétaire peut lire, écrire et parcourir le répertoire. Les classes groupe et autres peuvent le lire et le parcourir, mais ne peuvent pas créer ou supprimer des entrées au moyen des bits ordinaires du répertoire.
 
-:::single-choice{#file-permissions-triplet-order}
-Après le caractère du type de fichier, dans quel ordre apparaissent les trois triplets de permissions ?
+:::single-choice{#file-permissions-triplet-order} Après le caractère du type de fichier, dans quel ordre apparaissent les trois triplets de permissions ?
 
 ::option[Groupe, propriétaire, puis autres.]{#file-permissions-order-group-first explanation="Le triplet du groupe est le deuxième, et non le premier."}
 ::option[Autres, groupe, puis propriétaire.]{#file-permissions-order-other-first explanation="Le triplet des autres est le dernier et celui du propriétaire le premier."}
 ::option[Propriétaire, groupe, puis autres.]{#file-permissions-order-owner-first .correct explanation="Les neuf caractères de permissions présentent toujours les triplets du propriétaire, du groupe et des autres dans cet ordre."}
 :::
 
-:::single-choice{#file-permissions-example-group}
-Quelles permissions ordinaires la classe groupe possède-t-elle dans `drwxr-xr-x` ?
+:::single-choice{#file-permissions-example-group} Quelles permissions ordinaires la classe groupe possède-t-elle dans `drwxr-xr-x` ?
 
 ::option[Lecture et écriture.]{#file-permissions-group-read-write explanation="Le triplet du groupe est `r-x` ; sa position d’écriture contient donc `-`."}
 ::option[Écriture et exécution.]{#file-permissions-group-write-execute explanation="Le triplet du groupe contient `r`, et non `w`, à sa première position."}

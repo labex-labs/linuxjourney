@@ -20,8 +20,7 @@ Das Terminal ist das Fenster oder die Anwendung, in der du schreibst. Die Shell 
 
 Die Shell ist nützlich, weil sie schnell, skriptfähig und auf nahezu jedem Linux-System verfügbar ist. Mit zunehmender Erfahrung kannst du Befehle kombinieren, um Dateien zu untersuchen, Verzeichnisse zu verwalten, Texte zu durchsuchen, Software zu installieren und wiederkehrende Aufgaben zu automatisieren.
 
-:::single-choice{#distinguish-shell-and-terminal}
-Welche Aussage beschreibt das Verhältnis zwischen Terminal und Shell richtig?
+:::single-choice{#distinguish-shell-and-terminal} Welche Aussage beschreibt das Verhältnis zwischen Terminal und Shell richtig?
 
 ::option[Das Terminal stellt das Fenster bereit, in dem die Shell ausgeführt wird.]{#shell-runs-in-terminal .correct explanation="Das Terminal ist die Bedienoberfläche; die Shell ist das darin laufende Programm, das Befehle verarbeitet."}
 ::option[Das Terminal nimmt Befehle an, während die Shell nur deren Ausgabe anzeigt.]{#terminal-accepts-commands explanation="Damit sind die Rollen vertauscht. Das Terminal stellt die Oberfläche bereit, während die Shell Befehle entgegennimmt und ausführt."}
@@ -40,8 +39,7 @@ pete@icebox:/home/pete $
 
 Das Zeichen `$` zeigt an, dass die Shell Eingaben eines normalen Benutzers erwartet. Bei der Eingabe eines Befehls tippst du dieses Zeichen nicht mit; es wird von der Shell angezeigt. Steht dort stattdessen `#`, arbeitest du üblicherweise als Root-Benutzer, was mehr Rechte, aber auch größere Risiken bedeutet.
 
-:::single-choice{#interpret-dollar-prompt}
-Was bedeutet das `$` am Ende der Beispiel-Eingabeaufforderung?
+:::single-choice{#interpret-dollar-prompt} Was bedeutet das `$` am Ende der Beispiel-Eingabeaufforderung?
 
 ::option[Die Shell läuft mit den Rechten des Root-Benutzers.]{#root-user-ready explanation="Eine Root-Eingabeaufforderung endet normalerweise mit `#` statt mit `$`. Root-Zugriff bringt zusätzliche Rechte und Risiken mit sich."}
 ::option[Die Shell wartet auf die Eingabe eines normalen Benutzers.]{#normal-user-ready .correct explanation="Das `$` kennzeichnet die Eingabeaufforderung eines normalen Benutzers und zeigt, dass die Shell für einen Befehl bereit ist."}
@@ -56,8 +54,7 @@ command options arguments
 
 In `echo Hello World` ist beispielsweise `echo` der Befehl und `Hello World` der Text, der ihm übergeben wird.
 
-:::single-choice{#identify-command-name}
-Welcher Teil von `echo Hello World` ist der Befehlsname?
+:::single-choice{#identify-command-name} Welcher Teil von `echo Hello World` ist der Befehlsname?
 
 ::option[`Hello`]{#hello-command explanation="`Hello` steht nach dem Befehlsnamen und gehört daher zu dem Text, der an `echo` übergeben wird."}
 ::option[`World`]{#world-command explanation="Auch `World` ist an `echo` übergebener Text und nicht der Name des ausgeführten Befehls."}
@@ -84,8 +81,7 @@ Hello from Bash
 
 Anführungszeichen sind hilfreich, wenn die Shell mehrere Wörter als eine zusammengehörige Texteinheit behandeln soll.
 
-:::single-choice{#group-words-with-quotes}
-Bei welchem Befehl behandelt die Shell `Hello from Bash` als eine zusammengehörige, in Anführungszeichen gesetzte Texteinheit?
+:::single-choice{#group-words-with-quotes} Bei welchem Befehl behandelt die Shell `Hello from Bash` als eine zusammengehörige, in Anführungszeichen gesetzte Texteinheit?
 
 ::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="Die Anführungszeichen fassen die drei Wörter zu einem Argument zusammen, das an `echo` übergeben wird."}
 ::option[`echo Hello from Bash`]{#unquoted-words explanation="Die sichtbare Ausgabe ist zwar gleich, doch ohne Anführungszeichen behandelt die Shell die Wörter als getrennte Argumente."}

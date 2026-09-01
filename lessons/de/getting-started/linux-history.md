@@ -18,8 +18,7 @@ Um die Entstehung von Linux zu verstehen, gehen wir zurück ins Jahr 1969. Damal
 
 ![Zeitleiste von Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-:::single-choice{#understand-unix-portability}
-Was war eine wichtige Folge davon, UNIX in C neu zu schreiben?
+:::single-choice{#understand-unix-portability} Was war eine wichtige Folge davon, UNIX in C neu zu schreiben?
 
 ::option[Es wurde zum freien Kernel des GNU-Systems.]{#unix-became-gnu-kernel explanation="UNIX existierte vor dem GNU-Projekt und war nicht dessen Kernel. GNU begann später mit der Entwicklung eines getrennten Kernels namens Hurd."}
 ::option[Es ließ sich leichter auf unterschiedliche Hardwaresysteme übertragen.]{#portable-across-hardware .correct explanation="Die Umsetzung in C machte UNIX portabler. Diese Portabilität unterstützte seine Verbreitung über die ursprüngliche Hardware hinaus."}
@@ -28,8 +27,7 @@ Was war eine wichtige Folge davon, UNIX in C neu zu schreiben?
 
 Mehr als ein Jahrzehnt später startete Richard Stallman das GNU-Projekt. GNU ist ein rekursives Akronym für „GNU's Not UNIX“. Ziel war ein vollständig freies und quelloffenes UNIX-ähnliches Betriebssystem. Das Projekt schuf viele grundlegende Komponenten und die GNU General Public License (GPL). Sein eigener Kernel, GNU Hurd, war jedoch noch nicht allgemein einsatzbereit, als Linux verfügbar wurde.
 
-:::single-choice{#identify-gnu-missing-component}
-Welche wichtige GNU-Komponente war noch nicht fertig, als Linux verfügbar wurde?
+:::single-choice{#identify-gnu-missing-component} Welche wichtige GNU-Komponente war noch nicht fertig, als Linux verfügbar wurde?
 
 ::option[Ein produktionsreifer Kernel]{#gnu-kernel .correct explanation="GNU hatte zahlreiche Systemkomponenten geschaffen, doch sein eigener Kernel GNU Hurd war noch nicht allgemein einsatzbereit."}
 ::option[Eine Lizenz für freie Software]{#gnu-license explanation="Das GNU-Projekt hatte die GNU General Public License bereits geschaffen. Als Systemkomponente fehlte ein verwendbarer Kernel."}
@@ -40,8 +38,7 @@ Welche wichtige GNU-Komponente war noch nicht fertig, als Linux verfügbar wurde
 
 Der Kernel ist die Kernkomponente eines Betriebssystems. Er bildet die Brücke für die Kommunikation zwischen Hardware und Software. Der Kernel verwaltet Systemressourcen wie CPU, Arbeitsspeicher und Peripheriegeräte. Ein vollständiges Betriebssystem benötigt neben den von Menschen verwendeten Werkzeugen und Anwendungen diesen ressourcenverwaltenden Kern.
 
-:::single-choice{#recognize-kernel-role}
-Welche Aufgabe gehört zum Betriebssystem-Kernel?
+:::single-choice{#recognize-kernel-role} Welche Aufgabe gehört zum Betriebssystem-Kernel?
 
 ::option[Jeden in der Shell eingegebenen Befehl verfassen]{#write-shell-commands explanation="Menschen oder Skripte geben Shellbefehle vor. Der Kernel stellt die tieferliegenden Ressourcen bereit, wenn Programme diese Befehle ausführen."}
 ::option[Die Lizenz jeder installierten Anwendung auswählen]{#choose-software-licenses explanation="Softwareautoren und Distributoren wählen Anwendungslizenzen. Diese Auswahl ist keine Aufgabe der Ressourcenverwaltung des Kernels."}
@@ -56,8 +53,7 @@ Damit kommen wir ins Jahr 1991, als der finnische Student Linus Torvalds als per
 
 _Linus Torvalds im Jahr 2018 (Quelle: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
 
-:::single-choice{#identify-linux-kernel-creator}
-Wer begann 1991 mit der Entwicklung des Linux-Kernels?
+:::single-choice{#identify-linux-kernel-creator} Wer begann 1991 mit der Entwicklung des Linux-Kernels?
 
 ::option[Richard Stallman]{#richard-stallman explanation="Richard Stallman startete das GNU-Projekt. GNU stellte viele Systemkomponenten bereit, doch Linus Torvalds begann mit dem Linux-Kernel."}
 ::option[Dennis Ritchie]{#dennis-ritchie explanation="Dennis Ritchie wirkte an UNIX und der Programmiersprache C mit. Das Linux-Kernel-Projekt begann später durch Linus Torvalds."}

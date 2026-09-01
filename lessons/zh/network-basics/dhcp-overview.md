@@ -18,8 +18,7 @@ DHCP 服务器管理作用域或地址池以及租约状态。服务器不必位
 
 DHCP 是通过 UDP 承载的应用层协议。DHCPv4 服务器通常使用 UDP 端口 67，客户端使用端口 68。
 
-:::single-choice{#dhcp-relay-purpose}
-DHCP 中继实现了什么？
+:::single-choice{#dhcp-relay-purpose} DHCP 中继实现了什么？
 
 ::option[让每个客户端不受策略限制地选择任意地址。]{#dhcp-client-any-address explanation="服务器仍然应用作用域和租约策略。"}
 ::option[让另一个子网中的客户端访问集中式 DHCP 服务器。]{#dhcp-central-server .correct explanation="中继跨越路由边界转发 DHCP 交换，并标识客户端所在网络。"}
@@ -37,8 +36,7 @@ DHCP 中继实现了什么？
 
 广播与单播细节取决于客户端状态、中继使用情况和服务器能力。要约尚不是最终可用的租约；确认消息会完成正常选择交换。
 
-:::single-choice{#dhcp-dora-order}
-DHCPv4 正常的初始顺序是什么？
+:::single-choice{#dhcp-dora-order} DHCPv4 正常的初始顺序是什么？
 
 ::option[OFFER、DISCOVER、ACK、REQUEST。]{#dhcp-wrong-order-one explanation="客户端先发现，服务器再提供；客户端先请求，服务器再确认。"}
 ::option[DISCOVER、OFFER、REQUEST、ACK。]{#dhcp-correct-order .correct explanation="该序列依次执行搜索、提议、选择和确认。"}
@@ -51,8 +49,7 @@ DHCPv4 正常的初始顺序是什么？
 
 显示为动态分配的地址并不能证明租约永久有效。排查变化时，应记录当前租约、有效期、服务器和选项。
 
-:::single-choice{#dhcp-lease-expiration}
-DHCP 地址租约未成功续期时会发生什么？
+:::single-choice{#dhcp-lease-expiration} DHCP 地址租约未成功续期时会发生什么？
 
 ::option[它会变成永久硬件 MAC 地址。]{#dhcp-lease-mac explanation="IP 租约不会改变链路层身份。"}
 ::option[它最终会过期，客户端必须停止将其视为有效地址。]{#dhcp-lease-expires .correct explanation="租赁机制允许服务器根据策略回收或更改地址和选项。"}
@@ -71,8 +68,7 @@ $ resolvectl status
 
 解析器命令因系统而异。还应检查活动网络管理器的租约数据和日志。恶意服务器、地址池内的静态分配、过期状态或手动配置仍可能造成地址重复；DHCP 可以减少错误，但本身无法阻止所有冲突。
 
-:::single-choice{#dhcp-result-verification}
-接受 DHCP 租约后应该检查什么？
+:::single-choice{#dhcp-result-verification} 接受 DHCP 租约后应该检查什么？
 
 ::option[只检查接口显示名称。]{#dhcp-interface-name-only explanation="接口名称不能确定寻址、路由或解析状态。"}
 ::option[只检查键盘是否响应。]{#dhcp-keyboard explanation="键盘输入与网络租约配置无关。"}
@@ -83,8 +79,7 @@ $ resolvectl status
 
 IPv6 主机可以使用无状态地址自动配置、DHCPv6、静态配置或这些方式的组合。DHCPv6 不使用 IPv4 的 DORA 交换，默认路由器信息通常来自 IPv6 路由器通告，而不是 DHCPv6。
 
-:::single-choice{#dhcp-ipv6-default-router}
-IPv6 主机通常从哪里获得默认路由器信息？
+:::single-choice{#dhcp-ipv6-default-router} IPv6 主机通常从哪里获得默认路由器信息？
 
 ::option[IPv6 路由器通告。]{#dhcp-router-advertisement .correct explanation="DHCPv6 可以提供其他配置，但路由器通过邻居发现通告自身。"}
 ::option[以太网 FCS 尾部。]{#dhcp-ipv6-fcs explanation="FCS 用于检测链路损坏，不承载路由器配置。"}

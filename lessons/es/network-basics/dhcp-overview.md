@@ -18,8 +18,7 @@ Un servidor DHCP gestiona ámbitos o conjuntos de direcciones y el estado de los
 
 DHCP es un protocolo de la capa de aplicación que se transporta sobre UDP. Los servidores DHCPv4 suelen utilizar el puerto UDP 67 y los clientes el puerto 68.
 
-:::single-choice{#dhcp-relay-purpose}
-¿Qué permite un relay DHCP?
+:::single-choice{#dhcp-relay-purpose} ¿Qué permite un relay DHCP?
 
 ::option[Que todos los clientes elijan una dirección sin ninguna política.]{#dhcp-client-any-address explanation="El servidor sigue aplicando la política de ámbitos y arrendamientos."}
 ::option[Que los clientes de otra subred lleguen a un servidor DHCP centralizado.]{#dhcp-central-server .correct explanation="El relay reenvía los intercambios DHCP a través de un límite de enrutamiento e identifica la red del cliente."}
@@ -37,8 +36,7 @@ El proceso inicial habitual se recuerda como DORA:
 
 Los detalles de broadcast y unicast varían según el estado del cliente, el uso de relays y las capacidades del servidor. Una oferta todavía no es el arrendamiento final utilizable; la confirmación completa el intercambio normal de selección.
 
-:::single-choice{#dhcp-dora-order}
-¿Cuál es el orden inicial normal de DHCPv4?
+:::single-choice{#dhcp-dora-order} ¿Cuál es el orden inicial normal de DHCPv4?
 
 ::option[OFFER, DISCOVER, ACK, REQUEST.]{#dhcp-wrong-order-one explanation="Un cliente descubre antes de que un servidor ofrezca, y solicita antes de recibir la confirmación."}
 ::option[DISCOVER, OFFER, REQUEST, ACK.]{#dhcp-correct-order .correct explanation="La secuencia busca, propone, selecciona y confirma."}
@@ -51,8 +49,7 @@ Un arrendamiento caduca si no se renueva. Normalmente, el cliente comienza a ren
 
 Que una dirección aparezca como asignada dinámicamente no demuestra que su arrendamiento vaya a durar para siempre. Al diagnosticar cambios, registra el arrendamiento activo, su duración, el servidor y las opciones.
 
-:::single-choice{#dhcp-lease-expiration}
-¿Qué ocurre con un arrendamiento de dirección DHCP si no se renueva correctamente?
+:::single-choice{#dhcp-lease-expiration} ¿Qué ocurre con un arrendamiento de dirección DHCP si no se renueva correctamente?
 
 ::option[Se convierte en una dirección MAC permanente del hardware.]{#dhcp-lease-mac explanation="Un arrendamiento IP no cambia la identidad de la capa de enlace."}
 ::option[Finalmente caduca y el cliente debe dejar de tratarlo como válido.]{#dhcp-lease-expires .correct explanation="Los arrendamientos permiten recuperar o cambiar las direcciones y opciones según la política del servidor."}
@@ -71,8 +68,7 @@ $ resolvectl status
 
 El comando del resolver varía según el sistema. Inspecciona también los datos del arrendamiento y los registros del gestor de red activo. Aún pueden producirse direcciones duplicadas debido a servidores no autorizados, asignaciones estáticas dentro de un conjunto, estados obsoletos o configuraciones manuales; DHCP reduce los errores, pero no puede evitar por sí solo todos los conflictos.
 
-:::single-choice{#dhcp-result-verification}
-¿Qué debe comprobarse después de aceptar un arrendamiento DHCP?
+:::single-choice{#dhcp-result-verification} ¿Qué debe comprobarse después de aceptar un arrendamiento DHCP?
 
 ::option[Únicamente el nombre que muestra la interfaz.]{#dhcp-interface-name-only explanation="El nombre de una interfaz no demuestra el direccionamiento, el enrutamiento ni la resolución."}
 ::option[Únicamente si responde el teclado.]{#dhcp-keyboard explanation="La entrada del teclado no está relacionada con la configuración del arrendamiento de red."}
@@ -83,8 +79,7 @@ El comando del resolver varía según el sistema. Inspecciona también los datos
 
 Los hosts IPv6 pueden utilizar configuración automática de direcciones sin estado, DHCPv6, configuración estática o combinaciones de ellas. DHCPv6 no utiliza el intercambio DORA de IPv4, y la información del router predeterminado suele proceder de los anuncios de router de IPv6, no de DHCPv6.
 
-:::single-choice{#dhcp-ipv6-default-router}
-¿Dónde aprende normalmente un host IPv6 la información de su router predeterminado?
+:::single-choice{#dhcp-ipv6-default-router} ¿Dónde aprende normalmente un host IPv6 la información de su router predeterminado?
 
 ::option[De los anuncios de router de IPv6.]{#dhcp-router-advertisement .correct explanation="DHCPv6 puede proporcionar otra configuración, pero los routers se anuncian mediante el descubrimiento de vecinos."}
 ::option[Del tráiler FCS de Ethernet.]{#dhcp-ipv6-fcs explanation="FCS detecta daños en el enlace y no contiene ninguna configuración de router."}

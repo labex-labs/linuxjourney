@@ -23,8 +23,7 @@ meta_keywords: "Linux 系统调用, 系统调用, syscall 表, 内核模式, 用
 - 经过优化的 vDSO 函数可以在不进行完整模式切换的情况下取得某些由内核维护的数据
 - 一个系统调用可以支持许多高层 API
 
-:::single-choice{#system-calls-library-wrapper}
-典型的 libc 系统调用包装函数会做什么？
+:::single-choice{#system-calls-library-wrapper} 典型的 libc 系统调用包装函数会做什么？
 
 ::option[准备 ABI 参数、进入内核并转换返回结果。]{#system-calls-wrapper-role .correct explanation="包装函数在普通库接口背后隐藏了与架构相关的调用约定。"}
 ::option[让应用程序不受限制地访问内核内存。]{#system-calls-wrapper-unrestricted explanation="进入内核的过程仍受控制，内核会验证请求。"}
@@ -39,8 +38,7 @@ meta_keywords: "Linux 系统调用, 系统调用, syscall 表, 内核模式, 用
 
 把每个入口都称为“软件中断”并不能准确描述现代架构；陷阱、快速系统调用指令和监管者调用以不同方式实现相近的受控转换。
 
-:::single-choice{#system-calls-entry-result}
-谁负责验证系统调用的参数和授权？
+:::single-choice{#system-calls-entry-result} 谁负责验证系统调用的参数和授权？
 
 ::option[进程启动前的 shell 提示符。]{#system-calls-shell-validates explanation="进程可以不依赖 shell 发出系统调用，而且内核检查始终不可或缺。"}
 ::option[所请求服务的内核实现。]{#system-calls-kernel-validates .correct explanation="特权处理程序在执行前检查指针、对象状态、凭据和策略。"}
@@ -53,8 +51,7 @@ meta_keywords: "Linux 系统调用, 系统调用, syscall 表, 内核模式, 用
 
 非特权进程不能向正在运行的内核系统调用表中任意插入新处理程序。扩展接口需要编写内核代码并谨慎设计 ABI。seccomp 等功能可以过滤允许进程发出的调用，但不能创建新的内核实现。
 
-:::single-choice{#system-calls-number-portability}
-为什么应用程序不应硬编码来自另一种架构的系统调用号？
+:::single-choice{#system-calls-number-portability} 为什么应用程序不应硬编码来自另一种架构的系统调用号？
 
 ::option[编号和调用约定由 ABI 决定。]{#system-calls-abi-specific .correct explanation="在一种架构上有意义的编号，在另一种架构上可能表示其他操作或根本不存在。"}
 ::option[系统调用根据当前工作目录命名。]{#system-calls-directory-names explanation="路径名并不定义系统调用编号 ABI。"}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace` 可能暴露路径、参数、来自环境的数据、网络地址、文件内容片段，以及被错误放入参数的凭据。应使用严格权限保存跟踪记录，并按照事件数据管理策略将其删除。
 
-:::single-choice{#system-calls-strace-purpose}
-`strace` 主要观察什么？
+:::single-choice{#system-calls-strace-purpose} `strace` 主要观察什么？
 
 ::option[只观察应用程序内部执行的源代码行。]{#system-calls-strace-source-lines explanation="源代码级跟踪需要带有符号的调试器或插桩工具。"}
 ::option[用户空间与内核边界上的系统调用和信号。]{#system-calls-strace-boundary .correct explanation="它会报告被跟踪进程的请求、参数、结果和信号事件。"}
@@ -91,8 +87,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 权限和 ptrace 安全策略会限制可以跟踪哪些进程。未经授权，不要附加到其他用户的进程或生产进程；暂停和时序变化都可能影响服务行为。
 
-:::single-choice{#system-calls-strace-failure}
-跟踪记录中出现一次失败的系统调用，是否一定表示应用程序已损坏？
+:::single-choice{#system-calls-strace-failure} 跟踪记录中出现一次失败的系统调用，是否一定表示应用程序已损坏？
 
 ::option[是；每个非零返回值都会立即终止 Linux。]{#system-calls-nonzero-terminates explanation="应用程序通常会处理系统调用错误，而不会导致系统故障。"}
 ::option[不是；程序经常探测替代方案并处理预期错误。]{#system-calls-expected-failure .correct explanation="应结合控制流和应用程序上下文解读返回值，而不是孤立看待。"}

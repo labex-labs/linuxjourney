@@ -45,8 +45,7 @@ ABC123
 
 Os caracteres que não estão em `SET1` passam inalterados.
 
-:::single-choice{#tr-map-characters}
-O que `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` mostra?
+:::single-choice{#tr-map-characters} O que `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` mostra?
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="Os dígitos não pertencem ao conjunto de origem; portanto, `tr` não os substitui por letras."}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="Cada um de `a`, `b` e `c` é mapeado para o caractere na mesma posição em `ABC`; os dígitos permanecem iguais."}
@@ -78,8 +77,7 @@ $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-:::single-choice{#tr-delete-digits}
-Qual comando remove todos os dígitos de stdin e mantém os outros caracteres inalterados?
+:::single-choice{#tr-delete-digits} Qual comando remove todos os dígitos de stdin e mantém os outros caracteres inalterados?
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="A opção `-d` exclui do fluxo todos os caracteres da classe de dígitos."}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="A opção `-s` agrupa dígitos repetidos, mas preserva um caractere de cada sequência."}
@@ -105,8 +103,7 @@ one
 Two
 ```
 
-:::single-choice{#tr-squeeze-spaces}
-Qual comando reduz cada sequência de espaços comuns em stdin a um único espaço?
+:::single-choice{#tr-squeeze-spaces} Qual comando reduz cada sequência de espaços comuns em stdin a um único espaço?
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="A opção `-s` agrupa os membros repetidos do conjunto fornecido, que contém um espaço comum."}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="A opção `-d` remove todos os espaços comuns, em vez de preservar um por sequência."}
@@ -141,8 +138,7 @@ userexamplecom
 
 Isso também remove a nova linha, pois ela não é alfanumérica. Acrescente ou preserve separadores conscientemente quando os limites dos registros forem importantes.
 
-:::single-choice{#tr-keep-alphanumeric}
-O que `tr -cd '[:alnum:]'` faz com stdin?
+:::single-choice{#tr-keep-alphanumeric} O que `tr -cd '[:alnum:]'` faz com stdin?
 
 ::option[Exclui os caracteres alfanuméricos e mantém todo o restante.]{#tr-delete-alnum explanation="O complemento altera os caracteres que `-d` seleciona. O conjunto alfanumérico em si é preservado."}
 ::option[Exclui todos os caracteres que não são alfanuméricos.]{#tr-delete-nonalnum .correct explanation="`-c` complementa o conjunto alfanumérico, e `-d` exclui o conjunto resultante de caracteres não alfanuméricos."}
@@ -174,8 +170,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 Redirecione stdout para outro arquivo se precisar salvar o resultado. Não a redirecione de volta ao caminho de entrada, pois o shell o truncaria antes que `tr` o lesse.
 
-:::single-choice{#tr-read-file-input}
-Qual comando faz `tr` ler `names.txt` como stdin e converter caracteres minúsculos em maiúsculos?
+:::single-choice{#tr-read-file-input} Qual comando faz `tr` ler `names.txt` como stdin e converter caracteres minúsculos em maiúsculos?
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` não recebe um nome de arquivo comum dessa forma; o operando extra torna a sintaxe inválida."}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Essa forma lê o arquivo corretamente, mas exclui as letras minúsculas em vez de traduzi-las."}

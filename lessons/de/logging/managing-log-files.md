@@ -16,8 +16,7 @@ Unbegrenzte Textprotokolle können ein Dateisystem füllen, während zu aggressi
 
 Bei einer typischen Rotation wird die aktive Datei umbenannt, ein Ersatz erstellt, die Anwendung optional zum erneuten Öffnen aufgefordert, ältere Generationen komprimiert und Dateien außerhalb der Aufbewahrung entfernt. Diese Schritte hängen von der Konfiguration ab. Rotation ist keine Sicherung, weil aufbewahrte Kopien weiterhin gelöscht oder beschädigt werden beziehungsweise mit demselben Host verloren gehen können.
 
-:::single-choice{#logrotate-not-backup}
-Warum ersetzt Protokollrotation keine Sicherung oder Archivierung?
+:::single-choice{#logrotate-not-backup} Warum ersetzt Protokollrotation keine Sicherung oder Archivierung?
 
 ::option[Rotierte Dateien unterliegen weiterhin lokaler Aufbewahrung und Hostausfällen.]{#logrotate-local-retention .correct explanation="Rotation steuert Arbeitsgenerationen von Protokollen, erstellt aber keine unabhängige dauerhafte Kopie."}
 ::option[Rotation kann nur Bilddateien verarbeiten.]{#logrotate-images explanation="Das Werkzeug ist in erster Linie für Protokolldateien vorgesehen."}
@@ -42,8 +41,7 @@ Die Hauptdatei ist gewöhnlich `/etc/logrotate.conf`; Ausschnitte von Paketen od
 
 Dies fordert tägliche Prüfung, sieben aufbewahrte Rotationen, um eine Generation verzögerte Komprimierung, Toleranz für ein fehlendes oder leeres Protokoll und eine neu erstellte Datei mit ausdrücklichem Modus und Eigentum an. Die tatsächliche Rotation hängt außerdem vom aufgezeichneten Zustand und davon ab, wie der Scheduler logrotate aufruft.
 
-:::single-choice{#logrotate-rotate-seven}
-Was legt `rotate 7` fest?
+:::single-choice{#logrotate-rotate-seven} Was legt `rotate 7` fest?
 
 ::option[Bis zu sieben rotierte Generationen gemäß der Richtlinie aufbewahren.]{#logrotate-seven-generations .correct explanation="Ältere Generationen werden entfernt, wenn die konfigurierte Aufbewahrung überschritten wird."}
 ::option[Die Anwendung siebenmal pro Tag ausführen.]{#logrotate-run-seven explanation="Die Direktive steuert aufbewahrte Generationen und nicht die Anwendungsausführung."}
@@ -56,8 +54,7 @@ Nach dem Umbenennen eines Protokolls kann ein Daemon über seinen weiterhin geö
 
 `copytruncate` kopiert eine Datei und kürzt das Original an Ort und Stelle, wenn eine Anwendung Protokolle nicht erneut öffnen kann. Während des Kopier- und Kürzungsfensters können Schreibvorgänge verloren gehen oder dupliziert werden. Es ist daher ein Kompromiss und kein allgemeingültig sicherer Standard.
 
-:::single-choice{#logrotate-open-descriptor}
-Warum kann eine Anwendung nach der Rotation ein Signal zum erneuten Öffnen benötigen?
+:::single-choice{#logrotate-open-descriptor} Warum kann eine Anwendung nach der Rotation ein Signal zum erneuten Öffnen benötigen?
 
 ::option[Ihr offener Deskriptor kann weiterhin auf die umbenannte Datei verweisen.]{#logrotate-descriptor-renamed .correct explanation="Durch erneutes Öffnen verwenden künftige Schreibvorgänge den neu erstellten aktiven Pfad."}
 ::option[Komprimierung stoppt automatisch jeden Anwendungsprozess.]{#logrotate-compression-stops explanation="Komprimierung verwaltet nicht von sich aus den Lebenszyklus des schreibenden Prozesses."}
@@ -74,8 +71,7 @@ $ sudo logrotate -d /etc/logrotate.conf
 
 Die Debugausgabe beweist nicht, dass Berechtigungen, Skripte, freier Speicherplatz oder das erneute Öffnen der Anwendung bei einem tatsächlichen Lauf erfolgreich sind. Teste eine neue Regel in einer kontrollierten Umgebung und untersuche anschließend aktive Datei, rotierte Generation, Eigentum, Komprimierung, Anwendungsausgabe und logrotate-Zustand. `-f` erzwingt eine Rotation und verändert den Zustand; verwechsle es nicht mit einem Probelauf.
 
-:::single-choice{#logrotate-debug-mode}
-Was bietet `logrotate -d`?
+:::single-choice{#logrotate-debug-mode} Was bietet `logrotate -d`?
 
 ::option[Das dauerhafte Löschen aller abgelaufenen Protokolle.]{#logrotate-debug-delete explanation="Der Debugmodus meldet beabsichtigte Entscheidungen, ohne eine Rotation auszuführen."}
 ::option[Eine erzwungene Produktionsrotation unabhängig von der Richtlinie.]{#logrotate-debug-force explanation="Die Option zum Erzwingen ist `-f` und verändert den Zustand."}
@@ -86,8 +82,7 @@ Was bietet `logrotate -d`?
 
 Logrotate verwaltet Dateien, die in seinen Richtlinien benannt sind. Das systemd-Journal besitzt eine eigene Größen- und Aufbewahrungskonfiguration, während Datenbanken und entfernte Protokollierungsdienste getrennte Lebenszyklussteuerungen besitzen. Überwache Dateisystemkapazität und Protokollierungszustand, damit ein festhängender schreibender Prozess oder eine fehlgeschlagene Rotation erkannt wird, bevor der Speicherplatz erschöpft ist.
 
-:::single-choice{#logrotate-journal-retention}
-Erzwingt eine logrotate-Regel automatisch die Aufbewahrung des systemd-Journals?
+:::single-choice{#logrotate-journal-retention} Erzwingt eine logrotate-Regel automatisch die Aufbewahrung des systemd-Journals?
 
 ::option[Nein, der Journalspeicher besitzt eigene Konfiguration und Grenzen.]{#logrotate-journal-separate .correct explanation="Logrotate verwaltet nur Pfade, die durch seine Dateirichtlinien ausgewählt werden."}
 ::option[Ja, weil alle Protokolle dieselbe Aufbewahrungsengine verwenden.]{#logrotate-all-logs explanation="Dateirotation und Journalaufbewahrung sind getrennte Mechanismen."}

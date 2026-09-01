@@ -24,8 +24,7 @@ $ python3 -m http.server 8000 --directory /srv/temporary-share
 
 Quando não há um arquivo de índice, o módulo normalmente gera uma listagem do diretório. Qualquer pessoa que consiga alcançar o socket em escuta pode enumerar e baixar o conteúdo servido.
 
-:::single-choice{#http-server-directory-option}
-Por que usar `--directory /srv/temporary-share`?
+:::single-choice{#http-server-directory-option} Por que usar `--directory /srv/temporary-share`?
 
 ::option[Ele criptografa toda resposta HTTP automaticamente.]{#http-server-directory-tls explanation="A opção de diretório não acrescenta TLS."}
 ::option[Ele cria uma conta para cada pessoa que baixa.]{#http-server-directory-accounts explanation="O módulo básico não oferece autenticação."}
@@ -42,8 +41,7 @@ $ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
 
 Para compartilhar em rede confiável, vincule deliberadamente ao endereço apropriado e confirme o firewall. Sem bind restritivo, o comando costuma ouvir em todas as interfaces e pode expor o diretório além da rede pretendida.
 
-:::single-choice{#http-server-loopback-bind}
-Quem normalmente alcança um servidor vinculado a `127.0.0.1`?
+:::single-choice{#http-server-loopback-bind} Quem normalmente alcança um servidor vinculado a `127.0.0.1`?
 
 ::option[Clientes no mesmo host.]{#http-server-local-clients .correct explanation="Loopback serve a testes locais ou uso por um túnel configurado deliberadamente."}
 ::option[Qualquer host da Internet pública.]{#http-server-public explanation="Loopback é local ao namespace e não é interface pública."}
@@ -60,8 +58,7 @@ $ curl -f http://127.0.0.1:8000/example.txt
 
 Para um teste remoto autorizado, use o endereço da interface selecionada em vez do loopback. Confirme tanto que o arquivo pretendido está acessível quanto que um arquivo fora da raiz de documentos não está. O sucesso no navegador por si só não comprova uma exposição apropriada nem a confidencialidade.
 
-:::single-choice{#http-server-default-port-command}
-Qual porta é escolhida em `python3 -m http.server 8000`?
+:::single-choice{#http-server-default-port-command} Qual porta é escolhida em `python3 -m http.server 8000`?
 
 ::option[22]{#http-server-port-22 explanation="A porta 22 é associada ao SSH e não foi escolhida aqui."}
 ::option[8000]{#http-server-port-8000 .correct explanation="O operando posicional informa a porta de escuta."}
@@ -78,8 +75,7 @@ $ ss -ltn 'sport = :8000'
 
 Remova cópias temporárias conforme a política e reverta regras de firewall. Para distribuição persistente, autenticada ou pública, use servidor mantido com controle de acesso e TLS.
 
-:::single-choice{#http-server-completion-check}
-O que deve acontecer após a transferência temporária?
+:::single-choice{#http-server-completion-check} O que deve acontecer após a transferência temporária?
 
 ::option[Parar o serviço e confirmar que a porta não está mais ouvindo.]{#http-server-stop-verify .correct explanation="A verificação confirma que o serviço temporário realmente terminou."}
 ::option[Deixar o listener ativo para possível uso futuro.]{#http-server-leave-running explanation="A exposição desnecessária deve terminar com a finalidade autorizada."}

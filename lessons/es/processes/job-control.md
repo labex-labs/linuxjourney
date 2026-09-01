@@ -25,8 +25,7 @@ El shell devuelve el prompt sin esperar a que termine el trabajo. Ejecutarlo en 
 
 Un trabajo en segundo plano que intenta leer de la terminal de control suele detenerse mediante `SIGTTIN` porque no pertenece al grupo de procesos en primer plano de la terminal.
 
-:::single-choice{#job-control-ampersand-effect}
-¿Qué solicita a un shell interactivo un `&` al final?
+:::single-choice{#job-control-ampersand-effect} ¿Qué solicita a un shell interactivo un `&` al final?
 
 ::option[Que garantice que el trabajo sobreviva al cierre de sesión y al reinicio del sistema.]{#job-control-survive-restart explanation="La ejecución en segundo plano por sí sola no proporciona supervisión duradera ni persistencia tras un reinicio."}
 ::option[Que ejecute la tubería como trabajo en segundo plano sin esperar antes de mostrar el siguiente prompt.]{#job-control-background-job .correct explanation="El shell inicia el trabajo de forma asíncrona y queda disponible para recibir más órdenes."}
@@ -48,8 +47,7 @@ El número entre corchetes es un identificador de trabajo del shell, no un PID. 
 
 Como la tabla de trabajos pertenece a un único shell, el shell de otra terminal no puede normalmente mostrar ni referirse a estos trabajos mediante sus propias órdenes internas `jobs`, `fg` o `bg`.
 
-:::single-choice{#job-control-jobs-scope}
-¿Qué muestra la orden interna `jobs`?
+:::single-choice{#job-control-jobs-scope} ¿Qué muestra la orden interna `jobs`?
 
 ::option[Los trabajos seguidos por la sesión de shell actual.]{#job-control-jobs-current-shell .correct explanation="El shell interactivo que inició o adoptó los trabajos mantiene sus identificadores y estados."}
 ::option[Todos los procesos visibles en ese momento en el sistema.]{#job-control-jobs-all-processes explanation="La inspección de procesos de todo el sistema corresponde a herramientas como `ps`; la tabla de trabajos del shell es más limitada."}
@@ -74,8 +72,7 @@ $ bg
 
 `bg` envía una señal de continuación y deja el trabajo fuera del primer plano de la terminal. Solo resulta útil para un trabajo detenido; una orden que ya se ejecuta en segundo plano no necesita reanudarse.
 
-:::single-choice{#job-control-bg-purpose}
-¿Qué hace `bg %3` con el trabajo 3 detenido?
+:::single-choice{#job-control-bg-purpose} ¿Qué hace `bg %3` con el trabajo 3 detenido?
 
 ::option[Mueve sus archivos a un directorio llamado `bg`.]{#job-control-bg-files explanation="`bg` es una orden interna del shell para el control de trabajos y no mueve objetos del sistema de archivos."}
 ::option[Lo continúa como trabajo en segundo plano.]{#job-control-bg-continue .correct explanation="El shell reanuda el trabajo detenido seleccionado sin asignarle el primer plano de la terminal."}
@@ -92,8 +89,7 @@ $ fg %1
 
 Sin un operando, `fg` suele seleccionar el trabajo actual marcado con `+`. Un trabajo detenido se continúa al pasar al primer plano.
 
-:::single-choice{#job-control-fg-effect}
-¿Qué hace `fg %1`?
+:::single-choice{#job-control-fg-effect} ¿Qué hace `fg %1`?
 
 ::option[Asigna el trabajo 1 al primer plano de la terminal y espera a que termine.]{#job-control-fg-foreground .correct explanation="El shell lleva al primer plano el trabajo seleccionado para que pueda interactuar con la terminal."}
 ::option[Convierte el trabajo 1 en el PID 1.]{#job-control-fg-pid-one explanation="Un identificador de trabajo del shell no sustituye ni modifica los identificadores de proceso."}
@@ -110,8 +106,7 @@ $ kill -TERM %1
 
 Normalmente, esto envía la señal al grupo de procesos del trabajo y no solo a un miembro de la tubería. Examina primero el trabajo seleccionado y utiliza `SIGTERM` antes de plantearte una medida forzosa. Las especificaciones de trabajo son sintaxis del shell; los scripts y las herramientas externas suelen trabajar con PID o identificadores de grupo de procesos verificados.
 
-:::single-choice{#job-control-job-specification}
-¿Qué operando se refiere al trabajo 1 del shell en vez de al proceso con PID 1?
+:::single-choice{#job-control-job-specification} ¿Qué operando se refiere al trabajo 1 del shell en vez de al proceso con PID 1?
 
 ::option[`1`]{#job-control-plain-one explanation="Un operando numérico sin prefijo para `kill` suele interpretarse como un PID."}
 ::option[`#1`]{#job-control-hash-one explanation="El prefijo de almohadilla no es la sintaxis presentada para un identificador de trabajo del shell."}

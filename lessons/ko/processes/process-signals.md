@@ -23,8 +23,7 @@ meta_keywords: "linux 시그널, linux 프로세스 시그널, signal 15 linux, 
 
 송신자는 일반적으로 자격 증명이나 capabilities를 기준으로 한 적절한 권한이 있어야 합니다. 따라서 시그널은 임의 사용자 사이의 제한 없는 메시지가 아니라 커널이 중개하는 제어 인터페이스입니다.
 
-:::single-choice{#process-signals-ctrl-c}
-터미널은 일반적으로 `Ctrl-C`에 어떤 시그널을 생성하나요?
+:::single-choice{#process-signals-ctrl-c} 터미널은 일반적으로 `Ctrl-C`에 어떤 시그널을 생성하나요?
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP`는 일반적으로 `Ctrl-Z` 같은 터미널 일시 중단 문자와 연결됩니다."}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT`는 키보드 인터럽트를 나타내지 않고 정지된 프로세스를 재개합니다."}
@@ -43,8 +42,7 @@ meta_keywords: "linux 시그널, linux 프로세스 시그널, signal 15 linux, 
 
 시그널 이름은 숫자보다 이식 가능하고 읽기 쉽습니다. 일반적인 Linux 아키텍처가 `SIGTERM`에 15를 사용하지만 관련 표준이 보장하지 않는 모든 시그널 번호가 어디서나 같다고 가정하지 마세요. `kill -l`로 로컬 매핑을 확인합니다.
 
-:::single-choice{#process-signals-term-behavior}
-프로세스가 `SIGTERM`에 정상적인 방식으로 응답할 수 있는 이유는 무엇인가요?
+:::single-choice{#process-signals-term-behavior} 프로세스가 `SIGTERM`에 정상적인 방식으로 응답할 수 있는 이유는 무엇인가요?
 
 ::option[해당 시그널에 핸들러를 설치할 수 있습니다.]{#process-signals-term-handler .correct explanation="`SIGKILL`과 달리 `SIGTERM`은 잡을 수 있어 프로그램이 자체 종료 로직을 시작할 수 있습니다."}
 ::option[커널이 열린 모든 문서를 항상 자동으로 저장합니다.]{#process-signals-term-kernel-save explanation="애플리케이션 정리는 프로그램 코드에 달려 있으며 커널은 임의 문서 상태를 이해하고 저장하지 않습니다."}
@@ -57,8 +55,7 @@ meta_keywords: "linux 시그널, linux 프로세스 시그널, signal 15 linux, 
 
 멀티스레드 프로세스에서 프로세스 대상 시그널은 차단하지 않은 적합한 스레드에 전달될 수 있고 스레드 대상 시그널은 지정된 스레드로 갑니다. 올바른 시그널 설계에는 “프로세스가 차단했는지”만 확인하는 것보다 더 많은 고려가 필요합니다.
 
-:::single-choice{#process-signals-blocked-state}
-차단 가능한 시그널이 대상에서 차단된 상태로 생성되면 일반적으로 어떻게 되나요?
+:::single-choice{#process-signals-blocked-state} 차단 가능한 시그널이 대상에서 차단된 상태로 생성되면 일반적으로 어떻게 되나요?
 
 ::option[전달할 수 있을 때까지 대기 상태로 남습니다.]{#process-signals-pending .correct explanation="차단은 처리를 미루며 시그널을 차단 해제한 뒤 대기 시그널을 전달할 수 있습니다."}
 ::option[자동으로 `SIGKILL`로 변환됩니다.]{#process-signals-convert-kill explanation="커널은 일반 차단 시그널을 잡을 수 없는 시그널로 승격하지 않습니다."}
@@ -71,8 +68,7 @@ meta_keywords: "linux 시그널, linux 프로세스 시그널, signal 15 linux, 
 
 `SIGKILL`조차 관찰자 입장에서 작업을 즉시 사라지게 하지 못할 수 있습니다. 작업이 중단할 수 없는 커널 작업을 기다릴 수 있고 종료 후에도 부모가 상태를 수거해야 합니다.
 
-:::single-choice{#process-signals-uncatchable-pair}
-잡거나 무시하거나 차단할 수 없는 시그널 쌍은 무엇인가요?
+:::single-choice{#process-signals-uncatchable-pair} 잡거나 무시하거나 차단할 수 없는 시그널 쌍은 무엇인가요?
 
 ::option[`SIGKILL`과 `SIGSTOP`]{#process-signals-kill-stop .correct explanation="커널은 프로세스가 기본 동작을 무시하거나 미루지 못하도록 이 두 시그널을 예약합니다."}
 ::option[`SIGINT`와 `SIGTERM`]{#process-signals-int-term explanation="둘 다 사용자 설치 핸들러를 가질 수 있고 차단할 수 있습니다."}

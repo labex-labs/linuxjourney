@@ -32,8 +32,7 @@ Aquí hay un ejemplo simplificado de cómo se ve esta estructura:
 |-- var
 ```
 
-:::single-choice{#identify-root-subdirectories}
-En el árbol anterior, ¿qué relación tienen `home` y `etc` con `/`?
+:::single-choice{#identify-root-subdirectories} En el árbol anterior, ¿qué relación tienen `home` y `etc` con `/`?
 
 ::option[Son subdirectorios que parten de `/`.]{#root-subdirectories .correct explanation="Ambos directorios aparecen justo debajo de `/` en el árbol. El sistema de archivos se ramifica en subdirectorios desde su raíz."}
 ::option[Son archivos almacenados dentro del directorio `bin`.]{#files-inside-bin explanation="El árbol sitúa `home` y `etc` al mismo nivel que `bin`, no dentro de él. En este ejemplo son directorios, no archivos."}
@@ -52,8 +51,7 @@ Por ejemplo, si tienes una carpeta llamada `pete` dentro de `/home`, y una carpe
 
 Una ruta que comienza con `/` es una ruta absoluta porque empieza en el directorio raíz. Una ruta como `Movies` es relativa porque depende de tu ubicación actual.
 
-:::single-choice{#recognize-absolute-path}
-¿Qué hace que `/home/pete/Movies` sea una ruta absoluta?
+:::single-choice{#recognize-absolute-path} ¿Qué hace que `/home/pete/Movies` sea una ruta absoluta?
 
 ::option[Contiene varios nombres de directorio separados por `/`.]{#contains-directories explanation="Tanto las rutas absolutas como las relativas pueden contener varios nombres. El tipo de ruta lo determina su punto de partida, no la cantidad de nombres."}
 ::option[Termina en un directorio llamado `Movies`.]{#ends-with-movies explanation="El nombre del destino no determina si una ruta es absoluta. Una ruta absoluta se reconoce por su punto de partida en la raíz."}
@@ -64,8 +62,7 @@ Una ruta que comienza con `/` es una ruta absoluta porque empieza en el director
 
 La forma completa de `pwd` es "print working directory" (imprimir directorio de trabajo). Tu directorio de trabajo es el directorio donde tu shell se encuentra actualmente. Los comandos que usan rutas relativas parten desde esta ubicación.
 
-:::single-choice{#expand-pwd-name}
-¿Qué significa `pwd`?
+:::single-choice{#expand-pwd-name} ¿Qué significa `pwd`?
 
 ::option[Print working directory]{#print-working-directory .correct explanation="El nombre describe exactamente lo que hace la orden: imprime el directorio de trabajo actual de la shell."}
 ::option[Present working directory]{#present-working-directory explanation="En una conversación se puede hablar de la ubicación presente, pero esa no es la expansión de `pwd`."}
@@ -85,8 +82,7 @@ La salida es una ruta absoluta. En este ejemplo, el shell está actualmente en e
 
 La salida exacta puede ser diferente en tu sistema porque quizá cambien el nombre de usuario, el directorio personal o la ubicación actual. La orden `pwd` solo muestra información; no modifica el directorio de trabajo. En cambio, `cd` cambia el directorio donde se encuentra la shell.
 
-:::single-choice{#check-location-without-changing-it}
-¿Qué acción comprueba el directorio actual sin cambiarlo?
+:::single-choice{#check-location-without-changing-it} ¿Qué acción comprueba el directorio actual sin cambiarlo?
 
 ::option[Ejecutar `cd` y leer el directorio al que se desplaza.]{#run-cd explanation="La orden `cd` cambia el directorio de trabajo. Por tanto, no cumple el requisito de consultar la ubicación sin modificarla."}
 ::option[Introducir `/home/pete` y utilizar la ruta como una orden.]{#run-path explanation="Una ruta absoluta identifica una ubicación, pero la ruta por sí sola no es la orden que informa del directorio actual."}

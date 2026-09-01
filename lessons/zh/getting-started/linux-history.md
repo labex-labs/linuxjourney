@@ -18,8 +18,7 @@ meta_keywords: "Linux 历史，Linux 发展史，Linux 之旅，UNIX, GNU 项目
 
 ![Unix 时间轴](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-:::single-choice{#understand-unix-portability}
-用 C 语言重写 UNIX 带来了什么重要结果？
+:::single-choice{#understand-unix-portability} 用 C 语言重写 UNIX 带来了什么重要结果？
 
 ::option[它成为了为 GNU 系统创建的自由内核。]{#unix-became-gnu-kernel explanation="UNIX 早于 GNU 项目出现，并不是 GNU 的内核；GNU 后来另行开发了名为 Hurd 的内核。"}
 ::option[它更容易移植到不同的硬件系统。]{#portable-across-hardware .correct explanation="用 C 语言编写让 UNIX 具有更好的可移植性，这也帮助它走出最初的硬件平台并得到推广。"}
@@ -28,8 +27,7 @@ meta_keywords: "Linux 历史，Linux 发展史，Linux 之旅，UNIX, GNU 项目
 
 十多年后，理查德·斯托曼（Richard Stallman）发起了 GNU 项目。GNU 是“GNU's Not UNIX”的递归缩写，目标是创建一个完全自由且开源的类 UNIX 操作系统。该项目开发了许多关键组件，并制定了 GNU 通用公共许可证（GPL）；但当 Linux 出现时，GNU 自己的内核 GNU Hurd 还无法供人们普遍使用。
 
-:::single-choice{#identify-gnu-missing-component}
-Linux 出现时，GNU 的哪个主要组件还没有准备就绪？
+:::single-choice{#identify-gnu-missing-component} Linux 出现时，GNU 的哪个主要组件还没有准备就绪？
 
 ::option[可用于生产环境的内核]{#gnu-kernel .correct explanation="GNU 已经开发了许多系统组件，但自己的内核 GNU Hurd 当时还无法供人们普遍使用。"}
 ::option[自由软件许可证]{#gnu-license explanation="GNU 项目当时已经制定了 GNU 通用公共许可证；缺少的是可用的内核。"}
@@ -40,8 +38,7 @@ Linux 出现时，GNU 的哪个主要组件还没有准备就绪？
 
 内核是操作系统的核心组件。它像一座桥梁，让硬件能够与软件通信。内核负责管理 CPU、内存和外围设备等系统资源。除了人们使用的工具和应用程序，一套完整的操作系统还需要这个管理资源的核心。
 
-:::single-choice{#recognize-kernel-role}
-以下哪项职责属于操作系统内核？
+:::single-choice{#recognize-kernel-role} 以下哪项职责属于操作系统内核？
 
 ::option[编写用户在 shell 中输入的每条命令]{#write-shell-commands explanation="shell 命令由用户或脚本提供；程序执行这些命令时，内核负责提供底层资源。"}
 ::option[为每个已安装的应用程序选择许可证]{#choose-software-licenses explanation="应用程序许可证由软件作者和发行者选择，这不是内核管理系统资源的职责。"}
@@ -56,8 +53,7 @@ Linux 出现时，GNU 的哪个主要组件还没有准备就绪？
 
 _2018 年的林纳斯·托瓦兹（来源：[维基百科](https://en.wikipedia.org/wiki/Linus_Torvalds)）_
 
-:::single-choice{#identify-linux-kernel-creator}
-1991 年是谁开始开发 Linux 内核？
+:::single-choice{#identify-linux-kernel-creator} 1991 年是谁开始开发 Linux 内核？
 
 ::option[理查德·斯托曼]{#richard-stallman explanation="理查德·斯托曼发起了 GNU 项目；GNU 提供了许多系统组件，但 Linux 内核由林纳斯·托瓦兹开始开发。"}
 ::option[丹尼斯·里奇]{#dennis-ritchie explanation="丹尼斯·里奇参与开发了 UNIX 和 C 语言；Linux 内核项目后来由林纳斯·托瓦兹发起。"}

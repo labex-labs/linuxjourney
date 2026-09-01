@@ -25,8 +25,7 @@ Vim には、マウスがなくても端末で使えるキーボードの移動�
 
 一般に矢印キーでも同様に移動できますが、`h`、`j`、`k`、`l` なら、ほかのコマンドの近くに手を置いたまま操作できます。表示上で折り返された行では、通常 `j` と `k` はファイルの行を単位に移動し、`gj` と `gk` は画面に表示された行を単位に移動します。
 
-:::single-choice{#vim-navigation-down}
-ノーマルモードでカーソルを下へ 1 行移動するキーはどれですか？
+:::single-choice{#vim-navigation-down} ノーマルモードでカーソルを下へ 1 行移動するキーはどれですか？
 
 ::option[`k`]{#vim-nav-k-up explanation="`k` は上へ 1 行移動します。"}
 ::option[`l`]{#vim-nav-l-right explanation="`l` は右へ 1 文字移動します。"}
@@ -44,8 +43,7 @@ Vim には、マウスがなくても端末で使えるキーボードの移動�
 
 `5j` は下へ 5 行移動し、`3l` は可能な範囲で右へ 3 文字分移動します。回数は単語移動や編集コマンドとも組み合わせられます。
 
-:::single-choice{#vim-navigation-count}
-ノーマルモードで `4k` は何をしますか？
+:::single-choice{#vim-navigation-count} ノーマルモードで `4k` は何をしますか？
 
 ::option[可能な範囲で下へ 4 行移動します。]{#vim-nav-four-down explanation="下への移動には `j` を使い、`k` は反対方向へ移動します。"}
 ::option[可能な範囲で上へ 4 行移動します。]{#vim-nav-four-up .correct explanation="回数の `4` により、上へ移動する `k` を 4 回繰り返します。"}
@@ -62,8 +60,7 @@ Vim には、マウスがなくても端末で使えるキーボードの移動�
 
 大文字の `W`、`B`、`E` は、句読記号を異なる形で扱い、空白で区切られた WORD を単位にします。`3w` のように回数を前に付けると、複数の単語を移動できます。
 
-:::single-choice{#vim-navigation-next-words}
-前方にある 3 番目の単語先頭位置へ移動するノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-navigation-next-words} 前方にある 3 番目の単語先頭位置へ移動するノーマルモードのコマンドはどれですか？
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="回数によって、次の単語へ移動するコマンドを 3 回適用します。"}
 ::option[`w3`]{#vim-nav-word-three explanation="このコマンド形式では、回数は移動コマンドの前に置きます。後ろの `3` では目的の移動を表せません。"}
@@ -80,8 +77,7 @@ Vim には、マウスがなくても端末で使えるキーボードの移動�
 
 インデントされた行では、`0` と `^` の違いが重要です。
 
-:::single-choice{#vim-navigation-first-nonblank}
-インデントされた行の最初の空白以外の文字へ移動するコマンドはどれですか？
+:::single-choice{#vim-navigation-first-nonblank} インデントされた行の最初の空白以外の文字へ移動するコマンドはどれですか？
 
 ::option[`0`]{#vim-nav-column-zero explanation="0 は最初の列へ移動しますが、そこにはインデント用の空白がある場合があります。"}
 ::option[`$`]{#vim-nav-line-end explanation="ドル記号は行末を対象にします。"}
@@ -100,8 +96,7 @@ Vim には、マウスがなくても端末で使えるキーボードの移動�
 
 `:42` と入力して Enter を押す方法でも、42 行目へ移動できます。
 
-:::single-choice{#vim-navigation-file-end}
-バッファーの最後の行へ移動するノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-navigation-file-end} バッファーの最後の行へ移動するノーマルモードのコマンドはどれですか？
 
 ::option[`gg`]{#vim-nav-first-line explanation="小文字の `gg` は最後ではなく最初の行へ移動します。"}
 ::option[`$`]{#vim-nav-current-line-end explanation="ドル記号はファイル末尾ではなく、現在の行末へ移動します。"}

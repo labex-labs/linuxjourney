@@ -18,8 +18,7 @@ meta_keywords: "소스 코드 컴파일 방법, 소스 코드 빌드, 소스 코
 
 빌드 지침은 실행 가능한 코드입니다. `configure` 스크립트, 빌드 정의, 테스트 또는 컴파일러 플러그인은 사용자 권한으로 임의 명령을 실행할 수 있습니다. 신뢰할 수 없는 소스는 빌드하지 말고, 빌드 자체를 `sudo`로 실행하지 마십시오.
 
-:::single-choice{#compile-source-code-build-privilege}
-일반적으로 `sudo` 없이 컴파일 단계를 실행해야 하는 이유는 무엇입니까?
+:::single-choice{#compile-source-code-build-privilege} 일반적으로 `sudo` 없이 컴파일 단계를 실행해야 하는 이유는 무엇입니까?
 
 ::option[컴파일러는 root 사용자의 머신 코드를 만들 수 없기 때문입니다.]{#compile-source-code-root-compiler explanation="컴파일러는 root로도 실행되지만 그렇게 하면 불필요하게 위험이 커집니다."}
 ::option[`sudo`가 생성된 모든 오브젝트 파일을 자동으로 삭제하기 때문입니다.]{#compile-source-code-sudo-delete explanation="권한 상승이 본질적으로 빌드 결과물을 제거하지는 않습니다."}
@@ -36,8 +35,7 @@ $ sudo apt install build-essential
 
 이 명령은 기본적인 컴파일러와 빌드 도구를 설치하지만 모든 프로젝트에 필요한 모든 의존성을 제공하지는 않습니다. 프로젝트에는 언어 런타임, 생성기, 빌드 시스템 도구, 개발 헤더 또는 정확한 라이브러리 버전이 추가로 필요할 수 있습니다. 신뢰할 수 있는 저장소에서 요구 사항을 설치하고 빌드 의존성과 런타임 의존성을 구분하십시오.
 
-:::single-choice{#compile-source-code-build-essential-scope}
-데비안 계열 시스템에서 `build-essential`이 제공하는 것은 무엇입니까?
+:::single-choice{#compile-source-code-build-essential-scope} 데비안 계열 시스템에서 `build-essential`이 제공하는 것은 무엇입니까?
 
 ::option[일반적인 컴파일 및 빌드 도구의 기본 집합입니다.]{#compile-source-code-baseline-tools .correct explanation="기초 도구를 제공하지만 프로젝트별 라이브러리나 생성기를 모두 예측할 수는 없습니다."}
 ::option[모든 소스 프로젝트의 모든 의존성입니다.]{#compile-source-code-all-dependencies explanation="개별 프로젝트에는 추가 요구 사항과 특정 버전 요구 사항이 선언됩니다."}
@@ -57,8 +55,7 @@ $ make
 
 이 순서가 모든 프로젝트에 적용되는 것은 아닙니다. 프로젝트는 CMake, Meson, Ninja, 언어별 도구 또는 사용자 정의 스크립트를 사용할 수 있습니다. 익숙하다는 이유만으로 `./configure`를 실행하지 말고 정확한 릴리스의 문서를 따르십시오. 빌드 시스템이 지원한다면 트리 외부 빌드 디렉터리를 사용해 생성 파일을 분리할 수 있습니다.
 
-:::single-choice{#compile-source-code-make-role}
-전통적인 작업 흐름에서 `make`는 무엇을 합니까?
+:::single-choice{#compile-source-code-make-role} 전통적인 작업 흐름에서 `make`는 무엇을 합니까?
 
 ::option[모든 결과물을 배포판 패키지 데이터베이스에 등록합니다.]{#compile-source-code-make-package-db explanation="컴파일만으로는 네이티브 패키지 소유권 레코드가 만들어지지 않습니다."}
 ::option[인증된 소스 릴리스를 자동으로 다운로드합니다.]{#compile-source-code-make-download explanation="프로젝트가 명시적으로 다르게 정의하지 않는 한 로컬 빌드 전에 소스를 구하고 검증합니다."}
@@ -75,8 +72,7 @@ $ make check
 
 실제 대상은 `test`, `check` 또는 별도의 명령일 수 있습니다. 테스트하지 않은 결과물을 설치하지 말고 실패 원인을 조사하십시오. 테스트에는 네트워크 접근, 서비스, 특수 하드웨어 또는 격리가 필요할 수 있습니다. 다른 빌드 코드와 마찬가지로 실행 전에 내용을 검토하십시오.
 
-:::single-choice{#compile-source-code-test-failure}
-문서에 명시된 테스트 모음이 실패하면 어떻게 해야 합니까?
+:::single-choice{#compile-source-code-test-failure} 문서에 명시된 테스트 모음이 실패하면 어떻게 해야 합니까?
 
 ::option[같은 설치를 즉시 root로 실행합니다.]{#compile-source-code-install-after-failure explanation="권한을 높여도 알 수 없는 정확성 문제가 해결되지 않으며 결과만 더 심각해집니다."}
 ::option[충돌을 피하려고 패키지 관리자 데이터베이스를 삭제합니다.]{#compile-source-code-delete-database explanation="네이티브 데이터베이스는 소스 테스트 실패 해결과 관련이 없으며 삭제해서는 안 됩니다."}
@@ -96,8 +92,7 @@ $ make check
 
 `checkinstall`은 일부 `make install` 작업 흐름에서 단순 패키지를 만들 수 있지만 범용 도구가 아니며, 검토된 배포판 수준의 패키지 제작법을 대신하지도 않습니다. 이를 “항상” 적용하는 규칙으로 취급하지 마십시오. 권한 있는 복사를 수행하기 전에 스테이징된 파일 목록, 소유권, 권한, 경로 및 제거 또는 업그레이드 계획을 검사하십시오.
 
-:::single-choice{#compile-source-code-destdir-purpose}
-지원되는 `DESTDIR` 스테이징 설치의 목적은 무엇입니까?
+:::single-choice{#compile-source-code-destdir-purpose} 지원되는 `DESTDIR` 스테이징 설치의 목적은 무엇입니까?
 
 ::option[설치할 파일을 검사 또는 패키징을 위한 임시 루트 아래에 배치합니다.]{#compile-source-code-stage-root .correct explanation="스테이징은 파일 수집을 실제 시스템 접두사에 즉시 기록하는 작업과 분리합니다."}
 ::option[컴파일러를 원격 패키지 저장소로 바꿉니다.]{#compile-source-code-destdir-repository explanation="이 변수는 설치 경로를 재지정하며 저장소 메타데이터를 게시하지 않습니다."}

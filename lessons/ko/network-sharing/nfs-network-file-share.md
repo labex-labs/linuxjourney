@@ -18,8 +18,7 @@ meta_keywords: "NFS, NFS 클라이언트, 자동 마운트, 네트워크 파일 
 
 `showmount -e SERVER`는 이전 마운트 프로토콜을 통해 제공되는 내보내기를 나열할 수 있지만 모든 NFSv4 전용 서버에 대해 권위 있는 결과를 제공하지는 않습니다. 목록 조회 실패가 승인된 NFSv4 내보내기가 없음을 입증하지는 않습니다.
 
-:::single-choice{#nfs-showmount-limit}
-`showmount -e`가 NFSv4 서버에서 불완전할 수 있는 이유는 무엇입니까?
+:::single-choice{#nfs-showmount-limit} `showmount -e`가 NFSv4 서버에서 불완전할 수 있는 이유는 무엇입니까?
 
 ::option[공개되지 않을 수 있는 이전 내보내기 목록 프로토콜을 조회하기 때문입니다.]{#nfs-showmount-protocol .correct explanation="NFSv4는 별도의 목록 서비스를 제공하지 않고도 작동할 수 있습니다."}
 ::option[로컬 CPU 온도만 표시하기 때문입니다.]{#nfs-showmount-temperature explanation="이 명령은 NFS 서버의 내보내기 정보와 관련됩니다."}
@@ -41,8 +40,7 @@ $ sudo mount -t nfs server.example.net:/srv/team /mnt/team
 $ findmnt --target /mnt/team
 ```
 
-:::single-choice{#nfs-mount-operands}
-mount 명령에서 `server.example.net:/srv/team`은 무엇입니까?
+:::single-choice{#nfs-mount-operands} mount 명령에서 `server.example.net:/srv/team`은 무엇입니까?
 
 ::option[원격 내보내기를 가리는 로컬 디렉터리입니다.]{#nfs-local-mountpoint explanation="예제의 로컬 마운트 지점은 /mnt/team입니다."}
 ::option[설치할 클라이언트 패키지 이름입니다.]{#nfs-package-name explanation="패키지 이름은 배포판에 따라 다르며 마운트 소스 피연산자가 아닙니다."}
@@ -55,8 +53,7 @@ NFS 접근에는 서버 내보내기 규칙, 프로토콜 보안, 숫자 신원 
 
 서버는 일반적으로 root 스쿼싱을 통해 원격 root를 권한 없는 신원에 매핑합니다. 권한 오류를 해결하려고 이 보호를 무작정 비활성화하지 말고 ID, 디렉터리 소유권, 내보내기 정책 및 의도한 보안 모델을 조사하십시오.
 
-:::single-choice{#nfs-name-versus-id}
-표시되는 이름이 같은 두 사용자가 서로 다른 NFS 권한을 받을 수 있는 이유는 무엇입니까?
+:::single-choice{#nfs-name-versus-id} 표시되는 이름이 같은 두 사용자가 서로 다른 NFS 권한을 받을 수 있는 이유는 무엇입니까?
 
 ::option[NFS 권한이 숫자 신원 매핑에 따라 달라질 수 있기 때문입니다.]{#nfs-numeric-mapping .correct explanation="이름만 같다고 클라이언트와 서버가 같은 UID와 그룹으로 해석한다는 보장은 없습니다."}
 ::option[NFS가 모든 파일시스템 권한을 무시하기 때문입니다.]{#nfs-ignores-permissions explanation="파일시스템 및 내보내기 권한도 여전히 권한 부여의 일부입니다."}
@@ -73,8 +70,7 @@ server.example.net:/srv/team /mnt/team nfs4 rw,_netdev,nofail,x-systemd.automoun
 
 fstab을 편집하기 전에 복구 접근 경로를 보존하고 비파괴적 파서나 통제된 마운트 테스트로 검증합니다. 자동 마운트는 가용성 동작을 개선하지만 권한 부여, DNS 또는 서버 장애를 해결하지는 않습니다.
 
-:::single-choice{#nfs-automount-benefit}
-NFS 공유를 주문형으로 자동 마운트할 때의 주요 이점은 무엇입니까?
+:::single-choice{#nfs-automount-benefit} NFS 공유를 주문형으로 자동 마운트할 때의 주요 이점은 무엇입니까?
 
 ::option[모든 클라이언트에 내보내기의 root 접근 권한을 부여합니다.]{#nfs-automount-root explanation="마운트 시점은 서버 권한 부여를 우회하지 않습니다."}
 ::option[초기 부팅 중 서버가 반드시 사용 가능하지 않아도 됩니다.]{#nfs-automount-boot .correct explanation="초기 시작을 막는 대신 접근할 때 연결이 시작됩니다."}
@@ -92,8 +88,7 @@ $ findmnt --target /mnt/team
 
 강제 또는 지연 언마운트는 활성 참조를 숨기고 애플리케이션 오류를 일으킬 수 있습니다. 원인을 진단한 장애에 명시적인 복구 계획이 있을 때만 사용하십시오.
 
-:::single-choice{#nfs-safe-unmount}
-일반적인 NFS 언마운트 전에 무엇을 해야 합니까?
+:::single-choice{#nfs-safe-unmount} 일반적인 NFS 언마운트 전에 무엇을 해야 합니까?
 
 ::option[공유를 사용하는 프로세스를 조율하고 중요한 쓰기를 완료합니다.]{#nfs-coordinate-writers .correct explanation="사용 중인 파일시스템을 애플리케이션에서 제거하면 I/O가 중단되거나 작업이 미완료 상태로 남을 수 있습니다."}
 ::option[서버의 내보내기 디렉터리를 삭제합니다.]{#nfs-delete-export explanation="클라이언트 언마운트에 서버 데이터 삭제는 필요하지 않습니다."}

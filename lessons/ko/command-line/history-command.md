@@ -25,8 +25,7 @@ $ history
 
 각 줄에는 히스토리 번호와 명령어가 표시됩니다.
 
-:::single-choice{#show-command-history}
-현재의 번호가 매겨진 Bash 히스토리 목록을 표시하는 명령어는 무엇인가요?
+:::single-choice{#show-command-history} 현재의 번호가 매겨진 Bash 히스토리 목록을 표시하는 명령어는 무엇인가요?
 
 ::option[`clear`]{#clear-display explanation="`clear`는 보이는 터미널 영역을 새로 고치며 이전 명령어를 표시하지 않습니다."}
 ::option[`history -w`]{#write-history explanation="`history -w`는 현재 목록을 히스토리 파일에 씁니다. 목록 표시가 아니라 저장이 목적입니다."}
@@ -44,8 +43,7 @@ $ history
 
 `!`로 시작하는 히스토리 확장은 Enter를 누르는 즉시 명령어를 실행할 수 있습니다. 확신이 없다면, 특히 관리자 권한을 추가하거나 중요한 파일을 다루기 전에는 일치하는 명령어를 먼저 확인하세요.
 
-:::single-choice{#repeat-most-recent-command}
-가장 최근에 실행한 명령어를 반복하는 Bash 히스토리 확장은 무엇인가요?
+:::single-choice{#repeat-most-recent-command} 가장 최근에 실행한 명령어를 반복하는 Bash 히스토리 확장은 무엇인가요?
 
 ::option[`!102`]{#event-number explanation="히스토리 번호 102인 명령어를 선택하므로 반드시 가장 최근 명령어인 것은 아닙니다."}
 ::option[`!cat`]{#event-prefix explanation="`cat`으로 시작하는 가장 최근 명령어를 선택할 뿐, 종류와 관계없는 가장 최근 명령어를 뜻하지 않습니다."}
@@ -58,8 +56,7 @@ $ history
 
 찾은 명령어를 실행 전에 수정하고 싶다면 Enter 대신 오른쪽 화살표 키나 왼쪽 화살표 키를 누르세요.
 
-:::single-choice{#search-before-executing}
-이전에 실행한 Bash 명령어 일부가 기억나 대화형으로 찾으려면 먼저 무엇을 눌러야 하나요?
+:::single-choice{#search-before-executing} 이전에 실행한 Bash 명령어 일부가 기억나 대화형으로 찾으려면 먼저 무엇을 눌러야 하나요?
 
 ::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D`는 여러 터미널 환경에서 입력 끝을 알리고 대기 중인 쉘을 종료할 수도 있지만 히스토리 검색을 시작하지 않습니다."}
 ::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C`는 보통 현재 작업을 중단하거나 취소하며 명령어 히스토리를 검색하지 않습니다."}
@@ -83,8 +80,7 @@ $ history -w
 
 메모리 목록을 지워도 이전 명령어가 모든 파일, 백업, 다른 활성 쉘에서 사라진다고 보장되지는 않습니다. 히스토리 동작은 Bash 설정과 세션이 파일을 읽고 쓰는 시점에도 좌우됩니다.
 
-:::single-choice{#save-current-history-list}
-현재 Bash 히스토리 목록을 설정된 히스토리 파일에 쓰는 명령어는 무엇인가요?
+:::single-choice{#save-current-history-list} 현재 Bash 히스토리 목록을 설정된 히스토리 파일에 쓰는 명령어는 무엇인가요?
 
 ::option[`history -c`]{#clear-current-list explanation="`-c`는 메모리의 목록을 지울 뿐 현재 목록을 저장하도록 요청하지 않습니다."}
 ::option[`history -d 101`]{#delete-one-entry explanation="`-d`는 선택한 히스토리 항목 하나를 제거하며 전체 목록을 저장하는 작업이 아닙니다."}
@@ -105,8 +101,7 @@ $ clear
 
 명령줄은 히스토리에 저장될 수 있으므로 더 안전한 입력 방법이 있다면 비밀번호, 토큰 또는 비밀 값을 명령어에 직접 넣지 마세요.
 
-:::single-choice{#distinguish-clear-from-history-clear}
-메모리의 명령어 히스토리를 삭제하지 않고 보이는 터미널만 새로 고치려면 어떤 명령어를 실행해야 하나요?
+:::single-choice{#distinguish-clear-from-history-clear} 메모리의 명령어 히스토리를 삭제하지 않고 보이는 터미널만 새로 고치려면 어떤 명령어를 실행해야 하나요?
 
 ::option[`clear`]{#clear-visible-area .correct explanation="`clear`는 Bash의 메모리 내 히스토리 목록을 유지하면서 보이는 터미널 영역만 새로 고칩니다."}
 ::option[`history -c`]{#clear-memory explanation="현재 메모리의 히스토리 항목을 제거하므로 화면만 새로 고치는 작업이 아닙니다."}

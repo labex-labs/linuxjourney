@@ -24,8 +24,7 @@ $ ls -l /dev
 
 긴 목록의 첫 번째 문자는 파일 시스템 객체 유형을 나타냅니다. 문자 장치 노드와 블록 장치 노드는 각각 `c`와 `b`로 표시됩니다. 이후 수업에서 이러한 유형과 주 번호 및 부 번호를 살펴봅니다.
 
-:::single-choice{#dev-directory-device-node-purpose}
-프로그램이 `/dev` 아래의 장치 노드를 열면 어떻게 됩니까?
+:::single-choice{#dev-directory-device-node-purpose} 프로그램이 `/dev` 아래의 장치 노드를 열면 어떻게 됩니까?
 
 ::option[항상 하드웨어 복사본을 담은 일반 디스크 파일을 읽습니다.]{#dev-directory-ordinary-copy explanation="장치 노드는 특수 객체이며 장치 데이터의 복사본을 일반 파일처럼 저장하지 않습니다."}
 ::option[커널 드라이버가 구현한 인터페이스에 접근합니다.]{#dev-directory-kernel-interface .correct explanation="장치 노드 작업은 노드의 장치 식별자를 통해 커널 드라이버 동작으로 전달됩니다."}
@@ -42,8 +41,7 @@ $ command > /dev/null
 
 그 밖의 익숙한 예로는 0 바이트를 생성하는 `/dev/zero`와 커널 난수 하위 시스템을 통해 난수 바이트를 제공하는 `/dev/urandom`이 있습니다. 각 장치에는 고유한 의미가 있으므로 파일 이름만 보고 동작을 추정하지 마십시오.
 
-:::single-choice{#dev-directory-null-behavior}
-`/dev/null`은 기록된 데이터를 어떻게 처리합니까?
+:::single-choice{#dev-directory-null-behavior} `/dev/null`은 기록된 데이터를 어떻게 처리합니까?
 
 ::option[다음 재부팅 때까지 데이터를 저장합니다.]{#dev-directory-null-temporary-storage explanation="null 장치는 데이터 싱크이며 임시 저장소처럼 동작하지 않습니다."}
 ::option[로그인한 모든 터미널에 데이터를 전송합니다.]{#dev-directory-null-broadcast explanation="터미널 브로드캐스트는 null 의사 장치와 관련이 없습니다."}
@@ -56,8 +54,7 @@ $ command > /dev/null
 
 `/dev/disk/by-id/` 또는 `/dev/disk/by-uuid/` 아래의 항목 같은 안정적인 링크는 하드웨어 구성이나 검색 순서가 바뀌면 달라질 수 있는 `/dev/sda` 같은 감지 순서 기반 이름보다 설정에서 더 안전할 수 있습니다.
 
-:::single-choice{#dev-directory-persistent-link}
-관리자가 설정에서 `/dev/sda`보다 `/dev/disk/by-id/...`를 선호할 수 있는 이유는 무엇입니까?
+:::single-choice{#dev-directory-persistent-link} 관리자가 설정에서 `/dev/sda`보다 `/dev/disk/by-id/...`를 선호할 수 있는 이유는 무엇입니까?
 
 ::option[식별자 기반 링크가 장치 검색 순서에 덜 의존하기 때문입니다.]{#dev-directory-stable-identifier .correct explanation="영구 링크는 열거 순서에 따라 배정된 문자가 아니라 장치 속성에서 파생됩니다."}
 ::option[링크가 장치의 모든 블록을 자동으로 백업하기 때문입니다.]{#dev-directory-link-backup explanation="심볼릭 링크는 같은 장치에 이름을 붙일 뿐 백업 데이터를 만들지 않습니다."}
@@ -70,8 +67,7 @@ $ command > /dev/null
 
 먼저 읽기 전용 검색 도구를 사용하고, 정확한 노드와 장치 식별자를 확인한 뒤, 장치별 문서를 따르십시오. 중요한 시스템에서 익숙하지 않은 `/dev` 항목으로 데이터를 리디렉션하는 실험은 절대 하지 마십시오.
 
-:::single-choice{#dev-directory-direct-write-risk}
-익숙하지 않은 장치 노드에 임의의 데이터를 쓰지 말아야 하는 이유는 무엇입니까?
+:::single-choice{#dev-directory-direct-write-risk} 익숙하지 않은 장치 노드에 임의의 데이터를 쓰지 말아야 하는 이유는 무엇입니까?
 
 ::option[모든 장치 노드는 무해한 텍스트 파일임이 보장되기 때문입니다.]{#dev-directory-harmless-text explanation="장치 노드는 일반 텍스트 파일과 본질적으로 다릅니다."}
 ::option[작업이 하드웨어, 저장 장치 또는 다른 커널 인터페이스에 직접 영향을 줄 수 있기 때문입니다.]{#dev-directory-write-impact .correct explanation="장치 쓰기는 드라이버가 정의한 작업을 호출하므로 파괴적이거나 방해가 되는 결과를 일으킬 수 있습니다."}

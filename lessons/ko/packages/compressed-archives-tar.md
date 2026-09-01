@@ -28,8 +28,7 @@ $ gunzip report.txt.gz
 
 지원되는 환경에서 입력 파일을 유지하려면 `gzip -k report.txt`를 사용하고, 명시적으로 제어해야 한다면 표준 스트림을 사용하십시오. 파일 이름 확장자는 관례일 뿐 실제 형식의 증거는 아닙니다. `file` 같은 도구로 내용을 검사할 수 있습니다.
 
-:::single-choice{#tar-gzip-gzip-role}
-이 수업에서 `gzip`의 주된 역할은 무엇입니까?
+:::single-choice{#tar-gzip-gzip-role} 이 수업에서 `gzip`의 주된 역할은 무엇입니까?
 
 ::option[파일 메타데이터와 함께 디렉터리 트리를 하나의 아카이브로 결합합니다.]{#tar-gzip-directory-archive explanation="gzip 압축을 적용하기 전에 tar가 이 아카이브 역할을 수행합니다."}
 ::option[하나의 입력 스트림을 압축합니다.]{#tar-gzip-compress-stream .correct explanation="gzip은 하나의 바이트 스트림을 변환하며 디렉터리 계층 구조 자체를 인코딩하지는 않습니다."}
@@ -50,8 +49,7 @@ $ tar -cvf project.tar file1 file2 directory1
 
 경로는 아카이브 멤버 이름으로 저장됩니다. 의도한 작업 디렉터리에서 아카이브를 만들고 비밀 정보, 캐시, 소켓 또는 광범위한 절대 경로가 뜻하지 않게 포함되지 않도록 주의하십시오.
 
-:::single-choice{#tar-gzip-create-option}
-새 아카이브를 만드는 `tar` 옵션은 무엇입니까?
+:::single-choice{#tar-gzip-create-option} 새 아카이브를 만드는 `tar` 옵션은 무엇입니까?
 
 ::option[`-x`]{#tar-gzip-option-extract explanation="`-x` 작업은 아카이브 멤버를 추출합니다."}
 ::option[`-c`]{#tar-gzip-option-create .correct explanation="생성 작업은 지정한 입력으로 새 아카이브를 기록합니다."}
@@ -68,8 +66,7 @@ $ tar -czvf project.tar.gz file1 file2 directory1
 
 결과는 gzip으로 압축된 하나의 tar 스트림입니다. 압축은 아카이브를 암호화하지 않으며, 파일을 읽고 압축을 풀 수 있는 사람에게 내용을 숨기지도 않습니다. 기밀성이 필요하다면 적절한 인증 암호화 작업 흐름을 사용하고 키를 별도로 관리하십시오.
 
-:::single-choice{#tar-gzip-z-option}
-위 `tar` 명령에서 `-z`는 무엇을 요청합니까?
+:::single-choice{#tar-gzip-z-option} 위 `tar` 명령에서 `-z`는 무엇을 요청합니까?
 
 ::option[제로 지식 키를 사용해 아카이브를 암호화합니다.]{#tar-gzip-z-encrypt explanation="tar와 gzip 어느 쪽도 이 옵션으로 암호화를 제공하지 않습니다."}
 ::option[길이가 0인 모든 멤버를 버립니다.]{#tar-gzip-z-zero explanation="이 옵션은 gzip을 선택하며 크기에 따라 아카이브 멤버를 걸러내지 않습니다."}
@@ -95,8 +92,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 검토하지 않은 아카이브를 root로 추출하지 마십시오. 생성된 내용을 확인한 다음 선택한 파일만 최종 위치로 옮기십시오.
 
-:::single-choice{#tar-gzip-list-before-extract}
-아카이브 멤버를 추출하지 않고 나열하는 작업은 무엇입니까?
+:::single-choice{#tar-gzip-list-before-extract} 아카이브 멤버를 추출하지 않고 나열하는 작업은 무엇입니까?
 
 ::option[`tar -czf download.tar.gz .`]{#tar-gzip-create-download explanation="이 명령은 현재 디렉터리에서 아카이브를 만들거나 기존 아카이브를 교체합니다."}
 ::option[`tar -xzf download.tar.gz`]{#tar-gzip-extract-download explanation="`-x` 작업은 대상 디렉터리에 멤버를 기록합니다."}
@@ -107,8 +103,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 tar 구현은 bzip2 및 xz 같은 압축 도구와 함께 작동할 수 있으며, GNU tar에서는 일반적으로 각각 `-j`와 `-J`로 선택합니다. 형식 지원 및 자동 감지 방식은 서로 다르므로 `tar --help` 또는 로컬 설명서를 확인하십시오. ZIP은 별도의 아카이브 형식이며 `zip`과 `unzip` 같은 도구로 다룹니다.
 
-:::single-choice{#tar-gzip-archive-confidentiality}
-gzip 압축을 적용하면 tar 아카이브의 기밀성이 보장됩니까?
+:::single-choice{#tar-gzip-archive-confidentiality} gzip 압축을 적용하면 tar 아카이브의 기밀성이 보장됩니까?
 
 ::option[아닙니다. 파일을 읽을 수 있는 사람은 일반적으로 압축도 풀 수 있습니다.]{#tar-gzip-not-encryption .correct explanation="압축은 표현 방식과 크기를 바꾸지만 접근 제어나 암호학적 기밀성을 제공하지 않습니다."}
 ::option[그렇습니다. gzip이 파일 이름에서 암호화 키를 파생합니다.]{#tar-gzip-filename-key explanation="gzip에는 그러한 암호화 메커니즘이 없습니다."}

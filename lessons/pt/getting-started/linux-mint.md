@@ -16,8 +16,7 @@ O Linux Mint é uma distribuição Linux focada em desktop, conhecida por ser co
 
 Sua reputação vem de decisões práticas, e não de complexidade técnica. O Linux Mint visa oferecer uma experiência de desktop completa com padrões sensatos, o que é uma das razões pelas quais é frequentemente recomendado para pessoas que estão migrando do Windows.
 
-:::single-choice{#match-linux-mint-goal}
-Qual objetivo combina melhor com o Linux Mint?
+:::single-choice{#match-linux-mint-goal} Qual objetivo combina melhor com o Linux Mint?
 
 ::option[Usar um desktop familiar com padrões práticos]{#familiar-desktop .correct explanation="O Linux Mint se concentra em uma experiência acessível, com navegação familiar e padrões úteis. Isso corresponde diretamente ao objetivo."}
 ::option[Executar um servidor mínimo sem interface de desktop]{#minimal-server explanation="O Linux Mint foi projetado principalmente para desktops e laptops. Uma distribuição voltada a servidores seria mais adequada a um sistema mínimo sem interface gráfica."}
@@ -36,8 +35,7 @@ As principais edições do Linux Mint usam o Ubuntu LTS como base de pacotes, o 
 
 Se você quiser entender melhor essa relação familiar, veja [Ubuntu](https://labex.io/lesson/ubuntu) e [Debian](https://labex.io/lesson/debian).
 
-:::single-choice{#identify-main-mint-base}
-Qual distribuição fornece a base de pacotes das principais edições do Linux Mint?
+:::single-choice{#identify-main-mint-base} Qual distribuição fornece a base de pacotes das principais edições do Linux Mint?
 
 ::option[Ubuntu LTS]{#ubuntu-lts-base .correct explanation="As principais edições do Linux Mint usam uma base Ubuntu LTS. A LMDE é a edição separada baseada diretamente no Debian."}
 ::option[Fedora Linux]{#mint-fedora-base explanation="O Fedora pertence à família de pacotes RPM e não fornece a base do Mint. As principais edições usam Ubuntu LTS."}
@@ -50,8 +48,7 @@ Como o Linux Mint é baseado no Ubuntu, ele usa o formato de pacote `.deb` e o A
 
 Isso dá ao Linux Mint um fluxo de trabalho de software familiar e bem documentado, o que é uma das razões pelas quais ele funciona bem para iniciantes.
 
-:::single-choice{#identify-mint-package-tool}
-Qual ferramenta gerencia pacotes pela linha de comando no Linux Mint?
+:::single-choice{#identify-mint-package-tool} Qual ferramenta gerencia pacotes pela linha de comando no Linux Mint?
 
 ::option[DNF]{#mint-dnf-tool explanation="O DNF é usado pelo Fedora e por sistemas da família RHEL. O Linux Mint usa ferramentas da família Debian."}
 ::option[APT]{#mint-apt-tool .correct explanation="O Linux Mint usa o APT para gerenciar pacotes pela linha de comando. Seu software é distribuído no formato `.deb` da família Debian."}
@@ -64,8 +61,7 @@ O Linux Mint é projetado principalmente para sistemas desktop e laptop. Seu des
 
 Esse foco no desktop é uma parte importante da identidade do Mint. Ao contrário de algumas distribuições que tentam cobrir todos os casos de uso igualmente, o Mint é melhor compreendido como uma distribuição Linux prática para desktop.
 
-:::single-choice{#recognize-cinnamon-layout}
-Qual recurso descreve a experiência do desktop Cinnamon destacada aqui?
+:::single-choice{#recognize-cinnamon-layout} Qual recurso descreve a experiência do desktop Cinnamon destacada aqui?
 
 ::option[Uma interface apenas de comandos, sem desktop gráfico]{#command-only-layout explanation="O Linux Mint pode usar o terminal, mas o Cinnamon é um ambiente gráfico. Uma interface apenas de comandos não o descreve."}
 ::option[Um layout clássico com painel e menu de aplicativos]{#classic-cinnamon-layout .correct explanation="O Cinnamon é conhecido pelo layout familiar com painel e menu. Isso contribui para a experiência acessível do Mint."}

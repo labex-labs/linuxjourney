@@ -18,8 +18,7 @@ The real user ID identifies the account that started the process or its ancestor
 
 For an ordinary command started by user Bob, the real user ID normally equals Bob's UID. Creating another process does not create a new account or change this identity by itself.
 
-:::single-choice{#process-permissions-real-uid}
-What does a process's real user ID normally identify?
+:::single-choice{#process-permissions-real-uid} What does a process's real user ID normally identify?
 
 ::option[The owner of the most recently opened file.]{#process-permissions-real-opened-file explanation="Opening a file does not replace the process's real UID with that file's owner."}
 ::option[The account associated with the process's original caller.]{#process-permissions-real-caller .correct explanation="The real UID records the calling user identity inherited when the process is launched."}
@@ -32,8 +31,7 @@ The effective user ID is the user credential used for many filesystem and privil
 
 For example, a carefully designed password utility may run with an elevated effective UID so it can update protected authentication data. The program must still enforce policy based on the caller, requested account, PAM results, and other context. Possessing an effective UID does not automatically make every requested operation legitimate.
 
-:::single-choice{#process-permissions-effective-uid}
-Which user ID is used for many access-control decisions made on behalf of a process?
+:::single-choice{#process-permissions-effective-uid} Which user ID is used for many access-control decisions made on behalf of a process?
 
 ::option[The effective user ID.]{#process-permissions-effective-active .correct explanation="The effective UID is the active user credential consulted for many authorization checks."}
 ::option[The saved user ID only.]{#process-permissions-effective-saved-only explanation="The saved ID supports credential transitions but is not generally the active identity for access checks."}
@@ -46,8 +44,7 @@ The saved set-user-ID lets a program retain an identity it may later restore, su
 
 This is safer than retaining elevated authority throughout the entire program, but only when implemented correctly. Programs should permanently discard privilege when it is no longer needed and check every credential-changing call for failure.
 
-:::single-choice{#process-permissions-saved-uid}
-Why can a privileged program retain a saved set-user-ID?
+:::single-choice{#process-permissions-saved-uid} Why can a privileged program retain a saved set-user-ID?
 
 ::option[To switch its effective identity for controlled privileged and unprivileged phases.]{#process-permissions-saved-switch .correct explanation="The saved identity can support temporary privilege reduction and a permitted later restoration."}
 ::option[To assign that UID automatically to every file it reads.]{#process-permissions-saved-file-owner explanation="Reading a file does not change its ownership to the process's saved UID."}
@@ -60,8 +57,7 @@ Processes also have real, effective, saved, and supplementary group credentials.
 
 Use tools such as `ps` and `/proc/PROCESS/status` to inspect credentials on Linux. Field availability and display formats vary, so consult the local documentation and avoid changing credentials merely to experiment on a shared system.
 
-:::single-choice{#process-permissions-ordinary-identities}
-For most ordinary commands without a privilege transition, how do the real and effective UIDs compare?
+:::single-choice{#process-permissions-ordinary-identities} For most ordinary commands without a privilege transition, how do the real and effective UIDs compare?
 
 ::option[The effective UID is always zero.]{#process-permissions-effective-root explanation="Ordinary commands do not automatically receive root's UID."}
 ::option[The real UID always equals the executable file owner.]{#process-permissions-real-file-owner explanation="The executable owner affects setuid behavior, not the ordinary real UID."}

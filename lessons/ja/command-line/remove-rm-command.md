@@ -32,8 +32,7 @@ $ rm notes.txt old-report.txt draft.md
 
 Enter を押す前に綴りと場所を確認してください。削除後にファイルシステム復旧ツールへ頼るより、バックアップやバージョン管理のコピーの方が確実な復旧手段です。
 
-:::single-choice{#remove-one-file}
-対象を確認した後、`old-report.txt` を削除するコマンドはどれですか？
+:::single-choice{#remove-one-file} 対象を確認した後、`old-report.txt` を削除するコマンドはどれですか？
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` は指定したファイルエントリを削除し、通常はゴミ箱へ移動しません。"}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` は通常ファイルではなく空のディレクトリを対象にするため、この対象には使いません。"}
@@ -58,8 +57,7 @@ $ rm *.tmp
 
 シェルは `rm` が始まる前にパターンを展開します。確認結果に予期しないファイルが含まれていたら、そのまま進めずパターンを修正してください。
 
-:::single-choice{#preview-removal-pattern}
-`*.tmp` の削除を予定しています。削除せず、パターンが選ぶ隠しファイル以外のパス名を先に表示するコマンドはどれですか？
+:::single-choice{#preview-removal-pattern} `*.tmp` の削除を予定しています。削除せず、パターンが選ぶ隠しファイル以外のパス名を先に表示するコマンドはどれですか？
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="詳細モードは削除の実行中に報告し、一致したファイルを削除するため、読み取り専用の確認ではありません。"}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="引用符がワイルドカード展開を防ぐため、目的の対象ではなく `*` を含むリテラル名を探します。"}
@@ -77,8 +75,7 @@ rm: remove regular file 'important.txt'? y
 
 GNU `rm` の `-I` は、より簡潔な安全策です。3 ファイルより多く削除する場合や、再帰操作の場合に一度だけ尋ねます。
 
-:::single-choice{#confirm-each-removal}
-指定した各ファイルを削除する前に確認を求めるコマンドはどれですか？
+:::single-choice{#confirm-each-removal} 指定した各ファイルを削除する前に確認を求めるコマンドはどれですか？
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="`-i` は各削除前に尋ね、操作を拒否する機会を与えます。"}
 ::option[`rm -f important.txt`]{#force-important explanation="`-f` はプロンプトを抑止し、存在しないオペランドを無視します。確認を加えず、取り除きます。"}
@@ -118,8 +115,7 @@ $ rmdir empty-directory
 
 `rmdir` はディレクトリが空でなければ失敗するため、再帰的な削除から内容を守れます。
 
-:::single-choice{#remove-empty-directory-only}
-`old-cache/` が空の場合だけ、そのディレクトリを削除するコマンドはどれですか？
+:::single-choice{#remove-empty-directory-only} `old-cache/` が空の場合だけ、そのディレクトリを削除するコマンドはどれですか？
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="再帰的な `rm` はディレクトリと内容を削除し、空であるという条件を強制しません。"}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` は空のディレクトリにだけ成功するため、中のファイルを再帰的に削除しません。"}
@@ -152,8 +148,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-完全な対象を確認した後、通常のプロンプトを残しながら `old-project/` とその下のすべてを削除するコマンドはどれですか？
+:::single-choice{#remove-nonempty-tree} 完全な対象を確認した後、通常のプロンプトを残しながら `old-project/` とその下のすべてを削除するコマンドはどれですか？
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="通常の `rm` はディレクトリの中へ入らず、空でないツリーを削除できません。"}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="`-r` はディレクトリツリーを再帰的に削除します。`-rf` と異なり、プロンプトを抑止する `-f` は追加しません。"}

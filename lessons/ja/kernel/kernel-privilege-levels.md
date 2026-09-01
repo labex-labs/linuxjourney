@@ -18,8 +18,7 @@ processor は、機密性の高い instruction と memory access を制限する
 
 page table と protection bit が memory access を強制します。thread が無効または許可されない address を参照すると、processor は kernel へ trap し、カーネルが有効な page fault を解決するか、`SIGSEGV` などの signal を配送します。
 
-:::single-choice{#kernel-privilege-user-mode-memory}
-user-mode process が通常直接アクセスできる memory はどれですか？
+:::single-choice{#kernel-privilege-user-mode-memory} user-mode process が通常直接アクセスできる memory はどれですか？
 
 ::option[すべての physical RAM address と kernel memory。]{#kernel-privilege-all-physical explanation="そのようなアクセスは privilege と virtual-memory protection によって防がれます。"}
 ::option[process 起動時に選ばれた一つの固定 byte だけ。]{#kernel-privilege-one-byte explanation="非特権のままでも、多数の mapped region を持てます。"}
@@ -32,8 +31,7 @@ kernel mode では、memory management、scheduling、interrupt handling、drive
 
 ほかの architecture は exception level など、異なる名前と仕組みを使います。virtualization が加わると、hypervisor と guest の関係は単純な二つの ring の図に収まりません。重要なのは x86 の ring 番号そのものではなく、管理された privilege です。
 
-:::single-choice{#kernel-privilege-x86-kernel-ring}
-Linux カーネルを通常実行する x86 protection ring はどれですか？
+:::single-choice{#kernel-privilege-x86-kernel-ring} Linux カーネルを通常実行する x86 protection ring はどれですか？
 
 ::option[Ring 3。]{#kernel-privilege-ring-three explanation="Ring 3 は慣例的な user-mode privilege level です。"}
 ::option[Ring 0。]{#kernel-privilege-ring-zero .correct explanation="カーネルは従来の x86 で最も privilege の高い ring を使います。"}
@@ -52,8 +50,7 @@ processor は execution context を保存し、設定済み entry mechanism に�
 
 application が一時的に kernel code になるわけではありません。CPU がその thread に代わって kernel handler を実行し、kernel が制御する stack と mapping を使います。
 
-:::single-choice{#kernel-privilege-system-call-transition}
-system-call transition 中に何が起きますか？
+:::single-choice{#kernel-privilege-system-call-transition} system-call transition 中に何が起きますか？
 
 ::option[application の user code が制限なしの ring 0 execution を得る。]{#kernel-privilege-user-ring-zero explanation="管理された entry の後に実行されるのは、信頼された kernel code だけです。"}
 ::option[process の UID が恒久的に 0 へ変わる。]{#kernel-privilege-uid-zero explanation="processor mode の遷移は user credential を書き換えません。"}
@@ -66,8 +63,7 @@ Linux user `root` として動く application も通常は user mode で実行�
 
 capability、namespace、seccomp、security module、cgroup は process が要求できる内容をさらに制限します。この階層型 policy は、hardware の user/kernel mode boundary とは別です。
 
-:::single-choice{#kernel-privilege-root-distinction}
-root identity と kernel mode の比較として正しいものはどれですか？
+:::single-choice{#kernel-privilege-root-distinction} root identity と kernel mode の比較として正しいものはどれですか？
 
 ::option[root は user-space credential、kernel mode は processor execution privilege。]{#kernel-privilege-credential-versus-mode .correct explanation="root process は user mode から許可済み要求を行い、信頼された kernel code が privileged execution を行います。"}
 ::option[root 所有の全 instruction は loadable kernel code として動く。]{#kernel-privilege-root-kernel-code explanation="UID ownership によって executable が kernel module へ変わることはありません。"}
@@ -80,8 +76,7 @@ root identity と kernel mode の比較として正しいものはどれです�
 
 speculative-execution issue と side channel も、hardware isolation に継続的な mitigation が必要だと示します。「異なる ring」は土台であって、完全な security proof ではありません。
 
-:::single-choice{#kernel-privilege-boundary-limit}
-user/kernel mode の分離はシステム全体のセキュリティを保証しますか？
+:::single-choice{#kernel-privilege-boundary-limit} user/kernel mode の分離はシステム全体のセキュリティを保証しますか？
 
 ::option[はい。kernel vulnerability が user process へ影響することはないからです。]{#kernel-privilege-no-kernel-vulns explanation="kernel vulnerability はシステム全体を危険にさらす可能性があります。"}
 ::option[いいえ。privileged-code flaw と side channel が意図した境界を越える場合があります。]{#kernel-privilege-not-complete .correct explanation="mode split は attack surface を減らしますが、正しい kernel code と追加 mitigation の組み合わせが必要です。"}

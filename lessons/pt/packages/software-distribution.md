@@ -24,8 +24,7 @@ Um pacote binário pode conter executáveis, bibliotecas, documentação, config
 
 Nem todo pacote é aplicativo interativo. Ele pode fornecer biblioteca, componente do kernel, dados de linguagem, fontes, símbolos de debug ou metadados que dependem de outros pacotes.
 
-:::single-choice{#software-distribution-package-metadata}
-Qual informação normalmente é metadado, não executável do aplicativo?
+:::single-choice{#software-distribution-package-metadata} Qual informação normalmente é metadado, não executável do aplicativo?
 
 ::option[As instruções da CPU que implementam o aplicativo.]{#software-distribution-executable-code explanation="Instruções compiladas são payload do pacote, não metadados de dependência."}
 ::option[As relações de dependência declaradas.]{#software-distribution-dependencies .correct explanation="Pacotes descrevem requisitos e conflitos para as ferramentas decidirem a instalação."}
@@ -38,8 +37,7 @@ Um projeto upstream desenvolve e lança o código-fonte original. Em seguida, os
 
 A infraestrutura produz pacotes para versões e arquiteturas compatíveis. Repositórios publicam metadados e assinaturas verificáveis. Os papéis variam: upstreams podem publicar pacotes próprios, enquanto distribuições compilam independentemente.
 
-:::single-choice{#software-distribution-maintainer-role}
-Qual tarefa normalmente pertence ao mantenedor da distribuição?
+:::single-choice{#software-distribution-maintainer-role} Qual tarefa normalmente pertence ao mantenedor da distribuição?
 
 ::option[Adaptar a fonte upstream às regras de build e dependências.]{#software-distribution-maintainer-integrates .correct explanation="Mantenedores adaptam software às políticas, builds e ambientes compatíveis."}
 ::option[Escolher a senha local de cada usuário.]{#software-distribution-maintainer-passwords explanation="Dados de autenticação não têm relação com manutenção de pacotes."}
@@ -55,8 +53,7 @@ Dois formatos amplamente usados:
 
 Há outros formatos nativos e multiplataforma. Uma extensão correspondente não garante compatibilidade: arquitetura, versão, bibliotecas, políticas, assinaturas e dependências também importam.
 
-:::single-choice{#software-distribution-debian-format}
-Qual formato nativo é usado por Debian e Ubuntu?
+:::single-choice{#software-distribution-debian-format} Qual formato nativo é usado por Debian e Ubuntu?
 
 ::option[`.deb`]{#software-distribution-format-deb .correct explanation="Ferramentas da família Debian usam arquivos `.deb`."}
 ::option[`.rpm`]{#software-distribution-format-rpm explanation="RPM é nativo da família Fedora e RHEL."}
@@ -69,8 +66,7 @@ O gerenciador registra o estado e coordena mudanças. Repositórios confiáveis 
 
 A confiança depende da configuração e das chaves. Uma assinatura válida associa o pacote a uma chave confiável; não prova que software arbitrário é seguro. Prefira repositórios da distribuição e avalie fontes externas antes de lhes dar privilégio de instalação.
 
-:::single-choice{#software-distribution-package-manager-benefit}
-Qual é uma vantagem de um repositório confiável?
+:::single-choice{#software-distribution-package-manager-benefit} Qual é uma vantagem de um repositório confiável?
 
 ::option[O gerenciador rastreia versões e resolve dependências declaradas.]{#software-distribution-managed-lifecycle .correct explanation="Metadados e estado instalado apoiam instalação, atualização e remoção coordenadas."}
 ::option[Todo programa fica imune a falhas de segurança.]{#software-distribution-no-vulnerabilities explanation="Gerenciamento facilita atualizações, mas não garante software sem falhas."}

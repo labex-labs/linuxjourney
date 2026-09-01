@@ -22,8 +22,7 @@ $ rsync -a -- source/ destination/
 
 `source/` 末尾的斜杠表示“复制该目录的内容”。如果没有斜杠，`rsync -a source destination/` 会创建或更新 `destination/source`。改变斜杠位置时，务必预览最终路径。
 
-:::single-choice{#rsync-source-trailing-slash}
-`rsync -a source/ destination/` 中源末尾的斜杠表示什么？
+:::single-choice{#rsync-source-trailing-slash} `rsync -a source/ destination/` 中源末尾的斜杠表示什么？
 
 ::option[成功传输后删除源。]{#rsync-delete-source explanation="移除源需要单独的明确选项和策略。"}
 ::option[将 `source` 的内容复制到目标。]{#rsync-copy-contents .correct explanation="移除源斜杠会改变目标的顶层布局。"}
@@ -36,8 +35,7 @@ $ rsync -a -- source/ destination/
 
 归档模式不包括保留硬链接、ACL 或扩展属性；这些通常分别需要 `-H`、`-A` 和 `-X`。它本身也不会创建历史版本。
 
-:::single-choice{#rsync-archive-limit}
-哪项元数据不包含在单独的 `-a` 中？
+:::single-choice{#rsync-archive-limit} 哪项元数据不包含在单独的 `-a` 中？
 
 ::option[硬链接关系。]{#rsync-hard-links .correct explanation="保留硬链接需要单独的 -H 选项。"}
 ::option[目录递归。]{#rsync-archive-recursion explanation="归档模式包含递归遍历。"}
@@ -54,8 +52,7 @@ $ rsync -a --dry-run --itemize-changes -- source/ destination/
 
 试运行根据当前扫描预测操作，但不能保证文件在实际命令前不会变化。保存并审查确切命令，只有确认两个端点后，才能移除 `--dry-run` 运行。
 
-:::single-choice{#rsync-dry-run-purpose}
-`--dry-run --itemize-changes` 提供什么？
+:::single-choice{#rsync-dry-run-purpose} `--dry-run --itemize-changes` 提供什么？
 
 ::option[保留在另一台设备上的永久快照。]{#rsync-dry-backup explanation="试运行不会复制数据或创建独立保留。"}
 ::option[保证源文件以后无法变化。]{#rsync-dry-lock explanation="预览不会锁定源目录树。"}
@@ -73,8 +70,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 现代 rsync 通常对这种形式使用 SSH，但应确认配置的远程 shell、主机密钥、账户权限以及远端是否有 rsync。`-z` 压缩可以帮助在受限链路上传输可压缩数据，但对已经压缩的数据可能浪费 CPU。
 
-:::single-choice{#rsync-pull-direction}
-哪种操作数顺序会把远程数据拉取到本地目录？
+:::single-choice{#rsync-pull-direction} 哪种操作数顺序会把远程数据拉取到本地目录？
 
 ::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="该顺序会把本地内容推送到远程目标。"}
 ::option[`rsync --delete host local`]{#rsync-missing-path explanation="它没有表达所示远程路径语法，还添加了无关的破坏性选项。"}
@@ -87,8 +83,7 @@ $ rsync -a -- alice@example.net:/srv/data/ destination/
 
 实际运行后，应检查退出状态和日志、比较预期文件数及元数据，并测试代表性内容或恢复。rsync 同步本身也会镜像不必要的删除或损坏，并不是完整备份策略。
 
-:::single-choice{#rsync-delete-effect}
-`--delete` 在同步期间可能做什么？
+:::single-choice{#rsync-delete-effect} `--delete` 在同步期间可能做什么？
 
 ::option[使用 SSH 主机密钥加密每个传输文件。]{#rsync-delete-encrypt explanation="删除策略与文件加密无关。"}
 ::option[阻止目标文件系统的一切更改。]{#rsync-delete-readonly explanation="它明确授权额外的目标更改。"}

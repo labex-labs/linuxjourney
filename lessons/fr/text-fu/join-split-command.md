@@ -41,8 +41,7 @@ $ join people.txt surnames.txt
 
 La sortie contient une fois la clé commune, puis les autres champs des deux fichiers. `join` traite deux fichiers à la fois, pas une jointure relationnelle à trois opérandes.
 
-:::single-choice{#join-default-key}
-Sans option de champ, quels enregistrements `join first.txt second.txt` combine-t-il ?
+:::single-choice{#join-default-key} Sans option de champ, quels enregistrements `join first.txt second.txt` combine-t-il ?
 
 ::option[Les lignes dont les premiers champs séparés par des blancs sont égaux.]{#join-first-fields .correct explanation="Par défaut, `join` compare le champ 1 des deux entrées triées."}
 ::option[Les lignes portant le même numéro physique.]{#join-line-numbers explanation="La correspondance repose sur la valeur des clés, pas sur la position."}
@@ -61,8 +60,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 La même locale garantit une collation cohérente. Ne redirigez jamais `sort` vers son propre fichier d'entrée, que le shell tronquerait avant la lecture.
 
-:::single-choice{#join-sort-requirement}
-Quelle préparation `join` exige-t-il normalement ?
+:::single-choice{#join-sort-requirement} Quelle préparation `join` exige-t-il normalement ?
 
 ::option[Les fichiers doivent avoir exactement le même nombre de lignes.]{#join-equal-line-count explanation="Leurs longueurs peuvent différer ; les clés déterminent les résultats."}
 ::option[Leurs noms doivent être voisins dans l'ordre alphabétique.]{#join-filename-order explanation="Le contenu doit être trié ; les noms sont sans importance."}
@@ -98,8 +96,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 `-t CHARACTER` définit un délimiteur non blanc. `-a 1` ou `-a 2` peut inclure les lignes sans partenaire ; par défaut, seules les clés appariées apparaissent.
 
-:::single-choice{#join-different-fields}
-Quelles options joignent le champ 2 du premier fichier au champ 1 du second ?
+:::single-choice{#join-different-fields} Quelles options joignent le champ 2 du premier fichier au champ 1 du second ?
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="Cette forme choisit la correspondance inverse."}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` choisit le champ 2 du premier et `-2 1` le champ 1 du second."}
@@ -122,8 +119,7 @@ $ split -l 500 large.txt part-
 
 Par défaut, GNU `split` écrit jusqu'à 1000 lignes dans `xaa`, `xab`, etc. La seconde forme crée `part-aa`, `part-ab`, etc., avec au plus 500 lignes.
 
-:::single-choice{#split-lines-with-prefix}
-Quelle commande découpe `large.txt` en fragments d'au plus 500 lignes préfixés par `part-` ?
+:::single-choice{#split-lines-with-prefix} Quelle commande découpe `large.txt` en fragments d'au plus 500 lignes préfixés par `part-` ?
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="`-b` compte des octets, pas des lignes."}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` fixe le nombre maximal de lignes et le dernier opérande fournit le préfixe."}
@@ -140,8 +136,7 @@ $ split -b 10M archive.bin chunk-
 
 Les fragments font 10 Mio, sauf éventuellement le dernier. `split` ne crée ni manifeste ni métadonnées ; conservez l'ordre des suffixes pour une reconstruction par concaténation.
 
-:::single-choice{#split-ten-mebibytes}
-Quelle commande découpe `archive.bin` en fragments de 10 Mio préfixés par `chunk-` ?
+:::single-choice{#split-ten-mebibytes} Quelle commande découpe `archive.bin` en fragments de 10 Mio préfixés par `chunk-` ?
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="`-l` attend un nombre de lignes, pas une taille binaire."}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` ne découpe pas une entrée binaire."}

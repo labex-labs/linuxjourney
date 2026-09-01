@@ -16,8 +16,7 @@ Gentoo ist eine Linux-Distribution für Nutzer, die genau bestimmen möchten, wi
 
 Diese Gestaltung macht Gentoo besonders für fortgeschrittene Nutzer attraktiv, die ihre Systeme gerne detailliert optimieren, kennenlernen und anpassen.
 
-:::single-choice{#match-gentoo-user}
-Welcher Nutzer passt am besten zu Gentoo?
+:::single-choice{#match-gentoo-user} Welcher Nutzer passt am besten zu Gentoo?
 
 ::option[Ein engagierter Lernender, der das System detailliert steuern möchte]{#committed-system-builder .correct explanation="Gentoo belohnt Nutzer, die detaillierte Entscheidungen zu Builds und Konfigurationen treffen möchten. Diese Kontrolle verlangt zugleich mehr Zeit und Beteiligung."}
 ::option[Ein Einsteiger, der möglichst wenig Einrichtungsarbeit möchte]{#minimal-setup-beginner explanation="Gentoo erwartet vom Nutzer umfangreiche Konfigurations- und Wartungsarbeit. Für möglichst wenig Einrichtung eignet sich eine Distribution mit stärker vorbereiteten Voreinstellungen besser."}
@@ -36,16 +35,14 @@ Im Zentrum von Gentoo steht **Portage**, sein Paketverwaltungssystem. Portage k�
 
 Eine der markantesten Funktionen von Portage sind die **USE-Flags**. Mit ihnen können Nutzer optionale Funktionen aktivieren oder deaktivieren, bevor Software gebaut wird. Das ermöglicht eine sehr feine Kontrolle über das entstehende System.
 
-:::single-choice{#identify-portage-role}
-Welche Aufgabe hat Portage unter Gentoo?
+:::single-choice{#identify-portage-role} Welche Aufgabe hat Portage unter Gentoo?
 
 ::option[Es stellt ausschließlich den grafischen Desktop und das Anwendungsmenü bereit]{#portage-desktop explanation="Eine Desktop-Umgebung steuert die grafische Oberfläche. Portage verwaltet Software im gesamten Gentoo-System."}
 ::option[Es verwaltet die Installation, Abhängigkeiten und Pflege von Software]{#portage-package-manager .correct explanation="Portage ist Gentoos Paketverwaltungssystem. Es koordiniert Pakete und die Entscheidungen, die beim Erstellen und Pflegen dieser Pakete eine Rolle spielen."}
 ::option[Es ersetzt den Linux-Kernel durch ein anderes Betriebssystem]{#portage-kernel-replacement explanation="Portage kann Kernel-bezogene Pakete verwalten, ersetzt Linux aber nicht durch ein anderes Betriebssystem. Seine Aufgabe ist die Paketverwaltung."}
 :::
 
-:::single-choice{#explain-use-flags}
-Was steuern die USE-Flags von Gentoo?
+:::single-choice{#explain-use-flags} Was steuern die USE-Flags von Gentoo?
 
 ::option[Die physische Größe des im Computer eingebauten Arbeitsspeichers]{#physical-memory explanation="Der eingebaute Arbeitsspeicher ist eine Hardwareeigenschaft. USE-Flags konfigurieren Softwarefunktionen und verändern keine physischen Komponenten."}
 ::option[Optionale Funktionen und Abhängigkeiten beim Erstellen von Paketen]{#package-features .correct explanation="USE-Flags geben an, welche optionalen Fähigkeiten ein Paket unterstützen soll. Diese Entscheidungen können auch beeinflussen, welche Abhängigkeiten Portage installiert."}
@@ -58,8 +55,7 @@ Da Software häufig lokal erstellt wird, lässt sich Gentoo genau auf bestimmte 
 
 Dieses quellcodebasierte Modell macht Gentoo außerdem zu einer lehrreichen Distribution. Es vermittelt Nutzern mehr über Abhängigkeiten, Kompilierung und Systemgestaltung als viele verbreitete Distributionen.
 
-:::single-choice{#recognize-source-build-tradeoff}
-Welcher Zielkonflikt geht mit Gentoos quellcodebasierter Anpassung einher?
+:::single-choice{#recognize-source-build-tradeoff} Welcher Zielkonflikt geht mit Gentoos quellcodebasierter Anpassung einher?
 
 ::option[Mehr Kontrolle erfordert mehr Build-Zeit und Entscheidungen des Nutzers]{#control-for-time .correct explanation="Lokale Builds und Funktionsentscheidungen ermöglichen detaillierte Kontrolle, verlangen vom Nutzer aber auch Zeit und Aufmerksamkeit."}
 ::option[Weniger Kontrolle macht das Verständnis von Abhängigkeiten überflüssig]{#less-control explanation="Gentoo macht mehr Entscheidungen zu Abhängigkeiten und Builds sichtbar, nicht weniger. Diese Entscheidungen zu verstehen, gehört zu seinem Lernwert."}

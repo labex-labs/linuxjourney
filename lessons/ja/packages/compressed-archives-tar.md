@@ -28,8 +28,7 @@ $ gunzip report.txt.gz
 
 対応している環境で入力ファイルを残すには `gzip -k report.txt` を使い、明示的に制御する必要がある場合は標準ストリームを使います。ファイル名の拡張子は慣習であり、実際の形式の証明ではありません。`file` などのツールで内容を調べられます。
 
-:::single-choice{#tar-gzip-gzip-role}
-このレッスンにおける `gzip` の主な役割は何ですか？
+:::single-choice{#tar-gzip-gzip-role} このレッスンにおける `gzip` の主な役割は何ですか？
 
 ::option[ファイルメタデータとともにディレクトリツリーを一つのアーカイブへまとめる。]{#tar-gzip-directory-archive explanation="gzip 圧縮を適用する前に、そのアーカイブ処理を行うのは tar です。"}
 ::option[一つの入力ストリームを圧縮する。]{#tar-gzip-compress-stream .correct explanation="Gzip は一つのバイトストリームを変換し、それ自体でディレクトリ階層を符号化しません。"}
@@ -50,8 +49,7 @@ $ tar -cvf project.tar file1 file2 directory1
 
 パスはアーカイブのメンバー名として保存されます。意図した作業ディレクトリからアーカイブを作成し、機密情報、キャッシュ、ソケット、広範な絶対パスを誤って含めないようにしてください。
 
-:::single-choice{#tar-gzip-create-option}
-新しいアーカイブを作成する `tar` オプションはどれですか？
+:::single-choice{#tar-gzip-create-option} 新しいアーカイブを作成する `tar` オプションはどれですか？
 
 ::option[`-x`]{#tar-gzip-option-extract explanation="`-x` 操作はアーカイブのメンバーを展開します。"}
 ::option[`-c`]{#tar-gzip-option-create .correct explanation="作成操作は、指定された入力から新しいアーカイブを書き出します。"}
@@ -68,8 +66,7 @@ $ tar -czvf project.tar.gz file1 file2 directory1
 
 結果は、gzip で圧縮された一つの tar ストリームです。圧縮はアーカイブを暗号化せず、読み取って展開できる人から内容を隠しません。機密性が必要なら、適切な認証付き暗号化の手順を使い、鍵を別に管理してください。
 
-:::single-choice{#tar-gzip-z-option}
-示した `tar` コマンドの `-z` は何を要求しますか？
+:::single-choice{#tar-gzip-z-option} 示した `tar` コマンドの `-z` は何を要求しますか？
 
 ::option[ゼロ知識鍵でアーカイブを暗号化する。]{#tar-gzip-z-encrypt explanation="tar も gzip も、このオプションでは暗号化を提供しません。"}
 ::option[長さがゼロのメンバーをすべて破棄する。]{#tar-gzip-z-zero explanation="このオプションは gzip を選択し、サイズによるメンバーの絞り込みは行いません。"}
@@ -95,8 +92,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 未確認のアーカイブを root として展開してはいけません。作成されたものを検証してから、選択したファイルを最終的な場所へ移動します。
 
-:::single-choice{#tar-gzip-list-before-extract}
-アーカイブのメンバーを展開せずに一覧表示する操作はどれですか？
+:::single-choice{#tar-gzip-list-before-extract} アーカイブのメンバーを展開せずに一覧表示する操作はどれですか？
 
 ::option[`tar -czf download.tar.gz .`]{#tar-gzip-create-download explanation="これは現在のディレクトリからアーカイブを作成または置き換えます。"}
 ::option[`tar -xzf download.tar.gz`]{#tar-gzip-extract-download explanation="`-x` 操作は対象ディレクトリへメンバーを書き出します。"}
@@ -107,8 +103,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 tar 実装は bzip2 や xz などの圧縮器も扱えます。GNU tar では一般にそれぞれ `-j` と `-J` で選択します。対応形式と自動検出の動作は異なるため、`tar --help` またはローカルマニュアルを参照してください。ZIP は別のアーカイブ形式であり、`zip` や `unzip` などのツールで操作します。
 
-:::single-choice{#tar-gzip-archive-confidentiality}
-gzip 圧縮によって tar アーカイブに機密性が加わりますか？
+:::single-choice{#tar-gzip-archive-confidentiality} gzip 圧縮によって tar アーカイブに機密性が加わりますか？
 
 ::option[いいえ。読み取れる人は通常、そのまま展開できる。]{#tar-gzip-not-encryption .correct explanation="圧縮は表現とサイズを変えますが、アクセス制御や暗号学的な秘匿性を提供しません。"}
 ::option[はい。gzip がファイル名から暗号鍵を導出する。]{#tar-gzip-filename-key explanation="Gzip はそのような暗号化機構を実装していません。"}

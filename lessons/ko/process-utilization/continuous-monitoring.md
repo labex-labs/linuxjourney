@@ -25,8 +25,7 @@ $ systemctl list-timers --all | grep sysstat
 
 배포판의 sysstat 데이터 디렉터리에 새 활동 파일이 생성되는지 확인하고 권한과 보존 정책을 검토하십시오.
 
-:::single-choice{#sar-installation-verification}
-`sysstat` 설치 후 무엇을 검증해야 합니까?
+:::single-choice{#sar-installation-verification} `sysstat` 설치 후 무엇을 검증해야 합니까?
 
 ::option[수집이 활성화되어 활동 파일이 갱신되고 있습니다.]{#sar-collector-updating .correct explanation="패키지 설치와 활성 주기 수집은 서로 다른 조건입니다."}
 ::option[모든 프로세스를 수동으로 재시작했습니다.]{#sar-restart-processes explanation="모니터링 수집기를 설치한다고 모든 작업 부하를 재시작할 필요는 없습니다."}
@@ -43,8 +42,7 @@ $ sar -u 1 3
 
 그 밖의 일반 보고서에는 실행 대기열과 부하(`-q`), 메모리(`-r`), 페이징(`-B`), 블록 장치(`-d`) 및 CPU별 활동(`-P ALL`)이 있습니다. 옵션과 필드는 sysstat 버전에 따라 다르므로 `sar --help` 또는 로컬 설명서를 확인하십시오.
 
-:::single-choice{#sar-one-second-count}
-`sar -u 1 3`은 무엇을 요청합니까?
+:::single-choice{#sar-one-second-count} `sar -u 1 3`은 무엇을 요청합니까?
 
 ::option[1초 간격의 CPU 보고서 세 개입니다.]{#sar-three-cpu-samples .correct explanation="첫 숫자는 구간의 초 단위이고 둘째 숫자는 보고서 수입니다."}
 ::option[정확히 3일을 다루는 보고서 하나입니다.]{#sar-three-days explanation="피연산자는 날짜 범위가 아니라 표본 수집 구간과 횟수를 지정합니다."}
@@ -61,8 +59,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 보고서 헤더에서 파일의 전체 날짜를 확인하십시오. 두 자리 접미사는 흔히 해당 월의 일자를 나타내므로 보존 기간이 겹치면 모호할 수 있습니다. 저장된 바이너리 형식에도 호환되는 sysstat 버전이 필요할 수 있습니다.
 
-:::single-choice{#sar-historical-file-option}
-`sar`가 지정한 활동 파일을 읽게 하는 옵션은 무엇입니까?
+:::single-choice{#sar-historical-file-option} `sar`가 지정한 활동 파일을 읽게 하는 옵션은 무엇입니까?
 
 ::option[`-P`]{#sar-option-p explanation="입력 파일이 아니라 프로세서 보고를 선택합니다."}
 ::option[`-q`]{#sar-option-q explanation="대기열 및 부하 보고를 선택합니다."}
@@ -75,8 +72,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 공백은 호스트가 중지됐거나, 수집기가 실패했거나, 보존 정책이 데이터를 제거했다는 뜻일 수 있습니다. 사고 전에 누락된 증거를 알 수 있도록 모니터링 파이프라인 자체도 모니터링하십시오.
 
-:::single-choice{#sar-incident-method}
-사고 검토에서 과거 `sar` 데이터를 어떻게 사용해야 합니까?
+:::single-choice{#sar-incident-method} 사고 검토에서 과거 `sar` 데이터를 어떻게 사용해야 합니까?
 
 ::option[가장 높은 카운터 하나를 증명된 근본 원인으로 취급합니다.]{#sar-single-root explanation="상관관계 하나만으로 인과 관계가 확립되지는 않습니다."}
 ::option[검증된 같은 시간 구간의 여러 지표를 비교합니다.]{#sar-correlate-window .correct explanation="정렬된 신호는 가설을 구분하고 시스템 동작을 사고와 연결하는 데 도움을 줍니다."}

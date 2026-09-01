@@ -18,8 +18,7 @@ La capa del sistema de archivos virtual del kernel, o VFS, proporciona operacion
 
 Esto permite que un proceso acceda a ext4, XFS, NFS, tmpfs y procfs mediante un modelo compartido de rutas y descriptores de archivos. No hace que todas las funciones o comportamientos sean idénticos: la distinción entre mayúsculas y minúsculas, los bloqueos, los permisos, las garantías al cambiar nombres, los atributos ampliados y el tratamiento de errores pueden diferir.
 
-:::single-choice{#filesystem-types-vfs-role}
-¿Cuál es la función principal de VFS en Linux?
+:::single-choice{#filesystem-types-vfs-role} ¿Cuál es la función principal de VFS en Linux?
 
 ::option[Convertir en disco todos los sistemas de archivos montados a ext4.]{#filesystem-types-vfs-convert-ext4 explanation="La abstracción conserva las distintas implementaciones y formatos de sistemas de archivos."}
 ::option[Crear una copia de seguridad de cada archivo antes de que una aplicación escriba en él.]{#filesystem-types-vfs-backup explanation="VFS distribuye operaciones y no proporciona automáticamente un historial de copias de seguridad."}
@@ -32,8 +31,7 @@ Un sistema de archivos con journaling registra determinadas actualizaciones en u
 
 No garantiza que sobrevivieran los datos más recientes de la aplicación, que sean válidas las transacciones de aplicaciones entre varios archivos ni que el hardware de almacenamiento respetara cada escritura completada. Los sistemas de archivos ofrecen distintos modos de datos y garantías de orden, mientras que las aplicaciones deben emplear patrones apropiados de vaciado y actualización atómica. Un diario no es una copia de seguridad y no protege frente a eliminaciones, software malicioso o fallos del dispositivo.
 
-:::single-choice{#filesystem-types-journal-scope}
-¿Qué ayuda principalmente a recuperar el journaling del sistema de archivos después de un fallo?
+:::single-choice{#filesystem-types-journal-scope} ¿Qué ayuda principalmente a recuperar el journaling del sistema de archivos después de un fallo?
 
 ::option[Metadatos coherentes del sistema de archivos y transacciones registradas.]{#filesystem-types-journal-consistency .correct explanation="Reproducir el diario ayuda a devolver las estructuras del sistema de archivos a un estado coherente."}
 ::option[Todas las versiones históricas de todos los documentos de los usuarios.]{#filesystem-types-journal-versions explanation="Un diario no es un almacén de copias de seguridad con versiones."}
@@ -48,8 +46,7 @@ No garantiza que sobrevivieran los datos más recientes de la aplicación, que s
 
 Las funciones necesitan contexto operativo. Una instantánea de Btrfs comparte inicialmente almacenamiento con su origen y no es una copia de seguridad independiente si permanece en el mismo dispositivo que falla. XFS y ext4 tienen capacidades distintas para crecer, reducirse, repararse y ajustarse. Confirma la compatibilidad del kernel, el entorno de arranque y las herramientas de recuperación instalados antes de elegir o cambiar un sistema de archivos raíz.
 
-:::single-choice{#filesystem-types-btrfs-snapshot}
-¿Por qué una instantánea de Btrfs en el mismo dispositivo no es una copia de seguridad completa?
+:::single-choice{#filesystem-types-btrfs-snapshot} ¿Por qué una instantánea de Btrfs en el mismo dispositivo no es una copia de seguridad completa?
 
 ::option[Porque las instantáneas siempre eliminan inmediatamente el subvolumen original.]{#filesystem-types-snapshot-deletes explanation="Una instantánea crea otra vista de subvolumen y no elimina por sí misma su origen."}
 ::option[Porque comparte el mismo dominio de fallo de almacenamiento que el original.]{#filesystem-types-snapshot-failure-domain .correct explanation="La pérdida del dispositivo o daños graves en el sistema de archivos pueden afectar al origen y a su instantánea local."}
@@ -62,8 +59,7 @@ Linux puede montar formatos de interoperabilidad como las variantes de FAT, exFA
 
 Los sistemas de archivos de red como NFS y SMB dependen de un servidor y un protocolo de red, con reglas distintas de caché e identidad. Los sistemas virtuales como tmpfs, procfs y sysfs no utilizan un formato de disco persistente normal: tmpfs almacena datos volátiles en páginas respaldadas por memoria, mientras que procfs y sysfs exponen interfaces del kernel.
 
-:::single-choice{#filesystem-types-procfs-category}
-¿Qué descripción corresponde mejor a procfs?
+:::single-choice{#filesystem-types-procfs-category} ¿Qué descripción corresponde mejor a procfs?
 
 ::option[Un formato de intercambio de Windows para medios extraíbles.]{#filesystem-types-procfs-windows explanation="FAT o exFAT se aproximan más a ese uso; procfs está orientado al kernel de Linux."}
 ::option[Un sistema de archivos virtual que expone interfaces de procesos y del kernel.]{#filesystem-types-procfs-virtual .correct explanation="Procfs genera una vista actual del kernel en vez de almacenar archivos persistentes ordinarios en disco."}
@@ -80,8 +76,7 @@ $ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Otras vistas son `df -T` para contabilizar el espacio montado, `lsblk -f` para dispositivos de bloques y firmas de sistemas de archivos detectadas, y `/proc/filesystems` para tipos compatibles o conocidos por el kernel en ejecución. Responden a preguntas distintas; un sistema de archivos sin montar no aparecerá en un listado ordinario de sistemas montados.
 
-:::single-choice{#filesystem-types-findmnt-output}
-¿Qué orden muestra directamente destinos montados con su fuente, tipo y opciones en esta lección?
+:::single-choice{#filesystem-types-findmnt-output} ¿Qué orden muestra directamente destinos montados con su fuente, tipo y opciones en esta lección?
 
 ::option[`findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS`]{#filesystem-types-findmnt .correct explanation="Findmnt lee la tabla de montajes y presenta los campos solicitados de los sistemas de archivos montados."}
 ::option[`lsblk -o NAME,SIZE,MODEL,SERIAL,ROTA`]{#filesystem-types-mkfs-destructive explanation="Esta orden muestra datos del hardware de bloques, no los tipos y opciones efectivos de los sistemas de archivos montados."}

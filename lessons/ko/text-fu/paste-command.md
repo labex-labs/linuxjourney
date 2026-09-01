@@ -31,8 +31,7 @@ bob	viewer
 
 열 사이에 보이는 간격은 탭입니다. 한 파일 전체를 쓴 다음 다른 파일을 쓰는 `cat`과 달리 `paste`는 서로 대응하는 입력 줄을 결합합니다.
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt`에는 `A`와 `B`가, `second.txt`에는 `1`과 `2`가 차례로 들어 있습니다. 기본적으로 `paste first.txt second.txt`는 무엇을 출력하나요?
+:::single-choice{#paste-corresponding-lines} `first.txt`에는 `A`와 `B`가, `second.txt`에는 `1`과 `2`가 차례로 들어 있습니다. 기본적으로 `paste first.txt second.txt`는 무엇을 출력하나요?
 
 ::option[`A`, `B`, `1`, `2`를 연속된 네 줄에 출력합니다.]{#paste-concatenated-files explanation="파일을 차례로 쓰는 동작과 비슷합니다. `paste`는 대신 대응하는 줄을 결합합니다."}
 ::option[`A`, `B`, `1`, `2`를 구분 기호 없이 한 줄에 출력합니다.]{#paste-one-line-no-separator explanation="한 줄 직렬화에는 `-s`가 필요하며 기본 구분 기호는 빈 문자열이 아니라 탭입니다."}
@@ -51,8 +50,7 @@ bob:viewer
 
 쉘에서 의미가 있는 구분 기호는 따옴표로 묶으세요. 목록에 여러 문자가 있으면 `paste`는 여러 구분 기호를 순환할 수 있지만 두 열을 만들 때는 한 문자가 가장 간단합니다.
 
-:::single-choice{#paste-colon-delimiter}
-`names.txt`와 `roles.txt`의 대응하는 줄을 콜론으로 연결하는 명령어는 무엇인가요?
+:::single-choice{#paste-colon-delimiter} `names.txt`와 `roles.txt`의 대응하는 줄을 콜론으로 연결하는 명령어는 무엇인가요?
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="`-d` 옵션은 각 필드 쌍 사이의 기본 탭을 지정한 콜론으로 바꿉니다."}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="`-s`는 직렬 모드를 선택하며 `:`는 구분 기호가 아니라 또 다른 입력 경로로 처리됩니다."}
@@ -78,8 +76,7 @@ The quick brown fox
 
 `-s`와 함께 여러 파일을 지정하면 각 파일은 별도의 출력 줄이 됩니다.
 
-:::single-choice{#paste-serialize-with-spaces}
-`words.txt`의 모든 줄을 공백으로 구분된 하나의 출력 줄로 연결하는 명령어는 무엇인가요?
+:::single-choice{#paste-serialize-with-spaces} `words.txt`의 모든 줄을 공백으로 구분된 하나의 출력 줄로 연결하는 명령어는 무엇인가요?
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="기본 병렬 모드에서는 입력 파일이 하나여도 입력 줄마다 출력 줄 하나가 만들어집니다. 파일 사이에서 연결할 대상이 없어 구분 기호는 쓰이지 않습니다."}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="두 파일을 기본 탭으로 각각 직렬화하므로 요청한 한 파일의 공백 구분 결과가 아니라 출력 줄 두 개가 만들어집니다."}
@@ -99,8 +96,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-병렬 `paste`에 전달한 한 파일이 다른 파일보다 먼저 끝나면 어떻게 되나요?
+:::single-choice{#paste-unequal-files} 병렬 `paste`에 전달한 한 파일이 다른 파일보다 먼저 끝나면 어떻게 되나요?
 
 ::option[가장 긴 입력이 끝날 때까지 해당 파일에 빈 필드를 사용합니다.]{#paste-empty-fields .correct explanation="병렬 모드는 모든 파일이 소진될 때까지 계속하며 짧은 입력에서 빠진 줄을 빈 필드로 나타냅니다."}
 ::option[즉시 멈추고 남은 줄을 버립니다.]{#paste-stop-shortest explanation="`paste`는 가장 긴 입력까지 계속하므로 다른 파일이 끝났다는 이유로 남은 줄을 버리지 않습니다."}
@@ -117,8 +113,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-`producer | paste names.txt -`에서 `-` 피연산자는 무엇을 의미하나요?
+:::single-choice{#paste-stdin-operand} `producer | paste names.txt -`에서 `-` 피연산자는 무엇을 의미하나요?
 
 ::option[병합한 결과를 표준 오류에 씁니다.]{#paste-write-stderr explanation="여기서 하이픈은 입력 소스를 나타내며 출력 스트림을 리디렉션하지 않습니다."}
 ::option[두 열 사이의 구분 기호를 제거합니다.]{#paste-remove-delimiter explanation="구분 기호는 `-d`로 선택합니다. 하이픈은 구분 기호를 바꾸지 않습니다."}

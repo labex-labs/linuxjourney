@@ -28,8 +28,7 @@ $ sudo lsof +D /mnt/usb
 
 常用列包括 `COMMAND`、`PID`、`USER`、文件描述符（`FD`）、类型、设备和 `NAME`。`FD` 为 `cwd` 的记录表示进程把该目录用作当前工作目录。对于其他用户拥有的进程，非特权用户看到的输出可能不完整。
 
-:::single-choice{#lsof-cwd-record}
-`FD` 列中的 `cwd` 表示什么？
+:::single-choice{#lsof-cwd-record} `FD` 列中的 `cwd` 表示什么？
 
 ::option[进程把该目录用作当前工作目录。]{#lsof-current-directory .correct explanation="进程的当前目录可能使已挂载文件系统保持忙碌。"}
 ::option[文件在写入过程中被关闭。]{#lsof-closed-write explanation="这个标记描述的是目录关系，而不是关闭事件。"}
@@ -52,8 +51,7 @@ $ sudo fuser -vm /mnt/usb
 
 应使用 `findmnt --target /mnt/usb` 等工具确认该路径确实是目标挂载点。绑定挂载、命名空间、权限和竞态都会影响单次查询能够发现的内容。
 
-:::single-choice{#fuser-verbose-purpose}
-调查时为什么要使用 `fuser -v`，而不是普通的 `fuser`？
+:::single-choice{#fuser-verbose-purpose} 调查时为什么要使用 `fuser -v`，而不是普通的 `fuser`？
 
 ::option[它会自动卸载选中的文件系统。]{#fuser-verbose-unmount explanation="详细模式只报告更多信息，不会请求卸载。"}
 ::option[它会增加用户、访问类型和命令等上下文。]{#fuser-verbose-details .correct explanation="额外字段有助于判断应该与哪些进程协调，以及哪些进程可以安全停止。"}
@@ -72,8 +70,7 @@ $ sudo fuser -vm /mnt/usb
 
 `fuser -k` 会向匹配的进程发送信号。在常见的 procps 实现中，它默认发送 `SIGKILL`，因此无法实现有序关闭。如果确实需要执行已明确批准的终止操作，应选择适当信号、核实 PID 和所有者，并认识到从检查到执行操作期间，匹配的进程集合可能发生变化。
 
-:::single-choice{#fuser-k-risk}
-为什么 `fuser -k /mnt/usb` 不适合作为排障的第一步？
+:::single-choice{#fuser-k-risk} 为什么 `fuser -k /mnt/usb` 不适合作为排障的第一步？
 
 ::option[它只会打印文件系统的可用空间。]{#fuser-k-space explanation="该选项针对进程，而不是报告容量。"}
 ::option[它可能在没有有序清理的情况下杀死多个匹配进程。]{#fuser-k-kills .correct explanation="这种宽泛的信号操作可能中断写入或服务，因此应先调查并协调。"}
@@ -91,8 +88,7 @@ $ sudo fuser -v 22/tcp
 $ sudo ss -lntp
 ```
 
-:::single-choice{#lsof-fuser-tool-choice}
-哪个工具适合详细列出打开的文件描述符及其所属进程？
+:::single-choice{#lsof-fuser-tool-choice} 哪个工具适合详细列出打开的文件描述符及其所属进程？
 
 ::option[`lsof`]{#lsof-detailed-records .correct explanation="它的输出围绕打开文件记录及其进程元数据组织。"}
 ::option[`uptime`]{#lsof-uptime explanation="`uptime` 报告运行时间和平均负载，而不是打开的描述符。"}

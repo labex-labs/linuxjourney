@@ -20,8 +20,7 @@ En un diseño MBR, ese sector contiene una región pequeña de código de arranq
 
 Es posible arrancar mediante BIOS desde un disco GPT, pero el MBR protector por sí solo no proporciona las etapas posteriores del cargador. GRUB suele utilizar una pequeña partición de arranque BIOS en GPT para insertar código esencial. La disposición exacta corresponde al cargador instalado.
 
-:::single-choice{#boot-bios-legacy-first-sector}
-¿Qué carga primero normalmente el BIOS heredado desde el disco de arranque seleccionado?
+:::single-choice{#boot-bios-legacy-first-sector} ¿Qué carga primero normalmente el BIOS heredado desde el disco de arranque seleccionado?
 
 ::option[El sector de arranque inicial que contiene una pequeña cantidad de código.]{#boot-bios-boot-sector .correct explanation="La ruta de disco heredada del firmware transfiere el control al código del primer sector del disco seleccionado."}
 ::option[Todo el sistema de archivos raíz de Linux en la memoria del firmware.]{#boot-bios-entire-root explanation="El sector de la primera etapa es diminuto y el software posterior localiza el kernel y el almacenamiento raíz."}
@@ -34,8 +33,7 @@ El firmware UEFI puede comprender un sistema de archivos definido en una partici
 
 La ESP contiene aplicaciones de arranque y archivos auxiliares, no «toda la información de inicio». Las imágenes del kernel, los archivos initramfs y la configuración del cargador pueden residir allí o en otro lugar según el diseño. GPT es habitual en los sistemas UEFI, aunque la interfaz del firmware y el esquema de tabla de particiones siguen siendo capas distintas.
 
-:::single-choice{#boot-bios-uefi-esp}
-¿Qué suele cargar UEFI desde una partición del sistema EFI?
+:::single-choice{#boot-bios-uefi-esp} ¿Qué suele cargar UEFI desde una partición del sistema EFI?
 
 ::option[Un ejecutable EFI seleccionado mediante una entrada de arranque del firmware.]{#boot-bios-efi-executable .correct explanation="La gestión de arranque UEFI dirige el firmware a un archivo ejecutable de una partición del sistema compatible."}
 ::option[Un script de shell POSIX desde cualquier directorio personal ext4.]{#boot-bios-shell-script explanation="El firmware carga formatos ejecutables definidos desde rutas de arranque compatibles, no ejecuta un shell de usuario normal."}
@@ -48,8 +46,7 @@ Con Secure Boot habilitado, UEFI verifica las firmas de la cadena de arranque co
 
 Secure Boot no cifra el disco ni demuestra que todos los programas del espacio de usuario sean seguros. Ayuda a impedir que se acepte código anterior al arranque no autorizado según la política de confianza configurada.
 
-:::single-choice{#boot-bios-secure-boot-purpose}
-¿Qué aplica principalmente UEFI Secure Boot?
+:::single-choice{#boot-bios-secure-boot-purpose} ¿Qué aplica principalmente UEFI Secure Boot?
 
 ::option[El cifrado automático de todos los archivos de todos los discos.]{#boot-bios-secure-encryption explanation="La confidencialidad del disco exige un sistema de cifrado independiente."}
 ::option[La autorización mediante firmas de los ejecutables de la cadena de arranque.]{#boot-bios-secure-signatures .correct explanation="El firmware y los componentes verificados posteriores aceptan código conforme a las claves inscritas y a la política."}
@@ -62,8 +59,7 @@ Las teclas de configuración del firmware varían según el fabricante y el mode
 
 Registra los valores existentes y las claves de recuperación antes de cambiar Secure Boot, el modo del controlador de almacenamiento, TPM, la virtualización o el orden de arranque. Un cambio en el firmware puede hacer temporalmente inaccesibles los volúmenes cifrados o el sistema operativo instalado.
 
-:::single-choice{#boot-bios-setup-key}
-¿Por qué no existe una tecla universal para entrar en la configuración del firmware?
+:::single-choice{#boot-bios-setup-key} ¿Por qué no existe una tecla universal para entrar en la configuración del firmware?
 
 ::option[Porque Linux asigna una tecla aleatoria nueva después de cada arranque.]{#boot-bios-random-key explanation="El sistema operativo no define aleatoriamente la tecla inicial del firmware."}
 ::option[Porque el fabricante del sistema elige la tecla y el momento.]{#boot-bios-vendor-key .correct explanation="Las interfaces de firmware difieren entre modelos, por lo que se necesita la documentación oficial del dispositivo."}

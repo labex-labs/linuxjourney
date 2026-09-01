@@ -23,8 +23,7 @@ Linux 发行版通常将可启动的内核构件存放在 `/boot` 下，但 UEFI
 
 具体名称各不相同。现代发行版中，名称带 `initrd` 的文件通常包含 initramfs 归档。`vmlinuz` 这一命名惯例并不能说明确切的内部压缩方式或平台启动格式；应使用发行版工具检查。
 
-:::single-choice{#kernel-location-vmlinuz}
-带版本号的 `vmlinuz-*` 文件通常包含什么？
+:::single-choice{#kernel-location-vmlinuz} 带版本号的 `vmlinuz-*` 文件通常包含什么？
 
 ::option[可启动的 Linux 内核映像。]{#kernel-location-kernel-image .correct explanation="引导加载程序或固件会加载这一与架构相关的内核构件。"}
 ::option[所有已安装内核的全部可加载模块。]{#kernel-location-all-modules explanation="模块单独存放在特定内核版本的模块树中。"}
@@ -37,8 +36,7 @@ initramfs 必须包含与其匹配的内核和根存储设计在早期启动阶�
 
 `config-*` 有助于了解哪些功能被内置、编译为模块或省略。`System.map-*` 可辅助符号解析和调试，但地址随机化、拆分的调试信息以及发行版工具都会影响其用法。这些是辅助构件，并非替代内核。
 
-:::single-choice{#kernel-location-initramfs-match}
-为什么 initramfs 与特定内核版本和系统配置相关联？
+:::single-choice{#kernel-location-initramfs-match} 为什么 initramfs 与特定内核版本和系统配置相关联？
 
 ::option[它永久保存每个已挂载文件系统的全部内容。]{#kernel-location-all-filesystems explanation="initramfs 是一个小型早期启动环境，不是完整系统备份。"}
 ::option[它在每次启动时为用户分配新 UID。]{#kernel-location-user-ids explanation="账户身份管理不属于它的正常职责。"}
@@ -55,8 +53,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 在合并文件系统布局中，该路径可能解析到 `/usr/lib/modules/KERNEL_RELEASE`。每个已安装内核都需要兼容的模块树和依赖索引。`modprobe` 使用特定版本的元数据，而不会在整个磁盘上任意搜索 `.ko` 文件。
 
-:::single-choice{#kernel-location-module-tree}
-按照惯例，哪个目录存放当前运行内核版本的模块？
+:::single-choice{#kernel-location-module-tree} 按照惯例，哪个目录存放当前运行内核版本的模块？
 
 ::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="用户主目录不是标准的系统模块树。"}
 ::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="版本部分将各个已安装内核的模块 ABI 和依赖数据分隔开。"}
@@ -69,8 +66,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 因此，传统 `/boot` 布局看起来为空，并不能证明系统未安装内核。应使用 `findmnt`、软件包数据库、启动管理器工具和加载程序配置来确定实际使用的构件。
 
-:::single-choice{#kernel-location-uki}
-统一内核映像可以组合哪些内容？
+:::single-choice{#kernel-location-uki} 统一内核映像可以组合哪些内容？
 
 ::option[GPT 标头中的所有用户主目录。]{#kernel-location-uki-homes explanation="UKI 是启动可执行文件，不是用户数据容器或分区表。"}
 ::option[将所有已安装软件包放进一个 shell 脚本。]{#kernel-location-uki-packages explanation="它打包的是启动组件，而不是完整的操作系统软件仓库。"}

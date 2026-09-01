@@ -24,8 +24,7 @@ default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
 
 La route `/24` connectée envoie les destinations correspondantes directement par `eth0`. La route par défaut emploie la passerelle de prochain saut `192.168.224.2`. `proto` décrit comment la route a été installée, `src` indique une source privilégiée pour le trafic correspondant et une métrique aide à classer des routes par ailleurs comparables.
 
-:::single-choice{#routing-table-via-meaning}
-Qu’indique `via 192.168.224.2` ?
+:::single-choice{#routing-table-via-meaning} Qu’indique `via 192.168.224.2` ?
 
 ::option[La seule application autorisée à employer la route.]{#routing-table-application explanation="L’autorisation de l’application n’est pas encodée par le mot-clé `via`."}
 ::option[La passerelle de prochain saut de la route.]{#routing-table-next-hop .correct explanation="Le paquet est encapsulé dans une trame adressée à ce routeur local tout en conservant sa destination IP."}
@@ -36,8 +35,7 @@ Qu’indique `via 192.168.224.2` ?
 
 Une route de `scope link` sans prochain saut `via` considère que le préfixe est directement accessible sur l’interface. Une route par défaut correspond à chaque adresse, mais perd face à toute route admissible plus spécifique.
 
-:::single-choice{#routing-table-connected-route}
-Comment une destination connectée de `scope link` est-elle normalement atteinte ?
+:::single-choice{#routing-table-connected-route} Comment une destination connectée de `scope link` est-elle normalement atteinte ?
 
 ::option[Par la passerelle par défaut même lorsqu’une route connectée correspond.]{#routing-table-connected-default explanation="Le préfixe connecté est plus spécifique et ne possède aucun opérande de passerelle."}
 ::option[En transformant la destination en serveur DNS.]{#routing-table-connected-dns explanation="Le service de noms n’intervient pas dans une route IP déjà sélectionnée."}
@@ -48,8 +46,7 @@ Comment une destination connectée de `scope link` est-elle normalement atteinte
 
 La sélection des routes tient compte des règles de politique et choisit le préfixe admissible le plus long. Les métriques classent les routes au sein d’ensembles comparables appropriés ; une route par défaut à faible métrique ne l’emporte pas sur un `/24` correspondant simplement parce que son nombre est inférieur.
 
-:::single-choice{#routing-table-prefix-before-default}
-Quelle route correspond normalement le plus précisément à `192.168.224.50` ?
+:::single-choice{#routing-table-prefix-before-default} Quelle route correspond normalement le plus précisément à `192.168.224.50` ?
 
 ::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="Le préfixe correspondant de 24 bits est le plus long parmi les routes présentées."}
 ::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="La route par défaut possède une longueur de préfixe nulle."}
@@ -67,8 +64,7 @@ $ ip route show table all
 
 Les espaces de noms réseau et les VRF peuvent également posséder un état distinct. Effectuez l’examen dans le même contexte que le processus concerné.
 
-:::single-choice{#routing-table-policy-limit}
-Pourquoi `ip route show` seul peut-il ne pas expliquer le chemin d’une application ?
+:::single-choice{#routing-table-policy-limit} Pourquoi `ip route show` seul peut-il ne pas expliquer le chemin d’une application ?
 
 ::option[Des règles de politique ou un autre espace de noms réseau peuvent sélectionner un état de routage différent.]{#routing-table-policy-context .correct explanation="La recherche effective dépend des attributs du paquet et du contexte réseau du processus."}
 ::option[Les tables de routage Linux ne contiennent aucun préfixe de destination.]{#routing-table-no-prefixes explanation="Les préfixes de destination sont des clés fondamentales des routes."}
@@ -86,8 +82,7 @@ $ ip route get 203.0.113.10 from 192.168.224.10
 
 Le résultat prédit la recherche locale à cet instant. Il n’envoie aucune sonde et ne prouve pas l’accessibilité du voisin, des sauts en aval, du pare-feu ou de l’application.
 
-:::single-choice{#routing-table-route-get-limit}
-Que ne fait pas `ip route get` ?
+:::single-choice{#routing-table-route-get-limit} Que ne fait pas `ip route get` ?
 
 ::option[Afficher l’interface locale et le prochain saut choisis.]{#routing-table-get-does-interface explanation="Il s’agit de champs principaux du résultat de la recherche."}
 ::option[Évaluer la politique de routage locale actuelle pour une destination.]{#routing-table-get-does-policy explanation="La commande effectue une recherche de route dans le noyau."}

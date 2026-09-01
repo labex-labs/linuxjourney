@@ -25,8 +25,7 @@ The foundational Normal-mode motions are:
 
 Arrow keys commonly perform similar movement, but `h`, `j`, `k`, and `l` keep your hands near other commands. On a wrapped display line, `j` and `k` normally move by file lines; `gj` and `gk` move by displayed screen lines.
 
-:::single-choice{#vim-navigation-down}
-In Normal mode, which key moves the cursor down one line?
+:::single-choice{#vim-navigation-down} In Normal mode, which key moves the cursor down one line?
 
 ::option[`k`]{#vim-nav-k-up explanation="The `k` motion moves upward one line."}
 ::option[`l`]{#vim-nav-l-right explanation="The `l` motion moves one character to the right."}
@@ -44,8 +43,7 @@ Type a positive count before many motions to repeat them. For example:
 
 `5j` moves down five lines, while `3l` moves right three character positions when possible. Counts also combine with word and editing commands.
 
-:::single-choice{#vim-navigation-count}
-What does `4k` do in Normal mode?
+:::single-choice{#vim-navigation-count} What does `4k` do in Normal mode?
 
 ::option[Moves down four lines when possible.]{#vim-nav-four-down explanation="Downward movement uses `j`; `k` moves in the opposite direction."}
 ::option[Moves up four lines when possible.]{#vim-nav-four-up .correct explanation="The count `4` repeats the upward `k` motion four times."}
@@ -62,8 +60,7 @@ Useful word motions include:
 
 Uppercase `W`, `B`, and `E` use whitespace-delimited WORDS, treating punctuation differently. Prefix a count to move through several words, such as `3w`.
 
-:::single-choice{#vim-navigation-next-words}
-Which Normal-mode command moves forward to the beginning of the third following word position?
+:::single-choice{#vim-navigation-next-words} Which Normal-mode command moves forward to the beginning of the third following word position?
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="The count applies the next-word motion three times."}
 ::option[`w3`]{#vim-nav-word-three explanation="Counts precede motions in this command form; placing `3` afterward does not express the requested movement."}
@@ -80,8 +77,7 @@ These motions target positions on the current line:
 
 The difference between `0` and `^` matters on indented lines.
 
-:::single-choice{#vim-navigation-first-nonblank}
-Which motion moves to the first nonblank character of an indented line?
+:::single-choice{#vim-navigation-first-nonblank} Which motion moves to the first nonblank character of an indented line?
 
 ::option[`0`]{#vim-nav-column-zero explanation="Zero moves to the first column, which can contain indentation whitespace."}
 ::option[`$`]{#vim-nav-line-end explanation="The dollar motion targets the end of the line."}
@@ -100,8 +96,7 @@ Use these Normal-mode commands for larger jumps:
 
 The command `:42` followed by Enter is another way to jump to line 42.
 
-:::single-choice{#vim-navigation-file-end}
-Which Normal-mode command moves to the final line of the buffer?
+:::single-choice{#vim-navigation-file-end} Which Normal-mode command moves to the final line of the buffer?
 
 ::option[`gg`]{#vim-nav-first-line explanation="Lowercase `gg` moves to the first line, not the final one."}
 ::option[`$`]{#vim-nav-current-line-end explanation="The dollar motion goes to the end of the current line rather than the end of the file."}

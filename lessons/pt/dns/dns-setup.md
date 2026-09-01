@@ -21,8 +21,7 @@ O software de DNS deve ser selecionado pela função e pelos requisitos operacio
 
 Os recursos e o empacotamento mudam; portanto, consulte a documentação oficial da versão instalada. Implante apenas a função necessária e desabilite recursão ou serviço de zona não intencionais.
 
-:::single-choice{#dns-setup-authoritative-role}
-Qual função publica registros definitivos para as zonas que serve?
+:::single-choice{#dns-setup-authoritative-role} Qual função publica registros definitivos para as zonas que serve?
 
 ::option[Servidor DNS autoritativo.]{#dns-setup-authoritative .correct explanation="Ele responde a partir da autoridade configurada da zona, em vez de resolver recursivamente nomes arbitrários."}
 ::option[Switch Ethernet.]{#dns-setup-switch explanation="Um switch encaminha quadros da camada de enlace e não publica zonas DNS."}
@@ -35,8 +34,7 @@ Defina zonas, clientes, volume de consultas, mecanismo de atualização, necessi
 
 Nunca exponha recursão irrestrita à Internet. Resolvedores abertos podem ser usados indevidamente em ataques de reflexão e consumir recursos locais.
 
-:::single-choice{#dns-setup-open-recursion}
-Por que restringir consultas recursivas a clientes autorizados?
+:::single-choice{#dns-setup-open-recursion} Por que restringir consultas recursivas a clientes autorizados?
 
 ::option[O DNS recursivo não consegue armazenar nenhum registro em cache.]{#dns-setup-no-cache explanation="O cache é uma função central do resolvedor recursivo."}
 ::option[Delegações autoritativas exigem que todo usuário seja root.]{#dns-setup-all-root explanation="A delegação DNS não concede privilégios do sistema operacional."}
@@ -54,8 +52,7 @@ $ named-checkzone example.com /etc/bind/zones/db.example.com
 
 Execute com as permissões e os caminhos apropriados ao host. O sucesso do analisador não comprova a delegação, a propagação do serial, a cadeia DNSSEC, a acessibilidade pelo firewall nem a correção das respostas; portanto, prossiga com consultas controladas.
 
-:::single-choice{#dns-setup-zone-validation-limit}
-O que uma verificação bem-sucedida da sintaxe da zona não consegue comprovar?
+:::single-choice{#dns-setup-zone-validation-limit} O que uma verificação bem-sucedida da sintaxe da zona não consegue comprovar?
 
 ::option[Que a delegação e as respostas autoritativas de ponta a ponta funcionam.]{#dns-setup-not-end-to-end .correct explanation="Os dados da zona pai, a ativação do serviço, a política de rede e o carregamento em tempo de execução continuam separados."}
 ::option[Que o texto da zona pode ser analisado pela ferramenta de verificação.]{#dns-setup-parser-proves explanation="Essa é a evidência direta fornecida pela verificação."}
@@ -74,8 +71,7 @@ $ dig @192.0.2.53 example.com SOA +norecurse +tcp
 
 Para a recursão, teste redes de clientes permitidas e negadas, validação DNSSEC, comportamento do cache e falhas das dependências superiores.
 
-:::single-choice{#dns-setup-norecurse-test}
-Por que consultar um servidor autoritativo com `+norecurse`?
+:::single-choice{#dns-setup-norecurse-test} Por que consultar um servidor autoritativo com `+norecurse`?
 
 ::option[Para testar respostas autoritativas sem solicitar recursão.]{#dns-setup-authority-only .correct explanation="Isso separa o serviço de zona de qualquer comportamento recursivo."}
 ::option[Para remover todos os registros da zona.]{#dns-setup-remove-records explanation="Uma consulta não edita os dados autoritativos."}
@@ -86,8 +82,7 @@ Por que consultar um servidor autoritativo com `+norecurse`?
 
 Monitore falhas de consultas, latência, comportamento do cache, uso de recursos, transferências de zonas, consistência do serial, expiração do DNSSEC e integridade da delegação. Faça backup seguro da configuração de origem e do material de assinatura, mas verifique se uma nova instância consegue carregar as zonas e servir respostas corretas. Aplique correções às versões com suporte e limite as interfaces de controle, as atualizações dinâmicas e o acesso a transferências.
 
-:::single-choice{#dns-setup-redundancy-verification}
-O que os testes de redundância de DNS autoritativo devem incluir?
+:::single-choice{#dns-setup-redundancy-verification} O que os testes de redundância de DNS autoritativo devem incluir?
 
 ::option[Consultar cada servidor e testar a operação quando outro estiver indisponível.]{#dns-setup-test-each-server .correct explanation="Listar vários registros NS não comprova que cada serviço independente está acessível e atualizado."}
 ::option[Verificar apenas se todos os servidores possuem nomes de host semelhantes.]{#dns-setup-hostname-similarity explanation="Os nomes não comprovam a sincronização dos dados nem a disponibilidade."}

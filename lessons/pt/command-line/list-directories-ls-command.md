@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-Qual comando lista o conteúdo de `/home/pete` sem entrar nesse diretório?
+:::single-choice{#list-another-directory} Qual comando lista o conteúdo de `/home/pete` sem entrar nesse diretório?
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="Fornecer o caminho de um diretório a `ls` lista seu conteúdo. O shell permanece no diretório de trabalho atual."}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` muda o diretório de trabalho do shell. Por si só, ele não realiza a listagem solicitada."}
@@ -47,8 +46,7 @@ $ ls -a
 
 Arquivos com nomes iniciados por ponto ficam ocultos por padrão e frequentemente armazenam configurações, como `.bashrc`.
 
-:::single-choice{#show-hidden-files}
-Qual comando inclui os arquivos ocultos na listagem?
+:::single-choice{#show-hidden-files} Qual comando inclui os arquivos ocultos na listagem?
 
 ::option[`ls -l`]{#long-format explanation="A opção `-l` acrescenta colunas detalhadas, mas não inclui por si só os nomes ocultos."}
 ::option[`ls -r`]{#reverse-order explanation="A opção `-r` inverte a ordem de classificação. Ela não altera a inclusão dos arquivos ocultos."}
@@ -84,8 +82,7 @@ Para facilitar a leitura dos tamanhos, acrescente `-h`, de human-readable:
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-Qual comando exibe os detalhes no formato longo com tamanhos legíveis?
+:::single-choice{#show-readable-file-details} Qual comando exibe os detalhes no formato longo com tamanhos legíveis?
 
 ::option[`ls -la`]{#long-all explanation="Esse comando combina o formato longo com a inclusão de arquivos ocultos. Ele não solicita unidades de tamanho legíveis."}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` seleciona o formato longo e `-h` facilita a leitura dos tamanhos. As opções podem ser combinadas em um único comando."}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-Qual comando classifica pela data de modificação e coloca as entradas mais recentes por último?
+:::single-choice{#show-newest-files-last} Qual comando classifica pela data de modificação e coloca as entradas mais recentes por último?
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` classifica pela data de modificação, enquanto `-r` inverte essa ordem. Juntas, elas colocam as entradas mais antigas antes das recentes."}
 ::option[`ls -lt`]{#time-default explanation="Esse comando classifica pela data de modificação, mas mantém a direção padrão, da mais recente para a mais antiga."}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`: classifica pelo tamanho do arquivo.
 - `-d`: lista o próprio diretório, em vez de seu conteúdo.
 
-:::single-choice{#list-directory-entry-itself}
-Qual comando lista a entrada do diretório `projects/` em vez de seu conteúdo?
+:::single-choice{#list-directory-entry-itself} Qual comando lista a entrada do diretório `projects/` em vez de seu conteúdo?
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="A opção `-d` instrui `ls` a mostrar a própria entrada do diretório, em vez de abri-lo para listar o conteúdo."}
 ::option[`ls projects/`]{#directory-contents explanation="Sem `-d`, fornecer o caminho de um diretório faz `ls` exibir as entradas contidas nele."}

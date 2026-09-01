@@ -22,8 +22,7 @@ $ sudo ss -lntup
 
 `-l` はリスナー、`-n` は名前検索の抑止、`-t` と `-u` は TCP と UDP、`-p` はプロセス情報を指定します。UDP はコネクションレスなので、接続されていないバインド済みソケットに TCP のような `LISTEN` ハンドシェイクはありません。
 
-:::single-choice{#netstat-ss-numeric}
-ソケットのトラブルシューティングで `-n` を使うのはなぜですか？
+:::single-choice{#netstat-ss-numeric} ソケットのトラブルシューティングで `-n` を使うのはなぜですか？
 
 ::option[新しいネットワーク名前空間を作るため。]{#netstat-new-namespace explanation="このオプションが制御するのは、出力時の名前解決です。"}
 ::option[アドレス名とポート名の検索を行わないため。]{#netstat-numeric-output .correct explanation="数値表示なら、サービス名の対応付けを観測したプロトコルそのものと取り違えずに済みます。"}
@@ -34,8 +33,7 @@ $ sudo ss -lntup
 
 ローカルソケットのエンドポイントは、アドレス、トランスポートプロトコル、ポートの組み合わせです。TCP 接続は、プロトコルと、送信元・宛先それぞれのアドレスおよびポートで区別されます。`/etc/services` は慣例的な名前と番号を対応付けますが、現在どのプロセスがポートを所有しているか、どのアプリケーションプロトコルを話すかは証明しません。
 
-:::single-choice{#netstat-services-file-limit}
-`/etc/services` の `https 443/tcp` というエントリは何を示しますか？
+:::single-choice{#netstat-services-file-limit} `/etc/services` の `https 443/tcp` というエントリは何を示しますか？
 
 ::option[正常な HTTPS サーバーが現在待ち受けていること。]{#netstat-healthy-listener explanation="静的な名前データベースから実行時の状態は証明できません。"}
 ::option[そのポートに対する慣例的なサービス名の対応。]{#netstat-conventional-name .correct explanation="ソケットの所有者と実際のプロトコル動作は、実行時の調査とテストで確認する必要があります。"}
@@ -53,8 +51,7 @@ $ sudo ss -lntup
 
 `CLOSE-WAIT` が大量に存在し増え続ける場合、ローカルアプリケーションの後始末に問題があることがよくあります。`TIME-WAIT` は正常なプロトコル状態であり、運用上の問題かどうかは量とリソースへの影響で判断します。
 
-:::single-choice{#netstat-close-wait-owner}
-`CLOSE-WAIT` のソケットを、まだ閉じる必要があるのはどちら側ですか？
+:::single-choice{#netstat-close-wait-owner} `CLOSE-WAIT` のソケットを、まだ閉じる必要があるのはどちら側ですか？
 
 ::option[インターネット上のすべてのルーター。]{#netstat-all-routers-close explanation="ルーターはエンドポイントのソケットを所有しません。"}
 ::option[DNS の権威サーバー。]{#netstat-dns-close explanation="名前サービスは、ローカル TCP の終了処理とは無関係です。"}
@@ -67,8 +64,7 @@ $ sudo ss -lntup
 
 一回のスナップショットだけで、リークやボトルネックは確定できません。時間を追って測定し、プロセス動作、アプリケーション遅延、再送、リソース上限と照合します。
 
-:::single-choice{#netstat-queue-snapshot}
-一度だけ観測した大きなソケットキューでは、診断に不十分なのはなぜですか？
+:::single-choice{#netstat-queue-snapshot} 一度だけ観測した大きなソケットキューでは、診断に不十分なのはなぜですか？
 
 ::option[Linux はソケットキューにデータを保存しないから。]{#netstat-no-queues explanation="カーネルのネットワーク処理は、送受信キューを利用します。"}
 ::option[すべてのキュー値がファイルシステム権限だから。]{#netstat-queue-permission explanation="これらのフィールドはネットワーク状態を示します。"}
@@ -86,8 +82,7 @@ $ ss -ltn 'sport = :443'
 
 リスナーが証明するのはローカルのトランスポート準備だけであり、リモートから到達できることやアプリケーションが正常なことではありません。症状に応じて、経路、ファイアウォール、パケット、TLS、アプリケーションを続けてテストしてください。
 
-:::single-choice{#netstat-listener-limit}
-ポート 443 の TCP リスナーが存在しても証明できないものはどれですか？
+:::single-choice{#netstat-listener-limit} ポート 443 の TCP リスナーが存在しても証明できないものはどれですか？
 
 ::option[ローカルソケットが bind と listen 操作を受け入れたこと。]{#netstat-listen-local explanation="それこそが表示されているローカル状態です。"}
 ::option[リモートクライアントが有効な HTTPS 要求を完了できること。]{#netstat-not-remote-proof .correct explanation="経路ポリシー、TLS、アプリケーションの動作はまだテストされていません。"}

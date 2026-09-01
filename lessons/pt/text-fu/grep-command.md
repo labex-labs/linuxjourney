@@ -28,8 +28,7 @@ Use `-F` quando o padrão deva ser tratado como uma cadeia fixa, não como expre
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-Qual comando pesquisa `products.txt` pelo texto literal `price: $5.00` sem tratar os caracteres do padrão como sintaxe de expressão regular?
+:::single-choice{#grep-fixed-string} Qual comando pesquisa `products.txt` pelo texto literal `price: $5.00` sem tratar os caracteres do padrão como sintaxe de expressão regular?
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` seleciona a correspondência por cadeia fixa, e as aspas simples protegem o cifrão da expansão do shell."}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` ativa expressões regulares estendidas, nas quais `$` e `.` possuem significados especiais."}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 A barra invertida torna o ponto literal; um `.` sem escape em uma expressão regular corresponde a qualquer caractere individual.
 
-:::single-choice{#grep-literal-txt-suffix}
-Qual expressão regular estendida corresponde a linhas terminadas no sufixo literal `.txt`?
+:::single-choice{#grep-literal-txt-suffix} Qual expressão regular estendida corresponde a linhas terminadas no sufixo literal `.txt`?
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="O ponto não possui escape; portanto, ele corresponde a qualquer caractere antes de `txt`, não especificamente a um ponto literal."}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` corresponde a um ponto literal, e `$` ancora a correspondência no final da linha."}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 Você pode repetir `-e` para selecionar linhas correspondentes a qualquer padrão fornecido. Use `-f patterns.txt` para ler um padrão por linha de um arquivo.
 
-:::single-choice{#grep-hyphen-pattern}
-Qual comando pesquisa `settings.conf` pelo padrão `-v`, em vez de interpretá-lo como uma opção?
+:::single-choice{#grep-hyphen-pattern} Qual comando pesquisa `settings.conf` pelo padrão `-v`, em vez de interpretá-lo como uma opção?
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="As aspas protegem os caracteres da expansão do shell, mas `grep` ainda pode interpretar o argumento `-v` como sua opção de inversão."}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="Essa forma ativa a correspondência invertida e não fornece `settings.conf` como padrão e entrada da maneira solicitada."}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` conta linhas selecionadas, não a quantidade total de correspondências dentro delas. Uma linha com `fox fox` contribui com um para a contagem. Quando você precisar especificamente das ocorrências não sobrepostas com o GNU `grep`, `grep -o PATTERN | wc -l` é um pipeline possível.
 
-:::single-choice{#grep-count-lines}
-`data.txt` possui uma linha com `error error` e duas linhas sem correspondência. O que `grep -c 'error' data.txt` informa?
+:::single-choice{#grep-count-lines} `data.txt` possui uma linha com `error error` e duas linhas sem correspondência. O que `grep -c 'error' data.txt` informa?
 
 ::option[`2`, porque a palavra ocorre duas vezes em uma linha.]{#grep-count-occurrences explanation="`-c` conta linhas selecionadas, não correspondências individuais dentro de uma linha."}
 ::option[`1`, porque exatamente uma linha corresponde.]{#grep-count-one-line .correct explanation="A única linha é selecionada uma vez, mesmo que o padrão apareça duas vezes nela."}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 Diagnósticos como erros de permissão vão para stderr e não fazem parte da entrada pesquisada. Restrinja o caminho e compreenda as permissões em vez de elevar o acesso imediatamente.
 
-:::single-choice{#grep-pipeline-input}
-Em `generate-report | grep 'failed'`, qual entrada `grep` pesquisa?
+:::single-choice{#grep-pipeline-input} Em `generate-report | grep 'failed'`, qual entrada `grep` pesquisa?
 
 ::option[Um arquivo chamado `generate-report` no diretório atual.]{#grep-report-file explanation="A palavra à esquerda é executada como comando e não é fornecida a `grep` como operando de arquivo."}
 ::option[O fluxo stdout produzido por `generate-report`.]{#grep-report-stdout .correct explanation="O pipe conecta stdout do produtor a stdin de `grep`."}

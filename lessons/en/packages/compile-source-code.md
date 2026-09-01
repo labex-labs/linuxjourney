@@ -18,8 +18,7 @@ Obtain source from an authenticated upstream release channel. Verify its signatu
 
 Build instructions are executable code. A `configure` script, build definition, test, or compiler plugin can run arbitrary commands as your user. Do not build untrusted source, and do not run the build itself with `sudo`.
 
-:::single-choice{#compile-source-code-build-privilege}
-Why should the compilation step normally run without `sudo`?
+:::single-choice{#compile-source-code-build-privilege} Why should the compilation step normally run without `sudo`?
 
 ::option[Compilers refuse to produce machine code for the root user.]{#compile-source-code-root-compiler explanation="Compilers can run as root, but doing so unnecessarily increases risk."}
 ::option[`sudo` automatically deletes every generated object file.]{#compile-source-code-sudo-delete explanation="Privilege elevation does not inherently remove build outputs."}
@@ -36,8 +35,7 @@ $ sudo apt install build-essential
 
 This installs a baseline compiler and build tools, not every dependency required by every project. Projects can also need language runtimes, generators, build-system tools, development headers, or exact library versions. Install requirements from trusted repositories and separate build dependencies from runtime dependencies.
 
-:::single-choice{#compile-source-code-build-essential-scope}
-What does `build-essential` provide on a Debian-family system?
+:::single-choice{#compile-source-code-build-essential-scope} What does `build-essential` provide on a Debian-family system?
 
 ::option[A baseline set of common compilation and build tools.]{#compile-source-code-baseline-tools .correct explanation="It supplies foundational tooling but cannot anticipate all project-specific libraries or generators."}
 ::option[Every dependency for every source project.]{#compile-source-code-all-dependencies explanation="Individual projects declare additional and sometimes version-specific requirements."}
@@ -57,8 +55,7 @@ $ make
 
 This sequence is not universal. Projects can use CMake, Meson, Ninja, language-specific tools, or custom scripts. Follow the documentation for the exact release rather than running `./configure` merely because it is familiar. An out-of-tree build directory can keep generated files separate when the build system supports it.
 
-:::single-choice{#compile-source-code-make-role}
-In the traditional workflow, what does `make` do?
+:::single-choice{#compile-source-code-make-role} In the traditional workflow, what does `make` do?
 
 ::option[Registers every output in the distribution package database.]{#compile-source-code-make-package-db explanation="Compilation alone does not create native package ownership records."}
 ::option[Downloads an authenticated source release automatically.]{#compile-source-code-make-download explanation="Source acquisition and verification occur before the local build unless a project explicitly defines otherwise."}
@@ -75,8 +72,7 @@ $ make check
 
 The actual target might be `test`, `check`, or a separate command. Investigate failures instead of installing untested output. Tests may require network access, services, special hardware, or isolation; review them before execution just as you review other build code.
 
-:::single-choice{#compile-source-code-test-failure}
-What should you do when the documented test suite fails?
+:::single-choice{#compile-source-code-test-failure} What should you do when the documented test suite fails?
 
 ::option[Run the same installation immediately as root.]{#compile-source-code-install-after-failure explanation="Privilege does not resolve an unknown correctness failure and increases the consequences."}
 ::option[Delete the package manager database to avoid conflicts.]{#compile-source-code-delete-database explanation="The native database is unrelated to resolving a source test failure and must not be discarded."}
@@ -96,8 +92,7 @@ Prefer one of these controlled approaches:
 
 `checkinstall` can create a simple package for some `make install` workflows, but it is not universal and does not replace a reviewed distribution-quality package recipe. Never treat it as an “always” rule. Before any privileged copy, inspect the staged file list, ownership, permissions, paths, and uninstall or upgrade plan.
 
-:::single-choice{#compile-source-code-destdir-purpose}
-What is the purpose of a supported `DESTDIR` staging installation?
+:::single-choice{#compile-source-code-destdir-purpose} What is the purpose of a supported `DESTDIR` staging installation?
 
 ::option[Place intended install files under a temporary root for inspection or packaging.]{#compile-source-code-stage-root .correct explanation="Staging separates file collection from immediate writes into the live system prefix."}
 ::option[Change the compiler into a remote package repository.]{#compile-source-code-destdir-repository explanation="The variable redirects installation paths and does not publish repository metadata."}

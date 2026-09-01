@@ -24,8 +24,7 @@ Ein Init-System übernimmt häufig folgende Aufgaben:
 
 Die genaue Abgrenzung unterscheidet sich. Geräteverwaltung, Netzwerk, Protokollierung und geplante Aufgaben können getrennte, von Init überwachte Programme sein, statt direkt in PID 1 eingebaut zu sein.
 
-:::single-choice{#boot-init-pid-one-role}
-Welche Aufgabe ist für PID 1 in seinem PID-Namespace besonders?
+:::single-choice{#boot-init-pid-one-role} Welche Aufgabe ist für PID 1 in seinem PID-Namespace besonders?
 
 ::option[Bei jedem Start alle Anwendungen aus dem Quellcode kompilieren.]{#boot-init-compile-apps explanation="Beim normalen Dienststart werden installierte Programme verwendet, statt sämtliche Software neu zu bauen."}
 ::option[Die physische Sektorgröße des Datenträgers festlegen.]{#boot-init-sector-size explanation="Speicherhardware und Treiber stellen die Sektorgeometrie bereit, bevor Init Dienste verwaltet."}
@@ -38,8 +37,7 @@ Das traditionelle sysvinit verwendet Konfigurationen wie `/etc/inittab` sowie ru
 
 Schließe nicht allein aus der Existenz von `/etc/init.d/` auf das aktive Init-System eines Hosts. Kompatibilitätsskripte können auf Systemen erhalten bleiben, deren PID 1 eine andere Implementierung ist.
 
-:::single-choice{#boot-init-sysv-runlevel}
-Wofür steht ein System-V-Runlevel?
+:::single-choice{#boot-init-sysv-runlevel} Wofür steht ein System-V-Runlevel?
 
 ::option[Für eine vom Bootloader ausgewählte Kernel-Version.]{#boot-init-runlevel-kernel explanation="Die Auswahl des Kernels ist Aufgabe des Bootloaders und wird nicht durch einen Init-Runlevel codiert."}
 ::option[Für einen konfigurierten Betriebsmodus, der mit Dienstaktionen verbunden ist.]{#boot-init-runlevel-mode .correct explanation="SysV-Aufbauten ordnen den Leveln Gruppen und Reihenfolgen von Start- oder Stoppskripten zu."}
@@ -54,8 +52,7 @@ systemd wird von vielen aktuellen Allzweckdistributionen eingesetzt. Es bildet D
 
 Weitere aktive Init- und Überwachungsansätze sind OpenRC, runit, s6 und BusyBox init. „Am neuesten“ ist keine sinnvolle Kompatibilitätsregel. Ermittle, was das konkrete System ausführt, und verwende dessen Dokumentation.
 
-:::single-choice{#boot-init-systemd-unit-model}
-Wie stellt systemd verwaltete Ressourcen wie Dienste und Einhängungen dar?
+:::single-choice{#boot-init-systemd-unit-model} Wie stellt systemd verwaltete Ressourcen wie Dienste und Einhängungen dar?
 
 ::option[Als primäre Partitionseinträge eines MBR.]{#boot-init-systemd-partitions explanation="Partitionsmetadaten von Datenträgern stehen in keinem Zusammenhang mit Units des Dienstmanagers."}
 ::option[Ausschließlich als Hardlinks auf die ausführbare Datei von PID 1.]{#boot-init-systemd-hard-links explanation="Units sind Konfigurations- und Laufzeitobjekte und nicht lediglich Inode-Aliasse."}
@@ -73,8 +70,7 @@ $ readlink /proc/1/exe
 
 Berechtigungen, Container und Namespaces beeinflussen, was du siehst. Ein in einem Container ausgeführter Befehl zeigt PID 1 dieses Namespace und nicht zwangsläufig das Init-System des Hosts. Verwende nach der Bestimmung dessen eigene Status- und Protokollwerkzeuge, statt Befehle verschiedener Init-Familien zu vermischen.
 
-:::single-choice{#boot-init-detect-running}
-Warum ist die Prüfung von PID 1 aussagekräftiger als die Suche nach einem Verzeichnis mit älteren Skripten?
+:::single-choice{#boot-init-detect-running} Warum ist die Prüfung von PID 1 aussagekräftiger als die Suche nach einem Verzeichnis mit älteren Skripten?
 
 ::option[PID 1 besitzt auf jedem Linux-System immer denselben Namen der ausführbaren Datei.]{#boot-init-same-name explanation="systemd, sysvinit, BusyBox, Container-Init-Programme und weitere Implementierungen können PID 1 belegen."}
 ::option[Kompatibilitätsdateien können vorhanden sein, obwohl eine andere Init-Implementierung läuft.]{#boot-init-compatibility-files .correct explanation="Die tatsächlich als PID 1 laufende Datei ist ein stärkerer Beleg für das aktive Init-System."}

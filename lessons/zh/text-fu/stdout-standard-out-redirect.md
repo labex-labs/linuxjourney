@@ -21,8 +21,7 @@ Hello World
 
 stdout 的文件描述符是 `1`；重定向多条流时，这个数字会很有用。程序还可以拥有标准输入 stdin 和标准错误 stderr，后续课程会介绍它们。
 
-:::single-choice{#stdout-default-destination}
-没有重定向时，交互式终端中的 `echo Hello World` 通常会把正常输出发送到哪里？
+:::single-choice{#stdout-default-destination} 没有重定向时，交互式终端中的 `echo Hello World` 通常会把正常输出发送到哪里？
 
 ::option[发送到当前目录中名为 `stdout` 的文件。]{#stdout-file explanation="标准输出是一条流，并不会自动创建名为 `stdout` 的文件；只有重定向时才会使用文件。"}
 ::option[通过标准输出发送到终端。]{#stdout-terminal .correct explanation="shell 通常会把命令的 stdout 连接到终端，因此 `echo` 的结果会显示在那里。"}
@@ -46,8 +45,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-`notes.txt` 已经包含文字。`echo new > notes.txt` 会做什么？
+:::single-choice{#stdout-replace-file} `notes.txt` 已经包含文字。`echo new > notes.txt` 会做什么？
 
 ::option[用 `new` 替换文件内容。]{#stdout-replace-existing .correct explanation="对于 `>`，shell 会先清空现有目标，再把 `echo` 的输出写入空文件。"}
 ::option[把 `new` 添加到现有文字之后。]{#stdout-add-existing explanation="追加需要使用 `>>`；单个 `>` 不会保留目标的原有内容。"}
@@ -69,8 +67,7 @@ Another line
 
 与 `>` 一样，`>>` 也会创建缺失的目标。区别在于打开现有文件的方式：`>>` 会追加，而不是清空。
 
-:::single-choice{#stdout-append-file}
-哪个命令会把 `Finished` 添加到 `status.log` 末尾，而不擦除现有内容？
+:::single-choice{#stdout-append-file} 哪个命令会把 `Finished` 添加到 `status.log` 末尾，而不擦除现有内容？
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="单个 `>` 会在写入前清空现有目标，导致原日志内容丢失。"}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`echo` 产生文字，`>>` 再把这段 stdout 追加到目标文件。"}
@@ -88,8 +85,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-在 `pwd > current-directory.txt` 中，通常由谁解释 `>`？
+:::single-choice{#stdout-shell-role} 在 `pwd > current-directory.txt` 中，通常由谁解释 `>`？
 
 ::option[`pwd` 命令在收到 `>` 参数后解释。]{#stdout-pwd-redirection explanation="shell 会消化重定向语法，因此 `pwd` 通常不会把 `>` 或目标当作普通参数收到。"}
 ::option[Bash shell 在启动 `pwd` 前解释。]{#stdout-bash-redirection .correct explanation="Bash 会在执行命令前打开目标，并连接文件描述符 1。"}

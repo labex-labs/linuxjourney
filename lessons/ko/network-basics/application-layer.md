@@ -18,8 +18,7 @@ TCP/IP 응용 계층에는 애플리케이션이 네트워크 서비스를 요�
 
 모든 응용 프로토콜이 하나의 고정된 “응용 헤더”를 추가하는 것은 아닙니다. 텍스트 필드, 바이너리 레코드, 여러 중첩 형식 등을 사용할 수 있으며 하나의 전송 연결에서 연속적인 메시지 흐름을 운반하기도 합니다.
 
-:::single-choice{#application-layer-protocol-role}
-응용 프로토콜이 주로 정의하는 것은 무엇입니까?
+:::single-choice{#application-layer-protocol-role} 응용 프로토콜이 주로 정의하는 것은 무엇입니까?
 
 ::option[서비스 메시지의 의미와 교환 규칙입니다.]{#application-layer-message-semantics .correct explanation="통신 상대가 상호 운용하려면 구문, 의미 및 상태 동작을 공유해야 합니다."}
 ::option[모든 Ethernet 케이블의 전압입니다.]{#application-layer-voltage explanation="물리적 신호는 하위 계층 기술에 속합니다."}
@@ -30,8 +29,7 @@ TCP/IP 응용 계층에는 애플리케이션이 네트워크 서비스를 요�
 
 클라이언트는 서비스에 요청하거나 연결을 시작하고, 서버는 수신 대기하거나 연결을 받아들입니다. 이는 영구적인 장치 분류가 아니라 상호작용 속 역할입니다. 하나의 호스트가 DNS에는 클라이언트이고 동시에 SSH에는 서버일 수 있으며, 일부 프로토콜은 피어 투 피어 역할을 사용합니다.
 
-:::single-choice{#application-layer-client-role}
-일반적인 요청-응답 교환에서 프로그램이 클라이언트가 되는 기준은 무엇입니까?
+:::single-choice{#application-layer-client-role} 일반적인 요청-응답 교환에서 프로그램이 클라이언트가 되는 기준은 무엇입니까?
 
 ::option[서비스에 요청을 시작합니다.]{#application-layer-client-initiates .correct explanation="클라이언트와 서버는 하나의 호스트가 여러 서비스에서 동시에 수행할 수 있는 상호작용 역할입니다."}
 ::option[서버가 아니라 노트북에서 실행되어야 합니다.]{#application-layer-client-laptop explanation="하드웨어 분류는 프로토콜 역할을 결정하지 않습니다."}
@@ -42,8 +40,7 @@ TCP/IP 응용 계층에는 애플리케이션이 네트워크 서비스를 요�
 
 애플리케이션은 서비스 이름을 하나 이상의 IP 주소로 확인하고 전송 끝점을 선택할 수 있습니다. 잘 알려진 포트는 기본 관례이지 프로토콜을 변하지 않게 입증하는 증거가 아닙니다. HTTP는 흔히 TCP 포트 80, HTTPS는 TCP 포트 443을 사용하지만 둘 다 다른 곳에서 실행될 수 있습니다. SMTP는 릴레이와 메시지 제출에 서로 다른 포트와 정책을 사용합니다.
 
-:::single-choice{#application-layer-port-limit}
-열린 TCP 포트 443 하나만으로 무엇이 입증됩니까?
+:::single-choice{#application-layer-port-limit} 열린 TCP 포트 443 하나만으로 무엇이 입증됩니까?
 
 ::option[프로세스가 그곳에서 TCP 끝점을 받아들였지만 응용 동작은 여전히 테스트해야 합니다.]{#application-layer-port-endpoint .correct explanation="프로토콜 교환과 TLS 검증이 더 강한 응용 계층 증거를 제공합니다."}
 ::option[서비스가 올바르게 설정된 HTTPS 애플리케이션임이 확실합니다.]{#application-layer-port-proves-https explanation="포트 번호는 프로토콜 동작, 신원 또는 상태를 검증하지 않습니다."}
@@ -56,8 +53,7 @@ TCP/IP 응용 계층에는 애플리케이션이 네트워크 서비스를 요�
 
 예를 들어 HTTPS 진단에서는 이름 확인, TCP 연결, TLS 인증서와 이름, HTTP 응답 및 응용 콘텐츠를 별도로 검사할 수 있습니다. 한 단계의 성공은 문제 범위를 좁히지만 이후 모든 단계의 성공을 입증하지 않습니다.
 
-:::single-choice{#application-layer-tls-limit}
-성공적인 TLS 인증서 검증이 확립하는 것은 무엇입니까?
+:::single-choice{#application-layer-tls-limit} 성공적인 TLS 인증서 검증이 확립하는 것은 무엇입니까?
 
 ::option[모든 사용자가 모든 리소스에 접근할 권한이 있습니다.]{#application-layer-tls-all-users explanation="전송 인증은 응용 접근 정책을 대신하지 않습니다."}
 ::option[검증된 이름에 대한 통신 상대 신원과 인증된 보안 채널입니다.]{#application-layer-tls-identity .correct explanation="응용 권한 부여와 콘텐츠 정확성은 별도로 검사해야 합니다."}

@@ -16,8 +16,7 @@ meta_keywords: "リンクステートプロトコル，OSPF, Linux ネットワ�
 
 ルーターは互換性のある近隣を検出し、インターフェース種別、area、タイマー、認証などのパラメータに従ってプロトコルの adjacency を形成します。hello パケットが見えても、完全な adjacency は保証されません。設定の不一致によって、状態機械が途中で止まることがあります。
 
-:::single-choice{#link-state-hello-limit}
-OSPF hello を受信しても証明できないことはどれですか？
+:::single-choice{#link-state-hello-limit} OSPF hello を受信しても証明できないことはどれですか？
 
 ::option[ルーター間で完全に同期した adjacency が形成されたこと。]{#link-state-not-full .correct explanation="area、タイマー、認証、MTU などの状態によって、完全なデータベース交換が妨げられる場合があります。"}
 ::option[近隣が少なくとも一つのプロトコルメッセージを送ったこと。]{#link-state-hello-sent explanation="hello の受信は、その限定的な事実を直接証明します。"}
@@ -28,8 +27,7 @@ OSPF hello を受信しても証明できないことはどれですか？
 
 各ルーターは、自身に関係する状態の広告を生成します。近隣は、新しい情報を最初の近隣ペアだけに留めず、定義された area または domain 全体へ確実にフラッディングします。シーケンスと aging の仕組みにより現在の情報を区別し、古い状態を削除します。
 
-:::single-choice{#link-state-flooding-scope}
-リンクステート情報を一つの近隣より先へフラッディングするのはなぜですか？
+:::single-choice{#link-state-flooding-scope} リンクステート情報を一つの近隣より先へフラッディングするのはなぜですか？
 
 ::option[すべてのアプリケーションが全ルーターのパスワードを必要とするから。]{#link-state-password-copy explanation="アプリケーションの認証情報はトポロジー広告ではありません。"}
 ::option[Ethernet がユニキャストフレームを送れないから。]{#link-state-no-unicast explanation="Ethernet はユニキャストに対応します。ここでのフラッディングはルーティングプロトコルの配布機構です。"}
@@ -42,8 +40,7 @@ OSPF hello を受信しても証明できないことはどれですか？
 
 「最短」とはプロトコル cost が最小という意味であり、ルーター数が最少、またはアプリケーションで測った遅延が最小とは限りません。cost の設計は運用上の意図を反映すべきです。
 
-:::single-choice{#link-state-shortest-meaning}
-リンクステートの経路計算で「最短」とは何を意味しますか？
+:::single-choice{#link-state-shortest-meaning} リンクステートの経路計算で「最短」とは何を意味しますか？
 
 ::option[プレフィックスの文字数が最も少ないルート。]{#link-state-shortest-text explanation="テキストの長さはトポロジー cost と無関係です。"}
 ::option[プロトコル cost の合計が最小の経路。]{#link-state-lowest-cost .correct explanation="cost モデルが hop count や現在の遅延に直接対応するとは限りません。"}
@@ -56,8 +53,7 @@ OSPF area はトポロジーのフラッディングと計算の範囲を制限�
 
 リンク変更後、検出、広告のフラッディング、SPF 計算、ルート導入、転送回復にはそれぞれ時間がかかります。単純な距離ベクトル設計より高速に収束できる場合がありますが、すべての障害や設定で自動的にそうなるわけではありません。
 
-:::single-choice{#link-state-convergence-stages}
-OSPF の収束を調査するとき、何を測定すべきですか？
+:::single-choice{#link-state-convergence-stages} OSPF の収束を調査するとき、何を測定すべきですか？
 
 ::option[管理者が端末を開いた時刻だけ。]{#link-state-terminal-time explanation="それだけではプロトコルや転送の各段階を切り分けられません。"}
 ::option[ルーター名のアルファベット順だけ。]{#link-state-router-names explanation="名前は収束時間を決めません。"}

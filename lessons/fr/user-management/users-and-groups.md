@@ -23,8 +23,7 @@ uid=1000(alice) gid=1000(alice) groups=1000(alice),27(sudo)
 
 Les valeurs varient. Les comptes humains ont souvent un répertoire comme `/home/alice`, mais peuvent en avoir un autre ou aucun. Les comptes de service exécutent souvent un logiciel avec une identité limitée plutôt que d'autoriser une connexion interactive.
 
-:::single-choice{#users-uid-purpose}
-Quel identifiant le noyau utilise-t-il principalement pour représenter un utilisateur ?
+:::single-choice{#users-uid-purpose} Quel identifiant le noyau utilise-t-il principalement pour représenter un utilisateur ?
 
 ::option[Le chemin de son répertoire personnel]{#users-home-path explanation="Le chemin est une configuration variable ou absente, pas l'identifiant du noyau."}
 ::option[Un UID numérique]{#users-numeric-uid .correct explanation="Les bases associent les noms aux UID employés dans les attributs de processus et la propriété."}
@@ -42,8 +41,7 @@ $ groups alice
 
 Ces commandes donnent les identités configurées ou résolues. Des annuaires et caches peuvent participer ; lire seulement `/etc/group` ne montre donc pas toujours l'ensemble effectif.
 
-:::single-choice{#users-primary-supplementary-groups}
-Comment un compte Linux participe-t-il normalement aux groupes ?
+:::single-choice{#users-primary-supplementary-groups} Comment un compte Linux participe-t-il normalement aux groupes ?
 
 ::option[Il appartient exactement à un groupe toute sa vie.]{#users-single-group explanation="Un processus peut porter un groupe principal et une liste de groupes supplémentaires."}
 ::option[Il appartient à tous les groupes dont il peut lire les fichiers.]{#users-readable-groups explanation="La lisibilité résulte des droits ; elle ne crée pas d'appartenance."}
@@ -56,8 +54,7 @@ Un processus possède notamment des UID et GID réels et effectifs, ainsi que de
 
 Les exécutables set-user-ID, gestionnaires de services, conteneurs, espaces de noms et appels de changement de privilèges rendent cette description plus exacte que « le processus s'exécute uniquement comme son lanceur ».
 
-:::single-choice{#users-process-access-identity}
-Quelles informations sont couramment comparées aux permissions d'un fichier ?
+:::single-choice{#users-process-access-identity} Quelles informations sont couramment comparées aux permissions d'un fichier ?
 
 ::option[L'UID effectif, le GID effectif et les groupes supplémentaires du processus.]{#users-effective-credentials .correct explanation="Ces attributs sont comparés à la propriété et aux permissions lors des contrôles discrétionnaires."}
 ::option[Le thème de couleurs du terminal.]{#users-terminal-theme explanation="Les préférences d'affichage n'interviennent pas dans les permissions."}
@@ -70,8 +67,7 @@ Le compte traditionnellement nommé `root` possède l'UID 0, traité spécialeme
 
 Travaillez au quotidien avec un compte non privilégié : l'autorité administrative amplifie l'impact des erreurs de chemin, commandes non fiables et logiciels compromis.
 
-:::single-choice{#users-root-uid}
-Quel UID numérique identifie traditionnellement root ?
+:::single-choice{#users-root-uid} Quel UID numérique identifie traditionnellement root ?
 
 ::option[`0`]{#users-uid-zero .correct explanation="Les systèmes Unix et Linux réservent traditionnellement l'UID 0 au superutilisateur."}
 ::option[`1000`]{#users-uid-thousand explanation="De nombreuses distributions l'attribuent au premier compte humain, pas à root."}
@@ -88,8 +84,7 @@ $ sudo -l
 
 N'utilisez une commande administrative autorisée que si la tâche l'exige et que vous en comprenez les effets. N'employez pas `sudo` pour faire taire une erreur de permission, ni pour afficher sans raison une base de hachages comme `/etc/shadow`.
 
-:::single-choice{#users-sudo-policy}
-Que fait `sudo` avant d'exécuter la commande demandée ?
+:::single-choice{#users-sudo-policy} Que fait `sudo` avant d'exécuter la commande demandée ?
 
 ::option[Il consulte la politique pour autoriser l'identité cible demandée.]{#users-sudo-policy-check .correct explanation="`sudo` autorise selon la politique puis établit les attributs cibles si la demande est permise."}
 ::option[Il accorde toujours à tout utilisateur un accès root illimité.]{#users-sudo-always-root explanation="L'autorisation dépend de la politique et peut refuser utilisateur ou commande."}

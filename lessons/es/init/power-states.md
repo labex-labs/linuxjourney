@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 Un apagado ordenado pide a los servicios que se detengan, desmonta los sistemas de archivos y después cambia el estado de energía de la máquina. No trates un reinicio forzado o el interruptor físico como atajos habituales: cualquiera de ellos puede interrumpir escrituras y dejar datos o servicios en un estado incoherente.
 
-:::single-choice{#power-states-orderly-poweroff}
-¿Qué debes hacer antes de apagar una máquina remota de producción?
+:::single-choice{#power-states-orderly-poweroff} ¿Qué debes hacer antes de apagar una máquina remota de producción?
 
 ::option[Desconectar su consola de administración antes de ejecutar el comando.]{#power-states-remove-console explanation="Una consola de administración proporciona un acceso de recuperación útil y debe seguir disponible."}
 ::option[Forzar el apagado para que los servicios no puedan retrasar la operación.]{#power-states-force-first explanation="Una operación forzada puede interrumpir escrituras y no debe ser el método habitual."}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 No supongas que un aviso hace que la operación sea segura. Comprueba las sesiones activas y las cargas de trabajo específicas del sistema, y sigue el procedimiento documentado de drenaje del servicio o clúster cuando exista.
 
-:::single-choice{#power-states-four-minute-schedule}
-¿Qué comando programa un apagado dentro de cuatro minutos?
+:::single-choice{#power-states-four-minute-schedule} ¿Qué comando programa un apagado dentro de cuatro minutos?
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="La acción `-h` combinada con `+4` solicita el apagado dentro de cuatro minutos."}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="Sin el signo más, el argumento de tiempo no utiliza la forma documentada de minutos relativos."}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 Antes de reiniciar, comprueba que los discos cifrados, la configuración de arranque, la red y los servicios necesarios puedan recuperarse sin la sesión interactiva actual. Coordina primero la conmutación por error o la migración de cargas de trabajo cuando otros sistemas dependan de la máquina.
 
-:::single-choice{#power-states-reboot-action}
-¿Qué comando solicita un reinicio ordenado inmediato mediante `shutdown`?
+:::single-choice{#power-states-reboot-action} ¿Qué comando solicita un reinicio ordenado inmediato mediante `shutdown`?
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="La opción `-c` cancela un apagado pendiente."}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="La opción `-r` selecciona el reinicio y `now` lo programa de inmediato."}
@@ -89,8 +86,7 @@ Antes de reiniciar, comprueba que los discos cifrados, la configuración de arra
 
 `halt`, `poweroff` y `reboot` pueden ser interfaces de compatibilidad del sistema de inicio, pero los estados finales que solicitan son distintos. Detener interrumpe el funcionamiento normal del sistema; según la plataforma y la implementación, puede dejar la alimentación conectada. Apagar solicita además que el hardware compatible corte la alimentación. Es preferible usar el comando que nombre el resultado deseado y consultar el manual local, porque el comportamiento de compatibilidad puede variar.
 
-:::single-choice{#power-states-halt-versus-poweroff}
-¿Por qué debes distinguir `halt` de `poweroff`?
+:::single-choice{#power-states-halt-versus-poweroff} ¿Por qué debes distinguir `halt` de `poweroff`?
 
 ::option[El apagado solicita cortar la alimentación, mientras que la detención puede mantenerla.]{#power-states-power-distinction .correct explanation="El estado final solicitado al hardware puede ser distinto, aunque ambos detengan el funcionamiento normal."}
 ::option[La detención siempre reinicia los servicios después de pararlos.]{#power-states-halt-restarts explanation="Detener es un estado de parada, no una solicitud para reiniciar servicios."}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 Estos son puntos de partida; usa las comprobaciones de salud propias de la aplicación para la carga de trabajo real.
 
-:::single-choice{#power-states-post-reboot-check}
-¿Qué proporciona la prueba más sólida de que una aplicación reiniciada está disponible?
+:::single-choice{#power-states-post-reboot-check} ¿Qué proporciona la prueba más sólida de que una aplicación reiniciada está disponible?
 
 ::option[El estado del servicio, los registros y su comprobación de salud son satisfactorios.]{#power-states-health-evidence .correct explanation="Varias comprobaciones del sistema y de la aplicación verifican la carga de trabajo en lugar de limitarse al acceso a la máquina."}
 ::option[El indicador de alimentación del chasis está encendido.]{#power-states-light-on explanation="Que el hardware tenga alimentación no demuestra que la aplicación funcione correctamente."}

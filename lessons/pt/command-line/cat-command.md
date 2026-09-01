@@ -22,8 +22,7 @@ $ cat myfile.txt
 
 O comando grava o arquivo inteiro na saída padrão. Isso funciona bem para textos curtos, mas um arquivo longo pode passar rápido demais pela tela.
 
-:::single-choice{#display-short-file}
-Qual comando exibe todo o conteúdo de `myfile.txt` no terminal?
+:::single-choice{#display-short-file} Qual comando exibe todo o conteúdo de `myfile.txt` no terminal?
 
 ::option[`file myfile.txt`]{#classify-myfile explanation="`file` informa o provável tipo do arquivo. Ele não mostra todo o texto armazenado."}
 ::option[`touch myfile.txt`]{#update-myfile explanation="`touch` atualiza horários ou cria um arquivo ausente. Ele não exibe o conteúdo."}
@@ -46,8 +45,7 @@ $ cat dogfile birdfile > animals
 
 O shell cria `animals` ou o trunca antes de executar `cat` e então envia a saída combinada para ele. Não use um dos arquivos de entrada como destino, pois ele pode ser esvaziado antes que `cat` consiga lê-lo.
 
-:::single-choice{#combine-files-in-order}
-Qual comando grava `part1`, seguido de `part2`, em um arquivo novo ou substituído chamado `whole`?
+:::single-choice{#combine-files-in-order} Qual comando grava `part1`, seguido de `part2`, em um arquivo novo ou substituído chamado `whole`?
 
 ::option[`cat whole > part1 part2`]{#reverse-redirection explanation="O redirecionamento possui um único destino, enquanto as outras palavras se tornam operandos de `cat`. Isso não expressa a ordem de entrada e saída solicitada."}
 ::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` emite os dois arquivos na ordem indicada, e `>` redireciona essa saída combinada para `whole`."}
@@ -70,8 +68,7 @@ Use `>>` para acrescentar a nova entrada em vez de substituir o conteúdo existe
 $ cat >> notes.txt
 ```
 
-:::single-choice{#append-terminal-input}
-Você quer digitar mais texto no final de um `notes.txt` existente. Qual comando inicia essa operação sem truncar o arquivo?
+:::single-choice{#append-terminal-input} Você quer digitar mais texto no final de um `notes.txt` existente. Qual comando inicia essa operação sem truncar o arquivo?
 
 ::option[`cat > notes.txt`]{#overwrite-notes explanation="Um único `>` redireciona a entrada depois de truncar o destino. O texto existente em `notes.txt` seria perdido."}
 ::option[`cat >> notes.txt`]{#append-notes .correct explanation="O operador `>>` abre o destino para acréscimo; assim, o texto lido por `cat` é adicionado depois do conteúdo existente."}
@@ -95,8 +92,7 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-:::single-choice{#number-nonempty-lines}
-Qual comando numera apenas as linhas não vazias de `notes.txt`?
+:::single-choice{#number-nonempty-lines} Qual comando numera apenas as linhas não vazias de `notes.txt`?
 
 ::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="A opção `-b` numera as linhas de saída não vazias e deixa as linhas vazias sem numeração."}
 ::option[`cat -n notes.txt`]{#number-all-lines explanation="A opção `-n` numera todas as linhas de saída, inclusive as vazias. Ela não atende à condição solicitada."}
@@ -111,8 +107,7 @@ Use `cat` quando quiser toda a saída de uma só vez. Para um arquivo longo, `le
 $ less /var/log/syslog
 ```
 
-:::single-choice{#choose-viewer-for-long-file}
-Qual comando é mais adequado para ler interativamente um arquivo de log longo?
+:::single-choice{#choose-viewer-for-long-file} Qual comando é mais adequado para ler interativamente um arquivo de log longo?
 
 ::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` oferece rolagem, pesquisa e uma saída controlada, sendo adequado à leitura interativa de arquivos longos."}
 ::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` grava o log inteiro no terminal de uma só vez. Um arquivo longo pode passar pela tela antes que você consiga inspecioná-lo."}

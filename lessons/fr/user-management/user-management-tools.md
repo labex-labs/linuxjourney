@@ -44,8 +44,7 @@ $ sudo passwd -S bob
 $ id bob
 ```
 
-:::single-choice{#user-tools-create-home}
-Quelle option de `useradd` demande explicitement la création du répertoire personnel ?
+:::single-choice{#user-tools-create-home} Quelle option de `useradd` demande explicitement la création du répertoire personnel ?
 
 ::option[`-M`]{#user-tools-no-home-option explanation="`-M` demande explicitement de ne pas créer le répertoire sur les implémentations courantes."}
 ::option[`-s`]{#user-tools-shell-option explanation="`-s` choisit le shell de connexion."}
@@ -66,8 +65,7 @@ $ sudo passwd bob
 
 Un utilisateur change son propre mot de passe avec la première commande ; un administrateur autorisé change celui de `bob` avec la seconde. Saisissez les secrets uniquement dans l'invite protégée, jamais dans les arguments, l'historique, des notes ou un chat. PAM peut refuser les mots de passe faibles ou réutilisés ; les comptes d'annuaire peuvent exiger un autre outil.
 
-:::single-choice{#user-tools-change-own-password}
-Quelle commande permet normalement à l'utilisateur courant de changer son mot de passe dans une invite interactive ?
+:::single-choice{#user-tools-change-own-password} Quelle commande permet normalement à l'utilisateur courant de changer son mot de passe dans une invite interactive ?
 
 ::option[`useradd`]{#user-tools-add-not-password explanation="`useradd` crée un compte ; ce n'est pas l'outil interactif ordinaire de changement."}
 ::option[`userdel`]{#user-tools-delete-not-password explanation="`userdel` supprime un compte local."}
@@ -84,8 +82,7 @@ $ sudo usermod -aG developers bob
 
 Avant un déplacement de répertoire, vérifiez destination, propriété, espace, processus, montages et services. Pour les groupes supplémentaires, `-aG` ajoute à la liste ; `-G` sans `-a` la remplace et peut supprimer des accès. Les changements concernent normalement les nouvelles sessions, pas les processus déjà actifs.
 
-:::single-choice{#user-tools-append-group}
-Quelle commande ajoute `bob` au groupe supplémentaire `developers` sans remplacer ses autres appartenances ?
+:::single-choice{#user-tools-append-group} Quelle commande ajoute `bob` au groupe supplémentaire `developers` sans remplacer ses autres appartenances ?
 
 ::option[`usermod -G developers bob`]{#user-tools-replace-groups explanation="Sans `-a`, `-G` remplace la liste et peut supprimer les groupes existants."}
 ::option[`usermod -aG developers bob`]{#user-tools-append-groups .correct explanation="`-a` ajoute le groupe désigné par `-G` en préservant les autres."}
@@ -98,8 +95,7 @@ Un administrateur peut verrouiller le hachage avec `passwd -l USER`, inspecter a
 
 Ce verrou ne bloque pas nécessairement clés SSH, jetons, tâches planifiées, processus actifs ou authentification propre à un service. Pour désactiver complètement un compte, définissez les menaces et coordonnez expiration, shell, services, clés et sessions.
 
-:::single-choice{#user-tools-password-lock-scope}
-Que verrouille principalement `passwd -l bob` ?
+:::single-choice{#user-tools-password-lock-scope} Que verrouille principalement `passwd -l bob` ?
 
 ::option[Toutes les voies possibles d'authentification et d'exécution.]{#user-tools-lock-everything explanation="Clés, jetons, tâches, services et sessions peuvent exiger d'autres contrôles."}
 ::option[Tous les fichiers appartenant à l'UID de Bob.]{#user-tools-lock-files explanation="L'état du mot de passe ne change ni la propriété ni l'accès aux données."}
@@ -120,8 +116,7 @@ Avant toute suppression :
 
 `userdel -r` ne garantit pas la suppression des fichiers hors du répertoire et de la boîte configurés. Il peut rester propriétés numériques, autorisations de bases, identités applicatives et comptes distants.
 
-:::single-choice{#user-tools-userdel-r-scope}
-Que demande couramment `userdel -r bob` en plus de `userdel bob` ?
+:::single-choice{#user-tools-userdel-r-scope} Que demande couramment `userdel -r bob` en plus de `userdel bob` ?
 
 ::option[Tous les fichiers de l'UID sur tous les systèmes montés.]{#user-tools-delete-all-owned explanation="L'outil ne découvre ni n'efface universellement tous les fichiers appartenant à l'UID."}
 ::option[Tous les comptes distants également nommés `bob`.]{#user-tools-delete-remote explanation="`userdel` agit sur les bases locales applicables."}

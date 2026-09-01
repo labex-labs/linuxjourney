@@ -22,8 +22,7 @@ En el modo Normal, escribe `/`, introduce un patrón y pulsa Intro. Vim se despl
 
 Las búsquedas usan la sintaxis de expresiones regulares de Vim, por lo que caracteres como `.`, `*`, `[` y `\` pueden tener un significado especial. Usa `\V` al principio cuando el resto del patrón deba tratarse como «muy no mágico», o escapa deliberadamente los caracteres especiales.
 
-:::single-choice{#vim-search-forward-key}
-Desde el modo Normal, ¿qué orden inicia una búsqueda hacia delante de `pretty`?
+:::single-choice{#vim-search-forward-key} Desde el modo Normal, ¿qué orden inicia una búsqueda hacia delante de `pretty`?
 
 ::option[`?pretty` seguido de Intro]{#vim-backward-pretty explanation="Un signo de interrogación inicia una búsqueda hacia atrás desde la posición actual del cursor."}
 ::option[`/pretty` seguido de Intro]{#vim-forward-pretty .correct explanation="Una barra inicia una búsqueda hacia delante e Intro envía el patrón."}
@@ -40,8 +39,7 @@ Escribe `?`, introduce un patrón y pulsa Intro para desplazarte a la coincidenc
 
 Esto no significa necesariamente «la última coincidencia del archivo». El resultado depende de la posición actual del cursor. Con la opción predeterminada `wrapscan` de Vim, una búsqueda puede continuar al principio o al final; `:set nowrapscan` desactiva ese recorrido circular.
 
-:::single-choice{#vim-search-backward-key}
-¿Qué prefijo de búsqueda del modo Normal busca texto anterior al cursor?
+:::single-choice{#vim-search-backward-key} ¿Qué prefijo de búsqueda del modo Normal busca texto anterior al cursor?
 
 ::option[`/`]{#vim-slash-forward explanation="Una barra busca hacia delante desde el cursor, no hacia el texto anterior."}
 ::option[`?`]{#vim-question-backward .correct explanation="Un signo de interrogación inicia una búsqueda de patrones hacia atrás desde la posición actual del cursor."}
@@ -57,8 +55,7 @@ Después de cualquier tipo de búsqueda:
 
 Por tanto, después de `/pretty`, `n` avanza y `N` retrocede. Después de `?pretty`, `n` retrocede y `N` avanza.
 
-:::single-choice{#vim-repeat-backward-search}
-Después de ejecutar `?error`, ¿qué tecla repite la búsqueda en la misma dirección hacia atrás?
+:::single-choice{#vim-repeat-backward-search} Después de ejecutar `?error`, ¿qué tecla repite la búsqueda en la misma dirección hacia atrás?
 
 ::option[`n`]{#vim-same-question-search .correct explanation="La `n` minúscula repite la búsqueda más reciente en su dirección original, que en este caso es hacia atrás."}
 ::option[`N`]{#vim-opposite-question-search explanation="La `N` mayúscula invierte la dirección original, por lo que avanzaría después de una búsqueda con `?`."}
@@ -74,8 +71,7 @@ En el modo Normal, coloca el cursor sobre una palabra y usa:
 
 Estas órdenes establecen el patrón de búsqueda más reciente, por lo que `n` y `N` pueden continuar a partir de él.
 
-:::single-choice{#vim-current-word-forward}
-¿Qué tecla del modo Normal busca hacia delante la palabra completa situada bajo el cursor?
+:::single-choice{#vim-current-word-forward} ¿Qué tecla del modo Normal busca hacia delante la palabra completa situada bajo el cursor?
 
 ::option[`#`]{#vim-hash-current-word explanation="La tecla de almohadilla busca hacia atrás la palabra situada bajo el cursor."}
 ::option[`*`]{#vim-star-current-word .correct explanation="La orden con asterisco crea un patrón de palabra completa a partir de la palabra bajo el cursor y busca hacia delante."}
@@ -95,8 +91,7 @@ Por ejemplo, `/\cerror` coincide con `error`, `Error` y `ERROR` independientemen
 
 Cuando está activado el resaltado de búsquedas, `:nohlsearch` borra los resaltados visibles actuales sin eliminar el patrón de búsqueda. La siguiente búsqueda o repetición puede volver a resaltar coincidencias.
 
-:::single-choice{#vim-force-case-insensitive}
-¿Qué patrón obliga a una búsqueda concreta de Vim de `error` a ignorar mayúsculas y minúsculas sin importar las opciones actuales?
+:::single-choice{#vim-force-case-insensitive} ¿Qué patrón obliga a una búsqueda concreta de Vim de `error` a ignorar mayúsculas y minúsculas sin importar las opciones actuales?
 
 ::option[`/\Cerror`]{#vim-pattern-match-case explanation="La `\C` mayúscula obliga a distinguir mayúsculas y minúsculas, el comportamiento contrario."}
 ::option[`/:error`]{#vim-pattern-colon-error explanation="En este patrón, los dos puntos son un carácter literal y no seleccionan el tratamiento de mayúsculas."}

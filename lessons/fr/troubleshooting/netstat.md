@@ -22,8 +22,7 @@ $ sudo ss -lntup
 
 `-l` choisit les écouteurs, `-n` évite la résolution, `-t` et `-u` choisissent TCP et UDP, et `-p` demande le processus. UDP étant sans connexion, ses sockets liées n'ont pas l'état `LISTEN` de la négociation TCP.
 
-:::single-choice{#netstat-ss-numeric}
-Pourquoi employer `-n` lors d'un dépannage de sockets ?
+:::single-choice{#netstat-ss-numeric} Pourquoi employer `-n` lors d'un dépannage de sockets ?
 
 ::option[Pour créer un nouvel espace de noms réseau.]{#netstat-new-namespace explanation="Cette option contrôle la résolution des noms dans la sortie."}
 ::option[Pour empêcher les recherches de noms d'adresses et de ports.]{#netstat-numeric-output .correct explanation="La sortie numérique évite de confondre un nom conventionnel avec l'identité réellement observée."}
@@ -34,8 +33,7 @@ Pourquoi employer `-n` lors d'un dépannage de sockets ?
 
 Une extrémité locale combine adresse, protocole de transport et port. Une connexion TCP se distingue par protocole, adresses et ports source et destination. `/etc/services` associe des noms conventionnels à des numéros, sans prouver quel processus possède un port ni quel protocole applicatif il parle.
 
-:::single-choice{#netstat-services-file-limit}
-Qu'établit une entrée `/etc/services` telle que `https 443/tcp` ?
+:::single-choice{#netstat-services-file-limit} Qu'établit une entrée `/etc/services` telle que `https 443/tcp` ?
 
 ::option[Qu'un serveur HTTPS sain écoute actuellement.]{#netstat-healthy-listener explanation="Une base statique ne prouve pas l'état d'exécution."}
 ::option[L'association conventionnelle entre ce nom de service et ce port.]{#netstat-conventional-name .correct explanation="La propriété de la socket et le protocole réel exigent une inspection et des tests."}
@@ -51,8 +49,7 @@ Qu'établit une entrée `/etc/services` telle que `https 443/tcp` ?
 
 Une population importante ou croissante de `CLOSE-WAIT` pointe souvent vers le nettoyage de l'application locale. `TIME-WAIT` est normal ; sa quantité et son impact déterminent s'il pose problème.
 
-:::single-choice{#netstat-close-wait-owner}
-Quel côté doit encore fermer une socket en `CLOSE-WAIT` ?
+:::single-choice{#netstat-close-wait-owner} Quel côté doit encore fermer une socket en `CLOSE-WAIT` ?
 
 ::option[Tous les routeurs d'Internet.]{#netstat-all-routers-close explanation="Les routeurs ne possèdent pas la socket d'extrémité."}
 ::option[Le serveur DNS faisant autorité.]{#netstat-dns-close explanation="Le DNS est sans rapport avec la fermeture TCP locale."}
@@ -65,8 +62,7 @@ Le sens de `Recv-Q` et `Send-Q` dépend de l'état et du protocole. Sur TCP éta
 
 Un instantané ne prouve ni fuite ni goulot. Échantillonnez dans le temps et corrélez avec processus, latence, retransmissions et limites de ressources.
 
-:::single-choice{#netstat-queue-snapshot}
-Pourquoi un seul instantané avec une grande file ne suffit-il pas au diagnostic ?
+:::single-choice{#netstat-queue-snapshot} Pourquoi un seul instantané avec une grande file ne suffit-il pas au diagnostic ?
 
 ::option[Linux ne stocke jamais de données dans les files de sockets.]{#netstat-no-queues explanation="Le réseau du noyau repose sur des files d'envoi et de réception."}
 ::option[Chaque valeur de file est une permission de fichier.]{#netstat-queue-permission explanation="Ces champs décrivent l'état réseau."}
@@ -82,8 +78,7 @@ $ ss -ltn 'sport = :443'
 
 Limitez la sortie au protocole, à l'état, à l'extrémité ou au processus concernés. Un écouteur prouve la disponibilité locale du transport, pas l'accessibilité distante ni la santé de l'application. Poursuivez avec des tests de route, pare-feu, paquets, TLS et application.
 
-:::single-choice{#netstat-listener-limit}
-Qu'est-ce qu'un écouteur TCP sur le port 443 ne prouve pas ?
+:::single-choice{#netstat-listener-limit} Qu'est-ce qu'un écouteur TCP sur le port 443 ne prouve pas ?
 
 ::option[Qu'une socket locale a réussi les opérations bind et listen.]{#netstat-listen-local explanation="C'est précisément l'état local affiché."}
 ::option[Que des clients distants peuvent terminer une requête HTTPS valide.]{#netstat-not-remote-proof .correct explanation="Le chemin, la politique, TLS et l'application restent à tester."}

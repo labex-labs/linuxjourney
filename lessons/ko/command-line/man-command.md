@@ -22,8 +22,7 @@ $ man ls
 
 매뉴얼 페이지는 보통 개요, 설명, 옵션, 관련 파일과 상호 참조를 포함하지만 정확한 구성은 페이지마다 다릅니다.
 
-:::single-choice{#open-ls-manual}
-설치된 `ls` 매뉴얼 페이지를 여는 명령어는 무엇인가요?
+:::single-choice{#open-ls-manual} 설치된 `ls` 매뉴얼 페이지를 여는 명령어는 무엇인가요?
 
 ::option[`help ls`]{#help-ls explanation="Bash `help`는 쉘 내장 명령어를 설명하며 보통 외부 `ls` 매뉴얼 페이지를 열지 않습니다."}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man`은 매뉴얼 데이터베이스에서 `ls` 주제를 찾아 일치하는 페이지를 표시합니다."}
@@ -43,16 +42,14 @@ man 페이지는 명령어 옵션을 이해하는 데 특히 유용합니다. �
 
 페이저는 시스템이나 환경에 따라 다를 수 있으므로 모든 곳에서 같은 키를 보장하지는 않습니다. 위 키는 일반적인 `less` 설정에 해당합니다.
 
-:::single-choice{#search-man-page}
-`less`에서 man 페이지가 열린 상태로 `--recursive`를 앞으로 검색하려면 무엇을 입력하나요?
+:::single-choice{#search-man-page} `less`에서 man 페이지가 열린 상태로 `--recursive`를 앞으로 검색하려면 무엇을 입력하나요?
 
 ::option[`?--recursive`를 입력하고 Enter를 누릅니다.]{#backward-man-search explanation="물음표는 뒤로 검색을 시작하므로 요청한 방향과 반대입니다."}
 ::option[`/--recursive`를 입력하고 Enter를 누릅니다.]{#forward-man-search .correct explanation="슬래시는 `less`에서 앞으로 검색을 시작하고 Enter는 패턴을 제출합니다."}
 ::option[`n--recursive`를 입력하고 Enter를 누릅니다.]{#repeat-man-search explanation="`n`은 기존 검색을 반복하며 이 방식으로 새 검색 패턴을 시작하지 않습니다."}
 :::
 
-:::single-choice{#leave-man-page}
-일반적인 페이저에서 man 페이지가 열린 상태로 쉘로 돌아가는 키는 무엇인가요?
+:::single-choice{#leave-man-page} 일반적인 페이저에서 man 페이지가 열린 상태로 쉘로 돌아가는 키는 무엇인가요?
 
 ::option[`G`]{#man-page-end explanation="대문자 `G`는 `less`에서 페이지 끝으로 이동할 뿐 페이저를 닫지 않습니다."}
 ::option[`n`]{#next-man-match explanation="`n`은 최근 검색을 반복하며 매뉴얼 페이지를 계속 열어 둡니다."}
@@ -78,8 +75,7 @@ $ man 1 passwd
 
 첫 명령어는 섹션 5의 `passwd` 파일 형식 페이지를, 두 번째는 섹션 1의 사용자 명령어 페이지를 엽니다. `passwd(5)` 같은 참조도 같은 `주제(섹션)` 표기입니다.
 
-:::single-choice{#open-passwd-file-format}
-`passwd` 파일 형식을 설명하는 섹션 5 페이지를 여는 명령어는 무엇인가요?
+:::single-choice{#open-passwd-file-format} `passwd` 파일 형식을 설명하는 섹션 5 페이지를 여는 명령어는 무엇인가요?
 
 ::option[`man passwd 5`]{#section-after-topic explanation="이 명령 형식에서는 섹션 선택자가 주제 앞에 와야 하므로 이 순서는 `passwd(5)`를 요청하지 않습니다."}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="섹션 `5`를 `passwd` 앞에 두면 파일 형식 페이지를 명확히 선택합니다."}
@@ -95,8 +91,7 @@ $ man 1 passwd
 - 외부 프로그램이 관례를 지원하면 `NAME --help`를 시도합니다.
 - 배포판에 별도의 문서 패키지가 있는지 확인합니다.
 
-:::single-choice{#missing-builtin-manual}
-`type cd`가 `cd`를 Bash 내장 명령어라고 표시하고 별도 man 페이지도 없습니다. 다음으로 어떤 명령어를 시도해야 하나요?
+:::single-choice{#missing-builtin-manual} `type cd`가 `cd`를 Bash 내장 명령어라고 표시하고 별도 man 페이지도 없습니다. 다음으로 어떤 명령어를 시도해야 하나요?
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis`는 매뉴얼 데이터베이스의 항목을 요약하므로 없는 내장 명령어 전용 페이지를 제공할 수 없습니다."}
 ::option[`file cd`]{#file-cd-name explanation="`file`은 파일 시스템 객체를 분류하지만 여기서 `cd`는 경로가 아니라 쉘 내장 명령어로 해석됩니다."}

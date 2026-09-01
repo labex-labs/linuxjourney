@@ -30,8 +30,7 @@ Le lien symbolique possède son propre inode et stocke le texte `myfile`. Lorsqu
 $ readlink myfilelink
 ```
 
-:::single-choice{#symlinks-create-symbolic}
-Quelle commande crée le lien symbolique `myfilelink` contenant la cible `myfile` ?
+:::single-choice{#symlinks-create-symbolic} Quelle commande crée le lien symbolique `myfilelink` contenant la cible `myfile` ?
 
 ::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="L'option `-s` demande un lien symbolique ; elle est suivie de la cible puis du nom du nouveau lien."}
 ::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="Sans `-s`, `ln` demande un lien physique vers l'inode existant."}
@@ -50,8 +49,7 @@ $ ln -s ../data/item tree/current/item
 
 Déplacer toute l'arborescence `tree` préserve cette relation relative. Déplacer seulement le lien ou sa cible peut la rompre. Un lien symbolique peut contenir une cible inexistante ; on dit alors qu'il est pendant ou cassé.
 
-:::single-choice{#symlinks-relative-resolution}
-À partir de quel emplacement la cible relative d'un lien symbolique est-elle résolue ?
+:::single-choice{#symlinks-relative-resolution} À partir de quel emplacement la cible relative d'un lien symbolique est-elle résolue ?
 
 ::option[Le répertoire personnel de l'utilisateur qui l'a créé.]{#symlinks-creator-home explanation="L'identité du créateur ne devient pas une base de résolution permanente."}
 ::option[Le répertoire actuel du premier shell qui l'affiche.]{#symlinks-listing-shell explanation="Le contexte d'affichage ne réécrit pas la relation de cible stockée."}
@@ -73,8 +71,7 @@ Les deux noms correspondent au même système de fichiers et au même numéro d'
 
 Les liens physiques ne peuvent pas franchir les limites d'un système de fichiers, car un numéro d'inode n'a de sens qu'à l'intérieur de celui-ci. Linux interdit également aux utilisateurs ordinaires de créer des liens physiques vers des répertoires et peut restreindre les liens vers des fichiers dont ils ne sont pas propriétaires, afin d'éviter les cycles et les problèmes de sécurité.
 
-:::single-choice{#symlinks-hard-link-inode}
-Que partagent deux liens physiques vers un même fichier ordinaire ?
+:::single-choice{#symlinks-hard-link-inode} Que partagent deux liens physiques vers un même fichier ordinaire ?
 
 ::option[Uniquement des noms semblables, mais des données distinctes.]{#symlinks-separate-data explanation="Cela décrirait des copies indépendantes, pas des liens physiques."}
 ::option[Un chemin stocké dans l'inode distinct d'un lien symbolique.]{#symlinks-stored-path explanation="Le texte d'un chemin est le mécanisme qui définit un lien symbolique."}
@@ -93,8 +90,7 @@ La suppression du nom d'un lien physique diminue le nombre de liens de l'inode p
 
 Évitez la barre oblique finale lorsque vous supprimez un lien symbolique vers un répertoire, car la résolution d'un chemin qui se termine ainsi peut suivre la sémantique des répertoires selon la commande. Examinez le lien avec `ls -ld -- LIEN`, puis supprimez délibérément son nom.
 
-:::single-choice{#symlinks-remove-symbolic}
-Que se produit-il normalement lorsque vous supprimez le lien symbolique lui-même ?
+:::single-choice{#symlinks-remove-symbolic} Que se produit-il normalement lorsque vous supprimez le lien symbolique lui-même ?
 
 ::option[L'inode et le nom du lien symbolique sont supprimés, tandis que la cible subsiste.]{#symlinks-remove-link-only .correct explanation="Délier le lien symbolique n'agit pas sur l'objet désigné par le texte de sa cible."}
 ::option[La cible et tous ses liens physiques sont automatiquement effacés.]{#symlinks-remove-target explanation="Le lien symbolique est un objet distinct du système de fichiers et ne possède pas sa cible."}
@@ -114,8 +110,7 @@ Pour les examens courants :
 
 Les permissions affichées sous la forme `lrwxrwxrwx` ne constituent pas une autorisation générale d'accès. Celui-ci dépend de la traversée des répertoires, des règles de suivi des liens et des permissions de la cible ; le propriétaire du lien symbolique compte aussi pour certaines règles des répertoires protégés.
 
-:::single-choice{#symlinks-readlink-output}
-Qu'affiche `readlink LIEN` par défaut ?
+:::single-choice{#symlinks-readlink-output} Qu'affiche `readlink LIEN` par défaut ?
 
 ::option[Le texte du chemin stocké dans le lien symbolique.]{#symlinks-readlink-target-text .correct explanation="La commande examine l'objet lien sans lire le contenu du fichier cible."}
 ::option[La totalité des octets du fichier ordinaire cible.]{#symlinks-readlink-file-content explanation="Pour lire le contenu de la cible, employez une commande de lecture après l'avoir résolue délibérément."}

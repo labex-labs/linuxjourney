@@ -18,8 +18,7 @@ O roteamento cria ou seleciona informações sobre prefixos acessíveis. O encam
 
 Essas são questões separadas do plano de controle e do plano de dados. Uma rota pode existir enquanto a política de firewall bloqueia o encaminhamento, ou uma interface de encaminhamento pode estar ativa enquanto não existe uma rota válida.
 
-:::single-choice{#router-forwarding-role}
-O que o encaminhamento de pacotes faz?
+:::single-choice{#router-forwarding-role} O que o encaminhamento de pacotes faz?
 
 ::option[Aplica as informações de roteamento para enviar um pacote em direção ao próximo salto.]{#router-apply-route .correct explanation="O encaminhamento é a ação realizada em cada pacote com base na rota e na política selecionadas."}
 ::option[Cria um login permanente na aplicação para cada destino.]{#router-create-login explanation="O roteamento não gerencia contas de aplicações remotas."}
@@ -32,8 +31,7 @@ Uma rota associa um prefixo de destino a uma interface de saída, próximo salto
 
 Se nenhuma rota elegível existir, o roteador descarta o pacote e pode gerar uma mensagem ICMP de destino inacessível. Uma rota padrão é opcional e não precisa apontar diretamente para a Internet pública.
 
-:::single-choice{#router-default-route}
-Quando uma rota padrão é selecionada?
+:::single-choice{#router-default-route} Quando uma rota padrão é selecionada?
 
 ::option[Antes da verificação de qualquer prefixo específico do destino.]{#router-default-first explanation="Prefixos elegíveis mais específicos têm precedência."}
 ::option[Apenas quando o pacote é um broadcast Ethernet.]{#router-default-broadcast explanation="A seleção da rota IP se baseia nos destinos da camada de rede."}
@@ -46,8 +44,7 @@ Dois hosts na mesma sub-rede no enlace normalmente trocam quadros sem enviar o p
 
 Um “roteador” residencial geralmente combina roteador IP, switch Ethernet, ponto de acesso Wi-Fi, serviço DHCP, NAT e firewall. Cada função deve ser diagnosticada separadamente.
 
-:::single-choice{#router-same-subnet-path}
-O tráfego entre dois hosts no enlace precisa passar pelo roteador padrão?
+:::single-choice{#router-same-subnet-path} O tráfego entre dois hosts no enlace precisa passar pelo roteador padrão?
 
 ::option[Sim, porque todo pacote precisa alcançar uma porta WAN.]{#router-always-wan explanation="A entrega local no enlace pode ocorrer diretamente por ele."}
 ::option[Sim, a menos que ambos os hosts tenham endereços públicos.]{#router-public-required explanation="O escopo público ou privado não determina o encaminhamento básico no enlace."}
@@ -58,8 +55,7 @@ O tráfego entre dois hosts no enlace precisa passar pelo roteador padrão?
 
 Um salto roteado é uma etapa de encaminhamento da camada de rede. O TTL do IPv4 e o Limite de Saltos do IPv6 são reduzidos em cada roteador, limitando os loops. A contagem de saltos não é uma métrica completa de distância nem de qualidade: os enlaces diferem em largura de banda, latência, perda, política e congestionamento.
 
-:::single-choice{#router-hop-count-limit}
-O que uma contagem menor de saltos não consegue garantir?
+:::single-choice{#router-hop-count-limit} O que uma contagem menor de saltos não consegue garantir?
 
 ::option[Que existe pelo menos uma etapa roteada.]{#router-hop-exists explanation="Uma contagem positiva de saltos indica diretamente uma passagem roteada."}
 ::option[Um caminho mais rápido ou melhor para a aplicação.]{#router-hop-not-quality .correct explanation="Menos roteadores ainda podem atravessar enlaces mais lentos, congestionados ou limitados por políticas."}

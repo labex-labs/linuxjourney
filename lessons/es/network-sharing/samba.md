@@ -18,8 +18,7 @@ Antes de instalar o cambiar Samba, define los clientes autorizados, las identida
 
 El acceso está controlado tanto por la política de Samba como por los permisos subyacentes del sistema de archivos. Permitir escrituras en `smb.conf` no puede conceder a una cuenta un acceso al sistema de archivos que no posee.
 
-:::single-choice{#samba-two-permission-layers}
-¿Qué debe permitir que un usuario escriba mediante un recurso Samba?
+:::single-choice{#samba-two-permission-layers} ¿Qué debe permitir que un usuario escriba mediante un recurso Samba?
 
 ::option[Únicamente el comentario visible del recurso.]{#samba-comment-permission explanation="Un comentario es texto descriptivo y no concede acceso."}
 ::option[Tanto las reglas de Samba como los permisos del sistema de archivos.]{#samba-policy-and-filesystem .correct explanation="La solicitud debe superar las reglas del protocolo y la autorización del sistema de archivos local."}
@@ -46,8 +45,7 @@ $ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 
 El bit set-group-ID ayuda a que las entradas nuevas hereden el grupo del directorio, pero el acceso colaborativo también puede requerir una ACL o una máscara de creación elegida con cuidado. Prueba los resultados reales para archivos y directorios en vez de suponer que la herencia es suficiente.
 
-:::single-choice{#samba-valid-users}
-¿Qué expresa `valid users = @teamshare`?
+:::single-choice{#samba-valid-users} ¿Qué expresa `valid users = @teamshare`?
 
 ::option[Todos los usuarios anónimos de la red reciben acceso de escritura.]{#samba-every-anonymous explanation="La regla restringe el acceso en vez de habilitar escrituras de invitados."}
 ::option[El servidor debe cambiar el nombre del recurso a `teamshare`.]{#samba-rename-share explanation="El nombre visible del recurso sigue siendo el de la sección `[team]`."}
@@ -64,8 +62,7 @@ $ sudo smbpasswd -a alice
 
 Las implementaciones con un dominio de directorio utilizan un diseño de identidades diferente. No pongas contraseñas en el historial del shell ni en configuraciones que puedan leer usuarios ajenos, y no supongas que una contraseña Samba coincide automáticamente con la de la cuenta Unix.
 
-:::single-choice{#samba-password-database}
-¿Qué suele hacer `smbpasswd -a alice` en un servidor independiente?
+:::single-choice{#samba-password-database} ¿Qué suele hacer `smbpasswd -a alice` en un servidor independiente?
 
 ::option[Elimina el directorio personal del usuario Unix.]{#samba-delete-home explanation="La orden administra credenciales Samba y no elimina directorios personales."}
 ::option[Añade o inicializa las credenciales Samba de la cuenta.]{#samba-add-credential .correct explanation="La base de datos de autenticación SMB se administra por separado de la mera creación de un usuario Unix."}
@@ -88,8 +85,7 @@ Prueba desde un cliente con un usuario explícito:
 $ smbclient //server.example.net/team -U alice
 ```
 
-:::single-choice{#samba-testparm-purpose}
-¿Por qué debes ejecutar `testparm -s` antes de aplicar un cambio de Samba?
+:::single-choice{#samba-testparm-purpose} ¿Por qué debes ejecutar `testparm -s` antes de aplicar un cambio de Samba?
 
 ::option[Copia todos los archivos compartidos en un servidor de respaldo.]{#samba-testparm-backup explanation="La herramienta analiza y muestra la configuración; no copia los datos compartidos."}
 ::option[Valida y muestra la configuración efectiva de Samba.]{#samba-testparm-validate .correct explanation="La salida del analizador detecta errores y revela los ajustes interpretados antes de afectar al servicio."}
@@ -107,8 +103,7 @@ $ sudo mount -t cifs //server.example.net/team /mnt/team \
 
 Protege el archivo de credenciales, confirma el dialecto compatible con ambos extremos y define deliberadamente los requisitos de UID, GID, permisos y cifrado. Después del montaje, verifica con `findmnt`, realiza pruebas autorizadas de lectura y escritura y desmonta tras coordinar a los usuarios activos.
 
-:::single-choice{#samba-command-line-password}
-¿Por qué debes evitar `password=...` directamente en una orden de montaje?
+:::single-choice{#samba-command-line-password} ¿Por qué debes evitar `password=...` directamente en una orden de montaje?
 
 ::option[Puede exponer el secreto mediante el historial o los argumentos del proceso.]{#samba-password-exposure .correct explanation="Una fuente de credenciales protegida reduce la divulgación accidental, aunque también requiere permisos cuidadosos."}
 ::option[SMB no admite ninguna forma de autenticación con contraseña.]{#samba-no-passwords explanation="La autenticación SMB con contraseña es habitual, aunque también existen otros sistemas de identidad."}

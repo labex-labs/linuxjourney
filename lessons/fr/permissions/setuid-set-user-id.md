@@ -27,8 +27,7 @@ Le `s` minuscule à la position d’exécution du propriétaire signifie que set
 
 Ne supposez pas que chaque distribution possède le même mode ou la même conception de l’authentification. Examinez le système réel au lieu de vous fier à l’exemple.
 
-:::single-choice{#setuid-lowercase-s}
-Qu’indique un `s` minuscule à la position d’exécution du propriétaire ?
+:::single-choice{#setuid-lowercase-s} Qu’indique un `s` minuscule à la position d’exécution du propriétaire ?
 
 ::option[Setuid est défini, mais l’exécution du propriétaire est absente.]{#setuid-s-without-execute explanation="Cette combinaison s’affiche sous la forme d’un `S` majuscule, et non d’un `s` minuscule."}
 ::option[Le fichier possède un sticky bit et l’exécution du groupe.]{#setuid-sticky-group explanation="Le sticky bit apparaît à la position d’exécution des autres, tandis que setuid apparaît à celle du propriétaire."}
@@ -41,8 +40,7 @@ Lorsque le noyau honore setuid pendant l’exécution, le nouveau processus reç
 
 Ce mécanisme peut permettre à un programme soigneusement écrit de valider une demande et d’apporter une modification limitée à un état protégé. Par exemple, un utilitaire local de changement de mot de passe peut nécessiter un accès contrôlé à des données d’authentification que les utilisateurs ordinaires ne peuvent pas modifier directement. Les implémentations modernes reposent aussi sur PAM, le verrouillage des fichiers, des politiques et d’autres protections ; setuid seul n’explique pas toute la procédure.
 
-:::single-choice{#setuid-effective-identity}
-Lorsqu’un exécutable setuid est honoré, quelle identité provient principalement du propriétaire du fichier ?
+:::single-choice{#setuid-effective-identity} Lorsqu’un exécutable setuid est honoré, quelle identité provient principalement du propriétaire du fichier ?
 
 ::option[Le nom de connexion enregistré dans `/etc/passwd`.]{#setuid-login-name explanation="L’exécution d’un fichier ne réécrit ni l’enregistrement du compte ni le nom de connexion de l’appelant."}
 ::option[L’identifiant utilisateur effectif du processus.]{#setuid-effective-user .correct explanation="Le mécanisme d’exécution set-user-ID modifie l’identité utilisateur effective employée pour de nombreux contrôles d’autorisation."}
@@ -65,8 +63,7 @@ $ sudo chmod 4755 myfile
 
 Ici, le premier `4` définit setuid et `755` les bits ordinaires du propriétaire, du groupe et des autres. Retirez setuid sans modifier le reste du mode avec `chmod u-s myfile`.
 
-:::single-choice{#setuid-octal-value}
-Quelle première valeur octale représente le bit spécial setuid ?
+:::single-choice{#setuid-octal-value} Quelle première valeur octale représente le bit spécial setuid ?
 
 ::option[`4`]{#setuid-octal-four .correct explanation="Setuid contribue pour `4` au premier chiffre des bits spéciaux."}
 ::option[`1`]{#setuid-octal-one explanation="Un premier `1` représente le sticky bit."}
@@ -81,8 +78,7 @@ Linux n’honore normalement pas setuid sur les scripts interprétés, car une m
 
 N’ajoutez jamais setuid à un shell, un interpréteur ou un programme copié arbitrairement pour faire une expérience sur un système partagé. Auditez les fichiers setuid existants et entraînez-vous uniquement dans un environnement isolé et jetable.
 
-:::single-choice{#setuid-nosuid-mount}
-Quel est le but du montage d’un système de fichiers avec `nosuid` ?
+:::single-choice{#setuid-nosuid-mount} Quel est le but du montage d’un système de fichiers avec `nosuid` ?
 
 ::option[Retirer chaque bit d’exécution enregistré sur ses fichiers.]{#setuid-nosuid-remove-execute explanation="Cette option ne réécrit pas les bits ordinaires d’exécution dans les métadonnées des fichiers."}
 ::option[Supprimer les effets de setuid et setgid lors de l’exécution sur ce système de fichiers.]{#setuid-nosuid-suppress .correct explanation="L’option de montage `nosuid` empêche ces bits spéciaux d’accorder leur comportement habituel de changement d’identifiants à l’exécution."}

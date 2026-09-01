@@ -24,8 +24,7 @@ Sicherheitsdistributionen sind am sinnvollsten, wenn du bereits weißt, warum du
 
 Sicherheitswerkzeuge dürfen nur auf Systemen eingesetzt werden, die dir gehören oder für deren Prüfung du eine ausdrückliche Erlaubnis besitzt. Eine spezialisierte Distribution stellt Werkzeuge bereit, aber weder eine Autorisierung noch Urteilsvermögen oder die nötigen Fähigkeiten für ihren sicheren Einsatz.
 
-:::single-choice{#confirm-testing-authorization}
-Was musst du bestätigen, bevor du Werkzeuge für Penetrationstests auf einem System einsetzt?
+:::single-choice{#confirm-testing-authorization} Was musst du bestätigen, bevor du Werkzeuge für Penetrationstests auf einem System einsetzt?
 
 ::option[Das System gehört dir oder du hast die ausdrückliche Erlaubnis, es zu prüfen]{#authorized-system .correct explanation="Sicherheitstests erfordern eine eindeutige Autorisierung durch den Eigentümer des Systems. Der Besitz eines Werkzeugs oder einer Distribution berechtigt dich nicht dazu, es gegen fremde Systeme einzusetzen."}
 ::option[Die Sicherheitsdistribution enthält das Werkzeug, das du ausführen möchtest]{#tool-is-installed explanation="Die Verfügbarkeit eines Werkzeugs begründet keine Erlaubnis. Die Autorisierung muss vom Eigentümer des zu prüfenden Systems stammen."}
@@ -51,8 +50,7 @@ Kali zeichnet sich dadurch aus, dass es eine große Sammlung von Sicherheitswerk
 
 Gleichzeitig wird Kali neuen Nutzern nicht als allgemeiner Linux-Desktop empfohlen. Selbst Kalis eigene Dokumentation warnt davor, dass die Distribution nicht für Menschen geeignet ist, die mit Linux nicht vertraut sind oder lediglich eine normale Desktop-Umgebung möchten.
 
-:::single-choice{#match-kali-use-case}
-Welche Situation passt am besten zu Kali Linux?
+:::single-choice{#match-kali-use-case} Welche Situation passt am besten zu Kali Linux?
 
 ::option[Ein erfahrener Tester benötigt eine vorbereitete Umgebung für Sicherheitsprüfungen]{#experienced-kali-user .correct explanation="Kali ist auf Penetrationstests und Sicherheitsprüfungen durch Nutzer zugeschnitten, die Linux und die ausgeführte Arbeit bereits verstehen."}
 ::option[Ein neuer Linux-Nutzer möchte einen allgemeinen Desktop für tägliche Aufgaben]{#general-desktop-beginner explanation="Kalis eigene Dokumentation empfiehlt es nicht als ersten Desktop für allgemeine Zwecke. Eine einsteigerfreundliche Distribution passt besser."}
@@ -71,8 +69,7 @@ Im Vergleich zu Kali wirkt Parrot häufig etwas breiter aufgestellt. Es bleibt s
 
 BlackArch ist leistungsfähig, richtet sich aber nicht zuerst an Einsteiger. Laut der eigenen FAQ solltest du BlackArch wegen der Lernkurve meiden, wenn du weder mit Arch Linux noch allgemein mit Linux vertraut bist. Damit eignet es sich besser für fortgeschrittene Nutzer, die Arch bereits verstehen und einen riesigen Werkzeugsatz für Sicherheitsaufgaben wünschen.
 
-:::single-choice{#match-blackarch-user}
-Welcher Hintergrund bereitet jemanden am besten auf die Verwendung von BlackArch vor?
+:::single-choice{#match-blackarch-user} Welcher Hintergrund bereitet jemanden am besten auf die Verwendung von BlackArch vor?
 
 ::option[Keine Linux-Erfahrung und kein Interesse an Systemadministration]{#no-linux-experience explanation="BlackArch ist nicht als erste Einführung in Linux gedacht. Seine Arch-Grundlage und der große Werkzeugsatz erfordern beträchtliche Vorkenntnisse."}
 ::option[Sicherer Umgang mit Arch Linux und seinem Wartungsmodell]{#arch-experience .correct explanation="BlackArch baut auf Arch auf und setzt voraus, dass Nutzer mit dieser Umgebung umgehen können. Die eigene Anleitung warnt Neueinsteiger vor der Lernkurve."}
@@ -85,8 +82,7 @@ Welcher Hintergrund bereitet jemanden am besten auf die Verwendung von BlackArch
 
 Damit ist Tails eine wichtige sicherheitsorientierte Linux-Distribution, allerdings aus einem anderen Grund. Wenn dein Ziel Datenschutz, Anonymität oder eine sicherere Nutzung nicht vertrauenswürdiger Computer ist, könnte Tails am besten passen. Für Penetrationstests ist Kali oder Parrot gewöhnlich die direktere Wahl.
 
-:::single-choice{#match-tails-use-case}
-Welches Ziel passt am besten zu Tails?
+:::single-choice{#match-tails-use-case} Welches Ziel passt am besten zu Tails?
 
 ::option[Eine große Arch-basierte Paketquelle mit Werkzeugen für Penetrationstests laden]{#blackarch-toolkit explanation="Eine Arch-basierte Paketquelle mit Sicherheitswerkzeugen beschreibt BlackArch. Tails konzentriert sich auf portablen Datenschutz und die Umgehung von Zensur."}
 ::option[Ein portables System verwenden, das auf Datenschutz und minimale lokale Spuren ausgelegt ist]{#tails-privacy .correct explanation="Tails leitet Internetaktivitäten über Tor und soll nach dem Herunterfahren keine Spuren auf dem Computer hinterlassen. Sein Schwerpunkt liegt auf Datenschutz und nicht auf Penetrationstests."}

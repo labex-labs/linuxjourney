@@ -18,8 +18,7 @@ Les threads d’un même processus partagent des ressources telles que l’espac
 
 Les processus distincts possèdent normalement des espaces d’adressage distincts et communiquent au moyen de mécanismes explicites de communication interprocessus. Aucune des deux conceptions n’est automatiquement plus rapide ou plus sûre ; la charge de travail et l’implémentation déterminent le compromis.
 
-:::single-choice{#threads-shared-resource}
-Quelle ressource les threads d’un même processus partagent-ils normalement ?
+:::single-choice{#threads-shared-resource} Quelle ressource les threads d’un même processus partagent-ils normalement ?
 
 ::option[L’espace d’adressage virtuel du processus.]{#threads-shared-address-space .correct explanation="Les threads peuvent accéder à la même mémoire du processus, sous réserve de la synchronisation du programme."}
 ::option[Une installation distincte du noyau pour chaque thread.]{#threads-separate-kernel explanation="Tous les threads emploient le noyau du système en cours d’exécution."}
@@ -30,8 +29,7 @@ Quelle ressource les threads d’un même processus partagent-ils normalement ?
 
 Linux représente chaque thread comme une tâche planifiable dotée de son propre identifiant de thread. L’identifiant du chef du groupe de threads est couramment présenté comme l’identifiant du processus, tandis que tous les membres partagent un identifiant de groupe de threads. Les outils emploient des étiquettes telles que `PID`, `TID`, `LWP` et `SPID` ; vérifiez la définition de leurs champs plutôt que de supposer que chaque étiquette possède la même signification.
 
-:::single-choice{#threads-own-scheduling-state}
-Qu’est-ce que chaque thread conserve indépendamment ?
+:::single-choice{#threads-own-scheduling-state} Qu’est-ce que chaque thread conserve indépendamment ?
 
 ::option[La table complète des fichiers ouverts du processus.]{#threads-open-files-shared explanation="Les threads d’un processus partagent normalement les descripteurs de fichiers ouverts."}
 ::option[La base des utilisateurs de toute la machine.]{#threads-user-database explanation="Les bases de comptes ne constituent pas un état privé du thread."}
@@ -54,8 +52,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 Les listes de threads sont des instantanés. Un thread peut se terminer ou changer d’état immédiatement après.
 
-:::single-choice{#threads-ps-one-process}
-Quelle commande répertorie les threads appartenant au PID 1234 avec des champs explicites ?
+:::single-choice{#threads-ps-one-process} Quelle commande répertorie les threads appartenant au PID 1234 avec des champs explicites ?
 
 ::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="Cette sortie ne demande pas de ligne par thread."}
 ::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="L’option `-L` demande les lignes des threads pour le processus sélectionné."}
@@ -66,8 +63,7 @@ Quelle commande répertorie les threads appartenant au PID 1234 avec des champs 
 
 Une forte utilisation du processeur par un thread peut être masquée par une moyenne calculée pour tout le processus. Associez les échantillons d’utilisation par thread aux journaux de l’application, aux traces de pile et aux outils de profilage. N’attachez pas de débogueur et n’envoyez pas de signal aux tâches de production sans comprendre les conséquences sur les pauses, les permissions et le service.
 
-:::single-choice{#threads-snapshot-limit}
-Pourquoi une liste de threads produite par `ps` ne doit-elle pas être considérée comme un état permanent ?
+:::single-choice{#threads-snapshot-limit} Pourquoi une liste de threads produite par `ps` ne doit-elle pas être considérée comme un état permanent ?
 
 ::option[`ps` crée un thread de remplacement pour chaque ligne.]{#threads-ps-creates explanation="La commande observe les tâches ; elle ne clone pas chacune de celles qu’elle affiche."}
 ::option[Les identifiants de threads sont identiques sur chaque hôte Linux.]{#threads-identical-ids explanation="Les identifiants sont attribués au sein d’un système en cours d’exécution et ne sont pas universels."}

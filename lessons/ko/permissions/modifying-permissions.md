@@ -48,8 +48,7 @@ $ chmod u=rw,g=r,o= myfile
 
 `chmod +x myfile`처럼 클래스를 생략하면 프로세스 umask가 변경할 클래스에 영향을 줍니다. 클래스를 명시하면 의도한 결과를 더 쉽게 검토할 수 있습니다.
 
-:::single-choice{#modifying-permissions-remove-group-write}
-다른 그룹 비트를 바꾸지 않고 그룹 쓰기 권한을 제거하는 기호 모드는 무엇인가요?
+:::single-choice{#modifying-permissions-remove-group-write} 다른 그룹 비트를 바꾸지 않고 그룹 쓰기 권한을 제거하는 기호 모드는 무엇인가요?
 
 ::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="그룹이 아니라 소유자 클래스에서 쓰기 권한을 제거합니다."}
 ::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="`g`는 그룹 클래스를 선택하고 `-`는 비트를 제거하며 `w`는 쓰기 권한을 나타냅니다."}
@@ -79,16 +78,14 @@ $ chmod 755 myfile
 
 `+`나 `-` 기호 작업과 달리 8진수 모드는 일반 권한 집합 전체를 제공합니다. 뒤의 레슨에서 특수 모드 비트에 쓰는 선택적 선행 숫자를 다룹니다.
 
-:::single-choice{#modifying-permissions-octal-read-value}
-읽기 권한을 나타내는 8진수 값은 무엇인가요?
+:::single-choice{#modifying-permissions-octal-read-value} 읽기 권한을 나타내는 8진수 값은 무엇인가요?
 
 ::option[`1`]{#modifying-permissions-value-one explanation="`1`은 실행 권한을 나타냅니다."}
 ::option[`2`]{#modifying-permissions-value-two explanation="`2`는 쓰기 권한을 나타냅니다."}
 ::option[`4`]{#modifying-permissions-value-four .correct explanation="읽기 권한은 클래스 숫자에 8진수 값 `4`를 더합니다."}
 :::
 
-:::single-choice{#modifying-permissions-mode-640}
-`chmod 640 report`는 어떤 일반 권한을 설정하나요?
+:::single-choice{#modifying-permissions-mode-640} `chmod 640 report`는 어떤 일반 권한을 설정하나요?
 
 ::option[소유자 읽기, 그룹 쓰기, 기타 사용자 실행]{#modifying-permissions-640-separated explanation="8진수 숫자는 별도의 읽기, 쓰기, 실행 열이 아니라 각 클래스의 합입니다."}
 ::option[소유자 읽기/실행, 그룹 쓰기, 기타 사용자 권한 없음]{#modifying-permissions-640-wrong-sums explanation="소유자 값 `6`은 읽기와 쓰기이고 그룹 값 `4`는 읽기입니다."}
@@ -101,8 +98,7 @@ $ chmod 755 myfile
 
 재귀 변경은 특히 주의해야 합니다. 대상 트리를 미리 확인하고 심볼릭 링크와 마운트된 파일 시스템을 고려하며 `chmod -R`을 사용하기 전에 작은 범위에서 시험하세요. 변경 후에는 명령이 의도한 객체에 영향을 줬다고 가정하지 말고 결과 모드를 확인합니다.
 
-:::single-choice{#modifying-permissions-least-privilege}
-`chmod 777`이 접근 문제의 일반적인 해결책으로 적합하지 않은 이유는 무엇인가요?
+:::single-choice{#modifying-permissions-least-privilege} `chmod 777`이 접근 문제의 일반적인 해결책으로 적합하지 않은 이유는 무엇인가요?
 
 ::option[소유자의 모든 권한을 제거합니다.]{#modifying-permissions-777-removes explanation="각 `7`은 읽기, 쓰기, 실행을 부여하며 소유자 권한을 제거하지 않습니다."}
 ::option[소유자, 그룹, 기타 사용자 모두에게 모든 기본 권한을 부여합니다.]{#modifying-permissions-777-grants-all .correct explanation="세 클래스 모두 `rwx`를 받아 실제로 필요한 접근 범위를 흔히 초과합니다."}

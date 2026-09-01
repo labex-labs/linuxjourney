@@ -18,8 +18,7 @@ Routing builds or selects information about reachable prefixes. Forwarding appli
 
 These are separate control-plane and data-plane concerns. A route can exist while firewall policy blocks forwarding, or a forwarding interface can be up while no valid route exists.
 
-:::single-choice{#router-forwarding-role}
-What does packet forwarding do?
+:::single-choice{#router-forwarding-role} What does packet forwarding do?
 
 ::option[Applies routing information to send a packet toward its next hop.]{#router-apply-route .correct explanation="Forwarding is the per-packet action based on the selected route and policy."}
 ::option[Creates a permanent application login for every destination.]{#router-create-login explanation="Routing does not manage remote application accounts."}
@@ -32,8 +31,7 @@ A route associates a destination prefix with an outgoing interface, next hop, me
 
 If no eligible route exists, the router drops the packet and may generate an ICMP unreachable message. A default route is optional and need not point directly to the public Internet.
 
-:::single-choice{#router-default-route}
-When is a default route selected?
+:::single-choice{#router-default-route} When is a default route selected?
 
 ::option[Before checking any destination-specific prefixes.]{#router-default-first explanation="More-specific eligible prefixes take precedence."}
 ::option[Only when the packet is an Ethernet broadcast.]{#router-default-broadcast explanation="IP route selection is based on network-layer destinations."}
@@ -46,8 +44,7 @@ Two hosts on the same on-link subnet normally exchange frames without sending th
 
 A home “router” commonly combines an IP router, Ethernet switch, Wi-Fi access point, DHCP service, NAT, and firewall. Each function should be diagnosed separately.
 
-:::single-choice{#router-same-subnet-path}
-Must traffic between two on-link hosts pass through their default router?
+:::single-choice{#router-same-subnet-path} Must traffic between two on-link hosts pass through their default router?
 
 ::option[Yes, because every packet must reach a WAN port.]{#router-always-wan explanation="Local on-link delivery can occur directly through the link."}
 ::option[Yes, unless both hosts have public addresses.]{#router-public-required explanation="Public versus private scope does not determine basic on-link forwarding."}
@@ -58,8 +55,7 @@ Must traffic between two on-link hosts pass through their default router?
 
 A routed hop is a network-layer forwarding step. IPv4 TTL and IPv6 Hop Limit are decremented at each router, bounding loops. Hop count is not a complete distance or quality metric: links differ in bandwidth, latency, loss, policy, and congestion.
 
-:::single-choice{#router-hop-count-limit}
-What does a smaller hop count fail to guarantee?
+:::single-choice{#router-hop-count-limit} What does a smaller hop count fail to guarantee?
 
 ::option[That at least one routed step exists.]{#router-hop-exists explanation="A positive hop count directly indicates routed traversal."}
 ::option[A faster or better application path.]{#router-hop-not-quality .correct explanation="Fewer routers can still traverse slower, congested, or policy-constrained links."}

@@ -24,8 +24,7 @@ $ journalctl -k -b
 
 检查存储栈、设备健康状况、线缆或网络路径、RAID 状态、加密和近期事件。如果设备正在故障，反复扫描可能耗尽它剩余的寿命。可行时，应使用面向恢复的工具创建映像或克隆件，并在副本上操作。
 
-:::single-choice{#filesystem-repair-first-response}
-可能存在硬件故障时，在执行可写文件系统修复前应该做什么？
+:::single-choice{#filesystem-repair-first-response} 可能存在硬件故障时，在执行可写文件系统修复前应该做什么？
 
 ::option[反复运行每一种修复工具，直到某个工具返回零。]{#filesystem-repair-repeat-tools explanation="使用不匹配的工具并反复写入可能让损坏进一步恶化。"}
 ::option[立即在设备上创建新分区表。]{#filesystem-repair-new-table explanation="覆盖布局元数据会破坏证据，使恢复更加困难。"}
@@ -38,8 +37,7 @@ $ journalctl -k -b
 
 使用 `lsblk -f`、`blkid`、`findmnt` 和各存储层工具映射目标。检测到的签名可能过时，因此要与已知配置和备份相互核对。
 
-:::single-choice{#filesystem-repair-target-layer}
-如果 ext4 位于 `/dev/sda1`，它的 ext4 检查器通常应该接收哪一层？
+:::single-choice{#filesystem-repair-target-layer} 如果 ext4 位于 `/dev/sda1`，它的 ext4 检查器通常应该接收哪一层？
 
 ::option[无论分区表如何，都使用 `/dev/sda`。]{#filesystem-repair-whole-disk explanation="整个磁盘包含分区表和可能存在的多个子区域，并不直接包含该 ext4 实例。"}
 ::option[安全离线后的 `/dev/sda1`。]{#filesystem-repair-partition-target .correct explanation="检查器作用于直接包含该文件系统的块设备。"}
@@ -52,8 +50,7 @@ $ journalctl -k -b
 
 停止依赖服务、卸载嵌套文件系统、让进程工作目录离开目标，并按需停用上层结构。对于根文件系统，应启动到救援环境，或使用发行版提供的离线检查机制。通过 `findmnt` 确认目标在相关命名空间中没有挂载。
 
-:::single-choice{#filesystem-repair-mounted-risk}
-为什么通常应该先卸载文件系统，再让修复检查器写入？
+:::single-choice{#filesystem-repair-mounted-risk} 为什么通常应该先卸载文件系统，再让修复检查器写入？
 
 ::option[内核和检查器并发更新可能冲突并损坏元数据。]{#filesystem-repair-concurrent-writes .correct explanation="离线视图可以防止文件系统在修复过程中继续变化。"}
 ::option[卸载会自动从备份恢复每个损坏文件。]{#filesystem-repair-unmount-restores explanation="分离能为检查提供一致状态，但不是数据恢复。"}
@@ -66,8 +63,7 @@ $ journalctl -k -b
 
 名称相似的选项可能具有不同语义，尤其不能照搬另一种文件系统指南中的 `--repair` 或强制选项。应阅读已安装工具的手册，以及当前项目或发行版恢复文档。如果实现提供可靠的无修改或诊断模式，应从该模式开始，保存输出并理解建议的修复内容。
 
-:::single-choice{#filesystem-repair-fsck-role}
-Linux 上的 `fsck` 通常负责什么？
+:::single-choice{#filesystem-repair-fsck-role} Linux 上的 `fsck` 通常负责什么？
 
 ::option[把检查工作分派给适合文件系统类型的辅助程序。]{#filesystem-repair-fsck-dispatch .correct explanation="实际验证和修复逻辑属于特定格式的工具与流程。"}
 ::option[检查前把所有文件系统转换为 ext4。]{#filesystem-repair-fsck-convert explanation="检查器必须保留并理解现有格式。"}
@@ -80,8 +76,7 @@ Linux 上的 `fsck` 通常负责什么？
 
 文件系统能够挂载，并不能证明每个文件都正确。应从备份恢复丢失或损坏的应用数据，并在应用层进行验证。
 
-:::single-choice{#filesystem-repair-mountable-proof}
-修复后成功挂载能证明所有应用数据都正确吗？
+:::single-choice{#filesystem-repair-mountable-proof} 修复后成功挂载能证明所有应用数据都正确吗？
 
 ::option[不能；一致性修复与应用层数据验证是两回事。]{#filesystem-repair-not-data-proof .correct explanation="文件系统结构可能已经可以挂载，但文件或事务仍可能丢失或损坏。"}
 ::option[能；挂载会对照备份以加密方式验证每个文件。]{#filesystem-repair-mount-verifies explanation="普通挂载不会执行完整备份比较。"}

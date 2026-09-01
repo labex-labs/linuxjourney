@@ -22,8 +22,7 @@ Das Verschieben von Dateien über ein Netzwerk reicht von einmaligen Kopien übe
 
 Eine Kopie ist nicht automatisch eine Sicherung. Ein Sicherungsentwurf benötigt außerdem unabhängige Aufbewahrung, Wiederherstellungstests, Integritätsprüfungen und Schutz vor derselben Löschung oder Kompromittierung.
 
-:::single-choice{#file-sharing-one-time-ssh-copy}
-Welches Werkzeug eignet sich für eine einmalige Dateikopie über SSH?
+:::single-choice{#file-sharing-one-time-ssh-copy} Welches Werkzeug eignet sich für eine einmalige Dateikopie über SSH?
 
 ::option[`scp`]{#file-sharing-scp .correct explanation="SCP verwendet SSH-Authentifizierung und -Transport für Dateikopien."}
 ::option[`uptime`]{#file-sharing-uptime explanation="Uptime meldet Betriebsdauer und Last eines Hosts, statt Dateien zu übertragen."}
@@ -41,8 +40,7 @@ $ scp -- alice@example.net:/srv/outgoing/result.txt ./result.txt
 
 Der erste Befehl überträgt eine lokale Datei zum entfernten Host; der zweite ruft eine entfernte Datei ab. Ein Doppelpunkt trennt den entfernten Host von seinem Pfad. Setze Pfade mit für die Shell bedeutsamen Zeichen in Anführungszeichen und vermeide mehrdeutige, nicht vertrauenswürdige Dateinamen.
 
-:::single-choice{#file-sharing-scp-pull-source}
-Wo steht bei einem Abruf mit `scp` die entfernte Angabe?
+:::single-choice{#file-sharing-scp-pull-source} Wo steht bei einem Abruf mit `scp` die entfernte Angabe?
 
 ::option[Als Quelle vor dem lokalen Ziel.]{#file-sharing-pull-source .correct explanation="Die Kopierrichtung folgt der Operandenreihenfolge von Quelle zu Ziel."}
 ::option[Als lokales Ziel hinter jeder Option.]{#file-sharing-pull-destination explanation="Das abgerufene entfernte Objekt ist der Quelloperand."}
@@ -59,8 +57,7 @@ $ scp -r -- project/ alice@example.net:/srv/incoming/
 
 Untersuche vor dem Kopieren Datenmenge, symbolische Links, Berechtigungen, Eigentumsanforderungen, freien Speicherplatz und Zielbenennung. SCP ist keine Synchronisierungsrichtlinie; wiederholte Verzeichniskopien können am Ziel Dateien zurücklassen, die an der Quelle nicht mehr existieren.
 
-:::single-choice{#file-sharing-scp-recursive}
-Was fordert `scp -r` an?
+:::single-choice{#file-sharing-scp-recursive} Was fordert `scp -r` an?
 
 ::option[Das Entfernen des entfernten Ziels vor dem Kopieren.]{#file-sharing-scp-remove explanation="Der rekursive Modus durchläuft Verzeichnisse und definiert keine Bereinigungsrichtlinie."}
 ::option[Das rekursive Kopieren eines Verzeichnisbaums.]{#file-sharing-scp-tree .correct explanation="Das Kennzeichen ist erforderlich, wenn die ausgewählte Quelle ein Verzeichnis ist."}
@@ -73,8 +70,7 @@ Die Überprüfung des SSH-Hostschlüssels schützt vor einer Verbindung zum fals
 
 Überprüfe nach der Übertragung Exit-Status, erwartete Dateien, Größen, Metadaten und – falls die Integritätsanforderungen es verlangen – unabhängig berechnete Hashes an beiden Enden. Bestätige, dass die Zielanwendung die Daten tatsächlich lesen kann.
 
-:::single-choice{#file-sharing-host-key-change}
-Was solltest du tun, wenn SSH einen unerwartet geänderten Hostschlüssel meldet?
+:::single-choice{#file-sharing-host-key-change} Was solltest du tun, wenn SSH einen unerwartet geänderten Hostschlüssel meldet?
 
 ::option[Die Hostschlüsselprüfung für jede künftige Übertragung deaktivieren.]{#file-sharing-disable-checking explanation="Dies entfernt eine wichtige Kontrolle der Serveridentität."}
 ::option[Den neuen Schlüssel vor dem Fortfahren über eine vertrauenswürdige Quelle prüfen.]{#file-sharing-verify-key .correct explanation="Die Warnung kann auf einen neu aufgebauten Host, ein falsches Ziel oder einen Abfangversuch hindeuten und sollte untersucht werden."}

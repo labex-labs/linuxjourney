@@ -18,8 +18,7 @@ Uma mensagem syslog carrega uma facility que descreve a categoria geral da fonte
 
 Os níveis são ordenados. Na sintaxe clássica, `daemon.warning` normalmente seleciona mensagens warning e todas as mais graves da facility daemon, não apenas warning. Em implementações compatíveis, a correspondência exata usa `daemon.=warning`.
 
-:::single-choice{#syslog-warning-selector}
-O que um seletor clássico como `daemon.warning` normalmente seleciona?
+:::single-choice{#syslog-warning-selector} O que um seletor clássico como `daemon.warning` normalmente seleciona?
 
 ::option[Apenas mensagens cujo texto contém a palavra daemon.]{#syslog-text-daemon explanation="A seleção usa os metadados da facility, não uma busca no texto."}
 ::option[Toda mensagem debug de toda facility.]{#syslog-all-debug explanation="O seletor se limita à facility daemon e a um limiar de gravidade."}
@@ -40,8 +39,7 @@ A primeira envia todas as prioridades de duas facilities de autenticação. A se
 
 Examine todos os arquivos incluídos e valide a sintaxe da versão instalada antes de mudar o roteamento de produção.
 
-:::single-choice{#syslog-selector-action}
-Em uma regra tradicional do rsyslog, qual parte é a ação?
+:::single-choice{#syslog-selector-action} Em uma regra tradicional do rsyslog, qual parte é a ação?
 
 ::option[A expressão de facility e gravidade à esquerda.]{#syslog-left-selector explanation="Essa parte seleciona mensagens."}
 ::option[O destino ou a operação à direita.]{#syslog-right-action .correct explanation="A ação determina se os registros vão para arquivo, destino remoto ou outra saída."}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 O mesmo evento pode aparecer no journal e em um arquivo de texto, dependendo do encaminhamento e do roteamento. `logger -s` também copia a mensagem para a saída de erro padrão; isso não comprova o armazenamento durável.
 
-:::single-choice{#syslog-logger-tag}
-O que `logger -t lesson-test` acrescenta à mensagem?
+:::single-choice{#syslog-logger-tag} O que `logger -t lesson-test` acrescenta à mensagem?
 
 ::option[Um pedido para apagar registros antigos.]{#syslog-tag-delete explanation="A opção define uma tag e não gerencia retenção."}
 ::option[O identificador `lesson-test` como tag.]{#syslog-tag-identifier .correct explanation="Uma tag exclusiva facilita localizar o evento nos destinos configurados."}
@@ -84,8 +81,7 @@ Somente depois da validação recarregue o serviço por meio de seu gerenciador.
 
 Encaminhamento remoto deve usar transporte autenticado e criptografado em redes não confiáveis. UDP não oferece confirmação de ponta a ponta; auditoria crítica precisa considerar filas, perdas, integridade, acesso e indisponibilidade do receptor.
 
-:::single-choice{#syslog-change-verification}
-Qual evidência basta para mostrar que uma nova regra funciona?
+:::single-choice{#syslog-change-verification} Qual evidência basta para mostrar que uma nova regra funciona?
 
 ::option[O arquivo de configuração tem data de modificação recente.]{#syslog-mtime explanation="A data não prova sintaxe válida nem entrega."}
 ::option[O remetente consegue executar ping no receptor.]{#syslog-ping explanation="Alcance de rede não verifica protocolo nem armazenamento."}

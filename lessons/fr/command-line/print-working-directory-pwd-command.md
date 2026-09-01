@@ -32,8 +32,7 @@ Voici un exemple simplifié de cette structure :
 |-- var
 ```
 
-:::single-choice{#identify-root-subdirectories}
-Dans l'arborescence ci-dessus, quelle est la relation de `home` et `etc` avec `/` ?
+:::single-choice{#identify-root-subdirectories} Dans l'arborescence ci-dessus, quelle est la relation de `home` et `etc` avec `/` ?
 
 ::option[Ce sont des sous-répertoires qui partent de `/`.]{#root-subdirectories .correct explanation="Ces deux répertoires apparaissent directement sous `/` dans l'arborescence. Le système de fichiers se ramifie en sous-répertoires à partir de sa racine."}
 ::option[Ce sont des fichiers stockés dans le répertoire `bin`.]{#files-inside-bin explanation="L'arborescence place `home` et `etc` au même niveau que `bin`, pas à l'intérieur. Dans cet exemple, il s'agit de répertoires et non de fichiers."}
@@ -52,8 +51,7 @@ Par exemple, si le répertoire `/home` contient un dossier `pete`, qui contient 
 
 Un chemin qui commence par `/` est absolu, car il part du répertoire racine. Un chemin comme `Movies` est relatif, car il dépend de votre emplacement actuel.
 
-:::single-choice{#recognize-absolute-path}
-Pourquoi `/home/pete/Movies` est-il un chemin absolu ?
+:::single-choice{#recognize-absolute-path} Pourquoi `/home/pete/Movies` est-il un chemin absolu ?
 
 ::option[Il contient plusieurs noms de répertoires séparés par `/`.]{#contains-directories explanation="Les chemins absolus comme relatifs peuvent contenir plusieurs noms. Le type dépend du point de départ, pas du nombre de noms."}
 ::option[Il se termine par un répertoire nommé `Movies`.]{#ends-with-movies explanation="Le nom de la destination ne détermine pas si le chemin est absolu. Un chemin absolu se reconnaît à son départ depuis la racine."}
@@ -64,8 +62,7 @@ Pourquoi `/home/pete/Movies` est-il un chemin absolu ?
 
 `pwd` signifie « print working directory », c'est-à-dire afficher le répertoire de travail. Votre répertoire de travail est celui où se trouve actuellement le shell. Les commandes qui utilisent des chemins relatifs partent de cet emplacement.
 
-:::single-choice{#expand-pwd-name}
-Que signifie `pwd` ?
+:::single-choice{#expand-pwd-name} Que signifie `pwd` ?
 
 ::option[Print working directory]{#print-working-directory .correct explanation="Le nom décrit exactement l'action de la commande : elle affiche le répertoire de travail actuel du shell."}
 ::option[Present working directory]{#present-working-directory explanation="Dans la langue courante, on peut parler du répertoire présent, mais ce n'est pas le développement de `pwd`."}
@@ -85,8 +82,7 @@ La sortie est un chemin absolu. Dans cet exemple, le shell se trouve dans le ré
 
 La sortie exacte peut différer sur votre système, car votre nom d'utilisateur, votre répertoire personnel et votre emplacement peuvent être autres. `pwd` ne fait qu'afficher une information ; elle ne change pas le répertoire de travail. À l'inverse, `cd` change le répertoire où se trouve le shell.
 
-:::single-choice{#check-location-without-changing-it}
-Quelle action vérifie votre répertoire actuel sans le modifier ?
+:::single-choice{#check-location-without-changing-it} Quelle action vérifie votre répertoire actuel sans le modifier ?
 
 ::option[Exécuter `cd` et lire le répertoire dans lequel la commande se déplace.]{#run-cd explanation="`cd` change le répertoire de travail ; elle ne répond pas au besoin de vérifier l'emplacement sans le modifier."}
 ::option[Saisir `/home/pete` et utiliser ce chemin comme commande.]{#run-path explanation="Un chemin absolu désigne un emplacement, mais le chemin seul n'est pas la commande qui indique le répertoire actuel."}

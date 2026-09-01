@@ -23,8 +23,7 @@ value: 128  64  32  16   8  4  2  1
 
 Adding all eight values produces 255. Decimal 192 is `128 + 64`, so its binary representation is `11000000`.
 
-:::single-choice{#subnet-cheats-binary-192}
-What is decimal 192 in eight-bit binary?
+:::single-choice{#subnet-cheats-binary-192} What is decimal 192 in eight-bit binary?
 
 ::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="The 128 and 64 positions are set and the remaining positions are zero."}
 ::option[`10101000`]{#subnet-cheats-168 explanation="This pattern equals 168."}
@@ -42,8 +41,7 @@ decimal:  0  128  192  224  240  248  252  254  255
 
 For example, `/19` contains 16 full prefix bits plus three bits in the third octet, so its mask is `255.255.224.0`.
 
-:::single-choice{#subnet-cheats-prefix-19}
-Which mask corresponds to IPv4 `/19`?
+:::single-choice{#subnet-cheats-prefix-19} Which mask corresponds to IPv4 `/19`?
 
 ::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="Sixteen full bits plus three more yield 255, 255, and 224."}
 ::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="A prefix length is a bit count, not a decimal mask octet."}
@@ -56,8 +54,7 @@ In the first mask octet that is not 255, subtract the mask value from 256 to get
 
 Address `198.51.100.77/27` lies in the 64-through-95 block.
 
-:::single-choice{#subnet-cheats-77-network}
-What is the network address for `198.51.100.77/27`?
+:::single-choice{#subnet-cheats-77-network} What is the network address for `198.51.100.77/27`?
 
 ::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="That block covers final-octet values 32 through 63."}
 ::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="The address includes host bits and is not the block boundary."}
@@ -75,8 +72,7 @@ To convert decimal 123, select the largest remaining values without exceeding it
 
 Convert back by adding only the place values whose bits are one. Always keep all eight positions when working inside an IPv4 octet.
 
-:::single-choice{#subnet-cheats-binary-123}
-Which eight-bit value equals decimal 123?
+:::single-choice{#subnet-cheats-binary-123} Which eight-bit value equals decimal 123?
 
 ::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="The numeric value is similar, but the octet representation must retain eight positions."}
 ::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="The set positions add to 64 + 32 + 16 + 8 + 2 + 1."}

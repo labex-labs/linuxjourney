@@ -24,8 +24,7 @@ $ journalctl -k -b
 
 ストレージスタック、デバイスの健全性、ケーブルまたはネットワーク経路、RAID の状態、暗号化、最近の出来事を確認します。デバイスが故障しつつある場合、スキャンを繰り返すと残りの寿命を消費しかねません。可能であれば復旧用ツールでイメージまたは複製を取得し、そのコピーを対象に作業してください。
 
-:::single-choice{#filesystem-repair-first-response}
-ハードウェア障害の可能性がある場合、書き込みを伴うファイルシステム修復より先に何を行うべきですか？
+:::single-choice{#filesystem-repair-first-response} ハードウェア障害の可能性がある場合、書き込みを伴うファイルシステム修復より先に何を行うべきですか？
 
 ::option[いずれかが終了コード 0 になるまで、すべての修復ツールを繰り返し実行する。]{#filesystem-repair-repeat-tools explanation="適合しないツールの使用や書き込みの繰り返しは、損傷を広げる可能性があります。"}
 ::option[ただちにデバイス上へ新しいパーティションテーブルを作成する。]{#filesystem-repair-new-table explanation="配置メタデータを上書きすると証拠が失われ、復旧が難しくなることがあります。"}
@@ -38,8 +37,7 @@ $ journalctl -k -b
 
 `lsblk -f`、`blkid`、`findmnt`、各ストレージ層のツールを使って対象を対応付けます。検出用シグネチャは古い場合があるため、既知の設定やバックアップと照合してください。
 
-:::single-choice{#filesystem-repair-target-layer}
-ext4 が `/dev/sda1` に格納されている場合、通常、その ext4 チェッカーにはどの層を渡しますか？
+:::single-choice{#filesystem-repair-target-layer} ext4 が `/dev/sda1` に格納されている場合、通常、その ext4 チェッカーにはどの層を渡しますか？
 
 ::option[パーティションテーブルにかかわらず `/dev/sda`。]{#filesystem-repair-whole-disk explanation="ディスク全体にはパーティションテーブルと複数の子領域が含まれ得るため、ext4 インスタンスを直接格納しているとは限りません。"}
 ::option[安全にオフラインにした後の `/dev/sda1`。]{#filesystem-repair-partition-target .correct explanation="チェッカーは、そのファイルシステムを直接格納するブロックデバイスを対象にします。"}
@@ -52,8 +50,7 @@ ext4 が `/dev/sda1` に格納されている場合、通常、その ext4 チ�
 
 依存サービスを停止し、入れ子になったファイルシステムをアンマウントし、プロセスの作業ディレクトリを移動し、必要に応じて上位層を無効化します。ルートファイルシステムでは、レスキュー環境を起動するか、ディストリビューションで文書化されたオフラインチェックの仕組みを使います。関連する名前空間で対象がマウントされていないことを、`findmnt` で確認してください。
 
-:::single-choice{#filesystem-repair-mounted-risk}
-修復チェッカーが書き込む前に、通常はファイルシステムをアンマウントすべきなのはなぜですか？
+:::single-choice{#filesystem-repair-mounted-risk} 修復チェッカーが書き込む前に、通常はファイルシステムをアンマウントすべきなのはなぜですか？
 
 ::option[カーネルとチェッカーの更新が同時に行われると競合し、メタデータを破損させる可能性があるから。]{#filesystem-repair-concurrent-writes .correct explanation="オフラインの表示なら、修復操作の最中にファイルシステムが変化しません。"}
 ::option[アンマウントすると、損傷した全ファイルがバックアップから自動復元されるから。]{#filesystem-repair-unmount-restores explanation="切断はチェックの一貫性を確保しますが、データの復元ではありません。"}
@@ -66,8 +63,7 @@ ext4 が `/dev/sda1` に格納されている場合、通常、その ext4 チ�
 
 似た名前のオプションでも意味は異なることがあります。特に、別のファイルシステム向けガイドから `--repair` や強制オプションを流用してはいけません。インストール済みのマニュアルと、現在のプロジェクトまたはディストリビューションの復旧文書を読んでください。その実装に信頼できる変更なしモードや診断モードがあれば、そこから始めて出力を保存し、提案される修正を理解します。
 
-:::single-choice{#filesystem-repair-fsck-role}
-Linux の `fsck` が一般に担う役割は何ですか？
+:::single-choice{#filesystem-repair-fsck-role} Linux の `fsck` が一般に担う役割は何ですか？
 
 ::option[ファイルシステムの種類に適したヘルパーへチェックを振り分けること。]{#filesystem-repair-fsck-dispatch .correct explanation="実際の検証と修復ロジックは、形式固有のツールと手順に属します。"}
 ::option[チェック前に、すべてのファイルシステムを ext4 へ変換すること。]{#filesystem-repair-fsck-convert explanation="チェッカーは既存の形式を保持し、その形式を理解する必要があります。"}
@@ -80,8 +76,7 @@ Linux の `fsck` が一般に担う役割は何ですか？
 
 マウントできるようになっても、すべてのファイルが正しいとは証明できません。失われたり損傷したりしたアプリケーションデータはバックアップから復元し、アプリケーション層で検証します。
 
-:::single-choice{#filesystem-repair-mountable-proof}
-修復後に正常にマウントできれば、すべてのアプリケーションデータが正しいと証明できますか？
+:::single-choice{#filesystem-repair-mountable-proof} 修復後に正常にマウントできれば、すべてのアプリケーションデータが正しいと証明できますか？
 
 ::option[いいえ。整合性の修復とアプリケーション層のデータ検証は別です。]{#filesystem-repair-not-data-proof .correct explanation="ファイルシステムが構造上マウント可能でも、ファイルやトランザクションが失われたり損傷したりしている場合があります。"}
 ::option[はい。マウント時に、すべてのファイルをバックアップと暗号学的に照合します。]{#filesystem-repair-mount-verifies explanation="通常のマウントでは、バックアップとの完全な比較は行いません。"}

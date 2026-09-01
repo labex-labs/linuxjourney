@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` kopiert Blöcke und nicht grundsätzlich einzelne Bytes. Ein größeres `bs` kann den Aufwand für Systemaufrufe verringern, doch der optimale Wert hängt von Geräten, Ausrichtung, Caches und Arbeitslast ab. Die logisch kopierten Daten verändern sich dadurch nicht.
 
-:::single-choice{#dd-command-output-operand}
-Welcher Operand wählt das von `dd` beschriebene Ziel aus?
+:::single-choice{#dd-command-output-operand} Welcher Operand wählt das von `dd` beschriebene Ziel aus?
 
 ::option[`if=`]{#dd-command-input-file explanation="`if` bezeichnet die Eingabequelle."}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of` benennt den Ausgabestrom oder die Datei, die die kopierten Daten empfängt."}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 Damit werden zwei Eingabeblöcke mit jeweils bis zu 1 MiB angefordert, also höchstens 2 MiB kopiert. Bei Datenströmen wie Pipes können kurze Lesevorgänge diese einfache Multiplikation erschweren; GNU `dd` bietet `iflag=fullblock`, wenn vollständige Eingabeblöcke erforderlich sind. Beachte Binäreinheiten und Suffixsyntax der lokal installierten Implementierung.
 
-:::single-choice{#dd-command-count-result}
-Welche maximale Datenmenge fordert `bs=1M count=2` bei einer gewöhnlichen Datei an?
+:::single-choice{#dd-command-count-result} Welche maximale Datenmenge fordert `bs=1M count=2` bei einer gewöhnlichen Datei an?
 
 ::option[1 MiB.]{#dd-command-one-mib explanation="Das wäre ein Block der ausgewählten Größe."}
 ::option[2 MiB.]{#dd-command-two-mib .correct explanation="Zwei Eingabeblöcke multipliziert mit 1 MiB pro Block ergeben höchstens 2 MiB."}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 Das Ausgabegerät wird von seinem Anfang an überschrieben. Das Vertauschen von `if` und `of`, die Auswahl des Systemdatenträgers oder die Verwendung eines ganzen Datenträgers anstelle einer beabsichtigten Partition kann Daten ohne Bestätigungsfrage zerstören.
 
-:::single-choice{#dd-command-target-verification}
-Was ist der wichtigste Grund, Modell, Seriennummer, Größe und aktive Nutzung vor dem Schreiben auf ein rohes Gerät zu prüfen?
+:::single-choice{#dd-command-target-verification} Was ist der wichtigste Grund, Modell, Seriennummer, Größe und aktive Nutzung vor dem Schreiben auf ein rohes Gerät zu prüfen?
 
 ::option[Gerätebuchstaben können sich ändern, und `dd` überschreibt das ausgewählte Ziel, ohne dessen Inhalt zu verstehen.]{#dd-command-target-can-change .correct explanation="Identitäts- und Nutzungsprüfungen verringern das Risiko, einen anderen Datenträger oder einen aktiven Speicherstapel zu zerstören."}
 ::option[`dd` verweigert das Schreiben, wenn die Dateisystembezeichnung nicht zum Abbild passt.]{#dd-command-label-check explanation="Das Werkzeug führt keine solche dateisystembezogene Sicherheitsprüfung aus."}
@@ -85,8 +82,7 @@ Das Lesen eines aktiven Blockgeräts, während sich sein Dateisystem verändert,
 
 Ein rohes Geräteabbild kopiert Blöcke einschließlich Dateisystemmetadaten und unbenutzter Bereiche. Es kann daher wesentlich größer als eine dateibasierte Sicherung sein und Kennungen duplizieren, die geändert werden müssen, bevor ein Klon neben dem Original eingehängt wird.
 
-:::single-choice{#dd-command-live-filesystem-image}
-Warum kann das Abbild eines eingehängten, sich verändernden Dateisystems unzuverlässig sein?
+:::single-choice{#dd-command-live-filesystem-image} Warum kann das Abbild eines eingehängten, sich verändernden Dateisystems unzuverlässig sein?
 
 ::option[Eingehängte Dateisysteme erlauben niemals das Lesen des Blockgeräts.]{#dd-command-mounted-no-read explanation="Rohe Lesevorgänge können möglich sein; gerade deshalb muss die Konsistenz geplant und darf nicht vorausgesetzt werden."}
 ::option[Unterschiedliche Blöcke können aus verschiedenen Zeitpunkten des Dateisystemzustands gelesen werden.]{#dd-command-inconsistent-moments .correct explanation="Gleichzeitige Änderungen können verhindern, dass das gesammelte Blockabbild einen einzigen konsistenten Zeitpunkt darstellt."}
@@ -99,8 +95,7 @@ Ein Befehlsabschluss ohne Ein-/Ausgabefehler beweist weder die Auswahl der beabs
 
 Bewirb Überschreibdurchläufe mit `dd` nicht als garantiert sichere Löschung für SSDs, Flash-Übersetzungsschichten, Thin-Provisioning-Speicher, Snapshots oder umgeleitete Sektoren. Verwende vom Gerät und der Plattform unterstützte Bereinigungsverfahren zusammen mit einer ausdrücklichen Richtlinie zur Datenvernichtung.
 
-:::single-choice{#dd-command-success-meaning}
-Was beweist ein Exit-Status null von `dd` für sich allein nicht?
+:::single-choice{#dd-command-success-meaning} Was beweist ein Exit-Status null von `dd` für sich allein nicht?
 
 ::option[Dass der Befehl alle angegebenen Operanden ausgewertet hat.]{#dd-command-parsed-operands explanation="Ungültige Operanden führen normalerweise zu einem Fehler statt zu einem erfolgreichen Abschluss."}
 ::option[Dass der Bediener die beabsichtigte Quelle und das beabsichtigte Ziel ausgewählt hat.]{#dd-command-does-not-prove-intent .correct explanation="Das Werkzeug kann erfolgreich auf das falsche Ziel kopieren, weil es die Absicht des Bedieners nicht erkennen kann."}

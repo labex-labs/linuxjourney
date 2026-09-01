@@ -25,8 +25,7 @@ $ ls -l /path/to/program
 
 実行時にカーネルがこのビットを有効にすると、プロセスは実行ファイルのグループ所有者に基づく実効グループ ID を受け取ります。`nosuid` マウントなどの制御によって動作が抑止される場合があり、あらゆるファイル種別と環境に共通する保証として扱ってはいけません。
 
-:::single-choice{#setgid-executable-effect}
-実行可能ファイルの setgid が有効なとき、実行ファイルのグループ所有者から得る資格情報はどれですか？
+:::single-choice{#setgid-executable-effect} 実行可能ファイルの setgid が有効なとき、実行ファイルのグループ所有者から得る資格情報はどれですか？
 
 ::option[プロセスの実効グループ ID。]{#setgid-effective-group .correct explanation="Set-group-ID 実行は、実行ファイル所有者のグループをプロセスの実効グループ識別情報として設定します。"}
 ::option[プロセスの実ユーザー ID。]{#setgid-real-user explanation="このビットが関係するのはグループ資格情報であり、呼び出し元の実ユーザー識別情報ではありません。"}
@@ -46,8 +45,7 @@ $ ls -ld /srv/project
 drwxr-sr-x 2 root developers 4096 Jan 10 09:30 /srv/project
 ```
 
-:::single-choice{#setgid-directory-inheritance}
-`/srv/project` の setgid によって、新しく作成したファイルは通常何を継承しますか？
+:::single-choice{#setgid-directory-inheritance} `/srv/project` の setgid によって、新しく作成したファイルは通常何を継承しますか？
 
 ::option[ディレクトリのユーザー所有者。]{#setgid-inherit-user explanation="ディレクトリの setgid が影響するのはグループ継承であり、新規エントリーのユーザー所有者ではありません。"}
 ::option[ディレクトリの完全な権限モード。]{#setgid-inherit-mode explanation="作成権限は引き続き、要求モード、umask、ACL などから計算されます。"}
@@ -70,8 +68,7 @@ $ sudo chmod 2755 myfile
 
 特殊ビットだけを削除するには `chmod g-s myfile` を使います。
 
-:::single-choice{#setgid-octal-value}
-Setgid が先頭の特殊ビット8進桁へ加える値はどれですか？
+:::single-choice{#setgid-octal-value} Setgid が先頭の特殊ビット8進桁へ加える値はどれですか？
 
 ::option[`4`]{#setgid-value-four explanation="値 `4` は特殊ビット桁で setuid を表します。"}
 ::option[`1`]{#setgid-value-one explanation="値 `1` は sticky bit を表します。"}
@@ -82,8 +79,7 @@ Setgid が先頭の特殊ビット8進桁へ加える値はどれですか？
 
 共同作業用ディレクトリでは、意図したグループ所有者、setgid、範囲を絞ったアクセスビットを組み合わせます。代表的なユーザーとして作成をテストし、`ls -ld` で結果を確認してください。グループ共有の問題を解決するためだけにツリーを全ユーザー書き込み可能にしてはいけません。専用グループ、適切な umask または既定 ACL、setgid ディレクトリを組み合わせれば、通常はより明確に制御できます。
 
-:::single-choice{#setgid-directory-write-access}
-Setgid だけを設定すれば、グループメンバーはディレクトリにファイルを作成できますか？
+:::single-choice{#setgid-directory-write-access} Setgid だけを設定すれば、グループメンバーはディレクトリにファイルを作成できますか？
 
 ::option[はい。setgid は常にグループの読み取り、書き込み、実行を追加する。]{#setgid-adds-rwx explanation="特殊ビットが三つの通常グループ権限ビットを自動的に変更することはありません。"}
 ::option[はい。setgid はグループメンバーに対するすべての確認を無効にする。]{#setgid-disables-checks explanation="通常の任意アクセス制御と追加のセキュリティ確認は引き続き適用されます。"}

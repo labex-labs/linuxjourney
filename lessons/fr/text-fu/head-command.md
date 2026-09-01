@@ -22,8 +22,7 @@ $ head events.log
 
 Le fichier n'est pas modifié. S'il comporte moins de 10 lignes, elles sont toutes affichées.
 
-:::single-choice{#head-default-lines}
-Que produit `head events.log` par défaut ?
+:::single-choice{#head-default-lines} Que produit `head events.log` par défaut ?
 
 ::option[Les 10 dernières lignes, ou toutes si le fichier est plus court.]{#head-last-ten explanation="La fin d'une entrée relève de `tail` ; `head` part du début."}
 ::option[Les 10 premières lignes, ou toutes si le fichier est plus court.]{#head-first-ten .correct explanation="Sans option de comptage, `head` sélectionne au plus les dix premières lignes."}
@@ -40,8 +39,7 @@ $ head -n 15 events.log
 
 GNU `head` accepte aussi `-15`, mais `-n 15` rend le sens plus explicite.
 
-:::single-choice{#head-five-lines}
-Quelle commande affiche les cinq premières lignes de `report.txt` ?
+:::single-choice{#head-five-lines} Quelle commande affiche les cinq premières lignes de `report.txt` ?
 
 ::option[`head -c 5 report.txt`]{#head-five-bytes explanation="`-c` compte les octets et peut s'arrêter au milieu d'une ligne."}
 ::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="`-n` sélectionne un nombre de lignes, ici cinq."}
@@ -58,8 +56,7 @@ $ head -c 20 archive.bin
 
 La sortie peut finir au milieu d'une ligne ou d'un caractère multioctet. Préférez les lignes pour le texte ordinaire.
 
-:::single-choice{#head-first-bytes}
-Quelle commande écrit les 100 premiers octets de `payload.bin` sur stdout ?
+:::single-choice{#head-first-bytes} Quelle commande écrit les 100 premiers octets de `payload.bin` sur stdout ?
 
 ::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="`-c` sélectionne un nombre d'octets, ici les cent premiers disponibles."}
 ::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="`-n` compte les lignes, pas les octets."}
@@ -87,16 +84,14 @@ $ head -n 2 january.txt february.txt
 
 `-q` supprime ces en-têtes et `-v` en affiche un même pour un seul fichier.
 
-:::single-choice{#head-pipeline-preview}
-Dans `generate-report | head -n 5`, que lit `head` ?
+:::single-choice{#head-pipeline-preview} Dans `generate-report | head -n 5`, que lit `head` ?
 
 ::option[Stdout de `generate-report` par stdin.]{#head-pipe-input .correct explanation="Le tube relie stdout du producteur à stdin de `head`, qui en choisit cinq lignes."}
 ::option[Les cinq premiers noms du répertoire courant.]{#head-directory-names explanation="Aucune commande ne liste le répertoire."}
 ::option[Cinq octets d'un fichier `generate-report`.]{#head-producer-file explanation="La partie gauche est une commande et `-n` compte les lignes."}
 :::
 
-:::single-choice{#head-suppress-filename-headers}
-Quelle option supprime les en-têtes de noms lorsque `head` lit plusieurs fichiers ?
+:::single-choice{#head-suppress-filename-headers} Quelle option supprime les en-têtes de noms lorsque `head` lit plusieurs fichiers ?
 
 ::option[`-v`]{#head-verbose explanation="`-v` force les en-têtes, même avec un fichier."}
 ::option[`-c`]{#head-byte-option explanation="`-c` change l'unité en octets."}

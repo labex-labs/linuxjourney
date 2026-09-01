@@ -22,16 +22,14 @@ openSUSE предлагает разные пути разным пользов�
 
 Такое разделение даёт необычную гибкость: пользователь выбирает подходящий стиль, не переходя в другое семейство дистрибутивов.
 
-:::single-choice{#choose-opensuse-leap}
-Какой вариант openSUSE подходит пользователю, которому нужен традиционный регулярный выпуск?
+:::single-choice{#choose-opensuse-leap} Какой вариант openSUSE подходит пользователю, которому нужен традиционный регулярный выпуск?
 
 ::option[Tumbleweed]{#tumbleweed-release explanation="Tumbleweed — непрерывно обновляемый rolling release openSUSE для пользователей, которым важнее новые пакеты."}
 ::option[YaST]{#yast-not-release explanation="YaST — инструмент установки и настройки, а не модель выпуска openSUSE."}
 ::option[Leap]{#leap-release .correct explanation="Leap следует регулярной модели выпусков и делает акцент на более консервативной системной основе."}
 :::
 
-:::single-choice{#recognize-tumbleweed-model}
-Что отличает Tumbleweed от Leap?
+:::single-choice{#recognize-tumbleweed-model} Что отличает Tumbleweed от Leap?
 
 ::option[Он непрерывно доставляет проверенные обновления пакетов]{#continuous-tested-updates .correct explanation="Tumbleweed — rolling release, постоянно публикующий проверенные снимки. Новое ПО не ждёт очередного крупного выпуска."}
 ::option[Он получает ПО только через фиксированные крупные выпуски]{#fixed-major-releases explanation="Фиксированные регулярные выпуски ближе описывают Leap. Tumbleweed обновляется непрерывно."}
@@ -44,8 +42,7 @@ openSUSE использует формат RPM и такие инструмен�
 
 Понимание пакетных семейств помогает сравнивать системы. Более широкий обзор даёт [Выбор дистрибутива Linux](https://labex.io/ru/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#identify-zypper-role}
-Для чего используется `zypper` в openSUSE?
+:::single-choice{#identify-zypper-role} Для чего используется `zypper` в openSUSE?
 
 ::option[Для выбора тем обоев графического рабочего стола]{#zypper-wallpaper explanation="Внешний вид настраивается средствами рабочего стола, а `zypper` управляет пакетами."}
 ::option[Для установки, обновления и удаления пакетов программ]{#zypper-package-tool .correct explanation="`zypper` — командный пакетный инструмент openSUSE, работающий с программами из репозиториев RPM."}
@@ -58,8 +55,7 @@ openSUSE использует формат RPM и такие инструмен�
 
 YaST — важная причина привлекательности openSUSE для желающих мощное администрирование без полностью ручной настройки.
 
-:::single-choice{#identify-yast-purpose}
-Что предоставляет YaST?
+:::single-choice{#identify-yast-purpose} Что предоставляет YaST?
 
 ::option[Rolling-репозиторий только с самыми новыми приложениями]{#yast-repository explanation="Rolling-модель предоставляет Tumbleweed. YaST — средство администрирования и конфигурации, а не ветка программ."}
 ::option[Формат пакетов, общий с Debian и Ubuntu]{#yast-package-format explanation="openSUSE использует RPM, а системы Debian — `.deb`. YaST не является форматом пакетов."}

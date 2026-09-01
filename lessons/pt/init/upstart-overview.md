@@ -24,8 +24,7 @@ $ initctl version
 
 O último comando só retorna informações significativas quando o serviço de controle e o cliente do Upstart estão presentes. Um diretório como `/usr/share/upstart` ou arquivos restantes em `/etc/init` são evidências fracas, pois pacotes e vestígios de migrações podem permanecer depois que outro sistema init assume o controle.
 
-:::single-choice{#upstart-overview-active-evidence}
-Qual é a evidência mais forte de que um host realmente usa o Upstart?
+:::single-choice{#upstart-overview-active-evidence} Qual é a evidência mais forte de que um host realmente usa o Upstart?
 
 ::option[O nome de um diretório contém a palavra `upstart`.]{#upstart-overview-directory-only explanation="Documentação instalada ou vestígios podem permanecer em um sistema que usa outro init."}
 ::option[O sistema possui pelo menos um script de shell.]{#upstart-overview-shell-script explanation="Scripts de shell são comuns a todos os ambientes init."}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 Isso usa eventos de runlevels como entradas de compatibilidade. O Upstart também pode reagir a eventos do sistema de arquivos, dispositivos, rede ou definidos por aplicações, dependendo do que o sistema emite.
 
-:::single-choice{#upstart-overview-start-on}
-O que uma seção `start on` do Upstart define?
+:::single-choice{#upstart-overview-start-on} O que uma seção `start on` do Upstart define?
 
 ::option[A versão do kernel que deve ser compilada em seguida.]{#upstart-overview-kernel-version explanation="As condições de eventos das tarefas não selecionam uma compilação do kernel."}
 ::option[A expressão de eventos que muda o objetivo da tarefa para a inicialização.]{#upstart-overview-start-condition .correct explanation="Quando a expressão é satisfeita, o Upstart tenta realizar a transição de início configurada para a tarefa."}
@@ -61,8 +59,7 @@ Durante a inicialização, o Upstart carrega as definições das tarefas e receb
 
 Esse modelo evita uma única sequência global de scripts codificada, mas pode ser difícil de diagnosticar quando os nomes dos eventos, a ordem e as condições são implícitos. Os eventos não são, por padrão, uma fila persistente de mensagens, portanto uma tarefa adicionada ou uma condição alterada posteriormente não deve presumir que todos os eventos anteriores serão repetidos.
 
-:::single-choice{#upstart-overview-event-chain}
-Como uma tarefa do Upstart pode levar outra tarefa a iniciar?
+:::single-choice{#upstart-overview-event-chain} Como uma tarefa do Upstart pode levar outra tarefa a iniciar?
 
 ::option[Ela reescreve na memória o binário executável da outra tarefa.]{#upstart-overview-rewrite-binary explanation="A coordenação ocorre por eventos, não por alteração do código."}
 ::option[Todas as tarefas sempre iniciam estritamente na ordem dos nomes dos arquivos.]{#upstart-overview-filename-order explanation="O Upstart usa expressões de eventos, não uma única lista de inicialização ordenada por nomes de arquivos."}
@@ -73,8 +70,7 @@ Como uma tarefa do Upstart pode levar outra tarefa a iniciar?
 
 O systemd pode oferecer compatibilidade limitada com alguns scripts de serviços legados, mas não executa a sintaxe das tarefas do Upstart como unidades nativas do systemd. Ao migrar, traduza as condições do ciclo de vida, o ambiente, a política de respawn, o registro, as dependências e as semânticas de prontidão, em vez de renomear arquivos mecanicamente.
 
-:::single-choice{#upstart-overview-current-ubuntu}
-Qual sistema init é usado pelas versões padrão atuais do Ubuntu?
+:::single-choice{#upstart-overview-current-ubuntu} Qual sistema init é usado pelas versões padrão atuais do Ubuntu?
 
 ::option[Upstart exclusivamente em todas as instalações.]{#upstart-overview-current-upstart explanation="Isso só foi verdade em períodos e configurações de versões históricas."}
 ::option[systemd.]{#upstart-overview-current-systemd .correct explanation="O Upstart pertence a gerações antigas do Ubuntu; as versões atuais usam systemd como PID 1."}

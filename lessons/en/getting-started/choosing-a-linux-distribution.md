@@ -20,8 +20,7 @@ A Linux system is divided into three main parts:
 - **Linux Kernel** - As the core of the operating system, the kernel manages the hardware and facilitates communication between software and hardware.
 - **User Space** - This is the environment where you, the user, interact with the system through applications and command-line interfaces.
 
-:::single-choice{#identify-hardware-manager}
-Which main part of a Linux system manages the hardware?
+:::single-choice{#identify-hardware-manager} Which main part of a Linux system manages the hardware?
 
 ::option[User Space]{#user-space explanation="User space is where applications and command-line interfaces run. Those programs rely on the kernel to work with hardware."}
 ::option[Linux Kernel]{#linux-kernel .correct explanation="The Linux kernel manages hardware resources and communication between hardware and software. It is the core around which a distribution is built."}
@@ -34,8 +33,7 @@ A Linux distribution bundles the Linux kernel with system utilities, libraries, 
 
 Different Linux distributions make different choices about stability, software freshness, desktop experience, package management, support, and system philosophy. That is why there is no single best Linux distro for everyone.
 
-:::single-choice{#recognize-linux-distribution}
-Which description best matches a Linux distribution?
+:::single-choice{#recognize-linux-distribution} Which description best matches a Linux distribution?
 
 ::option[A kernel distributed without system tools, applications, or software management]{#kernel-only explanation="The kernel alone is only one part of an operating system. A distribution adds utilities, libraries, applications, and software management."}
 ::option[A kernel packaged with system tools, applications, and software management]{#complete-distribution .correct explanation="A distribution combines the Linux kernel with the user-space software needed for a usable operating system. It commonly includes a package manager as well."}
@@ -50,8 +48,7 @@ The best Linux distro is usually the one that matches your goals, not the one wi
 
 Release style describes how a distro delivers major software updates. Stable or point-release distros publish updates in planned batches and focus on predictability. Rolling-release distros deliver updates continuously, which usually means newer software but also more frequent change.
 
-:::single-choice{#choose-release-style}
-Which release style best fits someone who prioritizes planned updates and predictability?
+:::single-choice{#choose-release-style} Which release style best fits someone who prioritizes planned updates and predictability?
 
 ::option[A continuously updated rolling release]{#rolling-release explanation="A rolling release usually provides newer software through continuous updates. It also brings more frequent change than the stated goal calls for."}
 ::option[A stable or point-release model]{#stable-release .correct explanation="Stable and point-release models deliver major changes in planned releases. This supports a more predictable environment."}
@@ -64,8 +61,7 @@ If you are new to Linux, start with distros that offer a smooth installation pro
 
 Beginner-friendly does not always mean simplistic. It usually means the distro has sensible defaults, a large community, and fewer surprises during day-to-day use.
 
-:::single-choice{#prioritize-beginner-needs}
-Which qualities are the strongest starting point for a new Linux user?
+:::single-choice{#prioritize-beginner-needs} Which qualities are the strongest starting point for a new Linux user?
 
 ::option[Newest packages, manual setup, and limited documentation]{#advanced-setup-qualities explanation="New software and manual setup may suit an experienced user, but limited guidance adds avoidable difficulty for a beginner."}
 ::option[Maximum control, complex maintenance, and frequent surprises]{#maximum-control-qualities explanation="Deep control can be valuable after a user knows the workflow they want. It is not the most supportive default for a first distribution."}
@@ -122,8 +118,7 @@ It is easy to spend too much time searching for the best Linux distro and never 
 
 Once you understand one Linux distro, moving to another becomes much easier. The important step is to start.
 
-:::single-choice{#take-practical-next-step}
-After identifying your goals, what is a practical next step?
+:::single-choice{#take-practical-next-step} After identifying your goals, what is a practical next step?
 
 ::option[Keep searching until one distro is best for everyone]{#search-universal-best explanation="The lesson establishes that different users need different things. Waiting for a universal best choice prevents you from gaining useful experience."}
 ::option[Switch repeatedly before learning the basics of any distro]{#switch-repeatedly explanation="Frequent switching makes it harder to build foundational skills. Learning one suitable distribution first makes later changes easier."}

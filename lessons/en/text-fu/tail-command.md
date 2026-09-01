@@ -22,8 +22,7 @@ $ tail application.log
 
 If the file contains fewer than 10 lines, all available lines are printed. The file itself is not changed.
 
-:::single-choice{#tail-default-lines}
-What does `tail application.log` display by default?
+:::single-choice{#tail-default-lines} What does `tail application.log` display by default?
 
 ::option[Up to the initial 10 lines of the file.]{#tail-first-ten explanation="The beginning of a file is selected by `head`. `tail` works from the end."}
 ::option[Every line added after the command starts.]{#tail-follow-only explanation="Continuous following requires `-f` or a related option. Plain `tail` prints a snapshot and exits."}
@@ -46,8 +45,7 @@ $ tail -c 100 payload.bin
 
 Byte mode can begin in the middle of a text line or encoded character, so line mode is usually clearer for text.
 
-:::single-choice{#tail-twenty-lines}
-Which command displays the final 20 lines of `application.log`?
+:::single-choice{#tail-twenty-lines} Which command displays the final 20 lines of `application.log`?
 
 ::option[`tail -n 20 application.log`]{#tail-twenty-end .correct explanation="The `-n` option selects a line count, and `tail` takes those lines from the end."}
 ::option[`head -n 20 application.log`]{#head-twenty-start explanation="This selects 20 lines from the beginning rather than from the end."}
@@ -64,8 +62,7 @@ $ tail -n +5 report.txt
 
 This skips the first four lines and begins at line 5. It is useful for removing a known number of header lines from a stream.
 
-:::single-choice{#tail-start-line-five}
-Which command prints `report.txt` starting with line 5?
+:::single-choice{#tail-start-line-five} Which command prints `report.txt` starting with line 5?
 
 ::option[`tail -n +5 report.txt`]{#tail-from-five .correct explanation="The `+5` count tells `tail` to begin at line 5 and continue through the end."}
 ::option[`tail -n 5 report.txt`]{#tail-final-five explanation="Without a plus sign, this selects the final five lines, regardless of their absolute line numbers."}
@@ -82,8 +79,7 @@ $ tail -f application.log
 
 Press `Ctrl+C` to interrupt `tail` and return to the shell. Following a file only displays new content; it does not guarantee that the application producing the log is healthy or that every relevant event uses that file.
 
-:::single-choice{#tail-follow-file}
-Which command shows the current end of `application.log` and keeps waiting for appended content?
+:::single-choice{#tail-follow-file} Which command shows the current end of `application.log` and keeps waiting for appended content?
 
 ::option[`tail -f application.log`]{#tail-follow-app .correct explanation="The `-f` option keeps `tail` active and displays data appended to the file."}
 ::option[`tail -n 0 application.log`]{#tail-zero-lines explanation="This initially prints no lines and exits because no follow option is present."}
@@ -100,8 +96,7 @@ $ tail -F application.log
 
 Use `-f` when following the currently opened file is the desired behavior, and `-F` when a named log is expected to rotate. These are GNU behaviors; other implementations can differ.
 
-:::single-choice{#tail-follow-rotated-name}
-On GNU/Linux, which option is better suited to following `application.log` across common rename-and-recreate log rotation?
+:::single-choice{#tail-follow-rotated-name} On GNU/Linux, which option is better suited to following `application.log` across common rename-and-recreate log rotation?
 
 ::option[`-n`]{#tail-rotation-lines explanation="The `-n` option changes the number of lines displayed. It does not retry a replaced pathname."}
 ::option[`-c`]{#tail-rotation-bytes explanation="The `-c` option changes the selection unit to bytes. It does not provide rotation-aware following."}

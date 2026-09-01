@@ -25,8 +25,7 @@ Paketmetadaten können mehr als einen einfachen erforderlichen Namen ausdrücken
 
 Mit diesen Regeln kann ein Solver eine Gruppe von Paketversionen auswählen, die mit den konfigurierten Paketquellen, der Architektur und dem installierten Zustand kompatibel ist. Eine Lösung kann Upgrades, Entfernungen oder die Wahl zwischen Anbietern erfordern. Prüfe daher die vorgeschlagene Transaktion, bevor du sie genehmigst.
 
-:::single-choice{#package-dependencies-solver-role}
-Was versucht ein Abhängigkeits-Solver mit Paketquellenkenntnis zu erzeugen?
+:::single-choice{#package-dependencies-solver-role} Was versucht ein Abhängigkeits-Solver mit Paketquellenkenntnis zu erzeugen?
 
 ::option[Eine konsistente Gruppe von Paketversionen und erforderlichen Änderungen.]{#package-dependencies-consistent-set .correct explanation="Der Solver bewertet deklarierte Beziehungen über installierte und verfügbare Pakete hinweg."}
 ::option[Ein neues Benutzerkonto für jede installierte Anwendung.]{#package-dependencies-user-account explanation="Das Erstellen eines Kontos kann eine Lebenszyklusaktion eines Pakets sein, ist aber nicht der Zweck der Abhängigkeitsauflösung."}
@@ -39,8 +38,7 @@ Eine gemeinsam genutzte Bibliothek enthält kompilierten Code, den mehrere Progr
 
 Auf ELF-basierten Linux-Systemen kann eine ausführbare Datei einen benötigten Bibliotheksnamen wie einen SONAME erfassen. Der dynamische Linker findet beim Programmstart eine passende installierte Bibliothek. Paketmetadaten stellen diese Anforderung gewöhnlich als Abhängigkeit von dem Paket oder der Fähigkeit dar, das beziehungsweise die die kompatible Bibliothek bereitstellt.
 
-:::single-choice{#package-dependencies-shared-library}
-Was ist eine gemeinsam genutzte Bibliothek?
+:::single-choice{#package-dependencies-shared-library} Was ist eine gemeinsam genutzte Bibliothek?
 
 ::option[Kompilierter Code, den mehrere Programme laden und verwenden können.]{#package-dependencies-library-code .correct explanation="Eine gemeinsam genutzte Bibliothek stellt wiederverwendbare Binärschnittstellen bereit, statt in jedes Programm eine getrennte Implementierung einzubetten."}
 ::option[Eine Liste von Paketquellen, die unabhängige Distributionen gemeinsam nutzen.]{#package-dependencies-shared-repository explanation="Die Konfiguration von Paketquellen und ausführbarer Bibliothekscode sind unterschiedliche Konzepte."}
@@ -53,8 +51,7 @@ Eine Datei mit einem ähnlichen Bibliotheksnamen reicht nicht aus. Die erforderl
 
 Paketbetreuer codieren Bibliotheksbeziehungen und koordinieren Übergänge, wenn sich eine ABI ändert. Belasse native Bibliotheken unter der Kontrolle der Paketverwaltung. Verwende unterstützte Mechanismen zur parallelen Installation, Container, Umgebungen oder Build-Mechanismen für Software, die eine in Konflikt stehende Version benötigt.
 
-:::single-choice{#package-dependencies-filename-insufficient}
-Warum kann ein Programm trotz einer ähnlich benannten Bibliotheksdatei fehlschlagen?
+:::single-choice{#package-dependencies-filename-insufficient} Warum kann ein Programm trotz einer ähnlich benannten Bibliotheksdatei fehlschlagen?
 
 ::option[Linux erlaubt jeder Bibliothek nur die Nutzung durch eine einzige ausführbare Datei.]{#package-dependencies-one-consumer explanation="Ein wesentlicher Zweck gemeinsam genutzter Bibliotheken ist ihre Verwendung durch mehrere Prozesse und Programme."}
 ::option[Paketabhängigkeiten gelten nur vor dem ersten Systemstart.]{#package-dependencies-boot-only explanation="Abhängigkeiten bleiben während Installation, Upgrades und Laufzeit relevant."}
@@ -67,8 +64,7 @@ Ein Abhängigkeitsproblem kann durch gemischte Paketquellen, unterbrochene Vorg�
 
 Lies zuerst die Diagnose der Paketverwaltung, aktualisiere nur Metadaten vertrauenswürdiger Paketquellen, prüfe zurückgehaltene oder gepinnte Versionen und begutachte die vorgeschlagene Reparatur. Ein einfaches Paketinstallationswerkzeug kann ein Archiv entpacken, ohne alle Abhängigkeiten abzurufen. Ein übergeordnetes Werkzeug mit Paketquellenkenntnis ist für gewöhnliche Installationen meist sicherer, da es die vollständige Transaktion auflöst.
 
-:::single-choice{#package-dependencies-low-level-limit}
-Was ist eine verbreitete Einschränkung bei der Installation eines lokalen Pakets mit einem einfachen Archivwerkzeug?
+:::single-choice{#package-dependencies-low-level-limit} Was ist eine verbreitete Einschränkung bei der Installation eines lokalen Pakets mit einem einfachen Archivwerkzeug?
 
 ::option[Es ruft möglicherweise nicht alle fehlenden Abhängigkeiten aus Paketquellen ab und löst sie nicht vollständig auf.]{#package-dependencies-no-repository-resolution .correct explanation="Einfache Werkzeuge verwalten Paketarchive und Datenbanken, können das Abrufen von Abhängigkeiten aber einer übergeordneten Verwaltung überlassen."}
 ::option[Es kompiliert den Linux-Kernel immer aus dem Quellcode neu.]{#package-dependencies-recompile-kernel explanation="Die Installation eines Paketarchivs baut nicht zwangsläufig den Kernel neu."}

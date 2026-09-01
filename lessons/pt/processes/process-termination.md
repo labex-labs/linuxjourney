@@ -25,8 +25,7 @@ $ printf '%s\n' "$?"
 
 Os shells expõem um intervalo limitado de status codificados e também representam o encerramento por sinais, portanto esse valor não é um registro de diagnóstico completo. Os programas devem documentar seus próprios códigos de saída.
 
-:::single-choice{#process-termination-success-status}
-Pela convenção Unix, qual status de saída normal indica sucesso?
+:::single-choice{#process-termination-success-status} Pela convenção Unix, qual status de saída normal indica sucesso?
 
 ::option[`1`]{#process-termination-status-one explanation="Muitos programas usam `1` para uma falha geral, embora os significados sejam específicos do comando."}
 ::option[`0`]{#process-termination-status-zero .correct explanation="Um status normal zero indica convencionalmente a conclusão bem-sucedida."}
@@ -39,8 +38,7 @@ O kernel registra como um filho terminou e notifica seu pai. O pai usa uma funç
 
 A espera também pode coordenar a execução: um shell aguarda um comando em primeiro plano antes de exibir outro prompt, mas pode adiar a espera por uma tarefa em segundo plano. Um pai de longa duração bem projetado deve se organizar para coletar seus filhos sem bloquear trabalhos não relacionados.
 
-:::single-choice{#process-termination-wait-purpose}
-O que uma operação wait bem-sucedida permite que um pai recupere?
+:::single-choice{#process-termination-wait-purpose} O que uma operação wait bem-sucedida permite que um pai recupere?
 
 ::option[As informações de encerramento do filho.]{#process-termination-wait-status .correct explanation="A família wait informa como um filho foi interrompido ou terminou e coleta um filho concluído."}
 ::option[Uma cópia do antigo espaço de endereços do filho.]{#process-termination-wait-memory explanation="A maior parte da memória do processo já foi liberada e não é devolvida ao pai por `wait()`."}
@@ -53,8 +51,7 @@ Depois que um filho termina, mas antes que seu registro de encerramento seja col
 
 Enviar um sinal a um zumbi não pode fazê-lo terminar novamente. Corrija o acúmulo persistente de zumbis diagnosticando o pai que não está aguardando, reiniciando ou corrigindo esse pai por um procedimento operacional adequado ou permitindo a reparentalização para um processo que fará a coleta. Grandes quantidades podem esgotar a capacidade de PIDs ou da tabela de processos.
 
-:::single-choice{#process-termination-zombie-definition}
-Qual descrição corresponde a um processo zumbi?
+:::single-choice{#process-termination-zombie-definition} Qual descrição corresponde a um processo zumbi?
 
 ::option[Um filho em execução cujo pai já terminou.]{#process-termination-zombie-orphan explanation="Isso descreve um filho órfão, não um estado zumbi."}
 ::option[Um filho concluído cujo registro de encerramento ainda não foi coletado.]{#process-termination-zombie-unreaped .correct explanation="O processo deixou de executar, mas o kernel mantém um estado mínimo para seu pai."}
@@ -67,8 +64,7 @@ Se um pai termina enquanto seu filho continua, o kernel reparentaliza esse filho
 
 O processo adotante passa a ser responsável por coletar o status de encerramento. Gerenciadores de serviços modernos e ambientes de contêineres tornam importante não presumir que o novo pai sempre seja o PID 1 do host.
 
-:::single-choice{#process-termination-orphan-definition}
-O que acontece quando um processo sobrevive a seu pai original?
+:::single-choice{#process-termination-orphan-definition} O que acontece quando um processo sobrevive a seu pai original?
 
 ::option[Ele é reparentalizado para um subreaper elegível ou para o processo init do namespace.]{#process-termination-orphan-reparented .correct explanation="O kernel preserva uma relação válida de parentesco atribuindo um processo adotante."}
 ::option[Ele se torna imediatamente um zumbi, mesmo que ainda não tenha terminado.]{#process-termination-orphan-zombie explanation="O estado zumbi começa somente depois que a execução termina e o status aguarda a coleta."}

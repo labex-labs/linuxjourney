@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 在第二个示例中，复制的数据会获得 `mycoolfile_backup` 这个名称。
 
-:::single-choice{#copy-file-under-new-name}
-哪个命令会把 `draft.txt` 复制为名为 `final.txt` 的文件，同时保留 `draft.txt`？
+:::single-choice{#copy-file-under-new-name} 哪个命令会把 `draft.txt` 复制为名为 `final.txt` 的文件，同时保留 `draft.txt`？
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` 会重命名或移动原路径，不会按要求把源副本留在原处。"}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="这里颠倒了源和目标，会从 `final.txt` 复制到 `draft.txt`。"}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 当你提供多个源文件时，最后一个参数必须是目录。
 
-:::single-choice{#copy-multiple-files}
-哪个命令会把 `a.txt` 和 `b.txt` 复制到现有的 `archive/` 目录？
+:::single-choice{#copy-multiple-files} 哪个命令会把 `a.txt` 和 `b.txt` 复制到现有的 `archive/` 目录？
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="在这种 `cp` 用法中，目标目录应放在最后；放在开头会改变操作数的解释方式。"}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="存在多个源时，`cp` 会把最后一个现有目录视为前面所有文件的目标。"}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-复制 `*.jpg` 前，哪个命令会显示该模式当前匹配到的非隐藏名称？
+:::single-choice{#preview-copy-pattern} 复制 `*.jpg` 前，哪个命令会显示该模式当前匹配到的非隐藏名称？
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="当模式匹配多个名称时，这会尝试在没有明确目标的情况下复制，并不是预览操作。"}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="shell 会为 `ls` 展开同一模式，让你在复制前查看匹配名称。"}
@@ -112,8 +109,7 @@ $ cp -R website /home/pete/backups/
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-你想对 `project/` 进行递归的备份式复制，并保留链接和许多属性。哪个命令符合要求？
+:::single-choice{#archive-directory-tree} 你想对 `project/` 进行递归的备份式复制，并保留链接和许多属性。哪个命令符合要求？
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` 会保留选定属性，但本身不会让目录复制变为递归操作。"}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` 根据目标状态控制何时复制，并不会单独启用递归目录复制。"}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 `-f` 会让 GNU `cp` 在无法打开现有目标进行写入时尝试先删除它，再重试复制。它不能替代对目标的谨慎检查。shell 别名也可能自动添加 `-i` 等选项，因此遇到意外提示时应检查配置，不要想当然。
 
-:::single-choice{#skip-existing-destination}
-哪个命令会把 `report.txt` 复制到 `backup/`，但在同名目标已存在时跳过它？
+:::single-choice{#skip-existing-destination} 哪个命令会把 `report.txt` 复制到 `backup/`，但在同名目标已存在时跳过它？
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="`-n` 会阻止 `cp` 覆盖现有目标文件。"}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` 会在覆盖前询问，结果取决于回答；它不会自动跳过每个现有目标。"}

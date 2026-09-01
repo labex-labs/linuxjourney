@@ -22,8 +22,7 @@ La plage conventionnelle des valeurs nice va de `-20` à `19` :
 
 La valeur nice ne réserve pas un pourcentage du processeur et ne garantit pas une exécution immédiate. Son effet est surtout visible lorsque des tâches exécutables comparables se disputent le temps processeur. Les politiques temps réel, les cgroups, l’affinité du processeur, les attentes d’entrées-sorties et d’autres contrôles peuvent dominer le comportement observé.
 
-:::single-choice{#process-niceness-lower-value}
-Sous une même politique de planification ordinaire, quelle valeur nice donne un poids relatif supérieur pour le processeur ?
+:::single-choice{#process-niceness-lower-value} Sous une même politique de planification ordinaire, quelle valeur nice donne un poids relatif supérieur pour le processeur ?
 
 ::option[`10`]{#process-niceness-value-ten explanation="Une valeur positive est plus aimable et possède normalement un poids inférieur à zéro ou à une valeur négative."}
 ::option[`19`]{#process-niceness-value-nineteen explanation="Il s’agit de l’extrémité la plus aimable de la plage conventionnelle, dotée d’un poids relativement faible."}
@@ -40,8 +39,7 @@ $ ps -o pid,ni,pri,stat,cmd -p 3245
 
 `NI` est la valeur nice visible par l’utilisateur. Une colonne `PRI` ou semblable peut indiquer une priorité dérivée de l’ordonnanceur dont l’échelle varie selon l’outil et la classe de planification ; ne supposez donc pas que les deux colonnes sont interchangeables.
 
-:::single-choice{#process-niceness-top-column}
-Quelle colonne de `top` affiche normalement la valeur nice ?
+:::single-choice{#process-niceness-top-column} Quelle colonne de `top` affiche normalement la valeur nice ?
 
 ::option[`PID`]{#process-niceness-column-pid explanation="`PID` identifie un processus au lieu d’afficher son ajustement de planification."}
 ::option[`TTY`]{#process-niceness-column-tty explanation="`TTY` identifie une association avec un terminal de contrôle."}
@@ -58,8 +56,7 @@ $ nice -n 5 long-computation
 
 La méthode exacte de demande de l’ajustement et la syntaxe acceptée peuvent être vérifiées dans le manuel local. Un utilisateur sans privilèges peut normalement rendre une commande plus aimable en augmentant sa valeur. Lui attribuer une valeur plus faible, et donc un poids de planification plus favorable, exige les privilèges ou les limites de ressources configurées appropriés.
 
-:::single-choice{#process-niceness-nice-command}
-Que fait `nice -n 5 long-computation` ?
+:::single-choice{#process-niceness-nice-command} Que fait `nice -n 5 long-computation` ?
 
 ::option[La commande démarre avec la valeur nice 5, si cela est autorisé.]{#process-niceness-start-five .correct explanation="`nice` lance une nouvelle commande avec l’ajustement de planification demandé."}
 ::option[Elle attribue au PID 5 la valeur nice la plus faible possible.]{#process-niceness-pid-five explanation="L’opérande après `-n` est une valeur nice, et non un PID cible."}
@@ -76,8 +73,7 @@ $ renice -n 10 -p 3245
 
 Cette commande demande la valeur nice `10` pour le PID `3245`. Vérifiez d’abord la cible, car les PID peuvent être réutilisés, puis confirmez la valeur obtenue. Les permissions dépendent de la propriété, des privilèges, des limites de ressources et de la politique du système. L’augmentation de la valeur nice est généralement autorisée pour un processus que vous possédez ; l’annulation de ce changement peut ne pas l’être sans privilèges.
 
-:::single-choice{#process-niceness-renice-purpose}
-Quel outil modifie la valeur nice d’un processus existant ?
+:::single-choice{#process-niceness-renice-purpose} Quel outil modifie la valeur nice d’un processus existant ?
 
 ::option[`nice`]{#process-niceness-tool-nice explanation="`nice` sert principalement à lancer une nouvelle commande avec une valeur ajustée."}
 ::option[`kill`]{#process-niceness-tool-kill explanation="`kill` envoie des signaux et ne constitue pas l’outil ordinaire de modification de la valeur nice."}

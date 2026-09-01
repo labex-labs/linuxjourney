@@ -16,8 +16,7 @@ TCP/IP モデルは、インターネットホストが使うプロトコルを�
 
 HTTP、DNS、SSH、SMTP などのサービスについて、メッセージと動作を定義します。OSI モデルが別々に扱う表現やセッションの責任も多く含みます。
 
-:::single-choice{#tcpip-http-layer}
-HTTP は通常、TCP/IP のどの層に分類されますか？
+:::single-choice{#tcpip-http-layer} HTTP は通常、TCP/IP のどの層に分類されますか？
 
 ::option[インターネット層。]{#tcpip-http-internet explanation="インターネット層は IP アドレスとパケット転送を扱います。"}
 ::option[リンク層。]{#tcpip-http-link explanation="リンク層はローカル媒体上で通信を運びます。"}
@@ -28,8 +27,7 @@ HTTP は通常、TCP/IP のどの層に分類されますか？
 
 アプリケーションの端点間通信を提供します。TCP は輻輳制御とフロー制御を備えた、信頼性のある順序付きバイトストリームを提供します。UDP は TCP の接続、順序、再送保証を持たない独立したデータグラムを提供します。ポート番号はトランスポート端点の識別に役立ちますが、番号だけでは待ち受けるアプリケーションを証明できません。
 
-:::single-choice{#tcpip-udp-property}
-TCP ではなく UDP の性質はどれですか？
+:::single-choice{#tcpip-udp-property} TCP ではなく UDP の性質はどれですか？
 
 ::option[組み込みの再送保証を持たない独立したデータグラム。]{#tcpip-udp-datagrams .correct explanation="UDP を使うアプリケーションが、信頼性を追加するか、どう追加するかを決めます。"}
 ::option[1つのバイトストリームの順序付き配信を保証する。]{#tcpip-udp-ordered explanation="接続が成功した場合に TCP が提供する性質です。"}
@@ -40,8 +38,7 @@ TCP ではなく UDP の性質はどれですか？
 
 Internet Protocol は送信元・宛先 IP アドレスを使ってパケットを運びます。ルーターはルーティング情報を調べ、ホップ制限を減らしながら宛先へ転送します。ICMP は IP の動作に関する制御・エラー情報を伝えます。配送はベストエフォートで、必要な復旧は上位層またはアプリケーションが扱います。
 
-:::single-choice{#tcpip-router-layer}
-ルーターが使う IP 宛先を提供する層はどれですか？
+:::single-choice{#tcpip-router-layer} ルーターが使う IP 宛先を提供する層はどれですか？
 
 ::option[インターネット層。]{#tcpip-router-internet .correct explanation="IP ヘッダーにルーティング転送で使うネットワーク層の宛先が含まれます。"}
 ::option[アプリケーション層。]{#tcpip-router-application explanation="アプリケーションメッセージは下位層のプロトコルデータ内で運ばれます。"}
@@ -54,8 +51,7 @@ Internet Protocol は送信元・宛先 IP アドレスを使ってパケット�
 
 通常、リンクヘッダーはルーターホップごとに変わり、ミドルボックスが終了または変換しない限り、トランスポートとアプリケーションの会話は端から端まで続きます。
 
-:::single-choice{#tcpip-link-scope}
-リンク層フレームの通常の範囲はどこですか？
+:::single-choice{#tcpip-link-scope} リンク層フレームの通常の範囲はどこですか？
 
 ::option[1つのローカルリンクまたはホップ。]{#tcpip-one-link .correct explanation="ルーターは受信フレームを外し、次のリンク用のフレームを作ります。"}
 ::option[世界中のインターネット上の全アプリケーションセッション。]{#tcpip-global-frame explanation="フレームはルーティングされたネットワークを変更なしでは渡りません。"}

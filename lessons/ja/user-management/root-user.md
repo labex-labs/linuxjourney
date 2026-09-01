@@ -30,8 +30,7 @@ $ su - operator
 
 対象固有の作業が終わったら、サブシェルを終了します。
 
-:::single-choice{#root-su-login-shell}
-ユーザー `operator` としてログイン形式のシェルを要求するコマンドはどれですか？
+:::single-choice{#root-su-login-shell} ユーザー `operator` としてログイン形式のシェルを要求するコマンドはどれですか？
 
 ::option[`su - operator`]{#root-su-login-operator .correct explanation="ハイフンは、`operator` 用のログインシェル動作と対象指向の環境を要求します。"}
 ::option[`su operator`]{#root-su-preserve-environment explanation="これは対象の識別情報へ変更しますが、ここで紹介した完全なログイン形式の初期化は要求しません。"}
@@ -50,8 +49,7 @@ $ sudo -u postgres id
 
 可能なら、長時間続く特権シェルではなく、範囲を絞った一つの管理コマンドを選びます。範囲が小さければ、誤ったコマンドを昇格権限で実行する可能性も減ります。
 
-:::single-choice{#root-sudo-target-user}
-`sudo -u postgres id` は何を要求しますか？
+:::single-choice{#root-sudo-target-user} `sudo -u postgres id` は何を要求しますか？
 
 ::option[現在のアカウントを `postgres` へ恒久的に改名する。]{#root-sudo-rename explanation="`sudo` は対象の資格情報でコマンドを実行しますが、アカウント記録を改名しません。"}
 ::option[ポリシーに従い、`postgres` を対象ユーザーとして `id` を実行する。]{#root-sudo-postgres-id .correct explanation="`-u` オプションが対象識別情報を選び、sudoers ポリシーが要求を許可するか決めます。"}
@@ -64,8 +62,7 @@ $ sudo -u postgres id
 
 監査動作は設定によって異なります。`sudo` は一般に呼び出しを記録しますが、シェル起動が一度記録されても、その中で入力した全コマンドが自動的に完全記録されるとは限りません。シェル履歴、システム監査、sudo の I/O ログは、それぞれ独立した仕組みとポリシーを持ちます。
 
-:::single-choice{#root-persistent-shell-risk}
-長時間維持する root シェルが、理解したコマンドを一つずつ昇格するより危険なのはなぜですか？
+:::single-choice{#root-persistent-shell-risk} 長時間維持する root シェルが、理解したコマンドを一つずつ昇格するより危険なのはなぜですか？
 
 ::option[root シェルがすべての監査システムから全コマンドを自動削除するから。]{#root-shell-no-audit explanation="ログ記録は設定によって異なり、全監査記録が自動的に消えるという説明は不正確です。"}
 ::option[シェルが複数要素から成るファイルパスを無効にするから。]{#root-shell-path-limit explanation="特権によってそのようなパス制限は生じません。問題は通常操作へ適用される権限の大きさです。"}
@@ -82,8 +79,7 @@ $ sudo -l
 
 コマンドパス、許可された対象ユーザー、引数の制限を確認します。広範に見えるルールも、無関係な作業を許可するものとして扱ってはいけません。
 
-:::single-choice{#root-list-sudo-rules}
-現在の呼び出し元ユーザーが利用できる sudo 権限を一覧表示するコマンドはどれですか？
+:::single-choice{#root-list-sudo-rules} 現在の呼び出し元ユーザーが利用できる sudo 権限を一覧表示するコマンドはどれですか？
 
 ::option[`sudo -i`]{#root-sudo-login explanation="これは対象のログイン形式シェルを要求し、権限範囲を広げる可能性があります。読み取り専用のポリシー一覧ではありません。"}
 ::option[`sudo -l`]{#root-sudo-list .correct explanation="小文字の `-l` オプションは、現在のポリシーで許可されたコマンドの一覧を sudo へ要求します。"}
@@ -108,8 +104,7 @@ $ sudo visudo -f /etc/sudoers.d/application-admins
 
 通常のリダイレクトや検証のないエディター手順で sudoers を編集してはいけません。構文や権限の誤りで管理アクセスを失う可能性があります。リモートの認可設定を変更するときは、検証済みの別の復旧経路を確保してください。
 
-:::single-choice{#root-edit-sudoers-safely}
-主要な sudoers ポリシーを編集し、構文を確認するために使うべきツールはどれですか？
+:::single-choice{#root-edit-sudoers-safely} 主要な sudoers ポリシーを編集し、構文を確認するために使うべきツールはどれですか？
 
 ::option[`cat`]{#root-cat-sudoers explanation="`cat` は読み取り可能なテキストを表示できますが、sudoers を安全に編集、ロック、検証しません。"}
 ::option[`visudo`]{#root-visudo .correct explanation="`visudo` は sudoers ポリシーの変更用に、ロックと構文検証を提供します。"}

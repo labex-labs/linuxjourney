@@ -26,8 +26,7 @@ $ ls -ld /*
 
 许多现代发行版使用合并式 `/usr` 布局，其中 `/bin`、`/sbin` 和 `/lib` 都是指向 `/usr` 下对应目录的符号链接。应通过命令查找机制和软件包记录确认实际位置，不要假定某个路径一定是实体目录或链接。
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-哪个目录传统上保存主机特有的系统配置？
+:::single-choice{#filesystem-hierarchy-configuration-directory} 哪个目录传统上保存主机特有的系统配置？
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="Procfs 提供实时进程和内核接口，而不是持久的主机配置文件。"}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="系统和服务配置传统上组织在 `/etc` 下。"}
@@ -42,8 +41,7 @@ $ ls -ld /*
 
 尽管名称容易误导，`/usr` 通常并不是存放各用户个人文件的位置。发行版的软件包管理器通常管理其中的大部分内容，因此把本地编译的文件复制到 `/usr/bin` 可能会与受管理的软件包冲突。
 
-:::single-choice{#filesystem-hierarchy-local-software}
-哪个前缀传统上保留给安装在发行版所管理 `/usr` 内容之外的本地软件？
+:::single-choice{#filesystem-hierarchy-local-software} 哪个前缀传统上保留给安装在发行版所管理 `/usr` 内容之外的本地软件？
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="本地层次把管理员安装的软件与发行版的主要 `/usr` 树分开。"}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="Procfs 是虚拟内核接口，并不是持久的软件前缀。"}
@@ -58,8 +56,7 @@ $ ls -ld /*
 
 家目录路径来自账户信息，而不是简单地把用户名拼接到 `/home` 后面。应使用 `getent passwd USER` 或 shell 解析得到的家目录，不要硬编码假设。
 
-:::single-choice{#filesystem-hierarchy-root-home}
-root 账户传统的家目录是什么？
+:::single-choice{#filesystem-hierarchy-root-home} root 账户传统的家目录是什么？
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="普通家目录通常位于 `/home` 下，但 root 使用独立的传统路径。"}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="特权账户的家目录传统上直接位于文件系统根目录下。"}
@@ -75,8 +72,7 @@ root 账户传统的家目录是什么？
 
 `/tmp` 的清理策略因系统而异；不要假定文件一定能保留到重启，也不要假定重启时一定会删除。应用程序应安全地创建临时文件，而不是使用可预测的名称。
 
-:::single-choice{#filesystem-hierarchy-log-path}
-哪个路径传统上保存系统日志文件？
+:::single-choice{#filesystem-hierarchy-log-path} 哪个路径传统上保存系统日志文件？
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` 用于配置，而不是普通的持续累积日志数据。"}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="日志属于不断变化的系统数据，组织在可变数据层次下。"}
@@ -93,8 +89,7 @@ root 账户传统的家目录是什么？
 
 这些只是目录用途约定，并不等同于权限授予。在非空目录上挂载另一个文件系统，会暂时隐藏该目录原有的内容，直到文件系统被卸载。
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-哪个路径通常通过 sysfs 公开内核设备模型？
+:::single-choice{#filesystem-hierarchy-sysfs-path} 哪个路径通常通过 sysfs 公开内核设备模型？
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` 用于系统对外提供的数据。"}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="Sysfs 传统上挂载到 `/sys`，用于呈现设备、驱动程序、总线和属性。"}

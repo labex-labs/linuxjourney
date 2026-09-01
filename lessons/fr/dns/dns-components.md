@@ -16,8 +16,7 @@ Le DNS sépare la récursion tournée vers le client de la publication faisant a
 
 Un résolveur stub dans une application ou un système d'exploitation envoie ses requêtes au résolveur récursif configuré. Celui-ci renvoie une réponse finale, une erreur ou le résultat d'un renvoi après avoir utilisé son cache et, si nécessaire, des requêtes itératives. Sa réponse ne porte l'indicateur de réponse faisant autorité que si le serveur répondant possède cette autorité ; la récursion seule ne la confère pas.
 
-:::single-choice{#dns-components-recursive-role}
-Que fait un résolveur récursif pour un client stub ?
+:::single-choice{#dns-components-recursive-role} Que fait un résolveur récursif pour un client stub ?
 
 ::option[Il obtient un résultat DNS final grâce au cache et à d'autres serveurs de noms.]{#dns-components-recursive-result .correct explanation="Le client délègue au service récursif les différentes étapes de la recherche."}
 ::option[Il remplace chaque routeur réseau sur le chemin des paquets.]{#dns-components-replaces-router explanation="La résolution de noms et l'acheminement IP sont distincts."}
@@ -28,8 +27,7 @@ Que fait un résolveur récursif pour un client stub ?
 
 Un serveur faisant autorité répond depuis les données des zones dont il a la charge. Une zone doit posséder plusieurs serveurs d'autorité, avec des données synchronisées et des risques de panne indépendants. Un serveur exclusivement d'autorité n'a pas besoin d'effectuer la récursion pour des clients arbitraires.
 
-:::single-choice{#dns-components-authoritative-role}
-Qu'est-ce qui rend un serveur faisant autorité pour une zone ?
+:::single-choice{#dns-components-authoritative-role} Qu'est-ce qui rend un serveur faisant autorité pour une zone ?
 
 ::option[Il a déjà interrogé cette zone par un résolveur public.]{#dns-components-once-queried explanation="Une requête ou une mise en cache ne confère aucune autorité."}
 ::option[Il sert les données de la zone selon la délégation et la configuration pertinentes.]{#dns-components-serves-zone .correct explanation="L'autorité provient de la délégation DNS et de la zone chargée sur le serveur, pas d'une copie mise en cache."}
@@ -42,8 +40,7 @@ Une zone est une portion de l'espace de noms servie administrativement. Elle com
 
 Le sommet possède normalement un enregistrement SOA et un ensemble NS. Les données de délégation du parent identifient les serveurs de l'enfant, parfois avec des enregistrements d'adresse glue nécessaires pour joindre les noms de serveurs qui appartiennent à la zone déléguée.
 
-:::single-choice{#dns-components-zone-meaning}
-Qu'est-ce qu'une zone DNS ?
+:::single-choice{#dns-components-zone-meaning} Qu'est-ce qu'une zone DNS ?
 
 ::option[Une portion de l'espace de noms servie administrativement.]{#dns-components-admin-portion .correct explanation="Elle peut contenir des enregistrements et délégations quel que soit le système de stockage."}
 ::option[Un unique fichier texte obligatoire sur chaque client.]{#dns-components-client-file explanation="Les implémentations d'autorité peuvent employer plusieurs formes de stockage, et les clients ne détiennent pas toutes les zones."}
@@ -60,8 +57,7 @@ www.example.com.  300  IN  A  192.0.2.25
 
 Le propriétaire est `www.example.com.`, le TTL 300 secondes, la classe Internet, le type une adresse IPv4 et les RDATA l'adresse. Les règles d'omission de champs et de noms relatifs des fichiers de zone exigent une gestion attentive de l'origine.
 
-:::single-choice{#dns-components-mx-type}
-Quel type d'enregistrement publie les préférences et noms d'hôtes des échangeurs de courrier ?
+:::single-choice{#dns-components-mx-type} Quel type d'enregistrement publie les préférences et noms d'hôtes des échangeurs de courrier ?
 
 ::option[`A`]{#dns-components-a explanation="Un enregistrement A stocke une adresse IPv4."}
 ::option[`NS`]{#dns-components-ns explanation="Les enregistrements NS identifient les serveurs de noms faisant autorité."}
@@ -72,8 +68,7 @@ Quel type d'enregistrement publie les préférences et noms d'hôtes des échang
 
 Les enregistrements positifs emploient des TTL pour limiter leur réutilisation en cache. Les réponses négatives, comme la preuve d'un nom inexistant, peuvent aussi être mises en cache selon des règles issues du SOA. Réduire un TTL peu avant un changement planifié ne touche que les enregistrements récupérés après que les caches ont vu la nouvelle valeur ; ceux déjà mis en cache avec l'ancien TTL subsistent jusqu'à leur expiration.
 
-:::single-choice{#dns-components-lower-ttl-timing}
-Pourquoi réduire un TTL DNS bien avant un changement d'adresse prévu ?
+:::single-choice{#dns-components-lower-ttl-timing} Pourquoi réduire un TTL DNS bien avant un changement d'adresse prévu ?
 
 ::option[Le TTL modifie le MTU Ethernet du serveur.]{#dns-components-ttl-mtu explanation="La durée du cache et la taille des paquets sur le lien n'ont aucun rapport."}
 ::option[Un TTL faible garantit que la nouvelle application fonctionne.]{#dns-components-ttl-health explanation="Il agit sur le cache, pas sur la correction du service."}

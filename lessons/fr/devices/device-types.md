@@ -28,8 +28,7 @@ Un `c` indique un périphérique caractère. Il expose généralement une interf
 
 Le terme « caractère » ne signifie pas que chaque appel système transfère exactement un caractère. Les applications peuvent lire ou écrire des tampons, tandis que le pilote définit le blocage, le cadrage et les opérations de contrôle.
 
-:::single-choice{#device-types-character-marker}
-Quel premier caractère de mode désigne un nœud de périphérique caractère ?
+:::single-choice{#device-types-character-marker} Quel premier caractère de mode désigne un nœud de périphérique caractère ?
 
 ::option[`b`]{#device-types-marker-block explanation="Le marqueur `b` désigne un nœud de périphérique bloc."}
 ::option[`p`]{#device-types-marker-pipe explanation="Le marqueur `p` désigne une FIFO, ou tube nommé."}
@@ -42,8 +41,7 @@ Un `b` indique un périphérique bloc. Ces périphériques fournissent un stocka
 
 Un nœud bloc n'est pas un système de fichiers monté. Il représente un périphérique de stockage ou une région logique ; un système de fichiers peut y être créé puis monté séparément. Écrire des données brutes dans le mauvais nœud peut détruire des tables de partitions, des systèmes de fichiers ou des données utilisateur.
 
-:::single-choice{#device-types-block-marker}
-Que signifie le premier caractère de mode `b` ?
+:::single-choice{#device-types-block-marker} Que signifie le premier caractère de mode `b` ?
 
 ::option[Une tâche du shell exécutée en arrière-plan.]{#device-types-background-job explanation="L'état d'une tâche du shell n'est pas codé comme caractère de type du système de fichiers."}
 ::option[Une interface de périphérique bloc.]{#device-types-block-device .correct explanation="Les fichiers spéciaux bloc exposent un stockage adressable par l'intermédiaire du sous-système bloc du noyau."}
@@ -58,8 +56,7 @@ Un `s` désigne un nœud de socket de domaine Unix. Il nomme un point de termina
 
 Ni les FIFO ni les sockets Unix n'utilisent de numéros majeur et mineur pour sélectionner un pilote matériel.
 
-:::single-choice{#device-types-pipe-socket-distinction}
-Quelle affirmation distingue correctement ces types d'objets de communication ?
+:::single-choice{#device-types-pipe-socket-distinction} Quelle affirmation distingue correctement ces types d'objets de communication ?
 
 ::option[`p` marque une partition et `s` un stockage à l'état solide.]{#device-types-storage-letters explanation="Les partitions sont normalement des périphériques bloc et ces lettres ne codent pas la technologie de stockage."}
 ::option[`p` marque une FIFO et `s` un nœud de socket de domaine Unix.]{#device-types-p-and-s .correct explanation="Ce sont deux types distincts d'objets du système de fichiers employés pour les communications interprocessus locales."}
@@ -84,8 +81,7 @@ $ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
 
 GNU `stat` affiche les valeurs `%t` et `%T` en hexadécimal.
 
-:::single-choice{#device-types-major-minor-scope}
-Quels objets utilisent des numéros majeur et mineur pour identifier une interface de périphérique du noyau ?
+:::single-choice{#device-types-major-minor-scope} Quels objets utilisent des numéros majeur et mineur pour identifier une interface de périphérique du noyau ?
 
 ::option[Tous les fichiers ordinaires et répertoires.]{#device-types-all-files explanation="Les fichiers ordinaires utilisent une taille et des métadonnées de système de fichiers plutôt qu'une paire majeur/mineur."}
 ::option[Uniquement les liens symboliques dont la cible manque.]{#device-types-broken-symlinks explanation="Les liens symboliques stockent un chemin et ne deviennent pas des nœuds lorsque leur cible est absente."}

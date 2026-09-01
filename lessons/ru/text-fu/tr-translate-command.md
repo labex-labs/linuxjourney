@@ -45,8 +45,7 @@ ABC123
 
 Символы, не входящие в `SET1`, проходят без изменений.
 
-:::single-choice{#tr-map-characters}
-Что выведет `printf '%s\n' 'abc123' | tr 'abc' 'ABC'`?
+:::single-choice{#tr-map-characters} Что выведет `printf '%s\n' 'abc123' | tr 'abc' 'ABC'`?
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="Цифры не входят в исходный набор, поэтому `tr` не заменяет их буквами."}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="Каждая из букв `a`, `b` и `c` сопоставляется символу в той же позиции `ABC`, а цифры не меняются."}
@@ -78,8 +77,7 @@ $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-:::single-choice{#tr-delete-digits}
-Какая команда удаляет из stdin все цифры, оставляя другие символы без изменений?
+:::single-choice{#tr-delete-digits} Какая команда удаляет из stdin все цифры, оставляя другие символы без изменений?
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="Параметр `-d` удаляет из входного потока все символы класса цифр."}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="Параметр `-s` сжимает повторяющиеся цифры, но оставляет по одному символу из каждой последовательности."}
@@ -105,8 +103,7 @@ one
 Two
 ```
 
-:::single-choice{#tr-squeeze-spaces}
-Какая команда сокращает каждую последовательность обычных пробелов в stdin до одного пробела?
+:::single-choice{#tr-squeeze-spaces} Какая команда сокращает каждую последовательность обычных пробелов в stdin до одного пробела?
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="Параметр `-s` сжимает повторяющиеся элементы указанного набора, который содержит один обычный пробел."}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="Параметр `-d` удаляет все обычные пробелы, а не сохраняет один из каждой последовательности."}
@@ -141,8 +138,7 @@ userexamplecom
 
 Команда также удаляет перевод строки, поскольку он не является буквой или цифрой. Если важны границы записей, добавляйте или сохраняйте разделители намеренно.
 
-:::single-choice{#tr-keep-alphanumeric}
-Что делает `tr -cd '[:alnum:]'` с stdin?
+:::single-choice{#tr-keep-alphanumeric} Что делает `tr -cd '[:alnum:]'` с stdin?
 
 ::option[Удаляет буквы и цифры, оставляя всё остальное.]{#tr-delete-alnum explanation="Дополнение меняет набор, на который действует `-d`; сам буквенно-цифровой набор сохраняется."}
 ::option[Удаляет каждый символ, не являющийся буквой или цифрой.]{#tr-delete-nonalnum .correct explanation="`-c` дополняет буквенно-цифровой набор, а `-d` удаляет получившийся набор небуквенно-цифровых символов."}
@@ -174,8 +170,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 Чтобы сохранить результат, перенаправьте stdout в другой файл. Не направляйте его обратно во входной путь: оболочка усечёт файл до того, как `tr` прочитает его.
 
-:::single-choice{#tr-read-file-input}
-Какая команда заставляет `tr` прочитать `names.txt` через stdin и преобразовать строчные символы в прописные?
+:::single-choice{#tr-read-file-input} Какая команда заставляет `tr` прочитать `names.txt` через stdin и преобразовать строчные символы в прописные?
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` не принимает обычное имя входного файла таким способом; лишний операнд делает синтаксис недопустимым."}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Файл читается правильно, но строчные буквы удаляются, а не преобразуются."}

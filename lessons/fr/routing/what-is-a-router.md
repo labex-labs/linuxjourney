@@ -18,8 +18,7 @@ Le routage construit ou sélectionne les informations relatives aux préfixes ac
 
 Il s’agit de questions distinctes du plan de contrôle et du plan de données. Une route peut exister tandis que le pare-feu bloque l’acheminement, ou une interface d’acheminement peut être active sans qu’aucune route valide n’existe.
 
-:::single-choice{#router-forwarding-role}
-Que fait l’acheminement des paquets ?
+:::single-choice{#router-forwarding-role} Que fait l’acheminement des paquets ?
 
 ::option[Il applique les informations de routage pour envoyer un paquet vers son prochain saut.]{#router-apply-route .correct explanation="L’acheminement est l’action réalisée pour chaque paquet selon la route et la politique sélectionnées."}
 ::option[Il crée un identifiant applicatif permanent pour chaque destination.]{#router-create-login explanation="Le routage ne gère pas les comptes des applications distantes."}
@@ -32,8 +31,7 @@ Une route associe un préfixe de destination à une interface de sortie, un proc
 
 Si aucune route admissible n’existe, le routeur abandonne le paquet et peut produire un message ICMP de destination inaccessible. Une route par défaut est facultative et ne pointe pas nécessairement directement vers l’Internet public.
 
-:::single-choice{#router-default-route}
-Quand une route par défaut est-elle sélectionnée ?
+:::single-choice{#router-default-route} Quand une route par défaut est-elle sélectionnée ?
 
 ::option[Avant l’examen des préfixes propres à la destination.]{#router-default-first explanation="Les préfixes admissibles plus spécifiques sont prioritaires."}
 ::option[Uniquement lorsque le paquet est une diffusion Ethernet.]{#router-default-broadcast explanation="La sélection d’une route IP repose sur les destinations de la couche réseau."}
@@ -46,8 +44,7 @@ Deux hôtes situés sur le même sous-réseau directement connecté échangent n
 
 Un « routeur » domestique réunit couramment un routeur IP, un commutateur Ethernet, un point d’accès Wi-Fi, un service DHCP, un dispositif NAT et un pare-feu. Chaque fonction doit être diagnostiquée séparément.
 
-:::single-choice{#router-same-subnet-path}
-Le trafic entre deux hôtes directement connectés doit-il passer par leur routeur par défaut ?
+:::single-choice{#router-same-subnet-path} Le trafic entre deux hôtes directement connectés doit-il passer par leur routeur par défaut ?
 
 ::option[Oui, car chaque paquet doit atteindre un port WAN.]{#router-always-wan explanation="Une livraison locale directement sur la liaison peut avoir lieu sans routeur."}
 ::option[Oui, sauf si les deux hôtes possèdent des adresses publiques.]{#router-public-required explanation="La portée publique ou privée ne détermine pas l’acheminement élémentaire sur la liaison."}
@@ -58,8 +55,7 @@ Le trafic entre deux hôtes directement connectés doit-il passer par leur route
 
 Un saut routé est une étape d’acheminement de la couche réseau. Le TTL d’IPv4 et la limite de sauts d’IPv6 sont décrémentés à chaque routeur afin de borner les boucles. Le nombre de sauts n’est pas une mesure complète de la distance ou de la qualité : les liaisons diffèrent en bande passante, latence, pertes, politique et congestion.
 
-:::single-choice{#router-hop-count-limit}
-Qu’est-ce qu’un nombre de sauts inférieur ne garantit pas ?
+:::single-choice{#router-hop-count-limit} Qu’est-ce qu’un nombre de sauts inférieur ne garantit pas ?
 
 ::option[Qu’au moins une étape routée existe.]{#router-hop-exists explanation="Un nombre de sauts positif indique directement un passage routé."}
 ::option[Un chemin applicatif plus rapide ou meilleur.]{#router-hop-not-quality .correct explanation="Un nombre inférieur de routeurs peut tout de même traverser des liaisons plus lentes, congestionnées ou limitées par une politique."}

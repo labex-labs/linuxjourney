@@ -38,8 +38,7 @@ magazine
 
 結果は stdout へ送られるため、入力ファイルは変わりません。
 
-:::single-choice{#uniq-collapse-adjacent}
-`uniq reading.txt` は標準で何をしますか？
+:::single-choice{#uniq-collapse-adjacent} `uniq reading.txt` は標準で何をしますか？
 
 ::option[ファイル全体を並べ替えてから、繰り返された値をすべて除く。]{#uniq-auto-sort explanation="`uniq` は入力順を保ち、並べ替えません。離れた同じ行は別のグループのままです。"}
 ::option[隣接する同一行の各グループから 1 行を表示する。]{#uniq-one-per-group .correct explanation="標準の `uniq` は連続する同一行を 1 出力行へまとめます。"}
@@ -60,8 +59,7 @@ $ uniq -c reading.txt
 
 同じ行をあらかじめ隣接させていなければ、これは全体の合計ではなく連続長です。
 
-:::single-choice{#uniq-count-groups}
-`uniq -c` の数値は何を表しますか？
+:::single-choice{#uniq-count-groups} `uniq -c` の数値は何を表しますか？
 
 ::option[各入力行の文字数。]{#uniq-character-count explanation="`uniq -c` は文字数を数えません。文字やバイトの合計には `wc` などを使います。"}
 ::option[各グループにある連続する同一行の数。]{#uniq-consecutive-count .correct explanation="`-c` はまとめた各隣接グループに、その行数を付けます。"}
@@ -86,16 +84,14 @@ article
 
 GNU `uniq -D` は重複グループ内の全行を表示しますが、小文字の `-d` はグループごとに値を 1 回だけ表示します。
 
-:::single-choice{#uniq-only-singletons}
-ちょうど 1 回だけ現れる隣接グループだけを表示するコマンドはどれですか？
+:::single-choice{#uniq-only-singletons} ちょうど 1 回だけ現れる隣接グループだけを表示するコマンドはどれですか？
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="重複と単独の両方を含む全グループを件数付きで表示します。"}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="小文字の `-d` は重複グループを表示するため、逆の選択です。"}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="`-u` は隣接する連続長がちょうど 1 のグループを選びます。"}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-複数回現れる各隣接グループにつき 1 行を表示するコマンドはどれですか？
+:::single-choice{#uniq-one-per-duplicate-group} 複数回現れる各隣接グループにつき 1 行を表示するコマンドはどれですか？
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="`-d` は重複した隣接グループを選び、グループごとに代表 1 行を出力します。"}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="GNU の大文字 `-D` は、代表 1 行だけでなく重複グループに属する全行を表示します。"}
@@ -141,8 +137,7 @@ paper
 
 両段階で一貫したロケールと比較方針を使います。`sort -u reading.txt` なら、1 コマンドで並べ替え、等しいキーごとに 1 行を残せます。
 
-:::single-choice{#uniq-separated-duplicates}
-同じ行が `reading.txt` 内に散らばり、出力順を変えてもよい場合、完全な各行を 1 つずつ並べて出力するパイプラインはどれですか？
+:::single-choice{#uniq-separated-duplicates} 同じ行が `reading.txt` 内に散らばり、出力順を変えてもよい場合、完全な各行を 1 つずつ並べて出力するパイプラインはどれですか？
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="並べ替えで同じ完全な行を隣接させ、`uniq` が各グループを 1 行へまとめます。"}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="離れた同じ行が隣接する前に `uniq` が動くため、その後に並べても重複行が残ることがあります。"}

@@ -23,8 +23,7 @@ $ ip neighbor show dev enp1s0
 
 Una entrada incluye una dirección IP, una dirección de la capa de enlace, un dispositivo y un estado de accesibilidad. La tabla puede estar vacía después del arranque y llenarse a medida que el tráfico necesita siguientes saltos locales.
 
-:::single-choice{#arp-command-modern-view}
-¿Qué comando muestra el estado moderno de la tabla de vecinos de Linux?
+:::single-choice{#arp-command-modern-view} ¿Qué comando muestra el estado moderno de la tabla de vecinos de Linux?
 
 ::option[`pwd neighbor`]{#arp-command-pwd explanation="Pwd muestra el directorio de trabajo del shell."}
 ::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="Informa tanto de las entradas derivadas de ARP para IPv4 como de las de descubrimiento de vecinos para IPv6."}
@@ -37,8 +36,7 @@ Cuando falta una correspondencia IPv4 en el enlace, un host difunde una solicitu
 
 Para un destino IP remoto, el host resuelve la dirección de la puerta de enlace seleccionada, no la dirección MAC del host remoto.
 
-:::single-choice{#arp-command-remote-target}
-¿Qué vecino IPv4 resuelve un host para un destino situado fuera del enlace?
+:::single-choice{#arp-command-remote-target} ¿Qué vecino IPv4 resuelve un host para un destino situado fuera del enlace?
 
 ::option[El servidor remoto final a través de todos los routers.]{#arp-command-final-server explanation="Su dirección MAC no tiene significado en el enlace de origen."}
 ::option[Todos los servidores DNS indicados en la configuración del resolver.]{#arp-command-all-dns explanation="La resolución de vecinos sigue la ruta seleccionada, no la lista del resolver."}
@@ -49,8 +47,7 @@ Para un destino IP remoto, el host resuelve la dirección de la puerta de enlace
 
 Entre los estados habituales se encuentran `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE` y `FAILED`. `STALE` significa que la confirmación reciente de accesibilidad ha caducado; la dirección en caché aún puede utilizarse mientras la pila realiza las comprobaciones necesarias. `FAILED` indica que la resolución o la detección de accesibilidad no tuvo éxito, pero las causas pueden incluir el enlace, la VLAN, la dirección, la ruta, el filtrado o que el par esté apagado.
 
-:::single-choice{#arp-command-stale-state}
-¿Significa `STALE` que se sabe que el vecino es inaccesible?
+:::single-choice{#arp-command-stale-state} ¿Significa `STALE` que se sabe que el vecino es inaccesible?
 
 ::option[No; carece de una confirmación reciente y puede comprobarse al utilizarlo.]{#arp-command-stale-probe .correct explanation="El estado no equivale a `FAILED`."}
 ::option[Sí, y la entrada no puede volver a usarse nunca.]{#arp-command-stale-dead explanation="Las entradas obsoletas siguen siendo candidatas y pueden cambiar después de las comprobaciones de accesibilidad."}
@@ -63,8 +60,7 @@ Las entradas estáticas y el vaciado de la caché modifican el estado y pueden i
 
 ARP no dispone de autenticación integrada, por lo que las direcciones duplicadas o las respuestas falsificadas pueden contaminar las correspondencias. Las protecciones de los conmutadores, la segmentación, la supervisión y la autenticación de capas superiores ayudan a reducir el impacto.
 
-:::single-choice{#arp-command-flush-first}
-¿Por qué no debes empezar un diagnóstico vaciando toda la tabla de vecinos?
+:::single-choice{#arp-command-flush-first} ¿Por qué no debes empezar un diagnóstico vaciando toda la tabla de vecinos?
 
 ::option[Las entradas de vecinos solo se almacenan en servidores raíz DNS.]{#arp-command-neighbors-dns explanation="La pila de red local las mantiene."}
 ::option[Un vaciado elimina permanentemente el hardware de la interfaz.]{#arp-command-flush-hardware explanation="Elimina entradas de la caché, no dispositivos físicos."}

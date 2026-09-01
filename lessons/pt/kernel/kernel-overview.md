@@ -18,8 +18,7 @@ Processadores executam instruções, a memória armazena o estado ativo e contro
 
 O kernel inicializa e controla esses recursos por código de arquitetura e drivers. Ele trata interrupções, coordenação de DMA, temporizadores e eventos de energia, impondo limites de acesso entre cargas de trabalho.
 
-:::single-choice{#kernel-overview-hardware-manager}
-Qual camada normalmente coordena drivers e interrupções de hardware no Linux?
+:::single-choice{#kernel-overview-hardware-manager} Qual camada normalmente coordena drivers e interrupções de hardware no Linux?
 
 ::option[O arquivo de histórico do shell de cada usuário.]{#kernel-overview-shell-history explanation="O histórico registra comandos e não trata a execução do hardware."}
 ::option[O índice do repositório de pacotes.]{#kernel-overview-repository-index explanation="Metadados do repositório descrevem pacotes, não eventos ativos do hardware."}
@@ -39,8 +38,7 @@ As principais incluem:
 
 O Linux é descrito como kernel monolítico porque serviços centrais e muitos drivers são executados em um único espaço privilegiado de endereços. Também é modular: componentes compatíveis podem ser carregados e removidos como módulos. Uma falha no código privilegiado pode comprometer todo o sistema, tornando atualizações e procedência dos módulos críticas para a segurança.
 
-:::single-choice{#kernel-overview-scheduler-role}
-O que o escalonador do kernel gerencia?
+:::single-choice{#kernel-overview-scheduler-role} O que o escalonador do kernel gerencia?
 
 ::option[Qual página de documentação o usuário lerá depois.]{#kernel-overview-documentation explanation="A navegação de aprendizagem não faz parte do escalonamento do kernel."}
 ::option[Quais threads executáveis recebem tempo de CPU.]{#kernel-overview-thread-scheduling .correct explanation="O escalonador escolhe contextos de execução conforme política, prioridade, afinidade e disponibilidade das CPUs."}
@@ -55,8 +53,7 @@ Processos solicitam trabalho ao kernel por chamadas de sistema e interfaces como
 
 O root do espaço do usuário tem ampla autorização por política, mas normalmente continua em modo de usuário do processador. Identidade do usuário e modo de privilégio da CPU são conceitos diferentes.
 
-:::single-choice{#kernel-overview-root-user-mode}
-Um aplicativo comum pertencente ao root executa todas as instruções em modo kernel?
+:::single-choice{#kernel-overview-root-user-mode} Um aplicativo comum pertencente ao root executa todas as instruções em modo kernel?
 
 ::option[Sim; o UID 0 transforma permanentemente cada instrução em ring 0.]{#kernel-overview-root-ring-zero explanation="Um processo root comum continua sendo um processo do espaço do usuário."}
 ::option[Sim; aplicativos root viram automaticamente módulos carregáveis.]{#kernel-overview-root-module explanation="O UID proprietário não transforma um executável de usuário em código do kernel."}
@@ -69,8 +66,7 @@ O kernel apresenta processos virtuais, arquivos, sockets e espaços de endereço
 
 Ao diagnosticar, pergunte qual camada é responsável: aplicativo, biblioteca, interface de chamada, sistema de arquivos, driver, subsistema do kernel, firmware ou hardware. Evidências da camada errada podem levar a correções incorretas.
 
-:::single-choice{#kernel-overview-system-call-boundary}
-O que é uma chamada de sistema?
+:::single-choice{#kernel-overview-system-call-boundary} O que é uma chamada de sistema?
 
 ::option[Uma solicitação controlada do espaço do usuário a um serviço do kernel.]{#kernel-overview-controlled-request .correct explanation="O processador entra no modo kernel por uma interface definida, onde o kernel valida e realiza a operação."}
 ::option[Um comando direto que ignora todo controle de acesso.]{#kernel-overview-bypass-checks explanation="É justamente nas chamadas que ocorrem muitas verificações e autorizações."}

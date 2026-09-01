@@ -29,8 +29,7 @@ $ sudo ls -la /mnt/mydrive
 
 空でないディレクトリへマウントすると、既存のエントリはアンマウントするまで新しいファイルシステムの背後に隠れます。削除されるわけではありません。アプリケーションを混乱させ、見えないままディスク容量を消費することがあるため、空の専用マウントポイントを使ってください。
 
-:::single-choice{#mount-umount-nonempty-target}
-別のファイルシステムをディレクトリへマウントすると、その中にあったファイルはどうなりますか？
+:::single-choice{#mount-umount-nonempty-target} 別のファイルシステムをディレクトリへマウントすると、その中にあったファイルはどうなりますか？
 
 ::option[新しいファイルシステムへ自動的にコピーされます。]{#mount-umount-copied-files explanation="マウントは名前空間の接続を変更するだけで、ディレクトリの内容を移行しません。"}
 ::option[カーネルによって完全に消去されます。]{#mount-umount-erased-files explanation="ファイルは削除されたのではなく隠れているため、通常はアンマウント後に再び見えるようになります。"}
@@ -55,8 +54,7 @@ $ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 マウントは名前空間単位です。コンテナやプライベートなサービス名前空間で作成したマウントは、別プロセスの表示には現れないことがあります。
 
-:::single-choice{#mount-umount-mount-role}
-この手順で `mount` コマンドが行うことは何ですか？
+:::single-choice{#mount-umount-mount-role} この手順で `mount` コマンドが行うことは何ですか？
 
 ::option[新しいファイルシステムを作成し、ソースを消去する。]{#mount-umount-format-source explanation="ファイルシステムの作成は、別の破壊的な `mkfs` 操作です。"}
 ::option[ファイルシステムのソースを、マウント名前空間内のディレクトリへ接続する。]{#mount-umount-attach-filesystem .correct explanation="その後、対象より下のパス探索は接続されたファイルシステムへ入ります。"}
@@ -80,8 +78,7 @@ $ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 
 UUID が識別するのはファイルシステムであり、必ずしも物理ディスクではありません。再フォーマットすると変わり、複製すると重複することがあります。元のファイルシステムと複製を同じシステムへ接続する前に、一意であることを確認してください。
 
-:::single-choice{#mount-umount-uuid-benefit}
-永続的な設定で、`/dev/sdX` よりファイルシステム UUID が適していることが多いのはなぜですか？
+:::single-choice{#mount-umount-uuid-benefit} 永続的な設定で、`/dev/sdX` よりファイルシステム UUID が適していることが多いのはなぜですか？
 
 ::option[あらゆるストレージデバイスの障害を防ぐから。]{#mount-umount-uuid-no-failure explanation="識別子は、冗長性、整合性の修復、バックアップを提供しません。"}
 ::option[複製したファイルシステムの識別子が必ず異なると保証するから。]{#mount-umount-uuid-clone-unique explanation="ブロック単位の複製では UUID もコピーされ、競合が生じることがあります。"}
@@ -100,8 +97,7 @@ $ sudo umount /mnt/mydrive
 
 リムーバブルメディアでは、アンマウントに成功しても安全な取り外し操作が完了したとは限りません。デスクトップのストレージ機能には、デバイスキャッシュをフラッシュして USB デバイスの電源を切る、取り出しまたは電源オフ操作が用意されていることがあります。プラットフォームとハードウェアの手順に従ってください。
 
-:::single-choice{#mount-umount-command-name}
-`/mnt/mydrive` を切断するコマンドはどれですか？
+:::single-choice{#mount-umount-command-name} `/mnt/mydrive` を切断するコマンドはどれですか？
 
 ::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` は、指定した対象にマウントされているファイルシステムを切断します。"}
 ::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="標準コマンド名には最初の `n` がありません。"}
@@ -119,8 +115,7 @@ $ sudo fuser -vm /mnt/mydrive
 
 シェルをツリーの外へ移動し、原因となるアプリケーションを正常に停止し、親より先に子マウントをアンマウントします。遅延アンマウントと強制オプションには特殊な意味があり、アクティブな参照が残ったりデータを失ったりするおそれがあります。文書に基づく復旧上の理由がある場合にだけ使ってください。
 
-:::single-choice{#mount-umount-busy-cause}
-`umount` がファイルシステムを使用中だと報告する原因になり得るものはどれですか？
+:::single-choice{#mount-umount-busy-cause} `umount` がファイルシステムを使用中だと報告する原因になり得るものはどれですか？
 
 ::option[マウントポイントのディレクトリ名に小文字が含まれている。]{#mount-umount-lowercase explanation="パスの大文字と小文字だけでは、ファイルシステムへのアクティブな参照は生じません。"}
 ::option[プロセスの現在の作業ディレクトリがマウント内にある。]{#mount-umount-cwd-busy .correct explanation="プロセスがマウントされたファイルシステム内への参照を保持しているため、通常の切断が妨げられます。"}

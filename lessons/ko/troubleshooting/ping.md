@@ -22,8 +22,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 IPv6를 선택하려면 `-6`을 사용합니다. 호스트 이름이 여러 주소를 반환하고 반복 실행에서 다른 주소를 선택할 수 있으므로 확인된 주소를 기록하십시오.
 
-:::single-choice{#ping-count-option}
-`-c 3`은 무엇을 요청합니까?
+:::single-choice{#ping-count-option} `-c 3`은 무엇을 요청합니까?
 
 ::option[정확히 3메가바이트인 패킷 페이로드입니다.]{#ping-three-megabytes explanation="패킷 크기에는 다른 옵션을 사용합니다."}
 ::option[목적지로 향하는 영구 경로 세 개입니다.]{#ping-three-routes explanation="ping은 트래픽을 프로브하며 경로를 설치하지 않습니다."}
@@ -36,8 +35,7 @@ IPv6를 선택하려면 `-6`을 사용합니다. 호스트 이름이 여러 주�
 
 손실은 어느 방향에서나 발생할 수 있고 ICMP 속도 제한으로 ping 손실과 애플리케이션 손실이 다를 수 있습니다.
 
-:::single-choice{#ping-sequence-gap}
-`icmp_seq` 응답 누락은 무엇을 나타낼 수 있습니까?
+:::single-choice{#ping-sequence-gap} `icmp_seq` 응답 누락은 무엇을 나타낼 수 있습니까?
 
 ::option[목적지가 MAC 주소를 영구적으로 바꿨습니다.]{#ping-sequence-mac explanation="순서 공백만으로 그런 링크 계층 결론을 내릴 수 없습니다."}
 ::option[요청 또는 응답이 유실, 필터링, 대기 시간 초과 또는 속도 제한됐을 수 있습니다.]{#ping-sequence-possibilities .correct explanation="순서 공백은 관찰된 응답이 없음을 식별하지만 정확한 방향이나 원인은 알 수 없습니다."}
@@ -48,8 +46,7 @@ IPv6를 선택하려면 `-6`을 사용합니다. 호스트 이름이 여러 주�
 
 `time` 필드는 요청 전송부터 응답 수신까지의 왕복 시간을 밀리초로 나타냅니다. 송신 지연, 원격 처리 및 반환 지연을 합친 값입니다. 동기화된 끝점 측정 없이는 단방향 지연 시간을 알 수 없습니다.
 
-:::single-choice{#ping-rtt-meaning}
-`time=23.7 ms`는 무엇을 측정합니까?
+:::single-choice{#ping-rtt-meaning} `time=23.7 ms`는 무엇을 측정합니까?
 
 ::option[송신 방향의 단방향 경로 지연 시간만 측정합니다.]{#ping-outbound-only explanation="ping은 전체 요청 및 응답 구간을 측정합니다."}
 ::option[대상 시스템의 가동 시간입니다.]{#ping-target-uptime explanation="부팅 시간이 아니라 프로브 시간입니다."}
@@ -60,8 +57,7 @@ IPv6를 선택하려면 `-6`을 사용합니다. 호스트 이름이 여러 주�
 
 표시되는 IPv4 TTL 또는 IPv6 Hop Limit은 수신된 응답에 남아 있는 값입니다. 송신자의 초기 값과 반환 경로를 모르면 이를 빼서 정확한 홉 수를 구할 수 없습니다. 값 변경은 다른 응답자, 초기 값 또는 반환 경로를 나타낼 수 있습니다.
 
-:::single-choice{#ping-received-ttl}
-IPv4 Echo Reply에 표시되는 TTL은 무엇입니까?
+:::single-choice{#ping-received-ttl} IPv4 Echo Reply에 표시되는 TTL은 무엇입니까?
 
 ::option[응답이 로컬 호스트에 도달했을 때 남은 값입니다.]{#ping-remaining-ttl .correct explanation="반환 경로의 각 라우터가 송신자의 초기 값을 줄였습니다."}
 ::option[양방향의 정확한 라우터 수입니다.]{#ping-exact-hop-count explanation="이 필드만으로 초기 TTL과 방향별 경로를 알 수 없습니다."}
@@ -72,8 +68,7 @@ IPv4 Echo Reply에 표시되는 TTL은 무엇입니까?
 
 ping은 성공하지만 서비스가 실패하면 실제 포트, TLS, 프로토콜 및 요청을 테스트합니다. ping이 실패하면 호스트가 중단됐다고 단정하기 전에 이름 확인, `ip route get`, 이웃 상태, 방화벽 정책 및 캡처를 조사합니다.
 
-:::single-choice{#ping-success-limit}
-성공한 ping이 입증하지 못하는 것은 무엇입니까?
+:::single-choice{#ping-success-limit} 성공한 ping이 입증하지 못하는 것은 무엇입니까?
 
 ::option[일부 ICMP 요청 및 응답 경로가 작동했습니다.]{#ping-icmp-worked explanation="응답이 직접 제공하는 증거입니다."}
 ::option[응답에 순서 번호가 있었습니다.]{#ping-sequence-present explanation="정상 출력에 응답 순서가 직접 보고됩니다."}

@@ -16,8 +16,7 @@ meta_keywords: "traceroute, traceroute linux, Linux ネットワーキング，�
 
 プローブはホップ上限 1 から始まり、順に増えていきます。最初のルーターが値を一つ減らして 0 にすると、ICMP エラーを返せます。上限 2 なら二番目のルーターで尽きます。この処理を、宛先が応答するか最大値に達するまで続けます。
 
-:::single-choice{#traceroute-expiring-field}
-連続するプローブを、より先のルーターで順に期限切れにするフィールドはどれですか？
+:::single-choice{#traceroute-expiring-field} 連続するプローブを、より先のルーターで順に期限切れにするフィールドはどれですか？
 
 ::option[宛先名に対する DNS キャッシュの TTL。]{#traceroute-dns-ttl explanation="DNS レコードの有効期間は、パケットが転送されるホップ数を制御しません。"}
 ::option[Ethernet の送信元 MAC アドレス。]{#traceroute-source-mac explanation="リンクアドレスには、終端間のホップカウンターはありません。"}
@@ -36,8 +35,7 @@ $ traceroute -T -p 443 -n example.com
 
 必要な権限と対応オプションは環境ごとに異なります。対象に対して許可された方式だけを使い、結果を比較するときは方式も記録してください。
 
-:::single-choice{#traceroute-default-destination-response}
-従来の Linux UDP traceroute は、一般に何を受け取ると終了しますか？
+:::single-choice{#traceroute-default-destination-response} 従来の Linux UDP traceroute は、一般に何を受け取ると終了しますか？
 
 ::option[宛先からの ICMP Port Unreachable 応答。]{#traceroute-port-unreachable .correct explanation="高い UDP ポートは通常未使用なので、宛先はこのエラーによって自身への到達を知らせられます。"}
 ::option[全ルーターからの必須 HTTP 200 応答。]{#traceroute-http-every-router explanation="ルーターが返すのはネットワーク制御エラーであり、HTTP 応答ではありません。"}
@@ -48,8 +46,7 @@ $ traceroute -T -p 443 -n example.com
 
 アスタリスクは、そのプローブに対応する応答をタイムアウトまでに観測できなかったことを意味します。ルーターが通過トラフィックを転送しながら、診断応答をフィルタリングまたはレート制限している場合もあります。後続ホップが応答したなら、無応答のホップも少なくとも一部のプローブを転送したことは明らかです。
 
-:::single-choice{#traceroute-asterisk-meaning}
-あるホップの `*` だけから何が証明できますか？
+:::single-choice{#traceroute-asterisk-meaning} あるホップの `*` だけから何が証明できますか？
 
 ::option[そのルーターが全通過パケットを恒久的に破棄したこと。]{#traceroute-star-all-drop explanation="後続の応答があれば、転送が続いていたことを確認できます。"}
 ::option[タイムアウトまでに一致する応答が届かなかったことだけ。]{#traceroute-star-no-response .correct explanation="フィルタリング、レート制限、損失、復路の問題のいずれでも無応答になり得ます。"}
@@ -62,8 +59,7 @@ $ traceroute -T -p 443 -n example.com
 
 各 ICMP 応答の復路が往路と異なる場合もあります。ボトルネックを特定する前にテストを繰り返し、エンドポイントでのアプリケーション時間と照合してください。
 
-:::single-choice{#traceroute-hop-rtt-limit}
-隣接ホップの RTT 値を引いて正確なリンク遅延とすべきでないのはなぜですか？
+:::single-choice{#traceroute-hop-rtt-limit} 隣接ホップの RTT 値を引いて正確なリンク遅延とすべきでないのはなぜですか？
 
 ::option[traceroute の時間はミリ秒ではなく、すべてバイト単位だから。]{#traceroute-times-bytes explanation="表示されるプローブ時間は、通常ミリ秒単位です。"}
 ::option[応答が異なる復路を通り、コントロールプレーン処理も異なり得るから。]{#traceroute-rtt-asymmetry .correct explanation="各測定値は始点から各ホップまでの別々の往復時間であり、同期された片道リンク測定ではありません。"}
@@ -74,8 +70,7 @@ $ traceroute -T -p 443 -n example.com
 
 traceroute が宛先へ到達してもサービスが遮断されている場合があり、反対に中継ルーターが応答を隠していてもサービスは動作し得ます。アプリケーションと同じアドレスファミリー、宛先、トランスポートプロトコル、ポートをテストし、traceroute は経路を裏付ける証拠として使ってください。
 
-:::single-choice{#traceroute-service-proof}
-traceroute が完了すれば、HTTPS サービスが正常だと証明できますか？
+:::single-choice{#traceroute-service-proof} traceroute が完了すれば、HTTPS サービスが正常だと証明できますか？
 
 ::option[はい。各ホップがサーバー証明書を検証するためです。]{#traceroute-validates-cert explanation="ルーターはクライアントに代わって TLS 検証をしません。"}
 ::option[いいえ。トランスポート、TLS、HTTP の動作は別々にテストする必要があります。]{#traceroute-not-app-proof .correct explanation="経路検出とアプリケーションの健全性は、異なる診断層です。"}

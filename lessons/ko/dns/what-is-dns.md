@@ -16,8 +16,7 @@ DNS(Domain Name System)는 분산된 계층형 데이터베이스이자 쿼리 �
 
 DNS는 호스트 이름 하나를 IP 주소 하나로 변환하는 것 이상을 수행합니다. `A` 레코드는 IPv4 주소, `AAAA`는 IPv6 주소, `MX`는 메일 라우팅 데이터, `NS`는 권위 서버 이름을 담으며 그 밖의 많은 유형이 서로 다른 데이터를 운반합니다. 하나의 이름에 여러 레코드가 있거나 주소 레코드가 전혀 없을 수 있습니다.
 
-:::single-choice{#dns-purpose-beyond-address}
-DNS가 단순한 호스트 이름-주소 목록 이상인 이유는 무엇입니까?
+:::single-choice{#dns-purpose-beyond-address} DNS가 단순한 호스트 이름-주소 목록 이상인 이유는 무엇입니까?
 
 ::option[모든 Ethernet 프레임에 MAC 주소를 영구적으로 할당합니다.]{#dns-mac-frames explanation="링크 계층 이웃 탐색은 DNS를 이런 방식으로 사용하지 않습니다."}
 ::option[여러 종류의 서비스 및 위임 데이터를 형식이 지정된 레코드로 저장합니다.]{#dns-typed-records .correct explanation="주소, 메일, 권위, 별칭 및 정책 관련 레코드에는 서로 다른 의미가 있습니다."}
@@ -28,8 +27,7 @@ DNS가 단순한 호스트 이름-주소 목록 이상인 이유는 무엇입니
 
 정규화된 도메인 이름(FQDN)은 DNS 트리의 경로를 식별합니다. `www.example.com.`에서 마지막 점은 루트를 나타내고, `com`은 그 아래에, `example`은 `com` 아래에, `www`는 해당 도메인 안의 이름입니다. 사용자 인터페이스에서는 후행 점을 자주 생략하지만 설정에서 절대 이름과 로컬 상대 이름을 구분할 때 중요합니다.
 
-:::single-choice{#dns-trailing-dot}
-`www.example.com.`의 마지막 점은 무엇을 나타냅니까?
+:::single-choice{#dns-trailing-dot} `www.example.com.`의 마지막 점은 무엇을 나타냅니까?
 
 ::option[DNS 루트와 절대 이름을 나타냅니다.]{#dns-root-dot .correct explanation="점은 이름이 지정된 노드부터 루트까지의 완전한 경로를 끝냅니다."}
 ::option[모든 최상위 도메인의 와일드카드입니다.]{#dns-dot-wildcard explanation="와일드카드는 루트 종결자가 아니라 * 같은 레이블을 사용합니다."}
@@ -40,8 +38,7 @@ DNS가 단순한 호스트 이름-주소 목록 이상인 이유는 무엇입니
 
 DNS 권위는 계층 아래로 위임됩니다. 루트 서버는 확인자를 최상위 도메인 서버로 안내하고, 이 서버는 다시 위임된 영역의 권위 서버로 안내합니다. 조직은 전체 전역 네임스페이스를 하나의 중앙 서버에 저장하지 않고 자체 권위 데이터를 관리합니다.
 
-:::single-choice{#dns-authoritative-data}
-위임된 DNS 영역의 확정 데이터를 제공하는 주체는 누구입니까?
+:::single-choice{#dns-authoritative-data} 위임된 DNS 영역의 확정 데이터를 제공하는 주체는 누구입니까?
 
 ::option[이전에 사이트를 방문한 모든 브라우저입니다.]{#dns-browser-authority explanation="브라우저 캐시는 영역의 권위 서버가 아닙니다."}
 ::option[영역에 설정된 권위 네임 서버입니다.]{#dns-authoritative-servers .correct explanation="위임은 권위 있게 응답할 책임이 있는 서버를 식별합니다."}
@@ -54,8 +51,7 @@ DNS 권위는 계층 아래로 위임됩니다. 루트 서버는 확인자를 �
 
 DNS 성공은 경로, 전송, TLS 또는 애플리케이션 상태를 입증하지 않습니다. `/etc/hosts`, 검색 접미사, 로컬 캐시 또는 이름 서비스 정책이 시스템 확인자에 영향을 주므로 외부 쿼리 전에 DNS가 실패할 수도 있습니다.
 
-:::single-choice{#dns-cache-ttl-role}
-DNS 레코드 TTL이 주로 제어하는 것은 무엇입니까?
+:::single-choice{#dns-cache-ttl-role} DNS 레코드 TTL이 주로 제어하는 것은 무엇입니까?
 
 ::option[IP 패킷이 통과할 수 있는 라우터 수입니다.]{#dns-ip-hop-limit explanation="IP TTL 또는 Hop Limit은 다른 프로토콜 필드입니다."}
 ::option[애플리케이션이 정상 상태를 유지해야 하는 시간입니다.]{#dns-app-health-time explanation="DNS 캐싱은 서비스 가용성을 보장하지 않습니다."}

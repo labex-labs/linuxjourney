@@ -14,8 +14,7 @@ meta_keywords: "vim 追記，挿入と追記の違い vim, vim 挿入と追記�
 
 `Esc` を押すと挿入モードを終了し、ノーマルモードへ戻ります。現在のモードが分からない場合、`Esc` を押せばノーマルモードを確立できます。ただし、処理中の操作が取り消されることはあります。
 
-:::single-choice{#vim-insert-return-normal}
-通常、挿入モードからノーマルモードへ戻るキーはどれですか？
+:::single-choice{#vim-insert-return-normal} 通常、挿入モードからノーマルモードへ戻るキーはどれですか？
 
 ::option[`Esc`]{#vim-insert-escape .correct explanation="Escape は現在の挿入を終え、Vim をノーマルモードへ戻します。"}
 ::option[`Enter`]{#vim-insert-enter explanation="Enter は挿入モードのまま改行を挿入します。"}
@@ -31,8 +30,7 @@ meta_keywords: "vim 追記，挿入と追記の違い vim, vim 挿入と追記�
 
 たとえば `abc` の `b` にカーソルがある場合、`i` は `b` の前から、`a` は `b` の後から入力を始めます。どちらのコマンドもモードを変更し、その後に入力するテキストが挿入されます。
 
-:::single-choice{#vim-insert-before-cursor}
-カーソルのすぐ前で挿入モードへ入るノーマルモードのキーはどれですか？
+:::single-choice{#vim-insert-before-cursor} カーソルのすぐ前で挿入モードへ入るノーマルモードのキーはどれですか？
 
 ::option[`a`]{#vim-insert-a-after explanation="小文字の `a` はカーソルの前ではなく、後から追記します。"}
 ::option[`o`]{#vim-insert-o-below explanation="小文字の `o` は現在行の下に新しい行を開いてから、挿入モードへ入ります。"}
@@ -48,16 +46,14 @@ meta_keywords: "vim 追記，挿入と追記の違い vim, vim 挿入と追記�
 
 インデントされた行では、`I` はインデントを飛ばして最初のテキストの前から始めます。列 0 へ挿入する必要がある場合は `0i` を使います。
 
-:::single-choice{#vim-insert-first-nonblank}
-現在行の最初の空白以外の文字の前で挿入を始めるノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-insert-first-nonblank} 現在行の最初の空白以外の文字の前で挿入を始めるノーマルモードのコマンドはどれですか？
 
 ::option[`i`]{#vim-insert-lower-i explanation="小文字の `i` は現在のカーソル位置を使い、最初のテキストへは移動しません。"}
 ::option[`A`]{#vim-insert-capital-a explanation="大文字の `A` は現在行の末尾から挿入を始めます。"}
 ::option[`I`]{#vim-insert-capital-i .correct explanation="大文字の `I` は最初の空白以外の文字へ移動し、その前で挿入モードへ入ります。"}
 :::
 
-:::single-choice{#vim-append-line-end}
-現在行の末尾へ移動し、挿入モードへ入るノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-append-line-end} 現在行の末尾へ移動し、挿入モードへ入るノーマルモードのコマンドはどれですか？
 
 ::option[`A`]{#vim-append-capital-a .correct explanation="大文字の `A` は行末への移動と挿入モードへの切り替えを組み合わせます。"}
 ::option[`$`]{#vim-move-line-end explanation="ドル記号は行末へ移動しますが、ノーマルモードのままです。"}
@@ -73,8 +69,7 @@ meta_keywords: "vim 追記，挿入と追記の違い vim, vim 挿入と追記�
 
 Vim は現在の設定とファイル形式の規則に従ってインデントを適用します。回数を付けて行を開く操作を繰り返すこともできますが、まず 1 行だけの形式を学び、結果のカーソル位置を予測できるようにしてください。
 
-:::single-choice{#vim-open-line-above}
-現在行の上に新しい行を開き、挿入モードへ入るノーマルモードのコマンドはどれですか？
+:::single-choice{#vim-open-line-above} 現在行の上に新しい行を開き、挿入モードへ入るノーマルモードのコマンドはどれですか？
 
 ::option[`o`]{#vim-open-lower-o explanation="小文字の `o` は現在行の下に開きます。"}
 ::option[`O`]{#vim-open-upper-o .correct explanation="大文字の `O` は上に新しい行を開き、そこで挿入を始めます。"}

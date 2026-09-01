@@ -18,8 +18,7 @@ meta_keywords: "리눅스 부팅 과정, BIOS, UEFI, 부트 로더, 커널, init
 
 펌웨어가 설치된 리눅스 루트 파일 시스템을 반드시 이해하는 것은 아닙니다. 인터페이스에 따라 부팅 경로를 찾습니다. 예를 들어 BIOS는 선택한 디스크의 부트 코드를 사용하고, UEFI 부팅 항목은 EFI 시스템 파티션의 EFI 실행 파일을 가리킵니다.
 
-:::single-choice{#boot-overview-first-stage}
-일반적인 PC가 재설정된 뒤 플랫폼 초기화를 시작하는 구성 요소는 무엇입니까?
+:::single-choice{#boot-overview-first-stage} 일반적인 PC가 재설정된 뒤 플랫폼 초기화를 시작하는 구성 요소는 무엇입니까?
 
 ::option[사용자의 대화형 셸입니다.]{#boot-overview-shell explanation="셸은 훨씬 나중에 사용자 공간 서비스나 로그인 처리에서 시작됩니다."}
 ::option[BIOS 또는 UEFI 같은 플랫폼 펌웨어입니다.]{#boot-overview-firmware .correct explanation="펌웨어는 리눅스가 실행되기 전에 초기 하드웨어 상태를 설정하고 다음 부팅 대상을 선택합니다."}
@@ -32,8 +31,7 @@ GRUB 같은 로더는 부팅 항목을 표시하고, 선택한 리눅스 커널�
 
 선택된 결과물은 서로 맞아야 합니다. 커널 버전, initramfs 내용, 루트 식별자, 보안 서명 및 명령줄 옵션이 모두 다음 제어권 전달의 성공 여부에 영향을 줍니다.
 
-:::single-choice{#boot-overview-loader-role}
-리눅스 부트 로더가 일반적으로 담당하는 작업은 무엇입니까?
+:::single-choice{#boot-overview-loader-role} 리눅스 부트 로더가 일반적으로 담당하는 작업은 무엇입니까?
 
 ::option[선택한 커널을 불러오고 명령줄을 전달합니다.]{#boot-overview-load-kernel .correct explanation="로더는 흔히 initramfs와 함께 커널 이미지와 매개변수를 준비합니다."}
 ::option[부팅할 때마다 모든 사용자 계정을 처음부터 만듭니다.]{#boot-overview-create-users explanation="영구 계정 데이터베이스는 사용자 공간 설정이며 로더가 매번 다시 만들지 않습니다."}
@@ -46,8 +44,7 @@ GRUB 같은 로더는 부팅 항목을 표시하고, 선택한 리눅스 커널�
 
 의도한 루트를 사용할 수 있게 되면 초기 사용자 공간이 그곳으로 전환하고 커널이 설정된 첫 사용자 공간 프로그램을 실행합니다. 파일 시스템 검사나 읽기-쓰기 재마운트를 누가 수행하는지 같은 세부 사항은 하나의 보편적 순서가 아니라 배포판의 부팅 설계에 속합니다.
 
-:::single-choice{#boot-overview-initramfs-purpose}
-시스템에서 initramfs를 사용할 수 있는 이유는 무엇입니까?
+:::single-choice{#boot-overview-initramfs-purpose} 시스템에서 initramfs를 사용할 수 있는 이유는 무엇입니까?
 
 ::option[모든 사용자의 데스크톱 세션을 펌웨어에 영구 보존합니다.]{#boot-overview-desktop-firmware explanation="initramfs는 부팅 시 사용하는 파일 시스템 이미지이며 펌웨어 세션 저장소가 아닙니다."}
 ::option[실제 루트 파일 시스템에 도달하는 데 필요한 초기 도구와 드라이버를 제공합니다.]{#boot-overview-early-root-tools .correct explanation="초기 사용자 공간은 암호화, 논리, 네트워크 또는 드라이버 의존적인 루트 저장 장치를 구성할 수 있습니다."}
@@ -60,8 +57,7 @@ GRUB 같은 로더는 부팅 항목을 표시하고, 선택한 리눅스 커널�
 
 PID 1에 도달했다고 해서 시스템이 완전히 준비되었다는 뜻은 아닙니다. 서비스가 아직 시작 중이고, 저장 장치가 마운트 중이며, 네트워크 설정이 완료되지 않았을 수 있습니다. 그래픽 또는 콘솔 로그인도 가능한 대상 상태 중 하나일 뿐입니다.
 
-:::single-choice{#boot-overview-final-stage}
-주요 사용자 공간 초기화 단계를 시작하는 것은 무엇입니까?
+:::single-choice{#boot-overview-final-stage} 주요 사용자 공간 초기화 단계를 시작하는 것은 무엇입니까?
 
 ::option[부팅할 때마다 디스크의 보호 MBR을 만듭니다.]{#boot-overview-create-mbr explanation="파티션 테이블 생성은 일반적으로 반복되는 부팅 단계가 아닙니다."}
 ::option[모든 커널 명령줄 매개변수를 삭제합니다.]{#boot-overview-delete-command-line explanation="커널은 명령줄을 해석하고 노출하며 이를 삭제할 필요가 없습니다."}

@@ -23,8 +23,7 @@ Signals can originate in several places:
 
 The sender must have appropriate permission, normally based on credentials or capabilities. Signals are therefore a kernel-mediated control interface, not unrestricted messages between arbitrary users.
 
-:::single-choice{#process-signals-ctrl-c}
-Which signal does a terminal normally generate for `Ctrl-C`?
+:::single-choice{#process-signals-ctrl-c} Which signal does a terminal normally generate for `Ctrl-C`?
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` is normally associated with the terminal suspend character such as `Ctrl-Z`."}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` resumes a stopped process rather than representing keyboard interruption."}
@@ -43,8 +42,7 @@ Default actions differ: a signal may terminate, terminate and create a core dump
 
 Signal names are more portable and readable than numbers. Although common Linux architectures use `SIGTERM` as 15, do not assume all signal numbers except those guaranteed by the relevant standard are identical everywhere. Use `kill -l` to inspect the local mapping.
 
-:::single-choice{#process-signals-term-behavior}
-Why can a process respond gracefully to `SIGTERM`?
+:::single-choice{#process-signals-term-behavior} Why can a process respond gracefully to `SIGTERM`?
 
 ::option[It can install a handler for that signal.]{#process-signals-term-handler .correct explanation="Unlike `SIGKILL`, `SIGTERM` can be caught so a program can initiate its own shutdown logic."}
 ::option[The kernel always saves every open document automatically.]{#process-signals-term-kernel-save explanation="Application cleanup depends on program code; the kernel does not understand and save arbitrary document state."}
@@ -57,8 +55,7 @@ Threads have signal masks that can temporarily block delivery of selected signal
 
 In a multithreaded process, a process-directed signal can be delivered to an eligible thread that does not block it; a thread-directed signal targets the specified thread. Correct signal design therefore requires more than checking whether “the process blocked it.”
 
-:::single-choice{#process-signals-blocked-state}
-What normally happens when a blockable signal is generated while its target blocks it?
+:::single-choice{#process-signals-blocked-state} What normally happens when a blockable signal is generated while its target blocks it?
 
 ::option[It remains pending until delivery becomes possible.]{#process-signals-pending .correct explanation="Blocking postpones handling; the pending signal can be delivered after it is unblocked."}
 ::option[It is converted automatically into `SIGKILL`.]{#process-signals-convert-kill explanation="The kernel does not escalate an ordinary blocked signal into an uncatchable signal."}
@@ -71,8 +68,7 @@ What normally happens when a blockable signal is generated while its target bloc
 
 Even `SIGKILL` may not make a task disappear instantly from an observer's perspective. A task can be waiting in an uninterruptible kernel operation, and after termination its parent still must reap its status.
 
-:::single-choice{#process-signals-uncatchable-pair}
-Which pair cannot be caught, ignored, or blocked?
+:::single-choice{#process-signals-uncatchable-pair} Which pair cannot be caught, ignored, or blocked?
 
 ::option[`SIGKILL` and `SIGSTOP`]{#process-signals-kill-stop .correct explanation="The kernel reserves these two signals so a process cannot override or postpone their fundamental actions."}
 ::option[`SIGINT` and `SIGTERM`]{#process-signals-int-term explanation="Both can have user-installed handlers and can be blocked."}

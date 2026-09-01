@@ -18,8 +18,7 @@ meta_keywords: "ソースコードからコンパイルする方法，ソース�
 
 ビルド手順は実行可能なコードです。`configure` スクリプト、ビルド定義、テスト、コンパイラープラグインは、ユーザー権限で任意のコマンドを実行できます。信頼できないソースをビルドせず、ビルド自体を `sudo` で実行してはいけません。
 
-:::single-choice{#compile-source-code-build-privilege}
-通常、コンパイル処理を `sudo` なしで実行すべきなのはなぜですか？
+:::single-choice{#compile-source-code-build-privilege} 通常、コンパイル処理を `sudo` なしで実行すべきなのはなぜですか？
 
 ::option[コンパイラーは root ユーザー向けの機械語生成を拒否するから。]{#compile-source-code-root-compiler explanation="コンパイラーは root でも動作しますが、そうすると不必要に危険が増します。"}
 ::option[`sudo` が生成したすべてのオブジェクトファイルを自動削除するから。]{#compile-source-code-sudo-delete explanation="権限昇格がビルド出力を本質的に削除することはありません。"}
@@ -36,8 +35,7 @@ $ sudo apt install build-essential
 
 これは基本的なコンパイラーとビルドツールをインストールしますが、すべてのプロジェクトに必要な全依存関係ではありません。言語ランタイム、生成器、ビルドシステム用ツール、開発用ヘッダー、厳密なライブラリバージョンが追加で必要になる場合があります。信頼できるリポジトリから要件をインストールし、ビルド時依存関係と実行時依存関係を区別してください。
 
-:::single-choice{#compile-source-code-build-essential-scope}
-Debian 系システムの `build-essential` は何を提供しますか？
+:::single-choice{#compile-source-code-build-essential-scope} Debian 系システムの `build-essential` は何を提供しますか？
 
 ::option[一般的なコンパイルとビルドツールの基本セット。]{#compile-source-code-baseline-tools .correct explanation="基礎ツールを提供しますが、プロジェクト固有のライブラリや生成器をすべて予測することはできません。"}
 ::option[あらゆるソースプロジェクトの全依存関係。]{#compile-source-code-all-dependencies explanation="各プロジェクトは追加要件や、特定バージョンの要件を宣言します。"}
@@ -57,8 +55,7 @@ $ make
 
 この手順は普遍的ではありません。CMake、Meson、Ninja、言語固有ツール、独自スクリプトを使うプロジェクトもあります。慣れているというだけで `./configure` を実行せず、そのリリースの文書に従ってください。ビルドシステムが対応する場合は、ソースツリー外のビルドディレクトリで生成ファイルを分離できます。
 
-:::single-choice{#compile-source-code-make-role}
-従来のワークフローで `make` は何をしますか？
+:::single-choice{#compile-source-code-make-role} 従来のワークフローで `make` は何をしますか？
 
 ::option[すべての出力をディストリビューションのパッケージデータベースへ登録する。]{#compile-source-code-make-package-db explanation="コンパイルだけでは、ネイティブパッケージの所有権レコードは作られません。"}
 ::option[認証済みソースリリースを自動的にダウンロードする。]{#compile-source-code-make-download explanation="プロジェクトが特別に定義していない限り、ソースの取得と検証はローカルビルド前に行います。"}
@@ -75,8 +72,7 @@ $ make check
 
 実際のターゲットは `test`、`check`、または別コマンドの場合があります。テストされていない出力をインストールせず、失敗原因を調査してください。テストにはネットワークアクセス、サービス、特殊なハードウェア、隔離環境が必要な場合があります。他のビルドコードと同様、実行前に内容を確認します。
 
-:::single-choice{#compile-source-code-test-failure}
-文書化されたテストスイートが失敗した場合はどうすべきですか？
+:::single-choice{#compile-source-code-test-failure} 文書化されたテストスイートが失敗した場合はどうすべきですか？
 
 ::option[同じインストールを直ちに root として実行する。]{#compile-source-code-install-after-failure explanation="権限では未知の正当性エラーを解決できず、結果の影響だけを大きくします。"}
 ::option[競合を避けるためパッケージマネージャーのデータベースを削除する。]{#compile-source-code-delete-database explanation="ネイティブデータベースはソースのテスト失敗の解決とは無関係であり、破棄してはいけません。"}
@@ -96,8 +92,7 @@ $ make check
 
 `checkinstall` は一部の `make install` ワークフローから単純なパッケージを作れますが、普遍的ではなく、確認済みのディストリビューション品質のパッケージレシピを置き換えません。「常に使う」規則として扱ってはいけません。特権コピーの前に、ステージングされたファイル一覧、所有権、権限、パス、アンインストールまたはアップグレード計画を確認します。
 
-:::single-choice{#compile-source-code-destdir-purpose}
-対応する `DESTDIR` ステージングインストールの目的は何ですか？
+:::single-choice{#compile-source-code-destdir-purpose} 対応する `DESTDIR` ステージングインストールの目的は何ですか？
 
 ::option[予定されたインストールファイルを、検査またはパッケージ化のため一時ルート以下へ配置する。]{#compile-source-code-stage-root .correct explanation="ステージングにより、ファイル収集を稼働中のシステムプレフィックスへの即時書き込みから分離できます。"}
 ::option[コンパイラーをリモートパッケージリポジトリへ変更する。]{#compile-source-code-destdir-repository explanation="この変数はインストールパスを変更するもので、リポジトリメタデータを公開しません。"}

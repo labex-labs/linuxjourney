@@ -34,8 +34,7 @@ $ mv oldfile newfile
 $ mv old_directory_name new_directory_name
 ```
 
-:::single-choice{#rename-file-with-mv}
-현재 디렉터리에서 `cat`을 `dog`으로 이름 바꾸는 명령어는 무엇인가요?
+:::single-choice{#rename-file-with-mv} 현재 디렉터리에서 `cat`을 `dog`으로 이름 바꾸는 명령어는 무엇인가요?
 
 ::option[`mv cat dog`]{#rename-cat .correct explanation="`mv`는 `cat`을 원본 경로로, `dog`을 새 목적지 경로로 처리합니다."}
 ::option[`mv dog cat`]{#rename-dog explanation="피연산자 순서가 반대이므로 기존 `dog`을 `cat`으로 바꾸려고 시도합니다."}
@@ -64,8 +63,7 @@ $ mv -t somedirectory/ file_1 file_2
 
 `cp` 명령어와 달리, 디렉터리를 이동할 때 재귀 옵션이 필요하지 않습니다. `mv`는 기본적으로 디렉터리를 처리합니다.
 
-:::single-choice{#move-multiple-files}
-`file_1`과 `file_2`를 기존 `archive/` 디렉터리로 모두 이동하는 명령어는 무엇인가요?
+:::single-choice{#move-multiple-files} `file_1`과 `file_2`를 기존 `archive/` 디렉터리로 모두 이동하는 명령어는 무엇인가요?
 
 ::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="GNU `-t`가 없으면 여러 원본을 이동할 때 대상 디렉터리는 마지막에 와야 합니다."}
 ::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv`는 파일이나 디렉터리를 옮길 때 `-r`을 사용하지 않습니다. 일반 다중 원본 형식으로 충분합니다."}
@@ -100,8 +98,7 @@ $ mv -t somedirectory/ file_1 file_2
 $ mv -v file1 file2 somedirectory/
 ```
 
-:::single-choice{#move-without-overwriting}
-기존 목적지를 덮어쓰지 않을 때만 `draft.txt`를 `finished/`로 이동하는 명령어는 무엇인가요?
+:::single-choice{#move-without-overwriting} 기존 목적지를 덮어쓰지 않을 때만 `draft.txt`를 `finished/`로 이동하는 명령어는 무엇인가요?
 
 ::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="`-i`는 목적지가 있을 때 물어보며 사용자가 승인하면 덮어쓸 수도 있습니다."}
 ::option[`mv -b draft.txt finished/`]{#backup-draft explanation="`-b`는 기존 목적지를 백업하면서 교체를 허용하므로 덮어쓰기를 막지 않습니다."}
@@ -125,16 +122,14 @@ $ mv *.txt notes/
 
 `ls`로 일치 항목을 미리 보면 여러 경로를 변경하기 전에 지나치게 넓은 패턴을 찾을 수 있습니다.
 
-:::single-choice{#move-directory-without-recursion}
-`project/` 디렉터리를 `/srv/archive/` 안으로 이동하는 명령어는 무엇인가요?
+:::single-choice{#move-directory-without-recursion} `project/` 디렉터리를 `/srv/archive/` 안으로 이동하는 명령어는 무엇인가요?
 
 ::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv`는 이 작업에 `-r`이 필요하지도 이를 지원하지도 않습니다. 일반 이동으로 디렉터리를 처리합니다."}
 ::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="일반 `mv` 구문은 재귀 플래그 없이 디렉터리를 기존 대상 디렉터리로 이동합니다."}
 ::option[`cp project/ /srv/archive/`]{#copy-project explanation="일반 `cp`는 디렉터리를 이동하지 않고 복사에도 재귀 옵션이 필요하며 원본도 남습니다."}
 :::
 
-:::single-choice{#preview-text-file-move}
-`mv *.txt notes/`를 실행할 예정입니다. 같은 와일드카드가 선택할 경로를 미리 보여 주는 명령어는 무엇인가요?
+:::single-choice{#preview-text-file-move} `mv *.txt notes/`를 실행할 예정입니다. 같은 와일드카드가 선택할 경로를 미리 보여 주는 명령어는 무엇인가요?
 
 ::option[`ls '*.txt'`]{#literal-text-pattern explanation="따옴표가 `*` 확장을 막아 이동 대상을 미리 보는 대신 별표가 들어간 문자 그대로의 이름을 찾습니다."}
 ::option[`ls *.txt`]{#list-text-matches .correct explanation="쉘이 `mv`에서와 마찬가지로 `ls`의 `*.txt`를 확장하므로 숨김 항목 이외의 선택된 이름을 먼저 확인할 수 있습니다."}

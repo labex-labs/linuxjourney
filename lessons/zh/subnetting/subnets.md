@@ -22,8 +22,7 @@ IPv4 可以将 24 位前缀表示为 `/24`，也可以表示为掩码 `255.255.2
 
 对于地址 `192.168.1.8/24`，网络前缀是 `192.168.1.0/24`。某些上下文也能理解 `192.168.1.0/255.255.255.0`，但 CIDR 前缀表示法才是标准的紧凑形式。
 
-:::single-choice{#subnets-mask-24}
-哪个点分十进制掩码对应 `/24`？
+:::single-choice{#subnets-mask-24} 哪个点分十进制掩码对应 `/24`？
 
 ::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="三个完整八位组包含 24 个开头的一位。"}
 ::option[`255.255.0.255`]{#subnets-noncontiguous explanation="其中的网络位不连续，不是传统的 /24 掩码。"}
@@ -41,8 +40,7 @@ $ ip route show
 $ ip route get 192.168.1.50
 ```
 
-:::single-choice{#subnets-on-link-decision}
-Linux 主机如何确定直接发送还是通过路由器发送？
+:::single-choice{#subnets-on-link-decision} Linux 主机如何确定直接发送还是通过路由器发送？
 
 ::option[它始终假定以 `.1` 结尾的地址位于本地。]{#subnets-dot-one explanation="主机号惯例不能取代已配置的前缀和路由。"}
 ::option[它查询前缀和路由策略。]{#subnets-route-policy .correct explanation="所选路由会指出目标是否在链路上，以及使用哪个接口或下一跳。"}
@@ -55,8 +53,7 @@ Linux 主机如何确定直接发送还是通过路由器发送？
 
 子网分隔提供了应用路由和过滤策略的位置，但不会自动成为安全边界。如果转发没有受到限制性策略约束，不同子网中的主机仍可通信。
 
-:::single-choice{#subnets-security-boundary}
-创建两个子网会自动阻止它们之间的流量吗？
+:::single-choice{#subnets-security-boundary} 创建两个子网会自动阻止它们之间的流量吗？
 
 ::option[会，因为路由器无法连接不同前缀。]{#subnets-never-route explanation="连接不同前缀正是路由的主要工作。"}
 ::option[不会；路由和过滤策略决定允许哪些流量。]{#subnets-policy-required .correct explanation="分段使策略实施成为可能，但本身不会定义策略。"}
@@ -67,8 +64,7 @@ Linux 主机如何确定直接发送还是通过路由器发送？
 
 子网划分可以组织地址分配、限制链路层广播范围、分隔故障域，并提供策略边界。它也可能增加路由、防火墙、DHCP、监控和文档复杂度。应根据实际规模、增长、冗余和安全要求设计前缀，而不是想当然地认为越小就越快。
 
-:::single-choice{#subnets-design-tradeoff}
-真实的子网划分权衡是什么？
+:::single-choice{#subnets-design-tradeoff} 真实的子网划分权衡是什么？
 
 ::option[较小的广播域不需要路由或文档。]{#subnets-no-complexity explanation="更多边界通常需要管理更多路由、策略、地址和服务。"}
 ::option[分段可以改善组织方式，但会增加策略复杂度。]{#subnets-tradeoff .correct explanation="子网边界有助于控制，但也会增加必须维护的运行状态。"}

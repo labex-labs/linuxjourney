@@ -30,8 +30,7 @@ $ find /home -name puppies.jpg
 
 검색은 기본적으로 재귀적입니다. 현재 디렉터리 트리를 검색하려면 시작 경로로 `.`을 사용합니다.
 
-:::single-choice{#search-current-tree}
-현재 디렉터리와 그 하위에서 이름이 `notes.txt`인 항목을 찾는 명령어는 무엇인가요?
+:::single-choice{#search-current-tree} 현재 디렉터리와 그 하위에서 이름이 `notes.txt`인 항목을 찾는 명령어는 무엇인가요?
 
 ::option[`find . -name notes.txt`]{#find-current-notes .correct explanation="점은 현재 디렉터리를 시작 경로로 선택하고 `-name`은 각 항목의 기본 이름을 검사합니다."}
 ::option[`find / -name notes.txt`]{#find-root-notes explanation="시작 경로 `/`는 현재 디렉터리 트리보다 훨씬 넓은 파일 시스템 루트부터 검색합니다."}
@@ -56,8 +55,7 @@ $ find /home -type d -name MyFolder
 
 이 명령어에서는 유형을 디렉터리인 `d`로 설정하고 `MyFolder`라는 이름의 항목을 찾고 있습니다. 일반 파일만 검색하려면 `-type f`를 사용합니다.
 
-:::single-choice{#find-text-regular-files}
-현재 디렉터리 아래에서 이름이 `.txt`로 끝나는 일반 파일을 찾는 명령어는 무엇인가요?
+:::single-choice{#find-text-regular-files} 현재 디렉터리 아래에서 이름이 `.txt`로 끝나는 일반 파일을 찾는 명령어는 무엇인가요?
 
 ::option[`find . -type f -name "*.txt"`]{#text-files .correct explanation="`-type f`는 일반 파일을 선택하고 따옴표로 묶은 `-name` 패턴은 `find`가 각 항목에 평가합니다."}
 ::option[`find . -type d -name "*.txt"`]{#text-directories explanation="패턴은 올바르게 묶였지만 `-type d`는 일반 파일이 아니라 디렉터리를 선택합니다."}
@@ -84,8 +82,7 @@ $ find . -type f -mtime +30
 
 `-mtime`은 수정된 뒤 지난 완전한 24시간 단위 수를 검사합니다. `-mtime -7`은 7보다 작은 값, `-mtime +30`은 30보다 큰 값과 일치하며 달력의 자정 경계를 기준으로 하지 않습니다.
 
-:::single-choice{#find-recent-regular-files}
-`.` 아래에서 수정된 지 완전한 24시간 단위로 7보다 적은 일반 파일을 찾는 명령어는 무엇인가요?
+:::single-choice{#find-recent-regular-files} `.` 아래에서 수정된 지 완전한 24시간 단위로 7보다 적은 일반 파일을 찾는 명령어는 무엇인가요?
 
 ::option[`find . -type f -mtime -7`]{#recent-files .correct explanation="`-type f`는 일반 파일을, `-mtime -7`은 수정 경과 시간이 완전한 24시간 단위로 7보다 작은 항목을 선택합니다."}
 ::option[`find . -type f -mtime +7`]{#older-than-seven explanation="더하기 기호는 7단위보다 큰 값을 선택하므로 최근 파일이 아니라 더 오래된 파일을 찾습니다."}
@@ -112,16 +109,14 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 `-delete`나 파일을 변경하는 `-exec` 같은 파괴적 작업 전에는 같은 조건에 `-print`를 붙여 모든 결과를 확인하세요. 좁은 시작 경로와 `-maxdepth N`으로 범위를 제한할 수도 있습니다.
 
-:::single-choice{#verify-before-delete}
-나중에 오래된 `.log` 파일을 삭제할 수도 있는 `find` 명령어를 작성 중입니다. 먼저 무엇을 해야 하나요?
+:::single-choice{#verify-before-delete} 나중에 오래된 `.log` 파일을 삭제할 수도 있는 `find` 명령어를 작성 중입니다. 먼저 무엇을 해야 하나요?
 
 ::option[즉시 `-delete`를 붙이고 어떤 파일이 사라지는지 확인합니다.]{#delete-first explanation="삭제는 안전한 미리보기가 아니며 실행 취소도 없습니다. 추가하기 전에 전체 일치 집합을 확인해야 합니다."}
 ::option[같은 조건을 `-print`로 실행하고 모든 일치 항목을 확인합니다.]{#print-first .correct explanation="읽기 전용 목록으로 시작 경로와 조건을 검증한 뒤 파괴적 작업을 도입할 수 있습니다."}
 ::option[로그 파일을 놓치지 않도록 `/`부터 검색합니다.]{#root-first explanation="`/`부터 시작하면 범위가 넓어져 관련 없는 경로나 보호된 경로까지 포함할 수 있으므로 가능한 가장 좁은 시작점을 사용합니다."}
 :::
 
-:::single-choice{#run-ls-for-each-match}
-`find . -name "*.log" -exec ls -l {} \;`에서 `{}`는 무엇을 나타내나요?
+:::single-choice{#run-ls-for-each-match} `find . -name "*.log" -exec ls -l {} \;`에서 `{}`는 무엇을 나타내나요?
 
 ::option[`ls -l`에 전달되는 현재 일치 경로입니다.]{#match-placeholder .correct explanation="이 `-exec` 형식에서 `find`는 `ls -l`을 실행하기 전에 `{}`를 현재 일치 항목으로 바꿉니다."}
 ::option[`find` 명령어를 시작한 디렉터리입니다.]{#starting-placeholder explanation="시작 디렉터리는 명령 앞부분의 점이며 중괄호는 `-exec` 안에서 다른 역할을 합니다."}

@@ -25,8 +25,7 @@ $ history
 
 Each line has a history number followed by the command.
 
-:::single-choice{#show-command-history}
-Which Bash command displays the current numbered history list?
+:::single-choice{#show-command-history} Which Bash command displays the current numbered history list?
 
 ::option[`clear`]{#clear-display explanation="`clear` refreshes the visible terminal area. It does not display previous commands."}
 ::option[`history -w`]{#write-history explanation="`history -w` writes the current list to the history file. Its purpose is saving rather than displaying the list."}
@@ -44,8 +43,7 @@ Bash provides several shortcuts for recalling or immediately executing commands:
 
 History expansion forms that begin with `!` can run a command as soon as you press Enter. Inspect the match first when there is any doubt, especially before adding elevated privileges or operating on important files.
 
-:::single-choice{#repeat-most-recent-command}
-Which Bash history expansion repeats the most recently executed command?
+:::single-choice{#repeat-most-recent-command} Which Bash history expansion repeats the most recently executed command?
 
 ::option[`!102`]{#event-number explanation="This expansion selects the command with history number 102. That entry is not necessarily the most recent command."}
 ::option[`!cat`]{#event-prefix explanation="This selects the most recent command whose text begins with `cat`. It does not mean the most recent command of any kind."}
@@ -58,8 +56,7 @@ Press `Ctrl+R` to start a reverse incremental search, then type part of the comm
 
 Press Enter to execute the displayed match. If you want to review or edit it first, use an arrow key to place the command on the editing line instead.
 
-:::single-choice{#search-before-executing}
-You remember part of an earlier Bash command and want to find it interactively. What should you press first?
+:::single-choice{#search-before-executing} You remember part of an earlier Bash command and want to find it interactively. What should you press first?
 
 ::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D` signals end of input in many terminal contexts and may exit an idle shell. It does not begin a history search."}
 ::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` normally interrupts or cancels the current operation. It does not search command history."}
@@ -83,8 +80,7 @@ $ history -w
 
 Clearing the in-memory list does not by itself guarantee that older commands have disappeared from every file, backup, or other active shell. History behavior also depends on Bash settings and when sessions read or write their files.
 
-:::single-choice{#save-current-history-list}
-Which command writes the current Bash history list to its configured history file?
+:::single-choice{#save-current-history-list} Which command writes the current Bash history list to its configured history file?
 
 ::option[`history -c`]{#clear-current-list explanation="The `-c` option clears the in-memory list. It does not request that the current list be saved."}
 ::option[`history -d 101`]{#delete-one-entry explanation="The `-d` option removes one selected history entry. It is not the operation for saving the complete list."}
@@ -105,8 +101,7 @@ Tab completion is another way to avoid retyping. Start a command, filename, or d
 
 Command lines can be stored in history, so do not place passwords, tokens, or other secrets directly in commands when a safer input method is available.
 
-:::single-choice{#distinguish-clear-from-history-clear}
-You want to refresh the visible terminal without deleting the in-memory command history. Which command should you run?
+:::single-choice{#distinguish-clear-from-history-clear} You want to refresh the visible terminal without deleting the in-memory command history. Which command should you run?
 
 ::option[`clear`]{#clear-visible-area .correct explanation="`clear` refreshes the visible terminal area while leaving Bash's in-memory history list intact."}
 ::option[`history -c`]{#clear-memory explanation="This removes entries from the current in-memory history list. It changes history rather than only refreshing the display."}

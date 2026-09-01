@@ -22,8 +22,7 @@ $ expand sample.txt
 
 By default, tab stops occur every 8 columns. A tab at column 1 therefore expands differently from a tab at column 6; it is not always replaced by eight spaces.
 
-:::single-choice{#expand-default-tab-stops}
-With default settings, how does `expand` replace a tab character?
+:::single-choice{#expand-default-tab-stops} With default settings, how does `expand` replace a tab character?
 
 ::option[It inserts enough spaces to reach the next default tab stop.]{#expand-next-stop .correct explanation="`expand` preserves tab-stop alignment by calculating the spaces needed from the current column."}
 ::option[It always inserts exactly eight spaces.]{#expand-eight-spaces explanation="Default stops are eight columns apart, but the number of spaces depends on the current column."}
@@ -40,8 +39,7 @@ $ expand -t 4 sample.txt
 
 GNU `expand` also accepts a comma-separated list of explicit tab positions. Use `-i` when only tabs before the first nonblank character on each line should be converted.
 
-:::single-choice{#expand-four-column-stops}
-Which command converts tabs using tab stops every four columns?
+:::single-choice{#expand-four-column-stops} Which command converts tabs using tab stops every four columns?
 
 ::option[`expand -i 4 sample.txt`]{#expand-initial-four explanation="The `-i` option limits conversion to initial tabs and does not take `4` as the tab-stop interval."}
 ::option[`unexpand -t 4 sample.txt`]{#unexpand-tabs-four explanation="`unexpand` converts suitable spaces to tabs, the reverse direction from the requested operation."}
@@ -58,8 +56,7 @@ $ expand sample.txt > result.txt
 
 Do not use `expand sample.txt > sample.txt`. The shell truncates the destination before `expand` can read it, so the source data can be lost. After verifying a separately written result, you can deliberately replace the original using an appropriate file-management step.
 
-:::single-choice{#expand-safe-output-file}
-Which command saves expanded text without truncating `sample.txt` before it is read?
+:::single-choice{#expand-safe-output-file} Which command saves expanded text without truncating `sample.txt` before it is read?
 
 ::option[`expand sample.txt > sample.txt`]{#expand-same-file explanation="The shell opens and truncates `sample.txt` for output before starting `expand`, which can erase the input."}
 ::option[`expand sample.txt > result.txt`]{#expand-separate-result .correct explanation="The input and output pathnames differ, so the shell can create `result.txt` without destroying the source."}
@@ -82,16 +79,14 @@ $ unexpand -a result.txt
 
 This does not simply replace every run of eight spaces. Conversion depends on column positions and tab stops, just as it does for `expand`. Use `-t 4` or another tab-stop specification when the file follows a different convention.
 
-:::single-choice{#unexpand-default-scope}
-Without `-a`, which spaces does GNU `unexpand` normally consider for conversion?
+:::single-choice{#unexpand-default-scope} Without `-a`, which spaces does GNU `unexpand` normally consider for conversion?
 
 ::option[Every group of spaces anywhere in the file.]{#unexpand-every-group explanation="Considering blanks throughout the line requires `-a`, and conversion still depends on tab-stop positions."}
 ::option[Only spaces that appear after the final word.]{#unexpand-trailing-blanks explanation="The default scope concerns initial blanks, not specifically trailing whitespace."}
 ::option[Only initial blanks before the first nonblank character.]{#unexpand-initial-blanks .correct explanation="Default GNU `unexpand` behavior is limited to leading blank space on each line."}
 :::
 
-:::single-choice{#unexpand-all-blanks}
-Which option tells GNU `unexpand` to consider blanks after the first nonblank character too?
+:::single-choice{#unexpand-all-blanks} Which option tells GNU `unexpand` to consider blanks after the first nonblank character too?
 
 ::option[`-i`]{#unexpand-initial-option explanation="For `expand`, `-i` limits work to initial tabs. It is not the all-blanks option for `unexpand`."}
 ::option[`-a`]{#unexpand-all-option .correct explanation="The `-a` option enables conversion of suitable blanks throughout each input line."}

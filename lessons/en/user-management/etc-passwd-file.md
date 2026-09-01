@@ -29,8 +29,7 @@ $ getent passwd root
 
 The first command can disclose account names and metadata, so review output before sharing it publicly.
 
-:::single-choice{#passwd-query-resolved-database}
-Which command queries the NSS-resolved passwd database rather than reading only the local file?
+:::single-choice{#passwd-query-resolved-database} Which command queries the NSS-resolved passwd database rather than reading only the local file?
 
 ::option[`cat /etc/passwd`]{#passwd-cat-local explanation="This displays only the local file and does not include accounts supplied solely by other NSS sources."}
 ::option[`cat /etc/shadow`]{#passwd-cat-shadow explanation="The shadow file contains protected local password-aging data and should not be displayed for this purpose."}
@@ -57,16 +56,14 @@ The seven colon-separated fields are:
 
 The kernel does not require UID values to be unique across malformed or deliberately duplicated records, but accounts that share a UID are indistinguishable for many ownership and permission decisions. Administrators should normally keep account UIDs unique.
 
-:::single-choice{#passwd-uid-field}
-In `root:x:0:0:root:/root:/bin/bash`, which field contains the UID?
+:::single-choice{#passwd-uid-field} In `root:x:0:0:root:/root:/bin/bash`, which field contains the UID?
 
 ::option[The second field, `x`]{#passwd-second-password explanation="The second field is the password placeholder, not the numeric user identity."}
 ::option[The fourth field, the second `0`]{#passwd-fourth-gid explanation="Field 4 is the primary GID rather than the UID."}
 ::option[The third field, the first `0`]{#passwd-third-uid .correct explanation="Field 3 is the UID, so the first zero identifies this record as UID 0."}
 :::
 
-:::single-choice{#passwd-primary-gid-field}
-Which field of a passwd record stores the account's primary GID?
+:::single-choice{#passwd-primary-gid-field} Which field of a passwd record stores the account's primary GID?
 
 ::option[Field 5]{#passwd-gecos-five explanation="The fifth field is the GECOS or comment field."}
 ::option[Field 4]{#passwd-gid-four .correct explanation="The fourth colon-separated field identifies the primary group numerically."}
@@ -79,8 +76,7 @@ On typical shadow-password systems, `x` in field 2 directs password-aware tools 
 
 That does not prove the account cannot authenticate by every method. SSH keys, certificates, tokens, or service-specific mechanisms may be independent. Likewise, an empty password field has security-sensitive behavior that depends on the authentication stack; do not create or “fix” it manually.
 
-:::single-choice{#passwd-x-placeholder}
-What does `x` commonly mean in field 2 of a local `/etc/passwd` record?
+:::single-choice{#passwd-x-placeholder} What does `x` commonly mean in field 2 of a local `/etc/passwd` record?
 
 ::option[The account is guaranteed to have no authentication method.]{#passwd-no-auth-guarantee explanation="The placeholder does not describe every possible authentication method and does not itself mean the account is unusable."}
 ::option[The account's home directory has been deleted.]{#passwd-home-deleted explanation="Home-directory information is stored in field 6 and is unrelated to the `x` placeholder."}
@@ -93,8 +89,7 @@ Many records represent services rather than people. Separate service identities 
 
 Do not infer account purpose from UID range alone without checking the distribution's policy. Allocation ranges vary, and centrally managed accounts may follow different conventions.
 
-:::single-choice{#passwd-nologin-shell}
-What is a common purpose of a login program such as `/usr/sbin/nologin` in field 7?
+:::single-choice{#passwd-nologin-shell} What is a common purpose of a login program such as `/usr/sbin/nologin` in field 7?
 
 ::option[Delete the account's files whenever a service stops.]{#passwd-nologin-delete explanation="The login program does not automatically remove owned data or manage service shutdown files."}
 ::option[Prevent an ordinary interactive shell through login paths that honor the field.]{#passwd-nologin-purpose .correct explanation="A non-login program is commonly used for service accounts that should not receive an interactive shell through normal login."}

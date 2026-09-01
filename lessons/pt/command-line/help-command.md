@@ -24,8 +24,7 @@ $ help echo
 
 A saída descreve a sintaxe e o comportamento do comando interno. Executar `help` sem um argumento lista os comandos internos para os quais o Bash possui ajuda.
 
-:::single-choice{#help-for-bash-cd}
-Qual comando exibe a entrada de ajuda do Bash para seu comando interno `cd`?
+:::single-choice{#help-for-bash-cd} Qual comando exibe a entrada de ajuda do Bash para seu comando interno `cd`?
 
 ::option[`cd --help`]{#cd-help-option explanation="Alguns comandos internos podem reconhecer opções, mas a interface de documentação dedicada do Bash é `help` seguido do nome do comando."}
 ::option[`help cd`]{#help-cd .correct explanation="O comando interno `help` do Bash consulta a documentação do comando interno indicado, neste caso `cd`."}
@@ -42,8 +41,7 @@ $ ls --help
 
 Essa convenção é comum, mas não universal. Leia a saída e o status de encerramento, em vez de presumir que todos os programas aceitam a mesma opção.
 
-:::single-choice{#quick-ls-usage}
-Qual comando normalmente mostra um resumo rápido de uso fornecido pelo programa externo `ls`?
+:::single-choice{#quick-ls-usage} Qual comando normalmente mostra um resumo rápido de uso fornecido pelo programa externo `ls`?
 
 ::option[`help ls`]{#bash-help-ls explanation="O `help` do Bash documenta comandos internos do shell. Em um sistema comum, ele não fornece a página de uso do programa externo `ls`."}
 ::option[`ls --help`]{#ls-help .correct explanation="O GNU `ls` segue a convenção comum de `--help` e mostra seu uso e suas opções."}
@@ -63,8 +61,7 @@ ls is /usr/bin/ls
 
 O resultado exato pode variar conforme os aliases, as funções, os programas instalados e o `PATH`. Use `type -a NAME` quando quiser que o Bash mostre todas as resoluções conhecidas, não apenas a primeira que usaria.
 
-:::single-choice{#identify-command-resolution}
-Você não sabe se `deploy` é um alias, uma função, um comando interno ou um executável. Qual comando do Bash verifica como esse nome é resolvido?
+:::single-choice{#identify-command-resolution} Você não sabe se `deploy` é um alias, uma função, um comando interno ou um executável. Qual comando do Bash verifica como esse nome é resolvido?
 
 ::option[`type deploy`]{#type-deploy .correct explanation="O comando interno `type` informa como o Bash interpreta o nome no ambiente atual do shell."}
 ::option[`help deploy`]{#help-deploy explanation="`help` procura documentação de comandos internos do Bash. Em geral, ele não identifica aliases, funções e arquivos externos."}
@@ -80,8 +77,7 @@ Você não sabe se `deploy` é um alias, uma função, um comando interno ou um 
 
 As próximas lições examinam com mais detalhes as páginas de manual e as descrições de uma linha.
 
-:::single-choice{#choose-detailed-manual}
-Você precisa de documentação detalhada para o comando externo `ls`, não apenas de um resumo de uso. Qual comando deve tentar?
+:::single-choice{#choose-detailed-manual} Você precisa de documentação detalhada para o comando externo `ls`, não apenas de um resumo de uso. Qual comando deve tentar?
 
 ::option[`man ls`]{#man-ls .correct explanation="`man ls` abre a página de manual instalada, que normalmente oferece uma descrição mais completa da sintaxe, das opções e do comportamento."}
 ::option[`whatis ls`]{#whatis-ls explanation="`whatis` foi projetado para mostrar descrições concisas das páginas de manual. Ele não fornece a documentação detalhada solicitada."}

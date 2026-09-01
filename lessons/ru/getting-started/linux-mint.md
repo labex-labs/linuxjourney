@@ -16,8 +16,7 @@ Linux Mint — ориентированный на рабочий стол ди�
 
 Его репутация основана на практических решениях, а не технической сложности. Linux Mint стремится предоставить полный настольный опыт с разумными настройками по умолчанию, поэтому его часто рекомендуют переходящим с Windows.
 
-:::single-choice{#match-linux-mint-goal}
-Какая цель лучше всего соответствует Linux Mint?
+:::single-choice{#match-linux-mint-goal} Какая цель лучше всего соответствует Linux Mint?
 
 ::option[Использовать знакомый рабочий стол с практичными настройками]{#familiar-desktop .correct explanation="Linux Mint сосредоточен на доступном рабочем столе со знакомой навигацией и полезными настройками по умолчанию."}
 ::option[Запускать минимальный сервер без графического интерфейса]{#minimal-server explanation="Linux Mint прежде всего предназначен для рабочих столов и ноутбуков. Для минимальной headless-системы лучше серверный дистрибутив."}
@@ -36,8 +35,7 @@ Linux Mint сохраняет настольную работу понятной
 
 Подробнее о связи семейства рассказывают уроки [Ubuntu](https://labex.io/ru/lesson/ubuntu) и [Debian](https://labex.io/ru/lesson/debian).
 
-:::single-choice{#identify-main-mint-base}
-Какой дистрибутив предоставляет пакетную базу основных редакций Linux Mint?
+:::single-choice{#identify-main-mint-base} Какой дистрибутив предоставляет пакетную базу основных редакций Linux Mint?
 
 ::option[Ubuntu LTS]{#ubuntu-lts-base .correct explanation="Основные редакции Linux Mint используют базу Ubuntu LTS. Отдельная LMDE основана непосредственно на Debian."}
 ::option[Fedora Linux]{#mint-fedora-base explanation="Fedora относится к семейству RPM и не предоставляет базу Mint. Основные редакции используют Ubuntu LTS."}
@@ -50,8 +48,7 @@ Linux Mint сохраняет настольную работу понятной
 
 Так Mint получает знакомый, хорошо документированный программный процесс — одну из причин удобства для новичков.
 
-:::single-choice{#identify-mint-package-tool}
-Какой инструмент управляет пакетами из командной строки Linux Mint?
+:::single-choice{#identify-mint-package-tool} Какой инструмент управляет пакетами из командной строки Linux Mint?
 
 ::option[DNF]{#mint-dnf-tool explanation="DNF используют Fedora и семейство RHEL. Linux Mint применяет пакетные инструменты семейства Debian."}
 ::option[APT]{#mint-apt-tool .correct explanation="Linux Mint использует APT для командного управления пакетами в формате семейства Debian `.deb`."}
@@ -64,8 +61,7 @@ Linux Mint прежде всего предназначен для настол�
 
 Ориентация на рабочий стол — значительная часть идентичности Mint. В отличие от систем, одинаково охватывающих все сценарии, Mint лучше понимать как практичный настольный Linux.
 
-:::single-choice{#recognize-cinnamon-layout}
-Какая особенность описывает выделенный здесь рабочий стол Cinnamon?
+:::single-choice{#recognize-cinnamon-layout} Какая особенность описывает выделенный здесь рабочий стол Cinnamon?
 
 ::option[Только командный интерфейс без графического рабочего стола]{#command-only-layout explanation="Linux Mint поддерживает терминал, но Cinnamon является графической средой."}
 ::option[Классическая компоновка с панелью и меню приложений]{#classic-cinnamon-layout .correct explanation="Cinnamon известен знакомой компоновкой с панелью и меню, делающей рабочий стол Mint доступным."}

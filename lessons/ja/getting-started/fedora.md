@@ -16,8 +16,7 @@ Fedora は Red Hat が支援する、コミュニティ主導の Linux ディス
 
 より保守的なディストロより速く進化しながら、品質と使いやすさも目指します。このバランスにより、すべてを最初から構築せず、現代的な Linux システムを使いたい人に適します。
 
-:::single-choice{#identify-fedora-project-model}
-Fedora プロジェクトを正しく説明しているものはどれですか？
+:::single-choice{#identify-fedora-project-model} Fedora プロジェクトを正しく説明しているものはどれですか？
 
 ::option[廃止された Red Hat Enterprise Linux のバージョン]{#discontinued-rhel explanation="Fedora は独自のリリースを持つ活動中のディストリビューションで、古い RHEL ではなく RHEL の上流に位置します。"}
 ::option[1つのハードウェアメーカーが保守するディストリビューション]{#hardware-maintained explanation="ハードウェアメーカーとも協力しますが、開発はコミュニティ主導で Red Hat が支援しています。"}
@@ -30,8 +29,7 @@ Fedora は企業向けディストリビューションより早く新しい Lin
 
 整理された既定の体験でも知られます。Fedora Workstation は、現代的なデスクトップ、最新のツール、コンテナ、仮想化などの開発作業への対応を望む開発者に特に人気です。
 
-:::single-choice{#match-fedora-user}
-Fedora Workstation に最もよく合う利用者の目的はどれですか？
+:::single-choice{#match-fedora-user} Fedora Workstation に最もよく合う利用者の目的はどれですか？
 
 ::option[1つの企業向けリリースを何年も変えずに保つ]{#long-enterprise-lifecycle explanation="長く保守的な企業ライフサイクルは RHEL の役割に近く、Fedora はより速いリリースと更新周期で進みます。"}
 ::option[洗練されたデスクトップで最新の開発ツールを使う]{#current-developer-desktop .correct explanation="Fedora Workstation は厳選されたデスクトップと、開発、コンテナ、仮想化向けの最新ツールを組み合わせます。"}
@@ -44,8 +42,7 @@ Fedora は Red Hat エコシステムで重要な役割を持ちます。新技�
 
 企業向けの選択肢との比較は [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux)、ディストロ系統の概要は [Linux ディストリビューションの選び方](https://labex.io/lesson/choosing-a-linux-distribution) を参照してください。
 
-:::single-choice{#explain-fedora-upstream-role}
-Fedora が RHEL の上流であるとは、どういう意味ですか？
+:::single-choice{#explain-fedora-upstream-role} Fedora が RHEL の上流であるとは、どういう意味ですか？
 
 ::option[RHEL のリリースが後から変更なしで Fedora へコピーされる]{#rhel-copied-to-fedora explanation="関係が逆です。Fedora は速く進む上流であり、後発の RHEL コピーではありません。"}
 ::option[Fedora と RHEL は常に同じソフトウェアバージョンを提供する]{#identical-software-versions explanation="リリースの目的と日程が異なり、RHEL は Fedora の全バージョンに合わせず技術を選択して安定化します。"}
@@ -58,8 +55,7 @@ Fedora は定期リリース方式で、多くの年に2つのメジャーリリ
 
 最新ソフトウェアを求めながら、手動作業の多いローリングリリースではなく、整理された主流のディストリビューションを使いたい人に適します。
 
-:::single-choice{#plan-fedora-upgrades}
-Fedora のリリースモデルでは、どのような保守を想定すべきですか？
+:::single-choice{#plan-fedora-upgrades} Fedora のリリースモデルでは、どのような保守を想定すべきですか？
 
 ::option[コンピューターの寿命中、バージョン更新は一切不要]{#no-version-upgrades explanation="各バージョンのサポート期間は限られ、支援対象を保つには新しいリリースへ移る必要があります。"}
 ::option[支援対象リリースを保つための定期的なアップグレード]{#regular-release-upgrades .correct explanation="比較的速い周期で進み、各リリースの更新は約13か月なので、定期的なバージョン更新を計画します。"}
@@ -70,8 +66,7 @@ Fedora のリリースモデルでは、どのような保守を想定すべき�
 
 Fedora は RPM パッケージ形式と DNF パッケージマネージャーを使い、ソフトウェアを導入、更新、削除します。DNF はシステムを最新に保つ中心的なツールで、Red Hat 系のシステムにも自然につながります。
 
-:::single-choice{#identify-fedora-package-tool}
-Fedora が上位のパッケージ管理に使うツールはどれですか？
+:::single-choice{#identify-fedora-package-tool} Fedora が上位のパッケージ管理に使うツールはどれですか？
 
 ::option[APT]{#fedora-apt-tool explanation="APT は Debian ベースのディストリビューションに関連します。Fedora は RPM 系で DNF を使います。"}
 ::option[DNF]{#fedora-dnf-tool .correct explanation="DNF は Fedora リポジトリからパッケージを導入、更新、削除し、その下では RPM 形式を使います。"}

@@ -44,8 +44,7 @@ bb
 
 Spaces, tabs, and punctuation occupy positions too. `cut` processes each line independently.
 
-:::single-choice{#cut-first-character}
-Which command prints the first character from every line of `names.txt`?
+:::single-choice{#cut-first-character} Which command prints the first character from every line of `names.txt`?
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="The `-c` option selects character positions, and position 1 is the first character of each line."}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="The `-f` option selects the first tab-delimited field, which can contain more than one character."}
@@ -65,8 +64,7 @@ viewer
 
 As with character selection, a list can include values such as `1`, `1,3`, `2-4`, `-3`, or `2-`.
 
-:::single-choice{#cut-second-tab-field}
-Which command prints the second tab-delimited field from every line of `team.tsv`?
+:::single-choice{#cut-second-tab-field} Which command prints the second tab-delimited field from every line of `team.tsv`?
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="This selects the second character position from each line, not the second tab-separated field."}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="Without `-d`, field mode uses a tab delimiter, and `-f 2` selects the second field."}
@@ -86,8 +84,7 @@ bob
 
 The delimiter for this form is one character. Quote `;` because an unquoted semicolon has control meaning in the shell.
 
-:::single-choice{#cut-semicolon-role-field}
-Which command prints the second semicolon-delimited field from `team.txt`?
+:::single-choice{#cut-semicolon-role-field} Which command prints the second semicolon-delimited field from `team.txt`?
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="This selects fields separated by colons, but the file uses semicolons."}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="The quoted semicolon sets the delimiter, and `-f 2` selects the second field from each line."}
@@ -106,8 +103,7 @@ viewer
 
 This does not validate a general CSV file. CSV can contain quoted delimiters, embedded newlines, and escaping rules that a single-character split does not understand; use a CSV-aware tool for such data.
 
-:::single-choice{#cut-suppress-undelimited}
-What does `-s` do with `cut -d ':' -f 1`?
+:::single-choice{#cut-suppress-undelimited} What does `-s` do with `cut -d ':' -f 1`?
 
 ::option[It sorts the selected fields before printing them.]{#cut-s-sort explanation="`cut` does not sort input, and `-s` is unrelated to ordering."}
 ::option[It treats consecutive delimiters as one separator.]{#cut-s-squeeze explanation="`cut` does not use `-s` to collapse delimiters. Empty fields remain meaningful positions."}
@@ -124,8 +120,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-In `generate-data | cut -d ':' -f 1`, where does `cut` read its input?
+:::single-choice{#cut-pipeline-input} In `generate-data | cut -d ':' -f 1`, where does `cut` read its input?
 
 ::option[From the stdout of `generate-data` through the pipe.]{#cut-pipe-stdin .correct explanation="The pipe connects the producer's stdout to `cut`'s stdin, and no separate input file is named."}
 ::option[From a file whose literal name is `generate-data`.]{#cut-pipe-file explanation="`generate-data` is executed as the left pipeline command. It is not passed to `cut` as a filename."}

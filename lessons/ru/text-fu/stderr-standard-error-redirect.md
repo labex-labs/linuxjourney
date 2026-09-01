@@ -29,8 +29,7 @@ ls: cannot access '/fake/directory': No such file or directory
 - `1`: stdout (стандартный вывод)
 - `2`: stderr (стандартный поток ошибок)
 
-:::single-choice{#stderr-not-in-stdout-file}
-Почему ошибка от `ls /missing > results.txt` обычно остаётся в терминале?
+:::single-choice{#stderr-not-in-stdout-file} Почему ошибка от `ls /missing > results.txt` обычно остаётся в терминале?
 
 ::option[`>` перенаправляет stdout, а диагностическое сообщение записывается в stderr.]{#stderr-separate-stream .correct explanation="Обычный `>` изменяет только файловый дескриптор 1. Дескриптор 2 сохраняет прежнее назначение — терминал."}
 ::option[`ls` ждёт закрытия файла, прежде чем вывести ошибку.]{#stderr-waits-for-close explanation="Дело не во времени: обычные и диагностические сообщения используют разные выходные потоки."}
@@ -47,8 +46,7 @@ $ ls /fake/directory 2> errors.txt
 
 Оболочка создаёт или усекает `errors.txt` и подключает его к дескриптору 2. Stdout сохраняет прежнее назначение. Если вывод ошибок нужно добавить в конец файла, используйте `2>> errors.txt`.
 
-:::single-choice{#stderr-to-error-file}
-Какая команда заменяет `errors.log` диагностическими сообщениями от `find /restricted`, оставляя stdout в прежнем назначении?
+:::single-choice{#stderr-to-error-file} Какая команда заменяет `errors.log` диагностическими сообщениями от `find /restricted`, оставляя stdout в прежнем назначении?
 
 ::option[`find /restricted > errors.log`]{#stdout-errors-log explanation="Обычный `>` перенаправляет дескриптор 1, поэтому захватывает обычные результаты, а не специально диагностические сообщения."}
 ::option[`find /restricted < errors.log`]{#stdin-errors-log explanation="Знак меньше предоставляет файл через stdin и не захватывает ни один выходной поток."}
@@ -76,8 +74,7 @@ $ ls /fake/directory /etc/passwd 2>&1 > regular.txt
 
 Здесь stderr сначала дублирует исходное назначение stdout — терминал. Затем stdout перемещается в `regular.txt`, поэтому два потока оказываются в разных местах.
 
-:::single-choice{#stderr-combine-order}
-Какое перенаправление Bash отправляет и stdout, и stderr команды `command` в `all.log`?
+:::single-choice{#stderr-combine-order} Какое перенаправление Bash отправляет и stdout, и stderr команды `command` в `all.log`?
 
 ::option[`command 2>&1 > all.log`]{#stderr-before-stdout explanation="Сначала stderr подключается к старому назначению stdout, затем только stdout перенаправляется в файл. Потоки оказываются разделены."}
 ::option[`command 2> all.log > /dev/null`]{#stderr-file-stdout-null explanation="Здесь stderr направляется в `all.log`, а stdout отбрасывается. Оба потока в файле не объединяются."}
@@ -92,8 +89,7 @@ $ ls /fake/directory /etc/passwd &> combined.txt
 
 Для добавления обоих потоков в Bash используйте `&>>`. Явную форму `> file 2>&1` полезно узнавать, поскольку она также встречается в сценариях оболочки и документации.
 
-:::single-choice{#stderr-bash-short-form}
-Какая команда Bash добавляет и stdout, и stderr команды `build` в `build.log`?
+:::single-choice{#stderr-bash-short-form} Какая команда Bash добавляет и stdout, и stderr команды `build` в `build.log`?
 
 ::option[`build &> build.log`]{#replace-both-build explanation="В Bash `&>` перенаправляет оба потока, но заменяет существующий файл вместо добавления."}
 ::option[`build 2>> build.log`]{#append-errors-build explanation="Эта запись добавляет только stderr. Stdout сохраняет прежнее назначение."}
@@ -110,8 +106,7 @@ $ ls /fake/directory 2> /dev/null
 
 Это не заставляет команду завершиться успешно и не изменяет её код выхода, а лишь скрывает диагностический поток. При поиске неисправностей сохраняйте или отображайте stderr, а не отбрасывайте нужную информацию.
 
-:::single-choice{#stderr-dev-null-effect}
-Что изменяет `check-data 2> /dev/null`?
+:::single-choice{#stderr-dev-null-effect} Что изменяет `check-data 2> /dev/null`?
 
 ::option[Отбрасывает stdout и превращает каждую ошибку в успешное завершение.]{#discard-stdout-success explanation="Дескриптор 2 — это stderr, а не stdout; перенаправление не переписывает код выхода программы."}
 ::option[Отбрасывает stderr, но не заставляет команду завершиться успешно.]{#discard-stderr-only .correct explanation="Перенаправление меняет место назначения диагностических сообщений. Результат выполнения по-прежнему определяет программа."}

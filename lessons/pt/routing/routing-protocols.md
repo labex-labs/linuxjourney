@@ -18,8 +18,7 @@ Um protocolo de roteamento aprende candidatos em seu próprio banco de dados. O 
 
 Uma adjacência de protocolo estabelecida não comprova que o prefixo desejado foi aprendido, selecionado, instalado ou permitido pela política de encaminhamento.
 
-:::single-choice{#routing-protocols-adjacency-limit}
-O que uma adjacência de roteamento estabelecida não consegue comprovar?
+:::single-choice{#routing-protocols-adjacency-limit} O que uma adjacência de roteamento estabelecida não consegue comprovar?
 
 ::option[Que todas as rotas desejadas estão instaladas e encaminhando com sucesso.]{#routing-protocols-not-full-proof .correct explanation="Anúncio, seleção, instalação e filtragem de rotas e operação do plano de dados são etapas separadas."}
 ::option[Que dois participantes do protocolo trocaram alguma mensagem de controle.]{#routing-protocols-no-messages explanation="O estabelecimento de uma adjacência normalmente exige comunicação pelo protocolo."}
@@ -32,8 +31,7 @@ Protocolos de gateway interior operam dentro de um domínio administrativo de ro
 
 As métricas possuem significados específicos de cada protocolo. Um custo OSPF, uma contagem de saltos RIP e um conjunto de atributos BGP não podem ser comparados como se compartilhassem uma escala numérica universal. As implementações usam preferência de rota ou distância administrativa para escolher entre origens antes ou em conjunto com a seleção específica do protocolo.
 
-:::single-choice{#routing-protocols-metric-comparison}
-Uma contagem de saltos RIP pode ser comparada diretamente com um custo OSPF?
+:::single-choice{#routing-protocols-metric-comparison} Uma contagem de saltos RIP pode ser comparada diretamente com um custo OSPF?
 
 ::option[Sim, porque todas as métricas de roteamento usam as mesmas unidades.]{#routing-protocols-universal-metric explanation="Cada protocolo define sua própria métrica e seu processo de seleção."}
 ::option[Sim, mas apenas quando ambos os valores são zero.]{#routing-protocols-zero-metric explanation="Suas semânticas continuam diferentes independentemente do número exibido."}
@@ -44,8 +42,7 @@ Uma contagem de saltos RIP pode ser comparada diretamente com um custo OSPF?
 
 Protocolos de vetor de distância anunciam acessibilidade e distância por meio de vizinhos, derivando caminhos dos relatórios deles. Protocolos de estado de enlace formam adjacências, inundam informações sobre o estado dos enlaces dentro de um escopo, constroem um banco de dados da topologia e calculam árvores de caminhos mais curtos. Protocolos modernos incluem refinamentos que tornam incompletos os resumos simples por categoria.
 
-:::single-choice{#routing-protocols-link-state-input}
-O que um roteador de estado de enlace usa para calcular seus caminhos?
+:::single-choice{#routing-protocols-link-state-input} O que um roteador de estado de enlace usa para calcular seus caminhos?
 
 ::option[Apenas o nome de host de seu gateway padrão.]{#routing-protocols-hostname-only explanation="Um cálculo de topologia exige informações de enlaces e prefixos."}
 ::option[Um banco de dados sincronizado que descreve os enlaces no escopo de roteamento.]{#routing-protocols-link-database .correct explanation="O roteador executa um algoritmo de caminho mais curto sobre a topologia aprendida."}
@@ -58,8 +55,7 @@ Depois de uma mudança de topologia ou política, os roteadores a detectam, prop
 
 Durante a convergência, podem ocorrer perdas transitórias, loops ou buracos negros. Meça separadamente detecção, propagação, cálculo e instalação e verifique com sondagens do plano de dados.
 
-:::single-choice{#routing-protocols-convergence}
-O que é convergência de roteamento?
+:::single-choice{#routing-protocols-convergence} O que é convergência de roteamento?
 
 ::option[O processo de alcançar um roteamento estável e utilizável depois de uma mudança.]{#routing-protocols-stable-routing .correct explanation="Ela inclui a propagação do controle e as atualizações de encaminhamento resultantes."}
 ::option[Uma exigência de que todo roteador armazene uma tabela global idêntica.]{#routing-protocols-identical-table explanation="Política, área e função podem criar diferenças intencionais."}

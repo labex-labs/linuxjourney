@@ -16,8 +16,7 @@ Das TCP/IP-Modell ordnet die von Internet-Hosts verwendeten Protokolle in funkti
 
 Anwendungsprotokolle definieren Nachrichten und Verhalten für Dienste wie HTTP, DNS, SSH und SMTP. Diese Schicht umfasst außerdem viele Darstellungs- und Sitzungsaufgaben, die das OSI-Modell getrennt behandelt.
 
-:::single-choice{#tcpip-http-layer}
-Welcher TCP/IP-Schicht wird HTTP normalerweise zugeordnet?
+:::single-choice{#tcpip-http-layer} Welcher TCP/IP-Schicht wird HTTP normalerweise zugeordnet?
 
 ::option[Internet.]{#tcpip-http-internet explanation="Die Internetschicht verarbeitet IP-Adressierung und Paketweiterleitung."}
 ::option[Verbindung.]{#tcpip-http-link explanation="Die Verbindungsschicht transportiert Datenverkehr auf einem lokalen Medium."}
@@ -28,8 +27,7 @@ Welcher TCP/IP-Schicht wird HTTP normalerweise zugeordnet?
 
 Transportprotokolle ermöglichen die Kommunikation zwischen Anwendungsendpunkten. TCP bietet einen zuverlässigen geordneten Bytestrom mit Überlastungs- und Flusskontrolle. UDP stellt unabhängige Datagramme ohne TCPs Garantien für Verbindung, Reihenfolge oder erneute Übertragung bereit. Portnummern helfen, Transportendpunkte zu identifizieren, doch eine Portnummer allein beweist nicht, welche Anwendung lauscht.
 
-:::single-choice{#tcpip-udp-property}
-Welche Eigenschaft gehört zu UDP und nicht zu TCP?
+:::single-choice{#tcpip-udp-property} Welche Eigenschaft gehört zu UDP und nicht zu TCP?
 
 ::option[Unabhängige Datagramme ohne eingebaute Garantie erneuter Übertragung.]{#tcpip-udp-datagrams .correct explanation="UDP-Anwendungen entscheiden, ob und wie sie Zuverlässigkeit ergänzen."}
 ::option[Garantierte geordnete Zustellung eines einzelnen Bytestroms.]{#tcpip-udp-ordered explanation="Dies ist eine Diensteigenschaft von TCP, sofern eine Verbindung zustande kommt."}
@@ -40,8 +38,7 @@ Welche Eigenschaft gehört zu UDP und nicht zu TCP?
 
 Das Internet Protocol transportiert Pakete anhand von Quell- und Ziel-IP-Adressen. Router untersuchen Routinginformationen und verringern Hop-Limits, während sie Pakete zum Ziel weiterleiten. ICMP übermittelt Steuerungs- und Fehlerinformationen für den IP-Betrieb. Die Zustellung erfolgt nach bestem Bemühen; höhere Schichten oder Anwendungen übernehmen jede erforderliche Wiederherstellung.
 
-:::single-choice{#tcpip-router-layer}
-Welche Schicht stellt das von Routern verwendete IP-Ziel bereit?
+:::single-choice{#tcpip-router-layer} Welche Schicht stellt das von Routern verwendete IP-Ziel bereit?
 
 ::option[Internet.]{#tcpip-router-internet .correct explanation="Der IP-Header enthält das Netzwerkschichtziel für die geroutete Weiterleitung."}
 ::option[Anwendung.]{#tcpip-router-application explanation="Anwendungsnachrichten werden innerhalb der Protokolldaten niedrigerer Schichten transportiert."}
@@ -54,8 +51,7 @@ Die Verbindungsschicht sendet ein IP-Paket über eine lokale Verbindung mithilfe
 
 Verbindungsheader ändern sich gewöhnlich an jedem gerouteten Hop; Transport- und Anwendungsunterhaltungen laufen von Ende zu Ende, sofern keine Middlebox sie beendet oder umwandelt.
 
-:::single-choice{#tcpip-link-scope}
-Was ist der normale Geltungsbereich eines Frames der Verbindungsschicht?
+:::single-choice{#tcpip-link-scope} Was ist der normale Geltungsbereich eines Frames der Verbindungsschicht?
 
 ::option[Eine lokale Verbindung oder ein Hop.]{#tcpip-one-link .correct explanation="Ein Router entfernt den eingehenden Frame und erstellt einen Frame für die nächste Verbindung."}
 ::option[Jede Anwendungssitzung im weltweiten Internet.]{#tcpip-global-frame explanation="Frames bleiben über geroutete Netzwerke hinweg nicht unverändert."}

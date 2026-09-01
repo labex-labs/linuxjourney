@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 La première ligne contient l’heure actuelle, la durée de fonctionnement, le nombre d’utilisateurs connectés et les charges moyennes sur 1, 5 et 15 minutes. La ligne des tâches compte les états des processus. La charge moyenne n’est pas un pourcentage direct d’utilisation du processeur ; sous Linux, elle reflète les tâches exécutables et celles en sommeil non interruptible. Interprétez-la donc avec le nombre de processeurs, l’activité d’entrées-sorties et la latence.
 
-:::single-choice{#top-load-average-periods}
-Que représentent les trois valeurs de charge moyenne dans `top` ?
+:::single-choice{#top-load-average-periods} Que représentent les trois valeurs de charge moyenne dans `top` ?
 
 ::option[La charge moyenne sur 1, 5 et 15 minutes.]{#top-one-five-fifteen .correct explanation="Ces valeurs résument des fenêtres récentes de durée progressivement plus longue."}
 ::option[L’utilisation du processeur par les trois processus les plus actifs.]{#top-three-processes explanation="L’utilisation par processus apparaît dans la table des processus, et non dans ces trois valeurs du résumé."}
@@ -48,8 +47,7 @@ Les champs courants du processeur comprennent :
 
 Une valeur `wa` élevée peut étayer l’hypothèse d’une attente d’entrées-sorties, mais n’identifie pas un périphérique et ne prouve pas que le stockage soit le seul goulot d’étranglement. Examinez la latence des périphériques et le comportement de l’application avant de conclure.
 
-:::single-choice{#top-cpu-wa-meaning}
-Que mesure le champ processeur `wa` ?
+:::single-choice{#top-cpu-wa-meaning} Que mesure le champ processeur `wa` ?
 
 ::option[Le temps consacré à l’exécution du code utilisateur ordinaire.]{#top-wa-user explanation="L’exécution dans l’espace utilisateur est indiquée sous `us`."}
 ::option[Les pages mémoire écrites dans l’espace d’échange depuis le démarrage.]{#top-wa-swap explanation="L’activité d’échange n’est pas une catégorie de temps processeur."}
@@ -70,8 +68,7 @@ Les colonnes importantes comprennent généralement :
 
 `VIRT` n’est pas la quantité de mémoire vive physique consommée. Il peut comprendre les fichiers mappés, les bibliothèques partagées, l’espace d’adressage réservé et les pages dans l’espace d’échange. Même `RES` exige de la prudence, car les pages partagées compliquent leur attribution.
 
-:::single-choice{#top-res-versus-virt}
-Quel champ se rapproche le plus de la mémoire physique actuellement résidente d’un processus ?
+:::single-choice{#top-res-versus-virt} Quel champ se rapproche le plus de la mémoire physique actuellement résidente d’un processus ?
 
 ::option[`TIME+`]{#top-time-field explanation="Ce champ cumule le temps processeur, et non la mémoire."}
 ::option[`VIRT`]{#top-virt-field explanation="La taille virtuelle comprend un espace d’adressage qui ne réside pas nécessairement en mémoire vive."}
@@ -90,8 +87,7 @@ Dans `top`, appuyez sur `P` pour trier par processeur, `M` pour trier par mémoi
 
 Relevez le PID, la commande, l’horodatage et plusieurs échantillons avant d’agir. Un processus qui atteint brièvement la première place peut être normal, et l’arrêter peut entraîner une perte de données ou une interruption de service.
 
-:::single-choice{#top-monitor-known-pid}
-Quel appel limite l’affichage au PID 1234 ?
+:::single-choice{#top-monitor-known-pid} Quel appel limite l’affichage au PID 1234 ?
 
 ::option[`top -u 1234`]{#top-user-filter explanation="La forme `-u` filtre par utilisateur au lieu d’interpréter la valeur comme un PID."}
 ::option[`top -d 1234`]{#top-delay-filter explanation="Sur les implémentations courantes, l’option `-d` contrôle le délai d’actualisation."}

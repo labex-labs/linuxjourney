@@ -24,8 +24,7 @@ De la más baja a la más alta, las capas OSI son:
 6. Presentación: representación, transformación y codificación de datos.
 7. Aplicación: servicios de red que utilizan las aplicaciones.
 
-:::single-choice{#osi-network-layer-number}
-¿Qué capa OSI gestiona el direccionamiento lógico y el reenvío entre redes?
+:::single-choice{#osi-network-layer-number} ¿Qué capa OSI gestiona el direccionamiento lógico y el reenvío entre redes?
 
 ::option[Capa 3, Red.]{#osi-layer-three .correct explanation="La capa de red describe el direccionamiento lógico y el reenvío entre redes."}
 ::option[Capa 1, Física.]{#osi-layer-one explanation="La capa física se ocupa de las señales y los medios."}
@@ -36,8 +35,7 @@ De la más baja a la más alta, las capas OSI son:
 
 Expresiones como «un bucle de capa 2» o «un puerto de capa 4» identifican un área funcional sin explicar todos los detalles de la implementación. Un protocolo real puede atravesar límites, y el cifrado, los túneles, los proxies o las redes superpuestas pueden crear varias capas anidadas.
 
-:::single-choice{#osi-model-purpose}
-¿Para qué resulta más útil el modelo OSI en el diagnóstico cotidiano?
+:::single-choice{#osi-model-purpose} ¿Para qué resulta más útil el modelo OSI en el diagnóstico cotidiano?
 
 ::option[Para garantizar que todos los protocolos tengan exactamente siete cabeceras.]{#osi-seven-headers explanation="Las implementaciones no se corresponden una a una con siete cabeceras en la transmisión."}
 ::option[Para sustituir todas las capturas de paquetes por un diagrama.]{#osi-replace-captures explanation="El modelo orienta la investigación, pero no sustituye las pruebas."}
@@ -48,8 +46,7 @@ Expresiones como «un bucle de capa 2» o «un puerto de capa 4» identifican un
 
 La suite de protocolos de Internet y el modelo de referencia OSI se desarrollaron mediante historias de estandarización distintas. El modelo práctico TCP/IP suele agrupar las responsabilidades de sesión y presentación de OSI en su capa de aplicación y combina los aspectos físicos y de enlace de datos en una capa de enlace o de acceso a la red. Las correspondencias son aproximadas, no demuestran que una pila se haya implementado directamente a partir de la otra.
 
-:::single-choice{#osi-tcpip-mapping}
-¿Cómo debe interpretarse una correspondencia entre las capas OSI y TCP/IP?
+:::single-choice{#osi-tcpip-mapping} ¿Cómo debe interpretarse una correspondencia entre las capas OSI y TCP/IP?
 
 ::option[Como una regla exacta que todos los protocolos deben obedecer.]{#osi-exact-rule explanation="Las responsabilidades de los protocolos suelen atravesar límites conceptuales."}
 ::option[Como prueba de que TCP/IP utiliza obligatoriamente siete capas durante la transmisión.]{#osi-tcp-seven explanation="TCP/IP suele describirse con cuatro o cinco capas."}
@@ -60,8 +57,7 @@ La suite de protocolos de Internet y el modelo de referencia OSI se desarrollaro
 
 Empieza por el síntoma y comprueba los supuestos en lugar de revisar mecánicamente las capas en orden numérico. Un fallo web puede involucrar el estado del enlace local, el enrutamiento IP, la accesibilidad del transporte, TLS, la resolución de nombres, la autenticación o el comportamiento de la aplicación. Las pruebas de una capa pueden orientar la siguiente comprobación sin demostrar que las capas superiores funcionen.
 
-:::single-choice{#osi-link-success-limit}
-¿Qué demuestra que funcione un enlace Ethernet local?
+:::single-choice{#osi-link-success-limit} ¿Qué demuestra que funcione un enlace Ethernet local?
 
 ::option[Que todos los servicios HTTP remotos funcionan correctamente.]{#osi-link-proves-http explanation="El estado del enlace local no permite determinar la salud de una aplicación remota."}
 ::option[Que DNS no contiene ningún registro incorrecto.]{#osi-link-proves-dns explanation="Los datos de nombres son independientes de la conectividad básica del enlace."}

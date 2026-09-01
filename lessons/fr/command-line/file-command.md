@@ -32,8 +32,7 @@ $ file /bin/ls
 
 Le résultat est une classification et non une garantie. Un fichier inhabituel, incomplet ou endommagé peut recevoir une description générale comme `data` plutôt qu'un type précis.
 
-:::single-choice{#identify-misleading-extension}
-Un fichier nommé `report.jpg` peut ne pas contenir d'image. Quelle commande vérifie son type de contenu probable ?
+:::single-choice{#identify-misleading-extension} Un fichier nommé `report.jpg` peut ne pas contenir d'image. Quelle commande vérifie son type de contenu probable ?
 
 ::option[`ls report.jpg`]{#list-report explanation="`ls` confirme l'existence du nom et peut afficher ses métadonnées, mais ne classe pas le contenu du fichier."}
 ::option[`file report.jpg`]{#inspect-report .correct explanation="`file` examine le fichier et indique un type probable sans se fier uniquement au suffixe `.jpg`."}
@@ -57,8 +56,7 @@ Vous pouvez aussi fournir un joker du shell. Le shell développe `*` en noms cor
 $ file *
 ```
 
-:::single-choice{#inspect-multiple-files}
-Quelle commande demande à `file` d'inspecter tous les noms non cachés auxquels `*` correspond dans le répertoire actuel ?
+:::single-choice{#inspect-multiple-files} Quelle commande demande à `file` d'inspecter tous les noms non cachés auxquels `*` correspond dans le répertoire actuel ?
 
 ::option[`file *`]{#file-wildcard .correct explanation="Le shell développe `*` en noms non cachés correspondants, puis `file` examine chaque opérande obtenu."}
 ::option[`file .`]{#file-current-directory explanation="Un point désigne le répertoire actuel lui-même. Cette commande classe ce répertoire, pas chaque élément qu'il contient."}
@@ -74,8 +72,7 @@ $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-:::single-choice{#show-mime-information}
-Quelle commande indique les informations au format MIME pour `index.html` ?
+:::single-choice{#show-mime-information} Quelle commande indique les informations au format MIME pour `index.html` ?
 
 ::option[`file -b index.html`]{#brief-index explanation="L'option `-b` omet le nom du fichier dans la description habituelle ; elle ne demande pas spécialement un format MIME."}
 ::option[`file -i index.html`]{#mime-index .correct explanation="L'option `-i` demande une sortie au format MIME, par exemple `text/html` avec des informations sur le jeu de caractères."}
@@ -96,8 +93,7 @@ $ file -b notes.txt
 ASCII text
 ```
 
-:::single-choice{#omit-filename-from-output}
-Quelle commande classe `notes.txt` en omettant son nom dans la sortie ?
+:::single-choice{#omit-filename-from-output} Quelle commande classe `notes.txt` en omettant son nom dans la sortie ?
 
 ::option[`file -i notes.txt`]{#mime-notes explanation="L'option `-i` demande des informations au format MIME ; la sortie inclut normalement toujours le nom du fichier."}
 ::option[`file -z notes.txt`]{#compressed-notes explanation="L'option `-z` demande à `file` d'examiner si possible les données compressées ; elle n'active pas le mode bref."}

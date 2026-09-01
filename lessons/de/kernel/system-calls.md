@@ -23,8 +23,7 @@ Die Beziehung ist nicht immer eine Funktion zu einem Systemaufruf:
 - Eine optimierte vDSO-Funktion kann bestimmte vom Kernel gepflegte Daten ohne vollständigen Modusübergang beziehen.
 - Ein Systemaufruf kann viele übergeordnete APIs unterstützen.
 
-:::single-choice{#system-calls-library-wrapper}
-Was tut eine typische Systemaufrufkapselung von libc?
+:::single-choice{#system-calls-library-wrapper} Was tut eine typische Systemaufrufkapselung von libc?
 
 ::option[Sie bereitet ABI-Argumente vor, tritt in den Kernel ein und übersetzt das Ergebnis.]{#system-calls-wrapper-role .correct explanation="Die Kapselung verbirgt architekturspezifische Aufrufkonventionen hinter einer gewöhnlichen Bibliotheksschnittstelle."}
 ::option[Sie gewährt der Anwendung uneingeschränkten Zugriff auf Kernelspeicher.]{#system-calls-wrapper-unrestricted explanation="Der Kerneleintritt bleibt kontrolliert, und der Kernel validiert die Anfrage."}
@@ -39,8 +38,7 @@ Nach dem Abschluss gibt der Kernel einen Wert oder eine Fehleranzeige zurück. K
 
 Jeden Einstieg als „Software-Interrupt“ zu bezeichnen, ist auf aktuellen Architekturen ungenau. Traps, schnelle Systemaufrufanweisungen und Supervisor-Aufrufe implementieren verwandte kontrollierte Übergänge auf unterschiedliche Weise.
 
-:::single-choice{#system-calls-entry-result}
-Wer validiert die Argumente und Autorisierung eines Systemaufrufs?
+:::single-choice{#system-calls-entry-result} Wer validiert die Argumente und Autorisierung eines Systemaufrufs?
 
 ::option[Die Shell-Eingabeaufforderung, bevor der Prozess startet.]{#system-calls-shell-validates explanation="Ein Prozess kann unabhängig von einer Shell Systemaufrufe ausführen, und Kernelprüfungen bleiben erforderlich."}
 ::option[Die Kernelimplementierung des angeforderten Dienstes.]{#system-calls-kernel-validates .correct explanation="Der privilegierte Handler prüft Zeiger, Objektzustand, Zugangsdaten und Richtlinie, bevor er handelt."}
@@ -53,8 +51,7 @@ Systemaufrufnummern und Aufrufkonventionen sind architekturspezifisch. Derselbe 
 
 Ein unprivilegierter Prozess kann keine beliebigen neuen Handler in die Syscall-Tabelle des laufenden Kernels einfügen. Eine Erweiterung der Schnittstelle erfordert Kernelcode und einen sorgfältigen ABI-Entwurf. Funktionen wie seccomp können filtern, welche Aufrufe ein Prozess ausführen darf, erzeugen aber keine neuen Kernelimplementierungen.
 
-:::single-choice{#system-calls-number-portability}
-Warum sollte eine Anwendung keine Systemaufrufnummern einer anderen Architektur fest codieren?
+:::single-choice{#system-calls-number-portability} Warum sollte eine Anwendung keine Systemaufrufnummern einer anderen Architektur fest codieren?
 
 ::option[Nummern und Aufrufkonventionen sind ABI-spezifisch.]{#system-calls-abi-specific .correct explanation="Eine auf einer Architektur sinnvolle Nummer kann auf einer anderen einen anderen Vorgang bezeichnen oder fehlen."}
 ::option[Systemaufrufe werden nach dem aktuellen Arbeitsverzeichnis benannt.]{#system-calls-directory-names explanation="Pfade definieren nicht die Nummerierungs-ABI von Systemaufrufen."}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace` kann Pfade, Argumente, aus der Umgebung stammende Daten, Netzwerkadressen, Fragmente von Dateiinhalten und fälschlich über Argumente übergebene Zugangsdaten offenlegen. Speichere Traces mit restriktiven Berechtigungen und entferne sie gemäß der Richtlinie für Vorfallsdaten.
 
-:::single-choice{#system-calls-strace-purpose}
-Was beobachtet `strace` in erster Linie?
+:::single-choice{#system-calls-strace-purpose} Was beobachtet `strace` in erster Linie?
 
 ::option[Ausschließlich im Quellcode ausgeführte Zeilen der Anwendung.]{#system-calls-strace-source-lines explanation="Die Verfolgung auf Quellcodeebene benötigt Debugger oder Instrumentierung mit Symbolen."}
 ::option[Systemaufrufe und Signale an der Grenze zwischen Benutzer und Kernel.]{#system-calls-strace-boundary .correct explanation="Es meldet Anfragen, Argumente, Ergebnisse und Signalereignisse verfolgter Prozesse."}
@@ -91,8 +87,7 @@ Tracing verändert Zeitabläufe und kann erheblichen Mehraufwand verursachen. Ei
 
 Berechtigungen und ptrace-Sicherheitsrichtlinien schränken ein, welche Prozesse verfolgt werden können. Hänge dich nicht ohne Autorisierung an den Prozess eines anderen Benutzers oder einen Produktivprozess; Unterbrechungen und Zeitveränderungen können das Dienstverhalten beeinflussen.
 
-:::single-choice{#system-calls-strace-failure}
-Bedeutet ein einzelner fehlgeschlagener Systemaufruf in einem Trace zwangsläufig, dass die Anwendung defekt ist?
+:::single-choice{#system-calls-strace-failure} Bedeutet ein einzelner fehlgeschlagener Systemaufruf in einem Trace zwangsläufig, dass die Anwendung defekt ist?
 
 ::option[Ja; jeder von null verschiedene Rückgabewert beendet Linux sofort.]{#system-calls-nonzero-terminates explanation="Anwendungen behandeln routinemäßig Systemaufruffehler, ohne dass das System ausfällt."}
 ::option[Nein; Programme prüfen häufig Alternativen und behandeln erwartete Fehler.]{#system-calls-expected-failure .correct explanation="Interpretiere den Rückgabewert im Kontrollfluss- und Anwendungskontext statt isoliert."}

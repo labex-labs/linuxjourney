@@ -24,8 +24,7 @@ $ python3 -m http.server 8000 --directory /srv/temporary-share
 
 index ファイルがない場合、通常このモジュールはディレクトリ一覧を生成します。リスナーへ到達できる人は、公開内容を列挙し、ダウンロードできる可能性があります。
 
-:::single-choice{#http-server-directory-option}
-`--directory /srv/temporary-share` を使うのはなぜですか？
+:::single-choice{#http-server-directory-option} `--directory /srv/temporary-share` を使うのはなぜですか？
 
 ::option[すべての HTTP 応答を自動的に暗号化するため。]{#http-server-directory-tls explanation="directory オプションは TLS を追加しません。"}
 ::option[ダウンロードする人ごとにアカウントを作るため。]{#http-server-directory-accounts explanation="基本モジュールにはユーザー認証がありません。"}
@@ -42,8 +41,7 @@ $ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
 
 信頼できるネットワーク上で共有するなら、適切なインターフェースアドレスへ意図してバインドし、ファイアウォールポリシーを確認します。制限する bind 指定なしで実行すると、通常は利用可能な全インターフェースで待ち受け、意図したネットワークの外へディレクトリが露出する可能性があります。
 
-:::single-choice{#http-server-loopback-bind}
-`127.0.0.1` にバインドしたサーバーへ、通常誰が到達できますか？
+:::single-choice{#http-server-loopback-bind} `127.0.0.1` にバインドしたサーバーへ、通常誰が到達できますか？
 
 ::option[同じホスト上のクライアント。]{#http-server-local-clients .correct explanation="ループバックへの bind は、ローカルテストや、意図して設定したトンネルの背後で使うのに適しています。"}
 ::option[公開インターネット上の任意のホスト。]{#http-server-public explanation="ループバックは同じネットワーク名前空間内だけのもので、公開インターフェースではありません。"}
@@ -60,8 +58,7 @@ $ curl -f http://127.0.0.1:8000/example.txt
 
 許可されたリモートテストでは、ループバックではなく選択したインターフェースアドレスを使います。目的のファイルにアクセスできることと、ドキュメントルート外のファイルにはアクセスできないことの両方を確認してください。ブラウザーで成功しただけでは、公開範囲や機密性が適切だとは判断できません。
 
-:::single-choice{#http-server-default-port-command}
-`python3 -m http.server 8000` で明示的に選択されるポートはどれですか？
+:::single-choice{#http-server-default-port-command} `python3 -m http.server 8000` で明示的に選択されるポートはどれですか？
 
 ::option[22]{#http-server-port-22 explanation="ポート 22 は一般に SSH に関連し、このコマンドでは選択されていません。"}
 ::option[8000]{#http-server-port-8000 .correct explanation="位置引数のポート番号が、モジュールの待ち受け先を指定します。"}
@@ -78,8 +75,7 @@ $ ss -ltn 'sport = :8000'
 
 データ取扱方針に従って一時コピーを削除し、一時的なファイアウォールルールも元に戻します。永続的、認証付き、またはインターネット向けの配信には、アクセス制御と TLS を設定した、保守されているサーバーを使ってください。
 
-:::single-choice{#http-server-completion-check}
-一時転送が終わった後に行うべきことはどれですか？
+:::single-choice{#http-server-completion-check} 一時転送が終わった後に行うべきことはどれですか？
 
 ::option[サーバーを停止し、ポートが待ち受けていないことを確認する。]{#http-server-stop-verify .correct explanation="確認することで、一時的なネットワークサービスが実際に終了したと分かります。"}
 ::option[後で誰かが必要とする場合に備え、リスナーを動かし続ける。]{#http-server-leave-running explanation="許可された目的が終わったら、不要な公開を取り除くべきです。"}

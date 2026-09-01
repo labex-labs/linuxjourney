@@ -24,8 +24,7 @@ C-x b
 
 По умолчанию `C-x Right` запускает `next-buffer`, а `C-x Left` — `previous-buffer`, циклически перебирая буферы в выбранном окне.
 
-:::single-choice{#emacs-switch-buffer-key}
-Какая последовательность запрашивает имя буфера для показа в текущем окне?
+:::single-choice{#emacs-switch-buffer-key} Какая последовательность запрашивает имя буфера для показа в текущем окне?
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="Она запрашивает путь и открывает файл, что отличается от выбора существующего буфера по имени."}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` читает имя буфера и показывает его в выбранном окне."}
@@ -48,8 +47,7 @@ C-x 3
 
 Новое окно сначала показывает какой-либо буфер, часто тот же самый. В каждом окне можно независимо переключить буфер.
 
-:::single-choice{#emacs-split-side-by-side}
-Какая последовательность разделяет выбранное окно Emacs на левое и правое?
+:::single-choice{#emacs-split-side-by-side} Какая последовательность разделяет выбранное окно Emacs на левое и правое?
 
 ::option[`C-x 1`]{#emacs-window-one explanation="Она удаляет остальные окна и оставляет выбранное единственным во фрейме."}
 ::option[`C-x 2`]{#emacs-window-below explanation="Она создаёт верхнее и нижнее окна, а не расположенные рядом."}
@@ -71,16 +69,14 @@ C-x o
 
 Удаление окна обычно оставляет показанный в нём буфер существовать. Позже его можно снова вывести в другом окне.
 
-:::single-choice{#emacs-select-other-window}
-Какая последовательность переносит point и клавиатурный фокус в другое окно Emacs?
+:::single-choice{#emacs-select-other-window} Какая последовательность переносит point и клавиатурный фокус в другое окно Emacs?
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="Она удаляет выбранное окно, а не переводит фокус в другое."}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` циклически выбирает другое окно во фрейме."}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="Она меняет буфер, который показывает текущее окно, а не выбранное окно."}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-Какая последовательность сохраняет выбранное окно и удаляет остальные окна его фрейма?
+:::single-choice{#emacs-keep-one-window} Какая последовательность сохраняет выбранное окно и удаляет остальные окна его фрейма?
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` делает выбранное окно единственным во фрейме."}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="Она удаляет само выбранное окно вместо его сохранения."}
@@ -99,8 +95,7 @@ C-x k
 
 Уничтожение буфера отличается от удаления окна. Во всех показывающих уничтоженный буфер окнах Emacs заменяет его другим, тогда как удаление окна может не затронуть буфер.
 
-:::single-choice{#emacs-kill-buffer-key}
-Какая последовательность предлагает уничтожить буфер Emacs?
+:::single-choice{#emacs-kill-buffer-key} Какая последовательность предлагает уничтожить буфер Emacs?
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="Она удаляет отображающее окно, но обычно оставляет буфер существовать."}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` удаляет выбранный буфер из Emacs после необходимого подтверждения для изменённого буфера."}

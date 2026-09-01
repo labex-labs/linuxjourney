@@ -29,8 +29,7 @@ networking start/running
 
 Upstart indique à la fois un **objectif**, comme `start` ou `stop`, et un **état actuel**, comme `running` ou `waiting`. `stop/waiting` signifie que le job ne s'exécute pas et attend une condition de démarrage ou une demande manuelle ; cela ne signale pas nécessairement une erreur.
 
-:::single-choice{#upstart-jobs-stop-waiting}
-Que signifie normalement `stop/waiting` dans la sortie d'état d'Upstart ?
+:::single-choice{#upstart-jobs-stop-waiting} Que signifie normalement `stop/waiting` dans la sortie d'état d'Upstart ?
 
 ::option[Le job s'exécute, mais ne consomme aucun temps processeur.]{#upstart-jobs-running-idle explanation="Un job actif afficherait normalement un objectif start et l'état running."}
 ::option[L'objectif du job est l'arrêt et aucune instance de processus ne s'exécute.]{#upstart-jobs-stopped-waiting .correct explanation="La définition reste connue tandis qu'Upstart attend une future condition ou commande."}
@@ -48,8 +47,7 @@ $ sudo initctl stop NOM_DU_JOB
 
 Les jobs peuvent définir plusieurs instances désignées par des variables d'environnement. Dans ce cas, fournissez les variables exactes qu'exige la configuration et incluez-les de façon cohérente lors de l'interrogation ou de l'arrêt d'une instance. Démarrer ou arrêter des jobs de réseau, stockage, authentification ou accès distant peut interrompre la session ; conservez donc une possibilité de récupération par la console.
 
-:::single-choice{#upstart-jobs-start-command}
-Quelle commande demande manuellement le démarrage du job `peanuts` ?
+:::single-choice{#upstart-jobs-start-command} Quelle commande demande manuellement le démarrage du job `peanuts` ?
 
 ::option[`sudo initctl start peanuts`]{#upstart-jobs-start-peanuts .correct explanation="La sous-commande start est suivie du nom du job configuré et des éventuelles variables d'instance requises."}
 ::option[`sudo initctl peanuts start`]{#upstart-jobs-name-first explanation="La syntaxe d'initctl place la sous-commande avant le nom du job."}
@@ -68,8 +66,7 @@ Dans Upstart, `restart` n'équivaut pas toujours à un nouvel enchaînement `sto
 
 Un redémarrage provoque une interruption et peut échouer à rétablir le service. Vérifiez ensuite son véritable point d'accès et ses journaux.
 
-:::single-choice{#upstart-jobs-restart-peanuts}
-Quelle commande demande le redémarrage du job Upstart actif `peanuts` ?
+:::single-choice{#upstart-jobs-restart-peanuts} Quelle commande demande le redémarrage du job Upstart actif `peanuts` ?
 
 ::option[`sudo initctl restart peanuts`]{#upstart-jobs-restart-command .correct explanation="La sous-commande restart agit sur le job nommé par l'intermédiaire de l'interface de contrôle Upstart."}
 ::option[`sudo initctl emit peanuts`]{#upstart-jobs-emit-not-restart explanation="L'émission d'un événement touche tous les jobs dont les conditions correspondent et ne constitue pas une demande directe de redémarrage."}
@@ -82,8 +79,7 @@ Avant d'installer un fichier modifié, employez l'outil de validation fourni par
 
 La validation syntaxique ne prouve ni l'existence des chemins, ni les autorisations d'exécution, ni l'arrivée des événements, ni l'état prêt du processus. Testez dans un environnement permettant la récupération.
 
-:::single-choice{#upstart-jobs-syntax-validation-limit}
-Que la validation syntaxique d'un job ne permet-elle pas de prouver ?
+:::single-choice{#upstart-jobs-syntax-validation-limit} Que la validation syntaxique d'un job ne permet-elle pas de prouver ?
 
 ::option[Que le service démarrera correctement et deviendra disponible.]{#upstart-jobs-runtime-not-proven .correct explanation="Les chemins, permissions, dépendances et flux d'événements à l'exécution exigent un véritable test contrôlé."}
 ::option[Que le texte de configuration peut être analysé.]{#upstart-jobs-parse-purpose explanation="L'analyse constitue précisément le principal objectif de la validation syntaxique."}
@@ -100,8 +96,7 @@ $ sudo initctl emit NOM_DE_L_ÉVÉNEMENT
 
 Chaque job dont l'expression de démarrage ou d'arrêt correspond peut réagir. Un événement ne s'adresse pas à un seul job, et ses effets peuvent se propager par d'autres événements. Examinez toutes les configurations correspondantes avant d'émettre un événement personnalisé ou système ; ne rejouez pas négligemment les événements centraux du démarrage sur une machine de production.
 
-:::single-choice{#upstart-jobs-emit-scope}
-Que peut-il se produire lorsque `initctl emit NOM_DE_L_ÉVÉNEMENT` s'exécute ?
+:::single-choice{#upstart-jobs-emit-scope} Que peut-il se produire lorsque `initctl emit NOM_DE_L_ÉVÉNEMENT` s'exécute ?
 
 ::option[Toutes les expressions de jobs correspondant à l'événement peuvent effectuer une transition.]{#upstart-jobs-event-matches .correct explanation="Les événements sont diffusés dans le modèle de dépendances d'Upstart au lieu d'être envoyés à un seul service nommé."}
 ::option[Seul un job dont le nom est strictement identique à l'événement peut répondre.]{#upstart-jobs-event-name-only explanation="La correspondance dépend des expressions `start on` et `stop on`, pas de l'égalité avec le nom du job."}

@@ -29,8 +29,7 @@ $ resolvectl query www.example.com
 
 An application can still use a private resolver library or proxy, so reproduce through the application when outputs differ.
 
-:::single-choice{#dns-tools-system-resolver}
-Which command exercises the configured system name-service path?
+:::single-choice{#dns-tools-system-resolver} Which command exercises the configured system name-service path?
 
 ::option[`dig @SERVER NAME` only.]{#dns-tools-dig-direct explanation="Dig sends a DNS query and does not normally read hosts-file mappings."}
 ::option[`ip link set down`]{#dns-tools-link-down explanation="This disrupts the interface instead of testing resolution."}
@@ -49,8 +48,7 @@ $ dig example.com MX
 
 The output identifies the responding server, status, flags, question, answer, authority, additional data, query time, and transport metadata. `+short` is convenient for scripts but hides evidence needed for diagnosis.
 
-:::single-choice{#dns-tools-record-type}
-Which query requests IPv6 address records?
+:::single-choice{#dns-tools-record-type} Which query requests IPv6 address records?
 
 ::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="AAAA records contain IPv6 addresses."}
 ::option[`dig NAME MX`]{#dns-tools-mx explanation="MX requests mail-exchanger records."}
@@ -67,8 +65,7 @@ $ dig @192.0.2.53 www.example.com A
 
 Compare the configured recursive resolver, a second approved resolver, and each authoritative server when isolating cache versus authority. A `NOERROR` status can contain no requested answer; `NXDOMAIN` means the queried name does not exist, while `SERVFAIL` means the server could not complete the query.
 
-:::single-choice{#dns-tools-noerror-empty}
-Can `NOERROR` have an empty answer section?
+:::single-choice{#dns-tools-noerror-empty} Can `NOERROR` have an empty answer section?
 
 ::option[Yes, when the name exists but lacks the requested record data.]{#dns-tools-noerror-nodata .correct explanation="Status and answer count must be interpreted together."}
 ::option[No, it guarantees at least one address record.]{#dns-tools-noerror-always-answer explanation="The name can exist without data of the requested type."}
@@ -81,8 +78,7 @@ Can `NOERROR` have an empty answer section?
 
 `dig +trace NAME` performs its own iterative walk starting at the root hints. It can differ from a production resolver because it bypasses that resolver's cache, forwarding, policy, DNSSEC validation, and network location.
 
-:::single-choice{#dns-tools-aa-flag}
-What does the `aa` response flag mean?
+:::single-choice{#dns-tools-aa-flag} What does the `aa` response flag mean?
 
 ::option[The query used two identical IPv4 addresses.]{#dns-tools-two-addresses explanation="The flag is unrelated to answer count or address family."}
 ::option[The response was encrypted with application credentials.]{#dns-tools-aa-encrypted explanation="DNS flags do not establish encrypted transport."}
@@ -105,8 +101,7 @@ $ dig +tcp @192.0.2.53 example.com SOA
 
 Modern DNS can use UDP or TCP port 53; both should be permitted where required. A UDP answer with the truncation flag prompts compliant clients to retry through an appropriate transport.
 
-:::single-choice{#dns-tools-tcp-test}
-What does `dig +tcp` change?
+:::single-choice{#dns-tools-tcp-test} What does `dig +tcp` change?
 
 ::option[It sends the DNS query using TCP instead of the default UDP attempt.]{#dns-tools-use-tcp .correct explanation="This helps isolate transport filtering and responses that require a larger reliable stream."}
 ::option[It requests only TCP service-name records.]{#dns-tools-tcp-records explanation="The requested DNS type remains separately specified."}

@@ -16,8 +16,7 @@ Linux Mint は、快適で親しみやすく使いやすい、デスクトップ
 
 技術的な複雑さではなく実用的な判断で評価され、妥当な既定値を備えた完全なデスクトップ体験を目指します。そのため、Windows から移行する人によく勧められます。
 
-:::single-choice{#match-linux-mint-goal}
-Linux Mint に最もよく合う目的はどれですか？
+:::single-choice{#match-linux-mint-goal} Linux Mint に最もよく合う目的はどれですか？
 
 ::option[実用的な既定値を持つ、使い慣れたデスクトップを使う]{#familiar-desktop .correct explanation="親しみやすい操作と便利な既定値を備えたデスクトップ体験を重視し、この目的に直接合います。"}
 ::option[デスクトップのない最小限のサーバーを動かす]{#minimal-server explanation="主にデスクトップとノート PC 向けで、ヘッドレスな最小システムにはサーバー中心のディストリビューションが適します。"}
@@ -34,8 +33,7 @@ Linux Mint に最もよく合う目的はどれですか？
 
 系統の関係は [Ubuntu](https://labex.io/lesson/ubuntu) と [Debian](https://labex.io/lesson/debian) を参照してください。
 
-:::single-choice{#identify-main-mint-base}
-主要な Linux Mint エディションのパッケージ基盤はどれですか？
+:::single-choice{#identify-main-mint-base} 主要な Linux Mint エディションのパッケージ基盤はどれですか？
 
 ::option[Ubuntu LTS]{#ubuntu-lts-base .correct explanation="主要エディションは Ubuntu LTS を基盤にします。LMDE は Debian を直接基盤とする別エディションです。"}
 ::option[Fedora Linux]{#mint-fedora-base explanation="Fedora は RPM 系で、Mint の基盤ではありません。主要 Mint エディションは Ubuntu LTS を使います。"}
@@ -46,8 +44,7 @@ Linux Mint に最もよく合う目的はどれですか？
 
 Ubuntu ベースなので `.deb` 形式と APT を使います。コマンドラインに加え、ソフトウェアマネージャーなどのグラフィカルツールでも導入できます。使い慣れた、資料の多い作業方法は初心者にも適しています。
 
-:::single-choice{#identify-mint-package-tool}
-Linux Mint でコマンドラインからパッケージを管理するツールはどれですか？
+:::single-choice{#identify-mint-package-tool} Linux Mint でコマンドラインからパッケージを管理するツールはどれですか？
 
 ::option[DNF]{#mint-dnf-tool explanation="DNF は Fedora と RHEL 系で使われます。Mint は Debian 系のツールを使います。"}
 ::option[APT]{#mint-apt-tool .correct explanation="Linux Mint は APT でコマンドラインのパッケージ管理を行い、Debian 系の .deb 形式を使います。"}
@@ -60,8 +57,7 @@ Linux Mint は主にデスクトップとノート PC 向けです。Cinnamon �
 
 あらゆる用途を同等に扱うのではなく、実用的なデスクトップ Linux として理解するのが適切です。
 
-:::single-choice{#recognize-cinnamon-layout}
-ここで紹介した Cinnamon デスクトップの特徴はどれですか？
+:::single-choice{#recognize-cinnamon-layout} ここで紹介した Cinnamon デスクトップの特徴はどれですか？
 
 ::option[グラフィカルデスクトップのないコマンド専用インターフェース]{#command-only-layout explanation="端末も使えますが、Cinnamon はグラフィカルなデスクトップ環境です。"}
 ::option[パネルとアプリケーションメニューを備えた古典的な配置]{#classic-cinnamon-layout .correct explanation="使い慣れたパネルとメニューの配置が、Mint の親しみやすい体験に貢献します。"}

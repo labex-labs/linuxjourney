@@ -37,8 +37,7 @@ $ umask 027
 
 Cada posição octal corresponde ao proprietário, ao grupo e aos outros. Um bit da máscara remove a permissão solicitada correspondente: `2` mascara a escrita, `4` mascara a leitura e `1` mascara a execução.
 
-:::single-choice{#umask-command-purpose}
-O que `umask 027` altera no shell atual?
+:::single-choice{#umask-command-purpose} O que `umask 027` altera no shell atual?
 
 ::option[As permissões de todos os arquivos que já existem.]{#umask-existing-files explanation="Um umask afeta as solicitações de criação; ele não executa `chmod` retroativamente nos objetos existentes."}
 ::option[A máscara herdada pelos comandos iniciados posteriormente a partir desse shell.]{#umask-current-shell-mask .correct explanation="O shell define o umask de seu processo, e os processos filhos normalmente herdam esse valor."}
@@ -58,16 +57,14 @@ directory:    0777 masked by 0022 -> 0755 (rwxr-xr-x)
 
 O umask apenas remove bits solicitados. Ele não pode adicionar a permissão de execução quando uma aplicação não a solicitou. Uma aplicação também pode solicitar um modo inicial mais restritivo, produzindo um resultado mais restritivo.
 
-:::single-choice{#umask-file-mode-022}
-Se um programa solicitar o modo `0666` para um arquivo comum e o umask for `0022`, qual será o modo resultante?
+:::single-choice{#umask-file-mode-022} Se um programa solicitar o modo `0666` para um arquivo comum e o umask for `0022`, qual será o modo resultante?
 
 ::option[`0666`]{#umask-file-0666 explanation="Os bits de escrita solicitados por `0666` para o grupo e os outros são removidos pela máscara `0022`."}
 ::option[`0755`]{#umask-file-0755 explanation="Os bits de execução não foram solicitados para o arquivo comum, portanto o umask não pode adicioná-los."}
 ::option[`0644`]{#umask-file-0644 .correct explanation="Remover a escrita do grupo e dos outros de `0666` mantém leitura/escrita para o proprietário e somente leitura para o grupo e os outros."}
 :::
 
-:::single-choice{#umask-directory-mode-027}
-Se um programa solicitar `0777` para um diretório e o umask for `0027`, qual será o modo resultante?
+:::single-choice{#umask-directory-mode-027} Se um programa solicitar `0777` para um diretório e o umask for `0027`, qual será o modo resultante?
 
 ::option[`0777`]{#umask-directory-0777 explanation="A escrita solicitada para o grupo e as permissões dos outros são filtradas pela máscara diferente de zero."}
 ::option[`0640`]{#umask-directory-0640 explanation="Esse resultado também removeria bits de execução que a máscara `0027` não remove do proprietário nem do grupo."}
@@ -80,8 +77,7 @@ Alterar o umask em um shell não modifica seu processo pai nem sessões não rel
 
 Para tornar persistente um valor de sua preferência, configure-o no login, shell, PAM, gerenciador de serviços ou aplicação apropriado para seu ambiente. O local correto varia, e os serviços podem definir seu próprio umask. Não presuma que editar um único arquivo de shell interativo controlará todos os processos do sistema.
 
-:::single-choice{#umask-existing-file-effect}
-O que acontece com um arquivo existente quando você define um novo umask?
+:::single-choice{#umask-existing-file-effect} O que acontece com um arquivo existente quando você define um novo umask?
 
 ::option[Seu modo atual permanece inalterado.]{#umask-existing-unchanged .correct explanation="Um novo umask filtra solicitações de criação posteriores e não modifica os modos já armazenados nos objetos do sistema de arquivos."}
 ::option[Seu modo é recalculado a partir de `0666`.]{#umask-existing-recalculated explanation="Os objetos existentes não são recriados nem passam automaticamente pela nova máscara."}

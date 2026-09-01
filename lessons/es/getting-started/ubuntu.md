@@ -16,8 +16,7 @@ Ubuntu es una de las distribuciones de Linux más utilizadas. Desarrollada por C
 
 Ubuntu se ha convertido en un punto de partida común para quienes desean aprender Linux sin comenzar con una configuración más manual o avanzada. Se utiliza en computadoras personales, sistemas de desarrollo, plataformas en la nube y servidores, lo que le otorga un alcance que pocas otras distribuciones pueden igualar.
 
-:::single-choice{#identify-ubuntu-base}
-¿Qué distribución sirve de base a Ubuntu?
+:::single-choice{#identify-ubuntu-base} ¿Qué distribución sirve de base a Ubuntu?
 
 ::option[La distribución Debian]{#debian-base .correct explanation="Ubuntu se basa en Debian y hereda gran parte de su enfoque de empaquetado. Después añade sus propias versiones, valores predeterminados y modelo de soporte."}
 ::option[La distribución Fedora]{#ubuntu-fedora-base explanation="Fedora pertenece al ecosistema de Red Hat y no constituye la base de Ubuntu. Ubuntu forma parte de la familia Debian."}
@@ -30,8 +29,7 @@ Ubuntu es popular porque intenta hacer que Linux sea práctico para el uso diari
 
 Otra razón por la que Ubuntu es tan visible es que funciona en muchos entornos. Lo verás en computadoras portátiles y de escritorio, en máquinas virtuales, en servidores y en plataformas en la nube. Esa amplia adopción refuerza su reputación como una distribución de Linux de propósito general.
 
-:::single-choice{#recognize-beginner-support}
-¿Qué cualidad de Ubuntu ayuda de forma más directa a un principiante a resolver problemas?
+:::single-choice{#recognize-beginner-support} ¿Qué cualidad de Ubuntu ayuda de forma más directa a un principiante a resolver problemas?
 
 ::option[La compilación manual obligatoria de cada programa instalado]{#manual-compilation explanation="Ubuntu suele proporcionar software empaquetado en vez de exigir que se compile cada programa. Ese trabajo adicional no facilitaría la resolución de problemas."}
 ::option[La documentación extensa y una gran comunidad de usuarios]{#documentation-community .correct explanation="La documentación y las conversaciones de la comunidad ofrecen numerosos lugares donde encontrar explicaciones y ayuda. Esto reduce las barreras del aprendizaje."}
@@ -50,8 +48,7 @@ Ubuntu utiliza dos tipos principales de lanzamientos. Publica una nueva versión
 
 Este modelo de lanzamiento ayuda a explicar el atractivo de Ubuntu. Los usuarios que desean una base confiable a menudo eligen LTS, mientras que los usuarios que desean funciones más nuevas pueden usar los lanzamientos intermedios que llegan en un calendario más rápido.
 
-:::single-choice{#choose-ubuntu-lts}
-¿Qué tipo de versión de Ubuntu se adapta mejor a un sistema que necesita una base duradera y previsible?
+:::single-choice{#choose-ubuntu-lts} ¿Qué tipo de versión de Ubuntu se adapta mejor a un sistema que necesita una base duradera y previsible?
 
 ::option[Una versión intermedia]{#interim-release explanation="Las versiones intermedias llegan con mayor frecuencia y ofrecen antes las funciones nuevas. Su periodo de soporte más breve no coincide con la prioridad indicada."}
 ::option[Una versión LTS]{#lts-release .correct explanation="Las versiones LTS están pensadas para recibir soporte durante más tiempo y suelen elegirse en sistemas que priorizan una base fiable."}
@@ -64,8 +61,7 @@ Como sistema basado en Debian, Ubuntu utiliza el formato de paquete `.deb` y el 
 
 La gestión de paquetes es una de las fortalezas prácticas de Ubuntu porque combina herramientas maduras de Debian con un entorno de software amplio y ampliamente documentado.
 
-:::single-choice{#identify-ubuntu-package-tool}
-¿Qué elemento es la herramienta de gestión de paquetes utilizada para instalar software en Ubuntu?
+:::single-choice{#identify-ubuntu-package-tool} ¿Qué elemento es la herramienta de gestión de paquetes utilizada para instalar software en Ubuntu?
 
 ::option[`.deb`]{#deb-format explanation="`.deb` identifica el formato de paquete de los sistemas basados en Debian. No es la herramienta de línea de comandos que gestiona los paquetes."}
 ::option[`LTS`]{#lts-label explanation="LTS identifica una versión con soporte a largo plazo. No instala ni gestiona paquetes de software."}

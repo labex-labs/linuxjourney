@@ -23,8 +23,7 @@ meta_keywords: "linux を学ぶ方法，linux を学ぶ最良の方法，linux �
 
 systemd ホストでは、`systemd-journald` がサービスの標準出力、カーネルメッセージ、journal-native または syslog メッセージを収集するのが一般的です。rsyslog などの syslog daemon もメッセージを受け取り、従来のテキストファイルへ書いたり転送したりできます。アプリケーションが独自ファイルや外部 telemetry を管理する場合もあります。
 
-:::single-choice{#system-logging-distinct-roles}
-受信したメッセージをどこへ保存または転送するか決めるものはどれですか？
+:::single-choice{#system-logging-distinct-roles} 受信したメッセージをどこへ保存または転送するか決めるものはどれですか？
 
 ::option[端末の現在の作業ディレクトリ。]{#system-logging-cwd explanation="シェルのディレクトリは、システム全体のロギング経路を定義しません。"}
 ::option[動作中カーネルイメージのファイル名。]{#system-logging-kernel-file explanation="カーネルはメッセージを発信できますが、イメージのファイル名は routing policy ではありません。"}
@@ -43,8 +42,7 @@ $ journalctl --disk-usage
 
 互換性のある routing を使う Debian 系では `/var/log/syslog` が一般的で、ほかの環境では `/var/log/messages` がよく使われます。journal-only ホストではどちらもない場合があります。アプリケーション文書と unit 設定から、追加の宛先を特定できます。
 
-:::single-choice{#system-logging-file-absence}
-`/var/log/syslog` がない場合、必ず何を意味しますか？
+:::single-choice{#system-logging-file-absence} `/var/log/syslog` がない場合、必ず何を意味しますか？
 
 ::option[ホストが別の設定済みロギング先を使っている可能性がある。]{#system-logging-other-destination .correct explanation="journal-only system や別の syslog policy では、このファイルを作る必要がありません。"}
 ::option[カーネルが一度もメッセージを出していない。]{#system-logging-no-kernel explanation="カーネルのレコードは journal や別の宛先に存在する場合があります。"}
@@ -62,8 +60,7 @@ $ journalctl -u ssh.service --since '1 hour ago'
 
 `-b` は現在の boot、`-p` は priority、`-u` は unit で絞り込みます。unit 名と保存済み boot はホストごとに異なります。`journalctl --list-boots` で利用可能な boot を確認し、問題を再現しながら `journalctl -f` で新しいレコードを追います。
 
-:::single-choice{#system-logging-current-boot}
-`journalctl` の問い合わせを現在の boot に限定するオプションはどれですか？
+:::single-choice{#system-logging-current-boot} `journalctl` の問い合わせを現在の boot に限定するオプションはどれですか？
 
 ::option[`-b`]{#system-logging-boot-option .correct explanation="引数なしの boot selector は現在の boot を選びます。"}
 ::option[`-u`]{#system-logging-unit-option explanation="これは systemd unit で絞り込みます。"}
@@ -82,8 +79,7 @@ timestamp、host、program と PID、その後に message が続きます。mess
 
 ログにはユーザー名、アドレス、パス、token などの機密データが含まれる可能性があります。最小権限でアクセスし、export は redact し、調査中は原本と timestamp を保持してください。
 
-:::single-choice{#system-logging-export-safety}
-ログの抜粋を外部共有する前に何をすべきですか？
+:::single-choice{#system-logging-export-safety} ログの抜粋を外部共有する前に何をすべきですか？
 
 ::option[すべての timestamp を無作為な値へ置き換える。]{#system-logging-random-time explanation="時間情報を壊すと相関分析ができなくなり、適切な redaction にはなりません。"}
 ::option[秘密情報と機密性の高い識別情報がないか確認する。]{#system-logging-review-sensitive .correct explanation="ログには運用情報や個人データが含まれることが多く、管理された redaction が必要です。"}

@@ -29,8 +29,7 @@ $ getent group developers
 
 그룹 목록은 내부 계정과 역할 이름을 노출할 수 있으므로 공유하기 전에 출력을 검토하세요.
 
-:::single-choice{#group-query-resolved-database}
-NSS로 해석된 그룹 데이터베이스를 질의하는 명령은 무엇인가요?
+:::single-choice{#group-query-resolved-database} NSS로 해석된 그룹 데이터베이스를 질의하는 명령은 무엇인가요?
 
 ::option[`getent group`]{#group-getent-all .correct explanation="`getent`는 그룹 레코드에 대해 구성된 NSS 출처를 확인합니다."}
 ::option[`cat /etc/group`]{#group-cat-local explanation="로컬 그룹 파일만 읽으며 다른 출처가 제공하는 그룹을 누락할 수 있습니다."}
@@ -52,16 +51,14 @@ developers:x:1500:alice,bob
 
 그룹 비밀번호는 일부 구성에서 `newgrp` 같은 도구가 사용하는 레거시 기능입니다. sudo 권한을 부여하는 일반적인 방법이 아니며 필드를 수동으로 편집하여 도입해서는 안 됩니다.
 
-:::single-choice{#group-gid-field}
-`developers:x:1500:alice,bob`에서 GID가 들어 있는 필드는 무엇인가요?
+:::single-choice{#group-gid-field} `developers:x:1500:alice,bob`에서 GID가 들어 있는 필드는 무엇인가요?
 
 ::option[두 번째 필드 `x`]{#group-second-password explanation="필드 2는 숫자 신원이 아니라 그룹 비밀번호 자리 표시자입니다."}
 ::option[네 번째 필드 `alice,bob`]{#group-fourth-members explanation="필드 4는 GID가 아니라 명시적인 구성원 이름을 나열합니다."}
 ::option[세 번째 필드 `1500`]{#group-third-gid .correct explanation="콜론으로 구분된 세 번째 필드가 숫자 그룹 ID입니다."}
 :::
 
-:::single-choice{#group-explicit-member-field}
-로컬 그룹 레코드에서 명시적인 구성원 이름은 어떻게 표현되나요?
+:::single-choice{#group-explicit-member-field} 로컬 그룹 레코드에서 명시적인 구성원 이름은 어떻게 표현되나요?
 
 ::option[필드 4의 쉼표로 구분된 목록입니다.]{#group-members-field-four .correct explanation="마지막 필드에는 명시적인 보조 구성원 이름이 쉼표로 구분되어 있습니다."}
 ::option[필드 2의 공백으로 구분된 목록입니다.]{#group-members-field-two explanation="필드 2는 구성원 목록이 아니라 비밀번호 관련 데이터나 자리 표시자에 예약되어 있습니다."}
@@ -80,8 +77,7 @@ developers:x:1500:
 
 따라서 필드 4만 분석하면 불완전한 멤버십 결과가 나옵니다.
 
-:::single-choice{#group-primary-membership-visibility}
-Alice의 passwd 레코드는 GID 1500을 기본 GID로 사용하지만 그룹 1500의 필드 4에는 이름이 없습니다. Alice는 그 그룹의 구성원인가요?
+:::single-choice{#group-primary-membership-visibility} Alice의 passwd 레코드는 GID 1500을 기본 GID로 사용하지만 그룹 1500의 필드 4에는 이름이 없습니다. Alice는 그 그룹의 구성원인가요?
 
 ::option[아니요. 모든 멤버십은 `/etc/group` 필드 4에 나타나야 합니다.]{#group-field-four-only explanation="기본 GID 멤버십을 무시하여 그룹 구성원 수를 적게 계산합니다."}
 ::option[예. 기본 멤버십은 passwd 레코드의 GID 필드에서 옵니다.]{#group-primary-from-passwd .correct explanation="그룹 파일의 명시적 목록은 주로 보조 멤버십에 쓰이고 기본 멤버십은 계정에 기록됩니다."}
@@ -99,8 +95,7 @@ $ groups alice
 
 현재 프로세스에 대해서는 일반 `id`가 실제 자격 증명에 있는 그룹을 보고합니다. 새로 구성된 보조 멤버십은 보통 이미 실행 중인 로그인 세션에 나타나지 않습니다. 새 인증 세션을 시작하거나 적절한 경우 의도적으로 구성한 `newgrp` 같은 메커니즘을 사용하세요.
 
-:::single-choice{#group-current-process-credentials}
-현재 프로세스의 UID, 기본 GID, 보조 그룹을 보고하는 명령은 무엇인가요?
+:::single-choice{#group-current-process-credentials} 현재 프로세스의 UID, 기본 GID, 보조 그룹을 보고하는 명령은 무엇인가요?
 
 ::option[`id`]{#group-current-id .correct explanation="사용자 피연산자가 없으면 `id`는 현재 프로세스의 신원 자격 증명을 보고합니다."}
 ::option[`cat /etc/group`]{#group-current-cat explanation="로컬 파일은 레코드를 나열하지만 현재 프로세스에서 활성화된 해석 그룹은 보여 주지 않습니다."}

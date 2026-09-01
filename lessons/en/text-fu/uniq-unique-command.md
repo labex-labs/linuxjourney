@@ -38,8 +38,7 @@ magazine
 
 The input file remains unchanged because the result goes to stdout.
 
-:::single-choice{#uniq-collapse-adjacent}
-What does `uniq reading.txt` do by default?
+:::single-choice{#uniq-collapse-adjacent} What does `uniq reading.txt` do by default?
 
 ::option[Sorts the complete file and then removes every repeated value.]{#uniq-auto-sort explanation="`uniq` preserves input order and does not sort. Separated copies remain separate groups."}
 ::option[Prints one line from each adjacent group of equal lines.]{#uniq-one-per-group .correct explanation="Default `uniq` collapses consecutive equal lines into one output line."}
@@ -60,8 +59,7 @@ $ uniq -c reading.txt
 
 These are run lengths, not global totals unless all equal lines have first been made adjacent.
 
-:::single-choice{#uniq-count-groups}
-What does the count from `uniq -c` represent?
+:::single-choice{#uniq-count-groups} What does the count from `uniq -c` represent?
 
 ::option[The number of characters in each input line.]{#uniq-character-count explanation="Character counting is not the purpose of `uniq -c`; tools such as `wc` handle character and byte totals."}
 ::option[The number of consecutive equal lines in each group.]{#uniq-consecutive-count .correct explanation="`-c` prefixes each collapsed adjacent group with the number of lines it contained."}
@@ -88,16 +86,14 @@ article
 
 GNU `uniq -D` prints every line from repeated groups, whereas lowercase `-d` prints each repeated group's value once.
 
-:::single-choice{#uniq-only-singletons}
-Which command prints only adjacent groups that occur exactly once?
+:::single-choice{#uniq-only-singletons} Which command prints only adjacent groups that occur exactly once?
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="This prints every group with a count, including repeated and singleton groups."}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="Lowercase `-d` prints one line for each repeated group, the opposite selection."}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="The `-u` option selects groups whose adjacent run length is exactly one."}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-Which command prints one line for each adjacent group that appears more than once?
+:::single-choice{#uniq-one-per-duplicate-group} Which command prints one line for each adjacent group that appears more than once?
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="The `-d` option selects repeated adjacent groups and emits one representative line per group."}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="GNU uppercase `-D` prints all lines belonging to repeated groups, not only one representative."}
@@ -143,8 +139,7 @@ paper
 
 Use a consistent locale and comparison policy across both steps. `sort -u reading.txt` can also sort and retain one line per equal sort key in a single command.
 
-:::single-choice{#uniq-separated-duplicates}
-Equal lines are scattered through `reading.txt`, and output order may change. Which pipeline produces one sorted copy of each distinct complete line?
+:::single-choice{#uniq-separated-duplicates} Equal lines are scattered through `reading.txt`, and output order may change. Which pipeline produces one sorted copy of each distinct complete line?
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="Sorting groups equal complete lines, then `uniq` collapses each adjacent group to one line."}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="`uniq` runs before equal separated lines become adjacent, so later sorting can leave duplicate output lines."}

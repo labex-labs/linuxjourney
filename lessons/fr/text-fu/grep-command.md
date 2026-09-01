@@ -28,8 +28,7 @@ GNU `grep` interprète par défaut le motif comme une expression régulière bas
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-Quelle commande recherche littéralement `price: $5.00` dans `products.txt`, sans syntaxe d'expression régulière ?
+:::single-choice{#grep-fixed-string} Quelle commande recherche littéralement `price: $5.00` dans `products.txt`, sans syntaxe d'expression régulière ?
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` sélectionne les chaînes fixes et les apostrophes protègent le dollar du shell."}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` active les expressions régulières étendues, où `$` et `.` ont un sens spécial."}
@@ -46,8 +45,7 @@ $ grep -E '\.txt$' filenames.txt
 
 La barre oblique inverse rend le point littéral ; un `.` non échappé correspond à n'importe quel caractère.
 
-:::single-choice{#grep-literal-txt-suffix}
-Quelle expression régulière étendue correspond aux lignes finissant littéralement par `.txt` ?
+:::single-choice{#grep-literal-txt-suffix} Quelle expression régulière étendue correspond aux lignes finissant littéralement par `.txt` ?
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="Le point non échappé correspond à n'importe quel caractère."}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` désigne un point littéral et `$` ancre la fin de ligne."}
@@ -64,8 +62,7 @@ $ grep -e '-v' settings.conf
 
 Les guillemets seuls n'empêchent pas l'analyse des options. Répétez `-e` pour plusieurs motifs, ou utilisez `-f patterns.txt` pour en lire un par ligne.
 
-:::single-choice{#grep-hyphen-pattern}
-Quelle commande recherche le motif `-v` dans `settings.conf` au lieu de l'interpréter comme une option ?
+:::single-choice{#grep-hyphen-pattern} Quelle commande recherche le motif `-v` dans `settings.conf` au lieu de l'interpréter comme une option ?
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="Les guillemets protègent du shell, mais `grep` peut encore interpréter `-v` comme option."}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="Cette forme active la correspondance inversée sans fournir le motif voulu."}
@@ -86,8 +83,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` compte des lignes, pas toutes les occurrences dans celles-ci. Pour compter des correspondances non superposées avec GNU `grep`, un pipeline possible est `grep -o PATTERN | wc -l`.
 
-:::single-choice{#grep-count-lines}
-`data.txt` contient une ligne avec `error error` et deux sans correspondance. Que renvoie `grep -c 'error' data.txt` ?
+:::single-choice{#grep-count-lines} `data.txt` contient une ligne avec `error error` et deux sans correspondance. Que renvoie `grep -c 'error' data.txt` ?
 
 ::option[`2`, car le mot apparaît deux fois sur une ligne.]{#grep-count-occurrences explanation="`-c` compte les lignes sélectionnées, pas les occurrences dans une ligne."}
 ::option[`1`, car exactement une ligne correspond.]{#grep-count-one-line .correct explanation="La ligne est sélectionnée une fois, même si le motif y apparaît deux fois."}
@@ -110,8 +106,7 @@ $ grep -r 'listen_port' config/
 
 `-r` recherche récursivement dans les fichiers lisibles. Les erreurs d'autorisation vont sur stderr et ne constituent pas une entrée de recherche. Ciblez le chemin et comprenez les droits avant d'élever les privilèges.
 
-:::single-choice{#grep-pipeline-input}
-Dans `generate-report | grep 'failed'`, quelle entrée `grep` recherche-t-il ?
+:::single-choice{#grep-pipeline-input} Dans `generate-report | grep 'failed'`, quelle entrée `grep` recherche-t-il ?
 
 ::option[Un fichier `generate-report` dans le répertoire courant.]{#grep-report-file explanation="La partie gauche est exécutée comme commande, pas transmise comme fichier."}
 ::option[Le flux stdout produit par `generate-report`.]{#grep-report-stdout .correct explanation="Le tube relie stdout du producteur à stdin de `grep`."}

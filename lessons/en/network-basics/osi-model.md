@@ -24,8 +24,7 @@ From lowest to highest, the OSI layers are:
 6. Presentation: data representation, transformation, and encoding.
 7. Application: network services used by applications.
 
-:::single-choice{#osi-network-layer-number}
-Which OSI layer handles logical addressing and forwarding between networks?
+:::single-choice{#osi-network-layer-number} Which OSI layer handles logical addressing and forwarding between networks?
 
 ::option[Layer 3, Network.]{#osi-layer-three .correct explanation="The network layer describes logical addressing and inter-network forwarding."}
 ::option[Layer 1, Physical.]{#osi-layer-one explanation="The physical layer concerns signals and media."}
@@ -36,8 +35,7 @@ Which OSI layer handles logical addressing and forwarding between networks?
 
 Statements such as “a Layer 2 loop” or “a Layer 4 port” identify a functional area without explaining every implementation detail. A real protocol may span boundaries, and encryption, tunnels, proxies, or overlays can create several nested layers.
 
-:::single-choice{#osi-model-purpose}
-What is the OSI model most useful for in everyday troubleshooting?
+:::single-choice{#osi-model-purpose} What is the OSI model most useful for in everyday troubleshooting?
 
 ::option[Guaranteeing that every protocol has exactly seven headers.]{#osi-seven-headers explanation="Implementations do not map one-to-one to seven wire headers."}
 ::option[Replacing all packet captures with a diagram.]{#osi-replace-captures explanation="The model guides investigation but does not replace evidence."}
@@ -48,8 +46,7 @@ What is the OSI model most useful for in everyday troubleshooting?
 
 The Internet protocol suite and the OSI reference model developed through different standardization histories. The practical TCP/IP model often groups OSI session and presentation responsibilities into its application layer and combines physical and data-link concerns into a link or network-access layer. Mappings are approximate, not proof that one stack was implemented directly from the other.
 
-:::single-choice{#osi-tcpip-mapping}
-How should an OSI-to-TCP/IP layer mapping be interpreted?
+:::single-choice{#osi-tcpip-mapping} How should an OSI-to-TCP/IP layer mapping be interpreted?
 
 ::option[As an exact rule that every protocol must obey.]{#osi-exact-rule explanation="Protocol responsibilities often cross conceptual boundaries."}
 ::option[As evidence that TCP/IP uses seven required layers on the wire.]{#osi-tcp-seven explanation="TCP/IP is commonly discussed with four or five layers."}
@@ -60,8 +57,7 @@ How should an OSI-to-TCP/IP layer mapping be interpreted?
 
 Begin at the symptom and test assumptions rather than mechanically checking layers in numeric order. A web failure may involve local link state, IP routing, transport reachability, TLS, name resolution, authentication, or application behavior. Evidence at one layer can direct the next test without proving that higher layers work.
 
-:::single-choice{#osi-link-success-limit}
-What does a working local Ethernet link prove?
+:::single-choice{#osi-link-success-limit} What does a working local Ethernet link prove?
 
 ::option[That every remote HTTP service is healthy.]{#osi-link-proves-http explanation="Local link state cannot establish remote application health."}
 ::option[That DNS contains no incorrect records.]{#osi-link-proves-dns explanation="Name data is independent of basic link connectivity."}

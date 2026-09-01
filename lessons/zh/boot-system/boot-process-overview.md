@@ -18,8 +18,7 @@ meta_keywords: "Linux 启动过程，启动过程 linux, linux 启动，linux �
 
 固件不一定理解已安装的 Linux 根文件系统。它会根据自身接口定位启动路径，例如选定磁盘上的 BIOS 启动代码，或指向 EFI 系统分区中 EFI 可执行文件的 UEFI 启动条目。
 
-:::single-choice{#boot-overview-first-stage}
-典型 PC 复位后，哪个组件首先开始平台初始化？
+:::single-choice{#boot-overview-first-stage} 典型 PC 复位后，哪个组件首先开始平台初始化？
 
 ::option[用户的交互式 shell。]{#boot-overview-shell explanation="Shell 要晚得多才会由用户空间服务或登录流程启动。"}
 ::option[BIOS 或 UEFI 等平台固件。]{#boot-overview-firmware .correct explanation="Linux 运行前，固件先建立早期硬件状态并选择下一个启动目标。"}
@@ -32,8 +31,7 @@ GRUB 等加载程序可以显示启动条目、把选定 Linux 内核和初始 R
 
 所选内容必须相互匹配：内核版本、initramfs 内容、根目录标识符、安全签名和命令行选项都会影响下一次交接能否成功。
 
-:::single-choice{#boot-overview-loader-role}
-Linux 引导加载程序通常承担什么职责？
+:::single-choice{#boot-overview-loader-role} Linux 引导加载程序通常承担什么职责？
 
 ::option[加载选定内核并传递其命令行。]{#boot-overview-load-kernel .correct explanation="加载程序准备内核映像和参数，通常还包括 initramfs。"}
 ::option[每次启动时从头创建所有用户账户。]{#boot-overview-create-users explanation="持久账户数据库属于用户空间配置，不会由加载程序重新创建。"}
@@ -46,8 +44,7 @@ Linux 引导加载程序通常承担什么职责？
 
 预期根目录可用后，早期用户空间会切换到它，内核再执行配置的第一个用户空间程序。由谁执行文件系统检查或重新以读写方式挂载等细节，取决于发行版的启动设计，并不存在一套通用顺序。
 
-:::single-choice{#boot-overview-initramfs-purpose}
-系统为什么可能使用 initramfs？
+:::single-choice{#boot-overview-initramfs-purpose} 系统为什么可能使用 initramfs？
 
 ::option[把每个用户的桌面会话永久保存在固件中。]{#boot-overview-desktop-firmware explanation="Initramfs 是启动时文件系统映像，而不是固件会话存储。"}
 ::option[提供访问真实根文件系统所需的早期工具和驱动程序。]{#boot-overview-early-root-tools .correct explanation="早期用户空间可以组装加密、逻辑、网络或依赖驱动的根存储。"}
@@ -60,8 +57,7 @@ Linux 引导加载程序通常承担什么职责？
 
 到达 PID 1 并不表示系统已经完全就绪。服务可能仍在启动，存储可能仍在挂载，网络配置可能尚未完成，而图形或控制台登录也只是可能的目标状态之一。
 
-:::single-choice{#boot-overview-final-stage}
-什么操作开始主要的用户空间初始化阶段？
+:::single-choice{#boot-overview-final-stage} 什么操作开始主要的用户空间初始化阶段？
 
 ::option[每次启动时创建磁盘的保护性 MBR。]{#boot-overview-create-mbr explanation="创建分区表并不是周期性启动阶段。"}
 ::option[删除所有内核命令行参数。]{#boot-overview-delete-command-line explanation="内核会解析并公开命令行，并不要求删除它。"}

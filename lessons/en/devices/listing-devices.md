@@ -30,8 +30,7 @@ $ lsusb -t
 
 Verbose descriptor output is available, but some details require elevated read access. Do not grant broad USB-device permissions merely to make an inspection command quieter.
 
-:::single-choice{#listing-devices-usb-tree}
-Which command displays USB devices as a topology tree?
+:::single-choice{#listing-devices-usb-tree} Which command displays USB devices as a topology tree?
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="This lists PCI functions and kernel-driver information rather than USB topology."}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="This is not the introduced USB tree command."}
@@ -54,8 +53,7 @@ $ lspci -k
 
 A PCI controller appearing in this list does not prove that every device behind it is initialized or healthy. Check the driver binding and kernel logs when troubleshooting.
 
-:::single-choice{#listing-devices-pci-driver}
-Which command adds kernel-driver information to a PCI listing?
+:::single-choice{#listing-devices-pci-driver} Which command adds kernel-driver information to a PCI listing?
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="The `-k` option displays the active kernel driver and modules capable of handling each PCI device."}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="This describes USB hierarchy and interface drivers."}
@@ -78,8 +76,7 @@ For a storage-oriented hierarchy that includes many block-device types, use `lsb
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-What does `lsscsi` primarily list?
+:::single-choice{#listing-devices-lsscsi-scope} What does `lsscsi` primarily list?
 
 ::option[Every NVMe namespace and controller exclusively.]{#listing-devices-only-nvme explanation="NVMe uses its own subsystem and tools, although related block views can appear elsewhere."}
 ::option[Only files whose names end in `.scsi`.]{#listing-devices-scsi-extension explanation="The command queries kernel device interfaces rather than filename extensions."}
@@ -92,8 +89,7 @@ Descriptions often come from local ID databases and can be generic or stale. A l
 
 The utilities may be packaged separately, commonly through packages such as `usbutils`, `pciutils`, and `lsscsi`. Use the distribution package manager rather than downloading unknown replacements when a command is absent.
 
-:::single-choice{#listing-devices-listed-not-working}
-Does seeing a device in `lspci` prove its driver is active and functioning correctly?
+:::single-choice{#listing-devices-listed-not-working} Does seeing a device in `lspci` prove its driver is active and functioning correctly?
 
 ::option[No; inspect driver binding and relevant kernel messages too.]{#listing-devices-needs-correlation .correct explanation="Enumeration establishes that a PCI function is visible, not that higher-level initialization succeeded."}
 ::option[Yes; PCI enumeration performs a complete functional test.]{#listing-devices-complete-test explanation="The listing does not exercise every hardware function or validate service behavior."}

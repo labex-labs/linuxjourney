@@ -29,8 +29,7 @@ $ sudo ls -la /mnt/mydrive
 
 비어 있지 않은 디렉터리에 마운트하면 마운트 해제할 때까지 기존 항목이 새 파일 시스템 뒤에 가려집니다. 삭제되는 것은 아닙니다. 애플리케이션이 혼란을 겪고 디스크 공간이 보이지 않게 소비될 수 있으므로 비어 있는 전용 마운트 지점을 사용하십시오.
 
-:::single-choice{#mount-umount-nonempty-target}
-다른 파일 시스템을 디렉터리에 마운트하면 그 안의 기존 파일은 어떻게 됩니까?
+:::single-choice{#mount-umount-nonempty-target} 다른 파일 시스템을 디렉터리에 마운트하면 그 안의 기존 파일은 어떻게 됩니까?
 
 ::option[새 파일 시스템으로 자동 복사됩니다.]{#mount-umount-copied-files explanation="마운트는 네임스페이스 연결을 변경하며 디렉터리 내용을 이동하지 않습니다."}
 ::option[커널이 영구적으로 삭제합니다.]{#mount-umount-erased-files explanation="파일은 삭제된 것이 아니라 가려진 것이므로 일반적으로 마운트 해제 후 다시 나타납니다."}
@@ -55,8 +54,7 @@ $ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 마운트는 네임스페이스 범위에 속합니다. 컨테이너나 비공개 서비스 네임스페이스에서 만든 마운트는 다른 프로세스의 뷰에 나타나지 않을 수 있습니다.
 
-:::single-choice{#mount-umount-mount-role}
-이 작업 흐름에서 `mount` 명령은 무엇을 합니까?
+:::single-choice{#mount-umount-mount-role} 이 작업 흐름에서 `mount` 명령은 무엇을 합니까?
 
 ::option[새 파일 시스템을 만들고 소스를 지웁니다.]{#mount-umount-format-source explanation="파일 시스템 생성은 별도의 파괴적인 `mkfs` 작업입니다."}
 ::option[파일 시스템 소스를 마운트 네임스페이스의 디렉터리에 연결합니다.]{#mount-umount-attach-filesystem .correct explanation="그 뒤 대상 아래의 경로 조회가 연결된 파일 시스템으로 들어갑니다."}
@@ -80,8 +78,7 @@ $ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 
 UUID는 파일 시스템을 식별하며 반드시 물리 디스크를 식별하는 것은 아닙니다. 다시 포맷하면 바뀌고 복제하면 중복될 수 있습니다. 원본과 복제본을 같은 시스템에 연결하기 전에 고유성을 확인하십시오.
 
-:::single-choice{#mount-umount-uuid-benefit}
-영구 설정에서 파일 시스템 UUID가 `/dev/sdX`보다 더 적합한 경우가 많은 이유는 무엇입니까?
+:::single-choice{#mount-umount-uuid-benefit} 영구 설정에서 파일 시스템 UUID가 `/dev/sdX`보다 더 적합한 경우가 많은 이유는 무엇입니까?
 
 ::option[모든 저장 장치의 장애를 영구히 막기 때문입니다.]{#mount-umount-uuid-no-failure explanation="식별자는 중복성, 무결성 복구 또는 백업을 제공하지 않습니다."}
 ::option[복제된 파일 시스템의 식별자가 다름을 보장하기 때문입니다.]{#mount-umount-uuid-clone-unique explanation="블록 수준 복제는 UUID도 복사하여 충돌을 만들 수 있습니다."}
@@ -100,8 +97,7 @@ $ sudo umount /mnt/mydrive
 
 이동식 미디어에서는 마운트 해제 성공이 항상 안전한 제거의 마지막 작업은 아닙니다. 데스크톱 저장 장치 스택은 장치 캐시를 플러시하고 USB 장치를 비활성화하는 꺼내기 또는 전원 끄기 작업을 제공할 수 있습니다. 플랫폼과 하드웨어의 절차를 따르십시오.
 
-:::single-choice{#mount-umount-command-name}
-`/mnt/mydrive`를 분리하는 명령은 무엇입니까?
+:::single-choice{#mount-umount-command-name} `/mnt/mydrive`를 분리하는 명령은 무엇입니까?
 
 ::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount`는 지정한 대상에 마운트된 파일 시스템을 분리합니다."}
 ::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="표준 명령 이름에는 첫 번째 `n`이 없습니다."}
@@ -119,8 +115,7 @@ $ sudo fuser -vm /mnt/mydrive
 
 셸을 트리 밖으로 이동하고, 책임 있는 애플리케이션을 정상적으로 중지하며, 부모보다 먼저 하위 마운트를 해제하십시오. 지연 마운트 해제와 강제 옵션에는 특수한 의미가 있고 활성 참조를 남기거나 데이터 손실 위험을 일으킬 수 있습니다. 문서화된 복구 근거가 있을 때만 사용하십시오.
 
-:::single-choice{#mount-umount-busy-cause}
-`umount`가 파일 시스템이 사용 중이라고 보고할 수 있는 조건은 무엇입니까?
+:::single-choice{#mount-umount-busy-cause} `umount`가 파일 시스템이 사용 중이라고 보고할 수 있는 조건은 무엇입니까?
 
 ::option[마운트 지점 디렉터리 이름에 소문자가 포함되어 있습니다.]{#mount-umount-lowercase explanation="경로의 대소문자만으로는 활성 파일 시스템 참조가 생기지 않습니다."}
 ::option[프로세스의 현재 작업 디렉터리가 마운트 안에 있습니다.]{#mount-umount-cwd-busy .correct explanation="프로세스가 마운트된 파일 시스템 안의 참조를 유지해 일반적인 분리를 막습니다."}

@@ -23,8 +23,7 @@ Las señales pueden proceder de varios lugares:
 
 El emisor debe tener los permisos apropiados, normalmente basados en credenciales o capacidades. Por tanto, las señales son una interfaz de control mediada por el kernel, no mensajes sin restricciones entre usuarios arbitrarios.
 
-:::single-choice{#process-signals-ctrl-c}
-¿Qué señal genera normalmente una terminal para `Ctrl-C`?
+:::single-choice{#process-signals-ctrl-c} ¿Qué señal genera normalmente una terminal para `Ctrl-C`?
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` suele estar asociada al carácter de suspensión de la terminal, como `Ctrl-Z`."}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` reanuda un proceso detenido en vez de representar una interrupción del teclado."}
@@ -43,8 +42,7 @@ Las acciones predeterminadas varían: una señal puede terminar, terminar y crea
 
 Los nombres de las señales son más portables y legibles que los números. Aunque arquitecturas habituales de Linux usan el 15 para `SIGTERM`, no supongas que todos los números, salvo los garantizados por la norma correspondiente, son idénticos en todas partes. Usa `kill -l` para consultar la correspondencia local.
 
-:::single-choice{#process-signals-term-behavior}
-¿Por qué puede un proceso responder de forma ordenada a `SIGTERM`?
+:::single-choice{#process-signals-term-behavior} ¿Por qué puede un proceso responder de forma ordenada a `SIGTERM`?
 
 ::option[Puede instalar un manejador para esa señal.]{#process-signals-term-handler .correct explanation="A diferencia de `SIGKILL`, `SIGTERM` puede capturarse para que un programa inicie su propia lógica de cierre."}
 ::option[El kernel guarda siempre todos los documentos abiertos automáticamente.]{#process-signals-term-kernel-save explanation="La limpieza de una aplicación depende de su código; el kernel no comprende ni guarda estados arbitrarios de documentos."}
@@ -57,8 +55,7 @@ Los hilos tienen máscaras de señales que pueden bloquear temporalmente la entr
 
 En un proceso multihilo, una señal dirigida al proceso puede entregarse a un hilo apto que no la bloquee; una señal dirigida a un hilo apunta al hilo especificado. Por tanto, un diseño correcto requiere más que comprobar si «el proceso la bloqueó».
 
-:::single-choice{#process-signals-blocked-state}
-¿Qué ocurre normalmente cuando se genera una señal bloqueable mientras su destino la bloquea?
+:::single-choice{#process-signals-blocked-state} ¿Qué ocurre normalmente cuando se genera una señal bloqueable mientras su destino la bloquea?
 
 ::option[Permanece pendiente hasta que la entrega sea posible.]{#process-signals-pending .correct explanation="El bloqueo aplaza el tratamiento; la señal pendiente puede entregarse después de desbloquearla."}
 ::option[Se convierte automáticamente en `SIGKILL`.]{#process-signals-convert-kill explanation="El kernel no eleva una señal ordinaria bloqueada a una señal que no pueda capturarse."}
@@ -71,8 +68,7 @@ En un proceso multihilo, una señal dirigida al proceso puede entregarse a un hi
 
 Incluso `SIGKILL` puede no hacer que una tarea desaparezca inmediatamente desde la perspectiva de un observador. Una tarea puede estar esperando en una operación del kernel no interrumpible y, después de terminar, su padre todavía debe recoger su estado.
 
-:::single-choice{#process-signals-uncatchable-pair}
-¿Qué pareja no puede capturarse, ignorarse ni bloquearse?
+:::single-choice{#process-signals-uncatchable-pair} ¿Qué pareja no puede capturarse, ignorarse ni bloquearse?
 
 ::option[`SIGKILL` y `SIGSTOP`]{#process-signals-kill-stop .correct explanation="El kernel reserva estas dos señales para que un proceso no pueda anular ni aplazar sus acciones fundamentales."}
 ::option[`SIGINT` y `SIGTERM`]{#process-signals-int-term explanation="Ambas pueden tener manejadores instalados por el usuario y pueden bloquearse."}

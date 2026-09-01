@@ -44,8 +44,7 @@ $ sudo passwd -S bob
 $ id bob
 ```
 
-:::single-choice{#user-tools-create-home}
-Qual opção de `useradd` solicita explicitamente a criação do diretório pessoal da nova conta?
+:::single-choice{#user-tools-create-home} Qual opção de `useradd` solicita explicitamente a criação do diretório pessoal da nova conta?
 
 ::option[`-M`]{#user-tools-no-home-option explanation="A opção `-M` maiúscula instrui explicitamente as implementações comuns de `useradd` a não criar o diretório pessoal."}
 ::option[`-s`]{#user-tools-shell-option explanation="A opção `-s` escolhe um shell de login e não cria, por si só, um diretório pessoal."}
@@ -68,8 +67,7 @@ $ sudo passwd bob
 
 Digite senhas somente no prompt protegido, não em argumentos de comandos, no histórico do shell, nas anotações da lição nem em conversas. A política do PAM pode rejeitar senhas fracas ou reutilizadas. Contas gerenciadas por serviços de diretório podem exigir outra ferramenta.
 
-:::single-choice{#user-tools-change-own-password}
-Qual comando normalmente permite que o usuário atual altere sua própria senha por meio de um prompt interativo?
+:::single-choice{#user-tools-change-own-password} Qual comando normalmente permite que o usuário atual altere sua própria senha por meio de um prompt interativo?
 
 ::option[`useradd`]{#user-tools-add-not-password explanation="`useradd` cria um registro de conta e não é o comando interativo comum para alterar senhas."}
 ::option[`userdel`]{#user-tools-delete-not-password explanation="`userdel` remove uma conta local e não tem relação com a alteração da senha do usuário solicitante."}
@@ -90,8 +88,7 @@ Antes de mover o diretório pessoal, verifique o destino, a propriedade, o espa�
 
 As alterações de grupos normalmente afetam novas sessões de login, não os processos que já estão em execução com o conjunto antigo de credenciais.
 
-:::single-choice{#user-tools-append-group}
-Qual comando adiciona `bob` ao grupo suplementar `developers` sem substituir suas outras associações suplementares?
+:::single-choice{#user-tools-append-group} Qual comando adiciona `bob` ao grupo suplementar `developers` sem substituir suas outras associações suplementares?
 
 ::option[`usermod -G developers bob`]{#user-tools-replace-groups explanation="Sem `-a`, `-G` substitui a lista de grupos suplementares e pode remover associações existentes."}
 ::option[`usermod -aG developers bob`]{#user-tools-append-groups .correct explanation="A opção `-a` acrescenta o grupo indicado por `-G`, preservando as outras associações suplementares."}
@@ -104,8 +101,7 @@ Um administrador pode bloquear o hash da senha local com `passwd -l USER` e insp
 
 O bloqueio de uma senha não necessariamente impede chaves SSH, tokens, tarefas agendadas, processos já em execução nem a autenticação específica de serviços. Para desabilitar uma conta de forma abrangente, defina a ameaça e os caminhos de acesso e aplique uma política coordenada, que pode incluir a expiração da conta, o shell de login, o acesso a serviços, chaves e o encerramento de sessões.
 
-:::single-choice{#user-tools-password-lock-scope}
-O que `passwd -l bob` bloqueia principalmente?
+:::single-choice{#user-tools-password-lock-scope} O que `passwd -l bob` bloqueia principalmente?
 
 ::option[Todos os caminhos possíveis de autenticação e execução para a conta.]{#user-tools-lock-everything explanation="Chaves, tokens, tarefas, serviços e sessões existentes podem exigir controles separados."}
 ::option[Todos os arquivos que atualmente pertencem ao UID de Bob.]{#user-tools-lock-files explanation="O estado da senha não altera a propriedade do sistema de arquivos nem torna automaticamente inacessíveis os dados pertencentes à conta."}
@@ -126,8 +122,7 @@ Antes de qualquer remoção:
 
 `userdel -r` não garante a remoção de arquivos fora dos locais configurados para o diretório pessoal e a caixa de correio. A exclusão da conta também pode deixar propriedades numéricas em arquivos, permissões de bancos de dados, identidades de aplicações e registros em diretórios remotos.
 
-:::single-choice{#user-tools-userdel-r-scope}
-Que remoção adicional o comando comum `userdel -r bob` solicita em comparação com `userdel bob` sem opções?
+:::single-choice{#user-tools-userdel-r-scope} Que remoção adicional o comando comum `userdel -r bob` solicita em comparação com `userdel bob` sem opções?
 
 ::option[Todos os arquivos com o UID de Bob em todos os sistemas de arquivos montados.]{#user-tools-delete-all-owned explanation="A ferramenta não localiza e apaga de forma universal todos os arquivos pertencentes ao UID em todo o armazenamento."}
 ::option[Todas as contas remotas cujo nome de usuário também seja `bob`.]{#user-tools-delete-remote explanation="`userdel` atua nos bancos de dados de contas locais aplicáveis e não exclui identidades não relacionadas de serviços de diretório."}

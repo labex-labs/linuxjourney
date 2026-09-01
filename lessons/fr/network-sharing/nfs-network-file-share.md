@@ -18,8 +18,7 @@ Installez les utilitaires clients NFS de la distribution, généralement fournis
 
 `showmount -e SERVEUR` peut répertorier les exportations fournies par l’ancien protocole de montage, mais ne fait pas autorité pour tous les serveurs utilisant uniquement NFSv4. L’échec de cette liste ne prouve pas qu’il n’existe aucune exportation NFSv4 autorisée.
 
-:::single-choice{#nfs-showmount-limit}
-Pourquoi la sortie de `showmount -e` peut-elle être incomplète pour un serveur NFSv4 ?
+:::single-choice{#nfs-showmount-limit} Pourquoi la sortie de `showmount -e` peut-elle être incomplète pour un serveur NFSv4 ?
 
 ::option[La commande interroge un ancien protocole de liste des exportations qui peut ne pas être exposé.]{#nfs-showmount-protocol .correct explanation="NFSv4 peut fonctionner sans rendre disponible ce service distinct de liste."}
 ::option[Elle affiche uniquement la température du processeur local.]{#nfs-showmount-temperature explanation="La commande concerne les informations d’exportation du serveur NFS."}
@@ -41,8 +40,7 @@ Ne précisez une version que si la politique ou la compatibilité l’exige, par
 $ findmnt --target /mnt/team
 ```
 
-:::single-choice{#nfs-mount-operands}
-Dans la commande de montage, que représente `server.example.net:/srv/team` ?
+:::single-choice{#nfs-mount-operands} Dans la commande de montage, que représente `server.example.net:/srv/team` ?
 
 ::option[Le répertoire local qui masque l’exportation distante.]{#nfs-local-mountpoint explanation="Dans l’exemple, le point de montage local est `/mnt/team`."}
 ::option[Le nom du paquet client à installer.]{#nfs-package-name explanation="Les noms des paquets varient selon les distributions et ne constituent pas des opérandes source du montage."}
@@ -55,8 +53,7 @@ L’accès NFS combine les règles d’exportation du serveur, la sécurité du 
 
 Le serveur associe généralement l’utilisateur root distant à une identité sans privilèges au moyen du mécanisme d’écrasement de root. Ne désactivez pas cette protection simplement pour résoudre une erreur de permission ; examinez les identifiants, la propriété du répertoire, la politique d’exportation et le modèle de sécurité voulu.
 
-:::single-choice{#nfs-name-versus-id}
-Pourquoi deux utilisateurs portant le même nom affiché peuvent-ils recevoir des permissions NFS différentes ?
+:::single-choice{#nfs-name-versus-id} Pourquoi deux utilisateurs portant le même nom affiché peuvent-ils recevoir des permissions NFS différentes ?
 
 ::option[Les permissions NFS peuvent dépendre de l’association des identités numériques.]{#nfs-numeric-mapping .correct explanation="La concordance des noms ne prouve pas que le client et le serveur résolvent le même UID et les mêmes groupes."}
 ::option[NFS ignore toutes les permissions du système de fichiers.]{#nfs-ignores-permissions explanation="Les permissions du système de fichiers et des exportations participent toujours à l’autorisation."}
@@ -73,8 +70,7 @@ server.example.net:/srv/team /mnt/team nfs4 rw,_netdev,nofail,x-systemd.automoun
 
 Avant de modifier fstab, préservez un accès de récupération et validez le fichier avec un analyseur non destructif ou un test de montage contrôlé. Un montage automatique améliore le comportement en cas d’indisponibilité, mais ne corrige ni les autorisations, ni le DNS, ni les pannes du serveur.
 
-:::single-choice{#nfs-automount-benefit}
-Quel est l’un des principaux avantages du montage à la demande d’un partage NFS ?
+:::single-choice{#nfs-automount-benefit} Quel est l’un des principaux avantages du montage à la demande d’un partage NFS ?
 
 ::option[Il accorde à chaque client un accès root à l’exportation.]{#nfs-automount-root explanation="Le moment du montage ne contourne pas les autorisations du serveur."}
 ::option[Il peut éviter d’exiger la disponibilité du serveur pendant le démarrage initial.]{#nfs-automount-boot .correct explanation="La connexion est déclenchée lors de l’accès au lieu de bloquer nécessairement les premières étapes du démarrage."}
@@ -92,8 +88,7 @@ $ findmnt --target /mnt/team
 
 Un démontage forcé ou paresseux peut masquer des références actives et provoquer des erreurs applicatives ; réservez ces options à une panne diagnostiquée accompagnée d’un plan de récupération explicite.
 
-:::single-choice{#nfs-safe-unmount}
-Que faut-il faire avant un démontage NFS normal ?
+:::single-choice{#nfs-safe-unmount} Que faut-il faire avant un démontage NFS normal ?
 
 ::option[Coordonner les processus utilisant le partage et terminer les écritures importantes.]{#nfs-coordinate-writers .correct explanation="Retirer aux applications un système de fichiers actif peut interrompre les entrées-sorties ou laisser un travail inachevé."}
 ::option[Supprimer le répertoire exporté sur le serveur.]{#nfs-delete-export explanation="Le démontage côté client n’exige pas la destruction des données du serveur."}

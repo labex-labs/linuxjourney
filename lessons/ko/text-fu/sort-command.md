@@ -41,8 +41,7 @@ elephant
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-키나 숫자 옵션 없이 `sort animals.txt`를 실행하면 무엇을 하나요?
+:::single-choice{#sort-lines-ascending} 키나 숫자 옵션 없이 `sort animals.txt`를 실행하면 무엇을 하나요?
 
 ::option[현재 로캘에 따라 전체 입력 줄의 순서를 정합니다.]{#sort-locale-lines .correct explanation="기본 `sort`는 활성 로캘의 배열 규칙을 사용하여 전체 줄을 비교합니다."}
 ::option[각 줄 안의 단어를 정렬하지만 줄 순서는 유지합니다.]{#sort-words-within-lines explanation="`sort`는 각 줄을 하나의 레코드로 취급하며 개별 줄 안의 단어를 재배열하지 않습니다."}
@@ -62,8 +61,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-`animals.txt`를 역순으로 정렬하는 명령어는 무엇인가요?
+:::single-choice{#sort-reverse-order} `animals.txt`를 역순으로 정렬하는 명령어는 무엇인가요?
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="`-n` 옵션은 숫자 비교를 요청하며 역순을 의미하지 않습니다."}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="`-u` 옵션은 중복 키를 제외하며 출력을 뒤집지 않습니다."}
@@ -83,8 +81,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 필요하면 옵션을 결합합니다. `sort -nr scores.txt`는 숫자로 비교하고 큰 값을 먼저 배치합니다.
 
-:::single-choice{#sort-numbers-descending}
-`scores.txt`의 숫자 줄을 큰 값에서 작은 값 순으로 정렬하는 명령어는 무엇인가요?
+:::single-choice{#sort-numbers-descending} `scores.txt`의 숫자 줄을 큰 값에서 작은 값 순으로 정렬하는 명령어는 무엇인가요?
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="숫자 비교를 선택하지만 기본 방향은 작은 값을 먼저 둡니다."}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n`은 숫자 비교를 선택하고 `-r`은 순서를 뒤집어 숫자 내림차순을 만듭니다."}
@@ -104,8 +101,7 @@ alice:30
 
 여기서 `-t ':'`는 구분 기호를 선택하고 `-k 2,2`는 키를 필드 2로 제한하며 붙어 있는 `n`은 그 키를 숫자로 비교합니다. 끝의 `,2`가 없으면 필드 2에서 시작하는 키는 일반적으로 줄 끝까지 이어집니다.
 
-:::single-choice{#sort-second-colon-field}
-`users.txt`에서 콜론으로 구분된 두 번째 필드만을 숫자로 정렬하는 명령어는 무엇인가요?
+:::single-choice{#sort-second-colon-field} `users.txt`에서 콜론으로 구분된 두 번째 필드만을 숫자로 정렬하는 명령어는 무엇인가요?
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="기본 공백 구분 필드를 사용하고 필드 1을 선택하므로 콜론 구분 두 번째 필드가 아닙니다."}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut`은 필드 2를 추출하지만 그 키를 기준으로 원래 레코드를 정렬하지 않습니다."}
@@ -136,8 +132,7 @@ $ sort -o names.txt names.txt
 
 원본 데이터가 중요하면 백업을 만들거나 별도의 결과를 쓰고 확인하세요.
 
-:::single-choice{#sort-safe-same-file}
-GNU/Linux에서 쉘 리디렉션이 먼저 파일을 비우지 않도록 `sort`에 정렬 결과를 `names.txt`에 안전하게 다시 쓰라고 요청하는 명령어는 무엇인가요?
+:::single-choice{#sort-safe-same-file} GNU/Linux에서 쉘 리디렉션이 먼저 파일을 비우지 않도록 `sort`에 정렬 결과를 `names.txt`에 안전하게 다시 쓰라고 요청하는 명령어는 무엇인가요?
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="GNU `sort`는 필요에 따라 읽은 뒤 `-o` 출력을 관리하므로 쉘이 `>`로 입력을 미리 비우지 않습니다."}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="쉘은 `sort`를 시작하기 전에 `names.txt`를 비우므로 입력을 잃을 수 있습니다."}

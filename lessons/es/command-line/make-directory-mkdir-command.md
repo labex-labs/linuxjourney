@@ -28,8 +28,7 @@ $ mkdir documents
 
 Si ya existe un elemento llamado `documents`, `mkdir` muestra un error en vez de sustituirlo. Utiliza `ls -ld documents` para inspeccionar el elemento existente.
 
-:::single-choice{#create-one-directory}
-¿Qué orden crea un directorio llamado `documents` en el directorio de trabajo actual?
+:::single-choice{#create-one-directory} ¿Qué orden crea un directorio llamado `documents` en el directorio de trabajo actual?
 
 ::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` crea el directorio solicitado en la ruta relativa `documents`."}
 ::option[`touch documents`]{#touch-documents explanation="`touch` crea un archivo normal vacío cuando la ruta no existe. No crea un directorio."}
@@ -44,8 +43,7 @@ También puedes crear varios directorios a la vez listando sus nombres, separado
 $ mkdir books paintings
 ```
 
-:::single-choice{#create-separate-directories}
-¿Qué orden crea dos directorios hermanos llamados `books` y `paintings`?
+:::single-choice{#create-separate-directories} ¿Qué orden crea dos directorios hermanos llamados `books` y `paintings`?
 
 ::option[`mkdir books/paintings`]{#nested-paintings explanation="Esta ruta describe `paintings` dentro de `books`, no dos directorios hermanos. También falla si `books` no existe."}
 ::option[`mkdir "books paintings"`]{#spaced-directory explanation="Las comillas combinan las palabras en una sola ruta, por lo que se solicita un único directorio cuyo nombre contiene un espacio."}
@@ -62,8 +60,7 @@ $ mkdir -p books/hemingway/favorites
 
 Esta orden crea las partes ausentes de la ruta. Tampoco muestra un error solo porque el directorio final ya exista, aunque sí pueden producirse otros errores, como la falta de permisos.
 
-:::single-choice{#create-nested-path}
-Todavía no existe ninguna parte de `projects/app/src`. ¿Qué orden crea la ruta de directorios completa?
+:::single-choice{#create-nested-path} Todavía no existe ninguna parte de `projects/app/src`. ¿Qué orden crea la ruta de directorios completa?
 
 ::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="La opción `-p` crea cada directorio padre ausente antes de crear el directorio final."}
 ::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="Sin `-p`, `mkdir` no puede crear `src` cuando los directorios intermedios no existen."}
@@ -89,8 +86,7 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-:::single-choice{#set-directory-mode}
-¿Qué orden crea `public` con el modo de permisos `755`?
+:::single-choice{#set-directory-mode} ¿Qué orden crea `public` con el modo de permisos `755`?
 
 ::option[`mkdir -p 755 public`]{#parents-755 explanation="La opción `-p` trata las palabras restantes como rutas de directorio, por lo que esta orden no establece el modo `755`."}
 ::option[`mkdir -v 755 public`]{#verbose-755 explanation="La opción `-v` muestra mensajes de creación. No interpreta `755` como un modo de permisos."}

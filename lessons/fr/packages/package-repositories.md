@@ -24,8 +24,7 @@ $ sudo apt update
 
 Cette commande met à jour les index de paquets locaux ; elle n’installe pas à elle seule toutes les mises à niveau disponibles. Examinez les sources signalées et les erreurs d’authentification au lieu d’ignorer les entrées qui ont échoué.
 
-:::single-choice{#package-repositories-apt-update}
-Qu’est-ce que `apt update` actualise principalement ?
+:::single-choice{#package-repositories-apt-update} Qu’est-ce que `apt update` actualise principalement ?
 
 ::option[Chaque binaire de paquet installé, sans confirmation.]{#package-repositories-all-binaries explanation="L’installation des mises à niveau est une opération distincte de l’actualisation des métadonnées."}
 ::option[Les mots de passe des utilisateurs autorisés à installer des paquets.]{#package-repositories-user-passwords explanation="L’actualisation des index de dépôts ne modifie pas les identifiants d’authentification locaux."}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 Il s’agit uniquement d’un exemple de syntaxe ; le domaine réservé `.invalid` ne correspond pas à un dépôt utilisable.
 
-:::single-choice{#package-repositories-apt-locations}
-Où APT peut-il lire les définitions actives des dépôts ?
+:::single-choice{#package-repositories-apt-locations} Où APT peut-il lire les définitions actives des dépôts ?
 
 ::option[Uniquement dans `/etc/apt/sources.list`.]{#package-repositories-only-main-list explanation="APT lit également les fichiers de sources pris en charge dans `/etc/apt/sources.list.d/`."}
 ::option[Uniquement dans des fichiers situés dans le répertoire personnel de chaque utilisateur.]{#package-repositories-only-home explanation="La configuration système des sources APT se trouve normalement sous `/etc/apt`."}
@@ -67,8 +65,7 @@ APT vérifie les métadonnées de version signées du dépôt, puis compare les 
 
 Une signature valide établit que les métadonnées proviennent du détenteur d’une clé de signature acceptée et n’ont pas été modifiées sans détection. Elle ne prouve pas que le logiciel de l’éditeur est exempt de défauts, inoffensif ou adapté au système. Confirmez l’empreinte de la clé et les instructions relatives à la source par un canal de confiance indépendant.
 
-:::single-choice{#package-repositories-signed-by}
-Quel est l’objectif de sécurité de `Signed-By` dans une définition de source APT ?
+:::single-choice{#package-repositories-signed-by} Quel est l’objectif de sécurité de `Signed-By` dans une définition de source APT ?
 
 ::option[Chiffrer chaque paquet installé afin que root ne puisse pas le lire.]{#package-repositories-package-encryption explanation="La signature des dépôts assure des contrôles d’origine et d’intégrité, et non le secret face à l’administrateur local."}
 ::option[Limiter cette source à certaines clés de signature.]{#package-repositories-key-scope .correct explanation="Ce champ lie la vérification du dépôt à des trousseaux sélectionnés plutôt qu’à un ensemble global de clés sans restriction."}
@@ -87,8 +84,7 @@ Un dépôt peut installer des paquets et des scripts de cycle de vie avec les pr
 
 Ne recopiez pas d’anciennes instructions qui désactivent le contrôle des signatures ou transmettent un script distant non audité à un shell privilégié.
 
-:::single-choice{#package-repositories-third-party-risk}
-Pourquoi l’ajout d’un dépôt tiers élargit-il la frontière de confiance du système ?
+:::single-choice{#package-repositories-third-party-risk} Pourquoi l’ajout d’un dépôt tiers élargit-il la frontière de confiance du système ?
 
 ::option[Ses paquets et scripts authentifiés peuvent être installés avec les privilèges du système.]{#package-repositories-privileged-install .correct explanation="Faire confiance à la source de signature peut autoriser du code et des actions de cycle de vie qui affectent le système d’exploitation."}
 ::option[Il empêche le noyau Linux d’appliquer les permissions des fichiers.]{#package-repositories-disable-permissions explanation="La configuration d’un dépôt ne désactive pas les mécanismes normaux de contrôle d’accès du noyau."}

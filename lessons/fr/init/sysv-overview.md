@@ -23,8 +23,7 @@ $ readlink /proc/1/exe
 
 Un fichier `/etc/inittab` ou un répertoire `/etc/init.d/` ne constitue qu'un indice secondaire. systemd et d'autres systèmes d'initialisation peuvent conserver ces fichiers pour la compatibilité, et les conteneurs peuvent présenter un espace de noms de PID différent de celui de l'hôte.
 
-:::single-choice{#sysv-overview-detection}
-Quelle preuve démontre le mieux que sysvinit est actif ?
+:::single-choice{#sysv-overview-detection} Quelle preuve démontre le mieux que sysvinit est actif ?
 
 ::option[L'exécutable du PID 1 réel est sysvinit ou son programme init.]{#sysv-overview-live-pid-one .correct explanation="L'examen du premier processus en cours d'exécution est plus direct qu'une déduction fondée sur les fichiers de compatibilité."}
 ::option[Un répertoire `/etc/init.d/` existe.]{#sysv-overview-init-d-only explanation="Les autres systèmes d'initialisation conservent souvent les scripts ou enveloppes SysV."}
@@ -42,8 +41,7 @@ Un niveau d'exécution est un mode de fonctionnement numérique nommé. Les conf
 
 Les systèmes de la famille Debian traitent historiquement les niveaux 2 à 5 de façon semblable, tandis que les conventions de la famille Red Hat distinguent les modes texte et graphique. Examinez `/etc/inittab`, la documentation d'init et les répertoires de niveaux sur la machine réelle.
 
-:::single-choice{#sysv-overview-shutdown-runlevel}
-Quel niveau demande conventionnellement l'arrêt ou la mise hors tension sur de nombreux systèmes SysV ?
+:::single-choice{#sysv-overview-shutdown-runlevel} Quel niveau demande conventionnellement l'arrêt ou la mise hors tension sur de nombreux systèmes SysV ?
 
 ::option[`3`]{#sysv-overview-runlevel-three explanation="Il s'agit couramment d'un mode multi-utilisateur et non d'un arrêt."}
 ::option[`0`]{#sysv-overview-runlevel-zero .correct explanation="Le niveau zéro est conventionnellement la transition d'arrêt, même si les règles locales d'init font autorité."}
@@ -60,8 +58,7 @@ Les scripts de services se trouvent généralement sous `/etc/init.d/`. Des rép
 
 L'algorithme et les répertoires exacts varient. Les dépendances peuvent aussi apparaître dans les en-têtes des scripts et être traitées par les outils de la distribution ; certaines implémentations parallélisent le travail. SysV ne garantit donc pas que chaque service démarre strictement l'un après l'autre.
 
-:::single-choice{#sysv-overview-start-link}
-Que demande conventionnellement un lien `S20networking` lors de l'entrée dans un niveau d'exécution ?
+:::single-choice{#sysv-overview-start-link} Que demande conventionnellement un lien `S20networking` lors de l'entrée dans un niveau d'exécution ?
 
 ::option[Envoyer directement le signal 20 à chaque processus réseau.]{#sysv-overview-signal-twenty explanation="Les chiffres constituent des métadonnées d'ordre, pas un numéro de signal."}
 ::option[Stocker vingt sauvegardes de la configuration réseau.]{#sysv-overview-twenty-backups explanation="Les liens de niveaux ne gèrent pas la conservation des sauvegardes."}
@@ -74,8 +71,7 @@ Lorsqu'init change de niveau, le mécanisme rc de la distribution arrête les se
 
 Demander le niveau 0 ou 6 constitue une action destructrice de disponibilité à l'échelle du système. Employez l'interface d'arrêt du système, prévenez les utilisateurs, préservez le travail actif et vérifiez l'accès à une console distante au lieu de déclencher négligemment une transition init brute.
 
-:::single-choice{#sysv-overview-runlevel-six-meaning}
-Que demande conventionnellement le niveau `6` ?
+:::single-choice{#sysv-overview-runlevel-six-meaning} Que demande conventionnellement le niveau `6` ?
 
 ::option[La création de six comptes utilisateur supplémentaires.]{#sysv-overview-six-users explanation="Les niveaux d'exécution décrivent des modes de fonctionnement, pas un nombre de comptes."}
 ::option[Une transition de redémarrage du système.]{#sysv-overview-reboot .correct explanation="La politique SysV classique réserve le niveau six à l'arrêt des services et au redémarrage du système."}
@@ -86,8 +82,7 @@ Que demande conventionnellement le niveau `6` ?
 
 Sur un hôte systemd, les scripts SysV peuvent être enveloppés dans des unités générées, mais les dépendances, délais, journaux et états de systemd continuent de s'appliquer. Exécuter directement un ancien script peut contourner le suivi du gestionnaire de services. Identifiez le gestionnaire actif et employez si possible son interface native.
 
-:::single-choice{#sysv-overview-compatibility-script}
-Pourquoi faut-il normalement appeler un script de style SysV au moyen du gestionnaire de services sur un hôte systemd ?
+:::single-choice{#sysv-overview-compatibility-script} Pourquoi faut-il normalement appeler un script de style SysV au moyen du gestionnaire de services sur un hôte systemd ?
 
 ::option[Son exécution directe peut contourner le suivi des dépendances et de l'état.]{#sysv-overview-manager-tracking .correct explanation="Le gestionnaire doit coordonner la propriété des processus, l'ordre, les délais et l'état."}
 ::option[Les scripts shell ne peuvent pas s'exécuter sur un système systemd.]{#sysv-overview-scripts-impossible explanation="Ils peuvent s'exécuter, mais contourner la supervision peut créer un état incohérent."}

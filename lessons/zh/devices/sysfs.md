@@ -30,8 +30,7 @@ $ readlink -f /sys/class/block/sda
 
 使用其他存储接口的系统上可能没有示例中的名称。
 
-:::single-choice{#sysfs-canonical-device-tree}
-哪个 sysfs 子树包含内核的主要设备层次结构？
+:::single-choice{#sysfs-canonical-device-tree} 哪个 sysfs 子树包含内核的主要设备层次结构？
 
 ::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="sysfs 不是用户身份验证秘密的存储库。"}
 ::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="devices 子树表示设备父子拓扑；类别和总线视图会链接到其中。"}
@@ -53,8 +52,7 @@ $ cat /sys/class/block/sda/size
 
 `dev` 报告主设备号和次设备号。`ro` 报告块设备的只读标志。对于 Linux 块设备，`size` 通常以 512 字节扇区为单位，而不考虑设备的物理扇区大小。必须查阅内核 ABI 文档，确认具体属性的单位和含义。
 
-:::single-choice{#sysfs-dev-attribute}
-块设备的 sysfs `dev` 属性通常包含什么？
+:::single-choice{#sysfs-dev-attribute} 块设备的 sysfs `dev` 属性通常包含什么？
 
 ::option[当前存储在设备上的每个文件。]{#sysfs-file-list explanation="文件系统目录树不会嵌入这个小型设备属性中。"}
 ::option[安装该硬件的软件包名称。]{#sysfs-package-name explanation="硬件不是由 dev 属性标识的软件包来安装的。"}
@@ -67,8 +65,7 @@ $ cat /sys/class/block/sda/size
 
 两个接口相互补充。任何一个都不能单独提供完整的硬件事实清单，而且设备可能在检查过程中消失。
 
-:::single-choice{#sysfs-versus-dev}
-哪项说法正确区分了 `/sys` 与 `/dev`？
+:::single-choice{#sysfs-versus-dev} 哪项说法正确区分了 `/sys` 与 `/dev`？
 
 ::option[`/sys` 存储用户文档；`/dev` 存储软件包归档。]{#sysfs-dev-user-files explanation="这两个目录都不承担这些普通数据存储职责。"}
 ::option[`/sys` 公开内核对象属性；`/dev` 提供用于 I/O 的设备节点。]{#sysfs-dev-distinction .correct explanation="sysfs 为对象及控制项建模，而设备节点将操作路由到字符或块驱动程序。"}
@@ -81,8 +78,7 @@ $ cat /sys/class/block/sda/size
 
 应阅读相关 ABI 文档和当前值，确定如何持久保存设置，并且只在获得授权的系统上测试。绝不要在 `/sys` 中递归修改权限或写入猜测的值。
 
-:::single-choice{#sysfs-write-risk}
-为什么写入 sysfs 属性可能对运行产生重大影响？
+:::single-choice{#sysfs-write-risk} 为什么写入 sysfs 属性可能对运行产生重大影响？
 
 ::option[每次写入都会在磁盘上创建普通备份副本。]{#sysfs-backup-copy explanation="sysfs 是虚拟文件系统，不会自动备份控制变更。"}
 ::option[即使属性可写，sysfs 也会忽略所有写入。]{#sysfs-ignore-writes explanation="可写属性存在的目的正是接收受支持的控制值。"}

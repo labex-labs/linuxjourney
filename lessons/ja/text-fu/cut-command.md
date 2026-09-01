@@ -42,8 +42,7 @@ bb
 
 リストには個別の位置や範囲を指定できます。空白、タブ、句読点も位置を占め、`cut` は各行を独立して処理します。
 
-:::single-choice{#cut-first-character}
-`names.txt` の各行から最初の文字を表示するコマンドはどれですか？
+:::single-choice{#cut-first-character} `names.txt` の各行から最初の文字を表示するコマンドはどれですか？
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="`-c` は文字位置を選び、位置 1 は各行の最初の文字です。"}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="`-f` はタブ区切りの最初のフィールドを選ぶため、複数文字を含むことがあります。"}
@@ -63,8 +62,7 @@ viewer
 
 文字選択と同様、`1`、`1,3`、`2-4`、`-3`、`2-` などをリストに指定できます。
 
-:::single-choice{#cut-second-tab-field}
-`team.tsv` の各行から 2 番目のタブ区切りフィールドを表示するコマンドはどれですか？
+:::single-choice{#cut-second-tab-field} `team.tsv` の各行から 2 番目のタブ区切りフィールドを表示するコマンドはどれですか？
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="これはタブ区切りの 2 番目のフィールドではなく、各行の 2 文字目を選びます。"}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="`-d` がなければフィールドモードはタブを区切りに使い、`-f 2` が 2 番目を選びます。"}
@@ -84,8 +82,7 @@ bob
 
 この形式の区切り文字は 1 文字です。引用符のないセミコロンはシェルで制御用の意味を持つため引用します。
 
-:::single-choice{#cut-semicolon-role-field}
-`team.txt` の 2 番目のセミコロン区切りフィールドを表示するコマンドはどれですか？
+:::single-choice{#cut-semicolon-role-field} `team.txt` の 2 番目のセミコロン区切りフィールドを表示するコマンドはどれですか？
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="これはコロン区切りのフィールドを選びますが、ファイルはセミコロン区切りです。"}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="引用したセミコロンが区切りを設定し、`-f 2` が各行の 2 番目を選びます。"}
@@ -104,8 +101,7 @@ viewer
 
 これは一般的な CSV の検証には使えません。CSV には引用された区切り、埋め込み改行、エスケープ規則があるため、CSV 対応ツールを使ってください。
 
-:::single-choice{#cut-suppress-undelimited}
-`cut -d ':' -f 1` で `-s` は何をしますか？
+:::single-choice{#cut-suppress-undelimited} `cut -d ':' -f 1` で `-s` は何をしますか？
 
 ::option[選択したフィールドを並べ替えてから表示する。]{#cut-s-sort explanation="`cut` は並べ替えず、`-s` も順序とは無関係です。"}
 ::option[連続する区切り文字を 1 つとして扱う。]{#cut-s-squeeze explanation="`-s` は区切り文字をまとめません。空のフィールドにも位置として意味があります。"}
@@ -122,8 +118,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-`generate-data | cut -d ':' -f 1` で、`cut` はどこから入力を読みますか？
+:::single-choice{#cut-pipeline-input} `generate-data | cut -d ':' -f 1` で、`cut` はどこから入力を読みますか？
 
 ::option[パイプを通じて `generate-data` の stdout から。]{#cut-pipe-stdin .correct explanation="パイプが生成側の stdout を `cut` の stdin へ接続し、別の入力ファイルは指定されていません。"}
 ::option[`generate-data` という名前のファイルから。]{#cut-pipe-file explanation="`generate-data` は左側のコマンドとして実行され、`cut` へファイル名として渡されません。"}

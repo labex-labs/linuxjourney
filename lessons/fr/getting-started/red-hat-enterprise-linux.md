@@ -16,8 +16,7 @@ Red Hat Enterprise Linux, souvent appelé **RHEL**, est une distribution Linux c
 
 RHEL compte parmi les principales distributions Linux d'entreprise, car elle est employée sur les serveurs, dans les centres de données, les systèmes cloud et les environnements professionnels réglementés. Son rôle diffère de celui des distributions communautaires généralistes : la possibilité d'obtenir une assistance et la planification du cycle de vie à long terme sont au cœur de sa valeur.
 
-:::single-choice{#match-rhel-priorities}
-Quel besoin correspond le plus directement aux objectifs de RHEL ?
+:::single-choice{#match-rhel-priorities} Quel besoin correspond le plus directement aux objectifs de RHEL ?
 
 ::option[Des changements fonctionnels permanents sans cycle d'assistance]{#continuous-unsupported-change explanation="RHEL suit un cycle publié et prudent plutôt que des changements continus sans assistance. La prévisibilité fait partie de sa valeur pour les entreprises."}
 ::option[Des versions prévisibles accompagnées d'une assistance professionnelle à long terme]{#predictable-enterprise-platform .correct explanation="RHEL vise les organisations qui ont besoin de cycles planifiés, de maintenance et d'assistance professionnelle. Ces qualités préservent la prise en charge des systèmes de production dans le temps."}
@@ -36,8 +35,7 @@ RHEL est étroitement lié à l'écosystème Red Hat. Fedora est le projet commu
 
 Pour comparer ces deux voies, consultez [Fedora](https://labex.io/fr/lesson/fedora). Pour une vue d'ensemble des familles, consultez [Choisir une distribution Linux](https://labex.io/fr/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#compare-fedora-and-rhel}
-Quelle relation Fedora entretient-elle avec RHEL dans l'écosystème Red Hat ?
+:::single-choice{#compare-fedora-and-rhel} Quelle relation Fedora entretient-elle avec RHEL dans l'écosystème Red Hat ?
 
 ::option[Fedora est une ancienne version de RHEL conservée sans maintenance de sécurité]{#fedora-old-rhel explanation="Fedora est une distribution communautaire distincte, pas une version expirée de RHEL. Elle possède ses propres versions et avance plus rapidement."}
 ::option[Fedora est un projet communautaire en amont pour des technologies susceptibles d'arriver dans RHEL]{#fedora-upstream .correct explanation="Fedora est le projet communautaire en amont qui évolue rapidement. Red Hat puise dans cet écosystème pour développer sa plateforme d'entreprise plus prudente."}
@@ -50,8 +48,7 @@ RHEL emploie le format de paquets RPM et des outils comme DNF pour installer, me
 
 La gestion des paquets est une compétence opérationnelle essentielle pour les administrateurs RHEL, car la maintenance à long terme et les mises à jour prévisibles sont centrales dans l'exploitation des systèmes d'entreprise.
 
-:::single-choice{#relate-rpm-and-dnf}
-Comment RPM et DNF travaillent-ils ensemble dans RHEL ?
+:::single-choice{#relate-rpm-and-dnf} Comment RPM et DNF travaillent-ils ensemble dans RHEL ?
 
 ::option[RPM définit les logiciels empaquetés, tandis que DNF gère le contenu des dépôts et les dépendances]{#rpm-format-dnf-tool .correct explanation="Les logiciels RHEL sont distribués sous forme de paquets RPM et DNF est l'outil de haut niveau couramment employé pour les trouver, installer, mettre à jour et supprimer."}
 ::option[DNF définit les logiciels empaquetés, tandis que RPM gère le bureau graphique]{#dnf-format-rpm-desktop explanation="Cette réponse inverse et déforme leurs rôles. RPM est le système de paquets, tandis que DNF assure leur gestion de haut niveau."}
@@ -64,8 +61,7 @@ L'assistance professionnelle est l'une des grandes raisons qui poussent les orga
 
 Pour une entreprise, ce modèle d'assistance peut compter autant que les fonctionnalités techniques de la distribution elle-même.
 
-:::single-choice{#use-published-lifecycle}
-Pourquoi un cycle d'assistance publié est-il précieux pour une organisation ?
+:::single-choice{#use-published-lifecycle} Pourquoi un cycle d'assistance publié est-il précieux pour une organisation ?
 
 ::option[Il garantit que chaque application fonctionnera sans tests]{#guarantee-all-applications explanation="Un système d'exploitation pris en charge ne garantit pas la compatibilité avec toutes les applications. Les organisations doivent encore la contrôler et tester."}
 ::option[Il supprime le besoin d'installer des mises à jour de sécurité pendant la période d'assistance]{#avoid-security-updates explanation="Le cycle donne accès à la maintenance et aux mises à jour de sécurité ; il ne les rend pas inutiles. Les systèmes exigent toujours une maintenance active."}

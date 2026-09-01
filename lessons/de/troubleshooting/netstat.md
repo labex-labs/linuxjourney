@@ -22,8 +22,7 @@ $ sudo ss -lntup
 
 `-l` wählt Listener aus, `-n` vermeidet Namensauflösung, `-t` und `-u` wählen TCP beziehungsweise UDP aus, und `-p` fordert Prozessdaten an. UDP ist verbindungslos; seine unverbundenen gebundenen Sockets besitzen daher keine TCP-artigen `LISTEN`-Handshakes.
 
-:::single-choice{#netstat-ss-numeric}
-Warum solltest du bei der Socketfehlersuche `-n` verwenden?
+:::single-choice{#netstat-ss-numeric} Warum solltest du bei der Socketfehlersuche `-n` verwenden?
 
 ::option[Die Option erstellt einen neuen Netzwerknamensraum.]{#netstat-new-namespace explanation="Die Option steuert die Namensauflösung in der Ausgabe."}
 ::option[Sie verhindert die Auflösung von Adress- und Portnamen.]{#netstat-numeric-output .correct explanation="Numerische Ausgabe verhindert, dass eine Dienstnamenzuordnung mit der beobachteten Protokollidentität verwechselt wird."}
@@ -34,8 +33,7 @@ Warum solltest du bei der Socketfehlersuche `-n` verwenden?
 
 Ein lokaler Socketendpunkt verbindet eine Adresse, ein Transportprotokoll und einen Port. Eine TCP-Verbindung wird durch Protokoll sowie Quell- und Zieladressen und -ports unterschieden. `/etc/services` ordnet herkömmliche Namen Zahlen zu, beweist aber weder, welcher Prozess aktuell einen Port besitzt, noch welches Anwendungsprotokoll er spricht.
 
-:::single-choice{#netstat-services-file-limit}
-Was belegt ein `/etc/services`-Eintrag wie `https 443/tcp`?
+:::single-choice{#netstat-services-file-limit} Was belegt ein `/etc/services`-Eintrag wie `https 443/tcp`?
 
 ::option[Dass aktuell ein fehlerfreier HTTPS-Server lauscht.]{#netstat-healthy-listener explanation="Eine statische Namensdatenbank beweist keinen Laufzeitzustand."}
 ::option[Die herkömmliche Dienstnamenzuordnung für diesen Port.]{#netstat-conventional-name .correct explanation="Socketeigentum und tatsächliches Protokollverhalten erfordern Laufzeituntersuchung und Tests."}
@@ -53,8 +51,7 @@ Häufige Zustände sind:
 
 Große oder wachsende `CLOSE-WAIT`-Mengen weisen häufig auf das Aufräumverhalten der lokalen Anwendung hin. `TIME-WAIT` ist ein normaler Protokollzustand; Anzahl und Ressourcenauswirkungen bestimmen, ob er betrieblich problematisch ist.
 
-:::single-choice{#netstat-close-wait-owner}
-Welche Seite muss einen Socket in `CLOSE-WAIT` noch schließen?
+:::single-choice{#netstat-close-wait-owner} Welche Seite muss einen Socket in `CLOSE-WAIT` noch schließen?
 
 ::option[Jeder Router im Internet.]{#netstat-all-routers-close explanation="Router besitzen den Endpunktsocket nicht."}
 ::option[Der autoritative DNS-Server.]{#netstat-dns-close explanation="Der Namensdienst hat nichts mit der lokalen TCP-Schließverarbeitung zu tun."}
@@ -67,8 +64,7 @@ Die Bedeutung von `Recv-Q` und `Send-Q` hängt von Zustand und Protokoll ab. Bei
 
 Eine Momentaufnahme allein belegt weder Leak noch Engpass. Erfasse Stichproben über die Zeit und verknüpfe sie mit Prozessverhalten, Anwendungslatenz, erneuten Übertragungen und Ressourcengrenzen.
 
-:::single-choice{#netstat-queue-snapshot}
-Warum reicht eine einzelne Momentaufnahme einer großen Socketwarteschlange nicht zur Diagnose?
+:::single-choice{#netstat-queue-snapshot} Warum reicht eine einzelne Momentaufnahme einer großen Socketwarteschlange nicht zur Diagnose?
 
 ::option[Linux speichert niemals Daten in Socketwarteschlangen.]{#netstat-no-queues explanation="Das Kernelnetzwerk ist auf Sende- und Empfangswarteschlangen angewiesen."}
 ::option[Jeder Warteschlangenwert ist eine Dateisystemberechtigung.]{#netstat-queue-permission explanation="Die Felder beschreiben Netzwerkzustand."}
@@ -86,8 +82,7 @@ $ ss -ltn 'sport = :443'
 
 Ein Listener beweist lokale Transportbereitschaft und keine entfernte Erreichbarkeit oder einen fehlerfreien Anwendungszustand. Führe anschließend zum Symptom passende Routen-, Firewall-, Paket-, TLS- und Anwendungstests durch.
 
-:::single-choice{#netstat-listener-limit}
-Was beweist ein TCP-Listener auf Port 443 nicht?
+:::single-choice{#netstat-listener-limit} Was beweist ein TCP-Listener auf Port 443 nicht?
 
 ::option[Dass ein lokaler Socket eine Bind- und Listenoperation angenommen hat.]{#netstat-listen-local explanation="Dies ist genau der angezeigte lokale Zustand."}
 ::option[Dass entfernte Clients eine gültige HTTPS-Anfrage abschließen können.]{#netstat-not-remote-proof .correct explanation="Pfadrichtlinie, TLS und Anwendungsverhalten bleiben ungetestet."}

@@ -23,8 +23,7 @@ $ ip -brief address show
 
 接口名称可能是 `enp1s0` 这样基于硬件的可预测名称、`eth0` 这样的传统名称，或管理员定义的名称。绝不要假定 `eth0` 一定存在或标识某个特定适配器。
 
-:::single-choice{#interfaces-name-assumption}
-为什么脚本应该发现接口，而不是假定存在 `eth0`？
+:::single-choice{#interfaces-name-assumption} 为什么脚本应该发现接口，而不是假定存在 `eth0`？
 
 ::option[每个接口都必须命名为 `lo`。]{#interfaces-all-loopback explanation="环回是一个特殊接口，并非每条链路的名称。"}
 ::option[Linux 系统可以使用多种接口命名方案。]{#interfaces-naming-varies .correct explanation="基于硬件、虚拟和自定义的名称使固定 eth0 假设不可靠。"}
@@ -42,8 +41,7 @@ $ ip -s link show dev enp1s0
 
 统计视图可以显示错误、丢弃和计数器，但只有结合时间区间和基线，计数器才有意义。
 
-:::single-choice{#interfaces-up-limit}
-管理状态 `UP` 无法证明什么？
+:::single-choice{#interfaces-up-limit} 管理状态 `UP` 无法证明什么？
 
 ::option[端到端连接正常。]{#interfaces-up-not-connectivity .correct explanation="较低层、寻址、路由、过滤、命名和服务故障仍可能存在。"}
 ::option[管理员启用了该接口。]{#interfaces-up-does-prove explanation="这正是该状态的直接含义。"}
@@ -61,8 +59,7 @@ $ sudo ip address add 192.0.2.10/24 dev enp1s0
 
 这些更改影响当前内核状态，并可能与之后重新应用配置文件的网络管理器冲突。关闭远程管理接口可能立即中断访问。更改前应确认确切设备、保留控制台访问、记录当前状态，并准备定时或经过测试的回滚。
 
-:::single-choice{#interfaces-ip-address-add-persistence}
-`ip address add` 本身能保证重启后设置仍然存在吗？
+:::single-choice{#interfaces-ip-address-add-persistence} `ip address add` 本身能保证重启后设置仍然存在吗？
 
 ::option[不能；活动配置系统还必须保存该设置。]{#interfaces-manager-persistence .correct explanation="NetworkManager、systemd-networkd、ifupdown 或其他所有者负责应用持久策略。"}
 ::option[能，因为每次内核更改都会编辑所有管理器配置文件。]{#interfaces-runtime-always-persistent explanation="内核运行时更改不会普遍更新持久配置。"}
@@ -81,8 +78,7 @@ $ nmcli device status
 
 只使用已确定管理器所提供的命令。两个管理器控制同一条链路时可能相互竞争，并覆盖对方的状态。
 
-:::single-choice{#interfaces-config-owner}
-持久更改接口前应该做什么？
+:::single-choice{#interfaces-config-owner} 持久更改接口前应该做什么？
 
 ::option[编辑每个可能的网络配置文件。]{#interfaces-edit-all explanation="相互竞争的定义会造成冲突和不可预测的重新应用。"}
 ::option[确定哪个网络管理器拥有该接口。]{#interfaces-identify-owner .correct explanation="正确的配置来源和应用方法取决于归属。"}
@@ -93,8 +89,7 @@ $ nmcli device status
 
 应验证链路状态、分配的地址和有效期、所选路由、解析器状态、邻居可达性及实际应用程序。对于持久更改，只有存在恢复通道时，才能通过受控服务重启或系统重启进行测试。
 
-:::single-choice{#interfaces-change-verification}
-什么比在 `ip address` 中看到新地址更能证明更改有效？
+:::single-choice{#interfaces-change-verification} 什么比在 `ip address` 中看到新地址更能证明更改有效？
 
 ::option[接口名称中包含数字。]{#interfaces-digit explanation="命名不能提供端到端验证。"}
 ::option[shell 提示符颜色保持不变。]{#interfaces-prompt-color explanation="终端外观与网络运行无关。"}

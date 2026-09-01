@@ -28,8 +28,7 @@ $ service --status-all
 
 Its bracket markers and exit statuses are wrapper-specific, and a script can report unknown status. For one service, inspect the script's usage output or documentation rather than assuming every action exists.
 
-:::single-choice{#sysv-services-wrapper-purpose}
-What does the `service` command commonly wrap?
+:::single-choice{#sysv-services-wrapper-purpose} What does the `service` command commonly wrap?
 
 ::option[A disk partition editor running on every service file.]{#sysv-services-partition-editor explanation="Service control is unrelated to storage partitioning."}
 ::option[A kernel system call added dynamically by the script.]{#sysv-services-new-syscall explanation="Init scripts are user-space process-control programs."}
@@ -49,8 +48,7 @@ Replace the placeholder only after identifying the service, its dependents, curr
 
 The direct form `/etc/init.d/SERVICE_NAME ACTION` can exist, but on a host whose active manager provides compatibility, use the manager-facing command so it can track state and dependencies.
 
-:::single-choice{#sysv-services-stop-peanut}
-Which command requests that SysV service `peanut` stop?
+:::single-choice{#sysv-services-stop-peanut} Which command requests that SysV service `peanut` stop?
 
 ::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="The conventional operand order places the service name before the action."}
 ::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="This is not the SysV service wrapper syntax."}
@@ -68,8 +66,7 @@ $ sudo service SERVICE_NAME status
 $ sudo service SERVICE_NAME reload
 ```
 
-:::single-choice{#sysv-services-reload-versus-restart}
-Why should `reload` not be assumed equivalent to `restart`?
+:::single-choice{#sysv-services-reload-versus-restart} Why should `reload` not be assumed equivalent to `restart`?
 
 ::option[Reload always shuts down the entire operating system.]{#sysv-services-reload-shutdown explanation="That is not the normal meaning of a service reload action."}
 ::option[Restart only prints configuration and never changes process state.]{#sysv-services-restart-readonly explanation="Restart commonly stops and starts the service."}
@@ -82,8 +79,7 @@ Starting a service now does not necessarily enable it for future runlevels. Boot
 
 Do not create `S` and `K` links manually until you understand the distribution's dependency metadata and management tool; manual links can be overwritten or ordered incorrectly.
 
-:::single-choice{#sysv-services-start-versus-enable}
-Does `service SERVICE start` necessarily enable the service at future boots?
+:::single-choice{#sysv-services-start-versus-enable} Does `service SERVICE start` necessarily enable the service at future boots?
 
 ::option[Yes; every start action creates all runlevel links automatically.]{#sysv-services-start-links explanation="The wrapper does not universally change persistent enablement."}
 ::option[No; runtime state and runlevel enablement are separate.]{#sysv-services-runtime-separate .correct explanation="Boot links or manager policy determine future activation independently of starting the process now."}

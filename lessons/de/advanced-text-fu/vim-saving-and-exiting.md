@@ -24,8 +24,7 @@ Das Schreiben kann fehlschlagen, weil der Puffer keinen Dateinamen hat, das Verz
 
 Mit `:w copy.txt` schreibst du den aktuellen Puffer unter einen anderen Pfad, während der bisherige Name des aktuellen Puffers erhalten bleibt. Verwende `:saveas copy.txt`, wenn der Puffer den neuen Pfad übernehmen soll.
 
-:::single-choice{#vim-save-without-quit}
-Welcher Vim-Befehl schreibt den aktuellen Puffer in die zugehörige Datei, ohne Vim zu beenden?
+:::single-choice{#vim-save-without-quit} Welcher Vim-Befehl schreibt den aktuellen Puffer in die zugehörige Datei, ohne Vim zu beenden?
 
 ::option[`:q`]{#vim-save-q explanation="`:q` fordert das Beenden an und schreibt einen geänderten Puffer nicht."}
 ::option[`:w`]{#vim-save-w .correct explanation="Der Befehl `:write` speichert den aktuellen Puffer und lässt das Bearbeitungsfenster geöffnet."}
@@ -42,8 +41,7 @@ Mit `:q` schließt du das aktuelle Fenster, wenn dabei keine ungespeicherten Än
 
 Ist der aktuelle Puffer geändert und würden seine Änderungen verloren gehen, verweigert Vim das Beenden normalerweise und zeigt eine Warnung an. Dieser Schutz gibt dir Gelegenheit, die Änderungen zu schreiben oder deine Entscheidung zu überdenken.
 
-:::single-choice{#vim-quit-clean-buffer}
-Welcher Befehl schließt das aktuelle Vim-Fenster, wenn dabei keine ungespeicherten Änderungen verloren gehen?
+:::single-choice{#vim-quit-clean-buffer} Welcher Befehl schließt das aktuelle Vim-Fenster, wenn dabei keine ungespeicherten Änderungen verloren gehen?
 
 ::option[`:w`]{#vim-quit-w explanation="Dieser Befehl schreibt den Puffer, lässt das aktuelle Fenster aber geöffnet."}
 ::option[`:q`]{#vim-quit-q .correct explanation="Der gewöhnliche Beenden-Befehl schließt das Fenster, sofern Vims Schutz für geänderte Puffer dies zulässt."}
@@ -60,8 +58,7 @@ Verwende `:q!` nur, wenn du das aktuelle Fenster bewusst schließen und Änderun
 
 Das Ausrufezeichen setzt die Warnung wegen ungespeicherter Änderungen außer Kraft. Diese Änderungen am Puffer werden nicht geschrieben. Vergewissere dich deshalb vor dem Drücken von Enter, dass du sie wirklich nicht mehr brauchst.
 
-:::single-choice{#vim-quit-discard-changes}
-Der aktuelle Puffer enthält Änderungen, die du bewusst nicht speichern möchtest. Welcher Befehl schließt das aktuelle Fenster und verwirft sie?
+:::single-choice{#vim-quit-discard-changes} Der aktuelle Puffer enthält Änderungen, die du bewusst nicht speichern möchtest. Welcher Befehl schließt das aktuelle Fenster und verwirft sie?
 
 ::option[`:q`]{#vim-discard-plain-q explanation="Das einfache `:q` verweigert den Vorgang normalerweise, wenn beim Beenden Änderungen am Puffer verloren gingen."}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq` schreibt die Änderungen vor dem Beenden und bewirkt damit das Gegenteil des Verwerfens."}
@@ -78,8 +75,7 @@ Verwende `:wq`, wenn der Puffer geschrieben und das aktuelle Fenster nach erfolg
 
 Schlägt das Schreiben fehl, führt Vim das angeforderte Beenden nicht aus. Behebe den Fehler, statt anzunehmen, dass die Daten auf dem Datenträger angekommen sind.
 
-:::single-choice{#vim-write-and-quit}
-Welcher Befehl schreibt den aktuellen Puffer und schließt anschließend das aktuelle Fenster, sofern das Schreiben erfolgreich ist?
+:::single-choice{#vim-write-and-quit} Welcher Befehl schreibt den aktuellen Puffer und schließt anschließend das aktuelle Fenster, sofern das Schreiben erfolgreich ist?
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="Dieser Befehl verbindet Schreiben und Beenden, wobei das Beenden vom erfolgreichen Schreiben abhängt."}
 ::option[`:q!`]{#vim-save-force-quit explanation="Dieser Befehl beendet Vim und verwirft Änderungen, statt sie zu schreiben."}
@@ -100,8 +96,7 @@ ZZ
 
 Das unterscheidet sich geringfügig von `:wq`, das auch bei einem unveränderten Puffer einen Schreibvorgang anfordert. Das großgeschriebene `ZQ` ist im Normalmodus das Gegenstück für das Beenden ohne Schreiben, ähnlich wie `:q!`.
 
-:::single-choice{#vim-write-if-modified-quit}
-Welcher Befehl des Normalmodus schreibt nur bei einem geänderten Puffer und beendet Vim anschließend?
+:::single-choice{#vim-write-if-modified-quit} Welcher Befehl des Normalmodus schreibt nur bei einem geänderten Puffer und beendet Vim anschließend?
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="Das großgeschriebene `ZZ` schreibt bei Bedarf und beendet Vim anschließend, genau wie `:x`."}
 ::option[`zz`]{#vim-center-screen explanation="Das kleingeschriebene `zz` zentriert die aktuelle Zeile im Fenster; es speichert und beendet nicht."}

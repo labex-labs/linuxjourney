@@ -30,8 +30,7 @@ $ printf '%s\n' "$HOME"
 
 値は現在のプロセス環境によって異なり、普遍的な定数ではありません。未設定の変数は、より厳格なシェル動作を有効にしていなければ空文字列へ展開されます。
 
-:::single-choice{#env-print-home-value}
-`HOME` の値を 1 つの引数として保ちながら表示する Bash コマンドはどれですか？
+:::single-choice{#env-print-home-value} `HOME` の値を 1 つの引数として保ちながら表示する Bash コマンドはどれですか？
 
 ::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="単一引用符はパラメーター展開を防ぐため、文字列 `$HOME` がそのまま表示されます。"}
 ::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash は二重引用符内の `$HOME` を展開し、`printf` は完全な値を 1 つの引数として受け取ります。"}
@@ -56,8 +55,7 @@ USER=pete
 
 環境変数には認証情報、トークン、内部パスなどの機密データが含まれることがあります。`env` の完全な出力を公開の課題やログへ貼る前に、必ず確認して機密部分を伏せてください。
 
-:::single-choice{#env-list-exported-values}
-新しく起動したプロセスから見える環境を表示するコマンドはどれですか？
+:::single-choice{#env-list-exported-values} 新しく起動したプロセスから見える環境を表示するコマンドはどれですか？
 
 ::option[`env`]{#env-print-all .correct explanation="コマンドや代入を指定しない `env` は、受け取った環境の名前と値を表示します。"}
 ::option[`alias`]{#env-alias-list explanation="`alias` はエクスポートされた環境ではなく、シェル状態であるエイリアス定義を一覧表示します。"}
@@ -82,8 +80,7 @@ $ export PATH="/opt/coolapp/bin:$PATH"
 
 誤って `PATH` を新しいディレクトリだけで置き換えたり、信頼できない書き込み可能なディレクトリを追加したりしないでください。通常のコマンドが見つからなくなったり、意図しない実行ファイルが動いたりする恐れがあります。
 
-:::single-choice{#env-prepend-path-directory}
-現在の Bash と今後の子プロセスで、既存の `PATH` の前に `/opt/coolapp/bin` を追加するコマンドはどれですか？
+:::single-choice{#env-prepend-path-directory} 現在の Bash と今後の子プロセスで、既存の `PATH` の前に `/opt/coolapp/bin` を追加するコマンドはどれですか？
 
 ::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="既存の検索ディレクトリをすべて捨てるため、通常のコマンドが見つけにくくなります。"}
 ::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="新しいディレクトリを先頭へ加え、以前の値を残し、結果を子プロセスへエクスポートします。"}
@@ -105,8 +102,7 @@ test
 
 現在の Bash に `TEST` が作られ、起動するコマンドは `TEST=test` を継承します。子プロセスから親の環境を変更することはできません。通常、この代入は解除するかシェルを終了するまで続き、システム全体の環境は変更しません。
 
-:::single-choice{#env-export-inheritance}
-Bash で `export TEST=test` を実行する主な効果は何ですか？
+:::single-choice{#env-export-inheritance} Bash で `export TEST=test` を実行する主な効果は何ですか？
 
 ::option[すべてのユーザーのシステム設定へ `TEST` を書き込む。]{#env-system-wide explanation="現在のシェルとその子による継承に作用し、全ユーザーや OS 全体には作用しません。"}
 ::option[今後の子プロセスが `TEST=test` を継承できるようにする。]{#env-child-inheritance .correct explanation="`export` は、Bash が起動するコマンドへ渡す環境にシェル変数を追加します。"}
@@ -127,8 +123,7 @@ $ env LANG=C sort names.txt
 
 現在のシェルの `LANG` は恒久的には変わりません。`env -i COMMAND` は最初は空の環境でコマンドを起動しますが、多くのプログラムが環境値に依存するため意図的に使ってください。
 
-:::single-choice{#env-one-command-value}
-現在のシェルの `LANG` を恒久的に変えず、`sort names.txt` を `LANG=C` で実行するコマンドはどれですか？
+:::single-choice{#env-one-command-value} 現在のシェルの `LANG` を恒久的に変えず、`sort names.txt` を `LANG=C` で実行するコマンドはどれですか？
 
 ::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` は起動するコマンドの環境へ代入を追加し、親シェルは以前の値を保ちます。"}
 ::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="これは現在のシェルで `LANG=C` をエクスポートし、`sort` 終了後も変更を残します。"}

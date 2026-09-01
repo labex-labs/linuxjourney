@@ -32,8 +32,7 @@ sally sells seashells
 
 Coloque padrões regex entre aspas para que o shell não os expanda nem os divida antes que a ferramenta os receba. Regex também é diferente da expansão de caminhos do shell: em uma regex, `*` repete o átomo anterior; em um glob do shell, `*` é por si só um curinga para uma sequência de caracteres de um caminho.
 
-:::single-choice{#regex-versus-shell-star}
-O que `*` faz em uma expressão regular como `ab*`?
+:::single-choice{#regex-versus-shell-star} O que `*` faz em uma expressão regular como `ab*`?
 
 ::option[Corresponde a qualquer nome de arquivo no diretório atual.]{#regex-shell-glob explanation="Isso descreve a expansão de caminhos do shell no contexto de um comando, não o significado de `*` dentro de uma regex."}
 ::option[Repete o `b` anterior zero ou mais vezes.]{#regex-repeat-b .correct explanation="Um quantificador de regex se aplica ao átomo imediatamente anterior; portanto, `ab*` corresponde a `a`, `ab`, `abb` e assim por diante."}
@@ -60,8 +59,7 @@ Combine as duas âncoras quando a linha inteira precisar se ajustar ao padrão:
 ^by the seashore$
 ```
 
-:::single-choice{#regex-complete-line}
-Qual padrão corresponde apenas a uma linha cujo texto completo é `by the seashore`?
+:::single-choice{#regex-complete-line} Qual padrão corresponde apenas a uma linha cujo texto completo é `by the seashore`?
 
 ::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="O circunflexo exige que a correspondência comece no início, e o cifrão exige que termine com a linha."}
 ::option[`by the seashore`]{#regex-unanchored-line explanation="Sem âncoras, essa sequência pode corresponder dentro de uma linha maior com texto antes ou depois."}
@@ -78,8 +76,7 @@ b.
 
 Isso corresponde a `by`, mas também pode corresponder a `ba` ou `b7`. Não corresponde a um `b` isolado, pois exige um caractere depois dele. Para corresponder a um ponto literal, use o escape `\.` ou coloque-o em uma expressão adequada entre colchetes.
 
-:::single-choice{#regex-dot-character}
-Qual cadeia não corresponde ao padrão de linha completa `^b.$`?
+:::single-choice{#regex-dot-character} Qual cadeia não corresponde ao padrão de linha completa `^b.$`?
 
 ::option[`by`]{#regex-dot-by explanation="O ponto corresponde a `y`; portanto, a linha de dois caracteres satisfaz o padrão."}
 ::option[`b`]{#regex-dot-b .correct explanation="O ponto exige um caractere depois de `b`, mas essa cadeia termina imediatamente."}
@@ -104,8 +101,7 @@ s[^e]lls
 
 Isso corresponde a `salls`, mas não a `sells`, pois o caractere depois do primeiro `s` não pode ser `e`.
 
-:::single-choice{#regex-negated-bracket}
-Ao que `[^e]` corresponde?
+:::single-choice{#regex-negated-bracket} Ao que `[^e]` corresponde?
 
 ::option[Exatamente um caractere diferente de `e`.]{#regex-not-e .correct explanation="Um circunflexo inicial dentro dos colchetes complementa o conjunto, enquanto a expressão ainda consome um caractere."}
 ::option[Ao início de uma linha seguido de `e`.]{#regex-caret-e-anchor explanation="Dentro de uma expressão entre colchetes, um circunflexo inicial nega o conjunto, em vez de ancorar a linha."}
@@ -143,8 +139,7 @@ $ grep -E '^(cat|dog)s?$' animals.txt
 
 Esse comando seleciona linhas completas iguais a `cat`, `cats`, `dog` ou `dogs`. No modo BRE, esses operadores possuem regras de escape diferentes; portanto, não copie um padrão entre variantes sem verificá-lo.
 
-:::single-choice{#regex-extended-alternation}
-Qual comando ativa a sintaxe de regex estendida para o padrão `^(cat|dog)s?$`?
+:::single-choice{#regex-extended-alternation} Qual comando ativa a sintaxe de regex estendida para o padrão `^(cat|dog)s?$`?
 
 ::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F` trata todos os operadores de regex como texto literal; assim, agrupamento, alternância e repetição opcional são desativados."}
 ::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E` seleciona expressões regulares estendidas e ativa o agrupamento, a alternância e o `s` opcional mostrados."}

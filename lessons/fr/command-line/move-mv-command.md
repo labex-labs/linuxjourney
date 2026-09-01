@@ -34,8 +34,7 @@ Le même ordre renomme un répertoire :
 $ mv old_directory_name new_directory_name
 ```
 
-:::single-choice{#rename-file-with-mv}
-Quelle commande renomme `cat` en `dog` dans le répertoire actuel ?
+:::single-choice{#rename-file-with-mv} Quelle commande renomme `cat` en `dog` dans le répertoire actuel ?
 
 ::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` traite `cat` comme le chemin source et `dog` comme son nouveau chemin de destination."}
 ::option[`mv dog cat`]{#rename-dog explanation="L'ordre des opérandes est inversé ; cette commande tenterait de renommer un `dog` existant en `cat`."}
@@ -64,8 +63,7 @@ $ mv -t somedirectory/ file_1 file_2
 
 Contrairement à `cp`, `mv` ne nécessite pas d'option récursive pour un répertoire.
 
-:::single-choice{#move-multiple-files}
-Quelle commande déplace `file_1` et `file_2` dans le répertoire existant `archive/` ?
+:::single-choice{#move-multiple-files} Quelle commande déplace `file_1` et `file_2` dans le répertoire existant `archive/` ?
 
 ::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="Sans l'option GNU `-t`, un déplacement à plusieurs sources attend le répertoire cible en dernier. Cet ordre n'est pas la forme standard."}
 ::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` n'utilise pas `-r` pour déplacer des fichiers ou répertoires ; la forme normale à plusieurs sources suffit."}
@@ -100,8 +98,7 @@ Par défaut, `mv` peut remplacer une destination existante. Inspectez les chemin
 $ mv -v file1 file2 somedirectory/
 ```
 
-:::single-choice{#move-without-overwriting}
-Quelle commande déplace `draft.txt` dans `finished/` uniquement si elle n'écrase pas une destination existante ?
+:::single-choice{#move-without-overwriting} Quelle commande déplace `draft.txt` dans `finished/` uniquement si elle n'écrase pas une destination existante ?
 
 ::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="`-i` demande quoi faire lorsqu'une destination existe ; un écrasement reste possible si l'utilisateur le confirme."}
 ::option[`mv -b draft.txt finished/`]{#backup-draft explanation="`-b` permet le remplacement en conservant une sauvegarde de l'ancienne destination ; elle n'empêche pas l'écrasement."}
@@ -125,16 +122,14 @@ $ mv *.txt notes/
 
 Prévisualiser les correspondances avec `ls` permet de repérer un motif trop large avant de changer plusieurs chemins.
 
-:::single-choice{#move-directory-without-recursion}
-Quelle commande déplace le répertoire `project/` dans `/srv/archive/` ?
+:::single-choice{#move-directory-without-recursion} Quelle commande déplace le répertoire `project/` dans `/srv/archive/` ?
 
 ::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` n'a pas besoin de `-r` et ne l'utilise pas dans ce but. Les répertoires sont gérés par le déplacement ordinaire."}
 ::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="La syntaxe ordinaire de `mv` déplace un répertoire vers une cible existante sans option récursive."}
 ::option[`cp project/ /srv/archive/`]{#copy-project explanation="Un simple `cp` ne déplace pas le répertoire et nécessiterait une option récursive pour le copier ; l'original resterait aussi en place."}
 :::
 
-:::single-choice{#preview-text-file-move}
-Vous prévoyez d'exécuter `mv *.txt notes/`. Quelle commande prévisualise les chemins sélectionnés par le même joker ?
+:::single-choice{#preview-text-file-move} Vous prévoyez d'exécuter `mv *.txt notes/`. Quelle commande prévisualise les chemins sélectionnés par le même joker ?
 
 ::option[`ls '*.txt'`]{#literal-text-pattern explanation="Les guillemets empêchent le shell de développer `*` ; cette commande cherche donc un nom littéral avec un astérisque."}
 ::option[`ls *.txt`]{#list-text-matches .correct explanation="Le shell développe `*.txt` pour `ls` comme pour `mv`, ce qui permet d'examiner d'abord les noms non cachés sélectionnés."}

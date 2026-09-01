@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 `/usr/lib/systemd/` kann auf einem System vorhanden sein, auf dem ein anderes Programm PID 1 ist, und ein Container kann seinen eigenen PID-Namensraum bereitstellen. `systemctl` besitzt außerdem Modi für Benutzermanager sowie entfernte Systeme und Container. Stelle deshalb fest, an welchen Manager sich eine Operation richtet.
 
-:::single-choice{#systemd-overview-detection}
-Woran lässt sich systemd am unmittelbarsten als init-Manager des Systems erkennen?
+:::single-choice{#systemd-overview-detection} Woran lässt sich systemd am unmittelbarsten als init-Manager des Systems erkennen?
 
 ::option[Ein Verzeichnis namens `/usr/lib/systemd` ist vorhanden.]{#systemd-overview-directory explanation="Bibliotheken und Unit-Dateien können installiert bleiben, ohne dass systemd als PID 1 arbeitet."}
 ::option[Ein Benutzer hat einen Befehl namens `systemctl` ausgeführt.]{#systemd-overview-command-executed explanation="Ein Clientprogramm kann vorhanden sein, obwohl kein systemweiter systemd-Manager verfügbar ist."}
@@ -44,8 +43,7 @@ Eine Unit ist das benannte Modell von systemd für eine Ressource oder Aktivitä
 
 Der Zustand einer Unit ist nicht immer „running“. Ein Mount kann eingehängt sein, ein Timer warten, ein Gerät vorhanden und ein Target aktiv sein, nachdem seine Abhängigkeiten erreicht wurden.
 
-:::single-choice{#systemd-overview-group-unit}
-Welcher Unit-Typ gruppiert üblicherweise andere Units und stellt einen Synchronisierungspunkt bereit?
+:::single-choice{#systemd-overview-group-unit} Welcher Unit-Typ gruppiert üblicherweise andere Units und stellt einen Synchronisierungspunkt bereit?
 
 ::option[`.socket`]{#systemd-overview-socket explanation="Socket-Units stellen IPC- oder Netzwerkendpunkte bereit und können Dienste aktivieren."}
 ::option[`.target`]{#systemd-overview-target .correct explanation="Target-Units fassen Abhängigkeiten zusammen und stellen Meilensteine des Bootvorgangs oder Betriebs dar."}
@@ -62,8 +60,7 @@ System-Units können aus Distributions- und Administratorpfaden geladen werden, 
 
 Die genauen Anbieterpfade können abweichen. Lokale Konfiguration mit höherer Priorität überschreibt Dateien gleichen Unit-Namens mit niedrigerer Priorität. Bevorzuge mit `systemctl edit UNIT` erstellte Drop-in-Überschreibungen, statt eine vollständige Anbieterdatei zu kopieren und zu verändern, damit Paketaktualisierungen sichtbar bleiben.
 
-:::single-choice{#systemd-overview-local-override}
-Wo sollten dauerhafte lokale Überschreibungen für System-Units normalerweise liegen?
+:::single-choice{#systemd-overview-local-override} Wo sollten dauerhafte lokale Überschreibungen für System-Units normalerweise liegen?
 
 ::option[Innerhalb von `/proc/systemd/`.]{#systemd-overview-proc-systemd explanation="Procfs ist eine Kernel-Laufzeitschnittstelle und kein Speicherort für dauerhafte Unit-Konfiguration."}
 ::option[Unter `/etc/systemd/system/`.]{#systemd-overview-etc-system .correct explanation="Die Administratorkonfiguration hat Vorrang vor den mit Paketen gelieferten Anbieter-Units."}
@@ -76,8 +73,7 @@ Systemd erstellt aus Abhängigkeitsbeziehungen eine Transaktion. `Wants=` und `R
 
 Eine Zeile `After=network.target` beweist nicht, dass eine nutzbare Verbindung, DNS oder ein bestimmter entfernter Endpunkt bereit ist. Dienste müssen die geeignete Network-online-Integration verwenden oder eigene Wiederholungs- und Bereitschaftsmechanismen implementieren.
 
-:::single-choice{#systemd-overview-after-semantics}
-Was legt `After=other.service` für sich allein fest?
+:::single-choice{#systemd-overview-after-semantics} Was legt `After=other.service` für sich allein fest?
 
 ::option[Eine Garantie, dass der Anwendungsendpunkt des anderen Dienstes fehlerfrei ist.]{#systemd-overview-after-health explanation="Abschluss der Reihenfolge und Anwendungsbereitschaft sind unterschiedliche Konzepte."}
 ::option[Die Reihenfolge, falls beide Units Teil der Transaktion sind.]{#systemd-overview-after-ordering .correct explanation="Eine separate Anforderung wie Wants oder Requires ist nötig, um die andere Unit in die Transaktion aufzunehmen."}
@@ -90,8 +86,7 @@ Was legt `After=other.service` für sich allein fest?
 
 Targets ähneln Runlevels nur auf einer groben Kompatibilitätsebene. Mehrere Targets können gleichzeitig aktiv sein, eigene Targets können erstellt werden, und die Aktivität eines Targets bedeutet nicht, dass jeder Dienst des Rechners fehlerfrei ist.
 
-:::single-choice{#systemd-overview-default-target}
-Was wählt `default.target` normalerweise aus?
+:::single-choice{#systemd-overview-default-target} Was wählt `default.target` normalerweise aus?
 
 ::option[Das Standardblockgerät, das `mkfs` löschen soll.]{#systemd-overview-default-disk explanation="Targets beschreiben Unit-Aktivierung und keine destruktive Auswahl von Datenträgern."}
 ::option[Das einzige Target, das jemals aktiv sein kann.]{#systemd-overview-only-target explanation="Targets sind Gruppierungen, und während eines Bootvorgangs können viele davon aktiv sein."}

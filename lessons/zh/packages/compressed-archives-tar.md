@@ -28,8 +28,7 @@ $ gunzip report.txt.gz
 
 在支持的系统上，可以用 `gzip -k report.txt` 保留输入文件；需要明确控制时，也可以使用标准流。文件扩展名只是一种约定，不能证明实际格式；`file` 等工具可以检查内容。
 
-:::single-choice{#tar-gzip-gzip-role}
-本课中 `gzip` 的主要作用是什么？
+:::single-choice{#tar-gzip-gzip-role} 本课中 `gzip` 的主要作用是什么？
 
 ::option[把目录树及文件元数据组合成归档。]{#tar-gzip-directory-archive explanation="在应用 gzip 压缩前，由 Tar 承担这一归档任务。"}
 ::option[压缩单个输入数据流。]{#tar-gzip-compress-stream .correct explanation="Gzip 转换一个字节流，本身不会编码目录层次。"}
@@ -50,8 +49,7 @@ $ tar -cvf project.tar file1 file2 directory1
 
 路径会作为归档成员名称保存。应从有意识选择的工作目录创建归档，避免意外收录密钥、缓存、套接字或范围过大的绝对路径。
 
-:::single-choice{#tar-gzip-create-option}
-哪个 `tar` 选项用于创建新归档？
+:::single-choice{#tar-gzip-create-option} 哪个 `tar` 选项用于创建新归档？
 
 ::option[`-x`]{#tar-gzip-option-extract explanation="`-x` 操作用于提取归档成员。"}
 ::option[`-c`]{#tar-gzip-option-create .correct explanation="创建操作会根据指定输入写入新归档。"}
@@ -68,8 +66,7 @@ $ tar -czvf project.tar.gz file1 file2 directory1
 
 结果是一个经过 gzip 压缩的 tar 数据流。压缩不会加密归档，也无法向能够读取并解压它的人隐藏内容。如果需要保密性，应采用适当的认证加密流程，并单独管理密钥。
 
-:::single-choice{#tar-gzip-z-option}
-所示 `tar` 命令中的 `-z` 请求什么？
+:::single-choice{#tar-gzip-z-option} 所示 `tar` 命令中的 `-z` 请求什么？
 
 ::option[使用零知识密钥加密归档。]{#tar-gzip-z-encrypt explanation="Tar 和 gzip 都不会通过此选项提供加密。"}
 ::option[丢弃每个长度为零的成员。]{#tar-gzip-z-zero explanation="该选项选择 gzip，不会按大小筛选归档成员。"}
@@ -95,8 +92,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 不要以 root 身份提取未经审查的归档。把选定文件移到最终位置前，应先核实实际创建的内容。
 
-:::single-choice{#tar-gzip-list-before-extract}
-哪个操作只列出归档成员而不提取？
+:::single-choice{#tar-gzip-list-before-extract} 哪个操作只列出归档成员而不提取？
 
 ::option[`tar -czf download.tar.gz .`]{#tar-gzip-create-download explanation="该命令根据当前目录创建或替换归档。"}
 ::option[`tar -xzf download.tar.gz`]{#tar-gzip-extract-download explanation="`-x` 操作会把成员写入目标目录。"}
@@ -107,8 +103,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 Tar 实现还可以配合 bzip2 和 xz 等压缩程序；在 GNU tar 中通常分别用 `-j` 和 `-J` 选择。格式支持和自动检测会有差异，因此应查阅 `tar --help` 或本机手册。ZIP 是另一种归档格式，使用 `zip` 和 `unzip` 等工具操作。
 
-:::single-choice{#tar-gzip-archive-confidentiality}
-Gzip 压缩会让 tar 归档具有保密性吗？
+:::single-choice{#tar-gzip-archive-confidentiality} Gzip 压缩会让 tar 归档具有保密性吗？
 
 ::option[不会；任何能读取它的人通常都能解压。]{#tar-gzip-not-encryption .correct explanation="压缩改变表示方式和大小，但不提供访问控制或加密保密性。"}
 ::option[会；gzip 会从文件名派生加密密钥。]{#tar-gzip-filename-key explanation="Gzip 没有实现这种加密机制。"}

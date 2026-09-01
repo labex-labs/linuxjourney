@@ -23,8 +23,7 @@ $ readlink /proc/1/exe
 
 An `/etc/inittab` file or `/etc/init.d/` directory is only supporting evidence. systemd and other init systems can retain these files for compatibility, and containers can show a different PID namespace from the host.
 
-:::single-choice{#sysv-overview-detection}
-What is the strongest evidence that sysvinit is active?
+:::single-choice{#sysv-overview-detection} What is the strongest evidence that sysvinit is active?
 
 ::option[The live PID 1 executable is sysvinit or its init program.]{#sysv-overview-live-pid-one .correct explanation="Inspecting the running first process is more direct than inferring from compatibility files."}
 ::option[An `/etc/init.d/` directory exists.]{#sysv-overview-init-d-only explanation="Other init systems commonly preserve SysV scripts or wrappers."}
@@ -42,8 +41,7 @@ A runlevel is a named numeric operating mode. SysV configurations traditionally 
 
 Debian-family systems historically treat levels 2–5 similarly, while Red Hat-family conventions distinguish text and graphical modes. Inspect `/etc/inittab`, init documentation, and runlevel directories on the actual host.
 
-:::single-choice{#sysv-overview-shutdown-runlevel}
-Which runlevel conventionally requests halt or poweroff on many SysV systems?
+:::single-choice{#sysv-overview-shutdown-runlevel} Which runlevel conventionally requests halt or poweroff on many SysV systems?
 
 ::option[`3`]{#sysv-overview-runlevel-three explanation="This is commonly a multiuser operating mode rather than shutdown."}
 ::option[`0`]{#sysv-overview-runlevel-zero .correct explanation="Level zero is conventionally the shutdown transition, though local init policy remains authoritative."}
@@ -60,8 +58,7 @@ Service scripts commonly reside under `/etc/init.d/`. Runlevel directories such 
 
 The exact algorithm and directories vary. Dependencies can also be expressed in script headers and processed by distribution tools, and some implementations parallelize work. SysV should not be reduced to a guarantee that every service starts strictly one at a time.
 
-:::single-choice{#sysv-overview-start-link}
-What does an `S20networking` link conventionally request during entry into a runlevel?
+:::single-choice{#sysv-overview-start-link} What does an `S20networking` link conventionally request during entry into a runlevel?
 
 ::option[Send signal 20 directly to every network process.]{#sysv-overview-signal-twenty explanation="The digits are ordering metadata, not a signal number."}
 ::option[Store twenty network configuration backups.]{#sysv-overview-twenty-backups explanation="Runlevel links do not provide backup retention."}
@@ -74,8 +71,7 @@ When init changes runlevel, the distribution's rc machinery stops services no lo
 
 Requesting runlevel 0 or 6 is a system-wide destructive availability action. Use the system's shutdown interface, notify users, preserve active work, and verify remote console access rather than invoking raw init transitions casually.
 
-:::single-choice{#sysv-overview-runlevel-six-meaning}
-What does runlevel `6` conventionally request?
+:::single-choice{#sysv-overview-runlevel-six-meaning} What does runlevel `6` conventionally request?
 
 ::option[Creation of six additional user accounts.]{#sysv-overview-six-users explanation="Runlevels describe operating modes, not account counts."}
 ::option[A system reboot transition.]{#sysv-overview-reboot .correct explanation="Classic SysV policy reserves level six for stopping services and restarting the system."}
@@ -86,8 +82,7 @@ What does runlevel `6` conventionally request?
 
 On a systemd host, SysV scripts can be wrapped as generated units, but systemd dependencies, timeouts, logging, and state semantics still apply. Running a legacy script directly can bypass the service manager's tracking. Identify the active manager and use its native interface when possible.
 
-:::single-choice{#sysv-overview-compatibility-script}
-Why should a SysV-style script on a systemd host normally be invoked through the service manager?
+:::single-choice{#sysv-overview-compatibility-script} Why should a SysV-style script on a systemd host normally be invoked through the service manager?
 
 ::option[Direct execution can bypass dependency and state tracking.]{#sysv-overview-manager-tracking .correct explanation="The manager needs to coordinate process ownership, ordering, timeouts, and status."}
 ::option[Shell scripts cannot execute on a systemd system.]{#sysv-overview-scripts-impossible explanation="They can execute, but bypassing supervision can create inconsistent state."}

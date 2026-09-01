@@ -37,8 +37,7 @@ WantedBy=multi-user.target
 
 `ExecStart=`는 기본적으로 셸을 통해 전달되지 않습니다. 명시적으로 셸을 호출하지 않는 한 셸 파이프라인, 리디렉션, 변수 및 인용은 대화형 명령줄처럼 동작하지 않습니다.
 
-:::single-choice{#systemd-goals-install-section}
-`WantedBy=` 같은 `[Install]` 지시문의 주된 목적은 무엇입니까?
+:::single-choice{#systemd-goals-install-section} `WantedBy=` 같은 `[Install]` 지시문의 주된 목적은 무엇입니까?
 
 ::option[서비스 프로세스가 이미 실행 중임을 보장합니다.]{#systemd-goals-install-running explanation="런타임 활성화에는 start 또는 다른 트리거 의존성이 필요합니다."}
 ::option[단위를 활성화할 때 만들어지는 링크나 관계를 설명합니다.]{#systemd-goals-enable-links .correct explanation="설치 메타데이터는 활성화 작업이 해석하며 현재 프로세스 상태와 별개입니다."}
@@ -66,8 +65,7 @@ $ systemctl cat UNIT.service
 $ systemctl show UNIT.service
 ```
 
-:::single-choice{#systemd-goals-list-units-versus-files}
-`list-unit-files`가 주로 보여 주고 `list-units`는 주로 보여 주지 않는 것은 무엇입니까?
+:::single-choice{#systemd-goals-list-units-versus-files} `list-unit-files`가 주로 보여 주고 `list-units`는 주로 보여 주지 않는 것은 무엇입니까?
 
 ::option[CPU를 가장 많이 사용하는 프로세스만 보여 줍니다.]{#systemd-goals-cpu-processes explanation="프로세스 리소스 순위는 이 단위 목록 명령의 범위 밖입니다."}
 ::option[설치된 단위 파일의 활성화 상태입니다.]{#systemd-goals-unit-file-state .correct explanation="단위 파일이 enabled, disabled, static, masked인지와 관련 설치 상태를 보고합니다."}
@@ -90,8 +88,7 @@ $ sudo systemctl daemon-reload
 
 `daemon-reload`는 단위 정의를 다시 읽고 의존성을 재구성합니다. 애플리케이션 설정을 다시 불러오거나 실행 중인 서비스를 재시작하지는 않습니다. 적절한 경우 `systemd-analyze verify`로 단위 구문과 의존성을 검증한 다음 병합된 유효 단위를 검토하십시오.
 
-:::single-choice{#systemd-goals-daemon-reload}
-`systemctl daemon-reload`는 무엇을 합니까?
+:::single-choice{#systemd-goals-daemon-reload} `systemctl daemon-reload`는 무엇을 합니까?
 
 ::option[모든 데몬이 애플리케이션 설정을 다시 읽도록 강제합니다.]{#systemd-goals-reload-all-apps explanation="애플리케이션 다시 불러오기는 서비스별 작업이며 관리자 설정과 별개입니다."}
 ::option[새 릴리스의 커널로 재부팅합니다.]{#systemd-goals-reload-kernel explanation="커널 활성화에는 단위 정의 다시 불러오기가 아니라 부팅이 필요합니다."}
@@ -121,8 +118,7 @@ $ journalctl -u peanut.service -b
 
 “활성”은 관리자 상태이며 모든 애플리케이션 엔드포인트가 정상이라는 증거는 아닙니다.
 
-:::single-choice{#systemd-goals-start-peanut}
-향후 활성화 상태를 바꾸지 않고 지금 `peanut.service`를 시작하는 명령은 무엇입니까?
+:::single-choice{#systemd-goals-start-peanut} 향후 활성화 상태를 바꾸지 않고 지금 `peanut.service`를 시작하는 명령은 무엇입니까?
 
 ::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="enable은 설치 링크를 변경하지만 `--now`와 결합하지 않으면 서비스를 시작하지 않습니다."}
 ::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="start는 현재 런타임 활성화를 요청하며 활성화와 별개입니다."}
@@ -142,8 +138,7 @@ enable은 `--now`를 추가하지 않으면 단위를 시작하지 않습니다.
 
 마스킹은 단위를 `/dev/null`에 연결하고 마스크를 해제할 때까지 의존성 활성화를 포함한 일반 활성화를 차단합니다. disable보다 강하며 의존 항목을 손상시킬 수 있으므로 사용 전에 역방향 의존성을 검사하십시오.
 
-:::single-choice{#systemd-goals-disable-runtime}
-`--now` 없이 `systemctl disable UNIT`을 실행하면 이미 실행 중인 서비스는 어떻게 됩니까?
+:::single-choice{#systemd-goals-disable-runtime} `--now` 없이 `systemctl disable UNIT`을 실행하면 이미 실행 중인 서비스는 어떻게 됩니까?
 
 ::option[즉시 `SIGKILL`로 종료됩니다.]{#systemd-goals-disable-kills explanation="disable만으로는 현재 중지를 요청하지 않습니다."}
 ::option[실행 파일이 파일 시스템에서 삭제됩니다.]{#systemd-goals-disable-deletes explanation="활성화 작업은 프로그램 패키지 파일이 아니라 링크를 관리합니다."}

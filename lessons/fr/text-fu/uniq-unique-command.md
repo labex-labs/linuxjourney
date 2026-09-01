@@ -36,8 +36,7 @@ magazine
 
 Une ligne représentative est produite par groupe adjacent. Le fichier d'entrée reste inchangé.
 
-:::single-choice{#uniq-collapse-adjacent}
-Que fait `uniq reading.txt` par défaut ?
+:::single-choice{#uniq-collapse-adjacent} Que fait `uniq reading.txt` par défaut ?
 
 ::option[Il trie tout le fichier puis supprime chaque valeur répétée.]{#uniq-auto-sort explanation="`uniq` préserve l'ordre et ne trie pas ; les copies séparées restent dans des groupes distincts."}
 ::option[Il affiche une ligne par groupe adjacent de lignes égales.]{#uniq-one-per-group .correct explanation="Par défaut, `uniq` réduit chaque série consécutive identique à une ligne."}
@@ -56,8 +55,7 @@ $ uniq -c reading.txt
 
 Ces nombres sont les longueurs des séries, pas des totaux globaux, sauf si les lignes égales ont été regroupées au préalable.
 
-:::single-choice{#uniq-count-groups}
-Que représente le nombre produit par `uniq -c` ?
+:::single-choice{#uniq-count-groups} Que représente le nombre produit par `uniq -c` ?
 
 ::option[Le nombre de caractères de chaque ligne.]{#uniq-character-count explanation="Le comptage des caractères relève plutôt de `wc`."}
 ::option[Le nombre de lignes égales consécutives dans chaque groupe.]{#uniq-consecutive-count .correct explanation="`-c` préfixe chaque groupe adjacent réduit par le nombre de lignes qu'il contenait."}
@@ -82,16 +80,14 @@ article
 
 `-u` ne garde que les groupes d'une ligne. `-d` émet une ligne par groupe répété ; GNU `uniq -D` émet toutes les lignes de ces groupes.
 
-:::single-choice{#uniq-only-singletons}
-Quelle commande affiche seulement les groupes adjacents présents exactement une fois ?
+:::single-choice{#uniq-only-singletons} Quelle commande affiche seulement les groupes adjacents présents exactement une fois ?
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="Cette forme affiche tous les groupes avec leur nombre."}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="`-d` choisit les groupes répétés."}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="`-u` sélectionne les groupes dont la longueur est exactement un."}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-Quelle commande affiche une ligne par groupe adjacent présent plusieurs fois ?
+:::single-choice{#uniq-one-per-duplicate-group} Quelle commande affiche une ligne par groupe adjacent présent plusieurs fois ?
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="`-d` choisit les groupes répétés et en émet un représentant."}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="GNU `-D` émet toutes les lignes des groupes répétés."}
@@ -137,8 +133,7 @@ paper
 
 Employez une locale et une politique de comparaison cohérentes. `sort -u reading.txt` peut aussi trier et ne garder qu'une ligne par clé égale.
 
-:::single-choice{#uniq-separated-duplicates}
-Des lignes égales sont dispersées dans `reading.txt` et l'ordre peut changer. Quel pipeline produit une copie triée de chaque ligne distincte ?
+:::single-choice{#uniq-separated-duplicates} Des lignes égales sont dispersées dans `reading.txt` et l'ordre peut changer. Quel pipeline produit une copie triée de chaque ligne distincte ?
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="Le tri rend les lignes égales adjacentes, puis `uniq` réduit chaque groupe."}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="`uniq` agit avant le regroupement et peut laisser des doublons dans la sortie triée."}

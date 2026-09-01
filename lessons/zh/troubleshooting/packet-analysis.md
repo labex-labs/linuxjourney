@@ -16,8 +16,7 @@ meta_keywords: "tcpdump, 数据包分析, 网络数据包分析, 网络数据包
 
 在受影响流实际经过的接口和网络命名空间中抓包。网桥、容器、VPN、链路聚合、VLAN 和卸载功能都会改变某个接口能看到的内容。抓包前使用 `ip route get` 和 `ip link` 确定候选位置。
 
-:::single-choice{#packet-analysis-interface-choice}
-为什么抓包接口的选择很重要？
+:::single-choice{#packet-analysis-interface-choice} 为什么抓包接口的选择很重要？
 
 ::option[每个接口都会自动镜像整个互联网。]{#packet-analysis-mirrors-internet explanation="主机通常只能看到经其接口传递或镜像到接口的流量。"}
 ::option[只能记录该观察点可见的流量。]{#packet-analysis-visible-point .correct explanation="命名空间、隧道、网桥和路由可能让相关流出现在别处。"}
@@ -35,8 +34,7 @@ $ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
 
 `-i` 选择接口，`-n` 保持数字形式，`-c` 限制数据包数量，`-w` 写入 pcap 数据，最后的表达式是捕获过滤器。如果流量可能一直不出现，还应在外部设置时间限制。
 
-:::single-choice{#packet-analysis-count-bound}
-`-c 100` 有什么作用？
+:::single-choice{#packet-analysis-count-bound} `-c 100` 有什么作用？
 
 ::option[只捕获 TCP 端口 100。]{#packet-analysis-port-hundred explanation="端口选择应写在过滤表达式中。"}
 ::option[把文件压缩到 100 字节。]{#packet-analysis-compress-hundred explanation="该选项限制的是数据包数量，而不是文件大小。"}
@@ -53,8 +51,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 根据具体协议解读时间戳、协议、源、目的地、标志、序列或确认数据以及长度。捕获时间戳表示在本主机观察到数据包的时刻，不一定是它在别处发出的准确时间。关联多个系统的抓包时，时钟同步非常重要。
 
-:::single-choice{#packet-analysis-read-file}
-哪个选项从已保存的 pcap 文件读取数据包？
+:::single-choice{#packet-analysis-read-file} 哪个选项从已保存的 pcap 文件读取数据包？
 
 ::option[`-r`]{#packet-analysis-option-read .correct explanation="读取选项会处理现有捕获文件。"}
 ::option[`-i`]{#packet-analysis-option-interface explanation="该选项选择实时捕获接口。"}
@@ -67,8 +64,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 TLS 和其他加密通常会隐藏应用程序载荷，但仍会留下端点、时序、大小、TCP 行为和部分握手等有用元数据。不要尝试未经授权的解密，也不要随意收集私钥。
 
-:::single-choice{#packet-analysis-no-packets}
-一次空的过滤抓包能证明什么？
+:::single-choice{#packet-analysis-no-packets} 一次空的过滤抓包能证明什么？
 
 ::option[远程应用程序已被永久删除。]{#packet-analysis-empty-deleted explanation="观察点或过滤器错误也能产生相同结果。"}
 ::option[整个网络的流量为零。]{#packet-analysis-empty-network explanation="狭窄的过滤器可以排除无关流量。"}
@@ -79,8 +75,7 @@ TLS 和其他加密通常会隐藏应用程序载荷，但仍会留下端点、�
 
 使用严格权限存储 pcap，记录命令、主机、接口、时区、过滤器和事件时间窗口；完整性很重要时，还要对证据计算哈希。共享前，应使用能够保留所需字段的工具和流程尽量减少或清理数据；数据包载荷乃至元数据都可能识别用户与系统。
 
-:::single-choice{#packet-analysis-pcap-safety}
-应该如何处理事件 pcap？
+:::single-choice{#packet-analysis-pcap-safety} 应该如何处理事件 pcap？
 
 ::option[将其视为敏感证据，限制访问并记录来源。]{#packet-analysis-sensitive-evidence .correct explanation="捕获可能含有机密内容，同时需要完整性与机密性控制。"}
 ::option[将其视为无害文本，无需审查即可公开上传。]{#packet-analysis-public explanation="二进制捕获可能暴露载荷、身份和基础设施。"}

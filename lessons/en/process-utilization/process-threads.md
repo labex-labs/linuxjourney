@@ -18,8 +18,7 @@ Threads in one process share resources such as the virtual address space and ope
 
 Separate processes normally have distinct address spaces and communicate through explicit interprocess mechanisms. Neither design is automatically faster or safer; the workload and implementation determine the trade-off.
 
-:::single-choice{#threads-shared-resource}
-Which resource is normally shared by threads in the same process?
+:::single-choice{#threads-shared-resource} Which resource is normally shared by threads in the same process?
 
 ::option[The process virtual address space.]{#threads-shared-address-space .correct explanation="Threads can access the same process memory, subject to program synchronization."}
 ::option[A separate kernel installation for each thread.]{#threads-separate-kernel explanation="All threads use the running system kernel."}
@@ -30,8 +29,7 @@ Which resource is normally shared by threads in the same process?
 
 Linux represents each thread as a schedulable task with its own thread ID. The thread-group leader's ID is commonly presented as the process ID, while all members share a thread-group ID. Tools use labels such as `PID`, `TID`, `LWP`, and `SPID`; check the tool's field definitions instead of assuming every label means the same thing.
 
-:::single-choice{#threads-own-scheduling-state}
-What does each thread maintain independently?
+:::single-choice{#threads-own-scheduling-state} What does each thread maintain independently?
 
 ::option[The process's complete open-file table.]{#threads-open-files-shared explanation="Threads in a process normally share open file descriptors."}
 ::option[The machine's system-wide user database.]{#threads-user-database explanation="Account databases are not private thread state."}
@@ -54,8 +52,7 @@ $ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
 
 Thread listings are snapshots. A thread can exit or change state immediately afterward.
 
-:::single-choice{#threads-ps-one-process}
-Which command lists threads belonging to PID 1234 with explicit fields?
+:::single-choice{#threads-ps-one-process} Which command lists threads belonging to PID 1234 with explicit fields?
 
 ::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="This output does not request per-thread rows."}
 ::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="The `-L` option requests thread rows for the selected process."}
@@ -66,8 +63,7 @@ Which command lists threads belonging to PID 1234 with explicit fields?
 
 High CPU in one thread can be hidden by a process-wide average. Combine thread-level CPU samples with application logs, stack traces, and profiling tools. Do not attach debuggers or send signals to production tasks without understanding pause, permission, and service impacts.
 
-:::single-choice{#threads-snapshot-limit}
-Why should a `ps` thread listing not be treated as permanent state?
+:::single-choice{#threads-snapshot-limit} Why should a `ps` thread listing not be treated as permanent state?
 
 ::option[`ps` creates a replacement thread for every row.]{#threads-ps-creates explanation="The command observes tasks; it does not clone each one it lists."}
 ::option[Thread IDs are identical on every Linux host.]{#threads-identical-ids explanation="Identifiers are assigned within a running system and are not universal."}

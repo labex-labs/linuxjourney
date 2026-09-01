@@ -24,8 +24,7 @@ OSI 各层从低到高依次为：
 6. 表示层：数据表示、转换和编码。
 7. 应用层：应用程序使用的网络服务。
 
-:::single-choice{#osi-network-layer-number}
-OSI 的哪一层处理逻辑寻址和网络间转发？
+:::single-choice{#osi-network-layer-number} OSI 的哪一层处理逻辑寻址和网络间转发？
 
 ::option[第 3 层，网络层。]{#osi-layer-three .correct explanation="网络层描述逻辑寻址和网络间转发。"}
 ::option[第 1 层，物理层。]{#osi-layer-one explanation="物理层关注信号和介质。"}
@@ -36,8 +35,7 @@ OSI 的哪一层处理逻辑寻址和网络间转发？
 
 “二层环路”或“四层端口”等说法会指出一个功能领域，但不会解释每个实现细节。实际协议可能跨越边界，加密、隧道、代理或覆盖网络也可能创建多个嵌套层。
 
-:::single-choice{#osi-model-purpose}
-在日常故障排查中，OSI 模型最主要的用途是什么？
+:::single-choice{#osi-model-purpose} 在日常故障排查中，OSI 模型最主要的用途是什么？
 
 ::option[保证每个协议都恰好有七个标头。]{#osi-seven-headers explanation="实际实现不会一一对应到七个线上标头。"}
 ::option[用一张图取代所有数据包捕获。]{#osi-replace-captures explanation="模型可以指导调查，但不能替代证据。"}
@@ -48,8 +46,7 @@ OSI 的哪一层处理逻辑寻址和网络间转发？
 
 互联网协议族与 OSI 参考模型源于不同的标准化历程。实用的 TCP/IP 模型通常将 OSI 的会话层和表示层职责归入应用层，并将物理层和数据链路层相关内容合并为链路层或网络接入层。这些映射只是近似比较，不能证明某个协议栈直接按照另一个模型实现。
 
-:::single-choice{#osi-tcpip-mapping}
-应如何理解 OSI 到 TCP/IP 的层次映射？
+:::single-choice{#osi-tcpip-mapping} 应如何理解 OSI 到 TCP/IP 的层次映射？
 
 ::option[将其视为每个协议都必须遵守的精确规则。]{#osi-exact-rule explanation="协议职责经常跨越概念边界。"}
 ::option[将其视为 TCP/IP 在线路上使用七个必需层次的证据。]{#osi-tcp-seven explanation="TCP/IP 通常使用四层或五层模型来讨论。"}
@@ -60,8 +57,7 @@ OSI 的哪一层处理逻辑寻址和网络间转发？
 
 应从症状出发测试假设，而不是机械地按数字顺序检查各层。Web 故障可能涉及本地链路状态、IP 路由、传输层可达性、TLS、名称解析、身份验证或应用程序行为。某一层的证据可以指导下一项测试，但不能证明更高层一定正常。
 
-:::single-choice{#osi-link-success-limit}
-正常工作的本地以太网链路能证明什么？
+:::single-choice{#osi-link-success-limit} 正常工作的本地以太网链路能证明什么？
 
 ::option[每个远程 HTTP 服务都健康。]{#osi-link-proves-http explanation="本地链路状态无法证明远程应用程序健康。"}
 ::option[DNS 中没有任何错误记录。]{#osi-link-proves-dns explanation="名称数据与基本链路连接相互独立。"}

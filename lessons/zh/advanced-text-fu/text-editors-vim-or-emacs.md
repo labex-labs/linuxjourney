@@ -27,8 +27,7 @@ $ command -v emacs
 
 如果结果为空且状态非零，表示当前命令搜索路径中没有找到该名称。精简系统可能只提供 `vi`，其他系统可能包含 Nano，也可能完全没有交互式编辑器。
 
-:::single-choice{#editors-check-availability}
-哪个命令会检查当前 shell 能否解析名为 `vim` 的可执行程序？
+:::single-choice{#editors-check-availability} 哪个命令会检查当前 shell 能否解析名为 `vim` 的可执行程序？
 
 ::option[`vim --install`]{#editors-vim-install explanation="Vim 不使用该命令作为可移植的安装检查，软件包安装方式也因发行版而异。"}
 ::option[`file ~/.vimrc`]{#editors-file-vimrc explanation="如果该配置路径存在，此命令只会判断它的文件类型，不能确定 `vim` 是否可解析。"}
@@ -45,8 +44,7 @@ Vim 是模态编辑器。同一个按键会根据当前模式产生不同含义�
 
 经过练习后，这种模型可以提高重复键盘编辑的效率，但新用户必须留意当前模式。后续课程会逐项介绍 Vim 操作。
 
-:::single-choice{#editors-vim-modal-meaning}
-Vim 是模态编辑器意味着什么？
+:::single-choice{#editors-vim-modal-meaning} Vim 是模态编辑器意味着什么？
 
 ::option[每个文件都会在独立的图形窗口中打开。]{#editors-vim-windows explanation="窗口和缓冲区是不同概念；模态指的是按键行为会随编辑器状态改变。"}
 ::option[Vim 一次只能编辑一种文本文件。]{#editors-vim-file-type explanation="Vim 支持许多文件类型；模态描述的是交互模型，而不是文件限制。"}
@@ -59,8 +57,7 @@ Emacs 通常在可扩展环境中使用组合键和具名命令。文件会在�
 
 Vim 和 Emacs 都可以通过配置和扩展实现远超基础编辑的功能。添加自定义设置前，请先学会打开、更改、保存和关闭纯文本文件。
 
-:::single-choice{#editors-emacs-buffer}
-在 Emacs 术语中，所访问文件的可编辑文本通常保存在哪里？
+:::single-choice{#editors-emacs-buffer} 在 Emacs 术语中，所访问文件的可编辑文本通常保存在哪里？
 
 ::option[缓冲区中。]{#editors-emacs-buffer-answer .correct explanation="Emacs 会在缓冲区中访问文件，缓冲区保存正在查看或编辑的文本。"}
 ::option[shell 的别名表中。]{#editors-emacs-alias-table explanation="别名属于 shell 命令解析，不会存储编辑器文本。"}
@@ -78,8 +75,7 @@ $ export EDITOR="$VISUAL"
 
 这些变量表达的是偏好，不会安装程序。请使用实际存在的命令，并在测试完成后再把这些 export 放入合适的 shell 启动文件。
 
-:::single-choice{#editors-editor-variable}
-`export EDITOR=vim` 会做什么？
+:::single-choice{#editors-editor-variable} `export EDITOR=vim` 会做什么？
 
 ::option[告诉之后的子进程，首选编辑器的值是 `vim`。]{#editors-export-preference .correct explanation="export 会把该偏好放入当前 shell 启动的命令所继承的环境中。"}
 ::option[为系统上的每个用户安装 Vim。]{#editors-install-vim explanation="环境变量赋值不会安装软件包，也不会改变其他用户的系统。"}
@@ -97,8 +93,7 @@ $ vim editor-practice.txt
 
 不要从系统配置或其他用户的数据开始练习。更改重要文件前应先制作备份，理解如何保存和退出，并使用 `cat` 或 `diff` 等只读命令检查结果。
 
-:::single-choice{#editors-first-practice-file}
-第一次练习不熟悉的编辑器时，哪种文件最安全？
+:::single-choice{#editors-first-practice-file} 第一次练习不熟悉的编辑器时，哪种文件最安全？
 
 ::option[以 root 身份打开的关键启动配置文件。]{#editors-boot-file explanation="意外更改可能导致系统无法正常启动，而提升的访问权限会放大错误影响。"}
 ::option[自己拥有的目录中的可丢弃文本文件。]{#editors-disposable-file .correct explanation="练习文件可以在学习导航、保存和退出时限制意外编辑带来的后果。"}

@@ -18,8 +18,7 @@ Um processo comum é executado em modo usuário dentro de seu espaço de endere�
 
 Tabelas de páginas e bits de proteção impõem o acesso. Se uma thread referencia um endereço inválido ou proibido, o processador entra no kernel, que pode resolver um page fault válido ou entregar um sinal como `SIGSEGV`.
 
-:::single-choice{#kernel-privilege-user-mode-memory}
-Que memória um processo em modo usuário normalmente acessa diretamente?
+:::single-choice{#kernel-privilege-user-mode-memory} Que memória um processo em modo usuário normalmente acessa diretamente?
 
 ::option[Todos os endereços da RAM física e toda a memória do kernel.]{#kernel-privilege-all-physical explanation="O privilégio e a proteção da memória virtual impedem esses acessos."}
 ::option[Apenas um byte fixo escolhido no início do processo.]{#kernel-privilege-one-byte explanation="Um processo pode ter muitas regiões mapeadas sem deixar de ser não privilegiado."}
@@ -32,8 +31,7 @@ O modo kernel permite instruções privilegiadas e acesso aos mapeamentos proteg
 
 Outras arquiteturas têm nomes e mecanismos diferentes, como exception levels. A virtualização acrescenta relações entre hypervisor e guests que não cabem num desenho simples de dois anéis. A ideia essencial é o privilégio controlado, não os números do x86.
 
-:::single-choice{#kernel-privilege-x86-kernel-ring}
-Qual anel de proteção x86 normalmente executa o kernel Linux?
+:::single-choice{#kernel-privilege-x86-kernel-ring} Qual anel de proteção x86 normalmente executa o kernel Linux?
 
 ::option[Ring 3.]{#kernel-privilege-ring-three explanation="Ring 3 é o nível convencional do modo usuário."}
 ::option[Ring 0.]{#kernel-privilege-ring-zero .correct explanation="O kernel usa o anel tradicional mais privilegiado do x86."}
@@ -52,8 +50,7 @@ O processador salva o contexto, muda o privilégio pelo mecanismo configurado e 
 
 O aplicativo não se transforma temporariamente em código do kernel. A CPU executa um handler do kernel em nome da thread, com pilhas e mapeamentos controlados pelo kernel.
 
-:::single-choice{#kernel-privilege-system-call-transition}
-O que acontece durante uma transição de chamada de sistema?
+:::single-choice{#kernel-privilege-system-call-transition} O que acontece durante uma transição de chamada de sistema?
 
 ::option[O código do aplicativo recebe execução irrestrita em ring 0.]{#kernel-privilege-user-ring-zero explanation="Somente código confiável do kernel é executado depois da entrada controlada."}
 ::option[O processo muda permanentemente seu UID para zero.]{#kernel-privilege-uid-zero explanation="A transição do modo do processador não reescreve credenciais."}
@@ -66,8 +63,7 @@ Um aplicativo executado como usuário `root` continua normalmente em modo usuár
 
 Capabilities, namespaces, seccomp, módulos de segurança e cgroups restringem ainda mais o que um processo solicita. Essa política em camadas é separada do limite de hardware.
 
-:::single-choice{#kernel-privilege-root-distinction}
-Qual afirmação compara corretamente a identidade root e o modo kernel?
+:::single-choice{#kernel-privilege-root-distinction} Qual afirmação compara corretamente a identidade root e o modo kernel?
 
 ::option[Root é uma credencial do espaço do usuário; modo kernel é um privilégio de execução do processador.]{#kernel-privilege-credential-versus-mode .correct explanation="Um processo root faz pedidos autorizados do modo usuário, enquanto código confiável do kernel realiza a execução privilegiada."}
 ::option[Toda instrução pertencente ao root roda como código carregável do kernel.]{#kernel-privilege-root-kernel-code explanation="O UID proprietário não transforma um executável em módulo do kernel."}
@@ -80,8 +76,7 @@ O limite reduz o dano de falhas comuns e cria um ponto para verificações de ac
 
 Execução especulativa e canais laterais também mostram que o isolamento exige mitigação contínua; “outro anel” é uma base, não uma prova completa de segurança.
 
-:::single-choice{#kernel-privilege-boundary-limit}
-A separação entre modo usuário e kernel garante segurança completa?
+:::single-choice{#kernel-privilege-boundary-limit} A separação entre modo usuário e kernel garante segurança completa?
 
 ::option[Sim; vulnerabilidades do kernel não afetam processos de usuário.]{#kernel-privilege-no-kernel-vulns explanation="Uma vulnerabilidade do kernel pode comprometer todo o sistema."}
 ::option[Não; falhas no código privilegiado e canais laterais ainda podem cruzar limites.]{#kernel-privilege-not-complete .correct explanation="A divisão reduz a superfície de ataque, mas exige código correto e mitigação adicional."}

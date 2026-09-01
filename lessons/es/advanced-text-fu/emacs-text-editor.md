@@ -33,8 +33,7 @@ En una sesión gráfica, esto puede crear un marco gráfico. Usa `-nw`, abreviat
 $ emacs -nw
 ```
 
-:::single-choice{#emacs-terminal-start}
-¿Qué orden inicia Emacs dentro de la terminal actual en vez de usar un sistema de ventanas gráfico?
+:::single-choice{#emacs-terminal-start} ¿Qué orden inicia Emacs dentro de la terminal actual en vez de usar un sistema de ventanas gráfico?
 
 ::option[`emacs -w`]{#emacs-window-option explanation="Esta no es la forma documentada para prescindir del sistema de ventanas que se presenta aquí."}
 ::option[`emacs -nw`]{#emacs-no-window .correct explanation="La opción `-nw` indica a Emacs que no use un sistema de ventanas gráfico y se ejecute en la terminal."}
@@ -51,8 +50,7 @@ $ emacs notes.txt
 
 Si el archivo existe, Emacs lo lee en un búfer. Si no existe, crea un búfer nuevo asociado a esa ruta; el archivo solo se crea después de guardarlo correctamente. Los permisos del sistema de archivos siguen determinando si se puede escribir.
 
-:::single-choice{#emacs-open-file-buffer}
-¿Qué hace normalmente `emacs notes.txt` cuando `notes.txt` todavía no existe?
+:::single-choice{#emacs-open-file-buffer} ¿Qué hace normalmente `emacs notes.txt` cuando `notes.txt` todavía no existe?
 
 ::option[Abre un búfer nuevo asociado a esa ruta.]{#emacs-new-file-buffer .correct explanation="El búfer puede contener texto nuevo para `notes.txt`, mientras que la creación del archivo real se aplaza hasta guardarlo."}
 ::option[Crea el archivo en disco antes de iniciar el editor.]{#emacs-immediate-file explanation="Emacs puede asociar un búfer nuevo a la ruta sin crear el archivo en disco hasta que se guarde correctamente."}
@@ -69,8 +67,7 @@ Emacs usa objetos relacionados pero distintos:
 
 Pueden existir varios búferes sin ser visibles y dos ventanas pueden mostrar el mismo búfer. Cerrar una ventana no necesariamente elimina su búfer ni borra un archivo.
 
-:::single-choice{#emacs-buffer-definition}
-¿Qué es un búfer de Emacs?
+:::single-choice{#emacs-buffer-definition} ¿Qué es un búfer de Emacs?
 
 ::option[Un marco gráfico de aplicación de nivel superior.]{#emacs-buffer-frame explanation="Un marco es el objeto de visualización de nivel superior; un búfer contiene contenido o estado del editor."}
 ::option[Un objeto que contiene texto editable u otro estado del editor.]{#emacs-buffer-content .correct explanation="El contenido de los archivos visitados y muchas vistas que no son archivos residen en búferes de Emacs."}
@@ -87,8 +84,7 @@ La documentación de Emacs usa una notación compacta:
 
 La terminal concreta puede interceptar o reasignar algunas teclas. Pulsar `Esc` seguido de otra tecla puede sustituir a menudo una combinación con Meta.
 
-:::single-choice{#emacs-key-sequence-notation}
-¿Cómo se introduce la secuencia de teclas de Emacs escrita como `C-x C-f`?
+:::single-choice{#emacs-key-sequence-notation} ¿Cómo se introduce la secuencia de teclas de Emacs escrita como `C-x C-f`?
 
 ::option[Mantén Control para `x` y después mantén Control para `f`.]{#emacs-control-x-f .correct explanation="Cada prefijo `C-` se aplica a la tecla siguiente y las dos combinaciones se introducen en secuencia."}
 ::option[Escribe los caracteres literales `C-x C-f` en el búfer.]{#emacs-literal-key-text explanation="La notación describe eventos de teclas de control, no texto que deba insertarse."}
@@ -101,8 +97,7 @@ Dentro de Emacs, escribe `C-h t` para abrir el tutorial interactivo. Enseña des
 
 Si Emacs muestra un menú o un búfer de bienvenida, el tutorial sigue siendo un punto de partida más estructurado que experimentar con un archivo importante.
 
-:::single-choice{#emacs-open-tutorial}
-¿Qué secuencia de teclas de Emacs abre el tutorial integrado?
+:::single-choice{#emacs-open-tutorial} ¿Qué secuencia de teclas de Emacs abre el tutorial integrado?
 
 ::option[`C-x C-s`]{#emacs-save-buffer explanation="Esta secuencia guarda el búfer actual; no abre el tutorial."}
 ::option[`C-x C-c`]{#emacs-exit-sequence explanation="Esta secuencia inicia la salida de Emacs en vez de comenzar una lección."}

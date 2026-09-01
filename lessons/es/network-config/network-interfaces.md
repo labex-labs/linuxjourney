@@ -23,8 +23,7 @@ $ ip -brief address show
 
 Las interfaces pueden tener nombres predecibles derivados del hardware, como `enp1s0`, nombres tradicionales, como `eth0`, o nombres definidos por el administrador. Nunca supongas que existe `eth0` o que identifica un adaptador concreto.
 
-:::single-choice{#interfaces-name-assumption}
-¿Por qué debe un script descubrir la interfaz en lugar de suponer que es `eth0`?
+:::single-choice{#interfaces-name-assumption} ¿Por qué debe un script descubrir la interfaz en lugar de suponer que es `eth0`?
 
 ::option[Todas las interfaces deben llamarse `lo`.]{#interfaces-all-loopback explanation="Loopback es una interfaz especial, no el nombre de todos los enlaces."}
 ::option[Los sistemas Linux pueden utilizar varios esquemas de nombres de interfaces.]{#interfaces-naming-varies .correct explanation="Los nombres derivados del hardware, virtuales y personalizados hacen que suponer `eth0` no sea fiable."}
@@ -42,8 +41,7 @@ $ ip -s link show dev enp1s0
 
 La vista de estadísticas puede revelar errores, descartes y contadores, pero los contadores necesitan un intervalo de tiempo y un valor de referencia para resultar significativos.
 
-:::single-choice{#interfaces-up-limit}
-¿Qué no demuestra el estado administrativo `UP`?
+:::single-choice{#interfaces-up-limit} ¿Qué no demuestra el estado administrativo `UP`?
 
 ::option[Que funcione la conectividad de extremo a extremo.]{#interfaces-up-not-connectivity .correct explanation="Aún puede haber fallos de capas inferiores, direccionamiento, enrutamiento, filtrado, nombres y servicios."}
 ::option[Que el administrador habilitó la interfaz.]{#interfaces-up-does-prove explanation="Ese es el significado directo del estado."}
@@ -61,8 +59,7 @@ $ sudo ip address add 192.0.2.10/24 dev enp1s0
 
 Estos cambios afectan al estado actual del kernel y pueden entrar en conflicto con un gestor de red que posteriormente vuelva a aplicar su perfil. Desactivar una interfaz de administración remota puede terminar el acceso de inmediato. Antes de cambiarla, comprueba el dispositivo exacto, conserva el acceso mediante consola, registra el estado actual y prepara una reversión temporizada o probada.
 
-:::single-choice{#interfaces-ip-address-add-persistence}
-¿Garantiza por sí solo `ip address add` que el cambio persista después de reiniciar?
+:::single-choice{#interfaces-ip-address-add-persistence} ¿Garantiza por sí solo `ip address add` que el cambio persista después de reiniciar?
 
 ::option[No; el sistema de configuración activo también debe almacenar el ajuste.]{#interfaces-manager-persistence .correct explanation="NetworkManager, systemd-networkd, ifupdown u otro propietario aplican la política persistente."}
 ::option[Sí, porque todos los cambios del kernel editan todos los perfiles de los gestores.]{#interfaces-runtime-always-persistent explanation="Los cambios del kernel durante la ejecución no actualizan universalmente la configuración persistente."}
@@ -81,8 +78,7 @@ $ nmcli device status
 
 Utiliza únicamente los comandos disponibles para el gestor identificado. Dos gestores que controlen el mismo enlace pueden competir y sobrescribir mutuamente su estado.
 
-:::single-choice{#interfaces-config-owner}
-¿Qué debe hacerse antes de cambiar de forma persistente una interfaz?
+:::single-choice{#interfaces-config-owner} ¿Qué debe hacerse antes de cambiar de forma persistente una interfaz?
 
 ::option[Editar todos los archivos posibles de configuración de red.]{#interfaces-edit-all explanation="Las definiciones que compiten crean conflictos y reaplicaciones impredecibles."}
 ::option[Identificar qué gestor de red controla la interfaz.]{#interfaces-identify-owner .correct explanation="La fuente correcta de configuración y el método de aplicación dependen de ese control."}
@@ -93,8 +89,7 @@ Utiliza únicamente los comandos disponibles para el gestor identificado. Dos ge
 
 Comprueba el estado del enlace, las direcciones asignadas y su duración, las rutas seleccionadas, el estado del resolver, la accesibilidad de los vecinos y la aplicación real. Para un cambio persistente, prueba un reinicio controlado del servicio o del sistema solo cuando exista una vía de recuperación.
 
-:::single-choice{#interfaces-change-verification}
-¿Qué proporciona pruebas mejores que ver la dirección nueva en `ip address`?
+:::single-choice{#interfaces-change-verification} ¿Qué proporciona pruebas mejores que ver la dirección nueva en `ip address`?
 
 ::option[El nombre de la interfaz contiene un dígito.]{#interfaces-digit explanation="El nombre no proporciona ninguna validación de extremo a extremo."}
 ::option[El indicador del shell conserva el mismo color.]{#interfaces-prompt-color explanation="El aspecto de la terminal no está relacionado con el funcionamiento de la red."}

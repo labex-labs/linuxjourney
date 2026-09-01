@@ -27,8 +27,7 @@ El inodo no suele almacenar el nombre de la entrada del directorio. Un sistema d
 
 `ctime` es la hora de cambio de estado del inodo, no necesariamente la hora de creación del archivo. Una marca independiente de nacimiento o creación es opcional y puede no estar disponible.
 
-:::single-choice{#inodes-name-location}
-¿Dónde se asocia normalmente el componente de ruta de un archivo normal con su número de inodo?
+:::single-choice{#inodes-name-location} ¿Dónde se asocia normalmente el componente de ruta de un archivo normal con su número de inodo?
 
 ::option[En el planificador de procesos.]{#inodes-scheduler-name explanation="El estado de planificación de CPU no implementa la búsqueda de rutas del sistema de archivos."}
 ::option[En una entrada de directorio.]{#inodes-directory-entry .correct explanation="Un directorio asocia un nombre con un número de inodo dentro de ese sistema de archivos."}
@@ -51,8 +50,7 @@ $ stat path
 
 Un número de inodo solo es único dentro de un sistema de archivos en un momento determinado. El mismo número puede existir en otro sistema y puede reutilizarse después de liberar un inodo. Para identificar un objeto de forma sólida, utiliza tanto la identidad del sistema de archivos como el número de inodo, no solo este último.
 
-:::single-choice{#inodes-number-scope}
-¿En qué ámbito identifica un objeto un número de inodo?
+:::single-choice{#inodes-number-scope} ¿En qué ámbito identifica un objeto un número de inodo?
 
 ::option[En todos los sistemas Linux del mundo para siempre.]{#inodes-global-forever explanation="La asignación de inodos es local a cada sistema de archivos y los identificadores pueden reutilizarse."}
 ::option[En un sistema de archivos y en un momento determinados.]{#inodes-one-filesystem .correct explanation="Otros sistemas de archivos pueden utilizar el mismo número y los inodos liberados pueden reutilizarse después."}
@@ -65,8 +63,7 @@ Varias entradas de directorio pueden referirse al mismo inodo; son enlaces duros
 
 Incluso después de eliminar la última entrada de directorio, un archivo abierto permanece asignado hasta que se cierre la última referencia del proceso. Su número de enlaces puede ser cero mientras un descriptor siga accediendo a él. Esto explica por qué eliminar un registro grande abierto quizá no reduzca inmediatamente el uso que muestra `df`.
 
-:::single-choice{#inodes-unlinked-open-file}
-¿Cuándo se liberan normalmente los recursos de un archivo desenlazado?
+:::single-choice{#inodes-unlinked-open-file} ¿Cuándo se liberan normalmente los recursos de un archivo desenlazado?
 
 ::option[Inmediatamente después de eliminar cualquier nombre de enlace duro.]{#inodes-one-link-removed explanation="Otros enlaces duros o referencias abiertas pueden mantener vivo el objeto."}
 ::option[Únicamente cuando se vuelve a dar formato a todo el sistema de archivos.]{#inodes-reformat-only explanation="Las operaciones normales de desenlace y cierre recuperan inodos y bloques sin uso."}
@@ -83,8 +80,7 @@ $ df -i
 
 Si no quedan inodos libres, crear otro archivo puede fallar aunque `df -h` comunique bloques disponibles. Las estrategias de asignación difieren: algunos sistemas preasignan estructuras de inodos al crearse, mientras que otros gestionan metadatos dinámicamente y pueden comunicar la capacidad de otra forma.
 
-:::single-choice{#inodes-df-i-purpose}
-¿Qué comunica `df -i` cuando el sistema de archivos ofrece contabilidad de inodos?
+:::single-choice{#inodes-df-i-purpose} ¿Qué comunica `df -i` cuando el sistema de archivos ofrece contabilidad de inodos?
 
 ::option[El contenido de todos los archivos ordenado por inodo.]{#inodes-df-i-content explanation="Df comunica estadísticas agregadas y no lee el contenido de los archivos."}
 ::option[La capacidad de inodos utilizada y disponible.]{#inodes-df-i-capacity .correct explanation="La vista de inodos ayuda a diagnosticar el agotamiento de objetos de metadatos independientemente de los bloques de datos."}
@@ -97,8 +93,7 @@ No supongas que cada inodo tiene exactamente 12 punteros directos y tres indirec
 
 Utiliza herramientas de diagnóstico específicas del sistema de archivos únicamente en modos de solo lectura o documentados cuando importe la correspondencia interna. Para la administración habitual, `stat`, `find -inum`, `df -i` y las herramientas que comprenden enlaces ofrecen abstracciones más seguras.
 
-:::single-choice{#inodes-layout-portability}
-¿Por qué no debes suponer un único diseño fijo de punteros para todos los inodos?
+:::single-choice{#inodes-layout-portability} ¿Por qué no debes suponer un único diseño fijo de punteros para todos los inodos?
 
 ::option[Porque los inodos nunca se refieren de ninguna forma a los datos de archivos.]{#inodes-no-data-reference explanation="El sistema de archivos debe asociar el objeto con su contenido, aunque el mecanismo varíe."}
 ::option[Porque las implementaciones utilizan estructuras distintas de extensiones, árboles y datos en línea.]{#inodes-format-specific-layout .correct explanation="La correspondencia en disco entre un inodo y su contenido forma parte del formato de cada sistema de archivos."}

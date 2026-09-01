@@ -28,8 +28,7 @@ $ sudo mkfs.ext4 /dev/VERIFIED-PARTITION
 
 지원 옵션, 기본값, 기능 집합 및 덮어쓰기 확인 방식은 구현마다 다릅니다. 모든 `mkfs` 백엔드가 같다고 가정하지 말고 정확한 포맷 도구의 로컬 설명서를 읽으십시오.
 
-:::single-choice{#creating-filesystems-mkfs-role}
-`mkfs -t ext4 TARGET`이 요청하는 작업은 무엇입니까?
+:::single-choice{#creating-filesystems-mkfs-role} `mkfs -t ext4 TARGET`이 요청하는 작업은 무엇입니까?
 
 ::option[기존 파일 시스템을 변경하지 않고 마운트합니다.]{#creating-filesystems-mount-existing explanation="마운트는 별도 작업이며 mkfs는 장치 내 메타데이터를 초기화합니다."}
 ::option[대상에 ext4 파일 시스템 구조를 만듭니다.]{#creating-filesystems-create-ext4 .correct explanation="프런트엔드는 지정한 블록 장치에 ext4 포맷 구현을 선택합니다."}
@@ -50,8 +49,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 각 계층의 전용 도구로 관련 계층을 모두 마운트 해제하거나 비활성화하십시오. 열거 이름은 바뀔 수 있으므로 포맷 도구를 실행하기 직전에 식별 정보를 다시 확인합니다.
 
-:::single-choice{#creating-filesystems-wipefs-no-act}
-이 작업 흐름에서 `wipefs --no-act TARGET`이 제공하는 것은 무엇입니까?
+:::single-choice{#creating-filesystems-wipefs-no-act} 이 작업 흐름에서 `wipefs --no-act TARGET`이 제공하는 것은 무엇입니까?
 
 ::option[인식된 서명의 읽기 전용 보고서입니다.]{#creating-filesystems-signature-report .correct explanation="no-act 모드는 기존 파일 시스템, 파티션 테이블, RAID 또는 다른 서명을 제거하지 않고 확인하는 데 도움을 줍니다."}
 ::option[마운트할 준비가 된 새 빈 파일 시스템입니다.]{#creating-filesystems-wipefs-formats explanation="서명 검사는 새 파일 시스템을 초기화하지 않습니다."}
@@ -64,8 +62,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 인기만을 이유로 형식을 선택하지 마십시오. 예를 들어 ext4, XFS 및 Btrfs는 운영 기능과 복구 절차가 서로 다릅니다. 상호 운용을 위한 이동식 장치에는 유닉스 권한 의미 체계가 다른 형식이 필요할 수 있습니다.
 
-:::single-choice{#creating-filesystems-type-choice}
-파일 시스템 유형을 선택하는 올바른 기준은 무엇입니까?
+:::single-choice{#creating-filesystems-type-choice} 파일 시스템 유형을 선택하는 올바른 기준은 무엇입니까?
 
 ::option[입력할 이름이 가장 짧은 유형입니다.]{#creating-filesystems-shortest-name explanation="명령 길이는 내구성, 기능 또는 지원 여부를 알려 주지 않습니다."}
 ::option[앞으로 저장 장치 장애가 절대 없다는 약속입니다.]{#creating-filesystems-no-failure explanation="어떤 파일 시스템도 하드웨어 장애나 백업의 필요성을 없애지 못합니다."}
@@ -85,8 +82,7 @@ $ sudo blkid /dev/VERIFIED-PARTITION
 
 나중의 마운트 설정을 위해 UUID를 기록하십시오. 파일 시스템을 만들어도 마운트되거나, 애플리케이션 디렉터리가 만들어지거나, 백업 데이터가 채워지거나, 부팅 후에도 자동으로 유지되지는 않습니다.
 
-:::single-choice{#creating-filesystems-after-mkfs}
-파일 시스템을 만든 뒤에도 별도로 수행해야 하는 단계는 무엇입니까?
+:::single-choice{#creating-filesystems-after-mkfs} 파일 시스템을 만든 뒤에도 별도로 수행해야 하는 단계는 무엇입니까?
 
 ::option[의도한 디렉터리에 마운트합니다.]{#creating-filesystems-mount-separate .correct explanation="포맷은 파일 시스템 구조를 기록하고 마운트는 그 파일 시스템을 보이는 디렉터리 트리에 연결합니다."}
 ::option[블록 장치에 용량 자체를 할당합니다.]{#creating-filesystems-capacity explanation="기반 파티션이나 논리 장치가 이미 포맷할 용량을 제공합니다."}

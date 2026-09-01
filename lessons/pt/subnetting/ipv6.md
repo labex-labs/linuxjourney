@@ -28,8 +28,7 @@ Os zeros iniciais de cada grupo podem ser omitidos, e uma sequência consecutiva
 
 Apenas um `::` pode aparecer, pois, caso contrário, a quantidade de grupos omitidos seria ambígua. `2001:db8::/32` é reservado para exemplos de documentação.
 
-:::single-choice{#ipv6-double-colon-rule}
-Por que `::` pode aparecer no máximo uma vez em um endereço IPv6?
+:::single-choice{#ipv6-double-colon-rule} Por que `::` pode aparecer no máximo uma vez em um endereço IPv6?
 
 ::option[Vários marcadores `::` tornariam a expansão ambígua.]{#ipv6-compression-ambiguity .correct explanation="Um marcador de compressão pode ser expandido para a quantidade exata de grupos necessária para chegar a oito."}
 ::option[Endereços IPv6 contêm apenas um bit zero.]{#ipv6-one-zero explanation="Um endereço pode conter muitos bits zero e grupos formados por zeros."}
@@ -47,8 +46,7 @@ Entre os endereços e intervalos importantes estão:
 
 O IPv6 não possui endereço de broadcast; multicast e Descoberta de Vizinhos atendem a casos de uso que o IPv4 costuma tratar com broadcast. Um destino link-local pode exigir uma zona de interface, como `fe80::1%eth0`, pois o mesmo prefixo existe em todos os enlaces.
 
-:::single-choice{#ipv6-link-local-scope}
-Qual é o escopo normal de um endereço `fe80::/10`?
+:::single-choice{#ipv6-link-local-scope} Qual é o escopo normal de um endereço `fe80::/10`?
 
 ::option[Todos os hosts da Internet global.]{#ipv6-global-link-local explanation="Endereços unicast globais atendem ao escopo global roteado."}
 ::option[Apenas um arquivo de zona DNS.]{#ipv6-dns-only explanation="Endereços link-local são atribuídos a interfaces e usados em redes."}
@@ -59,8 +57,7 @@ Qual é o escopo normal de um endereço `fe80::/10`?
 
 A notação CIDR do IPv6 usa um comprimento de prefixo de `/0` a `/128`. Um `/64` é o tamanho padrão para a maioria das sub-redes LAN e permite a Configuração Automática de Endereço sem Estado. Uma interface pode conter simultaneamente endereços link-local, globais estáveis, temporários de privacidade e outros, cada um com durações preferencial e válida.
 
-:::single-choice{#ipv6-address-multiplicity}
-Por que uma interface pode mostrar vários endereços IPv6?
+:::single-choice{#ipv6-address-multiplicity} Por que uma interface pode mostrar vários endereços IPv6?
 
 ::option[O IPv6 exige um endereço para cada dígito hexadecimal.]{#ipv6-one-per-digit explanation="Os dígitos são uma representação, não atribuições separadas à interface."}
 ::option[Diferentes escopos e papéis de privacidade ou duração podem coexistir.]{#ipv6-several-roles .correct explanation="É normal ter um endereço link-local e um ou mais endereços globais ou temporários."}
@@ -73,8 +70,7 @@ A Descoberta de Vizinhos do IPv6 usa ICMPv6 para resolução de endereços, dete
 
 Bloquear todo o ICMPv6 interrompe comportamentos essenciais do protocolo. A política de firewall deve permitir os tipos de mensagem necessários com o escopo apropriado, em vez de tratar o ICMPv6 como opcional.
 
-:::single-choice{#ipv6-default-router-source}
-Como um host IPv6 normalmente aprende um roteador padrão de forma dinâmica?
+:::single-choice{#ipv6-default-router-source} Como um host IPv6 normalmente aprende um roteador padrão de forma dinâmica?
 
 ::option[Por meio de Anúncios de Roteador.]{#ipv6-router-advertisements .correct explanation="A Descoberta de Roteadores faz parte da Descoberta de Vizinhos do ICMPv6."}
 ::option[Por um endereço de broadcast Ethernet.]{#ipv6-ethernet-broadcast explanation="O IPv6 não usa um endereço IP de broadcast."}
@@ -94,8 +90,7 @@ $ ping -6 -c 3 2001:db8::25
 
 Use um endereço de teste realmente atribuído, não o endereço de documentação mostrado. Uma aplicação de pilha dupla pode funcionar por IPv4 enquanto o IPv6 está com falha, ou vice-versa; portanto, teste explicitamente cada família e seus registros DNS `A` ou `AAAA`.
 
-:::single-choice{#ipv6-dual-stack-test}
-Por que testar IPv4 e IPv6 separadamente em um serviço de pilha dupla?
+:::single-choice{#ipv6-dual-stack-test} Por que testar IPv4 e IPv6 separadamente em um serviço de pilha dupla?
 
 ::option[Todo pacote IPv6 precisa primeiro se tornar um broadcast IPv4.]{#ipv6-becomes-ipv4 explanation="IPv6 e IPv4 nativos são caminhos de protocolo distintos."}
 ::option[As duas famílias podem ter DNS, rotas, filtros e falhas diferentes.]{#ipv6-independent-paths .correct explanation="Um fallback bem-sucedido pode ocultar uma família de endereços preferida com falha."}

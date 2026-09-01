@@ -24,8 +24,7 @@ An init system commonly:
 
 The exact boundary varies. Device management, networking, logging, and scheduled tasks can be separate programs supervised by init rather than code built into PID 1.
 
-:::single-choice{#boot-init-pid-one-role}
-Which responsibility is special for PID 1 in its PID namespace?
+:::single-choice{#boot-init-pid-one-role} Which responsibility is special for PID 1 in its PID namespace?
 
 ::option[Compiling every application from source at each boot.]{#boot-init-compile-apps explanation="Normal service startup uses installed programs rather than rebuilding all software."}
 ::option[Defining the disk's physical sector size.]{#boot-init-sector-size explanation="Storage hardware and drivers expose sector geometry before init manages services."}
@@ -38,8 +37,7 @@ Traditional sysvinit uses configuration such as `/etc/inittab` and runlevel-spec
 
 Do not infer a host's active init system merely because `/etc/init.d/` exists; compatibility scripts can remain on systems whose PID 1 is another implementation.
 
-:::single-choice{#boot-init-sysv-runlevel}
-What does a System V runlevel represent?
+:::single-choice{#boot-init-sysv-runlevel} What does a System V runlevel represent?
 
 ::option[A kernel version number selected by the bootloader.]{#boot-init-runlevel-kernel explanation="Kernel selection is a loader concern and not encoded by an init runlevel."}
 ::option[A configured operating mode associated with service actions.]{#boot-init-runlevel-mode .correct explanation="SysV layouts associate levels with sets and ordering of startup or shutdown scripts."}
@@ -54,8 +52,7 @@ systemd is widely used by current general-purpose distributions. It models servi
 
 Other active init and supervision designs include OpenRC, runit, s6, and BusyBox init. “Newest” is not a useful compatibility rule; identify what the actual system runs and use its documentation.
 
-:::single-choice{#boot-init-systemd-unit-model}
-How does systemd represent managed resources such as services and mounts?
+:::single-choice{#boot-init-systemd-unit-model} How does systemd represent managed resources such as services and mounts?
 
 ::option[As MBR primary partition entries.]{#boot-init-systemd-partitions explanation="Disk partition metadata is unrelated to service-manager units."}
 ::option[As hard links to PID 1's executable only.]{#boot-init-systemd-hard-links explanation="Units are configuration and runtime objects, not merely inode aliases."}
@@ -73,8 +70,7 @@ $ readlink /proc/1/exe
 
 Permissions, containers, and namespaces affect what you see. A command run inside a container reports that namespace's PID 1, not necessarily the host init. Once identified, use its native status and log tools instead of mixing commands from another init family.
 
-:::single-choice{#boot-init-detect-running}
-Why is inspecting PID 1 better than checking whether a legacy script directory exists?
+:::single-choice{#boot-init-detect-running} Why is inspecting PID 1 better than checking whether a legacy script directory exists?
 
 ::option[PID 1 always has the same executable name on every Linux system.]{#boot-init-same-name explanation="Systemd, sysvinit, BusyBox, container init programs, and others can occupy PID 1."}
 ::option[Compatibility files can exist even when another init implementation is running.]{#boot-init-compatibility-files .correct explanation="The live PID 1 executable is stronger evidence of the active init system."}

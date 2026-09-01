@@ -44,8 +44,7 @@ $ sudo passwd -S bob
 $ id bob
 ```
 
-:::single-choice{#user-tools-create-home}
-Which `useradd` option explicitly requests creation of the new account's home directory?
+:::single-choice{#user-tools-create-home} Which `useradd` option explicitly requests creation of the new account's home directory?
 
 ::option[`-M`]{#user-tools-no-home-option explanation="Uppercase `-M` explicitly tells common `useradd` implementations not to create the home directory."}
 ::option[`-s`]{#user-tools-shell-option explanation="The `-s` option chooses a login shell and does not itself create a home directory."}
@@ -68,8 +67,7 @@ $ sudo passwd bob
 
 Enter passwords only at the protected prompt, not in command arguments, shell history, lesson notes, or chat. PAM policy can reject weak or reused passwords. Directory-managed accounts can require a different tool.
 
-:::single-choice{#user-tools-change-own-password}
-Which command normally lets the current user change their own password through an interactive prompt?
+:::single-choice{#user-tools-change-own-password} Which command normally lets the current user change their own password through an interactive prompt?
 
 ::option[`useradd`]{#user-tools-add-not-password explanation="`useradd` creates an account record and is not the ordinary interactive password-change command."}
 ::option[`userdel`]{#user-tools-delete-not-password explanation="`userdel` removes a local account and is unrelated to changing the caller's password."}
@@ -90,8 +88,7 @@ For the home move, verify the destination, ownership, available space, running p
 
 Group changes normally affect new login sessions rather than processes already running under the old credential set.
 
-:::single-choice{#user-tools-append-group}
-Which command adds `bob` to supplementary group `developers` without replacing his other supplementary memberships?
+:::single-choice{#user-tools-append-group} Which command adds `bob` to supplementary group `developers` without replacing his other supplementary memberships?
 
 ::option[`usermod -G developers bob`]{#user-tools-replace-groups explanation="Without `-a`, `-G` replaces the supplementary group list and can remove existing memberships."}
 ::option[`usermod -aG developers bob`]{#user-tools-append-groups .correct explanation="The `-a` option appends the group named by `-G`, preserving other supplementary memberships."}
@@ -104,8 +101,7 @@ An administrator can lock the local password hash with `passwd -l USER` and insp
 
 A password lock does not necessarily stop SSH keys, tokens, scheduled jobs, already running processes, or service-specific authentication. To disable an account comprehensively, define the threat and access paths, then apply a coordinated policy that can include account expiration, login shell, service access, keys, and session termination.
 
-:::single-choice{#user-tools-password-lock-scope}
-What does `passwd -l bob` primarily lock?
+:::single-choice{#user-tools-password-lock-scope} What does `passwd -l bob` primarily lock?
 
 ::option[Every possible authentication and execution path for the account.]{#user-tools-lock-everything explanation="Keys, tokens, jobs, services, and existing sessions can require separate controls."}
 ::option[All files currently owned by Bob's UID.]{#user-tools-lock-files explanation="Password state does not change filesystem ownership or automatically make owned data inaccessible."}
@@ -126,8 +122,7 @@ Before any removal:
 
 `userdel -r` does not guarantee removal of files outside the configured home and mail locations. Account deletion can also leave numeric ownership on files, database permissions, application identities, and remote directory records.
 
-:::single-choice{#user-tools-userdel-r-scope}
-What extra removal does common `userdel -r bob` request compared with plain `userdel bob`?
+:::single-choice{#user-tools-userdel-r-scope} What extra removal does common `userdel -r bob` request compared with plain `userdel bob`?
 
 ::option[Every file with Bob's UID on every mounted filesystem.]{#user-tools-delete-all-owned explanation="The tool does not universally discover and erase all UID-owned files across all storage."}
 ::option[Every remote account whose username is also `bob`.]{#user-tools-delete-remote explanation="`userdel` operates on the applicable local account databases and does not delete unrelated directory-service identities."}

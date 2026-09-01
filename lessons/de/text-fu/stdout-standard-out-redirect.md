@@ -23,8 +23,7 @@ Hello World
 
 Stdout ist der Dateideskriptor `1`. Diese Zahl wird nützlich, wenn du mehrere Ströme umleitest. Programme können außerdem über die Standardeingabe, stdin, und die Standardfehlerausgabe, stderr, verfügen; die nächsten Lektionen behandeln diese Ströme.
 
-:::single-choice{#stdout-default-destination}
-Wohin sendet `echo Hello World` ohne Umleitung normalerweise seine reguläre Ausgabe in einem interaktiven Terminal?
+:::single-choice{#stdout-default-destination} Wohin sendet `echo Hello World` ohne Umleitung normalerweise seine reguläre Ausgabe in einem interaktiven Terminal?
 
 ::option[In eine Datei namens `stdout` im aktuellen Verzeichnis.]{#stdout-file explanation="Die Standardausgabe ist ein Strom und keine automatisch erstellte Datei namens `stdout`. Eine Datei wird erst durch eine entsprechende Umleitung verwendet."}
 ::option[Über die Standardausgabe an das Terminal.]{#stdout-terminal .correct explanation="Die Shell verbindet die Standardausgabe eines Befehls normalerweise mit dem Terminal, weshalb `echo` dort angezeigt wird."}
@@ -48,8 +47,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-`notes.txt` enthält bereits Text. Was bewirkt `echo new > notes.txt`?
+:::single-choice{#stdout-replace-file} `notes.txt` enthält bereits Text. Was bewirkt `echo new > notes.txt`?
 
 ::option[Der Dateiinhalt wird durch `new` ersetzt.]{#stdout-replace-existing .correct explanation="Für `>` leert die Shell das vorhandene Ziel und leitet die Ausgabe von `echo` anschließend in die nun leere Datei."}
 ::option[`new` wird hinter dem vorhandenen Text ergänzt.]{#stdout-add-existing explanation="Zum Anhängen ist `>>` erforderlich. Ein einzelnes `>` bewahrt den bisherigen Inhalt des Ziels nicht."}
@@ -71,8 +69,7 @@ Another line
 
 Wie `>` erstellt auch `>>` ein fehlendes Ziel. Der Unterschied besteht darin, wie eine vorhandene Datei geöffnet wird: `>>` hängt an, statt sie zu leeren.
 
-:::single-choice{#stdout-append-file}
-Welcher Befehl fügt `Finished` am Ende von `status.log` hinzu, ohne vorhandenen Inhalt zu löschen?
+:::single-choice{#stdout-append-file} Welcher Befehl fügt `Finished` am Ende von `status.log` hinzu, ohne vorhandenen Inhalt zu löschen?
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="Ein einzelnes `>` leert ein vorhandenes Ziel vor dem Schreiben. Der bisherige Protokollinhalt würde verloren gehen."}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`echo` erzeugt den Text und `>>` hängt diese Standardausgabe an die Zieldatei an."}
@@ -90,8 +87,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-Wer interpretiert normalerweise `>` in `pwd > current-directory.txt`?
+:::single-choice{#stdout-shell-role} Wer interpretiert normalerweise `>` in `pwd > current-directory.txt`?
 
 ::option[Der Befehl `pwd`, nachdem er `>` als Argument erhalten hat.]{#stdout-pwd-redirection explanation="Die Shell verbraucht die Umleitungssyntax. `pwd` erhält deshalb normalerweise weder `>` noch das Ziel als gewöhnliche Argumente."}
 ::option[Die Bash-Shell, bevor sie `pwd` startet.]{#stdout-bash-redirection .correct explanation="Bash öffnet das Ziel und verbindet den Dateideskriptor 1, bevor der Befehl ausgeführt wird."}

@@ -24,8 +24,7 @@ From left to right, the fields are minute, hour, day of month, month, and day of
 
 When both day-of-month and day-of-week fields are restricted, many cron implementations run when either field matches. Confirm local semantics before building a schedule that uses both.
 
-:::single-choice{#cron-daily-eight-thirty}
-When does `30 8 * * * command` run?
+:::single-choice{#cron-daily-eight-thirty} When does `30 8 * * * command` run?
 
 ::option[Every 30 minutes for eight hours.]{#cron-every-thirty explanation="The fields are positions in a schedule, not a duration expression."}
 ::option[At 08:30 each day.]{#cron-eight-thirty .correct explanation="Minute 30 and hour 8 are fixed while the three date fields allow every value."}
@@ -48,8 +47,7 @@ $ crontab -l
 
 `crontab -r` removes the user's entire crontab and may do so without an editor. Do not use it to remove one line; edit the crontab and verify the remaining entries.
 
-:::single-choice{#cron-list-current-user}
-Which command lists the current user's installed cron entries?
+:::single-choice{#cron-list-current-user} Which command lists the current user's installed cron entries?
 
 ::option[`crontab -l`]{#cron-list .correct explanation="The list option prints the installed entries for inspection."}
 ::option[`crontab -r`]{#cron-remove-all explanation="This option removes the crontab instead of displaying it."}
@@ -62,8 +60,7 @@ Cron commonly supplies a limited environment and a noninteractive shell. Use abs
 
 Redirect standard output and error to a controlled log or use a notification mechanism appropriate to the system. Protect credentials with restrictive permissions and avoid embedding secrets directly in a crontab command.
 
-:::single-choice{#cron-absolute-paths}
-Why should a cron command use explicit paths and environment settings?
+:::single-choice{#cron-absolute-paths} Why should a cron command use explicit paths and environment settings?
 
 ::option[Cron always runs inside the user's current terminal.]{#cron-current-terminal explanation="Scheduled jobs run independently of an interactive session."}
 ::option[Absolute paths make every command run as root.]{#cron-path-root explanation="Paths select files but do not grant privileges."}
@@ -82,8 +79,7 @@ If one run might last longer than its interval, design for concurrency or use a 
 
 Choose a lock path the job user may safely create, and decide whether skipped runs are acceptable. Cron does not automatically guarantee that only one instance runs.
 
-:::single-choice{#cron-overlapping-runs}
-What risk exists when a job takes longer than its schedule interval?
+:::single-choice{#cron-overlapping-runs} What risk exists when a job takes longer than its schedule interval?
 
 ::option[Several instances can overlap and contend for resources.]{#cron-overlap .correct explanation="Cron can start a new occurrence while the previous process is still running."}
 ::option[The five schedule fields automatically gain a sixth lock field.]{#cron-auto-lock explanation="Crontab syntax does not add automatic mutual exclusion."}
@@ -94,8 +90,7 @@ What risk exists when a job takes longer than its schedule interval?
 
 Cron is appropriate for simple recurring commands. Systemd timers can provide dependency integration, persistent catch-up behavior, randomized delay, and journal logging on systemd hosts. Application or cluster schedulers may be safer when a job must run exactly once across multiple machines.
 
-:::single-choice{#cron-cluster-exactly-once}
-Why might ordinary per-host cron be unsuitable for a clustered exactly-once job?
+:::single-choice{#cron-cluster-exactly-once} Why might ordinary per-host cron be unsuitable for a clustered exactly-once job?
 
 ::option[Every cron entry is limited to one character.]{#cron-one-character explanation="Crontab commands can contain normal command lines."}
 ::option[Each host can independently start its own copy.]{#cron-each-host .correct explanation="A distributed coordination mechanism is needed to enforce one execution across hosts."}

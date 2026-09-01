@@ -29,8 +29,7 @@ $ getent group developers
 
 Las listas de grupos pueden revelar nombres internos de cuentas y funciones, así que revisa la salida antes de compartirla.
 
-:::single-choice{#group-query-resolved-database}
-¿Qué orden consulta la base de datos de grupos resuelta por NSS?
+:::single-choice{#group-query-resolved-database} ¿Qué orden consulta la base de datos de grupos resuelta por NSS?
 
 ::option[`getent group`]{#group-getent-all .correct explanation="`getent` consulta los orígenes NSS configurados para los registros de grupos."}
 ::option[`cat /etc/group`]{#group-cat-local explanation="Esto solo lee el archivo local de grupos y puede omitir los proporcionados por otros orígenes."}
@@ -52,16 +51,14 @@ developers:x:1500:alice,bob
 
 Las contraseñas de grupos son una función heredada que usan herramientas como `newgrp` en algunas configuraciones. No son el mecanismo normal para conceder autorización sudo y no deben introducirse mediante ediciones manuales de campos.
 
-:::single-choice{#group-gid-field}
-En `developers:x:1500:alice,bob`, ¿qué campo contiene el GID?
+:::single-choice{#group-gid-field} En `developers:x:1500:alice,bob`, ¿qué campo contiene el GID?
 
 ::option[El segundo campo, `x`]{#group-second-password explanation="El campo 2 es el marcador de contraseña del grupo, no la identidad numérica."}
 ::option[El cuarto campo, `alice,bob`]{#group-fourth-members explanation="El campo 4 enumera nombres de miembros explícitos, no el GID."}
 ::option[El tercer campo, `1500`]{#group-third-gid .correct explanation="El tercer campo separado por dos puntos es el identificador numérico del grupo."}
 :::
 
-:::single-choice{#group-explicit-member-field}
-¿Cómo se representan los nombres de miembros explícitos en un registro de grupo local?
+:::single-choice{#group-explicit-member-field} ¿Cómo se representan los nombres de miembros explícitos en un registro de grupo local?
 
 ::option[Como una lista separada por comas en el campo 4.]{#group-members-field-four .correct explanation="El último campo contiene nombres de miembros complementarios explícitos separados por comas."}
 ::option[Como una lista separada por espacios en el campo 2.]{#group-members-field-two explanation="El campo 2 está reservado para datos relacionados con contraseñas o un marcador, no para la lista de miembros."}
@@ -80,8 +77,7 @@ developers:x:1500:
 
 Por eso, analizar únicamente el campo 4 produce una vista incompleta de las pertenencias.
 
-:::single-choice{#group-primary-membership-visibility}
-El registro passwd de Alice usa el GID 1500 como GID principal, pero su nombre no aparece en el campo 4 del grupo 1500. ¿Es miembro de ese grupo?
+:::single-choice{#group-primary-membership-visibility} El registro passwd de Alice usa el GID 1500 como GID principal, pero su nombre no aparece en el campo 4 del grupo 1500. ¿Es miembro de ese grupo?
 
 ::option[No, todas las pertenencias deben aparecer en el campo 4 de `/etc/group`.]{#group-field-four-only explanation="Esto ignora la pertenencia mediante el GID principal y contabilizaría menos miembros de los reales."}
 ::option[Sí, la pertenencia principal procede del campo GID del registro passwd.]{#group-primary-from-passwd .correct explanation="La lista explícita del archivo de grupos se usa principalmente para pertenencias complementarias; la principal se registra con la cuenta."}
@@ -99,8 +95,7 @@ $ groups alice
 
 Para el proceso actual, `id` sin argumentos muestra los grupos presentes realmente en sus credenciales. Una pertenencia complementaria recién configurada no suele aparecer en una sesión de inicio ya activa; inicia una sesión autenticada nueva o usa deliberadamente un mecanismo configurado como `newgrp` cuando corresponda.
 
-:::single-choice{#group-current-process-credentials}
-¿Qué orden muestra el UID, el GID principal y los grupos complementarios del proceso actual?
+:::single-choice{#group-current-process-credentials} ¿Qué orden muestra el UID, el GID principal y los grupos complementarios del proceso actual?
 
 ::option[`id`]{#group-current-id .correct explanation="Sin un operando de usuario, `id` muestra las credenciales de identidad del proceso actual."}
 ::option[`cat /etc/group`]{#group-current-cat explanation="El archivo local enumera registros, pero no muestra qué grupos resueltos están activos en el proceso actual."}

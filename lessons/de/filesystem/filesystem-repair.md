@@ -24,8 +24,7 @@ $ journalctl -k -b
 
 Prüfe Speicherstapel, Gerätezustand, Kabel oder Netzwerkpfad, RAID-Zustand, Verschlüsselung und kürzliche Ereignisse. Wenn das Gerät ausfällt, können wiederholte Scans seine verbleibende Lebensdauer aufbrauchen. Erstelle soweit möglich mit einem wiederherstellungsorientierten Werkzeug ein Abbild oder einen Klon und arbeite mit der Kopie.
 
-:::single-choice{#filesystem-repair-first-response}
-Was sollte einer schreibfähigen Dateisystemreparatur vorausgehen, wenn ein Hardwareausfall möglich ist?
+:::single-choice{#filesystem-repair-first-response} Was sollte einer schreibfähigen Dateisystemreparatur vorausgehen, wenn ein Hardwareausfall möglich ist?
 
 ::option[Jedes Reparaturwerkzeug wiederholt ausführen, bis eines mit Status null endet.]{#filesystem-repair-repeat-tools explanation="Unpassende Werkzeuge und wiederholte Schreibvorgänge können den Schaden vergrößern."}
 ::option[Sofort eine neue Partitionstabelle über das Gerät schreiben.]{#filesystem-repair-new-table explanation="Das Überschreiben von Strukturmetadaten zerstört Belege und kann die Wiederherstellung erschweren."}
@@ -38,8 +37,7 @@ Ermittle, ob das Dateisystem auf einer Partition, einem logischen Volume, RAID-G
 
 Ordne das Ziel mit `lsblk -f`, `blkid`, `findmnt` und Werkzeugen der Speicherebenen zu. Erkannte Signaturen können veraltet sein; gleiche sie deshalb mit bekannter Konfiguration und Sicherungen ab.
 
-:::single-choice{#filesystem-repair-target-layer}
-Welche Ebene sollte ein ext4-Prüfwerkzeug normalerweise erhalten, wenn ext4 auf `/dev/sda1` gespeichert ist?
+:::single-choice{#filesystem-repair-target-layer} Welche Ebene sollte ein ext4-Prüfwerkzeug normalerweise erhalten, wenn ext4 auf `/dev/sda1` gespeichert ist?
 
 ::option[Unabhängig von der Partitionstabelle immer `/dev/sda`.]{#filesystem-repair-whole-disk explanation="Der vollständige Datenträger enthält die Partitionstabelle und möglicherweise mehrere untergeordnete Bereiche, nicht direkt die ext4-Instanz."}
 ::option[`/dev/sda1`, nachdem sie sicher offline ist.]{#filesystem-repair-partition-target .correct explanation="Das Prüfwerkzeug arbeitet auf dem Blockgerät, das dieses Dateisystem direkt enthält."}
@@ -52,8 +50,7 @@ Die meisten traditionellen Konsistenzprüfer verlangen ein ausgehängtes Dateisy
 
 Beende abhängige Dienste, hänge verschachtelte Dateisysteme aus, verschiebe Arbeitsverzeichnisse von Prozessen und deaktiviere höhere Ebenen nach Bedarf. Starte für das Root-Dateisystem eine Rettungsumgebung oder verwende den dokumentierten Offline-Prüfmechanismus der Distribution. Bestätige mit `findmnt`, dass das Ziel im relevanten Namespace nicht eingehängt ist.
 
-:::single-choice{#filesystem-repair-mounted-risk}
-Warum sollte ein Dateisystem normalerweise ausgehängt sein, bevor ein Reparaturwerkzeug hineinschreibt?
+:::single-choice{#filesystem-repair-mounted-risk} Warum sollte ein Dateisystem normalerweise ausgehängt sein, bevor ein Reparaturwerkzeug hineinschreibt?
 
 ::option[Gleichzeitige Aktualisierungen durch Kernel und Prüfwerkzeug können in Konflikt geraten und Metadaten beschädigen.]{#filesystem-repair-concurrent-writes .correct explanation="Eine Offline-Ansicht verhindert, dass sich das Dateisystem während der Reparatur verändert."}
 ::option[Das Aushängen stellt jede beschädigte Datei automatisch aus der Sicherung wieder her.]{#filesystem-repair-unmount-restores explanation="Das Trennen schafft Konsistenz für die Prüfung, ist aber keine Datenwiederherstellung."}
@@ -66,8 +63,7 @@ Warum sollte ein Dateisystem normalerweise ausgehängt sein, bevor ein Reparatur
 
 Ähnlich benannte Optionen können unterschiedliche Bedeutungen besitzen. Übertrage insbesondere keine `--repair`- oder Force-Optionen aus der Anleitung eines anderen Dateisystems. Lies das installierte Handbuch sowie aktuelle Wiederherstellungsdokumentation des Projekts oder der Distribution. Beginne mit einem nicht verändernden oder diagnostischen Modus, wenn die Implementierung einen verlässlichen anbietet, zeichne die Ausgabe auf und verstehe die vorgeschlagenen Korrekturen.
 
-:::single-choice{#filesystem-repair-fsck-role}
-Wofür ist `fsck` unter Linux häufig zuständig?
+:::single-choice{#filesystem-repair-fsck-role} Wofür ist `fsck` unter Linux häufig zuständig?
 
 ::option[Prüfungen an ein zum Dateisystemtyp passendes Hilfsprogramm weiterleiten.]{#filesystem-repair-fsck-dispatch .correct explanation="Die eigentliche Validierungs- und Reparaturlogik gehört zu formatspezifischen Werkzeugen und Abläufen."}
 ::option[Jedes Dateisystem vor der Prüfung in ext4 umwandeln.]{#filesystem-repair-fsck-convert explanation="Ein Prüfwerkzeug muss das vorhandene Format bewahren und verstehen."}
@@ -80,8 +76,7 @@ Notiere Reparaturwerkzeug, Version, Optionen, Ausgabe und Exit-Status. Wiederhol
 
 Ein einhängbares Dateisystem beweist nicht, dass jede Datei korrekt ist. Stelle verlorene oder beschädigte Anwendungsdaten aus Sicherungen wieder her und validiere sie auf Anwendungsebene.
 
-:::single-choice{#filesystem-repair-mountable-proof}
-Beweist eine erfolgreiche Einhängung nach der Reparatur, dass alle Anwendungsdaten korrekt sind?
+:::single-choice{#filesystem-repair-mountable-proof} Beweist eine erfolgreiche Einhängung nach der Reparatur, dass alle Anwendungsdaten korrekt sind?
 
 ::option[Nein; Konsistenzreparatur und Datenvalidierung auf Anwendungsebene sind verschieden.]{#filesystem-repair-not-data-proof .correct explanation="Das Dateisystem kann strukturell einhängbar sein, obwohl Dateien oder Transaktionen fehlen oder beschädigt sind."}
 ::option[Ja; beim Einhängen wird jede Datei kryptografisch mit einer Sicherung verglichen.]{#filesystem-repair-mount-verifies explanation="Eine gewöhnliche Einhängung führt keinen vollständigen Sicherungsvergleich aus."}

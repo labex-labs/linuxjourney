@@ -16,8 +16,7 @@ meta_keywords: "traceroute, traceroute Linux, redes Linux, resolución de proble
 
 Las pruebas comienzan con un límite de un salto y lo incrementan. El primer router reduce el valor a cero y puede devolver un error ICMP. Un límite de dos llega al segundo router antes de caducar, y el proceso continúa hasta que el destino responde o se alcanza el máximo.
 
-:::single-choice{#traceroute-expiring-field}
-¿Qué campo hace que las pruebas sucesivas caduquen en routers posteriores?
+:::single-choice{#traceroute-expiring-field} ¿Qué campo hace que las pruebas sucesivas caduquen en routers posteriores?
 
 ::option[El TTL de la caché DNS del nombre de destino.]{#traceroute-dns-ttl explanation="La duración del registro DNS no controla los saltos de reenvío de los paquetes."}
 ::option[La dirección MAC Ethernet de origen.]{#traceroute-source-mac explanation="Las direcciones de enlace no transportan un contador de saltos de extremo a extremo."}
@@ -36,8 +35,7 @@ $ traceroute -T -p 443 -n example.com
 
 Los privilegios y las opciones disponibles varían. Utiliza métodos autorizados para el destino y anota el método al comparar resultados.
 
-:::single-choice{#traceroute-default-destination-response}
-¿Qué suele poner fin a un traceroute UDP tradicional de Linux?
+:::single-choice{#traceroute-default-destination-response} ¿Qué suele poner fin a un traceroute UDP tradicional de Linux?
 
 ::option[Una respuesta ICMP Port Unreachable del destino.]{#traceroute-port-unreachable .correct explanation="Los puertos UDP altos normalmente no se utilizan, por lo que el destino puede identificarse mediante el error."}
 ::option[Una respuesta HTTP 200 obligatoria de cada router.]{#traceroute-http-every-router explanation="Los routers devuelven errores de control de red, no respuestas HTTP."}
@@ -48,8 +46,7 @@ Los privilegios y las opciones disponibles varían. Utiliza métodos autorizados
 
 Un asterisco significa que no se observó una respuesta a esa prueba antes del tiempo de espera. El router puede reenviar tráfico en tránsito mientras filtra o limita la frecuencia de las respuestas de diagnóstico. Si responden saltos posteriores, está claro que el salto silencioso reenvió al menos algunas pruebas.
 
-:::single-choice{#traceroute-asterisk-meaning}
-¿Qué demuestra un `*` en un salto?
+:::single-choice{#traceroute-asterisk-meaning} ¿Qué demuestra un `*` en un salto?
 
 ::option[Que el router descartó permanentemente todos los paquetes en tránsito.]{#traceroute-star-all-drop explanation="Las respuestas posteriores pueden demostrar que el reenvío continuó."}
 ::option[Únicamente que no llegó una respuesta coincidente antes del tiempo de espera.]{#traceroute-star-no-response .correct explanation="El filtrado, la limitación de frecuencia, la pérdida y los problemas de la ruta de retorno pueden producir silencio."}
@@ -62,8 +59,7 @@ Los tiempos por salto miden la ida y vuelta de las respuestas de control, no la 
 
 La ruta de retorno de cada respuesta ICMP puede diferir de la ruta de ida. Repite las pruebas y correlaciónalas con los tiempos de la aplicación en los extremos antes de identificar un cuello de botella.
 
-:::single-choice{#traceroute-hop-rtt-limit}
-¿Por qué no se deben restar los valores RTT de saltos adyacentes como si fueran la latencia exacta del enlace?
+:::single-choice{#traceroute-hop-rtt-limit} ¿Por qué no se deben restar los valores RTT de saltos adyacentes como si fueran la latencia exacta del enlace?
 
 ::option[Traceroute muestra todos los tiempos en bytes y no en milisegundos.]{#traceroute-times-bytes explanation="Los tiempos de las pruebas normalmente se muestran en milisegundos."}
 ::option[Las respuestas pueden utilizar rutas de retorno y procesamiento del plano de control diferentes.]{#traceroute-rtt-asymmetry .correct explanation="Las mediciones son recorridos independientes de ida y vuelta hasta cada salto, no muestras sincronizadas y unidireccionales de cada enlace."}
@@ -74,8 +70,7 @@ La ruta de retorno de cada respuesta ICMP puede diferir de la ruta de ida. Repit
 
 Un traceroute puede alcanzar el destino mientras el servicio está bloqueado, y el servicio puede funcionar aunque los routers intermedios oculten sus respuestas. Prueba la misma familia de direcciones, destino, protocolo de transporte y puerto que la aplicación; después utiliza traceroute como evidencia complementaria sobre la ruta.
 
-:::single-choice{#traceroute-service-proof}
-¿Un traceroute completado demuestra que un servicio HTTPS funciona correctamente?
+:::single-choice{#traceroute-service-proof} ¿Un traceroute completado demuestra que un servicio HTTPS funciona correctamente?
 
 ::option[Sí, porque cada salto valida el certificado del servidor.]{#traceroute-validates-cert explanation="Los routers no realizan la validación TLS del cliente."}
 ::option[No; el transporte, TLS y HTTP necesitan sus propias pruebas.]{#traceroute-not-app-proof .correct explanation="El descubrimiento de rutas y el estado de una aplicación son capas de diagnóstico diferentes."}

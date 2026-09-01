@@ -25,8 +25,7 @@ Los nombres de directorio numéricos corresponden a los identificadores de proce
 
 La visibilidad y el acceso dependen de las credenciales, los espacios de nombres, la política de seguridad y opciones de montaje de procfs como `hidepid`. Un proceso puede terminar entre el listado de un directorio y la apertura de uno de sus archivos, por lo que su desaparición es una condición de carrera normal que las herramientas de inspección deben saber gestionar.
 
-:::single-choice{#proc-filesystem-numeric-directory}
-¿Qué representa normalmente el directorio numérico `/proc/12345`?
+:::single-choice{#proc-filesystem-numeric-directory} ¿Qué representa normalmente el directorio numérico `/proc/12345`?
 
 ::option[El bloque de disco número 12345.]{#proc-filesystem-disk-block explanation="`/proc` es una interfaz virtual del kernel, no un directorio de bloques de disco sin procesar."}
 ::option[El proceso visible en ese momento con el PID 12345.]{#proc-filesystem-pid-directory .correct explanation="Los datos de procfs correspondientes a cada proceso se agrupan bajo un directorio cuyo nombre es el PID visible."}
@@ -51,8 +50,7 @@ Incluye campos como el nombre y el estado del proceso, identificadores, credenci
 
 Trátalas como observaciones cambiantes. Los campos pueden variar según la versión del kernel, un proceso puede cambiar de estado durante la lectura de varios archivos y algunos contadores tienen matices que sus nombres no reflejan por sí solos.
 
-:::single-choice{#proc-filesystem-status-file}
-¿Qué ruta contiene un resumen legible y organizado en campos para el PID 12345?
+:::single-choice{#proc-filesystem-status-file} ¿Qué ruta contiene un resumen legible y organizado en campos para el PID 12345?
 
 ::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="Los archivos de cada proceso están dentro del directorio que lleva el nombre de su PID, no bajo un directorio `status` en el nivel superior."}
 ::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="La interfaz `status` de cada proceso presenta identificadores, estado, memoria, señales y credenciales."}
@@ -71,8 +69,7 @@ No todas las entradas de `/proc` pertenecen a un proceso. Algunos ejemplos son:
 
 Algunos archivos, sobre todo los situados bajo `/proc/sys`, son interfaces de configuración en las que se puede escribir. No escribas en ellos solo porque parezcan archivos normales. Antes de realizar un cambio autorizado en el sistema, comprende el parámetro, su alcance, el mecanismo para hacerlo persistente y cómo revertirlo.
 
-:::single-choice{#proc-filesystem-system-interface}
-¿Qué entrada proporciona contadores de memoria de todo el sistema en vez del estado de un único proceso?
+:::single-choice{#proc-filesystem-system-interface} ¿Qué entrada proporciona contadores de memoria de todo el sistema en vez del estado de un único proceso?
 
 ::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="Esta ruta se resuelve al estado del propio proceso que realiza la observación."}
 ::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo` contiene estadísticas de la memoria del sistema proporcionadas por el kernel."}
@@ -85,8 +82,7 @@ Las implementaciones de Linux de herramientas como `ps`, `top` y `free` obtienen
 
 Los lectores directos deben analizar los formatos correctamente, tolerar la desaparición de procesos, proteger la información confidencial y evitar suponer que una lectura constituye una instantánea atómica del sistema.
 
-:::single-choice{#proc-filesystem-live-data}
-¿Por qué puede desaparecer `/proc/PID` entre dos órdenes de inspección?
+:::single-choice{#proc-filesystem-live-data} ¿Por qué puede desaparecer `/proc/PID` entre dos órdenes de inspección?
 
 ::option[Porque cada archivo de procfs cambia automáticamente de nombre una vez por segundo.]{#proc-filesystem-renamed explanation="No existe ninguna regla que cambie periódicamente el nombre de todas las entradas de procfs."}
 ::option[Porque leer `status` elimina el directorio del proceso.]{#proc-filesystem-read-delete explanation="La inspección de estado es de solo lectura y no termina ni elimina el proceso."}

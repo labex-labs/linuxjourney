@@ -22,8 +22,7 @@ Vim は現在のカーソル位置からパターンを検索します。ノー�
 
 検索には Vim の正規表現構文が使われるため、`.`、`*`、`[`、`\` などの文字は特別な意味を持つことがあります。パターンの残りを very nomagic として扱うには先頭に `\V` を付けるか、特殊文字を意図的にエスケープしてください。
 
-:::single-choice{#vim-search-forward-key}
-ノーマルモードから `pretty` の前方検索を始めるコマンドはどれですか？
+:::single-choice{#vim-search-forward-key} ノーマルモードから `pretty` の前方検索を始めるコマンドはどれですか？
 
 ::option[`?pretty` に続けて Enter]{#vim-backward-pretty explanation="疑問符は、現在のカーソル位置から後方への検索を始めます。"}
 ::option[`/pretty` に続けて Enter]{#vim-forward-pretty .correct explanation="スラッシュは前方検索を始め、Enter でパターンを確定します。"}
@@ -40,8 +39,7 @@ Vim は現在のカーソル位置からパターンを検索します。ノー�
 
 これは本質的に「ファイル内の最後の一致」を意味しません。結果は現在のカーソル位置によって決まります。Vim の既定の `wrapscan` 設定では、検索が先頭または末尾で折り返すことがあります。`:set nowrapscan` で折り返しを無効にできます。
 
-:::single-choice{#vim-search-backward-key}
-カーソルから前にあるテキストを探すノーマルモードの検索接頭辞はどれですか？
+:::single-choice{#vim-search-backward-key} カーソルから前にあるテキストを探すノーマルモードの検索接頭辞はどれですか？
 
 ::option[`/`]{#vim-slash-forward explanation="スラッシュは、前にあるテキストではなくカーソルから前方を検索します。"}
 ::option[`?`]{#vim-question-backward .correct explanation="疑問符は、現在のカーソル位置から後方へのパターン検索を始めます。"}
@@ -57,8 +55,7 @@ Vim は現在のカーソル位置からパターンを検索します。ノー�
 
 したがって、`/pretty` の後では `n` が前方、`N` が後方へ移動します。`?pretty` の後では `n` が後方、`N` が前方へ移動します。
 
-:::single-choice{#vim-repeat-backward-search}
-`?error` を実行した後、同じ後方へ検索を繰り返すキーはどれですか？
+:::single-choice{#vim-repeat-backward-search} `?error` を実行した後、同じ後方へ検索を繰り返すキーはどれですか？
 
 ::option[`n`]{#vim-same-question-search .correct explanation="小文字の `n` は直近の検索を元の方向へ繰り返します。この場合は後方です。"}
 ::option[`N`]{#vim-opposite-question-search explanation="大文字の `N` は元の検索方向を反転するため、`?` 検索の後なら前方へ移動します。"}
@@ -74,8 +71,7 @@ Vim は現在のカーソル位置からパターンを検索します。ノー�
 
 これらのコマンドは直近の検索パターンを設定するため、`n` と `N` で検索を続けられます。
 
-:::single-choice{#vim-current-word-forward}
-カーソル下の単語全体を前方へ検索するノーマルモードのキーはどれですか？
+:::single-choice{#vim-current-word-forward} カーソル下の単語全体を前方へ検索するノーマルモードのキーはどれですか？
 
 ::option[`#`]{#vim-hash-current-word explanation="ハッシュキーはカーソル下の単語を後方へ検索します。"}
 ::option[`*`]{#vim-star-current-word .correct explanation="アスタリスクはカーソル下の単語から単語全体のパターンを作り、前方へ検索します。"}
@@ -95,8 +91,7 @@ Vim のオプションで大文字と小文字の扱いを変更できます。
 
 検索のハイライトが有効な場合、`:nohlsearch` は検索パターンを削除せず、現在の視覚的なハイライトだけを消します。次の検索や繰り返しで、一致箇所が再びハイライトされます。
 
-:::single-choice{#vim-force-case-insensitive}
-現在の設定にかかわらず、`error` の 1 回の Vim 検索で大文字と小文字を区別しないパターンはどれですか？
+:::single-choice{#vim-force-case-insensitive} 現在の設定にかかわらず、`error` の 1 回の Vim 検索で大文字と小文字を区別しないパターンはどれですか？
 
 ::option[`/\Cerror`]{#vim-pattern-match-case explanation="大文字の `\C` は大文字と小文字を区別するよう強制するため、逆の動作です。"}
 ::option[`/:error`]{#vim-pattern-colon-error explanation="このパターン内のコロンはリテラル文字であり、大文字と小文字の扱いを選びません。"}

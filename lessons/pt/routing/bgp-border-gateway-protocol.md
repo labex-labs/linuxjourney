@@ -18,8 +18,7 @@ Um sistema autônomo é um conjunto de redes sob uma administração comum de ro
 
 Os pares BGP estabelecem uma sessão pela porta TCP 179. Uma sessão TCP funcional é apenas a base de transporte; os recursos, as políticas e a troca de rotas do BGP também precisam funcionar.
 
-:::single-choice{#bgp-external-session}
-O que o BGP externo troca?
+:::single-choice{#bgp-external-session} O que o BGP externo troca?
 
 ::option[Somas de verificação de quadros Ethernet dentro de um switch.]{#bgp-ethernet-fcs explanation="O BGP opera acima do TCP e troca informações de acessibilidade da camada de rede."}
 ::option[Senhas de usuários entre navegadores Web.]{#bgp-browser-passwords explanation="Credenciais de aplicações não são atributos de roteamento."}
@@ -30,8 +29,7 @@ O que o BGP externo troca?
 
 Um anúncio inclui um prefixo e atributos. `AS_PATH` lista os sistemas autônomos atravessados e ajuda a detectar loops. Outros atributos comuns incluem `LOCAL_PREF`, `MED`, origem, próximo salto e comunidades. Seus efeitos dependem da direção, da implementação e da política.
 
-:::single-choice{#bgp-as-path-loop}
-Como `AS_PATH` ajuda a evitar loops entre ASs?
+:::single-choice{#bgp-as-path-loop} Como `AS_PATH` ajuda a evitar loops entre ASs?
 
 ::option[Um AS pode rejeitar um caminho que já contenha seu próprio número.]{#bgp-own-as-reject .correct explanation="O vetor de caminhos expõe a sequência de ASs usada para alcançar o prefixo anunciado."}
 ::option[Ele criptografa cada pacote que atravessa esses sistemas.]{#bgp-aspath-encryption explanation="O atributo descreve o caminho de roteamento e não fornece criptografia da carga útil."}
@@ -44,8 +42,7 @@ O “melhor” caminho do BGP é o que vence um processo de decisão configurado
 
 Depois que o BGP seleciona candidatos, o encaminhamento IP comum ainda aplica a correspondência de prefixo mais longo. Um `/24` selecionado é usado para seus destinos em vez de um `/16` selecionado que o abrange.
 
-:::single-choice{#bgp-best-path-meaning}
-O que representa o melhor caminho do BGP?
+:::single-choice{#bgp-best-path-meaning} O que representa o melhor caminho do BGP?
 
 ::option[A rota que vence o processo local de decisão por atributos e políticas.]{#bgp-policy-winner .correct explanation="A intenção administrativa é central para a seleção de caminhos entre domínios."}
 ::option[A rota fisicamente mais curta por cabos em todos os casos.]{#bgp-shortest-cable explanation="O BGP não possui um mapa completo das distâncias físicas."}
@@ -56,8 +53,7 @@ O que representa o melhor caminho do BGP?
 
 Anunciar um prefixo declara acessibilidade conforme uma política; não cria a rota subjacente nem garante o caminho de retorno. Antes de originar um prefixo, assegure o encaminhamento válido, o comportamento da agregação, os filtros, o failover e a autorização de propriedade.
 
-:::single-choice{#bgp-advertisement-limit}
-O que o anúncio de um prefixo não consegue garantir?
+:::single-choice{#bgp-advertisement-limit} O que o anúncio de um prefixo não consegue garantir?
 
 ::option[Que os pares possam receber uma rota do plano de controle.]{#bgp-peers-control explanation="O anúncio e a aceitação bem-sucedidos podem comprovar esse fato limitado do plano de controle."}
 ::option[Que o prefixo contém bits de endereço.]{#bgp-prefix-bits explanation="Um prefixo IP é definido por bits de endereço e um comprimento."}
@@ -70,8 +66,7 @@ Vazamentos e sequestros de rotas podem afetar o tráfego muito além de um rotea
 
 Alterações no BGP exigem implantação gradual, revisão das diferenças de rotas, acesso fora de banda, reversão e verificação dos planos de controle e dados.
 
-:::single-choice{#bgp-rpki-limit}
-O que a validação de origem RPKI verifica?
+:::single-choice{#bgp-rpki-limit} O que a validação de origem RPKI verifica?
 
 ::option[Se toda carga útil dos pacotes está livre de malware.]{#bgp-payload-malware explanation="A RPKI não inspeciona o conteúdo das aplicações."}
 ::option[Se todo o caminho de ASs possui a menor latência.]{#bgp-path-latency explanation="A validação de origem não é uma seleção por desempenho nem uma validação completa do caminho."}

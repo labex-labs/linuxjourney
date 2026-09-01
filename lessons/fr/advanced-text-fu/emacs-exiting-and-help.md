@@ -24,8 +24,7 @@ Emacs vérifie les tampons modifiés concernés qui sont associés à des fichie
 
 Dans un flux de travail avec `emacsclient` ou un serveur Emacs, le comportement exact du cadre et du serveur peut différer, mais les demandes concernant les tampons modifiés exigent toujours votre attention.
 
-:::single-choice{#emacs-exit-key}
-Quelle séquence de touches demande une fermeture normale d'Emacs en vérifiant les tampons modifiés ?
+:::single-choice{#emacs-exit-key} Quelle séquence de touches demande une fermeture normale d'Emacs en vérifiant les tampons modifiés ?
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="Cette séquence ferme un tampon sélectionné et ne demande pas la fermeture de la session Emacs."}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="Cette touche annule une commande ou une demande en cours au lieu de fermer Emacs."}
@@ -42,8 +41,7 @@ C-h C-h
 
 La seconde touche choisit le type d'aide recherché.
 
-:::single-choice{#emacs-help-for-help}
-Quelle séquence de touches explique comment utiliser le système d'aide d'Emacs ?
+:::single-choice{#emacs-help-for-help} Quelle séquence de touches explique comment utiliser le système d'aide d'Emacs ?
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="Le préfixe d'aide suivi d'un autre `C-h` ouvre l'aide relative au répartiteur de l'aide lui-même."}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="Ce n'est pas la séquence d'aide sur l'aide présentée ici."}
@@ -62,8 +60,7 @@ Parmi les commandes d'aide utiles :
 
 Par exemple, saisissez `C-h k C-x C-s` pour afficher la documentation de la touche associée à `save-buffer`.
 
-:::single-choice{#emacs-describe-key}
-Vous voulez savoir ce que fait `C-x C-s`. Quel préfixe d'aide devez-vous saisir avant cette séquence ?
+:::single-choice{#emacs-describe-key} Vous voulez savoir ce que fait `C-x C-s`. Quel préfixe d'aide devez-vous saisir avant cette séquence ?
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key` attend une séquence de touches et explique la commande qui lui est associée."}
 ::option[`C-h f`]{#emacs-describe-function explanation="Cette séquence demande un nom de fonction au lieu de lire une séquence de touches pour identifier son association."}
@@ -80,8 +77,7 @@ C-g
 
 Cette touche n'annule pas les modifications déjà apportées au tampon et ne quitte pas Emacs. Elle interrompt l'interaction actuelle et rend si possible le contrôle à l'édition ordinaire.
 
-:::single-choice{#emacs-cancel-pending-command}
-Quelle touche annule normalement la demande ou la commande Emacs en cours ?
+:::single-choice{#emacs-cancel-pending-command} Quelle touche annule normalement la demande ou la commande Emacs en cours ?
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="Cette séquence lance le flux de fermeture d'Emacs au lieu de simplement annuler la demande actuelle."}
 ::option[`C-y`]{#emacs-cancel-yank explanation="Cette touche colle du texte provenant du kill ring et n'annule pas une commande."}
@@ -98,8 +94,7 @@ C-/
 
 La répétition des commandes d'annulation remonte les modifications récentes du tampon. Le déplacement seul du curseur ne constitue normalement pas une modification. Les versions et configurations d'Emacs peuvent proposer `undo-redo` et des outils d'historique plus avancés ; utilisez `C-h k` sur vos touches d'annulation et de rétablissement afin de vérifier le comportement local.
 
-:::single-choice{#emacs-undo-change}
-Quelle séquence de touches est une association standard pour annuler une modification récente du tampon Emacs ?
+:::single-choice{#emacs-undo-change} Quelle séquence de touches est une association standard pour annuler une modification récente du tampon Emacs ?
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/` est une association standard d'annulation, avec `C-_` et `C-x u` dans les configurations courantes."}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="Cette séquence enregistre le tampon actuel au lieu de parcourir son historique d'annulation."}

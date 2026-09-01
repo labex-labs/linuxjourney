@@ -38,8 +38,7 @@ magazine
 
 O arquivo de entrada permanece inalterado, pois o resultado vai para stdout.
 
-:::single-choice{#uniq-collapse-adjacent}
-O que `uniq reading.txt` faz por padrão?
+:::single-choice{#uniq-collapse-adjacent} O que `uniq reading.txt` faz por padrão?
 
 ::option[Ordena o arquivo inteiro e remove todos os valores repetidos.]{#uniq-auto-sort explanation="`uniq` preserva a ordem da entrada e não a ordena. Cópias separadas permanecem em grupos diferentes."}
 ::option[Mostra uma linha de cada grupo adjacente de linhas iguais.]{#uniq-one-per-group .correct explanation="Por padrão, `uniq` agrupa linhas iguais consecutivas em uma única linha de saída."}
@@ -60,8 +59,7 @@ $ uniq -c reading.txt
 
 Essas quantidades representam o tamanho de cada sequência, não os totais globais, a menos que todas as linhas iguais tenham sido agrupadas primeiro.
 
-:::single-choice{#uniq-count-groups}
-O que a contagem de `uniq -c` representa?
+:::single-choice{#uniq-count-groups} O que a contagem de `uniq -c` representa?
 
 ::option[A quantidade de caracteres de cada linha de entrada.]{#uniq-character-count explanation="Contar caracteres não é a finalidade de `uniq -c`; ferramentas como `wc` calculam totais de caracteres e bytes."}
 ::option[A quantidade de linhas iguais consecutivas em cada grupo.]{#uniq-consecutive-count .correct explanation="`-c` prefixa cada grupo adjacente condensado com a quantidade de linhas que ele continha."}
@@ -88,16 +86,14 @@ article
 
 O GNU `uniq -D` mostra todas as linhas dos grupos repetidos, enquanto `-d` minúsculo mostra o valor de cada grupo uma vez.
 
-:::single-choice{#uniq-only-singletons}
-Qual comando mostra apenas os grupos adjacentes que ocorrem exatamente uma vez?
+:::single-choice{#uniq-only-singletons} Qual comando mostra apenas os grupos adjacentes que ocorrem exatamente uma vez?
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="Essa forma mostra todos os grupos com uma contagem, incluindo repetidos e únicos."}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="`-d` minúsculo mostra uma linha de cada grupo repetido, a seleção oposta."}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="A opção `-u` seleciona grupos cuja sequência adjacente possui exatamente uma linha."}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-Qual comando mostra uma linha de cada grupo adjacente que aparece mais de uma vez?
+:::single-choice{#uniq-one-per-duplicate-group} Qual comando mostra uma linha de cada grupo adjacente que aparece mais de uma vez?
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="A opção `-d` seleciona grupos adjacentes repetidos e emite uma linha representativa de cada um."}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="`-D` maiúsculo do GNU mostra todas as linhas pertencentes aos grupos repetidos, não apenas uma representante."}
@@ -143,8 +139,7 @@ paper
 
 Use um locale e uma política de comparação consistentes nas duas etapas. `sort -u reading.txt` também pode ordenar e preservar uma linha para cada chave igual em um único comando.
 
-:::single-choice{#uniq-separated-duplicates}
-Linhas iguais estão espalhadas por `reading.txt`, e a ordem da saída pode mudar. Qual pipeline produz uma cópia ordenada de cada linha completa distinta?
+:::single-choice{#uniq-separated-duplicates} Linhas iguais estão espalhadas por `reading.txt`, e a ordem da saída pode mudar. Qual pipeline produz uma cópia ordenada de cada linha completa distinta?
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="A ordenação agrupa linhas completas iguais, e `uniq` reduz cada grupo adjacente a uma única linha."}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="`uniq` é executado antes que linhas iguais separadas se tornem adjacentes; por isso, a ordenação posterior ainda pode deixar duplicatas."}

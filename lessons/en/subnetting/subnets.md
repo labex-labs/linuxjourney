@@ -22,8 +22,7 @@ IPv4 can express a 24-bit prefix as either `/24` or mask `255.255.255.0`. In bin
 
 For address `192.168.1.8/24`, the network prefix is `192.168.1.0/24`. Writing `192.168.1.0/255.255.255.0` is understood by some contexts, but CIDR prefix notation is the standard compact form.
 
-:::single-choice{#subnets-mask-24}
-Which dotted-decimal mask corresponds to `/24`?
+:::single-choice{#subnets-mask-24} Which dotted-decimal mask corresponds to `/24`?
 
 ::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="Three full octets contain 24 leading one bits."}
 ::option[`255.255.0.255`]{#subnets-noncontiguous explanation="This has noncontiguous network bits and is not the conventional `/24` mask."}
@@ -41,8 +40,7 @@ $ ip route show
 $ ip route get 192.168.1.50
 ```
 
-:::single-choice{#subnets-on-link-decision}
-How does a Linux host determine whether to send directly or through a router?
+:::single-choice{#subnets-on-link-decision} How does a Linux host determine whether to send directly or through a router?
 
 ::option[It always assumes addresses ending in `.1` are local.]{#subnets-dot-one explanation="Host-number conventions do not replace configured prefixes and routes."}
 ::option[It consults prefixes and the routing policy.]{#subnets-route-policy .correct explanation="The selected route identifies whether the destination is on-link and which interface or next hop to use."}
@@ -55,8 +53,7 @@ A router with suitable interfaces and routes can forward traffic between subnets
 
 Subnet separation creates a place to apply routing and filtering policy, but it is not automatically a security boundary. If forwarding is allowed without restrictive policy, hosts in different subnets can still communicate.
 
-:::single-choice{#subnets-security-boundary}
-Does creating two subnets automatically block traffic between them?
+:::single-choice{#subnets-security-boundary} Does creating two subnets automatically block traffic between them?
 
 ::option[Yes, because routers cannot connect different prefixes.]{#subnets-never-route explanation="Connecting prefixes is the primary job of routing."}
 ::option[No; routing and filtering policy determine permitted traffic.]{#subnets-policy-required .correct explanation="Segmentation enables policy enforcement but does not define that policy by itself."}
@@ -67,8 +64,7 @@ Does creating two subnets automatically block traffic between them?
 
 Subnetting can organize address allocation, limit link-layer broadcast scope, separate failure domains, and provide policy boundaries. It can also add routing, firewall, DHCP, monitoring, and documentation complexity. Design prefixes around actual scale, growth, redundancy, and security requirements rather than assuming smaller always means faster.
 
-:::single-choice{#subnets-design-tradeoff}
-What is a real subnetting trade-off?
+:::single-choice{#subnets-design-tradeoff} What is a real subnetting trade-off?
 
 ::option[Smaller broadcast domains require no routing or documentation.]{#subnets-no-complexity explanation="More boundaries usually require more route, policy, address, and service management."}
 ::option[Segmentation can improve organization while increasing policy complexity.]{#subnets-tradeoff .correct explanation="Subnet boundaries can aid control but add operational state that must be maintained."}

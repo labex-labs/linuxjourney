@@ -33,8 +33,7 @@ $ emacs
 $ emacs -nw
 ```
 
-:::single-choice{#emacs-terminal-start}
-哪个命令会在当前终端中启动 Emacs，而不使用图形窗口系统？
+:::single-choice{#emacs-terminal-start} 哪个命令会在当前终端中启动 Emacs，而不使用图形窗口系统？
 
 ::option[`emacs -w`]{#emacs-window-option explanation="这不是本课介绍的无窗口系统形式。"}
 ::option[`emacs -nw`]{#emacs-no-window .correct explanation="`-nw` 选项告诉 Emacs 不使用图形窗口系统，而是在终端上运行。"}
@@ -51,8 +50,7 @@ $ emacs notes.txt
 
 如果文件存在，Emacs 会把它读入缓冲区。如果文件不存在，Emacs 会创建与该路径关联的新缓冲区；只有成功保存后才会创建文件。文件系统权限仍决定写入能否成功。
 
-:::single-choice{#emacs-open-file-buffer}
-当 `notes.txt` 尚不存在时，`emacs notes.txt` 通常会做什么？
+:::single-choice{#emacs-open-file-buffer} 当 `notes.txt` 尚不存在时，`emacs notes.txt` 通常会做什么？
 
 ::option[打开与该路径关联的新缓冲区。]{#emacs-new-file-buffer .correct explanation="缓冲区可以保存 `notes.txt` 的新文本，实际文件则延迟到保存时才创建。"}
 ::option[在编辑器启动前先在磁盘上创建文件。]{#emacs-immediate-file explanation="Emacs 可以把新缓冲区与路径关联，而无需在成功保存前创建磁盘文件。"}
@@ -69,8 +67,7 @@ Emacs 使用相互关联但彼此不同的对象：
 
 多个缓冲区可以存在而不显示，两个窗口也可以显示同一个缓冲区。关闭窗口不一定会终止其缓冲区或删除文件。
 
-:::single-choice{#emacs-buffer-definition}
-Emacs 缓冲区是什么？
+:::single-choice{#emacs-buffer-definition} Emacs 缓冲区是什么？
 
 ::option[顶层图形应用框架。]{#emacs-buffer-frame explanation="框架是顶层显示对象；缓冲区保存编辑器内容或状态。"}
 ::option[保存可编辑文本或其他编辑器状态的对象。]{#emacs-buffer-content .correct explanation="所访问文件的内容和许多非文件视图都位于 Emacs 缓冲区中。"}
@@ -87,8 +84,7 @@ Emacs 文档使用简洁记法：
 
 具体终端可能会拦截或重映射某些按键。先按 `Esc` 再按另一个键，通常可以替代 Meta 组合键。
 
-:::single-choice{#emacs-key-sequence-notation}
-如何输入写作 `C-x C-f` 的 Emacs 按键序列？
+:::single-choice{#emacs-key-sequence-notation} 如何输入写作 `C-x C-f` 的 Emacs 按键序列？
 
 ::option[按住 Control 按 `x`，再按住 Control 按 `f`。]{#emacs-control-x-f .correct explanation="每个 `C-` 前缀作用于紧随其后的按键，两个组合键按顺序输入。"}
 ::option[在缓冲区中输入字面字符 `C-x C-f`。]{#emacs-literal-key-text explanation="该记法描述的是控制键事件，而不是要插入的文本。"}
@@ -101,8 +97,7 @@ Emacs 文档使用简洁记法：
 
 如果 Emacs 显示菜单或欢迎缓冲区，教程仍比直接在重要文件上试验更适合作为结构化起点。
 
-:::single-choice{#emacs-open-tutorial}
-哪个 Emacs 按键序列会打开内置教程？
+:::single-choice{#emacs-open-tutorial} 哪个 Emacs 按键序列会打开内置教程？
 
 ::option[`C-x C-s`]{#emacs-save-buffer explanation="该序列会保存当前缓冲区，不会打开教程。"}
 ::option[`C-x C-c`]{#emacs-exit-sequence explanation="该序列会开始退出 Emacs，而不是启动课程。"}

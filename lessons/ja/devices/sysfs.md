@@ -30,8 +30,7 @@ $ readlink -f /sys/class/block/sda
 
 異なるストレージインターフェースを使うシステムには、この例の名前が存在しない場合があります。
 
-:::single-choice{#sysfs-canonical-device-tree}
-カーネルの主要なデバイス階層を含む sysfs のサブツリーはどれですか？
+:::single-choice{#sysfs-canonical-device-tree} カーネルの主要なデバイス階層を含む sysfs のサブツリーはどれですか？
 
 ::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="Sysfs はユーザー認証情報の保管場所ではありません。"}
 ::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="devices サブツリーはデバイスの親子トポロジーを表し、class や bus のビューはここへリンクします。"}
@@ -53,8 +52,7 @@ $ cat /sys/class/block/sda/size
 
 `dev` はメジャー番号とマイナー番号を報告します。`ro` はブロックデバイスの読み取り専用フラグです。Linux のブロックデバイスでは、`size` は物理セクターサイズにかかわらず、慣例として512バイトセクター単位で表されます。特定の属性の単位と意味は、必ずカーネル ABI の文書で確認してください。
 
-:::single-choice{#sysfs-dev-attribute}
-ブロックデバイスの sysfs `dev` 属性には通常何が含まれますか？
+:::single-choice{#sysfs-dev-attribute} ブロックデバイスの sysfs `dev` 属性には通常何が含まれますか？
 
 ::option[そのデバイスに現在保存されている全ファイル。]{#sysfs-file-list explanation="ファイルシステムのディレクトリツリーが、この小さなデバイス属性に埋め込まれることはありません。"}
 ::option[ハードウェアをインストールしたパッケージ名。]{#sysfs-package-name explanation="ハードウェアは `dev` 属性で識別されるパッケージとしてインストールされるわけではありません。"}
@@ -67,8 +65,7 @@ $ cat /sys/class/block/sda/size
 
 二つのインターフェースは互いを補完します。どちらか一方だけにハードウェアの全情報が揃っているわけではなく、調査中にデバイスが消えることもあります。
 
-:::single-choice{#sysfs-versus-dev}
-`/sys` と `/dev` を正しく区別している説明はどれですか？
+:::single-choice{#sysfs-versus-dev} `/sys` と `/dev` を正しく区別している説明はどれですか？
 
 ::option[`/sys` はユーザー文書を、`/dev` はパッケージアーカイブを保存する。]{#sysfs-dev-user-files explanation="どちらのディレクトリも、そのような通常データの保存用途ではありません。"}
 ::option[`/sys` はカーネルオブジェクトの属性を公開し、`/dev` は I/O 用のデバイスノードを提供する。]{#sysfs-dev-distinction .correct explanation="Sysfs はオブジェクトと制御をモデル化し、デバイスノードは操作をキャラクターまたはブロックドライバーへ送ります。"}
@@ -81,8 +78,7 @@ sysfs の属性には書き込み可能なものもあり、電源状態、ド�
 
 文書化された ABI と現在値を読み、設定を永続化する正しい方法を確認したうえで、許可されたシステムだけでテストしてください。`/sys` 全体の権限を再帰的に編集したり、推測した値を書き込んだりしてはいけません。
 
-:::single-choice{#sysfs-write-risk}
-sysfs 属性への書き込みが運用上重要な操作になり得るのはなぜですか？
+:::single-choice{#sysfs-write-risk} sysfs 属性への書き込みが運用上重要な操作になり得るのはなぜですか？
 
 ::option[すべての書き込みで通常のバックアップコピーがディスク上に作られるから。]{#sysfs-backup-copy explanation="Sysfs は仮想ファイルシステムであり、制御変更の自動バックアップは提供しません。"}
 ::option[属性が書き込み可能でも、sysfs はすべての書き込みを無視するから。]{#sysfs-ignore-writes explanation="書き込み可能属性は、対応する制御値を受け付けるために存在します。"}

@@ -18,8 +18,7 @@ Pour comprendre la création de Linux, remontons à 1969, lorsque Ken Thompson e
 
 ![Chronologie d'Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-:::single-choice{#understand-unix-portability}
-Quel résultat important la réécriture d'UNIX en C a-t-elle produit ?
+:::single-choice{#understand-unix-portability} Quel résultat important la réécriture d'UNIX en C a-t-elle produit ?
 
 ::option[Il est devenu le noyau libre créé pour le système GNU.]{#unix-became-gnu-kernel explanation="UNIX existait avant le projet GNU et n'était pas son noyau. GNU a ensuite commencé à développer un noyau distinct appelé Hurd."}
 ::option[Il est devenu plus facile à porter sur différents systèmes matériels.]{#portable-across-hardware .correct explanation="L'écriture d'UNIX en C l'a rendu plus portable. Cette portabilité a favorisé sa diffusion au-delà de son matériel d'origine."}
@@ -28,8 +27,7 @@ Quel résultat important la réécriture d'UNIX en C a-t-elle produit ?
 
 Plus de dix ans après, Richard Stallman a lancé le projet GNU. GNU est un acronyme récursif de « GNU's Not UNIX » et son objectif était de créer un système d'exploitation de type UNIX entièrement libre et open source. Le projet a produit de nombreux composants essentiels ainsi que la GNU General Public License (GPL), mais son propre noyau, GNU Hurd, n'était pas prêt pour un usage général lorsque Linux est devenu disponible.
 
-:::single-choice{#identify-gnu-missing-component}
-Quel composant majeur de GNU n'était pas prêt lorsque Linux est devenu disponible ?
+:::single-choice{#identify-gnu-missing-component} Quel composant majeur de GNU n'était pas prêt lorsque Linux est devenu disponible ?
 
 ::option[Un noyau prêt pour la production]{#gnu-kernel .correct explanation="GNU avait produit de nombreux composants système, mais son propre noyau, GNU Hurd, n'était pas prêt pour un usage général."}
 ::option[Une licence de logiciel libre]{#gnu-license explanation="Le projet GNU avait déjà produit la GNU General Public License. Le composant système manquant était un noyau utilisable."}
@@ -40,8 +38,7 @@ Quel composant majeur de GNU n'était pas prêt lorsque Linux est devenu disponi
 
 Le noyau est le composant central d'un système d'exploitation. Il sert de pont et permet au matériel de communiquer avec les logiciels. Il gère les ressources du système, notamment le processeur, la mémoire et les périphériques. Un système d'exploitation complet a besoin de ce cœur chargé des ressources, en plus des outils et applications utilisés par les personnes.
 
-:::single-choice{#recognize-kernel-role}
-Quelle responsabilité appartient au noyau du système d'exploitation ?
+:::single-choice{#recognize-kernel-role} Quelle responsabilité appartient au noyau du système d'exploitation ?
 
 ::option[Écrire chaque commande saisie dans le shell]{#write-shell-commands explanation="Les personnes ou les scripts fournissent les commandes du shell. Le noyau procure les ressources de bas niveau nécessaires à leur exécution."}
 ::option[Choisir la licence de chaque application installée]{#choose-software-licenses explanation="Les auteurs et distributeurs choisissent les licences des applications. Ce choix ne relève pas de la gestion des ressources par le noyau."}
@@ -56,8 +53,7 @@ Nous arrivons ainsi en 1991, lorsqu'un étudiant finlandais nommé Linus Torvald
 
 _Linus Torvalds en 2018 (source : [Wikipédia](https://fr.wikipedia.org/wiki/Linus_Torvalds))_
 
-:::single-choice{#identify-linux-kernel-creator}
-Qui a commencé à développer le noyau Linux en 1991 ?
+:::single-choice{#identify-linux-kernel-creator} Qui a commencé à développer le noyau Linux en 1991 ?
 
 ::option[Richard Stallman]{#richard-stallman explanation="Richard Stallman a lancé le projet GNU. GNU a fourni de nombreux composants système, mais Linus Torvalds a commencé le noyau Linux."}
 ::option[Dennis Ritchie]{#dennis-ritchie explanation="Dennis Ritchie a contribué au développement d'UNIX et du langage C. Le projet de noyau Linux a été lancé plus tard par Linus Torvalds."}

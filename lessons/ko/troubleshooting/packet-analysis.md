@@ -16,8 +16,7 @@ meta_keywords: "tcpdump, 패킷 분석, 네트워크 패킷 분석, 네트워크
 
 영향받는 흐름이 실제로 통과하는 인터페이스와 네트워크 네임스페이스에서 캡처합니다. 브리지, 컨테이너, VPN, 본드, VLAN 및 오프로딩으로 하나의 인터페이스에 보이는 내용이 달라질 수 있습니다. 캡처 전에 `ip route get`과 `ip link`로 후보를 찾으십시오.
 
-:::single-choice{#packet-analysis-interface-choice}
-캡처 인터페이스 선택이 중요한 이유는 무엇입니까?
+:::single-choice{#packet-analysis-interface-choice} 캡처 인터페이스 선택이 중요한 이유는 무엇입니까?
 
 ::option[모든 인터페이스가 인터넷 전체를 자동으로 미러링하기 때문입니다.]{#packet-analysis-mirrors-internet explanation="호스트는 일반적으로 인터페이스를 통해 전달되거나 미러링된 트래픽만 봅니다."}
 ::option[해당 관찰 지점에 보이는 트래픽만 기록할 수 있기 때문입니다.]{#packet-analysis-visible-point .correct explanation="네임스페이스, 터널, 브리지 및 라우팅으로 관련 흐름이 다른 곳에 있을 수 있습니다."}
@@ -35,8 +34,7 @@ $ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
 
 `-i`는 인터페이스를 선택하고, `-n`은 숫자 이름을 유지하고, `-c`는 패킷 수를 제한하고, `-w`는 pcap 데이터를 기록하며, 마지막 표현식은 캡처 필터입니다. 트래픽이 없을 수 있다면 외부에서 시간 제한도 설정하십시오.
 
-:::single-choice{#packet-analysis-count-bound}
-`-c 100`은 무엇을 합니까?
+:::single-choice{#packet-analysis-count-bound} `-c 100`은 무엇을 합니까?
 
 ::option[TCP 포트 100만 캡처합니다.]{#packet-analysis-port-hundred explanation="포트 선택은 필터 표현식에 속합니다."}
 ::option[파일을 100바이트로 압축합니다.]{#packet-analysis-compress-hundred explanation="파일 크기 제한이 아니라 패킷 수입니다."}
@@ -53,8 +51,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 프로토콜에 따라 타임스탬프, 프로토콜, 출발지, 목적지, 플래그, 순서 또는 확인 응답 데이터 및 길이를 읽습니다. 캡처 타임스탬프는 이 호스트에서 관찰한 시점을 나타내며 반드시 다른 곳의 정확한 전송 시점은 아닙니다. 여러 시스템의 캡처를 연관 지을 때 시계 동기화가 중요합니다.
 
-:::single-choice{#packet-analysis-read-file}
-저장된 pcap 파일에서 패킷을 읽는 옵션은 무엇입니까?
+:::single-choice{#packet-analysis-read-file} 저장된 pcap 파일에서 패킷을 읽는 옵션은 무엇입니까?
 
 ::option[`-r`]{#packet-analysis-option-read .correct explanation="읽기 옵션은 기존 캡처 파일을 처리합니다."}
 ::option[`-i`]{#packet-analysis-option-interface explanation="실시간 캡처 인터페이스를 선택합니다."}
@@ -67,8 +64,7 @@ $ tcpdump -n -tttt -r incident.pcap
 
 TLS와 다른 암호화는 일반적으로 응용 페이로드를 숨기지만 끝점, 시간, 크기, TCP 동작 및 핸드셰이크 일부 같은 유용한 메타데이터는 남깁니다. 승인 없이 복호화를 시도하거나 개인 키를 무심코 수집하지 마십시오.
 
-:::single-choice{#packet-analysis-no-packets}
-필터링된 빈 캡처가 입증하는 것은 무엇입니까?
+:::single-choice{#packet-analysis-no-packets} 필터링된 빈 캡처가 입증하는 것은 무엇입니까?
 
 ::option[원격 애플리케이션이 영구적으로 삭제됐습니다.]{#packet-analysis-empty-deleted explanation="관찰 지점 및 필터 오류도 같은 결과를 만들 수 있습니다."}
 ::option[전체 네트워크에 트래픽이 전혀 없습니다.]{#packet-analysis-empty-network explanation="좁은 필터가 관련 없는 트래픽을 제외할 수 있습니다."}
@@ -79,8 +75,7 @@ TLS와 다른 암호화는 일반적으로 응용 페이로드를 숨기지만 �
 
 pcap을 제한적인 권한으로 저장하고 명령, 호스트, 인터페이스, 시간대, 필터 및 사고 시간대를 기록하며 무결성이 중요하면 증거 해시를 계산합니다. 공유 전에 필요한 필드를 보존하는 도구와 절차로 데이터를 최소화하거나 비식별화합니다. 패킷 페이로드와 메타데이터도 사용자와 시스템을 식별할 수 있습니다.
 
-:::single-choice{#packet-analysis-pcap-safety}
-사고 pcap은 어떻게 다뤄야 합니까?
+:::single-choice{#packet-analysis-pcap-safety} 사고 pcap은 어떻게 다뤄야 합니까?
 
 ::option[접근을 제한하고 출처를 문서화한 민감한 증거로 다룹니다.]{#packet-analysis-sensitive-evidence .correct explanation="캡처에는 기밀 내용이 포함될 수 있으며 기밀성과 무결성 제어가 모두 필요합니다."}
 ::option[검토 없이 공개 업로드해도 되는 무해한 텍스트로 다룹니다.]{#packet-analysis-public explanation="바이너리 캡처가 페이로드, 신원 및 인프라를 노출할 수 있습니다."}

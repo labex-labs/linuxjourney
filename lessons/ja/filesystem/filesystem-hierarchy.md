@@ -26,8 +26,7 @@ $ ls -ld /*
 
 現在の多くのディストリビューションは merged `/usr` 構成を使い、`/bin`、`/sbin`、`/lib` が対応する `/usr` 内ディレクトリへのシンボリックリンクです。物理ディレクトリかリンクかを決め付けず、コマンド検索とパッケージ記録を使ってください。
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-ホスト固有のシステム設定を慣例的に含むディレクトリはどれですか？
+:::single-choice{#filesystem-hierarchy-configuration-directory} ホスト固有のシステム設定を慣例的に含むディレクトリはどれですか？
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="procfs は永続的なホスト設定ではなく、実行中のプロセスとカーネルのインターフェースを示します。"}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="システムとサービスの設定は慣例上 /etc の下に整理されます。"}
@@ -42,8 +41,7 @@ $ ls -ld /*
 
 名前に反して `/usr` は個々の利用者の個人ファイル用ではありません。大部分をパッケージマネージャーが所有するため、ローカルでコンパイルしたファイルを `/usr/bin` へコピーすると管理パッケージと競合できます。
 
-:::single-choice{#filesystem-hierarchy-local-software}
-ディストリビューション管理の `/usr` 外で、ローカル導入ソフトウェア用に予約された接頭辞はどれですか？
+:::single-choice{#filesystem-hierarchy-local-software} ディストリビューション管理の `/usr` 外で、ローカル導入ソフトウェア用に予約された接頭辞はどれですか？
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="ローカル階層は管理者導入ソフトウェアをディストリビューションの主な /usr ツリーから分離します。"}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="procfs は仮想カーネルインターフェースで、永続ソフトウェア用接頭辞ではありません。"}
@@ -58,8 +56,7 @@ $ ls -ld /*
 
 ホームパスは単に `/home` とユーザー名を結合せず、アカウント情報から得ます。`getent passwd USER` またはシェルが解決したホームを使ってください。
 
-:::single-choice{#filesystem-hierarchy-root-home}
-root アカウントの慣例的なホームディレクトリはどれですか？
+:::single-choice{#filesystem-hierarchy-root-home} root アカウントの慣例的なホームディレクトリはどれですか？
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="通常ユーザーのホームは /home 下が一般的ですが、root には別の慣例的パスがあります。"}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="特権アカウントのホームは慣例上、ファイルシステムルートの直下です。"}
@@ -75,8 +72,7 @@ root アカウントの慣例的なホームディレクトリはどれですか
 
 `/tmp` の整理方針は環境ごとに異なり、再起動まで必ず残る、または再起動時に必ず消えるとは限りません。アプリケーションは予測可能な名前を避け、安全な一時ファイル作成方法を使います。
 
-:::single-choice{#filesystem-hierarchy-log-path}
-システムログファイルを慣例的に保存するパスはどれですか？
+:::single-choice{#filesystem-hierarchy-log-path} システムログファイルを慣例的に保存するパスはどれですか？
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="/etc は通常、増え続けるログではなく設定用です。"}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="ログは変化するシステムデータで、可変データ階層の下に整理されます。"}
@@ -93,8 +89,7 @@ root アカウントの慣例的なホームディレクトリはどれですか
 
 これらは慣例で、権限を付与するものではありません。空でないディレクトリへ別ファイルシステムをマウントすると、アンマウントまで元の内容が一時的に隠れます。
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-sysfs を通じてカーネルのデバイスモデルを通常公開するパスはどれですか？
+:::single-choice{#filesystem-hierarchy-sysfs-path} sysfs を通じてカーネルのデバイスモデルを通常公開するパスはどれですか？
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="/srv はシステムが提供するデータ用です。"}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="sysfs は通常 /sys にマウントされ、デバイス、ドライバー、バス、属性を示します。"}

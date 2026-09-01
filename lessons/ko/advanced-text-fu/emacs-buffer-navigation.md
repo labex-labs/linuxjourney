@@ -24,8 +24,7 @@ C-x b
 
 기본적으로 `C-x Right`는 `next-buffer`, `C-x Left`는 `previous-buffer`를 실행하여 선택된 창에서 버퍼를 순환합니다.
 
-:::single-choice{#emacs-switch-buffer-key}
-현재 창에 표시할 버퍼 이름을 묻는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-switch-buffer-key} 현재 창에 표시할 버퍼 이름을 묻는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="파일 경로를 묻고 방문하며 기존 버퍼를 이름으로 고르는 작업과는 다릅니다."}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer`는 버퍼 이름을 읽고 선택된 창에 해당 버퍼를 표시합니다."}
@@ -48,8 +47,7 @@ C-x 3
 
 새 창은 처음에 버퍼 하나를 표시하며 흔히 같은 버퍼를 표시합니다. 어느 창에서든 독립적으로 버퍼를 전환할 수 있습니다.
 
-:::single-choice{#emacs-split-side-by-side}
-선택된 Emacs 창을 왼쪽과 오른쪽 창으로 나누는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-split-side-by-side} 선택된 Emacs 창을 왼쪽과 오른쪽 창으로 나누는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x 1`]{#emacs-window-one explanation="다른 창을 삭제하고 선택된 창을 프레임의 유일한 창으로 만듭니다."}
 ::option[`C-x 2`]{#emacs-window-below explanation="나란한 분할이 아니라 위아래 창을 만듭니다."}
@@ -71,16 +69,14 @@ C-x o
 
 창을 삭제해도 일반적으로 표시하던 버퍼는 살아 있습니다. 다른 창에서 해당 버퍼를 다시 표시할 수 있습니다.
 
-:::single-choice{#emacs-select-other-window}
-포인트와 키보드 포커스를 다른 Emacs 창으로 옮기는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-select-other-window} 포인트와 키보드 포커스를 다른 Emacs 창으로 옮기는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="다른 창으로 포커스를 옮기지 않고 선택된 창을 삭제합니다."}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window`는 프레임의 다른 창으로 선택을 순환합니다."}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="선택된 창 자체가 아니라 현재 창이 표시하는 버퍼를 바꿉니다."}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-선택된 창은 유지하고 해당 프레임의 다른 창을 삭제하는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-keep-one-window} 선택된 창은 유지하고 해당 프레임의 다른 창을 삭제하는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows`는 선택된 창을 프레임의 유일한 창으로 만듭니다."}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="선택된 창을 보존하지 않고 그 창 자체를 삭제합니다."}
@@ -99,8 +95,7 @@ C-x k
 
 버퍼 종료는 창 삭제와 다릅니다. Emacs는 종료된 버퍼를 표시하던 모든 창에서 다른 버퍼로 교체하지만 창을 삭제해도 버퍼는 그대로 남을 수 있습니다.
 
-:::single-choice{#emacs-kill-buffer-key}
-종료할 Emacs 버퍼를 묻는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-kill-buffer-key} 종료할 Emacs 버퍼를 묻는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="창 표시를 삭제하지만 일반적으로 버퍼는 살아 있습니다."}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer`는 필요한 수정 버퍼 확인을 거친 뒤 선택한 버퍼를 Emacs에서 제거합니다."}

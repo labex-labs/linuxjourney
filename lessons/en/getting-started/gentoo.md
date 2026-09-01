@@ -16,8 +16,7 @@ Gentoo is a Linux distribution designed for users who want deep control over how
 
 That design makes Gentoo especially attractive to advanced users who enjoy tuning, learning, and customizing their systems in detail.
 
-:::single-choice{#match-gentoo-user}
-Which user is the best match for Gentoo?
+:::single-choice{#match-gentoo-user} Which user is the best match for Gentoo?
 
 ::option[A committed learner who wants detailed system control]{#committed-system-builder .correct explanation="Gentoo rewards users who want to make detailed build and configuration choices. That control also requires more time and involvement."}
 ::option[A beginner who wants the least possible setup work]{#minimal-setup-beginner explanation="Gentoo expects substantial configuration and maintenance from the user. A distribution with more prepared defaults better fits minimal setup."}
@@ -36,16 +35,14 @@ At the center of Gentoo is **Portage**, its package management system. Portage h
 
 One of Portage's most distinctive features is the use of **USE flags**, which let users enable or disable optional features before building software. This gives users a very fine level of control over the resulting system.
 
-:::single-choice{#identify-portage-role}
-What is Portage's role in Gentoo?
+:::single-choice{#identify-portage-role} What is Portage's role in Gentoo?
 
 ::option[It provides only the graphical desktop and application menu]{#portage-desktop explanation="A desktop environment controls the graphical interface. Portage manages software across the Gentoo system."}
 ::option[It manages software installation, dependencies, and maintenance]{#portage-package-manager .correct explanation="Portage is Gentoo's package-management system. It coordinates packages and the choices involved in building and maintaining them."}
 ::option[It replaces the Linux kernel with a different operating system]{#portage-kernel-replacement explanation="Portage can manage kernel-related packages, but it does not replace Linux with another operating system. Its role is package management."}
 :::
 
-:::single-choice{#explain-use-flags}
-What do Gentoo USE flags control?
+:::single-choice{#explain-use-flags} What do Gentoo USE flags control?
 
 ::option[The physical amount of memory installed in the computer]{#physical-memory explanation="Installed memory is a hardware property. USE flags configure software features rather than changing physical components."}
 ::option[Optional features and dependencies included when building packages]{#package-features .correct explanation="USE flags express which optional capabilities a package should support. Those choices can also change the dependencies Portage installs."}
@@ -58,8 +55,7 @@ Because software is often built locally, Gentoo can be tailored closely to speci
 
 This source-based model also makes Gentoo an educational distro. It teaches users more about dependencies, compilation, and system design than many mainstream distros do.
 
-:::single-choice{#recognize-source-build-tradeoff}
-What trade-off comes with Gentoo's source-based customization?
+:::single-choice{#recognize-source-build-tradeoff} What trade-off comes with Gentoo's source-based customization?
 
 ::option[More control requires more build time and user decisions]{#control-for-time .correct explanation="Local build and feature choices provide detailed control, but they also demand time and attention from the user."}
 ::option[Less control removes the need to understand dependencies]{#less-control explanation="Gentoo exposes more dependency and build choices, not fewer. Understanding those choices is part of its learning value."}

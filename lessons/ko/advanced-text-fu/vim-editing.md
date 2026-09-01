@@ -28,8 +28,7 @@ Vim 편집 명령은 흔히 연산자와 이동 또는 텍스트 객체를 결�
 
 예를 들어 `dw`는 `w` 이동 범위까지 삭제하고 `d$`는 커서부터 줄 끝까지 삭제합니다. `2dw`는 두 번의 단어 이동 범위에 삭제를 적용합니다.
 
-:::single-choice{#vim-edit-operator-motion}
-일반 모드에서 `d$`는 무엇을 하나요?
+:::single-choice{#vim-edit-operator-motion} 일반 모드에서 `d$`는 무엇을 하나요?
 
 ::option[커서부터 전체 파일을 삭제합니다.]{#vim-edit-delete-file-end explanation="달러 이동은 전체 버퍼의 끝이 아니라 현재 줄 끝을 대상으로 합니다."}
 ::option[커서부터 줄 끝까지 삭제합니다.]{#vim-edit-delete-line-end .correct explanation="`d` 연산자가 `$` 줄 끝 이동에 적용됩니다."}
@@ -49,8 +48,7 @@ Vim 편집 명령은 흔히 연산자와 이동 또는 텍스트 객체를 결�
 
 `dd`처럼 연산자를 반복하면 줄 단위가 됩니다. 횟수는 대상 줄 수를 늘립니다.
 
-:::single-choice{#vim-edit-delete-three-lines}
-현재 줄과 다음 두 줄을 삭제하는 일반 모드 명령은 무엇인가요?
+:::single-choice{#vim-edit-delete-three-lines} 현재 줄과 다음 두 줄을 삭제하는 일반 모드 명령은 무엇인가요?
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="이 명령 형식에서 횟수는 반복된 연산자 앞에 옵니다."}
 ::option[`3x`]{#vim-edit-three-x explanation="완전한 세 줄이 아니라 커서 아래와 뒤의 문자 세 개를 삭제합니다."}
@@ -69,8 +67,7 @@ Vim 편집 명령은 흔히 연산자와 이동 또는 텍스트 객체를 결�
 
 `cw`의 동작에는 역사적인 특수 사례가 있어 흔히 `ce`처럼 작동합니다. `iw` 같은 텍스트 객체로 의도한 경계를 더 명확하게 표현할 수 있습니다.
 
-:::single-choice{#vim-edit-change-inner-word}
-커서 아래 내부 단어를 삭제하고 입력 모드로 들어가 대체하는 일반 모드 명령은 무엇인가요?
+:::single-choice{#vim-edit-change-inner-word} 커서 아래 내부 단어를 삭제하고 입력 모드로 들어가 대체하는 일반 모드 명령은 무엇인가요?
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="내부 단어를 삭제하지만 대체 텍스트를 시작하지 않고 일반 모드에 남습니다."}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="버퍼를 바꾸거나 입력 모드에 들어가지 않고 내부 단어를 yank합니다."}
@@ -88,8 +85,7 @@ Vim에서는 복사를 **yank**, 붙여넣기를 **put**이라고 부릅니다.
 
 삭제와 변경도 텍스트를 레지스터에 저장하므로 이후 `p`는 이전에 yank한 내용이 아니라 가장 최근에 삭제한 내용을 붙일 수 있습니다. 이름 있는 레지스터로 특정 텍스트를 보존할 수 있지만 먼저 가장 최근 작업이 무엇을 저장했는지 살펴보는 것부터 시작하세요.
 
-:::single-choice{#vim-edit-yank-put-line}
-`yy`로 현재 줄을 yank한 뒤 그 줄을 현재 줄 아래에 put하는 명령은 무엇인가요?
+:::single-choice{#vim-edit-yank-put-line} `yy`로 현재 줄을 yank한 뒤 그 줄을 현재 줄 아래에 put하는 명령은 무엇인가요?
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="줄 단위로 yank한 텍스트에서 소문자 `p`는 저장된 줄을 현재 줄 아래에 놓습니다."}
 ::option[`P`]{#vim-edit-put-above explanation="대문자 `P`는 줄 단위 텍스트를 현재 줄 위에 놓습니다."}
@@ -107,8 +103,7 @@ Vim에서는 복사를 **yank**, 붙여넣기를 **put**이라고 부릅니다.
 
 실행 취소 기록은 단순한 커서 이동이 아니라 버퍼 변경에 적용됩니다. 무제한이거나 영구적인 실행 취소 기록에 의존하지 말고 저장 지점을 만들고 편집 내용을 검토하세요.
 
-:::single-choice{#vim-edit-redo-change}
-방금 실행 취소한 변경을 다시 실행하는 일반 모드 명령은 무엇인가요?
+:::single-choice{#vim-edit-redo-change} 방금 실행 취소한 변경을 다시 실행하는 일반 모드 명령은 무엇인가요?
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="일반 모드에서 `Ctrl+U`는 약 반 화면 위로 스크롤하며 다시 실행이 아닙니다."}
 ::option[`.`]{#vim-edit-dot-repeat explanation="점은 실행 취소 기록을 앞으로 이동하지 않고 최신 변경을 새 동작으로 반복합니다."}

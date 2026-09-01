@@ -23,8 +23,7 @@ Linux 设备名称反映提供接口的内核子系统和驱动程序，并不�
 
 字母反映枚举顺序，而不是持久身份。添加控制器、改变固件顺序或连接设备，都可能改变某块磁盘获得的字母。
 
-:::single-choice{#device-names-sdb-first-partition}
-按照 `sd` 命名模式，哪个路径表示 `/dev/sdb` 上的第 1 个分区？
+:::single-choice{#device-names-sdb-first-partition} 按照 `sd` 命名模式，哪个路径表示 `/dev/sdb` 上的第 1 个分区？
 
 ::option[`/dev/sda2`]{#device-names-sda-two explanation="它表示当前名为 /dev/sda 的磁盘上的第 2 个分区。"}
 ::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="只有基础名称已经以数字结尾的模式才使用 p 分隔符，普通 sd 名称不使用。"}
@@ -42,8 +41,7 @@ Linux 设备名称反映提供接口的内核子系统和驱动程序，并不�
 
 NVMe 设备通常不会命名为 `/dev/sdX`，而是使用 NVMe 子系统的命名惯例。
 
-:::single-choice{#device-names-nvme-partition}
-哪个路径表示 `/dev/nvme0n1` 的第 2 个分区？
+:::single-choice{#device-names-nvme-partition} 哪个路径表示 `/dev/nvme0n1` 的第 2 个分区？
 
 ::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="NVMe 分区名称会在分区号前插入 p。"}
 ::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="没有分隔符时，末尾数字会与命名空间编号混淆。"}
@@ -60,8 +58,7 @@ Linux 还会创建不与物理磁盘一一对应的块设备：
 
 分区、加密层、RAID、逻辑卷和文件系统会形成一个堆栈。应使用 `lsblk` 等工具查看父子关系，而不是只根据名称推断堆栈。
 
-:::single-choice{#device-names-device-mapper-link}
-哪个位置通常为设备映射器设备提供描述性链接？
+:::single-choice{#device-names-device-mapper-link} 哪个位置通常为设备映射器设备提供描述性链接？
 
 ::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="LVM 和磁盘加密等设备映射器用户通常会在该目录公开具名链接。"}
 ::option[`/dev/null/`]{#device-names-null-directory explanation="/dev/null 是字符设备，不是映射块设备的目录。"}
@@ -80,8 +77,7 @@ Linux 还会创建不与物理磁盘一一对应的块设备：
 
 应选择与所需稳定对象相匹配的标识符。文件系统 UUID 标识的是文件系统，而不一定是其下的物理磁盘。克隆文件系统可能复制 UUID，因此依赖它之前应验证唯一性。
 
-:::single-choice{#device-names-persistent-config}
-在设备特定的配置中，为什么 `/dev/disk/by-id/` 链接通常比 `/dev/sdX` 更合适？
+:::single-choice{#device-names-persistent-config} 在设备特定的配置中，为什么 `/dev/disk/by-id/` 链接通常比 `/dev/sdX` 更合适？
 
 ::option[它们会让破坏性写入自动变得可逆。]{#device-names-by-id-reversible explanation="稳定名称不提供快照、备份或写保护。"}
 ::option[它们会把块设备转换成普通文件。]{#device-names-by-id-regular explanation="该条目是符号链接，解析后仍指向块设备节点。"}
@@ -92,8 +88,7 @@ Linux 还会创建不与物理磁盘一一对应的块设备：
 
 `/dev/null`、`/dev/zero` 和 `/dev/urandom` 等名称表示内核伪设备，而不是物理存储。`/dev/null` 丢弃写入，并在读取时返回文件结束；`/dev/zero` 提供零字节；`/dev/urandom` 则提供内核随机数生成器产生的字节。
 
-:::single-choice{#device-names-zero-read}
-从 `/dev/zero` 读取会产生什么？
+:::single-choice{#device-names-zero-read} 从 `/dev/zero` 读取会产生什么？
 
 ::option[未使用存储设备的列表。]{#device-names-zero-storage-list explanation="它是产生字节的字符设备，不是发现命令。"}
 ::option[由零值字节组成的数据流。]{#device-names-zero-bytes .correct explanation="零伪设备会为读取请求返回空字节。"}

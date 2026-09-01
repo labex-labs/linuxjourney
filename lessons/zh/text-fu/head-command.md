@@ -22,8 +22,7 @@ $ head events.log
 
 文件不会被修改。如果不足 10 行，则打印所有现有行。
 
-:::single-choice{#head-default-lines}
-`head events.log` 默认会打印什么？
+:::single-choice{#head-default-lines} `head events.log` 默认会打印什么？
 
 ::option[最后 10 行；文件较短时打印所有行。]{#head-last-ten explanation="显示输入末尾是 `tail` 的职责；`head` 从开头选择内容。"}
 ::option[前 10 行；文件较短时打印所有行。]{#head-first-ten .correct explanation="没有计数选项时，`head` 最多选择输入的前十行。"}
@@ -40,8 +39,7 @@ $ head -n 15 events.log
 
 GNU `head` 也接受紧凑形式 `-15`，但 `-n 15` 更清楚地表达了选项含义。
 
-:::single-choice{#head-five-lines}
-哪个命令会显示 `report.txt` 的前五行？
+:::single-choice{#head-five-lines} 哪个命令会显示 `report.txt` 的前五行？
 
 ::option[`head -c 5 report.txt`]{#head-five-bytes explanation="`-c` 统计字节而不是行，可能会停在第一行中间。"}
 ::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="`-n` 选择行数，`5` 表示前五行。"}
@@ -58,8 +56,7 @@ $ head -c 20 archive.bin
 
 这会打印前 20 个字节。输出可能在文本行中间结束；对于多字节文本，甚至可能停在一个编码字符中间。普通文本预览应使用行模式。
 
-:::single-choice{#head-first-bytes}
-哪个命令会把 `payload.bin` 的前 100 个字节写入 stdout？
+:::single-choice{#head-first-bytes} 哪个命令会把 `payload.bin` 的前 100 个字节写入 stdout？
 
 ::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="`-c` 选择字节数，因此请求的是现有内容中的前 100 个字节。"}
 ::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="`-n` 统计行而不是字节，产生的数据可能远多于或少于 100 字节。"}
@@ -87,16 +84,14 @@ $ head -n 2 january.txt february.txt
 
 使用 `-q` 抑制标题；使用 `-v` 则会让单个文件也显示标题。
 
-:::single-choice{#head-pipeline-preview}
-在 `generate-report | head -n 5` 中，`head` 读取什么？
+:::single-choice{#head-pipeline-preview} 在 `generate-report | head -n 5` 中，`head` 读取什么？
 
 ::option[通过 stdin 读取 `generate-report` 的 stdout。]{#head-pipe-input .correct explanation="管道把生产者的 stdout 连接到 `head` 的 stdin，`head` 再从中选择前五行。"}
 ::option[当前目录中的前五个文件名。]{#head-directory-names explanation="这里没有目录列举命令；`head` 通过管道收到一条数据流。"}
 ::option[名为 `generate-report` 的文件中的五个字节。]{#head-producer-file explanation="左侧会作为命令执行，而且 `-n` 统计的是行而非字节。"}
 :::
 
-:::single-choice{#head-suppress-filename-headers}
-`head` 读取多个文件时，哪个选项会抑制文件名标题？
+:::single-choice{#head-suppress-filename-headers} `head` 读取多个文件时，哪个选项会抑制文件名标题？
 
 ::option[`-v`]{#head-verbose explanation="`-v` 会要求即使只有一个文件也显示标题，与抑制相反。"}
 ::option[`-c`]{#head-byte-option explanation="`-c` 会把选择单位改为字节，并不控制文件名标题。"}

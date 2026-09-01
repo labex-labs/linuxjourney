@@ -29,8 +29,7 @@ UUID=130b882f-7d79-436d-a096-1e594c92bb76 /data ext4 defaults,nosuid,nodev 0 2
 
 Whitespace inside a field must be escaped using fstab syntax such as `\040` for a space. A `#` begins a comment outside a field.
 
-:::single-choice{#fstab-field-count}
-How many fields does a normal `/etc/fstab` entry contain?
+:::single-choice{#fstab-field-count} How many fields does a normal `/etc/fstab` entry contain?
 
 ::option[Four.]{#fstab-four-fields explanation="Source, target, type, and options are followed by the dump and pass fields."}
 ::option[Eight.]{#fstab-eight-fields explanation="Eight is not the standard field count for one fstab record."}
@@ -48,8 +47,7 @@ $ sudo blkid
 
 Use `UUID=...` only after confirming the identifier belongs to the intended filesystem. Reformatting creates a new UUID, and block-level clones can duplicate one. `PARTUUID=` instead identifies a partition-table entry and has different semantics.
 
-:::single-choice{#fstab-uuid-source}
-What does `UUID=...` in the source field normally identify?
+:::single-choice{#fstab-uuid-source} What does `UUID=...` in the source field normally identify?
 
 ::option[The user account that owns the mount point.]{#fstab-user-uuid explanation="Account identity is not selected through the filesystem UUID source syntax."}
 ::option[Filesystem metadata carrying that UUID.]{#fstab-filesystem-uuid .correct explanation="Mount resolves the filesystem identifier to an available block device rather than relying on enumeration name."}
@@ -62,8 +60,7 @@ What does `UUID=...` in the source field normally identify?
 
 For filesystems supported by `fsck`, the root filesystem conventionally uses pass `1` and other checked local filesystems pass `2`. Filesystem-specific practice can differ—for example, some types do not use generic boot-time fsck—so follow the installed filesystem and distribution documentation rather than assigning `2` mechanically.
 
-:::single-choice{#fstab-pass-zero}
-What does a sixth-field value of `0` request?
+:::single-choice{#fstab-pass-zero} What does a sixth-field value of `0` request?
 
 ::option[Skip automatic fsck ordering through fstab for that entry.]{#fstab-pass-zero-skip .correct explanation="Pass zero excludes the entry from the boot-time checking sequence governed by this field."}
 ::option[Mount the filesystem read-only in every circumstance.]{#fstab-pass-zero-readonly explanation="Read-only behavior belongs in the mount-options field."}
@@ -82,8 +79,7 @@ An invalid root, boot, or required network entry can interrupt startup. Before e
 
 Do not put credentials directly in a world-readable fstab entry. Use the relevant mount helper's protected credential mechanism.
 
-:::single-choice{#fstab-editing-recovery}
-Why should rescue access be confirmed before changing a critical fstab entry?
+:::single-choice{#fstab-editing-recovery} Why should rescue access be confirmed before changing a critical fstab entry?
 
 ::option[Fstab edits always erase the partition table immediately.]{#fstab-no-partition-erase explanation="The text edit itself does not rewrite disk partitions, though later mounts can have effects."}
 ::option[The file can be edited only from another operating system.]{#fstab-other-os-only explanation="It can be edited on Linux with suitable privilege and safeguards."}
@@ -102,8 +98,7 @@ Then test the specific new entry under controlled conditions, confirm it with `f
 
 On systemd-based systems, reload manager configuration after editing fstab so generated mount units are refreshed, then verify dependencies and boot behavior according to local documentation.
 
-:::single-choice{#fstab-mount-a-limit}
-Why is `mount -a` not a complete fstab validation by itself?
+:::single-choice{#fstab-mount-a-limit} Why is `mount -a` not a complete fstab validation by itself?
 
 ::option[It always reformats every listed device before mounting.]{#fstab-mount-a-formats explanation="Mount does not normally create filesystems."}
 ::option[It can skip entries and exercise broad real mount operations rather than only syntax.]{#fstab-mount-a-incomplete .correct explanation="Already mounted or `noauto` records may not be tested, while eligible sources can have live effects."}

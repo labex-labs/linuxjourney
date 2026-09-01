@@ -16,8 +16,7 @@ meta_keywords: "リンク層，リンク層ヘッダー, ARP, TCP/IP, MAC アド
 
 Ethernet フレームは、宛先・送信元 MAC アドレス、EtherType または長さフィールド、ペイロード、フレームチェックシーケンス（FCS）のトレーラーを含みます。物理伝送ではプリアンブルと開始区切りも使います。FCS はリンク上の破損を検出しますが、壊れたフレームの修復や暗号学的な保護は行いません。
 
-:::single-choice{#link-layer-fcs-purpose}
-Ethernet のフレームチェックシーケンスは何に使いますか？
+:::single-choice{#link-layer-fcs-purpose} Ethernet のフレームチェックシーケンスは何に使いますか？
 
 ::option[リンク上のフレーム破損を検出する。]{#link-layer-detect-corruption .correct explanation="受信側は整合性検査に失敗したフレームを破棄できます。"}
 ::option[ルーティングされる全ホップでペイロードを暗号化する。]{#link-layer-fcs-encryption explanation="FCS はエラー検出符号であり、暗号化や認証ではありません。"}
@@ -28,8 +27,7 @@ Ethernet のフレームチェックシーケンスは何に使いますか？
 
 Ethernet スイッチは各ポートで確認した送信元 MAC アドレスを学習し、既知のユニキャストフレームを学習済みの宛先ポートへ転送します。ブロードキャストや一部の未知宛先通信はブロードキャストドメイン内へフラッディングされます。VLAN は1つのスイッチングシステムを別々の論理リンクドメインへ分けられます。
 
-:::single-choice{#link-layer-switch-learning}
-Ethernet スイッチは通常、フレームから何を学習しますか？
+:::single-choice{#link-layer-switch-learning} Ethernet スイッチは通常、フレームから何を学習しますか？
 
 ::option[アプリケーションのパスワードと HTTP Cookie。]{#link-layer-switch-passwords explanation="基本的な転送テーブルが使うのはリンクアドレスで、アプリケーション認証情報ではありません。"}
 ::option[すべてのルーターが持つ完全なインターネット経路表。]{#link-layer-switch-routing-table explanation="第2層のスイッチングと世界規模の経路交換は別の機能です。"}
@@ -42,8 +40,7 @@ Ethernet 上の IPv4 では、Address Resolution Protocol（ARP）がリンク�
 
 リンク外の IP 宛先には、リモート宛先の MAC ではなく、既定または選択したゲートウェイの MAC を解決します。IPv6 は ARP ではなく ICMPv6 上の Neighbor Discovery を使います。
 
-:::single-choice{#link-layer-remote-destination-mac}
-リンク外の IPv4 宛先に対して、ホストが使う MAC アドレスはどれですか？
+:::single-choice{#link-layer-remote-destination-mac} リンク外の IPv4 宛先に対して、ホストが使う MAC アドレスはどれですか？
 
 ::option[選択した次ホップルーターの MAC アドレス。]{#link-layer-gateway-mac .correct explanation="IP パケットはリモートホスト宛てのまま、ローカルフレームはルーター宛てになります。"}
 ::option[すべてのルーターを越えたリモートサーバーの MAC アドレス。]{#link-layer-remote-mac explanation="MAC アドレスはローカルリンク識別子で、端から端まで運ばれません。"}
@@ -60,8 +57,7 @@ $ ip neighbor show
 
 `REACHABLE`、`STALE`、`DELAY`、`PROBE`、`FAILED` などは近隣到達不能検出の状態です。`STALE` は故障を意味せず、キャッシュした到達性確認が最近のものではなく、利用時に検査できるという意味です。
 
-:::single-choice{#link-layer-stale-neighbor}
-`STALE` の近隣エントリーは何を示しますか？
+:::single-choice{#link-layer-stale-neighbor} `STALE` の近隣エントリーは何を示しますか？
 
 ::option[近隣がファイアウォールで永久に遮断されている。]{#link-layer-stale-blocked explanation="この状態はファイアウォール方針を表しません。"}
 ::option[MAC アドレスをバックアップとしてディスクへ書き込んだ。]{#link-layer-stale-backup explanation="近隣状態は動作中のキャッシュ情報です。"}
@@ -72,8 +68,7 @@ $ ip neighbor show
 
 送信側は IP パケットを次ホップ宛てのフレームへ入れます。ルーターは受信フレームを検証して外し、IP ヘッダーを処理し、送信経路を選び、そのリンク用の新しいフレームを作ります。受信側はカプセル化を逆順に外し、トランスポートのペイロードを適切なソケットへ渡します。
 
-:::single-choice{#link-layer-router-reframing}
-ルーターで Ethernet フレームが変わる通常の転送中に、変わらないものはどれですか？
+:::single-choice{#link-layer-router-reframing} ルーターで Ethernet フレームが変わる通常の転送中に、変わらないものはどれですか？
 
 ::option[NAT などのミドルボックスが変更しない限り、IP 宛先。]{#link-layer-ip-destination .correct explanation="通常のルーターはホップ内のフレームを置き換えながら、最終 IP 宛先へ向けて転送します。"}
 ::option[受信フレームのチェックシーケンス。]{#link-layer-same-fcs explanation="新しい送信フレームには独自のリンク整合性値が付きます。"}

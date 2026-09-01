@@ -23,8 +23,7 @@ $ uname -r
 
 This does not list every installed kernel and does not change immediately when a newer package is installed. The system must boot the new image before `uname -r` reports it. Query installed packages and boot entries with the distribution's own tools.
 
-:::single-choice{#kernel-installation-uname-release}
-What does `uname -r` display?
+:::single-choice{#kernel-installation-uname-release} What does `uname -r` display?
 
 ::option[The release string of the currently running kernel.]{#kernel-installation-running-release .correct explanation="It reports live kernel state, not merely the newest image stored on disk."}
 ::option[Every kernel package available in all repositories.]{#kernel-installation-all-packages explanation="Repository inventory belongs to the package manager."}
@@ -37,8 +36,7 @@ Install or retain the distribution's supported kernel tracking or meta-package s
 
 Do not turn a version string from `uname -r` directly into an `apt install` operand and assume it is valid. Consult the current distribution documentation and inspect candidates with the package manager before installation.
 
-:::single-choice{#kernel-installation-meta-package}
-Why is a supported kernel meta-package useful?
+:::single-choice{#kernel-installation-meta-package} Why is a supported kernel meta-package useful?
 
 ::option[It guarantees that no reboot is ever required.]{#kernel-installation-no-reboot explanation="A newly installed kernel becomes active only after a boot into it, barring specialized live-patching scope."}
 ::option[It converts every out-of-tree driver into built-in code.]{#kernel-installation-convert-drivers explanation="External modules still require compatible builds and signing."}
@@ -57,8 +55,7 @@ Before a kernel transaction:
 
 The package transaction should generate a matching initramfs and update boot entries through distribution hooks. Read every error; a package marked installed is not sufficient if initramfs or loader generation failed.
 
-:::single-choice{#kernel-installation-initramfs-error}
-Why must an initramfs-generation error block an assumed-success conclusion?
+:::single-choice{#kernel-installation-initramfs-error} Why must an initramfs-generation error block an assumed-success conclusion?
 
 ::option[Initramfs generation changes the user's shell password.]{#kernel-installation-initramfs-password explanation="The boot archive workflow is unrelated to account authentication secrets."}
 ::option[The new kernel may lack early modules or tools needed to reach root storage.]{#kernel-installation-missing-early-tools .correct explanation="An image can be installed while its required early user-space artifact is absent or stale."}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 Use equivalent tools on non-systemd systems. Validate storage, filesystems, networking, graphics, input, security modules, external modules, containers, virtual machines, and application health. A login prompt alone is not complete validation.
 
-:::single-choice{#kernel-installation-activation}
-When does a newly installed ordinary kernel package become the running kernel?
+:::single-choice{#kernel-installation-activation} When does a newly installed ordinary kernel package become the running kernel?
 
 ::option[As soon as `uname -r` is typed.]{#kernel-installation-uname-activates explanation="Uname is read-only and cannot switch kernels."}
 ::option[After the machine boots that kernel image.]{#kernel-installation-after-boot .correct explanation="Installing files does not replace the kernel already executing in memory."}
@@ -91,8 +87,7 @@ Use the package manager's supported cleanup workflow only after the new kernel h
 
 Manual deletion from `/boot` leaves package and loader state inconsistent. If space is already exhausted, create a recovery plan before changing files rather than deleting arbitrary images.
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-Which kernel should remain installed during initial validation of a new one?
+:::single-choice{#kernel-installation-old-kernel-removal} Which kernel should remain installed during initial validation of a new one?
 
 ::option[Only the untested new kernel.]{#kernel-installation-only-new explanation="Removing all fallbacks before testing converts a compatibility issue into a recovery incident."}
 ::option[No kernel files at all under the boot path.]{#kernel-installation-no-kernels explanation="The machine needs a loadable kernel artifact to boot Linux."}

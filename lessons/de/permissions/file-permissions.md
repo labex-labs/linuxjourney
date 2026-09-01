@@ -35,8 +35,7 @@ Es gibt weitere besondere Dateitypen. Die übrigen neun Zeichen sind die Zugriff
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-Was zeigt das erste `d` in `drwxr-xr-x` an?
+:::single-choice{#file-permissions-type-character} Was zeigt das erste `d` in `drwxr-xr-x` an?
 
 ::option[Das Objekt ist ein symbolischer Link.]{#file-permissions-type-link explanation="Ein symbolischer Link wird an der Position für den Dateityp gewöhnlich mit `l` dargestellt."}
 ::option[Das Objekt ist ein Verzeichnis.]{#file-permissions-type-directory .correct explanation="Das erste Zeichen gibt den Dateityp an, und `d` kennzeichnet ein Verzeichnis."}
@@ -62,8 +61,7 @@ Bei einem Verzeichnis beziehen sich die Bedeutungen auf Verzeichniseinträge:
 
 Das Löschen einer Datei wird in erster Linie durch die Berechtigungen ihres übergeordneten Verzeichnisses gesteuert und nicht durch das Schreibbit der Datei selbst.
 
-:::single-choice{#file-permissions-directory-execute}
-Was erlaubt die Ausführungsberechtigung auf einem Verzeichnis in erster Linie?
+:::single-choice{#file-permissions-directory-execute} Was erlaubt die Ausführungsberechtigung auf einem Verzeichnis in erster Linie?
 
 ::option[Jede im Verzeichnis gespeicherte reguläre Datei auszuführen.]{#file-permissions-directory-run-files explanation="Das Ausführungsbit eines Verzeichnisses gewährt nicht jeder darin enthaltenen Datei eine Ausführungsberechtigung."}
 ::option[Den Inhalt jeder Datei im Verzeichnis zu ändern.]{#file-permissions-directory-edit-files explanation="Das Schreiben von Dateiinhalten hängt von den Berechtigungen der Dateien und anderen Zugriffskontrollen ab."}
@@ -82,16 +80,14 @@ Der Kernel wählt eine zutreffende Klasse aus; er kombiniert die drei Tripel nic
 
 Im Beispiel lautet das Tripel des Eigentümers `rwx`, während Gruppe und andere jeweils `r-x` besitzen. Der Eigentümer kann das Verzeichnis lesen, darin schreiben und es durchsuchen. Die Klassen Gruppe und andere können es lesen und durchsuchen, aber über die gewöhnlichen Modusbits des Verzeichnisses keine Einträge erstellen oder entfernen.
 
-:::single-choice{#file-permissions-triplet-order}
-In welcher Reihenfolge stehen die drei Berechtigungstripel nach dem Dateitypzeichen?
+:::single-choice{#file-permissions-triplet-order} In welcher Reihenfolge stehen die drei Berechtigungstripel nach dem Dateitypzeichen?
 
 ::option[Gruppe, Eigentümer, dann andere.]{#file-permissions-order-group-first explanation="Das Gruppentripel steht an zweiter und nicht an erster Stelle."}
 ::option[Andere, Gruppe, dann Eigentümer.]{#file-permissions-order-other-first explanation="Das Tripel für andere steht zuletzt und das Eigentümertripel zuerst."}
 ::option[Eigentümer, Gruppe, dann andere.]{#file-permissions-order-owner-first .correct explanation="Die neun Berechtigungszeichen stellen die Tripel immer in der Reihenfolge Eigentümer, Gruppe und andere dar."}
 :::
 
-:::single-choice{#file-permissions-example-group}
-Welche gewöhnlichen Berechtigungen besitzt die Gruppenklasse in `drwxr-xr-x`?
+:::single-choice{#file-permissions-example-group} Welche gewöhnlichen Berechtigungen besitzt die Gruppenklasse in `drwxr-xr-x`?
 
 ::option[Lesen und Schreiben.]{#file-permissions-group-read-write explanation="Das Gruppentripel lautet `r-x`, daher enthält seine Schreibposition `-`."}
 ::option[Schreiben und Ausführen.]{#file-permissions-group-write-execute explanation="Das Gruppentripel enthält an seiner ersten Position `r` und nicht `w`."}

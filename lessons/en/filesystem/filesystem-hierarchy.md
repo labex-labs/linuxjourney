@@ -26,8 +26,7 @@ $ ls -ld /*
 
 Many current distributions use a merged `/usr` layout in which `/bin`, `/sbin`, and `/lib` are symbolic links into corresponding `/usr` directories. Use command discovery and package records rather than assuming whether a path is a physical directory or link.
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-Which directory conventionally contains host-specific system configuration?
+:::single-choice{#filesystem-hierarchy-configuration-directory} Which directory conventionally contains host-specific system configuration?
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="Procfs presents live process and kernel interfaces rather than persistent host configuration files."}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="System and service configuration is conventionally organized under `/etc`."}
@@ -42,8 +41,7 @@ Which directory conventionally contains host-specific system configuration?
 
 Despite its name, `/usr` is not where individual users' personal files normally live. Distribution package managers commonly own large parts of it, so copying locally compiled files into `/usr/bin` can conflict with managed packages.
 
-:::single-choice{#filesystem-hierarchy-local-software}
-Which prefix is conventionally reserved for software installed locally outside distribution-managed `/usr` content?
+:::single-choice{#filesystem-hierarchy-local-software} Which prefix is conventionally reserved for software installed locally outside distribution-managed `/usr` content?
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="The local hierarchy separates administrator-installed software from the distribution's main `/usr` tree."}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="Procfs is a virtual kernel interface and not a persistent software prefix."}
@@ -58,8 +56,7 @@ Which prefix is conventionally reserved for software installed locally outside d
 
 A home path comes from account information, not merely from joining `/home` with a username. Use `getent passwd USER` or the shell's resolved home rather than hard-coding assumptions.
 
-:::single-choice{#filesystem-hierarchy-root-home}
-What is the root account's conventional home directory?
+:::single-choice{#filesystem-hierarchy-root-home} What is the root account's conventional home directory?
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="Ordinary home directories often appear below `/home`, but root has a distinct conventional path."}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="The privileged account's home is conventionally located directly under the filesystem root."}
@@ -75,8 +72,7 @@ What is the root account's conventional home directory?
 
 Cleanup policy for `/tmp` varies; do not assume files persist until reboot or are always deleted at reboot. Applications should use secure temporary-file creation rather than predictable names.
 
-:::single-choice{#filesystem-hierarchy-log-path}
-Which path conventionally stores system log files?
+:::single-choice{#filesystem-hierarchy-log-path} Which path conventionally stores system log files?
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` is for configuration rather than ordinary accumulating log data."}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="Logs are a category of changing system data organized under the variable-data hierarchy."}
@@ -93,8 +89,7 @@ Which path conventionally stores system log files?
 
 These are conventions, not permission grants. Mounting another filesystem on a nonempty directory temporarily hides the directory's previous contents until unmounted.
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-Which path normally exposes the kernel device model through sysfs?
+:::single-choice{#filesystem-hierarchy-sysfs-path} Which path normally exposes the kernel device model through sysfs?
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` is intended for data served by the system."}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="Sysfs is conventionally mounted at `/sys` and presents devices, drivers, buses, and attributes."}

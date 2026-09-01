@@ -22,8 +22,7 @@ IPv4 kann ein 24-Bit-Präfix entweder als `/24` oder als Maske `255.255.255.0` a
 
 Für die Adresse `192.168.1.8/24` lautet das Netzwerkpräfix `192.168.1.0/24`. Die Schreibweise `192.168.1.0/255.255.255.0` wird in manchen Zusammenhängen verstanden, doch die CIDR-Präfixnotation ist die übliche kompakte Form.
 
-:::single-choice{#subnets-mask-24}
-Welche punktgetrennte Dezimalmaske entspricht `/24`?
+:::single-choice{#subnets-mask-24} Welche punktgetrennte Dezimalmaske entspricht `/24`?
 
 ::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="Drei vollständige Oktette enthalten 24 führende Einsbits."}
 ::option[`255.255.0.255`]{#subnets-noncontiguous explanation="Diese Maske besitzt nicht zusammenhängende Netzwerkbits und ist keine herkömmliche `/24`-Maske."}
@@ -41,8 +40,7 @@ $ ip route show
 $ ip route get 192.168.1.50
 ```
 
-:::single-choice{#subnets-on-link-decision}
-Wie entscheidet ein Linux-Host, ob er direkt oder über einen Router sendet?
+:::single-choice{#subnets-on-link-decision} Wie entscheidet ein Linux-Host, ob er direkt oder über einen Router sendet?
 
 ::option[Er nimmt immer an, dass Adressen mit `.1` lokal sind.]{#subnets-dot-one explanation="Konventionen für Hostnummern ersetzen keine konfigurierten Präfixe und Routen."}
 ::option[Er prüft Präfixe und die Routingrichtlinie.]{#subnets-route-policy .correct explanation="Die ausgewählte Route zeigt an, ob das Ziel direkt erreichbar ist und welche Schnittstelle oder welcher nächste Hop verwendet wird."}
@@ -55,8 +53,7 @@ Ein Router mit geeigneten Schnittstellen und Routen kann Datenverkehr zwischen S
 
 Die Trennung von Subnetzen schafft einen Ort, an dem Routing- und Filterrichtlinien angewandt werden können, ist aber nicht automatisch eine Sicherheitsgrenze. Wenn Weiterleitung ohne einschränkende Richtlinie erlaubt ist, können Hosts in unterschiedlichen Subnetzen weiterhin kommunizieren.
 
-:::single-choice{#subnets-security-boundary}
-Blockiert das Erstellen zweier Subnetze automatisch den Datenverkehr zwischen ihnen?
+:::single-choice{#subnets-security-boundary} Blockiert das Erstellen zweier Subnetze automatisch den Datenverkehr zwischen ihnen?
 
 ::option[Ja, weil Router keine unterschiedlichen Präfixe verbinden können.]{#subnets-never-route explanation="Das Verbinden von Präfixen ist die Hauptaufgabe des Routings."}
 ::option[Nein; Routing- und Filterrichtlinien bestimmen den erlaubten Datenverkehr.]{#subnets-policy-required .correct explanation="Segmentierung ermöglicht die Durchsetzung von Richtlinien, definiert diese aber nicht von selbst."}
@@ -67,8 +64,7 @@ Blockiert das Erstellen zweier Subnetze automatisch den Datenverkehr zwischen ih
 
 Subnetting kann die Adressvergabe ordnen, den Broadcastbereich der Verbindungsschicht begrenzen, Fehlerdomänen trennen und Richtliniengrenzen bereitstellen. Es kann außerdem die Komplexität von Routing, Firewall, DHCP, Überwachung und Dokumentation erhöhen. Entwirf Präfixe anhand tatsächlicher Skalierung, Wachstum, Redundanz und Sicherheitsanforderungen, statt anzunehmen, kleiner bedeute immer schneller.
 
-:::single-choice{#subnets-design-tradeoff}
-Was ist ein tatsächlicher Kompromiss beim Subnetting?
+:::single-choice{#subnets-design-tradeoff} Was ist ein tatsächlicher Kompromiss beim Subnetting?
 
 ::option[Kleinere Broadcast-Domänen benötigen weder Routing noch Dokumentation.]{#subnets-no-complexity explanation="Mehr Grenzen erfordern gewöhnlich mehr Verwaltung von Routen, Richtlinien, Adressen und Diensten."}
 ::option[Segmentierung kann die Organisation verbessern und zugleich die Richtlinienkomplexität erhöhen.]{#subnets-tradeoff .correct explanation="Subnetzgrenzen können die Steuerung unterstützen, fügen aber zu pflegenden Betriebszustand hinzu."}

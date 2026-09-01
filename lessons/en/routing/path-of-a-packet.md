@@ -16,8 +16,7 @@ A packet path is a sequence of local decisions. The source host, each router, an
 
 For a destination covered by a connected route, the source selects an interface and source IP. It then resolves the destination's link address—ARP for IPv4 over Ethernet or Neighbor Discovery for IPv6—and sends a frame carrying the IP packet. A switch can forward the frame without becoming an IP hop.
 
-:::single-choice{#packet-path-switch-hop}
-Does an ordinary Ethernet switch count as an IP routing hop?
+:::single-choice{#packet-path-switch-hop} Does an ordinary Ethernet switch count as an IP routing hop?
 
 ::option[No; it forwards local frames without decrementing the IP hop field.]{#packet-path-switch-not-hop .correct explanation="A routed hop occurs when a router processes and forwards the IP packet."}
 ::option[Yes; every switch replaces the IP destination.]{#packet-path-switch-replaces-ip explanation="Layer-2 forwarding does not normally rewrite IP destinations."}
@@ -28,8 +27,7 @@ Does an ordinary Ethernet switch count as an IP routing hop?
 
 For an off-link destination, the selected route identifies a next-hop router. The IP destination remains the remote endpoint, while the local frame destination is the gateway's link address. The host resolves the gateway, not the remote server, on its local link.
 
-:::single-choice{#packet-path-gateway-mac}
-Whose MAC address is used in the first Ethernet frame to an off-link server?
+:::single-choice{#packet-path-gateway-mac} Whose MAC address is used in the first Ethernet frame to an off-link server?
 
 ::option[The remote server's address across all intervening networks.]{#packet-path-remote-mac explanation="The remote link address is not meaningful on the source LAN."}
 ::option[A value calculated from the server's DNS name.]{#packet-path-dns-mac explanation="DNS names do not encode the local next-hop MAC."}
@@ -40,8 +38,7 @@ Whose MAC address is used in the first Ethernet frame to an off-link server?
 
 A router removes incoming link framing, validates and processes the IP header, decrements TTL or Hop Limit, looks up the destination, applies policy, and creates new framing for the outgoing link. For IPv4, header checksum processing reflects the changed TTL. If the hop field reaches zero, the router drops the packet and can return an ICMP time-exceeded message.
 
-:::single-choice{#packet-path-router-change}
-Which IP field is changed by every normal routed hop?
+:::single-choice{#packet-path-router-change} Which IP field is changed by every normal routed hop?
 
 ::option[The application username.]{#packet-path-username explanation="Routers do not need application account data for basic forwarding."}
 ::option[IPv4 TTL or IPv6 Hop Limit.]{#packet-path-hop-field .correct explanation="Each router decrements the field to bound routing loops."}
@@ -52,8 +49,7 @@ Which IP field is changed by every normal routed hop?
 
 Ordinary routing preserves source and destination IP addresses, but NAT can rewrite them and tunnels can wrap the original packet. Firewalls can drop traffic silently or reject it. Link MTUs also differ; IPv4 routers can sometimes fragment packets, while IPv6 routers do not fragment forwarded packets and rely on Path MTU Discovery.
 
-:::single-choice{#packet-path-address-change-exception}
-When might end-to-end IP addresses change along a path?
+:::single-choice{#packet-path-address-change-exception} When might end-to-end IP addresses change along a path?
 
 ::option[Whenever an Ethernet switch learns a source MAC.]{#packet-path-switch-learning-ip explanation="Switch learning affects a link forwarding table, not IP endpoint addresses."}
 ::option[When a NAT policy translates packet headers.]{#packet-path-nat-change .correct explanation="Translation is a middlebox function beyond ordinary route forwarding."}
@@ -64,8 +60,7 @@ When might end-to-end IP addresses change along a path?
 
 The destination performs its own route lookup for the response. The return path can use different routers due to routing policy, load balancing, or failures. Stateful firewalls and NAT must account for the observed flow, so asymmetry can matter operationally even when IP permits it.
 
-:::single-choice{#packet-path-return-symmetry}
-Must a reply traverse the same routers in reverse order?
+:::single-choice{#packet-path-return-symmetry} Must a reply traverse the same routers in reverse order?
 
 ::option[Yes, because IP records the complete outbound route in every packet.]{#packet-path-records-route explanation="Ordinary IP packets do not carry a mandatory full reverse route."}
 ::option[Yes, unless the source and destination share a hostname.]{#packet-path-hostname-symmetry explanation="Names do not enforce path symmetry."}

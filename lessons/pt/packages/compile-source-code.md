@@ -18,8 +18,7 @@ Obtenha o código-fonte por um canal de versões autenticado do projeto original
 
 As instruções de compilação são código executável. Um script `configure`, uma definição de compilação, um teste ou um plugin do compilador pode executar comandos arbitrários como seu usuário. Não compile código-fonte não confiável e não execute a compilação com `sudo`.
 
-:::single-choice{#compile-source-code-build-privilege}
-Por que a etapa de compilação normalmente deve ser executada sem `sudo`?
+:::single-choice{#compile-source-code-build-privilege} Por que a etapa de compilação normalmente deve ser executada sem `sudo`?
 
 ::option[Porque os compiladores se recusam a produzir código de máquina para o usuário root.]{#compile-source-code-root-compiler explanation="Os compiladores podem ser executados como root, mas isso aumenta o risco desnecessariamente."}
 ::option[Porque `sudo` exclui automaticamente todos os arquivos-objeto gerados.]{#compile-source-code-sudo-delete explanation="A elevação de privilégios não remove por si só os resultados da compilação."}
@@ -36,8 +35,7 @@ $ sudo apt install build-essential
 
 Esse comando instala um compilador básico e ferramentas de compilação, mas não todas as dependências exigidas por todos os projetos. Um projeto também pode precisar de ambientes de execução de linguagens, geradores, ferramentas do sistema de compilação, cabeçalhos de desenvolvimento ou versões exatas de bibliotecas. Instale os requisitos a partir de repositórios confiáveis e diferencie as dependências de compilação das dependências de execução.
 
-:::single-choice{#compile-source-code-build-essential-scope}
-O que `build-essential` fornece em um sistema da família Debian?
+:::single-choice{#compile-source-code-build-essential-scope} O que `build-essential` fornece em um sistema da família Debian?
 
 ::option[Um conjunto básico de ferramentas comuns de compilação e construção.]{#compile-source-code-baseline-tools .correct explanation="Ele fornece ferramentas fundamentais, mas não pode prever todas as bibliotecas ou os geradores específicos de cada projeto."}
 ::option[Todas as dependências de todos os projetos de código-fonte.]{#compile-source-code-all-dependencies explanation="Cada projeto declara requisitos adicionais e, às vezes, versões específicas."}
@@ -57,8 +55,7 @@ $ make
 
 Essa sequência não é universal. Os projetos podem usar CMake, Meson, Ninja, ferramentas específicas de uma linguagem ou scripts personalizados. Siga a documentação da versão exata, em vez de executar `./configure` apenas por familiaridade. Quando o sistema de compilação permitir, um diretório de compilação separado da árvore de código pode manter os arquivos gerados isolados.
 
-:::single-choice{#compile-source-code-make-role}
-No fluxo de trabalho tradicional, o que `make` faz?
+:::single-choice{#compile-source-code-make-role} No fluxo de trabalho tradicional, o que `make` faz?
 
 ::option[Registra todos os resultados no banco de dados de pacotes da distribuição.]{#compile-source-code-make-package-db explanation="A compilação por si só não cria registros de propriedade em um pacote nativo."}
 ::option[Baixa automaticamente uma versão autenticada do código-fonte.]{#compile-source-code-make-download explanation="A obtenção e a verificação do código ocorrem antes da compilação local, salvo se o projeto definir explicitamente o contrário."}
@@ -75,8 +72,7 @@ $ make check
 
 O alvo real pode ser `test`, `check` ou um comando separado. Investigue as falhas em vez de instalar um resultado não testado. Os testes podem exigir acesso à rede, serviços, hardware especial ou isolamento; examine-os antes da execução, assim como faria com qualquer outro código de compilação.
 
-:::single-choice{#compile-source-code-test-failure}
-O que você deve fazer quando a suíte de testes documentada falhar?
+:::single-choice{#compile-source-code-test-failure} O que você deve fazer quando a suíte de testes documentada falhar?
 
 ::option[Executar imediatamente a mesma instalação como root.]{#compile-source-code-install-after-failure explanation="Privilégios não resolvem uma falha desconhecida de correção e ainda aumentam suas consequências."}
 ::option[Excluir o banco de dados do gerenciador de pacotes para evitar conflitos.]{#compile-source-code-delete-database explanation="O banco de dados nativo não tem relação com a resolução da falha em um teste do código-fonte e não deve ser descartado."}
@@ -96,8 +92,7 @@ Prefira uma destas abordagens controladas:
 
 `checkinstall` pode criar um pacote simples para alguns fluxos com `make install`, mas não é universal e não substitui uma receita de pacote com qualidade de distribuição devidamente revisada. Nunca o trate como uma regra obrigatória. Antes de qualquer cópia com privilégios, inspecione a lista de arquivos preparados, seus proprietários, permissões e caminhos, além do plano de desinstalação ou atualização.
 
-:::single-choice{#compile-source-code-destdir-purpose}
-Qual é a finalidade de uma instalação de preparação compatível com `DESTDIR`?
+:::single-choice{#compile-source-code-destdir-purpose} Qual é a finalidade de uma instalação de preparação compatível com `DESTDIR`?
 
 ::option[Colocar os arquivos destinados à instalação sob uma raiz temporária para inspeção ou empacotamento.]{#compile-source-code-stage-root .correct explanation="A preparação separa a coleta dos arquivos da gravação imediata no prefixo do sistema em uso."}
 ::option[Transformar o compilador em um repositório remoto de pacotes.]{#compile-source-code-destdir-repository explanation="A variável redireciona os caminhos de instalação e não publica metadados de repositório."}

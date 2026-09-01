@@ -38,8 +38,7 @@ magazine
 
 结果写入 stdout，因此输入文件保持不变。
 
-:::single-choice{#uniq-collapse-adjacent}
-默认情况下，`uniq reading.txt` 会做什么？
+:::single-choice{#uniq-collapse-adjacent} 默认情况下，`uniq reading.txt` 会做什么？
 
 ::option[对整个文件排序，然后删除所有重复值。]{#uniq-auto-sort explanation="`uniq` 保持输入顺序且不会排序；彼此分隔的相同值仍属于不同的组。"}
 ::option[从每一组相邻相同行中输出一行。]{#uniq-one-per-group .correct explanation="默认情况下，`uniq` 会把连续的相同行折叠为一行输出。"}
@@ -60,8 +59,7 @@ $ uniq -c reading.txt
 
 这些数字是连续组的长度；只有先让所有相同行相邻，它们才是全局总数。
 
-:::single-choice{#uniq-count-groups}
-`uniq -c` 输出的计数表示什么？
+:::single-choice{#uniq-count-groups} `uniq -c` 输出的计数表示什么？
 
 ::option[每一输入行中的字符数。]{#uniq-character-count explanation="`uniq -c` 并不统计字符；字符数和字节数等总计由 `wc` 等工具处理。"}
 ::option[每组连续相同行的数量。]{#uniq-consecutive-count .correct explanation="`-c` 会在每个折叠后的相邻组前加上该组包含的行数。"}
@@ -88,16 +86,14 @@ article
 
 GNU `uniq -D` 会输出重复组中的每一行，而小写的 `-d` 只输出每个重复组的值一次。
 
-:::single-choice{#uniq-only-singletons}
-哪个命令只输出恰好出现一次的相邻组？
+:::single-choice{#uniq-only-singletons} 哪个命令只输出恰好出现一次的相邻组？
 
 ::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="这会输出包括重复组和单行组在内的每个组，并附加计数。"}
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="小写 `-d` 会为每个重复组输出一行，选择范围正好相反。"}
 ::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="`-u` 选项选择相邻连续长度恰好为一的组。"}
 :::
 
-:::single-choice{#uniq-one-per-duplicate-group}
-哪个命令会为每个出现多于一次的相邻组输出一行？
+:::single-choice{#uniq-one-per-duplicate-group} 哪个命令会为每个出现多于一次的相邻组输出一行？
 
 ::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="`-d` 选项选择相邻重复组，并从每组输出一行作为代表。"}
 ::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="GNU 的大写 `-D` 会输出重复组中的所有行，而不只是一个代表。"}
@@ -143,8 +139,7 @@ paper
 
 两个步骤应使用一致的 locale 和比较规则。`sort -u reading.txt` 也可以在一个命令中完成排序，并为每个相等的排序键保留一行。
 
-:::single-choice{#uniq-separated-duplicates}
-`reading.txt` 中的相同行散布在不同位置，且允许改变输出顺序。哪个管道会为每个不同的完整行生成一份已排序副本？
+:::single-choice{#uniq-separated-duplicates} `reading.txt` 中的相同行散布在不同位置，且允许改变输出顺序。哪个管道会为每个不同的完整行生成一份已排序副本？
 
 ::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="排序会把完全相同的行聚在一起，然后 `uniq` 把每个相邻组折叠为一行。"}
 ::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="在彼此分隔的相同行变得相邻之前，`uniq` 已经运行，因此之后排序仍可能留下重复输出行。"}

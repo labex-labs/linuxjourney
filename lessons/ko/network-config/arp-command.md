@@ -23,8 +23,7 @@ $ ip neighbor show dev enp1s0
 
 항목에는 IP 주소, 링크 계층 주소, 장치 및 연결 상태가 들어 있습니다. 부팅 후 테이블이 비어 있다가 트래픽에 로컬 다음 홉이 필요할 때 채워질 수 있습니다.
 
-:::single-choice{#arp-command-modern-view}
-현대적인 리눅스 이웃 테이블 상태를 표시하는 명령은 무엇입니까?
+:::single-choice{#arp-command-modern-view} 현대적인 리눅스 이웃 테이블 상태를 표시하는 명령은 무엇입니까?
 
 ::option[`pwd neighbor`]{#arp-command-pwd explanation="pwd는 셸의 작업 디렉터리를 보고합니다."}
 ::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="IPv4 ARP 기반 항목과 IPv6 Neighbor Discovery 항목을 모두 보고합니다."}
@@ -37,8 +36,7 @@ $ ip neighbor show dev enp1s0
 
 원격 IP 목적지의 경우 호스트는 원격 호스트의 MAC이 아니라 선택된 게이트웨이 주소를 확인합니다.
 
-:::single-choice{#arp-command-remote-target}
-호스트는 링크 밖 목적지에 대해 어느 IPv4 이웃을 확인합니까?
+:::single-choice{#arp-command-remote-target} 호스트는 링크 밖 목적지에 대해 어느 IPv4 이웃을 확인합니까?
 
 ::option[모든 라우터 너머의 최종 원격 서버입니다.]{#arp-command-final-server explanation="그 MAC 주소는 출발지 링크에서 의미가 없습니다."}
 ::option[확인자 설정에 나열된 모든 DNS 서버입니다.]{#arp-command-all-dns explanation="이웃 확인은 확인자 목록이 아니라 선택된 경로를 따릅니다."}
@@ -49,8 +47,7 @@ $ ip neighbor show dev enp1s0
 
 일반적인 상태에는 `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE` 및 `FAILED`가 있습니다. `STALE`은 최근 연결 확인이 만료됐다는 뜻입니다. 스택이 필요에 따라 프로브하는 동안에도 캐시된 주소를 사용할 수 있습니다. `FAILED`는 주소 확인이나 연결 감지가 성공하지 못했음을 나타내지만 링크, VLAN, 주소, 경로, 필터링 또는 통신 상대 중단 등 여러 원인이 있을 수 있습니다.
 
-:::single-choice{#arp-command-stale-state}
-`STALE`은 이웃에 도달할 수 없다고 확인됐다는 뜻입니까?
+:::single-choice{#arp-command-stale-state} `STALE`은 이웃에 도달할 수 없다고 확인됐다는 뜻입니까?
 
 ::option[아니요. 최근 확인이 없으며 사용할 때 프로브할 수 있다는 뜻입니다.]{#arp-command-stale-probe .correct explanation="FAILED와 같은 상태가 아닙니다."}
 ::option[예. 항목을 다시는 사용할 수 없습니다.]{#arp-command-stale-dead explanation="오래된 항목도 후보로 남으며 연결 검사 후 상태가 바뀔 수 있습니다."}
@@ -63,8 +60,7 @@ $ ip neighbor show dev enp1s0
 
 ARP에는 내장 인증이 없으므로 중복 주소나 위조 응답이 매핑을 오염시킬 수 있습니다. 스위치 보호, 분할, 모니터링 및 상위 계층 인증이 영향을 줄이는 데 도움이 됩니다.
 
-:::single-choice{#arp-command-flush-first}
-첫 진단 단계로 전체 이웃 테이블을 비우면 안 되는 이유는 무엇입니까?
+:::single-choice{#arp-command-flush-first} 첫 진단 단계로 전체 이웃 테이블을 비우면 안 되는 이유는 무엇입니까?
 
 ::option[이웃 항목이 DNS 루트 서버에만 저장되기 때문입니다.]{#arp-command-neighbors-dns explanation="로컬 네트워크 스택이 유지합니다."}
 ::option[플러시가 인터페이스 하드웨어를 영구적으로 제거하기 때문입니다.]{#arp-command-flush-hardware explanation="물리 장치가 아니라 캐시 항목을 제거합니다."}

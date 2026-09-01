@@ -28,8 +28,7 @@ $ sudo mkfs.ext4 /dev/VERIFIED-PARTITION
 
 不同实现支持的选项、默认值、功能集和覆盖提示并不相同。应阅读具体格式化程序的本机手册，不要假定所有 `mkfs` 后端行为一致。
 
-:::single-choice{#creating-filesystems-mkfs-role}
-`mkfs -t ext4 TARGET` 请求执行什么操作？
+:::single-choice{#creating-filesystems-mkfs-role} `mkfs -t ext4 TARGET` 请求执行什么操作？
 
 ::option[挂载现有文件系统，而不改变它。]{#creating-filesystems-mount-existing explanation="挂载是独立操作；mkfs 会初始化设备上的元数据。"}
 ::option[在目标上创建 ext4 文件系统结构。]{#creating-filesystems-create-ext4 .correct explanation="此前端会为指定块设备选择 ext4 格式化实现。"}
@@ -50,8 +49,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 应通过每一层自身的工具卸载或停用所有相关内容。枚举名称可能发生变化，因此运行格式化程序前要立即再次核实身份。
 
-:::single-choice{#creating-filesystems-wipefs-no-act}
-在此工作流程中，`wipefs --no-act TARGET` 提供什么？
+:::single-choice{#creating-filesystems-wipefs-no-act} 在此工作流程中，`wipefs --no-act TARGET` 提供什么？
 
 ::option[识别到的签名的只读报告。]{#creating-filesystems-signature-report .correct explanation="无操作模式可以揭示现有文件系统、分区表、RAID 或其他签名，但不会移除它们。"}
 ::option[一个可直接挂载的全新空文件系统。]{#creating-filesystems-wipefs-formats explanation="检查签名不会初始化新文件系统。"}
@@ -64,8 +62,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 不要只因为某种格式流行就选择它。例如，ext4、XFS 和 Btrfs 的运维功能和恢复流程各不相同。用于跨系统交换的可移动设备可能需要另一种格式，而其 Unix 权限语义也会不同。
 
-:::single-choice{#creating-filesystems-type-choice}
-选择文件系统类型时，哪项依据合理？
+:::single-choice{#creating-filesystems-type-choice} 选择文件系统类型时，哪项依据合理？
 
 ::option[选择名称最短、输入最方便的类型。]{#creating-filesystems-shortest-name explanation="命令长度无法反映持久性、功能或支持情况。"}
 ::option[选择承诺今后永远不会发生存储故障的类型。]{#creating-filesystems-no-failure explanation="没有任何文件系统能够消除硬件故障或备份需求。"}
@@ -85,8 +82,7 @@ $ sudo blkid /dev/VERIFIED-PARTITION
 
 记录 UUID，以供后续挂载配置使用。创建文件系统并不会挂载它、创建应用目录、恢复备份内容，也不会让它在启动时自动挂载。
 
-:::single-choice{#creating-filesystems-after-mkfs}
-创建文件系统后，哪项操作仍需单独完成？
+:::single-choice{#creating-filesystems-after-mkfs} 创建文件系统后，哪项操作仍需单独完成？
 
 ::option[把它挂载到预期目录。]{#creating-filesystems-mount-separate .correct explanation="格式化写入文件系统结构，而挂载会把文件系统附加到可见目录树。"}
 ::option[为块设备分配任何容量。]{#creating-filesystems-capacity explanation="底层分区或逻辑设备已经提供了将被格式化的容量。"}

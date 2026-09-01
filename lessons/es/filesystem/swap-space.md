@@ -18,8 +18,7 @@ El kernel puede utilizar intercambio antes de agotar por completo la RAM, según
 
 Un intercambio intenso y sostenido puede provocar una latencia grave o thrashing. Diagnostica la demanda de memoria, los conjuntos de trabajo, la presión y los límites de las aplicaciones en vez de tratar una zona de intercambio mayor como solución universal de rendimiento.
 
-:::single-choice{#swap-space-anonymous-pages}
-¿Qué memoria es una candidata principal para almacenarse en el intercambio?
+:::single-choice{#swap-space-anonymous-pages} ¿Qué memoria es una candidata principal para almacenarse en el intercambio?
 
 ::option[Todos los archivos ejecutables instalados bajo `/usr`.]{#swap-space-installed-files explanation="Los archivos instalados permanecen en sus sistemas de archivos; las páginas limpias mapeadas pueden volver a leerse desde allí."}
 ::option[Las páginas inactivas de memoria anónima.]{#swap-space-anonymous-memory .correct explanation="Las páginas anónimas carecen de un archivo de respaldo ordinario desde el cual puedan volver a leerse sin más."}
@@ -38,8 +37,7 @@ $ free -h
 
 Muestran las áreas de intercambio activas configuradas y cifras agregadas de memoria. Un valor «used» distinto de cero no constituye automáticamente un problema; relaciónalo con las tasas de entrada y salida del intercambio, la presión de memoria, la latencia y el comportamiento de la carga.
 
-:::single-choice{#swap-space-show-active}
-¿Qué orden muestra las áreas de intercambio activas en una vista estructurada?
+:::single-choice{#swap-space-show-active} ¿Qué orden muestra las áreas de intercambio activas en una vista estructurada?
 
 ::option[`swapon --show`]{#swap-space-swapon-show .correct explanation="El modo show comunica los archivos o dispositivos de intercambio activos y, cuando están disponibles, su tamaño, uso y prioridad."}
 ::option[`mkswap --all`]{#swap-space-mkswap-all explanation="Mkswap inicializa firmas de intercambio y no es la orden de listado activo de solo lectura."}
@@ -63,8 +61,7 @@ Para hacerlo persistente, utiliza el UUID del intercambio en `/etc/fstab` con un
 UUID=VERIFIED-SWAP-UUID none swap sw 0 0
 ```
 
-:::single-choice{#swap-space-enable-command}
-¿Qué orden activa un área de intercambio inicializada?
+:::single-choice{#swap-space-enable-command} ¿Qué orden activa un área de intercambio inicializada?
 
 ::option[`swapon`]{#swap-space-command-swapon .correct explanation="Swapon añade un dispositivo o archivo swap válido al conjunto activo de intercambio del kernel."}
 ::option[`mkswap`]{#swap-space-command-mkswap explanation="Mkswap inicializa la firma, pero no activa el área por sí mismo."}
@@ -79,8 +76,7 @@ Los dispositivos de RAM comprimida como zram pueden ofrecer otro nivel de interc
 
 No existe una regla universal que exija que el intercambio sea el doble de la RAM. Dimensiónalo según los picos de la carga, el comportamiento deseado ante fallos, las necesidades de hibernación, la latencia y resistencia del almacenamiento, el diseño de volcados y la supervisión operativa.
 
-:::single-choice{#swap-space-sizing-rule}
-¿Cuál es la mejor base para dimensionar el intercambio?
+:::single-choice{#swap-space-sizing-rule} ¿Cuál es la mejor base para dimensionar el intercambio?
 
 ::option[Siempre exactamente el doble de la RAM instalada.]{#swap-space-twice-ram explanation="Esa regla histórica no resulta apropiada para todas las cargas ni tamaños de memoria modernos."}
 ::option[Las necesidades medidas de la carga, los objetivos de hibernación y la política ante fallos.]{#swap-space-sizing-requirements .correct explanation="La finalidad del sistema y el comportamiento de memoria observado importan más que un multiplicador fijo de la RAM."}
@@ -97,8 +93,7 @@ $ sudo swapoff /dev/VERIFIED-SWAP-TARGET
 
 El kernel debe trasladar a otro lugar sus páginas residentes en el intercambio. Si la RAM y las demás áreas swap no pueden albergarlas, la operación puede fallar o crear una presión de memoria peligrosa. Detén o limita primero las cargas, supervisa la memoria, elimina la entrada persistente de fstab solo después de verificar el destino correcto y confirma la desactivación con `swapon --show` antes de reutilizar el almacenamiento.
 
-:::single-choice{#swap-space-swapoff-capacity}
-¿Por qué puede fallar `swapoff` o poner en peligro un sistema con mucha carga?
+:::single-choice{#swap-space-swapoff-capacity} ¿Por qué puede fallar `swapoff` o poner en peligro un sistema con mucha carga?
 
 ::option[Porque swapoff siempre vuelve a dar formato a todos los módulos de RAM.]{#swap-space-formats-ram explanation="Cambia la configuración de intercambio activa y no da formato al hardware de memoria física."}
 ::option[Porque las páginas de esa área necesitan capacidad en RAM o en otro intercambio.]{#swap-space-pages-need-capacity .correct explanation="La desactivación exige trasladar páginas activas del intercambio mientras el sistema continúa funcionando."}

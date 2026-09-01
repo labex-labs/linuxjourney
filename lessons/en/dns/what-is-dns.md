@@ -16,8 +16,7 @@ The Domain Name System is a distributed, hierarchical database and query protoco
 
 DNS does more than translate one hostname into one IP address. An `A` record holds an IPv4 address, `AAAA` an IPv6 address, `MX` mail-routing data, `NS` authoritative server names, and many other types carry different data. One name can have several records or no address record at all.
 
-:::single-choice{#dns-purpose-beyond-address}
-Why is DNS more than a hostname-to-address list?
+:::single-choice{#dns-purpose-beyond-address} Why is DNS more than a hostname-to-address list?
 
 ::option[It permanently assigns MAC addresses to every Ethernet frame.]{#dns-mac-frames explanation="Link-layer neighbor discovery does not use DNS this way."}
 ::option[It stores typed records for several kinds of service and delegation data.]{#dns-typed-records .correct explanation="Address, mail, authority, alias, and policy-related records have distinct semantics."}
@@ -28,8 +27,7 @@ Why is DNS more than a hostname-to-address list?
 
 A fully qualified domain name identifies a path in the DNS tree. In `www.example.com.`, the final dot represents the root, `com` is below it, `example` is below `com`, and `www` is a name within that domain. The trailing dot is often omitted in user interfaces but matters when distinguishing absolute from locally relative names in configuration.
 
-:::single-choice{#dns-trailing-dot}
-What does the final dot in `www.example.com.` represent?
+:::single-choice{#dns-trailing-dot} What does the final dot in `www.example.com.` represent?
 
 ::option[The DNS root and an absolute name.]{#dns-root-dot .correct explanation="The dot terminates the complete path from the named node to the root."}
 ::option[A wildcard for every top-level domain.]{#dns-dot-wildcard explanation="A wildcard uses a label such as `*`, not the root terminator."}
@@ -40,8 +38,7 @@ What does the final dot in `www.example.com.` represent?
 
 DNS authority is delegated down the hierarchy. Root servers direct resolvers toward top-level-domain servers, which direct them toward authoritative servers for delegated zones. Organizations manage their own authoritative data without storing the entire global namespace on one central server.
 
-:::single-choice{#dns-authoritative-data}
-Who provides definitive data for a delegated DNS zone?
+:::single-choice{#dns-authoritative-data} Who provides definitive data for a delegated DNS zone?
 
 ::option[Any browser that previously visited the site.]{#dns-browser-authority explanation="A browser cache is not authoritative for the zone."}
 ::option[The zone's configured authoritative name servers.]{#dns-authoritative-servers .correct explanation="Delegation identifies the servers responsible for answering authoritatively."}
@@ -54,8 +51,7 @@ A host's stub resolver usually sends a query to a recursive resolver. That resol
 
 DNS success does not prove route, transport, TLS, or application health. DNS failure can also arise before any external query because `/etc/hosts`, search suffixes, local caches, or name-service policy affect the system resolver.
 
-:::single-choice{#dns-cache-ttl-role}
-What does a DNS record TTL primarily control?
+:::single-choice{#dns-cache-ttl-role} What does a DNS record TTL primarily control?
 
 ::option[How many routers an IP packet may cross.]{#dns-ip-hop-limit explanation="IP TTL or Hop Limit is a different protocol field."}
 ::option[How long the application must remain healthy.]{#dns-app-health-time explanation="DNS caching provides no service-availability guarantee."}

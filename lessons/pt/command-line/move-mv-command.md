@@ -34,8 +34,7 @@ A mesma ordem dos operandos renomeia um diretório:
 $ mv old_directory_name new_directory_name
 ```
 
-:::single-choice{#rename-file-with-mv}
-Qual comando renomeia `cat` como `dog` no diretório atual?
+:::single-choice{#rename-file-with-mv} Qual comando renomeia `cat` como `dog` no diretório atual?
 
 ::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` trata `cat` como o caminho de origem e `dog` como seu novo caminho de destino."}
 ::option[`mv dog cat`]{#rename-dog explanation="A ordem dos operandos está invertida. Esse comando tentaria renomear um `dog` existente como `cat`."}
@@ -64,8 +63,7 @@ $ mv -t somedirectory/ file_1 file_2
 
 Ao contrário de `cp`, `mv` não precisa de uma opção recursiva para um diretório.
 
-:::single-choice{#move-multiple-files}
-Qual comando move `file_1` e `file_2` para o diretório existente `archive/`?
+:::single-choice{#move-multiple-files} Qual comando move `file_1` e `file_2` para o diretório existente `archive/`?
 
 ::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="Sem a opção GNU `-t`, uma movimentação com várias origens espera o diretório de destino por último. Essa não é a forma padrão."}
 ::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` não usa `-r` para mover arquivos ou diretórios. A forma comum com várias origens já realiza a movimentação solicitada."}
@@ -100,8 +98,7 @@ Por padrão, `mv` pode substituir um destino existente. Inspecione os caminhos d
 $ mv -v file1 file2 somedirectory/
 ```
 
-:::single-choice{#move-without-overwriting}
-Qual comando move `draft.txt` para `finished/` somente se isso não sobrescrever um destino existente?
+:::single-choice{#move-without-overwriting} Qual comando move `draft.txt` para `finished/` somente se isso não sobrescrever um destino existente?
 
 ::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="A opção `-i` pergunta o que fazer quando há um destino. Ainda pode ocorrer uma substituição se o usuário a confirmar."}
 ::option[`mv -b draft.txt finished/`]{#backup-draft explanation="A opção `-b` permite a substituição e mantém um backup do destino anterior. Ela não impede a sobrescrita."}
@@ -125,16 +122,14 @@ $ mv *.txt notes/
 
 Visualizar as correspondências com `ls` ajuda a detectar um padrão amplo demais antes de alterar vários caminhos.
 
-:::single-choice{#move-directory-without-recursion}
-Qual comando move o diretório `project/` para `/srv/archive/`?
+:::single-choice{#move-directory-without-recursion} Qual comando move o diretório `project/` para `/srv/archive/`?
 
 ::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` não precisa nem oferece suporte a `-r` para essa finalidade. Os diretórios são tratados pela operação comum de movimentação."}
 ::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="A sintaxe comum de `mv` move um diretório para um diretório de destino existente sem um sinalizador recursivo."}
 ::option[`cp project/ /srv/archive/`]{#copy-project explanation="Um `cp` simples não move o diretório e precisaria de uma opção recursiva para copiá-lo. A origem também continuaria no lugar."}
 :::
 
-:::single-choice{#preview-text-file-move}
-Você pretende executar `mv *.txt notes/`. Qual comando visualiza os caminhos selecionados pelo mesmo curinga?
+:::single-choice{#preview-text-file-move} Você pretende executar `mv *.txt notes/`. Qual comando visualiza os caminhos selecionados pelo mesmo curinga?
 
 ::option[`ls '*.txt'`]{#literal-text-pattern explanation="As aspas impedem o shell de expandir `*`; assim, o comando procura um nome literal com asterisco em vez de mostrar o conjunto da movimentação."}
 ::option[`ls *.txt`]{#list-text-matches .correct explanation="O shell expande `*.txt` para `ls` da mesma forma que faria para `mv`, permitindo inspecionar primeiro os nomes não ocultos selecionados."}

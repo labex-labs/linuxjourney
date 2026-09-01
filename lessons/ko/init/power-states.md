@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 질서 있는 종료는 서비스에 중지를 요청하고 파일 시스템을 마운트 해제한 뒤 시스템의 전원 상태를 바꿉니다. 강제 재부팅이나 물리 전원 스위치를 일반적인 지름길로 사용하지 마십시오. 쓰기를 중단해 데이터나 서비스가 일관되지 않은 상태로 남을 수 있습니다.
 
-:::single-choice{#power-states-orderly-poweroff}
-원격 운영 호스트의 전원을 끄기 전에 무엇을 해야 합니까?
+:::single-choice{#power-states-orderly-poweroff} 원격 운영 호스트의 전원을 끄기 전에 무엇을 해야 합니까?
 
 ::option[명령을 실행하기 전에 관리 콘솔 연결을 끊습니다.]{#power-states-remove-console explanation="관리 콘솔은 유용한 복구 접근이므로 유지해야 합니다."}
 ::option[서비스가 작업을 지연하지 못하도록 전원을 강제로 끕니다.]{#power-states-force-first explanation="강제 작업은 쓰기를 중단할 수 있으므로 일반적인 방법으로 사용해서는 안 됩니다."}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 경고를 보냈다고 작업이 안전해졌다고 가정하지 마십시오. 활성 세션과 시스템별 작업 부하를 확인하고 서비스나 클러스터에 문서화된 드레인 절차가 있다면 따르십시오.
 
-:::single-choice{#power-states-four-minute-schedule}
-지금부터 4분 뒤 종료를 예약하는 명령은 무엇입니까?
+:::single-choice{#power-states-four-minute-schedule} 지금부터 4분 뒤 종료를 예약하는 명령은 무엇입니까?
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="`-h` 작업과 `+4`를 함께 사용하면 지금부터 4분 뒤 종료를 요청합니다."}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="더하기 기호가 없으면 시간 인수가 문서화된 상대 분 형식이 아닙니다."}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 재부팅 전에 암호화 디스크, 부팅 설정, 네트워킹 및 필수 서비스가 현재 대화형 세션 없이 복구될 수 있는지 확인하십시오. 다른 시스템이 호스트에 의존한다면 먼저 장애 조치나 작업 부하 이전을 조정합니다.
 
-:::single-choice{#power-states-reboot-action}
-`shutdown`을 통해 즉시 질서 있는 재부팅을 요청하는 명령은 무엇입니까?
+:::single-choice{#power-states-reboot-action} `shutdown`을 통해 즉시 질서 있는 재부팅을 요청하는 명령은 무엇입니까?
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="`-c` 옵션은 대기 중인 종료를 취소합니다."}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="`-r` 옵션은 재부팅을 선택하고 `now`는 즉시 실행을 예약합니다."}
@@ -89,8 +86,7 @@ $ sudo reboot
 
 `halt`, `poweroff` 및 `reboot`는 init 시스템의 호환성 프런트엔드일 수 있지만 요청하는 최종 상태는 다릅니다. halt는 정상 시스템 작동을 멈추며 플랫폼과 구현에 따라 전원이 계속 공급될 수 있습니다. poweroff는 지원되는 하드웨어에 전원 제거도 요청합니다. 의도한 결과를 이름으로 나타내는 명령을 우선 사용하고 호환성 동작은 다를 수 있으므로 로컬 설명서를 확인하십시오.
 
-:::single-choice{#power-states-halt-versus-poweroff}
-`halt`와 `poweroff`를 구분해야 하는 이유는 무엇입니까?
+:::single-choice{#power-states-halt-versus-poweroff} `halt`와 `poweroff`를 구분해야 하는 이유는 무엇입니까?
 
 ::option[poweroff는 전원 제거를 요청하지만 halt는 전원이 공급된 상태로 남을 수 있기 때문입니다.]{#power-states-power-distinction .correct explanation="두 작업 모두 정상 작동을 멈추지만 요청하는 최종 하드웨어 상태는 다를 수 있습니다."}
 ::option[halt가 서비스를 중지한 뒤 항상 재시작하기 때문입니다.]{#power-states-halt-restarts explanation="halt는 서비스를 재시작하는 요청이 아니라 중지 상태입니다."}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 이는 시작점일 뿐이며 실제 작업 부하에는 애플리케이션 고유 상태 검사를 사용하십시오.
 
-:::single-choice{#power-states-post-reboot-check}
-재부팅한 애플리케이션이 준비되었다는 가장 강한 증거는 무엇입니까?
+:::single-choice{#power-states-post-reboot-check} 재부팅한 애플리케이션이 준비되었다는 가장 강한 증거는 무엇입니까?
 
 ::option[서비스 상태, 로그 및 고유 상태 검사가 모두 성공합니다.]{#power-states-health-evidence .correct explanation="여러 시스템 및 애플리케이션 검사는 단순 호스트 접근이 아니라 작업 부하를 검증합니다."}
 ::option[섀시 전원 표시등이 켜져 있습니다.]{#power-states-light-on explanation="하드웨어 전원은 애플리케이션 상태를 증명하지 않습니다."}

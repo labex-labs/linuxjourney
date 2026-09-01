@@ -24,8 +24,7 @@ Emacs prüft die relevanten geänderten dateibesuchenden Puffer und fragt, ob si
 
 Bei einem Arbeitsablauf mit `emacsclient` oder einem Emacs-Server kann sich das genaue Verhalten von Frames und Server unterscheiden. Fragen zu geänderten Puffern verdienen dennoch immer besondere Aufmerksamkeit.
 
-:::single-choice{#emacs-exit-key}
-Welche Tastenfolge fordert das normale Beenden von Emacs an und prüft dabei geänderte Puffer?
+:::single-choice{#emacs-exit-key} Welche Tastenfolge fordert das normale Beenden von Emacs an und prüft dabei geänderte Puffer?
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="Diese Tastenfolge beendet einen ausgewählten Puffer und fordert nicht das Beenden der Emacs-Sitzung an."}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="Diese Taste bricht einen ausstehenden Befehl oder eine Frage ab, statt Emacs zu schließen."}
@@ -42,8 +41,7 @@ C-h C-h
 
 Mit der zweiten Taste wählst du die benötigte Art von Hilfe.
 
-:::single-choice{#emacs-help-for-help}
-Welche Tastenfolge erklärt die Verwendung des Emacs-Hilfesystems?
+:::single-choice{#emacs-help-for-help} Welche Tastenfolge erklärt die Verwendung des Emacs-Hilfesystems?
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="Das Hilfepräfix gefolgt von einem weiteren `C-h` öffnet Hilfe zur Hilfeübersicht selbst."}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="Dies ist nicht die hier vorgestellte Tastenfolge für Hilfe zur Hilfe."}
@@ -62,8 +60,7 @@ Nützliche Hilfebefehle sind:
 
 Gib beispielsweise `C-h k C-x C-s` ein, um die Dokumentation der Tastenbelegung für save-buffer anzuzeigen.
 
-:::single-choice{#emacs-describe-key}
-Du möchtest wissen, was `C-x C-s` bewirkt. Welches Hilfepräfix gibst du vor dieser Tastenfolge ein?
+:::single-choice{#emacs-describe-key} Du möchtest wissen, was `C-x C-s` bewirkt. Welches Hilfepräfix gibst du vor dieser Tastenfolge ein?
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key` wartet auf eine Tastenfolge und erklärt den daran gebundenen Befehl."}
 ::option[`C-h f`]{#emacs-describe-function explanation="Diese Tastenfolge fragt nach einem Funktionsnamen, statt eine Tastenfolge einzulesen und deren Bindung zu ermitteln."}
@@ -80,8 +77,7 @@ C-g
 
 Die Taste macht bereits erfolgte Änderungen am Puffer nicht rückgängig und beendet Emacs nicht. Sie stoppt die aktuelle Interaktion und gibt dir, soweit möglich, die Kontrolle über die gewöhnliche Bearbeitung zurück.
 
-:::single-choice{#emacs-cancel-pending-command}
-Welche Taste bricht normalerweise die aktuelle Emacs-Frage oder einen ausstehenden Befehl ab?
+:::single-choice{#emacs-cancel-pending-command} Welche Taste bricht normalerweise die aktuelle Emacs-Frage oder einen ausstehenden Befehl ab?
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="Diese Tastenfolge leitet das Beenden von Emacs ein, statt nur die aktuelle Frage abzubrechen."}
 ::option[`C-y`]{#emacs-cancel-yank explanation="Diese Taste yankte Text aus dem Kill Ring und bricht keinen Befehl ab."}
@@ -98,8 +94,7 @@ C-/
 
 Wiederholte Rückgängig-Befehle gehen schrittweise durch die letzten Änderungen am Puffer zurück. Eine reine Cursorbewegung ist normalerweise keine Pufferänderung. Emacs-Versionen und -Konfigurationen können `undo-redo` und weitergehende Verlaufswerkzeuge anbieten. Prüfe mit `C-h k` deine tatsächlichen Tastenbelegungen für Rückgängig und Wiederherstellen.
 
-:::single-choice{#emacs-undo-change}
-Welche Tastenfolge ist eine Standardbelegung zum Rückgängigmachen einer kürzlich erfolgten Änderung am Emacs-Puffer?
+:::single-choice{#emacs-undo-change} Welche Tastenfolge ist eine Standardbelegung zum Rückgängigmachen einer kürzlich erfolgten Änderung am Emacs-Puffer?
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/` ist eine Standardbelegung für Rückgängig; in üblichen Konfigurationen stehen daneben `C-_` und `C-x u` zur Verfügung."}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="Diese Tastenfolge speichert den aktuellen Puffer, statt seinen Rückgängig-Verlauf zu durchlaufen."}

@@ -23,8 +23,7 @@ $ uptime
 
 Les trois dernières valeurs sont les charges moyennes sur environ 1, 5 et 15 minutes. Leur comparaison indique la tendance : une valeur sur 1 minute nettement supérieure peut signaler une charge croissante, tandis qu’une valeur sur 15 minutes plus élevée peut indiquer une charge en baisse.
 
-:::single-choice{#cpu-uptime-windows}
-Dans quel ordre `uptime` affiche-t-il les fenêtres de charge moyenne ?
+:::single-choice{#cpu-uptime-windows} Dans quel ordre `uptime` affiche-t-il les fenêtres de charge moyenne ?
 
 ::option[15, 5 et 1 secondes.]{#cpu-windows-seconds explanation="Ces valeurs sont des moyennes à l’échelle de la minute et ne sont pas affichées de la plus longue à la plus courte."}
 ::option[1, 5 et 15 minutes.]{#cpu-windows-one-five-fifteen .correct explanation="La fenêtre récente la plus courte apparaît en premier et la plus longue en dernier."}
@@ -43,8 +42,7 @@ $ nproc
 
 Les quotas du processeur, l’affinité, la virtualisation et les limites des conteneurs peuvent réduire la capacité visible par une charge de travail particulière ; le nombre de processeurs de l’hôte ne constitue donc qu’un point de départ.
 
-:::single-choice{#cpu-load-not-percentage}
-Pourquoi la charge moyenne n’est-elle pas un pourcentage d’utilisation du processeur ?
+:::single-choice{#cpu-load-not-percentage} Pourquoi la charge moyenne n’est-elle pas un pourcentage d’utilisation du processeur ?
 
 ::option[Elle indique uniquement la fréquence d’horloge du processeur.]{#cpu-load-clock explanation="La fréquence d’horloge est une mesure distincte du matériel ou de sa régulation."}
 ::option[Elle mesure uniquement la mémoire physique libre.]{#cpu-load-memory explanation="La disponibilité de la mémoire est indiquée par d’autres mesures."}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 Une charge élevée accompagnée de processeurs occupés peut signaler une forte demande de calcul. Une charge élevée associée à un nombre notable de tâches bloquées, à une latence d’entrées-sorties ou à des observations d’attente d’entrées-sorties oriente vers une autre ressource limitée. Une faible utilisation moyenne peut également masquer un seul processeur saturé ou un bref pic de latence.
 
-:::single-choice{#cpu-high-load-next-step}
-Quelle est la meilleure étape suivante après l’observation d’une charge moyenne élevée ?
+:::single-choice{#cpu-high-load-next-step} Quelle est la meilleure étape suivante après l’observation d’une charge moyenne élevée ?
 
 ::option[Comparer des mesures répétées du processeur, de l’état des tâches, des entrées-sorties et de la charge de travail.]{#cpu-load-correlate .correct explanation="Des échantillons corrélés permettent de distinguer plusieurs explications concurrentes de la charge."}
 ::option[Redémarrer immédiatement sans recueillir d’autres données.]{#cpu-load-reboot explanation="Le redémarrage supprime des indices et peut interrompre les services sans identifier la cause."}
@@ -77,8 +74,7 @@ Quelle est la meilleure étape suivante après l’observation d’une charge mo
 
 Il n’existe aucune règle universelle selon laquelle la charge doit toujours rester inférieure au nombre de processeurs. Les systèmes de traitement par lots peuvent accepter des files d’attente, tandis que les services interactifs peuvent dépasser leurs objectifs de latence avant ce seuil. Établissez une référence pour le même hôte et la même charge de travail, puis comparez le temps de réponse, le débit, le taux d’erreurs, la saturation et l’utilisation des ressources.
 
-:::single-choice{#cpu-capacity-threshold}
-Qu’est-ce qui doit déterminer si la charge observée est acceptable ?
+:::single-choice{#cpu-capacity-threshold} Qu’est-ce qui doit déterminer si la charge observée est acceptable ?
 
 ::option[L’obligation de toujours maintenir la valeur sous un.]{#cpu-below-one explanation="La capacité multicœur et les objectifs de la charge de travail rendent ce seuil fixe peu fiable."}
 ::option[Uniquement le nombre d’utilisateurs affiché par `uptime`.]{#cpu-user-count explanation="Les utilisateurs connectés à un shell ne représentent pas toute la demande de la charge de travail."}

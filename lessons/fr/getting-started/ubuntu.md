@@ -16,8 +16,7 @@ Ubuntu est l'une des distributions Linux les plus utilisées. Développée par C
 
 Ubuntu est devenue un point de départ courant pour les personnes qui veulent apprendre Linux sans commencer par une configuration plus manuelle ou avancée. Elle est employée sur les ordinateurs personnels, systèmes de développement, plateformes cloud et serveurs, ce qui lui donne une portée que peu d'autres distributions égalent.
 
-:::single-choice{#identify-ubuntu-base}
-Quelle distribution fournit les fondations d'Ubuntu ?
+:::single-choice{#identify-ubuntu-base} Quelle distribution fournit les fondations d'Ubuntu ?
 
 ::option[La distribution Debian]{#debian-base .correct explanation="Ubuntu est construit à partir de Debian et hérite d'une grande partie de son approche des paquets. Ubuntu ajoute ensuite ses propres versions, réglages par défaut et modèle d'assistance."}
 ::option[La distribution Fedora]{#ubuntu-fedora-base explanation="Fedora appartient à l'écosystème Red Hat et ne sert pas de base à Ubuntu. Ubuntu fait partie de la famille Debian."}
@@ -30,8 +29,7 @@ Ubuntu cherche à rendre Linux pratique au quotidien. Elle propose un programme 
 
 Ubuntu est également très visible parce qu'elle fonctionne dans de nombreux environnements : ordinateurs portables et de bureau, machines virtuelles, serveurs et plateformes cloud. Cette vaste adoption renforce sa réputation de distribution Linux généraliste.
 
-:::single-choice{#recognize-beginner-support}
-Quelle qualité d'Ubuntu aide le plus directement un débutant à résoudre ses problèmes ?
+:::single-choice{#recognize-beginner-support} Quelle qualité d'Ubuntu aide le plus directement un débutant à résoudre ses problèmes ?
 
 ::option[La compilation manuelle obligatoire de chaque programme installé]{#manual-compilation explanation="Ubuntu fournit normalement des logiciels empaquetés au lieu d'exiger leur compilation manuelle. Ce travail supplémentaire ne simplifierait pas le dépannage."}
 ::option[Une documentation abondante et une grande communauté d'utilisateurs]{#documentation-community .correct explanation="La documentation et les discussions de la communauté offrent aux débutants de nombreuses sources d'explications et d'aide au dépannage, ce qui facilite l'apprentissage."}
@@ -50,8 +48,7 @@ Ubuntu emploie deux grands types de versions. Une nouvelle version paraît tous 
 
 Ce modèle explique une partie de l'attrait d'Ubuntu. Les utilisateurs qui recherchent une base fiable choisissent souvent une LTS, tandis que ceux qui veulent des fonctionnalités plus récentes peuvent employer les versions intermédiaires publiées plus rapidement.
 
-:::single-choice{#choose-ubuntu-lts}
-Quel type de version Ubuntu convient le mieux à un système qui exige une base prévisible et durable ?
+:::single-choice{#choose-ubuntu-lts} Quel type de version Ubuntu convient le mieux à un système qui exige une base prévisible et durable ?
 
 ::option[Une version intermédiaire]{#interim-release explanation="Les versions intermédiaires paraissent plus souvent et donnent plus vite accès aux nouveautés. Leur assistance plus courte ne correspond pas à la priorité indiquée."}
 ::option[Une version LTS]{#lts-release .correct explanation="Les versions LTS sont destinées à une assistance plus longue et couramment choisies pour les systèmes qui privilégient une base fiable."}
@@ -64,8 +61,7 @@ En tant que système issu de Debian, Ubuntu emploie le format `.deb` et le gesti
 
 La gestion des paquets est l'une des forces pratiques d'Ubuntu, car elle associe les outils Debian éprouvés à un environnement logiciel vaste et abondamment documenté.
 
-:::single-choice{#identify-ubuntu-package-tool}
-Quel élément est l'outil de gestion des paquets employé pour installer des logiciels dans Ubuntu ?
+:::single-choice{#identify-ubuntu-package-tool} Quel élément est l'outil de gestion des paquets employé pour installer des logiciels dans Ubuntu ?
 
 ::option[`.deb`]{#deb-format explanation="`.deb` désigne le format de paquets des systèmes issus de Debian. Ce n'est pas l'outil en ligne de commande qui les gère."}
 ::option[`LTS`]{#lts-label explanation="LTS désigne une version à assistance longue. Il n'installe ni ne gère les paquets logiciels."}

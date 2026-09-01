@@ -23,8 +23,7 @@ $ ip route get 192.168.2.25
 
 ポリシールールや別テーブルがある場合は、それらも確認します。ルート検索はローカルの判断を示すだけで、トラフィックを送信しません。
 
-:::single-choice{#route-get-before-change}
-ルート変更前に `ip route get DESTINATION` を実行するのはなぜですか？
+:::single-choice{#route-get-before-change} ルート変更前に `ip route get DESTINATION` を実行するのはなぜですか？
 
 ::option[比較とロールバックに使う現在のローカル判断を記録するため。]{#route-get-baseline .correct explanation="選択されるインターフェース、次ホップ、送信元は、意図する変更内容を定義する助けになります。"}
 ::option[すべてのルーター上で宛先を恒久的に予約するため。]{#route-get-reserves explanation="このコマンドはローカル検索を行うだけで、リモート状態を変更しません。"}
@@ -41,8 +40,7 @@ $ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 ゲートウェイは、該当リンクまたは明示された有効なオンリンク設計を通じて到達可能でなければなりません。同等のルートがすでにあると `add` は失敗します。`replace` はルートを作成または変更するため、冪等な設定には便利ですが、動作中の状態を上書きする可能性があります。対象を正確に確認してから使ってください。
 
-:::single-choice{#route-add-existing}
-既存ルートを対象に `ip route add` を実行すると、通常どうなりますか？
+:::single-choice{#route-add-existing} 既存ルートを対象に `ip route add` を実行すると、通常どうなりますか？
 
 ::option[古い宛先プレフィックスを暗黙に削除する。]{#route-add-deletes explanation="通常、add は置換せず、オブジェクトが存在するというエラーを報告します。"}
 ::option[既存ルートを置換せずに失敗する。]{#route-add-fails .correct explanation="どのエントリが変わるか確認した上で、意図的に `replace` を使ってください。"}
@@ -59,8 +57,7 @@ $ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 宛先だけを指定した削除は、意図より広く一致したり、曖昧になったりすることがあります。削除前に、元のルートを復元するコマンドを記録してください。
 
-:::single-choice{#route-delete-precision}
-ルート削除時に次ホップとデバイスも指定するのはなぜですか？
+:::single-choice{#route-delete-precision} ルート削除時に次ホップとデバイスも指定するのはなぜですか？
 
 ::option[目的のエントリをより正確に特定するため。]{#route-delete-exact .correct explanation="属性を明示すると、同じプレフィックスを持つ別ルートを削除する危険を減らせます。"}
 ::option[物理ネットワークアダプターも削除するため。]{#route-delete-adapter explanation="ルートを削除しても、カーネルのリンクオブジェクトは削除されません。"}
@@ -73,8 +70,7 @@ $ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 
 リモートホストでは独立したコンソールを確保し、変更対象のルートに依存しないロールバックを用意します。その後、ルート検索、近隣状態、双方向のトラフィック、実際のサービスを検証します。
 
-:::single-choice{#route-runtime-persistence}
-ネットワークマネージャーを再読み込みした後、手動追加したルートはどうなる可能性がありますか？
+:::single-choice{#route-runtime-persistence} ネットワークマネージャーを再読み込みした後、手動追加したルートはどうなる可能性がありますか？
 
 ::option[永久に不変のカーネル機能になる。]{#route-manual-immutable explanation="実行時ルートは削除または置換される場合があります。"}
 ::option[サブネット内の全ホストに自動追加される。]{#route-manual-all-hosts explanation="このコマンドが変更するのは、現在のネットワーク名前空間だけです。"}

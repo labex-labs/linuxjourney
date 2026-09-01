@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 Dies ändert den Benutzereigentümer von `myfile` in `patty` und lässt seine Gruppe unverändert. Das Ändern des Benutzereigentümers einer Datei erfordert gewöhnlich entsprechende Privilegien, selbst wenn dir die Datei derzeit gehört. Diese Einschränkung verhindert, dass Benutzer Dateien übertragen, um Kontingente oder andere eigentumsbasierte Kontrollen zu umgehen.
 
-:::single-choice{#ownership-permissions-change-user}
-Welcher Befehl ändert den Benutzereigentümer von `myfile` in `patty` und lässt die Gruppe unverändert?
+:::single-choice{#ownership-permissions-change-user} Welcher Befehl ändert den Benutzereigentümer von `myfile` in `patty` und lässt die Gruppe unverändert?
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="Ein Benutzername allein als Eigentumsoperand von `chown` ändert den Benutzereigentümer und behält die Gruppe bei."}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` ändert den Gruppeneigentümer und nicht den Benutzereigentümer."}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 Anschließend gelten die Modusbits der Gruppe, wenn der Kernel die Gruppenklasse auswählt. Die Änderung der Gruppe fügt nicht automatisch Lese-, Schreib- oder Ausführungsbits hinzu.
 
-:::single-choice{#ownership-permissions-change-group}
-Was ändert `chgrp whales myfile`?
+:::single-choice{#ownership-permissions-change-group} Was ändert `chgrp whales myfile`?
 
 ::option[Den für `myfile` erfassten Benutzereigentümer.]{#ownership-permissions-group-not-user explanation="Der Benutzereigentümer wird mit `chown` und nicht mit `chgrp` geändert."}
 ::option[Die in der Gruppe `whales` aufgeführten Mitglieder.]{#ownership-permissions-group-members explanation="Der Befehl ändert Dateimetadaten und bearbeitet nicht die Gruppenmitgliedschaftsdatenbank des Systems."}
@@ -68,8 +66,7 @@ Der Befehl weist `patty` als Benutzereigentümer und `whales` als Gruppeneigent�
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-Welche Eigentumsangabe weist in einem einzigen `chown`-Befehl den Benutzer `patty` und die Gruppe `whales` zu?
+:::single-choice{#ownership-permissions-change-both} Welche Eigentumsangabe weist in einem einzigen `chown`-Befehl den Benutzer `patty` und die Gruppe `whales` zu?
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="Ein Doppelpunkt trennt Benutzer- und Gruppennamen in der kombinierten Eigentumsangabe."}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="Ein Schrägstrich ist nicht das hier eingeführte Trennzeichen für einen Benutzer- und Gruppenoperanden von `chown`."}
@@ -80,8 +77,7 @@ Welche Eigentumsangabe weist in einem einzigen `chown`-Befehl den Benutzer `patt
 
 Die Option `-R` ändert Eigentum rekursiv, doch ein weit gefasster rekursiver Befehl kann unerwartete Verzeichnisbäume durchqueren oder Dienstdaten beeinflussen. Bestätige das genaue Ziel, verstehe das Verhalten deiner Implementierung bei symbolischen Links, zeige den Baum vorab an und überprüfe eine kleine Stichprobe, bevor du eine große Hierarchie änderst. Übertrage privilegierte Eigentumsbefehle aus Beispielen nicht auf reale Systeme, ohne ihren Umfang zu prüfen.
 
-:::single-choice{#ownership-permissions-mode-separate}
-Was geschieht nach der Änderung des Gruppeneigentümers einer Datei mit ihren gewöhnlichen Gruppenberechtigungsbits?
+:::single-choice{#ownership-permissions-mode-separate} Was geschieht nach der Änderung des Gruppeneigentümers einer Datei mit ihren gewöhnlichen Gruppenberechtigungsbits?
 
 ::option[Sie werden immer automatisch auf Lesen und Schreiben gesetzt.]{#ownership-permissions-mode-read-write explanation="`chgrp` wählt nicht automatisch einen festen Gruppenmodus aus."}
 ::option[Sie werden aus dem Berechtigungstripel des Eigentümers kopiert.]{#ownership-permissions-mode-copied explanation="Die Tripel für Eigentümer und Gruppe bleiben bei einer Eigentumsänderung unabhängig voneinander."}

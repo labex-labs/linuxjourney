@@ -23,8 +23,7 @@ $ readlink /proc/1/exe
 
 Un archivo `/etc/inittab` o un directorio `/etc/init.d/` es solo una prueba auxiliar. systemd y otros sistemas pueden conservar estos archivos por compatibilidad, y los contenedores pueden mostrar un espacio de nombres de PID distinto del anfitrión.
 
-:::single-choice{#sysv-overview-detection}
-¿Cuál es la prueba más sólida de que sysvinit está activo?
+:::single-choice{#sysv-overview-detection} ¿Cuál es la prueba más sólida de que sysvinit está activo?
 
 ::option[Que el ejecutable activo con PID 1 sea sysvinit o su programa init.]{#sysv-overview-live-pid-one .correct explanation="Examinar el primer proceso en ejecución es más directo que deducirlo de archivos de compatibilidad."}
 ::option[Que exista un directorio `/etc/init.d/`.]{#sysv-overview-init-d-only explanation="Otros sistemas init suelen conservar scripts o envoltorios de SysV."}
@@ -42,8 +41,7 @@ Un nivel de ejecución es un modo de funcionamiento numérico con nombre. Las co
 
 Los sistemas de la familia Debian han tratado históricamente los niveles 2–5 de forma parecida, mientras que las convenciones de la familia Red Hat distinguen modos de texto y gráficos. Examina `/etc/inittab`, la documentación de init y los directorios de niveles en el equipo real.
 
-:::single-choice{#sysv-overview-shutdown-runlevel}
-¿Qué nivel solicita convencionalmente detener o apagar en muchos sistemas SysV?
+:::single-choice{#sysv-overview-shutdown-runlevel} ¿Qué nivel solicita convencionalmente detener o apagar en muchos sistemas SysV?
 
 ::option[`3`]{#sysv-overview-runlevel-three explanation="Suele ser un modo multiusuario y no de apagado."}
 ::option[`0`]{#sysv-overview-runlevel-zero .correct explanation="El nivel cero es convencionalmente la transición de apagado, aunque la política local sigue siendo la autoridad."}
@@ -60,8 +58,7 @@ Los scripts de servicios suelen residir bajo `/etc/init.d/`. Los directorios de 
 
 El algoritmo y los directorios exactos varían. Las dependencias también pueden expresarse en las cabeceras de los scripts y procesarse mediante herramientas de la distribución, y algunas implementaciones paralelizan el trabajo. SysV no debe reducirse a la garantía de que todos los servicios se inicien estrictamente de uno en uno.
 
-:::single-choice{#sysv-overview-start-link}
-¿Qué solicita convencionalmente un enlace `S20networking` al entrar en un nivel?
+:::single-choice{#sysv-overview-start-link} ¿Qué solicita convencionalmente un enlace `S20networking` al entrar en un nivel?
 
 ::option[Enviar directamente la señal 20 a todos los procesos de red.]{#sysv-overview-signal-twenty explanation="Los dígitos son metadatos de orden, no un número de señal."}
 ::option[Almacenar veinte copias de seguridad de la configuración de red.]{#sysv-overview-twenty-backups explanation="Los enlaces de niveles no proporcionan retención de copias."}
@@ -74,8 +71,7 @@ Cuando init cambia de nivel, la maquinaria rc de la distribución detiene los se
 
 Solicitar los niveles 0 o 6 es una acción destructiva para la disponibilidad de todo el sistema. Utiliza la interfaz de apagado, avisa a los usuarios, conserva el trabajo activo y verifica el acceso remoto a consola en vez de invocar casualmente transiciones init sin intermediarios.
 
-:::single-choice{#sysv-overview-runlevel-six-meaning}
-¿Qué solicita convencionalmente el nivel `6`?
+:::single-choice{#sysv-overview-runlevel-six-meaning} ¿Qué solicita convencionalmente el nivel `6`?
 
 ::option[Crear seis cuentas de usuario adicionales.]{#sysv-overview-six-users explanation="Los niveles describen modos de funcionamiento, no números de cuentas."}
 ::option[Una transición de reinicio del sistema.]{#sysv-overview-reboot .correct explanation="La política SysV clásica reserva el nivel seis para detener servicios y reiniciar el sistema."}
@@ -86,8 +82,7 @@ Solicitar los niveles 0 o 6 es una acción destructiva para la disponibilidad de
 
 En un equipo con systemd, los scripts SysV pueden envolverse como unidades generadas, pero siguen aplicándose las dependencias, los tiempos de espera, el registro y la semántica de estado de systemd. Ejecutar directamente un script heredado puede eludir el seguimiento del gestor de servicios. Identifica el gestor activo y utiliza su interfaz nativa cuando sea posible.
 
-:::single-choice{#sysv-overview-compatibility-script}
-¿Por qué debe invocarse normalmente un script de estilo SysV de un equipo systemd mediante el gestor de servicios?
+:::single-choice{#sysv-overview-compatibility-script} ¿Por qué debe invocarse normalmente un script de estilo SysV de un equipo systemd mediante el gestor de servicios?
 
 ::option[Porque ejecutarlo directamente puede eludir el seguimiento de dependencias y estado.]{#sysv-overview-manager-tracking .correct explanation="El gestor debe coordinar la propiedad de procesos, el orden, los tiempos de espera y el estado."}
 ::option[Porque los scripts de shell no pueden ejecutarse en un sistema systemd.]{#sysv-overview-scripts-impossible explanation="Pueden ejecutarse, pero eludir la supervisión puede provocar un estado incoherente."}

@@ -25,8 +25,7 @@ $ sudo less /var/log/auth.log
 
 L'unité SSH peut s'appeler `ssh.service` ou `sshd.service`. Les permissions limitent généralement l'accès à ces enregistrements, car ils exposent des détails sur les comptes et les accès.
 
-:::single-choice{#auth-logs-file-location}
-Où les événements d'authentification Linux doivent-ils toujours être stockés ?
+:::single-choice{#auth-logs-file-location} Où les événements d'authentification Linux doivent-ils toujours être stockés ?
 
 ::option[Dans la destination choisie par les règles locales de journalisation.]{#auth-logs-local-policy .correct explanation="Les fichiers, le journal et les collecteurs centralisés varient selon la distribution et la configuration."}
 ::option[Dans `/var/log/auth.log` sur chaque distribution.]{#auth-logs-auth-only explanation="Ce chemin est courant dans la famille Debian, mais n'est pas universel."}
@@ -43,8 +42,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 Il identifie l'heure, l'hôte, le programme émetteur, le module et le service PAM, l'utilisateur demandé pour la session et l'UID d'origine. À lui seul, il n'identifie pas la personne derrière l'UID 1000 et ne prouve pas une action malveillante. Résolvez l'UID au moyen des données de comptes valides au moment de l'incident et corrélez le terminal, l'adresse distante, la session et les événements voisins.
 
-:::single-choice{#auth-logs-uid-inference}
-Qu'établit `uid=1000` dans cet enregistrement ?
+:::single-choice{#auth-logs-uid-inference} Qu'établit `uid=1000` dans cet enregistrement ?
 
 ::option[Que le mot de passe root a été mal saisi mille fois.]{#auth-logs-thousand-passwords explanation="La valeur est un numéro d'identité, pas un nombre de tentatives."}
 ::option[L'identité numérique du compte associé au processus initiateur.]{#auth-logs-numeric-identity .correct explanation="D'autres preuves sur la session et le compte sont nécessaires pour attribuer l'action à une personne."}
@@ -57,8 +55,7 @@ Recherchez les tentatives acceptées et rejetées dans un intervalle limité. Po
 
 `last` et `lastb` peuvent résumer les enregistrements de `wtmp` et `btmp` lorsqu'ils sont entretenus, mais ces bases binaires possèdent leurs propres limites de conservation et d'intégrité. Recoupez-les avec les enregistrements du journal ou de syslog et les sources centralisées.
 
-:::single-choice{#auth-logs-failed-attempts}
-Avec quoi faut-il corréler les échecs répétés de connexion ?
+:::single-choice{#auth-logs-failed-attempts} Avec quoi faut-il corréler les échecs répétés de connexion ?
 
 ::option[Uniquement l'espace disque libre total.]{#auth-logs-disk-space explanation="La capacité n'identifie ni la source, ni le compte cible, ni la méthode d'une tentative d'authentification."}
 ::option[La source, le compte cible, la méthode, l'heure et les sessions réussies.]{#auth-logs-correlated-fields .correct explanation="Ces détails aident à distinguer une mauvaise configuration, une erreur utilisateur, une analyse et un accès non autorisé."}
@@ -69,8 +66,7 @@ Avec quoi faut-il corréler les échecs répétés de connexion ?
 
 Si vous soupçonnez un incident, consignez l'heure et le fuseau de l'hôte, préservez les journaux originaux et leurs métadonnées, puis protégez toute copie exportée. Évitez de modifier les preuves sur place. Le verrouillage des comptes, les changements de pare-feu et la fin des sessions peuvent interrompre un accès légitime ou alerter un attaquant ; suivez donc la procédure de réponse aux incidents et conservez une voie de récupération.
 
-:::single-choice{#auth-logs-preservation}
-Comment faut-il traiter les preuves d'authentification pendant une enquête ?
+:::single-choice{#auth-logs-preservation} Comment faut-il traiter les preuves d'authentification pendant une enquête ?
 
 ::option[Modifier les lignes suspectes dans le fichier original pour les clarifier.]{#auth-logs-edit-original explanation="Modifier la source endommage l'intégrité des preuves."}
 ::option[Publier tout le journal afin que chacun puisse identifier les utilisateurs.]{#auth-logs-publish explanation="Les enregistrements d'authentification peuvent exposer des identités et des détails sensibles de l'infrastructure."}

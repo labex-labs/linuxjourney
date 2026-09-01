@@ -37,8 +37,7 @@ WantedBy=multi-user.target
 
 `ExecStart=` não é passado por um shell por padrão. Pipelines, redirecionamentos, variáveis e aspas do shell não se comportam como em uma linha de comando interativa, a menos que um shell explícito seja invocado intencionalmente.
 
-:::single-choice{#systemd-goals-install-section}
-Qual é a finalidade principal das diretivas de `[Install]`, como `WantedBy=`?
+:::single-choice{#systemd-goals-install-section} Qual é a finalidade principal das diretivas de `[Install]`, como `WantedBy=`?
 
 ::option[Garantir que o processo do serviço já esteja em execução.]{#systemd-goals-install-running explanation="A ativação em tempo de execução exige start ou outra dependência acionadora."}
 ::option[Descrever links ou relacionamentos criados quando a unidade é habilitada.]{#systemd-goals-enable-links .correct explanation="Os metadados de instalação são interpretados pelas operações de habilitação e são separados do estado atual do processo."}
@@ -66,8 +65,7 @@ $ systemctl cat UNIT.service
 $ systemctl show UNIT.service
 ```
 
-:::single-choice{#systemd-goals-list-units-versus-files}
-O que `list-unit-files` mostra que não é o foco principal de `list-units`?
+:::single-choice{#systemd-goals-list-units-versus-files} O que `list-unit-files` mostra que não é o foco principal de `list-units`?
 
 ::option[Apenas os processos que consomem mais CPU.]{#systemd-goals-cpu-processes explanation="A classificação do uso de recursos por processos não faz parte desses comandos de inventário de unidades."}
 ::option[Os estados de habilitação dos arquivos de unidade instalados.]{#systemd-goals-unit-file-state .correct explanation="Ele informa se os arquivos de unidade estão habilitados, desabilitados, estáticos, mascarados e outros estados relacionados à instalação."}
@@ -90,8 +88,7 @@ $ sudo systemctl daemon-reload
 
 `daemon-reload` relê as definições de unidade e reconstrói as dependências. Ele não recarrega a configuração da aplicação nem reinicia os serviços em execução. Quando apropriado, valide a sintaxe e as dependências da unidade com `systemd-analyze verify` e depois revise a unidade efetiva combinada.
 
-:::single-choice{#systemd-goals-daemon-reload}
-O que `systemctl daemon-reload` faz?
+:::single-choice{#systemd-goals-daemon-reload} O que `systemctl daemon-reload` faz?
 
 ::option[Obriga todos os daemons a reler suas configurações de aplicação.]{#systemd-goals-reload-all-apps explanation="O recarregamento da aplicação é específico do serviço e separado da configuração do gerenciador."}
 ::option[Reinicializa o kernel em uma nova versão.]{#systemd-goals-reload-kernel explanation="A ativação do kernel exige uma inicialização, não o recarregamento das definições de unidade."}
@@ -121,8 +118,7 @@ $ journalctl -u peanut.service -b
 
 “Ativo” é um estado do gerenciador, não uma prova de que todos os pontos de extremidade da aplicação estão íntegros.
 
-:::single-choice{#systemd-goals-start-peanut}
-Qual comando inicia `peanut.service` agora sem alterar por si só sua habilitação futura?
+:::single-choice{#systemd-goals-start-peanut} Qual comando inicia `peanut.service` agora sem alterar por si só sua habilitação futura?
 
 ::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="Enable altera os links de instalação, mas não inicia o serviço, a menos que seja combinado com `--now`."}
 ::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="Start solicita a ativação atual em tempo de execução e é separado da habilitação."}
@@ -142,8 +138,7 @@ Enable não inicia a unidade, a menos que `--now` seja adicionado. Disable não 
 
 O mascaramento vincula a unidade a `/dev/null` e bloqueia a ativação comum, inclusive por dependência, até que ela seja desmascarada. Ele é mais forte que disable e pode interromper dependentes; inspecione as dependências reversas antes de usá-lo.
 
-:::single-choice{#systemd-goals-disable-runtime}
-O que acontece com um serviço que já está em execução depois de `systemctl disable UNIT` sem `--now`?
+:::single-choice{#systemd-goals-disable-runtime} O que acontece com um serviço que já está em execução depois de `systemctl disable UNIT` sem `--now`?
 
 ::option[Ele é encerrado imediatamente com `SIGKILL`.]{#systemd-goals-disable-kills explanation="Disable por si só não solicita uma parada imediata."}
 ::option[Seu executável é excluído do sistema de arquivos.]{#systemd-goals-disable-deletes explanation="As operações de habilitação gerenciam links, não os arquivos de programa dos pacotes."}

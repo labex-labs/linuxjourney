@@ -24,16 +24,14 @@ Emacs abre un archivo existente y legible en un búfer, o prepara un búfer nuev
 
 Puedes usar el completado con Tabulador mientras introduces una ruta. Visitar un directorio suele abrir Dired, el editor de directorios de Emacs, en vez de tratarlo como un archivo de texto.
 
-:::single-choice{#emacs-find-file-key}
-¿Qué secuencia de teclas de Emacs solicita una ruta y la visita?
+:::single-choice{#emacs-find-file-key} ¿Qué secuencia de teclas de Emacs solicita una ruta y la visita?
 
 ::option[`C-x C-s`]{#emacs-file-save explanation="Esto guarda el búfer actual asociado a un archivo y no solicita visitar otra ruta."}
 ::option[`C-x C-c`]{#emacs-file-exit explanation="Esto inicia la salida de Emacs en vez de abrir un archivo."}
 ::option[`C-x C-f`]{#emacs-find-file .correct explanation="Esto ejecuta `find-file` y solicita en el minibúfer la ruta que se debe visitar."}
 :::
 
-:::single-choice{#emacs-find-missing-file}
-Cuando `C-x C-f` visita una ruta que no existe, ¿cuándo se crea normalmente el archivo en disco?
+:::single-choice{#emacs-find-missing-file} Cuando `C-x C-f` visita una ruta que no existe, ¿cuándo se crea normalmente el archivo en disco?
 
 ::option[Únicamente después de guardar correctamente el búfer nuevo.]{#emacs-file-created-on-save .correct explanation="El búfer puede contener ediciones antes de que exista un archivo, y el guardado realiza la creación."}
 ::option[Inmediatamente después de introducir la ruta.]{#emacs-file-created-immediately explanation="Emacs crea primero un búfer asociado a la ruta nueva; la creación en disco se aplaza."}
@@ -50,8 +48,7 @@ C-x C-s
 
 Si el búfer no tiene un nombre de archivo asociado, Emacs solicita uno. Una escritura correcta elimina el indicador de modificación del búfer; un fallo conserva en él los datos sin guardar y muestra un error.
 
-:::single-choice{#emacs-save-current-buffer}
-¿Qué secuencia de teclas guarda el búfer actual asociado a un archivo?
+:::single-choice{#emacs-save-current-buffer} ¿Qué secuencia de teclas guarda el búfer actual asociado a un archivo?
 
 ::option[`C-x C-s`]{#emacs-save-buffer-key .correct explanation="`C-x C-s` ejecuta `save-buffer` para el búfer actual."}
 ::option[`C-x C-w`]{#emacs-write-file-key explanation="Esto solicita otro nombre de archivo y cambia el archivo que visita el búfer."}
@@ -68,8 +65,7 @@ C-x C-w
 
 Este es el comportamiento «Guardar como» de Emacs. Difiere de limitarse a escribir una copia separada mientras se continúa visitando la ruta original.
 
-:::single-choice{#emacs-write-file-as}
-¿Qué secuencia de teclas realiza la operación habitual «Guardar como» para el búfer actual?
+:::single-choice{#emacs-write-file-as} ¿Qué secuencia de teclas realiza la operación habitual «Guardar como» para el búfer actual?
 
 ::option[`C-x C-f`]{#emacs-find-file-other explanation="Esto visita un archivo y puede cambiar a otro búfer; no es «Guardar como» para el búfer actual."}
 ::option[`C-x k`]{#emacs-write-as-kill-buffer explanation="Esto solicita eliminar un búfer y puede preguntar por cambios sin guardar; no guarda con otro nombre."}
@@ -86,8 +82,7 @@ C-x s
 
 Emacs suele preguntar si debe guardar cada búfer modificado que cumple los requisitos. Lee el nombre del búfer y responde deliberadamente; no es un atajo incondicional para guardarlos todos.
 
-:::single-choice{#emacs-save-some-buffers}
-¿Qué hace normalmente `C-x s`?
+:::single-choice{#emacs-save-some-buffers} ¿Qué hace normalmente `C-x s`?
 
 ::option[Pregunta si se deben guardar los búferes modificados asociados a archivos.]{#emacs-prompt-save-some .correct explanation="`save-some-buffers` revisa los búferes modificados que cumplen los requisitos y pregunta cuáles deben escribirse."}
 ::option[Guarda todos los búferes silenciosamente sin mostrar sus nombres.]{#emacs-silent-save-all explanation="La orden interactiva normal pregunta en vez de escribir incondicionalmente todos los búferes."}

@@ -25,8 +25,7 @@ $ sudo less /var/log/auth.log
 
 SSH 单元可能名为 `ssh.service` 或 `sshd.service`。这些记录会暴露账户和访问详情，因此其权限通常受到限制。
 
-:::single-choice{#auth-logs-file-location}
-Linux 身份验证事件必须始终存储在哪里？
+:::single-choice{#auth-logs-file-location} Linux 身份验证事件必须始终存储在哪里？
 
 ::option[存储在本地日志策略选择的目的地。]{#auth-logs-local-policy .correct explanation="不同发行版和配置可能使用文件、journal 或集中式收集器。"}
 ::option[每个发行版都存储在 `/var/log/auth.log`。]{#auth-logs-auth-only explanation="该路径在 Debian 系系统上很常见，但并不通用。"}
@@ -43,8 +42,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 该记录标明时间、主机、发出消息的程序、PAM 模块和服务、请求的会话用户以及来源 UID。它本身无法识别 UID 1000 背后的具体人员，也不能证明该操作具有恶意。应根据事件发生时有效的账户记录解析 UID，并关联终端、远程地址、会话和周边事件。
 
-:::single-choice{#auth-logs-uid-inference}
-该记录中的 `uid=1000` 能确定什么？
+:::single-choice{#auth-logs-uid-inference} 该记录中的 `uid=1000` 能确定什么？
 
 ::option[root 密码被错误输入了一千次。]{#auth-logs-thousand-passwords explanation="该值是身份编号，不是尝试次数。"}
 ::option[与发起进程关联的数字账户身份。]{#auth-logs-numeric-identity .correct explanation="还需要其他会话和账户证据，才能将操作归因到某个人。"}
@@ -57,8 +55,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 `last` 和 `lastb` 可以汇总系统维护的 `wtmp` 和 `btmp` 记录，但这些二进制数据库也有自己的保留和完整性限制。应将其与 journal、syslog 记录及集中式来源相互核对。
 
-:::single-choice{#auth-logs-failed-attempts}
-反复失败的登录应与哪些信息关联？
+:::single-choice{#auth-logs-failed-attempts} 反复失败的登录应与哪些信息关联？
 
 ::option[只与磁盘总可用空间关联。]{#auth-logs-disk-space explanation="容量无法识别身份验证尝试的来源、目标或方式。"}
 ::option[来源、目标账户、方式、时间以及成功会话。]{#auth-logs-correlated-fields .correct explanation="这些细节有助于区分配置错误、用户错误、扫描和未授权访问。"}
@@ -69,8 +66,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 如果怀疑发生安全事件，应记录主机时间和时区，保留原始日志及元数据，并保护所有导出副本。不要就地编辑证据。锁定账户、更改防火墙和终止会话可能中断合法访问或惊动攻击者，因此要遵循事件响应流程并保留恢复通道。
 
-:::single-choice{#auth-logs-preservation}
-调查期间应如何处理身份验证证据？
+:::single-choice{#auth-logs-preservation} 调查期间应如何处理身份验证证据？
 
 ::option[为了清晰起见，在原始文件中编辑可疑行。]{#auth-logs-edit-original explanation="更改来源会破坏证据完整性。"}
 ::option[发布完整日志，让任何人都能识别用户。]{#auth-logs-publish explanation="身份验证记录可能暴露敏感身份和基础设施详情。"}

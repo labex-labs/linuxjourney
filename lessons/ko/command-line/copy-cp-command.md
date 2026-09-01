@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 대상이 기존 디렉터리라면 복사된 파일은 원래 이름을 유지합니다. 대상이 파일 이름이라면 `cp`는 그 새 이름으로 복사본을 만듭니다.
 
-:::single-choice{#copy-file-under-new-name}
-`draft.txt`를 유지하면서 `final.txt`라는 이름의 파일로 복사하는 명령어는 무엇인가요?
+:::single-choice{#copy-file-under-new-name} `draft.txt`를 유지하면서 `final.txt`라는 이름의 파일로 복사하는 명령어는 무엇인가요?
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv`는 원래 경로 이름을 바꾸거나 이동하므로 원본을 그대로 남기지 않습니다."}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="원본과 목적지가 뒤바뀌어 `final.txt`에서 `draft.txt`로 복사합니다."}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 원본이 두 개 이상일 때 마지막 인수는 반드시 디렉터리여야 합니다.
 
-:::single-choice{#copy-multiple-files}
-`a.txt`와 `b.txt`를 기존 `archive/` 디렉터리에 복사하는 명령어는 무엇인가요?
+:::single-choice{#copy-multiple-files} `a.txt`와 `b.txt`를 기존 `archive/` 디렉터리에 복사하는 명령어는 무엇인가요?
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="이 형태에서는 목적지 디렉터리가 끝에 와야 하며, 먼저 두면 피연산자 해석이 달라집니다."}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="원본이 여러 개일 때 마지막의 기존 디렉터리가 앞선 모든 파일의 목적지가 됩니다."}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-`*.jpg`를 복사하기 전에 현재 패턴과 일치하는 숨김 항목 이외의 이름을 보여 주는 명령어는 무엇인가요?
+:::single-choice{#preview-copy-pattern} `*.jpg`를 복사하기 전에 현재 패턴과 일치하는 숨김 항목 이외의 이름을 보여 주는 명령어는 무엇인가요?
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="여러 이름이 일치하면 명확한 목적지 없이 복사를 시도하므로 미리보기 작업이 아닙니다."}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="쉘이 `ls`에도 같은 패턴을 확장하므로 복사 전에 일치하는 이름을 확인할 수 있습니다."}
@@ -112,8 +109,7 @@ $ cp -R website /home/pete/backups/
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-링크와 여러 속성을 보존하면서 `project/`를 백업 방식으로 재귀 복사하려면 어떤 명령어가 적합한가요?
+:::single-choice{#archive-directory-tree} 링크와 여러 속성을 보존하면서 `project/`를 백업 방식으로 재귀 복사하려면 어떤 명령어가 적합한가요?
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p`는 선택한 속성을 보존하지만 그 자체로 디렉터리 복사를 재귀적으로 만들지는 않습니다."}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u`는 목적지 상태에 따라 복사 시점을 제어하지만 재귀 복사를 활성화하지 않습니다."}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 `-f`는 기존 목적지를 쓰기용으로 열 수 없을 때 삭제한 뒤 복사를 다시 시도하게 합니다. 대상을 신중히 확인하는 일을 대신하지 않으며, 쉘 별칭이 `-i` 같은 옵션을 추가할 수도 있습니다.
 
-:::single-choice{#skip-existing-destination}
-`report.txt`를 `backup/`에 복사하되 같은 이름의 목적지가 이미 있으면 건너뛰는 명령어는 무엇인가요?
+:::single-choice{#skip-existing-destination} `report.txt`를 `backup/`에 복사하되 같은 이름의 목적지가 이미 있으면 건너뛰는 명령어는 무엇인가요?
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="`-n`은 `cp`가 기존 목적지 파일을 덮어쓰지 않게 합니다."}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i`는 덮어쓰기 전에 묻기 때문에 결과가 응답에 달려 있습니다."}

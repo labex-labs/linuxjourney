@@ -18,8 +18,7 @@ A camada Virtual Filesystem do kernel, ou VFS, fornece operações comuns como a
 
 Isso permite que um único processo acesse ext4, XFS, NFS, tmpfs e procfs por meio de um modelo compartilhado de caminhos e descritores de arquivos. Porém, não torna idênticos todos os recursos ou comportamentos: diferenciação entre maiúsculas e minúsculas, bloqueio, permissões, garantias de renomeação, atributos estendidos e tratamento de erros podem variar.
 
-:::single-choice{#filesystem-types-vfs-role}
-Qual é a principal função do VFS do Linux?
+:::single-choice{#filesystem-types-vfs-role} Qual é a principal função do VFS do Linux?
 
 ::option[Converter em disco todos os sistemas de arquivos montados para ext4.]{#filesystem-types-vfs-convert-ext4 explanation="A abstração preserva as implementações e os formatos distintos dos sistemas de arquivos."}
 ::option[Fazer backup de cada arquivo antes de uma aplicação gravá-lo.]{#filesystem-types-vfs-backup explanation="O VFS encaminha operações e não fornece um histórico automático de backups."}
@@ -32,8 +31,7 @@ Um sistema de arquivos com journaling registra atualizações selecionadas em um
 
 Ele não garante que os dados mais recentes das aplicações tenham sobrevivido, que transações envolvendo vários arquivos sejam válidas nem que o hardware de armazenamento tenha respeitado todas as gravações concluídas. Os sistemas de arquivos oferecem diferentes modos de dados e garantias de ordenação, enquanto as aplicações devem usar padrões adequados de sincronização e atualização atômica. Um journal não é um backup e não protege contra exclusões, malware ou falhas do dispositivo.
 
-:::single-choice{#filesystem-types-journal-scope}
-O que o journaling do sistema de arquivos ajuda principalmente a recuperar após uma falha?
+:::single-choice{#filesystem-types-journal-scope} O que o journaling do sistema de arquivos ajuda principalmente a recuperar após uma falha?
 
 ::option[Metadados consistentes do sistema de arquivos e transações registradas.]{#filesystem-types-journal-consistency .correct explanation="A repetição do journal ajuda a devolver as estruturas do sistema de arquivos a um estado coerente."}
 ::option[Todas as versões históricas de todos os documentos dos usuários.]{#filesystem-types-journal-versions explanation="Um journal não é um armazenamento de backup com versões."}
@@ -48,8 +46,7 @@ O que o journaling do sistema de arquivos ajuda principalmente a recuperar após
 
 Os recursos exigem contexto operacional. Um snapshot do Btrfs inicialmente compartilha o armazenamento com sua origem e não é um backup independente quando permanece no mesmo dispositivo sujeito a falhas. XFS e ext4 possuem capacidades diferentes de expansão, redução, reparo e ajuste. Confirme o suporte do kernel instalado, do ambiente de boot e das ferramentas de recuperação antes de escolher ou alterar um sistema de arquivos raiz.
 
-:::single-choice{#filesystem-types-btrfs-snapshot}
-Por que um snapshot do Btrfs no mesmo dispositivo não é um backup completo?
+:::single-choice{#filesystem-types-btrfs-snapshot} Por que um snapshot do Btrfs no mesmo dispositivo não é um backup completo?
 
 ::option[Snapshots sempre excluem o subvolume original imediatamente.]{#filesystem-types-snapshot-deletes explanation="Um snapshot cria outra visualização de subvolume e não remove sua origem por si só."}
 ::option[Ele compartilha o mesmo domínio de falha de armazenamento da origem.]{#filesystem-types-snapshot-failure-domain .correct explanation="A perda do dispositivo ou danos graves ao sistema de arquivos podem afetar tanto a origem quanto seu snapshot local."}
@@ -62,8 +59,7 @@ O Linux pode montar formatos de interoperabilidade como variantes FAT, exFAT e N
 
 Sistemas de arquivos de rede, como NFS e SMB, dependem de um servidor e de um protocolo de rede, com regras próprias de cache e identidade. Sistemas de arquivos virtuais, como tmpfs, procfs e sysfs, não usam um formato persistente comum em disco: o tmpfs armazena dados voláteis em páginas apoiadas por memória, enquanto procfs e sysfs expõem interfaces do kernel.
 
-:::single-choice{#filesystem-types-procfs-category}
-Qual descrição corresponde melhor ao procfs?
+:::single-choice{#filesystem-types-procfs-category} Qual descrição corresponde melhor ao procfs?
 
 ::option[Um formato de intercâmbio do Windows para mídias removíveis.]{#filesystem-types-procfs-windows explanation="FAT ou exFAT correspondem melhor a esse uso; o procfs é voltado às interfaces do kernel Linux."}
 ::option[Um sistema de arquivos virtual que expõe interfaces de processos e do kernel.]{#filesystem-types-procfs-virtual .correct explanation="O procfs gera uma visualização ativa do kernel, em vez de armazenar arquivos persistentes comuns no disco."}
@@ -80,8 +76,7 @@ $ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Outras visualizações incluem `df -T` para contabilizar o espaço montado, `lsblk -f` para dispositivos de bloco e assinaturas de sistemas de arquivos detectadas e `/proc/filesystems` para os tipos reconhecidos ou suportados pelo kernel em execução. Elas respondem a perguntas diferentes; um sistema de arquivos desmontado não aparece em uma listagem comum de sistemas montados.
 
-:::single-choice{#filesystem-types-findmnt-output}
-Qual comando lista diretamente os destinos montados com a origem, o tipo e as opções mostrados na lição?
+:::single-choice{#filesystem-types-findmnt-output} Qual comando lista diretamente os destinos montados com a origem, o tipo e as opções mostrados na lição?
 
 ::option[`findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS`]{#filesystem-types-findmnt .correct explanation="Findmnt lê a tabela de montagens e formata os campos solicitados dos sistemas de arquivos montados."}
 ::option[`lsblk -o NAME,SIZE,MODEL,SERIAL,ROTA`]{#filesystem-types-mkfs-destructive explanation="Esse comando lista detalhes de hardware dos dispositivos de bloco, não os tipos e opções efetivos dos sistemas de arquivos montados."}

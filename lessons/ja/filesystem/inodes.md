@@ -27,8 +27,7 @@ inode に関連する一般的なメタデータには次のものがありま�
 
 `ctime` は inode の状態変更時刻であり、必ずしもファイルの作成時刻ではありません。作成時刻を表す別のタイムスタンプは任意で、利用できないことがあります。
 
-:::single-choice{#inodes-name-location}
-通常ファイルのパス名要素は、どこで inode 番号と関連付けられますか？
+:::single-choice{#inodes-name-location} 通常ファイルのパス名要素は、どこで inode 番号と関連付けられますか？
 
 ::option[プロセススケジューラー内。]{#inodes-scheduler-name explanation="CPU のスケジューリング状態は、ファイルシステムのパス探索を実装しません。"}
 ::option[ディレクトリエントリ内。]{#inodes-directory-entry .correct explanation="ディレクトリは、そのファイルシステム内で名前を inode 番号へ対応付けます。"}
@@ -51,8 +50,7 @@ $ stat path
 
 inode 番号が一意なのは、ある時点における 1 つのファイルシステム内だけです。別のファイルシステムでは同じ番号が存在でき、inode が解放されると番号が再利用されることもあります。オブジェクトを確実に識別するには、inode 番号だけでなく、ファイルシステムの識別情報と組み合わせてください。
 
-:::single-choice{#inodes-number-scope}
-inode 番号がオブジェクト識別子となる範囲はどれですか？
+:::single-choice{#inodes-number-scope} inode 番号がオブジェクト識別子となる範囲はどれですか？
 
 ::option[世界中のすべての Linux システムで永久に。]{#inodes-global-forever explanation="inode の割り当てはファイルシステム内に限定され、識別子は再利用されます。"}
 ::option[ある時点における 1 つのファイルシステム内。]{#inodes-one-filesystem .correct explanation="別のファイルシステムは同じ番号を使え、解放された inode 番号は後で再利用されます。"}
@@ -65,8 +63,7 @@ inode 番号がオブジェクト識別子となる範囲はどれですか？
 
 最後のディレクトリエントリを削除した後も、開いているファイルは最後のプロセス参照が閉じるまで割り当てられたままです。リンク数が 0 でも、ファイル記述子からアクセスできることがあります。そのため、開いたままの大きなログを削除しても、`df` の使用量がすぐには減らない場合があります。
 
-:::single-choice{#inodes-unlinked-open-file}
-リンクを解除したファイルのリソースは、通常いつ解放されますか？
+:::single-choice{#inodes-unlinked-open-file} リンクを解除したファイルのリソースは、通常いつ解放されますか？
 
 ::option[ハードリンク名を 1 つ削除した直後。]{#inodes-one-link-removed explanation="ほかのハードリンクや開いている参照が、オブジェクトを存続させることがあります。"}
 ::option[ファイルシステム全体を再フォーマットしたときだけ。]{#inodes-reformat-only explanation="通常の unlink と close 操作で、未使用になった inode とブロックは回収されます。"}
@@ -83,8 +80,7 @@ $ df -i
 
 空き inode がなければ、`df -h` が空きブロックを報告していても、新しいファイルの作成に失敗することがあります。割り当て方法はさまざまです。作成時に inode 構造を事前割り当てするファイルシステムもあれば、メタデータを動的に管理し、inode 容量を異なる形で報告するものもあります。
 
-:::single-choice{#inodes-df-i-purpose}
-ファイルシステムが inode 使用量を提供する場合、`df -i` は何を報告しますか？
+:::single-choice{#inodes-df-i-purpose} ファイルシステムが inode 使用量を提供する場合、`df -i` は何を報告しますか？
 
 ::option[inode の順序で、すべてのファイルの内容。]{#inodes-df-i-content explanation="df はファイルシステム全体の統計を報告し、ファイルの内容は読みません。"}
 ::option[使用済みおよび使用可能な inode 容量。]{#inodes-df-i-capacity .correct explanation="inode の表示は、データブロックとは独立したメタデータオブジェクトの枯渇を診断するのに役立ちます。"}
@@ -97,8 +93,7 @@ $ df -i
 
 内部の対応付けが重要な場合、ファイルシステム固有の診断ツールは、読み取り専用または文書化されたモードでのみ使ってください。通常の管理には、`stat`、`find -inum`、`df -i`、リンクを理解するツールの方が安全な抽象化を提供します。
 
-:::single-choice{#inodes-layout-portability}
-すべての inode に同じ固定ポインター配置があると考えてはいけないのはなぜですか？
+:::single-choice{#inodes-layout-portability} すべての inode に同じ固定ポインター配置があると考えてはいけないのはなぜですか？
 
 ::option[inode はどのような方法でもファイルデータを参照しないから。]{#inodes-no-data-reference explanation="仕組みは異なっても、ファイルシステムはオブジェクトと内容を関連付ける必要があります。"}
 ::option[ファイルシステムの実装ごとに、異なるエクステント、ツリー、インラインデータ構造を使うから。]{#inodes-format-specific-layout .correct explanation="inode から内容へのディスク上の対応付けは、各ファイルシステム形式の一部です。"}

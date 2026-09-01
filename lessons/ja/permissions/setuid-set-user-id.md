@@ -27,8 +27,7 @@ $ ls -l /usr/bin/passwd
 
 すべてのディストリビューションが同じモードや認証設計を使うとは限りません。例に依存せず、実際のシステムを確認してください。
 
-:::single-choice{#setuid-lowercase-s}
-所有者の実行位置にある小文字 `s` は何を示しますか？
+:::single-choice{#setuid-lowercase-s} 所有者の実行位置にある小文字 `s` は何を示しますか？
 
 ::option[Setuid は設定されているが、所有者実行はない。]{#setuid-s-without-execute explanation="その組み合わせは小文字 `s` ではなく大文字 `S` で表示されます。"}
 ::option[ファイルに sticky bit とグループ実行が設定されている。]{#setuid-sticky-group explanation="Sticky bit はその他の実行位置に現れ、setuid は所有者の位置に現れます。"}
@@ -41,8 +40,7 @@ $ ls -l /usr/bin/passwd
 
 この機構により、慎重に作られたプログラムが要求を検証し、保護された状態へ限定的な変更を加えられます。たとえば、ローカルのパスワード変更ツールには、通常ユーザーが直接編集できない認証データへの制御されたアクセスが必要な場合があります。現代の実装は PAM、ファイルロック、ポリシーなどの保護策にも依存し、setuid だけで完全なワークフローを説明することはできません。
 
-:::single-choice{#setuid-effective-identity}
-Setuid 実行ファイルの効果が有効なとき、主にファイル所有者から得る識別情報はどれですか？
+:::single-choice{#setuid-effective-identity} Setuid 実行ファイルの効果が有効なとき、主にファイル所有者から得る識別情報はどれですか？
 
 ::option[`/etc/passwd` に保存されたログイン名。]{#setuid-login-name explanation="ファイルの実行は呼び出し元のアカウントレコードやログイン名を書き換えません。"}
 ::option[プロセスの実効ユーザー ID。]{#setuid-effective-user .correct explanation="Set-user-ID 実行機構は、多くの認可判断で使われる実効ユーザー識別情報を変更します。"}
@@ -65,8 +63,7 @@ $ sudo chmod 4755 myfile
 
 ここでは先頭の `4` が setuid を、`755` が通常の所有者、グループ、その他のビットを設定します。ほかのモードを変えず setuid だけを削除するには `chmod u-s myfile` を使います。
 
-:::single-choice{#setuid-octal-value}
-Setuid 特殊ビットを表す先頭の8進値はどれですか？
+:::single-choice{#setuid-octal-value} Setuid 特殊ビットを表す先頭の8進値はどれですか？
 
 ::option[`4`]{#setuid-octal-four .correct explanation="Setuid は先頭の特殊ビット桁へ値 `4` を加えます。"}
 ::option[`1`]{#setuid-octal-one explanation="先頭の `1` は sticky bit を表します。"}
@@ -81,8 +78,7 @@ Linux は通常、解釈されるスクリプトの setuid を有効にしませ
 
 共有システム上での実験として、任意のシェル、インタープリター、コピーしたプログラムへ setuid を追加してはいけません。既存の setuid ファイルを監査し、隔離された破棄可能な環境だけで練習してください。
 
-:::single-choice{#setuid-nosuid-mount}
-ファイルシステムを `nosuid` でマウントする目的は何ですか？
+:::single-choice{#setuid-nosuid-mount} ファイルシステムを `nosuid` でマウントする目的は何ですか？
 
 ::option[そのファイルシステム内の全ファイルに保存された実行ビットを削除する。]{#setuid-nosuid-remove-execute explanation="このオプションはファイルメタデータの通常実行ビットを書き換えません。"}
 ::option[そのファイルシステム上で setuid と setgid の実行効果を抑止する。]{#setuid-nosuid-suppress .correct explanation="`nosuid` マウントオプションは、これらの特殊モードビットが通常の資格情報変更動作を与えるのを防ぎます。"}

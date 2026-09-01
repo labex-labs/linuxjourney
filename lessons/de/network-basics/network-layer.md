@@ -16,8 +16,7 @@ Die Netzwerkschicht stellt logische Adressierung und Paketzustellung nach bestem
 
 Ein IP-Header enthält Quell- und Zieladressen sowie für Weiterleitung und Protokollverarbeitung erforderliche Felder. Die Nutzlast enthält gewöhnlich ein TCP-Segment, UDP-Datagramm oder eine ICMP-Nachricht. IP garantiert weder Ankunft noch Reihenfolge oder das Ausbleiben von Duplikaten.
 
-:::single-choice{#network-layer-ip-service}
-Welchen Zustelldienst bietet IP für sich allein?
+:::single-choice{#network-layer-ip-service} Welchen Zustelldienst bietet IP für sich allein?
 
 ::option[Garantierte Bestätigungen von Anwendungstransaktionen.]{#network-layer-guaranteed-commit explanation="Ein IP-Zustellergebnis kann keine dauerhafte Speicherung durch eine Anwendung beweisen."}
 ::option[Paketzustellung nach bestem Bemühen.]{#network-layer-best-effort .correct explanation="Höhere Schichten oder Anwendungen ergänzen erforderliche Wiederherstellung oder Reihenfolge."}
@@ -28,8 +27,7 @@ Welchen Zustelldienst bietet IP für sich allein?
 
 Eine Adresse und Präfixlänge legen fest, welche führenden Bits ein Netzwerkpräfix bilden. Hosts verwenden diese Informationen und ihre Routen, um zu entscheiden, ob ein Ziel direkt erreichbar ist oder einen Next-Hop-Router benötigt. Ein Subnetz ist ein Adressbereich unter einem Präfix und einer Richtlinie; Subnetze sind nicht automatisch mit jedem anderen Subnetz verbunden.
 
-:::single-choice{#network-layer-prefix-decision}
-Was hilft einem Host zu entscheiden, ob ein IPv4-Ziel direkt erreichbar ist?
+:::single-choice{#network-layer-prefix-decision} Was hilft einem Host zu entscheiden, ob ein IPv4-Ziel direkt erreichbar ist?
 
 ::option[Das Anwendungspasswort des Ziels.]{#network-layer-password explanation="Authentifizierungsdaten definieren keine Netzwerkpräfixe."}
 ::option[Die Farbe des Ethernet-Kabels.]{#network-layer-cable-color explanation="Das Aussehen eines Kabels besitzt keine Adressierungssemantik."}
@@ -46,8 +44,7 @@ $ ip route get 203.0.113.10
 
 Dies ist eine lokale Routensuche und kein Beweis, dass jeder nachgelagerte Router eine funktionierende Route besitzt oder das Ziel Datenverkehr annimmt.
 
-:::single-choice{#network-layer-longest-prefix}
-Welche Route gewinnt normalerweise unter geeigneten Routen zum selben Ziel?
+:::single-choice{#network-layer-longest-prefix} Welche Route gewinnt normalerweise unter geeigneten Routen zum selben Ziel?
 
 ::option[Die Route, deren Schnittstellenname alphabetisch zuerst steht.]{#network-layer-alphabetical explanation="Die Schreibweise der Schnittstelle ist keine Auswahlregel."}
 ::option[Die älteste Route unabhängig von ihrem Präfix.]{#network-layer-oldest explanation="Das Alter allein setzt die Präfixübereinstimmung nicht außer Kraft."}
@@ -60,8 +57,7 @@ Jedes IPv4-Paket besitzt eine TTL und jedes IPv6-Paket ein Hop Limit. Ein Router
 
 Router bewahren gewöhnlich die Ende-zu-Ende-IP-Adressen, doch NAT, Tunnel, Proxys und andere Middleboxes können Pakete umwandeln oder einkapseln. Header der Verbindungsschicht ändern sich unabhängig davon an jedem gerouteten Hop.
 
-:::single-choice{#network-layer-hop-limit}
-Warum verringern Router TTL oder Hop Limit?
+:::single-choice{#network-layer-hop-limit} Warum verringern Router TTL oder Hop Limit?
 
 ::option[Um die Dateiberechtigungen der Anwendung zu erhöhen.]{#network-layer-hop-permissions explanation="Die Hop-Anzahl hat nichts mit Dateisystemautorisierung zu tun."}
 ::option[Um jedes Paket von IPv4 in IPv6 umzuwandeln.]{#network-layer-hop-convert explanation="Protokollübersetzung ist nicht der Zweck dieses Felds."}

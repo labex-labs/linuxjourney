@@ -28,8 +28,7 @@ $ sudo shutdown -h now
 
 Um desligamento ordenado solicita que os serviços parem, desmonta os sistemas de arquivos e então altera o estado de energia da máquina. Não trate uma reinicialização forçada nem o botão físico de energia como um atalho comum; ambos podem interromper gravações e deixar dados ou serviços inconsistentes.
 
-:::single-choice{#power-states-orderly-poweroff}
-O que você deve fazer antes de desligar um host remoto de produção?
+:::single-choice{#power-states-orderly-poweroff} O que você deve fazer antes de desligar um host remoto de produção?
 
 ::option[Desconectar seu console de gerenciamento antes de emitir o comando.]{#power-states-remove-console explanation="Um console de gerenciamento é um acesso útil para recuperação e deve permanecer disponível."}
 ::option[Forçar o desligamento para que os serviços não possam atrasar a operação.]{#power-states-force-first explanation="Uma operação forçada pode interromper gravações e não deve ser o método normal."}
@@ -52,8 +51,7 @@ $ sudo shutdown -c
 
 Não presuma que um aviso torna a operação segura. Verifique as sessões ativas e as cargas de trabalho específicas do sistema e siga o procedimento documentado de drenagem do serviço ou cluster, quando houver.
 
-:::single-choice{#power-states-four-minute-schedule}
-Qual comando agenda um desligamento para daqui a quatro minutos?
+:::single-choice{#power-states-four-minute-schedule} Qual comando agenda um desligamento para daqui a quatro minutos?
 
 ::option[`sudo shutdown -h +4`]{#power-states-relative-four .correct explanation="A ação `-h` combinada com `+4` solicita o desligamento para daqui a quatro minutos."}
 ::option[`sudo shutdown -h 4`]{#power-states-absolute-four explanation="Sem o sinal de adição, o argumento de tempo não está na forma documentada de minutos relativos."}
@@ -77,8 +75,7 @@ $ sudo reboot
 
 Antes de reinicializar, verifique se discos criptografados, a configuração de inicialização, a rede e os serviços necessários podem se recuperar sem a sessão interativa atual. Coordene primeiro o failover ou a migração da carga de trabalho quando outros sistemas dependerem do host.
 
-:::single-choice{#power-states-reboot-action}
-Qual comando solicita uma reinicialização ordenada imediata por meio de `shutdown`?
+:::single-choice{#power-states-reboot-action} Qual comando solicita uma reinicialização ordenada imediata por meio de `shutdown`?
 
 ::option[`sudo shutdown -c now`]{#power-states-cancel-now explanation="A opção `-c` cancela um desligamento pendente."}
 ::option[`sudo shutdown -r now`]{#power-states-reboot-now .correct explanation="A opção `-r` seleciona a reinicialização, e `now` a agenda imediatamente."}
@@ -89,8 +86,7 @@ Qual comando solicita uma reinicialização ordenada imediata por meio de `shutd
 
 `halt`, `poweroff` e `reboot` podem ser interfaces de compatibilidade para o sistema de init, mas seus estados finais solicitados são diferentes. Uma parada encerra a operação normal do sistema; dependendo da plataforma e da implementação, ela pode manter a alimentação elétrica. Um desligamento também solicita que o hardware compatível corte a energia. Prefira o comando que nomeia o resultado pretendido e consulte o manual local, pois o comportamento de compatibilidade pode variar.
 
-:::single-choice{#power-states-halt-versus-poweroff}
-Por que você deve diferenciar `halt` de `poweroff`?
+:::single-choice{#power-states-halt-versus-poweroff} Por que você deve diferenciar `halt` de `poweroff`?
 
 ::option[Power-off solicita o corte da energia, enquanto halt pode mantê-la.]{#power-states-power-distinction .correct explanation="O estado final solicitado ao hardware pode ser diferente, mesmo quando ambos encerram a operação normal."}
 ::option[Halt sempre reinicia os serviços depois que eles param.]{#power-states-halt-restarts explanation="Halt é um estado de parada, não uma solicitação para reiniciar serviços."}
@@ -109,8 +105,7 @@ $ journalctl -b -p warning
 
 Esses são pontos de partida; use as verificações de integridade próprias da aplicação para a carga de trabalho real.
 
-:::single-choice{#power-states-post-reboot-check}
-O que fornece a evidência mais forte de que uma aplicação reinicializada está pronta?
+:::single-choice{#power-states-post-reboot-check} O que fornece a evidência mais forte de que uma aplicação reinicializada está pronta?
 
 ::option[O estado do serviço, os logs e sua verificação de integridade indicam sucesso.]{#power-states-health-evidence .correct explanation="Várias verificações do sistema e da aplicação validam a carga de trabalho, não apenas o acesso ao host."}
 ::option[O indicador de energia do gabinete está aceso.]{#power-states-light-on explanation="A alimentação do hardware não comprova a integridade da aplicação."}

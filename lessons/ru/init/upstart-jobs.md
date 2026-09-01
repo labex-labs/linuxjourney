@@ -29,8 +29,7 @@ networking start/running
 
 Upstart сообщает и **цель** (`start` или `stop`), и текущее **состояние** (`running` или `waiting`). `stop/waiting` означает, что job не работает и ждёт условия запуска или ручного запроса; это не обязательно ошибка.
 
-:::single-choice{#upstart-jobs-stop-waiting}
-Что обычно означает `stop/waiting` в статусе Upstart?
+:::single-choice{#upstart-jobs-stop-waiting} Что обычно означает `stop/waiting` в статусе Upstart?
 
 ::option[Job работает, но не потребляет CPU.]{#upstart-jobs-running-idle explanation="Работающая job обычно показывает цель start и состояние running."}
 ::option[Цель job — остановка, и экземпляр процесса не работает.]{#upstart-jobs-stopped-waiting .correct explanation="Определение остаётся известным, пока Upstart ждёт будущего условия или команды."}
@@ -48,8 +47,7 @@ $ sudo initctl stop JOB_NAME
 
 Jobs могут определять несколько экземпляров по переменным среды. Тогда передавайте точные требуемые конфигурацией переменные и последовательно включайте их при запросе или остановке экземпляра. Запуск или остановка jobs сети, хранилища, аутентификации или удалённого доступа может нарушить сеанс, поэтому сохраняйте консольный путь восстановления.
 
-:::single-choice{#upstart-jobs-start-command}
-Какая команда вручную запрашивает запуск job `peanuts`?
+:::single-choice{#upstart-jobs-start-command} Какая команда вручную запрашивает запуск job `peanuts`?
 
 ::option[`sudo initctl start peanuts`]{#upstart-jobs-start-peanuts .correct explanation="После подкоманды start указывается настроенное имя job и необходимые переменные экземпляра."}
 ::option[`sudo initctl peanuts start`]{#upstart-jobs-name-first explanation="Синтаксис initctl помещает подкоманду перед именем job."}
@@ -68,8 +66,7 @@ $ sudo initctl restart peanuts
 
 Перезапуск вызывает перерыв и может не вернуть службу в работу. После него проверьте настоящую конечную точку и журналы.
 
-:::single-choice{#upstart-jobs-restart-peanuts}
-Какая команда запрашивает перезапуск работающей job `peanuts`?
+:::single-choice{#upstart-jobs-restart-peanuts} Какая команда запрашивает перезапуск работающей job `peanuts`?
 
 ::option[`sudo initctl restart peanuts`]{#upstart-jobs-restart-command .correct explanation="Подкоманда restart действует на именованную job через интерфейс управления Upstart."}
 ::option[`sudo initctl emit peanuts`]{#upstart-jobs-emit-not-restart explanation="Выдача события влияет на совпавшие условия jobs и не является прямым запросом restart."}
@@ -82,8 +79,7 @@ $ sudo initctl restart peanuts
 
 Проверка синтаксиса не доказывает существование путей, достаточность прав, приход событий или готовность процесса. Тестируйте в среде с возможностью восстановления.
 
-:::single-choice{#upstart-jobs-syntax-validation-limit}
-Чего не доказывает синтаксическая проверка job?
+:::single-choice{#upstart-jobs-syntax-validation-limit} Чего не доказывает синтаксическая проверка job?
 
 ::option[Что служба успешно запустится и станет готовой.]{#upstart-jobs-runtime-not-proven .correct explanation="Пути, разрешения, зависимости и поток событий времени выполнения требуют реального контролируемого теста."}
 ::option[Что текст конфигурации вообще можно разобрать.]{#upstart-jobs-parse-purpose explanation="Разбор является основной задачей синтаксической проверки."}
@@ -100,8 +96,7 @@ $ sudo initctl emit EVENT_NAME
 
 Отреагировать может каждая job, чьё выражение запуска или остановки совпадает. Событие не адресовано одной job, а его последствия могут каскадировать через дальнейшие события. До выдачи пользовательского или системного события проверьте все совпадающие конфигурации; не воспроизводите основные события загрузки без необходимости на производственном хосте.
 
-:::single-choice{#upstart-jobs-emit-scope}
-Что может произойти при `initctl emit EVENT_NAME`?
+:::single-choice{#upstart-jobs-emit-scope} Что может произойти при `initctl emit EVENT_NAME`?
 
 ::option[Перейти могут все jobs, выражения которых совпадают с событием.]{#upstart-jobs-event-matches .correct explanation="События транслируются в модель зависимостей Upstart, а не отправляются одной именованной службе."}
 ::option[Ответит только job, имя которой точно равно событию.]{#upstart-jobs-event-name-only explanation="Совпадение задаётся выражениями `start on` и `stop on`, а не равенством имени job."}

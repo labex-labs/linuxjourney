@@ -24,8 +24,7 @@ El minibúfer ofrece completado para los nombres existentes. Introducir un nombr
 
 De forma predeterminada, `C-x Right` ejecuta `next-buffer` y `C-x Left` ejecuta `previous-buffer`, recorriendo los búferes en la ventana seleccionada.
 
-:::single-choice{#emacs-switch-buffer-key}
-¿Qué secuencia de teclas solicita el nombre de un búfer para mostrarlo en la ventana actual?
+:::single-choice{#emacs-switch-buffer-key} ¿Qué secuencia de teclas solicita el nombre de un búfer para mostrarlo en la ventana actual?
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="Esto solicita una ruta de archivo y la visita, una operación distinta de elegir un búfer existente por su nombre."}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` lee el nombre de un búfer y lo muestra en la ventana seleccionada."}
@@ -48,8 +47,7 @@ C-x 3
 
 La ventana nueva muestra inicialmente un búfer, a menudo el mismo. Puedes cambiar de búfer independientemente en cada ventana.
 
-:::single-choice{#emacs-split-side-by-side}
-¿Qué secuencia de teclas divide la ventana seleccionada de Emacs en ventanas izquierda y derecha?
+:::single-choice{#emacs-split-side-by-side} ¿Qué secuencia de teclas divide la ventana seleccionada de Emacs en ventanas izquierda y derecha?
 
 ::option[`C-x 1`]{#emacs-window-one explanation="Esto elimina las demás ventanas y convierte la seleccionada en la única de su marco."}
 ::option[`C-x 2`]{#emacs-window-below explanation="Esto crea ventanas superior e inferior, no una división lado a lado."}
@@ -71,16 +69,14 @@ Usa estas órdenes para eliminar ventanas de visualización:
 
 Eliminar una ventana suele dejar activo el búfer que mostraba. Puedes volver a mostrarlo en otra ventana.
 
-:::single-choice{#emacs-select-other-window}
-¿Qué secuencia de teclas traslada el punto y el foco del teclado a otra ventana de Emacs?
+:::single-choice{#emacs-select-other-window} ¿Qué secuencia de teclas traslada el punto y el foco del teclado a otra ventana de Emacs?
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="Esto elimina la ventana seleccionada en vez de trasladar el foco a otra."}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` cambia la selección a otra ventana del marco."}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="Esto cambia el búfer que muestra la ventana actual, no la ventana seleccionada."}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-¿Qué secuencia de teclas conserva la ventana seleccionada y elimina las demás ventanas de su marco?
+:::single-choice{#emacs-keep-one-window} ¿Qué secuencia de teclas conserva la ventana seleccionada y elimina las demás ventanas de su marco?
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` convierte la ventana seleccionada en la única del marco."}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="Esto elimina la propia ventana seleccionada en vez de conservarla."}
@@ -99,8 +95,7 @@ El búfer actual es la opción predeterminada. Si un búfer asociado a un archiv
 
 Eliminar un búfer es distinto de eliminar una ventana. Emacs sustituye un búfer eliminado en cualquier ventana que lo mostrase, mientras que eliminar una ventana puede dejar intacto su búfer.
 
-:::single-choice{#emacs-kill-buffer-key}
-¿Qué secuencia de teclas solicita eliminar un búfer de Emacs?
+:::single-choice{#emacs-kill-buffer-key} ¿Qué secuencia de teclas solicita eliminar un búfer de Emacs?
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="Esto elimina una ventana de visualización, pero normalmente deja activo el búfer."}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` elimina el búfer seleccionado de Emacs después de cualquier confirmación necesaria por modificaciones."}

@@ -22,8 +22,7 @@ meta_keywords: "리눅스 파일 공유, scp 명령, 보안 복사, 리눅스 �
 
 복사본이 자동으로 백업이 되는 것은 아닙니다. 백업 설계에는 독립적인 보존, 복원 테스트, 무결성 검사 및 같은 삭제나 침해로부터의 보호도 필요합니다.
 
-:::single-choice{#file-sharing-one-time-ssh-copy}
-SSH를 통한 일회성 파일 복사에 적합한 도구는 무엇입니까?
+:::single-choice{#file-sharing-one-time-ssh-copy} SSH를 통한 일회성 파일 복사에 적합한 도구는 무엇입니까?
 
 ::option[`scp`]{#file-sharing-scp .correct explanation="SCP는 파일 복사에 SSH 인증과 전송을 사용합니다."}
 ::option[`uptime`]{#file-sharing-uptime explanation="uptime은 파일을 전송하는 대신 호스트 가동 시간과 부하를 보고합니다."}
@@ -41,8 +40,7 @@ $ scp -- alice@example.net:/srv/outgoing/result.txt ./result.txt
 
 첫째 명령은 로컬 파일을 원격으로 보내고, 둘째 명령은 원격 파일을 로컬로 가져옵니다. 콜론은 원격 호스트와 그 경로를 구분합니다. 셸에 특별한 의미가 있는 문자를 포함한 경로는 따옴표로 감싸고 신뢰할 수 없는 모호한 파일 이름을 피하십시오.
 
-:::single-choice{#file-sharing-scp-pull-source}
-`scp`로 파일을 가져올 때 원격 명세는 어디에 나타납니까?
+:::single-choice{#file-sharing-scp-pull-source} `scp`로 파일을 가져올 때 원격 명세는 어디에 나타납니까?
 
 ::option[로컬 대상 앞의 소스로 나타납니다.]{#file-sharing-pull-source .correct explanation="복사 방향은 소스에서 대상으로 이어지는 피연산자 순서를 따릅니다."}
 ::option[모든 옵션 뒤의 로컬 대상으로 나타납니다.]{#file-sharing-pull-destination explanation="가져올 원격 객체는 소스 피연산자입니다."}
@@ -59,8 +57,7 @@ $ scp -r -- project/ alice@example.net:/srv/incoming/
 
 복사 전에 데이터 크기, 심볼릭 링크, 권한, 소유권 요구 사항, 여유 공간 및 대상 이름을 조사합니다. SCP는 동기화 정책이 아닙니다. 디렉터리를 반복해서 복사하면 소스에서 사라진 파일이 대상에 남을 수 있습니다.
 
-:::single-choice{#file-sharing-scp-recursive}
-`scp -r`은 무엇을 요청합니까?
+:::single-choice{#file-sharing-scp-recursive} `scp -r`은 무엇을 요청합니까?
 
 ::option[복사 전에 원격 대상을 제거합니다.]{#file-sharing-scp-remove explanation="재귀 모드는 디렉터리를 순회하며 정리 정책을 정의하지 않습니다."}
 ::option[디렉터리 트리를 재귀적으로 복사합니다.]{#file-sharing-scp-tree .correct explanation="선택한 소스가 디렉터리일 때 필요한 플래그입니다."}
@@ -73,8 +70,7 @@ SSH 호스트 키 검증은 잘못된 서버에 연결하는 일을 막아 줍�
 
 전송 후에는 종료 상태, 예상 파일, 크기, 메타데이터를 확인하고 무결성 요구 사항이 있다면 양쪽에서 독립적으로 계산한 해시를 비교합니다. 대상 애플리케이션이 실제로 데이터를 읽을 수 있는지도 확인하십시오.
 
-:::single-choice{#file-sharing-host-key-change}
-SSH가 예상치 못한 호스트 키 변경을 보고하면 어떻게 해야 합니까?
+:::single-choice{#file-sharing-host-key-change} SSH가 예상치 못한 호스트 키 변경을 보고하면 어떻게 해야 합니까?
 
 ::option[앞으로 모든 전송에서 호스트 키 검사를 비활성화합니다.]{#file-sharing-disable-checking explanation="중요한 서버 신원 제어를 제거하는 행동입니다."}
 ::option[계속하기 전에 신뢰할 수 있는 소스를 통해 새 키를 검증합니다.]{#file-sharing-verify-key .correct explanation="경고는 호스트 재구축, 잘못된 대상 또는 가로채기를 나타낼 수 있으므로 조사해야 합니다."}

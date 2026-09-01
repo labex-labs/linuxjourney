@@ -16,8 +16,7 @@ meta_keywords: "네트워크 계층, IP 주소, 서브넷, 리눅스 네트워�
 
 IP 헤더에는 출발지 및 목적지 주소와 전달 및 프로토콜 처리에 필요한 필드가 들어 있습니다. 페이로드에는 일반적으로 TCP 세그먼트, UDP 데이터그램 또는 ICMP 메시지가 들어 있습니다. IP는 도착, 순서 또는 중복 없음을 보장하지 않습니다.
 
-:::single-choice{#network-layer-ip-service}
-IP 자체가 제공하는 전송 서비스는 무엇입니까?
+:::single-choice{#network-layer-ip-service} IP 자체가 제공하는 전송 서비스는 무엇입니까?
 
 ::option[애플리케이션 트랜잭션의 반영을 보장합니다.]{#network-layer-guaranteed-commit explanation="IP 전송 결과로 애플리케이션의 영구 저장을 입증할 수 없습니다."}
 ::option[최선형 패킷 전송입니다.]{#network-layer-best-effort .correct explanation="필요한 복구나 순서 처리는 상위 계층 또는 애플리케이션이 추가합니다."}
@@ -28,8 +27,7 @@ IP 자체가 제공하는 전송 서비스는 무엇입니까?
 
 주소와 접두사 길이는 앞쪽 몇 비트가 네트워크 접두사를 이루는지 정의합니다. 호스트는 이 정보와 경로를 사용해 목적지가 링크상에 있는지 다음 홉 라우터가 필요한지 결정합니다. 서브넷은 접두사와 정책 아래의 주소 범위이며 모든 다른 서브넷과 자동으로 연결되지는 않습니다.
 
-:::single-choice{#network-layer-prefix-decision}
-호스트가 IPv4 목적지가 링크상에 있는지 결정하는 데 도움이 되는 것은 무엇입니까?
+:::single-choice{#network-layer-prefix-decision} 호스트가 IPv4 목적지가 링크상에 있는지 결정하는 데 도움이 되는 것은 무엇입니까?
 
 ::option[목적지 애플리케이션의 암호입니다.]{#network-layer-password explanation="인증 데이터는 네트워크 접두사를 정의하지 않습니다."}
 ::option[Ethernet 케이블의 색상입니다.]{#network-layer-cable-color explanation="케이블 외관에는 주소 지정 의미가 없습니다."}
@@ -46,8 +44,7 @@ $ ip route get 203.0.113.10
 
 이는 로컬 경로 조회일 뿐이며 모든 하위 라우터에 작동하는 경로가 있거나 목적지가 트래픽을 받아들인다는 증거가 아닙니다.
 
-:::single-choice{#network-layer-longest-prefix}
-같은 목적지로 향하는 적격 경로 중 일반적으로 어느 경로가 선택됩니까?
+:::single-choice{#network-layer-longest-prefix} 같은 목적지로 향하는 적격 경로 중 일반적으로 어느 경로가 선택됩니까?
 
 ::option[인터페이스 이름이 알파벳순으로 가장 앞선 경로입니다.]{#network-layer-alphabetical explanation="인터페이스 철자는 선택 규칙이 아닙니다."}
 ::option[접두사와 관계없이 가장 오래된 경로입니다.]{#network-layer-oldest explanation="경로의 나이만으로 접두사 일치를 무시하지 않습니다."}
@@ -60,8 +57,7 @@ $ ip route get 203.0.113.10
 
 라우터는 일반적으로 종단 간 IP 주소를 보존하지만 NAT, 터널, 프록시 및 다른 미들박스가 패킷을 변환하거나 감쌀 수 있습니다. 링크 계층 헤더는 관계없이 라우팅되는 각 홉에서 바뀝니다.
 
-:::single-choice{#network-layer-hop-limit}
-라우터가 TTL 또는 Hop Limit을 줄이는 이유는 무엇입니까?
+:::single-choice{#network-layer-hop-limit} 라우터가 TTL 또는 Hop Limit을 줄이는 이유는 무엇입니까?
 
 ::option[애플리케이션의 파일 권한을 높이기 위해서입니다.]{#network-layer-hop-permissions explanation="홉 수는 파일시스템 권한 부여와 관계없습니다."}
 ::option[모든 패킷을 IPv4에서 IPv6로 변환하기 위해서입니다.]{#network-layer-hop-convert explanation="프로토콜 변환은 이 필드의 목적이 아닙니다."}

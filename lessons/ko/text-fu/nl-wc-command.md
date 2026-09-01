@@ -30,8 +30,7 @@ $ wc colors.txt
 
 끝에 줄 바꿈이 없는 마지막 텍스트 줄은 `wc -l`에서 세지 않습니다. 이 옵션은 눈으로 보이는 줄이 아니라 줄 바꿈 문자를 세기 때문입니다.
 
-:::single-choice{#wc-default-columns}
-`wc file.txt`의 기본 출력에서 처음 세 숫자는 무엇을 나타내나요?
+:::single-choice{#wc-default-columns} `wc file.txt`의 기본 출력에서 처음 세 숫자는 무엇을 나타내나요?
 
 ::option[차례대로 줄, 단어, 바이트입니다.]{#wc-lines-words-bytes .correct explanation="기본 `wc` 출력은 파일 이름 앞에 줄 바꿈 수, 단어 수, 바이트 수를 보고합니다."}
 ::option[차례대로 바이트, 단어, 줄입니다.]{#wc-bytes-words-lines explanation="같은 측정값이지만 순서가 잘못되었습니다. 줄 수가 먼저 나옵니다."}
@@ -61,16 +60,14 @@ $ printf 'one two\n' | wc -w
 2
 ```
 
-:::single-choice{#wc-word-count-only}
-`essay.txt`의 단어 수만 보고하는 명령어는 무엇인가요?
+:::single-choice{#wc-word-count-only} `essay.txt`의 단어 수만 보고하는 명령어는 무엇인가요?
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="`-l` 옵션은 단어가 아니라 줄 바꿈 문자를 보고합니다."}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="`-w` 옵션은 단어 수 측정값을 선택합니다."}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="`-c` 옵션은 공백으로 구분된 단어가 아니라 바이트를 보고합니다."}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-현재 로캘에서 바이트가 아니라 문자를 세도록 `wc`에 요청하는 옵션은 무엇인가요?
+:::single-choice{#wc-characters-not-bytes} 현재 로캘에서 바이트가 아니라 문자를 세도록 `wc`에 요청하는 옵션은 무엇인가요?
 
 ::option[`-m`]{#wc-character-option .correct explanation="`-m` 옵션은 문자를 보고하며 멀티바이트 텍스트에서는 바이트 수와 다를 수 있습니다."}
 ::option[`-c`]{#wc-byte-option explanation="`-c` 옵션은 바이트를 보고합니다. UTF-8 같은 인코딩에서는 문자 하나가 여러 바이트를 차지할 수 있습니다."}
@@ -100,8 +97,7 @@ $ nl notes.txt
 
 `nl`은 번호가 붙은 출력을 쓰며 `notes.txt`를 수정하지 않습니다.
 
-:::single-choice{#nl-default-blank-lines}
-기본적으로 `nl notes.txt`는 빈 본문 줄을 어떻게 처리하나요?
+:::single-choice{#nl-default-blank-lines} 기본적으로 `nl notes.txt`는 빈 본문 줄을 어떻게 처리하나요?
 
 ::option[각 빈 줄을 출력에서 완전히 생략합니다.]{#nl-omit-blank explanation="빈 줄은 출력에 남지만 기본적으로 번호를 받지 않습니다."}
 ::option[번호 없이 그대로 유지합니다.]{#nl-preserve-unnumbered .correct explanation="기본 본문 스타일은 비어 있지 않은 줄에 번호를 붙이고 빈 줄은 번호 없이 통과시킵니다."}
@@ -121,8 +117,7 @@ $ nl -ba notes.txt
 
 다른 옵션으로 서식을 제어할 수 있습니다. 예를 들어 `-w 3`은 번호 필드 너비를 정하고 `-s ': '`는 번호 뒤의 구분 기호를 바꿉니다.
 
-:::single-choice{#nl-number-all-lines}
-빈 줄을 포함해 `notes.txt`의 모든 본문 줄에 번호를 붙이는 명령어는 무엇인가요?
+:::single-choice{#nl-number-all-lines} 빈 줄을 포함해 `notes.txt`의 모든 본문 줄에 번호를 붙이는 명령어는 무엇인가요?
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="번호 필드 너비를 바꾸지만 기본적인 비어 있지 않은 줄 번호 규칙은 유지합니다."}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="`-b` 옵션은 본문 스타일을 선택하고 스타일 `a`는 모든 본문 줄에 번호를 붙입니다."}

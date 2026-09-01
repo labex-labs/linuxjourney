@@ -25,16 +25,14 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 睡眠是正常现象。交互式程序和服务的大部分时间都在等待输入、定时器、网络流量、锁或其他事件，而不是持续占用 CPU。
 
-:::single-choice{#process-states-runnable-code}
-主要状态 `R` 表示什么？
+:::single-choice{#process-states-runnable-code} 主要状态 `R` 表示什么？
 
 ::option[正在 CPU 上运行或已准备好运行。]{#process-states-r-running .correct explanation="`R` 同时包括当前正在执行的任务和等待 CPU 调度的可运行任务。"}
 ::option[父进程已收集其状态，因此进程已被回收。]{#process-states-r-reaped explanation="被完全回收的进程不会再作为普通进程表条目出现。"}
 ::option[正在不可中断睡眠中等待。]{#process-states-r-uninterruptible explanation="不可中断睡眠由 `D` 表示。"}
 :::
 
-:::single-choice{#process-states-interruptible-code}
-哪个主要状态表示可中断睡眠？
+:::single-choice{#process-states-interruptible-code} 哪个主要状态表示可中断睡眠？
 
 ::option[`D`]{#process-states-sleep-d explanation="`D` 表示不可中断睡眠。"}
 ::option[`Z`]{#process-states-sleep-z explanation="`Z` 表示已经退出、但状态尚未被回收的子进程。"}
@@ -47,8 +45,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 短暂处于 `D` 状态可能完全正常。长期或大量的 `D` 状态任务可能意味着 I/O 缓慢、不可用或发生故障，但仅凭这个状态无法确定原因。下结论前，应检查等待通道、内核日志、存储与网络健康状况以及相关子系统。
 
-:::single-choice{#process-states-uninterruptible-code}
-哪个主要状态表示不可中断睡眠？
+:::single-choice{#process-states-uninterruptible-code} 哪个主要状态表示不可中断睡眠？
 
 ::option[`T`]{#process-states-d-stopped explanation="`T` 表示已停止的任务。"}
 ::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` 用于表示正在内核中进行不可中断睡眠等待的任务。"}
@@ -62,8 +59,7 @@ $ ps -o pid,ppid,stat,wchan:24,cmd
 
 适当时，可用 `SIGCONT` 恢复因作业控制而停止的进程。僵尸进程已经不再执行，因此无法被恢复或杀死；必须由其父进程或接管它的回收进程收集状态。
 
-:::single-choice{#process-states-zombie-code}
-主要状态 `Z` 表示什么？
+:::single-choice{#process-states-zombie-code} 主要状态 `Z` 表示什么？
 
 ::option[已退出、终止记录正等待回收的进程。]{#process-states-z-zombie .correct explanation="执行结束后，僵尸进程仍保留最少量的、可供父进程读取的状态。"}
 ::option[被终端挂起信号暂停的进程。]{#process-states-z-terminal-stop explanation="作业控制造成的停止通常显示为 `T`。"}

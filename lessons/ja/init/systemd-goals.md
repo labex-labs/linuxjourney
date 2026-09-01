@@ -37,8 +37,7 @@ WantedBy=multi-user.target
 
 `ExecStart=` は既定ではシェルを経由しません。シェルを意図的かつ明示的に呼び出さない限り、パイプライン、リダイレクト、変数、引用符は対話型コマンドラインと同じようには動作しません。
 
-:::single-choice{#systemd-goals-install-section}
-`WantedBy=` など、`[Install]` のディレクティブが持つ主な目的は何ですか？
+:::single-choice{#systemd-goals-install-section} `WantedBy=` など、`[Install]` のディレクティブが持つ主な目的は何ですか？
 
 ::option[サービスのプロセスがすでに実行中であることを保証する。]{#systemd-goals-install-running explanation="実行時の有効化には start または別の依存関係によるトリガーが必要です。"}
 ::option[ユニットの有効化時に作成するリンクまたは関係を記述する。]{#systemd-goals-enable-links .correct explanation="インストール用メタデータは有効化操作によって解釈され、現在のプロセス状態とは別です。"}
@@ -66,8 +65,7 @@ $ systemctl cat UNIT.service
 $ systemctl show UNIT.service
 ```
 
-:::single-choice{#systemd-goals-list-units-versus-files}
-`list-unit-files` が主に表示し、`list-units` は主には表示しないものは何ですか？
+:::single-choice{#systemd-goals-list-units-versus-files} `list-unit-files` が主に表示し、`list-units` は主には表示しないものは何ですか？
 
 ::option[CPU を最も多く消費しているプロセスだけ。]{#systemd-goals-cpu-processes explanation="プロセスのリソース順位は、これらのユニット一覧コマンドの対象外です。"}
 ::option[インストール済みユニットファイルの有効化状態。]{#systemd-goals-unit-file-state .correct explanation="ユニットファイルが enabled、disabled、static、masked かといったインストール状態を報告します。"}
@@ -90,8 +88,7 @@ $ sudo systemctl daemon-reload
 
 `daemon-reload` はユニット定義を読み直して依存関係を再構築します。アプリケーション設定を再読み込みしたり、実行中のサービスを再起動したりはしません。必要に応じて `systemd-analyze verify` でユニットの構文と依存関係を検証し、統合後の有効なユニットを確認してください。
 
-:::single-choice{#systemd-goals-daemon-reload}
-`systemctl daemon-reload` は何をしますか？
+:::single-choice{#systemd-goals-daemon-reload} `systemctl daemon-reload` は何をしますか？
 
 ::option[すべてのデーモンへ、アプリケーション設定の再読み込みを強制する。]{#systemd-goals-reload-all-apps explanation="アプリケーションの再読み込みはサービス固有であり、マネージャー設定とは別です。"}
 ::option[新しいリリースのカーネルで再起動する。]{#systemd-goals-reload-kernel explanation="カーネルを有効にするには起動が必要であり、ユニット定義の再読み込みではありません。"}
@@ -121,8 +118,7 @@ $ journalctl -u peanut.service -b
 
 「Active」はマネージャー上の状態であり、すべてのアプリケーションエンドポイントが正常である証拠ではありません。
 
-:::single-choice{#systemd-goals-start-peanut}
-`peanut.service` を今すぐ開始し、それ自体では将来の有効化を変えないコマンドはどれですか？
+:::single-choice{#systemd-goals-start-peanut} `peanut.service` を今すぐ開始し、それ自体では将来の有効化を変えないコマンドはどれですか？
 
 ::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="enable はインストール用リンクを変更しますが、--now を組み合わせない限りサービスを開始しません。"}
 ::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="start は現在の実行時有効化を要求し、永続的な有効化とは別です。"}
@@ -142,8 +138,7 @@ enable は `--now` を追加しない限りユニットを開始しません。d
 
 マスクするとユニットを `/dev/null` へリンクし、解除するまで依存関係による有効化を含む通常の有効化を阻止します。disable より強力で依存先を壊す可能性があるため、使う前に逆方向の依存関係を調べてください。
 
-:::single-choice{#systemd-goals-disable-runtime}
-実行中のサービスに、`--now` を付けず `systemctl disable UNIT` を実行するとどうなりますか？
+:::single-choice{#systemd-goals-disable-runtime} 実行中のサービスに、`--now` を付けず `systemctl disable UNIT` を実行するとどうなりますか？
 
 ::option[すぐに `SIGKILL` で終了される。]{#systemd-goals-disable-kills explanation="disable だけでは現在の停止を要求しません。"}
 ::option[実行ファイルがファイルシステムから削除される。]{#systemd-goals-disable-deletes explanation="有効化操作が管理するのはリンクであり、プログラムのパッケージファイルではありません。"}

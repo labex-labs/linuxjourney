@@ -16,8 +16,7 @@ A camada de transporte conecta pontos de extremidade das aplicações através d
 
 Uma porta de destino ajuda o sistema operacional a entregar o tráfego a um socket em escuta. Uma conexão ou fluxo é identificado por mais de uma porta: importam o protocolo, os endereços de origem e destino e as portas de origem e destino. Por isso, a mesma porta de servidor pode atender muitos clientes simultaneamente.
 
-:::single-choice{#transport-layer-many-clients}
-Como uma porta de servidor TCP pode atender vários clientes ao mesmo tempo?
+:::single-choice{#transport-layer-many-clients} Como uma porta de servidor TCP pode atender vários clientes ao mesmo tempo?
 
 ::option[Cada conexão possui uma combinação distinta de endereços e portas dos pontos de extremidade.]{#transport-layer-connection-tuple .correct explanation="A tupla completa do transporte diferencia conexões simultâneas que compartilham uma porta de escuta."}
 ::option[O servidor renomeia permanentemente sua porta depois de cada pacote.]{#transport-layer-renames-port explanation="A porta de escuta pode permanecer estável enquanto as conexões aceitas possuem tuplas de pares distintas."}
@@ -30,8 +29,7 @@ O TCP fornece um fluxo de bytes confiável e ordenado enquanto a conexão perman
 
 Confiabilidade não significa entrega absoluta. Uma conexão pode atingir o tempo limite, ser redefinida ou falhar, e uma confirmação não comprova que uma aplicação gravou os dados de forma durável.
 
-:::single-choice{#transport-layer-tcp-boundaries}
-O que acontece com os limites das mensagens da aplicação no TCP?
+:::single-choice{#transport-layer-tcp-boundaries} O que acontece com os limites das mensagens da aplicação no TCP?
 
 ::option[O TCP expõe um fluxo de bytes ordenado sem preservar os limites das gravações.]{#transport-layer-byte-stream .correct explanation="O protocolo de aplicação deve definir como as mensagens são delimitadas ou dimensionadas."}
 ::option[Toda gravação se torna exatamente um pacote IP e uma leitura.]{#transport-layer-one-write-packet explanation="A segmentação, o armazenamento em buffer e as APIs de recepção não preservam esse mapeamento."}
@@ -48,8 +46,7 @@ Uma conexão TCP normal começa com um handshake de três vias:
 
 Isso estabelece o estado do transporte nos dois pontos de extremidade. Não autentica o servidor da aplicação nem comprova que a operação solicitada da aplicação terá sucesso.
 
-:::single-choice{#transport-layer-handshake-order}
-Qual é a ordem normal do handshake TCP de três vias?
+:::single-choice{#transport-layer-handshake-order} Qual é a ordem normal do handshake TCP de três vias?
 
 ::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="A troca sincroniza e confirma o estado inicial da conexão nas duas direções."}
 ::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="O iniciador primeiro solicita a sincronização."}
@@ -60,8 +57,7 @@ Qual é a ordem normal do handshake TCP de três vias?
 
 O UDP preserva os limites dos datagramas e fornece detecção de erros baseada em soma de verificação, mas não oferece o estado de conexão, a ordenação, a retransmissão, o controle de fluxo nem o controle de congestionamento do TCP. Uma aplicação pode acrescentar por conta própria qualquer comportamento necessário de confiabilidade ou congestionamento. O UDP não é automaticamente mais rápido; o desempenho depende do projeto do protocolo, da carga de trabalho, do caminho e da implementação.
 
-:::single-choice{#transport-layer-udp-boundaries}
-Qual propriedade o UDP fornece às aplicações?
+:::single-choice{#transport-layer-udp-boundaries} Qual propriedade o UDP fornece às aplicações?
 
 ::option[Um fluxo de bytes ordenado e retransmitido automaticamente.]{#transport-layer-udp-stream explanation="Isso descreve serviços semelhantes ao TCP, não o UDP básico."}
 ::option[Limites preservados entre os datagramas enviados.]{#transport-layer-udp-datagrams .correct explanation="Um datagrama UDP recebido corresponde a um datagrama enviado, a menos que ele seja perdido."}
@@ -79,8 +75,7 @@ $ ss -tn state established
 
 Os detalhes dos processos podem exigir privilégios. Um socket em escuta comprova a prontidão local apenas no limite do transporte; firewall, roteamento, família de endereços, TLS e integridade da aplicação ainda precisam dos testes adequados.
 
-:::single-choice{#transport-layer-listener-proof}
-O que um socket TCP em escuta estabelece?
+:::single-choice{#transport-layer-listener-proof} O que um socket TCP em escuta estabelece?
 
 ::option[Todos os firewalls remotos permitem a conexão.]{#transport-layer-all-firewalls explanation="O estado do socket local não revela todas as políticas do caminho."}
 ::option[A aplicação passou em todas as verificações de integridade.]{#transport-layer-all-health explanation="A escuta é uma evidência mais fraca do que uma transação bem-sucedida da aplicação."}

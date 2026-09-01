@@ -24,8 +24,7 @@ $ ls -l /dev
 
 长列表的第一个字符表示文件系统对象类型。字符设备节点和块设备节点分别显示为 `c` 和 `b`；后续课程会介绍这些类型及其主设备号和次设备号。
 
-:::single-choice{#dev-directory-device-node-purpose}
-程序打开 `/dev` 下的设备节点时会发生什么？
+:::single-choice{#dev-directory-device-node-purpose} 程序打开 `/dev` 下的设备节点时会发生什么？
 
 ::option[它始终读取一个保存硬件副本的普通磁盘文件。]{#dev-directory-ordinary-copy explanation="设备节点是特殊对象，不会像普通文件一样存储设备数据副本。"}
 ::option[它访问由内核驱动程序实现的接口。]{#dev-directory-kernel-interface .correct explanation="设备节点操作会根据节点的设备身份路由到内核驱动程序行为。"}
@@ -42,8 +41,7 @@ $ command > /dev/null
 
 其他常见示例包括产生零字节的 `/dev/zero`，以及通过内核随机数子系统提供随机字节的 `/dev/urandom`。每个伪设备都有特定语义；不要只根据文件名推断其行为。
 
-:::single-choice{#dev-directory-null-behavior}
-`/dev/null` 如何处理写入其中的数据？
+:::single-choice{#dev-directory-null-behavior} `/dev/null` 如何处理写入其中的数据？
 
 ::option[将数据保存到下次重启。]{#dev-directory-null-temporary-storage explanation="空设备是数据接收端，不充当临时存储。"}
 ::option[将数据发送到每个已登录终端。]{#dev-directory-null-broadcast explanation="终端广播与空伪设备无关。"}
@@ -56,8 +54,7 @@ $ command > /dev/null
 
 在配置中，`/dev/disk/by-id/` 或 `/dev/disk/by-uuid/` 下的稳定链接可能比 `/dev/sda` 这样的探测顺序名称更安全；硬件拓扑或发现顺序变化时，后者可能改变。
 
-:::single-choice{#dev-directory-persistent-link}
-为什么管理员可能更愿意在配置中使用 `/dev/disk/by-id/...` 而不是 `/dev/sda`？
+:::single-choice{#dev-directory-persistent-link} 为什么管理员可能更愿意在配置中使用 `/dev/disk/by-id/...` 而不是 `/dev/sda`？
 
 ::option[基于标识符的链接较少依赖设备发现顺序。]{#dev-directory-stable-identifier .correct explanation="持久链接根据设备属性生成，而不是使用枚举顺序分配的字母。"}
 ::option[该链接会自动备份设备上的每个块。]{#dev-directory-link-backup explanation="符号链接指向同一设备，不会创建备份数据。"}
@@ -70,8 +67,7 @@ $ command > /dev/null
 
 应先使用只读发现工具，确认确切节点和设备身份，并遵循该设备的专门文档。绝不要在重要系统上通过向陌生的 `/dev` 条目重定向数据来进行实验。
 
-:::single-choice{#dev-directory-direct-write-risk}
-为什么应避免向陌生设备节点写入任意数据？
+:::single-choice{#dev-directory-direct-write-risk} 为什么应避免向陌生设备节点写入任意数据？
 
 ::option[每个设备节点都保证是无害的文本文件。]{#dev-directory-harmless-text explanation="设备节点恰恰不是普通文本文件。"}
 ::option[该操作可能直接影响硬件、存储或其他内核接口。]{#dev-directory-write-impact .correct explanation="设备写入会调用驱动程序定义的操作，可能造成破坏或中断。"}

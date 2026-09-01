@@ -30,8 +30,7 @@ Von links nach rechts:
 
 Eine letzte Textzeile ohne abschließenden Zeilenumbruch wird von `wc -l` nicht gezählt, da diese Option Zeilenumbruchzeichen und nicht optisch wahrgenommene Zeilen zählt.
 
-:::single-choice{#wc-default-columns}
-Wofür stehen die ersten drei Zahlen der Standardausgabe von `wc file.txt`?
+:::single-choice{#wc-default-columns} Wofür stehen die ersten drei Zahlen der Standardausgabe von `wc file.txt`?
 
 ::option[Für Zeilen, Wörter und Bytes in dieser Reihenfolge.]{#wc-lines-words-bytes .correct explanation="Die Standardausgabe von `wc` meldet vor dem Dateinamen die Anzahl der Zeilenumbrüche, Wörter und Bytes."}
 ::option[Für Bytes, Wörter und Zeilen in dieser Reihenfolge.]{#wc-bytes-words-lines explanation="Das sind dieselben Messwerte in falscher Reihenfolge. Die Zeilenanzahl steht zuerst."}
@@ -61,16 +60,14 @@ $ printf 'one two\n' | wc -w
 2
 ```
 
-:::single-choice{#wc-word-count-only}
-Welcher Befehl meldet ausschließlich die Wortanzahl von `essay.txt`?
+:::single-choice{#wc-word-count-only} Welcher Befehl meldet ausschließlich die Wortanzahl von `essay.txt`?
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="Die Option `-l` meldet Zeilenumbruchzeichen und keine Wörter."}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="Die Option `-w` wählt die Wortanzahl aus."}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="Die Option `-c` meldet Bytes statt durch Leerraum getrennter Wörter."}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-Welche Option weist `wc` an, in der aktuellen Locale Zeichen statt Bytes zu zählen?
+:::single-choice{#wc-characters-not-bytes} Welche Option weist `wc` an, in der aktuellen Locale Zeichen statt Bytes zu zählen?
 
 ::option[`-m`]{#wc-character-option .correct explanation="Die Option `-m` meldet Zeichen; bei Mehrbyte-Text kann sich diese Anzahl von der Bytezahl unterscheiden."}
 ::option[`-c`]{#wc-byte-option explanation="Die Option `-c` meldet Bytes. In Kodierungen wie UTF-8 kann ein Zeichen mehrere Bytes belegen."}
@@ -100,8 +97,7 @@ $ nl notes.txt
 
 `nl` schreibt eine nummerierte Ausgabe; `notes.txt` wird nicht verändert.
 
-:::single-choice{#nl-default-blank-lines}
-Wie behandelt `nl notes.txt` standardmäßig leere Zeilen im Textkörper?
+:::single-choice{#nl-default-blank-lines} Wie behandelt `nl notes.txt` standardmäßig leere Zeilen im Textkörper?
 
 ::option[Der Befehl lässt jede Leerzeile vollständig aus der Ausgabe weg.]{#nl-omit-blank explanation="Die Leerzeile bleibt in der Ausgabe, erhält standardmäßig aber keine Nummer."}
 ::option[Der Befehl bewahrt sie ohne Zeilennummer.]{#nl-preserve-unnumbered .correct explanation="Der Standardstil für den Textkörper nummeriert nicht leere Zeilen und reicht Leerzeilen unnummeriert durch."}
@@ -121,8 +117,7 @@ $ nl -ba notes.txt
 
 Weitere Optionen steuern die Formatierung. Beispielsweise legt `-w 3` die Breite des Nummernfelds fest und `-s ': '` ändert das Trennzeichen hinter der Nummer.
 
-:::single-choice{#nl-number-all-lines}
-Welcher Befehl nummeriert jede Textkörperzeile von `notes.txt`, einschließlich Leerzeilen?
+:::single-choice{#nl-number-all-lines} Welcher Befehl nummeriert jede Textkörperzeile von `notes.txt`, einschließlich Leerzeilen?
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="Damit wird die Breite des Nummernfelds verändert; die standardmäßige Regel, nur nicht leere Zeilen zu nummerieren, bleibt bestehen."}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="Die Option `-b` wählt den Textkörperstil; Stil `a` nummeriert alle Zeilen."}

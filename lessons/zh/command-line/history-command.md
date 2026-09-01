@@ -25,8 +25,7 @@ $ history
 
 每一行都有一个历史编号，后面跟着命令。
 
-:::single-choice{#show-command-history}
-哪个 Bash 命令会显示当前带编号的历史列表？
+:::single-choice{#show-command-history} 哪个 Bash 命令会显示当前带编号的历史列表？
 
 ::option[`clear`]{#clear-display explanation="`clear` 刷新可见的终端区域，不会显示以前的命令。"}
 ::option[`history -w`]{#write-history explanation="`history -w` 把当前列表写入历史文件，用途是保存，而不是显示列表。"}
@@ -44,8 +43,7 @@ shell 提供了几种快捷方式来方便地重运行命令。
 
 以 `!` 开头的历史扩展形式可能会在按 Enter 后立即运行命令。只要有疑问，就先检查匹配内容，尤其是在添加提升权限的命令或操作重要文件之前。
 
-:::single-choice{#repeat-most-recent-command}
-哪个 Bash 历史扩展会重复最近执行的命令？
+:::single-choice{#repeat-most-recent-command} 哪个 Bash 历史扩展会重复最近执行的命令？
 
 ::option[`!102`]{#event-number explanation="这个扩展会选择历史编号 102 的命令，而该条目不一定是最近的命令。"}
 ::option[`!cat`]{#event-prefix explanation="它选择最近一条以 `cat` 开头的命令，并不表示任意类型的最近命令。"}
@@ -58,8 +56,7 @@ shell 提供了几种快捷方式来方便地重运行命令。
 
 按 Enter 会执行显示的匹配项。如果想先查看或编辑，请用方向键把该命令放到编辑行上。
 
-:::single-choice{#search-before-executing}
-你记得以前某条 Bash 命令的一部分，并想交互式查找它。首先应按什么？
+:::single-choice{#search-before-executing} 你记得以前某条 Bash 命令的一部分，并想交互式查找它。首先应按什么？
 
 ::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D` 在许多终端场景中表示输入结束，在空闲 shell 中甚至可能退出；它不会开始历史搜索。"}
 ::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` 通常会中断或取消当前操作，并不搜索命令历史。"}
@@ -83,8 +80,7 @@ $ history -w
 
 清空内存列表本身并不能保证旧命令已从所有文件、备份或其他活动 shell 中消失。历史行为还取决于 Bash 设置，以及会话读取或写入文件的时机。
 
-:::single-choice{#save-current-history-list}
-哪个命令会把当前 Bash 历史列表写入配置的历史文件？
+:::single-choice{#save-current-history-list} 哪个命令会把当前 Bash 历史列表写入配置的历史文件？
 
 ::option[`history -c`]{#clear-current-list explanation="`-c` 会清空内存列表，并不要求保存当前列表。"}
 ::option[`history -d 101`]{#delete-one-entry explanation="`-d` 会删除选定的一条历史记录，不是保存完整列表的操作。"}
@@ -105,8 +101,7 @@ Tab 补全也是避免重复输入的方法。先输入命令、文件名或目�
 
 命令行可能被存进历史记录，因此如果存在更安全的输入方法，不要直接把密码、令牌或其他秘密写进命令。
 
-:::single-choice{#distinguish-clear-from-history-clear}
-你想刷新可见终端，但不删除内存中的命令历史。应运行哪个命令？
+:::single-choice{#distinguish-clear-from-history-clear} 你想刷新可见终端，但不删除内存中的命令历史。应运行哪个命令？
 
 ::option[`clear`]{#clear-visible-area .correct explanation="`clear` 会刷新可见终端区域，同时保留 Bash 的内存历史列表。"}
 ::option[`history -c`]{#clear-memory explanation="它会删除当前内存历史列表中的条目，改变的是历史，而不只是刷新显示。"}

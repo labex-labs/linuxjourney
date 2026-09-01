@@ -32,8 +32,7 @@ $ rm notes.txt old-report.txt draft.md
 
 Prüfe Schreibweise und Ort, bevor du Enter drückst. Eine Sicherung oder eine Kopie in der Versionsverwaltung ist nach dem Löschen verlässlicher als Werkzeuge zur Dateisystemwiederherstellung.
 
-:::single-choice{#remove-one-file}
-Welcher Befehl entfernt nach einer sorgfältigen Zielprüfung die Datei `old-report.txt`?
+:::single-choice{#remove-one-file} Welcher Befehl entfernt nach einer sorgfältigen Zielprüfung die Datei `old-report.txt`?
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` entfernt den benannten Dateieintrag. Normalerweise wird die Datei dabei nicht in einen Papierkorb verschoben."}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` arbeitet mit leeren Verzeichnissen, nicht mit regulären Dateien. Für dieses Ziel ist der Befehl ungeeignet."}
@@ -58,8 +57,7 @@ $ rm *.tmp
 
 Die Shell erweitert das Muster, bevor `rm` startet. Enthält die Vorschau eine unerwartete Datei, korrigiere das Muster, statt fortzufahren.
 
-:::single-choice{#preview-removal-pattern}
-Du möchtest `*.tmp` entfernen. Welcher Befehl zeigt zuerst die von diesem Muster ausgewählten nicht versteckten Pfade an, ohne sie zu löschen?
+:::single-choice{#preview-removal-pattern} Du möchtest `*.tmp` entfernen. Welcher Befehl zeigt zuerst die von diesem Muster ausgewählten nicht versteckten Pfade an, ohne sie zu löschen?
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="Der ausführliche Modus meldet Entfernungen während ihrer Ausführung. Er löscht die passenden Dateien weiterhin und ist keine schreibgeschützte Vorschau."}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="Anführungszeichen verhindern die Platzhaltererweiterung. So wird nach einem wörtlichen Namen mit `*` gesucht, statt die vorgesehenen Ziele anzuzeigen."}
@@ -77,8 +75,7 @@ rm: remove regular file 'important.txt'? y
 
 GNU `rm` bietet mit `-I` eine weniger aufdringliche Absicherung: Sie fragt einmal nach, wenn ein Befehl mehr als drei Dateien entfernen oder rekursiv arbeiten würde.
 
-:::single-choice{#confirm-each-removal}
-Welcher Befehl fragt vor dem Entfernen jeder benannten Datei nach einer Bestätigung?
+:::single-choice{#confirm-each-removal} Welcher Befehl fragt vor dem Entfernen jeder benannten Datei nach einer Bestätigung?
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="Die Option `-i` fragt vor jeder Entfernung nach und gibt dir die Möglichkeit, den Vorgang abzulehnen."}
 ::option[`rm -f important.txt`]{#force-important explanation="Die Option `-f` unterdrückt Nachfragen und ignoriert ein fehlendes Ziel. Sie entfernt Bestätigungen, statt sie hinzuzufügen."}
@@ -118,8 +115,7 @@ $ rmdir empty-directory
 
 `rmdir` schlägt fehl, wenn das Verzeichnis nicht leer ist, und schützt dessen Inhalt dadurch vor einer rekursiven Löschung.
 
-:::single-choice{#remove-empty-directory-only}
-Welcher Befehl entfernt `old-cache/` nur dann, wenn dieses Verzeichnis leer ist?
+:::single-choice{#remove-empty-directory-only} Welcher Befehl entfernt `old-cache/` nur dann, wenn dieses Verzeichnis leer ist?
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="Rekursives `rm` entfernt das Verzeichnis und seinen Inhalt. Es erzwingt nicht die Bedingung, dass das Verzeichnis leer sein muss."}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` ist nur bei einem leeren Verzeichnis erfolgreich und löscht deshalb keine darin enthaltenen Dateien rekursiv."}
@@ -152,8 +148,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-Welcher Befehl entfernt nach vollständiger Zielprüfung `old-project/` samt allen darunterliegenden Inhalten, ohne normale Nachfragen zu unterdrücken?
+:::single-choice{#remove-nonempty-tree} Welcher Befehl entfernt nach vollständiger Zielprüfung `old-project/` samt allen darunterliegenden Inhalten, ohne normale Nachfragen zu unterdrücken?
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="Ein einfaches `rm` steigt nicht in ein Verzeichnis hinab und kann daher keinen nicht leeren Baum entfernen."}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="Die Option `-r` entfernt den Verzeichnisbaum rekursiv. Anders als `-rf` ergänzt diese Form kein `-f`, das Nachfragen unterdrückt."}

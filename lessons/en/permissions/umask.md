@@ -37,8 +37,7 @@ $ umask 027
 
 Each octal position corresponds to owner, group, and other. A mask bit removes the corresponding requested permission: `2` masks write, `4` masks read, and `1` masks execute.
 
-:::single-choice{#umask-command-purpose}
-What does `umask 027` change in the current shell?
+:::single-choice{#umask-command-purpose} What does `umask 027` change in the current shell?
 
 ::option[The permissions of every file that already exists.]{#umask-existing-files explanation="A umask affects creation requests; it does not retroactively run `chmod` on existing objects."}
 ::option[The mask inherited by commands subsequently started from that shell.]{#umask-current-shell-mask .correct explanation="The shell sets its process umask, and child processes normally inherit that value."}
@@ -58,16 +57,14 @@ directory:    0777 masked by 0022 -> 0755 (rwxr-xr-x)
 
 The umask only removes requested bits. It cannot add execute permission when an application did not request it. An application can also request a more restrictive starting mode, producing a more restrictive result.
 
-:::single-choice{#umask-file-mode-022}
-If a program requests mode `0666` for a regular file and the umask is `0022`, which mode results?
+:::single-choice{#umask-file-mode-022} If a program requests mode `0666` for a regular file and the umask is `0022`, which mode results?
 
 ::option[`0666`]{#umask-file-0666 explanation="The group and other write bits requested by `0666` are removed by mask `0022`."}
 ::option[`0755`]{#umask-file-0755 explanation="Execute bits were not requested for the regular file, so the umask cannot add them."}
 ::option[`0644`]{#umask-file-0644 .correct explanation="Removing group and other write from `0666` leaves owner read/write and read-only access for group and other."}
 :::
 
-:::single-choice{#umask-directory-mode-027}
-If a program requests `0777` for a directory and the umask is `0027`, which mode results?
+:::single-choice{#umask-directory-mode-027} If a program requests `0777` for a directory and the umask is `0027`, which mode results?
 
 ::option[`0777`]{#umask-directory-0777 explanation="The requested group-write and other permissions are filtered by the nonzero mask."}
 ::option[`0640`]{#umask-directory-0640 explanation="That result also removes execute bits that mask `0027` does not remove from owner or group."}
@@ -80,8 +77,7 @@ Changing the umask in one shell does not alter its parent process or unrelated s
 
 To make a preferred value persistent, configure it in the appropriate login, shell, PAM, service-manager, or application configuration for your environment. The correct location varies, and services may set their own umask. Avoid assuming that editing one interactive shell file governs every process on the system.
 
-:::single-choice{#umask-existing-file-effect}
-What happens to an existing file when you set a new umask?
+:::single-choice{#umask-existing-file-effect} What happens to an existing file when you set a new umask?
 
 ::option[Its current mode remains unchanged.]{#umask-existing-unchanged .correct explanation="A new umask filters later creation requests and does not modify modes already stored on filesystem objects."}
 ::option[Its mode is recalculated from `0666`.]{#umask-existing-recalculated explanation="Existing objects are not recreated or automatically passed through the new mask."}

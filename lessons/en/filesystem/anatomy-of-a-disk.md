@@ -20,8 +20,7 @@ A partition table records start positions, lengths, type identifiers, and scheme
 
 Partition boundaries must not overlap in ordinary layouts. Space outside all entries is unallocated from the partition table's perspective, though it can still contain old signatures or data. Changing a table does not automatically move filesystem contents to match new boundaries.
 
-:::single-choice{#anatomy-disk-partition-table-role}
-What tells the operating system where disk partitions begin and end?
+:::single-choice{#anatomy-disk-partition-table-role} What tells the operating system where disk partitions begin and end?
 
 ::option[The current shell's working directory.]{#anatomy-disk-shell-directory explanation="A shell pathname has no role in on-disk partition boundaries."}
 ::option[The disk's partition table.]{#anatomy-disk-table-boundaries .correct explanation="Partition entries describe regions that the kernel can expose as child block devices."}
@@ -34,8 +33,7 @@ The legacy DOS/MBR scheme stores its primary table in the first logical sector. 
 
 With 32-bit sector addresses and 512-byte logical sectors, MBR reaches a commonly cited limit of about 2 TiB. Exact addressability depends on sector size and tool support. MBR also lacks GPT's redundant header and table copies and per-partition GUIDs.
 
-:::single-choice{#anatomy-disk-mbr-more-than-four}
-Which MBR construct allows more than four usable partitions?
+:::single-choice{#anatomy-disk-mbr-more-than-four} Which MBR construct allows more than four usable partitions?
 
 ::option[A journal partition containing more primary entries.]{#anatomy-disk-mbr-journal explanation="Filesystem journaling is unrelated to the four-entry MBR table."}
 ::option[An extended partition containing logical partitions.]{#anatomy-disk-mbr-extended .correct explanation="One primary entry can define an extended container, within which logical partitions are linked."}
@@ -50,8 +48,7 @@ Each GPT entry includes a partition type GUID and a unique partition GUID; GPT t
 
 GPT is normally used for UEFI boot disks, but partitioning and firmware boot mode are distinct concepts. A UEFI system also needs appropriate boot files and an EFI System Partition; GPT alone does not make a disk bootable.
 
-:::single-choice{#anatomy-disk-gpt-identifiers}
-Which identifiers does a GPT partition entry include?
+:::single-choice{#anatomy-disk-gpt-identifiers} Which identifiers does a GPT partition entry include?
 
 ::option[A type GUID and a unique partition GUID.]{#anatomy-disk-gpt-guids .correct explanation="The type describes intended use, while the unique GUID identifies that particular partition entry."}
 ::option[Only one universal type shared by every GPT partition.]{#anatomy-disk-gpt-one-type explanation="GPT defines many type GUIDs for different partition purposes."}
@@ -64,8 +61,7 @@ After partitioning, a filesystem creation tool writes the structures defined by 
 
 For example, ext filesystems use inodes and block groups, while other filesystems organize metadata through different trees or allocation structures. Do not apply one simplified “boot block, one superblock, inode table, data blocks” diagram to every filesystem.
 
-:::single-choice{#anatomy-disk-filesystem-layer}
-Does creating a partition automatically create a filesystem inside it?
+:::single-choice{#anatomy-disk-filesystem-layer} Does creating a partition automatically create a filesystem inside it?
 
 ::option[No; formatting or another explicit use is a separate step.]{#anatomy-disk-partition-not-filesystem .correct explanation="The partition table only defines a block region; its contents remain independent."}
 ::option[Yes; every partition is automatically formatted as ext4.]{#anatomy-disk-auto-ext4 explanation="Partitioning tools do not universally create an ext4 filesystem."}
@@ -85,8 +81,7 @@ $ sudo parted --list
 
 Device names can change, and stale signatures can confuse detection. Confirm model, serial, size, transport, persistent links, active mounts, swap, RAID, LVM, encryption, and backups before opening any partitioning tool in write mode.
 
-:::single-choice{#anatomy-disk-lsblk-fields}
-Which `lsblk` field distinguishes detected filesystem content from the partition-table scheme?
+:::single-choice{#anatomy-disk-lsblk-fields} Which `lsblk` field distinguishes detected filesystem content from the partition-table scheme?
 
 ::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` reports a detected filesystem or other recognized content signature, while `PTTYPE` reports the table scheme."}
 ::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` labels the kernel block-device entry and does not specifically identify content format."}

@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 Das `p` in den gezeigten RPM-Abfrageformen bedeutet „eine Paketdatei abfragen“ statt die installierte Datenbank. Die Abfrageausgabe hilft beim Prüfen eines Pakets, kann aber nicht beweisen, dass seine Skripte oder Programme sicher sind.
 
-:::single-choice{#package-install-tools-native-format}
-Welches einfache Werkzeug verwaltet Debian-`.deb`-Pakete und ihre installierte Datenbank?
+:::single-choice{#package-install-tools-native-format} Welches einfache Werkzeug verwaltet Debian-`.deb`-Pakete und ihre installierte Datenbank?
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM verwaltet auf Systemen der RPM-Familie sein eigenes natives Format und seine Datenbank."}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="Tar kann Archive lesen, implementiert aber nicht den Lebenszyklus installierter Debian-Pakete."}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 Prüfe die Transaktion vor der Bestätigung. Ein vorangestelltes `./` unterscheidet in APT einen lokalen Debian-Archivpfad von einem Paketnamen aus einer Paketquelle.
 
-:::single-choice{#package-install-tools-local-dependencies}
-Welcher gezeigte Befehl kann eine lokale `.deb`-Datei installieren und dabei verfügbare Abhängigkeiten aus Paketquellen auflösen?
+:::single-choice{#package-install-tools-local-dependencies} Welcher gezeigte Befehl kann eine lokale `.deb`-Datei installieren und dabei verfügbare Abhängigkeiten aus Paketquellen auflösen?
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l` listet Auswahlen installierter Pakete auf und ist nicht der Arbeitsablauf zur lokalen Installation mit Abhängigkeitsauflösung."}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="Die RPM-Abfragesyntax installiert kein Debian-Archiv."}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 Unter Debian behält `--remove` gewöhnlich als conffiles klassifizierte Konfigurationsdateien bei; `--purge` fordert vorbehaltlich von Paketskripten und nicht verwalteten Daten auch deren Entfernung an. Keiner der Befehle garantiert die Löschung benutzererstellter Daten. Das übergeordnete `apt remove` oder `dnf remove` ist im Allgemeinen besser, da es verwandte Pakete bewerten und eine vollständige Transaktion darstellen kann.
 
-:::single-choice{#package-install-tools-remove-operand}
-Welchen Operanden erwartet `dpkg --remove` für ein installiertes Paket?
+:::single-choice{#package-install-tools-remove-operand} Welchen Operanden erwartet `dpkg --remove` für ein installiertes Paket?
 
 ::option[Die URL des Paketquellenindex.]{#package-install-tools-remove-url explanation="Der Ort einer Paketquelle ist nicht die Paketidentität, die der einfachen Entfernung übergeben wird."}
 ::option[Den Namen des installierten Pakets.]{#package-install-tools-remove-name .correct explanation="Die Entfernung richtet sich an den Paketeintrag, beispielsweise `example`, und benötigt nicht dessen früheren `.deb`-Pfad."}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 Bevorzuge für gezielte Prüfungen einen bestimmten Paketnamen und ein maschinenlesbares Format, wenn die Zuverlässigkeit eines Skripts wichtig ist. Paketdatenbanken beschreiben den verwalteten Zustand; lokale Administratoren oder Anwendungen können Dateien anschließend weiterhin ändern. Verwende daher Prüffunktionen, wenn du installierte Dateien mit den erfassten Metadaten vergleichen musst.
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-Welcher Befehl fragt alle in der RPM-Datenbank als installiert erfassten Pakete ab?
+:::single-choice{#package-install-tools-rpm-list-installed} Welcher Befehl fragt alle in der RPM-Datenbank als installiert erfassten Pakete ab?
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q` wählt den Abfragemodus aus und `-a` erweitert ihn auf alle installierten Paketeinträge."}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e` fordert die Paketentfernung an und keine schreibgeschützte Auflistung."}

@@ -28,8 +28,7 @@ $ service --status-all
 
 Маркеры в скобках и коды завершения зависят от обёртки, а сценарий может сообщить неизвестное состояние. Для одной службы изучите вывод справки сценария или документацию, не предполагая наличие каждого действия.
 
-:::single-choice{#sysv-services-wrapper-purpose}
-Что обычно оборачивает команда `service`?
+:::single-choice{#sysv-services-wrapper-purpose} Что обычно оборачивает команда `service`?
 
 ::option[Редактор разделов диска, запускаемый для каждого файла службы.]{#sysv-services-partition-editor explanation="Управление службами не связано с разметкой хранилища."}
 ::option[Системный вызов ядра, динамически добавленный сценарием.]{#sysv-services-new-syscall explanation="Сценарии init — программы управления процессами в пользовательском пространстве."}
@@ -49,8 +48,7 @@ $ sudo service SERVICE_NAME stop
 
 Прямая форма `/etc/init.d/SERVICE_NAME ACTION` может существовать, но на хосте с совместимостью активного менеджера используйте обращённую к менеджеру команду, чтобы он отслеживал состояние и зависимости.
 
-:::single-choice{#sysv-services-stop-peanut}
-Какая команда запрашивает остановку службы SysV `peanut`?
+:::single-choice{#sysv-services-stop-peanut} Какая команда запрашивает остановку службы SysV `peanut`?
 
 ::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="В традиционном порядке операндов имя службы стоит перед действием."}
 ::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="Это не синтаксис обёртки служб SysV."}
@@ -68,8 +66,7 @@ $ sudo service SERVICE_NAME status
 $ sudo service SERVICE_NAME reload
 ```
 
-:::single-choice{#sysv-services-reload-versus-restart}
-Почему нельзя считать `reload` эквивалентом `restart`?
+:::single-choice{#sysv-services-reload-versus-restart} Почему нельзя считать `reload` эквивалентом `restart`?
 
 ::option[Reload всегда выключает всю операционную систему.]{#sysv-services-reload-shutdown explanation="Это не обычный смысл действия reload для службы."}
 ::option[Restart только выводит конфигурацию и никогда не меняет состояние процесса.]{#sysv-services-restart-readonly explanation="Restart обычно останавливает и запускает службу."}
@@ -82,8 +79,7 @@ $ sudo service SERVICE_NAME reload
 
 Не создавайте ссылки `S` и `K` вручную, пока не понимаете метаданные зависимостей и инструмент дистрибутива: ручные ссылки могут быть перезаписаны или неверно упорядочены.
 
-:::single-choice{#sysv-services-start-versus-enable}
-Обязательно ли `service SERVICE start` включает службу при будущих загрузках?
+:::single-choice{#sysv-services-start-versus-enable} Обязательно ли `service SERVICE start` включает службу при будущих загрузках?
 
 ::option[Да, каждое действие start автоматически создаёт все ссылки runlevel.]{#sysv-services-start-links explanation="Обёртка не меняет постоянное включение универсальным образом."}
 ::option[Нет, текущее состояние и включение в runlevel разделены.]{#sysv-services-runtime-separate .correct explanation="Ссылки загрузки или политика менеджера независимо определяют будущую активацию."}

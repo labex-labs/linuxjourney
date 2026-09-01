@@ -16,8 +16,7 @@ Das Domain Name System ist eine verteilte, hierarchische Datenbank und ein Abfra
 
 DNS übersetzt nicht nur einen Hostnamen in eine IP-Adresse. Ein `A`-Eintrag enthält eine IPv4-Adresse, `AAAA` eine IPv6-Adresse, `MX` Daten zum E-Mail-Routing und `NS` die Namen autoritativer Server; zahlreiche weitere Typen enthalten andere Daten. Ein Name kann mehrere Einträge oder überhaupt keinen Adresseintrag besitzen.
 
-:::single-choice{#dns-purpose-beyond-address}
-Warum ist DNS mehr als eine Liste aus Hostnamen und Adressen?
+:::single-choice{#dns-purpose-beyond-address} Warum ist DNS mehr als eine Liste aus Hostnamen und Adressen?
 
 ::option[Es weist jedem Ethernet-Frame dauerhaft MAC-Adressen zu.]{#dns-mac-frames explanation="Die Nachbarerkennung auf der Sicherungsschicht verwendet DNS nicht auf diese Weise."}
 ::option[Es speichert typisierte Einträge für verschiedene Arten von Dienst- und Delegierungsdaten.]{#dns-typed-records .correct explanation="Adress-, E-Mail-, Autoritäts-, Alias- und richtlinienbezogene Einträge besitzen unterschiedliche Bedeutungen."}
@@ -28,8 +27,7 @@ Warum ist DNS mehr als eine Liste aus Hostnamen und Adressen?
 
 Ein vollständig qualifizierter Domainname bezeichnet einen Pfad im DNS-Baum. In `www.example.com.` steht der abschließende Punkt für die Wurzel, `com` liegt darunter, `example` unter `com` und `www` ist ein Name innerhalb dieser Domain. In Benutzeroberflächen wird der abschließende Punkt häufig weggelassen. In Konfigurationen ist er jedoch wichtig, um absolute von lokal relativen Namen zu unterscheiden.
 
-:::single-choice{#dns-trailing-dot}
-Wofür steht der abschließende Punkt in `www.example.com.`?
+:::single-choice{#dns-trailing-dot} Wofür steht der abschließende Punkt in `www.example.com.`?
 
 ::option[Für die DNS-Wurzel und einen absoluten Namen.]{#dns-root-dot .correct explanation="Der Punkt beendet den vollständigen Pfad vom benannten Knoten bis zur Wurzel."}
 ::option[Für einen Platzhalter für jede Top-Level-Domain.]{#dns-dot-wildcard explanation="Ein Platzhalter verwendet eine Bezeichnung wie `*` und nicht das Wurzelabschlusszeichen."}
@@ -40,8 +38,7 @@ Wofür steht der abschließende Punkt in `www.example.com.`?
 
 DNS-Autorität wird entlang der Hierarchie nach unten delegiert. Root-Server verweisen Resolver an die Server der Top-Level-Domains, die sie wiederum an die autoritativen Server delegierter Zonen weiterleiten. Organisationen verwalten ihre eigenen autoritativen Daten, ohne den gesamten globalen Namensraum auf einem zentralen Server zu speichern.
 
-:::single-choice{#dns-authoritative-data}
-Wer liefert die maßgeblichen Daten für eine delegierte DNS-Zone?
+:::single-choice{#dns-authoritative-data} Wer liefert die maßgeblichen Daten für eine delegierte DNS-Zone?
 
 ::option[Jeder Browser, der die Website zuvor besucht hat.]{#dns-browser-authority explanation="Ein Browsercache ist für die Zone nicht autoritativ."}
 ::option[Die konfigurierten autoritativen Nameserver der Zone.]{#dns-authoritative-servers .correct explanation="Die Delegierung bezeichnet die Server, die für autoritative Antworten zuständig sind."}
@@ -54,8 +51,7 @@ Der Stub-Resolver eines Hosts sendet eine Abfrage üblicherweise an einen rekurs
 
 Eine erfolgreiche DNS-Auflösung beweist weder Route noch Transport-, TLS- oder Anwendungszustand. Ein DNS-Fehler kann außerdem bereits vor einer externen Abfrage entstehen, weil `/etc/hosts`, Suchsuffixe, lokale Caches oder die Richtlinie des Namensdienstes den Systemresolver beeinflussen.
 
-:::single-choice{#dns-cache-ttl-role}
-Was steuert die TTL eines DNS-Eintrags in erster Linie?
+:::single-choice{#dns-cache-ttl-role} Was steuert die TTL eines DNS-Eintrags in erster Linie?
 
 ::option[Wie viele Router ein IP-Paket durchqueren darf.]{#dns-ip-hop-limit explanation="IP-TTL beziehungsweise Hop Limit ist ein anderes Protokollfeld."}
 ::option[Wie lange die Anwendung funktionsfähig bleiben muss.]{#dns-app-health-time explanation="DNS-Caching garantiert keine Dienstverfügbarkeit."}

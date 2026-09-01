@@ -23,8 +23,7 @@ Une entrée du chargeur peut désigner :
 
 GRUB peut présenter plusieurs noyaux et entrées de récupération. Un noyau de repli n'est utile que si les modules et l'initramfs correspondants restent disponibles et testés. Le chargeur lit les fichiers grâce aux modules de stockage et de système de fichiers qu'il prend en charge ; il ne dépend pas du VFS Linux, qui ne fonctionne pas encore.
 
-:::single-choice{#bootloader-primary-handoff}
-À quoi un chargeur de démarrage Linux transfère-t-il normalement le contrôle ?
+:::single-choice{#bootloader-primary-handoff} À quoi un chargeur de démarrage Linux transfère-t-il normalement le contrôle ?
 
 ::option[À un shell utilisateur interactif où tous les services fonctionnent déjà.]{#bootloader-user-shell explanation="Les shells de l'espace utilisateur n'apparaissent qu'après le démarrage du noyau et du système init."}
 ::option[À l'image de noyau choisie après avoir chargé les artefacts nécessaires.]{#bootloader-selected-kernel .correct explanation="Le chargeur prépare le noyau, ses paramètres et souvent un initramfs avant d'exécuter le point d'entrée du noyau."}
@@ -49,16 +48,14 @@ Inspectez la ligne de commande utilisée pour le démarrage actuel avec :
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-Quel est le rôle du paramètre `root=` de la ligne de commande du noyau ?
+:::single-choice{#bootloader-root-parameter} Quel est le rôle du paramètre `root=` de la ligne de commande du noyau ?
 
 ::option[Identifier le système de fichiers racine que le démarrage devra finalement utiliser.]{#bootloader-root-filesystem .correct explanation="Le noyau ou l'initramfs interprète cette valeur pour localiser et assembler la véritable racine."}
 ::option[Définir le mot de passe de connexion du compte root.]{#bootloader-root-password explanation="Les secrets d'authentification ne doivent pas être transmis en clair dans la ligne de commande du noyau."}
 ::option[Renommer le PID 1 en `root`.]{#bootloader-root-pid explanation="Le nommage des processus n'a aucun rapport avec ce paramètre de stockage."}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-Que demande normalement le paramètre `quiet` ?
+:::single-choice{#bootloader-quiet-parameter} Que demande normalement le paramètre `quiet` ?
 
 ::option[Un accès en lecture seule à tous les systèmes de fichiers montés.]{#bootloader-quiet-readonly explanation="La politique initiale d'écriture de la racine utilise des paramètres comme `ro`, pas `quiet`."}
 ::option[La réduction des messages du noyau affichés pendant le démarrage.]{#bootloader-quiet-console .correct explanation="Ce paramètre masque de nombreux messages d'information, sans garantir le silence de tous les composants du démarrage."}
@@ -71,8 +68,7 @@ GRUB permet généralement à un utilisateur autorisé de la console de modifier
 
 La ligne de commande peut exposer du texte sensible dans `/proc/cmdline`, les journaux de démarrage et les rapports de plantage. Ses paramètres peuvent aussi affaiblir la sécurité ou empêcher le démarrage. N'y placez jamais de secret et conservez une entrée fonctionnelle ainsi qu'une procédure de récupération par la console.
 
-:::single-choice{#bootloader-temporary-edit}
-Quelle propriété caractérise généralement la modification interactive d'une entrée GRUB pour un démarrage ?
+:::single-choice{#bootloader-temporary-edit} Quelle propriété caractérise généralement la modification interactive d'une entrée GRUB pour un démarrage ?
 
 ::option[Elle réécrit automatiquement toutes les images de noyau installées.]{#bootloader-rewrites-kernels explanation="La modification du texte de commande ne change pas les binaires du noyau."}
 ::option[Elle désactive définitivement la vérification du micrologiciel sur tous les disques.]{#bootloader-disables-firmware explanation="La politique du micrologiciel est distincte et n'est pas universellement modifiée par l'édition d'une entrée."}
@@ -85,8 +81,7 @@ Les distributions génèrent généralement la configuration GRUB finale à part
 
 Apportez une modification ciblée à la source, exécutez la commande de régénération documentée par la distribution, inspectez son résultat et testez en conservant une ancienne entrée fonctionnelle ainsi qu'un support de récupération amorçable. La commande et le chemin de sortie diffèrent entre Debian, Fedora et les installations UEFI ou BIOS.
 
-:::single-choice{#bootloader-generated-config}
-Pourquoi la modification directe d'un fichier `grub.cfg` généré est-elle généralement peu fiable ?
+:::single-choice{#bootloader-generated-config} Pourquoi la modification directe d'un fichier `grub.cfg` généré est-elle généralement peu fiable ?
 
 ::option[Le fichier ne peut jamais contenir de texte lisible.]{#bootloader-config-binary explanation="La configuration GRUB est du texte, mais son caractère généré reste déterminant."}
 ::option[GRUB ne lit que les fichiers des répertoires personnels.]{#bootloader-grub-home explanation="La configuration de démarrage se situe au niveau du système et doit être disponible avant les sessions utilisateur."}

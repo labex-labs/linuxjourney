@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 Dans les formes de requête RPM présentées, `p` signifie « interroger un fichier de paquet » plutôt que la base des paquets installés. La sortie aide à examiner un paquet, mais ne peut pas prouver que ses scripts ou ses programmes sont sûrs.
 
-:::single-choice{#package-install-tools-native-format}
-Quel outil de bas niveau gère les paquets Debian `.deb` et leur base installée ?
+:::single-choice{#package-install-tools-native-format} Quel outil de bas niveau gère les paquets Debian `.deb` et leur base installée ?
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM gère son propre format natif et sa base sur les systèmes de la famille RPM."}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="Tar peut lire des archives, mais ne met pas en œuvre le cycle de vie des paquets Debian installés."}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 Examinez la transaction avant de la confirmer. Dans APT, le préfixe `./` distingue le chemin d’une archive Debian locale du nom d’un paquet de dépôt.
 
-:::single-choice{#package-install-tools-local-dependencies}
-Quelle commande présentée peut installer un fichier `.deb` local tout en résolvant les dépendances disponibles dans les dépôts ?
+:::single-choice{#package-install-tools-local-dependencies} Quelle commande présentée peut installer un fichier `.deb` local tout en résolvant les dépendances disponibles dans les dépôts ?
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l` répertorie les sélections de paquets installés et ne constitue pas une procédure d’installation locale avec résolution des dépendances."}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="La syntaxe d’interrogation de RPM n’installe pas une archive Debian."}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 Sous Debian, `--remove` conserve normalement les fichiers de configuration classés comme conffiles ; `--purge` demande également leur suppression, sous réserve des scripts du paquet et des données non gérées. Aucune des deux commandes ne garantit la suppression des données créées par les utilisateurs. Les commandes de niveau supérieur `apt remove` ou `dnf remove` sont généralement préférables, car elles peuvent évaluer les paquets liés et présenter une transaction complète.
 
-:::single-choice{#package-install-tools-remove-operand}
-Quel opérande `dpkg --remove` attend-il pour un paquet installé ?
+:::single-choice{#package-install-tools-remove-operand} Quel opérande `dpkg --remove` attend-il pour un paquet installé ?
 
 ::option[L’URL de l’index du dépôt.]{#package-install-tools-remove-url explanation="L’emplacement du dépôt n’est pas l’identité du paquet transmise à la suppression de bas niveau."}
 ::option[Le nom du paquet installé.]{#package-install-tools-remove-name .correct explanation="La suppression vise l’enregistrement du paquet, par exemple `example`, et non l’ancien chemin de son fichier `.deb`."}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 Pour un examen ciblé, préférez un nom de paquet précis et un format exploitable par une machine lorsque la fiabilité d’un script est importante. Les bases de paquets décrivent l’état géré ; les administrateurs locaux ou les applications peuvent encore modifier les fichiers ensuite. Employez donc les fonctions de vérification lorsque vous devez comparer les fichiers installés aux métadonnées enregistrées.
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-Quelle commande interroge tous les paquets enregistrés comme installés dans la base RPM ?
+:::single-choice{#package-install-tools-rpm-list-installed} Quelle commande interroge tous les paquets enregistrés comme installés dans la base RPM ?
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q` sélectionne le mode d’interrogation et `-a` l’étend à tous les enregistrements de paquets installés."}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e` demande la suppression d’un paquet plutôt qu’une liste en lecture seule."}

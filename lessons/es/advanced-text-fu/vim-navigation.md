@@ -25,8 +25,7 @@ Los movimientos fundamentales del modo Normal son:
 
 Las teclas de flecha suelen realizar movimientos similares, pero `h`, `j`, `k` y `l` mantienen las manos cerca de otras órdenes. En una línea que se ajusta visualmente, `j` y `k` suelen desplazarse por líneas del archivo; `gj` y `gk` se desplazan por líneas visibles de la pantalla.
 
-:::single-choice{#vim-navigation-down}
-En el modo Normal, ¿qué tecla desplaza el cursor una línea hacia abajo?
+:::single-choice{#vim-navigation-down} En el modo Normal, ¿qué tecla desplaza el cursor una línea hacia abajo?
 
 ::option[`k`]{#vim-nav-k-up explanation="El movimiento `k` sube una línea."}
 ::option[`l`]{#vim-nav-l-right explanation="El movimiento `l` avanza un carácter hacia la derecha."}
@@ -44,8 +43,7 @@ Escribe una cantidad positiva antes de muchos movimientos para repetirlos. Por e
 
 `5j` baja cinco líneas, mientras que `3l` avanza tres posiciones de caracteres hacia la derecha cuando es posible. Las cantidades también se combinan con órdenes de palabras y edición.
 
-:::single-choice{#vim-navigation-count}
-¿Qué hace `4k` en el modo Normal?
+:::single-choice{#vim-navigation-count} ¿Qué hace `4k` en el modo Normal?
 
 ::option[Baja cuatro líneas cuando es posible.]{#vim-nav-four-down explanation="El movimiento hacia abajo usa `j`; `k` se desplaza en la dirección opuesta."}
 ::option[Sube cuatro líneas cuando es posible.]{#vim-nav-four-up .correct explanation="La cantidad `4` repite cuatro veces el movimiento ascendente `k`."}
@@ -62,8 +60,7 @@ Entre los movimientos útiles por palabras se encuentran:
 
 Las formas mayúsculas `W`, `B` y `E` usan PALABRAS delimitadas por espacios en blanco y tratan la puntuación de forma diferente. Antepón una cantidad para recorrer varias palabras, como en `3w`.
 
-:::single-choice{#vim-navigation-next-words}
-¿Qué orden del modo Normal avanza hasta el principio de la tercera posición de palabra siguiente?
+:::single-choice{#vim-navigation-next-words} ¿Qué orden del modo Normal avanza hasta el principio de la tercera posición de palabra siguiente?
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="La cantidad aplica tres veces el movimiento hacia la palabra siguiente."}
 ::option[`w3`]{#vim-nav-word-three explanation="En esta forma de orden, las cantidades preceden a los movimientos; colocar `3` después no expresa el desplazamiento solicitado."}
@@ -80,8 +77,7 @@ Estos movimientos apuntan a posiciones de la línea actual:
 
 La diferencia entre `0` y `^` importa en las líneas con sangría.
 
-:::single-choice{#vim-navigation-first-nonblank}
-¿Qué movimiento va al primer carácter que no sea un espacio en blanco de una línea con sangría?
+:::single-choice{#vim-navigation-first-nonblank} ¿Qué movimiento va al primer carácter que no sea un espacio en blanco de una línea con sangría?
 
 ::option[`0`]{#vim-nav-column-zero explanation="El cero va a la primera columna, que puede contener espacios de sangría."}
 ::option[`$`]{#vim-nav-line-end explanation="El movimiento con signo de dólar apunta al final de la línea."}
@@ -100,8 +96,7 @@ Usa estas órdenes del modo Normal para realizar saltos mayores:
 
 La orden `:42`, seguida de Intro, es otra forma de saltar a la línea 42.
 
-:::single-choice{#vim-navigation-file-end}
-¿Qué orden del modo Normal va a la última línea del búfer?
+:::single-choice{#vim-navigation-file-end} ¿Qué orden del modo Normal va a la última línea del búfer?
 
 ::option[`gg`]{#vim-nav-first-line explanation="`gg` en minúsculas va a la primera línea, no a la última."}
 ::option[`$`]{#vim-nav-current-line-end explanation="El movimiento con signo de dólar va al final de la línea actual, no al final del archivo."}

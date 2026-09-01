@@ -30,8 +30,7 @@ $ lsusb -t
 
 Também há uma saída detalhada dos descritores, mas alguns dados exigem acesso elevado de leitura. Não conceda permissões amplas aos dispositivos USB apenas para evitar mensagens de uma ferramenta de inspeção.
 
-:::single-choice{#listing-devices-usb-tree}
-Qual comando exibe os dispositivos USB como uma árvore de topologia?
+:::single-choice{#listing-devices-usb-tree} Qual comando exibe os dispositivos USB como uma árvore de topologia?
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="Esse comando lista funções PCI e informações de drivers do kernel, não a topologia USB."}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="Esse não é o comando de árvore USB apresentado."}
@@ -54,8 +53,7 @@ $ lspci -k
 
 O aparecimento de um controlador PCI nessa lista não comprova que todos os dispositivos atrás dele estejam inicializados ou funcionando. Verifique a associação do driver e os logs do kernel durante a solução de problemas.
 
-:::single-choice{#listing-devices-pci-driver}
-Qual comando acrescenta informações de drivers do kernel a uma listagem PCI?
+:::single-choice{#listing-devices-pci-driver} Qual comando acrescenta informações de drivers do kernel a uma listagem PCI?
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="A opção `-k` exibe o driver ativo do kernel e os módulos capazes de controlar cada dispositivo PCI."}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="Esse comando descreve a hierarquia USB e os drivers das interfaces."}
@@ -78,8 +76,7 @@ Para uma hierarquia orientada ao armazenamento que inclua muitos tipos de dispos
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-O que `lsscsi` lista principalmente?
+:::single-choice{#listing-devices-lsscsi-scope} O que `lsscsi` lista principalmente?
 
 ::option[Exclusivamente todos os namespaces e controladores NVMe.]{#listing-devices-only-nvme explanation="O NVMe usa seu próprio subsistema e suas próprias ferramentas, embora visualizações de blocos relacionadas possam aparecer em outros lugares."}
 ::option[Somente arquivos cujos nomes terminam em `.scsi`.]{#listing-devices-scsi-extension explanation="O comando consulta interfaces de dispositivos do kernel, não extensões de nomes de arquivos."}
@@ -92,8 +89,7 @@ As descrições muitas vezes vêm de bancos de dados locais de IDs e podem ser g
 
 Os utilitários podem ser distribuídos separadamente, normalmente em pacotes como `usbutils`, `pciutils` e `lsscsi`. Quando um comando estiver ausente, use o gerenciador de pacotes da distribuição em vez de baixar substitutos desconhecidos.
 
-:::single-choice{#listing-devices-listed-not-working}
-Ver um dispositivo em `lspci` comprova que seu driver está ativo e funcionando corretamente?
+:::single-choice{#listing-devices-listed-not-working} Ver um dispositivo em `lspci` comprova que seu driver está ativo e funcionando corretamente?
 
 ::option[Não; inspecione também a associação do driver e as mensagens relevantes do kernel.]{#listing-devices-needs-correlation .correct explanation="A enumeração estabelece que uma função PCI está visível, não que a inicialização de nível superior foi bem-sucedida."}
 ::option[Sim; a enumeração PCI realiza um teste funcional completo.]{#listing-devices-complete-test explanation="A listagem não exercita todas as funções do hardware nem valida o comportamento dos serviços."}

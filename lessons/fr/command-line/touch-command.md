@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 Cette méthode est pratique pour créer des espaces réservés, mais `touch` n'ajoute aucun texte. Pour produire un fichier non vide, utilisez un éditeur ou une autre commande conçue pour écrire du contenu.
 
-:::single-choice{#create-several-empty-files}
-Quelle commande crée trois fichiers vides nommés `one`, `two` et `three` s'ils n'existent pas déjà ?
+:::single-choice{#create-several-empty-files} Quelle commande crée trois fichiers vides nommés `one`, `two` et `three` s'ils n'existent pas déjà ?
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="Les guillemets produisent un seul nom de fichier contenant des espaces. Cette commande ne désigne donc qu'un fichier."}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` crée des répertoires et non des fichiers ordinaires vides. Utilisez `touch` pour les fichiers demandés."}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 La sortie de `ls -l` affiche normalement l'heure de modification, pas l'heure d'accès.
 
-:::single-choice{#touch-existing-file}
-Que se passe-t-il avec `touch report.txt` si `report.txt` existe déjà ?
+:::single-choice{#touch-existing-file} Que se passe-t-il avec `touch report.txt` si `report.txt` existe déjà ?
 
 ::option[Ses horodatages sont actualisés sans remplacer son contenu.]{#timestamps-only .correct explanation="Par défaut, `touch` met à jour les heures d'accès et de modification d'un fichier existant sans écraser ses données."}
 ::option[Son contenu est supprimé et le fichier devient vide.]{#contents-deleted explanation="La création d'un fichier vide ne concerne que les chemins absents. Un fichier existant conserve son contenu lorsque `touch` actualise ses horodatages."}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-Quelle commande ne met à jour que l'heure de modification de `notes.txt` ?
+:::single-choice{#change-modification-time-only} Quelle commande ne met à jour que l'heure de modification de `notes.txt` ?
 
 ::option[`touch -a notes.txt`]{#access-only explanation="L'option `-a` ne change que l'heure d'accès, pas l'heure de modification demandée."}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="L'option `-m` limite le changement à l'heure de modification et laisse l'heure d'accès intacte."}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 Ici, `file1.txt` fournit les horodatages et `file2.txt` est modifié. L'option `-t` permet aussi de fournir une heure sous une forme numérique compacte.
 
-:::single-choice{#copy-reference-timestamps}
-Quelle commande copie les horodatages de `source.txt` vers `target.txt` ?
+:::single-choice{#copy-reference-timestamps} Quelle commande copie les horodatages de `source.txt` vers `target.txt` ?
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="Avec `-r`, l'opérande suivant est le fichier de référence et le dernier est celui dont les horodatages sont mis à jour."}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="Cette commande inverse le rôle des fichiers : elle prendrait `target.txt` comme référence et modifierait `source.txt`."}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 Si `existing-file.txt` est absent, cette commande ne le crée pas. Ce comportement est utile dans les scripts qui doivent actualiser un horodatage sans introduire de nouveau fichier.
 
-:::single-choice{#update-without-creating}
-Quelle commande actualise `status.log` s'il existe, sans le créer s'il est absent ?
+:::single-choice{#update-without-creating} Quelle commande actualise `status.log` s'il existe, sans le créer s'il est absent ?
 
 ::option[`touch -a status.log`]{#touch-access explanation="L'option `-a` choisit l'heure d'accès, mais un fichier absent peut toujours être créé. Elle ne garantit pas l'absence de création."}
 ::option[`touch -m status.log`]{#touch-modification explanation="L'option `-m` choisit l'heure de modification, mais n'empêche pas la création d'un fichier absent. Utilisez `-c`."}

@@ -32,8 +32,7 @@ $ rm notes.txt old-report.txt draft.md
 
 Enter를 누르기 전에 철자와 위치를 확인하세요. 삭제 후 파일 시스템 복구 도구에 의존하는 것보다 백업이나 버전 관리 복사본이 더 확실한 복구 방법입니다.
 
-:::single-choice{#remove-one-file}
-대상을 확인한 뒤 `old-report.txt` 파일을 제거하는 명령어는 무엇인가요?
+:::single-choice{#remove-one-file} 대상을 확인한 뒤 `old-report.txt` 파일을 제거하는 명령어는 무엇인가요?
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm`은 지정한 파일 항목을 제거하며 보통 휴지통에 넣지 않습니다."}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir`은 일반 파일이 아닌 빈 디렉터리에 사용하므로 이 대상에 맞지 않습니다."}
@@ -58,8 +57,7 @@ $ rm *.tmp
 
 셸이 `rm` 실행 전에 `*.tmp`를 확장한다는 점을 기억하세요. 패턴이 예상보다 많은 파일과 일치하면 `rm`은 모두를 받게 됩니다.
 
-:::single-choice{#preview-removal-pattern}
-`*.tmp`를 제거하기 전에 삭제 없이 패턴이 선택한 숨김 항목 이외의 경로를 보여 주는 명령어는 무엇인가요?
+:::single-choice{#preview-removal-pattern} `*.tmp`를 제거하기 전에 삭제 없이 패턴이 선택한 숨김 항목 이외의 경로를 보여 주는 명령어는 무엇인가요?
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="상세 모드는 제거하면서 작업을 보고하므로 읽기 전용 미리보기가 아닙니다."}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="따옴표가 와일드카드 확장을 막아 의도한 대상 대신 `*`가 든 문자 그대로의 이름을 찾습니다."}
@@ -77,8 +75,7 @@ rm: remove regular file 'important.txt'? y
 
 GNU `rm`의 `-I`는 덜 번거로운 보호 장치로, 세 개보다 많은 파일을 제거하거나 재귀 작업을 할 때 한 번만 묻습니다.
 
-:::single-choice{#confirm-each-removal}
-지정한 파일을 각각 제거하기 전에 확인을 요청하는 명령어는 무엇인가요?
+:::single-choice{#confirm-each-removal} 지정한 파일을 각각 제거하기 전에 확인을 요청하는 명령어는 무엇인가요?
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="`-i`는 각 제거 전에 물어보므로 작업을 거부할 기회를 줍니다."}
 ::option[`rm -f important.txt`]{#force-important explanation="`-f`는 질문을 없애고 없는 피연산자를 무시하므로 확인을 추가하지 않습니다."}
@@ -118,8 +115,7 @@ $ rmdir empty-directory
 
 `rmdir`는 디렉터리가 비어 있지 않으면 실패하므로 내부 항목을 재귀적으로 삭제하지 않습니다.
 
-:::single-choice{#remove-empty-directory-only}
-`old-cache/`가 비어 있을 때만 제거하는 명령어는 무엇인가요?
+:::single-choice{#remove-empty-directory-only} `old-cache/`가 비어 있을 때만 제거하는 명령어는 무엇인가요?
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="재귀 `rm`은 디렉터리와 내용을 제거하므로 빈 디렉터리 조건을 강제하지 않습니다."}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir`는 빈 디렉터리에서만 성공하므로 내부 파일을 재귀 삭제하지 않습니다."}
@@ -152,8 +148,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-전체 대상을 확인한 뒤 일반 확인 동작은 유지하면서 `old-project/`와 그 아래 모든 항목을 제거하는 명령어는 무엇인가요?
+:::single-choice{#remove-nonempty-tree} 전체 대상을 확인한 뒤 일반 확인 동작은 유지하면서 `old-project/`와 그 아래 모든 항목을 제거하는 명령어는 무엇인가요?
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="일반 `rm`은 디렉터리 안으로 내려가지 않으므로 비어 있지 않은 트리를 제거할 수 없습니다."}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="`-r`은 디렉터리 트리를 재귀 제거하며 `-rf`와 달리 질문을 없애는 `-f`를 추가하지 않습니다."}

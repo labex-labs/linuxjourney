@@ -25,8 +25,7 @@ $ printf '%s\n' "$?"
 
 쉘은 제한된 인코딩 상태 범위를 노출하고 시그널 종료도 표현하므로 이 값이 완전한 진단 기록은 아닙니다. 프로그램은 자체 종료 코드를 문서화해야 합니다.
 
-:::single-choice{#process-termination-success-status}
-Unix 관례에서 성공을 나타내는 정상 종료 상태는 무엇인가요?
+:::single-choice{#process-termination-success-status} Unix 관례에서 성공을 나타내는 정상 종료 상태는 무엇인가요?
 
 ::option[`1`]{#process-termination-status-one explanation="의미는 명령마다 다르지만 많은 프로그램이 `1`을 일반 실패에 사용합니다."}
 ::option[`0`]{#process-termination-status-zero .correct explanation="정상 상태 0은 관례적으로 성공적인 완료를 나타냅니다."}
@@ -39,8 +38,7 @@ Unix 관례에서 성공을 나타내는 정상 종료 상태는 무엇인가요
 
 기다리기는 실행을 조정할 수도 있습니다. 쉘은 포그라운드 명령이 끝날 때까지 기다린 뒤 다음 프롬프트를 표시하고 백그라운드 작업은 기다리기를 미룰 수 있습니다. 잘 설계된 장기 실행 부모는 관련 없는 작업을 막지 않으면서 자식을 수거하도록 준비해야 합니다.
 
-:::single-choice{#process-termination-wait-purpose}
-성공적인 wait 작업은 부모가 무엇을 가져가게 하나요?
+:::single-choice{#process-termination-wait-purpose} 성공적인 wait 작업은 부모가 무엇을 가져가게 하나요?
 
 ::option[자식의 종료 정보]{#process-termination-wait-status .correct explanation="wait 계열은 자식이 어떻게 멈추거나 종료되었는지 보고하고 완료된 자식을 수거합니다."}
 ::option[자식의 이전 주소 공간 사본]{#process-termination-wait-memory explanation="대부분의 프로세스 메모리는 이미 해제되었고 `wait()`가 부모에게 반환하지 않습니다."}
@@ -53,8 +51,7 @@ Unix 관례에서 성공을 나타내는 정상 종료 상태는 무엇인가요
 
 좀비에 시그널을 보내도 다시 종료하게 할 수 없습니다. 좀비가 계속 쌓이면 기다리지 않는 부모를 진단하고 적절한 운영 절차로 그 부모를 재시작하거나 수정하거나 수거할 프로세스로 부모가 재지정되도록 해야 합니다. 수가 많으면 PID나 프로세스 테이블 용량을 소진할 수 있습니다.
 
-:::single-choice{#process-termination-zombie-definition}
-좀비 프로세스를 설명하는 것은 무엇인가요?
+:::single-choice{#process-termination-zombie-definition} 좀비 프로세스를 설명하는 것은 무엇인가요?
 
 ::option[부모가 이미 종료된 실행 중인 자식]{#process-termination-zombie-orphan explanation="좀비 상태가 아니라 고아가 된 자식을 설명합니다."}
 ::option[종료했지만 종료 레코드가 수거되지 않은 자식]{#process-termination-zombie-unreaped .correct explanation="프로세스는 실행을 멈췄지만 커널이 부모를 위해 최소 상태를 유지합니다."}
@@ -67,8 +64,7 @@ Unix 관례에서 성공을 나타내는 정상 종료 상태는 무엇인가요
 
 입양한 프로세스가 종료 상태 수집을 책임집니다. 현대 서비스 관리자와 컨테이너 환경에서는 새 부모가 항상 호스트의 PID 1이라고 가정하면 안 됩니다.
 
-:::single-choice{#process-termination-orphan-definition}
-프로세스가 원래 부모보다 오래 살아남으면 어떻게 되나요?
+:::single-choice{#process-termination-orphan-definition} 프로세스가 원래 부모보다 오래 살아남으면 어떻게 되나요?
 
 ::option[적절한 subreaper 또는 네임스페이스 init 프로세스로 부모가 재지정됩니다.]{#process-termination-orphan-reparented .correct explanation="커널은 입양 프로세스를 할당하여 유효한 부모 관계를 보존합니다."}
 ::option[종료하지 않았어도 즉시 좀비가 됩니다.]{#process-termination-orphan-zombie explanation="좀비 상태는 실행이 끝나고 상태가 수집을 기다릴 때만 시작됩니다."}

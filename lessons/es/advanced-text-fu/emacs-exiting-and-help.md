@@ -24,8 +24,7 @@ Emacs comprueba los búferes modificados relevantes asociados a archivos y pregu
 
 En un flujo con `emacsclient` o un servidor de Emacs, el comportamiento exacto del marco y del servidor puede variar, pero las preguntas sobre búferes modificados siguen mereciendo atención.
 
-:::single-choice{#emacs-exit-key}
-¿Qué secuencia de teclas solicita una salida normal de Emacs y comprueba los búferes modificados?
+:::single-choice{#emacs-exit-key} ¿Qué secuencia de teclas solicita una salida normal de Emacs y comprueba los búferes modificados?
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="Esto elimina un búfer seleccionado y no solicita cerrar la sesión de Emacs."}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="Esto cancela una orden o solicitud pendiente en vez de cerrar Emacs."}
@@ -42,8 +41,7 @@ C-h C-h
 
 La segunda tecla elige el tipo de ayuda que necesitas.
 
-:::single-choice{#emacs-help-for-help}
-¿Qué secuencia de teclas explica cómo usar el sistema de ayuda de Emacs?
+:::single-choice{#emacs-help-for-help} ¿Qué secuencia de teclas explica cómo usar el sistema de ayuda de Emacs?
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="El prefijo de ayuda seguido de otro `C-h` abre ayuda sobre el propio selector de ayuda."}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="Esta no es la secuencia de ayuda sobre la ayuda presentada aquí."}
@@ -62,8 +60,7 @@ Entre las órdenes de ayuda útiles se encuentran:
 
 Por ejemplo, escribe `C-h k C-x C-s` para ver la documentación de la asociación que guarda el búfer.
 
-:::single-choice{#emacs-describe-key}
-Quieres saber qué hace `C-x C-s`. ¿Qué prefijo de ayuda debes introducir antes de esa secuencia?
+:::single-choice{#emacs-describe-key} Quieres saber qué hace `C-x C-s`. ¿Qué prefijo de ayuda debes introducir antes de esa secuencia?
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key` espera una secuencia de teclas y explica la orden asociada a ella."}
 ::option[`C-h f`]{#emacs-describe-function explanation="Esto solicita el nombre de una función en vez de leer una secuencia de teclas para identificar su asociación."}
@@ -80,8 +77,7 @@ C-g
 
 No deshace cambios del búfer que ya hayan ocurrido ni sale de Emacs. Detiene la interacción actual y devuelve el control a la edición normal cuando es posible.
 
-:::single-choice{#emacs-cancel-pending-command}
-¿Qué tecla cancela normalmente la solicitud u orden pendiente actual de Emacs?
+:::single-choice{#emacs-cancel-pending-command} ¿Qué tecla cancela normalmente la solicitud u orden pendiente actual de Emacs?
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="Esto inicia el flujo de salida de Emacs en vez de limitarse a cancelar la solicitud actual."}
 ::option[`C-y`]{#emacs-cancel-yank explanation="Esto inserta texto del anillo de eliminaciones y no cancela una orden."}
@@ -98,8 +94,7 @@ C-/
 
 Las órdenes repetidas de deshacer retroceden por los cambios recientes del búfer. El movimiento del cursor por sí solo no suele ser un cambio del búfer. Las versiones y configuraciones de Emacs pueden ofrecer `undo-redo` y herramientas de historial más avanzadas; usa `C-h k` sobre tus asociaciones reales de deshacer y rehacer para verificar el comportamiento local.
 
-:::single-choice{#emacs-undo-change}
-¿Qué secuencia de teclas es una asociación estándar para deshacer un cambio reciente de un búfer de Emacs?
+:::single-choice{#emacs-undo-change} ¿Qué secuencia de teclas es una asociación estándar para deshacer un cambio reciente de un búfer de Emacs?
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/` es una asociación estándar para deshacer, junto con `C-_` y `C-x u` en configuraciones habituales."}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="Esto guarda el búfer actual en vez de recorrer su historial de deshacer."}

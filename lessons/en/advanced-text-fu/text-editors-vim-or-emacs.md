@@ -27,8 +27,7 @@ $ command -v emacs
 
 An empty result with a nonzero status means that name was not found through the current command search. Minimal systems may provide `vi`, while others include Nano or no interactive editor at all.
 
-:::single-choice{#editors-check-availability}
-Which command checks whether the current shell can resolve an executable named `vim`?
+:::single-choice{#editors-check-availability} Which command checks whether the current shell can resolve an executable named `vim`?
 
 ::option[`vim --install`]{#editors-vim-install explanation="Vim does not use this command as a portable installation check, and package installation is distribution-specific."}
 ::option[`file ~/.vimrc`]{#editors-file-vimrc explanation="This classifies one configuration pathname if it exists; it does not determine whether `vim` is resolvable."}
@@ -45,8 +44,7 @@ Vim is a modal editor. The same key can have different meanings depending on the
 
 This model makes repeated keyboard editing efficient after practice, but new users must keep track of the active mode. Later lessons introduce Vim one operation at a time.
 
-:::single-choice{#editors-vim-modal-meaning}
-What does it mean that Vim is modal?
+:::single-choice{#editors-vim-modal-meaning} What does it mean that Vim is modal?
 
 ::option[Every file opens in a separate graphical window.]{#editors-vim-windows explanation="Windows and buffers are separate concepts. Modal refers to how key behavior changes with editor state."}
 ::option[Vim can edit only one kind of text file at a time.]{#editors-vim-file-type explanation="Vim supports many file types. The word modal describes its interaction model, not a file restriction."}
@@ -59,8 +57,7 @@ Emacs commonly uses key combinations and named commands within an extensible env
 
 Vim and Emacs both support far more than basic editing through configuration and extensions. Begin with opening, changing, saving, and closing a plain-text file before adding customization.
 
-:::single-choice{#editors-emacs-buffer}
-In Emacs terminology, where is a visited file's editable text normally held?
+:::single-choice{#editors-emacs-buffer} In Emacs terminology, where is a visited file's editable text normally held?
 
 ::option[In a buffer.]{#editors-emacs-buffer-answer .correct explanation="Emacs visits a file in a buffer, which holds the text being viewed or edited."}
 ::option[In the shell's alias table.]{#editors-emacs-alias-table explanation="Aliases belong to shell command resolution and do not store editor text."}
@@ -78,8 +75,7 @@ $ export EDITOR="$VISUAL"
 
 These variables express a preference; they do not install the program. Use a command that actually exists, and place the exports in the appropriate shell startup file only after testing them.
 
-:::single-choice{#editors-editor-variable}
-What does `export EDITOR=vim` do?
+:::single-choice{#editors-editor-variable} What does `export EDITOR=vim` do?
 
 ::option[It tells future child processes that `vim` is the preferred editor value.]{#editors-export-preference .correct explanation="Export places the preference in the environment inherited by commands started from the current shell."}
 ::option[It installs Vim for every user on the system.]{#editors-install-vim explanation="Environment-variable assignment does not install packages or change other users' systems."}
@@ -97,8 +93,7 @@ $ vim editor-practice.txt
 
 Avoid beginning with system configuration or another user's data. Make a backup before changing an important file, understand how to save and exit, and review the result with a read-only command such as `cat` or `diff`.
 
-:::single-choice{#editors-first-practice-file}
-What is the safest first file for practicing an unfamiliar editor?
+:::single-choice{#editors-first-practice-file} What is the safest first file for practicing an unfamiliar editor?
 
 ::option[A critical boot configuration file opened as root.]{#editors-boot-file explanation="An accidental change could prevent normal startup, and elevated access increases the impact of mistakes."}
 ::option[A disposable text file in a directory you own.]{#editors-disposable-file .correct explanation="A practice file limits the consequences of accidental edits while you learn navigation, saving, and quitting."}

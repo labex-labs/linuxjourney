@@ -43,8 +43,7 @@ $ join people.txt surnames.txt
 
 输出先包含一次共享键，然后依次是第一个和第二个文件中的其余字段。`join` 一次处理两个文件；它不接受三个普通文件操作数来执行三路关系连接。
 
-:::single-choice{#join-default-key}
-不指定字段选项时，`join first.txt second.txt` 会合并哪些记录？
+:::single-choice{#join-default-key} 不指定字段选项时，`join first.txt second.txt` 会合并哪些记录？
 
 ::option[以空白分隔的第一个字段相等的行。]{#join-first-fields .correct explanation="`join` 默认比较两个已排序输入的第 1 个字段。"}
 ::option[物理行号相同的行。]{#join-line-numbers explanation="匹配依据是键字段的值，而不只是记录所在的位置。"}
@@ -63,8 +62,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 排序和连接使用同一 locale，可以让排序规则保持一致。不要把排序结果重定向回原输入路径，因为 shell 会先截断该文件。
 
-:::single-choice{#join-sort-requirement}
-为了可靠匹配，`join` 通常要求进行什么准备？
+:::single-choice{#join-sort-requirement} 为了可靠匹配，`join` 通常要求进行什么准备？
 
 ::option[两个文件必须包含完全相同数量的物理行。]{#join-equal-line-count explanation="输入长度可以不同。连接输出取决于键是否匹配，而不是行数是否相等。"}
 ::option[两个文件的文件名必须在字母排序中彼此相邻。]{#join-filename-order explanation="需要排序的是内容中的键；两个文件名在词法上的关系无关紧要。"}
@@ -100,8 +98,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 如果字段由 `:` 之类的单个非空白字符分隔，请使用 `-t CHARACTER`。`-a 1` 或 `-a 2` 等选项可以包含某个输入中未配对的行；默认输出只包含匹配的键。
 
-:::single-choice{#join-different-fields}
-哪些选项会把第一个文件的字段 2 与第二个文件的字段 1 连接起来？
+:::single-choice{#join-different-fields} 哪些选项会把第一个文件的字段 2 与第二个文件的字段 1 连接起来？
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="这会选择第一个输入的字段 1 和第二个输入的字段 2，与题目要求相反。"}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` 选择文件一的字段 2，`-2 1` 选择文件二的字段 1。"}
@@ -126,8 +123,7 @@ $ split -l 500 large.txt part-
 
 这会生成 `part-aa`、`part-ab` 等文件，每个片段最多包含 500 行。
 
-:::single-choice{#split-lines-with-prefix}
-哪个命令会把 `large.txt` 拆成最多 500 行一份、名称以 `part-` 为前缀的片段？
+:::single-choice{#split-lines-with-prefix} 哪个命令会把 `large.txt` 拆成最多 500 行一份、名称以 `part-` 为前缀的片段？
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="`-b` 选择的是字节；对于普通文本，这些片段会远小于 500 行。"}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` 设置最大行数，最后一个操作数提供输出文件名前缀。"}
@@ -144,8 +140,7 @@ $ split -b 10M archive.bin chunk-
 
 这会请求大小为 10 MiB 的片段，最后一片可能更小。`split` 不会创建归档清单或重组元数据；需要重建时，请保留后缀顺序，并按顺序拼接各片段。
 
-:::single-choice{#split-ten-mebibytes}
-哪个命令会把 `archive.bin` 拆成 10 MiB 一份、使用 `chunk-` 前缀的片段？
+:::single-choice{#split-ten-mebibytes} 哪个命令会把 `archive.bin` 拆成 10 MiB 一份、使用 `chunk-` 前缀的片段？
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="`-l` 选项需要行数，不能用字节大小后缀来指定二进制片段。"}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` 不会拆分二进制输入，也不支持这种片段大小操作。"}

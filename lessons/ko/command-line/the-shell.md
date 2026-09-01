@@ -20,8 +20,7 @@ meta_keywords: "리눅스 쉘, bash 쉘, 커맨드 라인, 리눅스 터미널, 
 
 쉘은 빠르고 스크립트로 자동화할 수 있으며 거의 모든 리눅스 시스템에서 사용할 수 있습니다. 명령어를 더 배우면 이를 조합해 파일을 살펴보고, 디렉터리를 관리하고, 텍스트를 검색하고, 소프트웨어를 설치하고, 반복 작업을 자동화할 수 있습니다.
 
-:::single-choice{#distinguish-shell-and-terminal}
-터미널과 쉘의 관계를 올바르게 설명한 것은 무엇인가요?
+:::single-choice{#distinguish-shell-and-terminal} 터미널과 쉘의 관계를 올바르게 설명한 것은 무엇인가요?
 
 ::option[터미널은 창을 제공하고 쉘은 그 안에서 실행됩니다.]{#shell-runs-in-terminal .correct explanation="터미널은 사용자가 다루는 인터페이스이고, 쉘은 그 안에서 명령어를 처리하는 프로그램입니다."}
 ::option[터미널은 명령어를 받고 쉘은 결과만 표시합니다.]{#terminal-accepts-commands explanation="두 역할을 반대로 설명했습니다. 터미널은 인터페이스를 제공하고 쉘이 명령어를 받아 실행합니다."}
@@ -40,8 +39,7 @@ pete@icebox:/home/pete $
 
 `$` 기호는 쉘이 일반 사용자의 입력을 받을 준비가 되었음을 뜻합니다. 명령어를 입력할 때 이 기호까지 입력하지는 않습니다. `#`가 보인다면 대개 더 큰 권한과 위험을 지닌 root 사용자로 작업하고 있다는 뜻입니다.
 
-:::single-choice{#interpret-dollar-prompt}
-예시 프롬프트 끝의 `$`는 무엇을 나타내나요?
+:::single-choice{#interpret-dollar-prompt} 예시 프롬프트 끝의 `$`는 무엇을 나타내나요?
 
 ::option[쉘이 root 사용자 권한으로 실행 중입니다.]{#root-user-ready explanation="root 프롬프트는 보통 `$`가 아니라 `#`로 끝납니다. root 권한에는 더 큰 힘과 위험이 따릅니다."}
 ::option[쉘이 일반 사용자의 입력을 기다리고 있습니다.]{#normal-user-ready .correct explanation="`$`는 일반 사용자 프롬프트이며 쉘이 명령어를 받을 준비가 되었음을 나타냅니다."}
@@ -56,8 +54,7 @@ command options arguments
 
 예를 들어 `echo Hello World`에서 `echo`는 명령어이고 `Hello World`는 명령어에 전달되는 텍스트입니다.
 
-:::single-choice{#identify-command-name}
-`echo Hello World`에서 명령어 이름은 어느 부분인가요?
+:::single-choice{#identify-command-name} `echo Hello World`에서 명령어 이름은 어느 부분인가요?
 
 ::option[`Hello`]{#hello-command explanation="`Hello`는 명령어 이름 뒤에 있으므로 `echo`에 전달되는 텍스트의 일부입니다."}
 ::option[`World`]{#world-command explanation="`World` 역시 `echo`에 전달되는 텍스트이며 실행할 명령어의 이름이 아닙니다."}
@@ -84,8 +81,7 @@ Hello from Bash
 
 쉘이 여러 단어를 하나의 텍스트 덩어리로 다루게 하려면 따옴표가 유용합니다.
 
-:::single-choice{#group-words-with-quotes}
-쉘이 `Hello from Bash`를 따옴표로 묶인 하나의 텍스트 덩어리로 처리하게 하는 명령어는 무엇인가요?
+:::single-choice{#group-words-with-quotes} 쉘이 `Hello from Bash`를 따옴표로 묶인 하나의 텍스트 덩어리로 처리하게 하는 명령어는 무엇인가요?
 
 ::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="따옴표가 세 단어를 하나의 인자로 묶어 `echo`에 전달합니다."}
 ::option[`echo Hello from Bash`]{#unquoted-words explanation="화면에는 같은 단어가 출력되지만, 따옴표가 없으므로 쉘은 각 단어를 별도의 인자로 처리합니다."}

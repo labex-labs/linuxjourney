@@ -32,8 +32,7 @@ sally sells seashells
 
 일치 도구가 받기 전에 쉘이 패턴을 확장하거나 분리하지 않도록 정규 표현식 패턴을 따옴표로 묶으세요. 정규 표현식은 쉘 경로명 확장과도 다릅니다. 정규 표현식에서 `*`는 앞의 원자를 반복하지만 쉘 글로브에서 `*`는 경로명 문자 문자열에 대응하는 와일드카드 자체입니다.
 
-:::single-choice{#regex-versus-shell-star}
-`ab*` 같은 정규 표현식에서 `*`는 무엇을 하나요?
+:::single-choice{#regex-versus-shell-star} `ab*` 같은 정규 표현식에서 `*`는 무엇을 하나요?
 
 ::option[현재 디렉터리의 모든 파일 이름과 일치합니다.]{#regex-shell-glob explanation="이는 명령 문맥에서 쉘 경로명 확장을 설명하며 정규 표현식 안의 `*` 의미가 아닙니다."}
 ::option[앞의 `b`를 0번 이상 반복합니다.]{#regex-repeat-b .correct explanation="정규 표현식 수량자는 바로 앞 원자에 적용되므로 `ab*`는 `a`, `ab`, `abb` 등에 일치합니다."}
@@ -60,8 +59,7 @@ seashore$
 ^by the seashore$
 ```
 
-:::single-choice{#regex-complete-line}
-전체 텍스트가 `by the seashore`인 줄에만 일치하는 패턴은 무엇인가요?
+:::single-choice{#regex-complete-line} 전체 텍스트가 `by the seashore`인 줄에만 일치하는 패턴은 무엇인가요?
 
 ::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="캐럿은 일치가 줄 시작에서 시작하도록 하고 달러 기호는 줄 끝에서 끝나도록 합니다."}
 ::option[`by the seashore`]{#regex-unanchored-line explanation="앵커가 없으면 앞뒤에 다른 텍스트가 있는 더 긴 줄 안에서도 이 문자열에 일치할 수 있습니다."}
@@ -78,8 +76,7 @@ b.
 
 `by`와 일치하지만 `ba`나 `b7`에도 일치할 수 있습니다. 뒤에 문자 하나가 필요하므로 `b` 하나만 있는 경우에는 일치하지 않습니다. 문자 그대로의 마침표에는 `\.`로 이스케이프하거나 알맞은 대괄호 표현식 안에 넣습니다.
 
-:::single-choice{#regex-dot-character}
-전체 줄 패턴 `^b.$`와 일치하지 않는 문자열은 무엇인가요?
+:::single-choice{#regex-dot-character} 전체 줄 패턴 `^b.$`와 일치하지 않는 문자열은 무엇인가요?
 
 ::option[`by`]{#regex-dot-by explanation="점이 `y`와 일치하므로 두 문자 줄이 패턴을 만족합니다."}
 ::option[`b`]{#regex-dot-b .correct explanation="점은 `b` 뒤에 문자 하나를 요구하지만 이 문자열은 바로 끝납니다."}
@@ -104,8 +101,7 @@ s[^e]lls
 
 첫 번째 `s` 다음 문자가 `e`일 수 없으므로 `salls`와 일치하지만 `sells`와는 일치하지 않습니다.
 
-:::single-choice{#regex-negated-bracket}
-`[^e]`는 무엇과 일치하나요?
+:::single-choice{#regex-negated-bracket} `[^e]`는 무엇과 일치하나요?
 
 ::option[`e`가 아닌 문자 정확히 하나입니다.]{#regex-not-e .correct explanation="대괄호 안의 선행 캐럿은 나열된 집합의 여집합을 만들며 대괄호 표현식은 여전히 문자 하나를 소비합니다."}
 ::option[줄 시작 뒤에 오는 `e`입니다.]{#regex-caret-e-anchor explanation="대괄호 표현식 안의 선행 캐럿은 줄을 고정하지 않고 집합을 부정합니다."}
@@ -143,8 +139,7 @@ $ grep -E '^(cat|dog)s?$' animals.txt
 
 전체 줄이 `cat`, `cats`, `dog`, `dogs` 중 하나인 경우를 선택합니다. BRE 모드에서는 이 연산자의 이스케이프 규칙이 다르므로 확인 없이 패턴을 종류 사이에 복사하지 마세요.
 
-:::single-choice{#regex-extended-alternation}
-패턴 `^(cat|dog)s?$`에 확장 정규 표현식 구문을 활성화하는 명령어는 무엇인가요?
+:::single-choice{#regex-extended-alternation} 패턴 `^(cat|dog)s?$`에 확장 정규 표현식 구문을 활성화하는 명령어는 무엇인가요?
 
 ::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F`는 모든 정규 표현식 연산자를 문자 그대로 처리하므로 그룹화, 선택, 선택적 반복이 비활성화됩니다."}
 ::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E`는 확장 정규 표현식을 선택하여 표시된 그룹화, 선택, 선택적 `s`를 활성화합니다."}

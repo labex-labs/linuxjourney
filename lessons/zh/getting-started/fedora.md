@@ -16,8 +16,7 @@ Fedora 是一个由 Red Hat 赞助、社区驱动的 Linux 发行版。它以提
 
 Fedora 以比保守型发行版更快的更新速度著称，同时兼顾了质量和易用性。这种平衡使其对于那些既想要现代 Linux 系统又不想从零开始构建一切的用户极具吸引力。
 
-:::single-choice{#identify-fedora-project-model}
-以下哪项正确描述了 Fedora 项目？
+:::single-choice{#identify-fedora-project-model} 以下哪项正确描述了 Fedora 项目？
 
 ::option[它是已经停止维护的 Red Hat Enterprise Linux 版本]{#discontinued-rhel explanation="Fedora 是具有独立版本的活跃发行版；它位于 RHEL 上游，而不是过时的 RHEL 版本。"}
 ::option[它是由一家硬件制造商维护的发行版]{#hardware-maintained explanation="Fedora 会与硬件厂商合作，但其开发由社区推动，并由 Red Hat 赞助。"}
@@ -30,8 +29,7 @@ Fedora 之所以脱颖而出，是因为它往往比以企业为中心的发行�
 
 它还以提供纯净的默认体验而闻名。Fedora Workstation 在那些需要现代桌面、最新工具以及对容器、虚拟化和其他开发工作流良好支持的开发者中尤为受欢迎。
 
-:::single-choice{#match-fedora-user}
-哪种用户目标最适合 Fedora Workstation？
+:::single-choice{#match-fedora-user} 哪种用户目标最适合 Fedora Workstation？
 
 ::option[让一个企业版本多年保持不变]{#long-enterprise-lifecycle explanation="长期而保守的企业生命周期更符合 RHEL 的定位；Fedora 的发布和升级节奏更快。"}
 ::option[在完善的桌面系统中使用较新的开发工具]{#current-developer-desktop .correct explanation="Fedora Workstation 把精心设计的桌面与较新的开发、容器和虚拟化工具结合起来，正好符合这一目标。"}
@@ -44,8 +42,7 @@ Fedora 在 Red Hat 生态系统中扮演着重要角色。新技术和变更通�
 
 如果您想将 Fedora 与面向企业的选项进行比较，请参阅 [Red Hat Enterprise Linux](https://labex.io/zh/lesson/red-hat-enterprise-linux)。如果您仍在比较不同的发行版系列，[选择 Linux 发行版](https://labex.io/zh/lesson/choosing-a-linux-distribution) 提供了更广泛的概述。
 
-:::single-choice{#explain-fedora-upstream-role}
-Fedora 与 RHEL 的上游关系意味着什么？
+:::single-choice{#explain-fedora-upstream-role} Fedora 与 RHEL 的上游关系意味着什么？
 
 ::option[RHEL 版本会在发布后原样复制到 Fedora]{#rhel-copied-to-fedora explanation="这颠倒了二者的关系；Fedora 更新更快，是上游来源，而不是 RHEL 的后续副本。"}
 ::option[Fedora 与 RHEL 始终提供完全相同的软件版本]{#identical-software-versions explanation="两个发行版有不同的发布目标和日程；RHEL 会选择并稳定技术，而不会与每个 Fedora 版本完全一致。"}
@@ -58,8 +55,7 @@ Fedora 遵循定期的发布周期，大多数年份会有两个主要版本，�
 
 这使得 Fedora 非常适合那些既想要最新软件，又希望使用有组织的主流 Linux 发行版，而不是手动滚动更新系统的用户。
 
-:::single-choice{#plan-fedora-upgrades}
-根据 Fedora 的发布模式，用户应该安排哪项维护？
+:::single-choice{#plan-fedora-upgrades} 根据 Fedora 的发布模式，用户应该安排哪项维护？
 
 ::option[在计算机整个寿命期间都不升级版本]{#no-version-upgrades explanation="Fedora 版本的支持期有限；要持续获得支持，需要逐步升级到较新版本。"}
 ::option[定期升级，以继续使用受支持的版本]{#regular-release-upgrades .correct explanation="Fedora 发布节奏较快，每个版本支持约 13 个月，因此用户应规划定期的版本升级。"}
@@ -72,8 +68,7 @@ Fedora 使用 RPM 软件包格式和 DNF 软件包管理器来安装、更新和
 
 Fedora 中的软件包管理非常直观，并且与更广泛的 Red Hat 系统家族自然契合。
 
-:::single-choice{#identify-fedora-package-tool}
-Fedora 使用哪个工具进行高级软件包管理？
+:::single-choice{#identify-fedora-package-tool} Fedora 使用哪个工具进行高级软件包管理？
 
 ::option[APT]{#fedora-apt-tool explanation="APT 与 Debian 系发行版相关；Fedora 属于 RPM 软件包家族，使用 DNF。"}
 ::option[DNF]{#fedora-dnf-tool .correct explanation="DNF 从 Fedora 仓库安装、更新和删除软件包，底层软件包采用 RPM 格式。"}

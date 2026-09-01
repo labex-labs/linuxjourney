@@ -18,8 +18,7 @@ meta_keywords: "리눅스 역사, 리눅스 연혁, 리눅스 입문, UNIX, GNU 
 
 ![Unix 타임라인](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-:::single-choice{#understand-unix-portability}
-UNIX를 C로 다시 작성해 얻은 중요한 결과는 무엇인가요?
+:::single-choice{#understand-unix-portability} UNIX를 C로 다시 작성해 얻은 중요한 결과는 무엇인가요?
 
 ::option[GNU 시스템용 자유 커널이 되었습니다.]{#unix-became-gnu-kernel explanation="UNIX는 GNU 프로젝트보다 먼저 존재했으며 GNU의 커널이 아니었습니다. GNU는 나중에 Hurd라는 별도 커널을 개발하기 시작했습니다."}
 ::option[서로 다른 하드웨어 시스템으로 옮기기 쉬워졌습니다.]{#portable-across-hardware .correct explanation="UNIX를 C로 작성해 이식성이 높아졌고 원래 하드웨어 밖으로 널리 보급될 수 있었습니다."}
@@ -28,8 +27,7 @@ UNIX를 C로 다시 작성해 얻은 중요한 결과는 무엇인가요?
 
 10여 년 뒤 리처드 스톨먼은 GNU 프로젝트를 시작했습니다. GNU는 "GNU's Not UNIX"의 재귀적 약자로, 완전히 자유롭고 오픈 소스인 UNIX 계열 운영체제를 만드는 것이 목표였습니다. GNU는 수많은 필수 구성 요소와 GNU 일반 공중 사용 허가서(GPL)를 만들었지만, 자체 커널인 GNU Hurd는 리눅스가 등장했을 때 일반 용도로 사용할 준비가 되지 않았습니다.
 
-:::single-choice{#identify-gnu-missing-component}
-리눅스가 등장했을 때 준비되지 않았던 GNU의 주요 구성 요소는 무엇인가요?
+:::single-choice{#identify-gnu-missing-component} 리눅스가 등장했을 때 준비되지 않았던 GNU의 주요 구성 요소는 무엇인가요?
 
 ::option[실사용 가능한 커널]{#gnu-kernel .correct explanation="GNU는 여러 시스템 구성 요소를 만들었지만 자체 커널인 GNU Hurd는 일반 용도로 사용할 준비가 되지 않았습니다."}
 ::option[자유 소프트웨어 라이선스]{#gnu-license explanation="GNU 프로젝트는 이미 GNU 일반 공중 사용 허가서를 만들었습니다. 빠진 시스템 구성 요소는 사용할 수 있는 커널이었습니다."}
@@ -40,8 +38,7 @@ UNIX를 C로 다시 작성해 얻은 중요한 결과는 무엇인가요?
 
 커널은 운영체제의 핵심 구성 요소입니다. 하드웨어와 소프트웨어가 통신하도록 다리 역할을 하며 CPU, 메모리, 주변 장치 같은 시스템 자원을 관리합니다. 완전한 운영체제에는 사용자가 다루는 도구와 애플리케이션뿐 아니라 이 자원 관리 핵심이 필요합니다.
 
-:::single-choice{#recognize-kernel-role}
-운영체제 커널이 담당하는 일은 무엇인가요?
+:::single-choice{#recognize-kernel-role} 운영체제 커널이 담당하는 일은 무엇인가요?
 
 ::option[쉘에 입력되는 모든 명령어를 작성합니다.]{#write-shell-commands explanation="쉘 명령어는 사용자나 스크립트가 제공합니다. 커널은 프로그램이 명령어를 실행할 때 필요한 저수준 자원을 제공합니다."}
 ::option[설치된 모든 애플리케이션의 라이선스를 선택합니다.]{#choose-software-licenses explanation="애플리케이션 라이선스는 소프트웨어 작성자와 배포자가 선택하며 커널의 자원 관리 작업이 아닙니다."}
@@ -56,8 +53,7 @@ UNIX를 C로 다시 작성해 얻은 중요한 결과는 무엇인가요?
 
 _2018년의 리누스 토발즈 (출처: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
 
-:::single-choice{#identify-linux-kernel-creator}
-1991년에 리눅스 커널 개발을 시작한 사람은 누구인가요?
+:::single-choice{#identify-linux-kernel-creator} 1991년에 리눅스 커널 개발을 시작한 사람은 누구인가요?
 
 ::option[리처드 스톨먼]{#richard-stallman explanation="리처드 스톨먼은 GNU 프로젝트를 시작했습니다. GNU가 여러 시스템 구성 요소를 제공했지만 리눅스 커널은 리누스 토발즈가 시작했습니다."}
 ::option[데니스 리치]{#dennis-ritchie explanation="데니스 리치는 UNIX와 C 프로그래밍 언어 개발에 기여했습니다. 리눅스 커널 프로젝트는 나중에 리누스 토발즈가 시작했습니다."}

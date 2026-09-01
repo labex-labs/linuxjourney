@@ -18,8 +18,7 @@ meta_keywords: "etc shadow, linux etc/shadow 파일, etc shadow in linux, /etc/s
 
 정확한 소유권과 권한은 다양하지만 일반적으로 root와 좁게 승인된 시스템 구성 요소만 접근할 수 있습니다. 계정 상태를 살펴본다는 이유만으로 shadow 내용을 출력하거나 복사하거나 기록하거나 공유하지 마세요.
 
-:::single-choice{#shadow-restricted-reason}
-로컬 shadow 데이터의 일반 읽기 접근이 보통 제한되는 이유는 무엇인가요?
+:::single-choice{#shadow-restricted-reason} 로컬 shadow 데이터의 일반 읽기 접근이 보통 제한되는 이유는 무엇인가요?
 
 ::option[모든 사용자의 암호화되지 않은 현재 비밀번호가 들어 있기 때문입니다.]{#shadow-plaintext-passwords explanation="올바른 shadow 항목은 되돌릴 수 있는 평문 비밀번호가 아니라 단방향 비밀번호 해시나 특수 표시를 저장합니다."}
 ::option[비밀번호 해시가 노출되면 오프라인 공격을 받을 수 있기 때문입니다.]{#shadow-offline-guessing .correct explanation="공격자는 로그인 서비스와 상호작용하지 않고 훔친 해시에 비밀번호 추측을 시험할 수 있습니다."}
@@ -48,8 +47,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 빈 필드와 특수 숫자 값은 필드와 도구에 따라 달라질 수 있는 정의된 의미를 갖습니다. 눈으로 보고 값을 직접 편집하지 말고 계정 관리 명령을 사용하세요.
 
-:::single-choice{#shadow-account-expiration-field}
-1970-01-01 이후 날짜 수로 계정 만료 날짜를 저장하는 shadow 필드는 무엇인가요?
+:::single-choice{#shadow-account-expiration-field} 1970-01-01 이후 날짜 수로 계정 만료 날짜를 저장하는 shadow 필드는 무엇인가요?
 
 ::option[필드 3]{#shadow-field-three explanation="필드 3은 계정 만료가 아니라 마지막 비밀번호 변경 날짜를 기록합니다."}
 ::option[필드 8]{#shadow-field-eight .correct explanation="여덟 번째 필드는 절대적인 계정 만료 날짜 수입니다."}
@@ -62,8 +60,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 이 표시는 가능한 모든 인증 방법이 아니라 로컬 비밀번호 경로를 설명합니다. SSH 공개 키, 인증서, 토큰, 애플리케이션별 자격 증명은 별도로 제한하지 않는 한 계속 사용할 수 있습니다. 필드 8의 계정 만료도 비밀번호 잠금과 다릅니다.
 
-:::single-choice{#shadow-password-lock-scope}
-`!`로 시작하는 shadow 비밀번호 필드에서 안전하게 결론 내릴 수 있는 것은 무엇인가요?
+:::single-choice{#shadow-password-lock-scope} `!`로 시작하는 shadow 비밀번호 필드에서 안전하게 결론 내릴 수 있는 것은 무엇인가요?
 
 ::option[저장된 Unix 비밀번호 해시를 일반 비밀번호 검증에 사용할 수 없게 만들었습니다.]{#shadow-password-locked .correct explanation="해시 앞에 `!`를 붙이면 shadow 비밀번호 경로에서 제공된 비밀번호와 일치하지 않게 됩니다."}
 ::option[계정의 모든 가능한 로그인 방법이 비활성화되었습니다.]{#shadow-all-login-disabled explanation="다른 인증 방법은 독립적일 수 있으므로 비밀번호 표시만으로 완전한 계정 잠금을 증명하지 못합니다."}
@@ -76,8 +73,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 예를 들어 최대 비밀번호 사용 기간 90일은 계정 만료 날짜와 같지 않습니다. 전자는 마지막 비밀번호 변경을 기준으로 움직이고 후자는 관리자가 바꿀 때까지 고정된 날짜입니다.
 
-:::single-choice{#shadow-max-age-versus-expire}
-shadow 필드 5와 8의 차이는 무엇인가요?
+:::single-choice{#shadow-max-age-versus-expire} shadow 필드 5와 8의 차이는 무엇인가요?
 
 ::option[필드 5는 사용자 이름, 필드 8은 로그인 쉘을 저장합니다.]{#shadow-username-shell explanation="사용자 이름은 필드 1이고 로그인 쉘은 shadow 레코드가 아니라 `/etc/passwd`에 기록됩니다."}
 ::option[필드 5는 비밀번호 해시, 필드 8은 솔트를 저장합니다.]{#shadow-hash-salt explanation="비밀번호 해시 인코딩은 필드 2에 있고 만료 필드는 솔트를 별도로 저장하지 않습니다."}
@@ -97,8 +93,7 @@ $ sudo chage -l alice
 
 변경에는 `passwd`, `chage`, `usermod` 및 관련 계정 도구를 사용하세요. 로컬 shadow 데이터베이스를 수동으로 복구해야 한다면 `vipw -s`가 잠금을 제공하며 `pwck`로 계정 데이터베이스를 검증할 수 있습니다. 원격 인증을 바꾸기 전에 복구 세션을 유지하세요.
 
-:::single-choice{#shadow-list-aging-policy}
-로컬 계정 `alice`의 읽기 쉬운 비밀번호 만료 정보를 나열하도록 설계된 명령은 무엇인가요?
+:::single-choice{#shadow-list-aging-policy} 로컬 계정 `alice`의 읽기 쉬운 비밀번호 만료 정보를 나열하도록 설계된 명령은 무엇인가요?
 
 ::option[`cat /etc/shadow`]{#shadow-cat-entire-file explanation="모든 로컬 shadow 레코드와 작업에 필요한 것보다 훨씬 민감한 정보를 노출합니다."}
 ::option[`passwd -d alice`]{#shadow-passwd-delete explanation="`-d` 작업은 비밀번호 해시를 제거하는 상태 변경 보안 작업이며 목록 명령이 아닙니다."}

@@ -23,8 +23,7 @@ $ ip neighbor show dev enp1s0
 
 Une entrée contient une adresse IP, une adresse de couche liaison, un périphérique et un état d’accessibilité. La table peut être vide après le démarrage, puis se remplir lorsque le trafic nécessite des prochains sauts locaux.
 
-:::single-choice{#arp-command-modern-view}
-Quelle commande affiche l’état moderne de la table des voisins sous Linux ?
+:::single-choice{#arp-command-modern-view} Quelle commande affiche l’état moderne de la table des voisins sous Linux ?
 
 ::option[`pwd neighbor`]{#arp-command-pwd explanation="Pwd indique le répertoire de travail du shell."}
 ::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="Elle affiche à la fois les entrées IPv4 dérivées d’ARP et les entrées de découverte de voisins IPv6."}
@@ -37,8 +36,7 @@ Lorsqu’une association IPv4 sur la liaison est absente, l’hôte diffuse une 
 
 Pour une destination IP distante, l’hôte résout l’adresse de la passerelle sélectionnée plutôt que l’adresse MAC de l’hôte distant.
 
-:::single-choice{#arp-command-remote-target}
-Quel voisin IPv4 un hôte résout-il pour une destination hors liaison ?
+:::single-choice{#arp-command-remote-target} Quel voisin IPv4 un hôte résout-il pour une destination hors liaison ?
 
 ::option[Le serveur distant final au-delà de tous les routeurs.]{#arp-command-final-server explanation="Son adresse MAC n’a aucune signification sur la liaison source."}
 ::option[Chaque serveur DNS indiqué dans la configuration du résolveur.]{#arp-command-all-dns explanation="La résolution des voisins suit la route sélectionnée, et non la liste des résolveurs."}
@@ -49,8 +47,7 @@ Quel voisin IPv4 un hôte résout-il pour une destination hors liaison ?
 
 Les états courants comprennent `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE` et `FAILED`. `STALE` signifie que la confirmation récente de l’accessibilité a expiré ; l’adresse en cache peut encore être utilisée pendant que la pile effectue des sondes si nécessaire. `FAILED` indique l’échec de la résolution ou de la détection d’accessibilité, mais la cause peut provenir de la liaison, du VLAN, de l’adresse, de la route, du filtrage ou de l’arrêt du pair.
 
-:::single-choice{#arp-command-stale-state}
-L’état `STALE` signifie-t-il que le voisin est réputé inaccessible ?
+:::single-choice{#arp-command-stale-state} L’état `STALE` signifie-t-il que le voisin est réputé inaccessible ?
 
 ::option[Non ; il manque une confirmation récente et le voisin peut être sondé lors de son utilisation.]{#arp-command-stale-probe .correct explanation="Cet état n’équivaut pas à `FAILED`."}
 ::option[Oui, et l’entrée ne pourra plus jamais être utilisée.]{#arp-command-stale-dead explanation="Les entrées périmées restent utilisables et peuvent changer d’état après un contrôle d’accessibilité."}
@@ -63,8 +60,7 @@ Les entrées statiques et le vidage du cache modifient l’état ; ils peuvent p
 
 ARP ne possède aucun mécanisme d’authentification intégré : des adresses en double ou des réponses usurpées peuvent empoisonner les associations. Les protections des commutateurs, la segmentation, la surveillance et l’authentification des couches supérieures contribuent à réduire les conséquences.
 
-:::single-choice{#arp-command-flush-first}
-Pourquoi éviter de vider toute la table des voisins comme première étape du diagnostic ?
+:::single-choice{#arp-command-flush-first} Pourquoi éviter de vider toute la table des voisins comme première étape du diagnostic ?
 
 ::option[Les entrées de voisins sont enregistrées uniquement dans les serveurs racine DNS.]{#arp-command-neighbors-dns explanation="Elles sont gérées par la pile réseau locale."}
 ::option[Un vidage supprime définitivement le matériel de l’interface.]{#arp-command-flush-hardware explanation="Il supprime les entrées du cache, et non les périphériques physiques."}

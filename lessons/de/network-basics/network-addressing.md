@@ -18,8 +18,7 @@ Eine Ethernet-MAC-Adresse ist 48 Bit lang und wird gewöhnlich als sechs hexadez
 
 MAC-Adressen sind weder garantiert dauerhaft noch weltweit eindeutig. Software kann eine lokal verwaltete Adresse zuweisen, virtuelle Schnittstellen erzeugen Adressen und WLAN-Datenschutzfunktionen können sie zufällig wählen. Router ersetzen gewöhnlich die Ethernet-Kapselung an jedem Hop, sodass ein entfernter Server die ursprüngliche lokale Ethernet-Quelladresse nicht erhält.
 
-:::single-choice{#network-addressing-mac-scope}
-Was ist der normale Geltungsbereich einer Ethernet-MAC-Adresse bei der Paketzustellung?
+:::single-choice{#network-addressing-mac-scope} Was ist der normale Geltungsbereich einer Ethernet-MAC-Adresse bei der Paketzustellung?
 
 ::option[Die aktuelle lokale Verbindung.]{#network-addressing-local-link .correct explanation="Router erstellen für nachfolgende Hops neue Kapselungen der Verbindungsschicht."}
 ::option[Jeder geroutete Hop bis zum endgültigen Internetserver.]{#network-addressing-all-hops explanation="Der ursprüngliche Frame durchquert Router nicht unverändert."}
@@ -32,8 +31,7 @@ IPv4-Adressen sind 32 Bit beziehungsweise vier Oktette lang, während IPv6-Adres
 
 Eine Schnittstelle kann mehrere IP-Adressen besitzen, und eine Adresse kann sich durch DHCP, Datenschutzadressierung, Failover oder Verwaltung ändern. Private IPv4-Adressen können in getrennten Netzwerken wiederverwendet werden; öffentliche Routing- und NAT-Richtlinien bestimmen die externe Erreichbarkeit.
 
-:::single-choice{#network-addressing-ipv4-size}
-Wie groß ist eine IPv4-Adresse?
+:::single-choice{#network-addressing-ipv4-size} Wie groß ist eine IPv4-Adresse?
 
 ::option[32 Bit in vier Oktetten.]{#network-addressing-thirty-two .correct explanation="Jede angezeigte Dezimalkomponente stellt acht Bit dar."}
 ::option[4 Bit in einer einzelnen hexadezimalen Ziffer.]{#network-addressing-four-bits explanation="Vier Bit stellen nur eine hexadezimale Ziffer dar."}
@@ -52,8 +50,7 @@ $ getent ahosts example.com
 
 DNS-Antworten können sich ändern oder zwischengespeichert werden, und eine erfolgreiche Auflösung beweist nicht, dass der Dienst erreichbar ist.
 
-:::single-choice{#network-addressing-getent-purpose}
-Warum solltest du bei einer Prüfung der Namensauflösung `getent ahosts` verwenden?
+:::single-choice{#network-addressing-getent-purpose} Warum solltest du bei einer Prüfung der Namensauflösung `getent ahosts` verwenden?
 
 ::option[Der Befehl weist die zurückgegebene Adresse dauerhaft jeder Schnittstelle zu.]{#network-addressing-getent-assign explanation="Der Befehl fragt Datenbanken ab und konfiguriert keine Schnittstellen."}
 ::option[Er fragt den konfigurierten Namensdienstpfad des Systems nach Adressen.]{#network-addressing-system-resolver .correct explanation="Dieser kann gemäß der Hostrichtlinie lokale Dateien und DNS umfassen."}
@@ -71,8 +68,7 @@ $ ip -brief address
 
 Untersuche bei der Diagnose der Erreichbarkeit anschließend Routen und Nachbarzustand. Leite die richtige Quellschnittstelle oder -adresse niemals nur aus der Benennung ab; Routenauswahl, Richtlinienregeln, Namensräume und Tunnel können den Pfad verändern.
 
-:::single-choice{#network-addressing-ip-link-versus-address}
-Welche Befehlsansicht konzentriert sich auf zugewiesene IP-Adressen?
+:::single-choice{#network-addressing-ip-link-versus-address} Welche Befehlsansicht konzentriert sich auf zugewiesene IP-Adressen?
 
 ::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="Das Adressobjekt zeigt IPv4- und IPv6-Zuweisungen auf Schnittstellen an."}
 ::option[Nur `ip -brief link`.]{#network-addressing-link-only explanation="Die Verbindungsansicht konzentriert sich auf Schnittstellen- und Verbindungsschichtzustand."}

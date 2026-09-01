@@ -18,8 +18,7 @@ Samba をインストールまたは変更する前に、許可するクライ�
 
 アクセスは Samba のポリシーと基盤となるファイルシステム権限の両方で制御されます。`smb.conf` で書き込みを許可しても、アカウントにないファイルシステムアクセス権は与えられません。
 
-:::single-choice{#samba-two-permission-layers}
-Samba 共有を通じた書き込みを許可する必要があるものはどれですか？
+:::single-choice{#samba-two-permission-layers} Samba 共有を通じた書き込みを許可する必要があるものはどれですか？
 
 ::option[共有に表示されるコメントだけ。]{#samba-comment-permission explanation="コメントは説明文であり、アクセス権を与えません。"}
 ::option[Samba のルールとファイルシステム権限の両方。]{#samba-policy-and-filesystem .correct explanation="要求はプロトコル層のルールとローカルファイルシステムの認可をどちらも通過する必要があります。"}
@@ -46,8 +45,7 @@ $ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 
 set-group-ID ビットは新しいエントリにディレクトリのグループを継承させるのに役立ちますが、共同アクセスには ACL や慎重に選んだ create mask も必要な場合があります。継承だけで十分と決めつけず、実際に作られたファイルとディレクトリをテストしてください。
 
-:::single-choice{#samba-valid-users}
-`valid users = @teamshare` は何を表しますか？
+:::single-choice{#samba-valid-users} `valid users = @teamshare` は何を表しますか？
 
 ::option[すべての匿名ネットワークユーザーへ書き込み権を与える。]{#samba-every-anonymous explanation="このルールはアクセスを制限するもので、ゲスト書き込みを有効にしません。"}
 ::option[サーバーが共有名を `teamshare` に変更しなければならない。]{#samba-rename-share explanation="表示される共有名はセクション名 `[team]` のままです。"}
@@ -64,8 +62,7 @@ $ sudo smbpasswd -a alice
 
 ディレクトリドメイン環境では別の ID 設計を使います。パスワードをシェル履歴や無関係な利用者が読める設定に置かず、Samba パスワードが Unix アカウントのパスワードと自動的に同じになるとも考えないでください。
 
-:::single-choice{#samba-password-database}
-スタンドアロンサーバーで `smbpasswd -a alice` は通常何をしますか？
+:::single-choice{#samba-password-database} スタンドアロンサーバーで `smbpasswd -a alice` は通常何をしますか？
 
 ::option[Unix ユーザーのホームディレクトリを削除する。]{#samba-delete-home explanation="このコマンドは Samba 認証情報を管理し、ホームディレクトリを削除しません。"}
 ::option[そのアカウントの Samba 認証情報を追加または初期化する。]{#samba-add-credential .correct explanation="SMB 認証データベースは、Unix ユーザーを作るだけとは別に管理されます。"}
@@ -88,8 +85,7 @@ $ testparm -s
 $ smbclient //server.example.net/team -U alice
 ```
 
-:::single-choice{#samba-testparm-purpose}
-Samba の変更適用前に `testparm -s` を実行するのはなぜですか？
+:::single-choice{#samba-testparm-purpose} Samba の変更適用前に `testparm -s` を実行するのはなぜですか？
 
 ::option[全共有ファイルをバックアップサーバーへコピーするため。]{#samba-testparm-backup explanation="このツールは設定を解析・報告するもので、共有データをコピーしません。"}
 ::option[有効な Samba 設定を検証して表示するため。]{#samba-testparm-validate .correct explanation="パーサー出力から、サービスへ影響する前に設定エラーと解釈済み設定を確認できます。"}
@@ -107,8 +103,7 @@ $ sudo mount -t cifs //server.example.net/team /mnt/team \
 
 認証情報ファイルを保護し、両端が対応する dialect を確認し、UID、GID、権限、暗号化の要件を意図して定義します。マウント後は `findmnt` で確認し、許可された読み書きテストを行い、利用中のユーザーと調整してからアンマウントします。
 
-:::single-choice{#samba-command-line-password}
-mount コマンドへ `password=...` を直接書くべきでないのはなぜですか？
+:::single-choice{#samba-command-line-password} mount コマンドへ `password=...` を直接書くべきでないのはなぜですか？
 
 ::option[履歴やプロセス引数から秘密情報が露出する可能性があるから。]{#samba-password-exposure .correct explanation="保護された認証情報源なら偶発的な漏えいを減らせますが、それ自体にも慎重な権限設定が必要です。"}
 ::option[SMB はどのようなパスワード認証にも対応しないから。]{#samba-no-passwords explanation="ほかの ID システムもありますが、パスワードによる SMB 認証は一般的です。"}

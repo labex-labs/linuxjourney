@@ -24,8 +24,7 @@ network  11000000.10101000.00000001.00000000
 
 A bitwise AND keeps address bits where the mask is one and clears host bits. The result is `192.168.1.0/24`.
 
-:::single-choice{#subnet-math-network-operation}
-Which operation finds an IPv4 network address from an address and mask?
+:::single-choice{#subnet-math-network-operation} Which operation finds an IPv4 network address from an address and mask?
 
 ::option[Decimal string concatenation.]{#subnet-math-concatenation explanation="Joining printed octets does not apply prefix bits."}
 ::option[Transport-port subtraction.]{#subnet-math-port-subtraction explanation="Ports are unrelated to the network prefix."}
@@ -42,8 +41,7 @@ For prefix `/p`, the host portion contains `32 - p` bits. The total address coun
 
 A `/24` therefore contains `2^8 = 256` addresses. In a traditional broadcast subnet, the all-zero host value is the network address and the all-one value is the directed broadcast, leaving 254 ordinary unicast host addresses.
 
-:::single-choice{#subnet-math-24-total}
-How many total addresses are in an IPv4 `/24`?
+:::single-choice{#subnet-math-24-total} How many total addresses are in an IPv4 `/24`?
 
 ::option[24]{#subnet-math-total-24 explanation="The prefix length counts network bits, not addresses."}
 ::option[256]{#subnet-math-total-256 .correct explanation="Eight host bits produce 2^8 distinct address values."}
@@ -60,8 +58,7 @@ broadcast: 192.168.1.191
 range:     192.168.1.129 through 192.168.1.190
 ```
 
-:::single-choice{#subnet-math-165-network}
-What is the network address for `192.168.1.165/26`?
+:::single-choice{#subnet-math-165-network} What is the network address for `192.168.1.165/26`?
 
 ::option[`192.168.1.0`]{#subnet-math-network-zero explanation="That is the first `/26` block, covering 0 through 63."}
 ::option[`192.168.1.165`]{#subnet-math-network-self explanation="The supplied address has nonzero host bits within the `/26`."}
@@ -72,8 +69,7 @@ What is the network address for `192.168.1.165/26`?
 
 The shortcut `2^host_bits - 2` is not universal. IPv4 `/31` prefixes are defined for point-to-point links where both addresses can be endpoints and no directed broadcast is needed. A `/32` identifies one host route or interface address. Network technology and protocol use determine which addresses are assignable.
 
-:::single-choice{#subnet-math-31-exception}
-Why should you not subtract two addresses from every IPv4 prefix?
+:::single-choice{#subnet-math-31-exception} Why should you not subtract two addresses from every IPv4 prefix?
 
 ::option[IPv4 addresses contain no host bits at any prefix.]{#subnet-math-no-host-bits explanation="Most prefixes leave one or more host bits."}
 ::option[`/31` point-to-point links can use both addresses as endpoints.]{#subnet-math-31-both .correct explanation="The point-to-point model does not need traditional network and directed-broadcast reservations."}
@@ -84,8 +80,7 @@ Why should you not subtract two addresses from every IPv4 prefix?
 
 Use an independent tool or library to check manual work, then compare with the real interface and route configuration. A mathematically valid prefix can still conflict with another subnet or violate an allocation plan.
 
-:::single-choice{#subnet-math-valid-not-safe}
-What does a correct subnet calculation fail to prove?
+:::single-choice{#subnet-math-valid-not-safe} What does a correct subnet calculation fail to prove?
 
 ::option[That the address plan has no overlap or policy conflict.]{#subnet-math-no-conflict .correct explanation="Operational allocation and routing evidence are still required."}
 ::option[That IPv4 addresses contain 32 bits.]{#subnet-math-proves-size explanation="The calculation is based on that fixed size."}

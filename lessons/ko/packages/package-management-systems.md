@@ -33,8 +33,7 @@ RPM family:    $ dnf info package-name
 
 이 명령으로 찾을 수 있는 항목은 저장소 설정에 따라 달라집니다. 소스 이름, 아키텍처, 버전 및 서명 오류를 주의 깊게 읽으십시오.
 
-:::single-choice{#package-management-systems-apt-show}
-`package-name`에 대한 APT 패키지 상세 정보를 표시하는 명령은 무엇입니까?
+:::single-choice{#package-management-systems-apt-show} `package-name`에 대한 APT 패키지 상세 정보를 표시하는 명령은 무엇입니까?
 
 ::option[`apt remove package-name`]{#package-management-systems-apt-remove-command explanation="`remove` 하위 명령은 패키지 제거를 제안합니다."}
 ::option[`dnf search package-name`]{#package-management-systems-dnf-search-command explanation="이 명령은 RPM 계열 저장소를 검색하며 APT 상세 정보 명령이 아닙니다."}
@@ -52,8 +51,7 @@ RPM family:    $ sudo dnf install package-name
 
 관리자는 의존성과 충돌 또는 대체 항목을 제안합니다. 패키지 출처, 버전, 아키텍처, 다운로드 크기, 디스크 변경량, 제거 항목 및 새로 설치되는 의존성을 검토하기 전에는 자동으로 확정하지 마십시오.
 
-:::single-choice{#package-management-systems-dnf-install}
-설정된 RPM 계열 저장소에서 `package-name`을 설치하는 현재 명령은 무엇입니까?
+:::single-choice{#package-management-systems-dnf-install} 설정된 RPM 계열 저장소에서 `package-name`을 설치하는 현재 명령은 무엇입니까?
 
 ::option[`rpm -qa package-name`]{#package-management-systems-rpm-query-command explanation="이것은 RPM 설치 데이터베이스 조회이며 저장소 설치 요청이 아닙니다."}
 ::option[`dnf install package-name`]{#package-management-systems-dnf-install-command .correct explanation="DNF는 페도라와 최신 RHEL 릴리스에서 사용하는 현재의 저장소 인식 관리자입니다."}
@@ -71,8 +69,7 @@ RPM family:    $ sudo dnf remove package-name
 
 제거는 의존하는 패키지에 영향을 주거나, 이제 사용되지 않는 의존성과 설정을 남길 수 있습니다. 제안된 트랜잭션을 검토하고, 데비안 계열 시스템에서 remove와 purge의 의미를 구분하며, 애플리케이션별 백업 및 보존 절차에 따라 데이터를 보존하십시오. 패키지를 제거해도 사용자가 만든 데이터까지 삭제된다고 보장할 수 없습니다.
 
-:::single-choice{#package-management-systems-remove-review}
-제거 트랜잭션을 확정하기 전에 검토해야 하는 이유는 무엇입니까?
+:::single-choice{#package-management-systems-remove-review} 제거 트랜잭션을 확정하기 전에 검토해야 하는 이유는 무엇입니까?
 
 ::option[제거하면 항상 패키지가 있는 파일 시스템을 다시 포맷하기 때문입니다.]{#package-management-systems-removal-format explanation="패키지 관리자는 관리 파일과 상태를 제거하며 일반적으로 파일 시스템을 포맷하지 않습니다."}
 ::option[패키지 관리자가 제안된 변경 집합을 표시할 수 없기 때문입니다.]{#package-management-systems-no-proposal explanation="대화형 관리자는 검토할 수 있도록 보통 예정된 트랜잭션을 보여 줍니다."}
@@ -98,8 +95,7 @@ $ sudo dnf upgrade
 
 업데이트 명령은 핵심 라이브러리, 서비스, 커널 및 의존성을 변경할 수 있습니다. 시스템에 맞는 백업, 유지 관리 정책, 릴리스 정보 및 재시작 또는 재부팅 계획을 사용하십시오. 명령 종료 상태의 의미도 확인해야 합니다. 예를 들어 일부 “업데이트 확인” 작업은 실행 실패가 아니라 업데이트가 있음을 알리기 위해 0이 아닌 상태를 사용합니다.
 
-:::single-choice{#package-management-systems-apt-update-upgrade}
-`apt update`와 `apt upgrade`는 어떤 관계입니까?
+:::single-choice{#package-management-systems-apt-update-upgrade} `apt update`와 `apt upgrade`는 어떤 관계입니까?
 
 ::option[`update`는 패키지를 제거하고 `upgrade`는 설정 파일을 복원합니다.]{#package-management-systems-apt-remove-restore explanation="두 명령 사이에는 그러한 제거 및 복원 관계가 없습니다."}
 ::option[`update`는 메타데이터를 새로 고치고 `upgrade`는 승인한 패키지 업그레이드 계획을 적용합니다.]{#package-management-systems-apt-two-steps .correct explanation="APT는 카탈로그 갱신과 새 패키지 버전 설치를 분리합니다."}
@@ -110,8 +106,7 @@ $ sudo dnf upgrade
 
 현재 페도라와 RHEL 문서에서는 `dnf`를 사용하십시오. 최신 RHEL 시스템의 `yum` 명령은 DNF 호환 동작을 호출할 수 있지만, 스크립트에서 실행 파일 이름만 보고 구현을 추정해서는 안 됩니다. 레거시 호스트에서는 지침을 옮기기 전에 설치된 버전과 지원 구문을 확인하십시오.
 
-:::single-choice{#package-management-systems-yum-current-rhel}
-현재 RHEL 시스템에서 `yum`은 일반적으로 무엇을 나타냅니까?
+:::single-choice{#package-management-systems-yum-current-rhel} 현재 RHEL 시스템에서 `yum`은 일반적으로 무엇을 나타냅니까?
 
 ::option[DNF가 뒷받침하는 호환성 명령입니다.]{#package-management-systems-yum-dnf-alias .correct explanation="최신 RHEL 릴리스는 DNF를 사용하면서 호환성을 위해 yum 명령 이름을 유지합니다."}
 ::option[데비안의 저수준 `.deb` 아카이브 도구입니다.]{#package-management-systems-yum-dpkg explanation="데비안 시스템은 네이티브 패키지 관리에 YUM이 아니라 APT와 dpkg 같은 도구를 사용합니다."}

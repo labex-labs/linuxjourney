@@ -22,8 +22,7 @@ $ vmstat 1
 
 La première ligne de données indique généralement les moyennes depuis le démarrage ; les lignes suivantes couvrent chaque intervalle. Arrêtez avec `Ctrl-C` après avoir enregistré une période représentative. Les unités et les champs disponibles varient ; consultez `vmstat --unit` et le manuel local.
 
-:::single-choice{#vmstat-interval-rows}
-Quelles lignes conviennent le mieux à l’observation des changements seconde par seconde avec `vmstat 1` ?
+:::single-choice{#vmstat-interval-rows} Quelles lignes conviennent le mieux à l’observation des changements seconde par seconde avec `vmstat 1` ?
 
 ::option[Les lignes qui suivent le rapport initial.]{#vmstat-later-rows .correct explanation="Les lignes suivantes décrivent chaque intervalle demandé plutôt que toute la période cumulée."}
 ::option[Uniquement les en-têtes au-dessus de la première ligne de données.]{#vmstat-headings explanation="Les en-têtes définissent les champs, mais ne contiennent aucun échantillon d’activité."}
@@ -42,8 +41,7 @@ $ free -h
 
 L’estimation `available` est généralement plus utile que `free` seule, car le cache récupérable peut satisfaire de nouvelles allocations.
 
-:::single-choice{#vmstat-free-memory}
-Pourquoi une faible valeur `free` peut-elle être normale sous Linux ?
+:::single-choice{#vmstat-free-memory} Pourquoi une faible valeur `free` peut-elle être normale sous Linux ?
 
 ::option[Cette valeur exclut toujours toute la mémoire vive physique.]{#vmstat-excludes-ram explanation="Il s’agit d’un champ de mémoire, même si son unité exacte doit être vérifiée."}
 ::option[Le noyau peut employer la mémoire inactive pour des caches récupérables.]{#vmstat-reclaimable-cache .correct explanation="La mémoire mise en cache peut souvent être récupérée lorsque les applications en ont besoin."}
@@ -54,8 +52,7 @@ Pourquoi une faible valeur `free` peut-elle être normale sous Linux ?
 
 `si` et `so` indiquent les débits d’entrée et de sortie de l’espace d’échange. Une pagination soutenue associée à une latence et à une activité de récupération de mémoire peut signaler une pression, mais une utilisation non nulle de l’espace d’échange (`swpd`) ne prouve pas à elle seule un problème actuel. `bi` et `bo` indiquent les débits d’entrée et de sortie de blocs et ne se limitent pas au trafic d’échange.
 
-:::single-choice{#vmstat-swap-pressure}
-Quel indice étaye le mieux un diagnostic de pression mémoire actuelle ?
+:::single-choice{#vmstat-swap-pressure} Quel indice étaye le mieux un diagnostic de pression mémoire actuelle ?
 
 ::option[Une valeur `swpd` non nulle sans aucune autre observation.]{#vmstat-swpd-alone explanation="Des pages peuvent rester dans l’espace d’échange après une pression passée ; la quantité seule ne suffit donc pas."}
 ::option[Une pagination soutenue corrélée à la récupération de mémoire et à la latence de la charge.]{#vmstat-correlated-pressure .correct explanation="Des indices répétés et corrélés relient le comportement de la mémoire aux conséquences actuelles."}
@@ -66,8 +63,7 @@ Quel indice étaye le mieux un diagnostic de pression mémoire actuelle ?
 
 Les colonnes du processeur comprennent couramment les pourcentages utilisateur (`us`), système (`sy`), inactif (`id`), d’attente d’entrées-sorties (`wa`) et de vol (`st`). Les colonnes système comprennent les interruptions (`in`) et les changements de contexte (`cs`) par seconde. Interprétez les pics par rapport à une référence ; un taux élevé de changements de contexte peut être normal pour certaines charges.
 
-:::single-choice{#vmstat-r-column}
-Que représente le champ de processus `r` ?
+:::single-choice{#vmstat-r-column} Que représente le champ de processus `r` ?
 
 ::option[Les systèmes de fichiers montés en lecture seule.]{#vmstat-readonly explanation="Les options de montage ne sont pas représentées par ce champ de processus."}
 ::option[Les utilisateurs distants possédant un shell actif.]{#vmstat-remote-users explanation="Les sessions de connexion sont indiquées par d’autres outils."}

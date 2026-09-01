@@ -24,8 +24,7 @@ $ wc colors.txt
 
 左から、`2` は行として報告される改行文字数、`3` は空白区切りの単語数、`15` はこの ASCII 例のバイト数です。`wc -l` が数えるのは見た目上の行ではなく改行文字なので、末尾に改行のない最後の行は数えられません。
 
-:::single-choice{#wc-default-columns}
-`wc file.txt` の標準出力で、最初の 3 つの数値は何を表しますか？
+:::single-choice{#wc-default-columns} `wc file.txt` の標準出力で、最初の 3 つの数値は何を表しますか？
 
 ::option[行、単語、バイトの順。]{#wc-lines-words-bytes .correct explanation="標準の `wc` は、ファイル名の前に改行数、単語数、バイト数を報告します。"}
 ::option[バイト、単語、行の順。]{#wc-bytes-words-lines explanation="同じ測定値ですが順序が違います。行数が最初です。"}
@@ -53,16 +52,14 @@ $ printf 'one two\n' | wc -w
 
 ASCII ではバイト数と文字数は等しいですが、UTF-8 などのマルチバイト符号化では異なることがあります。ファイルオペランドなしで stdin を使うと、通常はファイル名ラベルが付きません。
 
-:::single-choice{#wc-word-count-only}
-`essay.txt` の単語数だけを報告するコマンドはどれですか？
+:::single-choice{#wc-word-count-only} `essay.txt` の単語数だけを報告するコマンドはどれですか？
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="`-l` は単語ではなく改行文字を報告します。"}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="`-w` は単語数の測定を選びます。"}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="`-c` は空白区切りの単語ではなくバイトを報告します。"}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-現在のロケールで、バイトではなく文字を数えるよう `wc` に指示するオプションはどれですか？
+:::single-choice{#wc-characters-not-bytes} 現在のロケールで、バイトではなく文字を数えるよう `wc` に指示するオプションはどれですか？
 
 ::option[`-m`]{#wc-character-option .correct explanation="`-m` は文字数を報告し、マルチバイトテキストではバイト数と異なることがあります。"}
 ::option[`-c`]{#wc-byte-option explanation="`-c` はバイトを報告します。UTF-8 などでは 1 文字が複数バイトを占めることがあります。"}
@@ -92,8 +89,7 @@ $ nl notes.txt
 
 `nl` は番号付き出力を書くだけで、`notes.txt` を変更しません。
 
-:::single-choice{#nl-default-blank-lines}
-`nl notes.txt` は標準で本文の空行をどう扱いますか？
+:::single-choice{#nl-default-blank-lines} `nl notes.txt` は標準で本文の空行をどう扱いますか？
 
 ::option[空行を出力から完全に省く。]{#nl-omit-blank explanation="空行は出力に残りますが、標準では番号を割り当てません。"}
 ::option[番号を付けずに保持する。]{#nl-preserve-unnumbered .correct explanation="標準の本文形式は空でない行へ番号を付け、空行を番号なしで通します。"}
@@ -113,8 +109,7 @@ $ nl -ba notes.txt
 
 `-w 3` は番号欄の幅、`-s ': '` は番号後の区切りを変更します。
 
-:::single-choice{#nl-number-all-lines}
-`notes.txt` の空行を含む本文全行へ番号を付けるコマンドはどれですか？
+:::single-choice{#nl-number-all-lines} `notes.txt` の空行を含む本文全行へ番号を付けるコマンドはどれですか？
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="番号欄の幅を変えますが、空でない行だけという標準規則は変えません。"}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="`-b` は本文形式を選び、形式 `a` は本文のすべての行へ番号を付けます。"}

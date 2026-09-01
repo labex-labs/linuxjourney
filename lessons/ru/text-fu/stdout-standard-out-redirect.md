@@ -23,8 +23,7 @@ Hello World
 
 Stdout соответствует файловому дескриптору `1`; это число пригодится при перенаправлении нескольких потоков. У программ также могут быть стандартный ввод, или stdin, и стандартный поток ошибок, или stderr. Они рассматриваются в следующих уроках.
 
-:::single-choice{#stdout-default-destination}
-Куда `echo Hello World` обычно отправляет свой обычный вывод в интерактивном терминале без перенаправления?
+:::single-choice{#stdout-default-destination} Куда `echo Hello World` обычно отправляет свой обычный вывод в интерактивном терминале без перенаправления?
 
 ::option[В файл `stdout` в текущем каталоге.]{#stdout-file explanation="Стандартный вывод — это поток, а не автоматически создаваемый файл `stdout`. Файл используется только при явном перенаправлении."}
 ::option[В терминал через стандартный вывод.]{#stdout-terminal .correct explanation="Обычно оболочка подключает stdout команды к терминалу, поэтому результат `echo` отображается на экране."}
@@ -48,8 +47,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-В `notes.txt` уже есть текст. Что сделает `echo new > notes.txt`?
+:::single-choice{#stdout-replace-file} В `notes.txt` уже есть текст. Что сделает `echo new > notes.txt`?
 
 ::option[Заменит содержимое файла строкой `new`.]{#stdout-replace-existing .correct explanation="Для `>` оболочка усекает существующий файл назначения и направляет вывод `echo` в ставший пустым файл."}
 ::option[Добавит `new` после существующего текста.]{#stdout-add-existing explanation="Для добавления нужен `>>`. Одинарный `>` не сохраняет прежнее содержимое назначения."}
@@ -71,8 +69,7 @@ Another line
 
 Как и `>`, оператор `>>` создаёт отсутствующий файл назначения. Различие состоит в способе открытия существующего файла: `>>` добавляет данные, а не усекает его.
 
-:::single-choice{#stdout-append-file}
-Какая команда добавляет `Finished` в конец `status.log`, не стирая существующее содержимое?
+:::single-choice{#stdout-append-file} Какая команда добавляет `Finished` в конец `status.log`, не стирая существующее содержимое?
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="Одинарный `>` усекает существующий файл назначения перед записью и удалит прежнее содержимое журнала."}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`echo` формирует текст, а `>>` добавляет этот stdout в файл назначения."}
@@ -90,8 +87,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-Кто обычно интерпретирует `>` в `pwd > current-directory.txt`?
+:::single-choice{#stdout-shell-role} Кто обычно интерпретирует `>` в `pwd > current-directory.txt`?
 
 ::option[Команда `pwd`, получив `>` как аргумент.]{#stdout-pwd-redirection explanation="Оболочка обрабатывает синтаксис перенаправления, поэтому обычно `pwd` не получает `>` и назначение как обычные аргументы."}
 ::option[Оболочка Bash перед запуском `pwd`.]{#stdout-bash-redirection .correct explanation="Перед выполнением команды Bash открывает файл назначения и подключает файловый дескриптор 1."}

@@ -28,8 +28,7 @@ $ mkdir documents
 
 Existiert bereits ein Eintrag namens `documents`, meldet `mkdir` einen Fehler, statt ihn zu ersetzen. Mit `ls -ld documents` kannst du den vorhandenen Eintrag untersuchen.
 
-:::single-choice{#create-one-directory}
-Welcher Befehl erstellt im aktuellen Arbeitsverzeichnis ein Verzeichnis namens `documents`?
+:::single-choice{#create-one-directory} Welcher Befehl erstellt im aktuellen Arbeitsverzeichnis ein Verzeichnis namens `documents`?
 
 ::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` erstellt das verlangte Verzeichnis am relativen Pfad `documents`."}
 ::option[`touch documents`]{#touch-documents explanation="`touch` erstellt bei einem fehlenden Pfad eine leere reguläre Datei. Ein Verzeichnis legt der Befehl nicht an."}
@@ -44,8 +43,7 @@ Führe mehrere Pfade auf, um mit einem Befehl mehrere Verzeichnisse anzulegen:
 $ mkdir books paintings
 ```
 
-:::single-choice{#create-separate-directories}
-Welcher Befehl erstellt zwei gleichrangige Verzeichnisse namens `books` und `paintings`?
+:::single-choice{#create-separate-directories} Welcher Befehl erstellt zwei gleichrangige Verzeichnisse namens `books` und `paintings`?
 
 ::option[`mkdir books/paintings`]{#nested-paintings explanation="Dieser Pfad beschreibt `paintings` innerhalb von `books`, nicht zwei gleichrangige Verzeichnisse. Fehlt `books`, schlägt er außerdem fehl."}
 ::option[`mkdir "books paintings"`]{#spaced-directory explanation="Die Anführungszeichen verbinden beide Wörter zu einem Pfad. So wird ein einzelnes Verzeichnis mit einem Leerzeichen im Namen angefordert."}
@@ -62,8 +60,7 @@ $ mkdir -p books/hemingway/favorites
 
 Damit entstehen alle fehlenden Pfadbestandteile. Außerdem wird nicht allein deshalb ein Fehler gemeldet, weil das letzte Verzeichnis bereits existiert. Andere Fehler, etwa fehlende Berechtigungen, sind weiterhin möglich.
 
-:::single-choice{#create-nested-path}
-Kein Teil von `projects/app/src` existiert bisher. Welcher Befehl erstellt den vollständigen Verzeichnispfad?
+:::single-choice{#create-nested-path} Kein Teil von `projects/app/src` existiert bisher. Welcher Befehl erstellt den vollständigen Verzeichnispfad?
 
 ::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="Die Option `-p` erstellt jedes fehlende übergeordnete Verzeichnis, bevor das letzte Verzeichnis angelegt wird."}
 ::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="Ohne `-p` kann `mkdir` das Verzeichnis `src` nicht erstellen, wenn die Zwischenverzeichnisse fehlen."}
@@ -89,8 +86,7 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-:::single-choice{#set-directory-mode}
-Welcher Befehl erstellt `public` mit dem Berechtigungsmodus `755`?
+:::single-choice{#set-directory-mode} Welcher Befehl erstellt `public` mit dem Berechtigungsmodus `755`?
 
 ::option[`mkdir -p 755 public`]{#parents-755 explanation="Die Option `-p` behandelt die übrigen Wörter als Verzeichnispfade. Den Berechtigungsmodus `755` setzt sie nicht."}
 ::option[`mkdir -v 755 public`]{#verbose-755 explanation="Die Option `-v` gibt Erstellungsmeldungen aus. `755` wird damit nicht als Berechtigungsmodus interpretiert."}

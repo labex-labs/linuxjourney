@@ -24,8 +24,7 @@ default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
 
 直连 `/24` 路由会将匹配的目标直接通过 `eth0` 发送。默认路由使用下一跳网关 `192.168.224.2`。`proto` 描述路由的安装方式，`src` 是匹配流量的首选源地址，度量值则帮助排列其他方面可比的路由。
 
-:::single-choice{#routing-table-via-meaning}
-`via 192.168.224.2` 表示什么？
+:::single-choice{#routing-table-via-meaning} `via 192.168.224.2` 表示什么？
 
 ::option[唯一允许使用该路由的应用程序。]{#routing-table-application explanation="via 关键字不编码应用程序授权。"}
 ::option[该路由的下一跳网关。]{#routing-table-next-hop .correct explanation="数据包会装入发送给该链路内路由器的帧，同时保留其 IP 目标。"}
@@ -36,8 +35,7 @@ default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
 
 带有 `scope link` 且没有 `via` 下一跳的路由，会把该前缀视为可通过接口直接到达。默认路由匹配每个地址，但任何符合条件且更具体的路由都会优先于它。
 
-:::single-choice{#routing-table-connected-route}
-直连的 `scope link` 目标通常如何到达？
+:::single-choice{#routing-table-connected-route} 直连的 `scope link` 目标通常如何到达？
 
 ::option[即使匹配直连路由，也通过默认网关。]{#routing-table-connected-default explanation="直连前缀更具体，而且没有网关操作数。"}
 ::option[把目标转换为 DNS 服务器。]{#routing-table-connected-dns explanation="名称服务不属于已经选定的 IP 路由。"}
@@ -48,8 +46,7 @@ default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
 
 路由选择会考虑策略规则，并选择最长的合格前缀。度量值用于排列适当的可比路由；低度量值默认路由不会仅凭数字较小就覆盖匹配的 `/24`。
 
-:::single-choice{#routing-table-prefix-before-default}
-哪条路由通常对 `192.168.224.50` 匹配得更具体？
+:::single-choice{#routing-table-prefix-before-default} 哪条路由通常对 `192.168.224.50` 匹配得更具体？
 
 ::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="在列出的路由中，24 位匹配前缀最长。"}
 ::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="默认路由的前缀长度为零。"}
@@ -67,8 +64,7 @@ $ ip route show table all
 
 网络命名空间和 VRF 也可以拥有独立状态。检查时应使用与受影响进程相同的上下文。
 
-:::single-choice{#routing-table-policy-limit}
-为什么仅运行 `ip route show` 可能无法解释应用程序路径？
+:::single-choice{#routing-table-policy-limit} 为什么仅运行 `ip route show` 可能无法解释应用程序路径？
 
 ::option[策略规则或另一个网络命名空间可能选择不同的路由状态。]{#routing-table-policy-context .correct explanation="有效查找取决于数据包属性和进程的网络上下文。"}
 ::option[Linux 路由表不包含目标前缀。]{#routing-table-no-prefixes explanation="目标前缀是基本路由键。"}
@@ -86,8 +82,7 @@ $ ip route get 203.0.113.10 from 192.168.224.10
 
 结果预测当前时刻的本地查找。它不会发送探测，也不能证明邻居、下游、防火墙或应用程序可达。
 
-:::single-choice{#routing-table-route-get-limit}
-`ip route get` 不会做什么？
+:::single-choice{#routing-table-route-get-limit} `ip route get` 不会做什么？
 
 ::option[显示所选本地接口和下一跳。]{#routing-table-get-does-interface explanation="这些是查找结果中的主要字段。"}
 ::option[针对目标评估当前本地路由策略。]{#routing-table-get-does-policy explanation="该命令执行内核路由查找。"}

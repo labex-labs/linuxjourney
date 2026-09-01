@@ -28,8 +28,7 @@ $ gunzip report.txt.gz
 
 Utiliza `gzip -k report.txt`, cuando sea compatible, para conservar el archivo de entrada, o utiliza los flujos estándar cuando necesites un control explícito. Una extensión de archivo es una convención, no una prueba del formato real; herramientas como `file` pueden examinar el contenido.
 
-:::single-choice{#tar-gzip-gzip-role}
-¿Cuál es la función principal de `gzip` en esta lección?
+:::single-choice{#tar-gzip-gzip-role} ¿Cuál es la función principal de `gzip` en esta lección?
 
 ::option[Combinar un árbol de directorios en un archivo junto con los metadatos de sus archivos.]{#tar-gzip-directory-archive explanation="Tar realiza esa función de archivado antes de aplicar la compresión con gzip."}
 ::option[Comprimir un único flujo de entrada.]{#tar-gzip-compress-stream .correct explanation="Gzip transforma un flujo de bytes y no codifica por sí solo una jerarquía de directorios."}
@@ -50,8 +49,7 @@ $ tar -cvf project.tar file1 file2 directory1
 
 Las rutas se guardan como nombres de miembros del archivo. Crea los archivos desde un directorio de trabajo elegido deliberadamente y evita incluir sin querer secretos, cachés, sockets o rutas absolutas demasiado amplias.
 
-:::single-choice{#tar-gzip-create-option}
-¿Qué opción de `tar` crea un archivo nuevo?
+:::single-choice{#tar-gzip-create-option} ¿Qué opción de `tar` crea un archivo nuevo?
 
 ::option[`-x`]{#tar-gzip-option-extract explanation="La operación `-x` extrae miembros de un archivo."}
 ::option[`-c`]{#tar-gzip-option-create .correct explanation="La operación de creación escribe un archivo nuevo a partir de las entradas indicadas."}
@@ -68,8 +66,7 @@ $ tar -czvf project.tar.gz file1 file2 directory1
 
 El resultado es un único flujo tar comprimido con gzip. La compresión no cifra el archivo ni oculta su contenido a quien pueda leerlo y descomprimirlo. Si necesitas confidencialidad, utiliza un flujo de trabajo apropiado de cifrado autenticado y gestiona las claves por separado.
 
-:::single-choice{#tar-gzip-z-option}
-¿Qué solicita `-z` en la orden `tar` mostrada?
+:::single-choice{#tar-gzip-z-option} ¿Qué solicita `-z` en la orden `tar` mostrada?
 
 ::option[Cifrar el archivo mediante una clave de conocimiento cero.]{#tar-gzip-z-encrypt explanation="Ni tar ni gzip proporcionan cifrado mediante esta opción."}
 ::option[Descartar todos los miembros de longitud cero.]{#tar-gzip-z-zero explanation="La opción selecciona gzip y no filtra los miembros del archivo por tamaño."}
@@ -95,8 +92,7 @@ $ tar -xzf download.tar.gz -C extraction-stage
 
 No extraigas como root un archivo que no hayas revisado. Comprueba lo que se creó antes de mover los archivos seleccionados a sus ubicaciones finales.
 
-:::single-choice{#tar-gzip-list-before-extract}
-¿Qué operación muestra los miembros de un archivo sin extraerlos?
+:::single-choice{#tar-gzip-list-before-extract} ¿Qué operación muestra los miembros de un archivo sin extraerlos?
 
 ::option[`tar -czf download.tar.gz .`]{#tar-gzip-create-download explanation="Esta orden crea o sustituye un archivo a partir del directorio actual."}
 ::option[`tar -xzf download.tar.gz`]{#tar-gzip-extract-download explanation="La operación `-x` escribe los miembros en el directorio de destino."}
@@ -107,8 +103,7 @@ No extraigas como root un archivo que no hayas revisado. Comprueba lo que se cre
 
 Las implementaciones de tar pueden trabajar con compresores como bzip2 y xz, que en GNU tar suelen seleccionarse mediante `-j` y `-J`, respectivamente. La compatibilidad con formatos y su detección automática varían, así que consulta `tar --help` o el manual local. ZIP es un formato de archivo distinto que se maneja con herramientas como `zip` y `unzip`.
 
-:::single-choice{#tar-gzip-archive-confidentiality}
-¿La compresión gzip convierte un archivo tar en confidencial?
+:::single-choice{#tar-gzip-archive-confidentiality} ¿La compresión gzip convierte un archivo tar en confidencial?
 
 ::option[No; cualquiera que pueda leerlo puede normalmente descomprimirlo.]{#tar-gzip-not-encryption .correct explanation="La compresión cambia la representación y el tamaño, pero no proporciona control de acceso ni secreto criptográfico."}
 ::option[Sí; gzip deriva una clave de cifrado del nombre del archivo.]{#tar-gzip-filename-key explanation="Gzip no implementa ese mecanismo de cifrado."}

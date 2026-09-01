@@ -24,8 +24,7 @@ $ initctl version
 
 La dernière commande ne réussit de façon significative que si le service de contrôle Upstart et son client sont présents. Un répertoire comme `/usr/share/upstart` ou des fichiers restants sous `/etc/init` constituent de faibles indices, car des paquets et vestiges de migration peuvent subsister après la prise de contrôle par un autre système.
 
-:::single-choice{#upstart-overview-active-evidence}
-Quelle est la meilleure preuve qu'un hôte emploie réellement Upstart ?
+:::single-choice{#upstart-overview-active-evidence} Quelle est la meilleure preuve qu'un hôte emploie réellement Upstart ?
 
 ::option[Le nom d'un répertoire contient le mot `upstart`.]{#upstart-overview-directory-only explanation="De la documentation installée ou des vestiges peuvent subsister sur un système qui emploie une autre initialisation."}
 ::option[Le système possède au moins un script shell.]{#upstart-overview-shell-script explanation="Les scripts shell sont courants dans tous les environnements d'initialisation."}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 Cet exemple emploie les événements de niveaux comme entrées de compatibilité. Upstart peut aussi réagir à des événements de systèmes de fichiers, périphériques, réseaux ou applications selon ceux qu'émet le système.
 
-:::single-choice{#upstart-overview-start-on}
-Que définit une section `start on` d'Upstart ?
+:::single-choice{#upstart-overview-start-on} Que définit une section `start on` d'Upstart ?
 
 ::option[La version du noyau qui doit ensuite être compilée.]{#upstart-overview-kernel-version explanation="Les conditions d'événements d'un job ne choisissent pas une construction du noyau."}
 ::option[L'expression d'événements qui fait évoluer l'objectif du job vers le démarrage.]{#upstart-overview-start-condition .correct explanation="Lorsque l'expression est satisfaite, Upstart tente la transition de démarrage configurée du job."}
@@ -61,8 +59,7 @@ Pendant le démarrage, Upstart charge les définitions de jobs et reçoit des é
 
 Ce modèle évite une séquence globale de scripts codée en dur, mais devient difficile à diagnostiquer lorsque les noms, l'ordre et les conditions des événements sont implicites. Les événements ne forment pas par défaut une file de messages durable : un job ajouté ou une condition modifiée plus tard ne doit pas supposer le rejeu de tous les événements passés.
 
-:::single-choice{#upstart-overview-event-chain}
-Comment un job Upstart peut-il conduire au démarrage d'un autre ?
+:::single-choice{#upstart-overview-event-chain} Comment un job Upstart peut-il conduire au démarrage d'un autre ?
 
 ::option[Il réécrit en mémoire le binaire exécutable de l'autre job.]{#upstart-overview-rewrite-binary explanation="La coordination passe par les événements, pas par la modification du code."}
 ::option[Chaque job démarre toujours strictement selon l'ordre de son nom de fichier.]{#upstart-overview-filename-order explanation="Upstart emploie des expressions d'événements plutôt qu'une seule liste de démarrage ordonnée par fichiers."}
@@ -73,8 +70,7 @@ Comment un job Upstart peut-il conduire au démarrage d'un autre ?
 
 Systemd peut fournir une compatibilité limitée pour certains anciens scripts de services, mais n'exécute pas la syntaxe des jobs Upstart comme des unités systemd natives. Lors d'une migration, traduisez les conditions de cycle de vie, l'environnement, les règles de relance, la journalisation, les dépendances et la sémantique de disponibilité au lieu de renommer mécaniquement les fichiers.
 
-:::single-choice{#upstart-overview-current-ubuntu}
-Quel système d'initialisation les versions standard actuelles d'Ubuntu emploient-elles ?
+:::single-choice{#upstart-overview-current-ubuntu} Quel système d'initialisation les versions standard actuelles d'Ubuntu emploient-elles ?
 
 ::option[Exclusivement Upstart sur chaque installation.]{#upstart-overview-current-upstart explanation="Cela n'était vrai que pendant certaines périodes historiques et pour certaines configurations."}
 ::option[systemd.]{#upstart-overview-current-systemd .correct explanation="Upstart appartient aux anciennes générations d'Ubuntu ; les versions actuelles emploient systemd comme PID 1."}

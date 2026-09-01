@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 `/usr/lib/systemd/` can exist on a system where another program is PID 1, and a container can expose its own PID namespace. `systemctl` also has user-manager and remote/container modes, so identify which manager an operation targets.
 
-:::single-choice{#systemd-overview-detection}
-What most directly identifies systemd as the system init manager?
+:::single-choice{#systemd-overview-detection} What most directly identifies systemd as the system init manager?
 
 ::option[A directory named `/usr/lib/systemd` exists.]{#systemd-overview-directory explanation="Libraries and unit files can remain installed without systemd acting as PID 1."}
 ::option[A user has executed one command named `systemctl`.]{#systemd-overview-command-executed explanation="A client binary can exist even when no system systemd manager is available."}
@@ -44,8 +43,7 @@ A unit is systemd's named model of a resource or activity. Common unit types inc
 
 Unit state is not always “running.” A mount can be mounted, a timer waiting, a device present, and a target active after its dependencies are reached.
 
-:::single-choice{#systemd-overview-group-unit}
-Which unit type commonly groups other units and provides a synchronization point?
+:::single-choice{#systemd-overview-group-unit} Which unit type commonly groups other units and provides a synchronization point?
 
 ::option[`.socket`]{#systemd-overview-socket explanation="Socket units expose IPC or network endpoints and can activate services."}
 ::option[`.target`]{#systemd-overview-target .correct explanation="Target units collect dependencies and represent boot or operational milestones."}
@@ -62,8 +60,7 @@ System units can be loaded from distribution and administrator paths such as:
 
 Exact vendor paths can differ. Higher-priority local configuration overrides lower-priority files with the same unit name. Prefer drop-in overrides created with `systemctl edit UNIT` over copying and modifying a complete vendor file, so package updates remain visible.
 
-:::single-choice{#systemd-overview-local-override}
-Where should persistent local system-unit overrides normally reside?
+:::single-choice{#systemd-overview-local-override} Where should persistent local system-unit overrides normally reside?
 
 ::option[Inside `/proc/systemd/`.]{#systemd-overview-proc-systemd explanation="Procfs is a runtime kernel interface, not persistent unit configuration."}
 ::option[Under `/etc/systemd/system/`.]{#systemd-overview-etc-system .correct explanation="The administrator configuration layer takes precedence over packaged vendor units."}
@@ -76,8 +73,7 @@ Systemd builds a transaction from dependency relationships. `Wants=` and `Requir
 
 An `After=network.target` line does not prove that usable connectivity, DNS, or a specific remote endpoint is ready. Services must use the appropriate network-online integration or implement their own retry and readiness behavior.
 
-:::single-choice{#systemd-overview-after-semantics}
-What does `After=other.service` specify by itself?
+:::single-choice{#systemd-overview-after-semantics} What does `After=other.service` specify by itself?
 
 ::option[A guarantee that the other service's application endpoint is healthy.]{#systemd-overview-after-health explanation="Ordering completion and application readiness are different concepts."}
 ::option[Ordering if both units are part of the transaction.]{#systemd-overview-after-ordering .correct explanation="A separate requirement such as Wants or Requires is needed to pull the other unit in."}
@@ -90,8 +86,7 @@ What does `After=other.service` specify by itself?
 
 Targets resemble runlevels only at a broad compatibility level. Multiple targets can be active simultaneously, custom targets can be created, and target activity does not mean every service on the machine is healthy.
 
-:::single-choice{#systemd-overview-default-target}
-What does `default.target` normally select?
+:::single-choice{#systemd-overview-default-target} What does `default.target` normally select?
 
 ::option[The default block device that `mkfs` should erase.]{#systemd-overview-default-disk explanation="Targets describe unit activation, not destructive storage selection."}
 ::option[The only target that can ever be active.]{#systemd-overview-only-target explanation="Targets are groupings, and many can be active in one boot."}

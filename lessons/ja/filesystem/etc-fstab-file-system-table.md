@@ -29,8 +29,7 @@ UUID=130b882f-7d79-436d-a096-1e594c92bb76 /data ext4 defaults,nosuid,nodev 0 2
 
 フィールド内の空白は、スペースを `\040` とするような fstab 構文でエスケープする必要があります。フィールドの外では、`#` からコメントが始まります。
 
-:::single-choice{#fstab-field-count}
-通常の `/etc/fstab` エントリには、フィールドがいくつありますか？
+:::single-choice{#fstab-field-count} 通常の `/etc/fstab` エントリには、フィールドがいくつありますか？
 
 ::option[4 つ。]{#fstab-four-fields explanation="ソース、対象、種類、オプションの後に、dump と pass のフィールドが続きます。"}
 ::option[8 つ。]{#fstab-eight-fields explanation="8 は、1 つの fstab レコードの標準的なフィールド数ではありません。"}
@@ -48,8 +47,7 @@ $ sudo blkid
 
 `UUID=...` は、その識別子が目的のファイルシステムのものだと確認した後にだけ使用してください。再フォーマットすると新しい UUID が作られ、ブロック単位の複製では同じ UUID が重複することがあります。一方、`PARTUUID=` はパーティションテーブルのエントリを識別するもので、意味が異なります。
 
-:::single-choice{#fstab-uuid-source}
-ソースフィールドの `UUID=...` は、通常何を識別しますか？
+:::single-choice{#fstab-uuid-source} ソースフィールドの `UUID=...` は、通常何を識別しますか？
 
 ::option[マウントポイントを所有するユーザーアカウント。]{#fstab-user-uuid explanation="アカウントの識別情報は、ファイルシステム UUID のソース構文では選択されません。"}
 ::option[その UUID を持つファイルシステムメタデータ。]{#fstab-filesystem-uuid .correct explanation="mount は、列挙名に依存せず、ファイルシステム識別子を利用可能なブロックデバイスへ解決します。"}
@@ -62,8 +60,7 @@ $ sudo blkid
 
 `fsck` に対応するファイルシステムでは、慣例としてルートファイルシステムに pass `1`、そのほかのチェック対象ローカルファイルシステムに pass `2` を使います。ただし、一般的な起動時 fsck を使わない種類があるなど、ファイルシステム固有の方法は異なります。機械的に `2` を割り当てず、インストール済みのファイルシステムとディストリビューションの文書に従ってください。
 
-:::single-choice{#fstab-pass-zero}
-6 番目のフィールドに `0` を指定すると、何が要求されますか？
+:::single-choice{#fstab-pass-zero} 6 番目のフィールドに `0` を指定すると、何が要求されますか？
 
 ::option[そのエントリを、fstab による自動 fsck の順序付けから除外する。]{#fstab-pass-zero-skip .correct explanation="pass が 0 のエントリは、このフィールドが管理する起動時チェックの順序から除外されます。"}
 ::option[どのような場合でもファイルシステムを読み取り専用でマウントする。]{#fstab-pass-zero-readonly explanation="読み取り専用の動作は、マウントオプションのフィールドで指定します。"}
@@ -82,8 +79,7 @@ $ sudo blkid
 
 誰でも読める fstab エントリへ認証情報を直接書いてはいけません。該当するマウントヘルパーが提供する、保護された認証情報の仕組みを使用してください。
 
-:::single-choice{#fstab-editing-recovery}
-重要な fstab エントリを変更する前に、レスキューアクセスを確認するのはなぜですか？
+:::single-choice{#fstab-editing-recovery} 重要な fstab エントリを変更する前に、レスキューアクセスを確認するのはなぜですか？
 
 ::option[fstab を編集すると、必ずパーティションテーブルが即座に消去されるから。]{#fstab-no-partition-erase explanation="テキストの編集自体はディスクパーティションを書き換えません。ただし、その後のマウントが影響を及ぼすことはあります。"}
 ::option[このファイルは、別のオペレーティングシステムからしか編集できないから。]{#fstab-other-os-only explanation="適切な権限と安全策があれば、Linux 上で編集できます。"}
@@ -102,8 +98,7 @@ $ sudo findmnt --verify --verbose
 
 systemd ベースのシステムでは、fstab の編集後にマネージャーの設定を再読み込みし、生成されるマウントユニットを更新します。その後、ローカルの文書に従って依存関係と起動時の動作を確認してください。
 
-:::single-choice{#fstab-mount-a-limit}
-`mount -a` だけでは fstab の完全な検証にならないのはなぜですか？
+:::single-choice{#fstab-mount-a-limit} `mount -a` だけでは fstab の完全な検証にならないのはなぜですか？
 
 ::option[一覧の全デバイスを、マウント前に必ず再フォーマットするから。]{#fstab-mount-a-formats explanation="通常、mount はファイルシステムを作成しません。"}
 ::option[一部のエントリを飛ばす一方、構文だけでなく広範な実マウント操作を行うから。]{#fstab-mount-a-incomplete .correct explanation="マウント済みまたは `noauto` のレコードはテストされない一方、対象となるソースには実際の影響が及びます。"}

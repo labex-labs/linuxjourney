@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 La `p` de las formas de consulta RPM mostradas significa «consultar un archivo de paquete» en vez de la base de datos instalada. La salida de una consulta ayuda a revisar un paquete, pero no puede demostrar que sus scripts o programas sean seguros.
 
-:::single-choice{#package-install-tools-native-format}
-¿Qué herramienta de bajo nivel gestiona los paquetes `.deb` de Debian y su base de datos instalada?
+:::single-choice{#package-install-tools-native-format} ¿Qué herramienta de bajo nivel gestiona los paquetes `.deb` de Debian y su base de datos instalada?
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM gestiona su propio formato nativo y su base de datos en los sistemas de la familia RPM."}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="Tar puede leer archivos, pero no implementa el ciclo de vida de los paquetes Debian instalados."}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 Revisa la transacción antes de confirmarla. En APT, el prefijo `./` distingue una ruta local a un archivo Debian del nombre de un paquete del repositorio.
 
-:::single-choice{#package-install-tools-local-dependencies}
-¿Qué orden mostrada puede instalar un archivo `.deb` local y resolver las dependencias disponibles en los repositorios?
+:::single-choice{#package-install-tools-local-dependencies} ¿Qué orden mostrada puede instalar un archivo `.deb` local y resolver las dependencias disponibles en los repositorios?
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l` muestra selecciones de paquetes instalados y no es el flujo de instalación local con resolución de dependencias."}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="La sintaxis de consulta de RPM no instala un archivo Debian."}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 En Debian, `--remove` suele conservar los archivos de configuración clasificados como conffiles; `--purge` solicita que también se eliminen, sujeto a los scripts del paquete y a los datos no gestionados. Ninguna de las dos órdenes garantiza la eliminación de los datos creados por los usuarios. Las órdenes de nivel superior `apt remove` o `dnf remove` suelen ser mejores porque pueden evaluar los paquetes relacionados y presentar una transacción completa.
 
-:::single-choice{#package-install-tools-remove-operand}
-¿Qué operando espera `dpkg --remove` para un paquete instalado?
+:::single-choice{#package-install-tools-remove-operand} ¿Qué operando espera `dpkg --remove` para un paquete instalado?
 
 ::option[La URL del índice del repositorio.]{#package-install-tools-remove-url explanation="La ubicación del repositorio no es la identidad del paquete que se pasa a la eliminación de bajo nivel."}
 ::option[El nombre del paquete instalado.]{#package-install-tools-remove-name .correct explanation="La eliminación se dirige al registro del paquete, como `example`, y no necesita su antigua ruta `.deb`."}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 Para una inspección concreta, prefiere un nombre de paquete específico y un formato legible por máquinas cuando importe la fiabilidad de un script. Las bases de datos de paquetes describen el estado gestionado; los administradores locales o las aplicaciones todavía pueden modificar los archivos después, así que utiliza las funciones de verificación cuando necesites comparar los archivos instalados con los metadatos registrados.
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-¿Qué orden consulta todos los paquetes registrados como instalados en la base de datos RPM?
+:::single-choice{#package-install-tools-rpm-list-installed} ¿Qué orden consulta todos los paquetes registrados como instalados en la base de datos RPM?
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q` selecciona el modo de consulta y `-a` lo amplía a todos los registros de paquetes instalados."}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e` solicita eliminar un paquete en vez de mostrar una lista de solo lectura."}

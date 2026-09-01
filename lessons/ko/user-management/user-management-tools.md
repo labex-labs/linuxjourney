@@ -44,8 +44,7 @@ $ sudo passwd -S bob
 $ id bob
 ```
 
-:::single-choice{#user-tools-create-home}
-새 계정의 홈 디렉터리 생성을 명시적으로 요청하는 `useradd` 옵션은 무엇인가요?
+:::single-choice{#user-tools-create-home} 새 계정의 홈 디렉터리 생성을 명시적으로 요청하는 `useradd` 옵션은 무엇인가요?
 
 ::option[`-M`]{#user-tools-no-home-option explanation="대문자 `-M`은 일반적인 `useradd` 구현에 홈 디렉터리를 만들지 말라고 명시적으로 지시합니다."}
 ::option[`-s`]{#user-tools-shell-option explanation="`-s` 옵션은 로그인 쉘을 선택하며 그 자체로 홈 디렉터리를 만들지 않습니다."}
@@ -68,8 +67,7 @@ $ sudo passwd bob
 
 비밀번호는 명령 인자, 쉘 기록, 레슨 노트, 채팅이 아니라 보호된 요청에만 입력하세요. PAM 정책은 약하거나 재사용된 비밀번호를 거부할 수 있습니다. 디렉터리 관리 계정에는 다른 도구가 필요할 수 있습니다.
 
-:::single-choice{#user-tools-change-own-password}
-현재 사용자가 대화형 요청을 통해 자신의 비밀번호를 바꿀 때 일반적으로 사용하는 명령은 무엇인가요?
+:::single-choice{#user-tools-change-own-password} 현재 사용자가 대화형 요청을 통해 자신의 비밀번호를 바꿀 때 일반적으로 사용하는 명령은 무엇인가요?
 
 ::option[`useradd`]{#user-tools-add-not-password explanation="`useradd`는 계정 레코드를 만들며 일반적인 대화형 비밀번호 변경 명령이 아닙니다."}
 ::option[`userdel`]{#user-tools-delete-not-password explanation="`userdel`은 로컬 계정을 제거하며 호출자의 비밀번호 변경과 관련이 없습니다."}
@@ -90,8 +88,7 @@ $ sudo usermod -aG developers bob
 
 그룹 변경은 일반적으로 이전 자격 증명 집합으로 이미 실행 중인 프로세스가 아니라 새 로그인 세션에 적용됩니다.
 
-:::single-choice{#user-tools-append-group}
-`bob`의 다른 보조 멤버십을 교체하지 않고 보조 그룹 `developers`에 추가하는 명령은 무엇인가요?
+:::single-choice{#user-tools-append-group} `bob`의 다른 보조 멤버십을 교체하지 않고 보조 그룹 `developers`에 추가하는 명령은 무엇인가요?
 
 ::option[`usermod -G developers bob`]{#user-tools-replace-groups explanation="`-a`가 없으면 `-G`가 보조 그룹 목록을 교체하여 기존 멤버십을 제거할 수 있습니다."}
 ::option[`usermod -aG developers bob`]{#user-tools-append-groups .correct explanation="`-a` 옵션은 `-G`가 지정한 그룹을 추가하여 다른 보조 멤버십을 보존합니다."}
@@ -104,8 +101,7 @@ $ sudo usermod -aG developers bob
 
 비밀번호 잠금이 SSH 키, 토큰, 예약 작업, 이미 실행 중인 프로세스 또는 서비스별 인증을 반드시 막지는 않습니다. 계정을 포괄적으로 비활성화하려면 위협과 접근 경로를 정의한 뒤 계정 만료, 로그인 쉘, 서비스 접근, 키, 세션 종료를 포함할 수 있는 조정된 정책을 적용하세요.
 
-:::single-choice{#user-tools-password-lock-scope}
-`passwd -l bob`이 주로 잠그는 것은 무엇인가요?
+:::single-choice{#user-tools-password-lock-scope} `passwd -l bob`이 주로 잠그는 것은 무엇인가요?
 
 ::option[계정의 모든 가능한 인증 및 실행 경로]{#user-tools-lock-everything explanation="키, 토큰, 작업, 서비스, 기존 세션은 별도 제어가 필요할 수 있습니다."}
 ::option[현재 Bob의 UID가 소유한 모든 파일]{#user-tools-lock-files explanation="비밀번호 상태는 파일 시스템 소유권을 바꾸거나 소유 데이터에 자동으로 접근할 수 없게 만들지 않습니다."}
@@ -126,8 +122,7 @@ $ sudo usermod -aG developers bob
 
 `userdel -r`은 구성된 홈 및 메일 위치 밖의 파일 제거를 보장하지 않습니다. 계정 삭제 후에도 파일의 숫자 소유권, 데이터베이스 권한, 애플리케이션 신원, 원격 디렉터리 레코드가 남을 수 있습니다.
 
-:::single-choice{#user-tools-userdel-r-scope}
-일반적인 `userdel -r bob`은 `userdel bob`과 비교해 어떤 추가 제거를 요청하나요?
+:::single-choice{#user-tools-userdel-r-scope} 일반적인 `userdel -r bob`은 `userdel bob`과 비교해 어떤 추가 제거를 요청하나요?
 
 ::option[마운트된 모든 파일 시스템에서 Bob의 UID를 가진 모든 파일]{#user-tools-delete-all-owned explanation="도구가 모든 저장소에서 UID 소유 파일을 보편적으로 찾아 지우지는 않습니다."}
 ::option[사용자 이름이 `bob`인 모든 원격 계정]{#user-tools-delete-remote explanation="`userdel`은 해당 로컬 계정 데이터베이스에 작동하며 관련 없는 디렉터리 서비스 신원을 삭제하지 않습니다."}

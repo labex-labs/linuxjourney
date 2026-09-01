@@ -18,8 +18,7 @@ Installiere die NFS-Client-Werkzeuge der Distribution, die auf Systemen der Debi
 
 `showmount -e SERVER` kann Exporte auflisten, die über das ältere Mount-Protokoll bereitgestellt werden, ist jedoch nicht für jeden reinen NFSv4-Server maßgeblich. Eine fehlgeschlagene Auflistung beweist nicht, dass kein autorisierter NFSv4-Export existiert.
 
-:::single-choice{#nfs-showmount-limit}
-Warum kann `showmount -e` für einen NFSv4-Server unvollständig sein?
+:::single-choice{#nfs-showmount-limit} Warum kann `showmount -e` für einen NFSv4-Server unvollständig sein?
 
 ::option[Der Befehl fragt ein älteres Exportauflistungsprotokoll ab, das möglicherweise nicht bereitgestellt wird.]{#nfs-showmount-protocol .correct explanation="NFSv4 kann arbeiten, ohne diesen getrennten Auflistungsdienst verfügbar zu machen."}
 ::option[Er zeigt nur die lokale CPU-Temperatur an.]{#nfs-showmount-temperature explanation="Der Befehl betrifft Exportinformationen eines NFS-Servers."}
@@ -41,8 +40,7 @@ Gib nur dann eine Version an, wenn Richtlinie oder Kompatibilität dies erforder
 $ findmnt --target /mnt/team
 ```
 
-:::single-choice{#nfs-mount-operands}
-Was ist im mount-Befehl `server.example.net:/srv/team`?
+:::single-choice{#nfs-mount-operands} Was ist im mount-Befehl `server.example.net:/srv/team`?
 
 ::option[Das lokale Verzeichnis, das den entfernten Export verdeckt.]{#nfs-local-mountpoint explanation="Der lokale Einhängepunkt im Beispiel ist `/mnt/team`."}
 ::option[Der Name des zu installierenden Clientpakets.]{#nfs-package-name explanation="Paketnamen sind distributionsspezifisch und keine Quelloperanden von mount."}
@@ -55,8 +53,7 @@ NFS-Zugriff verbindet Serverexportregeln, Protokollsicherheit, numerische Identi
 
 Der Server ordnet entfernten root durch Root Squashing gewöhnlich eine unprivilegierte Identität zu. Deaktiviere diesen Schutz nicht nur zur Behebung eines Berechtigungsfehlers; untersuche IDs, Verzeichniseigentum, Exportrichtlinie und das beabsichtigte Sicherheitsmodell.
 
-:::single-choice{#nfs-name-versus-id}
-Warum können zwei Benutzer mit demselben angezeigten Namen unterschiedliche NFS-Berechtigungen erhalten?
+:::single-choice{#nfs-name-versus-id} Warum können zwei Benutzer mit demselben angezeigten Namen unterschiedliche NFS-Berechtigungen erhalten?
 
 ::option[NFS-Berechtigungen können von der Zuordnung numerischer Identitäten abhängen.]{#nfs-numeric-mapping .correct explanation="Übereinstimmende Namen allein belegen nicht, dass Client und Server dieselbe UID und dieselben Gruppen auflösen."}
 ::option[NFS ignoriert alle Dateisystemberechtigungen.]{#nfs-ignores-permissions explanation="Dateisystem- und Exportberechtigungen bleiben Teil der Autorisierung."}
@@ -73,8 +70,7 @@ server.example.net:/srv/team /mnt/team nfs4 rw,_netdev,nofail,x-systemd.automoun
 
 Bewahre vor der Bearbeitung von fstab einen Wiederherstellungszugang und validiere mit einem nicht destruktiven Parser oder kontrollierten Mounttest. Automount verbessert das Verfügbarkeitsverhalten, behebt aber weder Autorisierungs- noch DNS- oder Serverausfälle.
 
-:::single-choice{#nfs-automount-benefit}
-Was ist ein Hauptvorteil der bedarfsgesteuerten Einhängung einer NFS-Freigabe?
+:::single-choice{#nfs-automount-benefit} Was ist ein Hauptvorteil der bedarfsgesteuerten Einhängung einer NFS-Freigabe?
 
 ::option[Sie gewährt jedem Client root-Zugriff auf den Export.]{#nfs-automount-root explanation="Der Einhängezeitpunkt setzt die Serverautorisierung nicht außer Kraft."}
 ::option[Sie kann vermeiden, dass der Server beim anfänglichen Bootvorgang verfügbar sein muss.]{#nfs-automount-boot .correct explanation="Die Verbindung wird bei Zugriff ausgelöst, statt unbedingt den frühen Systemstart zu blockieren."}
@@ -92,8 +88,7 @@ $ findmnt --target /mnt/team
 
 Erzwungenes oder verzögertes Aushängen kann aktive Referenzen verbergen und Anwendungsfehler verursachen. Verwende solche Optionen nur bei einem diagnostizierten Fehler und mit einem ausdrücklichen Wiederherstellungsplan.
 
-:::single-choice{#nfs-safe-unmount}
-Was sollte einem normalen Aushängen von NFS vorausgehen?
+:::single-choice{#nfs-safe-unmount} Was sollte einem normalen Aushängen von NFS vorausgehen?
 
 ::option[Prozesse koordinieren, die die Freigabe verwenden, und wichtige Schreibvorgänge abschließen.]{#nfs-coordinate-writers .correct explanation="Das Entfernen eines aktiven Dateisystems aus Anwendungen kann E/A unterbrechen oder Arbeit unvollständig lassen."}
 ::option[Das Exportverzeichnis auf dem Server löschen.]{#nfs-delete-export explanation="Das Aushängen auf dem Client erfordert nicht, Serverdaten zu zerstören."}

@@ -29,8 +29,7 @@ The standard streams conventionally use these file descriptors:
 - `1`: stdout (standard output)
 - `2`: stderr (standard error)
 
-:::single-choice{#stderr-not-in-stdout-file}
-Why does the error from `ls /missing > results.txt` normally remain on the terminal?
+:::single-choice{#stderr-not-in-stdout-file} Why does the error from `ls /missing > results.txt` normally remain on the terminal?
 
 ::option[`>` redirects stdout, while the diagnostic is written to stderr.]{#stderr-separate-stream .correct explanation="A plain `>` changes file descriptor 1 only. File descriptor 2 keeps its existing terminal destination."}
 ::option[`ls` waits until the file closes before printing any error.]{#stderr-waits-for-close explanation="The issue is not timing. The regular and diagnostic messages use different output streams."}
@@ -47,8 +46,7 @@ $ ls /fake/directory 2> errors.txt
 
 The shell creates or truncates `errors.txt` and connects it to descriptor 2. Stdout keeps its previous destination. Use `2>> errors.txt` instead when error output should be appended.
 
-:::single-choice{#stderr-to-error-file}
-Which command replaces `errors.log` with diagnostics from `find /restricted` while leaving stdout on its existing destination?
+:::single-choice{#stderr-to-error-file} Which command replaces `errors.log` with diagnostics from `find /restricted` while leaving stdout on its existing destination?
 
 ::option[`find /restricted > errors.log`]{#stdout-errors-log explanation="A plain `>` redirects descriptor 1, so it captures regular results rather than specifically redirecting diagnostics."}
 ::option[`find /restricted < errors.log`]{#stdin-errors-log explanation="The less-than operator supplies the file as stdin. It does not capture either output stream."}
@@ -76,8 +74,7 @@ $ ls /fake/directory /etc/passwd 2>&1 > regular.txt
 
 Here, stderr first duplicates stdout's original terminal destination. Stdout then moves to `regular.txt`, so the two streams end in different places.
 
-:::single-choice{#stderr-combine-order}
-Which Bash redirection sends both stdout and stderr from `command` to `all.log`?
+:::single-choice{#stderr-combine-order} Which Bash redirection sends both stdout and stderr from `command` to `all.log`?
 
 ::option[`command 2>&1 > all.log`]{#stderr-before-stdout explanation="This first connects stderr to stdout's old destination, then redirects only stdout to the file. The streams end up separated."}
 ::option[`command 2> all.log > /dev/null`]{#stderr-file-stdout-null explanation="This sends stderr to `all.log` but discards stdout. It does not combine both streams in the file."}
@@ -92,8 +89,7 @@ $ ls /fake/directory /etc/passwd &> combined.txt
 
 Use `&>>` to append both streams in Bash. The explicit `> file 2>&1` form is useful to recognize because it also appears in shell scripts and documentation.
 
-:::single-choice{#stderr-bash-short-form}
-Which Bash command appends both stdout and stderr from `build` to `build.log`?
+:::single-choice{#stderr-bash-short-form} Which Bash command appends both stdout and stderr from `build` to `build.log`?
 
 ::option[`build &> build.log`]{#replace-both-build explanation="Bash `&>` redirects both streams but replaces an existing file instead of appending to it."}
 ::option[`build 2>> build.log`]{#append-errors-build explanation="This appends stderr only. Stdout retains its previous destination."}
@@ -110,8 +106,7 @@ $ ls /fake/directory 2> /dev/null
 
 This does not make the command succeed or change its exit status; it only hides the diagnostic stream. During troubleshooting, preserve or display stderr instead of discarding the information you need.
 
-:::single-choice{#stderr-dev-null-effect}
-What does `check-data 2> /dev/null` change?
+:::single-choice{#stderr-dev-null-effect} What does `check-data 2> /dev/null` change?
 
 ::option[It discards stdout and converts every error into success.]{#discard-stdout-success explanation="Descriptor 2 is stderr, not stdout, and redirection does not rewrite the program's exit status."}
 ::option[It discards stderr but does not force a successful exit status.]{#discard-stderr-only .correct explanation="The redirection changes where diagnostics go. The program still determines its own success or failure status."}

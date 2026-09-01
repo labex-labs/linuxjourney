@@ -28,8 +28,7 @@ $ service --status-all
 
 Seine Klammermarkierungen und Beendigungsstatus sind Wrapper-spezifisch, und ein Skript kann einen unbekannten Status melden. Prüfe für einen einzelnen Dienst die Nutzungsausgabe oder Dokumentation des Skripts, statt anzunehmen, dass jede Aktion vorhanden ist.
 
-:::single-choice{#sysv-services-wrapper-purpose}
-Was kapselt der Befehl `service` gewöhnlich?
+:::single-choice{#sysv-services-wrapper-purpose} Was kapselt der Befehl `service` gewöhnlich?
 
 ::option[Einen Partitionseditor, der auf jeder Dienstdatei läuft.]{#sysv-services-partition-editor explanation="Die Dienststeuerung hat nichts mit der Speicherpartitionierung zu tun."}
 ::option[Einen Kernel-Systemaufruf, der vom Skript dynamisch hinzugefügt wird.]{#sysv-services-new-syscall explanation="Init-Skripte sind Programme zur Prozesssteuerung im User-Space."}
@@ -49,8 +48,7 @@ Ersetze den Platzhalter erst, nachdem du den Dienst, seine Abhängigen, seinen a
 
 Die direkte Form `/etc/init.d/SERVICE_NAME ACTION` kann vorhanden sein. Verwende auf einem Host, dessen aktiver Manager Kompatibilität bereitstellt, jedoch den an den Manager gerichteten Befehl, damit dieser Zustand und Abhängigkeiten verfolgen kann.
 
-:::single-choice{#sysv-services-stop-peanut}
-Welcher Befehl fordert an, den SysV-Dienst `peanut` zu stoppen?
+:::single-choice{#sysv-services-stop-peanut} Welcher Befehl fordert an, den SysV-Dienst `peanut` zu stoppen?
 
 ::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="Die konventionelle Operandenreihenfolge setzt den Dienstnamen vor die Aktion."}
 ::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="Dies ist nicht die Syntax des SysV-Dienst-Wrappers."}
@@ -68,8 +66,7 @@ $ sudo service SERVICE_NAME status
 $ sudo service SERVICE_NAME reload
 ```
 
-:::single-choice{#sysv-services-reload-versus-restart}
-Warum solltest du nicht annehmen, dass `reload` und `restart` gleichwertig sind?
+:::single-choice{#sysv-services-reload-versus-restart} Warum solltest du nicht annehmen, dass `reload` und `restart` gleichwertig sind?
 
 ::option[Reload fährt immer das gesamte Betriebssystem herunter.]{#sysv-services-reload-shutdown explanation="Das ist nicht die gewöhnliche Bedeutung einer Neuladeaktion für einen Dienst."}
 ::option[Restart gibt nur Konfiguration aus und ändert niemals den Prozesszustand.]{#sysv-services-restart-readonly explanation="Restart stoppt und startet den Dienst gewöhnlich."}
@@ -82,8 +79,7 @@ Das sofortige Starten eines Dienstes aktiviert ihn nicht zwangsläufig für zuk�
 
 Erstelle `S`- und `K`-Links nicht manuell, bevor du die Abhängigkeitsmetadaten und das Verwaltungswerkzeug der Distribution verstehst; manuelle Links können überschrieben oder falsch angeordnet werden.
 
-:::single-choice{#sysv-services-start-versus-enable}
-Aktiviert `service SERVICE start` den Dienst zwangsläufig für zukünftige Systemstarts?
+:::single-choice{#sysv-services-start-versus-enable} Aktiviert `service SERVICE start` den Dienst zwangsläufig für zukünftige Systemstarts?
 
 ::option[Ja; jede Startaktion erzeugt automatisch alle Runlevel-Links.]{#sysv-services-start-links explanation="Der Wrapper ändert die dauerhafte Aktivierung nicht grundsätzlich."}
 ::option[Nein; Laufzeitzustand und Runlevel-Aktivierung sind getrennt.]{#sysv-services-runtime-separate .correct explanation="Bootlinks oder Managerrichtlinien bestimmen die zukünftige Aktivierung unabhängig vom jetzigen Prozessstart."}

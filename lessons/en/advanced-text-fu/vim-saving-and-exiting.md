@@ -24,8 +24,7 @@ A write can fail because the buffer has no filename, the directory is not writab
 
 Use `:w copy.txt` to write the current buffer to another pathname while keeping the current buffer's existing name. Use `:saveas copy.txt` when the buffer should adopt the new pathname.
 
-:::single-choice{#vim-save-without-quit}
-Which Vim command writes the current buffer to its associated file without quitting?
+:::single-choice{#vim-save-without-quit} Which Vim command writes the current buffer to its associated file without quitting?
 
 ::option[`:q`]{#vim-save-q explanation="`:q` requests a quit and does not write a modified buffer."}
 ::option[`:w`]{#vim-save-w .correct explanation="The `:write` command saves the current buffer and leaves the editing window open."}
@@ -42,8 +41,7 @@ Use `:q` to close the current window when doing so will not abandon unsaved buff
 
 If the current buffer is modified and its changes would be lost, Vim normally refuses and reports a warning. This safeguard gives you a chance to write or reconsider.
 
-:::single-choice{#vim-quit-clean-buffer}
-Which command quits the current Vim window when no unsaved changes would be lost?
+:::single-choice{#vim-quit-clean-buffer} Which command quits the current Vim window when no unsaved changes would be lost?
 
 ::option[`:w`]{#vim-quit-w explanation="This writes the buffer but leaves the current window open."}
 ::option[`:q`]{#vim-quit-q .correct explanation="The ordinary quit command closes the window when Vim's modified-buffer safeguards allow it."}
@@ -60,8 +58,7 @@ Use `:q!` only when you intentionally want to close the current window and aband
 
 The exclamation mark overrides the unsaved-change warning. Those buffer changes are not written, so verify that they are truly disposable before pressing Enter.
 
-:::single-choice{#vim-quit-discard-changes}
-The current buffer has changes you deliberately do not want to save. Which command quits the current window and abandons them?
+:::single-choice{#vim-quit-discard-changes} The current buffer has changes you deliberately do not want to save. Which command quits the current window and abandons them?
 
 ::option[`:q`]{#vim-discard-plain-q explanation="Plain `:q` normally refuses when quitting would lose modified-buffer changes."}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq` writes the changes before quitting, the opposite of discarding them."}
@@ -78,8 +75,7 @@ Use `:wq` when the buffer should be written and the current window should close 
 
 If writing fails, Vim does not complete the requested quit. Resolve the error rather than assuming the data reached disk.
 
-:::single-choice{#vim-write-and-quit}
-Which command writes the current buffer and then quits the current window if writing succeeds?
+:::single-choice{#vim-write-and-quit} Which command writes the current buffer and then quits the current window if writing succeeds?
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="This combines a write with a quit, and the quit depends on successful writing."}
 ::option[`:q!`]{#vim-save-force-quit explanation="This quits while discarding changes rather than writing them."}
@@ -100,8 +96,7 @@ ZZ
 
 This differs subtly from `:wq`, which requests a write even when the buffer is unchanged. Uppercase `ZQ` is the Normal-mode counterpart for quitting without writing, similar to `:q!`.
 
-:::single-choice{#vim-write-if-modified-quit}
-Which Normal-mode command writes only when the buffer is modified and then quits?
+:::single-choice{#vim-write-if-modified-quit} Which Normal-mode command writes only when the buffer is modified and then quits?
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="Uppercase `ZZ` performs the write-if-modified-and-quit behavior associated with `:x`."}
 ::option[`zz`]{#vim-center-screen explanation="Lowercase `zz` recenters the current line in the window; it does not save or quit."}

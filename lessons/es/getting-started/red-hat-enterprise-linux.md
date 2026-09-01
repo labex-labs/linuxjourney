@@ -16,8 +16,7 @@ Red Hat Enterprise Linux, a menudo llamado **RHEL**, es una distribución comerc
 
 RHEL es una de las distribuciones de Linux empresariales más importantes porque se utiliza en servidores, centros de datos, sistemas en la nube y entornos empresariales regulados. Su función es diferente a la de las distribuciones comunitarias de propósito general, ya que la capacidad de soporte y la planificación del ciclo de vida a largo plazo son fundamentales para su valor.
 
-:::single-choice{#match-rhel-priorities}
-¿Qué necesidad coincide de forma más directa con los objetivos de diseño de RHEL?
+:::single-choice{#match-rhel-priorities} ¿Qué necesidad coincide de forma más directa con los objetivos de diseño de RHEL?
 
 ::option[Cambios continuos de funciones sin un ciclo de soporte]{#continuous-unsupported-change explanation="RHEL sigue un ciclo de vida publicado y conservador, no cambios continuos sin soporte. La previsibilidad forma parte de su valor empresarial."}
 ::option[Versiones previsibles con soporte profesional a largo plazo]{#predictable-enterprise-platform .correct explanation="RHEL está diseñado para organizaciones que necesitan ciclos planificados, mantenimiento y soporte profesional. Estas cualidades permiten mantener los sistemas de producción con respaldo durante más tiempo."}
@@ -36,8 +35,7 @@ RHEL está estrechamente relacionado con el ecosistema más amplio de Red Hat. F
 
 Si quieres comparar ambos caminos, consulta [Fedora](https://labex.io/es/lesson/fedora). Para obtener una visión general más amplia de las familias de distribuciones, consulta [Cómo elegir una distribución de Linux](https://labex.io/es/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#compare-fedora-and-rhel}
-¿Qué relación tiene Fedora con RHEL dentro del ecosistema de Red Hat?
+:::single-choice{#compare-fedora-and-rhel} ¿Qué relación tiene Fedora con RHEL dentro del ecosistema de Red Hat?
 
 ::option[Fedora es una versión antigua de RHEL que se conserva sin mantenimiento de seguridad]{#fedora-old-rhel explanation="Fedora es una distribución comunitaria independiente, no una versión caducada de RHEL. Tiene sus propias versiones y un ritmo más rápido."}
 ::option[Fedora es un proyecto comunitario ascendente cuyas tecnologías pueden llegar a RHEL]{#fedora-upstream .correct explanation="Fedora es el proyecto comunitario ascendente que avanza con mayor rapidez. Red Hat toma elementos de ese ecosistema al desarrollar su plataforma empresarial más conservadora."}
@@ -50,8 +48,7 @@ RHEL utiliza el formato de paquete RPM y herramientas como DNF para instalar, ac
 
 La gestión de paquetes es una habilidad operativa fundamental para los administradores de RHEL, ya que el mantenimiento a largo plazo y las actualizaciones predecibles son centrales para el funcionamiento de los sistemas empresariales.
 
-:::single-choice{#relate-rpm-and-dnf}
-¿Cómo trabajan conjuntamente RPM y DNF en RHEL?
+:::single-choice{#relate-rpm-and-dnf} ¿Cómo trabajan conjuntamente RPM y DNF en RHEL?
 
 ::option[RPM define el software empaquetado y DNF gestiona el contenido de los repositorios y las dependencias]{#rpm-format-dnf-tool .correct explanation="El software de RHEL se distribuye como paquetes RPM, mientras que DNF es la herramienta de nivel superior que suele utilizarse para buscar, instalar, actualizar y eliminar ese contenido."}
 ::option[DNF define el software empaquetado y RPM gestiona el escritorio gráfico]{#dnf-format-rpm-desktop explanation="Esta opción invierte y confunde sus funciones. RPM es el sistema de paquetes, mientras que DNF realiza la gestión de software de nivel superior."}
@@ -64,8 +61,7 @@ Una de las razones principales por las que las organizaciones eligen RHEL es el 
 
 Para las empresas, este modelo de soporte puede ser tan importante como las características técnicas de la propia distribución.
 
-:::single-choice{#use-published-lifecycle}
-¿Por qué resulta valioso para una organización disponer de un ciclo de soporte publicado?
+:::single-choice{#use-published-lifecycle} ¿Por qué resulta valioso para una organización disponer de un ciclo de soporte publicado?
 
 ::option[Garantiza que todas las aplicaciones funcionarán sin pruebas]{#guarantee-all-applications explanation="Un sistema operativo con soporte no garantiza la compatibilidad con todas las aplicaciones. Las organizaciones aún deben comprobar la compatibilidad y realizar pruebas."}
 ::option[Elimina la necesidad de instalar actualizaciones de seguridad durante el periodo de soporte]{#avoid-security-updates explanation="Un ciclo de soporte da acceso a mantenimiento y actualizaciones de seguridad; no hace que sean innecesarias. Los sistemas siguen requiriendo mantenimiento activo."}

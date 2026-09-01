@@ -25,8 +25,7 @@ Vim은 마우스 없이 터미널에서 사용할 수 있는 키보드 이동 �
 
 화살표 키도 일반적으로 비슷하게 움직이지만 `h`, `j`, `k`, `l`은 손을 다른 명령 가까이에 두게 합니다. 화면에서 줄 바꿈된 표시 줄에서는 `j`와 `k`가 보통 파일의 실제 줄을 기준으로 움직이고 `gj`와 `gk`는 표시된 화면 줄을 기준으로 움직입니다.
 
-:::single-choice{#vim-navigation-down}
-일반 모드에서 커서를 한 줄 아래로 이동하는 키는 무엇인가요?
+:::single-choice{#vim-navigation-down} 일반 모드에서 커서를 한 줄 아래로 이동하는 키는 무엇인가요?
 
 ::option[`k`]{#vim-nav-k-up explanation="`k` 이동은 한 줄 위로 이동합니다."}
 ::option[`l`]{#vim-nav-l-right explanation="`l` 이동은 오른쪽으로 한 문자 이동합니다."}
@@ -44,8 +43,7 @@ Vim은 마우스 없이 터미널에서 사용할 수 있는 키보드 이동 �
 
 `5j`는 다섯 줄 아래로 이동하고 `3l`은 가능할 때 오른쪽으로 세 문자 위치 이동합니다. 횟수는 단어 이동 및 편집 명령과도 결합됩니다.
 
-:::single-choice{#vim-navigation-count}
-일반 모드에서 `4k`는 무엇을 하나요?
+:::single-choice{#vim-navigation-count} 일반 모드에서 `4k`는 무엇을 하나요?
 
 ::option[가능할 때 네 줄 아래로 이동합니다.]{#vim-nav-four-down explanation="아래쪽 이동은 `j`를 사용하며 `k`는 반대 방향으로 움직입니다."}
 ::option[가능할 때 네 줄 위로 이동합니다.]{#vim-nav-four-up .correct explanation="횟수 `4`가 위쪽 `k` 이동을 네 번 반복합니다."}
@@ -62,8 +60,7 @@ Vim은 마우스 없이 터미널에서 사용할 수 있는 키보드 이동 �
 
 대문자 `W`, `B`, `E`는 공백으로 구분된 WORD를 사용하여 문장 부호를 다르게 처리합니다. `3w`처럼 앞에 횟수를 붙이면 여러 단어를 지나 이동합니다.
 
-:::single-choice{#vim-navigation-next-words}
-앞으로 이동하여 세 번째 다음 단어 위치의 시작으로 가는 일반 모드 명령은 무엇인가요?
+:::single-choice{#vim-navigation-next-words} 앞으로 이동하여 세 번째 다음 단어 위치의 시작으로 가는 일반 모드 명령은 무엇인가요?
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="횟수가 다음 단어 이동을 세 번 적용합니다."}
 ::option[`w3`]{#vim-nav-word-three explanation="이 명령 형식에서 횟수는 이동 명령 앞에 옵니다. 뒤에 `3`을 두면 요청한 이동을 표현하지 않습니다."}
@@ -80,8 +77,7 @@ Vim은 마우스 없이 터미널에서 사용할 수 있는 키보드 이동 �
 
 들여쓴 줄에서는 `0`과 `^`의 차이가 중요합니다.
 
-:::single-choice{#vim-navigation-first-nonblank}
-들여쓴 줄의 첫 번째 비공백 문자로 이동하는 명령은 무엇인가요?
+:::single-choice{#vim-navigation-first-nonblank} 들여쓴 줄의 첫 번째 비공백 문자로 이동하는 명령은 무엇인가요?
 
 ::option[`0`]{#vim-nav-column-zero explanation="0은 들여쓰기 공백이 있을 수 있는 첫 번째 열로 이동합니다."}
 ::option[`$`]{#vim-nav-line-end explanation="달러 이동은 줄 끝을 대상으로 합니다."}
@@ -100,8 +96,7 @@ Vim은 마우스 없이 터미널에서 사용할 수 있는 키보드 이동 �
 
 `:42`를 입력하고 Enter를 누르는 것도 42번째 줄로 이동하는 방법입니다.
 
-:::single-choice{#vim-navigation-file-end}
-버퍼의 마지막 줄로 이동하는 일반 모드 명령은 무엇인가요?
+:::single-choice{#vim-navigation-file-end} 버퍼의 마지막 줄로 이동하는 일반 모드 명령은 무엇인가요?
 
 ::option[`gg`]{#vim-nav-first-line explanation="소문자 `gg`는 마지막이 아니라 첫 번째 줄로 이동합니다."}
 ::option[`$`]{#vim-nav-current-line-end explanation="달러 이동은 파일 끝이 아니라 현재 줄 끝으로 이동합니다."}

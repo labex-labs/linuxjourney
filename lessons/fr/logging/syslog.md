@@ -18,8 +18,7 @@ Un message syslog possède une facility qui décrit sa grande catégorie de sour
 
 Les niveaux de gravité sont ordonnés. Dans la syntaxe classique des sélecteurs, `daemon.warning` correspond normalement aux messages de daemon au niveau warning et à tous les niveaux plus graves, pas uniquement à warning. Une correspondance exacte emploie un modificateur égal dans les implémentations qui prennent en charge cette syntaxe, par exemple `daemon.=warning`.
 
-:::single-choice{#syslog-warning-selector}
-À quoi un sélecteur classique comme `daemon.warning` correspond-il normalement ?
+:::single-choice{#syslog-warning-selector} À quoi un sélecteur classique comme `daemon.warning` correspond-il normalement ?
 
 ::option[Uniquement aux messages dont le texte contient le mot daemon.]{#syslog-text-daemon explanation="Ce sélecteur repose sur les métadonnées de facility, pas sur une recherche dans le texte."}
 ::option[À chaque message de débogage de toutes les facilities.]{#syslog-all-debug explanation="Le sélecteur se limite à la facility daemon et à un seuil de gravité."}
@@ -40,8 +39,7 @@ La première ligne route toutes les priorités de deux facilities d'authentifica
 
 Examinez tous les fichiers inclus et validez la syntaxe exacte de la version installée avant de modifier le routage en production.
 
-:::single-choice{#syslog-selector-action}
-Dans une règle rsyslog traditionnelle, qu'est-ce que l'action ?
+:::single-choice{#syslog-selector-action} Dans une règle rsyslog traditionnelle, qu'est-ce que l'action ?
 
 ::option[L'expression de facility et de gravité située à gauche.]{#syslog-left-selector explanation="Cette partie sélectionne les messages."}
 ::option[La destination ou l'opération située à droite.]{#syslog-right-action .correct explanation="L'action détermine si les enregistrements sélectionnés vont vers un fichier, une cible distante ou une autre sortie."}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 Le même événement peut apparaître dans le journal et dans un fichier texte selon le transfert et le routage. `logger -s` copie aussi le message sur la sortie d'erreur standard ; cela ne prouve pas son stockage durable.
 
-:::single-choice{#syslog-logger-tag}
-Qu'ajoute `logger -t lesson-test` au message soumis ?
+:::single-choice{#syslog-logger-tag} Qu'ajoute `logger -t lesson-test` au message soumis ?
 
 ::option[Une demande de suppression des anciens enregistrements de test.]{#syslog-tag-delete explanation="L'option définit une étiquette d'identification et ne gère pas la conservation."}
 ::option[L'identifiant `lesson-test` comme étiquette du message.]{#syslog-tag-identifier .correct explanation="Une étiquette unique facilite la recherche de l'événement contrôlé dans les destinations configurées."}
@@ -84,8 +81,7 @@ Ne rechargez le service au moyen de son gestionnaire qu'après cette validation.
 
 Le transfert distant doit employer un transport authentifié et chiffré lorsque les journaux traversent des réseaux non fiables. UDP n'offre aucun accusé de réception de bout en bout ; les besoins d'audit essentiels exigent une conception tenant compte des files, pertes, de l'intégrité, du contrôle d'accès et des pannes du récepteur.
 
-:::single-choice{#syslog-change-verification}
-Quelle preuve suffit à montrer qu'une nouvelle règle de routage fonctionne ?
+:::single-choice{#syslog-change-verification} Quelle preuve suffit à montrer qu'une nouvelle règle de routage fonctionne ?
 
 ::option[Le fichier de configuration possède une date de modification récente.]{#syslog-mtime explanation="Un horodatage ne prouve ni la validité de la syntaxe, ni la livraison."}
 ::option[L'émetteur peut joindre le récepteur avec un ping.]{#syslog-ping explanation="L'accessibilité réseau seule ne vérifie ni le protocole de journalisation, ni le chemin de stockage."}

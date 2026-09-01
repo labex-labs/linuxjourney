@@ -27,8 +27,7 @@ $ command -v emacs
 
 Un resultado vacío con un estado distinto de cero significa que ese nombre no se encontró mediante la búsqueda de órdenes actual. Los sistemas mínimos pueden proporcionar `vi`, mientras que otros incluyen Nano o no tienen ningún editor interactivo.
 
-:::single-choice{#editors-check-availability}
-¿Qué orden comprueba si el shell actual puede resolver un ejecutable llamado `vim`?
+:::single-choice{#editors-check-availability} ¿Qué orden comprueba si el shell actual puede resolver un ejecutable llamado `vim`?
 
 ::option[`vim --install`]{#editors-vim-install explanation="Vim no usa esta orden como comprobación portable de instalación y la instalación de paquetes depende de la distribución."}
 ::option[`file ~/.vimrc`]{#editors-file-vimrc explanation="Esto clasifica una ruta de configuración si existe; no determina si se puede resolver `vim`."}
@@ -45,8 +44,7 @@ Vim es un editor modal. La misma tecla puede tener significados diferentes segú
 
 Este modelo hace eficiente la edición repetitiva con el teclado después de practicar, pero los usuarios nuevos deben tener presente el modo activo. Las lecciones posteriores presentan Vim una operación cada vez.
 
-:::single-choice{#editors-vim-modal-meaning}
-¿Qué significa que Vim sea modal?
+:::single-choice{#editors-vim-modal-meaning} ¿Qué significa que Vim sea modal?
 
 ::option[Cada archivo se abre en una ventana gráfica independiente.]{#editors-vim-windows explanation="Las ventanas y los búferes son conceptos distintos. Modal se refiere a cómo cambia el comportamiento de las teclas según el estado del editor."}
 ::option[Vim solo puede editar un tipo de archivo de texto a la vez.]{#editors-vim-file-type explanation="Vim admite muchos tipos de archivo. La palabra modal describe su modelo de interacción, no una restricción de archivos."}
@@ -59,8 +57,7 @@ Emacs suele usar combinaciones de teclas y órdenes con nombre dentro de un ento
 
 Tanto Vim como Emacs admiten mucho más que la edición básica mediante configuración y extensiones. Empieza por abrir, modificar, guardar y cerrar un archivo de texto sin formato antes de añadir personalizaciones.
 
-:::single-choice{#editors-emacs-buffer}
-En la terminología de Emacs, ¿dónde se guarda normalmente el texto editable de un archivo visitado?
+:::single-choice{#editors-emacs-buffer} En la terminología de Emacs, ¿dónde se guarda normalmente el texto editable de un archivo visitado?
 
 ::option[En un búfer.]{#editors-emacs-buffer-answer .correct explanation="Emacs visita un archivo en un búfer, que contiene el texto que se está viendo o editando."}
 ::option[En la tabla de alias del shell.]{#editors-emacs-alias-table explanation="Los alias pertenecen a la resolución de órdenes del shell y no almacenan texto del editor."}
@@ -78,8 +75,7 @@ $ export EDITOR="$VISUAL"
 
 Estas variables expresan una preferencia; no instalan el programa. Usa una orden que exista realmente y añade las exportaciones al archivo de inicio apropiado del shell solo después de probarlas.
 
-:::single-choice{#editors-editor-variable}
-¿Qué hace `export EDITOR=vim`?
+:::single-choice{#editors-editor-variable} ¿Qué hace `export EDITOR=vim`?
 
 ::option[Indica a los procesos hijos futuros que `vim` es el valor del editor preferido.]{#editors-export-preference .correct explanation="`export` coloca la preferencia en el entorno heredado por las órdenes iniciadas desde el shell actual."}
 ::option[Instala Vim para todos los usuarios del sistema.]{#editors-install-vim explanation="Asignar una variable de entorno no instala paquetes ni modifica los sistemas de otros usuarios."}
@@ -97,8 +93,7 @@ $ vim editor-practice.txt
 
 No empieces con la configuración del sistema ni con datos de otro usuario. Haz una copia de seguridad antes de modificar un archivo importante, comprende cómo guardar y salir, y revisa el resultado con una orden de solo lectura como `cat` o `diff`.
 
-:::single-choice{#editors-first-practice-file}
-¿Cuál es el archivo inicial más seguro para practicar con un editor desconocido?
+:::single-choice{#editors-first-practice-file} ¿Cuál es el archivo inicial más seguro para practicar con un editor desconocido?
 
 ::option[Un archivo crítico de configuración del arranque abierto como root.]{#editors-boot-file explanation="Un cambio accidental podría impedir el inicio normal y el acceso elevado aumenta el impacto de los errores."}
 ::option[Un archivo de texto desechable en un directorio de tu propiedad.]{#editors-disposable-file .correct explanation="Un archivo de práctica limita las consecuencias de las ediciones accidentales mientras aprendes a navegar, guardar y salir."}

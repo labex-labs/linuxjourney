@@ -16,8 +16,7 @@ Die Transportschicht verbindet Anwendungsendpunkte über ein IP-Netzwerk. TCP un
 
 Ein Zielport hilft dem Betriebssystem, Datenverkehr an einen lauschenden Socket zuzustellen. Eine Verbindung oder ein Datenstrom wird durch mehr als einen Port identifiziert: Protokoll, Quell- und Zieladressen sowie Quell- und Zielports sind alle relevant. Derselbe Serverport kann deshalb viele gleichzeitige Clients bedienen.
 
-:::single-choice{#transport-layer-many-clients}
-Wie kann ein TCP-Serverport mehrere Clients gleichzeitig bedienen?
+:::single-choice{#transport-layer-many-clients} Wie kann ein TCP-Serverport mehrere Clients gleichzeitig bedienen?
 
 ::option[Jede Verbindung besitzt eine eigene Kombination aus Endpunktadressen und Ports.]{#transport-layer-connection-tuple .correct explanation="Das vollständige Transporttupel unterscheidet gleichzeitige Verbindungen, die denselben lauschenden Port verwenden."}
 ::option[Der Server benennt seinen Port nach jedem Paket dauerhaft um.]{#transport-layer-renames-port explanation="Der lauschende Port kann unverändert bleiben, während angenommene Verbindungen unterschiedliche Peer-Tupel besitzen."}
@@ -30,8 +29,7 @@ TCP stellt einen geordneten, zuverlässigen Bytestrom bereit, solange die Verbin
 
 Zuverlässigkeit bedeutet keine absolute Zustellung. Eine Verbindung kann das Zeitlimit überschreiten, zurückgesetzt werden oder fehlschlagen, und eine Bestätigung beweist nicht, dass eine Anwendung die Daten dauerhaft gespeichert hat.
 
-:::single-choice{#transport-layer-tcp-boundaries}
-Was geschieht in TCP mit Nachrichtengrenzen der Anwendung?
+:::single-choice{#transport-layer-tcp-boundaries} Was geschieht in TCP mit Nachrichtengrenzen der Anwendung?
 
 ::option[TCP stellt einen geordneten Bytestrom bereit, ohne Schreibgrenzen zu bewahren.]{#transport-layer-byte-stream .correct explanation="Das Anwendungsprotokoll muss definieren, wie Nachrichten abgegrenzt oder in ihrer Größe angegeben werden."}
 ::option[Jeder Schreibvorgang wird genau ein IP-Paket und ein Lesevorgang.]{#transport-layer-one-write-packet explanation="Segmentierung, Pufferung und Empfangsschnittstellen bewahren diese Zuordnung nicht."}
@@ -48,8 +46,7 @@ Eine normale TCP-Verbindung beginnt mit einem Drei-Wege-Handshake:
 
 Dies richtet in beiden Endpunkten Transportzustand ein. Es authentifiziert weder den Anwendungsserver noch beweist es, dass der angeforderte Anwendungsvorgang erfolgreich sein wird.
 
-:::single-choice{#transport-layer-handshake-order}
-Was ist die normale Reihenfolge des TCP-Drei-Wege-Handshakes?
+:::single-choice{#transport-layer-handshake-order} Was ist die normale Reihenfolge des TCP-Drei-Wege-Handshakes?
 
 ::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="Der Austausch synchronisiert und bestätigt den anfänglichen Verbindungszustand in beiden Richtungen."}
 ::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="Der Initiator fordert zuerst die Synchronisierung an."}
@@ -60,8 +57,7 @@ Was ist die normale Reihenfolge des TCP-Drei-Wege-Handshakes?
 
 UDP bewahrt Datagrammgrenzen und bietet prüfsummenbasierte Fehlererkennung, aber keinen TCP-artigen Verbindungszustand, keine Reihenfolge, erneute Übertragung, Flusskontrolle oder Überlastungskontrolle. Eine Anwendung kann benötigte Zuverlässigkeit oder Überlastungssteuerung selbst ergänzen. UDP ist nicht automatisch schneller; die Leistung hängt von Protokollentwurf, Arbeitslast, Pfad und Implementierung ab.
 
-:::single-choice{#transport-layer-udp-boundaries}
-Welche Eigenschaft stellt UDP Anwendungen bereit?
+:::single-choice{#transport-layer-udp-boundaries} Welche Eigenschaft stellt UDP Anwendungen bereit?
 
 ::option[Einen automatisch erneut übertragenen geordneten Bytestrom.]{#transport-layer-udp-stream explanation="Dies beschreibt TCP-artige Dienste und nicht grundlegendes UDP."}
 ::option[Bewahrte Grenzen zwischen eingereichten Datagrammen.]{#transport-layer-udp-datagrams .correct explanation="Ein empfangenes UDP-Datagramm entspricht einem gesendeten Datagramm, sofern es nicht verloren geht."}
@@ -79,8 +75,7 @@ $ ss -tn state established
 
 Prozessdetails können erhöhte Berechtigungen erfordern. Ein lauschender Socket beweist lokale Bereitschaft nur an der Transportgrenze; Firewall, Routing, Adressfamilie, TLS und Anwendungszustand benötigen weiterhin geeignete Tests.
 
-:::single-choice{#transport-layer-listener-proof}
-Was belegt ein lauschender TCP-Socket?
+:::single-choice{#transport-layer-listener-proof} Was belegt ein lauschender TCP-Socket?
 
 ::option[Jede entfernte Firewall erlaubt die Verbindung.]{#transport-layer-all-firewalls explanation="Lokaler Socketzustand zeigt nicht alle Richtlinien entlang des Pfads."}
 ::option[Die Anwendung hat jede Zustandsprüfung bestanden.]{#transport-layer-all-health explanation="Lauschen ist ein schwächerer Beleg als eine erfolgreiche Anwendungstransaktion."}

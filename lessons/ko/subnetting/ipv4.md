@@ -22,8 +22,7 @@ IPv4는 점으로 구분된 8비트 옥텟 네 개로 표시합니다.
 
 각 옥텟의 범위는 0부터 255까지이므로 전체 주소는 4바이트입니다. `192.0.2.165/24`처럼 접두사 길이가 앞쪽 몇 비트가 네트워크 접두사에 속하는지 나타냅니다.
 
-:::single-choice{#ipv4-address-size}
-IPv4 주소의 크기는 얼마입니까?
+:::single-choice{#ipv4-address-size} IPv4 주소의 크기는 얼마입니까?
 
 ::option[옥텟 네 개의 32비트입니다.]{#ipv4-thirty-two-bits .correct explanation="8비트 그룹 네 개가 점으로 구분한 10진수 표현을 만듭니다."}
 ::option[모든 네트워크에서 24비트입니다.]{#ipv4-always-twenty-four explanation="/24는 하나의 접두사 길이이며 모든 IPv4 주소의 크기가 아닙니다."}
@@ -36,8 +35,7 @@ IPv4 주소의 크기는 얼마입니까?
 
 사설 주소는 별도의 네트워크에서 재사용할 수 있습니다. NAT가 외부 통신을 위해 주소를 변환할 수 있지만 사설 라우팅 도메인 내부 통신에 NAT가 필요한 것은 아닙니다.
 
-:::single-choice{#ipv4-private-reuse}
-`10.0.0.1`이 여러 조직에 나타날 수 있는 이유는 무엇입니까?
+:::single-choice{#ipv4-private-reuse} `10.0.0.1`이 여러 조직에 나타날 수 있는 이유는 무엇입니까?
 
 ::option[모든 인스턴스가 같은 물리 라우터를 식별하기 때문입니다.]{#ipv4-same-router explanation="주소는 각 네트워크 안에서 의미를 가지며 전역적으로 고유하지 않습니다."}
 ::option[IPv4 라우터가 첫 번째 옥텟을 무시하기 때문입니다.]{#ipv4-ignore-octet explanation="모든 주소 비트가 경로 일치에 관여합니다."}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 접두사, 브로드캐스트, 범위, 동적 출처 표시 및 인터페이스를 보여 줍니다. 추가 줄에는 유효 수명과 선호 수명이 나타날 수 있습니다. 하나의 인터페이스에 여러 IPv4 주소가 있을 수 있습니다.
 
-:::single-choice{#ipv4-ip-output-prefix}
-`192.0.2.165/24`에서 `/24`는 무엇을 뜻합니까?
+:::single-choice{#ipv4-ip-output-prefix} `192.0.2.165/24`에서 `/24`는 무엇을 뜻합니까?
 
 ::option[주소가 24초 뒤 만료됩니다.]{#ipv4-prefix-seconds explanation="수명은 별도로 보고됩니다."}
 ::option[주소의 앞 24비트가 네트워크 접두사를 이룹니다.]{#ipv4-prefix-bits .correct explanation="나머지 8비트는 해당 접두사 안의 위치를 식별합니다."}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 선택된 다음 홉, 인터페이스 및 출발지를 읽고 실제 애플리케이션 경로를 테스트합니다. 콘솔 접근과 되돌리기 계획 없이 원격 호스트의 주소를 변경하지 마십시오.
 
-:::single-choice{#ipv4-route-get-purpose}
-`ip route get DESTINATION`은 무엇을 보여 줄 수 있습니까?
+:::single-choice{#ipv4-route-get-purpose} `ip route get DESTINATION`은 무엇을 보여 줄 수 있습니까?
 
 ::option[전체 인터넷 경로에 있는 모든 라우터의 설정입니다.]{#ipv4-all-router-config explanation="로컬 조회는 하위 장치 설정을 조회하지 않습니다."}
 ::option[인터페이스와 선호 출발지를 포함한 로컬 경로 결정입니다.]{#ipv4-route-decision .correct explanation="제공한 목적지에 대해 현재 호스트의 라우팅 정책을 평가합니다."}

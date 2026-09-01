@@ -31,8 +31,7 @@ bob	viewer
 
 Der sichtbare Abstand zwischen den Spalten ist ein Tabulator. Anders als `cat`, das vollständige Dateien nacheinander ausgibt, verbindet `paste` die jeweils entsprechenden Eingabezeilen.
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt` enthält nacheinander `A` und `B`, `second.txt` enthält `1` und `2`. Was erzeugt `paste first.txt second.txt` standardmäßig?
+:::single-choice{#paste-corresponding-lines} `first.txt` enthält nacheinander `A` und `B`, `second.txt` enthält `1` und `2`. Was erzeugt `paste first.txt second.txt` standardmäßig?
 
 ::option[`A`, `B`, `1` und `2` auf vier aufeinanderfolgenden Zeilen.]{#paste-concatenated-files explanation="Das entspräche eher einer Ausgabe der Dateien nacheinander. `paste` verbindet stattdessen jeweils zusammengehörige Zeilen."}
 ::option[`A`, `B`, `1` und `2` ohne Trennzeichen auf einer Zeile.]{#paste-one-line-no-separator explanation="Eine Serialisierung in eine Zeile erfordert `-s`; das Standardtrennzeichen ist außerdem ein Tabulator und nicht die leere Zeichenfolge."}
@@ -51,8 +50,7 @@ bob:viewer
 
 Schütze Trennzeichen mit Shell-Bedeutung durch Anführungszeichen. Enthält die Liste mehrere Zeichen, kann `paste` sie abwechselnd verwenden; für zwei Spalten ist ein einzelnes Zeichen am einfachsten.
 
-:::single-choice{#paste-colon-delimiter}
-Welcher Befehl verbindet entsprechende Zeilen aus `names.txt` und `roles.txt` mit einem Doppelpunkt?
+:::single-choice{#paste-colon-delimiter} Welcher Befehl verbindet entsprechende Zeilen aus `names.txt` und `roles.txt` mit einem Doppelpunkt?
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="Die Option `-d` ersetzt den standardmäßigen Tabulator für jedes Feldpaar durch den angegebenen Doppelpunkt."}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="Die Option `-s` wählt den seriellen Modus; `:` würde als weiterer Eingabepfad statt als Trennzeichen behandelt."}
@@ -78,8 +76,7 @@ The quick brown fox
 
 Werden mit `-s` mehrere Dateien angegeben, wird jede Datei zu einer eigenen Ausgabezeile.
 
-:::single-choice{#paste-serialize-with-spaces}
-Welcher Befehl verbindet alle Zeilen von `words.txt` zu einer einzigen, durch Leerzeichen getrennten Ausgabezeile?
+:::single-choice{#paste-serialize-with-spaces} Welcher Befehl verbindet alle Zeilen von `words.txt` zu einer einzigen, durch Leerzeichen getrennten Ausgabezeile?
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="Im parallelen Standardmodus erzeugt auch eine einzelne Eingabedatei weiterhin eine Ausgabezeile pro Eingabezeile. Das Trennzeichen hat zwischen Dateien nichts zu verbinden."}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="Dieser Befehl serialisiert zwei Dateien getrennt mit dem standardmäßigen Tabulator und erzeugt zwei Ausgabezeilen statt des verlangten Ergebnisses."}
@@ -99,8 +96,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-Was geschieht, wenn eine an paralleles `paste` übergebene Datei vor einer anderen endet?
+:::single-choice{#paste-unequal-files} Was geschieht, wenn eine an paralleles `paste` übergebene Datei vor einer anderen endet?
 
 ::option[`paste` verwendet für diese Datei leere Felder, bis die längste Eingabe endet.]{#paste-empty-fields .correct explanation="Der parallele Modus arbeitet weiter, bis alle Dateien erschöpft sind, und stellt fehlende Zeilen kürzerer Eingaben als leere Felder dar."}
 ::option[`paste` beendet sich sofort und verwirft verbleibende Zeilen.]{#paste-stop-shortest explanation="`paste` arbeitet bis zum Ende der längsten Eingabe; verbleibende Zeilen gehen nicht allein deshalb verloren, weil eine andere Datei endete."}
@@ -117,8 +113,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-Was bedeutet der Operand `-` in `producer | paste names.txt -`?
+:::single-choice{#paste-stdin-operand} Was bedeutet der Operand `-` in `producer | paste names.txt -`?
 
 ::option[Das zusammengeführte Ergebnis nach stderr schreiben.]{#paste-write-stderr explanation="Der Bindestrich bezeichnet hier eine Eingabequelle. Einen Ausgabestrom leitet er nicht um."}
 ::option[Die Trennzeichen zwischen den beiden Spalten entfernen.]{#paste-remove-delimiter explanation="Das Trennzeichen wird mit `-d` ausgewählt. Der Bindestrich verändert es nicht."}

@@ -23,8 +23,7 @@ $ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
 
 Application logs may live in their own subdirectories or an external service. Authentication, audit, package, database, and web-server records can be intentionally separated from the general stream.
 
-:::single-choice{#general-logs-universal-file}
-Why should you not assume `/var/log/messages` exists on every Linux host?
+:::single-choice{#general-logs-universal-file} Why should you not assume `/var/log/messages` exists on every Linux host?
 
 ::option[General log destinations depend on local collectors and routing policy.]{#general-logs-local-routing .correct explanation="A journal-only system or a different syslog configuration can use other destinations."}
 ::option[Linux permits only one log file on each disk.]{#general-logs-one-file explanation="Systems routinely maintain many log files and journal stores."}
@@ -42,8 +41,7 @@ $ sudo tail -n 100 /var/log/messages
 
 Follow newly appended lines during a bounded reproduction with `tail -F FILE`. `-F` retries when a file is replaced during rotation, unlike a simple snapshot. Stop following with `Ctrl-C` and avoid leaving broad privileged sessions open.
 
-:::single-choice{#general-logs-tail-f-capability}
-What is `tail -F` useful for during a controlled reproduction?
+:::single-choice{#general-logs-tail-f-capability} What is `tail -F` useful for during a controlled reproduction?
 
 ::option[Following a named file across common rotation replacement.]{#general-logs-tail-follow .correct explanation="The retry-by-name behavior helps continue after the active file is renamed and recreated."}
 ::option[Changing every log severity to debug.]{#general-logs-tail-debug explanation="Tail reads file content and does not reconfigure emitters."}
@@ -61,8 +59,7 @@ $ journalctl -u example.service --since '10 minutes ago' --grep='connection refu
 
 Case, wording, rate limits, and localization can make a literal search incomplete. Record both successful and failed events, and keep surrounding lines because the cause may precede the visible error.
 
-:::single-choice{#general-logs-context-lines}
-Why include lines around a matching error?
+:::single-choice{#general-logs-context-lines} Why include lines around a matching error?
 
 ::option[The preceding event may explain the later failure.]{#general-logs-preceding-context .correct explanation="Temporal context helps reconstruct a sequence instead of treating one string as the whole incident."}
 ::option[Context guarantees the first match is the root cause.]{#general-logs-guaranteed-cause explanation="Additional evidence still must be correlated; context does not prove causation."}
@@ -79,8 +76,7 @@ $ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
 
 Order results by actual timestamps, not suffix alone. Before copying evidence, preserve metadata and restrict access because logs can contain personal data or credentials.
 
-:::single-choice{#general-logs-rotation-boundary}
-What should you check when an incident spans a log rotation?
+:::single-choice{#general-logs-rotation-boundary} What should you check when an incident spans a log rotation?
 
 ::option[Only the newly created empty active file.]{#general-logs-active-only explanation="Earlier records may have moved into rotated archives."}
 ::option[Active and archived logs ordered by event time.]{#general-logs-all-intervals .correct explanation="The relevant sequence can be split across current and rotated files."}

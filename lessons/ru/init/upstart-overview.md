@@ -24,8 +24,7 @@ $ initctl version
 
 Последняя команда осмысленно работает только при наличии службы управления Upstart и клиента. Каталог `/usr/share/upstart` или оставшиеся файлы `/etc/init` — слабый признак: пакеты и следы миграции могут сохраняться после перехода на другую систему.
 
-:::single-choice{#upstart-overview-active-evidence}
-Что наиболее надёжно доказывает реальное использование Upstart хостом?
+:::single-choice{#upstart-overview-active-evidence} Что наиболее надёжно доказывает реальное использование Upstart хостом?
 
 ::option[Имя каталога содержит слово `upstart`.]{#upstart-overview-directory-only explanation="Документация или остатки установки могут сохраняться в системе с другим init."}
 ::option[В системе есть хотя бы один сценарий оболочки.]{#upstart-overview-shell-script explanation="Сценарии оболочки встречаются во всех средах init."}
@@ -47,8 +46,7 @@ exec /usr/local/sbin/example-worker
 
 Здесь события runlevel служат входами совместимости. Upstart также может реагировать на события файловой системы, устройств, сети или приложений — в зависимости от того, что выдаёт система.
 
-:::single-choice{#upstart-overview-start-on}
-Что определяет секция Upstart `start on`?
+:::single-choice{#upstart-overview-start-on} Что определяет секция Upstart `start on`?
 
 ::option[Версию ядра для следующей компиляции.]{#upstart-overview-kernel-version explanation="Условия событий job не выбирают сборку ядра."}
 ::option[Выражение события, переводящее цель job к запуску.]{#upstart-overview-start-condition .correct explanation="Когда выражение выполняется, Upstart пытается осуществить настроенный переход запуска."}
@@ -61,8 +59,7 @@ exec /usr/local/sbin/example-worker
 
 Модель избегает одной жёстко заданной глобальной последовательности сценариев, но её трудно диагностировать при неявных именах, порядке и условиях событий. По умолчанию события не являются постоянной очередью, поэтому добавленная позднее job или изменённое условие не должны ожидать повторения всех прошлых событий.
 
-:::single-choice{#upstart-overview-event-chain}
-Как одна job Upstart может привести к запуску другой?
+:::single-choice{#upstart-overview-event-chain} Как одна job Upstart может привести к запуску другой?
 
 ::option[Переписать исполняемый бинарный файл другой job в памяти.]{#upstart-overview-rewrite-binary explanation="Координация происходит через события, а не изменение кода."}
 ::option[Все jobs всегда запускаются строго по порядку имён файлов.]{#upstart-overview-filename-order explanation="Upstart использует выражения событий, а не единственный упорядоченный по именам список."}
@@ -73,8 +70,7 @@ exec /usr/local/sbin/example-worker
 
 Systemd может предоставлять ограниченную совместимость с некоторыми унаследованными сценариями служб, но не выполняет синтаксис jobs Upstart как родные units. При миграции переводите условия жизненного цикла, окружение, политику respawn, журналирование, зависимости и семантику готовности, а не механически переименовывайте файлы.
 
-:::single-choice{#upstart-overview-current-ubuntu}
-Какую систему инициализации используют современные стандартные выпуски Ubuntu?
+:::single-choice{#upstart-overview-current-ubuntu} Какую систему инициализации используют современные стандартные выпуски Ubuntu?
 
 ::option[Исключительно Upstart в каждой установке.]{#upstart-overview-current-upstart explanation="Это было верно только для исторических периодов выпусков и конфигураций."}
 ::option[systemd.]{#upstart-overview-current-systemd .correct explanation="Upstart относится к старым поколениям Ubuntu; современные выпуски используют systemd как PID 1."}

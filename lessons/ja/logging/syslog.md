@@ -18,8 +18,7 @@ syslog メッセージは、発生元の大まかな分類を表す facility と
 
 severity には順序があります。従来の selector 構文では、`daemon.warning` は通常 warning だけでなく、それ以上に重大な daemon メッセージすべてに一致します。従来構文に対応する実装では、`daemon.=warning` のように equals modifier を使うと完全一致になります。
 
-:::single-choice{#syslog-warning-selector}
-従来の `daemon.warning` という selector は通常何に一致しますか？
+:::single-choice{#syslog-warning-selector} 従来の `daemon.warning` という selector は通常何に一致しますか？
 
 ::option[テキストに daemon という単語を含むメッセージだけ。]{#syslog-text-daemon explanation="この selector を動かすのは message text の検索ではなく、facility metadata です。"}
 ::option[全 facility のすべての debug メッセージ。]{#syslog-all-debug explanation="selector は daemon facility と severity threshold に限定されます。"}
@@ -40,8 +39,7 @@ kern.*                  /var/log/kern.log
 
 production routing を変える前に、include される全ファイルを確認し、インストール済みバージョンが使う正確な構文を検証してください。
 
-:::single-choice{#syslog-selector-action}
-従来の rsyslog rule で action に当たるのはどれですか？
+:::single-choice{#syslog-selector-action} 従来の rsyslog rule で action に当たるのはどれですか？
 
 ::option[左側の facility と severity の式。]{#syslog-left-selector explanation="その部分はメッセージを選択します。"}
 ::option[右側の宛先または操作。]{#syslog-right-action .correct explanation="action は、選択済みレコードを file、remote target などのどの出力へ送るか決めます。"}
@@ -64,8 +62,7 @@ $ journalctl -t lesson-test --since '5 minutes ago'
 
 forwarding と routing の設定によっては、同じイベントが journal と text file の両方に現れます。`logger -s` はメッセージを標準エラーにもコピーしますが、永続保存の証明にはなりません。
 
-:::single-choice{#syslog-logger-tag}
-`logger -t lesson-test` は送信メッセージへ何を追加しますか？
+:::single-choice{#syslog-logger-tag} `logger -t lesson-test` は送信メッセージへ何を追加しますか？
 
 ::option[古いテストレコードを削除する要求。]{#syslog-tag-delete explanation="このオプションは識別 tag を設定し、retention は管理しません。"}
 ::option[`lesson-test` というメッセージ tag。]{#syslog-tag-identifier .correct explanation="固有 tag によって、設定済み宛先内の管理されたイベントを見つけやすくなります。"}
@@ -84,8 +81,7 @@ $ sudo rsyslogd -N1
 
 信頼できないネットワークをログが横断する場合、remote forwarding には認証・暗号化された transport を使います。UDP 配送にはエンドツーエンドの acknowledgement がありません。重要な audit 要件には、queue、loss、integrity、access control、receiver outage を考慮した設計が必要です。
 
-:::single-choice{#syslog-change-verification}
-新しい routing rule が機能する十分な証拠はどれですか？
+:::single-choice{#syslog-change-verification} 新しい routing rule が機能する十分な証拠はどれですか？
 
 ::option[設定ファイルの更新時刻が新しい。]{#syslog-mtime explanation="timestamp から有効な構文や配送は証明できません。"}
 ::option[送信側から受信側へ ping が届く。]{#syslog-ping explanation="ネットワーク到達性だけでは、ロギングプロトコルや保存経路を検証できません。"}

@@ -28,8 +28,7 @@ $ service --status-all
 
 角括弧の印と終了ステータスの意味はラッパー固有で、スクリプトが状態不明と報告する場合もあります。個々のサービスについては、すべての操作が存在すると思い込まず、スクリプトの使用方法出力または文書を確認してください。
 
-:::single-choice{#sysv-services-wrapper-purpose}
-`service` コマンドは通常何をラップしますか？
+:::single-choice{#sysv-services-wrapper-purpose} `service` コマンドは通常何をラップしますか？
 
 ::option[すべてのサービスファイル上で動くディスクパーティションエディター。]{#sysv-services-partition-editor explanation="サービス制御はストレージのパーティション分割とは無関係です。"}
 ::option[スクリプトによって動的に追加されるカーネルシステムコール。]{#sysv-services-new-syscall explanation="init スクリプトはユーザー空間のプロセス制御プログラムです。"}
@@ -49,8 +48,7 @@ $ sudo service SERVICE_NAME stop
 
 `/etc/init.d/SERVICE_NAME ACTION` という直接実行形式も存在します。ただし、稼働中のマネージャーが互換機能を提供するホストでは、状態と依存関係を追跡できるよう、マネージャー向けのコマンドを使ってください。
 
-:::single-choice{#sysv-services-stop-peanut}
-SysV サービス `peanut` の停止を要求するコマンドはどれですか？
+:::single-choice{#sysv-services-stop-peanut} SysV サービス `peanut` の停止を要求するコマンドはどれですか？
 
 ::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="一般的な引数の順序では、操作より前にサービス名を置きます。"}
 ::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="これは SysV の service ラッパー構文ではありません。"}
@@ -68,8 +66,7 @@ $ sudo service SERVICE_NAME status
 $ sudo service SERVICE_NAME reload
 ```
 
-:::single-choice{#sysv-services-reload-versus-restart}
-`reload` が `restart` と同じだと思い込んではいけないのはなぜですか？
+:::single-choice{#sysv-services-reload-versus-restart} `reload` が `restart` と同じだと思い込んではいけないのはなぜですか？
 
 ::option[reload は必ずオペレーティングシステム全体を停止するから。]{#sysv-services-reload-shutdown explanation="これはサービスの reload 操作が持つ通常の意味ではありません。"}
 ::option[restart は設定を表示するだけで、プロセスの状態を決して変更しないから。]{#sysv-services-restart-readonly explanation="restart は通常、サービスを停止してから起動します。"}
@@ -82,8 +79,7 @@ $ sudo service SERVICE_NAME reload
 
 ディストリビューションの依存関係メタデータと管理ツールを理解するまでは、`S` と `K` のリンクを手動で作らないでください。手動のリンクは上書きされたり、順序を誤ったりすることがあります。
 
-:::single-choice{#sysv-services-start-versus-enable}
-`service SERVICE start` を実行すると、将来の起動時にも必ずそのサービスが有効になりますか？
+:::single-choice{#sysv-services-start-versus-enable} `service SERVICE start` を実行すると、将来の起動時にも必ずそのサービスが有効になりますか？
 
 ::option[はい。start 操作は常にすべてのランレベルリンクを作成します。]{#sysv-services-start-links explanation="ラッパーが永続的な有効化を変更するとは限りません。"}
 ::option[いいえ。実行時の状態とランレベルでの有効化は別です。]{#sysv-services-runtime-separate .correct explanation="起動リンクやマネージャーの方針が、現在プロセスを開始することとは別に将来の有効化を決めます。"}

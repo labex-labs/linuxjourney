@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 Cette commande attribue `myfile` à l’utilisateur `patty` et laisse son groupe inchangé. La modification de l’utilisateur propriétaire d’un fichier nécessite normalement les privilèges appropriés, même si vous possédez actuellement le fichier. Cette restriction empêche les utilisateurs de transférer des fichiers afin de contourner des quotas ou d’autres contrôles fondés sur la propriété.
 
-:::single-choice{#ownership-permissions-change-user}
-Quelle commande attribue `myfile` à l’utilisateur `patty` tout en laissant son groupe inchangé ?
+:::single-choice{#ownership-permissions-change-user} Quelle commande attribue `myfile` à l’utilisateur `patty` tout en laissant son groupe inchangé ?
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="Un nom d’utilisateur seul comme opérande de propriété de `chown` modifie l’utilisateur propriétaire et conserve le groupe."}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` modifie le groupe propriétaire plutôt que l’utilisateur propriétaire."}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 Ensuite, les bits de mode du groupe s’appliquent lorsque le noyau sélectionne cette classe ; la modification du groupe n’ajoute pas automatiquement de bits de lecture, d’écriture ou d’exécution.
 
-:::single-choice{#ownership-permissions-change-group}
-Que modifie `chgrp whales myfile` ?
+:::single-choice{#ownership-permissions-change-group} Que modifie `chgrp whales myfile` ?
 
 ::option[L’utilisateur propriétaire enregistré pour `myfile`.]{#ownership-permissions-group-not-user explanation="L’utilisateur propriétaire se modifie avec `chown`, et non `chgrp`."}
 ::option[Les membres inscrits dans le groupe `whales`.]{#ownership-permissions-group-members explanation="La commande modifie les métadonnées du fichier, pas la base d’appartenance aux groupes du système."}
@@ -68,8 +66,7 @@ La commande définit `patty` comme utilisateur propriétaire et `whales` comme g
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-Quelle spécification de propriété attribue l’utilisateur `patty` et le groupe `whales` dans une seule commande `chown` ?
+:::single-choice{#ownership-permissions-change-both} Quelle spécification de propriété attribue l’utilisateur `patty` et le groupe `whales` dans une seule commande `chown` ?
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="Des deux-points séparent les noms de l’utilisateur et du groupe dans la spécification combinée."}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="La barre oblique n’est pas le séparateur d’un opérande utilisateur-groupe de `chown`."}
@@ -80,8 +77,7 @@ Quelle spécification de propriété attribue l’utilisateur `patty` et le grou
 
 L’option `-R` modifie la propriété récursivement, mais une commande trop large peut traverser des arborescences inattendues ou affecter les données d’un service. Confirmez précisément la cible, comprenez le comportement de votre implémentation envers les liens symboliques, prévisualisez l’arborescence et vérifiez un petit échantillon avant de modifier une vaste hiérarchie. Ne transposez pas des exemples de commandes de propriété privilégiées sur des systèmes réels sans en examiner la portée.
 
-:::single-choice{#ownership-permissions-mode-separate}
-Après la modification du groupe propriétaire d’un fichier, que deviennent ses bits ordinaires de permissions du groupe ?
+:::single-choice{#ownership-permissions-mode-separate} Après la modification du groupe propriétaire d’un fichier, que deviennent ses bits ordinaires de permissions du groupe ?
 
 ::option[Ils deviennent toujours automatiquement la lecture et l’écriture.]{#ownership-permissions-mode-read-write explanation="`chgrp` ne sélectionne pas automatiquement un mode de groupe fixe."}
 ::option[Ils sont copiés depuis le triplet du propriétaire.]{#ownership-permissions-mode-copied explanation="Les triplets du propriétaire et du groupe restent indépendants lorsque la propriété change."}

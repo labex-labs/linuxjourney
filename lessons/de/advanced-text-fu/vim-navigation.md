@@ -25,8 +25,7 @@ Die grundlegenden Bewegungen des Normalmodus sind:
 
 Pfeiltasten führen üblicherweise ähnliche Bewegungen aus; mit `h`, `j`, `k` und `l` bleiben deine Hände jedoch nahe an anderen Befehlen. Bei einer umgebrochen dargestellten Zeile bewegen sich `j` und `k` normalerweise nach Dateizeilen, `gj` und `gk` nach sichtbaren Bildschirmzeilen.
 
-:::single-choice{#vim-navigation-down}
-Welche Taste bewegt den Cursor im Normalmodus eine Zeile nach unten?
+:::single-choice{#vim-navigation-down} Welche Taste bewegt den Cursor im Normalmodus eine Zeile nach unten?
 
 ::option[`k`]{#vim-nav-k-up explanation="Die Bewegung `k` führt eine Zeile nach oben."}
 ::option[`l`]{#vim-nav-l-right explanation="Die Bewegung `l` führt ein Zeichen nach rechts."}
@@ -44,8 +43,7 @@ Setze vor viele Bewegungen eine positive Anzahl, um sie zu wiederholen. Zum Beis
 
 `5j` bewegt sich fünf Zeilen nach unten; `3l` bewegt sich soweit möglich drei Zeichenpositionen nach rechts. Anzahlen lassen sich auch mit Wort- und Bearbeitungsbefehlen kombinieren.
 
-:::single-choice{#vim-navigation-count}
-Was bewirkt `4k` im Normalmodus?
+:::single-choice{#vim-navigation-count} Was bewirkt `4k` im Normalmodus?
 
 ::option[Der Cursor bewegt sich soweit möglich vier Zeilen nach unten.]{#vim-nav-four-down explanation="Für die Bewegung nach unten dient `j`; `k` bewegt sich in die Gegenrichtung."}
 ::option[Der Cursor bewegt sich soweit möglich vier Zeilen nach oben.]{#vim-nav-four-up .correct explanation="Die Anzahl `4` wiederholt die Aufwärtsbewegung `k` viermal."}
@@ -62,8 +60,7 @@ Nützliche Wortbewegungen sind:
 
 Die großgeschriebenen Formen `W`, `B` und `E` verwenden durch Leerraum getrennte WÖRTER und behandeln Satzzeichen anders. Mit einer vorangestellten Anzahl bewegst du dich durch mehrere Wörter, etwa mit `3w`.
 
-:::single-choice{#vim-navigation-next-words}
-Welcher Befehl des Normalmodus bewegt sich vorwärts zum Anfang der dritten folgenden Wortposition?
+:::single-choice{#vim-navigation-next-words} Welcher Befehl des Normalmodus bewegt sich vorwärts zum Anfang der dritten folgenden Wortposition?
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="Die Anzahl wendet die Bewegung zum nächsten Wort dreimal an."}
 ::option[`w3`]{#vim-nav-word-three explanation="Bei dieser Befehlsform stehen Anzahlen vor Bewegungen; eine nachgestellte `3` beschreibt nicht die verlangte Bewegung."}
@@ -80,8 +77,7 @@ Diese Bewegungen zielen auf Positionen der aktuellen Zeile:
 
 Der Unterschied zwischen `0` und `^` ist bei eingerückten Zeilen wichtig.
 
-:::single-choice{#vim-navigation-first-nonblank}
-Welche Bewegung führt zum ersten Nicht-Leerzeichen einer eingerückten Zeile?
+:::single-choice{#vim-navigation-first-nonblank} Welche Bewegung führt zum ersten Nicht-Leerzeichen einer eingerückten Zeile?
 
 ::option[`0`]{#vim-nav-column-zero explanation="Null führt in die erste Spalte, die Einrückungsleerraum enthalten kann."}
 ::option[`$`]{#vim-nav-line-end explanation="Die Dollar-Bewegung zielt auf das Zeilenende."}
@@ -100,8 +96,7 @@ Für größere Sprünge dienen diese Befehle des Normalmodus:
 
 `:42`, gefolgt von Enter, ist eine weitere Möglichkeit, zu Zeile 42 zu springen.
 
-:::single-choice{#vim-navigation-file-end}
-Welcher Befehl des Normalmodus führt zur letzten Zeile des Puffers?
+:::single-choice{#vim-navigation-file-end} Welcher Befehl des Normalmodus führt zur letzten Zeile des Puffers?
 
 ::option[`gg`]{#vim-nav-first-line explanation="Das kleine `gg` führt zur ersten und nicht zur letzten Zeile."}
 ::option[`$`]{#vim-nav-current-line-end explanation="Die Dollar-Bewegung führt ans Ende der aktuellen Zeile statt ans Dateiende."}

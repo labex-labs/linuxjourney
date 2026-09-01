@@ -18,8 +18,7 @@ processor は instruction を実行し、memory は動作中の state を保存�
 
 カーネルは architecture code と device driver を通じて、これらのリソースを初期化・制御します。interrupt、DMA coordination、timer、power-management event を処理しながら、workload 間のアクセス境界を強制します。
 
-:::single-choice{#kernel-overview-hardware-manager}
-Linux で device driver と hardware interrupt を通常調整する層はどれですか？
+:::single-choice{#kernel-overview-hardware-manager} Linux で device driver と hardware interrupt を通常調整する層はどれですか？
 
 ::option[各ユーザーの shell history file。]{#kernel-overview-shell-history explanation="history はコマンドを記録するもので、ハードウェア実行を処理しません。"}
 ::option[package repository index。]{#kernel-overview-repository-index explanation="repository metadata は software package を記述し、動作中の hardware event は扱いません。"}
@@ -39,8 +38,7 @@ Linux で device driver と hardware interrupt を通常調整する層はどれ
 
 Linux は、core service と多くの driver が一つの特権 kernel address space で動くため、一般に monolithic kernel と呼ばれます。同時に modular でもあり、対応する component を kernel module として load・unload できます。特権 kernel code の bug はシステム全体を危険にさらすため、kernel update と module provenance はセキュリティ上重要です。
 
-:::single-choice{#kernel-overview-scheduler-role}
-カーネル scheduler は何を管理しますか？
+:::single-choice{#kernel-overview-scheduler-role} カーネル scheduler は何を管理しますか？
 
 ::option[ユーザーが次に読む documentation page。]{#kernel-overview-documentation explanation="学習ページの移動は kernel scheduling の対象外です。"}
 ::option[どの実行可能 thread に CPU 実行時間を与えるか。]{#kernel-overview-thread-scheduling .correct explanation="scheduler は policy、priority、affinity、CPU availability に従って実行 context を選びます。"}
@@ -55,8 +53,7 @@ process は system call を通じてカーネルへ処理を要求し、file des
 
 user-space root は policy 上大きな権限を持ちますが、通常は processor の user mode で実行されます。user identity と CPU privilege mode は別の概念です。
 
-:::single-choice{#kernel-overview-root-user-mode}
-通常の root 所有アプリケーションは、すべての instruction を kernel mode で実行しますか？
+:::single-choice{#kernel-overview-root-user-mode} 通常の root 所有アプリケーションは、すべての instruction を kernel mode で実行しますか？
 
 ::option[はい。UID 0 が全 instruction を恒久的に ring 0 へ変えるからです。]{#kernel-overview-root-ring-zero explanation="通常の root process も user-space process のままです。"}
 ::option[はい。root application は自動的に loadable kernel module になるからです。]{#kernel-overview-root-module explanation="user executable が所有者 UID によって kernel code へ変換されることはありません。"}
@@ -69,8 +66,7 @@ user-space root は policy 上大きな権限を持ちますが、通常は proc
 
 トラブルシューティングでは、どの層が動作を所有するかを考えてください。application、library、system-call interface、filesystem、driver、kernel subsystem、firmware、hardware のいずれでしょうか。誤った層の証拠は、不適切な修正につながります。
 
-:::single-choice{#kernel-overview-system-call-boundary}
-system call とは何ですか？
+:::single-choice{#kernel-overview-system-call-boundary} system call とは何ですか？
 
 ::option[ユーザー空間から kernel service への管理された要求。]{#kernel-overview-controlled-request .correct explanation="processor が定義済み interface から kernel mode へ入り、カーネルが検証して操作を実行します。"}
 ::option[すべての access-control check を迂回する直接 command。]{#kernel-overview-bypass-checks explanation="system call は、まさに多くの validation と authorization check が行われる場所です。"}

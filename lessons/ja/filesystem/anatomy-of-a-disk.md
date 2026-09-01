@@ -20,8 +20,7 @@ meta_keywords: "linux ディスク，linux パーティション，linux パー�
 
 通常の構成では、パーティションの境界を重ねてはいけません。どのエントリにも含まれない領域は、パーティションテーブル上では未割り当てです。ただし、そこに古いシグネチャやデータが残っている場合があります。テーブルを変更しても、新しい境界に合わせてファイルシステムの内容が自動的に移動するわけではありません。
 
-:::single-choice{#anatomy-disk-partition-table-role}
-ディスクパーティションの開始位置と終了位置をオペレーティングシステムに伝えるものは何ですか？
+:::single-choice{#anatomy-disk-partition-table-role} ディスクパーティションの開始位置と終了位置をオペレーティングシステムに伝えるものは何ですか？
 
 ::option[現在のシェルの作業ディレクトリ。]{#anatomy-disk-shell-directory explanation="シェルのパス名は、ディスク上のパーティション境界には関係しません。"}
 ::option[ディスクのパーティションテーブル。]{#anatomy-disk-table-boundaries .correct explanation="パーティションエントリは、カーネルが子ブロックデバイスとして公開できる領域を表します。"}
@@ -34,8 +33,7 @@ meta_keywords: "linux ディスク，linux パーティション，linux パー�
 
 32 ビットのセクタアドレスと 512 バイトの論理セクタを使う場合、MBR の上限は一般に約 2 TiB とされています。正確なアドレス可能範囲は、セクタサイズとツールの対応状況によって異なります。また MBR には、GPT が備えるヘッダーとテーブルの冗長コピーや、パーティションごとの GUID がありません。
 
-:::single-choice{#anatomy-disk-mbr-more-than-four}
-利用可能なパーティションを 4 つより多く作れる MBR の仕組みはどれですか？
+:::single-choice{#anatomy-disk-mbr-more-than-four} 利用可能なパーティションを 4 つより多く作れる MBR の仕組みはどれですか？
 
 ::option[プライマリエントリを追加で格納するジャーナルパーティション。]{#anatomy-disk-mbr-journal explanation="ファイルシステムのジャーナリングは、4 エントリの MBR テーブルとは無関係です。"}
 ::option[論理パーティションを格納する拡張パーティション。]{#anatomy-disk-mbr-extended .correct explanation="1 つのプライマリエントリを拡張コンテナとして定義し、その中で論理パーティションを連結できます。"}
@@ -50,8 +48,7 @@ GUID パーティションテーブル（GPT）は 64 ビットの論理ブロ�
 
 GPT は通常 UEFI ブートディスクで使われますが、パーティション方式とファームウェアのブートモードは別の概念です。UEFI システムには、適切なブートファイルと EFI システムパーティションも必要です。GPT にしただけでディスクが起動可能になるわけではありません。
 
-:::single-choice{#anatomy-disk-gpt-identifiers}
-GPT のパーティションエントリには、どの識別子が含まれますか？
+:::single-choice{#anatomy-disk-gpt-identifiers} GPT のパーティションエントリには、どの識別子が含まれますか？
 
 ::option[タイプ GUID と一意のパーティション GUID。]{#anatomy-disk-gpt-guids .correct explanation="タイプは用途を表し、一意の GUID はそのパーティションエントリ自体を識別します。"}
 ::option[すべての GPT パーティションが共有する、1 種類の汎用タイプだけ。]{#anatomy-disk-gpt-one-type explanation="GPT には、用途の異なる多数のタイプ GUID が定義されています。"}
@@ -64,8 +61,7 @@ GPT のパーティションエントリには、どの識別子が含まれま�
 
 たとえば ext ファイルシステムは inode とブロックグループを使いますが、ほかのファイルシステムは異なるツリーや割り当て構造でメタデータを編成します。「ブートブロック、1 つのスーパーブロック、inode テーブル、データブロック」という単純化した図を、すべてのファイルシステムに当てはめてはいけません。
 
-:::single-choice{#anatomy-disk-filesystem-layer}
-パーティションを作成すると、その中にファイルシステムも自動的に作成されますか？
+:::single-choice{#anatomy-disk-filesystem-layer} パーティションを作成すると、その中にファイルシステムも自動的に作成されますか？
 
 ::option[いいえ。フォーマットや別の用途への設定は独立した手順です。]{#anatomy-disk-partition-not-filesystem .correct explanation="パーティションテーブルが定義するのはブロック領域だけであり、その内容は独立しています。"}
 ::option[はい。すべてのパーティションは自動的に ext4 でフォーマットされます。]{#anatomy-disk-auto-ext4 explanation="パーティション作成ツールが常に ext4 ファイルシステムを作るわけではありません。"}
@@ -85,8 +81,7 @@ $ sudo parted --list
 
 デバイス名は変わることがあり、古いシグネチャが検出を混乱させる場合もあります。パーティションツールを書き込みモードで開く前に、モデル、シリアル番号、サイズ、接続方式、永続的なリンク、使用中のマウント、スワップ、RAID、LVM、暗号化、バックアップを確認してください。
 
-:::single-choice{#anatomy-disk-lsblk-fields}
-検出されたファイルシステムの内容と、パーティションテーブル方式を区別する `lsblk` のフィールドはどれですか？
+:::single-choice{#anatomy-disk-lsblk-fields} 検出されたファイルシステムの内容と、パーティションテーブル方式を区別する `lsblk` のフィールドはどれですか？
 
 ::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` は検出されたファイルシステムや認識済みの内容シグネチャを示し、`PTTYPE` はテーブル方式を示します。"}
 ::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` はカーネルのブロックデバイスエントリ名を示すもので、内容の形式を特定するフィールドではありません。"}

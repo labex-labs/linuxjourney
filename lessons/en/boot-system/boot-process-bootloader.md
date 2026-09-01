@@ -23,8 +23,7 @@ A loader entry can identify:
 
 GRUB can present multiple kernels and recovery entries. A fallback kernel is useful only when its matching modules and initramfs remain available and tested. The loader reads files through its supported storage and filesystem modules; it does not rely on the not-yet-running Linux VFS.
 
-:::single-choice{#bootloader-primary-handoff}
-What does a Linux boot loader normally transfer control to?
+:::single-choice{#bootloader-primary-handoff} What does a Linux boot loader normally transfer control to?
 
 ::option[An interactive user shell with every service already running.]{#bootloader-user-shell explanation="User-space shells appear only after the kernel and init system start."}
 ::option[The selected kernel image after loading required boot artifacts.]{#bootloader-selected-kernel .correct explanation="The loader prepares the kernel, parameters, and often an initramfs before executing the kernel entry point."}
@@ -49,16 +48,14 @@ Inspect the command line used for the current boot with:
 $ cat /proc/cmdline
 ```
 
-:::single-choice{#bootloader-root-parameter}
-What is the purpose of the `root=` kernel command-line parameter?
+:::single-choice{#bootloader-root-parameter} What is the purpose of the `root=` kernel command-line parameter?
 
 ::option[Identify the root filesystem that boot must eventually use.]{#bootloader-root-filesystem .correct explanation="The kernel or initramfs interprets the value as part of locating and assembling the real root."}
 ::option[Set the login password for the root account.]{#bootloader-root-password explanation="Authentication secrets must not be passed as ordinary kernel command-line text."}
 ::option[Rename PID 1 to the word `root`.]{#bootloader-root-pid explanation="Process naming is unrelated to this storage parameter."}
 :::
 
-:::single-choice{#bootloader-quiet-parameter}
-What does the `quiet` parameter normally request?
+:::single-choice{#bootloader-quiet-parameter} What does the `quiet` parameter normally request?
 
 ::option[Read-only access to every mounted filesystem.]{#bootloader-quiet-readonly explanation="Initial root write policy uses parameters such as `ro`, not `quiet`."}
 ::option[Reduce kernel messages printed during boot.]{#bootloader-quiet-console .correct explanation="It suppresses many informational messages but does not guarantee silence from every boot component."}
@@ -71,8 +68,7 @@ GRUB commonly lets an authorized console user edit an entry for one boot, often 
 
 Command-line parameters can expose sensitive text through `/proc/cmdline`, boot logs, and crash reports. They can also weaken security or make the system unbootable. Never place secrets there, and preserve a known-good entry and console recovery path.
 
-:::single-choice{#bootloader-temporary-edit}
-What is a typical property of editing a GRUB menu entry interactively for one boot?
+:::single-choice{#bootloader-temporary-edit} What is a typical property of editing a GRUB menu entry interactively for one boot?
 
 ::option[It automatically rewrites every installed kernel image.]{#bootloader-rewrites-kernels explanation="Changing command text does not modify kernel binaries."}
 ::option[It permanently disables firmware verification on all disks.]{#bootloader-disables-firmware explanation="Firmware policy is separate and is not universally changed by a one-entry edit."}
@@ -85,8 +81,7 @@ Distributions commonly generate the final GRUB configuration from templates, def
 
 Make a scoped source change, run the distribution's documented regeneration command, inspect its output, and test while retaining an older known-good entry and bootable recovery media. The command and output path differ between Debian, Fedora, UEFI, and BIOS installations.
 
-:::single-choice{#bootloader-generated-config}
-Why is directly editing a generated `grub.cfg` usually unreliable?
+:::single-choice{#bootloader-generated-config} Why is directly editing a generated `grub.cfg` usually unreliable?
 
 ::option[The file can never contain readable text.]{#bootloader-config-binary explanation="GRUB configuration is text, but generated ownership still matters."}
 ::option[GRUB reads only files in each user's home directory.]{#bootloader-grub-home explanation="Boot configuration is system-level and must be available before user home sessions."}

@@ -23,8 +23,7 @@ $ readlink /proc/1/exe
 
 `/etc/inittab` 파일이나 `/etc/init.d/` 디렉터리는 보조 증거일 뿐입니다. systemd와 다른 init 시스템도 호환성을 위해 이 파일을 유지할 수 있고 컨테이너에서는 호스트와 다른 PID 네임스페이스가 보일 수 있습니다.
 
-:::single-choice{#sysv-overview-detection}
-sysvinit이 활성 상태라는 가장 강한 증거는 무엇입니까?
+:::single-choice{#sysv-overview-detection} sysvinit이 활성 상태라는 가장 강한 증거는 무엇입니까?
 
 ::option[실행 중인 PID 1 실행 파일이 sysvinit 또는 해당 init 프로그램입니다.]{#sysv-overview-live-pid-one .correct explanation="실행 중인 첫 프로세스를 검사하는 편이 호환성 파일에서 추론하는 것보다 직접적입니다."}
 ::option[`/etc/init.d/` 디렉터리가 존재합니다.]{#sysv-overview-init-d-only explanation="다른 init 시스템도 SysV 스크립트나 래퍼를 흔히 보존합니다."}
@@ -42,8 +41,7 @@ sysvinit이 활성 상태라는 가장 강한 증거는 무엇입니까?
 
 데비안 계열 시스템은 역사적으로 레벨 2~5를 비슷하게 취급했지만 레드햇 계열 관례는 텍스트 모드와 그래픽 모드를 구분합니다. 실제 호스트의 `/etc/inittab`, init 문서 및 런레벨 디렉터리를 검사하십시오.
 
-:::single-choice{#sysv-overview-shutdown-runlevel}
-여러 SysV 시스템에서 정지 또는 전원 끄기를 일반적으로 요청하는 런레벨은 무엇입니까?
+:::single-choice{#sysv-overview-shutdown-runlevel} 여러 SysV 시스템에서 정지 또는 전원 끄기를 일반적으로 요청하는 런레벨은 무엇입니까?
 
 ::option[`3`]{#sysv-overview-runlevel-three explanation="일반적으로 종료가 아니라 다중 사용자 운영 모드입니다."}
 ::option[`0`]{#sysv-overview-runlevel-zero .correct explanation="로컬 init 정책이 우선하지만 레벨 0은 일반적으로 종료 전환입니다."}
@@ -60,8 +58,7 @@ sysvinit이 활성 상태라는 가장 강한 증거는 무엇입니까?
 
 정확한 알고리즘과 디렉터리는 서로 다릅니다. 의존성을 스크립트 헤더로 표현하고 배포판 도구로 처리할 수도 있으며 일부 구현은 작업을 병렬화합니다. SysV를 모든 서비스가 반드시 하나씩 엄격히 시작된다는 보장으로 단순화해서는 안 됩니다.
 
-:::single-choice{#sysv-overview-start-link}
-런레벨에 진입할 때 `S20networking` 링크는 일반적으로 무엇을 요청합니까?
+:::single-choice{#sysv-overview-start-link} 런레벨에 진입할 때 `S20networking` 링크는 일반적으로 무엇을 요청합니까?
 
 ::option[모든 네트워크 프로세스에 신호 20을 직접 보냅니다.]{#sysv-overview-signal-twenty explanation="숫자는 신호 번호가 아니라 순서 메타데이터입니다."}
 ::option[네트워크 설정 백업을 20개 저장합니다.]{#sysv-overview-twenty-backups explanation="런레벨 링크는 백업 보존 기능을 제공하지 않습니다."}
@@ -74,8 +71,7 @@ init이 런레벨을 변경하면 배포판의 rc 메커니즘이 새 모드에 
 
 런레벨 0 또는 6 요청은 시스템 전체 가용성에 영향을 주는 파괴적 작업입니다. 원시 init 전환을 가볍게 호출하지 말고 시스템 종료 인터페이스를 사용하고, 사용자에게 알리고, 활성 작업을 보존하며, 원격 콘솔 접근을 확인하십시오.
 
-:::single-choice{#sysv-overview-runlevel-six-meaning}
-런레벨 `6`은 일반적으로 무엇을 요청합니까?
+:::single-choice{#sysv-overview-runlevel-six-meaning} 런레벨 `6`은 일반적으로 무엇을 요청합니까?
 
 ::option[사용자 계정 여섯 개를 추가로 만듭니다.]{#sysv-overview-six-users explanation="런레벨은 계정 수가 아니라 운영 모드를 설명합니다."}
 ::option[시스템 재부팅 전환입니다.]{#sysv-overview-reboot .correct explanation="전통적인 SysV 정책은 서비스 중지와 시스템 재시작에 레벨 6을 사용합니다."}
@@ -86,8 +82,7 @@ init이 런레벨을 변경하면 배포판의 rc 메커니즘이 새 모드에 
 
 systemd 호스트에서 SysV 스크립트는 생성된 단위로 감싸질 수 있지만 systemd 의존성, 시간 제한, 로깅 및 상태 의미 체계가 계속 적용됩니다. 레거시 스크립트를 직접 실행하면 서비스 관리자의 추적을 우회할 수 있습니다. 활성 관리자를 식별하고 가능하면 고유 인터페이스를 사용하십시오.
 
-:::single-choice{#sysv-overview-compatibility-script}
-systemd 호스트의 SysV 방식 스크립트를 일반적으로 서비스 관리자를 통해 호출해야 하는 이유는 무엇입니까?
+:::single-choice{#sysv-overview-compatibility-script} systemd 호스트의 SysV 방식 스크립트를 일반적으로 서비스 관리자를 통해 호출해야 하는 이유는 무엇입니까?
 
 ::option[직접 실행하면 의존성과 상태 추적을 우회할 수 있기 때문입니다.]{#sysv-overview-manager-tracking .correct explanation="관리자는 프로세스 소유권, 순서, 시간 제한 및 상태를 조정해야 합니다."}
 ::option[systemd 시스템에서는 셸 스크립트를 실행할 수 없기 때문입니다.]{#sysv-overview-scripts-impossible explanation="실행할 수 있지만 감독을 우회하면 상태가 일치하지 않을 수 있습니다."}

@@ -32,8 +32,7 @@ $ file /bin/ls
 
 그 결과는 분류일 뿐 보장은 아닙니다. 특이하거나 불완전하거나 손상된 파일은 정확한 유형 대신 `data`처럼 넓은 설명으로 표시될 수 있습니다.
 
-:::single-choice{#identify-misleading-extension}
-`report.jpg`라는 파일이 이미지가 아닐 수도 있습니다. 실제 내용의 예상 유형을 확인하는 명령어는 무엇인가요?
+:::single-choice{#identify-misleading-extension} `report.jpg`라는 파일이 이미지가 아닐 수도 있습니다. 실제 내용의 예상 유형을 확인하는 명령어는 무엇인가요?
 
 ::option[`ls report.jpg`]{#list-report explanation="`ls`는 이름이 존재하는지 확인하고 메타데이터를 보여 줄 수 있지만 파일 내용을 분류하지는 않습니다."}
 ::option[`file report.jpg`]{#inspect-report .correct explanation="`file`은 파일을 검사해 예상 유형을 알려 줍니다. `.jpg` 접미사만 보고 판단하지 않습니다."}
@@ -57,8 +56,7 @@ archive.tar.gz: gzip compressed data
 $ file *
 ```
 
-:::single-choice{#inspect-multiple-files}
-현재 디렉터리에서 `*`와 일치하는 숨김 항목 이외의 모든 이름을 `file`로 검사하는 명령어는 무엇인가요?
+:::single-choice{#inspect-multiple-files} 현재 디렉터리에서 `*`와 일치하는 숨김 항목 이외의 모든 이름을 `file`로 검사하는 명령어는 무엇인가요?
 
 ::option[`file *`]{#file-wildcard .correct explanation="쉘이 `*`를 일치하는 숨김 항목 이외의 이름으로 확장하고 `file`이 각 피연산자를 검사합니다."}
 ::option[`file .`]{#file-current-directory explanation="점 하나는 현재 디렉터리 자체를 가리키므로 내부의 각 항목이 아니라 그 디렉터리를 분류합니다."}
@@ -74,8 +72,7 @@ $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-:::single-choice{#show-mime-information}
-`index.html`의 MIME 형식 정보를 출력하는 명령어는 무엇인가요?
+:::single-choice{#show-mime-information} `index.html`의 MIME 형식 정보를 출력하는 명령어는 무엇인가요?
 
 ::option[`file -b index.html`]{#brief-index explanation="`-b`는 일반 설명에서 파일 이름을 생략할 뿐 MIME 형식 출력을 요청하지 않습니다."}
 ::option[`file -i index.html`]{#mime-index .correct explanation="`-i`는 `text/html`과 문자 집합 같은 MIME 형식 출력을 요청합니다."}
@@ -96,8 +93,7 @@ $ file -b notes.txt
 ASCII text
 ```
 
-:::single-choice{#omit-filename-from-output}
-`notes.txt`를 분류하되 출력에서 파일 이름을 생략하는 명령어는 무엇인가요?
+:::single-choice{#omit-filename-from-output} `notes.txt`를 분류하되 출력에서 파일 이름을 생략하는 명령어는 무엇인가요?
 
 ::option[`file -i notes.txt`]{#mime-notes explanation="`-i`는 MIME 형식 정보를 요청하며 보통 출력에 파일 이름도 포함됩니다."}
 ::option[`file -z notes.txt`]{#compressed-notes explanation="`-z`는 가능하면 압축 데이터 내부를 살펴보게 하며 간략 출력을 켜지 않습니다."}

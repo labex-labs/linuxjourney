@@ -24,8 +24,7 @@ $ help echo
 
 출력은 내장 명령어의 구문과 동작을 설명합니다. 인자 없이 `help`를 실행하면 Bash가 도움말을 제공하는 내장 명령어 목록이 나옵니다.
 
-:::single-choice{#help-for-bash-cd}
-Bash의 `cd` 내장 명령어 도움말을 표시하는 명령어는 무엇인가요?
+:::single-choice{#help-for-bash-cd} Bash의 `cd` 내장 명령어 도움말을 표시하는 명령어는 무엇인가요?
 
 ::option[`cd --help`]{#cd-help-option explanation="일부 내장 명령어가 옵션을 인식할 수는 있지만 Bash의 전용 문서 인터페이스는 내장 명령어 이름 뒤에 쓰는 `help`입니다."}
 ::option[`help cd`]{#help-cd .correct explanation="Bash의 `help`는 지정한 내장 명령어의 문서를 찾으며 여기서는 `cd`를 조회합니다."}
@@ -42,8 +41,7 @@ $ ls --help
 
 이 관례가 흔하지만 모든 프로그램이 지원하는 것은 아닙니다. 모든 프로그램이 같은 옵션을 받는다고 가정하지 말고 출력과 종료 상태를 확인하세요.
 
-:::single-choice{#quick-ls-usage}
-외부 `ls` 프로그램이 제공하는 빠른 사용법 요약을 보통 출력하는 명령어는 무엇인가요?
+:::single-choice{#quick-ls-usage} 외부 `ls` 프로그램이 제공하는 빠른 사용법 요약을 보통 출력하는 명령어는 무엇인가요?
 
 ::option[`help ls`]{#bash-help-ls explanation="Bash `help`는 쉘 내장 명령어를 설명하므로 일반적인 시스템에서 외부 `ls`의 사용법 페이지를 제공하지 않습니다."}
 ::option[`ls --help`]{#ls-help .correct explanation="GNU `ls`는 일반적인 `--help` 관례에 따라 사용법과 옵션을 출력합니다."}
@@ -63,8 +61,7 @@ ls is /usr/bin/ls
 
 결과는 별칭, 함수, 설치된 프로그램과 `PATH`에 따라 달라질 수 있습니다. Bash가 먼저 사용할 하나뿐 아니라 알려진 모든 해석을 보려면 `type -a NAME`을 사용합니다.
 
-:::single-choice{#identify-command-resolution}
-`deploy`가 별칭, 함수, 내장 명령어 또는 실행 파일인지 모릅니다. 이름이 어떻게 해석되는지 확인하는 Bash 명령어는 무엇인가요?
+:::single-choice{#identify-command-resolution} `deploy`가 별칭, 함수, 내장 명령어 또는 실행 파일인지 모릅니다. 이름이 어떻게 해석되는지 확인하는 Bash 명령어는 무엇인가요?
 
 ::option[`type deploy`]{#type-deploy .correct explanation="`type` 내장 명령어는 현재 쉘 환경에서 Bash가 명령어 이름을 어떻게 해석하는지 알려 줍니다."}
 ::option[`help deploy`]{#help-deploy explanation="`help`는 Bash 내장 명령어 문서를 찾으며 일반적으로 별칭, 함수, 외부 파일을 식별하지 않습니다."}
@@ -80,8 +77,7 @@ ls is /usr/bin/ls
 
 다음 강의에서는 매뉴얼 페이지와 한 줄 설명을 더 자세히 살펴봅니다.
 
-:::single-choice{#choose-detailed-manual}
-외부 명령어 `ls`의 짧은 사용법 요약이 아니라 자세한 문서가 필요합니다. 어떤 명령어를 시도해야 하나요?
+:::single-choice{#choose-detailed-manual} 외부 명령어 `ls`의 짧은 사용법 요약이 아니라 자세한 문서가 필요합니다. 어떤 명령어를 시도해야 하나요?
 
 ::option[`man ls`]{#man-ls .correct explanation="`man ls`는 보통 구문, 옵션, 동작을 더 충실히 설명하는 설치된 매뉴얼 페이지를 엽니다."}
 ::option[`whatis ls`]{#whatis-ls explanation="`whatis`는 간결한 매뉴얼 페이지 설명을 표시하므로 요청한 상세 문서가 아닙니다."}

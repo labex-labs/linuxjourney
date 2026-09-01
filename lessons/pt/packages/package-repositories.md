@@ -24,8 +24,7 @@ $ sudo apt update
 
 Esse comando atualiza os índices de pacotes locais; por si só, ele não instala todas as atualizações disponíveis. Examine as fontes e os erros de autenticação informados, em vez de ignorar entradas que falharam.
 
-:::single-choice{#package-repositories-apt-update}
-O que o comando `apt update` atualiza principalmente?
+:::single-choice{#package-repositories-apt-update} O que o comando `apt update` atualiza principalmente?
 
 ::option[Todos os binários de pacotes instalados sem solicitar confirmação.]{#package-repositories-all-binaries explanation="A instalação de atualizações é uma operação separada da atualização dos metadados."}
 ::option[As senhas dos usuários autorizados a instalar pacotes.]{#package-repositories-user-passwords explanation="A atualização dos índices do repositório não altera as credenciais de autenticação locais."}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 Esse exemplo serve apenas para ilustrar a sintaxe; o domínio reservado `.invalid` não corresponde a um repositório utilizável.
 
-:::single-choice{#package-repositories-apt-locations}
-Onde o APT pode ler definições de repositórios ativos?
+:::single-choice{#package-repositories-apt-locations} Onde o APT pode ler definições de repositórios ativos?
 
 ::option[Apenas em `/etc/apt/sources.list`.]{#package-repositories-only-main-list explanation="O APT também lê arquivos de fontes compatíveis em `/etc/apt/sources.list.d/`."}
 ::option[Apenas em arquivos dentro do diretório pessoal de cada usuário.]{#package-repositories-only-home explanation="A configuração das fontes do APT no sistema normalmente fica sob `/etc/apt`."}
@@ -67,8 +65,7 @@ O APT verifica os metadados de versão assinados do repositório e, em seguida, 
 
 Uma assinatura válida comprova que os metadados vieram do detentor de uma chave de assinatura aceita e não foram modificados sem que isso fosse detectado. Ela não comprova que o software do publicador esteja livre de defeitos, não seja malicioso ou seja adequado ao sistema. Confirme a impressão digital da chave e as instruções da fonte por meio de um canal confiável independente.
 
-:::single-choice{#package-repositories-signed-by}
-Qual é a finalidade de segurança de `Signed-By` em uma definição de fonte do APT?
+:::single-choice{#package-repositories-signed-by} Qual é a finalidade de segurança de `Signed-By` em uma definição de fonte do APT?
 
 ::option[Criptografar todos os pacotes instalados para que nem o root possa lê-los.]{#package-repositories-package-encryption explanation="A assinatura do repositório verifica origem e integridade; ela não oculta os dados do administrador local."}
 ::option[Restringir essa fonte a determinadas chaves de assinatura.]{#package-repositories-key-scope .correct explanation="O campo vincula a verificação do repositório ao material dos chaveiros selecionados, em vez de usar um conjunto global irrestrito de chaves."}
@@ -87,8 +84,7 @@ Um repositório pode instalar pacotes e scripts de ciclo de vida com privilégio
 
 Não copie instruções obsoletas que desativem a verificação de assinaturas nem envie um script remoto não auditado diretamente para um shell privilegiado.
 
-:::single-choice{#package-repositories-third-party-risk}
-Por que adicionar um repositório de terceiros amplia o limite de confiança do sistema?
+:::single-choice{#package-repositories-third-party-risk} Por que adicionar um repositório de terceiros amplia o limite de confiança do sistema?
 
 ::option[Porque seus pacotes e scripts autenticados podem ser instalados com privilégios do sistema.]{#package-repositories-privileged-install .correct explanation="Confiar na fonte de assinatura pode autorizar código e ações de ciclo de vida que afetam o sistema operacional."}
 ::option[Porque ele faz o kernel do Linux deixar de aplicar permissões de arquivos.]{#package-repositories-disable-permissions explanation="A configuração de repositórios não desativa os mecanismos normais de controle de acesso do kernel."}

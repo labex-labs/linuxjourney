@@ -22,8 +22,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 Utiliza `-6` para seleccionar IPv6. Anota la dirección resuelta porque un nombre de host puede devolver varias y distintas ejecuciones pueden elegir direcciones diferentes.
 
-:::single-choice{#ping-count-option}
-¿Qué solicita `-c 3`?
+:::single-choice{#ping-count-option} ¿Qué solicita `-c 3`?
 
 ::option[Una carga útil de paquete de exactamente tres megabytes.]{#ping-three-megabytes explanation="El tamaño del paquete utiliza otra opción."}
 ::option[Tres rutas permanentes hacia el destino.]{#ping-three-routes explanation="Ping prueba tráfico y no instala rutas."}
@@ -36,8 +35,7 @@ Utiliza `-6` para seleccionar IPv6. Anota la dirección resuelta porque un nombr
 
 La pérdida puede producirse en cualquiera de las dos direcciones, y la limitación de frecuencia de ICMP puede hacer que la pérdida de ping difiera de la que experimenta la aplicación.
 
-:::single-choice{#ping-sequence-gap}
-¿Qué puede indicar la ausencia de una respuesta `icmp_seq`?
+:::single-choice{#ping-sequence-gap} ¿Qué puede indicar la ausencia de una respuesta `icmp_seq`?
 
 ::option[Que el destino cambió permanentemente su dirección MAC.]{#ping-sequence-mac explanation="Un hueco en la secuencia no permite por sí solo llegar a esa conclusión sobre la capa de enlace."}
 ::option[Que la solicitud o la respuesta se perdió, se filtró, llegó después de la espera o se limitó por frecuencia.]{#ping-sequence-possibilities .correct explanation="El hueco identifica una respuesta no observada, pero no la dirección ni la causa exactas."}
@@ -48,8 +46,7 @@ La pérdida puede producirse en cualquiera de las dos direcciones, y la limitaci
 
 El campo `time` es el tiempo de ida y vuelta, en milisegundos, desde que se envía la solicitud hasta que se recibe la respuesta. Combina el retraso de salida, el procesamiento remoto y el retraso de retorno. No puede revelar la latencia en un solo sentido sin mediciones sincronizadas en los extremos.
 
-:::single-choice{#ping-rtt-meaning}
-¿Qué mide un valor `time=23.7 ms`?
+:::single-choice{#ping-rtt-meaning} ¿Qué mide un valor `time=23.7 ms`?
 
 ::option[Únicamente la latencia de la ruta de salida en un solo sentido.]{#ping-outbound-only explanation="Ping mide el intervalo completo de solicitud y respuesta."}
 ::option[El tiempo de actividad del sistema de destino.]{#ping-target-uptime explanation="El valor mide la prueba, no el tiempo desde el arranque."}
@@ -60,8 +57,7 @@ El campo `time` es el tiempo de ida y vuelta, en milisegundos, desde que se env�
 
 El TTL de IPv4 o Hop Limit de IPv6 mostrado es el valor restante en la respuesta recibida. Sin conocer el valor inicial del emisor y la ruta de retorno, restarlo no proporciona un número exacto de saltos. Un cambio puede reflejar otro emisor, otro valor inicial u otra ruta de retorno.
 
-:::single-choice{#ping-received-ttl}
-¿Qué es el TTL mostrado en una respuesta Echo Reply de IPv4?
+:::single-choice{#ping-received-ttl} ¿Qué es el TTL mostrado en una respuesta Echo Reply de IPv4?
 
 ::option[El valor restante cuando la respuesta llegó al host local.]{#ping-remaining-ttl .correct explanation="Cada router de la ruta de retorno redujo el valor inicial del emisor."}
 ::option[Un número exacto de routers en ambas direcciones.]{#ping-exact-hop-count explanation="Este campo por sí solo no establece el TTL inicial ni la ruta en cada dirección."}
@@ -72,8 +68,7 @@ El TTL de IPv4 o Hop Limit de IPv6 mostrado es el valor restante en la respuesta
 
 Si ping funciona pero un servicio falla, prueba el puerto, TLS, el protocolo y la solicitud reales. Si ping falla, inspecciona la resolución de nombres, `ip route get`, el estado de los vecinos, la política del cortafuegos y las capturas antes de declarar caído el host.
 
-:::single-choice{#ping-success-limit}
-¿Qué no demuestra un ping correcto?
+:::single-choice{#ping-success-limit} ¿Qué no demuestra un ping correcto?
 
 ::option[Que funcionó alguna ruta de solicitud y respuesta ICMP.]{#ping-icmp-worked explanation="Esa es la evidencia directa que proporcionan las respuestas."}
 ::option[Que la respuesta contenía un número de secuencia.]{#ping-sequence-present explanation="La salida normal informa directamente de la secuencia de la respuesta."}

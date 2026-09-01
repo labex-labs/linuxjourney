@@ -22,8 +22,7 @@ $ tail application.log
 
 Si le fichier est plus court, toutes ses lignes sont affichées sans le modifier.
 
-:::single-choice{#tail-default-lines}
-Que montre `tail application.log` par défaut ?
+:::single-choice{#tail-default-lines} Que montre `tail application.log` par défaut ?
 
 ::option[Au plus les 10 premières lignes.]{#tail-first-ten explanation="Le début est sélectionné par `head` ; `tail` part de la fin."}
 ::option[Toutes les lignes ajoutées après son lancement.]{#tail-follow-only explanation="Le suivi continu exige `-f` ; un simple `tail` affiche un instantané puis se termine."}
@@ -44,8 +43,7 @@ $ tail -c 100 payload.bin
 
 `-n` choisit les dernières lignes, `-c` les derniers octets. Le mode octet peut commencer au milieu d'une ligne ou d'un caractère encodé.
 
-:::single-choice{#tail-twenty-lines}
-Quelle commande affiche les 20 dernières lignes de `application.log` ?
+:::single-choice{#tail-twenty-lines} Quelle commande affiche les 20 dernières lignes de `application.log` ?
 
 ::option[`tail -n 20 application.log`]{#tail-twenty-end .correct explanation="`-n` choisit un nombre de lignes, que `tail` prend à la fin."}
 ::option[`head -n 20 application.log`]{#head-twenty-start explanation="Cette commande choisit les lignes du début."}
@@ -62,8 +60,7 @@ $ tail -n +5 report.txt
 
 Cette commande saute quatre lignes et commence à la cinquième, ce qui permet notamment de retirer un nombre connu d'en-têtes.
 
-:::single-choice{#tail-start-line-five}
-Quelle commande affiche `report.txt` à partir de la ligne 5 ?
+:::single-choice{#tail-start-line-five} Quelle commande affiche `report.txt` à partir de la ligne 5 ?
 
 ::option[`tail -n +5 report.txt`]{#tail-from-five .correct explanation="`+5` demande à `tail` de commencer à la ligne 5 et de poursuivre jusqu'à la fin."}
 ::option[`tail -n 5 report.txt`]{#tail-final-five explanation="Sans plus, cette forme choisit les cinq dernières lignes."}
@@ -80,8 +77,7 @@ $ tail -f application.log
 
 Appuyez sur `Ctrl+C` pour l'interrompre. Le suivi montre seulement le nouveau contenu ; il ne garantit pas la santé de l'application ni que tous les événements utilisent ce fichier.
 
-:::single-choice{#tail-follow-file}
-Quelle commande montre la fin actuelle de `application.log` puis attend les ajouts ?
+:::single-choice{#tail-follow-file} Quelle commande montre la fin actuelle de `application.log` puis attend les ajouts ?
 
 ::option[`tail -f application.log`]{#tail-follow-app .correct explanation="`-f` maintient `tail` actif et affiche les données ajoutées."}
 ::option[`tail -n 0 application.log`]{#tail-zero-lines explanation="Sans option de suivi, elle n'affiche rien puis se termine."}
@@ -98,8 +94,7 @@ $ tail -F application.log
 
 Employez `-f` pour suivre le fichier actuellement ouvert et `-F` lorsqu'un journal nommé doit tourner. D'autres implémentations peuvent différer.
 
-:::single-choice{#tail-follow-rotated-name}
-Sous GNU/Linux, quelle option convient au suivi de `application.log` lors d'une rotation par renommage et recréation ?
+:::single-choice{#tail-follow-rotated-name} Sous GNU/Linux, quelle option convient au suivi de `application.log` lors d'une rotation par renommage et recréation ?
 
 ::option[`-n`]{#tail-rotation-lines explanation="`-n` modifie le nombre de lignes, pas le suivi d'un chemin remplacé."}
 ::option[`-c`]{#tail-rotation-bytes explanation="`-c` choisit les octets et ne gère pas la rotation."}

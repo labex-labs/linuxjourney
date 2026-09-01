@@ -43,8 +43,7 @@ $ join people.txt surnames.txt
 
 La salida contiene una vez la clave compartida, seguida de los campos restantes del primer y del segundo archivo. `join` procesa dos archivos a la vez; no acepta tres operandos de archivo normales como una unión relacional de tres vías.
 
-:::single-choice{#join-default-key}
-Sin opciones de campo, ¿qué registros combina `join first.txt second.txt`?
+:::single-choice{#join-default-key} Sin opciones de campo, ¿qué registros combina `join first.txt second.txt`?
 
 ::option[Las líneas cuyos primeros campos separados por espacios en blanco son iguales.]{#join-first-fields .correct explanation="El comportamiento predeterminado de `join` compara el campo 1 de cada una de las dos entradas ordenadas."}
 ::option[Las líneas que ocupan el mismo número de línea físico.]{#join-line-numbers explanation="La coincidencia se basa en los valores de los campos clave, no simplemente en la posición de los registros."}
@@ -63,8 +62,7 @@ $ LC_ALL=C join people.txt surnames.txt
 
 Usar la misma configuración regional para ordenar y unir mantiene uniformes las reglas de intercalación. No redirijas una ordenación a la misma ruta de su entrada, porque el shell truncaría primero ese archivo.
 
-:::single-choice{#join-sort-requirement}
-¿Qué preparación suele requerir `join` para producir coincidencias fiables?
+:::single-choice{#join-sort-requirement} ¿Qué preparación suele requerir `join` para producir coincidencias fiables?
 
 ::option[Ambos archivos deben contener exactamente la misma cantidad de líneas físicas.]{#join-equal-line-count explanation="Las longitudes de entrada pueden diferir. Las coincidencias de claves, no la igualdad del número de líneas, determinan la salida unida."}
 ::option[Ambos archivos deben tener nombres que queden juntos al ordenarlos alfabéticamente.]{#join-filename-order explanation="Es necesario ordenar las claves del contenido; la relación léxica entre los nombres de archivo no importa."}
@@ -100,8 +98,7 @@ $ join -1 2 -2 1 people.txt surnames.txt
 
 Usa `-t CHARACTER` cuando un único carácter que no sea un espacio en blanco, como `:`, separe los campos. Opciones como `-a 1` o `-a 2` pueden incluir líneas sin pareja de una entrada; la salida predeterminada solo contiene claves coincidentes.
 
-:::single-choice{#join-different-fields}
-¿Qué opciones unen el campo 2 del primer archivo con el campo 1 del segundo?
+:::single-choice{#join-different-fields} ¿Qué opciones unen el campo 2 del primer archivo con el campo 1 del segundo?
 
 ::option[`-1 1 -2 2`]{#join-fields-reversed explanation="Esto selecciona el campo 1 de la primera entrada y el campo 2 de la segunda, lo contrario de la correspondencia solicitada."}
 ::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` elige el campo 2 del primer archivo y `-2 1` elige el campo 1 del segundo."}
@@ -126,8 +123,7 @@ $ split -l 500 large.txt part-
 
 Esto produce `part-aa`, `part-ab` y así sucesivamente, con un máximo de 500 líneas en cada fragmento.
 
-:::single-choice{#split-lines-with-prefix}
-¿Qué orden divide `large.txt` en fragmentos de un máximo de 500 líneas cuyos nombres comienzan por `part-`?
+:::single-choice{#split-lines-with-prefix} ¿Qué orden divide `large.txt` en fragmentos de un máximo de 500 líneas cuyos nombres comienzan por `part-`?
 
 ::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="La opción `-b` selecciona bytes, por lo que en un texto normal estos fragmentos serían mucho menores que 500 líneas."}
 ::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` establece la cantidad máxima de líneas y el último operando proporciona el prefijo del nombre de salida."}
@@ -144,8 +140,7 @@ $ split -b 10M archive.bin chunk-
 
 Esto solicita fragmentos de 10 mebibytes, salvo un posible fragmento final más pequeño. `split` no crea un manifiesto del archivo ni metadatos de reconstrucción; conserva el orden de los sufijos y concatena los fragmentos en orden cuando corresponda reconstruirlo.
 
-:::single-choice{#split-ten-mebibytes}
-¿Qué orden divide `archive.bin` en fragmentos de 10 MiB con el prefijo `chunk-`?
+:::single-choice{#split-ten-mebibytes} ¿Qué orden divide `archive.bin` en fragmentos de 10 MiB con el prefijo `chunk-`?
 
 ::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="La opción `-l` espera una cantidad de líneas, no un sufijo de tamaño en bytes para fragmentos binarios."}
 ::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` no divide entradas binarias ni admite esta operación de tamaño de fragmento."}

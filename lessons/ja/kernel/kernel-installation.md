@@ -23,8 +23,7 @@ $ uname -r
 
 これはインストール済み全カーネルを一覧表示せず、新しい package をインストールした直後にも変わりません。`uname -r` が新しい version を報告するには、その image を boot する必要があります。インストール済み package と boot entry はディストリビューション固有のツールで問い合わせてください。
 
-:::single-choice{#kernel-installation-uname-release}
-`uname -r` は何を表示しますか？
+:::single-choice{#kernel-installation-uname-release} `uname -r` は何を表示しますか？
 
 ::option[現在動作中カーネルの release string。]{#kernel-installation-running-release .correct explanation="disk 上の最新 image だけではなく、live kernel state を報告します。"}
 ::option[全 repository にあるすべての kernel package。]{#kernel-installation-all-packages explanation="repository inventory は package manager が扱います。"}
@@ -37,8 +36,7 @@ $ uname -r
 
 `uname -r` の version string をそのまま `apt install` operand にして、有効だと想定しないでください。インストール前に現在のディストリビューション文書を参照し、package manager で候補を調べます。
 
-:::single-choice{#kernel-installation-meta-package}
-対応済み kernel meta-package が役立つのはなぜですか？
+:::single-choice{#kernel-installation-meta-package} 対応済み kernel meta-package が役立つのはなぜですか？
 
 ::option[再起動が一切不要だと保証するから。]{#kernel-installation-no-reboot explanation="特殊な live-patching の範囲を除き、新しいカーネルはその image を boot して初めて有効になります。"}
 ::option[すべての out-of-tree driver を built-in code へ変換するから。]{#kernel-installation-convert-drivers explanation="external module には引き続き互換 build と signing が必要です。"}
@@ -57,8 +55,7 @@ kernel transaction の前に次を行います。
 
 package transaction は、対応する initramfs を生成し、ディストリビューションの hook で boot entry を更新する必要があります。すべての error を確認してください。initramfs または loader の生成に失敗したなら、package が installed と表示されても十分ではありません。
 
-:::single-choice{#kernel-installation-initramfs-error}
-initramfs 生成 error があると、成功したと判断してはいけないのはなぜですか？
+:::single-choice{#kernel-installation-initramfs-error} initramfs 生成 error があると、成功したと判断してはいけないのはなぜですか？
 
 ::option[initramfs 生成がユーザーの shell password を変更するから。]{#kernel-installation-initramfs-password explanation="boot archive の workflow は account authentication secret と無関係です。"}
 ::option[新カーネルに root storage へ到達する初期 module や tool が不足する可能性があるから。]{#kernel-installation-missing-early-tools .correct explanation="image が installed でも、必要な early user-space artifact がない、または古い場合があります。"}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 非 systemd system では同等のツールを使います。storage、filesystem、networking、graphics、input、security module、external module、container、virtual machine、application health を検証します。login prompt だけでは完全な検証になりません。
 
-:::single-choice{#kernel-installation-activation}
-通常の新しい kernel package が動作中カーネルになるのはいつですか？
+:::single-choice{#kernel-installation-activation} 通常の新しい kernel package が動作中カーネルになるのはいつですか？
 
 ::option[`uname -r` を入力した直後。]{#kernel-installation-uname-activates explanation="uname は読み取り専用で、カーネルを切り替えません。"}
 ::option[その kernel image をマシンが boot した後。]{#kernel-installation-after-boot .correct explanation="file のインストールだけでは、memory 内ですでに実行中のカーネルを置き換えません。"}
@@ -91,8 +87,7 @@ $ systemctl --failed
 
 `/boot` から手動削除すると、package と loader の state が不整合になります。すでに容量が尽きている場合も、任意の image を消さず、ファイル変更前に復旧計画を作ってください。
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-新カーネルの初期検証中に残すべき kernel はどれですか？
+:::single-choice{#kernel-installation-old-kernel-removal} 新カーネルの初期検証中に残すべき kernel はどれですか？
 
 ::option[未テストの新カーネルだけ。]{#kernel-installation-only-new explanation="テスト前に全 fallback を削除すると、互換性問題が復旧 incident になります。"}
 ::option[boot path 下には kernel file を一つも残さない。]{#kernel-installation-no-kernels explanation="Linux を boot するには、読み込み可能な kernel artifact が必要です。"}

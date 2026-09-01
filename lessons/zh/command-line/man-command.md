@@ -22,8 +22,7 @@ $ man ls
 
 手册页通常包含概要、说明、选项、相关文件和交叉引用，但具体章节会有所不同。
 
-:::single-choice{#open-ls-manual}
-哪个命令会打开已安装的 `ls` 手册页？
+:::single-choice{#open-ls-manual} 哪个命令会打开已安装的 `ls` 手册页？
 
 ::option[`help ls`]{#help-ls explanation="Bash 的 `help` 记录 shell 内建命令，通常不会打开外部 `ls` 的手册页。"}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` 会在手册数据库中查找主题 `ls`，并显示匹配页面。"}
@@ -43,16 +42,14 @@ $ man ls
 
 分页器可能因系统或环境而异，因此这些按键并非处处保证可用；它们适用于常见的 `less` 配置。
 
-:::single-choice{#search-man-page}
-手册页在 `less` 中打开时，如何开始向前搜索 `--recursive`？
+:::single-choice{#search-man-page} 手册页在 `less` 中打开时，如何开始向前搜索 `--recursive`？
 
 ::option[输入 `?--recursive` 并按 Enter。]{#backward-man-search explanation="问号会开始向后搜索，方向与题目要求相反。"}
 ::option[输入 `/--recursive` 并按 Enter。]{#forward-man-search .correct explanation="斜杠会在 `less` 中开始向前搜索，按 Enter 提交模式。"}
 ::option[输入 `n--recursive` 并按 Enter。]{#repeat-man-search explanation="`n` 用于重复已有搜索，不能以这种方式引入新搜索模式。"}
 :::
 
-:::single-choice{#leave-man-page}
-手册页在常用分页器中打开时，哪个按键会返回 shell？
+:::single-choice{#leave-man-page} 手册页在常用分页器中打开时，哪个按键会返回 shell？
 
 ::option[`G`]{#man-page-end explanation="大写 `G` 会在 `less` 中移到页面末尾，不会关闭分页器。"}
 ::option[`n`]{#next-man-match explanation="`n` 会重复最近的搜索，手册页仍保持打开。"}
@@ -78,8 +75,7 @@ $ man 1 passwd
 
 第一条命令打开第 5 节中记录 `passwd` 文件格式的页面，第二条打开第 1 节的用户命令页面。`passwd(5)` 这样的引用使用同样的“主题（章节）”记法。
 
-:::single-choice{#open-passwd-file-format}
-哪个命令会打开记录 `passwd` 文件格式的第 5 节页面？
+:::single-choice{#open-passwd-file-format} 哪个命令会打开记录 `passwd` 文件格式的第 5 节页面？
 
 ::option[`man passwd 5`]{#section-after-topic explanation="在这种命令形式中，章节选择符应位于主题之前；这个顺序不会请求 `passwd(5)`。"}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="把章节 `5` 放在 `passwd` 前面，会明确选择文件格式页面。"}
@@ -95,8 +91,7 @@ $ man 1 passwd
 - 如果外部程序支持这一约定，尝试 `NAME --help`。
 - 检查发行版是否提供单独的文档软件包。
 
-:::single-choice{#missing-builtin-manual}
-`type cd` 报告 `cd` 是 Bash 内建命令，而且没有单独手册页。接下来应该尝试哪个命令？
+:::single-choice{#missing-builtin-manual} `type cd` 报告 `cd` 是 Bash 内建命令，而且没有单独手册页。接下来应该尝试哪个命令？
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` 汇总手册数据库中的条目，无法提供缺失的内建命令专用页面。"}
 ::option[`file cd`]{#file-cd-name explanation="`file` 对文件系统对象分类，但这里 `cd` 被解析为 shell 内建命令，而不是路径。"}

@@ -24,8 +24,7 @@ meta_keywords: "vim 저장 방법, linux wq, vi 쓰기 및 종료, vim 저장하
 
 `:w copy.txt`는 현재 버퍼의 기존 이름을 유지하면서 내용을 다른 경로에 씁니다. 버퍼가 새 경로를 사용하도록 하려면 `:saveas copy.txt`를 사용합니다.
 
-:::single-choice{#vim-save-without-quit}
-종료하지 않고 현재 버퍼를 연결된 파일에 쓰는 Vim 명령은 무엇인가요?
+:::single-choice{#vim-save-without-quit} 종료하지 않고 현재 버퍼를 연결된 파일에 쓰는 Vim 명령은 무엇인가요?
 
 ::option[`:q`]{#vim-save-q explanation="`:q`는 종료를 요청하며 수정된 버퍼를 쓰지 않습니다."}
 ::option[`:w`]{#vim-save-w .correct explanation="`:write` 명령은 현재 버퍼를 저장하고 편집 창을 열린 채로 둡니다."}
@@ -42,8 +41,7 @@ meta_keywords: "vim 저장 방법, linux wq, vi 쓰기 및 종료, vim 저장하
 
 현재 버퍼가 수정되었고 변경을 잃게 된다면 Vim은 일반적으로 종료를 거부하고 경고를 보고합니다. 이 보호 장치는 저장하거나 다시 생각할 기회를 줍니다.
 
-:::single-choice{#vim-quit-clean-buffer}
-저장하지 않은 변경을 잃지 않을 때 현재 Vim 창을 종료하는 명령은 무엇인가요?
+:::single-choice{#vim-quit-clean-buffer} 저장하지 않은 변경을 잃지 않을 때 현재 Vim 창을 종료하는 명령은 무엇인가요?
 
 ::option[`:w`]{#vim-quit-w explanation="버퍼를 쓰지만 현재 창을 열린 채로 둡니다."}
 ::option[`:q`]{#vim-quit-q .correct explanation="일반 종료 명령은 Vim의 수정 버퍼 보호가 허용할 때 창을 닫습니다."}
@@ -60,8 +58,7 @@ meta_keywords: "vim 저장 방법, linux wq, vi 쓰기 및 종료, vim 저장하
 
 느낌표는 저장하지 않은 변경 경고를 무시합니다. 해당 버퍼 변경은 기록되지 않으므로 Enter를 누르기 전에 정말 버려도 되는지 확인하세요.
 
-:::single-choice{#vim-quit-discard-changes}
-현재 버퍼에 의도적으로 저장하지 않으려는 변경이 있습니다. 현재 창을 종료하고 변경을 버리는 명령은 무엇인가요?
+:::single-choice{#vim-quit-discard-changes} 현재 버퍼에 의도적으로 저장하지 않으려는 변경이 있습니다. 현재 창을 종료하고 변경을 버리는 명령은 무엇인가요?
 
 ::option[`:q`]{#vim-discard-plain-q explanation="일반 `:q`는 종료로 수정된 버퍼 변경을 잃게 되면 보통 거부합니다."}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq`는 종료 전에 변경을 쓰므로 버리기와 반대입니다."}
@@ -78,8 +75,7 @@ meta_keywords: "vim 저장 방법, linux wq, vi 쓰기 및 종료, vim 저장하
 
 쓰기가 실패하면 Vim은 요청한 종료를 완료하지 않습니다. 데이터가 디스크에 기록됐다고 가정하지 말고 오류를 해결하세요.
 
-:::single-choice{#vim-write-and-quit}
-현재 버퍼를 쓰고 성공하면 현재 창을 종료하는 명령은 무엇인가요?
+:::single-choice{#vim-write-and-quit} 현재 버퍼를 쓰고 성공하면 현재 창을 종료하는 명령은 무엇인가요?
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="쓰기와 종료를 결합하며 종료는 쓰기 성공 여부에 따라 달라집니다."}
 ::option[`:q!`]{#vim-save-force-quit explanation="변경을 쓰지 않고 버리면서 종료합니다."}
@@ -100,8 +96,7 @@ ZZ
 
 버퍼가 변경되지 않았어도 쓰기를 요청하는 `:wq`와는 미묘하게 다릅니다. 대문자 `ZQ`는 일반 모드에서 `:q!`와 비슷하게 쓰지 않고 종료합니다.
 
-:::single-choice{#vim-write-if-modified-quit}
-버퍼가 수정되었을 때만 쓰고 종료하는 일반 모드 명령은 무엇인가요?
+:::single-choice{#vim-write-if-modified-quit} 버퍼가 수정되었을 때만 쓰고 종료하는 일반 모드 명령은 무엇인가요?
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="대문자 `ZZ`는 `:x`와 같은 수정 시 쓰기 후 종료 동작을 수행합니다."}
 ::option[`zz`]{#vim-center-screen explanation="소문자 `zz`는 현재 줄을 창 중앙에 맞추며 저장하거나 종료하지 않습니다."}

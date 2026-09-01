@@ -23,8 +23,7 @@ Une organisation traditionnelle de distribution peut contenir :
 
 Les noms varient. Sur une distribution moderne, un fichier nommé `initrd` contient souvent une archive initramfs. La convention `vmlinuz` ne révèle ni la compression interne exacte, ni le format d'amorçage de la plateforme ; examinez-le avec les outils de la distribution.
 
-:::single-choice{#kernel-location-vmlinuz}
-Que contient normalement un fichier versionné `vmlinuz-*` ?
+:::single-choice{#kernel-location-vmlinuz} Que contient normalement un fichier versionné `vmlinuz-*` ?
 
 ::option[Une image amorçable du noyau Linux.]{#kernel-location-kernel-image .correct explanation="Le chargeur d'amorçage ou le micrologiciel charge cet artefact du noyau propre à l'architecture."}
 ::option[Tous les modules chargeables de tous les noyaux installés.]{#kernel-location-all-modules explanation="Les modules sont stockés séparément dans une arborescence propre à chaque version."}
@@ -37,8 +36,7 @@ L'initramfs doit contenir les modules et outils précoces requis par le noyau co
 
 `config-*` aide à déterminer les fonctionnalités intégrées, modulaires ou omises. `System.map-*` peut aider à la symbolisation et au débogage, mais la randomisation des adresses, les informations de débogage séparées et les outils de la distribution influencent son utilisation. Ces fichiers sont des artefacts auxiliaires, pas d'autres noyaux.
 
-:::single-choice{#kernel-location-initramfs-match}
-Pourquoi un initramfs est-il lié à une version précise du noyau et à la configuration du système ?
+:::single-choice{#kernel-location-initramfs-match} Pourquoi un initramfs est-il lié à une version précise du noyau et à la configuration du système ?
 
 ::option[Il stocke définitivement le contenu de chaque système de fichiers monté.]{#kernel-location-all-filesystems explanation="Un initramfs est un petit environnement de démarrage précoce, pas une sauvegarde complète du système."}
 ::option[Il attribue de nouveaux UID aux utilisateurs à chaque démarrage.]{#kernel-location-user-ids explanation="La gestion des identités de comptes ne relève pas de son rôle normal."}
@@ -55,8 +53,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 Dans les organisations de systèmes de fichiers fusionnées, ce chemin peut se résoudre vers `/usr/lib/modules/VERSION_DU_NOYAU`. Chaque noyau installé a besoin d'une arborescence de modules compatible et d'index de dépendances. `modprobe` emploie des métadonnées propres à la version au lieu de rechercher des fichiers `.ko` arbitraires sur le disque.
 
-:::single-choice{#kernel-location-module-tree}
-Quel répertoire contient conventionnellement les modules de la version active du noyau ?
+:::single-choice{#kernel-location-module-tree} Quel répertoire contient conventionnellement les modules de la version active du noyau ?
 
 ::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="Les répertoires personnels ne sont pas l'arborescence standard des modules système."}
 ::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="Le composant de version sépare l'ABI des modules et les données de dépendances de chaque noyau installé."}
@@ -69,8 +66,7 @@ Une Unified Kernel Image, ou UKI, est un seul exécutable EFI signé qui peut r�
 
 Une organisation traditionnelle de `/boot` apparemment vide ne prouve donc pas qu'aucun noyau n'est installé. Employez `findmnt`, la base des paquets, les outils du gestionnaire de démarrage et la configuration du chargeur afin de cartographier les artefacts actifs.
 
-:::single-choice{#kernel-location-uki}
-Que peut réunir une Unified Kernel Image ?
+:::single-choice{#kernel-location-uki} Que peut réunir une Unified Kernel Image ?
 
 ::option[Tous les répertoires personnels dans un en-tête GPT.]{#kernel-location-uki-homes explanation="Une UKI est un exécutable de démarrage, pas un conteneur de données utilisateur ni une table de partitions."}
 ::option[Chaque paquet installé dans un unique script shell.]{#kernel-location-uki-packages explanation="Elle regroupe les composants de démarrage, pas tout le dépôt du système d'exploitation."}

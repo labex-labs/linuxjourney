@@ -24,8 +24,7 @@ Uma gravação pode falhar porque o buffer não possui nome, o diretório não p
 
 Use `:w copy.txt` para gravar o buffer atual em outro caminho, mantendo o nome atual do buffer. Use `:saveas copy.txt` quando o buffer deva adotar o novo caminho.
 
-:::single-choice{#vim-save-without-quit}
-Qual comando do Vim grava o buffer atual no arquivo associado sem sair?
+:::single-choice{#vim-save-without-quit} Qual comando do Vim grava o buffer atual no arquivo associado sem sair?
 
 ::option[`:q`]{#vim-save-q explanation="`:q` solicita a saída e não grava um buffer modificado."}
 ::option[`:w`]{#vim-save-w .correct explanation="O comando `:write` salva o buffer atual e mantém a janela de edição aberta."}
@@ -42,8 +41,7 @@ Use `:q` para fechar a janela atual quando isso não abandonar alterações não
 
 Se o buffer atual estiver modificado e suas alterações forem perdidas, o Vim normalmente se recusará e mostrará um aviso. Essa salvaguarda oferece a oportunidade de gravar ou reconsiderar.
 
-:::single-choice{#vim-quit-clean-buffer}
-Qual comando fecha a janela atual do Vim quando nenhuma alteração não salva seria perdida?
+:::single-choice{#vim-quit-clean-buffer} Qual comando fecha a janela atual do Vim quando nenhuma alteração não salva seria perdida?
 
 ::option[`:w`]{#vim-quit-w explanation="Esse comando grava o buffer, mas mantém a janela atual aberta."}
 ::option[`:q`]{#vim-quit-q .correct explanation="O comando comum de saída fecha a janela quando as salvaguardas de buffer modificado do Vim permitem."}
@@ -60,8 +58,7 @@ Use `:q!` apenas quando quiser intencionalmente fechar a janela atual e abandona
 
 O ponto de exclamação ignora o aviso de alterações não salvas. Essas mudanças do buffer não serão gravadas; portanto, confirme que são realmente descartáveis antes de pressionar Enter.
 
-:::single-choice{#vim-quit-discard-changes}
-O buffer atual possui alterações que você conscientemente não quer salvar. Qual comando fecha a janela e as abandona?
+:::single-choice{#vim-quit-discard-changes} O buffer atual possui alterações que você conscientemente não quer salvar. Qual comando fecha a janela e as abandona?
 
 ::option[`:q`]{#vim-discard-plain-q explanation="`:q` simples normalmente se recusa a sair quando isso perderia alterações de um buffer modificado."}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq` grava as alterações antes de sair, o oposto de descartá-las."}
@@ -78,8 +75,7 @@ Use `:wq` quando o buffer deva ser gravado e a janela atual fechada depois de um
 
 Se a gravação falhar, o Vim não concluirá a saída solicitada. Resolva o erro em vez de presumir que os dados chegaram ao disco.
 
-:::single-choice{#vim-write-and-quit}
-Qual comando grava o buffer atual e fecha a janela se a gravação tiver sucesso?
+:::single-choice{#vim-write-and-quit} Qual comando grava o buffer atual e fecha a janela se a gravação tiver sucesso?
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="Esse comando combina uma gravação com uma saída, e a saída depende do sucesso da gravação."}
 ::option[`:q!`]{#vim-save-force-quit explanation="Esse comando sai descartando as alterações, não as gravando."}
@@ -100,8 +96,7 @@ ZZ
 
 Isso é ligeiramente diferente de `:wq`, que solicita uma gravação mesmo quando o buffer não foi alterado. `ZQ` maiúsculo é a contraparte do modo Normal para sair sem gravar, semelhante a `:q!`.
 
-:::single-choice{#vim-write-if-modified-quit}
-Qual comando do modo Normal grava apenas quando o buffer está modificado e depois sai?
+:::single-choice{#vim-write-if-modified-quit} Qual comando do modo Normal grava apenas quando o buffer está modificado e depois sai?
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="`ZZ` maiúsculo realiza o comportamento de gravar se modificado e sair associado a `:x`."}
 ::option[`zz`]{#vim-center-screen explanation="`zz` minúsculo centraliza a linha atual na janela; ele não salva nem sai."}

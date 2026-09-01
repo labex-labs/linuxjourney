@@ -25,8 +25,7 @@ Numeric directory names correspond to process IDs visible in the caller's PID na
 
 Visibility and access depend on credentials, namespaces, security policy, and procfs mount options such as `hidepid`. A process can exit between listing a directory and opening one of its files, so disappearance is a normal race that inspection tools must handle.
 
-:::single-choice{#proc-filesystem-numeric-directory}
-What does numeric directory `/proc/12345` normally represent?
+:::single-choice{#proc-filesystem-numeric-directory} What does numeric directory `/proc/12345` normally represent?
 
 ::option[The disk block numbered 12345.]{#proc-filesystem-disk-block explanation="`/proc` is a virtual kernel interface, not a directory of raw disk blocks."}
 ::option[The process currently visible with PID 12345.]{#proc-filesystem-pid-directory .correct explanation="Per-process procfs data is grouped under a directory named for the visible PID."}
@@ -51,8 +50,7 @@ It includes fields such as process name, state, IDs, credentials, memory counter
 
 Treat these as changing observations. Fields can differ by kernel version, a process can change state during a multi-file read, and some counters have subtleties not captured by their names alone.
 
-:::single-choice{#proc-filesystem-status-file}
-Which path contains a readable field-oriented summary for PID 12345?
+:::single-choice{#proc-filesystem-status-file} Which path contains a readable field-oriented summary for PID 12345?
 
 ::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="Per-process files live inside the PID-named directory, not under a top-level `status` directory."}
 ::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="The per-process `status` interface presents identifiers, state, memory, signal, and credential fields."}
@@ -71,8 +69,7 @@ Not every `/proc` entry belongs to a process. Examples include:
 
 Some files, especially under `/proc/sys`, are writable configuration interfaces. Do not write to them merely because they look like regular files. Understand the parameter, scope, persistence mechanism, and rollback before making an authorized system change.
 
-:::single-choice{#proc-filesystem-system-interface}
-Which entry provides system-wide memory counters rather than one process's status?
+:::single-choice{#proc-filesystem-system-interface} Which entry provides system-wide memory counters rather than one process's status?
 
 ::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="This resolves to the observing process's own per-process status."}
 ::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo` contains kernel-reported system memory statistics."}
@@ -85,8 +82,7 @@ Linux implementations of tools such as `ps`, `top`, and `free` obtain much of th
 
 Direct readers must parse formats correctly, tolerate missing processes, protect sensitive output, and avoid assuming one read is an atomic system snapshot.
 
-:::single-choice{#proc-filesystem-live-data}
-Why can `/proc/PID` disappear between two inspection commands?
+:::single-choice{#proc-filesystem-live-data} Why can `/proc/PID` disappear between two inspection commands?
 
 ::option[Every procfs file is automatically renamed once per second.]{#proc-filesystem-renamed explanation="There is no periodic renaming rule for all procfs entries."}
 ::option[Reading `status` deletes the process directory.]{#proc-filesystem-read-delete explanation="Status inspection is read-only and does not terminate or remove the process."}

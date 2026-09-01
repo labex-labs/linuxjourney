@@ -27,8 +27,7 @@ $ command -v emacs
 
 Um resultado vazio com status diferente de zero significa que o nome não foi encontrado pela pesquisa de comandos atual. Sistemas mínimos podem fornecer `vi`, enquanto outros incluem Nano ou nenhum editor interativo.
 
-:::single-choice{#editors-check-availability}
-Qual comando verifica se o shell atual consegue resolver um executável chamado `vim`?
+:::single-choice{#editors-check-availability} Qual comando verifica se o shell atual consegue resolver um executável chamado `vim`?
 
 ::option[`vim --install`]{#editors-vim-install explanation="O Vim não usa esse comando como verificação portável de instalação, e a instalação de pacotes depende da distribuição."}
 ::option[`file ~/.vimrc`]{#editors-file-vimrc explanation="Esse comando classifica um caminho de configuração se ele existir; não determina se `vim` pode ser resolvido."}
@@ -45,8 +44,7 @@ O Vim é um editor modal. A mesma tecla pode ter significados diferentes conform
 
 Esse modelo torna a edição repetitiva pelo teclado eficiente depois de alguma prática, mas novos usuários precisam acompanhar o modo ativo. As próximas lições apresentam uma operação do Vim por vez.
 
-:::single-choice{#editors-vim-modal-meaning}
-O que significa dizer que o Vim é modal?
+:::single-choice{#editors-vim-modal-meaning} O que significa dizer que o Vim é modal?
 
 ::option[Cada arquivo é aberto em uma janela gráfica separada.]{#editors-vim-windows explanation="Janelas e buffers são conceitos separados. Modal se refere à mudança do comportamento das teclas conforme o estado do editor."}
 ::option[O Vim só pode editar um tipo de arquivo de texto por vez.]{#editors-vim-file-type explanation="O Vim aceita muitos tipos de arquivo. A palavra modal descreve seu modelo de interação, não uma restrição de arquivos."}
@@ -59,8 +57,7 @@ O Emacs normalmente usa combinações de teclas e comandos nomeados dentro de um
 
 Tanto Vim quanto Emacs permitem muito mais que a edição básica por meio de configurações e extensões. Comece abrindo, alterando, salvando e fechando um arquivo de texto simples antes de acrescentar personalizações.
 
-:::single-choice{#editors-emacs-buffer}
-Na terminologia do Emacs, onde o texto editável de um arquivo visitado normalmente é mantido?
+:::single-choice{#editors-emacs-buffer} Na terminologia do Emacs, onde o texto editável de um arquivo visitado normalmente é mantido?
 
 ::option[Em um buffer.]{#editors-emacs-buffer-answer .correct explanation="O Emacs visita um arquivo em um buffer, que mantém o texto visualizado ou editado."}
 ::option[Na tabela de aliases do shell.]{#editors-emacs-alias-table explanation="Aliases pertencem à resolução de comandos do shell e não armazenam o texto do editor."}
@@ -78,8 +75,7 @@ $ export EDITOR="$VISUAL"
 
 Essas variáveis expressam uma preferência; elas não instalam o programa. Use um comando que realmente exista e coloque as exportações no arquivo de inicialização adequado somente depois de testá-las.
 
-:::single-choice{#editors-editor-variable}
-O que `export EDITOR=vim` faz?
+:::single-choice{#editors-editor-variable} O que `export EDITOR=vim` faz?
 
 ::option[Informa aos futuros processos filhos que `vim` é o valor do editor preferido.]{#editors-export-preference .correct explanation="A exportação coloca a preferência no ambiente herdado pelos comandos iniciados pelo shell atual."}
 ::option[Instala o Vim para todos os usuários do sistema.]{#editors-install-vim explanation="A atribuição de uma variável de ambiente não instala pacotes nem altera os sistemas de outros usuários."}
@@ -97,8 +93,7 @@ $ vim editor-practice.txt
 
 Evite começar com configurações do sistema ou dados de outro usuário. Faça um backup antes de alterar um arquivo importante, entenda como salvar e sair e examine o resultado com um comando somente para leitura, como `cat` ou `diff`.
 
-:::single-choice{#editors-first-practice-file}
-Qual é o arquivo inicial mais seguro para praticar com um editor desconhecido?
+:::single-choice{#editors-first-practice-file} Qual é o arquivo inicial mais seguro para praticar com um editor desconhecido?
 
 ::option[Um arquivo crítico de configuração da inicialização aberto como root.]{#editors-boot-file explanation="Uma alteração acidental pode impedir a inicialização normal, e o acesso elevado aumenta o impacto dos erros."}
 ::option[Um arquivo de texto descartável em um diretório de sua propriedade.]{#editors-disposable-file .correct explanation="Um arquivo de prática limita as consequências de edições acidentais enquanto você aprende a navegar, salvar e sair."}

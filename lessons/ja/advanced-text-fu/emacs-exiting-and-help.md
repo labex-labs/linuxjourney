@@ -24,8 +24,7 @@ Emacs は、関連する変更済みのファイルバッファーを確認し�
 
 `emacsclient` のワークフローや Emacs サーバーでは、フレームとサーバーの正確な動作が異なる場合があります。それでも、変更済みバッファーのプロンプトには十分注意してください。
 
-:::single-choice{#emacs-exit-key}
-通常の Emacs 終了を要求し、変更済みバッファーを確認するキーシーケンスはどれですか？
+:::single-choice{#emacs-exit-key} 通常の Emacs 終了を要求し、変更済みバッファーを確認するキーシーケンスはどれですか？
 
 ::option[`C-x k`]{#emacs-exit-kill-buffer explanation="これは選択した 1 つのバッファーを破棄するもので、Emacs セッションの終了は要求しません。"}
 ::option[`C-g`]{#emacs-exit-keyboard-quit explanation="これは Emacs を閉じず、処理中のコマンドまたはプロンプトを取り消します。"}
@@ -42,8 +41,7 @@ C-h C-h
 
 2 番目のキーで、必要なヘルプの種類を選びます。
 
-:::single-choice{#emacs-help-for-help}
-Emacs のヘルプシステムの使い方を説明するキーシーケンスはどれですか？
+:::single-choice{#emacs-help-for-help} Emacs のヘルプシステムの使い方を説明するキーシーケンスはどれですか？
 
 ::option[`C-h C-h`]{#emacs-help-help .correct explanation="ヘルプ接頭辞にもう一度 `C-h` を続けると、ヘルプディスパッチャー自体に関するヘルプが開きます。"}
 ::option[`C-x C-h`]{#emacs-help-prefix-list explanation="これは、ここで紹介した help-for-help のシーケンスではありません。"}
@@ -62,8 +60,7 @@ Emacs のヘルプシステムの使い方を説明するキーシーケンス�
 
 たとえば `C-h k C-x C-s` と入力すると、save-buffer のキーバインドに関する文書を確認できます。
 
-:::single-choice{#emacs-describe-key}
-`C-x C-s` の動作を調べたい場合、そのキーシーケンスの前にどのヘルプ接頭辞を入力しますか？
+:::single-choice{#emacs-describe-key} `C-x C-s` の動作を調べたい場合、そのキーシーケンスの前にどのヘルプ接頭辞を入力しますか？
 
 ::option[`C-h k`]{#emacs-describe-key-answer .correct explanation="`describe-key` はキーシーケンスを待ち、割り当てられたコマンドを説明します。"}
 ::option[`C-h f`]{#emacs-describe-function explanation="これはキーシーケンスからバインドを調べず、関数名の入力を求めます。"}
@@ -80,8 +77,7 @@ C-g
 
 すでに行われたバッファー変更を取り消したり、Emacs を終了したりするものではありません。現在のやり取りを止め、可能な場合は通常の編集へ制御を戻します。
 
-:::single-choice{#emacs-cancel-pending-command}
-通常、現在の Emacs プロンプトまたは処理中のコマンドを取り消すキーはどれですか？
+:::single-choice{#emacs-cancel-pending-command} 通常、現在の Emacs プロンプトまたは処理中のコマンドを取り消すキーはどれですか？
 
 ::option[`C-x C-c`]{#emacs-cancel-exit explanation="これは現在のプロンプトだけを取り消さず、Emacs の終了手順を始めます。"}
 ::option[`C-y`]{#emacs-cancel-yank explanation="これはキルリングからテキストをヤンクし、コマンドを取り消しません。"}
@@ -98,8 +94,7 @@ C-/
 
 取り消しコマンドを繰り返すと、最近のバッファー変更を遡ります。カーソル移動だけなら、通常はバッファー変更ではありません。Emacs のバージョンや設定によっては `undo-redo` や高度な履歴ツールを利用できます。実際の取り消しとやり直しのキーバインドに `C-h k` を使い、ローカルの動作を確認してください。
 
-:::single-choice{#emacs-undo-change}
-最近の Emacs バッファー変更を取り消す標準的なキーバインドはどれですか？
+:::single-choice{#emacs-undo-change} 最近の Emacs バッファー変更を取り消す標準的なキーバインドはどれですか？
 
 ::option[`C-/`]{#emacs-undo-control-slash .correct explanation="`C-/` は標準的な undo のキーバインドで、一般的な設定では `C-_` と `C-x u` も使えます。"}
 ::option[`C-x C-s`]{#emacs-undo-save explanation="これは undo 履歴をたどらず、現在のバッファーを保存します。"}

@@ -30,8 +30,7 @@ $ su - operator
 
 完成目标用户特定的工作后，应退出这个子 shell。
 
-:::single-choice{#root-su-login-shell}
-哪个命令会请求以用户 `operator` 身份启动登录式 shell？
+:::single-choice{#root-su-login-shell} 哪个命令会请求以用户 `operator` 身份启动登录式 shell？
 
 ::option[`su - operator`]{#root-su-login-operator .correct explanation="连字符请求登录式 shell 行为，并为 `operator` 设置面向目标用户的环境。"}
 ::option[`su operator`]{#root-su-preserve-environment explanation="这会切换到目标身份，但不会请求本课介绍的完整登录式初始化。"}
@@ -50,8 +49,7 @@ $ sudo -u postgres id
 
 在可行时，优先提升一个范围明确的管理命令，而不是开启长期存在的特权 shell。较小的范围能降低意外命令在提升权限下运行的可能性。
 
-:::single-choice{#root-sudo-target-user}
-`sudo -u postgres id` 请求什么？
+:::single-choice{#root-sudo-target-user} `sudo -u postgres id` 请求什么？
 
 ::option[把当前账户永久重命名为 `postgres`。]{#root-sudo-rename explanation="`sudo` 使用目标凭据运行命令，不会重命名账户记录。"}
 ::option[在策略允许的前提下，以 `postgres` 为目标用户运行 `id`。]{#root-sudo-postgres-id .correct explanation="`-u` 选项选择目标身份，而 sudoers 策略决定请求是否获准。"}
@@ -64,8 +62,7 @@ $ sudo -u postgres id
 
 审计行为取决于配置。`sudo` 通常记录调用，但一次已记录的 shell 启动不会自动提供在该 shell 中输入的每个命令的完整记录。Shell 历史、系统审计和 sudo I/O 日志是各自拥有独立策略的不同机制。
 
-:::single-choice{#root-persistent-shell-risk}
-为什么长期存在的 root shell 比一次提升一个已理解命令的风险更高？
+:::single-choice{#root-persistent-shell-risk} 为什么长期存在的 root shell 比一次提升一个已理解命令的风险更高？
 
 ::option[Root shell 会自动从所有审计系统中删除每个命令。]{#root-shell-no-audit explanation="日志行为因配置而异，声称所有审计记录都会自动清除并不准确。"}
 ::option[该 shell 会禁用包含多于一个组成部分的文件系统路径。]{#root-shell-path-limit explanation="特权不会施加这种路径限制；问题在于普通操作会获得更大权限。"}
@@ -82,8 +79,7 @@ $ sudo -l
 
 请审查命令路径、获准的目标用户和参数限制。看起来范围较广的规则，也不应被视为执行无关工作的许可。
 
-:::single-choice{#root-list-sudo-rules}
-哪个命令会列出当前调用用户可用的 sudo 权限？
+:::single-choice{#root-list-sudo-rules} 哪个命令会列出当前调用用户可用的 sudo 权限？
 
 ::option[`sudo -i`]{#root-sudo-login explanation="这会请求目标用户的登录式 shell，并可能扩大权限范围；它不是只读策略列表。"}
 ::option[`sudo -l`]{#root-sudo-list .correct explanation="小写 `-l` 选项要求 sudo 列出当前策略允许的命令。"}
@@ -108,8 +104,7 @@ $ sudo visudo -f /etc/sudoers.d/application-admins
 
 不要使用普通重定向或未经验证的编辑器流程编辑 sudoers。语法或权限错误可能导致管理访问失效。远程更改授权时，应保留另一条经过验证的恢复路径。
 
-:::single-choice{#root-edit-sudoers-safely}
-应使用哪个工具编辑并检查主要 sudoers 策略的语法？
+:::single-choice{#root-edit-sudoers-safely} 应使用哪个工具编辑并检查主要 sudoers 策略的语法？
 
 ::option[`cat`]{#root-cat-sudoers explanation="`cat` 可以显示可读文本，但不会安全编辑、锁定或验证 sudoers 语法。"}
 ::option[`visudo`]{#root-visudo .correct explanation="`visudo` 提供专为 sudoers 策略更改设计的锁定和语法验证。"}

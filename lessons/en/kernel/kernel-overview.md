@@ -18,8 +18,7 @@ Processors execute instructions, memory stores active state, and controllers con
 
 The kernel initializes and controls these resources through architecture code and device drivers. It handles interrupts, DMA coordination, timers, and power-management events while enforcing access boundaries between workloads.
 
-:::single-choice{#kernel-overview-hardware-manager}
-Which layer normally coordinates device drivers and hardware interrupts on Linux?
+:::single-choice{#kernel-overview-hardware-manager} Which layer normally coordinates device drivers and hardware interrupts on Linux?
 
 ::option[Each user's shell history file.]{#kernel-overview-shell-history explanation="History records commands and does not handle hardware execution."}
 ::option[The package repository index.]{#kernel-overview-repository-index explanation="Repository metadata describes software packages rather than live hardware events."}
@@ -39,8 +38,7 @@ Major responsibilities include:
 
 Linux is commonly described as a monolithic kernel because core services and many drivers execute in one privileged kernel address space. It is also modular: supported components can be loaded and unloaded as kernel modules. A bug in privileged kernel code can compromise the entire system, which makes kernel updates and module provenance security-critical.
 
-:::single-choice{#kernel-overview-scheduler-role}
-What does the kernel scheduler manage?
+:::single-choice{#kernel-overview-scheduler-role} What does the kernel scheduler manage?
 
 ::option[Which documentation page a user reads next.]{#kernel-overview-documentation explanation="Learning navigation is outside kernel scheduling."}
 ::option[Which runnable threads receive CPU execution time.]{#kernel-overview-thread-scheduling .correct explanation="The scheduler selects execution contexts according to policy, priority, affinity, and CPU availability."}
@@ -55,8 +53,7 @@ Processes request kernel work through system calls and interact with exposed int
 
 User-space root is highly authorized by policy but still normally executes in processor user mode. User identity and CPU privilege mode are separate concepts.
 
-:::single-choice{#kernel-overview-root-user-mode}
-Does a normal root-owned application execute all its instructions in kernel mode?
+:::single-choice{#kernel-overview-root-user-mode} Does a normal root-owned application execute all its instructions in kernel mode?
 
 ::option[Yes; UID 0 permanently changes every instruction to ring 0.]{#kernel-overview-root-ring-zero explanation="An ordinary root process remains a user-space process."}
 ::option[Yes; root applications become loadable kernel modules automatically.]{#kernel-overview-root-module explanation="A user executable is not transformed into kernel code by its owner UID."}
@@ -69,8 +66,7 @@ The kernel presents virtual processes, files, sockets, and address spaces rather
 
 When troubleshooting, ask which layer owns the behavior: application, library, system-call interface, filesystem, driver, kernel subsystem, firmware, or hardware. Evidence from the wrong layer can lead to incorrect fixes.
 
-:::single-choice{#kernel-overview-system-call-boundary}
-What is a system call?
+:::single-choice{#kernel-overview-system-call-boundary} What is a system call?
 
 ::option[A controlled request from user space for a kernel service.]{#kernel-overview-controlled-request .correct explanation="The processor enters kernel mode at a defined interface, where the kernel validates and performs the operation."}
 ::option[A direct command that bypasses every access-control check.]{#kernel-overview-bypass-checks explanation="System calls are precisely where many validation and authorization checks occur."}

@@ -37,8 +37,7 @@ $ umask 027
 
 每个八进制位置分别对应所有者、组和其他。掩码位会移除相应的已请求权限：`2` 掩蔽写入，`4` 掩蔽读取，`1` 掩蔽执行。
 
-:::single-choice{#umask-command-purpose}
-`umask 027` 会在当前 shell 中更改什么？
+:::single-choice{#umask-command-purpose} `umask 027` 会在当前 shell 中更改什么？
 
 ::option[每个已经存在的文件的权限。]{#umask-existing-files explanation="umask 影响创建请求，不会追溯性地对现有对象运行 `chmod`。"}
 ::option[之后从该 shell 启动的命令所继承的掩码。]{#umask-current-shell-mask .correct explanation="shell 会设置自己的进程 umask，子进程通常继承该值。"}
@@ -58,16 +57,14 @@ $ umask 027
 
 umask 只会移除已请求的权限位。如果应用程序没有请求执行权限，它不能添加该权限。应用程序也可以请求更严格的起始模式，从而产生更严格的结果。
 
-:::single-choice{#umask-file-mode-022}
-如果程序为普通文件请求模式 `0666`，umask 为 `0022`，结果是哪种模式？
+:::single-choice{#umask-file-mode-022} 如果程序为普通文件请求模式 `0666`，umask 为 `0022`，结果是哪种模式？
 
 ::option[`0666`]{#umask-file-0666 explanation="`0666` 请求的组和其他写入位会被掩码 `0022` 移除。"}
 ::option[`0755`]{#umask-file-0755 explanation="普通文件没有请求执行位，因此 umask 无法添加它们。"}
 ::option[`0644`]{#umask-file-0644 .correct explanation="从 `0666` 移除组和其他写入后，会留下所有者读写以及组和其他只读。"}
 :::
 
-:::single-choice{#umask-directory-mode-027}
-如果程序为目录请求 `0777`，umask 为 `0027`，结果是哪种模式？
+:::single-choice{#umask-directory-mode-027} 如果程序为目录请求 `0777`，umask 为 `0027`，结果是哪种模式？
 
 ::option[`0777`]{#umask-directory-0777 explanation="非零掩码会筛掉已请求的组写入和其他权限。"}
 ::option[`0640`]{#umask-directory-0640 explanation="该结果还移除了掩码 `0027` 并未从所有者或组移除的执行位。"}
@@ -80,8 +77,7 @@ umask 只会移除已请求的权限位。如果应用程序没有请求执行�
 
 要持久使用首选值，应在适合当前环境的登录、shell、PAM、服务管理器或应用程序配置中设置它。正确位置各不相同，服务也可能自行设置 umask。不要假设编辑一个交互式 shell 文件就能控制系统中的每个进程。
 
-:::single-choice{#umask-existing-file-effect}
-设置新的 umask 时，现有文件会发生什么？
+:::single-choice{#umask-existing-file-effect} 设置新的 umask 时，现有文件会发生什么？
 
 ::option[其当前模式保持不变。]{#umask-existing-unchanged .correct explanation="新 umask 会筛选之后的创建请求，不会修改已经存储在文件系统对象上的模式。"}
 ::option[其模式会根据 `0666` 重新计算。]{#umask-existing-recalculated explanation="现有对象不会被重新创建，也不会自动通过新掩码处理。"}

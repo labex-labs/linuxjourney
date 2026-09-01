@@ -25,8 +25,7 @@ $ ls -l /path/to/program
 
 커널이 실행 중 이 비트를 적용하면 프로세스는 실행 파일의 그룹 소유자를 기준으로 한 유효 그룹 ID를 받습니다. `nosuid` 마운트 같은 제어가 동작을 억제할 수 있으며 모든 파일 형식이나 환경에 대한 보편적인 보장으로 다루면 안 됩니다.
 
-:::single-choice{#setgid-executable-effect}
-실행 파일의 setgid가 적용될 때 실행 파일의 그룹 소유자에서 가져오는 자격 증명은 무엇인가요?
+:::single-choice{#setgid-executable-effect} 실행 파일의 setgid가 적용될 때 실행 파일의 그룹 소유자에서 가져오는 자격 증명은 무엇인가요?
 
 ::option[프로세스의 유효 그룹 ID]{#setgid-effective-group .correct explanation="Set-group-ID 실행은 실행 파일 소유자의 그룹을 프로세스의 유효 그룹 신원으로 설정합니다."}
 ::option[프로세스의 실제 사용자 ID]{#setgid-real-user explanation="이 비트는 호출자의 실제 사용자 신원이 아니라 그룹 자격 증명을 다룹니다."}
@@ -46,8 +45,7 @@ $ ls -ld /srv/project
 drwxr-sr-x 2 root developers 4096 Jan 10 09:30 /srv/project
 ```
 
-:::single-choice{#setgid-directory-inheritance}
-`/srv/project`의 setgid는 일반적으로 새로 만든 파일이 무엇을 상속하게 하나요?
+:::single-choice{#setgid-directory-inheritance} `/srv/project`의 setgid는 일반적으로 새로 만든 파일이 무엇을 상속하게 하나요?
 
 ::option[디렉터리의 사용자 소유자]{#setgid-inherit-user explanation="디렉터리 setgid는 새 항목의 사용자 소유자가 아니라 그룹 상속에 영향을 줍니다."}
 ::option[디렉터리의 전체 권한 모드]{#setgid-inherit-mode explanation="생성 권한은 여전히 요청 모드, umask 및 ACL에서 계산됩니다."}
@@ -70,8 +68,7 @@ $ sudo chmod 2755 myfile
 
 `chmod g-s myfile`로 특수 비트만 제거합니다.
 
-:::single-choice{#setgid-octal-value}
-Setgid가 선행 특수 비트 8진수 숫자에 더하는 값은 무엇인가요?
+:::single-choice{#setgid-octal-value} Setgid가 선행 특수 비트 8진수 숫자에 더하는 값은 무엇인가요?
 
 ::option[`4`]{#setgid-value-four explanation="`4`는 특수 비트 숫자에서 setuid를 나타냅니다."}
 ::option[`1`]{#setgid-value-one explanation="`1`은 sticky 비트를 나타냅니다."}
@@ -82,8 +79,7 @@ Setgid가 선행 특수 비트 8진수 숫자에 더하는 값은 무엇인가�
 
 협업 디렉터리에는 의도한 그룹 소유자, setgid, 좁게 선택한 접근 비트를 결합합니다. 대표 사용자로 생성을 시험하고 `ls -ld`로 결과를 확인하세요. 그룹 공유 문제를 해결하려고 트리를 모두에게 쓰기 가능하게 만들지 마세요. 전용 그룹, 적절한 umask나 기본 ACL, setgid 디렉터리가 일반적으로 더 명확한 제어를 제공합니다.
 
-:::single-choice{#setgid-directory-write-access}
-Setgid만 설정하면 그룹 구성원이 디렉터리에 파일을 만들 수 있나요?
+:::single-choice{#setgid-directory-write-access} Setgid만 설정하면 그룹 구성원이 디렉터리에 파일을 만들 수 있나요?
 
 ::option[예. setgid는 항상 그룹 읽기, 쓰기, 실행을 추가합니다.]{#setgid-adds-rwx explanation="특수 비트는 일반 그룹 권한 비트 세 개를 자동으로 바꾸지 않습니다."}
 ::option[예. setgid는 그룹 구성원에 대한 모든 검사를 비활성화합니다.]{#setgid-disables-checks explanation="일반 임의 접근 검사와 추가 보안 검사는 계속 적용됩니다."}

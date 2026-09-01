@@ -16,8 +16,7 @@ Ubuntu は、最も広く使われる Linux ディストリビューションの
 
 手動作業の多い高度な設定から始めず Linux を学びたい人の一般的な出発点です。個人用コンピューター、開発システム、クラウド、サーバーで使われ、ほかのディストロには少ない広がりを持ちます。
 
-:::single-choice{#identify-ubuntu-base}
-Ubuntu の基盤となるディストリビューションはどれですか？
+:::single-choice{#identify-ubuntu-base} Ubuntu の基盤となるディストリビューションはどれですか？
 
 ::option[Debian ディストリビューション]{#debian-base .correct explanation="Ubuntu は Debian を基にし、そのパッケージ方式の多くを引き継ぎつつ、独自のリリース、既定値、サポートモデルを追加します。"}
 ::option[Fedora ディストリビューション]{#ubuntu-fedora-base explanation="Fedora は Red Hat エコシステムに属し、Ubuntu の基盤ではありません。Ubuntu は Debian 系です。"}
@@ -30,8 +29,7 @@ Ubuntu は Linux を日常利用しやすくすることを目指します。洗
 
 ノート PC、デスクトップ、仮想マシン、サーバー、クラウドなど多様な環境で動くことも、汎用ディストリビューションとしての評価を強めています。
 
-:::single-choice{#recognize-beginner-support}
-初心者の問題解決に最も直接役立つ Ubuntu の特性はどれですか？
+:::single-choice{#recognize-beginner-support} 初心者の問題解決に最も直接役立つ Ubuntu の特性はどれですか？
 
 ::option[導入する各プログラムで手動コンパイルが必須]{#manual-compilation explanation="通常はパッケージ化されたソフトウェアを提供し、毎回手動コンパイルを要求しません。追加作業は問題解決を簡単にしません。"}
 ::option[充実した文書と大きなユーザーコミュニティ]{#documentation-community .correct explanation="文書とコミュニティの議論から説明や問題解決方法を見つけやすく、学習の障壁を下げます。"}
@@ -50,8 +48,7 @@ Ubuntu には主に2種類のリリースがあります。6か月ごとに新�
 
 信頼できる基盤が欲しい人は LTS を、新しい機能が欲しい人は短い間隔で登場する中間リリースを選べます。
 
-:::single-choice{#choose-ubuntu-lts}
-長く使え、予測可能な基盤が必要なシステムに最も適した Ubuntu リリースはどれですか？
+:::single-choice{#choose-ubuntu-lts} 長く使え、予測可能な基盤が必要なシステムに最も適した Ubuntu リリースはどれですか？
 
 ::option[中間リリース]{#interim-release explanation="中間リリースは頻繁に登場し新機能を早く提供しますが、短いサポート期間は要件に合いません。"}
 ::option[LTS リリース]{#lts-release .correct explanation="LTS は長期サポートを目的とし、信頼できる基盤を重視するシステムでよく選ばれます。"}
@@ -64,8 +61,7 @@ Debian ベースの Ubuntu は `.deb` パッケージ形式と `apt` パッケ�
 
 成熟した Debian のツールと、広く文書化された環境を組み合わせるパッケージ管理は、Ubuntu の実用的な強みです。
 
-:::single-choice{#identify-ubuntu-package-tool}
-Ubuntu でソフトウェアを導入するパッケージ管理ツールはどれですか？
+:::single-choice{#identify-ubuntu-package-tool} Ubuntu でソフトウェアを導入するパッケージ管理ツールはどれですか？
 
 ::option[`.deb`]{#deb-format explanation=".deb は Debian ベースシステムのパッケージ形式で、コマンドラインの管理ツールではありません。"}
 ::option[`LTS`]{#lts-label explanation="LTS は長期サポートリリースを示し、パッケージを導入・管理しません。"}

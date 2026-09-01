@@ -24,8 +24,7 @@ Einträge können physischen Speicher, Terminals, Eingabeschnittstellen, logisch
 
 Das erste Zeichen einer langen Auflistung bezeichnet den Typ des Dateisystemobjekts. Zeichen- und Blockgeräteknoten erscheinen als `c` beziehungsweise `b`; spätere Lektionen behandeln diese Typen und ihre Major- und Minor-Nummern.
 
-:::single-choice{#dev-directory-device-node-purpose}
-Was geschieht, wenn ein Programm einen Geräteknoten unter `/dev` öffnet?
+:::single-choice{#dev-directory-device-node-purpose} Was geschieht, wenn ein Programm einen Geräteknoten unter `/dev` öffnet?
 
 ::option[Es liest immer eine gewöhnliche Datei auf dem Datenträger, die eine Kopie der Hardware enthält.]{#dev-directory-ordinary-copy explanation="Ein Geräteknoten ist ein besonderes Objekt und speichert keine Kopie der Gerätedaten als gewöhnliche Datei."}
 ::option[Es greift auf eine von einem Kernel-Treiber implementierte Schnittstelle zu.]{#dev-directory-kernel-interface .correct explanation="Operationen am Geräteknoten werden über dessen Geräteidentität an das Verhalten des Kernel-Treibers weitergeleitet."}
@@ -42,8 +41,7 @@ $ command > /dev/null
 
 Weitere bekannte Beispiele sind `/dev/zero`, das Nullbytes erzeugt, und `/dev/urandom`, das Zufallsbytes über das Zufallssubsystem des Kernels bereitstellt. Jedes besitzt eine genau festgelegte Semantik; leite sein Verhalten nicht allein vom Dateinamen ab.
 
-:::single-choice{#dev-directory-null-behavior}
-Was macht `/dev/null` mit hineingeschriebenen Daten?
+:::single-choice{#dev-directory-null-behavior} Was macht `/dev/null` mit hineingeschriebenen Daten?
 
 ::option[Es speichert die Daten bis zum nächsten Neustart.]{#dev-directory-null-temporary-storage explanation="Das Nullgerät ist eine Senke und kein temporärer Speicher."}
 ::option[Es sendet die Daten an alle angemeldeten Terminals.]{#dev-directory-null-broadcast explanation="Das Senden an Terminals steht in keinem Zusammenhang mit dem Null-Pseudogerät."}
@@ -56,8 +54,7 @@ Auf modernen Linux-Systemen kann das vom Kernel gestützte `devtmpfs` grundlegen
 
 Dauerhafte Links wie Einträge unter `/dev/disk/by-id/` oder `/dev/disk/by-uuid/` können in Konfigurationen sicherer sein als von der Erkennungsreihenfolge abhängige Namen wie `/dev/sda`. Letztere können sich ändern, wenn sich Hardwaretopologie oder Erkennungsreihenfolge ändern.
 
-:::single-choice{#dev-directory-persistent-link}
-Warum kann ein Administrator in einer Konfiguration `/dev/disk/by-id/...` gegenüber `/dev/sda` bevorzugen?
+:::single-choice{#dev-directory-persistent-link} Warum kann ein Administrator in einer Konfiguration `/dev/disk/by-id/...` gegenüber `/dev/sda` bevorzugen?
 
 ::option[Der kennungsbasierte Link hängt weniger von der Erkennungsreihenfolge der Geräte ab.]{#dev-directory-stable-identifier .correct explanation="Dauerhafte Links werden aus Geräteeigenschaften abgeleitet und nicht aus einem bei der Aufzählung vergebenen Buchstaben."}
 ::option[Der Link sichert automatisch jeden Block des Geräts.]{#dev-directory-link-backup explanation="Ein symbolischer Link benennt dasselbe Gerät und erzeugt keine Sicherungsdaten."}
@@ -70,8 +67,7 @@ Standardwerkzeuge können Geräteknoten öffnen, doch beliebige Lese- und Schrei
 
 Verwende zuerst schreibgeschützte Erkundungswerkzeuge, bestätige den genauen Knoten und die Geräteidentität und folge der gerätespezifischen Dokumentation. Experimentiere auf einem wichtigen System niemals, indem du Daten in einen unbekannten Eintrag unter `/dev` umleitest.
 
-:::single-choice{#dev-directory-direct-write-risk}
-Warum solltest du keine beliebigen Daten in einen unbekannten Geräteknoten schreiben?
+:::single-choice{#dev-directory-direct-write-risk} Warum solltest du keine beliebigen Daten in einen unbekannten Geräteknoten schreiben?
 
 ::option[Jeder Geräteknoten ist garantiert eine harmlose Textdatei.]{#dev-directory-harmless-text explanation="Geräteknoten sind gerade keine gewöhnlichen Textdateien."}
 ::option[Der Vorgang kann sich direkt auf Hardware, Speicher oder eine andere Kernel-Schnittstelle auswirken.]{#dev-directory-write-impact .correct explanation="Schreibvorgänge auf Geräten rufen vom Treiber festgelegte Operationen auf und können zerstörerische oder störende Folgen haben."}

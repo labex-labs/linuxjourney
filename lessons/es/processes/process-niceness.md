@@ -22,8 +22,7 @@ El intervalo convencional de nice va de `-20` a `19`:
 
 Niceness no reserva un porcentaje de CPU ni garantiza una ejecución inmediata. Su efecto es más visible cuando tareas ejecutables comparables compiten por tiempo de CPU. Las políticas en tiempo real, los cgroups, la afinidad de CPU, las esperas de E/S y otros controles pueden dominar el comportamiento observado.
 
-:::single-choice{#process-niceness-lower-value}
-Bajo la misma política normal de planificación, ¿qué valor nice concede un mayor peso relativo de CPU?
+:::single-choice{#process-niceness-lower-value} Bajo la misma política normal de planificación, ¿qué valor nice concede un mayor peso relativo de CPU?
 
 ::option[`10`]{#process-niceness-value-ten explanation="Un valor positivo es más amable y normalmente tiene menos peso que cero o un valor negativo."}
 ::option[`19`]{#process-niceness-value-nineteen explanation="Este es el extremo más amable del intervalo convencional y tiene un peso relativamente bajo."}
@@ -40,8 +39,7 @@ $ ps -o pid,ni,pri,stat,cmd -p 3245
 
 `NI` es el valor nice visible para el usuario. Una columna `PRI` o similar puede ser una prioridad derivada del planificador y su escala varía según la herramienta y la clase de planificación, así que no supongas que ambas columnas son intercambiables.
 
-:::single-choice{#process-niceness-top-column}
-¿Qué columna de `top` suele mostrar el valor nice?
+:::single-choice{#process-niceness-top-column} ¿Qué columna de `top` suele mostrar el valor nice?
 
 ::option[`PID`]{#process-niceness-column-pid explanation="`PID` identifica un proceso en vez de mostrar su ajuste de planificación."}
 ::option[`TTY`]{#process-niceness-column-tty explanation="`TTY` identifica una asociación con una terminal de control."}
@@ -58,8 +56,7 @@ $ nice -n 5 long-computation
 
 Puedes consultar en el manual local el ajuste solicitado y la sintaxis aceptada. Un usuario sin privilegios suele poder hacer una orden más amable aumentando su valor. Concederle un valor nice menor y, por tanto, un peso de planificación más favorable, requiere los privilegios apropiados o límites de recursos configurados.
 
-:::single-choice{#process-niceness-nice-command}
-¿Qué hace `nice -n 5 long-computation`?
+:::single-choice{#process-niceness-nice-command} ¿Qué hace `nice -n 5 long-computation`?
 
 ::option[Inicia la orden con el valor nice 5, si está permitido.]{#process-niceness-start-five .correct explanation="`nice` inicia una orden nueva con el ajuste de planificación solicitado."}
 ::option[Cambia el PID 5 al valor nice más bajo posible.]{#process-niceness-pid-five explanation="El operando posterior a `-n` es un valor nice, no un PID de destino."}
@@ -76,8 +73,7 @@ $ renice -n 10 -p 3245
 
 Esto solicita el valor nice `10` para el PID `3245`. Verifica primero el destino porque los PID pueden reutilizarse y confirma después el valor resultante. Los permisos dependen de la propiedad, los privilegios, los límites de recursos y la política del sistema. Aumentar el valor nice suele estar permitido para un proceso propio; revertir ese cambio puede no estarlo sin privilegios.
 
-:::single-choice{#process-niceness-renice-purpose}
-¿Qué herramienta cambia el valor nice de un proceso existente?
+:::single-choice{#process-niceness-renice-purpose} ¿Qué herramienta cambia el valor nice de un proceso existente?
 
 ::option[`nice`]{#process-niceness-tool-nice explanation="`nice` se usa principalmente para iniciar una orden nueva con un valor ajustado."}
 ::option[`kill`]{#process-niceness-tool-kill explanation="`kill` envía señales y no es el editor normal de niceness."}

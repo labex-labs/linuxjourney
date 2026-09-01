@@ -22,8 +22,7 @@ $ iostat -xz 1
 
 일반적인 구현에서 첫 보고서는 부팅 이후의 평균을 포함하고 이후 보고서는 각 구간을 다룹니다. `-x` 옵션은 확장 필드를 추가하고 `-z`는 비활성 장치를 숨깁니다. 정상 구간과 문제 구간을 포착하도록 여러 구간을 관찰하십시오.
 
-:::single-choice{#iostat-first-report}
-첫 번째 `iostat` 보고서는 일반적으로 무엇을 나타냅니까?
+:::single-choice{#iostat-first-report} 첫 번째 `iostat` 보고서는 일반적으로 무엇을 나타냅니까?
 
 ::option[명령의 마지막 1초 동안의 작업만 나타냅니다.]{#iostat-final-second explanation="초기 누적 보고서를 설명하지 않습니다."}
 ::option[시스템 부팅 이후의 활동 평균입니다.]{#iostat-since-boot .correct explanation="이후 보고서는 일반적으로 구간별이므로 첫 보고서는 별도로 해석해야 합니다."}
@@ -34,8 +33,7 @@ $ iostat -xz 1
 
 CPU 섹션에는 일반적으로 사용자(`%user`), 시스템(`%system`), 유휴(`%idle`), 입출력 대기(`%iowait`) 및 가상 머신 스틸(`%steal`) 시간이 포함됩니다. 입출력 대기는 처리되지 않은 입출력 요청이 있는 동안의 CPU 유휴 시간이며 디스크가 바쁜 시간의 백분율이 아닙니다.
 
-:::single-choice{#iostat-iowait-meaning}
-`%iowait`가 설명하는 것은 무엇입니까?
+:::single-choice{#iostat-iowait-meaning} `%iowait`가 설명하는 것은 무엇입니까?
 
 ::option[이미 채워진 디스크 용량의 백분율입니다.]{#iostat-capacity explanation="파일 시스템 용량과 CPU 시간은 서로 다른 측정값입니다."}
 ::option[처리되지 않은 입출력 요청이 있는 동안의 CPU 유휴 시간입니다.]{#iostat-iowait-cpu .correct explanation="CPU 시간 범주이므로 그 자체로 장치를 식별할 수 없습니다."}
@@ -53,8 +51,7 @@ CPU 섹션에는 일반적으로 사용자(`%user`), 시스템(`%system`), 유�
 
 단순한 직렬 장치에서 높은 `%util`은 포화를 나타낼 수 있지만 병렬 저장 장치, 배열 또는 가상 장치의 성능 용량으로 직접 변환되지는 않습니다. 지연을 장치 설계, 작업 부하 패턴 및 서비스 목표와 비교하십시오.
 
-:::single-choice{#iostat-await-purpose}
-평균 입출력 요청 지연과 가장 직접적으로 관련된 필드는 무엇입니까?
+:::single-choice{#iostat-await-purpose} 평균 입출력 요청 지연과 가장 직접적으로 관련된 필드는 무엇입니까?
 
 ::option[장치 이름입니다.]{#iostat-device-name explanation="이름은 장치를 식별하지만 요청 시간을 측정하지 않습니다."}
 ::option[`await`]{#iostat-await .correct explanation="await는 대기열 및 서비스 시간을 포함한 요청의 평균 시간을 반영합니다."}
@@ -72,8 +69,7 @@ $ findmnt
 
 그런 다음 `iostat` 구간을 애플리케이션 응답 시간, 데이터베이스 또는 파일 시스템 지표 및 프로세스 수준 입출력과 연결합니다. 장치 매퍼, RAID, 컨테이너 및 네트워크 기반 저장 장치는 고유 도구가 필요한 계층을 추가할 수 있습니다.
 
-:::single-choice{#iostat-high-util-conclusion}
-장치에서 높은 `%util`을 본 뒤 무엇을 해야 합니까?
+:::single-choice{#iostat-high-util-conclusion} 장치에서 높은 `%util`을 본 뒤 무엇을 해야 합니까?
 
 ::option[모든 파일 시스템에 여유 공간이 없다고 가정합니다.]{#iostat-assume-full explanation="바쁜 시간은 파일 시스템 용량을 보고하지 않습니다."}
 ::option[마운트된 작업 부하를 식별하기 전에 파일을 삭제합니다.]{#iostat-delete-first explanation="삭제는 입출력 병목을 증명하는 것과 관련 없는 상태 변경 작업입니다."}

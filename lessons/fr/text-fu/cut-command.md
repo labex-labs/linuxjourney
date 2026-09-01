@@ -44,8 +44,7 @@ bb
 
 Espaces, tabulations et ponctuation occupent aussi des positions. Chaque ligne est traitée séparément.
 
-:::single-choice{#cut-first-character}
-Quelle commande affiche le premier caractère de chaque ligne de `names.txt` ?
+:::single-choice{#cut-first-character} Quelle commande affiche le premier caractère de chaque ligne de `names.txt` ?
 
 ::option[`cut -c 1 names.txt`]{#cut-character-one .correct explanation="`-c` sélectionne les positions de caractères et 1 désigne la première."}
 ::option[`cut -f 1 names.txt`]{#cut-field-one explanation="`-f` sélectionne le premier champ séparé par une tabulation."}
@@ -65,8 +64,7 @@ viewer
 
 Une liste peut prendre des formes comme `1`, `1,3`, `2-4`, `-3` ou `2-`.
 
-:::single-choice{#cut-second-tab-field}
-Quelle commande affiche le deuxième champ de chaque ligne de `team.tsv` ?
+:::single-choice{#cut-second-tab-field} Quelle commande affiche le deuxième champ de chaque ligne de `team.tsv` ?
 
 ::option[`cut -c 2 team.tsv`]{#cut-second-character explanation="Cette forme sélectionne le deuxième caractère."}
 ::option[`cut -f 2 team.tsv`]{#cut-second-field .correct explanation="Sans `-d`, le mode champ emploie une tabulation et `-f 2` choisit le deuxième champ."}
@@ -86,8 +84,7 @@ bob
 
 Le délimiteur est ici un caractère. Citez `;`, car il possède un sens de contrôle dans le shell.
 
-:::single-choice{#cut-semicolon-role-field}
-Quelle commande affiche le deuxième champ délimité par un point-virgule dans `team.txt` ?
+:::single-choice{#cut-semicolon-role-field} Quelle commande affiche le deuxième champ délimité par un point-virgule dans `team.txt` ?
 
 ::option[`cut -d ':' -f 2 team.txt`]{#cut-colon-second explanation="Cette forme cherche des deux-points, pas des points-virgules."}
 ::option[`cut -d ';' -f 2 team.txt`]{#cut-semicolon-second .correct explanation="Le point-virgule cité devient le délimiteur et `-f 2` choisit le second champ."}
@@ -106,8 +103,7 @@ viewer
 
 Cela ne suffit pas à analyser un CSV général, qui peut contenir délimiteurs cités, retours à la ligne et échappements. Utilisez alors un outil compatible CSV.
 
-:::single-choice{#cut-suppress-undelimited}
-Que fait `-s` avec `cut -d ':' -f 1` ?
+:::single-choice{#cut-suppress-undelimited} Que fait `-s` avec `cut -d ':' -f 1` ?
 
 ::option[Il trie les champs sélectionnés.]{#cut-s-sort explanation="`cut` ne trie pas et `-s` ne concerne pas l'ordre."}
 ::option[Il regroupe les délimiteurs consécutifs.]{#cut-s-squeeze explanation="Les champs vides restent des positions significatives."}
@@ -124,8 +120,7 @@ red
 blue
 ```
 
-:::single-choice{#cut-pipeline-input}
-Dans `generate-data | cut -d ':' -f 1`, où `cut` lit-il son entrée ?
+:::single-choice{#cut-pipeline-input} Dans `generate-data | cut -d ':' -f 1`, où `cut` lit-il son entrée ?
 
 ::option[Dans stdout de `generate-data`, par le tube.]{#cut-pipe-stdin .correct explanation="Le tube relie stdout du producteur à stdin de `cut`."}
 ::option[Dans un fichier nommé `generate-data`.]{#cut-pipe-file explanation="`generate-data` est exécutée comme commande de gauche."}

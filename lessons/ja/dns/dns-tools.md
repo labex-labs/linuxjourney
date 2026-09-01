@@ -29,8 +29,7 @@ $ resolvectl query www.example.com
 
 アプリケーションが独自 resolver library や proxy を使う場合もあるため、出力が異なるときはアプリケーション経由でも再現してください。
 
-:::single-choice{#dns-tools-system-resolver}
-設定されたシステムの名前サービス経路を動かすコマンドはどれですか？
+:::single-choice{#dns-tools-system-resolver} 設定されたシステムの名前サービス経路を動かすコマンドはどれですか？
 
 ::option[`dig @SERVER NAME` だけ。]{#dns-tools-dig-direct explanation="dig は DNS 問い合わせを送り、通常 hosts ファイルの対応付けを読みません。"}
 ::option[`ip link set down`]{#dns-tools-link-down explanation="名前解決をテストせず、インターフェースを中断します。"}
@@ -49,8 +48,7 @@ $ dig example.com MX
 
 出力には応答サーバー、status、flag、question、answer、authority、additional data、query time、transport metadata が示されます。`+short` はスクリプトに便利ですが、診断に必要な証拠を隠します。
 
-:::single-choice{#dns-tools-record-type}
-IPv6 address レコードを要求する問い合わせはどれですか？
+:::single-choice{#dns-tools-record-type} IPv6 address レコードを要求する問い合わせはどれですか？
 
 ::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="AAAA レコードは IPv6 アドレスを含みます。"}
 ::option[`dig NAME MX`]{#dns-tools-mx explanation="MX は mail exchanger レコードを要求します。"}
@@ -67,8 +65,7 @@ $ dig @192.0.2.53 www.example.com A
 
 cache と authority を切り分けるときは、設定済み recursive resolver、承認済みの二つ目の resolver、各 authoritative server を比較します。`NOERROR` status でも要求した answer がない場合があります。`NXDOMAIN` は問い合わせた名前が存在しないこと、`SERVFAIL` はサーバーが問い合わせを完了できなかったことを意味します。
 
-:::single-choice{#dns-tools-noerror-empty}
-`NOERROR` でも answer section が空になることはありますか？
+:::single-choice{#dns-tools-noerror-empty} `NOERROR` でも answer section が空になることはありますか？
 
 ::option[はい。名前は存在するが、要求したレコードデータがない場合です。]{#dns-tools-noerror-nodata .correct explanation="status と answer count を一緒に解釈する必要があります。"}
 ::option[いいえ。少なくとも一つの address レコードが必ずあります。]{#dns-tools-noerror-always-answer explanation="名前が存在しても、要求した type のデータがない場合があります。"}
@@ -81,8 +78,7 @@ cache と authority を切り分けるときは、設定済み recursive resolve
 
 `dig +trace NAME` は root hint から独自に反復探索します。production resolver の cache、forwarding、policy、DNSSEC validation、network location を通らないため、その resolver とは結果が異なる場合があります。
 
-:::single-choice{#dns-tools-aa-flag}
-応答の `aa` flag は何を意味しますか？
+:::single-choice{#dns-tools-aa-flag} 応答の `aa` flag は何を意味しますか？
 
 ::option[問い合わせが同じ二つの IPv4 アドレスを使った。]{#dns-tools-two-addresses explanation="この flag は answer count や address family と無関係です。"}
 ::option[応答がアプリケーションの認証情報で暗号化された。]{#dns-tools-aa-encrypted explanation="DNS flag は暗号化トランスポートを証明しません。"}
@@ -105,8 +101,7 @@ $ dig +tcp @192.0.2.53 example.com SOA
 
 現代の DNS は UDP または TCP のポート 53 を使えます。必要な場所では両方を許可すべきです。UDP answer に truncation flag があると、準拠クライアントは適切なトランスポートで再試行します。
 
-:::single-choice{#dns-tools-tcp-test}
-`dig +tcp` は何を変更しますか？
+:::single-choice{#dns-tools-tcp-test} `dig +tcp` は何を変更しますか？
 
 ::option[既定の UDP 試行ではなく、TCP で DNS 問い合わせを送る。]{#dns-tools-use-tcp .correct explanation="トランスポートのフィルタリングと、大きな信頼性のある stream を要する応答を切り分けるのに役立ちます。"}
 ::option[TCP のサービス名レコードだけを要求する。]{#dns-tools-tcp-records explanation="要求する DNS type は別途指定します。"}

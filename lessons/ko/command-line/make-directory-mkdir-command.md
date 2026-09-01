@@ -28,8 +28,7 @@ $ mkdir documents
 
 `documents`라는 항목이 이미 있으면 `mkdir`는 이를 교체하지 않고 오류를 표시합니다. `ls -ld documents`로 기존 항목을 확인할 수 있습니다.
 
-:::single-choice{#create-one-directory}
-현재 작업 디렉터리에 `documents`라는 디렉터리를 만드는 명령어는 무엇인가요?
+:::single-choice{#create-one-directory} 현재 작업 디렉터리에 `documents`라는 디렉터리를 만드는 명령어는 무엇인가요?
 
 ::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir`는 상대 경로 `documents`에 요청한 디렉터리를 만듭니다."}
 ::option[`touch documents`]{#touch-documents explanation="`touch`는 경로가 없을 때 빈 일반 파일을 만들며 디렉터리를 만들지 않습니다."}
@@ -44,8 +43,7 @@ $ mkdir documents
 $ mkdir books paintings
 ```
 
-:::single-choice{#create-separate-directories}
-`books`와 `paintings`라는 형제 디렉터리 두 개를 만드는 명령어는 무엇인가요?
+:::single-choice{#create-separate-directories} `books`와 `paintings`라는 형제 디렉터리 두 개를 만드는 명령어는 무엇인가요?
 
 ::option[`mkdir books/paintings`]{#nested-paintings explanation="이 경로는 형제 디렉터리 둘이 아니라 `books` 안의 `paintings`를 뜻하며 `books`가 없으면 실패합니다."}
 ::option[`mkdir "books paintings"`]{#spaced-directory explanation="따옴표가 두 단어를 한 경로로 묶어 공백이 든 디렉터리 하나를 요청합니다."}
@@ -62,8 +60,7 @@ $ mkdir -p books/hemingway/favorites
 
 이 명령어는 경로에서 없는 부분을 모두 만듭니다. 마지막 디렉터리가 이미 있다는 이유만으로 오류를 내지는 않지만 권한 부족 같은 다른 오류는 여전히 발생할 수 있습니다.
 
-:::single-choice{#create-nested-path}
-`projects/app/src` 중 어느 디렉터리도 아직 없습니다. 전체 경로를 만드는 명령어는 무엇인가요?
+:::single-choice{#create-nested-path} `projects/app/src` 중 어느 디렉터리도 아직 없습니다. 전체 경로를 만드는 명령어는 무엇인가요?
 
 ::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="`-p`는 마지막 디렉터리를 만들기 전에 없는 각 상위 디렉터리를 만듭니다."}
 ::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="`-p`가 없으면 중간 디렉터리가 존재하지 않을 때 `src`를 만들 수 없습니다."}
@@ -89,8 +86,7 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-:::single-choice{#set-directory-mode}
-권한 모드 `755`로 `public`을 만드는 명령어는 무엇인가요?
+:::single-choice{#set-directory-mode} 권한 모드 `755`로 `public`을 만드는 명령어는 무엇인가요?
 
 ::option[`mkdir -p 755 public`]{#parents-755 explanation="`-p`는 남은 단어를 디렉터리 경로로 처리하므로 권한 모드 `755`를 설정하지 않습니다."}
 ::option[`mkdir -v 755 public`]{#verbose-755 explanation="`-v`는 생성 메시지를 출력할 뿐 `755`를 권한 모드로 해석하지 않습니다."}

@@ -23,8 +23,7 @@ $ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
 
 Los registros de las aplicaciones pueden residir en sus propios subdirectorios o en un servicio externo. Los registros de autenticación, auditoría, paquetes, bases de datos y servidores web pueden estar separados deliberadamente del flujo general.
 
-:::single-choice{#general-logs-universal-file}
-¿Por qué no debes suponer que `/var/log/messages` existe en todas las máquinas Linux?
+:::single-choice{#general-logs-universal-file} ¿Por qué no debes suponer que `/var/log/messages` existe en todas las máquinas Linux?
 
 ::option[Los destinos de los registros generales dependen de los recolectores locales y de la política de enrutamiento.]{#general-logs-local-routing .correct explanation="Un sistema que solo use el diario o una configuración de syslog distinta puede utilizar otros destinos."}
 ::option[Linux solo permite un archivo de registro en cada disco.]{#general-logs-one-file explanation="Los sistemas mantienen habitualmente muchos archivos de registro y almacenes de diarios."}
@@ -42,8 +41,7 @@ $ sudo tail -n 100 /var/log/messages
 
 Sigue las líneas que se añadan durante una reproducción limitada con `tail -F FILE`. A diferencia de una instantánea sencilla, `-F` vuelve a intentarlo cuando el archivo se sustituye durante una rotación. Deja de seguirlo con `Ctrl-C` y evita mantener abiertas sesiones amplias con privilegios.
 
-:::single-choice{#general-logs-tail-f-capability}
-¿Para qué resulta útil `tail -F` durante una reproducción controlada?
+:::single-choice{#general-logs-tail-f-capability} ¿Para qué resulta útil `tail -F` durante una reproducción controlada?
 
 ::option[Para seguir un archivo por su nombre a través de las sustituciones habituales de la rotación.]{#general-logs-tail-follow .correct explanation="El comportamiento de reintento por nombre permite continuar después de que el archivo activo se renombre y se vuelva a crear."}
 ::option[Para cambiar todas las gravedades de registro a debug.]{#general-logs-tail-debug explanation="Tail lee el contenido de los archivos y no reconfigura los emisores."}
@@ -61,8 +59,7 @@ $ journalctl -u example.service --since '10 minutes ago' --grep='connection refu
 
 El uso de mayúsculas, la redacción, los límites de frecuencia y la localización pueden hacer que una búsqueda literal resulte incompleta. Registra tanto los eventos satisfactorios como los fallidos y conserva las líneas circundantes, porque la causa puede preceder al error visible.
 
-:::single-choice{#general-logs-context-lines}
-¿Por qué debes incluir las líneas que rodean un error coincidente?
+:::single-choice{#general-logs-context-lines} ¿Por qué debes incluir las líneas que rodean un error coincidente?
 
 ::option[El evento anterior puede explicar el fallo posterior.]{#general-logs-preceding-context .correct explanation="El contexto temporal ayuda a reconstruir una secuencia en lugar de tratar una cadena como si fuera todo el incidente."}
 ::option[El contexto garantiza que la primera coincidencia sea la causa raíz.]{#general-logs-guaranteed-cause explanation="Aún es necesario correlacionar otras pruebas; el contexto no demuestra causalidad."}
@@ -79,8 +76,7 @@ $ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
 
 Ordena los resultados según las marcas de tiempo reales, no solo por el sufijo. Antes de copiar pruebas, conserva los metadatos y restringe el acceso, porque los registros pueden contener datos personales o credenciales.
 
-:::single-choice{#general-logs-rotation-boundary}
-¿Qué debes comprobar cuando un incidente abarca una rotación de registros?
+:::single-choice{#general-logs-rotation-boundary} ¿Qué debes comprobar cuando un incidente abarca una rotación de registros?
 
 ::option[Únicamente el archivo activo nuevo y vacío.]{#general-logs-active-only explanation="Los registros anteriores pueden haberse trasladado a archivos rotados."}
 ::option[Los registros activos y archivados ordenados por el momento del evento.]{#general-logs-all-intervals .correct explanation="La secuencia pertinente puede estar dividida entre los archivos actuales y los rotados."}

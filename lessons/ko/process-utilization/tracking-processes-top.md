@@ -26,8 +26,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 첫 줄에는 현재 시간, 가동 시간, 로그인한 사용자 수 및 1분, 5분, 15분 부하 평균이 있습니다. 작업 줄은 프로세스 상태를 셉니다. 부하 평균은 직접적인 CPU 백분율이 아닙니다. 리눅스에서는 실행 가능한 작업과 인터럽트할 수 없는 대기 상태의 작업을 반영하므로 CPU 수, 입출력 활동 및 지연과 함께 해석하십시오.
 
-:::single-choice{#top-load-average-periods}
-`top`의 세 부하 평균 값은 무엇을 나타냅니까?
+:::single-choice{#top-load-average-periods} `top`의 세 부하 평균 값은 무엇을 나타냅니까?
 
 ::option[1분, 5분 및 15분 동안의 평균 부하입니다.]{#top-one-five-fifteen .correct explanation="값은 점차 더 긴 최근 시간 구간을 요약합니다."}
 ::option[가장 바쁜 세 프로세스의 CPU 사용량입니다.]{#top-three-processes explanation="프로세스별 CPU는 이 세 요약 값이 아니라 프로세스 표에 나타납니다."}
@@ -48,8 +47,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 `wa` 값이 높으면 입출력 대기 가설을 뒷받침할 수 있지만 어느 장치인지 식별하거나 저장 장치가 유일한 병목임을 증명하지는 않습니다. 결론을 내리기 전에 장치 지연과 애플리케이션 동작을 검사하십시오.
 
-:::single-choice{#top-cpu-wa-meaning}
-`wa` CPU 필드가 보고하는 것은 무엇입니까?
+:::single-choice{#top-cpu-wa-meaning} `wa` CPU 필드가 보고하는 것은 무엇입니까?
 
 ::option[일반 사용자 코드 실행에 사용된 시간입니다.]{#top-wa-user explanation="사용자 공간 실행은 `us`에 보고됩니다."}
 ::option[부팅 후 스왑에 기록된 메모리 페이지입니다.]{#top-wa-swap explanation="스왑 활동은 CPU 시간 범주가 아닙니다."}
@@ -70,8 +68,7 @@ MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 
 `VIRT`는 소비한 물리 RAM의 양이 아닙니다. 매핑된 파일, 공유 라이브러리, 예약된 주소 공간 및 스왑된 페이지를 포함할 수 있습니다. `RES`도 공유 페이지 때문에 귀속 방식이 복잡하므로 신중하게 해석해야 합니다.
 
-:::single-choice{#top-res-versus-virt}
-프로세스의 현재 상주 물리 메모리에 더 가까운 필드는 무엇입니까?
+:::single-choice{#top-res-versus-virt} 프로세스의 현재 상주 물리 메모리에 더 가까운 필드는 무엇입니까?
 
 ::option[`TIME+`]{#top-time-field explanation="이 필드는 메모리가 아니라 CPU 시간을 누적합니다."}
 ::option[`VIRT`]{#top-virt-field explanation="가상 크기에는 RAM에 상주하지 않아도 되는 주소 공간이 포함됩니다."}
@@ -90,8 +87,7 @@ $ top -p 1234,5678
 
 작업하기 전에 PID, 명령, 타임스탬프 및 여러 표본을 기록하십시오. 잠깐 목록 위로 올라온 프로세스는 정상일 수 있으며 종료하면 데이터 손실이나 서비스 중단이 생길 수 있습니다.
 
-:::single-choice{#top-monitor-known-pid}
-화면을 PID 1234로 제한하는 명령은 무엇입니까?
+:::single-choice{#top-monitor-known-pid} 화면을 PID 1234로 제한하는 명령은 무엇입니까?
 
 ::option[`top -u 1234`]{#top-user-filter explanation="`-u` 형태는 값을 PID가 아니라 사용자로 취급하여 필터링합니다."}
 ::option[`top -d 1234`]{#top-delay-filter explanation="일반 구현에서 `-d` 옵션은 갱신 지연을 제어합니다."}

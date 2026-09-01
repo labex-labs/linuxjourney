@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` копирует блоки, а не обязательно по одному байту. Больший `bs` может сократить число системных вызовов, но оптимум зависит от устройств, выравнивания, кеша и нагрузки. Логические данные от него не меняются.
 
-:::single-choice{#dd-command-output-operand}
-Какой операнд выбирает назначение записи `dd`?
+:::single-choice{#dd-command-output-operand} Какой операнд выбирает назначение записи `dd`?
 
 ::option[`if=`]{#dd-command-input-file explanation="`if` обозначает входной источник."}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of` называет выходной поток или файл, получающий данные."}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 Запрашиваются два блока до 1 MiB, то есть не больше 2 MiB. Короткие чтения усложняют умножение для потоков вроде каналов; GNU `dd` предлагает `iflag=fullblock`, когда нужны полные входные блоки. Различайте двоичные единицы и суффиксы локальной реализации.
 
-:::single-choice{#dd-command-count-result}
-Какой максимум запрашивает для обычного файла `bs=1M count=2`?
+:::single-choice{#dd-command-count-result} Какой максимум запрашивает для обычного файла `bs=1M count=2`?
 
 ::option[1 MiB.]{#dd-command-one-mib explanation="Это был бы один блок выбранного размера."}
 ::option[2 MiB.]{#dd-command-two-mib .correct explanation="Два входных блока по 1 MiB дают максимум 2 MiB."}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 Выход перезаписывается с начала. Переставленные `if`/`of`, системный диск или целый диск вместо раздела могут уничтожить данные без вопроса.
 
-:::single-choice{#dd-command-target-verification}
-Зачем перед сырой записью проверять модель, serial, размер и использование?
+:::single-choice{#dd-command-target-verification} Зачем перед сырой записью проверять модель, serial, размер и использование?
 
 ::option[Буквы устройств меняются, а `dd` перезаписывает цель, не понимая содержимое.]{#dd-command-target-can-change .correct explanation="Проверка личности и использования снижает риск уничтожить другой диск или активный стек."}
 ::option[`dd` откажется писать, если метка файловой системы не совпадает.]{#dd-command-label-check explanation="Инструмент не выполняет такую осведомлённую о файловой системе проверку."}
@@ -85,8 +82,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 Сырой образ копирует блоки, включая метаданные и свободные области, поэтому может быть намного больше файловой копии и воспроизводить идентификаторы, которые нужно изменить перед одновременным подключением клона и оригинала.
 
-:::single-choice{#dd-command-live-filesystem-image}
-Почему образ смонтированной изменяющейся файловой системы может быть ненадёжным?
+:::single-choice{#dd-command-live-filesystem-image} Почему образ смонтированной изменяющейся файловой системы может быть ненадёжным?
 
 ::option[Смонтированные системы никогда не разрешают чтение блочного устройства.]{#dd-command-mounted-no-read explanation="Сырое чтение возможно, поэтому согласованность нужно планировать, а не предполагать."}
 ::option[Разные блоки могут быть прочитаны в разные моменты состояния.]{#dd-command-inconsistent-moments .correct explanation="Параллельные изменения могут не дать образу соответствовать одной согласованной точке времени."}
@@ -99,8 +95,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 Не обещайте гарантированное стирание через перезапись `dd` для SSD, flash translation layers, thin provisioning, снимков или переназначенных секторов. Используйте поддерживаемую устройством санитарную очистку и явную политику уничтожения данных.
 
-:::single-choice{#dd-command-success-meaning}
-Чего сам по себе нулевой код `dd` не доказывает?
+:::single-choice{#dd-command-success-meaning} Чего сам по себе нулевой код `dd` не доказывает?
 
 ::option[Что команда разобрала все операнды.]{#dd-command-parsed-operands explanation="Недопустимые операнды обычно дают ошибку, а не успешное завершение."}
 ::option[Что оператор выбрал задуманные источник и назначение.]{#dd-command-does-not-prove-intent .correct explanation="Инструмент может успешно скопировать не туда, поскольку не угадывает намерение."}

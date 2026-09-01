@@ -18,8 +18,7 @@ meta_keywords: "리눅스 커널, 운영체제, 하드웨어, 사용자 공간, 
 
 커널은 아키텍처 코드와 장치 드라이버를 통해 이러한 리소스를 초기화하고 제어합니다. 작업 부하 사이의 접근 경계를 적용하면서 인터럽트, DMA 조정, 타이머 및 전원 관리 이벤트를 처리합니다.
 
-:::single-choice{#kernel-overview-hardware-manager}
-리눅스에서 일반적으로 장치 드라이버와 하드웨어 인터럽트를 조정하는 계층은 무엇입니까?
+:::single-choice{#kernel-overview-hardware-manager} 리눅스에서 일반적으로 장치 드라이버와 하드웨어 인터럽트를 조정하는 계층은 무엇입니까?
 
 ::option[각 사용자의 셸 기록 파일입니다.]{#kernel-overview-shell-history explanation="기록은 명령을 저장하며 하드웨어 실행을 처리하지 않습니다."}
 ::option[패키지 저장소 인덱스입니다.]{#kernel-overview-repository-index explanation="저장소 메타데이터는 실시간 하드웨어 이벤트가 아니라 소프트웨어 패키지를 설명합니다."}
@@ -39,8 +38,7 @@ meta_keywords: "리눅스 커널, 운영체제, 하드웨어, 사용자 공간, 
 
 핵심 서비스와 여러 드라이버가 하나의 특권 커널 주소 공간에서 실행되므로 리눅스는 일반적으로 모놀리식 커널로 설명됩니다. 동시에 모듈식이기도 합니다. 지원되는 구성 요소는 커널 모듈로 불러오고 내릴 수 있습니다. 특권 커널 코드의 버그는 전체 시스템을 손상시킬 수 있으므로 커널 업데이트와 모듈 출처는 보안에 매우 중요합니다.
 
-:::single-choice{#kernel-overview-scheduler-role}
-커널 스케줄러가 관리하는 것은 무엇입니까?
+:::single-choice{#kernel-overview-scheduler-role} 커널 스케줄러가 관리하는 것은 무엇입니까?
 
 ::option[사용자가 다음에 읽을 문서 페이지입니다.]{#kernel-overview-documentation explanation="학습 탐색은 커널 스케줄링의 범위 밖입니다."}
 ::option[어떤 실행 가능 스레드가 CPU 실행 시간을 받을지 결정합니다.]{#kernel-overview-thread-scheduling .correct explanation="스케줄러는 정책, 우선순위, 선호도 및 CPU 가용성에 따라 실행 컨텍스트를 선택합니다."}
@@ -55,8 +53,7 @@ meta_keywords: "리눅스 커널, 운영체제, 하드웨어, 사용자 공간, 
 
 사용자 공간의 root는 정책상 높은 권한을 갖지만 일반적으로 프로세서 사용자 모드에서 실행됩니다. 사용자 식별 정보와 CPU 권한 모드는 서로 다른 개념입니다.
 
-:::single-choice{#kernel-overview-root-user-mode}
-일반적인 root 소유 애플리케이션은 모든 명령어를 커널 모드에서 실행합니까?
+:::single-choice{#kernel-overview-root-user-mode} 일반적인 root 소유 애플리케이션은 모든 명령어를 커널 모드에서 실행합니까?
 
 ::option[그렇습니다. UID 0은 모든 명령어를 영구적으로 링 0으로 바꿉니다.]{#kernel-overview-root-ring-zero explanation="일반적인 root 프로세스도 사용자 공간 프로세스로 남습니다."}
 ::option[그렇습니다. root 애플리케이션은 자동으로 로드 가능 커널 모듈이 됩니다.]{#kernel-overview-root-module explanation="사용자 실행 파일은 소유자 UID 때문에 커널 코드로 변환되지 않습니다."}
@@ -69,8 +66,7 @@ meta_keywords: "리눅스 커널, 운영체제, 하드웨어, 사용자 공간, 
 
 문제를 해결할 때 어떤 계층이 동작을 소유하는지 질문하십시오. 애플리케이션, 라이브러리, 시스템 호출 인터페이스, 파일 시스템, 드라이버, 커널 하위 시스템, 펌웨어 또는 하드웨어일 수 있습니다. 잘못된 계층의 증거는 잘못된 해결책으로 이어질 수 있습니다.
 
-:::single-choice{#kernel-overview-system-call-boundary}
-시스템 호출이란 무엇입니까?
+:::single-choice{#kernel-overview-system-call-boundary} 시스템 호출이란 무엇입니까?
 
 ::option[사용자 공간이 커널 서비스에 보내는 제어된 요청입니다.]{#kernel-overview-controlled-request .correct explanation="프로세서가 정의된 인터페이스에서 커널 모드로 진입하면 커널이 작업을 검증하고 수행합니다."}
 ::option[모든 접근 제어 검사를 우회하는 직접 명령입니다.]{#kernel-overview-bypass-checks explanation="여러 검증 및 권한 부여 검사는 바로 시스템 호출에서 이루어집니다."}

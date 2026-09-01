@@ -22,8 +22,7 @@ $ man ls
 
 Manual pages commonly include a synopsis, description, options, related files, and cross-references, although the exact sections vary.
 
-:::single-choice{#open-ls-manual}
-Which command opens the installed manual page for `ls`?
+:::single-choice{#open-ls-manual} Which command opens the installed manual page for `ls`?
 
 ::option[`help ls`]{#help-ls explanation="Bash `help` documents shell builtins and normally does not open the external `ls` manual page."}
 ::option[`man ls`]{#manual-ls-page .correct explanation="`man` looks up the topic `ls` in the manual database and displays the matching page."}
@@ -43,16 +42,14 @@ Inside a man page:
 
 The pager can differ by system or environment, so its exact keys are not guaranteed everywhere. The controls above apply to the common `less` setup.
 
-:::single-choice{#search-man-page}
-With a man page open in `less`, what starts a forward search for `--recursive`?
+:::single-choice{#search-man-page} With a man page open in `less`, what starts a forward search for `--recursive`?
 
 ::option[Type `?--recursive` and press Enter.]{#backward-man-search explanation="A question mark begins a backward search. It looks in the opposite direction from the one requested."}
 ::option[Type `/--recursive` and press Enter.]{#forward-man-search .correct explanation="A slash begins a forward search in `less`, and Enter submits the pattern."}
 ::option[Type `n--recursive` and press Enter.]{#repeat-man-search explanation="The `n` key repeats an existing search. It does not introduce a new search pattern this way."}
 :::
 
-:::single-choice{#leave-man-page}
-With a man page open in the usual pager, which key returns to the shell?
+:::single-choice{#leave-man-page} With a man page open in the usual pager, which key returns to the shell?
 
 ::option[`G`]{#man-page-end explanation="Uppercase `G` moves to the end of the page in `less`. It does not close the pager."}
 ::option[`n`]{#next-man-match explanation="The `n` key repeats the most recent search. It keeps the manual page open."}
@@ -78,8 +75,7 @@ $ man 1 passwd
 
 The first command opens the `passwd` file-format page from section 5. The second opens the user command page from section 1. References such as `passwd(5)` use the same `topic(section)` notation.
 
-:::single-choice{#open-passwd-file-format}
-Which command opens the section 5 page that documents the `passwd` file format?
+:::single-choice{#open-passwd-file-format} Which command opens the section 5 page that documents the `passwd` file format?
 
 ::option[`man passwd 5`]{#section-after-topic explanation="The section selector belongs before the topic in this command form. This operand order does not request `passwd(5)`."}
 ::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Placing section `5` before `passwd` selects the file-format page specifically."}
@@ -95,8 +91,7 @@ Not every command name has a separately installed manual page. If `man` reports 
 - Try `NAME --help` when an external program supports that convention.
 - Check whether your distribution offers a separate documentation package.
 
-:::single-choice{#missing-builtin-manual}
-`type cd` reports that `cd` is a Bash builtin, and no separate man page is available. Which command should you try next?
+:::single-choice{#missing-builtin-manual} `type cd` reports that `cd` is a Bash builtin, and no separate man page is available. Which command should you try next?
 
 ::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` summarizes entries from the manual database. It cannot supply a missing dedicated page for the builtin."}
 ::option[`file cd`]{#file-cd-name explanation="`file` classifies filesystem objects, but `cd` is being resolved as a shell builtin rather than a pathname here."}

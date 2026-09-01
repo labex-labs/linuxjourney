@@ -23,8 +23,7 @@ $ ip -brief address show
 
 Les interfaces peuvent porter des noms prévisibles dérivés du matériel tels que `enp1s0`, des noms traditionnels tels que `eth0` ou des noms définis par l’administrateur. Ne supposez jamais que `eth0` existe ou désigne un adaptateur particulier.
 
-:::single-choice{#interfaces-name-assumption}
-Pourquoi un script doit-il découvrir les interfaces plutôt que supposer l’existence de `eth0` ?
+:::single-choice{#interfaces-name-assumption} Pourquoi un script doit-il découvrir les interfaces plutôt que supposer l’existence de `eth0` ?
 
 ::option[Chaque interface doit obligatoirement s’appeler `lo`.]{#interfaces-all-loopback explanation="La boucle locale est une interface particulière, et non le nom de chaque liaison."}
 ::option[Les systèmes Linux peuvent employer plusieurs conventions de nommage des interfaces.]{#interfaces-naming-varies .correct explanation="Les noms dérivés du matériel, virtuels ou personnalisés rendent l’hypothèse d’un nom fixe `eth0` peu fiable."}
@@ -42,8 +41,7 @@ $ ip -s link show dev enp1s0
 
 Les statistiques peuvent révéler des erreurs, des abandons et des compteurs, mais ces derniers ne deviennent significatifs qu’avec un intervalle de temps et une valeur de référence.
 
-:::single-choice{#interfaces-up-limit}
-Qu’est-ce que l’état administratif `UP` ne prouve pas ?
+:::single-choice{#interfaces-up-limit} Qu’est-ce que l’état administratif `UP` ne prouve pas ?
 
 ::option[Que la connectivité de bout en bout fonctionne.]{#interfaces-up-not-connectivity .correct explanation="Des pannes peuvent subsister au niveau de la couche inférieure, de l’adressage, du routage, du filtrage, du nommage ou du service."}
 ::option[Que l’administrateur a activé l’interface.]{#interfaces-up-does-prove explanation="C’est précisément la signification directe de cet état."}
@@ -61,8 +59,7 @@ $ sudo ip address add 192.0.2.10/24 dev enp1s0
 
 Ces changements affectent l’état actuel du noyau et peuvent entrer en conflit avec un gestionnaire de réseau qui réappliquera ensuite son profil. La désactivation d’une interface utilisée pour l’administration distante peut interrompre immédiatement l’accès. Avant de la modifier, vérifiez le périphérique exact, conservez un accès à la console, relevez l’état actuel et préparez un retour en arrière temporisé ou testé.
 
-:::single-choice{#interfaces-ip-address-add-persistence}
-La commande `ip address add` garantit-elle à elle seule la persistance après un redémarrage ?
+:::single-choice{#interfaces-ip-address-add-persistence} La commande `ip address add` garantit-elle à elle seule la persistance après un redémarrage ?
 
 ::option[Non ; le système de configuration actif doit également enregistrer ce paramètre.]{#interfaces-manager-persistence .correct explanation="NetworkManager, systemd-networkd, ifupdown ou un autre gestionnaire applique la politique persistante."}
 ::option[Oui, car chaque modification du noyau met à jour tous les profils des gestionnaires.]{#interfaces-runtime-always-persistent explanation="Les changements apportés à l’état d’exécution du noyau ne mettent pas systématiquement à jour la configuration persistante."}
@@ -81,8 +78,7 @@ $ nmcli device status
 
 N’utilisez que les commandes disponibles pour le gestionnaire identifié. Deux gestionnaires contrôlant la même liaison peuvent entrer en concurrence et écraser mutuellement leur état.
 
-:::single-choice{#interfaces-config-owner}
-Que faut-il faire avant de modifier durablement une interface ?
+:::single-choice{#interfaces-config-owner} Que faut-il faire avant de modifier durablement une interface ?
 
 ::option[Modifier tous les fichiers de configuration réseau possibles.]{#interfaces-edit-all explanation="Des définitions concurrentes créent des conflits et des réapplications imprévisibles."}
 ::option[Identifier le gestionnaire de réseau qui contrôle l’interface.]{#interfaces-identify-owner .correct explanation="La source de configuration et la méthode d’application correctes dépendent de ce gestionnaire."}
@@ -93,8 +89,7 @@ Que faut-il faire avant de modifier durablement une interface ?
 
 Vérifiez l’état de la liaison, les adresses attribuées et leur durée de vie, les routes sélectionnées, l’état du résolveur, l’accessibilité des voisins et l’application réelle. Pour une modification persistante, ne testez un redémarrage contrôlé du service ou de l’hôte que si vous disposez d’une voie de récupération.
 
-:::single-choice{#interfaces-change-verification}
-Quel élément fournit une preuve plus solide que la simple présence de la nouvelle adresse dans `ip address` ?
+:::single-choice{#interfaces-change-verification} Quel élément fournit une preuve plus solide que la simple présence de la nouvelle adresse dans `ip address` ?
 
 ::option[Le nom de l’interface contient un chiffre.]{#interfaces-digit explanation="Le nommage ne fournit aucune validation de bout en bout."}
 ::option[L’invite du shell conserve la même couleur.]{#interfaces-prompt-color explanation="L’apparence du terminal est sans rapport avec le fonctionnement du réseau."}

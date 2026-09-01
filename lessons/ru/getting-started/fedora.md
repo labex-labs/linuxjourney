@@ -16,8 +16,7 @@ Fedora — общественный дистрибутив Linux, спонсир
 
 Fedora развивается быстрее консервативных дистрибутивов, одновременно стремясь к качеству и удобству. Такой баланс привлекает желающих получить современную систему Linux без самостоятельной сборки всего с нуля.
 
-:::single-choice{#identify-fedora-project-model}
-Какое утверждение правильно описывает проект Fedora?
+:::single-choice{#identify-fedora-project-model} Какое утверждение правильно описывает проект Fedora?
 
 ::option[Это прекращённая версия Red Hat Enterprise Linux]{#discontinued-rhel explanation="Fedora — активный дистрибутив со своими выпусками. Она является upstream для RHEL, а не устаревшей версией RHEL."}
 ::option[Это дистрибутив одного производителя оборудования]{#hardware-maintained explanation="Fedora сотрудничает с производителями, но развивается сообществом при поддержке Red Hat."}
@@ -30,8 +29,7 @@ Fedora часто принимает новые возможности Linux р�
 
 Дистрибутив также известен чистым опытом по умолчанию. Fedora Workstation особенно популярна у разработчиков, которым нужны современный рабочий стол, актуальные инструменты и хорошая поддержка контейнеров, виртуализации и других процессов разработки.
 
-:::single-choice{#match-fedora-user}
-Какой пользовательский запрос лучше всего соответствует Fedora Workstation?
+:::single-choice{#match-fedora-user} Какой пользовательский запрос лучше всего соответствует Fedora Workstation?
 
 ::option[Сохранять один корпоративный выпуск неизменным много лет]{#long-enterprise-lifecycle explanation="Долгий консервативный корпоративный цикл ближе к роли RHEL. Fedora выпускается и обновляется быстрее."}
 ::option[Использовать современные инструменты разработчика в отлаженной настольной системе]{#current-developer-desktop .correct explanation="Fedora Workstation сочетает цельный рабочий стол с актуальными средствами разработки, контейнеров и виртуализации."}
@@ -44,8 +42,7 @@ Fedora играет важную роль в экосистеме Red Hat. Но�
 
 Сравнить их поможет урок [Red Hat Enterprise Linux](https://labex.io/ru/lesson/red-hat-enterprise-linux), а более широкий обзор семейств даёт [Выбор дистрибутива Linux](https://labex.io/ru/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#explain-fedora-upstream-role}
-Что означает upstream-связь Fedora с RHEL?
+:::single-choice{#explain-fedora-upstream-role} Что означает upstream-связь Fedora с RHEL?
 
 ::option[Выпуски RHEL позднее без изменений копируются в Fedora]{#rhel-copied-to-fedora explanation="Это обращает связь вспять. Fedora развивается быстрее и служит upstream-источником, а не последующей копией RHEL."}
 ::option[Fedora и RHEL всегда поставляют одинаковые версии программ]{#identical-software-versions explanation="У систем разные цели и сроки выпусков. RHEL выбирает и стабилизирует технологии, а не повторяет каждую версию Fedora."}
@@ -58,8 +55,7 @@ Fedora следует регулярному циклу: в большинств
 
 Она подходит желающим актуальное ПО в организованном распространённом дистрибутиве, а не в более ручной системе rolling release.
 
-:::single-choice{#plan-fedora-upgrades}
-Какое обслуживание предполагает модель выпусков Fedora?
+:::single-choice{#plan-fedora-upgrades} Какое обслуживание предполагает модель выпусков Fedora?
 
 ::option[Не обновлять версию весь срок службы компьютера]{#no-version-upgrades explanation="Версии Fedora имеют ограниченную поддержку. Чтобы оставаться на поддерживаемой системе, со временем нужно переходить на новые выпуски."}
 ::option[Регулярно обновлять версию, оставаясь на поддерживаемом выпуске]{#regular-release-upgrades .correct explanation="Fedora выпускается быстро и поддерживает версию около тринадцати месяцев, поэтому пользователю нужно планировать регулярные обновления."}
@@ -72,8 +68,7 @@ Fedora использует формат RPM и менеджер DNF для ус
 
 Управление пакетами понятно и естественно вписывается в более широкое семейство систем Red Hat.
 
-:::single-choice{#identify-fedora-package-tool}
-Какой инструмент Fedora использует для высокоуровневого управления пакетами?
+:::single-choice{#identify-fedora-package-tool} Какой инструмент Fedora использует для высокоуровневого управления пакетами?
 
 ::option[APT]{#fedora-apt-tool explanation="APT связан с системами семейства Debian. Fedora относится к семейству RPM и использует DNF."}
 ::option[DNF]{#fedora-dnf-tool .correct explanation="DNF устанавливает, обновляет и удаляет пакеты из репозиториев Fedora, основанные на формате RPM."}

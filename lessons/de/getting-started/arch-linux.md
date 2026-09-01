@@ -16,8 +16,7 @@ Arch Linux ist eine schlanke, unabhängig entwickelte Linux-Distribution, die f�
 
 Anders als Distributionen mit geplanten Hauptversionen folgt Arch einem Rolling-Release-Modell. Das bedeutet, dass das System fortlaufend aktualisiert wird, statt auf große Versionssprünge zu warten.
 
-:::single-choice{#recognize-rolling-release}
-Was bedeutet das Rolling-Release-Modell von Arch Linux?
+:::single-choice{#recognize-rolling-release} Was bedeutet das Rolling-Release-Modell von Arch Linux?
 
 ::option[Das installierte System erhält fortlaufende Paketupgrades]{#continuous-upgrades .correct explanation="Arch entwickelt sich durch fortlaufende Paketupgrades und nicht durch getrennte Hauptversionen weiter. Eine gepflegte Installation kann dadurch langfristig aktuell bleiben."}
 ::option[Das System wartet auf feste, mehrjährige Upgrade-Ausgaben]{#fixed-major-editions explanation="Feste Hauptausgaben beschreiben ein Point-Release-Modell. Arch aktualisiert das installierte System stattdessen fortlaufend."}
@@ -30,8 +29,7 @@ Arch Linux ist beliebt, weil es Nutzern ein hohes Maß an Kontrolle gibt. Viele 
 
 Dadurch wird Arch neugierigen Nutzern mit mittlerer oder fortgeschrittener Erfahrung häufig empfohlen, auch wenn es gewöhnlich nicht die erste Distribution ist, die Einsteigern beim Vergleich in [Eine Linux-Distribution auswählen](https://labex.io/lesson/choosing-a-linux-distribution) vorgeschlagen wird.
 
-:::single-choice{#match-arch-user}
-Welcher Nutzer passt am besten zu Arch Linux?
+:::single-choice{#match-arch-user} Welcher Nutzer passt am besten zu Arch Linux?
 
 ::option[Ein Einsteiger, für den jede Entscheidung automatisch getroffen werden soll]{#automatic-beginner explanation="Arch überlässt bewusst viele Entscheidungen dem Nutzer. Für eine vollständig automatische Einrichtung eignet sich eine Distribution mit stärker vorbereiteten Voreinstellungen besser."}
 ::option[Ein Nutzer, der Softwareaktualisierungen niemals prüfen möchte]{#ignore-updates explanation="Ein Arch-System mit Rolling Release verlangt aktive Wartung und Aufmerksamkeit für Aktualisierungshinweise. Aktualisierungen zu ignorieren, widerspricht dieser Verantwortung."}
@@ -50,16 +48,14 @@ Arch verwendet Pacman als Paketverwaltung. Pacman installiert, aktualisiert, ent
 
 Ein verbreiteter Befehl ist `sudo pacman -Syu`. Er synchronisiert die Paketdatenbanken und führt ein vollständiges Upgrade der Pakete aus den konfigurierten Paketquellen durch. Arch unterstützt keine Teil-Upgrades. Nutzer sollten deshalb vermeiden, Paketdatenbanken zu aktualisieren, ohne das zugehörige vollständige Systemupgrade abzuschließen. Pacman wird geschätzt, weil es direkt und schnell ist und gut zu Archs schlanker Gestaltung passt.
 
-:::single-choice{#identify-pacman-role}
-Welche Aufgabe hat Pacman unter Arch Linux?
+:::single-choice{#identify-pacman-role} Welche Aufgabe hat Pacman unter Arch Linux?
 
 ::option[Das Desktop-Layout auswählen, ohne Software zu verwalten]{#pacman-desktop-layout explanation="Die Desktop-Konfiguration ist von der Paketverwaltung getrennt. Pacman verwaltet die Softwarepakete, die Desktop-Komponenten bereitstellen können."}
 ::option[Das Rolling-Release-Modell durch feste Ausgaben ersetzen]{#pacman-fixed-releases explanation="Pacman unterstützt Archs fortlaufendes System durch Paketupgrades. Es verwandelt Arch nicht in eine Distribution mit Einzelveröffentlichungen."}
 ::option[Softwarepakete installieren, aktualisieren, entfernen und erfassen]{#pacman-package-manager .correct explanation="Pacman ist die Paketverwaltung von Arch Linux. Es pflegt die installierten Pakete und arbeitet mit den Paketquellen der Distribution."}
 :::
 
-:::single-choice{#avoid-partial-upgrades}
-Warum sollte ein Arch-Nutzer nach dem Aktualisieren der Paketdatenbanken ein vollständiges Upgrade durchführen?
+:::single-choice{#avoid-partial-upgrades} Warum sollte ein Arch-Nutzer nach dem Aktualisieren der Paketdatenbanken ein vollständiges Upgrade durchführen?
 
 ::option[Teil-Upgrades sind die empfohlene Methode, um alte Bibliotheken zu bewahren]{#partial-upgrades-recommended explanation="Arch unterstützt Teil-Upgrades ausdrücklich nicht. Neuere Bibliotheken mit älteren abhängigen Paketen zu mischen, kann das System beschädigen."}
 ::option[Das Aktualisieren der Paketdatenbanken installiert das Betriebssystem automatisch neu]{#refresh-reinstalls-system explanation="Eine Aktualisierung der Datenbank erneuert nur die Paketinformationen. Sie installiert Arch nicht neu, sollte aber vom zugehörigen vollständigen Upgrade gefolgt werden."}

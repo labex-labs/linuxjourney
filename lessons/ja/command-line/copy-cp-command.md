@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 2 番目の例では、コピーしたデータに `mycoolfile_backup` という名前が付きます。
 
-:::single-choice{#copy-file-under-new-name}
-`draft.txt` を残したまま、`final.txt` というファイルへコピーするコマンドはどれですか？
+:::single-choice{#copy-file-under-new-name} `draft.txt` を残したまま、`final.txt` というファイルへコピーするコマンドはどれですか？
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` は元のパス名を変更または移動するため、要求されたコピー元を残しません。"}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="コピー元とコピー先が逆です。`final.txt` から `draft.txt` へコピーします。"}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 コピー元が複数ある場合、最後の引数はディレクトリでなければなりません。
 
-:::single-choice{#copy-multiple-files}
-`a.txt` と `b.txt` を既存の `archive/` ディレクトリへコピーするコマンドはどれですか？
+:::single-choice{#copy-multiple-files} `a.txt` と `b.txt` を既存の `archive/` ディレクトリへコピーするコマンドはどれですか？
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="この形式の `cp` ではコピー先ディレクトリを最後に置きます。先頭に置くとオペランドの解釈が変わります。"}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="コピー元が複数ある場合、`cp` は最後の既存ディレクトリを、それより前の全ファイルのコピー先として扱います。"}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-`*.jpg` をコピーする前に、パターンが現在一致する隠しファイル以外の名前を表示するコマンドはどれですか？
+:::single-choice{#preview-copy-pattern} `*.jpg` をコピーする前に、パターンが現在一致する隠しファイル以外の名前を表示するコマンドはどれですか？
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="複数の名前が一致すると、明確なコピー先なしでコピーを試みます。確認操作ではありません。"}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="シェルが `ls` に対して同じパターンを展開するため、コピー前に一致する名前を確認できます。"}
@@ -112,8 +109,7 @@ $ cp -R website /home/pete/backups/
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-`project/` を再帰的にコピーし、リンクと多数の属性を保持するバックアップ形式のコピーには、どのコマンドが適していますか？
+:::single-choice{#archive-directory-tree} `project/` を再帰的にコピーし、リンクと多数の属性を保持するバックアップ形式のコピーには、どのコマンドが適していますか？
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` は選択した属性を保持しますが、それだけではディレクトリコピーを再帰的にしません。"}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` はコピー先の状態に応じてコピーする時期を制御しますが、それだけでは再帰的なディレクトリコピーになりません。"}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 `-f` は GNU `cp` に対し、既存のコピー先を書き込み用に開けない場合、その削除を試してコピーを再試行するよう指示します。対象を慎重に確認する代わりにはなりません。シェルのエイリアスが `-i` などのオプションを追加することもあるため、予期しないプロンプトが出たら設定を決めつけず調べてください。
 
-:::single-choice{#skip-existing-destination}
-`report.txt` を `backup/` へコピーし、同名のコピー先が存在すれば飛ばすコマンドはどれですか？
+:::single-choice{#skip-existing-destination} `report.txt` を `backup/` へコピーし、同名のコピー先が存在すれば飛ばすコマンドはどれですか？
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="`-n` は `cp` が既存のコピー先ファイルを上書きするのを防ぎます。"}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` は上書き前に尋ねるため、結果は回答次第です。既存のコピー先を必ず自動で飛ばすわけではありません。"}

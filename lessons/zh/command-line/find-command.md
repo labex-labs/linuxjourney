@@ -30,8 +30,7 @@ $ find /home -name puppies.jpg
 
 默认会递归搜索。要搜索当前目录树，请用 `.` 作为起始路径。
 
-:::single-choice{#search-current-tree}
-哪个命令会在当前目录及其后代中搜索名为 `notes.txt` 的条目？
+:::single-choice{#search-current-tree} 哪个命令会在当前目录及其后代中搜索名为 `notes.txt` 的条目？
 
 ::option[`find . -name notes.txt`]{#find-current-notes .correct explanation="点号选择当前目录作为起始路径，`-name` 会测试每个条目的基本名称。"}
 ::option[`find / -name notes.txt`]{#find-root-notes explanation="以 `/` 为起点会从文件系统根目录搜索，范围远大于当前目录树。"}
@@ -56,8 +55,7 @@ $ find /home -type d -name MyFolder
 
 这里两个测试都必须为真：条目必须是目录，而且基本名称必须为 `MyFolder`。
 
-:::single-choice{#find-text-regular-files}
-哪个命令会查找当前目录下名称以 `.txt` 结尾的普通文件？
+:::single-choice{#find-text-regular-files} 哪个命令会查找当前目录下名称以 `.txt` 结尾的普通文件？
 
 ::option[`find . -type f -name "*.txt"`]{#text-files .correct explanation="`-type f` 选择普通文件，加引号的 `-name` 模式则由 `find` 对每个条目求值。"}
 ::option[`find . -type d -name "*.txt"`]{#text-directories explanation="模式引号正确，但 `-type d` 选择的是目录而不是普通文件。"}
@@ -84,8 +82,7 @@ $ find . -type f -mtime +30
 
 `-mtime` 测试文件修改后经过的完整 24 小时周期数。`-mtime -7` 匹配小于 7 的值，`-mtime +30` 匹配大于 30 的值；由于使用完整的 24 小时周期，边界并不以日历午夜为准。
 
-:::single-choice{#find-recent-regular-files}
-哪个命令会查找 `.` 下修改时间不足七个完整 24 小时周期的普通文件？
+:::single-choice{#find-recent-regular-files} 哪个命令会查找 `.` 下修改时间不足七个完整 24 小时周期的普通文件？
 
 ::option[`find . -type f -mtime -7`]{#recent-files .correct explanation="`-type f` 选择普通文件，`-mtime -7` 选择不足七个完整 24 小时周期的修改时间。"}
 ::option[`find . -type f -mtime +7`]{#older-than-seven explanation="加号会选择大于七个单位的时间，查找的是较旧而不是较新的文件。"}
@@ -112,16 +109,14 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 使用 `-delete` 或会修改文件的 `-exec` 等破坏性操作前，应对相同测试运行 `-print`，并检查每项结果。更窄的起始路径和 `-maxdepth N` 也能限制搜索范围。
 
-:::single-choice{#verify-before-delete}
-你正在编写一个以后可能删除旧 `.log` 文件的 `find` 命令。首先应该做什么？
+:::single-choice{#verify-before-delete} 你正在编写一个以后可能删除旧 `.log` 文件的 `find` 命令。首先应该做什么？
 
 ::option[立即添加 `-delete`，再检查哪些文件消失了。]{#delete-first explanation="删除不是安全预览，也没有内置撤销；添加删除操作前应验证完整匹配集合。"}
 ::option[用相同测试运行 `-print`，检查每个匹配项。]{#print-first .correct explanation="只读列表可以在加入破坏性操作前验证起始路径和测试条件。"}
 ::option[从 `/` 开始搜索，确保不会漏掉任何日志。]{#root-first explanation="从 `/` 开始会扩大范围，可能包含无关或受保护路径；应选择足够用的最窄起点。"}
 :::
 
-:::single-choice{#run-ls-for-each-match}
-在 `find . -name "*.log" -exec ls -l {} \;` 中，`{}` 表示什么？
+:::single-choice{#run-ls-for-each-match} 在 `find . -name "*.log" -exec ls -l {} \;` 中，`{}` 表示什么？
 
 ::option[提供给 `ls -l` 的当前匹配路径。]{#match-placeholder .correct explanation="对于这种 `-exec` 形式，`find` 会在调用 `ls -l` 前用当前匹配项替换 `{}`。"}
 ::option[启动 `find` 命令时所在的目录。]{#starting-placeholder explanation="起始目录是命令开头附近的点号；花括号在 `-exec` 中承担不同职责。"}

@@ -16,8 +16,7 @@ Arch Linux es una distribución de Linux ligera, desarrollada de forma independi
 
 A diferencia de las distribuciones con lanzamientos importantes programados, Arch sigue un modelo de "rolling release" (lanzamiento continuo). Esto significa que el sistema recibe actualizaciones constantes en lugar de esperar grandes saltos de versión.
 
-:::single-choice{#recognize-rolling-release}
-¿Qué significa el modelo de lanzamiento continuo de Arch Linux?
+:::single-choice{#recognize-rolling-release} ¿Qué significa el modelo de lanzamiento continuo de Arch Linux?
 
 ::option[El sistema instalado recibe actualizaciones continuas de paquetes]{#continuous-upgrades .correct explanation="Arch evoluciona mediante actualizaciones constantes de paquetes, no mediante versiones principales separadas. Una instalación mantenida puede seguir al día con el tiempo."}
 ::option[El sistema espera ediciones de actualización fijas cada varios años]{#fixed-major-editions explanation="Las ediciones principales fijas corresponden a un modelo de versiones puntuales. Arch actualiza continuamente el sistema instalado."}
@@ -30,8 +29,7 @@ Arch Linux es popular porque otorga a los usuarios un alto grado de control. Muc
 
 Esto hace que Arch sea una recomendación común para usuarios intermedios y avanzados curiosos, aunque generalmente no es la primera distribución sugerida para principiantes que comparan opciones en [Cómo elegir una distribución de Linux](https://labex.io/es/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#match-arch-user}
-¿Qué tipo de usuario encaja mejor con Arch Linux?
+:::single-choice{#match-arch-user} ¿Qué tipo de usuario encaja mejor con Arch Linux?
 
 ::option[Un principiante que quiere que todas las decisiones se tomen automáticamente]{#automatic-beginner explanation="Arch deja deliberadamente muchas decisiones en manos del usuario. Una distribución con más valores predeterminados preparados encaja mejor con una instalación totalmente automática."}
 ::option[Un usuario que nunca quiere revisar las actualizaciones de software]{#ignore-updates explanation="Un sistema Arch de lanzamiento continuo necesita mantenimiento activo y atención a los avisos de actualización. Ignorarlos entra en conflicto con esa responsabilidad."}
@@ -50,16 +48,14 @@ Arch utiliza Pacman como su gestor de paquetes. Pacman instala, actualiza, elimi
 
 Un comando habitual es `sudo pacman -Syu`, que sincroniza las bases de datos de paquetes y realiza una actualización completa de los paquetes de los repositorios configurados. Arch no admite actualizaciones parciales, por lo que se debe evitar actualizar las bases de datos sin completar la correspondiente actualización del sistema. Pacman es apreciado por ser directo, rápido y coherente con el diseño minimalista de Arch.
 
-:::single-choice{#identify-pacman-role}
-¿Qué función cumple Pacman en Arch Linux?
+:::single-choice{#identify-pacman-role} ¿Qué función cumple Pacman en Arch Linux?
 
 ::option[Elegir el diseño del escritorio sin gestionar software]{#pacman-desktop-layout explanation="La configuración del escritorio es independiente de la gestión de paquetes. Pacman gestiona los paquetes de software que pueden proporcionar los componentes del escritorio."}
 ::option[Sustituir el modelo de lanzamiento continuo por ediciones fijas]{#pacman-fixed-releases explanation="Pacman sustenta el sistema continuo de Arch mediante actualizaciones de paquetes. No convierte Arch en una distribución de versiones puntuales."}
 ::option[Instalar, actualizar, eliminar y registrar paquetes de software]{#pacman-package-manager .correct explanation="Pacman es el gestor de paquetes de Arch Linux. Mantiene los paquetes instalados y trabaja con los repositorios de la distribución."}
 :::
 
-:::single-choice{#avoid-partial-upgrades}
-¿Por qué debe un usuario de Arch completar una actualización total después de renovar las bases de datos de paquetes?
+:::single-choice{#avoid-partial-upgrades} ¿Por qué debe un usuario de Arch completar una actualización total después de renovar las bases de datos de paquetes?
 
 ::option[Las actualizaciones parciales son la forma recomendada de conservar bibliotecas antiguas]{#partial-upgrades-recommended explanation="Arch no admite expresamente las actualizaciones parciales. Mezclar bibliotecas nuevas con paquetes dependientes antiguos puede dañar el sistema."}
 ::option[Renovar las bases de datos de paquetes reinstala automáticamente el sistema operativo]{#refresh-reinstalls-system explanation="Renovar las bases de datos solo actualiza la información de los paquetes. No reinstala Arch, pero debe ir seguido de la actualización completa correspondiente."}

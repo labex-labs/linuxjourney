@@ -24,8 +24,7 @@ $ pgrep -a cat
 
 Ambos procesos ejecutan el mismo programa, pero pueden tener flujos de entrada, contenidos de memoria, credenciales, directorios de trabajo y ciclos de vida distintos. Un PID identifica un proceso activo cada vez y puede reutilizarse después de que ese proceso termine.
 
-:::single-choice{#process-details-program-versus-process}
-¿Qué distingue dos instancias en ejecución del mismo programa?
+:::single-choice{#process-details-program-versus-process} ¿Qué distingue dos instancias en ejecución del mismo programa?
 
 ::option[El archivo ejecutable debe copiarse una vez por instancia.]{#process-details-copied-executable explanation="Varios procesos pueden mapear y compartir las mismas páginas de código del archivo ejecutable sin duplicar el archivo."}
 ::option[Únicamente una instancia puede tener memoria o archivos abiertos.]{#process-details-one-instance-resources explanation="Cada proceso puede tener sus propios mapas de memoria y tabla de descriptores de archivos."}
@@ -46,8 +45,7 @@ El kernel conserva la información necesaria para planificar y controlar cada pr
 
 Algunos recursos subyacentes pueden compartirse. Los procesos relacionados pueden compartir memoria mapeada, y los hilos de un proceso comparten un espacio de direcciones y muchos recursos de todo el proceso. Por tanto, un proceso proporciona límites de aislamiento sin implicar que cada byte u objeto del kernel sea físicamente privado.
 
-:::single-choice{#process-details-kernel-state}
-¿Qué componente mantiene el estado de planificación y credenciales de los procesos de Linux?
+:::single-choice{#process-details-kernel-state} ¿Qué componente mantiene el estado de planificación y credenciales de los procesos de Linux?
 
 ::option[El kernel.]{#process-details-kernel .correct explanation="El kernel mantiene el estado de los procesos y aplica las reglas de planificación, memoria, señales y control de acceso."}
 ::option[El directorio del archivo ejecutable.]{#process-details-directory explanation="Un directorio almacena correspondencias de nombres con inodos y no planifica procesos en ejecución."}
@@ -60,8 +58,7 @@ Los hilos ejecutables compiten por tiempo de CPU. El planificador del kernel eli
 
 Cada proceso suele ver un espacio de direcciones virtual. El kernel y el hardware asocian direcciones virtuales con memoria física u otro almacenamiento de respaldo, aplican protecciones y pueden compartir páginas cuando corresponde. Por tanto, una cifra de memoria de `ps` o `top` no representa automáticamente la cantidad de RAM física exclusiva atribuible a ese proceso.
 
-:::single-choice{#process-details-scheduler-role}
-¿Qué selecciona el planificador de Linux?
+:::single-choice{#process-details-scheduler-role} ¿Qué selecciona el planificador de Linux?
 
 ::option[Qué hilo ejecutable se ejecuta en una CPU disponible.]{#process-details-runnable-thread .correct explanation="La política de planificación elige entre contextos de ejecución preparados y asigna tiempo de CPU."}
 ::option[Qué propietario de archivo se registra al formatear un disco.]{#process-details-format-owner explanation="La propiedad del sistema de archivos no está relacionada con la planificación de CPU."}
@@ -72,8 +69,7 @@ Cada proceso suele ver un espacio de direcciones virtual. El kernel y el hardwar
 
 Cuando un proceso termina, el kernel libera la mayoría de sus recursos privados, cierra los descriptores restantes y registra información de terminación para su padre. Un pequeño registro en la tabla de procesos puede permanecer como zombi hasta que el padre recupere el estado de salida. Esto significa que «el proceso ha terminado de ejecutarse» y «todo rastro ha desaparecido de la tabla» no siempre ocurren al mismo tiempo.
 
-:::single-choice{#process-details-exit-status}
-¿Por qué puede un proceso terminado permanecer brevemente como zombi?
+:::single-choice{#process-details-exit-status} ¿Por qué puede un proceso terminado permanecer brevemente como zombi?
 
 ::option[Sigue ejecutando instrucciones con toda su memoria asignada.]{#process-details-zombie-running explanation="Un zombi ha terminado de ejecutarse y ya no conserva un espacio de direcciones normal en ejecución."}
 ::option[Su padre todavía no ha recogido el estado de terminación registrado.]{#process-details-parent-wait .correct explanation="El kernel conserva información mínima de salida hasta que el padre realiza una operación de espera."}

@@ -28,8 +28,7 @@ $ sudo mkfs.ext4 /dev/VERIFIED-PARTITION
 
 As opções compatíveis, os padrões, os conjuntos de recursos e as solicitações de confirmação de sobrescrita diferem entre as implementações. Leia o manual local do formatador exato, em vez de presumir que todos os backends de `mkfs` se comportem da mesma forma.
 
-:::single-choice{#creating-filesystems-mkfs-role}
-O que `mkfs -t ext4 TARGET` solicita?
+:::single-choice{#creating-filesystems-mkfs-role} O que `mkfs -t ext4 TARGET` solicita?
 
 ::option[A montagem de um sistema de arquivos existente sem alterá-lo.]{#creating-filesystems-mount-existing explanation="A montagem é uma operação separada; mkfs inicializa os metadados no dispositivo."}
 ::option[A criação de estruturas do sistema de arquivos ext4 no destino.]{#creating-filesystems-create-ext4 .correct explanation="A interface seleciona a implementação de formatação ext4 para o dispositivo de bloco especificado."}
@@ -50,8 +49,7 @@ $ sudo wipefs --no-act /dev/VERIFIED-PARTITION
 
 Desmonte ou desative todas as camadas relevantes por meio de suas próprias ferramentas. Verifique novamente a identidade imediatamente antes de executar o formatador, pois os nomes de enumeração podem mudar.
 
-:::single-choice{#creating-filesystems-wipefs-no-act}
-O que `wipefs --no-act TARGET` fornece nesse fluxo de trabalho?
+:::single-choice{#creating-filesystems-wipefs-no-act} O que `wipefs --no-act TARGET` fornece nesse fluxo de trabalho?
 
 ::option[Um relatório somente para leitura das assinaturas reconhecidas.]{#creating-filesystems-signature-report .correct explanation="O modo no-act ajuda a revelar assinaturas existentes de sistemas de arquivos, tabelas de partições, RAID ou outras sem removê-las."}
 ::option[Um novo sistema de arquivos vazio e pronto para montagem.]{#creating-filesystems-wipefs-formats explanation="A inspeção das assinaturas não inicializa um novo sistema de arquivos."}
@@ -64,8 +62,7 @@ Escolha um tipo compatível com a distribuição, o ambiente de boot, as ferrame
 
 Não selecione um formato apenas por ser popular. Por exemplo, ext4, XFS e Btrfs possuem diferentes recursos operacionais e procedimentos de recuperação. Um dispositivo removível destinado à interoperabilidade pode exigir outro formato, com semânticas diferentes para permissões Unix.
 
-:::single-choice{#creating-filesystems-type-choice}
-Qual é uma base adequada para selecionar o tipo de sistema de arquivos?
+:::single-choice{#creating-filesystems-type-choice} Qual é uma base adequada para selecionar o tipo de sistema de arquivos?
 
 ::option[O nome mais curto de digitar.]{#creating-filesystems-shortest-name explanation="O tamanho do comando não indica nada sobre durabilidade, recursos ou suporte."}
 ::option[A promessa de que nenhuma falha futura de armazenamento ocorrerá.]{#creating-filesystems-no-failure explanation="Nenhum sistema de arquivos elimina falhas de hardware nem a necessidade de backups."}
@@ -85,8 +82,7 @@ $ sudo blkid /dev/VERIFIED-PARTITION
 
 Registre o UUID para a configuração posterior da montagem. Criar um sistema de arquivos não o monta, não cria diretórios de aplicações, não restaura backups nem o torna persistente após a inicialização.
 
-:::single-choice{#creating-filesystems-after-mkfs}
-O que continua sendo uma etapa separada após a criação de um sistema de arquivos?
+:::single-choice{#creating-filesystems-after-mkfs} O que continua sendo uma etapa separada após a criação de um sistema de arquivos?
 
 ::option[Montá-lo em um diretório pretendido.]{#creating-filesystems-mount-separate .correct explanation="A formatação grava as estruturas do sistema de arquivos, enquanto a montagem o associa à árvore visível de diretórios."}
 ::option[Atribuir qualquer capacidade ao dispositivo de bloco.]{#creating-filesystems-capacity explanation="A partição ou o dispositivo lógico subjacente já fornece a capacidade que está sendo formatada."}

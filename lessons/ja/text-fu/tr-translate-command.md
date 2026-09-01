@@ -41,8 +41,7 @@ ABC123
 
 集合式はシェルにそのまま渡るよう引用します。`SET1` に含まれない文字は変更されません。
 
-:::single-choice{#tr-map-characters}
-`printf '%s\n' 'abc123' | tr 'abc' 'ABC'` は何を表示しますか？
+:::single-choice{#tr-map-characters} `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` は何を表示しますか？
 
 ::option[`ABCABC`]{#tr-uppercase-digits explanation="数字は変換元集合にないため、文字へ置き換えられません。"}
 ::option[`ABC123`]{#tr-uppercase-abc .correct explanation="`a`、`b`、`c` は `ABC` の同じ位置の文字へ対応し、数字は変わりません。"}
@@ -70,8 +69,7 @@ onetwothree
 
 数字は完全な数値トークンではなく 1 文字ずつ削除されます。文字クラスは現在のロケールで定義される集合を表します。改行を削除すると代わりの区切りを入れずに行が連結されます。
 
-:::single-choice{#tr-delete-digits}
-他の文字を変えず、stdin からすべての数字を削除するコマンドはどれですか？
+:::single-choice{#tr-delete-digits} 他の文字を変えず、stdin からすべての数字を削除するコマンドはどれですか？
 
 ::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` は入力ストリームから数字クラスの全文字を削除します。"}
 ::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` は連続する数字を圧縮しますが、各並びから 1 文字は残します。"}
@@ -95,8 +93,7 @@ Two
 
 最初の集合に含まれるのは通常の空白だけなので、タブや改行はそのコマンドでは圧縮されません。
 
-:::single-choice{#tr-squeeze-spaces}
-stdin 内の通常の空白の連続をすべて 1 個へ減らすコマンドはどれですか？
+:::single-choice{#tr-squeeze-spaces} stdin 内の通常の空白の連続をすべて 1 個へ減らすコマンドはどれですか？
 
 ::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="`-s` は指定集合の連続文字を圧縮し、この集合には通常の空白が 1 つ含まれます。"}
 ::option[`tr -d ' '`]{#tr-delete-space explanation="`-d` は各並びに 1 個残すのではなく、通常の空白をすべて削除します。"}
@@ -119,8 +116,7 @@ userexamplecom
 
 `-c` は `SET1` の補集合、つまり集合にないすべての文字を意味します。`-d` と組み合わせれば選択した種類だけを残せます。この例では改行も英数字でないため削除されます。レコード境界が重要なら区切りを意図的に残してください。
 
-:::single-choice{#tr-keep-alphanumeric}
-`tr -cd '[:alnum:]'` は stdin に何をしますか？
+:::single-choice{#tr-keep-alphanumeric} `tr -cd '[:alnum:]'` は stdin に何をしますか？
 
 ::option[英数字を削除し、それ以外を残す。]{#tr-delete-alnum explanation="補集合によって `-d` の対象が変わり、英数字集合そのものは残ります。"}
 ::option[英数字でないすべての文字を削除する。]{#tr-delete-nonalnum .correct explanation="`-c` が英数字集合を反転し、`-d` がその非英数字集合を削除します。"}
@@ -148,8 +144,7 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 `tr` は stdin を読むため、ファイルは `<` で渡せます。結果を保存するなら stdout を別ファイルへ送り、読み取り前に入力を切り詰める同じパスへのリダイレクトは避けます。
 
-:::single-choice{#tr-read-file-input}
-`tr` に `names.txt` を stdin として読ませ、小文字を大文字へ変換するコマンドはどれですか？
+:::single-choice{#tr-read-file-input} `tr` に `names.txt` を stdin として読ませ、小文字を大文字へ変換するコマンドはどれですか？
 
 ::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` は通常の入力ファイル名をこの形で受け取らず、余分なオペランドで構文が不正になります。"}
 ::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="ファイルの読み方は正しいですが、小文字を変換せず削除します。"}

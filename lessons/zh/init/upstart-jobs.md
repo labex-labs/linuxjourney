@@ -29,8 +29,7 @@ networking start/running
 
 Upstart 会同时报告 `start` 或 `stop` 这样的**目标**，以及 `running` 或 `waiting` 这样的当前**状态**。`stop/waiting` 表示该作业没有运行，正在等待启动条件或手动请求；它不一定表示发生了错误。
 
-:::single-choice{#upstart-jobs-stop-waiting}
-Upstart 状态输出中的 `stop/waiting` 通常表示什么？
+:::single-choice{#upstart-jobs-stop-waiting} Upstart 状态输出中的 `stop/waiting` 通常表示什么？
 
 ::option[作业正在运行，但不消耗 CPU。]{#upstart-jobs-running-idle explanation="正在运行的作业通常会显示 start 目标和 running 状态。"}
 ::option[作业的目标是停止，且没有进程实例正在运行。]{#upstart-jobs-stopped-waiting .correct explanation="作业定义仍然存在，而 Upstart 正在等待未来的条件或命令。"}
@@ -48,8 +47,7 @@ $ sudo initctl stop JOB_NAME
 
 作业可以定义由环境变量区分的多个实例。在这种情况下，应提供配置要求的确切变量，并在查询或停止实例时始终带上这些变量。启动网络、存储、身份验证或远程访问作业可能中断当前会话，因此要保留通过控制台恢复的手段。
 
-:::single-choice{#upstart-jobs-start-command}
-哪个命令会手动请求启动 `peanuts` 作业？
+:::single-choice{#upstart-jobs-start-command} 哪个命令会手动请求启动 `peanuts` 作业？
 
 ::option[`sudo initctl start peanuts`]{#upstart-jobs-start-peanuts .correct explanation="start 子命令之后应跟已配置的作业名称以及所有必需的实例变量。"}
 ::option[`sudo initctl peanuts start`]{#upstart-jobs-name-first explanation="initctl 语法将子命令放在作业名称之前。"}
@@ -68,8 +66,7 @@ $ sudo initctl restart peanuts
 
 重启会造成服务中断，而且服务可能无法恢复运行。之后应检查实际服务端点和日志。
 
-:::single-choice{#upstart-jobs-restart-peanuts}
-哪个命令会请求重启正在运行的 Upstart 作业 `peanuts`？
+:::single-choice{#upstart-jobs-restart-peanuts} 哪个命令会请求重启正在运行的 Upstart 作业 `peanuts`？
 
 ::option[`sudo initctl restart peanuts`]{#upstart-jobs-restart-command .correct explanation="restart 子命令通过 Upstart 控制接口操作指定作业。"}
 ::option[`sudo initctl emit peanuts`]{#upstart-jobs-emit-not-restart explanation="发出事件会影响所有条件匹配的作业，并不是直接的重启请求。"}
@@ -82,8 +79,7 @@ $ sudo initctl restart peanuts
 
 语法验证无法证明路径确实存在、凭据允许执行、事件一定会到达，或进程最终会进入就绪状态。请在具备恢复手段的环境中测试。
 
-:::single-choice{#upstart-jobs-syntax-validation-limit}
-作业语法验证无法证明什么？
+:::single-choice{#upstart-jobs-syntax-validation-limit} 作业语法验证无法证明什么？
 
 ::option[服务能够成功启动并进入就绪状态。]{#upstart-jobs-runtime-not-proven .correct explanation="运行时路径、权限、依赖关系和事件流都需要通过实际的受控测试来验证。"}
 ::option[配置文本是否能被解析。]{#upstart-jobs-parse-purpose explanation="解析配置文本正是语法验证的主要目的。"}
@@ -100,8 +96,7 @@ $ sudo initctl emit EVENT_NAME
 
 启动或停止表达式与之匹配的每个作业都可能作出响应。事件并非只发送给某个作业，而且其影响可能通过后续事件层层扩散。发出自定义事件或系统事件前，应检查所有匹配的配置；不要在生产主机上随意重放核心启动事件。
 
-:::single-choice{#upstart-jobs-emit-scope}
-运行 `initctl emit EVENT_NAME` 时可能发生什么？
+:::single-choice{#upstart-jobs-emit-scope} 运行 `initctl emit EVENT_NAME` 时可能发生什么？
 
 ::option[所有与该事件匹配的作业表达式都可能触发状态转换。]{#upstart-jobs-event-matches .correct explanation="事件会广播到 Upstart 的依赖模型中，而不是只发送给某个指定服务。"}
 ::option[只有名称与事件完全相同的作业才能响应。]{#upstart-jobs-event-name-only explanation="匹配关系由 start on 和 stop on 表达式定义，而不是由作业名称是否相同决定。"}

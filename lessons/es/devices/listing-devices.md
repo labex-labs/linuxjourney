@@ -30,8 +30,7 @@ $ lsusb -t
 
 Existe una salida detallada de descriptores, pero algunos datos necesitan acceso de lectura elevado. No concedas permisos amplios sobre dispositivos USB solo para que una orden de inspección muestre menos avisos.
 
-:::single-choice{#listing-devices-usb-tree}
-¿Qué orden muestra los dispositivos USB como un árbol de topología?
+:::single-choice{#listing-devices-usb-tree} ¿Qué orden muestra los dispositivos USB como un árbol de topología?
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="Esta orden muestra funciones PCI e información de controladores del kernel, no la topología USB."}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="Esta no es la orden de árbol USB presentada."}
@@ -54,8 +53,7 @@ $ lspci -k
 
 Que un controlador PCI aparezca en la lista no demuestra que todos los dispositivos situados tras él estén inicializados o funcionen correctamente. Al resolver problemas, comprueba la vinculación del controlador y los registros del kernel.
 
-:::single-choice{#listing-devices-pci-driver}
-¿Qué orden añade información del controlador del kernel a un listado PCI?
+:::single-choice{#listing-devices-pci-driver} ¿Qué orden añade información del controlador del kernel a un listado PCI?
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="La opción `-k` muestra el controlador activo del kernel y los módulos capaces de manejar cada dispositivo PCI."}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="Esta orden describe la jerarquía USB y los controladores de interfaces."}
@@ -78,8 +76,7 @@ Para ver una jerarquía orientada al almacenamiento que incluya muchos tipos de 
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-¿Qué muestra principalmente `lsscsi`?
+:::single-choice{#listing-devices-lsscsi-scope} ¿Qué muestra principalmente `lsscsi`?
 
 ::option[Exclusivamente todos los espacios de nombres y controladores NVMe.]{#listing-devices-only-nvme explanation="NVMe utiliza su propio subsistema y sus propias herramientas, aunque algunas vistas de bloques relacionadas pueden aparecer en otros lugares."}
 ::option[Únicamente archivos cuyos nombres terminan en `.scsi`.]{#listing-devices-scsi-extension explanation="La orden consulta interfaces de dispositivos del kernel, no extensiones de nombres de archivo."}
@@ -92,8 +89,7 @@ Las descripciones suelen proceder de bases de datos locales de identificadores y
 
 Las utilidades pueden distribuirse por separado, normalmente en paquetes como `usbutils`, `pciutils` y `lsscsi`. Si falta una orden, utiliza el gestor de paquetes de la distribución en vez de descargar sustitutos desconocidos.
 
-:::single-choice{#listing-devices-listed-not-working}
-¿Ver un dispositivo en `lspci` demuestra que su controlador está activo y funciona correctamente?
+:::single-choice{#listing-devices-listed-not-working} ¿Ver un dispositivo en `lspci` demuestra que su controlador está activo y funciona correctamente?
 
 ::option[No; examina también la vinculación del controlador y los mensajes pertinentes del kernel.]{#listing-devices-needs-correlation .correct explanation="La enumeración demuestra que una función PCI es visible, no que la inicialización de nivel superior haya terminado correctamente."}
 ::option[Sí; la enumeración PCI realiza una prueba funcional completa.]{#listing-devices-complete-test explanation="El listado no ejercita todas las funciones del hardware ni valida el comportamiento de los servicios."}

@@ -16,8 +16,7 @@ Linux Mint es una distribución de Linux centrada en el escritorio, conocida por
 
 Su reputación proviene de decisiones prácticas más que de la complejidad técnica. Linux Mint tiene como objetivo proporcionar una experiencia de escritorio completa con configuraciones predeterminadas sensatas, lo cual es una de las razones por las que a menudo se recomienda a personas que migran desde Windows.
 
-:::single-choice{#match-linux-mint-goal}
-¿Qué objetivo encaja mejor con Linux Mint?
+:::single-choice{#match-linux-mint-goal} ¿Qué objetivo encaja mejor con Linux Mint?
 
 ::option[Usar un escritorio familiar con valores predeterminados prácticos]{#familiar-desktop .correct explanation="Linux Mint se centra en una experiencia de escritorio accesible, con navegación familiar y valores predeterminados útiles. Esto coincide directamente con el objetivo."}
 ::option[Ejecutar un servidor mínimo sin interfaz de escritorio]{#minimal-server explanation="Linux Mint está diseñado principalmente para equipos de escritorio y portátiles. Una distribución orientada a servidores se adaptaría mejor a un sistema mínimo sin interfaz gráfica."}
@@ -36,8 +35,7 @@ Las ediciones principales de Linux Mint utilizan Ubuntu LTS como base para sus p
 
 Si quieres comprender mejor esa relación familiar, consulta [Ubuntu](https://labex.io/es/lesson/ubuntu) y [Debian](https://labex.io/es/lesson/debian).
 
-:::single-choice{#identify-main-mint-base}
-¿Qué distribución proporciona la base de paquetes de las ediciones principales de Linux Mint?
+:::single-choice{#identify-main-mint-base} ¿Qué distribución proporciona la base de paquetes de las ediciones principales de Linux Mint?
 
 ::option[Ubuntu LTS]{#ubuntu-lts-base .correct explanation="Las ediciones principales de Linux Mint utilizan una base de paquetes de Ubuntu LTS. LMDE es la edición independiente basada directamente en Debian."}
 ::option[Fedora Linux]{#mint-fedora-base explanation="Fedora pertenece a la familia de paquetes RPM y no proporciona la base de Mint. Las ediciones principales de Mint utilizan Ubuntu LTS."}
@@ -50,8 +48,7 @@ Debido a que Linux Mint está basado en Ubuntu, utiliza el formato de paquete `.
 
 Esto le da a Linux Mint un flujo de trabajo de software familiar y bien documentado, lo cual es una de las razones por las que funciona bien para los recién llegados.
 
-:::single-choice{#identify-mint-package-tool}
-¿Qué herramienta gestiona paquetes desde la línea de comandos en Linux Mint?
+:::single-choice{#identify-mint-package-tool} ¿Qué herramienta gestiona paquetes desde la línea de comandos en Linux Mint?
 
 ::option[DNF]{#mint-dnf-tool explanation="DNF se utiliza en Fedora y en sistemas de la familia RHEL. Linux Mint utiliza las herramientas de paquetes de la familia Debian."}
 ::option[APT]{#mint-apt-tool .correct explanation="Linux Mint utiliza APT para gestionar paquetes desde la línea de comandos. Su software se distribuye en el formato `.deb` de la familia Debian."}
@@ -64,8 +61,7 @@ Linux Mint está diseñado principalmente para sistemas de escritorio y portáti
 
 Ese enfoque centrado en el escritorio es una parte importante de la identidad de Mint. A diferencia de algunas distribuciones que intentan cubrir todos los casos de uso por igual, Mint se entiende mejor como una distribución de Linux de escritorio práctica.
 
-:::single-choice{#recognize-cinnamon-layout}
-¿Qué característica describe la experiencia del escritorio Cinnamon destacada aquí?
+:::single-choice{#recognize-cinnamon-layout} ¿Qué característica describe la experiencia del escritorio Cinnamon destacada aquí?
 
 ::option[Una interfaz basada únicamente en órdenes y sin escritorio gráfico]{#command-only-layout explanation="Linux Mint permite usar una terminal, pero Cinnamon es un entorno de escritorio gráfico. Una interfaz solo de órdenes no lo describe."}
 ::option[Un diseño clásico con panel y menú de aplicaciones]{#classic-cinnamon-layout .correct explanation="Cinnamon es conocido por su familiar diseño de panel y menú. Esto contribuye a que la experiencia de escritorio de Mint resulte accesible."}

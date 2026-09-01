@@ -25,8 +25,7 @@ Les métadonnées d’un paquet peuvent exprimer plus qu’un simple nom obligat
 
 Ces règles permettent au solveur de choisir un ensemble de versions compatible avec les dépôts configurés, l’architecture et l’état installé. Une solution peut nécessiter des mises à niveau, des suppressions ou un choix entre plusieurs fournisseurs ; examinez donc la transaction proposée avant de l’approuver.
 
-:::single-choice{#package-dependencies-solver-role}
-Que cherche à produire un solveur de dépendances qui connaît les dépôts ?
+:::single-choice{#package-dependencies-solver-role} Que cherche à produire un solveur de dépendances qui connaît les dépôts ?
 
 ::option[Un ensemble cohérent de versions de paquets et de changements nécessaires.]{#package-dependencies-consistent-set .correct explanation="Le solveur évalue les relations déclarées entre les paquets installés et disponibles."}
 ::option[Un nouveau compte utilisateur pour chaque application installée.]{#package-dependencies-user-account explanation="La création d’un compte peut être une action du cycle de vie d’un paquet, mais ce n’est pas le but de la résolution des dépendances."}
@@ -39,8 +38,7 @@ Une bibliothèque partagée contient du code compilé que plusieurs programmes p
 
 Sur les systèmes Linux reposant sur ELF, un exécutable peut enregistrer le nom d’une bibliothèque nécessaire, par exemple un SONAME. L’éditeur de liens dynamique trouve une bibliothèque installée correspondante au démarrage du programme. Les métadonnées du paquet représentent généralement cette exigence comme une dépendance envers le paquet ou la fonctionnalité qui fournit la bibliothèque compatible.
 
-:::single-choice{#package-dependencies-shared-library}
-Qu’est-ce qu’une bibliothèque partagée ?
+:::single-choice{#package-dependencies-shared-library} Qu’est-ce qu’une bibliothèque partagée ?
 
 ::option[Du code compilé que plusieurs programmes peuvent charger et utiliser.]{#package-dependencies-library-code .correct explanation="Une bibliothèque partagée fournit des interfaces binaires réutilisables au lieu d’intégrer une implémentation distincte dans chaque programme."}
 ::option[Une liste de dépôts partagée entre des distributions sans rapport.]{#package-dependencies-shared-repository explanation="La configuration des dépôts et le code exécutable d’une bibliothèque sont des notions différentes."}
@@ -53,8 +51,7 @@ La présence d’un fichier dont le nom ressemble à celui de la bibliothèque n
 
 Les mainteneurs de paquets encodent les relations entre bibliothèques et coordonnent les transitions lorsqu’une ABI change. Laissez le gestionnaire de paquets contrôler les bibliothèques natives ; employez des mécanismes pris en charge d’installation parallèle, de conteneur, d’environnement ou de construction pour les logiciels qui exigent une version incompatible.
 
-:::single-choice{#package-dependencies-filename-insufficient}
-Pourquoi un programme peut-il encore échouer lorsqu’un fichier de bibliothèque portant un nom semblable existe ?
+:::single-choice{#package-dependencies-filename-insufficient} Pourquoi un programme peut-il encore échouer lorsqu’un fichier de bibliothèque portant un nom semblable existe ?
 
 ::option[Linux n’autorise qu’un seul exécutable à employer chaque bibliothèque.]{#package-dependencies-one-consumer explanation="L’un des objectifs fondamentaux des bibliothèques partagées est leur utilisation par plusieurs processus et programmes."}
 ::option[Les dépendances des paquets ne s’appliquent qu’avant le premier démarrage du système.]{#package-dependencies-boot-only explanation="Les dépendances restent pertinentes pendant l’installation, les mises à niveau et l’exécution."}
@@ -67,8 +64,7 @@ Un problème de dépendances peut provenir d’un mélange de dépôts, d’opé
 
 Commencez par lire les diagnostics du gestionnaire de paquets, n’actualisez que les métadonnées des dépôts de confiance, examinez les versions retenues ou épinglées et vérifiez la réparation proposée. Un installateur de bas niveau peut décompresser une archive sans récupérer toutes ses dépendances ; un outil de dépôt de niveau supérieur est généralement plus sûr pour une installation ordinaire, car il résout toute la transaction.
 
-:::single-choice{#package-dependencies-low-level-limit}
-Quelle est une limite courante de l’installation d’un paquet local avec un outil d’archives de bas niveau ?
+:::single-choice{#package-dependencies-low-level-limit} Quelle est une limite courante de l’installation d’un paquet local avec un outil d’archives de bas niveau ?
 
 ::option[Il peut ne pas récupérer ni résoudre toutes les dépendances manquantes dans les dépôts.]{#package-dependencies-no-repository-resolution .correct explanation="Les outils de bas niveau gèrent les archives et les bases de paquets, mais peuvent laisser la récupération des dépendances à un gestionnaire de niveau supérieur."}
 ::option[Il recompile toujours le noyau Linux depuis les sources.]{#package-dependencies-recompile-kernel explanation="L’installation d’une archive de paquet n’entraîne pas nécessairement la reconstruction du noyau."}

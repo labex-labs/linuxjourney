@@ -24,8 +24,7 @@ meta_keywords: "vim 如何保存，linux wq, vi 写入并退出，vim 如何保�
 
 使用 `:w copy.txt` 可把当前缓冲区写入另一个路径，同时保留当前缓冲区原来的名称。如果缓冲区应采用新路径名，请使用 `:saveas copy.txt`。
 
-:::single-choice{#vim-save-without-quit}
-哪个 Vim 命令会把当前缓冲区写入其关联文件而不退出？
+:::single-choice{#vim-save-without-quit} 哪个 Vim 命令会把当前缓冲区写入其关联文件而不退出？
 
 ::option[`:q`]{#vim-save-q explanation="`:q` 请求退出，并不会写入已修改的缓冲区。"}
 ::option[`:w`]{#vim-save-w .correct explanation="`:write` 命令保存当前缓冲区，并让编辑窗口保持打开。"}
@@ -42,8 +41,7 @@ meta_keywords: "vim 如何保存，linux wq, vi 写入并退出，vim 如何保�
 
 如果当前缓冲区已修改，退出会丢失更改，Vim 通常会拒绝并显示警告。这个保护措施让你有机会写入或重新考虑。
 
-:::single-choice{#vim-quit-clean-buffer}
-没有未保存更改会丢失时，哪个命令会退出当前 Vim 窗口？
+:::single-choice{#vim-quit-clean-buffer} 没有未保存更改会丢失时，哪个命令会退出当前 Vim 窗口？
 
 ::option[`:w`]{#vim-quit-w explanation="这会写入缓冲区，但让当前窗口保持打开。"}
 ::option[`:q`]{#vim-quit-q .correct explanation="当 Vim 的缓冲区修改保护允许时，普通退出命令会关闭窗口。"}
@@ -60,8 +58,7 @@ meta_keywords: "vim 如何保存，linux wq, vi 写入并退出，vim 如何保�
 
 感叹号会覆盖未保存更改的警告。这些缓冲区更改不会写入，因此按 Enter 前应确认它们确实可以丢弃。
 
-:::single-choice{#vim-quit-discard-changes}
-当前缓冲区中有你明确不想保存的更改。哪个命令会退出当前窗口并放弃它们？
+:::single-choice{#vim-quit-discard-changes} 当前缓冲区中有你明确不想保存的更改。哪个命令会退出当前窗口并放弃它们？
 
 ::option[`:q`]{#vim-discard-plain-q explanation="如果退出会丢失已修改缓冲区中的更改，普通 `:q` 通常会拒绝。"}
 ::option[`:wq`]{#vim-discard-wq explanation="`:wq` 会在退出前写入更改，行为与丢弃正好相反。"}
@@ -78,8 +75,7 @@ meta_keywords: "vim 如何保存，linux wq, vi 写入并退出，vim 如何保�
 
 如果写入失败，Vim 不会完成所请求的退出。应解决错误，不要假设数据已经写入磁盘。
 
-:::single-choice{#vim-write-and-quit}
-哪个命令会写入当前缓冲区，并在写入成功后退出当前窗口？
+:::single-choice{#vim-write-and-quit} 哪个命令会写入当前缓冲区，并在写入成功后退出当前窗口？
 
 ::option[`:wq`]{#vim-save-wq .correct explanation="它组合了写入和退出，而且退出取决于写入成功。"}
 ::option[`:q!`]{#vim-save-force-quit explanation="这会退出并丢弃更改，而不是写入它们。"}
@@ -100,8 +96,7 @@ ZZ
 
 这与 `:wq` 有细微差别：即使缓冲区没有更改，`:wq` 也会请求写入。大写 `ZQ` 是普通模式中“不写入便退出”的对应命令，类似于 `:q!`。
 
-:::single-choice{#vim-write-if-modified-quit}
-普通模式中的哪个命令只在缓冲区已修改时写入，然后退出？
+:::single-choice{#vim-write-if-modified-quit} 普通模式中的哪个命令只在缓冲区已修改时写入，然后退出？
 
 ::option[`ZZ`]{#vim-save-zz .correct explanation="大写 `ZZ` 会执行与 `:x` 对应的“修改后才写入并退出”行为。"}
 ::option[`zz`]{#vim-center-screen explanation="小写 `zz` 会把当前行重新置于窗口中央，不会保存或退出。"}

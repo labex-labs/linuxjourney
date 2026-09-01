@@ -22,8 +22,7 @@ $ nmcli connection show
 $ nmcli connection show --active
 ```
 
-:::single-choice{#networkmanager-device-profile}
-NetworkManager 연결 프로필이란 무엇입니까?
+:::single-choice{#networkmanager-device-profile} NetworkManager 연결 프로필이란 무엇입니까?
 
 ::option[네트워크 카드에 납땜된 물리 커넥터입니다.]{#networkmanager-physical-connector explanation="NetworkManager 프로필이 아니라 하드웨어입니다."}
 ::option[장치에서 활성화할 수 있는 저장된 설정 집합입니다.]{#networkmanager-stored-settings .correct explanation="프로필은 커널 인터페이스 객체와 별도로 설정을 영구 보존합니다."}
@@ -41,8 +40,7 @@ $ nmcli connection show 'Wired connection 1'
 
 프로필 설정, 런타임 DHCP 결과 및 커널 상태가 서로 다를 수 있습니다. `ip address`, `ip route` 및 확인자와 비교하십시오. 더 이상 권장되지 않는 `nm-tool`을 현재 작업 흐름의 기반으로 삼으면 안 됩니다.
 
-:::single-choice{#networkmanager-active-command}
-활성 NetworkManager 프로필을 나열하는 명령은 무엇입니까?
+:::single-choice{#networkmanager-active-command} 활성 NetworkManager 프로필을 나열하는 명령은 무엇입니까?
 
 ::option[`nmcli device delete --all`]{#networkmanager-delete-all explanation="검사 명령이 아니며 파괴적인 의도를 나타냅니다."}
 ::option[`nmcli connection show --active`]{#networkmanager-show-active .correct explanation="저장된 연결을 현재 활성화된 연결로 필터링합니다."}
@@ -60,8 +58,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 수정은 영구 프로필 데이터를 바꾸고 활성화는 실시간 주소, 경로 및 DNS를 교체할 수 있습니다. 원격 변경에는 콘솔 접근, 저장된 원래 설정 및 독립적인 시간 제한 되돌리기가 필요합니다. 변경하는 연결 자체에 복구 명령 전달을 의존하지 마십시오.
 
-:::single-choice{#networkmanager-modify-versus-up}
-`connection modify`와 `connection up`의 차이는 무엇입니까?
+:::single-choice{#networkmanager-modify-versus-up} `connection modify`와 `connection up`의 차이는 무엇입니까?
 
 ::option[modify는 호스트를 재부팅하고 up은 DNS 소스 코드를 편집합니다.]{#networkmanager-reboot-source explanation="어느 설명도 명령과 맞지 않습니다."}
 ::option[modify는 프로필 설정을 바꾸고 up은 프로필을 활성화합니다.]{#networkmanager-change-activate .correct explanation="영구 설정과 런타임 활성화는 관련 있지만 별도의 작업입니다."}
@@ -72,8 +69,7 @@ $ sudo nmcli connection up 'Wired connection 1'
 
 활성화 후 프로필 상태, 커널 주소와 경로, DNS, 양쪽 주소 계열 및 의도한 애플리케이션을 검증합니다. Wi-Fi, VPN, 802.1X 및 모바일 프로필에는 비밀 정보가 들어 있을 수 있습니다. 프로필 권한을 제한하고 공유 로그나 셸 기록에 비밀 필드를 출력하지 마십시오.
 
-:::single-choice{#networkmanager-verification}
-NetworkManager가 “연결됨”을 보고하는 것보다 강한 증거는 무엇입니까?
+:::single-choice{#networkmanager-verification} NetworkManager가 “연결됨”을 보고하는 것보다 강한 증거는 무엇입니까?
 
 ::option[프로필 이름에 Wired라는 단어가 들어 있습니다.]{#networkmanager-name-proof explanation="레이블은 경로나 서비스 상태를 입증하지 않습니다."}
 ::option[터미널 창이 계속 열려 있습니다.]{#networkmanager-terminal-open explanation="부분적인 네트워크 장애에서도 터미널이 살아 있을 수 있습니다."}

@@ -32,8 +32,7 @@ sally sells seashells
 
 Pon los patrones regex entre comillas para que el shell no los expanda ni divida antes de que los reciba la herramienta de coincidencia. Las regex también difieren de la expansión de rutas del shell: en una regex, `*` repite el átomo anterior; en un patrón glob del shell, `*` es por sí mismo un comodín para una secuencia de caracteres de una ruta.
 
-:::single-choice{#regex-versus-shell-star}
-¿Qué hace `*` en una expresión regular como `ab*`?
+:::single-choice{#regex-versus-shell-star} ¿Qué hace `*` en una expresión regular como `ab*`?
 
 ::option[Coincide con cualquier nombre de archivo del directorio actual.]{#regex-shell-glob explanation="Eso describe la expansión de rutas del shell en el contexto de una orden, no el significado de `*` dentro de una regex."}
 ::option[Repite la `b` anterior cero o más veces.]{#regex-repeat-b .correct explanation="Un cuantificador regex se aplica al átomo inmediatamente anterior, por lo que `ab*` coincide con `a`, `ab`, `abb`, etc."}
@@ -60,8 +59,7 @@ Combina ambas anclas cuando toda la línea deba ajustarse al patrón:
 ^by the seashore$
 ```
 
-:::single-choice{#regex-complete-line}
-¿Qué patrón coincide únicamente con una línea cuyo texto completo es `by the seashore`?
+:::single-choice{#regex-complete-line} ¿Qué patrón coincide únicamente con una línea cuyo texto completo es `by the seashore`?
 
 ::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="El circunflejo exige que la coincidencia comience al principio y el signo de dólar que termine con la línea."}
 ::option[`by the seashore`]{#regex-unanchored-line explanation="Sin anclas, esta secuencia puede coincidir dentro de una línea más larga con texto adicional antes o después."}
@@ -78,8 +76,7 @@ b.
 
 Esto coincide con `by`, pero también podría coincidir con `ba` o `b7`. No coincide con una `b` aislada porque exige un carácter después. Para buscar un punto literal, escápalo como `\.` o colócalo en una expresión entre corchetes adecuada.
 
-:::single-choice{#regex-dot-character}
-¿Con qué cadena no coincide el patrón de línea completa `^b.$`?
+:::single-choice{#regex-dot-character} ¿Con qué cadena no coincide el patrón de línea completa `^b.$`?
 
 ::option[`by`]{#regex-dot-by explanation="El punto coincide con `y`, por lo que la línea de dos caracteres satisface el patrón."}
 ::option[`b`]{#regex-dot-b .correct explanation="El punto exige un carácter después de `b`, pero esta cadena termina inmediatamente."}
@@ -104,8 +101,7 @@ s[^e]lls
 
 Esto coincide con `salls`, pero no con `sells`, porque el carácter posterior a la primera `s` no puede ser `e`.
 
-:::single-choice{#regex-negated-bracket}
-¿Con qué coincide `[^e]`?
+:::single-choice{#regex-negated-bracket} ¿Con qué coincide `[^e]`?
 
 ::option[Exactamente un carácter distinto de `e`.]{#regex-not-e .correct explanation="Un circunflejo inicial dentro de los corchetes complementa el conjunto indicado, mientras que la expresión sigue consumiendo un carácter."}
 ::option[El principio de una línea seguido de `e`.]{#regex-caret-e-anchor explanation="Dentro de una expresión entre corchetes, un circunflejo inicial niega el conjunto en vez de anclar una línea."}
@@ -143,8 +139,7 @@ $ grep -E '^(cat|dog)s?$' animals.txt
 
 Esto selecciona líneas completas iguales a `cat`, `cats`, `dog` o `dogs`. En el modo BRE, estos operadores tienen reglas de escape diferentes, así que no copies un patrón entre variantes sin comprobarlo.
 
-:::single-choice{#regex-extended-alternation}
-¿Qué orden activa la sintaxis de expresiones regulares extendidas para el patrón `^(cat|dog)s?$`?
+:::single-choice{#regex-extended-alternation} ¿Qué orden activa la sintaxis de expresiones regulares extendidas para el patrón `^(cat|dog)s?$`?
 
 ::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F` trata todos los operadores regex como texto literal, por lo que desactiva la agrupación, la alternancia y la repetición opcional."}
 ::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E` selecciona expresiones regulares extendidas, lo que activa la agrupación, la alternancia y la `s` opcional mostradas."}

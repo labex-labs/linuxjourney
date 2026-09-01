@@ -28,8 +28,7 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 $ df -hT /var/log
 ```
 
-:::single-choice{#disk-usage-df-scope}
-O que `df` informa principalmente?
+:::single-choice{#disk-usage-df-scope} O que `df` informa principalmente?
 
 ::option[O conteúdo em bytes de cada arquivo de um diretório.]{#disk-usage-df-file-content explanation="A contabilização de árvores de diretórios é função de ferramentas como `du`."}
 ::option[A capacidade, o uso e o espaço disponível no nível do sistema de arquivos.]{#disk-usage-df-filesystem .correct explanation="Df consulta as estatísticas de alocação do sistema de arquivos montado, em vez de percorrer todos os caminhos."}
@@ -46,8 +45,7 @@ $ df -i /var
 
 Grandes quantidades de arquivos pequenos podem consumir os inodes disponíveis. Excluir um arquivo grande libera muitos blocos, mas geralmente apenas um inode; excluir muitos arquivos pequenos desnecessários pode aliviar a pressão sobre os inodes. Alguns sistemas de arquivos alocam metadados dinamicamente e representam esses conceitos de forma diferente.
 
-:::single-choice{#disk-usage-inode-exhaustion}
-O que pode acontecer quando um sistema de arquivos possui blocos livres, mas nenhum inode disponível?
+:::single-choice{#disk-usage-inode-exhaustion} O que pode acontecer quando um sistema de arquivos possui blocos livres, mas nenhum inode disponível?
 
 ::option[Todos os arquivos existentes dobram de tamanho automaticamente.]{#disk-usage-inode-double explanation="O esgotamento dos inodes impede a alocação de novos metadados e não aumenta o conteúdo existente."}
 ::option[A criação de outro arquivo pode falhar.]{#disk-usage-inode-create-fail .correct explanation="Um novo objeto do sistema de arquivos precisa de metadados, mesmo quando ainda há espaço para dados de arquivos."}
@@ -70,8 +68,7 @@ $ sudo du -xhd1 /var | sort -h
 
 As opções do GNU mostradas aqui significam saída legível, profundidade máxima de um nível e um único sistema de arquivos. As permissões podem ocultar subárvores e produzir um total incompleto. Por padrão, `du` também pode contar arquivos com links físicos apenas uma vez, diferenciar o tamanho aparente dos blocos alocados e tratar arquivos esparsos de modo diferente conforme as opções.
 
-:::single-choice{#disk-usage-du-purpose}
-Qual comando resume o uso alocado em `/var/log`?
+:::single-choice{#disk-usage-du-purpose} Qual comando resume o uso alocado em `/var/log`?
 
 ::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="Esse comando informa estatísticas de inodes do sistema de arquivos que contém o caminho."}
 ::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du percorre a árvore indicada, e `-s` emite um único resumo em unidades legíveis."}
@@ -90,8 +87,7 @@ Algumas causas comuns são:
 
 Para arquivos excluídos, mas ainda abertos, inspecione os processos autorizados com uma ferramenta como `lsof +L1`; reinicie ou sinalize o serviço responsável por seu procedimento normal, em vez de truncar descritores desconhecidos.
 
-:::single-choice{#disk-usage-deleted-open-file}
-Por que `df` pode mostrar espaço em uso que `du`, baseado em caminhos, não consegue encontrar?
+:::single-choice{#disk-usage-deleted-open-file} Por que `df` pode mostrar espaço em uso que `du`, baseado em caminhos, não consegue encontrar?
 
 ::option[`df` sempre multiplica por dois o tamanho de cada arquivo.]{#disk-usage-df-doubles explanation="Não existe uma regra universal de duplicação."}
 ::option[Um arquivo excluído pode permanecer aberto e alocado para um processo em execução.]{#disk-usage-open-deleted .correct explanation="A entrada do diretório desapareceu, mas o sistema de arquivos mantém os blocos até que a última referência aberta seja fechada."}
@@ -102,8 +98,7 @@ Por que `df` pode mostrar espaço em uso que `du`, baseado em caminhos, não con
 
 Comece pelo sistema de arquivos cheio informado por `df`, identifique seu destino de montagem com `findmnt` e então restrinja as buscas de `du` nesse mesmo sistema de arquivos. Considere snapshots, camadas de contêineres, logs, caches de pacotes e a política de retenção das aplicações. Não exclua arquivos somente porque são grandes; determine primeiro a propriedade, o backup, os requisitos de conformidade e o comportamento do serviço.
 
-:::single-choice{#disk-usage-safe-investigation}
-Qual é a resposta mais segura ao encontrar um arquivo grande?
+:::single-choice{#disk-usage-safe-investigation} Qual é a resposta mais segura ao encontrar um arquivo grande?
 
 ::option[Excluí-lo imediatamente enquanto o serviço está gravando.]{#disk-usage-delete-immediately explanation="Isso pode causar perda de dados necessários e talvez não libere espaço se o arquivo continuar aberto."}
 ::option[Executar `mkfs` no dispositivo que o contém.]{#disk-usage-mkfs-device explanation="A formatação destruiria o sistema de arquivos em vez de resolver o crescimento de um único arquivo."}

@@ -18,8 +18,7 @@ Linux がどのように生まれたかを理解するには、ベル研究所�
 
 ![UNIX の系譜](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-:::single-choice{#understand-unix-portability}
-UNIX を C で書き直した重要な結果は何ですか？
+:::single-choice{#understand-unix-portability} UNIX を C で書き直した重要な結果は何ですか？
 
 ::option[GNU システム用に作られた自由なカーネルになった。]{#unix-became-gnu-kernel explanation="UNIX は GNU プロジェクトより前から存在し、GNU のカーネルではありません。GNU は後に Hurd という別のカーネルの開発を始めました。"}
 ::option[異なるハードウェアシステムへ移しやすくなった。]{#portable-across-hardware .correct explanation="UNIX を C で記述したことで移植性が高まり、元のハードウェア以外にも普及しました。"}
@@ -28,8 +27,7 @@ UNIX を C で書き直した重要な結果は何ですか？
 
 それから10年以上後、Richard Stallman が GNU プロジェクトを始めました。GNU は「GNU's Not UNIX」の再帰的頭字語で、完全に自由でオープンソースな UNIX 風オペレーティングシステムを作ることが目標でした。プロジェクトは多くの必須コンポーネントと GNU General Public License（GPL）を生み出しましたが、独自のカーネル GNU Hurd は、Linux が利用可能になった時点で一般利用できる状態ではありませんでした。
 
-:::single-choice{#identify-gnu-missing-component}
-Linux が利用可能になった時点で、準備できていなかった GNU の主要コンポーネントはどれですか？
+:::single-choice{#identify-gnu-missing-component} Linux が利用可能になった時点で、準備できていなかった GNU の主要コンポーネントはどれですか？
 
 ::option[実用に耐えるカーネル]{#gnu-kernel .correct explanation="GNU は多くのシステムコンポーネントを作っていましたが、独自のカーネル GNU Hurd は一般利用できる状態ではありませんでした。"}
 ::option[自由ソフトウェアライセンス]{#gnu-license explanation="GNU プロジェクトはすでに GNU General Public License を生み出していました。不足していたシステムコンポーネントは利用可能なカーネルです。"}
@@ -40,8 +38,7 @@ Linux が利用可能になった時点で、準備できていなかった GNU 
 
 カーネルはオペレーティングシステムの中核コンポーネントです。橋渡し役となり、ハードウェアとソフトウェアの通信を可能にします。CPU、メモリ、周辺機器などのシステムリソースを管理します。完全なオペレーティングシステムには、人が使うツールやアプリケーションに加え、このリソース管理の中核が必要です。
 
-:::single-choice{#recognize-kernel-role}
-オペレーティングシステムのカーネルが担う役割はどれですか？
+:::single-choice{#recognize-kernel-role} オペレーティングシステムのカーネルが担う役割はどれですか？
 
 ::option[シェルへ入力されるすべてのコマンドを書く。]{#write-shell-commands explanation="シェルコマンドを与えるのは人またはスクリプトです。カーネルは、プログラムがコマンドを実行するときに必要な低水準リソースを提供します。"}
 ::option[インストール済みの全アプリケーションのライセンスを選ぶ。]{#choose-software-licenses explanation="アプリケーションのライセンスを選ぶのは作者や配布者であり、カーネルのリソース管理タスクではありません。"}
@@ -56,8 +53,7 @@ Linux が利用可能になった時点で、準備できていなかった GNU 
 
 _2018年の Linus Torvalds（出典：[Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds)）_
 
-:::single-choice{#identify-linux-kernel-creator}
-1991年に Linux カーネルの開発を始めたのは誰ですか？
+:::single-choice{#identify-linux-kernel-creator} 1991年に Linux カーネルの開発を始めたのは誰ですか？
 
 ::option[Richard Stallman]{#richard-stallman explanation="Richard Stallman は GNU プロジェクトを始めました。GNU は多くのシステムコンポーネントを提供しましたが、Linux カーネルを始めたのは Linus Torvalds です。"}
 ::option[Dennis Ritchie]{#dennis-ritchie explanation="Dennis Ritchie は UNIX と C プログラミング言語の開発に貢献しました。Linux カーネルは後に Linus Torvalds が始めました。"}

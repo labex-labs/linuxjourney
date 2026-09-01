@@ -34,8 +34,7 @@ $ touch file1.txt file2.txt file3.log
 
 Esto resulta útil para crear marcadores de posición, pero `touch` no añade texto a los archivos. Cuando necesites un archivo con contenido, utiliza un editor de texto u otra orden diseñada para escribir datos.
 
-:::single-choice{#create-several-empty-files}
-¿Qué orden crea tres archivos vacíos llamados `one`, `two` y `three` si aún no existen?
+:::single-choice{#create-several-empty-files} ¿Qué orden crea tres archivos vacíos llamados `one`, `two` y `three` si aún no existen?
 
 ::option[`touch "one two three"`]{#touch-one-spaced explanation="Las comillas hacen que todo sea un único nombre de archivo con espacios. Esta orden actúa sobre un archivo, no sobre tres."}
 ::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` crea directorios, no archivos normales vacíos. Utiliza `touch` para crear los archivos solicitados."}
@@ -56,8 +55,7 @@ $ ls -l mysuperduperfile
 
 La salida de `ls -l` suele mostrar la hora de modificación, no la de acceso.
 
-:::single-choice{#touch-existing-file}
-¿Qué ocurre al ejecutar `touch report.txt` si `report.txt` ya existe?
+:::single-choice{#touch-existing-file} ¿Qué ocurre al ejecutar `touch report.txt` si `report.txt` ya existe?
 
 ::option[Se actualizan sus marcas de tiempo sin sustituir el contenido.]{#timestamps-only .correct explanation="De forma predeterminada, `touch` actualiza las horas de acceso y modificación de un archivo existente. No sobrescribe sus datos."}
 ::option[Se elimina su contenido y el archivo queda vacío.]{#contents-deleted explanation="La creación de un archivo vacío solo ocurre cuando este no existe. Si ya existe, conserva el contenido mientras `touch` actualiza sus marcas de tiempo."}
@@ -73,8 +71,7 @@ $ touch -a notes.txt
 $ touch -m notes.txt
 ```
 
-:::single-choice{#change-modification-time-only}
-¿Qué orden actualiza únicamente la hora de modificación de `notes.txt`?
+:::single-choice{#change-modification-time-only} ¿Qué orden actualiza únicamente la hora de modificación de `notes.txt`?
 
 ::option[`touch -a notes.txt`]{#access-only explanation="La opción `-a` cambia solo la hora de acceso. No selecciona la hora de modificación solicitada."}
 ::option[`touch -m notes.txt`]{#modification-only .correct explanation="La opción `-m` limita el cambio a la hora de modificación. La hora de acceso permanece intacta."}
@@ -97,8 +94,7 @@ $ touch -r file1.txt file2.txt
 
 En este caso, `file1.txt` proporciona las marcas de tiempo y `file2.txt` es el archivo que cambia. La opción `-t` ofrece otra forma de indicar una hora mediante un formato numérico compacto.
 
-:::single-choice{#copy-reference-timestamps}
-¿Qué orden copia las marcas de tiempo de `source.txt` a `target.txt`?
+:::single-choice{#copy-reference-timestamps} ¿Qué orden copia las marcas de tiempo de `source.txt` a `target.txt`?
 
 ::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="Con `-r`, el operando siguiente es el archivo de referencia y el último operando es el archivo cuyas marcas de tiempo se actualizan."}
 ::option[`touch -r target.txt source.txt`]{#reference-target explanation="Esta orden invierte las funciones de los archivos. Utilizaría `target.txt` como referencia y actualizaría `source.txt`."}
@@ -115,8 +111,7 @@ $ touch -c existing-file.txt
 
 Si `existing-file.txt` no existe, esta orden no lo crea. Este comportamiento puede ser útil en scripts que deben actualizar una marca de tiempo sin introducir un archivo nuevo.
 
-:::single-choice{#update-without-creating}
-¿Qué orden actualiza `status.log` si existe, pero no lo crea si falta?
+:::single-choice{#update-without-creating} ¿Qué orden actualiza `status.log` si existe, pero no lo crea si falta?
 
 ::option[`touch -a status.log`]{#touch-access explanation="La opción `-a` selecciona la hora de acceso, pero aún podría crear un archivo ausente. No proporciona el comportamiento solicitado."}
 ::option[`touch -m status.log`]{#touch-modification explanation="La opción `-m` selecciona la hora de modificación, pero no impide crear un archivo que falte. Para ello se utiliza `-c`."}

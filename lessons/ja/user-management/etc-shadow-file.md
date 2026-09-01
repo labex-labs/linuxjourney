@@ -18,8 +18,7 @@ meta_keywords: "etc shadow, etc/shadow ファイル linux, cat /etc/shadow, linu
 
 正確な所有者と権限は異なりますが、通常は root と、限定的に認可されたシステムコンポーネントだけがアクセスできます。アカウント状態を調べるためだけに、shadow の内容を表示、コピー、ログ記録、共有してはいけません。
 
-:::single-choice{#shadow-restricted-reason}
-ローカルの shadow データが通常、一般ユーザーから読み取れないよう保護されるのはなぜですか？
+:::single-choice{#shadow-restricted-reason} ローカルの shadow データが通常、一般ユーザーから読み取れないよう保護されるのはなぜですか？
 
 ::option[全ユーザーの現在のパスワードが平文で含まれるから。]{#shadow-plaintext-passwords explanation="正しい shadow 項目には、取り出せる平文パスワードではなく、一方向ハッシュまたは特別なマーカーが保存されます。"}
 ::option[パスワードハッシュが漏れると、オフラインで攻撃できるから。]{#shadow-offline-guessing .correct explanation="攻撃者はログインサービスと通信せず、盗んだハッシュに対してパスワード候補を試せます。"}
@@ -48,8 +47,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 空のフィールドや特別な数値には定義された意味があり、フィールドやツールによって異なる場合があります。見た目で値を編集せず、アカウント管理コマンドを使ってください。
 
-:::single-choice{#shadow-account-expiration-field}
-1970-01-01からの日数としてアカウント失効日を保存する shadow フィールドはどれですか？
+:::single-choice{#shadow-account-expiration-field} 1970-01-01からの日数としてアカウント失効日を保存する shadow フィールドはどれですか？
 
 ::option[第3フィールド]{#shadow-field-three explanation="第3フィールドはアカウント失効日ではなく、最終パスワード変更日を記録します。"}
 ::option[第8フィールド]{#shadow-field-eight .correct explanation="第8フィールドが、アカウント失効日の絶対日数です。"}
@@ -62,8 +60,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 これらのマーカーが表すのはローカルのパスワード経路であり、すべての認証方法ではありません。SSH 公開鍵、証明書、トークン、アプリケーション固有の資格情報は、別途制限しない限り利用できる場合があります。第8フィールドのアカウント失効も、パスワードのロックとは別です。
 
-:::single-choice{#shadow-password-lock-scope}
-`!` で始まる shadow のパスワードフィールドから、安全に結論付けられることは何ですか？
+:::single-choice{#shadow-password-lock-scope} `!` で始まる shadow のパスワードフィールドから、安全に結論付けられることは何ですか？
 
 ::option[保存された Unix パスワードハッシュが、通常のパスワード検証では使えない状態になっている。]{#shadow-password-locked .correct explanation="ハッシュの先頭に `!` を付けると、shadow パスワード経路で入力パスワードと一致しなくなります。"}
 ::option[そのアカウントのあらゆるログイン方法が無効である。]{#shadow-all-login-disabled explanation="他の認証方法は独立している場合があるため、このマーカーだけで完全なアカウントロックは証明できません。"}
@@ -76,8 +73,7 @@ alice:<password-field>:20000:0:90:7:14:20500:
 
 たとえば、パスワードの最大使用日数90日は、アカウント失効日とは異なります。前者は最終パスワード変更日に対して相対的に動き、後者は管理者が変更するまで固定日です。
 
-:::single-choice{#shadow-max-age-versus-expire}
-shadow の第5フィールドと第8フィールドの違いは何ですか？
+:::single-choice{#shadow-max-age-versus-expire} shadow の第5フィールドと第8フィールドの違いは何ですか？
 
 ::option[第5フィールドはユーザー名、第8フィールドはログインシェル。]{#shadow-username-shell explanation="ユーザー名は第1フィールドで、ログインシェルは shadow ではなく `/etc/passwd` に記録されます。"}
 ::option[第5フィールドはパスワードハッシュ、第8フィールドはそのソルト。]{#shadow-hash-salt explanation="パスワードハッシュの符号化は第2フィールドにあり、有効期限フィールドがソルトを別に保存することはありません。"}
@@ -97,8 +93,7 @@ $ sudo chage -l alice
 
 変更には `passwd`、`chage`、`usermod` などのアカウントツールを使います。ローカル shadow データベースの手動修復が避けられない場合は、`vipw -s` でロックし、`pwck` でアカウントデータベースを検証します。リモートの認証設定を変更する前に復旧用セッションを維持してください。
 
-:::single-choice{#shadow-list-aging-policy}
-ローカルアカウント `alice` のパスワード有効期限情報を読みやすく一覧表示するためのコマンドはどれですか？
+:::single-choice{#shadow-list-aging-policy} ローカルアカウント `alice` のパスワード有効期限情報を読みやすく一覧表示するためのコマンドはどれですか？
 
 ::option[`cat /etc/shadow`]{#shadow-cat-entire-file explanation="これはローカルの全 shadow レコードを公開し、作業に必要な範囲を超える機密情報を表示します。"}
 ::option[`passwd -d alice`]{#shadow-passwd-delete explanation="`-d` はパスワードハッシュを削除する、状態変更を伴うセキュリティ上重要な操作であり、一覧コマンドではありません。"}

@@ -34,8 +34,7 @@ $ rm notes.txt old-report.txt draft.md
 
 按 Enter 前应检查拼写和位置。删除后依赖备份或版本控制副本恢复，要比指望文件系统恢复工具更可靠。
 
-:::single-choice{#remove-one-file}
-确认目标无误后，哪个命令会删除文件 `old-report.txt`？
+:::single-choice{#remove-one-file} 确认目标无误后，哪个命令会删除文件 `old-report.txt`？
 
 ::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` 会移除指定的文件条目；此操作通常不会把文件放入回收站。"}
 ::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` 作用于空目录，而非普通文件；它不适合这个目标。"}
@@ -60,8 +59,7 @@ $ rm *.tmp
 
 shell 会在 `rm` 启动前展开模式。如果预览中出现意外文件，应修改模式，而不是继续执行。
 
-:::single-choice{#preview-removal-pattern}
-你准备删除 `*.tmp`。哪个命令会先显示该模式选中的非隐藏路径，而不删除它们？
+:::single-choice{#preview-removal-pattern} 你准备删除 `*.tmp`。哪个命令会先显示该模式选中的非隐藏路径，而不删除它们？
 
 ::option[`rm -v *.tmp`]{#verbose-remove explanation="详细模式会在删除发生时报告操作，仍会删除匹配文件，并不是只读预览。"}
 ::option[`ls '*.tmp'`]{#quoted-pattern explanation="引号会阻止通配符展开，因此它会查找名称中真的含 `*` 的条目，而不是预览目标。"}
@@ -79,8 +77,7 @@ rm: remove regular file 'important.txt'? y
 
 GNU `rm` 的 `-I` 是干扰更少的保护措施：当命令将删除三个以上文件或执行递归操作时，它只询问一次。
 
-:::single-choice{#confirm-each-removal}
-哪个命令会在删除每个指定文件前请求确认？
+:::single-choice{#confirm-each-removal} 哪个命令会在删除每个指定文件前请求确认？
 
 ::option[`rm -i important.txt`]{#interactive-important .correct explanation="`-i` 会在每次删除前提示，让你有机会拒绝操作。"}
 ::option[`rm -f important.txt`]{#force-important explanation="`-f` 会抑制提示并忽略缺失操作数，减少而不是增加确认。"}
@@ -120,8 +117,7 @@ $ rmdir empty-directory
 
 `rmdir` 会在目录非空时失败，从而保护其中内容不被递归删除。
 
-:::single-choice{#remove-empty-directory-only}
-哪个命令只在 `old-cache/` 为空时删除该目录？
+:::single-choice{#remove-empty-directory-only} 哪个命令只在 `old-cache/` 为空时删除该目录？
 
 ::option[`rm -r old-cache/`]{#recursive-cache explanation="递归 `rm` 会删除目录及其中内容，并不强制要求目录为空。"}
 ::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` 只会对空目录成功，因此不会递归删除其中的文件。"}
@@ -154,8 +150,7 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-:::single-choice{#remove-nonempty-tree}
-确认完整目标无误后，哪个命令会删除 `old-project/` 及其下所有内容，同时仍允许正常提示？
+:::single-choice{#remove-nonempty-tree} 确认完整目标无误后，哪个命令会删除 `old-project/` 及其下所有内容，同时仍允许正常提示？
 
 ::option[`rm old-project/`]{#plain-rm-project explanation="普通 `rm` 不会进入目录，因此不能删除非空目录树。"}
 ::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="`-r` 会递归删除目录树；与 `rm -rf` 不同，这种形式没有用 `-f` 抑制提示。"}

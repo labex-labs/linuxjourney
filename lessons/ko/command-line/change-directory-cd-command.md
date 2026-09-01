@@ -28,8 +28,7 @@ cd [DIRECTORY]
 
 - **상대 경로**: 현재 위치를 기준으로 한 경로입니다. 예를 들어 현재 위치가 `/home/pete/Documents`이고 `taxes`라는 하위 디렉토리에 접근하려면 `taxes/`를 사용할 수 있습니다.
 
-:::single-choice{#recognize-absolute-cd-path}
-절대 경로를 올바르게 설명한 것은 무엇인가요?
+:::single-choice{#recognize-absolute-cd-path} 절대 경로를 올바르게 설명한 것은 무엇인가요?
 
 ::option[쉘이 현재 사용 중인 디렉터리에서 시작합니다.]{#begins-at-current-directory explanation="쉘의 현재 위치에 따라 달라지는 경로는 상대 경로입니다. 상대 경로가 반드시 루트에서 시작하는 것은 아닙니다."}
 ::option[상위 디렉터리 없이 마지막 디렉터리 이름만 포함합니다.]{#contains-final-name-only explanation="목적지 이름 하나만 쓰면 보통 현재 디렉터리를 기준으로 해석합니다. 절대 경로에는 `/`부터 이어지는 경로가 포함됩니다."}
@@ -53,8 +52,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-`cd`를 실행한 뒤 쉘의 현재 위치를 확인하는 명령어는 무엇인가요?
+:::single-choice{#verify-changed-directory} `cd`를 실행한 뒤 쉘의 현재 위치를 확인하는 명령어는 무엇인가요?
 
 ::option[`cd`]{#cd-command explanation="`cd`는 현재 디렉터리를 바꾸지만 보통 바뀐 전체 경로를 출력하지 않습니다. 확인하려면 `pwd`를 사용합니다."}
 ::option[`ls`]{#ls-command explanation="`ls`는 디렉터리 내용을 보여 줍니다. 위치를 살펴보는 데 도움은 되지만 위치 자체는 `pwd`가 알려 줍니다."}
@@ -89,16 +87,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-`/home/pete/Pictures`에서 `/home/pete`로 이동하는 명령어는 무엇인가요?
+:::single-choice{#move-to-parent-directory} `/home/pete/Pictures`에서 `/home/pete`로 이동하는 명령어는 무엇인가요?
 
 ::option[`cd .`]{#cd-current explanation="`.`은 현재 디렉터리를 나타내므로 쉘은 `/home/pete/Pictures`에 그대로 머뭅니다."}
 ::option[`cd -`]{#cd-previous explanation="`-`는 이전 작업 디렉터리로 돌아가며, 그곳이 반드시 상위 디렉터리인 것은 아닙니다. 한 단계 위로 갈 때는 `..`을 사용합니다."}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..`은 현재 디렉터리의 상위를 나타냅니다. `Pictures`의 상위 디렉터리는 `/home/pete`입니다."}
 :::
 
-:::single-choice{#return-to-previous-directory}
-현재 디렉터리 바로 전에 사용했던 디렉터리로 돌아가는 명령어는 무엇인가요?
+:::single-choice{#return-to-previous-directory} 현재 디렉터리 바로 전에 사용했던 디렉터리로 돌아가는 명령어는 무엇인가요?
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -`는 이전 작업 디렉터리로 전환합니다. 그 디렉터리는 파일 시스템 어디에나 있을 수 있습니다."}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..`은 상위 디렉터리로 이동합니다. 상위 디렉터리와 이전에 방문한 디렉터리는 항상 같지는 않습니다."}
@@ -129,8 +125,7 @@ $ cd ../..
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-`Vacation Photos`를 하나의 디렉터리 이름으로 처리하는 명령어는 무엇인가요?
+:::single-choice{#enter-directory-with-spaces} `Vacation Photos`를 하나의 디렉터리 이름으로 처리하는 명령어는 무엇인가요?
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="따옴표가 없으면 쉘은 `Vacation`과 `Photos`를 하나의 디렉터리 이름이 아닌 별도 인자로 전달합니다."}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="전체 줄을 따옴표로 묶으면 쉘은 이를 하나의 명령어 이름으로 처리합니다. 명령어 자체는 경로의 따옴표 밖에 있어야 합니다."}

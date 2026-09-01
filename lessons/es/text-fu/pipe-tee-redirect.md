@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 El operador de tubería `|` conecta stdout de la orden de la izquierda con stdin de la orden de la derecha. La shell inicia las órdenes de la tubería y prepara la conexión; pueden trabajar al mismo tiempo, de modo que `less` empiece a leer antes de que `ls` haya producido toda la lista.
 
-:::single-choice{#pipe-stream-connection}
-En `ls -la /etc | less`, ¿qué flujos conecta `|` de forma predeterminada?
+:::single-choice{#pipe-stream-connection} En `ls -la /etc | less`, ¿qué flujos conecta `|` de forma predeterminada?
 
 ::option[Stdin de `ls` con stdout de `less`.]{#pipe-reversed-streams explanation="Esta opción invierte tanto el productor como el consumidor. Los datos fluyen desde la salida de la orden izquierda hacia la entrada de la derecha."}
 ::option[Stderr de `ls` con los dos flujos de `less`.]{#pipe-stderr-both explanation="Una tubería normal no conecta stderr de la orden izquierda ni apunta a los dos flujos de la orden derecha."}
@@ -50,8 +49,7 @@ Las rutas coincidentes atraviesan la tubería, mientras que los diagnósticos de
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-En `find /etc -name "*.conf" | less`, ¿adónde va normalmente stderr de `find` si no hay otra redirección?
+:::single-choice{#pipe-left-stderr} En `find /etc -name "*.conf" | less`, ¿adónde va normalmente stderr de `find` si no hay otra redirección?
 
 ::option[A `less` por la misma tubería que stdout.]{#pipe-errors-to-less explanation="La tubería ordinaria solo conecta stdout. Stderr no se combina automáticamente con él."}
 ::option[A un archivo llamado `stderr` en el directorio actual.]{#pipe-errors-to-file explanation="No existe ninguna redirección a un archivo de errores, por lo que la shell no crea tal archivo."}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 `tee` lee stdin, escribe una copia en cada archivo indicado y también envía los mismos datos a stdout. De forma predeterminada, crea o trunca el archivo, igual que `>`.
 
-:::single-choice{#tee-display-and-save}
-¿Qué orden muestra la salida de `generate-report` y también sustituye `report.txt` por esa misma salida?
+:::single-choice{#tee-display-and-save} ¿Qué orden muestra la salida de `generate-report` y también sustituye `report.txt` por esa misma salida?
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="Una redirección de salida sencilla escribe el archivo, pero no conserva una copia del flujo hacia la terminal."}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` copia stdin en `report.txt` y en su stdout, que en esta tubería sigue conectado a la terminal."}
@@ -82,8 +79,7 @@ Utiliza `-a` para añadir contenido en vez de sustituir el archivo:
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-¿Qué orden muestra la fecha actual y la añade a `activity.log`?
+:::single-choice{#tee-append-log} ¿Qué orden muestra la fecha actual y la añade a `activity.log`?
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="La opción `-a` hace que `tee` añada datos al archivo mientras continúa copiando la entrada a stdout."}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="Sin `-a`, `tee` sustituye el archivo existente en vez de conservar sus entradas anteriores."}
@@ -108,8 +104,7 @@ Este comando hace tres cosas:
 
 El archivo contiene los datos anteriores al filtrado de `grep`. Si quieres guardar únicamente las líneas filtradas, coloca `tee` después de `grep`.
 
-:::single-choice{#tee-before-filter-result}
-¿Qué contiene `all.txt` cuando `produce | tee all.txt | grep error` termina correctamente?
+:::single-choice{#tee-before-filter-result} ¿Qué contiene `all.txt` cuando `produce | tee all.txt | grep error` termina correctamente?
 
 ::option[Únicamente las líneas que coinciden con `grep`.]{#tee-filtered-only explanation="`tee` se ejecuta antes que `grep`, por lo que escribe la entrada sin filtrar, no el conjunto de coincidencias posterior."}
 ::option[Únicamente stderr de `produce`.]{#tee-producer-stderr explanation="Una tubería normal transporta stdout de `produce`. Stderr no constituye la entrada de `tee`."}

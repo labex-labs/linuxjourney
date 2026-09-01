@@ -18,8 +18,7 @@ O NAT de origem substitui o endereço de origem de um pacote quando ele sai de u
 
 O tradutor acompanha os mapeamentos para que os pacotes de resposta possam ser reescritos de volta ao ponto de extremidade interno original. Normalmente, ele encaminha o mesmo fluxo de transporte; não precisa abrir uma conexão de proxy separada como faria um proxy de aplicação.
 
-:::single-choice{#nat-source-translation}
-O que o NAT de origem altera em um pacote de saída?
+:::single-choice{#nat-source-translation} O que o NAT de origem altera em um pacote de saída?
 
 ::option[Apenas as permissões de arquivo da aplicação de destino.]{#nat-file-permissions explanation="O NAT opera nos cabeçalhos de rede e transporte, não em sistemas de arquivos remotos."}
 ::option[O endereço de origem e, no uso de muitos para um, frequentemente a porta de origem.]{#nat-source-fields .correct explanation="O mapeamento permite associar o tráfego de retorno ao fluxo interno original."}
@@ -30,8 +29,7 @@ O que o NAT de origem altera em um pacote de saída?
 
 O NAT de destino reescreve o endereço ou a porta de destino, normalmente para publicar um serviço interno por meio de um ponto de extremidade externo. Uma regra de encaminhamento de portas pode mapear uma porta TCP externa para um endereço e uma porta internos diferentes. O tráfego de retorno precisa de uma tradução reversa consistente.
 
-:::single-choice{#nat-port-forward}
-Qual forma de NAT normalmente implementa um encaminhamento de porta de entrada?
+:::single-choice{#nat-port-forward} Qual forma de NAT normalmente implementa um encaminhamento de porta de entrada?
 
 ::option[Apenas NAT de origem, antes da consulta de rota.]{#nat-snat-port-forward explanation="Publicar um destino interno exige a tradução dos campos de destino."}
 ::option[Nenhuma tradução de endereço ou porta.]{#nat-no-translation explanation="Uma regra de encaminhamento de porta é, por definição, uma política de tradução."}
@@ -42,8 +40,7 @@ Qual forma de NAT normalmente implementa um encaminhamento de porta de entrada?
 
 NAT não é um firewall. Um tradutor com estado pode não ter um mapeamento para tráfego de entrada não solicitado, mas o encaminhamento explícito, a tradução de destino, a filtragem e a exposição da aplicação determinam o que está acessível. A política de segurança deve ser expressa e auditada com regras de firewall, serviços de privilégio mínimo e controles de ponta a ponta, em vez de ser deduzida da reescrita de endereços.
 
-:::single-choice{#nat-not-firewall}
-Por que o NAT não deve ser tratado como uma política de segurança por si só?
+:::single-choice{#nat-not-firewall} Por que o NAT não deve ser tratado como uma política de segurança por si só?
 
 ::option[O NAT criptografa automaticamente toda carga útil.]{#nat-encrypts explanation="A tradução de endereços não fornece confidencialidade à carga útil."}
 ::option[Regras de tradução e regras de filtragem de tráfego têm finalidades diferentes.]{#nat-filter-separate .correct explanation="A acessibilidade e a autorização exigem políticas explícitas de filtragem e serviço, mesmo quando há tradução."}
@@ -63,8 +60,7 @@ $ sudo conntrack -L
 
 O segundo comando exige as ferramentas conntrack e privilégios. Alterações no conjunto de regras podem desconectar o acesso remoto; portanto, use recuperação por console, configuração atômica, validação e reversão.
 
-:::single-choice{#nat-trace-flow}
-Quais evidências são necessárias para rastrear um fluxo de endereço compartilhado até um cliente interno?
+:::single-choice{#nat-trace-flow} Quais evidências são necessárias para rastrear um fluxo de endereço compartilhado até um cliente interno?
 
 ::option[Apenas o endereço externo, sem horário nem porta.]{#nat-address-only explanation="Muitos clientes e fluxos podem compartilhar esse endereço."}
 ::option[Apenas o nome de host exibido pelo cliente.]{#nat-hostname-only explanation="O tradutor mapeia tuplas de pacotes, não necessariamente nomes de host."}

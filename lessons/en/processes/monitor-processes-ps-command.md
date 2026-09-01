@@ -32,8 +32,7 @@ Typical fields include:
 
 Exact columns and selection defaults vary between `ps` implementations and environments.
 
-:::single-choice{#ps-command-pid-meaning}
-What does the `PID` column identify?
+:::single-choice{#ps-command-pid-meaning} What does the `PID` column identify?
 
 ::option[The process's current directory number.]{#ps-command-pid-directory explanation="A current directory is a filesystem reference and is not represented by PID."}
 ::option[The accumulated CPU time in seconds.]{#ps-command-pid-cpu explanation="CPU usage is shown in a separate field such as `TIME`."}
@@ -56,8 +55,7 @@ In this combination:
 
 Because option meanings can interact, interpret the complete combination rather than treating every letter as an independent command.
 
-:::single-choice{#ps-command-aux-user-format}
-In `ps aux`, which option requests the user-oriented output format?
+:::single-choice{#ps-command-aux-user-format} In `ps aux`, which option requests the user-oriented output format?
 
 ::option[`u`]{#ps-command-aux-u .correct explanation="The BSD-style `u` option selects a user-oriented set of output columns."}
 ::option[`x`]{#ps-command-aux-x explanation="The `x` option affects process selection, particularly processes without controlling terminals."}
@@ -77,8 +75,7 @@ $ ps -ef
 
 The output commonly includes `UID`, `PID`, `PPID`, start time, and command information. `PPID` is the parent process ID. This listing is not inherently hierarchical; use an option such as `--forest` where supported, or a dedicated tree viewer such as `pstree`, when parent-child layout matters.
 
-:::single-choice{#ps-command-ef-selection}
-What does `-e` request in `ps -ef`?
+:::single-choice{#ps-command-ef-selection} What does `-e` request in `ps -ef`?
 
 ::option[An update every second until interrupted.]{#ps-command-e-refresh explanation="`ps` produces a snapshot; continuous refresh is a feature of tools such as `top`."}
 ::option[A selection containing every process visible to the caller.]{#ps-command-e-every .correct explanation="The standard-style `-e` option broadens the snapshot to all selectable processes."}
@@ -95,8 +92,7 @@ $ top
 
 `top` helps identify changing CPU and memory consumers, but its values are samples and can fluctuate. Confirm a suspected problem across multiple observations and relate percentages to the machine's CPU count, memory accounting, and workload.
 
-:::single-choice{#ps-command-snapshot-versus-top}
-Which tool introduced here refreshes its process display periodically by default?
+:::single-choice{#ps-command-snapshot-versus-top} Which tool introduced here refreshes its process display periodically by default?
 
 ::option[`top`]{#ps-command-top-refresh .correct explanation="`top` is an interactive monitor that updates its display at intervals."}
 ::option[`ps -ef`]{#ps-command-ps-ef-snapshot explanation="This command prints a full-format process snapshot and then exits."}

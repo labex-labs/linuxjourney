@@ -28,8 +28,7 @@ Führende Nullen jeder Gruppe können weggelassen werden, und eine zusammenhäng
 
 `::` darf nur einmal vorkommen, weil die Anzahl ausgelassener Gruppen andernfalls mehrdeutig wäre. `2001:db8::/32` ist für Dokumentationsbeispiele reserviert.
 
-:::single-choice{#ipv6-double-colon-rule}
-Warum darf `::` höchstens einmal in einer IPv6-Adresse vorkommen?
+:::single-choice{#ipv6-double-colon-rule} Warum darf `::` höchstens einmal in einer IPv6-Adresse vorkommen?
 
 ::option[Mehrere `::`-Markierungen würden die Erweiterung mehrdeutig machen.]{#ipv6-compression-ambiguity .correct explanation="Eine Komprimierungsmarkierung kann auf die genaue Anzahl von Gruppen erweitert werden, die zum Erreichen von acht nötig ist."}
 ::option[IPv6-Adressen enthalten nur ein Nullbit.]{#ipv6-one-zero explanation="Eine Adresse kann viele Nullbits und Nullgruppen enthalten."}
@@ -47,8 +46,7 @@ Wichtige Adressen und Bereiche sind:
 
 IPv6 besitzt keine Broadcast-Adresse; Multicast und Neighbor Discovery übernehmen Anwendungsfälle, für die IPv4 häufig Broadcast verwendet. Ein Link-Local-Ziel kann eine Schnittstellenzone wie `fe80::1%eth0` erfordern, weil auf jeder Verbindung dasselbe Präfix besteht.
 
-:::single-choice{#ipv6-link-local-scope}
-Was ist der normale Geltungsbereich einer `fe80::/10`-Adresse?
+:::single-choice{#ipv6-link-local-scope} Was ist der normale Geltungsbereich einer `fe80::/10`-Adresse?
 
 ::option[Jeder Host im weltweiten Internet.]{#ipv6-global-link-local explanation="Global-Unicast-Adressen dienen dem gerouteten weltweiten Bereich."}
 ::option[Nur eine DNS-Zonendatei.]{#ipv6-dns-only explanation="Link-Local-Adressen werden Schnittstellen zugewiesen und in Netzwerken verwendet."}
@@ -59,8 +57,7 @@ Was ist der normale Geltungsbereich einer `fe80::/10`-Adresse?
 
 Die IPv6-CIDR-Notation verwendet eine Präfixlänge von `/0` bis `/128`. Ein `/64` ist die Standardgröße für die meisten LAN-Subnetze und unterstützt Stateless Address Autoconfiguration. Eine Schnittstelle kann gleichzeitig Link-Local-, stabile globale, temporäre Datenschutz- und weitere Adressen besitzen, jeweils mit bevorzugter und gültiger Laufzeit.
 
-:::single-choice{#ipv6-address-multiplicity}
-Warum kann eine Schnittstelle mehrere IPv6-Adressen anzeigen?
+:::single-choice{#ipv6-address-multiplicity} Warum kann eine Schnittstelle mehrere IPv6-Adressen anzeigen?
 
 ::option[IPv6 benötigt eine Adresse für jede hexadezimale Ziffer.]{#ipv6-one-per-digit explanation="Ziffern sind Darstellung und keine getrennten Schnittstellenzuweisungen."}
 ::option[Unterschiedliche Geltungsbereiche sowie Datenschutz- oder Laufzeitrollen können nebeneinander bestehen.]{#ipv6-several-roles .correct explanation="Link-Local- und eine oder mehrere globale beziehungsweise temporäre Adressen sind normal."}
@@ -73,8 +70,7 @@ IPv6 Neighbor Discovery verwendet ICMPv6 für Adressauflösung, Erkennung doppel
 
 Das Blockieren sämtlichen ICMPv6-Verkehrs zerstört wesentliches Protokollverhalten. Die Firewallrichtlinie sollte die erforderlichen Nachrichtentypen im passenden Geltungsbereich erlauben, statt ICMPv6 als optional zu behandeln.
 
-:::single-choice{#ipv6-default-router-source}
-Wie erfährt ein IPv6-Host normalerweise dynamisch einen Standardrouter?
+:::single-choice{#ipv6-default-router-source} Wie erfährt ein IPv6-Host normalerweise dynamisch einen Standardrouter?
 
 ::option[Durch Router Advertisements.]{#ipv6-router-advertisements .correct explanation="Router Discovery ist Teil von ICMPv6 Neighbor Discovery."}
 ::option[Aus einer Ethernet-Broadcast-Adresse.]{#ipv6-ethernet-broadcast explanation="IPv6 verwendet keine IP-Broadcast-Adresse."}
@@ -94,8 +90,7 @@ $ ping -6 -c 3 2001:db8::25
 
 Verwende statt der gezeigten Dokumentationsadresse eine tatsächlich zugewiesene Testadresse. Eine Dual-Stack-Anwendung kann über IPv4 erfolgreich sein, während IPv6 defekt ist, oder umgekehrt. Teste deshalb jede Familie und ihre DNS-`A`- beziehungsweise `AAAA`-Datensätze ausdrücklich.
 
-:::single-choice{#ipv6-dual-stack-test}
-Warum solltest du IPv4 und IPv6 bei einem Dual-Stack-Dienst getrennt testen?
+:::single-choice{#ipv6-dual-stack-test} Warum solltest du IPv4 und IPv6 bei einem Dual-Stack-Dienst getrennt testen?
 
 ::option[Jedes IPv6-Paket muss zuerst zu einem IPv4-Broadcast werden.]{#ipv6-becomes-ipv4 explanation="Natives IPv6 und IPv4 sind unterschiedliche Protokollpfade."}
 ::option[Die beiden Familien können unterschiedliche DNS-Daten, Routen, Filter und Fehler besitzen.]{#ipv6-independent-paths .correct explanation="Ein erfolgreicher Ausweichpfad kann eine defekte bevorzugte Adressfamilie verbergen."}

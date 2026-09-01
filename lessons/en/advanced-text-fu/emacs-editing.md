@@ -23,8 +23,7 @@ Arrow and other platform navigation keys may work, but Emacs's standard movement
 - `C-a`: Move to the beginning of the line.
 - `C-e`: Move to the end of the line.
 
-:::single-choice{#emacs-edit-next-line}
-Which Emacs key moves point to the next line?
+:::single-choice{#emacs-edit-next-line} Which Emacs key moves point to the next line?
 
 ::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` moves to the previous line, in the opposite direction."}
 ::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n`, for next-line, moves point downward to the next screen line position."}
@@ -42,8 +41,7 @@ Meta commands move across larger units:
 
 On many keyboards, Alt acts as Meta. When that chord is unavailable, pressing `Esc` and then the following key often sends the equivalent Meta command.
 
-:::single-choice{#emacs-edit-buffer-end}
-Which Emacs key moves point to the end of the buffer?
+:::single-choice{#emacs-edit-buffer-end} Which Emacs key moves point to the end of the buffer?
 
 ::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` moves to the end of the current line rather than the entire buffer."}
 ::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` moves to the beginning of the buffer."}
@@ -56,8 +54,7 @@ The **mark** is a saved buffer position. The text between point and mark is the 
 
 In a terminal, `C-SPC` can be encoded as `C-@`. Highlighting depends on transient-mark settings, but point and mark still define a region.
 
-:::single-choice{#emacs-edit-set-mark}
-Which key begins defining a region by setting the mark at point?
+:::single-choice{#emacs-edit-set-mark} Which key begins defining a region by setting the mark at point?
 
 ::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` kills an already defined region; it is not the initial mark-setting command."}
 ::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` inserts text from the kill ring and does not begin a selection."}
@@ -74,8 +71,7 @@ Emacs stores killed and copied text in the **kill ring**:
 
 Killing is more than ordinary deletion because the removed text is retained for later yanking.
 
-:::single-choice{#emacs-edit-copy-region}
-Which key copies the active region to the kill ring without removing it?
+:::single-choice{#emacs-edit-copy-region} Which key copies the active region to the kill ring without removing it?
 
 ::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`kill-ring-save`, bound to `M-w`, copies the region without deleting it."}
 ::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` removes the region while saving it to the kill ring."}
@@ -93,8 +89,7 @@ M-y
 
 If another unrelated command occurs after `C-y`, `M-y` no longer has the same yank-pop context.
 
-:::single-choice{#emacs-edit-yank-latest}
-Which key inserts the most recent kill-ring entry at point?
+:::single-choice{#emacs-edit-yank-latest} Which key inserts the most recent kill-ring entry at point?
 
 ::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="`yank`, bound to `C-y`, inserts the latest kill-ring text into the current buffer."}
 ::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` normally replaces a just-yanked entry with an earlier one; it depends on the preceding yank context."}

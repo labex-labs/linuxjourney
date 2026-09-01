@@ -24,8 +24,7 @@ Linux カーネルに制御が渡ると、メモリ管理、スケジューリ�
 
 initramfs は、これらをカーネルとともに渡される初期ユーザー空間環境にまとめます。
 
-:::single-choice{#boot-kernel-initramfs-purpose}
-initramfs が一般に解決する問題はどれですか？
+:::single-choice{#boot-kernel-initramfs-purpose} initramfs が一般に解決する問題はどれですか？
 
 ::option[実際のルートが使える前に必要な初期ツールとモジュールを提供する。]{#boot-kernel-early-tools .correct explanation="初期ユーザー空間は、組み込み機能だけではアクセスできないストレージを検出して構築できます。"}
 ::option[全ユーザーの永続ホームディレクトリをファームウェアに保存する。]{#boot-kernel-home-firmware explanation="このアーカイブはブート用の成果物であり、永続的なユーザーデータ領域ではありません。"}
@@ -40,8 +39,7 @@ initramfs が一般に解決する問題はどれですか？
 
 initramfs はカーネルとブート設計に適合していなければなりません。モジュールの欠落、古いデバイス識別子、暗号化や LVM ツールの不足があると、カーネルイメージ自体が正しくても新しいカーネルを起動できないことがあります。
 
-:::single-choice{#boot-kernel-initramfs-format}
-現代の initramfs は、一般にどの形式でカーネルへ渡されますか？
+:::single-choice{#boot-kernel-initramfs-format} 現代の initramfs は、一般にどの形式でカーネルへ渡されますか？
 
 ::option[HTTP 専用の対話型パッケージリポジトリ。]{#boot-kernel-http-repository explanation="初期ユーザー空間でネットワークを設定できる場合はありますが、それが initramfs の形式を定義するわけではありません。"}
 ::option[初期ルートへ展開される cpio ベースのアーカイブ。]{#boot-kernel-cpio-archive .correct explanation="カーネルがアーカイブを展開し、その初期ユーザー空間の初期化プログラムを実行します。"}
@@ -54,8 +52,7 @@ initramfs はカーネルとブート設計に適合していなければなり�
 
 コマンドラインの初期 `ro` 指定は整合性検査や制御された起動に役立ちますが、正確な順序はディストリビューションごとに異なります。ファイルシステム検査はユーザー空間の処理であり、ポリシーが許せば initramfs や後続の init システムがルートを読み書き可能に再マウントします。
 
-:::single-choice{#boot-kernel-root-switch}
-初期ユーザー空間が目的の実ルートを正常にマウントした後、何が起きますか？
+:::single-choice{#boot-kernel-root-switch} 初期ユーザー空間が目的の実ルートを正常にマウントした後、何が起きますか？
 
 ::option[全ディスクのパーティションテーブルを作り直す。]{#boot-kernel-recreate-tables explanation="ルート切り替えはストレージを再パーティション化しません。"}
 ::option[カーネルが終了し、ファームウェアが通常のプロセススケジューリングを再開する。]{#boot-kernel-firmware-schedules explanation="引き継ぎ後も、Linux カーネルがプロセスとハードウェアを管理します。"}
@@ -68,8 +65,7 @@ initramfs はカーネルとブート設計に適合していなければなり�
 
 使用可能な init プログラムを実行できなければ、カーネルは通常のユーザー空間システムへ進めず、ブート失敗やパニックを報告するのが一般的です。カーネルとコマンドライン、initramfs の内容、ルート検出、ルートのマウント、PID 1 の実行という順に、最初に失敗した層を調べてください。
 
-:::single-choice{#boot-kernel-pid-one}
-この単純化したブート段階で、カーネルが最後に行う主要な引き継ぎはどれですか？
+:::single-choice{#boot-kernel-pid-one} この単純化したブート段階で、カーネルが最後に行う主要な引き継ぎはどれですか？
 
 ::option[最初のユーザー空間プログラムを PID 1 として実行する。]{#boot-kernel-exec-init .correct explanation="その後 PID 1 がサービスを起動し、設定されたシステム状態を整えます。"}
 ::option[`/proc` を永続的なパッケージデータベースへ変える。]{#boot-kernel-proc-package explanation="procfs は実行時のカーネルインターフェースであり続けます。"}

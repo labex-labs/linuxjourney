@@ -30,8 +30,7 @@ $ modinfo MODULE_NAME
 
 `modinfo` puede mostrar el nombre del archivo, los alias, los parámetros, la licencia, la descripción y la información de firma. Trata los metadatos como información descriptiva, no como prueba de que el módulo sea de confianza o compatible con la carga de trabajo.
 
-:::single-choice{#kernel-modules-lsmod-purpose}
-¿Qué muestra `lsmod`?
+:::single-choice{#kernel-modules-lsmod-purpose} ¿Qué muestra `lsmod`?
 
 ::option[Todos los paquetes de módulos disponibles en repositorios remotos.]{#kernel-modules-repository-list explanation="Para consultar el inventario de los repositorios se necesita el gestor de paquetes."}
 ::option[Únicamente los controladores compilados directamente en la imagen del kernel.]{#kernel-modules-builtins explanation="Las funciones integradas no son módulos cargables y normalmente no aparecen en lsmod."}
@@ -50,8 +49,7 @@ $ sudo modprobe MODULE_NAME
 
 Antes de cargarlo, confirma la procedencia del módulo, la política de firmas, la compatibilidad con la versión del kernel, los parámetros, la asociación esperada con el hardware y el procedimiento de reversión. Secure Boot o el bloqueo del kernel pueden rechazar módulos sin firmar; forzar código incompatible puede provocar un fallo o comprometer el sistema.
 
-:::single-choice{#kernel-modules-modprobe-dependencies}
-¿Por qué suele preferirse `modprobe` frente al uso directo de `insmod`?
+:::single-choice{#kernel-modules-modprobe-dependencies} ¿Por qué suele preferirse `modprobe` frente al uso directo de `insmod`?
 
 ::option[Ejecuta el módulo por completo en el espacio de usuario sin privilegios.]{#kernel-modules-modprobe-userspace explanation="El módulo insertado se ejecuta como código privilegiado del kernel."}
 ::option[Garantiza que todos los módulos de terceros estén firmados y sean seguros.]{#kernel-modules-modprobe-guarantee explanation="La aplicación de firmas depende de la política, y una firma válida no demuestra que no haya defectos."}
@@ -74,8 +72,7 @@ example_module
 
 Los alias de hardware suelen provocar la carga automática sin una lista explícita. Para los módulos que se necesitan durante las primeras fases del arranque, actualiza el initramfs mediante el proceso documentado de la distribución después de cambiar la configuración.
 
-:::single-choice{#kernel-modules-options-versus-load}
-¿Qué hace una línea `options` de `/etc/modprobe.d/`?
+:::single-choice{#kernel-modules-options-versus-load} ¿Qué hace una línea `options` de `/etc/modprobe.d/`?
 
 ::option[Garantiza por sí sola que el módulo se cargue en todos los arranques.]{#kernel-modules-options-autoload explanation="Las solicitudes de carga durante el arranque utilizan otro mecanismo, como la configuración de modules-load o los alias de dispositivos."}
 ::option[Establece los parámetros que se utilizan al cargar el módulo indicado.]{#kernel-modules-options-parameters .correct explanation="Modprobe aplica los argumentos clave-valor configurados durante la inserción."}
@@ -92,8 +89,7 @@ blacklist example_module
 
 La inclusión en una lista negra normalmente impide la carga automática mediante los alias del módulo. No descarga un módulo ya cargado, no lo elimina de un initramfs ni impide necesariamente que se cargue explícitamente por su nombre exacto o como dependencia. El refuerzo de la seguridad requiere una combinación específica para la amenaza de disponibilidad de módulos, aplicación de firmas, contenido del initramfs, parámetros de arranque y políticas.
 
-:::single-choice{#kernel-modules-blacklist-effect}
-¿Qué impide principalmente una línea básica `blacklist` de modprobe?
+:::single-choice{#kernel-modules-blacklist-effect} ¿Qué impide principalmente una línea básica `blacklist` de modprobe?
 
 ::option[La carga automática mediante los alias del módulo.]{#kernel-modules-blacklist-aliases .correct explanation="La directiva no constituye una prohibición universal de todas las vías por las que el código puede estar ya cargado o llegar a cargarse."}
 ::option[La ejecución de todos los programas del espacio de usuario que tengan un nombre parecido.]{#kernel-modules-blacklist-user-programs explanation="La configuración de modprobe se aplica a la resolución de módulos del kernel."}
@@ -112,8 +108,7 @@ Modprobe puede retirar las dependencias que hayan dejado de usarse cuando corres
 
 Nunca fuerces la descarga de un módulo en un sistema que necesites conservar. Los errores durante la retirada o la actividad pendiente pueden bloquear el kernel o dañar datos.
 
-:::single-choice{#kernel-modules-remove-command}
-¿Qué comando solicita la retirada por nombre de un módulo teniendo en cuenta las dependencias?
+:::single-choice{#kernel-modules-remove-command} ¿Qué comando solicita la retirada por nombre de un módulo teniendo en cuenta las dependencias?
 
 ::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="Lsmod es una herramienta de listado de solo lectura y no retira módulos."}
 ::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="Uname informa sobre el kernel y no gestiona módulos."}

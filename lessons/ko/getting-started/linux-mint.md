@@ -16,8 +16,7 @@ meta_keywords: "리눅스 민트 배포판, 리눅스 민트 리눅스 배포판
 
 이 배포판의 명성은 기술적인 복잡함보다는 실용적인 결정에서 비롯됩니다. 리눅스 민트는 합리적인 기본 설정을 통해 완벽한 데스크톱 경험을 제공하는 것을 목표로 하며, 이것이 바로 윈도우에서 넘어오는 사용자들에게 자주 추천되는 이유 중 하나입니다.
 
-:::single-choice{#match-linux-mint-goal}
-리눅스 민트와 가장 잘 맞는 목표는 무엇인가요?
+:::single-choice{#match-linux-mint-goal} 리눅스 민트와 가장 잘 맞는 목표는 무엇인가요?
 
 ::option[실용적인 기본값이 있는 친숙한 데스크톱을 사용합니다.]{#familiar-desktop .correct explanation="리눅스 민트는 익숙한 탐색 방식과 유용한 기본값을 갖춘 접근하기 쉬운 데스크톱에 집중하므로 이 목표와 직접 맞습니다."}
 ::option[데스크톱 인터페이스 없이 최소 서버를 실행합니다.]{#minimal-server explanation="리눅스 민트는 주로 데스크톱과 노트북용이며 최소 헤드리스 시스템에는 서버 중심 배포판이 더 알맞습니다."}
@@ -36,8 +35,7 @@ meta_keywords: "리눅스 민트 배포판, 리눅스 민트 리눅스 배포판
 
 이러한 관계를 더 자세히 이해하고 싶다면 [우분투 (Ubuntu)](https://labex.io/ko/lesson/ubuntu)와 [데비안 (Debian)](https://labex.io/ko/lesson/debian) 관련 내용을 확인해 보세요.
 
-:::single-choice{#identify-main-mint-base}
-주요 리눅스 민트 에디션의 패키지 기반을 제공하는 배포판은 무엇인가요?
+:::single-choice{#identify-main-mint-base} 주요 리눅스 민트 에디션의 패키지 기반을 제공하는 배포판은 무엇인가요?
 
 ::option[Ubuntu LTS]{#ubuntu-lts-base .correct explanation="주요 리눅스 민트 에디션은 Ubuntu LTS 패키지 기반을 사용하며 LMDE는 데비안을 직접 기반으로 하는 별도 에디션입니다."}
 ::option[Fedora Linux]{#mint-fedora-base explanation="Fedora는 RPM 패키지 계열이며 민트의 기반이 아닙니다. 주요 민트 에디션은 Ubuntu LTS를 사용합니다."}
@@ -50,8 +48,7 @@ meta_keywords: "리눅스 민트 배포판, 리눅스 민트 리눅스 배포판
 
 이 덕분에 리눅스 민트는 친숙하고 잘 문서화된 소프트웨어 워크플로우를 제공하며, 이는 초보자에게 적합한 이유 중 하나입니다.
 
-:::single-choice{#identify-mint-package-tool}
-리눅스 민트에서 명령줄로 패키지를 관리하는 도구는 무엇인가요?
+:::single-choice{#identify-mint-package-tool} 리눅스 민트에서 명령줄로 패키지를 관리하는 도구는 무엇인가요?
 
 ::option[DNF]{#mint-dnf-tool explanation="DNF는 Fedora와 RHEL 계열 시스템에서 사용하며 리눅스 민트는 데비안 계열 패키지 도구를 사용합니다."}
 ::option[APT]{#mint-apt-tool .correct explanation="리눅스 민트는 명령줄 패키지 관리에 APT를 사용하며 소프트웨어는 데비안 계열 `.deb` 형식으로 배포됩니다."}
@@ -64,8 +61,7 @@ meta_keywords: "리눅스 민트 배포판, 리눅스 민트 리눅스 배포판
 
 이러한 데스크톱 우선주의는 민트 정체성의 핵심입니다. 모든 사용 사례를 동일하게 다루려는 일부 배포판과 달리, 민트는 실용적인 데스크톱 리눅스 배포판으로 이해하는 것이 가장 좋습니다.
 
-:::single-choice{#recognize-cinnamon-layout}
-여기서 강조한 Cinnamon 데스크톱 경험을 설명하는 특징은 무엇인가요?
+:::single-choice{#recognize-cinnamon-layout} 여기서 강조한 Cinnamon 데스크톱 경험을 설명하는 특징은 무엇인가요?
 
 ::option[그래픽 데스크톱이 없는 명령줄 전용 인터페이스]{#command-only-layout explanation="리눅스 민트에서 터미널을 쓸 수는 있지만 Cinnamon은 그래픽 데스크톱 환경이므로 명령줄 전용이 아닙니다."}
 ::option[패널과 애플리케이션 메뉴가 있는 고전적인 레이아웃]{#classic-cinnamon-layout .correct explanation="Cinnamon은 익숙한 패널과 메뉴 레이아웃으로 알려져 있어 민트의 접근하기 쉬운 데스크톱 경험에 기여합니다."}

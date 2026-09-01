@@ -35,8 +35,7 @@ drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-Что означает первая `d` в `drwxr-xr-x`?
+:::single-choice{#file-permissions-type-character} Что означает первая `d` в `drwxr-xr-x`?
 
 ::option[Объект является символической ссылкой.]{#file-permissions-type-link explanation="В позиции типа файла символическая ссылка обычно обозначается буквой l."}
 ::option[Объект является каталогом.]{#file-permissions-type-directory .correct explanation="Первый символ задаёт тип файла, и d обозначает каталог."}
@@ -62,8 +61,7 @@ d | rwx | r-x | r-x
 
 Удаление файла определяется прежде всего правами его родительского каталога, а не собственным битом записи файла.
 
-:::single-choice{#file-permissions-directory-execute}
-Что в первую очередь разрешает право выполнения для каталога?
+:::single-choice{#file-permissions-directory-execute} Что в первую очередь разрешает право выполнения для каталога?
 
 ::option[Запуск каждого обычного файла в каталоге.]{#file-permissions-directory-run-files explanation="Бит выполнения каталога не предоставляет право выполнения каждому файлу внутри."}
 ::option[Изменение содержимого каждого файла в каталоге.]{#file-permissions-directory-edit-files explanation="Запись в содержимое файлов зависит от прав самих файлов и других механизмов доступа."}
@@ -82,16 +80,14 @@ d | rwx | r-x | r-x
 
 В примере тройка владельца — `rwx`, а у группы и остальных — `r-x`. Владелец может читать каталог, записывать в него и выполнять поиск. Классы группы и остальных могут читать и искать в нём, но обычные биты режима не разрешают им создавать или удалять записи.
 
-:::single-choice{#file-permissions-triplet-order}
-В каком порядке после символа типа файла идут три тройки прав?
+:::single-choice{#file-permissions-triplet-order} В каком порядке после символа типа файла идут три тройки прав?
 
 ::option[Группа, владелец, затем остальные.]{#file-permissions-order-group-first explanation="Тройка группы стоит второй, а не первой."}
 ::option[Остальные, группа, затем владелец.]{#file-permissions-order-other-first explanation="Тройка остальных стоит последней, а владельца — первой."}
 ::option[Владелец, группа, затем остальные.]{#file-permissions-order-owner-first .correct explanation="Девять символов прав всегда представляют тройки владельца, группы и остальных именно в этом порядке."}
 :::
 
-:::single-choice{#file-permissions-example-group}
-Какие обычные права имеет класс группы в `drwxr-xr-x`?
+:::single-choice{#file-permissions-example-group} Какие обычные права имеет класс группы в `drwxr-xr-x`?
 
 ::option[Чтение и запись.]{#file-permissions-group-read-write explanation="Тройка группы — r-x, поэтому в позиции записи стоит -."}
 ::option[Запись и выполнение.]{#file-permissions-group-write-execute explanation="Первая позиция тройки группы содержит r, а не w."}

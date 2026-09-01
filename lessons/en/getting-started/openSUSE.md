@@ -22,16 +22,14 @@ openSUSE is known for two main release approaches: Leap and Tumbleweed. Leap is 
 
 That split gives openSUSE unusual flexibility. Users can choose the style that fits them instead of switching to a different distro family entirely.
 
-:::single-choice{#choose-opensuse-leap}
-Which openSUSE option best fits a user who wants a traditional, regular release?
+:::single-choice{#choose-opensuse-leap} Which openSUSE option best fits a user who wants a traditional, regular release?
 
 ::option[Tumbleweed]{#tumbleweed-release explanation="Tumbleweed is openSUSE's continuously updated rolling release. It better fits users who prioritize newer packages."}
 ::option[YaST]{#yast-not-release explanation="YaST is an installation and configuration tool, not an openSUSE release model. It can be used to administer the system."}
 ::option[Leap]{#leap-release .correct explanation="Leap follows a regular release model and emphasizes a more conservative system base. That matches the stated preference."}
 :::
 
-:::single-choice{#recognize-tumbleweed-model}
-What distinguishes Tumbleweed from Leap?
+:::single-choice{#recognize-tumbleweed-model} What distinguishes Tumbleweed from Leap?
 
 ::option[It delivers tested package updates continuously]{#continuous-tested-updates .correct explanation="Tumbleweed is a rolling release that publishes tested snapshots continuously. Users receive new software without waiting for a regular major release."}
 ::option[It receives software only through fixed major releases]{#fixed-major-releases explanation="Fixed regular releases describe Leap's approach more closely. Tumbleweed updates continuously."}
@@ -44,8 +42,7 @@ openSUSE uses the RPM package format and tools such as `zypper` to install, upda
 
 Understanding package families is helpful when you compare Linux distros. If you want a broader comparison, see [Choosing a Linux Distribution](https://labex.io/lesson/choosing-a-linux-distribution).
 
-:::single-choice{#identify-zypper-role}
-What is `zypper` used for on openSUSE?
+:::single-choice{#identify-zypper-role} What is `zypper` used for on openSUSE?
 
 ::option[Selecting between graphical desktop wallpaper themes]{#zypper-wallpaper explanation="Desktop appearance is configured through desktop tools. `zypper` manages software packages instead."}
 ::option[Installing, updating, and removing software packages]{#zypper-package-tool .correct explanation="`zypper` is openSUSE's command-line package-management tool. It works with software distributed through RPM repositories."}
@@ -58,8 +55,7 @@ One of the best-known features of openSUSE is **YaST**. YaST is an administratio
 
 This is a major reason openSUSE appeals to users who want powerful system administration tools without having to configure everything manually.
 
-:::single-choice{#identify-yast-purpose}
-What is YaST designed to provide?
+:::single-choice{#identify-yast-purpose} What is YaST designed to provide?
 
 ::option[A rolling repository containing only the newest applications]{#yast-repository explanation="Tumbleweed provides the rolling repository model. YaST is an administration and configuration tool rather than a software branch."}
 ::option[A package format shared with Debian and Ubuntu systems]{#yast-package-format explanation="openSUSE uses RPM packages, while Debian-based systems use `.deb`. YaST itself is not a package format."}

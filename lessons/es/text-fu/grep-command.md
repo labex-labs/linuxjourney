@@ -28,8 +28,7 @@ Usa `-F` cuando el patrón deba tratarse como una cadena fija en vez de como una
 $ grep -F 'price: $5.00' products.txt
 ```
 
-:::single-choice{#grep-fixed-string}
-¿Qué orden busca en `products.txt` el texto literal `price: $5.00` sin tratar los caracteres del patrón como sintaxis de expresiones regulares?
+:::single-choice{#grep-fixed-string} ¿Qué orden busca en `products.txt` el texto literal `price: $5.00` sin tratar los caracteres del patrón como sintaxis de expresiones regulares?
 
 ::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` selecciona la coincidencia de cadenas fijas y las comillas simples protegen el signo de dólar de la expansión del shell."}
 ::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` activa expresiones regulares extendidas, donde `$` y `.` tienen significados especiales en vez de ser literales."}
@@ -52,8 +51,7 @@ $ grep -E '\.txt$' filenames.txt
 
 La barra invertida hace que el punto sea literal; un `.` sin escapar en una expresión regular coincide con cualquier carácter individual.
 
-:::single-choice{#grep-literal-txt-suffix}
-¿Qué expresión regular extendida coincide con líneas que terminan con el sufijo literal `.txt`?
+:::single-choice{#grep-literal-txt-suffix} ¿Qué expresión regular extendida coincide con líneas que terminan con el sufijo literal `.txt`?
 
 ::option[`'.txt$'`]{#grep-anychar-txt explanation="El punto no está escapado, por lo que coincide con cualquier carácter anterior a `txt`, no específicamente con un punto literal."}
 ::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` coincide con un punto literal y `$` ancla la coincidencia al final de la línea."}
@@ -70,8 +68,7 @@ $ grep -e '-v' settings.conf
 
 Puedes repetir `-e` para seleccionar líneas que coincidan con cualquiera de los patrones proporcionados. Usa `-f patterns.txt` para leer un patrón por línea desde un archivo.
 
-:::single-choice{#grep-hyphen-pattern}
-¿Qué orden busca el patrón `-v` en `settings.conf` en vez de interpretarlo como una opción?
+:::single-choice{#grep-hyphen-pattern} ¿Qué orden busca el patrón `-v` en `settings.conf` en vez de interpretarlo como una opción?
 
 ::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="Las comillas protegen los caracteres de la expansión del shell, pero `grep` aún puede interpretar el argumento resultante `-v` como su opción para invertir coincidencias."}
 ::option[`grep -v settings.conf`]{#grep-invert-settings explanation="Esto activa la coincidencia invertida y no proporciona `settings.conf` como patrón y entrada del modo solicitado."}
@@ -94,8 +91,7 @@ $ grep -ic 'fox' sample.txt
 
 `-c` cuenta líneas seleccionadas, no la cantidad total de coincidencias dentro de ellas. Una línea que contiene `fox fox` aporta uno al recuento. Cuando necesites específicamente apariciones no superpuestas con `grep` de GNU, una posible tubería es `grep -o PATTERN | wc -l`.
 
-:::single-choice{#grep-count-lines}
-`data.txt` tiene una línea que contiene `error error` y dos líneas sin coincidencias. ¿Qué muestra `grep -c 'error' data.txt`?
+:::single-choice{#grep-count-lines} `data.txt` tiene una línea que contiene `error error` y dos líneas sin coincidencias. ¿Qué muestra `grep -c 'error' data.txt`?
 
 ::option[`2`, porque la palabra aparece dos veces en una línea.]{#grep-count-occurrences explanation="`-c` cuenta líneas seleccionadas, no coincidencias individuales dentro de una línea."}
 ::option[`1`, porque coincide exactamente una línea.]{#grep-count-one-line .correct explanation="La única línea se selecciona una vez aunque el patrón aparezca dos veces en ella."}
@@ -118,8 +114,7 @@ $ grep -r 'listen_port' config/
 
 Los diagnósticos, como errores de permisos, se envían a la salida de error estándar y no forman parte de la entrada en la que se buscan coincidencias. Limita la ruta de búsqueda y comprende los permisos en vez de elevar el acceso inmediatamente.
 
-:::single-choice{#grep-pipeline-input}
-En `generate-report | grep 'failed'`, ¿qué entrada examina `grep`?
+:::single-choice{#grep-pipeline-input} En `generate-report | grep 'failed'`, ¿qué entrada examina `grep`?
 
 ::option[Un archivo llamado `generate-report` en el directorio actual.]{#grep-report-file explanation="La palabra de la izquierda se ejecuta como una orden y no se entrega a `grep` como operando de archivo."}
 ::option[El flujo de salida estándar producido por `generate-report`.]{#grep-report-stdout .correct explanation="La tubería conecta la salida estándar del productor con la entrada estándar de `grep`."}

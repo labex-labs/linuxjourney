@@ -22,8 +22,7 @@ IPv4 显示为由点分隔的四个八位组：
 
 每个八位组的取值范围为 0 到 255，因此完整地址包含四个字节。前缀长度表示从开头起多少位属于网络前缀，例如 `192.0.2.165/24`。
 
-:::single-choice{#ipv4-address-size}
-IPv4 地址有多大？
+:::single-choice{#ipv4-address-size} IPv4 地址有多大？
 
 ::option[32 位，由四个八位组组成。]{#ipv4-thirty-two-bits .correct explanation="四组八位构成点分十进制表示。"}
 ::option[每个网络中都是 24 位。]{#ipv4-always-twenty-four explanation="/24 只是一种前缀长度，并不是每个 IPv4 地址的大小。"}
@@ -36,8 +35,7 @@ IPv4 地址有多大？
 
 私有地址可以在相互独立的网络中重复使用。NAT 可以为外部通信转换这些地址，但私有路由域内部的通信并不需要 NAT。
 
-:::single-choice{#ipv4-private-reuse}
-为什么许多组织中都可以出现 `10.0.0.1`？
+:::single-choice{#ipv4-private-reuse} 为什么许多组织中都可以出现 `10.0.0.1`？
 
 ::option[每个实例都标识同一台物理路由器。]{#ipv4-same-router explanation="该地址在各自网络内具有意义，并不全球唯一。"}
 ::option[IPv4 路由器会忽略第一个八位组。]{#ipv4-ignore-octet explanation="所有地址位都会参与路由匹配。"}
@@ -60,8 +58,7 @@ inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
 
 它显示前缀、广播地址、作用域、动态来源标记和接口。其他行还可以显示有效期和首选期。一个接口可以拥有多个 IPv4 地址。
 
-:::single-choice{#ipv4-ip-output-prefix}
-`192.0.2.165/24` 中的 `/24` 表示什么？
+:::single-choice{#ipv4-ip-output-prefix} `192.0.2.165/24` 中的 `/24` 表示什么？
 
 ::option[该地址会在 24 秒后过期。]{#ipv4-prefix-seconds explanation="有效期会单独报告。"}
 ::option[地址的前 24 位组成网络前缀。]{#ipv4-prefix-bits .correct explanation="剩余八位标识该前缀内的位置。"}
@@ -78,8 +75,7 @@ $ ip route get 198.51.100.20
 
 读取所选下一跳、接口和源地址，然后测试真实应用程序路径。没有控制台访问和回滚计划时，不要更改远程主机的地址。
 
-:::single-choice{#ipv4-route-get-purpose}
-`ip route get DESTINATION` 可以显示什么？
+:::single-choice{#ipv4-route-get-purpose} `ip route get DESTINATION` 可以显示什么？
 
 ::option[完整互联网路径上每台路由器的配置。]{#ipv4-all-router-config explanation="本地查询不会查询下游设备配置。"}
 ::option[本地路由决策，包括接口和首选源地址。]{#ipv4-route-decision .correct explanation="它会针对所给目标评估当前主机的路由策略。"}

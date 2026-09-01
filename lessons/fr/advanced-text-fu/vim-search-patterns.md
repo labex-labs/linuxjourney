@@ -22,8 +22,7 @@ En mode Normal, tapez `/`, saisissez un motif, puis appuyez sur Entrée. Vim se 
 
 Les recherches suivent la syntaxe des expressions régulières de Vim ; des caractères comme `.`, `*`, `[` et `\` peuvent donc avoir un sens spécial. Ajoutez `\V` au début lorsque tout le reste du motif doit être traité de façon « très non magique », ou échappez volontairement les caractères spéciaux.
 
-:::single-choice{#vim-search-forward-key}
-Depuis le mode Normal, quelle commande lance une recherche vers l'avant de `pretty` ?
+:::single-choice{#vim-search-forward-key} Depuis le mode Normal, quelle commande lance une recherche vers l'avant de `pretty` ?
 
 ::option[`?pretty` suivi d'Entrée]{#vim-backward-pretty explanation="Le point d'interrogation lance une recherche vers l'arrière depuis la position actuelle du curseur."}
 ::option[`/pretty` suivi d'Entrée]{#vim-forward-pretty .correct explanation="La barre oblique lance une recherche vers l'avant et Entrée soumet le motif."}
@@ -40,8 +39,7 @@ Tapez `?`, saisissez un motif, puis appuyez sur Entrée pour atteindre la corres
 
 Cela ne signifie pas nécessairement « la dernière correspondance du fichier ». Le résultat dépend de la position actuelle du curseur. Avec l'option `wrapscan` activée par défaut, la recherche peut reprendre à l'autre extrémité du fichier ; `:set nowrapscan` désactive ce bouclage.
 
-:::single-choice{#vim-search-backward-key}
-Quel préfixe de recherche du mode Normal parcourt le texte antérieur au curseur ?
+:::single-choice{#vim-search-backward-key} Quel préfixe de recherche du mode Normal parcourt le texte antérieur au curseur ?
 
 ::option[`/`]{#vim-slash-forward explanation="La barre oblique recherche vers l'avant depuis le curseur, pas dans le texte qui le précède."}
 ::option[`?`]{#vim-question-backward .correct explanation="Le point d'interrogation lance une recherche de motif vers l'arrière depuis la position actuelle du curseur."}
@@ -57,8 +55,7 @@ Après l'un ou l'autre type de recherche :
 
 Ainsi, après `/pretty`, `n` avance et `N` recule. Après `?pretty`, `n` recule et `N` avance.
 
-:::single-choice{#vim-repeat-backward-search}
-Après avoir exécuté `?error`, quelle touche répète la recherche dans le même sens, vers l'arrière ?
+:::single-choice{#vim-repeat-backward-search} Après avoir exécuté `?error`, quelle touche répète la recherche dans le même sens, vers l'arrière ?
 
 ::option[`n`]{#vim-same-question-search .correct explanation="Le `n` minuscule répète la dernière recherche dans son sens initial, qui est ici celui de l'arrière."}
 ::option[`N`]{#vim-opposite-question-search explanation="Le `N` majuscule inverse le sens initial ; après une recherche avec `?`, il avancerait donc."}
@@ -74,8 +71,7 @@ En mode Normal, placez le curseur sur un mot, puis utilisez :
 
 Ces commandes définissent le dernier motif de recherche ; `n` et `N` peuvent donc poursuivre à partir de celui-ci.
 
-:::single-choice{#vim-current-word-forward}
-Quelle touche du mode Normal recherche vers l'avant le mot entier sous le curseur ?
+:::single-choice{#vim-current-word-forward} Quelle touche du mode Normal recherche vers l'avant le mot entier sous le curseur ?
 
 ::option[`#`]{#vim-hash-current-word explanation="Le dièse recherche vers l'arrière le mot situé sous le curseur."}
 ::option[`*`]{#vim-star-current-word .correct explanation="L'astérisque construit un motif de mot entier à partir du mot sous le curseur et le recherche vers l'avant."}
@@ -95,8 +91,7 @@ Par exemple, `/\cerror` correspond à `error`, `Error` et `ERROR`, quelles que s
 
 Lorsque le surlignage des recherches est actif, `:nohlsearch` efface les surlignages visibles sans supprimer le motif. La recherche ou répétition suivante pourra de nouveau surligner les correspondances.
 
-:::single-choice{#vim-force-case-insensitive}
-Quel motif force une recherche de `error` à ignorer la casse, indépendamment des options actuelles ?
+:::single-choice{#vim-force-case-insensitive} Quel motif force une recherche de `error` à ignorer la casse, indépendamment des options actuelles ?
 
 ::option[`/\Cerror`]{#vim-pattern-match-case explanation="Le `\C` majuscule impose une correspondance sensible à la casse, soit le comportement opposé."}
 ::option[`/:error`]{#vim-pattern-colon-error explanation="Dans ce motif, les deux-points sont un caractère littéral et ne règlent pas la gestion de la casse."}

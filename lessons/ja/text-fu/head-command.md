@@ -22,8 +22,7 @@ $ head events.log
 
 ファイルは変更されません。10 行未満なら、存在するすべての行が表示されます。
 
-:::single-choice{#head-default-lines}
-`head events.log` は標準で何を表示しますか？
+:::single-choice{#head-default-lines} `head events.log` は標準で何を表示しますか？
 
 ::option[末尾の 10 行。ファイルが短ければ全行。]{#head-last-ten explanation="入力の末尾を表示するのは `tail` の役割です。`head` は先頭から選びます。"}
 ::option[先頭の 10 行。ファイルが短ければ全行。]{#head-first-ten .correct explanation="件数オプションがなければ、`head` は入力の先頭から最大 10 行を選びます。"}
@@ -40,8 +39,7 @@ $ head -n 15 events.log
 
 GNU `head` は短縮形 `-15` も受け付けますが、`-n 15` のほうがオプションの意味を明確に表します。
 
-:::single-choice{#head-five-lines}
-`report.txt` の先頭 5 行を表示するコマンドはどれですか？
+:::single-choice{#head-five-lines} `report.txt` の先頭 5 行を表示するコマンドはどれですか？
 
 ::option[`head -c 5 report.txt`]{#head-five-bytes explanation="`-c` は行ではなくバイトを数えるため、最初の行の途中で終わることがあります。"}
 ::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="`-n` は行数を選び、`5` は先頭 5 行を要求します。"}
@@ -58,8 +56,7 @@ $ head -c 20 archive.bin
 
 これは先頭 20 バイトを表示します。テキスト行やマルチバイト文字の途中で出力が終わることがあるため、通常のテキストプレビューには行モードを使います。
 
-:::single-choice{#head-first-bytes}
-`payload.bin` の先頭 100 バイトを stdout へ書くコマンドはどれですか？
+:::single-choice{#head-first-bytes} `payload.bin` の先頭 100 バイトを stdout へ書くコマンドはどれですか？
 
 ::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="`-c` はバイト数を選ぶため、存在する先頭 100 バイトを要求します。"}
 ::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="`-n` はバイトではなく行を数え、100 バイトより大幅に多くも少なくもなり得ます。"}
@@ -87,16 +84,14 @@ $ head -n 2 january.txt february.txt
 
 ヘッダーを抑制するには `-q`、1 ファイルでも表示するには `-v` を使います。
 
-:::single-choice{#head-pipeline-preview}
-`generate-report | head -n 5` で `head` は何を読みますか？
+:::single-choice{#head-pipeline-preview} `generate-report | head -n 5` で `head` は何を読みますか？
 
 ::option[stdin を通じて `generate-report` の stdout を読む。]{#head-pipe-input .correct explanation="パイプが生成側の stdout を `head` の stdin へ接続し、そこから先頭 5 行を選びます。"}
 ::option[現在のディレクトリにある先頭 5 個のファイル名を読む。]{#head-directory-names explanation="ディレクトリ一覧のコマンドはなく、`head` はパイプからストリームを受け取ります。"}
 ::option[`generate-report` というファイルから 5 バイト読む。]{#head-producer-file explanation="左側はコマンドとして実行され、`-n` はバイトではなく行を数えます。"}
 :::
 
-:::single-choice{#head-suppress-filename-headers}
-`head` が複数ファイルを読むとき、ファイル名ヘッダーを抑制するオプションはどれですか？
+:::single-choice{#head-suppress-filename-headers} `head` が複数ファイルを読むとき、ファイル名ヘッダーを抑制するオプションはどれですか？
 
 ::option[`-v`]{#head-verbose explanation="`-v` は 1 ファイルだけでもヘッダーを表示するため、抑制とは逆です。"}
 ::option[`-c`]{#head-byte-option explanation="`-c` は選択単位をバイトへ変え、ファイル名ヘッダーは制御しません。"}

@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 The shell starts the pipeline commands and arranges the stream connection. The commands can work concurrently: `less` can begin reading before `ls` has produced its entire listing.
 
-:::single-choice{#pipe-stream-connection}
-In `ls -la /etc | less`, which streams does `|` connect by default?
+:::single-choice{#pipe-stream-connection} In `ls -la /etc | less`, which streams does `|` connect by default?
 
 ::option[`ls` stdin to `less` stdout.]{#pipe-reversed-streams explanation="This reverses both the producer and consumer. Data flows from the left command's output to the right command's input."}
 ::option[`ls` stderr to both streams of `less`.]{#pipe-stderr-both explanation="A plain pipe does not connect the left command's stderr, and it does not target both streams of the right command."}
@@ -50,8 +49,7 @@ Matching pathnames go through the pipe, while permission diagnostics can still a
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-In `find /etc -name "*.conf" | less`, where does `find`'s stderr normally go if no other redirection is present?
+:::single-choice{#pipe-left-stderr} In `find /etc -name "*.conf" | less`, where does `find`'s stderr normally go if no other redirection is present?
 
 ::option[Into `less` through the same pipe as stdout.]{#pipe-errors-to-less explanation="The ordinary pipe connects stdout only. Stderr is not automatically combined with it."}
 ::option[Into a file named `stderr` in the current directory.]{#pipe-errors-to-file explanation="No error-file redirection is present, so the shell does not create such a file."}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 Here, `listing.txt` receives the listing and `tee`'s stdout remains connected to the terminal. By default, `tee` creates or truncates the named file, just like `>`.
 
-:::single-choice{#tee-display-and-save}
-Which command displays `generate-report` output and also replaces `report.txt` with the same output?
+:::single-choice{#tee-display-and-save} Which command displays `generate-report` output and also replaces `report.txt` with the same output?
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="A plain output redirection writes the file but does not keep a copy flowing to the terminal."}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` copies stdin to `report.txt` and to its stdout, which remains the terminal in this pipeline."}
@@ -82,8 +79,7 @@ Use `-a` when the file should be appended instead of replaced:
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-Which command displays the current date and appends it to `activity.log`?
+:::single-choice{#tee-append-log} Which command displays the current date and appends it to `activity.log`?
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="The `-a` option makes `tee` append to the file while it continues copying the input to stdout."}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="Without `-a`, `tee` replaces the existing file rather than preserving its earlier entries."}
@@ -106,8 +102,7 @@ This pipeline:
 
 The file contains the data before `grep` filters it. If you want only the filtered lines in the file, put `tee` after `grep`.
 
-:::single-choice{#tee-before-filter-result}
-What does `all.txt` contain after `produce | tee all.txt | grep error` finishes successfully?
+:::single-choice{#tee-before-filter-result} What does `all.txt` contain after `produce | tee all.txt | grep error` finishes successfully?
 
 ::option[Only the lines that `grep` matched.]{#tee-filtered-only explanation="`tee` runs before `grep`, so it writes the unfiltered input rather than the downstream match set."}
 ::option[Only stderr from `produce`.]{#tee-producer-stderr explanation="A plain pipe carries `produce` stdout. Its stderr is not the input to `tee`."}

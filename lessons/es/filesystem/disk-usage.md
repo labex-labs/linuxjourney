@@ -28,8 +28,7 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 $ df -hT /var/log
 ```
 
-:::single-choice{#disk-usage-df-scope}
-¿Qué comunica principalmente `df`?
+:::single-choice{#disk-usage-df-scope} ¿Qué comunica principalmente `df`?
 
 ::option[El contenido en bytes de cada archivo de un directorio.]{#disk-usage-df-file-content explanation="La contabilidad del árbol de directorios corresponde a herramientas como `du`."}
 ::option[La capacidad, el uso y el espacio disponible a nivel del sistema de archivos.]{#disk-usage-df-filesystem .correct explanation="Df consulta estadísticas de asignación de sistemas de archivos montados en vez de recorrer todas las rutas."}
@@ -46,8 +45,7 @@ $ df -i /var
 
 Una gran cantidad de archivos pequeños puede consumir los inodos disponibles. Eliminar un archivo grande libera muchos bloques, pero por lo general un solo inodo; eliminar muchos archivos pequeños innecesarios puede aliviar la presión de inodos. Algunos sistemas de archivos asignan metadatos dinámicamente y comunican estos conceptos de otra forma.
 
-:::single-choice{#disk-usage-inode-exhaustion}
-¿Qué puede ocurrir cuando un sistema de archivos tiene bloques libres, pero no inodos libres?
+:::single-choice{#disk-usage-inode-exhaustion} ¿Qué puede ocurrir cuando un sistema de archivos tiene bloques libres, pero no inodos libres?
 
 ::option[Todos los archivos existentes duplican automáticamente su tamaño.]{#disk-usage-inode-double explanation="Agotar los inodos impide asignar metadatos nuevos y no amplía el contenido existente."}
 ::option[Puede fallar la creación de otro archivo.]{#disk-usage-inode-create-fail .correct explanation="Un objeto nuevo del sistema de archivos necesita metadatos aunque quede espacio para datos."}
@@ -70,8 +68,7 @@ $ sudo du -xhd1 /var | sort -h
 
 Las opciones de GNU mostradas significan salida legible, profundidad máxima uno y un solo sistema de archivos. Los permisos pueden ocultar subárboles y producir un total incompleto. `du` también puede contar los archivos con enlaces duros una sola vez de forma predeterminada, distinguir el tamaño aparente de los bloques asignados y tratar de forma distinta los archivos dispersos según las opciones.
 
-:::single-choice{#disk-usage-du-purpose}
-¿Qué orden resume el uso asignado bajo `/var/log`?
+:::single-choice{#disk-usage-du-purpose} ¿Qué orden resume el uso asignado bajo `/var/log`?
 
 ::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="Esta orden comunica estadísticas de inodos del sistema de archivos que contiene la ruta."}
 ::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du recorre el árbol indicado y `-s` emite un único resumen en unidades legibles."}
@@ -90,8 +87,7 @@ Entre las causas habituales se encuentran:
 
 Para archivos eliminados pero abiertos, examina los procesos autorizados con una herramienta como `lsof +L1`; reinicia o señala el servicio responsable mediante su procedimiento normal en vez de truncar descriptores desconocidos.
 
-:::single-choice{#disk-usage-deleted-open-file}
-¿Por qué puede mostrar `df` espacio en uso que `du`, basado en rutas, no encuentra?
+:::single-choice{#disk-usage-deleted-open-file} ¿Por qué puede mostrar `df` espacio en uso que `du`, basado en rutas, no encuentra?
 
 ::option[Porque `df` siempre multiplica por dos el tamaño de todos los archivos.]{#disk-usage-df-doubles explanation="No existe una regla universal de duplicación."}
 ::option[Porque un archivo eliminado puede seguir abierto y asignado a un proceso en ejecución.]{#disk-usage-open-deleted .correct explanation="La entrada del directorio desapareció, pero el sistema de archivos conserva los bloques hasta que se cierra la última referencia abierta."}
@@ -102,8 +98,7 @@ Para archivos eliminados pero abiertos, examina los procesos autorizados con una
 
 Empieza por el sistema de archivos lleno que comunica `df`, identifica su destino de montaje con `findmnt` y después limita las búsquedas de `du` al mismo sistema. Ten en cuenta las instantáneas, las capas de contenedores, los registros, las cachés de paquetes y la política de retención de la aplicación. No elimines archivos solo porque sean grandes; determina primero su propietario, copia de seguridad, requisitos normativos y comportamiento del servicio.
 
-:::single-choice{#disk-usage-safe-investigation}
-¿Cuál es la respuesta más segura al encontrar un archivo grande?
+:::single-choice{#disk-usage-safe-investigation} ¿Cuál es la respuesta más segura al encontrar un archivo grande?
 
 ::option[Eliminarlo inmediatamente mientras el servicio escribe en él.]{#disk-usage-delete-immediately explanation="Esto puede perder datos necesarios y quizá no libere espacio si el archivo sigue abierto."}
 ::option[Ejecutar `mkfs` en el dispositivo que lo contiene.]{#disk-usage-mkfs-device explanation="Dar formato destruiría el sistema de archivos en vez de resolver el crecimiento de un archivo."}

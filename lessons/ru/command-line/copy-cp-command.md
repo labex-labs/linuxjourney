@@ -34,8 +34,7 @@ $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 
 Во втором примере скопированные данные получают имя `mycoolfile_backup`.
 
-:::single-choice{#copy-file-under-new-name}
-Какая команда копирует `draft.txt` в `final.txt`, сохраняя `draft.txt`?
+:::single-choice{#copy-file-under-new-name} Какая команда копирует `draft.txt` в `final.txt`, сохраняя `draft.txt`?
 
 ::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` переименовывает или перемещает исходный путь и не оставляет требуемую копию источника."}
 ::option[`cp final.txt draft.txt`]{#copy-reversed explanation="Источник и назначение переставлены: команда скопирует `final.txt` в `draft.txt`."}
@@ -52,8 +51,7 @@ $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 
 При нескольких источниках последний аргумент обязан быть каталогом.
 
-:::single-choice{#copy-multiple-files}
-Какая команда копирует `a.txt` и `b.txt` в существующий каталог `archive/`?
+:::single-choice{#copy-multiple-files} Какая команда копирует `a.txt` и `b.txt` в существующий каталог `archive/`?
 
 ::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="В этой форме каталог назначения должен стоять в конце; иное расположение меняет интерпретацию аргументов."}
 ::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="При нескольких источниках `cp` воспринимает последний существующий каталог как назначение для всех предыдущих файлов."}
@@ -82,8 +80,7 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-:::single-choice{#preview-copy-pattern}
-Какая команда перед копированием `*.jpg` показывает совпавшие нескрытые имена?
+:::single-choice{#preview-copy-pattern} Какая команда перед копированием `*.jpg` показывает совпавшие нескрытые имена?
 
 ::option[`cp *.jpg`]{#copy-no-destination explanation="Это попытка копирования без ясного назначения при нескольких совпадениях, а не предварительный просмотр."}
 ::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="Оболочка раскрывает для `ls` тот же шаблон, позволяя проверить имена до копирования."}
@@ -112,8 +109,7 @@ $ cp -R website /home/pete/backups/
 $ cp -a project/ project-backup/
 ```
 
-:::single-choice{#archive-directory-tree}
-Какая команда рекурсивно копирует `project/` для резервной копии, сохраняя ссылки и многие атрибуты?
+:::single-choice{#archive-directory-tree} Какая команда рекурсивно копирует `project/` для резервной копии, сохраняя ссылки и многие атрибуты?
 
 ::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` сохраняет отдельные атрибуты, но сам по себе не включает рекурсивное копирование каталога."}
 ::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` управляет копированием по состоянию назначения, но сам не включает рекурсию."}
@@ -137,8 +133,7 @@ $ cp -n mycoolfile /home/pete/Pictures
 
 GNU `cp -f` при невозможности открыть назначение для записи пытается удалить его и повторить копирование. Это не заменяет проверку целей. Псевдонимы оболочки тоже могут добавлять параметры вроде `-i`, поэтому неожиданный запрос следует исследовать.
 
-:::single-choice{#skip-existing-destination}
-Какая команда копирует `report.txt` в `backup/`, но пропускает существующий одноимённый файл?
+:::single-choice{#skip-existing-destination} Какая команда копирует `report.txt` в `backup/`, но пропускает существующий одноимённый файл?
 
 ::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="Параметр `-n` запрещает `cp` перезаписывать существующее назначение."}
 ::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` задаёт вопрос, поэтому результат зависит от ответа и не всегда пропускает назначение."}

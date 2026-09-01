@@ -20,8 +20,7 @@ Eine Partitionstabelle zeichnet Startpositionen, Längen, Typkennungen und schem
 
 In gewöhnlichen Strukturen dürfen sich Partitionsgrenzen nicht überschneiden. Speicher außerhalb aller Einträge ist aus Sicht der Partitionstabelle nicht zugewiesen, kann aber noch alte Signaturen oder Daten enthalten. Das Ändern einer Tabelle verschiebt Dateisysteminhalte nicht automatisch passend zu den neuen Grenzen.
 
-:::single-choice{#anatomy-disk-partition-table-role}
-Was teilt dem Betriebssystem mit, wo Datenträgerpartitionen beginnen und enden?
+:::single-choice{#anatomy-disk-partition-table-role} Was teilt dem Betriebssystem mit, wo Datenträgerpartitionen beginnen und enden?
 
 ::option[Das aktuelle Arbeitsverzeichnis der Shell.]{#anatomy-disk-shell-directory explanation="Ein Shellpfad spielt für Partitionsgrenzen auf einem Datenträger keine Rolle."}
 ::option[Die Partitionstabelle des Datenträgers.]{#anatomy-disk-table-boundaries .correct explanation="Partitionseinträge beschreiben Bereiche, die der Kernel als untergeordnete Blockgeräte bereitstellen kann."}
@@ -34,8 +33,7 @@ Das ältere DOS-/MBR-Schema speichert seine primäre Tabelle im ersten logischen
 
 Mit 32-Bit-Sektoradressen und logischen Sektoren von 512 Byte erreicht MBR eine häufig genannte Grenze von etwa 2 TiB. Die genaue Adressierbarkeit hängt von Sektorgröße und Werkzeugunterstützung ab. MBR besitzt außerdem weder die redundanten Kopf- und Tabellenkopien von GPT noch GUIDs pro Partition.
 
-:::single-choice{#anatomy-disk-mbr-more-than-four}
-Welche MBR-Struktur ermöglicht mehr als vier nutzbare Partitionen?
+:::single-choice{#anatomy-disk-mbr-more-than-four} Welche MBR-Struktur ermöglicht mehr als vier nutzbare Partitionen?
 
 ::option[Eine Journal-Partition mit weiteren primären Einträgen.]{#anatomy-disk-mbr-journal explanation="Dateisystem-Journaling steht in keinem Zusammenhang mit der MBR-Tabelle aus vier Einträgen."}
 ::option[Eine erweiterte Partition, die logische Partitionen enthält.]{#anatomy-disk-mbr-extended .correct explanation="Ein primärer Eintrag kann einen erweiterten Container definieren, in dem logische Partitionen verkettet sind."}
@@ -50,8 +48,7 @@ Jeder GPT-Eintrag enthält eine Partitionstyp-GUID und eine eindeutige Partition
 
 GPT wird normalerweise für UEFI-Bootdatenträger verwendet, doch Partitionierung und Firmware-Bootmodus sind getrennte Konzepte. Ein UEFI-System benötigt außerdem passende Bootdateien und eine EFI-Systempartition; GPT allein macht einen Datenträger nicht bootfähig.
 
-:::single-choice{#anatomy-disk-gpt-identifiers}
-Welche Kennungen enthält ein GPT-Partitionseintrag?
+:::single-choice{#anatomy-disk-gpt-identifiers} Welche Kennungen enthält ein GPT-Partitionseintrag?
 
 ::option[Eine Typ-GUID und eine eindeutige Partitions-GUID.]{#anatomy-disk-gpt-guids .correct explanation="Der Typ beschreibt die vorgesehene Verwendung, während die eindeutige GUID genau diesen Partitionseintrag identifiziert."}
 ::option[Nur einen universellen Typ, den jede GPT-Partition gemeinsam verwendet.]{#anatomy-disk-gpt-one-type explanation="GPT definiert zahlreiche Typ-GUIDs für verschiedene Partitionszwecke."}
@@ -64,8 +61,7 @@ Nach der Partitionierung schreibt ein Werkzeug zur Dateisystemerstellung die vom
 
 Ext-Dateisysteme verwenden beispielsweise Inodes und Blockgruppen, während andere Dateisysteme Metadaten durch andere Bäume oder Zuweisungsstrukturen organisieren. Übertrage kein vereinfachtes Diagramm aus „Bootblock, einem Superblock, Inode-Tabelle und Datenblöcken“ auf jedes Dateisystem.
 
-:::single-choice{#anatomy-disk-filesystem-layer}
-Erzeugt das Anlegen einer Partition automatisch ein Dateisystem darin?
+:::single-choice{#anatomy-disk-filesystem-layer} Erzeugt das Anlegen einer Partition automatisch ein Dateisystem darin?
 
 ::option[Nein; Formatieren oder eine andere ausdrückliche Nutzung ist ein getrennter Schritt.]{#anatomy-disk-partition-not-filesystem .correct explanation="Die Partitionstabelle definiert nur einen Blockbereich; dessen Inhalt bleibt davon unabhängig."}
 ::option[Ja; jede Partition wird automatisch als ext4 formatiert.]{#anatomy-disk-auto-ext4 explanation="Partitionierungswerkzeuge erstellen nicht universell ein ext4-Dateisystem."}
@@ -85,8 +81,7 @@ $ sudo parted --list
 
 Gerätenamen können sich ändern, und veraltete Signaturen können die Erkennung verwirren. Bestätige Modell, Seriennummer, Größe, Transport, dauerhafte Links, aktive Einhängungen, Swap, RAID, LVM, Verschlüsselung und Sicherungen, bevor du ein Partitionierungswerkzeug im Schreibmodus öffnest.
 
-:::single-choice{#anatomy-disk-lsblk-fields}
-Welches `lsblk`-Feld unterscheidet erkannte Dateisysteminhalte vom Partitionstabellenschema?
+:::single-choice{#anatomy-disk-lsblk-fields} Welches `lsblk`-Feld unterscheidet erkannte Dateisysteminhalte vom Partitionstabellenschema?
 
 ::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` meldet ein erkanntes Dateisystem oder eine andere bekannte Inhaltssignatur, während `PTTYPE` das Tabellenschema meldet."}
 ::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` bezeichnet den Blockgeräteeintrag des Kernels und identifiziert nicht ausdrücklich das Inhaltsformat."}

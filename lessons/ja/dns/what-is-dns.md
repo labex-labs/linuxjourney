@@ -16,8 +16,7 @@ Domain Name System（DNS）は、分散型の階層データベースであり�
 
 DNS は、一つのホスト名を一つの IP アドレスへ変換するだけではありません。`A` レコードは IPv4 アドレス、`AAAA` は IPv6 アドレス、`MX` はメールルーティング情報、`NS` は権威サーバー名を保持し、ほかにもさまざまな型が別種のデータを運びます。一つの名前に複数レコードがある場合も、アドレスレコードがない場合もあります。
 
-:::single-choice{#dns-purpose-beyond-address}
-DNS が単なるホスト名とアドレスの一覧ではないのはなぜですか？
+:::single-choice{#dns-purpose-beyond-address} DNS が単なるホスト名とアドレスの一覧ではないのはなぜですか？
 
 ::option[すべての Ethernet フレームへ MAC アドレスを恒久的に割り当てるから。]{#dns-mac-frames explanation="リンク層の近隣探索は、そのような方法で DNS を使いません。"}
 ::option[複数種類のサービス情報や委任情報を型付きレコードとして保存するから。]{#dns-typed-records .correct explanation="アドレス、メール、権威、別名、ポリシー関連のレコードには、それぞれ異なる意味があります。"}
@@ -28,8 +27,7 @@ DNS が単なるホスト名とアドレスの一覧ではないのはなぜで�
 
 Fully Qualified Domain Name（FQDN）は、DNS ツリー内の経路を識別します。`www.example.com.` では、最後のドットが root、その下が `com`、さらにその下が `example`、`www` はそのドメイン内の名前です。末尾のドットはユーザーインターフェースで省略されることが多いものの、設定内で絶対名とローカル相対名を区別するときに重要です。
 
-:::single-choice{#dns-trailing-dot}
-`www.example.com.` の最後のドットは何を表しますか？
+:::single-choice{#dns-trailing-dot} `www.example.com.` の最後のドットは何を表しますか？
 
 ::option[DNS root と絶対名。]{#dns-root-dot .correct explanation="このドットが、名前付きノードから root までの完全な経路を終端します。"}
 ::option[すべてのトップレベルドメインに対するワイルドカード。]{#dns-dot-wildcard explanation="ワイルドカードは root 終端記号ではなく、`*` などのラベルを使います。"}
@@ -40,8 +38,7 @@ Fully Qualified Domain Name（FQDN）は、DNS ツリー内の経路を識別し
 
 DNS の権威は階層に沿って下位へ委任されます。root server は resolver を top-level-domain server へ導き、そこから委任済み zone の authoritative server へ導きます。組織は、一つの中央サーバーへ全世界の名前空間を保存せず、自組織の権威データを管理できます。
 
-:::single-choice{#dns-authoritative-data}
-委任済み DNS zone の決定的なデータを提供するのは誰ですか？
+:::single-choice{#dns-authoritative-data} 委任済み DNS zone の決定的なデータを提供するのは誰ですか？
 
 ::option[以前そのサイトを訪れた任意のブラウザー。]{#dns-browser-authority explanation="ブラウザーのキャッシュは、その zone に対して権威を持ちません。"}
 ::option[その zone に設定された authoritative name server。]{#dns-authoritative-servers .correct explanation="委任によって、権威を持って応答する責任のあるサーバーが特定されます。"}
@@ -54,8 +51,7 @@ DNS の権威は階層に沿って下位へ委任されます。root server は 
 
 DNS の成功は、経路、トランスポート、TLS、アプリケーションの正常性を証明しません。また、`/etc/hosts`、search suffix、ローカルキャッシュ、名前サービスのポリシーがシステムの resolver に影響するため、外部へ問い合わせる前に DNS 解決が失敗することもあります。
 
-:::single-choice{#dns-cache-ttl-role}
-DNS レコードの TTL が主に制御するものは何ですか？
+:::single-choice{#dns-cache-ttl-role} DNS レコードの TTL が主に制御するものは何ですか？
 
 ::option[IP パケットが通過できるルーター数。]{#dns-ip-hop-limit explanation="IP の TTL または Hop Limit は別のプロトコルフィールドです。"}
 ::option[アプリケーションが正常でなければならない期間。]{#dns-app-health-time explanation="DNS キャッシュはサービスの可用性を保証しません。"}

@@ -23,8 +23,7 @@ Common tools include:
 
 Tool support evolves, so use the local manual and distribution documentation. A graphical interface does not make destructive operations safe; it still changes the same disk metadata.
 
-:::single-choice{#disk-partitioning-fdisk-gpt}
-Which statement about current Linux `fdisk` is accurate?
+:::single-choice{#disk-partitioning-fdisk-gpt} Which statement about current Linux `fdisk` is accurate?
 
 ::option[It supports both MBR and GPT partition tables.]{#disk-partitioning-fdisk-supports-gpt .correct explanation="Current util-linux fdisk can edit DOS/MBR and GPT layouts, among others."}
 ::option[It can edit only GPT and never MBR.]{#disk-partitioning-fdisk-only-gpt explanation="GPT-focused `gdisk` is closer to that description; fdisk supports multiple label types."}
@@ -45,8 +44,7 @@ Confirm the whole device by persistent identity, model, serial, size, transport,
 
 Unmount or deactivate all relevant layers using their documented procedures. Do not edit the partition table of the running system disk merely because the tool opens successfully. Record the existing table in a restorable form and confirm that your backup resides on a different failure domain.
 
-:::single-choice{#disk-partitioning-target-identity}
-Why is a device name such as `/dev/sdb` insufficient as the only target check?
+:::single-choice{#disk-partitioning-target-identity} Why is a device name such as `/dev/sdb` insufficient as the only target check?
 
 ::option[Linux never exposes whole disks under `/dev`.]{#disk-partitioning-no-whole-disks explanation="Whole disks commonly do have block nodes under `/dev`."}
 ::option[Enumeration names can change when devices or topology change.]{#disk-partitioning-enumeration-changes .correct explanation="A letter is assigned by discovery order and can refer to another disk in a later session."}
@@ -70,8 +68,7 @@ Then select consistent display units and print the table:
 
 `print free` shows current entries and unallocated regions. Parted commands can update disk metadata immediately rather than waiting for a final “save” operation, so treat the interactive prompt as live write access.
 
-:::single-choice{#disk-partitioning-print-free}
-What does `print free` help display in `parted`?
+:::single-choice{#disk-partitioning-print-free} What does `print free` help display in `parted`?
 
 ::option[Files that can be deleted to shrink any filesystem safely.]{#disk-partitioning-free-files explanation="Parted reads partition layout, not filesystem-level file allocation."}
 ::option[Every backup stored on remote systems.]{#disk-partitioning-remote-backups explanation="Remote backup inventory is outside a partition editor's scope."}
@@ -90,8 +87,7 @@ This creates a partition entry with a name, suggested content type, start, and e
 
 Use tool-recommended alignment and understand whether endpoints are inclusive and how they are rounded. Inspect the result with `print` and `lsblk`; do not assume a requested decimal boundary was recorded exactly.
 
-:::single-choice{#disk-partitioning-mkpart-effect}
-What does `parted` `mkpart` create?
+:::single-choice{#disk-partitioning-mkpart-effect} What does `parted` `mkpart` create?
 
 ::option[A mounted ext4 filesystem containing a home directory.]{#disk-partitioning-mounted-filesystem explanation="Formatting and mounting are separate operations after partition creation."}
 ::option[A complete backup of the previous partition contents.]{#disk-partitioning-automatic-backup explanation="Partition editors do not create a recovery backup automatically."}
@@ -109,8 +105,7 @@ Order is critical:
 
 Some filesystems cannot shrink. Encryption, LVM, RAID, and nested layouts add more ordered layers. A kernel can also refuse to reread a changed table while devices are busy, requiring a controlled reboot before the new layout is usable.
 
-:::single-choice{#disk-partitioning-shrink-order}
-When a filesystem supports shrinking, which order avoids cutting off live filesystem data?
+:::single-choice{#disk-partitioning-shrink-order} When a filesystem supports shrinking, which order avoids cutting off live filesystem data?
 
 ::option[Reduce the partition first, then discover whether the filesystem fits.]{#disk-partitioning-shrink-partition-first explanation="Shortening the container first can truncate filesystem structures and data."}
 ::option[Shrink the filesystem first, then reduce its containing partition boundary.]{#disk-partitioning-shrink-filesystem-first .correct explanation="The content must fit inside the smaller range before the outer block device is shortened."}

@@ -24,8 +24,7 @@ $ sudo apt update
 
 이 명령은 로컬 패키지 인덱스를 갱신할 뿐, 사용 가능한 업그레이드를 모두 설치하지는 않습니다. 실패한 항목을 무시하지 말고 보고된 소스와 인증 오류를 검토하십시오.
 
-:::single-choice{#package-repositories-apt-update}
-`apt update`가 주로 새로 고치는 것은 무엇입니까?
+:::single-choice{#package-repositories-apt-update} `apt update`가 주로 새로 고치는 것은 무엇입니까?
 
 ::option[확인 없이 설치된 모든 패키지 바이너리입니다.]{#package-repositories-all-binaries explanation="업그레이드 설치는 메타데이터 갱신과 별개의 작업입니다."}
 ::option[패키지 설치 권한이 있는 사용자의 암호입니다.]{#package-repositories-user-passwords explanation="저장소 인덱스 갱신은 로컬 인증 자격 증명을 변경하지 않습니다."}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 이는 구문을 보여 주기 위한 예시일 뿐이며, 예약된 `.invalid` 도메인은 실제 저장소로 사용할 수 없습니다.
 
-:::single-choice{#package-repositories-apt-locations}
-APT는 어디에서 활성 저장소 정의를 읽을 수 있습니까?
+:::single-choice{#package-repositories-apt-locations} APT는 어디에서 활성 저장소 정의를 읽을 수 있습니까?
 
 ::option[`/etc/apt/sources.list`에서만 읽습니다.]{#package-repositories-only-main-list explanation="APT는 `/etc/apt/sources.list.d/`에 있는 지원되는 소스 파일도 읽습니다."}
 ::option[각 사용자의 홈 디렉터리 안에 있는 파일에서만 읽습니다.]{#package-repositories-only-home explanation="시스템 APT 소스 설정은 일반적으로 `/etc/apt` 아래에 있습니다."}
@@ -67,8 +65,7 @@ APT는 서명된 저장소 릴리스 메타데이터를 검증한 다음, 내려
 
 유효한 서명은 메타데이터가 허용된 서명 키의 소유자에게서 왔으며 탐지되지 않은 채 변조되지 않았음을 보여 줍니다. 하지만 게시자의 소프트웨어에 결함이 없거나, 악의적이지 않거나, 해당 시스템에 적합하다는 사실까지 증명하지는 않습니다. 독립적으로 신뢰할 수 있는 경로를 통해 키 지문과 소스 설정 지침을 확인하십시오.
 
-:::single-choice{#package-repositories-signed-by}
-APT 소스 정의에서 `Signed-By`의 보안 목적은 무엇입니까?
+:::single-choice{#package-repositories-signed-by} APT 소스 정의에서 `Signed-By`의 보안 목적은 무엇입니까?
 
 ::option[root도 읽을 수 없도록 설치된 모든 패키지를 암호화합니다.]{#package-repositories-package-encryption explanation="저장소 서명은 출처와 무결성을 확인하며, 로컬 관리자에게 내용을 숨기는 기능은 아닙니다."}
 ::option[해당 소스에서 선택된 서명 키만 사용하도록 제한합니다.]{#package-repositories-key-scope .correct explanation="이 필드는 제한 없는 전역 키 집합 대신 선택된 키링 자료에 저장소 검증을 연결합니다."}
@@ -87,8 +84,7 @@ APT 소스 정의에서 `Signed-By`의 보안 목적은 무엇입니까?
 
 서명 검사를 끄거나 검토하지 않은 원격 스크립트를 권한 있는 셸로 전달하는 오래된 지침을 그대로 따라 하지 마십시오.
 
-:::single-choice{#package-repositories-third-party-risk}
-서드파티 저장소를 추가하면 시스템의 신뢰 경계가 확장되는 이유는 무엇입니까?
+:::single-choice{#package-repositories-third-party-risk} 서드파티 저장소를 추가하면 시스템의 신뢰 경계가 확장되는 이유는 무엇입니까?
 
 ::option[인증된 패키지와 스크립트가 시스템 권한으로 설치될 수 있기 때문입니다.]{#package-repositories-privileged-install .correct explanation="서명 소스를 신뢰하면 운영체제에 영향을 주는 코드와 수명 주기 작업이 허용될 수 있습니다."}
 ::option[리눅스 커널이 파일 권한 적용을 중단하기 때문입니다.]{#package-repositories-disable-permissions explanation="저장소 설정은 커널의 일반적인 접근 제어 메커니즘을 비활성화하지 않습니다."}

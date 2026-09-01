@@ -29,8 +29,7 @@ UUID=130b882f-7d79-436d-a096-1e594c92bb76 /data ext4 defaults,nosuid,nodev 0 2
 
 Leerraum innerhalb eines Felds muss mit der fstab-Syntax maskiert werden, beispielsweise als `\040` für ein Leerzeichen. Ein `#` beginnt außerhalb eines Felds einen Kommentar.
 
-:::single-choice{#fstab-field-count}
-Wie viele Felder enthält ein normaler Eintrag in `/etc/fstab`?
+:::single-choice{#fstab-field-count} Wie viele Felder enthält ein normaler Eintrag in `/etc/fstab`?
 
 ::option[Vier.]{#fstab-four-fields explanation="Auf Quelle, Ziel, Typ und Optionen folgen die Felder Dump und Pass."}
 ::option[Acht.]{#fstab-eight-fields explanation="Acht ist nicht die Standardanzahl der Felder eines fstab-Eintrags."}
@@ -48,8 +47,7 @@ $ sudo blkid
 
 Verwende `UUID=...` erst, nachdem du bestätigt hast, dass die Kennung zum beabsichtigten Dateisystem gehört. Eine Neuformatierung erzeugt eine neue UUID, während Klone auf Blockebene dieselbe UUID besitzen können. `PARTUUID=` bezeichnet stattdessen einen Partitionstabelleneintrag und besitzt eine andere Semantik.
 
-:::single-choice{#fstab-uuid-source}
-Was bezeichnet `UUID=...` im Quellenfeld normalerweise?
+:::single-choice{#fstab-uuid-source} Was bezeichnet `UUID=...` im Quellenfeld normalerweise?
 
 ::option[Das Benutzerkonto, dem der Einhängepunkt gehört.]{#fstab-user-uuid explanation="Die Kontoidentität wird nicht über die Quellsyntax der Dateisystem-UUID ausgewählt."}
 ::option[Dateisystemmetadaten mit dieser UUID.]{#fstab-filesystem-uuid .correct explanation="Mount löst die Dateisystemkennung zu einem verfügbaren Blockgerät auf, statt sich auf dessen Aufzählungsnamen zu verlassen."}
@@ -62,8 +60,7 @@ Was bezeichnet `UUID=...` im Quellenfeld normalerweise?
 
 Bei von `fsck` unterstützten Dateisystemen verwendet das Root-Dateisystem herkömmlicherweise Pass `1`, andere geprüfte lokale Dateisysteme Pass `2`. Die Praxis hängt vom Dateisystem ab; manche Typen verwenden beispielsweise kein allgemeines fsck beim Start. Folge der Dokumentation des installierten Dateisystems und der Distribution, statt mechanisch `2` einzutragen.
 
-:::single-choice{#fstab-pass-zero}
-Was fordert der Wert `0` im sechsten Feld an?
+:::single-choice{#fstab-pass-zero} Was fordert der Wert `0` im sechsten Feld an?
 
 ::option[Die automatische fsck-Reihenfolge über fstab für diesen Eintrag überspringen.]{#fstab-pass-zero-skip .correct explanation="Pass null schließt den Eintrag aus der durch dieses Feld gesteuerten Prüfsequenz beim Systemstart aus."}
 ::option[Das Dateisystem unter allen Umständen schreibgeschützt einhängen.]{#fstab-pass-zero-readonly explanation="Schreibgeschütztes Verhalten gehört in das Feld der Einhängeoptionen."}
@@ -82,8 +79,7 @@ Ein ungültiger Eintrag für Root, Boot oder ein erforderliches Netzwerk kann de
 
 Schreibe keine Anmeldedaten direkt in einen für alle lesbaren fstab-Eintrag. Verwende den geschützten Anmeldedatenmechanismus des betreffenden Mount-Hilfsprogramms.
 
-:::single-choice{#fstab-editing-recovery}
-Warum solltest du vor der Änderung eines wichtigen fstab-Eintrags den Rettungszugang bestätigen?
+:::single-choice{#fstab-editing-recovery} Warum solltest du vor der Änderung eines wichtigen fstab-Eintrags den Rettungszugang bestätigen?
 
 ::option[Fstab-Änderungen löschen immer sofort die Partitionstabelle.]{#fstab-no-partition-erase explanation="Die Textänderung selbst schreibt keine Datenträgerpartitionen neu, auch wenn spätere Einhängungen Auswirkungen haben können."}
 ::option[Die Datei lässt sich ausschließlich aus einem anderen Betriebssystem bearbeiten.]{#fstab-other-os-only explanation="Sie kann unter Linux mit geeigneten Privilegien und Schutzmaßnahmen bearbeitet werden."}
@@ -102,8 +98,7 @@ Teste anschließend den konkreten neuen Eintrag unter kontrollierten Bedingungen
 
 Lade auf systemd-basierten Systemen nach der Bearbeitung von fstab die Manager-Konfiguration neu, damit erzeugte Mount-Units aktualisiert werden. Prüfe anschließend Abhängigkeiten und Startverhalten gemäß der lokalen Dokumentation.
 
-:::single-choice{#fstab-mount-a-limit}
-Warum ist `mount -a` allein keine vollständige fstab-Validierung?
+:::single-choice{#fstab-mount-a-limit} Warum ist `mount -a` allein keine vollständige fstab-Validierung?
 
 ::option[Der Befehl formatiert vor dem Einhängen immer jedes aufgeführte Gerät neu.]{#fstab-mount-a-formats explanation="Mount erstellt normalerweise keine Dateisysteme."}
 ::option[Er kann Einträge überspringen und führt umfassende echte Einhängeoperationen statt nur einer Syntaxprüfung aus.]{#fstab-mount-a-incomplete .correct explanation="Bereits eingehängte oder mit `noauto` versehene Einträge werden möglicherweise nicht getestet, während zulässige Quellen aktive Auswirkungen haben können."}

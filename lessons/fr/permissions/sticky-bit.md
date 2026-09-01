@@ -18,8 +18,7 @@ Lorsqu’un répertoire possède le sticky bit, Linux ne permet généralement d
 
 Cette restriction concerne les entrées du répertoire. Elle n’empêche pas le propriétaire d’un fichier d’en modifier le contenu lorsque ses permissions l’autorisent, et ne rend pas le répertoire privé.
 
-:::single-choice{#sticky-bit-removal-rule}
-Dans un répertoire partagé doté du sticky bit, quel utilisateur ordinaire peut normalement supprimer une entrée particulière ?
+:::single-choice{#sticky-bit-removal-rule} Dans un répertoire partagé doté du sticky bit, quel utilisateur ordinaire peut normalement supprimer une entrée particulière ?
 
 ::option[N’importe quel utilisateur capable de répertorier le répertoire.]{#sticky-bit-any-reader explanation="La permission de lecture du répertoire peut révéler les noms, mais ne contourne pas la restriction de propriété du sticky bit."}
 ::option[Le propriétaire de l’entrée, s’il possède l’accès requis au répertoire.]{#sticky-bit-entry-owner .correct explanation="Le propriétaire de l’entrée fait partie des identités normalement autorisées par la règle du répertoire doté du sticky bit."}
@@ -39,8 +38,7 @@ Le `t` minuscule final occupe la position d’exécution des autres. Il signifie
 
 Comme `/tmp` est généralement accessible en écriture et en recherche à tous, plusieurs utilisateurs peuvent y créer des entrées. Le sticky bit empêche un utilisateur ordinaire de supprimer les entrées d’un autre utilisateur au seul motif que le répertoire est accessible en écriture à tous. Les applications doivent néanmoins créer les objets temporaires de manière sûre, car les noms prévisibles, les liens dangereux et les modes trop faibles constituent des risques distincts.
 
-:::single-choice{#sticky-bit-lowercase-t}
-Qu’indique un `t` minuscule à la fin du mode d’un répertoire ?
+:::single-choice{#sticky-bit-lowercase-t} Qu’indique un `t` minuscule à la fin du mode d’un répertoire ?
 
 ::option[Le sticky bit et l’exécution des autres sont définis.]{#sticky-bit-t-with-execute .correct explanation="Le `t` minuscule associe le bit spécial sticky au bit ordinaire d’exécution des autres."}
 ::option[Le sticky bit est défini, mais l’exécution des autres est absente.]{#sticky-bit-t-without-execute explanation="Cette combinaison est affichée sous la forme d’un `T` majuscule."}
@@ -63,8 +61,7 @@ $ chmod 1777 shared-directory
 
 Le premier `1` définit sticky, tandis que `777` fournit le mode ordinaire. Ce mode ne convient que si le répertoire doit être partagé intentionnellement par tous les utilisateurs locaux. Des permissions de groupe plus étroites peuvent être préférables pour un répertoire d’équipe. Retirez uniquement le sticky bit avec `chmod -t shared-directory`.
 
-:::single-choice{#sticky-bit-octal-value}
-Quelle première valeur octale représente le sticky bit ?
+:::single-choice{#sticky-bit-octal-value} Quelle première valeur octale représente le sticky bit ?
 
 ::option[`2`]{#sticky-bit-value-two explanation="Un premier `2` représente setgid."}
 ::option[`1`]{#sticky-bit-value-one .correct explanation="Le sticky bit contribue pour `1` au premier chiffre des bits spéciaux."}
@@ -75,8 +72,7 @@ Quelle première valeur octale représente le sticky bit ?
 
 Sticky n’accorde ni l’écriture ni la recherche ; il ne fait que limiter la suppression et le changement de nom après que les permissions ordinaires ont autorisé la modification du répertoire. Vérifiez ensemble le propriétaire, le groupe, le mode ordinaire, les ACL et le contexte de montage du répertoire. Effectuez les tests avec des comptes sans privilèges dans un environnement isolé plutôt que de modifier `/tmp` sur un système en service.
 
-:::single-choice{#sticky-bit-access-scope}
-L’ajout du sticky bit rend-il un répertoire non accessible en écriture modifiable par les autres utilisateurs ?
+:::single-choice{#sticky-bit-access-scope} L’ajout du sticky bit rend-il un répertoire non accessible en écriture modifiable par les autres utilisateurs ?
 
 ::option[Oui ; sticky ajoute automatiquement l’écriture à chaque classe.]{#sticky-bit-adds-write explanation="Le bit spécial ne réécrit pas les bits d’écriture du propriétaire, du groupe ou des autres."}
 ::option[Oui ; sticky désactive le triplet de permissions des autres.]{#sticky-bit-disables-other explanation="Le triplet des autres continue de participer aux contrôles d’accès ordinaires."}

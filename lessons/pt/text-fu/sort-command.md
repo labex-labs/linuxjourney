@@ -41,8 +41,7 @@ A ordenação do texto segue o locale atual, que pode afetar maiúsculas, acento
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-O que `sort animals.txt` faz sem uma opção de chave ou comparação numérica?
+:::single-choice{#sort-lines-ascending} O que `sort animals.txt` faz sem uma opção de chave ou comparação numérica?
 
 ::option[Ordena linhas completas de acordo com o locale atual.]{#sort-locale-lines .correct explanation="Por padrão, `sort` compara linhas inteiras usando as regras de ordenação do locale ativo."}
 ::option[Ordena as palavras dentro de cada linha, mas mantém fixa a ordem das linhas.]{#sort-words-within-lines explanation="`sort` trata cada linha como um registro. Ele não reorganiza palavras dentro das linhas."}
@@ -62,8 +61,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-Qual comando ordena `animals.txt` em ordem inversa?
+:::single-choice{#sort-reverse-order} Qual comando ordena `animals.txt` em ordem inversa?
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="A opção `-n` solicita uma comparação numérica. Ela não significa ordem inversa."}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="A opção `-u` suprime chaves duplicadas. Ela não inverte a saída."}
@@ -83,8 +81,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 Combine opções quando necessário. `sort -nr scores.txt` compara numericamente e coloca os valores maiores primeiro.
 
-:::single-choice{#sort-numbers-descending}
-Qual comando ordena as linhas numéricas de `scores.txt` da maior para a menor?
+:::single-choice{#sort-numbers-descending} Qual comando ordena as linhas numéricas de `scores.txt` da maior para a menor?
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="A comparação numérica é selecionada, mas a direção padrão coloca os valores menores primeiro."}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n` seleciona a comparação numérica e `-r` a inverte, produzindo uma ordem numérica decrescente."}
@@ -104,8 +101,7 @@ alice:30
 
 Aqui, `-t ':'` seleciona o delimitador, `-k 2,2` limita a chave ao campo 2 e o `n` anexado compara essa chave numericamente. Sem o `,2` final, uma chave iniciada no campo 2 normalmente continua até o fim da linha.
 
-:::single-choice{#sort-second-colon-field}
-Qual comando ordena `users.txt` numericamente apenas por seu segundo campo separado por dois-pontos?
+:::single-choice{#sort-second-colon-field} Qual comando ordena `users.txt` numericamente apenas por seu segundo campo separado por dois-pontos?
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="Essa forma usa campos separados por espaços e seleciona o campo 1, não o segundo campo separado por dois-pontos."}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut` extrai o campo 2, mas não ordena os registros originais por essa chave."}
@@ -136,8 +132,7 @@ $ sort -o names.txt names.txt
 
 Mantenha um backup ou grave e verifique um resultado separado quando os dados originais forem importantes.
 
-:::single-choice{#sort-safe-same-file}
-No GNU/Linux, qual comando solicita que `sort` grave com segurança o resultado ordenado de volta em `names.txt`, sem que o redirecionamento do shell o trunque primeiro?
+:::single-choice{#sort-safe-same-file} No GNU/Linux, qual comando solicita que `sort` grave com segurança o resultado ordenado de volta em `names.txt`, sem que o redirecionamento do shell o trunque primeiro?
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="O GNU `sort` gerencia a saída de `-o` depois da leitura necessária; assim, o shell não trunca antecipadamente a entrada com `>`."}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="O shell trunca `names.txt` antes de iniciar `sort`; portanto, o comando pode perder a entrada."}

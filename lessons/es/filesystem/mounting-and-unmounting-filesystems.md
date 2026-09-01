@@ -29,8 +29,7 @@ $ sudo ls -la /mnt/mydrive
 
 Montar sobre un directorio no vacío oculta sus entradas existentes tras el sistema de archivos nuevo hasta que se desmonta; no las elimina. Esto puede confundir a las aplicaciones y consumir espacio en disco de forma invisible, así que utiliza un punto de montaje vacío y dedicado.
 
-:::single-choice{#mount-umount-nonempty-target}
-¿Qué ocurre con los archivos existentes de un directorio cuando se monta otro sistema de archivos en él?
+:::single-choice{#mount-umount-nonempty-target} ¿Qué ocurre con los archivos existentes de un directorio cuando se monta otro sistema de archivos en él?
 
 ::option[Se copian automáticamente al sistema de archivos nuevo.]{#mount-umount-copied-files explanation="Montar cambia la conexión del espacio de nombres y no migra el contenido del directorio."}
 ::option[El kernel los elimina permanentemente.]{#mount-umount-erased-files explanation="Los archivos suelen reaparecer después de desmontar porque estaban ocultos, no eliminados."}
@@ -55,8 +54,7 @@ $ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 
 Los montajes se limitan a espacios de nombres. Un montaje creado en un contenedor o en el espacio privado de un servicio puede no aparecer en la vista de otro proceso.
 
-:::single-choice{#mount-umount-mount-role}
-¿Qué hace la orden `mount` en el flujo de trabajo mostrado?
+:::single-choice{#mount-umount-mount-role} ¿Qué hace la orden `mount` en el flujo de trabajo mostrado?
 
 ::option[Crea un sistema de archivos nuevo y borra la fuente.]{#mount-umount-format-source explanation="Crear un sistema de archivos es una operación destructiva independiente realizada con `mkfs`."}
 ::option[Conecta una fuente de sistema de archivos con un directorio de un espacio de nombres de montajes.]{#mount-umount-attach-filesystem .correct explanation="La resolución de rutas bajo el destino entra entonces en el sistema de archivos conectado."}
@@ -80,8 +78,7 @@ $ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 
 Un UUID identifica el sistema de archivos, no necesariamente el disco físico. Darle otro formato lo cambia, mientras que clonarlo puede duplicarlo. Verifica la unicidad antes de conectar el original y el clon al mismo sistema.
 
-:::single-choice{#mount-umount-uuid-benefit}
-¿Por qué suele ser preferible un UUID del sistema de archivos a `/dev/sdX` para una configuración persistente?
+:::single-choice{#mount-umount-uuid-benefit} ¿Por qué suele ser preferible un UUID del sistema de archivos a `/dev/sdX` para una configuración persistente?
 
 ::option[Porque evita que fallen los dispositivos de almacenamiento.]{#mount-umount-uuid-no-failure explanation="Un identificador no proporciona redundancia, reparación de integridad ni copias de seguridad."}
 ::option[Porque garantiza que los sistemas de archivos clonados tengan identificadores distintos.]{#mount-umount-uuid-clone-unique explanation="Un clon a nivel de bloques puede copiar el UUID y provocar una colisión."}
@@ -100,8 +97,7 @@ La orden se escribe `umount`, sin la primera `n`. Un desmontaje correcto descone
 
 Un desmontaje correcto no siempre es la última operación necesaria para retirar con seguridad un medio extraíble. Las pilas de almacenamiento de escritorio pueden ofrecer una acción de expulsión o apagado que vacíe las cachés del dispositivo y desactive un dispositivo USB. Sigue el flujo de trabajo de la plataforma y el hardware.
 
-:::single-choice{#mount-umount-command-name}
-¿Qué orden desconecta `/mnt/mydrive`?
+:::single-choice{#mount-umount-command-name} ¿Qué orden desconecta `/mnt/mydrive`?
 
 ::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` desconecta el sistema de archivos montado en el destino indicado."}
 ::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="El nombre de la orden estándar omite la primera `n`."}
@@ -119,8 +115,7 @@ $ sudo fuser -vm /mnt/mydrive
 
 Saca los shells del árbol, detén limpiamente la aplicación responsable y desmonta los montajes hijos antes que el padre. Las opciones de desmontaje diferido y forzoso tienen una semántica especializada y pueden dejar referencias activas o arriesgar datos; utilízalas únicamente con un razonamiento de recuperación documentado.
 
-:::single-choice{#mount-umount-busy-cause}
-¿Qué condición puede hacer que `umount` comunique que un sistema de archivos está ocupado?
+:::single-choice{#mount-umount-busy-cause} ¿Qué condición puede hacer que `umount` comunique que un sistema de archivos está ocupado?
 
 ::option[Que el nombre del directorio del punto de montaje contenga letras minúsculas.]{#mount-umount-lowercase explanation="El uso de mayúsculas o minúsculas en la ruta no crea por sí solo una referencia activa al sistema de archivos."}
 ::option[Que un proceso tenga su directorio de trabajo actual dentro del montaje.]{#mount-umount-cwd-busy .correct explanation="El proceso conserva una referencia al sistema de archivos montado, lo que impide la desconexión ordinaria."}

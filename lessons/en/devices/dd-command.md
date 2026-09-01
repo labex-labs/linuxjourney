@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` copies blocks, not inherently one byte at a time. A larger `bs` can reduce system-call overhead, but the optimal value depends on devices, alignment, caching, and workload. It does not change the logical data copied.
 
-:::single-choice{#dd-command-output-operand}
-Which operand selects the destination written by `dd`?
+:::single-choice{#dd-command-output-operand} Which operand selects the destination written by `dd`?
 
 ::option[`if=`]{#dd-command-input-file explanation="`if` identifies the input source."}
 ::option[`of=`]{#dd-command-output-file .correct explanation="`of` names the output stream or file that receives copied data."}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 This requests two input blocks of up to 1 MiB each, so it copies at most 2 MiB. Short reads can complicate the simple multiplication for streams such as pipes; GNU `dd` offers `iflag=fullblock` when complete input blocks are required. Distinguish binary units and suffix syntax according to the local implementation.
 
-:::single-choice{#dd-command-count-result}
-For a regular file, what maximum amount does `bs=1M count=2` request?
+:::single-choice{#dd-command-count-result} For a regular file, what maximum amount does `bs=1M count=2` request?
 
 ::option[1 MiB.]{#dd-command-one-mib explanation="That would be one block at the selected size."}
 ::option[2 MiB.]{#dd-command-two-mib .correct explanation="Two input blocks multiplied by 1 MiB per block gives a maximum of 2 MiB."}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 The output device is overwritten from its beginning. Reversing `if` and `of`, selecting the system disk, or using a whole disk when a partition was intended can destroy data without a confirmation prompt.
 
-:::single-choice{#dd-command-target-verification}
-Which is the strongest reason to verify model, serial, size, and active use before a raw-device write?
+:::single-choice{#dd-command-target-verification} Which is the strongest reason to verify model, serial, size, and active use before a raw-device write?
 
 ::option[Device letters can change, and `dd` overwrites the selected target without understanding its contents.]{#dd-command-target-can-change .correct explanation="Identity and usage checks reduce the risk of destroying a different disk or an active storage stack."}
 ::option[`dd` refuses to write unless the filesystem label matches the image.]{#dd-command-label-check explanation="The tool performs no such filesystem-aware safety check."}
@@ -85,8 +82,7 @@ Reading a live block device while its filesystem is changing can produce an inte
 
 A raw device image copies blocks, including filesystem metadata and unused regions, so it can be much larger than a file-level backup and can reproduce identifiers that must be changed before mounting a clone alongside the original.
 
-:::single-choice{#dd-command-live-filesystem-image}
-Why can imaging a mounted, changing filesystem be unreliable?
+:::single-choice{#dd-command-live-filesystem-image} Why can imaging a mounted, changing filesystem be unreliable?
 
 ::option[Mounted filesystems never permit block-device reads.]{#dd-command-mounted-no-read explanation="Raw reads can be possible, which is why consistency must be planned rather than assumed."}
 ::option[Different blocks can be read from different moments of filesystem state.]{#dd-command-inconsistent-moments .correct explanation="Concurrent modifications can make the collected block image fail to represent one consistent point in time."}
@@ -99,8 +95,7 @@ The command completing without an I/O error does not prove that the intended sou
 
 Do not advertise `dd` overwrite passes as guaranteed secure erasure for SSDs, flash translation layers, thin-provisioned storage, snapshots, or remapped sectors. Use device- and platform-supported sanitization plus an explicit data-destruction policy.
 
-:::single-choice{#dd-command-success-meaning}
-What does a zero exit status from `dd` fail to prove by itself?
+:::single-choice{#dd-command-success-meaning} What does a zero exit status from `dd` fail to prove by itself?
 
 ::option[That the command parsed all supplied operands.]{#dd-command-parsed-operands explanation="Invalid operands normally cause an error rather than a successful completion."}
 ::option[That the operator selected the intended source and destination.]{#dd-command-does-not-prove-intent .correct explanation="The tool can successfully copy to the wrong target because it cannot infer operator intent."}

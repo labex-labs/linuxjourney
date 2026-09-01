@@ -25,8 +25,7 @@ Les déplacements fondamentaux du mode Normal sont :
 
 Les touches fléchées produisent généralement des déplacements similaires, mais `h`, `j`, `k` et `l` gardent les mains près des autres commandes. Sur une ligne repliée à l'écran, `j` et `k` se déplacent normalement selon les lignes du fichier ; `gj` et `gk` suivent les lignes affichées.
 
-:::single-choice{#vim-navigation-down}
-En mode Normal, quelle touche descend le curseur d'une ligne ?
+:::single-choice{#vim-navigation-down} En mode Normal, quelle touche descend le curseur d'une ligne ?
 
 ::option[`k`]{#vim-nav-k-up explanation="Le déplacement `k` remonte d'une ligne."}
 ::option[`l`]{#vim-nav-l-right explanation="Le déplacement `l` avance d'un caractère vers la droite."}
@@ -44,8 +43,7 @@ Saisissez un nombre positif avant de nombreux déplacements pour les répéter. 
 
 `5j` descend de cinq lignes, tandis que `3l` avance si possible de trois caractères vers la droite. Les nombres se combinent aussi avec les commandes de déplacement par mots et d'édition.
 
-:::single-choice{#vim-navigation-count}
-Quel est l'effet de `4k` en mode Normal ?
+:::single-choice{#vim-navigation-count} Quel est l'effet de `4k` en mode Normal ?
 
 ::option[Descendre si possible de quatre lignes.]{#vim-nav-four-down explanation="Le déplacement vers le bas utilise `j` ; `k` va dans le sens opposé."}
 ::option[Remonter si possible de quatre lignes.]{#vim-nav-four-up .correct explanation="Le nombre `4` répète quatre fois le déplacement `k` vers le haut."}
@@ -62,8 +60,7 @@ Parmi les déplacements utiles par mots :
 
 Les majuscules `W`, `B` et `E` utilisent des WORDS délimités par des espaces et traitent donc la ponctuation autrement. Préfixez le déplacement par un nombre pour parcourir plusieurs mots, par exemple `3w`.
 
-:::single-choice{#vim-navigation-next-words}
-Quelle commande du mode Normal avance jusqu'au début de la troisième position de mot suivante ?
+:::single-choice{#vim-navigation-next-words} Quelle commande du mode Normal avance jusqu'au début de la troisième position de mot suivante ?
 
 ::option[`3w`]{#vim-nav-three-words .correct explanation="Le nombre applique trois fois le déplacement vers le mot suivant."}
 ::option[`w3`]{#vim-nav-word-three explanation="Dans cette forme de commande, le nombre précède le déplacement ; placé après, `3` n'exprime pas le mouvement demandé."}
@@ -80,8 +77,7 @@ Ces déplacements ciblent des positions de la ligne actuelle :
 
 La différence entre `0` et `^` est importante sur les lignes indentées.
 
-:::single-choice{#vim-navigation-first-nonblank}
-Quel déplacement va au premier caractère non blanc d'une ligne indentée ?
+:::single-choice{#vim-navigation-first-nonblank} Quel déplacement va au premier caractère non blanc d'une ligne indentée ?
 
 ::option[`0`]{#vim-nav-column-zero explanation="Zéro va à la première colonne, qui peut contenir un espace d'indentation."}
 ::option[`$`]{#vim-nav-line-end explanation="Le déplacement dollar cible la fin de la ligne."}
@@ -100,8 +96,7 @@ Utilisez ces commandes du mode Normal pour effectuer de plus grands sauts :
 
 La commande `:42`, suivie d'Entrée, permet également d'aller à la ligne 42.
 
-:::single-choice{#vim-navigation-file-end}
-Quelle commande du mode Normal va à la dernière ligne du tampon ?
+:::single-choice{#vim-navigation-file-end} Quelle commande du mode Normal va à la dernière ligne du tampon ?
 
 ::option[`gg`]{#vim-nav-first-line explanation="Le `gg` minuscule va à la première ligne, pas à la dernière."}
 ::option[`$`]{#vim-nav-current-line-end explanation="Le déplacement dollar va à la fin de la ligne actuelle, pas à celle du fichier."}

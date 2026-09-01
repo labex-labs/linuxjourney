@@ -24,8 +24,7 @@ default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
 
 The connected `/24` route sends matching destinations directly through `eth0`. The default uses next-hop gateway `192.168.224.2`. `proto` describes how the route was installed, `src` is a preferred source for matching traffic, and a metric helps rank otherwise comparable routes.
 
-:::single-choice{#routing-table-via-meaning}
-What does `via 192.168.224.2` indicate?
+:::single-choice{#routing-table-via-meaning} What does `via 192.168.224.2` indicate?
 
 ::option[The only application allowed to use the route.]{#routing-table-application explanation="Application authorization is not encoded by the `via` keyword."}
 ::option[The next-hop gateway for the route.]{#routing-table-next-hop .correct explanation="The packet is framed to that on-link router while retaining its IP destination."}
@@ -36,8 +35,7 @@ What does `via 192.168.224.2` indicate?
 
 A route with `scope link` and no `via` next hop treats the prefix as directly reachable on the interface. A default route matches every address but loses to any eligible more-specific route.
 
-:::single-choice{#routing-table-connected-route}
-How is a connected `scope link` destination normally reached?
+:::single-choice{#routing-table-connected-route} How is a connected `scope link` destination normally reached?
 
 ::option[Through the default gateway even when a connected route matches.]{#routing-table-connected-default explanation="The connected prefix is more specific and has no gateway operand."}
 ::option[By converting the destination into a DNS server.]{#routing-table-connected-dns explanation="Name service is not part of an already selected IP route."}
@@ -48,8 +46,7 @@ How is a connected `scope link` destination normally reached?
 
 Route selection considers policy rules and chooses the longest eligible prefix. Metrics rank routes within appropriate comparable sets; a low-metric default does not override a matching `/24` merely because its number is lower.
 
-:::single-choice{#routing-table-prefix-before-default}
-Which route normally matches `192.168.224.50` more specifically?
+:::single-choice{#routing-table-prefix-before-default} Which route normally matches `192.168.224.50` more specifically?
 
 ::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="The 24-bit matching prefix is longest among the listed routes."}
 ::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="The default has prefix length zero."}
@@ -67,8 +64,7 @@ $ ip route show table all
 
 Network namespaces and VRFs can hold separate state as well. Run inspection in the same context as the affected process.
 
-:::single-choice{#routing-table-policy-limit}
-Why might `ip route show` alone not explain an application's path?
+:::single-choice{#routing-table-policy-limit} Why might `ip route show` alone not explain an application's path?
 
 ::option[Policy rules or another network namespace can select different routing state.]{#routing-table-policy-context .correct explanation="The effective lookup depends on packet attributes and the process's network context."}
 ::option[Linux routing tables contain no destination prefixes.]{#routing-table-no-prefixes explanation="Destination prefixes are fundamental route keys."}
@@ -86,8 +82,7 @@ $ ip route get 203.0.113.10 from 192.168.224.10
 
 The result predicts the local lookup at that moment. It does not send a probe or prove neighbor, downstream, firewall, or application reachability.
 
-:::single-choice{#routing-table-route-get-limit}
-What does `ip route get` not do?
+:::single-choice{#routing-table-route-get-limit} What does `ip route get` not do?
 
 ::option[Display the chosen local interface and next hop.]{#routing-table-get-does-interface explanation="Those are primary fields in the lookup result."}
 ::option[Evaluate current local route policy for a destination.]{#routing-table-get-does-policy explanation="The command performs a kernel route lookup."}

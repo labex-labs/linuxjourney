@@ -28,8 +28,7 @@ $ kill -TERM 12445
 
 `SIGTERM` possui como ação padrão o encerramento, mas um programa pode capturá-lo ou ignorá-lo. Um serviço bem projetado pode usar um manipulador para parar de aceitar trabalhos, salvar o estado apropriado e liberar recursos da aplicação. Essa é uma possibilidade, não uma garantia de limpeza imediata ou bem-sucedida.
 
-:::single-choice{#killing-processes-default-signal}
-Qual sinal `kill PID` solicita por padrão?
+:::single-choice{#killing-processes-default-signal} Qual sinal `kill PID` solicita por padrão?
 
 ::option[`SIGKILL`]{#killing-processes-default-kill explanation="O sinal forçado que não pode ser capturado precisa ser selecionado explicitamente."}
 ::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="Sem outro operando de sinal, `kill` envia a solicitação padrão de encerramento."}
@@ -48,8 +47,7 @@ Verifique seu usuário, horário de início, comando, pai, serviço proprietári
 
 Você pode sinalizar os processos que possui, sujeito às regras de credenciais. Sinalizar o processo de outro usuário normalmente exige privilégios adequados. Não use um comando amplo baseado em nomes antes de revisar todas as correspondências.
 
-:::single-choice{#killing-processes-pid-reuse}
-Por que você deve inspecionar um PID imediatamente antes de sinalizá-lo?
+:::single-choice{#killing-processes-pid-reuse} Por que você deve inspecionar um PID imediatamente antes de sinalizá-lo?
 
 ::option[Um PID muda toda vez que o processo lê um arquivo.]{#killing-processes-pid-read explanation="Um processo ativo normalmente mantém o mesmo PID durante toda a sua existência."}
 ::option[O kernel pode reutilizar um PID depois que o processo anterior termina.]{#killing-processes-pid-reused .correct explanation="Um PID numérico lembrado pode mais tarde se referir a outro processo ativo."}
@@ -66,8 +64,7 @@ $ kill -0 12445
 
 Um resultado bem-sucedido significa que um processo com esse PID existe e que o solicitante tem permissão para sinalizá-lo naquele instante. Uma falha é ambígua: o processo pode não existir ou o solicitante pode não ter permissão. Examine o erro e o status de saída, em vez de traduzir toda falha como “não está em execução”. Essa também é apenas uma verificação momentânea e não elimina uma condição de corrida posterior por reutilização do PID.
 
-:::single-choice{#killing-processes-signal-zero}
-O que um `kill -0 PID` bem-sucedido estabelece naquele momento?
+:::single-choice{#killing-processes-signal-zero} O que um `kill -0 PID` bem-sucedido estabelece naquele momento?
 
 ::option[O processo concluiu toda a limpeza e terminou.]{#killing-processes-zero-exited explanation="O sucesso indica um destino ativo que pode ser sinalizado, não o encerramento concluído."}
 ::option[O processo manterá esse PID permanentemente.]{#killing-processes-zero-permanent explanation="A verificação é instantânea, e os PIDs podem ser reutilizados após o encerramento."}
@@ -86,8 +83,7 @@ $ kill -KILL 12445
 
 Outros sinais só possuem significado conforme o contrato do programa receptor. `SIGHUP` costuma solicitar a recarga da configuração, mas alguns programas mantêm seu comportamento padrão de encerramento. `SIGSTOP` pausa sem limpeza, e `SIGCONT` retoma um processo interrompido.
 
-:::single-choice{#killing-processes-kill-tradeoff}
-Qual é a principal desvantagem operacional de `SIGKILL`?
+:::single-choice{#killing-processes-kill-tradeoff} Qual é a principal desvantagem operacional de `SIGKILL`?
 
 ::option[Ele só pode ser tratado pelo proprietário do processo.]{#killing-processes-kill-owner-handler explanation="Nenhum processo de destino pode instalar um manipulador para `SIGKILL`."}
 ::option[Ele pausa o processo, mas nunca o encerra.]{#killing-processes-kill-pauses explanation="`SIGSTOP` pausa; `SIGKILL` encerra."}

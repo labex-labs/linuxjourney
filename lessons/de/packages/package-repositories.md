@@ -24,8 +24,7 @@ $ sudo apt update
 
 Dies aktualisiert die lokalen Paketindizes; es installiert nicht von selbst alle verfügbaren Upgrades. Prüfe die gemeldeten Quellen und Authentifizierungsfehler, statt fehlgeschlagene Einträge zu ignorieren.
 
-:::single-choice{#package-repositories-apt-update}
-Was aktualisiert `apt update` in erster Linie?
+:::single-choice{#package-repositories-apt-update} Was aktualisiert `apt update` in erster Linie?
 
 ::option[Jede installierte Paketbinärdatei ohne Bestätigung.]{#package-repositories-all-binaries explanation="Die Installation von Upgrades ist ein getrennter Vorgang von der Aktualisierung der Metadaten."}
 ::option[Die Passwörter von Benutzern, die Pakete installieren dürfen.]{#package-repositories-user-passwords explanation="Die Aktualisierung von Paketquellenindizes ändert keine lokalen Authentifizierungsdaten."}
@@ -53,8 +52,7 @@ Signed-By: /etc/apt/keyrings/example.gpg
 
 Dies veranschaulicht lediglich die Syntax; die reservierte Domain `.invalid` ist keine nutzbare Paketquelle.
 
-:::single-choice{#package-repositories-apt-locations}
-Wo kann APT aktive Definitionen von Paketquellen lesen?
+:::single-choice{#package-repositories-apt-locations} Wo kann APT aktive Definitionen von Paketquellen lesen?
 
 ::option[Ausschließlich aus `/etc/apt/sources.list`.]{#package-repositories-only-main-list explanation="APT liest außerdem unterstützte Quelldateien aus `/etc/apt/sources.list.d/`."}
 ::option[Ausschließlich aus Dateien in den Home-Verzeichnissen der Benutzer.]{#package-repositories-only-home explanation="Die systemweite Konfiguration von APT-Quellen befindet sich gewöhnlich unter `/etc/apt`."}
@@ -67,8 +65,7 @@ APT überprüft signierte Veröffentlichungsmetadaten einer Paketquelle und verg
 
 Eine gültige Signatur bestätigt, dass die Metadaten vom Inhaber eines akzeptierten Signaturschlüssels stammen und nicht unbemerkt verändert wurden. Sie beweist nicht, dass die Software des Herausgebers fehlerfrei, nicht bösartig oder für das System geeignet ist. Bestätige den Fingerabdruck des Schlüssels und die Quellenanweisungen über einen unabhängigen vertrauenswürdigen Kanal.
 
-:::single-choice{#package-repositories-signed-by}
-Welchen Sicherheitszweck erfüllt `Signed-By` in einer APT-Quellendefinition?
+:::single-choice{#package-repositories-signed-by} Welchen Sicherheitszweck erfüllt `Signed-By` in einer APT-Quellendefinition?
 
 ::option[Jedes installierte Paket zu verschlüsseln, damit root es nicht lesen kann.]{#package-repositories-package-encryption explanation="Die Signierung von Paketquellen ermöglicht Herkunfts- und Integritätsprüfungen, nicht die Geheimhaltung vor dem lokalen Administrator."}
 ::option[Diese Quelle auf ausgewählte Signaturschlüssel zu begrenzen.]{#package-repositories-key-scope .correct explanation="Das Feld bindet die Prüfung der Paketquelle an ausgewähltes Schlüsselbundmaterial statt an eine uneingeschränkte globale Schlüsselmenge."}
@@ -87,8 +84,7 @@ Eine Paketquelle kann Pakete und Lebenszyklusskripte mit Systemrechten installie
 
 Kopiere keine veralteten Anweisungen, die Signaturprüfungen deaktivieren oder ein ungeprüftes entferntes Skript in eine privilegierte Shell leiten.
 
-:::single-choice{#package-repositories-third-party-risk}
-Warum erweitert das Hinzufügen einer Drittanbieterquelle die Vertrauensgrenze des Systems?
+:::single-choice{#package-repositories-third-party-risk} Warum erweitert das Hinzufügen einer Drittanbieterquelle die Vertrauensgrenze des Systems?
 
 ::option[Ihre authentifizierten Pakete und Skripte können mit Systemrechten installiert werden.]{#package-repositories-privileged-install .correct explanation="Das Vertrauen in die Signaturquelle kann Code und Lebenszyklusaktionen autorisieren, die das Betriebssystem beeinflussen."}
 ::option[Sie veranlasst den Linux-Kernel, keine Dateiberechtigungen mehr durchzusetzen.]{#package-repositories-disable-permissions explanation="Die Konfiguration von Paketquellen deaktiviert nicht die gewöhnlichen Zugriffskontrollmechanismen des Kernels."}

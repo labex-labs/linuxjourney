@@ -41,8 +41,7 @@ elephant
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-Что делает `sort animals.txt` без параметров ключа и числового сравнения?
+:::single-choice{#sort-lines-ascending} Что делает `sort animals.txt` без параметров ключа и числового сравнения?
 
 ::option[Упорядочивает полные входные строки согласно текущей локали.]{#sort-locale-lines .correct explanation="По умолчанию `sort` сравнивает строки целиком по правилам сортировки активной локали."}
 ::option[Упорядочивает слова внутри каждой строки, сохраняя порядок строк.]{#sort-words-within-lines explanation="`sort` рассматривает каждую строку как запись и не переставляет слова внутри неё."}
@@ -62,8 +61,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-Какая команда сортирует `animals.txt` в обратном порядке?
+:::single-choice{#sort-reverse-order} Какая команда сортирует `animals.txt` в обратном порядке?
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="Параметр `-n` запрашивает числовое сравнение, а не обратный порядок."}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="Параметр `-u` подавляет повторяющиеся ключи и не обращает вывод."}
@@ -83,8 +81,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 При необходимости объединяйте параметры. `sort -nr scores.txt` сравнивает значения численно и ставит большие первыми.
 
-:::single-choice{#sort-numbers-descending}
-Какая команда сортирует числовые строки `scores.txt` от большего к меньшему?
+:::single-choice{#sort-numbers-descending} Какая команда сортирует числовые строки `scores.txt` от большего к меньшему?
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="Числовое сравнение выбрано, но стандартное направление помещает меньшие значения первыми."}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n` выбирает числовое сравнение, а `-r` обращает его, создавая убывающий числовой порядок."}
@@ -104,8 +101,7 @@ alice:30
 
 Здесь `-t ':'` выбирает разделитель, `-k 2,2` ограничивает ключ полем 2, а присоединённая `n` задаёт числовое сравнение этого ключа. Без конечного `,2` ключ, начинающийся с поля 2, обычно продолжается до конца строки.
 
-:::single-choice{#sort-second-colon-field}
-Какая команда сортирует `users.txt` численно только по второму полю, разделённому двоеточием?
+:::single-choice{#sort-second-colon-field} Какая команда сортирует `users.txt` численно только по второму полю, разделённому двоеточием?
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="Команда использует стандартные поля с пробельными разделителями и выбирает поле 1, а не второе поле с двоеточием."}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut` извлекает поле 2, но не сортирует исходные записи по этому ключу."}
@@ -136,8 +132,7 @@ $ sort -o names.txt names.txt
 
 Если исходные данные важны, сохраните резервную копию либо сначала запишите и проверьте отдельный результат.
 
-:::single-choice{#sort-safe-same-file}
-Какая команда в GNU/Linux просит `sort` безопасно записать результат обратно в `names.txt`, не позволяя перенаправлению оболочки заранее усечь файл?
+:::single-choice{#sort-safe-same-file} Какая команда в GNU/Linux просит `sort` безопасно записать результат обратно в `names.txt`, не позволяя перенаправлению оболочки заранее усечь файл?
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="GNU `sort` самостоятельно управляет выводом `-o` после необходимого чтения, поэтому оболочка не усекает вход через `>`."}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="Оболочка усекает `names.txt` до запуска `sort`, поэтому входные данные могут быть потеряны."}

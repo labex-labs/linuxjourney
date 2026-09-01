@@ -35,8 +35,7 @@ Other special file types also exist. The remaining nine characters are the acces
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-In `drwxr-xr-x`, what does the first `d` indicate?
+:::single-choice{#file-permissions-type-character} In `drwxr-xr-x`, what does the first `d` indicate?
 
 ::option[The object is a symbolic link.]{#file-permissions-type-link explanation="A symbolic link is normally shown with `l` in the file-type position."}
 ::option[The object is a directory.]{#file-permissions-type-directory .correct explanation="The first character is the file type, and `d` identifies a directory."}
@@ -62,8 +61,7 @@ For a directory, the meanings concern directory entries:
 
 Deleting a file is governed primarily by permissions on its parent directory, not by the file's own write bit.
 
-:::single-choice{#file-permissions-directory-execute}
-What does execute permission on a directory primarily allow?
+:::single-choice{#file-permissions-directory-execute} What does execute permission on a directory primarily allow?
 
 ::option[Running every regular file stored in the directory.]{#file-permissions-directory-run-files explanation="A directory's execute bit does not grant execute permission on each file inside it."}
 ::option[Changing the contents of every file in the directory.]{#file-permissions-directory-edit-files explanation="Writing file contents depends on the files' permissions and other access controls."}
@@ -82,16 +80,14 @@ The kernel selects one applicable class; it does not combine the three triplets 
 
 In the example, the owner triplet is `rwx`, while both group and other are `r-x`. The owner can read, write, and search the directory. The group and other classes can read and search it but cannot create or remove entries through the directory's ordinary mode bits.
 
-:::single-choice{#file-permissions-triplet-order}
-After the file-type character, in what order do the three permission triplets appear?
+:::single-choice{#file-permissions-triplet-order} After the file-type character, in what order do the three permission triplets appear?
 
 ::option[Group, owner, then other.]{#file-permissions-order-group-first explanation="The group triplet is second, not first."}
 ::option[Other, group, then owner.]{#file-permissions-order-other-first explanation="The other triplet is last, and the owner triplet is first."}
 ::option[Owner, group, then other.]{#file-permissions-order-owner-first .correct explanation="The nine permission characters always present owner, group, and other triplets in that order."}
 :::
 
-:::single-choice{#file-permissions-example-group}
-What ordinary permissions does the group class have in `drwxr-xr-x`?
+:::single-choice{#file-permissions-example-group} What ordinary permissions does the group class have in `drwxr-xr-x`?
 
 ::option[Read and write.]{#file-permissions-group-read-write explanation="The group triplet is `r-x`, so its write position contains `-`."}
 ::option[Write and execute.]{#file-permissions-group-write-execute explanation="The group triplet contains `r` rather than `w` in its first position."}

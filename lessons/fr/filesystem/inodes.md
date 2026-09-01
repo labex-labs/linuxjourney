@@ -27,8 +27,7 @@ L'inode ne stocke normalement pas le nom de l'entrée de répertoire. Un systèm
 
 `ctime` est la date de changement d'état de l'inode, pas nécessairement celle de création du fichier. Un horodatage distinct de naissance ou de création est facultatif et peut être indisponible.
 
-:::single-choice{#inodes-name-location}
-Où le composant de chemin d'un fichier ordinaire est-il normalement associé à son numéro d'inode ?
+:::single-choice{#inodes-name-location} Où le composant de chemin d'un fichier ordinaire est-il normalement associé à son numéro d'inode ?
 
 ::option[Dans l'ordonnanceur de processus.]{#inodes-scheduler-name explanation="L'état d'ordonnancement du processeur n'assure pas la recherche des chemins du système de fichiers."}
 ::option[Dans une entrée de répertoire.]{#inodes-directory-entry .correct explanation="Un répertoire associe un nom à un numéro d'inode dans ce système de fichiers."}
@@ -51,8 +50,7 @@ $ stat path
 
 Un numéro d'inode n'est unique qu'au sein d'un système de fichiers et à un moment donné. Le même numéro peut exister dans un autre système, et un numéro peut être réutilisé après la libération de son inode. Pour identifier solidement un objet, employez à la fois l'identité du système de fichiers et le numéro d'inode plutôt que ce dernier seul.
 
-:::single-choice{#inodes-number-scope}
-Dans quelle portée un numéro d'inode identifie-t-il un objet ?
+:::single-choice{#inodes-number-scope} Dans quelle portée un numéro d'inode identifie-t-il un objet ?
 
 ::option[Dans tous les systèmes Linux du monde, pour toujours.]{#inodes-global-forever explanation="L'allocation des inodes est locale au système de fichiers et leurs identifiants sont réutilisables."}
 ::option[Dans un système de fichiers, à un moment donné.]{#inodes-one-filesystem .correct explanation="D'autres systèmes de fichiers peuvent employer le même numéro, et les numéros d'inodes libérés peuvent ensuite être réutilisés."}
@@ -65,8 +63,7 @@ Plusieurs entrées de répertoire peuvent désigner le même inode : ce sont des
 
 Même après la suppression de la dernière entrée de répertoire, un fichier ouvert reste alloué jusqu'à la fermeture de la dernière référence d'un processus. Son nombre de liens peut être nul alors qu'un descripteur de fichier y accède encore. Cela explique pourquoi la suppression d'un gros journal ouvert ne réduit pas forcément immédiatement l'utilisation signalée par `df`.
 
-:::single-choice{#inodes-unlinked-open-file}
-Quand les ressources d'un fichier délié sont-elles normalement libérées ?
+:::single-choice{#inodes-unlinked-open-file} Quand les ressources d'un fichier délié sont-elles normalement libérées ?
 
 ::option[Immédiatement après la suppression d'un seul nom de lien physique.]{#inodes-one-link-removed explanation="D'autres liens physiques ou références ouvertes peuvent maintenir l'objet en vie."}
 ::option[Seulement lors du reformatage complet du système de fichiers.]{#inodes-reformat-only explanation="Les opérations normales de suppression et de fermeture récupèrent les inodes et blocs inutilisés."}
@@ -83,8 +80,7 @@ $ df -i
 
 S'il ne reste aucun inode libre, la création d'un nouveau fichier peut échouer même lorsque `df -h` signale des blocs disponibles. Les stratégies d'allocation diffèrent : certains systèmes préallouent les structures d'inodes lors de leur création, tandis que d'autres gèrent les métadonnées dynamiquement et peuvent présenter leur capacité d'inodes autrement.
 
-:::single-choice{#inodes-df-i-purpose}
-Qu'indique `df -i` lorsque le système de fichiers fournit une comptabilité des inodes ?
+:::single-choice{#inodes-df-i-purpose} Qu'indique `df -i` lorsque le système de fichiers fournit une comptabilité des inodes ?
 
 ::option[Le contenu de chaque fichier dans l'ordre des inodes.]{#inodes-df-i-content explanation="Df indique des statistiques globales du système de fichiers et ne lit pas le contenu des fichiers."}
 ::option[La capacité en inodes utilisée et disponible.]{#inodes-df-i-capacity .correct explanation="Cette vue aide à diagnostiquer l'épuisement des objets de métadonnées indépendamment des blocs de données."}
@@ -97,8 +93,7 @@ Ne supposez pas que chaque inode possède exactement 12 pointeurs directs et tro
 
 N'employez les outils de diagnostic propres au système de fichiers qu'en lecture seule ou dans des modes documentés lorsque la cartographie interne est importante. Pour l'administration courante, `stat`, `find -inum`, `df -i` et les outils tenant compte des liens fournissent des abstractions plus sûres.
 
-:::single-choice{#inodes-layout-portability}
-Pourquoi ne faut-il pas supposer une organisation fixe des pointeurs pour chaque inode ?
+:::single-choice{#inodes-layout-portability} Pourquoi ne faut-il pas supposer une organisation fixe des pointeurs pour chaque inode ?
 
 ::option[Les inodes ne font jamais référence aux données des fichiers.]{#inodes-no-data-reference explanation="Le système de fichiers doit associer l'objet à son contenu, même si le mécanisme varie."}
 ::option[Les implémentations emploient des structures différentes d'étendues, d'arbres et de données intégrées.]{#inodes-format-specific-layout .correct explanation="La cartographie sur disque entre l'inode et le contenu fait partie du format de chaque système de fichiers."}

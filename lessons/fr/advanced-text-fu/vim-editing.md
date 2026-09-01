@@ -28,8 +28,7 @@ Les opérateurs courants comprennent :
 
 Par exemple, `dw` supprime sur la portée du déplacement `w`, tandis que `d$` supprime du curseur jusqu'à la fin de la ligne. `2dw` applique la suppression sur deux déplacements de mot.
 
-:::single-choice{#vim-edit-operator-motion}
-En mode Normal, quel est l'effet de `d$` ?
+:::single-choice{#vim-edit-operator-motion} En mode Normal, quel est l'effet de `d$` ?
 
 ::option[Supprimer tout le fichier à partir du curseur.]{#vim-edit-delete-file-end explanation="Le déplacement dollar cible la fin de la ligne actuelle, pas celle de tout le tampon."}
 ::option[Supprimer du curseur jusqu'à la fin de la ligne.]{#vim-edit-delete-line-end .correct explanation="L'opérateur `d` s'applique au déplacement `$` qui mène à la fin de la ligne."}
@@ -49,8 +48,7 @@ Certaines commandes constituent des raccourcis pratiques :
 
 La répétition d'un opérateur, comme dans `dd`, le fait agir ligne par ligne. Un nombre étend le nombre de lignes concernées.
 
-:::single-choice{#vim-edit-delete-three-lines}
-Quelle commande du mode Normal supprime la ligne actuelle et les deux suivantes ?
+:::single-choice{#vim-edit-delete-three-lines} Quelle commande du mode Normal supprime la ligne actuelle et les deux suivantes ?
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="Dans cette forme de commande, le nombre se place avant l'opérateur doublé."}
 ::option[`3x`]{#vim-edit-three-x explanation="Cette commande supprime trois caractères à partir du curseur, pas trois lignes complètes."}
@@ -69,8 +67,7 @@ L'opérateur `c` retire le texte sélectionné et passe au mode Insertion afin q
 
 Le comportement de `cw` présente un cas particulier historique et ressemble souvent à `ce`. Les objets textuels comme `iw` peuvent rendre la limite visée plus claire.
 
-:::single-choice{#vim-edit-change-inner-word}
-Quelle commande du mode Normal remplace le mot intérieur sous le curseur en le supprimant puis en passant au mode Insertion ?
+:::single-choice{#vim-edit-change-inner-word} Quelle commande du mode Normal remplace le mot intérieur sous le curseur en le supprimant puis en passant au mode Insertion ?
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="Cette commande supprime le mot intérieur, mais reste en mode Normal au lieu de commencer le texte de remplacement."}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="Cette commande copie le mot intérieur sans modifier le tampon ni passer au mode Insertion."}
@@ -88,8 +85,7 @@ Vim appelle la copie **yank** et le collage **put** :
 
 Les suppressions et modifications stockent aussi le texte dans des registres. Un `p` ultérieur peut donc coller le dernier texte supprimé plutôt qu'une copie plus ancienne. Les registres nommés permettent de conserver un texte précis ; commencez toutefois par surveiller ce qu'a stocké la dernière opération.
 
-:::single-choice{#vim-edit-yank-put-line}
-Après avoir copié la ligne actuelle avec `yy`, quelle commande la colle sous la ligne actuelle ?
+:::single-choice{#vim-edit-yank-put-line} Après avoir copié la ligne actuelle avec `yy`, quelle commande la colle sous la ligne actuelle ?
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="Pour du texte copié ligne par ligne, le `p` minuscule place la ligne mémorisée sous la ligne actuelle."}
 ::option[`P`]{#vim-edit-put-above explanation="Le `P` majuscule place le texte ligne par ligne au-dessus de la ligne actuelle."}
@@ -107,8 +103,7 @@ En mode Normal :
 
 L'historique d'annulation concerne les modifications du tampon, pas les simples déplacements du curseur. Créez des points d'enregistrement et contrôlez vos changements au lieu de dépendre d'un historique illimité ou permanent.
 
-:::single-choice{#vim-edit-redo-change}
-Quelle commande du mode Normal rétablit une modification qui vient d'être annulée ?
+:::single-choice{#vim-edit-redo-change} Quelle commande du mode Normal rétablit une modification qui vient d'être annulée ?
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="En mode Normal, `Ctrl+U` remonte d'environ un demi-écran ; ce n'est pas la commande de rétablissement."}
 ::option[`.`]{#vim-edit-dot-repeat explanation="Le point répète la dernière modification comme une nouvelle action au lieu d'avancer dans l'historique d'annulation."}

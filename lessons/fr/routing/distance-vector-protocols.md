@@ -16,8 +16,7 @@ Le routage à vecteur de distance indique aux voisins quelles destinations sont 
 
 Si le routeur A annonce une distance de trois vers un préfixe et que le routeur B atteint A avec un coût de un, B peut déduire une distance de quatre par A. L’information décrit une direction et une métrique, et non une carte complète de la topologie, raison pour laquelle cette approche est parfois appelée routage par rumeur.
 
-:::single-choice{#distance-vector-derived-distance}
-Si un voisin annonce la métrique 3 et que le coût de la liaison vaut 1, quelle métrique en déduit-on par ce voisin ?
+:::single-choice{#distance-vector-derived-distance} Si un voisin annonce la métrique 3 et que le coût de la liaison vaut 1, quelle métrique en déduit-on par ce voisin ?
 
 ::option[2]{#distance-vector-two explanation="Le coût de la liaison est ajouté, et non soustrait."}
 ::option[31]{#distance-vector-thirty-one explanation="Ces valeurs sont des métriques, et non des chiffres décimaux à concaténer."}
@@ -28,8 +27,7 @@ Si un voisin annonce la métrique 3 et que le coût de la liaison vaut 1, quelle
 
 Après une panne, des voisins peuvent annoncer par erreur une route l’un vers l’autre et augmenter progressivement sa métrique. Les protocoles limitent ce phénomène avec des valeurs d’infini finies, l’horizon partagé, l’empoisonnement des routes, le retour empoisonné, les mises à jour déclenchées et des minuteurs. Ces mécanismes réduisent le problème, mais ne rendent pas instantanée la convergence après chaque changement de topologie.
 
-:::single-choice{#distance-vector-split-horizon}
-Que cherche à réduire l’horizon partagé ?
+:::single-choice{#distance-vector-split-horizon} Que cherche à réduire l’horizon partagé ?
 
 ::option[Le nombre de bits de chaque adresse IPv4.]{#distance-vector-ip-bits explanation="La taille des adresses IPv4 est fixe indépendamment des mises à jour de routage."}
 ::option[Le coût du chiffrement des charges utiles applicatives.]{#distance-vector-encryption explanation="Cette technique concerne la direction des annonces de routes."}
@@ -42,8 +40,7 @@ RIP emploie le nombre de sauts. Une route de métrique 16 est inaccessible ; la 
 
 RIPv2 emploie des mises à jour périodiques et déclenchées et prend en charge les informations CIDR. Il diffuse couramment les mises à jour en multidiffusion plutôt que de diffuser toute une table dans chaque situation. L’authentification et le filtrage exigent toujours une configuration délibérée.
 
-:::single-choice{#distance-vector-rip-infinity}
-Que représente la métrique RIP 16 ?
+:::single-choice{#distance-vector-rip-infinity} Que représente la métrique RIP 16 ?
 
 ::option[Le chemin le plus rapide avec seize liaisons parallèles.]{#distance-vector-fastest-16 explanation="RIP considère cette valeur comme inaccessible."}
 ::option[L’infini, qui signifie que la destination est inaccessible.]{#distance-vector-unreachable .correct explanation="RIP limite les chemins utilisables à 15 sauts."}
@@ -54,8 +51,7 @@ Que représente la métrique RIP 16 ?
 
 Vérifiez l’état du voisin, les préfixes reçus et annoncés, la métrique, le prochain saut, l’installation de la route et l’accessibilité du plan de données. Une route peut être valide dans RIP, mais perdre face à une autre source de route selon la politique de préférence locale.
 
-:::single-choice{#distance-vector-fewest-hop-limit}
-Pourquoi la route RIP au plus faible nombre de sauts peut-elle offrir de mauvaises performances ?
+:::single-choice{#distance-vector-fewest-hop-limit} Pourquoi la route RIP au plus faible nombre de sauts peut-elle offrir de mauvaises performances ?
 
 ::option[Le nombre de sauts n’encode ni la bande passante, ni la latence, ni les pertes, ni la congestion des liaisons.]{#distance-vector-hop-limited .correct explanation="Un chemin comportant davantage de sauts peut posséder de meilleures liaisons et offrir de meilleures performances applicatives."}
 ::option[RIP choisit toujours la route qui possède le plus de sauts.]{#distance-vector-most-hops explanation="Sa métrique favorise les plus petits nombres de sauts utilisables."}

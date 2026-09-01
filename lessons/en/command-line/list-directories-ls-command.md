@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-Which command lists the contents of `/home/pete` without changing into it?
+:::single-choice{#list-another-directory} Which command lists the contents of `/home/pete` without changing into it?
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="Passing a directory path to `ls` lists that directory's contents. The shell remains in its current working directory."}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd` changes the shell's working directory. It does not perform the requested listing by itself."}
@@ -47,8 +46,7 @@ $ ls -a
 
 Dotfiles are hidden by default and often store configuration, such as `.bashrc`.
 
-:::single-choice{#show-hidden-files}
-Which command includes hidden files in the listing?
+:::single-choice{#show-hidden-files} Which command includes hidden files in the listing?
 
 ::option[`ls -l`]{#long-format explanation="The `-l` option adds detailed columns but does not include hidden names by itself."}
 ::option[`ls -r`]{#reverse-order explanation="The `-r` option reverses the sort order. It does not change whether hidden files are included."}
@@ -84,8 +82,7 @@ For easier file sizes, add `-h` for human-readable output:
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-Which command shows long-format details with human-readable sizes?
+:::single-choice{#show-readable-file-details} Which command shows long-format details with human-readable sizes?
 
 ::option[`ls -la`]{#long-all explanation="This combines long format with hidden files. It does not request human-readable size units."}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` selects long format and `-h` makes sizes easier to read. The flags can be combined in one command."}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-Which command sorts by modification time and then places the newest entries last?
+:::single-choice{#show-newest-files-last} Which command sorts by modification time and then places the newest entries last?
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` sorts by modification time, while `-r` reverses that order. Together they place older entries before newer ones."}
 ::option[`ls -lt`]{#time-default explanation="This sorts by modification time but keeps the default newest-first direction. It does not place the newest entries last."}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`: Sort by file size.
 - `-d`: List the directory itself instead of its contents.
 
-:::single-choice{#list-directory-entry-itself}
-Which command lists the `projects/` directory entry instead of its contents?
+:::single-choice{#list-directory-entry-itself} Which command lists the `projects/` directory entry instead of its contents?
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="The `-d` option tells `ls` to show the directory entry itself rather than opening it for a content listing."}
 ::option[`ls projects/`]{#directory-contents explanation="Without `-d`, passing a directory path makes `ls` display the entries inside that directory."}

@@ -28,8 +28,7 @@ Les zéros initiaux de chaque groupe peuvent être omis, et une suite consécuti
 
 Un seul `::` peut apparaître, car sinon le nombre de groupes omis serait ambigu. `2001:db8::/32` est réservé aux exemples de documentation.
 
-:::single-choice{#ipv6-double-colon-rule}
-Pourquoi `::` ne peut-il apparaître qu’une seule fois dans une adresse IPv6 ?
+:::single-choice{#ipv6-double-colon-rule} Pourquoi `::` ne peut-il apparaître qu’une seule fois dans une adresse IPv6 ?
 
 ::option[Plusieurs marqueurs `::` rendraient le développement ambigu.]{#ipv6-compression-ambiguity .correct explanation="Un seul marqueur de compression peut être développé en un nombre exact de groupes pour atteindre huit."}
 ::option[Les adresses IPv6 ne contiennent qu’un seul bit zéro.]{#ipv6-one-zero explanation="Une adresse peut contenir de nombreux bits et groupes nuls."}
@@ -47,8 +46,7 @@ Les adresses et plages importantes comprennent :
 
 IPv6 ne possède aucune adresse de diffusion ; la multidiffusion et la découverte de voisins remplissent des fonctions qu’IPv4 assure souvent par diffusion. Une destination lien-local peut exiger une zone d’interface telle que `fe80::1%eth0`, car le même préfixe existe sur chaque liaison.
 
-:::single-choice{#ipv6-link-local-scope}
-Quelle est la portée normale d’une adresse `fe80::/10` ?
+:::single-choice{#ipv6-link-local-scope} Quelle est la portée normale d’une adresse `fe80::/10` ?
 
 ::option[Chaque hôte de l’Internet mondial.]{#ipv6-global-link-local explanation="Les adresses unicast globales servent à la portée globale routée."}
 ::option[Uniquement un fichier de zone DNS.]{#ipv6-dns-only explanation="Les adresses lien-local sont attribuées aux interfaces et employées sur les réseaux."}
@@ -59,8 +57,7 @@ Quelle est la portée normale d’une adresse `fe80::/10` ?
 
 La notation CIDR d’IPv6 emploie une longueur de préfixe de `/0` à `/128`. Un `/64` est la taille standard de la plupart des sous-réseaux locaux et prend en charge l’autoconfiguration sans état. Une interface peut porter simultanément des adresses lien-local, globales stables, temporaires de confidentialité et autres, chacune dotée de durées de vie privilégiée et valide.
 
-:::single-choice{#ipv6-address-multiplicity}
-Pourquoi une interface peut-elle afficher plusieurs adresses IPv6 ?
+:::single-choice{#ipv6-address-multiplicity} Pourquoi une interface peut-elle afficher plusieurs adresses IPv6 ?
 
 ::option[IPv6 exige une adresse pour chaque chiffre hexadécimal.]{#ipv6-one-per-digit explanation="Les chiffres sont une représentation, et non des attributions distinctes à l’interface."}
 ::option[Des portées et des rôles de confidentialité ou de durée de vie différents peuvent coexister.]{#ipv6-several-roles .correct explanation="Une adresse lien-local et une ou plusieurs adresses globales ou temporaires sont normales."}
@@ -73,8 +70,7 @@ La découverte de voisins IPv6 emploie ICMPv6 pour la résolution des adresses, 
 
 Le blocage de tout ICMPv6 brise des fonctions essentielles du protocole. La politique du pare-feu doit autoriser les types de messages nécessaires avec une portée appropriée plutôt que de considérer ICMPv6 comme facultatif.
 
-:::single-choice{#ipv6-default-router-source}
-Comment un hôte IPv6 apprend-il normalement un routeur par défaut de manière dynamique ?
+:::single-choice{#ipv6-default-router-source} Comment un hôte IPv6 apprend-il normalement un routeur par défaut de manière dynamique ?
 
 ::option[Par les annonces de routeur.]{#ipv6-router-advertisements .correct explanation="La découverte des routeurs fait partie de la découverte de voisins ICMPv6."}
 ::option[À partir d’une adresse de diffusion Ethernet.]{#ipv6-ethernet-broadcast explanation="IPv6 n’emploie aucune adresse de diffusion IP."}
@@ -94,8 +90,7 @@ $ ping -6 -c 3 2001:db8::25
 
 Employez une véritable adresse de test attribuée plutôt que l’adresse de documentation présentée. Une application à double pile peut réussir par IPv4 alors qu’IPv6 est cassé, ou inversement ; testez donc explicitement chaque famille et ses enregistrements DNS `A` ou `AAAA`.
 
-:::single-choice{#ipv6-dual-stack-test}
-Pourquoi tester IPv4 et IPv6 séparément sur un service à double pile ?
+:::single-choice{#ipv6-dual-stack-test} Pourquoi tester IPv4 et IPv6 séparément sur un service à double pile ?
 
 ::option[Chaque paquet IPv6 doit d’abord devenir une diffusion IPv4.]{#ipv6-becomes-ipv4 explanation="IPv6 et IPv4 natifs constituent des chemins de protocole distincts."}
 ::option[Les deux familles peuvent posséder des DNS, routes, filtres et pannes différents.]{#ipv6-independent-paths .correct explanation="Une solution de repli réussie peut masquer une famille d’adresses privilégiée défaillante."}

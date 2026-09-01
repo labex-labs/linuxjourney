@@ -28,8 +28,7 @@ There are two ways to specify a path: absolute and relative.
 
 - **Relative path**: A path based on your current location. If you are in `/home/pete/Documents` and want to access a subdirectory named `taxes`, you can use `taxes/`.
 
-:::single-choice{#recognize-absolute-cd-path}
-Which statement correctly describes an absolute path?
+:::single-choice{#recognize-absolute-cd-path} Which statement correctly describes an absolute path?
 
 ::option[It begins at whichever directory the shell currently uses]{#begins-at-current-directory explanation="A path that depends on the shell's current location is relative. It does not necessarily begin at the root."}
 ::option[It contains only the final directory name without parents]{#contains-final-name-only explanation="A single destination name is normally interpreted relative to the current directory. An absolute path includes its route from `/`."}
@@ -53,8 +52,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-Which command confirms the shell's current location after `cd`?
+:::single-choice{#verify-changed-directory} Which command confirms the shell's current location after `cd`?
 
 ::option[`cd`]{#cd-command explanation="`cd` changes the current directory but does not normally print the resulting full path. Use `pwd` to confirm it."}
 ::option[`ls`]{#ls-command explanation="`ls` displays directory contents. It can help you inspect a location, but `pwd` reports the location itself."}
@@ -89,16 +87,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-From `/home/pete/Pictures`, which command moves to `/home/pete`?
+:::single-choice{#move-to-parent-directory} From `/home/pete/Pictures`, which command moves to `/home/pete`?
 
 ::option[`cd .`]{#cd-current explanation="`.` represents the current directory. This command leaves the shell in `/home/pete/Pictures`."}
 ::option[`cd -`]{#cd-previous explanation="`-` returns to the previous working directory, which is not necessarily the parent. Use `..` when the destination is one level up."}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` represents the parent of the current directory. From `Pictures`, its parent is `/home/pete`."}
 :::
 
-:::single-choice{#return-to-previous-directory}
-Which command returns to the directory used immediately before the current one?
+:::single-choice{#return-to-previous-directory} Which command returns to the directory used immediately before the current one?
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` switches to the previous working directory. That directory can be anywhere in the filesystem."}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` moves to the parent directory. The parent and previous directory are not always the same place."}
@@ -129,8 +125,7 @@ Go to a directory whose name contains spaces by quoting it:
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-Which command treats `Vacation Photos` as one directory name?
+:::single-choice{#enter-directory-with-spaces} Which command treats `Vacation Photos` as one directory name?
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="Without quotes, the shell passes `Vacation` and `Photos` as separate arguments rather than one directory name."}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="Quoting the entire line makes the shell treat it as one command name. The command itself must remain outside the path quotes."}

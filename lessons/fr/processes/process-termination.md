@@ -25,8 +25,7 @@ $ printf '%s\n' "$?"
 
 Les shells exposent une plage d’états encodés limitée et représentent aussi la terminaison par un signal ; cette valeur n’est donc pas un dossier de diagnostic complet. Les programmes doivent documenter leurs propres codes de sortie.
 
-:::single-choice{#process-termination-success-status}
-Selon la convention Unix, quel état de sortie normal indique la réussite ?
+:::single-choice{#process-termination-success-status} Selon la convention Unix, quel état de sortie normal indique la réussite ?
 
 ::option[`1`]{#process-termination-status-one explanation="De nombreux programmes emploient `1` pour un échec général, même si la signification dépend de la commande."}
 ::option[`0`]{#process-termination-status-zero .correct explanation="Un état normal nul indique conventionnellement une exécution réussie."}
@@ -39,8 +38,7 @@ Le noyau enregistre la manière dont un enfant s’est terminé et avertit son p
 
 L’attente peut également coordonner l’exécution : un shell attend une commande au premier plan avant d’afficher une nouvelle invite, mais peut différer l’attente d’une tâche en arrière-plan. Un parent de longue durée bien conçu doit récupérer ses enfants sans bloquer le travail sans rapport.
 
-:::single-choice{#process-termination-wait-purpose}
-Qu’est-ce qu’une opération d’attente réussie permet au parent de récupérer ?
+:::single-choice{#process-termination-wait-purpose} Qu’est-ce qu’une opération d’attente réussie permet au parent de récupérer ?
 
 ::option[Les informations de fin de l’enfant.]{#process-termination-wait-status .correct explanation="La famille wait indique comment un enfant s’est arrêté ou terminé et récupère un enfant achevé."}
 ::option[Une copie de l’ancien espace d’adressage de l’enfant.]{#process-termination-wait-memory explanation="La majeure partie de la mémoire du processus a déjà été libérée et n’est pas rendue au parent par `wait()`."}
@@ -53,8 +51,7 @@ Après la fin d’un enfant mais avant la récupération de son enregistrement, 
 
 L’envoi d’un signal à un zombie ne peut pas le faire se terminer une seconde fois. Pour corriger une accumulation persistante, diagnostiquez le parent qui n’attend pas, redémarrez-le ou corrigez-le au moyen d’une procédure opérationnelle adaptée, ou permettez le rattachement à un processus qui récupérera le zombie. Un grand nombre de zombies peut épuiser les PID ou la capacité de la table des processus.
 
-:::single-choice{#process-termination-zombie-definition}
-Quelle description correspond à un processus zombie ?
+:::single-choice{#process-termination-zombie-definition} Quelle description correspond à un processus zombie ?
 
 ::option[Un enfant en cours d’exécution dont le parent s’est déjà terminé.]{#process-termination-zombie-orphan explanation="Cela décrit un enfant orphelin, et non un état zombie."}
 ::option[Un enfant terminé dont l’enregistrement de fin n’a pas été récupéré.]{#process-termination-zombie-unreaped .correct explanation="Le processus a cessé de s’exécuter, mais le noyau conserve un état minimal pour son parent."}
@@ -67,8 +64,7 @@ Si un parent se termine tandis que son enfant continue, le noyau rattache cet en
 
 Le processus adoptant devient responsable de la collecte de l’état de fin. Les gestionnaires de services et les environnements de conteneurs modernes rendent important de ne pas supposer que le nouveau parent est toujours le PID 1 de l’hôte.
 
-:::single-choice{#process-termination-orphan-definition}
-Que se passe-t-il lorsqu’un processus survit à son parent d’origine ?
+:::single-choice{#process-termination-orphan-definition} Que se passe-t-il lorsqu’un processus survit à son parent d’origine ?
 
 ::option[Il est rattaché à un sous-récupérateur admissible ou au processus init de l’espace de noms.]{#process-termination-orphan-reparented .correct explanation="Le noyau préserve une relation parentale valide en attribuant un processus adoptant."}
 ::option[Il devient immédiatement un zombie même s’il ne s’est pas terminé.]{#process-termination-orphan-zombie explanation="L’état zombie ne commence qu’après la fin de l’exécution et pendant l’attente de la collecte de l’état."}

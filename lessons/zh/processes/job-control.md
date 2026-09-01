@@ -25,8 +25,7 @@ shell 不会等待作业结束，而是直接返回提示符。后台状态并�
 
 后台作业若试图从控制终端读取输入，通常会收到 `SIGTTIN` 并停止，因为它并不是终端的前台进程组。
 
-:::single-choice{#job-control-ampersand-effect}
-末尾的 `&` 会要求交互式 shell 做什么？
+:::single-choice{#job-control-ampersand-effect} 末尾的 `&` 会要求交互式 shell 做什么？
 
 ::option[保证作业在退出登录和系统重启后继续运行。]{#job-control-survive-restart explanation="仅仅放到后台既不能提供持久监管，也不能让作业在重启后继续运行。"}
 ::option[把管道作为后台作业运行，并在显示下一个提示符前不等待它完成。]{#job-control-background-job .correct explanation="shell 会异步启动作业，并可继续接收其他命令。"}
@@ -48,8 +47,7 @@ $ jobs
 
 由于作业表属于单个 shell，另一个终端中的 shell 通常无法通过自己的 `jobs`、`fg` 或 `bg` 内建命令列出或操作这些作业。
 
-:::single-choice{#job-control-jobs-scope}
-`jobs` 内建命令会列出什么？
+:::single-choice{#job-control-jobs-scope} `jobs` 内建命令会列出什么？
 
 ::option[当前 shell 会话跟踪的作业。]{#job-control-jobs-current-shell .correct explanation="作业 ID 和状态由启动或接管这些作业的交互式 shell 维护。"}
 ::option[系统当前可见的所有进程。]{#job-control-jobs-all-processes explanation="系统级进程检查应使用 `ps` 等工具；shell 作业表的范围更小。"}
@@ -74,8 +72,7 @@ $ bg
 
 `bg` 会发送继续信号，并让作业留在终端前台之外。它只对已停止的作业有用；已经在后台运行的命令不需要恢复。
 
-:::single-choice{#job-control-bg-purpose}
-`bg %3` 会对已停止的作业 3 做什么？
+:::single-choice{#job-control-bg-purpose} `bg %3` 会对已停止的作业 3 做什么？
 
 ::option[把它的文件移动到名为 `bg` 的目录。]{#job-control-bg-files explanation="`bg` 是 shell 的作业控制内建命令，不会移动文件系统对象。"}
 ::option[让它作为后台作业继续运行。]{#job-control-bg-continue .correct explanation="shell 会恢复选定的已停止作业，但不会把终端前台分配给它。"}
@@ -92,8 +89,7 @@ $ fg %1
 
 未提供操作数时，`fg` 通常选择由 `+` 标记的当前作业。已停止的作业进入前台时会同时恢复运行。
 
-:::single-choice{#job-control-fg-effect}
-`fg %1` 会做什么？
+:::single-choice{#job-control-fg-effect} `fg %1` 会做什么？
 
 ::option[把作业 1 分配到终端前台并等待它。]{#job-control-fg-foreground .correct explanation="shell 会把选定作业移到前台，使其能够与终端交互。"}
 ::option[把作业 1 改成 PID 1。]{#job-control-fg-pid-one explanation="shell 作业 ID 不会取代或改写进程 ID。"}
@@ -110,8 +106,7 @@ $ kill -TERM %1
 
 这通常会向作业的进程组发送信号，而不只是管道中的某一个成员。应先检查选中的作业，并在考虑强制升级前使用 `SIGTERM`。作业说明符属于 shell 语法；脚本和外部工具更常使用核实过的 PID 或进程组 ID。
 
-:::single-choice{#job-control-job-specification}
-哪个操作数表示 shell 作业 1，而不是进程 ID 1？
+:::single-choice{#job-control-job-specification} 哪个操作数表示 shell 作业 1，而不是进程 ID 1？
 
 ::option[`1`]{#job-control-plain-one explanation="`kill` 通常会把纯数字操作数解释为 PID。"}
 ::option[`#1`]{#job-control-hash-one explanation="这里介绍的 shell 作业 ID 语法并不使用井号前缀。"}

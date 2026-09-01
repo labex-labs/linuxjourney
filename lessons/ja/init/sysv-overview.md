@@ -23,8 +23,7 @@ $ readlink /proc/1/exe
 
 `/etc/inittab` ファイルや `/etc/init.d/` ディレクトリがあることは、補助的な証拠にすぎません。systemd などの init システムも互換性のためにこれらを残すことがあり、コンテナではホストと異なる PID 名前空間が見える場合もあります。
 
-:::single-choice{#sysv-overview-detection}
-sysvinit が稼働中であることを示す最も強い証拠はどれですか？
+:::single-choice{#sysv-overview-detection} sysvinit が稼働中であることを示す最も強い証拠はどれですか？
 
 ::option[実行中の PID 1 の実行ファイルが sysvinit またはその init プログラムであること。]{#sysv-overview-live-pid-one .correct explanation="互換用ファイルから推測するより、実際に動く最初のプロセスを調べる方が直接的です。"}
 ::option[`/etc/init.d/` ディレクトリが存在すること。]{#sysv-overview-init-d-only explanation="ほかの init システムも SysV スクリプトやラッパーを残すことがよくあります。"}
@@ -42,8 +41,7 @@ sysvinit が稼働中であることを示す最も強い証拠はどれです�
 
 Debian 系では歴史的にレベル 2～5 をほぼ同じように扱い、Red Hat 系の慣例ではテキストモードとグラフィカルモードを区別します。実際のホストで `/etc/inittab`、init の文書、ランレベルディレクトリを調べてください。
 
-:::single-choice{#sysv-overview-shutdown-runlevel}
-多くの SysV システムで、停止または電源オフを要求するランレベルは慣例上どれですか？
+:::single-choice{#sysv-overview-shutdown-runlevel} 多くの SysV システムで、停止または電源オフを要求するランレベルは慣例上どれですか？
 
 ::option[`3`]{#sysv-overview-runlevel-three explanation="これは通常、シャットダウンではなくマルチユーザーの動作モードです。"}
 ::option[`0`]{#sysv-overview-runlevel-zero .correct explanation="通常はレベル0がシャットダウンへの移行ですが、ローカルの init 方針が最終的な基準です。"}
@@ -60,8 +58,7 @@ Debian 系では歴史的にレベル 2～5 をほぼ同じように扱い、Red
 
 正確なアルゴリズムとディレクトリは環境によって異なります。依存関係をスクリプトのヘッダーに記述してディストリビューションのツールで処理する場合や、一部の処理を並列化する実装もあります。SysV を「すべてのサービスが必ず1つずつ順番に起動する仕組み」と単純化してはいけません。
 
-:::single-choice{#sysv-overview-start-link}
-ランレベルへ移行するとき、`S20networking` というリンクは慣例上何を要求しますか？
+:::single-choice{#sysv-overview-start-link} ランレベルへ移行するとき、`S20networking` というリンクは慣例上何を要求しますか？
 
 ::option[すべてのネットワークプロセスへシグナル20を直接送る。]{#sysv-overview-signal-twenty explanation="数字は順序のメタデータであり、シグナル番号ではありません。"}
 ::option[ネットワーク設定のバックアップを20個保存する。]{#sysv-overview-twenty-backups explanation="ランレベルのリンクにバックアップ保存機能はありません。"}
@@ -74,8 +71,7 @@ init がランレベルを変更すると、ディストリビューションの
 
 ランレベル 0 または 6 の要求は、システム全体の可用性を失わせる操作です。生の init 移行を不用意に呼び出さず、システムのシャットダウン用インターフェースを使い、ユーザーへ通知し、作業中の内容を保存し、リモートコンソールへ接続できることを確認してください。
 
-:::single-choice{#sysv-overview-runlevel-six-meaning}
-ランレベル `6` は慣例上何を要求しますか？
+:::single-choice{#sysv-overview-runlevel-six-meaning} ランレベル `6` は慣例上何を要求しますか？
 
 ::option[ユーザーアカウントを6個追加すること。]{#sysv-overview-six-users explanation="ランレベルは動作モードを表し、アカウント数ではありません。"}
 ::option[システムの再起動への移行。]{#sysv-overview-reboot .correct explanation="従来の SysV 方針では、サービスを停止してシステムを再起動するためにレベル6を使います。"}
@@ -86,8 +82,7 @@ init がランレベルを変更すると、ディストリビューションの
 
 systemd ホストでは、SysV スクリプトが生成ユニットとしてラップされる場合がありますが、それでも systemd の依存関係、タイムアウト、ログ、状態の意味が適用されます。古いスクリプトを直接実行すると、サービスマネージャーの追跡を迂回することがあります。稼働中のマネージャーを特定し、可能ならそのネイティブなインターフェースを使ってください。
 
-:::single-choice{#sysv-overview-compatibility-script}
-systemd ホスト上の SysV 形式スクリプトを、通常はサービスマネージャー経由で呼び出すべきなのはなぜですか？
+:::single-choice{#sysv-overview-compatibility-script} systemd ホスト上の SysV 形式スクリプトを、通常はサービスマネージャー経由で呼び出すべきなのはなぜですか？
 
 ::option[直接実行すると、依存関係や状態の追跡を迂回する場合があるから。]{#sysv-overview-manager-tracking .correct explanation="マネージャーはプロセスの所有関係、順序、タイムアウト、状態を協調して管理する必要があります。"}
 ::option[systemd システムではシェルスクリプトを実行できないから。]{#sysv-overview-scripts-impossible explanation="実行はできますが、監督を迂回すると状態の不整合が起こる場合があります。"}

@@ -26,8 +26,7 @@ $ ls -ld /*
 
 Viele aktuelle Distributionen verwenden eine zusammengeführte `/usr`-Struktur, in der `/bin`, `/sbin` und `/lib` symbolische Links auf entsprechende Verzeichnisse unter `/usr` sind. Nutze die Befehlssuche und Paketdaten, statt anzunehmen, ob ein Pfad ein physisches Verzeichnis oder ein Link ist.
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-Welches Verzeichnis enthält herkömmlicherweise hostspezifische Systemkonfiguration?
+:::single-choice{#filesystem-hierarchy-configuration-directory} Welches Verzeichnis enthält herkömmlicherweise hostspezifische Systemkonfiguration?
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="Procfs stellt aktive Prozess- und Kernel-Schnittstellen statt dauerhafter Hostkonfigurationsdateien bereit."}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="System- und Dienstkonfiguration ist herkömmlicherweise unter `/etc` organisiert."}
@@ -42,8 +41,7 @@ Welches Verzeichnis enthält herkömmlicherweise hostspezifische Systemkonfigura
 
 Trotz seines Namens ist `/usr` normalerweise nicht der Ort für persönliche Dateien einzelner Benutzer. Paketmanager der Distribution verwalten große Teile des Verzeichnisses. Das Kopieren lokal kompilierter Dateien nach `/usr/bin` kann daher mit verwalteten Paketen in Konflikt geraten.
 
-:::single-choice{#filesystem-hierarchy-local-software}
-Welches Präfix ist herkömmlicherweise für lokal installierte Software außerhalb des distributionsverwalteten `/usr`-Inhalts reserviert?
+:::single-choice{#filesystem-hierarchy-local-software} Welches Präfix ist herkömmlicherweise für lokal installierte Software außerhalb des distributionsverwalteten `/usr`-Inhalts reserviert?
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="Die lokale Hierarchie trennt vom Administrator installierte Software vom hauptsächlichen `/usr`-Baum der Distribution."}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="Procfs ist eine virtuelle Kernel-Schnittstelle und kein dauerhafter Softwarepräfix."}
@@ -58,8 +56,7 @@ Welches Präfix ist herkömmlicherweise für lokal installierte Software außerh
 
 Ein Home-Pfad stammt aus Kontoinformationen und nicht nur aus der Verbindung von `/home` mit einem Benutzernamen. Verwende `getent passwd USER` oder das von der Shell aufgelöste Home-Verzeichnis, statt Annahmen fest einzucodieren.
 
-:::single-choice{#filesystem-hierarchy-root-home}
-Was ist das herkömmliche Home-Verzeichnis des Root-Kontos?
+:::single-choice{#filesystem-hierarchy-root-home} Was ist das herkömmliche Home-Verzeichnis des Root-Kontos?
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="Gewöhnliche Home-Verzeichnisse liegen häufig unter `/home`, doch root besitzt einen eigenen herkömmlichen Pfad."}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="Das Home-Verzeichnis des privilegierten Kontos liegt herkömmlicherweise direkt unter der Dateisystemwurzel."}
@@ -75,8 +72,7 @@ Was ist das herkömmliche Home-Verzeichnis des Root-Kontos?
 
 Die Bereinigungsrichtlinie für `/tmp` unterscheidet sich. Gehe weder davon aus, dass Dateien bis zum Neustart bestehen bleiben, noch dass sie beim Neustart immer gelöscht werden. Anwendungen sollten temporäre Dateien sicher erzeugen und keine vorhersehbaren Namen verwenden.
 
-:::single-choice{#filesystem-hierarchy-log-path}
-Welcher Pfad speichert herkömmlicherweise Systemprotokolldateien?
+:::single-choice{#filesystem-hierarchy-log-path} Welcher Pfad speichert herkömmlicherweise Systemprotokolldateien?
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` ist für Konfiguration und nicht für gewöhnliche anwachsende Protokolldaten vorgesehen."}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="Protokolle gehören zu den sich verändernden Systemdaten unter der Hierarchie für variable Daten."}
@@ -93,8 +89,7 @@ Welcher Pfad speichert herkömmlicherweise Systemprotokolldateien?
 
 Dies sind Konventionen und keine Berechtigungsgewährungen. Das Einhängen eines anderen Dateisystems auf einem nicht leeren Verzeichnis verbirgt dessen bisherigen Inhalt vorübergehend bis zum Aushängen.
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-Welcher Pfad stellt normalerweise das Kernel-Gerätemodell über sysfs bereit?
+:::single-choice{#filesystem-hierarchy-sysfs-path} Welcher Pfad stellt normalerweise das Kernel-Gerätemodell über sysfs bereit?
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` ist für vom System bereitgestellte Daten vorgesehen."}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="Sysfs wird herkömmlicherweise unter `/sys` eingehängt und stellt Geräte, Treiber, Busse und Attribute dar."}

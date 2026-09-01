@@ -18,8 +18,7 @@ DHCP 서버는 범위 또는 주소 풀과 임대 상태를 관리합니다. 서
 
 DHCP는 UDP 위에서 운반되는 응용 계층 프로토콜입니다. DHCPv4 서버는 일반적으로 UDP 포트 67, 클라이언트는 포트 68을 사용합니다.
 
-:::single-choice{#dhcp-relay-purpose}
-DHCP 릴레이는 무엇을 가능하게 합니까?
+:::single-choice{#dhcp-relay-purpose} DHCP 릴레이는 무엇을 가능하게 합니까?
 
 ::option[모든 클라이언트가 정책 없이 주소를 선택합니다.]{#dhcp-client-any-address explanation="서버가 여전히 범위와 임대 정책을 적용합니다."}
 ::option[다른 서브넷의 클라이언트가 중앙 DHCP 서버에 도달합니다.]{#dhcp-central-server .correct explanation="릴레이는 라우팅 경계를 가로질러 DHCP 교환을 전달하고 클라이언트 네트워크를 식별합니다."}
@@ -37,8 +36,7 @@ DHCP 릴레이는 무엇을 가능하게 합니까?
 
 브로드캐스트와 유니캐스트 세부 사항은 클라이언트 상태, 릴레이 사용 및 서버 기능에 따라 달라집니다. 제안만으로는 아직 최종 사용 가능한 임대가 아니며 확인 응답이 일반적인 선택 교환을 완료합니다.
 
-:::single-choice{#dhcp-dora-order}
-일반적인 초기 DHCPv4 순서는 무엇입니까?
+:::single-choice{#dhcp-dora-order} 일반적인 초기 DHCPv4 순서는 무엇입니까?
 
 ::option[OFFER, DISCOVER, ACK, REQUEST입니다.]{#dhcp-wrong-order-one explanation="클라이언트가 탐색한 뒤 서버가 제안하고, 요청한 뒤 확인 응답을 받습니다."}
 ::option[DISCOVER, OFFER, REQUEST, ACK입니다.]{#dhcp-correct-order .correct explanation="이 순서는 탐색하고, 제안하고, 선택하고, 확인합니다."}
@@ -51,8 +49,7 @@ DHCP 릴레이는 무엇을 가능하게 합니까?
 
 주소가 동적으로 할당됐다고 표시된다는 사실이 임대의 영구 유지를 입증하지는 않습니다. 변경을 조사할 때 활성 임대, 수명, 서버 및 옵션을 기록하십시오.
 
-:::single-choice{#dhcp-lease-expiration}
-DHCP 주소 임대를 성공적으로 갱신하지 못하면 어떻게 됩니까?
+:::single-choice{#dhcp-lease-expiration} DHCP 주소 임대를 성공적으로 갱신하지 못하면 어떻게 됩니까?
 
 ::option[영구적인 하드웨어 MAC 주소가 됩니다.]{#dhcp-lease-mac explanation="IP 임대는 링크 계층 신원을 바꾸지 않습니다."}
 ::option[결국 만료되며 클라이언트는 더 이상 유효한 주소로 취급하면 안 됩니다.]{#dhcp-lease-expires .correct explanation="임대 방식으로 서버 정책에 따라 주소와 옵션을 회수하거나 변경할 수 있습니다."}
@@ -71,8 +68,7 @@ $ resolvectl status
 
 확인자 명령은 시스템마다 다릅니다. 활성 네트워크 관리자의 임대 데이터와 로그도 조사하십시오. 비인가 서버, 풀 안의 정적 할당, 오래된 상태 또는 수동 설정 때문에 중복 주소가 여전히 발생할 수 있습니다. DHCP는 실수를 줄이지만 모든 충돌을 자체적으로 방지하지는 못합니다.
 
-:::single-choice{#dhcp-result-verification}
-DHCP 임대를 수락한 뒤 무엇을 확인해야 합니까?
+:::single-choice{#dhcp-result-verification} DHCP 임대를 수락한 뒤 무엇을 확인해야 합니까?
 
 ::option[인터페이스에 표시되는 이름만 확인합니다.]{#dhcp-interface-name-only explanation="인터페이스 이름으로 주소 지정, 라우팅 또는 이름 확인을 확립할 수 없습니다."}
 ::option[키보드가 반응하는지만 확인합니다.]{#dhcp-keyboard explanation="키보드 입력은 네트워크 임대 설정과 관계없습니다."}
@@ -83,8 +79,7 @@ DHCP 임대를 수락한 뒤 무엇을 확인해야 합니까?
 
 IPv6 호스트는 SLAAC(Stateless Address Autoconfiguration), DHCPv6, 정적 설정 또는 그 조합을 사용할 수 있습니다. DHCPv6는 IPv4 DORA 교환을 사용하지 않으며 기본 라우터 정보는 일반적으로 DHCPv6가 아니라 IPv6 Router Advertisement에서 얻습니다.
 
-:::single-choice{#dhcp-ipv6-default-router}
-IPv6 호스트는 일반적으로 어디에서 기본 라우터 정보를 얻습니까?
+:::single-choice{#dhcp-ipv6-default-router} IPv6 호스트는 일반적으로 어디에서 기본 라우터 정보를 얻습니까?
 
 ::option[IPv6 Router Advertisement에서 얻습니다.]{#dhcp-router-advertisement .correct explanation="DHCPv6가 다른 설정을 제공할 수 있지만 라우터는 Neighbor Discovery를 통해 자신을 알립니다."}
 ::option[Ethernet FCS 트레일러에서 얻습니다.]{#dhcp-ipv6-fcs explanation="FCS는 링크 손상을 감지하며 라우터 설정을 담지 않습니다."}

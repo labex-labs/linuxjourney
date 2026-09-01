@@ -24,8 +24,7 @@ $ help echo
 
 出力には組み込みコマンドの構文と動作が記載されます。引数なしで `help` を実行すると、Bash がヘルプを持つ組み込みコマンドを一覧表示します。
 
-:::single-choice{#help-for-bash-cd}
-Bash の `cd` 組み込みコマンドに関するヘルプ項目を表示するコマンドはどれですか？
+:::single-choice{#help-for-bash-cd} Bash の `cd` 組み込みコマンドに関するヘルプ項目を表示するコマンドはどれですか？
 
 ::option[`cd --help`]{#cd-help-option explanation="一部の組み込みコマンドはオプションを認識することがありますが、Bash 専用の文書インターフェースは、`help` に組み込みコマンド名を続ける形式です。"}
 ::option[`help cd`]{#help-cd .correct explanation="Bash の `help` 組み込みコマンドは、指定した組み込みコマンド、ここでは `cd` の文書を検索します。"}
@@ -42,8 +41,7 @@ $ ls --help
 
 広く使われる慣例ですが、すべてのプログラムに共通するわけではありません。どのプログラムも同じオプションに対応すると思い込まず、出力と終了状態を読んでください。
 
-:::single-choice{#quick-ls-usage}
-外部の `ls` プログラムが提供する簡単な使用法概要を一般に表示するコマンドはどれですか？
+:::single-choice{#quick-ls-usage} 外部の `ls` プログラムが提供する簡単な使用法概要を一般に表示するコマンドはどれですか？
 
 ::option[`help ls`]{#bash-help-ls explanation="Bash の `help` はシェル組み込みコマンドを説明し、一般的なシステムでは外部の `ls` の使用法ページは提供しません。"}
 ::option[`ls --help`]{#ls-help .correct explanation="GNU `ls` は一般的な `--help` の慣例に従い、使用法とオプションを表示します。"}
@@ -63,8 +61,7 @@ ls is /usr/bin/ls
 
 結果は、エイリアス、関数、インストール済みプログラム、`PATH` によって異なります。Bash が最初に使う 1 つだけでなく、既知のすべての解決結果を見るには `type -a NAME` を使います。
 
-:::single-choice{#identify-command-resolution}
-`deploy` がエイリアス、関数、組み込みコマンド、実行可能ファイルのどれか分かりません。名前の解決方法を確認する Bash コマンドはどれですか？
+:::single-choice{#identify-command-resolution} `deploy` がエイリアス、関数、組み込みコマンド、実行可能ファイルのどれか分かりません。名前の解決方法を確認する Bash コマンドはどれですか？
 
 ::option[`type deploy`]{#type-deploy .correct explanation="`type` 組み込みコマンドは、現在のシェル環境で Bash がそのコマンド名をどう解釈するか報告します。"}
 ::option[`help deploy`]{#help-deploy explanation="`help` は Bash 組み込みコマンドの文書を探し、通常はエイリアス、関数、外部ファイルを識別しません。"}
@@ -80,8 +77,7 @@ ls is /usr/bin/ls
 
 次のレッスンでは、マニュアルページと 1 行の説明を詳しく扱います。
 
-:::single-choice{#choose-detailed-manual}
-短い使用法概要ではなく、外部コマンド `ls` の詳細な文書が必要です。どのコマンドを試しますか？
+:::single-choice{#choose-detailed-manual} 短い使用法概要ではなく、外部コマンド `ls` の詳細な文書が必要です。どのコマンドを試しますか？
 
 ::option[`man ls`]{#man-ls .correct explanation="`man ls` はインストール済みのマニュアルページを開き、通常は構文、オプション、動作をより詳しく説明します。"}
 ::option[`whatis ls`]{#whatis-ls explanation="`whatis` は簡潔なマニュアルページ説明を表示するため、要求された詳細な文書ではありません。"}

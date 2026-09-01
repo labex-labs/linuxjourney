@@ -23,8 +23,7 @@ $ uptime
 
 The final three values are load averages over approximately 1, 5, and 15 minutes. Comparing them shows direction: a much larger 1-minute value can indicate rising load, while a larger 15-minute value can indicate load that is falling.
 
-:::single-choice{#cpu-uptime-windows}
-In what order does `uptime` display load-average windows?
+:::single-choice{#cpu-uptime-windows} In what order does `uptime` display load-average windows?
 
 ::option[15, 5, and 1 seconds.]{#cpu-windows-seconds explanation="The values are minute-scale averages and are not printed longest-first."}
 ::option[1, 5, and 15 minutes.]{#cpu-windows-one-five-fifteen .correct explanation="The shortest recent window appears first and the longest appears last."}
@@ -43,8 +42,7 @@ $ nproc
 
 CPU quotas, affinity, virtualization, and container limits can reduce capacity visible to a particular workload, so host CPU count is only a starting point.
 
-:::single-choice{#cpu-load-not-percentage}
-Why is load average not a CPU-utilization percentage?
+:::single-choice{#cpu-load-not-percentage} Why is load average not a CPU-utilization percentage?
 
 ::option[It reports only the CPU clock frequency.]{#cpu-load-clock explanation="Clock speed is a separate hardware or scaling metric."}
 ::option[It measures only free physical memory.]{#cpu-load-memory explanation="Memory availability is reported by other metrics."}
@@ -65,8 +63,7 @@ $ mpstat -P ALL 1
 
 High load with busy CPUs can indicate CPU demand. High load with notable blocked tasks, I/O latency, or I/O-wait observations points toward another constrained resource. Low average utilization can also hide one saturated CPU or a brief latency spike.
 
-:::single-choice{#cpu-high-load-next-step}
-What is the best next step after observing a high load average?
+:::single-choice{#cpu-high-load-next-step} What is the best next step after observing a high load average?
 
 ::option[Compare repeated CPU, task-state, I/O, and workload measurements.]{#cpu-load-correlate .correct explanation="Correlated samples distinguish competing explanations for the load."}
 ::option[Reboot immediately without collecting any other data.]{#cpu-load-reboot explanation="Rebooting removes evidence and can interrupt services without identifying the cause."}
@@ -77,8 +74,7 @@ What is the best next step after observing a high load average?
 
 There is no universal rule that load must always remain below CPU count. Batch systems may accept queues, while interactive services may violate latency targets before that point. Establish a baseline for the same host and workload, then compare response time, throughput, error rate, saturation, and resource use.
 
-:::single-choice{#cpu-capacity-threshold}
-What should determine whether observed load is acceptable?
+:::single-choice{#cpu-capacity-threshold} What should determine whether observed load is acceptable?
 
 ::option[A requirement that the value always remain below one.]{#cpu-below-one explanation="Multicore capacity and workload goals make this fixed threshold unreliable."}
 ::option[The number of users listed by `uptime` alone.]{#cpu-user-count explanation="Logged-in shell users do not represent all workload demand."}

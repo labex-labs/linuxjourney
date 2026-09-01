@@ -37,8 +37,7 @@ WantedBy=multi-user.target
 
 `ExecStart=` по умолчанию не передаётся оболочке. Конвейеры, перенаправления, переменные и кавычки работают не как в интерактивной командной строке, если явно не вызвана оболочка.
 
-:::single-choice{#systemd-goals-install-section}
-Каково основное назначение директив `[Install]`, например `WantedBy=`?
+:::single-choice{#systemd-goals-install-section} Каково основное назначение директив `[Install]`, например `WantedBy=`?
 
 ::option[Гарантировать, что процесс службы уже работает.]{#systemd-goals-install-running explanation="Для текущей активации нужен start или другая запускающая зависимость."}
 ::option[Описывать ссылки или связи, создаваемые при включении unit.]{#systemd-goals-enable-links .correct explanation="Установочные метаданные интерпретируются операциями enable и отделены от текущего состояния процесса."}
@@ -66,8 +65,7 @@ $ systemctl cat UNIT.service
 $ systemctl show UNIT.service
 ```
 
-:::single-choice{#systemd-goals-list-units-versus-files}
-Что показывает `list-unit-files`, чего прежде всего не показывает `list-units`?
+:::single-choice{#systemd-goals-list-units-versus-files} Что показывает `list-unit-files`, чего прежде всего не показывает `list-units`?
 
 ::option[Только процессы с самым высоким потреблением CPU.]{#systemd-goals-cpu-processes explanation="Ранжирование ресурсов процессов не входит в эти команды инвентаризации units."}
 ::option[Состояния включения установленных unit-файлов.]{#systemd-goals-unit-file-state .correct explanation="Команда сообщает enabled, disabled, static, masked и связанные установочные состояния."}
@@ -90,8 +88,7 @@ $ sudo systemctl daemon-reload
 
 `daemon-reload` перечитывает определения units и перестраивает зависимости. Он не перезагружает конфигурацию приложений и не перезапускает службы. При необходимости проверьте синтаксис и зависимости через `systemd-analyze verify`, затем просмотрите итоговый объединённый unit.
 
-:::single-choice{#systemd-goals-daemon-reload}
-Что делает `systemctl daemon-reload`?
+:::single-choice{#systemd-goals-daemon-reload} Что делает `systemctl daemon-reload`?
 
 ::option[Заставляет каждый демон перечитать конфигурацию приложения.]{#systemd-goals-reload-all-apps explanation="Перезагрузка приложения специфична для службы и отделена от конфигурации менеджера."}
 ::option[Перезагружает ядро в новый выпуск.]{#systemd-goals-reload-kernel explanation="Для активации ядра нужна загрузка, а не перечитывание units."}
@@ -121,8 +118,7 @@ $ journalctl -u peanut.service -b
 
 Состояние «Active» отражает менеджер, но не доказывает здоровье каждой конечной точки приложения.
 
-:::single-choice{#systemd-goals-start-peanut}
-Какая команда запускает `peanut.service` сейчас, сама по себе не меняя будущее включение?
+:::single-choice{#systemd-goals-start-peanut} Какая команда запускает `peanut.service` сейчас, сама по себе не меняя будущее включение?
 
 ::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="Enable меняет установочные ссылки, но не запускает службу без `--now`."}
 ::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="Start запрашивает текущую активацию и отделён от включения."}
@@ -142,8 +138,7 @@ Enable не запускает unit без `--now`, а disable не остана
 
 Mask связывает unit с `/dev/null` и блокирует обычную активацию, включая зависимую, до unmask. Это сильнее disable и способно сломать зависимые компоненты; сначала изучите обратные зависимости.
 
-:::single-choice{#systemd-goals-disable-runtime}
-Что происходит с уже работающей службой после `systemctl disable UNIT` без `--now`?
+:::single-choice{#systemd-goals-disable-runtime} Что происходит с уже работающей службой после `systemctl disable UNIT` без `--now`?
 
 ::option[Она немедленно завершается через `SIGKILL`.]{#systemd-goals-disable-kills explanation="Disable сам по себе не запрашивает текущую остановку."}
 ::option[Её исполняемый файл удаляется из файловой системы.]{#systemd-goals-disable-deletes explanation="Операции включения управляют ссылками, а не файлами пакета программы."}

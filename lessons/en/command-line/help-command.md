@@ -24,8 +24,7 @@ $ help echo
 
 The output describes the builtin's syntax and behavior. Running `help` without an argument lists the builtins for which Bash has help.
 
-:::single-choice{#help-for-bash-cd}
-Which command displays Bash's help entry for its `cd` builtin?
+:::single-choice{#help-for-bash-cd} Which command displays Bash's help entry for its `cd` builtin?
 
 ::option[`cd --help`]{#cd-help-option explanation="Some builtins may recognize options, but Bash's dedicated documentation interface is `help` followed by the builtin name."}
 ::option[`help cd`]{#help-cd .correct explanation="Bash's `help` builtin looks up the documentation for the named builtin, which is `cd` here."}
@@ -42,8 +41,7 @@ $ ls --help
 
 This convention is common but not universal. Read the output and exit status rather than assuming every program supports the same option.
 
-:::single-choice{#quick-ls-usage}
-Which command commonly prints a quick usage summary provided by the external `ls` program?
+:::single-choice{#quick-ls-usage} Which command commonly prints a quick usage summary provided by the external `ls` program?
 
 ::option[`help ls`]{#bash-help-ls explanation="Bash `help` documents shell builtins. On a typical system, it does not provide the external `ls` program's usage page."}
 ::option[`ls --help`]{#ls-help .correct explanation="GNU `ls` follows the common `--help` convention and prints its usage and options."}
@@ -63,8 +61,7 @@ ls is /usr/bin/ls
 
 The exact result can vary with aliases, functions, installed programs, and `PATH`. Use `type -a NAME` when you want Bash to show all known resolutions rather than only the one it would use first.
 
-:::single-choice{#identify-command-resolution}
-You do not know whether `deploy` is an alias, function, builtin, or executable. Which Bash command checks how the name resolves?
+:::single-choice{#identify-command-resolution} You do not know whether `deploy` is an alias, function, builtin, or executable. Which Bash command checks how the name resolves?
 
 ::option[`type deploy`]{#type-deploy .correct explanation="The `type` builtin reports how Bash interprets the command name in the current shell environment."}
 ::option[`help deploy`]{#help-deploy explanation="`help` looks for Bash builtin documentation. It does not generally identify aliases, functions, and external files."}
@@ -80,8 +77,7 @@ You do not know whether `deploy` is an alias, function, builtin, or executable. 
 
 The next lessons examine manual pages and one-line descriptions in more detail.
 
-:::single-choice{#choose-detailed-manual}
-You need detailed documentation for the external command `ls`, not only a short usage summary. Which command should you try?
+:::single-choice{#choose-detailed-manual} You need detailed documentation for the external command `ls`, not only a short usage summary. Which command should you try?
 
 ::option[`man ls`]{#man-ls .correct explanation="`man ls` opens the installed manual page, which normally provides a fuller description of syntax, options, and behavior."}
 ::option[`whatis ls`]{#whatis-ls explanation="`whatis` is designed to show concise manual-page descriptions. It is not the detailed documentation requested."}

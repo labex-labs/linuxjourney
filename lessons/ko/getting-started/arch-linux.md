@@ -16,8 +16,7 @@ Arch Linux 는 사용자 제어와 실습 중심의 접근 방식으로 잘 알�
 
 주요 릴리스 일정이 정해진 다른 배포판과 달리, Arch 는 롤링 릴리스 모델을 따릅니다. 이는 시스템이 큰 버전 점프를 기다리는 대신 지속적인 업데이트를 받는다는 것을 의미합니다.
 
-:::single-choice{#recognize-rolling-release}
-Arch Linux의 롤링 릴리스 모델은 무엇을 뜻하나요?
+:::single-choice{#recognize-rolling-release} Arch Linux의 롤링 릴리스 모델은 무엇을 뜻하나요?
 
 ::option[설치된 시스템이 패키지 업그레이드를 계속 받습니다.]{#continuous-upgrades .correct explanation="Arch는 별도의 주요 시스템 릴리스 대신 계속되는 패키지 업그레이드로 발전하므로 유지 관리된 설치는 최신 상태를 이어갈 수 있습니다."}
 ::option[고정된 다년 주기의 업그레이드 에디션을 기다립니다.]{#fixed-major-editions explanation="고정된 주요 에디션은 포인트 릴리스 모델이며 Arch는 설치된 시스템을 계속 업데이트합니다."}
@@ -30,8 +29,7 @@ Arch Linux 는 사용자에게 높은 수준의 제어 권한을 제공하기 �
 
 이러한 이유로 Arch 는 [리눅스 배포판 선택하기](https://labex.io/ko/lesson/choosing-a-linux-distribution)에서 옵션을 비교하는 초보자에게는 보통 첫 번째로 추천되지 않지만, 호기심 많은 중급 및 고급 사용자에게는 흔히 추천되는 배포판입니다.
 
-:::single-choice{#match-arch-user}
-Arch Linux와 가장 잘 맞는 사용자는 누구인가요?
+:::single-choice{#match-arch-user} Arch Linux와 가장 잘 맞는 사용자는 누구인가요?
 
 ::option[모든 결정을 자동으로 처리해 주길 원하는 초보자]{#automatic-beginner explanation="Arch는 의도적으로 많은 선택을 사용자에게 맡기므로 완전 자동 설정에는 준비된 기본값이 많은 배포판이 더 알맞습니다."}
 ::option[소프트웨어 업데이트를 전혀 검토하고 싶지 않은 사용자]{#ignore-updates explanation="롤링 Arch 시스템에는 적극적인 유지 관리와 업데이트 공지 확인이 필요하므로 업데이트를 무시하면 책임과 맞지 않습니다."}
@@ -50,16 +48,14 @@ Arch 는 패키지 관리자로 Pacman 을 사용합니다. Pacman 은 시스템
 
 일반적인 명령어는 `sudo pacman -Syu`이며, 패키지 데이터베이스를 동기화하고 설정된 저장소에서 전체 패키지 업그레이드를 수행합니다. Arch는 부분 업그레이드를 지원하지 않으므로 데이터베이스만 새로 고치고 해당 시스템 업그레이드를 끝내지 않는 일을 피해야 합니다. Pacman은 직접적이고 빠르며 Arch의 미니멀한 설계와 잘 맞습니다.
 
-:::single-choice{#identify-pacman-role}
-Arch Linux에서 Pacman의 역할은 무엇인가요?
+:::single-choice{#identify-pacman-role} Arch Linux에서 Pacman의 역할은 무엇인가요?
 
 ::option[소프트웨어를 관리하지 않고 데스크톱 레이아웃만 선택합니다.]{#pacman-desktop-layout explanation="데스크톱 설정은 패키지 관리와 별개이며 Pacman은 데스크톱 구성 요소를 제공할 수 있는 소프트웨어 패키지를 관리합니다."}
 ::option[롤링 릴리스 모델을 고정된 에디션으로 바꿉니다.]{#pacman-fixed-releases explanation="Pacman은 패키지 업그레이드로 Arch의 롤링 시스템을 지원하며 포인트 릴리스 배포판으로 바꾸지 않습니다."}
 ::option[소프트웨어 패키지를 설치, 업데이트, 제거하고 추적합니다.]{#pacman-package-manager .correct explanation="Pacman은 Arch Linux의 패키지 관리자이며 설치된 패키지와 배포판 저장소를 관리합니다."}
 :::
 
-:::single-choice{#avoid-partial-upgrades}
-Arch 사용자가 패키지 데이터베이스를 새로 고친 뒤 전체 업그레이드를 완료해야 하는 이유는 무엇인가요?
+:::single-choice{#avoid-partial-upgrades} Arch 사용자가 패키지 데이터베이스를 새로 고친 뒤 전체 업그레이드를 완료해야 하는 이유는 무엇인가요?
 
 ::option[부분 업그레이드가 이전 라이브러리를 보존하는 권장 방법이기 때문입니다.]{#partial-upgrades-recommended explanation="Arch는 부분 업그레이드를 명시적으로 지원하지 않으며 새 라이브러리와 오래된 의존 패키지를 섞으면 시스템이 망가질 수 있습니다."}
 ::option[데이터베이스 새로 고침이 운영체제를 자동으로 다시 설치하기 때문입니다.]{#refresh-reinstalls-system explanation="데이터베이스 새로 고침은 패키지 정보만 바꾸고 Arch를 재설치하지 않지만 그에 맞는 전체 업그레이드를 이어서 해야 합니다."}

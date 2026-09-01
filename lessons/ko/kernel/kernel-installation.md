@@ -23,8 +23,7 @@ $ uname -r
 
 이 명령은 설치된 모든 커널을 나열하지 않으며 새 패키지를 설치한 직후에도 값이 바뀌지 않습니다. `uname -r`에 새 이미지가 표시되려면 시스템이 그 커널로 부팅해야 합니다. 배포판 고유 도구로 설치된 패키지와 부팅 항목을 조회하십시오.
 
-:::single-choice{#kernel-installation-uname-release}
-`uname -r`이 표시하는 것은 무엇입니까?
+:::single-choice{#kernel-installation-uname-release} `uname -r`이 표시하는 것은 무엇입니까?
 
 ::option[현재 실행 중인 커널의 릴리스 문자열입니다.]{#kernel-installation-running-release .correct explanation="디스크에 저장된 최신 이미지만이 아니라 실시간 커널 상태를 보고합니다."}
 ::option[모든 저장소에서 사용 가능한 모든 커널 패키지입니다.]{#kernel-installation-all-packages explanation="저장소 목록은 패키지 관리자가 담당합니다."}
@@ -37,8 +36,7 @@ $ uname -r
 
 `uname -r`의 버전 문자열을 그대로 `apt install` 피연산자로 바꾸어 유효하다고 가정하지 마십시오. 설치 전에 현재 배포판 문서를 확인하고 패키지 관리자로 후보를 검사합니다.
 
-:::single-choice{#kernel-installation-meta-package}
-지원되는 커널 메타 패키지가 유용한 이유는 무엇입니까?
+:::single-choice{#kernel-installation-meta-package} 지원되는 커널 메타 패키지가 유용한 이유는 무엇입니까?
 
 ::option[재부팅이 절대 필요하지 않음을 보장하기 때문입니다.]{#kernel-installation-no-reboot explanation="특수한 라이브 패치 범위를 제외하면 새 커널은 그 커널로 부팅한 뒤에야 활성화됩니다."}
 ::option[모든 트리 외부 드라이버를 내장 코드로 변환하기 때문입니다.]{#kernel-installation-convert-drivers explanation="외부 모듈에는 여전히 호환되는 빌드와 서명이 필요합니다."}
@@ -57,8 +55,7 @@ $ uname -r
 
 패키지 트랜잭션은 배포판 훅을 통해 일치하는 initramfs를 생성하고 부팅 항목을 갱신해야 합니다. 모든 오류를 읽으십시오. initramfs 또는 로더 생성이 실패했다면 패키지가 설치됨으로 표시되는 것만으로는 충분하지 않습니다.
 
-:::single-choice{#kernel-installation-initramfs-error}
-initramfs 생성 오류가 있으면 성공했다고 판단해서는 안 되는 이유는 무엇입니까?
+:::single-choice{#kernel-installation-initramfs-error} initramfs 생성 오류가 있으면 성공했다고 판단해서는 안 되는 이유는 무엇입니까?
 
 ::option[initramfs 생성이 사용자의 셸 암호를 바꾸기 때문입니다.]{#kernel-installation-initramfs-password explanation="부팅 아카이브 작업 흐름은 계정 인증 비밀 정보와 관련이 없습니다."}
 ::option[새 커널에 루트 저장 장치에 도달할 초기 모듈이나 도구가 없을 수 있기 때문입니다.]{#kernel-installation-missing-early-tools .correct explanation="커널 이미지는 설치됐어도 필요한 초기 사용자 공간 결과물이 없거나 오래되었을 수 있습니다."}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 systemd가 아닌 시스템에서는 동등한 도구를 사용하십시오. 저장 장치, 파일 시스템, 네트워킹, 그래픽, 입력, 보안 모듈, 외부 모듈, 컨테이너, 가상 머신 및 애플리케이션 상태를 검증합니다. 로그인 프롬프트만으로는 검증이 완료되지 않습니다.
 
-:::single-choice{#kernel-installation-activation}
-새로 설치한 일반 커널 패키지는 언제 실행 중인 커널이 됩니까?
+:::single-choice{#kernel-installation-activation} 새로 설치한 일반 커널 패키지는 언제 실행 중인 커널이 됩니까?
 
 ::option[`uname -r`을 입력하는 즉시 활성화됩니다.]{#kernel-installation-uname-activates explanation="uname은 읽기 전용이며 커널을 전환할 수 없습니다."}
 ::option[시스템이 해당 커널 이미지로 부팅한 뒤입니다.]{#kernel-installation-after-boot .correct explanation="파일을 설치해도 메모리에서 이미 실행 중인 커널은 교체되지 않습니다."}
@@ -91,8 +87,7 @@ systemd가 아닌 시스템에서는 동등한 도구를 사용하십시오. 저
 
 `/boot`에서 직접 삭제하면 패키지 상태와 로더 상태가 일치하지 않게 됩니다. 이미 공간이 고갈됐다면 임의의 이미지를 삭제하지 말고 파일을 바꾸기 전에 복구 계획을 세우십시오.
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-새 커널을 처음 검증하는 동안 어떤 커널을 설치된 상태로 유지해야 합니까?
+:::single-choice{#kernel-installation-old-kernel-removal} 새 커널을 처음 검증하는 동안 어떤 커널을 설치된 상태로 유지해야 합니까?
 
 ::option[테스트하지 않은 새 커널만 유지합니다.]{#kernel-installation-only-new explanation="테스트 전에 모든 대체 항목을 제거하면 호환성 문제가 복구 사고로 커집니다."}
 ::option[부팅 경로 아래의 모든 커널 파일을 제거합니다.]{#kernel-installation-no-kernels explanation="시스템이 리눅스로 부팅하려면 불러올 수 있는 커널 결과물이 필요합니다."}

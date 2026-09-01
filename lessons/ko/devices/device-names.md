@@ -23,8 +23,7 @@ SCSI 디스크 계층을 통해 제공되는 디스크는 일반적으로 `sd` �
 
 문자는 영구적인 식별자가 아니라 열거 순서를 반영합니다. 컨트롤러를 추가하거나 펌웨어 순서를 바꾸거나 장치를 연결하면 특정 문자를 받는 디스크가 달라질 수 있습니다.
 
-:::single-choice{#device-names-sdb-first-partition}
-`sd` 명명 패턴에서 `/dev/sdb`의 1번 파티션을 나타내는 경로는 무엇입니까?
+:::single-choice{#device-names-sdb-first-partition} `sd` 명명 패턴에서 `/dev/sdb`의 1번 파티션을 나타내는 경로는 무엇입니까?
 
 ::option[`/dev/sda2`]{#device-names-sda-two explanation="현재 `/dev/sda`라는 이름을 가진 디스크의 2번 파티션을 나타냅니다."}
 ::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="`p` 구분자는 기본 이름이 이미 숫자로 끝나는 패턴에 사용하며 일반 `sd` 이름에는 사용하지 않습니다."}
@@ -42,8 +41,7 @@ SCSI 디스크 계층을 통해 제공되는 디스크는 일반적으로 `sd` �
 
 NVMe 장치는 일반적으로 `/dev/sdX`라고 부르지 않으며 NVMe 하위 시스템의 명명 규칙을 사용합니다.
 
-:::single-choice{#device-names-nvme-partition}
-`/dev/nvme0n1`의 2번 파티션을 나타내는 경로는 무엇입니까?
+:::single-choice{#device-names-nvme-partition} `/dev/nvme0n1`의 2번 파티션을 나타내는 경로는 무엇입니까?
 
 ::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="NVMe 파티션 이름은 파티션 번호 앞에 `p`를 넣습니다."}
 ::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="구분자가 없으면 끝의 숫자를 네임스페이스 번호와 구분하기 어렵습니다."}
@@ -60,8 +58,7 @@ NVMe 장치는 일반적으로 `/dev/sdX`라고 부르지 않으며 NVMe 하위 
 
 파티션, 암호화 계층, RAID, 논리 볼륨 및 파일 시스템은 하나의 스택을 이룹니다. 이름만 보고 스택을 추정하지 말고 `lsblk` 같은 도구로 부모-자식 관계를 확인하십시오.
 
-:::single-choice{#device-names-device-mapper-link}
-장치 매퍼 장치의 설명적인 링크가 일반적으로 제공되는 위치는 어디입니까?
+:::single-choice{#device-names-device-mapper-link} 장치 매퍼 장치의 설명적인 링크가 일반적으로 제공되는 위치는 어디입니까?
 
 ::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="LVM 및 디스크 암호화 같은 장치 매퍼 사용자는 일반적으로 이 디렉터리에 이름 있는 링크를 노출합니다."}
 ::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null`은 문자 장치이며 매핑된 블록 장치의 디렉터리가 아닙니다."}
@@ -80,8 +77,7 @@ NVMe 장치는 일반적으로 `/dev/sdX`라고 부르지 않으며 NVMe 하위 
 
 안정적으로 유지되어야 하는 대상에 맞는 식별자를 선택하십시오. 파일 시스템 UUID는 파일 시스템을 식별할 뿐 그 아래의 물리 디스크를 반드시 식별하지는 않습니다. 파일 시스템을 복제하면 UUID가 중복될 수 있으므로 이를 사용하기 전에 고유성을 확인하십시오.
 
-:::single-choice{#device-names-persistent-config}
-장치별 설정에서 `/dev/disk/by-id/` 링크가 `/dev/sdX`보다 더 적합한 경우가 많은 이유는 무엇입니까?
+:::single-choice{#device-names-persistent-config} 장치별 설정에서 `/dev/disk/by-id/` 링크가 `/dev/sdX`보다 더 적합한 경우가 많은 이유는 무엇입니까?
 
 ::option[파괴적인 쓰기를 자동으로 되돌릴 수 있게 하기 때문입니다.]{#device-names-by-id-reversible explanation="안정적인 이름은 스냅샷, 백업 또는 쓰기 보호를 제공하지 않습니다."}
 ::option[블록 장치를 일반 파일로 변환하기 때문입니다.]{#device-names-by-id-regular explanation="이 항목은 여전히 블록 장치 노드로 해석되는 심볼릭 링크입니다."}
@@ -92,8 +88,7 @@ NVMe 장치는 일반적으로 `/dev/sdX`라고 부르지 않으며 NVMe 하위 
 
 `/dev/null`, `/dev/zero` 및 `/dev/urandom` 같은 이름은 물리 저장 장치가 아니라 커널 의사 장치를 나타냅니다. `/dev/null`은 쓰기를 버리고 읽기에서 파일 끝을 반환합니다. `/dev/zero`는 0 바이트를 제공하며, `/dev/urandom`은 커널 난수 생성기의 바이트를 제공합니다.
 
-:::single-choice{#device-names-zero-read}
-`/dev/zero`를 읽으면 무엇이 생성됩니까?
+:::single-choice{#device-names-zero-read} `/dev/zero`를 읽으면 무엇이 생성됩니까?
 
 ::option[사용되지 않는 저장 장치 목록입니다.]{#device-names-zero-storage-list explanation="이는 바이트를 생성하는 문자 장치이며 검색 명령이 아닙니다."}
 ::option[값이 0인 바이트 스트림입니다.]{#device-names-zero-bytes .correct explanation="zero 의사 장치는 요청한 읽기에 널 바이트를 반환합니다."}

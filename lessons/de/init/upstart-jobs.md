@@ -29,8 +29,7 @@ networking start/running
 
 Upstart meldet sowohl ein **Ziel** wie `start` oder `stop` als auch einen aktuellen **Zustand** wie `running` oder `waiting`. `stop/waiting` bedeutet, dass der Job nicht läuft und auf eine Startbedingung oder eine manuelle Anforderung wartet; dies weist nicht unbedingt auf einen Fehler hin.
 
-:::single-choice{#upstart-jobs-stop-waiting}
-Was bedeutet `stop/waiting` normalerweise in der Statusausgabe von Upstart?
+:::single-choice{#upstart-jobs-stop-waiting} Was bedeutet `stop/waiting` normalerweise in der Statusausgabe von Upstart?
 
 ::option[Der Job läuft, verbraucht aber keine CPU-Zeit.]{#upstart-jobs-running-idle explanation="Ein laufender Job würde normalerweise das Ziel start und den Zustand running anzeigen."}
 ::option[Das Ziel des Jobs ist Stopp, und es läuft keine Prozessinstanz.]{#upstart-jobs-stopped-waiting .correct explanation="Die Definition bleibt bekannt, während Upstart auf eine spätere Bedingung oder einen Befehl wartet."}
@@ -48,8 +47,7 @@ $ sudo initctl stop JOB_NAME
 
 Jobs können mehrere Instanzen definieren, die durch Umgebungsvariablen unterschieden werden. Gib in diesem Fall genau die von der Konfiguration verlangten Variablen an und verwende sie auch beim Abfragen oder Stoppen einer Instanz. Das Starten von Jobs für Netzwerk, Speicher, Authentifizierung oder Fernzugriff kann die Sitzung unterbrechen; halte deshalb einen Konsolenzugang zur Wiederherstellung bereit.
 
-:::single-choice{#upstart-jobs-start-command}
-Welcher Befehl fordert den manuellen Start des Jobs `peanuts` an?
+:::single-choice{#upstart-jobs-start-command} Welcher Befehl fordert den manuellen Start des Jobs `peanuts` an?
 
 ::option[`sudo initctl start peanuts`]{#upstart-jobs-start-peanuts .correct explanation="Auf den Unterbefehl start folgen der konfigurierte Jobname und alle erforderlichen Instanzvariablen."}
 ::option[`sudo initctl peanuts start`]{#upstart-jobs-name-first explanation="Bei der initctl-Syntax steht der Unterbefehl vor dem Jobnamen."}
@@ -68,8 +66,7 @@ Bei Upstart entspricht `restart` nach der Bearbeitung einer Jobdatei nicht immer
 
 Ein Neustart verursacht eine Unterbrechung und kann den Dienst möglicherweise nicht wieder in Betrieb bringen. Prüfe anschließend den tatsächlichen Endpunkt und die Protokolle.
 
-:::single-choice{#upstart-jobs-restart-peanuts}
-Welcher Befehl fordert einen Neustart des laufenden Upstart-Jobs `peanuts` an?
+:::single-choice{#upstart-jobs-restart-peanuts} Welcher Befehl fordert einen Neustart des laufenden Upstart-Jobs `peanuts` an?
 
 ::option[`sudo initctl restart peanuts`]{#upstart-jobs-restart-command .correct explanation="Der Unterbefehl restart wirkt über die Upstart-Steuerungsschnittstelle auf den benannten Job."}
 ::option[`sudo initctl emit peanuts`]{#upstart-jobs-emit-not-restart explanation="Das Ausgeben eines Ereignisses beeinflusst passende Jobbedingungen und ist keine direkte Neustartanforderung."}
@@ -82,8 +79,7 @@ Bevor du eine geänderte Jobdatei installierst, verwende das von der älteren Di
 
 Eine Syntaxvalidierung kann nicht beweisen, dass Pfade existieren, Anmeldedaten die Ausführung erlauben, Ereignisse eintreffen oder der Prozess betriebsbereit wird. Teste in einer Umgebung mit Wiederherstellungsmöglichkeit.
 
-:::single-choice{#upstart-jobs-syntax-validation-limit}
-Was kann die Syntaxvalidierung eines Jobs nicht beweisen?
+:::single-choice{#upstart-jobs-syntax-validation-limit} Was kann die Syntaxvalidierung eines Jobs nicht beweisen?
 
 ::option[Dass der Dienst erfolgreich startet und betriebsbereit wird.]{#upstart-jobs-runtime-not-proven .correct explanation="Laufzeitpfade, Berechtigungen, Abhängigkeiten und Ereignisfluss erfordern einen tatsächlichen kontrollierten Test."}
 ::option[Dass der Konfigurationstext überhaupt geparst werden kann.]{#upstart-jobs-parse-purpose explanation="Das Parsen ist genau der Hauptzweck der Syntaxvalidierung."}
@@ -100,8 +96,7 @@ $ sudo initctl emit EVENT_NAME
 
 Jeder Job, dessen Start- oder Stopp-Ausdruck passt, kann reagieren. Ein Ereignis ist nicht an einen einzelnen Job adressiert, und seine Auswirkungen können sich durch weitere Ereignisse fortsetzen. Untersuche alle passenden Konfigurationen, bevor du ein benutzerdefiniertes oder Systemereignis ausgibst; spiele zentrale Boot-Ereignisse auf einem Produktionshost nicht leichtfertig erneut ab.
 
-:::single-choice{#upstart-jobs-emit-scope}
-Was kann geschehen, wenn `initctl emit EVENT_NAME` ausgeführt wird?
+:::single-choice{#upstart-jobs-emit-scope} Was kann geschehen, wenn `initctl emit EVENT_NAME` ausgeführt wird?
 
 ::option[Alle Jobausdrücke, die zu diesem Ereignis passen, können ihren Zustand wechseln.]{#upstart-jobs-event-matches .correct explanation="Ereignisse werden in Upstarts Abhängigkeitsmodell ausgestrahlt und nicht nur an einen benannten Dienst gesendet."}
 ::option[Nur ein Job, dessen Name genau dem Ereignis entspricht, kann reagieren.]{#upstart-jobs-event-name-only explanation="Die Übereinstimmung wird durch Ausdrücke mit `start on` und `stop on` definiert, nicht durch die Gleichheit von Job- und Ereignisname."}

@@ -33,8 +33,7 @@ Dans une session graphique, cette commande peut créer un cadre graphique. Utili
 $ emacs -nw
 ```
 
-:::single-choice{#emacs-terminal-start}
-Quelle commande démarre Emacs dans le terminal actuel plutôt qu'avec un système de fenêtres graphique ?
+:::single-choice{#emacs-terminal-start} Quelle commande démarre Emacs dans le terminal actuel plutôt qu'avec un système de fenêtres graphique ?
 
 ::option[`emacs -w`]{#emacs-window-option explanation="Ce n'est pas la forme documentée ici pour désactiver le système de fenêtres."}
 ::option[`emacs -nw`]{#emacs-no-window .correct explanation="L'option `-nw` demande à Emacs de ne pas utiliser de système de fenêtres graphique et de fonctionner dans le terminal."}
@@ -51,8 +50,7 @@ $ emacs notes.txt
 
 Si le fichier existe, Emacs le lit dans un tampon. S'il est absent, Emacs crée un nouveau tampon associé à ce chemin ; le fichier ne sera créé qu'après un enregistrement réussi. Les permissions du système de fichiers déterminent toujours si l'écriture peut aboutir.
 
-:::single-choice{#emacs-open-file-buffer}
-Que fait normalement `emacs notes.txt` si `notes.txt` n'existe pas encore ?
+:::single-choice{#emacs-open-file-buffer} Que fait normalement `emacs notes.txt` si `notes.txt` n'existe pas encore ?
 
 ::option[Il ouvre un nouveau tampon associé à ce chemin.]{#emacs-new-file-buffer .correct explanation="Le tampon peut contenir le nouveau texte de `notes.txt`, tandis que la création réelle du fichier attend l'enregistrement."}
 ::option[Il crée le fichier sur le disque avant de démarrer l'éditeur.]{#emacs-immediate-file explanation="Emacs peut associer un nouveau tampon au chemin sans créer le fichier sur le disque avant la réussite d'un enregistrement."}
@@ -69,8 +67,7 @@ Emacs utilise des objets liés mais distincts :
 
 Plusieurs tampons peuvent exister sans être visibles, et deux fenêtres peuvent afficher le même tampon. Fermer une fenêtre ne détruit pas nécessairement son tampon et ne supprime aucun fichier.
 
-:::single-choice{#emacs-buffer-definition}
-Qu'est-ce qu'un tampon Emacs ?
+:::single-choice{#emacs-buffer-definition} Qu'est-ce qu'un tampon Emacs ?
 
 ::option[Un cadre d'application graphique de premier niveau.]{#emacs-buffer-frame explanation="Le cadre est l'objet d'affichage de premier niveau ; le tampon contient le contenu ou l'état de l'éditeur."}
 ::option[Un objet qui contient du texte modifiable ou un autre état de l'éditeur.]{#emacs-buffer-content .correct explanation="Le contenu des fichiers ouverts et de nombreuses vues sans fichier résident dans des tampons Emacs."}
@@ -87,8 +84,7 @@ La documentation d'Emacs emploie une notation compacte :
 
 Le terminal utilisé peut intercepter ou réaffecter certaines touches. `Esc` suivi d'une touche peut souvent remplacer une combinaison avec Méta.
 
-:::single-choice{#emacs-key-sequence-notation}
-Comment saisit-on la séquence Emacs notée `C-x C-f` ?
+:::single-choice{#emacs-key-sequence-notation} Comment saisit-on la séquence Emacs notée `C-x C-f` ?
 
 ::option[Maintenir Contrôle pour `x`, puis maintenir Contrôle pour `f`.]{#emacs-control-x-f .correct explanation="Chaque préfixe `C-` s'applique à la touche qui le suit, et les deux combinaisons sont saisies l'une après l'autre."}
 ::option[Saisir les caractères littéraux `C-x C-f` dans le tampon.]{#emacs-literal-key-text explanation="Cette notation décrit des événements de touches de contrôle, pas du texte à insérer."}
@@ -101,8 +97,7 @@ Dans Emacs, saisissez `C-h t` pour ouvrir le tutoriel interactif. Il enseigne le
 
 Si Emacs affiche un menu ou un tampon d'accueil, le tutoriel reste un point de départ mieux structuré que l'expérimentation sur un fichier important.
 
-:::single-choice{#emacs-open-tutorial}
-Quelle séquence de touches Emacs ouvre le tutoriel intégré ?
+:::single-choice{#emacs-open-tutorial} Quelle séquence de touches Emacs ouvre le tutoriel intégré ?
 
 ::option[`C-x C-s`]{#emacs-save-buffer explanation="Cette séquence enregistre le tampon actuel ; elle n'ouvre pas le tutoriel."}
 ::option[`C-x C-c`]{#emacs-exit-sequence explanation="Cette séquence commence à quitter Emacs au lieu de lancer une leçon."}

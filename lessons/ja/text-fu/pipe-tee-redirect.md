@@ -28,8 +28,7 @@ $ ls -la /etc | less
 
 シェルはパイプラインのコマンドを起動し、ストリームを接続します。コマンドは並行して動作でき、`ls` が一覧全体を生成する前に `less` は読み始められます。
 
-:::single-choice{#pipe-stream-connection}
-`ls -la /etc | less` で、`|` が標準で接続するストリームはどれですか？
+:::single-choice{#pipe-stream-connection} `ls -la /etc | less` で、`|` が標準で接続するストリームはどれですか？
 
 ::option[`ls` の stdin と `less` の stdout。]{#pipe-reversed-streams explanation="生成側と受信側の両方が逆です。データは左のコマンドの出力から右のコマンドの入力へ流れます。"}
 ::option[`ls` の stderr と `less` の両方のストリーム。]{#pipe-stderr-both explanation="通常のパイプは左側の stderr を接続せず、右側の両方のストリームを対象にもしません。"}
@@ -50,8 +49,7 @@ $ find /etc -name "*.conf" | less
 $ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-:::single-choice{#pipe-left-stderr}
-`find /etc -name "*.conf" | less` で他のリダイレクトがない場合、`find` の stderr は通常どこへ送られますか？
+:::single-choice{#pipe-left-stderr} `find /etc -name "*.conf" | less` で他のリダイレクトがない場合、`find` の stderr は通常どこへ送られますか？
 
 ::option[stdout と同じパイプを通って `less` へ送られる。]{#pipe-errors-to-less explanation="通常のパイプが接続するのは stdout だけで、stderr は自動的にまとめられません。"}
 ::option[現在のディレクトリの `stderr` というファイルへ送られる。]{#pipe-errors-to-file explanation="エラーファイルへのリダイレクトがないため、シェルはそのようなファイルを作りません。"}
@@ -68,8 +66,7 @@ $ ls | tee listing.txt
 
 `listing.txt` に一覧が保存され、`tee` の stdout は端末に接続されたままです。`tee` は標準では `>` と同様に指定ファイルを作成または切り詰めます。
 
-:::single-choice{#tee-display-and-save}
-`generate-report` の出力を表示し、同じ出力で `report.txt` を置き換えるコマンドはどれですか？
+:::single-choice{#tee-display-and-save} `generate-report` の出力を表示し、同じ出力で `report.txt` を置き換えるコマンドはどれですか？
 
 ::option[`generate-report > report.txt`]{#redirect-report-only explanation="通常の出力リダイレクトはファイルへ書きますが、端末へ流れるコピーを残しません。"}
 ::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` は stdin を `report.txt` と stdout の両方へコピーし、このパイプラインでは stdout が端末につながっています。"}
@@ -82,8 +79,7 @@ $ ls | tee listing.txt
 $ date | tee -a activity.log
 ```
 
-:::single-choice{#tee-append-log}
-現在の日付を表示し、`activity.log` へ追記するコマンドはどれですか？
+:::single-choice{#tee-append-log} 現在の日付を表示し、`activity.log` へ追記するコマンドはどれですか？
 
 ::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="`-a` オプションにより、`tee` は入力を stdout へコピーし続けながらファイルへ追記します。"}
 ::option[`date | tee activity.log`]{#tee-replace-activity explanation="`-a` がなければ、`tee` は既存の内容を残さずファイルを置き換えます。"}
@@ -106,8 +102,7 @@ $ ls -la /etc | tee etc-listing.txt | grep "conf"
 
 ファイルには `grep` で絞り込む前のデータが入ります。絞り込まれた行だけを保存したい場合は、`tee` を `grep` の後ろに置きます。
 
-:::single-choice{#tee-before-filter-result}
-`produce | tee all.txt | grep error` が正常に終了した後、`all.txt` には何が入っていますか？
+:::single-choice{#tee-before-filter-result} `produce | tee all.txt | grep error` が正常に終了した後、`all.txt` には何が入っていますか？
 
 ::option[`grep` が一致させた行だけ。]{#tee-filtered-only explanation="`tee` は `grep` より前に動くため、後段の一致結果ではなく絞り込み前の入力を書き込みます。"}
 ::option[`produce` の stderr だけ。]{#tee-producer-stderr explanation="通常のパイプが運ぶのは `produce` の stdout であり、stderr は `tee` の入力ではありません。"}

@@ -24,8 +24,7 @@ $ journalctl -k -b
 
 Comprueba la pila de almacenamiento, el estado del dispositivo, los cables o la ruta de red, el estado de RAID, el cifrado y los sucesos recientes. Si falla el dispositivo, los recorridos repetidos pueden consumir su vida restante. Captura una imagen o un clon con una herramienta orientada a la recuperación y trabaja sobre la copia cuando sea posible.
 
-:::single-choice{#filesystem-repair-first-response}
-¿Qué debe preceder a una reparación del sistema de archivos con capacidad de escritura cuando pueda existir un fallo de hardware?
+:::single-choice{#filesystem-repair-first-response} ¿Qué debe preceder a una reparación del sistema de archivos con capacidad de escritura cuando pueda existir un fallo de hardware?
 
 ::option[Ejecutar repetidamente todas las herramientas de reparación hasta que una devuelva cero.]{#filesystem-repair-repeat-tools explanation="Utilizar herramientas incompatibles y realizar escrituras repetidas puede agravar los daños."}
 ::option[Crear inmediatamente una tabla de particiones nueva sobre el dispositivo.]{#filesystem-repair-new-table explanation="Sobrescribir los metadatos del diseño destruye pruebas y puede dificultar la recuperación."}
@@ -38,8 +37,7 @@ Determina si el sistema de archivos reside en una partición, un volumen lógico
 
 Utiliza `lsblk -f`, `blkid`, `findmnt` y herramientas de las capas de almacenamiento para localizar el destino. Las firmas detectadas pueden estar obsoletas, así que contrástalas con la configuración conocida y las copias de seguridad.
 
-:::single-choice{#filesystem-repair-target-layer}
-Si ext4 está almacenado en `/dev/sda1`, ¿qué capa debe recibir normalmente su comprobador de ext4?
+:::single-choice{#filesystem-repair-target-layer} Si ext4 está almacenado en `/dev/sda1`, ¿qué capa debe recibir normalmente su comprobador de ext4?
 
 ::option[`/dev/sda`, con independencia de su tabla de particiones.]{#filesystem-repair-whole-disk explanation="El disco completo contiene la tabla de particiones y quizá varias regiones hijas, no directamente la instancia ext4."}
 ::option[`/dev/sda1`, después de desconectarla de forma segura.]{#filesystem-repair-partition-target .correct explanation="El comprobador actúa sobre el dispositivo de bloques que contiene directamente el sistema de archivos."}
@@ -52,8 +50,7 @@ La mayoría de los comprobadores de coherencia tradicionales necesitan que el si
 
 Detén los servicios dependientes, desmonta sistemas de archivos anidados, saca los directorios de trabajo de los procesos y desactiva las capas superiores necesarias. Para el sistema de archivos raíz, arranca un entorno de rescate o utiliza el mecanismo documentado por la distribución para comprobarlo sin conexión. Confirma con `findmnt` que el destino no esté montado en el espacio de nombres pertinente.
 
-:::single-choice{#filesystem-repair-mounted-risk}
-¿Por qué debe desmontarse normalmente un sistema de archivos antes de que un comprobador de reparación escriba en él?
+:::single-choice{#filesystem-repair-mounted-risk} ¿Por qué debe desmontarse normalmente un sistema de archivos antes de que un comprobador de reparación escriba en él?
 
 ::option[Porque las actualizaciones simultáneas del kernel y el comprobador pueden entrar en conflicto y corromper metadatos.]{#filesystem-repair-concurrent-writes .correct explanation="Una vista sin conexión impide que el sistema de archivos cambie durante la reparación."}
 ::option[Porque desmontarlo restaura automáticamente desde una copia todos los archivos dañados.]{#filesystem-repair-unmount-restores explanation="Desconectarlo proporciona coherencia para la comprobación, pero no restaura datos."}
@@ -66,8 +63,7 @@ Detén los servicios dependientes, desmonta sistemas de archivos anidados, saca 
 
 Las opciones con nombres parecidos pueden tener una semántica diferente. En particular, no apliques opciones `--repair` o de fuerza copiadas de la guía de otro sistema de archivos. Lee el manual instalado y la documentación actual de recuperación del proyecto o la distribución. Empieza con un modo de diagnóstico o sin modificaciones si la implementación ofrece uno fiable, captura la salida y comprende las correcciones propuestas.
 
-:::single-choice{#filesystem-repair-fsck-role}
-¿De qué se encarga habitualmente `fsck` en Linux?
+:::single-choice{#filesystem-repair-fsck-role} ¿De qué se encarga habitualmente `fsck` en Linux?
 
 ::option[De delegar las comprobaciones en un auxiliar apropiado para el tipo de sistema de archivos.]{#filesystem-repair-fsck-dispatch .correct explanation="La lógica real de validación y reparación pertenece a herramientas y flujos específicos del formato."}
 ::option[De convertir todos los sistemas de archivos a ext4 antes de comprobarlos.]{#filesystem-repair-fsck-convert explanation="Un comprobador debe conservar y comprender el formato existente."}
@@ -80,8 +76,7 @@ Registra la herramienta de reparación, su versión, las opciones, la salida y e
 
 Que un sistema de archivos vuelva a poder montarse no demuestra que todos los archivos sean correctos. Restaura desde copias los datos de aplicación perdidos o dañados y valídalos a nivel de la aplicación.
 
-:::single-choice{#filesystem-repair-mountable-proof}
-¿Un montaje correcto después de reparar demuestra que todos los datos de la aplicación son correctos?
+:::single-choice{#filesystem-repair-mountable-proof} ¿Un montaje correcto después de reparar demuestra que todos los datos de la aplicación son correctos?
 
 ::option[No; reparar la coherencia y validar los datos de la aplicación son tareas distintas.]{#filesystem-repair-not-data-proof .correct explanation="El sistema de archivos puede ser estructuralmente montable aunque falten archivos o transacciones o estén dañados."}
 ::option[Sí; montar verifica criptográficamente todos los archivos frente a una copia de seguridad.]{#filesystem-repair-mount-verifies explanation="Un montaje ordinario no realiza una comparación completa con copias de seguridad."}

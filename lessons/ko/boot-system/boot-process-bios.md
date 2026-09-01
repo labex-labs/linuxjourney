@@ -20,8 +20,7 @@ MBR 레이아웃에서 이 섹터에는 작은 부트 코드 영역, 네 개의 
 
 GPT 디스크에서 BIOS 부팅도 가능하지만 보호 MBR만으로 로더의 다음 단계가 제공되지는 않습니다. GRUB은 일반적으로 GPT의 작은 BIOS 부트 파티션을 내장 코어 코드에 사용합니다. 정확한 구성은 설치된 로더에 따라 달라집니다.
 
-:::single-choice{#boot-bios-legacy-first-sector}
-레거시 BIOS가 선택한 부팅 디스크에서 일반적으로 가장 먼저 불러오는 것은 무엇입니까?
+:::single-choice{#boot-bios-legacy-first-sector} 레거시 BIOS가 선택한 부팅 디스크에서 일반적으로 가장 먼저 불러오는 것은 무엇입니까?
 
 ::option[작은 부트 코드가 들어 있는 초기 부트 섹터입니다.]{#boot-bios-boot-sector .correct explanation="펌웨어의 레거시 디스크 경로는 선택된 디스크 첫 섹터의 코드로 제어권을 넘깁니다."}
 ::option[전체 리눅스 루트 파일 시스템을 펌웨어 메모리로 불러옵니다.]{#boot-bios-entire-root explanation="첫 단계 섹터는 매우 작으며 다음 소프트웨어가 커널과 루트 저장 장치를 찾습니다."}
@@ -34,8 +33,7 @@ UEFI 펌웨어는 EFI 시스템 파티션(ESP)에 정의된 파일 시스템을 
 
 ESP에는 부팅 애플리케이션과 지원 파일이 있지만 “모든 시작 정보”가 들어 있는 것은 아닙니다. 부팅 설계에 따라 커널 이미지, initramfs 파일 및 로더 설정은 그곳이나 다른 위치에 있을 수 있습니다. UEFI 시스템에서는 GPT가 일반적이지만 펌웨어 인터페이스와 파티션 테이블 방식은 여전히 별개의 계층입니다.
 
-:::single-choice{#boot-bios-uefi-esp}
-UEFI가 EFI 시스템 파티션에서 일반적으로 불러오는 것은 무엇입니까?
+:::single-choice{#boot-bios-uefi-esp} UEFI가 EFI 시스템 파티션에서 일반적으로 불러오는 것은 무엇입니까?
 
 ::option[펌웨어 부팅 항목이 선택한 EFI 실행 파일입니다.]{#boot-bios-efi-executable .correct explanation="UEFI 부팅 관리는 지원되는 시스템 파티션의 실행 파일을 펌웨어에 지정합니다."}
 ::option[임의의 ext4 홈 디렉터리에 있는 POSIX 셸 스크립트입니다.]{#boot-bios-shell-script explanation="펌웨어는 일반 사용자 셸을 실행하지 않고 지원되는 부팅 경로에서 정의된 실행 형식을 불러옵니다."}
@@ -48,8 +46,7 @@ UEFI가 EFI 시스템 파티션에서 일반적으로 불러오는 것은 무엇
 
 보안 부팅은 디스크를 암호화하지 않으며 모든 사용자 공간 프로그램이 안전하다는 사실을 증명하지도 않습니다. 설정된 신뢰 정책에서 승인되지 않은 사전 부팅 코드가 받아들여지는 것을 막는 데 도움을 줍니다.
 
-:::single-choice{#boot-bios-secure-boot-purpose}
-UEFI 보안 부팅이 주로 적용하는 것은 무엇입니까?
+:::single-choice{#boot-bios-secure-boot-purpose} UEFI 보안 부팅이 주로 적용하는 것은 무엇입니까?
 
 ::option[모든 디스크의 모든 파일을 자동으로 암호화합니다.]{#boot-bios-secure-encryption explanation="디스크 기밀성에는 별도의 암호화 시스템이 필요합니다."}
 ::option[서명을 기반으로 부팅 체인 실행 파일을 승인합니다.]{#boot-bios-secure-signatures .correct explanation="펌웨어와 이후 검증 구성 요소는 등록된 키와 정책에 따라 코드를 받아들입니다."}
@@ -62,8 +59,7 @@ UEFI 보안 부팅이 주로 적용하는 것은 무엇입니까?
 
 보안 부팅, 저장 장치 컨트롤러 모드, TPM, 가상화 또는 부팅 순서를 변경하기 전에 기존 값과 복구 키를 기록하십시오. 펌웨어 변경 때문에 암호화 볼륨이나 설치된 운영체제에 일시적으로 접근하지 못할 수 있습니다.
 
-:::single-choice{#boot-bios-setup-key}
-펌웨어 설정에 들어가는 범용 키가 없는 이유는 무엇입니까?
+:::single-choice{#boot-bios-setup-key} 펌웨어 설정에 들어가는 범용 키가 없는 이유는 무엇입니까?
 
 ::option[리눅스가 부팅할 때마다 새 임의 키를 배정하기 때문입니다.]{#boot-bios-random-key explanation="운영체제는 펌웨어의 초기 시작 키를 무작위로 정의하지 않습니다."}
 ::option[키와 입력 시점을 시스템 제조업체가 정하기 때문입니다.]{#boot-bios-vendor-key .correct explanation="펌웨어 인터페이스는 모델마다 다르므로 공식 장치 문서가 필요합니다."}

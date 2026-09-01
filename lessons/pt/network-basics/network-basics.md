@@ -24,8 +24,7 @@ $ ip address show
 
 A presença de uma interface ou seu estado administrativamente ativo não comprova a conectividade de ponta a ponta.
 
-:::single-choice{#network-basics-host-interface}
-O que é uma interface de rede?
+:::single-choice{#network-basics-host-interface} O que é uma interface de rede?
 
 ::option[Uma cópia permanente de todos os pacotes da Internet.]{#network-basics-interface-copy explanation="Uma interface transmite e recebe tráfego; ela não é um arquivo global de pacotes."}
 ::option[O ponto de conexão de um host com uma rede ou enlace virtual.]{#network-basics-interface-attachment .correct explanation="Um host pode ter várias interfaces físicas ou virtuais com configurações distintas."}
@@ -36,8 +35,7 @@ O que é uma interface de rede?
 
 Uma rede local, ou LAN, abrange um ambiente limitado, como uma residência, um escritório ou um segmento de data center. Switches Ethernet encaminham quadros entre portas em um enlace local. Uma LAN sem fio, ou WLAN, usa tecnologia de enlace sem fio. Interfaces com e sem fio ainda podem pertencer à mesma sub-rede IP quando uma ponte ou um ponto de acesso as conecta.
 
-:::single-choice{#network-basics-wlan-relationship}
-Qual é a relação entre uma WLAN e uma LAN?
+:::single-choice{#network-basics-wlan-relationship} Qual é a relação entre uma WLAN e uma LAN?
 
 ::option[Uma WLAN é sempre uma Internet global separada.]{#network-basics-wlan-global explanation="Ela é uma rede local que usa tecnologia de enlace sem fio."}
 ::option[Uma WLAN é uma partição de disco usada por roteadores.]{#network-basics-wlan-disk explanation="O termo descreve redes, não a organização do armazenamento."}
@@ -50,8 +48,7 @@ Um roteador encaminha pacotes da camada de rede entre redes IP de acordo com sua
 
 Uma rede de longa distância, ou WAN, abrange limites geográficos ou administrativos maiores. Um provedor de serviços de Internet pode conectar a rede de um cliente a outras redes, mas “WAN” não significa simplesmente todo dispositivo fora de uma residência.
 
-:::single-choice{#network-basics-router-role}
-Qual é a função que define um roteador?
+:::single-choice{#network-basics-router-role} Qual é a função que define um roteador?
 
 ::option[Encaminhar pacotes entre redes da camada de rede.]{#network-basics-forward-networks .correct explanation="O roteamento seleciona os próximos saltos através dos limites das redes IP."}
 ::option[Armazenar os arquivos de todos os usuários como backup obrigatório.]{#network-basics-router-backup explanation="A retenção de arquivos não é a função que define o roteamento."}
@@ -64,8 +61,7 @@ As aplicações produzem dados que as camadas de protocolo dividem e encapsulam 
 
 Uma conversa pode envolver muitos pacotes nas duas direções. Perda, reordenação, fragmentação, retransmissão e mudanças de caminho significam que um único pacote capturado raramente descreve toda a transação da aplicação.
 
-:::single-choice{#network-basics-router-frame}
-O que normalmente acontece com o enquadramento da camada de enlace em um salto de roteador?
+:::single-choice{#network-basics-router-frame} O que normalmente acontece com o enquadramento da camada de enlace em um salto de roteador?
 
 ::option[O roteador remove o enquadramento recebido e cria outro para o próximo enlace.]{#network-basics-reframe .correct explanation="O pacote IP encaminhado é transportado em um novo quadro da camada de enlace adequado à interface de saída."}
 ::option[O mesmo quadro Ethernet atravessa toda a Internet sem alterações.]{#network-basics-same-frame explanation="Os quadros ficam restritos aos seus enlaces e são substituídos nos saltos roteados."}

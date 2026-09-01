@@ -25,8 +25,7 @@ uid=1000(alice) gid=1000(alice) groups=1000(alice),27(sudo)
 
 Os valores variam conforme o sistema. Contas humanas de login geralmente possuem diretórios pessoais como `/home/alice`, mas uma conta pode usar outro caminho ou não ter um diretório pessoal comum. Contas de serviço frequentemente existem para executar software com uma identidade limitada, não para permitir login interativo.
 
-:::single-choice{#users-uid-purpose}
-Qual identificador o kernel usa principalmente para representar uma identidade de usuário?
+:::single-choice{#users-uid-purpose} Qual identificador o kernel usa principalmente para representar uma identidade de usuário?
 
 ::option[Um caminho de diretório pessoal]{#users-home-path explanation="Um caminho pessoal é uma configuração da conta e pode variar ou estar ausente; ele não é o identificador de usuário do kernel."}
 ::option[Um UID numérico]{#users-numeric-uid .correct explanation="Os bancos de contas mapeiam nomes para UIDs numéricos, usados nas credenciais dos processos e nos registros de propriedade."}
@@ -46,8 +45,7 @@ $ groups alice
 
 Esses comandos informam dados de identidade configurados ou resolvidos. Serviços de diretório e caches podem participar; por isso, ler diretamente `/etc/group` nem sempre mostra o quadro completo das associações efetivas.
 
-:::single-choice{#users-primary-supplementary-groups}
-Como uma conta Linux normalmente pode participar de grupos?
+:::single-choice{#users-primary-supplementary-groups} Como uma conta Linux normalmente pode participar de grupos?
 
 ::option[Ela pode pertencer a exatamente um grupo durante toda a sua existência.]{#users-single-group explanation="Os processos Linux podem carregar um grupo primário e uma lista de grupos suplementares."}
 ::option[Ela pertence a todos os grupos cujos arquivos consegue ler.]{#users-readable-groups explanation="A leitura de arquivos segue permissões e credenciais; ela não cria automaticamente uma associação a grupos."}
@@ -60,8 +58,7 @@ Um processo possui credenciais como UIDs e GIDs reais e efetivos, além de grupo
 
 Isso é mais preciso que dizer que um processo sempre é executado apenas “como o usuário que o iniciou”. Executáveis set-user-ID, gerenciadores de serviços, contêineres, namespaces e chamadas de sistema que alteram privilégios podem afetar as identidades visíveis ou efetivas em determinado contexto.
 
-:::single-choice{#users-process-access-identity}
-Quais informações são normalmente consideradas quando o kernel verifica um processo segundo as permissões de um arquivo?
+:::single-choice{#users-process-access-identity} Quais informações são normalmente consideradas quando o kernel verifica um processo segundo as permissões de um arquivo?
 
 ::option[O UID efetivo, o GID efetivo e os grupos suplementares do processo.]{#users-effective-credentials .correct explanation="Essas credenciais são comparadas aos dados de propriedade e permissão nas verificações discricionárias comuns."}
 ::option[O tema de cores do terminal que iniciou o processo.]{#users-terminal-theme explanation="Preferências de exibição não participam das verificações de permissões do sistema de arquivos."}
@@ -74,8 +71,7 @@ A conta tradicionalmente chamada `root` possui UID 0. O UID 0 recebe tratamento 
 
 O trabalho cotidiano deve usar uma conta sem privilégios. A autoridade administrativa aumenta o impacto de erros de caminho, comandos não confiáveis e software comprometido.
 
-:::single-choice{#users-root-uid}
-Qual UID numérico identifica tradicionalmente a conta root?
+:::single-choice{#users-root-uid} Qual UID numérico identifica tradicionalmente a conta root?
 
 ::option[`0`]{#users-uid-zero .correct explanation="Sistemas Linux e semelhantes ao Unix tradicionalmente reservam o UID 0 para a identidade de superusuário."}
 ::option[`1000`]{#users-uid-thousand explanation="Muitas distribuições atribuem um valor próximo de 1000 à primeira conta humana comum, mas esse não é o UID de root."}
@@ -94,8 +90,7 @@ $ sudo -l
 
 Use um comando administrativo permitido somente quando a tarefa exigir e você compreender seus efeitos. Não use `sudo` apenas para silenciar um erro de permissão nem exiba bancos de hashes de senhas, como `/etc/shadow`, como exercício casual.
 
-:::single-choice{#users-sudo-policy}
-O que `sudo` faz antes de executar um comando solicitado?
+:::single-choice{#users-sudo-policy} O que `sudo` faz antes de executar um comando solicitado?
 
 ::option[Consulta a política configurada para autorizar o uso da identidade de destino solicitada.]{#users-sudo-policy-check .correct explanation="`sudo` autoriza segundo a política e estabelece as credenciais de destino configuradas quando permitido."}
 ::option[Sempre concede a todos os usuários locais acesso root irrestrito.]{#users-sudo-always-root explanation="A autorização é controlada por política; usuários ou comandos negados não recebem acesso root geral."}

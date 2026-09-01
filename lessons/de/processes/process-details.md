@@ -24,8 +24,7 @@ $ pgrep -a cat
 
 Beide Prozesse führen dasselbe Programm aus, können aber unterschiedliche Eingabeströme, Speicherinhalte, Zugangsdaten, Arbeitsverzeichnisse und Lebensdauern besitzen. Eine PID kennzeichnet jeweils einen laufenden Prozess und kann später nach dessen Beendigung erneut vergeben werden.
 
-:::single-choice{#process-details-program-versus-process}
-Was unterscheidet zwei laufende Instanzen desselben Programms?
+:::single-choice{#process-details-program-versus-process} Was unterscheidet zwei laufende Instanzen desselben Programms?
 
 ::option[Die ausführbare Datei muss für jede Instanz einmal kopiert werden.]{#process-details-copied-executable explanation="Mehrere Prozesse können die Codeseiten derselben ausführbaren Datei einbinden und gemeinsam nutzen, ohne die Datei zu duplizieren."}
 ::option[Nur eine Instanz kann Speicher oder offene Dateien besitzen.]{#process-details-one-instance-resources explanation="Jeder Prozess kann eigene Speicherabbildungen und eine eigene Dateideskriptortabelle besitzen."}
@@ -46,8 +45,7 @@ Der Kernel verwaltet die Informationen, die zum Planen und Steuern jedes Prozess
 
 Einige zugrunde liegende Ressourcen können gemeinsam verwendet werden. Verwandte Prozesse können eingebundenen Speicher teilen, und Threads eines Prozesses teilen sich einen Adressraum und viele prozessweite Ressourcen. Ein Prozess stellt daher Isolationsgrenzen bereit, ohne dass jedes Byte oder Kernelobjekt physisch privat sein muss.
 
-:::single-choice{#process-details-kernel-state}
-Welche Komponente verwaltet Scheduling- und Zugangsdatenzustände für Linux-Prozesse?
+:::single-choice{#process-details-kernel-state} Welche Komponente verwaltet Scheduling- und Zugangsdatenzustände für Linux-Prozesse?
 
 ::option[Der Kernel.]{#process-details-kernel .correct explanation="Der Kernel verfolgt den Prozesszustand und wendet Regeln für Scheduling, Speicher, Signale und Zugriffskontrolle an."}
 ::option[Das Verzeichnis der ausführbaren Datei.]{#process-details-directory explanation="Ein Verzeichnis speichert eine Zuordnung von Namen zu Inodes und plant keine laufenden Prozesse."}
@@ -60,8 +58,7 @@ Ausführungsbereite Threads konkurrieren um CPU-Zeit. Der Kernel-Scheduler wähl
 
 Jeder Prozess sieht gewöhnlich einen virtuellen Adressraum. Kernel und Hardware ordnen virtuelle Adressen physischem Speicher oder einem anderen Hintergrundspeicher zu, setzen Schutzmechanismen durch und können Seiten gegebenenfalls gemeinsam nutzen. Eine Speicherangabe in `ps` oder `top` entspricht daher nicht automatisch der Menge an eindeutig diesem Prozess zurechenbarem physischem RAM.
 
-:::single-choice{#process-details-scheduler-role}
-Was wählt der Linux-Scheduler aus?
+:::single-choice{#process-details-scheduler-role} Was wählt der Linux-Scheduler aus?
 
 ::option[Welcher ausführungsbereite Thread auf einer verfügbaren CPU ausgeführt wird.]{#process-details-runnable-thread .correct explanation="Die Scheduling-Richtlinie wählt unter ausführungsbereiten Ausführungskontexten aus und weist CPU-Zeit zu."}
 ::option[Welcher Dateieigentümer beim Formatieren eines Datenträgers erfasst wird.]{#process-details-format-owner explanation="Dateisystemeigentum hat nichts mit CPU-Scheduling zu tun."}
@@ -72,8 +69,7 @@ Was wählt der Linux-Scheduler aus?
 
 Wenn sich ein Prozess beendet, gibt der Kernel die meisten seiner privaten Ressourcen frei, schließt verbleibende Deskriptoren und erfasst Beendigungsinformationen für den Elternprozess. Ein kleiner Eintrag in der Prozesstabelle kann als Zombie bestehen bleiben, bis der Elternprozess den Beendigungsstatus abruft. Daher sind „der Prozess hat seine Ausführung beendet“ und „jede Spur ist aus der Prozesstabelle verschwunden“ nicht immer gleichzeitige Ereignisse.
 
-:::single-choice{#process-details-exit-status}
-Warum kann ein beendeter Prozess kurzzeitig als Zombie bestehen bleiben?
+:::single-choice{#process-details-exit-status} Warum kann ein beendeter Prozess kurzzeitig als Zombie bestehen bleiben?
 
 ::option[Er führt weiterhin Anweisungen aus und besitzt seinen gesamten Speicher.]{#process-details-zombie-running explanation="Ein Zombie hat seine Ausführung abgeschlossen und besitzt keinen gewöhnlichen laufenden Adressraum mehr."}
 ::option[Sein Elternprozess hat den erfassten Beendigungsstatus noch nicht abgeholt.]{#process-details-parent-wait .correct explanation="Der Kernel bewahrt minimale Beendigungsinformationen auf, bis der Elternprozess einen wait-Vorgang ausführt."}

@@ -23,8 +23,7 @@ Emacs 把当前光标位置称为 **point**。移动命令会重新定位 point�
 - `C-a`：移动到行首。
 - `C-e`：移动到行尾。
 
-:::single-choice{#emacs-edit-next-line}
-哪个 Emacs 按键会把 point 移动到下一行？
+:::single-choice{#emacs-edit-next-line} 哪个 Emacs 按键会把 point 移动到下一行？
 
 ::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` 会移动到上一行，方向相反。"}
 ::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n` 表示 next-line，会把 point 向下移动到下一屏幕行的位置。"}
@@ -42,8 +41,7 @@ Meta 命令可以跨越更大的单位：
 
 在许多键盘上，Alt 充当 Meta。如果无法使用这个组合键，先按 `Esc` 再按后续按键通常能发送等效的 Meta 命令。
 
-:::single-choice{#emacs-edit-buffer-end}
-哪个 Emacs 按键会把 point 移动到缓冲区末尾？
+:::single-choice{#emacs-edit-buffer-end} 哪个 Emacs 按键会把 point 移动到缓冲区末尾？
 
 ::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` 会移动到当前行末尾，而不是整个缓冲区末尾。"}
 ::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` 会移动到缓冲区开头。"}
@@ -56,8 +54,7 @@ Meta 命令可以跨越更大的单位：
 
 在终端中，`C-SPC` 可能编码为 `C-@`。是否高亮取决于 transient-mark 设置，但 point 和 mark 仍会定义一个区域。
 
-:::single-choice{#emacs-edit-set-mark}
-哪个按键会在 point 处设置 mark，从而开始定义区域？
+:::single-choice{#emacs-edit-set-mark} 哪个按键会在 point 处设置 mark，从而开始定义区域？
 
 ::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` 会 kill 已经定义的区域，不是最初设置 mark 的命令。"}
 ::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` 会插入 kill ring 中的文本，不会开始选择。"}
@@ -74,8 +71,7 @@ Emacs 把被 kill 和复制的文本存入 **kill ring**：
 
 Kill 不只是普通删除，因为被移除的文本会保留供之后 yank。
 
-:::single-choice{#emacs-edit-copy-region}
-哪个按键会把活动区域复制到 kill ring，而不移除它？
+:::single-choice{#emacs-edit-copy-region} 哪个按键会把活动区域复制到 kill ring，而不移除它？
 
 ::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="绑定到 `M-w` 的 `kill-ring-save` 会复制区域而不删除它。"}
 ::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` 会移除区域，同时把它保存到 kill ring。"}
@@ -93,8 +89,7 @@ M-y
 
 如果在 `C-y` 之后执行了其他无关命令，`M-y` 就不再拥有相同的 yank-pop 上下文。
 
-:::single-choice{#emacs-edit-yank-latest}
-哪个按键会在 point 处插入最近的 kill ring 条目？
+:::single-choice{#emacs-edit-yank-latest} 哪个按键会在 point 处插入最近的 kill ring 条目？
 
 ::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="绑定到 `C-y` 的 `yank` 会把最新的 kill ring 文本插入当前缓冲区。"}
 ::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` 通常会用更早的条目替换刚 yank 的条目；它依赖之前的 yank 上下文。"}

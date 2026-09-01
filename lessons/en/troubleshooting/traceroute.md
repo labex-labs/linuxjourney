@@ -16,8 +16,7 @@ meta_keywords: "traceroute, traceroute linux, Linux networking, network troubles
 
 Probes begin with a hop limit of one and increase. The first router decrements one to zero and can return an ICMP error. A limit of two reaches the second router before expiring, and the process continues until the destination responds or the maximum is reached.
 
-:::single-choice{#traceroute-expiring-field}
-Which field causes successive probes to expire at later routers?
+:::single-choice{#traceroute-expiring-field} Which field causes successive probes to expire at later routers?
 
 ::option[The DNS cache TTL for the destination name.]{#traceroute-dns-ttl explanation="DNS record lifetime does not control packet forwarding hops."}
 ::option[The Ethernet source MAC address.]{#traceroute-source-mac explanation="Link addresses do not carry an end-to-end hop counter."}
@@ -36,8 +35,7 @@ $ traceroute -T -p 443 -n example.com
 
 Privileges and supported options vary. Use methods authorized for the target, and record the method when comparing results.
 
-:::single-choice{#traceroute-default-destination-response}
-What commonly ends a traditional Linux UDP traceroute?
+:::single-choice{#traceroute-default-destination-response} What commonly ends a traditional Linux UDP traceroute?
 
 ::option[An ICMP Port Unreachable response from the destination.]{#traceroute-port-unreachable .correct explanation="High UDP ports are normally unused, allowing the destination to identify itself through the error."}
 ::option[A mandatory HTTP 200 response from every router.]{#traceroute-http-every-router explanation="Routers return network-control errors rather than HTTP responses."}
@@ -48,8 +46,7 @@ What commonly ends a traditional Linux UDP traceroute?
 
 An asterisk means no response was observed for that probe before timeout. The router may forward transit traffic while filtering or rate-limiting diagnostic responses. If later hops answer, the silent hop clearly forwarded at least some probes.
 
-:::single-choice{#traceroute-asterisk-meaning}
-What does `*` at one hop prove?
+:::single-choice{#traceroute-asterisk-meaning} What does `*` at one hop prove?
 
 ::option[That the router dropped all transit packets permanently.]{#traceroute-star-all-drop explanation="Later replies can demonstrate continued forwarding."}
 ::option[Only that no matching response arrived before the probe timeout.]{#traceroute-star-no-response .correct explanation="Filtering, rate limiting, loss, and return-path issues can all produce silence."}
@@ -62,8 +59,7 @@ Per-hop times measure round trips to control responses, not latency added by the
 
 The return route for each ICMP response can differ from the forward route. Repeat tests and correlate with endpoint application timing before identifying a bottleneck.
 
-:::single-choice{#traceroute-hop-rtt-limit}
-Why should adjacent hop RTT values not be subtracted as exact link latency?
+:::single-choice{#traceroute-hop-rtt-limit} Why should adjacent hop RTT values not be subtracted as exact link latency?
 
 ::option[Traceroute reports all times in bytes rather than milliseconds.]{#traceroute-times-bytes explanation="The displayed probe timings are normally milliseconds."}
 ::option[Replies can use different return paths and control-plane processing.]{#traceroute-rtt-asymmetry .correct explanation="The measurements are separate end-to-hop round trips rather than synchronized one-way link samples."}
@@ -74,8 +70,7 @@ Why should adjacent hop RTT values not be subtracted as exact link latency?
 
 A traceroute can reach the destination while the service is blocked, and the service can work while intermediate routers hide their responses. Test the same address family, destination, transport protocol, and port as the application, then use traceroute as supporting path evidence.
 
-:::single-choice{#traceroute-service-proof}
-Does a completed traceroute prove an HTTPS service is healthy?
+:::single-choice{#traceroute-service-proof} Does a completed traceroute prove an HTTPS service is healthy?
 
 ::option[Yes, because every hop validates the server certificate.]{#traceroute-validates-cert explanation="Routers do not perform the client's TLS validation."}
 ::option[No; transport, TLS, and HTTP behavior need their own tests.]{#traceroute-not-app-proof .correct explanation="Path discovery and application health are different diagnostic layers."}

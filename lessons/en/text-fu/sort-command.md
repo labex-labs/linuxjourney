@@ -41,8 +41,7 @@ Text ordering follows the current locale, which can affect case, accents, and pu
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-What does `sort animals.txt` do with no key or numeric option?
+:::single-choice{#sort-lines-ascending} What does `sort animals.txt` do with no key or numeric option?
 
 ::option[Orders complete input lines according to the current locale.]{#sort-locale-lines .correct explanation="Default `sort` compares whole lines using the active locale's collation rules."}
 ::option[Orders words within each line but keeps the line order fixed.]{#sort-words-within-lines explanation="`sort` treats each line as a record. It does not rearrange words inside individual lines."}
@@ -62,8 +61,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-Which command sorts `animals.txt` in reverse order?
+:::single-choice{#sort-reverse-order} Which command sorts `animals.txt` in reverse order?
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="The `-n` option requests numeric comparison. It does not mean reverse order."}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="The `-u` option suppresses duplicate keys. It does not reverse the output."}
@@ -83,8 +81,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 Combine options when needed. `sort -nr scores.txt` compares numerically and places larger values first.
 
-:::single-choice{#sort-numbers-descending}
-Which command sorts numeric lines in `scores.txt` from largest to smallest?
+:::single-choice{#sort-numbers-descending} Which command sorts numeric lines in `scores.txt` from largest to smallest?
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="Numeric comparison is selected, but the default direction places smaller values first."}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n` selects numeric comparison and `-r` reverses it, producing descending numeric order."}
@@ -104,8 +101,7 @@ alice:30
 
 Here, `-t ':'` selects the delimiter, `-k 2,2` limits the key to field 2, and the attached `n` compares that key numerically. Without the ending `,2`, a key starting at field 2 normally continues through the rest of the line.
 
-:::single-choice{#sort-second-colon-field}
-Which command sorts `users.txt` numerically by only its second colon-separated field?
+:::single-choice{#sort-second-colon-field} Which command sorts `users.txt` numerically by only its second colon-separated field?
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="This uses default blank-separated fields and selects field 1, not the second colon-separated field."}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut` extracts field 2 but does not sort the original records by that key."}
@@ -136,8 +132,7 @@ $ sort -o names.txt names.txt
 
 Keep a backup or write and verify a separate result when the original data matters.
 
-:::single-choice{#sort-safe-same-file}
-On GNU/Linux, which command asks `sort` to safely write the sorted result back to `names.txt` without shell redirection truncating it first?
+:::single-choice{#sort-safe-same-file} On GNU/Linux, which command asks `sort` to safely write the sorted result back to `names.txt` without shell redirection truncating it first?
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="GNU `sort` manages `-o` output after reading as needed, so the shell does not pre-truncate the input through `>`."}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="The shell truncates `names.txt` before starting `sort`, so the command can lose the input."}

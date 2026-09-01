@@ -28,8 +28,7 @@ $ sudo lsof +D /mnt/usb
 
 Useful columns include `COMMAND`, `PID`, `USER`, file descriptor (`FD`), type, device, and `NAME`. A record whose `FD` is `cwd` indicates that the process uses the directory as its current working directory. Unprivileged output may be incomplete for processes owned by other users.
 
-:::single-choice{#lsof-cwd-record}
-What does `cwd` in the `FD` column indicate?
+:::single-choice{#lsof-cwd-record} What does `cwd` in the `FD` column indicate?
 
 ::option[The process uses that directory as its current working directory.]{#lsof-current-directory .correct explanation="A process current directory can keep a mounted filesystem busy."}
 ::option[The file was closed while it was being written.]{#lsof-closed-write explanation="The marker describes a directory relationship, not a close event."}
@@ -52,8 +51,7 @@ $ sudo fuser -vm /mnt/usb
 
 Verify that the path is the intended mount point with tools such as `findmnt --target /mnt/usb`. Bind mounts, namespaces, permissions, and races can affect what a single query reveals.
 
-:::single-choice{#fuser-verbose-purpose}
-Why use `fuser -v` instead of plain `fuser` during investigation?
+:::single-choice{#fuser-verbose-purpose} Why use `fuser -v` instead of plain `fuser` during investigation?
 
 ::option[It automatically unmounts the selected filesystem.]{#fuser-verbose-unmount explanation="Verbose mode reports details and does not request an unmount."}
 ::option[It adds context such as user, access type, and command.]{#fuser-verbose-details .correct explanation="The extra columns help assess which processes are safe to coordinate or stop."}
@@ -72,8 +70,7 @@ Use a deliberate sequence rather than immediately killing every matching PID:
 
 `fuser -k` sends a signal to matching processes. Its default signal is `SIGKILL` on common procps implementations, so it does not provide an orderly shutdown. If an explicitly approved termination is necessary, select an appropriate signal, verify the PID and owner, and understand that the process set can change between inspection and action.
 
-:::single-choice{#fuser-k-risk}
-Why is `fuser -k /mnt/usb` a poor first troubleshooting step?
+:::single-choice{#fuser-k-risk} Why is `fuser -k /mnt/usb` a poor first troubleshooting step?
 
 ::option[It only prints filesystem free space.]{#fuser-k-space explanation="The option targets processes rather than reporting capacity."}
 ::option[It can kill multiple matching processes without orderly cleanup.]{#fuser-k-kills .correct explanation="The broad signal action can interrupt writes or services, so investigation and coordination should come first."}
@@ -91,8 +88,7 @@ $ sudo fuser -v 22/tcp
 $ sudo ss -lntp
 ```
 
-:::single-choice{#lsof-fuser-tool-choice}
-Which tool is suited to a detailed list of open-file descriptors and owning processes?
+:::single-choice{#lsof-fuser-tool-choice} Which tool is suited to a detailed list of open-file descriptors and owning processes?
 
 ::option[`lsof`]{#lsof-detailed-records .correct explanation="Its output is organized around open-file records and their process metadata."}
 ::option[`uptime`]{#lsof-uptime explanation="Uptime reports runtime and load averages, not open descriptors."}

@@ -25,8 +25,7 @@ Numerische Verzeichnisnamen entsprechen den im PID-Namensraum des Aufrufers sich
 
 Sichtbarkeit und Zugriff hängen von Zugangsdaten, Namensräumen, Sicherheitsrichtlinien und procfs-Einhängeoptionen wie `hidepid` ab. Ein Prozess kann sich zwischen dem Auflisten eines Verzeichnisses und dem Öffnen einer seiner Dateien beenden. Dieses Verschwinden ist ein normales Rennen, mit dem Inspektionswerkzeuge umgehen müssen.
 
-:::single-choice{#proc-filesystem-numeric-directory}
-Was repräsentiert das numerische Verzeichnis `/proc/12345` gewöhnlich?
+:::single-choice{#proc-filesystem-numeric-directory} Was repräsentiert das numerische Verzeichnis `/proc/12345` gewöhnlich?
 
 ::option[Den Datenträgerblock mit der Nummer 12345.]{#proc-filesystem-disk-block explanation="`/proc` ist eine virtuelle Kernel-Schnittstelle und kein Verzeichnis aus Rohdatenblöcken eines Datenträgers."}
 ::option[Den derzeit sichtbaren Prozess mit PID 12345.]{#proc-filesystem-pid-directory .correct explanation="Prozessbezogene procfs-Daten sind in einem Verzeichnis zusammengefasst, dessen Name der sichtbaren PID entspricht."}
@@ -51,8 +50,7 @@ Sie enthält Felder wie Prozessname, Zustand, IDs, Zugangsdaten, Speicherzähler
 
 Behandle diese Angaben als veränderliche Beobachtungen. Felder können je nach Kernelversion variieren, der Zustand eines Prozesses kann sich während des Lesens mehrerer Dateien ändern und einige Zähler besitzen Feinheiten, die ihre Namen allein nicht ausdrücken.
 
-:::single-choice{#proc-filesystem-status-file}
-Welcher Pfad enthält für PID 12345 eine lesbare, feldorientierte Zusammenfassung?
+:::single-choice{#proc-filesystem-status-file} Welcher Pfad enthält für PID 12345 eine lesbare, feldorientierte Zusammenfassung?
 
 ::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="Prozessbezogene Dateien liegen innerhalb des nach der PID benannten Verzeichnisses und nicht unter einem Verzeichnis `status` auf oberster Ebene."}
 ::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="Die prozessbezogene Schnittstelle `status` stellt Kennungen, Zustand, Speicher-, Signal- und Zugangsdatenfelder bereit."}
@@ -71,8 +69,7 @@ Nicht jeder Eintrag unter `/proc` gehört zu einem Prozess. Beispiele sind:
 
 Einige Dateien, insbesondere unter `/proc/sys`, sind beschreibbare Konfigurationsschnittstellen. Schreibe nicht in sie, nur weil sie wie gewöhnliche Dateien aussehen. Verstehe Parameter, Gültigkeitsbereich, Mechanismus zur dauerhaften Speicherung und Rücksetzweg, bevor du eine autorisierte Systemänderung vornimmst.
 
-:::single-choice{#proc-filesystem-system-interface}
-Welcher Eintrag stellt systemweite Speicherzähler und nicht den Status eines einzelnen Prozesses bereit?
+:::single-choice{#proc-filesystem-system-interface} Welcher Eintrag stellt systemweite Speicherzähler und nicht den Status eines einzelnen Prozesses bereit?
 
 ::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="Dies verweist auf den eigenen prozessbezogenen Status des beobachtenden Prozesses."}
 ::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo` enthält vom Kernel gemeldete Systemspeicherstatistiken."}
@@ -85,8 +82,7 @@ Linux-Implementierungen von Werkzeugen wie `ps`, `top` und `free` beziehen einen
 
 Direkte Leser müssen Formate korrekt auswerten, mit verschwundenen Prozessen umgehen, vertrauliche Ausgaben schützen und dürfen nicht annehmen, dass ein einzelner Lesevorgang eine atomare Momentaufnahme des Systems darstellt.
 
-:::single-choice{#proc-filesystem-live-data}
-Warum kann `/proc/PID` zwischen zwei Inspektionsbefehlen verschwinden?
+:::single-choice{#proc-filesystem-live-data} Warum kann `/proc/PID` zwischen zwei Inspektionsbefehlen verschwinden?
 
 ::option[Jede procfs-Datei wird automatisch einmal pro Sekunde umbenannt.]{#proc-filesystem-renamed explanation="Es gibt keine Regel zur regelmäßigen Umbenennung aller procfs-Einträge."}
 ::option[Das Lesen von `status` löscht das Prozessverzeichnis.]{#proc-filesystem-read-delete explanation="Die Statusprüfung ist schreibgeschützt und beendet oder entfernt den Prozess nicht."}

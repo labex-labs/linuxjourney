@@ -23,8 +23,7 @@ $ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
 
 アプリケーションログは独自のサブディレクトリや外部サービスにある場合があります。authentication、audit、package、database、web-server のレコードは、一般ストリームから意図的に分離されていることもあります。
 
-:::single-choice{#general-logs-universal-file}
-すべての Linux ホストに `/var/log/messages` があると想定すべきでないのはなぜですか？
+:::single-choice{#general-logs-universal-file} すべての Linux ホストに `/var/log/messages` があると想定すべきでないのはなぜですか？
 
 ::option[一般ログの宛先は、ローカルの collector と routing policy に依存するから。]{#general-logs-local-routing .correct explanation="journal-only system や異なる syslog 設定では、別の宛先を使います。"}
 ::option[Linux では各ディスクに一つのログファイルしか置けないから。]{#general-logs-one-file explanation="システムは通常、多数のログファイルと journal store を維持します。"}
@@ -42,8 +41,7 @@ $ sudo tail -n 100 /var/log/messages
 
 範囲を限定した再現中に新しい行を追うには、`tail -F FILE` を使います。単純な snapshot と異なり、`-F` は rotation でファイルが置き換わっても再試行します。`Ctrl-C` で追跡を止め、広い権限の session を開いたままにしないでください。
 
-:::single-choice{#general-logs-tail-f-capability}
-制御された再現中、`tail -F` は何に役立ちますか？
+:::single-choice{#general-logs-tail-f-capability} 制御された再現中、`tail -F` は何に役立ちますか？
 
 ::option[通常の rotation で置き換わった後も、名前付きファイルを追うこと。]{#general-logs-tail-follow .correct explanation="名前による再試行動作により、有効ファイルが rename・再作成された後も追跡を続けやすくなります。"}
 ::option[すべてのログ severity を debug へ変更すること。]{#general-logs-tail-debug explanation="tail はファイル内容を読み、発生元の設定は変更しません。"}
@@ -61,8 +59,7 @@ $ journalctl -u example.service --since '10 minutes ago' --grep='connection refu
 
 大文字小文字、表現、rate limit、localization によって literal search は不完全になる場合があります。成功・失敗イベントの両方を記録し、目に見える error より前に原因がある可能性を考え、前後の行を保持します。
 
-:::single-choice{#general-logs-context-lines}
-一致した error の周辺行を含めるのはなぜですか？
+:::single-choice{#general-logs-context-lines} 一致した error の周辺行を含めるのはなぜですか？
 
 ::option[先行イベントが後の失敗を説明する可能性があるから。]{#general-logs-preceding-context .correct explanation="時間的な文脈により、一つの文字列を障害全体とみなさず、事象の順序を再構築できます。"}
 ::option[文脈があれば最初の一致が root cause だと保証されるから。]{#general-logs-guaranteed-cause explanation="追加証拠との相関が必要で、文脈だけでは因果関係を証明できません。"}
@@ -79,8 +76,7 @@ $ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
 
 suffix だけでなく、実際の timestamp で結果を並べます。証拠をコピーする前に metadata を保持し、ログに個人データや認証情報が含まれる可能性を考えてアクセスを制限してください。
 
-:::single-choice{#general-logs-rotation-boundary}
-障害が log rotation をまたぐ場合、何を確認すべきですか？
+:::single-choice{#general-logs-rotation-boundary} 障害が log rotation をまたぐ場合、何を確認すべきですか？
 
 ::option[新しく作られた空の有効ファイルだけ。]{#general-logs-active-only explanation="以前のレコードは rotated archive へ移動している可能性があります。"}
 ::option[イベント時刻順に並べた有効ログと archive ログ。]{#general-logs-all-intervals .correct explanation="関係する一連の事象が、現在と rotation 済みファイルに分割されている場合があります。"}

@@ -25,8 +25,7 @@ $ systemctl list-timers --all | grep sysstat
 
 Vérifiez que de nouveaux fichiers d’activité sont créés dans le répertoire de données sysstat de la distribution et examinez leurs permissions et leur politique de conservation.
 
-:::single-choice{#sar-installation-verification}
-Que faut-il vérifier après l’installation de `sysstat` ?
+:::single-choice{#sar-installation-verification} Que faut-il vérifier après l’installation de `sysstat` ?
 
 ::option[Que la collecte est activée et que les fichiers d’activité sont actualisés.]{#sar-collector-updating .correct explanation="L’installation du paquet et la collecte périodique active sont deux conditions distinctes."}
 ::option[Que chaque processus a été redémarré manuellement.]{#sar-restart-processes explanation="L’installation d’un collecteur de surveillance n’exige pas le redémarrage de chaque charge."}
@@ -43,8 +42,7 @@ $ sar -u 1 3
 
 Parmi les autres rapports courants figurent la file d’exécution et la charge (`-q`), la mémoire (`-r`), la pagination (`-B`), les périphériques bloc (`-d`) et l’activité par processeur (`-P ALL`). Les options et les champs varient avec la version de sysstat ; consultez `sar --help` ou le manuel local.
 
-:::single-choice{#sar-one-second-count}
-Que demande `sar -u 1 3` ?
+:::single-choice{#sar-one-second-count} Que demande `sar -u 1 3` ?
 
 ::option[Trois rapports du processeur à une seconde d’intervalle.]{#sar-three-cpu-samples .correct explanation="Le premier nombre représente l’intervalle en secondes et le second le nombre de rapports."}
 ::option[Un rapport couvrant exactement trois jours.]{#sar-three-days explanation="Les opérandes indiquent l’intervalle et le nombre d’échantillons, et non une plage de dates."}
@@ -61,8 +59,7 @@ $ sar -q -f /var/log/sysstat/sa02
 
 Confirmez la date complète du fichier dans les en-têtes du rapport ; un suffixe à deux chiffres désigne généralement un jour du mois et peut être ambigu entre plusieurs périodes de conservation. Les formats binaires enregistrés peuvent également nécessiter une version compatible de sysstat.
 
-:::single-choice{#sar-historical-file-option}
-Quelle option demande à `sar` de lire un fichier d’activité précis ?
+:::single-choice{#sar-historical-file-option} Quelle option demande à `sar` de lire un fichier d’activité précis ?
 
 ::option[`-P`]{#sar-option-p explanation="Cette option sélectionne le rapport par processeur plutôt qu’un fichier d’entrée."}
 ::option[`-q`]{#sar-option-q explanation="Cette option sélectionne le rapport de file et de charge."}
@@ -75,8 +72,7 @@ Quelle option demande à `sar` de lire un fichier d’activité précis ?
 
 Les lacunes peuvent signifier que l’hôte était arrêté, que le collecteur a échoué ou que la politique de conservation a supprimé les données. Surveillez la chaîne de surveillance elle-même afin que les indices manquants soient visibles avant un incident.
 
-:::single-choice{#sar-incident-method}
-Comment employer les données historiques de `sar` pendant l’examen d’un incident ?
+:::single-choice{#sar-incident-method} Comment employer les données historiques de `sar` pendant l’examen d’un incident ?
 
 ::option[Considérer le compteur isolé le plus élevé comme la cause profonde prouvée.]{#sar-single-root explanation="Une corrélation unique n’établit pas une causalité."}
 ::option[Comparer plusieurs mesures sur la même fenêtre temporelle vérifiée.]{#sar-correlate-window .correct explanation="Des signaux alignés aident à distinguer les hypothèses et à relier le comportement du système à l’incident."}

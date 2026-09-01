@@ -18,8 +18,7 @@ Una dirección MAC de Ethernet tiene 48 bits y suele escribirse como seis octeto
 
 No se garantiza que las direcciones MAC sean permanentes o globalmente únicas. El software puede asignar una dirección administrada localmente, las interfaces virtuales generan direcciones y las funciones de privacidad de Wi-Fi pueden aleatorizarlas. Normalmente, los routers sustituyen el encapsulado Ethernet en cada salto, por lo que un servidor remoto no recibe la dirección Ethernet de origen del enlace local inicial.
 
-:::single-choice{#network-addressing-mac-scope}
-¿Cuál es el ámbito normal de una dirección MAC de Ethernet durante la entrega de paquetes?
+:::single-choice{#network-addressing-mac-scope} ¿Cuál es el ámbito normal de una dirección MAC de Ethernet durante la entrega de paquetes?
 
 ::option[El enlace local actual.]{#network-addressing-local-link .correct explanation="Los routers crean un encapsulado nuevo de la capa de enlace para los saltos posteriores."}
 ::option[Todos los saltos enrutados hasta el servidor final de Internet.]{#network-addressing-all-hops explanation="La trama original no atraviesa los routers sin cambios."}
@@ -32,8 +31,7 @@ Las direcciones IPv4 tienen 32 bits, o cuatro octetos, mientras que las direccio
 
 Una interfaz puede tener varias direcciones IP, y una dirección puede cambiar mediante DHCP, direccionamiento de privacidad, conmutación por error o administración. Las direcciones IPv4 privadas pueden reutilizarse en redes distintas; las políticas de enrutamiento público y NAT determinan la accesibilidad externa.
 
-:::single-choice{#network-addressing-ipv4-size}
-¿Qué tamaño tiene una dirección IPv4?
+:::single-choice{#network-addressing-ipv4-size} ¿Qué tamaño tiene una dirección IPv4?
 
 ::option[32 bits en cuatro octetos.]{#network-addressing-thirty-two .correct explanation="Cada componente decimal mostrado representa ocho bits."}
 ::option[4 bits en un único dígito hexadecimal.]{#network-addressing-four-bits explanation="Cuatro bits solo representan un dígito hexadecimal."}
@@ -52,8 +50,7 @@ $ getent ahosts example.com
 
 Las respuestas DNS pueden cambiar o estar en caché, y que la resolución tenga éxito no demuestra que el servicio sea accesible.
 
-:::single-choice{#network-addressing-getent-purpose}
-¿Por qué se utiliza `getent ahosts` durante una comprobación de resolución de nombres?
+:::single-choice{#network-addressing-getent-purpose} ¿Por qué se utiliza `getent ahosts` durante una comprobación de resolución de nombres?
 
 ::option[Asigna permanentemente la dirección devuelta a todas las interfaces.]{#network-addressing-getent-assign explanation="El comando consulta bases de datos y no configura interfaces."}
 ::option[Solicita direcciones a la ruta de servicios de nombres configurada en el sistema.]{#network-addressing-system-resolver .correct explanation="Esta puede incluir archivos locales y DNS según la política de la máquina."}
@@ -71,8 +68,7 @@ $ ip -brief address
 
 Después, inspecciona las rutas y el estado de los vecinos al diagnosticar la accesibilidad. Nunca deduzcas la interfaz o la dirección de origen correcta solo a partir de su nombre; la selección de rutas, las reglas de política, los espacios de nombres y los túneles pueden cambiar la trayectoria.
 
-:::single-choice{#network-addressing-ip-link-versus-address}
-¿Qué vista de comandos se centra en las direcciones IP asignadas?
+:::single-choice{#network-addressing-ip-link-versus-address} ¿Qué vista de comandos se centra en las direcciones IP asignadas?
 
 ::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="El objeto address muestra las asignaciones IPv4 e IPv6 de las interfaces."}
 ::option[Únicamente `ip -brief link`.]{#network-addressing-link-only explanation="La vista link se centra en el estado de las interfaces y de la capa de enlace."}

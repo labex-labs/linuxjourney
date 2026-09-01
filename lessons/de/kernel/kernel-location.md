@@ -23,8 +23,7 @@ Ein traditionelles Distributionslayout kann Folgendes enthalten:
 
 Die Namen unterscheiden sich. Eine auf einem modernen System als `initrd` benannte Datei enthält häufig ein initramfs-Archiv. Aus der Namenskonvention `vmlinuz` lassen sich weder die genaue interne Komprimierung noch das plattformspezifische Startformat ableiten; prüfe die Datei mit Distributionswerkzeugen.
 
-:::single-choice{#kernel-location-vmlinuz}
-Was enthält eine versionierte Datei `vmlinuz-*` gewöhnlich?
+:::single-choice{#kernel-location-vmlinuz} Was enthält eine versionierte Datei `vmlinuz-*` gewöhnlich?
 
 ::option[Ein startfähiges Linux-Kernelabbild.]{#kernel-location-kernel-image .correct explanation="Der Bootloader oder die Firmware lädt dieses architekturspezifische Kernelartefakt."}
 ::option[Jedes ladbare Modul für alle installierten Kernel.]{#kernel-location-all-modules explanation="Module werden getrennt in einem veröffentlichungsspezifischen Modulbaum gespeichert."}
@@ -37,8 +36,7 @@ Das initramfs muss die frühen Module und Werkzeuge enthalten, die sein zugehör
 
 `config-*` hilft zu verstehen, welche Funktionen fest eingebaut, modular oder ausgelassen wurden. `System.map-*` kann bei der Symbolisierung und Fehlersuche helfen, doch Adressrandomisierung, getrennte Debuginformationen und Distributionswerkzeuge beeinflussen seine Verwendung. Diese Dateien sind unterstützende Artefakte und keine alternativen Kernel.
 
-:::single-choice{#kernel-location-initramfs-match}
-Warum ist ein initramfs an eine bestimmte Kernelveröffentlichung und Systemkonfiguration gebunden?
+:::single-choice{#kernel-location-initramfs-match} Warum ist ein initramfs an eine bestimmte Kernelveröffentlichung und Systemkonfiguration gebunden?
 
 ::option[Es speichert den dauerhaften Inhalt jedes eingehängten Dateisystems.]{#kernel-location-all-filesystems explanation="Ein initramfs ist eine kleine frühe Startumgebung und keine vollständige Systemsicherung."}
 ::option[Es weist Benutzern bei jedem Start neue UIDs zu.]{#kernel-location-user-ids explanation="Die Verwaltung von Kontoidentitäten gehört nicht zu seiner gewöhnlichen Aufgabe."}
@@ -55,8 +53,7 @@ $ printf '/lib/modules/%s\n' "$(uname -r)"
 
 Bei zusammengeführten Dateisystemlayouts kann dies zu `/usr/lib/modules/KERNEL_RELEASE` aufgelöst werden. Jeder installierte Kernel benötigt einen kompatiblen Modulbaum und Abhängigkeitsindizes. `modprobe` verwendet veröffentlichungsspezifische Metadaten, statt beliebige `.ko`-Dateien auf dem gesamten Datenträger zu durchsuchen.
 
-:::single-choice{#kernel-location-module-tree}
-Welches Verzeichnis enthält konventionsgemäß die Module für die laufende Kernelveröffentlichung?
+:::single-choice{#kernel-location-module-tree} Welches Verzeichnis enthält konventionsgemäß die Module für die laufende Kernelveröffentlichung?
 
 ::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="Benutzer-Home-Verzeichnisse sind nicht der standardmäßige Systemmodulbaum."}
 ::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="Die Veröffentlichungskomponente trennt Modul-ABI und Abhängigkeitsdaten für jeden installierten Kernel."}
@@ -69,8 +66,7 @@ Ein Unified Kernel Image oder UKI ist eine einzelne signierte EFI-Programmdatei,
 
 Ein leer wirkendes traditionelles `/boot`-Layout beweist daher nicht, dass kein Kernel installiert ist. Verwende `findmnt`, die Paketdatenbank, Bootmanagerwerkzeuge und die Konfiguration des Bootloaders, um die aktiven Artefakte zuzuordnen.
 
-:::single-choice{#kernel-location-uki}
-Was kann ein Unified Kernel Image verbinden?
+:::single-choice{#kernel-location-uki} Was kann ein Unified Kernel Image verbinden?
 
 ::option[Alle Benutzer-Home-Verzeichnisse in einem GPT-Header.]{#kernel-location-uki-homes explanation="Ein UKI ist eine ausführbare Startdatei und weder ein Benutzerdatencontainer noch eine Partitionstabelle."}
 ::option[Jedes installierte Paket in einem einzelnen Shell-Skript.]{#kernel-location-uki-packages explanation="Es paketiert Startkomponenten und nicht die vollständige Betriebssystem-Paketquelle."}

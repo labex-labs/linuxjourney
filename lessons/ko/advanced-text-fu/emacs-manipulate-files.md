@@ -24,16 +24,14 @@ Emacs는 읽을 수 있는 기존 파일을 버퍼에 열거나 경로가 없으
 
 경로를 입력할 때 Tab 자동 완성을 사용할 수 있습니다. 디렉터리를 방문하면 일반적으로 디렉터리를 텍스트 파일로 처리하지 않고 Emacs의 디렉터리 편집기인 Dired를 엽니다.
 
-:::single-choice{#emacs-find-file-key}
-경로를 묻고 방문하는 Emacs 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-find-file-key} 경로를 묻고 방문하는 Emacs 키 시퀀스는 무엇인가요?
 
 ::option[`C-x C-s`]{#emacs-file-save explanation="현재 파일 방문 버퍼를 저장하며 다른 경로를 방문하라는 입력을 요청하지 않습니다."}
 ::option[`C-x C-c`]{#emacs-file-exit explanation="파일을 여는 대신 Emacs 종료를 시작합니다."}
 ::option[`C-x C-f`]{#emacs-find-file .correct explanation="`find-file`을 실행하여 방문할 경로를 미니버퍼에서 묻습니다."}
 :::
 
-:::single-choice{#emacs-find-missing-file}
-`C-x C-f`가 존재하지 않는 경로를 방문할 때 디스크 파일은 일반적으로 언제 만들어지나요?
+:::single-choice{#emacs-find-missing-file} `C-x C-f`가 존재하지 않는 경로를 방문할 때 디스크 파일은 일반적으로 언제 만들어지나요?
 
 ::option[새 버퍼가 성공적으로 저장된 뒤에만 만들어집니다.]{#emacs-file-created-on-save .correct explanation="파일이 없어도 버퍼에 편집 내용을 담을 수 있고 저장이 파일 생성을 수행합니다."}
 ::option[경로를 입력하자마자 만들어집니다.]{#emacs-file-created-immediately explanation="Emacs는 먼저 새 경로와 연결된 버퍼를 만들고 디스크 생성은 미룹니다."}
@@ -50,8 +48,7 @@ C-x C-s
 
 버퍼에 연결된 파일 이름이 없으면 Emacs가 이름을 묻습니다. 쓰기에 성공하면 버퍼의 수정 표시가 사라지고 실패하면 저장하지 않은 데이터가 버퍼에 남으며 오류가 보고됩니다.
 
-:::single-choice{#emacs-save-current-buffer}
-현재 파일 방문 버퍼를 저장하는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-save-current-buffer} 현재 파일 방문 버퍼를 저장하는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x C-s`]{#emacs-save-buffer-key .correct explanation="`C-x C-s`는 현재 버퍼에 대해 `save-buffer`를 실행합니다."}
 ::option[`C-x C-w`]{#emacs-write-file-key explanation="다른 파일 이름을 묻고 버퍼가 방문하는 파일을 바꿉니다."}
@@ -68,8 +65,7 @@ C-x C-w
 
 Emacs의 “다른 이름으로 저장” 동작입니다. 원래 경로를 계속 방문하면서 별도의 사본만 쓰는 것과는 다릅니다.
 
-:::single-choice{#emacs-write-file-as}
-현재 버퍼에 일반적인 다른 이름으로 저장 작업을 수행하는 키 시퀀스는 무엇인가요?
+:::single-choice{#emacs-write-file-as} 현재 버퍼에 일반적인 다른 이름으로 저장 작업을 수행하는 키 시퀀스는 무엇인가요?
 
 ::option[`C-x C-f`]{#emacs-find-file-other explanation="파일을 방문하고 다른 버퍼로 전환할 수 있지만 현재 버퍼의 다른 이름으로 저장은 아닙니다."}
 ::option[`C-x k`]{#emacs-write-as-kill-buffer explanation="버퍼 종료 여부를 묻고 저장하지 않은 변경을 확인할 수 있지만 새 이름으로 저장하지 않습니다."}
@@ -86,8 +82,7 @@ C-x s
 
 Emacs는 일반적으로 저장 가능한 수정 버퍼마다 저장할지 묻습니다. 버퍼 이름을 읽고 의도적으로 답하세요. 조건 없이 모두 저장하는 단축키가 아닙니다.
 
-:::single-choice{#emacs-save-some-buffers}
-`C-x s`는 일반적으로 무엇을 하나요?
+:::single-choice{#emacs-save-some-buffers} `C-x s`는 일반적으로 무엇을 하나요?
 
 ::option[수정된 파일 방문 버퍼의 저장 여부를 묻습니다.]{#emacs-prompt-save-some .correct explanation="`save-some-buffers`는 저장 가능한 수정 버퍼를 검토하고 어느 버퍼를 쓸지 묻습니다."}
 ::option[이름을 표시하지 않고 모든 버퍼를 조용히 저장합니다.]{#emacs-silent-save-all explanation="일반적인 대화형 명령은 모든 버퍼를 조건 없이 쓰지 않고 사용자에게 묻습니다."}

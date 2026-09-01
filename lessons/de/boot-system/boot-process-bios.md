@@ -20,8 +20,7 @@ Bei einem MBR-Aufbau enthält dieser Sektor einen kleinen Bereich für Bootcode,
 
 Ein BIOS-Start von einem GPT-Datenträger ist möglich, doch der Protective MBR allein enthält nicht die späteren Stufen des Bootloaders. GRUB verwendet auf GPT dafür häufig eine kleine BIOS-Bootpartition mit eingebettetem Kerncode. Der genaue Aufbau hängt vom installierten Bootloader ab.
 
-:::single-choice{#boot-bios-legacy-first-sector}
-Was lädt ein älteres BIOS üblicherweise zuerst vom ausgewählten Bootdatenträger?
+:::single-choice{#boot-bios-legacy-first-sector} Was lädt ein älteres BIOS üblicherweise zuerst vom ausgewählten Bootdatenträger?
 
 ::option[Den anfänglichen Bootsektor mit kleinem Bootcode.]{#boot-bios-boot-sector .correct explanation="Der ältere Festplattenpfad der Firmware übergibt die Kontrolle an Code im ersten Sektor des ausgewählten Datenträgers."}
 ::option[Das gesamte Linux-Root-Dateisystem in den Firmware-Speicher.]{#boot-bios-entire-root explanation="Der Sektor der ersten Stufe ist sehr klein; spätere Software findet den Kernel und den Root-Speicher."}
@@ -34,8 +33,7 @@ UEFI-Firmware kann ein definiertes Dateisystem auf einer EFI-Systempartition (ES
 
 Die ESP enthält Bootanwendungen und unterstützende Dateien, nicht „alle Startinformationen“. Kernel-Abbilder, initramfs-Dateien und Bootloader-Konfiguration können sich abhängig vom Bootdesign dort oder an anderer Stelle befinden. GPT ist für UEFI-Systeme üblich, doch Firmware-Schnittstelle und Partitionstabellenschema bleiben getrennte Ebenen.
 
-:::single-choice{#boot-bios-uefi-esp}
-Was lädt UEFI üblicherweise von einer EFI-Systempartition?
+:::single-choice{#boot-bios-uefi-esp} Was lädt UEFI üblicherweise von einer EFI-Systempartition?
 
 ::option[Eine durch einen Firmware-Booteintrag ausgewählte ausführbare EFI-Datei.]{#boot-bios-efi-executable .correct explanation="Die UEFI-Bootverwaltung verweist die Firmware auf eine ausführbare Datei auf einer unterstützten Systempartition."}
 ::option[Ein POSIX-Shellskript aus einem beliebigen ext4-Home-Verzeichnis.]{#boot-bios-shell-script explanation="Die Firmware lädt definierte ausführbare Formate von unterstützten Bootpfaden, statt eine gewöhnliche Benutzershell auszuführen."}
@@ -48,8 +46,7 @@ Ist Secure Boot aktiviert, überprüft UEFI anhand der hinterlegten Plattformsch
 
 Secure Boot verschlüsselt den Datenträger nicht und beweist nicht, dass jedes Userspace-Programm sicher ist. Es hilft dabei, die Annahme nicht autorisierten Codes vor dem Systemstart gemäß der konfigurierten Vertrauensrichtlinie zu verhindern.
 
-:::single-choice{#boot-bios-secure-boot-purpose}
-Was setzt UEFI Secure Boot in erster Linie durch?
+:::single-choice{#boot-bios-secure-boot-purpose} Was setzt UEFI Secure Boot in erster Linie durch?
 
 ::option[Die automatische Verschlüsselung jeder Datei auf jedem Datenträger.]{#boot-bios-secure-encryption explanation="Für die Vertraulichkeit von Datenträgern ist ein getrenntes Verschlüsselungssystem erforderlich."}
 ::option[Die signaturbasierte Autorisierung ausführbarer Dateien in der Bootkette.]{#boot-bios-secure-signatures .correct explanation="Firmware und später geprüfte Komponenten akzeptieren Code anhand hinterlegter Schlüssel und Richtlinien."}
@@ -62,8 +59,7 @@ Die Taste zum Aufrufen der Firmware-Einstellungen hängt von Hersteller und Mode
 
 Notiere vorhandene Werte und Wiederherstellungsschlüssel, bevor du Secure Boot, den Modus des Speichercontrollers, TPM, Virtualisierung oder die Bootreihenfolge änderst. Eine Firmware-Änderung kann verschlüsselte Datenträger oder das installierte Betriebssystem vorübergehend unzugänglich machen.
 
-:::single-choice{#boot-bios-setup-key}
-Warum gibt es keine universelle Taste zum Aufrufen der Firmware-Einstellungen?
+:::single-choice{#boot-bios-setup-key} Warum gibt es keine universelle Taste zum Aufrufen der Firmware-Einstellungen?
 
 ::option[Linux weist nach jedem Start zufällig eine neue Taste zu.]{#boot-bios-random-key explanation="Das Betriebssystem legt die Taste der frühen Firmware-Startphase nicht zufällig fest."}
 ::option[Taste und Zeitpunkt werden vom Systemhersteller festgelegt.]{#boot-bios-vendor-key .correct explanation="Firmware-Schnittstellen unterscheiden sich zwischen Modellen, weshalb die maßgebliche Gerätedokumentation erforderlich ist."}

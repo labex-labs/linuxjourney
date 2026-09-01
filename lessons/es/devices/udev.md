@@ -24,8 +24,7 @@ Cuando se añade, cambia, mueve o elimina un dispositivo, udev puede:
 
 El kernel sigue siendo responsable del dispositivo real y de su controlador. Eliminar un nodo de `/dev` no retira físicamente el hardware, y crear manualmente un nodo con `mknod` no hace que exista hardware incompatible ni vincula un controlador.
 
-:::single-choice{#udev-kernel-event-input}
-¿Qué activa normalmente el procesamiento de udev ante un cambio de dispositivo?
+:::single-choice{#udev-kernel-event-input} ¿Qué activa normalmente el procesamiento de udev ante un cambio de dispositivo?
 
 ::option[Una actualización de repositorios de paquetes realizada por APT.]{#udev-apt-refresh explanation="Las actualizaciones de metadatos de paquetes no guardan relación con el procesamiento de sucesos de dispositivos activos."}
 ::option[Que un usuario cambie manualmente el nombre de todos los archivos bajo `/dev`.]{#udev-manual-renaming explanation="Los sucesos del kernel y las reglas impulsan la política dinámica, no un cambio manual masivo de nombres."}
@@ -44,8 +43,7 @@ Los archivos se procesan según el orden lexicográfico de sus nombres; los arch
 
 Una regla puede afectar a todos los dispositivos coincidentes, así que prueba cuidadosamente su alcance. No edites directamente reglas de paquetes cuando resulte apropiada una regla local que las sustituya o complemente.
 
-:::single-choice{#udev-local-rules-directory}
-¿Qué directorio está destinado a las reglas persistentes de udev del administrador local?
+:::single-choice{#udev-local-rules-directory} ¿Qué directorio está destinado a las reglas persistentes de udev del administrador local?
 
 ::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="Procfs no proporciona el directorio persistente de reglas locales."}
 ::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="La política local corresponde a `/etc`, separada de las reglas de fabricantes gestionadas por paquetes."}
@@ -62,8 +60,7 @@ $ udevadm info --query=all --name=/dev/sda
 
 Utiliza un nodo que exista en el sistema actual. `udevadm info --attribute-walk --name=...` puede mostrar atributos a lo largo de la cadena de padres de sysfs, lo que ayuda a crear una regla. `udevadm monitor --kernel --udev --property` observa los sucesos del kernel y los procesados; puede exponer identificadores de dispositivos, así que trata adecuadamente la salida capturada.
 
-:::single-choice{#udev-info-purpose}
-¿Qué solicita `udevadm info --query=all --name=/dev/sda`?
+:::single-choice{#udev-info-purpose} ¿Qué solicita `udevadm info --query=all --name=/dev/sda`?
 
 ::option[Una reescritura destructiva de la tabla de particiones del disco.]{#udev-info-partition-write explanation="La consulta es una operación de inspección y no formatea ni vuelve a particionar el almacenamiento."}
 ::option[La instalación desde Internet de un controlador del kernel que falta.]{#udev-info-install-driver explanation="La inspección mediante udevadm no actúa como descargador de paquetes."}
@@ -76,8 +73,7 @@ Recargar los archivos de reglas afecta al procesamiento de sucesos futuros; no r
 
 Haz una copia de seguridad de las reglas locales, valida la sintaxis, observa un único dispositivo de prueba conocido y conserva una vía de recuperación antes de cambiar permisos o nombres. Evita realizar trabajos prolongados directamente durante el procesamiento de sucesos de udev; delégalos en un servicio apropiado.
 
-:::single-choice{#udev-reload-effect}
-¿Qué cambia principalmente al recargar las reglas de udev?
+:::single-choice{#udev-reload-effect} ¿Qué cambia principalmente al recargar las reglas de udev?
 
 ::option[La forma en que se procesan los sucesos posteriores de dispositivos coincidentes.]{#udev-future-events .correct explanation="La recarga actualiza las reglas en memoria; todavía debe producirse o activarse deliberadamente un suceso para que se vuelva a evaluar un dispositivo."}
 ::option[El cableado físico de todos los dispositivos conectados.]{#udev-physical-wiring explanation="Cargar reglas de software no puede cambiar las conexiones del hardware."}

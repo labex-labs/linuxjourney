@@ -44,8 +44,7 @@ $ sudo passwd -S bob
 $ id bob
 ```
 
-:::single-choice{#user-tools-create-home}
-Welche Option von `useradd` fordert ausdrücklich die Erstellung des Home-Verzeichnisses für das neue Konto an?
+:::single-choice{#user-tools-create-home} Welche Option von `useradd` fordert ausdrücklich die Erstellung des Home-Verzeichnisses für das neue Konto an?
 
 ::option[`-M`]{#user-tools-no-home-option explanation="Das großgeschriebene `-M` weist verbreitete `useradd`-Implementierungen ausdrücklich an, kein Home-Verzeichnis zu erstellen."}
 ::option[`-s`]{#user-tools-shell-option explanation="Die Option `-s` wählt eine Anmelde-Shell und erstellt nicht selbst ein Home-Verzeichnis."}
@@ -68,8 +67,7 @@ $ sudo passwd bob
 
 Gib Passwörter ausschließlich an der geschützten Eingabeaufforderung ein und nicht in Befehlsargumenten, im Shell-Verlauf, in Lektionsnotizen oder in einem Chat. PAM-Richtlinien können schwache oder wiederverwendete Passwörter ablehnen. Für durch Verzeichnisdienste verwaltete Konten kann ein anderes Werkzeug erforderlich sein.
 
-:::single-choice{#user-tools-change-own-password}
-Welcher Befehl ermöglicht dem aktuellen Benutzer gewöhnlich, sein eigenes Passwort über eine interaktive Eingabeaufforderung zu ändern?
+:::single-choice{#user-tools-change-own-password} Welcher Befehl ermöglicht dem aktuellen Benutzer gewöhnlich, sein eigenes Passwort über eine interaktive Eingabeaufforderung zu ändern?
 
 ::option[`useradd`]{#user-tools-add-not-password explanation="`useradd` erstellt einen Kontoeintrag und ist nicht der gewöhnliche interaktive Befehl zur Passwortänderung."}
 ::option[`userdel`]{#user-tools-delete-not-password explanation="`userdel` entfernt ein lokales Konto und hat nichts mit der Änderung des Passworts des Aufrufers zu tun."}
@@ -90,8 +88,7 @@ Prüfe vor dem Verschieben des Home-Verzeichnisses das Ziel, die Eigentumsverhä
 
 Gruppenänderungen wirken gewöhnlich in neuen Anmeldesitzungen und nicht in Prozessen, die bereits mit den alten Zugangsdaten laufen.
 
-:::single-choice{#user-tools-append-group}
-Welcher Befehl fügt `bob` der ergänzenden Gruppe `developers` hinzu, ohne seine anderen ergänzenden Mitgliedschaften zu ersetzen?
+:::single-choice{#user-tools-append-group} Welcher Befehl fügt `bob` der ergänzenden Gruppe `developers` hinzu, ohne seine anderen ergänzenden Mitgliedschaften zu ersetzen?
 
 ::option[`usermod -G developers bob`]{#user-tools-replace-groups explanation="Ohne `-a` ersetzt `-G` die Liste der ergänzenden Gruppen und kann bestehende Mitgliedschaften entfernen."}
 ::option[`usermod -aG developers bob`]{#user-tools-append-groups .correct explanation="Die Option `-a` fügt die mit `-G` benannte Gruppe hinzu und bewahrt andere ergänzende Mitgliedschaften."}
@@ -104,8 +101,7 @@ Ein Administrator kann den lokalen Passwort-Hash mit `passwd -l USER` sperren un
 
 Eine Passwortsperre beendet nicht unbedingt den Zugriff über SSH-Schlüssel, Token, geplante Aufgaben, bereits laufende Prozesse oder dienstspezifische Authentifizierung. Um ein Konto umfassend zu deaktivieren, musst du die Bedrohung und die Zugriffswege bestimmen und anschließend eine abgestimmte Richtlinie anwenden. Diese kann Kontoablauf, Anmelde-Shell, Dienstzugriff, Schlüssel und Sitzungsbeendigung umfassen.
 
-:::single-choice{#user-tools-password-lock-scope}
-Was sperrt `passwd -l bob` in erster Linie?
+:::single-choice{#user-tools-password-lock-scope} Was sperrt `passwd -l bob` in erster Linie?
 
 ::option[Jeden möglichen Authentifizierungs- und Ausführungsweg für das Konto.]{#user-tools-lock-everything explanation="Schlüssel, Token, Aufgaben, Dienste und bestehende Sitzungen können getrennte Kontrollen erfordern."}
 ::option[Alle Dateien, die derzeit Bobs UID gehören.]{#user-tools-lock-files explanation="Der Passwortzustand ändert weder Dateisystemeigentum noch macht er Dateien im Besitz des Kontos automatisch unzugänglich."}
@@ -126,8 +122,7 @@ Vor jeder Entfernung:
 
 `userdel -r` garantiert nicht die Entfernung von Dateien außerhalb der konfigurierten Home- und Mail-Speicherorte. Das Löschen eines Kontos kann außerdem numerische Eigentumsangaben an Dateien, Datenbankberechtigungen, Anwendungsidentitäten und Einträge in entfernten Verzeichnisdiensten zurücklassen.
 
-:::single-choice{#user-tools-userdel-r-scope}
-Welche zusätzliche Entfernung fordert ein übliches `userdel -r bob` im Vergleich zu einem einfachen `userdel bob` an?
+:::single-choice{#user-tools-userdel-r-scope} Welche zusätzliche Entfernung fordert ein übliches `userdel -r bob` im Vergleich zu einem einfachen `userdel bob` an?
 
 ::option[Jede Datei mit Bobs UID auf jedem eingehängten Dateisystem.]{#user-tools-delete-all-owned explanation="Das Werkzeug findet und löscht nicht grundsätzlich alle Dateien mit dieser UID auf sämtlichen Speichern."}
 ::option[Jedes entfernte Konto, dessen Benutzername ebenfalls `bob` lautet.]{#user-tools-delete-remote explanation="`userdel` arbeitet mit den betreffenden lokalen Kontodatenbanken und löscht keine unabhängigen Identitäten aus Verzeichnisdiensten."}

@@ -25,8 +25,7 @@ $ sudo less /var/log/auth.log
 
 La unidad SSH puede llamarse `ssh.service` o `sshd.service`. Los permisos suelen restringir estos registros porque exponen detalles sobre cuentas y accesos.
 
-:::single-choice{#auth-logs-file-location}
-¿Dónde deben almacenarse siempre los eventos de autenticación de Linux?
+:::single-choice{#auth-logs-file-location} ¿Dónde deben almacenarse siempre los eventos de autenticación de Linux?
 
 ::option[En el destino elegido por la política local de registro.]{#auth-logs-local-policy .correct explanation="Los archivos, el diario y los recolectores centralizados varían según la distribución y la configuración."}
 ::option[En `/var/log/auth.log` en todas las distribuciones.]{#auth-logs-auth-only explanation="Esa ruta es habitual en los sistemas de la familia Debian, pero no es universal."}
@@ -43,8 +42,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 Esto identifica la hora, la máquina, el programa emisor, el módulo y el servicio PAM, el usuario solicitado para la sesión y el UID de origen. Por sí solo, no identifica a la persona que estaba detrás del UID 1000 ni demuestra que la acción fuera maliciosa. Resuelve el UID con los registros de cuentas válidos en el momento del incidente y correlaciona la terminal, la dirección remota, la sesión y los eventos circundantes.
 
-:::single-choice{#auth-logs-uid-inference}
-¿Qué establece `uid=1000` en este registro?
+:::single-choice{#auth-logs-uid-inference} ¿Qué establece `uid=1000` en este registro?
 
 ::option[Que la contraseña de root se escribió incorrectamente mil veces.]{#auth-logs-thousand-passwords explanation="El valor es un número de identidad, no un contador de intentos."}
 ::option[La identidad numérica de la cuenta asociada al proceso que inició la acción.]{#auth-logs-numeric-identity .correct explanation="Para atribuir la acción a una persona se necesitan más pruebas de la sesión y de la cuenta."}
@@ -57,8 +55,7 @@ Busca tanto los intentos aceptados como los rechazados dentro de un intervalo li
 
 `last` y `lastb` pueden resumir registros de `wtmp` y `btmp` cuando se mantienen, pero esas bases de datos binarias tienen sus propios límites de conservación e integridad. Contrástalas con los registros del diario o de syslog y con las fuentes centralizadas.
 
-:::single-choice{#auth-logs-failed-attempts}
-¿Con qué deben correlacionarse los intentos repetidos de inicio de sesión fallidos?
+:::single-choice{#auth-logs-failed-attempts} ¿Con qué deben correlacionarse los intentos repetidos de inicio de sesión fallidos?
 
 ::option[Únicamente con el espacio libre total del disco.]{#auth-logs-disk-space explanation="La capacidad no identifica el origen, la cuenta de destino ni el método de un intento de autenticación."}
 ::option[Con el origen, la cuenta de destino, el método, el momento y las sesiones satisfactorias.]{#auth-logs-correlated-fields .correct explanation="Estos detalles ayudan a distinguir errores de configuración, errores de usuarios, exploraciones y accesos no autorizados."}
@@ -69,8 +66,7 @@ Busca tanto los intentos aceptados como los rechazados dentro de un intervalo li
 
 Si se sospecha de un incidente, registra la hora y la zona horaria de la máquina, conserva los registros originales y sus metadatos y protege todas las copias exportadas. Evita editar las pruebas en su ubicación original. Bloquear cuentas, cambiar el cortafuegos y terminar sesiones puede interrumpir accesos legítimos o alertar a un atacante, así que sigue el proceso de respuesta a incidentes y conserva una vía de recuperación.
 
-:::single-choice{#auth-logs-preservation}
-¿Cómo deben tratarse las pruebas de autenticación durante una investigación?
+:::single-choice{#auth-logs-preservation} ¿Cómo deben tratarse las pruebas de autenticación durante una investigación?
 
 ::option[Editar las líneas sospechosas en el archivo original para hacerlas más claras.]{#auth-logs-edit-original explanation="Modificar la fuente daña la integridad de las pruebas."}
 ::option[Publicar el registro completo para que cualquiera pueda identificar a los usuarios.]{#auth-logs-publish explanation="Los registros de autenticación pueden exponer identidades sensibles y detalles de la infraestructura."}

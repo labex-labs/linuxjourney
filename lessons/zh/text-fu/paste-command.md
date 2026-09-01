@@ -31,8 +31,7 @@ bob	viewer
 
 列之间看见的空白是制表符。`cat` 会依次写出每个完整文件，而 `paste` 会组合各输入中的对应行。
 
-:::single-choice{#paste-corresponding-lines}
-`first.txt` 依次包含 `A`、`B`，`second.txt` 依次包含 `1`、`2`。`paste first.txt second.txt` 默认会产生什么？
+:::single-choice{#paste-corresponding-lines} `first.txt` 依次包含 `A`、`B`，`second.txt` 依次包含 `1`、`2`。`paste first.txt second.txt` 默认会产生什么？
 
 ::option[`A`、`B`、`1`、`2` 分别位于连续四行。]{#paste-concatenated-files explanation="这更像依次写出两个文件；`paste` 会组合对应行。"}
 ::option[`A`、`B`、`1`、`2` 不带分隔符地位于一行。]{#paste-one-line-no-separator explanation="串成一行需要使用 `-s`，而且默认分隔符是制表符，并非无分隔符。"}
@@ -51,8 +50,7 @@ bob:viewer
 
 具有 shell 含义的分隔符需要加引号。列表包含多个字符时，`paste` 可以循环使用它们；构建两列时，单个字符最容易理解。
 
-:::single-choice{#paste-colon-delimiter}
-哪个命令会用冒号连接 `names.txt` 与 `roles.txt` 中的对应行？
+:::single-choice{#paste-colon-delimiter} 哪个命令会用冒号连接 `names.txt` 与 `roles.txt` 中的对应行？
 
 ::option[`paste -d ':' names.txt roles.txt`]{#paste-colon-files .correct explanation="`-d` 会把每对字段间的默认制表符替换为指定的冒号。"}
 ::option[`paste -s ':' names.txt roles.txt`]{#paste-serial-colon-operand explanation="`-s` 选择串行模式，而 `:` 会被视为另一个输入路径，不是分隔符。"}
@@ -78,8 +76,7 @@ The quick brown fox
 
 在 `-s` 模式下提供多个文件时，每个文件都会成为一个输出行。
 
-:::single-choice{#paste-serialize-with-spaces}
-哪个命令会把 `words.txt` 中的所有行连接成一个以空格分隔的输出行？
+:::single-choice{#paste-serialize-with-spaces} 哪个命令会把 `words.txt` 中的所有行连接成一个以空格分隔的输出行？
 
 ::option[`paste -d ' ' words.txt`]{#paste-parallel-one-file explanation="在默认并行模式中，单个输入文件仍会让每个输入行对应一个输出行；没有跨文件字段可供分隔。"}
 ::option[`paste -s words.txt roles.txt`]{#paste-two-serial-files explanation="这会用默认制表符分别串行处理两个文件，产生两个输出行，而非所需的单文件空格分隔结果。"}
@@ -99,8 +96,7 @@ B:2
 C:
 ```
 
-:::single-choice{#paste-unequal-files}
-并行传给 `paste` 的某个文件比其他文件更早结束时，会发生什么？
+:::single-choice{#paste-unequal-files} 并行传给 `paste` 的某个文件比其他文件更早结束时，会发生什么？
 
 ::option[`paste` 会让该文件贡献空字段，直到最长输入结束。]{#paste-empty-fields .correct explanation="并行模式会持续到所有文件耗尽，较短输入中缺失的行表示为空字段。"}
 ::option[`paste` 会立即停止并丢弃剩余行。]{#paste-stop-shortest explanation="`paste` 会继续处理最长输入，不会仅因另一个文件结束就丢弃剩余行。"}
@@ -117,8 +113,7 @@ alice:admin
 bob:viewer
 ```
 
-:::single-choice{#paste-stdin-operand}
-在 `producer | paste names.txt -` 中，`-` 操作数表示什么？
+:::single-choice{#paste-stdin-operand} 在 `producer | paste names.txt -` 中，`-` 操作数表示什么？
 
 ::option[把合并结果写入 stderr。]{#paste-write-stderr explanation="此处的连字符表示输入来源，并不会重定向输出流。"}
 ::option[删除两列之间的分隔符。]{#paste-remove-delimiter explanation="分隔符由 `-d` 控制；连字符不会改变分隔符。"}

@@ -22,8 +22,7 @@ $ less /home/pete/Documents/text1
 
 Tant que `less` est actif, les touches contrôlent la visionneuse au lieu de lancer les commandes ordinaires du shell. Vous revenez au shell lorsque vous quittez la visionneuse.
 
-:::single-choice{#open-long-file}
-Quelle commande ouvre `/var/log/syslog` dans une visionneuse interactive ?
+:::single-choice{#open-long-file} Quelle commande ouvre `/var/log/syslog` dans une visionneuse interactive ?
 
 ::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` ouvre le fichier dans une visionneuse qui permet de le parcourir, d'y rechercher du texte, puis de revenir au shell."}
 ::option[`cat /var/log/syslog`]{#print-log explanation="`cat` envoie tout le fichier sur la sortie standard d'un coup ; elle ne fournit pas de commandes de pagination interactives."}
@@ -40,8 +39,7 @@ Lorsque la visionneuse est ouverte :
 - appuyez sur `u` pour remonter d'un demi-écran ou sur `d` pour descendre d'un demi-écran ;
 - appuyez sur `h` pour ouvrir l'aide intégrée.
 
-:::single-choice{#jump-to-file-end}
-Quelle touche va directement à la fin d'un fichier dans `less` ?
+:::single-choice{#jump-to-file-end} Quelle touche va directement à la fin d'un fichier dans `less` ?
 
 ::option[`g`]{#lowercase-g explanation="Le `g` minuscule va au début du fichier. La majuscule produit le déplacement opposé."}
 ::option[`G`]{#uppercase-g .correct explanation="Le `G` majuscule va à la fin de l'entrée. La commande est sensible à la casse."}
@@ -57,8 +55,7 @@ Tapez `/`, puis un motif et Entrée pour rechercher vers l'avant. Commencez par 
 - `n` : répéter la recherche dans le même sens ;
 - `N` : répéter la recherche dans le sens opposé.
 
-:::single-choice{#repeat-search-direction}
-Après une recherche vers l'avant de `error`, quelle touche répète la recherche dans le même sens ?
+:::single-choice{#repeat-search-direction} Après une recherche vers l'avant de `error`, quelle touche répète la recherche dans le même sens ?
 
 ::option[`n`]{#same-search .correct explanation="Le `n` minuscule répète la dernière recherche dans son sens initial, ici vers l'avant."}
 ::option[`N`]{#opposite-search explanation="Le `N` majuscule répète la recherche dans le sens opposé ; après une recherche vers l'avant, il parcourt les correspondances vers l'arrière."}
@@ -69,8 +66,7 @@ Après une recherche vers l'avant de `error`, quelle touche répète la recherch
 
 Appuyez sur `q` pour quitter `less` et revenir à l'invite du shell.
 
-:::single-choice{#quit-less}
-Quelle touche quitte `less` et revient au shell ?
+:::single-choice{#quit-less} Quelle touche quitte `less` et revient au shell ?
 
 ::option[`q`]{#less-quit .correct explanation="La commande `q` ferme la visionneuse et rétablit l'invite du shell."}
 ::option[`h`]{#less-help explanation="La touche `h` ouvre l'aide dans `less` ; elle ne revient pas directement au shell."}
@@ -99,8 +95,7 @@ Une commande peut aussi envoyer sa sortie à `less` par un tube :
 $ dmesg | less
 ```
 
-:::single-choice{#follow-growing-log}
-Quelle commande ouvre `/var/log/syslog` et suit le nouveau contenu à son arrivée ?
+:::single-choice{#follow-growing-log} Quelle commande ouvre `/var/log/syslog` et suit le nouveau contenu à son arrivée ?
 
 ::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="La commande initiale `+F` active le mode de suivi ; `less` affiche donc le contenu ajouté au journal."}
 ::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="La commande initiale `+G` ouvre le fichier à la fin, mais ne suit pas le contenu ajouté ensuite."}

@@ -23,8 +23,7 @@ A relação nem sempre é de uma função para uma syscall:
 - uma função vDSO otimizada pode obter certos dados mantidos pelo kernel sem uma transição completa
 - uma chamada pode sustentar várias APIs de alto nível
 
-:::single-choice{#system-calls-library-wrapper}
-O que um wrapper típico da libc faz?
+:::single-choice{#system-calls-library-wrapper} O que um wrapper típico da libc faz?
 
 ::option[Prepara argumentos da ABI, entra no kernel e traduz o resultado.]{#system-calls-wrapper-role .correct explanation="O wrapper oculta convenções específicas da arquitetura atrás de uma interface comum de biblioteca."}
 ::option[Concede ao aplicativo acesso irrestrito à memória do kernel.]{#system-calls-wrapper-unrestricted explanation="A entrada continua controlada, e o kernel valida a solicitação."}
@@ -39,8 +38,7 @@ Ao terminar, o kernel retorna um valor ou indicação de erro. Wrappers da bibli
 
 Chamar toda entrada de “interrupção de software” é impreciso em arquiteturas atuais; traps, instruções rápidas e supervisor calls implementam transições controladas relacionadas, mas diferentes.
 
-:::single-choice{#system-calls-entry-result}
-Quem valida os argumentos e a autorização de uma chamada de sistema?
+:::single-choice{#system-calls-entry-result} Quem valida os argumentos e a autorização de uma chamada de sistema?
 
 ::option[O prompt do shell antes de o processo iniciar.]{#system-calls-shell-validates explanation="Um processo pode fazer chamadas sem shell, e as verificações do kernel continuam necessárias."}
 ::option[A implementação do serviço solicitado no kernel.]{#system-calls-kernel-validates .correct explanation="O handler privilegiado verifica ponteiros, estado, credenciais e política antes de agir."}
@@ -53,8 +51,7 @@ Números e convenções de chamadas são específicos da arquitetura. A mesma ch
 
 Um processo não privilegiado não insere handlers arbitrários na tabela do kernel em execução. Ampliar a interface exige código do kernel e projeto cuidadoso da ABI. O seccomp pode filtrar chamadas permitidas, mas não cria novas implementações.
 
-:::single-choice{#system-calls-number-portability}
-Por que um aplicativo não deve fixar números de syscall de outra arquitetura?
+:::single-choice{#system-calls-number-portability} Por que um aplicativo não deve fixar números de syscall de outra arquitetura?
 
 ::option[Os números e as convenções são específicos da ABI.]{#system-calls-abi-specific .correct explanation="Um número válido em uma arquitetura pode indicar outra operação ou não existir em outra."}
 ::option[As chamadas recebem nomes do diretório de trabalho atual.]{#system-calls-directory-names explanation="Caminhos não definem a numeração da ABI."}
@@ -77,8 +74,7 @@ $ strace -f -e trace=%file -o trace.log -- command
 
 `strace` pode revelar caminhos, argumentos, dados do ambiente, endereços de rede, fragmentos de arquivos e credenciais passadas indevidamente. Proteja os traces e remova-os conforme a política de dados.
 
-:::single-choice{#system-calls-strace-purpose}
-O que o `strace` observa principalmente?
+:::single-choice{#system-calls-strace-purpose} O que o `strace` observa principalmente?
 
 ::option[Apenas linhas do código-fonte executadas no aplicativo.]{#system-calls-strace-source-lines explanation="Rastreamento de fonte exige depuradores ou instrumentação com símbolos."}
 ::option[Chamadas de sistema e sinais no limite entre usuário e kernel.]{#system-calls-strace-boundary .correct explanation="Ele informa solicitações, argumentos, resultados e sinais dos processos rastreados."}
@@ -91,8 +87,7 @@ O rastreamento altera o tempo e pode causar sobrecarga. Uma chamada com falha po
 
 Permissões e políticas de ptrace limitam os processos rastreáveis. Não anexe a processos de outro usuário ou de produção sem autorização; pausas e mudanças de tempo podem afetar o serviço.
 
-:::single-choice{#system-calls-strace-failure}
-Uma syscall com falha necessariamente significa que o aplicativo está quebrado?
+:::single-choice{#system-calls-strace-failure} Uma syscall com falha necessariamente significa que o aplicativo está quebrado?
 
 ::option[Sim; todo retorno diferente de zero encerra o Linux.]{#system-calls-nonzero-terminates explanation="Aplicativos tratam rotineiramente erros sem provocar falha do sistema."}
 ::option[Não; programas frequentemente testam alternativas e tratam erros esperados.]{#system-calls-expected-failure .correct explanation="Interprete o retorno no fluxo de controle e no contexto do aplicativo."}

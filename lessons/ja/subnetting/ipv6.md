@@ -28,8 +28,7 @@ IPv6 アドレスは、16ビットの16進数グループ8個で記述します�
 
 `::` を使えるのは一度だけです。複数あると、省略されたグループ数が曖昧になるためです。`2001:db8::/32` は文書内の例示用に予約されています。
 
-:::single-choice{#ipv6-double-colon-rule}
-IPv6 アドレスで `::` を一度しか使えないのはなぜですか？
+:::single-choice{#ipv6-double-colon-rule} IPv6 アドレスで `::` を一度しか使えないのはなぜですか？
 
 ::option[複数の `::` があると展開方法が曖昧になるから。]{#ipv6-compression-ambiguity .correct explanation="圧縮記号が一つなら、8グループに達するために必要な正確な数のグループへ展開できます。"}
 ::option[IPv6 アドレスには0ビットが一つしかないから。]{#ipv6-one-zero explanation="アドレスには多数の0ビットや0のグループを含められます。"}
@@ -47,8 +46,7 @@ IPv6 アドレスで `::` を一度しか使えないのはなぜですか？
 
 IPv6 にブロードキャストアドレスはありません。IPv4 でブロードキャストを使うことが多い用途は、マルチキャストと Neighbor Discovery が担います。同じプレフィックスがすべてのリンクに存在するため、リンクローカルの宛先には `fe80::1%eth0` のようなインターフェースゾーンが必要になる場合があります。
 
-:::single-choice{#ipv6-link-local-scope}
-`fe80::/10` アドレスの通常のスコープはどれですか？
+:::single-choice{#ipv6-link-local-scope} `fe80::/10` アドレスの通常のスコープはどれですか？
 
 ::option[グローバルインターネット上のすべてのホスト。]{#ipv6-global-link-local explanation="ルーティングされるグローバルスコープにはグローバルユニキャストアドレスを使います。"}
 ::option[DNS ゾーンファイルだけ。]{#ipv6-dns-only explanation="リンクローカルアドレスはインターフェースに割り当てられ、ネットワーク上で使われます。"}
@@ -59,8 +57,7 @@ IPv6 にブロードキャストアドレスはありません。IPv4 でブロ�
 
 IPv6 の CIDR 表記では `/0` から `/128` までのプレフィックス長を使います。`/64` は多くの LAN サブネットで標準的な大きさであり、ステートレスアドレス自動設定を利用できます。一つのインターフェースが、リンクローカル、安定したグローバル、一時的なプライバシー用など複数のアドレスを同時に持つことがあり、それぞれに優先期間と有効期間があります。
 
-:::single-choice{#ipv6-address-multiplicity}
-一つのインターフェースに複数の IPv6 アドレスが表示されることがあるのはなぜですか？
+:::single-choice{#ipv6-address-multiplicity} 一つのインターフェースに複数の IPv6 アドレスが表示されることがあるのはなぜですか？
 
 ::option[IPv6 では16進数の各桁に一つのアドレスが必要だから。]{#ipv6-one-per-digit explanation="桁は表記の一部であり、個別のインターフェース割り当てではありません。"}
 ::option[異なるスコープや、プライバシー、有効期間上の役割を併存させられるから。]{#ipv6-several-roles .correct explanation="リンクローカルと、一つ以上のグローバルまたは一時アドレスがあるのは正常です。"}
@@ -73,8 +70,7 @@ IPv6 の Neighbor Discovery は ICMPv6 を使って、アドレス解決、重�
 
 すべての ICMPv6 を遮断すると、プロトコルに不可欠な動作が壊れます。ICMPv6 を不要なものとして扱うのではなく、ファイアウォールポリシーで適切なスコープの必須メッセージ種別を許可してください。
 
-:::single-choice{#ipv6-default-router-source}
-IPv6 ホストは通常、動的にデフォルトルーターをどう学習しますか？
+:::single-choice{#ipv6-default-router-source} IPv6 ホストは通常、動的にデフォルトルーターをどう学習しますか？
 
 ::option[Router Advertisement を通じて。]{#ipv6-router-advertisements .correct explanation="Router Discovery は ICMPv6 Neighbor Discovery の一部です。"}
 ::option[Ethernet のブロードキャストアドレスから。]{#ipv6-ethernet-broadcast explanation="IPv6 は IP ブロードキャストアドレスを使いません。"}
@@ -94,8 +90,7 @@ $ ping -6 -c 3 2001:db8::25
 
 ここに示した文書用アドレスではなく、実際に割り当てられたテストアドレスを使ってください。デュアルスタックのアプリケーションでは、IPv6 が壊れていても IPv4 で成功する場合や、その逆があります。そのため、各アドレスファミリーと、対応する DNS の `A` または `AAAA` レコードを明示的にテストします。
 
-:::single-choice{#ipv6-dual-stack-test}
-デュアルスタックサービスで IPv4 と IPv6 を別々にテストするのはなぜですか？
+:::single-choice{#ipv6-dual-stack-test} デュアルスタックサービスで IPv4 と IPv6 を別々にテストするのはなぜですか？
 
 ::option[すべての IPv6 パケットを最初に IPv4 ブロードキャストへ変換する必要があるから。]{#ipv6-becomes-ipv4 explanation="ネイティブ IPv6 と IPv4 は別々のプロトコル経路です。"}
 ::option[二つのアドレスファミリーでは DNS、経路、フィルター、障害が異なる場合があるから。]{#ipv6-independent-paths .correct explanation="フォールバックが成功すると、優先されるアドレスファミリーの障害が隠れることがあります。"}

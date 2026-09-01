@@ -35,8 +35,7 @@ Também existem outros tipos de arquivos especiais. Os nove caracteres restantes
 d | rwx | r-x | r-x
 ```
 
-:::single-choice{#file-permissions-type-character}
-Em `drwxr-xr-x`, o que o primeiro `d` indica?
+:::single-choice{#file-permissions-type-character} Em `drwxr-xr-x`, o que o primeiro `d` indica?
 
 ::option[O objeto é um link simbólico.]{#file-permissions-type-link explanation="Um link simbólico normalmente é mostrado com `l` na posição do tipo de arquivo."}
 ::option[O objeto é um diretório.]{#file-permissions-type-directory .correct explanation="O primeiro caractere é o tipo de arquivo, e `d` identifica um diretório."}
@@ -62,8 +61,7 @@ Para um diretório, os significados se referem às entradas do diretório:
 
 A exclusão de um arquivo é determinada principalmente pelas permissões do diretório pai, não pelo bit de escrita do próprio arquivo.
 
-:::single-choice{#file-permissions-directory-execute}
-O que a permissão de execução em um diretório permite principalmente?
+:::single-choice{#file-permissions-directory-execute} O que a permissão de execução em um diretório permite principalmente?
 
 ::option[Executar todos os arquivos comuns armazenados no diretório.]{#file-permissions-directory-run-files explanation="O bit de execução de um diretório não concede permissão de execução a cada arquivo contido nele."}
 ::option[Alterar o conteúdo de todos os arquivos do diretório.]{#file-permissions-directory-edit-files explanation="A escrita no conteúdo dos arquivos depende das permissões dos arquivos e de outros controles de acesso."}
@@ -82,16 +80,14 @@ O kernel seleciona uma única classe aplicável; ele não combina os três trios
 
 No exemplo, o trio do proprietário é `rwx`, enquanto os trios do grupo e dos outros são `r-x`. O proprietário pode ler, escrever e percorrer o diretório. As classes do grupo e dos outros podem ler e percorrê-lo, mas não podem criar nem remover entradas por meio dos bits de modo comuns do diretório.
 
-:::single-choice{#file-permissions-triplet-order}
-Depois do caractere de tipo de arquivo, em que ordem aparecem os três trios de permissões?
+:::single-choice{#file-permissions-triplet-order} Depois do caractere de tipo de arquivo, em que ordem aparecem os três trios de permissões?
 
 ::option[Grupo, proprietário e depois outros.]{#file-permissions-order-group-first explanation="O trio do grupo aparece em segundo lugar, não em primeiro."}
 ::option[Outros, grupo e depois proprietário.]{#file-permissions-order-other-first explanation="O trio dos outros é o último, e o do proprietário é o primeiro."}
 ::option[Proprietário, grupo e depois outros.]{#file-permissions-order-owner-first .correct explanation="Os nove caracteres de permissão sempre apresentam os trios do proprietário, do grupo e dos outros nessa ordem."}
 :::
 
-:::single-choice{#file-permissions-example-group}
-Quais permissões comuns a classe do grupo possui em `drwxr-xr-x`?
+:::single-choice{#file-permissions-example-group} Quais permissões comuns a classe do grupo possui em `drwxr-xr-x`?
 
 ::option[Leitura e escrita.]{#file-permissions-group-read-write explanation="O trio do grupo é `r-x`, portanto sua posição de escrita contém `-`."}
 ::option[Escrita e execução.]{#file-permissions-group-write-execute explanation="O trio do grupo contém `r`, não `w`, em sua primeira posição."}

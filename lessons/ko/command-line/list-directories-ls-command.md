@@ -28,8 +28,7 @@ $ ls /etc/hosts
 /etc/hosts
 ```
 
-:::single-choice{#list-another-directory}
-해당 디렉터리로 이동하지 않고 `/home/pete`의 내용을 나열하는 명령어는 무엇인가요?
+:::single-choice{#list-another-directory} 해당 디렉터리로 이동하지 않고 `/home/pete`의 내용을 나열하는 명령어는 무엇인가요?
 
 ::option[`ls /home/pete`]{#ls-target-path .correct explanation="`ls`에 디렉터리 경로를 전달하면 그 디렉터리의 내용을 나열합니다. 쉘의 현재 작업 디렉터리는 그대로 유지됩니다."}
 ::option[`cd /home/pete`]{#cd-target-path explanation="`cd`는 쉘의 작업 디렉터리를 변경합니다. 이 명령어만으로는 요청한 목록을 출력하지 않습니다."}
@@ -47,8 +46,7 @@ $ ls -a
 
 점 파일은 기본적으로 숨겨지며 `.bashrc`처럼 설정을 저장하는 데 자주 사용됩니다.
 
-:::single-choice{#show-hidden-files}
-숨김 파일까지 목록에 포함하는 명령어는 무엇인가요?
+:::single-choice{#show-hidden-files} 숨김 파일까지 목록에 포함하는 명령어는 무엇인가요?
 
 ::option[`ls -l`]{#long-format explanation="`-l`은 상세 열을 추가하지만 이 옵션만으로 숨김 이름까지 포함하지는 않습니다."}
 ::option[`ls -r`]{#reverse-order explanation="`-r`은 정렬 순서를 뒤집을 뿐, 숨김 파일의 포함 여부는 바꾸지 않습니다."}
@@ -84,8 +82,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 $ ls -lh
 ```
 
-:::single-choice{#show-readable-file-details}
-사람이 읽기 쉬운 크기와 긴 형식의 상세 정보를 함께 보여 주는 명령어는 무엇인가요?
+:::single-choice{#show-readable-file-details} 사람이 읽기 쉬운 크기와 긴 형식의 상세 정보를 함께 보여 주는 명령어는 무엇인가요?
 
 ::option[`ls -la`]{#long-all explanation="이 명령어는 긴 형식과 숨김 파일 표시를 결합하지만 읽기 쉬운 크기 단위는 요청하지 않습니다."}
 ::option[`ls -lh`]{#long-human-readable .correct explanation="`-l`은 긴 형식을 선택하고 `-h`는 크기를 읽기 쉽게 표시합니다. 두 플래그는 한 명령어에 결합할 수 있습니다."}
@@ -107,8 +104,7 @@ $ ls -lt
 $ ls -ltr
 ```
 
-:::single-choice{#show-newest-files-last}
-수정 시간으로 정렬한 뒤 가장 최근 항목을 마지막에 배치하는 명령어는 무엇인가요?
+:::single-choice{#show-newest-files-last} 수정 시간으로 정렬한 뒤 가장 최근 항목을 마지막에 배치하는 명령어는 무엇인가요?
 
 ::option[`ls -ltr`]{#time-reversed .correct explanation="`-t`는 수정 시간으로 정렬하고 `-r`은 그 순서를 뒤집습니다. 함께 사용하면 오래된 항목이 최신 항목보다 먼저 나옵니다."}
 ::option[`ls -lt`]{#time-default explanation="수정 시간으로 정렬하지만 기본값인 최신 항목 우선 순서를 유지하므로 최신 항목이 마지막에 오지 않습니다."}
@@ -141,8 +137,7 @@ $ ls -ltr
 - `-S`: 파일 크기로 정렬합니다.
 - `-d`: 디렉토리 내용이 아닌 디렉토리 자체를 나열합니다.
 
-:::single-choice{#list-directory-entry-itself}
-`projects/`의 내용이 아니라 디렉터리 항목 자체를 나열하는 명령어는 무엇인가요?
+:::single-choice{#list-directory-entry-itself} `projects/`의 내용이 아니라 디렉터리 항목 자체를 나열하는 명령어는 무엇인가요?
 
 ::option[`ls -d projects/`]{#directory-entry .correct explanation="`-d` 옵션은 디렉터리를 열어 내용 목록을 보여 주는 대신 디렉터리 항목 자체를 표시하게 합니다."}
 ::option[`ls projects/`]{#directory-contents explanation="`-d` 없이 디렉터리 경로를 전달하면 `ls`는 그 디렉터리 안의 항목을 표시합니다."}

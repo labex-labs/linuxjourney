@@ -23,8 +23,7 @@ Le parcours de journalisation comprend plusieurs parties distinctes :
 
 Sur un hôte systemd, `systemd-journald` collecte couramment la sortie standard des services, les messages du noyau et les messages natifs du journal ou de syslog. Un démon syslog comme rsyslog peut également recevoir les messages, les écrire dans des fichiers texte traditionnels ou les transférer. Les applications peuvent plutôt entretenir leurs propres fichiers ou une télémétrie externe.
 
-:::single-choice{#system-logging-distinct-roles}
-Quel composant décide où les messages acceptés sont stockés ou transférés ?
+:::single-choice{#system-logging-distinct-roles} Quel composant décide où les messages acceptés sont stockés ou transférés ?
 
 ::option[Le répertoire de travail actuel du terminal.]{#system-logging-cwd explanation="Un répertoire du shell ne définit pas les routes de journalisation à l'échelle du système."}
 ::option[Le nom de fichier de l'image du noyau actif.]{#system-logging-kernel-file explanation="Le noyau peut émettre des messages, mais le nom de son image ne définit pas la politique de routage."}
@@ -43,8 +42,7 @@ $ journalctl --disk-usage
 
 `/var/log/syslog` est courant dans la famille Debian avec un routage compatible, tandis que `/var/log/messages` l'est ailleurs. Les deux peuvent être absents sur un hôte qui emploie uniquement le journal. La documentation des applications et la configuration des unités peuvent révéler d'autres destinations.
 
-:::single-choice{#system-logging-file-absence}
-Que signifie nécessairement l'absence du fichier `/var/log/syslog` ?
+:::single-choice{#system-logging-file-absence} Que signifie nécessairement l'absence du fichier `/var/log/syslog` ?
 
 ::option[L'hôte peut employer une autre destination de journalisation configurée.]{#system-logging-other-destination .correct explanation="Les systèmes fondés uniquement sur le journal et les différentes politiques syslog ne créent pas nécessairement ce fichier."}
 ::option[Le noyau n'a jamais produit le moindre message.]{#system-logging-no-kernel explanation="Des enregistrements du noyau peuvent se trouver dans le journal ou dans une autre destination."}
@@ -62,8 +60,7 @@ $ journalctl -u ssh.service --since '1 hour ago'
 
 `-b` sélectionne le démarrage actuel, `-p` filtre selon la priorité et `-u` selon une unité. Les noms d'unités et les démarrages conservés diffèrent selon l'hôte. Employez `journalctl --list-boots` pour afficher les démarrages disponibles et `journalctl -f` pour suivre les nouveaux enregistrements pendant la reproduction d'un problème.
 
-:::single-choice{#system-logging-current-boot}
-Quelle option limite une requête `journalctl` au démarrage actuel ?
+:::single-choice{#system-logging-current-boot} Quelle option limite une requête `journalctl` au démarrage actuel ?
 
 ::option[`-b`]{#system-logging-boot-option .correct explanation="Sans argument, le sélecteur de démarrage choisit celui en cours."}
 ::option[`-u`]{#system-logging-unit-option explanation="Cette option filtre selon une unité systemd."}
@@ -82,8 +79,7 @@ Elle contient un horodatage, un hôte, un programme et un PID, puis un message. 
 
 Les journaux peuvent contenir des noms d'utilisateurs, adresses, chemins, jetons ou d'autres données sensibles. Appliquez le moindre privilège, expurgez les exportations et préservez les originaux et horodatages pendant une enquête.
 
-:::single-choice{#system-logging-export-safety}
-Que faut-il faire avant de partager un extrait de journal à l'extérieur ?
+:::single-choice{#system-logging-export-safety} Que faut-il faire avant de partager un extrait de journal à l'extérieur ?
 
 ::option[Remplacer chaque horodatage par une valeur aléatoire.]{#system-logging-random-time explanation="Détruire les informations temporelles peut empêcher la corrélation et ne constitue pas une bonne méthode d'expurgation."}
 ::option[Rechercher les secrets et identifiants sensibles qu'il contient.]{#system-logging-review-sensitive .correct explanation="Les journaux contiennent souvent des données opérationnelles ou personnelles qui exigent une expurgation contrôlée."}

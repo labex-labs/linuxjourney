@@ -18,8 +18,7 @@ meta_keywords: "ルーター, ネットワーキング，ルーティング，�
 
 両者は、コントロールプレーンとデータプレーンという別々の関心事です。ルートが存在してもファイアウォールポリシーが転送を遮断することがあり、転送インターフェースが有効でも、有効なルートがない場合があります。
 
-:::single-choice{#router-forwarding-role}
-パケット転送は何をしますか？
+:::single-choice{#router-forwarding-role} パケット転送は何をしますか？
 
 ::option[ルーティング情報を適用し、パケットを次ホップへ向けて送る。]{#router-apply-route .correct explanation="転送は、選択されたルートとポリシーに基づいてパケットごとに行う処理です。"}
 ::option[すべての宛先に対して永続的なアプリケーションログインを作る。]{#router-create-login explanation="ルーティングはリモートアプリケーションのアカウントを管理しません。"}
@@ -32,8 +31,7 @@ meta_keywords: "ルーター, ネットワーキング，ルーティング，�
 
 利用可能なルートがなければ、ルーターはパケットを破棄し、ICMP unreachable メッセージを生成する場合があります。デフォルトルートは必須ではなく、公開インターネットを直接指す必要もありません。
 
-:::single-choice{#router-default-route}
-デフォルトルートが選択されるのはいつですか？
+:::single-choice{#router-default-route} デフォルトルートが選択されるのはいつですか？
 
 ::option[宛先固有のプレフィックスを確認する前。]{#router-default-first explanation="利用可能なより具体的なプレフィックスが優先されます。"}
 ::option[パケットが Ethernet ブロードキャストの場合だけ。]{#router-default-broadcast explanation="IP ルートの選択は、ネットワーク層の宛先に基づきます。"}
@@ -46,8 +44,7 @@ meta_keywords: "ルーター, ネットワーキング，ルーティング，�
 
 家庭用「ルーター」は通常、IP ルーター、Ethernet スイッチ、Wi-Fi アクセスポイント、DHCP サービス、NAT、ファイアウォールを組み合わせています。各機能は別々に診断してください。
 
-:::single-choice{#router-same-subnet-path}
-同じリンク上の二つのホスト間通信は、必ずデフォルトルーターを通る必要がありますか？
+:::single-choice{#router-same-subnet-path} 同じリンク上の二つのホスト間通信は、必ずデフォルトルーターを通る必要がありますか？
 
 ::option[はい。すべてのパケットが WAN ポートへ到達する必要があるからです。]{#router-always-wan explanation="同一リンクへのローカル配送は、リンク上で直接行えます。"}
 ::option[はい。両方のホストが公開アドレスを持つ場合を除きます。]{#router-public-required explanation="公開・プライベートの区分は、基本的なオンリンク転送を決めません。"}
@@ -58,8 +55,7 @@ meta_keywords: "ルーター, ネットワーキング，ルーティング，�
 
 ルーティングされたホップとは、ネットワーク層での一回の転送です。IPv4 の TTL と IPv6 の Hop Limit は各ルーターで減らされ、ループに上限を設けます。ホップ数は距離や品質を完全には表しません。リンクごとに帯域幅、遅延、損失、ポリシー、混雑が異なります。
 
-:::single-choice{#router-hop-count-limit}
-ホップ数が少なくても保証できないものはどれですか？
+:::single-choice{#router-hop-count-limit} ホップ数が少なくても保証できないものはどれですか？
 
 ::option[少なくとも一回のルーティングされた転送があること。]{#router-hop-exists explanation="正のホップ数は、ルーターを経由したことを直接示します。"}
 ::option[アプリケーションにとって高速または良好な経路であること。]{#router-hop-not-quality .correct explanation="ルーターが少なくても、低速、混雑、またはポリシーで制限されたリンクを通る場合があります。"}

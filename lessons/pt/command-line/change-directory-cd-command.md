@@ -28,8 +28,7 @@ Há duas maneiras de especificar um caminho: absoluta e relativa.
 
 - **Caminho relativo**: um caminho baseado em sua localização atual. Se você estiver em `/home/pete/Documents` e quiser acessar um subdiretório chamado `taxes`, poderá usar `taxes/`.
 
-:::single-choice{#recognize-absolute-cd-path}
-Qual afirmação descreve corretamente um caminho absoluto?
+:::single-choice{#recognize-absolute-cd-path} Qual afirmação descreve corretamente um caminho absoluto?
 
 ::option[Ele começa no diretório que o shell estiver usando no momento]{#begins-at-current-directory explanation="Um caminho que depende da localização atual do shell é relativo. Ele não começa necessariamente na raiz."}
 ::option[Ele contém apenas o nome do diretório final, sem os diretórios superiores]{#contains-final-name-only explanation="Um único nome de destino normalmente é interpretado em relação ao diretório atual. Um caminho absoluto inclui sua rota a partir de `/`."}
@@ -53,8 +52,7 @@ $ pwd
 /home/pete/Pictures
 ```
 
-:::single-choice{#verify-changed-directory}
-Qual comando confirma a localização atual do shell depois de `cd`?
+:::single-choice{#verify-changed-directory} Qual comando confirma a localização atual do shell depois de `cd`?
 
 ::option[`cd`]{#cd-command explanation="`cd` muda o diretório atual, mas normalmente não exibe o caminho completo resultante. Use `pwd` para confirmá-lo."}
 ::option[`ls`]{#ls-command explanation="`ls` exibe o conteúdo do diretório. Ele ajuda a inspecionar uma localização, mas `pwd` informa qual é essa localização."}
@@ -89,16 +87,14 @@ $ cd ~
 $ cd -
 ```
 
-:::single-choice{#move-to-parent-directory}
-Partindo de `/home/pete/Pictures`, qual comando leva a `/home/pete`?
+:::single-choice{#move-to-parent-directory} Partindo de `/home/pete/Pictures`, qual comando leva a `/home/pete`?
 
 ::option[`cd .`]{#cd-current explanation="`.` representa o diretório atual. Esse comando mantém o shell em `/home/pete/Pictures`."}
 ::option[`cd -`]{#cd-previous explanation="`-` retorna ao diretório de trabalho anterior, que não é necessariamente o pai. Use `..` quando o destino estiver um nível acima."}
 ::option[`cd ..`]{#cd-parent .correct explanation="`..` representa o pai do diretório atual. O pai de `Pictures` é `/home/pete`."}
 :::
 
-:::single-choice{#return-to-previous-directory}
-Qual comando retorna ao diretório usado imediatamente antes do atual?
+:::single-choice{#return-to-previous-directory} Qual comando retorna ao diretório usado imediatamente antes do atual?
 
 ::option[`cd -`]{#previous-directory .correct explanation="`cd -` muda para o diretório de trabalho anterior, que pode estar em qualquer parte do sistema de arquivos."}
 ::option[`cd ..`]{#parent-directory explanation="`cd ..` leva ao diretório pai. O diretório pai e o anterior nem sempre são o mesmo local."}
@@ -129,8 +125,7 @@ Entre em um diretório cujo nome contém espaços colocando-o entre aspas:
 $ cd "Vacation Photos"
 ```
 
-:::single-choice{#enter-directory-with-spaces}
-Qual comando trata `Vacation Photos` como um único nome de diretório?
+:::single-choice{#enter-directory-with-spaces} Qual comando trata `Vacation Photos` como um único nome de diretório?
 
 ::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="Sem aspas, o shell fornece `Vacation` e `Photos` como argumentos separados, e não como um único nome de diretório."}
 ::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="Colocar a linha inteira entre aspas faz o shell tratá-la como um único nome de comando. O comando deve ficar fora das aspas do caminho."}

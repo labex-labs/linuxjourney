@@ -27,8 +27,7 @@ $ dd if=input.img of=output.img bs=4M status=progress
 
 `dd` 复制的是块，并非固有地一次只复制一个字节。较大的 `bs` 可以减少系统调用开销，但最佳值取决于设备、对齐、缓存和工作负载。它不会改变所复制的逻辑数据。
 
-:::single-choice{#dd-command-output-operand}
-哪个操作数选择 `dd` 写入的目标？
+:::single-choice{#dd-command-output-operand} 哪个操作数选择 `dd` 写入的目标？
 
 ::option[`if=`]{#dd-command-input-file explanation="if 标识输入来源。"}
 ::option[`of=`]{#dd-command-output-file .correct explanation="of 指定接收复制数据的输出流或文件。"}
@@ -45,8 +44,7 @@ $ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 
 该命令请求两个输入块，每块最大 1 MiB，因此最多复制 2 MiB。对于管道等数据流，短读可能使简单乘法不再成立；需要完整输入块时，GNU `dd` 提供 `iflag=fullblock`。应根据本地实现区分二进制单位和后缀语法。
 
-:::single-choice{#dd-command-count-result}
-对于普通文件，`bs=1M count=2` 请求的最大数据量是多少？
+:::single-choice{#dd-command-count-result} 对于普通文件，`bs=1M count=2` 请求的最大数据量是多少？
 
 ::option[1 MiB。]{#dd-command-one-mib explanation="这相当于所选大小的一个块。"}
 ::option[2 MiB。]{#dd-command-two-mib .correct explanation="两个输入块乘以每块 1 MiB，最大为 2 MiB。"}
@@ -71,8 +69,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 输出设备会从开头起被覆盖。颠倒 `if` 和 `of`、选中系统磁盘，或在本应选择分区时选择整盘，都可能在没有确认提示的情况下摧毁数据。
 
-:::single-choice{#dd-command-target-verification}
-原始设备写入前，验证型号、序列号、大小和活动使用情况的最重要原因是什么？
+:::single-choice{#dd-command-target-verification} 原始设备写入前，验证型号、序列号、大小和活动使用情况的最重要原因是什么？
 
 ::option[设备字母可能改变，而且 `dd` 会在不了解内容的情况下覆盖所选目标。]{#dd-command-target-can-change .correct explanation="身份和使用情况检查可以降低摧毁其他磁盘或活动存储堆栈的风险。"}
 ::option[除非文件系统标签与映像匹配，否则 `dd` 会拒绝写入。]{#dd-command-label-check explanation="该工具不会执行这种了解文件系统的安全检查。"}
@@ -85,8 +82,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 原始设备映像会复制所有块，包括文件系统元数据和未使用区域，因此它可能比文件级备份大得多，也可能复制一些标识符；将克隆与原件同时挂载前，必须更改这些标识符。
 
-:::single-choice{#dd-command-live-filesystem-image}
-为什么对已挂载且不断变化的文件系统创建映像可能不可靠？
+:::single-choice{#dd-command-live-filesystem-image} 为什么对已挂载且不断变化的文件系统创建映像可能不可靠？
 
 ::option[已挂载文件系统绝不允许读取块设备。]{#dd-command-mounted-no-read explanation="原始读取可能可行，因此一致性需要规划，而不能想当然。"}
 ::option[不同块可能读取自文件系统状态的不同时间点。]{#dd-command-inconsistent-moments .correct explanation="并发修改可能使收集到的块映像无法表示某个一致时间点。"}
@@ -99,8 +95,7 @@ $ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
 
 不要宣称使用 `dd` 覆盖就能保证安全擦除 SSD、闪存转换层、精简配置存储、快照或重映射扇区。应使用设备和平台支持的清理功能，并遵循明确的数据销毁策略。
 
-:::single-choice{#dd-command-success-meaning}
-`dd` 返回零退出状态，本身不能证明什么？
+:::single-choice{#dd-command-success-meaning} `dd` 返回零退出状态，本身不能证明什么？
 
 ::option[命令解析了所有提供的操作数。]{#dd-command-parsed-operands explanation="无效操作数通常会导致错误，而不是成功完成。"}
 ::option[操作者选择了预期的来源和目标。]{#dd-command-does-not-prove-intent .correct explanation="该工具无法推断操作者意图，因此也可能成功复制到错误目标。"}

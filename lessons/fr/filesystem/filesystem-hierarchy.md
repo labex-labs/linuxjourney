@@ -26,8 +26,7 @@ $ ls -ld /*
 
 De nombreuses distributions actuelles utilisent une organisation `/usr` fusionnée, dans laquelle `/bin`, `/sbin` et `/lib` sont des liens symboliques vers les répertoires correspondants sous `/usr`. Servez-vous de la découverte des commandes et des informations des paquets plutôt que de supposer qu'un chemin est un répertoire physique ou un lien.
 
-:::single-choice{#filesystem-hierarchy-configuration-directory}
-Quel répertoire contient conventionnellement la configuration système propre à la machine ?
+:::single-choice{#filesystem-hierarchy-configuration-directory} Quel répertoire contient conventionnellement la configuration système propre à la machine ?
 
 ::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="Procfs présente des interfaces actives pour les processus et le noyau, et non des fichiers persistants de configuration de la machine."}
 ::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="La configuration du système et des services est conventionnellement organisée sous `/etc`."}
@@ -42,8 +41,7 @@ Quel répertoire contient conventionnellement la configuration système propre �
 
 Malgré son nom, `/usr` n'est normalement pas l'emplacement des fichiers personnels des utilisateurs. Les gestionnaires de paquets possèdent souvent une grande partie de cette arborescence ; copier des fichiers compilés localement dans `/usr/bin` peut donc entrer en conflit avec les paquets gérés.
 
-:::single-choice{#filesystem-hierarchy-local-software}
-Quel préfixe est conventionnellement réservé aux logiciels installés localement hors du contenu de `/usr` géré par la distribution ?
+:::single-choice{#filesystem-hierarchy-local-software} Quel préfixe est conventionnellement réservé aux logiciels installés localement hors du contenu de `/usr` géré par la distribution ?
 
 ::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="La hiérarchie locale sépare les logiciels installés par l'administrateur de l'arborescence `/usr` principale de la distribution."}
 ::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="Procfs est une interface virtuelle du noyau, et non un préfixe logiciel persistant."}
@@ -58,8 +56,7 @@ Quel préfixe est conventionnellement réservé aux logiciels installés localem
 
 Le chemin d'un répertoire personnel provient des informations du compte, et non de la simple concaténation de `/home` et d'un nom d'utilisateur. Utilisez `getent passwd UTILISATEUR` ou le répertoire personnel résolu par le shell plutôt que de coder cette hypothèse en dur.
 
-:::single-choice{#filesystem-hierarchy-root-home}
-Quel est le répertoire personnel conventionnel du compte root ?
+:::single-choice{#filesystem-hierarchy-root-home} Quel est le répertoire personnel conventionnel du compte root ?
 
 ::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="Les répertoires personnels ordinaires se trouvent souvent sous `/home`, mais root possède un chemin conventionnel distinct."}
 ::option[`/root`]{#filesystem-hierarchy-root .correct explanation="Le répertoire personnel du compte privilégié se situe conventionnellement directement sous la racine du système de fichiers."}
@@ -75,8 +72,7 @@ Quel est le répertoire personnel conventionnel du compte root ?
 
 La politique de nettoyage de `/tmp` varie : ne supposez ni que les fichiers persistent jusqu'au redémarrage, ni qu'ils sont toujours supprimés à ce moment-là. Les applications doivent créer leurs fichiers temporaires de façon sûre, sans noms prévisibles.
 
-:::single-choice{#filesystem-hierarchy-log-path}
-Quel chemin stocke conventionnellement les fichiers journaux du système ?
+:::single-choice{#filesystem-hierarchy-log-path} Quel chemin stocke conventionnellement les fichiers journaux du système ?
 
 ::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` sert à la configuration, et non aux données de journal qui s'accumulent normalement."}
 ::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="Les journaux sont une catégorie de données système changeantes organisée sous la hiérarchie des données variables."}
@@ -93,8 +89,7 @@ Quel chemin stocke conventionnellement les fichiers journaux du système ?
 
 Il s'agit de conventions, pas d'autorisations. Monter un autre système de fichiers sur un répertoire non vide masque temporairement le contenu antérieur de ce répertoire jusqu'au démontage.
 
-:::single-choice{#filesystem-hierarchy-sysfs-path}
-Quel chemin expose normalement le modèle de périphériques du noyau au moyen de sysfs ?
+:::single-choice{#filesystem-hierarchy-sysfs-path} Quel chemin expose normalement le modèle de périphériques du noyau au moyen de sysfs ?
 
 ::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` est destiné aux données servies par le système."}
 ::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="Sysfs est conventionnellement monté dans `/sys` et présente périphériques, pilotes, bus et attributs."}

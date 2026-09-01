@@ -24,8 +24,7 @@ $ ip address show
 
 接口存在或在管理上处于启用状态，并不能证明端到端连接正常。
 
-:::single-choice{#network-basics-host-interface}
-什么是网络接口？
+:::single-choice{#network-basics-host-interface} 什么是网络接口？
 
 ::option[互联网上每个数据包的永久副本。]{#network-basics-interface-copy explanation="接口发送和接收流量，并不是全局数据包归档。"}
 ::option[主机连接到网络或虚拟链路的接入点。]{#network-basics-interface-attachment .correct explanation="一台主机可以拥有多个物理或虚拟接口，并分别进行配置。"}
@@ -36,8 +35,7 @@ $ ip address show
 
 局域网（LAN）覆盖家庭、办公室或数据中心网段等有限环境。以太网交换机在本地链路的端口之间转发帧。无线局域网（WLAN）使用无线链路技术。当网桥或接入点连接有线和无线接口时，它们仍可以属于同一个 IP 子网。
 
-:::single-choice{#network-basics-wlan-relationship}
-WLAN 与 LAN 有什么关系？
+:::single-choice{#network-basics-wlan-relationship} WLAN 与 LAN 有什么关系？
 
 ::option[WLAN 始终是一个独立的全球互联网。]{#network-basics-wlan-global explanation="它是使用无线链路技术的本地网络。"}
 ::option[WLAN 是路由器使用的磁盘分区。]{#network-basics-wlan-disk explanation="该术语描述网络，而不是存储布局。"}
@@ -50,8 +48,7 @@ WLAN 与 LAN 有什么关系？
 
 广域网（WAN）跨越较大的地理或管理边界。互联网服务提供商可以把客户网络连接到其他网络，但“WAN”并不只是指某个家庭之外的每台设备。
 
-:::single-choice{#network-basics-router-role}
-路由器的核心职责是什么？
+:::single-choice{#network-basics-router-role} 路由器的核心职责是什么？
 
 ::option[在网络层网络之间转发数据包。]{#network-basics-forward-networks .correct explanation="路由会跨越 IP 网络边界选择下一跳。"}
 ::option[将每个用户的文件存储为强制备份。]{#network-basics-router-backup explanation="文件保留不是路由的核心功能。"}
@@ -64,8 +61,7 @@ WLAN 与 LAN 有什么关系？
 
 一次通信可能包含双向传输的许多数据包。丢失、乱序、分片、重传和路径变化意味着，捕获到的单个数据包很少能描述完整的应用程序事务。
 
-:::single-choice{#network-basics-router-frame}
-在路由器这一跳，链路层帧通常会发生什么？
+:::single-choice{#network-basics-router-frame} 在路由器这一跳，链路层帧通常会发生什么？
 
 ::option[路由器移除传入帧，并为下一条链路创建新帧。]{#network-basics-reframe .correct explanation="转发的 IP 数据包会装入适合传出接口的新链路层帧中。"}
 ::option[同一个以太网帧原封不动地穿越整个互联网。]{#network-basics-same-frame explanation="帧的作用范围限于所在链路，并会在路由跳点被替换。"}

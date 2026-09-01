@@ -20,8 +20,7 @@ meta_keywords: "Linux 启动过程，BIOS, MBR, UEFI, Linux 中的 bios, bios li
 
 BIOS 可以从 GPT 磁盘启动，但保护性 MBR 本身并不提供加载程序的后续阶段。GRUB 通常在 GPT 上使用一个较小的 BIOS 启动分区来嵌入核心代码。具体布局由已安装加载程序决定。
 
-:::single-choice{#boot-bios-legacy-first-sector}
-传统 BIOS 通常首先从选定启动磁盘加载什么？
+:::single-choice{#boot-bios-legacy-first-sector} 传统 BIOS 通常首先从选定启动磁盘加载什么？
 
 ::option[包含少量启动代码的初始启动扇区。]{#boot-bios-boot-sector .correct explanation="固件的传统磁盘路径会把控制权交给选定磁盘第一个扇区中的代码。"}
 ::option[把整个 Linux 根文件系统载入固件内存。]{#boot-bios-entire-root explanation="第一阶段扇区很小，后续软件才会定位内核和根存储。"}
@@ -34,8 +33,7 @@ UEFI 固件能够理解 EFI 系统分区（ESP）上规定的文件系统，并�
 
 ESP 包含启动应用及其辅助文件，而不是“所有启动信息”。内核映像、initramfs 文件和加载程序配置可以位于其中，也可以根据启动设计放在其他位置。UEFI 系统通常使用 GPT，但固件接口与分区表方案仍是不同层次。
 
-:::single-choice{#boot-bios-uefi-esp}
-UEFI 通常从 EFI 系统分区加载什么？
+:::single-choice{#boot-bios-uefi-esp} UEFI 通常从 EFI 系统分区加载什么？
 
 ::option[由固件启动条目选中的 EFI 可执行文件。]{#boot-bios-efi-executable .correct explanation="UEFI 启动管理让固件指向受支持系统分区上的可执行文件。"}
 ::option[任意 ext4 家目录中的 POSIX shell 脚本。]{#boot-bios-shell-script explanation="固件从受支持启动路径加载规定的可执行格式，而不会运行普通用户 shell。"}
@@ -48,8 +46,7 @@ UEFI 通常从 EFI 系统分区加载什么？
 
 安全启动不会加密磁盘，也不能证明每个用户空间程序都安全。它有助于阻止配置的信任策略接受未经授权的预启动代码。
 
-:::single-choice{#boot-bios-secure-boot-purpose}
-UEFI 安全启动主要实施什么？
+:::single-choice{#boot-bios-secure-boot-purpose} UEFI 安全启动主要实施什么？
 
 ::option[自动加密每块磁盘上的每个文件。]{#boot-bios-secure-encryption explanation="磁盘保密性需要独立的加密系统。"}
 ::option[根据签名授权启动链可执行文件。]{#boot-bios-secure-signatures .correct explanation="固件和后续已验证组件根据已登记密钥与策略接受代码。"}
@@ -62,8 +59,7 @@ UEFI 安全启动主要实施什么？
 
 更改安全启动、存储控制器模式、TPM、虚拟化或启动顺序前，应记录现有值和恢复密钥。固件变更可能让加密卷或已安装操作系统暂时无法访问。
 
-:::single-choice{#boot-bios-setup-key}
-为什么不存在进入固件设置的通用按键？
+:::single-choice{#boot-bios-setup-key} 为什么不存在进入固件设置的通用按键？
 
 ::option[Linux 每次启动后都会随机分配新按键。]{#boot-bios-random-key explanation="操作系统不会随机定义固件早期启动按键。"}
 ::option[按键和触发时机由系统制造商决定。]{#boot-bios-vendor-key .correct explanation="不同型号的固件接口各不相同，因此需要权威设备文档。"}

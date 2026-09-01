@@ -22,8 +22,7 @@ $ tail application.log
 
 如果文件不足 10 行，则打印所有现有行。文件本身不会改变。
 
-:::single-choice{#tail-default-lines}
-`tail application.log` 默认显示什么？
+:::single-choice{#tail-default-lines} `tail application.log` 默认显示什么？
 
 ::option[最多显示文件开头的 10 行。]{#tail-first-ten explanation="选择文件开头是 `head` 的职责；`tail` 从末尾选择。"}
 ::option[显示命令启动后添加的每一行。]{#tail-follow-only explanation="持续跟踪需要 `-f` 或相关选项；普通 `tail` 会打印一次快照后退出。"}
@@ -46,8 +45,7 @@ $ tail -c 100 payload.bin
 
 字节模式可能从文本行或编码字符中间开始，因此文本通常使用行模式更清楚。
 
-:::single-choice{#tail-twenty-lines}
-哪个命令会显示 `application.log` 的最后 20 行？
+:::single-choice{#tail-twenty-lines} 哪个命令会显示 `application.log` 的最后 20 行？
 
 ::option[`tail -n 20 application.log`]{#tail-twenty-end .correct explanation="`-n` 选择行数，`tail` 会从末尾取出这些行。"}
 ::option[`head -n 20 application.log`]{#head-twenty-start explanation="它从开头而不是末尾选择 20 行。"}
@@ -64,8 +62,7 @@ $ tail -n +5 report.txt
 
 这会跳过前四行，从第 5 行开始。它适合从数据流中去掉已知数量的表头行。
 
-:::single-choice{#tail-start-line-five}
-哪个命令会从第 5 行开始打印 `report.txt`？
+:::single-choice{#tail-start-line-five} 哪个命令会从第 5 行开始打印 `report.txt`？
 
 ::option[`tail -n +5 report.txt`]{#tail-from-five .correct explanation="`+5` 会让 `tail` 从第 5 行开始，一直输出到末尾。"}
 ::option[`tail -n 5 report.txt`]{#tail-final-five explanation="没有加号时，它会选择最后五行，而不考虑它们的绝对行号。"}
@@ -82,8 +79,7 @@ $ tail -f application.log
 
 按 `Ctrl+C` 中断 `tail` 并返回 shell。跟踪文件只会显示新内容，并不能保证生成日志的应用程序运行正常，也不能保证所有相关事件都写入该文件。
 
-:::single-choice{#tail-follow-file}
-哪个命令会显示 `application.log` 当前末尾，并继续等待追加内容？
+:::single-choice{#tail-follow-file} 哪个命令会显示 `application.log` 当前末尾，并继续等待追加内容？
 
 ::option[`tail -f application.log`]{#tail-follow-app .correct explanation="`-f` 会让 `tail` 保持运行，并显示追加到文件中的数据。"}
 ::option[`tail -n 0 application.log`]{#tail-zero-lines explanation="它最初不打印任何行，而且没有跟踪选项，因此会直接退出。"}
@@ -100,8 +96,7 @@ $ tail -F application.log
 
 需要跟踪当前已打开文件时使用 `-f`；指定名称的日志预计会轮转时使用 `-F`。这些是 GNU 行为，其他实现可能不同。
 
-:::single-choice{#tail-follow-rotated-name}
-在 GNU/Linux 上，哪个选项更适合在常见的重命名并重建式日志轮转过程中持续跟踪 `application.log`？
+:::single-choice{#tail-follow-rotated-name} 在 GNU/Linux 上，哪个选项更适合在常见的重命名并重建式日志轮转过程中持续跟踪 `application.log`？
 
 ::option[`-n`]{#tail-rotation-lines explanation="`-n` 改变显示行数，不会重试被替换的路径。"}
 ::option[`-c`]{#tail-rotation-bytes explanation="`-c` 把选择单位改为字节，并不提供感知轮转的跟踪。"}

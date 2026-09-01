@@ -25,8 +25,7 @@ $ printf '%s\n' "$?"
 
 Shell 只公开范围有限的编码状态，也会表示信号终止，因此该值不是完整的诊断记录。程序应记录自己的退出代码。
 
-:::single-choice{#process-termination-success-status}
-按照 Unix 惯例，哪个正常退出状态表示成功？
+:::single-choice{#process-termination-success-status} 按照 Unix 惯例，哪个正常退出状态表示成功？
 
 ::option[`1`]{#process-termination-status-one explanation="许多程序使用 `1` 表示一般失败，但含义取决于具体命令。"}
 ::option[`0`]{#process-termination-status-zero .correct explanation="正常状态零通常表示成功完成。"}
@@ -39,8 +38,7 @@ Shell 只公开范围有限的编码状态，也会表示信号终止，因此�
 
 等待也可以协调执行：shell 会等待前台命令完成后再显示提示符，而对于后台作业则可以推迟等待。设计良好的长期运行父进程必须安排回收子进程，同时不阻塞无关工作。
 
-:::single-choice{#process-termination-wait-purpose}
-成功的 wait 操作让父进程取回什么？
+:::single-choice{#process-termination-wait-purpose} 成功的 wait 操作让父进程取回什么？
 
 ::option[子进程的终止信息。]{#process-termination-wait-status .correct explanation="wait 调用族会报告子进程如何停止或终止，并回收已完成的子进程。"}
 ::option[子进程原地址空间的副本。]{#process-termination-wait-memory explanation="大多数进程内存已经释放，不会由 `wait()` 返回给父进程。"}
@@ -53,8 +51,7 @@ Shell 只公开范围有限的编码状态，也会表示信号终止，因此�
 
 向僵尸进程发送信号不能让它再次退出。如果僵尸持续积累，应诊断未执行 wait 的父进程，通过适当运维流程重启或修正该父进程，或让僵尸重新指定给会回收它的进程。大量僵尸可能耗尽 PID 或进程表容量。
 
-:::single-choice{#process-termination-zombie-definition}
-哪个描述符合僵尸进程？
+:::single-choice{#process-termination-zombie-definition} 哪个描述符合僵尸进程？
 
 ::option[父进程已经退出的运行中子进程。]{#process-termination-zombie-orphan explanation="这描述的是孤儿子进程，而不是僵尸状态。"}
 ::option[已经完成但终止记录尚未回收的子进程。]{#process-termination-zombie-unreaped .correct explanation="该进程已经停止执行，但内核会为其父进程保留最少量的状态。"}
@@ -67,8 +64,7 @@ Shell 只公开范围有限的编码状态，也会表示信号终止，因此�
 
 收养进程会负责收集终止状态。现代服务管理器和容器环境意味着不能假设新父进程始终是主机的 PID 1。
 
-:::single-choice{#process-termination-orphan-definition}
-进程比原父进程存活得更久时会发生什么？
+:::single-choice{#process-termination-orphan-definition} 进程比原父进程存活得更久时会发生什么？
 
 ::option[它会重新指定给适当的 subreaper 或命名空间 init 进程。]{#process-termination-orphan-reparented .correct explanation="内核会分配一个收养进程，以保持有效的父进程关系。"}
 ::option[即使尚未退出，也会立即成为僵尸。]{#process-termination-orphan-zombie explanation="只有执行结束且状态等待收集时，才会进入僵尸状态。"}

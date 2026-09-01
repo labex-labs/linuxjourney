@@ -22,8 +22,7 @@ $ ping -4 -c 3 -W 2 example.com
 
 Use `-6` para IPv6. Registre o endereço resolvido, pois um nome pode retornar vários e execuções posteriores escolherem outro.
 
-:::single-choice{#ping-count-option}
-O que `-c 3` solicita?
+:::single-choice{#ping-count-option} O que `-c 3` solicita?
 
 ::option[Um payload de exatamente três megabytes.]{#ping-three-megabytes explanation="O tamanho usa outra opção."}
 ::option[Três rotas permanentes até o destino.]{#ping-three-routes explanation="Ping faz sondagens e não instala rotas."}
@@ -36,8 +35,7 @@ O que `-c 3` solicita?
 
 A perda pode ocorrer em qualquer direção, e rate limiting ICMP pode diferir da perda do aplicativo.
 
-:::single-choice{#ping-sequence-gap}
-O que uma resposta `icmp_seq` ausente pode indicar?
+:::single-choice{#ping-sequence-gap} O que uma resposta `icmp_seq` ausente pode indicar?
 
 ::option[O destino mudou permanentemente seu MAC.]{#ping-sequence-mac explanation="Uma lacuna sozinha não sustenta essa conclusão."}
 ::option[Solicitação ou resposta perdida, filtrada, atrasada além da espera ou limitada.]{#ping-sequence-possibilities .correct explanation="A lacuna identifica uma resposta não observada, não a direção ou causa exata."}
@@ -48,8 +46,7 @@ O que uma resposta `icmp_seq` ausente pode indicar?
 
 O campo `time` é o round-trip time em milissegundos, do envio à resposta. Combina atraso de ida, processamento remoto e retorno. Não revela latência de uma direção sem medições sincronizadas nas pontas.
 
-:::single-choice{#ping-rtt-meaning}
-O que `time=23.7 ms` mede?
+:::single-choice{#ping-rtt-meaning} O que `time=23.7 ms` mede?
 
 ::option[Apenas a latência de ida.]{#ping-outbound-only explanation="Ping mede o intervalo completo de solicitação e resposta."}
 ::option[O tempo de atividade do alvo.]{#ping-target-uptime explanation="O valor é o tempo da sondagem, não do boot."}
@@ -60,8 +57,7 @@ O que `time=23.7 ms` mede?
 
 O TTL IPv4 ou Hop Limit IPv6 exibido é o valor restante na resposta recebida. Sem conhecer o valor inicial e a rota de retorno, subtraí-lo não dá a contagem exata de saltos. Uma mudança pode refletir outro respondedor, valor inicial ou caminho.
 
-:::single-choice{#ping-received-ttl}
-O que é o TTL impresso numa Echo Reply IPv4?
+:::single-choice{#ping-received-ttl} O que é o TTL impresso numa Echo Reply IPv4?
 
 ::option[O valor restante quando a resposta chegou ao host local.]{#ping-remaining-ttl .correct explanation="Cada roteador no retorno decrementou o valor inicial do remetente."}
 ::option[Uma contagem exata de roteadores nas duas direções.]{#ping-exact-hop-count explanation="O valor inicial e os caminhos direcionais não são conhecidos."}
@@ -72,8 +68,7 @@ O que é o TTL impresso numa Echo Reply IPv4?
 
 Se ping funciona e o serviço falha, teste porta, TLS, protocolo e solicitação reais. Se ping falha, examine resolução, `ip route get`, vizinhos, firewall e capturas antes de declarar o host desligado.
 
-:::single-choice{#ping-success-limit}
-O que um ping bem-sucedido não prova?
+:::single-choice{#ping-success-limit} O que um ping bem-sucedido não prova?
 
 ::option[Que algum caminho ICMP de solicitação e resposta funcionou.]{#ping-icmp-worked explanation="Essa é a evidência direta das respostas."}
 ::option[Que a resposta tinha número de sequência.]{#ping-sequence-present explanation="A saída normal informa a sequência."}

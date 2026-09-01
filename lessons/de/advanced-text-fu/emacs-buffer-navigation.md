@@ -24,8 +24,7 @@ Der Minipuffer bietet eine Vervollständigung für vorhandene Namen. Die Eingabe
 
 Standardmäßig führt `C-x Right` den Befehl `next-buffer` und `C-x Left` den Befehl `previous-buffer` aus. Damit wechselst du im ausgewählten Fenster der Reihe nach durch die Puffer.
 
-:::single-choice{#emacs-switch-buffer-key}
-Welche Tastenfolge fragt nach einem Puffernamen, der im aktuellen Fenster angezeigt werden soll?
+:::single-choice{#emacs-switch-buffer-key} Welche Tastenfolge fragt nach einem Puffernamen, der im aktuellen Fenster angezeigt werden soll?
 
 ::option[`C-x C-f`]{#emacs-buffer-find-file explanation="Diese Tastenfolge fragt nach einem Dateipfad und besucht ihn. Das ist etwas anderes als die Auswahl eines vorhandenen Puffers anhand seines Namens."}
 ::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` liest einen Puffernamen ein und zeigt diesen Puffer im ausgewählten Fenster an."}
@@ -48,8 +47,7 @@ C-x 3
 
 Das neue Fenster zeigt zunächst einen Puffer an, häufig denselben. In beiden Fenstern kannst du die Puffer unabhängig voneinander wechseln.
 
-:::single-choice{#emacs-split-side-by-side}
-Welche Tastenfolge teilt das ausgewählte Emacs-Fenster in ein linkes und ein rechtes Fenster?
+:::single-choice{#emacs-split-side-by-side} Welche Tastenfolge teilt das ausgewählte Emacs-Fenster in ein linkes und ein rechtes Fenster?
 
 ::option[`C-x 1`]{#emacs-window-one explanation="Diese Tastenfolge löscht die anderen Fenster und macht das ausgewählte Fenster zum einzigen Fenster seines Frames."}
 ::option[`C-x 2`]{#emacs-window-below explanation="Diese Tastenfolge erzeugt ein oberes und ein unteres Fenster, keine nebeneinanderliegenden Fenster."}
@@ -71,16 +69,14 @@ Mit diesen Befehlen entfernst du Fensteranzeigen:
 
 Beim Löschen eines Fensters bleibt der darin angezeigte Puffer normalerweise erhalten. Du kannst diesen Puffer später wieder in einem anderen Fenster anzeigen.
 
-:::single-choice{#emacs-select-other-window}
-Welche Tastenfolge verschiebt den Eingabepunkt und den Tastaturfokus in ein anderes Emacs-Fenster?
+:::single-choice{#emacs-select-other-window} Welche Tastenfolge verschiebt den Eingabepunkt und den Tastaturfokus in ein anderes Emacs-Fenster?
 
 ::option[`C-x 0`]{#emacs-delete-selected-window explanation="Diese Tastenfolge löscht das ausgewählte Fenster, statt den Fokus in ein anderes zu verschieben."}
 ::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` wählt der Reihe nach ein anderes Fenster im Frame aus."}
 ::option[`C-x b`]{#emacs-switch-in-window explanation="Diese Tastenfolge ändert den im aktuellen Fenster angezeigten Puffer, nicht das ausgewählte Fenster."}
 :::
 
-:::single-choice{#emacs-keep-one-window}
-Welche Tastenfolge behält das ausgewählte Fenster und löscht die anderen Fenster seines Frames?
+:::single-choice{#emacs-keep-one-window} Welche Tastenfolge behält das ausgewählte Fenster und löscht die anderen Fenster seines Frames?
 
 ::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` macht das ausgewählte Fenster zum einzigen Fenster des Frames."}
 ::option[`C-x 0`]{#emacs-delete-current-window explanation="Diese Tastenfolge löscht das ausgewählte Fenster selbst, statt es beizubehalten."}
@@ -99,8 +95,7 @@ Der aktuelle Puffer ist die Standardauswahl. Hat ein dateibesuchender Puffer ung
 
 Das Beenden eines Puffers unterscheidet sich vom Löschen eines Fensters. Emacs ersetzt einen beendeten Puffer in jedem Fenster, das ihn angezeigt hat. Das Löschen eines Fensters kann seinen Puffer dagegen unberührt lassen.
 
-:::single-choice{#emacs-kill-buffer-key}
-Welche Tastenfolge fragt nach einem Emacs-Puffer, der beendet werden soll?
+:::single-choice{#emacs-kill-buffer-key} Welche Tastenfolge fragt nach einem Emacs-Puffer, der beendet werden soll?
 
 ::option[`C-x 0`]{#emacs-kill-window-only explanation="Diese Tastenfolge löscht eine Fensteranzeige, lässt den Puffer aber normalerweise bestehen."}
 ::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` entfernt den ausgewählten Puffer aus Emacs, nachdem gegebenenfalls die Bestätigung für einen geänderten Puffer erfolgt ist."}

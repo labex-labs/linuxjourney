@@ -18,8 +18,7 @@ meta_keywords: "路由协议, 网络收敛, 距离矢量, 链路状态, Linux �
 
 协议邻接关系已经建立，并不能证明所需前缀已经学习、选中、安装，或已获得转发策略允许。
 
-:::single-choice{#routing-protocols-adjacency-limit}
-路由邻接关系已经建立，无法证明什么？
+:::single-choice{#routing-protocols-adjacency-limit} 路由邻接关系已经建立，无法证明什么？
 
 ::option[每条所需路由都已安装并成功转发。]{#routing-protocols-not-full-proof .correct explanation="路由通告、选择、安装、过滤和数据平面运行是不同阶段。"}
 ::option[两个协议发言者交换过控制消息。]{#routing-protocols-no-messages explanation="建立邻接关系通常需要协议通信。"}
@@ -32,8 +31,7 @@ meta_keywords: "路由协议, 网络收敛, 距离矢量, 链路状态, Linux �
 
 度量值具有协议特有的含义。OSPF 开销、RIP 跳数和 BGP 属性集不能像共享统一数值尺度一样直接比较。实现会在协议特定选择之前或同时，使用路由偏好或管理距离在不同来源之间作出选择。
 
-:::single-choice{#routing-protocols-metric-comparison}
-可以直接比较 RIP 跳数与 OSPF 开销吗？
+:::single-choice{#routing-protocols-metric-comparison} 可以直接比较 RIP 跳数与 OSPF 开销吗？
 
 ::option[可以，因为所有路由度量都使用相同单位。]{#routing-protocols-universal-metric explanation="每种协议都定义自己的度量和选择过程。"}
 ::option[可以，但仅当两个值都为零时。]{#routing-protocols-zero-metric explanation="无论显示的数字是什么，其语义都不相同。"}
@@ -44,8 +42,7 @@ meta_keywords: "路由协议, 网络收敛, 距离矢量, 链路状态, Linux �
 
 距离矢量协议通过邻居通告可达性和距离，并根据邻居报告推导路径。链路状态协议建立邻接关系、在一定作用范围内泛洪链路状态信息、构建拓扑数据库，再计算最短路径树。现代协议包含许多改进，简单的类别概述无法涵盖全部细节。
 
-:::single-choice{#routing-protocols-link-state-input}
-链路状态路由器使用什么进行路径计算？
+:::single-choice{#routing-protocols-link-state-input} 链路状态路由器使用什么进行路径计算？
 
 ::option[只使用默认网关的主机名。]{#routing-protocols-hostname-only explanation="拓扑计算需要链路和前缀信息。"}
 ::option[描述路由作用范围内链路的同步数据库。]{#routing-protocols-link-database .correct explanation="路由器在学习到的拓扑上运行最短路径算法。"}
@@ -58,8 +55,7 @@ meta_keywords: "路由协议, 网络收敛, 距离矢量, 链路状态, Linux �
 
 收敛期间可能出现短暂丢包、环路或黑洞。应分别测量检测、传播、计算和安装过程，并使用数据平面探测进行验证。
 
-:::single-choice{#routing-protocols-convergence}
-什么是路由收敛？
+:::single-choice{#routing-protocols-convergence} 什么是路由收敛？
 
 ::option[变化后达到稳定可用路由的过程。]{#routing-protocols-stable-routing .correct explanation="它包括控制信息传播以及最终的转发更新。"}
 ::option[要求每台路由器存储完全相同的全局路由表。]{#routing-protocols-identical-table explanation="策略、区域和角色可以造成有意差异。"}

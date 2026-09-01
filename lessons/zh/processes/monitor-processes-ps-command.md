@@ -32,8 +32,7 @@ $ ps
 
 确切列和默认选择规则因 `ps` 实现及环境而异。
 
-:::single-choice{#ps-command-pid-meaning}
-`PID` 列标识什么？
+:::single-choice{#ps-command-pid-meaning} `PID` 列标识什么？
 
 ::option[进程的当前目录编号。]{#ps-command-pid-directory explanation="当前目录是文件系统引用，不由 PID 表示。"}
 ::option[以秒为单位的累计 CPU 时间。]{#ps-command-pid-cpu explanation="CPU 使用量显示在 `TIME` 等独立字段中。"}
@@ -56,8 +55,7 @@ $ ps aux
 
 由于选项含义可能相互作用，应解释完整组合，而不是把每个字母视为独立命令。
 
-:::single-choice{#ps-command-aux-user-format}
-在 `ps aux` 中，哪个选项请求面向用户的输出格式？
+:::single-choice{#ps-command-aux-user-format} 在 `ps aux` 中，哪个选项请求面向用户的输出格式？
 
 ::option[`u`]{#ps-command-aux-u .correct explanation="BSD 风格的 `u` 选项会选择一组面向用户的输出列。"}
 ::option[`x`]{#ps-command-aux-x explanation="`x` 选项影响进程选择，尤其是没有控制终端的进程。"}
@@ -77,8 +75,7 @@ $ ps -ef
 
 输出通常包含 `UID`、`PID`、`PPID`、启动时间和命令信息。`PPID` 是父进程 ID。该列表本身并非层次结构；父子布局很重要时，可使用实现支持的 `--forest` 等选项，或 `pstree` 等专用树查看器。
 
-:::single-choice{#ps-command-ef-selection}
-`ps -ef` 中的 `-e` 请求什么？
+:::single-choice{#ps-command-ef-selection} `ps -ef` 中的 `-e` 请求什么？
 
 ::option[每秒更新一次，直到被中断。]{#ps-command-e-refresh explanation="`ps` 生成快照；持续刷新是 `top` 等工具的功能。"}
 ::option[包含调用者可见的每个进程。]{#ps-command-e-every .correct explanation="标准风格的 `-e` 选项会把快照扩展到所有可选进程。"}
@@ -95,8 +92,7 @@ $ top
 
 `top` 有助于找出不断变化的 CPU 和内存消耗者，但其数值是会波动的采样结果。应通过多次观察确认疑似问题，并结合机器的 CPU 数量、内存计算方式和工作负载解释百分比。
 
-:::single-choice{#ps-command-snapshot-versus-top}
-本课介绍的哪个工具默认会定期刷新进程显示？
+:::single-choice{#ps-command-snapshot-versus-top} 本课介绍的哪个工具默认会定期刷新进程显示？
 
 ::option[`top`]{#ps-command-top-refresh .correct explanation="`top` 是会定时更新显示的交互式监控工具。"}
 ::option[`ps -ef`]{#ps-command-ps-ef-snapshot explanation="该命令会输出完整格式的进程快照，然后退出。"}

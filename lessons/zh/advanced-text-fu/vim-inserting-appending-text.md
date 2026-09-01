@@ -14,8 +14,7 @@ meta_keywords: "vim 追加，vim 追加与插入的区别，vim 插入与追加�
 
 按 `Esc` 可离开插入模式并返回普通模式。如果不确定当前处于哪个模式，按 `Esc` 是重新确立普通模式的安全方法，不过它可能取消尚未完成的操作。
 
-:::single-choice{#vim-insert-return-normal}
-哪个按键通常会从插入模式返回普通模式？
+:::single-choice{#vim-insert-return-normal} 哪个按键通常会从插入模式返回普通模式？
 
 ::option[`Esc`]{#vim-insert-escape .correct explanation="Escape 会结束当前插入并让 Vim 返回普通模式。"}
 ::option[`Enter`]{#vim-insert-enter explanation="Enter 会插入换行，同时仍停留在插入模式。"}
@@ -31,8 +30,7 @@ meta_keywords: "vim 追加，vim 追加与插入的区别，vim 插入与追加�
 
 例如，如果光标位于 `abc` 中的 `b` 上，`i` 会从 `b` 之前开始，而 `a` 会从 `b` 之后开始。两个命令都会切换模式；随后输入的文本才会执行插入。
 
-:::single-choice{#vim-insert-before-cursor}
-普通模式中的哪个按键会在光标紧前方进入插入模式？
+:::single-choice{#vim-insert-before-cursor} 普通模式中的哪个按键会在光标紧前方进入插入模式？
 
 ::option[`a`]{#vim-insert-a-after explanation="小写 `a` 会在光标之后追加，而不是在之前插入。"}
 ::option[`o`]{#vim-insert-o-below explanation="小写 `o` 会在当前行下方打开新行，然后进入插入模式。"}
@@ -48,16 +46,14 @@ meta_keywords: "vim 追加，vim 追加与插入的区别，vim 插入与追加�
 
 在有缩进的行上，`I` 会跳过缩进，从第一个非空白文本之前开始。如果确实需要在第零列插入，请使用 `0i`。
 
-:::single-choice{#vim-insert-first-nonblank}
-普通模式中的哪个命令会从当前行第一个非空白字符之前开始插入？
+:::single-choice{#vim-insert-first-nonblank} 普通模式中的哪个命令会从当前行第一个非空白字符之前开始插入？
 
 ::option[`i`]{#vim-insert-lower-i explanation="小写 `i` 使用当前光标位置，不会先定位该行开头的文本。"}
 ::option[`A`]{#vim-insert-capital-a explanation="大写 `A` 会从当前行末尾开始插入。"}
 ::option[`I`]{#vim-insert-capital-i .correct explanation="大写 `I` 会移动到第一个非空白字符，并在它之前进入插入模式。"}
 :::
 
-:::single-choice{#vim-append-line-end}
-普通模式中的哪个命令会移动到当前行末尾并进入插入模式？
+:::single-choice{#vim-append-line-end} 普通模式中的哪个命令会移动到当前行末尾并进入插入模式？
 
 ::option[`A`]{#vim-append-capital-a .correct explanation="大写 `A` 把跳转到行尾和进入插入模式组合在一起。"}
 ::option[`$`]{#vim-move-line-end explanation="美元符号移动命令会到达行尾，但仍停留在普通模式。"}
@@ -73,8 +69,7 @@ meta_keywords: "vim 追加，vim 追加与插入的区别，vim 插入与追加�
 
 Vim 会根据当前设置和文件类型规则应用缩进。计数可以重复打开行的操作，但请先学会单行形式，使最终光标位置可以预测。
 
-:::single-choice{#vim-open-line-above}
-普通模式中的哪个命令会在当前行上方打开新行并进入插入模式？
+:::single-choice{#vim-open-line-above} 普通模式中的哪个命令会在当前行上方打开新行并进入插入模式？
 
 ::option[`o`]{#vim-open-lower-o explanation="小写 `o` 会在当前行下方打开新行。"}
 ::option[`O`]{#vim-open-upper-o .correct explanation="大写 `O` 会在上方打开新行，并在那里开始插入。"}

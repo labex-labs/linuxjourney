@@ -39,8 +39,7 @@ L'ordre dépend de la locale, qui influe sur la casse, les accents et la ponctua
 $ LC_ALL=C sort animals.txt
 ```
 
-:::single-choice{#sort-lines-ascending}
-Que fait `sort animals.txt` sans option de clé ou numérique ?
+:::single-choice{#sort-lines-ascending} Que fait `sort animals.txt` sans option de clé ou numérique ?
 
 ::option[Il ordonne les lignes complètes selon la locale courante.]{#sort-locale-lines .correct explanation="Par défaut, `sort` compare les lignes entières selon les règles de collation actives."}
 ::option[Il trie les mots dans chaque ligne sans déplacer les lignes.]{#sort-words-within-lines explanation="Chaque ligne constitue un enregistrement ; ses mots ne sont pas réarrangés."}
@@ -58,8 +57,7 @@ cat
 bird
 ```
 
-:::single-choice{#sort-reverse-order}
-Quelle commande trie `animals.txt` dans l'ordre inverse ?
+:::single-choice{#sort-reverse-order} Quelle commande trie `animals.txt` dans l'ordre inverse ?
 
 ::option[`sort -n animals.txt`]{#sort-numeric-animals explanation="`-n` demande une comparaison numérique."}
 ::option[`sort -u animals.txt`]{#sort-unique-animals explanation="`-u` supprime les clés dupliquées."}
@@ -79,8 +77,7 @@ $ printf '10\n2\n30\n' | sort -n
 
 `sort -nr scores.txt` combine comparaison numérique et ordre décroissant.
 
-:::single-choice{#sort-numbers-descending}
-Quelle commande trie les lignes numériques de `scores.txt` de la plus grande à la plus petite ?
+:::single-choice{#sort-numbers-descending} Quelle commande trie les lignes numériques de `scores.txt` de la plus grande à la plus petite ?
 
 ::option[`sort -n scores.txt`]{#sort-numeric-ascending explanation="Le tri numérique est croissant sans `-r`."}
 ::option[`sort -nr scores.txt`]{#sort-numeric-reverse .correct explanation="`-n` compare les nombres et `-r` inverse le résultat."}
@@ -100,8 +97,7 @@ alice:30
 
 `-t ':'` définit les champs, `-k 2,2` borne la clé au deuxième et `n` la compare numériquement. Sans `,2`, une clé commençant au champ 2 continue normalement jusqu'à la fin.
 
-:::single-choice{#sort-second-colon-field}
-Quelle commande trie `users.txt` numériquement selon son seul deuxième champ séparé par `:` ?
+:::single-choice{#sort-second-colon-field} Quelle commande trie `users.txt` numériquement selon son seul deuxième champ séparé par `:` ?
 
 ::option[`sort -n -k 1,1 users.txt`]{#sort-first-blank-field explanation="Cette forme utilise les blancs et le premier champ."}
 ::option[`cut -d ':' -f 2 users.txt`]{#cut-second-user-field explanation="`cut` extrait le champ sans trier les enregistrements."}
@@ -130,8 +126,7 @@ $ sort -o names.txt names.txt
 
 Conservez une sauvegarde ou vérifiez un résultat séparé si les données comptent.
 
-:::single-choice{#sort-safe-same-file}
-Sous GNU/Linux, quelle commande demande à `sort` de réécrire sûrement `names.txt` sans troncature préalable du shell ?
+:::single-choice{#sort-safe-same-file} Sous GNU/Linux, quelle commande demande à `sort` de réécrire sûrement `names.txt` sans troncature préalable du shell ?
 
 ::option[`sort -o names.txt names.txt`]{#sort-output-same-file .correct explanation="GNU `sort` gère la sortie `-o` après la lecture nécessaire ; le shell ne pré-tronque pas l'entrée."}
 ::option[`sort names.txt > names.txt`]{#sort-redirection-same-file explanation="Le shell tronque le fichier avant le lancement de `sort`."}

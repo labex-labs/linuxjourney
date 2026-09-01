@@ -33,8 +33,7 @@ RPM family:    $ dnf info package-name
 
 La configuración de los repositorios determina qué pueden descubrir estas órdenes. Lee atentamente los nombres de fuentes, las arquitecturas, las versiones y los errores de firma.
 
-:::single-choice{#package-management-systems-apt-show}
-¿Qué orden muestra los detalles de APT para `package-name`?
+:::single-choice{#package-management-systems-apt-show} ¿Qué orden muestra los detalles de APT para `package-name`?
 
 ::option[`apt remove package-name`]{#package-management-systems-apt-remove-command explanation="La suborden `remove` propone desinstalar el paquete."}
 ::option[`dnf search package-name`]{#package-management-systems-dnf-search-command explanation="Esta orden busca en repositorios de la familia RPM y no es la orden de APT que muestra detalles."}
@@ -52,8 +51,7 @@ RPM family:    $ sudo dnf install package-name
 
 El gestor propone las dependencias y cualquier conflicto o sustitución. No confirmes automáticamente hasta haber revisado el origen, la versión y la arquitectura del paquete, el tamaño de la descarga, el cambio de espacio en disco, las eliminaciones y las dependencias que se instalarán.
 
-:::single-choice{#package-management-systems-dnf-install}
-¿Qué orden actual instala `package-name` desde los repositorios configurados de la familia RPM?
+:::single-choice{#package-management-systems-dnf-install} ¿Qué orden actual instala `package-name` desde los repositorios configurados de la familia RPM?
 
 ::option[`rpm -qa package-name`]{#package-management-systems-rpm-query-command explanation="Esta es una consulta de la base de datos de paquetes RPM instalados, no una solicitud de instalación desde un repositorio."}
 ::option[`dnf install package-name`]{#package-management-systems-dnf-install-command .correct explanation="DNF es el gestor actual que conoce los repositorios en Fedora y las versiones recientes de RHEL."}
@@ -71,8 +69,7 @@ RPM family:    $ sudo dnf remove package-name
 
 Una eliminación puede afectar a paquetes dependientes o dejar dependencias y configuración que ya no se utilizan. Revisa la transacción propuesta, distingue las semánticas de eliminación y purga en los sistemas de la familia Debian, y conserva los datos de la aplicación conforme a su propio procedimiento de copia de seguridad y retención. La eliminación de un paquete no promete borrar los datos creados por los usuarios.
 
-:::single-choice{#package-management-systems-remove-review}
-¿Por qué debes revisar una transacción de eliminación antes de confirmarla?
+:::single-choice{#package-management-systems-remove-review} ¿Por qué debes revisar una transacción de eliminación antes de confirmarla?
 
 ::option[Porque la eliminación siempre vuelve a formatear el sistema de archivos que contiene el paquete.]{#package-management-systems-removal-format explanation="Los gestores eliminan archivos y estado gestionados; normalmente no formatean un sistema de archivos."}
 ::option[Porque los gestores de paquetes no pueden mostrar un conjunto de cambios propuesto.]{#package-management-systems-no-proposal explanation="Los gestores interactivos suelen mostrar la transacción prevista precisamente para que pueda revisarse."}
@@ -98,8 +95,7 @@ $ sudo dnf upgrade
 
 Una orden de actualización puede modificar bibliotecas esenciales, servicios, kernels y dependencias. Utiliza copias de seguridad, políticas de mantenimiento, notas de la versión y una planificación de reinicios apropiadas para el sistema. Comprueba la semántica del estado de salida: por ejemplo, algunas operaciones de comprobación de actualizaciones utilizan un estado distinto de cero para indicar que hay actualizaciones disponibles, no que la ejecución haya fallado.
 
-:::single-choice{#package-management-systems-apt-update-upgrade}
-¿Qué relación existe entre `apt update` y `apt upgrade`?
+:::single-choice{#package-management-systems-apt-update-upgrade} ¿Qué relación existe entre `apt update` y `apt upgrade`?
 
 ::option[`update` elimina paquetes; `upgrade` restaura sus archivos de configuración.]{#package-management-systems-apt-remove-restore explanation="Ninguna de las dos órdenes mantiene esa relación de eliminación y restauración."}
 ::option[`update` actualiza los metadatos; `upgrade` aplica un plan aprobado de actualización de paquetes.]{#package-management-systems-apt-two-steps .correct explanation="APT separa la actualización del catálogo de la instalación de versiones de paquetes más recientes."}
@@ -110,8 +106,7 @@ Una orden de actualización puede modificar bibliotecas esenciales, servicios, k
 
 Utiliza `dnf` en la documentación actual de Fedora y RHEL. Una orden `yum` en un sistema RHEL reciente puede invocar el comportamiento de compatibilidad de DNF, pero los scripts no deben deducir la implementación únicamente del nombre del ejecutable. En equipos antiguos, verifica la versión instalada y la sintaxis compatible antes de adaptar instrucciones.
 
-:::single-choice{#package-management-systems-yum-current-rhel}
-¿Qué representa habitualmente `yum` en un sistema RHEL actual?
+:::single-choice{#package-management-systems-yum-current-rhel} ¿Qué representa habitualmente `yum` en un sistema RHEL actual?
 
 ::option[Una orden de compatibilidad respaldada por DNF.]{#package-management-systems-yum-dnf-alias .correct explanation="Las versiones recientes de RHEL utilizan DNF y conservan el nombre de la orden yum por compatibilidad."}
 ::option[La herramienta de bajo nivel de Debian para archivos `.deb`.]{#package-management-systems-yum-dpkg explanation="Los sistemas Debian utilizan herramientas como APT y dpkg, no YUM, para gestionar paquetes nativos."}

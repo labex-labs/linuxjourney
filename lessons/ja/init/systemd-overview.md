@@ -23,8 +23,7 @@ $ systemctl is-system-running
 
 別のプログラムが PID 1 のシステムにも `/usr/lib/systemd/` が存在する場合があり、コンテナは独自の PID 名前空間を公開できます。また、`systemctl` にはユーザーマネージャー用やリモート・コンテナ用のモードもあります。操作の対象となるマネージャーを特定してください。
 
-:::single-choice{#systemd-overview-detection}
-systemd がシステムの init マネージャーであることを最も直接的に示すものはどれですか？
+:::single-choice{#systemd-overview-detection} systemd がシステムの init マネージャーであることを最も直接的に示すものはどれですか？
 
 ::option[`/usr/lib/systemd` というディレクトリが存在すること。]{#systemd-overview-directory explanation="systemd が PID 1 でなくても、ライブラリやユニットファイルがインストールされたままの場合があります。"}
 ::option[あるユーザーが `systemctl` というコマンドを1回実行したこと。]{#systemd-overview-command-executed explanation="システムの systemd マネージャーを利用できなくても、クライアントバイナリは存在できます。"}
@@ -44,8 +43,7 @@ systemd がシステムの init マネージャーであることを最も直接
 
 ユニットの状態は常に「実行中」とは限りません。マウントはマウント済み、タイマーは待機中、デバイスは存在、ターゲットは依存関係へ到達した後にアクティブ、という状態になれます。
 
-:::single-choice{#systemd-overview-group-unit}
-ほかのユニットをまとめ、同期点を提供するためによく使うユニットタイプはどれですか？
+:::single-choice{#systemd-overview-group-unit} ほかのユニットをまとめ、同期点を提供するためによく使うユニットタイプはどれですか？
 
 ::option[`.socket`]{#systemd-overview-socket explanation="ソケットユニットは IPC またはネットワークのエンドポイントを公開し、サービスを有効化できます。"}
 ::option[`.target`]{#systemd-overview-target .correct explanation="ターゲットユニットは依存関係を集め、起動や運用上の到達点を表します。"}
@@ -62,8 +60,7 @@ systemd がシステムの init マネージャーであることを最も直接
 
 ベンダー用の正確なパスは環境によって異なります。同じユニット名では、優先度の高いローカル設定が優先度の低いファイルを上書きします。パッケージ更新による変更を確認できるよう、ベンダーファイル全体をコピーして変更するより、`systemctl edit UNIT` でドロップイン上書きを作る方法を優先してください。
 
-:::single-choice{#systemd-overview-local-override}
-永続的なローカルのシステムユニット上書きは、通常どこに置くべきですか？
+:::single-choice{#systemd-overview-local-override} 永続的なローカルのシステムユニット上書きは、通常どこに置くべきですか？
 
 ::option[`/proc/systemd/` の中。]{#systemd-overview-proc-systemd explanation="procfs は実行時のカーネルインターフェースであり、永続的なユニット設定ではありません。"}
 ::option[`/etc/systemd/system/` の下。]{#systemd-overview-etc-system .correct explanation="管理者設定の層は、パッケージ化されたベンダーユニットより優先されます。"}
@@ -76,8 +73,7 @@ Systemd は依存関係からトランザクションを構築します。`Wants
 
 `After=network.target` という行があっても、利用可能な接続、DNS、特定のリモートエンドポイントの準備完了は保証されません。サービスは適切な network-online 連携を使うか、独自に再試行と準備完了の処理を実装する必要があります。
 
-:::single-choice{#systemd-overview-after-semantics}
-`After=other.service` だけでは何を指定しますか？
+:::single-choice{#systemd-overview-after-semantics} `After=other.service` だけでは何を指定しますか？
 
 ::option[相手サービスのアプリケーションエンドポイントが正常であることの保証。]{#systemd-overview-after-health explanation="順序上の完了とアプリケーションの準備完了は異なる概念です。"}
 ::option[両方のユニットがトランザクションに含まれる場合の順序。]{#systemd-overview-after-ordering .correct explanation="相手ユニットを取り込むには、Wants や Requires など別の要件が必要です。"}
@@ -90,8 +86,7 @@ Systemd は依存関係からトランザクションを構築します。`Wants
 
 ターゲットがランレベルに似ているのは、大まかな互換性の範囲だけです。複数のターゲットを同時にアクティブにでき、独自のターゲットも作成できます。また、ターゲットがアクティブでも、マシン上の全サービスが正常とは限りません。
 
-:::single-choice{#systemd-overview-default-target}
-`default.target` は通常何を選択しますか？
+:::single-choice{#systemd-overview-default-target} `default.target` は通常何を選択しますか？
 
 ::option[`mkfs` が消去すべき既定のブロックデバイス。]{#systemd-overview-default-disk explanation="ターゲットはユニットの有効化を表し、破壊的なストレージ選択ではありません。"}
 ::option[常に唯一アクティブになれるターゲット。]{#systemd-overview-only-target explanation="ターゲットはグループであり、1回の起動で複数をアクティブにできます。"}

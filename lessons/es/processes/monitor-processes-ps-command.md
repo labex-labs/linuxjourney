@@ -32,8 +32,7 @@ Entre los campos habituales se encuentran:
 
 Las columnas exactas y los valores predeterminados de selección varían entre implementaciones y entornos de `ps`.
 
-:::single-choice{#ps-command-pid-meaning}
-¿Qué identifica la columna `PID`?
+:::single-choice{#ps-command-pid-meaning} ¿Qué identifica la columna `PID`?
 
 ::option[El número del directorio actual del proceso.]{#ps-command-pid-directory explanation="Un directorio actual es una referencia del sistema de archivos y no está representado por el PID."}
 ::option[El tiempo de CPU acumulado en segundos.]{#ps-command-pid-cpu explanation="El uso de CPU aparece en un campo independiente, como `TIME`."}
@@ -56,8 +55,7 @@ En esta combinación:
 
 Como los significados de las opciones pueden interactuar, interpreta la combinación completa en vez de tratar cada letra como una orden independiente.
 
-:::single-choice{#ps-command-aux-user-format}
-En `ps aux`, ¿qué opción solicita el formato de salida orientado al usuario?
+:::single-choice{#ps-command-aux-user-format} En `ps aux`, ¿qué opción solicita el formato de salida orientado al usuario?
 
 ::option[`u`]{#ps-command-aux-u .correct explanation="La opción `u` de estilo BSD selecciona un conjunto de columnas orientado al usuario."}
 ::option[`x`]{#ps-command-aux-x explanation="La opción `x` afecta a la selección de procesos, especialmente a los que no tienen terminal de control."}
@@ -77,8 +75,7 @@ $ ps -ef
 
 La salida suele incluir `UID`, `PID`, `PPID`, hora de inicio e información de la orden. `PPID` es el identificador del proceso padre. Este listado no es jerárquico por sí mismo; usa una opción como `--forest` cuando esté disponible o un visor de árboles específico como `pstree` cuando importe la disposición entre padres e hijos.
 
-:::single-choice{#ps-command-ef-selection}
-¿Qué solicita `-e` en `ps -ef`?
+:::single-choice{#ps-command-ef-selection} ¿Qué solicita `-e` en `ps -ef`?
 
 ::option[Una actualización cada segundo hasta que se interrumpa.]{#ps-command-e-refresh explanation="`ps` produce una instantánea; la actualización continua es una función de herramientas como `top`."}
 ::option[Una selección que contiene todos los procesos visibles para quien ejecuta la orden.]{#ps-command-e-every .correct explanation="La opción `-e` de estilo estándar amplía la instantánea a todos los procesos seleccionables."}
@@ -95,8 +92,7 @@ $ top
 
 `top` ayuda a identificar consumidores cambiantes de CPU y memoria, pero sus valores son muestras y pueden fluctuar. Confirma un problema sospechado mediante varias observaciones y relaciona los porcentajes con la cantidad de CPU, la contabilidad de memoria y la carga de trabajo de la máquina.
 
-:::single-choice{#ps-command-snapshot-versus-top}
-¿Qué herramienta presentada aquí actualiza periódicamente su visualización de procesos de forma predeterminada?
+:::single-choice{#ps-command-snapshot-versus-top} ¿Qué herramienta presentada aquí actualiza periódicamente su visualización de procesos de forma predeterminada?
 
 ::option[`top`]{#ps-command-top-refresh .correct explanation="`top` es un monitor interactivo que actualiza su visualización a intervalos."}
 ::option[`ps -ef`]{#ps-command-ps-ef-snapshot explanation="Esta orden imprime una instantánea de procesos con formato completo y después termina."}

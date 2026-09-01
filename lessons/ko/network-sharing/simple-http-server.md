@@ -24,8 +24,7 @@ $ python3 -m http.server 8000 --directory /srv/temporary-share
 
 인덱스 파일이 없으면 모듈은 일반적으로 디렉터리 목록을 생성합니다. 리스너에 도달할 수 있는 사람은 누구나 제공되는 내용을 열거하고 내려받을 수 있습니다.
 
-:::single-choice{#http-server-directory-option}
-`--directory /srv/temporary-share`를 사용하는 이유는 무엇입니까?
+:::single-choice{#http-server-directory-option} `--directory /srv/temporary-share`를 사용하는 이유는 무엇입니까?
 
 ::option[모든 HTTP 응답을 자동으로 암호화합니다.]{#http-server-directory-tls explanation="디렉터리 옵션은 TLS를 추가하지 않습니다."}
 ::option[다운로드 사용자마다 계정을 만듭니다.]{#http-server-directory-accounts explanation="기본 모듈은 사용자 인증을 제공하지 않습니다."}
@@ -42,8 +41,7 @@ $ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
 
 신뢰할 수 있는 네트워크에서 공유하려면 적절한 인터페이스 주소에 의도적으로 바인딩하고 방화벽 정책을 확인합니다. 제한적인 바인딩 없이 실행하면 일반적으로 사용 가능한 모든 인터페이스에서 수신하므로 의도한 네트워크 밖에 디렉터리가 노출될 수 있습니다.
 
-:::single-choice{#http-server-loopback-bind}
-`127.0.0.1`에 바인딩한 서버에는 일반적으로 누가 접근할 수 있습니까?
+:::single-choice{#http-server-loopback-bind} `127.0.0.1`에 바인딩한 서버에는 일반적으로 누가 접근할 수 있습니까?
 
 ::option[같은 호스트의 클라이언트입니다.]{#http-server-local-clients .correct explanation="루프백 바인딩은 로컬 테스트나 의도적으로 설정한 터널 뒤에서 사용하기에 적합합니다."}
 ::option[공용 인터넷의 모든 호스트입니다.]{#http-server-public explanation="루프백은 같은 네트워크 네임스페이스에만 속하며 공용 인터페이스가 아닙니다."}
@@ -60,8 +58,7 @@ $ curl -f http://127.0.0.1:8000/example.txt
 
 승인된 원격 테스트에는 루프백 대신 선택한 인터페이스 주소를 사용합니다. 의도한 파일에 접근할 수 있는지와 문서 루트 밖의 파일에는 접근할 수 없는지를 모두 확인합니다. 브라우저에서 성공했다는 사실만으로 적절한 공개 범위나 기밀성이 입증되지는 않습니다.
 
-:::single-choice{#http-server-default-port-command}
-`python3 -m http.server 8000`에서 명시적으로 선택한 포트는 무엇입니까?
+:::single-choice{#http-server-default-port-command} `python3 -m http.server 8000`에서 명시적으로 선택한 포트는 무엇입니까?
 
 ::option[22]{#http-server-port-22 explanation="포트 22는 보통 SSH와 연결되며 여기서는 선택하지 않았습니다."}
 ::option[8000]{#http-server-port-8000 .correct explanation="위치 포트 피연산자가 모듈이 수신할 위치를 지정합니다."}
@@ -78,8 +75,7 @@ $ ss -ltn 'sport = :8000'
 
 데이터 처리 정책에 따라 임시 사본을 제거하고 임시 방화벽 규칙을 되돌립니다. 영구적이거나 인증이 필요하거나 인터넷에 공개되는 배포에는 접근 제어와 TLS가 설정된 유지 관리형 서버를 사용하십시오.
 
-:::single-choice{#http-server-completion-check}
-임시 전송이 완료된 뒤 무엇을 해야 합니까?
+:::single-choice{#http-server-completion-check} 임시 전송이 완료된 뒤 무엇을 해야 합니까?
 
 ::option[서버를 중지하고 포트가 더 이상 수신 중이 아닌지 확인합니다.]{#http-server-stop-verify .correct explanation="검증을 통해 임시 네트워크 서비스가 실제로 종료됐음을 확인합니다."}
 ::option[나중에 누군가 필요할 수 있으므로 리스너를 계속 실행합니다.]{#http-server-leave-running explanation="승인된 목적이 끝나면 불필요한 노출을 제거해야 합니다."}

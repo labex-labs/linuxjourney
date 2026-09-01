@@ -25,8 +25,7 @@ $ sudo less /var/log/auth.log
 
 The SSH unit can be named `ssh.service` or `sshd.service`. Permissions commonly restrict these records because they expose account and access details.
 
-:::single-choice{#auth-logs-file-location}
-Where must Linux authentication events always be stored?
+:::single-choice{#auth-logs-file-location} Where must Linux authentication events always be stored?
 
 ::option[In the destination selected by local logging policy.]{#auth-logs-local-policy .correct explanation="Files, the journal, and centralized collectors vary by distribution and configuration."}
 ::option[In `/var/log/auth.log` on every distribution.]{#auth-logs-auth-only explanation="That path is common on Debian-family systems but is not universal."}
@@ -43,8 +42,7 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 This identifies the time, host, emitting program, PAM module and service, requested session user, and originating UID. It does not by itself identify the human behind UID 1000 or prove that the action was malicious. Resolve the UID against account records valid at the incident time and correlate terminal, remote address, session, and surrounding events.
 
-:::single-choice{#auth-logs-uid-inference}
-What does `uid=1000` establish in this record?
+:::single-choice{#auth-logs-uid-inference} What does `uid=1000` establish in this record?
 
 ::option[That the root password was typed incorrectly one thousand times.]{#auth-logs-thousand-passwords explanation="The value is an identity number, not an attempt count."}
 ::option[The numeric account identity associated with the initiating process.]{#auth-logs-numeric-identity .correct explanation="Additional session and account evidence is needed to attribute the action to a person."}
@@ -57,8 +55,7 @@ Search for both accepted and rejected attempts in a bounded time range. For SSH,
 
 `last` and `lastb` can summarize records from `wtmp` and `btmp` where maintained, but those binary databases have their own retention and integrity limits. Cross-check them with journal or syslog records and centralized sources.
 
-:::single-choice{#auth-logs-failed-attempts}
-What should repeated failed logins be correlated with?
+:::single-choice{#auth-logs-failed-attempts} What should repeated failed logins be correlated with?
 
 ::option[Only the total free disk space.]{#auth-logs-disk-space explanation="Capacity does not identify the source, target, or method of an authentication attempt."}
 ::option[Source, target account, method, timing, and successful sessions.]{#auth-logs-correlated-fields .correct explanation="These details help distinguish misconfiguration, user error, scanning, and unauthorized access."}
@@ -69,8 +66,7 @@ What should repeated failed logins be correlated with?
 
 If an incident is suspected, record host time and timezone, preserve original logs and metadata, and secure any exported copy. Avoid editing evidence in place. Account locks, firewall changes, and session termination can interrupt legitimate access or alert an attacker, so follow the incident-response process and retain a recovery path.
 
-:::single-choice{#auth-logs-preservation}
-How should authentication evidence be handled during an investigation?
+:::single-choice{#auth-logs-preservation} How should authentication evidence be handled during an investigation?
 
 ::option[Edit suspicious lines in the original file for clarity.]{#auth-logs-edit-original explanation="Changing the source damages evidence integrity."}
 ::option[Publish the complete log so anyone can identify users.]{#auth-logs-publish explanation="Authentication records can expose sensitive identities and infrastructure details."}

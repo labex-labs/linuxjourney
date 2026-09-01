@@ -30,8 +30,7 @@ $ lsusb -t
 
 상세 디스크립터 출력도 사용할 수 있지만 일부 정보에는 더 높은 읽기 권한이 필요합니다. 검사 명령의 경고를 없애겠다는 이유로 USB 장치에 광범위한 권한을 부여하지 마십시오.
 
-:::single-choice{#listing-devices-usb-tree}
-USB 장치를 토폴로지 트리로 표시하는 명령은 무엇입니까?
+:::single-choice{#listing-devices-usb-tree} USB 장치를 토폴로지 트리로 표시하는 명령은 무엇입니까?
 
 ::option[`lspci -k`]{#listing-devices-lspci-tree explanation="이 명령은 USB 토폴로지가 아니라 PCI 기능과 커널 드라이버 정보를 나열합니다."}
 ::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="이 수업에서 소개한 USB 트리 명령이 아닙니다."}
@@ -54,8 +53,7 @@ $ lspci -k
 
 PCI 컨트롤러가 이 목록에 나타난다고 해서 그 뒤의 모든 장치가 초기화되어 정상이라는 뜻은 아닙니다. 문제를 해결할 때는 드라이버 바인딩과 커널 로그를 확인하십시오.
 
-:::single-choice{#listing-devices-pci-driver}
-PCI 목록에 커널 드라이버 정보를 추가하는 명령은 무엇입니까?
+:::single-choice{#listing-devices-pci-driver} PCI 목록에 커널 드라이버 정보를 추가하는 명령은 무엇입니까?
 
 ::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="`-k` 옵션은 활성 커널 드라이버와 각 PCI 장치를 처리할 수 있는 모듈을 표시합니다."}
 ::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="이 명령은 USB 계층 및 인터페이스 드라이버를 설명합니다."}
@@ -78,8 +76,7 @@ $ lsscsi
 $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-:::single-choice{#listing-devices-lsscsi-scope}
-`lsscsi`가 주로 나열하는 것은 무엇입니까?
+:::single-choice{#listing-devices-lsscsi-scope} `lsscsi`가 주로 나열하는 것은 무엇입니까?
 
 ::option[모든 NVMe 네임스페이스와 컨트롤러만 나열합니다.]{#listing-devices-only-nvme explanation="NVMe는 자체 하위 시스템과 도구를 사용하지만 관련 블록 뷰가 다른 곳에 나타날 수 있습니다."}
 ::option[이름이 `.scsi`로 끝나는 파일만 나열합니다.]{#listing-devices-scsi-extension explanation="이 명령은 파일 이름 확장자가 아니라 커널 장치 인터페이스를 조회합니다."}
@@ -92,8 +89,7 @@ $ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
 
 이 유틸리티들은 일반적으로 `usbutils`, `pciutils` 및 `lsscsi` 같은 별도 패키지로 제공될 수 있습니다. 명령이 없을 때는 출처를 알 수 없는 대체품을 다운로드하지 말고 배포판 패키지 관리자를 사용하십시오.
 
-:::single-choice{#listing-devices-listed-not-working}
-`lspci`에 장치가 보이면 드라이버가 활성화되어 올바르게 작동한다는 사실이 증명됩니까?
+:::single-choice{#listing-devices-listed-not-working} `lspci`에 장치가 보이면 드라이버가 활성화되어 올바르게 작동한다는 사실이 증명됩니까?
 
 ::option[아닙니다. 드라이버 바인딩과 관련 커널 메시지도 검사해야 합니다.]{#listing-devices-needs-correlation .correct explanation="열거 결과는 PCI 기능이 보인다는 사실만 보여 줄 뿐 상위 수준 초기화의 성공을 보장하지 않습니다."}
 ::option[그렇습니다. PCI 열거가 완전한 기능 테스트를 수행합니다.]{#listing-devices-complete-test explanation="목록 조회는 모든 하드웨어 기능을 실행하거나 서비스 동작을 검증하지 않습니다."}

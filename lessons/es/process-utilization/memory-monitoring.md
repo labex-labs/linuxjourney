@@ -22,8 +22,7 @@ $ vmstat 1
 
 La primera fila de datos suele comunicar promedios desde el arranque; las filas posteriores abarcan cada intervalo. Detén la orden con `Ctrl-C` después de capturar un período representativo. Las unidades y los campos disponibles varían, así que consulta `vmstat --unit` y el manual local.
 
-:::single-choice{#vmstat-interval-rows}
-¿Qué filas son más adecuadas para observar cambios segundo a segundo con `vmstat 1`?
+:::single-choice{#vmstat-interval-rows} ¿Qué filas son más adecuadas para observar cambios segundo a segundo con `vmstat 1`?
 
 ::option[Las filas posteriores al informe inicial.]{#vmstat-later-rows .correct explanation="Las filas posteriores describen cada intervalo solicitado en vez del período acumulado."}
 ::option[Únicamente los encabezados situados sobre la primera fila de datos.]{#vmstat-headings explanation="Los encabezados definen campos, pero no contienen muestras de actividad."}
@@ -42,8 +41,7 @@ $ free -h
 
 La estimación `available` suele ser más útil que `free` por sí sola, porque la caché recuperable puede satisfacer asignaciones nuevas.
 
-:::single-choice{#vmstat-free-memory}
-¿Por qué puede ser normal un valor `free` bajo en Linux?
+:::single-choice{#vmstat-free-memory} ¿Por qué puede ser normal un valor `free` bajo en Linux?
 
 ::option[Porque el valor siempre excluye toda la RAM física.]{#vmstat-excludes-ram explanation="Es un campo de memoria, aunque debe comprobarse su unidad exacta."}
 ::option[Porque el kernel puede utilizar la memoria inactiva para cachés recuperables.]{#vmstat-reclaimable-cache .correct explanation="La memoria en caché suele poder recuperarse cuando las aplicaciones la necesitan."}
@@ -54,8 +52,7 @@ La estimación `available` suele ser más útil que `free` por sí sola, porque 
 
 `si` y `so` muestran las tasas de entrada y salida del intercambio. Una paginación sostenida combinada con latencia y actividad de recuperación de memoria puede indicar presión, pero un uso del intercambio (`swpd`) distinto de cero no demuestra por sí solo un problema actual. `bi` y `bo` comunican tasas de entrada y salida de bloques, y no se limitan al tráfico de intercambio.
 
-:::single-choice{#vmstat-swap-pressure}
-¿Qué prueba respalda mejor un diagnóstico de presión de memoria actual?
+:::single-choice{#vmstat-swap-pressure} ¿Qué prueba respalda mejor un diagnóstico de presión de memoria actual?
 
 ::option[Un valor `swpd` distinto de cero sin ninguna otra observación.]{#vmstat-swpd-alone explanation="Las páginas pueden permanecer en el intercambio después de una presión anterior, por lo que la cantidad por sí sola no basta."}
 ::option[Paginación sostenida relacionada con actividad de recuperación y latencia de la carga de trabajo.]{#vmstat-correlated-pressure .correct explanation="Las pruebas repetidas y relacionadas conectan el comportamiento de la memoria con el impacto actual."}
@@ -66,8 +63,7 @@ La estimación `available` suele ser más útil que `free` por sí sola, porque 
 
 Las columnas de CPU suelen incluir porcentajes de usuario (`us`), sistema (`sy`), inactividad (`id`), espera de E/S (`wa`) y sustracción (`st`). Las columnas del sistema incluyen interrupciones (`in`) y cambios de contexto (`cs`) por segundo. Interpreta los picos frente a una referencia; las tasas altas de cambios de contexto pueden ser normales para algunas cargas.
 
-:::single-choice{#vmstat-r-column}
-¿Qué representa el campo de procesos `r`?
+:::single-choice{#vmstat-r-column} ¿Qué representa el campo de procesos `r`?
 
 ::option[Sistemas de archivos montados como solo lectura.]{#vmstat-readonly explanation="Los indicadores de montaje del sistema de archivos no se representan mediante este campo de procesos."}
 ::option[Usuarios remotos con shells activos.]{#vmstat-remote-users explanation="Otras herramientas comunican las sesiones iniciadas."}

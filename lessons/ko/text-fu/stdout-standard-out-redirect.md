@@ -23,8 +23,7 @@ Hello World
 
 stdout은 파일 디스크립터 `1`이며 여러 스트림을 리디렉션할 때 이 번호가 유용합니다. 프로그램에는 표준 입력(stdin)과 표준 오류(stderr)도 있으며 다음 강의에서 살펴봅니다.
 
-:::single-choice{#stdout-default-destination}
-리디렉션이 없을 때 대화형 터미널에서 `echo Hello World`는 정상 출력을 보통 어디로 보내나요?
+:::single-choice{#stdout-default-destination} 리디렉션이 없을 때 대화형 터미널에서 `echo Hello World`는 정상 출력을 보통 어디로 보내나요?
 
 ::option[현재 디렉터리의 `stdout`이라는 파일]{#stdout-file explanation="표준 출력은 자동으로 생성되는 `stdout` 파일이 아니라 스트림이며 파일은 명시적으로 리디렉션할 때만 사용합니다."}
 ::option[표준 출력을 통해 터미널로 보냅니다.]{#stdout-terminal .correct explanation="쉘은 보통 명령어의 stdout을 터미널에 연결하므로 `echo` 결과가 화면에 표시됩니다."}
@@ -48,8 +47,7 @@ $ cat peanuts.txt
 Hello World
 ```
 
-:::single-choice{#stdout-replace-file}
-`notes.txt`에 이미 텍스트가 있습니다. `echo new > notes.txt`를 실행하면 어떻게 되나요?
+:::single-choice{#stdout-replace-file} `notes.txt`에 이미 텍스트가 있습니다. `echo new > notes.txt`를 실행하면 어떻게 되나요?
 
 ::option[파일 내용을 `new`로 교체합니다.]{#stdout-replace-existing .correct explanation="쉘은 `>` 목적지의 기존 내용을 잘라낸 뒤 비워진 파일로 `echo` 출력을 보냅니다."}
 ::option[기존 텍스트 뒤에 `new`를 추가합니다.]{#stdout-add-existing explanation="추가에는 `>>`가 필요하며 `>` 하나는 목적지의 이전 내용을 보존하지 않습니다."}
@@ -71,8 +69,7 @@ Another line
 
 `>`와 마찬가지로 `>>`도 목적지가 없으면 만듭니다. 차이는 기존 파일을 여는 방식으로, `>>`는 잘라내지 않고 뒤에 추가합니다.
 
-:::single-choice{#stdout-append-file}
-기존 내용을 지우지 않고 `status.log` 끝에 `Finished`를 추가하는 명령어는 무엇인가요?
+:::single-choice{#stdout-append-file} 기존 내용을 지우지 않고 `status.log` 끝에 `Finished`를 추가하는 명령어는 무엇인가요?
 
 ::option[`echo Finished > status.log`]{#stdout-truncate-status explanation="`>` 하나는 쓰기 전에 기존 목적지를 잘라내므로 이전 로그 내용이 사라집니다."}
 ::option[`echo Finished >> status.log`]{#stdout-append-status .correct explanation="`echo`가 텍스트를 만들고 `>>`가 stdout을 목적지 파일 뒤에 추가합니다."}
@@ -90,8 +87,7 @@ $ pwd > current-directory.txt
 $ ls -la >> directory-list.txt
 ```
 
-:::single-choice{#stdout-shell-role}
-`pwd > current-directory.txt`에서 `>`를 보통 누가 해석하나요?
+:::single-choice{#stdout-shell-role} `pwd > current-directory.txt`에서 `>`를 보통 누가 해석하나요?
 
 ::option[`>`를 인자로 받은 `pwd` 명령어]{#stdout-pwd-redirection explanation="쉘이 리디렉션 구문을 소비하므로 `pwd`는 보통 `>`나 목적지를 일반 인자로 받지 않습니다."}
 ::option[`pwd`를 시작하기 전의 Bash 쉘]{#stdout-bash-redirection .correct explanation="Bash는 명령어를 실행하기 전에 목적지를 열고 파일 디스크립터 1을 연결합니다."}

@@ -18,8 +18,7 @@ To understand how Linux was created, we must go back to 1969 when Ken Thompson a
 
 ![Timeline of Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-:::single-choice{#understand-unix-portability}
-What was an important result of rewriting UNIX in C?
+:::single-choice{#understand-unix-portability} What was an important result of rewriting UNIX in C?
 
 ::option[It became the free kernel created for the GNU system.]{#unix-became-gnu-kernel explanation="UNIX existed before the GNU project and was not GNU's kernel. GNU later began developing a separate kernel called the Hurd."}
 ::option[It became easier to move across different hardware systems.]{#portable-across-hardware .correct explanation="Writing UNIX in C made it more portable. That portability helped it spread beyond its original hardware."}
@@ -28,8 +27,7 @@ What was an important result of rewriting UNIX in C?
 
 Over a decade later, Richard Stallman initiated the GNU project. GNU is a recursive acronym for "GNU's Not UNIX," and its goal was to create a completely free and open-source UNIX-like operating system. The project produced many essential components and the GNU General Public License (GPL), but its own kernel, the GNU Hurd, was not ready for general use when Linux became available.
 
-:::single-choice{#identify-gnu-missing-component}
-Which major GNU component was not ready when Linux became available?
+:::single-choice{#identify-gnu-missing-component} Which major GNU component was not ready when Linux became available?
 
 ::option[A production-ready kernel]{#gnu-kernel .correct explanation="GNU had produced many system components, but its own kernel, the GNU Hurd, was not ready for general use."}
 ::option[A free software license]{#gnu-license explanation="The GNU project had already produced the GNU General Public License. The missing system component was a usable kernel."}
@@ -40,8 +38,7 @@ Which major GNU component was not ready when Linux became available?
 
 The kernel is the core component of an operating system. It acts as a bridge, allowing the hardware to communicate with the software. The kernel manages system resources, such as the CPU, memory, and peripheral devices. A complete operating system needs this resource-managing core in addition to the tools and applications people use.
 
-:::single-choice{#recognize-kernel-role}
-Which responsibility belongs to the operating system kernel?
+:::single-choice{#recognize-kernel-role} Which responsibility belongs to the operating system kernel?
 
 ::option[Writing every command entered in the shell]{#write-shell-commands explanation="People or scripts provide shell commands. The kernel supplies the lower-level resources needed when programs run those commands."}
 ::option[Choosing the license for every installed application]{#choose-software-licenses explanation="Software authors and distributors choose application licenses. License selection is not a kernel resource-management task."}
@@ -56,8 +53,7 @@ This brings us to 1991, when a Finnish student named Linus Torvalds began develo
 
 _Linus Torvalds in 2018 (Source: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
 
-:::single-choice{#identify-linux-kernel-creator}
-Who began developing the Linux kernel in 1991?
+:::single-choice{#identify-linux-kernel-creator} Who began developing the Linux kernel in 1991?
 
 ::option[Richard Stallman]{#richard-stallman explanation="Richard Stallman initiated the GNU project. GNU supplied many system components, but Linus Torvalds began the Linux kernel."}
 ::option[Dennis Ritchie]{#dennis-ritchie explanation="Dennis Ritchie helped develop UNIX and the C programming language. The Linux kernel project was started later by Linus Torvalds."}

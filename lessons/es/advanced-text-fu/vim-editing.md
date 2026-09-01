@@ -28,8 +28,7 @@ Entre los operadores habituales se encuentran:
 
 Por ejemplo, `dw` elimina el intervalo cubierto por el movimiento `w`, mientras que `d$` elimina desde el cursor hasta el final de la línea. `2dw` aplica la eliminación a dos movimientos de palabra.
 
-:::single-choice{#vim-edit-operator-motion}
-En el modo Normal, ¿qué hace `d$`?
+:::single-choice{#vim-edit-operator-motion} En el modo Normal, ¿qué hace `d$`?
 
 ::option[Elimina el archivo completo desde el cursor en adelante.]{#vim-edit-delete-file-end explanation="El movimiento con signo de dólar apunta al final de la línea actual, no al final de todo el búfer."}
 ::option[Elimina desde el cursor hasta el final de la línea.]{#vim-edit-delete-line-end .correct explanation="El operador `d` se aplica al movimiento `$` hacia el final de la línea."}
@@ -49,8 +48,7 @@ Algunas órdenes son atajos prácticos:
 
 Repetir un operador, como en `dd`, hace que actúe por líneas. Una cantidad amplía el número de líneas.
 
-:::single-choice{#vim-edit-delete-three-lines}
-¿Qué orden del modo Normal elimina la línea actual y las dos siguientes?
+:::single-choice{#vim-edit-delete-three-lines} ¿Qué orden del modo Normal elimina la línea actual y las dos siguientes?
 
 ::option[`dd3`]{#vim-edit-dd-three explanation="En esta forma de orden, la cantidad debe ir antes del operador duplicado."}
 ::option[`3x`]{#vim-edit-three-x explanation="Esto elimina tres caracteres bajo el cursor y después de él, no tres líneas completas."}
@@ -69,8 +67,7 @@ El operador `c` elimina el texto seleccionado y entra en el modo Insertar para q
 
 El comportamiento de `cw` tiene un caso especial histórico y a menudo actúa como `ce`. Los objetos de texto como `iw` pueden expresar con mayor claridad el límite deseado.
 
-:::single-choice{#vim-edit-change-inner-word}
-¿Qué orden del modo Normal sustituye la palabra interior bajo el cursor al eliminarla y entrar en el modo Insertar?
+:::single-choice{#vim-edit-change-inner-word} ¿Qué orden del modo Normal sustituye la palabra interior bajo el cursor al eliminarla y entrar en el modo Insertar?
 
 ::option[`diw`]{#vim-edit-delete-inner-word explanation="Esto elimina la palabra interior, pero permanece en el modo Normal en vez de iniciar el texto de reemplazo."}
 ::option[`yiw`]{#vim-edit-yank-inner-word explanation="Esto copia la palabra interior sin modificar el búfer ni entrar en el modo Insertar."}
@@ -88,8 +85,7 @@ Vim denomina **yank** a copiar y **put** a insertar el texto almacenado:
 
 Las eliminaciones y los cambios también guardan texto en registros, por lo que un `p` posterior puede insertar el texto eliminado más recientemente en vez de una copia anterior. Los registros con nombre permiten conservar texto específico, pero empieza observando qué ha guardado la última operación.
 
-:::single-choice{#vim-edit-yank-put-line}
-Después de que `yy` copie la línea actual, ¿qué orden inserta esa línea debajo de la actual?
+:::single-choice{#vim-edit-yank-put-line} Después de que `yy` copie la línea actual, ¿qué orden inserta esa línea debajo de la actual?
 
 ::option[`p`]{#vim-edit-put-below .correct explanation="Para texto copiado por líneas, la `p` minúscula inserta la línea almacenada debajo de la actual."}
 ::option[`P`]{#vim-edit-put-above explanation="La `P` mayúscula inserta el texto por líneas encima de la línea actual."}
@@ -107,8 +103,7 @@ En el modo Normal:
 
 El historial de deshacer se aplica a cambios del búfer, no a simples movimientos del cursor. Guarda puntos de control y revisa las ediciones en vez de depender de un historial de deshacer ilimitado o permanente.
 
-:::single-choice{#vim-edit-redo-change}
-¿Qué orden del modo Normal rehace un cambio que se acaba de deshacer?
+:::single-choice{#vim-edit-redo-change} ¿Qué orden del modo Normal rehace un cambio que se acaba de deshacer?
 
 ::option[`Ctrl+U`]{#vim-edit-control-u explanation="En el modo Normal, `Ctrl+U` desplaza la vista aproximadamente media pantalla hacia arriba; no rehace."}
 ::option[`.`]{#vim-edit-dot-repeat explanation="El punto repite el último cambio como una acción nueva en vez de avanzar por el historial de deshacer."}

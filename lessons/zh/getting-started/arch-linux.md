@@ -16,8 +16,7 @@ Arch Linux 是一款轻量级、独立开发的 Linux 发行版，以用户控�
 
 与具有定期重大版本发布的发行版不同，Arch 采用滚动更新模式。这意味着系统会持续接收更新，而无需等待重大的版本跳跃。
 
-:::single-choice{#recognize-rolling-release}
-Arch Linux 的滚动发布模式意味着什么？
+:::single-choice{#recognize-rolling-release} Arch Linux 的滚动发布模式意味着什么？
 
 ::option[已安装的系统会持续获得软件包升级]{#continuous-upgrades .correct explanation="Arch 通过持续的软件包升级演进，而不是发布彼此分离的主要系统版本；得到维护的安装可以长期保持最新。"}
 ::option[系统等待固定的多年期升级版本]{#fixed-major-editions explanation="固定的主要版本属于点发布模式；Arch 会持续更新已安装的系统。"}
@@ -30,8 +29,7 @@ Arch Linux 之所以受欢迎，是因为它赋予了用户高度的控制权。
 
 这使得 Arch 成为好奇的中高级用户的常见推荐，尽管在[选择 Linux 发行版](https://labex.io/zh/lesson/choosing-a-linux-distribution)时，它通常不是推荐给初学者的首选。
 
-:::single-choice{#match-arch-user}
-哪类用户最适合 Arch Linux？
+:::single-choice{#match-arch-user} 哪类用户最适合 Arch Linux？
 
 ::option[希望所有决定都自动完成的初学者]{#automatic-beginner explanation="Arch 有意把许多选择留给用户；带有更多预设默认值的发行版更符合全自动配置需求。"}
 ::option[从不想查看软件更新的用户]{#ignore-updates explanation="滚动更新的 Arch 系统需要主动维护并关注更新公告；忽略更新与这一责任相冲突。"}
@@ -50,16 +48,14 @@ Arch 使用 Pacman 作为其软件包管理器。Pacman 负责在系统上安装
 
 一个常用的命令是 `sudo pacman -Syu`，它会同步软件包数据库，并对配置的软件仓库执行完整升级。Arch 不支持部分升级，因此用户应避免只刷新软件包数据库而不完成对应的系统升级。Pacman 因其直接、快速且与 Arch 的极简主义设计紧密契合而备受推崇。
 
-:::single-choice{#identify-pacman-role}
-Pacman 在 Arch Linux 中发挥什么作用？
+:::single-choice{#identify-pacman-role} Pacman 在 Arch Linux 中发挥什么作用？
 
 ::option[选择桌面布局，但不管理软件]{#pacman-desktop-layout explanation="桌面配置与软件包管理是两回事；Pacman 管理能提供桌面组件的软件包。"}
 ::option[用固定版本取代滚动发布模式]{#pacman-fixed-releases explanation="Pacman 通过软件包升级支持 Arch 的滚动系统，并不会把 Arch 变成点发布发行版。"}
 ::option[安装、更新、删除和跟踪软件包]{#pacman-package-manager .correct explanation="Pacman 是 Arch Linux 的软件包管理器，负责维护已安装的软件包并与发行版仓库配合。"}
 :::
 
-:::single-choice{#avoid-partial-upgrades}
-Arch 用户刷新软件包数据库后，为什么应完成一次完整升级？
+:::single-choice{#avoid-partial-upgrades} Arch 用户刷新软件包数据库后，为什么应完成一次完整升级？
 
 ::option[部分升级是保留旧库的推荐方式]{#partial-upgrades-recommended explanation="Arch 明确不支持部分升级；混用较新的库和依赖它们的旧软件包可能破坏系统。"}
 ::option[刷新软件包数据库会自动重装操作系统]{#refresh-reinstalls-system explanation="刷新数据库只会更新软件包信息，不会重装 Arch，但随后应执行与之对应的完整升级。"}

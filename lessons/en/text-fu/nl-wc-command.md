@@ -30,8 +30,7 @@ From left to right:
 
 A final text line without a terminating newline is not counted by `wc -l`, because that option counts newline characters rather than visually perceived lines.
 
-:::single-choice{#wc-default-columns}
-In the default output from `wc file.txt`, what do the first three numbers represent?
+:::single-choice{#wc-default-columns} In the default output from `wc file.txt`, what do the first three numbers represent?
 
 ::option[Lines, words, and bytes, in that order.]{#wc-lines-words-bytes .correct explanation="Default `wc` output reports newline count, word count, and byte count before the filename."}
 ::option[Bytes, words, and lines, in that order.]{#wc-bytes-words-lines explanation="These are the same measurements in the wrong order. The line count appears first."}
@@ -61,16 +60,14 @@ $ printf 'one two\n' | wc -w
 2
 ```
 
-:::single-choice{#wc-word-count-only}
-Which command reports only the word count for `essay.txt`?
+:::single-choice{#wc-word-count-only} Which command reports only the word count for `essay.txt`?
 
 ::option[`wc -l essay.txt`]{#wc-lines-essay explanation="The `-l` option reports newline characters, not words."}
 ::option[`wc -w essay.txt`]{#wc-words-essay .correct explanation="The `-w` option selects the word count measurement."}
 ::option[`wc -c essay.txt`]{#wc-bytes-essay explanation="The `-c` option reports bytes rather than whitespace-delimited words."}
 :::
 
-:::single-choice{#wc-characters-not-bytes}
-Which option asks `wc` to count characters rather than bytes in the current locale?
+:::single-choice{#wc-characters-not-bytes} Which option asks `wc` to count characters rather than bytes in the current locale?
 
 ::option[`-m`]{#wc-character-option .correct explanation="The `-m` option reports characters, which may differ from bytes for multibyte text."}
 ::option[`-c`]{#wc-byte-option explanation="The `-c` option reports bytes. One character can occupy several bytes in encodings such as UTF-8."}
@@ -100,8 +97,7 @@ $ nl notes.txt
 
 `nl` writes numbered output; it does not modify `notes.txt`.
 
-:::single-choice{#nl-default-blank-lines}
-How does `nl notes.txt` handle blank body lines by default?
+:::single-choice{#nl-default-blank-lines} How does `nl notes.txt` handle blank body lines by default?
 
 ::option[It omits each blank line from the output entirely.]{#nl-omit-blank explanation="The blank line remains in the output, but it is not assigned a number by default."}
 ::option[It preserves them without line numbers.]{#nl-preserve-unnumbered .correct explanation="Default body style numbers nonempty lines and passes blank lines through unnumbered."}
@@ -121,8 +117,7 @@ $ nl -ba notes.txt
 
 Other options control formatting. For example, `-w 3` sets the number field width and `-s ': '` changes the separator after the number.
 
-:::single-choice{#nl-number-all-lines}
-Which command numbers every body line in `notes.txt`, including blank lines?
+:::single-choice{#nl-number-all-lines} Which command numbers every body line in `notes.txt`, including blank lines?
 
 ::option[`nl -w 3 notes.txt`]{#nl-width-three explanation="This changes the number field width but keeps the default nonempty-line numbering rule."}
 ::option[`nl -ba notes.txt`]{#nl-body-all .correct explanation="The `-b` option chooses the body style, and style `a` numbers all body lines."}

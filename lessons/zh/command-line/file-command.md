@@ -32,8 +32,7 @@ $ file /bin/ls
 
 它给出的是分类结果，而非绝对保证。少见、不完整或已损坏的文件可能只得到 `data` 这样的宽泛描述。
 
-:::single-choice{#identify-misleading-extension}
-名为 `report.jpg` 的文件未必包含图片。哪个命令可以检查它可能的内容类型？
+:::single-choice{#identify-misleading-extension} 名为 `report.jpg` 的文件未必包含图片。哪个命令可以检查它可能的内容类型？
 
 ::option[`ls report.jpg`]{#list-report explanation="`ls` 可以确认名称存在并显示元数据，但不会对文件内容进行分类。"}
 ::option[`file report.jpg`]{#inspect-report .correct explanation="`file` 会检查文件并报告其可能的类型，而不是只依赖 `.jpg` 后缀。"}
@@ -57,8 +56,7 @@ archive.tar.gz: gzip compressed data
 $ file *
 ```
 
-:::single-choice{#inspect-multiple-files}
-哪个命令会让 `file` 检查当前目录中 `*` 匹配到的每个非隐藏名称？
+:::single-choice{#inspect-multiple-files} 哪个命令会让 `file` 检查当前目录中 `*` 匹配到的每个非隐藏名称？
 
 ::option[`file *`]{#file-wildcard .correct explanation="shell 会把 `*` 展开为匹配的非隐藏名称，`file` 再检查得到的每个操作数。"}
 ::option[`file .`]{#file-current-directory explanation="单个点号表示当前目录本身；这个命令只会对该目录分类，而不是检查其中每个条目。"}
@@ -74,8 +72,7 @@ $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-:::single-choice{#show-mime-information}
-哪个命令会报告 `index.html` 的 MIME 风格信息？
+:::single-choice{#show-mime-information} 哪个命令会报告 `index.html` 的 MIME 风格信息？
 
 ::option[`file -b index.html`]{#brief-index explanation="`-b` 会在普通描述中省略文件名，并不专门请求 MIME 风格输出。"}
 ::option[`file -i index.html`]{#mime-index .correct explanation="`-i` 会请求 MIME 风格输出，例如 `text/html` 以及字符集信息。"}
@@ -96,8 +93,7 @@ $ file -b notes.txt
 ASCII text
 ```
 
-:::single-choice{#omit-filename-from-output}
-哪个命令会对 `notes.txt` 分类，但在输出中省略文件名？
+:::single-choice{#omit-filename-from-output} 哪个命令会对 `notes.txt` 分类，但在输出中省略文件名？
 
 ::option[`file -i notes.txt`]{#mime-notes explanation="`-i` 会请求 MIME 风格信息，输出通常仍包含文件名。"}
 ::option[`file -z notes.txt`]{#compressed-notes explanation="`-z` 会尽可能检查压缩数据内部，并不会启用简洁输出。"}

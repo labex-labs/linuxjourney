@@ -22,8 +22,7 @@ $ sudo chown patty myfile
 
 これは `myfile` のユーザー所有者を `patty` へ変更し、グループは変えません。現在の所有者が自分であっても、ファイルのユーザー所有者を変更するには通常、適切な特権が必要です。この制限により、クォータなど所有権に基づく制御を回避するためのファイル移管を防ぎます。
 
-:::single-choice{#ownership-permissions-change-user}
-グループを変えず、`myfile` のユーザー所有者を `patty` へ変更するコマンドはどれですか？
+:::single-choice{#ownership-permissions-change-user} グループを変えず、`myfile` のユーザー所有者を `patty` へ変更するコマンドはどれですか？
 
 ::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="`chown` の所有権オペランドにユーザー名だけを指定すると、ユーザー所有者を変更し、グループを維持します。"}
 ::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` はユーザー所有者ではなくグループ所有者を変更します。"}
@@ -46,8 +45,7 @@ $ chown :whales myfile
 
 変更後、カーネルがグループクラスを選んだ場合は、そのグループのモードビットが適用されます。グループを変えても、読み取り、書き込み、実行ビットが自動的に追加されることはありません。
 
-:::single-choice{#ownership-permissions-change-group}
-`chgrp whales myfile` は何を変更しますか？
+:::single-choice{#ownership-permissions-change-group} `chgrp whales myfile` は何を変更しますか？
 
 ::option[`myfile` に記録されたユーザー所有者。]{#ownership-permissions-group-not-user explanation="ユーザー所有者は `chgrp` ではなく `chown` で変更します。"}
 ::option[`whales` グループに列挙されたメンバー。]{#ownership-permissions-group-members explanation="このコマンドはファイルのメタデータを変更し、システムのグループ所属データベースは編集しません。"}
@@ -68,8 +66,7 @@ $ sudo chown patty:whales myfile
 $ ls -l myfile
 ```
 
-:::single-choice{#ownership-permissions-change-both}
-一つの `chown` コマンドでユーザー `patty` とグループ `whales` を割り当てる所有権指定はどれですか？
+:::single-choice{#ownership-permissions-change-both} 一つの `chown` コマンドでユーザー `patty` とグループ `whales` を割り当てる所有権指定はどれですか？
 
 ::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="ユーザー名とグループ名は、組み合わせた所有権指定内でコロンにより区切ります。"}
 ::option[`patty/whales`]{#ownership-permissions-both-slash explanation="スラッシュは、ここで紹介した `chown` のユーザーとグループを区切る記号ではありません。"}
@@ -80,8 +77,7 @@ $ ls -l myfile
 
 `-R` オプションは所有権を再帰的に変更しますが、広範な再帰コマンドは予期しないディレクトリツリーを越えたり、サービスデータへ影響したりする場合があります。正確な対象を確認し、使用する実装のシンボリックリンク動作を理解し、ツリーを事前に確認し、大きな階層を変更する前に小さなサンプルで検証してください。例にある特権付き所有権コマンドを、範囲を確認せず実システムへコピーしてはいけません。
 
-:::single-choice{#ownership-permissions-mode-separate}
-ファイルのグループ所有者を変更すると、通常のグループ権限ビットはどうなりますか？
+:::single-choice{#ownership-permissions-mode-separate} ファイルのグループ所有者を変更すると、通常のグループ権限ビットはどうなりますか？
 
 ::option[必ず自動的に読み取りと書き込みになる。]{#ownership-permissions-mode-read-write explanation="`chgrp` が固定のグループモードを自動選択することはありません。"}
 ::option[所有者の権限トリプレットからコピーされる。]{#ownership-permissions-mode-copied explanation="所有権を変更しても、所有者とグループのトリプレットは独立したままです。"}

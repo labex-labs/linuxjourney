@@ -23,8 +23,7 @@ meta_keywords: "linux 信号，linux 进程信号，信号 15 linux, os 信号�
 
 发送者必须拥有适当权限，通常由凭据或 capabilities 决定。因此，信号是由内核中介的控制接口，而不是任意用户之间不受限制的消息。
 
-:::single-choice{#process-signals-ctrl-c}
-终端通常会为 `Ctrl-C` 生成哪个信号？
+:::single-choice{#process-signals-ctrl-c} 终端通常会为 `Ctrl-C` 生成哪个信号？
 
 ::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` 通常与 `Ctrl-Z` 等终端暂停字符相关。"}
 ::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` 会恢复已停止进程，而不是表示键盘中断。"}
@@ -43,8 +42,7 @@ meta_keywords: "linux 信号，linux 进程信号，信号 15 linux, os 信号�
 
 信号名称比数字更易移植和阅读。虽然常见 Linux 架构使用 15 表示 `SIGTERM`，但除相关标准保证的数字外，不要假设所有信号编号在各处都相同。使用 `kill -l` 检查本地映射。
 
-:::single-choice{#process-signals-term-behavior}
-为什么进程可以优雅地响应 `SIGTERM`？
+:::single-choice{#process-signals-term-behavior} 为什么进程可以优雅地响应 `SIGTERM`？
 
 ::option[它可以为该信号安装处理程序。]{#process-signals-term-handler .correct explanation="与 `SIGKILL` 不同，`SIGTERM` 可以被捕获，让程序启动自己的关闭逻辑。"}
 ::option[内核始终自动保存每个打开的文档。]{#process-signals-term-kernel-save explanation="应用程序清理取决于程序代码；内核无法理解并保存任意文档状态。"}
@@ -57,8 +55,7 @@ meta_keywords: "linux 信号，linux 进程信号，信号 15 linux, os 信号�
 
 在多线程进程中，面向进程的信号可以传递给未阻塞它的适当线程；面向线程的信号则以指定线程为目标。因此，正确的信号设计不能只检查“进程是否阻塞了它”。
 
-:::single-choice{#process-signals-blocked-state}
-目标阻塞一个可阻塞信号时，生成该信号通常会发生什么？
+:::single-choice{#process-signals-blocked-state} 目标阻塞一个可阻塞信号时，生成该信号通常会发生什么？
 
 ::option[它会保持待处理，直到可以传递。]{#process-signals-pending .correct explanation="阻塞会推迟处理；解除阻塞后，待处理信号可以传递。"}
 ::option[它会自动转换为 `SIGKILL`。]{#process-signals-convert-kill explanation="内核不会把普通被阻塞信号升级为不可捕获信号。"}
@@ -71,8 +68,7 @@ meta_keywords: "linux 信号，linux 进程信号，信号 15 linux, os 信号�
 
 即使是 `SIGKILL`，从观察者角度看也可能不会让任务立即消失。任务可能正在等待不可中断的内核操作，终止后其父进程仍需回收状态。
 
-:::single-choice{#process-signals-uncatchable-pair}
-哪一对信号不能被捕获、忽略或阻塞？
+:::single-choice{#process-signals-uncatchable-pair} 哪一对信号不能被捕获、忽略或阻塞？
 
 ::option[`SIGKILL` 和 `SIGSTOP`]{#process-signals-kill-stop .correct explanation="内核保留这两个信号，使进程无法覆盖或推迟其基本操作。"}
 ::option[`SIGINT` 和 `SIGTERM`]{#process-signals-int-term explanation="两者都可以安装用户处理程序，也可以被阻塞。"}

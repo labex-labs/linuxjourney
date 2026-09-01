@@ -16,8 +16,7 @@ Gentoo は、システムの構築方法を深く制御したい人向けの Lin
 
 細かな調整、学習、カスタマイズを楽しむ上級者に特に魅力的です。
 
-:::single-choice{#match-gentoo-user}
-Gentoo に最もよく合う利用者はどれですか？
+:::single-choice{#match-gentoo-user} Gentoo に最もよく合う利用者はどれですか？
 
 ::option[システムを細かく制御したい、意欲的な学習者]{#committed-system-builder .correct explanation="詳細な構築と設定を選びたい利用者に応えますが、その制御には時間と関与も必要です。"}
 ::option[設定作業を最小限にしたい初心者]{#minimal-setup-beginner explanation="多くの設定と保守を利用者へ求めるため、準備済みの既定値が多いディストリビューションの方が適します。"}
@@ -36,16 +35,14 @@ Gentoo の中心にはパッケージ管理システム **Portage** がありま
 
 特徴的な **USE フラグ**により、ソフトウェアを構築する前に任意機能を有効または無効にでき、完成するシステムを非常に細かく制御できます。
 
-:::single-choice{#identify-portage-role}
-Gentoo における Portage の役割は何ですか？
+:::single-choice{#identify-portage-role} Gentoo における Portage の役割は何ですか？
 
 ::option[グラフィカルデスクトップとアプリケーションメニューだけを提供する]{#portage-desktop explanation="デスクトップ環境はグラフィカル画面を扱います。Portage は Gentoo 全体のソフトウェアを管理します。"}
 ::option[ソフトウェアの導入、依存関係、保守を管理する]{#portage-package-manager .correct explanation="Portage はパッケージと、その構築・保守に関わる選択を調整する Gentoo のパッケージ管理システムです。"}
 ::option[Linux カーネルを別の OS へ置き換える]{#portage-kernel-replacement explanation="カーネル関連パッケージも扱えますが、Linux を別 OS へ置き換えるものではありません。"}
 :::
 
-:::single-choice{#explain-use-flags}
-Gentoo の USE フラグは何を制御しますか？
+:::single-choice{#explain-use-flags} Gentoo の USE フラグは何を制御しますか？
 
 ::option[コンピューターに搭載された物理メモリの量]{#physical-memory explanation="搭載メモリはハードウェアの特性で、USE フラグはソフトウェア機能を設定します。"}
 ::option[パッケージ構築時に含める任意機能と依存関係]{#package-features .correct explanation="対応させる任意機能を表し、その選択によって Portage が導入する依存関係も変わる場合があります。"}
@@ -58,8 +55,7 @@ Gentoo の USE フラグは何を制御しますか？
 
 依存関係、コンパイル、システム設計について主流ディストロ以上に学べる、教育的な側面もあります。
 
-:::single-choice{#recognize-source-build-tradeoff}
-Gentoo のソースベースのカスタマイズには、どのようなトレードオフがありますか？
+:::single-choice{#recognize-source-build-tradeoff} Gentoo のソースベースのカスタマイズには、どのようなトレードオフがありますか？
 
 ::option[制御が増える代わりに、構築時間と利用者の判断も増える]{#control-for-time .correct explanation="ローカル構築と機能選択は細かな制御を提供しますが、時間と注意も必要です。"}
 ::option[制御が減るため、依存関係を理解する必要がなくなる]{#less-control explanation="依存関係と構築の選択は減るのではなく増え、その理解も学習上の価値です。"}

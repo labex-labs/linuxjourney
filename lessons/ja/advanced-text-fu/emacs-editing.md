@@ -23,8 +23,7 @@ Emacs では現在のカーソル位置を**ポイント**と呼びます。移�
 - `C-a`：行頭へ移動する
 - `C-e`：行末へ移動する
 
-:::single-choice{#emacs-edit-next-line}
-ポイントを次の行へ移動する Emacs のキーはどれですか？
+:::single-choice{#emacs-edit-next-line} ポイントを次の行へ移動する Emacs のキーはどれですか？
 
 ::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` は反対方向の前の行へ移動します。"}
 ::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="next-line を表す `C-n` は、ポイントを画面上の次の行位置へ下向きに移動します。"}
@@ -42,8 +41,7 @@ Meta コマンドはより大きな単位を移動します。
 
 多くのキーボードでは Alt が Meta として働きます。その組み合わせが使えない場合、`Esc` に続いて対象のキーを押すと、同等の Meta コマンドを送れることがあります。
 
-:::single-choice{#emacs-edit-buffer-end}
-ポイントをバッファーの末尾へ移動する Emacs のキーはどれですか？
+:::single-choice{#emacs-edit-buffer-end} ポイントをバッファーの末尾へ移動する Emacs のキーはどれですか？
 
 ::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` はバッファー全体ではなく現在行の末尾へ移動します。"}
 ::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` はバッファーの先頭へ移動します。"}
@@ -56,8 +54,7 @@ Meta コマンドはより大きな単位を移動します。
 
 端末では `C-SPC` が `C-@` として符号化されることがあります。ハイライト表示は transient-mark の設定によって異なりますが、それでもポイントとマークがリージョンを定義します。
 
-:::single-choice{#emacs-edit-set-mark}
-ポイント位置にマークを置き、リージョンの定義を始めるキーはどれですか？
+:::single-choice{#emacs-edit-set-mark} ポイント位置にマークを置き、リージョンの定義を始めるキーはどれですか？
 
 ::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` はすでに定義されたリージョンをキルするもので、最初にマークを設定するコマンドではありません。"}
 ::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` はキルリングからテキストを挿入し、選択を始めません。"}
@@ -74,8 +71,7 @@ Emacs はキルまたはコピーしたテキストを**キルリング**へ保�
 
 キルは、削除したテキストを後でヤンクできるよう保持するため、通常の削除以上の操作です。
 
-:::single-choice{#emacs-edit-copy-region}
-アクティブなリージョンを削除せず、キルリングへコピーするキーはどれですか？
+:::single-choice{#emacs-edit-copy-region} アクティブなリージョンを削除せず、キルリングへコピーするキーはどれですか？
 
 ::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`M-w` に割り当てられた `kill-ring-save` は、リージョンを削除せずコピーします。"}
 ::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` はリージョンをキルリングへ保存しながら削除します。"}
@@ -93,8 +89,7 @@ M-y
 
 `C-y` の後に無関係なコマンドを実行すると、`M-y` は同じ yank-pop の文脈では動作しなくなります。
 
-:::single-choice{#emacs-edit-yank-latest}
-直近のキルリングエントリをポイント位置へ挿入するキーはどれですか？
+:::single-choice{#emacs-edit-yank-latest} 直近のキルリングエントリをポイント位置へ挿入するキーはどれですか？
 
 ::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="`C-y` に割り当てられた `yank` が、最新のキルリングテキストを現在のバッファーへ挿入します。"}
 ::option[`M-y`]{#emacs-edit-yank-pop explanation="通常、`M-y` は直前にヤンクしたエントリを以前のものへ置き換え、先行するヤンクの文脈に依存します。"}

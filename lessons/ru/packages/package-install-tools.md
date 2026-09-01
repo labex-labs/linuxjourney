@@ -25,8 +25,7 @@ RPM:    $ rpm -qlp ./some-package.rpm
 
 Буква `p` в показанных формах запросов RPM означает «запросить файл пакета», а не установленную базу. Вывод запроса помогает проверить пакет, но не доказывает безопасность его скриптов или программ.
 
-:::single-choice{#package-install-tools-native-format}
-Какой низкоуровневый инструмент управляет пакетами Debian `.deb` и их установленной базой?
+:::single-choice{#package-install-tools-native-format} Какой низкоуровневый инструмент управляет пакетами Debian `.deb` и их установленной базой?
 
 ::option[`rpm`]{#package-install-tools-rpm-debian explanation="RPM управляет собственным форматом и базой в системах семейства RPM."}
 ::option[`tar`]{#package-install-tools-tar-debian explanation="Tar может читать архивы, но не реализует жизненный цикл установленных пакетов Debian."}
@@ -51,8 +50,7 @@ RPM:    $ sudo dnf install ./some-package.rpm
 
 Проверьте транзакцию перед подтверждением. Начальные `./` отличают локальный путь к архиву Debian от имени пакета репозитория в APT.
 
-:::single-choice{#package-install-tools-local-dependencies}
-Какая из показанных команд может установить локальный `.deb`, разрешив доступные зависимости из репозитория?
+:::single-choice{#package-install-tools-local-dependencies} Какая из показанных команд может установить локальный `.deb`, разрешив доступные зависимости из репозитория?
 
 ::option[`dpkg -l ./some-package.deb`]{#package-install-tools-dpkg-list-file explanation="`dpkg -l` перечисляет выбранные установленные пакеты и не является процессом установки локального архива с разрешением зависимостей."}
 ::option[`rpm -qa ./some-package.deb`]{#package-install-tools-rpm-query-deb explanation="Синтаксис запроса RPM не устанавливает архив Debian."}
@@ -70,8 +68,7 @@ RPM:    $ sudo rpm --erase package-name
 
 В Debian `--remove` обычно сохраняет конфигурационные файлы, классифицированные как conffiles; `--purge` также запрашивает их удаление с учётом скриптов пакета и неуправляемых данных. Ни одна команда не гарантирует удаление данных, созданных пользователем. Высокоуровневые `apt remove` или `dnf remove` обычно лучше, поскольку могут оценить связанные пакеты и представить полную транзакцию.
 
-:::single-choice{#package-install-tools-remove-operand}
-Какой операнд ожидает `dpkg --remove` для установленного пакета?
+:::single-choice{#package-install-tools-remove-operand} Какой операнд ожидает `dpkg --remove` для установленного пакета?
 
 ::option[URL индекса репозитория.]{#package-install-tools-remove-url explanation="Расположение репозитория не является идентификатором пакета для низкоуровневого удаления."}
 ::option[Имя установленного пакета.]{#package-install-tools-remove-name .correct explanation="Удаление обращается к записи пакета, например `example`, а не требует прежний путь к `.deb`."}
@@ -89,8 +86,7 @@ RPM:    $ rpm -qa
 
 Для целевой проверки указывайте конкретное имя пакета, а в скриптах, где важна надёжность, предпочитайте машиночитаемый формат. Базы пакетов описывают управляемое состояние; локальные администраторы или приложения могут впоследствии изменить файлы, поэтому при необходимости сравнения установленных файлов с записанными метаданными используйте средства проверки.
 
-:::single-choice{#package-install-tools-rpm-list-installed}
-Какая команда запрашивает все пакеты, записанные как установленные в базе RPM?
+:::single-choice{#package-install-tools-rpm-list-installed} Какая команда запрашивает все пакеты, записанные как установленные в базе RPM?
 
 ::option[`rpm -qa`]{#package-install-tools-rpm-query-all .correct explanation="`-q` выбирает режим запроса, а `-a` распространяет его на все записи установленных пакетов."}
 ::option[`rpm -e`]{#package-install-tools-rpm-erase explanation="`-e` запрашивает удаление пакета, а не список только для чтения."}

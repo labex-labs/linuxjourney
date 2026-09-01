@@ -23,8 +23,7 @@ $ uname -r
 
 该命令不会列出所有已安装的内核，而且安装较新的软件包后，其输出也不会立即改变。系统必须启动新映像，`uname -r` 才会报告新版本。应使用发行版自己的工具查询已安装软件包和启动项。
 
-:::single-choice{#kernel-installation-uname-release}
-`uname -r` 显示什么？
+:::single-choice{#kernel-installation-uname-release} `uname -r` 显示什么？
 
 ::option[当前运行内核的版本字符串。]{#kernel-installation-running-release .correct explanation="它报告实时内核状态，而不只是磁盘上存储的最新映像。"}
 ::option[所有仓库中可用的每个内核软件包。]{#kernel-installation-all-packages explanation="仓库清单应由软件包管理器查询。"}
@@ -37,8 +36,7 @@ $ uname -r
 
 不要直接把 `uname -r` 的版本字符串用作 `apt install` 的操作数，并想当然地认为它有效。安装前应查阅当前发行版文档，并使用软件包管理器检查候选版本。
 
-:::single-choice{#kernel-installation-meta-package}
-受支持的内核元软件包为什么有用？
+:::single-choice{#kernel-installation-meta-package} 受支持的内核元软件包为什么有用？
 
 ::option[它保证永远不需要重启。]{#kernel-installation-no-reboot explanation="除专门的实时补丁适用范围外，新安装的内核只有在系统启动进入它后才会生效。"}
 ::option[它会把所有树外驱动程序转换成内置代码。]{#kernel-installation-convert-drivers explanation="外部模块仍然需要兼容的构建和签名。"}
@@ -57,8 +55,7 @@ $ uname -r
 
 软件包事务应通过发行版钩子生成匹配的 initramfs 并更新启动项。必须阅读每条错误；如果 initramfs 或加载程序生成失败，仅仅显示软件包已安装并不足以证明成功。
 
-:::single-choice{#kernel-installation-initramfs-error}
-为什么出现 initramfs 生成错误时不能认定安装成功？
+:::single-choice{#kernel-installation-initramfs-error} 为什么出现 initramfs 生成错误时不能认定安装成功？
 
 ::option[生成 initramfs 会更改用户的 shell 密码。]{#kernel-installation-initramfs-password explanation="启动归档工作流程与账户身份验证密码无关。"}
 ::option[新内核可能缺少访问根存储所需的早期模块或工具。]{#kernel-installation-missing-early-tools .correct explanation="映像可能已经安装，但它所需的早期用户空间构件可能缺失或过期。"}
@@ -77,8 +74,7 @@ $ systemctl --failed
 
 在非 systemd 系统上使用等效工具。验证存储、文件系统、网络、图形、输入、安全模块、外部模块、容器、虚拟机和应用程序健康状况。只看到登录提示符并不等于完成验证。
 
-:::single-choice{#kernel-installation-activation}
-新安装的普通内核软件包何时会成为正在运行的内核？
+:::single-choice{#kernel-installation-activation} 新安装的普通内核软件包何时会成为正在运行的内核？
 
 ::option[输入 `uname -r` 后立即生效。]{#kernel-installation-uname-activates explanation="uname 是只读命令，不能切换内核。"}
 ::option[计算机启动该内核映像之后。]{#kernel-installation-after-boot .correct explanation="安装文件不会替换内存中已经执行的内核。"}
@@ -91,8 +87,7 @@ $ systemctl --failed
 
 手动删除 `/boot` 中的文件会使软件包状态与加载程序状态不一致。如果空间已经耗尽，应先制定恢复方案再更改文件，而不是随意删除映像。
 
-:::single-choice{#kernel-installation-old-kernel-removal}
-初步验证新内核期间，应保留哪个内核？
+:::single-choice{#kernel-installation-old-kernel-removal} 初步验证新内核期间，应保留哪个内核？
 
 ::option[只保留未经测试的新内核。]{#kernel-installation-only-new explanation="测试前移除所有备用项，会把兼容性问题变成恢复事故。"}
 ::option[启动路径下不保留任何内核文件。]{#kernel-installation-no-kernels explanation="计算机需要可加载的内核构件才能启动 Linux。"}
