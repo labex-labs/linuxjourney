@@ -1,112 +1,160 @@
 ---
-index: 6
+lesson_id: "systemd-goals"
+course_id: "init"
 lang: "zh"
-title: "Systemd 目标"
-meta_title: "Systemd 目标 - Init"
-meta_description: "探索 systemd 目标，并学习使用 essential systemctl 命令管理 Linux 服务。本指南涵盖 systemd 单元文件基础知识、如何启动、停止和启用服务以及查看其状态。"
-meta_keywords: "systemd, systemctl, Linux 服务，单元文件，systemd 目标，服务管理，systemd 单元，初学者，教程，指南，Linux 命令"
+order_index: 6
+title: "systemd 目标与服务管理"
+description: "学习如何检查、覆盖、验证、启动、启用 systemd 服务单元并排查故障。"
+meta_title: "systemd 目标与服务管理 - 初始化系统"
+meta_description: "探索 systemd 目标，并学习使用常用 systemctl 命令管理 Linux 服务。本指南介绍 systemd 单元文件基础、如何启动、停止和启用服务，以及如何查看其状态。"
+meta_keywords: "systemd, systemctl, Linux 服务, 单元文件, systemd 目标, 服务管理, systemd 单元, 入门, 教程, 指南, Linux 命令"
 ---
 
-## Lesson Content
+`systemctl` 向 systemd 管理器发送请求。本课重点介绍系统服务单元。改变状态之前，应确认确切的单元名称、管理器作用域、依赖关系和操作影响。
 
-本课程提供了 systemd 单元文件 (unit file) 的基础概述，以及如何使用 `systemctl`（控制 init 系统的主要工具）来管理它们。我们将介绍单元文件的基本结构以及管理 Linux 服务的必要命令。
+## 阅读服务单元
 
-### 理解 Systemd 单元文件
+下面是一个用于说明的最小单元：
 
-A systemd 单元文件是一个纯文本文件，用于描述 systemd 可以管理的某个服务、挂载点、设备或其他资源。以下是一个名为 `foobar.service` 的服务单元文件的基本示例：
-
-```
+```ini
 [Unit]
-Description=My Foobar Service
-After=network.target
+Description=Example worker
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/foobar
+Type=exec
+ExecStart=/usr/local/bin/example-worker
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-这个简单的服务文件分为几个部分：
+- `[Unit]` 包含描述和依赖关系。
+- `[Service]` 定义进程生命周期和服务特有的行为。
+- `[Install]` 告诉启用命令要创建哪些别名或依赖链接；它不会自动成为活动的运行时依赖关系。
 
-- **[Unit]**：此部分包含元数据和依赖信息。`Description` 提供了单元的人类可读名称。像 `After` 和 `Before` 这样的指令控制启动顺序，确保此单元在网络可用后启动。
-- **[Service]**：此部分定义了如何管理服务。`ExecStart` 指令至关重要，因为它指定了执行以启动服务的命令。`ExecStop` 和 `ExecReload` 等其他指令可以定义如何停止或重新加载服务。
-- **[Install]**：此部分定义了使用 `systemctl` 启用或禁用单元时的行为。`WantedBy` 指令告诉 systemd 将此服务作为特定目标的一部分启动，例如用于标准非图形化启动的 `multi-user.target`。
+默认情况下，`ExecStart=` 不会交给 shell 执行。除非有意显式调用 shell，否则 shell 管道、重定向、变量和引号的行为与交互式命令行不同。
 
-这只是 systemd 单元文件的一个概览。对于更高级的配置，强烈建议进一步阅读相关主题。
+:::single-choice{#systemd-goals-install-section} `WantedBy=` 等 `[Install]` 指令的主要用途是什么？
 
-### 必要的 Systemctl 命令
+::option[保证服务进程已经运行。]{#systemd-goals-install-running explanation="运行时激活需要 start 请求或其他触发依赖关系。"}
+::option[描述启用单元时创建的链接或关系。]{#systemd-goals-enable-links .correct explanation="启用操作会解释安装元数据，而安装元数据与当前进程状态相互独立。"}
+::option[通过用户的交互式 shell 执行每条命令。]{#systemd-goals-install-shell explanation="默认情况下，单元命令解析不会使用交互式 shell。"}
+:::
 
-现在，让我们探索您将用于与 systemd 单元交互和管理 Linux 服务的必要 `systemctl` 命令。
+## 检查生效的配置
 
-### 列出 Systemd 单元
-
-要查看 systemd 当前正在管理的**所有活动单元**，请使用 `list-units` 命令。
-
-```bash
-systemctl list-units
-```
-
-### 检查单元状态
-
-要查看特定单元的详细状态，包括它是否处于活动状态、是否已启用以及其最新的日志条目，请使用 `status` 命令。
+列出已加载的单元：
 
 ```bash
-systemctl status networking.service
+$ systemctl list-units --type=service
 ```
 
-### 管理服务状态
-
-您可以使用 `start`、`stop` 和 `restart` 来控制服务的运行时状态。
-
-立即启动服务：
+列出已安装的单元文件及其启用状态：
 
 ```bash
-sudo systemctl start networking.service
+$ systemctl list-unit-files --type=service
 ```
 
-停止正在运行的服务：
+两条命令展示的视角不同：单元文件可能已启用但未活动、已活动但未启用，也可能是静态、生成、临时、已屏蔽状态，或没有出现在其中某个列表里。用以下命令检查合并后的厂商配置和插入式配置：
 
 ```bash
-sudo systemctl stop networking.service
+$ systemctl cat UNIT.service
+$ systemctl show UNIT.service
 ```
 
-停止然后再次启动服务：
+:::single-choice{#systemd-goals-list-units-versus-files} `list-unit-files` 会显示哪项并非 `list-units` 主要展示的信息？
+
+::option[只显示 CPU 占用最高的进程。]{#systemd-goals-cpu-processes explanation="进程资源排名不属于这些单元清单命令的用途。"}
+::option[已安装单元文件的启用状态。]{#systemd-goals-unit-file-state .correct explanation="它会报告单元文件处于启用、禁用、静态、屏蔽等安装状态。"}
+::option[日志中曾写入的每一行内容。]{#systemd-goals-all-journal explanation="查询日志应使用 journalctl。"}
+:::
+
+## 创建本地覆盖配置
+
+应使用插入式配置，而不是编辑软件包提供的单元：
 
 ```bash
-sudo systemctl restart networking.service
+$ sudo systemctl edit UNIT.service
 ```
 
-### 启用和禁用服务
-
-启用服务会创建一个符号链接，将其挂接到启动过程中，确保它自动启动。禁用服务则会移除该链接。
-
-启用服务以便在启动时启动：
+在当前实现中，保存后 systemctl 通常会在该编辑流程中要求管理器重新加载配置；但如果通过其他方式修改文件，则应运行：
 
 ```bash
-sudo systemctl enable networking.service
+$ sudo systemctl daemon-reload
 ```
 
-禁用服务以便启动时不要启动：
+`daemon-reload` 会重新读取单元定义并重建依赖关系。它不会重新加载应用程序配置，也不会重启正在运行的服务。适当时可用 `systemd-analyze verify` 验证单元语法和依赖关系，然后检查合并后实际生效的单元。
+
+:::single-choice{#systemd-goals-daemon-reload} `systemctl daemon-reload` 会做什么？
+
+::option[强制每个守护进程重新读取其应用程序配置。]{#systemd-goals-reload-all-apps explanation="应用程序重新加载是服务特有的操作，与管理器配置相互独立。"}
+::option[将内核重启到新版本。]{#systemd-goals-reload-kernel explanation="启用新内核需要启动系统，而不是重新加载单元定义。"}
+::option[重新加载 systemd 单元定义和依赖信息。]{#systemd-goals-reload-manager .correct explanation="它会更新管理器看到的配置，但本身不会重启服务。"}
+:::
+
+## 服务的运行时状态
+
+验证服务配置并保留恢复通道后，可执行：
 
 ```bash
-sudo systemctl disable networking.service
+$ sudo systemctl start peanut.service
+$ sudo systemctl stop peanut.service
+$ sudo systemctl restart peanut.service
+$ sudo systemctl reload peanut.service
 ```
 
-这些命令是现代 Linux 系统中服务管理的基础构建块。掌握它们是您 Linux 之旅中的关键一步。
+只有单元定义或支持重新加载操作时，`reload` 才会成功。`restart` 会中断进程，而且可能无法恢复服务。操作远程访问、网络、存储或身份验证服务时，应保留独立的控制台通道，并在执行前验证配置。
 
-## Exercise
+用以下命令检查状态和日志：
 
-实践是掌握新技能的关键。这个动手实验将帮助您巩固对管理进程的理解，而这些进程通常由 systemd 服务控制：
+```bash
+$ systemctl status peanut.service
+$ systemctl is-active peanut.service
+$ journalctl -u peanut.service -b
+```
 
-1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。此实验将为您提供有关 systemd 单元管理运行时效果的实践经验。
+“活动”只是管理器状态，不能证明每个应用端点都健康。
 
-此实验将帮助您在真实场景中应用这些概念，并建立对 Linux 进程管理的信心。
+:::single-choice{#systemd-goals-start-peanut} 哪个命令会立即启动 `peanut.service`，但本身不改变其未来的启用状态？
 
-## Quiz Question
+::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="enable 会更改安装链接，但除非同时使用 --now，否则不会启动服务。"}
+::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="start 请求当前运行时激活，它与启用状态相互独立。"}
+::option[`sudo systemctl daemon-reload peanut.service`]{#systemd-goals-daemon-reload-unit explanation="daemon-reload 不接受用于激活的单元操作数，也不会启动该服务。"}
+:::
 
-What is the command to start a service named peanut.service? Please answer in English. The answer is case-sensitive.
+## 启用、禁用与屏蔽
 
-## Quiz Answer
+用以下命令管理未来的依赖链接：
 
-sudo systemctl start peanut.service
+```bash
+$ sudo systemctl enable peanut.service
+$ sudo systemctl disable peanut.service
+```
+
+除非添加 `--now`，否则 enable 不会启动单元，disable 也不会停止正在运行的单元。静态单元即使没有安装元数据，也仍可作为另一个单元的依赖项被激活。
+
+屏蔽操作会将单元链接到 `/dev/null`，在取消屏蔽前阻止普通激活，包括依赖关系触发的激活。它比禁用更强，并可能破坏依赖该单元的其他单元；使用前应检查反向依赖关系。
+
+:::single-choice{#systemd-goals-disable-runtime} 对已在运行的服务执行不带 `--now` 的 `systemctl disable UNIT` 后，会发生什么？
+
+::option[服务会立即被 `SIGKILL` 终止。]{#systemd-goals-disable-kills explanation="仅执行 disable 不会请求停止当前服务。"}
+::option[服务的可执行文件会从文件系统中删除。]{#systemd-goals-disable-deletes explanation="启用操作管理的是链接，而不是程序包文件。"}
+::option[服务通常会继续运行，但未来启动所用的启用链接会被移除。]{#systemd-goals-disable-keeps-running .correct explanation="运行时状态和安装状态是两个相互独立的维度。"}
+:::
+
+## 验证服务结果
+
+做出更改后，应检查进程状态、最近的日志、监听端点、依赖单元和应用程序健康状况；如果修改了启动时的启用状态，还应通过一次受控重启检查其行为。可根据情况使用 `systemctl is-failed`、`systemctl list-dependencies` 和应用程序自身的检查工具。
+
+## 总结
+
+现在，你可以在不混淆配置、运行时状态和启用状态的情况下管理 systemd 服务。
+
+1. 按照各自不同的职责理解 `[Unit]`、`[Service]` 和 `[Install]`。
+2. 对比已加载单元的状态与已安装单元文件的状态。
+3. 使用插入式配置，并在外部文件发生变化后重新加载管理器。
+4. 只有在评估影响后，才启动、停止、重新加载或重启服务。
+5. 将启用、禁用和屏蔽视为不同的持久性控制手段。

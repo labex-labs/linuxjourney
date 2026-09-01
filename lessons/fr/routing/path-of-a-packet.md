@@ -1,49 +1,78 @@
 ---
-index: 3
+lesson_id: "path-of-a-packet"
+course_id: "routing"
 lang: "fr"
-title: "Parcours d'un Paquet"
-meta_title: "Parcours d'un Paquet - Routage"
-meta_description: "Explorez le chemin complet d'un paquet de données voyageant au sein d'un réseau local et sur Internet. Apprenez comment les adresses IP, les adresses MAC, l'ARP et les tables de routage collaborent pour assurer une communication réseau réussie sous Linux."
-meta_keywords: "parcours paquet, communication réseau, ARP, adresse IP, adresse MAC, table de routage, passerelle par défaut, réseau Linux, voyage paquet"
+order_index: 3
+title: "Parcours d’un paquet"
+description: "Découvrez comment les routes, la découverte des voisins, les trames et les routeurs transportent un paquet IP sur un chemin."
+meta_title: "Parcours d’un paquet - Routage"
+meta_description: "Explorez le parcours complet d’un paquet sur un réseau local et Internet avec les adresses IP et MAC, ARP et les tables de routage."
+meta_keywords: "parcours paquet, communication réseau, ARP, adresse IP, adresse MAC, table routage, passerelle défaut, réseau Linux"
 ---
 
-## Lesson Content
+Le parcours d’un paquet est une succession de décisions locales. L’hôte source, chaque routeur et la destination appliquent leur propre état de routage, de voisins, de filtrage et de protocole ; aucun terminal ne connaît normalement à l’avance chaque décision interne.
 
-Comprendre comment les données transitent sur un réseau est fondamental en mise en réseau. Ce voyage, souvent appelé le **chemin du paquet**, implique un effort coordonné entre différents protocoles et matériels. Traçons le **chemin du paquet** dans deux scénarios courants : la communication au sein d'un réseau local et la communication avec un réseau externe.
+## Envoyer vers une destination sur la liaison
 
-### Chemin du Paquet au Sein d'un Réseau Local
+Pour une destination couverte par une route connectée, la source choisit une interface et une adresse IP source. Elle résout ensuite l’adresse de liaison de la destination — avec ARP pour IPv4 sur Ethernet ou la découverte de voisins pour IPv6 — et envoie une trame qui transporte le paquet IP. Un commutateur peut acheminer la trame sans devenir un saut IP.
 
-Lorsqu'un appareil envoie un paquet à un autre appareil sur le même réseau local, le processus est relativement simple.
+:::single-choice{#packet-path-switch-hop} Un commutateur Ethernet ordinaire compte-t-il comme saut de routage IP ?
 
-1. Tout d'abord, l'hôte émetteur vérifie si l'adresse IP de destination se trouve sur le même sous-réseau en la comparant à sa propre adresse IP et à son masque de sous-réseau.
-2. Pour envoyer un paquet, l'hôte a besoin de quatre informations clés : une IP source, une IP de destination, une adresse MAC source et une adresse MAC de destination. Initialement, l'hôte ne connaît pas l'adresse MAC de l'hôte de destination.
-3. L'hôte utilise le Protocole de Résolution d'Adresse (ARP) pour trouver l'information manquante. Il diffuse une requête ARP sur le réseau local, demandant quel appareil possède l'adresse IP cible. L'appareil correspondant répond avec son adresse MAC.
-4. L'adresse MAC de destination étant maintenant connue, le paquet est entièrement adressé et peut être envoyé directement à l'hôte de destination sur le réseau local.
+::option[Non ; il achemine les trames locales sans décrémenter le champ de sauts IP.]{#packet-path-switch-not-hop .correct explanation="Un saut routé se produit lorsqu’un routeur traite et achemine le paquet IP."}
+::option[Oui ; chaque commutateur remplace la destination IP.]{#packet-path-switch-replaces-ip explanation="L’acheminement de couche 2 ne réécrit normalement pas les destinations IP."}
+::option[Oui ; chaque connecteur de câble constitue également un saut IP.]{#packet-path-cable-hop explanation="Les composants physiques n’effectuent pas de routage IP."}
+:::
 
-### Chemin du Paquet vers un Réseau Externe
+## Envoyer par une passerelle
 
-Lorsqu'un paquet est destiné à un appareil en dehors du réseau local, le processus implique des routeurs pour transférer le paquet.
+Pour une destination hors liaison, la route sélectionnée identifie un routeur de prochain saut. La destination IP reste le terminal distant, tandis que la destination de la trame locale est l’adresse de liaison de la passerelle. Sur sa liaison locale, l’hôte résout la passerelle, et non le serveur distant.
 
-1. L'hôte émetteur détermine que l'adresse IP de destination ne se trouve pas sur son réseau local. Comme les diffusions ARP sont limitées au réseau local, l'hôte ne peut pas découvrir directement l'adresse MAC de la destination finale.
-2. L'hôte consulte sa table de routage. Comme il n'y a pas de route spécifique pour l'IP externe, il utilise la route par défaut, qui pointe vers la passerelle par défaut (un routeur). Le paquet est préparé avec les adresses IP source et de destination originales. L'adresse MAC de destination est cependant définie sur l'adresse MAC de la passerelle par défaut. Si l'adresse MAC de la passerelle est inconnue, l'hôte utilise ARP pour la trouver.
-3. Une fois que le paquet atteint le routeur, celui-ci examine l'adresse IP de destination et consulte sa propre table de routage pour déterminer le prochain saut sur le **chemin du paquet**. Le routeur réécrit ensuite les adresses MAC du paquet : l'adresse MAC source devient l'adresse MAC du routeur, et l'adresse MAC de destination devient l'adresse MAC du prochain saut. Ce processus est répété à chaque routeur le long du chemin.
-4. Lorsque le paquet arrive finalement au routeur connecté au réseau local de la destination, ce routeur utilise ARP pour trouver l'adresse MAC de l'hôte final et livre le paquet.
-5. Tout au long de ce voyage, les adresses IP source et de destination dans l'en-tête du paquet restent inchangées. Seules les adresses MAC sont mises à jour à chaque saut.
+:::single-choice{#packet-path-gateway-mac} Quelle adresse MAC est utilisée dans la première trame Ethernet envoyée à un serveur hors liaison ?
 
-## Exercise
+::option[L’adresse du serveur distant à travers tous les réseaux intermédiaires.]{#packet-path-remote-mac explanation="L’adresse de liaison distante n’a aucune signification sur le réseau local source."}
+::option[Une valeur calculée à partir du nom DNS du serveur.]{#packet-path-dns-mac explanation="Les noms DNS n’encodent pas l’adresse MAC du prochain saut local."}
+::option[L’adresse de la passerelle locale sélectionnée.]{#packet-path-local-gateway .correct explanation="La trame est livrée au prochain saut tandis que l’en-tête IP vise le terminal final."}
+:::
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion de base des fichiers et des répertoires sous Linux :
+## Traitement par chaque routeur
 
-1. **[Opérations de Fichiers de Base sous Linux](https://labex.io/fr/labs/linux-basic-file-operations-in-linux-18001)** - Entraînez-vous à naviguer dans le système de fichiers, à gérer les fichiers et les répertoires, et à utiliser les raccourcis de la ligne de commande dans un environnement Linux réel.
-2. **[Opérations sur les Fichiers et les Répertoires](https://labex.io/fr/labs/linux-file-and-directory-operations-17997)** - Apprenez à naviguer dans la structure des répertoires, à gérer les fichiers et les dossiers, et à utiliser des outils puissants en ligne de commande tels que `ls`, `cd`, `mkdir`, `cp`, `mv` et `rm`.
-3. **[Organisation des Fichiers et des Répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Pratiquez les compétences essentielles de gestion de fichiers Linux en utilisant les commandes `cp`, `mv` et `rm` pour organiser une structure de projet, déplacer des fichiers et nettoyer les répertoires inutiles.
+Un routeur retire l’encapsulation de liaison entrante, valide et traite l’en-tête IP, décrémente le TTL ou la limite de sauts, recherche la destination, applique la politique et crée une nouvelle encapsulation pour la liaison de sortie. En IPv4, le traitement de la somme de contrôle de l’en-tête tient compte de la modification du TTL. Si le champ de sauts atteint zéro, le routeur abandonne le paquet et peut renvoyer un message ICMP de délai dépassé.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec les interactions du système de fichiers Linux.
+:::single-choice{#packet-path-router-change} Quel champ IP est modifié par chaque saut routé normal ?
 
-## Quiz Question
+::option[Le nom d’utilisateur de l’application.]{#packet-path-username explanation="Les routeurs n’ont pas besoin des données des comptes applicatifs pour l’acheminement élémentaire."}
+::option[Le TTL d’IPv4 ou la limite de sauts d’IPv6.]{#packet-path-hop-field .correct explanation="Chaque routeur décrémente ce champ afin de borner les boucles de routage."}
+::option[Le port de transport de destination dans tous les cas.]{#packet-path-port explanation="Le routage ordinaire conserve les terminaux de transport ; le NAT constitue une transformation distincte."}
+:::
 
-Quel protocole est utilisé pour trouver l'adresse MAC d'un hôte sur le réseau local, étant donnée son adresse IP ? Veuillez répondre avec l'acronyme de trois lettres en majuscules.
+## Tenir compte des équipements intermédiaires et de la MTU
 
-## Quiz Answer
+Le routage ordinaire conserve les adresses IP source et destination, mais le NAT peut les réécrire et les tunnels encapsuler le paquet d’origine. Les pare-feu peuvent abandonner le trafic silencieusement ou le rejeter. Les MTU des liaisons diffèrent également ; les routeurs IPv4 peuvent parfois fragmenter les paquets, tandis que les routeurs IPv6 ne fragmentent pas les paquets acheminés et reposent sur la découverte de la MTU du chemin.
 
-ARP
+:::single-choice{#packet-path-address-change-exception} Quand les adresses IP de bout en bout peuvent-elles changer sur un chemin ?
+
+::option[Chaque fois qu’un commutateur Ethernet apprend une adresse MAC source.]{#packet-path-switch-learning-ip explanation="L’apprentissage du commutateur affecte une table d’acheminement de liaison, et non les adresses IP des terminaux."}
+::option[Lorsqu’une politique NAT traduit les en-têtes du paquet.]{#packet-path-nat-change .correct explanation="La traduction est une fonction d’équipement intermédiaire qui dépasse le routage ordinaire."}
+::option[Chaque fois qu’une entrée du cache DNS expire.]{#packet-path-dns-expiry explanation="Les paquets existants contiennent déjà des adresses numériques."}
+:::
+
+## Suivre le chemin du retour
+
+La destination effectue sa propre recherche de route pour la réponse. Le retour peut emprunter d’autres routeurs en raison de la politique de routage, de l’équilibrage de charge ou de pannes. Les pare-feu avec état et le NAT doivent tenir compte du flux observé ; l’asymétrie peut donc avoir des conséquences opérationnelles même si IP l’autorise.
+
+:::single-choice{#packet-path-return-symmetry} Une réponse doit-elle traverser les mêmes routeurs dans l’ordre inverse ?
+
+::option[Oui, car IP enregistre toute la route aller dans chaque paquet.]{#packet-path-records-route explanation="Les paquets IP ordinaires ne transportent pas obligatoirement une route inverse complète."}
+::option[Oui, sauf si la source et la destination partagent un nom d’hôte.]{#packet-path-hostname-symmetry explanation="Les noms n’imposent pas la symétrie du chemin."}
+::option[Non ; chaque sens est routé indépendamment.]{#packet-path-independent-return .correct explanation="Les politiques et la topologie peuvent produire un chemin asymétrique mais valide."}
+:::
+
+## Résumé
+
+Vous savez maintenant suivre l’évolution de l’état de liaison autour d’un paquet IP routé.
+
+1. Résoudre l’hôte final uniquement lorsqu’il se trouve sur la liaison.
+2. Encapsuler le trafic hors liaison dans une trame adressée à la passerelle locale sélectionnée.
+3. Suivre la recherche de route et le traitement de la limite de sauts à chaque routeur.
+4. Tenir compte du NAT, du filtrage, des tunnels et des contraintes de MTU.
+5. Considérer le sens du retour comme une route indépendante.

@@ -1,64 +1,89 @@
 ---
-index: 7
+lesson_id: "continuous-monitoring"
+course_id: "process-utilization"
 lang: "en"
+order_index: 7
 title: "Continuous Monitoring"
+description: "Learn how sysstat collection and sar reports support historical Linux performance analysis."
 meta_title: "Continuous Monitoring - Process Utilization"
 meta_description: "Learn continuous Linux system monitoring with sar. Understand installation, data collection, and how to analyze historical resource usage for performance. Get started!"
 meta_keywords: "sar, sysstat, Linux monitoring, system performance, continuous monitoring, beginner, tutorial, guide"
 ---
 
-## Lesson Content
+Interactive tools show what is happening while you watch them. Historical monitoring is needed when a slowdown has already ended. The `sysstat` suite collects periodic system counters, and `sar` reads either current counters or saved activity files.
 
-These monitoring tools are good to look at when your machine is having issues, but what about machines that are having issues when you aren't looking? For those, you'll need to use a continuous monitoring tool, something that will collect, report, and save your system activity information. In this lesson, we will go over a great tool to use: **sar**.
+## Enabling Data Collection
 
-### Installing sar
+Install the distribution's `sysstat` package, then confirm that its collector and retention mechanism are enabled. The exact service, timer, and configuration paths differ by distribution; installing the package does not guarantee collection has started.
 
-Sar is a tool that is used to do historical analysis on your system. First, make sure you have it installed by installing the `sysstat` package: `sudo apt install sysstat`.
-
-### Setting up data collection
-
-Usually, once you install `sysstat`, your system will automatically start collecting data. If it doesn't, you can enable it by modifying the `ENABLED` field in `/etc/default/sysstat`.
-
-### Using sar
+On a systemd host, inspect the package-provided units rather than guessing their names:
 
 ```bash
-sudo sar -q
+$ systemctl list-unit-files | grep sysstat
+$ systemctl list-timers --all | grep sysstat
 ```
 
-This command will list the details from the start of the day.
+Verify that new activity files are being created in the distribution's sysstat data directory and review their permissions and retention policy.
+
+:::single-choice{#sar-installation-verification} What should you verify after installing `sysstat`?
+
+::option[That collection is enabled and activity files are updating.]{#sar-collector-updating .correct explanation="Package installation and active periodic collection are separate conditions."}
+::option[That every process has been restarted manually.]{#sar-restart-processes explanation="Installing a monitoring collector does not require restarting every workload."}
+::option[That all historical files are world-writable.]{#sar-world-writable explanation="Monitoring data should retain appropriate access controls."}
+:::
+
+## Reading Current Samples
+
+Ask `sar` to collect three CPU reports at one-second intervals:
 
 ```bash
-sudo sar -r
+$ sar -u 1 3
 ```
 
-This will list the details of memory usage from the start of the day.
+Other common reports include run queue and load (`-q`), memory (`-r`), paging (`-B`), block devices (`-d`), and per-CPU activity (`-P ALL`). Options and fields vary with sysstat version, so consult `sar --help` or the local manual.
+
+:::single-choice{#sar-one-second-count} What does `sar -u 1 3` request?
+
+::option[Three CPU reports at one-second intervals.]{#sar-three-cpu-samples .correct explanation="The first number is interval seconds and the second is report count."}
+::option[One report covering exactly three days.]{#sar-three-days explanation="The operands specify sampling interval and count, not a date range."}
+::option[Deletion of three saved CPU files.]{#sar-delete-files explanation="The command reads counters and does not request deletion."}
+:::
+
+## Reading Historical Files
+
+Saved file locations and names vary, often under `/var/log/sysstat` or `/var/log/sa`. Pass a selected activity file with `-f`:
 
 ```bash
-sudo sar -P
+$ sar -q -f /var/log/sysstat/sa02
 ```
 
-This will list the details of CPU usage.
+Confirm the file's full date from report headers; a two-digit suffix commonly refers to a day of the month and can be ambiguous across retention periods. Saved binary formats can also require a compatible sysstat version.
 
-To see a view of a different day, you can go into `/var/log/sysstat/saXX` where `XX` is the day you want to view.
+:::single-choice{#sar-historical-file-option} Which option tells `sar` to read a specified activity file?
 
-```bash
-sar -q /var/log/sysstat/sa02
-```
+::option[`-P`]{#sar-option-p explanation="This selects processor reporting rather than an input file."}
+::option[`-q`]{#sar-option-q explanation="This selects queue and load reporting."}
+::option[`-f`]{#sar-option-f .correct explanation="The file option selects the saved activity data to read."}
+:::
 
-## Exercise
+## Correlating an Incident
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of system monitoring and resource analysis:
+Establish the incident time and timezone, then compare several signals across the same interval. Look for changes in load, CPU, run queue, paging, device activity, network traffic, and application latency. Counter changes show correlation, not necessarily causation; deployment records and application logs may explain the trigger.
 
-1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, and terminating them with `kill`.
-2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to use various options with the `top` command to sort processes, adjust update intervals, filter by user, and focus on active processes to effectively monitor system performance.
-3. **[Linux df Command: Disk Space Reporting](https://labex.io/labs/linux-linux-df-command-disk-space-reporting-219188)** - This lab introduces the `df` command in Linux, a utility that displays information about disk space usage on mounted file systems, which is a key aspect of system monitoring.
+Gaps can mean the host was down, the collector failed, or retention removed data. Monitor the monitoring pipeline itself so missing evidence is visible before an incident.
 
-These labs will help you apply the concepts of system resource monitoring in real scenarios and build confidence with analyzing system activity.
+:::single-choice{#sar-incident-method} How should historical `sar` data be used during an incident review?
 
-## Quiz Question
+::option[Treat the highest single counter as the proven root cause.]{#sar-single-root explanation="One correlation does not establish causation."}
+::option[Compare multiple metrics over the same verified time window.]{#sar-correlate-window .correct explanation="Aligned signals help distinguish hypotheses and connect system behavior to the incident."}
+::option[Ignore gaps because collection is guaranteed after installation.]{#sar-ignore-gaps explanation="Collection can fail or be disabled, and gaps require explanation."}
+:::
 
-What is a good tool to use for monitoring system resources?
+## Summary
 
-## Quiz Answer
+You can now use `sar` to investigate performance outside an interactive session.
 
-sar
+1. Verify that collection and retention are actually active.
+2. Request bounded current samples with an interval and count.
+3. Select historical activity files explicitly.
+4. Align several metrics with incident time and workload evidence.

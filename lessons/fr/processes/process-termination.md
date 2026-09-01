@@ -1,51 +1,83 @@
 ---
-index: 5
+lesson_id: "process-termination"
+course_id: "processes"
 lang: "fr"
-title: "Terminaison de Processus"
-meta_title: "Terminaison de Processus - Processus"
-meta_description: "Explorez la terminaison des processus Linux, l'appel système wait, et les différences clés dans le débat processus zombie vs orphelin. Apprenez à gérer les états des processus enfants Linux pour un système stable."
-meta_keywords: "Terminaison processus Linux, processus zombie, processus orphelin, zombie vs orphelin, tuer processus enfant linux, appel système wait, _exit, gestion des processus"
+order_index: 5
+title: "Fin des processus"
+description: "Découvrez comment l’état de sortie, l’attente, les zombies et le changement de parent achèvent le cycle de vie des processus Linux."
+meta_title: "Fin des processus - Processus"
+meta_description: "Explorez la fin des processus Linux, l’appel système wait et les différences entre processus zombies et orphelins."
+meta_keywords: "fin processus Linux, processus zombie, processus orphelin, zombie ou orphelin, tuer processus enfant Linux, appel système wait, _exit, gestion processus"
 ---
 
-## Lesson Content
+Un processus peut se terminer en revenant de sa fonction principale, en appelant une interface de sortie ou en étant terminé par un signal. Le noyau libère la plupart de ses ressources, mais la comptabilisation entre parent et enfant se poursuit jusqu’à ce que le parent recueille les informations de fin.
 
-### Le Processus de Terminaison
+## État de sortie
 
-Une fois qu'un processus est créé, comment se termine-t-il ? La terminaison d'un processus est une partie essentielle du cycle de vie du processus, garantissant que les ressources système sont gérées efficacement.
+Un programme qui se termine normalement fournit un état entier. Par convention, l’état `0` signifie la réussite et une valeur non nulle signale une forme d’échec ou un autre résultat. La signification exacte des valeurs non nulles appartient à l’interface du programme.
 
-Un processus se termine généralement en appelant l'appel système `_exit`. Cette action signale au noyau que le processus est terminé et que ses ressources, telles que la mémoire et les descripteurs de fichiers, peuvent être récupérées. Lors de la sortie, le processus fournit un statut de terminaison au noyau, qui est une valeur entière. Par convention, un statut de 0 indique une exécution réussie, tandis qu'une valeur non nulle signale une erreur.
+Dans un shell, examinez l’état du pipeline au premier plan le plus récent avec :
 
-Cependant, appeler `_exit` n'efface pas immédiatement le processus. Le processus parent doit accuser réception de la terminaison de son enfant en utilisant l'appel système `wait`. Cet appel permet au parent de récupérer le statut de terminaison de l'enfant. Ce mécanisme en deux étapes est essentiel pour un nettoyage correct du processus. Une autre façon de `linux kill child process` (tuer un processus enfant sous Linux) est d'utiliser des signaux, un sujet que nous explorerons dans une leçon ultérieure.
+```bash
+$ command
+$ printf '%s\n' "$?"
+```
 
-### Processus Orphelins
+Les shells exposent une plage d’états encodés limitée et représentent aussi la terminaison par un signal ; cette valeur n’est donc pas un dossier de diagnostic complet. Les programmes doivent documenter leurs propres codes de sortie.
 
-Que se passe-t-il si un processus parent se termine avant son enfant ? L'enfant devient un processus "orphelin". Puisque son parent d'origine ne peut plus appeler `wait`, le noyau intervient. Le processus orphelin est immédiatement adopté par un processus système spécial, généralement `init` (ID de processus 1), qui est considéré comme l'ancêtre de tous les processus. Le processus `init` assume alors le rôle de parent, appelant périodiquement `wait` pour collecter le statut de terminaison de tous ses enfants adoptés, leur permettant de se terminer proprement.
+:::single-choice{#process-termination-success-status} Selon la convention Unix, quel état de sortie normal indique la réussite ?
 
-### Processus Zombies
+::option[`1`]{#process-termination-status-one explanation="De nombreux programmes emploient `1` pour un échec général, même si la signification dépend de la commande."}
+::option[`0`]{#process-termination-status-zero .correct explanation="Un état normal nul indique conventionnellement une exécution réussie."}
+::option[`255`]{#process-termination-status-255 explanation="Cette valeur est non nulle et ne représente pas conventionnellement la réussite."}
+:::
 
-Un scénario différent se produit lorsqu'un processus enfant se termine, mais que son parent n'a pas encore appelé `wait`. Dans cet état, l'enfant devient un processus "zombie". Le noyau libère la plupart des ressources du zombie, mais il conserve une entrée dans la table des processus. Cette entrée contient l'ID du processus et le statut de terminaison, attendant que le parent le récupère.
+## Attendre et récupérer
 
-Les processus zombies sont déjà morts, ils ne consomment donc pas de temps CPU. Vous ne pouvez pas les tuer avec des signaux car ils ne sont pas en cours d'exécution. Le processus par lequel le parent appelle `wait` pour nettoyer un zombie est appelé "récolte" (reaping). Si le processus parent se termine également, `init` adoptera et récoltera le zombie.
+Le noyau enregistre la manière dont un enfant s’est terminé et avertit son parent. Celui-ci emploie un membre de la famille d’appels système `wait()` pour récupérer ces informations. La collecte de cet enregistrement s’appelle la récupération.
 
-### Processus Zombie vs Orphelin
+L’attente peut également coordonner l’exécution : un shell attend une commande au premier plan avant d’afficher une nouvelle invite, mais peut différer l’attente d’une tâche en arrière-plan. Un parent de longue durée bien conçu doit récupérer ses enfants sans bloquer le travail sans rapport.
 
-Comprendre la différence entre un `zombie vs orphan process` (processus zombie contre processus orphelin) est essentiel pour diagnostiquer les problèmes liés aux processus.
+:::single-choice{#process-termination-wait-purpose} Qu’est-ce qu’une opération d’attente réussie permet au parent de récupérer ?
 
-- Un **processus orphelin** est un processus actif, en cours d'exécution, dont le parent est décédé. Il est adopté par `init` et continue de s'exécuter jusqu'à sa fin.
-- Un **processus zombie** est un processus mort qui a terminé son exécution mais qui possède toujours une entrée dans la table des processus. Il attend que son processus parent lise son statut de sortie.
+::option[Les informations de fin de l’enfant.]{#process-termination-wait-status .correct explanation="La famille wait indique comment un enfant s’est arrêté ou terminé et récupère un enfant achevé."}
+::option[Une copie de l’ancien espace d’adressage de l’enfant.]{#process-termination-wait-memory explanation="La majeure partie de la mémoire du processus a déjà été libérée et n’est pas rendue au parent par `wait()`."}
+::option[La propriété de chaque fichier ouvert par l’enfant.]{#process-termination-wait-files explanation="L’attente ne transfère pas les métadonnées de propriété du système de fichiers."}
+:::
 
-En bref, un orphelin est vivant mais sans parent, tandis qu'un zombie est mort mais pas encore entièrement récolté par son parent.
+## Processus zombies
 
-## Exercise
+Après la fin d’un enfant mais avant la récupération de son enregistrement, il apparaît comme un zombie, souvent avec l’état `Z` dans `ps`. Il ne s’exécute plus et ne conserve aucun espace d’adressage ordinaire, mais une entrée minimale de la table des processus et des informations comptables subsistent.
 
-Pour appliquer ces concepts, essayez le laboratoire pratique suivant :
+L’envoi d’un signal à un zombie ne peut pas le faire se terminer une seconde fois. Pour corriger une accumulation persistante, diagnostiquez le parent qui n’attend pas, redémarrez-le ou corrigez-le au moyen d’une procédure opérationnelle adaptée, ou permettez le rattachement à un processus qui récupérera le zombie. Un grand nombre de zombies peut épuiser les PID ou la capacité de la table des processus.
 
-1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, à ajuster la priorité avec `renice`, et à les terminer avec `kill`. Ce laboratoire offre une expérience pratique du cycle de vie des processus, y compris comment les terminer et observer leurs états.
+:::single-choice{#process-termination-zombie-definition} Quelle description correspond à un processus zombie ?
 
-## Quiz Question
+::option[Un enfant en cours d’exécution dont le parent s’est déjà terminé.]{#process-termination-zombie-orphan explanation="Cela décrit un enfant orphelin, et non un état zombie."}
+::option[Un enfant terminé dont l’enregistrement de fin n’a pas été récupéré.]{#process-termination-zombie-unreaped .correct explanation="Le processus a cessé de s’exécuter, mais le noyau conserve un état minimal pour son parent."}
+::option[Un processus qui consomme du processeur dans une boucle non interruptible.]{#process-termination-zombie-cpu explanation="Un zombie n’exécute aucune instruction et ne consomme pas de temps processeur."}
+:::
 
-Quel est le statut de terminaison le plus courant pour un processus qui réussit ?
+## Orphelins et changement de parent
 
-## Quiz Answer
+Si un parent se termine tandis que son enfant continue, le noyau rattache cet enfant à un sous-récupérateur admissible ou au processus init de l’espace de noms de PID concerné. L’enfant peut être en cours d’exécution, en sommeil, arrêté ou devenir ensuite un zombie ; « orphelin » décrit la perte de la relation avec le parent d’origine plutôt qu’un état d’exécution.
 
-0
+Le processus adoptant devient responsable de la collecte de l’état de fin. Les gestionnaires de services et les environnements de conteneurs modernes rendent important de ne pas supposer que le nouveau parent est toujours le PID 1 de l’hôte.
+
+:::single-choice{#process-termination-orphan-definition} Que se passe-t-il lorsqu’un processus survit à son parent d’origine ?
+
+::option[Il est rattaché à un sous-récupérateur admissible ou au processus init de l’espace de noms.]{#process-termination-orphan-reparented .correct explanation="Le noyau préserve une relation parentale valide en attribuant un processus adoptant."}
+::option[Il devient immédiatement un zombie même s’il ne s’est pas terminé.]{#process-termination-orphan-zombie explanation="L’état zombie ne commence qu’après la fin de l’exécution et pendant l’attente de la collecte de l’état."}
+::option[Il perd définitivement son PID et continue anonymement.]{#process-termination-orphan-no-pid explanation="Un orphelin actif conserve son identité de processus tandis que sa relation parentale change."}
+:::
+
+Utilisez l’atelier [Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864) pour observer les codes de sortie et les états des processus sans perturber une charge de production.
+
+## Résumé
+
+Vous savez maintenant distinguer la fin de l’exécution du nettoyage côté parent.
+
+1. Interpréter zéro comme une réussite conventionnelle et les états non nuls selon la documentation du programme.
+2. Employer l’attente pour recueillir les informations de fin d’un enfant.
+3. Reconnaître un zombie comme terminé mais non récupéré.
+4. Reconnaître un orphelin comme un enfant rattaché à un nouveau parent après la fin de son parent d’origine.

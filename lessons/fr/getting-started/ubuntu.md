@@ -1,75 +1,103 @@
 ---
-index: 5
+lesson_id: "ubuntu"
+course_id: "getting-started"
 lang: "fr"
+order_index: 5
 title: "Ubuntu"
+description: "Découvrez comment Ubuntu associe les fondations de Debian à des options accessibles pour le bureau, les serveurs et les versions."
 meta_title: "Ubuntu Linux"
-meta_description: "Découvrez ce qu'est Ubuntu Linux, pourquoi il est populaire, son modèle de publication, sa gestion des paquets et son utilisation sur ordinateurs et serveurs."
-meta_keywords: "ubuntu linux, distribution ubuntu, qu'est-ce qu'ubuntu, versions ubuntu, gestion des paquets ubuntu, ubuntu basé sur debian, distribution linux"
+meta_description: "Découvrez Ubuntu Linux, les raisons de sa popularité, son modèle de publication, sa gestion des paquets et ses usages sur bureau et serveur."
+meta_keywords: "Ubuntu Linux, distribution Ubuntu, versions Ubuntu, gestion paquets Ubuntu, Ubuntu basé sur Debian, distribution Linux"
 ---
 
-## Lesson Content
+## Qu'est-ce qu'Ubuntu ?
 
-### Qu'est-ce qu'Ubuntu ?
+Ubuntu est l'une des distributions Linux les plus utilisées. Développée par Canonical, elle repose sur Debian et est connue pour sa conception accessible, sa vaste communauté d'utilisateurs ainsi que sa large prise en charge matérielle et logicielle.
 
-Ubuntu est l'une des distributions Linux les plus utilisées. Développée par Canonical, elle est basée sur Debian et est reconnue pour sa conception accessible, sa vaste communauté d'utilisateurs et sa large prise en charge matérielle et logicielle.
+Ubuntu est devenue un point de départ courant pour les personnes qui veulent apprendre Linux sans commencer par une configuration plus manuelle ou avancée. Elle est employée sur les ordinateurs personnels, systèmes de développement, plateformes cloud et serveurs, ce qui lui donne une portée que peu d'autres distributions égalent.
 
-Ubuntu est devenu un point de départ courant pour ceux qui souhaitent apprendre Linux sans commencer par une configuration plus manuelle ou avancée. Elle est utilisée sur les ordinateurs personnels, les systèmes de développement, les plateformes cloud et les serveurs, ce qui lui confère une portée que peu d'autres distributions peuvent égaler.
+:::single-choice{#identify-ubuntu-base} Quelle distribution fournit les fondations d'Ubuntu ?
 
-### Pourquoi Ubuntu est populaire
+::option[La distribution Debian]{#debian-base .correct explanation="Ubuntu est construit à partir de Debian et hérite d'une grande partie de son approche des paquets. Ubuntu ajoute ensuite ses propres versions, réglages par défaut et modèle d'assistance."}
+::option[La distribution Fedora]{#ubuntu-fedora-base explanation="Fedora appartient à l'écosystème Red Hat et ne sert pas de base à Ubuntu. Ubuntu fait partie de la famille Debian."}
+::option[La distribution Arch]{#ubuntu-arch-base explanation="Arch Linux est une distribution distincte, avec son propre système de paquets et modèle de publication. Ubuntu est basé sur Debian."}
+:::
 
-Ubuntu est populaire car elle cherche à rendre Linux pratique pour un usage quotidien. Elle propose un installateur soigné, une documentation solide, des versions prévisibles et un vaste écosystème de tutoriels et de support tiers. Pour de nombreux utilisateurs, cette combinaison fait d'Ubuntu l'une des distributions Linux les plus faciles à vivre.
+## Pourquoi Ubuntu est populaire
 
-Une autre raison pour laquelle Ubuntu est si visible est qu'elle fonctionne dans de nombreux environnements. Vous la verrez sur des ordinateurs portables et de bureau, dans des machines virtuelles, sur des serveurs et sur des plateformes cloud. Cette adoption généralisée renforce sa réputation de distribution Linux polyvalente.
+Ubuntu cherche à rendre Linux pratique au quotidien. Elle propose un programme d'installation soigné, une documentation solide, des versions prévisibles et un vaste écosystème de tutoriels et d'assistance tierce. Pour beaucoup, cette combinaison en fait l'une des distributions Linux les plus faciles à vivre.
 
-### Ubuntu et Debian
+Ubuntu est également très visible parce qu'elle fonctionne dans de nombreux environnements : ordinateurs portables et de bureau, machines virtuelles, serveurs et plateformes cloud. Cette vaste adoption renforce sa réputation de distribution Linux généraliste.
 
-Ubuntu est une distribution basée sur Debian, ce qui signifie qu'elle hérite d'une grande partie de son modèle de gestion de paquets et de son approche de packaging logiciel de Debian. Si vous apprenez comment fonctionne `apt` dans Ubuntu, ces connaissances vous aideront également à comprendre d'autres systèmes basés sur Debian.
+:::single-choice{#recognize-beginner-support} Quelle qualité d'Ubuntu aide le plus directement un débutant à résoudre ses problèmes ?
 
-En même temps, Ubuntu n'est pas juste "Debian avec un bureau". Elle possède son propre calendrier de publication, ses valeurs par défaut, son modèle de support et son écosystème. Si vous souhaitez la comparer avec d'autres options, consultez [Choisir une distribution Linux](https://labex.io/fr/lesson/choosing-a-linux-distribution) ou apprenez-en plus sur [Debian](https://labex.io/fr/lesson/debian).
+::option[La compilation manuelle obligatoire de chaque programme installé]{#manual-compilation explanation="Ubuntu fournit normalement des logiciels empaquetés au lieu d'exiger leur compilation manuelle. Ce travail supplémentaire ne simplifierait pas le dépannage."}
+::option[Une documentation abondante et une grande communauté d'utilisateurs]{#documentation-community .correct explanation="La documentation et les discussions de la communauté offrent aux débutants de nombreuses sources d'explications et d'aide au dépannage, ce qui facilite l'apprentissage."}
+::option[Des indications limitées, réservées aux administrateurs expérimentés]{#limited-guidance explanation="La visibilité d'Ubuntu tient notamment aux nombreuses ressources disponibles pour tous les niveaux. Réserver l'aide aux experts nuirait à son accessibilité."}
+:::
 
-### Les versions d'Ubuntu
+## Ubuntu et Debian
 
-Ubuntu utilise deux types de versions principaux. Elle publie une nouvelle version tous les six mois, et tous les deux ans, l'une de ces versions devient une version à support à long terme, ou LTS (Long Term Support). Les versions LTS sont généralement choisies pour les ordinateurs de bureau, les stations de travail et les serveurs qui nécessitent une base plus stable.
+Ubuntu est une distribution basée sur Debian : elle hérite donc d'une grande partie de son modèle de gestion et d'empaquetage des logiciels. Si vous apprenez le fonctionnement d'`apt` dans Ubuntu, ces connaissances vous aideront à comprendre les autres systèmes issus de Debian.
 
-Ce modèle de publication aide à expliquer l'attrait d'Ubuntu. Les utilisateurs qui souhaitent une base fiable choisissent souvent la version LTS, tandis que ceux qui veulent des fonctionnalités plus récentes peuvent utiliser les versions intermédiaires qui arrivent selon un calendrier plus rapide.
+Ubuntu n'est toutefois pas simplement « Debian avec un bureau ». Elle possède son propre calendrier de publication, ses réglages par défaut, son modèle d'assistance et son écosystème. Pour la comparer, consultez [Choisir une distribution Linux](https://labex.io/fr/lesson/choosing-a-linux-distribution) ou découvrez [Debian](https://labex.io/fr/lesson/debian).
 
-### Gestion des paquets
+## Versions d'Ubuntu
 
-En tant que système basé sur Debian, Ubuntu utilise le format de paquet `.deb` et le gestionnaire de paquets `apt` pour installer, mettre à jour et supprimer des logiciels. Cela donne aux utilisateurs l'accès à un très vaste écosystème logiciel et à un flux de travail en ligne de commande familier.
+Ubuntu emploie deux grands types de versions. Une nouvelle version paraît tous les six mois et, tous les deux ans, l'une d'elles devient une version Long Term Support, ou LTS. Les versions LTS sont souvent choisies pour les postes de travail, les stations professionnelles et les serveurs qui ont besoin d'une base plus stable.
 
-La gestion des paquets est l'un des points forts pratiques d'Ubuntu car elle combine des outils Debian matures avec un environnement logiciel vaste et largement documenté.
+Ce modèle explique une partie de l'attrait d'Ubuntu. Les utilisateurs qui recherchent une base fiable choisissent souvent une LTS, tandis que ceux qui veulent des fonctionnalités plus récentes peuvent employer les versions intermédiaires publiées plus rapidement.
 
-### Utilisation sur bureau et serveur
+:::single-choice{#choose-ubuntu-lts} Quel type de version Ubuntu convient le mieux à un système qui exige une base prévisible et durable ?
 
-Ubuntu est utilisée à la fois sur les systèmes de bureau et les serveurs. Côté bureau, elle est connue pour une expérience soignée basée sur GNOME et des paramètres par défaut relativement accessibles. Côté serveur, elle est largement déployée dans le développement, l'infrastructure web et les environnements cloud.
+::option[Une version intermédiaire]{#interim-release explanation="Les versions intermédiaires paraissent plus souvent et donnent plus vite accès aux nouveautés. Leur assistance plus courte ne correspond pas à la priorité indiquée."}
+::option[Une version LTS]{#lts-release .correct explanation="Les versions LTS sont destinées à une assistance plus longue et couramment choisies pour les systèmes qui privilégient une base fiable."}
+::option[Une mise à jour de paquet]{#package-update explanation="Une mise à jour de paquet modifie un logiciel dans une version installée. Ce n'est pas l'un des deux types de versions du système Ubuntu."}
+:::
 
-Cette polyvalence rend Ubuntu attrayante pour les utilisateurs qui souhaitent une seule distribution Linux capable de passer de l'apprentissage sur un ordinateur portable à l'exécution de charges de travail en production.
+## Gestion des paquets
 
-### Pourquoi les débutants choisissent Ubuntu
+En tant que système issu de Debian, Ubuntu emploie le format `.deb` et le gestionnaire de paquets `apt` pour installer, mettre à jour et supprimer les logiciels. Les utilisateurs accèdent ainsi à un immense écosystème et à une méthode familière en ligne de commande.
 
-Ubuntu est souvent recommandée aux débutants car elle est plus facile à installer et à dépanner que beaucoup d'autres distributions Linux. La grande base d'utilisateurs signifie qu'il existe de nombreux tutoriels, forums et guides disponibles en cas de problème.
+La gestion des paquets est l'une des forces pratiques d'Ubuntu, car elle associe les outils Debian éprouvés à un environnement logiciel vaste et abondamment documenté.
 
-Pour les utilisateurs qui souhaitent une distribution Linux conviviale pour les débutants sans renoncer à la flexibilité à long terme, Ubuntu reste l'un des points de départ les plus sûrs.
+:::single-choice{#identify-ubuntu-package-tool} Quel élément est l'outil de gestion des paquets employé pour installer des logiciels dans Ubuntu ?
 
-### Lectures complémentaires
+::option[`.deb`]{#deb-format explanation="`.deb` désigne le format de paquets des systèmes issus de Debian. Ce n'est pas l'outil en ligne de commande qui les gère."}
+::option[`LTS`]{#lts-label explanation="LTS désigne une version à assistance longue. Il n'installe ni ne gère les paquets logiciels."}
+::option[`apt`]{#ubuntu-apt-tool .correct explanation="Ubuntu emploie `apt` pour installer, mettre à jour et supprimer des paquets. L'outil agit sur les logiciels empaquetés au format `.deb` de Debian."}
+:::
+
+## Utilisation sur bureau et serveur
+
+Ubuntu est employée sur les postes de travail comme sur les serveurs. Côté bureau, elle propose une expérience soignée fondée sur GNOME et des réglages par défaut relativement accessibles. Côté serveur, elle est très présente dans le développement, l'infrastructure web et les environnements cloud.
+
+Cette polyvalence attire les utilisateurs qui souhaitent qu'une même distribution puisse accompagner leur progression, de l'apprentissage sur un ordinateur portable jusqu'aux charges de production.
+
+## Pourquoi les débutants choisissent Ubuntu
+
+Ubuntu est souvent recommandée aux débutants parce qu'elle est plus facile à installer et dépanner que de nombreuses autres distributions. Sa vaste base d'utilisateurs se traduit par de nombreux tutoriels, messages de forums et guides disponibles en cas de problème.
+
+Pour ceux qui veulent une distribution accessible sans renoncer à une flexibilité à long terme, Ubuntu reste un point de départ courant.
+
+## Pour aller plus loin
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
-- [Cycle de vie des versions d'Ubuntu](https://ubuntu.com/releaseendoflife)
-- [Documentation des versions d'Ubuntu](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Cycle de publication d'Ubuntu](https://ubuntu.com/releaseendoflife)
+- [Documentation des versions Ubuntu](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
 
-## Exercise
+Pour poursuivre après cette introduction, nous recommandons ces cours LabEx :
 
-Pour continuer à apprendre après cette introduction à Ubuntu, nous vous recommandons ces cours LabEx :
+1. **[Prise en main rapide de Linux](https://labex.io/fr/courses/quick-start-with-linux)** — Construisez des bases pratiques et des compétences en ligne de commande.
+2. **[Linux pour les débutants](https://labex.io/fr/courses/linux-for-noobs)** — Suivez un parcours accessible pour comprendre progressivement les notions fondamentales.
+3. **[Devenir administrateur système junior](https://labex.io/fr/courses/become-a-junior-system-administrator)** — Poursuivez vers les compétences pratiques d'administration une fois les bases acquises.
 
-1. **[Démarrage rapide avec Linux](https://labex.io/fr/courses/quick-start-with-linux)** - Construisez une base pratique en notions Linux et en ligne de commande.
-2. **[Linux pour les débutants](https://labex.io/fr/courses/linux-for-noobs)** - Suivez un parcours adapté aux débutants pour comprendre les bases de Linux étape par étape.
-3. **[Devenir administrateur système junior](https://labex.io/fr/courses/become-a-junior-system-administrator)** - Poursuivez avec des compétences pratiques d’administration Linux une fois les bases acquises.
+## Résumé
 
-## Quiz Question
+Vous savez maintenant expliquer comment Ubuntu s'appuie sur Debian tout en offrant ses propres versions et son expérience utilisateur.
 
-Sur quel système d'exploitation Ubuntu est-elle basée ? (Veuillez répondre en anglais, en faisant attention aux majuscules.)
-
-## Quiz Answer
-
-Debian
+1. Identifier Debian comme fondation d'Ubuntu.
+2. Reconnaître les qualités d'assistance qui aident les débutants.
+3. Comparer les versions LTS et intermédiaires d'Ubuntu.
+4. Employer `apt` comme outil de gestion des paquets d'Ubuntu.

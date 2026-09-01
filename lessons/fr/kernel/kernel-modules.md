@@ -1,78 +1,128 @@
 ---
-index: 6
+lesson_id: "kernel-modules"
+course_id: "kernel"
 lang: "fr"
-title: "Modules Noyau"
-meta_title: "Modules Noyau - Noyau"
-meta_description: "Découvrez ce que sont les modules noyau sous Linux et comment ils étendent les fonctionnalités du noyau. Cette leçon couvre l'utilisation de lsmod et modprobe pour lister, charger et décharger des modules à la demande."
-meta_keywords: "modules noyau, modules noyau Linux, modprobe, lsmod, gestion noyau, tutoriel Linux, Linux débutant, guide Linux"
+order_index: 6
+title: "Modules du noyau"
+description: "Découvrez comment examiner, charger, configurer et retirer sans risque les modules propres à une version du noyau Linux."
+meta_title: "Modules du noyau - Noyau"
+meta_description: "Découvrez les modules du noyau Linux et apprenez à les répertorier, charger et décharger avec lsmod, modinfo et modprobe."
+meta_keywords: "modules noyau Linux, modprobe, lsmod, modinfo, gestion noyau, charger module, décharger module"
 ---
 
-## Lesson Content
+Un module chargeable est du code privilégié qui peut étendre le noyau actif avec un pilote, un système de fichiers, une fonction réseau ou un autre sous-système. Les modules évitent d'intégrer chaque fonction facultative dans une seule image du noyau, mais leur chargement agrandit la surface d'attaque de confiance.
 
-Considérez le noyau Linux comme le moteur central d'une voiture. Vous pouvez ajouter des accessoires comme une galerie de toit ou un nouveau système audio sans modifier le moteur lui-même. Ces accessoires peuvent être ajoutés ou retirés selon les besoins. Le noyau Linux utilise un concept similaire avec les modules du noyau.
+## Répertorier et examiner les modules
 
-### Que sont les modules du noyau
-
-Alors, **que sont les modules du noyau** ? Ce sont des morceaux de code qui peuvent être chargés dans le noyau et en être déchargés à la demande. Ils étendent la fonctionnalité du noyau sans nécessiter de recompiler le noyau principal ou de redémarrer le système. Cette approche modulaire permet d'ajouter dynamiquement la prise en charge de nouveau matériel (comme une nouvelle carte Wi-Fi) ou de nouvelles fonctionnalités logicielles (comme un nouveau système de fichiers). Cela maintient le noyau principal léger tout en permettant une flexibilité immense.
-
-### Lister les modules chargés
-
-Pour voir la liste de tous les modules du noyau actuellement chargés en mémoire, vous pouvez utiliser la commande `lsmod`. Cela vous donne un instantané des modules actifs et de leurs dépendances.
+Affichez les modules actuellement chargés :
 
 ```bash
-lsmod
+$ lsmod
 ```
 
-### Charger un module du noyau
+La sortie provient d'un état du noyau comme `/proc/modules` et comprend le nom, la taille et un nombre d'utilisations ou des dépendances. Un nombre apparemment nul ne prouve pas que la suppression est sûre ; un pilote peut encore posséder des périphériques actifs ou participer à l'état d'un sous-système.
 
-Pour charger un module du noyau, nous utilisons la commande `modprobe`. Par exemple, pour charger le module `bluetooth`, vous exécuteriez :
+Examinez un module disponible pour le noyau actif avec :
 
 ```bash
-sudo modprobe bluetooth
+$ modinfo NOM_DU_MODULE
 ```
 
-La commande `modprobe` est intelligente ; elle recherche le module dans le répertoire standard (`/lib/modules/$(uname -r)/`) et charge également tous les autres modules dont le module cible dépend.
+`modinfo` peut afficher le nom du fichier, les alias, paramètres, la licence, la description et les informations de signature. Considérez ces métadonnées comme descriptives, pas comme une preuve de confiance ou de compatibilité avec la charge.
 
-### Décharger un module du noyau
+:::single-choice{#kernel-modules-lsmod-purpose} Qu'affiche `lsmod` ?
 
-Si un module n'est plus nécessaire, vous pouvez le décharger pour libérer des ressources système. Utilisez l'option `-r` avec `modprobe` pour supprimer un module :
+::option[Tous les paquets de modules disponibles dans les dépôts distants.]{#kernel-modules-repository-list explanation="L'inventaire des dépôts exige des requêtes du gestionnaire de paquets."}
+::option[Uniquement les pilotes compilés directement dans l'image du noyau.]{#kernel-modules-builtins explanation="Les fonctions intégrées ne sont pas des modules chargeables et n'apparaissent normalement pas dans lsmod."}
+::option[Les modules actuellement chargés dans le noyau actif.]{#kernel-modules-loaded-list .correct explanation="La liste reflète l'état réel des modules ainsi que les informations de dépendances et d'utilisation."}
+:::
+
+## Charger avec `modprobe`
+
+Chargez un module par son nom :
 
 ```bash
-sudo modprobe -r bluetooth
+$ sudo modprobe NOM_DU_MODULE
 ```
 
-### Gérer les modules au démarrage
+`modprobe` consulte les index de dépendances, alias et configurations du noyau actif sous `/lib/modules/$(uname -r)/`. Il charge les dépendances requises et transmet les paramètres configurés. `insmod` insère au contraire un seul fichier de module indiqué directement sans offrir la même résolution des dépendances.
 
-Les modules chargés avec `modprobe` sont temporaires et disparaîtront après un redémarrage. Pour rendre les configurations des modules permanentes, vous pouvez créer des fichiers de configuration dans le répertoire `/etc/modprobe.d/`.
+Avant le chargement, confirmez l'origine du module, la politique de signature, la compatibilité avec la version du noyau, les paramètres, l'association matérielle attendue et le retour arrière. Secure Boot ou le verrouillage du noyau peut rejeter les modules non signés ; forcer du code incompatible risque un plantage ou une compromission.
 
-Pour charger automatiquement un module au démarrage avec des options spécifiques, créez un fichier `.conf`. Par exemple, si vous aviez un module hypothétique nommé `peanut_butter` et que vous vouliez définir son paramètre `type` sur `almond`, votre fichier ressemblerait à ceci :
+:::single-choice{#kernel-modules-modprobe-dependencies} Pourquoi préfère-t-on normalement `modprobe` à l'emploi direct d'`insmod` ?
 
-```plaintext
-# /etc/modprobe.d/peanutbutter.conf
+::option[Il exécute le module entièrement dans l'espace utilisateur non privilégié.]{#kernel-modules-modprobe-userspace explanation="Le module inséré s'exécute comme code privilégié du noyau."}
+::option[Il garantit que chaque module tiers est signé et sûr.]{#kernel-modules-modprobe-guarantee explanation="L'application des signatures dépend des règles et une signature valide ne prouve pas l'absence de défauts."}
+::option[Il résout les alias, les dépendances et la configuration des modules.]{#kernel-modules-modprobe-resolves .correct explanation="Modprobe emploie l'arborescence indexée des modules de la version exacte active."}
+:::
 
-options peanut_butter type=almond
+## Paramètres des modules et chargement au démarrage
+
+Les règles persistantes de paramètres et d'alias se placent dans un fichier `.conf` sous `/etc/modprobe.d/` :
+
+```text
+options example_module mode=careful
 ```
 
-Inversement, pour empêcher un module de se charger au démarrage (un processus appelé "blacklisting" ou mise sur liste noire), vous pouvez utiliser le mot-clé `blacklist` dans un fichier de configuration :
+Cette ligne influence la manière dont modprobe charge le module ; elle ne demande pas à elle seule son chargement au démarrage. Une simple liste de modules à charger au démarrage se place couramment sous `/etc/modules-load.d/` :
 
-```plaintext
-# /etc/modprobe.d/peanutbutter.conf
-
-blacklist peanut_butter
+```text
+example_module
 ```
 
-Ces fichiers de configuration permettent un contrôle précis sur les modules disponibles lorsque votre système démarre.
+Les alias matériels déclenchent souvent un chargement automatique sans liste explicite. Pour les modules nécessaires pendant le démarrage précoce, mettez à jour l'initramfs selon la procédure documentée de la distribution après les changements de configuration.
 
-## Exercise
+:::single-choice{#kernel-modules-options-versus-load} Que fait une ligne `options` dans `/etc/modprobe.d/` ?
 
-La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension des modules du noyau Linux :
+::option[Elle garantit à elle seule le chargement du module à chaque démarrage.]{#kernel-modules-options-autoload explanation="Les demandes de chargement au démarrage emploient un autre mécanisme, comme la configuration modules-load ou les alias de périphériques."}
+::option[Elle définit les paramètres employés lors du chargement du module nommé.]{#kernel-modules-options-parameters .correct explanation="Modprobe applique les arguments clé-valeur configurés pendant l'insertion."}
+::option[Elle compile le module pour chaque version de noyau installée.]{#kernel-modules-options-compiles explanation="La configuration ne construit pas de modules binaires."}
+:::
 
-1. **[Gérer les modules du noyau sous Linux](https://labex.io/fr/labs/comptia-manage-kernel-modules-in-linux-590865)** - Entraînez-vous à lister, inspecter, charger et décharger les modules du noyau, et à les configurer pour qu'ils se chargent automatiquement au démarrage. Ce laboratoire vous aidera à appliquer les concepts dans un scénario réel et à gagner en confiance avec la gestion des modules du noyau.
+## Liste noire et limites
 
-## Quiz Question
+Une configuration modprobe peut contenir :
 
-Quelle commande est utilisée pour décharger un module ?
+```text
+blacklist example_module
+```
 
-## Quiz Answer
+La liste noire supprime normalement le chargement automatique au moyen des alias du module. Elle ne décharge pas un module déjà actif, ne le retire pas d'un initramfs et n'empêche pas nécessairement un chargement explicite par son nom exact ou comme dépendance. Le renforcement de la sécurité exige une combinaison adaptée à la menace : disponibilité du module, application des signatures, contenu de l'initramfs, paramètres de démarrage et règles.
 
-modprobe -r
+:::single-choice{#kernel-modules-blacklist-effect} Que supprime principalement une ligne modprobe `blacklist` élémentaire ?
+
+::option[Le chargement automatique par les alias du module.]{#kernel-modules-blacklist-aliases .correct explanation="La directive n'interdit pas universellement toutes les voies par lesquelles le code peut être ou devenir chargé."}
+::option[L'exécution de chaque programme utilisateur portant un nom semblable.]{#kernel-modules-blacklist-user-programs explanation="La configuration modprobe s'applique à la résolution des modules du noyau."}
+::option[Tout le code du noyau compilé dans l'image.]{#kernel-modules-blacklist-builtins explanation="Une fonction intégrée ne peut ni être déchargée, ni bloquée comme module."}
+:::
+
+## Retirer un module sans risque
+
+Demandez son retrait avec :
+
+```bash
+$ sudo modprobe -r NOM_DU_MODULE
+```
+
+Modprobe peut retirer les dépendances désormais inutilisées lorsqu'il convient. Le noyau refuse l'opération lorsque le suivi ordinaire des références indique que le module est occupé, mais ne vous fiez pas à ce seul contrôle. Arrêtez les services, démontez les systèmes de fichiers, détachez les périphériques, mettez le réseau au repos et confirmez un autre pilote ou une voie de récupération avant de retirer le code qui prend en charge du matériel actif.
+
+Ne forcez jamais le déchargement d'un module sur un système à préserver. Des bogues de retrait ou une activité encore en cours peuvent faire planter le noyau ou corrompre des données.
+
+:::single-choice{#kernel-modules-remove-command} Quelle commande demande le retrait, tenant compte des dépendances, d'un module nommé ?
+
+::option[`lsmod -r NOM_DU_MODULE`]{#kernel-modules-lsmod-remove explanation="Lsmod est un outil d'affichage en lecture seule et ne retire rien."}
+::option[`uname -r NOM_DU_MODULE`]{#kernel-modules-uname-remove explanation="Uname indique des informations sur le noyau et ne gère pas les modules."}
+::option[`modprobe -r NOM_DU_MODULE`]{#kernel-modules-modprobe-remove .correct explanation="Le mode de retrait tient compte des relations de dépendances indexées autour du module demandé."}
+:::
+
+Utilisez [Gérer les modules du noyau sous Linux](https://labex.io/fr/labs/comptia-manage-kernel-modules-in-linux-590865) pour vous exercer avec les modules désignés comme sûrs par le laboratoire.
+
+## Résumé
+
+Vous savez maintenant gérer les modules en respectant leur risque au niveau du noyau.
+
+1. Employer `lsmod` pour l'état réel et `modinfo` pour les métadonnées disponibles.
+2. Employer `modprobe` pour un chargement tenant compte des alias et dépendances.
+3. Distinguer les paramètres modprobe des demandes de chargement au démarrage.
+4. Considérer la liste noire comme une règle limitée plutôt qu'un blocage absolu.
+5. Mettre chaque consommateur au repos avant `modprobe -r`.

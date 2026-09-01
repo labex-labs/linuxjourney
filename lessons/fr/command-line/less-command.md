@@ -1,56 +1,81 @@
 ---
-index: 8
+lesson_id: "less-command"
+course_id: "command-line"
 lang: "fr"
+order_index: 8
 title: "less"
+description: "Apprenez à parcourir, rechercher et suivre interactivement de longs fichiers texte avec less."
 meta_title: "less - Ligne de commande"
 meta_description: "Apprenez la commande Linux less avec des exemples pour visualiser de gros fichiers, défiler, rechercher, aller à une ligne, suivre les logs et quitter less."
 meta_keywords: "commande less, linux less, voir gros fichier linux, rechercher dans less, quitter less, less -N, less +F, visualiseur texte linux"
 ---
 
-## Lesson Content
+Lorsqu'un fichier texte est trop long pour tenir sur un écran, `less` permet de le lire sans envoyer tout son contenu défiler dans le terminal. Son nom a inspiré l'ancienne plaisanterie Unix « less is more », car `more` est une autre visionneuse paginée.
 
-Lorsque vous visualisez des fichiers texte trop volumineux pour tenir sur un seul écran, la commande `less` est un outil précieux. Comme le dit le vieil adage Unix, « less is more ». C’est un jeu de mots faisant référence à la commande `more` qui offre une fonctionnalité similaire.
+## Ouvrir un fichier
 
-L’utilitaire `less` affiche le texte en mode paginé, vous permettant de naviguer dans un fichier sans saturer votre terminal.
-
-### Premiers pas avec la commande Less
-
-Pour commencer à visualiser un fichier, utilisez `less` suivi du nom du fichier.
+Démarrez la visionneuse en lui fournissant un nom de fichier :
 
 ```bash
 $ less /home/pete/Documents/text1
 ```
 
-Une fois dans le visualiseur `less`, vos commandes shell habituelles ne fonctionnent plus. À la place, vous utilisez un ensemble spécifique de touches pour naviguer et interagir avec le texte.
+Tant que `less` est actif, les touches contrôlent la visionneuse au lieu de lancer les commandes ordinaires du shell. Vous revenez au shell lorsque vous quittez la visionneuse.
 
-### Navigation et contrôles
+:::single-choice{#open-long-file} Quelle commande ouvre `/var/log/syslog` dans une visionneuse interactive ?
 
-Vous pouvez utiliser plusieurs touches pour vous déplacer dans le document :
+::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` ouvre le fichier dans une visionneuse qui permet de le parcourir, d'y rechercher du texte, puis de revenir au shell."}
+::option[`cat /var/log/syslog`]{#print-log explanation="`cat` envoie tout le fichier sur la sortie standard d'un coup ; elle ne fournit pas de commandes de pagination interactives."}
+::option[`file /var/log/syslog`]{#classify-log explanation="`file` indique un type de contenu probable ; elle n'ouvre pas le journal pour une lecture interactive."}
+:::
 
-- **Flèches et touches Page** : Utilisez `Page Up`, `Page Down`, `Up` et `Down` pour naviguer ligne par ligne ou page par page.
-- **Aller au début** : Appuyez sur `g` pour aller directement au début du fichier texte.
-- **Aller à la fin** : Appuyez sur `G` (Maj + g) pour sauter à la fin du fichier texte.
-- **Déplacer d’une demi-page** : Appuyez sur `u` pour monter et `d` pour descendre.
-- **Menu d’aide** : Si vous oubliez les commandes dans `less`, appuyez simplement sur `h` pour afficher un résumé utile.
+## Naviguer dans less
 
-### Recherche dans Less
+Lorsque la visionneuse est ouverte :
 
-Une fonctionnalité puissante de `less` est sa capacité à rechercher du texte. Tapez `/` suivi du texte à trouver, puis appuyez sur Entrée.
+- utilisez `Haut`, `Bas`, `Page précédente` et `Page suivante` pour avancer par lignes ou écrans ;
+- appuyez sur `g` pour aller au début ;
+- appuyez sur `G` pour aller à la fin ;
+- appuyez sur `u` pour remonter d'un demi-écran ou sur `d` pour descendre d'un demi-écran ;
+- appuyez sur `h` pour ouvrir l'aide intégrée.
 
-- `/terme_de_recherche` : Recherche vers l’avant du terme "terme_de_recherche".
-- `?terme_de_recherche` : Recherche vers l’arrière du terme "terme_de_recherche".
-- `n` : Passe à l’occurrence suivante du terme recherché.
-- `N` : Passe à l’occurrence précédente.
+:::single-choice{#jump-to-file-end} Quelle touche va directement à la fin d'un fichier dans `less` ?
 
-### Comment quitter Less
+::option[`g`]{#lowercase-g explanation="Le `g` minuscule va au début du fichier. La majuscule produit le déplacement opposé."}
+::option[`G`]{#uppercase-g .correct explanation="Le `G` majuscule va à la fin de l'entrée. La commande est sensible à la casse."}
+::option[`h`]{#help-key explanation="La touche `h` ouvre l'aide de la visionneuse ; elle ne va pas à la fin du fichier."}
+:::
 
-Lorsque vous avez fini de visualiser le fichier, vous devez savoir comment `quitter less` et revenir à votre invite de commande.
+## Rechercher dans less
 
-- **Quitter** : Appuyez simplement sur `q` pour quitter le visualiseur `less` et revenir à votre shell.
+Tapez `/`, puis un motif et Entrée pour rechercher vers l'avant. Commencez par `?` pour rechercher vers l'arrière.
 
-### Options utiles de less
+- `/search_term` : rechercher `search_term` vers l'avant ;
+- `?search_term` : rechercher `search_term` vers l'arrière ;
+- `n` : répéter la recherche dans le même sens ;
+- `N` : répéter la recherche dans le sens opposé.
 
-Vous pouvez lancer `less` avec des options :
+:::single-choice{#repeat-search-direction} Après une recherche vers l'avant de `error`, quelle touche répète la recherche dans le même sens ?
+
+::option[`n`]{#same-search .correct explanation="Le `n` minuscule répète la dernière recherche dans son sens initial, ici vers l'avant."}
+::option[`N`]{#opposite-search explanation="Le `N` majuscule répète la recherche dans le sens opposé ; après une recherche vers l'avant, il parcourt les correspondances vers l'arrière."}
+::option[`g`]{#search-to-start explanation="La touche `g` va au début de l'entrée ; elle ne répète pas une recherche."}
+:::
+
+## Quitter less
+
+Appuyez sur `q` pour quitter `less` et revenir à l'invite du shell.
+
+:::single-choice{#quit-less} Quelle touche quitte `less` et revient au shell ?
+
+::option[`q`]{#less-quit .correct explanation="La commande `q` ferme la visionneuse et rétablit l'invite du shell."}
+::option[`h`]{#less-help explanation="La touche `h` ouvre l'aide dans `less` ; elle ne revient pas directement au shell."}
+::option[`G`]{#less-end explanation="Le `G` majuscule va à la fin de l'entrée, mais laisse la visionneuse ouverte."}
+:::
+
+## Démarrer less avec des options
+
+Des options et commandes initiales peuvent modifier le démarrage :
 
 ```bash
 $ less -N file.txt
@@ -58,34 +83,36 @@ $ less +G file.txt
 $ less +F /var/log/syslog
 ```
 
-- `-N` : Affiche les numéros de ligne.
-- `+G` : Ouvre à la fin du fichier.
-- `+F` : Suit le contenu ajouté en temps réel, similaire à `tail -f`.
+- `-N` : afficher les numéros de ligne ;
+- `+G` : ouvrir à la fin du fichier ;
+- `+F` : suivre le nouveau contenu à mesure qu'il est ajouté, comme `tail -f`.
 
-Lorsque vous suivez un fichier avec `+F`, appuyez sur `Ctrl-C` pour arrêter le suivi et revenir à la navigation normale, puis appuyez sur `q` pour quitter.
+Pendant le suivi avec `+F`, appuyez sur `Ctrl+C` pour arrêter le suivi et revenir à la navigation normale, puis sur `q` pour quitter. Utilisez `-i` pour ignorer la casse sauf si le motif contient une majuscule, ou `-I` pour l'ignorer quelle que soit la casse du motif.
 
-### Questions fréquentes
+Une commande peut aussi envoyer sa sortie à `less` par un tube :
 
-**Less est-il meilleur que cat ?** Utilisez `cat` pour les fichiers courts et `less` pour les fichiers longs ou ceux que vous devez rechercher.
+```bash
+$ dmesg | less
+```
 
-**Comment faire une recherche insensible à la casse ?** Lancez `less` avec `-i`, ou tapez les recherches normalement lorsque le motif ne contient pas de majuscules sur de nombreux systèmes.
+:::single-choice{#follow-growing-log} Quelle commande ouvre `/var/log/syslog` et suit le nouveau contenu à son arrivée ?
 
-**Less peut-il ouvrir la sortie d’une commande ?** Oui. Poussez la sortie dans `less`, par exemple `dmesg | less`.
+::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="La commande initiale `+F` active le mode de suivi ; `less` affiche donc le contenu ajouté au journal."}
+::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="La commande initiale `+G` ouvre le fichier à la fin, mais ne suit pas le contenu ajouté ensuite."}
+::option[`less -N /var/log/syslog`]{#number-log-lines explanation="L'option `-N` affiche les numéros de ligne ; elle n'active pas le suivi continu."}
+:::
 
-## Exercise
+Pour vous exercer à parcourir et rechercher du texte système, essayez ces laboratoires :
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la visualisation et de la navigation dans les fichiers texte sous Linux :
+1. **[Commande Linux less : pagination de fichiers](https://labex.io/fr/labs/linux-linux-less-command-file-paging-214301)** — Apprenez à lire et parcourir efficacement des fichiers avec `less`, notamment avec la recherche, les numéros de ligne et les motifs.
+2. **[Afficher les journaux et fichiers de configuration Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** — Utilisez `cat`, `more` et `less` pour consulter et parcourir des journaux et configurations.
 
-1. **[Commande Linux less : Pagination de fichiers](https://labex.io/fr/labs/linux-linux-less-command-file-paging-214301)** - Apprenez la commande Linux 'less' pour une visualisation et une navigation efficaces dans les fichiers texte, incluant la recherche, les numéros de ligne et la correspondance de motifs.
-2. **[Commande Linux more : Défilement de fichiers](https://labex.io/fr/labs/linux-linux-more-command-file-scrolling-214299)** - Apprenez la commande Linux 'more' pour une visualisation efficace des fichiers texte, couvrant l’utilisation de base, le démarrage à partir de lignes spécifiques et la personnalisation de l’affichage.
-3. **[Visualisation des fichiers journaux et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Apprenez les compétences essentielles en ligne de commande Linux pour visualiser et naviguer efficacement dans les fichiers texte, y compris les journaux système et les fichiers de configuration, en utilisant des commandes comme `cat`, `more` et `less`.
+## Résumé
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance dans la manipulation et la navigation des fichiers texte.
+Vous savez maintenant utiliser `less` pour examiner de longs fichiers sans inonder le terminal.
 
-## Quiz Question
-
-Comment quittez-vous la commande `less` ? Veuillez fournir la touche unique comme réponse. Note : la réponse est une lettre anglaise sensible à la casse.
-
-## Quiz Answer
-
-q
+1. Ouvrir un fichier ou la sortie d'une commande transmise par un tube.
+2. Atteindre différentes parties de l'entrée.
+3. Rechercher vers l'avant ou l'arrière et répéter une recherche.
+4. Afficher les numéros de ligne ou suivre un contenu croissant.
+5. Quitter sans risque et revenir au shell.

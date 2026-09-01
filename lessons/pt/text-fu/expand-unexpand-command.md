@@ -1,60 +1,106 @@
 ---
-index: 10
+lesson_id: "expand-unexpand-command"
+course_id: "text-fu"
 lang: "pt"
-title: "Expandir e Desexpandir"
-meta_title: "Expandir e Desexpandir - Text-Fu"
-meta_description: "Domine a formatação de texto no Linux com nosso guia sobre os comandos expand e unexpand. Aprenda a converter tabulações em espaços e espaços em tabulações para layouts de arquivo consistentes."
-meta_keywords: "comando expand, comando unexpand, tabulações Linux, espaços Linux, formatação de texto, tutorial Linux, Linux iniciante, guia Linux"
+order_index: 10
+title: "expand e unexpand"
+description: "Aprenda como as paradas de tabulação controlam a conversão entre tabulações e espaços com expand e unexpand."
+meta_title: "expand e unexpand - Text-Fu"
+meta_description: "Domine a formatação de texto no Linux com expand e unexpand. Aprenda a converter tabulações em espaços e espaços em tabulações preservando o alinhamento."
+meta_keywords: "comando expand, comando unexpand, tabulações Linux, espaços Linux, formatação texto, tutorial Linux, Linux para iniciantes"
 ---
 
-## Lesson Content
+As tabulações armazenam um movimento até uma parada de tabulação, não uma quantidade fixa de espaços visíveis. Sua largura exibida depende da coluna atual e da configuração das paradas. Os comandos `expand` e `unexpand` convertem entre caracteres de tabulação e espaços levando essas posições em conta.
 
-Espaçamentos inconsistentes podem tornar os arquivos de texto difíceis de ler. Embora as tabulações (tabs) sirvam para criar recuos uniformes, sua largura de exibição pode variar entre diferentes editores e sistemas. Isso pode perturbar a formatação e o alinhamento do texto. Felizmente, o Linux fornece ferramentas simples para gerenciar isso, convertendo entre tabulações e espaços. Este guia Linux para iniciantes o guiará pelo processo.
+## Conversão de Tabulações em Espaços
 
-### Convertendo Tabulações em Espaços com o Comando expand
-
-Quando você precisa garantir um espaçamento consistente, pode converter tabulações em um número padrão de espaços usando o comando `expand`. Este comando lê um arquivo e substitui cada caractere de tabulação por um conjunto de caracteres de espaço, imprimindo o resultado na saída padrão.
+`expand` lê a entrada, substitui as tabulações pelos espaços necessários para alcançar as paradas adequadas e grava o resultado em stdout:
 
 ```bash
-expand sample.txt
+$ expand sample.txt
 ```
 
-Por padrão, o comando `expand` converte cada tabulação em 8 espaços. Este utilitário simples é uma ferramenta poderosa para melhorar a formatação de texto.
+Por padrão, as paradas ocorrem a cada 8 colunas. Assim, uma tabulação na coluna 1 se expande de forma diferente de uma na coluna 6; ela nem sempre é substituída por oito espaços.
 
-### Salvando a Saída Convertida
+:::single-choice{#expand-default-tab-stops} Com as configurações padrão, como `expand` substitui um caractere de tabulação?
 
-O comando `expand` apenas imprime o texto convertido no seu terminal. Para salvar as alterações, você deve redirecionar a saída para um novo arquivo.
+::option[Ele insere espaços suficientes para alcançar a próxima parada padrão.]{#expand-next-stop .correct explanation="`expand` preserva o alinhamento das paradas calculando os espaços necessários a partir da coluna atual."}
+::option[Ele sempre insere exatamente oito espaços.]{#expand-eight-spaces explanation="As paradas padrão ficam separadas por oito colunas, mas a quantidade de espaços depende da coluna atual."}
+::option[Ele remove a tabulação sem acrescentar caracteres.]{#expand-remove-tab explanation="O comando substitui a tabulação por espaços para manter o texto seguinte alinhado na parada escolhida."}
+:::
+
+## Escolha das Paradas de Tabulação
+
+Use `-t NUMBER` para colocar paradas a cada quantidade especificada de colunas. Para paradas a cada quatro colunas:
 
 ```bash
-expand sample.txt > result.txt
+$ expand -t 4 sample.txt
 ```
 
-Este comando pega a saída de `expand sample.txt` e a grava em `result.txt`, fornecendo um novo arquivo com espaços em vez de tabulações.
+O GNU `expand` também aceita uma lista de posições explícitas separadas por vírgulas. Use `-i` quando apenas as tabulações anteriores ao primeiro caractere não vazio de cada linha devam ser convertidas.
 
-### Convertendo Espaços em Tabulações com o Comando unexpand
+:::single-choice{#expand-four-column-stops} Qual comando converte tabulações usando paradas a cada quatro colunas?
 
-A operação inversa, converter espaços de volta em tabulações, é tratada pelo comando `unexpand`. Isso pode ser útil para reduzir o tamanho do arquivo ou aderir a padrões de codificação que exigem tabulações.
+::option[`expand -i 4 sample.txt`]{#expand-initial-four explanation="A opção `-i` limita a conversão às tabulações iniciais e não recebe `4` como intervalo."}
+::option[`unexpand -t 4 sample.txt`]{#unexpand-tabs-four explanation="`unexpand` converte espaços adequados em tabulações, a direção oposta à operação solicitada."}
+::option[`expand -t 4 sample.txt`]{#expand-tabs-four .correct explanation="A opção `-t` define o intervalo das paradas, e `4` solicita uma parada a cada quatro colunas."}
+:::
+
+## Salvamento Seguro da Saída Convertida
+
+`expand` não edita seu arquivo de entrada. Redirecione stdout para outro caminho quando quiser salvar o texto convertido:
 
 ```bash
-unexpand -a result.txt
+$ expand sample.txt > result.txt
 ```
 
-Por padrão, `unexpand` converte apenas os espaços iniciais em cada linha. A opção `-a` instrui o comando `unexpand` a converter todas as instâncias de 8 espaços em uma tabulação, não apenas aquelas no início de uma linha, fornecendo um controle mais abrangente sobre seus espaços e tabulações no Linux.
+Não use `expand sample.txt > sample.txt`. O shell trunca o destino antes que `expand` possa lê-lo; assim, os dados de origem podem ser perdidos. Depois de verificar um resultado gravado separadamente, você pode substituir o original conscientemente com uma etapa apropriada de gerenciamento de arquivos.
 
-## Exercise
+:::single-choice{#expand-safe-output-file} Qual comando salva o texto expandido sem truncar `sample.txt` antes de sua leitura?
 
-Para dominar a manipulação de texto e o redirecionamento no Linux, a prática é fundamental. Os seguintes laboratórios práticos ajudarão a reforçar sua compreensão:
+::option[`expand sample.txt > sample.txt`]{#expand-same-file explanation="O shell abre e trunca `sample.txt` para saída antes de iniciar `expand`, o que pode apagar a entrada."}
+::option[`expand sample.txt > result.txt`]{#expand-separate-result .correct explanation="Os caminhos de entrada e saída são diferentes; portanto, o shell pode criar `result.txt` sem destruir a origem."}
+::option[`> sample.txt expand result.txt`]{#expand-leading-redirection explanation="Essa forma ainda trunca `sample.txt` e não representa uma conversão segura do arquivo original."}
+:::
 
-1. **[Redirecionamento de Entrada e Saída no Linux](https://labex.io/pt/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Pratique o controle do fluxo de dados dos comandos, manipulando a saída padrão (stdout), o erro padrão (stderr) e a entrada padrão (stdin) usando operadores como `>` e `>>`.
-2. **[Processamento Simples de Texto](https://labex.io/pt/labs/linux-simple-text-processing-18004)** - Aprenda a usar comandos poderosos como `tr`, `col`, `join` e `paste` para manipular e analisar dados de texto de forma eficiente, aprimorando suas habilidades de linha de comando para processamento de dados.
-3. **[Processamento de Texto e Expressões Regulares](https://labex.io/pt/labs/linux-text-processing-and-regular-expressions-18003)** - Aprenda as poderosas ferramentas de processamento de texto `grep`, `sed` e `awk`, e use expressões regulares para manipulação eficiente de texto e correspondência de padrões no Linux.
+## Conversão de Espaços em Tabulações
 
-Concluir esses laboratórios o ajudará a aplicar os conceitos de transformação de texto e manipulação de arquivos em cenários do mundo real, aumentando sua confiança com ferramentas essenciais da linha de comando do Linux.
+`unexpand` substitui espaços elegíveis por tabulações, preservando o alinhamento nas paradas escolhidas. Por padrão, o GNU `unexpand` converte apenas os espaços iniciais anteriores ao primeiro caractere não vazio de uma linha:
 
-## Quiz Question
+```bash
+$ unexpand result.txt
+```
 
-Qual comando é usado para converter tabulações em espaços? (Por favor, responda usando o nome do comando em inglês minúsculo.)
+Use `-a` para considerar os espaços adequados em toda a linha:
 
-## Quiz Answer
+```bash
+$ unexpand -a result.txt
+```
 
-expand
+Isso não substitui simplesmente todo grupo de oito espaços. A conversão depende das posições das colunas e das paradas, assim como em `expand`. Use `-t 4` ou outra especificação quando o arquivo seguir uma convenção diferente.
+
+:::single-choice{#unexpand-default-scope} Sem `-a`, quais espaços o GNU `unexpand` normalmente considera para conversão?
+
+::option[Todos os grupos de espaços em qualquer parte do arquivo.]{#unexpand-every-group explanation="Considerar espaços em toda a linha exige `-a`, e a conversão ainda depende das posições das paradas."}
+::option[Apenas os espaços que aparecem depois da última palavra.]{#unexpand-trailing-blanks explanation="O escopo padrão diz respeito aos espaços iniciais, não especificamente aos espaços finais."}
+::option[Apenas os espaços iniciais anteriores ao primeiro caractere não vazio.]{#unexpand-initial-blanks .correct explanation="O comportamento padrão do GNU `unexpand` se limita aos espaços em branco iniciais de cada linha."}
+:::
+
+:::single-choice{#unexpand-all-blanks} Qual opção instrui o GNU `unexpand` a considerar também os espaços depois do primeiro caractere não vazio?
+
+::option[`-i`]{#unexpand-initial-option explanation="Em `expand`, `-i` limita o trabalho às tabulações iniciais. Ela não é a opção para todos os espaços de `unexpand`."}
+::option[`-a`]{#unexpand-all-option .correct explanation="A opção `-a` permite converter espaços adequados ao longo de toda a linha de entrada."}
+::option[`-t`]{#unexpand-tab-list-option explanation="A opção `-t` define as paradas. Embora seu comportamento no GNU possa implicar uma conversão mais ampla, `-a` solicita explicitamente todos os espaços."}
+:::
+
+Os dois comandos leem stdin quando nenhum arquivo é indicado e, portanto, podem ser usados em pipelines. Lembre-se de que converter para espaços e de volta pode não reconstruir a escolha original entre tabulações e espaços, mesmo que o alinhamento exibido permaneça igual.
+
+## Resumo
+
+Agora você sabe converter tabulações e espaços preservando o alinhamento das paradas.
+
+1. Expanda tabulações até a próxima parada configurada.
+2. Defina paradas personalizadas com `-t`.
+3. Salve a saída em outro arquivo antes de substituir a entrada.
+4. Converta os espaços iniciais com `unexpand` por padrão.
+5. Use `-a` quando os espaços de toda a linha devam ser considerados.

@@ -1,46 +1,88 @@
 ---
-index: 3
+lesson_id: "process-details"
+course_id: "processes"
 lang: "de"
+order_index: 3
 title: "Prozessdetails"
-meta_title: "Prozessdetails - Prozesse"
-meta_description: "Erkunden Sie die Grundlagen von Linux-Prozessdetails. Dieser Leitfaden für Anfänger erklärt, was ein Prozess ist, wie der Linux-Kernel die Prozessverwaltung handhabt und Systemressourcen wie CPU und Speicher zuweist."
-meta_keywords: "Linux-Prozess, Prozessdetails, Kernel, Prozessverwaltung, Systemressourcen, ps aux, CPU, Speicher, Linux-Tutorial, Anfängerleitfaden"
+description: "Erfahre, welcher Zustand und welche Ressourcen einen laufenden Prozess von einem auf dem Datenträger gespeicherten Programm unterscheiden."
+meta_title: "Prozessdetails – Prozesse"
+meta_description: "Erkunde die Grundlagen von Linux-Prozessdetails. Dieser Leitfaden für Einsteiger erklärt, was ein Prozess ist, wie der Linux-Kernel Prozesse verwaltet und Systemressourcen wie CPU und Speicher zuweist."
+meta_keywords: "Linux-Prozess, Prozessdetails, Kernel, Prozessverwaltung, Systemressourcen, ps aux, CPU, Speicher, Linux-Tutorial, Leitfaden für Einsteiger"
 ---
 
-## Lesson Content
+Ein Programm besteht aus ausführbarem Code und Daten, die in einer Datei gespeichert sind. Ein Prozess ist ein aktiver Ausführungskontext: Er umfasst eingebundenen Code, Speicher, Zugangsdaten, offene Dateideskriptoren, Signalzustand, Scheduling-Informationen und einen oder mehrere Threads. Dasselbe Programm kann viele unabhängige Prozessinstanzen besitzen.
 
-Bevor wir uns mit den praktischen Anwendungen der Prozessverwaltung befassen, ist es wichtig zu verstehen, was Linux-Prozesse sind und wie sie funktionieren. Dieses Thema kann komplex erscheinen, wenn wir uns die Details ansehen. Zögern Sie also nicht, diese Lektion bei Bedarf später noch einmal aufzurufen.
+## Programminstanzen und PIDs
 
-### Was ist ein Linux-Prozess
+Starte beispielsweise `cat` ohne Operanden in zwei Terminals. Jede Instanz wartet auf Eingaben und besitzt eine eigene Prozess-ID:
 
-A process is an execution of a program. More precisely, it is an instance of a running program to which the system has allocated resources like memory, CPU time, and I/O. For example, if you open three terminal windows, run the `cat` command in two of them without any arguments (it will wait for standard input, keeping the process active), and then use the third window to run `ps aux | grep cat`, you will see two distinct `cat` processes. Each is a separate instance of the same program, with its own unique process ID and resource allocation.
+```bash
+$ pgrep -a cat
+18420 cat
+18457 cat
+```
 
-### Die Rolle des Kernels bei der Prozessverwaltung
+Beide Prozesse führen dasselbe Programm aus, können aber unterschiedliche Eingabeströme, Speicherinhalte, Zugangsdaten, Arbeitsverzeichnisse und Lebensdauern besitzen. Eine PID kennzeichnet jeweils einen laufenden Prozess und kann später nach dessen Beendigung erneut vergeben werden.
 
-Der Linux-Kernel ist für die gesamte Prozessverwaltung verantwortlich. Wenn Sie ein Programm ausführen, lädt der Kernel dessen Code in den Speicher, weist die notwendigen Systemressourcen zu und beginnt, es als Prozess zu verfolgen. Der Kernel speichert detaillierte Informationen für jeden Prozess, darunter:
+:::single-choice{#process-details-program-versus-process} Was unterscheidet zwei laufende Instanzen desselben Programms?
 
-- Der Status des Prozesses
-- Die Ressourcen, die der Prozess nutzt und erhält
-- Der Prozessbesitzer
-- Signalbehandlung (dazu später mehr)
-- Und im Grunde alles andere
+::option[Die ausführbare Datei muss für jede Instanz einmal kopiert werden.]{#process-details-copied-executable explanation="Mehrere Prozesse können die Codeseiten derselben ausführbaren Datei einbinden und gemeinsam nutzen, ohne die Datei zu duplizieren."}
+::option[Nur eine Instanz kann Speicher oder offene Dateien besitzen.]{#process-details-one-instance-resources explanation="Jeder Prozess kann eigene Speicherabbildungen und eine eigene Dateideskriptortabelle besitzen."}
+::option[Jede Instanz besitzt einen eigenen Prozesskontext und eine eigene PID.]{#process-details-independent-context .correct explanation="Getrennte Ausführungen erhalten einen eigenen aktiven Prozesszustand, auch wenn ihr ausführbarer Code aus derselben Datei stammt."}
+:::
 
-Alle aktiven Prozesse konkurrieren um Systemressourcen. Der Kernel fungiert als Scheduler und stellt sicher, dass jeder Prozess einen fairen Anteil an Ressourcen erhält, basierend auf seiner Priorität und seinen Bedürfnissen. Wenn ein Prozess seine Aufgabe beendet oder beendet wird, gibt der Kernel die von ihm genutzten Ressourcen wieder frei und stellt sie anderen Prozessen zur Verfügung.
+## Vom Kernel verfolgter Zustand
 
-## Exercise
+Der Kernel verwaltet die Informationen, die zum Planen und Steuern jedes Prozesses erforderlich sind, darunter:
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Linux-Prozessen und deren Verwaltung zu festigen:
+- Prozess- und Elternkennungen
+- Benutzer- und Gruppenzugangsdaten
+- virtuelle Speicherabbildungen
+- offene Dateideskriptoren und das aktuelle Verzeichnis
+- Signalbehandlungen und ausstehende Signale
+- Scheduling-Richtlinie, Priorität und Ausführungszustand
+- Abrechnungsdaten wie CPU-Zeit
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Erlernen Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System, einschließlich der Interaktion mit Vordergrund-/Hintergrundprozessen, der Inspektion mit `ps`, der Überwachung mit `top` und dem Beenden mit `kill`.
-2. **[Linux top-Befehl: Systemüberwachung in Echtzeit](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Lernen Sie, den `top`-Befehl zur Systemüberwachung in Echtzeit zu verwenden, einschließlich des Sortierens von Prozessen, des Anpassens von Aktualisierungsintervallen und des Filterns nach Benutzer.
-3. **[Linux free-Befehl: Systemspeichernutzung überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** – Lernen Sie, den `free`-Befehl zur Überwachung und Analyse der Systemspeichernutzung zu verwenden und zu verstehen, wie der Kernel Ressourcen für Prozesse zuweist.
+Einige zugrunde liegende Ressourcen können gemeinsam verwendet werden. Verwandte Prozesse können eingebundenen Speicher teilen, und Threads eines Prozesses teilen sich einen Adressraum und viele prozessweite Ressourcen. Ein Prozess stellt daher Isolationsgrenzen bereit, ohne dass jedes Byte oder Kernelobjekt physisch privat sein muss.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen bei der Prozessverwaltung unter Linux aufzubauen.
+:::single-choice{#process-details-kernel-state} Welche Komponente verwaltet Scheduling- und Zugangsdatenzustände für Linux-Prozesse?
 
-## Quiz Question
+::option[Der Kernel.]{#process-details-kernel .correct explanation="Der Kernel verfolgt den Prozesszustand und wendet Regeln für Scheduling, Speicher, Signale und Zugriffskontrolle an."}
+::option[Das Verzeichnis der ausführbaren Datei.]{#process-details-directory explanation="Ein Verzeichnis speichert eine Zuordnung von Namen zu Inodes und plant keine laufenden Prozesse."}
+::option[Ausschließlich der Terminalemulator des Benutzers.]{#process-details-terminal explanation="Ein Terminal kann mit Prozessen interagieren, doch die Prozessverwaltung bleibt Aufgabe des Kernels."}
+:::
 
-Was verwaltet und steuert alle Linux-Prozesse? Bitte antworten Sie in einem einzigen englischen Wort, alles klein geschrieben.
+## CPU-Scheduling und Speicher
 
-## Quiz Answer
+Ausführungsbereite Threads konkurrieren um CPU-Zeit. Der Kernel-Scheduler wählt anhand von Scheduling-Klasse, Priorität, CPU-Affinität, Last und Richtlinie aus, welcher Thread auf welcher CPU läuft. Das ist keine Zusage, dass jeder Prozess einen gleichen Anteil erhält.
 
-kernel
+Jeder Prozess sieht gewöhnlich einen virtuellen Adressraum. Kernel und Hardware ordnen virtuelle Adressen physischem Speicher oder einem anderen Hintergrundspeicher zu, setzen Schutzmechanismen durch und können Seiten gegebenenfalls gemeinsam nutzen. Eine Speicherangabe in `ps` oder `top` entspricht daher nicht automatisch der Menge an eindeutig diesem Prozess zurechenbarem physischem RAM.
+
+:::single-choice{#process-details-scheduler-role} Was wählt der Linux-Scheduler aus?
+
+::option[Welcher ausführungsbereite Thread auf einer verfügbaren CPU ausgeführt wird.]{#process-details-runnable-thread .correct explanation="Die Scheduling-Richtlinie wählt unter ausführungsbereiten Ausführungskontexten aus und weist CPU-Zeit zu."}
+::option[Welcher Dateieigentümer beim Formatieren eines Datenträgers erfasst wird.]{#process-details-format-owner explanation="Dateisystemeigentum hat nichts mit CPU-Scheduling zu tun."}
+::option[Welche Befehlszeile ein Benutzer eingeben darf.]{#process-details-command-entry explanation="Der Scheduler verwaltet Ausführungszeit und nicht die Syntax interaktiver Befehle."}
+:::
+
+## Prozessbeendigung und Ressourcenbereinigung
+
+Wenn sich ein Prozess beendet, gibt der Kernel die meisten seiner privaten Ressourcen frei, schließt verbleibende Deskriptoren und erfasst Beendigungsinformationen für den Elternprozess. Ein kleiner Eintrag in der Prozesstabelle kann als Zombie bestehen bleiben, bis der Elternprozess den Beendigungsstatus abruft. Daher sind „der Prozess hat seine Ausführung beendet“ und „jede Spur ist aus der Prozesstabelle verschwunden“ nicht immer gleichzeitige Ereignisse.
+
+:::single-choice{#process-details-exit-status} Warum kann ein beendeter Prozess kurzzeitig als Zombie bestehen bleiben?
+
+::option[Er führt weiterhin Anweisungen aus und besitzt seinen gesamten Speicher.]{#process-details-zombie-running explanation="Ein Zombie hat seine Ausführung abgeschlossen und besitzt keinen gewöhnlichen laufenden Adressraum mehr."}
+::option[Sein Elternprozess hat den erfassten Beendigungsstatus noch nicht abgeholt.]{#process-details-parent-wait .correct explanation="Der Kernel bewahrt minimale Beendigungsinformationen auf, bis der Elternprozess einen wait-Vorgang ausführt."}
+::option[Seine ausführbare Datei wird vom Kernel dauerhaft gesperrt.]{#process-details-zombie-file-lock explanation="Der Zombie-Zustand betrifft die Eltern-Kind-Abrechnung bei der Beendigung und keine dauerhafte Sperre der ausführbaren Datei."}
+:::
+
+Nutze das Lab [Linux-Prozesse verwalten und überwachen](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864), um mehrere Instanzen zu starten und ihre PIDs und Zustände zu vergleichen. Das Lab [Linux-Befehl `top`](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500) bietet eine veränderliche Ansicht von Scheduling- und Ressourcenmetriken.
+
+## Zusammenfassung
+
+Du kannst nun einen Prozess als mehr als eine Programmdatei beschreiben.
+
+1. Unterscheide gespeicherten ausführbaren Code von einer aktiven Prozessinstanz.
+2. Bestimme den vom Kernel verfolgten Zustand und die Ressourcen.
+3. Setze Scheduling mit ausführungsbereiten Threads statt mit gleichen Anteilen in Beziehung.
+4. Erkenne, dass der Beendigungsstatus bestehen bleiben kann, bis der Elternprozess ihn abholt.

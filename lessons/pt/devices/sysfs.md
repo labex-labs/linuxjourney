@@ -1,58 +1,97 @@
 ---
-index: 4
+lesson_id: "sysfs"
+course_id: "devices"
 lang: "pt"
+order_index: 4
 title: "sysfs"
+description: "Aprenda como o sysfs expõe o modelo ativo de dispositivos, drivers, barramentos e classes do kernel Linux em `/sys`."
 meta_title: "sysfs - Dispositivos"
-meta_description: "Explore o que é sysfs e seu papel no sistema sys do Linux. Este guia explica o diretório /sys do Linux, um sistema de arquivos virtual para informações de dispositivos, e o contrasta com /dev."
-meta_keywords: "sysfs, o que é sysfs, /sys, linux /sys, sys linux, sistema sys, sistema de arquivos virtual, dispositivos linux, /dev"
+meta_description: "Conheça o sysfs e sua função no sistema Linux. Este guia explica o diretório virtual /sys para informações de dispositivos e o compara com /dev."
+meta_keywords: "sysfs, o que é sysfs, /sys, Linux /sys, sistema sys Linux, sistema de arquivos virtual, dispositivos Linux, /dev"
 ---
 
-## Lesson Content
+`sysfs` é um sistema de arquivos virtual normalmente montado em `/sys`. Ele representa objetos do kernel e suas relações por meio de diretórios, links simbólicos e pequenos arquivos de atributos. Ferramentas de descoberta e gerenciadores de dispositivos o utilizam para compreender o modelo de dispositivos atual do kernel.
 
-O sistema de arquivos `sysfs` foi introduzido para fornecer uma maneira melhor de gerenciar dispositivos em um sistema Linux, uma tarefa para a qual o diretório `/dev` não estava totalmente equipado. Entender **o que é /sys no Linux** é fundamental para a administração moderna do sistema.
+## Navegação pelo Modelo de Dispositivos
 
-### O que é sysfs?
+Algumas visualizações importantes no nível superior são:
 
-`sysfs` é um sistema de arquivos virtual, tipicamente montado em `/sys`, que exporta informações sobre objetos do kernel, dispositivos de hardware e drivers do modelo de dispositivo do kernel para o userspace. Ao contrário dos arquivos em um disco físico, os arquivos e diretórios dentro de `/sys` são gerados dinamicamente e representam o estado atual do **sistema sys**.
+- `/sys/devices/`: a hierarquia física e lógica dos dispositivos
+- `/sys/class/`: dispositivos agrupados por classe funcional, como bloco ou rede
+- `/sys/bus/`: barramentos, seus dispositivos e drivers
+- `/sys/block/`: uma visualização conveniente dos dispositivos de bloco
+- `/sys/dev/`: links indexados pelos números maiores e menores de dispositivos de caractere ou bloco
 
-### O Papel do Diretório linux /sys
-
-O principal objetivo do diretório **linux /sys** é fornecer uma visão estruturada de todos os dispositivos no seu sistema. Ele contém informações detalhadas como fabricante e modelo, onde o dispositivo está conectado, seu estado atual e sua posição na hierarquia de dispositivos.
-
-Os arquivos que você vê aqui não são nós de dispositivo como os encontrados em `/dev`. Você não interage diretamente com o dispositivo através de `/sys`; em vez disso, você o usa para visualizar informações e gerenciar os atributos do dispositivo.
-
-### sysfs vs. /dev
-
-Embora `/sys` e `/dev` estejam relacionados a dispositivos, eles servem a funções diferentes.
-
-- O diretório `/dev` fornece nós de dispositivo, que são arquivos especiais que permitem aos programas acessar os próprios dispositivos.
-- O sistema de arquivos `/sys` é usado para visualizar informações sobre e gerenciar os dispositivos. Ele expõe o modelo de dispositivo subjacente.
-
-Por exemplo, vamos inspecionar o conteúdo de um diretório de dispositivo de bloco dentro de `/sys`:
+Muitas entradas fora de `/sys/devices` são links simbólicos para a hierarquia canônica. Resolva um link com `readlink -f` quando precisar do caminho pai real:
 
 ```bash
-pete@icebox:~$ ls /sys/block/sda
-alignment_offset  discard_alignment  holders   removable  sda6       trace
-bdi               events             inflight  ro         size       uevent
-capability        events_async       power     sda1       slaves
-dev               events_poll_msecs  queue     sda2       stat
-device            ext_range          range     sda5       subsystem
+$ readlink -f /sys/class/block/sda
 ```
 
-Esta saída mostra vários atributos e subdiretórios relacionados ao disco rígido `sda`, oferecendo uma visão muito mais detalhada do que apenas `/dev/sda`.
+O nome do exemplo pode não existir em sistemas que usam outras interfaces de armazenamento.
 
-## Exercise
+:::single-choice{#sysfs-canonical-device-tree} Qual subárvore do sysfs contém a hierarquia principal de dispositivos do kernel?
 
-Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da exploração de dispositivos de hardware no Linux:
+::option[`/sys/passwords/`]{#sysfs-passwords-tree explanation="O sysfs não é um repositório de segredos de autenticação dos usuários."}
+::option[`/sys/devices/`]{#sysfs-devices-tree .correct explanation="A subárvore devices representa a topologia pai-filho dos dispositivos; as visualizações de classes e barramentos apontam para ela."}
+::option[`/sys/packages/`]{#sysfs-packages-tree explanation="O estado dos pacotes instalados é mantido pelas ferramentas de pacotes da distribuição, não por esse caminho do sysfs."}
+:::
 
-1. **[Explorar Dispositivos de Hardware no Linux](https://labex.io/pt/labs/comptia-explore-hardware-devices-in-linux-590861)** - Pratique a identificação e inspeção de dispositivos de hardware em um ambiente Linux, de forma semelhante a como o sistema de arquivos `/sys` fornece informações sobre dispositivos.
+## Leitura de Atributos
 
-Este laboratório ajudará você a aplicar os conceitos de compreensão do hardware do sistema e sua representação no Linux, aumentando a confiança na exploração de dispositivos.
+Os arquivos de atributos expõem valores ou controles individuais. Para um dispositivo de bloco, alguns exemplos podem ser:
 
-## Quiz Question
+```bash
+$ cat /sys/class/block/sda/dev
+8:0
+$ cat /sys/class/block/sda/ro
+0
+$ cat /sys/class/block/sda/size
+1953525168
+```
 
-Qual diretório é usado para visualizar informações detalhadas sobre dispositivos? Por favor, responda em inglês.
+`dev` informa os números maior e menor do dispositivo. `ro` informa o indicador de somente leitura do dispositivo de bloco. Para dispositivos de bloco do Linux, `size` é convencionalmente expresso em setores de 512 bytes, independentemente do tamanho de setor físico do dispositivo. Consulte sempre a documentação da ABI do kernel para conhecer as unidades e o significado de um atributo específico.
 
-## Quiz Answer
+:::single-choice{#sysfs-dev-attribute} O que o atributo `dev` de um dispositivo de bloco normalmente contém?
 
-/sys
+::option[Todos os arquivos atualmente armazenados no dispositivo.]{#sysfs-file-list explanation="Uma árvore de diretórios do sistema de arquivos não fica incorporada nesse pequeno atributo do dispositivo."}
+::option[O nome do pacote que instalou o hardware.]{#sysfs-package-name explanation="O hardware não é instalado como um pacote identificado pelo atributo `dev`."}
+::option[Seus números maior e menor de dispositivo.]{#sysfs-major-minor .correct explanation="O atributo conecta o objeto do sysfs à identidade correspondente do dispositivo de bloco."}
+:::
+
+## Relação entre `/sys` e `/dev`
+
+`/dev` contém os nós que as aplicações abrem para a E/S dos dispositivos. `/sys` expõe relações entre objetos, propriedades, estados e controles selecionados. Um nó de bloco como `/dev/sda` pode ser associado a `/sys/dev/block/8:0`, que resolve para o objeto relevante do sysfs.
+
+As duas interfaces se complementam. Nenhuma contém, sozinha, um inventário completo de todos os dados do hardware, e um dispositivo pode desaparecer enquanto é inspecionado.
+
+:::single-choice{#sysfs-versus-dev} Qual afirmação diferencia corretamente `/sys` de `/dev`?
+
+::option[`/sys` armazena documentos dos usuários; `/dev` armazena pacotes.]{#sysfs-dev-user-files explanation="Nenhum desses diretórios possui essas funções comuns de armazenamento de dados."}
+::option[`/sys` expõe atributos de objetos do kernel; `/dev` fornece nós de dispositivos para E/S.]{#sysfs-dev-distinction .correct explanation="O sysfs modela objetos e controles, enquanto os nós de dispositivos encaminham operações para drivers de caractere ou de bloco."}
+::option[Os dois são listas estáticas criadas uma única vez durante a instalação.]{#sysfs-dev-static explanation="O estado visível muda à medida que dispositivos e objetos do kernel aparecem ou desaparecem."}
+:::
+
+## Gravação Segura em Atributos
+
+Alguns atributos do sysfs permitem escrita e podem alterar o estado de energia, a associação de drivers, o comportamento das filas, a autorização de dispositivos, LEDs ou outros controles ativos. Uma gravação de texto bem-sucedida pode causar efeitos imediatos no hardware ou nos serviços; ela não equivale a editar um arquivo de configuração persistente.
+
+Leia a ABI documentada e o valor atual, identifique como tornar a configuração persistente e teste somente em um sistema autorizado. Nunca edite permissões recursivamente nem grave valores deduzidos em toda a árvore `/sys`.
+
+:::single-choice{#sysfs-write-risk} Por que gravar em um atributo do sysfs pode ser operacionalmente significativo?
+
+::option[Toda gravação cria uma cópia de backup comum no disco.]{#sysfs-backup-copy explanation="O sysfs é virtual e não oferece backups automáticos das alterações de controle."}
+::option[O sysfs ignora todas as gravações, mesmo quando um atributo permite escrita.]{#sysfs-ignore-writes explanation="Os atributos graváveis existem justamente para aceitar valores de controle compatíveis."}
+::option[A gravação pode acionar um controle ativo do kernel ou do driver.]{#sysfs-live-control .correct explanation="Os atributos graváveis são interfaces ativas e podem alterar imediatamente o comportamento do dispositivo."}
+:::
+
+Use o laboratório [Exploração de Dispositivos de Hardware no Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861) para navegar pelo sysfs somente para leitura e relacioná-lo aos nós de dispositivos.
+
+## Resumo
+
+Agora você sabe usar o sysfs como uma visualização estruturada dos objetos ativos do kernel.
+
+1. Navegue pelas visualizações de dispositivos, classes, barramentos, blocos e números de dispositivos.
+2. Leia um atributo documentado por vez, usando as unidades corretas.
+3. Relacione objetos do sysfs aos nós de `/dev`.
+4. Trate atributos graváveis como interfaces de controle ativas.

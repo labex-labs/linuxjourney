@@ -1,103 +1,107 @@
 ---
-index: 1
+lesson_id: "network-interfaces"
+course_id: "network-config"
 lang: "fr"
-title: "Interfaces Réseau"
-meta_title: "Interfaces Réseau - Configuration Réseau"
-meta_description: "Un guide complet sur l'interface réseau Linux. Apprenez à utiliser ifconfig et la commande ip moderne, et comprenez les fichiers de configuration comme /etc/network/interfaces, notamment sur les systèmes Debian."
-meta_keywords: "interface linux, interface réseau linux, etc interfaces réseau, interfaces réseau debian, ifconfig, commande ip, configuration réseau, réseau linux"
+order_index: 1
+title: "Interfaces réseau"
+description: "Découvrez comment examiner l’état, les adresses et les statistiques des interfaces Linux ainsi que la gestion de leur configuration persistante."
+meta_title: "Interfaces réseau - Configuration réseau"
+meta_description: "Guide des interfaces réseau Linux : commandes ip et ifconfig, état administratif et opérationnel, configuration persistante et fichiers Debian."
+meta_keywords: "interface Linux, interface réseau Linux, etc network interfaces, interfaces Debian, ifconfig, commande ip, configuration réseau, réseau Linux"
 ---
 
-## Lesson Content
+Une interface réseau Linux relie un espace de noms réseau à un périphérique physique, une boucle locale, un pont, un tunnel, un périphérique virtuel ou un autre type de liaison. L’état de l’interface, ses adresses, ses routes, le DNS et sa configuration persistante sont liés, mais distincts.
 
-Une **interface réseau linux** est le point de connexion crucial entre la pile logicielle de mise en réseau du noyau et le matériel réseau physique. Elle permet à votre système d'exploitation d'envoyer et de recevoir des données sur un réseau. Nous avons déjà vu un exemple de ce à quoi ressemble une `interface linux` configurée :
+## Découvrir les interfaces
 
-```plaintext
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
-```
-
-### Comprendre les Interfaces Réseau
-
-Lorsque vous consultez vos paramètres réseau, vous verrez des interfaces nommées comme `eth0` (la première carte Ethernet), `wlan0` (une interface sans fil) ou `lo` (l'interface de boucle locale). L'interface de boucle locale est une interface virtuelle spéciale qui représente votre propre ordinateur, vous permettant de vous connecter à des services s'exécutant localement.
-
-Une interface peut être à l'état "up" (activée) ou "down" (désactivée). Un état "up" signifie qu'elle est active et prête à transmettre des données, tandis que "down" la désactive. Les informations clés affichées pour chaque interface comprennent l'`HWaddr` (son adresse MAC unique), l'adresse `inet` (son adresse IPv4) et l'adresse `inet6` (son adresse IPv6), ainsi que le masque de sous-réseau et l'adresse de diffusion.
-
-### La Commande Héritée ifconfig
-
-La commande **ifconfig** est un outil classique pour configurer une `interface réseau linux`. Au démarrage du système, elle s'exécute généralement pour configurer les interfaces en fonction des fichiers de configuration. Bien qu'elle soit toujours disponible sur de nombreux systèmes, elle est maintenant considérée comme un outil hérité (legacy).
-
-Vous pouvez utiliser `ifconfig` pour attribuer manuellement une adresse IP et activer une interface :
+Utilisez les outils modernes d’iproute2 :
 
 ```bash
-ifconfig eth0 192.168.2.1 netmask 255.255.255.0 up
+$ ip -brief link show
+$ ip -brief address show
 ```
 
-Vous pouvez également utiliser les commandes associées `ifup` et `ifdown` pour activer ou désactiver facilement une interface :
+Les interfaces peuvent porter des noms prévisibles dérivés du matériel tels que `enp1s0`, des noms traditionnels tels que `eth0` ou des noms définis par l’administrateur. Ne supposez jamais que `eth0` existe ou désigne un adaptateur particulier.
+
+:::single-choice{#interfaces-name-assumption} Pourquoi un script doit-il découvrir les interfaces plutôt que supposer l’existence de `eth0` ?
+
+::option[Chaque interface doit obligatoirement s’appeler `lo`.]{#interfaces-all-loopback explanation="La boucle locale est une interface particulière, et non le nom de chaque liaison."}
+::option[Les systèmes Linux peuvent employer plusieurs conventions de nommage des interfaces.]{#interfaces-naming-varies .correct explanation="Les noms dérivés du matériel, virtuels ou personnalisés rendent l’hypothèse d’un nom fixe `eth0` peu fiable."}
+::option[Les noms d’interfaces sont toujours des mots de passe distants.]{#interfaces-name-password explanation="Ces noms identifient des périphériques du noyau et ne constituent pas des identifiants secrets."}
+:::
+
+## État administratif et opérationnel
+
+`UP` signifie que l’interface est activée administrativement. `LOWER_UP` indique généralement que la couche inférieure se déclare opérationnelle, par exemple lorsque la porteuse Ethernet est présente. Aucun de ces indicateurs, pris isolément, ne prouve qu’une adresse IP, une route, le DNS, le pare-feu ou un chemin applicatif fonctionne.
 
 ```bash
-ifup eth0
-ifdown eth0
+$ ip -details link show dev enp1s0
+$ ip -s link show dev enp1s0
 ```
 
-### La Commande Moderne ip
+Les statistiques peuvent révéler des erreurs, des abandons et des compteurs, mais ces derniers ne deviennent significatifs qu’avec un intervalle de temps et une valeur de référence.
 
-La commande **ip** est le remplacement moderne et plus puissant de `ifconfig`. C'est la méthode préférée pour gérer la pile réseau sur la plupart des distributions Linux actuelles.
+:::single-choice{#interfaces-up-limit} Qu’est-ce que l’état administratif `UP` ne prouve pas ?
 
-Voici quelques exemples courants de son utilisation :
+::option[Que la connectivité de bout en bout fonctionne.]{#interfaces-up-not-connectivity .correct explanation="Des pannes peuvent subsister au niveau de la couche inférieure, de l’adressage, du routage, du filtrage, du nommage ou du service."}
+::option[Que l’administrateur a activé l’interface.]{#interfaces-up-does-prove explanation="C’est précisément la signification directe de cet état."}
+::option[Que l’interface possède un objet dans le noyau.]{#interfaces-up-kernel-object explanation="L’état affiché appartient à une interface existante du noyau."}
+:::
 
-**Afficher les informations pour toutes les interfaces :**
+## Modifier l’état d’exécution
+
+Voici quelques commandes qui modifient l’état d’exécution :
 
 ```bash
-ip link show
+$ sudo ip link set dev enp1s0 up
+$ sudo ip address add 192.0.2.10/24 dev enp1s0
 ```
 
-**Afficher les statistiques détaillées pour une interface spécifique :**
+Ces changements affectent l’état actuel du noyau et peuvent entrer en conflit avec un gestionnaire de réseau qui réappliquera ensuite son profil. La désactivation d’une interface utilisée pour l’administration distante peut interrompre immédiatement l’accès. Avant de la modifier, vérifiez le périphérique exact, conservez un accès à la console, relevez l’état actuel et préparez un retour en arrière temporisé ou testé.
+
+:::single-choice{#interfaces-ip-address-add-persistence} La commande `ip address add` garantit-elle à elle seule la persistance après un redémarrage ?
+
+::option[Non ; le système de configuration actif doit également enregistrer ce paramètre.]{#interfaces-manager-persistence .correct explanation="NetworkManager, systemd-networkd, ifupdown ou un autre gestionnaire applique la politique persistante."}
+::option[Oui, car chaque modification du noyau met à jour tous les profils des gestionnaires.]{#interfaces-runtime-always-persistent explanation="Les changements apportés à l’état d’exécution du noyau ne mettent pas systématiquement à jour la configuration persistante."}
+::option[Uniquement lorsque l’adresse est une adresse IPv4 privée.]{#interfaces-private-persistent explanation="La portée de l’adresse ne rend pas une commande d’exécution persistante."}
+:::
+
+## Identifier le gestionnaire de la configuration
+
+Les emplacements de configuration persistante varient selon les distributions et les installations. Il peut s’agir de profils NetworkManager, d’unités systemd-networkd, de fichiers d’entrée netplan, de `/etc/network/interfaces`, de cloud-init ou d’un système d’orchestration. Déterminez quel service gère le périphérique avant de modifier des fichiers :
 
 ```bash
-ip -s link show eth0
+$ systemctl --type=service --state=running | grep -E 'NetworkManager|networkd|networking'
+$ networkctl status
+$ nmcli device status
 ```
 
-**Afficher les adresses IP attribuées aux interfaces :**
+N’utilisez que les commandes disponibles pour le gestionnaire identifié. Deux gestionnaires contrôlant la même liaison peuvent entrer en concurrence et écraser mutuellement leur état.
 
-```bash
-ip address show
-```
+:::single-choice{#interfaces-config-owner} Que faut-il faire avant de modifier durablement une interface ?
 
-**Activer ou désactiver une interface :**
+::option[Modifier tous les fichiers de configuration réseau possibles.]{#interfaces-edit-all explanation="Des définitions concurrentes créent des conflits et des réapplications imprévisibles."}
+::option[Identifier le gestionnaire de réseau qui contrôle l’interface.]{#interfaces-identify-owner .correct explanation="La source de configuration et la méthode d’application correctes dépendent de ce gestionnaire."}
+::option[Supprimer toutes les routes actuelles avant de les examiner.]{#interfaces-delete-routes explanation="Cette opération destructive peut supprimer l’accès nécessaire à la récupération."}
+:::
 
-```bash
-ip link set eth0 up
-ip link set eth0 down
-```
+## Vérifier une modification
 
-**Ajouter une adresse IP à une interface :**
+Vérifiez l’état de la liaison, les adresses attribuées et leur durée de vie, les routes sélectionnées, l’état du résolveur, l’accessibilité des voisins et l’application réelle. Pour une modification persistante, ne testez un redémarrage contrôlé du service ou de l’hôte que si vous disposez d’une voie de récupération.
 
-```bash
-ip address add 192.168.1.1/24 dev eth0
-```
+:::single-choice{#interfaces-change-verification} Quel élément fournit une preuve plus solide que la simple présence de la nouvelle adresse dans `ip address` ?
 
-### Fichiers de Configuration Réseau
+::option[Le nom de l’interface contient un chiffre.]{#interfaces-digit explanation="Le nommage ne fournit aucune validation de bout en bout."}
+::option[L’invite du shell conserve la même couleur.]{#interfaces-prompt-color explanation="L’apparence du terminal est sans rapport avec le fonctionnement du réseau."}
+::option[Les routes, l’état du résolveur et l’application prévue fonctionnent également.]{#interfaces-end-to-end .correct explanation="Une configuration utilisable dépend du chemin complet et du comportement du service."}
+:::
 
-Bien que des commandes comme `ip` et `ifconfig` configurent l'état actif d'une interface, ces modifications ne sont pas permanentes et seront perdues au redémarrage. Pour rendre les paramètres persistants, vous devez modifier les fichiers de configuration.
+## Résumé
 
-Un emplacement courant pour ces fichiers est `/etc/network/interfaces`. Le fichier `etc network interfaces` est particulièrement répandu sur les systèmes basés sur Debian comme Ubuntu. La gestion des **debian network interfaces** via ce fichier vous permet de définir des adresses IP statiques, des passerelles et d'autres paramètres qui sont appliqués automatiquement au démarrage. La structure dans `debian network/interfaces` est simple et bien documentée.
+Vous savez maintenant examiner et modifier une interface sans confondre l’état d’exécution et la politique persistante.
 
-## Exercise
-
-Mettez vos connaissances en pratique avec ces laboratoires pratiques. Ils vous aideront à renforcer votre compréhension des interfaces réseau et de l'adressage IP.
-
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, IPv4 et IPv6 sur un système Linux.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
-3. **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez l'accessibilité du réseau à l'aide de `ping` et `ip a`.
-
-Ces laboratoires vous aideront à appliquer les concepts d'identification d'interface réseau et d'adressage IP dans des scénarios réels et à renforcer votre confiance dans la mise en réseau Linux.
-
-## Quiz Question
-
-Quelle est la commande héritée utilisée pour configurer une interface réseau Linux ? Veuillez répondre en anglais, en utilisant uniquement des lettres minuscules.
-
-## Quiz Answer
-
-ifconfig
+1. Découvrir les noms et les adresses réels des interfaces.
+2. Distinguer l’état administratif de la connectivité opérationnelle.
+3. Considérer les modifications directes avec `ip` comme l’état actuel du noyau.
+4. Identifier le gestionnaire de configuration actif avant toute modification persistante.
+5. Vérifier ensuite le routage, la résolution des noms et le comportement de l’application.

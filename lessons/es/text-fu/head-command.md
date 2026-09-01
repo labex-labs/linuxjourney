@@ -1,50 +1,115 @@
 ---
-index: 8
+lesson_id: "head-command"
+course_id: "text-fu"
 lang: "es"
+order_index: 8
 title: "head"
+description: "Aprende a mostrar una cantidad controlada de líneas o bytes del principio de una entrada."
 meta_title: "head - Text-Fu"
 meta_description: "Guía de Linux para principiantes sobre el uso del comando head para ver el inicio de un archivo. Aprenda a usar la opción head -n para controlar el número de líneas, una habilidad esencial para cualquier tutorial de Linux."
 meta_keywords: "comando head, Linux head, ver inicio archivo, tutorial Linux, comandos Linux, Linux principiantes, head -n, guía Linux, archivos de texto, línea de comandos"
 ---
 
-## Lesson Content
+La orden `head` muestra el principio de un archivo o flujo de entrada. Resulta útil para comprobar encabezados, previsualizar datos estructurados o tomar una muestra de la salida sin imprimirla por completo.
 
-En Linux, a menudo necesitas inspeccionar el contenido de archivos muy grandes, como los registros del sistema (logs). Por ejemplo, si ejecutas `cat /var/log/syslog`, verás páginas de texto desplazarse, lo que dificulta obtener una visión general rápida. Entonces, ¿qué pasa si solo quieres **ver el principio de un archivo**? El comando `head` es la herramienta perfecta para este trabajo.
+## Visualización de las primeras diez líneas
 
-### Comportamiento Predeterminado del Comando head
-
-Por defecto, el comando `head` muestra las primeras 10 líneas de cualquier archivo dado. Esta es una parte fundamental de nuestra **guía de Linux para principiantes** para manejar texto. Para verlo en acción, simplemente proporciona un nombre de archivo como argumento:
+Sin una opción de cantidad, `head` muestra las primeras 10 líneas de cada archivo indicado:
 
 ```bash
-head /var/log/syslog
+$ head events.log
 ```
 
-Este comando mostrará las primeras 10 líneas de `/var/log/syslog`, permitiéndote verificar rápidamente el contenido inicial del archivo sin abrirlo en un editor.
+El archivo no se modifica. Si contiene menos de 10 líneas, se muestran todas las disponibles.
 
-### Personalización del Conteo de Líneas
+:::single-choice{#head-default-lines} ¿Qué muestra `head events.log` de forma predeterminada?
 
-El comando **Linux head** es flexible. Puedes cambiar fácilmente el número de líneas que muestra usando la bandera `-n`, que significa "número de líneas". Por ejemplo, si deseas ver las primeras 15 líneas de un archivo, usarías la opción `head -n` de esta manera:
+::option[Las últimas 10 líneas, o todas si el archivo es más corto.]{#head-last-ten explanation="Mostrar el final de la entrada es la función de `tail`. `head` selecciona desde el principio."}
+::option[Las primeras 10 líneas, o todas si el archivo es más corto.]{#head-first-ten .correct explanation="Sin una opción de cantidad, `head` selecciona como máximo las primeras diez líneas de la entrada."}
+::option[Únicamente la primera línea, sin importar la longitud.]{#head-first-one explanation="Para mostrar una línea se necesita una cantidad explícita como `-n 1`; la cantidad predeterminada es diez."}
+:::
+
+## Elección de una cantidad de líneas
+
+Utiliza `-n NUMBER` para elegir cuántas líneas mostrar:
 
 ```bash
-head -n 15 /var/log/syslog
+$ head -n 15 events.log
 ```
 
-Esto convierte a `head` en uno de los **comandos de Linux** más útiles para inspeccionar rápidamente encabezados de archivos o entradas de registro.
+GNU `head` también acepta la forma compacta `-15`, pero `-n 15` expresa con mayor claridad el significado de la opción.
 
-## Exercise
+:::single-choice{#head-five-lines} ¿Qué orden muestra las primeras cinco líneas de `report.txt`?
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la visualización del principio de archivos y la manipulación general de archivos de texto:
+::option[`head -c 5 report.txt`]{#head-five-bytes explanation="La opción `-c` cuenta bytes en vez de líneas, por lo que podría detenerse en mitad de la primera línea."}
+::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="La opción `-n` selecciona una cantidad de líneas y `5` solicita las primeras cinco."}
+::option[`tail -n 5 report.txt`]{#tail-five-lines explanation="Esta orden muestra las últimas cinco líneas del archivo, no el principio."}
+:::
 
-1. **[Comando Linux head: Visualización del Principio de Archivo](https://labex.io/es/labs/linux-linux-head-command-file-beginning-display-214302)** - Este laboratorio te guiará en el uso del comando `head` para mostrar las líneas iniciales de archivos de texto, incluyendo la modificación del número de líneas.
-2. **[Visualización de Archivos de Registro y Configuración en Linux](https://labex.io/es/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practica habilidades esenciales de la línea de comandos de Linux para ver y navegar eficientemente por archivos de texto, incluidos registros del sistema y archivos de configuración, que a menudo requieren comandos como `head`.
-3. **[Detección Rápida de Amenazas](https://labex.io/es/labs/linux-rapid-threat-detection-387930)** - Aplica tu conocimiento de `head` (y `tail`) para extraer y analizar rápidamente entradas de registro recientes, simulando análisis de ciberseguridad del mundo real.
+## Elección de una cantidad de bytes
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la visualización y el análisis de archivos de texto en Linux.
+Utiliza `-c NUMBER` cuando necesites bytes en vez de líneas completas:
 
-## Quiz Question
+```bash
+$ head -c 20 archive.bin
+```
 
-¿Qué bandera usarías con el comando `head` para cambiar el número de líneas que deseas ver? Por favor, responde usando solo la bandera en inglés, prestando atención a la sensibilidad a mayúsculas y minúsculas.
+Esta orden muestra los primeros 20 bytes. La salida puede terminar en mitad de una línea de texto o, en textos multibyte, en mitad de un carácter codificado. Para previsualizar texto normal, utiliza el modo de líneas.
 
-## Quiz Answer
+:::single-choice{#head-first-bytes} ¿Qué orden escribe en stdout los primeros 100 bytes de `payload.bin`?
 
--n
+::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="La opción `-c` selecciona una cantidad de bytes, por lo que se solicitan los primeros 100 bytes disponibles."}
+::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="La opción `-n` cuenta líneas, no bytes. Podría producir muchos más o muchos menos de 100 bytes."}
+::option[`cut -c 100 payload.bin`]{#cut-hundredth-character explanation="Esta orden selecciona la posición 100 de cada línea, no los primeros 100 bytes de toda la entrada."}
+:::
+
+## Lectura de stdin y de varios archivos
+
+Cuando no se indica un archivo, `head` lee stdin:
+
+```bash
+$ generate-report | head -n 5
+```
+
+Cuando se indican varios archivos, `head` suele añadir un encabezado que identifica la salida de cada uno:
+
+```bash
+$ head -n 2 january.txt february.txt
+==> january.txt <==
+...
+
+==> february.txt <==
+...
+```
+
+Utiliza `-q` para suprimir estos encabezados o `-v` para mostrar uno incluso con un solo archivo.
+
+:::single-choice{#head-pipeline-preview} En `generate-report | head -n 5`, ¿qué lee `head`?
+
+::option[Stdout de `generate-report` a través de stdin.]{#head-pipe-input .correct explanation="La tubería conecta stdout del productor con stdin de `head`, que selecciona las primeras cinco líneas."}
+::option[Los primeros cinco nombres de archivo del directorio actual.]{#head-directory-names explanation="No interviene ninguna orden que enumere el directorio. `head` recibe un flujo por la tubería."}
+::option[Cinco bytes de un archivo llamado `generate-report`.]{#head-producer-file explanation="La parte izquierda se ejecuta como una orden y `-n` cuenta líneas, no bytes."}
+:::
+
+:::single-choice{#head-suppress-filename-headers} ¿Qué opción suprime los encabezados de nombre de archivo cuando `head` lee varios archivos?
+
+::option[`-v`]{#head-verbose explanation="La opción `-v` solicita encabezados incluso cuando solo se proporciona un archivo, lo contrario de suprimirlos."}
+::option[`-c`]{#head-byte-option explanation="La opción `-c` cambia la unidad de selección a bytes. No controla los encabezados de nombres."}
+::option[`-q`]{#head-quiet .correct explanation="La opción `-q`, o silenciosa, evita que `head` muestre etiquetas de encabezado para cada archivo."}
+:::
+
+Para practicar la previsualización del principio de los archivos, prueba estos laboratorios:
+
+1. **[Orden head de Linux: mostrar el principio de un archivo](https://labex.io/es/labs/linux-linux-head-command-file-beginning-display-214302)** - Practica la visualización de las primeras líneas y el cambio de su cantidad.
+2. **[Visualización de registros y archivos de configuración en Linux](https://labex.io/es/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Consulta y recorre archivos de texto como registros y configuraciones del sistema.
+3. **[Detección rápida de amenazas](https://labex.io/es/labs/linux-rapid-threat-detection-387930)** - Aplica `head` y `tail` al análisis rápido de entradas de registro.
+
+## Resumen
+
+Ahora puedes previsualizar con `head` el principio de archivos y de la salida de órdenes.
+
+1. Utilizar la vista predeterminada de las primeras diez líneas.
+2. Seleccionar una cantidad de líneas con `-n`.
+3. Seleccionar una cantidad de bytes con `-c` cuando corresponda.
+4. Leer desde stdin en una tubería.
+5. Controlar los encabezados al mostrar varios archivos.

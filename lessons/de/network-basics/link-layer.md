@@ -1,57 +1,86 @@
 ---
-index: 8
+lesson_id: "link-layer"
+course_id: "network-basics"
 lang: "de"
-title: "Link-Schicht"
-meta_title: "Link-Schicht - Netzwerk-Grundlagen"
-meta_description: "Erkunden Sie die Grundlagen der TCP/IP-Link-Schicht. Erfahren Sie, wie der Link-Schicht-Header aufgebaut ist, wie ARP IP-Adressen in MAC-Adressen auflöst und wie Pakete in einem lokalen Netzwerk übertragen werden."
-meta_keywords: "Link-Schicht, Link-Schicht-Header, ARP, TCP/IP, MAC-Adresse, Netzwerk-Grundlagen, Linux-Netzwerk, Paketübertragung, Adressauflösungsprotokoll"
+order_index: 8
+title: "Verbindungsschicht"
+description: "Lerne, wie Ethernet-Frames, Nachbarerkennung, Switches und Router Pakete auf einer lokalen Verbindung zustellen."
+meta_title: "Verbindungsschicht – Netzwerkgrundlagen"
+meta_description: "Erkunde die Grundlagen der TCP/IP-Verbindungsschicht. Lerne den Aufbau von Frames, die Auflösung von IP- in MAC-Adressen mit ARP und den Paketweg in einem lokalen Netzwerk kennen."
+meta_keywords: "Verbindungsschicht, Verbindungsschicht-Header, ARP, TCP/IP, MAC-Adresse, Netzwerkgrundlagen, Linux-Vernetzung, Paketweg, Address Resolution Protocol"
 ---
 
-## Lesson Content
+Die Verbindungsschicht transportiert Pakete der Netzwerkschicht über ein lokales Medium oder eine virtuelle Verbindung. Ethernet und WLAN verwenden unterschiedliche Einzelheiten der Rahmung, stellen aber beide lokale Zustellung unterhalb von IP bereit.
 
-Die **Sicherungsschicht** (Link Layer) ist die grundlegende Schicht des TCP/IP-Modells und verantwortlich für die Kommunikation im lokalen Netzwerksegment. Diese Schicht ist hardwareabhängig und befasst sich direkt mit Netzwerkschnittstellenkarten und physischer Adressierung.
+## Ethernet-Frames
 
-### Frames und der Sicherungsschicht-Header
+Ein Ethernet-Frame enthält Ziel- und Quell-MAC-Adressen, ein EtherType- oder Längenfeld, Nutzlast und eine Frame Check Sequence als Abschluss. Die physische Übertragung verwendet außerdem eine Präambel und einen Startbegrenzer. Die Frame Check Sequence erkennt Beschädigungen auf der Verbindung; sie repariert weder einen beschädigten Frame noch schützt sie ihn kryptografisch.
 
-Auf der **Sicherungsschicht** wird das Paket aus der Vermittlungsschicht in eine Struktur namens Frame eingekapselt. Ein entscheidender Teil dieses Prozesses ist das Hinzufügen des **Sicherungsschicht-Headers**. Dieser Header enthält die Quell- und Ziel-MAC-Adressen der Hosts, Prüfsummen zur Fehlererkennung und Paket-Trennzeichen, die es dem empfangenden Gerät ermöglichen, zu erkennen, wo ein Frame endet und der nächste beginnt.
+:::single-choice{#link-layer-fcs-purpose} Wofür wird die Ethernet Frame Check Sequence verwendet?
 
-Um den **Sicherungsschicht-Header** zu erstellen, benötigt das System sowohl die Quell- als auch die Ziel-MAC-Adresse. Während die Quell-MAC-Adresse bekannt ist, muss die Ziel-MAC-Adresse für eine IP-Adresse im selben lokalen Netzwerk ermittelt werden. Hier kommt das Address Resolution Protocol (ARP) ins Spiel.
+::option[Zum Erkennen von Framebeschädigungen auf der Verbindung.]{#link-layer-detect-corruption .correct explanation="Ein Empfänger kann einen Frame verwerfen, der die Integritätsprüfung nicht besteht."}
+::option[Zum Verschlüsseln der Nutzlast für alle gerouteten Hops.]{#link-layer-fcs-encryption explanation="FCS ist ein Fehlererkennungscode und keine Verschlüsselung oder Authentifizierung."}
+::option[Zum Auswählen einer Anwendung anhand des TCP-Ports.]{#link-layer-fcs-port explanation="Transportports werden innerhalb der IP-Nutzlast übertragen."}
+:::
 
-### ARP (Address Resolution Protocol)
+## Switches und lokale Zustellung
 
-ARP ist ein Protokoll der **Sicherungsschicht**, das verwendet wird, um die MAC-Adresse zu finden, die mit einer bestimmten IP-Adresse im selben Netzwerk verbunden ist. Befände sich der Zielhost in einem anderen Netzwerk, würde das Paket an ein Standard-Gateway (Router) gesendet, und ARP würde verwendet, um die MAC-Adresse des Routers zu finden.
+Ein Ethernet-Switch lernt, an welchen Ports Quell-MAC-Adressen erscheinen, und leitet bekannte Unicast-Frames zum erlernten Zielport weiter. Broadcasts und mancher Datenverkehr mit unbekanntem Ziel werden innerhalb der Broadcast-Domäne geflutet. VLANs können ein Switching-System in getrennte logische Verbindungsdomänen unterteilen.
 
-Systeme konsultieren zuerst ihre ARP-Lookup-Tabelle, die bekannte IP-zu-MAC-Adress-Mappings zwischenspeichert. Wenn die erforderliche Adresse nicht im Cache vorhanden ist, sendet das System eine ARP-Anfrage an das gesamte Netzwerk. Diese spezielle Nachricht fragt, welcher Host eine bestimmte IP-Adresse besitzt, zum Beispiel 10.10.1.4. Der Host mit dieser IP-Adresse sendet eine ARP-Antwort, die seine IP- und MAC-Adresse enthält.
+:::single-choice{#link-layer-switch-learning} Welche Informationen lernt ein Ethernet-Switch normalerweise aus Frames?
 
-Mit allen notwendigen IP- und MAC-Adressen kann die **Sicherungsschicht** den Frame nun über die Netzwerkschnittstellenkarte weiterleiten. Die Reise eines Pakets ist ein mehrstufiger Prozess der Kapselung und Dekapselung, während es sich am sendenden und empfangenden Ende den TCP/IP-Stack auf und ab bewegt.
+::option[Anwendungspasswörter und HTTP-Cookies.]{#link-layer-switch-passwords explanation="Eine grundlegende Weiterleitungstabelle verwendet Verbindungsadressen und keine Anmeldedaten von Anwendungen."}
+::option[Die vollständige Internet-Routingtabelle jedes Routers.]{#link-layer-switch-routing-table explanation="Switching auf Schicht 2 und weltweiter Routenaustausch sind unterschiedliche Funktionen."}
+::option[Quell-MAC-Adressen und die zugehörigen Switchports.]{#link-layer-switch-source .correct explanation="Dieses Lernen erstellt die Weiterleitungstabelle für späteren bekannten Unicast-Datenverkehr."}
+:::
 
-### Paketdurchlauf (Packet Traversal)
+## Die Adresse des nächsten Hops auflösen
 
-Hier ist eine schrittweise Aufschlüsselung, wie ein Paket von einem Sender (Pete) zu einem Empfänger (Patty) gelangt:
+Bei IPv4 über Ethernet ordnet das Address Resolution Protocol einer direkt erreichbaren IPv4-Adresse des nächsten Hops eine MAC-Adresse zu. Der Host prüft zuerst seinen Nachbarcache. Falls nötig, sendet er eine ARP-Anfrage als Broadcast, und der Eigentümer oder ein autorisierter Proxy antwortet.
 
-1. Pete sendet Patty eine E-Mail. Diese Daten werden an die Transportschicht gesendet.
-2. Die Transportschicht kapselt die Daten in einen TCP- oder UDP-Header ein, um ein Segment zu bilden. Sie fügt die Ziel- und Quellports hinzu und sendet das Segment an die Vermittlungsschicht.
-3. Die Vermittlungsschicht kapselt das Segment in ein IP-Paket ein und fügt die Quell- und Ziel-IP-Adressen hinzu. Anschließend leitet sie das Paket an die **Sicherungsschicht** weiter.
-4. Das Paket erreicht die **Sicherungsschicht**, wo es in einen Frame eingekapselt wird. Der **Sicherungsschicht-Header**, der die Quell- und Ziel-MAC-Adressen enthält, wird hinzugefügt.
-5. Patty empfängt diesen Datenframe über ihre physikalische Schicht, prüft den Frame auf Datenintegrität, de-kapselt ihn und sendet das IP-Paket an ihre Vermittlungsschicht.
-6. Die Vermittlungsschicht liest das Paket, um die Quell- und Ziel-IP-Adressen zu ermitteln. Sie bestätigt, dass die Ziel-IP mit ihrer eigenen übereinstimmt, de-kapselt das Paket und sendet das Segment an die Transportschicht.
-7. Die Transportschicht de-kapselt das Segment, prüft die TCP- oder UDP-Portnummern und stellt basierend auf diesen Ports eine Verbindung zur Anwendungsschicht her.
-8. Die Anwendungsschicht empfängt die Daten von der Transportschicht am angegebenen Port und präsentiert sie Patty als endgültige E-Mail-Nachricht.
+Bei einem nicht direkt erreichbaren IP-Ziel löst der Host die MAC-Adresse des standardmäßigen oder ausgewählten Gateways auf – nicht die MAC-Adresse des entfernten Ziels. IPv6 verwendet statt ARP die Neighbor Discovery über ICMPv6.
 
-## Exercise
+:::single-choice{#link-layer-remote-destination-mac} Welche MAC-Adresse verwendet ein Host für ein nicht direkt erreichbares IPv4-Ziel?
 
-Übung macht den Meister! Hier sind einige praktische Laborübungen, um Ihr Verständnis der Sicherungsschicht, von MAC-Adressen und ARP zu festigen:
+::option[Die MAC-Adresse des ausgewählten Next-Hop-Routers.]{#link-layer-gateway-mac .correct explanation="Das IP-Paket bleibt an den entfernten Host adressiert, während der lokale Frame an den Router geht."}
+::option[Die MAC-Adresse des entfernten Servers über jeden Router hinweg.]{#link-layer-remote-mac explanation="MAC-Adressen sind Kennungen lokaler Verbindungen und werden nicht von Ende zu Ende übertragen."}
+::option[Eine aus dem TCP-Zielport abgeleitete MAC-Adresse.]{#link-layer-port-mac explanation="Transportports bestimmen keine Verbindungsadressen."}
+:::
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Informationen zur Netzwerkadressierung, einschließlich MAC-Adressen, auf einem Linux-System zu identifizieren.
-2. **[Interaktion der Vermittlungsschicht mit ping und arp in Linux untersuchen](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Lernen Sie, wie die Befehle `ping` und `arp` zusammenarbeiten, um IP-Adressen in MAC-Adressen aufzulösen, und verstehen Sie die Interaktionen der Vermittlungsschicht.
-3. **[Ethernet-Frames mit tcpdump in Linux analysieren](https://labex.io/de/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** – Sammeln Sie praktische Erfahrungen beim Erfassen und Inspizieren von Ethernet-Frames, einschließlich MAC-Adressen, um die Netzwerkkommunikation auf niedriger Ebene zu verstehen.
+## Nachbarzustand untersuchen
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Netzwerke auf der Sicherungsschicht aufzubauen.
+Zeige Einträge von IPv4-ARP und IPv6 Neighbor Discovery an mit:
 
-## Quiz Question
+```bash
+$ ip neighbor show
+```
 
-Welches Protokoll wird verwendet, um die MAC-Adresse eines Hosts im selben lokalen Netzwerk zu finden? (Bitte antworten Sie mit dem englischen Akronym in Großbuchstaben).
+Zustände wie `REACHABLE`, `STALE`, `DELAY`, `PROBE` und `FAILED` beschreiben den Prozess zur Erkennung nicht erreichbarer Nachbarn. `STALE` bedeutet nicht defekt; es bedeutet, dass die zwischengespeicherte Erreichbarkeitsbestätigung nicht mehr aktuell ist und bei Verwendung geprüft werden kann.
 
-## Quiz Answer
+:::single-choice{#link-layer-stale-neighbor} Was zeigt ein Nachbareintrag mit dem Zustand `STALE` an?
 
-ARP
+::option[Der Nachbar wird dauerhaft von der Firewall blockiert.]{#link-layer-stale-blocked explanation="Der Zustand beschreibt keine Firewallrichtlinie."}
+::option[Die MAC-Adresse wurde als Sicherung auf den Datenträger geschrieben.]{#link-layer-stale-backup explanation="Nachbarzustand ist eine betriebliche Cacheinformation."}
+::option[Der zwischengespeicherten Zuordnung fehlt eine aktuelle Erreichbarkeitsbestätigung.]{#link-layer-stale-confirmation .correct explanation="Der Stack kann sie weiterhin verwenden und bei Bedarf eine Erreichbarkeitserkennung durchführen."}
+:::
+
+## Kapselung über einen Router hinweg
+
+Der Sender legt ein IP-Paket in einen Frame, der an seinen nächsten Hop adressiert ist. Der Router validiert und entfernt den eingehenden Frame, verarbeitet den IP-Header, wählt eine ausgehende Route und erstellt einen neuen Frame für diese Verbindung. Der Empfänger kehrt die Kapselung um und übergibt die Transportnutzlast an den passenden Socket.
+
+:::single-choice{#link-layer-router-reframing} Was bleibt bei gewöhnlicher Weiterleitung gleich, während sich die Ethernet-Kapselung an einem Router ändert?
+
+::option[Das IP-Ziel, sofern keine Middlebox wie NAT es verändert.]{#link-layer-ip-destination .correct explanation="Gewöhnliche Router leiten zum endgültigen IP-Ziel weiter und ersetzen dabei die hoplokalen Frames."}
+::option[Die Frame Check Sequence des eingehenden Frames.]{#link-layer-same-fcs explanation="Ein neuer ausgehender Frame erhält seinen eigenen Integritätswert für die Verbindung."}
+::option[Die Ziel-MAC-Adresse auf jeder Verbindung.]{#link-layer-same-mac explanation="Jede Verbindung verwendet die passende Verbindungsadresse des nächsten Hops."}
+:::
+
+## Zusammenfassung
+
+Du kannst ein IP-Paket nun durch einen lokalen Zustellungsschritt verfolgen.
+
+1. Erkenne die wichtigsten Felder eines Ethernet-Frames und seinen Integritätsabschluss.
+2. Erkläre, wie ein Switch lokale Weiterleitungsorte lernt.
+3. Löse einen IPv4-Next-Hop mit ARP und IPv6-Nachbarn mit NDP auf.
+4. Interpretiere den Zustand des Nachbarcaches, ohne vorschnell einen Fehler zu behaupten.
+5. Erkenne, dass Router Frames für jede ausgehende Verbindung neu erstellen.

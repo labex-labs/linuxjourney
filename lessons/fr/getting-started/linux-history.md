@@ -1,50 +1,76 @@
 ---
-index: 1
+lesson_id: "linux-history"
+course_id: "getting-started"
 lang: "fr"
+order_index: 1
 title: "Histoire de Linux"
-meta_title: "Histoire de Linux - Pour bien débuter"
-meta_description: "Débutez votre aventure Linux en explorant son histoire. Découvrez ses origines liées à UNIX, au projet GNU et à la création du noyau Linux par Linus Torvalds."
-meta_keywords: "histoire de linux, origine linux, aventure linux, UNIX, projet GNU, Linus Torvalds, noyau Linux, débuter sous Linux"
+description: "Découvrez comment UNIX, GNU et le noyau Linux ont contribué aux systèmes Linux modernes."
+meta_title: "Histoire de Linux - Premiers pas"
+meta_description: "Commencez votre parcours Linux en découvrant ses origines : UNIX, le projet GNU et la création du noyau Linux par Linus Torvalds."
+meta_keywords: "histoire de Linux, parcours Linux, UNIX, projet GNU, Linus Torvalds, noyau Linux, Linux débutant"
 ---
 
-## Lesson Content
+Bienvenue dans votre **parcours Linux** ! Si vous êtes prêt à découvrir le puissant univers de Linux, vous êtes au bon endroit. Je m'appelle Penguin Pete et je serai votre guide. Pour commencer, explorons brièvement l'**histoire de Linux**.
 
-Bienvenue dans votre **aventure Linux** ! Si vous êtes prêt à plonger dans le monde puissant de Linux, vous êtes au bon endroit. Je m'appelle Penguin Pete et je serai votre guide. Pour commencer, explorons une brève **histoire de Linux**.
+## Les prédécesseurs de Linux
 
-### Les prédécesseurs de Linux
-
-Pour comprendre comment Linux a été créé, nous devons remonter à 1969, lorsque Ken Thompson et Dennis Ritchie des laboratoires Bell ont développé le système d'exploitation UNIX. Il a été réécrit plus tard dans le langage de programmation C, ce qui l'a rendu portable et a conduit à son adoption généralisée.
+Pour comprendre la création de Linux, remontons à 1969, lorsque Ken Thompson et Dennis Ritchie, des laboratoires Bell, ont développé le système d'exploitation UNIX. Celui-ci a ensuite été réécrit dans le langage de programmation C, ce qui l'a rendu portable et a favorisé sa large adoption.
 
 ![Chronologie d'Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-Plus d'une décennie plus tard, Richard Stallman a lancé le projet GNU (un acronyme récursif pour "GNU's Not UNIX"). L'objectif était de créer un système d'exploitation de type UNIX entièrement libre et open source. Bien que le projet GNU ait produit de nombreux composants essentiels, y compris la licence publique générale GNU (GPL), son propre noyau, nommé Hurd, n'a pas été terminé à temps.
+:::single-choice{#understand-unix-portability} Quel résultat important la réécriture d'UNIX en C a-t-elle produit ?
 
-### Le rôle du noyau
+::option[Il est devenu le noyau libre créé pour le système GNU.]{#unix-became-gnu-kernel explanation="UNIX existait avant le projet GNU et n'était pas son noyau. GNU a ensuite commencé à développer un noyau distinct appelé Hurd."}
+::option[Il est devenu plus facile à porter sur différents systèmes matériels.]{#portable-across-hardware .correct explanation="L'écriture d'UNIX en C l'a rendu plus portable. Cette portabilité a favorisé sa diffusion au-delà de son matériel d'origine."}
+::option[Il est devenu un shell de commandes utilisé uniquement aux laboratoires Bell.]{#unix-became-shell explanation="UNIX est un système d'exploitation, pas seulement un shell. Sa réécriture en C a favorisé son adoption hors des laboratoires Bell."}
+:::
 
-Le noyau est le composant central d'un système d'exploitation. Il agit comme un pont, permettant au matériel de communiquer avec le logiciel. Le noyau gère les ressources système, telles que le processeur, la mémoire et les périphériques. Essentiellement, le noyau contrôle tout ce qui se passe sur votre système. Alors que d'autres systèmes de type UNIX tels que BSD et MINIX étaient en cours de développement, ils manquaient tous d'un noyau unifié et librement disponible.
+Plus de dix ans après, Richard Stallman a lancé le projet GNU. GNU est un acronyme récursif de « GNU's Not UNIX » et son objectif était de créer un système d'exploitation de type UNIX entièrement libre et open source. Le projet a produit de nombreux composants essentiels ainsi que la GNU General Public License (GPL), mais son propre noyau, GNU Hurd, n'était pas prêt pour un usage général lorsque Linux est devenu disponible.
 
-### La naissance du noyau Linux
+:::single-choice{#identify-gnu-missing-component} Quel composant majeur de GNU n'était pas prêt lorsque Linux est devenu disponible ?
 
-Cela nous amène à 1991, lorsqu'un étudiant finlandais nommé Linus Torvalds a commencé à développer un nouveau noyau en tant que projet personnel. Ce noyau, que nous connaissons maintenant sous le nom de noyau Linux, a comblé la pièce manquante du système d'exploitation GNU. La combinaison des outils GNU et du noyau Linux a créé le système d'exploitation complet et open source largement utilisé aujourd'hui. Cette étape a été un moment charnière dans l'**histoire de Linux**.
+::option[Un noyau prêt pour la production]{#gnu-kernel .correct explanation="GNU avait produit de nombreux composants système, mais son propre noyau, GNU Hurd, n'était pas prêt pour un usage général."}
+::option[Une licence de logiciel libre]{#gnu-license explanation="Le projet GNU avait déjà produit la GNU General Public License. Le composant système manquant était un noyau utilisable."}
+::option[Des outils système essentiels]{#gnu-tools explanation="GNU avait déjà produit de nombreux outils essentiels. Son noyau restait la principale partie inachevée du système."}
+:::
+
+## Le rôle du noyau
+
+Le noyau est le composant central d'un système d'exploitation. Il sert de pont et permet au matériel de communiquer avec les logiciels. Il gère les ressources du système, notamment le processeur, la mémoire et les périphériques. Un système d'exploitation complet a besoin de ce cœur chargé des ressources, en plus des outils et applications utilisés par les personnes.
+
+:::single-choice{#recognize-kernel-role} Quelle responsabilité appartient au noyau du système d'exploitation ?
+
+::option[Écrire chaque commande saisie dans le shell]{#write-shell-commands explanation="Les personnes ou les scripts fournissent les commandes du shell. Le noyau procure les ressources de bas niveau nécessaires à leur exécution."}
+::option[Choisir la licence de chaque application installée]{#choose-software-licenses explanation="Les auteurs et distributeurs choisissent les licences des applications. Ce choix ne relève pas de la gestion des ressources par le noyau."}
+::option[Gérer le processeur, la mémoire et les périphériques connectés]{#manage-system-resources .correct explanation="Le noyau gère les ressources matérielles et les met à la disposition des logiciels. Le temps processeur, la mémoire et les périphériques en sont des exemples essentiels."}
+:::
+
+## La naissance du noyau Linux
+
+Nous arrivons ainsi en 1991, lorsqu'un étudiant finlandais nommé Linus Torvalds commence à développer un nouveau noyau comme projet personnel. Ce noyau deviendra le noyau Linux. Après la publication de Linux comme logiciel libre en 1992, il a pu être associé au système GNU presque complet pour former un système d'exploitation libre complet, couramment appelé GNU/Linux. Cette étape a marqué un tournant dans l'**histoire de Linux**.
 
 ![Linus Torvalds en 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 
-_Linus Torvalds en 2018 (Source : [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
+_Linus Torvalds en 2018 (source : [Wikipédia](https://fr.wikipedia.org/wiki/Linus_Torvalds))_
 
-## Exercise
+:::single-choice{#identify-linux-kernel-creator} Qui a commencé à développer le noyau Linux en 1991 ?
 
-La meilleure façon d'apprendre est de pratiquer. Pour commencer votre **aventure Linux**, essayez ces laboratoires pratiques pour exercer les commandes fondamentales et renforcer votre confiance dans l'environnement en ligne de commande.
+::option[Richard Stallman]{#richard-stallman explanation="Richard Stallman a lancé le projet GNU. GNU a fourni de nombreux composants système, mais Linus Torvalds a commencé le noyau Linux."}
+::option[Dennis Ritchie]{#dennis-ritchie explanation="Dennis Ritchie a contribué au développement d'UNIX et du langage C. Le projet de noyau Linux a été lancé plus tard par Linus Torvalds."}
+::option[Linus Torvalds]{#linus-torvalds .correct explanation="Linus Torvalds a lancé le projet de noyau en 1991. Ce projet est devenu le noyau Linux."}
+:::
 
-1. **[Démarrer avec Linux](https://labex.io/fr/labs/linux-getting-started-with-linux-446315)** - Commencez votre aventure Linux en apprenant des commandes de terminal essentielles comme `echo`, `date` et des calculs de base. Parfait pour les débutants complets.
-2. **[Votre premier laboratoire Linux](https://labex.io/fr/labs/linux-your-first-linux-lab-270253)** - Ce laboratoire d'introduction vous guide à travers le programme classique "Hello, World!" sous Linux et vous enseigne quelques commandes fondamentales.
-3. **[Créer un message d'accueil personnalisé dans le terminal](https://labex.io/fr/labs/linux-create-personalized-terminal-greeting-446322)** - Un défi rapide et amusant pour utiliser les commandes de base du terminal Linux afin de créer un message de bienvenue attrayant.
+Pour poursuivre votre **parcours Linux**, essayez ces laboratoires pratiques afin de vous exercer aux commandes fondamentales et de prendre confiance dans l'environnement en ligne de commande.
 
-Ces laboratoires vous aideront à appliquer les concepts fondamentaux dans un environnement Linux réel.
+1. **[Premiers pas avec Linux](https://labex.io/fr/labs/linux-getting-started-with-linux-446315)** — Commencez votre parcours Linux avec des commandes essentielles du terminal comme `echo`, `date` et des calculs simples. Idéal pour les débutants complets.
+2. **[Votre premier laboratoire Linux](https://labex.io/fr/labs/linux-your-first-linux-lab-270253)** — Ce laboratoire d'introduction vous guide dans le classique « Hello, World! » sous Linux et vous enseigne quelques commandes fondamentales.
+3. **[Créer un message d'accueil personnalisé dans le terminal](https://labex.io/fr/labs/linux-create-personalized-terminal-greeting-446322)** — Un défi court et ludique qui emploie les commandes élémentaires du terminal Linux pour créer un message de bienvenue attrayant.
 
-## Quiz Question
+## Résumé
 
-Qui a développé le noyau Linux ? Veuillez répondre en anglais et faire attention aux majuscules.
+Vous savez maintenant expliquer comment UNIX, GNU et le noyau Linux ont contribué aux systèmes Linux modernes.
 
-## Quiz Answer
-
-Linus Torvalds
+1. Décrire pourquoi la portabilité d'UNIX était importante.
+2. Identifier le noyau comme le principal composant manquant de GNU.
+3. Expliquer le rôle du noyau dans la gestion des ressources système.
+4. Identifier Linus Torvalds comme créateur du noyau Linux.

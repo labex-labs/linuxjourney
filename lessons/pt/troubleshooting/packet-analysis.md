@@ -1,89 +1,93 @@
 ---
-index: 5
+lesson_id: "packet-analysis"
+course_id: "troubleshooting"
 lang: "pt"
+order_index: 5
 title: "Análise de Pacotes"
+description: "Aprenda a capturar um trace de pacotes limitado e filtrado e analisá-lo com segurança usando tcpdump."
 meta_title: "Análise de Pacotes - Solução de Problemas"
 meta_description: "Aprenda os fundamentos da análise de pacotes de rede no Linux. Este guia apresenta o tcpdump, um poderoso analisador de pacotes, para capturar e interpretar tráfego de rede."
 meta_keywords: "tcpdump, análise de pacotes, análise de pacotes de rede, analisador de pacotes de rede, análise de rede, ferramentas de análise de pacotes de rede, rede Linux, Wireshark, comandos Linux, tráfego de rede"
 ---
 
-## Lesson Content
+A captura registra tráfego visível em um ponto de observação. Ela revela trocas e tempos, mas também pode coletar credenciais, dados pessoais e tráfego de terceiros. Obtenha autorização, reduza o escopo, proteja arquivos e siga a política de retenção.
 
-O campo da análise de pacotes de rede é vasto e pode ser objeto de cursos e livros inteiros. Esta lição apresentará os fundamentos. A análise de pacotes envolve a captura e inspeção dos dados que trafegam em uma rede. É uma habilidade essencial para a solução de problemas de rede, ajuste de desempenho e análise de segurança. Ao examinar pacotes individuais, você pode obter insights profundos sobre o que está acontecendo em sua rede em um nível baixo.
+## Escolha do ponto de observação
 
-### Ferramentas Populares de Análise de Pacotes de Rede
+Capture na interface e no namespace pelos quais o fluxo afetado realmente passa. Bridges, containers, VPNs, bonds, VLANs e offload mudam o que uma interface mostra. Use `ip route get` e `ip link` para identificar candidatas.
 
-Existem duas ferramentas extremamente populares de análise de pacotes de rede: Wireshark e tcpdump. Ambas são poderosas aplicações de análise de pacotes que escaneiam suas interfaces de rede, capturam a atividade dos pacotes e analisam os dados para inspeção. Elas nos permitem entrar nos detalhes da análise de rede. Usaremos o tcpdump pela sua simplicidade de linha de comando, mas se você planeja se aprofundar na análise de pacotes de rede, explorar a interface gráfica do Wireshark é altamente recomendado.
+:::single-choice{#packet-analysis-interface-choice} Por que a escolha da interface de captura importa?
 
-### Instalando o tcpdump
+::option[Toda interface espelha automaticamente a Internet inteira.]{#packet-analysis-mirrors-internet explanation="Um host normalmente vê apenas tráfego entregue ou espelhado às suas interfaces."}
+::option[Apenas o tráfego visível nesse ponto pode ser registrado.]{#packet-analysis-visible-point .correct explanation="Namespaces, túneis, bridges e rotas podem colocar o fluxo em outro lugar."}
+::option[O nome da interface descriptografa TLS.]{#packet-analysis-name-decrypts explanation="O nome não oferece capacidade de descriptografia."}
+:::
 
-Em sistemas baseados em Debian, como o Ubuntu, você pode instalar o tcpdump com o seguinte comando:
+## Captura de um fluxo limitado
 
-```bash
-sudo apt install tcpdump
-```
-
-### Capturando Dados de Pacotes ao Vivo
-
-Para começar a capturar dados em uma interface específica, use o sinalizador `-i` seguido pelo nome da interface.
-
-```plaintext
-pete@icebox:~$ sudo tcpdump -i wlan0
-tcpdump: saída detalhada suprimida, use -v ou -vv para decodificação completa do protocolo
-escutando em wlan0, tipo de link EN10MB (Ethernet), tamanho da captura 65535 bytes
-11:28:23.958840 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 2, length 64
-11:28:23.970928 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 2, length 64
-11:28:24.960464 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 3, length 64
-11:28:24.979299 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 3, length 64
-11:28:25.961869 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 4, length 64
-11:28:25.976176 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 4, length 64
-11:28:26.963667 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 5, length 64
-11:28:26.976137 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 5, length 64
-11:28:30.674953 ARP, Request who-has 172.254.1.0 tell ThePickleParty.lan, length 28
-11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
-```
-
-Você notará muita atividade ao executar uma captura de pacotes, o que é esperado devido ao tráfego de rede constante em segundo plano. O exemplo acima mostra um trecho de uma captura feita enquanto se faz ping para `www.google.com`.
-
-### Interpretando a Saída do tcpdump
-
-Vamos analisar uma linha da captura:
-
-```plaintext
-11:28:23.958840 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 2, length 64
-```
-
-- **Timestamp**: O primeiro campo (`11:28:23.958840`) mostra quando o pacote foi capturado.
-- **Protocolo**: `IP` indica o protocolo da camada de rede.
-- **Origem e Destino**: `icebox.lan > nuq04s29-in-f4.1e100.net` mostra a origem e o destino do pacote.
-- **Informações Específicas do Protocolo**: O restante da linha contém detalhes específicos do protocolo. Para este pacote ICMP:
-  - `seq`: O número de sequência do pacote.
-  - `length`: O comprimento do pacote em bytes.
-
-Como você pode ver, nossa máquina enviou uma requisição de eco ICMP e recebeu uma resposta de eco ICMP. Protocolos diferentes mostrarão informações diferentes, portanto, consulte a página de manual para mais detalhes.
-
-### Salvando Capturas para Análise Posterior
-
-Em vez de visualizar o tráfego ao vivo, você pode salvar a captura em um arquivo usando o sinalizador `-w`. Isso é útil para uma análise de pacotes offline mais aprofundada.
+Capture até 100 pacotes sem resolver nomes, restritos a host e porta TCP:
 
 ```bash
-sudo tcpdump -w /some/file.pcap
+$ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
+    'host 192.0.2.25 and tcp port 443'
 ```
 
-Nós apenas arranhamos a superfície da análise de pacotes. Há muito mais para explorar, incluindo filtragem avançada e inspeção do conteúdo dos pacotes em Hex e ASCII. Inúmeros recursos online podem ajudá-lo a dominar as ferramentas de análise de pacotes de rede, e nós o encorajamos a continuar sua jornada de aprendizado.
+`-i` seleciona interface, `-n` mantém números, `-c` limita pacotes, `-w` grava pcap e a expressão final filtra. Defina também um limite externo de tempo quando puder não haver tráfego.
 
-## Exercise
+:::single-choice{#packet-analysis-count-bound} O que `-c 100` faz?
 
-Para solidificar sua compreensão da análise de pacotes, experimente este laboratório prático. A prática leva à perfeição!
+::option[Captura apenas a porta TCP 100.]{#packet-analysis-port-hundred explanation="A porta pertence à expressão de filtro."}
+::option[Comprime o arquivo para 100 bytes.]{#packet-analysis-compress-hundred explanation="A opção limita quantidade de pacotes, não tamanho."}
+::option[Para depois de capturar 100 pacotes.]{#packet-analysis-hundred .correct explanation="A contagem evita crescimento indefinido por número de pacotes."}
+:::
 
-1. **[Analisar Frames Ethernet com tcpdump no Linux](https://labex.io/pt/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Pratique a captura e inspeção de frames Ethernet, gerando tráfego e analisando cabeçalhos de frame e endereços MAC usando `tcpdump`.
+## Leitura dos pacotes capturados
 
-Este laboratório o ajudará a aplicar os conceitos de análise de pacotes em um cenário do mundo real e a ganhar confiança na solução de problemas de rede.
+Analise o arquivo salvo sem modificá-lo:
 
-## Quiz Question
+```bash
+$ tcpdump -n -tttt -r incident.pcap
+```
 
-Qual é o sinalizador para capturar uma interface específica com o tcpdump? Por favor, responda usando apenas o sinalizador necessário em inglês. A resposta diferencia maiúsculas de minúsculas.
+Leia horários, protocolo, origem, destino, flags, sequência, acknowledgements e tamanho conforme o protocolo. O horário marca a observação neste host, não necessariamente o envio exato em outro. Sincronização importa ao correlacionar vários sistemas.
 
-## Quiz Answer
+:::single-choice{#packet-analysis-read-file} Qual opção lê pacotes de um pcap salvo?
 
--i
+::option[`-r`]{#packet-analysis-option-read .correct explanation="A opção read processa um arquivo de captura existente."}
+::option[`-i`]{#packet-analysis-option-interface explanation="Essa opção seleciona uma interface ativa."}
+::option[`-w`]{#packet-analysis-option-write explanation="Essa opção grava pacotes brutos."}
+:::
+
+## Interpretação de ausência e criptografia
+
+Nenhum pacote pode significar interface ou namespace errado, perda de captura, filtro estreito, offload, outra rota ou nenhum tráfego. Confira os contadores recebidos e descartados e reproduza um evento conhecido.
+
+TLS e outras criptografias ocultam payloads, mas deixam metadados como endpoints, tempos, tamanhos, comportamento TCP e partes do handshake. Não tente descriptografia não autorizada nem colete chaves privadas casualmente.
+
+:::single-choice{#packet-analysis-no-packets} O que uma captura filtrada vazia prova?
+
+::option[Que o aplicativo remoto foi apagado permanentemente.]{#packet-analysis-empty-deleted explanation="Erros no ponto ou filtro produzem o mesmo resultado."}
+::option[Que toda a rede tem tráfego zero.]{#packet-analysis-empty-network explanation="Um filtro estreito exclui tráfego alheio."}
+::option[Apenas que nenhum pacote correspondente foi registrado nesse ponto.]{#packet-analysis-empty-limited .correct explanation="Valide interface, namespace, filtro, descartes e geração do teste."}
+:::
+
+## Proteção e compartilhamento da evidência
+
+Guarde pcaps com permissões restritas, registre comando, host, interface, fuso, filtro e janela e calcule hash quando a integridade importar. Antes de compartilhar, minimize ou sanitize preservando campos necessários; payload e metadados podem identificar pessoas e sistemas.
+
+:::single-choice{#packet-analysis-pcap-safety} Como tratar um pcap de incidente?
+
+::option[Como evidência sensível, com acesso restrito e procedência documentada.]{#packet-analysis-sensitive-evidence .correct explanation="Capturas podem conter conteúdo confidencial e exigem integridade e confidencialidade."}
+::option[Como texto inofensivo para publicação sem revisão.]{#packet-analysis-public explanation="Capturas binárias expõem payloads, identidades e infraestrutura."}
+::option[Editando bytes no original sem preservá-lo.]{#packet-analysis-edit-original explanation="Isso danifica a procedência e pode invalidar análises."}
+:::
+
+## Resumo
+
+Agora você consegue criar uma captura útil sem torná-la ampla ou insegura.
+
+1. Escolher interface e namespace corretos.
+2. Limitar por filtro, contagem e tempo.
+3. Salvar pacotes brutos e analisar somente leitura.
+4. Tratar ausência e criptografia com limites adequados.
+5. Proteger confidencialidade, integridade e procedência.

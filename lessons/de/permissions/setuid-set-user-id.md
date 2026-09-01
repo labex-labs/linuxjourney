@@ -1,78 +1,95 @@
 ---
-index: 5
+lesson_id: "setuid-set-user-id"
+course_id: "permissions"
 lang: "de"
+order_index: 5
 title: "Setuid"
-meta_title: "Setuid - Berechtigungen"
-meta_description: "Erfahren Sie mehr über Linux Setuid (SUID)-Berechtigungen, wie sie funktionieren und wie man sie ändert. Verstehen Sie SUID für sicheren Dateizugriff in Linux."
-meta_keywords: "Linux Setuid, SUID, Linux-Berechtigungen, chmod, passwd-Befehl, Linux-Sicherheit, Linux für Anfänger, Linux-Tutorial"
+description: "Erfahre, wie sich das Set-User-ID-Modusbit auf ausführbare Programme auswirkt und warum es eine sorgfältige Sicherheitsprüfung erfordert."
+meta_title: "Setuid – Berechtigungen"
+meta_description: "Lerne Linux-Setuid-Berechtigungen (SUID), ihre Funktionsweise und ihre Änderung kennen. Verstehe SUID für den sicheren Dateizugriff unter Linux."
+meta_keywords: "Linux Setuid, SUID, Linux-Berechtigungen, chmod, passwd-Befehl, Linux-Sicherheit, Linux für Einsteiger, Linux-Tutorial"
 ---
 
-## Lesson Content
+Einige Programme benötigen eng begrenzten Zugriff, den ihre Aufrufer gewöhnlich nicht besitzen. Bei einer ausführbaren regulären Datei kann das Set-User-ID-Bit bewirken, dass ein neuer Prozess die Benutzer-ID des Dateieigentümers als effektive Benutzer-ID erhält. Das Programm kann dann Vorgänge ausführen, die für diese Identität autorisiert sind, und zugleich Informationen über den Aufrufer behalten.
 
-Es gibt viele Fälle, in denen normale Benutzer erhöhten Zugriff benötigen, um Aufgaben auszuführen. Der Systemadministrator kann nicht immer zur Stelle sein, um jedes Mal ein Root-Passwort einzugeben, wenn ein Benutzer Zugriff auf eine geschützte Datei benötigt. Daher gibt es spezielle Dateiberechtigungsbits, um dieses Verhalten zu ermöglichen. Die Set User ID (SUID) erlaubt es einem Benutzer, ein Programm als Eigentümer der Programmdatei und nicht als er selbst auszuführen.
+Setuid ist keine allgemeine Anweisung, ein Programm „als root auszuführen“. Seine Wirkung hängt vom Eigentümer der ausführbaren Datei, vom Betriebssystem, vom Dateisystem und seinen Einhängeoptionen sowie davon ab, wie das Programm seine Zugangsdaten verwaltet.
 
-Schauen wir uns ein Beispiel an:
+## Setuid erkennen
 
-Nehmen wir an, ich möchte mein Passwort ändern, ganz einfach, oder? Ich benutze einfach den Befehl `passwd`:
-
-```bash
-passwd
-```
-
-Was macht der Befehl `passwd`? Er ändert ein paar Dateien, aber am wichtigsten ist, dass er die Datei `/etc/shadow` ändert. Schauen wir uns diese Datei kurz an:
-
-```bash
-$ ls -l /etc/shadow
-
--rw-r----- 1 root shadow 1134 Dec 1 11:45 /etc/shadow
-```
-
-Oh, warten Sie mal, diese Datei gehört root? Wie ist es möglich, dass wir eine Datei ändern können, die root gehört?
-
-Schauen wir uns einen weiteren Berechtigungssatz an, diesmal den des Befehls, den wir ausgeführt haben:
+Auf Systemen, die eine setuid-fähige ausführbare Datei `passwd` verwenden, kann eine ausführliche Auflistung so aussehen:
 
 ```bash
 $ ls -l /usr/bin/passwd
-
--rwsr-xr-x 1 root root 47032 Dec 1 11:45 /usr/bin/passwd
+-rwsr-xr-x 1 root root 68248 Jan 10 09:30 /usr/bin/passwd
 ```
 
-Sie werden hier ein neues Berechtigungsbit bemerken: **s**. Dieses Berechtigungsbit ist das SUID. Wenn eine Datei diese Berechtigung gesetzt hat, erlaubt es den Benutzern, die das Programm gestartet haben, die Berechtigung des Dateieigentümers sowie die Ausführungsberechtigung zu erhalten, in diesem Fall root. Im Wesentlichen läuft ein Benutzer, während er den Befehl `passwd` ausführt, als root.
+Das kleingeschriebene `s` an der Ausführungsposition des Eigentümers bedeutet, dass sowohl setuid als auch die Ausführungsberechtigung des Eigentümers gesetzt sind. Wenn setuid vorhanden ist, aber die Ausführungsberechtigung des Eigentümers fehlt, zeigt `ls -l` an dieser Stelle ein großgeschriebenes `S` an.
 
-Deshalb können wir auf eine geschützte Datei wie `/etc/shadow` zugreifen, wenn wir den Befehl `passwd` ausführen. Wenn Sie dieses Bit entfernen würden, würden Sie feststellen, dass Sie `/etc/shadow` nicht ändern und somit Ihr Passwort nicht ändern können.
+Gehe nicht davon aus, dass jede Distribution denselben Modus oder denselben Authentifizierungsaufbau besitzt. Prüfe das tatsächliche System, statt dich auf das Beispiel zu verlassen.
 
-### SUID ändern
+:::single-choice{#setuid-lowercase-s} Was zeigt ein kleingeschriebenes `s` an der Ausführungsposition des Eigentümers an?
 
-Genau wie bei regulären Berechtigungen gibt es zwei Möglichkeiten, SUID-Berechtigungen zu ändern.
+::option[Setuid ist gesetzt, aber die Ausführungsberechtigung des Eigentümers fehlt.]{#setuid-s-without-execute explanation="Diese Kombination wird als großgeschriebenes `S` und nicht als kleingeschriebenes `s` dargestellt."}
+::option[Die Datei besitzt ein Sticky-Bit und die Gruppenausführungsberechtigung.]{#setuid-sticky-group explanation="Das Sticky-Bit erscheint an der Ausführungsposition für andere, während setuid an der Eigentümerposition steht."}
+::option[Setuid und die Ausführungsberechtigung des Eigentümers sind gesetzt.]{#setuid-s-with-execute .correct explanation="Ein kleingeschriebenes `s` steht für das setuid-Bit zusammen mit dem gewöhnlichen Ausführungsbit des Eigentümers."}
+:::
 
-_Symbolische Methode:_
+## Die Änderung der Zugangsdaten verstehen
+
+Wenn der Kernel setuid bei der Ausführung berücksichtigt, erhält der neue Prozess gewöhnlich eine effektive Benutzer-ID, die sich aus dem Eigentümer der ausführbaren Datei ableitet. Bei einem root gehörenden Programm kann dies von root autorisierten Zugriff gewähren, allerdings nur während der Programmausführung und nur über die Vorgänge, die sein Code tatsächlich ausführt.
+
+Dieser Mechanismus kann einem sorgfältig geschriebenen Programm ermöglichen, eine Anfrage zu validieren und eine begrenzte Änderung an geschützten Zuständen vorzunehmen. Ein lokales Werkzeug zur Passwortänderung kann beispielsweise kontrollierten Zugriff auf Authentifizierungsdaten benötigen, die gewöhnliche Benutzer nicht direkt bearbeiten dürfen. Moderne Implementierungen stützen sich außerdem auf PAM, Dateisperren, Richtlinien und weitere Schutzmaßnahmen; setuid allein erklärt nicht den gesamten Arbeitsablauf.
+
+:::single-choice{#setuid-effective-identity} Welche Identität wird bei einer berücksichtigten setuid-Datei hauptsächlich vom Dateieigentümer übernommen?
+
+::option[Der in `/etc/passwd` gespeicherte Anmeldename.]{#setuid-login-name explanation="Die Ausführung einer Datei schreibt weder den Kontoeintrag noch den Anmeldenamen des Aufrufers um."}
+::option[Die effektive Benutzer-ID des Prozesses.]{#setuid-effective-user .correct explanation="Der Set-User-ID-Ausführungsmechanismus ändert die effektive Benutzeridentität, die für viele Autorisierungsprüfungen verwendet wird."}
+::option[Der Gruppeneigentümer jeder geöffneten Datei.]{#setuid-opened-file-group explanation="Setuid beeinflusst Prozesszugangsdaten und nicht die Eigentumsmetadaten unabhängiger Dateien."}
+:::
+
+## Das Bit setzen und entfernen
+
+Setze setuid symbolisch mit:
 
 ```bash
-sudo chmod u+s myfile
+$ sudo chmod u+s myfile
 ```
 
-_Numerische Methode:_
+In oktaler Schreibweise trägt setuid `4` zu einer führenden Ziffer für besondere Bits bei:
 
 ```bash
-sudo chmod 4755 myfile
+$ sudo chmod 4755 myfile
 ```
 
-Wie Sie sehen können, wird das SUID durch eine 4 dargestellt und dem Berechtigungssatz vorangestellt. Möglicherweise sehen Sie das SUID als Großbuchstaben **S** dargestellt. Das bedeutet, dass es immer noch dasselbe tut, aber keine Ausführungsberechtigungen hat.
+Hier setzt die führende `4` setuid, während `755` die gewöhnlichen Bits für Eigentümer, Gruppe und andere festlegt. Entferne setuid mit `chmod u-s myfile`, ohne den restlichen Modus zu ändern.
 
-## Exercise
+:::single-choice{#setuid-octal-value} Welcher führende oktale Wert steht für das besondere setuid-Bit?
 
-Übung macht den Meister! Das Verständnis, wie Dateiberechtigungen, Benutzergruppen und spezielle Bits wie SUID funktionieren, ist entscheidend für die Verwaltung und Sicherung von Linux-Systemen. Praktische Erfahrung wird Ihr Wissen festigen.
+::option[`4`]{#setuid-octal-four .correct explanation="Setuid trägt den Wert `4` zur führenden Ziffer für besondere Bits bei."}
+::option[`1`]{#setuid-octal-one explanation="Eine führende `1` steht für das Sticky-Bit."}
+::option[`2`]{#setuid-octal-two explanation="Eine führende `2` steht für das setgid-Bit."}
+:::
 
-Hier ist ein praktisches Labor, um Ihr Verständnis von Dateiberechtigungen und Benutzerverwaltung zu vertiefen:
+## Setuid als sicherheitskritisch behandeln
 
-1. **[Linux Benutzergruppen und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Üben Sie das Erstellen und Verwalten von Benutzern und Gruppen, das Verständnis von Dateiberechtigungen und das Manipulieren des Dateibesitzes. Dieses Labor vermittelt das grundlegende Wissen, das notwendig ist, um zu verstehen, wie SUID diese Konzepte für erhöhten Zugriff nutzt.
+Ein Fehler in einem privilegierten setuid-Programm kann zu einem Weg für Rechteausweitung werden. Solche Programme müssen Eingaben validieren, die als vertrauenswürdig behandelte Umgebung und Dateipfade kontrollieren, unsicheres Verhalten bei Unterprozessen vermeiden, privilegierten Code minimieren und erhöhte Zugangsdaten so früh wie möglich ablegen.
 
-Dieses Labor wird Ihnen helfen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Linux-Benutzer- und Dateiverwaltung aufzubauen.
+Linux berücksichtigt setuid bei interpretierten Skripten gewöhnlich nicht, weil eine sichere Umsetzung Probleme mit Race Conditions und Interpretern mit sich bringt. Mit `nosuid` eingehängte Dateisysteme unterdrücken außerdem die Wirkung von setuid und setgid. Bevorzuge engere Mechanismen wie durch Dienste vermittelte Vorgänge, sorgfältig begrenzte `sudo`-Richtlinien oder Capabilities, wenn sie zur Anforderung passen.
 
-## Quiz Question
+Füge niemals einer beliebigen Shell, einem Interpreter oder einem kopierten Programm experimentell setuid auf einem gemeinsam genutzten System hinzu. Prüfe bestehende setuid-Dateien und übe ausschließlich in einer isolierten, entbehrlichen Umgebung.
 
-Welche Zahl repräsentiert das SUID?
+:::single-choice{#setuid-nosuid-mount} Welchen Zweck hat das Einhängen eines Dateisystems mit `nosuid`?
 
-## Quiz Answer
+::option[Alle auf Dateien dieses Dateisystems gespeicherten Ausführungsbits zu entfernen.]{#setuid-nosuid-remove-execute explanation="Die Option schreibt gewöhnliche Ausführungsbits in Dateimetadaten nicht um."}
+::option[Die Ausführungswirkung von setuid und setgid auf diesem Dateisystem zu unterdrücken.]{#setuid-nosuid-suppress .correct explanation="Die Einhängeoption `nosuid` verhindert, dass diese besonderen Modusbits ihr gewöhnliches Verhalten zur Änderung von Zugangsdaten bei der Ausführung entfalten."}
+::option[Alle Dateien auf dem Dateisystem root zuzuweisen.]{#setuid-nosuid-root-owner explanation="Das Einhängen mit `nosuid` ändert keine Benutzer- oder Gruppeneigentumsfelder."}
+:::
 
-4
+## Zusammenfassung
+
+Du kannst nun setuid erkennen und seine Auswirkungen auf Zugangsdaten und Sicherheit erklären.
+
+1. Finde `s` oder `S` an der Ausführungsposition des Eigentümers.
+2. Setze die setuid-Ausführung mit der effektiven Benutzeridentität des Eigentümers der ausführbaren Datei in Beziehung.
+3. Setze oder entferne das Bit mit symbolischen oder oktalen `chmod`-Modi.
+4. Behandle jede privilegierte ausführbare Datei als sicherheitskritischen Code.

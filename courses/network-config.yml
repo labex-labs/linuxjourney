@@ -1,0 +1,123 @@
+id: network-config
+category:
+  id: networking-nomad
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/network-config.png
+order_index: 4
+translations:
+  en:
+    title: "Network Config"
+    description: "Learn about network configuration using Linux tools!"
+    faqs:
+      - question: "Which Linux networking tools are covered?"
+        answer: "The course introduces network interfaces, dhclient, routing commands, ARP information, and NetworkManager for understanding and configuring connectivity."
+      - question: "Will the exact commands work on every distribution?"
+        answer: "Tools and configuration files can differ by distribution and version, but the underlying interface, address, route, neighbor, and DNS concepts remain useful."
+      - question: "Can network changes disconnect my system?"
+        answer: "Yes. Changing an active interface, address, route, or DHCP configuration can interrupt access, so practice locally or ensure you have a recovery path."
+    meta_title: "Linux Network Configuration Course"
+    meta_description: "Learn Linux network interfaces, DHCP clients, routing commands, ARP neighbor information, and NetworkManager configuration fundamentals."
+    meta_keywords: "Linux network configuration, NetworkManager, network interfaces, dhclient, route command, ARP, IP configuration"
+  de:
+    title: "Netzwerkkonfiguration"
+    description: "Lernen Sie die Netzwerkkonfiguration mit Linux-Tools!"
+    faqs:
+      - question: "Welche Linux-Netzwerktools werden abgedeckt?"
+        answer: "Der Kurs führt in Netzwerkschnittstellen, dhclient, Routing-Befehle, ARP-Informationen und NetworkManager ein, um die Konnektivität zu verstehen und zu konfigurieren."
+      - question: "Funktionieren die genauen Befehle auf jeder Distribution?"
+        answer: "Tools und Konfigurationsdateien können je nach Distribution und Version unterschiedlich sein, aber die zugrunde liegenden Konzepte für Schnittstelle, Adresse, Route, Nachbar und DNS bleiben nützlich."
+      - question: "Können Netzwerkänderungen mein System trennen?"
+        answer: "Ja. Das Ändern einer aktiven Schnittstelle, Adresse, Route oder DHCP-Konfiguration kann den Zugriff unterbrechen. Üben Sie daher lokal oder stellen Sie sicher, dass Sie über einen Wiederherstellungspfad verfügen."
+    meta_title: "Linux-Netzwerkkonfigurationskurs"
+    meta_description: "Lernen Sie Linux-Netzwerkschnittstellen, DHCP-Clients, Routing-Befehle, ARP-Nachbarinformationen und die Grundlagen der NetworkManager-Konfiguration kennen."
+    meta_keywords: "Linux-Netzwerkkonfiguration, NetworkManager, Netzwerkschnittstellen, dhclient, Routenbefehl, ARP, IP-Konfiguration"
+  es:
+    title: "Configuración de Red"
+    description: "Aprende a configurar redes con herramientas de Linux."
+    faqs:
+      - question: "¿Qué herramientas de red de Linux están cubiertas?"
+        answer: "El curso presenta interfaces de red, dhclient, comandos de enrutamiento, información ARP y NetworkManager para comprender y configurar la conectividad."
+      - question: "¿Funcionarán los comandos exactos en todas las distribuciones?"
+        answer: "Las herramientas y los archivos de configuración pueden diferir según la distribución y la versión, pero los conceptos subyacentes de interfaz, dirección, ruta, vecino y DNS siguen siendo útiles."
+      - question: "¿Los cambios en la red pueden desconectar mi sistema?"
+        answer: "Sí. Cambiar una interfaz activa, dirección, ruta o configuración de DHCP puede interrumpir el acceso, así que practique localmente o asegúrese de tener una ruta de recuperación."
+    meta_title: "Curso de Configuración de Redes Linux"
+    meta_description: "Aprenda las interfaces de red de Linux, los clientes DHCP, los comandos de enrutamiento, la información de vecinos ARP y los fundamentos de configuración de NetworkManager."
+    meta_keywords: "Configuración de red Linux, NetworkManager, interfaces de red, dhclient, comando de ruta, ARP, configuración IP"
+  fr:
+    title: "Configuration Réseau"
+    description: "Apprenez-en davantage sur la configuration réseau à l'aide des outils Linux !"
+    faqs:
+      - question: "Quels outils réseau Linux sont couverts ?"
+        answer: "Le cours présente les interfaces réseau, dhclient, les commandes de routage, les informations ARP et NetworkManager pour comprendre et configurer la connectivité."
+      - question: "Les commandes exactes fonctionneront-elles sur chaque distribution ?"
+        answer: "Les outils et les fichiers de configuration peuvent différer selon la distribution et la version, mais les concepts sous-jacents d'interface, d'adresse, de route, de voisin et DNS restent utiles."
+      - question: "Les modifications apportées au réseau peuvent-elles déconnecter mon système ?"
+        answer: "Oui. La modification d'une interface active, d'une adresse, d'un itinéraire ou d'une configuration DHCP peut interrompre l'accès, alors entraînez-vous localement ou assurez-vous de disposer d'un chemin de récupération."
+    meta_title: "Cours de configuration réseau Linux"
+    meta_description: "Apprenez les interfaces réseau Linux, les clients DHCP, les commandes de routage, les informations sur les voisins ARP et les principes fondamentaux de la configuration de NetworkManager."
+    meta_keywords: "Configuration réseau Linux, NetworkManager, interfaces réseau, dhclient, commande route, ARP, configuration IP"
+  ja:
+    title: "ネットワーク設定"
+    description: "Linux ツールを使ったネットワーク設定について学びましょう！"
+    faqs:
+      - question: "どの Linux ネットワーク ツールがカバーされていますか？"
+        answer: "このコースでは、接続を理解して構成するためのネットワーク インターフェイス、dhclient、ルーティング コマンド、ARP 情報、および NetworkManager を紹介します。"
+      - question: "正確なコマンドはどのディストリビューションでも機能しますか？"
+        answer: "ツールと設定ファイルはディストリビューションやバージョンによって異なる場合がありますが、基礎となるインターフェイス、アドレス、ルート、ネイバー、DNS の概念は引き続き役立ちます。"
+      - question: "ネットワークを変更するとシステムが切断されることがありますか？"
+        answer: "はい。アクティブなインターフェイス、アドレス、ルート、または DHCP 構成を変更すると、アクセスが中断される可能性があるため、ローカルで練習するか、回復パスがあることを確認してください。"
+    meta_title: "Linux ネットワーク構成コース"
+    meta_description: "Linux ネットワーク インターフェイス、DHCP クライアント、ルーティング コマンド、ARP ネイバー情報、NetworkManager 構成の基礎を学びます。"
+    meta_keywords: "Linux ネットワーク構成，NetworkManager, ネットワーク インターフェイス，dhclient, route コマンド，ARP, IP 構成"
+  ko:
+    title: "네트워크 구성"
+    description: "Linux 도구를 사용한 네트워크 구성 방법을 알아보세요."
+    faqs:
+      - question: "어떤 Linux 네트워킹 도구가 다루어지나요?"
+        answer: "본 과정에서는 연결을 이해하고 구성하기 위한 네트워크 인터페이스, dhclient, 라우팅 명령, ARP 정보, NetworkManager 를 소개합니다."
+      - question: "모든 배포판에서 정확한 명령이 작동합니까?"
+        answer: "도구와 구성 파일은 배포판과 버전에 따라 다를 수 있지만 기본 인터페이스, 주소, 경로, 이웃 및 DNS 개념은 여전히 ​​유용합니다."
+      - question: "네트워크 변경으로 인해 시스템 연결이 끊어질 수 있나요?"
+        answer: "네. 활성 인터페이스, 주소, 경로 또는 DHCP 구성을 변경하면 액세스가 중단될 수 있으므로 로컬에서 연습하거나 복구 경로가 있는지 확인하십시오."
+    meta_title: "Linux 네트워크 구성 과정"
+    meta_description: "Linux 네트워크 인터페이스, DHCP 클라이언트, 라우팅 명령, ARP 인접 정보 및 NetworkManager 구성 기본 사항을 알아보세요."
+    meta_keywords: "Linux 네트워크 구성, NetworkManager, 네트워크 인터페이스, dhclient, 경로 명령, ARP, IP 구성"
+  pt:
+    title: "Configuração de Rede"
+    description: "Aprenda sobre configuração de rede usando ferramentas Linux!"
+    faqs:
+      - question: "Quais ferramentas de rede Linux são abordadas?"
+        answer: "O curso apresenta interfaces de rede, dhclient, comandos de roteamento, informações ARP e NetworkManager para compreender e configurar a conectividade."
+      - question: "Os comandos exatos funcionarão em todas as distribuições?"
+        answer: "Ferramentas e arquivos de configuração podem diferir por distribuição e versão, mas os conceitos subjacentes de interface, endereço, rota, vizinho e DNS permanecem úteis."
+      - question: "As alterações na rede podem desconectar meu sistema?"
+        answer: "Sim. Alterar uma interface ativa, endereço, rota ou configuração de DHCP pode interromper o acesso, portanto, pratique localmente ou certifique-se de ter um caminho de recuperação."
+    meta_title: "Curso de configuração de rede Linux"
+    meta_description: "Aprenda interfaces de rede Linux, clientes DHCP, comandos de roteamento, informações de vizinhos ARP e fundamentos de configuração do NetworkManager."
+    meta_keywords: "Configuração de rede Linux, NetworkManager, interfaces de rede, dhclient, comando de rota, ARP, configuração de IP"
+  ru:
+    title: "Конфигурация сети"
+    description: "Узнайте о конфигурации сети с помощью инструментов Linux!"
+    faqs:
+      - question: "Какие сетевые инструменты Linux включены?"
+        answer: "В курсе представлены сетевые интерфейсы, dhclient, команды маршрутизации, информация ARP и NetworkManager для понимания и настройки подключения."
+      - question: "Будут ли точные команды работать в каждом дистрибутиве?"
+        answer: "Инструменты и файлы конфигурации могут различаться в зависимости от распространения и версии, но базовые концепции интерфейса, адреса, маршрута, соседа и DNS остаются полезными."
+      - question: "Могут ли изменения в сети отключить мою систему?"
+        answer: "Да. Изменение активного интерфейса, адреса, маршрута или конфигурации DHCP может прервать доступ, поэтому практикуйтесь локально или убедитесь, что у вас есть путь восстановления."
+    meta_title: "Курс по настройке сети Linux"
+    meta_description: "Изучите сетевые интерфейсы Linux, DHCP-клиенты, команды маршрутизации, информацию о соседях ARP и основы настройки NetworkManager."
+    meta_keywords: "Конфигурация сети Linux, NetworkManager, сетевые интерфейсы, dhclient, команда маршрута, ARP, конфигурация IP."
+  zh:
+    title: "网络配置"
+    description: "了解如何使用 Linux 工具进行网络配置！"
+    faqs:
+      - question: "涵盖哪些 Linux 网络工具？"
+        answer: "本课程介绍网络接口、dhclient、路由命令、ARP 信息以及用于理解和配置连接的 NetworkManager。"
+      - question: "确切的命令适用于每个发行版吗？"
+        answer: "工具和配置文件可能因发行版和版本而异，但底层接口、地址、路由、邻居和 DNS 概念仍然有用。"
+      - question: "网络更改是否会导致我的系统断开连接？"
+        answer: "是的。更改活动接口、地址、路由或 DHCP 配置可能会中断访问，因此请在本地进行练习或确保您有恢复路径。"
+    meta_title: "Linux 网络配置课程"
+    meta_description: "学习 Linux 网络接口、DHCP 客户端、路由命令、ARP 邻居信息和 NetworkManager 配置基础知识。"
+    meta_keywords: "Linux 网络配置，NetworkManager, 网络接口，dhclient, 路由命令，ARP, IP 配置"

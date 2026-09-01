@@ -1,23 +1,24 @@
 ---
-index: 13
+lesson_id: "remove-rm-command"
+course_id: "command-line"
 lang: "zh"
+order_index: 13
 title: "rm（删除）"
+description: "学习在确认目标并选择更安全的 rm 选项后删除文件和目录。"
 meta_title: "rm（删除）- 命令行"
 meta_description: "学习 Linux rm 命令，包含安全示例，教你如何删除文件、移除目录、使用 rm -r、rm -i 以及避免 rm -rf 错误。"
 meta_keywords: "linux rm 命令, rm 命令, rm -r, rm -i, rm -f, rm -rf, 删除文件 linux, 移除目录 linux, rmdir"
 ---
 
-## Lesson Content
+`rm` 命令用于移除文件系统条目。命令行删除通常不会把条目送入桌面回收站，而且 `rm` 没有内置撤销功能，因此运行前应确认每个目标。
 
-在 Linux 中，积累不再需要的文件是很常见的。要删除它们，你可以使用 `rm`（remove）命令，这是管理文件系统的基本工具。基本语法是：
+基本语法是：
 
 ```bash
 rm [OPTIONS] FILE...
 ```
 
-`rm` 命令从文件系统中移除目录项。通俗来说，它就是删除文件。与许多桌面环境不同，命令行删除通常不会将文件移动到回收站，因此在按下回车前应仔细检查命令。
-
-### 删除单个文件
+## 删除文件
 
 要删除一个文件，只需将文件名传递给 `rm`。
 
@@ -31,9 +32,16 @@ $ rm file1
 $ rm notes.txt old-report.txt draft.md
 ```
 
-这对于快速清理很有用，但也意味着输入错误可能会删除比预期更多的文件。
+按 Enter 前应检查拼写和位置。删除后依赖备份或版本控制副本恢复，要比指望文件系统恢复工具更可靠。
 
-### 使用通配符删除文件
+:::single-choice{#remove-one-file} 确认目标无误后，哪个命令会删除文件 `old-report.txt`？
+
+::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` 会移除指定的文件条目；此操作通常不会把文件放入回收站。"}
+::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` 作用于空目录，而非普通文件；它不适合这个目标。"}
+::option[`mv old-report.txt`]{#mv-report explanation="`mv` 需要目标位置，用于更改路径而不是删除；这条不完整的命令无法完成所需删除。"}
+:::
+
+## 预览通配符目标
 
 Shell 通配符允许你匹配多个文件。例如，这条命令会删除当前目录下所有 `.tmp` 文件：
 
@@ -49,9 +57,16 @@ cache.tmp  test.tmp
 $ rm *.tmp
 ```
 
-记住，shell 会在 `rm` 运行前展开 `*.tmp`。如果模式匹配的文件比预期多，`rm` 仍会接收所有这些文件。
+shell 会在 `rm` 启动前展开模式。如果预览中出现意外文件，应修改模式，而不是继续执行。
 
-### 使用 -i 进行交互式删除
+:::single-choice{#preview-removal-pattern} 你准备删除 `*.tmp`。哪个命令会先显示该模式选中的非隐藏路径，而不删除它们？
+
+::option[`rm -v *.tmp`]{#verbose-remove explanation="详细模式会在删除发生时报告操作，仍会删除匹配文件，并不是只读预览。"}
+::option[`ls '*.tmp'`]{#quoted-pattern explanation="引号会阻止通配符展开，因此它会查找名称中真的含 `*` 的条目，而不是预览目标。"}
+::option[`ls *.tmp`]{#list-temp-matches .correct explanation="shell 会为 `ls` 展开 `*.tmp`，让你在删除前查看同一组非隐藏匹配项。"}
+:::
+
+## 请求确认
 
 为了更安全，可以使用 `-i` 选项。它会在删除每个文件前提示确认。
 
@@ -60,9 +75,16 @@ $ rm -i important.txt
 rm: remove regular file 'important.txt'? y
 ```
 
-当从共享目录删除文件、清理大量文件或首次学习该命令时，使用 `rm -i` 是个好习惯。
+GNU `rm` 的 `-I` 是干扰更少的保护措施：当命令将删除三个以上文件或执行递归操作时，它只询问一次。
 
-### 使用 -f 强制删除
+:::single-choice{#confirm-each-removal} 哪个命令会在删除每个指定文件前请求确认？
+
+::option[`rm -i important.txt`]{#interactive-important .correct explanation="`-i` 会在每次删除前提示，让你有机会拒绝操作。"}
+::option[`rm -f important.txt`]{#force-important explanation="`-f` 会抑制提示并忽略缺失操作数，减少而不是增加确认。"}
+::option[`rm -v important.txt`]{#verbose-important explanation="`-v` 会报告已删除的内容，但不会事先请求批准。"}
+:::
+
+## 使用 -f 忽略缺失文件
 
 `-f` 选项表示“强制”。它会忽略不存在的文件且不提示确认。
 
@@ -70,15 +92,9 @@ rm: remove regular file 'important.txt'? y
 $ rm -f old-cache.txt
 ```
 
-这在脚本中很有用，即使文件已经不存在，清理操作也能继续。
+如果生成的文件可能已经不存在，这能让脚本清理操作保持幂等。由于它会取消确认，不要只为了压下尚未理解的错误而添加 `-f`。
 
-```bash
-$ rm -f build.log
-```
-
-请小心：`-f` 也会屏蔽一些安全提示，可能掩盖错误。
-
-### 使用 -r 删除目录
+## 删除目录
 
 默认情况下，`rm` 不能删除目录。
 
@@ -93,44 +109,40 @@ rm: cannot remove 'projects': Is a directory
 $ rm -r old-project
 ```
 
-递归删除会遍历目录树，删除文件、子目录及其内容。
-
-### rm -rf 的危险
-
-命令 `rm -rf` 结合了递归删除和强制删除。
-
-```bash
-$ rm -rf old-project
-```
-
-该命令适合删除生成的文件夹（如构建输出），但很危险，因为它会无提示地删除整个目录树。务必检查：
-
-- 你是否在预期的目录？使用 `pwd` 确认。
-- 通配符是否正确展开？用 `ls` 预览。
-- 路径是绝对路径还是相对路径？`/tmp/cache` 和 `tmp/cache` 差别很大。
-- 是否有意外空格？`rm -rf old-project` 和 `rm -rf old project` 是不同的路径。
-
-### 使用 rmdir 删除空目录
-
-作为更安全的替代方案，可以用 `rmdir` 删除空目录。
+对于空目录，`rmdir` 是范围更窄的替代命令：
 
 ```bash
 $ rmdir empty-directory
 ```
 
-`rmdir` 只有在目录完全为空时才会成功，因此比 `rm -r` 更安全，适合清理任务。
+`rmdir` 会在目录非空时失败，从而保护其中内容不被递归删除。
 
-### 常用 rm 选项
+:::single-choice{#remove-empty-directory-only} 哪个命令只在 `old-cache/` 为空时删除该目录？
 
-以下是你最常见的选项：
+::option[`rm -r old-cache/`]{#recursive-cache explanation="递归 `rm` 会删除目录及其中内容，并不强制要求目录为空。"}
+::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` 只会对空目录成功，因此不会递归删除其中的文件。"}
+::option[`rm -f old-cache/`]{#force-cache explanation="`-f` 不会让普通 `rm` 删除目录，而且它会抑制保护措施，并不检查目录是否为空。"}
+:::
 
-- `-i`：删除前逐个提示确认。
-- `-I`：删除超过三个文件或递归删除时，提示一次确认。
-- `-f`：强制删除，忽略不存在的文件。
-- `-r` 或 `-R`：递归删除目录及其内容。
-- `-v`：显示删除了什么。
+## 检查递归删除
 
-例如，你可以组合使用选项：
+递归删除可以清除整棵目录树。把 `-r` 与 `-f` 结合还会取消提示，因此使用 `rm -rf` 前必须特别仔细地验证目标。执行任何递归删除前，请检查：
+
+- 你是否处于预期目录？使用 `pwd`。
+- `ls -ld -- TARGET` 是否显示预期的顶层路径？
+- 如果涉及通配符，只读预览是否准确匹配预期内容？
+- 路径是绝对路径还是相对路径？`/tmp/cache` 和 `tmp/cache` 差别很大。
+- 是否有意外空格？`rm -rf old-project` 和 `rm -rf old project` 指向不同路径。
+
+如果目标可能以连字符开头，请在它之前使用 `--`，避免被解释为选项：
+
+```bash
+$ rm -- -old-name
+```
+
+不要仅因为 `rm` 报告权限错误就直接使用 `sudo`。应先确认目标，并查明当前账户为何不能修改其所在目录。提升权限的递归删除可能损坏操作系统或其他用户的数据。
+
+需要让 `rm` 报告每次成功删除时，可以使用 `-v`：
 
 ```bash
 $ rm -rv old-project
@@ -138,29 +150,24 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-### 常见问题
+:::single-choice{#remove-nonempty-tree} 确认完整目标无误后，哪个命令会删除 `old-project/` 及其下所有内容，同时仍允许正常提示？
 
-**我可以撤销 rm 吗？** 通常不行。一旦用 `rm` 删除了文件，没有内置的撤销命令。备份、版本控制和文件系统恢复工具才是真正的安全保障。
+::option[`rm old-project/`]{#plain-rm-project explanation="普通 `rm` 不会进入目录，因此不能删除非空目录树。"}
+::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="`-r` 会递归删除目录树；与 `rm -rf` 不同，这种形式没有用 `-f` 抑制提示。"}
+::option[`rmdir old-project/`]{#rmdir-project explanation="`rmdir` 要求目录为空；项目中仍含条目时会失败。"}
+:::
 
-**为什么 rm 提示“Permission denied”？** 你没有权限删除该文件或修改包含它的目录。用 `ls -l` 检查所有权和权限。
-
-**为什么 rm 提示“No such file or directory”？** 该路径下不存在文件，或者你所在目录不是预期的。用 `pwd` 和 `ls` 确认。
-
-**我应该用 sudo 执行 rm 吗？** 只有在完全理解要删除的路径时才使用。`sudo rm -r` 可能删除系统文件，普通用户账户无法操作的文件也会被删除。
-
-## Exercise
-
-实践是关键。以下是一些动手练习，帮助你巩固 Linux 中删除文件和目录的知识：
+要在受控环境中练习删除，可以尝试以下动手实验：
 
 1. **[Linux rm 命令：文件删除](https://labex.io/zh/labs/linux-linux-rm-command-file-removing-209741)** - 学习如何使用 `rm` 命令删除文件和目录，包括 `-r` 和 `-i` 等选项，练习安全有效的文件删除。
 2. **[文件和目录的组织](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 练习基本的 Linux 文件管理技能，包括使用 `rm` 命令清理不必要的目录，通过实际挑战提升能力。
 
-这些实验将帮助你在真实场景中应用这些概念，增强对 `linux rm command` 的信心。
+## 总结
 
-## Quiz Question
+现在，你可以删除文件系统条目，并把每个目标都视为不可撤销操作。
 
-如何删除名为 `myfile` 的文件？请用英文回答，且使用准确、区分大小写的命令。
-
-## Quiz Answer
-
-rm myfile
+1. 删除前确认文件路径。
+2. 使用只读命令预览通配符展开结果。
+3. 使用 `-i` 或 `-I` 请求确认。
+4. 目录必须为空时优先使用 `rmdir`。
+5. 使用递归删除前验证整个目标。

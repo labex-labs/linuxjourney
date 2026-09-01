@@ -1,105 +1,121 @@
 ---
-index: 5
+lesson_id: "samba"
+course_id: "network-sharing"
 lang: "pt"
+order_index: 5
 title: "Samba"
+description: "Aprenda a configurar, validar, acessar e proteger um compartilhamento básico do Samba."
 meta_title: "Samba - Compartilhamento de Rede"
 meta_description: "Aprenda a configurar um compartilhamento de rede Samba no Linux. Este guia abrange o protocolo Samba, instalação, configuração e uso de clientes smb linux para conectar-se a compartilhamentos."
 meta_keywords: "Samba, smb linux, linux smb, rede samba, protocolo samba, smb samba, compartilhamento de arquivos, smb.conf, cifs, smbclient, tutorial linux"
 ---
 
-## Lesson Content
+Samba implementa o protocolo Server Message Block em sistemas Unix-like, permitindo compartilhar arquivos e impressoras entre Linux, Windows, macOS e outros clientes. Implantações modernas usam dialetos SMB atuais; o termo antigo CIFS ainda aparece em ferramentas Linux, mas não é motivo para habilitar o obsoleto SMB1.
 
-Durante décadas, um desafio primordial em ambientes com sistemas operacionais mistos tem sido o compartilhamento de arquivos entre máquinas Windows e Linux. A solução que surgiu é o protocolo Server Message Block (SMB). Originalmente desenvolvido para o Windows, o **protocolo samba** foi posteriormente refinado em um dialeto conhecido como Common Internet File System (CIFS). Hoje, sistemas modernos usam versões mais recentes do SMB, mas os termos são frequentemente usados em conjunto.
+## Planejamento do compartilhamento
 
-Samba é o poderoso conjunto de softwares que implementa o protocolo **SMB/CIFS** no Linux e em outros sistemas do tipo Unix. É a chave para a integração **smb linux**, permitindo que um servidor Linux atue como servidor de arquivos e impressão para clientes Windows, macOS e outros clientes Linux, criando uma **rede samba** contínua. A relação entre **smb samba** é direta: Samba é o software que fala a linguagem SMB.
+Antes de instalar ou mudar, defina clientes autorizados, identidades, leitura e escrita, zona de rede, proprietário dos dados, backup e dialeto exigido. Use um diretório dedicado, sem expor acidentalmente uma árvore pessoal ou do sistema.
 
-### Instalando o Samba no Linux
+O acesso é controlado pelas regras do Samba e pelas permissões do sistema de arquivos. Permitir escrita em `smb.conf` não concede acesso que a conta não possui localmente.
 
-Para começar, você precisa instalar o pacote Samba. O comando varia dependendo do gerenciador de pacotes da sua distribuição Linux. Para sistemas baseados em Debian, como o Ubuntu, use o seguinte:
+:::single-choice{#samba-two-permission-layers} O que deve permitir a escrita por um compartilhamento Samba?
 
-```bash
-sudo apt update
-sudo apt install samba
-```
+::option[Apenas o comentário exibido pelo compartilhamento.]{#samba-comment-permission explanation="Um comentário é texto descritivo e não concede acesso."}
+::option[As regras do Samba e as permissões do sistema de arquivos.]{#samba-policy-and-filesystem .correct explanation="A solicitação precisa passar pela política do protocolo e pela autorização local."}
+::option[Apenas o papel de parede do cliente.]{#samba-wallpaper explanation="A aparência do cliente não controla arquivos do servidor."}
+:::
 
-### Configurando um Compartilhamento Samba
+## Definição de um compartilhamento básico
 
-O arquivo de configuração principal para o Samba está localizado em `/etc/samba/smb.conf`. Este arquivo dita quais diretórios são compartilhados, quem pode acessá-los e suas permissões. O arquivo padrão contém muitos exemplos comentados que servem como uma ótima referência.
-
-Vamos percorrer as etapas para configurar um compartilhamento básico.
-
-Primeiro, abra o arquivo de configuração em um editor de texto:
-
-```bash
-sudo nano /etc/samba/smb.conf
-```
-
-Na parte inferior do arquivo, adicione uma nova seção para o seu compartilhamento. O nome entre colchetes será o nome do compartilhamento visível na rede.
+A configuração principal costuma ser `/etc/samba/smb.conf`:
 
 ```ini
-[myshare]
-    comment = Meu Primeiro Compartilhamento Samba
-    path = /my/directory/to/share
+[team]
+    path = /srv/samba/team
+    browseable = yes
     read only = no
-    browsable = yes
+    valid users = @teamshare
 ```
 
-Em seguida, crie o diretório que você especificou na configuração:
+Crie o diretório com propriedade e permissões revisadas:
 
 ```bash
-mkdir -p /my/directory/to/share
+$ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 ```
 
-Finalmente, você precisa configurar uma senha específica para o acesso Samba. O Samba mantém seu próprio banco de dados de senhas, que é separado das senhas de usuário do sistema.
+O bit set-group-ID ajuda novas entradas a herdar o grupo do diretório, mas o acesso colaborativo também pode exigir uma ACL ou uma máscara de criação escolhida cuidadosamente. Teste os resultados reais dos arquivos e diretórios em vez de presumir que a herança é suficiente.
+
+:::single-choice{#samba-valid-users} O que expressa `valid users = @teamshare`?
+
+::option[Todo usuário anônimo recebe escrita.]{#samba-every-anonymous explanation="A regra restringe o acesso, em vez de habilitar guest."}
+::option[O servidor deve renomear o share para `teamshare`.]{#samba-rename-share explanation="O nome visível continua sendo a seção `[team]`."}
+::option[Apenas membros do grupo nomeado são permitidos pela regra.]{#samba-valid-group .correct explanation="A forma com `@` indica um grupo na sintaxe de usuários do Samba."}
+:::
+
+## Configuração da identidade
+
+Num servidor standalone, a conta geralmente precisa de identidade Unix correspondente e credencial Samba habilitada:
 
 ```bash
-sudo smbpasswd -a [username]
+$ sudo smbpasswd -a alice
 ```
 
-Substitua `[username]` por um usuário Linux existente no seu sistema. Você será solicitado a criar uma nova senha para esse usuário para acesso Samba.
+Implantações em domínios de diretório usam outro projeto de identidade. Não coloque senhas no histórico do shell nem em configurações legíveis por usuários não relacionados e não presuma que uma senha do Samba seja automaticamente idêntica à senha da conta Unix.
 
-### Gerenciando o Serviço Samba
+:::single-choice{#samba-password-database} O que `smbpasswd -a alice` costuma fazer num servidor standalone?
 
-Após fazer alterações no arquivo `smb.conf`, você deve reiniciar o serviço Samba para que elas entrem em vigor.
+::option[Excluir o diretório pessoal do usuário Unix.]{#samba-delete-home explanation="O comando gerencia credenciais Samba e não remove o home."}
+::option[Adicionar ou inicializar credenciais Samba da conta.]{#samba-add-credential .correct explanation="O banco SMB é gerenciado separadamente da simples criação do usuário Unix."}
+::option[Montar todo compartilhamento visível como Alice.]{#samba-mount-all explanation="Cadastrar credenciais no servidor é separado de montar no cliente."}
+:::
+
+## Validação e aplicação
+
+Verifique a configuração interpretada antes de recarregar:
 
 ```bash
-sudo service smbd restart
+$ testparm -s
 ```
 
-### Acessando Compartilhamentos Samba
+Revise padrões inesperados e erros e, em seguida, recarregue o serviço Samba da distribuição por meio de seu gerenciador de serviços. Os nomes dos serviços variam e normalmente incluem `smbd.service` ou `smb.service`. Um reload causa menos interrupção do que um restart quando há suporte, mas ainda assim verifique o estado, os sockets em escuta, o escopo do firewall e os logs.
 
-Depois que seu compartilhamento estiver configurado, os clientes na rede podem acessá-lo.
-
-**Do Windows:**
-Abra o prompt Executar (Win + R) ou o Explorador de Arquivos e digite o caminho de rede: `\HOST\sharename`, onde `HOST` é o endereço IP ou nome de host da sua máquina Linux.
-
-**Do Linux:**
-O pacote Samba inclui uma ferramenta de linha de comando chamada **smbclient** que permite interagir com qualquer compartilhamento **linux smb** ou Windows.
+Teste a partir de um cliente com um usuário explícito:
 
 ```bash
-smbclient //HOST/myshare -U username
+$ smbclient //server.example.net/team -U alice
 ```
 
-Após a conexão, você obterá um prompt `smb: \>` onde poderá usar comandos como `ls`, `get` e `put` para gerenciar arquivos.
+:::single-choice{#samba-testparm-purpose} Por que executar `testparm -s` antes de aplicar uma mudança?
 
-### Montando um Compartilhamento Samba
+::option[Ele copia todo arquivo compartilhado para backup.]{#samba-testparm-backup explanation="A ferramenta interpreta a configuração e não copia dados."}
+::option[Ele valida e mostra a configuração efetiva do Samba.]{#samba-testparm-validate .correct explanation="A saída encontra erros e revela definições interpretadas antes do impacto."}
+::option[Ele concede privilégios administrativos a todos.]{#samba-testparm-admin explanation="A validação não altera autorização."}
+:::
 
-Para um acesso mais permanente, você pode montar o compartilhamento de rede diretamente no seu sistema de arquivos, fazendo-o aparecer como um diretório local.
+## Montagem a partir do Linux
+
+Clientes Linux usam o driver `cifs` e helpers. Evite senhas na linha de comando, pois vazam pelo histórico ou processos. Use arquivo de credenciais legível apenas pelo root ou mecanismo aprovado:
 
 ```bash
-sudo mount -t cifs //SERVER/sharename /mnt/mountpoint -o user=username,pass=password
+$ sudo mount -t cifs //server.example.net/team /mnt/team \
+    -o credentials=/root/.smb-team,vers=3.1.1
 ```
 
-Este comando usa o tipo de sistema de arquivos `cifs` para anexar o compartilhamento remoto a um ponto de montagem local.
+Proteja o arquivo de credenciais, confirme o dialeto aceito pelos dois lados e defina deliberadamente os requisitos de UID, GID, permissões e criptografia. Depois da montagem, verifique-a com `findmnt`, faça testes autorizados de leitura e escrita e desmonte após coordenar os usuários ativos.
 
-## Exercise
+:::single-choice{#samba-command-line-password} Por que evitar `password=...` diretamente no comando mount?
 
-Tente configurar um compartilhamento Samba simples na sua própria máquina Linux. Crie um diretório, configure-o em `smb.conf` e tente acessá-lo usando `smbclient` a partir da mesma máquina para testar a configuração. Para prática mais aprofundada, explore o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
+::option[O segredo pode aparecer no histórico ou nos argumentos do processo.]{#samba-password-exposure .correct explanation="Uma fonte protegida reduz divulgação acidental, mas ainda exige permissões cuidadosas."}
+::option[SMB não aceita nenhuma autenticação por senha.]{#samba-no-passwords explanation="Autenticação SMB por senha é comum, embora existam outros sistemas."}
+::option[A opção torna o share permanentemente somente leitura.]{#samba-password-readonly explanation="A localização do segredo não define a política de escrita."}
+:::
 
-## Quiz Question
+## Resumo
 
-Qual é o nome do protocolo, um dialeto inicial do SMB, que foi desenvolvido para compartilhamento de arquivos? Por favor, responda em inglês, prestando atenção à capitalização.
+Agora você consegue configurar Samba considerando segurança do protocolo e do sistema de arquivos.
 
-## Quiz Answer
-
-CIFS
+1. Definir clientes, identidades, rede e dados primeiro.
+2. Restringir o share e alinhar permissões locais.
+3. Gerenciar credenciais pelo modelo correto.
+4. Validar com `testparm` e testar de ponta a ponta.
+5. Proteger credenciais do cliente e verificar a montagem.

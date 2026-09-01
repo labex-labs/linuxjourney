@@ -4,3 +4,4 @@ failed_localization_files.json
 .DS_Store
 generate_toc.py
 AGENTS.md
+*.tmp.md

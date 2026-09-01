@@ -1,0 +1,123 @@
+id: init
+category:
+  id: journeyman
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/init.png
+order_index: 4
+translations:
+  en:
+    title: "Init"
+    description: "Learn about the different init systems: SysV, Upstart, and systemd."
+    faqs:
+      - question: "Which init systems are covered?"
+        answer: "The course covers System V, Upstart, and systemd, explaining their different approaches to starting, stopping, and organizing system services."
+      - question: "Is systemd the main focus?"
+        answer: "Systemd is important on modern distributions, but the historical System V and Upstart lessons help you understand older systems and the evolution of service management."
+      - question: "Does the course cover shutdown and reboot?"
+        answer: "Yes. The power-states lesson explains common ways to halt, power off, and restart Linux systems safely."
+    meta_title: "Linux Init Systems Course"
+    meta_description: "Compare System V, Upstart, and systemd while learning how Linux init systems start services, organize boot targets, and manage power states."
+    meta_keywords: "Linux init system, systemd, System V, Upstart, systemctl, services, systemd targets, shutdown reboot"
+  de:
+    title: "Init"
+    description: "Lernen Sie die verschiedenen Init-Systeme SysV, Upstart und systemd kennen."
+    faqs:
+      - question: "Welche Init-Systeme werden abgedeckt?"
+        answer: "Der Kurs behandelt System V, Upstart und systemd und erläutert deren unterschiedliche Ansätze zum Starten, Stoppen und Organisieren von Systemdiensten."
+      - question: "Steht systemd im Mittelpunkt?"
+        answer: "Systemd ist auf modernen Distributionen wichtig, aber die historischen Lektionen zu System V und Upstart helfen Ihnen, ältere Systeme und die Entwicklung des Service-Managements zu verstehen."
+      - question: "Behandelt der Kurs das Herunterfahren und Neustarten?"
+        answer: "Ja. In der Lektion zu Energiezuständen werden gängige Methoden zum sicheren Anhalten, Ausschalten und Neustarten von Linux-Systemen erläutert."
+    meta_title: "Linux Init Systems-Kurs"
+    meta_description: "Vergleichen Sie System V, Upstart und systemd und erfahren Sie, wie Linux-Init-Systeme Dienste starten, Startziele organisieren und Energiezustände verwalten."
+    meta_keywords: "Linux-Init-System, Systemd, System V, Upstart, Systemctl, Dienste, Systemd-Ziele, Neustart beim Herunterfahren"
+  es:
+    title: "Init"
+    description: "Aprende sobre los diferentes sistemas init: SysV, Upstart y systemd."
+    faqs:
+      - question: "¿Qué sistemas de inicio están cubiertos?"
+        answer: "El curso cubre System V, Upstart y systemd, y explica sus diferentes enfoques para iniciar, detener y organizar los servicios del sistema."
+      - question: "¿Systemd es el foco principal?"
+        answer: "Systemd es importante en las distribuciones modernas, pero las lecciones históricas de System V y Upstart lo ayudan a comprender los sistemas más antiguos y la evolución de la gestión de servicios."
+      - question: "¿El curso cubre el apagado y el reinicio?"
+        answer: "Sí. La lección sobre estados de energía explica formas comunes de detener, apagar y reiniciar sistemas Linux de forma segura."
+    meta_title: "Curso de Sistemas de Inicio Linux"
+    meta_description: "Compare System V, Upstart y systemd mientras aprende cómo los sistemas de inicio de Linux inician servicios, organizan objetivos de arranque y administran los estados de energía."
+    meta_keywords: "Sistema de inicio de Linux, systemd, System V, Upstart, systemctl, servicios, objetivos de systemd, apagado y reinicio"
+  fr:
+    title: "Init"
+    description: "Apprenez-en davantage sur les différents systèmes init : SysV, Upstart et systemd."
+    faqs:
+      - question: "Quels systèmes d'initialisation sont couverts ?"
+        answer: "Le cours couvre System V, Upstart et systemd, expliquant leurs différentes approches pour démarrer, arrêter et organiser les services système."
+      - question: "Systemd est-il l'objectif principal ?"
+        answer: "Systemd est important sur les distributions modernes, mais les leçons historiques de System V et Upstart vous aident à comprendre les anciens systèmes et l'évolution de la gestion des services."
+      - question: "Le cours couvre-t-il l'arrêt et le redémarrage ?"
+        answer: "Oui. La leçon sur les états d'alimentation explique les méthodes courantes pour arrêter, mettre hors tension et redémarrer les systèmes Linux en toute sécurité."
+    meta_title: "Cours sur les systèmes d'initialisation Linux"
+    meta_description: "Comparez System V, Upstart et systemd tout en apprenant comment les systèmes d'initialisation Linux démarrent les services, organisent les cibles de démarrage et gèrent les états d'alimentation."
+    meta_keywords: "Système d'initialisation Linux, systemd, System V, Upstart, systemctl, services, cibles systemd, redémarrage à l'arrêt"
+  ja:
+    title: "Init"
+    description: "さまざまな init システム（SysV、Upstart、systemd）について学びましょう。"
+    faqs:
+      - question: "どの init システムが対象ですか？"
+        answer: "このコースでは System V、Upstart、systemd を取り上げ、システム サービスの開始、停止、編成に対するさまざまなアプローチを説明します。"
+      - question: "systemd が主な焦点ですか？"
+        answer: "Systemd は最新のディストリビューションでは重要ですが、System V と Upstart の歴史的なレッスンは、古いシステムとサービス管理の進化を理解するのに役立ちます。"
+      - question: "コースにはシャットダウンと再起動も含まれますか？"
+        answer: "はい。電源状態のレッスンでは、Linux システムを安全に停止、電源オフ、再起動する一般的な方法について説明します。"
+    meta_title: "Linux Init システムコース"
+    meta_description: "System V、Upstart、systemd を比較しながら、Linux init システムがサービスを開始し、ブート ターゲットを編成し、電源状態を管理する方法を学びます。"
+    meta_keywords: "Linux init system, systemd, System V, Upstart, systemctl, サービス，systemd ターゲット，シャットダウン再起動"
+  ko:
+    title: "Init"
+    description: "다양한 init 시스템: SysV, Upstart, systemd 에 대해 배우세요."
+    faqs:
+      - question: "어떤 초기화 시스템이 적용되나요?"
+        answer: "이 과정에서는 System V, Upstart 및 systemd 를 다루며 시스템 서비스 시작, 중지 및 구성에 대한 다양한 접근 방식을 설명합니다."
+      - question: "systemd 가 주요 학습 대상인가요?"
+        answer: "Systemd 는 최신 배포판에서 중요하지만, 역사적인 System V 및 Upstart 강의는 기존 시스템과 서비스 관리의 발전을 이해하는 데 도움이 됩니다."
+      - question: "과정에서 종료 및 재부팅을 다루나요?"
+        answer: "네. 전원 상태 강의에서는 Linux 시스템을 안전하게 중지하고, 전원을 끄고, 다시 시작하는 일반적인 방법을 설명합니다."
+    meta_title: "Linux Init 시스템 코스"
+    meta_description: "Linux init 시스템이 서비스를 시작하고, 부팅 대상을 구성하고, 전원 상태를 관리하는 방법을 배우면서 System V, Upstart 및 systemd 를 비교하세요."
+    meta_keywords: "Linux 초기화 시스템, systemd, System V, Upstart, systemctl, 서비스, systemd 대상, 종료 재부팅"
+  pt:
+    title: "Init"
+    description: "Aprenda sobre os diferentes sistemas init: SysV, Upstart e systemd."
+    faqs:
+      - question: "Quais sistemas init são cobertos?"
+        answer: "O curso aborda System V, Upstart e systemd, explicando suas diferentes abordagens para iniciar, parar e organizar serviços do sistema."
+      - question: "O systemd é o foco principal?"
+        answer: "O Systemd é importante em distribuições modernas, mas as lições históricas do System V e do Upstart ajudam você a entender os sistemas mais antigos e a evolução do gerenciamento de serviços."
+      - question: "O curso cobre desligamento e reinicialização?"
+        answer: "Sim. A lição sobre estados de energia explica maneiras comuns de interromper, desligar e reiniciar sistemas Linux com segurança."
+    meta_title: "Curso de Sistemas Linux Init"
+    meta_description: "Compare System V, Upstart e systemd enquanto aprende como os sistemas init Linux iniciam serviços, organizam destinos de inicialização e gerenciam estados de energia."
+    meta_keywords: "Sistema de inicialização Linux, systemd, System V, Upstart, systemctl, serviços, destinos systemd, reinicialização de desligamento"
+  ru:
+    title: "Init"
+    description: "Узнайте о различных системах init: SysV, Upstart и systemd."
+    faqs:
+      - question: "Какие системы инициализации охвачены?"
+        answer: "Курс охватывает System V, Upstart и systemd, объясняя их различные подходы к запуску, остановке и организации системных служб."
+      - question: "Основное внимание уделяется systemd?"
+        answer: "Systemd важен для современных дистрибутивов, но исторические уроки System V и Upstart помогут вам понять старые системы и эволюцию управления сервисами."
+      - question: "Охватывает ли курс выключение и перезагрузку?"
+        answer: "Да. Урок о состояниях питания объясняет распространенные способы безопасной остановки, выключения и перезапуска систем Linux."
+    meta_title: "Курс по системам инициализации Linux"
+    meta_description: "Сравните System V, Upstart и systemd, изучая, как системы инициализации Linux запускают службы, организуют целевые объекты загрузки и управляют состояниями питания."
+    meta_keywords: "Система инициализации Linux, systemd, System V, Upstart, systemctl, службы, цели systemd, перезагрузка при завершении работы"
+  zh:
+    title: "初始化"
+    description: "了解不同的 init 系统：SysV、Upstart 和 systemd。"
+    faqs:
+      - question: "涵盖了哪些 init 系统？"
+        answer: "本课程涵盖 System V、Upstart 和 systemd，解释它们启动、停止和组织系统服务的不同方法。"
+      - question: "systemd 是主要焦点吗？"
+        answer: "Systemd 对于现代发行版很重要，但是历史上的 System V 和 Upstart 课程可以帮助您了解旧系统和服务管理的演变。"
+      - question: "课程是否涵盖关机和重启？"
+        answer: "是的。电源状态课程解释了安全停止、关闭和重新启动 Linux 系统的常见方法。"
+    meta_title: "Linux 初始化系统课程"
+    meta_description: "比较 System V、Upstart 和 systemd，同时了解 Linux init 系统如何启动服务、组织启动目标和管理电源状态。"
+    meta_keywords: "Linux init 系统，systemd, System V, Upstart, systemctl, 服务，systemd 目标，关机重启"

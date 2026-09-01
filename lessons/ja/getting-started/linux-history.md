@@ -1,50 +1,76 @@
 ---
-index: 1
+lesson_id: "linux-history"
+course_id: "getting-started"
 lang: "ja"
+order_index: 1
 title: "Linux の歴史"
+description: "UNIX、GNU、Linux カーネルが現代の Linux システムへどのように貢献したか学びます。"
 meta_title: "Linux の歴史 - 入門ガイド"
 meta_description: "Linux の歴史を学び、Linux の旅を始めましょう。UNIX から続く起源、GNU プロジェクト、リーナス・トーバルズによる Linux カーネルの誕生について解説します。"
 meta_keywords: "Linux の歴史，Linux 入門，UNIX, GNU プロジェクト，リーナス・トーバルズ，Linux カーネル，Linux 初心者"
 ---
 
-## Lesson Content
+**Linux Journey** へようこそ。強力な Linux の世界へ飛び込む準備ができたなら、ここが出発点です。案内役のペンギン・ピートと一緒に、まずは **Linux の歴史**を簡単にたどりましょう。
 
-Linux Journey へようこそ！強力な Linux の世界に飛び込む準備ができているなら、ここが最適な場所です。私の名前はペンギン・ピート、あなたのガイドを務めます。まずは、Linux の歴史を簡単に見ていきましょう。
+## Linux の前身
 
-### Linux の前身
+Linux がどのように生まれたかを理解するには、ベル研究所の Ken Thompson と Dennis Ritchie が UNIX オペレーティングシステムを開発した1969年までさかのぼります。UNIX は後に C プログラミング言語で書き直され、移植性が高まったことで広く採用されました。
 
-Linux がどのようにして生まれたのかを理解するには、1969 年に遡る必要があります。当時、ベル研究所のケン・トンプソンとデニス・リッチーが UNIX オペレーティングシステムを開発しました。後に C 言語で書き直されたことで移植性が高まり、広く普及することとなりました。
+![UNIX の系譜](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-![Unix の年表](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+:::single-choice{#understand-unix-portability} UNIX を C で書き直した重要な結果は何ですか？
 
-それから 10 年以上経った後、リチャード・ストールマンが GNU（「GNU's Not UNIX」の再帰的頭字語）プロジェクトを開始しました。その目的は、完全に自由でオープンソースの UNIX ライクなオペレーティングシステムを作成することでした。GNU プロジェクトは GNU 一般公衆利用許諾契約書（GPL）を含む多くの重要なコンポーネントを生み出しましたが、独自のカーネルである「Hurd」は完成が遅れていました。
+::option[GNU システム用に作られた自由なカーネルになった。]{#unix-became-gnu-kernel explanation="UNIX は GNU プロジェクトより前から存在し、GNU のカーネルではありません。GNU は後に Hurd という別のカーネルの開発を始めました。"}
+::option[異なるハードウェアシステムへ移しやすくなった。]{#portable-across-hardware .correct explanation="UNIX を C で記述したことで移植性が高まり、元のハードウェア以外にも普及しました。"}
+::option[ベル研究所だけで使うコマンドシェルになった。]{#unix-became-shell explanation="UNIX は単なるシェルではなくオペレーティングシステムです。C への書き直しにより、ベル研究所以外にも普及しました。"}
+:::
 
-### カーネルの役割
+それから10年以上後、Richard Stallman が GNU プロジェクトを始めました。GNU は「GNU's Not UNIX」の再帰的頭字語で、完全に自由でオープンソースな UNIX 風オペレーティングシステムを作ることが目標でした。プロジェクトは多くの必須コンポーネントと GNU General Public License（GPL）を生み出しましたが、独自のカーネル GNU Hurd は、Linux が利用可能になった時点で一般利用できる状態ではありませんでした。
 
-カーネルはオペレーティングシステムの中心となるコンポーネントです。ハードウェアとソフトウェアが通信するための架け橋として機能します。カーネルは CPU、メモリ、周辺機器などのシステムリソースを管理します。本質的に、カーネルはシステム上で起こるすべてを制御しています。BSD や MINIX といった他の UNIX ライクなシステムも開発されていましたが、それらには自由に利用できる統一されたカーネルが欠けていました。
+:::single-choice{#identify-gnu-missing-component} Linux が利用可能になった時点で、準備できていなかった GNU の主要コンポーネントはどれですか？
 
-### Linux カーネルの誕生
+::option[実用に耐えるカーネル]{#gnu-kernel .correct explanation="GNU は多くのシステムコンポーネントを作っていましたが、独自のカーネル GNU Hurd は一般利用できる状態ではありませんでした。"}
+::option[自由ソフトウェアライセンス]{#gnu-license explanation="GNU プロジェクトはすでに GNU General Public License を生み出していました。不足していたシステムコンポーネントは利用可能なカーネルです。"}
+::option[必須のシステムツール]{#gnu-tools explanation="GNU はすでに多くの必須ツールを作っていました。カーネルが未完成の主要部分として残っていました。"}
+:::
 
-1991 年、フィンランドの学生であったリーナス・トーバルズが、個人的なプロジェクトとして新しいカーネルの開発を始めました。現在私たちが Linux カーネルと呼んでいるこのカーネルは、GNU オペレーティングシステムの欠けていたピースを埋めるものでした。GNU ツールと Linux カーネルの組み合わせにより、今日広く使われている完全なオープンソースオペレーティングシステムが完成しました。このマイルストーンは、Linux の歴史における極めて重要な瞬間でした。
+## カーネルの役割
 
-![2018 年のリーナス・トーバルズ](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+カーネルはオペレーティングシステムの中核コンポーネントです。橋渡し役となり、ハードウェアとソフトウェアの通信を可能にします。CPU、メモリ、周辺機器などのシステムリソースを管理します。完全なオペレーティングシステムには、人が使うツールやアプリケーションに加え、このリソース管理の中核が必要です。
 
-_2018 年のリーナス・トーバルズ（出典：[Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds)）_
+:::single-choice{#recognize-kernel-role} オペレーティングシステムのカーネルが担う役割はどれですか？
 
-## Exercise
+::option[シェルへ入力されるすべてのコマンドを書く。]{#write-shell-commands explanation="シェルコマンドを与えるのは人またはスクリプトです。カーネルは、プログラムがコマンドを実行するときに必要な低水準リソースを提供します。"}
+::option[インストール済みの全アプリケーションのライセンスを選ぶ。]{#choose-software-licenses explanation="アプリケーションのライセンスを選ぶのは作者や配布者であり、カーネルのリソース管理タスクではありません。"}
+::option[CPU、メモリ、接続されたデバイスを管理する。]{#manage-system-resources .correct explanation="カーネルはハードウェアリソースを管理し、ソフトウェアが利用できるようにします。CPU 時間、メモリ、デバイスが代表例です。"}
+:::
 
-学ぶための最良の方法は実践することです。Linux の旅を始めるために、以下のハンズオンラボを試して基本的なコマンドを練習し、コマンドライン環境での自信を深めましょう。
+## Linux カーネルの誕生
 
-1. **[Linux 入門](https://labex.io/ja/labs/linux-getting-started-with-linux-446315)** - `echo`や`date`といった基本的なターミナルコマンドや簡単な計算を学び、Linux の旅を始めましょう。完全な初心者の方に最適です。
-2. **[初めての Linux ラボ](https://labex.io/ja/labs/linux-your-first-linux-lab-270253)** - この入門ラボでは、Linux での定番「Hello, World!」プログラムの作成を通じて、いくつかの基本的なコマンドを学びます。
-3. **[パーソナライズされたターミナル挨拶の作成](https://labex.io/ja/labs/linux-create-personalized-terminal-greeting-446322)** - 基本的な Linux ターミナルコマンドを使用して、魅力的なウェルカムメッセージを作成する楽しく簡単なチャレンジです。
+1991年、フィンランドの学生 Linus Torvalds が個人プロジェクトとして新しいカーネルの開発を始めました。これが Linux カーネルとなります。Linux が1992年に自由ソフトウェアとして公開されると、ほぼ完成していた GNU システムと組み合わせ、一般に GNU/Linux と呼ばれる完全で自由なオペレーティングシステムを構成できるようになりました。これは **Linux の歴史**における重要な転機です。
 
-これらのラボは、実際の Linux 環境で基礎概念を応用するのに役立ちます。
+![2018年の Linus Torvalds](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 
-## Quiz Question
+_2018年の Linus Torvalds（出典：[Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds)）_
 
-Linux カーネルを開発したのは誰ですか？英語で回答し、大文字と小文字の区別に注意してください。
+:::single-choice{#identify-linux-kernel-creator} 1991年に Linux カーネルの開発を始めたのは誰ですか？
 
-## Quiz Answer
+::option[Richard Stallman]{#richard-stallman explanation="Richard Stallman は GNU プロジェクトを始めました。GNU は多くのシステムコンポーネントを提供しましたが、Linux カーネルを始めたのは Linus Torvalds です。"}
+::option[Dennis Ritchie]{#dennis-ritchie explanation="Dennis Ritchie は UNIX と C プログラミング言語の開発に貢献しました。Linux カーネルは後に Linus Torvalds が始めました。"}
+::option[Linus Torvalds]{#linus-torvalds .correct explanation="Linus Torvalds は1991年にカーネルプロジェクトを始め、それが Linux カーネルになりました。"}
+:::
 
-Linus Torvalds
+**Linux の旅**を続けるため、次のハンズオンラボで基本コマンドを練習し、コマンドライン環境への自信を付けましょう。
+
+1. **[Linux 入門](https://labex.io/labs/linux-getting-started-with-linux-446315)** - `echo`、`date`、基本的な計算など、必須の端末コマンドから Linux の学習を始めます。まったくの初心者に最適です。
+2. **[初めての Linux ラボ](https://labex.io/labs/linux-your-first-linux-lab-270253)** - 定番の「Hello, World!」プログラムを Linux で実行し、いくつかの基本コマンドを学びます。
+3. **[自分用の端末挨拶を作る](https://labex.io/labs/linux-create-personalized-terminal-greeting-446322)** - 基本的な Linux 端末コマンドを使い、楽しいウェルカムメッセージを作る短いチャレンジです。
+
+## まとめ
+
+UNIX、GNU、Linux カーネルが現代の Linux システムへどう貢献したか説明できるようになりました。
+
+1. UNIX の移植性が重要だった理由を説明する。
+2. GNU に不足していた主要コンポーネントがカーネルだったと特定する。
+3. システムリソースを管理するカーネルの役割を説明する。
+4. Linux カーネルの作者が Linus Torvalds だと特定する。

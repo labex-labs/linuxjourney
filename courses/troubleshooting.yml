@@ -1,0 +1,123 @@
+id: troubleshooting
+category:
+  id: networking-nomad
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/troubleshooting.png
+order_index: 5
+translations:
+  en:
+    title: "Troubleshooting"
+    description: "Learn about common networking tools to help you diagnose and troubleshoot issues!"
+    faqs:
+      - question: "Which diagnostic tools are covered?"
+        answer: "The course covers ICMP, ping, traceroute, netstat-style connection inspection, and packet analysis for investigating connectivity and traffic flow."
+      - question: "What troubleshooting order should I use?"
+        answer: "Start with the symptom and test progressively: local configuration, reachability, path behavior, listening services, connections, and packets when deeper evidence is needed."
+      - question: "Do packet captures contain sensitive data?"
+        answer: "They can. Captures may include addresses, hostnames, protocol details, and unencrypted content, so collect and share them only with proper authorization."
+    meta_title: "Linux Network Troubleshooting Course"
+    meta_description: "Diagnose Linux network problems with ICMP, ping, traceroute, socket inspection, netstat concepts, and packet analysis techniques."
+    meta_keywords: "Linux network troubleshooting, ping, traceroute, ICMP, netstat, packet analysis, network diagnostics"
+  de:
+    title: "Fehlerbehebung"
+    description: "Lernen Sie gängige Netzwerkwerkzeuge zur Diagnose und Fehlerbehebung kennen."
+    faqs:
+      - question: "Welche Diagnosetools sind abgedeckt?"
+        answer: "Der Kurs behandelt ICMP, Ping, Traceroute, Verbindungsinspektion im Netstat-Stil und Paketanalyse zur Untersuchung der Konnektivität und des Verkehrsflusses."
+      - question: "Welche Reihenfolge zur Fehlerbehebung sollte ich verwenden?"
+        answer: "Beginnen Sie mit dem Symptom und testen Sie schrittweise: lokale Konfiguration, Erreichbarkeit, Pfadverhalten, Abhördienste, Verbindungen und Pakete, wenn tiefergehende Beweise erforderlich sind."
+      - question: "Enthalten Paketerfassungen vertrauliche Daten?"
+        answer: "Sie können. Zu den Erfassungen können Adressen, Hostnamen, Protokolldetails und unverschlüsselte Inhalte gehören. Sammeln und teilen Sie diese daher nur mit der entsprechenden Genehmigung."
+    meta_title: "Kurs zur Fehlerbehebung im Linux-Netzwerk"
+    meta_description: "Diagnostizieren Sie Linux-Netzwerkprobleme mit ICMP, Ping, Traceroute, Socket-Inspektion, Netstat-Konzepten und Paketanalysetechniken."
+    meta_keywords: "Fehlerbehebung im Linux-Netzwerk, Ping, Traceroute, ICMP, Netstat, Paketanalyse, Netzwerkdiagnose"
+  es:
+    title: "Resolución de Problemas"
+    description: "Aprende a diagnosticar y resolver problemas con herramientas de red habituales."
+    faqs:
+      - question: "¿Qué herramientas de diagnóstico están cubiertas?"
+        answer: "El curso cubre ICMP, ping, traceroute, inspección de conexiones estilo netstat y análisis de paquetes para investigar la conectividad y el flujo de tráfico."
+      - question: "¿Qué orden de resolución de problemas debo utilizar?"
+        answer: "Comience con el síntoma y pruebe progresivamente: configuración local, accesibilidad, comportamiento de ruta, servicios de escucha, conexiones y paquetes cuando se necesite evidencia más profunda."
+      - question: "¿Las capturas de paquetes contienen datos confidenciales?"
+        answer: "Pueden. Las capturas pueden incluir direcciones, nombres de host, detalles de protocolo y contenido no cifrado, por lo que debe recopilarlos y compartirlos únicamente con la autorización adecuada."
+    meta_title: "Curso de solución de problemas de redes Linux"
+    meta_description: "Diagnosticar problemas de red Linux con ICMP, ping, traceroute, inspección de sockets, conceptos de netstat y técnicas de análisis de paquetes."
+    meta_keywords: "Solución de problemas de red Linux, ping, traceroute, ICMP, netstat, análisis de paquetes, diagnóstico de red"
+  fr:
+    title: "Dépannage"
+    description: "Apprenez à diagnostiquer et résoudre les problèmes avec les outils réseau courants."
+    faqs:
+      - question: "Quels outils de diagnostic sont couverts ?"
+        answer: "Le cours couvre ICMP, ping, traceroute, l'inspection de connexion de style netstat et l'analyse de paquets pour enquêter sur la connectivité et le flux de trafic."
+      - question: "Quel ordre de dépannage dois-je utiliser ?"
+        answer: "Commencez par le symptôme et testez progressivement : configuration locale, accessibilité, comportement du chemin, services d'écoute, connexions et paquets lorsque des preuves plus approfondies sont nécessaires."
+      - question: "Les captures de paquets contiennent-elles des données sensibles ?"
+        answer: "Ils le peuvent. Les captures peuvent inclure des adresses, des noms d'hôte, des détails de protocole et du contenu non chiffré, donc collectez-les et partagez-les uniquement avec l'autorisation appropriée."
+    meta_title: "Cours de dépannage du réseau Linux"
+    meta_description: "Diagnostiquez les problèmes de réseau Linux avec ICMP, ping, traceroute, inspection de socket, concepts netstat et techniques d'analyse de paquets."
+    meta_keywords: "Dépannage réseau Linux, ping, traceroute, ICMP, netstat, analyse de paquets, diagnostics réseau"
+  ja:
+    title: "トラブルシューティング"
+    description: "問題の診断とトラブルシューティングに役立つ一般的なネットワークツールについて学びましょう！"
+    faqs:
+      - question: "どの診断ツールが対象ですか？"
+        answer: "このコースでは、接続性とトラフィック フローを調査するための ICMP、ping、traceroute、netstat スタイルの接続検査、パケット分析について説明します。"
+      - question: "どのようなトラブルシューティングの順序を使用すればよいですか？"
+        answer: "症状から始めて、より深い証拠が必要な場合は、ローカル構成、到達可能性、パスの動作、リスニング サービス、接続、パケットなどを段階的にテストします。"
+      - question: "パケット キャプチャには機密データが含まれていますか？"
+        answer: "それはできます。キャプチャにはアドレス、ホスト名、プロトコルの詳細、暗号化されていないコンテンツが含まれる場合があるため、適切な許可がある場合にのみ収集して共有してください。"
+    meta_title: "Linux ネットワークのトラブルシューティング コース"
+    meta_description: "ICMP、ping、traceroute、ソケット検査、netstat の概念、およびパケット分析技術を使用して、Linux ネットワークの問題を診断します。"
+    meta_keywords: "Linux ネットワークのトラブルシューティング，ping, traceroute, ICMP, netstat, パケット分析，ネットワーク診断"
+  ko:
+    title: "문제 해결"
+    description: "일반적인 네트워크 도구로 문제를 진단하고 해결하는 방법을 알아보세요."
+    faqs:
+      - question: "어떤 진단 도구가 적용되나요?"
+        answer: "이 과정에서는 ICMP, ping, traceroute, netstat 방식의 연결 검사와 패킷 분석을 통해 연결 상태와 트래픽 흐름을 조사합니다."
+      - question: "어떤 문제 해결 순서를 사용해야 합니까?"
+        answer: "증상부터 시작하여 로컬 구성, 연결 가능성, 경로 동작, 청취 서비스, 연결 및 더 심층적인 증거가 필요한 패킷을 점진적으로 테스트합니다."
+      - question: "패킷 캡처에 민감한 데이터가 포함되어 있나요?"
+        answer: "가능합니다. 캡처에는 주소, 호스트 이름, 프로토콜 세부 정보 및 암호화되지 않은 콘텐츠가 포함될 수 있으므로 적절한 승인이 있는 경우에만 수집하고 공유하십시오."
+    meta_title: "Linux 네트워크 문제 해결 과정"
+    meta_description: "ICMP, ping, traceroute, 소켓 검사, netstat 개념과 패킷 분석 기법으로 Linux 네트워크 문제를 진단합니다."
+    meta_keywords: "Linux 네트워크 문제 해결, ping, traceroute, ICMP, netstat, 패킷 분석, 네트워크 진단"
+  pt:
+    title: "Resolução de Problemas"
+    description: "Aprenda sobre ferramentas comuns de rede para ajudar a diagnosticar e resolver problemas!"
+    faqs:
+      - question: "Quais ferramentas de diagnóstico são cobertas?"
+        answer: "O curso cobre ICMP, ping, traceroute, inspeção de conexão estilo netstat e análise de pacotes para investigar conectividade e fluxo de tráfego."
+      - question: "Qual ordem de solução de problemas devo usar?"
+        answer: "Comece com o sintoma e teste progressivamente: configuração local, acessibilidade, comportamento do caminho, serviços de escuta, conexões e pacotes quando forem necessárias evidências mais profundas."
+      - question: "As capturas de pacotes contêm dados confidenciais?"
+        answer: "Eles podem. As capturas podem incluir endereços, nomes de host, detalhes de protocolo e conteúdo não criptografado, portanto, colete-os e compartilhe-os somente com a devida autorização."
+    meta_title: "Curso de solução de problemas de rede Linux"
+    meta_description: "Diagnosticar problemas de rede Linux com ICMP, ping, traceroute, inspeção de soquete, conceitos de netstat e técnicas de análise de pacotes."
+    meta_keywords: "Solução de problemas de rede Linux, ping, traceroute, ICMP, netstat, análise de pacotes, diagnóstico de rede"
+  ru:
+    title: "Устранение неполадок"
+    description: "Изучите распространённые сетевые инструменты для диагностики и устранения неполадок."
+    faqs:
+      - question: "Какие диагностические инструменты покрываются?"
+        answer: "Курс охватывает ICMP, ping, traceroute, проверку соединений с помощью netstat и анализ пакетов для изучения связности и потока трафика."
+      - question: "Какой порядок устранения неполадок мне следует использовать?"
+        answer: "Начните с симптома и постепенно проверяйте: локальную конфигурацию, доступность, поведение пути, службы прослушивания, соединения и пакеты, когда необходимы более глубокие доказательства."
+      - question: "Содержат ли перехваченные пакеты конфиденциальные данные?"
+        answer: "Могут. Захваты могут включать адреса, имена хостов, данные протокола и незашифрованный контент, поэтому собирайте и делитесь ими только с надлежащего разрешения."
+    meta_title: "Курс по устранению сетевых неполадок Linux"
+    meta_description: "Диагностируйте сетевые проблемы Linux с помощью ICMP, ping, traceroute, проверки сокетов, netstat и анализа пакетов."
+    meta_keywords: "Устранение неполадок сети Linux, ping, traceroute, ICMP, netstat, анализ пакетов, диагностика сети"
+  zh:
+    title: "故障排除"
+    description: "了解常用的网络工具，帮助您诊断和排除问题！"
+    faqs:
+      - question: "涵盖哪些诊断工具？"
+        answer: "该课程涵盖 ICMP、ping、traceroute、netstat 式连接检查以及用于调查连接和流量的数据包分析。"
+      - question: "我应该使用什么故障排除顺序？"
+        answer: "从症状开始，逐步测试：本地配置、可达性、路径行为、侦听服务、连接和数据包（需要更深入的证据时）。"
+      - question: "抓包是否包含敏感数据？"
+        answer: "他们可以。捕获的内容可能包括地址、主机名、协议详细信息和未加密的内容，因此仅在经过适当授权的情况下收集和共享它们。"
+    meta_title: "Linux 网络故障排除课程"
+    meta_description: "使用 ICMP、ping、traceroute、套接字检查、netstat 概念和数据包分析技术诊断 Linux 网络问题。"
+    meta_keywords: "Linux 网络故障排除，ping, traceroute, ICMP, netstat, 数据包分析，网络诊断"

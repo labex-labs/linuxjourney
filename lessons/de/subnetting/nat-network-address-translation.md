@@ -1,44 +1,78 @@
 ---
-index: 6
+lesson_id: "nat-network-address-translation"
+course_id: "subnetting"
 lang: "de"
+order_index: 6
 title: "NAT"
-meta_title: "NAT - Subnetting"
-meta_description: "Erfahren Sie mehr über NAT (Network Address Translation) in Linux, wie es funktioniert und welche Rolle es bei der Netzwerksicherheit spielt. Verstehen Sie private vs. öffentliche IPs. Linux-Netzwerkanleitung."
-meta_keywords: "NAT, Network Address Translation, Linux-Netzwerk, private IP, öffentliche IP, Linux-Tutorial, Anfängerleitfaden"
+description: "Lerne, wie Quell-, Ziel- und Portübersetzung IPv4-Datenströme und Verbindungszustand verändern."
+meta_title: "NAT – Subnetting"
+meta_description: "Lerne Network Address Translation unter Linux, ihre Funktionsweise und ihre Rolle beim Verbinden privater und öffentlicher IPv4-Netze kennen."
+meta_keywords: "NAT, Network Address Translation, Linux-Vernetzung, private IP, öffentliche IP, Linux-Tutorial, Einsteiger-Anleitung"
 ---
 
-## Lesson Content
+Network Address Translation schreibt Adressfelder und häufig Transportports um, wenn Pakete ein übersetzendes Gerät durchqueren. Sie wird verbreitet eingesetzt, um privat adressierte IPv4-Netzwerke über eine kleinere Menge extern routbarer Adressen zu verbinden.
 
-Wir haben NAT (Network Address Translation) schon einmal erwähnt, aber nicht näher darauf eingegangen. Wenn wir an unserem Netzwerk arbeiten, bedeutet das, dass das Internet unsere IP-Adresse sehen kann? Nicht ganz.
+## Quellübersetzung
 
-NAT lässt ein Gerät wie unseren Router als Vermittler zwischen dem Internet und einem privaten Netzwerk agieren. So ist nur eine einzige, eindeutige IP-Adresse erforderlich, um eine ganze Gruppe von Computern darzustellen.
+Source NAT ersetzt die Quelladresse eines Pakets, wenn es ein Netzwerk verlässt. Many-to-one-Installationen übersetzen zusätzlich Quellports, damit mehrere interne Datenströme eine externe Adresse gemeinsam verwenden können. Diese portbezogene Form wird häufig NAPT, PAT oder – bei veränderlicher externer Adresse – Masquerading genannt.
 
-Stellen Sie sich NAT wie eine Empfangsdame in einem großen Büro vor. Wenn jemand Sie kontaktieren möchte, kennt er nur die Nummer des gesamten Büros. Die Empfangsdame müsste dann Ihre Durchwahlnummer suchen und den Anruf an Sie weiterleiten.
+Der Übersetzer verfolgt Zuordnungen, damit Antwortpakete zum ursprünglichen internen Endpunkt zurückübersetzt werden können. Er leitet normalerweise denselben Transportdatenstrom weiter und muss keine getrennte Proxyverbindung öffnen, wie es ein Anwendungsproxy tun würde.
 
-### Wie funktioniert es?
+:::single-choice{#nat-source-translation} Was verändert Source NAT an einem ausgehenden Paket?
 
-Ein einfacher Fall würde so aussehen:
+::option[Nur die Dateiberechtigungen der Zielanwendung.]{#nat-file-permissions explanation="NAT wirkt auf Netzwerk- und Transportheader und nicht auf entfernte Dateisysteme."}
+::option[Die Quelladresse und bei Many-to-one-Nutzung häufig den Quellport.]{#nat-source-fields .correct explanation="Die Zuordnung ermöglicht, Rückverkehr mit dem ursprünglichen internen Datenstrom zu verbinden."}
+::option[Den dauerhaft vom Client gespeicherten DNS-Namen.]{#nat-dns-name explanation="Die Übersetzung schreibt die Namensdienstdatenbank des Clients nicht um."}
+:::
 
-1. Patty möchte sich mit `www.google.com` verbinden, also sendet ihr Gerät diese Anfrage über den Router.
-2. Der Router nimmt diese Anfrage entgegen und öffnet seine eigene Verbindung zu google.com, dann sendet er Pattys Anfrage, sobald eine Verbindung hergestellt ist.
-3. Der Router ist der Vermittler zwischen Patty und `www.google.com`. Google weiß nichts über Patty; stattdessen sieht es nur den Router.
+## Zielübersetzung
 
-NAT und die Paketweiterleitung im Allgemeinen können ziemlich kompliziert werden, aber wir werden nicht auf die Einzelheiten eingehen.
+Destination NAT schreibt Zieladresse oder -port um, gewöhnlich um einen internen Dienst über einen externen Endpunkt zu veröffentlichen. Eine Portweiterleitungsregel kann einen externen TCP-Port einer anderen internen Adresse und einem anderen Port zuordnen. Rückverkehr benötigt eine konsistente Rückübersetzung.
 
-## Exercise
+:::single-choice{#nat-port-forward} Welche NAT-Form implementiert gewöhnlich eine eingehende Portweiterleitung?
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerkadressierung und Konnektivität zu vertiefen, die grundlegend für das Verständnis von Konzepten wie NAT sind:
+::option[Nur Source NAT vor der Routensuche.]{#nat-snat-port-forward explanation="Die Veröffentlichung eines internen Ziels erfordert die Übersetzung von Zielfeldern."}
+::option[Überhaupt keine Adress- oder Portübersetzung.]{#nat-no-translation explanation="Eine Portweiterleitungsregel ist definitionsgemäß eine Übersetzungsrichtlinie."}
+::option[Destination NAT.]{#nat-dnat .correct explanation="DNAT ordnet das externe Ziel dem ausgewählten internen Dienstendpunkt zu."}
+:::
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4- und IPv6-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, die IP-Adressierung durch Konfigurieren statischer und dynamischer IPs zu verwalten und die Netzwerkkonfiguration zu überprüfen, was zum Verständnis beiträgt, wie Geräte ihre Adressen erhalten.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit, um einen praktischen Kontext dafür zu erhalten, wie NAT zwischen internen und externen Adressen unterscheidet.
+## NAT und Firewallrichtlinie
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration und Fehlerbehebung unter Linux aufzubauen.
+NAT ist keine Firewall. Ein zustandsbehafteter Übersetzer besitzt möglicherweise keine Zuordnung für unaufgeforderten eingehenden Datenverkehr, doch ausdrückliche Weiterleitung, Zielübersetzung, Filterung und Anwendungsoffenlegung bestimmen die Erreichbarkeit. Sicherheitsrichtlinien sollten durch Firewallregeln, Dienste mit geringstmöglichen Berechtigungen und Ende-zu-Ende-Kontrollen ausgedrückt und auditiert werden, statt sie aus Adressumschreibung abzuleiten.
 
-## Quiz Question
+:::single-choice{#nat-not-firewall} Warum sollte NAT nicht für sich allein als Sicherheitsrichtlinie behandelt werden?
 
-Was wird verwendet, um eine einzelne private Adresse dem Internet gegenüber darzustellen?
+::option[NAT verschlüsselt automatisch jede Nutzlast.]{#nat-encrypts explanation="Adressübersetzung bietet keine Vertraulichkeit der Nutzlast."}
+::option[Übersetzungs- und Verkehrsfilterregeln besitzen unterschiedliche Zwecke.]{#nat-filter-separate .correct explanation="Erreichbarkeit und Autorisierung erfordern auch bei vorhandener Übersetzung ausdrückliche Filter- und Dienstrichtlinien."}
+::option[NAT verhindert, dass Administratoren Firewallregeln definieren.]{#nat-prevents-firewall explanation="Übersetzung und Firewallrichtlinien bestehen gewöhnlich nebeneinander."}
+:::
 
-## Quiz Answer
+## Betriebliche Folgen
 
-NAT
+NAT kann Adress- und Portzuordnungen erschöpfen, Peer-to-Peer-Protokolle erschweren, ursprüngliche Quellen vor Anwendungen verbergen und Sonderbehandlung für Protokolle erfordern, die Adressen einbetten. Protokolle müssen Zeitstempel und Details der Übersetzungszuordnung bewahren, wenn Datenströme zurückverfolgt werden sollen.
+
+Unter Linux werden aktuelle Richtlinien gewöhnlich mit nftables und Connection Tracking konfiguriert. Untersuche vor Änderungen den tatsächlichen Regelsatz:
+
+```bash
+$ sudo nft list ruleset
+$ sudo conntrack -L
+```
+
+Der zweite Befehl erfordert Conntrack-Werkzeuge und erhöhte Berechtigungen. Änderungen am Regelsatz können den Fernzugriff trennen; verwende deshalb Konsolenwiederherstellung, atomare Konfiguration, Validierung und Rücknahme.
+
+:::single-choice{#nat-trace-flow} Welche Belege sind nötig, um einen Datenstrom mit gemeinsam genutzter Adresse zu einem internen Client zurückzuverfolgen?
+
+::option[Nur die externe Adresse ohne Zeit oder Port.]{#nat-address-only explanation="Viele Clients und Datenströme können diese Adresse gemeinsam verwenden."}
+::option[Nur der angezeigte Hostname des Clients.]{#nat-hostname-only explanation="Der Übersetzer ordnet Pakettupel und nicht unbedingt Hostnamen zu."}
+::option[Eine zeitlich verknüpfte Übersetzungszuordnung einschließlich Protokoll und Ports.]{#nat-correlated-mapping .correct explanation="Das vollständige Tupel und der Zeitstempel unterscheiden gleichzeitig übersetzte Datenströme."}
+:::
+
+## Zusammenfassung
+
+Du kannst Adressübersetzung nun von Routing, Proxying und Firewallrichtlinien unterscheiden.
+
+1. Erkenne Quellübersetzung bei ausgehenden Datenströmen.
+2. Erkenne Zielübersetzung bei veröffentlichten Diensten.
+3. Verstehe, wie Portzuordnungen die gemeinsame Nutzung von Adressen ermöglichen.
+4. Wende ausdrückliche Filterung an, statt NAT als Sicherheit zu behandeln.
+5. Bewahre bei Änderungen Zuordnungsbelege und Wiederherstellungszugang.

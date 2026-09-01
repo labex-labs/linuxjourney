@@ -1,0 +1,123 @@
+id: text-fu
+category:
+  id: grasshopper
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/text-fu.png
+order_index: 2
+translations:
+  en:
+    title: "Text-Fu"
+    description: "Learn basic text manipulation and navigation."
+    faqs:
+      - question: "What will I learn in Text-Fu?"
+        answer: "You will learn to search, filter, transform, combine, and redirect text with tools such as grep, cut, sort, uniq, tr, head, tail, and tee."
+      - question: "Should I complete the Command Line course first?"
+        answer: "Yes. Familiarity with files, directories, and basic shell commands will make the text-processing examples easier to understand."
+      - question: "Why are pipes and redirection important?"
+        answer: "They let you connect small commands into repeatable workflows, control input and output, and process data without opening a graphical editor."
+    meta_title: "Linux Text Processing Course"
+    meta_description: "Master Linux text streams and essential tools such as grep, sort, cut, head, tail, tr, uniq, pipes, and input or output redirection."
+    meta_keywords: "Linux text processing, grep, pipes, redirection, sort command, cut command, stdin stdout stderr"
+  de:
+    title: "Text-Fu"
+    description: "Lernen Sie grundlegende Textmanipulation und -navigation."
+    faqs:
+      - question: "Was werde ich in Text-Fu lernen?"
+        answer: "Sie lernen, Text mit Werkzeugen wie grep, cut, sort, uniq, tr, head, tail und tee zu suchen, zu filtern, umzuwandeln, zu kombinieren und umzuleiten."
+      - question: "Sollte ich zuerst den Befehlszeilenkurs absolvieren?"
+        answer: "Ja. Wenn Sie mit Dateien, Verzeichnissen und grundlegenden Shell-Befehlen vertraut sind, werden die Beispiele zur Textverarbeitung leichter verständlich."
+      - question: "Warum sind Rohre und Umleitung wichtig?"
+        answer: "Sie ermöglichen es Ihnen, kleine Befehle zu wiederholbaren Arbeitsabläufen zu verbinden, Eingabe und Ausgabe zu steuern und Daten zu verarbeiten, ohne einen grafischen Editor öffnen zu müssen."
+    meta_title: "Linux-Textverarbeitungskurs"
+    meta_description: "Beherrschen Sie Linux-Textströme und wichtige Tools wie grep, sort, cut, head, tail, tr, uniq, Pipes und Eingabe- oder Ausgabeumleitung."
+    meta_keywords: "Linux-Textverarbeitung, grep, Pipes, Umleitung, sort-Befehl, cut-Befehl, stdin stdout stderr"
+  es:
+    title: "Text-Fu"
+    description: "Aprende manipulación y navegación básica de texto."
+    faqs:
+      - question: "¿Qué aprenderé en Text-Fu?"
+        answer: "Aprenderá a buscar, filtrar, transformar, combinar y redirigir texto con herramientas como grep, cut, sort, uniq, tr, head, tail y tee."
+      - question: "¿Debo completar primero el curso Línea de comandos?"
+        answer: "Sí. La familiaridad con archivos, directorios y comandos básicos de shell hará que los ejemplos de procesamiento de texto sean más fáciles de entender."
+      - question: "¿Por qué son importantes las tuberías y la redirección?"
+        answer: "Le ​​permiten conectar pequeños comandos en flujos de trabajo repetibles, controlar la entrada y salida y procesar datos sin abrir un editor gráfico."
+    meta_title: "Curso de procesamiento de textos Linux"
+    meta_description: "Domine los flujos de texto de Linux y las herramientas esenciales como grep, sort, cut, head, tail, tr, uniq, pipes y redirección de entrada o salida."
+    meta_keywords: "Procesamiento de texto en Linux, grep, canalizaciones, redirección, comando sort, comando cut, stdin stdout stderr"
+  fr:
+    title: "Text-Fu"
+    description: "Apprenez la manipulation et la navigation de texte de base."
+    faqs:
+      - question: "Que vais-je apprendre dans Text-Fu ?"
+        answer: "Vous apprendrez à rechercher, filtrer, transformer, combiner et rediriger du texte avec des outils tels que grep, cut, sort, uniq, tr, head, tail et tee."
+      - question: "Dois-je d'abord suivre le cours Ligne de commande ?"
+        answer: "Oui. La familiarité avec les fichiers, les répertoires et les commandes shell de base facilitera la compréhension des exemples de traitement de texte."
+      - question: "Pourquoi les tuyaux et la redirection sont-ils importants ?"
+        answer: "Ils vous permettent de connecter de petites commandes dans des flux de travail répétables, de contrôler les entrées et les sorties et de traiter les données sans ouvrir d'éditeur graphique."
+    meta_title: "Cours de traitement de texte Linux"
+    meta_description: "Maîtrisez les flux de texte Linux et les outils essentiels tels que grep, sort, cut, head, tail, tr, uniq, pipes et la redirection d'entrée ou de sortie."
+    meta_keywords: "Traitement de texte Linux, grep, pipes, redirection, commande sort, commande cut, stdin stdout stderr"
+  ja:
+    title: "テキスト操作"
+    description: "基本的なテキスト操作とナビゲーションを学びましょう。"
+    faqs:
+      - question: "Text-Fu では何を学びますか？"
+        answer: "grep、cut、sort、uniq、tr、head、tail、tee などのツールを使用して、テキストを検索、フィルター、変換、結合、リダイレクトする方法を学びます。"
+      - question: "最初にコマンドラインコースを完了する必要がありますか？"
+        answer: "はい。ファイル、ディレクトリ、および基本的なシェル コマンドに精通していると、テキスト処理の例が理解しやすくなります。"
+      - question: "パイプとリダイレクトはなぜ重要ですか？"
+        answer: "グラフィカル エディターを開かずに、小さなコマンドを反復可能なワークフローに接続し、入出力を制御し、データを処理できます。"
+    meta_title: "Linux テキスト処理コース"
+    meta_description: "Linux テキスト ストリームと、grep、sort、cut、head、tail、tr、uniq、パイプ、入力または出力のリダイレクトなどの重要なツールをマスターします。"
+    meta_keywords: "Linux テキスト処理，grep, パイプ，リダイレクト，sort コマンド，cut コマンド，stdin stdout stderr"
+  ko:
+    title: "Text-Fu"
+    description: "기본 텍스트 조작 및 탐색을 배우세요."
+    faqs:
+      - question: "Text-Fu 에서는 무엇을 배우나요?"
+        answer: "grep, cut, sort, uniq, tr, head, tail 및 tee 와 같은 도구를 사용하여 텍스트를 검색, 필터링, 변환, 결합 및 리디렉션하는 방법을 배웁니다."
+      - question: "Command Line 과정을 먼저 이수해야 하나요?"
+        answer: "네. 파일, 디렉터리 및 기본 셸 명령에 익숙하면 텍스트 처리 예제를 더 쉽게 이해할 수 있습니다."
+      - question: "파이프와 리디렉션이 왜 중요한가요?"
+        answer: "그래픽 편집기를 열지 않고도 작은 명령을 반복 가능한 작업 흐름에 연결하고, 입력 및 출력을 제어하고, 데이터를 처리할 수 있습니다."
+    meta_title: "Linux 텍스트 처리 과정"
+    meta_description: "Linux 텍스트 스트림과 grep, sort, cut, head, tail, tr, uniq, 파이프 및 입력 또는 출력 리디렉션과 같은 필수 도구를 마스터하세요."
+    meta_keywords: "Linux 텍스트 처리, grep, 파이프, 리디렉션, sort 명령, cut 명령, stdin stdout stderr"
+  pt:
+    title: "Text-Fu"
+    description: "Aprenda manipulação e navegação básica de texto."
+    faqs:
+      - question: "O que vou aprender no Text-Fu?"
+        answer: "Você aprenderá a pesquisar, filtrar, transformar, combinar e redirecionar texto com ferramentas como grep, cut, sort, uniq, tr, head, tail e tee."
+      - question: "Devo concluir o curso de Linha de Comando primeiro?"
+        answer: "Sim. A familiaridade com arquivos, diretórios e comandos básicos do shell tornará os exemplos de processamento de texto mais fáceis de entender."
+      - question: "Por que pipes e redirecionamentos são importantes?"
+        answer: "Eles permitem conectar pequenos comandos em fluxos de trabalho repetíveis, controlar entrada e saída e processar dados sem abrir um editor gráfico."
+    meta_title: "Curso de Processamento de Texto Linux"
+    meta_description: "Domine fluxos de texto do Linux e ferramentas essenciais, como grep, sort, cut, head, tail, tr, uniq, pipes e redirecionamento de entrada ou saída."
+    meta_keywords: "Processamento de texto Linux, grep, pipes, redirecionamento, comando sort, comando cut, stdin stdout stderr"
+  ru:
+    title: "Text-Fu"
+    description: "Изучите базовые манипуляции с текстом и навигацию."
+    faqs:
+      - question: "Чему я научусь в Text-Fu?"
+        answer: "Вы научитесь искать, фильтровать, преобразовывать, комбинировать и перенаправлять текст с помощью таких инструментов, как grep, Cut, sort, uniq, tr, head, Tail и Tee."
+      - question: "Должен ли я сначала пройти курс «Командная строка»?"
+        answer: "Да. Знакомство с файлами, каталогами и основными командами оболочки облегчит понимание примеров обработки текста."
+      - question: "Почему важны каналы и перенаправление?"
+        answer: "Они позволяют объединять небольшие команды в повторяемые рабочие процессы, контролировать ввод и вывод, а также обрабатывать данные без открытия графического редактора."
+    meta_title: "Курс обработки текста в Linux"
+    meta_description: "Основные текстовые потоки Linux и необходимые инструменты, такие как grep, sort, Cut, Head, Tail, Tr, uniq, Pipes и перенаправление ввода или вывода."
+    meta_keywords: "Обработка текста в Linux, grep, каналы, перенаправление, команда sort, команда cut, stdin stdout stderr"
+  zh:
+    title: "文本操作"
+    description: "学习基本的文本操作和导航。"
+    faqs:
+      - question: "我在 Text-Fu 能学到什么？"
+        answer: "您将学习使用 grep、cut、sort、uniq、tr、head、tail 和 tee 等工具搜索、过滤、转换、组合和重定向文本。"
+      - question: "我应该先完成命令行课程吗？"
+        answer: "是的。熟悉文件、目录和基本 shell 命令将使文本处理示例更容易理解。"
+      - question: "为什么管道和重定向很重要？"
+        answer: "它们使您可以将小命令连接到可重复的工作流程、控制输入和输出以及处理数据，而无需打开图形编辑器。"
+    meta_title: "Linux 文本处理课程"
+    meta_description: "掌握 Linux 文本流和基本工具，例如 grep、sort、cut、head、tail、tr、uniq、管道以及输入或输出重定向。"
+    meta_keywords: "Linux 文本处理，grep, 管道，重定向，sort 命令，cut 命令，stdin stdout stderr"

@@ -1,72 +1,116 @@
 ---
-index: 9
+lesson_id: "disk-usage"
+course_id: "filesystem"
 lang: "es"
-title: "Uso del Disco"
-meta_title: "Uso del Disco - El Sistema de Archivos"
-meta_description: "Aprenda a verificar el uso del disco y el espacio libre en Linux con los comandos df y du. Esta guía cubre cómo analizar el espacio en disco, incluido el uso de inodos con df -i linux, y encontrar qué archivos están ocupando espacio."
-meta_keywords: "comando df, comando du, uso de disco Linux, verificar espacio libre, df -i linux, gestión de disco, tutorial Linux, utilización de disco, uso del sistema de archivos"
+order_index: 9
+title: "Uso del disco"
+description: "Aprende cómo `df` y `du` miden vistas distintas del consumo de bloques e inodos de un sistema de archivos."
+meta_title: "Uso del disco - El sistema de archivos"
+meta_description: "Aprende a comprobar el uso del disco en Linux con df y du, incluidos el espacio libre y los inodos."
+meta_keywords: "orden df, orden du, uso de disco Linux, espacio libre, df -i, inodos"
 ---
 
-## Lesson Content
+La capacidad de un sistema de archivos tiene al menos dos límites: los bloques de datos y los objetos de metadatos como los inodos. `df` comunica la asignación desde la perspectiva del sistema de archivos, mientras que `du` recorre las rutas alcanzables y suma el uso atribuido a ellas. Los valores responden a preguntas distintas y no tienen por qué coincidir.
 
-Gestionar el espacio en disco es una tarea fundamental para cualquier usuario o administrador de Linux. Dos comandos esenciales para este propósito son `df` y `du`. Exploremos cómo usarlos para monitorear eficazmente la utilización de su disco.
+## Capacidad del sistema de archivos con `df`
 
-### Comprobación del Espacio del Sistema de Archivos con df
-
-El comando `df` (disk free o espacio libre en disco) informa sobre la cantidad de espacio en disco utilizado y disponible en sus sistemas de archivos montados actualmente. Proporciona una visión general de alto nivel de su almacenamiento.
-
-Para obtener un informe en un formato legible para humanos (por ejemplo, GB, MB, KB), use la opción `-h`:
+Muestra el tipo de sistema de archivos montado y cifras de bloques legibles con:
 
 ```bash
-pete@icebox:~$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1       6.2G  2.3G  3.6G  40% /
+$ df -hT
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda1      ext4  6.2G  2.3G  3.6G  40% /
 ```
 
-Esta salida muestra el dispositivo del sistema de archivos, el tamaño total, el espacio utilizado, el espacio disponible, el porcentaje de uso y dónde está montado.
-
-### Análisis del Uso de Inodos
-
-Además del espacio en bloques, los sistemas de archivos también utilizan inodos para almacenar metadatos sobre los archivos (como permisos, propiedad y ubicación). En raras ocasiones, puede quedarse sin inodos incluso si tiene espacio libre en disco. Para verificar el uso de inodos, puede usar el comando `df -i`. Ejecutar `df -i` en Linux le da una imagen clara de la asignación de inodos.
+`Size`, `Used` y `Avail` proceden de la contabilidad del sistema de archivos. El espacio disponible puede ser menor que el total menos el utilizado debido a bloques reservados, metadatos, políticas de asignación, cuotas o redondeos. Ejecuta `df` sobre una ruta para obtener el sistema de archivos que la contiene:
 
 ```bash
-pete@icebox:~$ df -i
-Filesystem      Inodes  IUsed   IFree IUse% Mounted on
-/dev/sda1      4128768 128768 4000000    4% /
+$ df -hT /var/log
 ```
 
-### Resumen del Uso de Directorios con du
+:::single-choice{#disk-usage-df-scope} ¿Qué comunica principalmente `df`?
 
-Cuando nota que un disco se está llenando, querrá identificar qué archivos o directorios están consumiendo más espacio. Para esta tarea, el comando `du` (disk usage o uso de disco) es la herramienta perfecta.
+::option[El contenido en bytes de cada archivo de un directorio.]{#disk-usage-df-file-content explanation="La contabilidad del árbol de directorios corresponde a herramientas como `du`."}
+::option[La capacidad, el uso y el espacio disponible a nivel del sistema de archivos.]{#disk-usage-df-filesystem .correct explanation="Df consulta estadísticas de asignación de sistemas de archivos montados en vez de recorrer todas las rutas."}
+::option[Únicamente el tamaño físico impreso en la etiqueta de un disco.]{#disk-usage-df-physical-label explanation="Sus cifras describen la contabilidad del sistema de archivos, no solo la capacidad anunciada del hardware."}
+:::
 
-Ejecutar `du` sin argumentos muestra el uso de disco para cada subdirectorio en su ubicación actual. Usar la opción `-h` proporciona un resumen legible para humanos:
+## Capacidad de inodos
+
+Los sistemas de archivos que asignan objetos semejantes a inodos pueden agotarlos aunque queden bloques:
 
 ```bash
-du -h
+$ df -i /var
 ```
 
-También puede especificar una ruta, como `du -h /home/pete`, para analizar un directorio específico. Ejecutarlo en el directorio raíz (`du -h /`) puede producir muchas salidas, por lo que a menudo es mejor verificar directorios específicos que sospeche que son grandes.
+Una gran cantidad de archivos pequeños puede consumir los inodos disponibles. Eliminar un archivo grande libera muchos bloques, pero por lo general un solo inodo; eliminar muchos archivos pequeños innecesarios puede aliviar la presión de inodos. Algunos sistemas de archivos asignan metadatos dinámicamente y comunican estos conceptos de otra forma.
 
-### df vs du Un Resumen Rápido
+:::single-choice{#disk-usage-inode-exhaustion} ¿Qué puede ocurrir cuando un sistema de archivos tiene bloques libres, pero no inodos libres?
 
-La sintaxis de `df` y `du` es tan similar que puede ser fácil confundirlas. Aquí hay una forma sencilla de recordar la diferencia:
+::option[Todos los archivos existentes duplican automáticamente su tamaño.]{#disk-usage-inode-double explanation="Agotar los inodos impide asignar metadatos nuevos y no amplía el contenido existente."}
+::option[Puede fallar la creación de otro archivo.]{#disk-usage-inode-create-fail .correct explanation="Un objeto nuevo del sistema de archivos necesita metadatos aunque quede espacio para datos."}
+::option[El sistema de archivos se convierte en intercambio.]{#disk-usage-inode-swap explanation="Agotar un recurso no cambia el tipo del sistema de archivos."}
+:::
 
-- Use `df` para verificar cuánto **d**isco está **l**ibre en sus sistemas de archivos.
-- Use `du` para verificar el **u**so de **d**isco de archivos y directorios específicos.
+## Uso de rutas con `du`
 
-## Exercise
+Resume el espacio asignado alcanzable bajo un directorio:
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión y utilización del espacio en disco en Linux:
+```bash
+$ du -sh /var/log
+```
 
-1. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practique la creación, formateo y montaje de sistemas de archivos, que son las estructuras subyacentes reportadas por `df` y `du`.
-2. **[Crear y Activar un Archivo de Intercambio (Swap) en Linux](https://labex.io/es/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Aprenda a administrar la memoria virtual en disco, un aspecto crítico de la gestión de recursos del sistema que afecta el espacio en disco.
+Compara los hijos inmediatos sin salir de un sistema de archivos:
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la gestión de recursos de disco.
+```bash
+$ sudo du -xhd1 /var | sort -h
+```
 
-## Quiz Question
+Las opciones de GNU mostradas significan salida legible, profundidad máxima uno y un solo sistema de archivos. Los permisos pueden ocultar subárboles y producir un total incompleto. `du` también puede contar los archivos con enlaces duros una sola vez de forma predeterminada, distinguir el tamaño aparente de los bloques asignados y tratar de forma distinta los archivos dispersos según las opciones.
 
-Qué comando se utiliza para mostrar cuánto espacio libre hay en su disco? Por favor, responda en letras minúsculas en inglés.
+:::single-choice{#disk-usage-du-purpose} ¿Qué orden resume el uso asignado bajo `/var/log`?
 
-## Quiz Answer
+::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="Esta orden comunica estadísticas de inodos del sistema de archivos que contiene la ruta."}
+::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du recorre el árbol indicado y `-s` emite un único resumen en unidades legibles."}
+::option[`mount -a /var/log`]{#disk-usage-mount-a explanation="Montar no guarda relación con un resumen de solo lectura del uso de un directorio."}
+:::
 
-df
+## Por qué difieren `df` y `du`
+
+Entre las causas habituales se encuentran:
+
+- un proceso mantiene abierto un archivo eliminado, por lo que sus bloques siguen asignados, pero no existe una ruta para `du`
+- los metadatos del sistema de archivos, el espacio reservado, los diarios, reflinks, instantáneas o la compresión influyen en la contabilidad
+- hay otro sistema de archivos montado dentro del árbol recorrido
+- los permisos impiden que `du` lea algunos directorios
+- los archivos dispersos tienen tamaños aparentes y asignados distintos
+
+Para archivos eliminados pero abiertos, examina los procesos autorizados con una herramienta como `lsof +L1`; reinicia o señala el servicio responsable mediante su procedimiento normal en vez de truncar descriptores desconocidos.
+
+:::single-choice{#disk-usage-deleted-open-file} ¿Por qué puede mostrar `df` espacio en uso que `du`, basado en rutas, no encuentra?
+
+::option[Porque `df` siempre multiplica por dos el tamaño de todos los archivos.]{#disk-usage-df-doubles explanation="No existe una regla universal de duplicación."}
+::option[Porque un archivo eliminado puede seguir abierto y asignado a un proceso en ejecución.]{#disk-usage-open-deleted .correct explanation="La entrada del directorio desapareció, pero el sistema de archivos conserva los bloques hasta que se cierra la última referencia abierta."}
+::option[Porque `du` elimina automáticamente los archivos después de contarlos.]{#disk-usage-du-deletes explanation="Du es una herramienta de contabilidad y no elimina los archivos recorridos."}
+:::
+
+## Investigar sin empeorar el incidente
+
+Empieza por el sistema de archivos lleno que comunica `df`, identifica su destino de montaje con `findmnt` y después limita las búsquedas de `du` al mismo sistema. Ten en cuenta las instantáneas, las capas de contenedores, los registros, las cachés de paquetes y la política de retención de la aplicación. No elimines archivos solo porque sean grandes; determina primero su propietario, copia de seguridad, requisitos normativos y comportamiento del servicio.
+
+:::single-choice{#disk-usage-safe-investigation} ¿Cuál es la respuesta más segura al encontrar un archivo grande?
+
+::option[Eliminarlo inmediatamente mientras el servicio escribe en él.]{#disk-usage-delete-immediately explanation="Esto puede perder datos necesarios y quizá no libere espacio si el archivo sigue abierto."}
+::option[Ejecutar `mkfs` en el dispositivo que lo contiene.]{#disk-usage-mkfs-device explanation="Dar formato destruiría el sistema de archivos en vez de resolver el crecimiento de un archivo."}
+::option[Identificar su propietario y su función de retención antes de modificarlo.]{#disk-usage-review-large-file .correct explanation="El tamaño por sí solo no demuestra que el archivo sea desechable ni seguro truncarlo."}
+:::
+
+## Resumen
+
+Ahora puedes conciliar informes de espacio del sistema de archivos y basados en rutas.
+
+1. Utiliza `df` para la capacidad de bloques de sistemas de archivos montados.
+2. Utiliza `df -i` para la presión de inodos cuando sea compatible.
+3. Utiliza recorridos limitados de `du` para atribuir el uso de rutas alcanzables.
+4. Investiga archivos eliminados pero abiertos y diferencias de contabilidad específicas del sistema de archivos.
+5. Aplica las políticas de propiedad y retención antes de eliminar datos.

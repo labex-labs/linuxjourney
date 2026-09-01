@@ -1,87 +1,100 @@
 ---
-index: 4
+lesson_id: "netstat"
+course_id: "troubleshooting"
 lang: "es"
+order_index: 4
 title: "netstat"
-meta_title: "netstat - Solución de problemas"
-meta_description: "Domina el comando netstat de Linux para analizar conexiones de red, puertos y sockets. Esta guía cubre estados comunes como SYN_SENT y netstat close_wait para una solución de problemas efectiva."
-meta_keywords: "netstat linux, netstat, comando netstat, netstat syn_sent, netstat close_wait, conexiones de red, redes linux, análisis de red, tutorial linux"
+description: "Aprende a inspeccionar sockets, listeners, colas y estados TCP de Linux con ss."
+meta_title: "netstat - Resolución de problemas"
+meta_description: "Domina netstat y ss en Linux para analizar conexiones de red, puertos, sockets y estados como SYN-SENT y CLOSE-WAIT."
+meta_keywords: "netstat Linux, netstat, orden netstat, syn_sent netstat, netstat close_wait, conexiones de red, redes Linux, análisis de red, tutorial Linux"
 ---
 
-## Lesson Content
+La herramienta antigua `netstat` muestra sockets, rutas y estadísticas de interfaces. En Linux moderno, `ss` es la herramienta preferida para inspeccionar sockets porque expone con eficiencia su estado en el kernel y se mantiene junto con iproute2.
 
-### Puertos Bien Conocidos
+## Enumerar sockets a la escucha
 
-Hemos discutido cómo se transmiten los datos a través de puertos en nuestra máquina. Echemos un vistazo a algunos puertos comunes y bien conocidos. Puede encontrar una lista de estos puertos en el archivo **/etc/services**:
-
-```plaintext
-ftp             21/tcp
-ssh             22/tcp
-smtp            25/tcp
-domain          53/tcp  # DNS
-http            80/tcp
-https           443/tcp
-..etc..
-```
-
-La primera columna muestra el nombre del servicio, seguido de su número de puerto asignado y el protocolo de capa de transporte que utiliza.
-
-### Introducción a netstat en Linux
-
-Una herramienta extremadamente útil para recopilar información detallada de la red es **netstat**. El comando `linux netstat` muestra una amplia gama de datos relacionados con la red, incluidas conexiones de red activas, tablas de enrutamiento y estadísticas de interfaz. A menudo se le llama la navaja suiza de las herramientas de red.
-
-Esta lección se centrará en usar `netstat` para verificar el estado de las conexiones de red. Antes de sumergirnos en un ejemplo, aclaremos la diferencia entre sockets y puertos. Un **puerto** es un identificador numérico utilizado para dirigir los datos a una aplicación específica. Un **socket** es un punto final para la comunicación, que permite a los programas enviar y recibir datos. La dirección del socket es la combinación única de una dirección IP y un número de puerto. Cada conexión entre un host y un destino requiere un socket único. Por ejemplo, aunque el servicio HTTP se ejecuta en el puerto 80, pueden existir múltiples conexiones HTTP simultáneamente, y se crea un socket único para cada una.
-
-Examinemos la salida de `netstat -at`:
+Muestra numéricamente los sockets TCP y UDP a la escucha, incluidos los procesos propietarios cuando esté permitido:
 
 ```bash
-pete@icebox:~$ netstat -at
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State
-tcp        0      0 icebox:domain           *:*                     LISTEN
-tcp        0      0 localhost:ipp           *:*                     LISTEN
-tcp        0      0 icebox.lan:44468        124.28.28.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34751        124.28.29.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34604        economy.canonical.:http TIME_WAIT
-tcp6       0      0 ip6-localhost:ipp       [::]:*                  LISTEN
-tcp6       1      0 ip6-localhost:35094     ip6-localhost:ipp       CLOSE_WAIT
-tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
+$ sudo ss -lntup
 ```
 
-El comando `netstat -a` muestra todos los sockets en escucha y no en escucha, mientras que el indicador `-t` filtra la salida para mostrar solo las conexiones TCP.
+`-l` selecciona listeners, `-n` evita la resolución de nombres, `-t` y `-u` seleccionan TCP y UDP, y `-p` solicita datos de procesos. UDP no usa conexiones, por lo que sus sockets vinculados sin conexión no tienen negociaciones `LISTEN` como TCP.
 
-Las columnas son las siguientes:
+:::single-choice{#netstat-ss-numeric} ¿Por qué se utiliza `-n` al diagnosticar sockets?
 
-- **Proto**: El protocolo utilizado (ej. TCP o UDP).
-- **Recv-Q**: La cola de datos esperando ser recibidos.
-- **Send-Q**: La cola de datos esperando ser enviados.
-- **Local Address**: La dirección del host local.
-- **Foreign Address**: La dirección del host remoto.
-- **State**: El estado actual del socket.
+::option[Crea un nuevo espacio de nombres de red.]{#netstat-new-namespace explanation="La opción controla la resolución de nombres en la salida."}
+::option[Evita buscar nombres para las direcciones y los puertos.]{#netstat-numeric-output .correct explanation="La salida numérica evita confundir una asignación de nombre de servicio con la identidad observada del protocolo."}
+::option[Cierra todos los sockets que no están a la escucha.]{#netstat-close-sockets explanation="La inspección no termina sockets."}
+:::
 
-### Comprensión de los Estados de Conexión
+## Puertos, extremos y servicios
 
-La columna **State** (Estado) proporciona información crucial sobre el estado de una conexión. Aquí hay algunos estados comunes que encontrará:
+Un extremo de socket local combina una dirección, un protocolo de transporte y un puerto. Una conexión TCP se distingue por el protocolo y las direcciones y puertos de origen y destino. `/etc/services` asigna nombres convencionales a números, pero no demuestra qué proceso posee un puerto en ese momento ni qué protocolo de aplicación utiliza.
 
-- **LISTENING**: El socket está esperando conexiones entrantes. Para que se realice una conexión TCP, el destino debe estar escuchando.
-- **SYN_SENT**: Cuando se utiliza `netstat`, un estado `SYN_SENT` indica que el socket está intentando activamente establecer una conexión.
-- **ESTABLISHED**: El socket tiene una conexión completamente establecida.
-- **CLOSE_WAIT**: El estado `netstat close_wait` significa que el host remoto se ha desconectado y el sistema local está esperando que la aplicación cierre el socket.
-- **TIME_WAIT**: El socket está esperando después de cerrarse para manejar cualquier paquete que aún pueda estar en la red.
+:::single-choice{#netstat-services-file-limit} ¿Qué establece una entrada de `/etc/services` como `https 443/tcp`?
 
-Puede ver una lista completa de los estados de socket en la página de manual de `netstat`.
+::option[Que un servidor HTTPS en buen estado está a la escucha en ese momento.]{#netstat-healthy-listener explanation="Una base de datos estática de nombres no demuestra el estado de ejecución."}
+::option[La asignación convencional de un nombre de servicio a ese puerto.]{#netstat-conventional-name .correct explanation="La propiedad del socket y el comportamiento real del protocolo requieren inspección y pruebas en ejecución."}
+::option[Que todo el tráfico del puerto 443 está cifrado correctamente.]{#netstat-all-encrypted explanation="Un número de puerto no puede validar el comportamiento de TLS."}
+:::
 
-## Exercise
+## Leer los estados TCP
 
-¡La práctica hace al maestro! Aquí hay un laboratorio práctico para reforzar su comprensión de la configuración de la interfaz de red:
+Algunos estados habituales son:
 
-1. **[Examinar la configuración de la interfaz de red con ethtool en Linux](https://labex.io/es/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Aprenda a usar el comando `ethtool` para examinar y administrar la configuración de la interfaz de red, incluida la visualización y configuración de la velocidad y dúplex de la interfaz, y el análisis de los modos de enlace para solucionar problemas de red de capa física.
+- `SYN-SENT`: el extremo local envió una solicitud de conexión y espera que avance.
+- `ESTAB`: la conexión TCP está establecida.
+- `CLOSE-WAIT`: el par cerró su lado emisor, pero la aplicación local no ha cerrado su socket.
+- `TIME-WAIT`: el extremo que cerró activamente espera para que caduquen los segmentos retrasados y el intercambio final pueda manejarse de forma segura.
 
-Este laboratorio le ayudará a aplicar los conceptos en escenarios reales y a ganar confianza en la administración de interfaces de red.
+Una población grande o creciente de `CLOSE-WAIT` suele apuntar al comportamiento de limpieza de la aplicación local. `TIME-WAIT` es un estado normal del protocolo; su cantidad y el impacto sobre los recursos determinan si supone un problema operativo.
 
-## Quiz Question
+:::single-choice{#netstat-close-wait-owner} ¿Qué lado todavía debe cerrar un socket en `CLOSE-WAIT`?
 
-¿Qué puerto se utiliza para HTTPS?
+::option[Todos los routers de Internet.]{#netstat-all-routers-close explanation="Los routers no son propietarios del socket del extremo."}
+::option[El servidor DNS autoritativo.]{#netstat-dns-close explanation="El servicio de nombres no guarda relación con el cierre TCP local."}
+::option[La aplicación local.]{#netstat-local-close .correct explanation="TCP recibió el FIN del par y espera a que el proceso local cierre su lado."}
+:::
 
-## Quiz Answer
+## Interpretar las colas
 
-443
+El significado de `Recv-Q` y `Send-Q` depende del estado y el protocolo. En sockets TCP establecidos pueden indicar datos en espera de recepción por la aplicación o de confirmación de transmisión. En sockets a la escucha, los campos de cola describen el estado de la acumulación de conexiones, no bytes de carga útil de la aplicación de la misma manera.
+
+Una sola instantánea no permite confirmar una fuga o un cuello de botella. Toma muestras a lo largo del tiempo y correlaciónalas con el comportamiento del proceso, la latencia de la aplicación, las retransmisiones y los límites de recursos.
+
+:::single-choice{#netstat-queue-snapshot} ¿Por qué una sola instantánea de una cola de sockets grande no basta para diagnosticar?
+
+::option[Linux nunca almacena datos en colas de sockets.]{#netstat-no-queues explanation="La red del kernel depende de colas de envío y recepción."}
+::option[Cada valor de cola es un permiso del sistema de archivos.]{#netstat-queue-permission explanation="Los campos describen el estado de la red."}
+::option[El impacto de la cola requiere conocer el estado, la tendencia y el contexto de la carga.]{#netstat-queue-context .correct explanation="Una ráfaga transitoria difiere de un cuello de botella sostenido en la aplicación o la red."}
+:::
+
+## Filtrar una investigación
+
+Limita la salida al protocolo, estado, extremo o proceso investigado:
+
+```bash
+$ ss -tn state established
+$ ss -ltn 'sport = :443'
+```
+
+Un listener demuestra que el transporte local está preparado, no que sea accesible de forma remota ni que la aplicación funcione correctamente. Continúa con pruebas de ruta, cortafuegos, paquetes, TLS y aplicación adecuadas para el síntoma.
+
+:::single-choice{#netstat-listener-limit} ¿Qué no demuestra un listener TCP en el puerto 443?
+
+::option[Que un socket local aceptó las operaciones bind y listen.]{#netstat-listen-local explanation="Ese es precisamente el estado local que se muestra."}
+::option[Que los clientes remotos pueden completar una solicitud HTTPS válida.]{#netstat-not-remote-proof .correct explanation="La política de la ruta, TLS y el comportamiento de la aplicación siguen sin probarse."}
+::option[Que TCP tiene un campo de puerto numérico.]{#netstat-port-field explanation="La salida del listener incluye uno directamente."}
+:::
+
+## Resumen
+
+Ahora puedes utilizar `ss` para inspeccionar el estado de los sockets sin confundir los puertos con las aplicaciones.
+
+1. Enumera listeners numéricamente con el contexto de sus procesos.
+2. Distingue los nombres de servicio convencionales de la propiedad en ejecución.
+3. Interpreta los estados de cierre TCP desde la perspectiva del extremo local.
+4. Toma muestras de las colas a lo largo del tiempo y con el contexto de la carga.
+5. Verifica el comportamiento remoto de la aplicación más allá del listener local.

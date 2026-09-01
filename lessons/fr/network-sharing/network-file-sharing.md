@@ -1,64 +1,87 @@
 ---
-index: 1
+lesson_id: "network-file-sharing"
+course_id: "network-sharing"
 lang: "fr"
-title: "Aperçu du Partage de Fichiers"
-meta_title: "Aperçu du Partage de Fichiers - Partage Réseau"
-meta_description: "Explorez le partage de fichiers Linux avec notre cours en ligne gratuit. Apprenez l'une des meilleures façons d'utiliser les commandes Linux comme scp pour les transferts de fichiers réseau sécurisés. Une ressource clé pour le codage sous Linux."
-meta_keywords: "partage fichiers linux, commande scp, copie sécurisée, apprendre commandes linux, meilleur cours linux ligne gratuit, coder sous linux, transfert fichiers réseau, meilleures ressources apprendre linux"
+order_index: 1
+title: "Présentation du partage de fichiers"
+description: "Découvrez comment choisir et effectuer en toute sécurité un transfert de fichiers par SSH avec scp."
+meta_title: "Présentation du partage de fichiers - Partage réseau"
+meta_description: "Explorez le partage de fichiers sous Linux et apprenez à utiliser scp pour effectuer des transferts sécurisés de fichiers sur le réseau."
+meta_keywords: "partage de fichiers Linux, commande scp, copie sécurisée, commandes Linux, cours Linux gratuit, transfert de fichiers réseau, ressources Linux"
 ---
 
-## Lesson Content
+Le déplacement de fichiers sur le réseau va de la copie ponctuelle aux partages montés en permanence et aux arborescences de répertoires synchronisées. Choisissez une méthode selon le sens du transfert, le volume des données, la fréquence des mises à jour, le modèle d’identité, la confiance accordée au réseau, les métadonnées requises et la nécessité d’un accès partagé en direct pour les clients.
 
-Dans la plupart des environnements informatiques modernes, votre machine est rarement isolée. Que ce soit à la maison ou en entreprise, vous faites généralement partie d'un réseau. Lorsque vous devez transférer des données entre ordinateurs, vous pourriez utiliser une clé USB, mais pour les machines sur le même réseau, le partage de fichiers réseau est bien plus efficace. C'est une compétence fondamentale pour quiconque souhaite sérieusement `coder sous linux` ou gérer des systèmes.
+## Choisir une méthode de transfert
 
-Cette leçon, qui fait partie de ce que beaucoup considèrent comme le `meilleur cours linux gratuit en ligne`, vous présentera des méthodes pour copier des données sur un réseau. Nous commencerons par des transferts de fichiers simples, puis nous discuterons du montage de répertoires distants entiers, les faisant apparaître comme des lecteurs locaux sur votre machine. Ce site vise à être le `meilleur site web pour apprendre linux` en fournissant des exemples clairs et pratiques.
+- `scp` ou SFTP fournit une copie authentifiée par SSH ou un transfert interactif.
+- `rsync` réconcilie efficacement des arborescences de répertoires localement ou par un transport tel que SSH.
+- NFS présente les exportations d’un serveur comme des systèmes de fichiers montés, généralement entre des hôtes de type Unix.
+- SMB, mis en œuvre par Samba sous Linux, permet un accès partagé depuis de nombreux systèmes d’exploitation.
+- HTTP peut fournir de simples téléchargements, mais ne constitue pas un système de fichiers monté généraliste.
 
-### La commande de copie sécurisée (scp)
+Une copie n’est pas automatiquement une sauvegarde. Une stratégie de sauvegarde doit également prévoir une conservation indépendante, des tests de restauration, des contrôles d’intégrité et une protection contre la même suppression ou compromission.
 
-L'un des outils les plus simples et les plus puissants pour cette tâche est la commande `scp`, qui signifie "secure copy" (copie sécurisée). Elle fonctionne de manière très similaire à la commande standard `cp`, mais étend sa capacité sur le réseau. La comprendre est l'une des `meilleures façons d'apprendre les commandes linux` pour l'interaction réseau. Parce que `scp` fonctionne sur SSH (Secure Shell), tous les transferts bénéficient des mêmes protocoles d'authentification et de sécurité robustes.
+:::single-choice{#file-sharing-one-time-ssh-copy} Quel outil convient à une copie ponctuelle de fichiers par SSH ?
 
-### Exemples courants de la commande scp
+::option[`scp`]{#file-sharing-scp .correct explanation="SCP emploie l’authentification et le transport SSH pour copier des fichiers."}
+::option[`uptime`]{#file-sharing-uptime explanation="Uptime indique la durée de fonctionnement et la charge de l’hôte au lieu de transférer des fichiers."}
+::option[`logrotate`]{#file-sharing-logrotate explanation="Logrotate gère les générations de fichiers journaux sur un hôte."}
+:::
 
-Explorons quelques exemples pratiques. La syntaxe est simple : `scp [options] source destination`. La principale différence avec `cp` est que la source ou la destination inclut une spécification d'hôte distant au format `utilisateur@hote_distant:/chemin/vers/fichier`.
+## Comprendre les chemins de scp
 
-### Copier un fichier d'un hôte local vers un hôte distant
-
-Cette commande envoie un fichier local vers un répertoire spécifié sur une machine distante.
-
-```bash
-scp myfile.txt utilisateur@hote_distant.com:/repertoire/distant
-```
-
-### Copier un fichier d'un hôte distant vers votre hôte local
-
-Cette commande récupère un fichier d'une machine distante et l'enregistre dans un répertoire local.
+La forme générale est `scp SOURCE DESTINATION`. Un opérande distant utilise couramment `utilisateur@hôte:chemin` :
 
 ```bash
-scp utilisateur@hote_distant.com:/repertoire/distant/myfile.txt /repertoire/local
+$ scp -- report.txt alice@example.net:/srv/incoming/
+$ scp -- alice@example.net:/srv/outgoing/result.txt ./result.txt
 ```
 
-### Copier un répertoire de votre hôte local vers un hôte distant
+La première commande envoie un fichier local ; la seconde récupère un fichier distant. Les deux-points séparent l’hôte distant de son chemin. Placez entre guillemets les chemins qui contiennent des caractères interprétés par le shell et évitez les noms de fichiers non fiables ou ambigus.
 
-Pour copier un répertoire entier et son contenu, utilisez l'option `-r` (récursif).
+:::single-choice{#file-sharing-scp-pull-source} Lors d’une récupération avec `scp`, où apparaît la spécification distante ?
+
+::option[Comme source, avant la destination locale.]{#file-sharing-pull-source .correct explanation="Le sens de la copie suit l’ordre des opérandes source et destination."}
+::option[Comme destination locale après chaque option.]{#file-sharing-pull-destination explanation="L’objet distant récupéré constitue l’opérande source."}
+::option[Uniquement dans le fichier de configuration SSH de l’utilisateur.]{#file-sharing-pull-config explanation="La configuration SSH peut fournir des valeurs par défaut, mais le chemin distant copié reste un opérande."}
+:::
+
+## Copier un répertoire
+
+Employez le mode récursif pour une arborescence de répertoires :
 
 ```bash
-scp -r mon_dossier utilisateur@hote_distant.com:/repertoire/distant
+$ scp -r -- project/ alice@example.net:/srv/incoming/
 ```
 
-Maîtriser `scp` est une étape essentielle, et l'exploration de tels outils explique pourquoi beaucoup considèrent ceci comme l'une des `meilleures ressources pour apprendre linux`.
+Avant la copie, examinez la taille des données, les liens symboliques, les permissions, les exigences de propriété, l’espace libre et le nom de la destination. SCP ne définit pas de politique de synchronisation : des copies répétées de répertoires peuvent laisser à la destination des fichiers qui n’existent plus à la source.
 
-## Exercise
+:::single-choice{#file-sharing-scp-recursive} Que demande `scp -r` ?
 
-La pratique est essentielle pour maîtriser les nouvelles commandes. Pour renforcer votre compréhension du transfert de fichiers réseau sécurisé, nous vous recommandons ce laboratoire pratique :
+::option[La suppression de la destination distante avant la copie.]{#file-sharing-scp-remove explanation="Le mode récursif parcourt les répertoires et ne définit aucune politique de nettoyage."}
+::option[La copie récursive d’une arborescence de répertoires.]{#file-sharing-scp-tree .correct explanation="Cette option est nécessaire lorsque la source sélectionnée est un répertoire."}
+::option[Un accès en lecture seule à la configuration SSH.]{#file-sharing-scp-readonly explanation="Cette option concerne le parcours des répertoires, et non l’accès à la configuration."}
+:::
 
-1. **[Accès à distance sécurisé sous Linux avec SSH](https://labex.io/fr/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** - Entraînez-vous à l'authentification par clé, au transfert sécurisé de fichiers avec `scp`, et à la création de tunnels SSH pour le transfert de ports.
+## Vérifier l’identité et les résultats
 
-Ce laboratoire vous aidera à appliquer les concepts d'accès à distance sécurisé et de transfert de fichiers dans un scénario réel et à gagner en confiance avec `scp`.
+La vérification de la clé d’hôte SSH empêche de se connecter au mauvais serveur. Considérez une modification de la clé d’hôte comme un événement à vérifier par un canal de confiance plutôt que de contourner l’avertissement. Employez des comptes aux privilèges minimaux et une gestion des clés adaptée à l’environnement.
 
-## Quiz Question
+Après le transfert, vérifiez l’état de sortie, les fichiers attendus, leurs tailles, leurs métadonnées et, lorsque les exigences d’intégrité le demandent, les condensats calculés indépendamment aux deux extrémités. Confirmez que l’application de destination peut réellement lire les données.
 
-Quelle commande pouvez-vous utiliser pour copier des fichiers de manière sécurisée d'un hôte à un autre ? Veuillez répondre uniquement avec le nom de la commande, en lettres anglaises minuscules.
+:::single-choice{#file-sharing-host-key-change} Que faire lorsque SSH signale une modification inattendue de la clé d’hôte ?
 
-## Quiz Answer
+::option[Désactiver la vérification des clés d’hôtes pour tous les transferts futurs.]{#file-sharing-disable-checking explanation="Cela supprime un contrôle important de l’identité du serveur."}
+::option[Vérifier la nouvelle clé auprès d’une source de confiance avant de continuer.]{#file-sharing-verify-key .correct explanation="L’avertissement peut révéler un hôte reconstruit, une mauvaise destination ou une interception et doit être examiné."}
+::option[Publier la clé privée d’authentification dans la sortie de la commande.]{#file-sharing-publish-key explanation="Les identifiants privés ne doivent pas être exposés."}
+:::
 
-scp
+## Résumé
+
+Vous savez maintenant choisir et vérifier une copie ponctuelle et sécurisée de fichiers sur le réseau.
+
+1. Adapter la méthode de partage aux besoins d’accès et de conservation.
+2. Lire les opérandes locaux et distants de `scp` comme source et destination.
+3. Employer délibérément le mode récursif pour les arborescences de répertoires.
+4. Vérifier l’identité du serveur, le résultat du transfert et l’utilisabilité à la destination.

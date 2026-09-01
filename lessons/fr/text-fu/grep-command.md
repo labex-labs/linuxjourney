@@ -1,98 +1,136 @@
 ---
-index: 16
+lesson_id: "grep-command"
+course_id: "text-fu"
 lang: "fr"
+order_index: 16
 title: "grep"
-meta_title: "grep - Maîtrise du Texte"
-meta_description: "Apprenez à utiliser la puissante commande grep sous Linux pour rechercher des motifs de texte. Ce guide couvre l'utilisation de base, la commande grep -e, grep -c pour le comptage, et d'autres options essentielles pour un traitement de texte efficace."
-meta_keywords: "commande grep, commande grep -e, grep -c, grep -f, grep -o, exemple grep -e, grep linux, rechercher texte, correspondance de motif, traitement de texte, tutoriel linux"
+description: "Apprenez à sélectionner des lignes avec des chaînes fixes ou des expressions régulières et à interpréter les résultats."
+meta_title: "grep - Text-Fu"
+meta_description: "Utilisez grep sous Linux pour rechercher des motifs, compter les lignes et filtrer du texte avec les options essentielles."
+meta_keywords: "commande grep, grep -e, grep -c, grep -F, grep -o, recherche texte, expressions régulières"
 ---
 
-## Lesson Content
+`grep` sélectionne les lignes d'entrée correspondant à un motif. Il recherche des fichiers ou stdin, affiche du contexte, compte des lignes et signale par son code de sortie si une correspondance existe.
 
-La commande `grep` est sans doute l'outil de traitement de texte le plus essentiel que vous utiliserez dans un environnement Linux. Elle vous permet de rechercher dans des fichiers ou des flux de données des lignes qui correspondent à un modèle spécifique. Au lieu de parcourir manuellement d'innombrables lignes de texte pour trouver une chaîne ou une configuration spécifique, vous pouvez simplement utiliser `grep` pour faire le gros du travail.
+## Rechercher des lignes dans un fichier
 
-### Utilisation de base de Grep
-
-À la base, `grep` recherche un modèle dans un fichier. Prenons un fichier nommé `sample.txt` comme exemple. Pour trouver toutes les lignes contenant le mot "fox", vous exécuteriez :
+Fournissez un motif puis un ou plusieurs fichiers :
 
 ```bash
-grep fox sample.txt
+$ grep 'fox' sample.txt
 ```
 
-La sortie affichera chaque ligne de `sample.txt` où "fox" est trouvé.
+GNU `grep` interprète par défaut le motif comme une expression régulière basique. Citez les motifs pour empêcher le shell d'interpréter d'abord leurs espaces ou métacaractères.
 
-### Correspondance de modèles avancée avec grep -e
-
-Pour les recherches plus complexes, la `commande grep -e` est incroyablement utile. Le drapeau `-e` indique explicitement à `grep` que l'argument suivant est le modèle. Ceci est particulièrement utile lorsque vous recherchez des modèles qui commencent par un tiret (`-`), ce qui pourrait autrement être mal interprété comme une option.
-
-Voici un `exemple grep -e` où nous recherchons la chaîne "-v" dans un fichier :
+`-F` demande une chaîne fixe :
 
 ```bash
-grep -e "-v" /path/to/some/file.conf
+$ grep -F 'price: $5.00' products.txt
 ```
 
-Sans `-e`, `grep` traiterait `-v` comme l'option "inverser la correspondance". La `commande grep -e` garantit que votre modèle est toujours interprété correctement.
+:::single-choice{#grep-fixed-string} Quelle commande recherche littéralement `price: $5.00` dans `products.txt`, sans syntaxe d'expression régulière ?
 
-### Drapeaux Grep utiles
+::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` sélectionne les chaînes fixes et les apostrophes protègent le dollar du shell."}
+::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` active les expressions régulières étendues, où `$` et `.` ont un sens spécial."}
+::option[`grep -v 'price: $5.00' products.txt`]{#grep-invert-price explanation="`-v` sélectionne les lignes qui ne correspondent pas et conserve l'interprétation régulière."}
+:::
 
-Vous pouvez modifier le comportement de `grep` avec divers drapeaux pour affiner vos résultats de recherche.
+## Choisir la syntaxe du motif
 
-- **Recherche insensible à la casse** : Utilisez le drapeau `-i` pour rendre votre recherche insensible à la casse.
-
-  ```bash
-  grep -i somepattern somefile
-  ```
-
-````
-- **Compter les lignes correspondantes** : Pour compter combien de lignes correspondent à votre modèle au lieu de les afficher, utilisez le drapeau `grep -c`.
-  ```bash
-grep -c fox sample.txt
-````
-
-- **Afficher uniquement la correspondance** : Si vous souhaitez uniquement voir la partie exacte de la ligne qui correspond au modèle, utilisez le drapeau `grep -o`.
-
-  ```bash
-  grep -o fox sample.txt
-  ```
-
-````
-- **Rechercher des modèles à partir d'un fichier** : Lorsque vous avez plusieurs modèles à rechercher, vous pouvez les lister dans un fichier et utiliser le drapeau `grep -f` pour indiquer à `grep` d'utiliser ce fichier pour les modèles.
-  ```bash
-grep -f patterns.txt sample.txt
-````
-
-### Combinaison de Grep avec d'autres commandes
-
-La véritable puissance de `grep` se révèle lorsque vous la combinez avec d'autres commandes à l'aide de pipes (`|`). Cela vous permet de filtrer la sortie de n'importe quelle commande.
-
-Par exemple, vous pouvez filtrer les variables d'environnement pour trouver celles liées à l'utilisateur :
+GNU `grep` propose trois modes courants : expressions régulières basiques par défaut, étendues avec `-E`, et chaînes fixes avec `-F`. Les ancres `^` et `$` désignent le début et la fin d'une ligne.
 
 ```bash
-env | grep -i User
+$ grep -E '\.txt$' filenames.txt
 ```
 
-Vous pouvez également utiliser `grep` avec des expressions régulières pour effectuer une correspondance de modèles plus sophistiquée. Par exemple, pour trouver tous les fichiers se terminant par `.txt` dans un répertoire :
+La barre oblique inverse rend le point littéral ; un `.` non échappé correspond à n'importe quel caractère.
+
+:::single-choice{#grep-literal-txt-suffix} Quelle expression régulière étendue correspond aux lignes finissant littéralement par `.txt` ?
+
+::option[`'.txt$'`]{#grep-anychar-txt explanation="Le point non échappé correspond à n'importe quel caractère."}
+::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` désigne un point littéral et `$` ancre la fin de ligne."}
+::option[`'^.txt'`]{#grep-start-anychar-txt explanation="Cette forme ancre le début et conserve un point générique."}
+:::
+
+## Fournir les motifs en sécurité
+
+`-e PATTERN` fournit explicitement un motif, notamment lorsqu'il commence par `-` :
 
 ```bash
-ls /somedir | grep '.txt$'
+$ grep -e '-v' settings.conf
 ```
 
-Comme vous pouvez le constater, `grep` est un outil polyvalent et puissant pour tout utilisateur Linux.
+Les guillemets seuls n'empêchent pas l'analyse des options. Répétez `-e` pour plusieurs motifs, ou utilisez `-f patterns.txt` pour en lire un par ligne.
 
-## Exercise
+:::single-choice{#grep-hyphen-pattern} Quelle commande recherche le motif `-v` dans `settings.conf` au lieu de l'interpréter comme une option ?
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la recherche de texte et de la correspondance de modèles avec `grep` :
+::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="Les guillemets protègent du shell, mais `grep` peut encore interpréter `-v` comme option."}
+::option[`grep -v settings.conf`]{#grep-invert-settings explanation="Cette forme active la correspondance inversée sans fournir le motif voulu."}
+::option[`grep -e '-v' settings.conf`]{#grep-explicit-v .correct explanation="`-e` déclare que l'argument suivant est un motif même s'il commence par un tiret."}
+:::
 
-1. **[Rechercher du texte avec grep sous Linux](https://labex.io/fr/labs/comptia-search-text-with-grep-in-linux-590841)** - Entraînez-vous aux recherches de base, à l'affichage des numéros de ligne, à l'utilisation des ancres, et exploitez les expressions régulières de base et étendues pour une correspondance de modèles complexe avec `grep`.
-2. **[Commande Linux grep : Recherche de modèles](https://labex.io/fr/labs/linux-linux-grep-command-pattern-searching-219192)** - Apprenez à utiliser `grep` pour rechercher et faire correspondre des modèles dans des fichiers texte, et explorez les expressions régulières pour définir des modèles de recherche complexes.
-3. **[Aiguille dans la botte de foin](https://labex.io/fr/labs/linux-needle-in-the-haystack-388109)** - Découvrez la puissance de la commande `grep` pour rechercher des modèles spécifiques, compter les occurrences, extraire des valeurs uniques et combiner plusieurs critères de recherche dans divers fichiers journaux.
+## Contrôler la sortie sélectionnée
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec `grep` et les expressions régulières.
+- `-i` : ignorer la casse.
+- `-n` : préfixer les numéros de ligne.
+- `-v` : sélectionner les lignes non correspondantes.
+- `-c` : compter les lignes sélectionnées par fichier.
+- `-o` : afficher uniquement chaque partie correspondante non vide.
 
-## Quiz Question
+```bash
+$ grep -ic 'fox' sample.txt
+```
 
-Quelle commande utilisez-vous pour trouver un certain modèle dans un fichier ? Veuillez répondre en un seul mot anglais en minuscules.
+`-c` compte des lignes, pas toutes les occurrences dans celles-ci. Pour compter des correspondances non superposées avec GNU `grep`, un pipeline possible est `grep -o PATTERN | wc -l`.
 
-## Quiz Answer
+:::single-choice{#grep-count-lines} `data.txt` contient une ligne avec `error error` et deux sans correspondance. Que renvoie `grep -c 'error' data.txt` ?
 
-grep
+::option[`2`, car le mot apparaît deux fois sur une ligne.]{#grep-count-occurrences explanation="`-c` compte les lignes sélectionnées, pas les occurrences dans une ligne."}
+::option[`1`, car exactement une ligne correspond.]{#grep-count-one-line .correct explanation="La ligne est sélectionnée une fois, même si le motif y apparaît deux fois."}
+::option[`3`, car le fichier comporte trois lignes.]{#grep-count-total-lines explanation="Les lignes sans correspondance ne contribuent pas au compte."}
+:::
+
+## Filtrer stdin et rechercher dans des répertoires
+
+Sans fichier, `grep` lit stdin :
+
+```bash
+$ env | grep '^USER='
+```
+
+Utilisez `-r` pour parcourir récursivement les fichiers lisibles d'un répertoire :
+
+```bash
+$ grep -r 'listen_port' config/
+```
+
+`-r` recherche récursivement dans les fichiers lisibles. Les erreurs d'autorisation vont sur stderr et ne constituent pas une entrée de recherche. Ciblez le chemin et comprenez les droits avant d'élever les privilèges.
+
+:::single-choice{#grep-pipeline-input} Dans `generate-report | grep 'failed'`, quelle entrée `grep` recherche-t-il ?
+
+::option[Un fichier `generate-report` dans le répertoire courant.]{#grep-report-file explanation="La partie gauche est exécutée comme commande, pas transmise comme fichier."}
+::option[Le flux stdout produit par `generate-report`.]{#grep-report-stdout .correct explanation="Le tube relie stdout du producteur à stdin de `grep`."}
+::option[Le flux stderr produit par `generate-report`.]{#grep-report-stderr explanation="Un tube ordinaire transporte stdout ; stderr reste séparé."}
+:::
+
+## Interpréter le code de sortie
+
+Pour une recherche ordinaire, GNU `grep` renvoie `0` si au moins une ligne est sélectionnée, `1` si aucune ne l'est et `2` en cas d'erreur. Un script peut donc distinguer absence de résultat, fichier illisible et motif invalide.
+
+`-q` supprime la sortie normale et s'arrête après la première correspondance. Ne déduisez pas le succès d'un écran vide : mode silencieux, redirection, absence de correspondance et erreur peuvent tous produire peu de stdout, mais leurs états diffèrent.
+
+Pour vous exercer :
+
+1. **[Rechercher du texte avec grep sous Linux](https://labex.io/fr/labs/comptia-search-text-with-grep-in-linux-590841)** - Utilisez numéros de ligne, ancres et expressions régulières.
+2. **[Commande Linux grep : rechercher des motifs](https://labex.io/fr/labs/linux-linux-grep-command-pattern-searching-219192)** - Explorez la recherche et les motifs complexes.
+3. **[Une aiguille dans une botte de foin](https://labex.io/fr/labs/linux-needle-in-the-haystack-388109)** - Comptez et combinez des critères dans des journaux.
+
+## Résumé
+
+Vous savez rechercher du texte ligne par ligne et distinguer les correspondances des erreurs.
+
+1. Choisir entre motifs basiques, étendus ou fixes.
+2. Citer les motifs et employer `-e` devant un tiret.
+3. Compter les lignes sélectionnées sans les confondre avec les occurrences.
+4. Filtrer stdin ou rechercher récursivement dans un chemin ciblé.
+5. Interpréter les codes de correspondance, d'absence et d'erreur.

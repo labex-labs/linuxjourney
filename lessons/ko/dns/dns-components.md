@@ -1,52 +1,86 @@
 ---
-index: 2
+lesson_id: "dns-components"
+course_id: "dns"
 lang: "ko"
+order_index: 2
 title: "DNS 구성 요소"
+description: "재귀 확인자, 권위 서버, 영역 및 리소스 레코드가 DNS 책임을 나누는 방법을 알아봅니다."
 meta_title: "DNS 구성 요소 - DNS"
-meta_description: "DNS 구성 요소: 네임 서버, 존 파일, 리소스 레코드에 대해 알아보세요. 초보자를 위한 DNS 작동 방식을 이해하세요. Linux 네트워킹 여정을 시작하세요!"
-meta_keywords: "DNS 구성 요소, 네임 서버, 존 파일, 리소스 레코드, DNS 튜토리얼, Linux 네트워킹, 초보자 가이드"
+meta_description: "네임 서버, 영역 및 리소스 레코드 같은 DNS 구성 요소와 역할을 알아봅니다."
+meta_keywords: "DNS 구성 요소, 네임 서버, 영역 파일, 리소스 레코드, DNS 튜토리얼, 리눅스 네트워킹"
 ---
 
-## Lesson Content
+DNS는 클라이언트 대상 재귀 역할과 권위 있는 게시 역할을 구분합니다. 이 경계를 이해하면 캐시된 응답을 영역 소유자로 잘못 생각하는 일을 막을 수 있습니다.
 
-인터넷의 DNS 데이터베이스는 해당 데이터베이스의 일부를 제공하는 사이트와 조직에 의존합니다. 이를 위해 다음이 필요합니다.
+## 스텁 및 재귀 확인자
 
-### 네임 서버
+애플리케이션이나 운영체제의 스텁 확인자는 설정된 재귀 확인자에 쿼리를 보냅니다. 재귀 확인자는 캐시를 사용하고 필요하면 반복 쿼리를 수행한 뒤 최종 응답, 오류 또는 위임 결과를 반환합니다. 응답 서버가 데이터에 대한 권위 서버일 때만 응답에 권위 응답 플래그가 있을 수 있습니다. 재귀 기능만으로 권위 서버가 되지는 않습니다.
 
-우리는 "네임 서버"를 통해 DNS 를 설정합니다. 네임 서버는 DNS 설정 및 구성을 로드하고 클라이언트 또는 "google.com 은 누구인가?"와 같은 정보를 알고 싶어하는 다른 서버의 모든 질문에 응답합니다. 네임 서버가 해당 쿼리에 대한 답을 모르면 요청을 다른 네임 서버로 리디렉션합니다. 네임 서버는 찾고 있는 실제 DNS 레코드를 보유하는 "권한 있는 (authoritative)" 서버이거나, 다른 서버에 요청하고 해당 서버가 DNS 레코드를 포함하는 권한 있는 서버를 찾을 때까지 다른 서버에 요청하는 "재귀적 (recursive)" 서버일 수 있습니다. 재귀적 서버는 권한 있는 서버에 도달하는 대신 원하는 정보를 캐시할 수도 있습니다.
+:::single-choice{#dns-components-recursive-role} 재귀 확인자는 스텁 클라이언트를 위해 무엇을 합니까?
 
-### 존 파일
+::option[캐시와 다른 네임 서버를 사용해 최종 DNS 결과를 얻습니다.]{#dns-components-recursive-result .correct explanation="클라이언트가 여러 단계의 조회 작업을 재귀 서비스에 위임합니다."}
+::option[패킷 경로의 모든 네트워크 라우터를 대체합니다.]{#dns-components-replaces-router explanation="이름 확인과 IP 전달은 서로 별개입니다."}
+::option[캐시하는 모든 레코드의 권위 서버가 됩니다.]{#dns-components-cache-authority explanation="캐시된 데이터의 권위는 소스에 있으며 확인자는 영역 소유자가 아닙니다."}
+:::
 
-네임 서버 내부에는 존 파일 (zone files) 이라는 것이 있습니다. 존 파일은 네임 서버가 도메인에 대한 정보를 저장하거나, 모르는 경우 도메인에 도달하는 방법을 저장하는 방식입니다.
+## 권위 네임 서버
 
-### 리소스 레코드
+권위 서버는 권한을 가진 영역 데이터에서 응답합니다. 하나의 영역에는 동기화된 데이터와 독립적인 장애 고려 사항을 가진 여러 권위 서버가 있어야 합니다. 권위 전용 서버는 임의 클라이언트에 재귀 기능을 제공할 필요가 없습니다.
 
-존 파일은 리소스 레코드 (resource records) 항목으로 구성됩니다. 각 줄은 레코드이며 호스트, 네임 서버, 기타 리소스 등에 대한 정보를 포함합니다. 필드는 다음으로 구성됩니다.
+:::single-choice{#dns-components-authoritative-role} 서버가 영역에 대한 권위를 갖게 하는 것은 무엇입니까?
 
-- 레코드 이름
-- TTL - 레코드를 폐기하고 새 레코드를 얻는 시간. DNS 에서 TTL 은 시간으로 표시되므로 레코드의 TTL 은 1 시간일 수 있습니다. 이렇게 하는 이유는 인터넷이 끊임없이 변화하기 때문입니다. 한 순간 호스트가 X IP 주소에 매핑될 수 있고, 다음 순간에는 Y IP 주소에 있을 수 있습니다.
-- Class - 레코드 정보의 네임스페이스. 가장 일반적으로 IN 은 인터넷에 사용됩니다.
-- Type - 레코드 데이터에 저장된 정보의 유형. 레코드 유형에 대해 자세히 다루지는 않겠지만, 주소에 대한 A, 메일 교환기에 대한 MX 등과 같은 일반적인 유형을 보셨을 것입니다.
-- Data - 이 필드는 A 레코드인 경우 IP 주소를 포함하거나 레코드 유형에 따라 다른 것을 포함할 수 있습니다.
+::option[공용 확인자를 통해 영역을 한 번 조회했습니다.]{#dns-components-once-queried explanation="조회나 캐싱은 권위를 부여하지 않습니다."}
+::option[관련 위임과 설정 아래에서 영역 데이터를 제공합니다.]{#dns-components-serves-zone .correct explanation="권위는 캐시 사본 보유가 아니라 DNS 위임과 서버에 불러온 영역에서 옵니다."}
+::option[ping 한 번에 가장 빠르게 응답했습니다.]{#dns-components-fastest-ping explanation="ICMP 시간은 DNS 권위를 정의하지 않습니다."}
+:::
 
-```plaintext
-patty    IN  A      192.168.0.4
+## 영역과 영역 저장소
+
+영역은 DNS 네임스페이스에서 관리상 제공되는 부분입니다. 영역 정점에서 시작하며 하위 영역을 위임할 수 있습니다. 영역 데이터는 텍스트 영역 파일, 데이터베이스, API 또는 소프트웨어 합성으로 제공될 수 있습니다. “영역 파일”이 필수 물리 구현은 아닙니다.
+
+영역 정점에는 일반적으로 SOA 레코드와 NS 집합이 있습니다. 상위 영역의 위임 데이터는 하위 권위 서버를 식별하며, 영역 내부 서버 이름에 도달하는 데 필요한 글루 주소 레코드가 함께 올 수 있습니다.
+
+:::single-choice{#dns-components-zone-meaning} DNS 영역이란 무엇입니까?
+
+::option[네임스페이스에서 관리상 제공되는 부분입니다.]{#dns-components-admin-portion .correct explanation="저장 백엔드와 관계없이 레코드와 위임을 포함할 수 있습니다."}
+::option[모든 클라이언트에 필수인 하나의 텍스트 파일입니다.]{#dns-components-client-file explanation="권위 구현은 여러 저장 형식을 사용할 수 있고 클라이언트는 모든 영역을 보관하지 않습니다."}
+::option[VLAN으로 식별되는 Ethernet 브로드캐스트 도메인입니다.]{#dns-components-vlan explanation="DNS 영역과 링크 계층 세그먼트는 독립적인 개념입니다."}
+:::
+
+## 리소스 레코드 필드
+
+리소스 레코드에는 소유자 이름, TTL, 클래스, 유형 및 유형별 RDATA가 있습니다.
+
+```text
+www.example.com.  300  IN  A  192.0.2.25
 ```
 
-## Exercise
+소유자는 `www.example.com.`, TTL은 300초, 클래스는 Internet, 유형은 IPv4 주소, RDATA는 그 주소입니다. 영역 파일 구문에서 필드 생략과 상대 이름 규칙을 사용할 때 origin을 신중하게 처리해야 합니다.
 
-연습이 완벽을 만듭니다! 다음은 DNS 및 호스트 이름 확인에 대한 이해를 강화하기 위한 실습 랩입니다.
+:::single-choice{#dns-components-mx-type} 메일 교환기 선호도와 호스트 이름을 게시하는 레코드 유형은 무엇입니까?
 
-1. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - 로컬 DNS 서버 (`bind9`) 를 설치 및 구성하고, 존을 정의하고, 설정을 검증하는 연습을 합니다.
-2. **[dig 및 nslookup 으로 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 필수 명령줄 도구 (`dig`, `nslookup`) 를 사용하여 다양한 DNS 레코드 유형을 쿼리하고 DNS 문제를 해결하는 방법을 배웁니다.
-3. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 개발 및 테스트를 위한 핵심 기술인 `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 방법을 이해합니다.
+::option[`A`]{#dns-components-a explanation="A 레코드는 IPv4 주소를 저장합니다."}
+::option[`NS`]{#dns-components-ns explanation="NS 레코드는 권위 네임 서버를 식별합니다."}
+::option[`MX`]{#dns-components-mx .correct explanation="MX RDATA에는 선호도와 메일 교환기 이름이 포함됩니다."}
+:::
 
-이러한 랩은 실제 시나리오에서 DNS 및 호스트 이름 확인 개념을 적용하고 네트워크 서비스에 대한 자신감을 키우는 데 도움이 될 것입니다.
+## TTL과 부정 캐싱
 
-## Quiz Question
+긍정 레코드는 TTL로 캐시 재사용을 제한합니다. 존재하지 않는 이름이 입증된 것과 같은 부정 응답도 SOA에서 파생된 규칙에 따라 캐시될 수 있습니다. 계획된 변경 직전에 TTL을 낮추면 캐시가 더 낮은 값을 관찰한 뒤 가져온 레코드에만 영향을 줍니다. 이전의 긴 TTL로 이미 캐시된 레코드는 만료될 때까지 남습니다.
 
-메일 교환기에 사용되는 리소스 레코드 유형은 무엇입니까?
+:::single-choice{#dns-components-lower-ttl-timing} 계획된 주소 변경보다 훨씬 전에 DNS TTL을 낮추는 이유는 무엇입니까?
 
-## Quiz Answer
+::option[TTL이 서버의 Ethernet MTU를 수정합니다.]{#dns-components-ttl-mtu explanation="캐싱 수명과 링크 패킷 크기는 관계없습니다."}
+::option[낮은 TTL이 새 애플리케이션의 정상 상태를 보장합니다.]{#dns-components-ttl-health explanation="서비스 정확성이 아니라 캐싱 동작에 영향을 줍니다."}
+::option[기존 캐시가 이전의 긴 TTL로 학습한 레코드를 만료시킬 시간이 필요합니다.]{#dns-components-old-cache-expiry .correct explanation="권위 데이터 변경은 이미 캐시된 레코드의 남은 수명을 소급해 줄일 수 없습니다."}
+:::
 
-MX
+## 요약
+
+이제 DNS 재귀, 권위, 네임스페이스 관리 및 캐시된 레코드를 구분할 수 있습니다.
+
+1. 스텁 및 재귀 확인자의 역할을 식별합니다.
+2. 위임된 영역 서비스를 통해 권위를 정의합니다.
+3. 영역을 하나의 필수 파일이 아니라 네임스페이스 책임으로 다룹니다.
+4. 소유자, TTL, 클래스, 유형 및 RDATA 필드를 읽습니다.
+5. DNS 변경 전에 캐시 수명을 계획합니다.

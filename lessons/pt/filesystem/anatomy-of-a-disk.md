@@ -1,91 +1,101 @@
 ---
-index: 3
+lesson_id: "anatomy-of-a-disk"
+course_id: "filesystem"
 lang: "pt"
+order_index: 3
 title: "Anatomia de um Disco"
+description: "Aprenda como dispositivos de bloco, tabelas de partições, partições e sistemas de arquivos formam camadas distintas de armazenamento."
 meta_title: "Anatomia de um Disco - O Sistema de Arquivos"
-meta_description: "Explore a anatomia de um disco no Linux. Este guia explica qual componente do disco informa ao SO como o disco está particionado, cobrindo tabelas de partição MBR e GPT, diferentes tipos de partições Linux e como elas são organizadas."
-meta_keywords: "disco no linux, partições linux, tipos de partições linux, qual componente do disco informa ao SO como o disco está particionado, o que contém informações sobre como as partições do disco rígido são organizadas, MBR, GPT, tabela de partição, sistema de arquivos"
+meta_description: "Conheça a anatomia de um disco no Linux. Este guia explica como as tabelas de partições MBR e GPT informam ao sistema operacional a organização das partições e como os sistemas de arquivos se relacionam com elas."
+meta_keywords: "disco no Linux, partições Linux, tipos de partições Linux, organização de partições do disco, MBR, GPT, tabela de partições, sistema de arquivos"
 ---
 
-## Lesson Content
+Um dispositivo de armazenamento é exposto como um dispositivo de bloco, como `/dev/sda` ou `/dev/nvme0n1`. Ele pode conter uma tabela de partições, cujas entradas descrevem regiões expostas como dispositivos de bloco filhos. Uma partição pode então conter um sistema de arquivos, uma assinatura de swap, um membro de RAID, um contêiner de criptografia, um volume físico de volumes lógicos ou outro formato de dados.
 
-Um disco rígido no Linux pode ser subdividido em partições, que funcionam como dispositivos de bloco individuais. Você deve se lembrar de exemplos como /dev/sda1 e /dev/sda2. Aqui, /dev/sda representa o disco inteiro, enquanto /dev/sda1 é a primeira partição nesse disco. As partições são incrivelmente úteis para separar dados. Se você precisar de um sistema de arquivos específico para uma parte do seu armazenamento, poderá criar uma nova partição para ele em vez de formatar o disco inteiro.
+Essas camadas são independentes: nem todo disco possui uma tabela de partições, nem toda partição contém um sistema de arquivos e um sistema de arquivos pode residir em um volume lógico ou em um dispositivo inteiro.
 
-### A Tabela de Partição
+## Tabelas de Partições e Limites
 
-Então, qual componente de um disco informa ao SO como o disco está particionado? A resposta é a **tabela de partição**. Este componente crucial contém informações sobre como as partições do disco rígido são organizadas. A tabela de partição especifica onde cada partição começa e termina, quais partições são inicializáveis e quais setores do disco são alocados a cada partição. Existem dois esquemas principais de tabela de partição: Master Boot Record (MBR) e GUID Partition Table (GPT).
+Uma tabela de partições registra posições iniciais, comprimentos, identificadores de tipos e atributos específicos do esquema. O kernel a lê para criar dispositivos de bloco de partições, como `/dev/sda1` ou `/dev/nvme0n1p1`.
 
-### Entendendo as Partições Linux
+Em layouts comuns, os limites das partições não devem se sobrepor. O espaço fora de todas as entradas é considerado não alocado pela tabela de partições, embora ainda possa conter assinaturas ou dados antigos. Alterar uma tabela não move automaticamente o conteúdo dos sistemas de arquivos para corresponder aos novos limites.
 
-Os discos são compostos por partições que nos ajudam a organizar nossos dados. Você pode ter várias partições em um único disco, mas elas não podem se sobrepor. Qualquer espaço no disco não alocado a uma partição é conhecido como espaço livre. Os tipos de partições Linux disponíveis dependem do esquema de tabela de partição que você usa. Dentro de uma partição, você pode criar um sistema de arquivos ou dedicá-la a outros fins, como espaço de troca (swap).
+:::single-choice{#anatomy-disk-partition-table-role} O que informa ao sistema operacional onde as partições do disco começam e terminam?
 
-### Partições MBR
+::option[O diretório de trabalho atual do shell.]{#anatomy-disk-shell-directory explanation="Um caminho do shell não tem função nos limites das partições em disco."}
+::option[A tabela de partições do disco.]{#anatomy-disk-table-boundaries .correct explanation="As entradas das partições descrevem regiões que o kernel pode expor como dispositivos de bloco filhos."}
+::option[O grupo primário da conta do usuário.]{#anatomy-disk-user-group explanation="As credenciais de contas não definem a geometria nem o layout das partições do disco."}
+:::
 
-A Master Boot Record (MBR) é o padrão tradicional de tabela de partição.
+## Particionamento MBR
 
-- Ela suporta partições primárias, estendidas e lógicas.
-- O MBR tem um limite de quatro partições primárias.
-- Para criar mais partições, uma partição primária deve ser designada como uma partição estendida (apenas uma é permitida por disco). Dentro desta partição estendida, você pode criar várias partições lógicas, que funcionam como qualquer outra partição.
-- Ela suporta discos de até 2 terabytes de tamanho.
+O esquema legado DOS/MBR armazena sua tabela principal no primeiro setor lógico. Ele possui quatro entradas principais. Uma delas pode descrever uma partição estendida, que funciona como contêiner para uma série encadeada de partições lógicas, permitindo mais de quatro regiões utilizáveis.
 
-### Partições GPT
+Com endereços de setores de 32 bits e setores lógicos de 512 bytes, o MBR alcança um limite frequentemente citado de cerca de 2 TiB. O endereçamento exato depende do tamanho do setor e do suporte das ferramentas. O MBR também não possui as cópias redundantes do cabeçalho e da tabela nem os GUIDs por partição do GPT.
 
-A GUID Partition Table (GPT) é o padrão moderno para particionamento de disco.
+:::single-choice{#anatomy-disk-mbr-more-than-four} Qual estrutura do MBR permite mais de quatro partições utilizáveis?
 
-- Ela tem apenas um tipo de partição, e você pode criar um grande número delas.
-- Cada partição recebe um Identificador Globalmente Único (GUID).
-- O GPT é comumente usado com sistemas de inicialização baseados em UEFI.
+::option[Uma partição de journal contendo mais entradas principais.]{#anatomy-disk-mbr-journal explanation="O journaling do sistema de arquivos não tem relação com as quatro entradas da tabela MBR."}
+::option[Uma partição estendida contendo partições lógicas.]{#anatomy-disk-mbr-extended .correct explanation="Uma entrada principal pode definir um contêiner estendido, dentro do qual as partições lógicas são encadeadas."}
+::option[Um superbloco do sistema de arquivos que renumera as entradas.]{#anatomy-disk-mbr-superblock explanation="Os metadados de um sistema de arquivos não ampliam a tabela de partições do disco."}
+:::
 
-### Estrutura do Sistema de Arquivos
+## Particionamento GPT
 
-Como aprendemos anteriormente, um sistema de arquivos é uma coleção organizada de arquivos e diretórios. Em sua essência, ele consiste em um banco de dados para gerenciar arquivos e nos próprios arquivos. Vamos explorar sua estrutura em mais detalhes.
+A GUID Partition Table, ou GPT, usa endereços de blocos lógicos de 64 bits e normalmente armazena um cabeçalho e uma matriz de entradas principais perto do início, além de cópias de backup perto do fim do disco. Um MBR protetor ajuda a impedir que softwares antigos compatíveis apenas com MBR tratem o disco como vazio.
 
-- **Bloco de inicialização (Boot block)**: Localizado nos primeiros setores de um sistema de arquivos, este bloco não é usado pelo sistema de arquivos em si. Em vez disso, ele contém informações usadas para inicializar o sistema operacional. Apenas um bloco de inicialização é necessário por SO. Embora outras partições possam ter blocos de inicialização, eles geralmente ficam sem uso.
-- **Superbloco (Superblock)**: Este é um único bloco que segue o bloco de inicialização e contém metadados sobre o sistema de arquivos, como o tamanho da tabela de inodes, o tamanho dos blocos lógicos e o tamanho total do sistema de arquivos.
-- **Tabela de inodes (Inode table)**: Este é o banco de dados que gerencia arquivos e diretórios. Cada arquivo ou diretório tem uma entrada exclusiva na tabela de inodes, que armazena vários atributos sobre ele. Abordaremos os inodes em uma lição dedicada.
-- **Blocos de dados (Data blocks)**: É aqui que o conteúdo real dos seus arquivos e diretórios é armazenado.
+Cada entrada GPT inclui um GUID de tipo de partição e um GUID exclusivo da partição; portanto, o GPT não possui apenas um tipo de partição. A quantidade de entradas disponíveis é determinada pela tabela alocada e pelas ferramentas, geralmente muito superior a quatro, sem partições estendidas ou lógicas.
 
-Abaixo está um exemplo de um disco usando a tabela de partição MBR (rotulada como `msdos`). Você pode ver as partições primária, estendida e lógica.
+O GPT normalmente é usado em discos de boot UEFI, mas o particionamento e o modo de inicialização do firmware são conceitos distintos. Um sistema UEFI também precisa dos arquivos de boot apropriados e de uma EFI System Partition; somente o GPT não torna um disco inicializável.
 
-```plaintext
-pete@icebox:~$ sudo parted -l
-Model: Seagate (scsi)
-Disk /dev/sda: 21.5GB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
+:::single-choice{#anatomy-disk-gpt-identifiers} Quais identificadores uma entrada de partição GPT inclui?
 
-Number  Start   End     Size    Type      File system     Flags
- 1      1049kB  6860MB  6859MB  primary   ext4            boot
- 2      6861MB  21.5GB  14.6GB  extended
- 5      6861MB  7380MB  519MB   logical   linux-swap(v1)
- 6      7381MB  21.5GB  14.1GB  logical   xfs
+::option[Um GUID de tipo e um GUID exclusivo da partição.]{#anatomy-disk-gpt-guids .correct explanation="O tipo descreve o uso pretendido, enquanto o GUID exclusivo identifica aquela entrada específica de partição."}
+::option[Somente um tipo universal compartilhado por todas as partições GPT.]{#anatomy-disk-gpt-one-type explanation="O GPT define muitos GUIDs de tipo para diferentes finalidades de partições."}
+::option[O UID e o GID de login do usuário que a criou.]{#anatomy-disk-gpt-user-ids explanation="Os identificadores de contas do sistema de arquivos não são campos de identidade de partições GPT."}
+:::
+
+## Estruturas de Sistemas de Arquivos São Específicas do Formato
+
+Após o particionamento, uma ferramenta de criação de sistemas de arquivos grava as estruturas definidas por aquele sistema. Muitos formatos possuem conceitos como superblocos, metadados de alocação, registros de diretórios e extensões ou blocos de dados, mas seu layout, sua redundância e sua terminologia são diferentes.
+
+Por exemplo, os sistemas de arquivos ext usam inodes e grupos de blocos, enquanto outros sistemas organizam metadados por diferentes árvores ou estruturas de alocação. Não aplique um diagrama simplificado de “bloco de boot, um superbloco, tabela de inodes e blocos de dados” a todos os sistemas de arquivos.
+
+:::single-choice{#anatomy-disk-filesystem-layer} Criar uma partição cria automaticamente um sistema de arquivos dentro dela?
+
+::option[Não; formatá-la ou atribuir-lhe outro uso explícito é uma etapa separada.]{#anatomy-disk-partition-not-filesystem .correct explanation="A tabela de partições apenas define uma região de blocos; seu conteúdo permanece independente."}
+::option[Sim; toda partição é formatada automaticamente como ext4.]{#anatomy-disk-auto-ext4 explanation="As ferramentas de particionamento não criam universalmente um sistema de arquivos ext4."}
+::option[Sim; as entradas GPT são, por si só, diretórios montados.]{#anatomy-disk-gpt-mounted explanation="Uma entrada de partição descreve o armazenamento e não é um ponto de montagem de sistema de arquivos."}
+:::
+
+## Inspeção do Layout Atual
+
+Use visualizações somente para leitura antes de qualquer modificação:
+
+```bash
+$ lsblk -o NAME,PATH,TYPE,SIZE,PTTYPE,PARTTYPE,FSTYPE,MOUNTPOINTS
+$ sudo parted --list
 ```
 
-Este segundo exemplo mostra uma tabela de partição GPT, que usa IDs exclusivos para suas partições.
+`PTTYPE` descreve o esquema detectado da tabela de partições, `PARTTYPE` identifica um tipo de partição e `FSTYPE` informa uma assinatura de conteúdo detectada. A detecção é um indício, não uma garantia de que o conteúdo esteja íntegro ou seja seguro montá-lo.
 
-```plaintext
-Model: Thumb Drive (scsi)
-Disk /dev/sdb: 4041MB
-Sector size (logical/physical): 512B/512B
-Partition Table: gpt
+Os nomes dos dispositivos podem mudar, e assinaturas antigas podem confundir a detecção. Confirme modelo, número de série, tamanho, transporte, links persistentes, montagens ativas, swap, RAID, LVM, criptografia e backups antes de abrir qualquer ferramenta de particionamento no modo de escrita.
 
-Number  Start   End     Size     File system  Name        Flags
- 1      17.4kB  1000MB  1000MB                first
- 2      1000MB  4040MB  3040MB                second
-```
+:::single-choice{#anatomy-disk-lsblk-fields} Qual campo de `lsblk` diferencia o conteúdo detectado de um sistema de arquivos do esquema da tabela de partições?
 
-## Exercise
+::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` informa um sistema de arquivos detectado ou outra assinatura de conteúdo reconhecida, enquanto `PTTYPE` informa o esquema da tabela."}
+::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` identifica a entrada de dispositivo de bloco do kernel e não indica especificamente o formato do conteúdo."}
+::option[`SIZE`]{#anatomy-disk-size-field explanation="O tamanho informa a capacidade, não o tipo do sistema de arquivos."}
+:::
 
-Para reforçar sua compreensão sobre particionamento de disco e sistemas de arquivos, recomendamos este laboratório prático:
+Use o laboratório [Gerenciamento de Partições e Sistemas de Arquivos Linux](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) somente em armazenamento descartável para praticar essas camadas.
 
-1. **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Pratique a criação de novas partições, formatando-as com sistemas de arquivos como ext4, montando-as e configurando a montagem persistente em /etc/fstab.
+## Resumo
 
-Este laboratório ajudará você a aplicar conceitos de gerenciamento de disco em cenários do mundo real e a ganhar confiança com o armazenamento Linux.
+Agora você sabe separar os metadados do layout do disco dos formatos de dados armazenados nele.
 
-## Quiz Question
-
-Qual tipo de partição é usado para criar mais de 4 partições no esquema de particionamento MBR? (Por favor, responda em uma única palavra em inglês minúscula.)
-
-## Quiz Answer
-
-extended
+1. Identifique dispositivos inteiros e seus dispositivos filhos de partições.
+2. Relacione as partições estendidas do MBR ao limite legado de quatro entradas.
+3. Relacione o GPT a tabelas redundantes e GUIDs por partição.
+4. Trate a criação do sistema de arquivos como algo separado da criação da partição.
+5. Inspecione cada camada de armazenamento e consumidor ativo antes de realizar alterações.

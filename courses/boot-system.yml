@@ -1,0 +1,123 @@
+id: boot-system
+category:
+  id: journeyman
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/boot-system.png
+order_index: 2
+translations:
+  en:
+    title: "Boot the System"
+    description: "Learn about the stages of the Linux boot process."
+    faqs:
+      - question: "Which stages of Linux boot are explained?"
+        answer: "The course follows startup from BIOS through the bootloader, kernel initialization, and the init system that starts services and the user environment."
+      - question: "Is this course specific to one Linux distribution?"
+        answer: "No. The core boot sequence applies broadly, although firmware, bootloader settings, and init implementations can vary between systems."
+      - question: "Why should I learn the boot process?"
+        answer: "Knowing which component runs at each stage helps you locate startup failures and choose the right logs, configuration, or recovery tool."
+    meta_title: "Linux Boot Process Course"
+    meta_description: "Understand each stage of the Linux boot process, from BIOS and the bootloader through kernel initialization and the init system."
+    meta_keywords: "Linux boot process, BIOS, bootloader, GRUB, Linux kernel, init system, system startup"
+  de:
+    title: "System booten"
+    description: "Lernen Sie die einzelnen Phasen des Linux-Startvorgangs kennen."
+    faqs:
+      - question: "Welche Phasen des Linux-Boots werden erklärt?"
+        answer: "Der Kurs folgt dem Start vom BIOS über den Bootloader, die Kernel-Initialisierung und das Init-System, das Dienste und die Benutzerumgebung startet."
+      - question: "Ist dieser Kurs spezifisch für eine Linux-Distribution?"
+        answer: "Nein. Die Kern-Boot-Sequenz gilt allgemein, obwohl Firmware, Bootloader-Einstellungen und Init-Implementierungen je nach System variieren können."
+      - question: "Warum sollte ich den Bootvorgang lernen?"
+        answer: "Wenn Sie wissen, welche Komponente in welcher Phase ausgeführt wird, können Sie Startfehler lokalisieren und die richtigen Protokolle, Konfigurationen oder Wiederherstellungstools auswählen."
+    meta_title: "Kurs zum Linux-Boot-Prozess"
+    meta_description: "Verstehen Sie jede Phase des Linux-Startvorgangs, vom BIOS und dem Bootloader bis zur Kernel-Initialisierung und dem Init-System."
+    meta_keywords: "Linux-Bootvorgang, BIOS, Bootloader, GRUB, Linux-Kernel, Init-System, Systemstart"
+  es:
+    title: "Arrancar el Sistema"
+    description: "Aprende sobre las etapas del proceso de boot de Linux."
+    faqs:
+      - question: "¿Qué etapas del arranque de Linux se explican?"
+        answer: "El curso sigue el inicio desde BIOS a través del gestor de arranque, la inicialización del kernel y el sistema de inicio que inicia los servicios y el entorno del usuario."
+      - question: "¿Este curso es específico de una distribución de Linux?"
+        answer: "No. La secuencia de inicio principal se aplica de manera amplia, aunque el firmware, la configuración del cargador de inicio y las implementaciones de inicio pueden variar entre sistemas."
+      - question: "¿Por qué debería aprender el proceso de arranque?"
+        answer: "Saber qué componente se ejecuta en cada etapa lo ayuda a localizar fallas de inicio y elegir los registros, la configuración o la herramienta de recuperación adecuados."
+    meta_title: "Curso de Proceso de Arranque de Linux"
+    meta_description: "Comprenda cada etapa del proceso de arranque de Linux, desde el BIOS y el gestor de arranque hasta la inicialización del kernel y el sistema de inicio."
+    meta_keywords: "Proceso de arranque de Linux, BIOS, gestor de arranque, GRUB, kernel de Linux, sistema de inicio, inicio del sistema"
+  fr:
+    title: "Démarrer le Système"
+    description: "Apprenez-en davantage sur les étapes du processus de boot Linux."
+    faqs:
+      - question: "Quelles étapes du démarrage de Linux sont expliquées ?"
+        answer: "Le cours suit le démarrage à partir du BIOS via le chargeur de démarrage, l'initialisation du noyau et le système d'initialisation qui démarre les services et l'environnement utilisateur."
+      - question: "Ce cours est-il spécifique à une distribution Linux ?"
+        answer: "Non. La séquence de démarrage principale s'applique largement, bien que le micrologiciel, les paramètres du chargeur de démarrage et les implémentations d'initialisation puissent varier d'un système à l'autre."
+      - question: "Pourquoi devrais-je apprendre le processus de démarrage ?"
+        answer: "Savoir quel composant s'exécute à chaque étape vous aide à localiser les échecs de démarrage et à choisir les bons journaux, configuration ou outil de récupération."
+    meta_title: "Cours sur le processus de démarrage Linux"
+    meta_description: "Comprendre chaque étape du processus de démarrage Linux, du BIOS et du chargeur de démarrage en passant par l'initialisation du noyau et le système d'initialisation."
+    meta_keywords: "Processus de démarrage Linux, BIOS, chargeur de démarrage, GRUB, noyau Linux, système d'initialisation, démarrage du système"
+  ja:
+    title: "システムの起動"
+    description: "Linux の起動プロセスの段階について学びましょう。"
+    faqs:
+      - question: "Linux ブートのどの段階について説明されていますか？"
+        answer: "このコースでは、BIOS からブートローダー、カーネルの初期化、サービスとユーザー環境を開始する init システムを介して起動します。"
+      - question: "このコースは 1 つの Linux ディストリビューションに固有のものですか？"
+        answer: "いいえ。コアのブート シーケンスは広く適用されますが、ファームウェア、ブートローダー設定、初期化の実装はシステムによって異なる場合があります。"
+      - question: "ブートプロセスを学ぶ必要があるのはなぜですか？"
+        answer: "各段階でどのコンポーネントが実行されているかを知ることは、起動の失敗を特定し、適切なログ、構成、または回復ツールを選択するのに役立ちます。"
+    meta_title: "Linux ブートプロセスコース"
+    meta_description: "BIOS とブートローダーからカーネルの初期化と init システムに至るまで、Linux ブート プロセスの各段階を理解します。"
+    meta_keywords: "Linux ブート プロセス，BIOS, ブートローダー, GRUB, Linux カーネル，init システム，システム起動"
+  ko:
+    title: "시스템 부팅"
+    description: "Linux 부팅 과정의 각 단계를 알아보세요."
+    faqs:
+      - question: "Linux 부팅의 어떤 단계가 설명되어 있나요?"
+        answer: "이 과정은 부트로더, 커널 초기화, 서비스와 사용자 환경을 시작하는 init 시스템을 거쳐 BIOS 에서 시작하는 과정을 따릅니다."
+      - question: "이 과정은 하나의 Linux 배포판에만 적용됩니까?"
+        answer: "아니요. 핵심 부팅 순서는 광범위하게 적용되지만 펌웨어, 부트로더 설정 및 초기화 구현은 시스템마다 다를 수 있습니다."
+      - question: "왜 부팅과정을 배워야 하나요?"
+        answer: "각 단계에서 어떤 구성 요소가 실행되는지 알면 시작 오류를 찾고 올바른 로그, 구성 또는 복구 도구를 선택하는 데 도움이 됩니다."
+    meta_title: "Linux 부팅 프로세스 과정"
+    meta_description: "BIOS 와 부트로더부터 커널 초기화와 init 시스템까지 Linux 부팅 프로세스의 각 단계를 이해합니다."
+    meta_keywords: "Linux 부팅 프로세스, BIOS, 부트로더, GRUB, Linux 커널, 시스템 초기화, 시스템 시작"
+  pt:
+    title: "Inicializar o Sistema"
+    description: "Aprenda sobre as etapas do processo de boot do Linux."
+    faqs:
+      - question: "Quais estágios da inicialização do Linux são explicados?"
+        answer: "O curso segue a inicialização do BIOS através do bootloader, inicialização do kernel e sistema init que inicia serviços e o ambiente do usuário."
+      - question: "Este curso é específico para uma distribuição Linux?"
+        answer: "Não. A sequência principal de inicialização se aplica amplamente, embora o firmware, as configurações do carregador de inicialização e as implementações de inicialização possam variar entre os sistemas."
+      - question: "Por que devo aprender o processo de inicialização?"
+        answer: "Saber qual componente é executado em cada estágio ajuda a localizar falhas de inicialização e escolher os logs, a configuração ou a ferramenta de recuperação correta."
+    meta_title: "Curso de processo de inicialização do Linux"
+    meta_description: "Entenda cada estágio do processo de inicialização do Linux, desde o BIOS e o bootloader até a inicialização do kernel e o sistema init."
+    meta_keywords: "Processo de inicialização do Linux, BIOS, bootloader, GRUB, kernel Linux, sistema de inicialização, inicialização do sistema"
+  ru:
+    title: "Загрузка системы"
+    description: "Узнайте об этапах процесса загрузки Linux."
+    faqs:
+      - question: "Какие этапы загрузки Linux описаны?"
+        answer: "В курсе рассматривается запуск из BIOS через загрузчик, инициализацию ядра и систему инициализации, которая запускает службы и среду пользователя."
+      - question: "Этот курс предназначен только для одного дистрибутива Linux?"
+        answer: "Нет. Основная последовательность загрузки применяется в широком смысле, хотя встроенное ПО, настройки загрузчика и реализации инициализации могут различаться в зависимости от системы."
+      - question: "Зачем мне изучать процесс загрузки?"
+        answer: "Знание того, какой компонент запускается на каждом этапе, поможет вам обнаружить сбои при запуске и выбрать правильные журналы, конфигурацию или инструмент восстановления."
+    meta_title: "Курс процесса загрузки Linux"
+    meta_description: "Изучите каждый этап процесса загрузки Linux: от BIOS и загрузчика до инициализации ядра и системы инициализации."
+    meta_keywords: "Процесс загрузки Linux, BIOS, загрузчик, GRUB, ядро Linux, система инициализации, запуск системы"
+  zh:
+    title: "启动系统"
+    description: "了解 Linux 启动过程的各个阶段。"
+    faqs:
+      - question: "解释了 Linux 启动的哪些阶段？"
+        answer: "本课程从 BIOS 启动，经过引导加载程序、内核初始化以及启动服务和用户环境的 init 系统。"
+      - question: "本课程是否特定于某个 Linux 发行版？"
+        answer: "否。尽管固件、引导加载程序设置和 init 实现可能因系统而异，但核心引导顺序广泛适用。"
+      - question: "为什么要学习开机流程？"
+        answer: "了解每个阶段运行的组件有助于定位启动失败并选择正确的日志、配置或恢复工具。"
+    meta_title: "Linux 启动过程课程"
+    meta_description: "了解 Linux 启动过程的每个阶段，从 BIOS 和引导加载程序到内核初始化和 init 系统。"
+    meta_keywords: "Linux 启动流程，BIOS, bootloader, GRUB, Linux 内核，init 系统，系统启动"

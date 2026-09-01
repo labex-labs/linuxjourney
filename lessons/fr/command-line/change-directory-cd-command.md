@@ -1,67 +1,83 @@
 ---
-index: 3
+lesson_id: "change-directory-cd-command"
+course_id: "command-line"
 lang: "fr"
+order_index: 3
 title: "cd (Changer de répertoire)"
+description: "Apprenez à utiliser cd avec des chemins et des raccourcis pour parcourir le système de fichiers Linux."
 meta_title: "cd (Changer de répertoire) - Ligne de commande"
 meta_description: "Apprenez la commande Linux cd avec des exemples de chemins absolus, chemins relatifs, raccourcis vers le répertoire personnel, répertoires parents et navigation vers le répertoire précédent."
 meta_keywords: "commande cd, commande linux cd, changer de répertoire, cd répertoire parent, cd home, cd répertoire précédent, chemin absolu, chemin relatif"
 ---
 
-## Lesson Content
+Pour parcourir le système de fichiers Linux, vous indiquez votre destination à l'aide de chemins. La commande principale est `cd`, abréviation de « change directory », qui modifie le répertoire de travail actuel du shell.
 
-Pour naviguer dans le système de fichiers Linux, vous utilisez des chemins pour spécifier votre destination. L'outil principal pour cela est la commande `cd`, abréviation de change directory (changer de répertoire). Elle modifie le répertoire de travail actuel du shell.
+La destination doit être un répertoire et non un fichier ordinaire. Si elle n'existe pas, si son nom est mal saisi ou si vous n'avez pas la permission d'y entrer, `cd` signale une erreur au lieu de changer d'emplacement.
 
-La syntaxe de base est :
+La syntaxe élémentaire est :
 
 ```bash
 cd [DIRECTORY]
 ```
 
-### Comprendre les chemins
+## Comprendre les chemins
 
-Il existe deux façons de spécifier un chemin : absolu et relatif.
+Un chemin peut être absolu ou relatif.
 
-- **Chemin absolu** : Le chemin complet à partir du répertoire racine (`/`). Par exemple : `/home/pete/Desktop`.
+- **Chemin absolu** : chemin complet qui part du répertoire racine (`/`), par exemple `/home/pete/Desktop`.
+- **Chemin relatif** : chemin fondé sur l'emplacement actuel. Si vous vous trouvez dans `/home/pete/Documents` et souhaitez accéder au sous-répertoire `taxes`, vous pouvez utiliser `taxes/`.
 
-- **Chemin relatif** : Un chemin basé sur votre emplacement actuel. Si vous êtes dans `/home/pete/Documents` et souhaitez accéder à un sous-répertoire nommé `taxes`, vous pouvez utiliser `taxes/`.
+:::single-choice{#recognize-absolute-cd-path} Quelle affirmation décrit correctement un chemin absolu ?
 
-### Utilisation de la commande cd
+::option[Il part du répertoire actuellement utilisé par le shell.]{#begins-at-current-directory explanation="Un chemin qui dépend de l'emplacement actuel du shell est relatif ; il ne part pas nécessairement de la racine."}
+::option[Il ne contient que le nom du répertoire final, sans ses parents.]{#contains-final-name-only explanation="Un nom de destination seul est normalement interprété par rapport au répertoire actuel. Un chemin absolu inclut son parcours depuis `/`."}
+::option[Il part du répertoire racine, représenté par `/`.]{#begins-at-root .correct explanation="Un chemin absolu commence à la racine du système de fichiers. Le `/` initial rend son point de départ indépendant du répertoire actuel."}
+:::
 
-Pour changer vers un répertoire spécifique en utilisant un chemin absolu, tapez :
+## Utiliser la commande cd
+
+Pour accéder à un répertoire précis avec un chemin absolu, saisissez :
 
 ```bash
 $ cd /home/pete/Pictures
 ```
 
-Cette commande vous déplace directement dans le répertoire `Pictures`.
+Cette commande vous place directement dans `Pictures`.
 
-Vous pouvez confirmer votre emplacement avec `pwd` :
+Confirmez votre emplacement avec `pwd` :
 
 ```bash
 $ pwd
 /home/pete/Pictures
 ```
 
-### Naviguer vers un sous-répertoire
+:::single-choice{#verify-changed-directory} Quelle commande confirme l'emplacement actuel du shell après `cd` ?
 
-Si vous êtes déjà dans un répertoire et souhaitez vous déplacer vers un sous-répertoire, utilisez un chemin relatif. Par exemple, si votre emplacement actuel est `/home/pete/Pictures` et qu'il contient un dossier nommé `Hawaii`, vous pouvez y naviguer avec :
+::option[`cd`]{#cd-command explanation="`cd` change le répertoire actuel, mais n'affiche normalement pas le chemin complet obtenu. Utilisez `pwd` pour le confirmer."}
+::option[`ls`]{#ls-command explanation="`ls` affiche le contenu d'un répertoire. Elle aide à inspecter un emplacement, mais `pwd` indique l'emplacement lui-même."}
+::option[`pwd`]{#pwd-command .correct explanation="`pwd` affiche le répertoire de travail actuel et permet de vérifier où `cd` a déplacé le shell."}
+:::
+
+## Accéder à un sous-répertoire
+
+Si vous vous trouvez déjà dans un répertoire et voulez ouvrir l'un de ses sous-répertoires, utilisez un chemin relatif. Par exemple, si `/home/pete/Pictures` contient un dossier `Hawaii` :
 
 ```bash
 $ cd Hawaii
 ```
 
-Notez que nous avons utilisé uniquement le nom du dossier. C'est parce que nous étions déjà dans son répertoire parent, `/home/pete/Pictures`.
+Seul le nom du dossier suffit puisque vous vous trouvez déjà dans son parent, `/home/pete/Pictures`.
 
-### Raccourcis essentiels pour la navigation
+## Raccourcis de navigation essentiels
 
-Naviguer avec des chemins complets peut être fastidieux. Heureusement, le shell fournit plusieurs raccourcis pour rendre les déplacements beaucoup plus rapides.
+Les chemins complets peuvent être fastidieux. Le shell fournit plusieurs raccourcis :
 
-- `.` (répertoire courant) : Représente le répertoire dans lequel vous vous trouvez actuellement.
-- `..` (répertoire parent) : Vous fait remonter d'un niveau vers le répertoire contenant votre répertoire actuel.
-- `~` (répertoire personnel) : Un raccourci vers votre répertoire personnel, comme `/home/pete`.
-- `-` (répertoire précédent) : Vous ramène au dernier répertoire dans lequel vous étiez.
+- `.` (répertoire actuel) : représente le répertoire où vous vous trouvez ;
+- `..` (répertoire parent) : remonte d'un niveau vers le répertoire qui contient le répertoire actuel ;
+- `~` (répertoire personnel) : représente votre répertoire personnel, par exemple `/home/pete` ;
+- `-` (répertoire précédent) : revient au dernier répertoire visité.
 
-Vous pouvez utiliser ces raccourcis avec `cd` :
+Utilisez-les avec `cd` :
 
 ```bash
 $ cd .
@@ -70,59 +86,70 @@ $ cd ~
 $ cd -
 ```
 
-Expérimentez avec ces raccourcis pour devenir plus efficace en ligne de commande.
+:::single-choice{#move-to-parent-directory} Depuis `/home/pete/Pictures`, quelle commande mène à `/home/pete` ?
 
-### Exemples pratiques de cd
+::option[`cd .`]{#cd-current explanation="`.` représente le répertoire actuel ; cette commande laisse donc le shell dans `/home/pete/Pictures`."}
+::option[`cd -`]{#cd-previous explanation="`-` revient au répertoire de travail précédent, qui n'est pas nécessairement le parent. Utilisez `..` pour remonter d'un niveau."}
+::option[`cd ..`]{#cd-parent .correct explanation="`..` représente le parent du répertoire actuel. Le parent de `Pictures` est `/home/pete`."}
+:::
 
-Aller dans votre répertoire personnel :
+:::single-choice{#return-to-previous-directory} Quelle commande revient au répertoire utilisé juste avant le répertoire actuel ?
+
+::option[`cd -`]{#previous-directory .correct explanation="`cd -` revient au répertoire de travail précédent, qui peut se trouver n'importe où dans le système de fichiers."}
+::option[`cd ..`]{#parent-directory explanation="`cd ..` remonte au répertoire parent. Le parent et le répertoire précédent ne sont pas toujours identiques."}
+::option[`cd ~`]{#home-directory explanation="`cd ~` ouvre votre répertoire personnel ; cette commande ne mémorise pas le répertoire visité juste avant."}
+:::
+
+Expérimentez avec ces raccourcis pour gagner en efficacité.
+
+## Exemples pratiques de cd
+
+Accédez à votre répertoire personnel :
 
 ```bash
 $ cd
 ```
 
-Remonter de deux niveaux :
+`cd` sans argument de répertoire vous ramène également au répertoire personnel.
+
+Remontez de deux niveaux :
 
 ```bash
 $ cd ../..
 ```
 
-Aller dans un répertoire dont le nom contient des espaces en le citant :
+Accédez à un répertoire dont le nom contient des espaces en le plaçant entre guillemets :
 
 ```bash
 $ cd "Vacation Photos"
 ```
 
-Revenir au répertoire précédent :
+:::single-choice{#enter-directory-with-spaces} Quelle commande traite `Vacation Photos` comme un seul nom de répertoire ?
+
+::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="Sans guillemets, le shell transmet `Vacation` et `Photos` comme deux arguments au lieu d'un seul nom."}
+::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="Placer toute la ligne entre guillemets la transforme en un unique nom de commande. La commande doit rester hors des guillemets du chemin."}
+::option[`cd "Vacation Photos"`]{#quote-directory-name .correct explanation="Les guillemets regroupent les deux mots en un seul argument de chemin pour `cd`."}
+:::
+
+Revenez au répertoire précédent :
 
 ```bash
 $ cd -
 /home/pete/Documents
 ```
 
-### Questions fréquentes
+Pour consolider votre maîtrise de la navigation, essayez ces laboratoires :
 
-**Pourquoi cd affiche-t-il "No such file or directory" ?** Le chemin n'existe pas depuis votre emplacement actuel, ou le nom a été mal tapé. Utilisez `ls` pour lister les répertoires disponibles.
+1. **[Commande Linux cd : changer de répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** — Apprenez différentes méthodes pour changer de répertoire, comprendre les chemins et explorer l'arborescence.
+2. **[Navigation dans les répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** — Testez vos connaissances des commandes essentielles en parcourant plusieurs répertoires.
+3. **[Créer la structure d'un nouveau projet](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)** — Créez une structure de projet et parcourez-la avec des commandes comme `mkdir` et `cd`.
 
-**Pourquoi cd affiche-t-il "Permission denied" ?** Vous n'avez pas la permission d'entrer dans ce répertoire.
+## Résumé
 
-**Que se passe-t-il lorsque j'exécute cd sans argument ?** Cela vous amène dans votre répertoire personnel.
+Vous savez maintenant utiliser `cd` pour parcourir les répertoires avec des chemins complets et les raccourcis du shell.
 
-**Est-ce que cd fonctionne sur les fichiers ?** Non. `cd` change de répertoire, pas de fichier ordinaire.
-
-## Exercise
-
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la navigation dans les répertoires Linux :
-
-1. **[Commande Linux cd : Changement de répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez la commande Linux `cd` pour naviguer efficacement dans votre système de fichiers, y compris diverses techniques pour changer de répertoire, comprendre les chemins et explorer la structure des fichiers.
-2. **[Navigation dans les répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez vos compétences de base en ligne de commande Linux à l'épreuve en naviguant à travers les répertoires avec les commandes essentielles.
-3. **[Mise en place d'une nouvelle structure de projet](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)** - Entraînez-vous à gérer les répertoires Linux en créant une structure de projet spécifique et en naviguant à travers elle avec des commandes essentielles comme `mkdir` et `cd`.
-
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance dans la navigation du système de fichiers Linux.
-
-## Quiz Question
-
-If you are in `/home/pete/Pictures` and want to navigate to the parent directory (`/home/pete`), what is the full command you should use? Please answer in English, paying attention to case and spacing.
-
-## Quiz Answer
-
-cd ..
+1. Distinguer les chemins absolus des chemins relatifs.
+2. Changer de répertoire et vérifier le résultat avec `pwd`.
+3. Accéder aux répertoires parent, personnel et précédent.
+4. Ouvrir des répertoires dont le nom contient des espaces.
+5. Reconnaître les erreurs courantes de chemin et de permission.

@@ -1,112 +1,160 @@
 ---
-index: 6
+lesson_id: "systemd-goals"
+course_id: "init"
 lang: "en"
+order_index: 6
 title: "Systemd Goals"
+description: "Learn how to inspect, override, validate, start, enable, and troubleshoot systemd service units."
 meta_title: "Systemd Goals - Init"
 meta_description: "Explore systemd goals and learn to manage Linux services using essential systemctl commands. This guide covers systemd unit file basics, how to start, stop, and enable services, and view their status."
 meta_keywords: "systemd, systemctl, Linux services, unit files, systemd goals, service management, systemd units, beginner, tutorial, guide, Linux commands"
 ---
 
-## Lesson Content
+`systemctl` sends requests to a systemd manager. This lesson focuses on system service units. Confirm the exact unit name, manager scope, dependencies, and operational impact before changing state.
 
-This lesson provides a foundational overview of systemd unit files and how to manage them with `systemctl`, the primary tool for controlling the init system. We will cover the basic structure of a unit file and the essential commands for managing Linux services.
+## Reading a Service Unit
 
-### Understanding a Systemd Unit File
+A minimal illustrative unit can look like:
 
-A systemd unit file is a plain text file that describes a service, a mount point, a device, or another resource that systemd can manage. Here is a basic example of a service unit file named `foobar.service`:
-
-```
+```ini
 [Unit]
-Description=My Foobar Service
-After=network.target
+Description=Example worker
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/foobar
+Type=exec
+ExecStart=/usr/local/bin/example-worker
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-This simple service file is divided into sections:
+- `[Unit]` contains description and dependency relationships.
+- `[Service]` defines process lifecycle and service-specific behavior.
+- `[Install]` tells enablement commands which aliases or dependency links to create; it is not automatically an active runtime dependency.
 
-- **[Unit]**: This section contains metadata and dependency information. The `Description` provides a human-readable name for the unit. Directives like `After` and `Before` control the startup order, ensuring this unit starts after the network is available.
-- **[Service]**: This section defines how to manage the service. The `ExecStart` directive is crucial, as it specifies the command to execute to start the service. Other directives like `ExecStop` and `ExecReload` can define how to stop or reload the service.
-- **[Install]**: This section defines the behavior of the unit when it is enabled or disabled with `systemctl`. The `WantedBy` directive tells systemd to start this service as part of a specific target, such as the `multi-user.target` for a standard non-graphical boot.
+`ExecStart=` is not passed through a shell by default. Shell pipelines, redirections, variables, and quoting do not behave like an interactive command line unless an explicit shell is intentionally invoked.
 
-This is just a glimpse into systemd unit files. For more advanced configurations, further reading on the topic is highly recommended.
+:::single-choice{#systemd-goals-install-section} What is the primary purpose of `[Install]` directives such as `WantedBy=`?
 
-### Essential Systemctl Commands
+::option[Guarantee that the service process is already running.]{#systemd-goals-install-running explanation="Runtime activation requires start or another triggering dependency."}
+::option[Describe links or relationships created when the unit is enabled.]{#systemd-goals-enable-links .correct explanation="Install metadata is interpreted by enablement operations and is separate from current process state."}
+::option[Execute every command through the user's interactive shell.]{#systemd-goals-install-shell explanation="Unit command parsing does not use an interactive shell by default."}
+:::
 
-Now, let's explore the essential `systemctl` commands you'll use to interact with systemd units and manage Linux services.
+## Inspecting Effective Configuration
 
-### Listing Systemd Units
-
-To see all active units that systemd is currently managing, use the `list-units` command.
-
-```bash
-systemctl list-units
-```
-
-### Checking a Unit's Status
-
-To view the detailed status of a specific unit, including whether it's active, enabled, and its latest log entries, use the `status` command.
+List loaded units with:
 
 ```bash
-systemctl status networking.service
+$ systemctl list-units --type=service
 ```
 
-### Managing Service States
-
-You can control the runtime state of a service using `start`, `stop`, and `restart`.
-
-To start a service immediately:
+List installed unit files and enablement states with:
 
 ```bash
-sudo systemctl start networking.service
+$ systemctl list-unit-files --type=service
 ```
 
-To stop a running service:
+These are different views: a unit file can be enabled but inactive, active but disabled, static, generated, transient, masked, or absent from one listing. Inspect merged vendor and drop-in content with:
 
 ```bash
-sudo systemctl stop networking.service
+$ systemctl cat UNIT.service
+$ systemctl show UNIT.service
 ```
 
-To stop and then start the service again:
+:::single-choice{#systemd-goals-list-units-versus-files} What does `list-unit-files` show that `list-units` does not primarily show?
+
+::option[Only processes consuming the most CPU.]{#systemd-goals-cpu-processes explanation="Process resource ranking is outside these unit inventory commands."}
+::option[Installed unit-file enablement states.]{#systemd-goals-unit-file-state .correct explanation="It reports whether unit files are enabled, disabled, static, masked, and related installation states."}
+::option[Every line ever written to the journal.]{#systemd-goals-all-journal explanation="Journal queries use `journalctl`."}
+:::
+
+## Creating a Local Override
+
+Use a drop-in rather than editing a packaged unit:
 
 ```bash
-sudo systemctl restart networking.service
+$ sudo systemctl edit UNIT.service
 ```
 
-### Enabling and Disabling Services
-
-Enabling a service creates a symbolic link that hooks it into the boot process, ensuring it starts automatically. Disabling it removes that link.
-
-To enable a service to start on boot:
+After saving, systemctl normally asks the manager to reload as part of this edit workflow on current implementations, but when files are changed by another method, run:
 
 ```bash
-sudo systemctl enable networking.service
+$ sudo systemctl daemon-reload
 ```
 
-To disable a service from starting on boot:
+`daemon-reload` rereads unit definitions and rebuilds dependencies. It does not reload application configuration or restart running services. Validate unit syntax and dependencies with `systemd-analyze verify` where appropriate, then review the effective merged unit.
+
+:::single-choice{#systemd-goals-daemon-reload} What does `systemctl daemon-reload` do?
+
+::option[Forces every daemon to reread its application configuration.]{#systemd-goals-reload-all-apps explanation="Application reload is service-specific and separate from manager configuration."}
+::option[Reboots the kernel into a new release.]{#systemd-goals-reload-kernel explanation="Kernel activation requires a boot, not a unit-definition reload."}
+::option[Reloads systemd unit definitions and dependency information.]{#systemd-goals-reload-manager .correct explanation="It updates the manager's configuration view without inherently restarting services."}
+:::
+
+## Runtime Service State
+
+After validating service configuration and preserving recovery access:
 
 ```bash
-sudo systemctl disable networking.service
+$ sudo systemctl start peanut.service
+$ sudo systemctl stop peanut.service
+$ sudo systemctl restart peanut.service
+$ sudo systemctl reload peanut.service
 ```
 
-These commands are the building blocks for service management on modern Linux systems. Mastering them is a key step in your Linux journey.
+`reload` succeeds only when the unit defines or supports a reload action. `restart` interrupts the process and can fail to restore service. For remote access, networking, storage, or authentication, keep a separate console path and verify configuration before acting.
 
-## Exercise
+Check state and logs with:
 
-Practice is key to mastering new skills. This hands-on lab will help reinforce your understanding of managing processes, which are often controlled by systemd services:
+```bash
+$ systemctl status peanut.service
+$ systemctl is-active peanut.service
+$ journalctl -u peanut.service -b
+```
 
-1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, adjusting priority with `renice`, and terminating them with `kill`. This lab will give you practical experience with the runtime effects of systemd unit management.
+“Active” is manager state, not proof that every application endpoint is healthy.
 
-This lab will help you apply these concepts in a real-world scenario and build confidence with process management in Linux.
+:::single-choice{#systemd-goals-start-peanut} Which command starts `peanut.service` now without changing future enablement by itself?
 
-## Quiz Question
+::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="Enable changes installation links but does not start the service unless combined with `--now`."}
+::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="Start requests current runtime activation and is separate from enablement."}
+::option[`sudo systemctl daemon-reload peanut.service`]{#systemd-goals-daemon-reload-unit explanation="Daemon-reload takes no unit activation operand and does not start this service."}
+:::
 
-What is the command to start a service named peanut.service? Please answer in English. The answer is case-sensitive.
+## Enablement, Disablement, and Masking
 
-## Quiz Answer
+Manage future dependency links with:
 
-sudo systemctl start peanut.service
+```bash
+$ sudo systemctl enable peanut.service
+$ sudo systemctl disable peanut.service
+```
+
+Enable does not start the unit unless `--now` is added. Disable does not stop a running unit unless `--now` is added. A static unit can lack install metadata and still be activated as another unit's dependency.
+
+Masking links the unit to `/dev/null` and blocks ordinary activation, including dependency activation, until unmasked. It is stronger than disable and can break dependents; inspect reverse dependencies before using it.
+
+:::single-choice{#systemd-goals-disable-runtime} What happens to an already running service after `systemctl disable UNIT` without `--now`?
+
+::option[It is immediately killed with `SIGKILL`.]{#systemd-goals-disable-kills explanation="Disable alone does not request a current stop."}
+::option[Its executable is deleted from the filesystem.]{#systemd-goals-disable-deletes explanation="Enablement operations manage links, not program package files."}
+::option[It normally keeps running while future enablement links are removed.]{#systemd-goals-disable-keeps-running .correct explanation="Runtime state and installation state are separate dimensions."}
+:::
+
+## Verify the Service Outcome
+
+After a change, verify process state, recent logs, listening endpoints, dependent units, application health, and behavior across a controlled reboot if boot enablement changed. Use `systemctl is-failed`, `systemctl list-dependencies`, and application-native checks as appropriate.
+
+## Summary
+
+You can now manage a systemd service without confusing configuration, runtime, and enablement.
+
+1. Read `[Unit]`, `[Service]`, and `[Install]` by their distinct roles.
+2. Compare loaded unit state with installed unit-file state.
+3. Use drop-ins and reload the manager after external file changes.
+4. Start, stop, reload, or restart only after impact review.
+5. Treat enable, disable, and mask as separate persistence controls.

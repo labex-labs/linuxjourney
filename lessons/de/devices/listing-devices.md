@@ -1,54 +1,108 @@
 ---
-index: 6
+lesson_id: "listing-devices"
+course_id: "devices"
 lang: "de"
+order_index: 6
 title: "lsusb, lspci, lsscsi"
-meta_title: "lsusb, lspci, lsscsi - Geräte"
-meta_description: "Erfahren Sie, wie Sie USB-, PCI- und SCSI-Hardware auf Ihrem Linux-System auflisten und überprüfen. Diese Anleitung behandelt die Befehle lsusb, lspci und lsscsi, einschließlich Optionen wie lsusb -t zur Anzeige von Gerätebäumen."
-meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, usb geräte auflisten, pci geräte auflisten, scsi geräte auflisten, linux hardware, geräteinformationen"
+description: "Lerne, USB-Topologie, PCI-Funktionen, Geräte der SCSI-Schicht und ihre aktiven Treiber zu untersuchen."
+meta_title: "lsusb, lspci, lsscsi – Geräte"
+meta_description: "Lerne, USB-, PCI- und SCSI-Hardware unter Linux mit lsusb, lspci und lsscsi zu untersuchen und die Ergebnisse mit Treibern und Kernelmeldungen abzugleichen."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, USB Geräte auflisten, PCI Geräte auflisten, SCSI Geräte auflisten, Linux Hardware"
 ---
 
-## Lesson Content
+Linux bietet bus- und subsystembezogene Inventarwerkzeuge. Jeder Befehl zeigt eine andere Ansicht. Verknüpfe deshalb Kennungen, Topologie, Treiber, sysfs-Pfade und Protokolle, statt von einer einzigen vollständigen Hardwareliste auszugehen.
 
-So wie Sie den Befehl `ls` verwenden, um Dateien aufzulisten, bietet Linux ähnliche Werkzeuge zum Auflisten von Hardware-Geräten. Diese Befehle sind unerlässlich, um die an Ihrem System angeschlossene Hardware zu identifizieren.
+## USB-Geräte untersuchen
 
-### Auflisten von USB-Geräten mit lsusb
-
-Um alle an Ihr System angeschlossenen USB-Geräte anzuzeigen, können Sie den Befehl `lsusb` verwenden. Dieser Befehl scannt die USB-Hubs und meldet Informationen über die gefundenen Geräte, wie Webcams, Tastaturen und externe Laufwerke.
+`lsusb` listet Geräte auf, die über das USB-Subsystem sichtbar sind:
 
 ```bash
-lsusb
+$ lsusb
 ```
 
-Für eine strukturiertere Ansicht können Sie den Befehl `lsusb -t` verwenden. Diese Option zeigt die USB-Geräte in einer Baumstruktur an, was hilfreich ist, um zu verstehen, wie Geräte physisch mit den USB-Controllern und Hubs verbunden sind.
+Die Ausgabe enthält normalerweise Bus- und Gerätenummer, ein Paar aus Hersteller- und Produktkennung sowie eine Beschreibung aus der lokalen USB-ID-Datenbank. Die numerische Bus-/Geräteadresse kann sich nach dem erneuten Anschließen oder Neustarten ändern und darf nicht als dauerhafte Identität behandelt werden.
 
-### Auflisten von PCI-Geräten mit lspci
-
-Der Befehl `lspci` wird verwendet, um alle PCI-Geräte (Peripheral Component Interconnect) aufzulisten. Dies sind typischerweise interne Komponenten, die mit dem Motherboard verbunden sind, wie z. B. Grafikkarten, Netzwerkadapter und Soundkarten. Dieser Befehl bietet einen schnellen Überblick über die Kernhardware Ihres Systems.
+Zeige Beziehungen zwischen Controller, Hub, Port, Schnittstelle, Treiber und Geschwindigkeit an:
 
 ```bash
-lspci
+$ lsusb -t
 ```
 
-### Auflisten von SCSI- und SATA-Geräten mit lsscsi
+Eine ausführliche Ausgabe der Deskriptoren ist verfügbar, doch manche Angaben erfordern erhöhte Leseberechtigungen. Vergib keine umfassenden USB-Geräteberechtigungen, nur damit ein Untersuchungsbefehl weniger Meldungen ausgibt.
 
-Für Speichergeräte ist der Befehl `lsscsi` besonders nützlich. Er listet alle angeschlossenen SCSI- und SATA-Geräte auf, wozu üblicherweise Festplatten, SSDs und optische Laufwerke (CD/DVD/Blu-ray) gehören. Während andere Befehle möglicherweise den Speichercontroller anzeigen, liefert `lsscsi` direkte Informationen über die Speichergeräte selbst, was ihn zu einem wertvollen Werkzeug für Systemadministratoren und Benutzer macht, die Speicher verwalten.
+:::single-choice{#listing-devices-usb-tree} Welcher Befehl zeigt USB-Geräte als Topologiebaum an?
+
+::option[`lspci -k`]{#listing-devices-lspci-tree explanation="Dieser Befehl listet PCI-Funktionen und Kernel-Treiberinformationen statt der USB-Topologie auf."}
+::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="Dies ist nicht der hier vorgestellte Befehl für den USB-Baum."}
+::option[`lsusb -t`]{#listing-devices-lsusb-tree .correct explanation="Die Baumoption zeigt Geräte unter Controllern und Hubs einschließlich Port- und Schnittstellenbeziehungen."}
+:::
+
+## PCI-Funktionen untersuchen
+
+`lspci` listet Funktionen auf, die auf PCI- und PCI-Express-Bussen erkannt wurden:
 
 ```bash
-lsscsi
+$ lspci
 ```
 
-## Exercise
+Interne und extern angeschlossene PCIe-Geräte können Grafik-, Netzwerk-, Speicher-, USB-, Audio- und Bridge-Controller umfassen. Zeige den verwendeten Kernel-Treiber und infrage kommende Module an:
 
-Um Ihr Verständnis der Erkundung von Hardware-Geräten unter Linux zu festigen, versuchen Sie das folgende praktische Labor:
+```bash
+$ lspci -k
+```
 
-1. **[Hardware-Geräte unter Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – In diesem Labor erlernen Sie die wesentlichen Fähigkeiten, um Hardware-Geräte in einer Linux-Umgebung zu erkunden, zu identifizieren und zu inspizieren. Sie erhalten praktische Erfahrung mit leistungsstarken Befehlszeilenprogrammen, um zu verstehen, wie das Betriebssystem mit physischen Komponenten interagiert.
+Das Erscheinen eines PCI-Controllers in dieser Liste beweist nicht, dass jedes dahinterliegende Gerät initialisiert oder funktionsfähig ist. Prüfe bei der Fehlersuche die Treiberbindung und Kernel-Protokolle.
 
-Dieses Labor hilft Ihnen, diese Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Verwaltung von Geräteinformationen aufzubauen.
+:::single-choice{#listing-devices-pci-driver} Welcher Befehl ergänzt eine PCI-Auflistung um Kernel-Treiberinformationen?
 
-## Quiz Question
+::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="Die Option `-k` zeigt für jedes PCI-Gerät den aktiven Kernel-Treiber und geeignete Module an."}
+::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="Dieser Befehl beschreibt die USB-Hierarchie und Schnittstellentreiber."}
+::option[`lsblk -f`]{#listing-devices-lsblk-filesystem explanation="Dieser Befehl meldet Blockgeräte- und Dateisystemfelder, nicht die PCI-Treiberbindung."}
+:::
 
-Welcher Befehl wird verwendet, um eine Liste der angeschlossenen USB-Geräte anzuzeigen? (Bitte antworten Sie nur in Kleinbuchstaben auf Englisch)
+## Geräte der SCSI-Schicht untersuchen
 
-## Quiz Answer
+`lsscsi` listet Geräte auf, die über die mittlere SCSI-Schicht von Linux dargestellt werden:
 
-lsusb
+```bash
+$ lsscsi
+```
+
+Dazu können echte SCSI-Geräte sowie SATA-, USB-Speicher- oder virtuelle Datenträger gehören, die über SCSI-kompatible Schichten bereitgestellt werden. NVMe-Namespaces gehören normalerweise zu einem anderen Subsystem und werden von `lsscsi` nicht vollständig inventarisiert.
+
+Verwende für eine speicherbezogene Hierarchie mit vielen Blockgerätetypen zusätzlich `lsblk`:
+
+```bash
+$ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
+```
+
+:::single-choice{#listing-devices-lsscsi-scope} Was listet `lsscsi` in erster Linie auf?
+
+::option[Ausschließlich sämtliche NVMe-Namespaces und -Controller.]{#listing-devices-only-nvme explanation="NVMe verwendet ein eigenes Subsystem und eigene Werkzeuge, auch wenn verwandte Blockansichten an anderer Stelle erscheinen können."}
+::option[Nur Dateien, deren Namen mit `.scsi` enden.]{#listing-devices-scsi-extension explanation="Der Befehl fragt Kernel-Geräteschnittstellen und keine Dateinamenerweiterungen ab."}
+::option[Geräte, die über die mittlere SCSI-Schicht von Linux dargestellt werden.]{#listing-devices-scsi-mid-layer .correct explanation="Der Befehl meldet SCSI-Hosts, Targets, logische Einheiten und, soweit vorhanden, zugehörige Geräteknoten."}
+:::
+
+## Inventarergebnisse auswerten
+
+Beschreibungen stammen häufig aus lokalen ID-Datenbanken und können allgemein oder veraltet sein. Ein aufgelistetes Gerät kann ohne funktionierenden Treiber sein, und eine virtualisierte Umgebung kann emulierte oder paravirtuelle Hardware bereitstellen. Gleiche die Ergebnisse abhängig von Berechtigungen und Fragestellung mit `udevadm info`, sysfs, `lsblk`, Netzwerkwerkzeugen und `journalctl -k` oder `dmesg` ab.
+
+Die Dienstprogramme können getrennt paketiert sein, üblicherweise in Paketen wie `usbutils`, `pciutils` und `lsscsi`. Fehlt ein Befehl, installiere ihn über den Paketmanager der Distribution, statt unbekannte Ersatzprogramme herunterzuladen.
+
+:::single-choice{#listing-devices-listed-not-working} Beweist das Erscheinen eines Geräts in `lspci`, dass sein Treiber aktiv ist und richtig funktioniert?
+
+::option[Nein; prüfe zusätzlich Treiberbindung und relevante Kernelmeldungen.]{#listing-devices-needs-correlation .correct explanation="Die Aufzählung belegt, dass eine PCI-Funktion sichtbar ist, nicht dass ihre weitergehende Initialisierung erfolgreich war."}
+::option[Ja; die PCI-Aufzählung führt einen vollständigen Funktionstest aus.]{#listing-devices-complete-test explanation="Die Auflistung übt nicht jede Hardwarefunktion aus und überprüft kein Dienstverhalten."}
+::option[Ja; `lspci` installiert automatisch einen geeigneten Treiber.]{#listing-devices-installs-driver explanation="Der Befehl ist ein Inventarwerkzeug und installiert keine Treiberpakete."}
+:::
+
+Nutze das Lab [Hardwaregeräte unter Linux erkunden](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861), um diese Subsystemansichten auf einem kontrollierten Host zu vergleichen.
+
+## Zusammenfassung
+
+Du kannst nun einen Inventarbefehl passend zum betreffenden Gerätesubsystem auswählen.
+
+1. Verwende `lsusb` und `lsusb -t` für USB-Identität und -Topologie.
+2. Verwende `lspci -k` für PCI-Funktionen und Treiberbindung.
+3. Verwende `lsscsi` für Geräte der SCSI-Schicht und `lsblk` für die Blocktopologie.
+4. Gleiche die Aufzählung mit Treibern, sysfs und Kernelmeldungen ab.

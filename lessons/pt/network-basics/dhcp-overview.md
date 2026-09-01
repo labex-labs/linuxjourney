@@ -1,58 +1,97 @@
 ---
-index: 9
+lesson_id: "dhcp-overview"
+course_id: "network-basics"
 lang: "pt"
-title: "Visão Geral do DHCP"
-meta_title: "Visão Geral do DHCP - Fundamentos de Rede"
-meta_description: "Aprenda os fundamentos do DHCP (Protocolo de Configuração Dinâmica de Host). Este guia aborda como o DHCP atribui endereços IP, seu processo de quatro etapas (DORA) e seu papel na camada DHCP da rede. Ideal para iniciantes em redes Linux."
-meta_keywords: "DHCP, Protocolo de Configuração Dinâmica de Host, camada dhcp, endereço IP, redes Linux, processo DHCP, DORA, configuração de rede"
+order_index: 9
+title: "Visão geral do DHCP"
+description: "Aprenda como o DHCPv4 concede endereços e opções de rede por meio de descoberta, seleção e renovação."
+meta_title: "Visão geral do DHCP - Fundamentos de rede"
+meta_description: "Aprenda os fundamentos do DHCP (Protocolo de Configuração Dinâmica de Hosts). Este guia aborda como o DHCP atribui endereços IP, seu processo de quatro etapas (DORA) e sua função na configuração de rede. Ideal para iniciantes em redes Linux."
+meta_keywords: "DHCP, Protocolo de Configuração Dinâmica de Hosts, camada dhcp, endereço IP, redes Linux, processo DHCP, DORA, configuração de rede"
 ---
 
-## Lesson Content
+O Protocolo de Configuração Dinâmica de Hosts fornece aos clientes uma configuração de rede concedida por tempo limitado. No DHCPv4, ela pode incluir um endereço IPv4, máscara de sub-rede, roteadores padrão, servidores DNS, duração da concessão e outras opções selecionadas pela política local.
 
-O Protocolo de Configuração Dinâmica de Host (DHCP) é um protocolo fundamental de rede usado para atribuir automaticamente endereços IP e outros parâmetros de configuração de rede a dispositivos em uma rede.
+## Clientes, servidores e retransmissores
 
-### O que é DHCP?
+Um servidor DHCP gerencia escopos ou conjuntos de endereços e o estado das concessões. O servidor não precisa estar em todos os segmentos físicos: um retransmissor DHCP pode encaminhar as trocas do cliente entre uma sub-rede e um servidor centralizado. Redes que usam apenas configuração estática podem não oferecer DHCP.
 
-Pense no DHCP como uma companhia telefônica para seus dispositivos. Quando você adquire um novo telefone, você precisa de um número para começar a se comunicar. Você entra em contato com sua operadora, e ela lhe atribui um. Da mesma forma, quando um dispositivo se conecta a uma rede, ele precisa de um endereço IP para se comunicar com outros dispositivos. O DHCP é o serviço que fornece esse endereço IP.
+O DHCP é um protocolo da camada de aplicação transportado sobre UDP. Servidores DHCPv4 normalmente usam a porta UDP 67, e clientes, a porta 68.
 
-Este endereço IP é tipicamente "alugado" por um período específico. Antes que o aluguel expire, o dispositivo pode renová-lo, garantindo conectividade contínua. Este processo automatizado é essencial para gerenciar dispositivos em qualquer rede.
+:::single-choice{#dhcp-relay-purpose} O que um retransmissor DHCP possibilita?
 
-### O Papel de um Servidor DHCP
+::option[Que cada cliente escolha um endereço sem qualquer política.]{#dhcp-client-any-address explanation="O servidor ainda aplica a política de escopo e concessão."}
+::option[Que clientes em outra sub-rede alcancem um servidor DHCP centralizado.]{#dhcp-central-server .correct explanation="O retransmissor encaminha as trocas DHCP através de um limite de roteamento e identifica a rede do cliente."}
+::option[Que switches Ethernet substituam todos os roteadores IP.]{#dhcp-switch-router explanation="A retransmissão de DHCP não elimina os limites entre redes roteadas."}
+:::
 
-Um servidor DHCP é responsável por gerenciar um conjunto de endereços IP e alugá-los a dispositivos clientes. Em uma rede doméstica típica, seu roteador geralmente atua como o servidor DHCP. Em redes maiores, um servidor dedicado lida com essa tarefa.
+## Troca inicial do DHCPv4
 
-Usar DHCP oferece vantagens significativas:
+O processo inicial comum é lembrado como DORA:
 
-- **Automação:** Administradores de rede não precisam configurar manualmente cada dispositivo, economizando tempo e esforço.
-- **Precisão:** Evita erros comuns, como a atribuição de endereços IP duplicados, o que pode causar conflitos de rede.
+1. `DHCPDISCOVER`: um cliente procura servidores disponíveis.
+2. `DHCPOFFER`: um servidor propõe um endereço e opções.
+3. `DHCPREQUEST`: o cliente seleciona e solicita uma concessão oferecida.
+4. `DHCPACK`: o servidor selecionado confirma a concessão e as opções.
 
-Toda rede física deve ter seu próprio servidor DHCP para otimizar o processo de solicitação e recebimento de endereços IP pelos hosts. Este protocolo opera na Camada de Aplicação, formando uma parte crucial dos serviços de configuração da rede, às vezes conceitualmente referida como a `camada dhcp`.
+Os detalhes de broadcast e unicast variam conforme o estado do cliente, o uso de retransmissores e os recursos do servidor. Uma oferta ainda não é a concessão final utilizável; a confirmação conclui a troca normal de seleção.
 
-### O Processo DHCP de Quatro Etapas
+:::single-choice{#dhcp-dora-order} Qual é a ordem inicial normal do DHCPv4?
 
-O processo de um dispositivo obter um endereço IP via DHCP envolve uma troca de quatro etapas, frequentemente lembrada pelo acrônimo DORA:
+::option[OFFER, DISCOVER, ACK, REQUEST.]{#dhcp-wrong-order-one explanation="Um cliente descobre antes de um servidor oferecer, e solicita antes da confirmação."}
+::option[DISCOVER, OFFER, REQUEST, ACK.]{#dhcp-correct-order .correct explanation="A sequência procura, propõe, seleciona e confirma."}
+::option[REQUEST, ACK, DISCOVER, OFFER.]{#dhcp-wrong-order-two explanation="Um novo cliente normalmente precisa da descoberta e de uma oferta antes de selecionar uma concessão."}
+:::
 
-1. **DHCP Discover (Descoberta):** O dispositivo cliente transmite uma mensagem `DISCOVER` pela rede para encontrar um servidor DHCP disponível.
-2. **DHCP Offer (Oferta):** Qualquer servidor DHCP que receba a mensagem de descoberta pode responder com uma mensagem `OFFER`. Esta mensagem contém um endereço IP proposto, máscara de sub-rede, endereço de gateway e duração do aluguel.
-3. **DHCP Request (Solicitação):** O cliente recebe uma ou mais ofertas e escolhe uma. Em seguida, ele transmite uma mensagem `REQUEST` para informar a todos os servidores DHCP qual oferta ele aceitou.
-4. **DHCP Acknowledgment (ACK) (Confirmação):** O servidor que fez a oferta aceita envia uma mensagem final `ACK` ao cliente, confirmando o aluguel e finalizando a configuração.
+## Renovação da concessão
 
-Embora o protocolo completo seja mais complexo, estas quatro etapas representam o cerne de como o DHCP configura hosts dinamicamente em uma rede.
+Uma concessão expira se não for renovada. Normalmente, o cliente começa a renovação antes do vencimento, muitas vezes contatando primeiro o servidor original diretamente. Se a renovação não tiver sucesso, mais tarde ele amplia a tentativa de revinculação. Os temporizadores exatos são fornecidos ou derivados de acordo com o protocolo.
 
-## Exercise
+Um endereço exibido como atribuído dinamicamente não comprova que sua concessão permanecerá para sempre. Ao solucionar alterações, registre a concessão ativa, sua duração, o servidor e as opções.
 
-Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre endereçamento IP dinâmico e configuração de rede:
+:::single-choice{#dhcp-lease-expiration} O que acontece com a concessão de um endereço DHCP sem uma renovação bem-sucedida?
 
-1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique o uso do comando `ip` para inspecionar interfaces e use especificamente o `dhclient` para obter um endereço IP dinâmico, aplicando diretamente seu conhecimento de DHCP.
-2. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para identificar informações de endereçamento de rede, incluindo os endereços IP atribuídos pelo DHCP, e inspecionar interfaces de rede.
-3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando `ping` e `ip a`, ajudando você a entender como os IPs atribuídos dinamicamente funcionam dentro de uma rede.
+::option[Ela se torna um endereço MAC de hardware permanente.]{#dhcp-lease-mac explanation="Uma concessão IP não altera a identidade da camada de enlace."}
+::option[Ela acaba expirando, e o cliente deve deixar de tratá-la como válida.]{#dhcp-lease-expires .correct explanation="As concessões permitem que endereços e opções sejam recuperados ou alterados conforme a política do servidor."}
+::option[Ela transforma o cliente na raiz autoritativa do DNS.]{#dhcp-lease-dns-root explanation="Uma concessão DHCP não concede autoridade de DNS."}
+:::
 
-Estes laboratórios ajudarão você a aplicar os conceitos de atribuição de IP dinâmico e configuração de rede em cenários reais e a ganhar confiança com redes Linux.
+## Inspecionando o resultado
 
-## Quiz Question
+Depois que um cliente configura o DHCP, verifique todo o estado necessário, não apenas o endereço:
 
-Quais são as quatro etapas no processo DHCP, em ordem? Por favor, responda em inglês, usando palavras em maiúsculas separadas por uma vírgula e um espaço.
+```bash
+$ ip address show
+$ ip route show
+$ resolvectl status
+```
 
-## Quiz Answer
+O comando do resolvedor varia conforme o sistema. Inspecione também os dados da concessão e os logs do gerenciador de rede ativo. Endereços duplicados ainda podem ocorrer por servidores não autorizados, atribuições estáticas dentro de um conjunto, estado obsoleto ou configuração manual; o DHCP reduz erros, mas não pode impedir todo conflito por si só.
 
-DISCOVER, OFFER, REQUEST, ACK
+:::single-choice{#dhcp-result-verification} O que deve ser verificado depois que uma concessão DHCP é aceita?
+
+::option[Apenas o nome exibido da interface.]{#dhcp-interface-name-only explanation="O nome de uma interface não comprova o endereçamento, o roteamento nem a resolução."}
+::option[Apenas se o teclado responde.]{#dhcp-keyboard explanation="A entrada do teclado não tem relação com a configuração da concessão de rede."}
+::option[Endereço, rotas, DNS e detalhes da concessão.]{#dhcp-check-complete-state .correct explanation="Uma configuração utilizável depende de várias opções e do estado delas aplicado ao sistema."}
+:::
+
+## DHCPv6 e configuração IPv6
+
+Hosts IPv6 podem usar Configuração Automática de Endereço sem Estado, DHCPv6, configuração estática ou combinações. O DHCPv6 não usa a troca DORA do IPv4, e as informações do roteador padrão normalmente vêm dos Anúncios de Roteador IPv6, não do DHCPv6.
+
+:::single-choice{#dhcp-ipv6-default-router} Onde um host IPv6 normalmente aprende as informações de seu roteador padrão?
+
+::option[Nos Anúncios de Roteador IPv6.]{#dhcp-router-advertisement .correct explanation="O DHCPv6 pode fornecer outras configurações, mas os roteadores se anunciam por meio da Descoberta de Vizinhos."}
+::option[Em um trailer FCS do Ethernet.]{#dhcp-ipv6-fcs explanation="A FCS detecta corrupção no enlace e não transporta configuração de roteadores."}
+::option[Apenas em um DHCPACK do IPv4.]{#dhcp-ipv4-ack explanation="Mensagens DHCP do IPv4 não configuram o roteamento IPv6."}
+:::
+
+## Resumo
+
+Agora você pode explicar como o DHCPv4 concede e renova a configuração de rede de um host.
+
+1. Diferencie servidores DHCP de retransmissores e sub-redes de clientes.
+2. Acompanhe a troca DISCOVER, OFFER, REQUEST e ACK.
+3. Trate endereços e opções como estado de concessão por tempo limitado.
+4. Verifique em conjunto endereço, rotas, DNS e metadados da concessão.
+5. Mantenha o comportamento do DHCPv4 distinto da configuração automática do IPv6.

@@ -1,80 +1,113 @@
 ---
-index: 11
+lesson_id: "inodes"
+course_id: "filesystem"
 lang: "fr"
+order_index: 11
 title: "Inodes"
-meta_title: "Inodes - Le Système de Fichiers"
-meta_description: "Explorez le concept de l'inode Linux. Découvrez ce qu'est un i-node, comment les inodes Linux gèrent les métadonnées des fichiers, et comment vérifier l'utilisation des inodes avec `df -i` et `ls -li`."
-meta_keywords: "inode linux, inode dans linux, i node, inode, inode linux, numéro d'inode, système de fichiers, df -i, ls -li, stat"
+description: "Découvrez comment les numéros d'inodes relient les noms des répertoires aux métadonnées et aux données des objets du système de fichiers."
+meta_title: "Inodes - Le système de fichiers"
+meta_description: "Explorez les inodes Linux, leurs métadonnées et numéros, et apprenez à contrôler leur utilisation avec df -i, ls -li et stat."
+meta_keywords: "inode Linux, inodes, numéro inode, système de fichiers, df -i, ls -li, stat, liens physiques"
 ---
 
-## Lesson Content
+Dans les systèmes de fichiers Unix fondés sur les inodes, un répertoire associe chaque nom d'entrée à un numéro d'inode. L'inode représente l'objet du système de fichiers et consigne les métadonnées nécessaires pour trouver et interpréter ses données. Le chemin n'est donc pas enregistré comme identité principale propre à l'objet.
 
-Rappelez-vous que notre système de fichiers est composé de tous nos fichiers réels et d'une base de données qui les gère ? Cette base de données est connue sous le nom de table d'inodes, une partie fondamentale du fonctionnement des `inodes sous Linux`.
+## Métadonnées associées à un inode
 
-### Qu'est-ce qu'un Inode Linux
+Les métadonnées couramment associées à un inode comprennent :
 
-Un inode (abréviation de index node) est une entrée dans cette table. Chaque fichier et répertoire possède son propre `inode`. Il décrit tout sur le fichier, tel que :
+- le type d'objet et le mode de permissions ;
+- le propriétaire utilisateur et groupe ;
+- la taille logique et la comptabilité des blocs alloués ;
+- le nombre de liens physiques ;
+- les horodatages d'accès, de modification et de changement d'état ;
+- les références aux données du fichier ou aux structures d'étendues propres au système de fichiers.
 
-- Type de fichier (par exemple, fichier régulier, répertoire, périphérique caractère)
-- Propriétaire
-- Groupe
-- Permissions d'accès
-- Horodatages : mtime (dernière modification), ctime (dernier changement d'attribut), atime (dernier accès)
-- Nombre de liens physiques vers le fichier
-- Taille du fichier
-- Nombre de blocs alloués au fichier
-- Pointeurs vers les blocs de données du fichier (le plus important !)
+L'inode ne stocke normalement pas le nom de l'entrée de répertoire. Un système de fichiers peut aussi conserver des attributs étendus, listes de contrôle d'accès, une date de naissance, des données intégrées ou d'autres informations au moyen de structures propres au format.
 
-essentiellement, un `i node` stocke toutes les métadonnées sur le fichier, à l'exception de son nom et du contenu réel.
+`ctime` est la date de changement d'état de l'inode, pas nécessairement celle de création du fichier. Un horodatage distinct de naissance ou de création est facultatif et peut être indisponible.
 
-### Création et Allocation d'Inodes
+:::single-choice{#inodes-name-location} Où le composant de chemin d'un fichier ordinaire est-il normalement associé à son numéro d'inode ?
 
-Lorsqu'un système de fichiers est créé, de l'espace pour les inodes est également alloué. Des algorithmes déterminent la quantité d'espace `inode` dont vous avez besoin en fonction du volume du disque et d'autres facteurs. Vous avez probablement déjà vu des erreurs de type « espace disque insuffisant ». La même chose peut se produire avec les inodes, bien que ce soit moins courant. Si vous manquez d'inodes, vous ne pouvez pas créer de nouveaux fichiers. Le stockage des données dépend à la fois des blocs de données et de la base de données (la table des `inodes`).
+::option[Dans l'ordonnanceur de processus.]{#inodes-scheduler-name explanation="L'état d'ordonnancement du processeur n'assure pas la recherche des chemins du système de fichiers."}
+::option[Dans une entrée de répertoire.]{#inodes-directory-entry .correct explanation="Un répertoire associe un nom à un numéro d'inode dans ce système de fichiers."}
+::option[Dans la table de partitions du disque.]{#inodes-partition-name explanation="Une table de partitions cartographie des régions de stockage, pas des noms de fichiers individuels."}
+:::
 
-Pour voir combien d'inodes il reste sur votre système, utilisez la commande `df -i`. C'est une vérification cruciale pour les administrateurs système gérant un grand nombre de petits fichiers.
+## Numéros d'inodes et portée du système de fichiers
 
-### Affichage des Informations sur les Inodes
-
-Chaque `inode linux` est identifié par un numéro unique. Lorsqu'un fichier est créé, il se voit attribuer un numéro d'inode, souvent séquentiellement. Cependant, vous pourriez remarquer qu'un nouveau fichier obtient un numéro d'inode inférieur à celui des fichiers plus anciens. Cela se produit car les numéros d'inode supprimés peuvent être réutilisés pour de nouveaux fichiers. Pour afficher les numéros d'inode, exécutez `ls -li` :
+Affichez les numéros d'inodes avec :
 
 ```bash
-pete@icebox:~$ ls -li
-140 drwxr-xr-x 2 pete pete 6 Jan 20 20:13 Desktop
-141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
+$ ls -li
 ```
 
-Le premier champ dans la sortie de cette commande est le numéro d'inode. Vous pouvez également voir des informations détaillées sur l'`i node` d'un fichier avec la commande `stat` :
+Le premier champ est le numéro d'inode. Examinez un objet plus en détail avec :
 
 ```bash
-pete@icebox:~$ stat ~/Desktop/
-  File: ‘/home/pete/Desktop/’
-  Size: 6               Blocks: 0          IO Block: 4096   directory
-Device: 806h/2054d      Inode: 140         Links: 2
-Access: (0755/drwxr-xr-x)  Uid: ( 1000/   pete)   Gid: ( 1000/   pete)
-Access: 2016-01-20 20:13:50.647435982 -0800
-Modify: 2016-01-20 20:13:06.191675843 -0800
-Change: 2016-01-20 20:13:06.191675843 -0800
- Birth: -
+$ stat path
 ```
 
-### Comment un I-Node Pointeur vers les Données
+Un numéro d'inode n'est unique qu'au sein d'un système de fichiers et à un moment donné. Le même numéro peut exister dans un autre système, et un numéro peut être réutilisé après la libération de son inode. Pour identifier solidement un objet, employez à la fois l'identité du système de fichiers et le numéro d'inode plutôt que ce dernier seul.
 
-Nous savons que nos données sont stockées sur le disque, mais elles ne se trouvent probablement pas dans un seul bloc continu. C'est là que la structure de l'`inode linux` devient essentielle. Les inodes pointent vers les blocs de données réels de vos fichiers. Dans un système de fichiers typique (bien que les implémentations varient), chaque inode contient 15 pointeurs. Les 12 premiers pointeurs pointent directement vers des blocs de données. Le 13e pointeur pointe vers un bloc qui contient plus de pointeurs. Les 14e et 15e pointeurs pointent vers des blocs de pointeurs encore plus imbriqués. Cela peut sembler déroutant, mais cette structure permet à l'`i node` de conserver une taille fixe tout en étant capable de référencer des fichiers de tailles variables. Les petits fichiers peuvent être consultés rapidement à l'aide des pointeurs directs, tandis que les fichiers plus volumineux sont localisés via les pointeurs imbriqués.
+:::single-choice{#inodes-number-scope} Dans quelle portée un numéro d'inode identifie-t-il un objet ?
 
-## Exercise
+::option[Dans tous les systèmes Linux du monde, pour toujours.]{#inodes-global-forever explanation="L'allocation des inodes est locale au système de fichiers et leurs identifiants sont réutilisables."}
+::option[Dans un système de fichiers, à un moment donné.]{#inodes-one-filesystem .correct explanation="D'autres systèmes de fichiers peuvent employer le même numéro, et les numéros d'inodes libérés peuvent ensuite être réutilisés."}
+::option[Uniquement dans le processus shell qui a créé le fichier.]{#inodes-shell-scope explanation="C'est le système de fichiers, et non un seul shell, qui maintient l'identité de l'inode."}
+:::
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du système de fichiers Linux et de la gestion des fichiers :
+## Liens physiques et références ouvertes
 
-1. **[Gérer les fichiers et les répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-files-and-directories-in-linux-590835)** - Entraînez-vous à créer, supprimer, copier et déplacer des fichiers et des répertoires, et explorez la création de liens symboliques et physiques tout en analysant les inodes.
-2. **[Naviguer dans le système de fichiers sous Linux](https://labex.io/fr/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Apprenez les compétences fondamentales pour naviguer dans le système de fichiers Linux à l'aide de commandes shell essentielles telles que `pwd`, `cd` et `ls`.
-3. **[Trouver des fichiers et des commandes sous Linux](https://labex.io/fr/labs/comptia-find-files-and-commands-in-linux-590834)** - Maîtrisez les techniques essentielles pour localiser des fichiers et des commandes sous Linux à l'aide de `find`, `locate`, `whereis`, `which` et `type`.
+Plusieurs entrées de répertoire peuvent désigner le même inode : ce sont des liens physiques. La création d'un nouveau lien physique augmente le nombre de liens de l'objet. La suppression d'un nom le diminue sans supprimer les données tant qu'un autre lien subsiste.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion du système de fichiers Linux.
+Même après la suppression de la dernière entrée de répertoire, un fichier ouvert reste alloué jusqu'à la fermeture de la dernière référence d'un processus. Son nombre de liens peut être nul alors qu'un descripteur de fichier y accède encore. Cela explique pourquoi la suppression d'un gros journal ouvert ne réduit pas forcément immédiatement l'utilisation signalée par `df`.
 
-## Quiz Question
+:::single-choice{#inodes-unlinked-open-file} Quand les ressources d'un fichier délié sont-elles normalement libérées ?
 
-Comment voir combien d'inodes il reste sur votre système ? (Veuillez répondre en anglais, en faisant attention à la casse.)
+::option[Immédiatement après la suppression d'un seul nom de lien physique.]{#inodes-one-link-removed explanation="D'autres liens physiques ou références ouvertes peuvent maintenir l'objet en vie."}
+::option[Seulement lors du reformatage complet du système de fichiers.]{#inodes-reformat-only explanation="Les opérations normales de suppression et de fermeture récupèrent les inodes et blocs inutilisés."}
+::option[Lorsque son nombre de liens vaut zéro et que sa dernière référence ouverte est fermée.]{#inodes-zero-links-no-opens .correct explanation="Les noms de répertoires et les descripteurs de fichiers des processus sont des références indépendantes à l'inode."}
+:::
 
-## Quiz Answer
+## Capacité en inodes
 
-df -i
+Sur les systèmes de fichiers dont le nombre d'inodes est fini ou communiqué, des millions de petits fichiers peuvent épuiser la capacité des métadonnées avant de remplir les blocs de données. Examinez la comptabilité des inodes des systèmes montés avec :
+
+```bash
+$ df -i
+```
+
+S'il ne reste aucun inode libre, la création d'un nouveau fichier peut échouer même lorsque `df -h` signale des blocs disponibles. Les stratégies d'allocation diffèrent : certains systèmes préallouent les structures d'inodes lors de leur création, tandis que d'autres gèrent les métadonnées dynamiquement et peuvent présenter leur capacité d'inodes autrement.
+
+:::single-choice{#inodes-df-i-purpose} Qu'indique `df -i` lorsque le système de fichiers fournit une comptabilité des inodes ?
+
+::option[Le contenu de chaque fichier dans l'ordre des inodes.]{#inodes-df-i-content explanation="Df indique des statistiques globales du système de fichiers et ne lit pas le contenu des fichiers."}
+::option[La capacité en inodes utilisée et disponible.]{#inodes-df-i-capacity .correct explanation="Cette vue aide à diagnostiquer l'épuisement des objets de métadonnées indépendamment des blocs de données."}
+::option[La révision du micrologiciel du disque.]{#inodes-df-i-firmware explanation="L'inventaire du micrologiciel est sans rapport avec l'utilisation des inodes."}
+:::
+
+## Cartographie des données propre au système de fichiers
+
+Ne supposez pas que chaque inode possède exactement 12 pointeurs directs et trois pointeurs indirects. Cela décrit utilement certaines organisations classiques, mais ext4 moderne peut employer des étendues, tandis que XFS, Btrfs et d'autres systèmes utilisent des structures différentes. Les données intégrées et les étendues compressées ou copy-on-write modifient encore cette relation.
+
+N'employez les outils de diagnostic propres au système de fichiers qu'en lecture seule ou dans des modes documentés lorsque la cartographie interne est importante. Pour l'administration courante, `stat`, `find -inum`, `df -i` et les outils tenant compte des liens fournissent des abstractions plus sûres.
+
+:::single-choice{#inodes-layout-portability} Pourquoi ne faut-il pas supposer une organisation fixe des pointeurs pour chaque inode ?
+
+::option[Les inodes ne font jamais référence aux données des fichiers.]{#inodes-no-data-reference explanation="Le système de fichiers doit associer l'objet à son contenu, même si le mécanisme varie."}
+::option[Les implémentations emploient des structures différentes d'étendues, d'arbres et de données intégrées.]{#inodes-format-specific-layout .correct explanation="La cartographie sur disque entre l'inode et le contenu fait partie du format de chaque système de fichiers."}
+::option[Chaque propriétaire choisit séparément l'organisation de ses inodes.]{#inodes-owner-layout explanation="L'implémentation et le format du système de fichiers déterminent la structure des métadonnées."}
+:::
+
+Utilisez [Gérer les fichiers et répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-files-and-directories-in-linux-590835) pour comparer les numéros d'inodes et nombres de liens sur des fichiers jetables.
+
+## Résumé
+
+Vous savez maintenant relier chemins, inodes, liens et capacité du système de fichiers.
+
+1. Considérer les entrées de répertoires comme des associations entre noms et numéros d'inodes.
+2. Lire les métadonnées et horodatages sans confondre ctime avec la création.
+3. Limiter la portée des numéros d'inodes à un système de fichiers et un moment.
+4. Tenir compte des liens physiques et des descripteurs de fichiers ouverts.
+5. Employer les modèles propres aux systèmes de fichiers plutôt qu'une organisation universelle des pointeurs.

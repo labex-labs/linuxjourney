@@ -1,70 +1,106 @@
 ---
-index: 1
+lesson_id: "file-permissions"
+course_id: "permissions"
 lang: "pt"
-title: "Permissões de Arquivo"
-meta_title: "Permissões de Arquivo - Permissões"
-meta_description: "Uma parte essencial do nosso tutorial completo de Linux. Aprenda sobre permissões de arquivos no Linux, incluindo os bits rwx para usuário, grupo e outros. Domine a saída do `ls -l` e entenda os modos de arquivo."
-meta_keywords: "permissões de arquivo, permissões de arquivo linux, melhor forma de aprender linux, tutorial completo linux, permissões rwx, comando ls -l, modos de arquivo, guia linux"
+order_index: 1
+title: "Permissões de Arquivos"
+description: "Aprenda a interpretar os tipos de arquivos Linux e os bits de permissão do proprietário, do grupo e dos outros usuários."
+meta_title: "Permissões de Arquivos - Permissões"
+meta_description: "Uma parte essencial do nosso tutorial completo de Linux. Aprenda sobre permissões de arquivos Linux, incluindo os bits rwx para usuário, grupo e outros. Domine a saída de `ls -l` e entenda os modos dos arquivos."
+meta_keywords: "permissões de arquivos, permissões de arquivos Linux, melhor forma de aprender Linux, tutorial completo Linux, permissões rwx, comando ls -l, modos de arquivos, guia Linux"
 ---
 
-## Lesson Content
+O Linux representa muitos recursos por meio de interfaces semelhantes a arquivos, e cada objeto do sistema de arquivos possui metadados que controlam o acesso. Saber interpretar esses metadados é fundamental para trabalhar com arquivos e diretórios de forma segura.
 
-No Linux, tudo é um arquivo, e gerenciar o acesso a esses arquivos é uma habilidade crítica. Entender as **permissões de arquivo** é fundamental para a segurança e administração do sistema. Vamos explorar como ler e interpretar essas permissões.
+## Leitura de uma Listagem Longa
 
-### Introdução às Permissões de Arquivo
-
-Quando listamos arquivos em formato detalhado, vemos uma sequência de caracteres que definem suas permissões. Vejamos um exemplo usando o comando `ls -l`:
+Use `ls -l` para exibir uma listagem longa:
 
 ```bash
-$ ls -l Desktop/
-drwxr-xr-x 2 pete penguins 4096 Dez 1 11:45 .
+$ ls -ld Desktop/
+drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 ```
 
-Este resultado fornece uma riqueza de informações, mas vamos nos concentrar na primeira coluna, `drwxr-xr-x`, que representa o tipo de arquivo e suas permissões.
+O primeiro campo, `drwxr-xr-x`, combina um caractere de tipo de arquivo com nove caracteres de permissão. A listagem também identifica `pete` como proprietário e `penguins` como o grupo associado ao diretório.
 
-### Decodificando a String de Permissão
+O caractere inicial descreve o tipo do objeto. Os valores comuns incluem:
 
-A string de permissão tem quatro partes principais. O primeiro caractere indica o tipo de arquivo. Em nosso exemplo, o **d** significa que `Desktop` é um diretório. Para um arquivo regular, você veria um hífen (`-`).
+- `-` para um arquivo comum
+- `d` para um diretório
+- `l` para um link simbólico
 
-Os nove caracteres seguintes representam as **permissões de arquivo** reais. Eles são divididos em três conjuntos de três caracteres cada. Para deixar mais claro, podemos visualizá-los assim:
+Também existem outros tipos de arquivos especiais. Os nove caracteres restantes são as permissões de acesso:
 
-```plaintext
+```text
 d | rwx | r-x | r-x
 ```
 
-Cada caractere nesses conjuntos corresponde a uma permissão específica:
+:::single-choice{#file-permissions-type-character} Em `drwxr-xr-x`, o que o primeiro `d` indica?
 
-- **r**: Permissão de leitura (Read).
-- **w**: Permissão de gravação (Write).
-- **x**: Permissão de execução (Execute).
-- **-**: Nenhuma permissão concedida.
+::option[O objeto é um link simbólico.]{#file-permissions-type-link explanation="Um link simbólico normalmente é mostrado com `l` na posição do tipo de arquivo."}
+::option[O objeto é um diretório.]{#file-permissions-type-directory .correct explanation="O primeiro caractere é o tipo de arquivo, e `d` identifica um diretório."}
+::option[O proprietário possui permissão de exclusão.]{#file-permissions-type-delete explanation="As sequências de modos do Linux não usam `d` como permissão de exclusão; a primeira posição descreve o tipo do objeto."}
+:::
 
-A significância dessas permissões pode mudar ligeiramente dependendo se é um arquivo ou um diretório. Por exemplo, a permissão de execução (`x`) em um diretório permite que você entre nele, enquanto em um arquivo, permite que você o execute como um programa.
+## Compreensão de `r`, `w` e `x`
 
-### Permissões de Usuário, Grupo e Outros
+Cada trio de permissões usa estes caracteres:
 
-Os três conjuntos de permissões se aplicam a diferentes níveis de acesso:
+- `r` concede permissão de leitura.
+- `w` concede permissão de escrita.
+- `x` concede permissão de execução.
+- `-` significa que a permissão está ausente.
 
-1. **Usuário (Proprietário)**: O primeiro conjunto (`rwx`) se aplica ao proprietário do arquivo, que é `pete` em nosso exemplo. O proprietário tem permissões de leitura, gravação e execução.
-2. **Grupo**: O segundo conjunto (`r-x`) se aplica ao grupo associado ao arquivo, que é `penguins`. Os membros deste grupo têm permissões de leitura e execução, mas não podem gravar no arquivo.
-3. **Outros**: O conjunto final (`r-x`) se aplica a todos os outros usuários no sistema. Eles têm permissões de leitura e execução.
+Para um arquivo comum, a leitura permite acessar seu conteúdo, a escrita permite modificar seu conteúdo e a execução permite que o kernel tente executá-lo como um programa. A execução ainda pode falhar se o formato do arquivo, a linha do interpretador, as opções de montagem ou outro controle de segurança não a permitirem.
 
-Dominar as **permissões de arquivo** é um conceito central, e esta base é essencial à medida que você continua neste **tutorial completo de linux**.
+Para um diretório, os significados se referem às entradas do diretório:
 
-## Exercise
+- A leitura permite listar os nomes no diretório.
+- A escrita permite criar ou remover entradas, normalmente em conjunto com a permissão de execução.
+- A execução, também chamada de permissão de busca, permite percorrer o diretório e acessar entradas pelo nome.
 
-A **melhor maneira de aprender linux** é através da prática. Estes exercícios ajudarão você a dominar as **permissões de arquivo** do Linux, usuários e grupos:
+A exclusão de um arquivo é determinada principalmente pelas permissões do diretório pai, não pelo bit de escrita do próprio arquivo.
 
-1. **[Usuário, Grupo e Permissões de Arquivo no Linux](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceitos essenciais de gerenciamento de usuários e grupos no Linux, incluindo a criação de usuários, exploração de associações de grupo, compreensão de permissões de arquivo e manipulação de propriedade de arquivos.
-2. **[Adicionar Novo Usuário e Grupo](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Pratique a criação de novas contas de usuário, configuração de grupos personalizados e gerenciamento de associações de grupo, simulando tarefas de administração de sistema do mundo real.
-3. **[Encontrar um Arquivo](https://labex.io/pt/labs/linux-find-a-file-17993)** - Aplique seu conhecimento de permissões de arquivo encontrando um arquivo específico e definindo sua autoridade de acesso, garantindo que você seja o único usuário autorizado.
+:::single-choice{#file-permissions-directory-execute} O que a permissão de execução em um diretório permite principalmente?
 
-Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de permissões e usuários no Linux.
+::option[Executar todos os arquivos comuns armazenados no diretório.]{#file-permissions-directory-run-files explanation="O bit de execução de um diretório não concede permissão de execução a cada arquivo contido nele."}
+::option[Alterar o conteúdo de todos os arquivos do diretório.]{#file-permissions-directory-edit-files explanation="A escrita no conteúdo dos arquivos depende das permissões dos arquivos e de outros controles de acesso."}
+::option[Percorrer o diretório e acessar entradas pelo nome.]{#file-permissions-directory-search .correct explanation="A permissão de execução, ou busca, do diretório permite percorrer caminhos que passem por ele."}
+:::
 
-## Quiz Question
+## Classes de Proprietário, Grupo e Outros
 
-Qual bit de permissão é usado para executável? Por favor, responda em inglês, prestando muita atenção à sensibilidade de maiúsculas e minúsculas.
+Os nove caracteres de modo formam três trios em uma ordem fixa:
 
-## Quiz Answer
+1. **Proprietário**: permissões usadas quando o ID de usuário efetivo do processo corresponde ao proprietário do arquivo.
+2. **Grupo**: permissões usadas quando um ID de grupo aplicável do processo corresponde ao grupo do arquivo.
+3. **Outros**: permissões usadas quando nenhuma das classes anteriores corresponde.
 
-x
+O kernel seleciona uma única classe aplicável; ele não combina os três trios para encontrar o resultado mais permissivo. Mecanismos adicionais, como listas de controle de acesso, opções de montagem, capacidades ou controles de acesso obrigatórios, podem afetar ainda mais a decisão final.
+
+No exemplo, o trio do proprietário é `rwx`, enquanto os trios do grupo e dos outros são `r-x`. O proprietário pode ler, escrever e percorrer o diretório. As classes do grupo e dos outros podem ler e percorrê-lo, mas não podem criar nem remover entradas por meio dos bits de modo comuns do diretório.
+
+:::single-choice{#file-permissions-triplet-order} Depois do caractere de tipo de arquivo, em que ordem aparecem os três trios de permissões?
+
+::option[Grupo, proprietário e depois outros.]{#file-permissions-order-group-first explanation="O trio do grupo aparece em segundo lugar, não em primeiro."}
+::option[Outros, grupo e depois proprietário.]{#file-permissions-order-other-first explanation="O trio dos outros é o último, e o do proprietário é o primeiro."}
+::option[Proprietário, grupo e depois outros.]{#file-permissions-order-owner-first .correct explanation="Os nove caracteres de permissão sempre apresentam os trios do proprietário, do grupo e dos outros nessa ordem."}
+:::
+
+:::single-choice{#file-permissions-example-group} Quais permissões comuns a classe do grupo possui em `drwxr-xr-x`?
+
+::option[Leitura e escrita.]{#file-permissions-group-read-write explanation="O trio do grupo é `r-x`, portanto sua posição de escrita contém `-`."}
+::option[Escrita e execução.]{#file-permissions-group-write-execute explanation="O trio do grupo contém `r`, não `w`, em sua primeira posição."}
+::option[Leitura e execução.]{#file-permissions-group-read-execute .correct explanation="O trio do meio é `r-x`, que concede leitura e execução, mas não escrita."}
+:::
+
+Para reforçar esses conceitos em um ambiente isolado, experimente o laboratório [Usuários, Grupos e Permissões de Arquivos no Linux](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002). Ele oferece prática na leitura de modos e na alteração de propriedades e permissões.
+
+## Resumo
+
+Agora você sabe interpretar o campo básico de permissões em uma listagem longa do Linux.
+
+1. Separe o caractere de tipo de arquivo dos nove bits de permissão.
+2. Interprete `r`, `w` e `x` de acordo com o objeto ser um arquivo ou diretório.
+3. Divida o modo nos trios do proprietário, do grupo e dos outros.
+4. Relacione os trios ao proprietário e ao grupo mostrados por `ls -l`.

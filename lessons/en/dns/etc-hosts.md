@@ -1,66 +1,100 @@
 ---
-index: 4
+lesson_id: "etc-hosts"
+course_id: "dns"
 lang: "en"
+order_index: 4
 title: "/etc/hosts"
+description: "Learn how local hosts-file mappings participate in Linux name resolution and how to test them safely."
 meta_title: "/etc/hosts - DNS"
 meta_description: "Explore the purpose of the /etc/hosts file in Linux. Learn how this file maps hostnames to IP addresses, its role in local DNS resolution, and how to configure it on systems like Debian. A guide to the etc hosts linux configuration."
 meta_keywords: "/etc/hosts, etc hosts linux, debian hosts, etc host linux, etc hosts, Linux networking, hostname mapping, DNS resolution"
 ---
 
-## Lesson Content
+`/etc/hosts` provides static address-to-name entries to the local system name-service stack. It is useful for loopback names, bootstrap dependencies, and narrowly scoped tests, but it does not publish records to other hosts or update DNS.
 
-Before your Linux system queries a DNS server to resolve a hostname, it first looks for a mapping on the local machine. This initial check is a fundamental part of the name resolution process.
+## Reading the File
 
-### The Role of /etc/hosts
+A line begins with an IPv4 or IPv6 address followed by one or more names:
 
-The primary file for this local lookup is `/etc/hosts`. This simple text file contains static mappings of hostnames to IP addresses. The structure of the `etc hosts` file is straightforward, with each line containing three fields: the IP address, the canonical hostname, and optional aliases for that host.
-
-Here is a typical example of an `etc host linux` file:
-
-```plaintext
-pete@icebox:~$ cat /etc/hosts
+```text
 127.0.0.1       localhost
-127.0.1.1       icebox
+192.0.2.25      app-test.example.net app-test
+2001:db8::25    app-test-v6.example.net app-test-v6
 ```
 
-You will almost always find the `localhost` address mapped by default. This file is a standard feature across most Linux distributions, including on `Debian hosts`.
+Comments begin with `#`. The first name is conventionally treated as canonical by some tools, while later names are aliases, but application behavior and resolver APIs vary. Avoid duplicate or conflicting entries for the same name.
 
-### Editing the etc hosts linux file
+:::single-choice{#hosts-file-entry-order} What appears first on a normal `/etc/hosts` mapping line?
 
-You can manually edit the `/etc/hosts` file to create your own mappings. Let's try a fun example. Add the following line to your file:
+::option[An IP address.]{#hosts-file-address-first .correct explanation="One or more names follow the address on the same line."}
+::option[A DNS record TTL.]{#hosts-file-ttl-first explanation="Hosts-file entries do not use DNS TTL fields."}
+::option[A transport port number.]{#hosts-file-port-first explanation="The file maps names and addresses, not application ports."}
+:::
 
-```plaintext
-123.45.6.7  www.google.com
+## Resolver Order
+
+The Name Service Switch configuration, commonly `/etc/nsswitch.conf`, determines how system resolver functions combine `files`, DNS, multicast systems, and other sources. A common line is:
+
+```text
+hosts: files dns
 ```
 
-After saving the file, try navigating to `www.google.com` in your web browser. You'll find that it doesn't work. This is because we mapped `www.google.com` to an incorrect IP address. Since your system checks the local `/etc/hosts` file first, it uses our faulty mapping and never proceeds to query a DNS server to find the correct address. To fix this, simply remove the line you added.
+Do not assume files always come first without inspecting policy. Applications can also use their own DNS libraries, caches, proxies, or encrypted resolvers and may not follow the system path.
 
-While older systems used `/etc/hosts.deny` and `/etc/hosts.allow` for access control, this method is largely obsolete. Modern security practices rely on configuring firewall rules for robust protection instead.
+:::single-choice{#hosts-file-nss-order} What determines whether `/etc/hosts` is consulted before DNS by the system resolver?
 
-### Local DNS Server Configuration
+::option[The alphabetical order of filenames in `/etc`.]{#hosts-file-alphabetical explanation="Filesystem listing order does not define name-service policy."}
+::option[The order of sources in Name Service Switch policy.]{#hosts-file-nss-policy .correct explanation="The `hosts:` database line controls normal libc resolver source order."}
+::option[The destination's TCP window size.]{#hosts-file-tcp-window explanation="Transport flow control is unrelated to local name lookup."}
+:::
 
-Traditionally, the `/etc/resolv.conf` file was used to specify the DNS name servers for lookups. However, with advancements in system management, this file is often no longer managed manually. As you can see in the example below, the file is generated automatically by another service. For managing DNS name server mappings, you should refer to the documentation for your specific distribution, as tools like `systemd-resolved` or `resolvconf` often handle this now.
+## Testing Through the System Resolver
 
-```plaintext
-# Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)
-#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN
-nameserver 127.0.1.1
-search localdomain
+Use `getent` to exercise the configured system name-service path:
+
+```bash
+$ getent ahosts app-test.example.net
 ```
 
-## Exercise
+`dig` queries DNS directly and normally does not report `/etc/hosts` mappings. This difference is useful: `getent` succeeding while `dig` does not can indicate a local source or resolver policy difference.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of local hostname resolution and DNS queries:
+:::single-choice{#hosts-file-getent-versus-dig} Which tool is better for checking whether normal system resolution sees a hosts-file entry?
 
-1. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practice editing the `/etc/hosts` file to manage local hostname resolution, a key step before DNS queries.
-2. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Learn to query DNS records using essential Linux tools like `dig` and `nslookup` to understand how your machine resolves external names.
+::option[`dig`, because it always reads `/etc/hosts` first.]{#hosts-file-dig-first explanation="Dig sends DNS queries and bypasses the hosts-file lookup path."}
+::option[`getent ahosts`, because it uses configured name-service sources.]{#hosts-file-getent .correct explanation="It reflects the resolver path used by many native applications."}
+::option[`ip route flush`, because it rebuilds all names.]{#hosts-file-flush-route explanation="Flushing routes is destructive and unrelated to hosts-file lookup."}
+:::
 
-These labs will help you apply the concepts in real scenarios and build confidence with hostname resolution and DNS.
+## Editing Safely
 
-## Quiz Question
+Preserve required localhost and host-identity entries, validate the intended address, and make a recoverable change with privileged editor tooling. Avoid overriding a real public domain as a casual test; it can redirect credentials or application traffic unexpectedly. Use a dedicated test name and remove the entry after the experiment.
 
-What file is used to map hostnames to IP addresses on our machines? (Please answer in English, paying attention to case sensitivity).
+After editing, test the exact application because it may retain a cache or use a different resolver. Document persistent overrides so they do not silently outlive their purpose.
 
-## Quiz Answer
+:::single-choice{#hosts-file-test-name} Why use a dedicated test name instead of overriding a public service name?
 
-/etc/hosts
+::option[Public names cannot contain dots.]{#hosts-file-public-no-dots explanation="Domain names commonly contain several labels separated by dots."}
+::option[Dedicated names automatically create authoritative DNS zones.]{#hosts-file-auto-zone explanation="A hosts-file entry remains local and does not publish a zone."}
+::option[It reduces the risk of redirecting real traffic or credentials.]{#hosts-file-reduce-redirection .correct explanation="A local override can affect any system-resolver client using that public name."}
+:::
+
+## Resolver Server Configuration
+
+`/etc/resolv.conf` traditionally lists DNS resolver settings, but it is often generated by NetworkManager, systemd-resolved, DHCP, or another manager. Inspect symlinks and file comments, then change the owning configuration source rather than editing generated output that will be overwritten.
+
+:::single-choice{#hosts-file-resolv-owner} What should you do before editing `/etc/resolv.conf`?
+
+::option[Delete `/etc/hosts` and all network routes.]{#hosts-file-delete-state explanation="Those destructive changes are unrelated and can remove connectivity."}
+::option[Assume every distribution stores permanent settings there directly.]{#hosts-file-assume-direct explanation="Many systems generate the file dynamically or link it to a managed stub."}
+::option[Identify whether another service generates and owns it.]{#hosts-file-identify-resolver-owner .correct explanation="Persistent DNS server changes belong in the active manager's configuration."}
+:::
+
+## Summary
+
+You can now use `/etc/hosts` as a controlled local resolver input.
+
+1. Write address-first mappings with deliberate names and aliases.
+2. Inspect Name Service Switch ordering instead of assuming it.
+3. Test system resolution with `getent` and DNS separately with `dig`.
+4. Use dedicated temporary names and verify the real application.
+5. Change resolver servers through the configuration owner.

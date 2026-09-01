@@ -1,59 +1,94 @@
 ---
-index: 2
+lesson_id: "kernel-privilege-levels"
+course_id: "kernel"
 lang: "pt"
+order_index: 2
 title: "Níveis de Privilégio"
+description: "Aprenda como o privilégio do processador separa a execução de usuário da execução confiável do kernel."
 meta_title: "Níveis de Privilégio - Kernel"
 meta_description: "Explore os conceitos centrais dos níveis de privilégio do Linux. Esta lição explica a diferença entre modo kernel e modo usuário, o papel dos anéis de proteção e como as chamadas de sistema fornecem acesso privilegiado ao hardware. Entenda como o kernel gerencia a segurança e os privilégios do kernel."
 meta_keywords: "Níveis de privilégio Linux, modo kernel, modo usuário, anéis de proteção, chamadas de sistema, acesso privilegiado, privilégios do kernel, qual a diferença entre modo kernel e modo usuário, segurança Linux"
 ---
 
-## Lesson Content
+Os processadores oferecem modos de privilégio que restringem instruções sensíveis e acesso à memória. O Linux usa esse limite do hardware para que falhas comuns em aplicativos não sobrescrevam diretamente a memória do kernel nem reconfigurem dispositivos. O kernel controla as transições para a execução privilegiada.
 
-As próximas lições cobrem conceitos mais teóricos. Se você prefere prática, sinta-se à vontade para pular e retornar a esses tópicos mais tarde.
+## Modo usuário
 
-Um aspecto fundamental da arquitetura Linux é a separação entre o espaço do usuário (user space) e o kernel. Mas por que não podemos combinar seus poderes em uma única camada? A razão é a segurança e a estabilidade, o que é alcançado fazendo com que operem em modos diferentes.
+Um processo comum é executado em modo usuário dentro de seu espaço de endereços virtual. Ele pode realizar cálculos e acessar os mapeamentos concedidos pelo kernel, que podem ser grandes; modo usuário não significa “apenas pouca memória”. Ele não acessa diretamente qualquer endereço físico, mapeamentos privados de outro processo nem controles privilegiados do processador.
 
-### Qual é a Diferença Entre Modo Kernel e Modo Usuário
+Tabelas de páginas e bits de proteção impõem o acesso. Se uma thread referencia um endereço inválido ou proibido, o processador entra no kernel, que pode resolver um page fault válido ou entregar um sinal como `SIGSEGV`.
 
-O sistema opera em dois modos distintos: modo kernel e modo usuário. Essa separação é crucial para proteger o hardware e os recursos do sistema contra acesso direto e descontrolado por aplicações.
+:::single-choice{#kernel-privilege-user-mode-memory} Que memória um processo em modo usuário normalmente acessa diretamente?
 
-Em **modo kernel**, o kernel tem acesso completo e irrestrito ao hardware; ele controla tudo. Este é o nível mais alto de privilégio.
+::option[Todos os endereços da RAM física e toda a memória do kernel.]{#kernel-privilege-all-physical explanation="O privilégio e a proteção da memória virtual impedem esses acessos."}
+::option[Apenas um byte fixo escolhido no início do processo.]{#kernel-privilege-one-byte explanation="Um processo pode ter muitas regiões mapeadas sem deixar de ser não privilegiado."}
+::option[Mapeamentos permitidos em seu próprio espaço de endereços virtual.]{#kernel-privilege-own-mappings .correct explanation="As proteções de páginas restringem o processo aos mapeamentos estabelecidos com o acesso apropriado."}
+:::
 
-Em **modo usuário**, as aplicações têm acesso muito limitado a uma pequena e segura porção da memória e dos recursos da CPU.
+## Modo kernel
 
-Quando uma aplicação de usuário precisa realizar uma ação envolvendo hardware — como ler de um disco, enviar dados pela rede ou acessar um periférico — ela não pode fazer isso diretamente. Essas operações devem ser tratadas pelo kernel em modo kernel. Esse design impede que um programa com falha ou malicioso comprometa todo o sistema. Por exemplo, você não gostaria que um spyware tivesse acesso direto ao hardware, pois ele poderia ler todos os seus dados ou controlar sua webcam.
+O modo kernel permite instruções privilegiadas e acesso aos mapeamentos protegidos necessários para memória, escalonamento, interrupções e drivers. Em x86, a divisão do Linux costuma ser descrita como ring 0 para o kernel e ring 3 para processos de usuário. O Linux normalmente não usa rings 1 e 2 para isolamento comum.
 
-### Anéis de Proteção e Acesso Privilegiado
+Outras arquiteturas têm nomes e mecanismos diferentes, como exception levels. A virtualização acrescenta relações entre hypervisor e guests que não cabem num desenho simples de dois anéis. A ideia essencial é o privilégio controlado, não os números do x86.
 
-Esses modos diferentes são frequentemente descritos como **níveis de privilégio** ou **anéis de proteção**. Imagine uma fortaleza com paredes concêntricas: a área mais interna é a mais segura e possui a maior autoridade. Os anéis de proteção em um computador funcionam de forma semelhante, com o anel mais interno correspondendo ao nível de privilégio mais alto.
+:::single-choice{#kernel-privilege-x86-kernel-ring} Qual anel de proteção x86 normalmente executa o kernel Linux?
 
-Em uma arquitetura de computador x86 padrão, existem dois níveis principais:
+::option[Ring 3.]{#kernel-privilege-ring-three explanation="Ring 3 é o nível convencional do modo usuário."}
+::option[Ring 0.]{#kernel-privilege-ring-zero .correct explanation="O kernel usa o anel tradicional mais privilegiado do x86."}
+::option[Ring 7.]{#kernel-privilege-ring-seven explanation="Os anéis de proteção tradicionais do x86 vão de 0 a 3."}
+:::
 
-- **Anel 0 (Ring 0):** É onde o kernel é executado. Ele possui o mais alto nível de **privilégios de kernel**, pode executar qualquer instrução do sistema e recebe total confiança para gerenciar o hardware. Este é o cerne do **acesso privilegiado**.
-- **Anel 3 (Ring 3):** É o nível onde as aplicações em modo usuário são executadas. É o anel com menos privilégios e não tem acesso direto ao hardware.
+## Transições controladas
 
-Este modelo de segurança baseado em anéis garante que as aplicações de usuário fiquem isoladas dos componentes críticos do sistema. Mas se as aplicações estão sempre em um modo diferente do kernel, como elas podem realizar as operações de hardware necessárias?
+Vários eventos transferem o controle a um ponto de entrada do kernel:
 
-### Chamadas de Sistema e Privilégios de Kernel
+- uma instrução de chamada de sistema solicita um serviço
+- uma exceção informa um page fault ou instrução inválida
+- uma interrupção de hardware informa um evento externo
 
-A ponte entre o modo usuário e o modo kernel é a **chamada de sistema (system call)**. Quando uma aplicação de usuário precisa realizar uma tarefa privilegiada, ela faz uma chamada de sistema para solicitar que o kernel execute a ação em seu nome.
+O processador salva o contexto, muda o privilégio pelo mecanismo configurado e começa a executar código confiável do kernel. O kernel valida o pedido, realiza ou rejeita o trabalho e retorna ao modo usuário quando apropriado.
 
-Esse processo permite que a aplicação transite temporária e seguramente do modo usuário para o modo kernel para executar uma instrução específica e controlada. Assim que a tarefa é concluída, o sistema retorna ao modo usuário. Esse mecanismo garante que as aplicações possam obter os serviços de que precisam sem ganhar acesso privilegiado direto e perigoso ao hardware.
+O aplicativo não se transforma temporariamente em código do kernel. A CPU executa um handler do kernel em nome da thread, com pilhas e mapeamentos controlados pelo kernel.
 
-## Exercise
+:::single-choice{#kernel-privilege-system-call-transition} O que acontece durante uma transição de chamada de sistema?
 
-Praticar é fundamental! Entender os conceitos teóricos de espaço do usuário, espaço do kernel e níveis de privilégio é crucial, mas a experiência prática ajuda a solidificar como esses conceitos se manifestam na administração prática do Linux. Aqui estão alguns laboratórios práticos para reforçar sua compreensão de como as ações de nível de usuário interagem com o sistema subjacente:
+::option[O código do aplicativo recebe execução irrestrita em ring 0.]{#kernel-privilege-user-ring-zero explanation="Somente código confiável do kernel é executado depois da entrada controlada."}
+::option[O processo muda permanentemente seu UID para zero.]{#kernel-privilege-uid-zero explanation="A transição do modo do processador não reescreve credenciais."}
+::option[O controle entra em um handler definido do kernel que valida o pedido.]{#kernel-privilege-kernel-handler .correct explanation="O processador muda de modo por um caminho configurado e preserva o contexto do usuário para retornar."}
+:::
 
-1. **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique a criação, modificação e exclusão de contas de usuário, o que se relaciona diretamente com o gerenciamento de entidades que operam no espaço do usuário e requerem interação com o kernel para ações privilegiadas.
-2. **[Gerenciar Permissões de Arquivos e Diretórios no Linux](https://labex.io/pt/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - Aprenda a controlar o acesso a arquivos e diretórios, um conceito central de segurança que depende do kernel para impor permissões com base nos privilégios do usuário.
-3. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Explore como interagir e monitorar processos, que são aplicações em espaço de usuário que fazem chamadas de sistema para o kernel para gerenciamento de recursos e execução.
+## Privilégio da CPU não é identidade do usuário
 
-Esses laboratórios ajudarão você a aplicar os conceitos de interação do usuário com o sistema Linux, onde o papel do kernel no gerenciamento de recursos e na imposição de privilégios é fundamental, e a construir confiança com tarefas fundamentais de administração Linux.
+Um aplicativo executado como usuário `root` continua normalmente em modo usuário. O UID 0 influencia verificações de autorização, mas não permite que suas instruções acessem diretamente a memória do kernel. Inversamente, o código do kernel executa em modo privilegiado qualquer que seja o usuário que causou a chamada.
 
-## Quiz Question
+Capabilities, namespaces, seccomp, módulos de segurança e cgroups restringem ainda mais o que um processo solicita. Essa política em camadas é separada do limite de hardware.
 
-Qual número de anel possui os maiores privilégios?
+:::single-choice{#kernel-privilege-root-distinction} Qual afirmação compara corretamente a identidade root e o modo kernel?
 
-## Quiz Answer
+::option[Root é uma credencial do espaço do usuário; modo kernel é um privilégio de execução do processador.]{#kernel-privilege-credential-versus-mode .correct explanation="Um processo root faz pedidos autorizados do modo usuário, enquanto código confiável do kernel realiza a execução privilegiada."}
+::option[Toda instrução pertencente ao root roda como código carregável do kernel.]{#kernel-privilege-root-kernel-code explanation="O UID proprietário não transforma um executável em módulo do kernel."}
+::option[Modo kernel é outro nome de usuário armazenado em `/etc/passwd`.]{#kernel-privilege-kernel-username explanation="Modos do processador são estados de hardware, não contas de login."}
+:::
 
-0
+## Por que o limite importa
+
+O limite reduz o dano de falhas comuns e cria um ponto para verificações de acesso, mas vulnerabilidades no kernel e módulos maliciosos podem derrotá-lo. Atualize kernel e firmware por canais confiáveis, reduza o código privilegiado e não carregue módulos desconhecidos.
+
+Execução especulativa e canais laterais também mostram que o isolamento exige mitigação contínua; “outro anel” é uma base, não uma prova completa de segurança.
+
+:::single-choice{#kernel-privilege-boundary-limit} A separação entre modo usuário e kernel garante segurança completa?
+
+::option[Sim; vulnerabilidades do kernel não afetam processos de usuário.]{#kernel-privilege-no-kernel-vulns explanation="Uma vulnerabilidade do kernel pode comprometer todo o sistema."}
+::option[Não; falhas no código privilegiado e canais laterais ainda podem cruzar limites.]{#kernel-privilege-not-complete .correct explanation="A divisão reduz a superfície de ataque, mas exige código correto e mitigação adicional."}
+::option[Sim; os modos eliminam a necessidade de políticas de acesso.]{#kernel-privilege-no-policy explanation="Credenciais e políticas continuam essenciais para compartilhar recursos com autorização."}
+:::
+
+## Resumo
+
+Agora você consegue distinguir privilégio de execução do hardware de autoridade da conta Linux.
+
+1. Relacionar modo usuário a espaços virtuais protegidos.
+2. Relacionar modo kernel a instruções e mapeamentos privilegiados.
+3. Tratar chamadas, exceções e interrupções como entradas controladas.
+4. Separar autorização do UID 0 de execução em ring 0.
+5. Ver modos de privilégio como uma camada da segurança.

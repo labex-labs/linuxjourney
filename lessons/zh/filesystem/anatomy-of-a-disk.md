@@ -1,91 +1,101 @@
 ---
-index: 3
+lesson_id: "anatomy-of-a-disk"
+course_id: "filesystem"
 lang: "zh"
-title: "磁盘解剖"
-meta_title: "磁盘解剖 - 文件系统"
-meta_description: "探索 Linux 中磁盘的结构。本指南解释了磁盘的哪个组件告诉操作系统磁盘如何分区，涵盖 MBR 和 GPT 分区表、不同类型的 Linux 分区及其组织方式。"
+order_index: 3
+title: "磁盘结构"
+description: "了解块设备、分区表、分区和文件系统如何构成彼此独立的存储层。"
+meta_title: "磁盘结构 - 文件系统"
+meta_description: "探索 Linux 中磁盘的结构。本指南解释磁盘的哪个组件告诉操作系统磁盘如何分区，涵盖 MBR 和 GPT 分区表、不同类型的 Linux 分区及其组织方式。"
 meta_keywords: "linux 磁盘，linux 分区，linux 分区类型，磁盘哪个组件告诉操作系统如何分区，硬盘分区组织信息包含什么，MBR, GPT, 分区表，文件系统"
 ---
 
-## Lesson Content
+存储设备会呈现为 `/dev/sda` 或 `/dev/nvme0n1` 这样的块设备。它可以包含分区表，其中的条目描述各个区域，并把它们呈现为子块设备。分区中可以再保存文件系统、交换空间签名、RAID 成员、加密容器、逻辑卷物理卷或其他数据格式。
 
-Linux 中的硬盘可以细分为分区，这些分区充当独立的块设备。您可能还记得像 /dev/sda1 和 /dev/sda2 这样的例子。在这里，/dev/sda 代表整个磁盘，而 /dev/sda1 是该磁盘上的第一个分区。分区对于分离数据非常有用。如果您需要为存储的一部分使用特定的文件系统，您可以为其创建一个新分区，而不是格式化整个磁盘。
+这些层彼此独立：并非每块磁盘都有分区表，并非每个分区都包含文件系统，文件系统也可以位于逻辑卷或整个设备上。
 
-### 分区表
+## 分区表与边界
 
-那么，磁盘的哪个组件告诉操作系统如何对磁盘进行分区呢？答案是**分区表**。这个关键组件包含有关硬盘分区如何组织的信息。分区表指定了每个分区的开始和结束位置、哪些分区可引导，以及磁盘的哪些扇区分配给了每个分区。主要有两种分区表方案：主引导记录 (MBR) 和 GUID 分区表 (GPT)。
+分区表记录起始位置、长度、类型标识符和分区方案特有的属性。内核读取这些内容后，创建 `/dev/sda1` 或 `/dev/nvme0n1p1` 这样的分区块设备。
 
-### 理解 Linux 分区
+在普通布局中，分区边界不得重叠。从分区表角度看，所有条目之外的空间尚未分配，但其中仍可能残留旧签名或数据。更改分区表不会自动移动文件系统内容来匹配新边界。
 
-磁盘由分区组成，帮助我们组织数据。单个磁盘上可以有多个分区，但它们不能重叠。磁盘上未分配给分区的任何空间称为空闲空间。可用的 Linux 分区类型取决于您使用的分区表方案。在分区内部，您可以创建文件系统或将其专用于其他目的，例如交换空间。
+:::single-choice{#anatomy-disk-partition-table-role} 什么内容告诉操作系统磁盘分区从哪里开始、在哪里结束？
 
-### MBR 分区
+::option[当前 shell 的工作目录。]{#anatomy-disk-shell-directory explanation="Shell 路径与磁盘上的分区边界无关。"}
+::option[磁盘的分区表。]{#anatomy-disk-table-boundaries .correct explanation="分区条目描述内核可以呈现为子块设备的区域。"}
+::option[用户账户的主组。]{#anatomy-disk-user-group explanation="账户凭据不定义磁盘几何或分区布局。"}
+:::
 
-主引导记录 (MBR) 是传统的分区表标准。
+## MBR 分区
 
-- 它支持主分区、扩展分区和逻辑分区。
-- MBR 限制为四个主分区。
-- 要创建更多分区，必须将一个主分区指定为扩展分区（每个磁盘只允许一个）。在此扩展分区内，您可以创建多个逻辑分区，它们的功能与其他任何分区一样。
-- 它支持最大为 2TB 的磁盘。
+传统的 DOS/MBR 方案把主分区表存放在第一个逻辑扇区中。它包含四个主表条目，其中一个条目可以描述扩展分区，作为一系列链式逻辑分区的容器，从而提供四个以上的可用区域。
 
-### GPT 分区
+使用 32 位扇区地址和 512 字节逻辑扇区时，MBR 常见的容量上限约为 2 TiB。精确寻址能力取决于扇区大小和工具支持。MBR 也没有 GPT 的冗余表头、分区表副本和每分区 GUID。
 
-GUID 分区表 (GPT) 是磁盘分区的现代标准。
+:::single-choice{#anatomy-disk-mbr-more-than-four} MBR 中的哪个结构允许创建四个以上的可用分区？
 
-- 它只有一种分区类型，您可以创建大量分区。
-- 每个分区都被分配一个全局唯一标识符 (GUID)。
-- GPT 通常与基于 UEFI 的引导系统一起使用。
+::option[包含更多主分区条目的日志分区。]{#anatomy-disk-mbr-journal explanation="文件系统日志与 MBR 表的四条目限制无关。"}
+::option[包含逻辑分区的扩展分区。]{#anatomy-disk-mbr-extended .correct explanation="一个主条目可以定义扩展容器，其中以链式方式保存逻辑分区。"}
+::option[重新编号条目的文件系统超级块。]{#anatomy-disk-mbr-superblock explanation="文件系统元数据不会扩展磁盘分区表。"}
+:::
 
-### 文件系统结构
+## GPT 分区
 
-正如我们之前学到的，文件系统是文件和目录的组织集合。其核心包括一个用于管理文件的数据库和文件本身。让我们更详细地探讨其结构。
+GUID 分区表（GPT）使用 64 位逻辑块地址，通常在磁盘开头附近保存主表头和条目数组，并在磁盘末尾附近保存备份副本。保护性 MBR 可以避免旧式、仅支持 MBR 的软件把磁盘误认为空盘。
 
-- **引导块 (Boot block)**：位于文件系统的最前几个扇区，该块本身不被文件系统使用。相反，它包含用于引导操作系统的文件。每个操作系统只需要一个引导块。虽然其他分区可能有引导块，但它们通常未被使用。
-- **超级块 (Superblock)**：这是紧跟在引导块后面的一个块，包含有关文件系统的元数据，例如 inode 表的大小、逻辑块的大小以及文件系统的总大小。
-- **Inode 表 (Inode table)**：这是管理文件和目录的数据库。每个文件或目录在 inode 表中都有一个唯一的条目，其中存储了有关它的各种属性。我们将在专门的课程中介绍 inode。
-- **数据块 (Data blocks)**：这是存储文件和目录实际内容的地方。
+每个 GPT 条目都包含分区类型 GUID 和唯一分区 GUID；因此，GPT 并不是只有一种分区类型。可用条目数由分配的分区表和工具决定，通常远多于四个，而且不需要扩展分区或逻辑分区。
 
-下面是一个使用 MBR 分区表（标记为 `msdos`）的磁盘示例。您可以看到主分区、扩展分区和逻辑分区。
+GPT 通常用于 UEFI 启动磁盘，但分区方案与固件启动模式是不同概念。UEFI 系统还需要适当的启动文件和 EFI 系统分区；仅有 GPT 并不会让磁盘可启动。
 
-```plaintext
-pete@icebox:~$ sudo parted -l
-Model: Seagate (scsi)
-Disk /dev/sda: 21.5GB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
+:::single-choice{#anatomy-disk-gpt-identifiers} GPT 分区条目包含哪些标识符？
 
-Number  Start   End     Size    Type      File system     Flags
- 1      1049kB  6860MB  6859MB  primary   ext4            boot
- 2      6861MB  21.5GB  14.6GB  extended
- 5      6861MB  7380MB  519MB   logical   linux-swap(v1)
- 6      7381MB  21.5GB  14.1GB  logical   xfs
+::option[类型 GUID 和唯一分区 GUID。]{#anatomy-disk-gpt-guids .correct explanation="类型描述预期用途，唯一 GUID 则标识具体的分区条目。"}
+::option[所有 GPT 分区共同使用的唯一一种通用类型。]{#anatomy-disk-gpt-one-type explanation="GPT 为不同分区用途定义了许多类型 GUID。"}
+::option[创建者登录账户的 UID 和 GID。]{#anatomy-disk-gpt-user-ids explanation="文件系统账户标识符并不是 GPT 分区身份字段。"}
+:::
+
+## 文件系统结构取决于具体格式
+
+完成分区后，文件系统创建工具会写入该文件系统规定的结构。许多格式都有超级块、分配元数据、目录记录以及数据区段或数据块等概念，但具体布局、冗余方式和术语并不相同。
+
+例如，ext 文件系统使用 inode 和块组，其他文件系统则通过不同的树或分配结构组织元数据。不要把“引导块、一个超级块、inode 表、数据块”这一简化图套用到每一种文件系统。
+
+:::single-choice{#anatomy-disk-filesystem-layer} 创建分区时会自动在其中创建文件系统吗？
+
+::option[不会；格式化或其他明确用途是独立步骤。]{#anatomy-disk-partition-not-filesystem .correct explanation="分区表只定义块区域，其中的内容仍然彼此独立。"}
+::option[会；每个分区都会自动格式化为 ext4。]{#anatomy-disk-auto-ext4 explanation="分区工具不会统一创建 ext4 文件系统。"}
+::option[会；GPT 条目本身就是已挂载目录。]{#anatomy-disk-gpt-mounted explanation="分区条目描述存储区域，并不是文件系统挂载点。"}
+:::
+
+## 检查当前布局
+
+进行任何修改前，应先使用只读视图：
+
+```bash
+$ lsblk -o NAME,PATH,TYPE,SIZE,PTTYPE,PARTTYPE,FSTYPE,MOUNTPOINTS
+$ sudo parted --list
 ```
 
-第二个示例显示了一个 GPT 分区表，它为其分区使用唯一的 ID。
+`PTTYPE` 描述检测到的分区表方案，`PARTTYPE` 表示分区类型标识符，`FSTYPE` 则表示检测到的内容签名。检测结果只是一项证据，并不保证内容健康或可以安全挂载。
 
-```plaintext
-Model: Thumb Drive (scsi)
-Disk /dev/sdb: 4041MB
-Sector size (logical/physical): 512B/512B
-Partition Table: gpt
+设备名称可能变化，残留签名也可能干扰检测。以写模式打开任何分区工具前，应确认型号、序列号、容量、传输方式、持久链接、活动挂载、交换空间、RAID、LVM、加密和备份。
 
-Number  Start   End     Size     File system  Name        Flags
- 1      17.4kB  1000MB  1000MB                first
- 2      1000MB  4040MB  3040MB                second
-```
+:::single-choice{#anatomy-disk-lsblk-fields} 哪个 `lsblk` 字段用于区分检测到的文件系统内容与分区表方案？
 
-## Exercise
+::option[`FSTYPE`]{#anatomy-disk-fstype .correct explanation="`FSTYPE` 报告检测到的文件系统或其他已识别内容签名，`PTTYPE` 则报告分区表方案。"}
+::option[`NAME`]{#anatomy-disk-name-field explanation="`NAME` 标记内核块设备条目，并不专门标识内容格式。"}
+::option[`SIZE`]{#anatomy-disk-size-field explanation="容量表示大小，而不是文件系统类型。"}
+:::
 
-为了巩固您对磁盘分区和文件系统的理解，我们推荐以下动手实验：
+只应在可丢弃存储上使用[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)实验练习这些存储层。
 
-1. **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 练习创建新分区、使用 ext4 等文件系统格式化它们、挂载它们，以及在 `/etc/fstab` 中配置持久挂载。
+## 总结
 
-此实验将帮助您在实际场景中应用磁盘管理概念，并增强对 Linux 存储的信心。
+现在，你可以区分磁盘布局元数据与其中保存的数据格式。
 
-## Quiz Question
-
-在 MBR 分区方案中，用于创建超过 4 个分区的分区类型是什么？（请用一个纯小写的英文字词回答。）
-
-## Quiz Answer
-
-extended
+1. 识别整个设备及其分区子设备。
+2. 理解 MBR 扩展分区与传统四条目限制的关系。
+3. 理解 GPT 的冗余分区表和每分区 GUID。
+4. 把创建文件系统视为独立于创建分区的操作。
+5. 进行变更前，检查每一层存储及其活动使用者。

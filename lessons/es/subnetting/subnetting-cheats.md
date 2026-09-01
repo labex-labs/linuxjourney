@@ -1,70 +1,89 @@
 ---
-index: 4
+lesson_id: "subnetting-cheats"
+course_id: "subnetting"
 lang: "es"
-title: "Trucos de Subnetting"
-meta_title: "Trucos de Subnetting - Subredes"
-meta_description: "Domina el subnetting con nuestra guía de trucos de conversión binaria. Aprende a usar la tabla 128+64+32+16+8+4+2+1 para convertir rápidamente direcciones IP de decimal a binario y viceversa. Esencial para entrevistas de redes y certificaciones."
-meta_keywords: "subnetting, conversión binaria, dirección IP, red, redes Linux, 128+64+32+16+8+4+2+1, 128 64 32 16 8 4 2 1, decimal a binario, matemáticas de subredes, tutorial, guía"
+order_index: 4
+title: "Atajos para calcular subredes"
+description: "Aprende métodos compactos con binarios y tamaños de bloque para comprobar cálculos de subredes IPv4."
+meta_title: "Atajos para calcular subredes - Subnetting"
+meta_description: "Domina las subredes con esta guía de atajos de conversión binaria. Aprende a usar la tabla 128+64+32+16+8+4+2+1 para convertir rápidamente direcciones IP entre decimal y binario."
+meta_keywords: "subredes, conversión binaria, dirección IP, red, redes Linux, 128+64+32+16+8+4+2+1, 128 64 32 16 8 4 2 1, decimal a binario, cálculos de subred, tutorial, guía"
 ---
 
-## Lesson Content
+Las calculadoras de subredes son útiles, pero un pequeño conjunto de patrones binarios facilita comprobar sus resultados. Estos métodos sirven como comprobaciones, no sustituyen la confirmación de la asignación real y la política de enrutamiento.
 
-En el networking moderno, rara vez realizarás cálculos de subredes a mano, ya que las herramientas y calculadoras automatizan el proceso. Sin embargo, comprender la conversión manual entre decimal y binario es crucial para las entrevistas de networking, los exámenes de certificación y para obtener una comprensión más profunda de cómo funciona el direccionamiento IP. Esta lección proporciona algunos trucos sencillos para ayudarte a dominarlo.
+## Valores de los bits de un octeto
 
-Primero, es muy beneficioso memorizar los cálculos de base 2, ya que forman la base de las matemáticas binarias.
+Un octeto IPv4 utiliza estos valores posicionales:
 
-- 2^1 = 2
-- 2^2 = 4
-- 2^3 = 8
-- 2^4 = 16
-- 2^5 = 32
-- 2^6 = 64
-- 2^7 = 128
-- 2^8 = 256
-
-### La Tabla de Conversión Binaria
-
-Para convertir números fácilmente, utilizamos una tabla que representa el valor de cada bit en un octeto de 8 bits de una dirección IP.
-
-```plaintext
-1   1  1  1  1 1 1 1
-128 64 32 16 8 4 2 1
+```text
+bit:    1   1   1   1   1  1  1  1
+value: 128  64  32  16   8  4  2  1
 ```
 
-Esta tabla es tu herramienta principal. Cada número corresponde a la posición de un bit. La suma total, `128+64+32+16+8+4+2+1`, es igual a 255, que es el valor más alto posible en un octeto.
+La suma de los ocho valores produce 255. El decimal 192 es `128 + 64`, por lo que su representación binaria es `11000000`.
 
-### Conversión de Decimal a Binario
+:::single-choice{#subnet-cheats-binary-192} ¿Cuál es la representación binaria de ocho bits del decimal 192?
 
-Vamos a convertir la dirección IP `192.168.23.43` a binario. Analizaremos el primer octeto, `192`, para demostrar el proceso. Usamos los valores de nuestra tabla: `128 64 32 16 8 4 2 1`.
+::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="Las posiciones 128 y 64 están activadas y las restantes valen cero."}
+::option[`10101000`]{#subnet-cheats-168 explanation="Este patrón equivale a 168."}
+::option[`11111111`]{#subnet-cheats-255 explanation="Las ocho posiciones activadas equivalen a 255."}
+:::
 
-1. Comienza con el número `192`. ¿Puedes restarle 128? Sí (192 - 128 = 64). Por lo tanto, el primer bit es **1**.
-2. Nuestro nuevo número es `64`. ¿Puedes restarle el siguiente valor, 64? Sí (64 - 64 = 0). El segundo bit es **1**.
-3. Nuestro resto es ahora `0`. No podemos restar 32, 16, 8, 4, 2 ni 1. Por lo tanto, los bits restantes son todos **0**.
+## Máscaras habituales de octetos parciales
 
-La forma binaria de 192 es `11000000`. Puedes aplicar este mismo método de resta a los otros octetos.
+Los bits de prefijo contiguos producen una secuencia breve de máscaras:
 
-### Conversión de Binario a Decimal
+```text
+bits set: 0    1    2    3    4    5    6    7    8
+decimal:  0  128  192  224  240  248  252  254  255
+```
 
-Para convertir de binario a decimal, simplemente sumas los valores de la tabla donde aparece un `1` en el número binario. Convirtamos `11000000` de nuevo a decimal.
+Por ejemplo, `/19` contiene 16 bits de prefijo completos y tres bits en el tercer octeto, por lo que su máscara es `255.255.224.0`.
 
-Observando la tabla `128 64 32 16 8 4 2 1`, los dos primeros bits son `1`. Esto significa que sumamos los dos primeros valores:
+:::single-choice{#subnet-cheats-prefix-19} ¿Qué máscara corresponde al `/19` de IPv4?
 
-`128 + 64 = 192`
+::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="Dieciséis bits completos y tres más producen 255, 255 y 224."}
+::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="Una longitud de prefijo es una cantidad de bits, no un octeto decimal de la máscara."}
+::option[`255.255.255.19`]{#subnet-cheats-tail-19 explanation="Esta no es una máscara contigua de 19 bits."}
+:::
 
-Como todos los demás bits son `0`, no sumamos ningún otro valor. La fórmula `128 + 64 + 0 + 0 + 0 + 0 + 0 + 0` nos da 192. ¡Es así de simple!
+## Tamaños de bloque
 
-## Exercise
+En el primer octeto de la máscara que no sea 255, resta su valor de 256 para obtener el incremento de la subred. Una máscara `/27` termina en 224, lo que da un tamaño de bloque de `256 - 224 = 32`. Por tanto, los límites del último octeto son 0, 32, 64, 96, 128, 160, 192 y 224.
 
-¡La práctica hace al maestro! Si bien las matemáticas de subredes a menudo se automatizan en el mundo real, comprender las conversiones binarias subyacentes es crucial para las entrevistas y una comprensión más profunda del networking. Aquí tienes un laboratorio práctico para reforzar tu comprensión:
+La dirección `198.51.100.77/27` se encuentra en el bloque que abarca de 64 a 95.
 
-1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria utilizando Python en una terminal de Linux para convertir direcciones IP, traducir máscaras CIDR y calcular detalles de red.
+:::single-choice{#subnet-cheats-77-network} ¿Cuál es la dirección de red de `198.51.100.77/27`?
 
-Este laboratorio te ayudará a aplicar los conceptos de conversión binaria y subnetting en un escenario práctico y a ganar confianza con los fundamentos del direccionamiento de red.
+::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="Ese bloque abarca los valores del último octeto de 32 a 63."}
+::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="La dirección contiene bits de host y no es el límite del bloque."}
+::option[`198.51.100.64`]{#subnet-cheats-network-64 .correct explanation="El bloque `/27` que comienza en 64 abarca de 64 a 95."}
+:::
 
-## Quiz Question
+## Convertir un octeto arbitrario
 
-¿Cuál es la conversión binaria de 123? Por favor, proporciona la respuesta en caracteres ingleses (números).
+Para convertir el decimal 123, selecciona los valores restantes más grandes sin sobrepasarlo:
 
-## Quiz Answer
+```text
+123 = 64 + 32 + 16 + 8 + 2 + 1
+    = 01111011
+```
 
-01111011
+Para volver a convertirlo, suma únicamente los valores posicionales cuyos bits valgan uno. Conserva siempre las ocho posiciones al trabajar dentro de un octeto IPv4.
+
+:::single-choice{#subnet-cheats-binary-123} ¿Qué valor de ocho bits equivale al decimal 123?
+
+::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="El valor numérico es equivalente, pero la representación del octeto debe conservar ocho posiciones."}
+::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="Las posiciones activadas suman 64 + 32 + 16 + 8 + 2 + 1."}
+::option[`01111100`]{#subnet-cheats-124 explanation="Este patrón activa la posición 4 en lugar de 2 y 1, lo que produce 124."}
+:::
+
+## Resumen
+
+Ahora puedes comprobar cálculos IPv4 habituales mediante patrones binarios compactos.
+
+1. Usa los ocho valores posicionales del octeto, desde 128 hasta 1.
+2. Recuerda la secuencia de máscaras contiguas de octetos parciales.
+3. Obtén el tamaño del bloque restando la máscara parcial de 256.
+4. Conserva ocho bits al convertir octetos individuales.

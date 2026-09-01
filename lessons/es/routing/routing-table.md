@@ -1,68 +1,100 @@
 ---
-index: 2
+lesson_id: "routing-table"
+course_id: "routing"
 lang: "es"
-title: "Tabla de Enrutamiento"
-meta_title: "Tabla de Enrutamiento - Enrutamiento"
-meta_description: "Una guía para entender la tabla de enrutamiento de Linux. Aprenda a interpretar la salida del comando route, incluyendo destino, puerta de enlace, genmask e interfaz eth0. Domine los conceptos básicos de su tabla de rutas de Linux."
+order_index: 2
+title: "Tabla de enrutamiento"
+description: "Aprende a interpretar rutas de Linux e inspeccionar la ruta seleccionada para un destino."
+meta_title: "Tabla de enrutamiento - Routing"
+meta_description: "Guía para comprender la tabla de enrutamiento de Linux. Aprende a interpretar la salida del comando route, incluidos destino, gateway, genmask y la interfaz eth0. Domina los fundamentos de las rutas Linux."
 meta_keywords: "tabla de enrutamiento linux, tabla de rutas linux, genmask, eth0, comando route, enrutamiento de red, enrutamiento IP, destino, puerta de enlace, máscara de subred, redes linux"
 ---
 
-## Lesson Content
+El estado de enrutamiento de Linux determina qué siguiente salto, interfaz y origen son válidos para un destino IP. La vista antigua `route -n` aún se encuentra, pero `ip route` expone de forma más directa los conceptos modernos de enrutamiento del kernel.
 
-La **tabla de enrutamiento de Linux** contiene las reglas que determinan a dónde se envían los paquetes de red. Cada vez que su sistema necesita enviar un paquete a una dirección IP, consulta esta tabla para encontrar la ruta apropiada. Para ver la **tabla de rutas de Linux** de su máquina, puede usar el comando `route`.
+## Interpretar rutas IPv4
 
-```plaintext
-pete@icebox:~$ sudo route -n
-Tabla de enrutamiento IP del kernel
-Destino     Puerta de enlace Genmask         Flags Métrica Ref    Uso Interfaz
-0.0.0.0         192.168.224.2   0.0.0.0         UG    0      0        0 eth0
-192.168.224.0   0.0.0.0         255.255.255.0   U     1      0        0 eth0
+Una salida de ejemplo puede tener este aspecto:
+
+```text
+$ ip -4 route show
+default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
+192.168.224.0/24 dev eth0 proto kernel scope link src 192.168.224.10 metric 100
 ```
 
-### Entendiendo las Columnas
+La ruta conectada `/24` envía los destinos coincidentes directamente por `eth0`. La ruta predeterminada utiliza la puerta de enlace del siguiente salto `192.168.224.2`. `proto` describe cómo se instaló la ruta, `src` es un origen preferido para el tráfico coincidente y una métrica ayuda a ordenar rutas comparables en los demás aspectos.
 
-La salida del comando `route` se organiza en varias columnas, cada una proporcionando información específica sobre una ruta de red.
+:::single-choice{#routing-table-via-meaning} ¿Qué indica `via 192.168.224.2`?
 
-### Destino
+::option[La única aplicación autorizada para utilizar la ruta.]{#routing-table-application explanation="La autorización de aplicaciones no está codificada mediante la palabra clave `via`."}
+::option[La puerta de enlace del siguiente salto de la ruta.]{#routing-table-next-hop .correct explanation="El paquete se encapsula para ese router situado en el enlace, pero conserva su destino IP."}
+::option[El punto de montaje del sistema de archivos de la ruta.]{#routing-table-mount explanation="Las entradas de enrutamiento se ocupan del reenvío de red, no de los sistemas de archivos."}
+:::
 
-La columna Destino especifica una red o un host. La entrada `192.168.224.0` dirige todos los paquetes destinados a esa red específica. Si el destino de un paquete está dentro de esta red (por ejemplo, de 192.168.224.5 a 192.168.224.7), se envía directamente a través de la interfaz especificada, como `eth0`.
+## Rutas conectadas y predeterminadas
 
-El destino `0.0.0.0` es la ruta predeterminada. Si la tabla de enrutamiento no tiene una entrada más específica para el destino de un paquete, utiliza esta ruta.
+Una ruta con `scope link` y sin un siguiente salto `via` trata el prefijo como directamente accesible en la interfaz. Una ruta predeterminada coincide con todas las direcciones, pero pierde frente a cualquier ruta válida más específica.
 
-### Puerta de enlace (Gateway)
+:::single-choice{#routing-table-connected-route} ¿Cómo se llega normalmente a un destino conectado con `scope link`?
 
-La columna Puerta de enlace muestra el enrutador al que se envían los paquetes. Si un paquete no está en la misma red local, se reenvía a esta dirección de puerta de enlace. Para la ruta predeterminada, esta es la dirección IP del enrutador que conecta su red local con otras redes, como Internet.
+::option[A través de la puerta de enlace predeterminada incluso cuando coincide una ruta conectada.]{#routing-table-connected-default explanation="El prefijo conectado es más específico y no tiene un operando de puerta de enlace."}
+::option[Convirtiendo el destino en un servidor DNS.]{#routing-table-connected-dns explanation="El servicio de nombres no forma parte de una ruta IP ya seleccionada."}
+::option[Directamente mediante la interfaz indicada después de resolver el vecino.]{#routing-table-direct .correct explanation="El host resuelve la dirección del destino en el enlace y encapsula el tráfico localmente."}
+:::
 
-### Genmask
+## Longitud del prefijo y métrica
 
-El `genmask`, o máscara de generación, es la máscara de subred para la red de destino. Se utiliza junto con la IP de destino para determinar si un paquete pertenece a esa red. Por ejemplo, un `genmask` de `255.255.255.0` significa que los primeros tres octetos de la dirección IP deben coincidir con los primeros tres octetos del destino.
+La selección de rutas tiene en cuenta las reglas de política y elige el prefijo válido más largo. Las métricas ordenan las rutas dentro de conjuntos comparables apropiados; una ruta predeterminada con una métrica baja no prevalece sobre un `/24` coincidente solo porque su número sea menor.
 
-### Flags (Indicadores)
+:::single-choice{#routing-table-prefix-before-default} ¿Qué ruta suele coincidir de forma más específica con `192.168.224.50`?
 
-Estos indicadores proporcionan información adicional sobre la ruta:
+::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="El prefijo coincidente de 24 bits es el más largo de las rutas mostradas."}
+::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="La ruta predeterminada tiene una longitud de prefijo de cero."}
+::option[`192.168.0.0/16 via 192.168.224.3`]{#routing-table-sixteen explanation="Esta abarca la dirección, pero fija menos bits que `/24`."}
+:::
 
-- **U**: Indica que la ruta está activa y en funcionamiento.
-- **G**: Significa que la ruta es hacia una puerta de enlace (enrutador).
-- **UG**: Significa que la ruta está activa y apunta a una puerta de enlace.
+## Reglas de política y varias tablas
 
-### Iface (Interfaz)
+Linux puede consultar varias tablas de enrutamiento según las políticas de `ip rule`, basadas en el origen, la marca, la interfaz u otros selectores. Por tanto, consultar solo la tabla principal puede no mostrar la ruta real:
 
-Esta columna indica la interfaz de red, como `eth0`, a través de la cual se enviarán los paquetes para esta ruta. `eth0` generalmente representa el primer adaptador Ethernet en su sistema.
+```bash
+$ ip rule show
+$ ip route show table all
+```
 
-## Exercise
+Los espacios de nombres de red y las VRF también pueden contener estados independientes. Realiza la inspección en el mismo contexto que el proceso afectado.
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento de red y el direccionamiento IP:
+:::single-choice{#routing-table-policy-limit} ¿Por qué puede que `ip route show` por sí solo no explique la ruta de una aplicación?
 
-1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas direcciones IP e interfaces de red, que son componentes clave de una tabla de enrutamiento.
-2. **[Administrar el Direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a administrar el direccionamiento IP, configurar IPs estáticas, establecer puertas de enlace predeterminadas y verificar configuraciones de red, lo que se relaciona directamente con las entradas que se encuentran en una tabla de enrutamiento.
-3. **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la alcanzabilidad de la red usando `ping` e `ip a`, lo que le ayudará a comprender cómo interactúan los diferentes tipos de IP y cómo se determina la alcanzabilidad de la red, lo cual se refleja en las decisiones de enrutamiento.
+::option[Las reglas de política u otro espacio de nombres de red pueden seleccionar un estado de enrutamiento distinto.]{#routing-table-policy-context .correct explanation="La consulta efectiva depende de los atributos del paquete y del contexto de red del proceso."}
+::option[Las tablas de enrutamiento de Linux no contienen prefijos de destino.]{#routing-table-no-prefixes explanation="Los prefijos de destino son claves fundamentales de las rutas."}
+::option[Las aplicaciones nunca envían paquetes IP.]{#routing-table-apps-never explanation="El tráfico de las aplicaciones se transporta mediante protocolos de red y transporte."}
+:::
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la configuración y solución de problemas de red.
+## Consultar una ruta efectiva
 
-## Quiz Question
+Pide al kernel que evalúe un destino y un origen opcional:
 
-Si no se encuentra un destino en la tabla de enrutamiento, ¿a dónde se envían los paquetes? Por favor, responda con una sola palabra en inglés, prestando atención a la capitalización.
+```bash
+$ ip route get 203.0.113.10
+$ ip route get 203.0.113.10 from 192.168.224.10
+```
 
-## Quiz Answer
+El resultado predice la consulta local en ese momento. No envía una prueba ni demuestra la accesibilidad de vecinos, elementos posteriores, cortafuegos o aplicaciones.
 
-Gateway
+:::single-choice{#routing-table-route-get-limit} ¿Qué no hace `ip route get`?
+
+::option[Mostrar la interfaz local y el siguiente salto elegidos.]{#routing-table-get-does-interface explanation="Esos son campos principales del resultado de la consulta."}
+::option[Evaluar la política actual de rutas locales para un destino.]{#routing-table-get-does-policy explanation="El comando realiza una consulta de rutas del kernel."}
+::option[Demostrar que la entrega tiene éxito a través de todos los saltos posteriores.]{#routing-table-get-not-probe .correct explanation="Es una consulta de decisión local, no una prueba de red de extremo a extremo."}
+:::
+
+## Resumen
+
+Ahora puedes interpretar entradas de enrutamiento de Linux y consultar la decisión local efectiva.
+
+1. Distingue las rutas conectadas de las rutas que pasan por una puerta de enlace.
+2. Interpreta los campos de prefijo, interfaz, protocolo, origen y métrica.
+3. Aplica la coincidencia del prefijo más largo antes de comparar las métricas pertinentes.
+4. Ten en cuenta las tablas de políticas, los espacios de nombres y las VRF.
+5. Trata `ip route get` como una consulta, no como una prueba de accesibilidad.

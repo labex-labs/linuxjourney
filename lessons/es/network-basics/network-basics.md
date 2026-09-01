@@ -1,51 +1,78 @@
 ---
-index: 1
+lesson_id: "network-basics"
+course_id: "network-basics"
 lang: "es"
-title: "Conceptos Básicos de Redes"
-meta_title: "Conceptos Básicos de Redes - Fundamentos de Redes"
-meta_description: "Descubre la mejor forma de aprender Linux comenzando con los conceptos básicos de redes. Esta guía cubre los fundamentos de componentes de red como WAN, LAN, routers y hosts para principiantes."
+order_index: 1
+title: "Conceptos básicos de redes"
+description: "Aprende cómo los hosts, enlaces, conmutadores, routers y paquetes forman redes locales y de área amplia."
+meta_title: "Conceptos básicos de redes - Network Basics"
+meta_description: "Descubre la mejor forma de aprender Linux comenzando por los conceptos básicos de redes. Esta guía explica componentes como WAN, LAN, routers y hosts para principiantes."
 meta_keywords: "básicos red, básicos linux, mejor forma aprender linux, fundamentos linux, WAN, LAN, WLAN, tutorial redes, guía networking"
 ---
 
-## Lesson Content
+Una red conecta interfaces para que las aplicaciones de distintos hosts puedan intercambiar datos. Comprender qué dispositivo, dirección y enlace gestiona cada parte de la ruta facilita la interpretación de los comandos de Linux que veremos más adelante.
 
-Comprender los **conceptos básicos de linux** de redes es una habilidad fundamental. Para muchos, captar estos conceptos es la **mejor manera de aprender linux** más profundamente, ya que las redes son integrales a cómo operan los sistemas modernos. Exploremos una red doméstica típica para entender los componentes centrales.
+## Hosts e interfaces
 
-### Componentes Centrales de la Red
+Un host es un punto final o sistema conectado a una red, como un portátil, un servidor, un teléfono o una máquina virtual. Un mismo host puede tener varias interfaces: Ethernet, Wi-Fi, loopback, túneles, puentes o adaptadores virtuales. Cada interfaz puede tener una configuración de la capa de enlace y de la capa de red apropiada para su tecnología.
 
-Tu red doméstica es un ecosistema pequeño de dispositivos que trabajan juntos. Aquí están los actores clave:
+Inspecciona las interfaces y direcciones de un host Linux con:
 
-- **ISP (Proveedor de Servicios de Internet):** Esta es la compañía a la que pagas por tu conexión a internet, vinculando tu hogar con el internet global.
-- **Router:** El router es el centro neurálgico de tu red. Dirige el tráfico, permitiendo que cada máquina se conecte a internet y se comunique entre sí. Los routers modernos soportan conexiones tanto cableadas (Ethernet) como inalámbricas.
+```bash
+$ ip address show
+```
 
-### Entendiendo los Tipos de Red WAN LAN y WLAN
+Que una interfaz esté presente o administrativamente activa no demuestra que haya conectividad de extremo a extremo.
 
-Las redes se categorizan por su escala. En una configuración doméstica, encontrarás estos tres tipos comunes, que forman la base del conocimiento de **conceptos básicos de red**:
+:::single-choice{#network-basics-host-interface} ¿Qué es una interfaz de red?
 
-- **WAN (Red de Área Amplia):** Este término describe la vasta red fuera de tu hogar, conectando tu router con el internet más amplio.
-- **WLAN (Red de Área Local Inalámbrica):** Esta es tu red Wi-Fi. Conecta dispositivos inalámbricos, como portátiles y teléfonos inteligentes, a tu router sin cables físicos.
-- **LAN (Red de Área Local):** Esto se refiere a la parte cableada de tu red, conectando dispositivos como PCs de escritorio o consolas de juegos a tu router a través de un cable Ethernet.
+::option[Una copia permanente de todos los paquetes de Internet.]{#network-basics-interface-copy explanation="Una interfaz transmite y recibe tráfico; no es un archivo global de paquetes."}
+::option[El punto de conexión de un host a una red o un enlace virtual.]{#network-basics-interface-attachment .correct explanation="Un host puede tener varias interfaces físicas o virtuales con configuraciones independientes."}
+::option[Un alias legible de una factura del proveedor de Internet.]{#network-basics-interface-invoice explanation="Las etiquetas de facturación no están relacionadas con las conexiones de red de un host."}
+:::
 
-### Hosts y Paquetes
+## Redes locales
 
-En cualquier red, cada dispositivo conectado—ya sea una computadora, teléfono o servidor—se conoce como **host**.
+Una red de área local, o LAN, abarca un entorno limitado como una vivienda, una oficina o un segmento de un centro de datos. Los conmutadores Ethernet reenvían tramas entre puertos de un enlace local. Una red LAN inalámbrica, o WLAN, utiliza tecnología de enlace inalámbrico. Las interfaces cableadas e inalámbricas pueden seguir perteneciendo a la misma subred IP cuando un puente o un punto de acceso las une.
 
-Todos los datos transmitidos a través de estas redes, desde páginas web hasta correos electrónicos, se dividen en pequeñas piezas llamadas **paquetes**. A lo largo de la sección "Networking Nomad", aprenderás en detalle cómo viajan estos paquetes hacia y desde diferentes hosts, completando su viaje a través de internet.
+:::single-choice{#network-basics-wlan-relationship} ¿Qué relación tiene una WLAN con una LAN?
 
-## Exercise
+::option[Una WLAN siempre es un Internet global independiente.]{#network-basics-wlan-global explanation="Es una red local que utiliza tecnología de enlace inalámbrico."}
+::option[Una WLAN es una partición de disco que utilizan los routers.]{#network-basics-wlan-disk explanation="El término describe redes, no la disposición del almacenamiento."}
+::option[Una WLAN es una modalidad inalámbrica de red de área local.]{#network-basics-wlan-local .correct explanation="Los enlaces inalámbricos y cableados pueden incluso unirse mediante un puente en un único dominio de difusión local."}
+:::
 
-¡La práctica hace al maestro! La experiencia práctica es crucial para dominar los conceptos de **conceptos básicos de red**. Los siguientes laboratorios te ayudarán a reforzar tu comprensión de los componentes de red y cómo se comunican los hosts:
+## Routers y redes más amplias
 
-1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practica la identificación de información de direccionamiento de red para hosts, incluyendo direcciones MAC e IP, usando el comando `ip a`.
-2. **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprende a probar el alcance de la red e identificar diferentes tipos de direcciones IP, esencial para entender cómo se conectan los hosts.
-3. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Comprende cómo interactúan los hosts en una red observando el Protocolo de Resolución de Direcciones (ARP) y probando la conectividad con `ping`.
+Un router reenvía paquetes de la capa de red entre redes IP según su tabla de enrutamiento. Un dispositivo doméstico suele combinar enrutamiento, conmutación, acceso Wi-Fi, cortafuegos, NAT y DHCP, pero siguen siendo funciones distintas.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de hosts, direccionamiento y conectividad básica en escenarios reales y a ganar confianza con los fundamentos de redes.
+Una red de área amplia, o WAN, abarca límites geográficos o administrativos mayores. Un proveedor de servicios de Internet puede conectar la red de un cliente con otras redes, pero «WAN» no significa simplemente todos los dispositivos situados fuera de una vivienda.
 
-## Quiz Question
+:::single-choice{#network-basics-router-role} ¿Cuál es la función que define a un router?
 
-¿Cómo se conoce a la red de área local? Por favor, responde en inglés, prestando atención a las mayúsculas.
+::option[Reenviar paquetes entre redes de la capa de red.]{#network-basics-forward-networks .correct explanation="El enrutamiento selecciona los siguientes saltos a través de los límites de las redes IP."}
+::option[Almacenar obligatoriamente todos los archivos de los usuarios como copia de seguridad.]{#network-basics-router-backup explanation="La conservación de archivos no es la función que define el enrutamiento."}
+::option[Traducir todos los nombres de host sin consultar DNS.]{#network-basics-router-hostnames explanation="La resolución de nombres y el reenvío de paquetes son funciones independientes."}
+:::
 
-## Quiz Answer
+## Paquetes, tramas y flujos
 
-LAN
+Las aplicaciones producen datos que las capas de protocolos dividen y encapsulan para transmitirlos. IP transporta paquetes entre redes; un enlace local lleva cada paquete dentro de una trama específica de su tecnología. Normalmente, los routers sustituyen el encapsulado de la capa de enlace en cada salto mientras siguen reenviando el paquete IP.
+
+Una conversación puede incluir muchos paquetes en ambas direcciones. Las pérdidas, los cambios de orden, la fragmentación, las retransmisiones y los cambios de ruta hacen que un único paquete capturado rara vez describa toda la transacción de una aplicación.
+
+:::single-choice{#network-basics-router-frame} ¿Qué ocurre normalmente con el encapsulado de la capa de enlace en el salto de un router?
+
+::option[El router elimina el encapsulado entrante y crea otro para el siguiente enlace.]{#network-basics-reframe .correct explanation="El paquete IP reenviado se transporta en una trama nueva de la capa de enlace apropiada para la interfaz de salida."}
+::option[La misma trama Ethernet atraviesa todo Internet sin cambiar.]{#network-basics-same-frame explanation="Las tramas están limitadas a sus enlaces y se sustituyen en los saltos enrutados."}
+::option[La aplicación elimina permanentemente las direcciones IP.]{#network-basics-delete-ip explanation="El enrutamiento depende de las direcciones de la capa de red."}
+:::
+
+## Resumen
+
+Ahora puedes describir los componentes principales de una ruta de red básica.
+
+1. Distingue los hosts de sus interfaces físicas y virtuales.
+2. Reconoce las modalidades cableadas e inalámbricas de las redes locales.
+3. Separa el enrutamiento de las demás funciones de un dispositivo doméstico combinado.
+4. Distingue las tramas de enlace de los paquetes IP enrutados.

@@ -1,67 +1,88 @@
 ---
-index: 2
+lesson_id: "route"
+course_id: "network-config"
 lang: "es"
-title: "Ruta"
-meta_title: "Ruta - Configuración de Red"
-meta_description: "Aprenda a gestionar su tabla de enrutamiento de Linux. Esta guía cubre cómo añadir y eliminar rutas de red usando el comando moderno 'ip route command in linux' y el comando 'route' heredado."
-meta_keywords: "comando ip route en linux, comando ip route linux, añadir ruta, eliminar ruta, tabla de enrutamiento, enrutamiento de red, redes linux, ip route"
+order_index: 2
+title: "route"
+description: "Aprende a inspeccionar, añadir, sustituir, eliminar y comprobar de forma segura rutas de Linux con ip."
+meta_title: "route - Network Config"
+meta_description: "Aprende a gestionar la tabla de enrutamiento de Linux. Esta guía explica cómo añadir y eliminar rutas de red mediante el comando moderno ip route y el comando antiguo route."
+meta_keywords: "comando ip route en linux, comando linux ip route, añadir ruta, eliminar ruta, tabla de enrutamiento, enrutamiento de red, redes linux, ip route"
 ---
 
-## Lesson Content
+Las rutas manuales modifican la forma en que el kernel selecciona una interfaz de salida y un siguiente salto. Un error puede desconectar la máquina o redirigir tráfico sensible, así que inspecciona la ruta efectiva, el propietario de la configuración y la vía de recuperación antes de cambiar el estado.
 
-En Linux, la tabla de enrutamiento dirige el tráfico de red a su destino correcto. Aunque hemos discutido previamente cómo ver esta tabla, también puedes agregar o eliminar rutas manualmente para controlar cómo se reenvían los paquetes de datos. Esto es esencial para configurar configuraciones de red complejas o solucionar problemas de conectividad.
+## Inspeccionar la decisión actual
 
-### Uso del comando route heredado
-
-El comando `route` es una herramienta tradicional para administrar la tabla de enrutamiento. Aunque todavía es funcional, se considera heredado y ahora se prefiere el comando `ip`.
-
-Para agregar una nueva ruta de red, se especifica la dirección de red, la máscara de subred y la puerta de enlace (`gw`):
+Registra las rutas pertinentes y pregunta al kernel cómo llega actualmente al destino:
 
 ```bash
-sudo route add -net 192.168.2.1/23 gw 10.11.12.3
+$ ip -4 route show
+$ ip route get 192.168.2.25
 ```
 
-Para eliminar una ruta, se utiliza la bandera `del` junto con la dirección de red:
+Inspecciona también las reglas de política y las tablas alternativas cuando existan. La consulta de ruta es una prueba local; no envía tráfico.
+
+:::single-choice{#route-get-before-change} ¿Por qué debes ejecutar `ip route get DESTINATION` antes de cambiar una ruta?
+
+::option[Registra la decisión local actual para compararla y poder revertirla.]{#route-get-baseline .correct explanation="La interfaz seleccionada, el siguiente salto y el origen ayudan a definir el cambio previsto."}
+::option[Reserva permanentemente el destino en todos los routers.]{#route-get-reserves explanation="El comando realiza una consulta local y no cambia ningún estado remoto."}
+::option[Deshabilita todas las reglas de enrutamiento por políticas.]{#route-get-disables-policy explanation="La consulta evalúa la política en lugar de eliminarla."}
+:::
+
+## Añadir o sustituir una ruta
+
+Añade una ruta al prefijo canónico a través de un siguiente salto accesible:
 
 ```bash
-sudo route del -net 192.168.2.1/23
+$ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-### Gestión moderna de rutas con ip route
+La puerta de enlace debe ser accesible según el enlace pertinente o mediante un diseño explícito y válido que la considere en el enlace. `add` falla cuando ya existe una ruta equivalente. `replace` crea o cambia una ruta, lo que resulta útil para configuraciones idempotentes, pero puede sobrescribir un estado que funciona; revisa primero el objetivo exacto.
 
-El comando `ip route` es la herramienta moderna y más potente para la configuración de red en Linux. Ofrece un conjunto de opciones más consistente y extenso para administrar interfaces de red y rutas. Usar el **comando ip route de linux** es la práctica recomendada para los sistemas actuales.
+:::single-choice{#route-add-existing} ¿Qué suele ocurrir si `ip route add` se dirige a una ruta que ya existe?
 
-Para agregar una ruta con el **comando ip route en linux**, se utiliza la acción `add`, especificando la red de destino y el siguiente salto a través de la puerta de enlace:
+::option[Elimina silenciosamente el prefijo de destino anterior.]{#route-add-deletes explanation="Add normalmente informa de un error de objeto existente en lugar de sustituirlo."}
+::option[Falla en lugar de sustituir la ruta existente.]{#route-add-fails .correct explanation="Utiliza deliberadamente `replace` solo después de revisar qué entrada cambiará."}
+::option[Reinicia la puerta de enlace seleccionada.]{#route-add-reboots explanation="La configuración local de rutas no puede solicitar así un reinicio remoto."}
+:::
+
+## Eliminar con precisión
+
+Indica los atributos exactos de la ruta al eliminarla cuando pueda haber más de un candidato o tabla:
 
 ```bash
-ip route add 192.168.2.1/23 via 10.11.12.3
+$ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-Para eliminar una ruta, se puede usar la acción `delete`. Se puede especificar la ruta completa o solo la red de destino si es única:
+Una eliminación que solo indique el destino puede coincidir con más elementos de los previstos o ser ambigua. Captura antes de eliminarla el comando original necesario para restaurar la ruta.
 
-```bash
-# Eliminar especificando la ruta completa
-ip route delete 192.168.2.1/23 via 10.11.12.3
+:::single-choice{#route-delete-precision} ¿Por qué debes incluir el siguiente salto y el dispositivo al eliminar una ruta?
 
-# O, eliminar especificando solo el destino
-ip route delete 192.168.2.1/23
-```
+::option[Para identificar con mayor precisión la entrada prevista.]{#route-delete-exact .correct explanation="Los atributos explícitos reducen la posibilidad de eliminar otra ruta con el mismo prefijo."}
+::option[Para eliminar también el adaptador de red físico.]{#route-delete-adapter explanation="Eliminar una ruta no suprime el objeto de enlace del kernel."}
+::option[Para borrar la zona DNS del destino.]{#route-delete-dns explanation="El enrutamiento y los datos DNS autoritativos son sistemas independientes."}
+:::
 
-Dominar el comando `ip route` es una habilidad clave para cualquier administrador de Linux responsable de la gestión de redes.
+## Persistencia y seguridad remota
 
-## Exercise
+Un comando `ip route` solo cambia el estado actual del kernel. NetworkManager, systemd-networkd, netplan, ifupdown, DHCP, los demonios de enrutamiento o la orquestación pueden sustituirlo más adelante. Almacena la ruta en el propietario activo únicamente después de probar su comportamiento durante la ejecución.
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento de red y la asignación de direcciones IP:
+En una máquina remota, conserva una consola independiente y utiliza una reversión que no dependa de la ruta que estás modificando. Después, comprueba la consulta de ruta, el estado de los vecinos, ambas direcciones del tráfico y el servicio real.
 
-1. **[Administrar la asignación de direcciones IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique la configuración de una IP estática, el establecimiento de una puerta de enlace predeterminada y la verificación de la configuración de red usando el comando `ip`.
-2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo la puerta de enlace predeterminada maneja el tráfico remoto y observe las interacciones de la capa de red.
+:::single-choice{#route-runtime-persistence} ¿Qué puede ocurrir con una ruta añadida manualmente después de que se recargue el gestor de red?
 
-Estos laboratorios le ayudarán a aplicar los conceptos de asignación de direcciones IP y enrutamiento en escenarios reales y a ganar confianza con la red de Linux.
+::option[Se convierte para siempre en una función inmutable del kernel.]{#route-manual-immutable explanation="Las rutas de ejecución pueden eliminarse o sustituirse."}
+::option[Aparece automáticamente en todos los hosts de la subred.]{#route-manual-all-hosts explanation="El comando solo cambia el espacio de nombres de red actual."}
+::option[Puede desaparecer si no figura en la política persistente.]{#route-manual-disappears .correct explanation="El gestor reconcilia el estado del kernel a partir de sus perfiles configurados."}
+:::
 
-## Quiz Question
+## Resumen
 
-Cuando se utiliza el comando `route` heredado, ¿cuál es la bandera utilizada para eliminar una ruta? Por favor, responda en inglés, prestando atención a las mayúsculas y minúsculas.
+Ahora puedes realizar un cambio acotado y recuperable en una ruta de Linux.
 
-## Quiz Answer
-
-del
+1. Captura las rutas, las reglas y la consulta efectiva actuales.
+2. Usa un prefijo canónico y un siguiente salto accesible.
+3. Distingue entre añadir y sustituir deliberadamente.
+4. Elimina la ruta exacta y conserva un comando de restauración.
+5. Hazla persistente mediante el gestor activo y comprueba ambas direcciones.

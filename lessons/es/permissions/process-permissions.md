@@ -1,47 +1,74 @@
 ---
-index: 7
+lesson_id: "process-permissions"
+course_id: "permissions"
 lang: "es"
-title: "Permisos de proceso"
-meta_title: "Permisos de proceso - Permisos"
-meta_description: "Aprende sobre los permisos de proceso de Linux, incluyendo los ID de usuario reales, efectivos y guardados. Comprende cómo los UIDs impactan la seguridad y la ejecución de comandos. ¡Empieza a aprender hoy mismo!"
-meta_keywords: "permisos de proceso de Linux, UID real, UID efectivo, UID guardado, seguridad de Linux, comando passwd, tutorial de Linux, Linux para principiantes"
+order_index: 7
+title: "Permisos de procesos"
+description: "Aprende cómo los ID de usuario real, efectivo y guardado ayudan a los procesos de Linux a identificar al llamador y gestionar privilegios."
+meta_title: "Permisos de procesos - Permisos"
+meta_description: "Aprende los permisos de procesos de Linux y los ID de usuario real, efectivo y guardado. Comprende cómo influyen en la autorización y los cambios de privilegios."
+meta_keywords: "permisos de procesos Linux, UID real, UID efectivo, UID guardado, seguridad Linux, tutorial Linux"
 ---
 
-## Lesson Content
+Las comprobaciones de autorización de Linux actúan sobre credenciales de procesos, no directamente sobre un nombre de usuario escrito. Un proceso tiene varios ID de usuario y grupo relacionados, cada uno con una función distinta. La mayoría de los programas normales empiezan con identidades coincidentes, mientras que los programas con privilegios pueden usar deliberadamente valores diferentes.
 
-Pasemos un momento a los permisos de proceso. ¿Recuerdas que te dije que cuando ejecutas el comando `passwd` con el bit de permiso SUID habilitado, ejecutarás el programa como root? Eso es cierto. Sin embargo, ¿significa eso que, dado que eres temporalmente root, puedes modificar las contraseñas de otros usuarios? ¡No, afortunadamente no!
+## ID de usuario real
 
-Esto se debe a los muchos UIDs que Linux implementa. Hay tres UIDs asociados con cada proceso:
+El ID de usuario real identifica la cuenta que inició el proceso o su sesión de inicio antecesora. Los programas pueden consultarlo para distinguir al llamador de una identidad efectiva elevada.
 
-Cuando inicias un proceso, se ejecuta con los mismos permisos que el usuario o grupo que lo ejecutó. Esto se conoce como **ID de usuario efectivo**. Este UID se utiliza para otorgar derechos de acceso a un proceso. Así que, naturalmente, si Bob ejecutó el comando `touch`, el proceso se ejecutaría como él, y cualquier archivo que creara sería de su propiedad.
+En una orden normal iniciada por el usuario Bob, el ID de usuario real suele coincidir con el UID de Bob. Crear otro proceso no crea una cuenta nueva ni cambia por sí solo esta identidad.
 
-Hay otro UID, llamado **ID de usuario real**. Este es el ID del usuario que inició el proceso. Estos se utilizan para rastrear quién es el usuario que inició el proceso.
+:::single-choice{#process-permissions-real-uid} ¿Qué identifica normalmente el ID de usuario real de un proceso?
 
-Un último UID es el **ID de usuario guardado**. Esto permite que un proceso cambie entre el UID efectivo y el UID real, y viceversa. Esto es útil porque no queremos que nuestro proceso se ejecute con privilegios elevados todo el tiempo; es una buena práctica usar privilegios especiales en momentos específicos.
+::option[El propietario del archivo abierto más recientemente.]{#process-permissions-real-opened-file explanation="Abrir un archivo no sustituye el UID real del proceso por el propietario de ese archivo."}
+::option[La cuenta asociada al llamador original del proceso.]{#process-permissions-real-caller .correct explanation="El UID real registra la identidad de usuario llamadora heredada cuando se inicia el proceso."}
+::option[El grupo seleccionado para todas las comprobaciones de acceso.]{#process-permissions-real-group explanation="Un UID es una identidad de usuario; las comprobaciones de grupo usan credenciales de grupo separadas."}
+:::
 
-Ahora vamos a unir todo esto observando el comando `passwd` una vez más.
+## ID de usuario efectivo
 
-Al ejecutar el comando `passwd`, tu UID efectivo es tu ID de usuario; digamos que es 500 por ahora. Oh, pero espera, recuerda que el comando `passwd` tiene el permiso SUID habilitado. Así que cuando lo ejecutas, tu UID efectivo ahora es 0 (0 es el UID de root). Ahora este programa puede acceder a archivos como root.
+El ID de usuario efectivo es la credencial de usuario que se emplea en muchas comprobaciones de sistema de archivos y privilegios. Normalmente coincide con el UID real. Al ejecutar un programa setuid respetado, puede inicializarse en su lugar a partir del propietario del ejecutable.
 
-Digamos que pruebas un poco de poder y quieres modificar la contraseña de Sally. Sally tiene un UID de 600. Bueno, no tendrás suerte. Afortunadamente, el proceso también tiene tu UID real, en este caso 500. Sabe que tu UID es 500 y, por lo tanto, no puedes modificar la contraseña del UID 600. (Esto, por supuesto, siempre se omite si eres un superusuario en una máquina y puedes controlar y cambiar todo).
+Por ejemplo, una utilidad de contraseñas cuidadosamente diseñada puede ejecutarse con un UID efectivo elevado para actualizar datos protegidos de autenticación. El programa todavía debe aplicar la política según el llamador, la cuenta solicitada, los resultados de PAM y otro contexto. Poseer un UID efectivo no hace que todas las operaciones solicitadas sean automáticamente legítimas.
 
-Dado que ejecutaste `passwd`, iniciará el proceso usando tu UID real y guardará el UID del propietario del archivo (UID efectivo), para que puedas cambiar entre los dos. No es necesario modificar todos los archivos con acceso de root si no es necesario.
+:::single-choice{#process-permissions-effective-uid} ¿Qué ID de usuario se usa en muchas decisiones de control de acceso realizadas en nombre de un proceso?
 
-La mayoría de las veces, el UID real y el UID efectivo son los mismos, pero en casos como el comando `passwd`, cambiarán.
+::option[El ID de usuario efectivo.]{#process-permissions-effective-active .correct explanation="El UID efectivo es la credencial de usuario activa que se consulta en muchas comprobaciones de autorización."}
+::option[Únicamente el ID de usuario guardado.]{#process-permissions-effective-saved-only explanation="El ID guardado permite transiciones de credenciales, pero no suele ser la identidad activa en las comprobaciones de acceso."}
+::option[El UID almacenado en el directorio actual.]{#process-permissions-effective-directory explanation="La propiedad del sistema de archivos es metadato de los objetos, no la credencial activa de usuario del proceso."}
+:::
 
-## Exercise
+## ID set-user-ID guardado
 
-¡La práctica hace al maestro! Comprender los ID de usuario y los permisos de proceso es crucial para la seguridad y administración de Linux. Aquí hay algunos laboratorios prácticos para reforzar tu comprensión de la gestión de usuarios y grupos, que forma la base de cómo funcionan los UIDs:
+El ID set-user-ID guardado permite que un programa conserve una identidad que puede restaurar después, con sujeción a las reglas de las llamadas al sistema. Un programa con privilegios puede cambiar temporalmente su UID efectivo a un valor menos privilegiado, realizar trabajo normal con autoridad reducida y restaurar la identidad guardada únicamente para una operación de ámbito reducido.
 
-1. **[Grupo de usuarios de Linux y permisos de archivo](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprende conceptos esenciales de gestión de usuarios y grupos de Linux, incluyendo la creación y gestión de usuarios, la exploración de membresías de grupo, la comprensión de los permisos de archivo y la manipulación de la propiedad de los archivos. Este laboratorio proporciona experiencia práctica en la seguridad de un entorno Linux multiusuario.
-2. **[Agregar nuevo usuario y grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - En este desafío, simularás la adición de nuevos miembros del equipo a un entorno de servidor creando nuevas cuentas de usuario, configurando grupos personalizados y gestionando membresías de grupo. Esto pondrá a prueba tus habilidades en la administración de usuarios y grupos de Linux, esenciales para los administradores de sistemas y profesionales de DevOps.
+Esto es más seguro que mantener autoridad elevada durante todo el programa, pero solo si se implementa correctamente. Los programas deben descartar los privilegios de forma permanente cuando ya no sean necesarios y comprobar si falla cada llamada que cambia credenciales.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de gestión de usuarios y grupos en escenarios reales, construyendo una base sólida para comprender cómo los UIDs controlan el acceso y los permisos en Linux.
+:::single-choice{#process-permissions-saved-uid} ¿Por qué puede un programa con privilegios conservar un ID set-user-ID guardado?
 
-## Quiz Question
+::option[Para cambiar su identidad efectiva entre fases controladas con y sin privilegios.]{#process-permissions-saved-switch .correct explanation="La identidad guardada puede permitir una reducción temporal de privilegios y una restauración posterior permitida."}
+::option[Para asignar automáticamente ese UID a todos los archivos que lee.]{#process-permissions-saved-file-owner explanation="Leer un archivo no cambia su propiedad al UID guardado del proceso."}
+::option[Para sustituir la base de datos de cuentas del sistema para el proceso.]{#process-permissions-saved-database explanation="Las credenciales de procesos no sustituyen los registros de cuentas ni los datos de servicios de nombres."}
+:::
 
-¿Qué UID decide qué acceso otorgar?
+## Los ID de usuario son solo parte del conjunto de credenciales
 
-## Quiz Answer
+Los procesos también tienen credenciales de grupo reales, efectivas, guardadas y complementarias. Los ID del sistema de archivos, las capacidades, los espacios de nombres, los módulos de seguridad, las ACL, las opciones de montaje y las políticas de servicios pueden afectar también a la autorización. Por tanto, «el UID lo permite» suele ser solo parte de una explicación completa.
 
-effective
+Usa herramientas como `ps` y `/proc/PROCESS/status` para consultar las credenciales en Linux. La disponibilidad de los campos y los formatos de visualización varían, así que consulta la documentación local y no cambies credenciales simplemente para experimentar en un sistema compartido.
+
+:::single-choice{#process-permissions-ordinary-identities} Para la mayoría de las órdenes normales sin transición de privilegios, ¿cómo se comparan los UID real y efectivo?
+
+::option[El UID efectivo siempre es cero.]{#process-permissions-effective-root explanation="Las órdenes normales no reciben automáticamente el UID de root."}
+::option[El UID real siempre coincide con el propietario del archivo ejecutable.]{#process-permissions-real-file-owner explanation="El propietario del ejecutable afecta al comportamiento setuid, no al UID real normal."}
+::option[Normalmente coinciden con el UID del usuario que invoca la orden.]{#process-permissions-uids-match .correct explanation="Sin setuid ni un cambio explícito de credenciales, los procesos normales suelen ejecutarse con identidades real y efectiva coincidentes."}
+:::
+
+## Resumen
+
+Ahora puedes explicar por qué un proceso de Linux puede llevar varias identidades de usuario.
+
+1. Usa el UID real para identificar al llamador original.
+2. Relaciona el UID efectivo con las comprobaciones activas de autorización.
+3. Usa la identidad guardada para comprender transiciones controladas de privilegios.
+4. Considera los ID de grupo y los mecanismos de seguridad adicionales como parte de la decisión completa.

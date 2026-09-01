@@ -1,60 +1,85 @@
 ---
-index: 6
+lesson_id: "process-signals"
+course_id: "processes"
 lang: "zh"
+order_index: 6
 title: "信号"
+description: "学习 Linux 如何生成、阻塞、传递和处理信号，以控制进程并通知事件。"
 meta_title: "信号 - 进程"
 meta_description: "探索 Linux 信号的基础知识，这是进程管理的关键机制。了解 Linux 进程信号，如 SIGTERM（信号 15 Linux）和 SIGKILL 的工作原理，并理解它们的操作系统信号代码。"
 meta_keywords: "linux 信号，linux 进程信号，信号 15 linux, os 信号代码，SIGKILL, SIGTERM, SIGINT, 进程管理，linux 教程"
 ---
 
-## Lesson Content
+信号是传递给进程或特定线程的异步通知。信号用于报告事件和请求操作，但与面向数据的进程间通信机制相比，只能携带有限信息。
 
-在 Linux 中，信号是发送给进程的软件中断，用于通知它发生了重要事件。理解**linux signals**是有效管理进程和系统行为的基础。
+## 信号的来源
 
-### 信号的目的
+信号可以来自多个地方：
 
-信号是进程间通信（IPC）的主要方式之一。它们有多种用途：
+- 终端可以为 `Ctrl-C` 生成 `SIGINT`，为 `Ctrl-Z` 生成 `SIGTSTP`，并发送给前台进程组。
+- 线程进行无效内存引用时，内核可以生成 `SIGSEGV` 等同步信号。
+- 进程可以向另一个进程或进程组发送获准信号。
+- 定时器、子进程状态变化和终端挂断可以生成其他信号。
 
-- **用户交互**：用户可以通过输入特殊的终端字符（如 `Ctrl-C` (SIGINT) 或 `Ctrl-Z` (SIGTSTP)）来中断或暂停前台进程。
-- **内核通知**：内核可以向进程发送信号，以通知它发生了硬件或软件问题，例如非法内存访问 (SIGSEGV)。
-- **进程管理**：系统管理员和其他进程使用信号来管理其他进程的生命周期，例如请求终止或重新加载配置。
+发送者必须拥有适当权限，通常由凭据或 capabilities 决定。因此，信号是由内核中介的控制接口，而不是任意用户之间不受限制的消息。
 
-### 信号生命周期
+:::single-choice{#process-signals-ctrl-c} 终端通常会为 `Ctrl-C` 生成哪个信号？
 
-当一个事件生成信号时，它首先被传递给目标进程。该信号处于“待处理”状态，直到内核运行该进程。当进程被调度时，信号被传递。然而，进程具有信号掩码，可以配置该掩码来阻止特定信号的传递。
+::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` 通常与 `Ctrl-Z` 等终端暂停字符相关。"}
+::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` 会恢复已停止进程，而不是表示键盘中断。"}
+::option[`SIGINT`]{#process-signals-ctrl-c-int .correct explanation="终端中断字符通常会为前台进程组生成 `SIGINT`。"}
+:::
 
-当信号被传递时，进程可以采取以下几种操作之一：
+## 处置方式和默认操作
 
-- **忽略信号**：进程简单地丢弃信号并继续执行。
-- **捕获信号**：进程执行一个称为信号处理程序的自定义函数来响应该事件。
-- **执行默认操作**：如果没有被捕获或忽略，则执行默认操作。对于许多信号，这意味着终止进程。
-- **阻塞信号**：如果信号在进程的信号掩码中，它将保持待处理状态，直到被解除阻塞。
+大多数信号都有进程范围的处置方式，从三种响应中选择一种：
 
-### 常见的 Linux 进程信号
+- 执行该信号定义的默认操作
+- 忽略信号
+- 调用用户安装的处理程序
 
-每个信号都由一个整数定义，但它们几乎总是以其符号名称（即 **os sig code**）来引用，这些名称以 `SIG` 开头。虽然数字在不同架构上可能略有不同，但名称是一致的。以下是一些最常见的 **linux process signals**：
+默认操作各不相同：信号可以终止、终止并创建 core dump、停止、继续，也可以被忽略。捕获 `SIGTERM` 可以让程序开始有序关闭，但处理程序必须遵循严格的异步信号安全规则，程序也仍可能延迟或拒绝退出。
 
-- **SIGHUP (1)**：挂断。通常用于告知守护进程重新加载其配置。
-- **SIGINT (2)**：中断。由 `Ctrl-C` 发送。它是终止进程的请求。
-- **SIGKILL (9)**：杀死。这是一种立即、强制的终止。进程无法捕获、忽略或阻塞此信号。
-- **SIGSEGV (11)**：段错误。表示进程进行了无效的内存引用。
-- **SIGTERM (15)**：终止。这是请求进程终止的标准、礼貌的方式。它是 `kill` 命令发送的默认信号。进程可以捕获此信号以在退出前执行清理工作。这通常被称为 **signal 15 linux**。
-- **SIGSTOP**：停止。暂停进程。与 SIGKILL 一样，它不能被捕获或忽略。
+信号名称比数字更易移植和阅读。虽然常见 Linux 架构使用 15 表示 `SIGTERM`，但除相关标准保证的数字外，不要假设所有信号编号在各处都相同。使用 `kill -l` 检查本地映射。
 
-`SIGTERM` (**linux signal 15**) 和 `SIGKILL` 的关键区别在于，`SIGTERM` 是一个可以被处理的请求，而 `SIGKILL` 是一个立即销毁进程的命令。
+:::single-choice{#process-signals-term-behavior} 为什么进程可以优雅地响应 `SIGTERM`？
 
-## Exercise
+::option[它可以为该信号安装处理程序。]{#process-signals-term-handler .correct explanation="与 `SIGKILL` 不同，`SIGTERM` 可以被捕获，让程序启动自己的关闭逻辑。"}
+::option[内核始终自动保存每个打开的文档。]{#process-signals-term-kernel-save explanation="应用程序清理取决于程序代码；内核无法理解并保存任意文档状态。"}
+::option[`SIGTERM` 默认不能导致终止。]{#process-signals-term-no-default explanation="进程未改变处置方式时，其默认操作就是终止。"}
+:::
 
-熟能生巧！这是一个实践实验室，旨在加强您对进程以及信号如何用于与进程交互的理解：
+## 被阻塞和待处理的信号
 
-1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 在此实验室中，您将学习管理和监控 Linux 系统上进程的基本技能。您将探索如何与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。使用 `kill` 终止进程是发送信号的直接应用。
+线程拥有信号掩码，可以暂时阻塞选定信号的传递。已经生成但被阻塞的信号会保持待处理状态，直到可以传递，但仍受标准信号和实时信号规则约束。同一类型的标准信号可能合并，而不是按每次出现逐个排队。
 
-此实验室将帮助您在实际场景中应用进程管理和信号底层使用的概念，并建立对 Linux 系统管理的信心。
+在多线程进程中，面向进程的信号可以传递给未阻塞它的适当线程；面向线程的信号则以指定线程为目标。因此，正确的信号设计不能只检查“进程是否阻塞了它”。
 
-## Quiz Question
+:::single-choice{#process-signals-blocked-state} 目标阻塞一个可阻塞信号时，生成该信号通常会发生什么？
 
-哪个信号是不可阻塞的？请用英语回答，使用确切的信号名称并注意大小写。
+::option[它会保持待处理，直到可以传递。]{#process-signals-pending .correct explanation="阻塞会推迟处理；解除阻塞后，待处理信号可以传递。"}
+::option[它会自动转换为 `SIGKILL`。]{#process-signals-convert-kill explanation="内核不会把普通被阻塞信号升级为不可捕获信号。"}
+::option[它会改变目标进程的用户 ID。]{#process-signals-change-uid explanation="信号掩码影响传递，不会改变进程凭据。"}
+:::
 
-## Quiz Answer
+## 无法处理的信号
 
-SIGKILL
+`SIGKILL` 会终止进程，`SIGSTOP` 会停止进程。这两个信号都不能被捕获、忽略或阻塞。这保证内核保留最终控制权，但也意味着 `SIGKILL` 不会给应用层清理留下机会。
+
+即使是 `SIGKILL`，从观察者角度看也可能不会让任务立即消失。任务可能正在等待不可中断的内核操作，终止后其父进程仍需回收状态。
+
+:::single-choice{#process-signals-uncatchable-pair} 哪一对信号不能被捕获、忽略或阻塞？
+
+::option[`SIGKILL` 和 `SIGSTOP`]{#process-signals-kill-stop .correct explanation="内核保留这两个信号，使进程无法覆盖或推迟其基本操作。"}
+::option[`SIGINT` 和 `SIGTERM`]{#process-signals-int-term explanation="两者都可以安装用户处理程序，也可以被阻塞。"}
+::option[`SIGHUP` 和 `SIGCONT`]{#process-signals-hup-cont explanation="这些信号具有特殊语义，但并非不可捕获的一对。"}
+:::
+
+## 总结
+
+现在，你可以说明 Linux 信号处理的主要阶段和限制。
+
+1. 识别由终端、内核和进程生成的信号。
+2. 区分默认操作、忽略信号和处理程序。
+3. 把阻塞与待处理传递及线程掩码联系起来。
+4. 记住 `SIGKILL` 和 `SIGSTOP` 无法被处理或阻塞。

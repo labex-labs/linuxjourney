@@ -1,48 +1,85 @@
 ---
-index: 5
+lesson_id: "classless-interdomain-routing-cidr"
+course_id: "subnetting"
 lang: "en"
+order_index: 5
 title: "CIDR"
+description: "Learn how CIDR prefixes represent address ranges, subnet boundaries, and aggregated routes."
 meta_title: "CIDR - Subnetting"
 meta_description: "A guide to CIDR notation. Learn about the CIDR format, cidr subnetting, and how to calculate hosts for your network, including on an Ubuntu server. Master IP addressing with CIDR."
 meta_keywords: "CIDR, cidr subnetting, cidr format, subnet mask, IP addressing, ubuntu server subnet cidr, ubuntu subnet cidr, network prefix, Linux networking"
 ---
 
-## Lesson Content
+Classless Inter-Domain Routing represents an address range with a prefix length instead of relying on historical address classes. CIDR supports variable-sized allocations, subnetting, and route aggregation for IPv4 and IPv6.
 
-CIDR (Classless Inter-Domain Routing) is a method for allocating IP addresses and routing Internet Protocol packets. It offers a more compact and efficient way to represent a subnet mask, replacing the older classful network design. Understanding CIDR is essential for modern network administration.
+## Reading Prefix Notation
 
-### The CIDR Format
+In `10.42.3.17/24`, the first 24 bits are the network prefix and eight bits remain for positions within the range. The canonical network is `10.42.3.0/24`; the supplied host address can still be written with the prefix when configuring an interface.
 
-You will often see networks notated using the **CIDR format**, where an IP address is followed by a slash and a number. For example, a subnet like `10.42.3.0` with a subnet mask of `255.255.255.0` is written as `10.42.3.0/24`. This single notation includes both the network address and the prefix length.
+:::single-choice{#cidr-prefix-meaning} What does `/24` specify in an IPv4 CIDR value?
 
-The number after the slash indicates how many bits of the IP address are used for the network prefix. This is a common task when configuring networking on a system like an **Ubuntu server**, where you might define an interface with an `ubuntu subnet cidr` address.
+::option[Twenty-four leading network-prefix bits.]{#cidr-24-prefix-bits .correct explanation="The remaining eight of the 32 IPv4 bits vary within the prefix."}
+::option[Twenty-four usable addresses in every subnet.]{#cidr-24-addresses explanation="A `/24` contains 256 total address values."}
+::option[The TCP destination port for the network.]{#cidr-24-port explanation="CIDR and transport ports are independent."}
+:::
 
-### CIDR Subnetting and Host Calculation
+## Calculating Range Size
 
-An IPv4 address consists of 4 bytes, which is a total of 32 bits. The CIDR prefix determines the split between the network portion and the host portion of the address. For effective **cidr subnetting**, you need to know how to calculate the number of available hosts.
+IPv4 prefix `/23` leaves nine host bits and therefore covers `2^9 = 512` total addresses. The aligned prefix `123.12.24.0/23` spans:
 
-Let's take the example `123.12.24.0/23`. This means the first 23 bits are the network prefix. To find the number of available hosts:
+```text
+first: 123.12.24.0
+last:  123.12.25.255
+```
 
-1. Subtract the CIDR prefix from the total number of bits (32): `32 - 23 = 9`. This leaves 9 bits for the host portion.
-2. Calculate the total number of addresses in the subnet: `2^9 = 512`.
-3. Subtract 2 from the total. One address is reserved for the network itself, and one is for the broadcast address. This leaves `512 - 2 = 510` usable host addresses.
+In traditional broadcast use, the first is the network address and the last the directed broadcast. Do not apply the “minus two” usable-host shortcut blindly to `/31` point-to-point or `/32` host routes.
 
-Another common example is a `/30` network, which provides `32 - 30 = 2` host bits. This results in `2^2 = 4` total addresses, leaving just 2 usable addresses, making it ideal for point-to-point links.
+:::single-choice{#cidr-23-total} How many total IPv4 addresses does a `/23` contain?
 
-## Exercise
+::option[512]{#cidr-total-512 .correct explanation="Nine variable bits create 2^9 combinations."}
+::option[23]{#cidr-total-23 explanation="The prefix number counts fixed bits, not addresses."}
+::option[510]{#cidr-total-510 explanation="That is a traditional usable count after special endpoints, not the total range size."}
+:::
 
-To master these concepts, practice with some hands-on labs that reinforce your understanding of CIDR, IP addressing, and **cidr subnetting**:
+## Checking Alignment
 
-1. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, including translating CIDR masks and calculating usable hosts.
-2. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign static IP addresses and observe how IP subnets govern direct network communication in a simulated environment.
-3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore IP addressing and network reachability using commands like `ping` and `ip a` to test various IP types and connectivity.
+A prefix must begin on its binary boundary. A `/23` advances in blocks of two in the third octet when earlier octets are fixed, so `123.12.24.0/23` is aligned but `123.12.25.0/23` canonicalizes to the same `123.12.24.0/23` range.
 
-These labs will help you apply the concepts of CIDR and IP addressing in real-world scenarios and build confidence with network configuration.
+:::single-choice{#cidr-canonical-25} What is the canonical `/23` network containing `123.12.25.0`?
 
-## Quiz Question
+::option[`123.12.25.0/23` only, beginning at 25.]{#cidr-25-unaligned explanation="The final prefix bit groups third-octet values in aligned pairs."}
+::option[`123.12.0.0/23`]{#cidr-third-zero explanation="This describes a different `/23` range."}
+::option[`123.12.24.0/23`]{#cidr-24-canonical .correct explanation="Third-octet values 24 and 25 share the same aligned 23-bit prefix."}
+:::
 
-How many bits does an IPv4 address consist of?
+## Aggregating Routes
 
-## Quiz Answer
+CIDR can advertise one aggregate for several contiguous, equally sized, correctly aligned prefixes. For example, `192.0.2.0/25` and `192.0.2.128/25` combine into `192.0.2.0/24`. Aggregation is safe only when the advertising router can correctly reach the complete aggregate or has policy to prevent loops and black holes.
 
-32
+:::single-choice{#cidr-aggregate-two-25s} Which aggregate covers both halves of `192.0.2.0/24`?
+
+::option[`192.0.2.0/26`]{#cidr-aggregate-26 explanation="A `/26` covers only 64 addresses, smaller than either half."}
+::option[`192.0.3.0/25`]{#cidr-aggregate-other explanation="This is outside the stated address range."}
+::option[`192.0.2.0/24`]{#cidr-aggregate-24 .correct explanation="The two contiguous aligned `/25` ranges differ only in the next bit and share the `/24` prefix."}
+:::
+
+## Longest-Prefix Routing
+
+When routes overlap, forwarding normally selects the eligible route with the longest matching prefix. A `/24` route is more specific than a covering `/16`, while a default route `/0` matches only when no more-specific eligible route wins.
+
+:::single-choice{#cidr-route-specificity} For destination `10.42.3.8`, which eligible route is more specific?
+
+::option[`10.42.3.0/24`]{#cidr-route-24 .correct explanation="The 24-bit match is longer and therefore more specific than `/8`."}
+::option[`10.0.0.0/8`]{#cidr-route-8 explanation="This matches, but fixes fewer destination bits."}
+::option[`0.0.0.0/0`]{#cidr-default explanation="The default route is the least specific possible IPv4 prefix."}
+:::
+
+## Summary
+
+You can now use CIDR notation for both address ranges and route selection.
+
+1. Interpret the slash value as a leading prefix-bit count.
+2. Calculate total range size from remaining bits.
+3. Canonicalize a prefix to its aligned network boundary.
+4. Aggregate only contiguous aligned ranges with valid reachability.
+5. Prefer the longest eligible prefix during route lookup.

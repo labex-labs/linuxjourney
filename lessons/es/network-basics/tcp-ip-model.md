@@ -1,67 +1,68 @@
 ---
-index: 3
+lesson_id: "tcp-ip-model"
+course_id: "network-basics"
 lang: "es"
+order_index: 3
 title: "Modelo TCP/IP"
-meta_title: "Modelo TCP/IP - Fundamentos de Redes"
-meta_description: "Explore las capas fundamentales del modelo TCP/IP, la piedra angular de las redes modernas. Aprenda sobre las capas de Aplicación, Transporte, Red y Enlace para una red efectiva con TCP/IP."
+description: "Aprende cómo cooperan las capas de aplicación, transporte, Internet y enlace en el modelo TCP/IP."
+meta_title: "Modelo TCP/IP - Network Basics"
+meta_description: "Explora las capas fundamentales del modelo TCP/IP, base de las redes modernas. Aprende sobre las capas de aplicación, transporte, Internet y enlace para trabajar eficazmente con TCP/IP."
 meta_keywords: "modelo TCP/IP, capas del modelo tcp ip, redes con tcp ip, capas del protocolo tcp, capas de red, TCP, IP, redes Linux, proyecto de protocolo real"
 ---
 
-## Lesson Content
+El modelo TCP/IP organiza en capas funcionales los protocolos que utilizan los hosts de Internet. Una forma habitual de cuatro capas incluye Aplicación, Transporte, Internet y Enlace. Algunos modelos didácticos separan el medio físico de la capa de enlace y, por tanto, muestran cinco capas.
 
-El modelo teórico OSI dio origen a lo que finalmente se convirtió en el modelo TCP/IP, que es la base práctica sobre la que se construye internet. Representa la implementación real de las redes. El modelo TCP/IP utiliza el conjunto de protocolos TCP/IP, al que nos referimos comúnmente como TCP/IP. La **comunicación en red con TCP/IP** efectiva depende de estos protocolos, que trabajan juntos para especificar cómo se deben recopilar, direccionar, transmitir y enrutar los datos. Al examinar las **capas en el modelo TCP/IP**, podemos comprender cómo viaja un paquete de datos a través de la red.
+## Capa de aplicación
 
-### Las Cuatro Capas del Modelo TCP/IP
+Los protocolos de aplicación definen los mensajes y el comportamiento de servicios como HTTP, DNS, SSH y SMTP. Esta capa también incluye muchas responsabilidades de representación y sesión que el modelo OSI trata por separado.
 
-El modelo se divide en cuatro capas distintas, cada una con una función específica. Comprender estas capas es crucial para cualquier **proyecto de protocolo del mundo real** o tarea de solución de problemas de red.
+:::single-choice{#tcpip-http-layer} ¿En qué capa de TCP/IP se clasifica normalmente HTTP?
 
-### Capa de Aplicación
+::option[Internet.]{#tcpip-http-internet explanation="La capa de Internet gestiona el direccionamiento IP y el reenvío de paquetes."}
+::option[Enlace.]{#tcpip-http-link explanation="La capa de enlace transporta el tráfico en un medio local."}
+::option[Aplicación.]{#tcpip-http-application .correct explanation="HTTP define la semántica de las solicitudes y respuestas de una aplicación."}
+:::
 
-Esta es la capa superior del modelo TCP/IP, donde residen las aplicaciones orientadas al usuario y los servicios de red. Determina cómo las aplicaciones, como su navegador web o cliente de correo electrónico, interactúan con los servicios de la capa de transporte para enviar y recibir datos.
+## Capa de transporte
 
-Esta capa utiliza protocolos como:
+Los protocolos de transporte proporcionan comunicación entre los puntos finales de las aplicaciones. TCP ofrece un flujo de bytes fiable y ordenado con control de congestión y de flujo. UDP proporciona datagramas independientes sin las garantías de conexión, orden o retransmisión de TCP. Los números de puerto ayudan a identificar los puntos finales del transporte, pero un número de puerto por sí solo no demuestra qué aplicación está escuchando.
 
-- HTTP (Protocolo de Transferencia de Hipertexto): La base de la comunicación de datos para la World Wide Web.
-- SMTP (Protocolo Simple de Transferencia de Correo): Utilizado para enviar correo electrónico.
+:::single-choice{#tcpip-udp-property} ¿Qué propiedad pertenece a UDP y no a TCP?
 
-### Capa de Transporte
+::option[Datagramas independientes sin garantías de retransmisión integradas.]{#tcpip-udp-datagrams .correct explanation="Las aplicaciones que utilizan UDP deciden si añaden fiabilidad y de qué manera."}
+::option[Entrega garantizada y ordenada de un único flujo de bytes.]{#tcpip-udp-ordered explanation="Esa es una propiedad del servicio TCP, siempre que la conexión tenga éxito."}
+::option[Enrutamiento de paquetes entre redes IP distintas.]{#tcpip-udp-routing explanation="El enrutamiento entre redes es una función de la capa de Internet."}
+:::
 
-La capa de transporte es responsable de la comunicación de extremo a extremo y de la integridad de los datos. Establece cómo se transmitirán los datos, administra los números de puerto y garantiza que los paquetes se entreguen de manera confiable. Las **capas del protocolo TCP** son más prominentes aquí.
+## Capa de Internet
 
-Esta capa utiliza principalmente:
+El Protocolo de Internet transporta paquetes mediante direcciones IP de origen y destino. Los routers examinan la información de enrutamiento y reducen los límites de saltos mientras reenvían los paquetes hacia el destino. ICMP comunica información de control y de errores para el funcionamiento de IP. La entrega sigue siendo de mejor esfuerzo; las capas superiores o las aplicaciones se encargan de cualquier recuperación necesaria.
 
-- TCP (Protocolo de Control de Transmisión): Proporciona entrega confiable, ordenada y con verificación de errores de un flujo de datos. Está orientado a la conexión.
-- UDP (Protocolo de Datagramas de Usuario): Ofrece un método de entrega de datos más rápido y sin conexión que se considera poco confiable porque no garantiza la entrega ni el orden.
+:::single-choice{#tcpip-router-layer} ¿Qué capa proporciona el destino IP que utilizan los routers?
 
-### Capa de Red
+::option[Internet.]{#tcpip-router-internet .correct explanation="La cabecera IP contiene el destino de la capa de red utilizado para el reenvío enrutado."}
+::option[Aplicación.]{#tcpip-router-application explanation="Los mensajes de aplicación se transportan dentro de los datos de protocolos de capas inferiores."}
+::option[Enlace.]{#tcpip-router-link explanation="Las direcciones de enlace seleccionan el destino de la trama del siguiente salto local."}
+:::
 
-Esta capa, también conocida como Capa de Internet, especifica cómo mover paquetes entre hosts y a través de diferentes redes. Su trabajo principal es el direccionamiento y el enrutamiento. La dirección IP asignada en esta capa es fundamental para la identidad de un dispositivo en una red, lo que se relaciona con el concepto de **significado de afiliación IP** al ser parte de una red específica.
+## Capa de enlace y encapsulado
 
-Esta capa utiliza protocolos como:
+La capa de enlace envía un paquete IP a través de un enlace local mediante Ethernet, Wi-Fi, un protocolo punto a punto u otra tecnología. A medida que los datos de la aplicación descienden, cada capa añade la información necesaria para su ámbito. En el receptor, las capas validan y retiran su propio encapsulado antes de entregar los datos hacia arriba.
 
-- IP (Protocolo de Internet): Dirige paquetes desde una máquina de origen a una máquina de destino.
-- ICMP (Protocolo de Mensajes de Control de Internet): Utilizado para enviar mensajes de error e información operativa, como con el comando `ping`.
+Las cabeceras de enlace normalmente cambian en cada salto enrutado; las conversaciones de transporte y aplicación son de extremo a extremo salvo que un dispositivo intermedio las termine o transforme.
 
-### Capa de Enlace
+:::single-choice{#tcpip-link-scope} ¿Cuál es el ámbito normal de una trama de la capa de enlace?
 
-También conocida como Capa de Interfaz de Red, esta capa especifica cómo enviar datos a través de una pieza física de hardware. Maneja la transmisión de paquetes de datos en el segmento de red local, como a través de Ethernet, Wi-Fi o cables de fibra óptica.
+::option[Un enlace o salto local.]{#tcpip-one-link .correct explanation="Un router elimina el encapsulado entrante y crea otro para el siguiente enlace."}
+::option[Todas las sesiones de aplicaciones de Internet global.]{#tcpip-global-frame explanation="Las tramas no permanecen sin cambios al atravesar redes enrutadas."}
+::option[Únicamente la memoria del proceso de origen.]{#tcpip-process-memory explanation="Las tramas se transmiten a través de un enlace de red."}
+:::
 
-Los protocolos enumerados anteriormente no son exhaustivos, y encontrará muchos otros. En las siguientes lecciones, profundizaremos en cada una de estas capas para ver cómo viaja un paquete a través de la red desde la perspectiva del modelo TCP/IP.
+## Resumen
 
-## Exercise
+Ahora puedes situar funciones habituales de Internet dentro del modelo TCP/IP.
 
-¡La práctica hace la perfección! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del modelo TCP/IP y los fundamentos de redes:
-
-1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique la identificación de información clave de direccionamiento de red como direcciones MAC e IP usando el comando `ip a`, que es fundamental para comprender las capas de red y enlace de datos del modelo TCP/IP.
-2. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo los comandos `ping` y `arp` demuestran la interacción entre las capas de red y enlace de datos, proporcionando una visión práctica de cómo se comunican los dispositivos dentro de la pila TCP/IP.
-3. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Obtenga experiencia práctica simulando la conectividad de red entre nodos Linux, asignando direcciones IP y probando la comunicación, aplicando directamente conceptos relacionados con la capa de red del modelo TCP/IP.
-
-Estos laboratorios le ayudarán a aplicar los conceptos del modelo TCP/IP en escenarios reales y a ganar confianza con la configuración y solución de problemas de red.
-
-## Quiz Question
-
-¿Cuál es la capa superior del modelo TCP/IP? (Responda en inglés. Tenga en cuenta que la respuesta distingue entre mayúsculas y minúsculas.)
-
-## Quiz Answer
-
-Application
+1. Asocia los protocolos de servicio con la capa de aplicación.
+2. Distingue los flujos TCP de los datagramas UDP.
+3. Sitúa el direccionamiento y el enrutamiento IP en la capa de Internet.
+4. Trata el encapsulado de enlace como propio del salto local.

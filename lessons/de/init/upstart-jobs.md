@@ -1,79 +1,114 @@
 ---
-index: 4
+lesson_id: "upstart-jobs"
+course_id: "init"
 lang: "de"
-title: "Upstart Jobs"
-meta_title: "Upstart Jobs - Init"
-meta_description: "Ein Leitfaden zur Verwaltung von Diensten mit Upstart-Jobs in einer Linux-Umgebung. Lernen Sie, das initctl-Dienstprogramm zu verwenden, um Jobs auf einem Upstart-Linux-System aufzulisten, zu starten, zu stoppen und neu zu starten."
-meta_keywords: "Upstart Jobs, initctl, Upstart Linux, Linux Dienste, Systemadministration, Init-System, Linux Tutorial"
+order_index: 4
+title: "Upstart-Jobs"
+description: "Erfahre, wie du Jobs auf einem bestätigten älteren Upstart-System mit `initctl` untersuchst und steuerst."
+meta_title: "Upstart-Jobs – Init"
+meta_description: "Eine Anleitung zur Verwaltung von Diensten mit Upstart-Jobs in einer Linux-Umgebung. Lerne, mit initctl Jobs auf einem Upstart-Linux-System aufzulisten, zu starten, zu stoppen und neu zu starten."
+meta_keywords: "Upstart-Jobs, initctl, Upstart Linux, Linux-Dienste, Systemadministration, init-System, Linux-Tutorial"
 ---
 
-## Lesson Content
+`initctl` kommuniziert mit einem laufenden Upstart-init-Daemon. Verwende es erst, nachdem du bestätigt hast, dass im betreffenden PID-Namensraum tatsächlich Upstart läuft; nutze auf einem aktuellen systemd-Host stattdessen die nativen Werkzeuge von systemd.
 
-Upstart ist ein ereignisbasiertes Init-System, das in einigen **Upstart Linux**-Distributionen zur Verwaltung von Diensten und Aufgaben während des Bootvorgangs und im laufenden Betrieb verwendet wird. Es arbeitet über ein System von Jobs und Ereignissen. Obwohl die Verfolgung des Ursprungs jedes Ereignisses komplex sein kann und oft erfordert, dass Sie Jobkonfigurationen in `/etc/init` untersuchen, müssen Sie diese Jobs häufiger direkt über die Befehlszeile verwalten. Das Dienstprogramm `initctl` bietet hierfür eine Reihe von Befehlen.
+## Jobstatus auflisten und lesen
 
-### Anzeigen des Jobstatus
+Liste bekannte Jobs und Instanzen auf:
 
-Um eine Liste aller bekannten Upstart-Jobs und ihrer aktuellen Zustände anzuzeigen, verwenden Sie den Befehl `list`.
-
-```plaintext
-initctl list
-
-shutdown stop/waiting
-console stop/waiting
-...
+```bash
+$ initctl list
 ```
 
-Die Ausgabe zeigt den Jobnamen, sein Ziel und seinen aktuellen Status. Im Beispiel `shutdown stop/waiting` ist der Jobname `shutdown`, sein Ziel ist `stop` und sein aktueller Status ist `waiting`. Der Jobstatus und die Ziele ändern sich, wenn Sie mit ihnen interagieren.
+Untersuche einen einzelnen Job:
 
-Um den Status eines bestimmten Jobs zu überprüfen, verwenden Sie den Befehl `status`.
-
-```plaintext
-initctl status networking
+```bash
+$ initctl status networking
 networking start/running
 ```
 
-### Manuelle Steuerung von Jobs
+Upstart meldet sowohl ein **Ziel** wie `start` oder `stop` als auch einen aktuellen **Zustand** wie `running` oder `waiting`. `stop/waiting` bedeutet, dass der Job nicht läuft und auf eine Startbedingung oder eine manuelle Anforderung wartet; dies weist nicht unbedingt auf einen Fehler hin.
 
-Während Konfigurationsdateien für Jobs in `/etc/init` definieren, wie Jobs starten, stoppen und mit Ereignissen interagieren, können Sie diese Aktionen manuell mit `initctl` außer Kraft setzen. Dies ist nützlich für die Fehlerbehebung oder die Durchführung administrativer Aufgaben.
+:::single-choice{#upstart-jobs-stop-waiting} Was bedeutet `stop/waiting` normalerweise in der Statusausgabe von Upstart?
 
-Um einen Job manuell zu starten:
+::option[Der Job läuft, verbraucht aber keine CPU-Zeit.]{#upstart-jobs-running-idle explanation="Ein laufender Job würde normalerweise das Ziel start und den Zustand running anzeigen."}
+::option[Das Ziel des Jobs ist Stopp, und es läuft keine Prozessinstanz.]{#upstart-jobs-stopped-waiting .correct explanation="Die Definition bleibt bekannt, während Upstart auf eine spätere Bedingung oder einen Befehl wartet."}
+::option[Das gesamte Betriebssystem wartet auf das Ausschalten.]{#upstart-jobs-system-poweroff explanation="Das Paar beschreibt diese Jobinstanz und nicht unbedingt den globalen Systemzustand."}
+:::
 
-```bash
-sudo initctl start networking
-```
+## Einen Job starten und stoppen
 
-Um einen Job manuell zu stoppen:
-
-```bash
-sudo initctl stop networking
-```
-
-Um einen Job manuell neu zu starten, was eine bequeme Abkürzung für das Stoppen und anschließende Starten ist:
+Nachdem du Abhängigkeiten und Auswirkungen geprüft hast:
 
 ```bash
-sudo initctl restart networking
+$ sudo initctl start JOB_NAME
+$ sudo initctl stop JOB_NAME
 ```
 
-### Auslösen benutzerdefinierter Ereignisse
+Jobs können mehrere Instanzen definieren, die durch Umgebungsvariablen unterschieden werden. Gib in diesem Fall genau die von der Konfiguration verlangten Variablen an und verwende sie auch beim Abfragen oder Stoppen einer Instanz. Das Starten von Jobs für Netzwerk, Speicher, Authentifizierung oder Fernzugriff kann die Sitzung unterbrechen; halte deshalb einen Konsolenzugang zur Wiederherstellung bereit.
 
-Upstart-Jobs werden durch Ereignisse ausgelöst. Sie können auch manuell ein Ereignis "emittieren" (auslösen), was nützlich sein kann, um benutzerdefinierte Jobs auszulösen oder zu Testzwecken. Jeder Job, der so konfiguriert ist, dass er auf `some_event` startet, würde durch den folgenden Befehl ausgelöst.
+:::single-choice{#upstart-jobs-start-command} Welcher Befehl fordert den manuellen Start des Jobs `peanuts` an?
+
+::option[`sudo initctl start peanuts`]{#upstart-jobs-start-peanuts .correct explanation="Auf den Unterbefehl start folgen der konfigurierte Jobname und alle erforderlichen Instanzvariablen."}
+::option[`sudo initctl peanuts start`]{#upstart-jobs-name-first explanation="Bei der initctl-Syntax steht der Unterbefehl vor dem Jobnamen."}
+::option[`sudo systemctl initctl peanuts`]{#upstart-jobs-systemctl-mixed explanation="Dies vermischt fälschlich die Schnittstellen zweier unterschiedlicher Dienstmanager."}
+:::
+
+## Neustart und Konfigurationsänderungen
+
+Fordere einen Neustart eines bereits laufenden Jobs an mit:
 
 ```bash
-sudo initctl emit some_event
+$ sudo initctl restart peanuts
 ```
 
-## Exercise
+Bei Upstart entspricht `restart` nach der Bearbeitung einer Jobdatei nicht immer einem frischen `stop` gefolgt von `start`: Die bestehende Konfiguration des laufenden Jobs kann maßgeblich bleiben. Validiere die geänderte `.conf`-Datei, weise Upstart entsprechend der installierten Version an, die Konfiguration neu zu laden, und befolge das dokumentierte Stopp-/Startverfahren, wenn die neue Konfiguration wirksam werden muss.
 
-Übung macht den Meister! Obwohl es keine spezifischen Labore für Upstart gibt, ist das Verständnis, wie Aufgaben geplant und verwaltet werden, entscheidend für die Steuerung von Systemprozessen. Hier ist ein praktisches Labor, um Ihr Verständnis der Aufgabenverwaltung zu festigen:
+Ein Neustart verursacht eine Unterbrechung und kann den Dienst möglicherweise nicht wieder in Betrieb bringen. Prüfe anschließend den tatsächlichen Endpunkt und die Protokolle.
 
-1. **[Aufgaben mit at und cron in Linux planen](https://labex.io/de/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Üben Sie das Erstellen, Verwalten und Entfernen von einmaligen und wiederkehrenden Jobs, was grundlegende Konzepte im Zusammenhang mit der Verwaltung von Diensten und Aufgaben in Linux-Umgebungen sind, wie sie von Upstart gehandhabt werden.
+:::single-choice{#upstart-jobs-restart-peanuts} Welcher Befehl fordert einen Neustart des laufenden Upstart-Jobs `peanuts` an?
 
-Dieses Labor hilft Ihnen, die Konzepte der Aufgabenautomatisierung in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Systemoperationen aufzubauen.
+::option[`sudo initctl restart peanuts`]{#upstart-jobs-restart-command .correct explanation="Der Unterbefehl restart wirkt über die Upstart-Steuerungsschnittstelle auf den benannten Job."}
+::option[`sudo initctl emit peanuts`]{#upstart-jobs-emit-not-restart explanation="Das Ausgeben eines Ereignisses beeinflusst passende Jobbedingungen und ist keine direkte Neustartanforderung."}
+::option[`sudo service --status-all peanuts`]{#upstart-jobs-status-all explanation="Eine Statusauflistung fordert keinen Neustart an."}
+:::
 
-## Quiz Question
+## Jobkonfiguration validieren
 
-Wie würden Sie einen Upstart-Job namens `peanuts` manuell neu starten? Bitte geben Sie den vollständigen Befehl an. (Hinweis: Die Antwort ist groß-/kleingeschrieben und muss in Englisch sein.)
+Bevor du eine geänderte Jobdatei installierst, verwende das von der älteren Distribution bereitgestellte Validierungswerkzeug, häufig `init-checkconf`, und prüfe eingebundene Skripte, Umgebung, Benutzer-/Gruppeneinstellungen, Respawn-Richtlinie und Ereignisausdrücke. Lade die Definitionen danach mit dem zur Version passenden Arbeitsablauf `initctl reload-configuration` neu.
 
-## Quiz Answer
+Eine Syntaxvalidierung kann nicht beweisen, dass Pfade existieren, Anmeldedaten die Ausführung erlauben, Ereignisse eintreffen oder der Prozess betriebsbereit wird. Teste in einer Umgebung mit Wiederherstellungsmöglichkeit.
 
-sudo initctl restart peanuts
+:::single-choice{#upstart-jobs-syntax-validation-limit} Was kann die Syntaxvalidierung eines Jobs nicht beweisen?
+
+::option[Dass der Dienst erfolgreich startet und betriebsbereit wird.]{#upstart-jobs-runtime-not-proven .correct explanation="Laufzeitpfade, Berechtigungen, Abhängigkeiten und Ereignisfluss erfordern einen tatsächlichen kontrollierten Test."}
+::option[Dass der Konfigurationstext überhaupt geparst werden kann.]{#upstart-jobs-parse-purpose explanation="Das Parsen ist genau der Hauptzweck der Syntaxvalidierung."}
+::option[Dass dem Validator eine Datei übergeben wurde.]{#upstart-jobs-file-supplied explanation="Das Werkzeug kann fehlende Eingaben sofort melden."}
+:::
+
+## Ereignisse mit Bedacht ausgeben
+
+Upstart kann ein benanntes Ereignis ausgeben:
+
+```bash
+$ sudo initctl emit EVENT_NAME
+```
+
+Jeder Job, dessen Start- oder Stopp-Ausdruck passt, kann reagieren. Ein Ereignis ist nicht an einen einzelnen Job adressiert, und seine Auswirkungen können sich durch weitere Ereignisse fortsetzen. Untersuche alle passenden Konfigurationen, bevor du ein benutzerdefiniertes oder Systemereignis ausgibst; spiele zentrale Boot-Ereignisse auf einem Produktionshost nicht leichtfertig erneut ab.
+
+:::single-choice{#upstart-jobs-emit-scope} Was kann geschehen, wenn `initctl emit EVENT_NAME` ausgeführt wird?
+
+::option[Alle Jobausdrücke, die zu diesem Ereignis passen, können ihren Zustand wechseln.]{#upstart-jobs-event-matches .correct explanation="Ereignisse werden in Upstarts Abhängigkeitsmodell ausgestrahlt und nicht nur an einen benannten Dienst gesendet."}
+::option[Nur ein Job, dessen Name genau dem Ereignis entspricht, kann reagieren.]{#upstart-jobs-event-name-only explanation="Die Übereinstimmung wird durch Ausdrücke mit `start on` und `stop on` definiert, nicht durch die Gleichheit von Job- und Ereignisname."}
+::option[Das Ereignis wird für immer als Nachricht in einer dauerhaften Warteschlange gespeichert.]{#upstart-jobs-event-durable explanation="Upstart-Ereignisse sind Lebenszyklusbenachrichtigungen und keine allgemeine dauerhafte Nachrichtenwarteschlange."}
+:::
+
+## Zusammenfassung
+
+Du kannst Upstart-Jobs nun mit eindeutigem Zustandsverständnis und klarem Ereignisumfang bedienen.
+
+1. Lies Ziel und Zustand in der `initctl`-Ausgabe getrennt.
+2. Starte und stoppe nach Prüfung der Auswirkungen genau die beabsichtigte Jobinstanz.
+3. Behandle Neustart und geänderte Jobkonfiguration als getrennte Belange.
+4. Validiere die Syntax und teste anschließend die Betriebsbereitschaft.
+5. Prüfe jeden passenden Ausdruck, bevor du ein Ereignis ausgibst.

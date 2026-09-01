@@ -1,56 +1,81 @@
 ---
-index: 8
+lesson_id: "less-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 8
 title: "less"
+description: "Aprenda a navegar, pesquisar e acompanhar arquivos de texto longos de forma interativa com less."
 meta_title: "less - Linha de Comando"
-meta_description: "Aprenda o comando Linux less com exemplos para visualizar arquivos grandes, rolar, buscar, pular para linhas, seguir logs e sair do less."
-meta_keywords: "comando less, linux less, visualizar arquivo grande linux, buscar no less, sair do less, less -N, less +F, visualizador de texto linux"
+meta_description: "Aprenda o comando less do Linux com exemplos para visualizar arquivos grandes, rolar, pesquisar, saltar entre linhas, acompanhar logs e sair do programa."
+meta_keywords: "comando less, less Linux, visualizar arquivo grande Linux, pesquisar no less, sair do less, less -N, less +F, visualizador de texto Linux"
 ---
 
-## Lesson Content
+Quando um arquivo de texto é longo demais para uma única tela, `less` permite lê-lo sem enviar o arquivo inteiro pela rolagem do terminal. Seu nome inspirou a antiga piada do Unix “less is more”, pois `more` é outro paginador.
 
-Ao visualizar arquivos de texto que são grandes demais para caber em uma única tela, o comando `less` é uma ferramenta indispensável. Como diz o antigo ditado do Unix, "menos é mais". Isso é um trocadilho pelo fato de que também existe um comando `more` com funcionalidade semelhante.
+## Abertura de um Arquivo
 
-A utilidade `less` exibe texto em formato paginado, permitindo que você navegue por um arquivo sem inundar seu terminal.
-
-### Começando com o Comando Less
-
-Para começar a visualizar um arquivo, use `less` seguido do nome do arquivo.
+Inicie o paginador fornecendo um nome de arquivo:
 
 ```bash
 $ less /home/pete/Documents/text1
 ```
 
-Uma vez dentro do visualizador `less`, seus comandos padrão do shell não funcionarão. Em vez disso, você usa um conjunto específico de teclas para navegar e interagir com o texto.
+Enquanto `less` estiver ativo, as teclas controlarão o paginador em vez de iniciar comandos comuns do shell. Você retornará ao shell quando sair do paginador.
 
-### Navegação e Controles
+:::single-choice{#open-long-file} Qual comando abre `/var/log/syslog` em um paginador interativo?
 
-Você pode usar várias teclas para se mover pelo documento:
+::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` abre o arquivo em um paginador para que você possa percorrê-lo, pesquisá-lo e voltar ao shell."}
+::option[`cat /var/log/syslog`]{#print-log explanation="`cat` envia o arquivo inteiro à saída padrão de uma vez. Ele não oferece controles interativos de paginação."}
+::option[`file /var/log/syslog`]{#classify-log explanation="`file` informa um provável tipo de conteúdo. Ele não abre o log para leitura interativa."}
+:::
 
-- **Teclas de Seta e de Página**: Use `Page Up`, `Page Down`, `Up` e `Down` para navegar linha a linha ou página a página.
-- **Ir para o Início**: Pressione `g` para ir diretamente ao começo do arquivo de texto.
-- **Ir para o Fim**: Pressione `G` (Shift + g) para pular para o final do arquivo de texto.
-- **Mover meia página**: Pressione `u` para subir e `d` para descer.
-- **Menu de Ajuda**: Se você esquecer os comandos enquanto estiver no `less`, basta pressionar `h` para exibir um resumo útil.
+## Navegação no less
 
-### Buscando no Less
+Use estas teclas enquanto o paginador estiver aberto:
 
-Um recurso poderoso do `less` é sua capacidade de buscar texto. Digite `/` seguido do texto que deseja encontrar e então pressione Enter.
+- Use `Seta para cima`, `Seta para baixo`, `Page Up` e `Page Down` para avançar por linhas ou telas.
+- Pressione `g` para ir ao início.
+- Pressione `G` para ir ao final.
+- Pressione `u` para subir meia tela ou `d` para descer meia tela.
+- Pressione `h` para abrir a ajuda integrada.
 
-- `/termo_de_busca`: Busca para frente por "termo_de_busca".
-- `?termo_de_busca`: Busca para trás por "termo_de_busca".
-- `n`: Vai para a próxima ocorrência do termo de busca.
-- `N`: Vai para a ocorrência anterior.
+:::single-choice{#jump-to-file-end} Qual tecla leva diretamente ao final de um arquivo no `less`?
 
-### Como Sair do Less
+::option[`g`]{#lowercase-g explanation="`g` minúsculo leva ao início do arquivo. A forma maiúscula segue na direção oposta."}
+::option[`G`]{#uppercase-g .correct explanation="`G` maiúsculo leva ao final da entrada. O comando diferencia maiúsculas de minúsculas."}
+::option[`h`]{#help-key explanation="A tecla `h` abre a ajuda do paginador. Ela não leva ao final do arquivo."}
+:::
 
-Quando terminar de visualizar o arquivo, você precisa saber como `sair do less` e voltar ao seu prompt de comando.
+## Pesquisa no less
 
-- **Sair**: Simplesmente pressione `q` para sair do visualizador `less` e voltar ao seu shell.
+Digite `/`, seguido de um padrão, e pressione Enter para pesquisar para a frente. Comece com `?` para pesquisar para trás.
 
-### Opções Úteis do less
+- `/search_term`: pesquisa `search_term` para a frente.
+- `?search_term`: pesquisa `search_term` para trás.
+- `n`: repete a pesquisa na mesma direção.
+- `N`: repete a pesquisa na direção oposta.
 
-Você pode iniciar o `less` com opções:
+:::single-choice{#repeat-search-direction} Depois de uma pesquisa para a frente por `error`, qual tecla repete a pesquisa na mesma direção?
+
+::option[`n`]{#same-search .correct explanation="`n` minúsculo repete a pesquisa mais recente em sua direção original. Neste caso, a direção é para a frente."}
+::option[`N`]{#opposite-search explanation="`N` maiúsculo repete a pesquisa mais recente na direção oposta. Depois de uma pesquisa para a frente, ele percorre os resultados para trás."}
+::option[`g`]{#search-to-start explanation="A tecla `g` leva ao início da entrada. Ela não repete uma pesquisa."}
+:::
+
+## Saída do less
+
+Pressione `q` para sair de `less` e retornar ao prompt do shell.
+
+:::single-choice{#quit-less} Qual tecla encerra `less` e retorna ao shell?
+
+::option[`q`]{#less-quit .correct explanation="O comando `q` encerra o paginador e restaura o prompt do shell."}
+::option[`h`]{#less-help explanation="A tecla `h` abre a ajuda dentro de `less`. Ela não retorna diretamente ao shell."}
+::option[`G`]{#less-end explanation="`G` maiúsculo leva ao final da entrada. O paginador continua aberto."}
+:::
+
+## Inicialização do less com Opções
+
+Opções e comandos iniciais podem mudar a forma como o paginador começa:
 
 ```bash
 $ less -N file.txt
@@ -58,34 +83,36 @@ $ less +G file.txt
 $ less +F /var/log/syslog
 ```
 
-- `-N`: Mostrar números das linhas.
-- `+G`: Abrir no final do arquivo.
-- `+F`: Seguir o conteúdo novo conforme é adicionado, similar ao `tail -f`.
+- `-N`: mostra números de linha.
+- `+G`: abre no final do arquivo.
+- `+F`: acompanha o novo conteúdo conforme ele é acrescentado, de modo semelhante a `tail -f`.
 
-Enquanto estiver seguindo um arquivo com `+F`, pressione `Ctrl-C` para parar de seguir e voltar à navegação normal, depois pressione `q` para sair.
+Ao acompanhar um arquivo com `+F`, pressione `Ctrl+C` para interromper o acompanhamento e voltar à navegação normal; depois, pressione `q` para sair. Use `-i` para pesquisas que ignorem maiúsculas e minúsculas, a menos que o padrão contenha uma letra maiúscula, ou `-I` para ignorá-las independentemente do padrão.
 
-### Perguntas Comuns
+Os comandos também podem enviar sua saída por um pipe para `less`:
 
-**O less é melhor que o cat?** Use `cat` para arquivos curtos e `less` para arquivos longos ou arquivos que você precisa buscar.
+```bash
+$ dmesg | less
+```
 
-**Como faço busca sem diferenciar maiúsculas de minúsculas?** Inicie o `less` com `-i`, ou digite buscas normalmente quando o padrão não tiver letras maiúsculas em muitos sistemas.
+:::single-choice{#follow-growing-log} Qual comando abre `/var/log/syslog` e acompanha o novo conteúdo conforme ele chega?
 
-**O less pode abrir a saída de comandos?** Sim. Encaminhe a saída para ele, como `dmesg | less`.
+::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="O comando inicial `+F` entra no modo de acompanhamento, fazendo `less` exibir o novo conteúdo acrescentado ao log."}
+::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="O comando inicial `+G` abre no final, mas não continua acompanhando o conteúdo que chegar depois."}
+::option[`less -N /var/log/syslog`]{#number-log-lines explanation="A opção `-N` exibe os números das linhas. Ela não ativa o acompanhamento contínuo."}
+:::
 
-## Exercise
+Para praticar paginação, pesquisa e leitura de textos do sistema, experimente estes laboratórios:
 
-Praticar é essencial! Aqui estão alguns laboratórios práticos para reforçar seu entendimento sobre visualização e navegação de arquivos de texto no Linux:
+1. **[Comando less do Linux: Paginação de Arquivos](https://labex.io/labs/linux-linux-less-command-file-paging-214301)** — Aprenda a usar `less` para visualizar e percorrer arquivos de texto com eficiência, incluindo pesquisa, números de linha e correspondência de padrões.
+2. **[Visualização de Arquivos de Log e Configuração no Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** — Aprenda habilidades essenciais para visualizar e percorrer arquivos de texto, inclusive logs e configurações do sistema, usando comandos como `cat`, `more` e `less`.
 
-1. **[Comando Linux less: Paginação de Arquivos](https://labex.io/pt/labs/linux-linux-less-command-file-paging-214301)** - Aprenda o comando Linux 'less' para visualização eficiente de arquivos de texto e navegação, incluindo busca, números de linha e correspondência de padrões.
-2. **[Comando Linux more: Rolagem de Arquivos](https://labex.io/pt/labs/linux-linux-more-command-file-scrolling-214299)** - Aprenda o comando Linux 'more' para visualização eficiente de arquivos de texto, cobrindo uso básico, início em linhas específicas e personalização da exibição.
-3. **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Aprenda habilidades essenciais de linha de comando Linux para visualizar e navegar eficientemente arquivos de texto, incluindo logs do sistema e arquivos de configuração, usando comandos como `cat`, `more` e `less`.
+## Resumo
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e ganhar confiança na manipulação e navegação de arquivos de texto.
+Agora você sabe usar `less` para inspecionar arquivos longos sem inundar o terminal.
 
-## Quiz Question
-
-Como você sai do comando `less`? Por favor, forneça a tecla de caractere único como sua resposta. Nota: a resposta é uma letra inglesa sensível a maiúsculas.
-
-## Quiz Answer
-
-q
+1. Abra um arquivo ou a saída de um comando encaminhada ao paginador.
+2. Navegue até partes específicas da entrada.
+3. Pesquise para a frente ou para trás e repita uma pesquisa.
+4. Mostre números de linha ou acompanhe conteúdo crescente.
+5. Saia com segurança e retorne ao shell.

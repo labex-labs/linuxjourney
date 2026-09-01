@@ -1,68 +1,100 @@
 ---
-index: 2
+lesson_id: "routing-table"
+course_id: "routing"
 lang: "fr"
-title: "Table de Routage"
-meta_title: "Table de Routage - Routage"
-meta_description: "Un guide pour comprendre la table de routage Linux. Apprenez à interpréter la sortie de la commande route, y compris la destination, la passerelle, genmask et l'interface eth0. Maîtrisez les bases de votre table de routage Linux."
-meta_keywords: "table de routage linux, table route linux, genmask, eth0, commande route, routage réseau, routage IP, destination, passerelle, masque de sous-réseau, réseau linux"
+order_index: 2
+title: "Table de routage"
+description: "Découvrez comment lire les routes Linux et examiner celle qui est sélectionnée pour une destination."
+meta_title: "Table de routage - Routage"
+meta_description: "Guide de la table de routage Linux : interprétation de la destination, de la passerelle, du masque, de l’interface et de la commande ip route."
+meta_keywords: "table routage Linux, genmask, eth0, commande route, routage réseau, routage IP, destination, passerelle, masque sous-réseau"
 ---
 
-## Lesson Content
+L’état de routage de Linux détermine le prochain saut, l’interface et la source admissibles pour une destination IP. L’ancienne vue `route -n` se rencontre encore, mais `ip route` expose plus directement les concepts modernes de routage du noyau.
 
-La **table de routage Linux** contient les règles qui déterminent où les paquets réseau sont envoyés. Chaque fois que votre système doit envoyer un paquet à une adresse IP, il consulte cette table pour trouver le chemin approprié. Pour afficher la **table de routage Linux** de votre machine, vous pouvez utiliser la commande `route`.
+## Lire les routes IPv4
 
-```plaintext
-pete@icebox:~$ sudo route -n
-Table de routage IP du noyau
-Destination     Passerelle      Genmask         Drapeaux Métrique Ref    Utilisation Interface
-0.0.0.0         192.168.224.2   0.0.0.0         UG    0      0        0 eth0
-192.168.224.0   0.0.0.0         255.255.255.0   U     1      0        0 eth0
+Un exemple de sortie peut ressembler à ceci :
+
+```text
+$ ip -4 route show
+default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
+192.168.224.0/24 dev eth0 proto kernel scope link src 192.168.224.10 metric 100
 ```
 
-### Comprendre les Colonnes
+La route `/24` connectée envoie les destinations correspondantes directement par `eth0`. La route par défaut emploie la passerelle de prochain saut `192.168.224.2`. `proto` décrit comment la route a été installée, `src` indique une source privilégiée pour le trafic correspondant et une métrique aide à classer des routes par ailleurs comparables.
 
-Le résultat de la commande `route` est organisé en plusieurs colonnes, chacune fournissant des informations spécifiques sur une route réseau.
+:::single-choice{#routing-table-via-meaning} Qu’indique `via 192.168.224.2` ?
 
-### Destination
+::option[La seule application autorisée à employer la route.]{#routing-table-application explanation="L’autorisation de l’application n’est pas encodée par le mot-clé `via`."}
+::option[La passerelle de prochain saut de la route.]{#routing-table-next-hop .correct explanation="Le paquet est encapsulé dans une trame adressée à ce routeur local tout en conservant sa destination IP."}
+::option[Le point de montage du système de fichiers de la route.]{#routing-table-mount explanation="Les entrées de routage concernent l’acheminement réseau, et non les systèmes de fichiers."}
+:::
 
-La colonne Destination spécifie un réseau ou un hôte. L'entrée `192.168.224.0` dirige tous les paquets destinés à ce réseau spécifique. Si la destination d'un paquet se trouve dans ce réseau (par exemple, de 192.168.224.5 à 192.168.224.7), il est envoyé directement via l'interface spécifiée, telle que `eth0`.
+## Routes connectées et par défaut
 
-La destination `0.0.0.0` est la route par défaut. Si la table de routage n'a pas d'entrée plus spécifique pour la destination d'un paquet, elle utilise cette route.
+Une route de `scope link` sans prochain saut `via` considère que le préfixe est directement accessible sur l’interface. Une route par défaut correspond à chaque adresse, mais perd face à toute route admissible plus spécifique.
 
-### Passerelle (Gateway)
+:::single-choice{#routing-table-connected-route} Comment une destination connectée de `scope link` est-elle normalement atteinte ?
 
-La colonne Passerelle (Gateway) indique le routeur vers lequel les paquets sont envoyés. Si un paquet n'est pas sur le même réseau local, il est transféré à cette adresse de passerelle. Pour la route par défaut, il s'agit de l'adresse IP du routeur qui connecte votre réseau local à d'autres réseaux, comme Internet.
+::option[Par la passerelle par défaut même lorsqu’une route connectée correspond.]{#routing-table-connected-default explanation="Le préfixe connecté est plus spécifique et ne possède aucun opérande de passerelle."}
+::option[En transformant la destination en serveur DNS.]{#routing-table-connected-dns explanation="Le service de noms n’intervient pas dans une route IP déjà sélectionnée."}
+::option[Directement par l’interface nommée après la résolution du voisin.]{#routing-table-direct .correct explanation="L’hôte résout l’adresse de la destination sur la liaison et encapsule le trafic localement."}
+:::
 
-### Genmask
+## Longueur du préfixe et métrique
 
-Le `genmask`, ou masque de génération, est le masque de sous-réseau pour le réseau de destination. Il est utilisé avec l'IP de destination pour déterminer si un paquet appartient à ce réseau. Par exemple, un `genmask` de `255.255.255.0` signifie que les trois premiers octets de l'adresse IP doivent correspondre aux trois premiers octets de la destination.
+La sélection des routes tient compte des règles de politique et choisit le préfixe admissible le plus long. Les métriques classent les routes au sein d’ensembles comparables appropriés ; une route par défaut à faible métrique ne l’emporte pas sur un `/24` correspondant simplement parce que son nombre est inférieur.
 
-### Drapeaux (Flags)
+:::single-choice{#routing-table-prefix-before-default} Quelle route correspond normalement le plus précisément à `192.168.224.50` ?
 
-Ces drapeaux fournissent des informations supplémentaires sur la route :
+::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="Le préfixe correspondant de 24 bits est le plus long parmi les routes présentées."}
+::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="La route par défaut possède une longueur de préfixe nulle."}
+::option[`192.168.0.0/16 via 192.168.224.3`]{#routing-table-sixteen explanation="Cette route couvre l’adresse, mais fixe moins de bits que `/24`."}
+:::
 
-- **U** : Indique que la route est active et opérationnelle.
-- **G** : Signifie que la route passe par une passerelle (routeur).
-- **UG** : Signifie que la route est active et pointe vers une passerelle.
+## Règles de politique et tables multiples
 
-### Interface (Iface)
+Linux peut consulter plusieurs tables de routage selon les politiques d’`ip rule` fondées sur la source, une marque, l’interface ou d’autres sélecteurs. L’examen de la seule table principale peut donc manquer le chemin réel :
 
-Cette colonne indique l'interface réseau, comme `eth0`, par laquelle les paquets pour cette route seront envoyés. `eth0` représente généralement la première carte Ethernet de votre système.
+```bash
+$ ip rule show
+$ ip route show table all
+```
 
-## Exercise
+Les espaces de noms réseau et les VRF peuvent également posséder un état distinct. Effectuez l’examen dans le même contexte que le processus concerné.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du routage réseau et de l'adressage IP :
+:::single-choice{#routing-table-policy-limit} Pourquoi `ip route show` seul peut-il ne pas expliquer le chemin d’une application ?
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IP et les interfaces réseau, qui sont des composants clés d'une table de routage.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à gérer l'adressage IP, à configurer des IP statiques, à définir des passerelles par défaut et à vérifier les configurations réseau, ce qui est directement lié aux entrées trouvées dans une table de routage.
-3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et la joignabilité réseau à l'aide de `ping` et `ip a`, ce qui vous aidera à comprendre comment les différents types d'IP interagissent et comment la joignabilité réseau est déterminée, ce qui se reflète dans les décisions de routage.
+::option[Des règles de politique ou un autre espace de noms réseau peuvent sélectionner un état de routage différent.]{#routing-table-policy-context .correct explanation="La recherche effective dépend des attributs du paquet et du contexte réseau du processus."}
+::option[Les tables de routage Linux ne contiennent aucun préfixe de destination.]{#routing-table-no-prefixes explanation="Les préfixes de destination sont des clés fondamentales des routes."}
+::option[Les applications n’envoient jamais de paquets IP.]{#routing-table-apps-never explanation="Le trafic des applications est transporté par les protocoles réseau et de transport."}
+:::
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec la configuration et le dépannage réseau.
+## Interroger une route effective
 
-## Quiz Question
+Demandez au noyau d’évaluer une destination et une source facultative :
 
-Si une destination n'est pas trouvée dans la table de routage, où les paquets sont-ils envoyés ? Veuillez répondre avec un seul mot anglais, en faisant attention à la casse.
+```bash
+$ ip route get 203.0.113.10
+$ ip route get 203.0.113.10 from 192.168.224.10
+```
 
-## Quiz Answer
+Le résultat prédit la recherche locale à cet instant. Il n’envoie aucune sonde et ne prouve pas l’accessibilité du voisin, des sauts en aval, du pare-feu ou de l’application.
 
-Gateway
+:::single-choice{#routing-table-route-get-limit} Que ne fait pas `ip route get` ?
+
+::option[Afficher l’interface locale et le prochain saut choisis.]{#routing-table-get-does-interface explanation="Il s’agit de champs principaux du résultat de la recherche."}
+::option[Évaluer la politique de routage locale actuelle pour une destination.]{#routing-table-get-does-policy explanation="La commande effectue une recherche de route dans le noyau."}
+::option[Prouver la réussite de la livraison par chaque saut en aval.]{#routing-table-get-not-probe .correct explanation="Il s’agit d’une requête de décision locale, et non d’une sonde réseau de bout en bout."}
+:::
+
+## Résumé
+
+Vous savez maintenant lire les entrées de routage Linux et interroger la décision locale effective.
+
+1. Distinguer les routes connectées de celles qui passent par une passerelle.
+2. Lire les champs de préfixe, interface, protocole, source et métrique.
+3. Appliquer la correspondance au préfixe le plus long avant de comparer les métriques pertinentes.
+4. Tenir compte des tables de politiques, des espaces de noms et des VRF.
+5. Considérer `ip route get` comme une recherche, et non un test d’accessibilité.

@@ -1,50 +1,91 @@
 ---
-index: 2
+lesson_id: "controlling-terminal"
+course_id: "processes"
 lang: "en"
+order_index: 2
 title: "Controlling Terminal"
+description: "Learn how controlling terminals connect sessions to interactive input, signals, and shell job control."
 meta_title: "Controlling Terminal - Processes"
 meta_description: "Explore the concept of a controlling terminal in Linux. Learn what a TTY is, the difference between TTY and PTS, and how to use the `ps tty` output to identify processes without a controlling terminal, like daemons."
 meta_keywords: "controlling terminal, ps tty, what is tty, how to use ps, TTY, PTS, Linux terminal, daemon process, Linux processes"
 ---
 
-## Lesson Content
+An interactive login session can have a controlling terminal: a terminal device associated with the session and used by the kernel for terminal-generated signals and job control. The `TTY` field in process listings helps identify that association.
 
-When you inspect running processes, you'll notice a `TTY` field in the `ps` command's output. This field is important as it indicates the **controlling terminal** that executed the command. Understanding this concept is key to managing processes effectively.
+## Terminal and Pseudo-Terminal Devices
 
-### What is a TTY
+The name TTY comes from historical teletypes. On modern Linux, terminal interfaces are device abstractions rather than necessarily physical equipment.
 
-TTY is an abbreviation for "Teletype," which historically was a physical device for interacting with a computer. In modern Linux systems, a TTY refers to the terminal that provides the standard input and output for a process.
+A system virtual console can appear under a name such as `tty1`. Desktop shortcut assignments for switching consoles vary by distribution and should not be assumed. A terminal emulator, remote login, or multiplexer commonly uses a pseudo-terminal pair, with the interactive side shown under a name such as `pts/3`.
 
-There are two main types of terminals you will encounter: terminal devices and pseudo-terminal devices.
+Display the terminal connected to the current command's standard input with:
 
-### Terminal Devices vs Pseudo-Terminals
+```bash
+$ tty
+/dev/pts/3
+```
 
-A true terminal device is a native console that allows you to type commands and see output directly. You can experience this by switching to a virtual console. On many systems, you can press `Ctrl-Alt-F1` to access TTY1. You'll see a login prompt in a purely text-based environment, with no graphical interface. This is a classic terminal device. To return to your graphical session, you can typically use `Ctrl-Alt-F7` (the exact key combination may vary).
+This result is related to, but not identical with, the broader controlling-terminal concept. A process can redirect standard input or output while remaining in a session that has a controlling terminal.
 
-A pseudo-terminal (PTS), on the other hand, is what you most commonly use. When you open a terminal application within your graphical desktop environment, you are using a PTS. These emulate a terminal within a window. If you check the `ps tty` output for your shell, you will see its TTY listed as `pts/*`.
+:::single-choice{#controlling-terminal-pts-meaning} What does a name such as `pts/3` usually identify?
 
-### The Role of the Controlling Terminal
+::option[A process ID assigned to the third shell.]{#controlling-terminal-pts-pid explanation="A PID is numeric process metadata and is not expressed as a `pts/N` device name."}
+::option[A pseudo-terminal device used by an interactive session.]{#controlling-terminal-pts-device .correct explanation="Entries under `/dev/pts` are pseudo-terminal slave devices commonly used by terminal emulators and remote sessions."}
+::option[A filesystem partition containing terminal programs.]{#controlling-terminal-pts-partition explanation="The name identifies a terminal device interface, not a storage partition."}
+:::
 
-Most processes are bound to a **controlling terminal**. This means the process's lifecycle is tied to the terminal session that started it. For example, if you run a program like `find` in your terminal window and then close that window, the `find` process will also be terminated.
+## Sessions, Process Groups, and Job Control
 
-### Processes Without a Controlling Terminal
+A controlling terminal belongs to a session, not merely to the command that happened to open a window. Within that session, the terminal tracks a foreground process group. The shell places a foreground pipeline into that group so it can read input and receive terminal-generated signals.
 
-Some processes, known as daemons, are designed to run in the background and manage system services. These processes often start when the system boots and stop only when it shuts down.
+For example, pressing `Ctrl-C` normally makes the terminal driver send `SIGINT` to the foreground process group. A background group that tries to read from the terminal can receive `SIGTTIN`. These rules allow the shell to coordinate foreground and background jobs.
 
-To prevent them from being accidentally terminated, daemons are not attached to a **controlling terminal**. When you learn **how to use ps** to examine these processes, you will see a question mark (`?`) in the TTY column. This `?` signifies that the process does not have a controlling terminal and is running independently of any user session.
+:::single-choice{#controlling-terminal-ctrl-c-target} To which processes does a terminal normally direct the signal generated by `Ctrl-C`?
 
-## Exercise
+::option[Every process owned by the current user.]{#controlling-terminal-ctrl-c-user explanation="Terminal-generated signals are scoped to the foreground process group, not all of a user's processes."}
+::option[Only the login shell regardless of the foreground job.]{#controlling-terminal-ctrl-c-shell explanation="While another job is foregrounded, that job's group is the normal signal target."}
+::option[The terminal's foreground process group.]{#controlling-terminal-ctrl-c-foreground .correct explanation="The terminal driver sends `SIGINT` to the current foreground process group."}
+:::
 
-Practice makes perfect! Here is a hands-on lab to reinforce your understanding of Linux processes and their interaction with terminals:
+## Reading the `TTY` Column
 
-1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - In this lab, you will learn essential skills for managing and monitoring processes on a Linux system. You will explore how to interact with foreground and background processes, inspect them with `ps`, monitor resources with `top`, adjust priority with `renice`, and terminate them with `kill`.
+Request selected process fields explicitly when you want a stable view:
 
-This lab will help you apply the concepts of process management in real scenarios and build confidence with understanding how processes run and interact with the system.
+```bash
+$ ps -o pid,tty,stat,cmd
+```
 
-## Quiz Question
+A terminal name such as `pts/3` identifies the controlling terminal recorded for that process. A question mark (`?`) normally means that the process has no controlling terminal.
 
-What value is given for a process that does not have a controlling terminal?
+Many service processes have no controlling terminal because a service manager starts them independently of an interactive login session. However, a missing TTY does not by itself prove that a process is a daemon, and a background shell job can still have a controlling terminal.
 
-## Quiz Answer
+:::single-choice{#controlling-terminal-question-mark} What does `?` in the `ps` `TTY` column normally mean?
 
-?
+::option[The process has no controlling terminal.]{#controlling-terminal-no-tty .correct explanation="A question mark is the conventional display when no controlling terminal is associated with the process."}
+::option[The process's terminal could not be read because it is busy.]{#controlling-terminal-busy-tty explanation="The marker represents the absence of a controlling terminal, not temporary device contention."}
+::option[The process is always a kernel thread.]{#controlling-terminal-kernel-only explanation="Kernel threads often lack terminals, but many user-space services do as well."}
+:::
+
+## Terminal Closure and Hangups
+
+When a terminal connection disappears, the kernel or terminal/session software can send `SIGHUP` to associated processes. A process may terminate, catch the signal, ignore it, or already have been arranged to survive it. Shell features such as `disown`, utilities such as `nohup`, multiplexers, and service managers all affect lifecycle behavior.
+
+Therefore, closing a terminal does not guarantee that every command started from it will exit. Inspect the process's session, signal handling, redirections, and supervisor when persistence matters.
+
+:::single-choice{#controlling-terminal-close-effect} Why is it inaccurate to say that closing a terminal always terminates every process started there?
+
+::option[Linux terminals never generate any signals when they close.]{#controlling-terminal-never-signals explanation="Hangup signaling is a real terminal and session behavior, even though its outcome is not guaranteed termination."}
+::option[Only processes with numeric PIDs can receive hangups.]{#controlling-terminal-pid-hangup explanation="All ordinary processes have numeric PIDs; that fact does not determine terminal survival."}
+::option[Processes can handle or avoid the hangup and may be managed independently.]{#controlling-terminal-hangup-handling .correct explanation="Signal disposition, shell behavior, multiplexers, and supervisors can allow a process to continue after terminal closure."}
+:::
+
+The [Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) lab provides a safe environment for comparing foreground jobs, background jobs, and their `TTY` fields.
+
+## Summary
+
+You can now relate a controlling terminal to interactive process management.
+
+1. Distinguish virtual terminals from pseudo-terminals.
+2. Connect terminal signals with the foreground process group.
+3. Interpret terminal names and `?` in `ps` output.
+4. Treat terminal closure as signaling, not guaranteed process termination.

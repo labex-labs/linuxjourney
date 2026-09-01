@@ -1,61 +1,96 @@
 ---
-index: 2
+lesson_id: "filesystem-types"
+course_id: "filesystem"
 lang: "de"
+order_index: 2
 title: "Dateisystemtypen"
-meta_title: "Dateisystemtypen - Das Dateisystem"
-meta_description: "Entdecken Sie die verschiedenen Linux-Dateisystemtypen, einschließlich ext4, Btrfs und XFS. Dieser Leitfaden erklärt Schlüsselkonzepte wie Journaling und das Virtual File System (VFS) und hilft Ihnen, die verschiedenen für Linux verfügbaren Dateisystemtypen zu verstehen."
-meta_keywords: "linux dateisystemtypen, dateisystemtypen, ext4, Btrfs, XFS, journaling, VFS, linux tutorial"
+description: "Lerne, wie Linux VFS lokale, Netzwerk- und virtuelle Dateisysteme über eine gemeinsame Schnittstelle bereitstellt."
+meta_title: "Dateisystemtypen – Das Dateisystem"
+meta_description: "Entdecke Linux-Dateisystemtypen wie ext4, XFS und Btrfs. Lerne VFS, Journaling sowie lokale, Netzwerk- und virtuelle Dateisysteme kennen."
+meta_keywords: "Linux Dateisystemtypen, Dateisystemtypen, ext4, Btrfs, XFS, Journaling, VFS, Linux Tutorial"
 ---
 
-## Lesson Content
+Linux unterstützt viele Dateisystemimplementierungen mit unterschiedlichen Datenträgerformaten, Netzwerkprotokollen, Konsistenzmodellen, Funktionen und Betriebswerkzeugen. Die richtige Wahl hängt von Distributionsunterstützung, Arbeitslast, Wiederherstellungsanforderungen, Speichertopologie und Erfahrung der Administratoren ab.
 
-Linux unterstützt eine Vielzahl von Dateisystemimplementierungen. Einige sind auf Geschwindigkeit optimiert, andere auf große Speicherkapazität, und einige sind für kleinere Geräte konzipiert. Jeder dieser verschiedenen Dateisystemtypen hat eine einzigartige Methode zur Organisation von Daten.
+## Die Virtual-Filesystem-Schicht
 
-### Die Rolle des Virtuellen Dateisystems
+Die Virtual-Filesystem-Schicht (VFS) des Kernels stellt gemeinsame Operationen wie Öffnen, Lesen, Schreiben, Umbenennen und Berechtigungsprüfungen bereit. Dateisystemimplementierungen verbinden diese Operationen mit ihren eigenen Datenstrukturen und Speichermedien.
 
-Angesichts der vielen verfügbaren Implementierungen benötigen Anwendungen eine konsistente Möglichkeit, mit ihnen zu interagieren. Hier kommt das Virtuelle Dateisystem (VFS) ins Spiel. Das VFS ist eine Abstraktionsschicht im Linux-Kernel, die zwischen Anwendungen und den verschiedenen Dateisystemen sitzt. Es bietet eine einzige, einheitliche Schnittstelle und stellt sicher, dass Anwendungen nahtlos arbeiten können, unabhängig vom zugrunde liegenden Dateisystemtyp. Diese Flexibilität ermöglicht es Ihnen, mehrere Dateisysteme auf Ihren Festplatten zu haben, die oft durch Partitionen organisiert sind, was wir in einer zukünftigen Lektion behandeln werden.
+Dadurch kann ein Prozess über ein gemeinsames Modell aus Pfaden und Dateideskriptoren auf ext4, XFS, NFS, tmpfs und procfs zugreifen. Dennoch sind nicht alle Dateisystemfunktionen und Verhaltensweisen identisch: Groß-/Kleinschreibung, Sperren, Berechtigungen, Garantien beim Umbenennen, erweiterte Attribute und Fehlerbehandlung können sich unterscheiden.
 
-### Journaling für Datenintegrität
+:::single-choice{#filesystem-types-vfs-role} Was ist die Hauptaufgabe des Linux-VFS?
 
-Die meisten modernen Dateisystemtypen beinhalten standardmäßig eine Funktion namens Journaling (oder Protokollierung). Um seine Bedeutung zu verstehen, stellen Sie sich vor, Sie kopieren eine große Datei, während Ihr Computer plötzlich den Strom verliert. Bei einem nicht-journaled Dateisystem könnte diese Unterbrechung zu einer beschädigten Datei und einem inkonsistenten Dateisystemzustand führen. Nach dem Neustart müsste Ihr System eine vollständige Dateisystemprüfung (fsck) durchführen, was bei großen Festplatten zeitaufwendig sein kann.
+::option[Jedes eingehängte Dateisystem auf dem Datenträger in ext4 umwandeln.]{#filesystem-types-vfs-convert-ext4 explanation="Die Abstraktion bewahrt die unterschiedlichen Dateisystemimplementierungen und Formate."}
+::option[Jede Datei sichern, bevor eine Anwendung sie beschreibt.]{#filesystem-types-vfs-backup explanation="VFS leitet Operationen weiter und bietet keinen automatischen Sicherungsverlauf."}
+::option[Gemeinsame Kernel-Dateioperationen für verschiedene Dateisystemimplementierungen bereitstellen.]{#filesystem-types-vfs-common-interface .correct explanation="VFS lässt Anwendungen gemeinsame Systemaufrufe verwenden, während jedes Dateisystem das zugrunde liegende Verhalten implementiert."}
+:::
 
-A journaled Dateisystem verhindert dieses Problem. Bevor eine Schreiboperation durchgeführt wird, zeichnet es die beabsichtigten Änderungen zuerst in einer speziellen Protokolldatei, dem „Journal“, auf. Sobald die Operation erfolgreich abgeschlossen ist, wird das Journal aktualisiert, um die Aufgabe als beendet zu markieren. Wenn ein Absturz auftritt, kann das System beim Neustart einfach das Journal lesen, um zu sehen, welche Operationen gerade liefen, und das Dateisystem schnell wieder in einen konsistenten Zustand versetzen. Dies reduziert die Wiederherstellungszeit drastisch und schützt vor Datenkorruption.
+## Journaling und Absturzkonsistenz
 
-### Gängige Linux-Dateisystemtypen
+Ein Journaling-Dateisystem zeichnet ausgewählte Aktualisierungen in einem Journal auf, damit es nach einem Absturz unvollständige Transaktionen wiederholen oder verwerfen kann. Journaling dient in erster Linie dazu, die strukturelle Konsistenz des Dateisystems schneller als durch eine vollständige Prüfung wiederherzustellen.
 
-Hier sind einige der gängigsten **linux file system types** (Linux-Dateisystemtypen), denen Sie begegnen werden:
+Es garantiert weder, dass die neuesten Anwendungsdaten erhalten geblieben sind, noch dass anwendungsbezogene Transaktionen über mehrere Dateien gültig sind oder die Speicherhardware jeden abgeschlossenen Schreibvorgang tatsächlich ausgeführt hat. Dateisysteme bieten unterschiedliche Datenmodi und Reihenfolgegarantien; Anwendungen müssen geeignete Flush- und atomare Aktualisierungsmuster verwenden. Ein Journal ist keine Sicherung und schützt nicht vor Löschen, Schadsoftware oder Geräteausfall.
 
-- **ext4** – Als neueste Version des nativen Linux Extended Filesystems ist ext4 der Standard für viele Distributionen. Es ist abwärtskompatibel mit seinen Vorgängern (ext2/ext3) und unterstützt sehr große Festplattenvolumen (bis zu 1 Exabyte) und Dateigrößen (bis zu 16 Terabyte). Es ist eine zuverlässige und Standardwahl für die meisten Anwendungsfälle.
-- **Btrfs** – Oft als „B-tree FS“ bezeichnet, ist Btrfs ein modernes Dateisystem mit erweiterten Funktionen wie integrierten Snapshots, inkrementellen Backups und verbesserter Leistung. Obwohl es mittlerweile als stabil gilt und in einigen Distributionen Standard ist, befindet es sich noch in aktiver Entwicklung.
-- **XFS** – Ein hochleistungsfähiges Journaling-Dateisystem, das sich durch die Handhabung großer Dateien und paralleler E/A-Operationen auszeichnet. Dies macht es zu einer ausgezeichneten Wahl für Systeme, die große Datenmengen verwalten, wie z. B. Medienserver.
-- **NTFS und FAT** – Dies sind Standard-Windows-Dateisystemtypen. Linux bietet volle Unterstützung für das Lesen und Schreiben darauf, was für Dual-Boot-Systeme nützlich ist.
-- **HFS+** – Das primäre Dateisystem, das von macOS verwendet wird. Linux hat standardmäßig nur Lesezugriff darauf, wobei Schreibzugriff über zusätzliche Tools möglich ist.
+:::single-choice{#filesystem-types-journal-scope} Was hilft Dateisystem-Journaling nach einem Absturz in erster Linie wiederherzustellen?
 
-You can see which filesystems are in use on your machine with the `df` command:
+::option[Konsistente Dateisystemmetadaten und aufgezeichnete Transaktionen.]{#filesystem-types-journal-consistency .correct explanation="Das Wiederholen des Journals hilft, Dateisystemstrukturen wieder in einen schlüssigen Zustand zu versetzen."}
+::option[Jede historische Version jedes Benutzerdokuments.]{#filesystem-types-journal-versions explanation="Ein Journal ist kein versionierter Sicherungsspeicher."}
+::option[Daten von einem physisch zerstörten Speichergerät.]{#filesystem-types-journal-hardware-loss explanation="Die Wiederherstellung nach einem Geräteausfall erfordert Redundanz oder Sicherungen außerhalb des ausgefallenen Geräts."}
+:::
 
-```plaintext
-pete@icebox:~$ df -T
-Filesystem     Type     1K-blocks    Used Available Use% Mounted on
-/dev/sda1      ext4       6461592 2402708   3707604  40% /
-udev           devtmpfs    501356       4    501352   1% /dev
-tmpfs          tmpfs       102544    1068    101476   2% /run
-/dev/sda6      xfs       13752320  460112  13292208   4% /home
+## Verbreitete lokale Dateisysteme
+
+- **ext4** ist ein ausgereiftes Journaling-Dateisystem, das von Linux-Distributionen und Wiederherstellungswerkzeugen breit unterstützt wird.
+- **XFS** ist ein skalierbares Journaling-Dateisystem, das häufig für große Dateisysteme und parallele Ein-/Ausgabe-Arbeitslasten gewählt wird.
+- **Btrfs** ist ein Copy-on-Write-Dateisystem mit Prüfsummen, Subvolumes, Snapshots und integrierten Funktionen für mehrere Geräte.
+
+Funktionen benötigen betrieblichen Kontext. Ein Btrfs-Snapshot teilt anfangs Speicher mit seiner Quelle und ist keine unabhängige Sicherung, solange er auf demselben ausfallenden Gerät liegt. XFS und ext4 besitzen unterschiedliche Möglichkeiten zum Vergrößern, Verkleinern, Reparieren und Abstimmen. Bestätige vor Auswahl oder Änderung eines Root-Dateisystems die Unterstützung durch installierten Kernel, Bootumgebung und Wiederherstellungswerkzeuge.
+
+:::single-choice{#filesystem-types-btrfs-snapshot} Warum ist ein Btrfs-Snapshot auf demselben Gerät keine vollständige Sicherung?
+
+::option[Snapshots löschen das ursprüngliche Subvolume immer sofort.]{#filesystem-types-snapshot-deletes explanation="Ein Snapshot erzeugt eine weitere Subvolume-Ansicht und entfernt seine Quelle nicht automatisch."}
+::option[Er teilt dieselbe Speicherausfalldomäne wie das Original.]{#filesystem-types-snapshot-failure-domain .correct explanation="Geräteverlust oder schwere Dateisystemschäden können sowohl die Quelle als auch ihren lokalen Snapshot betreffen."}
+::option[Btrfs kann nicht mehr als eine Datei darstellen.]{#filesystem-types-btrfs-one-file explanation="Btrfs ist ein Allzweck-Dateisystem für Verzeichnisbäume und viele Dateien."}
+:::
+
+## Austausch-, Netzwerk- und virtuelle Dateisysteme
+
+Linux kann Austauschformate wie FAT-Varianten, exFAT und NTFS einhängen, doch ihre Semantik für Unix-Eigentümerschaft, Berechtigungen, Links und Dateinamen unterscheidet sich. Einhängeoptionen und Treiberimplementierung bestimmen, wie Linux fehlende Funktionen darstellt.
+
+Netzwerkdateisysteme wie NFS und SMB hängen von einem Server und Netzwerkprotokoll ab und besitzen eigene Regeln für Caching und Identitäten. Virtuelle Dateisysteme wie tmpfs, procfs und sysfs verwenden kein gewöhnliches dauerhaftes Datenträgerformat: tmpfs speichert flüchtige Daten in speichergestützten Seiten, während procfs und sysfs Kernel-Schnittstellen bereitstellen.
+
+:::single-choice{#filesystem-types-procfs-category} Welche Beschreibung passt am besten zu procfs?
+
+::option[Ein Windows-Austauschformat für Wechselmedien.]{#filesystem-types-procfs-windows explanation="FAT oder exFAT entsprechen diesem Zweck eher; procfs ist eine Linux-Kernel-Schnittstelle."}
+::option[Ein virtuelles Dateisystem, das Prozess- und Kernel-Schnittstellen bereitstellt.]{#filesystem-types-procfs-virtual .correct explanation="Procfs erzeugt eine aktive Kernel-Ansicht, statt gewöhnliche dauerhafte Dateien auf einem Datenträger zu speichern."}
+::option[Ein Journaling-Datenträgerdateisystem für Datenbankvolumes.]{#filesystem-types-procfs-journal explanation="Procfs besitzt weder ein gewöhnliches Journal auf dem Datenträger noch die Rolle eines Datenvolumes."}
+:::
+
+## Aktive Typen ermitteln
+
+Zeige die Typen eingehängter Dateisysteme an:
+
+```bash
+$ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
 ```
 
-The `df` command reports file system disk space usage. The `-T` flag specifically shows the filesystem type. We will explore this tool in more detail later.
+Alternative Ansichten sind `df -T` für die Speicherbelegung eingehängter Dateisysteme, `lsblk -f` für Blockgeräte und erkannte Dateisystemsignaturen sowie `/proc/filesystems` für vom laufenden Kernel unterstützte oder bekannte Typen. Diese beantworten verschiedene Fragen; ein nicht eingehängtes Dateisystem erscheint nicht in einer gewöhnlichen Liste eingehängter Dateisysteme.
 
-## Exercise
+:::single-choice{#filesystem-types-findmnt-output} Welcher Befehl listet in dieser Lektion eingehängte Ziele direkt mit Quelle, Typ und Optionen auf?
 
-Um Ihr Wissen in die Praxis umzusetzen, absolvieren Sie das folgende praktische Labor. Es wird Ihnen helfen, Ihr Verständnis von Linux-Dateisystemen und Partitionen zu festigen:
+::option[`findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS`]{#filesystem-types-findmnt .correct explanation="Findmnt liest die Einhängetabelle und formatiert die angeforderten Felder eingehängter Dateisysteme."}
+::option[`lsblk -o NAME,SIZE,MODEL,SERIAL,ROTA`]{#filesystem-types-mkfs-destructive explanation="Dieser Befehl listet Hardwaredetails von Blockgeräten und nicht die tatsächlich eingehängten Dateisystemtypen und -optionen auf."}
+::option[`cat /proc/filesystems | sort --unique`]{#filesystem-types-rm-proc explanation="Dies meldet vom Kernel unterstützte Dateisystemtypen statt tatsächlicher Einhängequellen und -optionen."}
+:::
 
-1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – In diesem Labor üben Sie das Erstellen einer neuen Partition, das Formatieren mit einem bestimmten Dateisystemtyp, das Einhängen und die Konfiguration für das dauerhafte Einhängen. Dies sind grundlegende Fähigkeiten für die Verwaltung von Speicher unter Linux.
+Nutze das Lab [Linux-Partitionen und Dateisysteme verwalten](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) auf entbehrlichem Speicher, um Typen, Einhängeoptionen und Erkennungsansichten zu vergleichen.
 
-Dieses Labor ermöglicht es Ihnen, diese Konzepte in einem realen Szenario anzuwenden und Selbstvertrauen im Umgang mit der Festplattenverwaltung aufzubauen.
+## Zusammenfassung
 
-## Quiz Question
+Du kannst Dateisystemkategorien nun vergleichen, ohne von identischer Semantik auszugehen.
 
-What is the most common and default filesystem type for many Linux distributions? (Please answer in English, paying attention to case sensitivity)
-
-## Quiz Answer
-
-ext4
+1. Ordne VFS gemeinsamen Operationen verschiedener Implementierungen zu.
+2. Behandle Journaling als Unterstützung für Absturzkonsistenz und nicht als Sicherung.
+3. Vergleiche ext4, XFS und Btrfs anhand unterstützter Operationen und Arbeitslast.
+4. Unterscheide lokale Datenträger-, Netzwerk-, Austausch- und virtuelle Dateisysteme.
+5. Verwende Einhänge- und Blockgerätewerkzeuge für unterschiedliche Inventarfragen.

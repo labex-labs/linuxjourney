@@ -1,57 +1,86 @@
 ---
-index: 8
+lesson_id: "link-layer"
+course_id: "network-basics"
 lang: "en"
+order_index: 8
 title: "Link Layer"
+description: "Learn how Ethernet frames, neighbor discovery, switches, and routers deliver packets on a local link."
 meta_title: "Link Layer - Network Basics"
 meta_description: "Explore the fundamentals of the TCP/IP link layer. Learn how the link layer header is constructed, how ARP resolves IP addresses to MAC addresses, and the process of packet traversal on a local network."
 meta_keywords: "link layer, link layer header, ARP, TCP/IP, MAC address, network fundamentals, Linux networking, packet traversal, address resolution protocol"
 ---
 
-## Lesson Content
+The link layer carries network-layer packets across one local medium or virtual link. Ethernet and Wi-Fi use different framing details, but both provide local delivery beneath IP.
 
-The **Link Layer** is the foundational layer of the TCP/IP model, responsible for communications on the local network segment. This layer is hardware-specific, dealing directly with network interface cards and physical addressing.
+## Ethernet Frames
 
-### Frames and the Link Layer Header
+An Ethernet frame contains destination and source MAC addresses, an EtherType or length field, payload, and a frame check sequence trailer. Physical transmission also uses a preamble and start delimiter. The frame check sequence detects corruption on the link; it does not repair a damaged frame or protect it cryptographically.
 
-At the **link layer**, the packet from the network layer is encapsulated into a structure called a frame. A crucial part of this process is adding the **link layer header**. This header contains the source and destination MAC addresses of the hosts, checksums for error detection, and packet separators, which allow the receiving device to identify where one frame ends and the next begins.
+:::single-choice{#link-layer-fcs-purpose} What is the Ethernet frame check sequence used for?
 
-To construct the **link layer header**, the system needs both the source and destination MAC addresses. While the source MAC address is known, the destination MAC address for an IP on the same local network must be discovered. This is where the Address Resolution Protocol (ARP) comes into play.
+::option[Detecting frame corruption on the link.]{#link-layer-detect-corruption .correct explanation="A receiver can discard a frame that fails the integrity check."}
+::option[Encrypting the payload for all routed hops.]{#link-layer-fcs-encryption explanation="FCS is an error-detection code, not encryption or authentication."}
+::option[Selecting an application by TCP port.]{#link-layer-fcs-port explanation="Transport ports are carried inside the IP payload."}
+:::
 
-### ARP (Address Resolution Protocol)
+## Switches and Local Delivery
 
-ARP is a **link layer** protocol used to find the MAC address associated with a specific IP address within the same network. If the destination host were on a different network, the packet would be sent to a default gateway (router), and ARP would be used to find the router's MAC address.
+An Ethernet switch learns which source MAC addresses appear on its ports and forwards known unicast frames toward the learned destination port. Broadcast and some unknown-destination traffic is flooded within the broadcast domain. VLANs can divide one switching system into separate logical link domains.
 
-Systems first consult their ARP lookup table, which caches known IP-to-MAC address mappings. If the required address is not in the cache, the system broadcasts an ARP request to the entire network. This special message asks which host has a specific IP address, for example, 10.10.1.4. The host with that IP address will send an ARP reply containing its IP and MAC address.
+:::single-choice{#link-layer-switch-learning} What information does an Ethernet switch normally learn from frames?
 
-With all the necessary IP and MAC addresses, the **link layer** can now forward the frame through the network interface card. The journey of a packet is a multi-step process of encapsulation and de-encapsulation as it moves up and down the TCP/IP stack on both the sending and receiving ends.
+::option[Application passwords and HTTP cookies.]{#link-layer-switch-passwords explanation="A basic forwarding table uses link addresses, not application credentials."}
+::option[Every router's complete Internet routing table.]{#link-layer-switch-routing-table explanation="Layer-2 switching and global route exchange are different functions."}
+::option[Source MAC addresses associated with switch ports.]{#link-layer-switch-source .correct explanation="This learning builds the forwarding table used for later known unicast traffic."}
+:::
 
-### Packet Traversal
+## Resolving the Next-Hop Address
 
-Here is a step-by-step breakdown of how a packet travels from a sender (Pete) to a receiver (Patty):
+For IPv4 on Ethernet, Address Resolution Protocol maps an on-link IPv4 next-hop address to a MAC address. The host first checks its neighbor cache. If needed, it broadcasts an ARP request, and the owner or an authorized proxy replies.
 
-1. Pete sends Patty an email. This data is sent to the transport layer.
-2. The transport layer encapsulates the data into a TCP or UDP header to form a segment. It attaches the destination and source ports, then sends the segment to the network layer.
-3. The network layer encapsulates the segment inside an IP packet and attaches the source and destination IP addresses. It then routes the packet to the **link layer**.
-4. The packet reaches the **link layer**, where it is encapsulated into a frame. The **link layer header**, containing the source and destination MAC addresses, is added.
-5. Patty receives this data frame through her physical layer, checks the frame for data integrity, then de-encapsulates it and sends the IP packet to her network layer.
-6. The network layer reads the packet to find the source and destination IP addresses. It confirms the destination IP matches its own, de-encapsulates the packet, and sends the segment to the transport layer.
-7. The transport layer de-encapsulates the segment, checks the TCP or UDP port numbers, and makes a connection to the application layer based on those ports.
-8. The application layer receives the data from the transport layer on the specified port and presents it to Patty as the final email message.
+For an off-link IP destination, the host resolves the default or selected gateway's MAC address—not the remote destination's MAC. IPv6 uses Neighbor Discovery over ICMPv6 rather than ARP.
 
-## Exercise
+:::single-choice{#link-layer-remote-destination-mac} Which MAC address does a host use for an off-link IPv4 destination?
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the Link Layer, MAC addresses, and ARP:
+::option[The selected next-hop router's MAC address.]{#link-layer-gateway-mac .correct explanation="The IP packet remains addressed to the remote host while the local frame goes to the router."}
+::option[The remote server's MAC address across every router.]{#link-layer-remote-mac explanation="MAC addresses are local-link identifiers and are not carried end to end."}
+::option[A MAC address derived from the TCP destination port.]{#link-layer-port-mac explanation="Transport ports do not determine link addresses."}
+:::
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC addresses, on a Linux system.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands work together to resolve IP addresses to MAC addresses and understand network layer interactions.
-3. **[Analyze Ethernet Frames with tcpdump in Linux](https://labex.io/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Gain hands-on experience capturing and inspecting Ethernet frames, including MAC addresses, to understand low-level network communications.
+## Inspecting Neighbor State
 
-These labs will help you apply the concepts in real scenarios and build confidence with network fundamentals at the Link Layer.
+View IPv4 ARP and IPv6 Neighbor Discovery entries with:
 
-## Quiz Question
+```bash
+$ ip neighbor show
+```
 
-What protocol is used to find the MAC address of a host on the same local network? (Please answer with the English acronym in uppercase letters).
+States such as `REACHABLE`, `STALE`, `DELAY`, `PROBE`, and `FAILED` describe the neighbor-unreachability process. `STALE` does not mean broken; it means the cached reachability confirmation is no longer recent and can be tested on use.
 
-## Quiz Answer
+:::single-choice{#link-layer-stale-neighbor} What does a `STALE` neighbor entry indicate?
 
-ARP
+::option[The neighbor is permanently blocked by the firewall.]{#link-layer-stale-blocked explanation="The state does not describe firewall policy."}
+::option[The MAC address has been written to disk as a backup.]{#link-layer-stale-backup explanation="Neighbor state is operational cache information."}
+::option[The cached mapping lacks recent reachability confirmation.]{#link-layer-stale-confirmation .correct explanation="The stack can still use it and perform reachability detection as needed."}
+:::
+
+## Encapsulation Across a Router
+
+The sender places an IP packet inside a frame addressed to its next hop. The router validates and removes the incoming frame, processes the IP header, selects an outgoing route, and builds a new frame for that link. The receiver reverses encapsulation and delivers the transport payload to the appropriate socket.
+
+:::single-choice{#link-layer-router-reframing} What remains the same in ordinary forwarding while Ethernet framing changes at a router?
+
+::option[The IP destination, unless a middlebox such as NAT changes it.]{#link-layer-ip-destination .correct explanation="Ordinary routers forward toward the end IP destination while replacing hop-local frames."}
+::option[The incoming frame check sequence.]{#link-layer-same-fcs explanation="A new outgoing frame receives its own link integrity value."}
+::option[The destination MAC address on every link.]{#link-layer-same-mac explanation="Each link uses the appropriate next-hop link address."}
+:::
+
+## Summary
+
+You can now follow an IP packet through one local-link delivery step.
+
+1. Identify the main Ethernet frame fields and integrity trailer.
+2. Explain how a switch learns local forwarding locations.
+3. Resolve an IPv4 next hop with ARP and IPv6 neighbors with NDP.
+4. Interpret neighbor-cache state without overclaiming failure.
+5. Recognize that routers rebuild frames for each outgoing link.

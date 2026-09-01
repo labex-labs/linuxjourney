@@ -1,95 +1,163 @@
 ---
-index: 1
+lesson_id: "regular-expressions-regex"
+course_id: "advanced-text-fu"
 lang: "es"
-title: "regex (Expresiones Regulares)"
-meta_title: "regex (Expresiones Regulares) - Dominio Avanzado de Texto"
-meta_description: "Domina los fundamentos de Linux con nuestra guía de expresiones regulares (regex). Aprende el emparejamiento de patrones con grep, usando sintaxis como ^, $, y []. Es una de las mejores formas de aprender manipulación de texto en Linux y avanzar tus habilidades."
-meta_keywords: "expresiones regulares linux, regex, fundamentos de linux, emparejamiento de patrones, grep, procesamiento de texto, aprender linux, tutorial linux, forma más rápida linux avanzado"
+order_index: 1
+title: "regex (expresiones regulares)"
+description: "Aprende cómo las anclas, los conjuntos de caracteres, la repetición y las variantes de regex controlan la coincidencia de patrones de texto."
+meta_title: "regex (expresiones regulares) - Text-Fu avanzado"
+meta_description: "Domina los fundamentos de las expresiones regulares en Linux. Aprende a buscar patrones con grep mediante sintaxis como ^, $, conjuntos y repeticiones."
+meta_keywords: "expresiones regulares Linux, regex, fundamentos Linux, coincidencia de patrones, grep, procesamiento de texto, aprender Linux, tutorial Linux"
 ---
 
-## Lesson Content
+Las expresiones regulares, abreviadas con frecuencia como **regex**, describen patrones de texto. Herramientas como `grep`, `sed` y `awk` usan regex, pero la sintaxis que admiten puede variar, así que identifica siempre la herramienta y la variante de expresiones regulares.
 
-Las expresiones regulares, a menudo abreviadas como regex, son una herramienta poderosa para la selección de texto basada en patrones. Comprenderlas es fundamental para dominar la manipulación de texto en Linux. Si bien hay muchas aplicaciones para aprender Linux, profundizar en conceptos centrales como `regular expression linux` es la forma más rápida de alcanzar un dominio avanzado en Linux. Utilizan notaciones especiales, algunas de las cuales son similares a los comodines como `*`.
+`grep` de GNU usa expresiones regulares básicas (BRE) de forma predeterminada y expresiones regulares extendidas (ERE) con `-E`. Esta lección presenta primero elementos compartidos por ambas y después señala incorporaciones habituales de ERE.
 
-Exploremos algunos de los operadores de regex más comunes, que son casi universales en todos los lenguajes de programación. Usaremos el siguiente texto como nuestro ejemplo:
+Usa esta entrada en los ejemplos:
 
-```plaintext
+```text
 sally sells seashells
 by the seashore
 ```
 
-### Anclaje al Inicio de una Línea
+## Buscar texto literal
 
-El símbolo de circunflejo `^` coincide con el comienzo de una línea. Asegura que tu patrón aparezca solo al principio.
+La mayoría de los caracteres normales coinciden consigo mismos. El patrón `seashells` selecciona una línea que contenga esa secuencia exacta en cualquier posición:
+
+```bash
+$ grep 'seashells' sample.txt
+sally sells seashells
+```
+
+Pon los patrones regex entre comillas para que el shell no los expanda ni divida antes de que los reciba la herramienta de coincidencia. Las regex también difieren de la expansión de rutas del shell: en una regex, `*` repite el átomo anterior; en un patrón glob del shell, `*` es por sí mismo un comodín para una secuencia de caracteres de una ruta.
+
+:::single-choice{#regex-versus-shell-star} ¿Qué hace `*` en una expresión regular como `ab*`?
+
+::option[Coincide con cualquier nombre de archivo del directorio actual.]{#regex-shell-glob explanation="Eso describe la expansión de rutas del shell en el contexto de una orden, no el significado de `*` dentro de una regex."}
+::option[Repite la `b` anterior cero o más veces.]{#regex-repeat-b .correct explanation="Un cuantificador regex se aplica al átomo inmediatamente anterior, por lo que `ab*` coincide con `a`, `ab`, `abb`, etc."}
+::option[Repite la cadena completa `ab` exactamente dos veces.]{#regex-repeat-ab-twice explanation="El asterisco solo se aplica al átomo anterior y permite cero o más repeticiones, no exactamente dos repeticiones de la cadena completa."}
+:::
+
+## Anclar una coincidencia
+
+Fuera de una expresión entre corchetes, `^` al principio de un patrón ancla la coincidencia al principio de una línea:
 
 ```plaintext
 ^by
 ```
 
-Este patrón coincidiría con la línea "by the seashore" pero no con "sally sells seashells".
-
-### Anclaje al Final de una Línea
-
-El símbolo de dólar `$` coincide con el final de una línea. Es el homólogo del ancla `^`.
+El ancla `$` coincide con el final de una línea:
 
 ```plaintext
 seashore$
 ```
 
-Este patrón coincidiría con la línea "by the seashore" porque termina con "seashore".
+Combina ambas anclas cuando toda la línea deba ajustarse al patrón:
 
-### Coincidencia de Cualquier Carácter Único
+```text
+^by the seashore$
+```
 
-El punto `.` es un comodín que coincide con cualquier carácter único.
+:::single-choice{#regex-complete-line} ¿Qué patrón coincide únicamente con una línea cuyo texto completo es `by the seashore`?
+
+::option[`^by the seashore$`]{#regex-anchored-line .correct explanation="El circunflejo exige que la coincidencia comience al principio y el signo de dólar que termine con la línea."}
+::option[`by the seashore`]{#regex-unanchored-line explanation="Sin anclas, esta secuencia puede coincidir dentro de una línea más larga con texto adicional antes o después."}
+::option[`$by the seashore^`]{#regex-reversed-anchors explanation="El ancla final no puede preceder al texto que debe coincidir ni el ancla inicial seguirlo en este patrón."}
+:::
+
+## Coincidir con un carácter
+
+El punto coincide con un carácter en el modo normal de expresiones regulares orientadas a líneas:
 
 ```plaintext
 b.
 ```
 
-En nuestro ejemplo, esto coincidiría con "by".
+Esto coincide con `by`, pero también podría coincidir con `ba` o `b7`. No coincide con una `b` aislada porque exige un carácter después. Para buscar un punto literal, escápalo como `\.` o colócalo en una expresión entre corchetes adecuada.
 
-### Uso de Corchetes para Conjuntos de Caracteres
+:::single-choice{#regex-dot-character} ¿Con qué cadena no coincide el patrón de línea completa `^b.$`?
 
-Los corchetes `[]` le permiten especificar un conjunto de caracteres para hacer coincidir. Esto proporciona más control que el comodín `.`.
+::option[`by`]{#regex-dot-by explanation="El punto coincide con `y`, por lo que la línea de dos caracteres satisface el patrón."}
+::option[`b`]{#regex-dot-b .correct explanation="El punto exige un carácter después de `b`, pero esta cadena termina inmediatamente."}
+::option[`b7`]{#regex-dot-b7 explanation="El punto coincide con el dígito `7`, por lo que esta línea de dos caracteres satisface el patrón."}
+:::
+
+## Usar expresiones entre corchetes
+
+Una expresión entre corchetes coincide con un carácter de un conjunto especificado:
 
 ```plaintext
 s[ae]lls
 ```
 
-Esto coincidiría con "sells" y también coincidiría con "salls".
+Esto coincide con `sells` o `salls` en esa posición.
 
-También puede usar corchetes para especificar lo que _no_ debe coincidir. Cuando el circunflejo `^` es el primer carácter dentro de los corchetes, niega el conjunto, haciendo coincidir cualquier carácter _excepto_ los enumerados.
+Cuando `^` es el primer carácter después de `[`, niega el conjunto:
 
 ```plaintext
 s[^e]lls
 ```
 
-Esto coincidiría con "salls" pero no con "sells".
+Esto coincide con `salls`, pero no con `sells`, porque el carácter posterior a la primera `s` no puede ser `e`.
 
-Finalmente, los corchetes admiten rangos para definir eficientemente un gran conjunto de caracteres.
+:::single-choice{#regex-negated-bracket} ¿Con qué coincide `[^e]`?
+
+::option[Exactamente un carácter distinto de `e`.]{#regex-not-e .correct explanation="Un circunflejo inicial dentro de los corchetes complementa el conjunto indicado, mientras que la expresión sigue consumiendo un carácter."}
+::option[El principio de una línea seguido de `e`.]{#regex-caret-e-anchor explanation="Dentro de una expresión entre corchetes, un circunflejo inicial niega el conjunto en vez de anclar una línea."}
+::option[Cero o más apariciones de la letra `e`.]{#regex-repeat-e explanation="La repetición requeriría un cuantificador como `*`; esta expresión coincide con un carácter que no sea `e`."}
+:::
+
+Los intervalos pueden describir caracteres entre dos extremos:
 
 ```plaintext
 d[a-c]g
 ```
 
-Este patrón coincidirá con "dag", "dbg" y "dcg". Tenga en cuenta que los rangos distinguen entre mayúsculas y minúsculas. Por ejemplo, `[a-c]` no coincidirá con `A`, `B` o `C`.
+Esto puede coincidir con `dag`, `dbg` o `dcg`. El comportamiento de los intervalos puede depender de la intercalación de la configuración regional. Las clases de caracteres como `[[:lower:]]`, `[[:upper:]]` y `[[:digit:]]` suelen expresar la intención con mayor claridad.
 
-Aprender estos operadores es una de las mejores maneras de aprender la eficiencia de la línea de comandos de Linux.
+## Repetir y combinar patrones
 
-## Exercise
+Tanto en BRE como en ERE, `*` significa cero o más repeticiones del átomo anterior:
 
-Ponga su conocimiento en práctica. Aquí hay algunos laboratorios prácticos para reforzar su comprensión de las expresiones regulares y la coincidencia de patrones:
+```text
+seashells*
+```
 
-1. **[Buscar Texto con grep en Linux](https://labex.io/es/labs/comptia-search-text-with-grep-in-linux-590841)** - En este laboratorio, aprenderá a buscar texto en archivos en un sistema Linux usando el comando `grep`. Realizará búsquedas básicas, mostrará números de línea, usará anclas como `^` y `$` para hacer coincidir posiciones de línea, y aprovechará las expresiones regulares básicas y extendidas para la coincidencia de patrones complejos.
-2. **[Procesamiento de Texto y Expresiones Regulares](https://labex.io/es/labs/linux-text-processing-and-regular-expressions-18003)** - Aprenda las potentes herramientas de procesamiento de texto grep, sed y awk. Aprenda a usar expresiones regulares para una manipulación de texto eficiente y coincidencia de patrones en Linux.
-3. **[Extraer Correos y Números](https://labex.io/es/labs/linux-extracting-mails-and-numbers-17991)** - En este desafío, aprenderá a usar grep y expresiones regulares para extraer direcciones de correo electrónico y números de un archivo, demostrando habilidades esenciales de procesamiento de texto en Linux.
+Esto coincide con `seashell` seguido de cero o más caracteres `s` adicionales. En el modo ERE con `grep -E`, los operadores habituales incluyen:
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con las expresiones regulares y el procesamiento de texto.
+- `+`: una o más repeticiones.
+- `?`: cero o una repetición.
+- `|`: la expresión de la izquierda o la de la derecha.
+- `(...)`: agrupa expresiones.
 
-## Quiz Question
+Por ejemplo:
 
-¿Qué expresión regular usaría para hacer coincidir cualquier carácter único?
+```bash
+$ grep -E '^(cat|dog)s?$' animals.txt
+```
 
-## Quiz Answer
+Esto selecciona líneas completas iguales a `cat`, `cats`, `dog` o `dogs`. En el modo BRE, estos operadores tienen reglas de escape diferentes, así que no copies un patrón entre variantes sin comprobarlo.
 
-.
+:::single-choice{#regex-extended-alternation} ¿Qué orden activa la sintaxis de expresiones regulares extendidas para el patrón `^(cat|dog)s?$`?
+
+::option[`grep -F '^(cat|dog)s?$' animals.txt`]{#regex-fixed-animals explanation="`-F` trata todos los operadores regex como texto literal, por lo que desactiva la agrupación, la alternancia y la repetición opcional."}
+::option[`grep -E '^(cat|dog)s?$' animals.txt`]{#regex-extended-animals .correct explanation="`-E` selecciona expresiones regulares extendidas, lo que activa la agrupación, la alternancia y la `s` opcional mostradas."}
+::option[`grep '^(cat|dog)s?$' animals.txt`]{#regex-basic-animals explanation="`grep` usa BRE de forma predeterminada, donde estos caracteres sin escapar de agrupación y alternancia no tienen el significado ERE previsto."}
+:::
+
+Para practicar la selección mediante regex con herramientas de texto de Linux, prueba estos laboratorios prácticos:
+
+1. **[Buscar texto con grep en Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Aprende a buscar texto en archivos con `grep`, mostrar números de línea, usar anclas como `^` y `$` y aprovechar expresiones regulares básicas y extendidas.
+2. **[Procesamiento de texto y expresiones regulares](https://labex.io/labs/linux-text-processing-and-regular-expressions-18003)** - Aprende a usar las herramientas `grep`, `sed` y `awk`, así como expresiones regulares para manipular texto y buscar patrones de forma eficiente.
+3. **[Extracción de correos y números](https://labex.io/labs/linux-extracting-mails-and-numbers-17991)** - Usa `grep` y expresiones regulares para extraer direcciones de correo electrónico y números de un archivo.
+
+## Resumen
+
+Ahora puedes leer y construir expresiones regulares fundamentales orientadas a líneas.
+
+1. Distingue los operadores regex de los comodines de rutas del shell.
+2. Ancla coincidencias al principio o al final de una línea.
+3. Coincide con un carácter mediante un punto o una expresión entre corchetes.
+4. Niega conjuntos y usa clases de caracteres dependientes de la configuración regional.
+5. Elige deliberadamente la sintaxis BRE o ERE.

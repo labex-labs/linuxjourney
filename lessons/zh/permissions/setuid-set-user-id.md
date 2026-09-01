@@ -1,78 +1,95 @@
 ---
-index: 5
+lesson_id: "setuid-set-user-id"
+course_id: "permissions"
 lang: "zh"
+order_index: 5
 title: "Setuid"
+description: "学习 set-user-ID 模式位如何影响可执行程序，以及它为何需要谨慎的安全审查。"
 meta_title: "Setuid - 权限"
 meta_description: "了解 Linux Setuid (SUID) 权限、它们的工作原理以及如何修改它们。理解 SUID 在 Linux 中安全文件访问的重要性。"
 meta_keywords: "Linux Setuid, SUID, Linux 权限，chmod, passwd 命令，Linux 安全，Linux 初学者，Linux 教程"
 ---
 
-## Lesson Content
+有些程序需要调用者通常没有的、范围严格受控的访问权限。对于可执行普通文件，set-user-ID 位可以让新进程获得文件所有者的用户 ID 作为有效用户 ID。随后，程序可以执行该身份获准的操作，同时保留调用者的信息。
 
-在许多情况下，普通用户需要提升权限才能执行某些操作。系统管理员不可能每次用户需要访问受保护文件时都在场输入 root 密码，因此存在特殊的文件权限位来允许这种行为。Set User ID (SUID) 允许用户以程序文件所有者的身份而不是以其自己的身份运行程序。
+Setuid 并不是“以 root 身份运行”的通用指令。其效果取决于可执行文件的所有者、操作系统、文件系统和挂载选项，以及程序管理凭据的方式。
 
-让我们看一个例子：
+## 识别 Setuid
 
-假设我想更改我的密码，很简单对吧？我只需使用 `passwd` 命令：
-
-```bash
-passwd
-```
-
-`passwd` 命令在做什么？它正在修改几个文件，但最重要的是它正在修改 `/etc/shadow` 文件。让我们看一下这个文件：
-
-```bash
-$ ls -l /etc/shadow
-
--rw-r----- 1 root shadow 1134 Dec 1 11:45 /etc/shadow
-```
-
-等等，这个文件是 root 拥有的？我们怎么可能修改一个由 root 拥有的文件？
-
-让我们看看另一组权限，这次是我们运行的命令的权限：
+在使用 setuid `passwd` 可执行文件的系统上，长列表可能如下所示：
 
 ```bash
 $ ls -l /usr/bin/passwd
-
--rwsr-xr-x 1 root root 47032 Dec 1 11:45 /usr/bin/passwd
+-rwsr-xr-x 1 root root 68248 Jan 10 09:30 /usr/bin/passwd
 ```
 
-你会注意到这里有一个新的权限位 **s**。这个权限位就是 SUID。当一个文件设置了此权限时，它允许启动该程序的用户获得文件所有者的权限以及执行权限，在本例中是 root。所以本质上，当用户运行 `passwd` 命令时，他们是以 root 身份运行的。
+所有者执行位置的小写 `s` 表示 setuid 和所有者执行都已设置。如果有 setuid 但没有所有者执行，`ls -l` 会在该位置显示大写 `S`。
 
-这就是为什么当我们运行 `passwd` 命令时，我们能够访问像 `/etc/shadow` 这样的受保护文件。现在，如果你删除了那个位，你会发现你将无法修改 `/etc/shadow`，因此也无法更改你的密码。
+不要假设每个发行版都有相同模式或认证设计。应检查实际系统，而不是依赖示例。
 
-### 修改 SUID
+:::single-choice{#setuid-lowercase-s} 所有者执行位置的小写 `s` 表示什么？
 
-就像常规权限一样，有两种方法可以修改 SUID 权限。
+::option[已设置 setuid，但没有所有者执行。]{#setuid-s-without-execute explanation="这种组合显示为大写 `S`，而不是小写 `s`。"}
+::option[文件有 sticky bit 和组执行。]{#setuid-sticky-group explanation="sticky bit 出现在其他执行位置，而 setuid 出现在所有者位置。"}
+::option[已设置 setuid，同时也设置了所有者执行。]{#setuid-s-with-execute .correct explanation="小写 `s` 表示 setuid 位与普通所有者执行位同时存在。"}
+:::
 
-_符号方式：_
+## 理解凭据变化
+
+当内核在执行时采用 setuid，新进程通常会根据可执行文件所有者获得有效用户 ID。对于 root 拥有的程序，这可以提供 root 获准的访问，但只在程序运行期间有效，而且仅限代码执行的操作。
+
+这种机制可以让经过谨慎编写的程序验证请求，再对受保护状态进行受限更改。例如，本地密码更改工具可能需要受控访问普通用户无法直接编辑的认证数据。现代实现还依赖 PAM、文件锁、策略和其他保护措施；仅凭 setuid 无法解释完整工作流。
+
+:::single-choice{#setuid-effective-identity} 采用 setuid 可执行文件时，主要从文件所有者取得哪个身份？
+
+::option[存储在 `/etc/passwd` 中的登录名。]{#setuid-login-name explanation="执行文件不会重写调用者的账户记录或登录名。"}
+::option[进程的有效用户 ID。]{#setuid-effective-user .correct explanation="set-user-ID 执行机制会改变许多授权检查使用的有效用户身份。"}
+::option[每个已打开文件的组所有者。]{#setuid-opened-file-group explanation="Setuid 影响进程凭据，不会改变无关文件的所有权元数据。"}
+:::
+
+## 设置和移除该位
+
+使用符号形式设置 setuid：
 
 ```bash
-sudo chmod u+s myfile
+$ sudo chmod u+s myfile
 ```
 
-_数字方式：_
+在八进制记法中，setuid 在开头的特殊位数字中贡献 `4`：
 
 ```bash
-sudo chmod 4755 myfile
+$ sudo chmod 4755 myfile
 ```
 
-如你所见，SUID 用数字 4 表示，并添加到权限集的前面。你可能会看到 SUID 表示为大写 **S**。这意味着它仍然做同样的事情，但它没有执行权限。
+这里，开头的 `4` 设置 setuid，`755` 设置普通所有者、组和其他权限位。使用 `chmod u-s myfile` 可移除 setuid，而不改变其他模式位。
 
-## Exercise
+:::single-choice{#setuid-octal-value} 哪个开头的八进制值表示 setuid 特殊位？
 
-熟能生巧！理解文件权限、用户组和像 SUID 这样的特殊位如何工作对于管理和保护 Linux 系统至关重要。动手实践将巩固你的知识。
+::option[`4`]{#setuid-octal-four .correct explanation="Setuid 在开头的特殊位数字中贡献值 `4`。"}
+::option[`1`]{#setuid-octal-one explanation="开头的 `1` 表示 sticky bit。"}
+::option[`2`]{#setuid-octal-two explanation="开头的 `2` 表示 setgid 位。"}
+:::
 
-这是一个动手实验，以加强你对文件权限和用户管理的理解：
+## 把 Setuid 视为安全敏感机制
 
-1. **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 练习创建和管理用户和组，理解文件权限，并操作文件所有权。本实验提供了理解 SUID 如何利用这些概念进行提升访问所需的基础知识。
+特权 setuid 程序中的缺陷可能成为权限提升路径。这类程序必须验证输入、控制其信任的环境和文件路径、避免不安全的子进程行为、尽量减少特权代码，并尽早放弃提升后的凭据。
 
-本实验将帮助你在实际场景中应用这些概念，并增强对 Linux 用户和文件管理的信心。
+Linux 通常不会在解释型脚本上采用 setuid，因为安全实现会遇到竞态和解释器相关问题。使用 `nosuid` 挂载的文件系统也会抑制 setuid 和 setgid 效果。需求合适时，应优先选择由服务中介的操作、范围严格的 `sudo` 策略或 capabilities 等更窄的机制。
 
-## Quiz Question
+绝不要为了在共享系统上试验，就给任意 shell、解释器或复制的程序添加 setuid。应审计现有 setuid 文件，并只在隔离的可丢弃环境中练习。
 
-哪个数字代表 SUID？
+:::single-choice{#setuid-nosuid-mount} 使用 `nosuid` 挂载文件系统有什么作用？
 
-## Quiz Answer
+::option[移除该文件系统中所有文件存储的执行位。]{#setuid-nosuid-remove-execute explanation="该选项不会重写文件元数据中的普通执行位。"}
+::option[抑制该文件系统上的 setuid 和 setgid 执行效果。]{#setuid-nosuid-suppress .correct explanation="`nosuid` 挂载选项会阻止这些特殊模式位授予通常的凭据变更执行行为。"}
+::option[让该文件系统中的所有文件归 root 所有。]{#setuid-nosuid-root-owner explanation="使用 `nosuid` 挂载不会更改用户或组所有权字段。"}
+:::
 
-4
+## 总结
+
+现在，你可以识别 setuid，并说明它对凭据和安全性的影响。
+
+1. 在所有者执行位置查找 `s` 或 `S`。
+2. 把 setuid 执行与可执行文件所有者的有效用户身份联系起来。
+3. 使用符号或八进制 `chmod` 模式设置或移除该位。
+4. 把每个特权可执行文件都视为安全敏感代码。

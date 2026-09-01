@@ -1,73 +1,86 @@
 ---
-index: 4
+lesson_id: "network-manager"
+course_id: "network-config"
 lang: "fr"
-title: "Gestionnaire de Réseau"
-meta_title: "Gestionnaire de Réseau - Configuration Réseau"
-meta_description: "Découvrez le rôle du démon NetworkManager dans la gestion moderne des réseaux Linux. Apprenez comment cet outil automatise la configuration réseau et comment interagir avec lui via nm-tool et le puissant utilitaire en ligne de commande nmcli."
-meta_keywords: "NetworkManager, nm-tool, nmcli, gestionnaire réseau linux, networkmanager linux, gestionnaire réseau linux, gestion réseau linux, configuration réseau, réseau Linux"
+order_index: 4
+title: "Gestionnaire de réseau"
+description: "Découvrez comment NetworkManager distingue les périphériques, les profils de connexion persistants et l’état d’exécution actif."
+meta_title: "Gestionnaire de réseau - Configuration réseau"
+meta_description: "Découvrez le rôle du démon NetworkManager dans la gestion moderne des réseaux Linux et apprenez à examiner et configurer les connexions avec nmcli."
+meta_keywords: "NetworkManager, nm-tool, nmcli, gestionnaire réseau Linux, NetworkManager Linux, gestion réseau Linux, configuration réseau, réseau Linux"
 ---
 
-## Lesson Content
+NetworkManager gère les périphériques réseau et active des profils de connexion sur de nombreux postes de travail et serveurs Linux. Il n’est pas universel : vérifiez qu’il contrôle bien l’interface visée avant d’utiliser `nmcli` pour modifier la configuration.
 
-Pour que le réseau d'un système soit configuré automatiquement, un service est généralement déjà en place. La plupart des distributions Linux modernes utilisent le démon NetworkManager à cette fin, ce qui en fait une pierre angulaire de la **gestion du réseau Linux**.
+## Périphériques et connexions
 
-### Qu'est-ce que Network Manager sous Linux ?
+Un périphérique est une interface du noyau telle que `enp1s0` ou `wlan0`. Une connexion est un profil enregistré qui contient des paramètres IPv4, IPv6, DNS, Wi-Fi, de routage et d’autres réglages. Un périphérique peut posséder plusieurs profils, mais un seul profil applicable est normalement actif à la fois.
 
-Si vous utilisez une interface graphique (GUI), vous remarquerez probablement le service **Network Manager Linux** comme une applet sur la barre des tâches de votre bureau. Cet outil gère votre matériel réseau et les informations de connexion. Par exemple, au démarrage, NetworkManager recueille des informations sur le matériel réseau, recherche les connexions disponibles (telles que les réseaux sans fil ou câblés), puis les active pour vous connecter.
-
-### Interaction en ligne de commande
-
-Bien que l'applet GUI soit pratique, il existe également de puissants outils en ligne de commande pour interagir avec le service **networkmanager linux**. Ceux-ci sont essentiels pour l'administration de serveurs et le scripting.
-
-### Utilisation de nm-tool
-
-La commande `nm-tool` signale l'état actuel de NetworkManager et une liste de ses périphériques gérés. Notez que `nm-tool` est considéré comme obsolète sur de nombreux systèmes modernes au profit de `nmcli`.
-
-```plaintext
-pete@icebox:/$ nm-tool
-NetworkManager Tool
-
-State: connected (global)
-
-- Device: eth0  [Wired connection 1] -------------------------------------------
-  Type:              Wired
-  Driver:            pcnet32
-  State:             connected
-  Default:           yes
-  HW Address:        12:3D:45:56:7D:CC
-
-  Capabilities:
-    Carrier Detect:  yes
-
-  Wired Properties
-    Carrier:         on
-
-  IPv4 Settings:
-    Address:         192.168.22.1
-    Prefix:          24 (255.255.255.0)
-    Gateway:         192.168.22.2
-
-    DNS:             192.168.22.2
+```bash
+$ nmcli device status
+$ nmcli connection show
+$ nmcli connection show --active
 ```
 
-### L'outil moderne nmcli
+:::single-choice{#networkmanager-device-profile} Qu’est-ce qu’un profil de connexion NetworkManager ?
 
-La commande `nmcli` est l'utilitaire principal en ligne de commande pour contrôler et modifier le **Gestionnaire de réseau Linux**. Elle vous permet d'afficher l'état, de gérer les connexions et de configurer les périphériques réseau directement depuis le terminal. Pour une liste complète de ses capacités, consultez sa page de manuel (`man nmcli`).
+::option[Un connecteur physique soudé à la carte réseau.]{#networkmanager-physical-connector explanation="Il s’agit d’un composant matériel, et non d’un profil NetworkManager."}
+::option[Un ensemble de paramètres enregistré qui peut être activé sur un périphérique.]{#networkmanager-stored-settings .correct explanation="Les profils conservent la configuration indépendamment de l’objet d’interface du noyau."}
+::option[Un paquet capturé dans chaque flux actif.]{#networkmanager-packet-capture explanation="Les profils décrivent la configuration et ne contiennent pas tout le trafic."}
+:::
 
-## Exercise
+## Examiner l’état effectif
 
-La pratique rend parfait ! Bien que NetworkManager automatise une grande partie de la configuration réseau, comprendre les commandes et les concepts sous-jacents qu'il gère est crucial pour le dépannage et l'administration avancée. Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'identification et de la gestion du réseau sous Linux :
+Affichez le profil actif et les détails du périphérique :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, sur un système Linux.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir des passerelles par défaut et à vérifier les configurations réseau à l'aide de la commande `ip` et de `dhclient`.
-3. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez `ping` et `arp` pour comprendre comment les couches réseau et liaison de données interagissent, en observant ARP en action et comment les passerelles par défaut gèrent le trafic.
+```bash
+$ nmcli -f GENERAL,IP4,IP6 device show enp1s0
+$ nmcli connection show 'Wired connection 1'
+```
 
-Ces laboratoires vous aideront à appliquer les concepts d'identification et de configuration du réseau dans des scénarios réels et à renforcer votre confiance dans les fondamentaux du réseau Linux.
+Les paramètres du profil, les résultats DHCP à l’exécution et l’état du noyau peuvent différer. Comparez-les avec `ip address`, `ip route` et le résolveur. La commande obsolète `nm-tool` ne doit pas servir de base à une procédure actuelle.
 
-## Quiz Question
+:::single-choice{#networkmanager-active-command} Quelle commande répertorie les profils NetworkManager actifs ?
 
-Quelle est la commande pour afficher un résumé de l'état et des périphériques de NetworkManager tel que montré dans la leçon ? Veuillez répondre en utilisant uniquement le nom de la commande anglaise en minuscules.
+::option[`nmcli device delete --all`]{#networkmanager-delete-all explanation="Il ne s’agit pas d’une commande d’examen, et elle suggère une opération destructive."}
+::option[`nmcli connection show --active`]{#networkmanager-show-active .correct explanation="Elle limite les connexions enregistrées à celles qui sont actuellement activées."}
+::option[`ip route flush table all`]{#networkmanager-flush-routes explanation="Cette commande supprime l’état du routage au lieu d’afficher les profils."}
+:::
 
-## Quiz Answer
+## Modifier et activer un profil
 
-nm-tool
+Modifiez explicitement un profil nommé, puis activez-le pendant une fenêtre de maintenance :
+
+```bash
+$ sudo nmcli connection modify 'Wired connection 1' ipv4.method auto
+$ sudo nmcli connection up 'Wired connection 1'
+```
+
+La modification change les données persistantes du profil ; l’activation peut remplacer les adresses, les routes et le DNS actifs. Une modification à distance nécessite un accès à la console, une copie des paramètres d’origine et un retour en arrière temporisé indépendant. Ne comptez jamais sur la connexion en cours de modification pour transporter sa propre commande de récupération.
+
+:::single-choice{#networkmanager-modify-versus-up} Quelle est la différence entre `connection modify` et `connection up` ?
+
+::option[Modify redémarre l’hôte ; up modifie le code source du DNS.]{#networkmanager-reboot-source explanation="Aucune de ces descriptions ne correspond aux commandes."}
+::option[Modify change les paramètres du profil ; up active un profil.]{#networkmanager-change-activate .correct explanation="La persistance et l’activation à l’exécution sont liées, mais constituent deux opérations distinctes."}
+::option[Ce sont des alias en lecture seule qui ne peuvent jamais affecter la connectivité.]{#networkmanager-readonly explanation="Dans cette procédure, les deux commandes peuvent modifier l’état."}
+:::
+
+## Vérifier et protéger les secrets
+
+Après l’activation, vérifiez l’état du profil, les adresses et les routes du noyau, le DNS, les deux familles d’adresses ainsi que l’application prévue. Les profils Wi-Fi, VPN, 802.1X et mobiles peuvent contenir des secrets. Limitez les permissions sur les profils et évitez d’imprimer les champs secrets dans des journaux partagés ou des transcriptions du shell.
+
+:::single-choice{#networkmanager-verification} Qu’est-ce qui apporte une preuve plus solide que l’état « connecté » indiqué par NetworkManager ?
+
+::option[Le nom du profil contient le mot Wired.]{#networkmanager-name-proof explanation="Une étiquette ne prouve ni la santé du chemin, ni celle du service."}
+::option[La fenêtre du terminal reste ouverte.]{#networkmanager-terminal-open explanation="Un terminal peut survivre à certaines pannes partielles du réseau."}
+::option[Les tests du DNS et de l’application prévue réussissent.]{#networkmanager-end-to-end .correct explanation="L’état du gestionnaire doit être mis en relation avec celui du noyau et le comportement du service."}
+:::
+
+## Résumé
+
+Vous savez maintenant gérer les profils NetworkManager sans les confondre avec les objets d’interface.
+
+1. Vérifier que NetworkManager contrôle le périphérique visé.
+2. Distinguer les profils enregistrés de l’état d’exécution actif.
+3. Examiner séparément les périphériques, tous les profils et les profils actifs.
+4. Traiter la modification, l’activation, la récupération et la vérification comme des étapes distinctes.

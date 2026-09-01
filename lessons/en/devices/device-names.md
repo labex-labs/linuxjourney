@@ -1,62 +1,108 @@
 ---
-index: 3
+lesson_id: "device-names"
+course_id: "devices"
 lang: "en"
+order_index: 3
 title: "Device Names"
+description: "Learn how Linux names common storage devices, partitions, logical devices, and persistent device links."
 meta_title: "Device Names - Devices"
 meta_description: "Explore common Linux device names for storage and peripherals. This guide explains the naming convention for SCSI disks (like sda), what sda stands for, and pseudo-devices like /dev/null."
 meta_keywords: "linux device names, linux device name, what does sda stand for, sd element name, what would commonly be the device name for the first partition on the second scsi disk, /dev, SCSI devices, pseudo devices, PATA devices"
 ---
 
-## Lesson Content
+Linux device names reflect the kernel subsystem and driver presenting an interface, not always the physical connector printed on the hardware. Learn the common patterns, but discover the actual mapping on the current system before making storage changes.
 
-In Linux, every device is represented by a file in the `/dev` directory. Understanding the naming conventions for these files is crucial for system administration. Here are the most common types of Linux device names you will encounter.
+## SCSI-Layer Disk Names
 
-### SCSI and Modern Storage Devices
+Disks presented through the SCSI disk layer commonly use `sd` names. This includes many SCSI, SATA, USB-storage, and virtual disks:
 
-Even if your machine uses modern storage like SATA, NVMe, or USB drives, the Linux kernel often manages them through its SCSI (Small Computer System Interface) subsystem. This is why the most common prefix for storage devices is `sd`, which originally stood for "SCSI disk".
+- `/dev/sda`: one whole disk
+- `/dev/sdb`: another whole disk
+- `/dev/sda3`: partition 3 on `/dev/sda`
+- `/dev/sdb1`: partition 1 on `/dev/sdb`
 
-The `sd element name` follows a clear pattern:
+Letters reflect enumeration, not a durable identity. Adding a controller, changing firmware order, or attaching a device can change which disk receives a particular letter.
 
-- The `sd` prefix indicates a mass storage device.
-- The next letter represents the drive itself, assigned in the order of detection (`a` for the first, `b` for the second, and so on).
-- A number at the end indicates the partition on that drive.
+:::single-choice{#device-names-sdb-first-partition} Under the `sd` naming pattern, which path denotes partition 1 on `/dev/sdb`?
 
-Common SCSI device files include:
+::option[`/dev/sda2`]{#device-names-sda-two explanation="This denotes partition 2 on the disk currently named `/dev/sda`."}
+::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="The `p` separator is used by patterns whose base name already ends in a digit, not ordinary `sd` names."}
+::option[`/dev/sdb1`]{#device-names-sdb-one .correct explanation="For `sd` disks, the partition number is appended directly to the whole-disk name."}
+:::
 
-- `/dev/sda`: The first storage drive.
-- `/dev/sdb`: The second storage drive.
-- `/dev/sda3`: The third partition on the first storage drive.
+## Names That End in Digits
 
-So, what would commonly be the device name for the first partition on the second SCSI disk? Following the pattern, the second disk is `sdb`, and its first partition is `1`. Therefore, the device name is `/dev/sdb1`.
+Some whole-device names already contain digits, so their partition names use `p` as a separator:
 
-### Pseudo-Devices
+- `/dev/nvme0n1`: NVMe namespace 1 on controller 0
+- `/dev/nvme0n1p2`: partition 2 on that namespace
+- `/dev/mmcblk0`: an MMC block device
+- `/dev/mmcblk0p1`: partition 1 on that device
 
-Pseudo-devices are special files that do not correspond to any physical hardware but provide useful system functions. They are typically character devices.
+NVMe devices are not normally named `/dev/sdX`; they use the NVMe subsystem's naming convention.
 
-- `/dev/zero`: Accepts and discards all input. When read, it produces a continuous stream of NULL (zero value) bytes.
-- `/dev/null`: Accepts and discards all input written to it, and produces no output when read.
-- `/dev/random`: Produces a stream of random numbers generated from environmental noise.
+:::single-choice{#device-names-nvme-partition} Which path denotes partition 2 of `/dev/nvme0n1`?
 
-### Legacy PATA Devices
+::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="NVMe partition names insert `p` before the partition number."}
+::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="Without a separator, the trailing digits would be ambiguous with the namespace number."}
+::option[`/dev/sda2`]{#device-names-nvme-sda explanation="That is an `sd`-layer disk partition and does not name the specified NVMe namespace."}
+:::
 
-On older systems, you might encounter hard drives that use the Parallel ATA (PATA) interface. The Linux device name for these drives uses an `hd` prefix.
+## Logical and Virtual Block Devices
 
-- `/dev/hda`: The first PATA hard disk.
-- `/dev/hdd2`: The second partition on the fourth PATA hard disk.
+Linux also creates block devices that do not map one-to-one to a physical disk:
 
-## Exercise
+- `/dev/dm-N` for device-mapper devices, often accompanied by descriptive links under `/dev/mapper/`
+- `/dev/mdN` for Linux software RAID arrays
+- `/dev/loopN` for regular files attached as loop block devices
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux device names and storage management:
+Partitions, encryption layers, RAID, logical volumes, and filesystems form a stack. Use tools such as `lsblk` to see parent-child relationships instead of inferring the stack from a name alone.
 
-1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practice creating, formatting, and mounting partitions, which directly involves working with device names.
-2. **[Explore Hardware Devices in Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861)** - Learn to identify and inspect various hardware devices and their associated names within a Linux environment.
+:::single-choice{#device-names-device-mapper-link} Which location commonly provides descriptive links for device-mapper devices?
 
-These labs will help you apply the concepts in real scenarios and build confidence with managing storage and understanding hardware in Linux.
+::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="Device-mapper users such as LVM and disk encryption commonly expose named links in this directory."}
+::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null` is a character device, not a directory of mapped block devices."}
+::option[`/proc/partitions/mapper/`]{#device-names-proc-mapper explanation="This is not the normal path for device-mapper name links."}
+:::
 
-## Quiz Question
+## Persistent Storage Links
 
-What would commonly be the device name for the first partition on the second SCSI disk? Please provide the answer in English, paying attention to the correct case.
+User-space device management creates links under `/dev/disk/`, commonly grouped as:
 
-## Quiz Answer
+- `by-id` for hardware or transport identifiers
+- `by-uuid` for filesystem UUIDs
+- `by-label` for filesystem labels
+- `by-partuuid` for partition-table UUIDs
+- `by-path` for topology-dependent paths
 
-/dev/sdb1
+Choose an identifier that matches what must remain stable. A filesystem UUID identifies a filesystem, not necessarily the physical disk beneath it. Cloning a filesystem can duplicate its UUID, so verify uniqueness before relying on it.
+
+:::single-choice{#device-names-persistent-config} Why are `/dev/disk/by-id/` links often preferable to `/dev/sdX` in device-specific configuration?
+
+::option[They make destructive writes automatically reversible.]{#device-names-by-id-reversible explanation="A stable name does not provide snapshots, backups, or write protection."}
+::option[They convert a block device into a regular file.]{#device-names-by-id-regular explanation="The entry is a symbolic link that still resolves to a block device node."}
+::option[They are derived from device identity rather than current enumeration order.]{#device-names-by-id-stable .correct explanation="The link target can change while the identity-based link remains associated with the same recognized device."}
+:::
+
+## Pseudo-Device Names
+
+Names such as `/dev/null`, `/dev/zero`, and `/dev/urandom` describe kernel pseudo-devices rather than physical storage. `/dev/null` discards writes and returns end-of-file on reads; `/dev/zero` supplies zero bytes; `/dev/urandom` supplies bytes from the kernel random-number generator.
+
+:::single-choice{#device-names-zero-read} What does reading from `/dev/zero` produce?
+
+::option[A listing of unused storage devices.]{#device-names-zero-storage-list explanation="It is a byte-producing character device, not a discovery command."}
+::option[A stream of zero-valued bytes.]{#device-names-zero-bytes .correct explanation="The zero pseudo-device returns null bytes for requested reads."}
+::option[End-of-file immediately, like reading `/dev/null`.]{#device-names-zero-eof explanation="`/dev/zero` continues producing bytes, while `/dev/null` reads return end-of-file."}
+:::
+
+Use [Explore Hardware Devices in Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861) to compare names, persistent links, and `lsblk` relationships before attempting partition work.
+
+## Summary
+
+You can now decode common Linux storage names without treating them as permanent identity.
+
+1. Read `sdXNUMBER` as an `sd` disk partition.
+2. Use `pNUMBER` when the whole-device name already ends in a digit.
+3. Recognize logical devices such as device mapper, RAID, and loop devices.
+4. Prefer persistent links chosen for the identity you need.
+5. Distinguish storage names from kernel pseudo-devices.

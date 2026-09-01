@@ -1,112 +1,160 @@
 ---
-index: 6
+lesson_id: "systemd-goals"
+course_id: "init"
 lang: "pt"
-title: "Objetivos do Systemd"
-meta_title: "Objetivos do Systemd - Init"
-meta_description: "Explore os objetivos do systemd e aprenda a gerenciar serviços Linux usando comandos essenciais do systemctl. Este guia abrange o básico dos arquivos de unidade systemd, como iniciar, parar e habilitar serviços, e visualizar seu status."
-meta_keywords: "systemd, systemctl, serviços Linux, arquivos de unidade, objetivos systemd, gerenciamento de serviços, unidades systemd, iniciante, tutorial, guia, comandos Linux"
+order_index: 6
+title: "Objetivos do systemd"
+description: "Aprenda a inspecionar, substituir, validar, iniciar, habilitar e solucionar problemas de unidades de serviço do systemd."
+meta_title: "Objetivos do systemd - Init"
+meta_description: "Explore os objetivos do systemd e aprenda a gerenciar serviços Linux usando comandos essenciais do systemctl. Este guia aborda os fundamentos dos arquivos de unidade do systemd, como iniciar, parar e habilitar serviços e consultar seus estados."
+meta_keywords: "systemd, systemctl, serviços Linux, arquivos de unidade, objetivos do systemd, gerenciamento de serviços, unidades systemd, iniciante, tutorial, guia, comandos Linux"
 ---
 
-## Lesson Content
+`systemctl` envia solicitações a um gerenciador systemd. Esta lição se concentra nas unidades de serviço do sistema. Confirme o nome exato da unidade, o escopo do gerenciador, as dependências e o impacto operacional antes de alterar o estado.
 
-Esta lição fornece uma visão geral fundamental dos arquivos de unidade systemd e como gerenciá-los com `systemctl`, a principal ferramenta para controlar o sistema init. Abordaremos a estrutura básica de um arquivo de unidade e os comandos essenciais para gerenciar serviços Linux.
+## Lendo uma unidade de serviço
 
-### Entendendo um Arquivo de Unidade Systemd
+Uma unidade ilustrativa mínima pode ter esta aparência:
 
-A unit file (arquivo de unidade) do systemd é um arquivo de texto simples que descreve um serviço, um ponto de montagem, um dispositivo ou outro recurso que o systemd pode gerenciar. Aqui está um exemplo básico de um arquivo de unidade de serviço chamado `foobar.service`:
-
-```
+```ini
 [Unit]
-Description=Meu Serviço Foobar
-After=network.target
+Description=Example worker
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/foobar
+Type=exec
+ExecStart=/usr/local/bin/example-worker
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-Este arquivo de serviço simples é dividido em seções:
+- `[Unit]` contém a descrição e os relacionamentos de dependência.
+- `[Service]` define o ciclo de vida do processo e o comportamento específico do serviço.
+- `[Install]` informa aos comandos de habilitação quais aliases ou links de dependência devem ser criados; ela não é automaticamente uma dependência ativa em tempo de execução.
 
-- **[Unit]**: Esta seção contém metadados e informações de dependência. A diretiva `Description` fornece um nome legível para a unidade. Diretivas como `After` e `Before` controlam a ordem de inicialização, garantindo que esta unidade inicie após a rede estar disponível.
-- **[Service]**: Esta seção define como gerenciar o serviço. A diretiva `ExecStart` é crucial, pois especifica o comando a ser executado para iniciar o serviço. Outras diretivas como `ExecStop` e `ExecReload` podem definir como parar ou recarregar o serviço.
-- **[Install]**: Esta seção define o comportamento da unidade quando ela é habilitada ou desabilitada com `systemctl`. A diretiva `WantedBy` informa ao systemd para iniciar este serviço como parte de um alvo específico, como o `multi-user.target` para uma inicialização padrão não gráfica.
+`ExecStart=` não é passado por um shell por padrão. Pipelines, redirecionamentos, variáveis e aspas do shell não se comportam como em uma linha de comando interativa, a menos que um shell explícito seja invocado intencionalmente.
 
-Este é apenas um vislumbre dos arquivos de unidade systemd. Para configurações mais avançadas, é altamente recomendada uma leitura adicional sobre o tópico.
+:::single-choice{#systemd-goals-install-section} Qual é a finalidade principal das diretivas de `[Install]`, como `WantedBy=`?
 
-### Comandos Essenciais do Systemctl
+::option[Garantir que o processo do serviço já esteja em execução.]{#systemd-goals-install-running explanation="A ativação em tempo de execução exige start ou outra dependência acionadora."}
+::option[Descrever links ou relacionamentos criados quando a unidade é habilitada.]{#systemd-goals-enable-links .correct explanation="Os metadados de instalação são interpretados pelas operações de habilitação e são separados do estado atual do processo."}
+::option[Executar todos os comandos pelo shell interativo do usuário.]{#systemd-goals-install-shell explanation="A análise de comandos da unidade não usa um shell interativo por padrão."}
+:::
 
-Agora, vamos explorar os comandos essenciais do `systemctl` que você usará para interagir com as unidades systemd e gerenciar serviços Linux.
+## Inspecionando a configuração efetiva
 
-### Listando Unidades Systemd
-
-Para ver todas as unidades ativas que o systemd está gerenciando atualmente, use o comando `list-units`.
-
-```bash
-systemctl list-units
-```
-
-### Verificando o Status de uma Unidade
-
-Para visualizar o status detalhado de uma unidade específica, incluindo se ela está ativa, habilitada e suas entradas de log mais recentes, use o comando `status`.
+Liste as unidades carregadas com:
 
 ```bash
-systemctl status networking.service
+$ systemctl list-units --type=service
 ```
 
-### Gerenciando Estados de Serviço
-
-Você pode controlar o estado de execução de um serviço usando `start`, `stop` e `restart`.
-
-Para iniciar um serviço imediatamente:
+Liste os arquivos de unidade instalados e seus estados de habilitação com:
 
 ```bash
-sudo systemctl start networking.service
+$ systemctl list-unit-files --type=service
 ```
 
-Para parar um serviço em execução:
+Essas são visualizações diferentes: um arquivo de unidade pode estar habilitado, mas inativo; ativo, mas desabilitado; estático; gerado; transitório; mascarado; ou ausente em uma das listas. Inspecione o conteúdo combinado do fornecedor e dos complementos com:
 
 ```bash
-sudo systemctl stop networking.service
+$ systemctl cat UNIT.service
+$ systemctl show UNIT.service
 ```
 
-Para parar e depois iniciar o serviço novamente:
+:::single-choice{#systemd-goals-list-units-versus-files} O que `list-unit-files` mostra que não é o foco principal de `list-units`?
+
+::option[Apenas os processos que consomem mais CPU.]{#systemd-goals-cpu-processes explanation="A classificação do uso de recursos por processos não faz parte desses comandos de inventário de unidades."}
+::option[Os estados de habilitação dos arquivos de unidade instalados.]{#systemd-goals-unit-file-state .correct explanation="Ele informa se os arquivos de unidade estão habilitados, desabilitados, estáticos, mascarados e outros estados relacionados à instalação."}
+::option[Todas as linhas já gravadas no journal.]{#systemd-goals-all-journal explanation="Consultas ao journal usam `journalctl`."}
+:::
+
+## Criando uma substituição local
+
+Use um complemento em vez de editar uma unidade empacotada:
 
 ```bash
-sudo systemctl restart networking.service
+$ sudo systemctl edit UNIT.service
 ```
 
-### Habilitando e Desabilitando Serviços
-
-Habilitar um serviço cria um link simbólico que o conecta ao processo de inicialização, garantindo que ele inicie automaticamente. Desabilitá-lo remove esse link.
-
-Para habilitar um serviço para iniciar na inicialização:
+Após salvar, nas implementações atuais, o systemctl normalmente solicita que o gerenciador recarregue como parte desse fluxo de edição. Porém, quando os arquivos forem alterados por outro método, execute:
 
 ```bash
-sudo systemctl enable networking.service
+$ sudo systemctl daemon-reload
 ```
 
-Para desabilitar um serviço de iniciar na inicialização:
+`daemon-reload` relê as definições de unidade e reconstrói as dependências. Ele não recarrega a configuração da aplicação nem reinicia os serviços em execução. Quando apropriado, valide a sintaxe e as dependências da unidade com `systemd-analyze verify` e depois revise a unidade efetiva combinada.
+
+:::single-choice{#systemd-goals-daemon-reload} O que `systemctl daemon-reload` faz?
+
+::option[Obriga todos os daemons a reler suas configurações de aplicação.]{#systemd-goals-reload-all-apps explanation="O recarregamento da aplicação é específico do serviço e separado da configuração do gerenciador."}
+::option[Reinicializa o kernel em uma nova versão.]{#systemd-goals-reload-kernel explanation="A ativação do kernel exige uma inicialização, não o recarregamento das definições de unidade."}
+::option[Recarrega as definições de unidade e as informações de dependência do systemd.]{#systemd-goals-reload-manager .correct explanation="Ele atualiza a visão de configuração do gerenciador sem reiniciar serviços inerentemente."}
+:::
+
+## Estado do serviço em tempo de execução
+
+Depois de validar a configuração do serviço e preservar um acesso de recuperação:
 
 ```bash
-sudo systemctl disable networking.service
+$ sudo systemctl start peanut.service
+$ sudo systemctl stop peanut.service
+$ sudo systemctl restart peanut.service
+$ sudo systemctl reload peanut.service
 ```
 
-Estes comandos são os blocos de construção para o gerenciamento de serviços em sistemas Linux modernos. Dominá-los é um passo fundamental em sua jornada Linux.
+`reload` só funciona quando a unidade define ou oferece suporte a uma ação de recarregamento. `restart` interrompe o processo e pode não conseguir restaurar o serviço. Para acesso remoto, rede, armazenamento ou autenticação, mantenha um caminho de console separado e verifique a configuração antes de agir.
 
-## Exercise
+Verifique o estado e os logs com:
 
-A prática é fundamental para dominar novas habilidades. Este laboratório prático ajudará a reforçar sua compreensão do gerenciamento de processos, que são frequentemente controlados por serviços systemd:
+```bash
+$ systemctl status peanut.service
+$ systemctl is-active peanut.service
+$ journalctl -u peanut.service -b
+```
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro plano e em segundo plano, inspecionando-os com `ps`, monitorando recursos com `top`, ajustando a prioridade com `renice` e terminando-os com `kill`. Este laboratório lhe dará experiência prática com os efeitos em tempo de execução do gerenciamento de unidades systemd.
+“Ativo” é um estado do gerenciador, não uma prova de que todos os pontos de extremidade da aplicação estão íntegros.
 
-Este laboratório o ajudará a aplicar esses conceitos em um cenário do mundo real e a construir confiança no gerenciamento de processos no Linux.
+:::single-choice{#systemd-goals-start-peanut} Qual comando inicia `peanut.service` agora sem alterar por si só sua habilitação futura?
 
-## Quiz Question
+::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="Enable altera os links de instalação, mas não inicia o serviço, a menos que seja combinado com `--now`."}
+::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="Start solicita a ativação atual em tempo de execução e é separado da habilitação."}
+::option[`sudo systemctl daemon-reload peanut.service`]{#systemd-goals-daemon-reload-unit explanation="Daemon-reload não recebe um operando de ativação de unidade e não inicia esse serviço."}
+:::
 
-What is the command to start a service named peanut.service? Please answer in English. The answer is case-sensitive.
+## Habilitação, desabilitação e mascaramento
 
-## Quiz Answer
+Gerencie os links de dependência futuros com:
 
-sudo systemctl start peanut.service
+```bash
+$ sudo systemctl enable peanut.service
+$ sudo systemctl disable peanut.service
+```
+
+Enable não inicia a unidade, a menos que `--now` seja adicionado. Disable não para uma unidade em execução, a menos que `--now` seja adicionado. Uma unidade estática pode não ter metadados de instalação e ainda assim ser ativada como dependência de outra unidade.
+
+O mascaramento vincula a unidade a `/dev/null` e bloqueia a ativação comum, inclusive por dependência, até que ela seja desmascarada. Ele é mais forte que disable e pode interromper dependentes; inspecione as dependências reversas antes de usá-lo.
+
+:::single-choice{#systemd-goals-disable-runtime} O que acontece com um serviço que já está em execução depois de `systemctl disable UNIT` sem `--now`?
+
+::option[Ele é encerrado imediatamente com `SIGKILL`.]{#systemd-goals-disable-kills explanation="Disable por si só não solicita uma parada imediata."}
+::option[Seu executável é excluído do sistema de arquivos.]{#systemd-goals-disable-deletes explanation="As operações de habilitação gerenciam links, não os arquivos de programa dos pacotes."}
+::option[Normalmente, ele continua em execução enquanto os links de habilitação futura são removidos.]{#systemd-goals-disable-keeps-running .correct explanation="O estado em tempo de execução e o estado de instalação são dimensões separadas."}
+:::
+
+## Verifique o resultado do serviço
+
+Após uma alteração, verifique o estado do processo, os logs recentes, os pontos de extremidade em escuta, as unidades dependentes, a integridade da aplicação e o comportamento após uma reinicialização controlada caso a habilitação de inicialização tenha mudado. Use `systemctl is-failed`, `systemctl list-dependencies` e verificações próprias da aplicação conforme apropriado.
+
+## Resumo
+
+Agora você pode gerenciar um serviço do systemd sem confundir configuração, execução e habilitação.
+
+1. Leia `[Unit]`, `[Service]` e `[Install]` de acordo com suas funções distintas.
+2. Compare o estado das unidades carregadas com o estado dos arquivos de unidade instalados.
+3. Use complementos e recarregue o gerenciador após alterações externas nos arquivos.
+4. Inicie, pare, recarregue ou reinicie somente após revisar o impacto.
+5. Trate enable, disable e mask como controles distintos de persistência.

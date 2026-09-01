@@ -1,53 +1,96 @@
 ---
-index: 1
+lesson_id: "system-logging"
+course_id: "logging"
 lang: "pt"
+order_index: 1
 title: "Registro de Sistema"
+description: "Aprenda como fontes, coletores, armazenamento e ferramentas de consulta de logs Linux se relacionam."
 meta_title: "Registro de Sistema - Logging"
 meta_description: "Descubra a melhor forma de aprender Linux entendendo o registro de sistema. Este guia cobre syslog, rsyslogd e como encontrar e ler arquivos de log em /var/log. Uma parte essencial de qualquer curso Linux online gratuito."
 meta_keywords: "como aprender linux, melhor forma de aprender linux, registro de sistema linux, syslog, rsyslogd, var log, logs do sistema, aprender linha de comando linux, melhores recursos para aprender linux"
 ---
 
-## Lesson Content
+Logs registram eventos emitidos pelo kernel, serviços, aplicativos e componentes de segurança. Eles ajudam no diagnóstico e na auditoria, mas apenas quando a coleta funciona, os horários são compreendidos e a fonte relevante está incluída.
 
-Compreender o registro de sistema (system logging) é uma parte fundamental de aprender **como aprender Linux**. Os serviços, o kernel e os daemons no seu sistema estão constantemente ativos. Essa atividade é registrada e salva no seu sistema em arquivos chamados logs, criando um diário legível por humanos de todos os eventos importantes do sistema.
+## Caminho de uma mensagem de log
 
-### O Que São Logs do Sistema
+Um caminho de logging tem partes distintas:
 
-Os logs do sistema são essenciais para monitorar a saúde do sistema, solucionar problemas e auditar a segurança. Esses dados são tipicamente armazenados no diretório `/var`, que é designado para dados variáveis como logs. Explorar esses arquivos é um passo crucial para quem procura a **melhor maneira de aprender a linha de comando do Linux**.
+1. Uma fonte emite um evento.
+2. Um coletor o recebe e enriquece.
+3. Regras de roteamento e retenção escolhem armazenamento ou encaminhamento.
+4. Uma ferramenta consulta os registros armazenados.
 
-### O Papel do Syslog e Rsyslogd
+Em hosts systemd, `systemd-journald` costuma coletar saída de serviços, mensagens do kernel e mensagens nativas do journal ou syslog. Um daemon como rsyslog também pode receber mensagens, gravar arquivos de texto ou encaminhá-las. Aplicativos podem manter arquivos próprios ou telemetria externa.
 
-Mas como essas mensagens são coletadas? Um serviço central chamado `syslog` é responsável por reunir essas informações e direcioná-las para o registrador do sistema.
+:::single-choice{#system-logging-distinct-roles} Qual componente decide onde mensagens aceitas são armazenadas ou encaminhadas?
 
-O protocolo `syslog` envolve vários componentes. Um dos mais importantes é um daemon chamado `syslogd` (ou `rsyslogd` na maioria das distribuições Linux modernas). Este daemon é executado em segundo plano, esperando por mensagens de eventos. Ele então filtra essas mensagens e, com base na sua configuração, as envia para um arquivo, as exibe no console ou as descarta. Dominar esses conceitos faz parte da **melhor maneira de aprender Linux**.
+::option[O diretório de trabalho atual do terminal.]{#system-logging-cwd explanation="Um diretório do shell não define rotas de logging do sistema."}
+::option[O nome do arquivo da imagem de kernel.]{#system-logging-kernel-file explanation="O kernel emite mensagens, mas o nome de sua imagem não é a política de roteamento."}
+::option[A configuração de roteamento e retenção.]{#system-logging-routing .correct explanation="As regras entre coleta e armazenamento determinam destinos e retenção."}
+:::
 
-### Localizando e Lendo Arquivos de Log
+## Descoberta dos logs disponíveis
 
-Embora o registrador do sistema forneça um mecanismo centralizado, ele não é a única fonte de logs. Muitos aplicativos implementam suas próprias regras de registro e geram arquivos de log separados. No entanto, uma entrada de log padrão geralmente inclui um carimbo de data/hora, o nome do host, o processo que gerou a mensagem e os detalhes do evento.
+Não presuma que todo host tenha os mesmos arquivos. Examine serviços ativos e configuração local:
 
-Aqui está um exemplo de uma linha de um arquivo syslog típico:
+```bash
+$ systemctl --type=service --state=running | grep -E 'journal|syslog'
+$ ls -la /var/log
+$ journalctl --disk-usage
+```
 
-```plaintext
-pete@icebox:~$ less /var/log/syslog
+`/var/log/syslog` é comum na família Debian com roteamento compatível, enquanto `/var/log/messages` aparece em outros sistemas. Ambos podem faltar em um host apenas com journal. A documentação do aplicativo e a unit podem revelar destinos adicionais.
+
+:::single-choice{#system-logging-file-absence} O que a ausência de `/var/log/syslog` significa necessariamente?
+
+::option[O host pode usar outro destino configurado.]{#system-logging-other-destination .correct explanation="Sistemas apenas com journal e políticas diferentes não precisam criar esse arquivo."}
+::option[O kernel nunca produziu uma mensagem.]{#system-logging-no-kernel explanation="Registros do kernel podem estar no journal ou em outro destino."}
+::option[Todos os aplicativos pararam.]{#system-logging-apps-stopped explanation="Não se deduz o estado dos aplicativos pela ausência de um caminho."}
+:::
+
+## Consulta do journal
+
+Comece por uma consulta limitada:
+
+```bash
+$ journalctl -b -p warning
+$ journalctl -u ssh.service --since '1 hour ago'
+```
+
+`-b` seleciona o boot atual, `-p` filtra prioridade e `-u` filtra uma unit. Nomes e boots retidos variam. Use `journalctl --list-boots` para listar boots e `journalctl -f` para acompanhar novos registros ao reproduzir um problema.
+
+:::single-choice{#system-logging-current-boot} Qual opção limita uma consulta `journalctl` ao boot atual?
+
+::option[`-b`]{#system-logging-boot-option .correct explanation="Sem argumento, o seletor escolhe o boot atual."}
+::option[`-u`]{#system-logging-unit-option explanation="Essa opção filtra por unit do systemd."}
+::option[`-f`]{#system-logging-follow-option explanation="Essa opção acompanha novos registros."}
+:::
+
+## Leitura dos registros em contexto
+
+Uma linha tradicional pode ser:
+
+```text
 Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 ```
 
-Esta entrada mostra que, em 27 de janeiro às 07:41:32, o serviço `anacron` no host `icebox` iniciou o trabalho `cron.weekly`. Você pode visualizar as mensagens de evento coletadas pelo registrador do sistema examinando arquivos como `/var/log/syslog` ou `/var/log/messages`.
+Ela contém horário, host, programa e PID, depois a mensagem. Trate o texto como saída do aplicativo, não como fato estruturado garantido. Confira fuso, sincronização do relógio, ID do boot, reutilização do PID e eventos próximos. Campos do journal podem fornecer identificadores mais fortes.
 
-## Exercise
+Logs podem conter usuários, endereços, caminhos, tokens e outros dados sensíveis. Aplique privilégio mínimo, remova dados de exportações e preserve originais e horários numa investigação.
 
-A prática é essencial para a maestria. Os seguintes laboratórios práticos são alguns dos **melhores recursos para aprender Linux** em gerenciamento de logs e habilidades de visualização de arquivos.
+:::single-choice{#system-logging-export-safety} O que fazer antes de compartilhar externamente um trecho de log?
 
-1. **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Aprenda habilidades essenciais da linha de comando do Linux para visualizar e navegar eficientemente por arquivos de texto, incluindo logs do sistema e arquivos de configuração. Pratique o uso de comandos como `cat`, `more` e `less` para extrair informações críticas de vários tipos de arquivos.
-2. **[Comando tail do Linux: Exibição do Final do Arquivo](https://labex.io/pt/labs/linux-linux-tail-command-file-end-display-214303)** - Aprenda o comando `tail` do Linux para visualizar e monitorar o final de arquivos de texto. Isso é particularmente útil para análise de logs em tempo real.
-3. **[Pesquisar Texto com grep no Linux](https://labex.io/pt/labs/comptia-search-text-with-grep-in-linux-590841)** - Neste laboratório, você aprenderá a pesquisar texto em arquivos em um sistema Linux usando o comando `grep`. Isso é inestimável para encontrar entradas específicas dentro de arquivos de log grandes.
+::option[Substituir cada horário por um valor aleatório.]{#system-logging-random-time explanation="Destruir horários impede correlação e não é uma boa forma de anonimização."}
+::option[Revisá-lo em busca de segredos e identificadores sensíveis.]{#system-logging-review-sensitive .correct explanation="Logs frequentemente contêm dados operacionais ou pessoais que exigem remoção controlada."}
+::option[Tornar o log original gravável por todos.]{#system-logging-world-writable explanation="Reduzir controles pode comprometer a integridade e expor mais dados."}
+:::
 
-Esses laboratórios ajudarão você a aplicar os conceitos de gerenciamento e análise de arquivos de log em cenários reais e a construir confiança com o monitoramento do sistema Linux.
+## Resumo
 
-## Quiz Question
+Agora você consegue localizar e consultar logs Linux sem presumir um caminho universal.
 
-What is the daemon that manages logs on newer Linux systems? (Please answer in English, paying attention to case sensitivity).
-
-## Quiz Answer
-
-rsyslogd
+1. Separar fontes, coletores, roteamento, armazenamento e visualizadores.
+2. Descobrir a configuração ativa do host.
+3. Usar consultas limitadas por unit, boot, tempo ou prioridade.
+4. Correlacionar registros no contexto e proteger dados sensíveis.

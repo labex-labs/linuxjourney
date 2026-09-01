@@ -1,49 +1,100 @@
 ---
-index: 6
+lesson_id: "managing-log-files"
+course_id: "logging"
 lang: "zh"
+order_index: 6
 title: "管理日志文件"
-meta_title: "管理日志文件 - 日志记录"
-meta_description: "使用本初学者指南掌握 Linux 日志管理，了解 logrotate。学习日志轮换如何节省磁盘空间、如何配置它以及如何保持系统日志井井有条。"
-meta_keywords: "logrotate, Linux 日志，日志管理，日志轮换，Linux 教程，初学者，指南，磁盘空间"
+description: "学习如何使用 logrotate 配置、测试并验证安全的文本日志轮转。"
+meta_title: "管理日志文件 - 日志"
+meta_description: "通过这篇面向初学者的 logrotate 指南掌握 Linux 日志管理。了解日志轮转如何节省磁盘空间、如何进行配置，以及如何保持系统日志井然有序。"
+meta_keywords: "logrotate, Linux 日志, 日志管理, 日志轮转, Linux 教程, 初学者, 指南, 磁盘空间"
 ---
 
-## Lesson Content
+无限增长的文本日志可能耗尽文件系统，而过于激进的删除也可能清除运维或合规所需的证据。`logrotate` 会把配置好的大小、时间、压缩、所有权和保留策略应用到文件日志。
 
-系统和应用程序日志文件会生成大量数据，这些数据存储在您的硬盘上。随着时间的推移，这些文件可能会增长到无法管理的规模，给系统管理员带来诸多挑战。本 Linux 教程课程为您提供了有效日志管理的入门指南。
+## 理解轮转
 
-### 日志增长的挑战
+典型的轮转会重命名活动文件、创建替代文件、按需要求应用程序重新打开文件、压缩较早的版本，并删除超过保留期限的文件。这些步骤取决于配置；轮转不是备份，因为保留副本仍可能被删除、损坏，或随同一台主机一起丢失。
 
-随着日志文件膨胀，它们会消耗宝贵的磁盘空间。如果不加以控制，它们可能会填满一个分区，从而可能导致系统不稳定或应用程序故障。此外，在单个庞大的日志文件中搜索特定信息既缓慢又效率低下。我们需要一种策略来管理这些日志，保持最新数据可访问，同时归档或丢弃旧条目。
+:::single-choice{#logrotate-not-backup} 为什么日志轮转不能替代备份或归档？
 
-### 什么是日志轮换？
+::option[轮转文件仍受本地保留策略和主机故障影响。]{#logrotate-local-retention .correct explanation="轮转控制工作日志的各代文件，但不会创建独立的持久副本。"}
+::option[轮转只能处理图像文件。]{#logrotate-images explanation="该工具主要用于日志文件。"}
+::option[每次轮转都会永久保留所有版本。]{#logrotate-forever explanation="保留规则通常会移除较早版本。"}
+:::
 
-解决此问题的方案是一个称为**日志轮换 (log rotation)** 的过程。Linux 系统中最常用的工具是 `logrotate`。此工具可自动管理日志文件的过程。日志轮换通常包括：
+## 查找配置
 
-- 重命名当前日志文件（例如，`app.log` 变为 `app.log.1`）。
-- 创建一个新的空文件以记录新条目。
-- 压缩旧日志文件以节省磁盘空间（例如，`app.log.1.gz`）。
-- 在达到一定轮换次数后删除最旧的日志文件。
+主文件通常是 `/etc/logrotate.conf`，软件包或应用程序配置片段位于 `/etc/logrotate.d/` 下。简化的策略可能如下：
 
-这种自动化的日志管理可确保日志保持可管理的规模，并有效利用磁盘空间。
+```text
+/var/log/example/app.log {
+    daily
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0640 example adm
+}
+```
 
-### logrotate 的工作原理
+该配置要求每天评估，保留七代轮转文件，延迟一代后再压缩，允许日志缺失或为空，并以明确的模式和所有权新建文件。实际是否轮转还取决于记录的状态以及调度器调用 logrotate 的方式。
 
-`logrotate` 实用程序具有高度可配置性，通常通过 cron 作业自动安排每天运行一次。其主配置文件是 `/etc/logrotate.conf`，但各个应用程序的日志设置通常放置在 `/etc/logrotate.d/` 目录中的单独文件中。这些配置文件允许您为不同的 **Linux 日志** 指定规则，例如轮换频率、保留多少旧日志以及是否压缩它们。虽然存在其他工具，但 `logrotate` 是 Linux 世界中日志轮换的标准。
+:::single-choice{#logrotate-rotate-seven} `rotate 7` 指定了什么？
 
-## Exercise
+::option[按照策略最多保留七代轮转文件。]{#logrotate-seven-generations .correct explanation="超过配置的保留数量后，较早版本会被移除。"}
+::option[每天运行应用程序七次。]{#logrotate-run-seven explanation="该指令控制保留的文件代数，而不是应用程序执行次数。"}
+::option[将每个轮转文件的权限设为模式 0007。]{#logrotate-mode-seven explanation="文件模式由 create 等指令控制。"}
+:::
 
-实践造就完美！以下是一些实践操作实验，以加强您对日志文件管理和相关系统管理任务的理解：
+## 与写入程序协调
 
-1. **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习基本的 Linux 命令行技能，以有效地查看和导航文本文件，包括由 `logrotate` 等工具管理的系统日志和配置文件。
-2. **[快速威胁检测](https://labex.io/zh/labs/linux-rapid-threat-detection-387930)** - 学习网络安全分析所需的基本 Linux 命令行技能。使用 `tail` 和 `head` 命令快速提取和分析最近的日志条目，模拟在高风险技术环境中进行快速威胁检测。
-3. **[在 Linux 中使用 tar 创建和恢复备份](https://labex.io/zh/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - 通过备份目录获得系统管理任务的实践经验，这通常是日志轮换策略中用于归档旧日志的一部分。
+重命名日志后，守护进程仍可能通过保持打开的文件描述符继续写入旧文件。`postrotate` 脚本通常会发送应用程序文档规定的重新加载或重新打开信号。应验证具体应用程序行为，并让脚本作用范围保持最小。
 
-这些实验将帮助您在实际场景中应用这些概念，并增强您在 Linux 中管理和与日志文件交互的信心。
+当应用程序无法重新打开日志时，`copytruncate` 会复制文件，然后就地截断原文件。在复制和截断的时间窗口内，写入可能丢失或重复，因此这是一种折中方案，而不是普遍安全的默认选择。
 
-## Quiz Question
+:::single-choice{#logrotate-open-descriptor} 为什么轮转后可能需要向应用程序发送重新打开信号？
 
-用于日志轮换和管理 Linux 日志的主要实用程序是什么？请用小写英文回答。
+::option[它保持打开的描述符可能仍指向已重命名文件。]{#logrotate-descriptor-renamed .correct explanation="重新打开后，后续写入才会使用新创建的活动路径。"}
+::option[压缩会自动停止每个应用程序进程。]{#logrotate-compression-stops explanation="压缩本身不会管理写入进程的生命周期。"}
+::option[内核禁止创建第二个日志文件。]{#logrotate-kernel-forbids explanation="可以存在多个日志文件；问题在于写入程序打开了哪个 inode。"}
+:::
 
-## Quiz Answer
+## 激活前测试
 
-logrotate
+使用调试模式检查决策，而不轮转文件：
+
+```bash
+$ sudo logrotate -d /etc/logrotate.conf
+```
+
+调试输出不能证明真实运行期间权限、脚本、可用空间或应用程序重新打开一定成功。应在受控环境中测试新规则，执行后检查活动文件、轮转版本、所有权、压缩、应用程序输出和 logrotate 状态。`-f` 会强制轮转并改变状态，不要把它误认为试运行。
+
+:::single-choice{#logrotate-debug-mode} `logrotate -d` 提供什么？
+
+::option[永久删除所有过期日志。]{#logrotate-debug-delete explanation="调试模式报告预期决策，而不实际执行轮转。"}
+::option[无视策略强制进行生产环境轮转。]{#logrotate-debug-force explanation="强制选项是会改变状态的 -f。"}
+::option[不修改日志文件或状态的诊断评估。]{#logrotate-debug-dry .correct explanation="它适合首先检查语法和决策，之后再进行受控的真实验证。"}
+:::
+
+## 考虑其他存储
+
+Logrotate 只管理其策略指定的文件。systemd journal 有自己的大小和保留配置，数据库和远程日志服务也有各自的生命周期控制。应监控文件系统容量和日志功能健康状况，以便在写入程序卡住或轮转失败耗尽空间前发现问题。
+
+:::single-choice{#logrotate-journal-retention} logrotate 规则会自动实施 systemd journal 保留策略吗？
+
+::option[不会，journal 存储有自己的配置和限制。]{#logrotate-journal-separate .correct explanation="logrotate 只管理其文件策略选中的路径。"}
+::option[会，因为所有日志共享同一个保留引擎。]{#logrotate-all-logs explanation="文件轮转和 journal 保留是两个独立机制。"}
+::option[会，但仅在没有文本日志时。]{#logrotate-journal-fallback explanation="是否存在文本日志不会合并这两个保留系统。"}
+:::
+
+## 总结
+
+现在，你可以设计并验证文件日志轮转策略，而不会把它误认为归档。
+
+1. 平衡空间、运维和保留要求。
+2. 定义代数、压缩、所有权和空文件处理方式。
+3. 与保持文件描述符打开的应用程序安全协调。
+4. 在受控真实轮转前调试配置。
+5. 分别管理 journal 和外部存储的保留策略。

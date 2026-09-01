@@ -1,63 +1,78 @@
 ---
-index: 10
+lesson_id: "copy-cp-command"
+course_id: "command-line"
 lang: "fr"
+order_index: 10
 title: "cp (Copier)"
+description: "Apprenez à copier des fichiers et des arborescences tout en contrôlant les écrasements et les attributs conservés."
 meta_title: "cp (Copier) - Ligne de commande"
 meta_description: "Apprenez la commande Linux cp avec des exemples pour copier des fichiers, des répertoires, plusieurs fichiers, des jokers, des sauvegardes et des options comme cp -r, cp -i et cp -p."
 meta_keywords: "commande linux cp, commande cp, copier fichiers linux, cp -r, cp -i, cp -p, cp -a, cp -u, copie récursive, jokers linux"
 ---
 
-## Lesson Content
-
-La commande `cp` est l'outil standard pour copier des fichiers et des répertoires sous Linux. Elle crée une nouvelle copie tout en laissant le fichier original en place. Sa syntaxe de base est :
+La commande `cp` copie des fichiers et répertoires en laissant la source en place. Sa syntaxe élémentaire est :
 
 ```bash
 cp [OPTIONS] SOURCE DESTINATION
 ```
 
-Vous pouvez copier un fichier vers un autre fichier, un ou plusieurs fichiers dans un répertoire, ou un arbre de répertoires entier avec la bonne option.
+Vous pouvez copier un fichier vers un autre chemin, plusieurs fichiers dans un répertoire ou toute une arborescence de manière récursive.
 
-### Copie de fichiers basique
+## Copier un fichier
 
-Pour copier un fichier, vous spécifiez le fichier source et le répertoire ou chemin de destination.
+Placez d'abord la source, puis la destination :
 
 ```bash
 $ cp mycoolfile /home/pete/Documents/cooldocs
 ```
 
-Dans cet exemple, `mycoolfile` est le fichier source, et `/home/pete/Documents/cooldocs` est le répertoire de destination. Vous pouvez aussi copier un fichier et lui donner un nouveau nom dans la destination.
+Si `/home/pete/Documents/cooldocs` est un répertoire existant, la copie y est créée sous le nom `mycoolfile`. Vous pouvez aussi fournir un nouveau nom de destination :
 
 ```bash
 $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 ```
 
-Si la destination est un répertoire existant, le fichier copié garde son nom d'origine. Si la destination est un nom de fichier, `cp` crée une copie avec ce nouveau nom.
+Dans le second exemple, les données copiées prennent le nom `mycoolfile_backup`.
 
-### Copier plusieurs fichiers dans un répertoire
+:::single-choice{#copy-file-under-new-name} Quelle commande copie `draft.txt` vers un fichier nommé `final.txt` tout en conservant `draft.txt` ?
 
-Pour copier plusieurs fichiers dans le même répertoire, listez d'abord toutes les sources et mettez le répertoire de destination en dernier.
+::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` renomme ou déplace le chemin original ; elle ne laisse pas la copie source demandée en place."}
+::option[`cp final.txt draft.txt`]{#copy-reversed explanation="La source et la destination sont inversées. Cette commande copierait `final.txt` vers `draft.txt`."}
+::option[`cp draft.txt final.txt`]{#copy-draft .correct explanation="`cp` lit `draft.txt` et crée ou remplace `final.txt`, tandis que la source reste disponible."}
+:::
+
+## Copier plusieurs fichiers dans un répertoire
+
+Énumérez toutes les sources, puis placez le répertoire de destination en dernier :
 
 ```bash
 $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 ```
 
-Le dernier argument doit être un répertoire lorsque vous fournissez plus d'une source.
+Lorsque vous fournissez plusieurs sources, le dernier argument doit être un répertoire.
 
-### Utiliser les jokers pour une copie en masse
+:::single-choice{#copy-multiple-files} Quelle commande copie `a.txt` et `b.txt` dans le répertoire existant `archive/` ?
 
-Les jokers sont des caractères spéciaux qui vous aident à sélectionner plusieurs fichiers selon des motifs, offrant une grande flexibilité.
+::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="Dans cette forme de `cp`, le répertoire de destination doit se trouver à la fin. Le placer en premier change l'interprétation des opérandes."}
+::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="Avec plusieurs sources, `cp` traite le dernier répertoire existant comme destination de tous les fichiers qui le précèdent."}
+::option[`cp a.txt archive/ b.txt`]{#destination-middle explanation="Toutes les sources doivent précéder la destination ; le répertoire existant doit être le dernier opérande."}
+:::
 
-- `*` : Correspond à n'importe quelle séquence de caractères.
-- `?` : Correspond à un seul caractère.
-- `[]` : Correspond à un des caractères entre crochets.
+## Sélectionner des fichiers avec des jokers
 
-Par exemple, pour copier toutes les images JPEG de votre emplacement actuel vers le répertoire `Pictures` :
+Le shell peut développer des motifs jokers en plusieurs chemins sources :
+
+- `*` correspond à n'importe quelle suite de caractères ;
+- `?` correspond à un caractère quelconque ;
+- `[]` correspond à l'un des caractères entre crochets.
+
+Par exemple, copiez les noms qui se terminent par `.jpg` du répertoire actuel vers `Pictures` :
 
 ```bash
 $ cp *.jpg /home/pete/Pictures
 ```
 
-Vous pouvez prévisualiser les fichiers correspondants avant de copier :
+Prévisualisez les correspondances avant une copie en masse, surtout si la destination contient des données importantes :
 
 ```bash
 $ ls *.jpg
@@ -65,111 +80,93 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-### Copier des répertoires récursivement
+:::single-choice{#preview-copy-pattern} Avant de copier `*.jpg`, quelle commande montre les noms non cachés auxquels le motif correspond actuellement ?
 
-Si vous essayez de copier un répertoire avec `cp` sans option, vous recevrez une erreur. Pour copier un répertoire et tout son contenu, y compris les sous-répertoires, vous devez utiliser l'option `-r` (récursive).
+::option[`cp *.jpg`]{#copy-no-destination explanation="Si plusieurs noms correspondent, cette commande tente une copie sans destination claire ; elle ne constitue pas une prévisualisation."}
+::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="Le shell développe le même motif pour `ls`, ce qui permet d'examiner les noms correspondants avant de les copier."}
+::option[`file '*.jpg'`]{#quoted-jpg-pattern explanation="Les guillemets empêchent le développement du joker ; `file` reçoit les caractères littéraux `*.jpg` et ne prévisualise pas les correspondances normales."}
+:::
+
+## Copier des arborescences
+
+La copie d'un répertoire et de tout son contenu doit être récursive. Utilisez `-r` ou `-R` :
 
 ```bash
 $ cp -r Pumpkin/ /home/pete/Documents
 ```
 
-Cette commande copie le répertoire `Pumpkin` et tout ce qu'il contient dans votre répertoire `Documents`.
+Cette commande copie `Pumpkin` et ses descendants dans `Documents`.
 
-Vous pouvez aussi voir `-R`, qui a la même fonction récursive sur les systèmes Linux typiques :
+`-R` en majuscule demande également une copie récursive :
 
 ```bash
 $ cp -R website /home/pete/backups/
 ```
 
-### Gérer les écrasements de fichiers
+Le mode archive, `-a`, convient aux copies de type sauvegarde. Il copie récursivement tout en conservant les liens et de nombreux attributs :
 
-Par défaut, `cp` écrase un fichier à la destination s'il porte le même nom. Pour éviter une perte de données accidentelle, utilisez l'option `-i` (interactive), qui demande une confirmation avant d'écraser.
+```bash
+$ cp -a project/ project-backup/
+```
+
+:::single-choice{#archive-directory-tree} Vous voulez une copie récursive de type sauvegarde de `project/`, avec conservation des liens et de nombreux attributs. Quelle commande convient ?
+
+::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` conserve certains attributs, mais ne rend pas à elle seule la copie d'un répertoire récursive."}
+::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` contrôle les copies selon l'état de la destination, mais n'active pas à elle seule la récursivité."}
+::option[`cp -a project/ project-backup/`]{#archive-project .correct explanation="Le mode archive inclut la copie récursive et conserve les liens ainsi qu'un large ensemble d'attributs."}
+:::
+
+## Contrôler les écrasements
+
+Par défaut, `cp` peut remplacer un fichier de destination existant. Utilisez `-i` pour demander une confirmation avant l'écrasement :
 
 ```bash
 $ cp -i mycoolfile /home/pete/Pictures
 cp: overwrite '/home/pete/Pictures/mycoolfile'? n
 ```
 
-Inversement, si vous voulez forcer l'écrasement sans demande, utilisez l'option `-f`. Cela est utile dans les scripts où l'interaction utilisateur n'est pas possible.
-
-```bash
-$ cp -f mycoolfile /home/pete/Pictures
-```
-
-Une autre option de sécurité utile est `-n`, qui signifie "ne pas écraser". Elle empêche d'écraser un fichier de destination existant.
+Utilisez `-n` lorsqu'une destination existante ne doit pas être écrasée :
 
 ```bash
 $ cp -n mycoolfile /home/pete/Pictures
 ```
 
-### Préserver les attributs de fichier avec -p
+Avec GNU `cp`, `-f` demande de tenter de supprimer une destination existante si elle ne peut pas être ouverte en écriture, puis de recommencer la copie. Cette option ne remplace pas une vérification attentive des cibles. Des alias peuvent aussi ajouter des options comme `-i` ; examinez une demande inattendue au lieu de supposer une configuration précise.
 
-Lorsque vous copiez un fichier, ses métadonnées, comme la date de modification et la propriété, sont généralement mises à jour. Pour préserver ces attributs originaux, utilisez l'option `-p`.
+:::single-choice{#skip-existing-destination} Quelle commande copie `report.txt` dans `backup/`, mais ignore une destination existante portant le même nom ?
 
-L'option `cp -p` est particulièrement utile pour les sauvegardes ou lors de la migration de fichiers où la conservation des horodatages est importante.
+::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="L'option `-n` empêche `cp` d'écraser un fichier de destination existant."}
+::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` demande une confirmation ; le résultat dépend donc de la réponse et n'ignore pas automatiquement chaque destination existante."}
+::option[`cp -f report.txt backup/`]{#force-report explanation="`-f` peut aider à remplacer une destination impossible à ouvrir initialement ; elle ne produit pas un comportement sans écrasement."}
+:::
+
+## Conserver ou actualiser des fichiers
+
+`-p` conserve le mode, la propriété lorsque les permissions l'autorisent, et les horodatages de la source :
 
 ```bash
 $ cp -p mycoolfile /home/pete/backups/
 ```
 
-Cela copie `mycoolfile` tout en préservant son mode, sa propriété lorsque c'est possible, et ses horodatages.
-
-### Copies d'archives avec -a
-
-L'option `-a` signifie archive. Elle est couramment utilisée pour des copies de répertoires de type sauvegarde car elle préserve de nombreux attributs et copie récursivement.
-
-```bash
-$ cp -a project/ project-backup/
-```
-
-Pour beaucoup de sauvegardes quotidiennes, `cp -a` est plus pratique que de combiner plusieurs options manuellement.
-
-### Copier uniquement les fichiers plus récents avec -u
-
-L'option `-u` copie uniquement lorsque le fichier source est plus récent que le fichier de destination ou lorsque le fichier de destination n'existe pas.
+`-u` ne copie la source que si la destination manque ou si la source est plus récente :
 
 ```bash
 $ cp -u *.txt /home/pete/Documents/
 ```
 
-Cela est utile pour actualiser un dossier sans réécrire les fichiers déjà à jour.
+Autres options courantes :
 
-### Options courantes de cp
+- `-f` : forcer l'écrasement en supprimant d'abord la destination si nécessaire ;
+- `-v` : afficher chaque fichier à mesure de sa copie.
 
-Voici les options que vous utiliserez le plus souvent :
+Pour vous exercer, essayez les laboratoires **[Commande Linux cp : copier des fichiers](https://labex.io/fr/labs/linux-linux-cp-command-file-copying-209744)** et **[Organiser des fichiers et répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)**.
 
-- `-r` ou `-R` : Copier les répertoires récursivement.
-- `-i` : Demander avant d'écraser un fichier.
-- `-f` : Forcer l'écrasement en supprimant d'abord la destination si nécessaire.
-- `-n` : Ne pas écraser les fichiers existants.
-- `-p` : Préserver le mode, la propriété lorsque possible, et les horodatages.
-- `-a` : Mode archive, utile pour préserver les arbres de répertoires.
-- `-u` : Copier uniquement lorsque la source est plus récente que la destination.
-- `-v` : Afficher chaque fichier au fur et à mesure de la copie.
+## Résumé
 
-### Questions fréquentes
+Vous savez maintenant copier des fichiers et des arborescences tout en contrôlant le traitement des destinations.
 
-**Pourquoi cp a-t-il écrasé mon fichier ?** Par défaut, `cp` remplace un fichier de destination portant le même nom. Utilisez `cp -i` pour demander avant ou `cp -n` pour éviter l'écrasement.
-
-**Pourquoi cp ne peut-il pas copier un répertoire ?** Un répertoire nécessite une copie récursive. Utilisez `cp -r source-dir destination-dir`.
-
-**Quelle est la différence entre cp et mv ?** `cp` crée une copie et conserve l'original. `mv` déplace ou renomme l'original.
-
-**Dois-je utiliser cp -r ou cp -a pour les sauvegardes ?** Utilisez `cp -r` pour une copie récursive simple. Utilisez `cp -a` lorsque vous voulez une copie de type sauvegarde qui préserve plus d'attributs de fichier.
-
-## Exercise
-
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la copie de fichiers et de répertoires sous Linux :
-
-1. **[Commande Linux cp : Copier des fichiers](https://labex.io/fr/labs/linux-linux-cp-command-file-copying-209744)** - Pratiquez l'utilisation basique, les options avancées comme la copie récursive, la préservation des attributs, et l'utilisation des jokers pour copier efficacement fichiers et répertoires.
-2. **[Organisation des fichiers et répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Pratiquez les compétences essentielles de gestion de fichiers Linux en utilisant les commandes `cp`, `mv` et `rm` pour organiser une structure de projet, déplacer des fichiers et nettoyer des répertoires inutiles.
-
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec la copie et la gestion des fichiers sous Linux.
-
-## Quiz Question
-
-Quelle option devez-vous spécifier pour copier un répertoire ?
-
-## Quiz Answer
-
--r
+1. Placer les sources avant la destination.
+2. Prévisualiser les correspondances des jokers avant une copie en masse.
+3. Copier les arborescences récursivement ou en mode archive.
+4. Confirmer, ignorer ou remplacer volontairement les destinations existantes.
+5. Conserver les attributs ou ne copier que les sources plus récentes.

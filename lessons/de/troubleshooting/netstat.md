@@ -1,89 +1,100 @@
 ---
-index: 4
+lesson_id: "netstat"
+course_id: "troubleshooting"
 lang: "de"
+order_index: 4
 title: "netstat"
-meta_title: "netstat - Fehlerbehebung"
-meta_description: "Meistern Sie den Linux-netstat-Befehl zur Analyse von Netzwerkverbindungen, Ports und Sockets. Dieser Leitfaden behandelt gängige Zustände wie SYN_SENT und netstat close_wait zur effektiven Fehlerbehebung."
-meta_keywords: "linux netstat, netstat, netstat Befehl, syn_sent netstat, netstat close_wait, Netzwerkverbindungen, Linux-Netzwerk, Netzwerkanalyse, Linux-Tutorial"
+description: "Lerne, Linux-Sockets, Listener, Warteschlangen und TCP-Zustände mit ss zu untersuchen."
+meta_title: "netstat – Fehlersuche"
+meta_description: "Lerne, mit netstat und ss Netzwerkverbindungen, Ports und Sockets unter Linux zu analysieren. Diese Anleitung behandelt Zustände wie SYN-SENT und CLOSE-WAIT."
+meta_keywords: "Linux netstat, netstat, netstat-Befehl, SYN-SENT netstat, netstat CLOSE-WAIT, Netzwerkverbindungen, Linux-Vernetzung, Netzwerkanalyse, Linux-Tutorial"
 ---
 
-## Lesson Content
+Das ältere Werkzeug `netstat` zeigt Sockets, Routen und Schnittstellenstatistiken an. Auf modernem Linux ist `ss` das bevorzugte Werkzeug zur Socketuntersuchung, weil es Kernel-Socketzustand effizient offenlegt und mit iproute2 gepflegt wird.
 
-### Bekannte Ports
+## Lauschende Sockets auflisten
 
-Wir haben besprochen, wie Daten über Ports auf unserem Rechner übertragen werden. Werfen wir einen Blick auf einige gängige, bekannte Ports. Eine Liste dieser Ports finden Sie in der Datei **/etc/services**:
-
-```plaintext
-ftp             21/tcp
-ssh             22/tcp
-smtp            25/tcp
-domain          53/tcp  # DNS
-http            80/tcp
-https           443/tcp
-..usw..
-```
-
-Die erste Spalte zeigt den Dienstnamen, gefolgt von seiner zugewiesenen Portnummer und dem verwendeten Protokoll der Transportschicht.
-
-### Einführung in linux netstat
-
-Ein äußerst nützliches Werkzeug zur Erfassung detaillierter Netzwerkinformationen ist **netstat**. Der Befehl `linux netstat` zeigt eine breite Palette netzwerkbezogener Daten an, einschließlich aktiver Netzwerkverbindungen, Routing-Tabellen und Schnittstellenstatistiken. Er wird oft als das Schweizer Taschenmesser der Netzwerkwerkzeuge bezeichnet.
-
-In dieser Lektion konzentrieren wir uns darauf, `netstat` zur Überprüfung des Status von Netzwerkverbindungen zu verwenden. Bevor wir uns ein Beispiel ansehen, klären wir den Unterschied zwischen Sockets und Ports. Ein **Port** ist eine numerische Kennung, die verwendet wird, um Daten an eine bestimmte Anwendung weiterzuleiten. Ein **Socket** ist ein Endpunkt für die Kommunikation, der es Programmen ermöglicht, Daten zu senden und zu empfangen. Die Socket-Adresse ist die eindeutige Kombination aus einer IP-Adresse und einer Portnummer. Jede Verbindung zwischen einem Host und einem Ziel erfordert einen eindeutigen Socket. Zum Beispiel läuft der HTTP-Dienst zwar auf Port 80, aber es können gleichzeitig mehrere HTTP-Verbindungen bestehen, und für jede davon wird ein eindeutiger Socket erstellt.
-
-Untersuchen wir die Ausgabe von `netstat -at`:
+Zeige lauschende TCP- und UDP-Sockets numerisch einschließlich ihrer Prozesse, sofern erlaubt:
 
 ```bash
-pete@icebox:~$ netstat -at
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State
-tcp        0      0 icebox:domain           *:*                     LISTEN
-tcp        0      0 localhost:ipp           *:*                     LISTEN
-tcp        0      0 icebox.lan:44468        124.28.28.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34751        124.28.29.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34604        economy.canonical.:http TIME_WAIT
-tcp6       0      0 ip6-localhost:ipp       [::]:*                  LISTEN
-tcp6       1      0 ip6-localhost:35094     ip6-localhost:ipp       CLOSE_WAIT
-tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
+$ sudo ss -lntup
 ```
 
-Der Befehl `netstat -a` zeigt alle lauschenden und nicht lauschenden Sockets an, während das Flag `-t` die Ausgabe filtert, um nur TCP-Verbindungen anzuzeigen.
+`-l` wählt Listener aus, `-n` vermeidet Namensauflösung, `-t` und `-u` wählen TCP beziehungsweise UDP aus, und `-p` fordert Prozessdaten an. UDP ist verbindungslos; seine unverbundenen gebundenen Sockets besitzen daher keine TCP-artigen `LISTEN`-Handshakes.
 
-Die Spalten sind wie folgt:
+:::single-choice{#netstat-ss-numeric} Warum solltest du bei der Socketfehlersuche `-n` verwenden?
 
-- **Proto**: Das verwendete Protokoll (z. B. TCP oder UDP).
-- **Recv-Q**: Die Warteschlange der Daten, die empfangen werden sollen.
-- **Send-Q**: Die Warteschlange der Daten, die gesendet werden sollen.
-- **Local Address**: Die Adresse des lokalen Hosts.
-- **Foreign Address**: Die Adresse des Remote-Hosts.
-- **State**: Der aktuelle Zustand des Sockets.
+::option[Die Option erstellt einen neuen Netzwerknamensraum.]{#netstat-new-namespace explanation="Die Option steuert die Namensauflösung in der Ausgabe."}
+::option[Sie verhindert die Auflösung von Adress- und Portnamen.]{#netstat-numeric-output .correct explanation="Numerische Ausgabe verhindert, dass eine Dienstnamenzuordnung mit der beobachteten Protokollidentität verwechselt wird."}
+::option[Sie schließt jeden nicht lauschenden Socket.]{#netstat-close-sockets explanation="Die Untersuchung beendet keine Sockets."}
+:::
 
-### Verständnis der Verbindungszustände
+## Ports, Endpunkte und Dienste
 
-Die Spalte **State** (Zustand) liefert wichtige Informationen über den Status einer Verbindung. Hier sind einige gängige Zustände, denen Sie begegnen werden:
+Ein lokaler Socketendpunkt verbindet eine Adresse, ein Transportprotokoll und einen Port. Eine TCP-Verbindung wird durch Protokoll sowie Quell- und Zieladressen und -ports unterschieden. `/etc/services` ordnet herkömmliche Namen Zahlen zu, beweist aber weder, welcher Prozess aktuell einen Port besitzt, noch welches Anwendungsprotokoll er spricht.
 
-- **LISTENING**: Der Socket wartet auf eingehende Verbindungen. Damit eine TCP-Verbindung hergestellt werden kann, muss das Ziel lauschen.
-- **SYN_SENT**: Bei der Verwendung von `netstat` zeigt ein Zustand `SYN_SENT` an, dass der Socket aktiv versucht, eine Verbindung herzustellen.
-- **ESTABLISHED**: Der Socket hat eine vollständig hergestellte Verbindung.
-- **CLOSE_WAIT**: Der Zustand `netstat close_wait` bedeutet, dass der Remote-Host heruntergefahren wurde und das lokale System darauf wartet, dass die Anwendung den Socket schließt.
-- **TIME_WAIT**: Der Socket wartet nach dem Schließen, um alle Pakete zu verarbeiten, die sich möglicherweise noch im Netzwerk befinden.
+:::single-choice{#netstat-services-file-limit} Was belegt ein `/etc/services`-Eintrag wie `https 443/tcp`?
 
-You can see a full list of socket states in the `netstat` man page.
+::option[Dass aktuell ein fehlerfreier HTTPS-Server lauscht.]{#netstat-healthy-listener explanation="Eine statische Namensdatenbank beweist keinen Laufzeitzustand."}
+::option[Die herkömmliche Dienstnamenzuordnung für diesen Port.]{#netstat-conventional-name .correct explanation="Socketeigentum und tatsächliches Protokollverhalten erfordern Laufzeituntersuchung und Tests."}
+::option[Dass sämtlicher Datenverkehr auf Port 443 korrekt verschlüsselt ist.]{#netstat-all-encrypted explanation="Eine Portnummer kann TLS-Verhalten nicht validieren."}
+:::
 
-Sie können eine vollständige Liste der Socket-Zustände in der `netstat`-Manpage einsehen.
+## TCP-Zustände lesen
 
-## Exercise
+Häufige Zustände sind:
 
-Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis der Netzwerkschnittstelleneinstellungen zu festigen:
+- `SYN-SENT`: Der lokale Endpunkt hat eine Verbindungsanfrage gesendet und wartet auf Fortschritt.
+- `ESTAB`: Die TCP-Verbindung ist hergestellt.
+- `CLOSE-WAIT`: Der Peer hat seine Senderichtung geschlossen, doch die lokale Anwendung hat ihren Socket noch nicht geschlossen.
+- `TIME-WAIT`: Der aktiv schließende Endpunkt wartet, damit verzögerte Segmente ablaufen und der letzte Austausch sicher verarbeitet werden kann.
 
-1. **[Netzwerkschnittstelleneinstellungen mit ethtool unter Linux untersuchen](https://labex.io/de/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Lernen Sie, den Befehl `ethtool` zu verwenden, um Netzwerkschnittstelleneinstellungen zu untersuchen und zu verwalten, einschließlich der Anzeige und Einstellung von Schnittstellengeschwindigkeit und Duplex sowie der Analyse von Link-Modi zur Fehlerbehebung bei Netzwerkproblemen der physischen Schicht.
+Große oder wachsende `CLOSE-WAIT`-Mengen weisen häufig auf das Aufräumverhalten der lokalen Anwendung hin. `TIME-WAIT` ist ein normaler Protokollzustand; Anzahl und Ressourcenauswirkungen bestimmen, ob er betrieblich problematisch ist.
 
-Dieses Labor hilft Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Netzwerkschnittstellen aufzubauen.
+:::single-choice{#netstat-close-wait-owner} Welche Seite muss einen Socket in `CLOSE-WAIT` noch schließen?
 
-## Quiz Question
+::option[Jeder Router im Internet.]{#netstat-all-routers-close explanation="Router besitzen den Endpunktsocket nicht."}
+::option[Der autoritative DNS-Server.]{#netstat-dns-close explanation="Der Namensdienst hat nichts mit der lokalen TCP-Schließverarbeitung zu tun."}
+::option[Die lokale Anwendung.]{#netstat-local-close .correct explanation="TCP hat das FIN des Peers empfangen und wartet, bis der lokale Prozess seine Seite schließt."}
+:::
 
-Welcher Port wird für HTTPS verwendet?
+## Warteschlangen interpretieren
 
-## Quiz Answer
+Die Bedeutung von `Recv-Q` und `Send-Q` hängt von Zustand und Protokoll ab. Bei hergestellten TCP-Sockets können sie Daten anzeigen, die auf den Empfang durch die Anwendung oder die Bestätigung der Übertragung warten. Bei lauschenden Sockets beschreiben Warteschlangenfelder den Verbindungsrückstau und nicht auf dieselbe Weise Byte der Anwendungsnutzlast.
 
-443
+Eine Momentaufnahme allein belegt weder Leak noch Engpass. Erfasse Stichproben über die Zeit und verknüpfe sie mit Prozessverhalten, Anwendungslatenz, erneuten Übertragungen und Ressourcengrenzen.
+
+:::single-choice{#netstat-queue-snapshot} Warum reicht eine einzelne Momentaufnahme einer großen Socketwarteschlange nicht zur Diagnose?
+
+::option[Linux speichert niemals Daten in Socketwarteschlangen.]{#netstat-no-queues explanation="Das Kernelnetzwerk ist auf Sende- und Empfangswarteschlangen angewiesen."}
+::option[Jeder Warteschlangenwert ist eine Dateisystemberechtigung.]{#netstat-queue-permission explanation="Die Felder beschreiben Netzwerkzustand."}
+::option[Die Auswirkungen einer Warteschlange benötigen Zustand, Verlauf und Arbeitslastkontext.]{#netstat-queue-context .correct explanation="Eine vorübergehende Spitze unterscheidet sich von einem anhaltenden Anwendungs- oder Netzwerkengpass."}
+:::
+
+## Eine Untersuchung filtern
+
+Beschränke die Ausgabe auf das betreffende Protokoll, den Zustand, Endpunkt oder Prozess:
+
+```bash
+$ ss -tn state established
+$ ss -ltn 'sport = :443'
+```
+
+Ein Listener beweist lokale Transportbereitschaft und keine entfernte Erreichbarkeit oder einen fehlerfreien Anwendungszustand. Führe anschließend zum Symptom passende Routen-, Firewall-, Paket-, TLS- und Anwendungstests durch.
+
+:::single-choice{#netstat-listener-limit} Was beweist ein TCP-Listener auf Port 443 nicht?
+
+::option[Dass ein lokaler Socket eine Bind- und Listenoperation angenommen hat.]{#netstat-listen-local explanation="Dies ist genau der angezeigte lokale Zustand."}
+::option[Dass entfernte Clients eine gültige HTTPS-Anfrage abschließen können.]{#netstat-not-remote-proof .correct explanation="Pfadrichtlinie, TLS und Anwendungsverhalten bleiben ungetestet."}
+::option[Dass TCP ein numerisches Portfeld besitzt.]{#netstat-port-field explanation="Die Listenerausgabe enthält eines unmittelbar."}
+:::
+
+## Zusammenfassung
+
+Du kannst `ss` nun zur Untersuchung des Socketzustands verwenden, ohne Ports mit Anwendungen zu verwechseln.
+
+1. Liste Listener numerisch mit Prozesskontext auf.
+2. Unterscheide herkömmliche Dienstnamen von Laufzeiteigentum.
+3. Interpretiere TCP-Schließzustände aus Sicht des lokalen Endpunkts.
+4. Erfasse Warteschlangen im Zeitverlauf mit Arbeitslastkontext.
+5. Überprüfe entferntes Anwendungsverhalten über einen lokalen Listener hinaus.

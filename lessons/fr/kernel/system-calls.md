@@ -1,52 +1,105 @@
 ---
-index: 3
+lesson_id: "system-calls"
+course_id: "kernel"
 lang: "fr"
-title: "Appels Système"
-meta_title: "Appels Système - Noyau"
-meta_description: "Explorez les fondamentaux d'un appel système sous Linux. Apprenez comment les processus en espace utilisateur utilisent les appels système (syscalls) pour demander des services au noyau, changer de mode, et comment fonctionne la table d'appels système. Utilisez `strace` pour voir les appels système en action."
-meta_keywords: "appel système linux, appels système, table syscall, mode noyau, mode utilisateur, strace, noyau linux, API syscall"
+order_index: 3
+title: "Appels système"
+description: "Découvrez comment le code de l'espace utilisateur appelle les services du noyau Linux et comment examiner ces appels sans risque avec `strace`."
+meta_title: "Appels système - Noyau"
+meta_description: "Explorez les appels système Linux, leur passage entre espace utilisateur et noyau, leur ABI et leur observation avec strace."
+meta_keywords: "appel système Linux, appels système, table syscall, mode noyau, mode utilisateur, strace, ABI syscall"
 ---
 
-## Lesson Content
+Un appel système est une entrée définie dans le noyau par laquelle le code de l'espace utilisateur demande une opération, par exemple ouvrir un fichier, mapper de la mémoire, créer un processus ou envoyer des données réseau. Le noyau valide les arguments, identifiants, états des objets et règles de sécurité avant d'effectuer la demande.
 
-Imaginez que vous êtes à un grand concert. Pour passer de la zone du public général aux coulisses exclusives, vous ne pouvez pas simplement marcher. Vous avez besoin d'un laissez-passer spécial qui vous donne accès par une porte spécifique et gardée. Dans le monde de l'informatique, les **appels système** (system calls) sont ces laissez-passer spéciaux.
+## Bibliothèques et ABI des appels système
 
-### Que sont les appels système ?
+Les applications appellent couramment des fonctions de la bibliothèque C plutôt que d'écrire des instructions d'entrée propres à une architecture. Une fonction d'enveloppe prépare les registres et la mémoire conformément à l'ABI des appels système, entre dans le noyau et traduit le résultat selon les conventions du langage.
 
-Les appels système, souvent abrégés en syscalls, fournissent un moyen aux processus en espace utilisateur de demander des services directement au noyau. Le noyau expose un ensemble de services via l'API des appels système. Ces services sont essentiels pour des opérations telles que la lecture ou l'écriture dans un fichier, la gestion de la mémoire ou le traitement des connexions réseau. Le nombre d'appels système disponibles est fixe ; vous ne pouvez pas en ajouter de nouveaux arbitrairement. Votre système maintient une `table d'appels système` (syscall table) où chaque appel système est enregistré avec un ID unique.
+La relation n'est pas toujours d'une fonction à un appel système :
 
-### Le mécanisme d'appel système sous Linux
+- une fonction de bibliothèque peut combiner plusieurs appels système ;
+- certaines fonctions agissent entièrement dans l'espace utilisateur ;
+- une fonction vDSO optimisée peut obtenir certaines données entretenues par le noyau sans transition de mode complète ;
+- un appel système peut prendre en charge de nombreuses API de plus haut niveau.
 
-Lorsque vous exécutez un programme comme `ls`, le code qu'il contient n'exécute pas directement la commande **system call linux**. Au lieu de cela, il utilise une fonction de bibliothèque, qui agit comme un enveloppeur (wrapper). Cette fonction enveloppe prépare les paramètres nécessaires, puis déclenche une interruption logicielle, ou un « piège » (trap).
+:::single-choice{#system-calls-library-wrapper} Que fait une enveloppe d'appel système typique de libc ?
 
-Ce piège signale au processeur de passer du mode utilisateur non privilégié au mode noyau privilégié. Une fois en mode noyau, un gestionnaire d'appel système prend le relais. Il utilise l'ID unique pour rechercher la fonction demandée dans la `table d'appels système` et l'exécute. Par exemple, l'appel système `stat()`, utilisé pour interroger l'état d'un fichier, est trouvé et exécuté de cette manière. Une fois que le noyau a terminé la tâche, il bascule le contexte en mode utilisateur et renvoie un code d'état à votre processus, indiquant le succès ou une erreur.
+::option[Elle prépare les arguments de l'ABI, entre dans le noyau et traduit le résultat.]{#system-calls-wrapper-role .correct explanation="L'enveloppe masque les conventions d'appel propres à l'architecture derrière une interface de bibliothèque ordinaire."}
+::option[Elle donne à l'application un accès illimité à la mémoire du noyau.]{#system-calls-wrapper-unrestricted explanation="L'entrée dans le noyau reste contrôlée et valide la demande."}
+::option[Elle recompile le noyau à chaque appel de la fonction.]{#system-calls-wrapper-compile explanation="Un appel à l'exécution emploie le noyau déjà actif."}
+:::
 
-### Visualiser les appels système avec strace
+## Entrer dans le noyau et en revenir
 
-Vous pouvez observer les appels système effectués par un processus en temps réel à l'aide de la commande `strace`. Cet outil est incroyablement utile pour le débogage et pour comprendre comment un programme interagit avec le noyau.
+L'enveloppe place un numéro d'appel système et ses arguments dans des emplacements définis par l'architecture, puis exécute une instruction d'entrée comme `syscall` sur x86-64 ou `svc` sur AArch64. Le processeur passe à un point d'entrée privilégié configuré et le noyau distribue la demande.
 
-Pour voir les appels système effectués par la commande `ls`, vous exécuteriez :
+Après l'opération, le noyau renvoie une valeur ou l'indication d'une erreur. Les enveloppes de la bibliothèque C renvoient couramment `-1` et définissent la variable locale au thread `errno` en cas d'erreur. Les autres langages et environnements exposent différents types d'erreurs.
+
+Décrire chaque entrée comme une « interruption logicielle » manque de précision sur les architectures actuelles ; les exceptions, instructions rapides d'appel système et appels superviseur mettent en œuvre des transitions contrôlées apparentées, mais différentes.
+
+:::single-choice{#system-calls-entry-result} Qui valide les arguments et l'autorisation d'un appel système ?
+
+::option[L'invite du shell avant le démarrage du processus.]{#system-calls-shell-validates explanation="Un processus peut effectuer des appels système sans shell et les contrôles du noyau restent nécessaires."}
+::option[L'implémentation du service demandé dans le noyau.]{#system-calls-kernel-validates .correct explanation="Le gestionnaire privilégié vérifie les pointeurs, l'état des objets, les identifiants et les règles avant d'agir."}
+::option[La table de partitions du disque.]{#system-calls-partition-validates explanation="Les métadonnées d'organisation du stockage n'autorisent pas les services arbitraires du noyau."}
+:::
+
+## Numéros et compatibilité
+
+Les numéros d'appels système et conventions d'appel sont propres à l'architecture. Un même appel symbolique peut posséder un numéro ou une organisation des structures différents dans une autre ABI. Les versions du noyau peuvent ajouter des appels, tandis que les ABI stables de l'espace utilisateur cherchent à préserver les comportements existants.
+
+Un processus non privilégié ne peut pas insérer arbitrairement de nouveaux gestionnaires dans la table des appels du noyau actif. Étendre l'interface exige du code dans le noyau et une conception soigneuse de l'ABI. Des fonctions comme seccomp peuvent filtrer les appels autorisés à un processus, mais ne créent pas de nouvelles implémentations dans le noyau.
+
+:::single-choice{#system-calls-number-portability} Pourquoi une application doit-elle éviter de coder en dur les numéros d'appels système d'une autre architecture ?
+
+::option[Les numéros et conventions d'appel sont propres à l'ABI.]{#system-calls-abi-specific .correct explanation="Un numéro qui désigne une opération sur une architecture peut en identifier une autre ou être absent ailleurs."}
+::option[Les appels système sont nommés depuis le répertoire de travail actuel.]{#system-calls-directory-names explanation="Les chemins ne définissent pas l'ABI de numérotation des appels système."}
+::option[Chaque processus reçoit une table aléatoire à son démarrage.]{#system-calls-random-table explanation="L'ABI du noyau actif est stable pour une architecture, pas aléatoire pour chaque processus."}
+:::
+
+## Traçage avec `strace`
+
+Tracez une commande simple et enregistrez sa sortie séparément :
 
 ```bash
-strace ls
+$ strace -o trace.log -- ls
 ```
 
-Ceci affichera une liste détaillée de chaque appel système effectué par `ls` lors de son exécution.
+Suivez les processus enfants lorsque vous y êtes autorisé avec `-f`, ou limitez la sortie au moyen d'une expression comme :
 
-## Exercise
+```bash
+$ strace -f -e trace=%file -o trace.log -- command
+```
 
-La pratique rend parfait ! Bien que le fonctionnement interne des appels système soit complexe, comprendre comment les programmes en espace utilisateur interagissent avec le noyau est fondamental. La meilleure façon de saisir cette interaction est de s'exercer avec des commandes qui effectuent ces opérations sous-jacentes. Voici quelques laboratoires pratiques pour renforcer votre compréhension des interactions avec le système de fichiers, qui dépendent fortement des appels système :
+`strace` peut révéler des chemins, arguments, données issues de l'environnement, adresses réseau, fragments du contenu des fichiers et identifiants incorrectement passés comme arguments. Conservez les traces avec des permissions restrictives et supprimez-les selon les règles relatives aux données d'incident.
 
-1. **[Naviguer dans le système de fichiers sous Linux](https://labex.io/fr/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Entraînez-vous avec des commandes essentielles comme `ls`, `cd` et `pwd` pour vous déplacer et inspecter votre système de fichiers Linux, en vous engageant directement avec les services du système de fichiers du noyau.
-2. **[Gérer les fichiers et les répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-files-and-directories-in-linux-590835)** - Apprenez à créer, supprimer, copier et déplacer des fichiers et des répertoires à l'aide de commandes telles que `mkdir`, `rm`, `cp` et `mv`, qui impliquent toutes des appels système pour effectuer leurs actions.
-3. **[Trouver des fichiers et des commandes sous Linux](https://labex.io/fr/labs/comptia-find-files-and-commands-in-linux-590834)** - Maîtrisez les techniques pour localiser des fichiers et des commandes à l'aide de `find`, `whereis` et `which`, illustrant davantage comment les commandes utilisateur tirent parti des services du noyau pour interagir avec le système de fichiers.
+:::single-choice{#system-calls-strace-purpose} Qu'observe principalement `strace` ?
 
-Ces laboratoires vous aideront à appliquer les concepts d'interaction avec le système de fichiers dans des scénarios réels et à renforcer votre confiance dans les opérations Linux fondamentales qui reposent implicitement sur les appels système.
+::option[Uniquement les lignes du code source exécutées dans l'application.]{#system-calls-strace-source-lines explanation="Le traçage au niveau du code source exige un débogueur ou une instrumentation avec des symboles."}
+::option[Les appels système et signaux à la frontière entre utilisateur et noyau.]{#system-calls-strace-boundary .correct explanation="Il indique les demandes, arguments, résultats et événements de signaux des processus tracés."}
+::option[La tension physique de chaque cœur du processeur.]{#system-calls-strace-voltage explanation="La télémétrie matérielle ne relève pas du traçage des appels système."}
+:::
 
-## Quiz Question
+## Interpréter prudemment les traces
 
-What is used to switch from user mode to kernel mode? Please answer in English, using two words.
+Le traçage modifie le déroulement temporel et peut imposer un surcoût important. Un appel qui échoue peut être une sonde attendue et l'erreur finale visible peut découler d'une opération antérieure ou d'une règle de l'application. Décodez les descripteurs de fichiers, suivez les relations entre processus et rapprochez les résultats des journaux applicatifs.
 
-## Quiz Answer
+Les permissions et règles de sécurité ptrace limitent les processus qu'il est possible de tracer. Ne vous attachez pas au processus d'un autre utilisateur ou à un processus de production sans autorisation ; la suspension et les changements temporels peuvent modifier le comportement du service.
 
-System call
+:::single-choice{#system-calls-strace-failure} L'échec d'un seul appel système dans une trace signifie-t-il nécessairement que l'application est cassée ?
+
+::option[Oui ; toute valeur de retour non nulle arrête immédiatement Linux.]{#system-calls-nonzero-terminates explanation="Les applications traitent couramment les erreurs d'appels système sans défaillance du système."}
+::option[Non ; les programmes sondent souvent plusieurs possibilités et traitent des erreurs attendues.]{#system-calls-expected-failure .correct explanation="Interprétez le retour dans le contexte du flux de contrôle et de l'application plutôt qu'isolément."}
+::option[Oui ; le noyau ne renvoie jamais d'erreurs attendues.]{#system-calls-no-expected-errors explanation="Les erreurs comme les chemins absents ou les opérations non prises en charge sont des résultats normaux de l'API."}
+:::
+
+## Résumé
+
+Vous savez maintenant suivre un appel système depuis l'API de bibliothèque jusqu'au travail validé du noyau.
+
+1. Distinguer les fonctions de haut niveau de l'ABI des appels système.
+2. Relier les instructions d'entrée de l'architecture à la distribution contrôlée dans le noyau.
+3. Considérer les numéros et structures d'appels comme propres à l'architecture.
+4. Employer des sorties `strace` filtrées tout en protégeant les données sensibles.
+5. Interpréter les échecs et le surcoût du traçage dans le contexte de l'application.

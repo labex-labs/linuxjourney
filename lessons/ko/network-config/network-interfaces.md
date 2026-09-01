@@ -1,103 +1,107 @@
 ---
-index: 1
+lesson_id: "network-interfaces"
+course_id: "network-config"
 lang: "ko"
+order_index: 1
 title: "네트워크 인터페이스"
-meta_title: "네트워크 인터페이스 - 네트워크 구성"
-meta_description: "리눅스 네트워크 인터페이스에 대한 종합 가이드입니다. ifconfig 와 최신 ip 명령어를 사용하는 방법을 배우고, 특히 데비안 시스템에서 /etc/network/interfaces와 같은 설정 파일을 이해합니다."
-meta_keywords: "리눅스 인터페이스, 리눅스 네트워크 인터페이스, etc network interfaces, 데비안 네트워크 인터페이스, ifconfig, ip 명령어, 네트워크 구성, 리눅스 네트워킹"
+description: "리눅스 인터페이스 상태, 주소, 통계 및 영구 설정 소유권을 조사하는 방법을 알아봅니다."
+meta_title: "네트워크 인터페이스 - 네트워크 설정"
+meta_description: "리눅스 네트워크 인터페이스 가이드입니다. 현대적인 ip 명령과 ifconfig, /etc/network/interfaces 같은 설정 파일을 알아봅니다."
+meta_keywords: "리눅스 인터페이스, 리눅스 네트워크 인터페이스, etc network interfaces, ifconfig, ip 명령, 네트워크 설정"
 ---
 
-## Lesson Content
+리눅스 네트워크 인터페이스는 네트워크 네임스페이스를 물리 장치, 루프백 경로, 브리지, 터널, 가상 장치 또는 다른 링크와 연결합니다. 인터페이스 상태, 주소, 경로, DNS 및 영구 설정은 관련 있지만 서로 구분됩니다.
 
-리눅스 네트워크 인터페이스는 커널의 소프트웨어 네트워킹 스택과 실제 네트워크 하드웨어 간의 중요한 연결 지점입니다. 이를 통해 운영 체제는 네트워크를 통해 데이터를 송수신할 수 있습니다. 이미 구성된 `linux interface`의 예시를 보았습니다.
+## 인터페이스 찾기
 
-```plaintext
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
-```
-
-### 네트워크 인터페이스 이해하기
-
-네트워크 설정을 볼 때, `eth0`(첫 번째 이더넷 카드), `wlan0`(무선 인터페이스), 또는 `lo`(루프백 인터페이스) 와 같은 이름의 인터페이스를 보게 됩니다. 루프백 인터페이스는 자체 컴퓨터를 나타내는 특수한 가상 인터페이스로, 로컬에서 실행되는 서비스에 연결할 수 있게 해줍니다.
-
-인터페이스는 "up" 또는 "down" 상태일 수 있습니다. "up" 상태는 활성화되어 데이터 전송 준비가 되었음을 의미하며, "down"은 비활성화합니다. 각 인터페이스에 대해 표시되는 주요 정보에는 `HWaddr`(고유 MAC 주소), `inet` 주소 (IPv4 주소), `inet6` 주소 (IPv6 주소) 와 서브넷 마스크 및 브로드캐스트 주소가 포함됩니다.
-
-### 레거시 ifconfig 명령어
-
-**ifconfig** 명령어는 `linux network interface`를 구성하는 고전적인 도구입니다. 시스템 부팅 시 일반적으로 구성 파일을 기반으로 인터페이스를 설정하기 위해 실행됩니다. 여전히 많은 시스템에서 사용할 수 있지만, 현재는 레거시 도구로 간주됩니다.
-
-`ifconfig`를 사용하여 수동으로 IP 주소를 할당하고 인터페이스를 활성화할 수 있습니다.
+현대적인 iproute2 도구를 사용합니다.
 
 ```bash
-ifconfig eth0 192.168.2.1 netmask 255.255.255.0 up
+$ ip -brief link show
+$ ip -brief address show
 ```
 
-관련 `ifup` 및 `ifdown` 명령어를 사용하여 인터페이스를 쉽게 활성화하거나 비활성화할 수도 있습니다.
+인터페이스 이름은 `enp1s0` 같은 예측 가능한 하드웨어 기반 이름, `eth0` 같은 전통적 이름 또는 관리자가 정의한 이름일 수 있습니다. `eth0`가 존재하거나 특정 어댑터를 식별한다고 가정하지 마십시오.
+
+:::single-choice{#interfaces-name-assumption} 스크립트가 `eth0`을 가정하지 말고 찾아야 하는 이유는 무엇입니까?
+
+::option[모든 인터페이스의 이름이 lo여야 하기 때문입니다.]{#interfaces-all-loopback explanation="루프백은 하나의 특수 인터페이스이며 모든 링크의 이름이 아닙니다."}
+::option[리눅스 시스템이 여러 인터페이스 명명 방식을 사용할 수 있기 때문입니다.]{#interfaces-naming-varies .correct explanation="하드웨어 기반, 가상 및 사용자 지정 이름 때문에 고정된 eth0 가정은 신뢰할 수 없습니다."}
+::option[인터페이스 이름이 항상 원격 암호이기 때문입니다.]{#interfaces-name-password explanation="이름은 커널 장치를 식별하며 자격 증명이 아닙니다."}
+:::
+
+## 관리 상태와 운영 상태
+
+`UP`은 인터페이스가 관리상 활성화됐음을 뜻합니다. `LOWER_UP`은 일반적으로 Ethernet 캐리어처럼 하위 계층이 운영 준비 상태를 보고한다는 뜻입니다. 어느 플래그만으로도 IP 주소, 경로, DNS, 방화벽 또는 애플리케이션 경로가 작동함을 입증할 수 없습니다.
 
 ```bash
-ifup eth0
-ifdown eth0
+$ ip -details link show dev enp1s0
+$ ip -s link show dev enp1s0
 ```
 
-### 최신 ip 명령어
+통계 보기에서 오류, 드롭 및 카운터를 확인할 수 있지만 카운터는 시간 간격과 기준선이 있어야 의미가 있습니다.
 
-**ip** 명령어는 `ifconfig`의 현대적이고 더 강력한 대체 도구입니다. 현재 대부분의 최신 Linux 배포판에서 네트워크 스택을 관리하는 선호되는 방법입니다.
+:::single-choice{#interfaces-up-limit} 관리 상태 `UP`이 입증하지 못하는 것은 무엇입니까?
 
-다음은 일반적인 사용 예시입니다.
+::option[종단 간 연결이 작동한다는 사실입니다.]{#interfaces-up-not-connectivity .correct explanation="하위 계층, 주소 지정, 라우팅, 필터링, 이름 지정 및 서비스 장애가 남아 있을 수 있습니다."}
+::option[관리자가 인터페이스를 활성화했다는 사실입니다.]{#interfaces-up-does-prove explanation="상태가 직접 뜻하는 바입니다."}
+::option[인터페이스에 커널 객체가 있다는 사실입니다.]{#interfaces-up-kernel-object explanation="표시된 상태는 존재하는 커널 인터페이스에 속합니다."}
+:::
 
-**모든 인터페이스 정보 표시:**
+## 런타임 상태 변경하기
+
+런타임 명령에는 다음이 있습니다.
 
 ```bash
-ip link show
+$ sudo ip link set dev enp1s0 up
+$ sudo ip address add 192.0.2.10/24 dev enp1s0
 ```
 
-**특정 인터페이스에 대한 자세한 통계 표시:**
+이 변경은 현재 커널 상태에 영향을 주며 나중에 프로필을 다시 적용하는 네트워크 관리자와 충돌할 수 있습니다. 원격 관리 인터페이스를 내리면 즉시 접근이 끝날 수 있습니다. 변경 전에 정확한 장치를 검증하고, 콘솔 접근을 보존하고, 현재 상태를 기록하고, 시간 제한 또는 테스트된 되돌리기를 준비하십시오.
+
+:::single-choice{#interfaces-ip-address-add-persistence} `ip address add`만으로 재부팅 후 영구 적용이 보장됩니까?
+
+::option[아니요. 활성 설정 시스템에도 설정을 저장해야 합니다.]{#interfaces-manager-persistence .correct explanation="NetworkManager, systemd-networkd, ifupdown 또는 다른 소유자가 영구 정책을 적용합니다."}
+::option[예. 모든 커널 변경이 모든 관리자 프로필을 편집하기 때문입니다.]{#interfaces-runtime-always-persistent explanation="커널 런타임 변경은 보편적으로 영구 설정을 갱신하지 않습니다."}
+::option[사설 IPv4 주소일 때만 보장됩니다.]{#interfaces-private-persistent explanation="주소 범위가 런타임 명령을 영구적으로 만들지는 않습니다."}
+:::
+
+## 설정 소유권 식별하기
+
+영구 설정 경로는 배포판과 설치에 따라 다릅니다. NetworkManager 프로필, systemd-networkd 유닛, netplan 입력, `/etc/network/interfaces`, cloud-init 또는 오케스트레이션을 사용할 수 있습니다. 파일을 편집하기 전에 어느 서비스가 장치를 관리하는지 확인합니다.
 
 ```bash
-ip -s link show eth0
+$ systemctl --type=service --state=running | grep -E 'NetworkManager|networkd|networking'
+$ networkctl status
+$ nmcli device status
 ```
 
-**인터페이스에 할당된 IP 주소 표시:**
+식별한 관리자에 존재하는 명령만 사용하십시오. 두 관리자가 같은 링크를 제어하면 서로 경쟁하며 상태를 덮어쓸 수 있습니다.
 
-```bash
-ip address show
-```
+:::single-choice{#interfaces-config-owner} 영구 인터페이스 변경 전에 무엇을 해야 합니까?
 
-**인터페이스 활성화 또는 비활성화:**
+::option[가능한 모든 네트워크 설정 파일을 편집합니다.]{#interfaces-edit-all explanation="경쟁하는 정의로 충돌과 예측할 수 없는 재적용이 발생합니다."}
+::option[어느 네트워크 관리자가 인터페이스를 소유하는지 확인합니다.]{#interfaces-identify-owner .correct explanation="올바른 설정 소스와 적용 방법은 소유권에 따라 달라집니다."}
+::option[검사 전에 현재 경로를 모두 삭제합니다.]{#interfaces-delete-routes explanation="복구 접근을 없앨 수 있는 파괴적 작업입니다."}
+:::
 
-```bash
-ip link set eth0 up
-ip link set eth0 down
-```
+## 변경 검증하기
 
-**인터페이스에 IP 주소 추가:**
+링크 상태, 할당된 주소와 수명, 선택된 경로, 확인자 상태, 이웃 연결 및 실제 애플리케이션을 검증합니다. 영구 변경에는 복구 경로가 있을 때만 통제된 서비스 재시작이나 재부팅을 테스트합니다.
 
-```bash
-ip address add 192.168.1.1/24 dev eth0
-```
+:::single-choice{#interfaces-change-verification} `ip address`에 새 주소가 보이는 것보다 더 나은 증거는 무엇입니까?
 
-### 네트워크 구성 파일
+::option[인터페이스 이름에 숫자가 들어 있습니다.]{#interfaces-digit explanation="이름은 종단 간 검증을 제공하지 않습니다."}
+::option[셸 프롬프트 색상이 그대로입니다.]{#interfaces-prompt-color explanation="터미널 모양은 네트워크 작동과 관계없습니다."}
+::option[경로, 확인자 상태 및 의도한 애플리케이션도 작동합니다.]{#interfaces-end-to-end .correct explanation="사용 가능한 설정은 전체 경로와 서비스 동작에 따라 달라집니다."}
+:::
 
-`ip` 및 `ifconfig`와 같은 명령어는 인터페이스의 현재 상태를 구성하지만, 이러한 변경 사항은 영구적이지 않으며 재부팅 시 손실됩니다. 설정을 영구적으로 유지하려면 구성 파일을 편집해야 합니다.
+## 요약
 
-이러한 파일의 일반적인 위치는 `/etc/network/interfaces`입니다. `etc network interfaces` 파일은 특히 Ubuntu 와 같은 Debian 기반 시스템에서 널리 사용됩니다. 이 파일을 통해 **debian network interfaces**를 관리하면 정적 IP 주소, 게이트웨이 및 부팅 시 자동으로 적용되는 기타 설정을 정의할 수 있습니다. `debian network/interfaces` 내부의 구조는 간단하고 문서화가 잘 되어 있습니다.
+이제 런타임 상태와 영구 정책을 혼동하지 않고 인터페이스를 조사하고 변경할 수 있습니다.
 
-## Exercise
-
-이러한 실습 랩을 통해 지식을 실제로 적용해 보세요. 네트워크 인터페이스와 IP 주소 지정에 대한 이해를 강화하는 데 도움이 될 것입니다.
-
-1. **[리눅스에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령어를 사용하여 리눅스 시스템에서 MAC, IPv4 및 IPv6 주소를 포함한 네트워크 주소 정보를 식별하는 연습을 합니다.
-2. **[리눅스에서 IP 주소 지정 관리하기](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령어를 사용하여 정적 및 동적 IP 주소 구성, 기본 게이트웨이 설정 및 네트워크 구성 확인 방법을 배웁니다.
-3. **[리눅스에서 IP 주소 유형 및 도달 가능성 탐색하기](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 개인, 공용, 멀티캐스트 등 다양한 IP 주소 유형을 탐색하고 `ping` 및 `ip a`를 사용하여 네트워크 도달 가능성을 테스트합니다.
-
-이러한 랩은 네트워크 인터페이스 식별 및 IP 주소 지정 개념을 실제 시나리오에 적용하고 리눅스 네트워킹에 대한 자신감을 구축하는 데 도움이 될 것입니다.
-
-## Quiz Question
-
-리눅스 네트워크 인터페이스를 구성하는 데 사용되는 레거시 명령어는 무엇입니까? 답변은 영어로, 소문자만 사용하십시오.
-
-## Quiz Answer
-
-ifconfig
+1. 실제 인터페이스 이름과 주소를 찾습니다.
+2. 관리 상태와 운영 연결을 구분합니다.
+3. 직접 실행한 `ip` 변경을 현재 커널 상태로 다룹니다.
+4. 영구 변경 전에 활성 설정 소유자를 식별합니다.
+5. 이후 라우팅, 이름 확인 및 애플리케이션 동작을 검증합니다.

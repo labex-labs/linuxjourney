@@ -1,42 +1,72 @@
 ---
-index: 4
+lesson_id: "routing-protocols"
+course_id: "routing"
 lang: "de"
-title: "Routing-Protokolle"
-meta_title: "Routing-Protokolle - Routing"
-meta_description: "Erkunden Sie die Grundlagen von Routing-Protokollen im Linux-Netzwerk. Dieser Leitfaden behandelt Distanzvektor- und Link-State-Protokolle, Netzwerkkonvergenz und wie Router Routing-Tabellen erstellen und pflegen. Ein perfektes Tutorial für Anfänger."
-meta_keywords: "Routing-Protokolle, Netzwerkkonvergenz, Distanzvektor, Link State, Linux-Netzwerk, Routing-Tabelle, Netzwerk-Tutorial, Anfänger-Leitfaden, Router-Kommunikation"
+order_index: 4
+title: "Routingprotokolle"
+description: "Lerne, wie dynamische Routingprotokolle Erreichbarkeit austauschen und zu verwendbaren Weiterleitungspfaden konvergieren."
+meta_title: "Routingprotokolle – Routing"
+meta_description: "Erkunde die Grundlagen von Routingprotokollen in Linux-Netzwerken. Diese Anleitung behandelt Distanzvektor- und Link-State-Protokolle, Netzwerkkonvergenz und Routingtabellen."
+meta_keywords: "Routingprotokolle, Netzwerkkonvergenz, Distanzvektor, Link State, Linux-Vernetzung, Routingtabelle, Netzwerk-Tutorial, Einsteiger-Anleitung, Routerkommunikation"
 ---
 
-## Lesson Content
+Statische Routen werden unmittelbar konfiguriert, während dynamische Routingprotokolle Erreichbarkeits- und Topologieinformationen austauschen, damit Router sich anpassen können. Dynamisches Lernen verringert manuelle Arbeit, führt jedoch Protokollzustand, Vertrauensgrenzen, Timer und Fehlermöglichkeiten ein, die überwacht werden müssen.
 
-Die manuelle Konfiguration von Routen in einer Routing-Tabelle für jedes Gerät in einem großen Netzwerk wäre eine unglaublich mühsame Aufgabe. Um diesen Prozess zu automatisieren, verwenden wir dynamische **Routing-Protokolle**. Diese Protokolle ermöglichen es Routern, sich automatisch an Netzwerkänderungen anzupassen, indem sie verschiedene Routen erlernen, diese in die Routing-Tabelle aufnehmen und Pakete entsprechend weiterleiten. Es gibt zwei Haupttypen von Routing-Protokollen: Distanzvektor und Link-State.
+## Steuerungs- und Weiterleitungsebene
 
-### Distanzvektor-Protokolle
+Ein Routingprotokoll lernt Kandidaten in seiner eigenen Datenbank. Der Router wählt Routen in eine Routinginformationsbasis aus und installiert verwendbare nächste Hops in einer Weiterleitungstabelle. Hardware oder Kernel leiten Pakete anschließend anhand dieser Tabelle weiter.
 
-Distanzvektor-Protokolle arbeiten nach dem Prinzip des „Routings durch Gerüchte“. Jeder Router teilt seine gesamte Routing-Tabelle in regelmäßigen Abständen mit seinen direkt verbundenen Nachbarn. Wenn ein Router eine Routing-Tabelle von einem Nachbarn empfängt, aktualisiert er seine eigene Tabelle mit neuen oder besseren Routen. Die „Distanz“ wird typischerweise durch eine Metrik wie die Hop-Anzahl gemessen. Diese Methode ist einfach, kann aber langsam konvergieren und ist anfällig für Routing-Schleifen. Ein Beispiel für ein Distanzvektor-Protokoll ist das Routing Information Protocol (RIP).
+Eine hergestellte Protokollnachbarschaft beweist nicht, dass das gewünschte Präfix gelernt, ausgewählt, installiert oder von der Weiterleitungsrichtlinie erlaubt wurde.
 
-### Link-State-Protokolle
+:::single-choice{#routing-protocols-adjacency-limit} Was beweist eine hergestellte Routingnachbarschaft nicht?
 
-Im Gegensatz dazu geben **Link-State-Protokolle** jedem Router eine vollständige Karte der Netzwerktopologie. Anstatt ihre gesamte Routing-Tabelle zu teilen, senden Router Informationen über den Zustand ihrer eigenen Links (z. B. verbundene Nachbarn und die Kosten der Verbindung) an alle anderen Router im Netzwerk. Anhand dieser Informationen kann jeder Router unabhängig eine identische Karte des Netzwerks erstellen und den besten Pfad zu jedem Ziel berechnen. Dieser Ansatz führt zu einer schnelleren **Netzwerkkonvergenz** und ist besser skalierbar als Distanzvektor-Protokolle. Ein Beispiel ist das Open Shortest Path First (OSPF) Protokoll.
+::option[Dass jede gewünschte Route installiert ist und erfolgreich weiterleitet.]{#routing-protocols-not-full-proof .correct explanation="Routenankündigung, Auswahl, Installation, Filterung und Datenebenenbetrieb sind getrennte Stufen."}
+::option[Dass zwei Protokollteilnehmer überhaupt Steuernachrichten ausgetauscht haben.]{#routing-protocols-no-messages explanation="Die Herstellung einer Nachbarschaft erfordert normalerweise Protokollkommunikation."}
+::option[Dass eine Steuerungsebene existiert.]{#routing-protocols-no-control explanation="Die Nachbarschaft ist selbst Zustand der Steuerungsebene."}
+:::
 
-### Netzwerkkonvergenz
+## Internes und externes Routing
 
-Bevor wir uns weiter mit den Protokollen befassen, ist es wichtig, ein Schlüsselkonzept im Routing zu verstehen, die **Netzwerkkonvergenz**. Bei der Verwendung von Routing-Protokollen kommunizieren Router, um Informationen zu sammeln und auszutauschen. Konvergenz ist der Zustand, in dem alle Router eine konsistente und genaue Sicht auf die Netzwerktopologie haben. Wenn jede Routing-Tabelle das gesamte Netzwerk korrekt abbildet, gilt das Netzwerk als „konvergiert“. Wenn eine Änderung auftritt, beispielsweise wenn ein Link ausfällt, wird die Konvergenz vorübergehend unterbrochen, bis alle Router von der Änderung erfahren und ihre Routing-Tabellen aktualisiert haben.
+Interior Gateway Protocols arbeiten innerhalb einer administrativen Routingdomäne. Beispiele sind RIP, OSPF und IS-IS. BGP tauscht richtliniengesteuerte Erreichbarkeit innerhalb und zwischen autonomen Systemen aus und ist das externe Routingprotokoll des Internets.
 
-## Exercise
+Messwerte besitzen protokollspezifische Bedeutung. OSPF-Kosten, RIP-Hop-Anzahl und BGP-Attribute können nicht verglichen werden, als hätten sie eine allgemeingültige numerische Skala. Implementierungen verwenden Routenpräferenz oder administrative Distanz, um vor oder neben der protokollspezifischen Auswahl zwischen Quellen zu wählen.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu festigen:
+:::single-choice{#routing-protocols-metric-comparison} Kann eine RIP-Hop-Anzahl unmittelbar mit OSPF-Kosten verglichen werden?
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Üben Sie die Konfiguration statischer und dynamischer IP-Adressen, das Festlegen eines Standard-Gateways und die Überprüfung von Netzwerkkonfigurationen, was entscheidend für das Verständnis ist, wie Routing-Tabellen erstellt und genutzt werden.
-2. **[Interaktion der Netzwerkschicht mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Lernen Sie, wie Geräte auf der Netzwerkschicht interagieren, beobachten Sie ARP und wie das Standard-Gateway den Remote-Verkehr behandelt, was Einblicke in die Mechanismen gibt, die Routing-Protokolle verwalten.
-3. **[Konnektivität der Netzwerkschicht in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Verwenden Sie Docker, um Netzwerkknoten zu simulieren, IP-Adressen zuzuweisen und die Konnektivität über Subnetze hinweg zu testen, wobei Konzepte im Zusammenhang mit Netzwerkänderungen und Routing-Entscheidungen direkt angewendet werden.
+::option[Ja, weil alle Routingmesswerte dieselben Einheiten verwenden.]{#routing-protocols-universal-metric explanation="Jedes Protokoll definiert seinen eigenen Messwert und Auswahlprozess."}
+::option[Ja, aber nur, wenn beide Werte null sind.]{#routing-protocols-zero-metric explanation="Ihre Semantik bleibt unabhängig von einer angezeigten Zahl unterschiedlich."}
+::option[Nein; sie besitzen protokollspezifische Bedeutungen.]{#routing-protocols-specific-metric .correct explanation="Die Auswahl zwischen Quellen verwendet Implementierungsrichtlinien, statt ungleiche Messwerte als eine Skala zu behandeln."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte der Netzwerkkonfiguration und -konnektivität in realen Szenarien anzuwenden und Vertrauen in die grundlegenden Elemente aufzubauen, die Routing-Protokolle automatisieren.
+## Distanzvektor und Link State
 
-## Quiz Question
+Distanzvektorprotokolle kündigen Erreichbarkeit und Entfernung über Nachbarn an und leiten Pfade aus Nachbarberichten ab. Link-State-Protokolle bilden Nachbarschaften, fluten Verbindungszustandsinformationen in einem Bereich, erstellen eine Topologiedatenbank und berechnen Kürzeste-Wege-Bäume. Moderne Protokolle enthalten Verfeinerungen, durch die einfache Kategorienzusammenfassungen unvollständig bleiben.
 
-Wie wird der Zustand genannt, in dem alle Routing-Tabellen in einem Netzwerk über die Netzwerktopologie übereinstimmen? (Bitte antworten Sie auf Englisch und achten Sie auf die Groß-/Kleinschreibung.)
+:::single-choice{#routing-protocols-link-state-input} Was verwendet ein Link-State-Router für seine Pfadberechnung?
 
-## Quiz Answer
+::option[Nur den Hostnamen seines Standardgateways.]{#routing-protocols-hostname-only explanation="Eine Topologieberechnung erfordert Verbindungs- und Präfixinformationen."}
+::option[Eine synchronisierte Datenbank, die Verbindungen im Routingbereich beschreibt.]{#routing-protocols-link-database .correct explanation="Der Router führt einen Kürzeste-Wege-Algorithmus auf der gelernten Topologie aus."}
+::option[Anwendungspasswörter jedes Hosts.]{#routing-protocols-passwords explanation="Der Austausch der Routingtopologie erfordert keine Anmeldedaten von Endbenutzern."}
+:::
 
-Convergence
+## Konvergenz
+
+Nach einer Topologie- oder Richtlinienänderung erkennen Router sie, verbreiten Steuerinformationen, berechnen Pfade und aktualisieren den Weiterleitungszustand. Konvergenz ist Zeitraum und Ergebnis, in dem das Netzwerk für die betroffenen Ziele stabiles, gegenseitig verwendbares Routing erreicht. Sie erfordert nicht, dass jeder Router eine identische vollständige Tabelle besitzt; Rollen und Richtlinien können sich bewusst unterscheiden.
+
+Während der Konvergenz können vorübergehender Verlust, Schleifen oder Blackholes auftreten. Miss Erkennung, Verbreitung, Berechnung und Installation getrennt und überprüfe sie mit Datenebenenprüfungen.
+
+:::single-choice{#routing-protocols-convergence} Was ist Routingkonvergenz?
+
+::option[Der Prozess, nach einer Änderung stabiles verwendbares Routing zu erreichen.]{#routing-protocols-stable-routing .correct explanation="Sie umfasst die Verbreitung auf der Steuerungsebene und die daraus folgenden Weiterleitungsaktualisierungen."}
+::option[Die Anforderung, dass jeder Router eine identische globale Tabelle speichert.]{#routing-protocols-identical-table explanation="Richtlinie, Bereich und Rolle können bewusste Unterschiede erzeugen."}
+::option[Die dauerhafte Verhinderung jedes möglichen Routingfehlers.]{#routing-protocols-no-failure explanation="Ein konvergiertes Netzwerk kann weiterhin Richtlinien- oder Kapazitätsprobleme besitzen."}
+:::
+
+## Zusammenfassung
+
+Du kannst dynamische Routinginformationen nun auf dem Weg vom Protokollaustausch zur Weiterleitung einordnen.
+
+1. Trenne gelernte Kandidaten, ausgewählte Routen und Weiterleitungseinträge.
+2. Unterscheide internes Routing vom BGP-Richtlinienaustausch.
+3. Vergleiche Messwerte nur innerhalb ihrer Protokollsemantik.
+4. Überprüfe Konvergenz auf Steuerungs- und Datenebene.

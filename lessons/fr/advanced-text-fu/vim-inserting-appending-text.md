@@ -1,59 +1,91 @@
 ---
-index: 6
+lesson_id: "vim-inserting-appending-text"
+course_id: "advanced-text-fu"
 lang: "fr"
+order_index: 6
 title: "Insertion et Ajout de Texte dans Vim"
+description: "Apprenez à passer en mode Insertion avant, après, au-dessus ou au-dessous de la position actuelle dans Vim."
 meta_title: "Insertion et Ajout de Texte dans Vim - Maîtrise Avancée"
 meta_description: "Apprenez la différence entre les modes insertion et ajout de Vim. Maîtrisez les commandes comme 'i', 'a' et 'o' pour éditer efficacement le texte, ajouter du contenu et insérer une ligne dans Vim."
 meta_keywords: "vim ajouter, ajouter vs insérer vim, vim insertion vs ajout, vim insérer ligne, édition de texte vim, commandes vim, tutoriel vim, mode insertion, mode ajout"
 ---
 
-## Lesson Content
+En mode Normal, Vim interprète les touches comme des commandes. Le mode Insertion ajoute le texte saisi au tampon. Plusieurs commandes du mode Normal passent au mode Insertion à des positions différentes, ce qui permet de commencer à écrire sans déplacement séparé.
 
-Dans Vim, vous travaillerez principalement dans deux modes : le mode Normal pour exécuter des commandes et le mode Insertion pour taper du texte. Pour passer du mode Insertion au mode Normal, appuyez simplement sur la touche `Esc`.
+Appuyez sur `Esc` pour quitter le mode Insertion et revenir au mode Normal. Si vous ignorez quel mode est actif, `Esc` rétablit sans risque le mode Normal, même si cette touche peut annuler une opération en attente.
 
-Il existe plusieurs commandes pour entrer en mode Insertion, chacune plaçant le curseur à une position de départ différente pour votre saisie de texte.
+:::single-choice{#vim-insert-return-normal} Quelle touche permet normalement de revenir du mode Insertion au mode Normal ?
 
-### Commandes d'Insertion de Base
+::option[`Esc`]{#vim-insert-escape .correct explanation="Échap termine l'insertion actuelle et ramène Vim au mode Normal."}
+::option[`Entrée`]{#vim-insert-enter explanation="Entrée insère un saut de ligne tout en restant en mode Insertion."}
+::option[`Tab`]{#vim-insert-tab explanation="Tab insère une indentation ou déclenche une complétion configurée ; il ne quitte normalement pas le mode Insertion."}
+:::
 
-La manière la plus fondamentale de commencer à taper est avec la commande `i`.
+## Insérer avant ou après le curseur
 
-- `i` – **i**nsérer du texte avant la position actuelle du curseur.
+Depuis le mode Normal :
 
-Cette commande vous fait passer en mode Insertion, vous permettant de taper directement dans le fichier.
+- `i` : passer au mode Insertion avant le curseur ;
+- `a` : passer au mode Insertion après le curseur.
 
-### Vim Append vs Insert (Ajouter vs Insérer)
+Par exemple, si le curseur se trouve sur `b` dans `abc`, `i` commence avant `b`, tandis que `a` commence après. Les deux commandes changent de mode ; le texte tapé ensuite réalise l'insertion.
 
-Un point de comparaison courant est **vim append vs insert** (vim ajouter vs insérer). Bien que les deux entrent en mode Insertion, leurs points de départ diffèrent par rapport au curseur. Comprendre la distinction **vim insert vs append** est essentiel pour un mouvement et une édition efficaces.
+:::single-choice{#vim-insert-before-cursor} Quelle touche du mode Normal passe en mode Insertion juste avant le curseur ?
 
-- `a` – **a**jouter du texte après la position actuelle du curseur.
-- `I` – **I**nsérer du texte au début de la ligne actuelle.
-- `A` – **A**jouter du texte à la fin de la ligne actuelle.
+::option[`a`]{#vim-insert-a-after explanation="Le `a` minuscule ajoute après le curseur au lieu d'insérer avant lui."}
+::option[`o`]{#vim-insert-o-below explanation="Le `o` minuscule ouvre une nouvelle ligne sous la ligne actuelle avant de passer au mode Insertion."}
+::option[`i`]{#vim-insert-i-before .correct explanation="Le `i` minuscule commence l'insertion à la position actuelle, avant le caractère sous le curseur."}
+:::
 
-Utiliser `a` au lieu de `i` vous fait gagner une frappe (en déplaçant le curseur d'un espace vers la droite avant d'insérer). De même, `A` est un raccourci puissant pour commencer immédiatement à taper à la fin d'une ligne. Maîtriser les commandes **vim append** est une étape importante pour améliorer votre vitesse d'édition.
+## Insérer aux limites de la ligne
 
-### Comment Vim Ajouter une Ligne
+Les commandes en majuscule ciblent des positions significatives de la ligne actuelle :
 
-Lorsque vous avez besoin d'ajouter de nouvelles lignes de texte, vous n'avez pas besoin d'appuyer manuellement sur Entrée à la fin d'une ligne. Vim fournit des commandes dédiées pour ouvrir des lignes et entrer immédiatement en mode Insertion.
+- `I` : passer au mode Insertion avant le premier caractère non blanc ;
+- `A` : passer au mode Insertion à la fin de la ligne.
 
-- `o` – **o**uvrir une nouvelle ligne sous la ligne actuelle et entrer en mode Insertion.
-- `O` – **O**uvrir une nouvelle ligne au-dessus de la ligne actuelle et entrer en mode Insertion.
+Sur une ligne indentée, `I` ignore l'indentation et commence avant le premier texte non blanc. Utilisez `0i` si vous devez précisément insérer à la colonne zéro.
 
-Ces commandes sont extrêmement utiles lorsque vous devez rapidement **vim add line** (vim ajouter ligne) lors du codage ou de l'écriture.
+:::single-choice{#vim-insert-first-nonblank} Quelle commande du mode Normal commence l'insertion avant le premier caractère non blanc de la ligne actuelle ?
 
-Astuce : Vous pouvez préfixer ces commandes avec un nombre pour les répéter. Par exemple, taper `3o` en mode Normal ouvrira trois nouvelles lignes vides sous la ligne actuelle et vous placera en mode Insertion sur la première de ces nouvelles lignes.
+::option[`i`]{#vim-insert-lower-i explanation="Le `i` minuscule utilise la position actuelle du curseur sans cibler d'abord le premier texte de la ligne."}
+::option[`A`]{#vim-insert-capital-a explanation="Le `A` majuscule commence l'insertion à la fin de la ligne actuelle."}
+::option[`I`]{#vim-insert-capital-i .correct explanation="Le `I` majuscule va au premier caractère non blanc et passe en mode Insertion avant lui."}
+:::
 
-## Exercise
+:::single-choice{#vim-append-line-end} Quelle commande du mode Normal va à la fin de la ligne actuelle et passe en mode Insertion ?
 
-La pratique est essentielle pour maîtriser Vim. Le laboratoire suivant fournit un environnement pratique pour renforcer votre compréhension des capacités d'édition de texte de Vim.
+::option[`A`]{#vim-append-capital-a .correct explanation="Le `A` majuscule combine un saut en fin de ligne et le passage au mode Insertion."}
+::option[`$`]{#vim-move-line-end explanation="Le déplacement dollar atteint la fin de ligne, mais reste en mode Normal."}
+::option[`a`]{#vim-append-one-position explanation="Le `a` minuscule commence après le curseur actuel sans sauter jusqu'à la fin de ligne."}
+:::
 
-1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer des fichiers, à modifier du texte, à sauvegarder des fichiers et à naviguer avec vi/vim et nano. Ce laboratoire vous aidera à maîtriser les compétences fondamentales de l'utilisation des modes Normal et Insertion de Vim.
+## Ouvrir une nouvelle ligne
 
-Appliquer ces concepts dans des scénarios réels vous aidera à gagner en confiance dans l'édition de texte sous Linux en utilisant Vim.
+Depuis le mode Normal :
 
-## Quiz Question
+- `o` : ouvrir une nouvelle ligne sous la ligne actuelle et passer au mode Insertion ;
+- `O` : ouvrir une nouvelle ligne au-dessus de la ligne actuelle et passer au mode Insertion.
 
-Quelle touche entre en mode Insertion avant le curseur ? Veuillez répondre avec une seule lettre anglaise minuscule.
+Vim applique l'indentation selon les réglages actifs et les règles du type de fichier. Un nombre peut répéter l'ouverture de ligne, mais apprenez d'abord la forme simple afin de prévoir la position résultante du curseur.
 
-## Quiz Answer
+:::single-choice{#vim-open-line-above} Quelle commande du mode Normal ouvre une nouvelle ligne au-dessus de la ligne actuelle et passe au mode Insertion ?
 
-i
+::option[`o`]{#vim-open-lower-o explanation="Le `o` minuscule ouvre une ligne sous la ligne actuelle."}
+::option[`O`]{#vim-open-upper-o .correct explanation="Le `O` majuscule ouvre une nouvelle ligne au-dessus et y commence l'insertion."}
+::option[`A`]{#vim-open-upper-a explanation="Le `A` majuscule ajoute à la fin de la ligne existante et n'en ouvre pas une nouvelle au-dessus."}
+:::
+
+Pour vous exercer à passer du mode Normal au mode Insertion, essayez ce laboratoire :
+
+1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** — Entraînez-vous à créer, modifier et enregistrer des fichiers, ainsi qu'à naviguer avec vi/vim et nano. Vous maîtriserez ainsi les bases des modes Normal et Insertion de Vim.
+
+## Résumé
+
+Vous savez maintenant passer au mode Insertion à l'endroit où le nouveau texte doit apparaître.
+
+1. Revenir au mode Normal avec `Esc`.
+2. Insérer avant ou après le curseur avec `i` ou `a`.
+3. Insérer avant le premier texte ou à la fin de la ligne avec `I` ou `A`.
+4. Ouvrir une ligne au-dessous avec `o`.
+5. Ouvrir une ligne au-dessus avec `O`.

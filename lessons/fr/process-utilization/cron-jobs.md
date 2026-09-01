@@ -1,62 +1,108 @@
 ---
-index: 8
+lesson_id: "cron-jobs"
+course_id: "process-utilization"
 lang: "fr"
-title: "Tâches Cron"
-meta_title: "Tâches Cron - Utilisation des Processus"
-meta_description: "Apprenez à planifier des tâches et à automatiser des scripts sous Linux avec les tâches cron. Ce guide couvre la syntaxe crontab, les commandes essentielles comme crontab -e, et des exemples pratiques pour débutants."
-meta_keywords: "tâches cron, crontab, planifier des tâches, automatisation Linux, commandes Linux, Linux débutant, tutoriel Linux, crontab -e, cron"
+order_index: 8
+title: "Tâches cron"
+description: "Découvrez comment créer, examiner, tester et exploiter en toute sécurité des tâches récurrentes avec cron."
+meta_title: "Tâches cron - Utilisation des processus"
+meta_description: "Apprenez à planifier des tâches et automatiser des scripts sous Linux avec cron, la syntaxe de crontab et des commandes telles que crontab -e."
+meta_keywords: "tâches cron, crontab, planifier tâches, automatisation Linux, commandes Linux, Linux débutant, tutoriel Linux, crontab -e, cron"
 ---
 
-## Lesson Content
+Cron exécute des commandes selon un calendrier récurrent sans shell interactif. L’automatisation répète aussi bien les comportements corrects que les erreurs ; testez donc la commande, employez des chemins explicites, limitez les privilèges et planifiez la journalisation et la notification des échecs avant de la programmer.
 
-Bien que l'utilisation des processus soit importante, c'est aussi le moment idéal pour introduire un outil puissant pour l'`automatisation Linux` : le démon `cron`. Ce service d'arrière-plan vous permet de `planifier des tâches` pour qu'elles s'exécutent automatiquement à des heures ou des intervalles spécifiques. Ces tâches planifiées sont communément appelées `tâches cron`. Ceci est incroyablement utile pour automatiser des actions de routine, comme l'exécution d'un script de sauvegarde chaque nuit ou le nettoyage des fichiers temporaires une fois par semaine.
+## Lire une entrée de crontab
 
-### Que sont les tâches Cron
+Une entrée de crontab utilisateur contient cinq champs temporels suivis d’une commande :
 
-Imaginez que vous ayez un script à `/home/pete/scripts/change_wallpaper` que vous exécutez chaque matin pour définir un nouveau fond d'écran. Au lieu de l'exécuter manuellement chaque jour, vous pouvez créer une `tâche cron` pour l'exécuter à votre place. En définissant une planification, vous pouvez indiquer au service `cron` exactement quand exécuter votre script, ce qui en fait une véritable solution "configurez et oubliez".
-
-### Comprendre la syntaxe Crontab
-
-Pour créer une `tâche cron`, vous devez spécifier la planification et la commande à exécuter. La planification est définie par cinq champs, suivis de la commande.
-
-```plaintext
-30 08 * * * /home/pete/scripts/change_wallpaper
+```cron
+30 8 * * * /home/pete/scripts/change_wallpaper
 ```
 
-Les cinq champs d'heure et de date sont, de gauche à droite :
+De gauche à droite, les champs sont la minute, l’heure, le jour du mois, le mois et le jour de la semaine. Cet exemple s’exécute à 08 h 30 selon le fuseau horaire applicable au démon cron. Un astérisque signifie chaque valeur permise dans ce champ.
 
-- **Minute** : 0-59
-- **Heure** : 0-23 (au format 24 heures)
-- **Jour du mois** : 1-31
-- **Mois** : 1-12
-- **Jour de la semaine** : 0-7 (où 0 et 7 représentent tous deux le dimanche)
+Lorsque les champs du jour du mois et du jour de la semaine sont tous deux restreints, de nombreuses implémentations de cron exécutent la commande si l’un ou l’autre correspond. Confirmez la sémantique locale avant de bâtir un calendrier qui utilise les deux.
 
-Un astérisque (`*`) dans un champ agit comme un joker, signifiant "chaque". Dans l'exemple ci-dessus, la planification `30 08 * * *` indique à `cron` d'exécuter la commande à 8h30, chaque jour du mois, chaque mois et chaque jour de la semaine.
+:::single-choice{#cron-daily-eight-thirty} Quand `30 8 * * * command` s’exécute-t-il ?
 
-### Gérer les tâches Cron avec Crontab
+::option[Toutes les 30 minutes pendant huit heures.]{#cron-every-thirty explanation="Les champs occupent des positions dans un calendrier et n’expriment pas une durée."}
+::option[Chaque jour à 08 h 30.]{#cron-eight-thirty .correct explanation="La minute 30 et l’heure 8 sont fixes, tandis que les trois champs de date autorisent toutes les valeurs."}
+::option[À 30 h 08 le huitième jour de chaque mois.]{#cron-invalid-time explanation="Les heures vont de 0 à 23, et l’exemple ne limite pas le jour du mois."}
+:::
 
-Vous gérez vos `tâches cron` personnelles à l'aide de la commande `crontab`, qui vous permet d'éditer votre fichier crontab spécifique à l'utilisateur. Ce fichier contient toutes les `tâches cron` que vous avez planifiées.
+## Gérer une crontab utilisateur
 
-Pour ajouter ou modifier vos `tâches cron`, utilisez l'indicateur `-e` (éditer). Cela ouvrira votre fichier crontab dans votre éditeur de texte par défaut.
+Modifiez la crontab de l’utilisateur actuel avec :
 
 ```bash
-crontab -e
+$ crontab -e
 ```
 
-Une fois que vous avez ajouté la définition de votre tâche et enregistré le fichier, `cron` lira automatiquement la nouvelle planification. Vous pouvez également lister vos `tâches cron` actives avec `crontab -l` ou toutes les supprimer avec `crontab -r`. L'utilisation des `tâches cron` est une compétence fondamentale pour quiconque s'intéresse à l'`automatisation Linux`.
+Répertoriez les entrées installées avant et après une modification :
 
-## Exercise
+```bash
+$ crontab -l
+```
 
-La pratique rend parfait ! Ce laboratoire pratique vous aidera à renforcer votre compréhension de la façon de `planifier des tâches` sous Linux.
+`crontab -r` supprime toute la crontab de l’utilisateur et peut le faire sans ouvrir d’éditeur. Ne l’employez pas pour retirer une seule ligne ; modifiez la crontab et vérifiez les entrées restantes.
 
-1. **[Planifier des tâches avec at et cron sous Linux](https://labex.io/fr/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Entraînez-vous à créer, gérer et supprimer des tâches avec `at`, `atq`, `atrm` et `crontab`, en acquérant une expérience pratique dans l'automatisation des tâches d'administration système.
+:::single-choice{#cron-list-current-user} Quelle commande répertorie les entrées cron installées de l’utilisateur actuel ?
 
-Ce laboratoire vous aidera à appliquer les concepts de cette leçon dans un scénario réel et à renforcer votre confiance dans l'`automatisation Linux`.
+::option[`crontab -l`]{#cron-list .correct explanation="L’option de liste affiche les entrées installées afin de les examiner."}
+::option[`crontab -r`]{#cron-remove-all explanation="Cette option supprime la crontab au lieu de l’afficher."}
+::option[`crontab -e`]{#cron-edit explanation="Cette option ouvre la crontab dans un éditeur plutôt que de simplement la répertorier."}
+:::
 
-## Quiz Question
+## Tenir compte de l’environnement de cron
 
-Quelle est la commande pour éditer vos tâches cron personnelles ? (Veuillez répondre en utilisant la commande exacte en minuscules et son option.)
+Cron fournit généralement un environnement limité et un shell non interactif. Employez des chemins absolus pour les commandes et les fichiers, définissez explicitement les variables requises et ne dépendez pas d’alias, du répertoire actuel d’un terminal ou des fichiers de démarrage du shell.
 
-## Quiz Answer
+Redirigez la sortie standard et les erreurs vers un journal contrôlé ou employez un mécanisme de notification adapté au système. Protégez les identifiants secrets par des permissions restrictives et évitez de les intégrer directement dans une commande de crontab.
 
-crontab -e
+:::single-choice{#cron-absolute-paths} Pourquoi une commande cron doit-elle employer des chemins et des paramètres d’environnement explicites ?
+
+::option[Cron s’exécute toujours dans le terminal actuel de l’utilisateur.]{#cron-current-terminal explanation="Les tâches planifiées s’exécutent indépendamment d’une session interactive."}
+::option[Les chemins absolus font exécuter chaque commande en tant que root.]{#cron-path-root explanation="Les chemins sélectionnent des fichiers, mais n’accordent aucun privilège."}
+::option[L’environnement de cron peut différer de celui du shell interactif.]{#cron-limited-environment .correct explanation="Des dépendances explicites évitent les échecs dus à des hypothèses sur PATH, le répertoire ou les fichiers de démarrage."}
+:::
+
+## Tester et empêcher les chevauchements
+
+Exécutez le script manuellement en tant que même utilisateur avec un environnement tout aussi minimal. Faites-lui renvoyer des états de sortie utiles et écrire des résultats horodatés. Après l’installation, attendez un calendrier de test inoffensif ou une exécution contrôlée, puis vérifiez l’effet réel et les journaux.
+
+Si une exécution peut durer plus longtemps que son intervalle, concevez-la pour la concurrence ou employez un mécanisme de verrouillage tel que `flock` lorsqu’il est disponible :
+
+```cron
+*/5 * * * * /usr/bin/flock -n /run/user/1000/report.lock /home/pete/bin/report
+```
+
+Choisissez un chemin de verrou que l’utilisateur de la tâche peut créer sans risque et déterminez si les exécutions ignorées sont acceptables. Cron ne garantit pas automatiquement l’exécution d’une seule instance.
+
+:::single-choice{#cron-overlapping-runs} Quel risque existe lorsqu’une tâche dure plus longtemps que son intervalle de planification ?
+
+::option[Plusieurs instances peuvent se chevaucher et se disputer les ressources.]{#cron-overlap .correct explanation="Cron peut lancer une nouvelle occurrence pendant que le processus précédent s’exécute encore."}
+::option[Les cinq champs du calendrier acquièrent automatiquement un sixième champ de verrouillage.]{#cron-auto-lock explanation="La syntaxe de crontab n’ajoute pas d’exclusion mutuelle automatique."}
+::option[Le script est définitivement converti en thread du noyau.]{#cron-kernel-thread explanation="La planification d’une commande ne modifie pas ainsi son modèle de processus."}
+:::
+
+## Choisir le bon planificateur
+
+Cron convient aux commandes récurrentes simples. Sur les hôtes systemd, les minuteurs systemd peuvent fournir l’intégration des dépendances, le rattrapage persistant, un délai aléatoire et la journalisation. Les planificateurs d’application ou de grappe peuvent être plus sûrs lorsqu’une tâche ne doit s’exécuter qu’une seule fois sur plusieurs machines.
+
+:::single-choice{#cron-cluster-exactly-once} Pourquoi cron ordinaire sur chaque hôte peut-il ne pas convenir à une tâche de grappe qui doit s’exécuter exactement une fois ?
+
+::option[Chaque entrée cron est limitée à un caractère.]{#cron-one-character explanation="Les commandes d’une crontab peuvent contenir des lignes de commande ordinaires."}
+::option[Chaque hôte peut lancer indépendamment sa propre copie.]{#cron-each-host .correct explanation="Un mécanisme de coordination distribué est nécessaire pour imposer une seule exécution sur tous les hôtes."}
+::option[Cron ne peut pas exécuter de scripts enregistrés sur disque.]{#cron-no-scripts explanation="L’exécution de scripts est un usage courant de cron."}
+:::
+
+## Résumé
+
+Vous savez maintenant exploiter une tâche cron récurrente avec des hypothèses explicites sur son calendrier et son exécution.
+
+1. Lire les cinq champs temporels dans l’ordre défini.
+2. Examiner et modifier les crontabs utilisateur sans supprimer les tâches sans rapport.
+3. Définir les chemins, l’environnement, la journalisation et la gestion des identifiants secrets.
+4. Tester en tant qu’utilisateur de la tâche et empêcher les chevauchements indésirables.
+5. Choisir un planificateur adapté aux exigences de l’hôte et de coordination.

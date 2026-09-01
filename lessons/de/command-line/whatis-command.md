@@ -1,32 +1,38 @@
 ---
-index: 17
+lesson_id: "whatis-command"
+course_id: "command-line"
 lang: "de"
+order_index: 17
 title: "whatis"
+description: "Lerne, knappe Beschreibungen von Handbuchseiten abzurufen und ihre Abschnittsnummern zu deuten."
 meta_title: "whatis - Kommandozeile"
 meta_description: "Lerne den Linux-Befehl whatis mit Beispielen kennen, um einzeilige Befehlsbeschreibungen aus Manpages zu erhalten und mehrere Handbuchabschnitte zu verstehen."
 meta_keywords: "whatis Befehl, linux whatis, Befehlsbeschreibung linux, man page Zusammenfassung, Kommandozeilenhilfe, apropos"
 ---
 
-## Lesson Content
+Wenn du einen Befehlsnamen wiedererkennst, aber seinen Zweck vergessen hast, liefert `whatis` eine kurze Erinnerung aus der Handbuchdatenbank.
 
-Wenn du die Linux-Kommandozeile erkundest, wirst du auf eine Vielzahl von Befehlen stoßen. Es ist ganz natürlich, dass man vergisst, was ein bestimmter Befehl macht. Zum Glück gibt es ein einfaches Hilfsmittel, das dir weiterhilft.
+## Einen genauen Namen nachschlagen
 
-### Was ist der Befehl whatis
-
-Der Befehl `whatis` zeigt eine kurze, einzeilige Beschreibung eines Befehls direkt aus seiner Handbuchseite an. Es ist eine schnelle Möglichkeit, sich an die Hauptfunktion eines Befehls zu erinnern, ohne die gesamte Manpage lesen zu müssen.
-
-### Wie man den Befehl whatis benutzt
-
-Die Verwendung von `whatis` ist einfach. Tippe `whatis` gefolgt von dem Befehl, über den du mehr wissen möchtest.
+Übergib `whatis` einen oder mehrere genaue Themennamen. Jedes Ergebnis stammt aus dem Abschnitt `NAME` einer installierten Handbuchseite:
 
 ```bash
 $ whatis cat
 cat (1)              - concatenate files and print on the standard output
 ```
 
-### Das Ergebnis verstehen
+Die Ausgabe ist eine Beschreibung, keine Liste von Befehlsoptionen oder Beispielen. Verwende `man cat` oder `cat --help`, wenn du weitere Einzelheiten benötigst.
 
-Die Beschreibung, die `whatis` liefert, stammt aus dem Abschnitt `NAME` der Handbuchseite des Befehls. Wenn ein Name mehrere Handbuchseiten in verschiedenen Abschnitten hat, kann `whatis` mehr als eine Zeile anzeigen.
+:::single-choice{#describe-known-command} Du kennst den Namen `cat` und möchtest seine einzeilige Beschreibung aus dem Handbuch sehen. Welchen Befehl führst du aus?
+
+::option[`man cat`]{#manual-cat explanation="`man cat` öffnet die vollständige Handbuchseite und liefert damit mehr als die verlangte einzeilige Erinnerung."}
+::option[`apropos cat`]{#apropos-cat explanation="`apropos` durchsucht Beschreibungen nach einem Stichwort und kann zahlreiche verwandte Themen liefern. Das ist breiter als eine genaue Namenssuche."}
+::option[`whatis cat`]{#whatis-cat .correct explanation="`whatis` schlägt den genauen Themennamen nach und gibt dessen knappe Beschreibung aus der Handbuchdatenbank aus."}
+:::
+
+## Abschnittsnummern lesen
+
+Existieren Handbuchseiten mit demselben Thema in mehreren Abschnitten, kann `whatis` mehrere Ergebnisse anzeigen:
 
 ```bash
 $ whatis passwd
@@ -34,13 +40,20 @@ passwd (1)           - change user password
 passwd (5)           - the password file
 ```
 
-Die Zahl in Klammern ist der Abschnitt der Manpage.
+Die Zahl in Klammern bezeichnet den Handbuchabschnitt. Hier beschreibt `passwd(1)` den Benutzerbefehl und `passwd(5)` ein Dateiformat. Mit `man 1 passwd` oder `man 5 passwd` öffnest du eine Seite gezielt.
 
-### Whatis vs Man vs Apropos
+:::single-choice{#interpret-whatis-section} Was bezeichnet `(5)` in der Ausgabe `passwd (5) - the password file`?
 
-- `whatis ls`: Zeigt eine einzeilige Beschreibung für einen exakten Befehlsnamen.
-- `man ls`: Öffnet die vollständige Handbuchseite.
-- `apropos keyword`: Durchsucht die Beschreibungen der Manpages nach einem Stichwort.
+::option[Die fünfte Option, die der Befehl `passwd` akzeptiert.]{#fifth-option explanation="Die Zahl ist keine Optionsposition. Optionen werden innerhalb einer ausgewählten Handbuchseite dokumentiert."}
+::option[Den Handbuchabschnitt, der die Dateiformatseite enthält.]{#section-five .correct explanation="Abschnitt 5 behandelt Dateiformate und Konventionen; `passwd(5)` verweist daher auf diesen Handbuchabschnitt."}
+::option[Fünf Handbuchseiten, die den Namen `passwd` teilen.]{#five-pages explanation="Es kann mehrere Ergebnisse geben, doch der Klammerwert bezeichnet einen Abschnitt und keine Seitenanzahl."}
+:::
+
+## Zwischen whatis, man und apropos wählen
+
+- `whatis NAME`: Zeigt knappe Beschreibungen zu einem genauen Handbuchthema.
+- `man NAME`: Öffnet eine vollständige Handbuchseite.
+- `apropos KEYWORD`: Durchsucht Namen und Beschreibungen von Handbuchseiten nach einem Stichwort.
 
 Zum Beispiel:
 
@@ -48,30 +61,31 @@ Zum Beispiel:
 $ apropos password
 ```
 
-Verwende `whatis`, wenn du den Befehlsnamen kennst, aber vergessen hast, was er macht.
+Verwende `apropos`, wenn du die Aufgabe, aber nicht den Befehlsnamen kennst. `whatis` eignet sich, wenn der Name bereits bekannt ist.
 
-### Häufige Fragen
+:::single-choice{#search-by-purpose} Du kennst den Befehlsnamen nicht, möchtest aber Handbuchbeschreibungen nach dem Stichwort `password` durchsuchen. Welcher Befehl passt dazu?
 
-**Warum sagt whatis "nothing appropriate"?** Der Befehl hat möglicherweise keine installierte Manpage, oder die Man-Datenbank muss aktualisiert werden.
+::option[`apropos password`]{#apropos-password .correct explanation="`apropos` durchsucht Namen und Beschreibungen von Handbuchseiten nach dem Stichwort und hilft so beim Entdecken passender Themen."}
+::option[`whatis password`]{#exact-password explanation="`whatis` sucht nach einem genauen Handbuchthema namens `password`. Es ist keine allgemeine Stichwortsuche."}
+::option[`man password`]{#manual-password explanation="`man` versucht, eine Seite mit diesem Themennamen zu öffnen. Die verlangte Beschreibungssuche führt es nicht aus."}
+:::
 
-**Zeigt whatis Befehlsoptionen an?** Nein. Verwende `man BEFEHL` oder `BEFEHL --help` für Optionen.
+## Wenn keine Beschreibung erscheint
 
-**Ist whatis dasselbe wie which?** Nein. `whatis` beschreibt einen Befehl. `which` zeigt den Pfad zur ausführbaren Datei an.
+Meldet `whatis`, dass nichts Passendes vorhanden ist, besitzt das Thema möglicherweise keine installierte Handbuchseite oder die Datenbank ist veraltet. Das beweist nicht, dass keine ausführbare Datei, kein Alias, keine Funktion oder kein Builtin dieses Namens existiert. Prüfe mit `type NAME`, wie Bash den Befehlsnamen auflöst, und wähle danach eine passende Hilfequelle.
 
-## Exercise
+:::single-choice{#whatis-versus-type} `whatis deploy` findet keine Handbuchbeschreibung. Welcher Befehl prüft, ob Bash `deploy` als Alias, Funktion, Builtin oder ausführbare Datei auflöst?
 
-Übung macht den Meister! Obwohl es kein spezielles Labor für den Befehl `whatis` gibt, ist es wichtig zu verstehen, wie man Informationen über Befehle und Dateien findet. Hier sind einige praktische Labs, um dein Verständnis für das Auffinden von Befehlen und Dateien in Linux zu vertiefen:
+::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="Eine veränderte Abfrage der Handbuchdatenbank zeigt nicht alle Aliase, Funktionen, Builtins und Pfadauflösungen von Bash an."}
+::option[`man 5 deploy`]{#manual-five-deploy explanation="Damit versuchst du, eine Seite aus Abschnitt 5 zu öffnen. Die Namensauflösung durch Bash wird nicht bestimmt."}
+::option[`type deploy`]{#resolve-deploy .correct explanation="Das Bash-Builtin `type` meldet, wie die aktuelle Shell einen Befehlsnamen auflöst – unabhängig davon, ob eine Handbuchbeschreibung installiert ist."}
+:::
 
-1. **[Linux which Command: Command Locating](https://labex.io/de/labs/linux-linux-which-command-command-locating-215210)** – Übe die Verwendung des Befehls `which`, um ausführbare Dateien zu finden und die Priorität von Befehlen im PATH deines Systems zu verstehen.
-2. **[Linux whereis Command: File and Command Finding](https://labex.io/de/labs/linux-linux-whereis-command-file-and-command-finding-215211)** – Lerne, `whereis` zu verwenden, um Binärdateien, Quellcode und Handbuchseiten von Befehlen zu finden und so dein Verständnis der Befehlsstruktur zu vertiefen.
-3. **[Discover Critical System Resources](https://labex.io/de/labs/linux-discover-critical-system-resources-388032)** – Diese Herausforderung kombiniert `which`, `whereis` und `find`, um dir zu helfen, effizient im Dateisystem zu navigieren und wichtige Systemressourcen zu entdecken.
+## Zusammenfassung
 
-Diese Labs helfen dir, die Konzepte der Befehls- und Dateisuche in realen Szenarien anzuwenden und Vertrauen im Umgang mit wichtigen Linux-Dienstprogrammen zu gewinnen.
+Du kannst nun knappe Beschreibungen aus der Handbuchdatenbank abrufen und deuten.
 
-## Quiz Question
-
-Welchen Befehl kannst du verwenden, um eine kurze Beschreibung eines Befehls zu sehen? Bitte antworte auf Englisch und achte auf Kleinbuchstaben.
-
-## Quiz Answer
-
-whatis
+1. Schlage ein genaues Thema mit `whatis` nach.
+2. Lies den in Klammern angegebenen Handbuchabschnitt.
+3. Verwende `man`, wenn du die vollständige Seite benötigst.
+4. Verwende `apropos`, wenn du ein Stichwort statt eines Namens kennst.

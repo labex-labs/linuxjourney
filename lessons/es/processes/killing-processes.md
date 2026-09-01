@@ -1,66 +1,102 @@
 ---
-index: 7
+lesson_id: "killing-processes"
+course_id: "processes"
 lang: "es"
-title: "kill (Terminar)"
-meta_title: "kill (Terminar) - Procesos"
-meta_description: "Domina el comando kill de Linux para gestionar y terminar procesos. Esta guía cubre las diferencias entre kill vs terminar, y explica señales como kill sigterm (SIGTERM), SIGKILL y kill sighup (SIGHUP)."
-meta_keywords: "comando kill, kill sigterm, kill sighup, linux kill -0, kill vs terminar, kill -15 linux, SIGTERM, SIGKILL, gestión de procesos, terminar proceso"
+order_index: 7
+title: "kill (terminar)"
+description: "Aprende a identificar un proceso y enviarle una señal apropiada con kill mediante una secuencia de escalada segura."
+meta_title: "kill (terminar) - Procesos"
+meta_description: "Domina la orden kill de Linux: verifica el proceso de destino, usa SIGTERM para una salida ordenada y reserva SIGKILL para una escalada justificada."
+meta_keywords: "orden kill, kill SIGTERM, kill -0 Linux, SIGTERM, SIGKILL, gestión de procesos, terminar proceso"
 ---
 
-## Lesson Content
+La orden `kill` envía una señal a un proceso o grupo de procesos. Su nombre es histórico: la señal solicitada puede terminar, detener, continuar o provocar alguna acción definida por la aplicación. Confirma siempre el destino exacto y comprende el comportamiento documentado del programa para esa señal antes de enviarla.
 
-En Linux, puedes gestionar procesos enviándoles señales. El comando principal para esto es `kill`, que, a pesar de su nombre, puede enviar varias señales, no solo las que terminan un proceso.
+## Solicitar una terminación ordenada
 
-### Terminación por Defecto con kill sigterm
-
-Cuando usas el comando `kill` solo con un ID de Proceso (PID), envía una señal `TERM` por defecto. Esta es la forma estándar y elegante de pedirle a un programa que termine.
+Con solo un PID, `kill` envía `SIGTERM` de forma predeterminada:
 
 ```bash
-kill 12445
+$ kill 12445
 ```
 
-La señal `kill sigterm` (también conocida como `SIGTERM` o señal 15) solicita que el proceso se apague limpiamente. Esto le da al proceso la oportunidad de guardar su progreso y liberar recursos adecuadamente. También puedes usar explícitamente el número de señal, haciendo que `kill -15 12445` sea equivalente al comando anterior. Esto aborda la consulta común de `kill -15 linux`.
-
-### Forzar la Terminación con SIGKILL
-
-A veces, un proceso deja de responder y no reacciona a una señal `SIGTERM`. En estos casos, puedes forzar su detención usando la señal `KILL`.
+Prefiere el nombre simbólico cuando indiques explícitamente una señal:
 
 ```bash
-kill -9 12445
+$ kill -TERM 12445
 ```
 
-La señal `SIGKILL` (señal 9) termina el proceso inmediatamente, sin darle oportunidad de limpieza. Esta es una diferencia clave en el debate `kill vs terminate`; `SIGKILL` es una terminación incondicional, mientras que `SIGTERM` es una solicitud cortés.
+La acción predeterminada de `SIGTERM` es terminar, pero un programa puede capturarla o ignorarla. Un servicio bien diseñado puede usar un manejador para dejar de aceptar trabajo, guardar el estado apropiado y liberar recursos de la aplicación. Es una posibilidad, no una garantía de limpieza inmediata o correcta.
 
-### Entendiendo Otras Señales Comunes
+:::single-choice{#killing-processes-default-signal} ¿Qué señal solicita `kill PID` de forma predeterminada?
 
-Aunque `SIGTERM` y `SIGKILL` son las más comunes, otras señales también son útiles para la gestión de procesos.
+::option[`SIGKILL`]{#killing-processes-default-kill explanation="La señal forzosa que no puede capturarse debe seleccionarse explícitamente."}
+::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="Sin otro operando de señal, `kill` envía la solicitud estándar de terminación."}
+::option[`SIGSTOP`]{#killing-processes-default-stop explanation="Detener un proceso no es la acción predeterminada solicitada por `kill`."}
+:::
 
-- **SIGHUP**: La señal `kill sighup` (Hangup o Colgar, señal 1) se envía tradicionalmente a un proceso cuando se cierra su terminal de control. Se puede usar para indicar a los procesos daemon que recarguen sus archivos de configuración.
-- **SIGINT**: La señal de Interrupción (señal 2) se envía cuando presionas `Ctrl-C`. Solicita al proceso que interrumpa su operación actual.
-- **SIGSTOP**: Esta señal (señal 19) pausa un proceso sin terminarlo. El proceso puede reanudarse más tarde con la señal `SIGCONT`.
+## Verificar el destino
 
-### Comprobar la Existencia del Proceso con kill -0
-
-Un caso de uso especial es `linux kill -0`. Este comando en realidad no envía una señal, sino que comprueba si existe un proceso con el PID especificado y si tienes permiso para enviarle una señal.
+Los PID pueden reutilizarse, por lo que un PID antiguo puede identificar después un proceso diferente. Consulta el destino activo inmediatamente antes de actuar:
 
 ```bash
-kill -0 12445
+$ ps -p 12445 -o pid,ppid,user,lstart,stat,cmd
 ```
 
-Si el comando se ejecuta con éxito (código de salida 0), el proceso existe. Si falla, el proceso no existe o no tienes permisos.
+Comprueba su usuario, hora de inicio, orden, padre, propiedad por un servicio y función operativa. Si un gestor de servicios controla el proceso, usa su orden de parada o recarga cuando sea posible, para que pueda mantener el estado correcto y evitar reiniciar inmediatamente al hijo.
 
-## Exercise
+Puedes enviar señales a procesos de tu propiedad, sujeto a las reglas de credenciales. Para señalizar el proceso de otro usuario suelen necesitarse los privilegios apropiados. No uses una orden amplia basada en nombres hasta haber revisado todas las coincidencias.
 
-Para aplicar lo aprendido, prueba este laboratorio práctico para reforzar tu comprensión de la gestión y terminación de procesos:
+:::single-choice{#killing-processes-pid-reuse} ¿Por qué debes consultar un PID inmediatamente antes de enviarle una señal?
 
-1. **[Gestionar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderás habilidades esenciales para gestionar y monitorear procesos en un sistema Linux. Explorarás cómo interactuar con procesos en primer plano y segundo plano, inspeccionarlos con `ps`, monitorear recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
+::option[Un PID cambia cada vez que el proceso lee un archivo.]{#killing-processes-pid-read explanation="Un proceso activo suele conservar el mismo PID durante toda su existencia."}
+::option[El kernel puede reutilizar un PID después de que termine su proceso anterior.]{#killing-processes-pid-reused .correct explanation="Un PID numérico recordado puede referirse posteriormente a otro proceso activo."}
+::option[`kill` acepta nombres de órdenes, pero no identificadores numéricos.]{#killing-processes-no-numeric explanation="Un PID numérico es el operando de destino normal de `kill`."}
+:::
 
-Este laboratorio te ayudará a aplicar los conceptos de control y terminación de procesos en escenarios reales y a ganar confianza en la gestión de procesos de Linux.
+## Comprobar el permiso de señal con la señal cero
 
-## Quiz Question
+La señal número cero realiza comprobaciones de errores sin entregar una señal real:
 
-¿Cuál es el nombre de la señal para el comando `kill` por defecto? Por favor, responda en inglés. Tenga en cuenta que la respuesta distingue entre mayúsculas y minúsculas.
+```bash
+$ kill -0 12445
+```
 
-## Quiz Answer
+Un resultado correcto significa que existe un proceso con ese PID y que quien ejecuta la orden puede enviarle una señal en ese instante. Un fallo es ambiguo: puede que el proceso no exista o que falten permisos. Examina el error y el estado de salida en vez de traducir todos los fallos como «no está en ejecución». Además, solo es una comprobación momentánea y no elimina una carrera posterior por reutilización del PID.
 
-SIGTERM
+:::single-choice{#killing-processes-signal-zero} ¿Qué demuestra un `kill -0 PID` correcto en ese instante?
+
+::option[El proceso ha completado toda la limpieza y ha terminado.]{#killing-processes-zero-exited explanation="El éxito indica un destino activo al que se pueden enviar señales, no una terminación completada."}
+::option[El proceso conservará ese PID permanentemente.]{#killing-processes-zero-permanent explanation="La comprobación es instantánea y los PID pueden reutilizarse después de la salida."}
+::option[El proceso existe y quien ejecuta la orden puede enviarle señales.]{#killing-processes-zero-permitted .correct explanation="La señal cero comprueba la existencia y autorización del destino sin entregar una señal normal."}
+:::
+
+## Escalar solo cuando sea necesario
+
+Si un destino autorizado no termina después de `SIGTERM`, espera un tiempo apropiado para la carga de trabajo e investiga el motivo. Después, cuando esté justificada la terminación forzosa, envía:
+
+```bash
+$ kill -KILL 12445
+```
+
+`SIGKILL` no puede capturarse, ignorarse ni bloquearse, por lo que el programa no puede realizar una limpieza en el nivel de aplicación. Puede dejar transacciones incompletas, estado temporal o trabajo de recuperación para otros componentes. Úsala como escalada, no como primer paso habitual.
+
+Otras señales solo tienen significado según el contrato del programa receptor. `SIGHUP` suele solicitar una recarga de configuración, pero algunos programas conservan su acción predeterminada de terminación. `SIGSTOP` pausa sin limpiar y `SIGCONT` reanuda un proceso detenido.
+
+:::single-choice{#killing-processes-kill-tradeoff} ¿Cuál es la principal desventaja operativa de `SIGKILL`?
+
+::option[Únicamente el propietario del proceso puede tratarla.]{#killing-processes-kill-owner-handler explanation="Ningún proceso de destino puede instalar un manejador para `SIGKILL`."}
+::option[Pausa el proceso, pero nunca lo termina.]{#killing-processes-kill-pauses explanation="`SIGSTOP` pausa; `SIGKILL` termina."}
+::option[No ofrece al programa ninguna oportunidad de limpieza en el nivel de aplicación.]{#killing-processes-kill-no-cleanup .correct explanation="El kernel impone la terminación sin invocar un manejador de señales del espacio de usuario."}
+:::
+
+Practica la selección de señales únicamente con procesos que hayas iniciado en un entorno aislado. El laboratorio [Gestionar y supervisar procesos de Linux](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) ofrece un flujo controlado de inspección y terminación.
+
+## Resumen
+
+Ahora puedes enviar señales a procesos mediante un flujo deliberado y verificable.
+
+1. Confirma el destino activo y su supervisor antes de actuar.
+2. Usa `SIGTERM` como solicitud normal de terminación.
+3. Interpreta la señal cero como una comprobación momentánea de existencia y permisos.
+4. Reserva `SIGKILL` para una escalada justificada después de investigar.

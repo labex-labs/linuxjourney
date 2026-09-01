@@ -1,103 +1,107 @@
 ---
-index: 1
+lesson_id: "network-interfaces"
+course_id: "network-config"
 lang: "de"
+order_index: 1
 title: "Netzwerkschnittstellen"
-meta_title: "Netzwerkschnittstellen - Netzwerkkonfiguration"
-meta_description: "Ein umfassender Leitfaden zur Linux-Netzwerkschnittstelle. Lernen Sie, ifconfig und den modernen ip-Befehl zu verwenden, und verstehen Sie Konfigurationsdateien wie /etc/network/interfaces, insbesondere auf Debian-Systemen."
-meta_keywords: "linux schnittstelle, linux netzwerkschnittstelle, etc netzwerkschnittstellen, debian netzwerkschnittstellen, ifconfig, ip befehl, netzwerkkonfiguration, linux netzwerk"
+description: "Lerne, Zustand, Adressen, Statistiken und Eigentümer dauerhafter Konfiguration von Linux-Schnittstellen zu untersuchen."
+meta_title: "Netzwerkschnittstellen – Netzwerkkonfiguration"
+meta_description: "Eine umfassende Anleitung zu Linux-Netzwerkschnittstellen. Lerne ifconfig und den modernen Befehl ip kennen und verstehe Konfigurationsdateien wie /etc/network/interfaces."
+meta_keywords: "Linux-Schnittstelle, Linux-Netzwerkschnittstelle, etc network interfaces, Debian-Netzwerkschnittstellen, ifconfig, ip-Befehl, Netzwerkkonfiguration, Linux-Vernetzung"
 ---
 
-## Lesson Content
+Eine Linux-Netzwerkschnittstelle verbindet einen Netzwerknamensraum mit einem physischen Gerät, Loopback-Pfad, einer Bridge, einem Tunnel, virtuellen Gerät oder einer anderen Verbindung. Schnittstellenzustand, Adressen, Routen, DNS und dauerhafte Konfiguration hängen zusammen, sind aber verschieden.
 
-Eine **Linux-Netzwerkschnittstelle** ist der entscheidende Verbindungspunkt zwischen dem Software-Netzwerkstack des Kernels und der physischen Netzwerkhardware. Sie ermöglicht es Ihrem Betriebssystem, Daten über ein Netzwerk zu senden und zu empfangen. Wir haben bereits ein Beispiel dafür gesehen, wie eine konfigurierte `Linux-Schnittstelle` aussieht:
+## Schnittstellen ermitteln
 
-```plaintext
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
-```
-
-### Netzwerkschnittstellen verstehen
-
-Wenn Sie Ihre Netzwerkeinstellungen anzeigen, sehen Sie Schnittstellen mit Namen wie `eth0` (die erste Ethernet-Karte), `wlan0` (eine drahtlose Schnittstelle) oder `lo` (die Loopback-Schnittstelle). Die Loopback-Schnittstelle ist eine spezielle virtuelle Schnittstelle, die Ihren eigenen Computer repräsentiert und es Ihnen ermöglicht, sich mit lokal laufenden Diensten zu verbinden.
-
-Eine Schnittstelle kann sich in einem "up"- oder "down"-Zustand befinden. Ein "up"-Zustand bedeutet, dass sie aktiv und bereit für die Datenübertragung ist, während "down" sie deaktiviert. Zu den wichtigsten angezeigten Informationen für jede Schnittstelle gehören die `HWaddr` (ihre eindeutige MAC-Adresse), die `inet`-Adresse (ihre IPv4-Adresse) und die `inet6`-Adresse (ihre IPv6-Adresse) zusammen mit der Subnetzmaske und der Broadcast-Adresse.
-
-### Der veraltete ifconfig-Befehl
-
-Der Befehl **ifconfig** ist ein klassisches Werkzeug zur Konfiguration einer `Linux-Netzwerkschnittstelle`. Beim Systemstart wird er typischerweise ausgeführt, um Schnittstellen basierend auf Konfigurationsdateien einzurichten. Obwohl er auf vielen Systemen noch verfügbar ist, gilt er heute als veraltet.
-
-Sie können `ifconfig` verwenden, um manuell eine IP-Adresse zuzuweisen und eine Schnittstelle zu aktivieren:
+Verwende die modernen iproute2-Werkzeuge:
 
 ```bash
-ifconfig eth0 192.168.2.1 netmask 255.255.255.0 up
+$ ip -brief link show
+$ ip -brief address show
 ```
 
-Sie können auch die zugehörigen Befehle `ifup` und `ifdown` verwenden, um eine Schnittstelle einfach zu aktivieren oder zu deaktivieren:
+Schnittstellennamen können vorhersehbare, von Hardware abgeleitete Namen wie `enp1s0`, herkömmliche Namen wie `eth0` oder vom Administrator festgelegte Namen sein. Nimm niemals an, dass `eth0` existiert oder einen bestimmten Adapter bezeichnet.
+
+:::single-choice{#interfaces-name-assumption} Warum sollte ein Skript `eth0` ermitteln, statt es vorauszusetzen?
+
+::option[Jede Schnittstelle muss `lo` heißen.]{#interfaces-all-loopback explanation="Loopback ist eine besondere Schnittstelle und nicht der Name jeder Verbindung."}
+::option[Linux-Systeme können mehrere Benennungsschemata für Schnittstellen verwenden.]{#interfaces-naming-varies .correct explanation="Von Hardware abgeleitete, virtuelle und benutzerdefinierte Namen machen eine feste Annahme zu `eth0` unzuverlässig."}
+::option[Schnittstellennamen sind immer entfernte Passwörter.]{#interfaces-name-password explanation="Namen identifizieren Kernelgeräte und sind keine Anmeldedaten."}
+:::
+
+## Administrativer und betrieblicher Zustand
+
+`UP` bedeutet, dass die Schnittstelle administrativ aktiviert ist. `LOWER_UP` zeigt gewöhnlich an, dass die untere Schicht Betriebsbereitschaft meldet, etwa einen Ethernet-Träger. Keines der Kennzeichen beweist für sich allein, dass IP-Adresse, Route, DNS, Firewall oder Anwendungspfad funktionieren.
 
 ```bash
-ifup eth0
-ifdown eth0
+$ ip -details link show dev enp1s0
+$ ip -s link show dev enp1s0
 ```
 
-### Der moderne ip-Befehl
+Die Statistikansicht kann Fehler, verworfene Pakete und Zähler sichtbar machen, doch Zähler werden erst zusammen mit einem Zeitintervall und einer Grundlinie aussagekräftig.
 
-Der Befehl **ip** ist der moderne und leistungsfähigere Ersatz für `ifconfig`. Er ist die bevorzugte Methode zur Verwaltung des Netzwerkstacks auf den meisten aktuellen Linux-Distributionen.
+:::single-choice{#interfaces-up-limit} Was beweist der administrative Zustand `UP` nicht?
 
-Hier sind einige gängige Anwendungsbeispiele:
+::option[Dass die Ende-zu-Ende-Verbindung funktioniert.]{#interfaces-up-not-connectivity .correct explanation="Fehler bei unterer Schicht, Adressierung, Routing, Filterung, Benennung und Dienst können weiterhin bestehen."}
+::option[Dass der Administrator die Schnittstelle aktiviert hat.]{#interfaces-up-does-prove explanation="Dies ist die unmittelbare Bedeutung des Zustands."}
+::option[Dass die Schnittstelle ein Kernelobjekt besitzt.]{#interfaces-up-kernel-object explanation="Der angezeigte Zustand gehört zu einer vorhandenen Kernelschnittstelle."}
+:::
 
-**Informationen für alle Schnittstellen anzeigen:**
+## Laufzeitzustand ändern
+
+Zu den Laufzeitbefehlen gehören:
 
 ```bash
-ip link show
+$ sudo ip link set dev enp1s0 up
+$ sudo ip address add 192.0.2.10/24 dev enp1s0
 ```
 
-**Detaillierte Statistiken für eine bestimmte Schnittstelle anzeigen:**
+Diese Änderungen beeinflussen den aktuellen Kernelzustand und können mit einem Netzwerkmanager in Konflikt geraten, der später sein Profil erneut anwendet. Das Deaktivieren einer Schnittstelle zur Fernverwaltung kann den Zugriff sofort beenden. Überprüfe vorher das genaue Gerät, bewahre Konsolenzugang, erfasse den aktuellen Zustand und bereite eine zeitgesteuerte oder getestete Rücknahme vor.
+
+:::single-choice{#interfaces-ip-address-add-persistence} Garantiert `ip address add` für sich allein Dauerhaftigkeit nach einem Neustart?
+
+::option[Nein; das aktive Konfigurationssystem muss die Einstellung ebenfalls speichern.]{#interfaces-manager-persistence .correct explanation="NetworkManager, systemd-networkd, ifupdown oder ein anderer Eigentümer wendet dauerhafte Richtlinien an."}
+::option[Ja, weil jede Kerneländerung alle Managerprofile bearbeitet.]{#interfaces-runtime-always-persistent explanation="Kernel-Laufzeitänderungen aktualisieren nicht allgemein die dauerhafte Konfiguration."}
+::option[Nur, wenn die Adresse eine private IPv4-Adresse ist.]{#interfaces-private-persistent explanation="Der Adressbereich macht einen Laufzeitbefehl nicht dauerhaft."}
+:::
+
+## Eigentümer der Konfiguration ermitteln
+
+Dauerhafte Pfade unterscheiden sich zwischen Distributionen und Installationen. Möglichkeiten sind NetworkManager-Profile, systemd-networkd-Units, Netplan-Eingaben, `/etc/network/interfaces`, cloud-init oder Orchestrierung. Ermittle vor der Bearbeitung von Dateien, welcher Dienst das Gerät verwaltet:
 
 ```bash
-ip -s link show eth0
+$ systemctl --type=service --state=running | grep -E 'NetworkManager|networkd|networking'
+$ networkctl status
+$ nmcli device status
 ```
 
-**IP-Adressen anzeigen, die Schnittstellen zugewiesen sind:**
+Verwende nur Befehle, die für den ermittelten Manager vorhanden sind. Zwei Manager, die dieselbe Verbindung steuern, können miteinander konkurrieren und gegenseitig ihren Zustand überschreiben.
 
-```bash
-ip address show
-```
+:::single-choice{#interfaces-config-owner} Was sollte einer dauerhaften Schnittstellenänderung vorausgehen?
 
-**Eine Schnittstelle aktivieren oder deaktivieren:**
+::option[Jede mögliche Netzwerkkonfigurationsdatei bearbeiten.]{#interfaces-edit-all explanation="Konkurrierende Definitionen erzeugen Konflikte und unvorhersehbare erneute Anwendung."}
+::option[Ermitteln, welcher Netzwerkmanager die Schnittstelle verwaltet.]{#interfaces-identify-owner .correct explanation="Die richtige Konfigurationsquelle und Anwendungsmethode hängen von dieser Zuständigkeit ab."}
+::option[Vor der Untersuchung alle aktuellen Routen löschen.]{#interfaces-delete-routes explanation="Dies ist destruktiv und kann den Wiederherstellungszugang entfernen."}
+:::
 
-```bash
-ip link set eth0 up
-ip link set eth0 down
-```
+## Eine Änderung überprüfen
 
-**Eine IP-Adresse zu einer Schnittstelle hinzufügen:**
+Überprüfe Verbindungszustand, zugewiesene Adressen und Laufzeiten, ausgewählte Routen, Resolverzustand, Nachbarerreichbarkeit und die tatsächliche Anwendung. Teste bei einer dauerhaften Änderung einen kontrollierten Dienstneustart oder Systemneustart nur, wenn ein Wiederherstellungszugang besteht.
 
-```bash
-ip address add 192.168.1.1/24 dev eth0
-```
+:::single-choice{#interfaces-change-verification} Was liefert bessere Belege, als nur die neue Adresse in `ip address` zu sehen?
 
-### Netzwerkkonfigurationsdateien
+::option[Der Schnittstellenname enthält eine Ziffer.]{#interfaces-digit explanation="Die Benennung bietet keine Ende-zu-Ende-Validierung."}
+::option[Die Shell-Eingabeaufforderung hat noch dieselbe Farbe.]{#interfaces-prompt-color explanation="Das Erscheinungsbild des Terminals hat nichts mit dem Netzwerkbetrieb zu tun."}
+::option[Routen, Resolverzustand und die beabsichtigte Anwendung funktionieren ebenfalls.]{#interfaces-end-to-end .correct explanation="Eine verwendbare Konfiguration hängt vom vollständigen Pfad und Dienstverhalten ab."}
+:::
 
-Während Befehle wie `ip` und `ifconfig` den Live-Zustand einer Schnittstelle konfigurieren, gehen diese Änderungen bei einem Neustart verloren. Um Einstellungen dauerhaft zu machen, müssen Sie Konfigurationsdateien bearbeiten.
+## Zusammenfassung
 
-Auffindbar sind diese Dateien häufig unter `/etc/network/interfaces`. Die Datei `etc network interfaces` ist besonders auf Debian-basierten Systemen wie Ubuntu verbreitet. Die Verwaltung von **Debian-Netzwerkschnittstellen** über diese Datei ermöglicht es Ihnen, statische IP-Adressen, Gateways und andere Einstellungen zu definieren, die beim Booten automatisch angewendet werden. Die Struktur innerhalb von `debian network/interfaces` ist unkompliziert und gut dokumentiert.
+Du kannst eine Schnittstelle nun untersuchen und ändern, ohne Laufzeitzustand mit dauerhafter Richtlinie zu verwechseln.
 
-## Exercise
-
-Wenden Sie Ihr Wissen mit diesen praktischen Übungen an. Sie helfen Ihnen, Ihr Verständnis von Netzwerkschnittstellen und IP-Adressierung zu festigen.
-
-1. **[MAC- und IP-Adressen unter Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkadressinformationen, einschließlich MAC-, IPv4- und IPv6-Adressen auf einem Linux-System, zu identifizieren.
-2. **[IP-Adressierung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway festzulegen und Netzwerkkonfigurationen mithilfe des `ip`-Befehls zu überprüfen.
-3. **[IP-Adress-Typen und Erreichbarkeit unter Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adress-Typen (privat, öffentlich, Multicast) und testen Sie die Netzwerkerreichbarkeit mit `ping` und `ip a`.
-
-Diese Labs helfen Ihnen, die Konzepte der Netzwerkschnittstellenidentifikation und IP-Adressierung in realen Szenarien anzuwenden und Vertrauen in das Linux-Networking aufzubauen.
-
-## Quiz Question
-
-Was ist der veraltete Befehl, der zur Konfiguration einer Linux-Netzwerkschnittstelle verwendet wird? Bitte antworten Sie auf Englisch, nur in Kleinbuchstaben.
-
-## Quiz Answer
-
-ifconfig
+1. Ermittle tatsächliche Schnittstellennamen und Adressen.
+2. Trenne administrativen Zustand von betrieblicher Konnektivität.
+3. Behandle direkte `ip`-Änderungen als aktuellen Kernelzustand.
+4. Ermittle vor dauerhaften Änderungen den aktiven Konfigurationseigentümer.
+5. Überprüfe anschließend Routing, Auflösung und Anwendungsverhalten.

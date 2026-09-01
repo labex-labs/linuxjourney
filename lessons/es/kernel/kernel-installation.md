@@ -1,55 +1,107 @@
 ---
-index: 4
+lesson_id: "kernel-installation"
+course_id: "kernel"
 lang: "es"
-title: "Instalación del Kernel"
-meta_title: "Instalación del Kernel - Kernel"
-meta_description: "Aprende a instalar y gestionar kernels de Linux. Descubre versiones de kernel, usa `uname -r` y comandos apt. ¡Comienza tu viaje con el kernel de Linux!"
+order_index: 4
+title: "Instalación del kernel"
+description: "Aprende a instalar, arrancar, validar y conservar un kernel de la distribución con una alternativa probada."
+meta_title: "Instalación del kernel - Kernel"
+meta_description: "Aprende a instalar y gestionar kernels de Linux. Descubre las versiones del kernel y utiliza `uname -r` y comandos apt. Comienza tu recorrido por el kernel de Linux."
 meta_keywords: "kernel de Linux, instalar kernel, uname -r, apt dist-upgrade, gestión de kernel, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---
 
-## Lesson Content
+Las distribuciones empaquetan los kernels junto con los módulos, la integración con initramfs, las actualizaciones del cargador de arranque, las firmas y la política de soporte. Utiliza ese flujo gestionado salvo que estés desarrollando o probando deliberadamente un kernel personalizado y puedas recuperar la máquina.
 
-Bien, ahora que hemos dejado de lado todo ese aburrido material, hablemos de cómo instalar y modificar realmente los kernels. Puedes instalar múltiples kernels en tu sistema; ¿recuerdas nuestra lección sobre el proceso de arranque? En nuestro menú GRUB, podemos elegir con qué kernel arrancar.
+## Kernels en ejecución e instalados
 
-Para ver qué versión de kernel tienes en tu sistema, usa el siguiente comando:
+Muestra la versión del kernel que se está ejecutando actualmente:
 
 ```bash
 $ uname -r
-3.19.0-43-generic
+6.8.0-00-generic
 ```
 
-El comando `uname` imprime información del sistema; la opción `-r` imprimirá la versión de lanzamiento del kernel.
+Esto no lista todos los kernels instalados y no cambia inmediatamente cuando se instala un paquete más reciente. El sistema debe arrancar la imagen nueva antes de que `uname -r` informe de ella. Consulta los paquetes instalados y las entradas de arranque con las herramientas propias de la distribución.
 
-Puedes instalar el kernel de Linux de diferentes maneras: puedes descargar el paquete fuente y compilarlo desde el código fuente, o puedes instalarlo usando herramientas de gestión de paquetes.
+:::single-choice{#kernel-installation-uname-release} ¿Qué muestra `uname -r`?
+
+::option[La cadena de versión del kernel que se está ejecutando actualmente.]{#kernel-installation-running-release .correct explanation="Informa del estado activo del kernel, no solo de la imagen más reciente almacenada en el disco."}
+::option[Todos los paquetes de kernel disponibles en todos los repositorios.]{#kernel-installation-all-packages explanation="El inventario del repositorio corresponde al gestor de paquetes."}
+::option[La versión del firmware de todos los dispositivos conectados.]{#kernel-installation-device-firmware explanation="La versión del kernel y el inventario del firmware de los dispositivos son datos distintos."}
+:::
+
+## Preferir el paquete de seguimiento de la distribución
+
+Instala o conserva el paquete de seguimiento o metapaquete de kernel compatible de la distribución para seguir recibiendo futuras actualizaciones de seguridad. Los nombres de los paquetes dependen de la versión, la arquitectura, la clase de hardware y la variante del kernel. Por ejemplo, Ubuntu suele ofrecer `linux-generic`, pero los sistemas en la nube, de baja latencia, HWE, OEM, de tiempo real y específicos de una arquitectura utilizan otros paquetes.
+
+No conviertas directamente una cadena de versión de `uname -r` en un operando de `apt install` suponiendo que será válido. Consulta la documentación actual de la distribución e inspecciona los candidatos con el gestor de paquetes antes de instalar.
+
+:::single-choice{#kernel-installation-meta-package} ¿Por qué resulta útil un metapaquete de kernel compatible?
+
+::option[Garantiza que nunca sea necesario reiniciar.]{#kernel-installation-no-reboot explanation="Un kernel recién instalado solo se activa después de arrancarlo, salvo el alcance limitado de mecanismos especializados de parcheo en vivo."}
+::option[Convierte todos los controladores externos al árbol en código integrado.]{#kernel-installation-convert-drivers explanation="Los módulos externos siguen necesitando compilaciones y firmas compatibles."}
+::option[Sigue la secuencia de actualizaciones del kernel prevista por la distribución.]{#kernel-installation-update-tracking .correct explanation="Las dependencias trasladan el sistema a paquetes de imágenes y módulos compatibles más recientes a medida que se publican actualizaciones."}
+:::
+
+## Comprobaciones previas al cambio
+
+Antes de una transacción del kernel:
+
+1. Confirma los repositorios compatibles, las firmas de los paquetes, el ciclo de vida de la versión y la variante de kernel prevista.
+2. Asegúrate de que `/boot` o la partición del sistema EFI tenga espacio suficiente.
+3. Conserva al menos un kernel instalado cuyo funcionamiento esté comprobado y una entrada de arranque que se pueda seleccionar.
+4. Comprueba el acceso mediante consola, administración remota y medios de rescate, así como las vías de recuperación del cifrado y de reversión.
+5. Comprueba los módulos externos al árbol, los controladores de almacenamiento y red, las firmas de Secure Boot, la hibernación y la compatibilidad con la virtualización.
+
+La transacción de paquetes debe generar un initramfs correspondiente y actualizar las entradas de arranque mediante los mecanismos de la distribución. Lee todos los errores; que un paquete figure como instalado no basta si falló la generación del initramfs o del cargador.
+
+:::single-choice{#kernel-installation-initramfs-error} ¿Por qué un error al generar el initramfs impide considerar que la operación tuvo éxito?
+
+::option[La generación del initramfs cambia la contraseña del shell del usuario.]{#kernel-installation-initramfs-password explanation="El flujo del archivo de arranque no está relacionado con los secretos de autenticación de las cuentas."}
+::option[El kernel nuevo puede carecer de los módulos o herramientas iniciales necesarios para llegar al almacenamiento raíz.]{#kernel-installation-missing-early-tools .correct explanation="Una imagen puede estar instalada mientras falta o está obsoleto el artefacto del espacio de usuario inicial que necesita."}
+::option[El error demuestra que el kernel que estaba en ejecución ya se ha detenido.]{#kernel-installation-current-stopped explanation="Los mecanismos de los paquetes se ejecutan mientras el kernel anterior puede seguir activo."}
+:::
+
+## Arrancar y validar
+
+Programa un reinicio controlado teniendo en cuenta a las partes interesadas y las cargas de trabajo activas. Asegúrate de que la consola permita seleccionar la entrada anterior si falla la predeterminada. Después del arranque:
 
 ```bash
-sudo apt install linux-generic-lts-vivid
+$ uname -r
+$ journalctl -k -b
+$ systemctl --failed
 ```
 
-Y luego simplemente reinicia con el kernel que instalaste. Sencillo, ¿verdad? Más o menos. También necesitarás instalar otros paquetes de Linux como `linux-headers`, `linux-image-generic`, etc. También puedes especificar el número de versión, por lo que el comando anterior puede verse así: **`sudo apt install 3.19.0-43-generic`**
+Utiliza herramientas equivalentes en sistemas que no usen systemd. Valida el almacenamiento, los sistemas de archivos, la red, los gráficos, los dispositivos de entrada, los módulos de seguridad, los módulos externos, los contenedores, las máquinas virtuales y la salud de las aplicaciones. Un indicador de inicio de sesión no constituye por sí solo una validación completa.
 
-Alternativamente, si solo quieres la versión actualizada del kernel, simplemente usa `dist-upgrade`; realiza actualizaciones de todos los paquetes de tu sistema:
+:::single-choice{#kernel-installation-activation} ¿Cuándo se convierte un paquete de kernel ordinario recién instalado en el kernel en ejecución?
 
-```bash
-sudo apt dist-upgrade
-```
+::option[En cuanto se escribe `uname -r`.]{#kernel-installation-uname-activates explanation="Uname es de solo lectura y no puede cambiar de kernel."}
+::option[Después de que la máquina arranca esa imagen del kernel.]{#kernel-installation-after-boot .correct explanation="Instalar archivos no sustituye el kernel que ya se está ejecutando en memoria."}
+::option[Cuando se descarga el archivo del paquete, antes de instalarlo.]{#kernel-installation-download-activates explanation="Un archivo descargado no afecta a la ejecución activa."}
+:::
 
-Existen muchas versiones diferentes de kernel. Algunas se utilizan como LTS (Soporte a Largo Plazo), otras son las más recientes y avanzadas. La compatibilidad puede ser muy diferente entre las versiones del kernel, por lo que es posible que desees probar diferentes kernels.
+## Eliminar kernels antiguos
 
-## Exercise
+Usa el flujo de limpieza compatible del gestor de paquetes solo después de que el kernel nuevo haya superado la validación. Nunca elimines el kernel en ejecución, la única alternativa cuyo funcionamiento esté comprobado ni los paquetes que necesite el paquete de seguimiento activo. Revisa la propuesta exacta de eliminación y las entradas de arranque resultantes.
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la gestión del kernel de Linux y las tareas de administración del sistema relacionadas:
+Eliminar archivos manualmente de `/boot` deja incoherentes los estados de los paquetes y del cargador. Si ya se ha agotado el espacio, crea un plan de recuperación antes de modificar archivos en lugar de borrar imágenes arbitrarias.
 
-1. **[Personalizar el menú de arranque GRUB2 en Linux](https://labex.io/es/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practica la modificación del menú de arranque GRUB2, lo cual es esencial al gestionar múltiples versiones de kernel y seleccionar con cuál arrancar.
-2. **[Gestionar módulos del kernel en Linux](https://labex.io/es/labs/comptia-manage-kernel-modules-in-linux-590865)** - Aprende a listar, inspeccionar, cargar y descargar módulos del kernel, un aspecto fundamental de la gestión del kernel y la comprensión de cómo el hardware interactúa con tu sistema.
-3. **[Instalación de software en Linux](https://labex.io/es/labs/linux-software-installation-on-linux-18005)** - Adquiere experiencia práctica con varios métodos para instalar y gestionar software, incluido el uso de gestores de paquetes, que es una forma común de instalar y actualizar kernels.
+:::single-choice{#kernel-installation-old-kernel-removal} ¿Qué kernel debe permanecer instalado durante la validación inicial de uno nuevo?
 
-Estos laboratorios te ayudarán a aplicar los conceptos de gestión del kernel, procesos de arranque y gestión de paquetes en escenarios reales, generando confianza en la administración del sistema.
+::option[Únicamente el kernel nuevo que aún no se ha probado.]{#kernel-installation-only-new explanation="Eliminar todas las alternativas antes de probar convierte un problema de compatibilidad en un incidente de recuperación."}
+::option[Ningún archivo de kernel bajo la ruta de arranque.]{#kernel-installation-no-kernels explanation="La máquina necesita un artefacto de kernel que se pueda cargar para arrancar Linux."}
+::option[Una alternativa de funcionamiento comprobado que se pueda seleccionar mediante el cargador de arranque.]{#kernel-installation-known-good-fallback .correct explanation="La alternativa proporciona una vía de recuperación cuando el kernel nuevo falla con el hardware o las cargas de trabajo."}
+:::
 
-## Quiz Question
+El laboratorio [Personalizar el menú de arranque de GRUB2](https://labex.io/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859) proporciona un entorno seguro para la recuperación en el que comprender varias entradas.
 
-¿Cómo se ve la versión del kernel de tu sistema?
+## Resumen
 
-## Quiz Answer
+Ahora puedes tratar una actualización del kernel como un cambio en la cadena de arranque y la compatibilidad.
 
-uname -r
+1. Distingue la versión en ejecución de las imágenes instaladas.
+2. Sigue las actualizaciones compatibles mediante el paquete correcto de la distribución.
+3. Comprueba previamente el almacenamiento, el initramfs, las firmas, los módulos y el acceso de recuperación.
+4. Arranca y valida el comportamiento del hardware y las aplicaciones.
+5. Conserva una alternativa de funcionamiento comprobado hasta demostrar que el kernel nuevo funciona.

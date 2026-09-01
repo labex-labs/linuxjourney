@@ -1,40 +1,93 @@
 ---
-index: 3
+lesson_id: "general-logging"
+course_id: "logging"
 lang: "es"
-title: "Registro General"
-meta_title: "Registro General - Logging"
-meta_description: "Guía para principiantes sobre registros generales de Linux. Aprenda sobre /var/log/messages y syslog para una monitorización eficaz del sistema, análisis de registros y solución de problemas en Linux."
+order_index: 3
+title: "Registro general"
+description: "Aprende a descubrir, filtrar, seguir y correlacionar registros generales del sistema Linux."
+meta_title: "Registro general - Logging"
+meta_description: "Guía para principiantes sobre los registros generales de Linux. Aprende sobre /var/log/messages y syslog para supervisar sistemas, analizar registros y diagnosticar problemas de Linux eficazmente."
 meta_keywords: "registros de Linux, syslog, var/log/messages, solución de problemas Linux, registros del sistema, análisis de registros, monitorización del sistema, guía Linux, principiante Linux, /var/log"
 ---
 
-## Lesson Content
+Los registros generales del sistema combinan avisos rutinarios, advertencias y errores de varias fuentes. Son puntos de partida útiles, pero sus nombres de archivo y su contenido son decisiones de la política de enrutamiento, no garantías universales de Linux.
 
-Su sistema Linux registra diligentemente eventos, errores e información operativa en archivos conocidos como **registros del sistema** (**system logs**). Estos registros son invaluables para la **resolución de problemas de Linux** (**Linux troubleshooting**) y para comprender el comportamiento del sistema. Para cualquier **principiante en Linux** (**Linux beginner**), aprender a leer estos registros es un paso crucial. La mayoría de los archivos de registro importantes se almacenan en el directorio `/var/log`. En esta lección, exploraremos dos de los registros de propósito general más comunes.
+## Encontrar la fuente pertinente
 
-### El Registro de Mensajes Generales
+Según la distribución y la configuración, los mensajes generales pueden aparecer en `/var/log/syslog`, `/var/log/messages`, el diario de systemd o más de un destino. Empieza por identificar la máquina y el intervalo del incidente y después inspecciona las fuentes disponibles:
 
-En muchas distribuciones de Linux, `/var/log/messages` sirve como un repositorio central para una amplia gama de eventos del sistema. Captura mensajes informativos no críticos del kernel, demonios y varios servicios. Esto lo convierte en un excelente punto de partida para obtener una visión general de la actividad de su sistema y para la **resolución de problemas inicial de Linux** (**initial Linux troubleshooting**). Piense en él como la bandeja de entrada predeterminada para la charla diaria de su sistema.
+```bash
+$ ls -lh /var/log
+$ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
+```
 
-### El Registro Integral del Sistema
+Los registros de las aplicaciones pueden residir en sus propios subdirectorios o en un servicio externo. Los registros de autenticación, auditoría, paquetes, bases de datos y servidores web pueden estar separados deliberadamente del flujo general.
 
-El archivo `/var/log/syslog` a menudo contiene una colección más completa de **registros del sistema** (**system logs**). Si bien su contenido puede superponerse con `/var/log/messages`, generalmente incluye un rango más amplio de información, todo excepto los mensajes relacionados con la autenticación. Este registro detallado es particularmente útil para la depuración en profundidad y el **análisis de registros** (**log analysis**) cuando necesita rastrear un problema específico de principio a fin.
+:::single-choice{#general-logs-universal-file} ¿Por qué no debes suponer que `/var/log/messages` existe en todas las máquinas Linux?
 
-### Monitoreo Efectivo del Sistema con Registros
+::option[Los destinos de los registros generales dependen de los recolectores locales y de la política de enrutamiento.]{#general-logs-local-routing .correct explanation="Un sistema que solo use el diario o una configuración de syslog distinta puede utilizar otros destinos."}
+::option[Linux solo permite un archivo de registro en cada disco.]{#general-logs-one-file explanation="Los sistemas mantienen habitualmente muchos archivos de registro y almacenes de diarios."}
+::option[La ruta está reservada exclusivamente para documentos de usuarios.]{#general-logs-user-documents explanation="La jerarquía `/var/log` se utiliza convencionalmente para registros."}
+:::
 
-Si bien estos dos archivos son herramientas poderosas para el **monitoreo del sistema** (**system monitoring**), recuerde que el directorio `/var/log` contiene muchos otros registros especializados (por ejemplo, para autenticación, gestión de paquetes o aplicaciones específicas). El comportamiento exacto del registro también puede variar según su distribución de Linux y su configuración, y algunos sistemas modernos utilizan `systemd-journald`. Sin embargo, comprender `/var/log/messages` y `syslog` proporciona una base sólida para cualquier usuario aspirante de Linux y es una parte clave de cualquier **guía de Linux** (**Linux guide**).
+## Inspeccionar registros de texto
 
-## Exercise
+Usa `less` para navegar de forma controlada y `tail` para consultar los registros más recientes:
 
-La práctica es clave para dominar el **análisis de registros** (**log analysis**). Los siguientes ejercicios le ayudarán a sentirse cómodo viendo y analizando **registros de Linux** (**Linux logs**) utilizando herramientas comunes de línea de comandos, una habilidad esencial para el **monitoreo del sistema** (**system monitoring**).
+```bash
+$ sudo less /var/log/syslog
+$ sudo tail -n 100 /var/log/messages
+```
 
-1. **[Comando Linux tail: Visualización del final del archivo](https://labex.io/es/labs/linux-linux-tail-command-file-end-display-214303)** - Aprenda el comando `tail` de Linux para ver y monitorear el final de archivos de texto, esencial para el análisis de registros.
-2. **[Comando Linux head: Visualización del principio del archivo](https://labex.io/es/labs/linux-linux-head-command-file-beginning-display-214302)** - Explore el comando `head` para mostrar las líneas iniciales de archivos de texto, útil para verificar rápidamente los encabezados de los registros.
-3. **[Detección Rápida de Amenazas](https://labex.io/es/labs/linux-rapid-threat-detection-387930)** - Practique habilidades esenciales de línea de comandos de Linux para el análisis de ciberseguridad, utilizando `tail` y `head` para extraer y analizar rápidamente las entradas de registro recientes.
+Sigue las líneas que se añadan durante una reproducción limitada con `tail -F FILE`. A diferencia de una instantánea sencilla, `-F` vuelve a intentarlo cuando el archivo se sustituye durante una rotación. Deja de seguirlo con `Ctrl-C` y evita mantener abiertas sesiones amplias con privilegios.
 
-## Quiz Question
+:::single-choice{#general-logs-tail-f-capability} ¿Para qué resulta útil `tail -F` durante una reproducción controlada?
 
-Which log file typically records everything except authentication messages? (Please answer in English, using only lowercase letters.)
+::option[Para seguir un archivo por su nombre a través de las sustituciones habituales de la rotación.]{#general-logs-tail-follow .correct explanation="El comportamiento de reintento por nombre permite continuar después de que el archivo activo se renombre y se vuelva a crear."}
+::option[Para cambiar todas las gravedades de registro a debug.]{#general-logs-tail-debug explanation="Tail lee el contenido de los archivos y no reconfigura los emisores."}
+::option[Para descifrar archivos comprimidos sin otro programa.]{#general-logs-tail-decrypt explanation="No proporciona descompresión o descifrado general de archivos."}
+:::
 
-## Quiz Answer
+## Filtrar sin perder el contexto
 
-syslog
+Busca en un archivo o intervalo limitado del diario en lugar de canalizar inmediatamente un flujo activo sin límites:
+
+```bash
+$ grep -n -C 3 'connection refused' /var/log/example.log
+$ journalctl -u example.service --since '10 minutes ago' --grep='connection refused'
+```
+
+El uso de mayúsculas, la redacción, los límites de frecuencia y la localización pueden hacer que una búsqueda literal resulte incompleta. Registra tanto los eventos satisfactorios como los fallidos y conserva las líneas circundantes, porque la causa puede preceder al error visible.
+
+:::single-choice{#general-logs-context-lines} ¿Por qué debes incluir las líneas que rodean un error coincidente?
+
+::option[El evento anterior puede explicar el fallo posterior.]{#general-logs-preceding-context .correct explanation="El contexto temporal ayuda a reconstruir una secuencia en lugar de tratar una cadena como si fuera todo el incidente."}
+::option[El contexto garantiza que la primera coincidencia sea la causa raíz.]{#general-logs-guaranteed-cause explanation="Aún es necesario correlacionar otras pruebas; el contexto no demuestra causalidad."}
+::option[Modifica automáticamente la configuración del servicio.]{#general-logs-context-config explanation="La salida de búsqueda es de solo lectura y no actualiza los ajustes del servicio."}
+:::
+
+## Incluir registros rotados y archivados
+
+Un incidente puede atravesar el límite de una rotación. Los archivos activos, los archivos numerados y los archivos comprimidos pueden contener partes distintas de la misma secuencia. Herramientas como `zgrep` y `zless` leen archivos comprimidos con gzip:
+
+```bash
+$ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
+```
+
+Ordena los resultados según las marcas de tiempo reales, no solo por el sufijo. Antes de copiar pruebas, conserva los metadatos y restringe el acceso, porque los registros pueden contener datos personales o credenciales.
+
+:::single-choice{#general-logs-rotation-boundary} ¿Qué debes comprobar cuando un incidente abarca una rotación de registros?
+
+::option[Únicamente el archivo activo nuevo y vacío.]{#general-logs-active-only explanation="Los registros anteriores pueden haberse trasladado a archivos rotados."}
+::option[Los registros activos y archivados ordenados por el momento del evento.]{#general-logs-all-intervals .correct explanation="La secuencia pertinente puede estar dividida entre los archivos actuales y los rotados."}
+::option[Únicamente los nombres de archivo, sin tener en cuenta las marcas de tiempo de los registros.]{#general-logs-filenames-only explanation="El orden de los sufijos y el momento de los eventos no siempre son equivalentes."}
+:::
+
+## Resumen
+
+Ahora puedes investigar registros generales en archivos, diarios y a través de los límites de rotación.
+
+1. Descubre los destinos en lugar de suponer que existe un nombre de archivo universal.
+2. Lee un intervalo limitado y solo síguelo durante la reproducción.
+3. Conserva el contexto temporal alrededor de los registros coincidentes.
+4. Incluye los archivos rotados y protege las pruebas sensibles.

@@ -1,56 +1,98 @@
 ---
-index: 3
+lesson_id: "subnet-math"
+course_id: "subnetting"
 lang: "es"
-title: "Matemáticas de Subredes"
-meta_title: "Matemáticas de Subredes - Subnetting"
-meta_description: "Domina los fundamentos de las matemáticas de subredes. Esta guía explica cómo realizar cálculos de máscara de subred para determinar el número de hosts disponibles en tu red. Aprende conceptos esenciales de direccionamiento IP y binario para redes Linux."
-meta_keywords: "matemáticas de subredes, cálculo máscara subred, dirección IP, máscara de subred, hosts de red, binario, redes Linux, cálculo de hosts, tutorial principiantes"
+order_index: 3
+title: "Cálculos de subredes"
+description: "Aprende a calcular la red, el broadcast, el intervalo y la cantidad de direcciones IPv4 a partir de un prefijo."
+meta_title: "Cálculos de subredes - Subnetting"
+meta_description: "Domina los fundamentos de los cálculos de subredes. Esta guía explica cómo utilizar una máscara para calcular el número de hosts disponibles y los conceptos binarios esenciales del direccionamiento IP."
+meta_keywords: "cálculos de subredes, cálculos de máscaras de subred, dirección IP, máscara de subred, hosts de red, binario, redes Linux, cálculo de hosts, tutorial para principiantes"
 ---
 
-## Lesson Content
+Los cálculos de subredes aplican una longitud de prefijo a los 32 bits de una dirección IPv4. Razonar en binario evita errores en los límites de prefijo que no coinciden con octetos decimales.
 
-Para determinar el número de hosts que una subred puede soportar, necesitas comprender algo de **matemáticas básicas de subredes**. La máscara de subred es la clave para este cálculo.
+## Encontrar la dirección de red
 
-### El Papel de la Máscara de Subred
+Utiliza la dirección `192.168.1.165/24`:
 
-Usemos una dirección IP de **192.168.1.0** con una máscara de subred de **255.255.255.0**. La función principal de la máscara de subred es distinguir la porción de red de la dirección de la porción de host.
-
-Para ver cómo funciona esto, podemos convertir estos valores a su forma binaria.
-
-```
-192.168.1.165  = 11000000.10101000.00000001.10100101
-255.255.255.0  = 11111111.11111111.11111111.00000000
+```text
+address  11000000.10101000.00000001.10100101
+mask     11111111.11111111.11111111.00000000
+network  11000000.10101000.00000001.00000000
 ```
 
-### Realizando Matemáticas de Máscara de Subred
+Una operación AND bit a bit conserva los bits de la dirección donde la máscara vale uno y pone a cero los bits de host. El resultado es `192.168.1.0/24`.
 
-En la representación binaria anterior, los `1` en la máscara de subred corresponden a la porción de red de la dirección IP. Esta parte está "enmascarada" o fija. Los `0` en la máscara de subred corresponden a la porción de host, que representa el rango de direcciones que puedes asignar a los dispositivos.
+:::single-choice{#subnet-math-network-operation} ¿Qué operación obtiene una dirección de red IPv4 a partir de una dirección y una máscara?
 
-En nuestro ejemplo, la porción de host es `00000000`. Este es un campo de 8 bits, y con 8 bits, puedes crear 2^8, o 256, combinaciones únicas (de 0 a 255).
+::option[Concatenación de cadenas decimales.]{#subnet-math-concatenation explanation="Unir los octetos mostrados no aplica los bits del prefijo."}
+::option[Resta de puertos de transporte.]{#subnet-math-port-subtraction explanation="Los puertos no están relacionados con el prefijo de red."}
+::option[AND bit a bit.]{#subnet-math-bitwise-and .correct explanation="Los bits de red permanecen, mientras que las posiciones de host enmascaradas con ceros se borran."}
+:::
 
-### Calculando Hosts Disponibles
+## Contar direcciones
 
-Aunque hay 256 combinaciones posibles, no todas pueden asignarse a hosts. En cualquier subred, dos direcciones están reservadas:
+Para el prefijo `/p`, la parte de host contiene `32 - p` bits. La cantidad total de direcciones es:
 
-1. **Dirección de Red:** La primera dirección, donde todos los bits de host son `0` (ejemplo: 192.168.1.0).
-2. **Dirección de Broadcast:** La última dirección, donde todos los bits de host son `1` (ejemplo: 192.168.1.255).
+```text
+2^(32 - p)
+```
 
-Por lo tanto, el número real de hosts utilizables es 256 - 2 = 254. Esto significa que para la red `192.168.1.0` con una máscara `255.255.255.0`, puedes asignar direcciones IP desde `192.168.1.1` hasta `192.168.1.254`. Este cálculo central es una parte fundamental de las **matemáticas de subredes**.
+Por tanto, un `/24` contiene `2^8 = 256` direcciones. En una subred tradicional con broadcast, el valor de host con todos los bits a cero es la dirección de red y el valor con todos los bits a uno es el broadcast dirigido, por lo que quedan 254 direcciones ordinarias de host unicast.
 
-## Exercise
+:::single-choice{#subnet-math-24-total} ¿Cuántas direcciones totales contiene un `/24` de IPv4?
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de direccionamiento IP y subredes:
+::option[24]{#subnet-math-total-24 explanation="La longitud del prefijo cuenta bits de red, no direcciones."}
+::option[256]{#subnet-math-total-256 .correct explanation="Ocho bits de host producen 2^8 valores de dirección distintos."}
+::option[254]{#subnet-math-total-254 explanation="Esa es la cantidad tradicional de hosts utilizables después de reservar dos direcciones especiales, no el total."}
+:::
 
-1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, habilidades esenciales para la configuración y planificación de redes.
-2. **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Profundiza tu comprensión de varios tipos de direcciones IP y cómo verificar la capacidad de alcance de la red usando comandos de Linux.
-3. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aplica tus conocimientos simulando configuraciones de red y probando la conectividad entre diferentes subredes IP en un entorno práctico.
+## Encontrar el límite de un bloque
 
-Estos laboratorios te ayudarán a aplicar los conceptos de direccionamiento IP, máscaras de subred y cálculo de hosts en escenarios del mundo real y a ganar confianza con los fundamentos de red.
+Para `/26`, la máscara es `255.255.255.192`. El tamaño del bloque en el último octeto es `256 - 192 = 64`, por lo que los límites de las subredes son 0, 64, 128 y 192. La dirección `192.168.1.165/26` se encuentra en:
 
-## Quiz Question
+```text
+network:   192.168.1.128
+broadcast: 192.168.1.191
+range:     192.168.1.129 through 192.168.1.190
+```
 
-¿Cuál es el equivalente binario de 255?
+:::single-choice{#subnet-math-165-network} ¿Cuál es la dirección de red de `192.168.1.165/26`?
 
-## Quiz Answer
+::option[`192.168.1.0`]{#subnet-math-network-zero explanation="Ese es el primer bloque `/26`, que abarca de 0 a 63."}
+::option[`192.168.1.165`]{#subnet-math-network-self explanation="La dirección proporcionada tiene bits de host distintos de cero dentro del `/26`."}
+::option[`192.168.1.128`]{#subnet-math-network-128 .correct explanation="El valor 165 se encuentra en el bloque que abarca de 128 a 191."}
+:::
 
-11111111
+## Tener en cuenta las excepciones de prefijos
+
+El atajo `2^host_bits - 2` no es universal. Los prefijos IPv4 `/31` están definidos para enlaces punto a punto donde ambas direcciones pueden ser puntos finales y no se necesita broadcast dirigido. Un `/32` identifica una ruta de host o una dirección de interfaz. La tecnología de red y el uso del protocolo determinan qué direcciones pueden asignarse.
+
+:::single-choice{#subnet-math-31-exception} ¿Por qué no debes restar dos direcciones de todos los prefijos IPv4?
+
+::option[Las direcciones IPv4 no contienen bits de host en ningún prefijo.]{#subnet-math-no-host-bits explanation="La mayoría de los prefijos dejan uno o varios bits de host."}
+::option[Los enlaces punto a punto `/31` pueden utilizar ambas direcciones como puntos finales.]{#subnet-math-31-both .correct explanation="El modelo punto a punto no necesita las reservas tradicionales de red y broadcast dirigido."}
+::option[Todas las redes IPv4 utilizan multicast en lugar de unicast.]{#subnet-math-all-multicast explanation="El direccionamiento unicast ordinario sigue siendo fundamental."}
+:::
+
+## Comprobar los cálculos
+
+Utiliza una herramienta o biblioteca independiente para comprobar el trabajo manual y compáralo después con la configuración real de las interfaces y las rutas. Un prefijo matemáticamente válido aún puede entrar en conflicto con otra subred o incumplir un plan de asignación.
+
+:::single-choice{#subnet-math-valid-not-safe} ¿Qué no demuestra un cálculo correcto de subred?
+
+::option[Que el plan de direcciones no tenga solapamientos ni conflictos de políticas.]{#subnet-math-no-conflict .correct explanation="Aún se necesitan pruebas de la asignación operativa y el enrutamiento."}
+::option[Que las direcciones IPv4 contengan 32 bits.]{#subnet-math-proves-size explanation="El cálculo se basa en ese tamaño fijo."}
+::option[Que las potencias de dos determinen la cantidad de bloques.]{#subnet-math-powers explanation="Las combinaciones de direcciones binarias utilizan inherentemente potencias de dos."}
+:::
+
+## Resumen
+
+Ahora puedes calcular los límites de las subredes IPv4 y reconocer las excepciones habituales.
+
+1. Obtén una dirección de red mediante AND bit a bit.
+2. Cuenta las direcciones totales a partir del número de bits de host.
+3. Usa los tamaños de bloque para localizar los límites de red y broadcast.
+4. Trata `/31` y `/32` según el uso previsto.
+5. Comprueba los resultados matemáticos con el plan de direcciones real.

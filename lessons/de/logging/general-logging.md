@@ -1,40 +1,93 @@
 ---
-index: 3
+lesson_id: "general-logging"
+course_id: "logging"
 lang: "de"
+order_index: 3
 title: "Allgemeine Protokollierung"
-meta_title: "Allgemeine Protokollierung - Logging"
-meta_description: "Ein Leitfaden für Anfänger zu allgemeinen Linux-Protokollen. Erfahren Sie mehr über /var/log/messages und syslog für effektive Systemüberwachung, Protokollanalyse und Linux-Fehlerbehebung."
-meta_keywords: "Linux-Protokolle, syslog, var/log/messages, Linux-Fehlerbehebung, Systemprotokolle, Protokollanalyse, Systemüberwachung, Linux-Anleitung, Linux-Anfänger, /var/log"
+description: "Lerne, allgemeine Linux-Systemprotokolle zu ermitteln, zu filtern, zu verfolgen und miteinander zu verknüpfen."
+meta_title: "Allgemeine Protokollierung – Protokollierung"
+meta_description: "Eine Einführung in allgemeine Linux-Protokolle. Lerne /var/log/messages und syslog für wirksame Systemüberwachung, Protokollanalyse und Linux-Fehlersuche kennen."
+meta_keywords: "Linux-Protokolle, syslog, var/log/messages, Linux-Fehlersuche, Systemprotokolle, Protokollanalyse, Systemüberwachung, Linux-Anleitung, Linux-Einsteiger, /var/log"
 ---
 
-## Lesson Content
+Allgemeine Systemprotokolle verbinden routinemäßige Hinweise, Warnungen und Fehler aus mehreren Quellen. Sie sind nützliche Ausgangspunkte, doch ihre Dateinamen und Inhalte sind Entscheidungen der Weiterleitungsrichtlinie und keine allgemeingültigen Linux-Garantien.
 
-Ihr Linux-System zeichnet fleißig Ereignisse, Fehler und Betriebsinformationen in Dateien auf, die als **Systemprotokolle** bekannt sind. Diese Protokolle sind von unschätzbarem Wert für die **Linux-Fehlerbehebung** und das Verständnis des Systemverhaltens. Für jeden **Linux-Anfänger** ist das Erlernen des Lesens dieser Protokolle ein entscheidender Schritt. Die wichtigsten Protokolldateien werden im Verzeichnis `/var/log` gespeichert. In dieser Lektion untersuchen wir zwei der gängigsten allgemeinen Protokolle.
+## Die relevante Quelle finden
 
-### Das allgemeine Nachrichtenprotokoll
+Abhängig von Distribution und Konfiguration können allgemeine Nachrichten in `/var/log/syslog`, `/var/log/messages`, im systemd-Journal oder an mehreren Zielen erscheinen. Ermittle zuerst Host und Zeitraum des Vorfalls und untersuche anschließend die verfügbaren Quellen:
 
-Auf vielen Linux-Distributionen dient `/var/log/messages` als zentrales Archiv für eine Vielzahl von Systemereignissen. Es erfasst nicht-kritische, informative Nachrichten vom Kernel, von Daemons und verschiedenen Diensten. Dies macht es zu einem ausgezeichneten Ausgangspunkt, um einen allgemeinen Überblick über die Aktivität Ihres Systems und für die anfängliche **Linux-Fehlerbehebung** zu erhalten. Betrachten Sie es als den Standard-Posteingang für den täglichen "Klatsch" Ihres Systems.
+```bash
+$ ls -lh /var/log
+$ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
+```
 
-### Das umfassende Systemprotokoll
+Anwendungsprotokolle können in eigenen Unterverzeichnissen oder einem externen Dienst liegen. Datensätze zu Authentifizierung, Audit, Paketen, Datenbanken und Webservern können absichtlich vom allgemeinen Strom getrennt sein.
 
-Die Datei `/var/log/syslog` enthält oft eine umfassendere Sammlung von **Systemprotokollen**. Obwohl ihr Inhalt sich mit `/var/log/messages` überschneiden kann, umfasst sie typischerweise eine breitere Palette von Informationen, alles außer authentifizierungsbezogenen Nachrichten. Dieses detaillierte Protokoll ist besonders nützlich für die eingehende Fehlersuche und **Protokollanalyse**, wenn Sie ein bestimmtes Problem von Anfang bis Ende nachverfolgen müssen.
+:::single-choice{#general-logs-universal-file} Warum solltest du nicht annehmen, dass `/var/log/messages` auf jedem Linux-Host vorhanden ist?
 
-### Effektive Systemüberwachung mit Protokollen
+::option[Allgemeine Protokollziele hängen von lokalen Datensammlern und der Weiterleitungsrichtlinie ab.]{#general-logs-local-routing .correct explanation="Ein reines Journal-System oder eine andere Syslog-Konfiguration kann andere Ziele verwenden."}
+::option[Linux erlaubt nur eine Protokolldatei auf jedem Datenträger.]{#general-logs-one-file explanation="Systeme verwalten gewöhnlich viele Protokolldateien und Journalspeicher."}
+::option[Der Pfad ist ausschließlich für Benutzerdokumente reserviert.]{#general-logs-user-documents explanation="Die Hierarchie `/var/log` wird üblicherweise für Protokolle verwendet."}
+:::
 
-Obwohl diese beiden Dateien leistungsstarke Werkzeuge für die **Systemüberwachung** sind, denken Sie daran, dass das Verzeichnis `/var/log` viele weitere spezialisierte Protokolle enthält (z. B. für Authentifizierung, Paketverwaltung oder spezifische Anwendungen). Das genaue Protokollierungsverhalten kann auch je nach Ihrer Linux-Distribution und deren Konfiguration variieren, wobei einige moderne Systeme `systemd-journald` verwenden. Das Verständnis von `/var/log/messages` und `syslog` bietet jedoch eine solide Grundlage für jeden angehenden Linux-Benutzer und ist ein wichtiger Bestandteil jedes **Linux-Leitfadens**.
+## Textprotokolle untersuchen
 
-## Exercise
+Verwende `less` zur kontrollierten Navigation und `tail` für die neuesten Datensätze:
 
-**Übung:** Übung ist der Schlüssel zur Beherrschung der **Protokollanalyse**. Die folgenden Übungen helfen Ihnen, sich mit dem Anzeigen und Analysieren von **Linux-Protokollen** mithilfe gängiger Befehlszeilentools vertraut zu machen, eine wesentliche Fähigkeit für die **Systemüberwachung**.
+```bash
+$ sudo less /var/log/syslog
+$ sudo tail -n 100 /var/log/messages
+```
 
-1. **[Linux tail Befehl: Anzeige des Dateiende](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** - Lernen Sie den Linux `tail`-Befehl zum Anzeigen und Überwachen des Endes von Textdateien kennen, unerlässlich für die Protokollanalyse.
-2. **[Linux head Befehl: Anzeige des Dateianfangs](https://labex.io/de/labs/linux-linux-head-command-file-beginning-display-214302)** - Entdecken Sie den `head`-Befehl, um die Anfangszeilen von Textdateien anzuzeigen, nützlich, um schnell Protokollüberschriften zu überprüfen.
-3. **[Schnelle Bedrohungserkennung](https://labex.io/de/labs/linux-rapid-threat-detection-387930)** - Üben Sie wesentliche Linux-Befehlszeilenkenntnisse für die Cybersicherheitsanalyse, indem Sie `tail` und `head` verwenden, um kürzlich aufgetretene Protokolleinträge schnell zu extrahieren und zu analysieren.
+Verfolge während einer begrenzten Reproduktion neu angehängte Zeilen mit `tail -F FILE`. `-F` versucht den Zugriff erneut, wenn eine Datei bei der Rotation ersetzt wird, anders als eine einfache Momentaufnahme. Beende die Verfolgung mit `Ctrl-C` und lasse keine weitreichenden privilegierten Sitzungen offen.
 
-## Quiz Question
+:::single-choice{#general-logs-tail-f-capability} Wofür ist `tail -F` während einer kontrollierten Reproduktion nützlich?
 
-Welche Protokolldatei zeichnet typischerweise alles außer Authentifizierungsnachrichten auf? (Bitte antworten Sie auf Englisch, nur Kleinbuchstaben verwendend.)
+::option[Zum Verfolgen einer benannten Datei über einen üblichen Rotationsaustausch hinweg.]{#general-logs-tail-follow .correct explanation="Das erneute Öffnen nach Namen hilft weiterzuarbeiten, nachdem die aktive Datei umbenannt und neu erstellt wurde."}
+::option[Zum Ändern jedes Protokollschweregrads auf Debug.]{#general-logs-tail-debug explanation="Tail liest Dateiinhalte und konfiguriert keine Quellen neu."}
+::option[Zum Entschlüsseln komprimierter Archive ohne ein weiteres Programm.]{#general-logs-tail-decrypt explanation="Es bietet keine allgemeine Archivdekomprimierung oder Entschlüsselung."}
+:::
 
-## Quiz Answer
+## Filtern, ohne den Zusammenhang zu verlieren
 
-syslog
+Durchsuche eine begrenzte Datei oder ein Journalintervall, statt sofort einen unbegrenzten Live-Strom durch eine Pipeline zu leiten:
+
+```bash
+$ grep -n -C 3 'connection refused' /var/log/example.log
+$ journalctl -u example.service --since '10 minutes ago' --grep='connection refused'
+```
+
+Groß-/Kleinschreibung, Formulierung, Ratenbegrenzungen und Lokalisierung können eine wörtliche Suche unvollständig machen. Erfasse sowohl erfolgreiche als auch fehlgeschlagene Ereignisse und bewahre umgebende Zeilen, weil die Ursache dem sichtbaren Fehler vorausgehen kann.
+
+:::single-choice{#general-logs-context-lines} Warum solltest du Zeilen um einen passenden Fehler herum einbeziehen?
+
+::option[Das vorherige Ereignis kann den späteren Fehler erklären.]{#general-logs-preceding-context .correct explanation="Zeitlicher Zusammenhang hilft, eine Abfolge zu rekonstruieren, statt eine Zeichenfolge als gesamten Vorfall zu behandeln."}
+::option[Der Zusammenhang garantiert, dass der erste Treffer die Ursache ist.]{#general-logs-guaranteed-cause explanation="Weitere Belege müssen weiterhin verknüpft werden; Zusammenhang beweist keine Kausalität."}
+::option[Er ändert automatisch die Dienstkonfiguration.]{#general-logs-context-config explanation="Die Suchausgabe ist schreibgeschützt und aktualisiert keine Diensteinstellungen."}
+:::
+
+## Rotierte und archivierte Protokolle einbeziehen
+
+Ein Vorfall kann eine Rotationsgrenze überschreiten. Aktive Dateien, nummerierte Archive und komprimierte Dateien können unterschiedliche Teile derselben Abfolge enthalten. Werkzeuge wie `zgrep` und `zless` lesen gzip-komprimierte Archive:
+
+```bash
+$ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
+```
+
+Ordne Ergebnisse nach den tatsächlichen Zeitstempeln und nicht nur nach der Endung. Bewahre vor dem Kopieren von Belegen Metadaten und beschränke den Zugriff, weil Protokolle personenbezogene Daten oder Anmeldedaten enthalten können.
+
+:::single-choice{#general-logs-rotation-boundary} Was solltest du prüfen, wenn ein Vorfall eine Protokollrotation überschreitet?
+
+::option[Nur die neu erstellte leere aktive Datei.]{#general-logs-active-only explanation="Frühere Datensätze können in rotierte Archive verschoben worden sein."}
+::option[Aktive und archivierte Protokolle, geordnet nach Ereigniszeit.]{#general-logs-all-intervals .correct explanation="Die relevante Abfolge kann auf aktuelle und rotierte Dateien verteilt sein."}
+::option[Nur Dateinamen, unabhängig von den Zeitstempeln der Datensätze.]{#general-logs-filenames-only explanation="Endungsreihenfolge und Ereigniszeit sind nicht immer gleichbedeutend."}
+:::
+
+## Zusammenfassung
+
+Du kannst allgemeine Protokolle nun über Dateien, Journale und Rotationsgrenzen hinweg untersuchen.
+
+1. Ermittle Ziele, statt einen allgemeingültigen Dateinamen anzunehmen.
+2. Lies ein begrenztes Intervall und verfolge nur während der Reproduktion.
+3. Bewahre den zeitlichen Zusammenhang um passende Datensätze.
+4. Beziehe rotierte Archive ein und schütze vertrauliche Belege.

@@ -1,45 +1,69 @@
 ---
-index: 1
+lesson_id: "the-shell"
+course_id: "command-line"
 lang: "es"
-title: "La Shell"
+order_index: 1
+title: "La shell"
+description: "Aprende qué es la shell de Linux y cómo se ejecutan las órdenes."
 meta_title: "La Shell - Línea de Comandos"
 meta_description: "Aprende qué es la shell de Linux, cómo funciona el prompt de Bash y cómo ejecutar tu primer comando con ejemplos amigables para principiantes."
 meta_keywords: "shell de linux, shell bash, línea de comandos, terminal linux, prompt de shell, comando echo, comandos básicos de linux"
 ---
 
-## Lesson Content
+## Qué es la shell de Linux
 
-### Qué es la Shell de Linux
+¡Bienvenido a tu viaje por Linux! El primer paso es entender la shell de Linux. Una shell es un programa que acepta las órdenes que escribes, solicita al sistema operativo que las ejecute y después muestra el resultado en la terminal.
 
-¡Bienvenido a tu viaje por Linux! El primer paso es entender la shell de Linux. Una shell es un programa que acepta los comandos que escribes, le pide al sistema operativo que los ejecute y luego imprime el resultado en tu terminal.
+Si has utilizado una interfaz gráfica, estarás acostumbrado a hacer clic en ventanas, menús y botones. En la línea de comandos, en cambio, escribes instrucciones precisas. Las aplicaciones llamadas «Terminal», «Consola» o «Konsole» suelen abrir una sesión de shell.
 
-Si has usado una interfaz gráfica, estás acostumbrado a hacer clic en ventanas, menús y botones. En la línea de comandos, en cambio, escribes instrucciones precisas. Las aplicaciones llamadas "Terminal", "Consola" o "Konsole" suelen abrir una sesión de shell para ti.
+La terminal es la ventana o aplicación donde escribes, mientras que la shell es el programa que se ejecuta en su interior.
 
-La shell es útil porque es rápida, se puede automatizar con scripts y está disponible en casi todos los sistemas Linux. A medida que aprendes más comandos, puedes combinarlos para inspeccionar archivos, gestionar directorios, buscar texto, instalar software y automatizar tareas repetitivas.
+La shell resulta útil porque es rápida, se puede automatizar con scripts y está disponible en casi todos los sistemas Linux. A medida que aprendas más órdenes, podrás combinarlas para inspeccionar archivos, gestionar directorios, buscar texto, instalar software y automatizar tareas repetitivas.
 
-### Interactuando con la Shell Bash
+:::single-choice{#distinguish-shell-and-terminal} ¿Qué afirmación describe correctamente la relación entre una terminal y una shell?
 
-Para este curso, nos enfocaremos en Bash, abreviatura de Bourne Again Shell. Bash es una de las shells de Linux más comunes y es una buena base incluso si luego usas `zsh`, `fish` u otra shell.
+::option[La terminal proporciona la ventana y la shell se ejecuta en su interior.]{#shell-runs-in-terminal .correct explanation="La terminal es la interfaz que utilizas y la shell es el programa que procesa órdenes en su interior."}
+::option[La terminal acepta las órdenes y la shell solo muestra el resultado.]{#terminal-accepts-commands explanation="Esta opción invierte sus funciones. La terminal proporciona la interfaz, mientras que la shell acepta y ejecuta las órdenes."}
+::option[La terminal y la shell son dos nombres para el mismo programa.]{#terminal-equals-shell explanation="Trabajan juntas, pero no son el mismo programa. Una terminal abre una sesión dentro de la cual se ejecuta una shell."}
+:::
 
-Cuando abres una terminal, te recibe el prompt de la shell. Su apariencia puede variar, pero a menudo muestra tu nombre de usuario, el nombre del equipo y el directorio actual.
+## Interacción con la shell Bash
+
+En este curso nos centraremos en Bash, abreviatura de Bourne Again Shell. Bash es una de las shells de Linux más comunes y constituye una buena base aunque más adelante utilices `zsh`, `fish` u otra shell.
+
+Al abrir una terminal, te recibirá el prompt de la shell. Su aspecto puede variar, pero suele mostrar el nombre de usuario, el nombre del equipo y el directorio actual.
 
 ```plaintext
 pete@icebox:/home/pete $
 ```
 
-El símbolo `$` indica que la shell está lista para aceptar tu entrada como usuario normal. No debes escribir este símbolo al ingresar comandos; lo muestra la shell. Si ves `#` en su lugar, normalmente estás trabajando como el usuario root, que tiene más poder y más riesgos.
+El símbolo `$` indica que la shell está lista para aceptar la entrada de un usuario normal. No debes escribir este símbolo al introducir órdenes; lo muestra la propia shell. Si ves `#` en su lugar, normalmente estás trabajando como root, un usuario con más poder y también más riesgos.
 
-Los comandos suelen seguir este patrón:
+:::single-choice{#interpret-dollar-prompt} ¿Qué indica el símbolo `$` al final del prompt del ejemplo?
+
+::option[La shell se ejecuta con los privilegios del usuario root.]{#root-user-ready explanation="Un prompt de root suele terminar en `#`, no en `$`. El acceso como root conlleva más poder y también más riesgos."}
+::option[La shell espera la entrada de un usuario normal.]{#normal-user-ready .correct explanation="El símbolo `$` identifica un prompt de usuario normal e indica que la shell está lista para recibir una orden."}
+::option[La siguiente orden debe comenzar con un signo de dólar.]{#type-dollar-first explanation="El símbolo `$` forma parte del prompt. Debes escribir la orden que aparece después sin copiar ese símbolo."}
+:::
+
+Las órdenes suelen seguir este patrón:
 
 ```bash
 command options arguments
 ```
 
-Por ejemplo, en `echo Hello World`, `echo` es el comando y `Hello World` es el texto que se le pasa.
+Por ejemplo, en `echo Hello World`, `echo` es la orden y `Hello World` es el texto que se le pasa.
 
-### Tu Primer Comando en Linux
+:::single-choice{#identify-command-name} En `echo Hello World`, ¿qué parte es el nombre de la orden?
 
-Comencemos con uno de los comandos más básicos para principiantes: `echo`. Este comando muestra el texto que le proporcionas de vuelta en la terminal.
+::option[`Hello`]{#hello-command explanation="`Hello` aparece después del nombre de la orden, por lo que forma parte del texto que se pasa a `echo`."}
+::option[`World`]{#world-command explanation="`World` también es texto que se pasa a `echo`, no el nombre de la orden que se ejecuta."}
+::option[`echo`]{#echo-command .correct explanation="`echo` nombra el programa que debe ejecutar la shell. Las palabras que le siguen se pasan al programa como argumentos."}
+:::
+
+## Tu primera orden de Linux
+
+Empecemos con una de las órdenes de Linux más básicas para principiantes: `echo`. Esta orden muestra en la terminal el texto que le proporciones.
 
 ```bash
 $ echo Hello World
@@ -55,32 +79,29 @@ $ echo "Hello from Bash"
 Hello from Bash
 ```
 
-Las comillas son útiles cuando quieres que la shell trate varias palabras como un solo texto.
+Las comillas son útiles cuando quieres que la shell trate varias palabras como un único fragmento de texto.
 
-### Consejos Comunes para Principiantes
+:::single-choice{#group-words-with-quotes} ¿Qué orden hace que la shell trate `Hello from Bash` como un único fragmento de texto entre comillas?
 
-- Presiona `Enter` para ejecutar un comando.
-- Usa la tecla `Flecha Arriba` para recuperar un comando anterior.
-- Los comandos y nombres de archivo distinguen mayúsculas y minúsculas en Linux.
+::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="Las comillas agrupan las tres palabras en un único argumento que se pasa a `echo`."}
+::option[`echo Hello from Bash`]{#unquoted-words explanation="Esta orden muestra las mismas palabras, pero la shell las trata como argumentos separados porque no están entre comillas."}
+::option[`"echo Hello from Bash"`]{#quoted-command explanation="Al entrecomillar toda la línea, la shell busca una orden con ese nombre completo en vez de ejecutar `echo` con texto."}
+:::
+
+Para practicar estas habilidades, explora la completa [![Ruta de aprendizaje de la shell](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Ruta de aprendizaje de la shell](https://labex.io/es/learn/shell).
+
+## Consejos habituales para principiantes
+
+- Pulsa `Enter` para ejecutar una orden.
+- Usa la tecla `Up Arrow` para recuperar una orden anterior.
+- En Linux, las órdenes y los nombres de archivo distinguen entre mayúsculas y minúsculas.
 - Los espacios importan. `echo hello` y `echohello` son diferentes.
-- Si un comando parece estar bloqueado, `Ctrl-C` suele cancelarlo.
+- Si una orden parece haberse bloqueado, `Ctrl-C` suele cancelarla.
 
-### Preguntas Comunes
+## Resumen
 
-**¿La shell es lo mismo que la terminal?** No exactamente. La terminal es la ventana o aplicación donde escribes. La shell es el programa que se ejecuta dentro de ella.
+Ahora puedes explicar la función de una shell e interactuar con un prompt básico.
 
-**¿Debo escribir el `$` que aparece en los ejemplos?** No. El `$` es un marcador del prompt. Escribe solo el comando que aparece después.
-
-**¿Por qué aprender Bash si existen otras shells?** Bash está ampliamente disponible, bien documentada y es común en tutoriales y scripts.
-
-## Exercise
-
-Recomendamos explorar la completa [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/es/learn/shell) para practicar habilidades y conceptos relacionados.
-
-## Quiz Question
-
-¿Cuál es la salida exacta en pantalla cuando escribes `echo Hello World`? Por favor responde en inglés, prestando mucha atención a mayúsculas y espacios.
-
-## Quiz Answer
-
-Hello World
+1. Distinguir entre una terminal y una shell.
+2. Identificar un prompt de órdenes.
+3. Ejecutar una orden sencilla con `echo`.

@@ -1,42 +1,85 @@
 ---
-index: 4
+lesson_id: "network-addressing"
+course_id: "network-basics"
 lang: "zh"
+order_index: 4
 title: "网络寻址"
-meta_title: "网络寻址 - 网络基础知识"
-meta_description: "了解网络寻址的基础知识。本指南解释了 MAC 地址、IP 地址和主机名，这些是理解 Linux 网络中设备如何通信的关键概念。"
-meta_keywords: "网络寻址，MAC 地址，IP 地址，主机名，网络标识符，Linux 网络，网络基础，初学者，教程，指南"
+description: "学习链路地址、IP 地址和主机名如何标识网络通信的不同部分。"
+meta_title: "网络寻址 - 网络基础"
+meta_description: "了解网络寻址基础。本指南介绍 MAC 地址、IP 地址和主机名，这些是理解设备如何在 Linux 网络中通信的关键概念。"
+meta_keywords: "网络寻址, MAC 地址, IP 地址, 主机名, 网络标识符, Linux 网络, 网络基础, 初学者, 教程, 指南"
 ---
 
-## Lesson Content
+网络通信在不同作用范围使用不同标识符。链路层地址在本地链路上传送帧，IP 地址支持经过路由的传送，名称则帮助应用程序和用户选择服务。
 
-在探索数据包如何在网络上传输之前，了解一些核心术语至关重要。就像实体信件需要一个目的地和回邮地址一样，网络数据包也需要类似的信息才能到达目标。在计算机网络中，设备使用 MAC（媒体访问控制）地址和 IP 地址来识别。为了方便人类记忆，我们还使用主机名。
+## 链路层地址
 
-### MAC 地址
+以太网 MAC 地址为 48 位，通常写成六个十六进制八位组，例如 `00:c4:b5:45:b2:43`。源地址标识当前链路上的接口，目标地址则可以是单播、多播或广播地址。
 
-MAC 地址是分配给网络接口卡（NIC）的唯一、永久的硬件标识符。此地址在制造过程中被固化到设备中，并且不会改变。连接到网络的每个设备，例如您的计算机或智能手机，都有一个带有独特 MAC 地址的 NIC。此硬件地址对于在本地网络段上的通信至关重要。以太网 MAC 地址通常看起来像这样：`00:C4:B5:45:B2:43`。地址的前三个字节构成了组织唯一标识符 (OUI)，用于识别制造商。例如，戴尔使用 OUI `00-14-22`，因此戴尔的 NIC 可能具有类似 `00-14-22-34-B2-C2` 的 MAC 地址。
+MAC 地址不保证永久不变或全球唯一。软件可以分配本地管理地址，虚拟接口会生成地址，Wi-Fi 隐私功能也可能将地址随机化。路由器通常在每一跳替换以太网帧，因此远程服务器不会收到原始本地以太网源地址。
 
-### IP 地址
+:::single-choice{#network-addressing-mac-scope} 在数据包传送中，以太网 MAC 地址的正常作用范围是什么？
 
-IP 地址是网络上设备的逻辑标识符，使其能够在不同网络（包括互联网）上访问。与 MAC 地址不同，IP 地址不与硬件绑定，可以动态分配。我们暂时将重点关注 IPv4，其地址看起来像 `10.24.12.4`。IP 地址是网络软件方面的基础，支持路由和全球通信。虽然公共 IP 地址在整个互联网上是唯一的，但它们可能会更改，并且像网络地址转换 (NAT) 这样的技术允许在本地网络内使用私有、非唯一的地址。请记住，成功的网络通信需要 MAC（硬件）和 IP（软件）地址两者都存在。
+::option[当前本地链路。]{#network-addressing-local-link .correct explanation="路由器会为后续跳点创建新的链路层帧。"}
+::option[到最终互联网服务器的每个路由跳点。]{#network-addressing-all-hops explanation="原始帧不会原封不动地跨越路由器。"}
+::option[仅限应用程序的文本编码。]{#network-addressing-text-encoding explanation="MAC 地址属于链路层帧。"}
+:::
 
-### 主机名
+## IP 地址与前缀
 
-虽然 IP 地址对计算机很有效，但人类很难记住。主机名通过将用户友好的名称映射到 IP 地址来解决这个问题。例如，记住 `myhost.com` 比记住其对应的 IP 地址（如 `192.12.41.4`）要容易得多。这种映射由域名系统 (DNS) 处理，DNS 充当互联网的电话簿，将令人难忘的主机名转换为网络路由所需的数字 IP 地址。
+IPv4 地址为 32 位，即四个八位组；IPv6 地址为 128 位。IP 地址通常分配给接口，并结合 `192.0.2.10/24` 或 `2001:db8::10/64` 这样的前缀长度来解释。前缀标明从开头起多少位用于描述网络。
 
-## Exercise
+一个接口可以拥有多个 IP 地址，地址也可能因为 DHCP、隐私寻址、故障转移或管理操作而改变。私有 IPv4 地址可以在不同网络中重复使用；外部可达性由公网路由和 NAT 策略决定。
 
-实践造就完美！以下是一些实践实验，可巩固您对 MAC 地址、IP 地址和主机名等网络标识符的理解：
+:::single-choice{#network-addressing-ipv4-size} IPv4 地址有多大？
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令来识别 Linux 系统上的网络寻址信息，包括 MAC 地址和 IP 地址。
-2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型，并使用 `ping` 和 `ip a` 测试网络可达性。
-3. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 学习通过编辑 `/etc/hosts` 文件并测试更改来管理本地主机名解析。
+::option[32 位，由四个八位组组成。]{#network-addressing-thirty-two .correct explanation="显示的每个十进制部分表示八位。"}
+::option[4 位，由一个十六进制数字组成。]{#network-addressing-four-bits explanation="四位只能表示一个十六进制数字。"}
+::option[128 位，由十六个八位组组成。]{#network-addressing-128-octets explanation="IPv6 是 128 位，而不是 128 个八位组。"}
+:::
 
-这些实验将帮助您在实际场景中应用这些概念，并增强对基本 Linux 网络知识的信心。
+## 主机名与名称解析
 
-## Quiz Question
+主机名是名称，而不是地址。名称解析可以按照主机的名称服务配置查询 `/etc/hosts`、DNS、多播系统或其他来源。一个名称可以解析为多个地址，多个名称也可以指向同一个服务。
 
-一个 IPv4 地址包含多少个字节？
+测试应用程序可能看到的结果时，应使用系统解析器路径：
 
-## Quiz Answer
+```bash
+$ getent ahosts example.com
+```
 
-4
+DNS 答案可能改变或被缓存，而且解析成功并不能证明服务可达。
+
+:::single-choice{#network-addressing-getent-purpose} 检查名称解析时为什么使用 `getent ahosts`？
+
+::option[它会把返回的地址永久分配给每个接口。]{#network-addressing-getent-assign explanation="该命令查询数据库，不会配置接口。"}
+::option[它通过系统配置的名称服务路径查询地址。]{#network-addressing-system-resolver .correct explanation="根据主机策略，这条路径可以包括本地文件和 DNS。"}
+::option[它保证每个返回主机上的应用程序都健康。]{#network-addressing-getent-health explanation="名称查询与应用程序健康是两项不同测试。"}
+:::
+
+## 检查 Linux 主机
+
+分别查看链路配置和 IP 配置：
+
+```bash
+$ ip -brief link
+$ ip -brief address
+```
+
+诊断可达性时，再检查路由和邻居状态。绝不要只根据名称推断正确的源接口或地址；路由选择、策略规则、命名空间和隧道都可能改变路径。
+
+:::single-choice{#network-addressing-ip-link-versus-address} 哪个命令视图重点显示已分配的 IP 地址？
+
+::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="address 对象显示接口上的 IPv4 和 IPv6 分配。"}
+::option[只使用 `ip -brief link`。]{#network-addressing-link-only explanation="link 视图重点显示接口和链路层状态。"}
+::option[`pwd`]{#network-addressing-pwd explanation="pwd 输出 shell 的工作目录。"}
+:::
+
+## 总结
+
+现在，你可以根据网络作用范围区分名称和地址。
+
+1. 将 MAC 地址视为可能改变的本地链路标识符。
+2. 结合前缀长度读取 IPv4 和 IPv6 地址。
+3. 认识到接口可以拥有多个逻辑地址。
+4. 通过已配置的系统解析器查询主机名。

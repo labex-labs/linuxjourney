@@ -1,32 +1,70 @@
 ---
-index: 6
+lesson_id: "link-state-protocols"
+course_id: "routing"
 lang: "de"
+order_index: 6
 title: "Link-State-Protokolle"
-meta_title: "Link-State-Protokolle - Routing"
-meta_description: "Erfahren Sie mehr über Link-State-Protokolle wie OSPF für große Netzwerke. Verstehen Sie deren schnelle Konvergenz und wie sie Routing-Tabellen aktualisieren. Beginnen Sie Ihre Linux-Netzwerkreise!"
-meta_keywords: "Link-State-Protokolle, OSPF, Linux-Netzwerk, Routing-Protokolle, Netzwerktopologie, Anfänger"
+description: "Lerne, wie Link-State-Protokolle Nachbarschaften bilden, Topologieinformationen fluten und Pfade berechnen."
+meta_title: "Link-State-Protokolle – Routing"
+meta_description: "Lerne Link-State-Protokolle wie OSPF für große Netzwerke kennen. Verstehe ihre Konvergenz und die Aktualisierung von Routingtabellen."
+meta_keywords: "Link-State-Protokolle, OSPF, Linux-Vernetzung, Routingprotokolle, Netzwerktopologie, Einsteiger"
 ---
 
-## Lesson Content
+Link-State-Protokolle beschreiben lokale Verbindungen und Präfixe, verteilen diese Beschreibungen in einem Routingbereich und lassen jeden Router anhand einer Topologiedatenbank Pfade berechnen. OSPF und IS-IS sind verbreitete Beispiele.
 
-Link-State-Protokolle eignen sich hervorragend für große Netzwerke. Sie sind komplexer als Distanzvektorprotokolle; ein großer Vorteil ist jedoch ihre Fähigkeit, schnell zu konvergieren. Dies liegt daran, dass sie nicht periodisch die gesamte Routing-Tabelle senden, sondern nur Updates an benachbarte Routen senden. Sie verwenden einen anderen Algorithmus, um den kürzesten Pfad zuerst zu berechnen und ihre Netzwerktopologie in Form eines Graphen zu konstruieren, um zu zeigen, welche Router mit anderen Routern verbunden sind.
+## Nachbarschaften bilden
 
-Eines der gängigen Link-State-Protokolle ist OSPF (Open Shortest Path First). Es aktualisiert die Routing-Tabellen nur, wenn eine Netzwerkänderung vorliegt. Es hat keine Hop-Begrenzung.
+Router erkennen kompatible Nachbarn und bilden gemäß Schnittstellentyp, Bereich, Timern, Authentifizierung und weiteren Parametern Protokollnachbarschaften. Sichtbare Hello-Pakete garantieren keine vollständige Nachbarschaft; nicht übereinstimmende Konfiguration kann die Zustandsmaschine früher anhalten.
 
-## Exercise
+:::single-choice{#link-state-hello-limit} Was beweist der Empfang eines OSPF-Hellos nicht?
 
-Übung macht den Meister! Das Verständnis der Funktionsweise von Routing-Protokollen ist entscheidend für die Netzwerkverwaltung. Obwohl in diesem Set keine direkten Labs zu OSPF verfügbar sind, ist der Aufbau einer starken Grundlage in der Netzwerkkonfiguration und -konnektivität unerlässlich. Hier sind einige praktische Labs, um Ihr Verständnis der Netzwerk-Grundlagen zu festigen:
+::option[Dass die Router eine vollständige synchronisierte Nachbarschaft gebildet haben.]{#link-state-not-full .correct explanation="Bereich, Timer, Authentifizierung, MTU und weiterer Zustand können den vollständigen Datenbankaustausch verhindern."}
+::option[Dass der Nachbar mindestens eine Protokollnachricht gesendet hat.]{#link-state-hello-sent explanation="Der Empfang des Hellos beweist unmittelbar diese begrenzte Tatsache."}
+::option[Dass eine Schnittstelle einen Frame empfangen kann.]{#link-state-frame-received explanation="Das empfangene Paket belegt, dass ein Teil des lokalen Empfangspfads funktioniert hat."}
+:::
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Üben Sie das Konfigurieren statischer und dynamischer IP-Adressen und das Überprüfen der Netzwerkeinstellungen, die für jedes Routing-Setup grundlegend sind.
-2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Lernen Sie, `ping` und `arp` zu verwenden, um zu verstehen, wie Geräte auf der Netzwerk- und Datenverbindungsschicht kommunizieren, was Einblicke in die Netzwerkerreichbarkeit bietet.
-3. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Verwenden Sie Docker, um Netzwerkknoten zu simulieren und das Zuweisen von IP-Adressen und das Testen der Konnektivität über verschiedene Subnetze hinweg zu üben, was hilft, Netzwerktopologie- und Routing-Konzepte zu visualisieren.
+## Link-State-Informationen fluten
 
-Diese Labs helfen Ihnen, die Konzepte der Netzwerkkonfiguration und -konnektivität in realen Szenarien anzuwenden und eine solide Grundlage für das Verständnis fortgeschrittenerer Routing-Protokolle wie OSPF zu schaffen.
+Jeder Router erzeugt Ankündigungen zu seinem relevanten Zustand. Nachbarn fluten neuere Informationen zuverlässig durch den festgelegten Bereich oder die Domäne, statt Aktualisierungen nur zwischen dem ursprünglichen Nachbarpaar zu behalten. Sequenz- und Alterungsmechanismen unterscheiden aktuelle Informationen und entfernen veralteten Zustand.
 
-## Quiz Question
+:::single-choice{#link-state-flooding-scope} Warum werden Link-State-Informationen über einen Nachbarn hinaus geflutet?
 
-Was ist eines der gängigsten Link-State-Protokolle?
+::option[Jede Anwendung benötigt eine Kopie aller Routerpasswörter.]{#link-state-password-copy explanation="Anmeldedaten von Anwendungen sind keine Topologieankündigungen."}
+::option[Ethernet kann keine Unicast-Frames senden.]{#link-state-no-unicast explanation="Ethernet unterstützt Unicast; das Fluten ist hier ein Verteilungsmechanismus des Routingprotokolls."}
+::option[Router im Routingbereich benötigen eine konsistente Topologiedatenbank.]{#link-state-consistent-database .correct explanation="Jeder Router berechnet Pfade anhand derselben Menge aktueller Link-State-Ankündigungen."}
+:::
 
-## Quiz Answer
+## Kürzeste Pfade berechnen
 
-OSPF
+Nach dem Aufbau einer Link-State-Datenbank führt ein Router einen Kürzeste-Wege-Algorithmus, gewöhnlich Dijkstras Algorithmus, mit sich selbst als Wurzel aus. OSPF summiert Schnittstellenkosten; Richtlinien und Regeln für gleiche Kosten beeinflussen, welche Ergebnisse installiert werden.
+
+„Kürzeste“ bedeutet die niedrigsten Protokollkosten und nicht unbedingt die wenigsten Router oder die geringste gemessene Anwendungslatenz. Der Kostenentwurf muss die betriebliche Absicht widerspiegeln.
+
+:::single-choice{#link-state-shortest-meaning} Was bedeutet „kürzeste“ bei einer Link-State-Pfadberechnung?
+
+::option[Die Route, deren Präfix die wenigsten geschriebenen Zeichen besitzt.]{#link-state-shortest-text explanation="Textlänge hat nichts mit Topologiekosten zu tun."}
+::option[Der Pfad mit der kleinsten Summe von Protokollkosten.]{#link-state-lowest-cost .correct explanation="Das Kostenmodell entspricht möglicherweise weder unmittelbar der Hop-Anzahl noch der aktuellen Latenz."}
+::option[Der Pfad, der immer null Paketverlust besitzt.]{#link-state-zero-loss explanation="Eine berechnete Route garantiert keine Anwendungsleistung."}
+:::
+
+## Bereiche und Konvergenz
+
+OSPF-Bereiche begrenzen Topologieflutung und Berechnungsbereich; Area 0 dient im normalen bereichsübergreifenden Entwurf als Backbone. Zusammenfassung und Bereichstypen können unterschiedlichen Routern bewusst unterschiedlich detaillierte Datenbanken geben.
+
+Nach einer Verbindungsänderung benötigen Erkennung, Fluten der Ankündigung, SPF-Berechnung, Routeninstallation und Wiederherstellung der Weiterleitung jeweils Zeit. Eine schnellere Konvergenz als bei einem einfachen Distanzvektorentwurf ist möglich, aber nicht bei jedem Fehler oder jeder Konfiguration automatisch gegeben.
+
+:::single-choice{#link-state-convergence-stages} Was sollte bei einer OSPF-Konvergenzuntersuchung gemessen werden?
+
+::option[Nur der Zeitpunkt, zu dem ein Administrator ein Terminal geöffnet hat.]{#link-state-terminal-time explanation="Dies grenzt weder Protokoll- noch Weiterleitungsstufen ein."}
+::option[Nur die alphabetische Reihenfolge der Routernamen.]{#link-state-router-names explanation="Namen bestimmen keine Konvergenzzeiten."}
+::option[Erkennung, Fluten, Berechnung, Installation und Wiederherstellung der Weiterleitung.]{#link-state-all-stages .correct explanation="Die Trennung der Stufen zeigt, wo eine Konvergenzverzögerung oder ein Fehler auftritt."}
+:::
+
+## Zusammenfassung
+
+Du kannst Link-State-Routing nun von der Nachbarerkennung bis zu installierten Pfaden verfolgen.
+
+1. Unterscheide den Empfang eines Hellos von einer vollständigen Nachbarschaft.
+2. Erkläre das zuverlässige Fluten durch einen Routingbereich.
+3. Interpretiere den kürzesten Pfad als niedrigste konfigurierte Protokollkosten.
+4. Miss jede Konvergenzstufe auf Steuerungs- und Datenebene.

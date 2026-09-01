@@ -1,66 +1,100 @@
 ---
-index: 4
+lesson_id: "etc-hosts"
+course_id: "dns"
 lang: "fr"
+order_index: 4
 title: "/etc/hosts"
+description: "Découvrez comment les correspondances locales du fichier hosts participent à la résolution Linux et comment les tester sans risque."
 meta_title: "/etc/hosts - DNS"
 meta_description: "Explorez l'utilité du fichier /etc/hosts sous Linux. Apprenez comment ce fichier mappe les noms d'hôtes aux adresses IP, son rôle dans la résolution DNS locale et comment le configurer sur des systèmes comme Debian. Un guide de la configuration etc hosts linux."
 meta_keywords: "/etc/hosts, etc hosts linux, debian hosts, etc host linux, etc hosts, réseau Linux, mappage nom d'hôte, résolution DNS"
 ---
 
-## Lesson Content
+`/etc/hosts` fournit des correspondances statiques entre adresses et noms à la pile locale de services de noms. Il est utile pour les noms de bouclage, les dépendances d'amorçage et les tests précisément délimités, mais ne publie aucun enregistrement aux autres hôtes et ne met pas le DNS à jour.
 
-Avant que votre système Linux n'interroge un serveur DNS pour résoudre un nom d'hôte, il recherche d'abord une correspondance sur la machine locale. Cette vérification initiale est une partie fondamentale du processus de résolution de noms.
+## Lire le fichier
 
-### Le rôle de /etc/hosts
+Une ligne commence par une adresse IPv4 ou IPv6 suivie d'un ou plusieurs noms :
 
-Le fichier principal pour cette recherche locale est `/etc/hosts`. Ce simple fichier texte contient des mappages statiques de noms d'hôtes à des adresses IP. La structure du fichier `etc hosts` est simple, chaque ligne contenant trois champs : l'adresse IP, le nom d'hôte canonique et des alias optionnels pour cet hôte.
-
-Voici un exemple typique d'un fichier `etc host linux` :
-
-```plaintext
-pete@icebox:~$ cat /etc/hosts
+```text
 127.0.0.1       localhost
-127.0.1.1       icebox
+192.0.2.25      app-test.example.net app-test
+2001:db8::25    app-test-v6.example.net app-test-v6
 ```
 
-Vous trouverez presque toujours l'adresse `localhost` mappée par défaut. Ce fichier est une fonctionnalité standard sur la plupart des distributions Linux, y compris sur les `Debian hosts`.
+Les commentaires commencent par `#`. Certains outils considèrent conventionnellement le premier nom comme canonique et les suivants comme des alias, mais le comportement varie selon les applications et API. Évitez les entrées en double ou contradictoires pour un même nom.
 
-### Modification du fichier etc hosts linux
+:::single-choice{#hosts-file-entry-order} Quel élément apparaît en premier sur une ligne normale de correspondance dans `/etc/hosts` ?
 
-Vous pouvez modifier manuellement le fichier `/etc/hosts` pour créer vos propres mappages. Essayons un exemple amusant. Ajoutez la ligne suivante à votre fichier :
+::option[Une adresse IP.]{#hosts-file-address-first .correct explanation="Un ou plusieurs noms suivent l'adresse sur la même ligne."}
+::option[Un TTL d'enregistrement DNS.]{#hosts-file-ttl-first explanation="Les entrées du fichier hosts n'utilisent pas les champs TTL du DNS."}
+::option[Un numéro de port de transport.]{#hosts-file-port-first explanation="Le fichier associe des noms et des adresses, pas des ports applicatifs."}
+:::
 
-```plaintext
-123.45.6.7  www.google.com
+## Ordre du résolveur
+
+La configuration Name Service Switch, généralement `/etc/nsswitch.conf`, détermine comment les fonctions du résolveur système combinent `files`, le DNS, les systèmes multicast et d'autres sources. Une ligne courante est :
+
+```text
+hosts: files dns
 ```
 
-Après avoir enregistré le fichier, essayez de naviguer vers `www.google.com` dans votre navigateur web. Vous constaterez que cela ne fonctionne pas. C'est parce que nous avons mappé `www.google.com` à une adresse IP incorrecte. Puisque votre système vérifie d'abord le fichier local `/etc/hosts`, il utilise notre mappage défectueux et ne procède jamais à l'interrogation d'un serveur DNS pour trouver la bonne adresse. Pour corriger cela, supprimez simplement la ligne que vous avez ajoutée.
+Ne supposez pas que les fichiers précèdent toujours le DNS sans examiner cette politique. Des applications peuvent aussi utiliser leurs propres bibliothèques DNS, caches, mandataires ou résolveurs chiffrés et ne pas suivre le chemin du système.
 
-Bien que les systèmes plus anciens utilisaient `/etc/hosts.deny` et `/etc/hosts.allow` pour le contrôle d'accès, cette méthode est largement obsolète. Les pratiques de sécurité modernes reposent plutôt sur la configuration de règles de pare-feu pour une protection robuste.
+:::single-choice{#hosts-file-nss-order} Qu'est-ce qui détermine si le résolveur système consulte `/etc/hosts` avant le DNS ?
 
-### Configuration du serveur DNS local
+::option[L'ordre alphabétique des noms de fichiers dans `/etc`.]{#hosts-file-alphabetical explanation="L'ordre de liste du système de fichiers ne définit pas la politique des services de noms."}
+::option[L'ordre des sources dans la politique Name Service Switch.]{#hosts-file-nss-policy .correct explanation="La ligne de base `hosts:` contrôle l'ordre normal des sources du résolveur libc."}
+::option[La taille de la fenêtre TCP de la destination.]{#hosts-file-tcp-window explanation="Le contrôle de flux du transport n'a aucun rapport avec la recherche locale de noms."}
+:::
 
-Traditionnellement, le fichier `/etc/resolv.conf` était utilisé pour spécifier les serveurs de noms DNS pour les recherches. Cependant, avec les avancées dans la gestion des systèmes, ce fichier n'est souvent plus géré manuellement. Comme vous pouvez le voir dans l'exemple ci-dessous, le fichier est généré automatiquement par un autre service. Pour gérer les mappages de serveurs de noms DNS, vous devez consulter la documentation de votre distribution spécifique, car des outils comme `systemd-resolved` ou `resolvconf` s'en chargent désormais souvent.
+## Tester par le résolveur système
 
-```plaintext
-# Fichier resolv.conf(5) dynamique pour le résolveur glibc(3) généré par resolvconf(8)
-#     NE PAS MODIFIER CE FICHIER À LA MAIN -- VOS MODIFICATIONS SERONT ÉCRASÉES
-nameserver 127.0.1.1
-search localdomain
+Utilisez `getent` pour exercer le chemin configuré du service de noms :
+
+```bash
+$ getent ahosts app-test.example.net
 ```
 
-## Exercise
+`dig` interroge directement le DNS et ne rapporte normalement pas les correspondances de `/etc/hosts`. Cette différence est utile : une réussite de `getent` associée à un échec de `dig` peut signaler une source locale ou une différence de politique.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la résolution de noms d'hôtes locale et des requêtes DNS :
+:::single-choice{#hosts-file-getent-versus-dig} Quel outil convient le mieux pour vérifier si la résolution normale du système voit une entrée du fichier hosts ?
 
-1. **[Gérer la résolution de noms d'hôtes locale sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Entraînez-vous à modifier le fichier `/etc/hosts` pour gérer la résolution de noms d'hôtes locale, une étape clé avant les requêtes DNS.
-2. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à interroger les enregistrements DNS à l'aide d'outils Linux essentiels comme `dig` et `nslookup` pour comprendre comment votre machine résout les noms externes.
+::option[`dig`, car il lit toujours `/etc/hosts` en premier.]{#hosts-file-dig-first explanation="Dig envoie des requêtes DNS et contourne le chemin de recherche dans le fichier hosts."}
+::option[`getent ahosts`, car il utilise les sources de services de noms configurées.]{#hosts-file-getent .correct explanation="Cette commande reflète le chemin du résolveur employé par de nombreuses applications natives."}
+::option[`ip route flush`, car il reconstruit tous les noms.]{#hosts-file-flush-route explanation="Effacer les routes est destructeur et sans rapport avec la recherche dans le fichier hosts."}
+:::
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec la résolution de noms d'hôtes et le DNS.
+## Modifier sans risque
 
-## Quiz Question
+Conservez les entrées nécessaires de localhost et d'identité de l'hôte, validez l'adresse voulue et effectuez une modification récupérable avec un éditeur privilégié. N'écrasez pas un véritable domaine public pour un test improvisé : cela peut rediriger des identifiants ou du trafic applicatif. Utilisez un nom de test dédié et retirez l'entrée après l'expérience.
 
-Quel fichier est utilisé pour mapper les noms d'hôtes aux adresses IP sur nos machines ? (Veuillez répondre en anglais, en faisant attention à la casse)
+Après la modification, testez l'application exacte, car elle peut conserver un cache ou utiliser un autre résolveur. Documentez les surcharges persistantes afin qu'elles ne survivent pas silencieusement à leur objectif.
 
-## Quiz Answer
+:::single-choice{#hosts-file-test-name} Pourquoi utiliser un nom de test dédié plutôt que de surcharger le nom d'un service public ?
 
-/etc/hosts
+::option[Les noms publics ne peuvent pas contenir de points.]{#hosts-file-public-no-dots explanation="Les noms de domaine contiennent couramment plusieurs étiquettes séparées par des points."}
+::option[Les noms dédiés créent automatiquement des zones DNS faisant autorité.]{#hosts-file-auto-zone explanation="Une entrée hosts reste locale et ne publie aucune zone."}
+::option[Cela réduit le risque de rediriger du véritable trafic ou des identifiants.]{#hosts-file-reduce-redirection .correct explanation="Une surcharge locale peut toucher chaque client du résolveur système qui utilise ce nom public."}
+:::
+
+## Configuration des serveurs de résolution
+
+`/etc/resolv.conf` contient traditionnellement les réglages des résolveurs DNS, mais il est souvent généré par NetworkManager, systemd-resolved, DHCP ou un autre gestionnaire. Inspectez les liens symboliques et commentaires, puis modifiez la configuration propriétaire plutôt qu'une sortie générée qui sera écrasée.
+
+:::single-choice{#hosts-file-resolv-owner} Que faut-il faire avant de modifier `/etc/resolv.conf` ?
+
+::option[Supprimer `/etc/hosts` et toutes les routes réseau.]{#hosts-file-delete-state explanation="Ces changements destructeurs sont sans rapport et peuvent supprimer la connectivité."}
+::option[Supposer que toutes les distributions y stockent directement les réglages permanents.]{#hosts-file-assume-direct explanation="De nombreux systèmes génèrent ce fichier dynamiquement ou le lient à un stub géré."}
+::option[Déterminer si un autre service le génère et le gère.]{#hosts-file-identify-resolver-owner .correct explanation="Les changements persistants de serveurs DNS appartiennent à la configuration du gestionnaire actif."}
+:::
+
+## Résumé
+
+Vous savez maintenant utiliser `/etc/hosts` comme source locale et contrôlée du résolveur.
+
+1. Écrire des correspondances commençant par l'adresse, avec des noms et alias choisis.
+2. Inspecter l'ordre Name Service Switch au lieu de le présumer.
+3. Tester le résolveur système avec `getent` et le DNS séparément avec `dig`.
+4. Employer des noms temporaires dédiés et vérifier l'application réelle.
+5. Changer les serveurs de résolution par leur configuration propriétaire.

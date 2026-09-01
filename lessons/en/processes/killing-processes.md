@@ -1,66 +1,102 @@
 ---
-index: 7
+lesson_id: "killing-processes"
+course_id: "processes"
 lang: "en"
+order_index: 7
 title: "kill (Terminate)"
+description: "Learn how to identify a process and send an appropriate signal with `kill` using a safe escalation sequence."
 meta_title: "kill (Terminate) - Processes"
 meta_description: "Master the Linux kill command to manage and terminate processes. This guide covers the differences between kill vs terminate, and explains signals like kill sigterm (SIGTERM), SIGKILL, and kill sighup (SIGHUP)."
 meta_keywords: "kill command, kill sigterm, kill sighup, linux kill -0, kill vs terminate, kill -15 linux, SIGTERM, SIGKILL, process management, terminate process"
 ---
 
-## Lesson Content
+The `kill` command sends a signal to a process or process group. Its name is historical: the requested signal might terminate, stop, continue, or prompt some application-defined action. Always confirm the exact target and understand the program's documented signal behavior before sending one.
 
-In Linux, you can manage processes by sending them signals. The primary command for this is `kill`, which, despite its name, can send various signals, not just ones that terminate a process.
+## Requesting an Orderly Termination
 
-### Default Termination with kill sigterm
-
-When you use the `kill` command with only a Process ID (PID), it sends a `TERM` signal by default. This is the standard, graceful way to ask a program to terminate.
+With only a PID, `kill` sends `SIGTERM` by default:
 
 ```bash
-kill 12445
+$ kill 12445
 ```
 
-The `kill sigterm` signal (also known as `SIGTERM` or signal 15) requests that the process shut down cleanly. This gives the process a chance to save its progress and release resources properly. You can also explicitly use the signal number, making `kill -15 12445` equivalent to the command above. This addresses the common `kill -15 linux` query.
-
-### Forcing Termination with SIGKILL
-
-Sometimes a process becomes unresponsive and won't react to a `SIGTERM` signal. In these cases, you can force it to stop using the `KILL` signal.
+Prefer the symbolic name when specifying a signal explicitly:
 
 ```bash
-kill -9 12445
+$ kill -TERM 12445
 ```
 
-The `SIGKILL` signal (signal 9) terminates the process immediately, without giving it a chance to clean up. This is a key difference in the `kill vs terminate` debate; `SIGKILL` is an unconditional termination, while `SIGTERM` is a polite request.
+`SIGTERM` has a default action of termination, but a program can catch or ignore it. A well-designed service can use a handler to stop accepting work, save appropriate state, and release application resources. That is a possibility, not a guarantee of immediate or successful cleanup.
 
-### Understanding Other Common Signals
+:::single-choice{#killing-processes-default-signal} Which signal does `kill PID` request by default?
 
-While `SIGTERM` and `SIGKILL` are the most common, other signals are also useful for process management.
+::option[`SIGKILL`]{#killing-processes-default-kill explanation="The forceful uncatchable signal must be selected explicitly."}
+::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="Without another signal operand, `kill` sends the standard termination request."}
+::option[`SIGSTOP`]{#killing-processes-default-stop explanation="Stopping a process is not the default action requested by `kill`."}
+:::
 
-- **SIGHUP**: The `kill sighup` signal (Hangup, signal 1) is traditionally sent to a process when its controlling terminal is closed. It can be used to tell daemon processes to reload their configuration files.
-- **SIGINT**: The Interrupt signal (signal 2) is sent when you press `Ctrl-C`. It requests the process to interrupt its current operation.
-- **SIGSTOP**: This signal (signal 19) pauses a process without terminating it. The process can be resumed later with the `SIGCONT` signal.
+## Verifying the Target
 
-### Checking Process Existence with kill -0
-
-A special use case is `linux kill -0`. This command doesn't actually send a signal but instead checks if a process with the specified PID exists and if you have permission to signal it.
+PIDs can be reused, so a stale PID can identify a different process later. Inspect the live target immediately before acting:
 
 ```bash
-kill -0 12445
+$ ps -p 12445 -o pid,ppid,user,lstart,stat,cmd
 ```
 
-If the command executes successfully (exit code 0), the process exists. If it fails, the process does not exist or you lack permissions.
+Check its user, start time, command, parent, service ownership, and operational role. If a service manager owns the process, use that manager's stop or reload command when possible so it can maintain correct state and avoid immediately restarting the child.
 
-## Exercise
+You may signal processes you own, subject to credential rules. Signaling another user's process normally requires appropriate privilege. Do not use a broad name-based command until you have reviewed every match.
 
-To apply what you've learned, try this hands-on lab to reinforce your understanding of process management and termination:
+:::single-choice{#killing-processes-pid-reuse} Why should you inspect a PID immediately before signaling it?
 
-1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - In this lab, you will learn essential skills for managing and monitoring processes on a Linux system. You will explore how to interact with foreground and background processes, inspect them with `ps`, monitor resources with `top`, adjust priority with `renice`, and terminate them with `kill`.
+::option[A PID changes every time the process reads a file.]{#killing-processes-pid-read explanation="A live process normally retains the same PID throughout its lifetime."}
+::option[The kernel can reuse a PID after its earlier process exits.]{#killing-processes-pid-reused .correct explanation="A remembered numeric PID can later refer to a different live process."}
+::option[`kill` accepts command names but not numeric identifiers.]{#killing-processes-no-numeric explanation="A numeric PID is the ordinary target operand for `kill`."}
+:::
 
-This lab will help you apply the concepts of process control and termination in real scenarios and build confidence with managing Linux processes.
+## Checking Signal Permission with Signal Zero
 
-## Quiz Question
+Signal number zero performs error checking without delivering a real signal:
 
-What is the signal name for the default `kill` command? Please answer in English. Note that the answer is case-sensitive.
+```bash
+$ kill -0 12445
+```
 
-## Quiz Answer
+A successful result means a process with that PID exists and the caller is permitted to signal it at that instant. Failure is ambiguous: the process might not exist, or the caller might lack permission. Examine the error and exit status rather than translating every failure into “not running.” It is also only a momentary check and cannot eliminate a later PID-reuse race.
 
-SIGTERM
+:::single-choice{#killing-processes-signal-zero} What does successful `kill -0 PID` establish at that moment?
+
+::option[The process has completed all cleanup and exited.]{#killing-processes-zero-exited explanation="Success indicates a signalable live target, not completed termination."}
+::option[The process will retain that PID permanently.]{#killing-processes-zero-permanent explanation="The check is instantaneous and PIDs can be reused after exit."}
+::option[The process exists and the caller may signal it.]{#killing-processes-zero-permitted .correct explanation="Signal zero checks target existence and authorization without delivering a normal signal."}
+:::
+
+## Escalating Only When Necessary
+
+If an authorized target does not terminate after `SIGTERM`, allow a workload-appropriate timeout and investigate why. Then, when forced termination is justified, send:
+
+```bash
+$ kill -KILL 12445
+```
+
+`SIGKILL` cannot be caught, ignored, or blocked, so the program cannot perform application-level cleanup. It can leave incomplete transactions, temporary state, or recovery work for other components. Use it as an escalation, not a routine first step.
+
+Other signals are meaningful only according to the receiving program's contract. `SIGHUP` often requests configuration reload, but some programs retain its default termination behavior. `SIGSTOP` pauses without cleanup and `SIGCONT` resumes a stopped process.
+
+:::single-choice{#killing-processes-kill-tradeoff} What is the main operational drawback of `SIGKILL`?
+
+::option[It can be handled only by the process owner.]{#killing-processes-kill-owner-handler explanation="No target process can install a handler for `SIGKILL`."}
+::option[It pauses the process but never terminates it.]{#killing-processes-kill-pauses explanation="`SIGSTOP` pauses; `SIGKILL` terminates."}
+::option[It gives the program no opportunity for application-level cleanup.]{#killing-processes-kill-no-cleanup .correct explanation="The kernel enforces termination without invoking a user-space signal handler."}
+:::
+
+Practice signal selection only on processes you started in an isolated environment. The [Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) lab provides a controlled workflow for inspection and termination.
+
+## Summary
+
+You can now send process signals with a deliberate, verifiable workflow.
+
+1. Confirm the live target and its supervisor before acting.
+2. Use `SIGTERM` as the normal termination request.
+3. Interpret signal zero as a momentary existence-and-permission check.
+4. Reserve `SIGKILL` for justified escalation after investigation.

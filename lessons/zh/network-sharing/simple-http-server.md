@@ -1,54 +1,92 @@
 ---
-index: 3
+lesson_id: "simple-http-server"
+course_id: "network-sharing"
 lang: "zh"
-title: "简易 HTTP 服务器"
-meta_title: "简易 HTTP 服务器 - 网络共享"
-meta_description: "了解如何使用 Python 的 http.server 模块在 Linux 中快速设置一个简单的 HTTP 服务器。本指南解释了如何创建一个简单的 Linux Web 服务器，以便在您的网络中轻松共享文件。"
-meta_keywords: "linux 简易 http 服务器，简易 http 服务器 linux, 简易 linux web 服务器，python http.server, 什么是 python simplehttpserver, 文件共享，网络服务器"
+order_index: 3
+title: "简单 HTTP 服务器"
+description: "学习如何使用 Python HTTP 服务器临时公开一个受控目录。"
+meta_title: "简单 HTTP 服务器 - 网络共享"
+meta_description: "学习如何使用 Python 的 http.server 模块在 Linux 中快速设置简单 HTTP 服务器，轻松地通过网络共享文件。"
+meta_keywords: "Linux 简单 HTTP 服务器, 简单 Linux Web 服务器, Python http.server, Python SimpleHTTPServer, 文件共享, 网络服务器"
 ---
 
-## Lesson Content
+Python 的 `http.server` 模块可以为短期测试或可信传输提供静态文件。它不是生产 Web 服务器，也不提供身份验证、授权、TLS、速率限制或针对恶意流量的强化处理。
 
-Python 包含一个内置模块，可让您即时创建 Web 服务器，这对于在网络上共享文件非常有用。设置一个 **linux 简单 http 服务器** 是一个直接的过程，只需要一个命令。
+## 准备共享目录
 
-### 在 Linux 中启动一个简单的 HTTP 服务器
+创建只包含打算公开文件的专用目录。启动前应检查隐藏文件、符号链接、权限和敏感元数据。不要共享主目录、仓库根目录、凭据目录或系统路径。
 
-要开始，请使用终端导航到您希望共享的目录。进入所需目录后，如果您使用的是 Python 3，可以使用以下命令启动 **simple http server linux** 环境：
-
-```bash
-python -m http.server
-```
-
-此命令会启动一个基本的 Web 服务器，使您当前目录的内容可通过 HTTP 访问。
-
-### Python 2 的旧方法
-
-对于仍在使用 Python 2 的旧系统，命令略有不同。该模块以前命名为 `SimpleHTTPServer`。如果您曾想知道 **what is python simplehttpserver**，它只是 `http.server` 模块的 Python 2 等效项。您可以使用以下命令运行它：
+使用 `--directory` 明确共享根目录：
 
 ```bash
-python -m SimpleHTTPServer
+$ python3 -m http.server 8000 --directory /srv/temporary-share
 ```
 
-### 访问您的简单 Linux Web 服务器
+没有索引文件时，该模块通常会生成目录列表。任何能够访问监听器的人都可能枚举并下载所提供的内容。
 
-运行命令后，您的 **simple linux web server** 将处于活动状态。您可以通过在另一台机器上打开 Web 浏览器并导航到 `http://IP_ADDRESS:8000` 来访问同一网络上的共享文件，将 `IP_ADDRESS` 替换为运行服务器的机器的本地 IP 地址。
+:::single-choice{#http-server-directory-option} 为什么使用 `--directory /srv/temporary-share`？
 
-要在同一台机器上查看文件，您可以使用 localhost 地址：`http://localhost:8000`。
+::option[它会自动加密每个 HTTP 响应。]{#http-server-directory-tls explanation="directory 选项不会添加 TLS。"}
+::option[它会为每个下载者创建账户。]{#http-server-directory-accounts explanation="基础模块不提供用户身份验证。"}
+::option[它明确指定预期文档根目录。]{#http-server-explicit-root .correct explanation="明确且经过审查的根目录可以降低意外公开工作目录中文件的风险。"}
+:::
 
-## Exercise
+## 控制监听地址
 
-实践造就完美！以下是一些实践实验，可加强您对网络连接和 IP 地址的理解，这对通过网络共享文件至关重要：
+只有同一主机需要连接时，应绑定到环回地址：
 
-1. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 练习识别不同的 IP 地址类型并测试网络可达性，这对确保您的 Python HTTP 服务器可访问至关重要。
-2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令查找机器的 IP 地址，这是从另一台设备访问共享文件前的必要步骤。
-3. **[管理 Linux 中的本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 学习通过编辑 /etc/hosts 文件来管理 Linux 中的本地主机名解析，这是 Web 开发和网络测试中的一项关键技能。
+```bash
+$ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
+```
 
-这些实验将帮助您在实际场景中应用这些概念，并建立对 Linux 中基本网络操作的信心。
+要在可信网络上共享，应有意绑定到适当接口地址，并确认防火墙策略。不使用限制性绑定运行时通常会监听所有可用接口，可能将目录公开到预期网络之外。
 
-## Quiz Question
+:::single-choice{#http-server-loopback-bind} 谁通常可以访问绑定到 `127.0.0.1` 的服务器？
 
-对于 Python 3，用于创建简单 HTTP 服务器的模块名称是什么？（请用英语回答，注意区分大小写）。
+::option[同一主机上的客户端。]{#http-server-local-clients .correct explanation="环回绑定适合本地测试，或在有意配置的隧道后使用。"}
+::option[公网中的任何主机。]{#http-server-public explanation="环回地址只属于同一网络命名空间，不是公网接口。"}
+::option[只有通过蓝牙连接的设备。]{#http-server-bluetooth explanation="该地址与蓝牙传输无关。"}
+:::
 
-## Quiz Answer
+## 测试访问
 
-http.server
+在服务主机上请求一个已知文件，并检查响应：
+
+```bash
+$ curl -f http://127.0.0.1:8000/example.txt
+```
+
+进行经过授权的远程测试时，应使用所选接口地址而不是环回地址。既要确认预期文件可访问，也要确认文档根目录以外的文件不可访问。浏览器成功本身不能证明公开范围或机密性合适。
+
+:::single-choice{#http-server-default-port-command} `python3 -m http.server 8000` 明确选择了哪个端口？
+
+::option[22]{#http-server-port-22 explanation="端口 22 通常与 SSH 关联，此处没有选择它。"}
+::option[8000]{#http-server-port-8000 .correct explanation="位置端口操作数告诉模块在哪里监听。"}
+::option[443]{#http-server-port-443 explanation="该命令没有在端口 443 配置 HTTPS。"}
+:::
+
+## 停止并清理
+
+在受监督的终端中运行临时服务，传输完成后使用 `Ctrl-C` 停止。确认监听器已经消失：
+
+```bash
+$ ss -ltn 'sport = :8000'
+```
+
+按照数据处理策略移除临时副本，并撤销所有临时防火墙规则。对于持久、需要身份验证或面向互联网的分发，应使用配置了访问控制和 TLS、持续维护的服务器。
+
+:::single-choice{#http-server-completion-check} 临时传输完成后应该做什么？
+
+::option[停止服务并确认端口不再监听。]{#http-server-stop-verify .correct explanation="验证可以确认临时网络服务确实已经结束。"}
+::option[保留监听器运行，以防以后有人需要。]{#http-server-leave-running explanation="授权用途结束后应移除不必要的暴露。"}
+::option[将更多私有文件复制到文档根目录。]{#http-server-add-private explanation="只有有意共享的内容才应放入服务目录。"}
+:::
+
+## 总结
+
+现在，你可以在暴露范围有限的情况下运行临时 Python HTTP 服务器。
+
+1. 只提供专用且经过审查的目录。
+2. 绑定到范围最窄的适当地址。
+3. 测试预期访问和非预期边界。
+4. 之后停止监听器并清理临时访问。

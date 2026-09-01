@@ -1,42 +1,82 @@
 ---
-index: 4
+lesson_id: "boot-process-kernel"
+course_id: "boot-system"
 lang: "pt"
+order_index: 4
 title: "Processo de Inicialização: Kernel"
+description: "Aprenda como o kernel Linux usa o espaço inicial do usuário para alcançar a raiz real e iniciar o PID 1."
 meta_title: "Processo de Inicialização: Kernel - Inicializando o Sistema"
 meta_description: "Explore o processo de inicialização do kernel Linux. Aprenda como o initramfs carrega drivers de um sistema de arquivos temporário para montar a partição raiz final. Entenda as etapas desde o carregamento do kernel até a execução do init."
 meta_keywords: "raiz de inicialização, initramfs, inicialização do kernel, partição de boot, initramfs ubuntu, /etc/default/grub, processo de boot Linux, sistema de arquivos raiz, inicialização do kernel"
 ---
 
-## Lesson Content
+Depois que o controle chega ao kernel Linux, ele inicializa gerenciamento de memória, escalonamento, interrupções, drivers incorporados, estruturas de segurança e outros subsistemas centrais. Em seguida, interpreta a linha de comando e se prepara para iniciar o primeiro processo do espaço do usuário.
 
-Uma vez que o carregador de boot (bootloader) carregou o kernel na memória e passou os parâmetros necessários, o kernel assume o controle do sistema. Vamos explorar o que acontece a seguir.
+## Por que existe o espaço inicial do usuário
 
-### Inicialização do Kernel e o Initramfs
+Às vezes, um sistema de arquivos raiz simples pode ser montado com drivers incorporados ao kernel. Sistemas mais complexos precisam de módulos e ferramentas antes que a raiz real possa ser alcançada. Exemplos:
 
-Um desafio clássico durante a inicialização é que o kernel precisa de drivers para acessar os dispositivos de hardware, mas esses drivers geralmente residem em um dispositivo de armazenamento ao qual o kernel ainda não consegue acessar. Para resolver isso, o Linux usa um sistema de arquivos raiz temporário.
+- módulos do controlador de armazenamento ou sistema de arquivos
+- desbloqueio de uma raiz criptografada
+- montagem de LVM ou RAID
+- configuração de rede para uma raiz remota
+- descoberta de dispositivos e resolução de identificadores persistentes
 
-Em sistemas mais antigos, isso era tratado por um `initrd` (initial RAM disk). O kernel carregava esta imagem de disco, encontrava os drivers necessários e, em seguida, mudava para o sistema de arquivos raiz real. Sistemas modernos, incluindo distribuições como o Ubuntu, usam `initramfs` (initial RAM filesystem). Diferente do `initrd`, o `initramfs` é um arquivo `cpio` que é descompactado em um sistema de arquivos temporário diretamente na memória. Essa abordagem é mais eficiente, pois evita a sobrecarga de criar e montar um dispositivo de bloco. O `initramfs` contém apenas os módulos essenciais que o kernel precisa para acessar a partição de boot real (`boot partition`) e outro hardware.
+Um initramfs reúne esses componentes em um ambiente inicial do espaço do usuário fornecido junto com o kernel.
 
-### Montagem do Sistema de Arquivos Raiz de Boot
+:::single-choice{#boot-kernel-initramfs-purpose} Que problema um initramfs costuma resolver?
 
-Com os drivers carregados do `initramfs`, o kernel agora pode localizar e montar o sistema de arquivos raiz de boot principal (`boot root`). A localização deste sistema de arquivos é tipicamente passada como um parâmetro pelo carregador de boot, o que pode ser configurado em arquivos como `/etc/default/grub`.
+::option[Ele fornece ferramentas e módulos iniciais necessários antes que a raiz real esteja disponível.]{#boot-kernel-early-tools .correct explanation="O espaço inicial pode descobrir e montar armazenamento que o kernel não acessa apenas com o suporte incorporado."}
+::option[Ele guarda permanentemente no firmware o diretório pessoal de cada usuário.]{#boot-kernel-home-firmware explanation="Esse arquivo é um artefato de boot, não armazenamento permanente de dados do usuário."}
+::option[Ele substitui o kernel Linux depois do primeiro login.]{#boot-kernel-replace-kernel explanation="O kernel continua ativo enquanto o código do initramfs é executado no espaço do usuário."}
+:::
 
-Primeiro, o kernel monta a partição raiz de boot (`boot root`) em modo somente leitura. Esta é uma medida de segurança que permite que a utilidade `fsck` (verificação do sistema de arquivos) seja executada e verifique a integridade do sistema de arquivos sem arriscar a corrupção de dados. Após a conclusão bem-sucedida da verificação, o kernel remonta o sistema de arquivos em modo leitura-escrita.
+## Initramfs e initrd legado
 
-Finalmente, com o sistema de arquivos raiz totalmente disponível, o kernel inicia o primeiro programa em espaço de usuário: `init`. Este programa é responsável por colocar o restante do sistema online.
+Um initramfs moderno normalmente consiste em um ou mais arquivos cpio, muitas vezes comprimidos, que o kernel descompacta em seu sistema de arquivos raiz inicial. O kernel executa o programa `/init` desse ambiente.
 
-## Exercise
+Um initrd legado é, conceitualmente, uma imagem de sistema de arquivos carregada em um dispositivo de bloco baseado em RAM e montada. Os termos são usados de modo impreciso em nomes de arquivo e comandos; examine as ferramentas reais em vez de deduzir o formato apenas pelo nome.
 
-Prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão do processo de boot do Linux:
+O initramfs deve corresponder ao kernel e ao projeto de boot. Módulos ausentes, identificadores antigos ou ferramentas de criptografia e LVM omitidas podem tornar um kernel novo incapaz de iniciar, mesmo que sua imagem seja válida.
 
-- **[Personalizar o Menu de Boot GRUB2 no Linux](https://labex.io/pt/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Aprenda a modificar o menu de boot do GRUB2, incluindo a alteração do tempo limite e da entrada padrão, e a aplicar essas alterações. Este laboratório ajudará você a entender como o carregador de boot pode ser configurado.
+:::single-choice{#boot-kernel-initramfs-format} Como um initramfs moderno costuma ser apresentado ao kernel?
 
-Este laboratório ajudará você a aplicar os conceitos em um cenário real e a ganhar confiança com a configuração de boot do Linux.
+::option[Como um repositório interativo de pacotes apenas por HTTP.]{#boot-kernel-http-repository explanation="A rede pode ser configurada no espaço inicial, mas não define o formato do initramfs."}
+::option[Como um arquivo baseado em cpio, descompactado na raiz inicial.]{#boot-kernel-cpio-archive .correct explanation="O kernel expande o arquivo e executa seu programa de inicialização do espaço inicial do usuário."}
+::option[Como o cabeçalho GPT de backup do disco.]{#boot-kernel-gpt-header explanation="A redundância da tabela de partições independe do arquivo do espaço inicial."}
+:::
 
-## Quiz Question
+## Chegada à raiz real
 
-What is used in modern systems to load a temporary root filesystem? Please answer in English, using only lowercase letters.
+O espaço inicial interpreta parâmetros como `root=`, espera pelos dispositivos, ativa camadas de armazenamento e monta a raiz pretendida. Depois, usa uma operação de troca de raiz para tornar esse sistema de arquivos o novo `/` e liberar o ambiente temporário quando possível.
 
-## Quiz Answer
+A solicitação inicial `ro` pode permitir verificações de consistência e uma inicialização controlada, mas a sequência exata depende da distribuição. Verificações de sistema de arquivos são operações do espaço do usuário, e o initramfs ou o sistema init posterior pode remontar a raiz para leitura e escrita quando permitido.
 
-initramfs
+:::single-choice{#boot-kernel-root-switch} O que acontece depois que o espaço inicial monta com êxito a raiz real pretendida?
+
+::option[A tabela de partições é recriada em todos os discos.]{#boot-kernel-recreate-tables explanation="A troca de raiz não reparticiona o armazenamento."}
+::option[O kernel termina e o firmware volta a escalonar processos.]{#boot-kernel-firmware-schedules explanation="O kernel Linux continua responsável por processos e hardware depois da transferência."}
+::option[O boot troca a visão da raiz para esse sistema de arquivos e continua a inicialização.]{#boot-kernel-switch-root .correct explanation="A raiz inicial temporária transfere o controle à hierarquia raiz do sistema instalado."}
+:::
+
+## Inicialização do PID 1
+
+O kernel executa o programa init configurado, normalmente acessado por um caminho como `/sbin/init` ou escolhido com `init=`. Esse processo recebe o PID 1 e assume a responsabilidade pelo principal ambiente de serviços do espaço do usuário.
+
+Se nenhum programa init utilizável puder ser executado, o kernel não consegue chegar a um sistema normal e costuma relatar falha ou panic. Investigue a primeira camada que falhou: kernel e linha de comando, conteúdo do initramfs, descoberta e montagem da raiz ou execução do PID 1.
+
+:::single-choice{#boot-kernel-pid-one} Qual é a última grande transferência do kernel nessa etapa simplificada?
+
+::option[Executar o primeiro programa do espaço do usuário como PID 1.]{#boot-kernel-exec-init .correct explanation="Depois disso, o PID 1 inicia os serviços e o estado configurado do sistema."}
+::option[Transformar `/proc` em um banco persistente de pacotes.]{#boot-kernel-proc-package explanation="Procfs continua sendo uma interface de tempo de execução do kernel."}
+::option[Atribuir o mesmo PID a todos os processos posteriores.]{#boot-kernel-same-pid explanation="Cada processo ativo recebe seu próprio PID dentro de um namespace."}
+:::
+
+## Resumo
+
+Agora você consegue acompanhar o boot do kernel pelo espaço inicial até o PID 1.
+
+1. Separar a inicialização incorporada ao kernel dos módulos iniciais carregáveis.
+2. Relacionar initramfs a uma raiz temporária baseada em cpio e a `/init`.
+3. Acompanhar a montagem do armazenamento e a troca para a raiz real.
+4. Identificar a execução do PID 1 como transferência ao espaço do usuário.

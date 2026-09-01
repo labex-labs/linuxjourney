@@ -1,67 +1,100 @@
 ---
-index: 1
+lesson_id: "sysv-overview"
+course_id: "init"
 lang: "es"
-title: "Resumen de System V"
-meta_title: "Resumen de System V - Init"
-meta_description: "Explore el sistema init tradicional System V, también conocido como SysV o init v. Esta guía cubre cómo systemv gestiona los procesos, su arranque secuencial y el papel de los niveles de ejecución en Linux. Aprenda los fundamentos del proceso clásico initv."
-meta_keywords: "System V, systemv, SysV init, systemv init, init v, initv, niveles de ejecución Linux, sistema init, gestión de procesos, tutorial Linux"
+order_index: 1
+title: "Visión general de System V"
+description: "Aprende cómo el init tradicional de System V utiliza niveles de ejecución y enlaces ordenados a scripts de servicios."
+meta_title: "Visión general de System V - Init"
+meta_description: "Comprende el init de System V, sus niveles de ejecución y los enlaces ordenados que inician y detienen servicios."
+meta_keywords: "System V, SysV init, sysvinit, niveles de ejecución Linux, scripts init, PID 1"
 ---
 
-## Lesson Content
+System V init, llamado normalmente SysV init o sysvinit, es un diseño tradicional de PID 1 e inicio de servicios. Sigue siendo importante en sistemas heredados y mediante scripts de compatibilidad, pero la presencia de archivos de estilo SysV no demuestra que sysvinit sea el PID 1 en ejecución.
 
-El papel principal de un sistema init es iniciar y detener procesos esenciales. Linux ha visto tres implementaciones principales de init: System V, Upstart y systemd. Esta lección se centra en la versión más tradicional, **System V init**, a menudo denominada **SysV** o simplemente **systemv** (pronunciado 'System Five').
+## Identificar el sistema init activo
 
-Para determinar si su sistema utiliza la implementación **systemv**, busque un archivo `/etc/inittab`. Si este archivo existe, lo más probable es que esté ejecutando una distribución basada en SysV.
-
-### Cómo System V Gestiona los Procesos
-
-El proceso **systemv init** inicia y detiene los servicios secuencialmente. Por ejemplo, si un servicio llamado `foo-b` depende de `foo-a`, `foo-b` no puede iniciarse hasta que `foo-a` se esté ejecutando completamente. El sistema **initv** logra esto utilizando scripts de shell. Estos scripts, ubicados en directorios específicos, se encargan de iniciar y detener los servicios. Si bien puede escribir scripts personalizados, la mayoría de los sistemas dependen de los preinstalados que gestionan los servicios esenciales del sistema operativo.
-
-### Ventajas y Desventajas
-
-La principal ventaja de este enfoque secuencial es su simplicidad y previsibilidad. Solucionar problemas de dependencias es sencillo porque sabe que `foo-a` siempre comienza antes que `foo-b`. Sin embargo, el principal inconveniente del modelo **init v** es el rendimiento, ya que los servicios generalmente se inician uno a la vez, lo que resulta en tiempos de arranque más lentos en comparación con los sistemas paralelos modernos.
-
-### Comprensión de los Niveles de Ejecución en System V
-
-En un entorno **systemv**, el estado de la máquina se define mediante **niveles de ejecución** (runlevels), numerados del 0 al 6. Estos modos pueden variar ligeramente entre las distribuciones de Linux, pero generalmente siguen esta convención estándar:
-
-- 0: Apagado (Shutdown)
-- 1: Modo de usuario único (Single User Mode)
-- 2: Modo multiusuario sin red
-- 3: Modo multiusuario con red
-- 4: No utilizado
-- 5: Modo multiusuario con red e interfaz gráfica (GUI)
-- 6: Reinicio (Reboot)
-
-### Scripts de Init y Directorios
-
-Cuando su sistema arranca, comprueba su nivel de ejecución configurado y ejecuta los scripts correspondientes. Estos scripts se encuentran típicamente en directorios como **/etc/rc.d/rc[runlevel].d/** o dentro de un directorio central **/etc/init.d**. Los scripts que comienzan con `S` (Start/Inicio) se ejecutan durante el arranque, mientras que los que comienzan con `K` (Kill/Matar) se ejecutan durante el apagado. Los números que siguen a `S` o `K` dictan el orden de ejecución.
-
-Por ejemplo:
+Examina el PID 1 activo:
 
 ```bash
-pete@icebox:/etc/rc.d/rc0.d$ ls
-K10updates  K80openvpn
+$ ps -p 1 -o pid,comm,args=
+$ readlink /proc/1/exe
 ```
 
-En este ejemplo, al cambiar al nivel de ejecución 0 (apagado), primero se ejecutará el script para detener el servicio de actualizaciones, seguido del script para OpenVPN. Puede encontrar el nivel de ejecución predeterminado de su máquina en el archivo `/etc/inittab`, donde también puede cambiarlo.
+Un archivo `/etc/inittab` o un directorio `/etc/init.d/` es solo una prueba auxiliar. systemd y otros sistemas pueden conservar estos archivos por compatibilidad, y los contenedores pueden mostrar un espacio de nombres de PID distinto del anfitrión.
 
-Es importante señalar que **System V** ha sido ampliamente reemplazado por `systemd` en la mayoría de las distribuciones modernas de Linux. Sin embargo, es posible que todavía encuentre el concepto de niveles de ejecución en los sistemas init más nuevos, ya que a menudo proporcionan una capa de compatibilidad para admitir servicios heredados que dependen de los scripts de **systemv init**.
+:::single-choice{#sysv-overview-detection} ¿Cuál es la prueba más sólida de que sysvinit está activo?
 
-## Exercise
+::option[Que el ejecutable activo con PID 1 sea sysvinit o su programa init.]{#sysv-overview-live-pid-one .correct explanation="Examinar el primer proceso en ejecución es más directo que deducirlo de archivos de compatibilidad."}
+::option[Que exista un directorio `/etc/init.d/`.]{#sysv-overview-init-d-only explanation="Otros sistemas init suelen conservar scripts o envoltorios de SysV."}
+::option[Que la descripción de un paquete contenga la palabra servicio.]{#sysv-overview-package-word explanation="El texto de un paquete no identifica el proceso que actúa en ese momento como PID 1."}
+:::
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión de procesos de Linux y la configuración del sistema, que son fundamentales para el funcionamiento de los sistemas init:
+## Niveles de ejecución
 
-1. **[Gestionar y Supervisar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción con procesos en primer plano y en segundo plano, inspeccionándolos con `ps`, supervisando recursos con `top` y terminándolos con `kill`. Esto se relaciona directamente con el aspecto de 'iniciar y detener procesos esenciales' del init.
-2. **[Programar Tareas con at y cron en Linux](https://labex.io/es/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Aprenda a programar tareas únicas y recurrentes, lo que se basa en el concepto de ejecución automatizada, similar a cómo los scripts init gestionan los servicios.
-3. **[Gestionar Permisos de Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - Comprenda cómo gestionar los permisos de archivos y directorios, una habilidad crítica para trabajar con archivos de configuración del sistema y scripts como los que se encuentran en `/etc/init.d`.
+Un nivel de ejecución es un modo de funcionamiento numérico con nombre. Las configuraciones de SysV utilizan tradicionalmente los niveles `0` a `6` más niveles especiales, pero sus significados son una política de la distribución, no una ley universal. Entre las convenciones habituales se encuentran:
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con las tareas fundamentales de administración de sistemas Linux.
+- `0`: transición de detención o apagado
+- `1` o `S`: modo monousuario o de rescate
+- `2` a `5`: modos multiusuario definidos por la distribución
+- `6`: transición de reinicio
 
-## Quiz Question
+Los sistemas de la familia Debian han tratado históricamente los niveles 2–5 de forma parecida, mientras que las convenciones de la familia Red Hat distinguen modos de texto y gráficos. Examina `/etc/inittab`, la documentación de init y los directorios de niveles en el equipo real.
 
-¿Qué nivel de ejecución se utiliza habitualmente para el apagado?
+:::single-choice{#sysv-overview-shutdown-runlevel} ¿Qué nivel solicita convencionalmente detener o apagar en muchos sistemas SysV?
 
-## Quiz Answer
+::option[`3`]{#sysv-overview-runlevel-three explanation="Suele ser un modo multiusuario y no de apagado."}
+::option[`0`]{#sysv-overview-runlevel-zero .correct explanation="El nivel cero es convencionalmente la transición de apagado, aunque la política local sigue siendo la autoridad."}
+::option[`6`]{#sysv-overview-runlevel-six explanation="El nivel seis solicita convencionalmente reiniciar."}
+:::
 
-0
+## Scripts init y enlaces de niveles
+
+Los scripts de servicios suelen residir bajo `/etc/init.d/`. Los directorios de niveles como `/etc/rc2.d/` o `/etc/rc.d/rc2.d/` contienen enlaces cuyos nombres codifican la acción y el orden de la transición:
+
+- Los enlaces `SNNname` solicitan una acción de inicio.
+- Los enlaces `KNNname` solicitan una acción de detención.
+- `NN` proporciona el orden lexicográfico entre enlaces de esa transición.
+
+El algoritmo y los directorios exactos varían. Las dependencias también pueden expresarse en las cabeceras de los scripts y procesarse mediante herramientas de la distribución, y algunas implementaciones paralelizan el trabajo. SysV no debe reducirse a la garantía de que todos los servicios se inicien estrictamente de uno en uno.
+
+:::single-choice{#sysv-overview-start-link} ¿Qué solicita convencionalmente un enlace `S20networking` al entrar en un nivel?
+
+::option[Enviar directamente la señal 20 a todos los procesos de red.]{#sysv-overview-signal-twenty explanation="Los dígitos son metadatos de orden, no un número de señal."}
+::option[Almacenar veinte copias de seguridad de la configuración de red.]{#sysv-overview-twenty-backups explanation="Los enlaces de niveles no proporcionan retención de copias."}
+::option[Ejecutar el script de servicio enlazado con su acción start en el orden `S`.]{#sysv-overview-start-action .correct explanation="El prefijo distingue los enlaces de inicio y el número contribuye a la secuencia."}
+:::
+
+## Transiciones entre niveles
+
+Cuando init cambia de nivel, la maquinaria rc de la distribución detiene los servicios que ya no se necesitan e inicia los necesarios en el nuevo modo. Los scripts deben ser suficientemente idempotentes para admitir operaciones repetidas de estado o transición y devolver estados significativos.
+
+Solicitar los niveles 0 o 6 es una acción destructiva para la disponibilidad de todo el sistema. Utiliza la interfaz de apagado, avisa a los usuarios, conserva el trabajo activo y verifica el acceso remoto a consola en vez de invocar casualmente transiciones init sin intermediarios.
+
+:::single-choice{#sysv-overview-runlevel-six-meaning} ¿Qué solicita convencionalmente el nivel `6`?
+
+::option[Crear seis cuentas de usuario adicionales.]{#sysv-overview-six-users explanation="Los niveles describen modos de funcionamiento, no números de cuentas."}
+::option[Una transición de reinicio del sistema.]{#sysv-overview-reboot .correct explanation="La política SysV clásica reserva el nivel seis para detener servicios y reiniciar el sistema."}
+::option[Montar para siempre todos los sistemas de archivos como solo lectura.]{#sysv-overview-six-readonly explanation="Esa no es la finalidad convencional del nivel seis."}
+:::
+
+## Límites de la compatibilidad
+
+En un equipo con systemd, los scripts SysV pueden envolverse como unidades generadas, pero siguen aplicándose las dependencias, los tiempos de espera, el registro y la semántica de estado de systemd. Ejecutar directamente un script heredado puede eludir el seguimiento del gestor de servicios. Identifica el gestor activo y utiliza su interfaz nativa cuando sea posible.
+
+:::single-choice{#sysv-overview-compatibility-script} ¿Por qué debe invocarse normalmente un script de estilo SysV de un equipo systemd mediante el gestor de servicios?
+
+::option[Porque ejecutarlo directamente puede eludir el seguimiento de dependencias y estado.]{#sysv-overview-manager-tracking .correct explanation="El gestor debe coordinar la propiedad de procesos, el orden, los tiempos de espera y el estado."}
+::option[Porque los scripts de shell no pueden ejecutarse en un sistema systemd.]{#sysv-overview-scripts-impossible explanation="Pueden ejecutarse, pero eludir la supervisión puede provocar un estado incoherente."}
+::option[Porque systemd convierte todos los scripts de servicios en módulos del kernel.]{#sysv-overview-script-module explanation="Las unidades de compatibilidad siguen siendo gestión de servicios del espacio de usuario."}
+:::
+
+## Resumen
+
+Ahora puedes interpretar un diseño SysV tradicional sin suponer que esté activo.
+
+1. Identifica el PID 1 activo antes de elegir órdenes de init.
+2. Trata los significados de los niveles como convenciones definidas por la distribución.
+3. Lee `S`, `K` y el orden numérico de los enlaces de niveles.
+4. Utiliza procedimientos controlados de apagado para los niveles 0 y 6.
+5. Respeta el gestor activo cuando existan scripts de compatibilidad.

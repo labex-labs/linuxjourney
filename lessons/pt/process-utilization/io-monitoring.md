@@ -1,66 +1,86 @@
 ---
-index: 5
+lesson_id: "io-monitoring"
+course_id: "process-utilization"
 lang: "pt"
+order_index: 5
 title: "Monitoramento de E/S"
+description: "Aprenda a usar amostras de iostat para investigar a atividade da CPU e dos dispositivos de bloco."
 meta_title: "Monitoramento de E/S - Utilização de Processos"
-meta_description: "Domine o monitoramento de E/S do Linux com o comando iostat. Este guia explica como analisar métricas de uso de CPU e disco para otimizar o desempenho do seu sistema."
-meta_keywords: "monitoramento de e/s, iostat, monitoramento de e/s linux, uso de cpu, uso de disco, desempenho do sistema, iowait, comandos linux"
+meta_description: "Domine o monitoramento de E/S no Linux com o comando iostat. Este guia explica como analisar métricas de uso da CPU e dos discos para investigar o desempenho do sistema."
+meta_keywords: "monitoramento E/S, iostat, monitoramento E/S Linux, uso da CPU, uso do disco, desempenho do sistema, iowait, comandos Linux"
 ---
 
-## Lesson Content
+`iostat`, normalmente fornecido pelo pacote `sysstat`, informa a atividade da CPU e dos dispositivos de bloco. Use amostras repetidas junto com a latência da aplicação: o throughput ou a utilização, sozinhos, não comprovam que o armazenamento esteja causando um problema perceptível ao usuário.
 
-O **monitoramento de I/O** eficaz é crucial para manter um sistema Linux saudável e responsivo. Uma ferramenta poderosa de linha de comando para esta tarefa é o **iostat**, que fornece relatórios detalhados sobre a atividade da CPU e do disco.
+## Coleta de Amostras Úteis
 
-Executar o comando `iostat` gera um instantâneo das métricas de desempenho do seu sistema.
+Execute estatísticas detalhadas dos dispositivos em intervalos de um segundo:
 
 ```bash
-pete@icebox:~$ iostat
-Linux 3.13.0-39-lowlatency (icebox)     01/28/2016      _i686_  (1 CPU)
-
-avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           0.13    0.03    0.50    0.01    0.00   99.33
-
-Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
-sda               0.17         3.49         1.92     385106     212417
+$ iostat -xz 1
 ```
 
-A saída é dividida em duas seções principais. Vamos analisá-las.
+Nas implementações comuns, o primeiro relatório contém médias desde o boot, e os relatórios posteriores abrangem cada intervalo. A opção `-x` acrescenta campos detalhados, enquanto `-z` omite dispositivos inativos. Aguarde vários intervalos para capturar períodos normais e problemáticos.
 
-### Entendendo as Métricas da CPU
+:::single-choice{#iostat-first-report} O que o primeiro relatório de `iostat` normalmente representa?
 
-A primeira seção detalha a utilização da CPU, fornecendo informações sobre como o processador está gastando seu tempo.
+::option[Somente as operações do último segundo do comando.]{#iostat-final-second explanation="Isso não descreve o relatório acumulado inicial."}
+::option[As médias de atividade desde a inicialização do sistema.]{#iostat-since-boot .correct explanation="Os relatórios posteriores normalmente são específicos do intervalo, portanto o primeiro precisa ser interpretado separadamente."}
+::option[Uma previsão da utilização dos dispositivos no dia seguinte.]{#iostat-forecast explanation="A ferramenta informa estatísticas observadas, não a demanda futura."}
+:::
 
-- **%user**: Porcentagem do tempo da CPU gasto executando processos em nível de usuário (aplicativos).
-- **%nice**: Porcentagem do tempo da CPU gasto em processos de nível de usuário com prioridade modificada (nice).
-- **%system**: Porcentagem do tempo da CPU gasto executando processos em nível de sistema (kernel).
-- **%iowait**: Porcentagem do tempo em que a CPU ficou ociosa enquanto esperava a conclusão de uma solicitação de E/S de disco pendente. Valores altos aqui podem indicar um gargalo de armazenamento.
-- **%steal**: Em um ambiente virtualizado, esta é a porcentagem de tempo que uma CPU virtual espera por uma CPU real enquanto o hipervisor está atendendo a outro processador virtual.
-- **%idle**: Porcentagem do tempo em que a CPU ficou ociosa e não estava esperando por nenhuma solicitação de E/S de disco.
+## Leitura dos Campos da CPU
 
-### Analisando a Utilização do Disco
+A seção da CPU normalmente inclui os tempos de usuário (`%user`), sistema (`%system`), ocioso (`%idle`), espera por E/S (`%iowait`) e tomado pela máquina virtual (`%steal`). A espera por E/S é o tempo ocioso da CPU durante o qual o sistema possui uma solicitação de E/S pendente; não é a porcentagem de ocupação de um disco.
 
-A segunda seção foca no **monitoramento de E/S** em nível de dispositivo, mostrando como os dados estão sendo transferidos de e para seus dispositivos de armazenamento.
+:::single-choice{#iostat-iowait-meaning} O que `%iowait` descreve?
 
-- **tps**: Transferências por segundo emitidas para o dispositivo. Uma transferência é uma solicitação de E/S, e várias solicitações lógicas podem ser combinadas em uma única.
-- **kB_read/s**: A quantidade de dados lidos do dispositivo, expressa em kilobytes por segundo.
-- **kB_wrtn/s**: A quantidade de dados gravados no dispositivo, expressa em kilobytes por segundo.
-- **kB_read**: O número total de kilobytes lidos do dispositivo desde a última reinicialização.
-- **kB_wrtn**: O número total de kilobytes gravados no dispositivo desde a última reinicialização.
+::option[A porcentagem da capacidade do disco que já está ocupada.]{#iostat-capacity explanation="A capacidade do sistema de arquivos e o tempo de CPU são medições diferentes."}
+::option[O tempo ocioso da CPU enquanto existe uma solicitação de E/S pendente.]{#iostat-iowait-cpu .correct explanation="Essa é uma categoria de tempo de CPU e, sozinha, não consegue identificar um dispositivo."}
+::option[A quantidade de arquivos que aguardam exclusão.]{#iostat-delete-queue explanation="As contagens de exclusões de arquivos não são representadas por esse campo."}
+:::
 
-## Exercise
+## Leitura dos Campos dos Dispositivos
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre monitoramento de sistema e uso de disco:
+Os nomes dos campos variam conforme a versão do sysstat, mas alguns conceitos úteis são:
 
-1. **[Comando Linux df: Relatório de Espaço em Disco](https://labex.io/pt/labs/linux-linux-df-command-disk-space-reporting-219188)** - Pratique a geração de relatórios sobre o uso de espaço em disco em sistemas de arquivos montados, um aspecto chave do monitoramento.
-2. **[Comando Linux du: Estimativa de Espaço em Arquivos](https://labex.io/pt/labs/linux-linux-du-command-file-space-estimating-219190)** - Aprenda a estimar o uso de espaço em disco para diretórios e subdiretórios, complementando as informações de E/S de disco do `iostat`.
-3. **[Comando Linux top: Monitoramento de Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Explore o monitoramento de sistema em tempo real, incluindo uso de CPU e memória, o que fornece um contexto mais amplo para as métricas de CPU vistas no `iostat`.
+- As operações ou os dados de leitura e escrita por segundo mostram a taxa da carga de trabalho.
+- `await` informa a latência média das solicitações, incluindo o tempo na fila e de atendimento.
+- Os campos de tamanho médio da fila mostram as solicitações aguardando ou sendo atendidas.
+- `%util` informa a porcentagem do tempo decorrido durante o qual o dispositivo possuía E/S em andamento.
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança no monitoramento dos recursos do sistema Linux.
+Um `%util` alto pode indicar saturação em um dispositivo serial simples, mas não se traduz diretamente na capacidade de desempenho de um armazenamento paralelo, arranjo ou dispositivo virtual. Compare a latência com o projeto do dispositivo, o padrão da carga de trabalho e o objetivo de serviço.
 
-## Quiz Question
+:::single-choice{#iostat-await-purpose} Qual campo está mais diretamente associado à latência média das solicitações de E/S?
 
-Qual comando pode ser usado para visualizar o uso de E/S e CPU? (Por favor, responda apenas com caracteres em inglês minúsculos)
+::option[Nome do dispositivo.]{#iostat-device-name explanation="O nome identifica o dispositivo, mas não mede a duração das solicitações."}
+::option[`await`]{#iostat-await .correct explanation="Await representa o tempo médio das solicitações, incluindo o período na fila e de atendimento."}
+::option[`%idle`]{#iostat-idle explanation="Esse é um campo de CPU, não a latência das solicitações do dispositivo."}
+:::
 
-## Quiz Answer
+## Relação entre as Evidências
 
-iostat
+Mapeie os nomes dos dispositivos para as montagens e os dispositivos subjacentes antes de tirar conclusões:
+
+```bash
+$ lsblk -o NAME,TYPE,SIZE,FSTYPE,MOUNTPOINTS
+$ findmnt
+```
+
+Depois, relacione os intervalos de `iostat` ao tempo de resposta da aplicação, às métricas do banco de dados ou sistema de arquivos e à E/S no nível dos processos. Device mapper, RAID, contêineres e armazenamento apoiado por rede podem acrescentar camadas que exigem suas próprias ferramentas.
+
+:::single-choice{#iostat-high-util-conclusion} O que você deve fazer depois de observar um `%util` alto em um dispositivo?
+
+::option[Presumir que todos os sistemas de arquivos estejam sem espaço livre.]{#iostat-assume-full explanation="O tempo de ocupação não informa a capacidade do sistema de arquivos."}
+::option[Excluir arquivos antes de identificar a carga de trabalho montada.]{#iostat-delete-first explanation="A exclusão altera o estado e não comprova um gargalo de E/S."}
+::option[Relacionar a latência e o comportamento da carga ao projeto do armazenamento.]{#iostat-correlate .correct explanation="O paralelismo do dispositivo e os objetivos da carga determinam se a observação é prejudicial."}
+:::
+
+## Resumo
+
+Agora você sabe usar `iostat` como evidência em uma investigação de E/S.
+
+1. Colete vários intervalos de estatísticas detalhadas.
+2. Diferencie a espera da CPU por E/S do tempo de ocupação do dispositivo.
+3. Interprete juntos a latência, o enfileiramento, o throughput e a utilização.
+4. Mapeie os dispositivos para as cargas de trabalho e verifique o impacto na aplicação.

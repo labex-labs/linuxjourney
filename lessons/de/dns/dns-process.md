@@ -1,46 +1,80 @@
 ---
-index: 3
+lesson_id: "dns-process"
+course_id: "dns"
 lang: "de"
-title: "DNS-Prozess"
-meta_title: "DNS-Prozess - DNS"
-meta_description: "Erkunden Sie den schrittweisen DNS-Auflösungsprozess, von Root-Servern bis zum autoritativen DNS-Server. Verstehen Sie, wie ein Linux-Server eine Domain findet – ein entscheidendes Konzept für Produktionsumgebungen und Domain-Hosting."
-meta_keywords: "DNS-Prozess, DNS-Abfrage, Domain-Auflösung, Linux DNS, Produktionsserver, Domain-Hosting, DNS-Server, TLD, Root-Server, autoritatives DNS"
+order_index: 3
+title: "DNS-Auflösungsprozess"
+description: "Lerne, wie Stub- und rekursive Resolver Cache, Weiterleitungen, Glue und Autorität zur Beantwortung einer DNS-Abfrage verwenden."
+meta_title: "DNS-Auflösungsprozess – DNS"
+meta_description: "Verfolge eine DNS-Auflösung von lokaler Richtlinie und Cache über Root- und TLD-Server bis zum autoritativen Server und lerne Glue sowie DNSSEC kennen."
+meta_keywords: "DNS Prozess, DNS Abfrage, Domain Auflösung, Linux DNS, DNS Server, TLD, Root Server, autoritatives DNS, Glue, DNSSEC"
 ---
 
-## Lesson Content
+Eine gewöhnliche Anwendung fragt den Stub-Resolver des Betriebssystems. Dieser berücksichtigt die lokale Namensdienstrichtlinie und sendet eine rekursive Abfrage an einen konfigurierten Resolver. Der rekursive Resolver durchläuft die Hierarchie nur, wenn die Frage nicht bereits aus einem gültigen Cache beantwortet werden kann.
 
-Lassen Sie uns untersuchen, wie ein Computer, wie ein `Linux server`, eine `domain` wie `catzontheinterwebz.com` mithilfe von DNS findet. Der Prozess funktioniert wie ein Trichter, der die Suche eingrenzt, bis wir den spezifischen `DNS server` erreichen, der die Antwort enthält.
+## Mit lokaler Richtlinie und Cache beginnen
 
-### Die anfängliche Abfrage
+Der Systemresolver kann `/etc/hosts`, DNS und andere Quellen in der konfigurierten Reihenfolge berücksichtigen. Suchsuffixe können einen kurzen Namen in mehrere mögliche Namen umwandeln. Ein rekursiver Resolver prüft anschließend positive und negative Cacheeinträge, bevor er Abfragen an übergeordnete Server sendet.
 
-Zuerst fragt Ihr Host seinen konfigurierten rekursiven DNS-Server: „Wo ist `catzontheinterwebz.com`?“ Dieser rekursive Server, der oft von Ihrem ISP bereitgestellt wird, kennt die Antwort wahrscheinlich nicht direkt. Daher beginnt er den Auflösungsprozess, indem er die höchste Autorität kontaktiert: die Root-Server. Dieser erste Schritt ist derselbe, egal ob Sie von zu Hause aus surfen oder ein `production server` mit einer API kommuniziert.
+:::single-choice{#dns-process-cache-first} Warum muss ein rekursiver Resolver für eine Abfrage möglicherweise keinen autoritativen Server kontaktieren?
 
-### Root-Server
+::option[DNS verlangt, dass jede Abfrage zuerst lokal fehlschlägt.]{#dns-process-requires-failure explanation="Ein Resolver kann unmittelbar aus seinem Cache antworten."}
+::option[Er besitzt eine noch gültige zwischengespeicherte Antwort.]{#dns-process-valid-cache .correct explanation="Caching vermeidet die erneute Abfrage der Hierarchie, bis die Lebensdauer des Eintrags abläuft."}
+::option[Autoritative Server akzeptieren ausschließlich Ethernet-Frames von Clients.]{#dns-process-authoritative-ethernet explanation="DNS arbeitet über IP-Transporte in gerouteten Netzwerken."}
+:::
 
-Die DNS-Hierarchie des Internets beginnt mit 13 logischen Root-Servern, die weltweit auf Hunderten von physischen Standorten gespiegelt werden. Diese Server kennen nicht die IP-Adresse für jede `domain`, aber sie wissen, wer die Top-Level-Domains (TLDs) wie `.com`, `.org` und `.net` verwaltet. Wenn sie nach `catzontheinterwebz.com` gefragt werden, antwortet ein Root-Server: „Ich weiß es nicht, aber Sie sollten den `.com`-TLD-Server fragen“, und gibt dessen IP-Adresse an.
+## Einen Root-Server abfragen
 
-### Top-Level-Domain-Server
+Bei einem Cache-Fehlschlag kann ein rekursiver Resolver einen Root-Server fragen. Die DNS-Wurzel besitzt 13 benannte Serveridentitäten von A bis M, die durch Anycast und andere ausfallsichere Bereitstellungstechniken von vielen physischen Instanzen bedient werden. Die Antwort verweist den Resolver normalerweise an autoritative Server der betreffenden Top-Level-Domain, statt die endgültige Hostadresse zurückzugeben.
 
-Als Nächstes sendet der rekursive Server eine neue Abfrage an den `.com`-TLD-Server und fragt erneut nach dem Speicherort von `catzontheinterwebz.com`. Die Aufgabe des TLD-Servers ist es, auf die richtigen autoritativen Namenserver für diese spezifische `domain` zu verweisen. Er hat nicht die endgültige IP-Adresse, aber er weiß, welcher `DNS server` für die `domain` verantwortlich ist, eine Einstellung, die oft über Ihren `domain hosting`-Anbieter vorgenommen wird. Der TLD-Server antwortet mit der IP-Adresse dieses autoritativen Namenservers.
+:::single-choice{#dns-process-root-response} Was gibt ein Root-Server bei einer nicht zwischengespeicherten Abfrage nach `www.example.com` normalerweise zurück?
 
-### Autoritative DNS-Server
+::option[Eine Weiterleitung zu den Servern der Top-Level-Domain `com`.]{#dns-process-root-referral .correct explanation="Die Hierarchie delegiert die Zuständigkeit, statt jeden endgültigen Hosteintrag an der Wurzel zu speichern."}
+::option[Die unter `www.example.com` bereitgestellte Webseite.]{#dns-process-root-webpage explanation="DNS liefert Resource-Record-Daten und keine Anwendungsinhalte."}
+::option[Die Ethernet-MAC-Adresse des Ziels.]{#dns-process-root-mac explanation="MAC-Adressen werden auf lokalen Verbindungen und nicht über die DNS-Hierarchie aufgelöst."}
+:::
 
-Schließlich sendet der rekursive Server eine letzte Anfrage an den autoritativen `DNS server`. Dies ist der Server, der die tatsächlichen DNS-Einträge für die `domain` `catzontheinterwebz.com` enthält. Dieser Server überprüft seine Einträge, findet den 'A'-Eintrag für den Host und gibt die endgültige IP-Adresse zurück. Dies ist ein entscheidender Schritt für jeden, der eine Website oder Anwendung live `making` (schaltet), da dieser Server die endgültige Verbindung zwischen dem `domain`-Namen und der IP-Adresse des `production server` bereitstellt. Mit der IP-Adresse in der Hand kann Ihr Computer nun die Inhalte abrufen.
+## Weiterleitungen von TLD- und autoritativen Servern folgen
 
-## Exercise
+Der Resolver fragt einen autoritativen `com`-Server. Dieser gibt die delegierten autoritativen Nameserver für `example.com` zurück. Die Weiterleitung kann Glue-Adresseinträge enthalten, wenn sie zum Erreichen eines Servers erforderlich sind, dessen Name innerhalb der delegierten untergeordneten Zone liegt. Danach fragt der Resolver einen autoritativen Server nach dem gewünschten Eintrag.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der DNS-Auflösung und -Verwaltung zu festigen:
+:::single-choice{#dns-process-glue-purpose} Welches Problem hilft DNS-Glue zu lösen?
 
-1. **[DNS-Einträge unter Linux mit dig und nslookup abfragen](https://labex.io/de/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** – Lernen Sie, DNS-Einträge wie A, PTR und MX abzufragen und Ihren Standard-DNS-Server zu identifizieren, was für die Netzwerkfehlerbehebung unerlässlich ist.
-2. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** – Sammeln Sie praktische Erfahrungen, indem Sie einen lokalen autoritativen DNS-Server installieren und konfigurieren, Zonen definieren und die DNS-Auflösung testen.
-3. **[Lokale Hostnamenauflösung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** – Üben Sie die Verwaltung der lokalen Hostnamenauflösung durch Bearbeiten der Datei `/etc/hosts`, eine Schlüsselqualifikation für die Webentwicklung und Netzwerktests.
+::option[Die Verschlüsselung von HTTP-Inhalten nach der DNS-Auflösung.]{#dns-process-glue-http explanation="TLS oder andere Anwendungssicherheit verschlüsselt die Inhalte."}
+::option[Die Auswahl des schnellsten Ports eines Ethernet-Switches.]{#dns-process-glue-switch explanation="Glue sind Adressdaten einer Delegierung und keine Richtlinie für die Weiterleitung auf der Sicherungsschicht."}
+::option[Das Erreichen eines zonenintern benannten Servers ohne zirkuläre Auflösung.]{#dns-process-glue-reachability .correct explanation="Der Elternknoten stellt die Adressdaten bereit, die zum Kontaktieren eines innerhalb der untergeordneten Zone benannten Servers nötig sind."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in DNS aufzubauen.
+## Aliasen und Eintragstypen folgen
 
-## Quiz Question
+Eine Antwort kann einen CNAME-Alias enthalten, der eine weitere Namensauflösung verlangt, oder anwendungsspezifische Einträge, die zusätzliche Abfragen auslösen. Eine Abfrage nach `A` liefert ausschließlich IPv4-Adresseinträge und zugehörige Kettendaten; IPv6-Adressen werden mit einer getrennten `AAAA`-Abfrage abgerufen. Die endgültige Antwort trägt einen Status wie `NOERROR`, `NXDOMAIN` oder `SERVFAIL`, die jeweils unterschiedliche Bedeutungen besitzen.
 
-Was ist die Abkürzung für die Nameserver, auf denen .com, .net, .org usw. Adressen zu finden sind? Bitte antworten Sie nur mit Großbuchstaben des englischen Alphabets.
+:::single-choice{#dns-process-nxdomain-meaning} Was meldet `NXDOMAIN`?
 
-## Quiz Answer
+::option[Der abgefragte Domainname existiert gemäß einem autoritativen Ergebnis nicht.]{#dns-process-name-does-not-exist .correct explanation="Das unterscheidet sich von einem vorhandenen Namen, dem lediglich der angeforderte Eintragstyp fehlt."}
+::option[Der Name existiert und besitzt immer einen leeren A-Eintrag.]{#dns-process-empty-a explanation="Ein vorhandener Name ohne angeforderte Daten erzeugt normalerweise eine No-Data-Antwort und kein NXDOMAIN."}
+::option[Der Resolver hat die maximale Ethernet-Frame-Größe erreicht.]{#dns-process-frame-size explanation="Der Status betrifft die Existenz des Namens."}
+:::
 
-TLD
+## Validierung, Caching und Anwendungsnutzung
+
+Ein validierender rekursiver Resolver kann mit DNSSEC-Signaturen und der Vertrauenskette eine authentifizierte Nichtvorhandenseinsauskunft oder die Integrität eines Eintrags prüfen. DNSSEC verschlüsselt keine Abfragen und beweist nicht, dass die Anwendung an der zurückgegebenen Adresse vertrauenswürdig ist.
+
+Der Resolver speichert Ergebnisse innerhalb der TTL-Regeln zwischen und gibt sie an den Stub zurück. Die Anwendung wählt anschließend eine Adresse aus und versucht ihre eigenen Netzwerk- und Sicherheitsprotokolle.
+
+:::single-choice{#dns-process-dnssec-limit} Was bietet eine DNSSEC-Validierung nicht?
+
+::option[Integrität und Ursprungsauthentifizierung für signierte DNS-Daten.]{#dns-process-dnssec-does-integrity explanation="Dies sind zentrale Ziele von DNSSEC."}
+::option[Eine authentifizierte Nichtvorhandenseinsauskunft für signierte, nicht vorhandene Daten.]{#dns-process-authenticated-denial explanation="Signierte Mechanismen für Nichtvorhandensein können diese Validierung bereitstellen."}
+::option[Vertraulichkeit für DNS-Abfrage und -Antwort.]{#dns-process-no-confidentiality .correct explanation="Verschlüsselung erfordert einen getrennten geschützten DNS-Transport wie DoT oder DoH."}
+:::
+
+## Zusammenfassung
+
+Du kannst eine rekursive DNS-Auflösung nun von der lokalen Richtlinie bis zur zwischengespeicherten endgültigen Antwort verfolgen.
+
+1. Prüfe zuerst lokale Quellen und den Resolver-Cache.
+2. Folge Weiterleitungen von Root- und Top-Level-Domain-Servern.
+3. Nutze Glue zum Erreichen der passenden delegierten Server.
+4. Unterscheide Aliase, No-Data-Antworten und nicht vorhandene Namen.
+5. Trenne DNSSEC-Integrität von der Vertraulichkeit des Transports.

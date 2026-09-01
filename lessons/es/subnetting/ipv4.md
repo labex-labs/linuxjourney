@@ -1,75 +1,92 @@
 ---
-index: 1
+lesson_id: "ipv4"
+course_id: "subnetting"
 lang: "es"
+order_index: 1
 title: "IPv4"
+description: "Aprende cómo se relacionan las direcciones IPv4, los prefijos, los ámbitos y la salida de las interfaces Linux."
 meta_title: "IPv4 - Subnetting"
-meta_description: "Comienza tu viaje con nuestro tutorial completo de Linux sobre direcciones IPv4. Esta guía para usuarios principiantes de Linux es la mejor manera de aprender redes en Linux, cubriendo la estructura IP y herramientas esenciales de línea de comandos como ip addr."
-meta_keywords: "IPv4, dirección IP, linux para principiantes, mejor forma de aprender linux, tutorial completo de linux, mejor curso de linux online gratis, cursos de certificación linux gratis, redes linux, ifconfig, ip addr"
+meta_description: "Comienza tu recorrido con este tutorial completo sobre direcciones IPv4. Esta guía para principiantes explica la estructura IP y herramientas esenciales de línea de comandos como ip addr."
+meta_keywords: "IPv4, dirección IP, linux para principiantes, mejor forma de aprender linux, tutorial completo de linux, curso linux gratuito, redes linux, ifconfig, ip addr"
 ---
 
-## Lesson Content
+IPv4 proporciona direcciones de origen y destino de 32 bits para los paquetes enrutados. Una dirección tiene significado junto con su prefijo, interfaz, ámbito, política de enrutamiento y duración, no como identificador permanente de todo un dispositivo.
 
-Todo dispositivo en una red tiene un identificador único llamado dirección IP (Protocolo de Internet). Esta lección, una parte clave de nuestro `tutorial completo de linux`, se centra en las direcciones IPv4, el tipo más común que encontrará. Para cualquier `usuario principiante de linux`, comprender IPv4 es un primer paso fundamental en el mundo de las redes.
+## Notación decimal con puntos
 
-### Por qué IPv4 es Esencial
+IPv4 se representa como cuatro octetos de ocho bits separados por puntos:
 
-Aprender sobre IPv4 es fundamental para cualquiera que se tome en serio la administración de sistemas o la gestión de redes. Constituye la columna vertebral de la mayor parte de la comunicación de red. Esta guía ofrece la `mejor manera de aprender linux` networking desde cero. Si bien este no es uno de esos `cursos gratuitos de certificación linux`, dominar estos conceptos básicos es un paso clave hacia la certificación profesional.
-
-### Estructura de la Dirección IPv4
-
-Una dirección IPv4 es un número de 32 bits, pero generalmente se muestra en un formato legible para humanos como este:
-
-```
-204.23.124.23
+```text
+192.0.2.165
 ```
 
-Esta dirección tiene dos partes principales: la **porción de red**, que identifica la red, y la **porción de host**, que identifica el dispositivo específico en esa red. La dirección se divide en cuatro secciones separadas por puntos, y cada sección se denomina **octeto**. Un octeto es un grupo de 8 bits, lo que significa que una dirección IPv4 tiene 4 bytes (32 bits) de longitud. Comprender esta estructura es crucial para la configuración y solución de problemas de red.
+Cada octeto abarca de 0 a 255, por lo que la dirección completa contiene cuatro bytes. La longitud del prefijo indica cuántos bits iniciales pertenecen al prefijo de red, como en `192.0.2.165/24`.
 
-### Encontrar su Dirección IP
+:::single-choice{#ipv4-address-size} ¿Qué tamaño tiene una dirección IPv4?
 
-Una de las primeras tareas para cualquier usuario de Linux es encontrar la dirección IP de su sistema. Puede hacerlo utilizando herramientas sencillas de línea de comandos. El comando tradicional para esto es `ifconfig`. Aunque todavía se encuentra en muchos sistemas, se considera una herramienta heredada.
+::option[32 bits en cuatro octetos.]{#ipv4-thirty-two-bits .correct explanation="Cuatro grupos de ocho bits producen la representación decimal con puntos."}
+::option[24 bits en todas las redes.]{#ipv4-always-twenty-four explanation="Un `/24` es una longitud de prefijo, no el tamaño de todas las direcciones IPv4."}
+::option[128 bytes separados por dos puntos.]{#ipv4-128-bytes explanation="IPv6 tiene 128 bits y utiliza notación hexadecimal separada por dos puntos."}
+:::
+
+## Ámbito y finalidad de las direcciones
+
+No todas las direcciones IPv4 pueden enrutarse globalmente. Entre los ejemplos se encuentran loopback `127.0.0.0/8`, link-local `169.254.0.0/16`, intervalos privados como `10.0.0.0/8` e intervalos de documentación como `192.0.2.0/24`. Las direcciones multicast y de broadcast limitado tienen otras semánticas.
+
+Las direcciones privadas pueden reutilizarse en redes distintas. NAT puede traducirlas para la comunicación externa, pero no es necesario para comunicarse dentro del dominio privado enrutado.
+
+:::single-choice{#ipv4-private-reuse} ¿Por qué puede aparecer `10.0.0.1` en muchas organizaciones?
+
+::option[Todas las instancias identifican el mismo router físico.]{#ipv4-same-router explanation="La dirección tiene significado dentro de cada red y no es globalmente única."}
+::option[Los routers IPv4 ignoran el primer octeto.]{#ipv4-ignore-octet explanation="Todos los bits de la dirección participan en la coincidencia de rutas."}
+::option[Pertenece a un intervalo de direcciones destinado a reutilizarse en redes privadas.]{#ipv4-private-range .correct explanation="Las redes privadas independientes pueden utilizar las mismas direcciones sin anunciarlas globalmente."}
+:::
+
+## Inspeccionar direcciones IPv4 en Linux
+
+Muestra las asignaciones IPv4 con:
 
 ```bash
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
+$ ip -4 address show
 ```
 
-En la salida anterior, la dirección IPv4 es `192.168.1.129`.
+Una línea como esta informa de algo más que la dirección:
 
-### Uso del Comando ip addr
+```text
+inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
+```
 
-El método moderno y recomendado utiliza el comando `ip`. El comando `ip addr` ha reemplazado a `ifconfig` y es el estándar en la mayoría de las distribuciones Linux actuales. Proporciona información más detallada y es la herramienta en la que debe centrarse en aprender.
+Muestra el prefijo, el broadcast, el ámbito, el indicador de origen dinámico y la interfaz. Otras líneas pueden mostrar las duraciones válida y preferida. Una interfaz puede contener varias direcciones IPv4.
+
+:::single-choice{#ipv4-ip-output-prefix} ¿Qué significa `/24` en `192.0.2.165/24`?
+
+::option[La dirección caduca después de 24 segundos.]{#ipv4-prefix-seconds explanation="La duración se informa por separado."}
+::option[Los primeros 24 bits de la dirección forman el prefijo de red.]{#ipv4-prefix-bits .correct explanation="Los ocho bits restantes identifican posiciones dentro de ese prefijo."}
+::option[La interfaz corresponde al puerto TCP 24.]{#ipv4-prefix-port explanation="La notación de prefijos CIDR es independiente de los puertos de transporte."}
+:::
+
+## Determinar el origen seleccionado
+
+La presencia de una dirección no demuestra que Linux vaya a utilizarla para un destino. Las rutas, las reglas de política, las métricas y la vinculación de la aplicación influyen en la selección del origen. Consulta la decisión de enrutamiento actual:
 
 ```bash
-pete@icebox:~$ ip addr show
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 1d:3a:32:24:4d:ce brd ff:ff:ff:ff:ff:ff
-    inet 192.168.1.129/24 brd 192.168.1.255 scope global dynamic eth0
-       valid_lft 85646sec preferred_lft 85646sec
+$ ip route get 198.51.100.20
 ```
 
-Aquí, puede encontrar la misma dirección IPv4, `192.168.1.129`, listada junto a `inet` para la interfaz `eth0`.
+Interpreta el siguiente salto, la interfaz y el origen seleccionados, y después prueba la ruta real de la aplicación. No modifiques direcciones en una máquina remota sin acceso mediante consola y un plan de reversión.
 
-## Exercise
+:::single-choice{#ipv4-route-get-purpose} ¿Qué puede mostrar `ip route get DESTINATION`?
 
-Practique sus habilidades con estos laboratorios prácticos para reforzar su comprensión del direccionamiento IP y la identificación de red en Linux:
+::option[La configuración de todos los routers de la ruta completa de Internet.]{#ipv4-all-router-config explanation="Una consulta local no examina las configuraciones de los dispositivos posteriores."}
+::option[La decisión de ruta local, incluidas la interfaz y la dirección de origen preferida.]{#ipv4-route-decision .correct explanation="Evalúa la política de enrutamiento actual del host para el destino proporcionado."}
+::option[La contraseña del usuario del destino.]{#ipv4-password explanation="Los comandos de enrutamiento no exponen credenciales de aplicaciones."}
+:::
 
-1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IPv4 e IPv6, en un sistema Linux.
-2. **[Explorar tipos de direcciones IP y capacidad de alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP y pruebe la capacidad de alcance de la red utilizando comandos como `ping` y `ip a`.
-3. **[Realizar subnetting IP y conversión binaria en la terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine el subnetting IP y la conversión binaria, esenciales para una comprensión más profunda de cómo se estructuran las direcciones y redes IP a nivel de bit.
+## Resumen
 
-Estos laboratorios le ayudarán a aplicar los conceptos de direccionamiento IP en escenarios reales y a ganar confianza con la configuración y solución de problemas de red en Linux.
+Ahora puedes interpretar una dirección IPv4 como parte del estado de las interfaces y el enrutamiento.
 
-## Quiz Question
-
-¿Cuántos bytes hay en una dirección IPv4?
-
-## Quiz Answer
-
-4
+1. Reconoce IPv4 como cuatro octetos que suman 32 bits.
+2. Interpreta una dirección junto con su prefijo.
+3. Distingue los ámbitos privado, loopback, link-local y otros.
+4. Inspecciona las asignaciones y el origen seleccionado para un destino.

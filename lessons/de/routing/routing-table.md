@@ -1,68 +1,100 @@
 ---
-index: 2
+lesson_id: "routing-table"
+course_id: "routing"
 lang: "de"
-title: "Routing-Tabelle"
-meta_title: "Routing-Tabelle - Routing"
-meta_description: "Ein Leitfaden zum Verständnis der Linux-Routing-Tabelle. Erfahren Sie, wie Sie die Ausgabe des route-Befehls interpretieren, einschließlich Ziel, Gateway, Genmask und der eth0-Schnittstelle. Meistern Sie die Grundlagen Ihrer Linux-Route-Tabelle."
-meta_keywords: "linux routing tabelle, linux route tabelle, genmask, eth0, route befehl, netzwerk routing, ip routing, ziel, gateway, subnetzmaske, linux netzwerk"
+order_index: 2
+title: "Routingtabelle"
+description: "Lerne, Linux-Routen zu lesen und die für ein Ziel ausgewählte Route zu untersuchen."
+meta_title: "Routingtabelle – Routing"
+meta_description: "Eine Anleitung zum Verständnis der Linux-Routingtabelle. Lerne die Ausgabe von Routingbefehlen mit Ziel, Gateway, Netzmaske und Schnittstelle zu interpretieren."
+meta_keywords: "Linux-Routingtabelle, Linux-Routentabelle, genmask, eth0, route-Befehl, Netzwerkrouting, IP-Routing, Ziel, Gateway, Subnetzmaske, Linux-Vernetzung"
 ---
 
-## Lesson Content
+Der Linux-Routingzustand bestimmt, welche nächsten Hops, Schnittstellen und Quellen für ein IP-Ziel geeignet sind. Die ältere Ansicht `route -n` ist weiterhin anzutreffen, doch `ip route` stellt moderne Routingkonzepte des Kernels unmittelbarer dar.
 
-Die **Linux-Routing-Tabelle** enthält die Regeln, die bestimmen, wohin Netzwerkpakete gesendet werden. Jedes Mal, wenn Ihr System ein Paket an eine IP-Adresse senden muss, konsultiert es diese Tabelle, um den geeigneten Pfad zu finden. Um die **Linux-Routing-Tabelle** Ihres Rechners anzuzeigen, können Sie den Befehl `route` verwenden.
+## IPv4-Routen lesen
 
-```plaintext
-pete@icebox:~$ sudo route -n
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         192.168.224.2   0.0.0.0         UG    0      0        0 eth0
-192.168.224.0   0.0.0.0         255.255.255.0   U     1      0        0 eth0
+Eine Beispielausgabe kann so aussehen:
+
+```text
+$ ip -4 route show
+default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
+192.168.224.0/24 dev eth0 proto kernel scope link src 192.168.224.10 metric 100
 ```
 
-### Verständnis der Spalten
+Die verbundene `/24`-Route sendet passende Ziele direkt über `eth0`. Die Standardroute verwendet das Next-Hop-Gateway `192.168.224.2`. `proto` beschreibt, wie die Route installiert wurde, `src` ist eine bevorzugte Quelle für passenden Datenverkehr, und ein Messwert hilft, ansonsten vergleichbare Routen zu ordnen.
 
-Die Ausgabe des Befehls `route` ist in mehrere Spalten unterteilt, die jeweils spezifische Informationen zu einer Netzwerkroute liefern.
+:::single-choice{#routing-table-via-meaning} Was zeigt `via 192.168.224.2` an?
 
-### Destination (Ziel)
+::option[Die einzige Anwendung, die die Route verwenden darf.]{#routing-table-application explanation="Anwendungsautorisierung wird nicht durch das Schlüsselwort `via` codiert."}
+::option[Das Next-Hop-Gateway der Route.]{#routing-table-next-hop .correct explanation="Das Paket wird in einem Frame an diesen direkt erreichbaren Router gesendet, während sein IP-Ziel erhalten bleibt."}
+::option[Den Dateisystemeinhängepunkt der Route.]{#routing-table-mount explanation="Routingeinträge betreffen Netzwerkweiterleitung und keine Dateisysteme."}
+:::
 
-Die Spalte "Destination" (Ziel) gibt ein Netzwerk oder einen Host an. Der Eintrag `192.168.224.0` leitet alle Pakete, die für dieses spezifische Netzwerk bestimmt sind. Wenn das Ziel eines Pakets innerhalb dieses Netzwerks liegt (z. B. von 192.168.224.5 nach 192.168.224.7), wird es direkt über die angegebene Schnittstelle, wie z. B. `eth0`, gesendet.
+## Verbundene und Standardrouten
 
-Das Ziel `0.0.0.0` ist die Standardroute. Wenn die Routing-Tabelle keinen spezifischeren Eintrag für das Ziel eines Pakets findet, wird diese Route verwendet.
+Eine Route mit `scope link` und ohne nächsten Hop über `via` behandelt das Präfix als über die Schnittstelle direkt erreichbar. Eine Standardroute passt auf jede Adresse, verliert aber gegen jede geeignete spezifischere Route.
 
-### Gateway
+:::single-choice{#routing-table-connected-route} Wie wird ein verbundenes Ziel mit `scope link` normalerweise erreicht?
 
-Die Spalte "Gateway" zeigt den Router an, an den Pakete gesendet werden. Wenn ein Paket sich nicht im selben lokalen Netzwerk befindet, wird es an diese Gateway-Adresse weitergeleitet. Bei der Standardroute ist dies die IP-Adresse des Routers, der Ihr lokales Netzwerk mit anderen Netzwerken, wie dem Internet, verbindet.
+::option[Über das Standardgateway, selbst wenn eine verbundene Route passt.]{#routing-table-connected-default explanation="Das verbundene Präfix ist spezifischer und besitzt keinen Gatewayoperanden."}
+::option[Indem das Ziel in einen DNS-Server umgewandelt wird.]{#routing-table-connected-dns explanation="Der Namensdienst ist kein Bestandteil einer bereits ausgewählten IP-Route."}
+::option[Nach der Nachbarauflösung direkt über die benannte Schnittstelle.]{#routing-table-direct .correct explanation="Der Host löst die direkt erreichbare Adresse des Ziels auf und kapselt den Datenverkehr lokal."}
+:::
 
-### Genmask
+## Präfixlänge und Messwert
 
-Die `genmask` (Generation Mask) ist die Subnetzmaske für das Zielnetzwerk. Sie wird zusammen mit der Ziel-IP verwendet, um festzustellen, ob ein Paket zu diesem Netzwerk gehört. Beispielsweise bedeutet eine `genmask` von `255.255.255.0`, dass die ersten drei Oktette der IP-Adresse mit den ersten drei Oktetten des Ziels übereinstimmen müssen.
+Die Routenauswahl berücksichtigt Richtlinienregeln und wählt das längste geeignete Präfix. Messwerte ordnen Routen innerhalb geeigneter vergleichbarer Mengen; eine Standardroute mit niedrigem Messwert setzt eine passende `/24`-Route nicht nur deshalb außer Kraft, weil ihre Zahl kleiner ist.
 
-### Flags
+:::single-choice{#routing-table-prefix-before-default} Welche Route passt spezifischer auf `192.168.224.50`?
 
-Diese Flags liefern zusätzliche Informationen über die Route:
+::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="Das passende 24-Bit-Präfix ist unter den aufgelisteten Routen am längsten."}
+::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="Die Standardroute besitzt die Präfixlänge null."}
+::option[`192.168.0.0/16 via 192.168.224.3`]{#routing-table-sixteen explanation="Dies umfasst die Adresse, legt aber weniger Bits fest als `/24`."}
+:::
 
-- **U**: Zeigt an, dass die Route aktiv (up) ist.
-- **G**: Bedeutet, dass die Route zu einem Gateway (Router) führt.
-- **UG**: Bedeutet, dass die Route aktiv ist und auf ein Gateway verweist.
+## Richtlinienregeln und mehrere Tabellen
 
-### Iface
+Linux kann gemäß `ip rule` mehrere Routingtabellen anhand von Quelle, Markierung, Schnittstelle oder anderen Selektoren abfragen. Nur die Haupttabelle anzuzeigen kann deshalb den tatsächlichen Pfad verfehlen:
 
-Diese Spalte gibt die Netzwerkschnittstelle, wie z. B. `eth0`, an, über die Pakete für diese Route gesendet werden. `eth0` repräsentiert typischerweise den ersten Ethernet-Adapter Ihres Systems.
+```bash
+$ ip rule show
+$ ip route show table all
+```
 
-## Exercise
+Netzwerknamensräume und VRFs können ebenfalls getrennten Zustand besitzen. Führe die Untersuchung im selben Kontext wie der betroffene Prozess aus.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu festigen:
+:::single-choice{#routing-table-policy-limit} Warum erklärt `ip route show` allein möglicherweise nicht den Pfad einer Anwendung?
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Informationen zur Netzwerkadressierung zu identifizieren, einschließlich IP-Adressen und Netzwerkschnittstellen, die Schlüsselkomponenten einer Routing-Tabelle sind.
-2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Lernen Sie, die IP-Adressierung zu verwalten, statische IPs zu konfigurieren, Standard-Gateways festzulegen und Netzwerkkonfigurationen zu überprüfen, was direkt mit den Einträgen in einer Routing-Tabelle zusammenhängt.
-3. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie die IP-Adressierung und die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`, um zu verstehen, wie verschiedene IP-Typen interagieren und wie die Netzwerkerreichbarkeit bestimmt wird, was sich in Routing-Entscheidungen widerspiegelt.
+::option[Richtlinienregeln oder ein anderer Netzwerknamensraum können anderen Routingzustand auswählen.]{#routing-table-policy-context .correct explanation="Die wirksame Suche hängt von Paketattributen und dem Netzwerkkontext des Prozesses ab."}
+::option[Linux-Routingtabellen enthalten keine Zielpräfixe.]{#routing-table-no-prefixes explanation="Zielpräfixe sind grundlegende Routenschlüssel."}
+::option[Anwendungen senden niemals IP-Pakete.]{#routing-table-apps-never explanation="Anwendungsverkehr wird über Netzwerk- und Transportprotokolle übertragen."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen bei der Netzwerkkonfiguration und Fehlerbehebung aufzubauen.
+## Eine wirksame Route abfragen
 
-## Quiz Question
+Bitte den Kernel, ein Ziel und eine optionale Quelle auszuwerten:
 
-Wenn ein Ziel nicht in der Routing-Tabelle gefunden wird, wohin werden die Pakete gesendet? Bitte antworten Sie mit einem einzigen englischen Wort unter Beachtung der Groß-/Kleinschreibung.
+```bash
+$ ip route get 203.0.113.10
+$ ip route get 203.0.113.10 from 192.168.224.10
+```
 
-## Quiz Answer
+Das Ergebnis sagt die lokale Suche zu diesem Zeitpunkt voraus. Es sendet keine Prüfung und beweist weder Nachbar- noch nachgelagerte, Firewall- oder Anwendungserreichbarkeit.
 
-Gateway
+:::single-choice{#routing-table-route-get-limit} Was bewirkt `ip route get` nicht?
+
+::option[Die ausgewählte lokale Schnittstelle und den nächsten Hop anzeigen.]{#routing-table-get-does-interface explanation="Dies sind Hauptfelder des Suchergebnisses."}
+::option[Die aktuelle lokale Routenrichtlinie für ein Ziel auswerten.]{#routing-table-get-does-policy explanation="Der Befehl führt eine Kernel-Routensuche aus."}
+::option[Erfolgreiche Zustellung über jeden nachgelagerten Hop beweisen.]{#routing-table-get-not-probe .correct explanation="Es handelt sich um eine lokale Entscheidungsabfrage und nicht um eine Ende-zu-Ende-Netzwerkprüfung."}
+:::
+
+## Zusammenfassung
+
+Du kannst Linux-Routingeinträge nun lesen und die wirksame lokale Entscheidung abfragen.
+
+1. Unterscheide verbundene Routen von Routen über ein Gateway.
+2. Lies Präfix-, Schnittstellen-, Protokoll-, Quell- und Messwertfelder.
+3. Wende die längste Präfixübereinstimmung an, bevor du relevante Messwerte vergleichst.
+4. Berücksichtige Richtlinientabellen, Namensräume und VRFs.
+5. Behandle `ip route get` als Suche und nicht als Erreichbarkeitstest.

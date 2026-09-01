@@ -1,58 +1,86 @@
 ---
-index: 2
+lesson_id: "ping"
+course_id: "troubleshooting"
 lang: "ja"
+order_index: 2
 title: "ping"
+description: "回数を制限した ping テストを実行し、応答、損失、RTT、TTL、限界を解釈する方法を学びます。"
 meta_title: "ping - トラブルシューティング"
 meta_description: "Linux の ping コマンドを使用してネットワーク接続性をテストする方法を学びます。このガイドでは、icmp_seq、TTL、往復時間を含む ping の出力を解説します。ping シーケンスを解釈してネットワークの問題を診断する方法を理解しましょう。"
 meta_keywords: "Linux ping, ネットワーク接続性，ICMP, TTL, ping コマンド，icmp_seq, ping seq, icmp seq, icmp_seq 意味，ping icmp_seq, Linux ネットワーキング"
 ---
 
-## Lesson Content
+`ping` は ICMP Echo Request を送信し、観測した応答を報告します。これは、あるアドレスまでの一つの制御メッセージ経路を試すものであり、TCP、UDP、DNS、認証、アプリケーションの動作を証明するものではありません。
 
-ping\*\*コマンドは、リモートホストが IP ネットワーク経由で到達可能かどうかをテストするために使用される、最も基本的なネットワーキングユーティリティの 1 つです。これは、ターゲットホストに ICMP（Internet Control Message Protocol）の「エコーリクエスト」パケットを送信し、ICMP の「エコーリプライ」を待機することで機能します。リクエストパケットが送信され、応答が受信された場合に、ping は成功したと見なされます。
+## 回数を制限したテスト
 
-典型的な`ping`コマンドの動作を見てみましょう。
+一般的な iputils 実装で、各パケットの待ち時間を 2 秒とし、IPv4 の要求を 3 回送ります。
 
-```plaintext
-pete@icebox:~$ ping -c 3 www.google.com
-PING www.google.com (74.125.239.112) 56(84) bytes of data.
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=1 ttl=128 time=29.0 ms
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=2 ttl=128 time=23.7 ms
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=3 ttl=128 time=15.1 ms
+```bash
+$ ping -4 -c 3 -W 2 example.com
 ```
 
-この例では、`ping`を使用して`www.google.com`への接続性を確認しています。`-c 3`オプションは、`ping`に正確に 3 つのエコーリクエストパケットを送信し、その後停止するように指示します。デフォルトでは、`ping`は 1 秒に 1 パケットを送信します。
+IPv6 を選ぶには `-6` を使います。ホスト名は複数のアドレスを返し、実行ごとに異なるものが選ばれる場合があるため、解決されたアドレスを記録してください。
 
-### Ping 出力の理解
+:::single-choice{#ping-count-option} `-c 3` は何を指定しますか？
 
-`ping icmp_seq`コマンドの出力は、貴重な診断情報を提供します。主要な構成要素を分解してみましょう。
+::option[パケットのペイロードを正確に 3 メガバイトにする。]{#ping-three-megabytes explanation="パケットサイズには別のオプションを使います。"}
+::option[宛先への永続ルートを三つ作る。]{#ping-three-routes explanation="ping は通信を試すだけで、ルートを追加しません。"}
+::option[Echo Request を 3 回送り、通常終了する。]{#ping-three-requests .correct explanation="有限の回数を指定すると、範囲が明確で再現可能な診断になります。"}
+:::
 
-### ICMP シーケンス (icmp_seq)
+## シーケンスと損失
 
-`icmp_seq`フィールドは、各 ICMP パケットのシーケンス番号を表示します。私たちの例では 3 つのパケットを送信し、出力はすべて（`icmp_seq=1`、`icmp_seq=2`、`icmp_seq=3`）正常に返されたことを示しています。`ping seq`はパケットロスを診断するために非常に重要です。シーケンス番号の欠落に気づいた場合、それは一部のパケットが宛先に到達していないか、返ってきていない接続の問題を示しています。`icmp seq`番号が順不同で表示される場合、パケットが往復完了するのにデフォルトの 1 秒間隔よりも時間がかかっていることを示唆しており、ネットワークの輻輳や遅延が原因である可能性があります。`icmp_seq meaning`を理解することがトラブルシューティングの鍵となります。
+`icmp_seq` は、その実行中の要求を識別します。応答が欠けると観測上の損失になり、順序が入れ替わった応答は遅延のばらつきを示す場合があります。小さな標本は変動が大きいため、回数を制限した複数の区間と、アプリケーション自身のエラー率を比較します。
 
-### タイム・トゥ・リブ (TTL)
+損失は往路でも復路でも起こり得ます。また ICMP のレート制限により、ping の損失率がアプリケーションの損失率と異なる場合があります。
 
-Time To Live (TTL) フィールドは、パケットのホップカウンターとして機能します。パケットがルーター（「ホップ」）を通過するたびに、TTL 値は 1 ずつ減少します。パケットが宛先に到達する前にカウンターがゼロに達すると、パケットは破棄されます。このメカニズムにより、パケットがネットワーク上で無限に循環するのを防ぎます。
+:::single-choice{#ping-sequence-gap} `icmp_seq` の応答が一つ欠けている場合、何が考えられますか？
 
-### 時間 (Time)
+::option[宛先が MAC アドレスを恒久的に変更した。]{#ping-sequence-mac explanation="シーケンスの欠落だけでは、リンク層についてそのような結論は出せません。"}
+::option[要求または応答の損失、フィルタリング、待ち時間を超える遅延、レート制限。]{#ping-sequence-possibilities .correct explanation="欠落から分かるのは応答を観測できなかったことだけで、方向や正確な原因までは特定できません。"}
+::option[送信元ディスクの空き inode がない。]{#ping-sequence-inodes explanation="ファイルシステムの inode 状態は ICMP シーケンス応答と無関係です。"}
+:::
 
-`time`フィールドは往復時間、つまりパケットがあなたのマシンからターゲットホストへ移動し、エコーリプライが戻ってくるまでにかかった時間を測定します。この値は通常ミリ秒（ms）で測定され、ネットワーク遅延の主要な指標となります。
+## 往復時間
 
-## Exercise
+`time` フィールドは、要求の送信から応答の受信までの往復時間をミリ秒で示します。往路の遅延、相手側での処理、復路の遅延が含まれます。両端で時刻を同期して測定しない限り、片道の遅延は分かりません。
 
-ネットワーク診断を習得するには実践が不可欠です。これらのハンズオンラボは、`ping`コマンドの理解を深めるのに役立ちます。
+:::single-choice{#ping-rtt-meaning} 表示された `time=23.7 ms` は何を測っていますか？
 
-1. **[Linux における ping と arp を使用したネットワーク層の相互作用の探求](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`を使用してネットワーク層とデータリンク層の相互作用を探り、デフォルトゲートウェイがリモートトラフィックをどのように処理するかを観察します。
-2. **[Linux における IP アドレスタイプと到達可能性の探求](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`と`ip a`を利用してローカル TCP/IP スタックをテストし、パブリックインターネット接続を確認し、ネットワーク到達可能性を探ります。
-3. **[Linux におけるネットワーク層接続のシミュレーション](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - `ip addr`で静的 IP アドレスを割り当て、同じサブネット内および異なるサブネット内での`ping`による接続性をテストする方法を学びます。
+::option[往路だけの片道遅延。]{#ping-outbound-only explanation="ping が測るのは、要求と応答を合わせた全区間です。"}
+::option[対象システムの稼働時間。]{#ping-target-uptime explanation="この値は試行の所要時間であり、起動後の経過時間ではありません。"}
+::option[その Echo の往復時間。]{#ping-round-trip .correct explanation="往路と復路、および相手側での処理が含まれます。"}
+:::
 
-これらのラボは、ネットワーク到達可能性と`ping`コマンドの概念を実世界のシナリオに応用するのに役立ち、Linux でのネットワーク診断に対する自信を構築します。
+## TTL または Hop Limit
 
-## Quiz Question
+表示される IPv4 の TTL または IPv6 の Hop Limit は、受信した応答に残っていた値です。送信側の初期値と復路が分からなければ、引き算で正確なホップ数を求めることはできません。値の変化は、応答元、初期値、復路の違いを反映している可能性があります。
 
-往復時間の測定単位は何ですか？大文字と小文字を区別して、英語で回答してください。
+:::single-choice{#ping-received-ttl} IPv4 の Echo Reply に表示される TTL は何ですか？
 
-## Quiz Answer
+::option[応答がローカルホストへ届いた時点の残り値。]{#ping-remaining-ttl .correct explanation="復路上の各ルーターが、送信側の初期値を一つずつ減らしています。"}
+::option[往復両方向にあるルーターの正確な数。]{#ping-exact-hop-count explanation="このフィールドだけでは、初期 TTL も方向別の経路も確定しません。"}
+::option[DNS レコードのキャッシュ有効期間。]{#ping-dns-ttl explanation="DNS の TTL と IP パケットの TTL は別のフィールドです。"}
+:::
 
-ms
+## 適切な層をテストする
+
+ping が成功してもサービスが失敗する場合は、実際のポート、TLS、プロトコル、要求をテストしてください。ping が失敗した場合も、ホスト停止と断定する前に、名前解決、`ip route get`、近隣状態、ファイアウォールポリシー、キャプチャを調べます。
+
+:::single-choice{#ping-success-limit} ping が成功しても証明できないものはどれですか？
+
+::option[一部の ICMP 要求・応答の経路が機能したこと。]{#ping-icmp-worked explanation="これは、応答から直接得られる証拠です。"}
+::option[応答にシーケンス番号が含まれていたこと。]{#ping-sequence-present explanation="通常の出力には、応答のシーケンスが直接表示されます。"}
+::option[目的のアプリケーションが要求を受け入れ、最後まで処理すること。]{#ping-app-not-proven .correct explanation="アプリケーションとトランスポートの動作は、そのアプリケーションに適した方法で別途テストする必要があります。"}
+:::
+
+## まとめ
+
+これで、ping を明確な制限付き ICMP 測定として利用できます。
+
+1. アドレスファミリーを選び、解決されたアドレスを記録する。
+2. 再現可能なテストのため、回数と待ち時間を制限する。
+3. 損失の方向や原因を決めつけずに解釈する。
+4. RTT を往復値、TTL を残り値として扱う。
+5. 実際のアプリケーションを別にテストする。

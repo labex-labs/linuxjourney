@@ -1,0 +1,123 @@
+id: network-basics
+category:
+  id: networking-nomad
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/network-basics.png
+order_index: 1
+translations:
+  en:
+    title: "Network Basics"
+    description: "Learn about networking basics and the TCP/IP model."
+    faqs:
+      - question: "What networking models will I learn?"
+        answer: "The course explains both the OSI and TCP/IP models and connects them to the link, network, transport, and application layers used in real networks."
+      - question: "Is previous networking experience required?"
+        answer: "No. The lessons introduce core terminology, addressing, DHCP, and layered communication before later courses cover subnetting, routing, and configuration."
+      - question: "Why learn both OSI and TCP/IP?"
+        answer: "The OSI model is useful for reasoning and troubleshooting, while the TCP/IP model more directly reflects the protocol suite used by modern networks."
+    meta_title: "Computer Networking Basics Course"
+    meta_description: "Build a foundation in networking with the OSI and TCP/IP models, addressing, DHCP, and the link, network, transport, and application layers."
+    meta_keywords: "networking basics, OSI model, TCP IP model, DHCP, network addressing, link layer, transport layer, application layer"
+  de:
+    title: "Netzwerkgrundlagen"
+    description: "Lernen Sie die Grundlagen der Netzwerktechnik und das TCP/IP-Modell kennen."
+    faqs:
+      - question: "Welche Netzwerkmodelle werde ich lernen?"
+        answer: "Der Kurs erklärt sowohl die OSI- als auch die TCP/IP-Modelle und verbindet sie mit den Verbindungs-, Netzwerk-, Transport- und Anwendungsschichten, die in realen Netzwerken verwendet werden."
+      - question: "Sind Vorkenntnisse im Networking erforderlich?"
+        answer: "Nein. In den Lektionen werden grundlegende Terminologie, Adressierung, DHCP und mehrschichtige Kommunikation vorgestellt, bevor in späteren Kursen Subnetze, Routing und Konfiguration behandelt werden."
+      - question: "Warum sowohl OSI als auch TCP/IP lernen?"
+        answer: "Das OSI-Modell ist nützlich für Überlegungen und Fehlerbehebung, während das TCP/IP-Modell die von modernen Netzwerken verwendete Protokollsuite direkter widerspiegelt."
+    meta_title: "Kurs „Grundlagen des Computernetzwerks“."
+    meta_description: "Schaffen Sie eine Grundlage für Netzwerke mit den OSI- und TCP/IP-Modellen, Adressierung, DHCP sowie den Verbindungs-, Netzwerk-, Transport- und Anwendungsschichten."
+    meta_keywords: "Netzwerkgrundlagen, OSI-Modell, TCP-IP-Modell, DHCP, Netzwerkadressierung, Verbindungsschicht, Transportschicht, Anwendungsschicht"
+  es:
+    title: "Conceptos Básicos de Red"
+    description: "Aprende los fundamentos de las redes y el modelo TCP/IP."
+    faqs:
+      - question: "¿Qué modelos de red aprenderé?"
+        answer: "El curso explica los modelos OSI y TCP/IP y los conecta con las capas de enlace, red, transporte y aplicación utilizadas en redes reales."
+      - question: "¿Se requiere experiencia previa en redes?"
+        answer: "No. Las lecciones introducen la terminología básica, el direccionamiento, DHCP y la comunicación en capas antes de que los cursos posteriores cubran la creación de subredes, el enrutamiento y la configuración."
+      - question: "¿Por qué aprender tanto OSI como TCP/IP?"
+        answer: "El modelo OSI es útil para razonar y solucionar problemas, mientras que el modelo TCP/IP refleja más directamente el conjunto de protocolos utilizados por las redes modernas."
+    meta_title: "Curso básico de redes informáticas"
+    meta_description: "Construya una base en redes con los modelos OSI y TCP/IP, direccionamiento, DHCP y las capas de enlace, red, transporte y aplicación."
+    meta_keywords: "conceptos básicos de redes, modelo OSI, modelo TCP IP, DHCP, direccionamiento de red, capa de enlace, capa de transporte, capa de aplicación"
+  fr:
+    title: "Bases du Réseau"
+    description: "Apprenez les fondamentaux des réseaux et le modèle TCP/IP."
+    faqs:
+      - question: "Quels modèles de réseau vais-je apprendre ?"
+        answer: "Le cours explique à la fois les modèles OSI et TCP/IP et les connecte aux couches liaison, réseau, transport et application utilisées dans les réseaux réels."
+      - question: "Une expérience préalable en réseautage est-elle requise ?"
+        answer: "Non. Les leçons présentent la terminologie de base, l'adressage, le DHCP et la communication en couches avant que les cours ultérieurs ne couvrent les sous-réseaux, le routage et la configuration."
+      - question: "Pourquoi apprendre à la fois OSI et TCP/IP ?"
+        answer: "Le ​​modèle OSI est utile pour le raisonnement et le dépannage, tandis que le modèle TCP/IP reflète plus directement la suite de protocoles utilisée par les réseaux modernes."
+    meta_title: "Cours de base sur les réseaux informatiques"
+    meta_description: "Construisez une base de mise en réseau avec les modèles OSI et TCP/IP, l'adressage, DHCP et les couches liaison, réseau, transport et application."
+    meta_keywords: "bases du réseau, modèle OSI, modèle TCP IP, DHCP, adressage réseau, couche liaison, couche transport, couche application"
+  ja:
+    title: "ネットワークの基本"
+    description: "ネットワーキングの基本と TCP/IP モデルについて学びましょう。"
+    faqs:
+      - question: "どのようなネットワーキング モデルを学ぶことになりますか？"
+        answer: "このコースでは、OSI モデルと TCP/IP モデルの両方について説明し、それらを実際のネットワークで使用されるリンク、ネットワーク、トランスポート、およびアプリケーション層に接続します。"
+      - question: "ネットワーキングの経験は必要ですか？"
+        answer: "いいえ。レッスンでは、中核となる用語、アドレス指定、DHCP、階層型通信を紹介し、その後のコースでサブネット化、ルーティング、構成について説明します。"
+      - question: "OSI と TCP/IP の両方を学ぶ理由は何ですか？"
+        answer: "OSI モデルは推論やトラブルシューティングに役立ちますが、TCP/IP モデルは最新のネットワークで使用されるプロトコル スイートをより直接的に反映しています。"
+    meta_title: "コンピュータ ネットワーク基礎コース"
+    meta_description: "OSI および TCP/IP モデル、アドレス指定、DHCP、およびリンク、ネットワーク、トランスポート、およびアプリケーション層を使用して、ネットワークの基盤を構築します。"
+    meta_keywords: "ネットワークの基礎，OSI モデル，TCP IP モデル，DHCP, ネットワーク アドレス指定，リンク層，トランスポート層，アプリケーション層"
+  ko:
+    title: "네트워크 기본"
+    description: "네트워크의 기본과 TCP/IP 모델을 알아보세요."
+    faqs:
+      - question: "어떤 네트워킹 모델을 배우나요?"
+        answer: "이 과정에서는 OSI 및 TCP/IP 모델을 모두 설명하고 이를 실제 네트워크에서 사용되는 링크, 네트워크, 전송 및 애플리케이션 계층에 연결합니다."
+      - question: "이전 네트워킹 경험이 필요합니까?"
+        answer: "아니요. 이후 과정에서 서브넷, 라우팅 및 구성을 다루기 전에 수업에서는 핵심 용어, 주소 지정, DHCP 및 계층형 통신을 소개합니다."
+      - question: "OSI 와 TCP/IP를 모두 배우는 이유는 무엇입니까?"
+        answer: "OSI 모델은 추론과 문제 해결에 유용한 반면, TCP/IP 모델은 최신 네트워크에서 사용되는 프로토콜 제품군을 보다 직접적으로 반영합니다."
+    meta_title: "컴퓨터 네트워킹 기초 과정"
+    meta_description: "OSI 및 TCP/IP 모델, 주소 지정, DHCP, 링크, 네트워크, 전송 및 애플리케이션 계층을 사용하여 네트워킹 기반을 구축합니다."
+    meta_keywords: "네트워킹 기초, OSI 모델, TCP IP 모델, DHCP, 네트워크 주소 지정, 링크 계층, 전송 계층, 애플리케이션 계층"
+  pt:
+    title: "Noções Básicas de Rede"
+    description: "Aprenda sobre noções básicas de rede e o modelo TCP/IP."
+    faqs:
+      - question: "Quais modelos de rede vou aprender?"
+        answer: "O curso explica os modelos OSI e TCP/IP e os conecta às camadas de link, rede, transporte e aplicação usadas em redes reais."
+      - question: "É necessária experiência prévia em redes?"
+        answer: "Não. As lições introduzem a terminologia básica, endereçamento, DHCP e comunicação em camadas antes que os cursos posteriores abordem sub-redes, roteamento e configuração."
+      - question: "Por que aprender OSI e TCP/IP?"
+        answer: "O modelo OSI é útil para raciocínio e solução de problemas, enquanto o modelo TCP/IP reflete mais diretamente o conjunto de protocolos usado pelas redes modernas."
+    meta_title: "Curso Básico de Redes de Computadores"
+    meta_description: "Construa uma base em rede com os modelos OSI e TCP/IP, endereçamento, DHCP e as camadas de link, rede, transporte e aplicação."
+    meta_keywords: "noções básicas de rede, modelo OSI, modelo TCP IP, DHCP, endereçamento de rede, camada de enlace, camada de transporte, camada de aplicação"
+  ru:
+    title: "Основы сети"
+    description: "Изучите основы компьютерных сетей и модель TCP/IP."
+    faqs:
+      - question: "Какие сетевые модели я изучу?"
+        answer: "Курс объясняет модели OSI и TCP/IP и связывает их с канальным, сетевым, транспортным и прикладным уровнями, используемыми в реальных сетях."
+      - question: "Требуется ли предыдущий опыт работы в сети?"
+        answer: "Нет. На уроках знакомятся с основной терминологией, адресацией, DHCP и многоуровневой связью, а затем в последующих курсах рассматриваются подсети, маршрутизация и настройка."
+      - question: "Зачем изучать OSI и TCP/IP?"
+        answer: "Модель OSI полезна для рассуждений и устранения неполадок, тогда как модель TCP/IP более непосредственно отражает набор протоколов, используемый современными сетями."
+    meta_title: "Курс по основам компьютерных сетей"
+    meta_description: "Создайте основу для сетевых технологий с помощью моделей OSI и TCP/IP, адресации, DHCP, а также канального, сетевого, транспортного и прикладного уровней."
+    meta_keywords: "основы работы в сети, модель OSI, модель TCP IP, DHCP, сетевая адресация, канальный уровень, транспортный уровень, прикладной уровень."
+  zh:
+    title: "网络基础"
+    description: "了解网络基础知识和 TCP/IP 模型。"
+    faqs:
+      - question: "我将学习哪些网络模型？"
+        answer: "本课程解释了 OSI 和 TCP/IP 模型，并将它们连接到实际网络中使用的链路、网络、传输和应用层。"
+      - question: "需要有网络经验吗​​？"
+        answer: "不会。这些课程先介绍核心术语、寻址、DHCP 和分层通信，然后再介绍子网划分、路由和配置。"
+      - question: "为什么要同时学习 OSI 和 TCP/IP？"
+        answer: "OSI 模型对于推理和故障排除很有用，而 TCP/IP 模型更直接地反映了现代网络使用的协议套件。"
+    meta_title: "计算机网络基础课程"
+    meta_description: "使用 OSI 和 TCP/IP 模型、寻址、DHCP 以及链路、网络、传输和应用层构建网络基础。"
+    meta_keywords: "网络基础知识，OSI 模型，TCP IP 模型，DHCP, 网络寻址，链路层，传输层，应用层"

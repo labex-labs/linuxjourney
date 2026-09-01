@@ -1,75 +1,92 @@
 ---
-index: 1
+lesson_id: "ipv4"
+course_id: "subnetting"
 lang: "ko"
+order_index: 1
 title: "IPv4"
+description: "IPv4 주소, 접두사, 범위 및 리눅스 인터페이스 출력이 어떻게 연결되는지 알아봅니다."
 meta_title: "IPv4 - 서브넷팅"
-meta_description: "완벽한 리눅스 튜토리얼로 IPv4 주소 학습을 시작하세요. 초보 리눅스 사용자를 위한 이 가이드는 IP 구조 및 ip addr 와 같은 필수 명령줄 도구를 다루며 리눅스 네트워킹을 배우는 가장 좋은 방법입니다."
-meta_keywords: "IPv4, IP 주소, 초보 리눅스, 리눅스 학습 최고의 방법, 완벽한 리눅스 튜토리얼, 무료 온라인 리눅스 강좌, 무료 리눅스 자격증 과정, 리눅스 네트워킹, ifconfig, ip addr"
+meta_description: "IPv4 주소에 관한 리눅스 네트워킹을 시작해 보세요. IP 구조와 ip addr 같은 필수 명령줄 도구를 설명합니다."
+meta_keywords: "IPv4, IP 주소, 리눅스 네트워킹, ifconfig, ip addr, IPv4 접두사"
 ---
 
-## Lesson Content
+IPv4는 라우팅되는 패킷에 32비트 출발지 및 목적지 주소를 제공합니다. 주소는 장치 전체의 영구 식별자가 아니라 접두사, 인터페이스, 범위, 라우팅 정책 및 수명과 함께 의미를 가집니다.
 
-네트워크의 모든 장치에는 IP(인터넷 프로토콜) 주소라는 고유 식별자가 있습니다. 이 강의는 `완벽한 리눅스 튜토리얼`의 핵심 부분으로, 가장 일반적으로 접하게 될 IPv4 주소에 중점을 둡니다. 모든 `초보 리눅스` 사용자에게 IPv4 를 이해하는 것은 네트워킹 세계로 들어가는 중요한 첫걸음입니다.
+## 점으로 구분한 10진수 표기
 
-### IPv4 가 필수적인 이유
+IPv4는 점으로 구분된 8비트 옥텟 네 개로 표시합니다.
 
-시스템 관리나 네트워크 관리에 진지한 사람이라면 IPv4 에 대해 배우는 것이 기본입니다. 이는 대부분의 네트워크 통신의 기반을 형성합니다. 이 가이드는 네트워킹을 처음부터 배울 수 있는 `최고의 방법`을 제공합니다. 이것이 `무료 리눅스 자격증 과정` 중 하나는 아니지만, 이러한 기본 사항을 숙달하는 것은 전문 자격증을 향한 중요한 단계입니다.
-
-### IPv4 주소 구조
-
-IPv4 주소는 32 비트 숫자이지만, 일반적으로 다음과 같이 사람이 읽을 수 있는 형식으로 표시됩니다.
-
-```
-204.23.124.23
+```text
+192.0.2.165
 ```
 
-이 주소에는 네트워크를 식별하는 **네트워크 부분**과 해당 네트워크의 특정 장치를 식별하는 **호스트 부분**이라는 두 가지 주요 부분이 있습니다. 주소는 점으로 구분된 네 부분으로 나뉘며, 각 부분을 **옥텟 (octet)**이라고 합니다. 옥텟은 8 비트의 그룹이므로 IPv4 주소는 4 바이트 (32 비트) 길이입니다. 이 구조를 이해하는 것은 네트워크 구성 및 문제 해결에 매우 중요합니다.
+각 옥텟의 범위는 0부터 255까지이므로 전체 주소는 4바이트입니다. `192.0.2.165/24`처럼 접두사 길이가 앞쪽 몇 비트가 네트워크 접두사에 속하는지 나타냅니다.
 
-### IP 주소 찾기
+:::single-choice{#ipv4-address-size} IPv4 주소의 크기는 얼마입니까?
 
-모든 리눅스 사용자의 첫 번째 작업 중 하나는 시스템의 IP 주소를 찾는 것입니다. 간단한 명령줄 도구를 사용하여 이 작업을 수행할 수 있습니다. 이를 위한 전통적인 명령은 `ifconfig`입니다. 여전히 많은 시스템에서 발견되지만 레거시 도구로 간주됩니다.
+::option[옥텟 네 개의 32비트입니다.]{#ipv4-thirty-two-bits .correct explanation="8비트 그룹 네 개가 점으로 구분한 10진수 표현을 만듭니다."}
+::option[모든 네트워크에서 24비트입니다.]{#ipv4-always-twenty-four explanation="/24는 하나의 접두사 길이이며 모든 IPv4 주소의 크기가 아닙니다."}
+::option[콜론으로 구분된 128바이트입니다.]{#ipv4-128-bytes explanation="IPv6는 128비트이며 콜론으로 구분된 16진수 표기를 사용합니다."}
+:::
+
+## 주소 범위와 목적
+
+모든 IPv4 주소가 전역적으로 라우팅되는 것은 아닙니다. 예로 루프백 `127.0.0.0/8`, 링크 로컬 `169.254.0.0/16`, `10.0.0.0/8` 같은 사설 범위, `192.0.2.0/24` 같은 문서용 범위가 있습니다. 멀티캐스트와 제한된 브로드캐스트 주소에는 다른 의미가 있습니다.
+
+사설 주소는 별도의 네트워크에서 재사용할 수 있습니다. NAT가 외부 통신을 위해 주소를 변환할 수 있지만 사설 라우팅 도메인 내부 통신에 NAT가 필요한 것은 아닙니다.
+
+:::single-choice{#ipv4-private-reuse} `10.0.0.1`이 여러 조직에 나타날 수 있는 이유는 무엇입니까?
+
+::option[모든 인스턴스가 같은 물리 라우터를 식별하기 때문입니다.]{#ipv4-same-router explanation="주소는 각 네트워크 안에서 의미를 가지며 전역적으로 고유하지 않습니다."}
+::option[IPv4 라우터가 첫 번째 옥텟을 무시하기 때문입니다.]{#ipv4-ignore-octet explanation="모든 주소 비트가 경로 일치에 관여합니다."}
+::option[사설 네트워크에서 재사용하도록 지정된 주소 범위이기 때문입니다.]{#ipv4-private-range .correct explanation="별도의 사설 네트워크는 같은 주소를 전역에 광고하지 않고 사용할 수 있습니다."}
+:::
+
+## 리눅스 IPv4 주소 조사하기
+
+IPv4 할당을 표시합니다.
 
 ```bash
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
+$ ip -4 address show
 ```
 
-위 출력에서 IPv4 주소는 `192.168.1.129`입니다.
+다음과 같은 한 줄은 주소 이상의 정보를 보고합니다.
 
-### ip addr 명령어 사용
+```text
+inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
+```
 
-현대적이고 권장되는 방법은 `ip` 명령어를 사용하는 것입니다. `ip addr` 명령어는 `ifconfig`를 대체했으며 대부분의 최신 리눅스 배포판에서 표준입니다. 더 자세한 정보를 제공하며 학습에 집중해야 할 도구입니다.
+접두사, 브로드캐스트, 범위, 동적 출처 표시 및 인터페이스를 보여 줍니다. 추가 줄에는 유효 수명과 선호 수명이 나타날 수 있습니다. 하나의 인터페이스에 여러 IPv4 주소가 있을 수 있습니다.
+
+:::single-choice{#ipv4-ip-output-prefix} `192.0.2.165/24`에서 `/24`는 무엇을 뜻합니까?
+
+::option[주소가 24초 뒤 만료됩니다.]{#ipv4-prefix-seconds explanation="수명은 별도로 보고됩니다."}
+::option[주소의 앞 24비트가 네트워크 접두사를 이룹니다.]{#ipv4-prefix-bits .correct explanation="나머지 8비트는 해당 접두사 안의 위치를 식별합니다."}
+::option[인터페이스가 TCP 포트 24입니다.]{#ipv4-prefix-port explanation="CIDR 접두사 표기는 전송 포트와 독립적입니다."}
+:::
+
+## 선택된 출발지 결정하기
+
+주소가 존재한다는 사실만으로 리눅스가 그 주소를 특정 목적지에 사용한다고 입증할 수 없습니다. 경로, 정책 규칙, 메트릭 및 애플리케이션 바인딩이 출발지 선택에 영향을 줍니다. 현재 라우팅 결정을 조회합니다.
 
 ```bash
-pete@icebox:~$ ip addr show
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 1d:3a:32:24:4d:ce brd ff:ff:ff:ff:ff:ff
-    inet 192.168.1.129/24 brd 192.168.1.255 scope global dynamic eth0
-       valid_lft 85646sec preferred_lft 85646sec
+$ ip route get 198.51.100.20
 ```
 
-여기서 `eth0` 인터페이스에 대해 `inet` 옆에 동일한 IPv4 주소인 `192.168.1.129`를 찾을 수 있습니다.
+선택된 다음 홉, 인터페이스 및 출발지를 읽고 실제 애플리케이션 경로를 테스트합니다. 콘솔 접근과 되돌리기 계획 없이 원격 호스트의 주소를 변경하지 마십시오.
 
-## Exercise
+:::single-choice{#ipv4-route-get-purpose} `ip route get DESTINATION`은 무엇을 보여 줄 수 있습니까?
 
-IP 주소 지정 및 리눅스에서 네트워크 식별에 대한 이해를 강화하기 위해 다음 실습 랩을 통해 기술을 연습해 보세요:
+::option[전체 인터넷 경로에 있는 모든 라우터의 설정입니다.]{#ipv4-all-router-config explanation="로컬 조회는 하위 장치 설정을 조회하지 않습니다."}
+::option[인터페이스와 선호 출발지를 포함한 로컬 경로 결정입니다.]{#ipv4-route-decision .correct explanation="제공한 목적지에 대해 현재 호스트의 라우팅 정책을 평가합니다."}
+::option[목적지 사용자의 암호입니다.]{#ipv4-password explanation="라우팅 명령은 응용 자격 증명을 노출하지 않습니다."}
+:::
 
-1. **[리눅스에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령어를 사용하여 리눅스 시스템에서 IPv4 및 IPv6 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2. **[리눅스에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`와 같은 명령어를 사용하여 다양한 IP 주소 유형을 탐색하고 네트워크 도달 가능성을 테스트합니다.
-3. **[리눅스 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - IP 주소와 네트워크가 비트 수준에서 구성되는 방식을 더 깊이 이해하는 데 필수적인 IP 서브넷팅 및 이진 변환을 마스터합니다.
+## 요약
 
-이러한 랩은 실제 시나리오에서 IP 주소 지정 개념을 적용하고 리눅스에서 네트워크 구성 및 문제 해결에 대한 자신감을 구축하는 데 도움이 될 것입니다.
+이제 IPv4 주소를 인터페이스와 라우팅 상태의 일부로 읽을 수 있습니다.
 
-## Quiz Question
-
-IPv4 주소는 몇 바이트로 구성되어 있습니까?
-
-## Quiz Answer
-
-4
+1. IPv4가 총 32비트인 옥텟 네 개임을 이해합니다.
+2. 주소를 접두사와 함께 해석합니다.
+3. 사설, 루프백, 링크 로컬 및 기타 범위를 구분합니다.
+4. 할당과 목적지에 대해 선택된 출발지를 조사합니다.

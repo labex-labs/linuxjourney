@@ -1,73 +1,86 @@
 ---
-index: 4
+lesson_id: "network-manager"
+course_id: "network-config"
 lang: "pt"
+order_index: 4
 title: "Gerenciador de Rede"
+description: "Aprenda como o NetworkManager separa dispositivos, perfis persistentes e estado ativo em tempo de execução."
 meta_title: "Gerenciador de Rede - Configuração de Rede"
 meta_description: "Descubra o papel do daemon NetworkManager no gerenciamento moderno de redes Linux. Aprenda como esta ferramenta automatiza a configuração de rede e como interagir com ela usando nm-tool e o poderoso utilitário de linha de comando nmcli."
 meta_keywords: "NetworkManager, nm-tool, nmcli, gerenciador de rede linux, networkmanager linux, gerenciador rede linux, gerenciamento de rede linux, configuração de rede, redes Linux"
 ---
 
-## Lesson Content
+O NetworkManager gerencia dispositivos e ativa perfis de conexão em muitos desktops e servidores Linux. Ele não é universal; confirme que controla a interface desejada antes de usar `nmcli` para mudar a configuração.
 
-Para que a rede de um sistema seja configurada automaticamente, um serviço geralmente já está implementado. A maioria das distribuições Linux modernas utiliza o daemon NetworkManager para este fim, tornando-o uma pedra angular da **gerenciamento de rede linux**.
+## Dispositivos e conexões
 
-### O que é Network Manager no Linux?
+Um dispositivo é uma interface do kernel como `enp1s0` ou `wlan0`. Uma conexão é um perfil armazenado com IPv4, IPv6, DNS, Wi-Fi, roteamento e outras definições. Um dispositivo pode ter vários perfis, mas normalmente apenas um aplicável fica ativo por vez.
 
-Se você estiver usando uma interface gráfica do usuário (GUI), provavelmente notará o serviço **Network Manager Linux** como um applet na barra de tarefas do seu desktop. Esta ferramenta gerencia seu hardware de rede e informações de conexão. Por exemplo, na inicialização, o NetworkManager coleta informações sobre o hardware de rede, procura por conexões disponíveis (como redes sem fio ou com fio) e, em seguida, as ativa para colocá-lo online.
-
-### Interação com a Linha de Comando
-
-Embora o applet da GUI seja conveniente, também existem ferramentas poderosas de linha de comando para interagir com o serviço **networkmanager linux**. Elas são essenciais para administração de servidores e scripting.
-
-### Usando nm-tool
-
-O comando `nm-tool` relata o estado atual do NetworkManager e uma lista de seus dispositivos gerenciados. Observe que o `nm-tool` é considerado obsoleto em muitos sistemas modernos em favor do `nmcli`.
-
-```plaintext
-pete@icebox:/$ nm-tool
-NetworkManager Tool
-
-State: connected (global)
-
-- Device: eth0  [Wired connection 1] -------------------------------------------
-  Type:              Wired
-  Driver:            pcnet32
-  State:             connected
-  Default:           yes
-  HW Address:        12:3D:45:56:7D:CC
-
-  Capabilities:
-    Carrier Detect:  yes
-
-  Wired Properties
-    Carrier:         on
-
-  IPv4 Settings:
-    Address:         192.168.22.1
-    Prefix:          24 (255.255.255.0)
-    Gateway:         192.168.22.2
-
-    DNS:             192.168.22.2
+```bash
+$ nmcli device status
+$ nmcli connection show
+$ nmcli connection show --active
 ```
 
-### A Ferramenta Moderna nmcli
+:::single-choice{#networkmanager-device-profile} O que é um perfil de conexão do NetworkManager?
 
-O comando `nmcli` é a principal utilidade de linha de comando para controlar e modificar o **Linux Network Manager**. Ele permite visualizar o status, gerenciar conexões e configurar dispositivos de rede diretamente do terminal. Para uma lista completa de suas capacidades, consulte sua página de manual (`man nmcli`).
+::option[Um conector físico soldado à placa de rede.]{#networkmanager-physical-connector explanation="Isso é hardware, não um perfil."}
+::option[Um conjunto armazenado de definições que pode ser ativado num dispositivo.]{#networkmanager-stored-settings .correct explanation="Perfis persistem a configuração separadamente do objeto de interface do kernel."}
+::option[Um pacote capturado de cada fluxo ativo.]{#networkmanager-packet-capture explanation="Perfis descrevem configuração e não contêm todo o tráfego."}
+:::
 
-## Exercise
+## Inspeção do estado efetivo
 
-Prática leva à perfeição! Embora o NetworkManager automatize grande parte da configuração de rede, entender os comandos e conceitos subjacentes que ele gerencia é crucial para solução de problemas e administração avançada. Aqui estão alguns laboratórios práticos para reforçar sua compreensão da identificação e gerenciamento de rede no Linux:
+Mostre o perfil ativo e os detalhes do dispositivo:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir gateways padrão e verificar configurações de rede usando o comando `ip` e `dhclient`.
-3. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` e `arp` para entender como as camadas de rede e de enlace de dados interagem, observando o ARP em ação e como os gateways padrão lidam com o tráfego.
+```bash
+$ nmcli -f GENERAL,IP4,IP6 device show enp1s0
+$ nmcli connection show 'Wired connection 1'
+```
 
-Esses laboratórios ajudarão você a aplicar os conceitos de identificação e configuração de rede em cenários reais e a construir confiança com os fundamentos de rede do Linux.
+Definições do perfil, resultados DHCP e estado do kernel podem diferir. Compare com `ip address`, `ip route` e o resolver. O obsoleto `nm-tool` não deve fundamentar um fluxo atual.
 
-## Quiz Question
+:::single-choice{#networkmanager-active-command} Qual comando lista os perfis ativos?
 
-Qual é o comando para visualizar um resumo do estado e dos dispositivos do NetworkManager conforme mostrado na lição? Por favor, responda usando apenas o nome do comando em inglês em minúsculas.
+::option[`nmcli device delete --all`]{#networkmanager-delete-all explanation="Isso não é inspeção e sugere uma ação destrutiva."}
+::option[`nmcli connection show --active`]{#networkmanager-show-active .correct explanation="Ele filtra as conexões armazenadas para as que estão ativadas."}
+::option[`ip route flush table all`]{#networkmanager-flush-routes explanation="Isso remove rotas em vez de listar perfis."}
+:::
 
-## Quiz Answer
+## Modificação e ativação de um perfil
 
-nm-tool
+Modifique explicitamente um perfil e ative-o numa janela de manutenção:
+
+```bash
+$ sudo nmcli connection modify 'Wired connection 1' ipv4.method auto
+$ sudo nmcli connection up 'Wired connection 1'
+```
+
+Modificar muda dados persistentes; ativar pode substituir endereços, rotas e DNS ativos. Uma mudança remota exige console, definições originais salvas e rollback temporizado independente. Não dependa da conexão alterada para transportar sua própria recuperação.
+
+:::single-choice{#networkmanager-modify-versus-up} Qual é a diferença entre `connection modify` e `connection up`?
+
+::option[Modify reinicia o host; up edita o código-fonte do DNS.]{#networkmanager-reboot-source explanation="Nenhuma descrição corresponde aos comandos."}
+::option[Modify muda as definições; up ativa um perfil.]{#networkmanager-change-activate .correct explanation="Persistência e ativação em runtime são operações relacionadas, mas separadas."}
+::option[Ambos são aliases somente leitura.]{#networkmanager-readonly explanation="Os dois podem alterar estado nesse fluxo."}
+:::
+
+## Verificação e proteção de segredos
+
+Depois da ativação, verifique perfil, endereços e rotas do kernel, DNS, ambas as famílias e o aplicativo. Perfis Wi-Fi, VPN, 802.1X e móveis podem conter segredos. Limite permissões e não imprima campos secretos em logs ou transcrições compartilhadas.
+
+:::single-choice{#networkmanager-verification} O que prova mais que o NetworkManager informar “conectado”?
+
+::option[O nome do perfil contém Wired.]{#networkmanager-name-proof explanation="Um rótulo não demonstra a saúde do caminho."}
+::option[A janela do terminal continua aberta.]{#networkmanager-terminal-open explanation="Um terminal pode sobreviver a falhas parciais."}
+::option[Os testes pretendidos de DNS e aplicativo têm êxito.]{#networkmanager-end-to-end .correct explanation="O estado do gerenciador deve ser correlacionado ao kernel e ao serviço."}
+:::
+
+## Resumo
+
+Agora você consegue gerenciar perfis sem confundi-los com objetos de interface.
+
+1. Confirmar que o NetworkManager controla o dispositivo.
+2. Distinguir perfis armazenados de estado ativo.
+3. Inspecionar dispositivos, todos os perfis e os ativos.
+4. Modificar, ativar, recuperar e verificar como etapas distintas.

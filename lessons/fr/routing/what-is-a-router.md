@@ -1,52 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-a-router"
+course_id: "routing"
 lang: "fr"
-title: "Qu'est-ce qu'un routeur ?"
-meta_title: "Qu'est-ce qu'un routeur ? - Routage"
-meta_description: "Guide pour débutants pour comprendre ce qu'est un routeur en réseau. Apprenez le routage, la commutation de paquets, les sauts et comment les routeurs utilisent les tables de routage pour transférer des données entre réseaux. Ce guide réseau est essentiel pour apprendre le réseau sous Linux."
-meta_keywords: "routeur, réseau, routage, sauts, commutation de paquets, réseau Linux, tutoriel débutant, guide réseau"
+order_index: 1
+title: "Qu’est-ce qu’un routeur ?"
+description: "Découvrez comment les routeurs choisissent les prochains sauts et acheminent les paquets IP entre les réseaux."
+meta_title: "Qu’est-ce qu’un routeur ? - Routage"
+meta_description: "Guide d’introduction aux routeurs, au routage, à la commutation de paquets, aux sauts et à l’utilisation des tables de routage."
+meta_keywords: "routeur, réseau, routage, sauts, commutation paquets, réseau Linux, tutoriel débutant, guide réseau"
 ---
 
-## Lesson Content
+Un routeur relie des domaines de couche réseau et achemine les paquets IP entre eux. Un hôte Linux peut agir comme routeur lorsque l’acheminement est activé et que ses interfaces, ses routes, sa découverte des voisins et sa politique de filtrage sont correctement configurées.
 
-Un routeur est un appareil fondamental dans la mise en réseau informatique. Vous en avez probablement un chez vous qui vous connecte à Internet. Sa tâche principale est de permettre aux machines d'un réseau de communiquer entre elles et avec d'autres réseaux. Ce processus est un élément essentiel du fonctionnement d'Internet et des réseaux locaux.
+## Routage et acheminement
 
-### La fonction principale d'un routeur
+Le routage construit ou sélectionne les informations relatives aux préfixes accessibles. L’acheminement applique ces informations à chaque paquet : il examine la destination, choisit une route admissible et un prochain saut, décrémente la limite de sauts et transmet par une interface de sortie.
 
-Un routeur domestique typique possède des ports LAN (Local Area Network) pour connecter vos appareils à un réseau local et un port WAN (Wide Area Network) qui fournit une connexion Internet. Chaque morceau de données, ou « paquet », que vous envoyez ou recevez lors de toute activité réseau doit passer par le routeur. Le routeur inspecte ces paquets réseau et décide où ils doivent aller. Il achemine efficacement le trafic entre plusieurs réseaux, garantissant que chaque paquet voyage de sa source à sa destination finale.
+Il s’agit de questions distinctes du plan de contrôle et du plan de données. Une route peut exister tandis que le pare-feu bloque l’acheminement, ou une interface d’acheminement peut être active sans qu’aucune route valide n’existe.
 
-### Le processus de routage
+:::single-choice{#router-forwarding-role} Que fait l’acheminement des paquets ?
 
-Pensez au processus de routage comme à la livraison du courrier. Lorsque vous envoyez une lettre, la poste détermine la destination générale (par exemple, un état ou une ville) et l'envoie là-bas. À partir de là, elle est triée en régions plus petites comme les codes postaux jusqu'à ce qu'elle atteigne enfin l'adresse de rue spécifique.
+::option[Il applique les informations de routage pour envoyer un paquet vers son prochain saut.]{#router-apply-route .correct explanation="L’acheminement est l’action réalisée pour chaque paquet selon la route et la politique sélectionnées."}
+::option[Il crée un identifiant applicatif permanent pour chaque destination.]{#router-create-login explanation="Le routage ne gère pas les comptes des applications distantes."}
+::option[Il copie chaque paquet sur toutes les interfaces lorsqu’aucune route n’existe.]{#router-flood-no-route explanation="L’acheminement IP ordinaire abandonne un paquet sans route au lieu d’employer en secours une diffusion semblable à celle d’Ethernet."}
+:::
 
-En mise en réseau, un routeur utilise une **table de routage** pour prendre ces décisions. Cette table contient un ensemble de règles, ou routes, qui indiquent au routeur comment transférer les paquets vers une destination réseau particulière. Par exemple, une règle pourrait dire : « Pour atteindre le réseau A, envoyez les paquets au routeur B. » S'il n'y a pas de règle spécifique pour une destination, le routeur utilise une **route par défaut**, qui dirige généralement le trafic vers Internet. Ce système est crucial dans les configurations domestiques simples et les environnements complexes de **mise en réseau Linux**.
+## Tables de routage et routes par défaut
 
-### Les sauts (Hops)
+Une route associe un préfixe de destination à une interface de sortie, un prochain saut, une métrique, une préférence de source ou d’autres attributs. La correspondance au préfixe le plus long favorise la route admissible la plus spécifique. Une route par défaut, `/0` en IPv4 ou `::/0` en IPv6, est la correspondance la moins spécifique et n’est employée que lorsqu’aucune route plus spécifique ne l’emporte.
 
-Lorsque les paquets traversent les réseaux, leur parcours est mesuré en **sauts** (hops). Un saut représente une étape du parcours où un paquet passe par un appareil intermédiaire, comme un routeur. Par exemple, si un paquet doit passer par deux routeurs pour aller de l'Hôte A à l'Hôte B, on dit que le chemin comporte deux sauts. Les sauts fournissent une métrique simple pour mesurer la distance entre une source et une destination dans un réseau.
+Si aucune route admissible n’existe, le routeur abandonne le paquet et peut produire un message ICMP de destination inaccessible. Une route par défaut est facultative et ne pointe pas nécessairement directement vers l’Internet public.
 
-### Commutation de paquets, routage et inondation (Flooding)
+:::single-choice{#router-default-route} Quand une route par défaut est-elle sélectionnée ?
 
-Pour comprendre comment les données se déplacent, il est utile de connaître ces termes connexes :
+::option[Avant l’examen des préfixes propres à la destination.]{#router-default-first explanation="Les préfixes admissibles plus spécifiques sont prioritaires."}
+::option[Uniquement lorsque le paquet est une diffusion Ethernet.]{#router-default-broadcast explanation="La sélection d’une route IP repose sur les destinations de la couche réseau."}
+::option[Lorsqu’aucune route admissible plus spécifique ne correspond.]{#router-default-fallback .correct explanation="Le préfixe de longueur nulle constitue la route la moins spécifique."}
+:::
 
-- **Commutation de paquets** (Packet Switching) est la méthode fondamentale de réception, de traitement et de transfert des paquets de données vers leur destination. C'est ce que font continuellement les routeurs.
-- **Routage** est le processus intelligent de construction et de maintenance de la table de routage. Un routage efficace permet une commutation de paquets plus efficace et plus fiable.
-- **Inondation** (Flooding) est une méthode plus ancienne et moins efficace utilisée lorsqu'un routeur ne sait pas où envoyer un paquet. Il envoie le paquet entrant sur toutes les connexions, sauf celle par laquelle il est arrivé, en espérant qu'un chemin atteindra la destination. La mise en réseau moderne repose sur le routage pour éviter ce type d'inefficacité.
+## Trafic local et routé
 
-## Exercise
+Deux hôtes situés sur le même sous-réseau directement connecté échangent normalement des trames sans faire passer le paquet IP par un routeur. Un routeur intervient lorsque la sélection de route le choisit comme prochain saut ou lorsque la topologie et la politique imposent délibérément un passage routé.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la connectivité réseau et du routage :
+Un « routeur » domestique réunit couramment un routeur IP, un commutateur Ethernet, un point d’accès Wi-Fi, un service DHCP, un dispositif NAT et un pare-feu. Chaque fonction doit être diagnostiquée séparément.
 
-1. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Entraînez-vous à tester la pile TCP/IP locale, à identifier les adresses IP privées et publiques, et à vérifier la joignabilité du réseau, éléments clés pour comprendre comment un routeur facilite la communication.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` vous aident à observer comment les couches réseau et liaison de données interagissent, et comment la passerelle par défaut (routeur) gère le trafic distant.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Utilisez Docker pour simuler des nœuds réseau et attribuer des adresses IP, puis testez la connectivité pour comprendre comment les sous-réseaux IP et le routage régissent la communication réseau.
+:::single-choice{#router-same-subnet-path} Le trafic entre deux hôtes directement connectés doit-il passer par leur routeur par défaut ?
 
-Ces laboratoires vous aideront à appliquer les concepts de communication réseau, d'adressage IP et le rôle du routage dans des scénarios réels, renforçant ainsi votre confiance dans les fondamentaux du réseau.
+::option[Oui, car chaque paquet doit atteindre un port WAN.]{#router-always-wan explanation="Une livraison locale directement sur la liaison peut avoir lieu sans routeur."}
+::option[Oui, sauf si les deux hôtes possèdent des adresses publiques.]{#router-public-required explanation="La portée publique ou privée ne détermine pas l’acheminement élémentaire sur la liaison."}
+::option[Non ; l’émetteur peut adresser directement la destination sur la liaison locale.]{#router-direct-on-link .correct explanation="La table de routage identifie le préfixe connecté comme directement accessible."}
+:::
 
-## Quiz Question
+## Sauts et prévention des boucles
 
-Comment les paquets mesurent-ils la distance ? (Veuillez répondre en anglais. La réponse est sensible à la casse.)
+Un saut routé est une étape d’acheminement de la couche réseau. Le TTL d’IPv4 et la limite de sauts d’IPv6 sont décrémentés à chaque routeur afin de borner les boucles. Le nombre de sauts n’est pas une mesure complète de la distance ou de la qualité : les liaisons diffèrent en bande passante, latence, pertes, politique et congestion.
 
-## Quiz Answer
+:::single-choice{#router-hop-count-limit} Qu’est-ce qu’un nombre de sauts inférieur ne garantit pas ?
 
-Hops
+::option[Qu’au moins une étape routée existe.]{#router-hop-exists explanation="Un nombre de sauts positif indique directement un passage routé."}
+::option[Un chemin applicatif plus rapide ou meilleur.]{#router-hop-not-quality .correct explanation="Un nombre inférieur de routeurs peut tout de même traverser des liaisons plus lentes, congestionnées ou limitées par une politique."}
+::option[Que les champs de limite de sauts sont finis.]{#router-hop-limit-finite explanation="Ces champs sont finis par conception du protocole."}
+:::
+
+## Résumé
+
+Vous savez maintenant distinguer la sélection des routes par un routeur de son action d’acheminement.
+
+1. Définir les routeurs par l’acheminement entre réseaux IP.
+2. Distinguer le routage du plan de contrôle de l’acheminement du plan de données.
+3. Considérer la route par défaut comme la solution de repli la moins spécifique.
+4. Reconnaître que le nombre de sauts ne mesure pas à lui seul la qualité du chemin.

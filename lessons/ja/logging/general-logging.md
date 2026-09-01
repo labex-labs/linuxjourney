@@ -1,40 +1,93 @@
 ---
-index: 3
+lesson_id: "general-logging"
+course_id: "logging"
 lang: "ja"
+order_index: 3
 title: "一般的なロギング"
+description: "Linux の一般的なシステムログを見つけ、絞り込み、追跡、相関する方法を学びます。"
 meta_title: "一般的なロギング - ロギング"
 meta_description: "一般的な Linux ログの初心者向けガイド。効果的なシステム監視、ログ分析、Linux トラブルシューティングのための/var/log/messages と syslog について学びます。"
 meta_keywords: "Linux ログ，syslog, var/log/messages, Linux トラブルシューティング，システムログ，ログ分析，システム監視，Linux ガイド，Linux 初心者，/var/log"
 ---
 
-## Lesson Content
+一般的なシステムログには、複数の発生元からの通常通知、warning、error が集まります。調査の出発点として便利ですが、ファイル名と内容は routing policy による選択であり、すべての Linux に共通する保証ではありません。
 
-お使いの Linux システムは、**システムログ**として知られるファイルにイベント、エラー、運用情報を熱心に記録します。これらのログは、**Linux トラブルシューティング**とシステム動作の理解に非常に貴重です。**Linux 初心者**にとって、これらのログの読み方を学ぶことは重要なステップです。ほとんどの重要なログファイルは`/var/log`ディレクトリに保存されています。このレッスンでは、最も一般的な汎用ログのうち 2 つを探ります。
+## 関係する情報源を見つける
 
-### 一般メッセージログ
+ディストリビューションと設定によって、一般メッセージは `/var/log/syslog`、`/var/log/messages`、systemd journal、または複数の宛先に現れます。最初にホストと障害時間帯を特定し、利用可能な情報源を調べます。
 
-多くの Linux ディストリビューションでは、`/var/log/messages`が広範囲のシステムイベントの集中リポジトリとして機能します。これは、カーネル、デーモン、さまざまなサービスからのクリティカルではない情報メッセージをキャプチャします。これにより、システムの活動の全体像を把握し、初期の**Linux トラブルシューティング**を行うための優れた出発点となります。システムの日常的な会話のためのデフォルトの受信トレイと考えてください。
+```bash
+$ ls -lh /var/log
+$ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
+```
 
-### 総合システムログ
+アプリケーションログは独自のサブディレクトリや外部サービスにある場合があります。authentication、audit、package、database、web-server のレコードは、一般ストリームから意図的に分離されていることもあります。
 
-`/var/log/syslog`ファイルは、より包括的な**システムログ**のコレクションを含むことがよくあります。その内容は`/var/log/messages`と重複する可能性がありますが、通常は認証関連のメッセージを除き、より広範な情報を含みます。この詳細なログは、特定の根本原因を最初から最後まで追跡する必要がある場合の、詳細なデバッグや**ログ分析**に特に役立ちます。
+:::single-choice{#general-logs-universal-file} すべての Linux ホストに `/var/log/messages` があると想定すべきでないのはなぜですか？
 
-### ログによる効果的なシステム監視
+::option[一般ログの宛先は、ローカルの collector と routing policy に依存するから。]{#general-logs-local-routing .correct explanation="journal-only system や異なる syslog 設定では、別の宛先を使います。"}
+::option[Linux では各ディスクに一つのログファイルしか置けないから。]{#general-logs-one-file explanation="システムは通常、多数のログファイルと journal store を維持します。"}
+::option[そのパスがユーザー文書専用に予約されているから。]{#general-logs-user-documents explanation="`/var/log` 階層は慣例上ログに使われます。"}
+:::
 
-これら 2 つのファイルは**システム監視**のための強力なツールですが、`/var/log`ディレクトリには他にも多くの専門的なログ（例：認証、パッケージ管理、特定のアプリケーション用）が含まれていることを忘れないでください。正確なロギング動作は、Linux ディストリビューションとその設定によって異なる場合があり、一部の最新システムでは`systemd-journald`が使用されています。しかし、`/var/log/messages`と`syslog`を理解することは、意欲的なすべての Linux ユーザーにとって強固な基盤を提供し、あらゆる**Linux ガイド**の重要な部分となります。
+## テキストログを調べる
 
-## Exercise
+制御しながら移動するには `less`、最新レコードには `tail` を使います。
 
-**ログ分析**に習熟するには実践が鍵となります。次の演習は、**システム監視**に不可欠なスキルである一般的なコマンドラインツールを使用して、**Linux ログ**の表示と分析に慣れるのに役立ちます。
+```bash
+$ sudo less /var/log/syslog
+$ sudo tail -n 100 /var/log/messages
+```
 
-1. **[Linux tail コマンド：ファイル末尾表示](https://labex.io/ja/labs/linux-linux-tail-command-file-end-display-214303)** - ログ分析に不可欠な、テキストファイルの末尾を表示および監視するための Linux `tail`コマンドを学習します。
-2. **[Linux head コマンド：ファイル先頭表示](https://labex.io/ja/labs/linux-linux-head-command-file-beginning-display-214302)** - テキストファイルの最初の数行を表示する`head`コマンドを探ります。ログヘッダーをすばやく確認するのに役立ちます。
-3. **[迅速な脅威検出](https://labex.io/ja/labs/linux-rapid-threat-detection-387930)** - `tail`と`head`を使用して最近のログエントリをすばやく抽出し分析することにより、サイバーセキュリティ分析のための必須の Linux コマンドラインスキルを練習します。
+範囲を限定した再現中に新しい行を追うには、`tail -F FILE` を使います。単純な snapshot と異なり、`-F` は rotation でファイルが置き換わっても再試行します。`Ctrl-C` で追跡を止め、広い権限の session を開いたままにしないでください。
 
-## Quiz Question
+:::single-choice{#general-logs-tail-f-capability} 制御された再現中、`tail -F` は何に役立ちますか？
 
-通常、認証メッセージを除くすべてを記録するログファイルはどれですか？ (英語で、小文字のみを使用して回答してください。)
+::option[通常の rotation で置き換わった後も、名前付きファイルを追うこと。]{#general-logs-tail-follow .correct explanation="名前による再試行動作により、有効ファイルが rename・再作成された後も追跡を続けやすくなります。"}
+::option[すべてのログ severity を debug へ変更すること。]{#general-logs-tail-debug explanation="tail はファイル内容を読み、発生元の設定は変更しません。"}
+::option[別プログラムなしで圧縮 archive を復号すること。]{#general-logs-tail-decrypt explanation="一般的な archive 展開や復号機能はありません。"}
+:::
 
-## Quiz Answer
+## 文脈を失わず絞り込む
 
-syslog
+無制限の live stream をすぐ pipe するのではなく、範囲を限定した file または journal interval を検索します。
+
+```bash
+$ grep -n -C 3 'connection refused' /var/log/example.log
+$ journalctl -u example.service --since '10 minutes ago' --grep='connection refused'
+```
+
+大文字小文字、表現、rate limit、localization によって literal search は不完全になる場合があります。成功・失敗イベントの両方を記録し、目に見える error より前に原因がある可能性を考え、前後の行を保持します。
+
+:::single-choice{#general-logs-context-lines} 一致した error の周辺行を含めるのはなぜですか？
+
+::option[先行イベントが後の失敗を説明する可能性があるから。]{#general-logs-preceding-context .correct explanation="時間的な文脈により、一つの文字列を障害全体とみなさず、事象の順序を再構築できます。"}
+::option[文脈があれば最初の一致が root cause だと保証されるから。]{#general-logs-guaranteed-cause explanation="追加証拠との相関が必要で、文脈だけでは因果関係を証明できません。"}
+::option[サービス設定が自動的に変更されるから。]{#general-logs-context-config explanation="検索出力は読み取り専用で、サービス設定を更新しません。"}
+:::
+
+## Rotation 済み Archive を含める
+
+障害が rotation の境界をまたぐ場合があります。有効ファイル、番号付き archive、圧縮ファイルに、同じ一連の事象の別部分が入ることがあります。`zgrep` や `zless` は gzip 圧縮 archive を読みます。
+
+```bash
+$ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
+```
+
+suffix だけでなく、実際の timestamp で結果を並べます。証拠をコピーする前に metadata を保持し、ログに個人データや認証情報が含まれる可能性を考えてアクセスを制限してください。
+
+:::single-choice{#general-logs-rotation-boundary} 障害が log rotation をまたぐ場合、何を確認すべきですか？
+
+::option[新しく作られた空の有効ファイルだけ。]{#general-logs-active-only explanation="以前のレコードは rotated archive へ移動している可能性があります。"}
+::option[イベント時刻順に並べた有効ログと archive ログ。]{#general-logs-all-intervals .correct explanation="関係する一連の事象が、現在と rotation 済みファイルに分割されている場合があります。"}
+::option[レコード timestamp を無視したファイル名だけ。]{#general-logs-filenames-only explanation="suffix 順とイベント時刻は必ずしも一致しません。"}
+:::
+
+## まとめ
+
+これで、file、journal、rotation の境界をまたいで一般ログを調査できます。
+
+1. 普遍的なファイル名を想定せず、宛先を見つける。
+2. 限定した時間帯を読み、再現中だけ追跡する。
+3. 一致レコードの周辺にある時間的文脈を保持する。
+4. rotation 済み archive を含め、機密性の高い証拠を保護する。

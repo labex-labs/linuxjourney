@@ -1,83 +1,135 @@
 ---
-index: 6
+lesson_id: "mounting-and-unmounting-filesystems"
+course_id: "filesystem"
 lang: "fr"
-title: "Monter et démonter"
+order_index: 6
+title: "mount et umount"
+description: "Découvrez comment attacher, examiner et détacher sans risque des systèmes de fichiers avec des sources et points de montage vérifiés."
 meta_title: "mount et umount - Le système de fichiers"
-meta_description: "Apprenez à utiliser les commandes mount et umount sous Linux pour attacher et détacher des systèmes de fichiers. Ce guide couvre le montage de périphériques, le processus sudo umount pour un démontage Linux sûr, et l'utilisation des UUID."
-meta_keywords: "mount, umount, sudo umount, umount linux, démontage linux, umount debian, monter système de fichiers, démonter périphérique, UUID Linux, point de montage"
+meta_description: "Apprenez à utiliser les commandes mount et umount sous Linux pour attacher et détacher des systèmes de fichiers avec des UUID."
+meta_keywords: "mount, umount, sudo umount, démontage Linux, monter système de fichiers, démonter périphérique, UUID Linux, point de montage"
 ---
 
-## Lesson Content
+Le montage attache un système de fichiers à un répertoire de l'espace de noms visible. La source peut être un périphérique bloc, un export réseau, un système de fichiers virtuel, une source de montage bind ou un autre objet propre à une implémentation. Le répertoire cible est appelé point de montage.
 
-Avant de pouvoir accéder aux fichiers d'un périphérique de stockage, vous devez d'abord monter son système de fichiers sur un répertoire de votre système. Ce processus implique un emplacement de périphérique, un type de système de fichiers et un point de montage. Le point de montage est simplement un répertoire existant où le système de fichiers sera attaché.
+## Préparer et examiner un point de montage
 
-### Comment monter un système de fichiers
-
-Tout d'abord, vous devez créer un point de montage. Créons un répertoire à cet effet :
+Créez un répertoire au nom explicite lorsque les règles locales le demandent :
 
 ```bash
-sudo mkdir /mydrive
+$ sudo mkdir -p /mnt/mydrive
 ```
 
-Le point de montage étant prêt, vous pouvez utiliser la commande `mount` pour attacher votre périphérique. L'indicateur `-t` spécifie le type de système de fichiers.
+Examinez-le avant le montage :
 
 ```bash
-sudo mount -t ext4 /dev/sdb2 /mydrive
+$ findmnt --target /mnt/mydrive
+$ sudo ls -la /mnt/mydrive
 ```
 
-C'est aussi simple que cela ! Maintenant, si vous naviguez vers le répertoire `/mydrive`, vous verrez le contenu du système de fichiers de votre périphérique.
+Monter un système de fichiers sur un répertoire non vide masque les entrées existantes derrière le nouveau système jusqu'au démontage ; cela ne les supprime pas. Ce comportement peut perturber les applications et consommer de l'espace disque de façon invisible. Employez donc un point de montage vide et réservé à cet usage.
 
-### Comment démonter un système de fichiers sous Linux
+:::single-choice{#mount-umount-nonempty-target} Que deviennent les fichiers existants d'un répertoire lorsqu'un autre système de fichiers y est monté ?
 
-Lorsque vous avez terminé avec un périphérique, vous devez le démonter pour vous assurer que toutes les données sont écrites en toute sécurité et que le système de fichiers est proprement détaché. La commande standard pour cette opération sous Linux est `umount`. Pour effectuer un `linux unmount`, vous pouvez spécifier soit le point de montage, soit le nom du périphérique.
+::option[Ils sont automatiquement copiés dans le nouveau système de fichiers.]{#mount-umount-copied-files explanation="Le montage change le rattachement dans l'espace de noms et ne déplace pas le contenu du répertoire."}
+::option[Ils sont définitivement effacés par le noyau.]{#mount-umount-erased-files explanation="Les fichiers réapparaissent normalement après le démontage, car ils étaient masqués et non supprimés."}
+::option[Ils sont masqués par le montage jusqu'à son détachement.]{#mount-umount-hidden-files .correct explanation="Le répertoire sous-jacent subsiste, mais la recherche des chemins passe dans le système de fichiers monté."}
+:::
 
-En utilisant le point de montage :
+## Monter un système de fichiers vérifié
+
+Après avoir confirmé l'identité de la source, le type détecté et le contenu attendu, effectuez un montage explicite :
 
 ```bash
-sudo umount /mydrive
+$ sudo mount -t ext4 /dev/PARTITION-VÉRIFIÉE /mnt/mydrive
 ```
 
-Alternativement, en utilisant le nom du périphérique :
+L'option `-t` indique l'implémentation du système de fichiers. Mount peut souvent détecter le type, mais un type explicite et des options examinées rendent l'intention plus claire. Pour un contenu non fiable ou amovible, envisagez des options restrictives comme `ro`, `nosuid`, `nodev` et `noexec` si elles conviennent à la charge ; chacune a ses limites et ne doit pas être considérée comme un bac à sable complet.
+
+Vérifiez ce qui est réellement monté :
 
 ```bash
-sudo umount /dev/sdb2
+$ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 ```
 
-Il est préférable d'utiliser `sudo umount` pour vous assurer que vous disposez des autorisations nécessaires pour détacher le système de fichiers. Cette commande est universelle sur les distributions Linux, donc la même syntaxe s'applique que vous soyez sur Ubuntu, Fedora, ou que vous effectuiez un `debian umount`. Notez que vous ne pouvez pas `umount` un périphérique s'il est actuellement utilisé (par exemple, si un fichier est ouvert ou si votre répertoire de travail actuel se trouve sur le périphérique).
+Les montages sont propres à un espace de noms. Un montage créé dans un conteneur ou dans l'espace privé d'un service peut ne pas apparaître dans la vue d'un autre processus.
 
-### Utilisation des UUID pour un montage stable
+:::single-choice{#mount-umount-mount-role} Que fait la commande `mount` dans la méthode présentée ?
 
-Le noyau nomme les périphériques dans l'ordre où il les découvre, ce qui signifie qu'un nom de périphérique comme `/dev/sdb2` pourrait changer entre les redémarrages. Pour éviter les problèmes, vous pouvez utiliser l'identifiant unique universel (UUID) d'un périphérique, qui reste constant.
+::option[Elle crée un nouveau système de fichiers et efface la source.]{#mount-umount-format-source explanation="La création d'un système de fichiers est une opération destructive `mkfs` distincte."}
+::option[Elle attache une source de système de fichiers à un répertoire dans un espace de noms de montage.]{#mount-umount-attach-filesystem .correct explanation="La recherche des chemins sous la cible entre alors dans le système de fichiers attaché."}
+::option[Elle modifie les limites des partitions du disque.]{#mount-umount-change-partitions explanation="La modification de la table de partitions est distincte du montage dans l'espace de noms."}
+:::
 
-Pour afficher les UUID de vos périphériques de bloc, utilisez la commande `blkid` :
+## Employer les UUID des systèmes de fichiers
+
+Les noms d'énumération comme `/dev/sdb2` peuvent changer. Découvrez les identifiants des systèmes de fichiers avec :
 
 ```bash
-pete@icebox:~$ sudo blkid
-/dev/sda1: UUID="130b882f-7d79-436d-a096-1e594c92bb76" TYPE="ext4"
-/dev/sda5: UUID="22c3d34b-467e-467c-b44d-f03803c2c526" TYPE="swap"
-/dev/sda6: UUID="78d203a0-7c18-49bd-9e07-54f44cdb5726" TYPE="xfs"
+$ lsblk -f
+$ sudo blkid
 ```
 
-Ce résultat montre les noms des périphériques, leurs types de systèmes de fichiers et leurs UUID correspondants. Vous pouvez ensuite monter un périphérique en utilisant son UUID :
+Montez ensuite un système de fichiers vérifié par son UUID :
 
 ```bash
-sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mydrive
+$ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 ```
 
-Bien que vous n'ayez pas toujours besoin de monter des périphériques via leurs UUID, c'est la méthode recommandée pour monter automatiquement les systèmes de fichiers au démarrage, comme un disque dur secondaire. Nous aborderons ce processus dans la prochaine leçon.
+Un UUID identifie le système de fichiers, pas nécessairement le disque physique. Un reformatage le modifie, tandis qu'un clonage peut le dupliquer. Vérifiez son unicité avant d'attacher l'original et sa copie au même système.
 
-## Exercise
+:::single-choice{#mount-umount-uuid-benefit} Pourquoi l'UUID d'un système de fichiers est-il souvent préférable à `/dev/sdX` dans une configuration persistante ?
 
-La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension de la gestion des systèmes de fichiers Linux :
+::option[Il empêche toute panne future des périphériques de stockage.]{#mount-umount-uuid-no-failure explanation="Un identifiant ne fournit ni redondance, ni réparation de l'intégrité, ni sauvegarde."}
+::option[Il garantit que les systèmes de fichiers clonés possèdent des identifiants différents.]{#mount-umount-uuid-clone-unique explanation="Une copie au niveau des blocs peut reproduire l'UUID et créer un conflit."}
+::option[Il est lié à l'identité du système de fichiers plutôt qu'à l'ordre d'énumération actuel.]{#mount-umount-uuid-identity .correct explanation="Le chemin du périphérique bloc peut changer tandis que les métadonnées du système de fichiers conservent son UUID."}
+:::
 
-- **[Gérer les partitions et les systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Dans ce laboratoire, vous apprendrez à gérer les partitions de disque et les systèmes de fichiers sous Linux. Vous utiliserez fdisk pour créer une nouvelle partition, la formater avec ext4, la monter, configurer le montage persistant dans /etc/fstab, et créer une partition swap, le tout sur un disque virtuel secondaire sécurisé.
+## Démonter sans risque
 
-Ce laboratoire vous aidera à appliquer les concepts de montage et de démontage dans des scénarios réels et à renforcer votre confiance dans la gestion des systèmes de fichiers.
+Détachez le système par son point de montage exact :
 
-## Quiz Question
+```bash
+$ sudo umount /mnt/mydrive
+```
 
-Quelle commande est utilisée pour attacher un système de fichiers ? (Veuillez utiliser un seul mot anglais en minuscules pour votre réponse.)
+La commande s'écrit `umount`, sans le premier `n`. Un démontage réussi détache le système de fichiers une fois que le noyau a terminé les écritures nécessaires et que les références le permettent. Confirmez ensuite le résultat avec `findmnt` avant de débrancher le stockage.
 
-## Quiz Answer
+Un démontage réussi n'est pas toujours la dernière opération nécessaire au retrait sûr d'un support amovible. Les piles de stockage des environnements de bureau peuvent proposer une action d'éjection ou de mise hors tension qui vide les caches du périphérique et désactive un appareil USB. Suivez la procédure de la plateforme et du matériel.
 
-mount
+:::single-choice{#mount-umount-command-name} Quelle commande détache `/mnt/mydrive` ?
+
+::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` détache le système de fichiers monté sur la cible indiquée."}
+::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="Le nom de la commande standard omet le premier `n`."}
+::option[`mkfs /mnt/mydrive`]{#mount-umount-mkfs-target explanation="Mkfs crée les structures d'un système de fichiers et ne doit pas servir à le détacher."}
+:::
+
+## Diagnostiquer un système de fichiers occupé
+
+Le démontage échoue lorsque l'espace de noms conserve des références actives, par exemple des fichiers ouverts, le répertoire de travail d'un processus, des montages imbriqués, du swap ou d'autres couches de stockage. Recherchez la cause au lieu de forcer immédiatement l'opération :
+
+```bash
+$ findmnt --submounts /mnt/mydrive
+$ sudo fuser -vm /mnt/mydrive
+```
+
+Sortez les shells de l'arborescence, arrêtez proprement l'application responsable et démontez les montages enfants avant leur parent. Le démontage différé et les options de forçage possèdent une sémantique particulière et peuvent laisser des références actives ou entraîner une perte de données ; ne les employez qu'en suivant un raisonnement de récupération documenté.
+
+:::single-choice{#mount-umount-busy-cause} Quelle situation peut amener `umount` à signaler qu'un système de fichiers est occupé ?
+
+::option[Le nom du répertoire de point de montage contient des lettres minuscules.]{#mount-umount-lowercase explanation="La casse du chemin ne crée pas à elle seule une référence active au système de fichiers."}
+::option[Le répertoire de travail actuel d'un processus se trouve dans le montage.]{#mount-umount-cwd-busy .correct explanation="Le processus conserve une référence dans le système de fichiers monté, ce qui empêche son détachement ordinaire."}
+::option[L'UUID du système de fichiers est plus long que le nom du périphérique.]{#mount-umount-uuid-length explanation="La longueur d'un identifiant est sans rapport avec la détection d'un état occupé."}
+:::
+
+Utilisez [Gérer les partitions et systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845) pour vous exercer sur le stockage jetable prévu à cet effet.
+
+## Résumé
+
+Vous savez maintenant attacher et détacher des systèmes de fichiers dans une portée vérifiable.
+
+1. Employer un point de montage vide et réservé à cet usage.
+2. Vérifier la source, le type, les options et le montage obtenu.
+3. Préférer un identifiant de système de fichiers unique pour les références persistantes.
+4. Démonter par la cible et confirmer le détachement avant le retrait.
+5. Diagnostiquer les références actives au lieu de forcer le démontage d'un système occupé.

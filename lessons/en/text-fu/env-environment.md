@@ -1,43 +1,51 @@
 ---
-index: 5
+lesson_id: "env-environment"
+course_id: "text-fu"
 lang: "en"
+order_index: 5
 title: "env (Environment)"
+description: "Learn how Bash expands, exports, inspects, and temporarily overrides environment variables."
 meta_title: "env (Environment) - Text-Fu"
 meta_description: "Explore what the env command does in Linux. This guide explains how to view and use Linux environment variables like PATH, HOME, and USER with the env linux command."
 meta_keywords: "env, linux env, env linux, env command linux, linux env command, what does env do in linux, environment variables, PATH variable, shell variables"
 ---
 
-## Lesson Content
+Every process has an environment: a collection of name-value strings inherited from its parent process. Shells use environment variables to pass configuration such as language settings and executable search paths to the programs they start.
 
-Your Linux system uses environment variables to store information that the shell and other processes can access. These variables contain useful data about your user session and system configuration.
+## Expanding Variable Values in Bash
 
-### Exploring Basic Environment Variables
-
-You can view the value of a specific variable by prefixing its name with a `$` symbol. For example, run the following command:
+Bash expands `$NAME` or `${NAME}` to a variable's value before it runs a command. Quote the expansion to preserve the value as one argument:
 
 ```bash
-echo $HOME
+$ printf '%s\n' "$HOME"
+/home/pete
 ```
 
-This command will display the path to your home directory, which might look something like `/home/pete`.
+Common environment variables include:
 
-Now, try another one:
+- `HOME`: The current user's home-directory path.
+- `USER`: A username supplied by the login environment on many systems.
+- `PWD`: The shell's current working directory.
+- `PATH`: Directories searched for command names.
+
+Values depend on the current process environment; they are not universal constants. An unset variable expands to an empty string unless stricter shell behavior is enabled.
+
+:::single-choice{#env-print-home-value} Which Bash command prints the value of `HOME` while preserving it as one argument?
+
+::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="Single quotes prevent parameter expansion, so this prints the literal characters `$HOME`."}
+::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash expands `$HOME` inside double quotes, and `printf` receives the complete value as one argument."}
+::option[`printf '%s\n' HOME`]{#env-name-home explanation="Without a dollar sign or parameter syntax, `HOME` is ordinary text rather than a variable expansion."}
+:::
+
+## Inspecting the Current Environment
+
+Run `env` without operands to print the environment inherited by that `env` process:
 
 ```bash
-echo $USER
+$ env
 ```
 
-This will output your current username. But where does this information come from? It's stored in your shell's environment.
-
-### What Does env Do in Linux
-
-To see all the environment variables currently set for your session, you can use the `env` command. The `linux env command` is a fundamental tool for inspecting your shell's configuration.
-
-```bash
-env
-```
-
-Running the `env` command will output a list of key-value pairs. Here is a short example of what you might see:
+The output contains `NAME=value` records, for example:
 
 ```plaintext
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
@@ -45,92 +53,107 @@ PWD=/home/user
 USER=pete
 ```
 
-Understanding the `linux env` is crucial for managing your system effectively.
+Environment variables can contain credentials, tokens, internal paths, or other sensitive data. Do not paste complete `env` output into public issues or logs without reviewing and redacting it.
 
-### The Importance of the PATH Variable
+:::single-choice{#env-list-exported-values} Which command prints the environment visible to a newly started process?
 
-One of the most important variables in your `env linux` output is `PATH`. You can view its contents specifically with:
+::option[`env`]{#env-print-all .correct explanation="With no command or assignments, `env` prints the name-value environment it received."}
+::option[`alias`]{#env-alias-list explanation="`alias` lists shell alias definitions, which are shell state rather than exported environment records."}
+::option[`history`]{#env-history-list explanation="`history` displays the shell's remembered command lines. It does not enumerate exported variables."}
+:::
 
-```bash
-echo $PATH
-```
+## Finding Commands through PATH
 
-This command returns a colon-separated list of directories. When you type a command, your system searches through these directories to find the corresponding executable file.
-
-Imagine you manually install a program in a non-standard directory like `/opt/coolapp/bin`. If you try to run it by typing `coolcommand`, you might get a "command not found" error. This happens because the directory containing your program is not listed in the `PATH` variable, so the shell doesn't know where to look for it.
-
-To fix this, you can modify the `PATH` variable to include the new directory. By adding your custom directory to `PATH`, you enable the shell to find and execute your programs from anywhere in the terminal.
-
-### Setting an Environment Variable for the Current Session
-
-Running the following command in your terminal sets the environment variable `TEST` for the current session only:
+`PATH` is a colon-separated list of directories that Bash searches when a command name contains no slash:
 
 ```bash
-export TEST=test
+$ printf '%s\n' "$PATH"
 ```
 
-After this, if you run:
+The order matters: Bash uses the first suitable command it finds according to its resolution rules. Use `type -a NAME` to inspect how the current shell resolves a name.
+
+To add `/opt/coolapp/bin` for the current shell and its future children while retaining the existing search path:
 
 ```bash
-echo $TEST
+$ export PATH="/opt/coolapp/bin:$PATH"
 ```
 
-The output will be:
+Do not replace `PATH` accidentally with only the new directory, and do not add untrusted writable directories. Either mistake can prevent normal commands from resolving or cause an unexpected executable to run.
 
+:::single-choice{#env-prepend-path-directory} Which command adds `/opt/coolapp/bin` before the existing `PATH` for the current Bash process and its future children?
+
+::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="This discards every existing search directory, which can make ordinary commands difficult to find."}
+::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="This prepends the new directory, retains the previous value, and exports the result for child processes."}
+::option[`PATH='$PATH:/opt/coolapp/bin'`]{#env-literal-path explanation="Single quotes preserve the literal text `$PATH`, and the assignment is not exported to future child processes."}
+:::
+
+## Exporting a Variable to Child Processes
+
+Bash variables are not automatically part of the environment given to child processes. Mark a name for export with `export`:
+
+```bash
+$ export TEST=test
 ```
+
+The current Bash process now has a variable named `TEST`, and commands it starts inherit `TEST=test`. A child process cannot use this mechanism to change its parent's environment.
+
+```bash
+$ printenv TEST
 test
 ```
 
-This variable will be available as long as the terminal session remains open. Once you close and reopen the terminal, the variable will no longer exist.
+The assignment normally lasts until you unset it or the shell exits. It does not modify a system-wide environment.
 
-### Making the Environment Variable Persistent Across Sessions
+:::single-choice{#env-export-inheritance} What is the main effect of `export TEST=test` in Bash?
 
-If you want the environment variable to be available in every terminal session (even after closing and reopening the terminal), you need to add it to your shell’s startup file. In the case of Bash (the default shell for many Linux distributions), this file is usually `.bashrc` in your home directory.
+::option[It writes `TEST` into every user's system configuration.]{#env-system-wide explanation="The assignment affects the current shell and inheritance by its children, not every user or the whole operating system."}
+::option[It marks `TEST=test` for inheritance by future child processes.]{#env-child-inheritance .correct explanation="`export` adds the shell variable to the environment Bash passes to commands it starts."}
+::option[It changes the environment of processes that are already running.]{#env-existing-processes explanation="Existing unrelated or child processes keep their own environments. Export affects processes started afterward."}
+:::
 
-Here's how you do it:
+## Setting a Value for One Command
 
-1. Open `.bashrc` in your preferred text editor. For example:
+Place assignments before a command to supply values only to that command's environment:
 
 ```bash
-nano ~/.bashrc
+$ LANG=C sort names.txt
 ```
 
-2. Add the `export` line to the end of the file:
+The current shell's `LANG` value is not permanently changed. The `env` utility provides another explicit form:
+
+```bash
+$ env LANG=C sort names.txt
+```
+
+Use `env -i COMMAND` to start a command with an initially empty environment, then add any required assignments. Many programs rely on environment values, so use that option deliberately.
+
+:::single-choice{#env-one-command-value} Which command runs `sort names.txt` with `LANG=C` without permanently changing the current shell's `LANG`?
+
+::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` adds the assignment to the environment of the command it starts, while the parent shell keeps its prior value."}
+::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="This exports `LANG=C` in the current shell and leaves it changed after `sort` finishes."}
+::option[`env -i sort names.txt`]{#env-empty-sort explanation="This starts with an empty environment but does not set the requested `LANG=C` value."}
+:::
+
+## Loading Personal Values in Future Sessions
+
+To recreate an exported variable in future interactive Bash sessions, place a suitable `export` line in the startup file those sessions actually read, commonly `~/.bashrc` for interactive non-login Bash:
 
 ```bash
 export TEST=test
 ```
 
-3. Save and exit the editor (in Nano, this would be `Ctrl+X`, then `Y` to confirm, and `Enter`).
+Zsh commonly uses `~/.zshrc`, while Fish uses different syntax and configuration. Login and non-interactive shells can read other files, so identify the shell and session type instead of assuming one file configures every process.
 
-4. To apply the changes immediately without reopening the terminal, run:
-
-```bash
-source ~/.bashrc
-```
-
-After this, the `TEST` variable will be available in all future terminal sessions, and running `echo $TEST` will print `test` even after you close and reopen the terminal.
-
-### A Note on Shell Configuration Files
-
-- For **Bash** (the default on many systems), the relevant file is `~/.bashrc` for non-login interactive shells.
-- For **Zsh**, the equivalent file is usually `~/.zshrc`.
-- For **Fish**, you'd typically use `~/.config/fish/config.fish`.
-
-## Exercise
-
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux environment variables:
+To practice environment inheritance and shell configuration, try these hands-on labs:
 
 1. **[Manage Shell Environment and Configuration in Linux](https://labex.io/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Practice creating and managing local and environment variables, understanding inheritance, and making configurations persistent by modifying the `.bashrc` file.
 2. **[Environment Variables in Linux](https://labex.io/labs/linux-environment-variables-in-linux-385274)** - Learn the concept and usage of environment variables, how to create, modify, and manage them, and their role in system configuration.
-3. **[Configure Linux Environment Variables](https://labex.io/labs/linux-configure-linux-environment-variables-437861)** - Get hands-on experience creating, setting, and managing environment variables in a Linux system.
+## Summary
 
-These labs will help you apply the concepts in real scenarios and build confidence with managing your Linux shell environment.
+You can now inspect and control the environment passed from Bash to child processes.
 
-## Quiz Question
-
-Which command displays all of your current environment variables? (Please answer in English, using only the lowercase command name).
-
-## Quiz Answer
-
-env
+1. Expand variable values with deliberate quoting.
+2. Review exported values without exposing secrets.
+3. Preserve and order command directories in `PATH`.
+4. Export a shell variable for future child processes.
+5. Override a value for one command without changing the parent shell.

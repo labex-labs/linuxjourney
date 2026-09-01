@@ -1,38 +1,88 @@
 ---
-index: 3
+lesson_id: "dhclient"
+course_id: "network-config"
 lang: "zh"
+order_index: 3
 title: "dhclient"
+description: "学习何时以及如何使用 dhclient，同时避免与系统网络管理器冲突。"
 meta_title: "dhclient - 网络配置"
-meta_description: "了解 dhclient、它如何使用 DHCP 获取 IP 地址以及管理网络租约。理解 dhclient.conf 和 dhclient.leases 文件。Linux 初学者指南。"
-meta_keywords: "dhclient, DHCP, Linux 网络，IP 地址，网络配置，Linux 教程，初学者指南"
+meta_description: "了解 dhclient 如何使用 DHCP 获取 IP 地址和管理网络租约，并认识 dhclient.conf 与 dhclient.leases 文件。Linux 初学者指南。"
+meta_keywords: "dhclient, DHCP, Linux 网络, IP 地址, 网络配置, Linux 教程, 初学者指南"
 ---
 
-## Lesson Content
+`dhclient` 是部分 Linux 系统提供的 ISC DHCP 客户端。许多现代安装会改由 NetworkManager、systemd-networkd 或其他服务运行自己的 DHCP 客户端。在已管理接口上启动第二个客户端，可能造成相互竞争的地址、路由、DNS 设置和租约状态。
 
-我们之前讨论过 DHCP，大多数情况下你永远不需要静态设置你的 IP 地址、子网掩码等。相反，你将使用 DHCP！`dhclient` 在启动时启动，并从 `dhclient.conf` 文件中获取网络接口列表。对于列出的每个接口，它尝试使用 DHCP 协议配置该接口。
+## 确定活动客户端
 
-在 `dhclient.leases` 文件中，`dhclient` 跟踪系统重启时租约的列表。读取 `dhclient.conf` 后，会读取 `dhclient.leases` 文件，以便它知道已经分配了哪些租约。
-
-### 获取新的 IP
+调用 `dhclient` 前，应检查配置所有者和进程：
 
 ```bash
-sudo dhclient
+$ nmcli device status
+$ networkctl status
+$ ps -ef | grep '[d]hclient'
 ```
 
-## Exercise
+应使用主机上实际存在的工具。如果某个管理器拥有接口，应通过该管理器请求 DHCP，而不是启动单独的客户端。
 
-熟能生巧！以下是一些动手实验，以巩固您对动态 IP 寻址和网络配置的理解：
+:::single-choice{#dhclient-second-client-risk} 为什么要避免在已受管理的接口上启动 `dhclient`？
 
-1. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `dhclient` 获取动态 IP 地址并在真实的 Linux 环境中验证网络配置。
-2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习检查网络接口并识别 MAC 和 IP 地址，这对于理解 DHCP 如何分配地址至关重要。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 测试网络可达性并探索不同的 IP 地址类型，从而加深您对 IP 地址在网络中如何运作的理解。
+::option[DHCP 只能分配环回地址。]{#dhclient-loopback-only explanation="DHCP 通常会分配非环回网络配置。"}
+::option[两个客户端可能会争用地址、路由、DNS 和租约。]{#dhclient-competing-state .correct explanation="通常只应由已经确定的配置所有者协调接口。"}
+::option[每个 DHCP 请求都会重新格式化本地磁盘。]{#dhclient-reformats explanation="该协议改变网络状态，而不是磁盘格式。"}
+:::
 
-这些实验将帮助您在实际场景中应用 DHCP 和 IP 寻址的概念，并增强您在 Linux 中进行网络配置的信心。
+## 显式请求租约
 
-## Quiz Question
+在以 `dhclient` 为预期所有者的非托管测试接口上，应指定接口并使用详细输出：
 
-什么尝试使用 DHCP 协议分配 IP 地址？
+```bash
+$ sudo dhclient -v enp1s0
+```
 
-## Quiz Answer
+不指定接口运行时，可能会影响多个符合条件的接口。配置和租约路径因软件包与调用方式而异；常见名称包括 `dhclient.conf` 和 `dhclient.leases`，但不要假定固定位置。
 
-dhclient
+:::single-choice{#dhclient-interface-operand} 手动请求时为什么要指定 `enp1s0`？
+
+::option[只针对预期网络接口。]{#dhclient-scope-interface .correct explanation="未限定的客户端调用可能考虑超出预期的接口。"}
+::option[为 DHCP 选择 TCP 端口 1。]{#dhclient-tcp-port explanation="DHCP 使用 UDP，接口名称不是端口。"}
+::option[让租约永久有效。]{#dhclient-permanent explanation="DHCP 配置仍然是有期限的租约状态。"}
+:::
+
+## 释放租约
+
+`dhclient -r INTERFACE` 会请求释放租约，并可能移除可用配置。该操作会造成中断，而且不能保证服务器可达并收到释放消息。不要仅仅为了检查租约而释放它，尤其不能在远程管理路径上这样做。
+
+:::single-choice{#dhclient-release-effect} `dhclient -r enp1s0` 有什么运维风险？
+
+::option[它只打印当前租约，不作更改。]{#dhclient-release-readonly explanation="释放是会改变状态的操作。"}
+::option[它会无限期续订每个租约。]{#dhclient-release-renews explanation="释放与续订是相反的操作。"}
+::option[它可能移除当前 DHCP 连接。]{#dhclient-release-connectivity .correct explanation="释放流程会放弃租约状态，并可能终止远程访问。"}
+:::
+
+## 验证已应用租约
+
+完成受控请求后，不能只验证地址：
+
+```bash
+$ ip address show dev enp1s0
+$ ip route show
+$ resolvectl status
+```
+
+应检查管理器或客户端日志及租约有效期，再测试预期的名称解析和应用程序。DHCPACK 可能携带错误选项，成功分配地址也不能证明网关或 DNS 可达。
+
+:::single-choice{#dhclient-verify-state} 获得租约后应该验证什么？
+
+::option[地址、路由、DNS、租约及应用程序行为。]{#dhclient-complete-verify .correct explanation="租约会配置多个必须协同工作的相关组件。"}
+::option[只验证地址字符串是否出现。]{#dhclient-address-only explanation="路由、DNS、有效期和端到端功能仍可能有误。"}
+::option[只检查桌面背景。]{#dhclient-wallpaper explanation="桌面外观与 DHCP 状态无关。"}
+:::
+
+## 总结
+
+现在，你可以只在 `dhclient` 是接口预期所有者时使用它。
+
+1. 发现活动网络管理器和 DHCP 客户端。
+2. 避免一个接口上存在相互竞争的客户端。
+3. 将手动请求限制到具名测试接口。
+4. 将释放视为中断操作，并验证完整租约结果。

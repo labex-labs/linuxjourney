@@ -1,51 +1,83 @@
 ---
-index: 5
+lesson_id: "process-termination"
+course_id: "processes"
 lang: "es"
-title: "Terminación de Procesos"
-meta_title: "Terminación de Procesos - Procesos"
-meta_description: "Explore la terminación de procesos en Linux, la llamada al sistema wait, y las diferencias clave en el debate sobre procesos zombis vs. huérfanos. Aprenda a gestionar los estados de los procesos hijos de linux kill para un sistema estable."
-meta_keywords: "Terminación de procesos Linux, proceso zombi, proceso huérfano, proceso zombi vs huérfano, linux kill proceso hijo, llamada al sistema wait, _exit, gestión de procesos"
+order_index: 5
+title: "Terminación de procesos"
+description: "Aprende cómo el estado de salida, la espera, los zombis y la reasignación de padre completan el ciclo de vida de un proceso de Linux."
+meta_title: "Terminación de procesos - Procesos"
+meta_description: "Descubre la terminación de procesos en Linux, las operaciones wait y las diferencias entre procesos zombis y huérfanos."
+meta_keywords: "terminación de procesos Linux, proceso zombi, proceso huérfano, zombi frente a huérfano, llamada wait, gestión de procesos"
 ---
 
-## Lesson Content
+Un proceso puede terminar al volver de su función principal, llamar a una interfaz de salida o ser finalizado por una señal. El kernel libera la mayoría de sus recursos, pero la contabilidad entre padre e hijo continúa hasta que el padre recoge la información de terminación.
 
-### El Proceso de Terminación
+## Estado de salida
 
-Una vez que se crea un proceso, ¿cómo finaliza? La terminación de un proceso es una parte crítica del ciclo de vida del proceso, asegurando que los recursos del sistema se gestionen de manera efectiva.
+Un programa que termina normalmente proporciona un estado entero. Por convención, el estado `0` significa éxito y un valor distinto de cero comunica algún tipo de fallo o resultado alternativo. El significado exacto de los valores no nulos forma parte de la interfaz del programa.
 
-Un proceso típicamente termina al llamar a la llamada al sistema `_exit`. Esta acción indica al kernel que el proceso ha finalizado y que sus recursos, como la memoria y los descriptores de archivos, pueden ser recuperados. Al salir, el proceso proporciona un estado de terminación al kernel, que es un valor entero. Por convención, un estado de 0 indica una ejecución exitosa, mientras que un valor distinto de cero señala un error.
+En un shell, consulta el estado de la tubería en primer plano más reciente con:
 
-Sin embargo, llamar a `_exit` no borra inmediatamente el proceso. El proceso padre debe reconocer la terminación de su hijo utilizando la llamada al sistema `wait`. Esta llamada permite al padre recuperar el estado de terminación del hijo. Este mecanismo de dos pasos es esencial para la limpieza adecuada de los procesos. Otra forma de `linux kill child process` (terminar proceso hijo en Linux) es mediante el uso de señales, un tema que exploraremos en una lección posterior.
+```bash
+$ command
+$ printf '%s\n' "$?"
+```
 
-### Procesos Huérfanos (Orphan Processes)
+Los shells exponen un intervalo codificado limitado y también representan la terminación mediante señales, por lo que este valor no es un registro diagnóstico completo. Los programas deben documentar sus propios códigos de salida.
 
-¿Qué sucede si un proceso padre termina antes que su hijo? El proceso hijo se convierte en un "huérfano" (orphan). Dado que su padre original ya no puede llamar a `wait`, el kernel interviene. El proceso huérfano es adoptado inmediatamente por un proceso especial del sistema, típicamente `init` (ID de proceso 1), que se considera el ancestro de todos los procesos. El proceso `init` asume entonces el papel de padre, llamando periódicamente a `wait` para recopilar el estado de terminación de cualquiera de sus hijos adoptados, permitiéndoles terminar limpiamente.
+:::single-choice{#process-termination-success-status} Según la convención de Unix, ¿qué estado de salida normal indica éxito?
 
-### Procesos Zombis (Zombie Processes)
+::option[`1`]{#process-termination-status-one explanation="Muchos programas usan `1` para un fallo general, aunque el significado depende de cada orden."}
+::option[`0`]{#process-termination-status-zero .correct explanation="Un estado normal igual a cero indica convencionalmente una finalización correcta."}
+::option[`255`]{#process-termination-status-255 explanation="Este valor es distinto de cero y no representa convencionalmente el éxito."}
+:::
 
-Ocurre un escenario diferente cuando un proceso hijo termina, pero su padre aún no ha llamado a `wait`. En este estado, el hijo se convierte en un proceso "zombi". El kernel libera la mayoría de los recursos del zombi, pero mantiene una entrada en la tabla de procesos. Esta entrada contiene el ID del proceso y el estado de terminación, esperando a que el padre lo recoja.
+## Esperar y recoger
 
-Los procesos zombis ya están muertos, por lo que no consumen tiempo de CPU. No se pueden terminar con señales porque no se están ejecutando. El proceso por el cual el padre llama a `wait` para limpiar un zombi se denomina "reaping" (cosecha). Si el proceso padre nunca llama a `wait`, estos zombis pueden acumularse. Aunque unos pocos son inofensivos, un gran número puede llenar la tabla de procesos, impidiendo la creación de nuevos procesos. En casos en que el proceso padre también termina, `init` adoptará y cosechará al zombi.
+El kernel registra cómo terminó un hijo y avisa a su padre. El padre usa una función de la familia de llamadas al sistema `wait()` para recuperar esa información. La recogida del registro se denomina *reaping*.
 
-### Proceso Zombi vs Huérfano
+La espera también puede coordinar la ejecución: un shell espera a que termine una orden en primer plano antes de mostrar otro indicador, mientras que puede aplazar la espera de un trabajo en segundo plano. Un padre de larga duración bien diseñado debe organizar la recogida de hijos sin bloquear trabajo no relacionado.
 
-Comprender la diferencia entre un `zombie vs orphan process` (proceso zombi vs huérfano) es clave para diagnosticar problemas relacionados con los procesos.
+:::single-choice{#process-termination-wait-purpose} ¿Qué permite recuperar al padre una operación de espera correcta?
 
-- Un **proceso huérfano** es un proceso activo y en ejecución cuyo padre ha muerto. Es adoptado por `init` y continúa ejecutándose hasta que finaliza.
-- Un **proceso zombi** es un proceso muerto que ha completado su ejecución pero aún tiene una entrada en la tabla de procesos. Está esperando que su proceso padre lea su estado de salida.
+::option[La información de terminación del hijo.]{#process-termination-wait-status .correct explanation="La familia wait muestra cómo se detuvo o terminó un hijo y recoge a un hijo completado."}
+::option[Una copia del antiguo espacio de direcciones del hijo.]{#process-termination-wait-memory explanation="La mayor parte de la memoria del proceso ya se ha liberado y `wait()` no la devuelve al padre."}
+::option[La propiedad de todos los archivos que abrió el hijo.]{#process-termination-wait-files explanation="La espera no transfiere metadatos de propiedad del sistema de archivos."}
+:::
 
-En resumen, un huérfano está vivo pero sin padre, mientras que un zombi está muerto pero aún no ha sido completamente cosechado por su padre.
+## Procesos zombis
 
-## Exercise
+Después de que un hijo termina, pero antes de que se recoja su registro de terminación, aparece como zombi, a menudo con el estado `Z` en `ps`. Ya no se ejecuta ni conserva un espacio de direcciones normal, pero permanecen una entrada mínima en la tabla de procesos y datos contables.
 
-Para aplicar estos conceptos, intente el siguiente laboratorio práctico:
+Enviar una señal a un zombi no puede hacer que termine de nuevo. Para resolver una acumulación persistente, diagnostica el padre que no está esperando, reinicia o corrige ese padre mediante un procedimiento operativo apropiado o permite su reasignación a un proceso que lo recoja. Una gran cantidad puede agotar la capacidad de PID o de la tabla de procesos.
 
-1. **[Gestionar y Monitorizar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción con procesos en primer plano y en segundo plano, inspeccionándolos con `ps`, monitorizando recursos con `top`, ajustando la prioridad con `renice` y terminándolos con `kill`. Este laboratorio proporciona experiencia práctica con el ciclo de vida del proceso, incluida la forma de terminarlos y observar sus estados.
+:::single-choice{#process-termination-zombie-definition} ¿Qué descripción corresponde a un proceso zombi?
 
-## Quiz Question
+::option[Un hijo en ejecución cuyo padre ya ha terminado.]{#process-termination-zombie-orphan explanation="Eso describe un hijo huérfano, no un estado zombi."}
+::option[Un hijo completado cuyo registro de terminación no se ha recogido.]{#process-termination-zombie-unreaped .correct explanation="El proceso ha dejado de ejecutarse, pero el kernel conserva un estado mínimo para su padre."}
+::option[Un proceso que consume CPU en un bucle ininterrumpible.]{#process-termination-zombie-cpu explanation="Un zombi no ejecuta instrucciones ni consume tiempo de CPU."}
+:::
 
-¿Cuál es el estado de terminación más común para un proceso que tiene éxito?
+## Huérfanos y reasignación de padre
 
-## Quiz Answer
+Si un padre termina mientras su hijo continúa, el kernel reasigna ese hijo a un subreaper apto o al proceso init del espacio de nombres PID correspondiente. El hijo puede estar en ejecución, dormido, detenido o convertirse después en zombi; «huérfano» describe la pérdida de la relación con el padre original, no un estado de ejecución concreto.
 
-0
+El proceso adoptante pasa a ser responsable de recoger el estado de terminación. Los gestores de servicios y entornos de contenedores modernos hacen importante no suponer que el padre nuevo siempre es el PID 1 del host.
+
+:::single-choice{#process-termination-orphan-definition} ¿Qué ocurre cuando un proceso sobrevive a su padre original?
+
+::option[Se reasigna a un subreaper apto o al proceso init del espacio de nombres.]{#process-termination-orphan-reparented .correct explanation="El kernel conserva una relación de parentesco válida asignando un proceso adoptante."}
+::option[Se convierte inmediatamente en zombi aunque no haya terminado.]{#process-termination-orphan-zombie explanation="El estado zombi comienza únicamente después de terminar la ejecución y mientras el estado espera su recogida."}
+::option[Pierde permanentemente su PID y continúa de forma anónima.]{#process-termination-orphan-no-pid explanation="Un huérfano activo conserva su identidad de proceso mientras cambia su relación con el padre."}
+:::
+
+Usa el laboratorio [Gestionar y supervisar procesos de Linux](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) para observar códigos de salida y estados de procesos sin alterar una carga de producción.
+
+## Resumen
+
+Ahora puedes distinguir el final de la ejecución de la limpieza que realiza el padre.
+
+1. Interpreta cero como éxito convencional y los estados no nulos según la documentación del programa.
+2. Usa la espera para recoger la información de terminación de un hijo.
+3. Reconoce un zombi como un proceso terminado pero no recogido.
+4. Reconoce un huérfano como un hijo reasignado después de que termine su padre original.

@@ -1,46 +1,93 @@
 ---
-index: 4
+lesson_id: "kernel-logging"
+course_id: "logging"
 lang: "es"
-title: "Registro del Kernel"
-meta_title: "Registro del Kernel - Logging"
-meta_description: "Explore el registro del kernel de Linux, incluyendo /var/log/kern.log y dmesg. Aprenda a verificar el registro kern para mensajes de arranque, información de controladores de hardware y solucionar problemas del sistema. Una guía sobre los archivos de registro del kernel de Linux."
+order_index: 4
+title: "Registro del kernel"
+description: "Aprende a consultar los mensajes actuales y conservados del kernel de Linux con dmesg y journalctl."
+meta_title: "Registro del kernel - Logging"
+meta_description: "Explora el registro del kernel de Linux, incluidos /var/log/kern.log y dmesg. Aprende a consultar mensajes de arranque e información de controladores de hardware y a diagnosticar problemas del sistema."
 meta_keywords: "registro del kernel, kern.log, /var/log/kern.log, kernel log linux, registro kern, dmesg, registro linux, mensajes de arranque, eventos del kernel"
 ---
 
-## Lesson Content
+El kernel emite mensajes sobre el arranque, los controladores, los dispositivos, los sistemas de archivos, la red, la memoria y los fallos. Estos registros pueden explicar síntomas de bajo nivel, pero una sola cadena de advertencia no demuestra que el hardware esté averiado.
 
-El kernel de Linux es el núcleo del sistema operativo y genera mensajes sobre sus operaciones, estado del hardware y posibles problemas. Acceder a esta información es crucial para la administración del sistema y la resolución de problemas. Aquí es donde entra el registro del kernel (kernel log).
+## Leer el búfer circular del kernel
 
-### El Búfer de Anillo del Kernel y dmesg
+`dmesg` lee los mensajes del búfer circular del kernel:
 
-Durante el arranque, su sistema registra una gran cantidad de información desde el búfer de anillo del kernel. Este búfer contiene mensajes sobre la carga de controladores de hardware, actualizaciones de estado del kernel y otros eventos que ocurren durante el proceso de inicio.
+```bash
+$ dmesg --human
+```
 
-Este registro se puede ver usando el comando `dmesg`. El contenido a menudo también se escribe en `/var/log/dmesg`, pero tenga en cuenta que este archivo generalmente se borra y se vuelve a escribir en cada reinicio. Aunque quizás no lo necesite a diario, la salida de `dmesg` es el primer lugar para verificar si encuentra un problema de hardware o un problema durante el arranque.
+El búfer tiene una capacidad limitada, por lo que los mensajes nuevos pueden sobrescribir los antiguos. El acceso también puede estar restringido a usuarios con privilegios. `dmesg --follow` sigue los mensajes nuevos del kernel en las implementaciones compatibles; detenlo después de una reproducción limitada.
 
-### El Archivo Principal de Registro del Kernel
+:::single-choice{#kernel-log-ring-buffer-limit} ¿Por qué puede faltar un evento antiguo del kernel en la salida actual de `dmesg`?
 
-Para un registro más persistente de la actividad del kernel, puede recurrir a `/var/log/kern.log`. Este archivo es el destino principal para los sistemas que utilizan el `registro del kernel de Linux` (kernel log linux). Captura información y eventos del kernel a medida que ocurren en su sistema en ejecución.
+::option[Los eventos del kernel solo pueden contener un carácter.]{#kernel-log-one-character explanation="Los mensajes del kernel pueden contener texto de diagnóstico y metadatos normales."}
+::option[`dmesg` elimina permanentemente todas las líneas después de mostrarlas.]{#kernel-log-display-deletes explanation="Una lectura normal no consume todos los mensajes mostrados del kernel."}
+::option[El búfer circular limitado puede haberlo sobrescrito.]{#kernel-log-overwritten .correct explanation="El búfer en memoria conserva una cantidad limitada de datos de mensajes del kernel."}
+:::
 
-El archivo `kern.log` también incluye la salida de `dmesg`, lo que lo convierte en una fuente completa de mensajes relacionados con el kernel. Si necesita investigar un `registro del kernel` (kernel log) de un evento pasado que ya no está en el búfer de anillo, el `registro kern` (kern log) es el lugar correcto para buscar.
+## Usar marcas de tiempo legibles
 
-### Por Qué Son Importantes los Registros del Kernel
+Las marcas de tiempo sin procesar del kernel suelen ser relativas al arranque. `dmesg --ctime` o `--human` pueden mostrarlas como horas de reloj, pero los valores convertidos dependen del historial del reloj y pueden ser inexactos si este cambió después del arranque. Conserva los tiempos relativos al arranque cuando sea importante ordenar los eventos con precisión.
 
-Comprender cómo leer el `registro del kernel` (kernel log) es una habilidad fundamental. Estos registros proporcionan información detallada sobre la interacción de su sistema con su hardware. Al examinar `kern.log` o la salida de `dmesg`, puede diagnosticar problemas de controladores, investigar comportamientos inesperados del hardware y monitorear la salud general del kernel.
+:::single-choice{#kernel-log-timestamp-caution} ¿Por qué deben interpretarse con cuidado las marcas de tiempo de reloj convertidas por `dmesg`?
 
-## Exercise
+::option[Siempre hacen referencia a otra máquina.]{#kernel-log-other-machine explanation="Se derivan localmente, aunque los cambios del reloj pueden afectar a la conversión."}
+::option[Dependen de relacionar el tiempo relativo al arranque con un reloj que puede cambiar.]{#kernel-log-clock-change .correct explanation="La sincronización horaria o los cambios manuales del reloj pueden hacer que la hora mostrada resulte engañosa."}
+::option[Muestran el espacio libre del sistema de archivos en lugar de la hora.]{#kernel-log-free-space explanation="Las opciones de marcas de tiempo siguen mostrando horas, no capacidad de almacenamiento."}
+:::
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la administración de usuarios y grupos en Linux:
+## Consultar registros persistentes del kernel
 
-1. **[Administrar cuentas de usuario de Linux con useradd, usermod y userdel](https://labex.io/es/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Practique el ciclo de vida completo de la administración de usuarios, desde la creación y aseguramiento de nuevas cuentas hasta su modificación y eliminación.
-2. **[Administrar grupos de Linux con groupadd, usermod y groupdel](https://labex.io/es/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Obtenga experiencia práctica con las utilidades básicas de la línea de comandos para la administración de grupos, incluida la creación de nuevos grupos, la modificación de membresías de usuarios y la eliminación de grupos.
-3. **[Configurar cuentas de usuario y privilegios Sudo en Linux](https://labex.io/es/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas esenciales para administrar cuentas de usuario y privilegios sudo para mejorar la seguridad de un sistema Linux, incluida la aplicación de políticas de contraseñas y la concesión de permisos administrativos.
+En una máquina con systemd, consulta los registros del kernel del arranque actual con:
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la administración de usuarios y grupos en Linux.
+```bash
+$ journalctl -k -b
+```
 
-## Quiz Question
+Si el almacenamiento persistente del diario conservó arranques anteriores, inspecciona la lista y selecciona uno:
 
-¿Qué comando se puede usar para ver los mensajes de arranque del kernel? Por favor, responda usando solo el comando en inglés en minúsculas.
+```bash
+$ journalctl --list-boots
+$ journalctl -k -b -1
+```
 
-## Quiz Answer
+El enrutamiento tradicional de syslog puede crear `/var/log/kern.log` u otro archivo, pero esto depende de la configuración. Un archivo `/var/log/dmesg` guardado tampoco es universal y puede representar únicamente una instantánea del momento del arranque.
 
-dmesg
+:::single-choice{#kernel-log-previous-boot} ¿Qué comando solicita los mensajes del kernel del arranque anterior conservado?
+
+::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="Los mensajes del kernel se seleccionan con `-k`, y seguirlos no elige el arranque anterior."}
+::option[`dmesg --clear`]{#kernel-log-clear explanation="Borrar cambia el estado del búfer y no recupera un arranque anterior."}
+::option[`journalctl -k -b -1`]{#kernel-log-previous .correct explanation="El filtro del kernel combinado con el desplazamiento de arranque menos uno selecciona el arranque anterior conservado."}
+:::
+
+## Investigar un evento del kernel
+
+Identifica el arranque, la marca de tiempo, el dispositivo, el subsistema y la acción que tenía lugar en ese momento. Consulta los registros circundantes del kernel y de los servicios, y compáralos después con el inventario del hardware y el estado actual:
+
+```bash
+$ journalctl -k -b --since '10 minutes ago'
+$ lspci -k
+$ lsblk
+```
+
+Utiliza únicamente herramientas pertinentes para el subsistema. Antes de recargar un controlador, desvincular un dispositivo o reiniciar, evalúa el impacto sobre el almacenamiento, la red, la consola y los servicios, y conserva un acceso de recuperación.
+
+:::single-choice{#kernel-log-warning-response} ¿Cuál es la mejor respuesta ante una sola línea de advertencia del kernel?
+
+::option[Descargar inmediatamente todos los controladores cargados.]{#kernel-log-unload-all explanation="Esto puede interrumpir dispositivos esenciales y no aísla la causa de la advertencia."}
+::option[Suponer que hay que sustituir toda la máquina.]{#kernel-log-replace-machine explanation="Un solo registro no proporciona pruebas suficientes para esa conclusión."}
+::option[Correlacionarla con los eventos circundantes y el estado actual del subsistema.]{#kernel-log-correlate .correct explanation="Se necesitan contexto y un impacto reproducible antes de elegir una medida correctiva."}
+:::
+
+## Resumen
+
+Ahora puedes distinguir los mensajes activos del búfer del kernel de sus registros conservados.
+
+1. Lee el búfer circular limitado con `dmesg`.
+2. Interpreta con cuidado las marcas de tiempo relativas al arranque y las convertidas.
+3. Consulta el arranque actual o los anteriores con `journalctl -k`.
+4. Correlaciona los mensajes del kernel antes de realizar cambios que puedan causar interrupciones.

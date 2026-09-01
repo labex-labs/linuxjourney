@@ -1,70 +1,106 @@
 ---
-index: 1
+lesson_id: "file-permissions"
+course_id: "permissions"
 lang: "zh"
+order_index: 1
 title: "文件权限"
+description: "学习如何读取 Linux 文件类型，以及所有者、组和其他用户的权限位。"
 meta_title: "文件权限 - 权限设置"
 meta_description: "我们完整 Linux 教程的关键部分。了解 Linux 文件权限，包括用户、组和其他的 rwx 位。掌握 `ls -l` 输出并理解文件模式。"
 meta_keywords: "文件权限，Linux 文件权限，学习 Linux 的最佳方式，完整 Linux 教程，rwx 权限，ls -l 命令，文件模式，Linux 指南"
 ---
 
-## Lesson Content
+Linux 通过类似文件的接口表示许多资源，每个文件系统对象都有控制访问的元数据。学会阅读这些元数据，是安全处理文件和目录的基础。
 
-在 Linux 中，万物皆文件，管理对这些文件的访问是一项关键技能。理解**文件权限**是系统安全和管理的基础。让我们探讨如何读取和解释这些权限。
+## 阅读长列表
 
-### 文件权限简介
-
-当我们以详细格式列出文件时，会看到一串定义其权限的字符。让我们使用 `ls -l` 命令看一个例子：
+使用 `ls -l` 显示长列表：
 
 ```bash
-$ ls -l Desktop/
-drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 .
+$ ls -ld Desktop/
+drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 ```
 
-此输出提供了大量信息，但我们将重点关注第一列，即 `drwxr-xr-x`，它代表文件类型及其权限。
+第一个字段 `drwxr-xr-x` 由一个文件类型字符和九个权限字符组成。列表还表明 `pete` 是所有者，`penguins` 是与该目录关联的组。
 
-### 解码权限字符串
+第一个字符描述对象类型。常见值包括：
 
-权限字符串有四个主要部分。第一个字符指示文件类型。在我们的例子中，**d** 表示 `Desktop` 是一个目录。对于常规文件，您会看到一个连字符 (`-`)。
+- `-` 表示普通文件
+- `d` 表示目录
+- `l` 表示符号链接
 
-接下来的九个字符代表实际的**文件权限**。它们被分成三组，每组三个字符。为了更清楚，我们可以这样可视化它们：
+还有其他特殊文件类型。剩余九个字符是访问权限：
 
-```plaintext
+```text
 d | rwx | r-x | r-x
 ```
 
-这些组中每个字符对应一个特定的权限：
+:::single-choice{#file-permissions-type-character} 在 `drwxr-xr-x` 中，第一个 `d` 表示什么？
 
-- **r**: 读取权限。
-- **w**: 写入权限。
-- **x**: 执行权限。
-- **-**: 未授予权限。
+::option[该对象是符号链接。]{#file-permissions-type-link explanation="符号链接通常在文件类型位置显示为 `l`。"}
+::option[该对象是目录。]{#file-permissions-type-directory .correct explanation="第一个字符是文件类型，`d` 标识目录。"}
+::option[所有者拥有删除权限。]{#file-permissions-type-delete explanation="Linux 模式字符串不使用 `d` 表示删除权限；第一个位置描述对象类型。"}
+:::
 
-这些权限的含义会根据它是文件还是目录而略有不同。例如，目录上的执行 (`x`) 权限允许您进入该目录，而文件上的执行权限则允许您将其作为程序运行。
+## 理解 `r`、`w` 和 `x`
 
-### 用户、组和其他权限
+每个权限三元组使用以下字符：
 
-这三组权限适用于不同级别的访问：
+- `r` 授予读取权限。
+- `w` 授予写入权限。
+- `x` 授予执行权限。
+- `-` 表示没有该权限。
 
-1. **用户 (所有者)**：第一组 (`rwx`) 适用于文件的所有者，在我们的例子中是 `pete`。所有者具有读取、写入和执行权限。
-2. **组 (Group)**：第二组 (`r-x`) 适用于与文件关联的组，即 `penguins`。该组成员具有读取和执行权限，但不能写入文件。
-3. **其他 (Other)**：最后\_一组 (`r-x`) 适用于系统上的所有其他用户。他们具有读取和执行权限。
+对于普通文件，读取允许访问内容，写入允许修改内容，执行允许内核尝试把它作为程序运行。如果文件格式、解释器行、挂载选项或其他安全控制不允许，执行仍可能失败。
 
-掌握**文件权限**是一个核心概念，作为您继续学习本**完整 Linux 教程**的基础至关重要。
+对于目录，这些含义针对目录项：
 
-## Exercise
+- 读取允许列出目录中的名称。
+- 写入允许创建或删除目录项，通常还需结合执行权限。
+- 执行也称搜索权限，允许遍历目录并按名称访问目录项。
 
-**学习 Linux 的最佳方式**是通过动手实践。这些练习将帮助您掌握 Linux **文件权限**、用户和组：
+删除文件主要受父目录权限控制，而不是文件自身的写入位。
 
-1. **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 学习基本的 Linux 用户和组管理概念，包括创建用户、探索组成员身份、理解文件权限以及操纵文件所有权。
-2. **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 练习创建新用户帐户、设置自定义组以及管理组成员身份，模拟现实世界中的系统管理任务。
-3. **[查找文件](https://labex.io/zh/labs/linux-find-a-file-17993)** - 通过查找特定文件并设置其访问权限来应用您的文件权限知识，确保只有您是授权用户。
+:::single-choice{#file-permissions-directory-execute} 目录的执行权限主要允许什么？
 
-这些实验将帮助您在实际场景中应用这些概念，并增强您在 Linux 中管理权限和用户的信心。
+::option[运行目录中存储的每个普通文件。]{#file-permissions-directory-run-files explanation="目录的执行位不会授予其中每个文件执行权限。"}
+::option[更改目录中每个文件的内容。]{#file-permissions-directory-edit-files explanation="写入文件内容取决于文件权限和其他访问控制。"}
+::option[遍历目录并按名称访问目录项。]{#file-permissions-directory-search .correct explanation="目录执行权限，也称搜索权限，允许通过该目录进行路径名遍历。"}
+:::
 
-## Quiz Question
+## 所有者、组和其他类别
 
-用于可执行文件的权限位是什么？请用英语回答，并密切注意大小写敏感性。
+九个模式字符按固定顺序组成三个三元组：
 
-## Quiz Answer
+1. **所有者**：当进程的有效用户 ID 与文件所有者匹配时使用的权限。
+2. **组**：当适用的进程组 ID 与文件组匹配时使用的权限。
+3. **其他**：前两个类别都不匹配时使用的权限。
 
-x
+内核会选择一个适用类别，不会组合三个三元组来寻找最宽松的结果。访问控制列表、挂载选项、capabilities 或强制访问控制等其他机制还可能影响最终决策。
+
+在示例中，所有者三元组是 `rwx`，组和其他都是 `r-x`。所有者可以读取、写入和搜索目录。组和其他类别可以读取及搜索，但不能通过普通模式位创建或删除目录项。
+
+:::single-choice{#file-permissions-triplet-order} 在文件类型字符之后，三个权限三元组按什么顺序出现？
+
+::option[组、所有者、其他。]{#file-permissions-order-group-first explanation="组三元组排在第二，而不是第一。"}
+::option[其他、组、所有者。]{#file-permissions-order-other-first explanation="其他三元组排在最后，所有者三元组排在第一。"}
+::option[所有者、组、其他。]{#file-permissions-order-owner-first .correct explanation="九个权限字符始终按所有者、组和其他的顺序显示三元组。"}
+:::
+
+:::single-choice{#file-permissions-example-group} 在 `drwxr-xr-x` 中，组类别具有哪些普通权限？
+
+::option[读取和写入。]{#file-permissions-group-read-write explanation="组三元组为 `r-x`，所以写入位置是 `-`。"}
+::option[写入和执行。]{#file-permissions-group-write-execute explanation="组三元组的第一个位置是 `r`，而不是 `w`。"}
+::option[读取和执行。]{#file-permissions-group-read-execute .correct explanation="中间的三元组为 `r-x`，授予读取和执行，但不授予写入。"}
+:::
+
+要在隔离环境中巩固这些概念，可以尝试 [Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002) 实验。它提供读取模式以及更改所有权和权限的练习。
+
+## 总结
+
+现在，你可以解释 Linux 长列表中的基本权限字段。
+
+1. 把文件类型字符与九个权限位分开。
+2. 根据对象是文件还是目录来解释 `r`、`w` 和 `x`。
+3. 把模式分成所有者、组和其他三元组。
+4. 把三元组与 `ls -l` 显示的所有者和组联系起来。

@@ -1,0 +1,123 @@
+id: filesystem
+category:
+  id: journeyman
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/filesystem.png
+order_index: 1
+translations:
+  en:
+    title: "The Filesystem"
+    description: "Learn about the Linux filesystem, the different types of filesystems, partitioning, and more."
+    faqs:
+      - question: "What storage topics are covered?"
+        answer: "The course covers disk anatomy, partitioning, filesystem types and creation, mounting, /etc/fstab, inodes, links, swap, usage reporting, and repair."
+      - question: "Will I need a spare disk to follow the course?"
+        answer: "No. You can learn the concepts without changing a disk. Use a disposable virtual disk or test environment before practicing partitioning or repair commands."
+      - question: "What is the difference between a disk and a filesystem?"
+        answer: "A disk is a storage device that may contain partitions, while a filesystem organizes files and metadata inside a partition or other storage volume."
+    meta_title: "Linux Filesystem Course"
+    meta_description: "Explore Linux filesystems, disk layout, partitions, inodes, mounting, fstab, swap, links, disk usage, creation, and filesystem repair."
+    meta_keywords: "Linux filesystem, disk partitioning, mount, fstab, inodes, swap, symlinks, filesystem repair, disk usage"
+  de:
+    title: "Das Dateisystem"
+    description: "Lernen Sie das Linux-Dateisystem, verschiedene Dateisystemtypen, Partitionierung und weitere Grundlagen kennen."
+    faqs:
+      - question: "Welche Speicherthemen werden behandelt?"
+        answer: "Der Kurs behandelt Festplattenaufbau, Partitionierung, Dateisystemtypen und -erstellung, Mounten, /etc/fstab, Inodes, Links, Swap, Nutzungsberichte und Reparatur."
+      - question: "Benötige ich eine Ersatzdiskette, um am Kurs teilnehmen zu können?"
+        answer: "Nein. Sie können die Konzepte erlernen, ohne die Festplatte zu wechseln. Verwenden Sie eine verfügbare virtuelle Festplatte oder Testumgebung, bevor Sie Partitionierungs- oder Reparaturbefehle üben."
+      - question: "Was ist der Unterschied zwischen einer Festplatte und einem Dateisystem?"
+        answer: "Eine Festplatte ist ein Speichergerät, das Partitionen enthalten kann, während ein Dateisystem Dateien und Metadaten innerhalb einer Partition oder eines anderen Speichervolumens organisiert."
+    meta_title: "Linux-Dateisystemkurs"
+    meta_description: "Entdecken Sie Linux-Dateisysteme, Festplattenlayout, Partitionen, Inodes, Mounten, fstab, Swap, Links, Festplattennutzung, Erstellung und Dateisystemreparatur."
+    meta_keywords: "Linux-Dateisystem, Festplattenpartitionierung, Mounten, fstab, Inodes, Swap, Symlinks, Dateisystemreparatur, Festplattennutzung"
+  es:
+    title: "El Sistema de Archivos"
+    description: "Aprende sobre el sistema de archivos de Linux, sus distintos tipos, el particionado y otros conceptos."
+    faqs:
+      - question: "¿Qué temas de almacenamiento se tratan?"
+        answer: "El curso cubre la anatomía del disco, la partición, los tipos y la creación de sistemas de archivos, el montaje, /etc/fstab, inodos, enlaces, intercambio, informes de uso y reparación."
+      - question: "¿Necesitaré un disco de repuesto para seguir el curso?"
+        answer: "No. Puedes aprender los conceptos sin cambiar un disco. Utilice un disco virtual desechable o un entorno de prueba antes de practicar los comandos de partición o reparación."
+      - question: "¿Cuál es la diferencia entre un disco y un sistema de archivos?"
+        answer: "Un disco es un dispositivo de almacenamiento que puede contener particiones, mientras que un sistema de archivos organiza archivos y metadatos dentro de una partición u otro volumen de almacenamiento."
+    meta_title: "Curso de sistema de archivos Linux"
+    meta_description: "Explore los sistemas de archivos de Linux, el diseño del disco, las particiones, los inodos, el montaje, fstab, el intercambio, los enlaces, el uso del disco, la creación y la reparación del sistema de archivos."
+    meta_keywords: "Sistema de archivos Linux, partición de disco, montaje, fstab, inodos, intercambio, enlaces simbólicos, reparación del sistema de archivos, uso del disco"
+  fr:
+    title: "Le Système de Fichiers"
+    description: "Découvrez le système de fichiers Linux, les différents types de systèmes de fichiers, le partitionnement et plus encore."
+    faqs:
+      - question: "Quels sujets de stockage sont abordés ?"
+        answer: "Le cours couvre l'anatomie du disque, le partitionnement, les types et la création de systèmes de fichiers, le montage, /etc/fstab, les inodes, les liens, l'échange, les rapports d'utilisation et la réparation."
+      - question: "Aurai-je besoin d'un disque de rechange pour suivre le cours ?"
+        answer: "Non. Vous pouvez apprendre les concepts sans changer de disque. Utilisez un disque virtuel jetable ou un environnement de test avant de pratiquer les commandes de partitionnement ou de réparation."
+      - question: "Quelle est la différence entre un disque et un système de fichiers ?"
+        answer: "Un disque est un périphérique de stockage pouvant contenir des partitions, tandis qu'un système de fichiers organise les fichiers et les métadonnées à l'intérieur d'une partition ou d'un autre volume de stockage."
+    meta_title: "Cours sur le système de fichiers Linux"
+    meta_description: "Explorez les systèmes de fichiers Linux, la disposition des disques, les partitions, les inodes, le montage, fstab, le swap, les liens, l'utilisation du disque, la création et la réparation du système de fichiers."
+    meta_keywords: "Système de fichiers Linux, partitionnement de disque, montage, fstab, inodes, swap, liens symboliques, réparation du système de fichiers, utilisation du disque"
+  ja:
+    title: "ファイルシステム"
+    description: "Linux ファイルシステム、さまざまな種類のファイルシステム、パーティショニングなどについて学びましょう。"
+    faqs:
+      - question: "ストレージに関するどのようなトピックが取り上げられますか？"
+        answer: "このコースでは、ディスクの構造、パーティション分割、ファイルシステムのタイプと作成、マウント、/etc/fstab、inode、リンク、スワップ、使用状況レポート、修復について説明します。"
+      - question: "コースを受講するには予備のディスクが必要ですか？"
+        answer: "いいえ。ディスクを交換せずに概念を学習できます。パーティショニングまたは修復コマンドを実行する前に、使い捨て仮想ディスクまたはテスト環境を使用してください。"
+      - question: "ディスクとファイルシステムの違いは何ですか？"
+        answer: "ディスクはパーティションを含むストレージ デバイスであり、ファイルシステムはパーティションまたはその他のストレージ ボリューム内でファイルとメタデータを編成します。"
+    meta_title: "Linux ファイルシステム コース"
+    meta_description: "Linux ファイルシステム、ディスクレイアウト、パーティション、inode、マウント、fstab、スワップ、リンク、ディスクの使用状況、作成、およびファイルシステムの修復を調べます。"
+    meta_keywords: "Linux ファイルシステム，ディスクパーティショニング，マウント，fstab, inode, スワップ，シンボリックリンク，ファイルシステム修復，ディスク使用量"
+  ko:
+    title: "파일 시스템"
+    description: "Linux 파일 시스템, 다양한 파일 시스템 유형, 파티셔닝 등을 알아보세요."
+    faqs:
+      - question: "어떤 저장 주제를 다루나요?"
+        answer: "이 과정에서는 디스크 분석, 파티셔닝, 파일 시스템 유형 및 생성, 마운트, /etc/fstab, inode, 링크, 스왑, 사용량 보고 및 수리를 다룹니다."
+      - question: "강좌를 따라가려면 예비 디스크가 필요합니까?"
+        answer: "아니요. 디스크를 교체하지 않고도 개념을 배울 수 있습니다. 파티션 나누기 또는 복구 명령을 실행하기 전에 일회용 가상 디스크나 테스트 환경을 사용하십시오."
+      - question: "디스크와 파일 시스템의 차이점은 무엇인가요?"
+        answer: "디스크는 파티션을 포함할 수 있는 저장 장치인 반면, 파일 시스템은 파티션이나 기타 저장 볼륨 내부에 파일과 메타데이터를 구성합니다."
+    meta_title: "Linux 파일 시스템 강좌"
+    meta_description: "Linux 파일 시스템, 디스크 레이아웃, 파티션, inode, 마운트, fstab, 스왑, 링크, 디스크 사용량, 생성 및 파일 시스템 복구를 살펴보세요."
+    meta_keywords: "Linux 파일 시스템, 디스크 파티셔닝, 마운트, fstab, inode, 스왑, 심볼릭 링크, 파일 시스템 복구, 디스크 사용량"
+  pt:
+    title: "O Sistema de Arquivos"
+    description: "Aprenda sobre o sistema de arquivos Linux, seus diferentes tipos, particionamento e outros conceitos."
+    faqs:
+      - question: "Quais tópicos de armazenamento são abordados?"
+        answer: "O curso cobre anatomia de disco, particionamento, tipos e criação de sistemas de arquivos, montagem, /etc/fstab, inodes, links, swap, relatórios de uso e reparo."
+      - question: "Precisarei de um disco reserva para seguir o curso?"
+        answer: "Não. Você pode aprender os conceitos sem alterar um disco. Use um disco virtual descartável ou ambiente de teste antes de praticar comandos de particionamento ou reparo."
+      - question: "Qual é a diferença entre um disco e um sistema de arquivos?"
+        answer: "Um disco é um dispositivo de armazenamento que pode conter partições, enquanto um sistema de arquivos organiza arquivos e metadados dentro de uma partição ou outro volume de armazenamento."
+    meta_title: "Curso de sistema de arquivos Linux"
+    meta_description: "Explore sistemas de arquivos Linux, layout de disco, partições, inodes, montagem, fstab, swap, links, uso de disco, criação e reparo de sistema de arquivos."
+    meta_keywords: "Sistema de arquivos Linux, particionamento de disco, montagem, fstab, inodes, swap, links simbólicos, reparo de sistema de arquivos, uso de disco"
+  ru:
+    title: "Файловая система"
+    description: "Изучите файловую систему Linux, различные типы файловых систем, разметку дисков и другие основы."
+    faqs:
+      - question: "Какие темы хранения рассматриваются?"
+        answer: "Курс охватывает анатомию диска, разбиение на разделы, типы и создание файловых систем, монтирование, /etc/fstab, индексные дескрипторы, ссылки, подкачку, отчеты об использовании и восстановление."
+      - question: "Нужен ли мне запасной диск для прохождения курса?"
+        answer: "Нет. Вы можете изучить концепции, не меняя диск. Прежде чем практиковать команды разметки или восстановления, используйте одноразовый виртуальный диск или тестовую среду."
+      - question: "В чем разница между диском и файловой системой?"
+        answer: "Диск — это устройство хранения, которое может содержать разделы, а файловая система организует файлы и метаданные внутри раздела или другого тома хранения."
+    meta_title: "Курс по файловой системе Linux"
+    meta_description: "Изучите файловые системы Linux, структуру диска, разделы, индексные дескрипторы, монтирование, fstab, подкачку, ссылки, использование диска, создание и восстановление файловой системы."
+    meta_keywords: "Файловая система Linux, разбиение диска на разделы, монтирование, fstab, индексные дескрипторы, подкачка, символические ссылки, восстановление файловой системы, использование диска"
+  zh:
+    title: "文件系统"
+    description: "了解 Linux 文件系统、不同的文件系统类型、磁盘分区及其他基础知识。"
+    faqs:
+      - question: "涵盖哪些存储主题？"
+        answer: "该课程涵盖磁盘解剖、分区、文件系统类型和创建、安装、/etc/fstab、inode、链接、交换、使用情况报告和修复。"
+      - question: "我需要备用磁盘来学习课程吗？"
+        answer: "不需要，不用换盘就可以学习概念。在练习分区或修复命令之前，请使用一次性虚拟磁盘或测试环境。"
+      - question: "磁盘和文件系统有什么区别？"
+        answer: "磁盘是可能包含分区的存储设备，而文件系统则在分区或其他存储卷内组织文件和元数据。"
+    meta_title: "Linux 文件系统课程"
+    meta_description: "探索 Linux 文件系统、磁盘布局、分区、索引节点、安装、fstab、交换、链接、磁盘使用、创建和文件系统修复。"
+    meta_keywords: "Linux 文件系统，磁盘分区，挂载，fstab, inode, 交换，符号链接，文件系统修复，磁盘使用"

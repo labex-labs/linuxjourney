@@ -1,53 +1,101 @@
 ---
-index: 5
+lesson_id: "creating-filesystems"
+course_id: "filesystem"
 lang: "es"
-title: "Creación de Sistemas de Archivos"
-meta_title: "Crear Sistemas de Archivos - El Sistema de Archivos"
-meta_description: "Aprenda a crear un sistema de archivos en una partición Linux usando el comando mkfs. Esta guía para principiantes cubre gestión de discos, formateo con ext4 y pasos esenciales para la partición en Linux."
-meta_keywords: "mkfs, crear sistema de archivos, ext4, partición Linux, tutorial Linux, Linux para principiantes, gestión de discos, guía Linux, formatear disco linux"
+order_index: 5
+title: "Crear sistemas de archivos"
+description: "Aprende a verificar el destino de un dispositivo de bloques y crear un sistema de archivos con herramientas específicas del formato."
+meta_title: "Crear sistemas de archivos - El sistema de archivos"
+meta_description: "Aprende a verificar un dispositivo y crear un sistema de archivos Linux con mkfs y herramientas específicas del formato."
+meta_keywords: "mkfs, crear sistema de archivos, ext4, particiones Linux, formatear disco Linux"
 ---
 
-## Lesson Content
+Crear un sistema de archivos escribe estructuras nuevas de asignación y metadatos en un dispositivo de bloques. Es un paso de inicialización destructivo, no un simple cambio de etiqueta. Utiliza solo almacenamiento desechable para practicar y conserva una copia de seguridad probada antes de dar formato a un dispositivo que haya contenido datos valiosos.
 
-Después de haber particionado un disco con éxito, el siguiente paso crucial en la gestión de discos de Linux es crear un sistema de archivos. Este proceso, a menudo llamado formateo, organiza la partición para que pueda almacenar archivos y directorios.
+## Comprender `mkfs`
 
-### El Comando mkfs
-
-La herramienta principal para esta tarea es `mkfs` (make filesystem, crear sistema de archivos). Es un comando versátil que te permite crear una amplia variedad de sistemas de archivos.
-
-Veamos un ejemplo típico:
+`mkfs` suele ser una interfaz que delega en un programa específico del sistema de archivos, como `mkfs.ext4`, `mkfs.xfs` o `mkfs.btrfs`. Una orden genérica tiene esta forma:
 
 ```bash
-sudo mkfs -t ext4 /dev/sdb2
+$ sudo mkfs -t ext4 /dev/VERIFIED-PARTITION
 ```
 
-Aquí tienes un desglose del comando:
+El marcador de posición solo debe sustituirse después de verificar el destino. La sintaxis equivalente específica del formato suele ser:
 
-- **`sudo`**: Ejecuta el comando con privilegios administrativos, lo cual es necesario para tareas de gestión de discos.
-- **`mkfs`**: El comando para crear un sistema de archivos.
-- **`-t ext4`**: La opción `-t` especifica el tipo de sistema de archivos. En este caso, estamos creando un sistema de archivos `ext4`.
-- **`/dev/sdb2`**: Esta es la partición de destino donde se creará el sistema de archivos.
+```bash
+$ sudo mkfs.ext4 /dev/VERIFIED-PARTITION
+```
 
-### Tipos Comunes de Sistemas de Archivos
+Las opciones compatibles, los valores predeterminados, los conjuntos de funciones y las preguntas antes de sobrescribir difieren entre implementaciones. Lee el manual local del formateador exacto en vez de suponer que todos los programas subyacentes de `mkfs` se comportan igual.
 
-Aunque `ext4` es una opción predeterminada robusta y ampliamente utilizada para muchas distribuciones de Linux, `mkfs` soporta otros. Puedes encontrar diferentes tipos dependiendo del caso de uso, como XFS, conocido por su alto rendimiento con archivos grandes, o Btrfs, que ofrece características modernas como instantáneas (snapshots). Para uso general, `ext4` es una excelente opción.
+:::single-choice{#creating-filesystems-mkfs-role} ¿Qué solicita `mkfs -t ext4 TARGET`?
 
-### Una Palabra de Precaución
+::option[Montar un sistema de archivos existente sin modificarlo.]{#creating-filesystems-mount-existing explanation="Montar es una operación independiente; mkfs inicializa metadatos en el dispositivo."}
+::option[Crear estructuras de un sistema de archivos ext4 en el destino.]{#creating-filesystems-create-ext4 .correct explanation="La interfaz selecciona la implementación de formateo ext4 para el dispositivo de bloques indicado."}
+::option[Mostrar todos los sistemas de archivos montados en ese momento.]{#creating-filesystems-list-mounted explanation="Las herramientas como `findmnt` realizan el inventario de montajes de solo lectura."}
+:::
 
-Solo debes crear un sistema de archivos en una partición recién creada o en un disco que tengas la intención de borrar por completo. Ejecutar el comando `mkfs` en una partición que ya contiene datos es una operación destructiva. Eliminará permanentemente todos los datos existentes y es probable que corrompas el sistema de archivos si intentas crear uno nuevo encima de uno existente sin la preparación adecuada. Siempre verifica dos veces tu dispositivo de destino para evitar la pérdida accidental de datos.
+## Verificar todas las capas de almacenamiento
 
-## Exercise
+Antes de dar formato, identifica el destino por modelo, número de serie, tamaño, topología, enlace persistente y función prevista:
 
-La práctica es clave para dominar las habilidades de Linux. Este laboratorio práctico te ayudará a reforzar tu comprensión de la gestión de sistemas de archivos de Linux:
+```bash
+$ lsblk -o NAME,PATH,TYPE,SIZE,MODEL,SERIAL,FSTYPE,UUID,MOUNTPOINTS
+$ findmnt --real
+$ sudo wipefs --no-act /dev/VERIFIED-PARTITION
+```
 
-1. **[Gestionar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - En este laboratorio, aprenderás a gestionar particiones de disco y sistemas de archivos en Linux. Usarás `fdisk` para crear una nueva partición, la formatearás con `ext4` (usando `mkfs`), la montarás, configurarás el montaje persistente en `/etc/fstab` y crearás una partición de intercambio (swap), todo en un disco virtual secundario seguro.
+`wipefs --no-act` comunica las firmas reconocidas sin borrarlas. Comprueba también el uso como intercambio, LVM, RAID, cifrado, máquina virtual, contenedor o aplicación. Un dispositivo puede estar activo aunque `MOUNTPOINTS` esté vacío.
 
-Este laboratorio te ayudará a aplicar los conceptos de creación y gestión de sistemas de archivos en escenarios del mundo real y a ganar confianza con la gestión de discos en Linux.
+Desmonta o desactiva cada capa pertinente mediante su propia herramienta. Vuelve a comprobar la identidad inmediatamente antes de usar el formateador porque los nombres de enumeración pueden cambiar.
 
-## Quiz Question
+:::single-choice{#creating-filesystems-wipefs-no-act} ¿Qué proporciona `wipefs --no-act TARGET` en este flujo de trabajo?
 
-What command is used to create a filesystem? Please answer in English.
+::option[Un informe de solo lectura de las firmas reconocidas.]{#creating-filesystems-signature-report .correct explanation="El modo no-act ayuda a revelar firmas de sistemas de archivos, tablas de particiones, RAID u otros formatos sin eliminarlas."}
+::option[Un sistema de archivos vacío nuevo y listo para montar.]{#creating-filesystems-wipefs-formats explanation="Examinar firmas no inicializa un sistema de archivos nuevo."}
+::option[Una garantía de que ningún proceso utiliza el destino.]{#creating-filesystems-wipefs-no-users explanation="El uso debe comprobarse por separado en los montajes y en toda la pila de almacenamiento."}
+:::
 
-## Quiz Answer
+## Seleccionar deliberadamente el sistema de archivos
 
-mkfs
+Elige un tipo compatible con la distribución, el entorno de arranque, las herramientas de copia de seguridad y reparación y la carga de trabajo. Considera los límites necesarios, las instantáneas, las sumas de comprobación, las cuotas, las capas de cifrado, la ampliación o reducción y el acceso multiplataforma.
+
+No elijas un formato solo porque sea popular. Por ejemplo, ext4, XFS y Btrfs tienen funciones operativas y procedimientos de recuperación distintos. Un dispositivo extraíble para interoperabilidad puede necesitar otro formato con una semántica de permisos Unix diferente.
+
+:::single-choice{#creating-filesystems-type-choice} ¿Cuál es una base sólida para seleccionar un tipo de sistema de archivos?
+
+::option[El nombre que sea más corto de escribir.]{#creating-filesystems-shortest-name explanation="La longitud de la orden no dice nada sobre la durabilidad, las funciones o la compatibilidad."}
+::option[La promesa de que nunca podrá producirse un fallo de almacenamiento.]{#creating-filesystems-no-failure explanation="Ningún sistema de archivos elimina los fallos de hardware ni la necesidad de copias de seguridad."}
+::option[Las necesidades de la carga junto con herramientas compatibles de copia de seguridad, arranque y recuperación.]{#creating-filesystems-supported-workflow .correct explanation="El formato debe satisfacer tanto los requisitos técnicos como la capacidad del entorno para operarlo y recuperarlo."}
+:::
+
+## Etiquetas, UUID y verificación
+
+Los formateadores suelen generar un UUID del sistema de archivos y a menudo permiten establecer una etiqueta legible. Utiliza etiquetas suficientemente únicas para el entorno y asegúrate de que los sistemas de archivos clonados no conserven identificadores conflictivos cuando se monten juntos.
+
+Después de crearlo correctamente, examínalo sin montarlo:
+
+```bash
+$ lsblk -f /dev/VERIFIED-PARTITION
+$ sudo blkid /dev/VERIFIED-PARTITION
+```
+
+Registra el UUID para la configuración posterior del montaje. Crear un sistema de archivos no lo monta, no crea directorios de aplicaciones, no restaura copias de seguridad ni lo hace persistente entre arranques.
+
+:::single-choice{#creating-filesystems-after-mkfs} ¿Qué sigue siendo un paso independiente después de crear un sistema de archivos?
+
+::option[Montarlo en el directorio previsto.]{#creating-filesystems-mount-separate .correct explanation="Dar formato escribe las estructuras del sistema de archivos, mientras que montar lo une al árbol visible de directorios."}
+::option[Asignar cualquier capacidad al dispositivo de bloques.]{#creating-filesystems-capacity explanation="La partición o el dispositivo lógico subyacente ya proporciona la capacidad a la que se da formato."}
+::option[Crear desde cero el directorio `/dev` del kernel.]{#creating-filesystems-create-dev explanation="La gestión de nodos de dispositivo es independiente del formateo de un destino."}
+:::
+
+Utiliza [Gestionar particiones y sistemas de archivos de Linux](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) únicamente en el disco secundario desechable del laboratorio.
+
+## Resumen
+
+Ahora puedes describir la creación de un sistema de archivos como una operación destructiva verificada.
+
+1. Trata `mkfs` como una interfaz que delega en herramientas específicas del formato.
+2. Verifica la identidad persistente, las firmas y todos los consumidores activos.
+3. Selecciona un sistema de archivos según los requisitos de compatibilidad y recuperación.
+4. Examina el tipo, la etiqueta y el UUID generados antes de montar.

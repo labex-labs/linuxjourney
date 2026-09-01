@@ -1,44 +1,87 @@
 ---
-index: 5
+lesson_id: "boot-process-init"
+course_id: "boot-system"
 lang: "fr"
+order_index: 5
 title: "Processus de Démarrage : Init"
+description: "Découvrez comment le PID 1 initialise l'espace utilisateur, supervise les services, récupère les processus enfants et coordonne l'arrêt."
 meta_title: "Processus de Démarrage : Init - Démarrer le Système"
 meta_description: "Explorez le cœur du processus de démarrage Linux dans ce guide pour débutants. Apprenez les différents systèmes init Linux, incluant le traditionnel System V, Upstart, et la norme moderne, systemd. Comprenez comment ces systèmes démarrent et gèrent les services sur votre machine."
 meta_keywords: "Init Linux, systemd, System V init, Upstart, processus de démarrage Linux, tutoriel Linux, Linux débutant, guide Linux"
 ---
 
-## Lesson Content
+Le noyau lance le premier processus de l'espace utilisateur avec le PID 1 dans un espace de noms de PID. Sur un système Linux complet, ce processus init établit l'environnement de services. Dans un conteneur, le PID 1 peut être une petite enveloppe init ou l'application elle-même, mais il conserve des responsabilités particulières concernant les signaux et la récupération des processus enfants.
 
-Comme nous l'avons appris, le processus `init` est le premier processus à s'exécuter lors du démarrage de Linux. Il est le parent de tous les autres processus et est responsable du démarrage des services essentiels qui rendent votre système utilisable. Mais comment y parvient-il ?
+## Responsabilités du PID 1
 
-Il existe trois implémentations majeures du système d'init Linux, chacune avec une approche différente de la gestion des services.
+Un système init :
 
-### System V Init
+- démarre et supervise généralement les services, les connexions, les montages et d'autres unités de travail ;
+- ordonne ces travaux selon leurs dépendances et l'état cible configuré ;
+- adopte et récupère les processus enfants orphelins ;
+- réagit aux défaillances des services selon la politique définie ;
+- coordonne l'arrêt et le redémarrage ordonnés.
 
-System V init, souvent appelé `sysvinit`, est le système d'init traditionnel pour Linux. Il suit une procédure de démarrage séquentielle définie par des scripts. L'état du système est géré par des niveaux d'exécution (runlevels), où chaque niveau (par exemple, mode utilisateur unique, mode multi-utilisateur avec réseau) possède un ensemble spécifique de services à démarrer ou à arrêter. C'était la norme pendant longtemps dans le processus de démarrage Linux classique.
+La frontière exacte varie. La gestion des périphériques, le réseau, la journalisation et les tâches planifiées peuvent être des programmes distincts supervisés par init plutôt que du code intégré au PID 1.
 
-### Upstart
+:::single-choice{#boot-init-pid-one-role} Quelle responsabilité est propre au PID 1 dans son espace de noms de PID ?
 
-Trouvé sur les anciennes versions d'Ubuntu, Upstart est un système d'init basé sur les événements. Il s'est éloigné du modèle strictement séquentiel de System V. Au lieu de cela, Upstart démarre et arrête les services (appelés jobs) en réponse à des événements système, comme la disponibilité d'un périphérique réseau. Cela permet des temps de démarrage plus flexibles et plus rapides.
+::option[Compiler chaque application depuis ses sources à chaque démarrage.]{#boot-init-compile-apps explanation="Le démarrage normal des services utilise des programmes installés au lieu de reconstruire tous les logiciels."}
+::option[Définir la taille des secteurs physiques du disque.]{#boot-init-sector-size explanation="Le matériel de stockage et ses pilotes exposent la géométrie des secteurs avant qu'init ne gère les services."}
+::option[Adopter et récupérer les processus enfants orphelins.]{#boot-init-reap-orphans .correct explanation="Le PID 1 est le parent final et doit récupérer l'état de terminaison afin d'éviter l'accumulation de processus zombies."}
+:::
 
-### systemd
+## Init System V et niveaux d'exécution
 
-La norme moderne pour le système d'init Linux est `systemd`. C'est un système orienté objectif qui gère agressivement les dépendances. Au lieu de simplement démarrer une liste de services, vous définissez un état cible (comme une interface graphique), et `systemd` travaille à satisfaire toutes les dépendances pour cet objectif, démarrant souvent les services en parallèle pour accélérer considérablement le processus de démarrage.
+Le sysvinit traditionnel emploie une configuration comme `/etc/inittab` et des scripts de démarrage et d'arrêt propres à chaque niveau d'exécution. Un niveau d'exécution représente un mode de fonctionnement, mais le sens des niveaux numérotés peut différer selon les distributions. L'ordre des scripts suit des conventions et les outils de la distribution peuvent l'étendre ou le paralléliser.
 
-Nous avons un cours complet sur les systèmes d'init où nous plongerons plus en détail dans chacun de ces systèmes.
+Ne déduisez pas le système init actif de la seule existence de `/etc/init.d/` ; des scripts de compatibilité peuvent subsister alors que le PID 1 appartient à une autre implémentation.
 
-## Exercise
+:::single-choice{#boot-init-sysv-runlevel} Que représente un niveau d'exécution System V ?
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de la manière dont le système les gère :
+::option[Un numéro de version du noyau choisi par le chargeur.]{#boot-init-runlevel-kernel explanation="Le choix du noyau relève du chargeur et n'est pas codé par un niveau d'exécution init."}
+::option[Un mode de fonctionnement configuré et associé à des actions sur les services.]{#boot-init-runlevel-mode .correct explanation="Les dispositions SysV associent les niveaux à des ensembles de scripts de démarrage ou d'arrêt et à leur ordre."}
+::option[Le pourcentage actuel d'utilisation des inodes d'un système de fichiers.]{#boot-init-runlevel-inodes explanation="La capacité des métadonnées du système de fichiers n'a aucun rapport avec les modes de fonctionnement des services."}
+:::
 
-1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et en arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à comprendre le cycle de vie et le contrôle des processus, qui sont fondamentaux pour le fonctionnement d'`init`.
+## Systèmes fondés sur les événements et les dépendances
 
-Ces laboratoires vous aideront à appliquer ces concepts dans des scénarios réels et à gagner en confiance dans la gestion des processus Linux.
+Upstart a introduit un modèle de tâches piloté par les événements. Il a été utilisé par d'anciennes versions d'Ubuntu et quelques autres systèmes, mais présente aujourd'hui surtout un intérêt historique ou pour l'exploitation de systèmes anciens.
 
-## Quiz Question
+systemd est très répandu dans les distributions généralistes actuelles. Il modélise les services, sockets, montages, minuteurs, périphériques, cibles et autres ressources comme des unités. Les dépendances déclaratives et les mécanismes d'activation permettent aux travaux indépendants de progresser simultanément tout en respectant l'ordre nécessaire.
 
-Quel est le standard le plus récent pour l'init ? (Veuillez répondre uniquement en lettres anglaises minuscules)
+Parmi les autres conceptions actives d'init et de supervision figurent OpenRC, runit, s6 et l'init de BusyBox. « Le plus récent » n'est pas une règle de compatibilité utile : identifiez ce qu'exécute réellement le système et consultez sa documentation.
 
-## Quiz Answer
+:::single-choice{#boot-init-systemd-unit-model} Comment systemd représente-t-il les ressources gérées comme les services et les montages ?
 
-systemd
+::option[Comme des entrées de partitions primaires MBR.]{#boot-init-systemd-partitions explanation="Les métadonnées de partitionnement du disque n'ont aucun rapport avec les unités du gestionnaire de services."}
+::option[Uniquement comme des liens physiques vers l'exécutable du PID 1.]{#boot-init-systemd-hard-links explanation="Les unités sont des objets de configuration et d'exécution, pas de simples alias d'inodes."}
+::option[Comme des unités dotées de dépendances et de relations d'activation.]{#boot-init-systemd-units .correct explanation="Les types d'unités fournissent un modèle commun pour l'ordre, l'état et la supervision."}
+:::
+
+## Identifier le système init actif
+
+Inspectez le PID 1 plutôt que de vous fier à des fichiers installés :
+
+```bash
+$ ps -p 1 -o pid,comm,args=
+$ readlink /proc/1/exe
+```
+
+Les permissions, conteneurs et espaces de noms influencent ce que vous voyez. Une commande exécutée dans un conteneur indique le PID 1 de cet espace de noms, pas nécessairement l'init de l'hôte. Une fois le système identifié, utilisez ses outils natifs d'état et de journalisation au lieu de mélanger les commandes de plusieurs familles d'init.
+
+:::single-choice{#boot-init-detect-running} Pourquoi l'inspection du PID 1 est-elle préférable à la recherche d'un ancien répertoire de scripts ?
+
+::option[Le PID 1 porte toujours le même nom d'exécutable sur tous les systèmes Linux.]{#boot-init-same-name explanation="systemd, sysvinit, BusyBox, les programmes init de conteneurs et d'autres peuvent occuper le PID 1."}
+::option[Des fichiers de compatibilité peuvent exister même si une autre implémentation d'init fonctionne.]{#boot-init-compatibility-files .correct explanation="L'exécutable actif du PID 1 constitue une preuve plus forte du système init réellement utilisé."}
+::option[Les anciens répertoires sont automatiquement supprimés à chaque démarrage.]{#boot-init-directories-deleted explanation="Les fichiers de compatibilité installés peuvent subsister d'un démarrage à l'autre."}
+:::
+
+## Résumé
+
+Vous savez maintenant expliquer init comme un rôle plutôt que comme une implémentation obligatoire.
+
+1. Relier le PID 1 à l'initialisation des services, à la récupération des processus et à l'arrêt.
+2. Reconnaître les niveaux d'exécution System V comme des modes définis par la distribution.
+3. Relier les ressources et dépendances de systemd à des unités.
+4. Inspecter le PID 1 actif dans l'espace de noms concerné avant de choisir les outils.

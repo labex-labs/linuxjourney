@@ -1,56 +1,98 @@
 ---
-index: 2
+lesson_id: "syslog"
+course_id: "logging"
 lang: "de"
+order_index: 2
 title: "syslog"
-meta_title: "syslog - Protokollierung"
-meta_description: "Erfahren Sie mehr über syslog und rsyslog unter Linux, wie Sie Systemprotokolle verwalten und den logger-Befehl verwenden. Beginnen Sie mit diesem anfängerfreundlichen Tutorial!"
-meta_keywords: "syslog, rsyslog, Linux-Protokolle, logger-Befehl, /var/log/syslog, Linux-Tutorial, Anfänger-Linux, Systemprotokollierung"
+description: "Lerne, wie Syslog-Facilities, Schweregrade, Weiterleitungsregeln und der Befehl logger funktionieren."
+meta_title: "syslog – Protokollierung"
+meta_description: "Lerne syslog und rsyslog unter Linux kennen, verwalte Systemprotokolle und verwende den Befehl logger. Eine verständliche Einführung für Einsteiger."
+meta_keywords: "syslog, rsyslog, Linux-Protokolle, logger-Befehl, /var/log/syslog, Linux-Tutorial, Linux für Einsteiger, Systemprotokollierung"
 ---
 
-## Lesson Content
+Syslog definiert ein Nachrichtenmodell und Transportkonventionen, die von vielen Unix-artigen Systemen verwendet werden. Rsyslog ist eine Implementierung, die Nachrichten empfangen, filtern, umwandeln, speichern und weiterleiten kann. Es kann neben `systemd-journald` bestehen; keiner der Namen bedeutet, dass jede Anwendung diesen Weg verwendet.
 
-Der syslog-Dienst verwaltet und sendet Protokolle an den System-Logger. Rsyslog ist eine erweiterte Version von syslog; die meisten Linux-Distributionen sollten diese neue Version verwenden. Die Ausgabe aller Protokolle, die der syslog-Dienst sammelt, finden Sie unter `/var/log/syslog` (jede Nachricht außer Authentifizierungsnachrichten).
+## Facilities und Schweregrade
 
-Um herauszufinden, welche Dateien von unserem System-Logger verwaltet werden, sehen Sie sich die Konfigurationsdateien in `/etc/rsyslog.d` an:
+Eine Syslog-Nachricht enthält eine Facility, die ihre grobe Quellkategorie beschreibt, und einen Schweregrad von Notfall bis Debug. Zu den häufigen Facilities gehören `auth`, `cron`, `daemon`, `kern`, `mail`, `user` sowie `local0` bis `local7`.
 
-```plaintext
-pete@icebox:~$ less /etc/rsyslog.d/50-default.conf
-# First some standard log files.  Log by facility.
-#
-auth,authpriv.*                 /var/log/auth.log
-*.*;auth,authpriv.none          -/var/log/syslog
-#cron.*                         /var/log/cron.log
-#daemon.*                       -/var/log/daemon.log
-kern.*                          -/var/log/kern.log
-#lpr.*                          -/var/log/lpr.log
-mail.*                          -/var/log/mail.log
-#user.*                         -/var/log/user.log
+Schweregrade sind geordnet. In der klassischen Selektorsyntax entspricht `daemon.warning` normalerweise Daemon-Nachrichten mit dem Schweregrad Warnung und allen schwerwiegenderen Stufen, nicht nur Warnungen. Eine genaue Übereinstimmung verwendet bei Implementierungen, die die klassische Syntax unterstützen, einen Gleichheitsmodifikator wie `daemon.=warning`.
+
+:::single-choice{#syslog-warning-selector} Was erfasst ein klassischer Selektor wie `daemon.warning` normalerweise?
+
+::option[Nur Nachrichten, deren Text das Wort daemon enthält.]{#syslog-text-daemon explanation="Facility-Metadaten und keine Suche im Nachrichtentext steuern diesen Selektor."}
+::option[Jede Debug-Nachricht jeder Facility.]{#syslog-all-debug explanation="Der Selektor ist auf die Facility daemon und einen Schweregradschwellenwert beschränkt."}
+::option[Warnungen und schwerwiegendere Daemon-Nachrichten.]{#syslog-warning-or-higher .correct explanation="Der Prioritätsselektor umfasst den benannten Schweregrad und Stufen höherer Dringlichkeit."}
+:::
+
+## Rsyslog-Regeln lesen
+
+Rsyslog lädt gewöhnlich eine Hauptdatei und Ausschnitte unter `/etc/rsyslog.d/`. Eine herkömmliche Regel besteht aus einem Selektor, gefolgt von einer Aktion:
+
+```text
+auth,authpriv.*          /var/log/auth.log
+*.*;auth,authpriv.none  -/var/log/syslog
+kern.*                  /var/log/kern.log
 ```
 
-Diese Regeln für Protokolldateien werden durch den Selektor in der linken Spalte und die Aktion in der rechten Spalte gekennzeichnet. Die Aktion teilt uns mit, wohin die Protokollinformationen gesendet werden sollen: in eine Datei, auf die Konsole usw. Denken Sie daran, dass nicht jede Anwendung und jeder Dienst rsyslog zur Verwaltung seiner Protokolle verwendet. Wenn Sie also genau wissen möchten, was protokolliert wird, müssen Sie in dieses Verzeichnis schauen.
+Die erste Zeile leitet alle Prioritäten zweier Authentifizierungs-Facilities weiter. Die zweite wählt Nachrichten breit aus und schließt diese Facilities aus. Die dritte leitet Nachrichten der Kernel-Facility weiter. Ein vorangestelltes `-` bei einer Dateiaktion fordert gewöhnlich asynchrone Schreibvorgänge an; es bedeutet keinen Ausschluss.
 
-Sehen wir uns die Protokollierung in Aktion an; Sie können manuell ein Protokoll mit dem Befehl `logger` senden:
+Untersuche alle eingebundenen Dateien und validiere die genaue Syntax der installierten Version, bevor du die Weiterleitung in einer Produktionsumgebung änderst.
+
+:::single-choice{#syslog-selector-action} Was ist in einer herkömmlichen Rsyslog-Regel die Aktion?
+
+::option[Der Facility- und Schweregradausdruck auf der linken Seite.]{#syslog-left-selector explanation="Dieser Teil wählt Nachrichten aus."}
+::option[Das Ziel oder der Vorgang auf der rechten Seite.]{#syslog-right-action .correct explanation="Die Aktion bestimmt, ob ausgewählte Datensätze an eine Datei, ein entferntes Ziel oder eine andere Ausgabe gehen."}
+::option[Der Kommentar, der die Paketversion beschreibt.]{#syslog-comment-version explanation="Kommentare führen keine Nachrichtenweiterleitung aus."}
+:::
+
+## Eine Testnachricht senden
+
+Verwende `logger`, um einen kontrollierten Test mit eindeutigem Tag und einer Priorität einzureichen:
 
 ```bash
-logger -s Hello
+$ logger -p user.notice -t lesson-test 'routing check 2026-08-31T10:00'
 ```
 
-Schauen Sie nun in Ihre `/var/log/syslog`, und Sie sollten diesen Eintrag in Ihren Protokollen sehen.
+Frage anschließend das erwartete Ziel ab, zum Beispiel:
 
-## Exercise
+```bash
+$ journalctl -t lesson-test --since '5 minutes ago'
+```
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Protokollierung und der Dateiansicht zu festigen:
+Dasselbe Ereignis kann abhängig von Weiterleitung und Routing im Journal und in einer Textdatei erscheinen. `logger -s` kopiert die Nachricht zusätzlich in die Standardfehlerausgabe; dies beweist keine dauerhafte Speicherung.
 
-1. **[Anzeigen von Protokoll- und Konfigurationsdateien unter Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Üben Sie wesentliche Linux-Befehlszeilenfähigkeiten für die effiziente Anzeige und Navigation von Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien.
-2. **[Linux tail Befehl: Anzeige des Dateiende](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** - Lernen Sie den Linux-Befehl `tail` kennen, um das Ende von Textdateien anzuzeigen und zu überwachen, was besonders nützlich für die Echtzeit-Protokollanalyse ist.
-3. **[Text mit grep unter Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - Lernen Sie, nach bestimmten Textmustern in Dateien zu suchen, eine unschätzbare Fähigkeit, um Protokolleinträge nach wichtigen Informationen zu durchsuchen.
+:::single-choice{#syslog-logger-tag} Was fügt `logger -t lesson-test` der eingereichten Nachricht hinzu?
 
-Diese Labs helfen Ihnen, die Konzepte des Protokollmanagements und der Dateiinspektion in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.
+::option[Eine Anforderung, ältere Testdatensätze zu löschen.]{#syslog-tag-delete explanation="Die Option setzt ein identifizierendes Tag und verwaltet keine Aufbewahrung."}
+::option[Die Kennung `lesson-test` als Nachrichtentag.]{#syslog-tag-identifier .correct explanation="Ein eindeutiges Tag erleichtert das Auffinden des kontrollierten Ereignisses an den konfigurierten Zielen."}
+::option[Eine Zustellverzögerung von fünf Minuten.]{#syslog-tag-delay explanation="Die Tag-Option codiert kein Zustellintervall."}
+:::
 
-## Quiz Question
+## Weiterleitung ändern und überprüfen
 
-Welchen Befehl können Sie verwenden, um manuell eine Nachricht zu protokollieren?
+Sichere vor einer Änderung die aktuelle Konfiguration und ermittle nachgelagerte Verbraucher. Validiere die Syntax mit dem Konfigurationsprüfmodus der Implementierung, gewöhnlich:
 
-## Quiz Answer
+```bash
+$ sudo rsyslogd -N1
+```
 
-logger
+Erst nach der Validierung solltest du den Dienst über seinen Manager neu laden. Sende eine neue markierte Nachricht, überprüfe jedes erforderliche Ziel und prüfe Dienstzustand sowie interne Fehlerprotokolle. Eine syntaktisch gültige Regel kann dennoch zu breit weiterleiten, Datensätze duplizieren oder vertrauliche Daten offenlegen.
+
+Bei der Weiterleitung über nicht vertrauenswürdige Netzwerke sollte authentifizierter, verschlüsselter Transport verwendet werden. UDP-Zustellung besitzt keine Ende-zu-Ende-Bestätigung. Kritische Audit-Anforderungen benötigen daher einen Entwurf, der Warteschlangen, Verluste, Integrität, Zugriffskontrolle und Ausfälle des Empfängers berücksichtigt.
+
+:::single-choice{#syslog-change-verification} Welche Belege reichen aus, dass eine neue Weiterleitungsregel funktioniert?
+
+::option[Die Konfigurationsdatei besitzt einen aktuellen Änderungszeitpunkt.]{#syslog-mtime explanation="Ein Zeitstempel beweist weder gültige Syntax noch Zustellung."}
+::option[Der Sender kann den Empfänger mit einem Ping erreichen.]{#syslog-ping explanation="Netzwerkerreichbarkeit allein überprüft weder das Protokollierungsprotokoll noch den Speicherpfad."}
+::option[Die Validierung ist erfolgreich, und ein markierter Test erreicht jedes beabsichtigte Ziel.]{#syslog-validate-and-test .correct explanation="Sowohl statische Validierung als auch ein beobachtetes Ende-zu-Ende-Ereignis sind erforderlich."}
+:::
+
+## Zusammenfassung
+
+Du kannst die Syslog-Weiterleitung nun von den Nachrichtenmetadaten bis zum konfigurierten Ziel testen.
+
+1. Unterscheide Facilities von geordneten Schweregraden.
+2. Lies Selektoren getrennt von ihren Aktionen.
+3. Sende mit `logger` ein markiertes Ereignis mit Priorität.
+4. Validiere die Konfiguration und überprüfe die Zustellung von Ende zu Ende.

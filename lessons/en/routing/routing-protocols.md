@@ -1,42 +1,72 @@
 ---
-index: 4
+lesson_id: "routing-protocols"
+course_id: "routing"
 lang: "en"
+order_index: 4
 title: "Routing Protocols"
+description: "Learn how dynamic routing protocols exchange reachability and converge on usable forwarding paths."
 meta_title: "Routing Protocols - Routing"
 meta_description: "Explore the fundamentals of routing protocols in Linux networking. This guide covers distance vector and link state protocols, network convergence, and how routers build and maintain routing tables. A perfect tutorial for beginners."
 meta_keywords: "routing protocols, network convergence, distance vector, link state, linux networking, routing table, network tutorial, beginner guide, router communication"
 ---
 
-## Lesson Content
+Static routes are configured directly, while dynamic routing protocols exchange reachability and topology information so routers can adapt. Dynamic learning reduces manual work but introduces protocol state, trust boundaries, timers, and failure modes that must be monitored.
 
-Manually configuring routes on a routing table for every device on a large network would be an incredibly tedious task. To automate this process, we use dynamic **routing protocols**. These protocols allow routers to adapt to network changes automatically by learning different routes, building them into the routing table, and forwarding packets accordingly. There are two primary types of routing protocols: distance vector and link state.
+## Control Plane and Forwarding Plane
 
-### Distance Vector Protocols
+A routing protocol learns candidates in its own database. The router selects routes into a routing information base and installs usable next hops into a forwarding table. Hardware or the kernel then forwards packets from that table.
 
-Distance vector protocols operate on the principle of "routing by rumor." Each router shares its entire routing table with its directly connected neighbors at regular intervals. When a router receives a routing table from a neighbor, it updates its own table with any new or better routes. The "distance" is typically measured by a metric like hop count. This method is simple but can be slow to converge and is susceptible to routing loops. An example of a distance vector protocol is the Routing Information Protocol (RIP).
+A protocol adjacency being established does not prove that the desired prefix was learned, selected, installed, or permitted by forwarding policy.
 
-### Link State Protocols
+:::single-choice{#routing-protocols-adjacency-limit} What does an established routing adjacency fail to prove?
 
-In contrast, **link state protocols** provide each router with a complete map of the network topology. Instead of sharing their entire routing table, routers send out information about the state of their own links (e.g., connected neighbors and the cost of the connection) to all other routers on the network. Using this information, every router can independently build an identical map of the network and calculate the best path to every destination. This approach leads to faster **network convergence** and is more scalable than distance vector protocols. An example is the Open Shortest Path First (OSPF) protocol.
+::option[That every desired route is installed and forwarding successfully.]{#routing-protocols-not-full-proof .correct explanation="Route advertisement, selection, installation, filtering, and data-plane operation are separate stages."}
+::option[That two protocol speakers exchanged any control messages.]{#routing-protocols-no-messages explanation="Establishing adjacency normally requires protocol communication."}
+::option[That a control plane exists.]{#routing-protocols-no-control explanation="The adjacency is itself control-plane state."}
+:::
 
-### Network Convergence
+## Interior and Exterior Routing
 
-Before we discuss protocols further, it's important to understand a key concept in routing known as **network convergence**. When using routing protocols, routers communicate to collect and exchange information. Convergence is the state where all routers have a consistent and accurate view of the network topology. When every routing table correctly maps the entire network, the network is considered "converged." If a change occurs, such as a link going down, convergence is temporarily broken until all routers learn about the change and update their routing tables.
+Interior gateway protocols operate within an administrative routing domain. Examples include RIP, OSPF, and IS-IS. BGP exchanges policy-controlled reachability within and between autonomous systems and is the Internet's exterior routing protocol.
 
-## Exercise
+Metrics have protocol-specific meaning. An OSPF cost, RIP hop count, and BGP attribute set cannot be compared as if they shared one universal numerical scale. Implementations use route preference or administrative distance to choose between sources before or alongside protocol-specific selection.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and IP addressing:
+:::single-choice{#routing-protocols-metric-comparison} Can a RIP hop count be directly compared with an OSPF cost?
 
-1. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice configuring static and dynamic IP addresses, setting a default gateway, and verifying network configurations, which are crucial for understanding how routing tables are built and utilized.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how devices interact at the network layer, observing ARP and how the default gateway handles remote traffic, providing insight into the mechanisms routing protocols manage.
-3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes, assign IP addresses, and test connectivity across subnets, directly applying concepts related to network changes and routing decisions.
+::option[Yes, because all routing metrics use the same units.]{#routing-protocols-universal-metric explanation="Each protocol defines its own metric and selection process."}
+::option[Yes, but only when both values are zero.]{#routing-protocols-zero-metric explanation="Their semantics remain different regardless of a displayed number."}
+::option[No; they have protocol-specific meanings.]{#routing-protocols-specific-metric .correct explanation="Cross-source selection uses implementation policy rather than treating unlike metrics as one scale."}
+:::
 
-These labs will help you apply the concepts of network configuration and connectivity in real scenarios, building confidence with the foundational elements that routing protocols automate.
+## Distance Vector and Link State
 
-## Quiz Question
+Distance-vector protocols advertise reachability and distance through neighbors, deriving paths from neighbor reports. Link-state protocols form adjacencies, flood link-state information through a scope, build a topology database, and calculate shortest-path trees. Modern protocols include refinements that make simple category summaries incomplete.
 
-What is the term for the state where all routing tables on a network agree on the network topology? (Please answer in English, paying attention to capitalization.)
+:::single-choice{#routing-protocols-link-state-input} What does a link-state router use for its path calculation?
 
-## Quiz Answer
+::option[Only the hostname of its default gateway.]{#routing-protocols-hostname-only explanation="A topology calculation requires link and prefix information."}
+::option[A synchronized database describing links in the routing scope.]{#routing-protocols-link-database .correct explanation="The router runs a shortest-path algorithm over the learned topology."}
+::option[Application-layer passwords from every host.]{#routing-protocols-passwords explanation="Routing topology exchange does not require end-user credentials."}
+:::
 
-Convergence
+## Convergence
+
+After a topology or policy change, routers detect it, propagate control information, calculate paths, and update forwarding state. Convergence is the period and outcome in which the network reaches stable, mutually usable routing for the affected destinations. It does not require every router to have an identical full table; roles and policies can intentionally differ.
+
+During convergence, transient loss, loops, or black holes can occur. Measure detection, propagation, calculation, and installation separately and verify with data-plane probes.
+
+:::single-choice{#routing-protocols-convergence} What is routing convergence?
+
+::option[The process of reaching stable usable routing after a change.]{#routing-protocols-stable-routing .correct explanation="It includes control propagation and the resulting forwarding updates."}
+::option[A requirement that every router store an identical global table.]{#routing-protocols-identical-table explanation="Policy, area, and role can create intentional differences."}
+::option[Permanent prevention of every possible routing failure.]{#routing-protocols-no-failure explanation="A converged network can still have policy or capacity problems."}
+:::
+
+## Summary
+
+You can now place dynamic routing information in the path from protocol exchange to forwarding.
+
+1. Separate learned candidates, selected routes, and forwarding entries.
+2. Distinguish interior routing from BGP policy exchange.
+3. Compare metrics only within their protocol semantics.
+4. Verify convergence in both control and data planes.

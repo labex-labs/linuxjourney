@@ -1,113 +1,149 @@
 ---
-index: 2
+lesson_id: "choosing-a-linux-distribution"
+course_id: "getting-started"
 lang: "de"
-title: "Die Wahl einer Linux-Distribution"
-meta_title: "Beste Linux-Distribution: So treffen Sie die richtige Wahl"
-meta_description: "Auf der Suche nach der besten Linux-Distribution? Erfahren Sie, wie Sie die richtige Wahl für Einsteiger, Entwickler, Server, Stabilität und den täglichen Desktop-Gebrauch treffen."
-meta_keywords: "beste linux distribution, linux distro, linux distribution, linux distribution wählen, beliebte linux distributionen, linux für einsteiger"
+order_index: 2
+title: "Eine Linux-Distribution auswählen"
+description: "Lerne, Linux-Distributionen anhand von Zielen, Veröffentlichungsmodell, Unterstützung und Erfahrungsniveau zu vergleichen."
+meta_title: "Die beste Linux-Distribution auswählen"
+meta_description: "Lerne, die passende Linux-Distribution für Einsteiger, Entwickler, Server, Stabilität und den täglichen Desktop-Einsatz auszuwählen."
+meta_keywords: "beste Linux Distribution, Linux Distro, Linux Distribution, Linux Distribution auswählen, beliebte Linux Distributionen, Linux für Einsteiger"
 ---
 
-## Lesson Content
+In der vorherigen Lektion hast du den Linux-Kernel kennengelernt. Obwohl „Linux“ häufig das gesamte Betriebssystem bezeichnet, ist der Kernel nur ein Teil davon. Die vollständigen Betriebssysteme rund um den Linux-Kernel heißen **Linux-Distributionen** oder **Linux-Distros**.
 
-In der vorherigen Lektion haben wir den Linux-Kernel kennengelernt. Obwohl oft "Linux" verwendet wird, um das gesamte Betriebssystem zu beschreiben, ist der Kernel nur ein Teil des Systems. Die vollständigen Betriebssysteme, die auf dem Linux-Kernel aufbauen, werden **Linux-Distributionen** oder **Linux-Distros** genannt.
+Wenn du nach der **besten Linux-Distribution** suchst, solltest du zuerst wissen, dass es keine einzelne beste Wahl für alle gibt. Die passende Distribution hängt davon ab, ob für dich Benutzerfreundlichkeit, aktuelle Software, Stabilität, Systemkontrolle oder Unternehmensunterstützung am wichtigsten ist.
 
-Wenn Sie versuchen, die **beste Linux-Distro** zu finden, ist das Wichtigste zu wissen, dass es keine einzelne beste Wahl für jeden gibt. Die richtige Distro hängt davon ab, ob Ihnen Benutzerfreundlichkeit, Aktualität der Software, Stabilität, Systemkontrolle oder Unternehmensunterstützung am wichtigsten sind.
+Ein Linux-System besteht aus drei Hauptteilen:
 
-Ein Linux-System ist in drei Hauptteile unterteilt:
+- **Hardware** – die physischen Bestandteile des Computers wie CPU, Arbeitsspeicher und Speichergeräte.
+- **Linux-Kernel** – der Kern des Betriebssystems, der die Hardware verwaltet und die Kommunikation zwischen Software und Hardware ermöglicht.
+- **Userspace** – die Umgebung, in der du über Anwendungen und Befehlszeilenschnittstellen mit dem System arbeitest.
 
-- **Hardware** - Dies umfasst die physischen Komponenten Ihres Computers, wie CPU, Arbeitsspeicher und Speichergeräte.
-- **Linux-Kernel** - Als Kern des Betriebssystems verwaltet der Kernel die Hardware und erleichtert die Kommunikation zwischen Software und Hardware.
-- **User Space** - Dies ist die Umgebung, in der Sie als Benutzer über Anwendungen und Befehlszeilenschnittstellen mit dem System interagieren.
+:::single-choice{#identify-hardware-manager} Welcher Hauptteil eines Linux-Systems verwaltet die Hardware?
 
-### Was ist eine Linux-Distro
+::option[Userspace]{#user-space explanation="Im Userspace laufen Anwendungen und Befehlszeilenschnittstellen. Diese Programme stützen sich beim Zugriff auf Hardware auf den Kernel."}
+::option[Linux-Kernel]{#linux-kernel .correct explanation="Der Linux-Kernel verwaltet Hardwareressourcen und die Kommunikation zwischen Hardware und Software. Er ist der Kern, um den eine Distribution aufgebaut wird."}
+::option[Physische Hardware]{#physical-hardware explanation="Die Hardware stellt CPU, Arbeitsspeicher und Speicher bereit. Der Kernel ist die Systemkomponente, die diese Ressourcen verwaltet."}
+:::
 
-Eine Linux-Distribution bündelt den Linux-Kernel mit Systemdienstprogrammen, Bibliotheken, Anwendungen und normalerweise einem Paketmanager. Viele Distros enthalten auch eine Desktop-Umgebung für die grafische Nutzung. Praktisch gesehen ist eine Linux-Distro ein vollständiges Betriebssystem, das auf dem Linux-Kernel aufbaut.
+## Was ist eine Linux-Distribution?
 
-Verschiedene Linux-Distributionen treffen unterschiedliche Entscheidungen in Bezug auf Stabilität, Software-Aktualität, Desktop-Erfahrung, Paketverwaltung, Support und Systemphilosophie. Deshalb gibt es keine einzelne beste Linux-Distro für jeden.
+Eine Linux-Distribution verbindet den Linux-Kernel mit Systemwerkzeugen, Bibliotheken, Anwendungen und meist einem Paketmanager. Viele Distributionen enthalten außerdem eine Desktop-Umgebung für die grafische Nutzung. Praktisch ist eine Linux-Distribution ein vollständiges Betriebssystem rund um den Linux-Kernel.
 
-### Wie man die beste Linux-Distro auswählt
+Distributionen treffen unterschiedliche Entscheidungen zu Stabilität, Aktualität der Software, Desktop-Erlebnis, Paketverwaltung, Unterstützung und Systemphilosophie. Deshalb gibt es keine einzelne beste Linux-Distribution für alle.
 
-Die Auswahl einer Linux-Distro wird viel einfacher, wenn Sie bei Ihren eigenen Bedürfnissen anfangen. Denken Sie an Ihr Erfahrungsniveau, die Art des Computers, den Sie verwenden, und was das System tun soll. Ein Anfänger, der einen Laptop einrichtet, möchte vielleicht etwas ganz anderes als ein Entwickler, der eine Workstation baut, oder ein Administrator, der Server bereitstellt.
+:::single-choice{#recognize-linux-distribution} Welche Beschreibung passt am besten zu einer Linux-Distribution?
 
-Die beste Linux-Distro ist normalerweise diejenige, die Ihren Zielen entspricht, nicht die mit dem lautesten Ruf. Für die meisten Benutzer sind die Hauptfaktoren Benutzerfreundlichkeit, Paketverwaltung, Release-Stil, Dokumentation und langfristiger Support.
+::option[Ein Kernel ohne Systemwerkzeuge, Anwendungen oder Softwareverwaltung]{#kernel-only explanation="Der Kernel allein ist nur ein Teil eines Betriebssystems. Eine Distribution ergänzt Werkzeuge, Bibliotheken, Anwendungen und Softwareverwaltung."}
+::option[Ein Kernel zusammen mit Systemwerkzeugen, Anwendungen und Softwareverwaltung]{#complete-distribution .correct explanation="Eine Distribution verbindet den Linux-Kernel mit der Userspace-Software für ein nutzbares Betriebssystem. Üblicherweise gehört auch ein Paketmanager dazu."}
+::option[Ein Desktop-Design, das jedes Linux-basierte Betriebssystem gemeinsam verwendet]{#universal-desktop explanation="Distributionen können verschiedene Desktop-Umgebungen oder überhaupt keinen grafischen Desktop anbieten. Ein gemeinsames Desktop-Design definiert keine Distribution."}
+:::
 
-Der Release-Stil beschreibt, wie eine Distro wichtige Software-Updates bereitstellt. Stabile oder Point-Release-Distros veröffentlichen Updates in geplanten Chargen und konzentrieren sich auf Vorhersehbarkeit. Rolling-Release-Distros liefern Updates kontinuierlich, was normalerweise neuere Software bedeutet, aber auch häufigere Änderungen.
+## Die passende Linux-Distribution auswählen
 
-### Linux-Distros für Anfänger
+Die Auswahl wird einfacher, wenn du bei deinen eigenen Anforderungen beginnst. Berücksichtige dein Erfahrungsniveau, den verwendeten Computer und die vorgesehenen Aufgaben. Ein Einsteiger mit einem Laptop kann etwas ganz anderes benötigen als ein Entwickler für eine Workstation oder ein Administrator für Server.
 
-Wenn Sie neu bei Linux sind, beginnen Sie mit Distros, die einen reibungslosen Installationsprozess, eine starke Dokumentation und eine ausgefeilte Desktop-Erfahrung bieten. [Ubuntu](https://labex.io/de/lesson/ubuntu) und [Linux Mint](https://labex.io/de/lesson/linux-mint) sind gängige Ausgangspunkte, da sie einfach zu installieren und umfassend dokumentiert sind. openSUSE kann ebenfalls zugänglich sein, insbesondere für Benutzer, die grafische Verwaltungstools mögen.
+Die beste Distribution ist meist diejenige, die zu deinen Zielen passt, und nicht die mit dem lautesten Ruf. Für die meisten Nutzer sind Benutzerfreundlichkeit, Paketverwaltung, Veröffentlichungsmodell, Dokumentation und langfristige Unterstützung entscheidend.
 
-Anfängerfreundlich bedeutet nicht immer simpel. Es bedeutet normalerweise, dass die Distro sinnvolle Standardeinstellungen, eine große Community und weniger Überraschungen im täglichen Gebrauch hat.
+Das Veröffentlichungsmodell beschreibt, wie eine Distribution wichtige Softwareaktualisierungen ausliefert. Stabile oder Point-Release-Distributionen veröffentlichen Aktualisierungen in geplanten Paketen und legen Wert auf Vorhersehbarkeit. Rolling Releases liefern kontinuierlich Aktualisierungen und damit meist neuere Software, aber auch häufigere Veränderungen.
 
-### Linux-Distros für Entwickler und Power-User
+:::single-choice{#choose-release-style} Welches Veröffentlichungsmodell passt zu jemandem, der geplante Aktualisierungen und Vorhersehbarkeit bevorzugt?
 
-Einige Benutzer möchten mehr Kontrolle über das System, neuere Software oder eine praxisorientiertere Erfahrung. [Fedora](https://labex.io/de/lesson/fedora) ist bei Entwicklern beliebt, weil es sich schnell bewegt und dennoch auf eine ausgefeilte Erfahrung abzielt. [Arch Linux](https://labex.io/de/lesson/arch-linux) spricht Benutzer an, die ein Rolling-Release und eine direktere Kontrolle über die Systemeinrichtung wünschen. [Gentoo](https://labex.io/de/lesson/gentoo) ist noch spezialisierter und gibt fortgeschrittenen Benutzern durch quellbasiertes Paket-Building tiefe Kontrolle.
+::option[Ein kontinuierlich aktualisiertes Rolling Release]{#rolling-release explanation="Ein Rolling Release liefert normalerweise neuere Software durch kontinuierliche Aktualisierungen. Damit gehen häufigere Veränderungen einher, als das genannte Ziel verlangt."}
+::option[Ein stabiles oder Point-Release-Modell]{#stable-release .correct explanation="Stabile und Point-Release-Modelle liefern größere Änderungen in geplanten Veröffentlichungen und unterstützen damit eine besser vorhersehbare Umgebung."}
+::option[Eine grafische Desktop-Umgebung]{#desktop-environment explanation="Eine Desktop-Umgebung bestimmt das grafische Erlebnis und nicht den Zeitpunkt von Distributionsveröffentlichungen."}
+:::
 
-Diese Distros können ausgezeichnet sein, aber sie machen normalerweise mehr Sinn, wenn Sie bereits wissen, welche Art von Workflow Sie wünschen.
+## Linux-Distributionen für Einsteiger
 
-### Linux-Distros für Server und Stabilität
+Wenn Linux für dich neu ist, beginne mit Distributionen, die eine reibungslose Installation, gute Dokumentation und ein ausgereiftes Desktop-Erlebnis bieten. [Ubuntu](https://labex.io/lesson/ubuntu) und [Linux Mint](https://labex.io/lesson/linux-mint) sind verbreitete Einstiegspunkte, weil sie einfach zu installieren und umfassend dokumentiert sind. Auch openSUSE kann zugänglich sein, besonders wenn du grafische Verwaltungswerkzeuge bevorzugst.
 
-Wenn Ihnen Vorhersehbarkeit und langfristige Zuverlässigkeit am wichtigsten sind, sind stabile Release-Modelle wichtiger als visuelle Politur. [Debian](https://labex.io/de/lesson/debian) ist bekannt für seinen konservativen Ansatz und seinen starken Ruf auf Servern. [Red Hat Enterprise Linux](https://labex.io/de/lesson/red-hat-enterprise-linux) ist für Unternehmensumgebungen konzipiert, in denen Support, Zertifizierungen und lange Lebenszyklen wichtig sind.
+Einsteigerfreundlich bedeutet nicht zwangsläufig simpel. Meist bedeutet es sinnvolle Standardwerte, eine große Community und weniger Überraschungen im Alltag.
 
-Ubuntu wird auch häufig auf Servern verwendet, insbesondere wenn Benutzer ein großes Ökosystem und vertraute Tools wünschen. Die richtige Wahl hängt davon ab, ob Sie community-getriebene Stabilität, kommerziellen Support oder ein Gleichgewicht aus beidem schätzen.
+:::single-choice{#prioritize-beginner-needs} Welche Eigenschaften sind der beste Ausgangspunkt für einen neuen Linux-Nutzer?
 
-### Beste Linux-Distro nach Anwendungsfall
+::option[Neueste Pakete, manuelle Einrichtung und wenig Dokumentation]{#advanced-setup-qualities explanation="Neue Software und manuelle Einrichtung können zu erfahrenen Nutzern passen, doch wenig Anleitung erschwert Einsteigern die Arbeit unnötig."}
+::option[Maximale Kontrolle, komplexe Wartung und häufige Überraschungen]{#maximum-control-qualities explanation="Tiefe Kontrolle kann wertvoll sein, sobald ein Nutzer seinen gewünschten Ablauf kennt. Sie ist nicht der unterstützendste Ausgangspunkt für eine erste Distribution."}
+::option[Reibungslose Installation, gute Dokumentation und sinnvolle Standardwerte]{#beginner-friendly-qualities .correct explanation="Diese Eigenschaften verringern Einrichtungshürden und erleichtern die Hilfesuche. Einsteiger können sich dadurch auf das Erlernen des Systems konzentrieren."}
+:::
 
-Wenn Sie eine schnelle Antwort wünschen, sind dies gängige Ausgangspunkte:
+## Linux-Distributionen für Entwickler und erfahrene Nutzer
 
-- **Beste Linux-Distro für Anfänger**: [Ubuntu](https://labex.io/de/lesson/ubuntu) oder [Linux Mint](https://labex.io/de/lesson/linux-mint)
-- **Beste Linux-Distro für Entwickler**: [Fedora](https://labex.io/de/lesson/fedora)
-- **Beste Linux-Distro für Stabilität**: [Debian](https://labex.io/de/lesson/debian)
-- **Beste Linux-Distro für maximale Kontrolle**: [Arch Linux](https://labex.io/de/lesson/arch-linux) oder [Gentoo](https://labex.io/de/lesson/gentoo)
-- **Beste Linux-Distro für Unternehmensumgebungen**: [Red Hat Enterprise Linux](https://labex.io/de/lesson/red-hat-enterprise-linux)
-- **Beste Linux-Distro für Cybersicherheit**: [Best Linux Distro for Cybersecurity](https://labex.io/de/lesson/best-linux-distro-for-cybersecurity)
+Manche Nutzer wünschen mehr Systemkontrolle, neuere Software oder einen praktischeren Einrichtungsprozess. [Fedora](https://labex.io/lesson/fedora) ist bei Entwicklern beliebt, weil es sich schnell entwickelt und dennoch ein ausgereiftes Erlebnis anstrebt. [Arch Linux](https://labex.io/lesson/arch-linux) spricht Nutzer an, die ein Rolling Release und direkte Kontrolle über die Systemeinrichtung möchten. [Gentoo](https://labex.io/lesson/gentoo) ist noch spezialisierter und bietet erfahrenen Nutzern durch quellbasierte Paketerstellung tiefe Kontrolle.
 
-Dies sind keine universellen Antworten, aber sie sind nützliche Ausgangspunkte, wenn Sie Linux-Distros nach Zielen und nicht nur nach Popularität vergleichen.
+Diese Distributionen können hervorragend sein, ergeben aber meist mehr Sinn, wenn du bereits weißt, welchen Arbeitsablauf du möchtest.
 
-### Beliebte Linux-Distros
+## Linux-Distributionen für Server und Stabilität
 
-Einige Linux-Distros werden weithin empfohlen, weil sie verschiedene Probleme gut lösen:
+Wenn Vorhersehbarkeit und langfristige Zuverlässigkeit im Vordergrund stehen, sind stabile Veröffentlichungsmodelle wichtiger als visuelle Ausgereiftheit. [Debian](https://labex.io/lesson/debian) ist für seinen konservativen Ansatz und guten Ruf auf Servern bekannt. [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux) richtet sich an Unternehmensumgebungen, in denen Unterstützung, Zertifizierungen und lange Lebenszyklen wichtig sind.
 
-- [Debian](https://labex.io/de/lesson/debian): stabil, grundlegend und weithin respektiert
-- [Ubuntu](https://labex.io/de/lesson/ubuntu): anfängerfreundlich und weit verbreitet auf Desktop- und Serversystemen
-- [Fedora](https://labex.io/de/lesson/fedora): modern, entwicklerfreundlich und eng mit dem Red Hat-Ökosystem verbunden
-- [Linux Mint](https://labex.io/de/lesson/linux-mint): desktop-fokussiert und besonders komfortabel für neue Benutzer
-- [Arch Linux](https://labex.io/de/lesson/arch-linux): Rolling-Release mit einer starken Do-it-yourself-Kultur
-- [openSUSE](https://labex.io/de/lesson/openSUSE): flexibel, ausgefeilt und bekannt für YaST und mehrere Release-Optionen
-- [Gentoo](https://labex.io/de/lesson/gentoo): quellbasiert und hochgradig anpassbar
-- [Red Hat Enterprise Linux](https://labex.io/de/lesson/red-hat-enterprise-linux): unternehmensorientiert mit kommerziellem Support
+Ubuntu ist ebenfalls auf Servern weit verbreitet, besonders wenn ein großes Ökosystem und vertraute Werkzeuge gefragt sind. Die richtige Wahl hängt davon ab, ob du gemeinschaftlich getragene Stabilität, kommerzielle Unterstützung oder eine Mischung aus beidem bevorzugst.
 
-### Debian, Ubuntu, Fedora und andere Optionen
+## Ausgangspunkte nach Anwendungsfall
 
-Viele beliebte Linux-Distros gehören zu größeren Familien. Debian ist die Basis für Distributionen wie Ubuntu, und Ubuntu wiederum beeinflusst Linux Mint. Fedora sitzt in der Red Hat-Welt und hilft dabei, Technologien zu formen, die später in RHEL erscheinen. Das Verständnis dieser Beziehungen macht es einfacher, Linux-Distributionen zu vergleichen, da Paketverwaltung, Release-Stil und Systemverhalten oft Familienlinien folgen.
+Für eine schnelle Orientierung sind dies verbreitete Ausgangspunkte:
 
-Wenn Sie sich zwischen einigen Optionen entscheiden, hilft es, die Distro-spezifischen Seiten zu lesen, anstatt sich nur auf breite Empfehlungen zu verlassen. Eine Distro, die für einen Benutzertyp ideal ist, kann für einen anderen ungeeignet sein.
+- **Für Einsteiger**: [Ubuntu](https://labex.io/lesson/ubuntu) oder [Linux Mint](https://labex.io/lesson/linux-mint)
+- **Für Entwickler**: [Fedora](https://labex.io/lesson/fedora)
+- **Für Stabilität**: [Debian](https://labex.io/lesson/debian)
+- **Für maximale Kontrolle**: [Arch Linux](https://labex.io/lesson/arch-linux) oder [Gentoo](https://labex.io/lesson/gentoo)
+- **Für Unternehmensumgebungen**: [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux)
+- **Für Cybersicherheit**: [Linux für Cybersicherheit](https://labex.io/lesson/best-linux-distro-for-cybersecurity)
 
-### Beginnen Sie mit einer Distro
+Dies sind keine universellen Antworten, sondern nützliche Ausgangspunkte für einen Vergleich nach Zielen statt allein nach Popularität.
 
-Es ist leicht, zu viel Zeit damit zu verbringen, nach der besten Linux-Distro zu suchen und nie damit anzufangen, eine zu verwenden. In der Praxis sind viele beliebte Distributionen gut genug, um mit dem Erlernen von Linux zu beginnen. Wählen Sie eine Distro, die Ihren Zielen entspricht, probieren Sie sie mit einem Live-System oder einer virtuellen Maschine aus und verbringen Sie Zeit damit, die Grundlagen zu lernen.
+## Beliebte Linux-Distributionen
 
-Sobald Sie eine Linux-Distro verstehen, wird der Wechsel zu einer anderen viel einfacher. Der wichtige Schritt ist anzufangen.
+Einige Distributionen werden häufig empfohlen, weil sie unterschiedliche Aufgaben gut lösen:
 
-### Weiterführende Literatur
+- [Debian](https://labex.io/lesson/debian): stabil, grundlegend und weithin angesehen
+- [Ubuntu](https://labex.io/lesson/ubuntu): einsteigerfreundlich und auf Desktop- wie Serversystemen weit verbreitet
+- [Fedora](https://labex.io/lesson/fedora): modern, entwicklerfreundlich und eng mit dem Red-Hat-Ökosystem verbunden
+- [Linux Mint](https://labex.io/lesson/linux-mint): auf den Desktop ausgerichtet und besonders angenehm für neue Nutzer
+- [Arch Linux](https://labex.io/lesson/arch-linux): Rolling Release mit ausgeprägter Do-it-yourself-Kultur
+- [openSUSE](https://labex.io/lesson/opensuse): flexibel, ausgereift und für YaST sowie mehrere Veröffentlichungsmodelle bekannt
+- [Gentoo](https://labex.io/lesson/gentoo): quellbasiert und stark anpassbar
+- [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux): unternehmensorientiert mit kommerzieller Unterstützung
+
+## Debian, Ubuntu, Fedora und weitere Möglichkeiten
+
+Viele verbreitete Distributionen gehören zu größeren Familien. Debian bildet die Grundlage für Distributionen wie Ubuntu, das wiederum Linux Mint beeinflusst. Fedora gehört zur Red-Hat-Welt und prägt Technologien, die später in RHEL erscheinen. Diese Beziehungen erleichtern den Vergleich, weil Paketverwaltung, Veröffentlichungsmodell und Systemverhalten häufig den Familienlinien folgen.
+
+Wenn du zwischen wenigen Möglichkeiten wählst, lies die distributionsspezifischen Seiten statt nur allgemeiner Empfehlungen. Eine ideale Distribution für eine Nutzergruppe kann für eine andere schlecht passen.
+
+## Mit einer Distribution beginnen
+
+Man kann viel Zeit mit der Suche nach der besten Distribution verbringen und nie anfangen, eine zu verwenden. In der Praxis eignen sich viele verbreitete Distributionen gut für den Einstieg. Wähle eine passende aus, probiere sie als Live-System oder virtuelle Maschine und lerne die Grundlagen.
+
+Sobald du eine Distribution verstehst, wird der Wechsel zu einer anderen deutlich einfacher. Entscheidend ist, anzufangen.
+
+:::single-choice{#take-practical-next-step} Was ist nach der Bestimmung deiner Ziele ein sinnvoller nächster Schritt?
+
+::option[Weitersuchen, bis eine Distribution für alle die beste ist]{#search-universal-best explanation="Die Lektion zeigt, dass verschiedene Nutzer unterschiedliche Anforderungen haben. Das Warten auf eine universell beste Wahl verhindert praktische Erfahrung."}
+::option[Wiederholt wechseln, bevor du die Grundlagen einer Distribution lernst]{#switch-repeatedly explanation="Häufiges Wechseln erschwert den Aufbau grundlegender Fähigkeiten. Wenn du zuerst eine geeignete Distribution lernst, werden spätere Wechsel leichter."}
+::option[Eine geeignete Distribution auswählen und live oder virtuell ausprobieren]{#try-suitable-distro .correct explanation="Das Ausprobieren verwandelt den Vergleich in Erfahrung, ohne sofort eine dauerhafte Festlegung zu verlangen. Du kannst lernen und später nachjustieren."}
+:::
+
+## Weiterführende Informationen
 
 - [Debian](https://www.debian.org/intro/)
 - [Ubuntu](https://ubuntu.com/desktop)
 - [Fedora Workstation](https://fedoraproject.org/workstation/)
-- [openSUSE Desktop Distributions](https://get.opensuse.org/desktop/)
+- [openSUSE-Desktop-Distributionen](https://get.opensuse.org/desktop/)
 
-## Exercise
+Nach dem Vergleich empfehlen sich diese LabEx-Kurse:
 
-Um nach dem Vergleich von Linux-Distros weiterzulernen, empfehlen wir diese LabEx-Kurse:
+1. **[Schnelleinstieg in Linux](https://labex.io/courses/quick-start-with-linux)** – Baue eine praktische Grundlage auf, bevor du dich längerfristig für eine Distribution entscheidest.
+2. **[Linux für Einsteiger](https://labex.io/courses/linux-for-noobs)** – Folge einer einsteigerfreundlichen Einführung in Linux-Konzepte und -Arbeitsabläufe.
+3. **[Linux-Befehle online üben](https://labex.io/courses/linux-basic-commands-practice-online)** – Stärke Befehlszeilenkenntnisse, die sich auf die meisten Distributionen übertragen lassen.
 
-1. **[Quick Start with Linux](https://labex.io/de/courses/quick-start-with-linux)** - Bauen Sie ein praktisches Fundament in Linux-Grundlagen auf, bevor Sie sich für eine Distro entscheiden.
-2. **[Linux for Noobs](https://labex.io/de/courses/linux-for-noobs)** - Folgen Sie einer anfängerfreundlichen Einführung in Linux-Konzepte und Workflows.
-3. **[Linux Commands Practice Online](https://labex.io/de/courses/linux-basic-commands-practice-online)** - Stärken Sie die Befehlszeilenkenntnisse, die auf die meisten Linux-Distributionen übertragbar sind.
+## Zusammenfassung
 
-## Quiz Question
+Du kannst Linux-Distributionen nun nach deinen eigenen Zielen vergleichen, statt nach einer universell besten Wahl zu suchen.
 
-Was verwaltet die Hardware in einem Linux-System? (Antworten Sie auf Englisch und achten Sie auf die Großschreibung)
-
-## Quiz Answer
-
-Linux Kernel
+1. Erkläre, was eine Linux-Distribution enthält.
+2. Erkenne den Kernel als den Hardware verwaltenden Kern.
+3. Vergleiche stabile und rollende Veröffentlichungsmodelle.
+4. Erkenne Eigenschaften, die neue Linux-Nutzer unterstützen.
+5. Wähle einen praktischen Weg zum Ausprobieren einer geeigneten Distribution.

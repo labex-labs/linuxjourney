@@ -1,41 +1,56 @@
 ---
-index: 15
+lesson_id: "help-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 15
 title: "help"
+description: "Aprenda a escolher entre a ajuda integrada, a saída de uso do programa e as páginas de manual de um comando."
 meta_title: "help - Linha de Comando"
-meta_description: "Aprenda como obter ajuda na linha de comando do Linux com o Bash help, saída --help, páginas man e type para comandos internos do shell e comandos externos."
-meta_keywords: "comando help linux, ajuda bash, ajuda linha de comando, --help, comando interno shell, comando man, comando type"
+meta_description: "Aprenda a obter ajuda na linha de comando do Linux com help do Bash, saída --help, páginas man e type para comandos internos e externos."
+meta_keywords: "comando help Linux, help Bash, ajuda linha de comando, --help, comando interno shell, comando man, comando type"
 ---
 
-## Lesson Content
+Você não precisa memorizar todas as opções dos comandos. O Bash e muitos programas instalados podem explicar sua sintaxe diretamente no terminal, mas a fonte de ajuda adequada depende do tipo de comando usado.
 
-Ao trabalhar na linha de comando do Linux, você frequentemente precisará de um lembrete rápido de como um comando funciona ou quais opções ele aceita. O Linux oferece várias ferramentas de ajuda diretamente no terminal.
+## Obtenção de Ajuda para Comandos Internos do Bash
 
-### O Comando 'help' para Comandos Internos do Bash
+O Bash fornece o comando interno `help` para comandos implementados pelo próprio shell. Alguns exemplos são `cd`, `history` e `type`.
 
-Uma das ferramentas mais diretas é o `help`, um comando incorporado diretamente no shell Bash. Ele é especificamente projetado para fornecer informações sobre outros comandos internos do Bash. Um comando interno faz parte do próprio shell, não é um programa separado. Exemplos incluem `echo`, `cd` e `pwd`.
-
-Para usar o `help`, digite-o seguido do nome do comando interno.
+Forneça o nome do comando interno como argumento:
 
 ```bash
 $ help echo
 ```
 
-Isso exibirá um resumo do comando `echo`, sua sintaxe e uma lista de opções disponíveis. Esta é a maneira mais rápida de obter assistência para funções específicas do shell.
+A saída descreve a sintaxe e o comportamento do comando interno. Executar `help` sem um argumento lista os comandos internos para os quais o Bash possui ajuda.
 
-### A Flag --help para Programas Executáveis
+:::single-choice{#help-for-bash-cd} Qual comando exibe a entrada de ajuda do Bash para seu comando interno `cd`?
 
-Para a maioria dos outros programas executáveis que não são internos do shell, o comando `help` não funcionará. Em vez disso, uma convenção comum é fornecer a flag `--help`. Esta opção indica ao programa para imprimir um resumo de uso e então sair.
+::option[`cd --help`]{#cd-help-option explanation="Alguns comandos internos podem reconhecer opções, mas a interface de documentação dedicada do Bash é `help` seguido do nome do comando."}
+::option[`help cd`]{#help-cd .correct explanation="O comando interno `help` do Bash consulta a documentação do comando interno indicado, neste caso `cd`."}
+::option[`type cd`]{#type-cd explanation="`type` explica como o Bash resolve o nome `cd`. Ele identifica o comando, mas não mostra sua entrada de ajuda completa."}
+:::
+
+## Solicitação do Resumo de Uso de um Programa
+
+Muitos programas externos seguem a convenção de aceitar `--help` e mostrar um resumo de uso:
 
 ```bash
 $ ls --help
 ```
 
-Embora a maioria dos desenvolvedores siga esse padrão, ele não é universal. Tentar `--help` geralmente é um bom primeiro passo para um programa desconhecido.
+Essa convenção é comum, mas não universal. Leia a saída e o status de encerramento, em vez de presumir que todos os programas aceitam a mesma opção.
 
-### Encontrando o Tipo do Comando
+:::single-choice{#quick-ls-usage} Qual comando normalmente mostra um resumo rápido de uso fornecido pelo programa externo `ls`?
 
-Se você não tem certeza se um comando é um interno do Bash ou um programa externo, use `type`.
+::option[`help ls`]{#bash-help-ls explanation="O `help` do Bash documenta comandos internos do shell. Em um sistema comum, ele não fornece a página de uso do programa externo `ls`."}
+::option[`ls --help`]{#ls-help .correct explanation="O GNU `ls` segue a convenção comum de `--help` e mostra seu uso e suas opções."}
+::option[`type --help ls`]{#type-help-ls explanation="Esse comando pergunta ao comando interno `type` sobre suas próprias opções, em vez de pedir que `ls` explique seu uso."}
+:::
+
+## Descoberta de Como o Bash Resolve um Nome
+
+Use `type` para descobrir se o Bash resolve um nome como comando interno, alias, função, palavra-chave ou arquivo executável:
 
 ```bash
 $ type cd
@@ -44,31 +59,36 @@ $ type ls
 ls is /usr/bin/ls
 ```
 
-Isso ajuda você a escolher entre `help cd`, `ls --help` ou `man ls`.
+O resultado exato pode variar conforme os aliases, as funções, os programas instalados e o `PATH`. Use `type -a NAME` quando quiser que o Bash mostre todas as resoluções conhecidas, não apenas a primeira que usaria.
 
-### Escolhendo a Ferramenta de Ajuda Certa
+:::single-choice{#identify-command-resolution} Você não sabe se `deploy` é um alias, uma função, um comando interno ou um executável. Qual comando do Bash verifica como esse nome é resolvido?
 
-- Use `help COMMAND` para comandos internos do Bash como `cd`, `echo` e `history`.
-- Use `COMMAND --help` para um resumo rápido de muitos comandos externos.
-- Use `man COMMAND` para páginas de manual detalhadas.
-- Use `whatis COMMAND` para uma descrição em uma linha.
+::option[`type deploy`]{#type-deploy .correct explanation="O comando interno `type` informa como o Bash interpreta o nome no ambiente atual do shell."}
+::option[`help deploy`]{#help-deploy explanation="`help` procura documentação de comandos internos do Bash. Em geral, ele não identifica aliases, funções e arquivos externos."}
+::option[`deploy --help`]{#deploy-help explanation="Esse comando tenta executar o programa e depende de seu próprio suporte à opção. Ele não explica primeiro como o Bash resolveu o nome."}
+:::
 
-### Perguntas Comuns
+## Escolha do Nível de Detalhe
 
-**Por que `help ls` não funciona?** `ls` geralmente é um programa externo, não um comando interno do Bash. Tente `ls --help` ou `man ls`.
+- Use `help COMMAND` para um comando interno do Bash.
+- Use `COMMAND --help` para obter um resumo rápido de muitos comandos externos.
+- Use `man COMMAND` para uma página de manual instalada com documentação mais detalhada.
+- Use `whatis COMMAND` para uma descrição de uma linha.
 
-**Por que `--help` não funciona para todos os comandos?** É uma convenção, não uma regra rígida.
+As próximas lições examinam com mais detalhes as páginas de manual e as descrições de uma linha.
 
-**Qual é a maneira mais rápida de verificar um comando?** Tente `COMMAND --help` para comandos externos e `help COMMAND` para comandos internos do Bash.
+:::single-choice{#choose-detailed-manual} Você precisa de documentação detalhada para o comando externo `ls`, não apenas de um resumo de uso. Qual comando deve tentar?
 
-## Exercise
+::option[`man ls`]{#man-ls .correct explanation="`man ls` abre a página de manual instalada, que normalmente oferece uma descrição mais completa da sintaxe, das opções e do comportamento."}
+::option[`whatis ls`]{#whatis-ls explanation="`whatis` foi projetado para mostrar descrições concisas das páginas de manual. Ele não fornece a documentação detalhada solicitada."}
+::option[`type ls`]{#type-ls explanation="`type` informa como o Bash resolve `ls`. Ele não exibe o manual detalhado do programa."}
+:::
 
-Embora não existam laboratórios específicos para este tópico, recomendamos explorar o abrangente [Linux Learning Path](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
+## Resumo
 
-## Quiz Question
+Agora você sabe escolher uma fonte de ajuda conforme a maneira como o Bash resolve um comando.
 
-Como você obtém ajuda rápida na linha de comando para comandos internos do Bash? (Por favor, forneça o nome do comando único em inglês e em letras minúsculas.)
-
-## Quiz Answer
-
-help
+1. Use `help` para comandos internos do Bash.
+2. Experimente `--help` para obter o resumo de uso de um programa.
+3. Inspecione a resolução de nomes com `type`.
+4. Abra a documentação detalhada com `man`.

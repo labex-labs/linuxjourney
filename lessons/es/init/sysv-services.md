@@ -1,65 +1,96 @@
 ---
-index: 2
+lesson_id: "sysv-services"
+course_id: "init"
 lang: "es"
-title: "Servicio System V"
-meta_title: "Servicio System V - Init"
-meta_description: "Aprenda a gestionar servicios tradicionales System V (SysV) en Linux. Esta guía cubre el uso del comando `service` para listar, iniciar, detener y reiniciar servicios en un sistema init System V."
+order_index: 2
+title: "Servicio de System V"
+description: "Aprende a inspeccionar y operar scripts de servicios SysV antiguos mediante el mecanismo compatible del sistema activo."
+meta_title: "Servicio de System V - Init"
+meta_description: "Aprende a gestionar servicios tradicionales de System V (SysV) en Linux. Esta guía explica cómo usar el comando `service` para listar, iniciar, detener y reiniciar servicios en un sistema de inicio System V."
 meta_keywords: "system v, sysv init, servicios linux, comando service, gestionar servicios linux, iniciar servicio, detener servicio, reiniciar servicio, linux system v"
 ---
 
-## Lesson Content
+Los servicios SysV suelen estar representados por scripts ejecutables bajo `/etc/init.d/`. Un script acepta acciones como `start`, `stop`, `restart` o `status` según su implementación y las convenciones de la distribución. El comando `service` proporciona un mecanismo que ejecuta un script determinado en un entorno más controlado.
 
-**System V** (o SysV) es uno de los sistemas de inicialización clásicos en sistemas operativos tipo Unix. Aunque muchas distribuciones modernas de Linux han migrado a sistemas más nuevos como `systemd`, comprender cómo administrar los servicios de **System V** sigue siendo una habilidad valiosa, ya que muchos sistemas mantienen la compatibilidad con versiones anteriores.
+## Descubrir servicios y acciones
 
-### El comando service
-
-La herramienta principal para interactuar con servicios en un sistema de inicialización **System V** es el comando `service`. Actúa como un script envoltorio, simplificando el proceso de control de servicios.
-
-### Listar todos los servicios
-
-Para obtener una visión general de todos los servicios disponibles y su estado actual, puede usar la opción `--status-all`. Este comando lista cada servicio e indica si se está ejecutando (`+`), si está detenido (`-`), o si su estado es desconocido (`?`).
+Primero, lista los nombres de los scripts:
 
 ```bash
-service --status-all
+$ ls -1 /etc/init.d/
 ```
 
-### Controlar un servicio específico
-
-Para administrar un servicio individual, especifique el nombre del servicio seguido de una acción como `start` (iniciar), `stop` (detener) o `restart` (reiniciar). Estas acciones requieren privilegios administrativos, por lo que normalmente usará `sudo`.
-
-Para iniciar un servicio, como el servicio de red:
+Algunas implementaciones ofrecen:
 
 ```bash
-sudo service networking start
+$ service --status-all
 ```
 
-Para detener un servicio en ejecución:
+Sus indicadores entre corchetes y sus estados de salida dependen de la implementación, y un script puede informar que el estado es desconocido. Para un servicio concreto, consulta la salida de uso del script o su documentación en lugar de suponer que todas las acciones están disponibles.
+
+:::single-choice{#sysv-services-wrapper-purpose} ¿Qué suele ejecutar el comando `service`?
+
+::option[Un editor de particiones de disco que procesa cada archivo de servicio.]{#sysv-services-partition-editor explanation="El control de servicios no está relacionado con el particionamiento del almacenamiento."}
+::option[Una llamada al sistema del kernel añadida dinámicamente por el script.]{#sysv-services-new-syscall explanation="Los scripts de inicio son programas de espacio de usuario que controlan procesos."}
+::option[Un script de inicio determinado y una de las acciones que admite.]{#sysv-services-script-action .correct explanation="El mecanismo localiza un script de servicio antiguo y lo invoca con un entorno normalizado."}
+:::
+
+## Iniciar y detener
+
+En una máquina gestionada realmente por SysV, estas formas son habituales:
 
 ```bash
-sudo service networking stop
+$ sudo service SERVICE_NAME start
+$ sudo service SERVICE_NAME stop
 ```
 
-Para detener y luego iniciar inmediatamente un servicio, lo cual es útil para aplicar cambios de configuración:
+Sustituye el marcador solo después de identificar el servicio, sus dependientes, su estado actual y el impacto operativo. Detener la red, el acceso remoto, el almacenamiento o la autenticación desde una sesión remota puede dejarte sin acceso o dañar el trabajo activo.
+
+La forma directa `/etc/init.d/SERVICE_NAME ACTION` puede existir, pero, si el gestor activo de la máquina proporciona compatibilidad, usa el comando orientado a ese gestor para que pueda registrar el estado y las dependencias.
+
+:::single-choice{#sysv-services-stop-peanut} ¿Qué comando solicita que se detenga el servicio SysV `peanut`?
+
+::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="El orden convencional de los operandos coloca el nombre del servicio antes de la acción."}
+::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="Esta no es la sintaxis del mecanismo de servicios SysV."}
+::option[`sudo service peanut stop`]{#sysv-services-peanut-stop .correct explanation="El mecanismo recibe el nombre del servicio seguido de la acción de detención solicitada."}
+:::
+
+## Recargar, reiniciar y consultar el estado
+
+Normalmente, `restart` detiene un servicio y después lo inicia, lo que provoca una interrupción. `reload` puede pedirle que vuelva a leer su configuración sin reiniciarlo por completo, pero solo cuando tanto el script como el demonio lo admiten. Algunos scripts ofrecen `force-reload`, cuyo comportamiento alternativo lo define la distribución.
+
+Valida la configuración antes de recargar o reiniciar, conserva una segunda conexión administrativa cuando modifiques el acceso remoto y comprueba después el servicio mediante su punto de acceso real y sus registros, no solo mediante un estado que indique «en ejecución».
 
 ```bash
-sudo service networking restart
+$ sudo service SERVICE_NAME status
+$ sudo service SERVICE_NAME reload
 ```
 
-Estos comandos no son exclusivos de los sistemas de inicialización **System V**; a menudo puede usarlos para administrar servicios Upstart también. A medida que las distribuciones de Linux continúan evolucionando, las capas de compatibilidad como el comando `service` se mantienen para ayudar a facilitar la transición desde los scripts de inicialización tradicionales.
+:::single-choice{#sysv-services-reload-versus-restart} ¿Por qué no se debe suponer que `reload` equivale a `restart`?
 
-## Exercise
+::option[La recarga siempre apaga todo el sistema operativo.]{#sysv-services-reload-shutdown explanation="Ese no es el significado habitual de la acción de recarga de un servicio."}
+::option[El reinicio solo muestra la configuración y nunca cambia el estado del proceso.]{#sysv-services-restart-readonly explanation="Reiniciar suele detener e iniciar el servicio."}
+::option[La recarga depende del servicio y puede volver a leer la configuración sin detener el proceso.]{#sysv-services-reload-specific .correct explanation="La compatibilidad y el significado pertenecen al script de inicio y al demonio, mientras que reiniciar normalmente interrumpe el ciclo de vida."}
+:::
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la administración de procesos y tareas, que son fundamentales para administrar servicios en Linux:
+## Control durante la ejecución frente a habilitación al arrancar
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción, inspección, monitoreo y terminación de procesos en un entorno Linux real.
-2. **[Programar Tareas con at y cron en Linux](https://labex.io/es/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Aprenda a automatizar tareas usando `at` para trabajos únicos y `cron` para tareas recurrentes, una habilidad clave para la automatización de servicios.
+Iniciar un servicio ahora no necesariamente lo habilita para futuros niveles de ejecución. La habilitación al arrancar se representa mediante enlaces de niveles de ejecución y se gestiona con herramientas específicas de la distribución como `update-rc.d`, `chkconfig` o generadores de compatibilidad del gestor de servicios.
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la administración de operaciones del sistema.
+No crees manualmente enlaces `S` y `K` hasta comprender los metadatos de dependencias y la herramienta de gestión de la distribución; los enlaces manuales pueden sobrescribirse o quedar en un orden incorrecto.
 
-## Quiz Question
+:::single-choice{#sysv-services-start-versus-enable} ¿Ejecutar `service SERVICE start` habilita necesariamente el servicio para futuros arranques?
 
-What is the full command to stop a service named `peanut` on a System V system? Please provide the exact command in English, paying attention to case.
+::option[Sí; cada acción de inicio crea automáticamente todos los enlaces de niveles de ejecución.]{#sysv-services-start-links explanation="El mecanismo no cambia de forma universal la habilitación persistente."}
+::option[No; el estado durante la ejecución y la habilitación en niveles de ejecución son independientes.]{#sysv-services-runtime-separate .correct explanation="Los enlaces de arranque o la política del gestor determinan la activación futura con independencia de que el proceso se inicie ahora."}
+::option[Sí; un PID en ejecución se almacena permanentemente en el sector de arranque.]{#sysv-services-pid-boot-sector explanation="Los PID son identificadores de ejecución y no metadatos de habilitación al arrancar."}
+:::
 
-## Quiz Answer
+## Resumen
 
-sudo service peanut stop
+Ahora puedes operar un servicio antiguo sin confundir el control durante la ejecución con la política de arranque.
+
+1. Descubre el script real y las acciones que admite.
+2. En la sintaxis del mecanismo, coloca el nombre del servicio antes de la acción.
+3. Valida y comprueba el comportamiento de recarga o reinicio.
+4. Gestiona la habilitación futura en niveles de ejecución mediante las herramientas de la distribución.

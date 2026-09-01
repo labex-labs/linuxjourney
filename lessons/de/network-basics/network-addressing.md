@@ -1,42 +1,85 @@
 ---
-index: 4
+lesson_id: "network-addressing"
+course_id: "network-basics"
 lang: "de"
+order_index: 4
 title: "Netzwerkadressierung"
-meta_title: "Netzwerkadressierung - Netzwerk Grundlagen"
-meta_description: "Entdecken Sie die Grundlagen der Netzwerkadressierung. Dieser Leitfaden erklärt MAC-Adressen, IP-Adressen und Hostnamen, Schlüsselkonzepte zum Verständnis der Gerätekommunikation in der Linux-Netzwerknutzung."
-meta_keywords: "Netzwerkadressierung, MAC-Adresse, IP-Adresse, Hostname, Netzwerk-Identifikatoren, Linux-Netzwerk, Netzwerk-Grundlagen, Anfänger, Tutorial, Anleitung"
+description: "Lerne, wie Verbindungsadressen, IP-Adressen und Hostnamen unterschiedliche Teile der Netzwerkkommunikation identifizieren."
+meta_title: "Netzwerkadressierung – Netzwerkgrundlagen"
+meta_description: "Entdecke die Grundlagen der Netzwerkadressierung. Diese Anleitung erklärt MAC-Adressen, IP-Adressen und Hostnamen als zentrale Konzepte der Linux-Vernetzung."
+meta_keywords: "Netzwerkadressierung, MAC-Adresse, IP-Adresse, Hostname, Netzwerkkennungen, Linux-Vernetzung, Netzwerkgrundlagen, Einsteiger, Tutorial, Anleitung"
 ---
 
-## Lesson Content
+Netzwerkkommunikation verwendet in unterschiedlichen Geltungsbereichen verschiedene Kennungen. Adressen der Verbindungsschicht stellen Frames auf einer lokalen Verbindung zu, IP-Adressen ermöglichen geroutete Zustellung, und Namen helfen Anwendungen und Menschen bei der Auswahl von Diensten.
 
-Bevor wir untersuchen, wie Datenpakete sich über ein Netzwerk bewegen, ist es wichtig, einige Kernterminologien zu verstehen. So wie ein physischer Brief eine Ziel- und eine Absenderadresse benötigt, erfordern Netzwerkpakete ähnliche Informationen, um ihr Ziel zu erreichen. In der Netzwerkkommunikation werden Geräte mithilfe von MAC-Adressen (Media Access Control) und IP-Adressen identifiziert. Um es für Menschen einfacher zu machen, verwenden wir auch Hostnamen.
+## Adressen der Verbindungsschicht
 
-### MAC-Adressen
+Eine Ethernet-MAC-Adresse ist 48 Bit lang und wird gewöhnlich als sechs hexadezimale Oktette wie `00:c4:b5:45:b2:43` geschrieben. Eine Quelladresse identifiziert eine Schnittstelle auf der aktuellen Verbindung, während ein Ziel Unicast, Multicast oder Broadcast sein kann.
 
-A MAC-Adresse ist eine eindeutige, permanente Hardware-Kennung, die einer Netzwerkkarte (NIC) zugewiesen wird. Diese Adresse wird während der Herstellung in das Gerät eingebrannt und ändert sich nicht. Jedes Gerät, das sich mit einem Netzwerk verbindet, wie Ihr Computer oder Smartphone, verfügt über eine NIC mit einer eindeutigen MAC-Adresse. Diese Hardware-Adresse ist für die Kommunikation in einem lokalen Netzwerksegment von entscheidender Bedeutung. Eine Ethernet-MAC-Adresse sieht typischerweise so aus: `00:C4:B5:45:B2:43`. Die ersten drei Bytes der Adresse bilden die Organizationally Unique Identifier (OUI), die den Hersteller identifiziert. Dell verwendet beispielsweise den OUI `00-14-22`, sodass eine Dell-NIC eine MAC-Adresse wie `00-14-22-34-B2-C2` haben könnte.
+MAC-Adressen sind weder garantiert dauerhaft noch weltweit eindeutig. Software kann eine lokal verwaltete Adresse zuweisen, virtuelle Schnittstellen erzeugen Adressen und WLAN-Datenschutzfunktionen können sie zufällig wählen. Router ersetzen gewöhnlich die Ethernet-Kapselung an jedem Hop, sodass ein entfernter Server die ursprüngliche lokale Ethernet-Quelladresse nicht erhält.
 
-### IP-Adressen
+:::single-choice{#network-addressing-mac-scope} Was ist der normale Geltungsbereich einer Ethernet-MAC-Adresse bei der Paketzustellung?
 
-Eine IP-Adresse ist eine logische Kennung für ein Gerät in einem Netzwerk, wodurch es über verschiedene Netzwerke, einschließlich des Internets, erreichbar ist. Im Gegensatz zu einer MAC-Adresse ist eine IP-Adresse nicht an die Hardware gebunden und kann dynamisch zugewiesen werden. Wir konzentrieren uns vorerst auf IPv4, wobei eine Adresse wie `10.24.12.4` aussieht. IP-Adressen sind für die Softwareseite der Netzwerkkonfiguration von grundlegender Bedeutung und ermöglichen Routing und globale Kommunikation. Während öffentliche IP-Adressen im gesamten Internet eindeutig sind, können sie sich ändern, und Technologien wie Network Address Translation (NAT) ermöglichen private, nicht eindeutige Adressen innerhalb eines lokalen Netzwerks. Es ist wichtig zu bedenken, dass sowohl MAC- (Hardware) als auch IP-Adressen (Software) für eine erfolgreiche Netzwerkkommunikation notwendig sind.
+::option[Die aktuelle lokale Verbindung.]{#network-addressing-local-link .correct explanation="Router erstellen für nachfolgende Hops neue Kapselungen der Verbindungsschicht."}
+::option[Jeder geroutete Hop bis zum endgültigen Internetserver.]{#network-addressing-all-hops explanation="Der ursprüngliche Frame durchquert Router nicht unverändert."}
+::option[Nur die Textcodierung der Anwendung.]{#network-addressing-text-encoding explanation="Eine MAC-Adresse gehört zur Kapselung der Verbindungsschicht."}
+:::
 
-### Hostnamen
+## IP-Adressen und Präfixe
 
-Obwohl IP-Adressen für Computer effektiv sind, sind sie für Menschen schwer zu merken. Hostnamen lösen dieses Problem, indem sie einen benutzerfreundlichen Namen einer IP-Adresse zuordnen. Es ist zum Beispiel viel einfacher, sich `myhost.com` zu merken als die entsprechende IP-Adresse, wie z. B. `192.12.41.4`. Diese Zuordnung wird vom Domain Name System (DNS) übernommen, das als Telefonbuch des Internets fungiert und einprägsame Hostnamen in die numerischen IP-Adressen übersetzt, die für das Netzwerk-Routing erforderlich sind.
+IPv4-Adressen sind 32 Bit beziehungsweise vier Oktette lang, während IPv6-Adressen 128 Bit umfassen. Eine IP-Adresse wird gewöhnlich einer Schnittstelle zugewiesen und zusammen mit einer Präfixlänge wie `192.0.2.10/24` oder `2001:db8::10/64` interpretiert. Das Präfix gibt an, welche führenden Bits das Netzwerk beschreiben.
 
-## Exercise
+Eine Schnittstelle kann mehrere IP-Adressen besitzen, und eine Adresse kann sich durch DHCP, Datenschutzadressierung, Failover oder Verwaltung ändern. Private IPv4-Adressen können in getrennten Netzwerken wiederverwendet werden; öffentliche Routing- und NAT-Richtlinien bestimmen die externe Erreichbarkeit.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerk-Identifikatoren wie MAC-Adressen, IP-Adressen und Hostnamen zu festigen:
+:::single-choice{#network-addressing-ipv4-size} Wie groß ist eine IPv4-Adresse?
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Informationen zur Netzwerkadressierung, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adress-Typen und testen Sie die Netzwerkerreichbarkeit mit `ping` und `ip a`.
-3. **[Lokale Namensauflösung in Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Lernen Sie, die lokale Namensauflösung zu verwalten, indem Sie die Datei `/etc/hosts` bearbeiten und Ihre Änderungen testen.
+::option[32 Bit in vier Oktetten.]{#network-addressing-thirty-two .correct explanation="Jede angezeigte Dezimalkomponente stellt acht Bit dar."}
+::option[4 Bit in einer einzelnen hexadezimalen Ziffer.]{#network-addressing-four-bits explanation="Vier Bit stellen nur eine hexadezimale Ziffer dar."}
+::option[128 Bit in sechzehn Oktetten.]{#network-addressing-128-octets explanation="IPv6 ist 128 Bit und nicht 128 Oktette lang."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die grundlegenden Linux-Netzwerkfunktionen aufzubauen.
+## Hostnamen und Namensauflösung
 
-## Quiz Question
+Ein Hostname ist ein Name und keine Adresse. Die Namensauflösung kann entsprechend der Namensdienstkonfiguration des Hosts `/etc/hosts`, DNS, Multicast-Systeme oder andere Quellen abfragen. Ein Name kann in mehrere Adressen aufgelöst werden, und mehrere Namen können auf einen Dienst verweisen.
 
-Wie viele Bytes hat eine IPv4-Adresse?
+Verwende zum Testen dessen, was eine Anwendung wahrscheinlich sieht, den Resolverpfad des Systems:
 
-## Quiz Answer
+```bash
+$ getent ahosts example.com
+```
 
-4
+DNS-Antworten können sich ändern oder zwischengespeichert werden, und eine erfolgreiche Auflösung beweist nicht, dass der Dienst erreichbar ist.
+
+:::single-choice{#network-addressing-getent-purpose} Warum solltest du bei einer Prüfung der Namensauflösung `getent ahosts` verwenden?
+
+::option[Der Befehl weist die zurückgegebene Adresse dauerhaft jeder Schnittstelle zu.]{#network-addressing-getent-assign explanation="Der Befehl fragt Datenbanken ab und konfiguriert keine Schnittstellen."}
+::option[Er fragt den konfigurierten Namensdienstpfad des Systems nach Adressen.]{#network-addressing-system-resolver .correct explanation="Dieser kann gemäß der Hostrichtlinie lokale Dateien und DNS umfassen."}
+::option[Er garantiert, dass eine Anwendung auf jedem zurückgegebenen Host fehlerfrei ist.]{#network-addressing-getent-health explanation="Namensabfrage und Anwendungszustand sind getrennte Tests."}
+:::
+
+## Einen Linux-Host untersuchen
+
+Zeige Verbindungs- und IP-Konfiguration getrennt an:
+
+```bash
+$ ip -brief link
+$ ip -brief address
+```
+
+Untersuche bei der Diagnose der Erreichbarkeit anschließend Routen und Nachbarzustand. Leite die richtige Quellschnittstelle oder -adresse niemals nur aus der Benennung ab; Routenauswahl, Richtlinienregeln, Namensräume und Tunnel können den Pfad verändern.
+
+:::single-choice{#network-addressing-ip-link-versus-address} Welche Befehlsansicht konzentriert sich auf zugewiesene IP-Adressen?
+
+::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="Das Adressobjekt zeigt IPv4- und IPv6-Zuweisungen auf Schnittstellen an."}
+::option[Nur `ip -brief link`.]{#network-addressing-link-only explanation="Die Verbindungsansicht konzentriert sich auf Schnittstellen- und Verbindungsschichtzustand."}
+::option[`pwd`]{#network-addressing-pwd explanation="Pwd gibt das Arbeitsverzeichnis der Shell aus."}
+:::
+
+## Zusammenfassung
+
+Du kannst Namen und Adressen nun nach ihrem Netzwerkbereich unterscheiden.
+
+1. Behandle MAC-Adressen als veränderliche Kennungen lokaler Verbindungen.
+2. Lies IPv4- und IPv6-Adressen zusammen mit ihren Präfixlängen.
+3. Erkenne, dass Schnittstellen mehrere logische Adressen besitzen können.
+4. Frage Hostnamen über den konfigurierten Systemresolver ab.

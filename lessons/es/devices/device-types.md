@@ -1,81 +1,98 @@
 ---
-index: 2
+lesson_id: "device-types"
+course_id: "devices"
 lang: "es"
-title: "tipos de dispositivos"
-meta_title: "tipos de dispositivos - Dispositivos"
-meta_description: "Explore los diferentes tipos de dispositivos Linux, incluyendo dispositivos de caracteres, bloques, tuberías y sockets. Aprenda cómo Linux gestiona los dispositivos, cómo identificar un archivo de dispositivo usando `ls -l /dev` y comprenda el papel de los números de dispositivo mayores y menores."
-meta_keywords: "dispositivos linux, tipos de dispositivos linux, archivo de dispositivo, dispositivo de caracteres, dispositivo de bloque, números mayor menor, linux para dispositivos, directorio /dev"
+order_index: 2
+title: "Tipos de dispositivos"
+description: "Aprende a distinguir los nodos de dispositivos de caracteres y de bloques de las tuberías, los sockets y los objetos normales del sistema de archivos."
+meta_title: "Tipos de dispositivos - Dispositivos"
+meta_description: "Explora los dispositivos de caracteres y bloques, las tuberías, los sockets y los números mayor y menor de Linux."
+meta_keywords: "tipos de dispositivos Linux, nodo de dispositivo, dispositivo de caracteres, dispositivo de bloques, números mayor y menor"
 ---
 
-## Lesson Content
+El primer carácter del modo que muestra `ls -l` identifica el tipo de objeto del sistema de archivos. Bajo `/dev`, los archivos especiales de caracteres y de bloques son nodos de dispositivo. También pueden aparecer nodos de tuberías y sockets de dominio Unix, pero son objetos de comunicación entre procesos, no nodos de dispositivos de hardware.
 
-En Linux, un principio fundamental es que "todo es un archivo". Esta filosofía se extiende a los componentes de hardware, que se representan como archivos especiales en el sistema de archivos. Comprender estos **dispositivos Linux** y sus archivos correspondientes es crucial para la administración del sistema. Comencemos explorando el directorio `/dev`, la ubicación tradicional para cada **archivo de dispositivo**.
-
-### Explorando Dispositivos Linux en /dev
-
-Puede listar los archivos en el directorio `/dev` para ver cómo el sistema representa varios **dispositivos linux**.
-
-```bash
-$ ls -l /dev
-brw-rw----   1 root disk      8,   0 Dec 20 20:13 sda
-crw-rw-rw-   1 root root      1,   3 Dec 20 20:13 null
-srw-rw-rw-   1 root root           0 Dec 20 20:13 log
-prw-r--r--   1 root root           0 Dec 20 20:13 fdata
+```text
+$ ls -l /dev/null /dev/sda /run/systemd/journal/dev-log /tmp/example-fifo
+crw-rw-rw- 1 root root 1, 3 ... /dev/null
+brw-rw---- 1 root disk 8, 0 ... /dev/sda
+srw-rw-rw- 1 root root      ... /run/systemd/journal/dev-log
+prw------- 1 user user      ... /tmp/example-fifo
 ```
 
-Aquí hay un desglose de las columnas de izquierda a derecha:
+Las entradas y los permisos varían según el sistema; el ejemplo solo ilustra los caracteres de tipo.
 
-- Permisos
-- Propietario
-- Grupo
-- Número de Dispositivo Principal (Mayor)
-- Número de Dispositivo Secundario (Menor)
-- Marca de Tiempo
-- Nombre del Dispositivo
+## Nodos de dispositivos de caracteres
 
-### Identificación de Tipos de Dispositivos Linux
+Una `c` identifica un dispositivo de caracteres. Suele exponer una interfaz orientada a flujos o específica del dispositivo en vez de bloques de almacenamiento de tamaño fijo direccionables. Algunos ejemplos son las terminales y seudodispositivos como `/dev/null`.
 
-El primer carácter en la cadena de permisos de la salida de `ls -l` indica el tipo de archivo. Para un **archivo de dispositivo**, verá uno de los siguientes, lo que ayuda a identificar los **tipos de dispositivos linux** específicos:
+«Carácter» no exige que cada llamada al sistema transfiera exactamente un carácter. Las aplicaciones pueden leer o escribir búferes, mientras que el controlador define el bloqueo, el encuadre y el comportamiento de control.
 
-- `c` - carácter
-- `b` - bloque
-- `p` - pipe (tubería)
-- `s` - socket
+:::single-choice{#device-types-character-marker} ¿Qué primer carácter del modo identifica un nodo de dispositivo de caracteres?
 
-### Dispositivos de Carácter
+::option[`b`]{#device-types-marker-block explanation="El marcador `b` identifica un nodo de dispositivo de bloques."}
+::option[`p`]{#device-types-marker-pipe explanation="El marcador `p` identifica una FIFO o tubería con nombre."}
+::option[`c`]{#device-types-marker-character .correct explanation="Los archivos especiales de caracteres muestran `c` al principio del modo de un listado largo."}
+:::
 
-Estos dispositivos transfieren datos un carácter a la vez. Muchos pseudo-dispositivos, que no están conectados físicamente a hardware sino que proporcionan funciones esenciales del sistema operativo, se representan como dispositivos de carácter. Un ejemplo clásico es `/dev/null`.
+## Nodos de dispositivos de bloques
 
-### Dispositivos de Bloque
+Una `b` identifica un dispositivo de bloques. Los dispositivos de bloques proporcionan almacenamiento direccionable en bloques mediante la capa de bloques del kernel y pueden admitir operaciones como E/S con búfer, particionado y sistemas de archivos. Los discos, las particiones y los volúmenes lógicos suelen tener nodos de bloques.
 
-Estos dispositivos transfieren datos en bloques grandes de tamaño fijo. Comúnmente encontrará que el hardware de almacenamiento, como los discos duros (`/dev/sda`), las SSD y otros componentes de almacenamiento masivo, se representan como dispositivos de bloque, ya que están optimizados para el acceso a datos basado en bloques.
+Un nodo de bloques no es un sistema de archivos montado. Representa un dispositivo de almacenamiento o una región lógica; se puede crear un sistema de archivos en él y montarlo por separado. Escribir datos sin procesar en el nodo de bloques equivocado puede destruir tablas de particiones, sistemas de archivos o datos de usuarios.
 
-### Dispositivos Pipe (Tuberías)
+:::single-choice{#device-types-block-marker} ¿Qué indica el primer carácter de modo `b`?
 
-Las tuberías con nombre, o FIFOs (First-In, First-Out), permiten la comunicación entre procesos. Actúan como dispositivos de carácter, pero canalizan su salida a otro proceso en lugar de a un dispositivo físico.
+::option[Un trabajo del shell en segundo plano.]{#device-types-background-job explanation="El estado de los trabajos del shell no se codifica como un carácter de tipo del sistema de archivos."}
+::option[Una interfaz de dispositivo de bloques.]{#device-types-block-device .correct explanation="Los archivos especiales de bloques exponen almacenamiento direccionable mediante el subsistema de bloques del kernel."}
+::option[Un enlace simbólico roto.]{#device-types-broken-link explanation="Los enlaces simbólicos utilizan `l`, exista o no su destino en ese momento."}
+:::
 
-### Dispositivos Socket
+## FIFO y nodos de socket
 
-Los dispositivos socket también facilitan la comunicación entre procesos. A diferencia de las tuberías, son más versátiles y pueden soportar la comunicación entre múltiples procesos, incluso a través de una red.
+Una `p` identifica una FIFO, también llamada tubería con nombre. Proporciona un flujo de bytes con nombre mediante el cual pueden comunicarse los procesos. Los datos no se almacenan de forma persistente en el nodo FIFO después de ser consumidos.
 
-### Comprensión de los Números de Dispositivo
+Una `s` identifica un nodo de socket de dominio Unix. Da nombre a un extremo de socket local y puede admitir comunicación orientada a conexiones o mediante datagramas, transferencia de descriptores y funciones de credenciales del par. Los sockets de red que utilizan direcciones de Internet no tienen necesariamente nodos en el sistema de archivos.
 
-Cada **dispositivo linux** se identifica de forma única mediante dos números: el **número de dispositivo principal (mayor)** y el **número de dispositivo secundario (menor)**. Puede verlos en la salida de `ls`, separados por una coma. Para un dispositivo con los números **8, 0**:
+Ni una FIFO ni un nodo de socket Unix utilizan números mayor y menor de dispositivo para seleccionar un controlador de hardware.
 
-El número principal (8) identifica el controlador responsable del dispositivo. En este caso, 8 se usa comúnmente para unidades de disco SCSI. El número secundario (0) le dice al controlador qué instancia específica del dispositivo es. Aquí, 0 representa la primera unidad (`a`).
+:::single-choice{#device-types-pipe-socket-distinction} ¿Qué afirmación distingue correctamente estos tipos de objetos de comunicación entre procesos?
 
-## Exercise
+::option[`p` marca una partición de disco y `s` marca almacenamiento de estado sólido.]{#device-types-storage-letters explanation="Las particiones suelen ser dispositivos de bloques y las letras no codifican la tecnología de almacenamiento."}
+::option[`p` marca una FIFO y `s` marca un nodo de socket de dominio Unix.]{#device-types-p-and-s .correct explanation="Son tipos distintos de objetos del sistema de archivos utilizados para la comunicación local entre procesos."}
+::option[Ambos tipos identifican controladores de bloques del kernel mediante números mayores.]{#device-types-ipc-major explanation="Los nodos FIFO y de socket no son nodos de dispositivos de caracteres ni de bloques."}
+:::
 
-Para aplicar lo que ha aprendido sobre **dispositivos Linux**, recomendamos los siguientes laboratorios prácticos. Estos ejercicios le ayudarán a ganar confianza con la interacción y gestión de dispositivos en escenarios del mundo real.
+## Números mayor y menor de dispositivo
 
-1. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practique la creación y gestión de particiones de disco y sistemas de archivos, que son dispositivos de bloque fundamentales en Linux.
-2. **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprenda a identificar e inspeccionar varios dispositivos de hardware, comprendiendo cómo se representan en el directorio `/dev`.
-3. **[Crear y Activar un Archivo de Intercambio (Swap) en Linux](https://labex.io/es/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Obtenga experiencia práctica en la creación y activación de un archivo de intercambio, que funciona como un dispositivo de memoria virtual.
+Los nodos de dispositivos de caracteres y de bloques almacenan un número de dispositivo dividido en componentes mayor y menor. En un listado largo sustituyen la columna habitual del tamaño del archivo:
 
-## Quiz Question
+```text
+brw-rw---- 1 root disk 8, 0 ... /dev/sda
+```
 
-¿Cuál es el símbolo para los dispositivos de carácter en el comando `ls -l`? (Proporcione el único carácter minúsculo en inglés como respuesta)
+El par indica al kernel la interfaz de dispositivo registrada y la instancia a las que se dirige el nodo. Un número mayor se asocia con un controlador o una clase de dispositivo, mientras que el controlador interpreta el número menor. No codifiques supuestos como «el número menor cero siempre significa la primera unidad»; las correspondencias dependen del subsistema y de las interfaces del kernel.
 
-## Quiz Answer
+Muestra explícitamente el tipo y los números de dispositivo con:
 
-c
+```bash
+$ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
+```
+
+GNU `stat` muestra los valores `%t` y `%T` en hexadecimal.
+
+:::single-choice{#device-types-major-minor-scope} ¿Qué objetos utilizan números mayor y menor para identificar una interfaz de dispositivo del kernel?
+
+::option[Todos los archivos normales y directorios.]{#device-types-all-files explanation="Los archivos normales utilizan el tamaño y los metadatos del sistema de archivos, no un par mayor/menor de nodo de dispositivo."}
+::option[Únicamente los enlaces simbólicos cuyo destino no existe.]{#device-types-broken-symlinks explanation="Los enlaces simbólicos almacenan texto de ruta y no se convierten en nodos de dispositivo cuando falta el destino."}
+::option[Los nodos de dispositivos de caracteres y de bloques.]{#device-types-device-number-nodes .correct explanation="Los metadatos especiales de sus inodos contienen el número de dispositivo que se encamina a una interfaz del controlador."}
+:::
+
+## Resumen
+
+Ahora puedes interpretar tipos especiales del sistema de archivos sin tratar todos ellos como dispositivos de hardware.
+
+1. Interpreta `c` como nodo de dispositivo de caracteres y `b` como nodo de dispositivo de bloques.
+2. Interpreta `p` como FIFO y `s` como nodo de socket de dominio Unix.
+3. Asocia los números mayor y menor únicamente con nodos de dispositivo.
+4. Trata el acceso directo a dispositivos de bloques como potencialmente destructivo.

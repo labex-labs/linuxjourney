@@ -1,46 +1,80 @@
 ---
-index: 3
+lesson_id: "dns-process"
+course_id: "dns"
 lang: "ko"
-title: "DNS 프로세스"
-meta_title: "DNS 프로세스 - DNS"
-meta_description: "루트 서버부터 권한 있는 DNS 서버까지 단계별 DNS 확인 프로세스를 살펴보세요. Linux 서버가 도메인을 찾는 방법을 이해하는 것은 프로덕션 환경 및 도메인 호스팅에 매우 중요합니다."
-meta_keywords: "DNS 프로세스, DNS 조회, 도메인 확인, 리눅스 dns, 프로덕션 서버, 도메인 호스팅, dns 서버, TLD, 루트 서버, 권한 있는 dns"
+order_index: 3
+title: "DNS 과정"
+description: "스텁 및 재귀 확인자가 캐시, 위임, 글루 및 권위를 사용해 DNS 쿼리에 응답하는 방법을 알아봅니다."
+meta_title: "DNS 과정 - DNS"
+meta_description: "루트 서버부터 권위 DNS 서버까지 단계별 DNS 확인 과정을 살펴봅니다. 리눅스 서버가 도메인을 찾는 방법을 설명합니다."
+meta_keywords: "DNS 과정, DNS 조회, 도메인 확인, 리눅스 DNS, DNS 서버, TLD, 루트 서버, 권위 DNS"
 ---
 
-## Lesson Content
+일반 애플리케이션은 운영체제의 스텁 확인자에 요청합니다. 스텁 확인자는 로컬 이름 서비스 정책을 조회하고 설정된 확인자에 재귀 쿼리를 보냅니다. 재귀 확인자는 유효한 캐시로 질문에 응답할 수 없을 때만 계층을 따라 조회합니다.
 
-이제 `Linux 서버`와 같은 컴퓨터가 DNS 를 사용하여 `catzontheinterwebz.com`과 같은 `도메인`을 찾는 방법을 살펴보겠습니다. 이 프로세스는 깔때기처럼 작동하여 검색 범위를 좁혀 최종적으로 정답을 보유한 특정 `DNS 서버`에 도달합니다.
+## 로컬 정책과 캐시에서 시작하기
 
-### 초기 쿼리
+시스템 확인자는 설정된 순서에 따라 `/etc/hosts`, DNS 및 다른 소스를 조회할 수 있습니다. 검색 접미사는 짧은 이름을 여러 후보 이름으로 바꿀 수 있습니다. 재귀 확인자는 상위 트래픽을 보내기 전에 긍정 및 부정 캐시 항목을 확인합니다.
 
-먼저, 호스트는 구성된 재귀적 DNS 서버에 "`catzontheinterwebz.com`은 어디에 있습니까?"라고 묻습니다. 이 재귀적 서버는 일반적으로 ISP 에서 제공하며 직접적인 답을 모를 가능성이 높습니다. 따라서 가장 높은 권한을 가진 루트 서버에 연락하여 확인 프로세스를 시작합니다. 이 초기 단계는 집에서 브라우징하든 `프로덕션 서버`가 API 와 통신하든 동일합니다.
+:::single-choice{#dns-process-cache-first} 재귀 확인자가 쿼리를 위해 권위 서버에 전혀 연락하지 않을 수 있는 이유는 무엇입니까?
 
-### 루트 서버
+::option[DNS가 모든 쿼리에 먼저 로컬 실패를 요구하기 때문입니다.]{#dns-process-requires-failure explanation="확인자는 캐시에서 즉시 응답할 수 있습니다."}
+::option[아직 유효한 캐시 응답이 있기 때문입니다.]{#dns-process-valid-cache .correct explanation="캐싱은 레코드 수명이 만료될 때까지 계층 조회 반복을 피합니다."}
+::option[권위 서버가 클라이언트의 Ethernet 프레임만 받기 때문입니다.]{#dns-process-authoritative-ethernet explanation="DNS는 라우팅 네트워크의 IP 전송 위에서 작동합니다."}
+:::
 
-인터넷의 DNS 계층 구조는 13 개의 논리적 루트 서버에서 시작되며, 이는 전 세계 수백 개의 실제 위치에 미러링됩니다. 이 서버들은 모든 `도메인`의 IP 주소를 알지는 못하지만, `.com`, `.org`, `.net`과 같은 최상위 도메인 (TLD) 을 관리하는 곳은 알고 있습니다. `catzontheinterwebz.com`에 대한 요청을 받으면 루트 서버는 "모르지만 `.com` TLD 서버에 문의해야 합니다"라고 응답하고 해당 IP 주소를 제공합니다.
+## 루트 서버 조회하기
 
-### 최상위 도메인 서버
+캐시 미스가 발생하면 재귀 확인자가 루트 서버에 요청할 수 있습니다. DNS 루트에는 A부터 M까지 이름이 지정된 13개 서버 신원이 있고, 애니캐스트와 기타 복원력 있는 배포 기법으로 많은 물리 인스턴스가 이를 제공합니다. 응답은 보통 최종 호스트 주소를 반환하는 대신 관련 최상위 도메인의 권위 서버로 확인자를 안내합니다.
 
-다음으로 재귀적 서버는 `.com` TLD 서버에 새 쿼리를 보내 다시 `catzontheinterwebz.com`의 위치를 요청합니다. TLD 서버의 역할은 해당 특정 `도메인`에 대한 올바른 권한 있는 네임 서버를 가리키는 것입니다. 최종 IP 주소는 없지만, 해당 `도메인`을 담당하는 `DNS 서버`가 누구인지는 알고 있으며, 이는 종종 `도메인 호스팅` 제공업체를 통해 구성됩니다. TLD 서버는 해당 권한 있는 네임 서버의 IP 주소로 응답합니다.
+:::single-choice{#dns-process-root-response} 캐시되지 않은 `www.example.com` 조회에 루트 서버는 일반적으로 무엇을 반환합니까?
 
-### 권한 있는 DNS 서버
+::option[`com` 최상위 도메인 서버 방향의 위임을 반환합니다.]{#dns-process-root-referral .correct explanation="루트에 모든 최종 호스트 레코드를 저장하는 대신 계층이 책임을 위임합니다."}
+::option[`www.example.com`에 호스팅된 웹 페이지를 반환합니다.]{#dns-process-root-webpage explanation="DNS는 응용 콘텐츠가 아니라 리소스 레코드 데이터를 반환합니다."}
+::option[목적지의 Ethernet MAC 주소를 반환합니다.]{#dns-process-root-mac explanation="MAC 주소는 DNS 계층이 아니라 로컬 링크에서 확인합니다."}
+:::
 
-마지막으로 재귀적 서버는 권한 있는 `DNS 서버`에 마지막 요청을 보냅니다. 이 서버는 `catzontheinterwebz.com` `도메인`에 대한 실제 DNS 레코드를 보유하고 있는 서버입니다. 이 서버는 레코드를 확인하고 호스트에 대한 'A' 레코드를 찾아 최종 IP 주소를 반환합니다. 이 서버는 `도메인` 이름과 `프로덕션 서버`의 IP 주소 간의 결정적인 연결을 제공하므로 웹사이트나 애플리케이션을 라이브로 `만드는` 모든 사람에게 중요한 단계입니다. IP 주소를 확보하면 컴퓨터가 연결하여 콘텐츠를 검색할 수 있습니다.
+## TLD 및 권위 위임 따라가기
 
-## Exercise
+확인자는 `com` 권위 서버에 요청하고, 이 서버는 `example.com`에 위임된 권위 네임 서버를 반환합니다. 위임에는 위임된 하위 영역 안에 이름이 있는 서버에 도달해야 할 때 글루 주소 레코드가 포함될 수 있습니다. 그런 다음 확인자가 요청한 레코드를 권위 서버에 조회합니다.
 
-연습이 완벽을 만듭니다! DNS 확인 및 관리에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
+:::single-choice{#dns-process-glue-purpose} DNS 글루는 어떤 문제를 해결하는 데 도움이 됩니까?
 
-1. **[Linux 에서 dig 및 nslookup 으로 DNS 레코드 쿼리하기](https://labex.io/ko/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - A, PTR, MX 와 같은 DNS 레코드를 쿼리하고 기본 DNS 서버를 식별하는 방법을 배우며, 이는 네트워크 문제 해결에 필수적입니다.
-2. **[Linux 에 로컬 권한 있는 DNS 서버 설정하기](https://labex.io/ko/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 로컬 권한 있는 DNS 서버를 설치 및 구성하고, 영역을 정의하고, DNS 확인을 테스트하여 실습 경험을 쌓으십시오.
-3. **[Linux 에서 로컬 호스트 이름 확인 관리하기](https://labex.io/ko/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 연습을 하며, 이는 웹 개발 및 네트워크 테스트의 핵심 기술입니다.
+::option[DNS 확인 후 HTTP 페이로드를 암호화합니다.]{#dns-process-glue-http explanation="TLS나 다른 응용 보안이 페이로드 암호화를 처리합니다."}
+::option[가장 빠른 Ethernet 스위치 포트를 선택합니다.]{#dns-process-glue-switch explanation="글루는 링크 전달 정책이 아니라 위임 주소 데이터입니다."}
+::option[순환 확인 없이 하위 영역 내부 이름의 서버에 도달합니다.]{#dns-process-glue-reachability .correct explanation="상위 영역이 하위 영역 안에 이름이 있는 서버에 연락하는 데 필요한 주소 데이터를 제공합니다."}
+:::
 
-이러한 랩은 실제 시나리오에 개념을 적용하고 DNS 에 대한 자신감을 구축하는 데 도움이 될 것입니다.
+## 별칭과 레코드 유형 따라가기
 
-## Quiz Question
+응답에 다른 이름 조회가 필요한 CNAME 별칭이나 추가 쿼리로 이어지는 애플리케이션별 레코드가 포함될 수 있습니다. `A` 쿼리는 IPv4 주소 레코드와 관련 체인 데이터만 반환하고 별도의 `AAAA` 쿼리가 IPv6 주소를 검색합니다. 최종 응답에는 `NOERROR`, `NXDOMAIN` 또는 `SERVFAIL` 같은 서로 다른 의미의 상태가 있습니다.
 
-.com, .net, .org 등의 주소가 발견되는 네임서버의 약어는 무엇입니까? 대문자 영어 알파벳만 사용하여 답하십시오.
+:::single-choice{#dns-process-nxdomain-meaning} `NXDOMAIN`은 무엇을 보고합니까?
 
-## Quiz Answer
+::option[권위 결과에 따르면 조회한 도메인 이름이 존재하지 않습니다.]{#dns-process-name-does-not-exist .correct explanation="이름은 존재하지만 요청한 레코드 유형만 없는 경우와 다릅니다."}
+::option[이름이 존재하며 항상 빈 A 레코드가 있습니다.]{#dns-process-empty-a explanation="요청한 데이터가 없는 기존 이름은 일반적으로 NXDOMAIN이 아니라 데이터 없음 응답을 만듭니다."}
+::option[확인자가 최대 Ethernet 프레임 크기에 도달했습니다.]{#dns-process-frame-size explanation="상태는 이름의 존재 여부와 관련됩니다."}
+:::
 
-TLD
+## 검증, 캐싱 및 애플리케이션 사용
+
+검증하는 재귀 확인자는 DNSSEC 서명과 신뢰 체인을 사용해 인증된 부재 또는 레코드 무결성을 확인할 수 있습니다. DNSSEC는 쿼리를 암호화하거나 반환된 주소의 애플리케이션이 신뢰할 수 있음을 입증하지 않습니다.
+
+확인자는 TTL 규칙 안에서 결과를 캐시하고 스텁에 반환합니다. 애플리케이션은 주소를 선택하고 자체 네트워크 및 보안 프로토콜을 시도합니다.
+
+:::single-choice{#dns-process-dnssec-limit} DNSSEC 검증이 제공하지 않는 것은 무엇입니까?
+
+::option[서명된 DNS 데이터의 무결성과 출처 인증입니다.]{#dns-process-dnssec-does-integrity explanation="DNSSEC의 핵심 목표입니다."}
+::option[서명된 존재하지 않는 데이터에 대한 인증된 부재입니다.]{#dns-process-authenticated-denial explanation="서명된 부재 메커니즘이 이 검증을 제공할 수 있습니다."}
+::option[DNS 쿼리와 응답의 기밀성입니다.]{#dns-process-no-confidentiality .correct explanation="암호화에는 DoT나 DoH 같은 별도의 보호된 DNS 전송이 필요합니다."}
+:::
+
+## 요약
+
+이제 로컬 정책부터 캐시된 최종 응답까지 재귀 DNS 조회를 추적할 수 있습니다.
+
+1. 로컬 소스와 확인자 캐시를 먼저 확인합니다.
+2. 루트 및 최상위 도메인 위임을 따라갑니다.
+3. 글루를 사용해 적절한 위임 서버에 도달합니다.
+4. 별칭, 데이터 없음 응답 및 존재하지 않는 이름을 구분합니다.
+5. DNSSEC 무결성과 전송 기밀성을 구분합니다.

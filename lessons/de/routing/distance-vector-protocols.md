@@ -1,51 +1,68 @@
 ---
-index: 5
+lesson_id: "distance-vector-protocols"
+course_id: "routing"
 lang: "de"
+order_index: 5
 title: "Distanzvektorprotokolle"
-meta_title: "Distanzvektorprotokolle - Routing"
-meta_description: "Ein Leitfaden für Anfänger zu Distanzvektorprotokollen im Netzwerk-Routing. Dieses Tutorial erklärt, wie Protokolle wie RIP die Hops zur Routenbestimmung verwenden und behandelt deren Einschränkungen für modernes Linux-Networking."
-meta_keywords: "Distanzvektorprotokolle, Netzwerk-Routing, RIP, Routing Information Protocol, Hop-Zahl, Linux-Networking, Anfängerleitfaden, Tutorial"
+description: "Lerne, wie Distanzvektorprotokolle Routen aus Nachbarankündigungen ableiten und Schleifen begrenzen."
+meta_title: "Distanzvektorprotokolle – Routing"
+meta_description: "Eine Einführung in Distanzvektorprotokolle beim Netzwerkrouting. Erfahre, wie Protokolle wie RIP Routen anhand der Hop-Anzahl bestimmen und welche Grenzen sie besitzen."
+meta_keywords: "Distanzvektorprotokolle, Netzwerkrouting, RIP, Routing Information Protocol, Hop-Anzahl, Linux-Vernetzung, Einsteiger-Anleitung, Tutorial"
 ---
 
-## Lesson Content
+Distanzvektorrouting teilt Nachbarn mit, welche Ziele erreichbar sind, und beschreibt die Entfernung durch einen Messwert. Ein Router verbindet die Ankündigung eines Nachbarn mit den Kosten zu diesem Nachbarn, um seinen eigenen Pfadkandidaten abzuleiten.
 
-Distanzvektorprotokolle sind eine grundlegende Kategorie von Routing-Protokollen, die in Computernetzwerken verwendet werden. Sie bestimmen den besten Pfad für Datenpakete basierend auf der Distanz, die typischerweise durch die **Hop-Anzahl** gemessen wird. Bei dieser Art von **Netzwerk-Routing** pflegt jeder Router eine Tabelle der „Distanz“ zu allen bekannten Netzwerken.
+## Über Nachbarn lernen
 
-### Wie Distanzvektorprotokolle funktionieren
+Wenn Router A eine Entfernung von drei zu einem Präfix ankündigt und Router B A mit Kosten von eins erreicht, kann B über A die Entfernung vier ableiten. Die Information beschreibt eine Richtung und einen Messwert und keine vollständige Topologiekarte. Deshalb wird der Ansatz mitunter als Routing nach Hörensagen bezeichnet.
 
-Das Kernprinzip eines Distanzvektorprotokolls ist einfach: Router teilen ihre Routing-Informationen mit ihren unmittelbaren Nachbarn. Dieser Vorgang wird manchmal als „Routing durch Gerüchte“ bezeichnet. Wenn Router A beispielsweise weiß, dass er 3 Hops vom Netzwerk X entfernt ist, und Router B ein direkter Nachbar von Router A ist, kann Router B ableiten, dass er über Router A 4 Hops vom Netzwerk X entfernt ist. Wenn mehrere Pfade zum selben Ziel existieren, wählt das Protokoll immer den Pfad mit der niedrigsten **Hop-Anzahl**.
+:::single-choice{#distance-vector-derived-distance} Welcher Messwert wird abgeleitet, wenn ein Nachbar den Wert 3 ankündigt und die Verbindungskosten 1 betragen?
 
-### Vor- und Nachteile
+::option[2]{#distance-vector-two explanation="Die Verbindungskosten werden addiert und nicht subtrahiert."}
+::option[31]{#distance-vector-thirty-one explanation="Die Werte sind Messwerte und keine aneinanderzureihenden Dezimalziffern."}
+::option[4]{#distance-vector-four .correct explanation="Nachbarentfernung und lokale Verbindungskosten ergeben gemeinsam den Pfadkandidaten."}
+:::
 
-**Distanzvektorprotokolle** sind einfach zu konfigurieren und funktionieren gut in kleinen, stabilen Netzwerken. Sie weisen jedoch erhebliche Einschränkungen auf, die sie für größere, komplexere Umgebungen weniger geeignet machen.
+## Schleifen und Count to Infinity
 
-Ein großer Nachteil ist die langsame Konvergenz. Router senden ihre gesamte Routing-Tabelle periodisch an ihre Nachbarn, was, insbesondere wenn das Netzwerk wächst, erheblichen Bandbreiten- und Rechenaufwand verursachen kann. Wenn eine Netzwerkänderung auftritt, kann es lange dauern, bis diese Information alle Router erreicht.
+Nach einem Fehler können Nachbarn einander fälschlich eine Route zurückmelden und ihren Messwert schrittweise erhöhen. Protokolle begrenzen dies durch endliche Unendlichkeitswerte, Split Horizon, Route Poisoning, Poison Reverse, ausgelöste Aktualisierungen und Timer. Diese Mechanismen verringern Probleme, machen aber nicht jede Topologieänderung zu einer sofortigen Konvergenz.
 
-Ein weiterer wesentlicher Nachteil ist, dass der kürzeste Pfad in Bezug auf die **Hop-Anzahl** nicht immer der effizienteste ist. Ein Pfad mit weniger Hops kann langsamere Verbindungen aufweisen (z. B. 10 Mbit/s) im Vergleich zu einem Pfad mit mehr Hops, der schnellere Verbindungen nutzt (z. B. 1 Gbit/s). Distanzvektorprotokolle sind sich im Allgemeinen der Link-Geschwindigkeit nicht bewusst, was zu suboptimalen Routing-Entscheidungen führt.
+:::single-choice{#distance-vector-split-horizon} Was soll Split Horizon verringern?
 
-### RIP als gängiges Beispiel
+::option[Die Anzahl der Bits in jeder IPv4-Adresse.]{#distance-vector-ip-bits explanation="Die Größe einer IPv4-Adresse ist unabhängig von Routingaktualisierungen festgelegt."}
+::option[Verschlüsselungsaufwand in Anwendungsnutzlasten.]{#distance-vector-encryption explanation="Das Verfahren betrifft die Richtung von Routenankündigungen."}
+::option[Eine gelernte Route zurück zu dem Nachbarn anzukündigen, von dem sie stammt.]{#distance-vector-no-return .correct explanation="Die Unterdrückung dieser Richtung hilft, einfache Rückkopplungsschleifen zu verhindern."}
+:::
 
-Eines der bekanntesten **Distanzvektorprotokolle** ist das **Routing Information Protocol (RIP)**. Es ist ein klassisches Beispiel, das die Prinzipien und Einschränkungen dieser Protokollfamilie klar demonstriert.
+## RIP-Messwerte und -Grenzen
 
-- **Periodische Updates:** RIP sendet seine gesamte Routing-Tabelle alle 30 Sekunden an alle Nachbarn.
-- **Hop-Anzahl-Limit:** Um Routing-Schleifen zu verhindern und den Netzwerkverkehr zu steuern, erzwingt RIP eine maximale **Hop-Anzahl** von 15. Jeder Pfad, der 16 Hops erfordert, wird als unerreichbar betrachtet.
+RIP verwendet die Hop-Anzahl. Eine Route mit Messwert 16 ist nicht erreichbar, sodass der größte verwendbare Messwert 15 ist. Dies begrenzt die Eskalation von Schleifen, aber auch den Netzwerkdurchmesser. Weniger Hops bedeuten nicht zwangsläufig geringere Latenz oder mehr Bandbreite.
 
-Aufgrund dieser Eigenschaften wird RIP in modernen Produktionsnetzwerken selten eingesetzt, dient aber als ausgezeichnetes Lernwerkzeug in einem **Anfängerleitfaden** zu **Linux-Netzwerken** und Routing-Konzepten.
+RIPv2 verwendet regelmäßige und ausgelöste Aktualisierungen und unterstützt CIDR-Informationen. Es sendet Aktualisierungen gewöhnlich per Multicast, statt unter allen Umständen eine vollständige Tabelle als Broadcast zu senden. Authentifizierung und Filterung erfordern weiterhin bewusste Konfiguration.
 
-## Exercise
+:::single-choice{#distance-vector-rip-infinity} Was stellt der RIP-Messwert 16 dar?
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerk-Routing und Konnektivität zu festigen:
+::option[Den schnellsten Pfad mit sechzehn parallelen Verbindungen.]{#distance-vector-fastest-16 explanation="RIP behandelt den Wert als nicht erreichbar."}
+::option[Unendlich, also ein nicht erreichbares Ziel.]{#distance-vector-unreachable .correct explanation="RIP begrenzt verwendbare Pfade auf 15 Hops."}
+::option[Eine von BGP gelernte Route.]{#distance-vector-bgp-route explanation="Die Zahl besitzt eine RIP-spezifische Bedeutung."}
+:::
 
-1. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Üben Sie die Verwendung von `ping` und `arp`, um zu verstehen, wie Geräte sich gegenseitig entdecken und wie der Verkehr auf der Netzwerkschicht geroutet wird.
-2. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Lernen Sie, IP-Adressen zuzuweisen und die Konnektivität zwischen simulierten Linux-Knoten zu testen, wobei Sie beobachten, wie IP-Subnetze die Netzwerkkommunikation beeinflussen.
-3. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Sammeln Sie praktische Erfahrungen bei der Konfiguration statischer und dynamischer IP-Adressen sowie beim Festlegen von Standard-Gateways, die wesentliche Bestandteile des Netzwerk-Routings sind.
+## Eine gelernte Route bewerten
 
-Diese Labs helfen Ihnen, die Konzepte der Netzwerkadressierung und Konnektivität in realen Szenarien anzuwenden und eine solide Grundlage für das Verständnis der Funktionsweise von Routing-Protokollen aufzubauen.
+Prüfe Nachbarzustand, empfangene und angekündigte Präfixe, Messwert, nächsten Hop, Routeninstallation und Erreichbarkeit auf der Datenebene. Eine Route kann innerhalb von RIP gültig sein, aber gemäß der lokalen Präferenzrichtlinie gegen eine andere Routenquelle verlieren.
 
-## Quiz Question
+:::single-choice{#distance-vector-fewest-hop-limit} Warum kann die RIP-Route mit den wenigsten Hops schlecht funktionieren?
 
-Richtig oder falsch: Distanzvektorprotokolle verwenden die Route mit der geringsten Bandbreite?
+::option[Die Hop-Anzahl codiert weder Verbindungsbandbreite noch Latenz, Verlust oder Überlastung.]{#distance-vector-hop-limited .correct explanation="Ein Pfad mit mehr Hops kann bessere Verbindungen und Anwendungsleistung besitzen."}
+::option[RIP wählt immer die Route mit den meisten Hops.]{#distance-vector-most-hops explanation="Sein Messwert bevorzugt kleinere verwendbare Hop-Anzahlen."}
+::option[Die Hop-Anzahl wird in Byte Datenträgerspeicher gemessen.]{#distance-vector-disk-bytes explanation="Sie zählt geroutete Übergänge und keinen Speicher."}
+:::
 
-## Quiz Answer
+## Zusammenfassung
 
-False
+Du kannst nun sowohl die Einfachheit als auch die Grenzen von Distanzvektorrouting erklären.
+
+1. Leite die Pfaddistanz aus der Ankündigung eines Nachbarn ab.
+2. Erkenne Schleifen- und Count-to-Infinity-Verhalten.
+3. Erkläre RIPs verwendbare 15-Hop-Grenze und Messwert 16.
+4. Überprüfe Routeninstallation und Ergebnis der Datenebene getrennt.

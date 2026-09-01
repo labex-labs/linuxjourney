@@ -1,51 +1,68 @@
 ---
-index: 5
+lesson_id: "distance-vector-protocols"
+course_id: "routing"
 lang: "zh"
+order_index: 5
 title: "距离矢量协议"
-meta_title: "距离矢量协议 - 网络路由"
-meta_description: "网络路由中距离矢量协议的初学者指南。本教程解释了像 RIP 这样的协议如何使用跳数来确定路由，并涵盖了它们对现代 Linux 网络的局限性。"
-meta_keywords: "距离矢量协议，网络路由，RIP, 路由信息协议，跳数，Linux 网络，初学者指南，教程"
+description: "学习距离矢量协议如何根据邻居通告推导路由并限制环路。"
+meta_title: "距离矢量协议 - 路由"
+meta_description: "面向初学者的网络路由距离矢量协议指南。本教程介绍 RIP 等协议如何使用跳数确定路由，以及它们在现代 Linux 网络中的局限。"
+meta_keywords: "距离矢量协议, 网络路由, RIP, 路由信息协议, 跳数, Linux 网络, 初学者指南, 教程"
 ---
 
-## Lesson Content
+距离矢量路由会告诉邻居哪些目标可达，并提供描述距离的度量值。路由器将邻居通告与到达该邻居的开销结合起来，推导自己的候选路径。
 
-距离矢量协议是计算机网络中使用的路由协议的一个基本类别。它们根据距离确定数据包的最佳路径，该距离通常以**跳数 (hop count)** 来衡量。在这种类型的**网络路由**中，每台路由器都会维护一个到所有已知网络的“距离”表。
+## 通过邻居学习
 
-### 距离矢量协议的工作原理
+如果路由器 A 通告到某个前缀的距离为三，而路由器 B 到达 A 的开销为一，那么 B 可以推导出经由 A 的距离为四。该信息描述方向和度量，而不是完整拓扑图，因此这种方法有时称为“听信传闻的路由”。
 
-距离矢量协议的核心原则很简单：路由器与其直接邻居共享其路由信息。这个过程有时被称为“谣言式路由”。例如，如果路由器 A 知道它距离网络 X 有 3 跳，而路由器 B 是路由器 A 的直接邻居，那么路由器 B 可以推断出它通过路由器 A 到达网络 X 需要 4 跳。当存在多条到达同一目的地的路径时，协议将始终选择**跳数**最低的路径。
+:::single-choice{#distance-vector-derived-distance} 如果邻居通告度量值 3，链路开销为 1，经由它推导出的度量值是多少？
 
-### 优点和缺点
+::option[2]{#distance-vector-two explanation="链路开销应相加，而不是相减。"}
+::option[31]{#distance-vector-thirty-one explanation="这些值是度量，而不是要拼接的十进制数字。"}
+::option[4]{#distance-vector-four .correct explanation="邻居距离与本地链路开销相加得到候选路径。"}
+:::
 
-**距离矢量协议**配置简单，在小型、稳定的网络中运行良好。然而，它们存在明显的局限性，使其不太适合更大、更复杂的环境。
+## 环路与无穷计数
 
-一个主要的缺点是收敛速度慢。路由器会定期向其邻居广播其完整的路由表，这可能会消耗大量的带宽和处理能力，尤其是在网络增长时。如果发生网络变化，该信息可能需要很长时间才能传播到所有路由器。
+故障发生后，邻居可能错误地把路由相互通告回去，使其度量值逐渐增加。协议使用有限的无穷值、水平分割、路由毒化、毒性逆转、触发更新和计时器来缓解这一问题。这些机制可以降低风险，但无法让每次拓扑变化都瞬间收敛。
 
-另一个关键的缺点是，跳数最短的路径不一定是最有效率的。跳数较少的路径可能使用较慢的链路（例如 10 Mbps），而跳数较多的路径可能使用较快的链路（例如 1 Gbps）。距离矢量协议通常不了解链路速度，这会导致次优的路由决策。
+:::single-choice{#distance-vector-split-horizon} 水平分割旨在减少什么？
 
-### RIP 是一个常见示例
+::option[每个 IPv4 地址中的位数。]{#distance-vector-ip-bits explanation="IPv4 地址大小固定，与路由更新无关。"}
+::option[应用程序载荷中的加密开销。]{#distance-vector-encryption explanation="该技术关注路由通告方向。"}
+::option[把学习到的路由通告回它所来自的邻居。]{#distance-vector-no-return .correct explanation="抑制该方向有助于防止简单反馈环路。"}
+:::
 
-最著名的**距离矢量协议**之一是**路由信息协议 (RIP)**。它是清晰展示此类协议族原理和局限性的经典示例。
+## RIP 度量与限制
 
-- **周期性更新**：RIP 每 30 秒向所有邻居广播其完整的路由表。
-- **跳数限制**：为了防止路由环路和控制网络流量，RIP 强制执行 15 跳的最大**跳数**。任何需要 16 跳的路由都被视为不可达。
+RIP 使用跳数。度量值为 16 的路由不可达，因此最大可用度量值为 15。这限制了环路中的度量增长，也限制了网络直径。较少的跳数不一定意味着更低延迟或更高带宽。
 
-由于这些特性，RIP 在现代生产网络中很少使用，但它作为**初学者指南**学习 **Linux 网络**和路由概念的绝佳学习工具。
+RIPv2 使用周期更新和触发更新，并支持 CIDR 信息。它通常使用多播发送更新，而不是在每种情况下都广播整张路由表。身份验证和过滤仍需有意配置。
 
-## Exercise
+:::single-choice{#distance-vector-rip-infinity} RIP 度量值 16 表示什么？
 
-实践造就完美！以下是一些实践实验，可加强您对网络路由和连接性的理解：
+::option[具有十六条并行链路的最快路径。]{#distance-vector-fastest-16 explanation="RIP 将该值视为不可达。"}
+::option[无穷，即目标不可达。]{#distance-vector-unreachable .correct explanation="RIP 将可用路径限制为最多 15 跳。"}
+::option[从 BGP 学习到的路由。]{#distance-vector-bgp-route explanation="该数字具有 RIP 特有的含义。"}
+:::
 
-1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 练习使用 `ping` 和 `arp` 来了解设备如何相互发现以及流量如何在网络层路由。
-2. **[在 Linux 中模拟网络层连接性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习分配 IP 地址并测试模拟 Linux 节点之间的连接性，观察 IP 子网如何影响网络通信。
-3. **[管理 Linux 中的 IP 地址分配](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 获得配置静态和动态 IP 地址以及设置默认网关的实践经验，这些是网络路由的基本组成部分。
+## 评估学习到的路由
 
-这些实验将帮助您在实际场景中应用网络寻址和连接性的概念，为理解路由协议如何工作奠定坚实的基础。
+应检查邻居状态、接收和通告的前缀、度量值、下一跳、路由安装及数据平面可达性。一条路由可能在 RIP 内有效，但根据本地偏好策略输给另一个路由来源。
 
-## Quiz Question
+:::single-choice{#distance-vector-fewest-hop-limit} 为什么 RIP 的最少跳路径可能表现很差？
 
-对还是错：距离矢量协议使用带宽最少的路由？
+::option[跳数不包含链路带宽、延迟、丢包或拥塞信息。]{#distance-vector-hop-limited .correct explanation="跳数更多的路径可能具有更好的链路和应用程序性能。"}
+::option[RIP 始终选择跳数最多的路由。]{#distance-vector-most-hops explanation="它的度量偏好较小的可用跳数。"}
+::option[跳数以磁盘空间字节为单位。]{#distance-vector-disk-bytes explanation="它统计路由转换，而不是存储空间。"}
+:::
 
-## Quiz Answer
+## 总结
 
-False
+现在，你可以解释距离矢量路由的简洁性与局限。
+
+1. 根据邻居通告推导候选距离。
+2. 识别环路和无穷计数行为。
+3. 解释 RIP 的 15 跳可用上限和度量值 16。
+4. 分别验证路由安装和数据平面结果。

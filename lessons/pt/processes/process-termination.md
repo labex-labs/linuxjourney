@@ -1,51 +1,83 @@
 ---
-index: 5
+lesson_id: "process-termination"
+course_id: "processes"
 lang: "pt"
-title: "Terminação de Processos"
-meta_title: "Terminação de Processos - Processos"
-meta_description: "Explore a terminação de processos no Linux, a chamada de sistema wait e as principais diferenças no debate sobre processos zumbis vs. órfãos. Aprenda a gerenciar e matar processos filhos no Linux para um sistema estável."
-meta_keywords: "Terminação de processos Linux, processo zumbi, processo órfão, zumbi vs órfão, matar processo filho Linux, chamada de sistema wait, _exit, gerenciamento de processos"
+order_index: 5
+title: "Encerramento de Processos"
+description: "Aprenda como status de saída, espera, zumbis e reparentalização completam o ciclo de vida dos processos Linux."
+meta_title: "Encerramento de Processos - Processos"
+meta_description: "Conheça o encerramento de processos Linux, a chamada de sistema wait e as principais diferenças entre processos zumbis e órfãos."
+meta_keywords: "encerramento de processos Linux, processo zumbi, processo órfão, zumbi versus órfão, encerrar processo filho Linux, chamada de sistema wait, _exit, gerenciamento de processos"
 ---
 
-## Lesson Content
+Um processo pode terminar retornando de sua função principal, chamando uma interface de saída ou sendo encerrado por um sinal. O kernel libera a maioria de seus recursos, mas a contabilização entre pai e filho continua até que o pai colete as informações de encerramento.
 
-### O Processo de Terminação
+## Status de Saída
 
-Uma vez que um processo é criado, como ele termina? A terminação de um processo é uma parte crítica do ciclo de vida do processo, garantindo que os recursos do sistema sejam gerenciados de forma eficaz.
+Um programa que termina normalmente fornece um status inteiro. Por convenção, o status `0` significa sucesso, enquanto um valor diferente de zero informa algum tipo de falha ou resultado alternativo. Os significados exatos dos valores diferentes de zero pertencem à interface do programa.
 
-Um processo tipicamente termina chamando a chamada de sistema `_exit`. Esta ação sinaliza ao kernel que o processo terminou e que seus recursos, como memória e descritores de arquivo, podem ser recuperados. Ao sair, o processo fornece um status de terminação ao kernel, que é um valor inteiro. Por convenção, um status de 0 indica execução bem-sucedida, enquanto um valor diferente de zero sinaliza um erro.
+Em um shell, inspecione o status do pipeline em primeiro plano mais recente com:
 
-No entanto, chamar `_exit` não apaga imediatamente o processo. O processo pai deve reconhecer a terminação de seu filho usando a chamada de sistema `wait`. Esta chamada permite que o pai recupere o status de terminação do filho. Este mecanismo de duas etapas é essencial para a limpeza adequada do processo. Outra forma de `linux kill child process` (matar processo filho no linux) é usando sinais, um tópico que exploraremos em uma lição posterior.
+```bash
+$ command
+$ printf '%s\n' "$?"
+```
 
-### Processos Órfãos
+Os shells expõem um intervalo limitado de status codificados e também representam o encerramento por sinais, portanto esse valor não é um registro de diagnóstico completo. Os programas devem documentar seus próprios códigos de saída.
 
-O que acontece se um processo pai terminar antes de seu filho? O processo filho se torna um "órfão". Como seu pai original não pode mais chamar `wait`, o kernel intervém. O processo órfão é imediatamente adotado por um processo especial do sistema, tipicamente `init` (ID de processo 1), que é considerado o ancestral de todos os processos. O processo `init` então assume o papel de pai, chamando periodicamente `wait` para coletar o status de terminação de qualquer um de seus filhos adotados, permitindo que eles terminem de forma limpa.
+:::single-choice{#process-termination-success-status} Pela convenção Unix, qual status de saída normal indica sucesso?
 
-### Processos Zumbis
+::option[`1`]{#process-termination-status-one explanation="Muitos programas usam `1` para uma falha geral, embora os significados sejam específicos do comando."}
+::option[`0`]{#process-termination-status-zero .correct explanation="Um status normal zero indica convencionalmente a conclusão bem-sucedida."}
+::option[`255`]{#process-termination-status-255 explanation="Esse valor é diferente de zero e não representa convencionalmente o sucesso."}
+:::
 
-Um cenário diferente ocorre quando um processo filho termina, mas seu pai ainda não chamou `wait`. Nesse estado, o filho se torna um processo "zumbi". O kernel libera a maioria dos recursos do zumbi, mas mantém uma entrada na tabela de processos. Essa entrada contém o ID do processo e o status de terminação, esperando que o pai o colete.
+## Espera e Coleta
 
-Processos zumbis já estão mortos, portanto, não consomem tempo de CPU. Você não pode matá-los com sinais porque eles não estão em execução. O processo de o pai chamar `wait` para limpar um zumbi é chamado de "reaping" (colheita). Se o processo pai nunca chamar `wait`, esses zumbis podem se acumular. Embora alguns sejam inofensivos, um grande número pode preencher a tabela de processos, impedindo a criação de novos processos. Nos casos em que o processo pai também termina, `init` adotará e colherá o zumbi.
+O kernel registra como um filho terminou e notifica seu pai. O pai usa uma função da família de chamadas de sistema `wait()` para recuperar essas informações. A coleta do registro é chamada de reaping.
 
-### Processo Zumbi vs Órfão
+A espera também pode coordenar a execução: um shell aguarda um comando em primeiro plano antes de exibir outro prompt, mas pode adiar a espera por uma tarefa em segundo plano. Um pai de longa duração bem projetado deve se organizar para coletar seus filhos sem bloquear trabalhos não relacionados.
 
-Entender a diferença entre um `zombie vs orphan process` (processo zumbi vs órfão) é fundamental para diagnosticar problemas relacionados a processos.
+:::single-choice{#process-termination-wait-purpose} O que uma operação wait bem-sucedida permite que um pai recupere?
 
-- Um **processo órfão** é um processo ativo e em execução cujo pai morreu. Ele é adotado por `init` e continua a ser executado até terminar.
-- Um **processo zumbi** é um processo morto que concluiu sua execução, mas ainda possui uma entrada na tabela de processos. Ele está esperando que seu processo pai leia seu status de saída.
+::option[As informações de encerramento do filho.]{#process-termination-wait-status .correct explanation="A família wait informa como um filho foi interrompido ou terminou e coleta um filho concluído."}
+::option[Uma cópia do antigo espaço de endereços do filho.]{#process-termination-wait-memory explanation="A maior parte da memória do processo já foi liberada e não é devolvida ao pai por `wait()`."}
+::option[A propriedade de todos os arquivos que o filho abriu.]{#process-termination-wait-files explanation="A espera não transfere metadados de propriedade do sistema de arquivos."}
+:::
 
-Em resumo, um órfão está vivo, mas sem pai, enquanto um zumbi está morto, mas ainda não foi totalmente colhido por seu pai.
+## Processos Zumbis
 
-## Exercise
+Depois que um filho termina, mas antes que seu registro de encerramento seja coletado, ele aparece como zumbi, normalmente com o estado `Z` em `ps`. Ele não executa mais nem mantém um espaço de endereços comum, mas uma entrada mínima na tabela de processos e informações de contabilização permanecem.
 
-Para aplicar esses conceitos, tente o seguinte laboratório prático:
+Enviar um sinal a um zumbi não pode fazê-lo terminar novamente. Corrija o acúmulo persistente de zumbis diagnosticando o pai que não está aguardando, reiniciando ou corrigindo esse pai por um procedimento operacional adequado ou permitindo a reparentalização para um processo que fará a coleta. Grandes quantidades podem esgotar a capacidade de PIDs ou da tabela de processos.
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro plano e em segundo plano, inspecionando-os com `ps`, monitorando recursos com `top`, ajustando a prioridade com `renice` e terminando-os com `kill`. Este laboratório oferece experiência prática com o ciclo de vida do processo, incluindo como terminá-los e observar seus estados.
+:::single-choice{#process-termination-zombie-definition} Qual descrição corresponde a um processo zumbi?
 
-## Quiz Question
+::option[Um filho em execução cujo pai já terminou.]{#process-termination-zombie-orphan explanation="Isso descreve um filho órfão, não um estado zumbi."}
+::option[Um filho concluído cujo registro de encerramento ainda não foi coletado.]{#process-termination-zombie-unreaped .correct explanation="O processo deixou de executar, mas o kernel mantém um estado mínimo para seu pai."}
+::option[Um processo que consome CPU em um loop ininterrupto.]{#process-termination-zombie-cpu explanation="Um zumbi não executa instruções nem consome tempo de CPU."}
+:::
 
-Qual é o status de terminação mais comum para um processo que obteve sucesso?
+## Órfãos e Reparentalização
 
-## Quiz Answer
+Se um pai termina enquanto seu filho continua, o kernel reparentaliza esse filho para um subreaper elegível ou para o processo init do namespace de PIDs relevante. O filho pode estar em execução, dormindo, interrompido ou tornar-se um zumbi mais tarde; “órfão” descreve a perda da relação com o pai original, não um estado de execução.
 
-0
+O processo adotante passa a ser responsável por coletar o status de encerramento. Gerenciadores de serviços modernos e ambientes de contêineres tornam importante não presumir que o novo pai sempre seja o PID 1 do host.
+
+:::single-choice{#process-termination-orphan-definition} O que acontece quando um processo sobrevive a seu pai original?
+
+::option[Ele é reparentalizado para um subreaper elegível ou para o processo init do namespace.]{#process-termination-orphan-reparented .correct explanation="O kernel preserva uma relação válida de parentesco atribuindo um processo adotante."}
+::option[Ele se torna imediatamente um zumbi, mesmo que ainda não tenha terminado.]{#process-termination-orphan-zombie explanation="O estado zumbi começa somente depois que a execução termina e o status aguarda a coleta."}
+::option[Ele perde permanentemente seu PID e continua anonimamente.]{#process-termination-orphan-no-pid explanation="Um órfão ativo mantém sua identidade de processo enquanto a relação de parentesco muda."}
+:::
+
+Use o laboratório [Gerenciamento e Monitoramento de Processos Linux](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) para observar códigos de saída e estados de processos sem afetar uma carga de trabalho de produção.
+
+## Resumo
+
+Agora você sabe diferenciar o fim da execução da limpeza realizada pelo pai.
+
+1. Interprete zero como sucesso convencional e os status diferentes de zero pela documentação do programa.
+2. Use a espera para coletar as informações de encerramento de um filho.
+3. Reconheça um zumbi como encerrado, mas ainda não coletado.
+4. Reconheça um órfão como um filho reparentalizado depois que seu pai original termina.

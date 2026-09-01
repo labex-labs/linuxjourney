@@ -1,113 +1,149 @@
 ---
-index: 2
+lesson_id: "choosing-a-linux-distribution"
+course_id: "getting-started"
 lang: "fr"
+order_index: 2
 title: "Choisir une distribution Linux"
+description: "Découvrez comment comparer les distributions Linux selon vos objectifs, leur modèle de publication, leur assistance et votre niveau d'expérience."
 meta_title: "Meilleure distribution Linux : comment choisir"
-meta_description: "Vous cherchez la meilleure distribution Linux ? Apprenez à choisir la distribution adaptée aux débutants, développeurs, serveurs, à la stabilité et à l'usage quotidien."
-meta_keywords: "meilleure distribution linux, distribution linux, choisir une distribution linux, distributions linux populaires, distribution linux pour débutant"
+meta_description: "Vous cherchez la meilleure distribution Linux ? Apprenez à choisir selon votre niveau, le développement, les serveurs, la stabilité ou le bureau."
+meta_keywords: "meilleure distribution Linux, distribution Linux, choisir distribution Linux, distributions populaires, Linux débutant"
 ---
 
-## Lesson Content
+Dans la leçon précédente, nous avons découvert le noyau Linux. Même si le mot « Linux » désigne souvent tout le système d'exploitation, le noyau n'en est qu'une partie. Les systèmes complets construits autour de lui sont appelés **distributions Linux**, ou **distros Linux**.
 
-Dans la leçon précédente, nous avons découvert le noyau Linux. Bien que les gens utilisent souvent "Linux" pour décrire l'ensemble du système d'exploitation, le noyau n'en est qu'une partie. Les systèmes d'exploitation complets construits autour du noyau Linux sont appelés **distributions Linux**, ou **distros Linux**.
+Si vous recherchez la **meilleure distribution Linux**, sachez d'abord qu'aucun choix n'est le meilleur pour tout le monde. La bonne distribution dépend de ce qui compte le plus pour vous : facilité d'utilisation, fraîcheur des logiciels, stabilité, maîtrise du système ou assistance professionnelle.
 
-Si vous essayez de trouver la **meilleure distribution Linux**, la première chose à savoir est qu'il n'existe pas de choix unique idéal pour tout le monde. La bonne distribution dépend de ce que vous privilégiez : la facilité d'utilisation, la fraîcheur des logiciels, la stabilité, le contrôle du système ou le support en entreprise.
+Un système Linux se divise en trois grandes parties :
 
-Un système Linux est divisé en trois parties principales :
+- **Matériel** — Les composants physiques de l'ordinateur, comme le processeur, la mémoire et les périphériques de stockage.
+- **Noyau Linux** — Cœur du système d'exploitation, il gère le matériel et facilite la communication entre logiciels et matériel.
+- **Espace utilisateur** — L'environnement dans lequel vous interagissez avec le système au moyen des applications et interfaces en ligne de commande.
 
-- **Matériel (Hardware)** - Cela inclut les composants physiques de votre ordinateur, tels que le processeur (CPU), la mémoire et les périphériques de stockage.
-- **Noyau Linux (Linux Kernel)** - En tant que cœur du système d'exploitation, le noyau gère le matériel et facilite la communication entre les logiciels et le matériel.
-- **Espace utilisateur (User Space)** - C'est l'environnement où vous, l'utilisateur, interagissez avec le système via des applications et des interfaces en ligne de commande.
+:::single-choice{#identify-hardware-manager} Quelle partie principale d'un système Linux gère le matériel ?
 
-### Qu'est-ce qu'une distribution Linux
+::option[L'espace utilisateur]{#user-space explanation="Les applications et interfaces en ligne de commande s'exécutent dans l'espace utilisateur. Elles s'appuient sur le noyau pour accéder au matériel."}
+::option[Le noyau Linux]{#linux-kernel .correct explanation="Le noyau Linux gère les ressources matérielles et la communication entre matériel et logiciels. Il est le cœur autour duquel une distribution est construite."}
+::option[Le matériel physique]{#physical-hardware explanation="Le matériel fournit processeur, mémoire et stockage. Le noyau est le composant système chargé de gérer ces ressources."}
+:::
 
-Une distribution Linux regroupe le noyau Linux avec des utilitaires système, des bibliothèques, des applications et généralement un gestionnaire de paquets. De nombreuses distributions incluent également un environnement de bureau pour une utilisation graphique. En pratique, une distribution Linux est un système d'exploitation complet construit autour du noyau Linux.
+## Qu'est-ce qu'une distribution Linux ?
 
-Différentes distributions Linux font des choix différents en matière de stabilité, de fraîcheur logicielle, d'expérience de bureau, de gestion des paquets, de support et de philosophie système. C'est pourquoi il n'existe pas de meilleure distribution Linux unique pour tout le monde.
+Une distribution Linux réunit le noyau Linux, des utilitaires système, des bibliothèques, des applications et généralement un gestionnaire de paquets. Beaucoup proposent aussi un environnement de bureau pour l'utilisation graphique. Concrètement, une distribution Linux est un système d'exploitation complet construit autour du noyau Linux.
 
-### Comment choisir la meilleure distribution Linux
+Les distributions font des choix différents en matière de stabilité, fraîcheur des logiciels, expérience de bureau, gestion des paquets, assistance et philosophie du système. C'est pourquoi aucune distribution n'est la meilleure pour tout le monde.
 
-Choisir une distribution Linux devient beaucoup plus facile lorsque vous partez de vos propres besoins. Réfléchissez à votre niveau d'expérience, au type d'ordinateur que vous utilisez et à ce que vous attendez du système. Un débutant configurant un ordinateur portable peut vouloir quelque chose de très différent d'un développeur construisant une station de travail ou d'un administrateur déployant des serveurs.
+:::single-choice{#recognize-linux-distribution} Quelle description correspond le mieux à une distribution Linux ?
 
-La meilleure distribution Linux est généralement celle qui correspond à vos objectifs, et non celle qui a la réputation la plus bruyante. Pour la plupart des utilisateurs, les facteurs principaux sont la facilité d'utilisation, la gestion des paquets, le style de publication, la documentation et le support à long terme.
+::option[Un noyau distribué sans outils système, applications ni gestion des logiciels]{#kernel-only explanation="Le noyau seul n'est qu'une partie du système d'exploitation. Une distribution lui ajoute utilitaires, bibliothèques, applications et gestion des logiciels."}
+::option[Un noyau accompagné d'outils système, d'applications et d'un système de gestion des logiciels]{#complete-distribution .correct explanation="Une distribution associe le noyau Linux aux logiciels de l'espace utilisateur nécessaires à un système exploitable. Elle comprend généralement aussi un gestionnaire de paquets."}
+::option[Une conception de bureau commune à tous les systèmes d'exploitation qui emploient Linux]{#universal-desktop explanation="Les distributions peuvent proposer différents environnements de bureau ou aucune interface graphique. Une conception commune du bureau ne définit pas une distribution."}
+:::
 
-Le style de publication décrit la manière dont une distribution fournit les mises à jour logicielles majeures. Les distributions stables ou à version fixe publient les mises à jour par lots planifiés et se concentrent sur la prévisibilité. Les distributions à publication continue (rolling-release) fournissent des mises à jour en continu, ce qui signifie généralement des logiciels plus récents mais aussi des changements plus fréquents.
+## Comment choisir la meilleure distribution Linux
 
-### Distributions Linux pour débutants
+Le choix devient beaucoup plus simple si vous partez de vos propres besoins. Réfléchissez à votre niveau d'expérience, au type d'ordinateur et à l'usage prévu. Un débutant qui configure un ordinateur portable peut rechercher tout autre chose qu'un développeur préparant une station de travail ou qu'un administrateur déployant des serveurs.
 
-Si vous débutez avec Linux, commencez par des distributions qui offrent un processus d'installation fluide, une documentation solide et une expérience de bureau soignée. [Ubuntu](https://labex.io/fr/lesson/ubuntu) et [Linux Mint](https://labex.io/fr/lesson/linux-mint) sont des points de départ courants car ils sont faciles à installer et largement documentés. openSUSE peut également être accessible, surtout pour les utilisateurs qui aiment les outils d'administration graphiques.
+La meilleure distribution est généralement celle qui correspond à vos objectifs, pas celle dont la réputation est la plus bruyante. Pour la plupart des utilisateurs, les principaux critères sont la facilité d'utilisation, la gestion des paquets, le modèle de publication, la documentation et la durée de l'assistance.
 
-Adapté aux débutants ne signifie pas toujours simpliste. Cela signifie généralement que la distribution a des paramètres par défaut sensés, une grande communauté et moins de surprises lors d'une utilisation quotidienne.
+Le modèle de publication décrit la manière dont une distribution fournit les mises à jour importantes. Les distributions stables ou à versions ponctuelles publient les changements en lots planifiés et privilégient la prévisibilité. Les distributions en publication continue livrent les nouveautés en permanence, ce qui signifie généralement des logiciels plus récents, mais aussi des changements plus fréquents.
 
-### Distributions Linux pour les développeurs et utilisateurs avancés
+:::single-choice{#choose-release-style} Quel modèle convient le mieux à une personne qui privilégie les mises à jour planifiées et la prévisibilité ?
 
-Certains utilisateurs souhaitent plus de contrôle sur le système, des logiciels plus récents ou une expérience plus pratique. [Fedora](https://labex.io/fr/lesson/fedora) est populaire auprès des développeurs car elle évolue rapidement tout en visant une expérience soignée. [Arch Linux](https://labex.io/fr/lesson/arch-linux) séduit les utilisateurs qui souhaitent une publication continue et un contrôle plus direct sur la configuration du système. [Gentoo](https://labex.io/fr/lesson/gentoo) est encore plus spécialisée, offrant aux utilisateurs avancés un contrôle approfondi grâce à la compilation de paquets à partir des sources.
+::option[Une publication continue constamment mise à jour]{#rolling-release explanation="Une publication continue propose généralement des logiciels récents au moyen de mises à jour permanentes. Elle apporte davantage de changements que ne le demande l'objectif indiqué."}
+::option[Un modèle stable ou à versions ponctuelles]{#stable-release .correct explanation="Ces modèles livrent les changements importants dans des versions planifiées, ce qui favorise un environnement prévisible."}
+::option[Un environnement de bureau graphique]{#desktop-environment explanation="Un environnement de bureau régit l'expérience graphique, pas le calendrier des versions de la distribution."}
+:::
 
-Ces distributions peuvent être excellentes, mais elles sont généralement plus pertinentes une fois que vous savez quel type de flux de travail vous souhaitez.
+## Distributions Linux pour débutants
 
-### Distributions Linux pour les serveurs et la stabilité
+Si vous découvrez Linux, commencez par des distributions qui offrent une installation fluide, une documentation solide et un bureau soigné. [Ubuntu](https://labex.io/fr/lesson/ubuntu) et [Linux Mint](https://labex.io/fr/lesson/linux-mint) sont des points de départ courants, car ils s'installent facilement et sont très documentés. openSUSE peut aussi être accessible, notamment aux personnes qui apprécient les outils graphiques d'administration.
 
-Si vous vous souciez avant tout de la prévisibilité et de la fiabilité à long terme, les modèles de publication stable comptent plus que l'esthétique visuelle. [Debian](https://labex.io/fr/lesson/debian) est bien connue pour son approche conservatrice et sa solide réputation sur les serveurs. [Red Hat Enterprise Linux](https://labex.io/fr/lesson/red-hat-enterprise-linux) est conçue pour les environnements d'entreprise où le support, les certifications et les longs cycles de vie sont importants.
+Adapté aux débutants ne signifie pas forcément simpliste. Cela veut généralement dire que la distribution propose des choix par défaut raisonnables, une grande communauté et peu de surprises au quotidien.
 
-Ubuntu est également largement utilisé sur les serveurs, surtout lorsque les utilisateurs souhaitent un vaste écosystème et des outils familiers. Le bon choix dépend de si vous privilégiez la stabilité communautaire, le support commercial ou un équilibre entre les deux.
+:::single-choice{#prioritize-beginner-needs} Quelles qualités constituent le meilleur point de départ pour un nouvel utilisateur de Linux ?
 
-### Meilleure distribution Linux par cas d'utilisation
+::option[Les paquets les plus récents, une configuration manuelle et peu de documentation]{#advanced-setup-qualities explanation="Les nouveautés et la configuration manuelle peuvent convenir à une personne expérimentée, mais le manque d'aide ajoute une difficulté évitable au débutant."}
+::option[Une maîtrise maximale, une maintenance complexe et des surprises fréquentes]{#maximum-control-qualities explanation="Une maîtrise approfondie devient utile lorsque l'utilisateur connaît la méthode qu'il souhaite. Ce n'est pas le choix initial le plus favorable."}
+::option[Une installation fluide, une documentation solide et des réglages par défaut raisonnables]{#beginner-friendly-qualities .correct explanation="Ces qualités réduisent les difficultés de mise en place et facilitent la recherche d'aide. Le débutant peut ainsi se concentrer sur l'apprentissage."}
+:::
 
-Si vous voulez une réponse rapide, voici des points de départ courants :
+## Distributions pour développeurs et utilisateurs avancés
 
-- **Meilleure distribution Linux pour débutants** : [Ubuntu](https://labex.io/fr/lesson/ubuntu) ou [Linux Mint](https://labex.io/fr/lesson/linux-mint)
-- **Meilleure distribution Linux pour les développeurs** : [Fedora](https://labex.io/fr/lesson/fedora)
-- **Meilleure distribution Linux pour la stabilité** : [Debian](https://labex.io/fr/lesson/debian)
-- **Meilleure distribution Linux pour un contrôle maximal** : [Arch Linux](https://labex.io/fr/lesson/arch-linux) ou [Gentoo](https://labex.io/fr/lesson/gentoo)
-- **Meilleure distribution Linux pour les environnements d'entreprise** : [Red Hat Enterprise Linux](https://labex.io/fr/lesson/red-hat-enterprise-linux)
-- **Meilleure distribution Linux pour la cybersécurité** : [Best Linux Distro for Cybersecurity](https://labex.io/fr/lesson/best-linux-distro-for-cybersecurity)
+Certaines personnes veulent davantage de maîtrise, des logiciels plus récents ou une expérience plus pratique. [Fedora](https://labex.io/fr/lesson/fedora) plaît aux développeurs parce qu'elle évolue rapidement tout en recherchant une expérience soignée. [Arch Linux](https://labex.io/fr/lesson/arch-linux) attire ceux qui souhaitent une publication continue et une maîtrise directe de la configuration. [Gentoo](https://labex.io/fr/lesson/gentoo) est encore plus spécialisée et donne aux utilisateurs avancés une grande liberté grâce à la construction des paquets depuis leurs sources.
 
-Ce ne sont pas des réponses universelles, mais ce sont des points de départ utiles lorsque vous comparez les distributions Linux par objectif plutôt que par simple popularité.
+Ces distributions peuvent être excellentes, mais elles conviennent généralement mieux lorsque vous savez déjà quel type de méthode de travail vous recherchez.
 
-### Distributions Linux populaires
+## Distributions pour serveurs et stabilité
 
-Certaines distributions Linux sont largement recommandées car elles résolvent bien différents problèmes :
+Si la prévisibilité et la fiabilité à long terme comptent avant tout, un modèle de publication stable importe davantage que l'apparence. [Debian](https://labex.io/fr/lesson/debian) est connue pour son approche prudente et sa solide réputation sur les serveurs. [Red Hat Enterprise Linux](https://labex.io/fr/lesson/red-hat-enterprise-linux) vise les environnements professionnels où l'assistance, les certifications et les longs cycles de vie sont essentiels.
 
-- [Debian](https://labex.io/fr/lesson/debian) : stable, fondamentale et largement respectée
-- [Ubuntu](https://labex.io/fr/lesson/ubuntu) : adaptée aux débutants et largement adoptée sur les systèmes de bureau et serveurs
-- [Fedora](https://labex.io/fr/lesson/fedora) : moderne, conviviale pour les développeurs et étroitement liée à l'écosystème Red Hat
-- [Linux Mint](https://labex.io/fr/lesson/linux-mint) : axée sur le bureau et particulièrement confortable pour les nouveaux utilisateurs
-- [Arch Linux](https://labex.io/fr/lesson/arch-linux) : publication continue avec une forte culture du "faites-le vous-même"
-- [openSUSE](https://labex.io/fr/lesson/openSUSE) : flexible, soignée et connue pour YaST et ses multiples options de publication
-- [Gentoo](https://labex.io/fr/lesson/gentoo) : basée sur les sources et hautement personnalisable
-- [Red Hat Enterprise Linux](https://labex.io/fr/lesson/red-hat-enterprise-linux) : axée sur l'entreprise avec un support commercial
+Ubuntu est également très présente sur les serveurs, notamment lorsque les utilisateurs souhaitent un vaste écosystème et des outils familiers. Le bon choix dépend de votre préférence entre stabilité communautaire, assistance commerciale ou équilibre des deux.
 
-### Debian, Ubuntu, Fedora et autres options
+## Meilleure distribution selon l'usage
 
-De nombreuses distributions Linux populaires appartiennent à des familles plus larges. Debian est la base de distributions telles qu'Ubuntu, et Ubuntu influence à son tour Linux Mint. Fedora se situe dans le monde Red Hat et aide à façonner des technologies qui apparaissent plus tard dans RHEL. Comprendre ces relations facilite la comparaison des distributions Linux, car la gestion des paquets, le style de publication et le comportement du système suivent souvent des lignes familiales.
+Pour une réponse rapide, voici des points de départ courants :
 
-Si vous hésitez entre quelques options, il est utile de lire les pages spécifiques à la distribution plutôt que de vous fier uniquement à des recommandations générales. Une distribution idéale pour un type d'utilisateur peut être inadaptée pour un autre.
+- **pour les débutants** : [Ubuntu](https://labex.io/fr/lesson/ubuntu) ou [Linux Mint](https://labex.io/fr/lesson/linux-mint) ;
+- **pour les développeurs** : [Fedora](https://labex.io/fr/lesson/fedora) ;
+- **pour la stabilité** : [Debian](https://labex.io/fr/lesson/debian) ;
+- **pour une maîtrise maximale** : [Arch Linux](https://labex.io/fr/lesson/arch-linux) ou [Gentoo](https://labex.io/fr/lesson/gentoo) ;
+- **pour les entreprises** : [Red Hat Enterprise Linux](https://labex.io/fr/lesson/red-hat-enterprise-linux) ;
+- **pour la cybersécurité** : [Meilleure distribution Linux pour la cybersécurité](https://labex.io/fr/lesson/best-linux-distro-for-cybersecurity).
 
-### Commencez avec une distribution
+Ces réponses ne sont pas universelles, mais elles constituent des points de départ utiles lorsque vous comparez les distributions selon un objectif plutôt que leur seule popularité.
 
-Il est facile de passer trop de temps à chercher la meilleure distribution Linux sans jamais commencer à en utiliser une. En pratique, de nombreuses distributions populaires sont suffisamment bonnes pour commencer à apprendre Linux. Choisissez une distribution qui correspond à vos objectifs, essayez-la avec un système live ou une machine virtuelle, et prenez le temps d'apprendre les bases.
+## Distributions Linux populaires
 
-Une fois que vous comprenez une distribution Linux, passer à une autre devient beaucoup plus facile. L'étape importante est de commencer.
+Certaines distributions sont souvent recommandées parce qu'elles résolvent bien des problèmes différents :
 
-### Pour aller plus loin
+- [Debian](https://labex.io/fr/lesson/debian) : stable, fondatrice et largement respectée ;
+- [Ubuntu](https://labex.io/fr/lesson/ubuntu) : adaptée aux débutants et largement adoptée sur les postes de travail et les serveurs ;
+- [Fedora](https://labex.io/fr/lesson/fedora) : moderne, favorable aux développeurs et étroitement liée à l'écosystème Red Hat ;
+- [Linux Mint](https://labex.io/fr/lesson/linux-mint) : centrée sur le bureau et particulièrement confortable pour les nouveaux utilisateurs ;
+- [Arch Linux](https://labex.io/fr/lesson/arch-linux) : publication continue et forte culture du « faites-le vous-même » ;
+- [openSUSE](https://labex.io/fr/lesson/opensuse) : flexible, soignée et connue pour YaST et ses différents modèles de publication ;
+- [Gentoo](https://labex.io/fr/lesson/gentoo) : fondée sur les sources et très personnalisable ;
+- [Red Hat Enterprise Linux](https://labex.io/fr/lesson/red-hat-enterprise-linux) : orientée entreprise avec une assistance commerciale.
+
+## Debian, Ubuntu, Fedora et les autres possibilités
+
+De nombreuses distributions populaires appartiennent à de grandes familles. Debian sert de base à des distributions comme Ubuntu, qui influence à son tour Linux Mint. Fedora appartient à l'univers Red Hat et contribue à façonner des technologies qui apparaissent ensuite dans RHEL. Comprendre ces relations facilite la comparaison, car la gestion des paquets, le modèle de publication et le comportement du système suivent souvent les lignées familiales.
+
+Si vous hésitez entre quelques possibilités, consultez les pages propres à chaque distribution au lieu de vous fier seulement à de vastes recommandations. Une distribution idéale pour un type d'utilisateur peut très mal convenir à un autre.
+
+## Commencer avec une seule distribution
+
+Il est facile de passer trop de temps à chercher la meilleure distribution sans jamais commencer à en utiliser une. En pratique, de nombreuses distributions populaires conviennent suffisamment bien pour débuter l'apprentissage de Linux. Choisissez-en une qui correspond à vos objectifs, essayez-la en mode live ou dans une machine virtuelle et consacrez du temps aux notions fondamentales.
+
+Une fois que vous maîtrisez une distribution Linux, passer à une autre devient beaucoup plus simple. L'étape importante consiste à commencer.
+
+:::single-choice{#take-practical-next-step} Après avoir déterminé vos objectifs, quelle est l'étape pratique suivante ?
+
+::option[Continuer à chercher jusqu'à ce qu'une distribution soit la meilleure pour tout le monde]{#search-universal-best explanation="La leçon établit que les besoins diffèrent selon les utilisateurs. Attendre un meilleur choix universel vous empêche d'acquérir une expérience utile."}
+::option[Changer sans cesse avant d'apprendre les bases d'une distribution]{#switch-repeatedly explanation="Des changements fréquents compliquent l'acquisition des compétences fondamentales. Apprendre d'abord une distribution adaptée facilite les transitions ultérieures."}
+::option[Choisir une distribution adaptée et l'essayer en mode live ou virtuel]{#try-suitable-distro .correct explanation="Essayer une possibilité adaptée transforme la comparaison en expérience sans exiger d'engagement permanent immédiat. Vous pouvez commencer à apprendre et ajuster ensuite."}
+:::
+
+## Pour aller plus loin
 
 - [Debian](https://www.debian.org/intro/)
 - [Ubuntu](https://ubuntu.com/desktop)
 - [Fedora Workstation](https://fedoraproject.org/workstation/)
-- [openSUSE Desktop Distributions](https://get.opensuse.org/desktop/)
+- [Distributions openSUSE pour le bureau](https://get.opensuse.org/desktop/)
 
-## Exercise
+Pour poursuivre votre apprentissage après cette comparaison, nous recommandons les cours LabEx suivants :
 
-Pour continuer à apprendre après avoir comparé les distributions Linux, nous vous recommandons ces cours LabEx :
+1. **[Prise en main rapide de Linux](https://labex.io/fr/courses/quick-start-with-linux)** — Construisez des bases pratiques avant de choisir durablement une distribution.
+2. **[Linux pour les débutants](https://labex.io/fr/courses/linux-for-noobs)** — Suivez une introduction accessible aux concepts et méthodes de Linux.
+3. **[Pratique des commandes Linux en ligne](https://labex.io/fr/courses/linux-basic-commands-practice-online)** — Renforcez les compétences en ligne de commande qui se transfèrent entre la plupart des distributions.
 
-1. **[Démarrage rapide avec Linux](https://labex.io/fr/courses/quick-start-with-linux)** - Construisez une base pratique des fondamentaux de Linux avant de vous engager dans une distribution.
-2. **[Linux pour les débutants](https://labex.io/fr/courses/linux-for-noobs)** - Suivez une introduction adaptée aux débutants sur les concepts et les flux de travail Linux.
-3. **[Pratique des commandes Linux en ligne](https://labex.io/fr/courses/linux-basic-commands-practice-online)** - Renforcez les compétences en ligne de commande qui sont transférables à la plupart des distributions Linux.
+## Résumé
 
-## Quiz Question
+Vous savez maintenant comparer les distributions Linux selon vos propres objectifs au lieu de rechercher un meilleur choix universel.
 
-Qu'est-ce qui gère le matériel dans un système Linux ? (Répondez en anglais, en faisant attention aux majuscules)
-
-## Quiz Answer
-
-Linux Kernel
+1. Expliquer ce que contient une distribution Linux.
+2. Identifier le noyau comme cœur chargé de la gestion du matériel.
+3. Comparer les modèles stable et à publication continue.
+4. Reconnaître les qualités qui accompagnent les nouveaux utilisateurs.
+5. Choisir une méthode pratique pour essayer une distribution adaptée.

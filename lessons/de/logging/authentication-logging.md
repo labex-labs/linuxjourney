@@ -1,52 +1,83 @@
 ---
-index: 5
+lesson_id: "authentication-logging"
+course_id: "logging"
 lang: "de"
-title: "Authentifizierungs-Protokollierung"
-meta_title: "Authentifizierungs-Protokollierung - Protokollierung"
-meta_description: "Erkunden Sie die Linux-Authentifizierungs-Protokollierung durch die Untersuchung der Datei /var/log/auth.log. Dieser Leitfaden hilft Anfängern, Benutzeranmeldeereignisse, Authentifizierungsmethoden und die Fehlerbehebung bei Zugriffsproblemen für eine bessere Linux-Sicherheit zu verstehen."
-meta_keywords: "Linux-Authentifizierung, auth.log, Linux-Protokollierung, Benutzeranmeldung, Linux-Sicherheit, Systemautorisierung, Anmeldeprobleme beheben, Authentifizierungsmethoden, Anfänger, Tutorial, Leitfaden, sicheres Protokoll"
+order_index: 5
+title: "Authentifizierungsprotokollierung"
+description: "Lerne, Linux-Authentifizierungsdatensätze aufzufinden, zu interpretieren und sicher miteinander zu verknüpfen."
+meta_title: "Authentifizierungsprotokollierung – Protokollierung"
+meta_description: "Erkunde die Linux-Authentifizierungsprotokollierung anhand von /var/log/auth.log. Diese Anleitung erklärt Benutzeranmeldungen, Authentifizierungsmethoden und die sichere Untersuchung von Zugriffsproblemen."
+meta_keywords: "Linux-Authentifizierung, auth.log, Linux-Protokollierung, Benutzeranmeldung, Linux-Sicherheit, Systemautorisierung, Anmeldefehler untersuchen, Authentifizierungsmethoden, Einsteiger, Tutorial, secure log"
 ---
 
-## Lesson Content
+Authentifizierungsprotokolle helfen, Anmeldeversuche, Berechtigungsänderungen und Sitzungsaktivität zu erklären. Sie sind sicherheitssensible Belege, doch eine einzelne Zeile belegt selten die Absicht eines Benutzers oder die Kompromittierung eines Kontos.
 
-Unter Linux ist es für die Sicherheit und Fehlerbehebung von entscheidender Bedeutung, nachzuverfolgen, wer auf ein System zugreift und wie dies geschieht. Dieser Prozess wird durch die Authentifizierungsprotokollierung verwaltet, die alle autorisierungsbezogenen Ereignisse aufzeichnet, wie z. B. Benutzeranmeldungen und die verwendeten Methoden.
+## Authentifizierungsdatensätze auffinden
 
-### Die auth.log-Datei
+Syslog-Konfigurationen der Debian-Familie leiten Authentifizierungsereignisse gewöhnlich nach `/var/log/auth.log`, während Konfigurationen der Red-Hat-Familie häufig `/var/log/secure` verwenden. Ein systemd-Journal kann dieselben Ereignisse mit Unit- und Prozessmetadaten aufbewahren, und eine zentrale Protokollierung kann die maßgebliche Kopie enthalten.
 
-Auf Debian-basierten Systemen wie Ubuntu ist die primäre Datei zur Verfolgung dieser Aktivität `/var/log/auth.log`. Diese Protokolldatei enthält Systemautorisierungsinformationen, einschließlich erfolgreicher und fehlgeschlagener Benutzeranmeldeversuche und aller ausgelösten Authentifizierungsmechanismen. Die Überprüfung dieser Datei ist ein wichtiger Schritt bei der Diagnose von Anmeldeproblemen oder der Untersuchung von Sicherheitsvorfällen.
+Ermittle das lokale Ziel und frage den betreffenden Dienst ab, zum Beispiel:
 
-Hier ist ein Beispielausschnitt aus einer `auth.log`-Datei:
+```bash
+$ sudo journalctl -u ssh.service --since '1 hour ago'
+$ sudo less /var/log/auth.log
+```
 
-```plaintext
+Die SSH-Unit kann `ssh.service` oder `sshd.service` heißen. Berechtigungen beschränken diese Datensätze gewöhnlich, weil sie Konto- und Zugriffsdetails offenlegen.
+
+:::single-choice{#auth-logs-file-location} Wo müssen Linux-Authentifizierungsereignisse immer gespeichert sein?
+
+::option[Am durch die lokale Protokollierungsrichtlinie ausgewählten Ziel.]{#auth-logs-local-policy .correct explanation="Dateien, Journal und zentrale Datensammler unterscheiden sich je nach Distribution und Konfiguration."}
+::option[Auf jeder Distribution in `/var/log/auth.log`.]{#auth-logs-auth-only explanation="Dieser Pfad ist auf Systemen der Debian-Familie verbreitet, aber nicht allgemeingültig."}
+::option[In der Shellverlaufsdatei jedes Benutzers.]{#auth-logs-shell-history explanation="Der Shellverlauf enthält den Befehlsverlauf eines Benutzers und ist kein Speicher für Systemauthentifizierungsereignisse."}
+:::
+
+## Ein Ereignis interpretieren
+
+Ein herkömmlicher Datensatz könnte Folgendes enthalten:
+
+```text
 Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for user root by (uid=1000)
 ```
 
-### Protokolleinträge verstehen
+Dies bezeichnet Zeit, Host, ausgebendes Programm, PAM-Modul und -Dienst, angeforderten Sitzungsbenutzer sowie ursprüngliche UID. Es identifiziert für sich allein weder den Menschen hinter UID 1000 noch beweist es eine böswillige Handlung. Löse die UID anhand der zum Zeitpunkt des Vorfalls gültigen Kontodatensätze auf und verknüpfe Terminal, entfernte Adresse, Sitzung und umgebende Ereignisse.
 
-Jede Zeile im Protokoll liefert wertvolle Details. Im obigen Beispiel:
+:::single-choice{#auth-logs-uid-inference} Was belegt `uid=1000` in diesem Datensatz?
 
-- **`Jan 31 10:37:50`**: Der Zeitstempel des Ereignisses.
-- **`icebox`**: Der Hostname des Computers, auf dem das Ereignis aufgetreten ist.
-- **`pkexec`**: Das Programm, das das Ereignis initiiert hat.
-- **`pam_unix(polkit-1:session)`**: Das verwendete Authentifizierungsmodul und der Dienst.
-- **`session opened for user root by (uid=1000)`**: Die durchgeführte Aktion – eine Sitzung wurde für den Benutzer `root` von einem Benutzer mit der UID `1000` geöffnet.
+::option[Dass das root-Passwort tausendmal falsch eingegeben wurde.]{#auth-logs-thousand-passwords explanation="Der Wert ist eine Identitätsnummer und keine Anzahl von Versuchen."}
+::option[Die numerische Kontoidentität, die dem auslösenden Prozess zugeordnet ist.]{#auth-logs-numeric-identity .correct explanation="Zur Zuordnung der Handlung zu einer Person sind weitere Sitzungs- und Kontobelege erforderlich."}
+::option[Dass das Ereignis von TCP-Port 1000 stammt.]{#auth-logs-port explanation="Eine UID ist kein Netzwerkportfeld."}
+:::
 
-### Alternative Protokolldateien
+## Erfolg und Fehlschlag untersuchen
 
-Es ist wichtig zu beachten, dass der Speicherort der Authentifizierungsprotokolle zwischen verschiedenen Linux-Distributionen variieren kann. Auf Red Hat-basierten Systemen wie CentOS und Fedora werden diese Ereignisse beispielsweise typischerweise in `/var/log/secure` anstelle von `/var/log/auth.log` aufgezeichnet.
+Suche in einem begrenzten Zeitraum sowohl nach angenommenen als auch abgelehnten Versuchen. Untersuche bei SSH außerdem Verbindungsquelle, Authentifizierungsmethode, Zielkonto, Sitzungsbeginn und -ende sowie Dienstneustarts. Wiederholte Fehlschläge können Benutzerfehler, Automatisierung mit veralteten Anmeldedaten, Scans oder einen Angriff bedeuten; die Rate allein wählt keine dieser Erklärungen aus.
 
-## Exercise
+`last` und `lastb` können, sofern sie geführt werden, Datensätze aus `wtmp` und `btmp` zusammenfassen. Diese Binärdatenbanken besitzen jedoch eigene Aufbewahrungs- und Integritätsgrenzen. Vergleiche sie mit Journal- oder Syslog-Datensätzen und zentralen Quellen.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Benutzerauthentifizierung und Kontoverwaltung zu festigen:
+:::single-choice{#auth-logs-failed-attempts} Womit sollten wiederholte fehlgeschlagene Anmeldungen verknüpft werden?
 
-1. **[Konfigurieren von Benutzerkonten und Sudo-Berechtigungen in Linux](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** – Üben Sie die Durchsetzung von Passwortrichtlinien, das Sperren/Entsperren von Benutzerkonten, die Sicherung des Root-Kontos und die Gewährung administrativer Berechtigungen, was alles entscheidend für das Verständnis der Authentifizierungssicherheit ist.
+::option[Nur mit dem gesamten freien Datenträgerspeicher.]{#auth-logs-disk-space explanation="Kapazität identifiziert weder Quelle, Ziel noch Methode eines Authentifizierungsversuchs."}
+::option[Mit Quelle, Zielkonto, Methode, Zeitverlauf und erfolgreichen Sitzungen.]{#auth-logs-correlated-fields .correct explanation="Diese Angaben helfen, Fehlkonfiguration, Benutzerfehler, Scans und unbefugten Zugriff zu unterscheiden."}
+::option[Mit der Schlussfolgerung, dass das Konto sicher kompromittiert ist.]{#auth-logs-certain-compromise explanation="Fehlschläge können mehrere harmlose oder feindliche Ursachen haben."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Benutzer- und Sicherheitsverwaltung von Linux aufzubauen.
+## Belege bewahren und reagieren
 
-## Quiz Question
+Falls ein Vorfall vermutet wird, erfasse Hostzeit und Zeitzone, bewahre ursprüngliche Protokolle samt Metadaten und sichere jede exportierte Kopie. Bearbeite Belege nicht an Ort und Stelle. Kontosperren, Firewalländerungen und das Beenden von Sitzungen können berechtigten Zugriff unterbrechen oder einen Angreifer warnen. Befolge deshalb den Prozess zur Vorfallsreaktion und erhalte einen Wiederherstellungszugang.
 
-Unter Debian-basierten Systemen, wie lautet der Name der Protokolldatei, die für die Benutzerauthentifizierung verwendet wird? Bitte antworten Sie nur mit dem Dateinamen. Die Antwort ist groß- und kleingeschrieben.
+:::single-choice{#auth-logs-preservation} Wie sollten Authentifizierungsbelege während einer Untersuchung behandelt werden?
 
-## Quiz Answer
+::option[Verdächtige Zeilen zur Verdeutlichung in der Originaldatei bearbeiten.]{#auth-logs-edit-original explanation="Das Ändern der Quelle beschädigt die Integrität der Belege."}
+::option[Das vollständige Protokoll veröffentlichen, damit jeder Benutzer identifizieren kann.]{#auth-logs-publish explanation="Authentifizierungsdatensätze können vertrauliche Identitäten und Infrastrukturdetails offenlegen."}
+::option[Originale bewahren und exportierte Kopien schützen.]{#auth-logs-preserve .correct explanation="Integrität und Vertraulichkeit sind für Sicherheitsprotokolle gleichermaßen wichtig."}
+:::
 
-auth.log
+## Zusammenfassung
+
+Du kannst Authentifizierungsereignisse nun untersuchen, ohne die Aussagekraft eines einzelnen Datensatzes zu überschätzen.
+
+1. Ermittle das lokal konfigurierte Ziel für Authentifizierungsprotokolle.
+2. Interpretiere Identität, Dienst, Methode und Sitzungsfelder im Zusammenhang.
+3. Verknüpfe fehlgeschlagene und erfolgreiche Aktivität über aufbewahrte Quellen hinweg.
+4. Bewahre Belege und koordiniere unterbrechende Reaktionsmaßnahmen.

@@ -1,60 +1,106 @@
 ---
-index: 10
+lesson_id: "expand-unexpand-command"
+course_id: "text-fu"
 lang: "fr"
-title: "Agrandir et réduire"
-meta_title: "Agrandir et réduire - Text-Fu"
-meta_description: "Maîtrisez le formatage de texte sous Linux avec notre guide sur les commandes expand et unexpand. Apprenez à convertir les tabulations en espaces et les espaces en tabulations pour une mise en page de fichiers cohérente."
-meta_keywords: "commande expand, commande unexpand, tabulations Linux, espaces Linux, formatage de texte, tutoriel Linux, Linux débutant, guide Linux"
+order_index: 10
+title: "expand et unexpand"
+description: "Découvrez comment les taquets de tabulation contrôlent la conversion entre tabulations et espaces."
+meta_title: "expand et unexpand - Text-Fu"
+meta_description: "Mettez en forme du texte sous Linux en convertissant les tabulations en espaces et inversement avec expand et unexpand."
+meta_keywords: "expand, unexpand, tabulations Linux, espaces, formatage texte"
 ---
 
-## Lesson Content
+Une tabulation mémorise un déplacement jusqu'au prochain taquet, pas un nombre fixe d'espaces visibles. Sa largeur dépend de la colonne courante et des taquets. `expand` et `unexpand` convertissent tabulations et espaces en tenant compte de ces positions.
 
-Un espacement incohérent peut rendre les fichiers texte difficiles à lire. Bien que les tabulations soient destinées à créer une indentation uniforme, leur largeur d'affichage peut varier selon les éditeurs et les systèmes. Cela peut perturber le formatage et l'alignement du texte. Heureusement, Linux fournit des outils simples pour gérer cela en convertissant les tabulations en espaces et vice-versa. Ce guide Linux pour débutants vous expliquera le processus.
+## Convertir les tabulations en espaces
 
-### Conversion des tabulations en espaces avec la commande expand
-
-Lorsque vous avez besoin d'assurer un espacement cohérent, vous pouvez convertir les tabulations en un nombre standard d'espaces à l'aide de la commande `expand`. Cette commande lit un fichier et remplace chaque caractère de tabulation par un ensemble de caractères d'espacement, affichant le résultat sur la sortie standard.
+`expand` remplace chaque tabulation par les espaces nécessaires pour atteindre le taquet approprié et écrit sur stdout :
 
 ```bash
-expand sample.txt
+$ expand sample.txt
 ```
 
-Par défaut, la commande `expand` convertit chaque tabulation en 8 espaces. Cet utilitaire simple est un outil puissant pour améliorer le formatage du texte.
+Par défaut, les taquets reviennent toutes les 8 colonnes. Une tabulation en colonne 1 ne devient donc pas le même nombre d'espaces qu'en colonne 6.
 
-### Sauvegarde du résultat converti
+:::single-choice{#expand-default-tab-stops} Avec les réglages par défaut, comment `expand` remplace-t-il une tabulation ?
 
-La commande `expand` n'affiche que le texte converti dans votre terminal. Pour enregistrer les modifications, vous devez rediriger la sortie vers un nouveau fichier.
+::option[Il insère assez d'espaces pour atteindre le prochain taquet.]{#expand-next-stop .correct explanation="`expand` préserve l'alignement en calculant les espaces requis depuis la colonne courante."}
+::option[Il insère toujours exactement huit espaces.]{#expand-eight-spaces explanation="Les taquets sont espacés de huit colonnes, mais le nombre d'espaces dépend de la position."}
+::option[Il retire la tabulation sans rien ajouter.]{#expand-remove-tab explanation="Il la remplace par des espaces pour préserver l'alignement."}
+:::
+
+## Choisir les taquets de tabulation
+
+`-t NUMBER` place les taquets à l'intervalle choisi :
 
 ```bash
-expand sample.txt > result.txt
+$ expand -t 4 sample.txt
 ```
 
-Cette commande prend la sortie de `expand sample.txt` et l'écrit dans `result.txt`, vous donnant un nouveau fichier avec des espaces au lieu de tabulations.
+GNU `expand` accepte aussi une liste de positions séparées par des virgules. `-i` limite la conversion aux tabulations précédant le premier caractère non blanc.
 
-### Conversion des espaces en tabulations avec la commande unexpand
+:::single-choice{#expand-four-column-stops} Quelle commande convertit les tabulations avec des taquets toutes les quatre colonnes ?
 
-L'opération inverse, la conversion des espaces en tabulations, est gérée par la commande `unexpand`. Cela peut être utile pour réduire la taille du fichier ou pour respecter les normes de codage qui exigent des tabulations.
+::option[`expand -i 4 sample.txt`]{#expand-initial-four explanation="`-i` limite la conversion aux tabulations initiales et ne prend pas 4 comme intervalle."}
+::option[`unexpand -t 4 sample.txt`]{#unexpand-tabs-four explanation="`unexpand` réalise la conversion inverse."}
+::option[`expand -t 4 sample.txt`]{#expand-tabs-four .correct explanation="`-t 4` demande des taquets toutes les quatre colonnes."}
+:::
+
+## Enregistrer le résultat en sécurité
+
+`expand` ne modifie pas son entrée. Redirigez vers un autre chemin :
 
 ```bash
-unexpand -a result.txt
+$ expand sample.txt > result.txt
 ```
 
-Par défaut, `unexpand` ne convertit que les espaces en début de chaque ligne. L'option `-a` indique à la commande `unexpand` de convertir toutes les occurrences de 8 espaces en une tabulation, et pas seulement celles situées au début d'une ligne, offrant ainsi un contrôle plus complet sur vos espaces et tabulations Linux.
+N'utilisez pas `expand sample.txt > sample.txt` : le shell tronque la destination avant que `expand` ne la lise. Vérifiez le fichier séparé avant de remplacer volontairement l'original.
 
-## Exercise
+:::single-choice{#expand-safe-output-file} Quelle commande sauvegarde le résultat sans tronquer `sample.txt` avant sa lecture ?
 
-Pour maîtriser la manipulation de texte et la redirection sous Linux, la pratique est essentielle. Les laboratoires pratiques suivants vous aideront à renforcer votre compréhension :
+::option[`expand sample.txt > sample.txt`]{#expand-same-file explanation="Le shell tronque `sample.txt` avant de lancer `expand`."}
+::option[`expand sample.txt > result.txt`]{#expand-separate-result .correct explanation="Les chemins diffèrent ; la création de `result.txt` ne détruit pas la source."}
+::option[`> sample.txt expand result.txt`]{#expand-leading-redirection explanation="Cette forme tronque toujours `sample.txt` et n'exprime pas la conversion voulue."}
+:::
 
-1. **[Redirection de l'entrée et de la sortie sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Entraînez-vous à contrôler le flux de données des commandes en manipulant la sortie standard (stdout), l'erreur standard (stderr) et l'entrée standard (stdin) à l'aide d'opérateurs tels que `>` et `>>`.
-2. **[Traitement de texte simple sous Linux](https://labex.io/fr/labs/linux-simple-text-processing-18004)** - Apprenez à utiliser des commandes puissantes comme `tr`, `col`, `join` et `paste` pour manipuler et analyser efficacement les données textuelles, améliorant ainsi vos compétences en ligne de commande pour le traitement des données.
-3. **[Traitement de texte et expressions régulières sous Linux](https://labex.io/fr/labs/linux-text-processing-and-regular-expressions-18003)** - Découvrez les puissants outils de traitement de texte `grep`, `sed` et `awk`, et utilisez les expressions régulières pour une manipulation de texte et une recherche de motifs efficaces sous Linux.
+## Convertir les espaces en tabulations
 
-Terminer ces laboratoires vous aidera à appliquer les concepts de transformation de texte et de manipulation de fichiers dans des scénarios réels, renforçant votre confiance avec les outils essentiels de la ligne de commande Linux.
+`unexpand` remplace les espaces admissibles par des tabulations en préservant l'alignement. Par défaut, GNU `unexpand` ne traite que les blancs initiaux :
 
-## Quiz Question
+```bash
+$ unexpand result.txt
+```
 
-Quelle commande est utilisée pour convertir les tabulations en espaces ? (Veuillez répondre en utilisant le nom de la commande anglaise en minuscules.)
+Utilisez `-a` pour considérer les blancs appropriés dans toute la ligne :
 
-## Quiz Answer
+```bash
+$ unexpand -a result.txt
+```
 
-expand
+`-a` considère les blancs dans toute la ligne. La conversion dépend des colonnes et des taquets ; elle ne remplace pas simplement chaque groupe de huit espaces. Utilisez `-t 4` si le fichier suit une autre convention.
+
+:::single-choice{#unexpand-default-scope} Sans `-a`, quels espaces GNU `unexpand` considère-t-il normalement ?
+
+::option[Tous les groupes d'espaces du fichier.]{#unexpand-every-group explanation="Le traitement de toute la ligne exige `-a` et dépend encore des taquets."}
+::option[Seulement les espaces après le dernier mot.]{#unexpand-trailing-blanks explanation="La portée par défaut concerne les blancs initiaux."}
+::option[Seulement les blancs avant le premier caractère non blanc.]{#unexpand-initial-blanks .correct explanation="Par défaut, GNU `unexpand` se limite aux blancs en début de ligne."}
+:::
+
+:::single-choice{#unexpand-all-blanks} Quelle option demande à GNU `unexpand` de considérer aussi les blancs après le premier caractère non blanc ?
+
+::option[`-i`]{#unexpand-initial-option explanation="Pour `expand`, `-i` limite le travail aux tabulations initiales."}
+::option[`-a`]{#unexpand-all-option .correct explanation="`-a` autorise la conversion des blancs appropriés dans toute la ligne."}
+::option[`-t`]{#unexpand-tab-list-option explanation="`-t` règle les taquets ; `-a` exprime explicitement la portée complète."}
+:::
+
+Sans fichier, les deux commandes lisent stdin. Une conversion aller-retour peut ne pas reconstruire le choix original entre espaces et tabulations, même si l'alignement visible reste identique.
+
+## Résumé
+
+Vous savez convertir tabulations et espaces tout en préservant l'alignement.
+
+1. Développer une tabulation jusqu'au prochain taquet.
+2. Régler les taquets avec `-t`.
+3. Écrire dans un fichier distinct avant tout remplacement.
+4. Convertir par défaut les blancs initiaux avec `unexpand`.
+5. Employer `-a` pour considérer toute la ligne.

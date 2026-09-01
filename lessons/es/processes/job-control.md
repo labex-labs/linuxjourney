@@ -1,83 +1,126 @@
 ---
-index: 11
+lesson_id: "job-control"
+course_id: "processes"
 lang: "es"
-title: "Control de Trabajos"
-meta_title: "Control de Trabajos - Procesos"
-meta_description: "Explore nuestro tutorial de Linux sobre control de trabajos para gestionar eficazmente los procesos en segundo plano. Aprenda a usar los comandos jobs, bg, fg y kill para una potente multitarea en la shell."
-meta_keywords: "control de trabajos Linux, procesos en segundo plano, comando jobs, comando bg, comando fg, comando kill, tutorial Linux, Linux para principiantes"
+order_index: 11
+title: "Control de trabajos"
+description: "Aprende cómo un shell interactivo gestiona trabajos en primer plano, en segundo plano y detenidos."
+meta_title: "Control de trabajos - Procesos"
+meta_description: "Aprende a gestionar procesos en segundo plano con el control de trabajos de Linux y las órdenes jobs, bg, fg y kill."
+meta_keywords: "control de trabajos Linux, procesos en segundo plano, orden jobs, orden bg, orden fg, orden kill"
 ---
 
-## Lesson Content
+Los shells interactivos utilizan el control de trabajos para coordinar tuberías dentro de una sesión de terminal. Un trabajo puede contener un solo proceso o una tubería completa, normalmente agrupados en un grupo de procesos para que la terminal y el shell puedan tratarlos como una unidad.
 
-En Linux, a menudo te encuentras con comandos que tardan mucho en completarse. En lugar de esperar y dejar tu terminal inutilizable, puedes usar el **control de trabajos de Linux** para administrar estas tareas. Esta potente función te permite ejecutar y gestionar múltiples **procesos en segundo plano** dentro de una sola sesión de shell, mejorando significativamente tu flujo de trabajo.
+## Iniciar un trabajo en segundo plano
 
-### Ejecutar un Comando en Segundo Plano
-
-Para iniciar un proceso directamente en segundo plano, simplemente añade un ampersand (`&`) al final de tu comando. Esto devuelve inmediatamente el prompt de tu shell, permitiéndote continuar trabajando mientras el comando se ejecuta.
+Añade `&` para iniciar una tubería de forma asíncrona:
 
 ```bash
-sleep 1000 &
-sleep 1001 &
-sleep 1002 &
+$ sleep 1000 &
+[1] 18420
 ```
 
-### Listar Trabajos en Segundo Plano
+El shell devuelve el prompt sin esperar a que termine el trabajo. Ejecutarlo en segundo plano no redirige automáticamente su salida, no lo desvincula de la terminal de control ni hace que sobreviva al cierre de la sesión. Redirige explícitamente la entrada y la salida cuando sea necesario, y utiliza un gestor de servicios, un planificador o un multiplexor de terminal para los trabajos que deban sobrevivir al shell interactivo.
 
-Puedes ver todos los trabajos que se ejecutan en segundo plano usando el comando `jobs`.
+Un trabajo en segundo plano que intenta leer de la terminal de control suele detenerse mediante `SIGTTIN` porque no pertenece al grupo de procesos en primer plano de la terminal.
 
-```bash
+:::single-choice{#job-control-ampersand-effect} ¿Qué solicita a un shell interactivo un `&` al final?
+
+::option[Que garantice que el trabajo sobreviva al cierre de sesión y al reinicio del sistema.]{#job-control-survive-restart explanation="La ejecución en segundo plano por sí sola no proporciona supervisión duradera ni persistencia tras un reinicio."}
+::option[Que ejecute la tubería como trabajo en segundo plano sin esperar antes de mostrar el siguiente prompt.]{#job-control-background-job .correct explanation="El shell inicia el trabajo de forma asíncrona y queda disponible para recibir más órdenes."}
+::option[Que descarte la salida estándar y los errores del trabajo.]{#job-control-discard-output explanation="Si no se redirigen, un trabajo en segundo plano todavía puede escribir en la terminal."}
+:::
+
+## Listar los trabajos del shell
+
+La orden interna `jobs` muestra los trabajos conocidos por el shell actual:
+
+```text
 $ jobs
-
-[1]    Running     sleep 1000 &
-[2]-   Running     sleep 1001 &
-[3]+   Running     sleep 1002 &
+[1]    Running    sleep 1000 &
+[2]-   Running    sleep 1001 &
+[3]+   Stopped    sleep 1002
 ```
 
-La salida proporciona el ID del trabajo en la primera columna, su estado y el comando original. El símbolo `+` indica el trabajo en segundo plano iniciado más recientemente, mientras que el símbolo `-` marca el segundo más reciente.
+El número entre corchetes es un identificador de trabajo del shell, no un PID. El prefijo `%` forma una especificación de trabajo como `%1`. El marcador `+` identifica el trabajo actual que muchas órdenes seleccionan cuando no reciben un operando; `-` identifica el trabajo anterior.
 
-### Administrar Procesos Activos
+Como la tabla de trabajos pertenece a un único shell, el shell de otra terminal no puede normalmente mostrar ni referirse a estos trabajos mediante sus propias órdenes internas `jobs`, `fg` o `bg`.
 
-¿Qué pasa si un comando ya se está ejecutando en primer plano y decides que necesitas recuperar tu terminal? No necesitas detenerlo. Primero, suspende el proceso en ejecución presionando `Ctrl-Z`. Luego, usa el comando `bg` para enviar ese trabajo suspendido al segundo plano.
+:::single-choice{#job-control-jobs-scope} ¿Qué muestra la orden interna `jobs`?
 
-```bash
-pete@icebox ~ $ sleep 1003
+::option[Los trabajos seguidos por la sesión de shell actual.]{#job-control-jobs-current-shell .correct explanation="El shell interactivo que inició o adoptó los trabajos mantiene sus identificadores y estados."}
+::option[Todos los procesos visibles en ese momento en el sistema.]{#job-control-jobs-all-processes explanation="La inspección de procesos de todo el sistema corresponde a herramientas como `ps`; la tabla de trabajos del shell es más limitada."}
+::option[Únicamente los servicios iniciados durante el arranque del sistema.]{#job-control-jobs-boot-services explanation="Un gestor de servicios, no la tabla de trabajos del shell interactivo, suele supervisar los servicios de arranque."}
+:::
+
+## Detener y continuar un trabajo
+
+Mientras un trabajo está en primer plano, al pulsar `Ctrl-Z` la terminal suele enviar `SIGTSTP` a su grupo de procesos en primer plano. El shell recupera el control después de que el trabajo se detenga:
+
+```text
+$ sleep 1002
 ^Z
-[4]+    Stopped     sleep 1003
-
-pete@icebox ~ $ bg
-[4]+    sleep 1003 &
+[3]+  Stopped    sleep 1002
 ```
 
-Ahora, el proceso `sleep 1003` se está ejecutando como un trabajo en segundo plano, y puedes verificarlo con el comando `jobs`.
-
-### Traer un Trabajo al Primer Plano
-
-Para devolver un proceso en segundo plano al primer plano, usa el comando `fg`. Puedes especificar un trabajo concreto por su ID (ejemplo: `fg %1`). Si ejecutas el comando `fg` sin argumentos, traerá al primer plano el trabajo en segundo plano más reciente (el marcado con `+`).
+Continúa el trabajo actual detenido en segundo plano con:
 
 ```bash
-fg %1
+$ bg
 ```
 
-### Terminar Trabajos en Segundo Plano
+`bg` envía una señal de continuación y deja el trabajo fuera del primer plano de la terminal. Solo resulta útil para un trabajo detenido; una orden que ya se ejecuta en segundo plano no necesita reanudarse.
 
-Si necesitas detener un proceso en segundo plano, puedes usar el comando `kill`. Similar al comando `fg`, haces referencia al trabajo usando su ID precedido por un signo de porcentaje (`%`). Esta es una función clave del control de trabajos de Linux.
+:::single-choice{#job-control-bg-purpose} ¿Qué hace `bg %3` con el trabajo 3 detenido?
+
+::option[Mueve sus archivos a un directorio llamado `bg`.]{#job-control-bg-files explanation="`bg` es una orden interna del shell para el control de trabajos y no mueve objetos del sistema de archivos."}
+::option[Lo continúa como trabajo en segundo plano.]{#job-control-bg-continue .correct explanation="El shell reanuda el trabajo detenido seleccionado sin asignarle el primer plano de la terminal."}
+::option[Lo termina mediante `SIGKILL`.]{#job-control-bg-kill explanation="La orden interna continúa el trabajo en vez de terminarlo."}
+:::
+
+## Mover un trabajo al primer plano
+
+Utiliza `fg` con una especificación de trabajo para convertir un trabajo en el grupo de procesos en primer plano de la terminal y esperar a que termine:
 
 ```bash
-kill %1
+$ fg %1
 ```
 
-Dominar estos comandos es esencial para cualquier usuario principiante de Linux que busque realizar múltiples tareas de manera eficiente en el shell.
+Sin un operando, `fg` suele seleccionar el trabajo actual marcado con `+`. Un trabajo detenido se continúa al pasar al primer plano.
 
-## Exercise
+:::single-choice{#job-control-fg-effect} ¿Qué hace `fg %1`?
 
-Para poner en práctica tus conocimientos sobre el control de trabajos de Linux, prueba este laboratorio práctico. Te ayudará a solidificar tu comprensión de la gestión de procesos en primer plano y en segundo plano.
+::option[Asigna el trabajo 1 al primer plano de la terminal y espera a que termine.]{#job-control-fg-foreground .correct explanation="El shell lleva al primer plano el trabajo seleccionado para que pueda interactuar con la terminal."}
+::option[Convierte el trabajo 1 en el PID 1.]{#job-control-fg-pid-one explanation="Un identificador de trabajo del shell no sustituye ni modifica los identificadores de proceso."}
+::option[Inicia una segunda copia del trabajo 1 en segundo plano.]{#job-control-fg-copy explanation="`fg` actúa sobre el trabajo existente en vez de crear un duplicado."}
+:::
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practica la interacción con procesos en primer plano y en segundo plano, monitorea recursos y termina procesos, abordando directamente el escenario de comandos de larga ejecución.
+## Enviar señales a un trabajo
 
-## Quiz Question
+Los shells permiten que `kill` acepte una especificación de trabajo:
 
-What command is used to list background jobs? (Please answer in English, using only lowercase letters.)
+```bash
+$ kill -TERM %1
+```
 
-## Quiz Answer
+Normalmente, esto envía la señal al grupo de procesos del trabajo y no solo a un miembro de la tubería. Examina primero el trabajo seleccionado y utiliza `SIGTERM` antes de plantearte una medida forzosa. Las especificaciones de trabajo son sintaxis del shell; los scripts y las herramientas externas suelen trabajar con PID o identificadores de grupo de procesos verificados.
 
-jobs
+:::single-choice{#job-control-job-specification} ¿Qué operando se refiere al trabajo 1 del shell en vez de al proceso con PID 1?
+
+::option[`1`]{#job-control-plain-one explanation="Un operando numérico sin prefijo para `kill` suele interpretarse como un PID."}
+::option[`#1`]{#job-control-hash-one explanation="El prefijo de almohadilla no es la sintaxis presentada para un identificador de trabajo del shell."}
+::option[`%1`]{#job-control-percent-one .correct explanation="El prefijo de porcentaje identifica una especificación de trabajo del shell."}
+:::
+
+Practica estas operaciones con órdenes inofensivas como `sleep` en el laboratorio [Gestionar y supervisar procesos de Linux](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864).
+
+## Resumen
+
+Ahora puedes mover deliberadamente trabajos entre los estados controlados por el shell.
+
+1. Utiliza `&` para iniciar un trabajo en segundo plano sin desvincularlo automáticamente.
+2. Utiliza `jobs` para examinar la tabla de trabajos del shell actual.
+3. Detén un trabajo con `Ctrl-Z` y continúalo en segundo plano con `bg`.
+4. Devuelve un trabajo seleccionado a la terminal con `fg`.
+5. Especifica los trabajos del shell mediante `%JOB_ID` al enviar señales.

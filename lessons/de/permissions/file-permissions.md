@@ -1,70 +1,106 @@
 ---
-index: 1
+lesson_id: "file-permissions"
+course_id: "permissions"
 lang: "de"
+order_index: 1
 title: "Dateiberechtigungen"
-meta_title: "Dateiberechtigungen - Berechtigungen"
-meta_description: "Ein wichtiger Teil unseres kompletten Linux-Tutorials. Erfahren Sie mehr über Linux-Dateiberechtigungen, einschließlich der rwx-Bits für Benutzer, Gruppe und andere. Meistern Sie die Ausgabe von `ls -l` und verstehen Sie Dateimodus."
-meta_keywords: "Dateiberechtigungen, Linux Dateiberechtigungen, bester Weg, Linux zu lernen, komplettes Linux-Tutorial, rwx Berechtigungen, ls -l Befehl, Dateimodus, Linux Anleitung"
+description: "Erfahre, wie du Linux-Dateitypen und die Berechtigungsbits für Eigentümer, Gruppe und andere liest."
+meta_title: "Dateiberechtigungen – Berechtigungen"
+meta_description: "Ein wichtiger Teil unseres vollständigen Linux-Tutorials. Lerne Linux-Dateiberechtigungen kennen, darunter die rwx-Bits für Benutzer, Gruppe und andere. Beherrsche die Ausgabe von `ls -l` und verstehe Dateimodi."
+meta_keywords: "Dateiberechtigungen, Linux-Dateiberechtigungen, bester Weg Linux zu lernen, vollständiges Linux-Tutorial, rwx-Berechtigungen, Befehl ls -l, Dateimodi, Linux-Leitfaden"
 ---
 
-## Lesson Content
+Linux stellt viele Ressourcen über dateiähnliche Schnittstellen dar, und jedes Dateisystemobjekt besitzt Metadaten, die den Zugriff steuern. Das Lesen dieser Metadaten ist eine Grundlage für den sicheren Umgang mit Dateien und Verzeichnissen.
 
-Unter Linux ist alles eine Datei, und die Verwaltung des Zugriffs auf diese Dateien ist eine entscheidende Fähigkeit. Das Verständnis der **Dateiberechtigungen** ist grundlegend für die Systemsicherheit und -administration. Lassen Sie uns untersuchen, wie man diese Berechtigungen liest und interpretiert.
+## Eine ausführliche Auflistung lesen
 
-### Einführung in Dateiberechtigungen
-
-Wenn wir Dateien in einem detaillierten Format auflisten, sehen wir eine Zeichenfolge, die ihre Berechtigungen definiert. Betrachten wir ein Beispiel mit dem Befehl `ls -l`:
+Verwende `ls -l`, um eine ausführliche Auflistung anzuzeigen:
 
 ```bash
-$ ls -l Desktop/
-drwxr-xr-x 2 pete penguins 4096 Dez 1 11:45 .
+$ ls -ld Desktop/
+drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 ```
 
-Diese Ausgabe liefert eine Fülle von Informationen, aber wir konzentrieren uns auf die erste Spalte, `drwxr-xr-x`, die den Dateityp und seine Berechtigungen darstellt.
+Das erste Feld, `drwxr-xr-x`, verbindet ein Zeichen für den Dateityp mit neun Berechtigungszeichen. Die Auflistung nennt außerdem `pete` als Eigentümer und `penguins` als die dem Verzeichnis zugeordnete Gruppe.
 
-### Dekodierung der Berechtigungszeichenfolge
+Das erste Zeichen beschreibt den Objekttyp. Häufige Werte sind:
 
-Die Berechtigungszeichenfolge besteht aus vier Hauptteilen. Das erste Zeichen gibt den Dateityp an. In unserem Beispiel bedeutet das **d**, dass `Desktop` ein Verzeichnis ist. Bei einer regulären Datei würden Sie einen Bindestrich (`-`) sehen.
+- `-` für eine reguläre Datei
+- `d` für ein Verzeichnis
+- `l` für einen symbolischen Link
 
-Die nächsten neun Zeichen stellen die eigentlichen **Dateiberechtigungen** dar. Diese sind in drei Sätze von jeweils drei Zeichen unterteilt. Um es klarer zu machen, können wir sie wie folgt visualisieren:
+Es gibt weitere besondere Dateitypen. Die übrigen neun Zeichen sind die Zugriffsberechtigungen:
 
-```plaintext
+```text
 d | rwx | r-x | r-x
 ```
 
-Jedes Zeichen in diesen Sätzen entspricht einer bestimmten Berechtigung:
+:::single-choice{#file-permissions-type-character} Was zeigt das erste `d` in `drwxr-xr-x` an?
 
-- **r**: Leseberechtigung.
-- **w**: Schreibberechtigung.
-- **x**: Ausführungsberechtigung.
-- **-**: Keine Berechtigung erteilt.
+::option[Das Objekt ist ein symbolischer Link.]{#file-permissions-type-link explanation="Ein symbolischer Link wird an der Position für den Dateityp gewöhnlich mit `l` dargestellt."}
+::option[Das Objekt ist ein Verzeichnis.]{#file-permissions-type-directory .correct explanation="Das erste Zeichen gibt den Dateityp an, und `d` kennzeichnet ein Verzeichnis."}
+::option[Der Eigentümer besitzt eine Löschberechtigung.]{#file-permissions-type-delete explanation="Linux-Moduszeichenfolgen verwenden `d` nicht als Löschberechtigung; die erste Position beschreibt den Objekttyp."}
+:::
 
-Die Bedeutung dieser Berechtigungen kann sich leicht ändern, je nachdem, ob es sich um eine Datei oder ein Verzeichnis handelt. Zum Beispiel erlaubt die Ausführungsberechtigung (`x`) bei einem Verzeichnis, dieses zu betreten, während sie bei einer Datei erlaubt, sie als Programm auszuführen.
+## `r`, `w` und `x` verstehen
 
-### Benutzer-, Gruppen- und Sonstige Berechtigungen
+Jedes Berechtigungstripel verwendet diese Zeichen:
 
-Die drei Berechtigungssätze gelten für unterschiedliche Zugriffsebenen:
+- `r` gewährt Leseberechtigung.
+- `w` gewährt Schreibberechtigung.
+- `x` gewährt Ausführungsberechtigung.
+- `-` bedeutet, dass die betreffende Berechtigung fehlt.
 
-1. **Benutzer (Eigentümer)**: Der erste Satz (`rwx`) gilt für den Eigentümer der Datei, in unserem Beispiel `pete`. Der Eigentümer hat Lese-, Schreib- und Ausführungsberechtigungen.
-2. **Gruppe**: Der zweite Satz (`r-x`) gilt für die mit der Datei verknüpfte Gruppe, nämlich `penguins`. Mitglieder dieser Gruppe haben Lese- und Ausführungsberechtigungen, können aber nicht in die Datei schreiben.
-3. **Sonstige**: Der letzte Satz (`r-x`) gilt für alle anderen Benutzer des Systems. Sie haben Lese- und Ausführungsberechtigungen.
+Bei einer regulären Datei erlaubt Lesen den Zugriff auf ihren Inhalt, Schreiben die Änderung ihres Inhalts und Ausführen dem Kernel den Versuch, sie als Programm zu starten. Die Ausführung kann dennoch scheitern, wenn das Dateiformat, die Interpreterzeile, Einhängeoptionen oder eine andere Sicherheitskontrolle sie nicht zulassen.
 
-Das Beherrschen der **Dateiberechtigungen** ist ein Kernkonzept, und diese Grundlage ist unerlässlich, wenn Sie mit diesem **kompletten Linux-Tutorial** fortfahren.
+Bei einem Verzeichnis beziehen sich die Bedeutungen auf Verzeichniseinträge:
 
-## Exercise
+- Lesen erlaubt das Auflisten der Namen im Verzeichnis.
+- Schreiben erlaubt das Erstellen oder Entfernen von Einträgen, gewöhnlich in Verbindung mit der Ausführungsberechtigung.
+- Ausführen, auch Suchberechtigung genannt, erlaubt das Durchqueren des Verzeichnisses und den Zugriff auf Einträge anhand ihres Namens.
 
-Die **beste Methode, um Linux zu lernen**, ist durch praktische Übungen. Diese Übungen helfen Ihnen, Linux **Dateiberechtigungen**, Benutzer und Gruppen zu meistern:
+Das Löschen einer Datei wird in erster Linie durch die Berechtigungen ihres übergeordneten Verzeichnisses gesteuert und nicht durch das Schreibbit der Datei selbst.
 
-1. **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Lernen Sie wesentliche Konzepte zur Verwaltung von Linux-Benutzern und -Gruppen kennen, einschließlich der Erstellung von Benutzern, der Überprüfung von Gruppenmitgliedschaften, dem Verständnis von Dateiberechtigungen und der Bearbeitung von Dateieigentümerschaften.
-2. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - Üben Sie das Erstellen neuer Benutzerkonten, das Einrichten benutzerdefinierter Gruppen und die Verwaltung von Gruppenmitgliedschaften, um reale Systemadministrationsaufgaben zu simulieren.
-3. **[Eine Datei finden](https://labex.io/de/labs/linux-find-a-file-17993)** - Wenden Sie Ihr Wissen über Dateiberechtigungen an, indem Sie eine bestimmte Datei finden und ihre Zugriffsberechtigung festlegen, um sicherzustellen, dass nur Sie der autorisierte Benutzer sind.
+:::single-choice{#file-permissions-directory-execute} Was erlaubt die Ausführungsberechtigung auf einem Verzeichnis in erster Linie?
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Berechtigungen und Benutzern unter Linux aufzubauen.
+::option[Jede im Verzeichnis gespeicherte reguläre Datei auszuführen.]{#file-permissions-directory-run-files explanation="Das Ausführungsbit eines Verzeichnisses gewährt nicht jeder darin enthaltenen Datei eine Ausführungsberechtigung."}
+::option[Den Inhalt jeder Datei im Verzeichnis zu ändern.]{#file-permissions-directory-edit-files explanation="Das Schreiben von Dateiinhalten hängt von den Berechtigungen der Dateien und anderen Zugriffskontrollen ab."}
+::option[Das Verzeichnis zu durchqueren und anhand ihrer Namen auf Einträge zuzugreifen.]{#file-permissions-directory-search .correct explanation="Die Ausführungs- oder Suchberechtigung eines Verzeichnisses ermöglicht die Pfaddurchquerung durch dieses Verzeichnis."}
+:::
 
-## Quiz Question
+## Klassen für Eigentümer, Gruppe und andere
 
-Welches Berechtigungsbit wird für ausführbar verwendet? Bitte antworten Sie auf Englisch und achten Sie genau auf die Groß- und Kleinschreibung.
+Die neun Moduszeichen bilden drei Tripel in einer festen Reihenfolge:
 
-## Quiz Answer
+1. **Eigentümer**: Berechtigungen, die verwendet werden, wenn die effektive Benutzer-ID des Prozesses mit dem Eigentümer der Datei übereinstimmt.
+2. **Gruppe**: Berechtigungen, die verwendet werden, wenn eine zutreffende Gruppen-ID des Prozesses mit der Gruppe der Datei übereinstimmt.
+3. **Andere**: Berechtigungen, die verwendet werden, wenn keine der vorherigen Klassen zutrifft.
 
-x
+Der Kernel wählt eine zutreffende Klasse aus; er kombiniert die drei Tripel nicht, um das großzügigste Ergebnis zu erhalten. Zusätzliche Mechanismen wie Zugriffssteuerungslisten, Einhängeoptionen, Capabilities oder verbindliche Zugriffskontrollen können die endgültige Entscheidung weiter beeinflussen.
+
+Im Beispiel lautet das Tripel des Eigentümers `rwx`, während Gruppe und andere jeweils `r-x` besitzen. Der Eigentümer kann das Verzeichnis lesen, darin schreiben und es durchsuchen. Die Klassen Gruppe und andere können es lesen und durchsuchen, aber über die gewöhnlichen Modusbits des Verzeichnisses keine Einträge erstellen oder entfernen.
+
+:::single-choice{#file-permissions-triplet-order} In welcher Reihenfolge stehen die drei Berechtigungstripel nach dem Dateitypzeichen?
+
+::option[Gruppe, Eigentümer, dann andere.]{#file-permissions-order-group-first explanation="Das Gruppentripel steht an zweiter und nicht an erster Stelle."}
+::option[Andere, Gruppe, dann Eigentümer.]{#file-permissions-order-other-first explanation="Das Tripel für andere steht zuletzt und das Eigentümertripel zuerst."}
+::option[Eigentümer, Gruppe, dann andere.]{#file-permissions-order-owner-first .correct explanation="Die neun Berechtigungszeichen stellen die Tripel immer in der Reihenfolge Eigentümer, Gruppe und andere dar."}
+:::
+
+:::single-choice{#file-permissions-example-group} Welche gewöhnlichen Berechtigungen besitzt die Gruppenklasse in `drwxr-xr-x`?
+
+::option[Lesen und Schreiben.]{#file-permissions-group-read-write explanation="Das Gruppentripel lautet `r-x`, daher enthält seine Schreibposition `-`."}
+::option[Schreiben und Ausführen.]{#file-permissions-group-write-execute explanation="Das Gruppentripel enthält an seiner ersten Position `r` und nicht `w`."}
+::option[Lesen und Ausführen.]{#file-permissions-group-read-execute .correct explanation="Das mittlere Tripel lautet `r-x` und gewährt damit Lesen und Ausführen, aber kein Schreiben."}
+:::
+
+Probiere zur Festigung dieser Konzepte das Lab [Linux-Benutzer, -Gruppen und Dateiberechtigungen](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002) in einer isolierten Umgebung aus. Darin übst du das Lesen von Modi sowie das Ändern von Eigentum und Berechtigungen.
+
+## Zusammenfassung
+
+Du kannst nun das grundlegende Berechtigungsfeld in einer ausführlichen Linux-Auflistung interpretieren.
+
+1. Trenne das Dateitypzeichen von den neun Berechtigungsbits.
+2. Lies `r`, `w` und `x` abhängig davon, ob das Objekt eine Datei oder ein Verzeichnis ist.
+3. Unterteile den Modus in Tripel für Eigentümer, Gruppe und andere.
+4. Setze die Tripel mit dem von `ls -l` angezeigten Eigentümer und der Gruppe in Beziehung.

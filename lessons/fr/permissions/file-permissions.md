@@ -1,70 +1,106 @@
 ---
-index: 1
+lesson_id: "file-permissions"
+course_id: "permissions"
 lang: "fr"
-title: "Permissions de Fichiers"
-meta_title: "Permissions de Fichiers - Permissions"
-meta_description: "Une partie clé de notre tutoriel Linux complet. Apprenez les permissions de fichiers Linux, y compris les bits rwx pour l'utilisateur, le groupe et les autres. Maîtrisez la sortie de `ls -l` et comprenez les modes de fichiers."
-meta_keywords: "permissions de fichiers, permissions fichiers linux, meilleure façon d'apprendre linux, tutoriel linux complet, permissions rwx, commande ls -l, modes de fichiers, guide linux"
+order_index: 1
+title: "Permissions des fichiers"
+description: "Découvrez comment lire les types de fichiers Linux et les bits de permission du propriétaire, du groupe et des autres utilisateurs."
+meta_title: "Permissions des fichiers - Permissions"
+meta_description: "Découvrez les permissions des fichiers Linux, notamment les bits rwx de l’utilisateur, du groupe et des autres, ainsi que la sortie de ls -l et les modes des fichiers."
+meta_keywords: "permissions des fichiers, permissions Linux, tutoriel Linux complet, permissions rwx, commande ls -l, modes des fichiers, guide Linux"
 ---
 
-## Lesson Content
+Linux représente de nombreuses ressources par des interfaces semblables à des fichiers, et chaque objet du système de fichiers possède des métadonnées qui contrôlent son accès. Savoir lire ces métadonnées est indispensable pour travailler en toute sécurité avec les fichiers et les répertoires.
 
-Sous Linux, tout est un fichier, et la gestion de l'accès à ces fichiers est une compétence essentielle. Comprendre les **permissions de fichiers** est fondamental pour la sécurité et l'administration du système. Explorons comment lire et interpréter ces permissions.
+## Lire une liste détaillée
 
-### Introduction aux Permissions de Fichiers
-
-Lorsque nous listons les fichiers au format détaillé, nous voyons une chaîne de caractères qui définit leurs permissions. Regardons un exemple en utilisant la commande `ls -l` :
+Employez `ls -l` pour afficher une liste détaillée :
 
 ```bash
-$ ls -l Desktop/
-drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 .
+$ ls -ld Desktop/
+drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 Desktop/
 ```
 
-Ce résultat fournit une mine d'informations, mais nous allons nous concentrer sur la première colonne, `drwxr-xr-x`, qui représente le type de fichier et ses permissions.
+Le premier champ, `drwxr-xr-x`, associe un caractère de type de fichier à neuf caractères de permissions. La liste indique également que `pete` est le propriétaire et `penguins` le groupe associé au répertoire.
 
-### Décodage de la Chaîne de Permissions
+Le premier caractère décrit le type de l’objet. Les valeurs courantes comprennent :
 
-La chaîne de permissions comporte quatre parties principales. Le premier caractère indique le type de fichier. Dans notre exemple, le **d** signifie que `Desktop` est un répertoire. Pour un fichier régulier, vous verriez un tiret (`-`).
+- `-` pour un fichier ordinaire ;
+- `d` pour un répertoire ;
+- `l` pour un lien symbolique.
 
-Les neuf caractères suivants représentent les **permissions de fichier** réelles. Elles sont divisées en trois ensembles de trois caractères chacun. Pour plus de clarté, nous pouvons les visualiser ainsi :
+Il existe également d’autres types de fichiers spéciaux. Les neuf caractères restants représentent les permissions d’accès :
 
-```plaintext
+```text
 d | rwx | r-x | r-x
 ```
 
-Chaque caractère dans ces ensembles correspond à une permission spécifique :
+:::single-choice{#file-permissions-type-character} Dans `drwxr-xr-x`, qu’indique le premier `d` ?
 
-- **r** : Permission de lecture (Read).
-- **w** : Permission d'écriture (Write).
-- **x** : Permission d'exécution (Execute).
-- **-** : Aucune permission accordée.
+::option[L’objet est un lien symbolique.]{#file-permissions-type-link explanation="Un lien symbolique est normalement représenté par `l` à la position du type de fichier."}
+::option[L’objet est un répertoire.]{#file-permissions-type-directory .correct explanation="Le premier caractère indique le type de fichier, et `d` désigne un répertoire."}
+::option[Le propriétaire possède la permission de supprimer.]{#file-permissions-type-delete explanation="Les chaînes de modes Linux n’emploient pas `d` comme permission de suppression ; la première position décrit le type de l’objet."}
+:::
 
-La signification de ces permissions peut légèrement changer selon qu'il s'agit d'un fichier ou d'un répertoire. Par exemple, la permission d'exécution (`x`) sur un répertoire vous permet d'y entrer, tandis que sur un fichier, elle vous permet de l'exécuter comme un programme.
+## Comprendre `r`, `w` et `x`
 
-### Permissions Utilisateur, Groupe et Autres
+Chaque triplet de permissions emploie ces caractères :
 
-Les trois ensembles de permissions s'appliquent à différents niveaux d'accès :
+- `r` accorde la permission de lecture ;
+- `w` accorde la permission d’écriture ;
+- `x` accorde la permission d’exécution ;
+- `-` signifie que la permission est absente.
 
-1. **Utilisateur (Propriétaire)** : Le premier ensemble (`rwx`) s'applique au propriétaire du fichier, qui est `pete` dans notre exemple. Le propriétaire a les permissions de lecture, d'écriture et d'exécution.
-2. **Groupe** : Le deuxième ensemble (`r-x`) s'applique au groupe associé au fichier, qui est `penguins`. Les membres de ce groupe ont les permissions de lecture et d'exécution, mais ne peuvent pas écrire dans le fichier.
-3. **Autres** : Le dernier ensemble (`r-x`) s'applique à tous les autres utilisateurs du système. Ils ont les permissions de lecture et d'exécution.
+Pour un fichier ordinaire, la lecture autorise l’accès à son contenu, l’écriture permet de le modifier et l’exécution permet au noyau d’essayer de le lancer comme programme. L’exécution peut tout de même échouer si le format du fichier, la ligne de l’interpréteur, les options de montage ou un autre contrôle de sécurité ne l’autorise pas.
 
-Maîtriser les **permissions de fichiers** est un concept central, et cette base est essentielle à mesure que vous poursuivez ce **tutoriel linux complet**.
+Pour un répertoire, ces permissions concernent ses entrées :
 
-## Exercise
+- la lecture permet de répertorier les noms du répertoire ;
+- l’écriture permet de créer ou de supprimer des entrées, normalement en combinaison avec la permission d’exécution ;
+- l’exécution, également appelée permission de recherche, permet de traverser le répertoire et d’accéder aux entrées par leur nom.
 
-La **meilleure façon d'apprendre linux** est par la pratique concrète. Ces exercices vous aideront à maîtriser les **permissions de fichiers** Linux, les utilisateurs et les groupes :
+La suppression d’un fichier dépend principalement des permissions de son répertoire parent, et non de son propre bit d’écriture.
 
-1. **[Groupes d'Utilisateurs et Permissions de Fichiers Linux](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Apprenez les concepts essentiels de gestion des utilisateurs et des groupes Linux, y compris la création d'utilisateurs, l'exploration des appartenances aux groupes, la compréhension des permissions de fichiers et la manipulation de la propriété des fichiers.
-2. **[Ajouter un Nouvel Utilisateur et un Nouveau Groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Entraînez-vous à créer de nouveaux comptes utilisateurs, à configurer des groupes personnalisés et à gérer les appartenances aux groupes, simulant des tâches d'administration système réelles.
-3. **[Trouver un Fichier](https://labex.io/fr/labs/linux-find-a-file-17993)** - Appliquez vos connaissances sur les permissions de fichiers en trouvant un fichier spécifique et en définissant son autorité d'accès, en vous assurant que vous êtes le seul utilisateur autorisé.
+:::single-choice{#file-permissions-directory-execute} Que permet principalement la permission d’exécution sur un répertoire ?
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des permissions et des utilisateurs sous Linux.
+::option[Exécuter chaque fichier ordinaire conservé dans le répertoire.]{#file-permissions-directory-run-files explanation="Le bit d’exécution d’un répertoire n’accorde pas cette permission à chaque fichier qu’il contient."}
+::option[Modifier le contenu de chaque fichier du répertoire.]{#file-permissions-directory-edit-files explanation="L’écriture dans les fichiers dépend de leurs permissions et d’autres contrôles d’accès."}
+::option[Traverser le répertoire et accéder aux entrées par leur nom.]{#file-permissions-directory-search .correct explanation="La permission d’exécution, ou de recherche, d’un répertoire autorise sa traversée dans un chemin."}
+:::
 
-## Quiz Question
+## Classes propriétaire, groupe et autres
 
-What permission bit is used for executable? Please answer in English, paying close attention to case sensitivity.
+Les neuf caractères du mode forment trois triplets dans un ordre fixe :
 
-## Quiz Answer
+1. **Propriétaire** : permissions utilisées lorsque l’identifiant utilisateur effectif du processus correspond au propriétaire du fichier.
+2. **Groupe** : permissions utilisées lorsqu’un identifiant de groupe applicable du processus correspond au groupe du fichier.
+3. **Autres** : permissions utilisées lorsqu’aucune des deux classes précédentes ne correspond.
 
-x
+Le noyau sélectionne une seule classe applicable ; il ne combine pas les trois triplets pour obtenir le résultat le plus permissif. Des mécanismes supplémentaires tels que les listes de contrôle d’accès, les options de montage, les capacités ou les contrôles d’accès obligatoires peuvent encore influencer la décision finale.
+
+Dans l’exemple, le triplet du propriétaire est `rwx`, tandis que ceux du groupe et des autres sont `r-x`. Le propriétaire peut lire, écrire et parcourir le répertoire. Les classes groupe et autres peuvent le lire et le parcourir, mais ne peuvent pas créer ou supprimer des entrées au moyen des bits ordinaires du répertoire.
+
+:::single-choice{#file-permissions-triplet-order} Après le caractère du type de fichier, dans quel ordre apparaissent les trois triplets de permissions ?
+
+::option[Groupe, propriétaire, puis autres.]{#file-permissions-order-group-first explanation="Le triplet du groupe est le deuxième, et non le premier."}
+::option[Autres, groupe, puis propriétaire.]{#file-permissions-order-other-first explanation="Le triplet des autres est le dernier et celui du propriétaire le premier."}
+::option[Propriétaire, groupe, puis autres.]{#file-permissions-order-owner-first .correct explanation="Les neuf caractères de permissions présentent toujours les triplets du propriétaire, du groupe et des autres dans cet ordre."}
+:::
+
+:::single-choice{#file-permissions-example-group} Quelles permissions ordinaires la classe groupe possède-t-elle dans `drwxr-xr-x` ?
+
+::option[Lecture et écriture.]{#file-permissions-group-read-write explanation="Le triplet du groupe est `r-x` ; sa position d’écriture contient donc `-`."}
+::option[Écriture et exécution.]{#file-permissions-group-write-execute explanation="Le triplet du groupe contient `r`, et non `w`, à sa première position."}
+::option[Lecture et exécution.]{#file-permissions-group-read-execute .correct explanation="Le triplet central est `r-x`, ce qui accorde la lecture et l’exécution, mais pas l’écriture."}
+:::
+
+Pour renforcer ces notions dans un environnement isolé, essayez l’atelier [Groupes d’utilisateurs Linux et permissions des fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002). Vous vous exercerez à lire les modes et à modifier la propriété et les permissions.
+
+## Résumé
+
+Vous savez maintenant interpréter le champ élémentaire des permissions dans une liste détaillée Linux.
+
+1. Séparer le caractère du type de fichier des neuf bits de permissions.
+2. Lire `r`, `w` et `x` selon que l’objet est un fichier ou un répertoire.
+3. Diviser le mode en triplets du propriétaire, du groupe et des autres.
+4. Relier les triplets au propriétaire et au groupe affichés par `ls -l`.

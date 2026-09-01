@@ -1,81 +1,98 @@
 ---
-index: 2
+lesson_id: "device-types"
+course_id: "devices"
 lang: "fr"
+order_index: 2
 title: "types de périphériques"
+description: "Apprenez à distinguer les nœuds caractère et bloc des tubes, sockets et objets ordinaires du système de fichiers."
 meta_title: "types de périphériques - Périphériques"
 meta_description: "Explorez les différents types de périphériques Linux, y compris les périphériques caractère, bloc, tube (pipe) et socket. Apprenez comment Linux gère les périphériques, comment identifier un fichier de périphérique avec `ls -l /dev`, et comprenez le rôle des numéros de périphérique majeurs et mineurs."
 meta_keywords: "périphériques linux, types de périphériques linux, fichier de périphérique, périphérique caractère, périphérique bloc, numéros majeurs mineurs, linux pour périphériques, répertoire /dev"
 ---
 
-## Lesson Content
+Le premier caractère du mode affiché par `ls -l` indique le type d'objet du système de fichiers. Sous `/dev`, les fichiers spéciaux caractère et bloc sont des nœuds de périphériques. Des tubes et des sockets Unix peuvent aussi s'y trouver, mais ce sont des objets de communication interprocessus, pas des nœuds matériels.
 
-Dans Linux, un principe fondamental est que « tout est un fichier ». Cette philosophie s'étend aux composants matériels, qui sont représentés par des fichiers spéciaux dans le système de fichiers. Comprendre ces **périphériques Linux** et leurs fichiers correspondants est crucial pour l'administration système. Commençons par explorer le répertoire `/dev`, l'emplacement traditionnel de chaque **fichier de périphérique**.
-
-### Exploration des périphériques Linux dans /dev
-
-You pouvez lister les fichiers dans le répertoire `/dev` pour voir comment le système représente les différents **périphériques Linux**.
-
-```bash
-$ ls -l /dev
-brw-rw----   1 root disk      8,   0 Dec 20 20:13 sda
-crw-rw-rw-   1 root root      1,   3 Dec 20 20:13 null
-srw-rw-rw-   1 root root           0 Dec 20 20:13 log
-prw-r--r--   1 root root           0 Dec 20 20:13 fdata
+```text
+$ ls -l /dev/null /dev/sda /run/systemd/journal/dev-log /tmp/example-fifo
+crw-rw-rw- 1 root root 1, 3 ... /dev/null
+brw-rw---- 1 root disk 8, 0 ... /dev/sda
+srw-rw-rw- 1 root root      ... /run/systemd/journal/dev-log
+prw------- 1 user user      ... /tmp/example-fifo
 ```
 
-Voici une répartition des colonnes de gauche à droite :
+Les entrées et permissions dépendent du système ; cet exemple illustre uniquement les caractères de type.
 
-- Permissions
-- Propriétaire
-- Groupe
-- Numéro de périphérique majeur
-- Numéro de périphérique mineur
-- Horodatage
-- Nom du périphérique
+## Nœuds de périphériques caractère
 
-### Identification des types de périphériques Linux
+Un `c` indique un périphérique caractère. Il expose généralement une interface orientée flux ou propre au périphérique, plutôt qu'un stockage adressable en blocs de taille fixe. Les terminaux et les pseudo-périphériques comme `/dev/null` en sont des exemples.
 
-Le premier caractère de la chaîne de permissions du résultat de `ls -l` indique le type de fichier. Pour un **fichier de périphérique**, vous verrez l'un des éléments suivants, ce qui aide à identifier les **types de périphériques Linux** spécifiques :
+Le terme « caractère » ne signifie pas que chaque appel système transfère exactement un caractère. Les applications peuvent lire ou écrire des tampons, tandis que le pilote définit le blocage, le cadrage et les opérations de contrôle.
 
-- `c` - caractère
-- `b` - bloc
-- `p` - pipe
-- `s` - socket
+:::single-choice{#device-types-character-marker} Quel premier caractère de mode désigne un nœud de périphérique caractère ?
 
-### Périphériques de type Caractère
+::option[`b`]{#device-types-marker-block explanation="Le marqueur `b` désigne un nœud de périphérique bloc."}
+::option[`p`]{#device-types-marker-pipe explanation="Le marqueur `p` désigne une FIFO, ou tube nommé."}
+::option[`c`]{#device-types-marker-character .correct explanation="Les fichiers spéciaux caractère commencent par `c` dans le mode d'une liste longue."}
+:::
 
-Ces périphériques transfèrent les données un caractère à la fois. De nombreux pseudo-périphériques, qui ne sont pas du matériel physiquement connecté mais fournissent des fonctions essentielles du système d'exploitation, sont représentés comme des périphériques de type caractère. Un exemple classique est `/dev/null`.
+## Nœuds de périphériques bloc
 
-### Périphériques de type Bloc
+Un `b` indique un périphérique bloc. Ces périphériques fournissent un stockage adressable par blocs au travers de la couche bloc du noyau et prennent en charge des opérations comme les E/S avec tampon, le partitionnement et les systèmes de fichiers. Disques, partitions et volumes logiques possèdent couramment des nœuds bloc.
 
-Ces périphériques transfèrent les données en gros blocs de taille fixe. Vous constaterez souvent que le matériel de stockage, tel que les disques durs (`/dev/sda`), les SSD et d'autres composants de stockage de masse, sont représentés comme des périphériques de bloc, car ils sont optimisés pour l'accès aux données basé sur des blocs.
+Un nœud bloc n'est pas un système de fichiers monté. Il représente un périphérique de stockage ou une région logique ; un système de fichiers peut y être créé puis monté séparément. Écrire des données brutes dans le mauvais nœud peut détruire des tables de partitions, des systèmes de fichiers ou des données utilisateur.
 
-### Périphériques de type Pipe
+:::single-choice{#device-types-block-marker} Que signifie le premier caractère de mode `b` ?
 
-Les tubes nommés, ou FIFOs (First-In, First-Out), permettent la communication inter-processus. Ils agissent comme des périphériques de type caractère mais canalisent leur sortie vers un autre processus au lieu d'un périphérique physique.
+::option[Une tâche du shell exécutée en arrière-plan.]{#device-types-background-job explanation="L'état d'une tâche du shell n'est pas codé comme caractère de type du système de fichiers."}
+::option[Une interface de périphérique bloc.]{#device-types-block-device .correct explanation="Les fichiers spéciaux bloc exposent un stockage adressable par l'intermédiaire du sous-système bloc du noyau."}
+::option[Un lien symbolique cassé.]{#device-types-broken-link explanation="Les liens symboliques utilisent `l`, que leur cible existe ou non."}
+:::
 
-### Périphériques de type Socket
+## FIFO et nœuds de sockets
 
-Les périphériques de type socket facilitent également la communication entre processus. Contrairement aux pipes, ils sont plus polyvalents et peuvent prendre en charge la communication entre plusieurs processus, même à travers un réseau.
+Un `p` désigne une FIFO, ou tube nommé. Elle fournit un flux d'octets nommé par lequel des processus communiquent. Après leur consommation, les données ne sont pas stockées durablement dans le nœud.
 
-### Comprendre les numéros de périphérique
+Un `s` désigne un nœud de socket de domaine Unix. Il nomme un point de terminaison local et peut offrir des communications connectées ou par datagrammes, le passage de descripteurs et des informations d'identification des pairs. Les sockets réseau à adresses Internet n'ont pas nécessairement de nœud dans le système de fichiers.
 
-Chaque **périphérique Linux** est identifié de manière unique par deux nombres : le **numéro de périphérique majeur** et le **numéro de périphérique mineur**. Vous pouvez les voir dans le résultat de `ls`, séparés par une virgule. Pour un périphérique avec les numéros **8, 0** :
+Ni les FIFO ni les sockets Unix n'utilisent de numéros majeur et mineur pour sélectionner un pilote matériel.
 
-Le numéro majeur (8) identifie le pilote responsable du périphérique. Dans ce cas, 8 est couramment utilisé pour les disques SCSI. Le numéro mineur (0) indique au pilote quelle instance spécifique du périphérique il s'agit. Ici, 0 représente le premier disque (`a`).
+:::single-choice{#device-types-pipe-socket-distinction} Quelle affirmation distingue correctement ces types d'objets de communication ?
 
-## Exercise
+::option[`p` marque une partition et `s` un stockage à l'état solide.]{#device-types-storage-letters explanation="Les partitions sont normalement des périphériques bloc et ces lettres ne codent pas la technologie de stockage."}
+::option[`p` marque une FIFO et `s` un nœud de socket de domaine Unix.]{#device-types-p-and-s .correct explanation="Ce sont deux types distincts d'objets du système de fichiers employés pour les communications interprocessus locales."}
+::option[Les deux types identifient des pilotes bloc par des numéros majeurs.]{#device-types-ipc-major explanation="Les FIFO et sockets ne sont pas des nœuds de périphériques caractère ou bloc."}
+:::
 
-Pour appliquer ce que vous avez appris sur les **périphériques Linux**, nous vous recommandons les laboratoires pratiques suivants. Ces exercices vous aideront à gagner en confiance dans l'interaction et la gestion des périphériques dans des scénarios réels.
+## Numéros majeur et mineur
 
-1. **[Gérer les partitions et les systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Entraînez-vous à créer et gérer des partitions de disque et des systèmes de fichiers, qui sont des périphériques de bloc fondamentaux sous Linux.
-2. **[Explorer les périphériques matériels sous Linux](https://labex.io/fr/labs/comptia-explore-hardware-devices-in-linux-590861)** - Apprenez à identifier et inspecter divers périphériques matériels, en comprenant comment ils sont représentés dans le répertoire `/dev`.
-3. **[Créer et activer un fichier d'échange sous Linux](https://labex.io/fr/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Acquérir une expérience pratique dans la création et l'activation d'un fichier d'échange, qui fonctionne comme un périphérique de mémoire virtuelle.
+Les nœuds caractère et bloc stockent un numéro de périphérique divisé en parties majeure et mineure. Dans une liste longue, ils remplacent la colonne habituelle de taille :
 
-## Quiz Question
+```text
+brw-rw---- 1 root disk 8, 0 ... /dev/sda
+```
 
-Quel est le symbole des périphériques de type caractère dans la commande `ls -l` ? (Fournissez le seul caractère anglais minuscule comme réponse)
+Cette paire indique au noyau l'interface enregistrée et l'instance auxquelles le nœud s'adresse. Le numéro majeur est associé à un pilote ou une classe, et le pilote interprète le numéro mineur. Ne figez pas d'hypothèse telle que « le mineur zéro désigne toujours le premier disque » : la correspondance dépend du sous-système et des interfaces du noyau.
 
-## Quiz Answer
+Affichez explicitement le type et les numéros avec :
 
-c
+```bash
+$ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
+```
+
+GNU `stat` affiche les valeurs `%t` et `%T` en hexadécimal.
+
+:::single-choice{#device-types-major-minor-scope} Quels objets utilisent des numéros majeur et mineur pour identifier une interface de périphérique du noyau ?
+
+::option[Tous les fichiers ordinaires et répertoires.]{#device-types-all-files explanation="Les fichiers ordinaires utilisent une taille et des métadonnées de système de fichiers plutôt qu'une paire majeur/mineur."}
+::option[Uniquement les liens symboliques dont la cible manque.]{#device-types-broken-symlinks explanation="Les liens symboliques stockent un chemin et ne deviennent pas des nœuds lorsque leur cible est absente."}
+::option[Les nœuds de périphériques caractère et bloc.]{#device-types-device-number-nodes .correct explanation="Leurs métadonnées spéciales d'inode contiennent le numéro acheminé vers l'interface d'un pilote."}
+:::
+
+## Résumé
+
+Vous savez maintenant interpréter les types spéciaux du système de fichiers sans tous les prendre pour des périphériques matériels.
+
+1. Lire `c` comme nœud caractère et `b` comme nœud bloc.
+2. Lire `p` comme FIFO et `s` comme socket Unix.
+3. Associer les numéros majeur et mineur aux seuls nœuds de périphériques.
+4. Considérer l'accès brut aux périphériques bloc comme potentiellement destructeur.

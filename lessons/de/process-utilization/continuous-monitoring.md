@@ -1,64 +1,89 @@
 ---
-index: 7
+lesson_id: "continuous-monitoring"
+course_id: "process-utilization"
 lang: "de"
+order_index: 7
 title: "Kontinuierliche Überwachung"
-meta_title: "Kontinuierliche Überwachung - Prozessauslastung"
-meta_description: "Lernen Sie die kontinuierliche Linux-Systemüberwachung mit sar. Verstehen Sie Installation, Datenerfassung und wie Sie historische Ressourcennutzung für die Leistung analysieren. Legen Sie los!"
-meta_keywords: "sar, sysstat, Linux-Überwachung, Systemleistung, kontinuierliche Überwachung, Anfänger, Tutorial, Anleitung"
+description: "Lerne, wie die Datenerfassung von sysstat und sar-Berichte historische Linux-Leistungsanalysen unterstützen."
+meta_title: "Kontinuierliche Überwachung – Prozessauslastung"
+meta_description: "Lerne die kontinuierliche Überwachung von Linux-Systemen mit sar. Verstehe Installation, Datenerfassung und die Analyse historischer Ressourcennutzung zur Leistungsbeurteilung."
+meta_keywords: "sar, sysstat, Linux-Überwachung, Systemleistung, kontinuierliche Überwachung, Einsteiger, Tutorial, Anleitung"
 ---
 
-## Lesson Content
+Interaktive Werkzeuge zeigen, was geschieht, während du sie beobachtest. Wenn eine Verlangsamung bereits vorbei ist, wird historische Überwachung benötigt. Die Werkzeugsammlung `sysstat` erfasst regelmäßig Systemzähler, und `sar` liest entweder aktuelle Zähler oder gespeicherte Aktivitätsdateien.
 
-Diese Überwachungstools sind gut, um sie zu betrachten, wenn Ihr Computer Probleme hat, aber was ist mit Computern, die Probleme haben, wenn Sie nicht hinschauen? Dafür benötigen Sie ein kontinuierliches Überwachungstool, das Ihre Systemaktivitätsinformationen sammelt, meldet und speichert. In dieser Lektion werden wir ein großartiges Tool vorstellen: **sar**.
+## Datenerfassung aktivieren
 
-### sar installieren
+Installiere das `sysstat`-Paket der Distribution und bestätige anschließend, dass sein Erfassungs- und Aufbewahrungsmechanismus aktiviert ist. Die genauen Dienst-, Timer- und Konfigurationspfade unterscheiden sich je nach Distribution; die Paketinstallation garantiert nicht, dass die Erfassung begonnen hat.
 
-Sar ist ein Tool, das zur historischen Analyse Ihres Systems verwendet wird. Stellen Sie zunächst sicher, dass es installiert ist, indem Sie das Paket `sysstat` installieren: `sudo apt install sysstat`.
-
-### Datenerfassung einrichten
-
-Normalerweise beginnt Ihr System nach der Installation von `sysstat` automatisch mit der Datenerfassung. Falls nicht, können Sie dies aktivieren, indem Sie das Feld `ENABLED` in `/etc/default/sysstat` ändern.
-
-### sar verwenden
+Untersuche auf einem systemd-Host die vom Paket bereitgestellten Units, statt ihre Namen zu erraten:
 
 ```bash
-sudo sar -q
+$ systemctl list-unit-files | grep sysstat
+$ systemctl list-timers --all | grep sysstat
 ```
 
-Dieser Befehl listet die Details vom Beginn des Tages auf.
+Überprüfe, ob im sysstat-Datenverzeichnis der Distribution neue Aktivitätsdateien erstellt werden, und prüfe ihre Berechtigungen sowie die Aufbewahrungsrichtlinie.
+
+:::single-choice{#sar-installation-verification} Was solltest du nach der Installation von `sysstat` überprüfen?
+
+::option[Dass die Erfassung aktiviert ist und Aktivitätsdateien aktualisiert werden.]{#sar-collector-updating .correct explanation="Paketinstallation und aktive regelmäßige Datenerfassung sind getrennte Bedingungen."}
+::option[Dass jeder Prozess manuell neu gestartet wurde.]{#sar-restart-processes explanation="Die Installation eines Überwachungsdatensammlers erfordert keinen Neustart jeder Arbeitslast."}
+::option[Dass alle historischen Dateien für jeden schreibbar sind.]{#sar-world-writable explanation="Überwachungsdaten sollten angemessene Zugriffskontrollen behalten."}
+:::
+
+## Aktuelle Stichproben lesen
+
+Fordere von `sar` drei CPU-Berichte in Abständen von einer Sekunde an:
 
 ```bash
-sudo sar -r
+$ sar -u 1 3
 ```
 
-Dies listet die Details der Speichernutzung vom Beginn des Tages auf.
+Weitere häufige Berichte umfassen Ausführungswarteschlange und Last (`-q`), Arbeitsspeicher (`-r`), Paging (`-B`), Blockgeräte (`-d`) und Aktivität einzelner CPUs (`-P ALL`). Optionen und Felder unterscheiden sich je nach sysstat-Version; lies daher `sar --help` oder die lokale Handbuchseite.
+
+:::single-choice{#sar-one-second-count} Was fordert `sar -u 1 3` an?
+
+::option[Drei CPU-Berichte in Abständen von einer Sekunde.]{#sar-three-cpu-samples .correct explanation="Die erste Zahl ist das Intervall in Sekunden, die zweite die Anzahl der Berichte."}
+::option[Einen Bericht, der genau drei Tage abdeckt.]{#sar-three-days explanation="Die Operanden geben Stichprobenintervall und Anzahl und keinen Datumsbereich an."}
+::option[Das Löschen von drei gespeicherten CPU-Dateien.]{#sar-delete-files explanation="Der Befehl liest Zähler und fordert kein Löschen an."}
+:::
+
+## Historische Dateien lesen
+
+Speicherorte und Namen gespeicherter Dateien unterscheiden sich und liegen häufig unter `/var/log/sysstat` oder `/var/log/sa`. Übergib mit `-f` eine ausgewählte Aktivitätsdatei:
 
 ```bash
-sudo sar -P
+$ sar -q -f /var/log/sysstat/sa02
 ```
 
-Dies listet die Details der CPU-Nutzung auf.
+Bestätige das vollständige Datum der Datei anhand der Berichtsüberschriften. Eine zweistellige Endung bezeichnet häufig einen Tag des Monats und kann über mehrere Aufbewahrungszeiträume hinweg mehrdeutig sein. Gespeicherte Binärformate können außerdem eine kompatible sysstat-Version erfordern.
 
-Um eine Ansicht eines anderen Tages zu sehen, können Sie nach `/var/log/sysstat/saXX` gehen, wobei `XX` der Tag ist, den Sie anzeigen möchten.
+:::single-choice{#sar-historical-file-option} Welche Option weist `sar` an, eine bestimmte Aktivitätsdatei zu lesen?
 
-```bash
-sar -q /var/log/sysstat/sa02
-```
+::option[`-P`]{#sar-option-p explanation="Dies wählt die Prozessorberichterstattung und keine Eingabedatei aus."}
+::option[`-q`]{#sar-option-q explanation="Dies wählt die Berichterstattung zu Warteschlange und Last aus."}
+::option[`-f`]{#sar-option-f .correct explanation="Die Dateioption wählt die zu lesenden gespeicherten Aktivitätsdaten aus."}
+:::
 
-## Exercise
+## Einen Vorfall untersuchen
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Systemüberwachung und Ressourcenanalyse zu vertiefen:
+Bestimme Zeit und Zeitzone des Vorfalls und vergleiche anschließend mehrere Signale über dasselbe Intervall. Suche nach Änderungen bei Last, CPU, Ausführungswarteschlange, Paging, Geräteaktivität, Netzwerkverkehr und Anwendungslatenz. Zähleränderungen zeigen Korrelation und nicht unbedingt Kausalität; Bereitstellungsaufzeichnungen und Anwendungsprotokolle können den Auslöser erklären.
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, deren Überprüfung mit `ps`, die Überwachung von Ressourcen mit `top` und deren Beendigung mit `kill`.
-2. **[Linux top Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Lernen Sie, verschiedene Optionen mit dem Befehl `top` zu verwenden, um Prozesse zu sortieren, Aktualisierungsintervalle anzupassen, nach Benutzern zu filtern und sich auf aktive Prozesse zu konzentrieren, um die Systemleistung effektiv zu überwachen.
-3. **[Linux df Befehl: Festplattenspeicher-Berichterstattung](https://labex.io/de/labs/linux-linux-df-command-disk-space-reporting-219188)** – Dieses Lab führt den Befehl `df` in Linux ein, ein Dienstprogramm, das Informationen über die Festplattenspeichernutzung auf gemounteten Dateisystemen anzeigt, was ein wichtiger Aspekt der Systemüberwachung ist.
+Lücken können bedeuten, dass der Host außer Betrieb war, die Erfassung fehlgeschlagen ist oder Daten durch die Aufbewahrung entfernt wurden. Überwache die Überwachungspipeline selbst, damit fehlende Belege schon vor einem Vorfall sichtbar werden.
 
-Diese Labs helfen Ihnen, die Konzepte der Systemressourcenüberwachung in realen Szenarien anzuwenden und Vertrauen in die Analyse der Systemaktivität aufzubauen.
+:::single-choice{#sar-incident-method} Wie sollten historische `sar`-Daten bei der Nachbereitung eines Vorfalls verwendet werden?
 
-## Quiz Question
+::option[Den höchsten einzelnen Zähler als bewiesene Ursache behandeln.]{#sar-single-root explanation="Eine einzelne Korrelation belegt keine Kausalität."}
+::option[Mehrere Messwerte über dasselbe bestätigte Zeitfenster vergleichen.]{#sar-correlate-window .correct explanation="Zeitlich ausgerichtete Signale helfen, Hypothesen zu unterscheiden und Systemverhalten mit dem Vorfall zu verbinden."}
+::option[Lücken ignorieren, weil die Erfassung nach der Installation garantiert ist.]{#sar-ignore-gaps explanation="Die Erfassung kann fehlschlagen oder deaktiviert sein; Lücken müssen erklärt werden."}
+:::
 
-Welches Tool eignet sich gut zur Überwachung von Systemressourcen?
+## Zusammenfassung
 
-## Quiz Answer
+Du kannst `sar` nun verwenden, um Leistung außerhalb einer interaktiven Sitzung zu untersuchen.
 
-sar
+1. Überprüfe, dass Erfassung und Aufbewahrung tatsächlich aktiv sind.
+2. Fordere begrenzte aktuelle Stichproben mit Intervall und Anzahl an.
+3. Wähle historische Aktivitätsdateien ausdrücklich aus.
+4. Richte mehrere Messwerte an Vorfallszeit und Arbeitslastbelegen aus.

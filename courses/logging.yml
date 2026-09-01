@@ -1,0 +1,123 @@
+id: logging
+category:
+  id: journeyman
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/logging.png
+order_index: 6
+translations:
+  en:
+    title: "Logging"
+    description: "Learn about system logs and the /var/log directory."
+    faqs:
+      - question: "Which Linux logs are explained?"
+        answer: "The course covers general system logs, authentication events, kernel messages, syslog, common files under /var/log, and log rotation."
+      - question: "Do log locations differ between distributions?"
+        answer: "Yes. File names and logging services can vary, but the course teaches concepts that help you identify the relevant source on your system."
+      - question: "Why is log rotation necessary?"
+        answer: "Rotation limits storage growth while retaining useful history, helping systems avoid disk exhaustion and keeping archived logs manageable."
+    meta_title: "Linux System Logging Course"
+    meta_description: "Learn how Linux records system, authentication, and kernel events; find logs under /var/log; use syslog; and manage rotation and retention."
+    meta_keywords: "Linux logs, var log, syslog, authentication logs, kernel logs, logrotate, system logging, log management"
+  de:
+    title: "Protokollierung"
+    description: "Lernen Sie Systemprotokolle und das Verzeichnis /var/log kennen."
+    faqs:
+      - question: "Welche Linux-Protokolle werden erklärt?"
+        answer: "Der Kurs behandelt allgemeine Systemprotokolle, Authentifizierungsereignisse, Kernel-Meldungen, Syslog, allgemeine Dateien unter /var/log und Protokollrotation."
+      - question: "Unterscheiden sich die Protokollspeicherorte zwischen den Distributionen?"
+        answer: "Ja. Dateinamen und Protokollierungsdienste können variieren, der Kurs vermittelt jedoch Konzepte, die Ihnen helfen, die relevante Quelle auf Ihrem System zu identifizieren."
+      - question: "Warum ist eine Protokollrotation notwendig?"
+        answer: "Die Rotation begrenzt das Speicherwachstum und behält gleichzeitig den nützlichen Verlauf bei, hilft Systemen, eine Festplattenerschöpfung zu vermeiden und archivierte Protokolle überschaubar zu halten."
+    meta_title: "Linux-Systemprotokollierungskurs"
+    meta_description: "Lernen Sie, wie Linux System-, Authentifizierungs- und Kernelereignisse protokolliert, wie Sie Logs unter /var/log finden, syslog nutzen sowie Rotation und Aufbewahrung verwalten."
+    meta_keywords: "Linux-Protokolle, /var/log, syslog, Authentifizierungsprotokolle, Kernel-Protokolle, logrotate, Systemprotokollierung, Protokollverwaltung"
+  es:
+    title: "Registros del Sistema"
+    description: "Aprende sobre los registros del sistema y el directorio /var/log."
+    faqs:
+      - question: "¿Qué registros de Linux se explican?"
+        answer: "El curso cubre registros generales del sistema, eventos de autenticación, mensajes del kernel, syslog, archivos comunes en /var/log y rotación de registros."
+      - question: "¿Las ubicaciones de los registros difieren entre las distribuciones?"
+        answer: "Sí. Los nombres de archivos y los servicios de registro pueden variar, pero el curso enseña conceptos que le ayudarán a identificar la fuente relevante en su sistema."
+      - question: "¿Por qué es necesaria la rotación de registros?"
+        answer: "La rotación limita el crecimiento del almacenamiento y al mismo tiempo conserva el historial útil, lo que ayuda a los sistemas a evitar el agotamiento del disco y mantiene los registros archivados manejables."
+    meta_title: "Curso de registro del sistema Linux"
+    meta_description: "Aprende cómo Linux registra eventos del sistema, autenticación y kernel, dónde encontrar logs en /var/log y cómo gestionar syslog, la rotación y la retención."
+    meta_keywords: "Registros de Linux, /var/log, syslog, registros de autenticación, registros del kernel, logrotate, registro del sistema, administración de registros"
+  fr:
+    title: "Journalisation"
+    description: "Découvrez les journaux système et le répertoire /var/log."
+    faqs:
+      - question: "Quels journaux Linux sont expliqués ?"
+        answer: "Le cours couvre les journaux système généraux, les événements d'authentification, les messages du noyau, le syslog, les fichiers communs sous /var/log et la rotation des journaux."
+      - question: "Les emplacements des journaux diffèrent-ils entre les distributions ?"
+        answer: "Oui. Les noms de fichiers et les services de journalisation peuvent varier, mais le cours enseigne des concepts qui vous aident à identifier la source pertinente sur votre système."
+      - question: "Pourquoi la rotation des journaux est-elle nécessaire ?"
+        answer: "La rotation limite la croissance du stockage tout en conservant l'historique utile, aidant ainsi les systèmes à éviter l'épuisement des disques et en gardant les journaux archivés gérables."
+    meta_title: "Cours de journalisation du système Linux"
+    meta_description: "Découvrez comment Linux journalise les événements système, d'authentification et du noyau, où trouver les logs sous /var/log et comment gérer syslog, la rotation et la conservation."
+    meta_keywords: "Journaux Linux, /var/log, syslog, journaux d'authentification, journaux du noyau, logrotate, journalisation système, gestion des journaux"
+  ja:
+    title: "ロギング"
+    description: "システムログと/var/log ディレクトリについて学びましょう。"
+    faqs:
+      - question: "どの Linux ログについて説明されていますか？"
+        answer: "このコースでは、一般的なシステム ログ、認証イベント、カーネル メッセージ、syslog、/var/log 下の共通ファイル、およびログ ローテーションについて説明します。"
+      - question: "ログの場所はディストリビューションごとに異なりますか？"
+        answer: "はい。ファイル名とログ サービスは異なる場合がありますが、このコースでは、システム上の関連するソースを識別するのに役立つ概念を学びます。"
+      - question: "ログローテーションはなぜ必要ですか？"
+        answer: "ローテーションは、有用な履歴を保持しながらストレージの増加を制限し、システムがディスクの枯渇を回避し、アーカイブされたログを管理しやすくするのに役立ちます。"
+    meta_title: "Linux システム ロギング コース"
+    meta_description: "Linux によるシステム・認証・カーネルイベントの記録、/var/log のログ確認、syslog の利用、ローテーションと保存期間の管理を学びます。"
+    meta_keywords: "Linux ログ，/var/log, syslog, 認証ログ，カーネルログ，logrotate, システムログ，ログ管理"
+  ko:
+    title: "로깅"
+    description: "시스템 로그와 /var/log 디렉터리에 대해 알아보세요."
+    faqs:
+      - question: "어떤 Linux 로그가 설명되어 있나요?"
+        answer: "이 과정에서는 일반 시스템 로그, 인증 이벤트, 커널 메시지, syslog, /var/log 아래의 공통 파일 및 로그 순환을 다룹니다."
+      - question: "로그 위치는 배포판마다 다릅니까?"
+        answer: "네. 파일 이름과 로깅 서비스는 다양할 수 있지만 이 과정에서는 시스템에서 관련 소스를 식별하는 데 도움이 되는 개념을 가르칩니다."
+      - question: "로그 회전이 필요한 이유는 무엇인가요?"
+        answer: "순환은 유용한 기록을 유지하면서 스토리지 증가를 제한하여 시스템이 디스크 고갈을 방지하고 보관된 로그를 관리 가능하게 유지하도록 돕습니다."
+    meta_title: "Linux 시스템 로깅 강좌"
+    meta_description: "Linux 의 시스템·인증·커널 이벤트 기록 방식, /var/log 로그 확인, syslog 사용, 로그 순환과 보존 관리를 알아보세요."
+    meta_keywords: "Linux 로그, /var/log, syslog, 인증 로그, 커널 로그, logrotate, 시스템 로깅, 로그 관리"
+  pt:
+    title: "Registro de Logs"
+    description: "Aprenda sobre os logs do sistema e o diretório /var/log."
+    faqs:
+      - question: "Quais logs do Linux são explicados?"
+        answer: "O curso cobre logs gerais do sistema, eventos de autenticação, mensagens do kernel, syslog, arquivos comuns em /var/log e rotação de log."
+      - question: "Os locais dos logs diferem entre distribuições?"
+        answer: "Sim. Os nomes dos arquivos e os serviços de registro podem variar, mas o curso ensina conceitos que ajudam a identificar a fonte relevante no seu sistema."
+      - question: "Por que a rotação de logs é necessária?"
+        answer: "A rotação limita o crescimento do armazenamento enquanto retém o histórico útil, ajudando os sistemas a evitar o esgotamento do disco e mantendo os logs arquivados gerenciáveis."
+    meta_title: "Curso de registro de sistema Linux"
+    meta_description: "Aprenda como o Linux registra eventos do sistema, autenticação e kernel, onde encontrar logs em /var/log e como gerenciar syslog, rotação e retenção."
+    meta_keywords: "Logs do Linux, /var/log, syslog, logs de autenticação, logs do kernel, logrotate, logs do sistema, gerenciamento de logs"
+  ru:
+    title: "Журналирование"
+    description: "Узнайте о системных журналах и каталоге /var/log."
+    faqs:
+      - question: "Какие журналы Linux описаны?"
+        answer: "Курс охватывает общие системные журналы, события аутентификации, сообщения ядра, syslog, распространённые файлы в /var/log и ротацию журналов."
+      - question: "Различается ли расположение журналов в разных дистрибутивах?"
+        answer: "Да. Имена файлов и службы ведения журналов могут различаться, но в курсе изучаются концепции, которые помогут вам определить соответствующий источник в вашей системе."
+      - question: "Зачем нужна ротация журналов?"
+        answer: "Ротация ограничивает рост хранилища, сохраняя при этом полезную историю, помогая системам избежать нехватки дисков и обеспечивая управляемость архивных журналов."
+    meta_title: "Курс ведения журнала системы Linux"
+    meta_description: "Узнайте, как Linux записывает системные события, события аутентификации и ядра, где искать журналы в /var/log и как настраивать syslog, ротацию и хранение."
+    meta_keywords: "Журналы Linux, /var/log, syslog, журналы аутентификации, журналы ядра, logrotate, системное журналирование, управление журналами"
+  zh:
+    title: "日志"
+    description: "了解系统日志和 /var/log 目录。"
+    faqs:
+      - question: "本课程讲解哪些 Linux 日志？"
+        answer: "课程涵盖一般系统日志、身份验证事件、内核消息、syslog、/var/log 下的常用文件以及日志轮转。"
+      - question: "不同发行版的日志位置是否不同？"
+        answer: "是的。文件名和日志记录服务可能会有所不同，但本课程教授的概念可帮助您识别系统上的相关源。"
+      - question: "为什么需要日志轮转？"
+        answer: "轮换可限制存储增长，同时保留有用的历史记录，帮助系统避免磁盘耗尽并使存档日志易于管理。"
+    meta_title: "Linux 系统日志课程"
+    meta_description: "了解 Linux 如何记录系统、身份验证和内核事件，如何在 /var/log 中查找日志、使用 syslog，以及管理日志轮转和保留期限。"
+    meta_keywords: "Linux 日志，/var/log, syslog, 身份验证日志，内核日志，logrotate, 系统日志，日志管理"

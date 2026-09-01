@@ -1,49 +1,100 @@
 ---
-index: 6
+lesson_id: "managing-log-files"
+course_id: "logging"
 lang: "pt"
+order_index: 6
 title: "Gerenciamento de Arquivos de Log"
+description: "Aprenda a configurar, testar e verificar com segurança a rotação de logs de texto usando logrotate."
 meta_title: "Gerenciamento de Logs - Logrotate"
 meta_description: "Domine o gerenciamento de logs Linux com este guia para iniciantes sobre logrotate. Aprenda como a rotação de logs economiza espaço em disco, como configurá-la e mantenha os logs do seu sistema organizados."
 meta_keywords: "logrotate, logs Linux, gerenciamento de logs, rotação de logs, tutorial Linux, iniciante, guia, espaço em disco"
 ---
 
-## Lesson Content
+Logs de texto sem limite podem esgotar um sistema de arquivos; exclusões agressivas podem remover evidências operacionais ou obrigatórias. `logrotate` aplica políticas de tamanho, tempo, compressão, propriedade e retenção a logs baseados em arquivos.
 
-Os arquivos de log do sistema e das aplicações geram muitos dados, que são armazenados em seus discos rígidos. Com o tempo, esses arquivos podem crescer para um tamanho incontrolável, criando vários desafios para os administradores de sistema. Esta lição em nosso tutorial Linux fornece um guia para iniciantes sobre gerenciamento eficaz de logs.
+## Entendendo a rotação
 
-### O Desafio dos Logs em Crescimento
+Uma rotação típica renomeia o arquivo ativo, cria outro, opcionalmente pede ao aplicativo que o reabra, comprime gerações antigas e remove as excedentes. Tudo depende da configuração. Rotação não é backup: cópias retidas ainda podem ser apagadas, corrompidas ou perdidas com o host.
 
-À medida que os arquivos de log se expandem, eles consomem espaço valioso em disco. Se não forem controlados, podem preencher uma partição, potencialmente causando instabilidade do sistema ou falhas de aplicação. Além disso, pesquisar em um único arquivo de log massivo em busca de informações específicas é lento e ineficiente. Precisamos de uma estratégia para gerenciar esses logs, mantendo os dados recentes acessíveis enquanto arquivamos ou descartamos entradas mais antigas.
+:::single-choice{#logrotate-not-backup} Por que rotação não substitui backup ou arquivamento?
 
-### O Que é Rotação de Logs?
+::option[Arquivos rotacionados continuam sujeitos à retenção local e a falhas do host.]{#logrotate-local-retention .correct explanation="A rotação controla gerações de trabalho, mas não cria uma cópia durável independente."}
+::option[A rotação só processa arquivos de imagem.]{#logrotate-images explanation="A ferramenta foi projetada principalmente para logs."}
+::option[Toda rotação mantém todas as gerações para sempre.]{#logrotate-forever explanation="Regras de retenção normalmente removem gerações antigas."}
+:::
 
-A solução para este problema é um processo chamado **rotação de logs** (log rotation). A utilidade mais comum para esta tarefa em sistemas Linux é o `logrotate`. Esta ferramenta automatiza o processo de gerenciamento de arquivos de log. A rotação de logs geralmente envolve:
+## Localização da configuração
 
-- Renomear o arquivo de log atual (ex: `app.log` se torna `app.log.1`).
-- Criar um novo arquivo de log vazio para novas entradas.
-- Comprimir arquivos de log mais antigos para economizar espaço em disco (ex: `app.log.1.gz`).
-- Excluir os arquivos de log mais antigos após um certo número de rotações.
+O arquivo principal costuma ser `/etc/logrotate.conf`, com trechos de pacotes ou aplicações em `/etc/logrotate.d/`. Uma política simplificada pode ter esta aparência:
 
-Este gerenciamento automatizado de logs garante que os logs permaneçam em um tamanho gerenciável e que o espaço em disco seja usado de forma eficiente.
+```text
+/var/log/example/app.log {
+    daily
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0640 example adm
+}
+```
 
-### Como o logrotate Funciona
+Isso solicita avaliação diária, sete rotações, compressão adiada por uma geração, tolerância a arquivo ausente ou vazio e um novo arquivo com modo e proprietário explícitos. A rotação real também depende do estado registrado e do agendador.
 
-A utilidade `logrotate` é altamente configurável e geralmente é agendada para ser executada automaticamente uma vez por dia por meio de um job cron. Seu arquivo de configuração principal é `/etc/logrotate.conf`, mas as configurações de log de aplicações individuais geralmente são colocadas em arquivos separados dentro do diretório `/etc/logrotate.d/`. Esses arquivos de configuração permitem que você especifique regras para diferentes **logs do Linux**, como a frequência com que devem ser rotacionados, quantos logs antigos devem ser mantidos e se devem ser compactados. Embora existam outras ferramentas, o `logrotate` é o padrão para rotação de logs no mundo Linux.
+:::single-choice{#logrotate-rotate-seven} O que especifica `rotate 7`?
 
-## Exercise
+::option[Manter até sete gerações rotacionadas.]{#logrotate-seven-generations .correct explanation="Gerações mais antigas são removidas quando a retenção é excedida."}
+::option[Executar o aplicativo sete vezes ao dia.]{#logrotate-run-seven explanation="A diretiva controla gerações, não a execução do aplicativo."}
+::option[Definir a permissão de todo arquivo como 0007.]{#logrotate-mode-seven explanation="O modo é controlado por diretivas como `create`."}
+:::
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de arquivos de log e tarefas relacionadas de administração de sistema:
+## Coordenação com o processo que escreve
 
-1. **[Visualizando Logs e Arquivos de Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique habilidades essenciais de linha de comando Linux para visualizar e navegar eficientemente por arquivos de texto, incluindo logs do sistema e arquivos de configuração, que são gerenciados por ferramentas como `logrotate`.
-2. **[Detecção Rápida de Ameaças](https://labex.io/pt/labs/linux-rapid-threat-detection-387930)** - Aprenda habilidades essenciais de linha de comando Linux para análise de segurança cibernética. Use os comandos `tail` e `head` para extrair e analisar rapidamente entradas de log recentes, simulando a detecção rápida de ameaças em um ambiente de tecnologia de alto risco.
-3. **[Criar e Restaurar um Backup com tar no Linux](https://labex.io/pt/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Ganhe experiência prática com tarefas de administração de sistema fazendo backup de diretórios, o que geralmente faz parte das estratégias de rotação de logs para arquivar logs antigos.
+Depois da renomeação, um daemon pode continuar escrevendo pelo descritor aberto. Um script `postrotate` costuma enviar um sinal documentado de reload ou reabertura. Confirme o comportamento do aplicativo e mantenha o script limitado.
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança ao gerenciar e interagir com arquivos de log no Linux.
+`copytruncate` copia e trunca o original quando o aplicativo não consegue reabrir logs. Escritas podem ser perdidas ou duplicadas nessa janela; é um compromisso, não um padrão universalmente seguro.
 
-## Quiz Question
+:::single-choice{#logrotate-open-descriptor} Por que um aplicativo pode precisar reabrir o log após a rotação?
 
-Qual é a utilidade principal usada para rotação de logs e gerenciamento de logs do Linux? Responda em inglês minúsculo.
+::option[Seu descritor aberto ainda pode apontar para o arquivo renomeado.]{#logrotate-descriptor-renamed .correct explanation="Reabrir faz novas escritas usarem o caminho ativo recém-criado."}
+::option[A compressão encerra automaticamente todo aplicativo.]{#logrotate-compression-stops explanation="Compressão não gerencia o ciclo de vida do processo escritor."}
+::option[O kernel proíbe criar um segundo arquivo de log.]{#logrotate-kernel-forbids explanation="Vários arquivos podem existir; a questão é qual inode está aberto."}
+:::
 
-## Quiz Answer
+## Teste antes da ativação
 
-logrotate
+Use o modo debug para examinar decisões sem rotacionar:
+
+```bash
+$ sudo logrotate -d /etc/logrotate.conf
+```
+
+A saída de depuração não comprova que permissões, scripts, espaço livre ou a reabertura pela aplicação funcionarão durante uma execução real. Teste uma nova regra em um ambiente controlado e, depois da execução, examine o arquivo ativo, a geração rotacionada, a propriedade, a compressão, a saída da aplicação e o estado do logrotate. `-f` força uma rotação e altera o estado; não o confunda com uma execução de teste.
+
+:::single-choice{#logrotate-debug-mode} O que `logrotate -d` oferece?
+
+::option[Exclusão permanente de todos os logs vencidos.]{#logrotate-debug-delete explanation="O modo debug informa decisões sem executar a rotação."}
+::option[Rotação forçada de produção independentemente da política.]{#logrotate-debug-force explanation="A opção de força é `-f` e altera o estado."}
+::option[Avaliação diagnóstica sem modificar arquivos nem estado.]{#logrotate-debug-dry .correct explanation="É a primeira revisão de sintaxe e decisão, seguida por verificação real controlada."}
+:::
+
+## Outros armazenamentos
+
+Logrotate gerencia arquivos nomeados por suas políticas. O journal tem configuração própria de tamanho e retenção; bancos e serviços remotos têm outros controles. Monitore capacidade e saúde do logging para detectar writers travados ou rotação falha antes de esgotar espaço.
+
+:::single-choice{#logrotate-journal-retention} Uma regra logrotate aplica automaticamente a retenção do journal?
+
+::option[Não; o journal tem configurações e limites próprios.]{#logrotate-journal-separate .correct explanation="Logrotate gerencia apenas caminhos selecionados por políticas de arquivo."}
+::option[Sim; todos os logs compartilham um mecanismo.]{#logrotate-all-logs explanation="Rotação de arquivos e retenção do journal são mecanismos separados."}
+::option[Sim, mas apenas quando não há logs de texto.]{#logrotate-journal-fallback explanation="A presença de arquivos não une os dois sistemas."}
+:::
+
+## Resumo
+
+Agora você consegue projetar e verificar rotação de logs sem confundi-la com arquivamento.
+
+1. Equilibrar espaço, operação e retenção.
+2. Definir gerações, compressão, propriedade e arquivos vazios.
+3. Coordenar aplicativos que mantêm descritores abertos.
+4. Depurar antes de uma rotação real controlada.
+5. Gerenciar journal e armazenamentos externos separadamente.

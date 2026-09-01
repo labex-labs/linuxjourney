@@ -1,79 +1,80 @@
 ---
-index: 6
+lesson_id: "memory-monitoring"
+course_id: "process-utilization"
 lang: "es"
-title: "Monitoreo de Memoria"
-meta_title: "Monitoreo de Memoria - Utilización de Procesos"
-meta_description: "Domina el monitoreo de memoria de Linux con el comando vmstat. Esta guía explica cómo usar este potente monitor de utilización de memoria para analizar métricas de rendimiento del sistema."
-meta_keywords: "monitoreo de memoria, monitor de utilización de memoria, vmstat, memoria linux, rendimiento del sistema, uso de memoria, tutorial linux"
+order_index: 6
+title: "Supervisión de la memoria"
+description: "Aprende a interpretar muestras de memoria, paginación, procesos, E/S y CPU de vmstat."
+meta_title: "Supervisión de la memoria - Utilización de procesos"
+meta_description: "Aprende a supervisar la memoria de Linux con vmstat e interpreta la memoria, la paginación, la E/S y la CPU."
+meta_keywords: "supervisión de memoria, vmstat, memoria Linux, paginación, rendimiento del sistema"
 ---
 
-## Lesson Content
+Linux utiliza deliberadamente la memoria que de otro modo estaría inactiva para cachés, por lo que un valor `free` pequeño no demuestra por sí solo presión de memoria. `vmstat` ayuda a relacionar la memoria con las tareas preparadas para ejecutarse, la paginación, la E/S y la actividad de CPU.
 
-La administración eficaz del sistema requiere vigilar de cerca el uso de recursos, y la **monitorización de la memoria** es una parte crítica de este proceso. Cuando un sistema se queda sin memoria, su rendimiento puede degradarse significativamente. Linux proporciona varias herramientas para ayudarle a rastrear el consumo de memoria, y una de las más versátiles es `vmstat`.
+## Tomar muestras con vmstat
 
-### Introducción a vmstat
-
-El comando `vmstat` (estadísticas de memoria virtual) es un potente **monitor de utilización de memoria** que informa sobre procesos, memoria, paginación, E/S de bloques, interrupciones y actividad de la CPU. Ejecutarlo sin argumentos proporciona una instantánea del estado actual del sistema desde el último arranque.
+Recopila una muestra por segundo:
 
 ```bash
-pete@icebox:~$ vmstat
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
-r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- 1  0      0 396528  38816 384036    0    0     4     2   38   79  0  0 99  0  0
+$ vmstat 1
 ```
 
-La salida se organiza en varias columnas. Analicemos qué significa cada campo.
+La primera fila de datos suele comunicar promedios desde el arranque; las filas posteriores abarcan cada intervalo. Detén la orden con `Ctrl-C` después de capturar un período representativo. Las unidades y los campos disponibles varían, así que consulta `vmstat --unit` y el manual local.
 
-### Procs (Procesos)
+:::single-choice{#vmstat-interval-rows} ¿Qué filas son más adecuadas para observar cambios segundo a segundo con `vmstat 1`?
 
-- `r`: El número de procesos ejecutables que esperan tiempo de ejecución.
-- `b`: El número de procesos en suspensión no interrumpible, generalmente esperando E/S.
+::option[Las filas posteriores al informe inicial.]{#vmstat-later-rows .correct explanation="Las filas posteriores describen cada intervalo solicitado en vez del período acumulado."}
+::option[Únicamente los encabezados situados sobre la primera fila de datos.]{#vmstat-headings explanation="Los encabezados definen campos, pero no contienen muestras de actividad."}
+::option[Únicamente una fila copiada de otro equipo.]{#vmstat-other-host explanation="Un sistema distinto no representa la carga de trabajo actual."}
+:::
 
-### Memory (Memoria)
+## Procesos y memoria
 
-- `swpd`: La cantidad de memoria virtual utilizada (en kilobytes).
-- `free`: La cantidad de memoria inactiva (en kilobytes).
-- `buff`: La cantidad de memoria utilizada como búferes.
-- `cache`: La cantidad de memoria utilizada como caché de páginas.
+Los campos habituales de procesos son `r`, tareas preparadas para ejecutarse, y `b`, tareas bloqueadas en espera ininterrumpible. Los campos de memoria incluyen intercambio utilizado (`swpd`), memoria inactiva (`free`), búferes (`buff`) y caché (`cache`). Son valores de todo el sistema, no consumo por proceso.
 
-### Swap (Intercambio)
+Para obtener una vista más sencilla de la memoria disponible actualmente, compárala con:
 
-- `si`: La cantidad de memoria intercambiada desde el disco por segundo (en kilobytes). Los valores altos indican que el sistema tiene poca memoria física.
-- `so`: La cantidad de memoria intercambiada al disco por segundo (en kilobytes). Idealmente, esto debería ser cero.
+```bash
+$ free -h
+```
 
-### IO (E/S)
+La estimación `available` suele ser más útil que `free` por sí sola, porque la caché recuperable puede satisfacer asignaciones nuevas.
 
-- `bi`: Bloques recibidos de un dispositivo de bloques (bloques/s).
-- `bo`: Bloques enviados a un dispositivo de bloques (bloques/s).
+:::single-choice{#vmstat-free-memory} ¿Por qué puede ser normal un valor `free` bajo en Linux?
 
-### System (Sistema)
+::option[Porque el valor siempre excluye toda la RAM física.]{#vmstat-excludes-ram explanation="Es un campo de memoria, aunque debe comprobarse su unidad exacta."}
+::option[Porque el kernel puede utilizar la memoria inactiva para cachés recuperables.]{#vmstat-reclaimable-cache .correct explanation="La memoria en caché suele poder recuperarse cuando las aplicaciones la necesitan."}
+::option[Porque poca memoria libre demuestra que la CPU está apagada.]{#vmstat-cpu-off explanation="La asignación de memoria y el estado de energía de la CPU no guardan esa relación."}
+:::
 
-- `in`: El número de interrupciones por segundo, incluyendo el reloj.
-- `cs`: El número de cambios de contexto por segundo.
+## Paginación y E/S
 
-### CPU
+`si` y `so` muestran las tasas de entrada y salida del intercambio. Una paginación sostenida combinada con latencia y actividad de recuperación de memoria puede indicar presión, pero un uso del intercambio (`swpd`) distinto de cero no demuestra por sí solo un problema actual. `bi` y `bo` comunican tasas de entrada y salida de bloques, y no se limitan al tráfico de intercambio.
 
-Estos son porcentajes del tiempo total de la CPU.
+:::single-choice{#vmstat-swap-pressure} ¿Qué prueba respalda mejor un diagnóstico de presión de memoria actual?
 
-- `us`: Tiempo dedicado a ejecutar código no kernel (tiempo de usuario).
-- `sy`: Tiempo dedicado a ejecutar código kernel (tiempo de sistema).
-- `id`: Tiempo dedicado a estar inactivo.
-- `wa`: Tiempo dedicado a esperar E/S.
-- `st`: Tiempo robado a una máquina virtual (para entornos virtualizados).
+::option[Un valor `swpd` distinto de cero sin ninguna otra observación.]{#vmstat-swpd-alone explanation="Las páginas pueden permanecer en el intercambio después de una presión anterior, por lo que la cantidad por sí sola no basta."}
+::option[Paginación sostenida relacionada con actividad de recuperación y latencia de la carga de trabajo.]{#vmstat-correlated-pressure .correct explanation="Las pruebas repetidas y relacionadas conectan el comportamiento de la memoria con el impacto actual."}
+::option[El nombre del equipo mostrado al iniciar sesión.]{#vmstat-hostname explanation="Un nombre de equipo no mide la recuperación ni la actividad de paginación."}
+:::
 
-## Exercise
+## CPU y actividad del sistema
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la monitorización del sistema y la memoria:
+Las columnas de CPU suelen incluir porcentajes de usuario (`us`), sistema (`sy`), inactividad (`id`), espera de E/S (`wa`) y sustracción (`st`). Las columnas del sistema incluyen interrupciones (`in`) y cambios de contexto (`cs`) por segundo. Interpreta los picos frente a una referencia; las tasas altas de cambios de contexto pueden ser normales para algunas cargas.
 
-1. **[Comando Linux free: Monitorización de la Memoria del Sistema](https://labex.io/es/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a monitorizar y analizar el uso de la memoria del sistema, comprendiendo varios formatos de visualización y el consumo total de memoria.
-2. **[Comando Linux top: Monitorización del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a monitorizar el rendimiento del sistema en tiempo real, incluyendo procesos, CPU y uso de memoria, utilizando varias opciones para ordenar y filtrar.
+:::single-choice{#vmstat-r-column} ¿Qué representa el campo de procesos `r`?
 
-Estos laboratorios le ayudarán a aplicar los conceptos de monitorización de recursos del sistema en escenarios reales y a ganar confianza al analizar el rendimiento del sistema Linux.
+::option[Sistemas de archivos montados como solo lectura.]{#vmstat-readonly explanation="Los indicadores de montaje del sistema de archivos no se representan mediante este campo de procesos."}
+::option[Usuarios remotos con shells activos.]{#vmstat-remote-users explanation="Otras herramientas comunican las sesiones iniciadas."}
+::option[Tareas preparadas para ejecutarse o que esperan CPU.]{#vmstat-runnable .correct explanation="Comparar este número con la capacidad de CPU puede ayudar a identificar demanda de procesamiento."}
+:::
 
-## Quiz Question
+## Resumen
 
-What tool is used to view memory utilization? (Please answer in English, paying attention to case sensitivity)
+Ahora puedes interpretar `vmstat` como una vista del sistema relacionada en el tiempo.
 
-## Quiz Answer
-
-vmstat
+1. Separa el informe acumulado inicial de las muestras de cada intervalo.
+2. Trata la caché como memoria potencialmente recuperable.
+3. Relaciona la paginación con la recuperación y el impacto en la aplicación.
+4. Lee conjuntamente los campos de procesos, E/S, sistema y CPU.

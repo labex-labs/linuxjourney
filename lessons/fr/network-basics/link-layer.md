@@ -1,57 +1,86 @@
 ---
-index: 8
+lesson_id: "link-layer"
+course_id: "network-basics"
 lang: "fr"
-title: "Couche Liaison de Données"
-meta_title: "Couche Liaison de Données - Bases Réseau"
-meta_description: "Explorez les fondamentaux de la couche liaison de données du TCP/IP. Apprenez comment l'en-tête de la couche liaison est construit, comment l'ARP résout les adresses IP en adresses MAC, et le processus de traversée des paquets sur un réseau local."
-meta_keywords: "couche liaison de données, en-tête couche liaison, ARP, TCP/IP, adresse MAC, fondamentaux réseau, réseau Linux, traversée de paquets, protocole de résolution d'adresse"
+order_index: 8
+title: "Couche liaison"
+description: "Découvrez comment les trames Ethernet, la découverte des voisins, les commutateurs et les routeurs livrent les paquets sur une liaison locale."
+meta_title: "Couche liaison - Notions de base sur les réseaux"
+meta_description: "Explorez les principes de la couche liaison TCP/IP : trames Ethernet, résolution ARP, adresses MAC, commutation et parcours des paquets sur un réseau local."
+meta_keywords: "couche liaison, en-tête liaison, ARP, TCP/IP, adresse MAC, notions de réseau, réseau Linux, parcours des paquets, protocole de résolution d’adresses"
 ---
 
-## Lesson Content
+La couche liaison transporte les paquets de la couche réseau sur un support local ou une liaison virtuelle. Ethernet et le Wi-Fi emploient des méthodes de mise en trame différentes, mais assurent tous deux la livraison locale sous IP.
 
-La **Couche Liaison de Données** (Link Layer) est la couche fondamentale du modèle TCP/IP, responsable des communications sur le segment de réseau local. Cette couche est spécifique au matériel, traitant directement avec les cartes d'interface réseau et l'adressage physique.
+## Trames Ethernet
 
-### Trames et En-tête de la Couche Liaison de Données
+Une trame Ethernet contient les adresses MAC de destination et source, un champ EtherType ou de longueur, une charge utile et une séquence de contrôle de trame en fin de trame. La transmission physique utilise également un préambule et un délimiteur de début. La séquence de contrôle détecte les altérations sur la liaison ; elle ne répare pas une trame endommagée et ne la protège pas par cryptographie.
 
-Au niveau de la **couche liaison de données**, le paquet provenant de la couche réseau est encapsulé dans une structure appelée trame. Une partie cruciale de ce processus est l'ajout de l'**en-tête de la couche liaison de données**. Cet en-tête contient les adresses MAC source et destination des hôtes, des sommes de contrôle pour la détection d'erreurs, et des séparateurs de paquets, qui permettent au périphérique récepteur d'identifier où une trame se termine et où la suivante commence.
+:::single-choice{#link-layer-fcs-purpose} À quoi sert la séquence de contrôle d’une trame Ethernet ?
 
-Pour construire l'**en-tête de la couche liaison de données**, le système a besoin des adresses MAC source et destination. Bien que l'adresse MAC source soit connue, l'adresse MAC de destination pour une IP sur le même réseau local doit être découverte. C'est là qu'intervient le Protocole de Résolution d'Adresse (ARP).
+::option[À détecter l’altération d’une trame sur la liaison.]{#link-layer-detect-corruption .correct explanation="Un récepteur peut abandonner une trame qui échoue au contrôle d’intégrité."}
+::option[À chiffrer la charge utile sur tous les sauts routés.]{#link-layer-fcs-encryption explanation="La FCS est un code de détection d’erreurs, et non un mécanisme de chiffrement ou d’authentification."}
+::option[À sélectionner une application grâce au port TCP.]{#link-layer-fcs-port explanation="Les ports de transport sont acheminés dans la charge utile IP."}
+:::
 
-### ARP (Protocole de Résolution d'Adresse)
+## Commutateurs et livraison locale
 
-ARP est un protocole de la **couche liaison de données** utilisé pour trouver l'adresse MAC associée à une adresse IP spécifique au sein du même réseau. Si l'hôte de destination se trouvait sur un réseau différent, le paquet serait envoyé à une passerelle par défaut (routeur), et ARP serait utilisé pour trouver l'adresse MAC du routeur.
+Un commutateur Ethernet apprend sur quels ports apparaissent les adresses MAC source et achemine les trames unicast connues vers le port associé à leur destination. Les diffusions et certains trafics dont la destination est inconnue sont propagés dans le domaine de diffusion. Les VLAN peuvent diviser un même système de commutation en domaines de liaison logiques distincts.
 
-Les systèmes consultent d'abord leur table de recherche ARP, qui met en cache les mappages IP vers adresse MAC connus. Si l'adresse requise n'est pas dans le cache, le système diffuse une requête ARP à l'ensemble du réseau. Ce message spécial demande quel hôte possède une adresse IP spécifique, par exemple, 10.10.1.4. L'hôte possédant cette adresse IP enverra une réponse ARP contenant son adresse IP et son adresse MAC.
+:::single-choice{#link-layer-switch-learning} Quelles informations un commutateur Ethernet apprend-il normalement à partir des trames ?
 
-Avec toutes les adresses IP et MAC nécessaires, la **couche liaison de données** peut maintenant acheminer la trame via la carte d'interface réseau. Le voyage d'un paquet est un processus en plusieurs étapes d'encapsulation et de désencapsulation lorsqu'il monte et descend dans la pile TCP/IP aux extrémités d'envoi et de réception.
+::option[Les mots de passe applicatifs et les cookies HTTP.]{#link-layer-switch-passwords explanation="Une table d’acheminement élémentaire emploie des adresses de liaison, et non des identifiants applicatifs."}
+::option[La table de routage Internet complète de chaque routeur.]{#link-layer-switch-routing-table explanation="La commutation de couche 2 et l’échange de routes globales sont des fonctions différentes."}
+::option[Les adresses MAC source associées aux ports du commutateur.]{#link-layer-switch-source .correct explanation="Cet apprentissage construit la table utilisée ensuite pour acheminer les trafics unicast connus."}
+:::
 
-### Parcours du Paquet
+## Résoudre l’adresse du prochain saut
 
-Voici une description étape par étape du voyage d'un paquet d'un expéditeur (Pete) à un destinataire (Patty) :
+Pour IPv4 sur Ethernet, le protocole ARP associe l’adresse IPv4 d’un prochain saut situé sur la liaison à une adresse MAC. L’hôte consulte d’abord son cache de voisins. Si nécessaire, il diffuse une requête ARP, à laquelle répond le propriétaire de l’adresse ou un proxy autorisé.
 
-1. Pete envoie un e-mail à Patty. Ces données sont envoyées à la couche transport.
-2. La couche transport encapsule les données dans un en-tête TCP ou UDP pour former un segment. Elle attache les ports de destination et source, puis envoie le segment à la couche réseau.
-3. La couche réseau encapsule le segment dans un paquet IP et attache les adresses IP source et destination. Elle achemine ensuite le paquet vers la **couche liaison de données**.
-4. Le paquet atteint la **couche liaison de données**, où il est encapsulé dans une trame. L'**en-tête de la couche liaison de données**, contenant les adresses MAC source et destination, est ajouté.
-5. Patty reçoit cette trame de données via sa couche physique, vérifie l'intégrité des données de la trame, puis la désencapsule et envoie le paquet IP à sa couche réseau.
-6. La couche réseau lit le paquet pour trouver les adresses IP source et destination. Elle confirme que l'adresse IP de destination correspond à la sienne, désencapsule le paquet et envoie le segment à la couche transport.
-7. La couche transport désencapsule le segment, vérifie les numéros de port TCP ou UDP, et établit une connexion avec la couche application en fonction de ces ports.
-8. La couche application reçoit les données de la couche transport sur le port spécifié et les présente à Patty comme le message e-mail final.
+Pour une destination IP hors liaison, l’hôte résout l’adresse MAC de la passerelle par défaut ou sélectionnée, et non celle de la destination distante. IPv6 emploie la découverte de voisins sur ICMPv6 plutôt qu’ARP.
 
-## Exercise
+:::single-choice{#link-layer-remote-destination-mac} Quelle adresse MAC un hôte utilise-t-il pour une destination IPv4 hors liaison ?
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la Couche Liaison de Données, des adresses MAC et d'ARP :
+::option[L’adresse MAC du routeur choisi comme prochain saut.]{#link-layer-gateway-mac .correct explanation="Le paquet IP reste adressé à l’hôte distant tandis que la trame locale est envoyée au routeur."}
+::option[L’adresse MAC du serveur distant à travers tous les routeurs.]{#link-layer-remote-mac explanation="Les adresses MAC identifient les interfaces sur une liaison locale et ne sont pas transportées de bout en bout."}
+::option[Une adresse MAC dérivée du port TCP de destination.]{#link-layer-port-mac explanation="Les ports de transport ne déterminent pas les adresses de liaison."}
+:::
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, sur un système Linux.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` fonctionnent ensemble pour résoudre les adresses IP en adresses MAC et comprendre les interactions de la couche réseau.
-3. **[Analyser les trames Ethernet avec tcpdump sous Linux](https://labex.io/fr/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Acquérir une expérience pratique en capturant et en inspectant les trames Ethernet, y compris les adresses MAC, pour comprendre les communications réseau de bas niveau.
+## Examiner l’état des voisins
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans les fondamentaux du réseau au niveau de la Couche Liaison de Données.
+Affichez les entrées ARP d’IPv4 et celles de la découverte de voisins d’IPv6 avec :
 
-## Quiz Question
+```bash
+$ ip neighbor show
+```
 
-Quel protocole est utilisé pour trouver l'adresse MAC d'un hôte sur le même réseau local ? (Veuillez répondre avec l'acronyme anglais en lettres majuscules).
+Les états tels que `REACHABLE`, `STALE`, `DELAY`, `PROBE` et `FAILED` décrivent le processus de détection d’inaccessibilité des voisins. `STALE` ne signifie pas que la communication est interrompue ; il indique que la confirmation d’accessibilité mise en cache n’est plus récente et peut être vérifiée lors d’une utilisation.
 
-## Quiz Answer
+:::single-choice{#link-layer-stale-neighbor} Qu’indique l’état `STALE` d’une entrée de voisin ?
 
-ARP
+::option[Que le voisin est définitivement bloqué par le pare-feu.]{#link-layer-stale-blocked explanation="Cet état ne décrit pas la politique du pare-feu."}
+::option[Que l’adresse MAC a été enregistrée sur disque comme sauvegarde.]{#link-layer-stale-backup explanation="L’état d’un voisin est une information opérationnelle du cache."}
+::option[Que l’association mise en cache ne possède pas de confirmation d’accessibilité récente.]{#link-layer-stale-confirmation .correct explanation="La pile peut encore l’utiliser et effectuer une détection d’accessibilité si nécessaire."}
+:::
+
+## Encapsulation lors du passage par un routeur
+
+L’émetteur place un paquet IP dans une trame adressée à son prochain saut. Le routeur valide et retire la trame entrante, traite l’en-tête IP, choisit une route de sortie et construit une nouvelle trame pour cette liaison. Le destinataire retire les encapsulations dans l’ordre inverse et livre la charge utile de transport au socket approprié.
+
+:::single-choice{#link-layer-router-reframing} Qu’est-ce qui reste inchangé lors d’un acheminement ordinaire, tandis que la trame Ethernet change au niveau d’un routeur ?
+
+::option[La destination IP, sauf si un équipement intermédiaire tel qu’un dispositif NAT la modifie.]{#link-layer-ip-destination .correct explanation="Les routeurs ordinaires acheminent le trafic vers la destination IP finale tout en remplaçant les trames propres à chaque saut."}
+::option[La séquence de contrôle de la trame entrante.]{#link-layer-same-fcs explanation="Une nouvelle trame sortante reçoit sa propre valeur d’intégrité de liaison."}
+::option[L’adresse MAC de destination sur chaque liaison.]{#link-layer-same-mac explanation="Chaque liaison emploie l’adresse de liaison appropriée au prochain saut."}
+:::
+
+## Résumé
+
+Vous savez maintenant suivre un paquet IP pendant une étape de livraison sur une liaison locale.
+
+1. Identifier les principaux champs d’une trame Ethernet et sa séquence de contrôle d’intégrité.
+2. Expliquer comment un commutateur apprend les emplacements d’acheminement locaux.
+3. Résoudre un prochain saut IPv4 avec ARP et un voisin IPv6 avec NDP.
+4. Interpréter l’état du cache de voisins sans conclure trop vite à une panne.
+5. Reconnaître que les routeurs reconstruisent les trames pour chaque liaison sortante.

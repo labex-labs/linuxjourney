@@ -1,45 +1,90 @@
 ---
-index: 5
+lesson_id: "kernel-location"
+course_id: "kernel"
 lang: "pt"
+order_index: 5
 title: "Localização do Kernel"
+description: "Aprenda onde as distribuições armazenam imagens do kernel, initramfs, configurações, símbolos e módulos versionados."
 meta_title: "Localização do Kernel - Kernel"
 meta_description: "Descubra onde o kernel é armazenado no Linux. Este guia explica a localização do kernel Linux no diretório /boot, detalhando arquivos chave como vmlinuz e initrd."
 meta_keywords: "localização kernel linux, onde está o kernel, localização kernel, onde o kernel está localizado, onde o kernel é armazenado no linux, vmlinuz, diretório /boot"
 ---
 
-## Lesson Content
+As distribuições normalmente guardam artefatos inicializáveis em `/boot`, mas layouts UEFI e Boot Loader Specification também podem colocá-los em uma Partição de Sistema EFI ou partição de boot estendida montada em `/boot`, `/boot/efi` ou `/efi`. Examine montagens e a configuração do carregador, sem presumir um caminho universal.
 
-Quando você instala um novo kernel, seu sistema adiciona vários arquivos importantes a um diretório específico. Se você já se perguntou **onde o kernel é armazenado no Linux**, a resposta é tipicamente o diretório `/boot`. Este diretório é a **localização padrão do kernel Linux** na maioria dos sistemas.
+## Arquivos versionados em `/boot`
 
-### O Diretório /boot
+Um layout tradicional pode conter:
 
-O diretório `/boot` contém todos os arquivos necessários para iniciar o processo de boot. Ao olhar para dentro, você frequentemente verá arquivos correspondentes a diferentes versões do kernel, permitindo que você inicie um kernel mais antigo se um novo causar problemas. Entender esta **localização do kernel** é crucial para a manutenção do sistema.
+- `vmlinuz-KERNEL_RELEASE`: imagem inicializável do kernel Linux
+- `initrd.img-KERNEL_RELEASE` ou `initramfs-KERNEL_RELEASE.img`: imagem do espaço inicial do usuário
+- `config-KERNEL_RELEASE`: configuração usada na compilação do kernel empacotado
+- `System.map-KERNEL_RELEASE`: mapa de endereços de símbolos da compilação
 
-### Arquivos Chave do Kernel
+Os nomes variam. Um arquivo chamado `initrd` em uma distribuição moderna costuma conter um initramfs. O nome `vmlinuz` não informa a compactação interna exata nem o formato de boot; use as ferramentas da distribuição para inspecioná-lo.
 
-Então, **onde o kernel está localizado** dentro deste diretório? Ele é acompanhado por alguns outros arquivos críticos. Aqui estão os principais que você encontrará:
+:::single-choice{#kernel-location-vmlinuz} O que um arquivo versionado `vmlinuz-*` normalmente contém?
 
-- `vmlinuz`: Este é o próprio kernel Linux executável e compactado. O 'z' no final indica que ele está compactado.
-- `initrd`: Este é o disco RAM inicial. Como discutimos, o `initrd` é um sistema de arquivos raiz temporário carregado na memória durante a inicialização para montar o sistema de arquivos raiz real.
-- `System.map`: Este arquivo contém uma tabela de símbolos, que mapeia nomes de funções do kernel para seus endereços de memória. É usado principalmente para depurar pânicos e erros do kernel (oopses).
-- `config`: Este arquivo armazena as configurações usadas para compilar aquela versão específica do kernel. Ele detalha quais drivers e recursos foram incluídos.
+::option[Uma imagem inicializável do kernel Linux.]{#kernel-location-kernel-image .correct explanation="O carregador ou firmware carrega esse artefato de kernel específico da arquitetura."}
+::option[Todos os módulos de todos os kernels instalados.]{#kernel-location-all-modules explanation="Os módulos ficam separados em uma árvore específica da versão."}
+::option[O histórico do shell do usuário no boot anterior.]{#kernel-location-shell-history explanation="Imagens de kernel não contêm histórico pessoal de comandos."}
+:::
 
-### Gerenciando Arquivos do Kernel
+## Sistema de arquivos RAM inicial e metadados
 
-Com o tempo, seu diretório `/boot` pode ficar cheio de arquivos de kernels antigos. Se você ficar sem espaço, pode remover os arquivos de versões antigas e não utilizadas. A maneira mais segura de fazer isso é usando o gerenciador de pacotes da sua distribuição (como `apt` ou `dnf`). Excluir arquivos manualmente pode ser arriscado, portanto, tenha muito cuidado para não remover os arquivos do kernel que você está usando atualmente.
+O initramfs deve conter módulos e ferramentas iniciais exigidos pelo kernel correspondente e pelo projeto de armazenamento raiz. Um nome compatível não basta: uma geração antiga ou mal-sucedida ainda pode produzir uma entrada inutilizável.
 
-## Exercise
+`config-*` mostra recursos incorporados, modulares ou omitidos. `System.map-*` pode ajudar na simbolização e depuração, embora randomização, informações de debug separadas e ferramentas da distribuição influenciem seu uso. São artefatos de apoio, não kernels alternativos.
 
-Aplique seu conhecimento com este laboratório prático para reforçar sua compreensão do processo de boot do Linux e gerenciamento de kernel:
+:::single-choice{#kernel-location-initramfs-match} Por que um initramfs está ligado a uma versão do kernel e a uma configuração do sistema?
 
-1. **[Personalizar o Menu de Boot GRUB2 no Linux](https://labex.io/pt/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Pratique modificar a configuração do GRUB2, que impacta diretamente como seu sistema Linux inicializa e seleciona as versões do kernel. Este laboratório ajudará você a entender as implicações práticas dos arquivos discutidos no diretório `/boot`.
+::option[Ele armazena permanentemente todo sistema de arquivos montado.]{#kernel-location-all-filesystems explanation="Um initramfs é um pequeno ambiente inicial, não um backup completo."}
+::option[Ele atribui novos UIDs aos usuários a cada boot.]{#kernel-location-user-ids explanation="O gerenciamento de identidades não faz parte de seu papel normal."}
+::option[Ele contém módulos e ferramentas iniciais necessários ao caminho de boot.]{#kernel-location-early-modules .correct explanation="A ABI dos módulos e os componentes de armazenamento precisam corresponder ao kernel escolhido."}
+:::
 
-Este laboratório ajudará você a aplicar esses conceitos em um cenário do mundo real e a ganhar confiança com o gerenciamento do kernel e do boot do Linux.
+## Módulos versionados do kernel
 
-## Quiz Question
+Módulos carregáveis da versão em execução normalmente ficam em:
 
-No diretório `/boot`, qual é o nome típico para o arquivo de imagem do kernel Linux compactado? Por favor, responda em inglês, prestando atenção à sensibilidade a maiúsculas e minúsculas.
+```bash
+$ printf '/lib/modules/%s\n' "$(uname -r)"
+```
 
-## Quiz Answer
+Em layouts unificados, isso pode apontar para `/usr/lib/modules/KERNEL_RELEASE`. Cada kernel precisa de uma árvore compatível e índices de dependência. `modprobe` usa metadados específicos da versão, não procura arquivos `.ko` arbitrários pelo disco.
 
-vmlinuz
+:::single-choice{#kernel-location-module-tree} Qual diretório normalmente guarda módulos do kernel em execução?
+
+::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="Diretórios pessoais não são a árvore padrão de módulos do sistema."}
+::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="A versão separa a ABI e as dependências dos módulos de cada kernel instalado."}
+::option[`/proc/modules/files/`]{#kernel-location-proc-files explanation="`/proc/modules` informa módulos carregados; não é um diretório de binários."}
+:::
+
+## Imagens unificadas e caminhos do firmware
+
+Uma Unified Kernel Image (UKI) é um único executável EFI assinado que pode reunir kernel, initrd, linha de comando e metadados. UKIs ficam em um local acessível ao EFI, em vez de arquivos separados `vmlinuz` e initramfs.
+
+Assim, um `/boot` tradicional aparentemente vazio não prova que nenhum kernel está instalado. Use `findmnt`, o banco de pacotes, ferramentas do gerenciador de boot e sua configuração para mapear os artefatos ativos.
+
+:::single-choice{#kernel-location-uki} O que uma Unified Kernel Image pode combinar?
+
+::option[Todos os diretórios pessoais em um cabeçalho GPT.]{#kernel-location-uki-homes explanation="Uma UKI é um executável de boot, não contêiner de dados nem tabela de partições."}
+::option[Todos os pacotes instalados em um script de shell.]{#kernel-location-uki-packages explanation="Ela reúne componentes de boot, não todo o repositório do sistema."}
+::option[Kernel, initrd, linha de comando e metadados em um executável EFI.]{#kernel-location-uki-components .correct explanation="O artefato combinado pode participar de um fluxo UEFI assinado."}
+:::
+
+## Gerenciamento seguro do espaço
+
+Se o sistema de arquivos de boot estiver cheio, mapeie os caminhos montados e identifique o pacote proprietário de cada artefato. Use o fluxo de limpeza de kernels do gerenciador, preserve o kernel em execução e uma alternativa funcional, regenere ou confira as entradas e verifique o espaço.
+
+Não apague manualmente `vmlinuz`, initramfs, UKI ou árvores de módulos apenas pela idade. Um arquivo pode ser a única entrada de recuperação inicializável.
+
+## Resumo
+
+Agora você consegue mapear um pacote de kernel a seus artefatos de boot e módulos.
+
+1. Inspecionar montagens reais de `/boot` e EFI.
+2. Distinguir imagem, initramfs, configuração e mapa de símbolos.
+3. Vincular árvores de módulos à versão exata do kernel.
+4. Considerar UKIs e layouts específicos da distribuição.
+5. Liberar espaço apenas com plano verificado de pacotes e fallback.

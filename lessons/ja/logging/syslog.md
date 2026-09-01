@@ -1,56 +1,98 @@
 ---
-index: 2
+lesson_id: "syslog"
+course_id: "logging"
 lang: "ja"
+order_index: 2
 title: "syslog"
+description: "syslog の facility、severity、routing rule、logger コマンドの仕組みを学びます。"
 meta_title: "syslog - ロギング"
 meta_description: "Linux の syslog と rsyslog について学び、システムログの管理方法、および logger コマンドの使用方法を習得します。この初心者向けのチュートリアルを始めましょう！"
 meta_keywords: "syslog, rsyslog, Linux ログ，logger コマンド，/var/log/syslog, Linux チュートリアル，初心者 Linux, システムロギング"
 ---
 
-## Lesson Content
+syslog は、多くの Unix 系システムで使われるメッセージモデルとトランスポートの規約を定義します。rsyslog はその実装の一つで、メッセージの受信、filter、変換、保存、転送を行えます。`systemd-journald` と共存する場合があり、どちらの名前も、全アプリケーションがその経路を使うことを意味しません。
 
-syslog サービスは、システムロガーにログを管理し送信します。Rsyslog は syslog の高度なバージョンであり、ほとんどの Linux ディストリビューションでこの新しいバージョンが使用されているはずです。syslog サービスが収集するすべてのログの出力は、`/var/log/syslog`（認証メッセージを除くすべてのメッセージ）で見つけることができます。
+## Facility と Severity
 
-システムロガーによって維持されているファイルを確認するには、`/etc/rsyslog.d`内の設定ファイルを見てください。
+syslog メッセージは、発生元の大まかな分類を表す facility と、emergency から debug までの severity を持ちます。代表的な facility には `auth`、`cron`、`daemon`、`kern`、`mail`、`user`、`local0` から `local7` があります。
 
-```plaintext
-pete@icebox:~$ less /etc/rsyslog.d/50-default.conf
-# First some standard log files.  Log by facility.
-#
-auth,authpriv.*                 /var/log/auth.log
-*.*;auth,authpriv.none          -/var/log/syslog
-#cron.*                         /var/log/cron.log
-#daemon.*                       -/var/log/daemon.log
-kern.*                          -/var/log/kern.log
-#lpr.*                          -/var/log/lpr.log
-mail.*                          -/var/log/mail.log
-#user.*                         -/var/log/user.log
+severity には順序があります。従来の selector 構文では、`daemon.warning` は通常 warning だけでなく、それ以上に重大な daemon メッセージすべてに一致します。従来構文に対応する実装では、`daemon.=warning` のように equals modifier を使うと完全一致になります。
+
+:::single-choice{#syslog-warning-selector} 従来の `daemon.warning` という selector は通常何に一致しますか？
+
+::option[テキストに daemon という単語を含むメッセージだけ。]{#syslog-text-daemon explanation="この selector を動かすのは message text の検索ではなく、facility metadata です。"}
+::option[全 facility のすべての debug メッセージ。]{#syslog-all-debug explanation="selector は daemon facility と severity threshold に限定されます。"}
+::option[warning および、それより重大な daemon メッセージ。]{#syslog-warning-or-higher .correct explanation="priority selector は指定 severity と、それより緊急度の高い level を含みます。"}
+:::
+
+## rsyslog のルールを読む
+
+rsyslog は一般に、main file と `/etc/rsyslog.d/` 以下の snippet を読み込みます。従来の rule は selector の後に action が続きます。
+
+```text
+auth,authpriv.*          /var/log/auth.log
+*.*;auth,authpriv.none  -/var/log/syslog
+kern.*                  /var/log/kern.log
 ```
 
-ログファイルに対するこれらのルールは、左側のセレクターと右側のアクションによって示されます。アクションは、ログ情報をどこに送信するか（ファイル、コンソールなど）を教えてくれます。すべてのアプリケーションやサービスがログの管理に rsyslog を使用しているわけではないため、具体的に何がログに記録されているかを知りたい場合は、このディレクトリの中を確認する必要があります。
+最初の行は二つの authentication facility の全 priority を route します。二番目は広くメッセージを選択し、それらの facility を除外します。三番目は kernel facility のメッセージを route します。file action の先頭 `-` は通常 asynchronous write を要求し、除外を意味しません。
 
-実際にロギングがどのように機能するかを見てみましょう。`logger`コマンドを使用して手動でログを送信できます。
+production routing を変える前に、include される全ファイルを確認し、インストール済みバージョンが使う正確な構文を検証してください。
+
+:::single-choice{#syslog-selector-action} 従来の rsyslog rule で action に当たるのはどれですか？
+
+::option[左側の facility と severity の式。]{#syslog-left-selector explanation="その部分はメッセージを選択します。"}
+::option[右側の宛先または操作。]{#syslog-right-action .correct explanation="action は、選択済みレコードを file、remote target などのどの出力へ送るか決めます。"}
+::option[パッケージバージョンを説明するコメント。]{#syslog-comment-version explanation="コメントはメッセージを route しません。"}
+:::
+
+## テストメッセージを送る
+
+`logger` を使い、識別可能な tag と priority を持つ管理されたテストを送ります。
 
 ```bash
-logger -s Hello
+$ logger -p user.notice -t lesson-test 'routing check 2026-08-31T10:00'
 ```
 
-次に`/var/log/syslog`の中を見ると、ログにこのエントリが表示されるはずです。
+次に、想定する宛先を問い合わせます。
 
-## Exercise
+```bash
+$ journalctl -t lesson-test --since '5 minutes ago'
+```
 
-練習あるのみです！Linux ロギングとファイル表示に関する理解を深めるための実践的なラボをいくつかご紹介します。
+forwarding と routing の設定によっては、同じイベントが journal と text file の両方に現れます。`logger -s` はメッセージを標準エラーにもコピーしますが、永続保存の証明にはなりません。
 
-1. **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - システムログや設定ファイルを含むテキストファイルを効率的に表示および移動するための、不可欠な Linux コマンドラインスキルを練習します。
-2. **[Linux tail コマンド：ファイル末尾の表示](https://labex.io/ja/labs/linux-linux-tail-command-file-end-display-214303)** - テキストファイルの末尾を表示および監視するための Linux `tail`コマンドを学習します。これはリアルタイムのログ分析に特に役立ちます。
-3. **[Linux で grep を使用してテキストを検索](https://labex.io/ja/labs/comptia-search-text-with-grep-in-linux-590841)** - ファイル内の特定のテキストパターンを検索する方法を学習します。これは、ログエントリをふるいにかけて重要な情報を見つけるための非常に貴重なスキルです。
+:::single-choice{#syslog-logger-tag} `logger -t lesson-test` は送信メッセージへ何を追加しますか？
 
-これらのラボは、ログ管理とファイル検査の概念を実際のシナリオに適用し、Linux システム管理への自信を築くのに役立ちます。
+::option[古いテストレコードを削除する要求。]{#syslog-tag-delete explanation="このオプションは識別 tag を設定し、retention は管理しません。"}
+::option[`lesson-test` というメッセージ tag。]{#syslog-tag-identifier .correct explanation="固有 tag によって、設定済み宛先内の管理されたイベントを見つけやすくなります。"}
+::option[5 分間の配送遅延。]{#syslog-tag-delay explanation="tag option に配送間隔は含まれません。"}
+:::
 
-## Quiz Question
+## Routing を変更して検証する
 
-メッセージを手動でログに記録するために使用できるコマンドは何ですか？
+変更前に現在の設定を保存し、下流の consumer を特定します。実装の configuration-check mode で構文を検証します。一般的な例は次のとおりです。
 
-## Quiz Answer
+```bash
+$ sudo rsyslogd -N1
+```
 
-logger
+検証後にだけ、service manager からサービスを reload します。新しい tag 付きメッセージを送り、必要な全宛先を確認し、サービス状態と内部エラーログを調べます。構文上有効でも、広すぎる route、レコード重複、機密データ露出を起こす rule はあります。
+
+信頼できないネットワークをログが横断する場合、remote forwarding には認証・暗号化された transport を使います。UDP 配送にはエンドツーエンドの acknowledgement がありません。重要な audit 要件には、queue、loss、integrity、access control、receiver outage を考慮した設計が必要です。
+
+:::single-choice{#syslog-change-verification} 新しい routing rule が機能する十分な証拠はどれですか？
+
+::option[設定ファイルの更新時刻が新しい。]{#syslog-mtime explanation="timestamp から有効な構文や配送は証明できません。"}
+::option[送信側から受信側へ ping が届く。]{#syslog-ping explanation="ネットワーク到達性だけでは、ロギングプロトコルや保存経路を検証できません。"}
+::option[検証に合格し、tag 付きテストが全予定宛先へ届く。]{#syslog-validate-and-test .correct explanation="静的検証と、観測できるエンドツーエンドのイベントの両方が必要です。"}
+:::
+
+## まとめ
+
+これで、メッセージ metadata から設定済み宛先まで、syslog routing をテストできます。
+
+1. facility と順序付き severity level を区別する。
+2. selector と action を分けて読む。
+3. `logger` で tag と priority を持つイベントを送る。
+4. 設定を検証し、配送をエンドツーエンドで確認する。

@@ -1,38 +1,88 @@
 ---
-index: 3
+lesson_id: "dhclient"
+course_id: "network-config"
 lang: "ko"
+order_index: 3
 title: "dhclient"
-meta_title: "dhclient - 네트워크 구성"
-meta_description: "dhclient, DHCP 를 사용하여 IP 주소를 얻는 방법, 네트워크 임대를 관리하는 방법에 대해 알아보세요. dhclient.conf 및 dhclient.leases 파일을 이해합니다. Linux 초보자 가이드."
-meta_keywords: "dhclient, DHCP, Linux 네트워킹, IP 주소, 네트워크 구성, Linux 튜토리얼, 초보자 가이드"
+description: "시스템 네트워크 관리자와 충돌하지 않도록 dhclient를 사용하는 시점과 방법을 알아봅니다."
+meta_title: "dhclient - 네트워크 설정"
+meta_description: "dhclient가 DHCP로 IP 주소를 얻고 네트워크 임대를 관리하는 방법을 알아봅니다. dhclient.conf와 dhclient.leases도 설명합니다."
+meta_keywords: "dhclient, DHCP, 리눅스 네트워킹, IP 주소, 네트워크 설정"
 ---
 
-## Lesson Content
+`dhclient`는 일부 리눅스 시스템에 있는 ISC DHCP 클라이언트입니다. 현재 설치에서는 흔히 NetworkManager, systemd-networkd 또는 다른 서비스가 자체 DHCP 클라이언트를 실행합니다. 관리 중인 인터페이스에서 두 번째 클라이언트를 시작하면 주소, 경로, DNS 설정 및 임대 상태가 서로 경쟁할 수 있습니다.
 
-이전에 DHCP 에 대해 논의했지만, 대부분의 경우 IP 주소, 서브넷 마스크 등을 정적으로 설정할 필요는 없을 것입니다. 대신 DHCP 를 사용하게 될 것입니다! `dhclient`는 부팅 시 시작되어 `dhclient.conf` 파일에서 네트워크 인터페이스 목록을 가져옵니다. 나열된 각 인터페이스에 대해 DHCP 프로토콜을 사용하여 인터페이스를 구성하려고 시도합니다.
+## 활성 클라이언트 식별하기
 
-`dhclient.leases` 파일에서 `dhclient`는 시스템 재부팅 전반에 걸쳐 임대 목록을 추적합니다. `dhclient.conf`를 읽은 후 `dhclient.leases` 파일을 읽어 이미 할당된 임대가 무엇인지 알립니다.
-
-### 새 IP 를 얻으려면
+`dhclient`를 호출하기 전에 설정 소유자와 프로세스를 조사합니다.
 
 ```bash
-sudo dhclient
+$ nmcli device status
+$ networkctl status
+$ ps -ef | grep '[d]hclient'
 ```
 
-## Exercise
+호스트에 존재하는 도구를 사용하십시오. 관리자가 인터페이스를 소유한다면 별도의 클라이언트를 시작하지 말고 그 관리자를 통해 DHCP를 요청합니다.
 
-연습이 완벽을 만듭니다! 다음은 동적 IP 주소 지정 및 네트워크 구성에 대한 이해를 강화하기 위한 실습입니다:
+:::single-choice{#dhclient-second-client-risk} 이미 관리 중인 인터페이스에서 `dhclient`를 시작하면 안 되는 이유는 무엇입니까?
 
-1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 실제 Linux 환경에서 `dhclient`를 사용하여 동적 IP 주소를 얻고 네트워크 구성을 확인하는 연습을 합니다.
-2. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 네트워크 인터페이스를 검사하고 MAC 및 IP 주소를 식별하는 방법을 배웁니다. 이는 DHCP 가 주소를 할당하는 방식을 이해하는 데 필수적입니다.
-3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 네트워크 도달 가능성을 테스트하고 다양한 IP 주소 유형을 탐색하여 네트워크에서 IP 주소가 작동하는 방식에 대한 이해를 높입니다.
+::option[DHCP는 루프백 주소만 할당할 수 있기 때문입니다.]{#dhclient-loopback-only explanation="DHCP는 일반적으로 루프백이 아닌 네트워크 설정을 할당합니다."}
+::option[두 클라이언트가 주소, 경로, DNS 및 임대를 두고 경쟁할 수 있기 때문입니다.]{#dhclient-competing-state .correct explanation="일반적으로 식별된 설정 소유자만 인터페이스를 조정해야 합니다."}
+::option[모든 DHCP 요청이 로컬 디스크를 포맷하기 때문입니다.]{#dhclient-reformats explanation="프로토콜은 디스크 형식이 아니라 네트워크 상태를 바꿉니다."}
+:::
 
-이러한 실습은 실제 시나리오에서 DHCP 및 IP 주소 지정 개념을 적용하고 Linux 에서 네트워크 구성에 대한 자신감을 키우는 데 도움이 될 것입니다.
+## 명시적으로 임대 요청하기
 
-## Quiz Question
+`dhclient`가 의도한 소유자인 관리되지 않는 테스트 인터페이스에서는 인터페이스를 지정하고 상세 출력을 사용합니다.
 
-DHCP 프로토콜로 IP 주소를 할당하려고 시도하는 것은 무엇입니까?
+```bash
+$ sudo dhclient -v enp1s0
+```
 
-## Quiz Answer
+인터페이스 없이 실행하면 여러 적격 인터페이스에 영향을 줄 수 있습니다. 설정 및 임대 경로는 패키지와 호출 방식에 따라 다릅니다. 흔한 이름으로 `dhclient.conf`와 `dhclient.leases`가 있지만 하나의 고정 위치를 가정하지 마십시오.
 
-dhclient
+:::single-choice{#dhclient-interface-operand} 수동 요청에서 `enp1s0`을 지정하는 이유는 무엇입니까?
+
+::option[의도한 네트워크 인터페이스만 대상으로 하기 위해서입니다.]{#dhclient-scope-interface .correct explanation="대상을 지정하지 않은 클라이언트 호출은 의도보다 많은 인터페이스를 고려할 수 있습니다."}
+::option[DHCP에 TCP 포트 1을 선택하기 위해서입니다.]{#dhclient-tcp-port explanation="DHCP는 UDP를 사용하며 인터페이스 이름은 포트가 아닙니다."}
+::option[임대를 영구적으로 만들기 위해서입니다.]{#dhclient-permanent explanation="DHCP 설정은 시간 제한이 있는 임대 상태입니다."}
+:::
+
+## 임대 해제하기
+
+`dhclient -r INTERFACE`는 임대 해제를 요청하며 사용 가능한 설정을 제거할 수 있습니다. 이는 운영에 영향을 주며 서버가 해제 요청을 받는다고 보장하지 않습니다. 특히 원격 관리 경로에서는 임대를 조사하기 위해 해제하지 마십시오.
+
+:::single-choice{#dhclient-release-effect} `dhclient -r enp1s0`의 운영상 위험은 무엇입니까?
+
+::option[변경 없이 현재 임대만 출력합니다.]{#dhclient-release-readonly explanation="해제는 상태를 변경하는 작업입니다."}
+::option[모든 임대를 무제한으로 갱신합니다.]{#dhclient-release-renews explanation="해제와 갱신은 반대 작업입니다."}
+::option[현재 DHCP 연결을 제거할 수 있습니다.]{#dhclient-release-connectivity .correct explanation="임대 해제 과정은 임대 상태를 포기하며 원격 접근을 종료할 수 있습니다."}
+:::
+
+## 적용된 임대 검증하기
+
+통제된 요청 후 주소 이상의 정보를 검증합니다.
+
+```bash
+$ ip address show dev enp1s0
+$ ip route show
+$ resolvectl status
+```
+
+관리자 또는 클라이언트 로그와 임대 수명을 조사한 뒤 의도한 이름 확인과 애플리케이션을 테스트합니다. DHCPACK에 잘못된 옵션이 들어 있을 수 있고 주소 할당 성공이 게이트웨이나 DNS 연결을 입증하지는 않습니다.
+
+:::single-choice{#dhclient-verify-state} 임대를 얻은 뒤 무엇을 검증해야 합니까?
+
+::option[주소, 경로, DNS, 임대 및 애플리케이션 동작입니다.]{#dhclient-complete-verify .correct explanation="임대는 함께 작동해야 하는 여러 관련 구성 요소를 설정합니다."}
+::option[주소 문자열이 나타나는지만 확인합니다.]{#dhclient-address-only explanation="경로, DNS, 수명 및 종단 간 기능은 여전히 잘못될 수 있습니다."}
+::option[바탕 화면 배경만 확인합니다.]{#dhclient-wallpaper explanation="바탕 화면 모양은 DHCP 상태와 관계없습니다."}
+:::
+
+## 요약
+
+이제 `dhclient`가 인터페이스의 의도한 소유자일 때만 사용할 수 있습니다.
+
+1. 활성 네트워크 관리자와 DHCP 클라이언트를 찾습니다.
+2. 하나의 인터페이스에서 클라이언트가 경쟁하지 않게 합니다.
+3. 수동 요청 범위를 이름이 지정된 테스트 인터페이스로 제한합니다.
+4. 해제를 운영에 영향을 주는 작업으로 다루고 전체 임대 결과를 검증합니다.

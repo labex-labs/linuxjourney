@@ -1,53 +1,96 @@
 ---
-index: 1
+lesson_id: "system-logging"
+course_id: "logging"
 lang: "de"
+order_index: 1
 title: "Systemprotokollierung"
-meta_title: "Systemprotokollierung - Logging"
-meta_description: "Entdecken Sie den besten Weg, Linux zu lernen, indem Sie die Systemprotokollierung verstehen. Dieser Leitfaden behandelt Syslog, Rsyslogd und wie man Protokolldateien in /var/log findet und liest. Ein wichtiger Teil jedes kostenlosen Online-Linux-Kurses."
-meta_keywords: "linux lernen, bester weg linux zu lernen, linux systemprotokollierung, syslog, rsyslogd, var log, systemprotokolle, linux kommandozeile lernen, beste ressourcen um linux zu lernen"
+description: "Lerne, wie Linux-Protokollquellen, Datensammler, Speicher und Anzeigewerkzeuge zusammenwirken."
+meta_title: "Systemprotokollierung – Protokollierung"
+meta_description: "Lerne die Linux-Systemprotokollierung kennen. Diese Anleitung behandelt syslog, rsyslogd sowie das Auffinden und Lesen von Protokolldateien unter /var/log."
+meta_keywords: "Linux lernen, Linux-Systemprotokollierung, syslog, rsyslogd, var log, Systemprotokolle, Linux-Befehlszeile lernen, Linux-Ressourcen"
 ---
 
-## Lesson Content
+Protokolle zeichnen Ereignisse auf, die vom Kernel, von Diensten, Anwendungen und Sicherheitskomponenten ausgegeben werden. Sie unterstützen Fehlersuche und Audits, aber nur, wenn die Erfassung funktioniert, Zeitstempel richtig verstanden werden und die betreffende Quelle einbezogen ist.
 
-Das Verständnis der Systemprotokollierung ist ein grundlegender Teil beim Erlernen von **how to learn Linux**. Die Dienste, der Kernel und die Daemons auf Ihrem System sind ständig aktiv. Diese Aktivität wird aufgezeichnet und auf Ihrem System in Dateien, den sogenannten Logs, gespeichert, wodurch ein für Menschen lesbares Protokoll aller wichtigen Systemereignisse entsteht.
+## Den Weg einer Protokollnachricht verfolgen
 
-### Was sind Systemprotokolle (System Logs)
+Ein Protokollierungsweg besteht aus mehreren unterschiedlichen Teilen:
 
-Systemprotokolle sind unerlässlich für die Überwachung des Systemzustands, die Fehlerbehebung und die Sicherheitsüberprüfung. Diese Daten werden typischerweise im Verzeichnis `/var` gespeichert, das für variable Daten wie Protokolle vorgesehen ist. Die Untersuchung dieser Dateien ist ein entscheidender Schritt für jeden, der nach dem **best way to learn Linux command line** sucht.
+1. Eine Quelle gibt ein Ereignis aus.
+2. Ein Datensammler nimmt es an und reichert es an.
+3. Weiterleitungs- und Aufbewahrungsregeln wählen Speicher- oder Weiterleitungsziele aus.
+4. Ein Anzeigewerkzeug fragt die gespeicherten Datensätze ab.
 
-### Die Rolle von Syslog und Rsyslogd
+Auf einem systemd-Host sammelt `systemd-journald` gewöhnlich die Standardausgabe von Diensten, Kernelmeldungen sowie native Journal- oder Syslog-Nachrichten. Ein Syslog-Daemon wie rsyslog kann ebenfalls Nachrichten empfangen und herkömmliche Textdateien schreiben oder sie weiterleiten. Anwendungen können stattdessen eigene Dateien oder externe Telemetrie verwalten.
 
-Aber wie werden diese Nachrichten gesammelt? Ein Kerndienst namens `syslog` ist dafür verantwortlich, diese Informationen zu sammeln und an den Systemlogger weiterzuleiten.
+:::single-choice{#system-logging-distinct-roles} Welche Komponente entscheidet, wo angenommene Nachrichten gespeichert oder wohin sie weitergeleitet werden?
 
-Das `syslog`-Protokoll umfasst mehrere Komponenten. Eine der wichtigsten ist ein Daemon namens `syslogd` (oder `rsyslogd` auf den meisten modernen Linux-Distributionen). Dieser Daemon läuft im Hintergrund und wartet auf Ereignisnachrichten. Er filtert diese Nachrichten und leitet sie basierend auf seiner Konfiguration entweder an eine Datei weiter, zeigt sie auf der Konsole an oder verwirft sie. Die Beherrschung dieser Konzepte ist Teil des **best way to learn Linux**.
+::option[Das aktuelle Arbeitsverzeichnis des Terminals.]{#system-logging-cwd explanation="Ein Shellverzeichnis definiert keine systemweiten Protokollierungswege."}
+::option[Der Dateiname des laufenden Kernelabbilds.]{#system-logging-kernel-file explanation="Der Kernel kann Nachrichten ausgeben, doch der Dateiname seines Abbilds ist keine Weiterleitungsrichtlinie."}
+::option[Die Konfiguration für Weiterleitung und Aufbewahrung.]{#system-logging-routing .correct explanation="Regeln zwischen Erfassung und Speicherung bestimmen Ziele und Aufbewahrungsverhalten."}
+:::
 
-### Lokalisieren und Lesen von Protokolldateien
+## Verfügbare Protokolle ermitteln
 
-Obwohl der Systemlogger einen zentralisierten Mechanismus bietet, ist er nicht die einzige Quelle für Protokolle. Viele Anwendungen implementieren ihre eigenen Protokollierungsregeln und generieren separate Protokolldateien. Ein typischer Protokolleintrag enthält jedoch im Allgemeinen einen Zeitstempel, den Hostnamen, den Prozess, der die Nachricht generiert hat, und die Ereignisdetails.
+Nimm nicht an, dass jeder Host dieselben Dateien besitzt. Untersuche die aktiven Protokollierungsdienste und die lokale Konfiguration:
 
-Hier ist ein Beispiel für eine Zeile aus einer typischen syslog-Datei:
+```bash
+$ systemctl --type=service --state=running | grep -E 'journal|syslog'
+$ ls -la /var/log
+$ journalctl --disk-usage
+```
 
-```plaintext
-pete@icebox:~$ less /var/log/syslog
+`/var/log/syslog` ist auf Systemen der Debian-Familie mit entsprechender Weiterleitung verbreitet, während andernorts häufig `/var/log/messages` verwendet wird. Auf einem reinen Journal-Host kann jede dieser Dateien fehlen. Die Anwendungsdokumentation und Unit-Konfiguration können weitere Ziele erkennen lassen.
+
+:::single-choice{#system-logging-file-absence} Was bedeutet eine fehlende Datei `/var/log/syslog` zwingend?
+
+::option[Der Host verwendet möglicherweise ein anderes konfiguriertes Protokollierungsziel.]{#system-logging-other-destination .correct explanation="Reine Journal-Systeme und andere Syslog-Richtlinien müssen diese Datei nicht erstellen."}
+::option[Der Kernel hat noch nie eine Nachricht erzeugt.]{#system-logging-no-kernel explanation="Kernelaufzeichnungen können im Journal oder an einem anderen Ziel vorhanden sein."}
+::option[Jede Anwendung wurde beendet.]{#system-logging-apps-stopped explanation="Der Anwendungszustand lässt sich aus einem einzigen fehlenden Pfad nicht ableiten."}
+:::
+
+## Das Journal abfragen
+
+Beginne mit einer begrenzten Abfrage, statt das gesamte Journal auszugeben:
+
+```bash
+$ journalctl -b -p warning
+$ journalctl -u ssh.service --since '1 hour ago'
+```
+
+`-b` wählt den aktuellen Bootvorgang aus, `-p` filtert nach Priorität und `-u` nach einer Unit. Unit-Namen und aufbewahrte Bootvorgänge unterscheiden sich je nach Host. Verwende `journalctl --list-boots`, um verfügbare Bootvorgänge zu sehen, und `journalctl -f`, um neue Datensätze während der Reproduktion eines Problems zu verfolgen.
+
+:::single-choice{#system-logging-current-boot} Welche Option beschränkt eine `journalctl`-Abfrage auf den aktuellen Bootvorgang?
+
+::option[`-b`]{#system-logging-boot-option .correct explanation="Ohne Argument wählt der Bootselektor den aktuellen Bootvorgang aus."}
+::option[`-u`]{#system-logging-unit-option explanation="Dies filtert nach einer systemd-Unit."}
+::option[`-f`]{#system-logging-follow-option explanation="Dies verfolgt neu angehängte Datensätze."}
+:::
+
+## Datensätze im Zusammenhang lesen
+
+Eine herkömmliche Zeile im Syslog-Stil kann so aussehen:
+
+```text
 Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 ```
 
-Dieser Eintrag zeigt, dass am 27. Januar um 07:41:32 der Dienst `anacron` auf dem Host `icebox` den Job `cron.weekly` gestartet hat. Sie können die vom Systemlogger gesammelten Ereignisnachrichten anzeigen, indem Sie Dateien wie `/var/log/syslog` oder `/var/log/messages` untersuchen.
+Sie enthält einen Zeitstempel, Host, Programm und PID sowie anschließend eine Nachricht. Behandle den Nachrichtentext als Anwendungsausgabe und nicht als garantiert strukturierte Tatsache. Prüfe Zeitzone, Uhrsynchronisierung, Boot-ID, Wiederverwendung von PIDs und Datensätze unmittelbar vor und nach dem Ereignis. Journalfelder können stärkere Kennungen liefern als nur der dargestellte Text.
 
-## Exercise
+Protokolle können Benutzernamen, Adressen, Pfade, Token oder andere vertrauliche Daten enthalten. Verwende Zugriff mit geringstmöglichen Berechtigungen, schwärze Exporte und bewahre während einer Untersuchung Originale und Zeitstempel.
 
-Übung ist unerlässlich für die Beherrschung. Die folgenden praktischen Labs sind einige der **best resources to learn Linux** für die Verwaltung von Protokolldateien und das Anzeigen von Dateien.
+:::single-choice{#system-logging-export-safety} Was solltest du tun, bevor du einen Protokollauszug extern weitergibst?
 
-1. **[Viewing Log and Configuration Files in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Lernen Sie wesentliche Linux-Kommandozeilenfähigkeiten zum effizienten Anzeigen und Navigieren in Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien. Üben Sie die Verwendung von Befehlen wie `cat`, `more` und `less`, um kritische Informationen aus verschiedenen Dateitypen zu extrahieren.
-2. **[Linux tail Command: File End Display](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** - Lernen Sie den Linux-Befehl `tail` zum Anzeigen und Überwachen des Endes von Textdateien kennen. Dies ist besonders nützlich für die Echtzeit-Protokollanalyse.
-3. **[Search Text with grep in Linux](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - In diesem Lab lernen Sie, mit dem Befehl `grep` nach Text in Dateien auf einem Linux-System zu suchen. Dies ist von unschätzbarem Wert, um bestimmte Einträge in großen Protokolldateien zu finden.
+::option[Jeden Zeitstempel durch einen Zufallswert ersetzen.]{#system-logging-random-time explanation="Das Zerstören von Zeitangaben kann Korrelationen verhindern und ist keine geeignete Schwärzungsmethode."}
+::option[Ihn auf Geheimnisse und vertrauliche Kennungen prüfen.]{#system-logging-review-sensitive .correct explanation="Protokolle enthalten häufig Betriebs- oder personenbezogene Daten, die kontrolliert geschwärzt werden müssen."}
+::option[Das ursprüngliche Protokoll für jeden schreibbar machen.]{#system-logging-world-writable explanation="Schwächere Zugriffskontrollen können die Integrität beeinträchtigen und weitere Daten offenlegen."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte der Protokolldateiverwaltung und -analyse in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemüberwachung aufzubauen.
+## Zusammenfassung
 
-## Quiz Question
+Du kannst Linux-Protokolle nun auffinden und abfragen, ohne einen allgemeingültigen Speicherpfad anzunehmen.
 
-What is the daemon that manages logs on newer Linux systems? (Please answer in English, paying attention to case sensitivity).
-
-## Quiz Answer
-
-rsyslogd
+1. Trenne Ereignisquellen, Datensammler, Weiterleitung, Speicher und Anzeigewerkzeuge.
+2. Ermittle die aktive Protokollierungskonfiguration des Hosts.
+3. Verwende begrenzte Journalabfragen für eine Unit, einen Bootvorgang, Zeitraum oder eine Priorität.
+4. Setze Datensätze in Zusammenhang und schütze vertrauliche Protokolldaten.

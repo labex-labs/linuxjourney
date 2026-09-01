@@ -1,32 +1,38 @@
 ---
-index: 17
+lesson_id: "whatis-command"
+course_id: "command-line"
 lang: "ja"
+order_index: 17
 title: "whatis コマンド"
+description: "簡潔なマニュアルページの説明を取得し、そのセクション番号を解釈する方法を学びます。"
 meta_title: "whatis - コマンドライン"
 meta_description: "Linuxのwhatisコマンドを学び、manページから一行のコマンド説明を取得し、複数のマニュアルセクションを理解する方法を例とともに解説します。"
 meta_keywords: "whatis コマンド, linux whatis, コマンド説明 linux, manページ概要, コマンドラインヘルプ, apropos"
 ---
 
-## Lesson Content
+コマンド名は覚えていても用途を忘れた場合、`whatis` はマニュアルページのデータベースから短い説明を表示します。
 
-Linuxのコマンドラインを探索していると、膨大な数のコマンドに出会います。特定のコマンドが何をするのか忘れてしまうのは自然なことです。幸いにも、それを助けてくれるシンプルなユーティリティがあります。
+## 正確な名前を検索する
 
-### whatis コマンドとは
-
-`whatis` コマンドは、コマンドのマニュアルページから直接、一行の簡潔な説明を表示します。マニュアル全体を読むことなく、コマンドの主な機能を素早く思い出すための方法です。
-
-### whatis コマンドの使い方
-
-`whatis` の使い方は簡単です。`whatis` に続けて知りたいコマンド名を入力します。
+`whatis` に 1 つ以上の正確なトピック名を渡します。各結果は、インストール済みマニュアルページに記録された `NAME` セクションから得られます。
 
 ```bash
 $ whatis cat
 cat (1)              - concatenate files and print on the standard output
 ```
 
-### 出力の理解
+出力は説明であり、コマンドオプションや使用例の一覧ではありません。詳しい情報が必要な場合は `man cat` または `cat --help` を使います。
 
-`whatis` が提供する説明は、コマンドのマニュアルページの `NAME` セクションから取得されます。もし同じ名前のマニュアルページが複数のセクションに存在する場合、`whatis` は複数行表示することがあります。
+:::single-choice{#describe-known-command} `cat` という名前を知っており、マニュアルページの 1 行説明を見たい場合、どのコマンドを実行しますか？
+
+::option[`man cat`]{#manual-cat explanation="`man cat` は完全なマニュアルページを開き、要求された 1 行の説明より多くの情報を提供します。"}
+::option[`apropos cat`]{#apropos-cat explanation="`apropos` は説明をキーワード検索し、多数の関連トピックを返すことがあります。正確な名前の検索より範囲が広い操作です。"}
+::option[`whatis cat`]{#whatis-cat .correct explanation="`whatis` は正確なトピック名を検索し、マニュアルデータベースから簡潔な説明を表示します。"}
+:::
+
+## セクション番号を読む
+
+同じトピックに複数セクションのマニュアルページがある場合、`whatis` は複数の結果を表示できます。
 
 ```bash
 $ whatis passwd
@@ -34,44 +40,52 @@ passwd (1)           - change user password
 passwd (5)           - the password file
 ```
 
-括弧内の数字はマニュアルページのセクション番号です。
+括弧内の番号がマニュアルセクションです。`passwd(1)` はユーザーコマンド、`passwd(5)` はファイル形式を説明します。`man 1 passwd` または `man 5 passwd` で明示的に開けます。
 
-### whatis と man と apropos の違い
+:::single-choice{#interpret-whatis-section} 出力 `passwd (5) - the password file` で、`(5)` は何を識別しますか？
 
-- `whatis ls`: 正確なコマンド名の一行説明を表示します。
-- `man ls`: 完全なマニュアルページを開きます。
-- `apropos keyword`: キーワードでマニュアルページの説明を検索します。
+::option[`passwd` コマンドが受け付ける 5 番目のオプション。]{#fifth-option explanation="番号はオプションの位置ではありません。オプションは選択したマニュアルページ内で説明されます。"}
+::option[ファイル形式ページを含むマニュアルセクション。]{#section-five .correct explanation="セクション 5 はファイル形式と慣例に使われるため、`passwd(5)` はそのマニュアルセクションを指します。"}
+::option[`passwd` という名前を共有する 5 つのマニュアルページ。]{#five-pages explanation="複数の結果が存在することはありますが、括弧内の値はページ数ではなく 1 つのセクションを識別します。"}
+:::
 
-例えば：
+## `whatis`、`man`、`apropos` を使い分ける
+
+- `whatis NAME`：正確なマニュアルトピック名の簡潔な説明を表示する
+- `man NAME`：完全なマニュアルページを開く
+- `apropos KEYWORD`：マニュアルページの名前と説明からキーワードを検索する
+
+例を示します。
 
 ```bash
 $ apropos password
 ```
 
-コマンド名は覚えているが、何をするか忘れたときに `whatis` を使いましょう。
+作業内容は分かるもののコマンド名が分からない場合は `apropos`、名前を知っている場合は `whatis` を使います。
 
-### よくある質問
+:::single-choice{#search-by-purpose} コマンド名は分かりませんが、マニュアルの説明からキーワード `password` を検索したい場合、どのコマンドが適していますか？
 
-**なぜ whatis は「nothing appropriate」と表示するのですか？** コマンドのマニュアルページがインストールされていないか、manデータベースの更新が必要な場合があります。
+::option[`apropos password`]{#apropos-password .correct explanation="`apropos` はマニュアルページの名前と説明からキーワードを検索し、関連トピックを見つける助けになります。"}
+::option[`whatis password`]{#exact-password explanation="`whatis` は `password` という正確なマニュアルトピックを探し、一般的なキーワード検索は行いません。"}
+::option[`man password`]{#manual-password explanation="`man` はそのトピック名のページを開こうとし、要求された説明検索は行いません。"}
+:::
 
-**whatis はコマンドのオプションを表示しますか？** いいえ。オプションは `man COMMAND` または `COMMAND --help` を使って確認してください。
+## 説明が表示されない場合
 
-**whatis は which と同じですか？** いいえ。`whatis` はコマンドの説明を表示し、`which` は実行ファイルのパスを表示します。
+`whatis` が該当なしと報告する場合、トピックにインストール済みマニュアルページがないか、マニュアルデータベースが古い可能性があります。その名前の実行可能ファイル、エイリアス、関数、組み込みコマンドが存在しない証明にはなりません。`type NAME` で Bash がコマンド名をどう解決するか調べ、適切なヘルプ情報源を選んでください。
 
-## Exercise
+:::single-choice{#whatis-versus-type} `whatis deploy` でマニュアルの説明が見つかりません。Bash が `deploy` をエイリアス、関数、組み込みコマンド、実行可能ファイルのどれとして解決するか確認するコマンドはどれですか？
 
-練習は上達の鍵です！`whatis` コマンド専用のラボはありませんが、コマンドやファイルの情報を見つける方法を理解することは非常に重要です。Linuxでコマンドやファイルを見つける理解を深めるための実践的なラボをいくつか紹介します：
+::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="マニュアルデータベースへの問い合わせ方法を変えても、Bash の全エイリアス、関数、組み込みコマンド、パス解決は表示しません。"}
+::option[`man 5 deploy`]{#manual-five-deploy explanation="これはセクション 5 のページを開こうとし、Bash がコマンド名をどう解決するかは判断しません。"}
+::option[`type deploy`]{#resolve-deploy .correct explanation="Bash の `type` は、マニュアル説明の有無にかかわらず、現在のシェルがコマンド名をどう解決するか報告します。"}
+:::
 
-1. **[Linux which コマンド: コマンドの場所特定](https://labex.io/ja/labs/linux-linux-which-command-command-locating-215210)** - `which` コマンドを使って実行ファイルの場所を特定し、システムのPATHにおけるコマンドの優先順位を理解しましょう。
-2. **[Linux whereis コマンド: ファイルとコマンドの検索](https://labex.io/ja/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - `whereis` を使ってコマンドのバイナリ、ソース、マニュアルページを見つけ、コマンドの構造を深く理解しましょう。
-3. **[重要なシステムリソースの発見](https://labex.io/ja/labs/linux-discover-critical-system-resources-388032)** - `which`、`whereis`、`find` を組み合わせてファイルシステムを効率的にナビゲートし、重要なシステムリソースを見つけるチャレンジです。
+## まとめ
 
-これらのラボは、実際のシナリオでコマンドやファイルの発見の概念を応用し、Linuxの基本的なユーティリティに自信を持つのに役立ちます。
+これでマニュアルデータベースから簡潔な説明を取得し、解釈できるようになりました。
 
-## Quiz Question
-
-コマンドの簡単な説明を表示するために使うコマンドは何ですか？小文字に注意して英語で答えてください。
-
-## Quiz Answer
-
-whatis
+1. `whatis` で正確なトピックを検索する。
+2. 括弧内に示されるマニュアルセクションを読む。
+3. 完全なページが必要なら `man` を使う。
+4. 名前ではなくキーワードを知っている場合は `apropos` を使う。

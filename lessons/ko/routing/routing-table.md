@@ -1,68 +1,100 @@
 ---
-index: 2
+lesson_id: "routing-table"
+course_id: "routing"
 lang: "ko"
+order_index: 2
 title: "라우팅 테이블"
+description: "리눅스 경로를 읽고 목적지에 대해 선택된 경로를 조사하는 방법을 알아봅니다."
 meta_title: "라우팅 테이블 - 라우팅"
-meta_description: "리눅스 라우팅 테이블 이해 가이드. 목적지, 게이트웨이, genmask, eth0 인터페이스를 포함하여 route 명령어 출력 해석 방법을 배웁니다. 리눅스 라우팅 테이블의 기본을 마스터하세요."
-meta_keywords: "리눅스 라우팅 테이블, 리눅스 경로 테이블, genmask, eth0, route 명령어, 네트워크 라우팅, IP 라우팅, 목적지, 게이트웨이, 서브넷 마스크, 리눅스 네트워킹"
+meta_description: "리눅스 라우팅 테이블을 이해하는 방법을 알아봅니다. 목적지, 게이트웨이, 인터페이스 및 현대적인 ip route 출력을 설명합니다."
+meta_keywords: "리눅스 라우팅 테이블, 리눅스 경로, route 명령, 네트워크 라우팅, IP 라우팅, 목적지, 게이트웨이"
 ---
 
-## Lesson Content
+리눅스 라우팅 상태는 IP 목적지에 사용할 수 있는 다음 홉, 인터페이스 및 출발지를 결정합니다. 기존 `route -n` 보기도 여전히 접하지만 `ip route`가 현대적인 커널 라우팅 개념을 더 직접적으로 보여 줍니다.
 
-리눅스 **라우팅 테이블**은 네트워크 패킷을 보낼 위치를 결정하는 규칙을 담고 있습니다. 시스템이 IP 주소로 패킷을 보낼 때마다 이 테이블을 참조하여 적절한 경로를 찾습니다. 시스템의 **리눅스 라우팅 테이블**을 보려면 `route` 명령어를 사용할 수 있습니다.
+## IPv4 경로 읽기
 
-```plaintext
-pete@icebox:~$ sudo route -n
-커널 IP 라우팅 테이블
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         192.168.224.2   0.0.0.0         UG    0      0        0 eth0
-192.168.224.0   0.0.0.0         255.255.255.0   U     1      0        0 eth0
+예제 출력은 다음과 같습니다.
+
+```text
+$ ip -4 route show
+default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
+192.168.224.0/24 dev eth0 proto kernel scope link src 192.168.224.10 metric 100
 ```
 
-### 열 이해하기
+연결된 `/24` 경로는 일치하는 목적지를 `eth0`을 통해 직접 보냅니다. 기본 경로는 다음 홉 게이트웨이 `192.168.224.2`를 사용합니다. `proto`는 경로가 설치된 방식을, `src`는 일치하는 트래픽의 선호 출발지를 나타내며, 메트릭은 그 밖의 조건이 비슷한 경로의 순위를 정하는 데 도움이 됩니다.
 
-`route` 명령의 출력은 여러 열로 구성되어 있으며, 각 열은 네트워크 경로에 대한 특정 정보를 제공합니다.
+:::single-choice{#routing-table-via-meaning} `via 192.168.224.2`는 무엇을 나타냅니까?
 
-### Destination (목적지)
+::option[경로를 사용할 수 있는 유일한 애플리케이션입니다.]{#routing-table-application explanation="애플리케이션 권한 부여는 via 키워드에 인코딩되지 않습니다."}
+::option[경로의 다음 홉 게이트웨이입니다.]{#routing-table-next-hop .correct explanation="패킷의 IP 목적지는 유지하면서 링크상 라우터를 목적지로 프레임을 만듭니다."}
+::option[경로의 파일시스템 마운트 지점입니다.]{#routing-table-mount explanation="라우팅 항목은 파일시스템이 아니라 네트워크 전달과 관련됩니다."}
+:::
 
-Destination 열은 네트워크 또는 호스트를 지정합니다. `192.168.224.0` 항목은 해당 특정 네트워크를 대상으로 하는 모든 패킷을 지시합니다. 패킷의 목적지가 이 네트워크 내에 있는 경우 (예: 192.168.224.5 에서 192.168.224.7 로), `eth0`과 같은 지정된 인터페이스를 통해 직접 전송됩니다.
+## 연결 경로와 기본 경로
 
-목적지 `0.0.0.0`은 기본 경로 (default route) 입니다. 라우팅 테이블에 패킷 목적지에 대한 더 구체적인 항목이 없으면 이 경로를 사용합니다.
+`scope link`이고 `via` 다음 홉이 없는 경로는 해당 접두사를 인터페이스에서 직접 연결 가능한 것으로 취급합니다. 기본 경로는 모든 주소와 일치하지만 더 구체적인 적격 경로가 있으면 선택되지 않습니다.
 
-### Gateway (게이트웨이)
+:::single-choice{#routing-table-connected-route} 연결된 `scope link` 목적지에는 일반적으로 어떻게 도달합니까?
 
-Gateway 열은 패킷이 전송되는 라우터를 보여줍니다. 패킷이 동일한 로컬 네트워크에 있지 않으면 이 게이트웨이 주소로 전달됩니다. 기본 경로의 경우, 이는 로컬 네트워크를 인터넷과 같은 다른 네트워크에 연결하는 라우터의 IP 주소입니다.
+::option[연결 경로가 일치해도 기본 게이트웨이를 통합니다.]{#routing-table-connected-default explanation="연결된 접두사가 더 구체적이며 게이트웨이 피연산자가 없습니다."}
+::option[목적지를 DNS 서버로 변환합니다.]{#routing-table-connected-dns explanation="이름 서비스는 이미 선택된 IP 경로의 일부가 아닙니다."}
+::option[이웃 확인 후 지정된 인터페이스를 통해 직접 도달합니다.]{#routing-table-direct .correct explanation="호스트가 목적지의 링크상 주소를 확인하고 로컬에서 프레임을 만듭니다."}
+:::
 
-### Genmask (생성 마스크)
+## 접두사 길이와 메트릭
 
-`genmask`, 즉 생성 마스크는 목적지 네트워크의 서브넷 마스크입니다. 패킷이 해당 네트워크에 속하는지 확인하기 위해 목적지 IP 와 함께 사용됩니다. 예를 들어, `genmask`가 `255.255.255.0`이면 IP 주소의 처음 세 옥텟이 목적지의 처음 세 옥텟과 일치해야 합니다.
+경로 선택은 정책 규칙을 고려하고 가장 긴 적격 접두사를 선택합니다. 메트릭은 적절하게 비교할 수 있는 경로 집합 안에서 순위를 정합니다. 숫자가 더 낮다는 이유만으로 낮은 메트릭의 기본 경로가 일치하는 `/24`보다 우선하지 않습니다.
 
-### Flags (플래그)
+:::single-choice{#routing-table-prefix-before-default} `192.168.224.50`에 일반적으로 더 구체적으로 일치하는 경로는 무엇입니까?
 
-이 플래그들은 경로에 대한 추가 정보를 제공합니다:
+::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="24비트 일치 접두사가 나열된 경로 중 가장 깁니다."}
+::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="기본 경로의 접두사 길이는 0입니다."}
+::option[`192.168.0.0/16 via 192.168.224.3`]{#routing-table-sixteen explanation="주소를 포함하지만 /24보다 적은 비트를 고정합니다."}
+:::
 
-- **U**: 경로가 활성화되어 있음을 나타냅니다.
-- **G**: 경로가 게이트웨이 (라우터) 를 가리킴을 의미합니다.
-- **UG**: 경로가 활성화되어 있고 게이트웨이를 가리킨다는 의미입니다.
+## 정책 규칙과 여러 테이블
 
-### Iface (인터페이스)
+리눅스는 출발지, 마크, 인터페이스 또는 다른 선택자를 기반으로 하는 `ip rule` 정책에 따라 여러 라우팅 테이블을 조회할 수 있습니다. 따라서 주 테이블만 보면 실제 경로를 놓칠 수 있습니다.
 
-이 열은 해당 경로의 패킷이 전송될 네트워크 인터페이스 (예: `eth0`) 를 나타냅니다. `eth0`은 일반적으로 시스템의 첫 번째 이더넷 어댑터를 나타냅니다.
+```bash
+$ ip rule show
+$ ip route show table all
+```
 
-## Exercise
+네트워크 네임스페이스와 VRF도 별도의 상태를 가질 수 있습니다. 영향을 받는 프로세스와 같은 컨텍스트에서 조사하십시오.
 
-연습이 완벽을 만듭니다! 네트워크 라우팅 및 IP 주소 지정에 대한 이해를 강화하기 위한 실습 랩이 있습니다:
+:::single-choice{#routing-table-policy-limit} `ip route show`만으로 애플리케이션 경로를 설명하지 못할 수 있는 이유는 무엇입니까?
 
-1. **[리눅스에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 라우팅 테이블의 주요 구성 요소인 IP 주소 및 네트워크 인터페이스를 포함한 네트워크 주소 정보를 식별하는 연습을 합니다.
-2. **[리눅스에서 IP 주소 관리하기](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - IP 주소 관리, 정적 IP 구성, 기본 게이트웨이 설정 및 네트워크 구성을 확인하는 방법을 학습하며, 이는 라우팅 테이블에서 발견되는 항목과 직접적으로 관련됩니다.
-3. **[리눅스에서 IP 주소 유형 및 도달 가능성 탐색하기](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 IP 주소 지정 및 네트워크 도달 가능성을 탐색하며, 다양한 IP 유형이 상호 작용하는 방식과 네트워크 도달 가능성이 결정되는 방식 (이는 라우팅 결정에 반영됨) 을 이해하는 데 도움이 됩니다.
+::option[정책 규칙이나 다른 네트워크 네임스페이스가 다른 라우팅 상태를 선택할 수 있습니다.]{#routing-table-policy-context .correct explanation="실제 조회는 패킷 속성과 프로세스의 네트워크 컨텍스트에 따라 달라집니다."}
+::option[리눅스 라우팅 테이블에 목적지 접두사가 없습니다.]{#routing-table-no-prefixes explanation="목적지 접두사는 기본 경로 키입니다."}
+::option[애플리케이션은 IP 패킷을 절대 보내지 않습니다.]{#routing-table-apps-never explanation="애플리케이션 트래픽은 네트워크 및 전송 프로토콜로 운반됩니다."}
+:::
 
-이 랩들은 실제 시나리오에서 개념을 적용하고 네트워크 구성 및 문제 해결에 대한 자신감을 키우는 데 도움이 될 것입니다.
+## 실제 경로 조회하기
 
-## Quiz Question
+커널에 목적지와 선택적인 출발지를 평가하도록 요청합니다.
 
-라우팅 테이블에서 목적지를 찾을 수 없는 경우 패킷은 어디로 전송됩니까? 대소문자를 구분하여 단일 영어 단어로 답하십시오.
+```bash
+$ ip route get 203.0.113.10
+$ ip route get 203.0.113.10 from 192.168.224.10
+```
 
-## Quiz Answer
+결과는 그 순간의 로컬 조회를 예측합니다. 프로브를 보내지 않으며 이웃, 하위 경로, 방화벽 또는 애플리케이션 연결 가능성을 입증하지 않습니다.
 
-Gateway
+:::single-choice{#routing-table-route-get-limit} `ip route get`이 하지 않는 일은 무엇입니까?
+
+::option[선택한 로컬 인터페이스와 다음 홉을 표시합니다.]{#routing-table-get-does-interface explanation="조회 결과의 주요 필드입니다."}
+::option[목적지에 대한 현재 로컬 경로 정책을 평가합니다.]{#routing-table-get-does-policy explanation="이 명령은 커널 경로 조회를 수행합니다."}
+::option[모든 하위 홉을 통한 성공적인 전송을 입증합니다.]{#routing-table-get-not-probe .correct explanation="종단 간 네트워크 프로브가 아니라 로컬 결정 쿼리입니다."}
+:::
+
+## 요약
+
+이제 리눅스 라우팅 항목을 읽고 실제 로컬 결정을 조회할 수 있습니다.
+
+1. 연결 경로와 게이트웨이를 통한 경로를 구분합니다.
+2. 접두사, 인터페이스, 프로토콜, 출발지 및 메트릭 필드를 읽습니다.
+3. 관련 메트릭을 비교하기 전에 최장 접두사 일치를 적용합니다.
+4. 정책 테이블, 네임스페이스 및 VRF를 고려합니다.
+5. `ip route get`을 연결 테스트가 아니라 조회로 다룹니다.

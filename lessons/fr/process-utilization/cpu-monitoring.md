@@ -1,58 +1,91 @@
 ---
-index: 4
+lesson_id: "cpu-monitoring"
+course_id: "process-utilization"
 lang: "fr"
-title: "Surveillance du CPU"
-meta_title: "Surveillance du CPU - Utilisation des processus"
-meta_description: "Apprenez les bases de la surveillance du CPU sous Linux avec la commande uptime. Ce guide pour débutants explique comment interpréter la charge moyenne, comprendre l'utilisation des processus et évaluer les performances du système."
-meta_keywords: "commande uptime, surveillance CPU Linux, charge moyenne, performance système, utilisation des processus, tutoriel Linux, guide débutant"
+order_index: 4
+title: "Surveillance du processeur"
+description: "Découvrez comment interpréter les charges moyennes Linux avec le nombre de processeurs, leur utilisation et l’état des tâches."
+meta_title: "Surveillance du processeur - Utilisation des processus"
+meta_description: "Découvrez les bases de la surveillance du processeur sous Linux avec uptime, l’interprétation de la charge moyenne et l’évaluation des performances."
+meta_keywords: "commande uptime, surveillance processeur Linux, charge moyenne, performances système, utilisation processus, tutoriel Linux, guide débutant"
 ---
 
-## Lesson Content
+Le diagnostic du processeur commence par la distinction entre la charge, l’utilisation et la réactivité. Aucune valeur isolée ne démontre un goulot d’étranglement ; comparez plusieurs fenêtres temporelles et reliez les mesures de l’hôte à la charge de travail réellement ressentie par les utilisateurs.
 
-Une compétence fondamentale dans la gestion d'un système Linux est la compréhension de ses performances. L'une des commandes les plus utiles pour un contrôle rapide de l'état est **uptime**.
+## Lire uptime
 
+`uptime` fournit un point de départ compact :
+
+```text
+$ uptime
+ 17:23:35 up 1 day, 5:59, 2 users, load average: 0.00, 0.02, 0.05
 ```
-pete@icebox:~$ uptime
- 17:23:35 up 1 day,  5:59,  2 users,  load average: 0.00, 0.02, 0.05
+
+Les trois dernières valeurs sont les charges moyennes sur environ 1, 5 et 15 minutes. Leur comparaison indique la tendance : une valeur sur 1 minute nettement supérieure peut signaler une charge croissante, tandis qu’une valeur sur 15 minutes plus élevée peut indiquer une charge en baisse.
+
+:::single-choice{#cpu-uptime-windows} Dans quel ordre `uptime` affiche-t-il les fenêtres de charge moyenne ?
+
+::option[15, 5 et 1 secondes.]{#cpu-windows-seconds explanation="Ces valeurs sont des moyennes à l’échelle de la minute et ne sont pas affichées de la plus longue à la plus courte."}
+::option[1, 5 et 15 minutes.]{#cpu-windows-one-five-fifteen .correct explanation="La fenêtre récente la plus courte apparaît en premier et la plus longue en dernier."}
+::option[Pourcentages actuel, minimal et maximal du processeur.]{#cpu-windows-percentages explanation="La charge moyenne n’est pas un pourcentage minimal ou maximal du processeur."}
+:::
+
+## Comprendre la charge Linux
+
+La charge moyenne de Linux compte les tâches exécutables, notamment celles qui utilisent ou attendent le processeur, ainsi que les tâches en sommeil non interruptible, souvent associées aux entrées-sorties. Elle ne correspond donc pas à l’utilisation du processeur.
+
+Une charge de `4.0` n’a pas les mêmes conséquences sur des systèmes dotés d’un ou de seize processeurs logiques. Trouvez le nombre d’unités de traitement disponibles pour le système avec :
+
+```bash
+$ nproc
 ```
 
-Bien que nous ayons déjà vu `uptime`, concentrons-nous sur le champ `load average` (charge moyenne), qui est crucial pour la **surveillance du CPU sous Linux**.
+Les quotas du processeur, l’affinité, la virtualisation et les limites des conteneurs peuvent réduire la capacité visible par une charge de travail particulière ; le nombre de processeurs de l’hôte ne constitue donc qu’un point de départ.
 
-### Comprendre la Charge Moyenne
+:::single-choice{#cpu-load-not-percentage} Pourquoi la charge moyenne n’est-elle pas un pourcentage d’utilisation du processeur ?
 
-La charge moyenne fournit un instantané de la charge CPU de votre système. Les trois nombres représentent la charge moyenne du CPU sur les intervalles de 1, 5 et 15 minutes. Mais qu'est-ce que la charge CPU ? C'est le nombre moyen de processus dans la file d'attente d'exécution (run-queue), ce qui signifie qu'ils sont soit activement exécutés par le CPU, soit en attente de leur tour. Cette métrique est un indicateur clé de l'**utilisation des processus** et de la **performance globale du système**.
+::option[Elle indique uniquement la fréquence d’horloge du processeur.]{#cpu-load-clock explanation="La fréquence d’horloge est une mesure distincte du matériel ou de sa régulation."}
+::option[Elle mesure uniquement la mémoire physique libre.]{#cpu-load-memory explanation="La disponibilité de la mémoire est indiquée par d’autres mesures."}
+::option[Elle comprend les tâches exécutables et celles en sommeil non interruptible.]{#cpu-load-task-count .correct explanation="La charge repose sur la demande des tâches et leur état d’attente plutôt que sur un pourcentage du temps processeur écoulé."}
+:::
 
-### Une Analogie Routière
+## Comparer la charge à l’activité du processeur
 
-Imaginez un CPU monocœur comme une autoroute à une seule voie.
+Recueillez plusieurs échantillons plutôt que de vous fier à une seule sortie. Parmi les outils complémentaires utiles figurent :
 
-- Si l'autoroute est à pleine capacité avec un flux constant de voitures, le trafic est à 100 %, ce qui correspond à une charge moyenne de 1,0.
-- Si un embouteillage majeur se produit et que les voitures s'accumulent au double de la capacité de l'autoroute, la charge est de 200 %, soit une charge moyenne de 2,0.
-- Si l'autoroute est à moitié vide, la charge est de 0,5.
-- Idéalement, vous souhaitez une charge moyenne faible, comme une autoroute à 2 heures du matin sans trafic.
+```bash
+$ top
+$ vmstat 1
+$ mpstat -P ALL 1
+```
 
-Dans cette analogie, les voitures sont les processus attendant d'être traités par le CPU.
+`top` associe les vues de l’hôte et des processus. `vmstat` montre le nombre de tâches exécutables et bloquées ainsi que les catégories du processeur. `mpstat`, fourni par `sysstat` sur de nombreuses distributions, affiche l’activité de chaque processeur. La disponibilité et les champs exacts varient ; consultez donc les manuels locaux.
 
-### Interpréter la Charge Moyenne sur les Systèmes Modernes
+Une charge élevée accompagnée de processeurs occupés peut signaler une forte demande de calcul. Une charge élevée associée à un nombre notable de tâches bloquées, à une latence d’entrées-sorties ou à des observations d’attente d’entrées-sorties oriente vers une autre ressource limitée. Une faible utilisation moyenne peut également masquer un seul processeur saturé ou un bref pic de latence.
 
-Une charge moyenne de 1,0 ne signifie pas nécessairement que votre système est en difficulté. La plupart des ordinateurs modernes disposent de processeurs multi-cœurs. Si vous avez un processeur quadricœur (4 cœurs), une charge moyenne de 1,0 signifie que seulement 25 % de votre capacité CPU totale est utilisée. Chaque cœur agit comme une voie supplémentaire sur l'autoroute.
+:::single-choice{#cpu-high-load-next-step} Quelle est la meilleure étape suivante après l’observation d’une charge moyenne élevée ?
 
-Pour interpréter correctement la charge moyenne, vous devez tenir compte du nombre de cœurs CPU. Vous pouvez afficher le nombre de cœurs sur votre système avec la commande `cat /proc/cpuinfo`.
+::option[Comparer des mesures répétées du processeur, de l’état des tâches, des entrées-sorties et de la charge de travail.]{#cpu-load-correlate .correct explanation="Des échantillons corrélés permettent de distinguer plusieurs explications concurrentes de la charge."}
+::option[Redémarrer immédiatement sans recueillir d’autres données.]{#cpu-load-reboot explanation="Le redémarrage supprime des indices et peut interrompre les services sans identifier la cause."}
+::option[Supposer que chaque processeur est entièrement utilisé.]{#cpu-load-assume explanation="La charge peut comprendre des tâches non interruptibles et être répartie de manière inégale entre les processeurs."}
+:::
 
-Une règle générale pour une bonne **performance du système** est de maintenir votre charge moyenne inférieure au nombre de cœurs. Si vous constatez que votre machine a constamment une charge moyenne supérieure à son nombre de cœurs, cela pourrait indiquer un goulot d'étranglement de performance, tel qu'un processus incontrôlé ou des ressources matérielles insuffisantes.
+## Évaluer la capacité et les conséquences
 
-## Exercise
+Il n’existe aucune règle universelle selon laquelle la charge doit toujours rester inférieure au nombre de processeurs. Les systèmes de traitement par lots peuvent accepter des files d’attente, tandis que les services interactifs peuvent dépasser leurs objectifs de latence avant ce seuil. Établissez une référence pour le même hôte et la même charge de travail, puis comparez le temps de réponse, le débit, le taux d’erreurs, la saturation et l’utilisation des ressources.
 
-Afin d'acquérir une expérience pratique avec la **surveillance du CPU sous Linux** et l'analyse de la **performance du système**, essayez ces laboratoires pratiques. Ils vous aideront à appliquer les concepts de **charge moyenne** et d'**utilisation des processus** dans des scénarios réels.
+:::single-choice{#cpu-capacity-threshold} Qu’est-ce qui doit déterminer si la charge observée est acceptable ?
 
-1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir et à inspecter les processus, et à surveiller les ressources avec des outils comme `ps` et `top`, ce qui est directement lié à la compréhension de la charge CPU.
-2. **[Commande Linux top : Surveillance du Système en Temps Réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à utiliser la commande `top` pour la surveillance du système en temps réel, y compris le tri des processus et le filtrage, offrant une analyse plus approfondie de l'activité CPU et des processus.
-3. **[Commande Linux free : Surveillance de la Mémoire Système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à surveiller et à analyser l'utilisation de la mémoire système, qui est souvent un facteur critique parallèlement à la charge CPU dans la performance globale du système.
+::option[L’obligation de toujours maintenir la valeur sous un.]{#cpu-below-one explanation="La capacité multicœur et les objectifs de la charge de travail rendent ce seuil fixe peu fiable."}
+::option[Uniquement le nombre d’utilisateurs affiché par `uptime`.]{#cpu-user-count explanation="Les utilisateurs connectés à un shell ne représentent pas toute la demande de la charge de travail."}
+::option[La référence et les objectifs de service de la charge de travail.]{#cpu-baseline-objectives .correct explanation="L’acceptabilité dépend du comportement attendu et des performances visibles par les utilisateurs, et non d’un seuil universel."}
+:::
 
-## Quiz Question
+## Résumé
 
-Quelle commande pouvez-vous utiliser pour voir la charge moyenne du système ? Veuillez répondre en anglais, et notez que la commande est sensible à la casse.
+Vous savez maintenant interpréter la charge moyenne comme un élément d’une investigation sur le processeur.
 
-## Quiz Answer
-
-uptime
+1. Lire les fenêtres de charge sur 1, 5 et 15 minutes.
+2. Distinguer la charge des tâches des pourcentages de temps processeur.
+3. Comparer la charge à la capacité de traitement disponible.
+4. Mettre en relation des mesures répétées de l’hôte avec les résultats du service.

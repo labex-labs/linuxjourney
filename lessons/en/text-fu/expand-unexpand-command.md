@@ -1,60 +1,106 @@
 ---
-index: 10
+lesson_id: "expand-unexpand-command"
+course_id: "text-fu"
 lang: "en"
+order_index: 10
 title: "expand and unexpand"
+description: "Learn how tab stops control conversion between tabs and spaces with expand and unexpand."
 meta_title: "expand and unexpand - Text-Fu"
 meta_description: "Master text formatting in Linux with our guide on the expand and unexpand commands. Learn how to convert tabs to spaces and spaces back to tabs for consistent file layouts."
 meta_keywords: "expand command, unexpand command, Linux tabs, Linux spaces, text formatting, Linux tutorial, beginner Linux, Linux guide"
 ---
 
-## Lesson Content
+Tabs store movement to a tab stop rather than a fixed number of visible spaces. Their displayed width depends on the current column and the tab-stop settings. The `expand` and `unexpand` commands convert between tab characters and spaces while accounting for those positions.
 
-Inconsistent spacing can make text files difficult to read. While tabs are meant to create uniform indentation, their display width can vary across different editors and systems. This can disrupt text formatting and alignment. Fortunately, Linux provides simple tools to manage this by converting between tabs and spaces. This beginner Linux guide will walk you through the process.
+## Converting Tabs to Spaces
 
-### Converting Tabs to Spaces with the expand Command
-
-When you need to ensure consistent spacing, you can convert tabs into a standard number of spaces using the `expand` command. This command reads a file and replaces each tab character with a set of space characters, printing the result to standard output.
+`expand` reads input, replaces tabs with the spaces needed to reach the appropriate tab stops, and writes the result to stdout:
 
 ```bash
-expand sample.txt
+$ expand sample.txt
 ```
 
-By default, the `expand command` converts each tab into 8 spaces. This simple utility is a powerful tool for improving text formatting.
+By default, tab stops occur every 8 columns. A tab at column 1 therefore expands differently from a tab at column 6; it is not always replaced by eight spaces.
 
-### Saving the Converted Output
+:::single-choice{#expand-default-tab-stops} With default settings, how does `expand` replace a tab character?
 
-The `expand` command only prints the converted text to your terminal. To save the changes, you must redirect the output to a new file.
+::option[It inserts enough spaces to reach the next default tab stop.]{#expand-next-stop .correct explanation="`expand` preserves tab-stop alignment by calculating the spaces needed from the current column."}
+::option[It always inserts exactly eight spaces.]{#expand-eight-spaces explanation="Default stops are eight columns apart, but the number of spaces depends on the current column."}
+::option[It removes the tab without adding any characters.]{#expand-remove-tab explanation="The command replaces the tab with spaces so later text remains aligned at the selected tab stop."}
+:::
+
+## Choosing Tab Stops
+
+Use `-t NUMBER` to place tab stops every specified number of columns. For four-column stops:
 
 ```bash
-expand sample.txt > result.txt
+$ expand -t 4 sample.txt
 ```
 
-This command takes the output of `expand sample.txt` and writes it into `result.txt`, giving you a new file with spaces instead of tabs.
+GNU `expand` also accepts a comma-separated list of explicit tab positions. Use `-i` when only tabs before the first nonblank character on each line should be converted.
 
-### Converting Spaces to Tabs with the unexpand Command
+:::single-choice{#expand-four-column-stops} Which command converts tabs using tab stops every four columns?
 
-The reverse operation, converting spaces back into tabs, is handled by the `unexpand` command. This can be useful for reducing file size or adhering to coding standards that require tabs.
+::option[`expand -i 4 sample.txt`]{#expand-initial-four explanation="The `-i` option limits conversion to initial tabs and does not take `4` as the tab-stop interval."}
+::option[`unexpand -t 4 sample.txt`]{#unexpand-tabs-four explanation="`unexpand` converts suitable spaces to tabs, the reverse direction from the requested operation."}
+::option[`expand -t 4 sample.txt`]{#expand-tabs-four .correct explanation="The `-t` option sets the tab-stop interval, and `4` requests stops every four columns."}
+:::
+
+## Saving Converted Output Safely
+
+`expand` does not edit its input file. Redirect stdout to a different pathname when you want to save the converted text:
 
 ```bash
-unexpand -a result.txt
+$ expand sample.txt > result.txt
 ```
 
-By default, `unexpand` only converts leading spaces on each line. The `-a` option tells the `unexpand command` to convert all instances of 8 spaces into a tab, not just those at the beginning of a line, providing more comprehensive control over your Linux spaces and tabs.
+Do not use `expand sample.txt > sample.txt`. The shell truncates the destination before `expand` can read it, so the source data can be lost. After verifying a separately written result, you can deliberately replace the original using an appropriate file-management step.
 
-## Exercise
+:::single-choice{#expand-safe-output-file} Which command saves expanded text without truncating `sample.txt` before it is read?
 
-To master text manipulation and redirection in Linux, practice is key. The following hands-on labs will help reinforce your understanding:
+::option[`expand sample.txt > sample.txt`]{#expand-same-file explanation="The shell opens and truncates `sample.txt` for output before starting `expand`, which can erase the input."}
+::option[`expand sample.txt > result.txt`]{#expand-separate-result .correct explanation="The input and output pathnames differ, so the shell can create `result.txt` without destroying the source."}
+::option[`> sample.txt expand result.txt`]{#expand-leading-redirection explanation="This still truncates `sample.txt` and does not express a safe conversion from the original file."}
+:::
 
-1. **[Redirecting Input and Output in Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practice controlling data flow from commands by manipulating standard output (stdout), standard error (stderr), and standard input (stdin) using operators like `>` and `>>`.
-2. **[Simple Text Processing](https://labex.io/labs/linux-simple-text-processing-18004)** - Learn to use powerful commands like `tr`, `col`, `join`, and `paste` to manipulate and analyze text data efficiently, enhancing your command-line skills for data processing.
-3. **[Text Processing and Regular Expressions](https://labex.io/labs/linux-text-processing-and-regular-expressions-18003)** - Learn the powerful text processing tools `grep`, `sed`, and `awk`, and use regular expressions for efficient text manipulation and pattern matching in Linux.
+## Converting Spaces to Tabs
 
-Completing these labs will help you apply the concepts of text transformation and file manipulation in real-world scenarios, building your confidence with essential Linux command-line tools.
+`unexpand` replaces eligible spaces with tabs while preserving alignment at the selected tab stops. By default, GNU `unexpand` converts only initial blanks before the first nonblank character on a line:
 
-## Quiz Question
+```bash
+$ unexpand result.txt
+```
 
-What command is used to convert tabs to spaces? (Please answer using the lowercase English command name.)
+Use `-a` to consider suitable blanks throughout each line:
 
-## Quiz Answer
+```bash
+$ unexpand -a result.txt
+```
 
-expand
+This does not simply replace every run of eight spaces. Conversion depends on column positions and tab stops, just as it does for `expand`. Use `-t 4` or another tab-stop specification when the file follows a different convention.
+
+:::single-choice{#unexpand-default-scope} Without `-a`, which spaces does GNU `unexpand` normally consider for conversion?
+
+::option[Every group of spaces anywhere in the file.]{#unexpand-every-group explanation="Considering blanks throughout the line requires `-a`, and conversion still depends on tab-stop positions."}
+::option[Only spaces that appear after the final word.]{#unexpand-trailing-blanks explanation="The default scope concerns initial blanks, not specifically trailing whitespace."}
+::option[Only initial blanks before the first nonblank character.]{#unexpand-initial-blanks .correct explanation="Default GNU `unexpand` behavior is limited to leading blank space on each line."}
+:::
+
+:::single-choice{#unexpand-all-blanks} Which option tells GNU `unexpand` to consider blanks after the first nonblank character too?
+
+::option[`-i`]{#unexpand-initial-option explanation="For `expand`, `-i` limits work to initial tabs. It is not the all-blanks option for `unexpand`."}
+::option[`-a`]{#unexpand-all-option .correct explanation="The `-a` option enables conversion of suitable blanks throughout each input line."}
+::option[`-t`]{#unexpand-tab-list-option explanation="The `-t` option sets tab stops. Although GNU behavior can imply broader conversion with it, `-a` explicitly requests all blanks."}
+:::
+
+Both commands read stdin when no file is named, so they can be used in pipelines. Remember that converting to spaces and back may not reconstruct the original choice of tabs and spaces even when the displayed alignment is unchanged.
+
+## Summary
+
+You can now convert tabs and spaces while preserving tab-stop alignment.
+
+1. Expand tabs to the next configured stop.
+2. Set custom tab stops with `-t`.
+3. Save output to a different file before replacing an input.
+4. Convert leading blanks with `unexpand` by default.
+5. Use `-a` when blanks throughout each line should be considered.

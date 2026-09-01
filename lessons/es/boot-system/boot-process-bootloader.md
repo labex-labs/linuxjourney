@@ -1,53 +1,101 @@
 ---
-index: 3
+lesson_id: "boot-process-bootloader"
+course_id: "boot-system"
 lang: "es"
-title: "Proceso de Arranque: Cargador de Arranque"
-meta_title: "Proceso de Arranque: Cargador de Arranque - Arrancar el Sistema"
-meta_description: "Una guía sobre el cargador de arranque en Linux. Aprenda qué es un cargador de arranque de Linux, sus funciones principales y cómo GRUB utiliza parámetros del kernel como initrd y root para iniciar el sistema."
-meta_keywords: "cargador de arranque linux, bootloader en linux, cargador de arranque linux, grub, qué es bootloader en linux, parámetros del kernel, initrd, sistema de archivos raíz, proceso de arranque linux"
+order_index: 3
+title: "Proceso de arranque: cargador"
+description: "Aprende cómo un cargador selecciona los elementos de Linux, construye la línea de órdenes del kernel y transfiere el control."
+meta_title: "Proceso de arranque: cargador - Arrancar el sistema"
+meta_description: "Aprende cómo un cargador como GRUB selecciona el kernel y el initramfs, pasa parámetros y transfiere el control."
+meta_keywords: "cargador de arranque Linux, GRUB, parámetros del kernel, initramfs, root, quiet"
 ---
 
-## Lesson Content
+Un cargador de arranque sirve de puente entre el descubrimiento del firmware y la ejecución del kernel. GRUB es habitual en los PC con Linux, pero systemd-boot, U-Boot, la carga por el firmware de un kernel con EFI stub y otros diseños implementan partes distintas de esta función.
 
-### ¿Qué es un cargador de arranque (Bootloader) en Linux
+## Seleccionar los elementos de arranque
 
-Después de que la BIOS/UEFI finaliza sus tareas, cede el control a la siguiente etapa del proceso de arranque: el cargador de arranque (bootloader). Un **cargador de arranque en Linux** es un pequeño programa que carga el kernel del sistema operativo en la memoria y luego lo ejecuta. Actúa como el puente entre el firmware del sistema y el kernel de Linux.
+Una entrada del cargador puede identificar:
 
-### El Papel del Cargador de Arranque de Linux
+- una imagen del kernel de Linux
+- una imagen initramfs opcional o initrd heredada
+- una línea de órdenes del kernel
+- metadatos específicos de la plataforma o el cargador de otro sistema operativo
 
-Las responsabilidades principales de un **cargador de arranque de Linux** son sencillas pero críticas:
+GRUB puede presentar varios kernels y entradas de recuperación. Un kernel alternativo solo resulta útil si sus módulos e initramfs correspondientes siguen disponibles y se han probado. El cargador lee archivos mediante sus módulos compatibles de almacenamiento y sistemas de archivos; no depende del VFS de Linux, que todavía no está en ejecución.
 
-- **Selección del Sistema Operativo**: Puede presentar un menú para arrancar en varios sistemas operativos, incluidos sistemas que no son Linux, si tienes una configuración de arranque múltiple (multi-boot).
-- **Selección del Kernel**: Permite elegir qué versión del kernel de Linux cargar, lo cual es útil para la solución de problemas o pruebas.
-- **Paso de Parámetros del Kernel**: Especifica parámetros cruciales que el kernel necesita para iniciarse correctamente.
+:::single-choice{#bootloader-primary-handoff} ¿A qué transfiere normalmente el control un cargador de arranque de Linux?
 
-El **cargador de arranque de Linux** más común es GRUB (GRand Unified Bootloader), que es el que probablemente estés utilizando. Aunque existen otros cargadores de arranque como LILO, SYSLINUX y Coreboot, esta lección se centrará en GRUB.
+::option[A un shell interactivo de usuario con todos los servicios ya en ejecución.]{#bootloader-user-shell explanation="Los shells del espacio de usuario solo aparecen después de iniciarse el kernel y el sistema init."}
+::option[A la imagen de kernel seleccionada después de cargar los elementos de arranque necesarios.]{#bootloader-selected-kernel .correct explanation="El cargador prepara el kernel, los parámetros y, a menudo, un initramfs antes de ejecutar el punto de entrada del kernel."}
+::option[Al gestor de paquetes del sistema de archivos para resolver dependencias.]{#bootloader-package-manager explanation="La gestión de paquetes no es la siguiente etapa de control del procesador durante el arranque."}
+:::
 
-### Parámetros Comunes del Kernel en GRUB
+## Parámetros de la línea de órdenes del kernel
 
-El objetivo principal del cargador de arranque es cargar el kernel, pero necesita instrucciones sobre cómo y dónde encontrarlo. Estas instrucciones se proporcionan como parámetros del kernel. Normalmente, puedes ver o editar estos parámetros presionando la tecla 'e' en el menú de **GRUB** durante el inicio.
+El cargador pasa una línea de texto que analizan el kernel y el espacio de usuario inicial. Algunos ejemplos habituales son:
 
-Aquí están algunos de los parámetros más comunes que encontrarás:
+- `root=...` para identificar el sistema de archivos raíz previsto o una especificación de fuente para el espacio de usuario inicial
+- `ro` o `rw` para solicitar un modo inicial de montaje de la raíz
+- `quiet` para reducir los mensajes del kernel en la consola
+- `init=...` para solicitar otro primer programa del espacio de usuario en una recuperación especializada
+- parámetros `rd.*` específicos de la distribución que interpretan las herramientas de initramfs
 
-- `initrd` - Especifica la ubicación del disco RAM inicial (initial RAM disk), un sistema de archivos raíz temporal cargado en la memoria. Cubriremos esto con más detalle en la próxima lección.
-- `BOOT_IMAGE` - Define la ruta al archivo de imagen del kernel que debe cargarse.
-- `root` - Señala la ubicación del sistema de archivos raíz real. El kernel utiliza esta ruta para encontrar el proceso `init`. A menudo se representa mediante un nombre de dispositivo (ej. `/dev/sda1`) o un UUID.
-- `ro` - Un parámetro estándar que indica al kernel que monte el sistema de archivos raíz en modo solo lectura inicialmente. Esta es una medida de seguridad para permitir que se ejecuten comprobaciones del sistema de archivos antes de realizar cualquier cambio.
-- `quiet` - Este parámetro suprime la mayoría de los mensajes detallados de arranque, proporcionando una pantalla de inicio más limpia y menos verbosa.
-- `splash` - Habilita la visualización de una pantalla de bienvenida gráfica durante el proceso de arranque en lugar de mensajes de texto.
+`initrd` suele ser una directiva del cargador que nombra una imagen, no un parámetro genérico del kernel. `BOOT_IMAGE=` puede aparecer en una línea generada por algunas configuraciones de GRUB, pero no es el mecanismo que carga el kernel.
 
-## Exercise
+Examina la línea utilizada en el arranque actual con:
 
-¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión del cargador de arranque GRUB y su configuración:
+```bash
+$ cat /proc/cmdline
+```
 
-1. **[Personalizar el Menú de Arranque GRUB2 en Linux](https://labex.io/es/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practica la modificación del archivo de configuración principal de GRUB2 para cambiar la configuración del menú de arranque y aplicar estos cambios.
+:::single-choice{#bootloader-root-parameter} ¿Cuál es la finalidad del parámetro `root=` de la línea de órdenes del kernel?
 
-Este laboratorio te ayudará a aplicar los conceptos en un escenario real y a ganar confianza con la gestión del cargador de arranque.
+::option[Identificar el sistema de archivos raíz que deberá utilizar finalmente el arranque.]{#bootloader-root-filesystem .correct explanation="El kernel o initramfs interpreta el valor como parte de la localización y ensamblaje de la raíz real."}
+::option[Establecer la contraseña de inicio de sesión de la cuenta root.]{#bootloader-root-password explanation="Los secretos de autenticación no deben pasarse como texto ordinario en la línea de órdenes del kernel."}
+::option[Cambiar el nombre del PID 1 a la palabra `root`.]{#bootloader-root-pid explanation="El nombre de los procesos no guarda relación con este parámetro de almacenamiento."}
+:::
 
-## Quiz Question
+:::single-choice{#bootloader-quiet-parameter} ¿Qué solicita normalmente el parámetro `quiet`?
 
-¿Qué parámetro del kernel hace que no se vean los mensajes de arranque? Por favor, responde con el parámetro de una sola palabra en inglés en minúsculas.
+::option[Acceso de solo lectura a todos los sistemas de archivos montados.]{#bootloader-quiet-readonly explanation="La política inicial de escritura de la raíz utiliza parámetros como `ro`, no `quiet`."}
+::option[Reducir los mensajes del kernel impresos durante el arranque.]{#bootloader-quiet-console .correct explanation="Suprime muchos mensajes informativos, pero no garantiza el silencio de todos los componentes del arranque."}
+::option[Deshabilitar todos los ventiladores del hardware.]{#bootloader-quiet-fans explanation="El parámetro afecta a la cantidad de mensajes, no al control acústico del hardware."}
+:::
 
-## Quiz Answer
+## Edición temporal y recuperación
 
-quiet
+GRUB suele permitir que un usuario de consola autorizado edite una entrada para un único arranque, a menudo mediante una tecla de edición mostrada por el menú. Esto resulta útil para retirar `quiet`, elegir parámetros de recuperación o corregir un identificador de raíz incorrecto. La interfaz y la autorización varían, especialmente con Secure Boot y configuraciones de GRUB protegidas con contraseña.
+
+Los parámetros pueden exponer texto confidencial mediante `/proc/cmdline`, los registros de arranque y los informes de fallos. También pueden debilitar la seguridad o hacer imposible arrancar el sistema. Nunca introduzcas secretos y conserva una entrada válida conocida y una vía de recuperación mediante consola.
+
+:::single-choice{#bootloader-temporary-edit} ¿Cuál es una propiedad habitual de editar interactivamente una entrada de GRUB para un arranque?
+
+::option[Reescribe automáticamente todas las imágenes de kernel instaladas.]{#bootloader-rewrites-kernels explanation="Cambiar el texto de las órdenes no modifica los binarios del kernel."}
+::option[Deshabilita permanentemente la verificación del firmware en todos los discos.]{#bootloader-disables-firmware explanation="La política del firmware es independiente y una edición de una entrada no la modifica universalmente."}
+::option[El cambio se aplica a ese arranque salvo que se guarde por separado en la configuración.]{#bootloader-one-boot-change .correct explanation="Editar el menú suele modificar la entrada en memoria y no la configuración fuente persistente."}
+:::
+
+## Configuración persistente de GRUB
+
+Las distribuciones suelen generar la configuración final de GRUB a partir de plantillas, valores predeterminados, scripts y kernels detectados. No edites directamente el `grub.cfg` generado salvo que la distribución documente explícitamente ese flujo; volver a generarlo puede sobrescribirlo.
+
+Realiza un cambio limitado en la fuente, ejecuta la orden de regeneración documentada por la distribución, examina su salida y prueba conservando una entrada anterior válida y un medio de recuperación arrancable. La orden y la ruta de salida difieren entre Debian, Fedora y las instalaciones UEFI y BIOS.
+
+:::single-choice{#bootloader-generated-config} ¿Por qué suele ser poco fiable editar directamente un `grub.cfg` generado?
+
+::option[Porque el archivo nunca puede contener texto legible.]{#bootloader-config-binary explanation="La configuración de GRUB es texto, pero sigue importando que sea un archivo generado."}
+::option[Porque GRUB solo lee archivos en el directorio personal de cada usuario.]{#bootloader-grub-home explanation="La configuración de arranque pertenece al sistema y debe estar disponible antes de las sesiones personales."}
+::option[Porque una regeneración posterior puede sobrescribir el cambio manual.]{#bootloader-regeneration-overwrites .correct explanation="Los ajustes persistentes suelen corresponder a las fuentes de configuración y al flujo de generación de la distribución."}
+:::
+
+Utiliza [Personalizar el menú de arranque de GRUB2](https://labex.io/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859) únicamente en su entorno de laboratorio con capacidad de recuperación.
+
+## Resumen
+
+Ahora puedes separar las directivas del cargador de los parámetros de la línea de órdenes del kernel.
+
+1. Identifica el kernel, initramfs, la línea de órdenes y las entradas alternativas.
+2. Utiliza `root=`, `ro` y `quiet` conforme a sus funciones reales.
+3. Examina los parámetros del arranque en ejecución mediante `/proc/cmdline`.
+4. Trata las ediciones interactivas como temporales y sensibles para la seguridad.
+5. Cambia la configuración generada persistente mediante el flujo de la distribución.

@@ -1,58 +1,97 @@
 ---
-index: 9
+lesson_id: "dhcp-overview"
+course_id: "network-basics"
 lang: "ja"
+order_index: 9
 title: "DHCP の概要"
+description: "DHCPv4 が探索、選択、更新を通じ、アドレスとネットワークオプションをリースする仕組みを学びます。"
 meta_title: "DHCP の概要 - ネットワークの基礎"
 meta_description: "DHCP（Dynamic Host Configuration Protocol）の基本を学びましょう。このガイドでは、DHCP が IP アドレスを割り当てる方法、4 段階のプロセス（DORA）、およびネットワークの DHCP レイヤーにおける役割について解説します。Linux ネットワーキング初心者の方に最適です。"
 meta_keywords: "DHCP, 動的ホスト構成プロトコル，DHCP レイヤー, IP アドレス，Linux ネットワーキング，DHCP プロセス，DORA, ネットワーク設定"
 ---
 
-## Lesson Content
+Dynamic Host Configuration Protocol は、クライアントへ期限付きのネットワーク設定を提供します。DHCPv4 では、ローカル方針に応じて IPv4 アドレス、サブネットマスク、既定ルーター、DNS サーバー、リース時間などを含められます。
 
-DHCP（Dynamic Host Configuration Protocol：動的ホスト構成プロトコル）は、ネットワーク上のデバイスに IP アドレスやその他のネットワーク構成パラメーターを自動的に割り当てるために使用される、基本的なネットワーキングプロトコルです。
+## クライアント、サーバー、リレー
 
-### DHCP とは？
+DHCP サーバーはスコープまたはアドレスプールとリース状態を管理します。すべての物理セグメントにサーバーが必要なわけではなく、DHCP リレーがサブネットと中央サーバー間の交換を転送できます。静的設定だけを使うネットワークでは DHCP を提供しない場合もあります。
 
-DHCP をデバイス向けの電話会社のようなものだと考えてみてください。新しい電話を入手したとき、通信を開始するためには電話番号が必要です。キャリアに連絡し、番号を割り当ててもらいます。同様に、デバイスがネットワークに接続するとき、他のデバイスと通信するためには IP アドレスが必要です。DHCP はこの IP アドレスを提供するサービスです。
+DHCP は UDP 上で運ばれるアプリケーション層プロトコルです。DHCPv4 サーバーは通常 UDP 67、クライアントは UDP 68 を使います。
 
-この IP アドレスは通常、特定の期間「リース（貸与）」されます。リースが切れる前に、デバイスはそれを更新でき、継続的な接続を保証します。この自動化されたプロセスは、あらゆるネットワークでのデバイス管理に不可欠です。
+:::single-choice{#dhcp-relay-purpose} DHCP リレーによって何が可能になりますか？
 
-### DHCP サーバーの役割
+::option[すべてのクライアントが方針なしで任意のアドレスを選ぶ。]{#dhcp-client-any-address explanation="サーバーは引き続きスコープとリース方針を適用します。"}
+::option[別サブネットのクライアントが中央の DHCP サーバーへ到達する。]{#dhcp-central-server .correct explanation="リレーがルーティング境界を越えて DHCP 交換を転送し、クライアントネットワークを示します。"}
+::option[Ethernet スイッチが全 IP ルーターを置き換える。]{#dhcp-switch-router explanation="DHCP のリレーはルーティングされたネットワーク境界をなくしません。"}
+:::
 
-DHCP サーバーは、IP アドレスのプールを管理し、それをクライアントデバイスにリースする責任を負います。一般的なホームネットワークでは、ルーターが DHCP サーバーとして機能することがよくあります。大規模なネットワークでは、専用のサーバーがこのタスクを処理します。
+## 最初の DHCPv4 交換
 
-DHCP を使用することには大きな利点があります。
+一般的な最初の処理は DORA と呼ばれます。
 
-- **自動化：** ネットワーク管理者は、すべてのデバイスを手動で構成する必要がなくなり、時間と労力を節約できます。
-- **正確性：** IP アドレスの重複割り当てといった一般的なエラーを防ぎ、ネットワークの競合を引き起こす可能性を排除します。
+1. `DHCPDISCOVER`：クライアントが利用可能なサーバーを探す。
+2. `DHCPOFFER`：サーバーがアドレスとオプションを提示する。
+3. `DHCPREQUEST`：クライアントが提示されたリースを選び要求する。
+4. `DHCPACK`：選ばれたサーバーがリースとオプションを確定する。
 
-ホストが IP アドレスを要求し、受信するプロセスを合理化するために、すべての物理ネットワークには独自の DHCP サーバーが必要です。このプロトコルはアプリケーション層で動作し、ネットワークの構成サービス（概念的に`dhcp layer`と呼ばれることもある）の重要な部分を形成します。
+ブロードキャストとユニキャストの詳細は、クライアント状態、リレー利用、サーバー機能で異なります。OFFER はまだ最終的に利用可能なリースではなく、ACK で通常の選択交換が完了します。
 
-### 4 ステップの DHCP プロセス
+:::single-choice{#dhcp-dora-order} 最初の DHCPv4 の通常の順序はどれですか？
 
-デバイスが DHCP を介して IP アドレスを取得するプロセスには、4 ステップの交換が含まれ、これは頭字語 DORA でよく記憶されます。
+::option[OFFER、DISCOVER、ACK、REQUEST。]{#dhcp-wrong-order-one explanation="クライアントが探索してからサーバーが提示し、要求してから確認応答します。"}
+::option[DISCOVER、OFFER、REQUEST、ACK。]{#dhcp-correct-order .correct explanation="探索、提示、選択、確定という順序です。"}
+::option[REQUEST、ACK、DISCOVER、OFFER。]{#dhcp-wrong-order-two explanation="新しいクライアントは通常、リース選択前に探索と提示が必要です。"}
+:::
 
-1. **DHCP Discover（発見）:** クライアントデバイスは、利用可能な DHCP サーバーを見つけるために、ネットワーク全体に`DISCOVER`メッセージをブロードキャストします。
-2. **DHCP Offer（提供）:** Discover メッセージを受信した DHCP サーバーは、`OFFER`メッセージで応答できます。このメッセージには、提案された IP アドレス、サブネットマスク、ゲートウェイアドレス、およびリース期間が含まれます。
-3. **DHCP Request（要求）:** クライアントは 1 つ以上のオファーを受信し、そのうちの 1 つを選択します。次に、どのオファーを受け入れたかをすべての DHCP サーバーに通知するために、`REQUEST`メッセージをブロードキャストします。
-4. **DHCP Acknowledgment (ACK)（確認応答）:** 受け入れられたオファーを作成したサーバーは、リースを確定し、構成を完了するために最終的な`ACK`メッセージをクライアントに送信します。
+## リース更新
 
-完全なプロトコルはより複雑ですが、これら 4 つのステップが、DHCP がホストをネットワーク上で動的に構成する中核をなしています。
+リースは更新しなければ期限切れになります。クライアントは通常、有効期限前に更新を始め、最初は元のサーバーへ直接連絡します。成功しなければ、後に再バインドの試行範囲を広げます。正確なタイマーはプロトコルに従って提供または算出されます。
 
-## Exercise
+動的割り当てと表示されたアドレスが永久に続くとは限りません。変更を調査するときは、現在のリース、有効期間、サーバー、オプションを記録してください。
 
-練習あるのみです！動的 IP アドレス指定とネットワーク構成の理解を深めるための実践的なラボを次に示します。
+:::single-choice{#dhcp-lease-expiration} 正常に更新されなかった DHCP アドレスリースはどうなりますか？
 
-1. **[Linux で IP アドレス指定を管理する](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip`コマンドを使用してインターフェイスを検査し、特に`dhclient`を使用して動的 IP アドレスを取得する方法を練習し、DHCP の知識を直接適用します。
-2. **[Linux で MAC アドレスと IP アドレスを識別する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、DHCP によって割り当てられた IP アドレスを含むネットワークアドレス情報や、ネットワークインターフェイスを検査する方法を学びます。
-3. **[Linux で IP アドレスの種類と到達可能性を調査する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`と`ip a`を使用して IP アドレス指定とネットワーク到達可能性を調査し、動的に割り当てられた IP がネットワーク内でどのように機能するかを理解するのに役立ちます。
+::option[恒久的なハードウェア MAC アドレスになる。]{#dhcp-lease-mac explanation="IP リースはリンク層の識別情報を変えません。"}
+::option[最終的に期限切れになり、クライアントは有効として扱うのをやめる。]{#dhcp-lease-expires .correct explanation="リース方式により、サーバー方針の下でアドレスとオプションを回収・変更できます。"}
+::option[クライアントを権威 DNS ルートへ変換する。]{#dhcp-lease-dns-root explanation="DHCP リースは DNS 権限を付与しません。"}
+:::
 
-これらのラボは、動的 IP 割り当てとネットワーク構成の概念を実際のシナリオに適用し、Linux ネットワーキングへの自信を築くのに役立ちます。
+## 結果を調べる
 
-## Quiz Question
+DHCP 設定後はアドレスだけでなく、必要な状態をすべて検証します。
 
-DHCP プロセスの 4 つのステップを順番に挙げてください。回答は英語で、大文字の単語をカンマとスペースで区切って記述してください。
+```bash
+$ ip address show
+$ ip route show
+$ resolvectl status
+```
 
-## Quiz Answer
+リゾルバーのコマンドはシステムによって異なります。稼働中のネットワークマネージャーが持つリースデータとログも確認します。不正サーバー、プール内の静的割り当て、古い状態、手動設定による重複は依然起こり得ます。DHCP は間違いを減らしますが、単独で全競合を防げません。
 
-DISCOVER, OFFER, REQUEST, ACK
+:::single-choice{#dhcp-result-verification} DHCP リースの受け入れ後に確認すべきものは何ですか？
+
+::option[表示されたインターフェース名だけ。]{#dhcp-interface-name-only explanation="名前だけではアドレス、経路、名前解決を確立できません。"}
+::option[キーボードが反応するかだけ。]{#dhcp-keyboard explanation="キーボード入力はネットワークリース設定と無関係です。"}
+::option[アドレス、経路、DNS、リース詳細。]{#dhcp-check-complete-state .correct explanation="利用可能な設定は複数のオプションと、適用されたシステム状態に依存します。"}
+:::
+
+## DHCPv6 と IPv6 設定
+
+IPv6 ホストは Stateless Address Autoconfiguration、DHCPv6、静的設定、または組み合わせを使えます。DHCPv6 は IPv4 の DORA 交換を使わず、既定ルーター情報は通常 DHCPv6 ではなく IPv6 Router Advertisement から得ます。
+
+:::single-choice{#dhcp-ipv6-default-router} IPv6 ホストは通常、既定ルーター情報をどこから得ますか？
+
+::option[IPv6 Router Advertisement。]{#dhcp-router-advertisement .correct explanation="DHCPv6 はほかの設定を提供できますが、ルーターは Neighbor Discovery を通じて自身を通知します。"}
+::option[Ethernet の FCS トレーラー。]{#dhcp-ipv6-fcs explanation="FCS はリンク破損を検出し、ルーター設定は運びません。"}
+::option[IPv4 の DHCPACK だけ。]{#dhcp-ipv4-ack explanation="IPv4 DHCP メッセージは IPv6 ルーティングを設定しません。"}
+:::
+
+## まとめ
+
+DHCPv4 がホストのネットワーク設定をリースし、更新する仕組みを説明できるようになりました。
+
+1. DHCP サーバー、リレー、クライアントサブネットを区別する。
+2. DISCOVER、OFFER、REQUEST、ACK の交換を追う。
+3. アドレスとオプションを期限付きのリース状態として扱う。
+4. アドレス、経路、DNS、リースメタデータをまとめて検証する。
+5. DHCPv4 の動作と IPv6 自動設定を区別する。

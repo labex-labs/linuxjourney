@@ -1,69 +1,97 @@
 ---
-index: 9
+lesson_id: "arch-linux"
+course_id: "getting-started"
 lang: "de"
+order_index: 9
 title: "Arch Linux"
-meta_title: "Arch Linux Distribution"
-meta_description: "Erfahren Sie, was die Arch Linux Distribution ist, wie das Rolling-Release-Modell und der Paketmanager Pacman funktionieren und warum Arch Linux Nutzer anspricht, die volle Kontrolle und ein praxisorientiertes System suchen."
-meta_keywords: "arch linux distro, arch linux distribution, was ist arch linux, arch rolling release, pacman paketmanager, arch linux philosophie"
+description: "Erfahre, wie Arch Linux Rolling Releases, Pacman und eine vom Nutzer verwaltete Systemkonfiguration verbindet."
+meta_title: "Arch-Linux-Distribution"
+meta_description: "Erfahre, was die Arch-Linux-Distribution ist, wie ihr Rolling-Release-Modell und die Paketverwaltung Pacman funktionieren und warum Arch Linux Nutzer anspricht, die Kontrolle und ein praxisnahes System wünschen."
+meta_keywords: "Arch-Linux-Distribution, Arch Linux, was ist Arch Linux, Arch Rolling Release, Pacman-Paketverwaltung, Arch-Linux-Philosophie"
 ---
 
-## Lesson Content
+## Was ist Arch Linux?
 
-### Was ist Arch Linux?
+Arch Linux ist eine schlanke, unabhängig entwickelte Linux-Distribution, die für Nutzerkontrolle und einen praxisnahen Ansatz bekannt ist. Sie ist bei Nutzern beliebt, die ihr System bewusst zusammenstellen möchten, statt sich auf umfangreiche Voreinstellungen zu verlassen.
 
-Arch Linux ist eine leichtgewichtige, unabhängig entwickelte Linux-Distribution, die für ihre Benutzerkontrolle und ihren praxisorientierten Ansatz bekannt ist. Sie ist beliebt bei Anwendern, die ihr System bewusster aufbauen möchten, anstatt sich auf umfangreiche Standardeinstellungen zu verlassen.
+Anders als Distributionen mit geplanten Hauptversionen folgt Arch einem Rolling-Release-Modell. Das bedeutet, dass das System fortlaufend aktualisiert wird, statt auf große Versionssprünge zu warten.
 
-Im Gegensatz zu Distributionen mit geplanten Hauptversionen folgt Arch einem Rolling-Release-Modell. Das bedeutet, dass das System kontinuierliche Updates erhält, anstatt auf große Versionssprünge zu warten.
+:::single-choice{#recognize-rolling-release} Was bedeutet das Rolling-Release-Modell von Arch Linux?
 
-### Warum Arch Linux beliebt ist
+::option[Das installierte System erhält fortlaufende Paketupgrades]{#continuous-upgrades .correct explanation="Arch entwickelt sich durch fortlaufende Paketupgrades und nicht durch getrennte Hauptversionen weiter. Eine gepflegte Installation kann dadurch langfristig aktuell bleiben."}
+::option[Das System wartet auf feste, mehrjährige Upgrade-Ausgaben]{#fixed-major-editions explanation="Feste Hauptausgaben beschreiben ein Point-Release-Modell. Arch aktualisiert das installierte System stattdessen fortlaufend."}
+::option[Das System ersetzt alle Pakete ausschließlich bei einer Neuinstallation]{#reinstall-for-updates explanation="Arch-Nutzer aktualisieren eine bestehende Installation mit Pacman. Eine Neuinstallation ist nicht der übliche Weg, um neue Upgrades zu erhalten."}
+:::
 
-Arch Linux ist beliebt, weil es den Benutzern ein hohes Maß an Kontrolle bietet. Viele wählen es nicht, weil es die einfachste Linux-Distribution ist, sondern weil es dazu anregt, zu verstehen, was installiert ist, wie das System konfiguriert ist und wie die Komponenten zusammenwirken.
+## Warum Arch Linux beliebt ist
 
-Das macht Arch zu einer häufigen Empfehlung für neugierige fortgeschrittene Benutzer, auch wenn es normalerweise nicht die erste Distribution ist, die Anfängern beim Vergleich von Optionen in [Choosing a Linux Distribution](https://labex.io/de/lesson/choosing-a-linux-distribution) vorgeschlagen wird.
+Arch Linux ist beliebt, weil es Nutzern ein hohes Maß an Kontrolle gibt. Viele entscheiden sich nicht für Arch, weil es die einfachste Linux-Distribution wäre, sondern weil es sie dazu anregt zu verstehen, was installiert ist, wie das System konfiguriert wird und wie die einzelnen Teile zusammenspielen.
 
-### Rolling Releases
+Dadurch wird Arch neugierigen Nutzern mit mittlerer oder fortgeschrittener Erfahrung häufig empfohlen, auch wenn es gewöhnlich nicht die erste Distribution ist, die Einsteigern beim Vergleich in [Eine Linux-Distribution auswählen](https://labex.io/lesson/choosing-a-linux-distribution) vorgeschlagen wird.
 
-Arch verwendet ein Rolling-Release-Modell, sodass Pakete kontinuierlich aktualisiert werden. Dies gibt Benutzern Zugriff auf aktuelle Software, ohne das System für jede Hauptversion neu installieren zu müssen, bedeutet aber auch, dass Updates mehr Aufmerksamkeit erfordern als bei konservativen Point-Release-Distributionen.
+:::single-choice{#match-arch-user} Welcher Nutzer passt am besten zu Arch Linux?
 
-Für Benutzer, die ein System wünschen, das auf dem neuesten Stand bleibt, sind Rolling Releases ein großer Anziehungspunkt. Für Benutzer, die maximale Vorhersehbarkeit bevorzugen, könnte sich eine Distribution wie [Debian](https://labex.io/de/lesson/debian) komfortabler anfühlen.
+::option[Ein Einsteiger, für den jede Entscheidung automatisch getroffen werden soll]{#automatic-beginner explanation="Arch überlässt bewusst viele Entscheidungen dem Nutzer. Für eine vollständig automatische Einrichtung eignet sich eine Distribution mit stärker vorbereiteten Voreinstellungen besser."}
+::option[Ein Nutzer, der Softwareaktualisierungen niemals prüfen möchte]{#ignore-updates explanation="Ein Arch-System mit Rolling Release verlangt aktive Wartung und Aufmerksamkeit für Aktualisierungshinweise. Aktualisierungen zu ignorieren, widerspricht dieser Verantwortung."}
+::option[Ein praxisorientierter Lernender, der bereit ist, zu lesen und das System zu pflegen]{#hands-on-learner .correct explanation="Arch richtet sich an Nutzer mit einer Do-it-yourself-Haltung, die Dokumentation lesen und Verantwortung für Konfiguration und Wartung übernehmen."}
+:::
 
-### Pacman und Paketverwaltung
+## Rolling Releases
 
-Arch verwendet Pacman als Paketmanager. Pacman installiert, aktualisiert, entfernt und verfolgt Software auf dem System und ist einer der bekanntesten Teile der Arch Linux-Erfahrung.
+Arch verwendet ein Rolling-Release-Modell, sodass Pakete fortlaufend aktualisiert werden. Damit erhalten Nutzer aktuelle Software, ohne das System für jede Hauptversion neu installieren zu müssen. Die Aktualisierungen erfordern jedoch mehr Aufmerksamkeit als bei konservativen Distributionen mit Einzelveröffentlichungen.
 
-Ein häufiger Befehl ist `sudo pacman -Syu`, der Paketdatenbanken synchronisiert und das installierte System aktualisiert. Pacman wird geschätzt, weil es direkt, schnell und eng auf das minimalistische Design von Arch abgestimmt ist.
+Für Nutzer, die ein dauerhaft aktuelles System möchten, sind Rolling Releases sehr attraktiv. Wer dagegen größtmögliche Vorhersehbarkeit bevorzugt, fühlt sich mit einer Distribution wie [Debian](https://labex.io/lesson/debian) möglicherweise wohler.
 
-### Die Arch-Philosophie
+## Pacman und Paketverwaltung
 
-Arch wird oft mit Minimalismus, Modernität und Benutzerzentrierung assoziiert. In der Praxis bedeutet das, dass die Distribution versucht, unnötige Abstraktionen zu vermeiden und von den Benutzern erwartet, dass sie die Verantwortung für Einrichtung und Wartung übernehmen.
+Arch verwendet Pacman als Paketverwaltung. Pacman installiert, aktualisiert, entfernt und erfasst Software auf dem System und gehört zu den bekanntesten Bestandteilen der Arch-Linux-Erfahrung.
 
-Diese Philosophie ist ein Hauptgrund, warum Arch engagierte Benutzer anzieht. Es versucht nicht, Komplexität so weit wie möglich zu verbergen. Es versucht, das System verständlich zu machen.
+Ein verbreiteter Befehl ist `sudo pacman -Syu`. Er synchronisiert die Paketdatenbanken und führt ein vollständiges Upgrade der Pakete aus den konfigurierten Paketquellen durch. Arch unterstützt keine Teil-Upgrades. Nutzer sollten deshalb vermeiden, Paketdatenbanken zu aktualisieren, ohne das zugehörige vollständige Systemupgrade abzuschließen. Pacman wird geschätzt, weil es direkt und schnell ist und gut zu Archs schlanker Gestaltung passt.
 
-### Wer sollte Arch Linux verwenden?
+:::single-choice{#identify-pacman-role} Welche Aufgabe hat Pacman unter Arch Linux?
 
-Arch Linux eignet sich am besten für Benutzer, die eine praxisorientierte Linux-Distribution wünschen und nichts dagegen haben, Dokumentationen zu lesen, Teile des Systems manuell zu konfigurieren und die Verantwortung für Updates zu übernehmen. Es ist eine hervorragende Lernumgebung für Benutzer, die tieferes Systemwissen erlangen möchten.
+::option[Das Desktop-Layout auswählen, ohne Software zu verwalten]{#pacman-desktop-layout explanation="Die Desktop-Konfiguration ist von der Paketverwaltung getrennt. Pacman verwaltet die Softwarepakete, die Desktop-Komponenten bereitstellen können."}
+::option[Das Rolling-Release-Modell durch feste Ausgaben ersetzen]{#pacman-fixed-releases explanation="Pacman unterstützt Archs fortlaufendes System durch Paketupgrades. Es verwandelt Arch nicht in eine Distribution mit Einzelveröffentlichungen."}
+::option[Softwarepakete installieren, aktualisieren, entfernen und erfassen]{#pacman-package-manager .correct explanation="Pacman ist die Paketverwaltung von Arch Linux. Es pflegt die installierten Pakete und arbeitet mit den Paketquellen der Distribution."}
+:::
 
-Für absolute Anfänger ist Arch normalerweise eher als späterer Schritt denn als erster Schritt geeignet.
+:::single-choice{#avoid-partial-upgrades} Warum sollte ein Arch-Nutzer nach dem Aktualisieren der Paketdatenbanken ein vollständiges Upgrade durchführen?
 
-### Weiterführende Literatur
+::option[Teil-Upgrades sind die empfohlene Methode, um alte Bibliotheken zu bewahren]{#partial-upgrades-recommended explanation="Arch unterstützt Teil-Upgrades ausdrücklich nicht. Neuere Bibliotheken mit älteren abhängigen Paketen zu mischen, kann das System beschädigen."}
+::option[Das Aktualisieren der Paketdatenbanken installiert das Betriebssystem automatisch neu]{#refresh-reinstalls-system explanation="Eine Aktualisierung der Datenbank erneuert nur die Paketinformationen. Sie installiert Arch nicht neu, sollte aber vom zugehörigen vollständigen Upgrade gefolgt werden."}
+::option[Die Pakete der Paketquellen werden als ein konsistenter Systemzustand gepflegt]{#consistent-system-state .correct explanation="Archs Paketquellen entwickeln sich als fortlaufendes System gemeinsam weiter. Ein vollständiges Upgrade hält installierte Bibliotheken und davon abhängige Pakete aufeinander abgestimmt."}
+:::
+
+## Die Arch-Philosophie
+
+Arch wird häufig mit Minimalismus, Modernität und der zentralen Rolle des Nutzers verbunden. In der Praxis bedeutet das, dass die Distribution unnötige Abstraktion vermeiden möchte und von Nutzern verlangt, Verantwortung für Einrichtung und Wartung zu übernehmen.
+
+Diese Philosophie ist ein wichtiger Grund, warum Arch engagierte Nutzer anzieht. Die Distribution versucht nicht, Komplexität so weit wie möglich zu verbergen, sondern das System verständlich zu machen.
+
+## Wer sollte Arch Linux verwenden?
+
+Arch Linux eignet sich am besten für Nutzer, die eine praxisnahe Linux-Distribution möchten und bereit sind, Dokumentation zu lesen, Teile des Systems manuell zu konfigurieren und Verantwortung für Aktualisierungen zu übernehmen. Für Nutzer, die tiefere Systemkenntnisse erwerben möchten, ist es eine hervorragende Lernumgebung.
+
+Für vollständige Einsteiger eignet sich Arch gewöhnlich besser als späterer Schritt denn als allererster Einstieg.
+
+## Weiterführende Literatur
 
 - [Arch Linux](https://archlinux.org/)
 - [ArchWiki](https://wiki.archlinux.org/)
 - [Pacman](https://wiki.archlinux.org/title/Pacman)
-- [Arch Linux Installationsanleitung](https://wiki.archlinux.org/title/Installation_guide)
+- [Installationsanleitung für Arch Linux](https://wiki.archlinux.org/title/Installation_guide)
 
-## Exercise
+Um die von Arch Linux erwartete Sicherheit auf der Befehlszeile aufzubauen, empfehlen wir diese LabEx-Kurse:
 
-Um das Vertrauen in die Befehlszeile aufzubauen, das Arch Linux voraussetzt, empfehlen wir diese LabEx-Kurse:
+1. **[Linux-Befehle online üben](https://labex.io/courses/linux-basic-commands-practice-online)** - Festige die Gewohnheiten auf der Befehlszeile, die in einer praxisnahen Linux-Umgebung wichtig sind.
+2. **[Shell für Einsteiger](https://labex.io/courses/shell-for-beginners)** - Werde sicherer im Umgang mit der Shell und den Arbeitsabläufen im Terminal.
+3. **[Grundlagen der Shell-Skripterstellung](https://labex.io/courses/shell-scripting-fundamentals)** - Vertiefe dein Wissen, sobald du mehr Kontrolle über deine Linux-Umgebung möchtest.
 
-1. **[Linux Commands Practice Online](https://labex.io/de/courses/linux-basic-commands-practice-online)** - Stärken Sie die Befehlszeilengewohnheiten, die in einer praxisorientierten Linux-Umgebung wichtig sind.
-2. **[Shell for Beginners](https://labex.io/de/courses/shell-for-beginners)** - Verbessern Sie Ihren Umgang mit der Shell und dem Terminal-Workflow.
-3. **[Shell Scripting Fundamentals](https://labex.io/de/courses/shell-scripting-fundamentals)** - Gehen Sie tiefer, sobald Sie mehr Kontrolle über Ihre Linux-Umgebung wünschen.
+## Zusammenfassung
 
-## Quiz Question
+Du kannst nun erklären, wie Arch Linux fortlaufende Upgrades mit unmittelbarer Verantwortung des Nutzers verbindet.
 
-Wie heißt der Paketmanager, der von Arch Linux verwendet wird? Bitte antworten Sie auf Englisch und achten Sie auf die Groß- und Kleinschreibung.
-
-## Quiz Answer
-
-Pacman
+1. Beschreibe Archs Rolling-Release-Modell.
+2. Erkenne die Nutzer, für die Arch entwickelt wurde.
+3. Bestimme Pacman als Archs Paketverwaltung.
+4. Erkläre, warum Arch vollständige Systemupgrades erfordert.

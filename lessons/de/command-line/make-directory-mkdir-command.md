@@ -1,15 +1,16 @@
 ---
-index: 12
+lesson_id: "make-directory-mkdir-command"
+course_id: "command-line"
 lang: "de"
+order_index: 12
 title: "mkdir (Verzeichnis erstellen)"
+description: "Lerne, mit mkdir einzelne, mehrere und verschachtelte Verzeichnisse zu erstellen."
 meta_title: "mkdir (Verzeichnis erstellen) - Kommandozeile"
 meta_description: "Lerne den Linux-Befehl mkdir mit Beispielen zum Erstellen eines Verzeichnisses, mehrerer Verzeichnisse, verschachtelter übergeordneter Verzeichnisse und zum Setzen von Berechtigungen."
 meta_keywords: "mkdir Befehl, linux mkdir, Verzeichnis erstellen linux, Verzeichnis anlegen linux, mkdir -p, mkdir -m, Ordner erstellen linux"
 ---
 
-## Lesson Content
-
-Wenn du mit Dateien arbeitest, musst du sie in Verzeichnissen organisieren. Das wichtigste Werkzeug dafür ist der Befehl `mkdir`, der für „make directory“ (Verzeichnis erstellen) steht.
+Der Befehl `mkdir`, kurz für „make directory“, erstellt Verzeichnisse, in denen du Dateien und weitere Verzeichnisse organisieren kannst.
 
 Die grundlegende Syntax lautet:
 
@@ -17,49 +18,66 @@ Die grundlegende Syntax lautet:
 mkdir [OPTIONS] DIRECTORY...
 ```
 
-### Ein einzelnes Verzeichnis erstellen
+## Ein Verzeichnis erstellen
 
-Die einfachste Verwendung von `mkdir` ist das Erstellen eines einzelnen neuen Verzeichnisses. Wenn das Verzeichnis noch nicht existiert, wird es an deinem aktuellen Ort erstellt.
+Übergib einen Pfad, um ein einzelnes Verzeichnis zu erstellen. Dieses Beispiel legt `documents` im aktuellen Arbeitsverzeichnis an:
 
 ```bash
 $ mkdir documents
 ```
 
-### Mehrere Verzeichnisse erstellen
+Existiert bereits ein Eintrag namens `documents`, meldet `mkdir` einen Fehler, statt ihn zu ersetzen. Mit `ls -ld documents` kannst du den vorhandenen Eintrag untersuchen.
 
-Du kannst auch mehrere Verzeichnisse auf einmal erstellen, indem du ihre Namen mit Leerzeichen getrennt angibst. Das ist eine effiziente Methode, um schnell mehrere Ordner anzulegen.
+:::single-choice{#create-one-directory} Welcher Befehl erstellt im aktuellen Arbeitsverzeichnis ein Verzeichnis namens `documents`?
+
+::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` erstellt das verlangte Verzeichnis am relativen Pfad `documents`."}
+::option[`touch documents`]{#touch-documents explanation="`touch` erstellt bei einem fehlenden Pfad eine leere reguläre Datei. Ein Verzeichnis legt der Befehl nicht an."}
+::option[`cd documents`]{#cd-documents explanation="`cd` versucht, in ein vorhandenes Verzeichnis zu wechseln. Ein fehlendes Verzeichnis erstellt der Befehl nicht."}
+:::
+
+## Mehrere Verzeichnisse erstellen
+
+Führe mehrere Pfade auf, um mit einem Befehl mehrere Verzeichnisse anzulegen:
 
 ```bash
 $ mkdir books paintings
 ```
 
-### Verschachtelte Verzeichnisse erstellen
+:::single-choice{#create-separate-directories} Welcher Befehl erstellt zwei gleichrangige Verzeichnisse namens `books` und `paintings`?
 
-Manchmal musst du ein Verzeichnis und seine übergeordneten Verzeichnisse gleichzeitig erstellen. Die Option `-p` ist dafür ideal. Sie verhindert Fehler, falls übergeordnete Verzeichnisse nicht existieren.
+::option[`mkdir books/paintings`]{#nested-paintings explanation="Dieser Pfad beschreibt `paintings` innerhalb von `books`, nicht zwei gleichrangige Verzeichnisse. Fehlt `books`, schlägt er außerdem fehl."}
+::option[`mkdir "books paintings"`]{#spaced-directory explanation="Die Anführungszeichen verbinden beide Wörter zu einem Pfad. So wird ein einzelnes Verzeichnis mit einem Leerzeichen im Namen angefordert."}
+::option[`mkdir books paintings`]{#two-directories .correct explanation="Getrennte Operanden weisen `mkdir` an, `books` und `paintings` als zwei Verzeichnisse zu erstellen."}
+:::
+
+## Fehlende übergeordnete Verzeichnisse erstellen
+
+Ohne Option schlägt `mkdir books/hemingway/favorites` fehl, wenn ein Zwischenverzeichnis fehlt. Mit `-p` werden alle fehlenden übergeordneten Verzeichnisse entlang des Pfads angelegt:
 
 ```bash
 $ mkdir -p books/hemingway/favorites
 ```
 
-Dieser einzelne Befehl erstellt `books`, `hemingway` und `favorites`, falls sie noch nicht existieren.
+Damit entstehen alle fehlenden Pfadbestandteile. Außerdem wird nicht allein deshalb ein Fehler gemeldet, weil das letzte Verzeichnis bereits existiert. Andere Fehler, etwa fehlende Berechtigungen, sind weiterhin möglich.
 
-### Verzeichnisberechtigungen setzen
+:::single-choice{#create-nested-path} Kein Teil von `projects/app/src` existiert bisher. Welcher Befehl erstellt den vollständigen Verzeichnispfad?
 
-Verwende `-m`, um beim Erstellen eines Verzeichnisses Berechtigungen festzulegen.
+::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="Die Option `-p` erstellt jedes fehlende übergeordnete Verzeichnis, bevor das letzte Verzeichnis angelegt wird."}
+::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="Ohne `-p` kann `mkdir` das Verzeichnis `src` nicht erstellen, wenn die Zwischenverzeichnisse fehlen."}
+::option[`mkdir -m projects/app/src`]{#mkdir-mode-missing explanation="Die Option `-m` benötigt ein Modusargument und fordert nicht das Erstellen fehlender übergeordneter Verzeichnisse an."}
+:::
+
+## Den anfänglichen Modus festlegen
+
+Mit `-m MODE` gibst du die Berechtigungen für ein neu erstelltes Verzeichnis an:
 
 ```bash
 $ mkdir -m 755 public
 ```
 
-Mehr zu Berechtigungen lernst du später, aber dieses Beispiel erstellt ein Verzeichnis, das der Besitzer beschreiben kann und das andere lesen und betreten dürfen.
+Berechtigungsmodi lernst du später ausführlicher kennen. In diesem Beispiel erhält der Eigentümer mit Modus `755` Lese-, Schreib- und Suchrechte; Gruppe und andere erhalten Lese- und Suchrechte.
 
-### Häufige mkdir-Optionen
-
-- `-p`: Erstelle bei Bedarf übergeordnete Verzeichnisse.
-- `-m MODE`: Setze Berechtigungen für das neue Verzeichnis.
-- `-v`: Gib für jedes erstellte Verzeichnis eine Meldung aus.
-
-Beispiel:
+Mit `-v` lässt du für jedes erstellte Verzeichnis eine Meldung ausgeben:
 
 ```bash
 $ mkdir -pv projects/app/src
@@ -68,27 +86,23 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-### Häufige Fragen
+:::single-choice{#set-directory-mode} Welcher Befehl erstellt `public` mit dem Berechtigungsmodus `755`?
 
-**Warum sagt mkdir „File exists“?** Eine Datei oder ein Verzeichnis mit diesem Namen existiert bereits. Verwende `ls`, um es zu überprüfen.
+::option[`mkdir -p 755 public`]{#parents-755 explanation="Die Option `-p` behandelt die übrigen Wörter als Verzeichnispfade. Den Berechtigungsmodus `755` setzt sie nicht."}
+::option[`mkdir -v 755 public`]{#verbose-755 explanation="Die Option `-v` gibt Erstellungsmeldungen aus. `755` wird damit nicht als Berechtigungsmodus interpretiert."}
+::option[`mkdir -m 755 public`]{#mode-public .correct explanation="Die Option `-m` übernimmt den gewünschten Modus; `public` ist der zu erstellende Verzeichnispfad."}
+:::
 
-**Wie erstelle ich verschachtelte Verzeichnisse?** Verwende `mkdir -p parent/child/grandchild`.
+Mit diesen Übungen kannst du Verzeichnisse, verschachtelte Strukturen und anfängliche Berechtigungen praktisch trainieren:
 
-**Kann mkdir Dateien erstellen?** Nein. Verwende `touch`, um leere Dateien zu erstellen.
+1. **[Linux mkdir Command: Directory Creating](https://labex.io/de/labs/linux-linux-mkdir-command-directory-creating-209739)** – Erstelle mit `mkdir` einfache und verschachtelte Verzeichnisse, setze Berechtigungen und organisiere das Dateisystem.
+2. **[Setting Up a New Project Structure](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** – Erstelle eine vorgegebene Projektstruktur und navigiere darin mit grundlegenden Befehlen wie `mkdir` und `cd`.
 
-## Exercise
+## Zusammenfassung
 
-Übung macht den Meister! Hier sind einige praktische Labs, um dein Verständnis für das Erstellen und Verwalten von Verzeichnissen zu vertiefen:
+Du kannst nun Verzeichnisstrukturen mit bewusst gewählten Namen, Eltern und Modi erstellen.
 
-1. **[Linux mkdir Command: Directory Creating](https://labex.io/de/labs/linux-linux-mkdir-command-directory-creating-209739)** – Lerne, wie du den Befehl `mkdir` in Linux verwendest, um Verzeichnisse zu erstellen, Berechtigungen zu setzen und dein Dateisystem zu organisieren. Dieses Lab behandelt grundlegende und fortgeschrittene Anwendungen, einschließlich des Erstellens verschachtelter Verzeichnisse.
-2. **[Setting Up a New Project Structure](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** – Übe deine Linux-Verzeichnisverwaltung, indem du eine bestimmte Projektstruktur erstellst und dich mit wichtigen Befehlen wie `mkdir` und `cd` darin bewegst.
-
-Diese Labs helfen dir, die Konzepte in realen Szenarien anzuwenden und Sicherheit beim Erstellen und Organisieren von Verzeichnissen unter Linux zu gewinnen.
-
-## Quiz Question
-
-Welcher Befehl wird verwendet, um ein Verzeichnis zu erstellen? Bitte antworte nur mit dem englischen Befehl in Kleinbuchstaben.
-
-## Quiz Answer
-
-mkdir
+1. Erstelle ein oder mehrere Verzeichnisse mit einem Befehl.
+2. Erkenne einen Fehler durch einen bereits vorhandenen Pfad.
+3. Lege fehlende übergeordnete Verzeichnisse mit `-p` an.
+4. Setze den Modus eines neuen Verzeichnisses mit `-m`.

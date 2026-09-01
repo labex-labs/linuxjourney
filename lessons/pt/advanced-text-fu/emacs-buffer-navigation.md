@@ -1,70 +1,115 @@
 ---
-index: 11
+lesson_id: "emacs-buffer-navigation"
+course_id: "advanced-text-fu"
 lang: "pt"
-title: "Navegação de Buffer no Emacs"
-meta_title: "Navegação de Buffer no Emacs - Técnicas Avançadas de Texto"
-meta_description: "Um guia completo sobre navegação de buffers no Emacs. Aprenda a trocar buffers eficientemente, dividir janelas e gerenciar seu fluxo de trabalho com comandos essenciais do Emacs. Domine o comando switch buffer do emacs e aprimore suas habilidades de edição de texto."
-meta_keywords: "navegação emacs, emacs switch buffer, gerenciamento de buffer emacs, comandos emacs, C-x b, C-x k, C-x 2, editor de texto, linux"
+order_index: 11
+title: "Navegação por Buffers no Emacs"
+description: "Aprenda a alternar e encerrar buffers do Emacs enquanto divide, seleciona e fecha janelas de exibição."
+meta_title: "Navegação por Buffers no Emacs - Text-Fu Avançado"
+meta_description: "Aprenda a alternar buffers, dividir e selecionar janelas e gerenciar seu fluxo de trabalho com comandos essenciais do Emacs."
+meta_keywords: "navegação Emacs, alternar buffer Emacs, gerenciamento buffers Emacs, comandos Emacs, C-x b, C-x k, C-x 2, editor texto"
 ---
 
-## Lesson Content
+Um buffer do Emacs mantém texto ou estado do editor, enquanto uma janela exibe um buffer. Um buffer pode existir sem estar visível, e várias janelas podem exibir o mesmo buffer. Gerenciar um desses objetos não gerencia automaticamente o outro.
 
-No Emacs, um "buffer" é um espaço de trabalho temporário onde você pode editar texto. Ao abrir um arquivo, o Emacs carrega seu conteúdo em um buffer. Você também pode ter buffers que não correspondem a um arquivo, como o buffer `*scratch*`. Gerenciar esses buffers de forma eficiente é fundamental para um fluxo de trabalho tranquilo. Dominar a **navegação emacs** entre buffers acelerará significativamente seu processo de edição.
+## Alternância entre Buffers
 
-### Alternando Entre Buffers
+Use `C-x b`, que executa `switch-to-buffer`, para selecionar pelo nome um buffer na janela atual:
 
-Para se mover entre diferentes buffers abertos, você pode usar vários comandos. O comando principal para **emacs switch buffer** solicitará o nome do buffer que você deseja abrir.
-
-```
-C-x b - Alternar para outro buffer pelo nome
-C-x seta direita - Ciclar para o próximo buffer
-C-x seta esquerda - Ciclar para o buffer anterior
+```text
+C-x b
 ```
 
-### Gerenciando Janelas de Buffer
+O minibuffer oferece conclusão para os nomes existentes. Inserir um novo nome pode criar um buffer sem arquivo com esse nome; isso não visita um caminho de arquivo.
 
-O Emacs permite que você visualize vários buffers ao mesmo tempo, dividindo sua tela (ou "frame") em diferentes janelas.
+Por padrão, `C-x Right` executa `next-buffer`, e `C-x Left` executa `previous-buffer`, percorrendo os buffers na janela selecionada.
 
-```
-C-x 2 - Dividir a janela atual verticalmente
-```
+:::single-choice{#emacs-switch-buffer-key} Qual sequência de teclas solicita um nome de buffer para exibi-lo na janela atual?
 
-Este comando cria duas janelas, uma acima da outra, permitindo que você veja dois buffers simultaneamente. Para mover seu cursor entre essas janelas, use:
+::option[`C-x C-f`]{#emacs-buffer-find-file explanation="Essa sequência solicita um caminho e o visita, uma operação diferente de escolher pelo nome um buffer existente."}
+::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` lê um nome e exibe esse buffer na janela selecionada."}
+::option[`C-x k`]{#emacs-buffer-kill explanation="Essa sequência solicita o encerramento de um buffer, em vez de mudar a janela selecionada para ele."}
+:::
 
-```
-C-x o - Mover para a outra janela
-```
+## Divisão da Janela Selecionada
 
-Quando terminar com uma visualização de tela dividida e quiser retornar a uma única janela, você pode usar o seguinte comando. Isso faz com que a janela atual seja a única na tela.
+Use `C-x 2` para dividir a janela selecionada em uma janela superior e outra inferior:
 
-```
-C-x 1 - Fechar todas as outras janelas
-```
-
-### Fechando um Buffer
-
-Quando terminar de trabalhar com um arquivo ou um buffer temporário, você pode fechá-lo para manter seu espaço de trabalho organizado.
-
-```
-C-x k - Matar (fechar) o buffer atual
+```text
+C-x 2
 ```
 
-Se você já usou um multiplexador de terminal como `screen` ou `tmux`, notará que esses comandos de gerenciamento de buffer parecem muito familiares.
+Use `C-x 3` para dividi-la em janelas à esquerda e à direita:
 
-## Exercise
+```text
+C-x 3
+```
 
-Para solidificar sua compreensão da manipulação de buffers e arquivos de texto, experimente estes laboratórios práticos. Eles ajudarão você a aplicar esses conceitos em cenários do mundo real.
+A nova janela inicialmente exibe um buffer, muitas vezes o mesmo. Você pode alternar os buffers de cada janela independentemente.
 
-1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique criar, editar, salvar e navegar por texto dentro dos editores Vim e Nano, que são cruciais para trabalhar com buffers.
-2. **[Comando cat do Linux: Concatenação de Arquivos](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)** - Aprenda a visualizar, concatenar e manipular arquivos de texto, aplicando diretamente à forma como você pode interagir com o conteúdo do buffer.
-3. **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique o uso de comandos como `cat`, `more` e `less` para visualizar e navegar eficientemente por arquivos de texto, simulando cenários do mundo real de exame de conteúdo semelhante a buffer.
+:::single-choice{#emacs-split-side-by-side} Qual sequência de teclas divide a janela selecionada do Emacs em janelas à esquerda e à direita?
 
-Estes laboratórios ajudarão você a ganhar confiança na manipulação de arquivos de texto e buffers no Linux.
+::option[`C-x 1`]{#emacs-window-one explanation="Essa sequência exclui as outras janelas e torna a selecionada a única de seu frame."}
+::option[`C-x 2`]{#emacs-window-below explanation="Essa sequência cria janelas superior e inferior, não uma divisão lado a lado."}
+::option[`C-x 3`]{#emacs-window-right .correct explanation="`split-window-right`, associado a `C-x 3`, cria janelas à esquerda e à direita."}
+:::
 
-## Quiz Question
+## Seleção e Fechamento de Janelas
 
-Como você mata (fecha) um buffer? Por favor, responda usando a combinação de teclas exata em inglês, prestando atenção às maiúsculas/minúsculas.
+Use `C-x o`, que executa `other-window`, para selecionar a próxima janela:
 
-## Quiz Answer
+```text
+C-x o
+```
 
+Use estes comandos para remover exibições:
+
+- `C-x 0`: exclui a janela selecionada.
+- `C-x 1`: exclui as outras janelas do frame atual.
+
+Excluir uma janela normalmente mantém vivo o buffer exibido nela. Você pode mostrar esse buffer novamente em outra janela.
+
+:::single-choice{#emacs-select-other-window} Qual sequência de teclas move o ponto e o foco do teclado para outra janela do Emacs?
+
+::option[`C-x 0`]{#emacs-delete-selected-window explanation="Essa sequência exclui a janela selecionada, em vez de mover o foco para outra."}
+::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` alterna a seleção para outra janela do frame."}
+::option[`C-x b`]{#emacs-switch-in-window explanation="Essa sequência muda o buffer exibido pela janela atual, não a janela selecionada."}
+:::
+
+:::single-choice{#emacs-keep-one-window} Qual sequência de teclas preserva a janela selecionada e exclui as outras janelas de seu frame?
+
+::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` torna a janela selecionada a única do frame."}
+::option[`C-x 0`]{#emacs-delete-current-window explanation="Essa sequência exclui a própria janela selecionada, em vez de preservá-la."}
+::option[`C-x 2`]{#emacs-add-lower-window explanation="Essa sequência acrescenta outra janela em vez de reduzir o frame a uma."}
+:::
+
+## Encerramento de um Buffer
+
+Use `C-x k`, que executa `kill-buffer`, para solicitar um buffer a remover do Emacs:
+
+```text
 C-x k
+```
+
+O buffer atual é a escolha padrão. Se um buffer associado a um arquivo possuir alterações não salvas, o Emacs avisará antes de encerrá-lo. Leia a pergunta: encerrar um buffer modificado pode descartar edições.
+
+Encerrar um buffer é diferente de excluir uma janela. O Emacs substitui um buffer encerrado em qualquer janela que o exiba, enquanto excluir uma janela pode manter o buffer intacto.
+
+:::single-choice{#emacs-kill-buffer-key} Qual sequência de teclas solicita o encerramento de um buffer do Emacs?
+
+::option[`C-x 0`]{#emacs-kill-window-only explanation="Essa sequência exclui uma janela de exibição, mas normalmente mantém o buffer vivo."}
+::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` remove o buffer selecionado do Emacs depois de qualquer confirmação necessária sobre modificações."}
+::option[`C-x b`]{#emacs-kill-switch explanation="Essa sequência muda a janela atual para um buffer nomeado e não o encerra."}
+:::
+
+Pratique esses comandos com `*scratch*` e buffers descartáveis. Antes de encerrar qualquer buffer associado a um arquivo, confirme se o indicador de modificação mostra trabalho não salvo.
+
+## Resumo
+
+Agora você sabe gerenciar o que o Emacs armazena e o que cada janela exibe.
+
+1. Alterne buffers na janela selecionada com `C-x b`.
+2. Divida abaixo com `C-x 2` ou à direita com `C-x 3`.
+3. Selecione outra janela com `C-x o`.
+4. Remova exibições com `C-x 0` ou `C-x 1`.
+5. Encerre um buffer com `C-x k` somente depois de revisar as alterações não salvas.

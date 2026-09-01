@@ -1,51 +1,78 @@
 ---
-index: 1
+lesson_id: "network-basics"
+course_id: "network-basics"
 lang: "zh"
-title: "网络基础知识"
-meta_title: "网络基础知识 - 网络基础"
-meta_description: "了解学习 Linux 的最佳方式，从网络基础知识开始。本指南涵盖了 WAN、LAN、路由器和主机等网络组件的基础知识，适合初学者。"
-meta_keywords: "网络基础，Linux 基础，学习 Linux 的最佳方式，Linux 基础知识，广域网，局域网，无线局域网，网络教程，网络指南"
+order_index: 1
+title: "网络基础"
+description: "学习主机、链路、交换机、路由器和数据包如何构成本地网络与广域网。"
+meta_title: "网络基础 - 网络基础"
+meta_description: "从网络基础开始学习 Linux。本指南面向初学者，介绍 WAN、LAN、路由器和主机等基本网络组件。"
+meta_keywords: "网络基础, Linux 基础, 学习 Linux 的最佳方式, Linux 基础知识, WAN, LAN, WLAN, 网络教程, 网络指南"
 ---
 
-## Lesson Content
+网络连接各个接口，使不同主机上的应用程序能够交换数据。理解路径中每一部分由哪个设备、地址和链路处理，会让后续 Linux 命令更容易解读。
 
-理解 **linux 基础知识** 网络是一项基本技能。对于许多人来说，掌握这些概念是更深入地学习 **linux 的最佳方式**，因为网络是现代系统运行不可或缺的一部分。让我们探索一个典型的家庭网络，以了解其核心组件。
+## 主机与接口
 
-### 核心网络组件
+主机是端点或联网系统，例如笔记本电脑、服务器、手机或虚拟机。一台主机可以有多个接口：以太网、Wi-Fi、环回、隧道、网桥或虚拟适配器。每个接口都可以具有适合其技术的链路层和网络层配置。
 
-您的家庭网络是一个协同工作的设备的小型生态系统。以下是关键参与者：
+使用以下命令检查 Linux 主机的接口和地址：
 
-- **ISP（互联网服务提供商）**：这是您付费获取互联网连接的公司，将您的家庭与全球互联网连接起来。
-- **路由器**：路由器是您网络的中心枢纽。它负责引导流量，允许每台设备连接到互联网并相互通信。现代路由器支持有线（以太网）和无线连接。
+```bash
+$ ip address show
+```
 
-### 理解网络类型 WAN LAN 和 WLAN
+接口存在或在管理上处于启用状态，并不能证明端到端连接正常。
 
-网络按其规模分类。在家庭设置中，您会遇到这三种常见类型，它们构成了 **网络基础知识** 的基础：
+:::single-choice{#network-basics-host-interface} 什么是网络接口？
 
-- **WAN（广域网）**：这个术语描述了您家外部的广阔网络，将您的路由器连接到更广泛的互联网。
-- **WLAN（无线局域网）**：这就是您的 Wi-Fi 网络。它将笔记本电脑和智能手机等无线设备连接到您的路由器，无需物理电缆。
-- **LAN（局域网）**：这指的是您网络中有线部分，通过以太网电缆将台式电脑或游戏机等设备连接到您的路由器。
+::option[互联网上每个数据包的永久副本。]{#network-basics-interface-copy explanation="接口发送和接收流量，并不是全局数据包归档。"}
+::option[主机连接到网络或虚拟链路的接入点。]{#network-basics-interface-attachment .correct explanation="一台主机可以拥有多个物理或虚拟接口，并分别进行配置。"}
+::option[ISP 账单的易读别名。]{#network-basics-interface-invoice explanation="计费标签与主机网络接入无关。"}
+:::
 
-### 主机和数据包
+## 局域网
 
-在任何网络中，每台连接的设备——无论是计算机、电话还是服务器——都被称为 **主机**。
+局域网（LAN）覆盖家庭、办公室或数据中心网段等有限环境。以太网交换机在本地链路的端口之间转发帧。无线局域网（WLAN）使用无线链路技术。当网桥或接入点连接有线和无线接口时，它们仍可以属于同一个 IP 子网。
 
-所有通过这些网络传输的数据，从网页到电子邮件，都被分解成称为 **数据包** 的小块。在整个“网络漫游者”部分，您将详细了解这些数据包如何往返于不同主机，完成它们在互联网上的旅程。
+:::single-choice{#network-basics-wlan-relationship} WLAN 与 LAN 有什么关系？
 
-## Exercise
+::option[WLAN 始终是一个独立的全球互联网。]{#network-basics-wlan-global explanation="它是使用无线链路技术的本地网络。"}
+::option[WLAN 是路由器使用的磁盘分区。]{#network-basics-wlan-disk explanation="该术语描述网络，而不是存储布局。"}
+::option[WLAN 是局域网的无线形式。]{#network-basics-wlan-local .correct explanation="无线与有线链路甚至可以桥接到同一个本地广播域。"}
+:::
 
-实践造就完美！实践经验对于掌握 **网络基础知识** 至关重要。以下实验将帮助您巩固对网络组件和主机如何通信的理解：
+## 路由器与更广的网络
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 使用 `ip a` 命令练习识别主机的网络寻址信息，包括 MAC 和 IP 地址。
-2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 学习测试网络可达性和识别不同 IP 地址类型，这对理解主机如何连接至关重要。
-3. **[在 Linux 中探索与 ping 和 arp 的网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 通过观察地址解析协议 (ARP) 和使用 `ping` 测试连通性，了解主机如何在网络上进行交互。
+路由器按照路由表在 IP 网络之间转发网络层数据包。家用设备通常会组合路由、交换、Wi-Fi 接入、防火墙、NAT 和 DHCP，但这些仍是不同功能。
 
-这些实验将帮助您在实际场景中应用主机、寻址和基本连接的概念，并增强对网络基础知识的信心。
+广域网（WAN）跨越较大的地理或管理边界。互联网服务提供商可以把客户网络连接到其他网络，但“WAN”并不只是指某个家庭之外的每台设备。
 
-## Quiz Question
+:::single-choice{#network-basics-router-role} 路由器的核心职责是什么？
 
-局域网被称为？请用英语回答，注意大小写。
+::option[在网络层网络之间转发数据包。]{#network-basics-forward-networks .correct explanation="路由会跨越 IP 网络边界选择下一跳。"}
+::option[将每个用户的文件存储为强制备份。]{#network-basics-router-backup explanation="文件保留不是路由的核心功能。"}
+::option[不查询 DNS 就转换每个主机名。]{#network-basics-router-hostnames explanation="名称解析与数据包转发是不同功能。"}
+:::
 
-## Quiz Answer
+## 数据包、帧与流
 
-LAN
+应用程序产生数据，协议层会将其分段并封装以便传输。IP 跨网络承载数据包；本地链路则将每个数据包放在与具体技术相关的帧中传输。路由器转发 IP 数据包时，通常会在每一跳替换链路层帧。
+
+一次通信可能包含双向传输的许多数据包。丢失、乱序、分片、重传和路径变化意味着，捕获到的单个数据包很少能描述完整的应用程序事务。
+
+:::single-choice{#network-basics-router-frame} 在路由器这一跳，链路层帧通常会发生什么？
+
+::option[路由器移除传入帧，并为下一条链路创建新帧。]{#network-basics-reframe .correct explanation="转发的 IP 数据包会装入适合传出接口的新链路层帧中。"}
+::option[同一个以太网帧原封不动地穿越整个互联网。]{#network-basics-same-frame explanation="帧的作用范围限于所在链路，并会在路由跳点被替换。"}
+::option[应用程序永久删除 IP 地址。]{#network-basics-delete-ip explanation="路由依赖网络层地址。"}
+:::
+
+## 总结
+
+现在，你可以描述一条基本网络路径的主要组成部分。
+
+1. 区分主机及其物理和虚拟接口。
+2. 识别局域网的有线和无线形式。
+3. 将组合式家用设备中的路由与其他功能分开理解。
+4. 区分链路帧与经过路由的 IP 数据包。

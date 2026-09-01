@@ -1,50 +1,115 @@
 ---
-index: 8
+lesson_id: "head-command"
+course_id: "text-fu"
 lang: "ja"
+order_index: 8
 title: "head コマンド"
+description: "入力の先頭から表示する行数またはバイト数を制御する方法を学びます。"
 meta_title: "head コマンド - Text-Fu"
 meta_description: "head コマンドを使用してファイルの先頭を表示する方法についての初心者向け Linux ガイド。行数を制御するための head -n オプションの使い方を学び、あらゆる Linux チュートリアルで不可欠なスキルを習得しましょう。"
 meta_keywords: "head コマンド，Linux head, ファイル先頭表示，Linux チュートリアル，Linux コマンド，初心者 Linux, head -n, Linux ガイド，テキストファイル，コマンドライン"
 ---
 
-## Lesson Content
+`head` コマンドは、ファイルや入力ストリームの先頭を表示します。ヘッダーの確認、構造化データのプレビュー、出力全体を表示せずに一部を抽出するときに便利です。
 
-Linux では、システムログのような非常に大きなファイルのコンテンツを調べる必要があることがよくあります。例えば、`cat /var/log/syslog`を実行すると、何ページものテキストがスクロールし、概要を素早く把握するのが難しくなります。では、**ファイルの先頭だけを表示**したい場合はどうすればよいでしょうか？そのための完璧なツールが`head`コマンドです。
+## 先頭の 10 行を表示する
 
-### head コマンドのデフォルトの動作
-
-デフォルトでは、`head`コマンドは指定されたファイルの最初の 10 行を表示します。これは、テキストを扱うための**初心者向け Linux ガイド**の基本的な部分です。実際に試すには、引数としてファイル名を指定するだけです。
+件数オプションを指定しない場合、`head` は指定した各ファイルの先頭 10 行を表示します。
 
 ```bash
-head /var/log/syslog
+$ head events.log
 ```
 
-このコマンドは`/var/log/syslog`から最初の 10 行を出力し、ファイルをエディタで開くことなく、ファイルの初期コンテンツを素早く確認できます。
+ファイルは変更されません。10 行未満なら、存在するすべての行が表示されます。
 
-### 行数のカスタマイズ
+:::single-choice{#head-default-lines} `head events.log` は標準で何を表示しますか？
 
-**Linux head**コマンドは柔軟性があります。「行数」を意味する`-n`フラグを使用すると、表示する行数を簡単に変更できます。例えば、ファイルの最初の 15 行を表示したい場合は、`head -n`オプションを次のように使用します。
+::option[末尾の 10 行。ファイルが短ければ全行。]{#head-last-ten explanation="入力の末尾を表示するのは `tail` の役割です。`head` は先頭から選びます。"}
+::option[先頭の 10 行。ファイルが短ければ全行。]{#head-first-ten .correct explanation="件数オプションがなければ、`head` は入力の先頭から最大 10 行を選びます。"}
+::option[ファイルの長さにかかわらず先頭の 1 行だけ。]{#head-first-one explanation="1 行には `-n 1` など明示的な件数が必要で、標準は 10 行です。"}
+:::
+
+## 行数を選ぶ
+
+表示する行数は `-n NUMBER` で指定します。
 
 ```bash
-head -n 15 /var/log/syslog
+$ head -n 15 events.log
 ```
 
-これにより、`head`はファイルヘッダーやログエントリを素早く調べるための最も有用な**Linux コマンド**の 1 つになります。
+GNU `head` は短縮形 `-15` も受け付けますが、`-n 15` のほうがオプションの意味を明確に表します。
 
-## Exercise
+:::single-choice{#head-five-lines} `report.txt` の先頭 5 行を表示するコマンドはどれですか？
 
-練習あるのみです！ファイルの先頭を表示することや、一般的なテキストファイル操作の理解を深めるための実践的なラボを以下に示します。
+::option[`head -c 5 report.txt`]{#head-five-bytes explanation="`-c` は行ではなくバイトを数えるため、最初の行の途中で終わることがあります。"}
+::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="`-n` は行数を選び、`5` は先頭 5 行を要求します。"}
+::option[`tail -n 5 report.txt`]{#tail-five-lines explanation="これは先頭ではなくファイル末尾の 5 行を表示します。"}
+:::
 
-1. **[Linux head コマンド：ファイル先頭表示](https://labex.io/ja/labs/linux-linux-head-command-file-beginning-display-214302)** - このラボでは、`head`コマンドを使用して、行数を変更する場合も含め、テキストファイルの先頭行を表示する方法をガイドします。
-2. **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - システムログや設定ファイルなど、`head`のようなコマンドを必要とすることが多いテキストファイルを効率的に表示・ナビゲートするための、必須の Linux コマンドラインスキルを練習します。
-3. **[迅速な脅威検出](https://labex.io/ja/labs/linux-rapid-threat-detection-387930)** - `head`（および`tail`）の知識を応用して、最近のログエントリを素早く抽出し分析し、現実世界のサイバーセキュリティ分析をシミュレートします。
+## バイト数を選ぶ
 
-これらのラボは、概念を実際のシナリオに適用し、Linux でのテキストファイルの表示と分析に対する自信を構築するのに役立ちます。
+完全な行ではなくバイトが必要な場合は `-c NUMBER` を使います。
 
-## Quiz Question
+```bash
+$ head -c 20 archive.bin
+```
 
-表示したい行数を変更するために、`head`コマンドでどのフラグを使用しますか？大文字と小文字を区別することに注意して、英語のフラグのみで回答してください。
+これは先頭 20 バイトを表示します。テキスト行やマルチバイト文字の途中で出力が終わることがあるため、通常のテキストプレビューには行モードを使います。
 
-## Quiz Answer
+:::single-choice{#head-first-bytes} `payload.bin` の先頭 100 バイトを stdout へ書くコマンドはどれですか？
 
--n
+::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="`-c` はバイト数を選ぶため、存在する先頭 100 バイトを要求します。"}
+::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="`-n` はバイトではなく行を数え、100 バイトより大幅に多くも少なくもなり得ます。"}
+::option[`cut -c 100 payload.bin`]{#cut-hundredth-character explanation="入力全体の先頭 100 バイトではなく、各行の位置 100 を選びます。"}
+:::
+
+## stdin と複数ファイルから読む
+
+ファイルオペランドがなければ `head` は stdin を読みます。
+
+```bash
+$ generate-report | head -n 5
+```
+
+複数ファイルを指定すると、通常は各ファイルの出力を識別するヘッダーが付きます。
+
+```bash
+$ head -n 2 january.txt february.txt
+==> january.txt <==
+...
+
+==> february.txt <==
+...
+```
+
+ヘッダーを抑制するには `-q`、1 ファイルでも表示するには `-v` を使います。
+
+:::single-choice{#head-pipeline-preview} `generate-report | head -n 5` で `head` は何を読みますか？
+
+::option[stdin を通じて `generate-report` の stdout を読む。]{#head-pipe-input .correct explanation="パイプが生成側の stdout を `head` の stdin へ接続し、そこから先頭 5 行を選びます。"}
+::option[現在のディレクトリにある先頭 5 個のファイル名を読む。]{#head-directory-names explanation="ディレクトリ一覧のコマンドはなく、`head` はパイプからストリームを受け取ります。"}
+::option[`generate-report` というファイルから 5 バイト読む。]{#head-producer-file explanation="左側はコマンドとして実行され、`-n` はバイトではなく行を数えます。"}
+:::
+
+:::single-choice{#head-suppress-filename-headers} `head` が複数ファイルを読むとき、ファイル名ヘッダーを抑制するオプションはどれですか？
+
+::option[`-v`]{#head-verbose explanation="`-v` は 1 ファイルだけでもヘッダーを表示するため、抑制とは逆です。"}
+::option[`-c`]{#head-byte-option explanation="`-c` は選択単位をバイトへ変え、ファイル名ヘッダーは制御しません。"}
+::option[`-q`]{#head-quiet .correct explanation="`-q`（quiet）は `head` がファイルごとのヘッダーラベルを表示しないようにします。"}
+:::
+
+ファイル先頭のプレビューを練習するには、次のラボを試してください。
+
+1. **[Linux head コマンド：ファイル先頭の表示](https://labex.io/ja/labs/linux-linux-head-command-file-beginning-display-214302)** - `head` でテキストファイルの先頭行を表示し、行数を変更します。
+2. **[Linux でログと設定ファイルを表示する](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `head` などでログや設定ファイルを効率よく確認します。
+3. **[迅速な脅威検知](https://labex.io/ja/labs/linux-rapid-threat-detection-387930)** - `head` と `tail` でログ項目を抽出し分析します。
+
+## まとめ
+
+`head` でファイルやコマンド出力の先頭をプレビューできるようになりました。
+
+1. 標準の先頭 10 行表示を使う。
+2. `-n` で行数を選ぶ。
+3. 必要に応じて `-c` でバイト数を選ぶ。
+4. パイプラインで stdin から読む。
+5. 複数ファイル表示時のヘッダーを制御する。

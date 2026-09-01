@@ -1,88 +1,89 @@
 ---
-index: 13
+lesson_id: "tr-translate-command"
+course_id: "text-fu"
 lang: "ja"
+order_index: 13
 title: "tr (変換)"
+description: "標準入力ストリームの文字集合を変換、削除、圧縮する方法を学びます。"
 meta_title: "tr (変換) - Text-Fu"
 meta_description: "文字の変換、削除、繰り返しの圧縮、文字クラスの使用、テキストのクリーンアップなど、Linuxのtrコマンドを例とともに学びましょう。"
 meta_keywords: "linux tr コマンド, tr コマンド, tr -d, tr -s, 文字変換, 文字削除, 文字クラス, テキスト処理 linux"
 ---
 
-## Lesson Content
+translate の略である `tr` コマンドは、stdin から読んだ文字を変換、削除、圧縮します。通常の入力ファイルオペランドは受け取らないため、パイプまたは入力リダイレクトでデータを渡します。
 
-`tr` コマンドは translate（変換）の略で、標準入力から文字を変換、削除、または圧縮するコマンドラインユーティリティです。簡単なテキスト操作に便利で、他のコマンドの出力をパイプで処理する際によく使われます。
-
-基本的な構文は以下の通りです。
+基本構文は次のとおりです。
 
 ```bash
 tr [OPTIONS] SET1 [SET2]
 ```
 
-`sed` や `awk` のようなツールとは異なり、`tr` は文字単位で動作します。単語や列、正規表現を同じようには理解しません。そのため、大文字小文字の変換、数字の削除、繰り返しスペースの正規化などの処理に高速かつシンプルに使えます。
+`tr` が扱うのは文字集合で、単語や一般的な正規表現ではありません。完全な単語、行構造、周囲の文脈に依存する変換には別のツールを使います。
 
-### 基本的な文字変換
+## 文字を変換する
 
-`tr` の最も一般的な使い方は、ある文字セットを別の文字セットに置き換えることです。例えば、小文字をすべて大文字に変換できます。
+2 つの集合を指定すると、`SET1` の文字を同じ位置にある `SET2` の文字へ対応付けます。
 
 ```bash
 $ echo "hello world" | tr a-z A-Z
 HELLO WORLD
 ```
 
-この例では、`echo` の出力を `tr` コマンドにパイプで渡しています。`tr` は文字範囲 `a-z` を対応する `A-Z` の文字に変換しました。
-
-また、1文字ずつ別の文字に変換することもできます。
-
 ```bash
 $ echo "2026-06-23" | tr '-' '/'
 2026/06/23
 ```
-
-`SET1` の各文字は、同じ位置の `SET2` の文字に対応しています。
 
 ```bash
 $ echo "abc123" | tr 'abc' 'ABC'
 ABC123
 ```
 
-ここでは、`a` が `A` に、`b` が `B` に、`c` が `C` に変わります。
+集合式はシェルにそのまま渡るよう引用します。`SET1` に含まれない文字は変更されません。
 
-### -d オプションで文字を削除する
+:::single-choice{#tr-map-characters} `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` は何を表示しますか？
 
-もう一つの強力な機能は、`-d` オプションを使って特定の文字を削除できることです。テキストのクリーンアップに特に便利です。例えば、文字列からすべての数字を削除したい場合は次のようにします。
+::option[`ABCABC`]{#tr-uppercase-digits explanation="数字は変換元集合にないため、文字へ置き換えられません。"}
+::option[`ABC123`]{#tr-uppercase-abc .correct explanation="`a`、`b`、`c` は `ABC` の同じ位置の文字へ対応し、数字は変わりません。"}
+::option[`abc123ABC`]{#tr-append-set explanation="`tr` は一致する入力文字を変換し、変換先集合をストリーム末尾へ追加しません。"}
+:::
+
+## 文字を削除する
+
+1 つの集合と `-d` を使うと、一致するすべての文字を削除します。
 
 ```bash
 $ echo "My address is 123 Main Street" | tr -d '0-9'
 My address is  Main Street
 ```
 
-ここでは、`tr -d` が指定したセット内のすべての文字、`0` から `9` を削除しました。
-
-文字クラスを使って句読点を削除することもできます。
-
 ```bash
 $ echo "Hello, world!" | tr -d '[:punct:]'
 Hello world
 ```
-
-改行文字を削除して行を結合することも可能です。
 
 ```bash
 $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-### 繰り返し文字の圧縮
+数字は完全な数値トークンではなく 1 文字ずつ削除されます。文字クラスは現在のロケールで定義される集合を表します。改行を削除すると代わりの区切りを入れずに行が連結されます。
 
-`tr` コマンドは `-s` オプションを使って繰り返しの文字を1つに圧縮できます。余分な空白を正規化するのに最適です。
+:::single-choice{#tr-delete-digits} 他の文字を変えず、stdin からすべての数字を削除するコマンドはどれですか？
+
+::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` は入力ストリームから数字クラスの全文字を削除します。"}
+::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` は連続する数字を圧縮しますが、各並びから 1 文字は残します。"}
+::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="通常の変換には第 2 集合が必要で、集合だけでは削除を要求しません。"}
+:::
+
+## 連続する文字を圧縮する
+
+`-s SET` は、集合内の同じ文字が続く並びを 1 文字へ置き換えます。
 
 ```bash
 $ echo "Hello      World,   how   are   you?" | tr -s ' '
 Hello World, how are you?
 ```
-
-この場合、`tr -s ' '` は複数のスペースの連続を単一のスペースに置き換え、出力をすっきりさせました。
-
-繰り返しの改行も圧縮できます。
 
 ```bash
 $ printf "one\n\n\nTwo\n" | tr -s '\n'
@@ -90,42 +91,46 @@ one
 Two
 ```
 
-### 文字クラスの使用
+最初の集合に含まれるのは通常の空白だけなので、タブや改行はそのコマンドでは圧縮されません。
 
-文字クラスを使うと、`tr` コマンドが読みやすくなり、移植性も高まります。よく使われるクラスは以下の通りです。
+:::single-choice{#tr-squeeze-spaces} stdin 内の通常の空白の連続をすべて 1 個へ減らすコマンドはどれですか？
 
-- `[:lower:]`: 小文字。
-- `[:upper:]`: 大文字。
-- `[:digit:]`: 数字。
-- `[:alpha:]`: 文字。
-- `[:alnum:]`: 文字と数字。
-- `[:space:]`: 空白文字。
-- `[:punct:]`: 句読点。
+::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="`-s` は指定集合の連続文字を圧縮し、この集合には通常の空白が 1 つ含まれます。"}
+::option[`tr -d ' '`]{#tr-delete-space explanation="`-d` は各並びに 1 個残すのではなく、通常の空白をすべて削除します。"}
+::option[`tr ' ' ''`]{#tr-empty-destination explanation="空の変換先集合は圧縮を要求する明確で移植性のある方法ではありません。`-s` を使います。"}
+:::
 
-例えば、文字クラスを使って小文字を大文字に変換します。
+## 文字クラスと補集合を使う
+
+一般的な文字クラスには `[:lower:]`、`[:upper:]`、`[:digit:]`、`[:alpha:]`、`[:alnum:]`、`[:space:]`、`[:punct:]` があります。
 
 ```bash
 $ echo "linux journey" | tr '[:lower:]' '[:upper:]'
 LINUX JOURNEY
 ```
 
-`-c` と `-d` を組み合わせて、文字と数字以外をすべて削除します。`-c` は補集合、つまり「このセットに含まれないすべて」を意味します。
-
 ```bash
 $ echo "user@example.com!" | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
-### 削除と圧縮の組み合わせ
+`-c` は `SET1` の補集合、つまり集合にないすべての文字を意味します。`-d` と組み合わせれば選択した種類だけを残せます。この例では改行も英数字でないため削除されます。レコード境界が重要なら区切りを意図的に残してください。
 
-テキストのクリーンアップではオプションを組み合わせることができます。以下の例は句読点を削除し、続くスペースを圧縮します。
+:::single-choice{#tr-keep-alphanumeric} `tr -cd '[:alnum:]'` は stdin に何をしますか？
+
+::option[英数字を削除し、それ以外を残す。]{#tr-delete-alnum explanation="補集合によって `-d` の対象が変わり、英数字集合そのものは残ります。"}
+::option[英数字でないすべての文字を削除する。]{#tr-delete-nonalnum .correct explanation="`-c` が英数字集合を反転し、`-d` がその非英数字集合を削除します。"}
+::option[すべての文字と数字を大文字へ変換する。]{#tr-uppercase-alnum explanation="変換先集合がないため、大文字小文字の変換は行いません。"}
+:::
+
+## ストリーム変換を組み立てる
+
+処理を分けたほうが明確なら複数の `tr` を接続できます。
 
 ```bash
 $ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
-
-タブ区切りの入力では、タブをカンマに変換できます。
 
 ```bash
 $ printf "name\tlevel\npete\tbeginner\n" | tr '\t' ','
@@ -133,37 +138,29 @@ name,level
 pete,beginner
 ```
 
-### よく使う tr オプション
+```bash
+$ tr '[:lower:]' '[:upper:]' < names.txt
+```
 
-よく使うオプションは以下の通りです。
+`tr` は stdin を読むため、ファイルは `<` で渡せます。結果を保存するなら stdout を別ファイルへ送り、読み取り前に入力を切り詰める同じパスへのリダイレクトは避けます。
 
-- `-d`: `SET1` の文字を削除。
-- `-s`: `SET1` の繰り返し文字を圧縮。
-- `-c`: `SET1` の補集合を使用。
-- `-t`: 翻訳前に `SET1` を `SET2` の長さに切り詰める。
+:::single-choice{#tr-read-file-input} `tr` に `names.txt` を stdin として読ませ、小文字を大文字へ変換するコマンドはどれですか？
 
-### よくある質問
+::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` は通常の入力ファイル名をこの形で受け取らず、余分なオペランドで構文が不正になります。"}
+::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="ファイルの読み方は正しいですが、小文字を変換せず削除します。"}
+::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="シェルが `names.txt` を stdin で開き、`tr` が小文字クラスを大文字クラスへ対応付けます。"}
+:::
 
-**なぜ tr はパイプから読み込むのですか？** `tr` は標準入力から読み込むため、`echo`、`cat`、`printf` などのテキストを出力するコマンドの後に使われることが多いです。
+文字単位のストリーム変換を練習するには、次のラボを試してください。
 
-**tr は単語を置き換えますか？** いいえ。`tr` は文字を変換します。単語やパターンの置換が必要な場合は `sed` を使ってください。
+1. **[Linux tr コマンド：文字の変換](https://labex.io/ja/labs/linux-linux-tr-command-character-translating-219198)** - 文字の変換、削除、文字クラス、連続文字の圧縮を練習します。
 
-**なぜ tr コマンドは文字を1つずつ変換するのですか？** それが `tr` の動作です。`SET1` の各文字を対応する `SET2` の文字にマッピングします。
+## まとめ
 
-**なぜ 'a-z' のようにセットをクォートするのですか？** クォートすることで、シェルが `tr` に渡る前に特殊文字を解釈するのを防ぎます。
+目的を絞った `tr` 操作で文字ストリームを変換できるようになりました。
 
-## Exercise
-
-知識を実践に活かすために、以下のハンズオンラボに挑戦してみましょう。文字変換やテキスト処理の理解を深めるのに役立ちます。
-
-1. **[Linux tr Command: Character Translating](https://labex.io/ja/labs/linux-linux-tr-command-character-translating-219198)** - テキストストリームの文字レベル変換のためのLinux `tr` コマンドを学びます。文字の変換、特定文字の削除、文字クラスの利用、繰り返し文字の圧縮を実践します。
-
-このラボでテキスト操作の概念を実際のシナリオで応用し、`tr` コマンドの自信をつけましょう。
-
-## Quiz Question
-
-文字を変換するために使うコマンドは何ですか？（英小文字のみで答えてください）
-
-## Quiz Answer
-
-tr
+1. 対応する集合間で文字を変換する。
+2. `-d` で選択した文字を削除する。
+3. `-s` で連続する文字を圧縮する。
+4. ロケール依存のクラスと補集合を意図的に使う。
+5. ファイルオペランドではなく stdin から入力を渡す。

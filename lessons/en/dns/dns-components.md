@@ -1,52 +1,86 @@
 ---
-index: 2
+lesson_id: "dns-components"
+course_id: "dns"
 lang: "en"
+order_index: 2
 title: "DNS Components"
+description: "Learn how recursive resolvers, authoritative servers, zones, and resource records divide DNS responsibilities."
 meta_title: "DNS Components - DNS"
 meta_description: "Learn about DNS components: name servers, zone files, and resource records. Understand how DNS works for beginners. Start your Linux networking journey!"
 meta_keywords: "DNS components, name server, zone file, resource records, DNS tutorial, Linux networking, beginner guide"
 ---
 
-## Lesson Content
+DNS separates the client-facing recursion role from authoritative publication. Understanding that boundary prevents a cached answer from being mistaken for the owner of a zone.
 
-The DNS database of the Internet relies on sites and organizations providing part of that database. To do that, they need:
+## Stub and Recursive Resolvers
 
-### Name Server
+A stub resolver in an application or operating system sends queries to a configured recursive resolver. The recursive resolver returns a final answer, error, or referral outcome after using cache and, when necessary, performing iterative queries. Its reply can carry the authoritative-answer flag only when the answering server is authoritative for the data; recursion alone does not make it authoritative.
 
-We set up DNS via "name servers." Name servers load our DNS settings and configurations and answer any questions from clients or other servers that want to know things like "Who is google.com?". If the name server doesn't know the answer to that query, it will redirect the request to other name servers. Name servers can be "authoritative," meaning they hold the actual DNS records you're looking for, or "recursive," meaning they would ask other servers, and those servers would ask other servers until they found an authoritative server that contained the DNS records. Recursive servers can also have the information we want cached instead of reaching an authoritative server.
+:::single-choice{#dns-components-recursive-role} What does a recursive resolver do for a stub client?
 
-### Zone File
+::option[Obtains a final DNS result using cache and other name servers.]{#dns-components-recursive-result .correct explanation="The client delegates the multi-step lookup work to the recursive service."}
+::option[Replaces every network router on the packet path.]{#dns-components-replaces-router explanation="Name resolution and IP forwarding are separate."}
+::option[Becomes authoritative for every record it caches.]{#dns-components-cache-authority explanation="Cached data retains authority from its source; the resolver is not the zone owner."}
+:::
 
-Inside a name server lives something called zone files. Zone files are how the name server stores information about the domain or how to get to the domain if it doesn't know.
+## Authoritative Name Servers
 
-### Resource Records
+An authoritative server answers from zone data for which it has authority. A zone should have multiple authoritative servers with synchronized data and independent failure considerations. An authoritative-only server need not perform recursion for arbitrary clients.
 
-A zone file is comprised of entries of resource records. Each line is a record and contains information about hosts, name servers, other resources, etc. The fields consist of the following:
+:::single-choice{#dns-components-authoritative-role} What makes a server authoritative for a zone?
 
-- Record name
-- TTL - The time after which we discard the record and obtain a new one. In DNS, TTL is denoted by time, so records could have a TTL of one hour. The reason we do this is because the Internet is constantly changing; one minute a host can be mapped to X IP address, then next it can be at Y IP address.
-- Class - Namespace of the record information. Most commonly, IN is used for Internet.
-- Type - Type of information stored in the record data. We won't get into record types, but you've probably seen common ones like A for address, MX for mail exchanger, etc.
-- Data - This field can contain an IP address if it's an A record or something else depending on the record type.
+::option[It once queried the zone through a public resolver.]{#dns-components-once-queried explanation="Querying or caching does not confer authority."}
+::option[It serves the zone data under the relevant delegation and configuration.]{#dns-components-serves-zone .correct explanation="Authority comes from the DNS delegation and the server's loaded zone, not from having a cached copy."}
+::option[It responds fastest to one ping.]{#dns-components-fastest-ping explanation="ICMP timing does not define DNS authority."}
+:::
 
-```plaintext
-patty    IN  A      192.168.0.4
+## Zones and Zone Storage
+
+A zone is an administratively served portion of the DNS namespace. It begins at a zone apex and can delegate child zones. Zone data may be stored in a text zone file, generated from a database, loaded through an API, or synthesized by software; “zone file” is not a mandatory physical implementation.
+
+The zone apex normally has an SOA record and an NS set. Delegation data at a parent identifies child authoritative servers, sometimes accompanied by glue address records needed to reach in-bailiwick server names.
+
+:::single-choice{#dns-components-zone-meaning} What is a DNS zone?
+
+::option[An administratively served portion of the namespace.]{#dns-components-admin-portion .correct explanation="It can contain records and delegations regardless of the storage backend."}
+::option[A mandatory single text file on every client.]{#dns-components-client-file explanation="Authoritative implementations can use several storage forms, and clients do not hold every zone."}
+::option[An Ethernet broadcast domain identified by a VLAN.]{#dns-components-vlan explanation="DNS zones and link-layer segments are independent concepts."}
+:::
+
+## Resource Record Fields
+
+A resource record has an owner name, TTL, class, type, and type-specific RDATA. For example:
+
+```text
+www.example.com.  300  IN  A  192.0.2.25
 ```
 
-## Exercise
+The owner is `www.example.com.`, TTL is 300 seconds, class is Internet, type is IPv4 address, and RDATA is the address. Field omission and relative-name rules in zone-file syntax require careful origin handling.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of DNS and hostname resolution:
+:::single-choice{#dns-components-mx-type} Which record type publishes mail-exchanger preference and hostnames?
 
-1. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - Practice installing and configuring a local DNS server (`bind9`), defining zones, and validating your setup.
-2. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Learn to use essential command-line tools (`dig`, `nslookup`) to query various DNS record types and troubleshoot DNS issues.
-3. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Understand how to manage local hostname resolution by editing the `/etc/hosts` file, a key skill for development and testing.
+::option[`A`]{#dns-components-a explanation="An A record stores an IPv4 address."}
+::option[`NS`]{#dns-components-ns explanation="NS records identify authoritative name servers."}
+::option[`MX`]{#dns-components-mx .correct explanation="MX RDATA includes preference and a mail exchanger name."}
+:::
 
-These labs will help you apply the concepts of DNS and hostname resolution in real scenarios and build confidence with network services.
+## TTL and Negative Caching
 
-## Quiz Question
+Positive records use TTLs to limit cache reuse. Negative answers such as a proven nonexistent name can also be cached according to SOA-derived rules. Lowering a TTL shortly before a planned change affects only records fetched after caches observe the lower value; previously cached longer TTLs remain until expiry.
 
-What resource record type is used for mail exchangers?
+:::single-choice{#dns-components-lower-ttl-timing} Why lower a DNS TTL well before a planned address change?
 
-## Quiz Answer
+::option[The TTL modifies the server's Ethernet MTU.]{#dns-components-ttl-mtu explanation="Caching lifetime and link packet size are unrelated."}
+::option[A lower TTL guarantees the new application is healthy.]{#dns-components-ttl-health explanation="It affects caching behavior, not service correctness."}
+::option[Existing caches need time to expire records learned with the old longer TTL.]{#dns-components-old-cache-expiry .correct explanation="Changing authoritative data cannot retroactively shorten an already cached record's remaining lifetime."}
+:::
 
-MX
+## Summary
+
+You can now separate DNS recursion, authority, namespace management, and cached records.
+
+1. Identify stub and recursive resolver roles.
+2. Define authority through delegated zone service.
+3. Treat a zone as namespace responsibility, not one required file.
+4. Read owner, TTL, class, type, and RDATA fields.
+5. Plan cache lifetimes before DNS changes.

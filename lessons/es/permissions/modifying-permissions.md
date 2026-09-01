@@ -1,88 +1,117 @@
 ---
-index: 2
+lesson_id: "modifying-permissions"
+course_id: "permissions"
 lang: "es"
-title: "Modificar Permisos"
-meta_title: "Modificar Permisos - Permisos"
-meta_description: "Aprenda a cambiar permisos en Linux usando el comando chmod. Esta guía cubre métodos simbólicos y numéricos para ayudarle a administrar el acceso a archivos y directorios de forma segura. Domine el proceso de cambio de permisos de Linux para una mejor administración del sistema."
-meta_keywords: "cambiar permiso linux, modificar permiso linux, cómo cambiar permisos en linux, cómo cambiar permisos de archivo linux, chmod, permisos de archivo, seguridad linux, permisos simbólicos, permisos numéricos"
+order_index: 2
+title: "Modificar permisos"
+description: "Aprende a cambiar los bits de permisos de Linux con modos simbólicos y octales de chmod."
+meta_title: "Modificar permisos - Permisos"
+meta_description: "Aprende a cambiar permisos en Linux con chmod. Esta guía explica los métodos simbólico y octal para gestionar de forma segura el acceso a archivos y directorios."
+meta_keywords: "cambiar permisos Linux, cómo cambiar permisos Linux, chmod, permisos de archivos, seguridad Linux, permisos simbólicos, permisos octales"
 ---
 
-## Lesson Content
+La orden `chmod` cambia los bits de modo de archivos y directorios. Normalmente, solo el propietario del archivo o un proceso con los privilegios necesarios puede realizar este cambio. Consulta el modo actual con `ls -l` antes y después de ejecutar `chmod`.
 
-Cuando necesite modificar los derechos de acceso de archivos o directorios, la herramienta principal que utilizará es el comando `chmod` (change mode, cambiar modo). Comprender **cómo cambiar permisos en Linux** es una habilidad fundamental para cualquier usuario. El comando `chmod` ofrece dos métodos principales para esta tarea: el modo simbólico y el modo numérico.
+## Usar el modo simbólico
 
-### Usando el Modo Simbólico
+Un modo simbólico indica qué clase de permisos se va a cambiar, cómo se modificará y qué permisos intervienen.
 
-El modo simbólico a menudo se considera más legible porque utiliza letras para representar usuarios y permisos. Primero especifica qué conjunto de permisos desea cambiar (usuario, grupo u otros), luego usa un `+` para agregar un permiso o un `-` para eliminarlo.
+- `u` selecciona la clase del propietario.
+- `g` selecciona la clase del grupo.
+- `o` selecciona la clase de otros.
+- `a` selecciona las tres clases.
+- `+` añade permisos, `-` los elimina y `=` establece exactamente la clase seleccionada.
 
-- `u` (user/propietario)
-- `g` (group/grupo)
-- `o` (others/otros)
-- `a` (all/todos: usuario, grupo y otros)
-
-Veamos **cómo cambiar permisos de archivos linux** con algunos ejemplos.
-
-Para agregar el permiso de ejecución para el usuario en un archivo, usaría:
+Por ejemplo, añade permiso de ejecución para el propietario:
 
 ```bash
-chmod u+x archivo
+$ chmod u+x myfile
 ```
 
-Este comando agrega (`+`) el permiso ejecutable (`x`) para el usuario (`u`) en `archivo`.
-
-Para eliminar un permiso, use el operador `-`. Por ejemplo, para eliminar el permiso de escritura para el grupo:
+Elimina el permiso de escritura del grupo:
 
 ```bash
-chmod g-w archivo
+$ chmod g-w myfile
 ```
 
-También puede modificar varios permisos a la vez. El siguiente comando agrega el permiso de escritura tanto para el usuario como para el grupo:
+Añade permiso de escritura para el propietario y el grupo:
 
 ```bash
-chmod ug+w archivo
+$ chmod ug+w myfile
 ```
 
-### Usando el Modo Numérico (Octal)
-
-Otra forma poderosa que ofrece **change permission linux** es a través del modo numérico u octal. Este método le permite establecer todos los permisos para el usuario, el grupo y los demás simultáneamente con un número de tres dígitos.
-
-Los permisos están representados por los siguientes valores:
-
-- `4`: lectura (r)
-- `2`: escritura (w)
-- `1`: ejecución (x)
-
-Para establecer un conjunto de permisos, suma los números. Por ejemplo, para otorgar permisos de lectura, escritura y ejecución, usaría `4 + 2 + 1 = 7`.
-
-Veamos un ejemplo común:
+Se pueden separar varias cláusulas mediante comas. Esta orden establece lectura y escritura para el propietario, solo lectura para el grupo y ningún permiso para otros:
 
 ```bash
-chmod 755 archivo
+$ chmod u=rw,g=r,o= myfile
 ```
 
-¿Cómo funciona este comando de **linux change permission**? Analicemos el número `755`:
+Si se omite la clase, como en `chmod +x myfile`, la umask del proceso afecta a las clases que cambian. Indicar explícitamente la clase facilita revisar el resultado deseado.
 
-- **7 (Usuario):** `4 + 2 + 1` -> El usuario obtiene permisos de lectura, escritura y ejecución (`rwx`).
-- **5 (Grupo):** `4 + 0 + 1` -> El grupo obtiene permisos de lectura y ejecución (`r-x`).
-- **5 (Otros):** `4 + 0 + 1` -> Todos los demás usuarios obtienen permisos de lectura y ejecución (`r-x`).
+:::single-choice{#modifying-permissions-remove-group-write} ¿Qué modo simbólico elimina el permiso de escritura del grupo sin cambiar sus demás bits?
 
-### Consideraciones de Seguridad
+::option[`chmod u-w myfile`]{#modifying-permissions-user-minus-write explanation="Esto elimina el permiso de escritura de la clase del propietario, no de la del grupo."}
+::option[`chmod g-w myfile`]{#modifying-permissions-group-minus-write .correct explanation="`g` selecciona la clase del grupo, `-` elimina un bit y `w` identifica el permiso de escritura."}
+::option[`chmod g=w myfile`]{#modifying-permissions-group-equals-write explanation="El operador `=` sustituye la clase seleccionada por permiso exclusivo de escritura en vez de eliminarlo."}
+:::
 
-Aunque `chmod` es esencial, es crucial usarlo con cuidado. Cambiar los permisos sin comprender las implicaciones puede exponer archivos sensibles a modificaciones o visualizaciones no autorizadas. Por ejemplo, establecer recursivamente permisos `777` (`chmod -R 777 /algun/directorio`) es una práctica común pero peligrosa que otorga a todos acceso total de lectura, escritura y ejecución. Siempre aplique el principio de mínimo privilegio, otorgando solo los permisos que sean estrictamente necesarios.
+## Usar el modo octal
 
-## Exercise
+Un modo octal establece cada triplete de permisos básicos mediante un dígito. Suma estos valores dentro de cada clase:
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de los permisos de archivos de Linux:
+- `4` para lectura.
+- `2` para escritura.
+- `1` para ejecución.
+- `0` para ningún permiso.
 
-1. **[Linux User Group and File Permissions](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceptos esenciales de administración de usuarios y grupos de Linux, incluida la comprensión de los permisos de archivos y la manipulación de la propiedad de los archivos. Este laboratorio proporciona experiencia práctica para asegurar un entorno Linux multiusuario.
-2. **[Add New User and Group](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - En este desafío, simulará la adición de nuevos miembros del equipo a un entorno de servidor, creando nuevas cuentas de usuario, configurando grupos personalizados y administrando membresías de grupos, lo que a menudo implica establecer los permisos apropiados.
+Los tres dígitos de la derecha representan propietario, grupo y otros, en ese orden. Por ejemplo:
 
-Estos laboratorios le ayudarán a aplicar los conceptos de permisos de usuario, grupo y otros en escenarios reales y a ganar confianza en la gestión del acceso en Linux.
+```bash
+$ chmod 755 myfile
+```
 
-## Quiz Question
+El modo `755` se descompone así:
 
-¿Qué número representa el permiso de lectura cuando se utiliza el formato numérico?
+- El `7` del propietario es `4 + 2 + 1`, o `rwx`.
+- El `5` del grupo es `4 + 1`, o `r-x`.
+- El `5` de otros es `4 + 1`, o `r-x`.
 
-## Quiz Answer
+A diferencia de las operaciones simbólicas con `+` o `-`, un modo octal proporciona todo el conjunto de permisos normales. Una lección posterior explica el dígito inicial opcional de los bits de modo especiales.
 
-4
+:::single-choice{#modifying-permissions-octal-read-value} ¿Qué valor octal representa el permiso de lectura?
+
+::option[`1`]{#modifying-permissions-value-one explanation="El valor `1` representa el permiso de ejecución."}
+::option[`2`]{#modifying-permissions-value-two explanation="El valor `2` representa el permiso de escritura."}
+::option[`4`]{#modifying-permissions-value-four .correct explanation="El permiso de lectura aporta el valor octal `4` al dígito de una clase."}
+:::
+
+:::single-choice{#modifying-permissions-mode-640} ¿Qué permisos normales establece `chmod 640 report`?
+
+::option[Lectura para el propietario, escritura para el grupo y ejecución para otros.]{#modifying-permissions-640-separated explanation="Los dígitos octales son sumas para cada clase, no columnas separadas de lectura, escritura y ejecución."}
+::option[Lectura y ejecución para el propietario, escritura para el grupo y ninguno para otros.]{#modifying-permissions-640-wrong-sums explanation="El valor `6` del propietario es lectura más escritura, mientras que el valor `4` del grupo es lectura."}
+::option[Lectura y escritura para el propietario, lectura para el grupo y ninguno para otros.]{#modifying-permissions-640-correct .correct explanation="Los dígitos se convierten en propietario `6` (`rw-`), grupo `4` (`r--`) y otros `0` (`---`)."}
+:::
+
+## Aplicar cambios de forma segura
+
+Concede únicamente el acceso que necesiten los usuarios y servicios. Evita `chmod 777` como atajo para resolver problemas, ya que concede lectura, escritura y ejecución a todas las clases, lo que suele aumentar el riesgo sin solucionar la propiedad, el recorrido de directorios, las ACL o la política del servicio.
+
+Los cambios recursivos requieren especial cuidado. Previsualiza el árbol de destino, ten en cuenta los enlaces simbólicos y los sistemas de archivos montados y prueba con un ámbito pequeño antes de usar `chmod -R`. Después del cambio, verifica el modo resultante en vez de dar por hecho que la orden afectó a los objetos deseados.
+
+:::single-choice{#modifying-permissions-least-privilege} ¿Por qué `chmod 777` suele ser una mala solución general para un problema de acceso?
+
+::option[Elimina todos los permisos del propietario.]{#modifying-permissions-777-removes explanation="Cada `7` concede lectura, escritura y ejecución; no elimina los permisos del propietario."}
+::option[Concede todos los permisos básicos a propietario, grupo y otros.]{#modifying-permissions-777-grants-all .correct explanation="Las tres clases reciben `rwx`, lo que suele superar el acceso realmente necesario."}
+::option[Modifica únicamente la propiedad de grupo del archivo.]{#modifying-permissions-777-group explanation="`chmod` cambia bits de modo; la propiedad de grupo se cambia con una herramienta como `chgrp` o `chown`."}
+:::
+
+Para practicar en un entorno aislado, usa el laboratorio [Usuarios, grupos y permisos de archivos en Linux](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002) y consulta cada modo antes y después de cambiarlo.
+
+## Resumen
+
+Ahora puedes cambiar los bits de modo normales de Linux mediante expresiones `chmod` deliberadas.
+
+1. Usa el modo simbólico para añadir, eliminar o asignar permisos concretos.
+2. Construye dígitos octales con lectura `4`, escritura `2` y ejecución `1`.
+3. Lee las clases octales en el orden propietario, grupo y otros.
+4. Verifica los cambios y aplica el mínimo privilegio necesario.

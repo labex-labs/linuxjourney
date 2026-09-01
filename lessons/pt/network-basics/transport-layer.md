@@ -1,54 +1,93 @@
 ---
-index: 6
+lesson_id: "transport-layer"
+course_id: "network-basics"
 lang: "pt"
-title: "Camada de Transporte"
-meta_title: "Camada de Transporte - Fundamentos de Rede"
-meta_description: "Explore a Camada de Transporte em redes Linux. Esta lição aborda protocolos chave como TCP e UDP, a função das portas de rede, segmentação de dados e o handshake TCP para transferência de dados confiável."
-meta_keywords: "Camada de Transporte Linux, TCP, UDP, handshake TCP, portas de rede, segmentação de dados, redes Linux, protocolos de rede, transferência de dados confiável"
+order_index: 6
+title: "Camada de transporte"
+description: "Aprenda como TCP e UDP usam portas e diferentes semânticas de entrega entre pontos de extremidade das aplicações."
+meta_title: "Camada de transporte - Fundamentos de rede"
+meta_description: "Explore a Camada de Transporte em redes Linux. Esta lição aborda protocolos importantes como TCP e UDP, a função das portas de rede, a segmentação de dados e o handshake TCP para a transferência confiável de dados."
+meta_keywords: "Camada de Transporte Linux, TCP, UDP, handshake TCP, portas de rede, segmentação de dados, redes Linux, protocolos de rede, transferência confiável de dados"
 ---
 
-## Lesson Content
+A camada de transporte conecta pontos de extremidade das aplicações através de uma rede IP. Tanto o TCP quanto o UDP usam números de porta de 16 bits, mas expõem às aplicações modelos de comunicação e garantias diferentes.
 
-A camada de transporte é uma parte fundamental da rede Linux responsável pela comunicação de ponta a ponta e pela transferência de dados confiável entre aplicações em hosts diferentes. Ela prepara os dados para o transporte através da rede de forma estruturada e gerenciável.
+## Portas e sockets
 
-### Segmentação de Dados
+Uma porta de destino ajuda o sistema operacional a entregar o tráfego a um socket em escuta. Uma conexão ou fluxo é identificado por mais de uma porta: importam o protocolo, os endereços de origem e destino e as portas de origem e destino. Por isso, a mesma porta de servidor pode atender muitos clientes simultaneamente.
 
-Uma das principais funções da camada de transporte é a segmentação de dados. Ela divide grandes quantidades de dados em pedaços menores e mais gerenciáveis, chamados segmentos. Esse processo torna a transferência de dados mais eficiente e resiliente. Se um segmento for perdido ou corrompido durante a transmissão, apenas essa pequena parte precisa ser reenviada, e não o conjunto de dados inteiro. Assim que os segmentos chegam ao destino, a camada de transporte os remonta na ordem correta.
+:::single-choice{#transport-layer-many-clients} Como uma porta de servidor TCP pode atender vários clientes ao mesmo tempo?
 
-### Entendendo Portas de Rede
+::option[Cada conexão possui uma combinação distinta de endereços e portas dos pontos de extremidade.]{#transport-layer-connection-tuple .correct explanation="A tupla completa do transporte diferencia conexões simultâneas que compartilham uma porta de escuta."}
+::option[O servidor renomeia permanentemente sua porta depois de cada pacote.]{#transport-layer-renames-port explanation="A porta de escuta pode permanecer estável enquanto as conexões aceitas possuem tuplas de pares distintas."}
+::option[O IP remove todos os endereços de origem antes da entrega.]{#transport-layer-removes-source explanation="Os endereços de origem fazem parte da identificação do par e do caminho."}
+:::
 
-Enquanto os endereços IP identificam o host correto em uma rede, eles não especificam qual aplicação ou serviço deve receber os dados. É aí que entram as portas de rede. Serviços como HTTP (tráfego web) ou SMTP (e-mail) escutam em portas específicas e bem conhecidas. Por exemplo, o HTTP geralmente usa a porta 80. A camada de transporte anexa números de porta de origem e destino a cada segmento, garantindo que os dados sejam entregues ao processo correto no host receptor.
+## Fluxos de bytes TCP
 
-### Protocolos de Transporte Principais: TCP e UDP
+O TCP fornece um fluxo de bytes confiável e ordenado enquanto a conexão permanece viável. Ele usa números de sequência, confirmações, retransmissão, controle de fluxo e controle de congestionamento. O TCP não preserva os limites das mensagens da aplicação: uma gravação pode chegar por meio de várias leituras, ou uma leitura pode retornar várias gravações. As aplicações definem seu próprio enquadramento.
 
-Existem dois protocolos de transporte principais usados em redes modernas: TCP (Transmission Control Protocol) e UDP (User Datagram Protocol). Abordaremos brevemente o UDP e depois focaremos no TCP, pois ele é o mais utilizado para comunicação confiável.
+Confiabilidade não significa entrega absoluta. Uma conexão pode atingir o tempo limite, ser redefinida ou falhar, e uma confirmação não comprova que uma aplicação gravou os dados de forma durável.
 
-### UDP (User Datagram Protocol)
+:::single-choice{#transport-layer-tcp-boundaries} O que acontece com os limites das mensagens da aplicação no TCP?
 
-UDP é um protocolo sem conexão que oferece um método rápido, mas não confiável, de transporte de dados. Ele não garante que todos os segmentos chegarão ou que chegarão na ordem correta. Embora isso possa parecer uma desvantagem, o UDP é altamente eficaz para aplicações onde a velocidade é mais crítica do que a precisão perfeita, como streaming de vídeo ao vivo ou jogos online. Perder alguns quadros de vídeo é frequentemente uma troca aceitável para um fluxo mais suave e rápido.
+::option[O TCP expõe um fluxo de bytes ordenado sem preservar os limites das gravações.]{#transport-layer-byte-stream .correct explanation="O protocolo de aplicação deve definir como as mensagens são delimitadas ou dimensionadas."}
+::option[Toda gravação se torna exatamente um pacote IP e uma leitura.]{#transport-layer-one-write-packet explanation="A segmentação, o armazenamento em buffer e as APIs de recepção não preservam esse mapeamento."}
+::option[O TCP converte cada mensagem em um registro DNS.]{#transport-layer-tcp-dns explanation="O DNS é um protocolo de aplicação separado."}
+:::
 
-### TCP (Transmission Control Protocol)
+## O handshake TCP
 
-O TCP fornece um fluxo de dados confiável e orientado à conexão. Antes que qualquer dado seja trocado, o TCP estabelece uma conexão formal entre os dois hosts para garantir que ambos estejam prontos para se comunicar.
+Uma conexão TCP normal começa com um handshake de três vias:
 
-### O Handshake TCP
+1. O iniciador envia `SYN` com suas informações iniciais de sequência.
+2. O ouvinte responde com `SYN-ACK`, suas próprias informações de sequência e uma confirmação.
+3. O iniciador retorna `ACK`.
 
-Para estabelecer uma conexão, o TCP usa um processo chamado handshake de três vias:
+Isso estabelece o estado do transporte nos dois pontos de extremidade. Não autentica o servidor da aplicação nem comprova que a operação solicitada da aplicação terá sucesso.
 
-1. **SYN**: O cliente envia um segmento SYN (sincronizar) para o servidor para iniciar uma conexão.
-2. **SYN-ACK**: O servidor responde com um segmento SYN-ACK (sincronizar-reconhecer) para acusar o recebimento da solicitação do cliente.
-3. **ACK**: O cliente envia um segmento ACK (reconhecer) de volta ao servidor, confirmando que a conexão foi estabelecida.
+:::single-choice{#transport-layer-handshake-order} Qual é a ordem normal do handshake TCP de três vias?
 
-Após a conclusão do handshake, os dados podem ser trocados de forma confiável. O TCP usa números de sequência para rastrear cada segmento, permitindo que o host receptor os remonte na ordem correta e solicite a retransmissão de quaisquer segmentos ausentes. Em nosso exemplo de e-mail, a camada de transporte anexaria a porta de destino para SMTP (porta 25) e uma porta de origem do host cliente a cada segmento.
+::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="A troca sincroniza e confirma o estado inicial da conexão nas duas direções."}
+::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="O iniciador primeiro solicita a sincronização."}
+::option[SYN, FIN, RST.]{#transport-layer-syn-fin-rst explanation="FIN e RST encerram ou abortam o estado, em vez de formar um handshake normal."}
+:::
 
-## Exercise
+## Datagramas UDP
 
-Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Trilha de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
+O UDP preserva os limites dos datagramas e fornece detecção de erros baseada em soma de verificação, mas não oferece o estado de conexão, a ordenação, a retransmissão, o controle de fluxo nem o controle de congestionamento do TCP. Uma aplicação pode acrescentar por conta própria qualquer comportamento necessário de confiabilidade ou congestionamento. O UDP não é automaticamente mais rápido; o desempenho depende do projeto do protocolo, da carga de trabalho, do caminho e da implementação.
 
-## Quiz Question
+:::single-choice{#transport-layer-udp-boundaries} Qual propriedade o UDP fornece às aplicações?
 
-Qual é um protocolo de transporte confiável? (Sua resposta deve estar em inglês e diferencia maiúsculas de minúsculas).
+::option[Um fluxo de bytes ordenado e retransmitido automaticamente.]{#transport-layer-udp-stream explanation="Isso descreve serviços semelhantes ao TCP, não o UDP básico."}
+::option[Limites preservados entre os datagramas enviados.]{#transport-layer-udp-datagrams .correct explanation="Um datagrama UDP recebido corresponde a um datagrama enviado, a menos que ele seja perdido."}
+::option[Entrega garantida antes de um prazo fixo.]{#transport-layer-udp-deadline explanation="O UDP não fornece garantia de prazo de entrega."}
+:::
 
-## Quiz Answer
+## Inspecionando pontos de extremidade do transporte
 
-TCP
+Use `ss` para inspecionar sockets em escuta e conectados sem alterá-los:
+
+```bash
+$ ss -lntup
+$ ss -tn state established
+```
+
+Os detalhes dos processos podem exigir privilégios. Um socket em escuta comprova a prontidão local apenas no limite do transporte; firewall, roteamento, família de endereços, TLS e integridade da aplicação ainda precisam dos testes adequados.
+
+:::single-choice{#transport-layer-listener-proof} O que um socket TCP em escuta estabelece?
+
+::option[Todos os firewalls remotos permitem a conexão.]{#transport-layer-all-firewalls explanation="O estado do socket local não revela todas as políticas do caminho."}
+::option[A aplicação passou em todas as verificações de integridade.]{#transport-layer-all-health explanation="A escuta é uma evidência mais fraca do que uma transação bem-sucedida da aplicação."}
+::option[Um processo local está preparado para aceitar conexões TCP correspondentes.]{#transport-layer-local-listener .correct explanation="A acessibilidade remota e as respostas corretas da aplicação continuam sendo questões separadas."}
+:::
+
+## Resumo
+
+Agora você pode diferenciar o comportamento de fluxo do TCP do comportamento de datagrama do UDP.
+
+1. Identifique um fluxo usando o protocolo, os endereços e as portas.
+2. Trate o TCP como um fluxo de bytes confiável e ordenado, sem limites de mensagens.
+3. Reconheça o que o handshake TCP comprova e o que ele não comprova.
+4. Trate a confiabilidade e o comportamento de congestionamento do UDP como escolhas de projeto da aplicação.
+5. Verifique a integridade da aplicação além do estado do socket local.

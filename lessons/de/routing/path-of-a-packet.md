@@ -1,49 +1,78 @@
 ---
-index: 3
+lesson_id: "path-of-a-packet"
+course_id: "routing"
 lang: "de"
-title: "Pfad eines Pakets"
-meta_title: "Pfad eines Pakets - Routing"
-meta_description: "Erkunden Sie den vollständigen Paketpfad für Daten, die sich innerhalb eines lokalen Netzwerks und über das Internet bewegen. Erfahren Sie, wie IP-Adressen, MAC-Adressen, ARP und Routing-Tabellen zusammenarbeiten, um eine erfolgreiche Netzwerkkommunikation unter Linux zu gewährleisten."
-meta_keywords: "Paketpfad, Netzwerkkommunikation, ARP, IP-Adresse, MAC-Adresse, Routing-Tabelle, Standard-Gateway, Linux-Netzwerk, Paketverfolgung"
+order_index: 3
+title: "Der Weg eines Pakets"
+description: "Lerne, wie Routen, Nachbarerkennung, Frames und Router ein IP-Paket über einen Pfad transportieren."
+meta_title: "Der Weg eines Pakets – Routing"
+meta_description: "Erkunde den vollständigen Paketweg innerhalb eines lokalen Netzwerks und über das Internet. Lerne, wie IP- und MAC-Adressen, ARP und Routingtabellen zusammenarbeiten."
+meta_keywords: "Paketweg, Netzwerkkommunikation, ARP, IP-Adresse, MAC-Adresse, Routingtabelle, Standardgateway, Linux-Vernetzung, Paketübertragung"
 ---
 
-## Lesson Content
+Ein Paketpfad ist eine Abfolge lokaler Entscheidungen. Der Quellhost, jeder Router und das Ziel wenden eigenen Routing-, Nachbar-, Filter- und Protokollzustand an; kein Endpunkt kennt normalerweise jede interne Entscheidung im Voraus.
 
-Das Verständnis, wie Daten durch ein Netzwerk reisen, ist grundlegend für die Netzwerktechnik. Diese Reise, oft als **Paketpfad** bezeichnet, erfordert eine koordinierte Anstrengung zwischen verschiedenen Protokollen und Hardware. Verfolgen wir den **Paketpfad** in zwei gängigen Szenarien: Kommunikation innerhalb eines lokalen Netzwerks und Kommunikation mit einem externen Netzwerk.
+## An ein direkt erreichbares Ziel senden
 
-### Paketpfad innerhalb eines lokalen Netzwerks
+Bei einem Ziel, das von einer verbundenen Route umfasst wird, wählt die Quelle eine Schnittstelle und Quell-IP. Anschließend löst sie die Verbindungsadresse des Ziels auf – ARP für IPv4 über Ethernet oder Neighbor Discovery für IPv6 – und sendet einen Frame, der das IP-Paket trägt. Ein Switch kann den Frame weiterleiten, ohne zu einem IP-Hop zu werden.
 
-Wenn ein Gerät ein Paket an ein anderes Gerät im selben lokalen Netzwerk sendet, ist der Prozess relativ unkompliziert.
+:::single-choice{#packet-path-switch-hop} Zählt ein gewöhnlicher Ethernet-Switch als IP-Routing-Hop?
 
-1. Zuerst prüft der sendende Host, ob sich die Ziel-IP-Adresse im selben Subnetz befindet, indem er sie mit seiner eigenen IP-Adresse und Subnetzmaske vergleicht.
-2. Um ein Paket zu senden, benötigt der Host vier Schlüsselinformationen: eine Quell-IP, eine Ziel-IP, eine Quell-MAC-Adresse und eine Ziel-MAC-Adresse. Anfangs kennt der Host die MAC-Adresse des Zielhosts nicht.
-3. Der Host verwendet das Address Resolution Protocol (ARP), um die fehlenden Informationen zu finden. Er sendet eine ARP-Anfrage als Broadcast im lokalen Netzwerk und fragt, welches Gerät die Ziel-IP-Adresse besitzt. Das entsprechende Gerät antwortet mit seiner MAC-Adresse.
-4. Da die Ziel-MAC-Adresse nun bekannt ist, ist das Paket vollständig adressiert und kann direkt an den Zielhost im lokalen Netzwerk gesendet werden.
+::option[Nein; er leitet lokale Frames weiter, ohne das IP-Hop-Feld zu verringern.]{#packet-path-switch-not-hop .correct explanation="Ein gerouteter Hop entsteht, wenn ein Router das IP-Paket verarbeitet und weiterleitet."}
+::option[Ja; jeder Switch ersetzt das IP-Ziel.]{#packet-path-switch-replaces-ip explanation="Weiterleitung auf Schicht 2 schreibt IP-Ziele normalerweise nicht um."}
+::option[Ja; jeder Kabelanschluss ist ebenfalls ein IP-Hop.]{#packet-path-cable-hop explanation="Physische Komponenten führen kein IP-Routing aus."}
+:::
 
-### Paketpfad zu einem externen Netzwerk
+## Über ein Gateway senden
 
-Wenn ein Paket für ein Gerät außerhalb des lokalen Netzwerks bestimmt ist, beinhaltet der Prozess Router zur Weiterleitung des Pakets.
+Bei einem nicht direkt erreichbaren Ziel bezeichnet die ausgewählte Route einen Next-Hop-Router. Das IP-Ziel bleibt der entfernte Endpunkt, während das Ziel des lokalen Frames die Verbindungsadresse des Gateways ist. Der Host löst auf seiner lokalen Verbindung das Gateway und nicht den entfernten Server auf.
 
-1. Der sendende Host stellt fest, dass sich die Ziel-IP-Adresse nicht in seinem lokalen Netzwerk befindet. Da ARP-Broadcasts auf das lokale Netzwerk beschränkt sind, kann der Host die MAC-Adresse des endgültigen Ziels nicht direkt ermitteln.
-2. Der Host konsultiert seine Routing-Tabelle. Da es keine spezifische Route für die externe IP gibt, verwendet er die Standardroute, die auf das Standard-Gateway (einen Router) zeigt. Das Paket wird mit den ursprünglichen Quell- und Ziel-IP-Adressen vorbereitet. Die Ziel-MAC-Adresse wird jedoch auf die MAC-Adresse des Standard-Gateways gesetzt. Falls die MAC des Gateways unbekannt ist, verwendet der Host ARP, um sie zu finden.
-3. Sobald das Paket den Router erreicht, untersucht der Router die Ziel-IP-Adresse und konsultiert seine eigene Routing-Tabelle, um den nächsten Hop auf dem **Paketpfad** zu bestimmen. Der Router schreibt dann die MAC-Adressen des Pakets neu: Die Quell-MAC wird zur MAC des Routers und die Ziel-MAC wird zur MAC des nächsten Hops. Dieser Vorgang wird bei jedem Router entlang des Pfades wiederholt.
-4. Wenn das Paket schließlich beim Router ankommt, der mit dem lokalen Netzwerk des Ziels verbunden ist, verwendet dieser Router ARP, um die MAC-Adresse des endgültigen Hosts zu finden und das Paket zuzustellen.
-5. Während dieser gesamten Reise bleiben die Quell- und Ziel-IP-Adressen im Paket-Header unverändert. Nur die MAC-Adressen werden bei jedem Hop aktualisiert.
+:::single-choice{#packet-path-gateway-mac} Wessen MAC-Adresse wird im ersten Ethernet-Frame zu einem nicht direkt erreichbaren Server verwendet?
 
-## Exercise
+::option[Die Adresse des entfernten Servers über alle dazwischenliegenden Netzwerke hinweg.]{#packet-path-remote-mac explanation="Die entfernte Verbindungsadresse besitzt im Quell-LAN keine Bedeutung."}
+::option[Ein aus dem DNS-Namen des Servers berechneter Wert.]{#packet-path-dns-mac explanation="DNS-Namen codieren nicht die MAC des lokalen nächsten Hops."}
+::option[Die Adresse des ausgewählten lokalen Gateways.]{#packet-path-local-gateway .correct explanation="Der Frame wird an den nächsten Hop zugestellt, während der IP-Header auf den endgültigen Endpunkt zielt."}
+:::
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der grundlegenden Linux-Datei- und Verzeichnisverwaltung zu festigen:
+## Verarbeitung an jedem Router
 
-1. **[Grundlegende Dateioperationen unter Linux](https://labex.io/de/labs/linux-basic-file-operations-in-linux-18001)** - Üben Sie die Navigation im Dateisystem, die Verwaltung von Dateien und Verzeichnissen sowie die Verwendung von Tastenkombinationen in einer realen Linux-Umgebung.
-2. **[Datei- und Verzeichnisoperationen](https://labex.io/de/labs/linux-file-and-directory-operations-17997)** - Lernen Sie, die Verzeichnisstruktur zu navigieren, Dateien und Ordner zu verwalten und leistungsstarke Befehlszeilentools wie `ls`, `cd`, `mkdir`, `cp`, `mv` und `rm` zu verwenden.
-3. **[Organisieren von Dateien und Verzeichnissen](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** - Üben Sie wesentliche Linux-Dateiverwaltungsfähigkeiten, indem Sie die Befehle `cp`, `mv` und `rm` verwenden, um eine Projektstruktur zu organisieren, Dateien zu verschieben und unnötige Verzeichnisse zu bereinigen.
+Ein Router entfernt die eingehende Verbindungskapselung, validiert und verarbeitet den IP-Header, verringert TTL oder Hop Limit, sucht das Ziel, wendet Richtlinien an und erstellt eine neue Kapselung für die ausgehende Verbindung. Bei IPv4 berücksichtigt die Headerprüfsumme die geänderte TTL. Erreicht das Hop-Feld null, verwirft der Router das Paket und kann eine ICMP-Time-Exceeded-Nachricht zurückgeben.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Interaktion mit dem Linux-Dateisystem aufzubauen.
+:::single-choice{#packet-path-router-change} Welches IP-Feld wird von jedem normalen gerouteten Hop geändert?
 
-## Quiz Question
+::option[Der Benutzername der Anwendung.]{#packet-path-username explanation="Router benötigen für grundlegende Weiterleitung keine Anwendungskontodaten."}
+::option[IPv4-TTL oder IPv6-Hop-Limit.]{#packet-path-hop-field .correct explanation="Jeder Router verringert das Feld, um Routingschleifen zu begrenzen."}
+::option[In jedem Fall der Transportzielport.]{#packet-path-port explanation="Gewöhnliches Routing bewahrt Transportendpunkte; NAT kann eine getrennte Umwandlung sein."}
+:::
 
-Welches Protokoll wird verwendet, um die MAC-Adresse eines Hosts im lokalen Netzwerk zu finden, wenn dessen IP-Adresse bekannt ist? Bitte antworten Sie mit dem dreibuchstabigen Akronym in Großbuchstaben.
+## Middleboxes und MTU berücksichtigen
 
-## Quiz Answer
+Gewöhnliches Routing bewahrt Quell- und Ziel-IP-Adressen, doch NAT kann sie umschreiben und Tunnel können das ursprüngliche Paket einkapseln. Firewalls können Datenverkehr still verwerfen oder zurückweisen. Auch Verbindungs-MTUs unterscheiden sich; IPv4-Router können Pakete mitunter fragmentieren, während IPv6-Router weitergeleitete Pakete nicht fragmentieren und sich auf Path MTU Discovery verlassen.
 
-ARP
+:::single-choice{#packet-path-address-change-exception} Wann können sich Ende-zu-Ende-IP-Adressen entlang eines Pfads ändern?
+
+::option[Immer, wenn ein Ethernet-Switch eine Quell-MAC lernt.]{#packet-path-switch-learning-ip explanation="Switchlernen beeinflusst eine Weiterleitungstabelle der Verbindungsschicht und keine IP-Endpunktadressen."}
+::option[Wenn eine NAT-Richtlinie Paketheader übersetzt.]{#packet-path-nat-change .correct explanation="Übersetzung ist eine Middlebox-Funktion über gewöhnliche Routenweiterleitung hinaus."}
+::option[Immer, wenn ein DNS-Cacheeintrag abläuft.]{#packet-path-dns-expiry explanation="Bestehende Pakete enthalten bereits numerische Adressen."}
+:::
+
+## Den Rückweg verfolgen
+
+Das Ziel führt für die Antwort eine eigene Routensuche aus. Der Rückweg kann aufgrund von Routingrichtlinien, Lastverteilung oder Fehlern andere Router verwenden. Zustandsbehaftete Firewalls und NAT müssen den beobachteten Datenstrom berücksichtigen. Asymmetrie kann daher betrieblich relevant sein, obwohl IP sie erlaubt.
+
+:::single-choice{#packet-path-return-symmetry} Muss eine Antwort dieselben Router in umgekehrter Reihenfolge durchqueren?
+
+::option[Ja, weil IP in jedem Paket die vollständige ausgehende Route aufzeichnet.]{#packet-path-records-route explanation="Gewöhnliche IP-Pakete enthalten keine vorgeschriebene vollständige Rückroute."}
+::option[Ja, sofern Quelle und Ziel keinen Hostnamen gemeinsam haben.]{#packet-path-hostname-symmetry explanation="Namen erzwingen keine Pfadsymmetrie."}
+::option[Nein; jede Richtung wird unabhängig geroutet.]{#packet-path-independent-return .correct explanation="Richtlinien und Topologie können einen asymmetrischen, aber gültigen Pfad erzeugen."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun den sich ändernden Verbindungszustand um ein geroutetes IP-Paket verfolgen.
+
+1. Löse den endgültigen Host nur auf, wenn er direkt erreichbar ist.
+2. Kapsle nicht direkt erreichbaren Datenverkehr für das ausgewählte lokale Gateway.
+3. Verfolge Routensuche und Hop-Limit-Verarbeitung an jedem Router.
+4. Berücksichtige NAT, Filterung, Tunnel und MTU-Beschränkungen.
+5. Behandle die Rückrichtung als unabhängige Route.

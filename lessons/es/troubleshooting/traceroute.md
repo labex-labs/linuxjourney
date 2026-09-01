@@ -1,60 +1,88 @@
 ---
-index: 3
+lesson_id: "traceroute"
+course_id: "troubleshooting"
 lang: "es"
+order_index: 3
 title: "traceroute"
-meta_title: "traceroute - Solución de problemas"
-meta_description: "Domina el comando traceroute de Linux para trazar rutas de red y solucionar problemas de conectividad. Este tutorial explica cómo traceroute usa TTL para mapear la ruta que toman los paquetes hasta su destino."
-meta_keywords: "traceroute, traceroute linux, redes Linux, solución de problemas de red, TTL, enrutamiento de paquetes, comandos Linux, principiante, tutorial"
+description: "Aprende cómo traceroute descubre los saltos que responden y cómo interpretar huecos, tiempos y variaciones de ruta."
+meta_title: "traceroute - Resolución de problemas"
+meta_description: "Domina la orden traceroute de Linux para rastrear rutas de red y diagnosticar problemas de conectividad. Aprende cómo utiliza TTL para descubrir el camino hacia un destino."
+meta_keywords: "traceroute, traceroute Linux, redes Linux, resolución de problemas de red, TTL, enrutamiento de paquetes, órdenes Linux, principiantes, tutorial"
 ---
 
-## Lesson Content
+`traceroute` envía pruebas con valores crecientes de TTL de IPv4 o Hop Limit de IPv6. Los routers donde el valor caduca pueden devolver mensajes Time Exceeded, lo que revela algunos puntos de la ruta de ida que responden.
 
-El comando `traceroute` es una herramienta fundamental de diagnóstico de red utilizada para trazar la ruta que siguen los paquetes desde su computadora hasta un host de destino. Al revelar cada "salto" o router en el camino, ayuda a identificar cuellos de botella en la red y a solucionar problemas de conectividad. La utilidad `traceroute linux` es esencial para cualquier administrador de sistemas o ingeniero de redes.
+## Cómo funciona el descubrimiento de saltos
 
-### Cómo Funciona Traceroute
+Las pruebas comienzan con un límite de un salto y lo incrementan. El primer router reduce el valor a cero y puede devolver un error ICMP. Un límite de dos llega al segundo router antes de caducar, y el proceso continúa hasta que el destino responde o se alcanza el máximo.
 
-El mecanismo detrás de `traceroute` reside en su manipulación inteligente del campo Tiempo de Vida (TTL) en la cabecera de un paquete IP. El proceso funciona de la siguiente manera:
+:::single-choice{#traceroute-expiring-field} ¿Qué campo hace que las pruebas sucesivas caduquen en routers posteriores?
 
-1. `traceroute` envía un paquete de sondeo con un valor TTL de 1.
-2. El primer router en la ruta recibe el paquete, decrementa el TTL a 0 y lo descarta. Luego, el router envía un mensaje ICMP de "Tiempo Excedido" de vuelta a su computadora.
-3. `traceroute` registra la dirección IP del router y el tiempo de ida y vuelta.
-4. Luego envía otro paquete, esta vez con un TTL de 2. Este paquete pasa con éxito el primer router pero es descartado por el segundo router, que nuevamente envía un mensaje de "Tiempo Excedido".
-5. Este proceso se repite, con el TTL incrementándose en uno por cada conjunto subsiguiente de paquetes. Al construir una lista de los routers que devuelven mensajes de "Tiempo Excedido", `traceroute` mapea toda la ruta.
-6. El proceso concluye cuando los paquetes finalmente llegan al destino, el cual responde con un mensaje ICMP de "Respuesta de Eco".
+::option[El TTL de la caché DNS del nombre de destino.]{#traceroute-dns-ttl explanation="La duración del registro DNS no controla los saltos de reenvío de los paquetes."}
+::option[La dirección MAC Ethernet de origen.]{#traceroute-source-mac explanation="Las direcciones de enlace no transportan un contador de saltos de extremo a extremo."}
+::option[El TTL de IPv4 o Hop Limit de IPv6.]{#traceroute-hop-field .correct explanation="Aumentar este contador limitado de reenvíos revela los saltos enrutados que responden."}
+:::
 
-### Entendiendo la Salida de Traceroute
+## Métodos de prueba
 
-Examinemos una salida de ejemplo al ejecutar `traceroute` en una terminal Linux:
+El traceroute tradicional de Linux suele enviar pruebas UDP a puertos de destino altos. El destino puede señalar el final mediante ICMP Port Unreachable. Otras opciones utilizan pruebas ICMP Echo o TCP SYN, que pueden atravesar el filtrado de manera distinta:
 
 ```bash
-$ traceroute google.com
-traceroute a google.com (216.58.216.174), 30 saltos máx., paquetes de 60 bytes
- 1  192.168.4.254 (192.168.4.254)  0.028 ms  0.009 ms  0.008 ms
- 2  100.64.1.113 (100.64.1.113)  1.227 ms  1.226 ms 0.920 ms
- 3  100.64.0.20 (100.64.0.20)  1.501 ms 1.556 ms  0.855 ms
+$ traceroute -n example.com
+$ traceroute -I -n example.com
+$ traceroute -T -p 443 -n example.com
 ```
 
-Cada línea numerada representa un salto a lo largo de la ruta de red. Así es como se interpreta la información:
+Los privilegios y las opciones disponibles varían. Utiliza métodos autorizados para el destino y anota el método al comparar resultados.
 
-- **Número de Salto:** La primera columna (ej. `1`, `2`, `3`) indica la secuencia del router en la ruta.
-- **Nombre del Router y Dirección IP:** La siguiente parte muestra el nombre de host (si se puede resolver) y la dirección IP del router en ese salto.
-- **Tiempos de Ida y Vuelta (RTT):** Las últimas tres columnas muestran el tiempo de ida y vuelta para cada uno de los tres paquetes de sondeo enviados a ese salto específico. Estos tiempos, medidos en milisegundos (ms), ayudan a evaluar la latencia en cada paso del viaje.
+:::single-choice{#traceroute-default-destination-response} ¿Qué suele poner fin a un traceroute UDP tradicional de Linux?
 
-Usar el comando `traceroute linux` de manera efectiva proporciona una visión invaluable del rendimiento y la estructura de su red.
+::option[Una respuesta ICMP Port Unreachable del destino.]{#traceroute-port-unreachable .correct explanation="Los puertos UDP altos normalmente no se utilizan, por lo que el destino puede identificarse mediante el error."}
+::option[Una respuesta HTTP 200 obligatoria de cada router.]{#traceroute-http-every-router explanation="Los routers devuelven errores de control de red, no respuestas HTTP."}
+::option[Una difusión Ethernet del destino a través de Internet.]{#traceroute-ethernet-broadcast explanation="Las difusiones de enlace no atraviesan rutas enrutadas."}
+:::
 
-## Exercise
+## Interpretar los asteriscos
 
-La práctica es clave para dominar el diagnóstico de redes. Los siguientes laboratorios prácticos le ayudarán a reforzar su comprensión del descubrimiento de rutas de red y la solución de problemas con herramientas como `traceroute`:
+Un asterisco significa que no se observó una respuesta a esa prueba antes del tiempo de espera. El router puede reenviar tráfico en tránsito mientras filtra o limita la frecuencia de las respuestas de diagnóstico. Si responden saltos posteriores, está claro que el salto silencioso reenvió al menos algunas pruebas.
 
-1. **[Administrar Direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique el uso del comando `ip` para configurar ajustes de red y luego verifique la conectividad y las rutas de enrutamiento con `traceroute`.
-2. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo funcionan juntos `ping` y `arp` para comprender las interacciones de la capa de red, que son conceptos fundamentales para el funcionamiento de `traceroute`.
+:::single-choice{#traceroute-asterisk-meaning} ¿Qué demuestra un `*` en un salto?
 
-Estos laboratorios le ayudarán a aplicar los conceptos de diagnóstico de red en escenarios del mundo real y a ganar confianza con las herramientas esenciales de redes en Linux.
+::option[Que el router descartó permanentemente todos los paquetes en tránsito.]{#traceroute-star-all-drop explanation="Las respuestas posteriores pueden demostrar que el reenvío continuó."}
+::option[Únicamente que no llegó una respuesta coincidente antes del tiempo de espera.]{#traceroute-star-no-response .correct explanation="El filtrado, la limitación de frecuencia, la pérdida y los problemas de la ruta de retorno pueden producir silencio."}
+::option[Que el destino no tiene dirección IP.]{#traceroute-star-no-address explanation="La prueba ya se dirige a una dirección y un salto silencioso no la elimina."}
+:::
 
-## Quiz Question
+## Tiempos y variación de la ruta
 
-What gets decremented by one when making hops across the network? (Please answer in English, paying attention to capitalization.)
+Los tiempos por salto miden la ida y vuelta de las respuestas de control, no la latencia añadida por el enlace entre líneas impresas adyacentes. Los routers pueden dar menor prioridad a las respuestas del plano de control. El balanceo de carga puede enviar las pruebas por rutas distintas, y la resolución de nombres puede añadir retrasos a la presentación; `-n` evita las búsquedas inversas.
 
-## Quiz Answer
+La ruta de retorno de cada respuesta ICMP puede diferir de la ruta de ida. Repite las pruebas y correlaciónalas con los tiempos de la aplicación en los extremos antes de identificar un cuello de botella.
 
-TTL
+:::single-choice{#traceroute-hop-rtt-limit} ¿Por qué no se deben restar los valores RTT de saltos adyacentes como si fueran la latencia exacta del enlace?
+
+::option[Traceroute muestra todos los tiempos en bytes y no en milisegundos.]{#traceroute-times-bytes explanation="Los tiempos de las pruebas normalmente se muestran en milisegundos."}
+::option[Las respuestas pueden utilizar rutas de retorno y procesamiento del plano de control diferentes.]{#traceroute-rtt-asymmetry .correct explanation="Las mediciones son recorridos independientes de ida y vuelta hasta cada salto, no muestras sincronizadas y unidireccionales de cada enlace."}
+::option[Todos los routers tienen el mismo reloj que el origen.]{#traceroute-router-clock explanation="La medición no depende de sincronizar los relojes remotos."}
+:::
+
+## Comparar con la aplicación
+
+Un traceroute puede alcanzar el destino mientras el servicio está bloqueado, y el servicio puede funcionar aunque los routers intermedios oculten sus respuestas. Prueba la misma familia de direcciones, destino, protocolo de transporte y puerto que la aplicación; después utiliza traceroute como evidencia complementaria sobre la ruta.
+
+:::single-choice{#traceroute-service-proof} ¿Un traceroute completado demuestra que un servicio HTTPS funciona correctamente?
+
+::option[Sí, porque cada salto valida el certificado del servidor.]{#traceroute-validates-cert explanation="Los routers no realizan la validación TLS del cliente."}
+::option[No; el transporte, TLS y HTTP necesitan sus propias pruebas.]{#traceroute-not-app-proof .correct explanation="El descubrimiento de rutas y el estado de una aplicación son capas de diagnóstico diferentes."}
+::option[Sí, pero solo si se muestran nombres DNS inversos.]{#traceroute-rdns-proof explanation="Los nombres no demuestran que una aplicación funcione."}
+:::
+
+## Resumen
+
+Ahora puedes interpretar traceroute como una serie de pruebas con saltos limitados, no como un oráculo completo de la ruta.
+
+1. Explica el descubrimiento de saltos mediante la caducidad de TTL o Hop Limit.
+2. Anota si se utilizaron pruebas UDP, ICMP o TCP.
+3. Trata los asteriscos como respuestas ausentes y no como caídas demostradas.
+4. Evita deducir la latencia exacta de un enlace a partir de los RTT de saltos adyacentes.
+5. Correlaciona la evidencia de la ruta con la aplicación real.

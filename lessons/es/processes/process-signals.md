@@ -1,60 +1,85 @@
 ---
-index: 6
+lesson_id: "process-signals"
+course_id: "processes"
 lang: "es"
+order_index: 6
 title: "Señales"
+description: "Aprende cómo Linux genera, bloquea, entrega y trata señales para controlar procesos y notificar eventos."
 meta_title: "Señales - Procesos"
-meta_description: "Explore los fundamentos de las señales de Linux, un mecanismo clave para la gestión de procesos. Aprenda cómo funcionan las señales de proceso de Linux como SIGTERM (señal 15 linux) y SIGKILL, y comprenda sus códigos de señal del sistema operativo."
-meta_keywords: "señales linux, señales de proceso linux, señal 15 linux, código sig so, SIGKILL, SIGTERM, SIGINT, gestión de procesos, tutorial linux"
+meta_description: "Descubre cómo funcionan las señales de Linux, incluidas SIGINT, SIGTERM y SIGKILL, sus disposiciones, bloqueo y entrega."
+meta_keywords: "señales Linux, señales de procesos Linux, SIGKILL, SIGTERM, SIGINT, gestión de procesos, tutorial Linux"
 ---
 
-## Lesson Content
+Una señal es una notificación asíncrona entregada a un proceso o a un hilo concreto. Las señales comunican eventos y solicitan acciones, pero transportan información limitada frente a mecanismos de comunicación entre procesos orientados a datos.
 
-En Linux, una señal es una interrupción de software enviada a un proceso para notificarle que ha ocurrido un evento importante. Comprender las **señales de linux** es fundamental para gestionar procesos y el comportamiento del sistema de manera efectiva.
+## Origen de las señales
 
-### El Propósito de las Señales
+Las señales pueden proceder de varios lugares:
 
-Las señales sirven como un método principal de comunicación entre procesos (IPC). Tienen muchos usos:
+- Una terminal puede generar `SIGINT` para `Ctrl-C` o `SIGTSTP` para `Ctrl-Z` y dirigirla al grupo de procesos en primer plano.
+- El kernel puede generar una señal síncrona como `SIGSEGV` cuando un hilo realiza una referencia de memoria no válida.
+- Un proceso puede enviar una señal autorizada a otro proceso o grupo de procesos.
+- Los temporizadores, los cambios de estado de hijos y las desconexiones de terminal pueden generar otras señales.
 
-- **Interacción del Usuario**: Un usuario puede escribir caracteres especiales de terminal, como `Ctrl-C` (SIGINT) o `Ctrl-Z` (SIGTSTP), para interrumpir o suspender procesos en primer plano.
-- **Notificaciones del Kernel**: El kernel puede enviar señales a un proceso para notificarle problemas de hardware o software, como un acceso ilegal a la memoria (SIGSEGV).
-- **Gestión de Procesos**: Los administradores del sistema y otros procesos utilizan señales para gestionar el ciclo de vida de otros procesos, como solicitar la terminación o una recarga de configuración.
+El emisor debe tener los permisos apropiados, normalmente basados en credenciales o capacidades. Por tanto, las señales son una interfaz de control mediada por el kernel, no mensajes sin restricciones entre usuarios arbitrarios.
 
-### El Ciclo de Vida de la Señal
+:::single-choice{#process-signals-ctrl-c} ¿Qué señal genera normalmente una terminal para `Ctrl-C`?
 
-Cuando un evento genera una señal, primero se entrega a un proceso objetivo. La señal permanece en estado "pendiente" hasta que el kernel ejecuta el proceso. Cuando el proceso se programa, se entrega la señal. Sin embargo, los procesos tienen máscaras de señal, que se pueden configurar para bloquear la entrega de señales específicas.
+::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` suele estar asociada al carácter de suspensión de la terminal, como `Ctrl-Z`."}
+::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` reanuda un proceso detenido en vez de representar una interrupción del teclado."}
+::option[`SIGINT`]{#process-signals-ctrl-c-int .correct explanation="El carácter de interrupción de la terminal suele generar `SIGINT` para el grupo de procesos en primer plano."}
+:::
 
-Cuando se entrega una señal, el proceso puede tomar una de varias acciones:
+## Disposiciones y acciones predeterminadas
 
-- **Ignorar la señal**: El proceso simplemente descarta la señal y continúa la ejecución.
-- **Capturar la señal**: El proceso ejecuta una función personalizada llamada manejador de señales para responder al evento.
-- **Realizar la acción predeterminada**: Si no se captura ni se ignora, se realiza la acción predeterminada. Para muchas señales, esto significa terminar el proceso.
-- **Bloquear la señal**: Si la señal está en la máscara de señales del proceso, permanece pendiente hasta que se desbloquea.
+La mayoría de las señales tienen una disposición para todo el proceso que selecciona una de tres respuestas:
 
-### Señales Comunes de Procesos de Linux
+- realizar la acción predeterminada definida para la señal;
+- ignorar la señal;
+- invocar un manejador instalado por el usuario.
 
-Cada señal se define por un número entero, pero casi siempre se hace referencia a ellas por sus nombres simbólicos (el **código sig del so**), que comienzan con `SIG`. Si bien los números pueden variar ligeramente entre arquitecturas, los nombres son consistentes. Aquí están algunas de las **señales de procesos de linux** más comunes:
+Las acciones predeterminadas varían: una señal puede terminar, terminar y crear un volcado de memoria, detener, continuar o ignorarse. Capturar `SIGTERM` puede permitir que un programa inicie un cierre ordenado, pero el manejador debe seguir reglas estrictas de seguridad asíncrona y el programa aún puede retrasar o rechazar la salida.
 
-- **SIGHUP (1)**: Desconexión. A menudo se utiliza para indicar a un demonio que recargue su configuración.
-- **SIGINT (2)**: Interrupción. Enviada por `Ctrl-C`. Es una solicitud para terminar el proceso.
-- **SIGKILL (9)**: Matar. Esta es una terminación inmediata y forzosa. El proceso no puede capturar, ignorar o bloquear esta señal.
-- **SIGSEGV (11)**: Fallo de Segmentación. Indica que el proceso realizó una referencia de memoria inválida.
-- **SIGTERM (15)**: Terminación. Esta es la forma estándar y cortés de solicitar la terminación de un proceso. Es la señal predeterminada enviada por el comando `kill`. Un proceso puede capturar esta señal para realizar la limpieza antes de salir. A esto se le conoce a menudo como **señal 15 linux**.
-- **SIGSTOP**: Detener. Pausa el proceso. Al igual que SIGKILL, no se puede capturar ni ignorar.
+Los nombres de las señales son más portables y legibles que los números. Aunque arquitecturas habituales de Linux usan el 15 para `SIGTERM`, no supongas que todos los números, salvo los garantizados por la norma correspondiente, son idénticos en todas partes. Usa `kill -l` para consultar la correspondencia local.
 
-La diferencia clave entre `SIGTERM` (**señal linux 15**) y `SIGKILL` es que `SIGTERM` es una solicitud que puede ser manejada, mientras que `SIGKILL` es un comando que destruye el proceso inmediatamente.
+:::single-choice{#process-signals-term-behavior} ¿Por qué puede un proceso responder de forma ordenada a `SIGTERM`?
 
-## Exercise
+::option[Puede instalar un manejador para esa señal.]{#process-signals-term-handler .correct explanation="A diferencia de `SIGKILL`, `SIGTERM` puede capturarse para que un programa inicie su propia lógica de cierre."}
+::option[El kernel guarda siempre todos los documentos abiertos automáticamente.]{#process-signals-term-kernel-save explanation="La limpieza de una aplicación depende de su código; el kernel no comprende ni guarda estados arbitrarios de documentos."}
+::option[`SIGTERM` no puede causar la terminación de forma predeterminada.]{#process-signals-term-no-default explanation="Su acción predeterminada es terminar cuando el proceso no ha cambiado la disposición."}
+:::
 
-¡La práctica hace al maestro! Aquí hay un laboratorio práctico para reforzar su comprensión de los procesos y cómo se utilizan las señales para interactuar con ellos:
+## Señales bloqueadas y pendientes
 
-1. **[Gestionar y Supervisar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderá habilidades esenciales para gestionar y supervisar procesos en un sistema Linux. Explorará cómo interactuar con procesos en primer plano y en segundo plano, inspeccionarlos con `ps`, supervisar recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`. Terminar procesos con `kill` es una aplicación directa del envío de señales.
+Los hilos tienen máscaras de señales que pueden bloquear temporalmente la entrega de determinadas señales. Una señal generada y bloqueada permanece pendiente hasta que pueda entregarse, según las reglas de las señales estándar y en tiempo real. Las señales estándar del mismo tipo pueden fusionarse en vez de ponerse en cola una vez por aparición.
 
-Este laboratorio le ayudará a aplicar los conceptos de gestión de procesos y el uso subyacente de señales en escenarios reales y a ganar confianza con la administración de sistemas Linux.
+En un proceso multihilo, una señal dirigida al proceso puede entregarse a un hilo apto que no la bloquee; una señal dirigida a un hilo apunta al hilo especificado. Por tanto, un diseño correcto requiere más que comprobar si «el proceso la bloqueó».
 
-## Quiz Question
+:::single-choice{#process-signals-blocked-state} ¿Qué ocurre normalmente cuando se genera una señal bloqueable mientras su destino la bloquea?
 
-¿Qué señal no se puede bloquear? Por favor, responda en inglés, usando el nombre exacto de la señal y prestando atención a las mayúsculas.
+::option[Permanece pendiente hasta que la entrega sea posible.]{#process-signals-pending .correct explanation="El bloqueo aplaza el tratamiento; la señal pendiente puede entregarse después de desbloquearla."}
+::option[Se convierte automáticamente en `SIGKILL`.]{#process-signals-convert-kill explanation="El kernel no eleva una señal ordinaria bloqueada a una señal que no pueda capturarse."}
+::option[Cambia el ID de usuario del proceso de destino.]{#process-signals-change-uid explanation="Las máscaras de señales afectan a la entrega y no modifican las credenciales del proceso."}
+:::
 
-## Quiz Answer
+## Señales que no pueden tratarse
 
-SIGKILL
+`SIGKILL` termina un proceso y `SIGSTOP` lo detiene. Ninguna puede capturarse, ignorarse ni bloquearse. Esto garantiza que el kernel conserve el control final, pero también significa que `SIGKILL` no ofrece ninguna oportunidad para la limpieza de la aplicación.
+
+Incluso `SIGKILL` puede no hacer que una tarea desaparezca inmediatamente desde la perspectiva de un observador. Una tarea puede estar esperando en una operación del kernel no interrumpible y, después de terminar, su padre todavía debe recoger su estado.
+
+:::single-choice{#process-signals-uncatchable-pair} ¿Qué pareja no puede capturarse, ignorarse ni bloquearse?
+
+::option[`SIGKILL` y `SIGSTOP`]{#process-signals-kill-stop .correct explanation="El kernel reserva estas dos señales para que un proceso no pueda anular ni aplazar sus acciones fundamentales."}
+::option[`SIGINT` y `SIGTERM`]{#process-signals-int-term explanation="Ambas pueden tener manejadores instalados por el usuario y pueden bloquearse."}
+::option[`SIGHUP` y `SIGCONT`]{#process-signals-hup-cont explanation="Estas señales tienen una semántica especial, pero no son la pareja imposible de capturar."}
+:::
+
+## Resumen
+
+Ahora puedes explicar las principales etapas y restricciones del tratamiento de señales en Linux.
+
+1. Identifica señales generadas por terminales, el kernel y otros procesos.
+2. Distingue acciones predeterminadas, señales ignoradas y manejadores.
+3. Relaciona el bloqueo con la entrega pendiente y las máscaras de hilos.
+4. Recuerda que `SIGKILL` y `SIGSTOP` no pueden tratarse ni bloquearse.

@@ -1,44 +1,92 @@
 ---
-index: 5
+lesson_id: "udev"
+course_id: "devices"
 lang: "ko"
+order_index: 5
 title: "udev"
+description: "udev가 커널 장치 이벤트를 처리해 정책, 권한 및 영구 링크를 적용하는 방법을 알아봅니다."
 meta_title: "udev - 장치"
-meta_description: "udev, Linux 장치 파일을 동적으로 관리하는 방법, udevadm 사용법에 대해 알아보세요. 초보자를 위한 장치 노드 생성에 대해 이해합니다."
-meta_keywords: "udev, udevadm, Linux 장치 관리, 장치 파일, Linux 튜토리얼, 초보자 Linux, udev 규칙, Linux 가이드"
+meta_description: "udev가 리눅스 장치 파일을 동적으로 관리하는 방식과 udevadm 사용법을 알아봅니다. 장치 노드 생성과 udev 규칙을 이해합니다."
+meta_keywords: "udev, udevadm, 리눅스 장치 관리, 장치 파일, 리눅스 튜토리얼, udev 규칙, 리눅스 가이드"
 ---
 
-## Lesson Content
+리눅스 커널은 uevent를 통해 장치 변경을 사용자 공간에 보고합니다. 현재 여러 배포판에서는 `systemd-udevd`가 udev 규칙과 장치 데이터베이스를 사용해 이러한 이벤트를 처리합니다. 커널이 채우는 `devtmpfs`와 함께 작동하여 애플리케이션이 `/dev` 주변에서 보는 소유권, 권한, 속성 및 심볼릭 링크를 만듭니다.
 
-과거에는, 그리고 원한다면 오늘날에도 다음과 같은 명령어를 사용하여 장치 노드를 생성할 수 있었습니다:
+## 커널 이벤트에서 장치 정책으로
+
+장치가 추가, 변경, 이동 또는 제거되면 udev는 다음 작업을 수행할 수 있습니다.
+
+- sysfs의 속성과 이벤트 속성 읽기
+- 장치 노드에 소유자, 그룹 및 모드 정책 적용
+- `/dev/disk/by-id/...` 같은 안정적인 심볼릭 링크 추가
+- 다른 서비스를 위해 장치에 태그 지정
+- 범위가 좁게 정의된 보조 처리 실행
+
+실제 장치와 드라이버는 여전히 커널이 담당합니다. `/dev`에서 노드를 삭제해도 하드웨어가 물리적으로 제거되지 않으며, `mknod`로 노드를 직접 만들어도 지원되지 않는 하드웨어가 생기거나 드라이버가 바인딩되지는 않습니다.
+
+:::single-choice{#udev-kernel-event-input} 장치 변경 시 일반적으로 udev 처리를 시작하는 것은 무엇입니까?
+
+::option[APT가 수행하는 패키지 저장소 새로 고침입니다.]{#udev-apt-refresh explanation="패키지 메타데이터 갱신은 실시간 장치 이벤트 처리와 관련이 없습니다."}
+::option[사용자가 `/dev` 아래의 모든 파일 이름을 직접 바꾸는 작업입니다.]{#udev-manual-renaming explanation="동적 정책은 대량 수동 이름 변경이 아니라 커널 이벤트와 규칙에 의해 구동됩니다."}
+::option[장치 작업을 설명하는 커널 uevent입니다.]{#udev-kernel-uevent .correct explanation="udev는 커널에서 장치 이벤트를 받아 일치하는 사용자 공간 규칙을 적용합니다."}
+:::
+
+## 규칙 위치와 우선순위
+
+규칙은 일반적으로 다음 위치에 있습니다.
+
+- `/usr/lib/udev/rules.d/`: 공급업체 또는 패키지가 제공하는 규칙
+- `/run/udev/rules.d/`: 휘발성 런타임 규칙
+- `/etc/udev/rules.d/`: 로컬 관리자 정책
+
+파일은 파일 이름의 사전식 순서로 처리되며, 설치된 udev 구현의 규칙에 따라 우선순위가 높은 디렉터리의 같은 이름 파일이 낮은 우선순위 버전을 대체합니다. 로컬 규칙에는 의도적으로 정한 파일 이름을 사용하고 열거 이름 대신 안정적인 속성과 일치시키십시오.
+
+규칙 하나가 일치하는 모든 장치에 영향을 줄 수 있으므로 범위를 신중하게 테스트하십시오. 로컬 재정의나 보충 규칙이 적합하다면 패키지에서 제공한 규칙을 직접 편집하지 마십시오.
+
+:::single-choice{#udev-local-rules-directory} 영구적인 로컬 관리자 udev 규칙을 위한 디렉터리는 무엇입니까?
+
+::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="procfs는 영구적인 로컬 규칙 디렉터리를 제공하지 않습니다."}
+::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="로컬 정책은 패키지가 관리하는 공급업체 규칙과 분리하여 `/etc` 아래에 둡니다."}
+::option[`/dev/udev/rules.d/`]{#udev-dev-rules explanation="`/dev`에는 영구 규칙 설정이 아니라 런타임 장치 인터페이스 객체가 있습니다."}
+:::
+
+## `udevadm`으로 장치 검사하기
+
+기존 노드의 udev 속성을 조회합니다.
 
 ```bash
-mknod /dev/sdb1 b 8 3
+$ udevadm info --query=all --name=/dev/sda
 ```
 
-이 명령어는 `/dev/sdb1` 장치 노드를 생성하며, 주 번호 8 과 부 번호 3 을 가진 블록 장치 (b) 로 만듭니다.
+현재 시스템에 존재하는 노드를 사용하십시오. `udevadm info --attribute-walk --name=...`는 sysfs 부모 체인의 속성을 표시하여 규칙을 만드는 데 도움을 줄 수 있습니다. `udevadm monitor --kernel --udev --property`는 커널 이벤트와 처리된 이벤트를 관찰합니다. 장치 식별자가 노출될 수 있으므로 캡처한 출력을 적절히 다루십시오.
 
-장치를 제거하려면 `/dev` 디렉터리에 있는 장치 파일을 단순히 **rm**하면 됩니다.
+:::single-choice{#udev-info-purpose} `udevadm info --query=all --name=/dev/sda`가 요청하는 것은 무엇입니까?
 
-다행히도 udev 덕분에 더 이상 이렇게 할 필요가 없습니다. udev 시스템은 장치가 연결되었는지 여부에 따라 장치 파일을 동적으로 생성하고 제거합니다. 시스템에는 `udevd` 데몬이 실행 중이며, 시스템에 연결된 장치에 대한 커널의 메시지를 수신합니다. `Udevd`는 해당 정보를 구문 분석하고 `/etc/udev/rules.d`에 지정된 규칙과 데이터를 일치시킵니다. 이러한 규칙에 따라 장치 노드와 장치에 대한 심볼릭 링크를 생성할 가능성이 높습니다. 자신만의 udev 규칙을 작성할 수 있지만, 이 수업의 범위를 약간 벗어납니다. 다행히도 시스템에는 이미 많은 udev 규칙이 포함되어 있으므로 직접 작성할 필요가 없을 수도 있습니다.
+::option[디스크 파티션 테이블의 파괴적인 재작성입니다.]{#udev-info-partition-write explanation="이 조회는 검사 작업이며 저장 장치를 포맷하거나 다시 파티셔닝하지 않습니다."}
+::option[인터넷에서 누락된 커널 드라이버를 설치하는 작업입니다.]{#udev-info-install-driver explanation="udevadm 검사는 패키지 다운로드 도구처럼 동작하지 않습니다."}
+::option[지정한 장치 노드에 알려진 udev 속성입니다.]{#udev-info-properties .correct explanation="info 명령은 장치 데이터베이스와 관련 sysfs 정보를 조회합니다."}
+:::
 
-**udevadm** 명령어를 사용하여 udev 데이터베이스와 sysfs 를 볼 수도 있습니다. 이 도구는 매우 유용하지만 때로는 매우 복잡해질 수 있습니다. 장치 정보를 보는 간단한 명령어는 다음과 같습니다:
+## 신중하게 규칙 변경 적용하기
 
-```bash
-udevadm info --query=all --name=/dev/sda
-```
+규칙 파일을 다시 불러오면 이후 이벤트 처리가 바뀌지만, 기존의 모든 장치 상태가 자동으로 다시 구성되지는 않습니다. 이벤트를 수동으로 트리거하면 여러 장치와 서비스에 영향을 줄 수 있으므로 대상을 좁히고 설치된 `udevadm` 문서를 따르십시오. 테스트 명령은 규칙 평가를 시뮬레이션할 수 있지만 실제 이벤트의 모든 부작용을 재현하지는 못할 수 있습니다.
 
-## Exercise
+권한이나 이름을 변경하기 전에 로컬 규칙을 백업하고, 구문을 검증하며, 알려진 테스트 장치 하나를 관찰하고, 복구 경로를 마련하십시오. udev 이벤트 처리 안에서 장시간 실행되는 작업은 피하고 적절한 서비스에 위임하십시오.
 
-연습하면 완벽해집니다! 다음은 Linux 에서 하드웨어 상호 작용 및 장치 관리에 대한 이해를 강화하기 위한 실습 랩입니다:
+:::single-choice{#udev-reload-effect} udev 규칙을 다시 불러오면 주로 무엇이 바뀝니까?
 
-1. **[Linux 에서 하드웨어 장치 탐색](https://labex.io/ko/labs/comptia-explore-hardware-devices-in-linux-590861)** - 이 랩에서는 Linux 환경 내에서 하드웨어 장치를 탐색, 식별 및 검사하는 필수 기술을 배웁니다. 운영 체제가 물리적 구성 요소와 상호 작용하는 방식을 이해하기 위한 강력한 명령줄 유틸리티를 직접 경험하게 되며, 이는 장치 노드와 udev 의 역할을 이해하는 데 중요합니다.
+::option[이후 일치하는 장치 이벤트가 처리되는 방식입니다.]{#udev-future-events .correct explanation="다시 불러오면 메모리 내 규칙이 갱신됩니다. 장치를 다시 평가하려면 여전히 이벤트가 발생하거나 의도적으로 트리거되어야 합니다."}
+::option[연결된 모든 장치의 물리 배선입니다.]{#udev-physical-wiring explanation="소프트웨어 규칙을 불러오는 작업으로 하드웨어 연결을 바꿀 수는 없습니다."}
+::option[이벤트나 일치 여부와 관계없는 모든 기존 장치 노드입니다.]{#udev-all-existing explanation="다시 불러오기만으로 현재 모든 장치가 즉시 재평가된다고 보장할 수 없습니다."}
+:::
 
-이 랩은 실제 시나리오에 개념을 적용하고 Linux 하드웨어 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
+[리눅스 하드웨어 장치 살펴보기](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861)에서 제어된 환경을 사용해 `udevadm` 속성, sysfs 경로 및 `/dev` 링크를 연결해 보십시오.
 
-## Quiz Question
+## 요약
 
-장치를 동적으로 추가하고 제거하는 것은 무엇입니까?
+이제 커널 이벤트와 사용자 공간 장치 정책 사이에서 udev의 위치를 설명할 수 있습니다.
 
-## Quiz Answer
-
-udev
+1. uevent와 sysfs 속성을 udev 규칙 일치와 연결합니다.
+2. 공급업체, 런타임 및 로컬 규칙 위치를 구분합니다.
+3. `udevadm`으로 속성과 이벤트 흐름을 검사합니다.
+4. 좁고 테스트된 범위에서만 규칙을 다시 불러오고 트리거합니다.

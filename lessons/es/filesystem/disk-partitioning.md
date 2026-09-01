@@ -1,105 +1,125 @@
 ---
-index: 4
+lesson_id: "disk-partitioning"
+course_id: "filesystem"
 lang: "es"
-title: "Particionamiento de Discos"
-meta_title: "Particionamiento de Discos - El Sistema de Archivos"
-meta_description: "Aprenda sobre el particionamiento de discos en Linux con el comando parted. Esta guía cubre cómo ver particiones con `sudo parted -l`, crearlas y redimensionarlas. También presenta gparted, una alternativa gráfica popular."
-meta_keywords: "particionamiento de discos Linux, comando parted, sudo parted -l, gparted, alternativa gparted windows, fdisk, gestión de discos, crear partición, redimensionar partición, guía Linux"
+order_index: 4
+title: "Particionado de discos"
+description: "Aprende un flujo de trabajo basado en la verificación para examinar, crear y redimensionar límites de particiones con `parted`."
+meta_title: "Particionado de discos - El sistema de archivos"
+meta_description: "Aprende a examinar, crear y redimensionar particiones Linux con parted mediante un flujo seguro basado en la verificación."
+meta_keywords: "particionado de discos Linux, parted, fdisk, gparted, crear partición, redimensionar partición"
 ---
 
-## Lesson Content
+Editar particiones cambia el mapa que define los límites del almacenamiento. Un dispositivo, inicio o final incorrecto puede hacer inaccesibles los datos existentes o sobrescribir metadatos esenciales. Practica únicamente en un disco virtual desechable y conserva una copia de seguridad probada por separado antes de modificar almacenamiento valioso.
 
-Esta lección proporciona una guía práctica para administrar sistemas de archivos particionando un disco, como una unidad USB. Si no tienes una unidad de repuesto, aún puedes seguir el proceso para comprender los conceptos.
+## Elegir una herramienta
 
-Primero, necesitaremos particionar nuestro disco. Hay muchas herramientas disponibles para esta tarea:
+Entre las herramientas habituales se encuentran:
 
-- **fdisk**: Una herramienta básica de particionamiento por línea de comandos; no admite GPT.
-- **parted**: Una potente herramienta de línea de comandos que admite el particionamiento MBR y GPT.
-- **gparted**: La versión gráfica de `parted`. Para los usuarios que prefieren una interfaz visual, `gparted` es una herramienta intuitiva, a menudo considerada una excelente `alternativa de gparted para windows`.
-- **gdisk**: Similar a `fdisk`, pero solo admite GPT.
+- `fdisk`, un editor de particiones para terminal de util-linux compatible con MBR y GPT
+- `parted`, un editor para terminal y scripts compatible con GPT, MBR y otros formatos de tabla
+- `gdisk`, un editor interactivo centrado en GPT
+- GParted, una interfaz gráfica para particiones y sistemas de archivos
 
-Usaremos `parted` para nuestros ejemplos.
+La compatibilidad de las herramientas evoluciona, así que utiliza el manual local y la documentación de la distribución. Una interfaz gráfica no hace seguras las operaciones destructivas; sigue cambiando los mismos metadatos del disco.
 
-### Listar Particiones Existentes
+:::single-choice{#disk-partitioning-fdisk-gpt} ¿Qué afirmación sobre el `fdisk` actual de Linux es correcta?
 
-Antes de realizar cambios, es crucial identificar su disco y su diseño actual. Una forma rápida de hacerlo es con el comando `sudo parted -l`, que enumera las tablas de particiones de todos los dispositivos de bloque conectados.
+::option[Admite tablas de particiones MBR y GPT.]{#disk-partitioning-fdisk-supports-gpt .correct explanation="El fdisk actual de util-linux puede editar diseños DOS/MBR y GPT, entre otros."}
+::option[Solo puede editar GPT y nunca MBR.]{#disk-partitioning-fdisk-only-gpt explanation="`gdisk`, centrado en GPT, se aproxima más a esa descripción; fdisk admite varios tipos de etiquetas."}
+::option[Crea sistemas de archivos, pero no puede editar entradas de particiones.]{#disk-partitioning-fdisk-filesystem-only explanation="Su finalidad principal es mostrar y editar tablas de particiones."}
+:::
 
-```bash
-sudo parted -l
-```
+## Identificar y detener el uso del destino
 
-Este comando te ayuda a encontrar el nombre de dispositivo correcto, como `/dev/sdb`, antes de comenzar a modificarlo.
-
-### Iniciar el Modo Interactivo
-
-Para comenzar a realizar cambios, inicie `parted` en modo interactivo. Supongamos que su dispositivo de destino es `/dev/sdb`.
+Comienza con un inventario de solo lectura:
 
 ```bash
-sudo parted
+$ lsblk -o NAME,PATH,TYPE,SIZE,MODEL,SERIAL,TRAN,PTTYPE,FSTYPE,MOUNTPOINTS
+$ findmnt --real
+$ sudo parted --list
 ```
 
-Ingresarás al shell de la herramienta `parted`, donde puedes ejecutar comandos para administrar las particiones de tu dispositivo.
+Confirma el dispositivo completo mediante su identidad persistente, modelo, número de serie, tamaño, transporte y topología, no solo por `/dev/sdX`. Después identifica todos sus consumidores: sistemas de archivos montados, intercambio, LVM, RAID, cifrado, contenedores, máquinas virtuales, bases de datos y descriptores de archivo abiertos.
 
-### Seleccionar un Dispositivo
+Desmonta o desactiva todas las capas pertinentes mediante sus procedimientos documentados. No edites la tabla de particiones del disco del sistema en ejecución solo porque la herramienta se abra correctamente. Registra la tabla existente en un formato restaurable y confirma que la copia de seguridad reside en otro dominio de fallo.
 
-Una vez dentro del shell de `parted`, debes seleccionar el disco que deseas modificar. Ten mucho cuidado de elegir el correcto para evitar la pérdida de datos.
+:::single-choice{#disk-partitioning-target-identity} ¿Por qué un nombre de dispositivo como `/dev/sdb` no basta como única comprobación del destino?
+
+::option[Porque Linux nunca expone discos completos bajo `/dev`.]{#disk-partitioning-no-whole-disks explanation="Los discos completos suelen tener nodos de bloques bajo `/dev`."}
+::option[Porque los nombres de enumeración pueden cambiar al modificarse los dispositivos o la topología.]{#disk-partitioning-enumeration-changes .correct explanation="La letra se asigna según el orden de descubrimiento y puede referirse a otro disco en una sesión posterior."}
+::option[Porque las herramientas de particionado solo aceptan UUID de sistemas de archivos como operandos.]{#disk-partitioning-only-uuid explanation="Los editores suelen operar sobre la ruta de un dispositivo de bloques completo después de verificar su identidad."}
+:::
+
+## Examinar un dispositivo con `parted`
+
+Abre el dispositivo completo verificado explícitamente:
 
 ```bash
-select /dev/sdb
+$ sudo parted /dev/VERIFIED-DISK
 ```
 
-### Ver la Tabla de Particiones
+Después selecciona unidades de visualización coherentes y muestra la tabla:
 
-Usa el comando `print` para mostrar la tabla de particiones del disco seleccionado.
-
-```plaintext
-(parted) print
-Model: ATA VBOX HARDDISK (scsi)
-Disk /dev/sdb: 10.7GB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
-Disk Flags:
-
-Number  Start   End     Size    Type      File system  Flags
- 1      1049kB  10.7GB  10.7GB  primary   ext4         boot
+```text
+(parted) unit MiB
+(parted) print free
 ```
 
-Esta salida muestra las particiones disponibles en el dispositivo. Las columnas **Start** (Inicio) y **End** (Fin) indican dónde se encuentra cada partición en el disco.
+`print free` muestra las entradas actuales y las regiones sin asignar. Las órdenes de Parted pueden actualizar los metadatos del disco inmediatamente en vez de esperar a una operación final de «guardar», así que trata el prompt interactivo como acceso de escritura activo.
 
-### Crear una Partición
+:::single-choice{#disk-partitioning-print-free} ¿Qué ayuda a mostrar `print free` en `parted`?
 
-El comando `mkpart` crea una nueva partición. Debes especificar el tipo de partición (ej. `primary`), un tipo de sistema de archivos opcional, y los puntos de inicio y fin.
+::option[Archivos que pueden eliminarse para reducir de forma segura cualquier sistema de archivos.]{#disk-partitioning-free-files explanation="Parted lee el diseño de las particiones, no la asignación de archivos del sistema de archivos."}
+::option[Todas las copias de seguridad almacenadas en sistemas remotos.]{#disk-partitioning-remote-backups explanation="El inventario de copias remotas está fuera del alcance de un editor de particiones."}
+::option[Las entradas de particiones existentes y las regiones sin asignar.]{#disk-partitioning-free-regions .correct explanation="La vista ayuda a elegir límites a partir de la tabla actual y de los huecos restantes."}
+:::
 
-```bash
-mkpart primary ext4 1MB 5000MB
+## Crear una entrada de partición
+
+La sintaxis exacta de `mkpart` depende del tipo de tabla. Un ejemplo GPT en unidades MiB tiene este aspecto:
+
+```text
+(parted) mkpart data ext4 1MiB 5000MiB
 ```
 
-Este comando crea una partición primaria formateada con ext4, que comienza en 1MB y termina en 5000MB.
+Esto crea una entrada de partición con un nombre, un tipo de contenido sugerido, un inicio y un final. **No** crea un sistema de archivos ext4. Dar formato es un paso destructivo independiente que se realiza únicamente después de que el kernel reconozca la nueva partición pretendida y se verifique su identidad.
 
-### Redimensionar una Partición
+Utiliza la alineación recomendada por la herramienta y comprende si los extremos son inclusivos y cómo se redondean. Examina el resultado con `print` y `lsblk`; no supongas que un límite decimal solicitado se registró exactamente.
 
-También puedes cambiar el tamaño de una partición existente con el comando `resizepart`. Necesitarás el número de partición y el nuevo punto final.
+:::single-choice{#disk-partitioning-mkpart-effect} ¿Qué crea `mkpart` de `parted`?
 
-```bash
-resizepart 1 8000MB
-```
+::option[Un sistema de archivos ext4 montado que contiene un directorio personal.]{#disk-partitioning-mounted-filesystem explanation="Dar formato y montar son operaciones independientes posteriores a la creación de la partición."}
+::option[Una copia de seguridad completa del contenido anterior de la partición.]{#disk-partitioning-automatic-backup explanation="Los editores de particiones no crean automáticamente una copia de recuperación."}
+::option[Una entrada en la tabla de particiones, sin dar formato a un sistema de archivos.]{#disk-partitioning-entry-only .correct explanation="El argumento del tipo de sistema de archivos influye en los metadatos de la partición, pero no ejecuta `mkfs`."}
+:::
 
-Este comando redimensiona la partición número 1 para que termine en la marca de 8000MB. Ten en cuenta que esto solo cambia el tamaño de la partición; es posible que aún necesites redimensionar el sistema de archivos en sí usando otras herramientas (como `resize2fs`).
+## Redimensionar límites y contenido
 
-`parted` es una herramienta muy potente. Siempre verifica dos veces tus comandos antes de ejecutarlos para prevenir la pérdida accidental de datos.
+`resizepart NUMBER END` mueve únicamente el límite final de una partición. No redimensiona el sistema de archivos ni otra estructura almacenada dentro.
 
-## Exercise
+El orden es fundamental:
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del particionamiento de discos y la administración de sistemas de archivos en Linux:
+- Para ampliar, aumenta primero la partición o el dispositivo lógico que contiene los datos y después amplía el sistema de archivos con su herramienta compatible.
+- Para reducir, verifica que el sistema de archivos admita la reducción, redúcelo primero respetando sus requisitos de funcionamiento en línea o sin conexión y después reduce el límite del contenedor sin cruzar el nuevo final.
 
-1. [Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845) - En este laboratorio, aprenderás a administrar particiones de disco y sistemas de archivos en Linux. Usarás fdisk para crear una nueva partición, formatearla con ext4, montarla, configurar el montaje persistente en /etc/fstab y crear una partición swap, todo en un disco virtual secundario seguro.
+Algunos sistemas de archivos no pueden reducirse. El cifrado, LVM, RAID y los diseños anidados añaden más capas ordenadas. El kernel también puede negarse a volver a leer una tabla modificada mientras los dispositivos estén ocupados, lo que exige un reinicio controlado antes de poder utilizar el nuevo diseño.
 
-Este laboratorio te ayudará a aplicar los conceptos de particionamiento de discos y administración de sistemas de archivos en un escenario real y a ganar confianza con estas habilidades esenciales de administración de Linux.
+:::single-choice{#disk-partitioning-shrink-order} Cuando un sistema de archivos admite la reducción, ¿qué orden evita cortar datos activos?
 
-## Quiz Question
+::option[Reducir primero la partición y después averiguar si cabe el sistema de archivos.]{#disk-partitioning-shrink-partition-first explanation="Acortar primero el contenedor puede truncar estructuras y datos del sistema de archivos."}
+::option[Reducir primero el sistema de archivos y después el límite de la partición que lo contiene.]{#disk-partitioning-shrink-filesystem-first .correct explanation="El contenido debe caber dentro del intervalo menor antes de acortar el dispositivo de bloques exterior."}
+::option[Eliminar la tabla de particiones y dejar que el sistema de archivos la vuelva a crear.]{#disk-partitioning-delete-table explanation="Un sistema de archivos no reconstruye una tabla de particiones segura como parte de una reducción normal."}
+:::
 
-What is the `parted` command to make a partition? (Please answer in English, paying attention to case sensitivity).
+Utiliza [Gestionar particiones y sistemas de archivos de Linux](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) en su disco virtual secundario designado; no lo sustituyas por un disco del equipo anfitrión.
 
-## Quiz Answer
+## Resumen
 
-mkpart
+Ahora puedes describir la edición de particiones como una operación destructiva sobre capas de almacenamiento.
+
+1. Selecciona una herramienta compatible con la tabla y el flujo de trabajo reales.
+2. Verifica la identidad persistente del disco y desactiva todos sus consumidores.
+3. Examina unidades, entradas y regiones libres antes de escribir.
+4. Recuerda que `mkpart` no crea un sistema de archivos.
+5. Redimensiona el contenido interior y los límites exteriores en el orden seguro.

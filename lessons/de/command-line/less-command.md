@@ -1,56 +1,81 @@
 ---
-index: 8
+lesson_id: "less-command"
+course_id: "command-line"
 lang: "de"
+order_index: 8
 title: "less"
+description: "Lerne, lange Textdateien mit less interaktiv zu navigieren, zu durchsuchen und zu verfolgen."
 meta_title: "less - Kommandozeile"
 meta_description: "Lerne den Linux-Befehl less mit Beispielen zum Anzeigen großer Dateien, Scrollen, Suchen, Springen zu Zeilen, Verfolgen von Logs und Beenden von less."
 meta_keywords: "less Befehl, linux less, große Datei anzeigen linux, in less suchen, less beenden, less -N, less +F, Textanzeige linux"
 ---
 
-## Lesson Content
+Ist eine Textdatei länger als eine Bildschirmseite, kannst du sie mit `less` lesen, ohne dass ihr gesamter Inhalt durch das Terminal scrollt. Sein Name inspirierte den alten Unix-Scherz „less is more“, denn `more` ist ein anderer Pager.
 
-Beim Betrachten von Textdateien, die zu groß sind, um auf einen Bildschirm zu passen, ist der Befehl `less` ein unverzichtbares Werkzeug. Wie das alte Unix-Sprichwort sagt: „less ist mehr.“ Dies spielt darauf an, dass es auch einen Befehl `more` mit ähnlicher Funktionalität gibt.
+## Eine Datei öffnen
 
-Das Dienstprogramm `less` zeigt Text in einem seitenweisen Format an, sodass du durch eine Datei navigieren kannst, ohne dein Terminal zu überfluten.
-
-### Einstieg in den Less-Befehl
-
-Um eine Datei anzusehen, verwende `less` gefolgt vom Dateinamen.
+Starte den Pager, indem du ihm einen Dateinamen übergibst:
 
 ```bash
 $ less /home/pete/Documents/text1
 ```
 
-Sobald du dich im `less`-Viewer befindest, funktionieren deine üblichen Shell-Befehle nicht mehr. Stattdessen verwendest du eine spezielle Tastenbelegung, um dich durch den Text zu bewegen und mit ihm zu interagieren.
+Solange `less` aktiv ist, steuern Tastendrücke den Pager, statt gewöhnliche Shell-Befehle zu starten. Erst nach dem Beenden des Pagers kehrst du zur Shell zurück.
 
-### Navigation und Steuerung
+:::single-choice{#open-long-file} Welcher Befehl öffnet `/var/log/syslog` in einem interaktiven Pager?
 
-Du kannst verschiedene Tasten verwenden, um im Dokument zu navigieren:
+::option[`less /var/log/syslog`]{#page-log .correct explanation="`less` öffnet die Datei in einem Pager, in dem du navigieren und suchen kannst, bevor du zur Shell zurückkehrst."}
+::option[`cat /var/log/syslog`]{#print-log explanation="`cat` sendet die gesamte Datei auf einmal an die Standardausgabe. Interaktive Navigation steht dabei nicht zur Verfügung."}
+::option[`file /var/log/syslog`]{#classify-log explanation="`file` meldet den wahrscheinlichen Inhaltstyp. Der Befehl öffnet das Protokoll nicht zum interaktiven Lesen."}
+:::
 
-- **Pfeiltasten und Bild-Tasten**: Verwende `Bild auf`, `Bild ab`, `Pfeil hoch` und `Pfeil runter`, um zeilen- oder seitenweise zu navigieren.
-- **Zum Anfang springen**: Drücke `g`, um direkt zum Anfang der Textdatei zu springen.
-- **Zum Ende springen**: Drücke `G` (Shift + g), um zum Ende der Textdatei zu springen.
-- **Eine halbe Seite bewegen**: Drücke `u`, um nach oben und `d`, um nach unten zu scrollen.
-- **Hilfemenü**: Wenn du die Befehle in `less` vergessen hast, drücke einfach `h`, um eine hilfreiche Zusammenfassung anzuzeigen.
+## In less navigieren
 
-### Suchen in Less
+Verwende bei geöffnetem Pager diese Tasten:
 
-Eine mächtige Funktion von `less` ist die Möglichkeit, nach Text zu suchen. Tippe `/` gefolgt vom Suchbegriff und drücke Enter.
+- Mit `Up`, `Down`, `Page Up` und `Page Down` bewegst du dich zeilen- oder seitenweise.
+- Mit `g` springst du an den Anfang.
+- Mit `G` springst du ans Ende.
+- Mit `u` gehst du einen halben Bildschirm nach oben, mit `d` einen halben Bildschirm nach unten.
+- Mit `h` öffnest du die integrierte Hilfe.
 
-- `/search_term`: Sucht vorwärts nach „search_term“.
-- `?search_term`: Sucht rückwärts nach „search_term“.
-- `n`: Springt zum nächsten Vorkommen des Suchbegriffs.
-- `N`: Springt zum vorherigen Vorkommen.
+:::single-choice{#jump-to-file-end} Welche Taste springt in `less` direkt ans Dateiende?
 
-### Wie man Less beendet
+::option[`g`]{#lowercase-g explanation="Das kleine `g` springt an den Dateianfang. Die großgeschriebene Variante bewegt sich in die entgegengesetzte Richtung."}
+::option[`G`]{#uppercase-g .correct explanation="Das große `G` springt ans Ende der Eingabe. Bei diesem Befehl wird zwischen Groß- und Kleinschreibung unterschieden."}
+::option[`h`]{#help-key explanation="Die Taste `h` öffnet die Hilfe des Pagers. Sie springt nicht ans Dateiende."}
+:::
 
-Wenn du mit dem Betrachten der Datei fertig bist, musst du wissen, wie du `less` beendest und zur Eingabeaufforderung zurückkehrst.
+## In less suchen
 
-- **Beenden**: Drücke einfach `q`, um den `less`-Viewer zu verlassen und zur Shell zurückzukehren.
+Gib `/` gefolgt von einem Muster ein und drücke Enter, um vorwärts zu suchen. Eine Rückwärtssuche beginnt mit `?`.
 
-### Nützliche less-Optionen
+- `/search_term`: Sucht vorwärts nach `search_term`.
+- `?search_term`: Sucht rückwärts nach `search_term`.
+- `n`: Wiederholt die Suche in derselben Richtung.
+- `N`: Wiederholt die Suche in der entgegengesetzten Richtung.
 
-Du kannst `less` mit Optionen starten:
+:::single-choice{#repeat-search-direction} Welche Taste wiederholt nach einer Vorwärtssuche nach `error` die Suche in derselben Richtung?
+
+::option[`n`]{#same-search .correct explanation="Das kleine `n` wiederholt die letzte Suche in ihrer ursprünglichen Richtung, hier also vorwärts."}
+::option[`N`]{#opposite-search explanation="Das große `N` wiederholt die letzte Suche in der Gegenrichtung. Nach einer Vorwärtssuche bewegt es sich rückwärts durch die Treffer."}
+::option[`g`]{#search-to-start explanation="Die Taste `g` springt an den Anfang der Eingabe. Sie wiederholt keine Suche."}
+:::
+
+## less verlassen
+
+Drücke `q`, um `less` zu beenden und zur Shell-Eingabeaufforderung zurückzukehren.
+
+:::single-choice{#quit-less} Welche Taste beendet `less` und kehrt zur Shell zurück?
+
+::option[`q`]{#less-quit .correct explanation="Der Befehl `q` beendet den Pager und stellt die Shell-Eingabeaufforderung wieder her."}
+::option[`h`]{#less-help explanation="Die Taste `h` öffnet die Hilfe innerhalb von `less`. Sie führt nicht direkt zur Shell zurück."}
+::option[`G`]{#less-end explanation="Das große `G` bewegt sich ans Ende der Eingabe. Der Pager bleibt dabei geöffnet."}
+:::
+
+## less mit Optionen starten
+
+Optionen und anfängliche Befehle können beeinflussen, wie der Pager startet:
 
 ```bash
 $ less -N file.txt
@@ -59,33 +84,35 @@ $ less +F /var/log/syslog
 ```
 
 - `-N`: Zeigt Zeilennummern an.
-- `+G`: Öffnet die Datei am Ende.
-- `+F`: Folgt neuen Inhalten, während sie hinzugefügt werden, ähnlich wie `tail -f`.
+- `+G`: Öffnet die Datei an ihrem Ende.
+- `+F`: Verfolgt neu hinzukommende Inhalte, ähnlich wie `tail -f`.
 
-Während du einer Datei mit `+F` folgst, drücke `Ctrl-C`, um das Folgen zu stoppen und zur normalen Navigation zurückzukehren, dann drücke `q`, um zu beenden.
+Drücke beim Verfolgen mit `+F` zunächst `Ctrl+C`, um zur normalen Navigation zurückzukehren, und anschließend `q`, um den Pager zu beenden. Mit `-i` ignoriert die Suche die Groß- und Kleinschreibung, sofern das Muster keinen Großbuchstaben enthält; `-I` ignoriert sie unabhängig vom Muster.
 
-### Häufige Fragen
+Auch Befehlsausgaben lassen sich über eine Pipe an `less` senden:
 
-**Ist less besser als cat?** Verwende `cat` für kurze Dateien und `less` für lange Dateien oder Dateien, in denen du suchen musst.
+```bash
+$ dmesg | less
+```
 
-**Wie suche ich ohne Berücksichtigung der Groß-/Kleinschreibung?** Starte `less` mit `-i` oder tippe Suchbegriffe normal ein, wenn das Muster keine Großbuchstaben enthält (auf vielen Systemen).
+:::single-choice{#follow-growing-log} Welcher Befehl öffnet `/var/log/syslog` und verfolgt neue Inhalte, sobald sie eintreffen?
 
-**Kann less die Ausgabe von Befehlen öffnen?** Ja. Leite die Ausgabe hinein, z.B. `dmesg | less`.
+::option[`less +F /var/log/syslog`]{#follow-log .correct explanation="Der anfängliche Befehl `+F` aktiviert den Folgemodus, sodass `less` neu angehängte Protokollinhalte anzeigt."}
+::option[`less +G /var/log/syslog`]{#open-at-log-end explanation="Der anfängliche Befehl `+G` öffnet die Datei am Ende, verfolgt später eintreffende Inhalte aber nicht fortlaufend."}
+::option[`less -N /var/log/syslog`]{#number-log-lines explanation="Die Option `-N` zeigt Zeilennummern an. Sie aktiviert kein fortlaufendes Verfolgen."}
+:::
 
-## Exercise
+Mit diesen Übungen kannst du das Navigieren, Suchen und Lesen von Systemtexten praktisch trainieren:
 
-Übung macht den Meister! Hier sind einige praktische Labs, um dein Verständnis für das Anzeigen und Navigieren von Textdateien in Linux zu vertiefen:
+1. **[Linux less Command: File Paging](https://labex.io/de/labs/linux-linux-less-command-file-paging-214301)** – Lerne, mit less Textdateien effizient anzuzeigen und darin zu navigieren, zu suchen und Zeilennummern zu verwenden.
+2. **[Viewing Log and Configuration Files in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** – Zeige Protokoll- und Konfigurationsdateien mit Befehlen wie `cat`, `more` und `less` an und navigiere darin.
 
-1. **[Linux less Command: File Paging](https://labex.io/de/labs/linux-linux-less-command-file-paging-214301)** – Lerne den Linux-Befehl 'less' für effizientes Anzeigen und Navigieren von Textdateien, einschließlich Suche, Zeilennummern und Mustererkennung.
-2. **[Linux more Command: File Scrolling](https://labex.io/de/labs/linux-linux-more-command-file-scrolling-214299)** – Lerne den Linux-Befehl 'more' für effizientes Anzeigen von Textdateien, mit Grundlagen, Starten ab bestimmten Zeilen und Anpassung der Anzeige.
-3. **[Viewing Log and Configuration Files in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** – Lerne wichtige Linux-Kommandozeilenfähigkeiten zum effizienten Anzeigen und Navigieren von Textdateien, einschließlich Systemlogs und Konfigurationsdateien, mit Befehlen wie `cat`, `more` und `less`.
+## Zusammenfassung
 
-Diese Labs helfen dir, die Konzepte in realen Szenarien anzuwenden und Sicherheit im Umgang mit Textdateien und Navigation zu gewinnen.
+Du kannst nun mit `less` lange Dateien untersuchen, ohne das Terminal mit Text zu überfluten.
 
-## Quiz Question
-
-Wie beendest du den Befehl `less`? Bitte gib die einzelne Zeichen-Taste als Antwort an. Hinweis: Die Antwort ist ein englischer Buchstabe mit Groß-/Kleinschreibung.
-
-## Quiz Answer
-
-q
+1. Öffne eine Datei oder eine weitergeleitete Befehlsausgabe im Pager.
+2. Navigiere gezielt zu bestimmten Teilen der Eingabe.
+3. Suche vorwärts oder rückwärts und wiederhole eine Suche.
+4. Zeige Zeilennummern an oder verfolge wachsende Inhalte.
+5. Beende den Pager sicher und kehre zur Shell zurück.

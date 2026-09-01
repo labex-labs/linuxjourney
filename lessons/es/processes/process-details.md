@@ -1,46 +1,88 @@
 ---
-index: 3
+lesson_id: "process-details"
+course_id: "processes"
 lang: "es"
-title: "Detalles del Proceso"
-meta_title: "Detalles del Proceso - Procesos"
-meta_description: "Explore los fundamentos de los detalles de los procesos de Linux. Esta guía para principiantes explica qué es un proceso, cómo el kernel de Linux gestiona los procesos y asigna recursos del sistema como CPU y memoria."
-meta_keywords: "proceso Linux, detalles del proceso, kernel, gestión de procesos, recursos del sistema, ps aux, CPU, memoria, tutorial Linux, guía para principiantes"
+order_index: 3
+title: "Detalles de los procesos"
+description: "Aprende qué estado y recursos distinguen un proceso en ejecución de un programa almacenado en disco."
+meta_title: "Detalles de los procesos - Procesos"
+meta_description: "Descubre qué es un proceso de Linux, qué estado mantiene el kernel y cómo se gestionan la CPU, la memoria y la finalización."
+meta_keywords: "proceso Linux, detalles de procesos, kernel, gestión de procesos, recursos del sistema, CPU, memoria, tutorial Linux"
 ---
 
-## Lesson Content
+Un programa es código ejecutable y datos almacenados en un archivo. Un proceso es un contexto de ejecución activo: incluye código mapeado, memoria, credenciales, descriptores de archivos abiertos, estado de señales, información de planificación y uno o más hilos. El mismo programa puede tener muchas instancias de procesos independientes.
 
-Antes de sumergirnos en las aplicaciones prácticas de la gestión de procesos, es esencial comprender qué son los procesos de Linux y cómo funcionan. Este tema puede parecer complejo a medida que exploramos los detalles, así que siéntete libre de volver a consultar esta lección más tarde si es necesario.
+## Instancias de programas y PID
 
-### ¿Qué es un Proceso de Linux
+Por ejemplo, inicia `cat` sin operandos en dos terminales. Cada instancia espera una entrada y tiene su propio ID de proceso:
 
-A un proceso se le llama un programa en ejecución. Más precisamente, es una instancia de un programa en ejecución al que el sistema ha asignado recursos como memoria, tiempo de CPU y E/S. Por ejemplo, si abres tres ventanas de terminal, ejecutas el comando `cat` en dos de ellas sin argumentos (esperará la entrada estándar, manteniendo el proceso activo) y luego usas la tercera ventana para ejecutar `ps aux | grep cat`, verás dos procesos `cat` distintos. Cada uno es una instancia separada del mismo programa, con su propio ID de proceso único y asignación de recursos.
+```bash
+$ pgrep -a cat
+18420 cat
+18457 cat
+```
 
-### El Papel del Kernel en la Gestión de Procesos
+Ambos procesos ejecutan el mismo programa, pero pueden tener flujos de entrada, contenidos de memoria, credenciales, directorios de trabajo y ciclos de vida distintos. Un PID identifica un proceso activo cada vez y puede reutilizarse después de que ese proceso termine.
 
-El kernel de Linux es responsable de toda la gestión de procesos. Cuando ejecutas un programa, el kernel carga su código en la memoria, asigna los recursos del sistema necesarios y comienza a rastrearlo como un proceso. El kernel mantiene información detallada para cada proceso, incluyendo:
+:::single-choice{#process-details-program-versus-process} ¿Qué distingue dos instancias en ejecución del mismo programa?
 
-- El estado del proceso
-- Los recursos que el proceso está utilizando y recibiendo
-- El propietario del proceso
-- El manejo de señales (más sobre esto más adelante)
-- Y básicamente todo lo demás
+::option[El archivo ejecutable debe copiarse una vez por instancia.]{#process-details-copied-executable explanation="Varios procesos pueden mapear y compartir las mismas páginas de código del archivo ejecutable sin duplicar el archivo."}
+::option[Únicamente una instancia puede tener memoria o archivos abiertos.]{#process-details-one-instance-resources explanation="Cada proceso puede tener sus propios mapas de memoria y tabla de descriptores de archivos."}
+::option[Cada instancia tiene su propio contexto de proceso y PID.]{#process-details-independent-context .correct explanation="Las ejecuciones separadas reciben un estado de proceso activo distinto, aunque su código ejecutable proceda del mismo archivo."}
+:::
 
-Todos los procesos activos compiten por los recursos del sistema. El kernel actúa como un planificador (scheduler), asegurando que cada proceso reciba una parte justa de los recursos según su prioridad y necesidades. Cuando un proceso completa su tarea o es terminado, el kernel recupera los recursos que estaba utilizando, poniéndolos a disposición de otros procesos.
+## Estado que mantiene el kernel
 
-## Exercise
+El kernel conserva la información necesaria para planificar y controlar cada proceso, incluida:
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de los procesos de Linux y su gestión:
+- identificadores del proceso y de su padre;
+- credenciales de usuario y grupo;
+- mapas de memoria virtual;
+- descriptores de archivos abiertos y directorio actual;
+- disposiciones de señales y señales pendientes;
+- política de planificación, prioridad y estado de ejecución;
+- datos contables como el tiempo de CPU.
 
-1. **[Gestionar y Monitorizar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Aprende habilidades esenciales para gestionar y monitorizar procesos en un sistema Linux, incluyendo la interacción con procesos en primer plano/segundo plano, la inspección con `ps`, la monitorización con `top` y la terminación con `kill`.
-2. **[Comando Linux top: Monitorización del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprende a usar el comando `top` para la monitorización del sistema en tiempo real, incluyendo la clasificación de procesos, el ajuste de los intervalos de actualización y el filtrado por usuario.
-3. **[Comando Linux free: Monitorización de la Memoria del Sistema](https://labex.io/es/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprende a usar el comando `free` para monitorizar y analizar el uso de la memoria del sistema, entendiendo cómo el kernel asigna recursos a los procesos.
+Algunos recursos subyacentes pueden compartirse. Los procesos relacionados pueden compartir memoria mapeada, y los hilos de un proceso comparten un espacio de direcciones y muchos recursos de todo el proceso. Por tanto, un proceso proporciona límites de aislamiento sin implicar que cada byte u objeto del kernel sea físicamente privado.
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la gestión de procesos en Linux.
+:::single-choice{#process-details-kernel-state} ¿Qué componente mantiene el estado de planificación y credenciales de los procesos de Linux?
 
-## Quiz Question
+::option[El kernel.]{#process-details-kernel .correct explanation="El kernel mantiene el estado de los procesos y aplica las reglas de planificación, memoria, señales y control de acceso."}
+::option[El directorio del archivo ejecutable.]{#process-details-directory explanation="Un directorio almacena correspondencias de nombres con inodos y no planifica procesos en ejecución."}
+::option[Únicamente el emulador de terminal del usuario.]{#process-details-terminal explanation="Una terminal puede interactuar con procesos, pero su gestión sigue siendo responsabilidad del kernel."}
+:::
 
-¿Qué gestiona y controla todos los procesos de Linux? Por favor, responde con una sola palabra en inglés, todo en minúsculas.
+## Planificación de CPU y memoria
 
-## Quiz Answer
+Los hilos ejecutables compiten por tiempo de CPU. El planificador del kernel elige qué hilo se ejecuta en qué CPU según la clase de planificación, prioridad, afinidad de CPU, carga y política. Esto no promete que todos los procesos reciban una parte igual.
 
-kernel
+Cada proceso suele ver un espacio de direcciones virtual. El kernel y el hardware asocian direcciones virtuales con memoria física u otro almacenamiento de respaldo, aplican protecciones y pueden compartir páginas cuando corresponde. Por tanto, una cifra de memoria de `ps` o `top` no representa automáticamente la cantidad de RAM física exclusiva atribuible a ese proceso.
+
+:::single-choice{#process-details-scheduler-role} ¿Qué selecciona el planificador de Linux?
+
+::option[Qué hilo ejecutable se ejecuta en una CPU disponible.]{#process-details-runnable-thread .correct explanation="La política de planificación elige entre contextos de ejecución preparados y asigna tiempo de CPU."}
+::option[Qué propietario de archivo se registra al formatear un disco.]{#process-details-format-owner explanation="La propiedad del sistema de archivos no está relacionada con la planificación de CPU."}
+::option[Qué línea de órdenes puede escribir un usuario.]{#process-details-command-entry explanation="El planificador gestiona el tiempo de ejecución, no la sintaxis interactiva de las órdenes."}
+:::
+
+## Salida del proceso y liberación de recursos
+
+Cuando un proceso termina, el kernel libera la mayoría de sus recursos privados, cierra los descriptores restantes y registra información de terminación para su padre. Un pequeño registro en la tabla de procesos puede permanecer como zombi hasta que el padre recupere el estado de salida. Esto significa que «el proceso ha terminado de ejecutarse» y «todo rastro ha desaparecido de la tabla» no siempre ocurren al mismo tiempo.
+
+:::single-choice{#process-details-exit-status} ¿Por qué puede un proceso terminado permanecer brevemente como zombi?
+
+::option[Sigue ejecutando instrucciones con toda su memoria asignada.]{#process-details-zombie-running explanation="Un zombi ha terminado de ejecutarse y ya no conserva un espacio de direcciones normal en ejecución."}
+::option[Su padre todavía no ha recogido el estado de terminación registrado.]{#process-details-parent-wait .correct explanation="El kernel conserva información mínima de salida hasta que el padre realiza una operación de espera."}
+::option[El kernel ha bloqueado permanentemente su archivo ejecutable.]{#process-details-zombie-file-lock explanation="El estado zombi se refiere a la contabilidad de salida entre padre e hijo, no a un bloqueo permanente del ejecutable."}
+:::
+
+Usa el laboratorio [Gestionar y supervisar procesos de Linux](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) para iniciar varias instancias y comparar sus PID y estados. El laboratorio [Orden top de Linux](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500) ofrece una vista cambiante de métricas de planificación y recursos.
+
+## Resumen
+
+Ahora puedes describir un proceso como algo más que un archivo de programa.
+
+1. Distingue el código ejecutable almacenado de una instancia de proceso activa.
+2. Identifica el estado y los recursos mantenidos por el kernel.
+3. Relaciona la planificación con hilos ejecutables, no con repartos iguales.
+4. Reconoce que el estado de salida puede permanecer hasta que el padre lo recoja.

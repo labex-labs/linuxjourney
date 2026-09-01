@@ -1,65 +1,96 @@
 ---
-index: 2
+lesson_id: "sysv-services"
+course_id: "init"
 lang: "de"
-title: "System V Dienst"
-meta_title: "System V Dienst - Init"
-meta_description: "Erfahren Sie, wie Sie traditionelle System V (SysV) Dienste in Linux verwalten. Diese Anleitung behandelt die Verwendung des `service`-Befehls zum Auflisten, Starten, Stoppen und Neustarten von Diensten unter einem System V Init-System."
-meta_keywords: "system v, sysv init, linux dienste, service befehl, linux dienste verwalten, dienst starten, dienst stoppen, dienst neu starten, linux system v"
+order_index: 2
+title: "System-V-Dienst"
+description: "Erfahre, wie du ältere SysV-Dienstskripte über den unterstützten Wrapper des aktiven Systems prüfst und bedienst."
+meta_title: "System-V-Dienst – Init"
+meta_description: "Lerne, traditionelle System-V-Dienste (SysV) unter Linux zu verwalten. Dieser Leitfaden behandelt die Verwendung des Befehls `service`, um Dienste auf einem System-V-init-System aufzulisten, zu starten, zu stoppen und neu zu starten."
+meta_keywords: "System V, SysV init, Linux-Dienste, service-Befehl, Linux-Dienste verwalten, Dienst starten, Dienst stoppen, Dienst neu starten, Linux System V"
 ---
 
-## Lesson Content
+SysV-Dienste werden gewöhnlich durch ausführbare Skripte unter `/etc/init.d/` dargestellt. Ein Skript akzeptiert gemäß seiner Implementierung und den Distributionskonventionen Aktionen wie `start`, `stop`, `restart` oder `status`. Der Befehl `service` stellt einen Wrapper bereit, der ein benanntes Skript in einer stärker kontrollierten Umgebung ausführt.
 
-**System V** (oder SysV) ist eines der klassischen Initialisierungssysteme in Unix-ähnlichen Betriebssystemen. Obwohl viele moderne Linux-Distributionen auf neuere Systeme wie `systemd` umgestiegen sind, ist das Verständnis der Verwaltung von **System V**-Diensten immer noch eine wertvolle Fähigkeit, da viele Systeme die Abwärtskompatibilität aufrechterhalten.
+## Dienste und Aktionen ermitteln
 
-### Der service-Befehl
-
-Das primäre Werkzeug für die Interaktion mit Diensten in einem **System V**-Init-System ist der Befehl `service`. Er fungiert als Wrapper-Skript und vereinfacht den Prozess der Steuerung von Diensten.
-
-### Auflisten aller Dienste
-
-Um einen Überblick über alle verfügbaren Dienste und deren aktuellen Status zu erhalten, können Sie das Flag `--status-all` verwenden. Dieser Befehl listet jeden Dienst auf und zeigt an, ob er läuft (`+`), gestoppt (`-`) ist oder ob sein Zustand unbekannt ist (`?`).
+Liste zuerst die Skriptnamen auf:
 
 ```bash
-service --status-all
+$ ls -1 /etc/init.d/
 ```
 
-### Steuern eines bestimmten Dienstes
-
-Um einen einzelnen Dienst zu verwalten, geben Sie den Dienstnamen gefolgt von einer Aktion wie `start`, `stop` oder `restart` an. Diese Aktionen erfordern Administratorrechte, daher werden Sie typischerweise `sudo` verwenden.
-
-Um einen Dienst zu starten, beispielsweise den Netzwerkdienst:
+Einige Implementierungen stellen Folgendes bereit:
 
 ```bash
-sudo service networking start
+$ service --status-all
 ```
 
-Um einen laufenden Dienst zu stoppen:
+Seine Klammermarkierungen und Beendigungsstatus sind Wrapper-spezifisch, und ein Skript kann einen unbekannten Status melden. Prüfe für einen einzelnen Dienst die Nutzungsausgabe oder Dokumentation des Skripts, statt anzunehmen, dass jede Aktion vorhanden ist.
+
+:::single-choice{#sysv-services-wrapper-purpose} Was kapselt der Befehl `service` gewöhnlich?
+
+::option[Einen Partitionseditor, der auf jeder Dienstdatei läuft.]{#sysv-services-partition-editor explanation="Die Dienststeuerung hat nichts mit der Speicherpartitionierung zu tun."}
+::option[Einen Kernel-Systemaufruf, der vom Skript dynamisch hinzugefügt wird.]{#sysv-services-new-syscall explanation="Init-Skripte sind Programme zur Prozesssteuerung im User-Space."}
+::option[Ein benanntes init-Skript und eine seiner unterstützten Aktionen.]{#sysv-services-script-action .correct explanation="Der Wrapper findet ein älteres Dienstskript und ruft es mit einer normalisierten Umgebung auf."}
+:::
+
+## Starten und stoppen
+
+Auf einem tatsächlich durch SysV verwalteten Host sind diese Formen üblich:
 
 ```bash
-sudo service networking stop
+$ sudo service SERVICE_NAME start
+$ sudo service SERVICE_NAME stop
 ```
 
-Um einen Dienst zu stoppen und sofort wieder zu starten, was nützlich ist, um Konfigurationsänderungen zu übernehmen:
+Ersetze den Platzhalter erst, nachdem du den Dienst, seine Abhängigen, seinen aktuellen Zustand und die betrieblichen Auswirkungen bestimmt hast. Das Stoppen von Netzwerk, Fernzugriff, Speicher oder Authentifizierung aus einer entfernten Sitzung kann dich aussperren oder aktive Arbeit beschädigen.
+
+Die direkte Form `/etc/init.d/SERVICE_NAME ACTION` kann vorhanden sein. Verwende auf einem Host, dessen aktiver Manager Kompatibilität bereitstellt, jedoch den an den Manager gerichteten Befehl, damit dieser Zustand und Abhängigkeiten verfolgen kann.
+
+:::single-choice{#sysv-services-stop-peanut} Welcher Befehl fordert an, den SysV-Dienst `peanut` zu stoppen?
+
+::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="Die konventionelle Operandenreihenfolge setzt den Dienstnamen vor die Aktion."}
+::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="Dies ist nicht die Syntax des SysV-Dienst-Wrappers."}
+::option[`sudo service peanut stop`]{#sysv-services-peanut-stop .correct explanation="Der Wrapper erhält den Dienstnamen gefolgt von der angeforderten Stoppaktion."}
+:::
+
+## Neuladen, Neustarten und Status
+
+`restart` stoppt und startet einen Dienst gewöhnlich und verursacht damit eine Unterbrechung. `reload` kann einen Dienst auffordern, die Konfiguration ohne vollständigen Neustart neu einzulesen, jedoch nur, wenn Skript und Daemon dies unterstützen. Einige Skripte bieten `force-reload` mit von der Distribution festgelegtem Fallbackverhalten an.
+
+Validiere die Konfiguration vor jedem Neuladen oder Neustart, halte bei Änderungen am Fernzugriff eine zweite administrative Verbindung offen und überprüfe den Dienst anschließend über seinen tatsächlichen Endpunkt und seine Protokolle – nicht nur anhand eines Status „running“.
 
 ```bash
-sudo service networking restart
+$ sudo service SERVICE_NAME status
+$ sudo service SERVICE_NAME reload
 ```
 
-Diese Befehle sind nicht auf **System V**-Init-Systeme beschränkt; Sie können sie oft auch zur Verwaltung von Upstart-Diensten verwenden. Während sich Linux-Distributionen weiterentwickeln, werden Kompatibilitätsschichten wie der `service`-Befehl beibehalten, um den Übergang von traditionellen Init-Skripten zu erleichtern.
+:::single-choice{#sysv-services-reload-versus-restart} Warum solltest du nicht annehmen, dass `reload` und `restart` gleichwertig sind?
 
-## Exercise
+::option[Reload fährt immer das gesamte Betriebssystem herunter.]{#sysv-services-reload-shutdown explanation="Das ist nicht die gewöhnliche Bedeutung einer Neuladeaktion für einen Dienst."}
+::option[Restart gibt nur Konfiguration aus und ändert niemals den Prozesszustand.]{#sysv-services-restart-readonly explanation="Restart stoppt und startet den Dienst gewöhnlich."}
+::option[Reload ist dienstspezifisch und kann Konfiguration ohne Stoppen des Prozesses neu einlesen.]{#sysv-services-reload-specific .correct explanation="Unterstützung und Semantik gehören zum init-Skript und Daemon, während ein Neustart gewöhnlich eine Unterbrechung des Lebenszyklus verursacht."}
+:::
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Prozess- und Aufgabenverwaltung zu festigen, die für die Verwaltung von Diensten in Linux von grundlegender Bedeutung sind:
+## Laufzeitsteuerung und Aktivierung beim Systemstart
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit, Inspektion, Überwachung und Beendigung von Prozessen in einer realen Linux-Umgebung.
-2. **[Aufgaben mit at und cron in Linux planen](https://labex.io/de/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Lernen Sie, Aufgaben mithilfe von `at` für einmalige Jobs und `cron` für wiederkehrende Aufgaben zu automatisieren, eine Schlüsselqualifikation für die Dienstautomatisierung.
+Das sofortige Starten eines Dienstes aktiviert ihn nicht zwangsläufig für zukünftige Runlevel. Die Aktivierung beim Systemstart wird durch Runlevel-Links dargestellt und mit distributionsspezifischen Werkzeugen wie `update-rc.d`, `chkconfig` oder Kompatibilitätsgeneratoren des Dienstmanagers verwaltet.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Systemoperationen aufzubauen.
+Erstelle `S`- und `K`-Links nicht manuell, bevor du die Abhängigkeitsmetadaten und das Verwaltungswerkzeug der Distribution verstehst; manuelle Links können überschrieben oder falsch angeordnet werden.
 
-## Quiz Question
+:::single-choice{#sysv-services-start-versus-enable} Aktiviert `service SERVICE start` den Dienst zwangsläufig für zukünftige Systemstarts?
 
-Was ist der vollständige Befehl, um einen Dienst namens `peanut` auf einem System V-System zu stoppen? Bitte geben Sie den exakten Befehl in Englisch an und achten Sie auf die Groß- und Kleinschreibung.
+::option[Ja; jede Startaktion erzeugt automatisch alle Runlevel-Links.]{#sysv-services-start-links explanation="Der Wrapper ändert die dauerhafte Aktivierung nicht grundsätzlich."}
+::option[Nein; Laufzeitzustand und Runlevel-Aktivierung sind getrennt.]{#sysv-services-runtime-separate .correct explanation="Bootlinks oder Managerrichtlinien bestimmen die zukünftige Aktivierung unabhängig vom jetzigen Prozessstart."}
+::option[Ja; eine laufende PID wird dauerhaft im Bootsektor gespeichert.]{#sysv-services-pid-boot-sector explanation="PIDs sind Laufzeitkennungen und keine Metadaten zur Aktivierung beim Systemstart."}
+:::
 
-## Quiz Answer
+## Zusammenfassung
 
-sudo service peanut stop
+Du kannst einen älteren Dienst nun bedienen, ohne Laufzeitsteuerung und Startrichtlinie zu verwechseln.
+
+1. Ermittle das tatsächliche Skript und die unterstützten Aktionen.
+2. Setze in der Wrapper-Syntax den Dienstnamen vor die Aktion.
+3. Validiere und überprüfe das Verhalten beim Neuladen oder Neustarten.
+4. Verwalte die Aktivierung für zukünftige Runlevel mit Distributionswerkzeugen.

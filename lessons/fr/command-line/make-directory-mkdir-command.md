@@ -1,65 +1,83 @@
 ---
-index: 12
+lesson_id: "make-directory-mkdir-command"
+course_id: "command-line"
 lang: "fr"
+order_index: 12
 title: "mkdir (Créer un répertoire)"
+description: "Apprenez à créer des répertoires uniques, multiples ou imbriqués avec les options de mkdir."
 meta_title: "mkdir (Créer un répertoire) - Ligne de commande"
 meta_description: "Apprenez la commande Linux mkdir avec des exemples pour créer un répertoire, plusieurs répertoires, des répertoires parents imbriqués et définir les permissions."
 meta_keywords: "commande mkdir, linux mkdir, créer répertoire linux, faire répertoire linux, mkdir -p, mkdir -m, créer dossier linux"
 ---
 
-## Lesson Content
+La commande `mkdir`, abréviation de « make directory », crée des répertoires pour organiser des fichiers et d'autres répertoires.
 
-Lorsque vous travaillez avec des fichiers, vous devrez les organiser dans des répertoires. L'outil principal pour cette tâche est la commande `mkdir`, qui signifie make directory (créer un répertoire).
-
-La syntaxe de base est :
+Sa syntaxe élémentaire est :
 
 ```bash
 mkdir [OPTIONS] DIRECTORY...
 ```
 
-### Créer un répertoire unique
+## Créer un répertoire
 
-L'utilisation la plus basique de `mkdir` est de créer un nouveau répertoire unique. Si le répertoire n'existe pas déjà, cette commande le crée à l'emplacement courant.
+Fournissez un chemin pour créer un répertoire. Cet exemple crée `documents` dans le répertoire de travail actuel :
 
 ```bash
 $ mkdir documents
 ```
 
-### Créer plusieurs répertoires
+Si une entrée nommée `documents` existe déjà, `mkdir` signale une erreur au lieu de la remplacer. Utilisez `ls -ld documents` pour examiner l'entrée existante.
 
-Vous pouvez aussi créer plusieurs répertoires en une seule fois en listant leurs noms, séparés par des espaces. C'est une manière efficace de configurer rapidement plusieurs dossiers.
+:::single-choice{#create-one-directory} Quelle commande crée un répertoire nommé `documents` dans le répertoire de travail actuel ?
+
+::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` crée le répertoire demandé au chemin relatif `documents`."}
+::option[`touch documents`]{#touch-documents explanation="`touch` crée un fichier ordinaire vide lorsque le chemin manque ; elle ne crée pas de répertoire."}
+::option[`cd documents`]{#cd-documents explanation="`cd` tente d'ouvrir un répertoire existant ; elle ne crée pas un répertoire absent."}
+:::
+
+## Créer plusieurs répertoires
+
+Énumérez plusieurs chemins pour créer plusieurs répertoires en une commande :
 
 ```bash
 $ mkdir books paintings
 ```
 
-### Créer des répertoires imbriqués
+:::single-choice{#create-separate-directories} Quelle commande crée deux répertoires frères nommés `books` et `paintings` ?
 
-Parfois, vous devez créer un répertoire ainsi que ses répertoires parents simultanément. L'option `-p` est parfaite pour cela. Elle évite les erreurs si les répertoires parents n'existent pas.
+::option[`mkdir books/paintings`]{#nested-paintings explanation="Ce chemin décrit `paintings` à l'intérieur de `books`, pas deux répertoires frères. Il échoue aussi si `books` est absent."}
+::option[`mkdir "books paintings"`]{#spaced-directory explanation="Les guillemets réunissent les mots en un chemin ; cette commande demande donc un seul répertoire dont le nom contient un espace."}
+::option[`mkdir books paintings`]{#two-directories .correct explanation="Deux opérandes distincts demandent à `mkdir` de créer `books` et `paintings` comme deux répertoires."}
+:::
+
+## Créer les répertoires parents manquants
+
+Sans option, `mkdir books/hemingway/favorites` échoue si un répertoire intermédiaire manque. Ajoutez `-p` pour créer les parents absents le long du chemin :
 
 ```bash
 $ mkdir -p books/hemingway/favorites
 ```
 
-Cette seule commande crée `books`, `hemingway` et `favorites` s'ils n'existent pas déjà.
+Cette commande crée les parties manquantes. Elle ne signale pas non plus d'erreur pour la seule raison que le répertoire final existe déjà, même si d'autres erreurs, comme des permissions insuffisantes, restent possibles.
 
-### Définir les permissions du répertoire
+:::single-choice{#create-nested-path} Aucune partie de `projects/app/src` n'existe encore. Quelle commande crée le chemin complet ?
 
-Utilisez `-m` pour définir les permissions lors de la création d'un répertoire.
+::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="L'option `-p` crée chaque répertoire parent manquant avant le répertoire final."}
+::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="Sans `-p`, `mkdir` ne peut pas créer `src` lorsque les répertoires intermédiaires n'existent pas."}
+::option[`mkdir -m projects/app/src`]{#mkdir-mode-missing explanation="L'option `-m` exige un mode et ne demande pas la création des parents manquants."}
+:::
+
+## Définir le mode initial
+
+Utilisez `-m MODE` pour préciser les permissions d'un nouveau répertoire :
 
 ```bash
 $ mkdir -m 755 public
 ```
 
-Vous en apprendrez plus sur les permissions plus tard, mais cet exemple crée un répertoire que le propriétaire peut écrire et que les autres peuvent lire et parcourir.
+Vous étudierez les modes de permission plus tard. Ici, le mode `755` donne au propriétaire les permissions de lecture, d'écriture et de traversée, tandis que le groupe et les autres reçoivent celles de lecture et de traversée.
 
-### Options courantes de mkdir
-
-- `-p` : Crée les répertoires parents si nécessaire.
-- `-m MODE` : Définit les permissions pour le nouveau répertoire.
-- `-v` : Affiche un message pour chaque répertoire créé.
-
-Exemple :
+Ajoutez `-v` pour afficher un message à chaque création :
 
 ```bash
 $ mkdir -pv projects/app/src
@@ -68,27 +86,20 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-### Questions fréquentes
+:::single-choice{#set-directory-mode} Quelle commande crée `public` avec le mode de permission `755` ?
 
-**Pourquoi mkdir affiche-t-il "File exists" ?** Un fichier ou répertoire portant ce nom existe déjà. Utilisez `ls` pour l'inspecter.
+::option[`mkdir -p 755 public`]{#parents-755 explanation="L'option `-p` traite les mots restants comme des chemins de répertoires ; elle ne définit donc pas `755` comme mode."}
+::option[`mkdir -v 755 public`]{#verbose-755 explanation="L'option `-v` affiche les messages de création ; elle n'interprète pas `755` comme un mode."}
+::option[`mkdir -m 755 public`]{#mode-public .correct explanation="L'option `-m` reçoit le mode demandé et `public` est le chemin du répertoire à créer."}
+:::
 
-**Comment créer des répertoires imbriqués ?** Utilisez `mkdir -p parent/child/grandchild`.
+Pour vous exercer, essayez les laboratoires **[Commande Linux mkdir : créer des répertoires](https://labex.io/fr/labs/linux-linux-mkdir-command-directory-creating-209739)** et **[Créer la structure d'un nouveau projet](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)**.
 
-**Est-ce que mkdir peut créer des fichiers ?** Non. Utilisez `touch` pour créer des fichiers vides.
+## Résumé
 
-## Exercise
+Vous savez maintenant créer des structures de répertoires avec des noms, parents et modes choisis.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la création et gestion des répertoires :
-
-1. **[Commande Linux mkdir : création de répertoire](https://labex.io/fr/labs/linux-linux-mkdir-command-directory-creating-209739)** - Apprenez à utiliser la commande `mkdir` sous Linux pour créer des répertoires, définir des permissions et organiser votre système de fichiers. Ce laboratoire couvre les usages basiques et avancés, y compris la création de répertoires imbriqués.
-2. **[Mise en place d'une nouvelle structure de projet](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)** - Entraînez-vous à gérer les répertoires Linux en créant une structure de projet spécifique et en naviguant à travers elle avec des commandes essentielles comme `mkdir` et `cd`.
-
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance pour créer et organiser des répertoires sous Linux.
-
-## Quiz Question
-
-Quelle commande est utilisée pour créer un répertoire ? Veuillez répondre uniquement avec la commande en anglais en minuscules.
-
-## Quiz Answer
-
-mkdir
+1. Créer un ou plusieurs répertoires avec une seule commande.
+2. Reconnaître une erreur provoquée par un chemin existant.
+3. Construire les répertoires parents manquants avec `-p`.
+4. Définir le mode d'un nouveau répertoire avec `-m`.

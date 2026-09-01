@@ -1,90 +1,111 @@
 ---
-index: 1
+lesson_id: "monitor-processes-ps-command"
+course_id: "processes"
 lang: "de"
+order_index: 1
 title: "ps (Prozesse)"
-meta_title: "ps (Prozesse) - Prozesse"
-meta_description: "Entdecken Sie den Linux-Befehl ps mit unserem umfassenden Leitfaden. Erfahren Sie, wie Sie den Befehl ps -ef unter Linux und andere Optionen verwenden, um laufende Prozesse anzuzeigen, PIDs zu verstehen und Systemaufgaben zu verwalten. Ein perfekter Start für Ihre Linux-Reise."
-meta_keywords: "ps Befehl, ps -ef linux, ps -ef Befehl, linux ps -ef, ps -e linux, Linux Prozesse, Prozess-ID, PID, top Befehl, Linux Reise"
+description: "Erfahre, wie du mit `ps` Prozessmomentaufnahmen erstellst und mit `top` veränderliche Aktivitäten überwachst."
+meta_title: "ps (Prozesse) – Prozesse"
+meta_description: "Erkunde den Linux-Befehl ps mit unserem umfassenden Leitfaden. Erfahre, wie du unter Linux ps -ef und andere Optionen verwendest, um laufende Prozesse anzuzeigen, PIDs zu verstehen und Systemaufgaben zu verwalten. Ein perfekter Einstieg in deine Linux-Reise."
+meta_keywords: "ps-Befehl, ps -ef Linux, Befehl ps -ef, Linux ps -ef, ps -e Linux, Linux-Prozesse, Prozess-ID, PID, top-Befehl, Linux-Reise"
 ---
 
-## Lesson Content
+Ein Prozess ist eine laufende Instanz eines Programms zusammen mit seinem Speicher, seinen Zugangsdaten, geöffneten Ressourcen und seinem Ausführungszustand. Linux kennzeichnet jeden laufenden Prozess mit einer numerischen Prozess-ID oder PID. Eine PID ist unter gleichzeitig vorhandenen Prozessen eindeutig, kann vom Kernel nach dem Beenden eines Prozesses jedoch erneut vergeben werden.
 
-### Prozesse unter Linux verstehen
+## Eine einfache Momentaufnahme erstellen
 
-Prozesse sind die Programme, die gerade auf Ihrem Rechner laufen. Der Linux-Kernel verwaltet sie, und jedem Prozess wird eine eindeutige Nummer zugewiesen, die **Prozess-ID (PID)** genannt wird. PIDs werden typischerweise sequenziell vergeben, wenn neue Prozesse erstellt werden.
+Führe `ps` ohne Optionen aus, um eine Momentaufnahme gemäß den Voreinstellungen der Implementierung anzuzeigen – gewöhnlich Prozesse, die deinem aktuellen Terminal und Benutzer zugeordnet sind:
 
-### Grundlegende Verwendung des ps-Befehls
-
-Um einen schnellen Überblick über Ihre aktiven Prozesse zu erhalten, führen Sie einfach den Befehl `ps` aus. Dieser liefert eine Momentaufnahme der Prozesse, die mit Ihrer aktuellen Terminal-Sitzung verbunden sind.
-
-```plaintext
+```text
 $ ps
-
-PID        TTY     STAT   TIME          CMD
-41230    pts/4    Ss        00:00:00     bash
-51224    pts/4    R+        00:00:00     ps
+    PID TTY          TIME CMD
+  41230 pts/4    00:00:00 bash
+  51224 pts/4    00:00:00 ps
 ```
 
-Diese Ausgabe zeigt einige wichtige Details:
+Typische Felder sind:
 
-- **PID**: Die eindeutige Prozess-ID.
-- **TTY**: Das steuernde Terminal für den Prozess.
-- **STAT**: Der aktuelle Status des Prozesses.
-- **TIME**: Die gesamte CPU-Zeit, die der Prozess verbraucht hat.
-- **CMD**: Der Befehl, der den Prozess gestartet hat.
+- `PID`: Prozess-ID
+- `TTY`: steuerndes Terminal oder `?`, wenn keines zugeordnet ist
+- `TIME`: angesammelte CPU-Zeit und nicht die verstrichene reale Zeit
+- `CMD`: Befehlsname oder Befehlszeile, abhängig vom ausgewählten Format
 
-### Erkundung von ps mit BSD-ähnlichen Optionen
+Die genauen Spalten und standardmäßigen Auswahlregeln unterscheiden sich zwischen `ps`-Implementierungen und Umgebungen.
 
-Der `ps`-Befehl ist sehr vielseitig und verfügt über viele Optionen, die verschiedenen Syntaxstilen angehören (BSD, System V, GNU). Der BSD-Stil, der keinen Bindestrich für Optionen verwendet, ist recht verbreitet. Eine beliebte Kombination ist `ps aux`:
+:::single-choice{#ps-command-pid-meaning} Was kennzeichnet die Spalte `PID`?
+
+::option[Die Nummer des aktuellen Verzeichnisses des Prozesses.]{#ps-command-pid-directory explanation="Ein aktuelles Verzeichnis ist eine Dateisystemreferenz und wird nicht durch die PID dargestellt."}
+::option[Die angesammelte CPU-Zeit in Sekunden.]{#ps-command-pid-cpu explanation="Die CPU-Nutzung wird in einem getrennten Feld wie `TIME` angezeigt."}
+::option[Die vom Kernel zugewiesene Prozess-ID.]{#ps-command-pid-kernel .correct explanation="Die PID ist die numerische Kennung, mit der auf einen laufenden Prozess verwiesen wird."}
+:::
+
+## Prozesse mit Optionen im BSD-Stil auflisten
+
+Linux-`ps` akzeptiert mehrere Optionsstile. Optionen im BSD-Stil werden gewöhnlich ohne führenden Bindestrich geschrieben:
 
 ```bash
-ps aux
+$ ps aux
 ```
 
-Hier ist die Bedeutung dieser Optionen:
+In dieser Kombination:
 
-- **a**: Zeigt alle Prozesse aller Benutzer an.
-- **u**: Bietet ein detailliertes, benutzerorientiertes Format.
-- **x**: Schließt Prozesse ein, die keinem Terminal zugeordnet sind. Dies sind oft System-Daemons, die beim Booten starten und in der TTY-Spalte ein `?` anzeigen.
+- `a` erweitert die Auswahl auf Prozesse anderer Benutzer, die Terminals besitzen.
+- `x` nimmt zusätzlich Prozesse ohne steuernde Terminals auf und erweitert in Verbindung mit `a` die Auswahl.
+- `u` wählt ein benutzerorientiertes Ausgabeformat mit Feldern wie `USER`, `%CPU`, `%MEM`, `VSZ` und `RSS`.
 
-Dieser Befehl liefert eine viel reichhaltigere Ausgabe mit zusätzlichen Spalten wie `USER`, `%CPU`, `%MEM`, `VSZ` und `RSS`. Vorerst konzentrieren wir uns auf PID, STAT und COMMAND.
+Da sich die Bedeutungen der Optionen gegenseitig beeinflussen können, solltest du die vollständige Kombination interpretieren, statt jeden Buchstaben als unabhängigen Befehl zu behandeln.
 
-### Verwendung des ps -ef-Befehls unter Linux
+:::single-choice{#ps-command-aux-user-format} Welche Option fordert in `ps aux` das benutzerorientierte Ausgabeformat an?
 
-Ein weiterer äußerst beliebter Syntax ist der System V-Stil. Sie werden häufig den **ps -ef-Befehl** sehen, der von Systemadministratoren verwendet wird. Dies ist eine leistungsstarke Methode, um ein vollständiges Bild davon zu erhalten, was auf Ihrem System läuft.
+::option[`u`]{#ps-command-aux-u .correct explanation="Die BSD-Option `u` wählt eine benutzerorientierte Gruppe von Ausgabespalten aus."}
+::option[`x`]{#ps-command-aux-x explanation="Die Option `x` beeinflusst die Prozessauswahl, insbesondere bei Prozessen ohne steuerndes Terminal."}
+::option[`a`]{#ps-command-aux-a explanation="Die Option `a` erweitert die Auswahl über die Terminalprozesse des aktuellen Benutzers hinaus."}
+:::
+
+## Optionen im Standardstil verwenden
+
+Der weitverbreitete Befehl `ps -ef` im Standardstil schreibt Optionen mit einem führenden Bindestrich:
 
 ```bash
-ps -ef
+$ ps -ef
 ```
 
-Der Befehl **ps -ef linux** liefert eine vollständige Liste aller Prozesse.
+- `-e` wählt jeden für den Aufrufer sichtbaren Prozess aus.
+- `-f` fordert eine Auflistung im vollständigen Format an.
 
-- **-e**: Wählt jeden Prozess im System aus.
-- **-f**: Zeigt eine „vollständige“ Auflistung an, die Details wie UID, PPID (Parent Process ID), C (CPU-Auslastung) und STIME (Startzeit) enthält.
+Die Ausgabe enthält gewöhnlich `UID`, `PID`, `PPID`, Startzeit und Befehlsinformationen. `PPID` ist die ID des Elternprozesses. Diese Auflistung ist nicht von sich aus hierarchisch. Verwende eine Option wie `--forest`, sofern unterstützt, oder eine spezielle Baumansicht wie `pstree`, wenn die Eltern-Kind-Anordnung wichtig ist.
 
-Viele Benutzer bevorzugen `ps -ef` gegenüber `ps aux` wegen seiner klaren, hierarchischen Ansicht und detaillierten Informationen. Bei der Fehlerbehebung auf einem Linux-System ist die Ausführung von **linux ps -ef** oft einer der ersten Schritte zur Diagnose von Problemen. Eine einfachere Variante, `ps -e linux`, listet ebenfalls alle Prozesse auf, jedoch in einem weniger detaillierten Format.
+:::single-choice{#ps-command-ef-selection} Was fordert `-e` in `ps -ef` an?
 
-### Echtzeitüberwachung mit top
+::option[Eine Aktualisierung jede Sekunde bis zum Abbruch.]{#ps-command-e-refresh explanation="`ps` erzeugt eine Momentaufnahme; fortlaufende Aktualisierung ist eine Funktion von Werkzeugen wie `top`."}
+::option[Eine Auswahl mit jedem für den Aufrufer sichtbaren Prozess.]{#ps-command-e-every .correct explanation="Die Standardoption `-e` erweitert die Momentaufnahme auf alle auswählbaren Prozesse."}
+::option[Ausschließlich Prozesse, deren Befehl mit einem Fehler endete.]{#ps-command-e-errors explanation="Die Prozessauswahl basiert nicht auf dem späteren Beendigungsstatus eines Befehls."}
+:::
 
-Während `ps` eine Momentaufnahme liefert, bietet der Befehl `top` eine Echtzeit-, dynamische Ansicht der Prozesse auf Ihrem System. Es ist ein ausgezeichnetes Werkzeug, um festzustellen, welche Prozesse die meiste CPU oder den meisten Speicher verbrauchen. Standardmäßig wird die Anzeige alle paar Sekunden aktualisiert.
+## Aktivitäten im Zeitverlauf überwachen
+
+`ps` beendet sich nach der Ausgabe einer Momentaufnahme. Verwende `top` für eine interaktive Ansicht, die regelmäßig aktualisiert wird:
 
 ```bash
-top
+$ top
 ```
 
-## Exercise
+`top` hilft dabei, wechselnde CPU- und Speicherverbraucher zu erkennen, doch seine Werte sind Stichproben und können schwanken. Bestätige ein vermutetes Problem über mehrere Beobachtungen hinweg und setze Prozentwerte mit der CPU-Anzahl, der Speicherbilanzierung und der Arbeitslast des Computers in Beziehung.
 
-Übung macht den Meister beim Beherrschen von Linux-Befehlen. Die folgenden praktischen Übungen helfen Ihnen, Ihr Verständnis der Prozessüberwachung und -verwaltung zu festigen:
+:::single-choice{#ps-command-snapshot-versus-top} Welches hier vorgestellte Werkzeug aktualisiert seine Prozessanzeige standardmäßig regelmäßig?
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System, einschließlich der Interaktion mit Vordergrund-/Hintergrundprozessen, der Inspektion mit `ps`, der Überwachung mit `top` und dem Beenden mit `kill`.
-2. **[Linux top-Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Lernen Sie, den Linux `top`-Befehl für die Echtzeit-Systemüberwachung zu verwenden, einschließlich des Sortierens von Prozessen, des Anpassens von Aktualisierungsintervallen und des Filter nach Benutzer.
+::option[`top`]{#ps-command-top-refresh .correct explanation="`top` ist ein interaktiver Monitor, der seine Anzeige in Intervallen aktualisiert."}
+::option[`ps -ef`]{#ps-command-ps-ef-snapshot explanation="Dieser Befehl gibt eine Prozessmomentaufnahme im vollständigen Format aus und beendet sich anschließend."}
+::option[`ls -l`]{#ps-command-ls-files explanation="`ls -l` zeigt Dateisystemeinträge an und ist kein laufender Prozessmonitor."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte der Prozessidentifizierung und -überwachung in realen Szenarien anzuwenden und Ihr Selbstvertrauen als Linux-Systemadministrator zu stärken.
+Nutze für praktische Übungen [Linux-Prozesse verwalten und überwachen](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864), um Momentaufnahmen mit einem interaktiven Monitor zu vergleichen, oder erkunde Sortierung und Filterung im Lab [Linux-Befehl `top`](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500).
 
-## Quiz Question
+## Zusammenfassung
 
-Welche `ps`-Flagge wird in Kombination mit den Flaggen `a` und `x` verwendet, um detaillierte, benutzerorientierte Informationen über Prozesse anzuzeigen? Bitte antworten Sie mit einem einzigen Kleinbuchstaben in englischer Sprache.
+Du kannst nun eine Prozessansicht auswählen und ihre grundlegenden Kennungen interpretieren.
 
-## Quiz Answer
-
-u
+1. Behandle eine PID als wiederverwendbare Kennung eines aktuell laufenden Prozesses.
+2. Verwende ein einfaches `ps` für eine kleine standardmäßige Momentaufnahme.
+3. Verwende `ps aux` oder `ps -ef` für umfassendere Auswahlen und aussagekräftigere Spalten.
+4. Verwende `top`, wenn Veränderungen im Zeitverlauf wichtig sind.

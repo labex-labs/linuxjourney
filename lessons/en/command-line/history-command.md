@@ -1,19 +1,20 @@
 ---
-index: 9
+lesson_id: "history-command"
+course_id: "command-line"
 lang: "en"
+order_index: 9
 title: "history"
+description: "Learn how to inspect, search, reuse, and manage command history in Bash."
 meta_title: "history - Command Line"
 meta_description: "Learn the Linux history command with examples for viewing command history, rerunning commands, reverse search, deleting entries, and clearing the terminal."
 meta_keywords: "linux history command, bash history, history -c, history -d, history -w, Ctrl-R, command history, clear command"
 ---
 
-## Lesson Content
+Interactive shells can keep a record of commands you enter. This lesson focuses on Bash, where the `history` builtin displays and manages that record. Other shells may use different shortcuts, files, or settings.
 
-Your shell keeps a record of the commands you have previously entered. You can access this list when you want to find and reuse a command without retyping it. The `history` command is a fundamental tool in Bash and many Unix-like shell environments.
+## Viewing Bash History
 
-### Viewing Your Command History
-
-To see the list of commands you have used, type `history`.
+Run `history` to display the current history list:
 
 ```bash
 $ history
@@ -24,28 +25,51 @@ $ history
 
 Each line has a history number followed by the command.
 
-### Re-running Previous Commands
+:::single-choice{#show-command-history} Which Bash command displays the current numbered history list?
 
-The shell provides several shortcuts to make re-running commands easier.
+::option[`clear`]{#clear-display explanation="`clear` refreshes the visible terminal area. It does not display previous commands."}
+::option[`history -w`]{#write-history explanation="`history -w` writes the current list to the history file. Its purpose is saving rather than displaying the list."}
+::option[`history`]{#show-history .correct explanation="The `history` builtin prints commands in the current history list, normally with their history numbers."}
+:::
 
-- **Up Arrow**: Want to run the same command you just did? Just press the up arrow key to cycle backward through your history.
-- **The `!!` Shortcut**: To execute the most recent command again, you can use `!!`. For example, if you just ran `cat file1`, typing `!!` and pressing Enter will run `cat file1` again.
+## Reusing Previous Commands
+
+Bash provides several shortcuts for recalling or immediately executing commands:
+
+- **Up Arrow**: Recall earlier commands for review or editing.
+- **`!!`**: Expand to and execute the most recent command.
 - **Run by number**: Use `!102` to run command number 102 from your history.
 - **Run by prefix**: Use `!cat` to run the most recent command that started with `cat`.
 
-### Searching Your History
+History expansion forms that begin with `!` can run a command as soon as you press Enter. Inspect the match first when there is any doubt, especially before adding elevated privileges or operating on important files.
 
-One of the most powerful history shortcuts is `Ctrl-R`. This initiates a reverse search. After pressing `Ctrl-R`, start typing any part of the command you're looking for, and the shell will display the most recent match. You can press `Ctrl-R` repeatedly to cycle through older matches. Once you find the command you want, just press Enter to execute it.
+:::single-choice{#repeat-most-recent-command} Which Bash history expansion repeats the most recently executed command?
 
-If you want to edit the matched command before running it, press the right arrow key or left arrow key instead of Enter.
+::option[`!102`]{#event-number explanation="This expansion selects the command with history number 102. That entry is not necessarily the most recent command."}
+::option[`!cat`]{#event-prefix explanation="This selects the most recent command whose text begins with `cat`. It does not mean the most recent command of any kind."}
+::option[`!!`]{#previous-event .correct explanation="In Bash, `!!` expands to the previous command and executes it after you submit the line."}
+:::
 
-### Managing the History List
+## Searching History Interactively
 
-Beyond just viewing your history, you can also manage it directly.
+Press `Ctrl+R` to start a reverse incremental search, then type part of the command you want. Press `Ctrl+R` again to move to an older match.
 
-- **Clear current history list**: `history -c` removes all entries from the history list in memory.
-- **Write history to file**: `history -w` saves the current session's history to your history file, usually `~/.bash_history`.
-- **Delete a specific entry**: `history -d <offset>` removes one command by its history number.
+Press Enter to execute the displayed match. If you want to review or edit it first, use an arrow key to place the command on the editing line instead.
+
+:::single-choice{#search-before-executing} You remember part of an earlier Bash command and want to find it interactively. What should you press first?
+
+::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D` signals end of input in many terminal contexts and may exit an idle shell. It does not begin a history search."}
+::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` normally interrupts or cancels the current operation. It does not search command history."}
+::option[`Ctrl+R`]{#reverse-search .correct explanation="`Ctrl+R` begins a reverse incremental search through command history. Typing more characters narrows the match."}
+:::
+
+## Managing the History List
+
+The `history` builtin can modify or save the current list:
+
+- `history -c`: Clear the current in-memory history list.
+- `history -w`: Write the current list to the configured history file, commonly `~/.bash_history`.
+- `history -d <offset>`: Delete the entry at the given history position.
 
 Examples:
 
@@ -54,36 +78,42 @@ $ history -d 101
 $ history -w
 ```
 
-Be careful with history expansion commands such as `!!` and `!102`. Use `history` first to confirm what will run.
+Clearing the in-memory list does not by itself guarantee that older commands have disappeared from every file, backup, or other active shell. History behavior also depends on Bash settings and when sessions read or write their files.
 
-### Other Useful Terminal Tools
+:::single-choice{#save-current-history-list} Which command writes the current Bash history list to its configured history file?
 
-As your terminal window fills up, you might want to clean it. Use the `clear` command to wipe your display and start with a fresh screen.
+::option[`history -c`]{#clear-current-list explanation="The `-c` option clears the in-memory list. It does not request that the current list be saved."}
+::option[`history -d 101`]{#delete-one-entry explanation="The `-d` option removes one selected history entry. It is not the operation for saving the complete list."}
+::option[`history -w`]{#write-current-list .correct explanation="The `-w` option writes the current history list to the configured history file."}
+:::
+
+## Clearing the Display and Completing Names
+
+Use `clear` when you want a fresh visible terminal area:
 
 ```bash
 $ clear
 ```
 
-Another indispensable feature is tab completion. If you start typing the beginning of a command, filename, or directory and press the Tab key, the shell will attempt to autocomplete it. If there are multiple possibilities, it may show you the options or do nothing. Pressing Tab a second time will often list all possible completions.
+This does not erase the Bash history list. Depending on the terminal, older display content may also remain available in scrollback.
 
-### Common Questions
+Tab completion is another way to avoid retyping. Start a command, filename, or directory name and press Tab. Bash may complete an unambiguous match or show possible completions when more than one exists.
 
-**Where is Bash history stored?** Usually in `~/.bash_history`, though the exact behavior depends on shell settings.
+Command lines can be stored in history, so do not place passwords, tokens, or other secrets directly in commands when a safer input method is available.
 
-**Does history include every command immediately?** Not always. Some shells write history when a session exits unless configured otherwise.
+:::single-choice{#distinguish-clear-from-history-clear} You want to refresh the visible terminal without deleting the in-memory command history. Which command should you run?
 
-**Can history contain sensitive data?** Yes. Avoid typing passwords, tokens, or secrets directly into commands.
+::option[`clear`]{#clear-visible-area .correct explanation="`clear` refreshes the visible terminal area while leaving Bash's in-memory history list intact."}
+::option[`history -c`]{#clear-memory explanation="This removes entries from the current in-memory history list. It changes history rather than only refreshing the display."}
+::option[`history -d 1`]{#delete-first-entry explanation="This asks Bash to delete a selected history entry. It does not clear the visible terminal area."}
+:::
 
-**What is the difference between history -c and clear?** `history -c` clears command history in memory. `clear` only clears the terminal screen.
+## Summary
 
-## Exercise
+You can now find and reuse Bash commands while managing history deliberately.
 
-While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
-
-## Quiz Question
-
-What is the command to clear the terminal? (Please answer in lowercase English letters only)
-
-## Quiz Answer
-
-clear
+1. Display the current numbered history list.
+2. Recall or expand a previous command carefully.
+3. Search history interactively with `Ctrl+R`.
+4. Delete, clear, or write history entries.
+5. Distinguish command history from the terminal display.

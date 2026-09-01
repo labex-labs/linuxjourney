@@ -1,0 +1,123 @@
+id: routing
+category:
+  id: networking-nomad
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/routing.png
+order_index: 3
+translations:
+  en:
+    title: "Routing"
+    description: "Learn how packets are routed across networks!"
+    faqs:
+      - question: "What routing protocols are introduced?"
+        answer: "The course explains the ideas behind distance-vector and link-state protocols and introduces BGP for exchanging routes between large networks."
+      - question: "Will I learn how to read a routing table?"
+        answer: "Yes. A dedicated lesson explains routing-table entries and how systems choose a path when forwarding traffic toward a destination."
+      - question: "Do I need to complete Subnetting first?"
+        answer: "A working understanding of IP addresses and network prefixes is recommended because routing decisions operate on those address ranges."
+    meta_title: "Network Routing Fundamentals Course"
+    meta_description: "Learn how routers forward packets, read routing tables, and use distance-vector, link-state, and BGP concepts to exchange network routes."
+    meta_keywords: "network routing, routing table, routers, packet path, distance vector, link state, BGP, routing protocols"
+  de:
+    title: "Routing"
+    description: "Lernen Sie, wie Pakete durch Netzwerke geroutet werden."
+    faqs:
+      - question: "Welche Routing-Protokolle werden eingeführt?"
+        answer: "Der Kurs erklärt die Ideen hinter Distanzvektor- und Link-State-Protokollen und stellt BGP für den Routenaustausch zwischen großen Netzwerken vor."
+      - question: "Werde ich lernen, eine Routing-Tabelle zu lesen?"
+        answer: "Ja. In einer speziellen Lektion werden Routing-Tabelleneinträge erläutert und erläutert, wie Systeme einen Pfad auswählen, wenn sie Datenverkehr zu einem Ziel weiterleiten."
+      - question: "Muss ich zuerst das Subnetting abschließen?"
+        answer: "Ein fundiertes Verständnis von IP-Adressen und Netzwerkpräfixen wird empfohlen, da Routing-Entscheidungen für diese Adressbereiche gelten."
+    meta_title: "Kurs „Grundlagen des Netzwerkroutings“."
+    meta_description: "Erfahren Sie, wie Router Pakete weiterleiten, Routing-Tabellen lesen und Distanzvektor-, Link-State- und BGP-Konzepte verwenden, um Netzwerkrouten auszutauschen."
+    meta_keywords: "Netzwerk-Routing, Routing-Tabelle, Router, Paketpfad, Distanzvektor, Verbindungsstatus, BGP, Routing-Protokolle"
+  es:
+    title: "Enrutamiento"
+    description: "Aprende cómo se enrutan los paquetes a través de las redes."
+    faqs:
+      - question: "¿Qué protocolos de enrutamiento se introducen?"
+        answer: "El curso explica las ideas detrás de los protocolos de estado de enlace y vector de distancia e introduce BGP para el intercambio de rutas entre redes grandes."
+      - question: "¿Aprenderé a leer una tabla de enrutamiento?"
+        answer: "Sí. Una lección dedicada explica las entradas de la tabla de enrutamiento y cómo los sistemas eligen una ruta cuando reenvían el tráfico hacia un destino."
+      - question: "¿Debo completar primero la creación de subredes?"
+        answer: "Se recomienda tener un conocimiento práctico de las direcciones IP y los prefijos de red porque las decisiones de enrutamiento operan en esos rangos de direcciones."
+    meta_title: "Curso de fundamentos de enrutamiento de redes"
+    meta_description: "Aprenda cómo los enrutadores reenvían paquetes, leen tablas de enrutamiento y utilizan conceptos de vector de distancia, estado de enlace y BGP para intercambiar rutas de red."
+    meta_keywords: "enrutamiento de red, tabla de enrutamiento, enrutadores, ruta de paquetes, vector de distancia, estado del enlace, BGP, protocolos de enrutamiento"
+  fr:
+    title: "Routage"
+    description: "Apprenez comment les paquets sont routés à travers les réseaux !"
+    faqs:
+      - question: "Quels protocoles de routage sont introduits ?"
+        answer: "Le cours explique les idées derrière les protocoles à vecteur de distance et à état de lien et présente le BGP pour l'échange de routes entre les grands réseaux."
+      - question: "Vais-je apprendre à lire une table de routage ?"
+        answer: "Oui. Une leçon dédiée explique les entrées de la table de routage et comment les systèmes choisissent un chemin lors du transfert du trafic vers une destination."
+      - question: "Dois-je d'abord terminer le sous-réseau ?"
+        answer: "Une compréhension pratique des adresses IP et des préfixes réseau est recommandée car les décisions de routage opèrent sur ces plages d'adresses."
+    meta_title: "Cours sur les principes fondamentaux du routage réseau"
+    meta_description: "Découvrez comment les routeurs transfèrent les paquets, lisent les tables de routage et utilisent les concepts de vecteur de distance, d'état de lien et BGP pour échanger des routes réseau."
+    meta_keywords: "routage réseau, table de routage, routeurs, chemin des paquets, vecteur de distance, état du lien, BGP, protocoles de routage"
+  ja:
+    title: "ルーティング"
+    description: "パケットがネットワークを介してどのようにルーティングされるかを学びましょう！"
+    faqs:
+      - question: "どのようなルーティング プロトコルが導入されていますか？"
+        answer: "このコースでは、距離ベクトルおよびリンクステート プロトコルの背後にある考え方を説明し、大規模ネットワーク間でルートを交換するための BGP を紹介します。"
+      - question: "ルーティング テーブルの読み方を学びますか？"
+        answer: "はい。専用のレッスンでは、ルーティング テーブルのエントリと、トラフィックを宛先に転送するときにシステムがパスを選択する方法について説明します。"
+      - question: "最初にサブネット化を完了する必要がありますか？"
+        answer: "ルーティングの決定はこれらのアドレス範囲に基づいて行われるため、IP アドレスとネットワーク プレフィックスについて十分に理解しておくことをお勧めします。"
+    meta_title: "ネットワークルーティングの基礎コース"
+    meta_description: "ルーターがどのようにパケットを転送し、ルーティング テーブルを読み取り、距離ベクトル、リンクステート、BGP の概念を使用してネットワーク ルートを交換するかを学びます。"
+    meta_keywords: "ネットワーク ルーティング，ルーティング テーブル，ルーター, パケット パス，距離ベクトル，リンク ステート，BGP, ルーティング プロトコル"
+  ko:
+    title: "라우팅"
+    description: "패킷이 네트워크를 통해 라우팅되는 방식을 알아보세요."
+    faqs:
+      - question: "어떤 라우팅 프로토콜이 도입되나요?"
+        answer: "이 과정에서는 거리 벡터 및 링크 상태 프로토콜에 대한 아이디어를 설명하고 대규모 네트워크 간의 경로 교환을 위한 BGP 를 소개합니다."
+      - question: "라우팅 테이블을 읽는 방법을 배울 수 있나요?"
+        answer: "네. 전용 강의에서는 라우팅 테이블 항목과 트래픽을 대상으로 전달할 때 시스템이 경로를 선택하는 방법을 설명합니다."
+      - question: "서브넷팅을 먼저 완료해야 하나요?"
+        answer: "라우팅 결정은 해당 주소 범위에서 이루어지므로 IP 주소와 네트워크 접두사를 제대로 이해하는 것이 좋습니다."
+    meta_title: "네트워크 라우팅 기초 과정"
+    meta_description: "라우터가 패킷을 전달하고, 라우팅 테이블을 읽고, 거리 벡터, 링크 상태 및 BGP 개념을 사용하여 네트워크 경로를 교환하는 방법을 알아보세요."
+    meta_keywords: "네트워크 라우팅, 라우팅 테이블, 라우터, 패킷 경로, 거리 벡터, 링크 상태, BGP, 라우팅 프로토콜"
+  pt:
+    title: "Roteamento"
+    description: "Aprenda como os pacotes são roteados através das redes!"
+    faqs:
+      - question: "Quais protocolos de roteamento são introduzidos?"
+        answer: "O curso explica as ideias por trás dos protocolos de vetor de distância e de estado de link e apresenta o BGP para troca de rotas entre grandes redes."
+      - question: "Aprenderei a ler uma tabela de roteamento?"
+        answer: "Sim. Uma lição dedicada explica as entradas da tabela de roteamento e como os sistemas escolhem um caminho ao encaminhar o tráfego para um destino."
+      - question: "Preciso concluir a criação de sub-redes primeiro?"
+        answer: "Recomenda-se uma compreensão prática dos endereços IP e prefixos de rede porque as decisões de roteamento operam nesses intervalos de endereços."
+    meta_title: "Curso Fundamentos de Roteamento de Rede"
+    meta_description: "Aprenda como os roteadores encaminham pacotes, leem tabelas de roteamento e usam conceitos de vetor de distância, estado de link e BGP para trocar rotas de rede."
+    meta_keywords: "roteamento de rede, tabela de roteamento, roteadores, caminho de pacote, vetor de distância, estado do link, BGP, protocolos de roteamento"
+  ru:
+    title: "Маршрутизация"
+    description: "Узнайте, как пакеты маршрутизируются по сетям!"
+    faqs:
+      - question: "Какие протоколы маршрутизации введены?"
+        answer: "В курсе объясняются идеи, лежащие в основе протоколов вектора расстояния и состояния канала, а также знакомится с BGP для обмена маршрутами между крупными сетями."
+      - question: "Научусь ли я читать таблицу маршрутизации?"
+        answer: "Да. Специальный урок объясняет записи таблицы маршрутизации и то, как системы выбирают путь при пересылке трафика к месту назначения."
+      - question: "Нужно ли мне сначала выполнить создание подсетей?"
+        answer: "Рекомендуется иметь рабочее представление об IP-адресах и сетевых префиксах, поскольку решения о маршрутизации принимаются на основе этих диапазонов адресов."
+    meta_title: "Курс по основам сетевой маршрутизации"
+    meta_description: "Узнайте, как маршрутизаторы пересылают пакеты, читают таблицы маршрутизации и используют концепции вектора расстояния, состояния канала и BGP для обмена сетевыми маршрутами."
+    meta_keywords: "сетевая маршрутизация, таблица маршрутизации, маршрутизаторы, путь пакета, вектор расстояния, состояние канала, BGP, протоколы маршрутизации."
+  zh:
+    title: "路由"
+    description: "了解数据包如何在网络中路由！"
+    faqs:
+      - question: "引入了哪些路由协议？"
+        answer: "本课程解释了距离矢量和链路状态协议背后的思想，并介绍了用于在大型网络之间交换路由的 BGP。"
+      - question: "我会学习如何读取路由表吗？"
+        answer: "是的。专门的课程解释了路由表条目以及系统在将流量转发到目的地时如何选择路径。"
+      - question: "我需要先完成子网划分吗？"
+        answer: "建议对 IP 地址和网络前缀有一个有效的理解，因为路由决策是在这些地址范围上进行的。"
+    meta_title: "网络路由基础课程"
+    meta_description: "了解路由器如何转发数据包、读取路由表以及使用距离向量、链路状态和 BGP 概念来交换网络路由。"
+    meta_keywords: "网络路由，路由表，路由器，数据包路径，距离向量，链路状态，BGP, 路由协议"

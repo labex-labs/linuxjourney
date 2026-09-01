@@ -17,17 +17,6 @@ A structured learning path from beginner to advanced Linux administration with t
 - **Journeyman** - System internals
 - **Networking Nomad** - Network administration
 
-The repository is organized as follows:
-
-```plaintext
-├── i18n/          # Language files
-├── lessons/       # Course content by language
-│   ├── en/        # English lessons
-│   ├── zh/        # Chinese lessons
-│   └── ...        # Other languages
-└── README.md
-```
-
 ## Grasshopper
 
 ### Getting Started
@@ -45,7 +34,7 @@ What is Linux? Get started with choosing a distribution and installation.
 - [Linux Mint](https://labex.io/lesson/linux-mint)
 - [Gentoo](https://labex.io/lesson/gentoo)
 - [Arch Linux](https://labex.io/lesson/arch-linux)
-- [openSUSE](https://labex.io/lesson/openSUSE)
+- [openSUSE](https://labex.io/lesson/opensuse)
 - [Best Linux for Cybersecurity](https://labex.io/lesson/best-linux-distro-for-cybersecurity)
 
 ### Command Line

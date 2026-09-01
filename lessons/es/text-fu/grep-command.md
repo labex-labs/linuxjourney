@@ -1,98 +1,144 @@
 ---
-index: 16
+lesson_id: "grep-command"
+course_id: "text-fu"
 lang: "es"
+order_index: 16
 title: "grep"
-meta_title: "grep - Texto-Fu"
-meta_description: "Aprenda a usar el potente comando grep en Linux para buscar patrones de texto. Esta guía cubre el uso básico, el comando grep -e, grep -c para contar y otras opciones esenciales para el procesamiento de texto eficaz."
-meta_keywords: "comando grep, comando grep -e, grep -c, grep -f, grep -o, ejemplo grep -e, grep linux, buscar texto, coincidencia de patrones, procesamiento de texto, tutorial linux"
+description: "Aprende a seleccionar líneas mediante cadenas fijas o expresiones regulares y a interpretar los resultados de grep."
+meta_title: "grep - Text-Fu"
+meta_description: "Aprende a usar la potente orden grep de Linux para buscar patrones de texto. Esta guía explica el uso básico, grep -e, grep -c y otras opciones esenciales."
+meta_keywords: "orden grep, orden grep -e, grep -c, grep -f, grep -o, ejemplo grep -e, grep Linux, buscar texto, coincidencia de patrones, procesamiento de texto"
 ---
 
-## Lesson Content
+La orden `grep` selecciona líneas de entrada que coinciden con un patrón. Puede buscar en archivos indicados o en la entrada estándar, imprimir contexto coincidente, contar líneas seleccionadas y comunicar mediante su estado de salida si se encontró una coincidencia.
 
-El comando `grep` es posiblemente la herramienta de procesamiento de texto más esencial que utilizará en un entorno Linux. Le permite buscar en archivos o flujos de datos líneas que coincidan con un patrón específico. En lugar de rebuscar manualmente entre incontables líneas de texto para encontrar una cadena o configuración específica, simplemente puede usar `grep` para hacer el trabajo pesado.
+## Buscar líneas en un archivo
 
-### Uso Básico de Grep
-
-En esencia, `grep` busca un patrón dentro de un archivo. Usaremos un archivo llamado `sample.txt` como ejemplo. Para encontrar todas las líneas que contienen la palabra "fox", ejecutaría:
+Proporciona un patrón seguido de uno o más archivos de entrada:
 
 ```bash
-grep fox sample.txt
+$ grep 'fox' sample.txt
 ```
 
-La salida mostrará cada línea de `sample.txt` donde se encuentre "fox".
+De forma predeterminada, `grep` de GNU interpreta el patrón como una expresión regular básica e imprime todas las líneas seleccionadas. Pon los patrones entre comillas para evitar que el shell interprete primero los espacios y metacaracteres.
 
-### Coincidencia de Patrones Avanzada con grep -e
-
-Para búsquedas más complejas, el `comando grep -e` es increíblemente útil. El indicador `-e` le dice explícitamente a `grep` que el siguiente argumento es el patrón. Esto es particularmente útil cuando se buscan patrones que comienzan con un guion (`-`), que de otro modo podrían interpretarse erróneamente como una opción.
-
-Aquí hay un `ejemplo de grep -e` donde buscamos la cadena "-v" en un archivo:
+Usa `-F` cuando el patrón deba tratarse como una cadena fija en vez de como una expresión regular:
 
 ```bash
-grep -e "-v" /path/to/some/file.conf
+$ grep -F 'price: $5.00' products.txt
 ```
 
-Sin `-e`, `grep` trataría `-v` como la opción de "inversión de coincidencia". El `comando grep -e` asegura que su patrón siempre se interprete correctamente.
+:::single-choice{#grep-fixed-string} ¿Qué orden busca en `products.txt` el texto literal `price: $5.00` sin tratar los caracteres del patrón como sintaxis de expresiones regulares?
 
-### Banderas Útiles de Grep
+::option[`grep -F 'price: $5.00' products.txt`]{#grep-fixed-price .correct explanation="`-F` selecciona la coincidencia de cadenas fijas y las comillas simples protegen el signo de dólar de la expansión del shell."}
+::option[`grep -E 'price: $5.00' products.txt`]{#grep-extended-price explanation="`-E` activa expresiones regulares extendidas, donde `$` y `.` tienen significados especiales en vez de ser literales."}
+::option[`grep -v 'price: $5.00' products.txt`]{#grep-invert-price explanation="`-v` selecciona líneas que no coinciden y sigue usando de forma predeterminada la interpretación como expresión regular."}
+:::
 
-Puede modificar el comportamiento de `grep` con varias banderas para refinar sus resultados de búsqueda.
+## Seleccionar la sintaxis del patrón
 
-- **Búsqueda Insensible a Mayúsculas y Minúsculas**: Use la bandera `-i` para hacer que su búsqueda no distinga entre mayúsculas y minúsculas.
+`grep` de GNU ofrece tres modos de patrón habituales:
 
-  ```bash
-  grep -i somepattern somefile
-  ```
+- Predeterminado: expresiones regulares básicas.
+- `-E`: expresiones regulares extendidas, con operadores como `|`, `+` y `?` sin barras invertidas.
+- `-F`: cadenas fijas sin operadores de expresiones regulares.
 
-````
-- **Contar Líneas Coincidentes**: Para contar cuántas líneas coinciden con su patrón en lugar de mostrarlas, use la bandera `grep -c`.
-  ```bash
-grep -c fox sample.txt
-````
-
-- **Mostrar Solo la Coincidencia**: Si solo desea ver la parte exacta de la línea que coincide con el patrón, use la bandera `grep -o`.
-
-  ```bash
-  grep -o fox sample.txt
-  ```
-
-````
-- **Buscar Patrones desde un Archivo**: Cuando tenga varios patrones para buscar, puede enumerarlos en un archivo y usar la bandera `grep -f` para indicarle a `grep` que use ese archivo para los patrones.
-  ```bash
-grep -f patterns.txt sample.txt
-````
-
-### Combinar Grep con Otros Comandos
-
-El verdadero poder de `grep` se desbloquea cuando lo combina con otros comandos usando tuberías (`|`). Esto le permite filtrar la salida de cualquier comando.
-
-Por ejemplo, puede filtrar variables de entorno para encontrar aquellas relacionadas con el usuario:
+Anclas como `^` y `$` coinciden con el principio y el final de una línea. Para encontrar en una lista de texto nombres de archivo que terminen con el sufijo literal `.txt`:
 
 ```bash
-env | grep -i User
+$ grep -E '\.txt$' filenames.txt
 ```
 
-También puede usar `grep` con expresiones regulares para realizar coincidencias de patrones más sofisticadas. Por ejemplo, para encontrar todos los archivos que terminan en `.txt` en un directorio:
+La barra invertida hace que el punto sea literal; un `.` sin escapar en una expresión regular coincide con cualquier carácter individual.
+
+:::single-choice{#grep-literal-txt-suffix} ¿Qué expresión regular extendida coincide con líneas que terminan con el sufijo literal `.txt`?
+
+::option[`'.txt$'`]{#grep-anychar-txt explanation="El punto no está escapado, por lo que coincide con cualquier carácter anterior a `txt`, no específicamente con un punto literal."}
+::option[`'\.txt$'`]{#grep-dot-txt-end .correct explanation="`\.` coincide con un punto literal y `$` ancla la coincidencia al final de la línea."}
+::option[`'^.txt'`]{#grep-start-anychar-txt explanation="Esto ancla al principio y sigue usando un punto sin escapar, por lo que expresa una coincidencia diferente."}
+:::
+
+## Proporcionar patrones de forma segura
+
+Usa `-e PATTERN` para proporcionar un patrón explícitamente. Resulta especialmente útil cuando el patrón comienza por `-`, porque las comillas por sí solas no detienen el análisis de opciones:
 
 ```bash
-ls /somedir | grep '.txt$'
+$ grep -e '-v' settings.conf
 ```
 
-Como puede ver, `grep` es una herramienta versátil y poderosa para cualquier usuario de Linux.
+Puedes repetir `-e` para seleccionar líneas que coincidan con cualquiera de los patrones proporcionados. Usa `-f patterns.txt` para leer un patrón por línea desde un archivo.
 
-## Exercise
+:::single-choice{#grep-hyphen-pattern} ¿Qué orden busca el patrón `-v` en `settings.conf` en vez de interpretarlo como una opción?
 
-¡La práctica hace la perfección! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la búsqueda de texto y la coincidencia de patrones con `grep`:
+::option[`grep '-v' settings.conf`]{#grep-quoted-v explanation="Las comillas protegen los caracteres de la expansión del shell, pero `grep` aún puede interpretar el argumento resultante `-v` como su opción para invertir coincidencias."}
+::option[`grep -v settings.conf`]{#grep-invert-settings explanation="Esto activa la coincidencia invertida y no proporciona `settings.conf` como patrón y entrada del modo solicitado."}
+::option[`grep -e '-v' settings.conf`]{#grep-explicit-v .correct explanation="La opción `-e` declara que el argumento siguiente es un patrón aunque comience por un guion."}
+:::
 
-1. **[Buscar Texto con grep en Linux](https://labex.io/es/labs/comptia-search-text-with-grep-in-linux-590841)** - Practique búsquedas básicas, muestre números de línea, use anclas y aproveche las expresiones regulares tanto básicas como extendidas para la coincidencia de patrones complejos con `grep`.
-2. **[Comando Linux grep: Búsqueda de Patrones](https://labex.io/es/labs/linux-linux-grep-command-pattern-searching-219192)** - Aprenda a usar `grep` para buscar y hacer coincidir patrones dentro de archivos de texto, y explore expresiones regulares para definir patrones de búsqueda complejos.
-3. **[Aguja en el Pajar](https://labex.io/es/labs/linux-needle-in-the-haystack-388109)** - Aprenda el poder del comando `grep` para buscar patrones específicos, contar ocurrencias, extraer valores únicos y combinar múltiples criterios de búsqueda en varios archivos de registro.
+## Controlar la salida seleccionada
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con `grep` y las expresiones regulares.
+- `-i`: ignora las diferencias entre mayúsculas y minúsculas.
+- `-n`: antepone números de línea a las líneas seleccionadas.
+- `-v`: selecciona las líneas que no coinciden.
+- `-c`: imprime la cantidad de líneas seleccionadas de cada archivo de entrada.
+- `-o`: imprime solo cada parte coincidente no vacía en lugar de la línea seleccionada completa.
 
-## Quiz Question
+Por ejemplo, cuenta líneas que contengan `fox` sin distinguir entre mayúsculas y minúsculas:
 
-¿Qué comando usa para encontrar un cierto patrón en un archivo? Por favor, responda en una sola palabra en inglés en minúsculas.
+```bash
+$ grep -ic 'fox' sample.txt
+```
 
-## Quiz Answer
+`-c` cuenta líneas seleccionadas, no la cantidad total de coincidencias dentro de ellas. Una línea que contiene `fox fox` aporta uno al recuento. Cuando necesites específicamente apariciones no superpuestas con `grep` de GNU, una posible tubería es `grep -o PATTERN | wc -l`.
 
-grep
+:::single-choice{#grep-count-lines} `data.txt` tiene una línea que contiene `error error` y dos líneas sin coincidencias. ¿Qué muestra `grep -c 'error' data.txt`?
+
+::option[`2`, porque la palabra aparece dos veces en una línea.]{#grep-count-occurrences explanation="`-c` cuenta líneas seleccionadas, no coincidencias individuales dentro de una línea."}
+::option[`1`, porque coincide exactamente una línea.]{#grep-count-one-line .correct explanation="La única línea se selecciona una vez aunque el patrón aparezca dos veces en ella."}
+::option[`3`, porque el archivo contiene tres líneas en total.]{#grep-count-total-lines explanation="Solo las líneas seleccionadas contribuyen a `grep -c`; las que no coinciden quedan excluidas."}
+:::
+
+## Filtrar la entrada estándar y buscar en directorios
+
+Cuando no se indica ningún archivo de entrada, `grep` lee de la entrada estándar y encaja de forma natural en una tubería:
+
+```bash
+$ env | grep '^USER='
+```
+
+Usa `-r` para buscar recursivamente en archivos legibles dentro de un directorio:
+
+```bash
+$ grep -r 'listen_port' config/
+```
+
+Los diagnósticos, como errores de permisos, se envían a la salida de error estándar y no forman parte de la entrada en la que se buscan coincidencias. Limita la ruta de búsqueda y comprende los permisos en vez de elevar el acceso inmediatamente.
+
+:::single-choice{#grep-pipeline-input} En `generate-report | grep 'failed'`, ¿qué entrada examina `grep`?
+
+::option[Un archivo llamado `generate-report` en el directorio actual.]{#grep-report-file explanation="La palabra de la izquierda se ejecuta como una orden y no se entrega a `grep` como operando de archivo."}
+::option[El flujo de salida estándar producido por `generate-report`.]{#grep-report-stdout .correct explanation="La tubería conecta la salida estándar del productor con la entrada estándar de `grep`."}
+::option[El flujo de error estándar producido por `generate-report`.]{#grep-report-stderr explanation="Una tubería normal transporta la salida estándar. El error estándar permanece separado salvo que se redirija explícitamente."}
+:::
+
+## Interpretar el estado de salida
+
+En búsquedas normales, `grep` de GNU devuelve el estado `0` cuando se selecciona al menos una línea, `1` cuando no se selecciona ninguna y `2` cuando se produce un error. Esto permite que los scripts comprueben una coincidencia sin tratar «sin coincidencias» como la misma situación que un archivo ilegible o un patrón no válido.
+
+Opciones como `-q` suprimen la salida normal y se detienen tras encontrar una coincidencia, lo que resulta útil para comprobaciones condicionales. No deduzcas el éxito únicamente de una pantalla vacía: `-q`, una redirección, la ausencia de coincidencias y un error pueden producir poca o ninguna salida estándar, pero sus estados son distintos.
+
+Para practicar búsquedas con cadenas fijas y expresiones regulares, prueba estos laboratorios prácticos:
+
+1. **[Buscar texto con grep en Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Practica búsquedas básicas, números de línea, anclas y expresiones regulares básicas y extendidas para crear coincidencias de patrones complejas con `grep`.
+2. **[Orden grep de Linux: búsqueda de patrones](https://labex.io/labs/linux-linux-grep-command-pattern-searching-219192)** - Aprende a usar `grep` para buscar patrones en archivos de texto y explora expresiones regulares para definir búsquedas complejas.
+3. **[Aguja en el pajar](https://labex.io/labs/linux-needle-in-the-haystack-388109)** - Usa `grep` para buscar patrones concretos, contar apariciones, extraer valores únicos y combinar varios criterios de búsqueda en archivos de registro.
+
+## Resumen
+
+Ahora puedes buscar texto orientado a líneas y distinguir las coincidencias de los errores.
+
+1. Elige entre coincidencias básicas, extendidas o de cadenas fijas.
+2. Pon los patrones entre comillas y usa `-e` si comienzan por un guion.
+3. Cuenta líneas seleccionadas sin confundirlas con apariciones.
+4. Filtra la entrada estándar o busca recursivamente en un directorio limitado.
+5. Interpreta los estados de salida de coincidencia, ausencia de coincidencia y error.

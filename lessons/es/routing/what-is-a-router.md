@@ -1,52 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-a-router"
+course_id: "routing"
 lang: "es"
+order_index: 1
 title: "¿Qué es un router?"
-meta_title: "¿Qué es un router? - Enrutamiento"
-meta_description: "Guía para principiantes sobre qué es un router en redes. Aprenda sobre enrutamiento, conmutación de paquetes, saltos y cómo los routers usan tablas de enrutamiento para reenviar datos a través de redes. Esta guía de redes es esencial para aprender sobre redes en Linux."
-meta_keywords: "router, redes, enrutamiento, saltos, conmutación de paquetes, redes Linux, tutorial principiantes, guía de redes"
+description: "Aprende cómo los routers seleccionan siguientes saltos y reenvían paquetes IP entre redes."
+meta_title: "¿Qué es un router? - Routing"
+meta_description: "Guía para principiantes sobre qué es un router en redes. Aprende sobre enrutamiento, conmutación de paquetes, saltos y cómo los routers usan tablas de enrutamiento para reenviar datos entre redes."
+meta_keywords: "router, redes, enrutamiento, saltos, conmutación de paquetes, redes Linux, tutorial para principiantes, guía de redes"
 ---
 
-## Lesson Content
+Un router conecta dominios de la capa de red y reenvía paquetes IP entre ellos. Un host Linux puede actuar como router cuando el reenvío está habilitado y sus interfaces, rutas, descubrimiento de vecinos y políticas de filtrado están configurados correctamente.
 
-Un router es un dispositivo fundamental en las redes informáticas. Es probable que tengas uno en casa que te conecta a Internet. Su trabajo principal es permitir que las máquinas en una red se comuniquen entre sí y con otras redes. Este proceso es una parte central de lo que hace funcionar Internet y las redes locales.
+## Enrutamiento y reenvío
 
-### La función principal de un router
+El enrutamiento construye o selecciona información sobre los prefijos accesibles. El reenvío aplica esa información a cada paquete: examina el destino, elige una ruta válida y un siguiente salto, reduce el límite de saltos y transmite por una interfaz de salida.
 
-Un router doméstico típico tiene puertos LAN (Red de Área Local) para conectar tus dispositivos a una red local y un puerto WAN (Red de Área Amplia) que proporciona conexión a Internet. Cada fragmento de datos, o "paquete", que envías o recibes durante cualquier actividad de red debe pasar por el router. El router inspecciona estos paquetes de red y decide a dónde deben ir. Efectivamente, enruta el tráfico entre múltiples redes, asegurando que cada paquete viaje desde su origen hasta su destino final.
+Son aspectos independientes de los planos de control y de datos. Puede existir una ruta mientras la política del cortafuegos bloquea el reenvío, o una interfaz de reenvío puede estar activa sin que exista una ruta válida.
 
-### El proceso de enrutamiento
+:::single-choice{#router-forwarding-role} ¿Qué hace el reenvío de paquetes?
 
-Piense en el proceso de enrutamiento como la entrega de correo. Cuando envías una carta, la oficina de correos determina el destino general (por ejemplo, un estado o ciudad) y la envía allí. A partir de ese momento, se clasifica en regiones más pequeñas como códigos postales hasta que finalmente llega a la dirección de calle específica.
+::option[Aplica la información de enrutamiento para enviar un paquete hacia su siguiente salto.]{#router-apply-route .correct explanation="El reenvío es la acción aplicada a cada paquete según la ruta y la política seleccionadas."}
+::option[Crea un inicio de sesión permanente en la aplicación para todos los destinos.]{#router-create-login explanation="El enrutamiento no gestiona cuentas de aplicaciones remotas."}
+::option[Copia todos los paquetes a todas las interfaces cuando no existe una ruta.]{#router-flood-no-route explanation="El reenvío IP ordinario descarta un paquete sin ruta en lugar de recurrir a una inundación similar a la de Ethernet."}
+:::
 
-En redes, un router utiliza una **tabla de enrutamiento** para tomar estas decisiones. Esta tabla contiene un conjunto de reglas, o rutas, que le dicen al router cómo reenviar paquetes a un destino de red en particular. Por ejemplo, una regla podría decir: "Para llegar a la Red A, envíe los paquetes al Router B". Si no hay una regla específica para un destino, el router utiliza una **ruta predeterminada**, que generalmente dirige el tráfico hacia Internet. Este sistema es crucial tanto en configuraciones domésticas simples como en entornos complejos de **redes Linux**.
+## Tablas de enrutamiento y rutas predeterminadas
 
-### Saltos (Hops)
+Una ruta asocia un prefijo de destino con una interfaz de salida, un siguiente salto, una métrica, una preferencia de origen u otros atributos. La coincidencia del prefijo más largo favorece una ruta válida más específica. Una ruta predeterminada, `/0` en IPv4 o `::/0` en IPv6, es la coincidencia menos específica y solo se utiliza cuando no gana ninguna ruta más específica.
 
-A medida que los paquetes viajan a través de las redes, su recorrido se mide en **saltos** (hops). Un salto representa un paso del viaje en el que un paquete pasa por un dispositivo intermedio, como un router. Por ejemplo, si un paquete debe pasar por dos routers para ir del Host A al Host B, decimos que la ruta tiene una longitud de dos saltos. Los saltos proporcionan una métrica simple para medir la distancia entre un origen y un destino en una red.
+Si no existe ninguna ruta válida, el router descarta el paquete y puede generar un mensaje ICMP de destino inaccesible. Una ruta predeterminada es opcional y no tiene por qué apuntar directamente a Internet público.
 
-### Conmutación de paquetes, enrutamiento e inundación
+:::single-choice{#router-default-route} ¿Cuándo se selecciona una ruta predeterminada?
 
-Para comprender cómo se mueven los datos, es útil conocer estos términos relacionados:
+::option[Antes de comprobar cualquier prefijo específico del destino.]{#router-default-first explanation="Los prefijos válidos más específicos tienen prioridad."}
+::option[Únicamente cuando el paquete es un broadcast Ethernet.]{#router-default-broadcast explanation="La selección de rutas IP se basa en destinos de la capa de red."}
+::option[Cuando no coincide ninguna ruta válida más específica.]{#router-default-fallback .correct explanation="El prefijo de longitud cero es la ruta menos específica."}
+:::
 
-- **Conmutación de paquetes** es el método fundamental de recibir, procesar y reenviar paquetes de datos a su destino. Es lo que los routers hacen continuamente.
-- **Enrutamiento** es el proceso inteligente de construir y mantener la tabla de enrutamiento. Un enrutamiento eficaz permite una conmutación de paquetes más eficiente y confiable.
-- **Inundación (Flooding)** es un método más antiguo y menos eficiente que se utiliza cuando un router no sabe a dónde enviar un paquete. Envía el paquete entrante por todas las conexiones excepto por aquella por la que llegó, con la esperanza de que uno llegue al destino. Las redes modernas dependen del enrutamiento para evitar este tipo de ineficiencia.
+## Tráfico local y enrutado
 
-## Exercise
+Dos hosts de la misma subred en el enlace suelen intercambiar tramas sin enviar el paquete IP a través de un router. Un router interviene cuando la selección de ruta lo elige como siguiente salto o cuando la topología y la política fuerzan deliberadamente el recorrido enrutado.
 
-¡La práctica hace la perfección! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la conectividad de red y el enrutamiento:
+Un «router» doméstico suele combinar un router IP, un conmutador Ethernet, un punto de acceso Wi-Fi, servicio DHCP, NAT y un cortafuegos. Cada función debe diagnosticarse por separado.
 
-1. **[Explorar tipos de direcciones IP y alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practique la prueba de la pila TCP/IP local, la identificación de IPs privadas y públicas, y la verificación de la alcanzabilidad de la red, que son clave para comprender cómo un router facilita la comunicación.
-2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo los comandos `ping` y `arp` le ayudan a observar cómo interactúan las capas de red y de enlace de datos, y cómo la puerta de enlace predeterminada (router) maneja el tráfico remoto.
-3. **[Simular conectividad de capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker para simular nodos de red y asignar direcciones IP, luego pruebe la conectividad para comprender cómo las subredes IP y el enrutamiento gobiernan la comunicación de red.
+:::single-choice{#router-same-subnet-path} ¿Debe atravesar el router predeterminado el tráfico entre dos hosts situados en el mismo enlace?
 
-Estos laboratorios le ayudarán a aplicar los conceptos de comunicación de red, direccionamiento IP y el papel del enrutamiento en escenarios reales, aumentando su confianza con los fundamentos de red.
+::option[Sí, porque todos los paquetes deben llegar a un puerto WAN.]{#router-always-wan explanation="La entrega local en el enlace puede realizarse directamente."}
+::option[Sí, salvo que ambos hosts tengan direcciones públicas.]{#router-public-required explanation="Que el ámbito sea público o privado no determina el reenvío básico en el enlace."}
+::option[No; el emisor puede dirigirse directamente al destino en el enlace local.]{#router-direct-on-link .correct explanation="La tabla de enrutamiento identifica el prefijo conectado como situado en el enlace."}
+:::
 
-## Quiz Question
+## Saltos y prevención de bucles
 
-How do packets measure distance? (Please answer in English. The answer is case-sensitive.)
+Un salto enrutado es un paso de reenvío en la capa de red. El TTL de IPv4 y el Hop Limit de IPv6 se reducen en cada router, lo que limita los bucles. La cantidad de saltos no es una medida completa de distancia o calidad: los enlaces difieren en ancho de banda, latencia, pérdidas, políticas y congestión.
 
-## Quiz Answer
+:::single-choice{#router-hop-count-limit} ¿Qué no garantiza una cantidad menor de saltos?
 
-Hops
+::option[Que exista al menos un paso enrutado.]{#router-hop-exists explanation="Una cantidad positiva de saltos indica directamente un recorrido enrutado."}
+::option[Una ruta de aplicación más rápida o mejor.]{#router-hop-not-quality .correct explanation="Menos routers aún pueden atravesar enlaces más lentos, congestionados o restringidos por políticas."}
+::option[Que los campos de límite de saltos sean finitos.]{#router-hop-limit-finite explanation="Esos campos son finitos por diseño del protocolo."}
+:::
+
+## Resumen
+
+Ahora puedes separar la selección de rutas de un router de su acción de reenvío.
+
+1. Define los routers por el reenvío entre redes IP.
+2. Distingue el enrutamiento del plano de control del reenvío del plano de datos.
+3. Trata la ruta predeterminada como la alternativa menos específica.
+4. Reconoce que la cantidad de saltos por sí sola no mide la calidad de la ruta.

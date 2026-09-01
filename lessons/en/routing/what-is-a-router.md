@@ -1,52 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-a-router"
+course_id: "routing"
 lang: "en"
+order_index: 1
 title: "What is a router?"
+description: "Learn how routers select next hops and forward IP packets between networks."
 meta_title: "What is a router? - Routing"
 meta_description: "A beginner's guide to understanding what a router is in networking. Learn about routing, packet switching, hops, and how routers use routing tables to forward data across networks. This network guide is essential for learning Linux networking."
 meta_keywords: "router, networking, routing, hops, packet switching, Linux networking, beginner tutorial, network guide"
 ---
 
-## Lesson Content
+A router connects network-layer domains and forwards IP packets between them. A Linux host can act as a router when forwarding is enabled and its interfaces, routes, neighbor discovery, and filtering policy are configured appropriately.
 
-A router is a fundamental device in computer networking. You likely have one in your home connecting you to the internet. Its primary job is to enable machines on a network to communicate with each other and with other networks. This process is a core part of what makes the internet and local networks function.
+## Routing and Forwarding
 
-### The Core Function of a Router
+Routing builds or selects information about reachable prefixes. Forwarding applies that information to each packet: examine the destination, choose an eligible route and next hop, decrement the hop limit, and transmit through an outgoing interface.
 
-A typical home router has LAN (Local Area Network) ports for connecting your devices to a local network and a WAN (Wide Area Network) port that provides an internet connection. Every piece of data, or "packet," that you send or receive during any networking activity must pass through the router. The router inspects these network packets and decides where they should go. It effectively routes traffic between multiple networks, ensuring each packet travels from its source to its final destination.
+These are separate control-plane and data-plane concerns. A route can exist while firewall policy blocks forwarding, or a forwarding interface can be up while no valid route exists.
 
-### The Routing Process
+:::single-choice{#router-forwarding-role} What does packet forwarding do?
 
-Think of the routing process like mail delivery. When you send a letter, the post office determines the general destination (e.g., a state or city) and sends it there. From that point, it's sorted into smaller regions like zip codes until it finally reaches the specific street address.
+::option[Applies routing information to send a packet toward its next hop.]{#router-apply-route .correct explanation="Forwarding is the per-packet action based on the selected route and policy."}
+::option[Creates a permanent application login for every destination.]{#router-create-login explanation="Routing does not manage remote application accounts."}
+::option[Copies every packet to all interfaces when no route exists.]{#router-flood-no-route explanation="Ordinary IP forwarding drops an unroutable packet rather than using Ethernet-style flooding as a fallback."}
+:::
 
-In networking, a router uses a **routing table** to make these decisions. This table contains a set of rules, or routes, that tell the router how to forward packets to a particular network destination. For example, a rule might say, "To reach Network A, send packets to Router B." If there's no specific rule for a destination, the router uses a **default route**, which typically directs traffic toward the internet. This system is crucial in both simple home setups and complex **Linux networking** environments.
+## Routing Tables and Defaults
 
-### Hops
+A route associates a destination prefix with an outgoing interface, next hop, metric, source preference, or other attributes. Longest-prefix matching favors a more-specific eligible route. A default route, IPv4 `/0` or IPv6 `::/0`, is the least-specific match and is used only when no more-specific route wins.
 
-As packets travel across networks, their journey is measured in **hops**. A hop represents one step of the journey where a packet passes through an intermediate device, like a router. For example, if a packet must go through two routers to get from Host A to Host B, we say the path is two hops long. Hops provide a simple metric for measuring the distance between a source and a destination in a network.
+If no eligible route exists, the router drops the packet and may generate an ICMP unreachable message. A default route is optional and need not point directly to the public Internet.
 
-### Packet Switching, Routing, and Flooding
+:::single-choice{#router-default-route} When is a default route selected?
 
-To understand how data moves, it's helpful to know these related terms:
+::option[Before checking any destination-specific prefixes.]{#router-default-first explanation="More-specific eligible prefixes take precedence."}
+::option[Only when the packet is an Ethernet broadcast.]{#router-default-broadcast explanation="IP route selection is based on network-layer destinations."}
+::option[When no more-specific eligible route matches.]{#router-default-fallback .correct explanation="The zero-length prefix is the least-specific route."}
+:::
 
-- **Packet Switching** is the fundamental method of receiving, processing, and forwarding data packets to their destination. It's what routers do continuously.
-- **Routing** is the intelligent process of building and maintaining the routing table. Effective routing allows for more efficient and reliable packet switching.
-- **Flooding** is an older, less efficient method used when a router doesn't know where to send a packet. It sends the incoming packet out on every connection except the one it arrived on, hoping one will reach the destination. Modern networking relies on routing to avoid this kind of inefficiency.
+## Local and Routed Traffic
 
-## Exercise
+Two hosts on the same on-link subnet normally exchange frames without sending the IP packet through a router. A router becomes involved when route selection chooses it as a next hop or when topology and policy deliberately force routed traversal.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network connectivity and routing:
+A home “router” commonly combines an IP router, Ethernet switch, Wi-Fi access point, DHCP service, NAT, and firewall. Each function should be diagnosed separately.
 
-1. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practice testing the local TCP/IP stack, identifying private and public IPs, and verifying network reachability, which are key to understanding how a router facilitates communication.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands help you observe how the network and data link layers interact, and how the default gateway (router) handles remote traffic.
-3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes and assign IP addresses, then test connectivity to understand how IP subnets and routing govern network communication.
+:::single-choice{#router-same-subnet-path} Must traffic between two on-link hosts pass through their default router?
 
-These labs will help you apply the concepts of network communication, IP addressing, and the role of routing in real scenarios, building confidence with network fundamentals.
+::option[Yes, because every packet must reach a WAN port.]{#router-always-wan explanation="Local on-link delivery can occur directly through the link."}
+::option[Yes, unless both hosts have public addresses.]{#router-public-required explanation="Public versus private scope does not determine basic on-link forwarding."}
+::option[No; the sender can address the destination directly on the local link.]{#router-direct-on-link .correct explanation="The routing table identifies the connected prefix as on-link."}
+:::
 
-## Quiz Question
+## Hops and Loop Prevention
 
-How do packets measure distance? (Please answer in English. The answer is case-sensitive.)
+A routed hop is a network-layer forwarding step. IPv4 TTL and IPv6 Hop Limit are decremented at each router, bounding loops. Hop count is not a complete distance or quality metric: links differ in bandwidth, latency, loss, policy, and congestion.
 
-## Quiz Answer
+:::single-choice{#router-hop-count-limit} What does a smaller hop count fail to guarantee?
 
-Hops
+::option[That at least one routed step exists.]{#router-hop-exists explanation="A positive hop count directly indicates routed traversal."}
+::option[A faster or better application path.]{#router-hop-not-quality .correct explanation="Fewer routers can still traverse slower, congested, or policy-constrained links."}
+::option[That hop-limit fields are finite.]{#router-hop-limit-finite explanation="Those fields are finite by protocol design."}
+:::
+
+## Summary
+
+You can now separate a router's route selection from its forwarding action.
+
+1. Define routers by forwarding between IP networks.
+2. Distinguish control-plane routing from data-plane forwarding.
+3. Treat the default route as the least-specific fallback.
+4. Recognize that hop count alone does not measure path quality.

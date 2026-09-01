@@ -1,0 +1,123 @@
+id: devices
+category:
+  id: journeyman
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/devices.png
+order_index: 0
+translations:
+  en:
+    title: "Devices"
+    description: "Learn about Linux devices and how they interact with the kernel and user space."
+    faqs:
+      - question: "How does Linux represent hardware devices?"
+        answer: "Linux exposes devices through special files in /dev and information in sysfs, while udev dynamically manages device nodes and related events."
+      - question: "Which hardware inspection tools are included?"
+        answer: "The course introduces lsusb, lspci, and lsscsi for identifying USB, PCI, and SCSI devices, along with common Linux device naming conventions."
+      - question: "Is the dd command safe to practice?"
+        answer: "dd can overwrite disks when given the wrong destination. Review every input and output path and practice only with disposable files or devices you can safely replace."
+    meta_title: "Linux Devices Course"
+    meta_description: "Learn how Linux represents and manages hardware through /dev, sysfs, device types and names, udev, hardware listing tools, and the dd command."
+    meta_keywords: "Linux devices, dev directory, sysfs, udev, lsusb, lspci, lsscsi, dd command, device files"
+  de:
+    title: "Geräte"
+    description: "Lernen Sie Linux-Geräte und ihr Zusammenspiel mit dem Kernel und dem Benutzerbereich kennen."
+    faqs:
+      - question: "Wie stellt Linux Hardwaregeräte dar?"
+        answer: "Linux macht Geräte über spezielle Dateien in /dev und Informationen in sysfs verfügbar, während udev Geräteknoten und zugehörige Ereignisse dynamisch verwaltet."
+      - question: "Welche Hardware-Inspektionstools sind enthalten?"
+        answer: "Der Kurs stellt lsusb, lspci und lsscsi zur Identifizierung von USB-, PCI- und SCSI-Geräten sowie gängige Benennungskonventionen für Linux-Geräte vor."
+      - question: "Ist das Üben des dd-Befehls sicher?"
+        answer: "dd kann Festplatten überschreiben, wenn das falsche Ziel angegeben wird. Überprüfen Sie jeden Eingabe- und Ausgabepfad und üben Sie nur mit Wegwerfdateien oder Geräten, die Sie sicher ersetzen können."
+    meta_title: "Linux-Gerätekurs"
+    meta_description: "Erfahren Sie, wie Linux Hardware über /dev, sysfs, Gerätetypen und -namen, udev, Hardware-Listing-Tools und den dd-Befehl darstellt und verwaltet."
+    meta_keywords: "Linux-Geräte, Dev-Verzeichnis, sysfs, udev, lsusb, lspci, lsscsi, dd-Befehl, Gerätedateien"
+  es:
+    title: "Dispositivos"
+    description: "Aprende sobre los dispositivos Linux y cómo interactúan con el kernel y el espacio de usuario."
+    faqs:
+      - question: "¿Cómo representa Linux los dispositivos de hardware?"
+        answer: "Linux expone los dispositivos a través de archivos especiales en /dev e información en sysfs, mientras que udev administra dinámicamente los nodos del dispositivo y los eventos relacionados."
+      - question: "¿Qué herramientas de inspección de hardware se incluyen?"
+        answer: "El curso presenta lsusb, lspci y lsscsi para identificar dispositivos USB, PCI y SCSI, junto con las convenciones comunes de nomenclatura de dispositivos Linux."
+      - question: "¿Es seguro practicar el comando dd?"
+        answer: "dd puede sobrescribir discos cuando se le asigna un destino incorrecto. Revise cada ruta de entrada y salida y practique solo con archivos o dispositivos desechables que pueda reemplazar de forma segura."
+    meta_title: "Curso de Dispositivos Linux"
+    meta_description: "Aprenda cómo Linux representa y administra el hardware a través de /dev, sysfs, tipos y nombres de dispositivos, udev, herramientas de listado de hardware y el comando dd."
+    meta_keywords: "Dispositivos Linux, directorio de desarrollo, sysfs, udev, lsusb, lspci, lsscsi, comando dd, archivos de dispositivo"
+  fr:
+    title: "Périphériques"
+    description: "Apprenez-en davantage sur les périphériques Linux et leur interaction avec le kernel et l'espace utilisateur."
+    faqs:
+      - question: "Comment Linux représente-t-il les périphériques matériels ?"
+        answer: "Linux expose les périphériques via des fichiers spéciaux dans /dev et des informations dans sysfs, tandis qu'udev gère dynamiquement les nœuds de périphériques et les événements associés."
+      - question: "Quels outils d'inspection du matériel sont inclus ?"
+        answer: "Le cours présente lsusb, lspci et lsscsi pour identifier les périphériques USB, PCI et SCSI, ainsi que les conventions courantes de dénomination des périphériques Linux."
+      - question: "La commande dd est-elle sûre à pratiquer ?"
+        answer: "dd peut écraser les disques lorsqu'on leur donne une mauvaise destination. Examinez chaque chemin d’entrée et de sortie et entraînez-vous uniquement avec des fichiers ou des périphériques jetables que vous pouvez remplacer en toute sécurité."
+    meta_title: "Cours sur les appareils Linux"
+    meta_description: "Découvrez comment Linux représente et gère le matériel via /dev, sysfs, les types et noms de périphériques, udev, les outils de liste de matériel et la commande dd."
+    meta_keywords: "Périphériques Linux, répertoire dev, sysfs, udev, lsusb, lspci, lsscsi, commande dd, fichiers de périphérique"
+  ja:
+    title: "デバイス"
+    description: "Linux デバイスと、それらが kernel およびユーザー空間とどのように相互作用するかを学びましょう。"
+    faqs:
+      - question: "Linux はハードウェア デバイスをどのように表しますか？"
+        answer: "Linux は /dev の特殊ファイルと sysfs の情報を通じてデバイスを公開しますが、udev はデバイス ノードと関連イベントを動的に管理します。"
+      - question: "どのハードウェア検査ツールが含まれていますか？"
+        answer: "このコースでは、USB、PCI、および SCSI デバイスを識別するための lsusb、lspci、および lsscsi と、一般的な Linux デバイスの命名規則を紹介します。"
+      - question: "dd コマンドは安全に実行できますか？"
+        answer: "dd は、間違った宛先が指定された場合、ディスクを上書きする可能性があります。すべての入出力パスを確認し、安全に交換できる使い捨てファイルまたはデバイスのみを使用して練習してください。"
+    meta_title: "Linux デバイスコース"
+    meta_description: "Linux が /dev、sysfs、デバイスの種類と名前、udev、ハードウェア一覧ツール、dd コマンドを通じてハードウェアをどのように表し、管理するかを学びます。"
+    meta_keywords: "Linux デバイス，dev ディレクトリ，sysfs, udev, lsusb, lspci, lsscsi, dd コマンド，デバイス ファイル"
+  ko:
+    title: "장치"
+    description: "Linux 장치가 커널 및 사용자 공간과 상호 작용하는 방식을 알아보세요."
+    faqs:
+      - question: "Linux 는 하드웨어 장치를 어떻게 나타냅니까?"
+        answer: "Linux 는 /dev 의 특수 파일과 sysfs 의 정보를 통해 장치를 노출하는 반면, udev 는 장치 노드 및 관련 이벤트를 동적으로 관리합니다."
+      - question: "어떤 하드웨어 검사 도구가 포함되어 있나요?"
+        answer: "이 과정에서는 일반적인 Linux 장치 명명 규칙과 함께 USB, PCI 및 SCSI 장치를 식별하기 위한 lsusb, lspci 및 lsscsi 를 소개합니다."
+      - question: "dd 명령을 연습해도 안전한가요?"
+        answer: "dd 는 잘못된 대상이 지정되면 디스크를 덮어쓸 수 있습니다. 모든 입력 및 출력 경로를 검토하고 안전하게 교체할 수 있는 일회용 파일이나 장치로만 연습하세요."
+    meta_title: "Linux 장치 강좌"
+    meta_description: "Linux 가 /dev, sysfs, 장치 유형 및 이름, udev, 하드웨어 목록 도구, dd 명령을 통해 하드웨어를 표현하고 관리하는 방법을 알아보세요."
+    meta_keywords: "Linux 장치, dev 디렉터리, sysfs, udev, lsusb, lspci, lsscsi, dd 명령, 장치 파일"
+  pt:
+    title: "Dispositivos"
+    description: "Aprenda sobre dispositivos Linux e como eles interagem com o kernel e o espaço do usuário."
+    faqs:
+      - question: "Como o Linux representa dispositivos de hardware?"
+        answer: "O Linux expõe dispositivos por meio de arquivos especiais em /dev e informações em sysfs, enquanto o udev gerencia dinamicamente nós de dispositivos e eventos relacionados."
+      - question: "Quais ferramentas de inspeção de hardware estão incluídas?"
+        answer: "O curso apresenta lsusb, lspci e lsscsi para identificar dispositivos USB, PCI e SCSI, juntamente com convenções comuns de nomenclatura de dispositivos Linux."
+      - question: "O comando dd é seguro para praticar?"
+        answer: "dd pode sobrescrever discos quando for fornecido o destino errado. Revise cada caminho de entrada e saída e pratique apenas com arquivos ou dispositivos descartáveis ​​que você possa substituir com segurança."
+    meta_title: "Curso de Dispositivos Linux"
+    meta_description: "Aprenda como o Linux representa e gerencia hardware por meio de /dev, sysfs, tipos e nomes de dispositivos, udev, ferramentas de listagem de hardware e o comando dd."
+    meta_keywords: "Dispositivos Linux, diretório dev, sysfs, udev, lsusb, lspci, lsscsi, comando dd, arquivos de dispositivo"
+  ru:
+    title: "Устройства"
+    description: "Узнайте об устройствах Linux и их взаимодействии с ядром и пространством пользователя."
+    faqs:
+      - question: "Как Linux представляет аппаратные устройства?"
+        answer: "Linux предоставляет доступ к устройствам через специальные файлы в /dev и информацию в sysfs, в то время как udev динамически управляет узлами устройств и связанными с ними событиями."
+      - question: "Какие инструменты проверки оборудования включены?"
+        answer: "В курсе представлены lsusb, lspci и lsscsi для идентификации устройств USB, PCI и SCSI, а также общие соглашения об именах устройств Linux."
+      - question: "Безопасно ли использовать команду dd?"
+        answer: "dd может перезаписывать диски, если указано неправильное место назначения. Просмотрите каждый путь ввода и вывода и практикуйтесь только с одноразовыми файлами или устройствами, которые можно безопасно заменить."
+    meta_title: "Курс по устройствам Linux"
+    meta_description: "Узнайте, как Linux представляет оборудование и управляет им через /dev, sysfs, типы и имена устройств, udev, инструменты составления списка оборудования и команду dd."
+    meta_keywords: "Устройства Linux, каталог dev, sysfs, udev, lsusb, lspci, lsscsi, команда dd, файлы устройств"
+  zh:
+    title: "设备"
+    description: "了解 Linux 设备以及它们如何与 kernel 和用户空间交互。"
+    faqs:
+      - question: "Linux 如何表示硬件设备？"
+        answer: "Linux 通过/dev 中的特殊文件和 sysfs 中的信息来暴露设备，而 udev 则动态管理设备节点和相关事件。"
+      - question: "包含哪些硬件检测工具？"
+        answer: "本课程介绍了用于识别 USB、PCI 和 SCSI 设备的 lsusb、lspci 和 lsscsi，以及常见的 Linux 设备命名约定。"
+      - question: "练习使用 dd 命令安全吗？"
+        answer: "dd 可以覆盖磁盘。检查每个输入和输出路径，并仅使用可以安全更换的一次性文件或设备进行练习。"
+    meta_title: "Linux 设备课程"
+    meta_description: "了解 Linux 如何通过 /dev、sysfs、设备类型和名称、udev、硬件列表工具和 dd 命令来表示和管理硬件。"
+    meta_keywords: "Linux 设备，dev 目录，sysfs, udev, lsusb, lspci, lsscsi, dd 命令，设备文件"

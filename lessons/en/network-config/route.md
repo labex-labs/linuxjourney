@@ -1,67 +1,88 @@
 ---
-index: 2
+lesson_id: "route"
+course_id: "network-config"
 lang: "en"
+order_index: 2
 title: "route"
+description: "Learn how to inspect, add, replace, delete, and safely verify Linux routes with ip."
 meta_title: "route - Network Config"
 meta_description: "Learn to manage your Linux routing table. This guide covers adding and deleting network routes using the modern 'ip route command in linux' and the legacy 'route' command."
 meta_keywords: "ip route command in linux, linux ip route command, add route, delete route, routing table, network routing, linux networking, ip route"
 ---
 
-## Lesson Content
+Manual routes alter how the kernel selects an outgoing interface and next hop. A mistake can disconnect the host or redirect sensitive traffic, so inspect the effective route, configuration owner, and recovery path before changing state.
 
-In Linux, the routing table directs network traffic to its correct destination. While we've previously discussed viewing this table, you can also manually add or remove routes to control how data packets are forwarded. This is essential for configuring complex network setups or troubleshooting connectivity issues.
+## Inspecting the Current Decision
 
-### Using the Legacy route Command
-
-The `route` command is a traditional tool for managing the routing table. While still functional, it is considered legacy, and the `ip` command is now preferred.
-
-To add a new network route, you specify the network address, subnet mask, and the gateway (`gw`):
+Record relevant routes and ask the kernel how it currently reaches the destination:
 
 ```bash
-sudo route add -net 192.168.2.1/23 gw 10.11.12.3
+$ ip -4 route show
+$ ip route get 192.168.2.25
 ```
 
-To delete a route, use the `del` flag with the network address:
+Also inspect policy rules and alternate tables when present. The route lookup is local evidence; it does not send traffic.
+
+:::single-choice{#route-get-before-change} Why run `ip route get DESTINATION` before a route change?
+
+::option[It records the current local decision for comparison and rollback.]{#route-get-baseline .correct explanation="The selected interface, next hop, and source help define the intended change."}
+::option[It permanently reserves the destination on every router.]{#route-get-reserves explanation="The command performs a local lookup and changes no remote state."}
+::option[It disables all policy-routing rules.]{#route-get-disables-policy explanation="The lookup evaluates policy rather than removing it."}
+:::
+
+## Adding or Replacing a Route
+
+Add a route to the canonical prefix through a reachable next hop:
 
 ```bash
-sudo route del -net 192.168.2.1/23
+$ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-### Modern Route Management with ip route
+The gateway must be reachable according to the relevant link or an explicit valid on-link design. `add` fails when an equivalent route already exists. `replace` creates or changes a route, which is useful for idempotent configuration but can overwrite working state; preview the exact target first.
 
-The `ip route` command is the modern and more powerful tool for network configuration in Linux. It offers a more consistent and extensive set of options for managing network interfaces and routes. Using the **linux ip route command** is the recommended practice for current systems.
+:::single-choice{#route-add-existing} What commonly happens if `ip route add` targets a route that already exists?
 
-To add a route with the **ip route command in linux**, you use the `add` action, specifying the destination network and the next hop via the gateway:
+::option[It silently deletes the old destination prefix.]{#route-add-deletes explanation="Add normally reports an existing-object error rather than replacing it."}
+::option[It fails instead of replacing the existing route.]{#route-add-fails .correct explanation="Use a deliberate `replace` only after reviewing which entry will change."}
+::option[It reboots the selected gateway.]{#route-add-reboots explanation="Local route configuration cannot request a remote reboot in this way."}
+:::
+
+## Deleting Precisely
+
+Delete the exact route attributes when more than one candidate or table could exist:
 
 ```bash
-ip route add 192.168.2.1/23 via 10.11.12.3
+$ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-To delete a route, you can use the `delete` action. You can specify the route in full or just the destination network if it's unique:
+A destination-only deletion can match more broadly than intended or be ambiguous. Capture the original command needed to restore the route before removing it.
 
-```bash
-# Delete by specifying the full route
-ip route delete 192.168.2.1/23 via 10.11.12.3
+:::single-choice{#route-delete-precision} Why include next hop and device when deleting a route?
 
-# Or, delete by specifying only the destination
-ip route delete 192.168.2.1/23
-```
+::option[To identify the intended entry more precisely.]{#route-delete-exact .correct explanation="Explicit attributes reduce the chance of removing a different route with the same prefix."}
+::option[To delete the physical network adapter as well.]{#route-delete-adapter explanation="Route deletion does not remove the kernel link object."}
+::option[To erase the destination's DNS zone.]{#route-delete-dns explanation="Routing and authoritative DNS data are separate systems."}
+:::
 
-Mastering the `ip route` command is a key skill for any Linux administrator responsible for network management.
+## Persistence and Remote Safety
 
-## Exercise
+An `ip route` command changes current kernel state only. NetworkManager, systemd-networkd, netplan, ifupdown, DHCP, routing daemons, or orchestration may later replace it. Store the route in the active owner only after testing runtime behavior.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and IP addressing:
+For a remote host, preserve an independent console and use a rollback that does not depend on the route being changed. Then verify route lookup, neighbor state, both traffic directions, and the real service.
 
-1. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice configuring a static IP, setting a default gateway, and verifying network configuration using the `ip` command.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how the default gateway handles remote traffic and observe network layer interactions.
+:::single-choice{#route-runtime-persistence} What can happen to a manually added route after a network-manager reload?
 
-These labs will help you apply the concepts of IP addressing and routing in real scenarios and build confidence with Linux networking.
+::option[It becomes an immutable kernel feature forever.]{#route-manual-immutable explanation="Runtime routes can be removed or replaced."}
+::option[It automatically appears on every host in the subnet.]{#route-manual-all-hosts explanation="The command changes only the current network namespace."}
+::option[It can disappear if it is absent from persistent policy.]{#route-manual-disappears .correct explanation="The manager reconciles kernel state from its configured profiles."}
+:::
 
-## Quiz Question
+## Summary
 
-When using the legacy `route` command, what is the flag used to delete a route? Please answer in English, paying attention to case.
+You can now make a scoped Linux route change with a recoverable workflow.
 
-## Quiz Answer
-
-del
+1. Capture current routes, rules, and effective lookup.
+2. Use a canonical prefix and reachable next hop.
+3. Distinguish add from deliberate replacement.
+4. Delete the exact route and preserve a restore command.
+5. Persist through the active manager and verify both directions.

@@ -1,0 +1,123 @@
+id: kernel
+category:
+  id: journeyman
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/kernel.png
+order_index: 3
+translations:
+  en:
+    title: "Kernel"
+    description: "The most important part of the Linux system; learn about how it works and how to configure it."
+    faqs:
+      - question: "What does the Linux kernel do?"
+        answer: "The kernel manages hardware, memory, processes, and access to system resources while providing system calls that programs use to request services."
+      - question: "Will I learn about kernel modules?"
+        answer: "Yes. The course explains how modules extend the kernel and introduces tools such as lsmod and modprobe for inspecting and managing them."
+      - question: "Do I need to compile a kernel?"
+        answer: "No. The course focuses on kernel concepts, locations, versions, installation, modules, privilege levels, and system calls rather than requiring a custom build."
+    meta_title: "Linux Kernel Fundamentals Course"
+    meta_description: "Learn what the Linux kernel does, where it is stored, how system calls and privilege levels work, and how to manage modules and kernel versions."
+    meta_keywords: "Linux kernel, kernel modules, system calls, privilege levels, modprobe, kernel installation, vmlinuz"
+  de:
+    title: "Kernel"
+    description: "Der wichtigste Teil des Linux-Systems; erfahren Sie, wie es funktioniert und wie Sie es konfigurieren."
+    faqs:
+      - question: "Was macht der Linux-Kernel?"
+        answer: "Der Kernel verwaltet Hardware, Speicher, Prozesse und Zugriff auf Systemressourcen und stellt gleichzeitig Systemaufrufe bereit, mit denen Programme Dienste anfordern."
+      - question: "Werde ich mehr über Kernel-Module erfahren?"
+        answer: "Ja. Der Kurs erklärt, wie Module den Kernel erweitern, und stellt Tools wie lsmod und modprobe für deren Überprüfung und Verwaltung vor."
+      - question: "Muss ich einen Kernel kompilieren?"
+        answer: "Nein. Der Kurs konzentriert sich auf Kernel-Konzepte, Speicherorte, Versionen, Installation, Module, Berechtigungsstufen und Systemaufrufe und erfordert nicht die Notwendigkeit eines benutzerdefinierten Builds."
+    meta_title: "Linux-Kernel-Grundlagenkurs"
+    meta_description: "Erfahren Sie, was der Linux-Kernel macht, wo er gespeichert ist, wie Systemaufrufe und Berechtigungsstufen funktionieren und wie Sie Module und Kernel-Versionen verwalten."
+    meta_keywords: "Linux-Kernel, Kernel-Module, Systemaufrufe, Berechtigungsstufen, Modprobe, Kernel-Installation, vmlinuz"
+  es:
+    title: "Kernel"
+    description: "La parte más importante del sistema Linux; aprende cómo funciona y cómo configurarlo."
+    faqs:
+      - question: "¿Qué hace el kernel de Linux?"
+        answer: "El kernel administra el hardware, la memoria, los procesos y el acceso a los recursos del sistema mientras proporciona llamadas al sistema que los programas utilizan para solicitar servicios."
+      - question: "¿Aprenderé sobre los módulos del kernel?"
+        answer: "Sí. El curso explica cómo los módulos amplían el kernel e introduce herramientas como lsmod y modprobe para inspeccionarlos y administrarlos."
+      - question: "¿Necesito compilar un kernel?"
+        answer: "No. El curso se centra en conceptos, ubicaciones, versiones, instalación, módulos, niveles de privilegios y llamadas al sistema del kernel en lugar de requerir una compilación personalizada."
+    meta_title: "Curso de fundamentos del kernel de Linux"
+    meta_description: "Aprenda qué hace el kernel de Linux, dónde se almacena, cómo funcionan las llamadas al sistema y los niveles de privilegios, y cómo administrar módulos y versiones del kernel."
+    meta_keywords: "Kernel de Linux, módulos del kernel, llamadas al sistema, niveles de privilegios, modprobe, instalación del kernel, vmlinuz"
+  fr:
+    title: "Kernel"
+    description: "La partie la plus importante du système Linux ; apprenez comment il fonctionne et comment le configurer."
+    faqs:
+      - question: "Que fait le noyau Linux ?"
+        answer: "Le noyau gère le matériel, la mémoire, les processus et l'accès aux ressources système tout en fournissant les appels système que les programmes utilisent pour demander des services."
+      - question: "Vais-je en apprendre davantage sur les modules du noyau ?"
+        answer: "Oui. Le cours explique comment les modules étendent le noyau et présente des outils tels que lsmod et modprobe pour les inspecter et les gérer."
+      - question: "Dois-je compiler un noyau ?"
+        answer: "Non. Le cours se concentre sur les concepts du noyau, les emplacements, les versions, l'installation, les modules, les niveaux de privilèges et les appels système plutôt que de nécessiter une version personnalisée."
+    meta_title: "Cours sur les principes fondamentaux du noyau Linux"
+    meta_description: "Découvrez ce que fait le noyau Linux, où il est stocké, comment fonctionnent les appels système et les niveaux de privilèges, et comment gérer les modules et les versions du noyau."
+    meta_keywords: "Noyau Linux, modules du noyau, appels système, niveaux de privilèges, modprobe, installation du noyau, vmlinuz"
+  ja:
+    title: "Kernel"
+    description: "Linux システムで最も重要な部分。その仕組みと設定方法について学びましょう。"
+    faqs:
+      - question: "Linux カーネルは何をしますか？"
+        answer: "カーネルは、プログラムがサービスを要求するために使用するシステム コールを提供しながら、ハードウェア、メモリ、プロセス、およびシステム リソースへのアクセスを管理します。"
+      - question: "カーネルモジュールについて学びますか？"
+        answer: "はい。このコースでは、モジュールがカーネルを拡張する方法について説明し、モジュールを検査および管理するための lsmod や modprobe などのツールを紹介します。"
+      - question: "カーネルをコンパイルする必要がありますか？"
+        answer: "いいえ。このコースは、カスタム ビルドを必要とするのではなく、カーネルの概念、場所、バージョン、インストール、モジュール、特権レベル、およびシステム コールに焦点を当てています。"
+    meta_title: "Linux カーネルの基礎コース"
+    meta_description: "Linux カーネルの機能、保存場所、システム コールと特権レベルの仕組み、モジュールとカーネル バージョンの管理方法について学びます。"
+    meta_keywords: "Linux カーネル，カーネル モジュール，システム コール，特権レベル，modprobe, カーネル インストール，vmlinuz"
+  ko:
+    title: "Kernel"
+    description: "Linux 시스템의 가장 중요한 부분; 작동 방식과 구성 방법에 대해 배우세요."
+    faqs:
+      - question: "Linux 커널의 기능은 무엇인가요?"
+        answer: "커널은 하드웨어, 메모리, 프로세스, 시스템 리소스에 대한 액세스를 관리하는 동시에 프로그램이 서비스를 요청하는 데 사용하는 시스템 호출을 제공합니다."
+      - question: "커널 모듈에 대해 배울 수 있나요?"
+        answer: "네. 이 과정에서는 모듈이 커널을 확장하는 방법을 설명하고 이를 검사하고 관리하기 위한 lsmod 및 modprobe 와 같은 도구를 소개합니다."
+      - question: "커널을 컴파일해야 합니까?"
+        answer: "아니요. 이 과정은 사용자 정의 빌드를 요구하기보다는 커널 개념, 위치, 버전, 설치, 모듈, 권한 수준 및 시스템 호출에 중점을 둡니다."
+    meta_title: "Linux 커널 기초 과정"
+    meta_description: "Linux 커널의 기능, 저장 위치, 시스템 호출 및 권한 수준 작동 방식, 모듈 및 커널 버전 관리 방법을 알아보세요."
+    meta_keywords: "Linux 커널, 커널 모듈, 시스템 호출, 권한 수준, modprobe, 커널 설치, vmlinuz"
+  pt:
+    title: "Kernel"
+    description: "A parte mais importante do sistema Linux; aprenda como funciona e como configurá-lo."
+    faqs:
+      - question: "O que o kernel Linux faz?"
+        answer: "O kernel gerencia hardware, memória, processos e acesso aos recursos do sistema enquanto fornece chamadas de sistema que os programas usam para solicitar serviços."
+      - question: "Aprenderei sobre os módulos do kernel?"
+        answer: "Sim. O curso explica como os módulos estendem o kernel e apresenta ferramentas como lsmod e modprobe para inspecioná-los e gerenciá-los."
+      - question: "Preciso compilar um kernel?"
+        answer: "Não. O curso se concentra nos conceitos do kernel, locais, versões, instalação, módulos, níveis de privilégio e chamadas de sistema, em vez de exigir uma compilação personalizada."
+    meta_title: "Curso Fundamentos do Kernel Linux"
+    meta_description: "Aprenda o que o kernel Linux faz, onde ele é armazenado, como funcionam as chamadas do sistema e os níveis de privilégio e como gerenciar módulos e versões do kernel."
+    meta_keywords: "Kernel Linux, módulos do kernel, chamadas de sistema, níveis de privilégio, modprobe, instalação do kernel, vmlinuz"
+  ru:
+    title: "Ядро"
+    description: "Самая важная часть системы Linux; узнайте, как она работает и как ее настроить."
+    faqs:
+      - question: "Что делает ядро Linux?"
+        answer: "Ядро управляет оборудованием, памятью, процессами и доступом к системным ресурсам, одновременно обеспечивая системные вызовы, которые программы используют для запроса служб."
+      - question: "Узнаю ли я о модулях ядра?"
+        answer: "Да. В курсе объясняется, как модули расширяют ядро, и представлены такие инструменты, как lsmod и modprobe, для их проверки и управления."
+      - question: "Нужно ли собирать ядро?"
+        answer: "Нет. Курс фокусируется на концепциях ядра, расположении, версиях, установке, модулях, уровнях привилегий и системных вызовах, а не требует специальной сборки."
+    meta_title: "Курс по основам ядра Linux"
+    meta_description: "Узнайте, что делает ядро Linux, где оно хранится, как работают системные вызовы и уровни привилегий, а также как управлять модулями и версиями ядра."
+    meta_keywords: "Ядро Linux, модули ядра, системные вызовы, уровни привилегий, modprobe, установка ядра, vmlinuz"
+  zh:
+    title: "内核"
+    description: "Linux 系统最重要的部分；了解它的工作原理和如何配置它。"
+    faqs:
+      - question: "Linux 内核是做什么的？"
+        answer: "内核管理硬件、内存、进程和对系统资源的访问，同时提供程序用于请求服务的系统调用。"
+      - question: "我会学习内核模块吗？"
+        answer: "是的。本课程解释了模块如何扩展内核，并介绍了 lsmod 和 modprobe 等用于检查和管理模块的工具。"
+      - question: "需要编译内核吗？"
+        answer: "否。本课程重点介绍内核概念、位置、版本、安装、模块、权限级别和系统调用，而不需要自定义构建。"
+    meta_title: "Linux 内核基础课程"
+    meta_description: "了解 Linux 内核的用途、存储位置、系统调用和权限级别如何工作以及如何管理模块和内核版本。"
+    meta_keywords: "Linux 内核，内核模块，系统调用，权限级别，modprobe, 内核安装，vmlinuz"

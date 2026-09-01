@@ -1,103 +1,107 @@
 ---
-index: 1
+lesson_id: "network-interfaces"
+course_id: "network-config"
 lang: "ja"
+order_index: 1
 title: "ネットワークインターフェース"
+description: "Linux インターフェースの状態、アドレス、統計、永続設定の管理主体を調べる方法を学びます。"
 meta_title: "ネットワークインターフェース - ネットワーク設定"
 meta_description: "Linux ネットワークインターフェースの包括的なガイド。ifconfig と最新の ip コマンドの使い方、および特に Debian システムにおける/etc/network/interfaces などの設定ファイルについて学びます。"
 meta_keywords: "linux インターフェース，linux ネットワークインターフェース，etc network interfaces, debian ネットワークインターフェース，ifconfig, ip コマンド，ネットワーク設定，linux ネットワーキング"
 ---
 
-## Lesson Content
+Linux のネットワークインターフェースは、ネットワーク名前空間を物理デバイス、ループバック経路、ブリッジ、トンネル、仮想デバイスなどのリンクへ接続します。インターフェース状態、アドレス、ルート、DNS、永続設定は互いに関係しますが、別々のものです。
 
-A **Linux ネットワークインターフェース**は、カーネルのソフトウェアネットワーキングスタックと物理ネットワークハードウェア間の重要な接続点です。これにより、オペレーティングシステムはネットワーク経由でデータを送受信できます。設定済みの`linux interface`がどのようなものか、すでに例を見てきました。
+## インターフェースを見つける
 
-```plaintext
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
-```
-
-### ネットワークインターフェースの理解
-
-ネットワーク設定を表示すると、`eth0`（最初のイーサネットカード）、`wlan0`（ワイヤレスインターフェース）、または`lo`（ループバックインターフェース）のような名前のインターフェースが表示されます。ループバックインターフェースは、自身のコンピュータを表す特別な仮想インターフェースであり、ローカルで実行されているサービスへの接続を可能にします。
-
-インターフェースは「up」（稼働中）または「down」（停止中）の状態をとることができます。「up」状態は、アクティブでありデータ送信の準備ができていることを意味し、「down」はそれを非アクティブにします。各インターフェースに表示される重要な情報には、`HWaddr`（一意の MAC アドレス）、`inet`アドレス（IPv4 アドレス）、`inet6`アドレス（IPv6 アドレス）のほか、サブネットマスクとブロードキャストアドレスが含まれます。
-
-### 従来の ifconfig コマンド
-
-**ifconfig**コマンドは、`linux network interface`を設定するための古典的なツールです。システム起動時に、通常は設定ファイルに基づいてインターフェースを設定するために実行されます。多くのシステムでまだ利用可能ですが、現在ではレガシー（従来型）ツールと見なされています。
-
-`ifconfig`を使用して、手動で IP アドレスを割り当て、インターフェースを起動できます。
+現代的な iproute2 ツールを使います。
 
 ```bash
-ifconfig eth0 192.168.2.1 netmask 255.255.255.0 up
+$ ip -brief link show
+$ ip -brief address show
 ```
 
-関連する`ifup`および`ifdown`コマンドを使用して、インターフェースを簡単にアクティブ化または非アクティブ化することもできます。
+インターフェース名には、`enp1s0` のようなハードウェア由来の予測可能な名前、`eth0` のような従来名、管理者が定義した名前があります。`eth0` が必ず存在する、または特定のアダプターを示すとは決めつけないでください。
+
+:::single-choice{#interfaces-name-assumption} スクリプトで `eth0` を決め打ちせず、検出すべきなのはなぜですか？
+
+::option[すべてのインターフェースは `lo` という名前でなければならないから。]{#interfaces-all-loopback explanation="ループバックは特殊なインターフェースの一つであり、全リンクの名前ではありません。"}
+::option[Linux システムでは複数の命名方式が使われるから。]{#interfaces-naming-varies .correct explanation="ハードウェア由来名、仮想デバイス名、カスタム名があるため、固定した `eth0` という想定は信頼できません。"}
+::option[インターフェース名は常にリモート接続用パスワードだから。]{#interfaces-name-password explanation="名前はカーネルデバイスを識別するもので、認証情報ではありません。"}
+:::
+
+## 管理状態と動作状態
+
+`UP` は、インターフェースが管理上有効であることを意味します。`LOWER_UP` は一般に、Ethernet のキャリアなど、下位層が動作可能と報告していることを示します。どちらか一方だけでは、IP アドレス、ルート、DNS、ファイアウォール、アプリケーション経路が機能するとは証明できません。
 
 ```bash
-ifup eth0
-ifdown eth0
+$ ip -details link show dev enp1s0
+$ ip -s link show dev enp1s0
 ```
 
-### 最新の ip コマンド
+統計表示からエラー、破棄、カウンターを確認できますが、値を意味のあるものにするには観測期間と基準値が必要です。
 
-**ip**コマンドは、`ifconfig`の最新かつより強力な代替手段です。ほとんどの最新の Linux ディストリビューションでネットワークスタックを管理するための推奨される方法です。
+:::single-choice{#interfaces-up-limit} 管理状態が `UP` でも証明できないことはどれですか？
 
-以下に、その使用法の一般的な例をいくつか示します。
+::option[エンドツーエンドの接続が機能すること。]{#interfaces-up-not-connectivity .correct explanation="下位層、アドレス、ルーティング、フィルタリング、名前解決、サービスの障害は残り得ます。"}
+::option[管理者がインターフェースを有効にしたこと。]{#interfaces-up-does-prove explanation="それがこの状態の直接的な意味です。"}
+::option[インターフェースのカーネルオブジェクトが存在すること。]{#interfaces-up-kernel-object explanation="表示された状態は、既存のカーネルインターフェースに属します。"}
+:::
 
-**すべてのインターフェースの情報を表示：**
+## 実行時の状態を変更する
+
+実行時の操作には、次のようなコマンドがあります。
 
 ```bash
-ip link show
+$ sudo ip link set dev enp1s0 up
+$ sudo ip address add 192.0.2.10/24 dev enp1s0
 ```
 
-**特定のインターフェースの詳細な統計情報を表示：**
+これらは現在のカーネル状態を変更するため、後でプロファイルを再適用するネットワークマネージャーと競合する場合があります。リモート管理に使うインターフェースを停止すると、即座にアクセスを失う可能性があります。変更前に対象デバイスを確認し、コンソールアクセスを確保し、現在の状態を記録して、時間指定または検証済みのロールバックを用意してください。
+
+:::single-choice{#interfaces-ip-address-add-persistence} `ip address add` だけで、再起動後も設定が残ると保証できますか？
+
+::option[いいえ。稼働中の設定システムにもその設定を保存する必要があります。]{#interfaces-manager-persistence .correct explanation="NetworkManager、systemd-networkd、ifupdown など、管理主体が永続ポリシーを適用します。"}
+::option[はい。カーネルの変更は常に全管理プロファイルを編集するからです。]{#interfaces-runtime-always-persistent explanation="カーネルの実行時変更が、永続設定を一律に更新するわけではありません。"}
+::option[プライベート IPv4 アドレスの場合だけ残ります。]{#interfaces-private-persistent explanation="アドレスのスコープによって、実行時コマンドが永続化されることはありません。"}
+:::
+
+## 設定の管理主体を特定する
+
+永続設定の場所は、ディストリビューションやインストールごとに異なります。NetworkManager のプロファイル、systemd-networkd の unit、netplan の入力、`/etc/network/interfaces`、cloud-init、オーケストレーションなどが候補です。ファイルを編集する前に、どのサービスがデバイスを管理しているか確認します。
 
 ```bash
-ip -s link show eth0
+$ systemctl --type=service --state=running | grep -E 'NetworkManager|networkd|networking'
+$ networkctl status
+$ nmcli device status
 ```
 
-**インターフェースに割り当てられている IP アドレスを表示：**
+特定した管理システムに存在するコマンドだけを使ってください。二つのマネージャーが同じリンクを制御すると競合し、互いの状態を上書きする場合があります。
 
-```bash
-ip address show
-```
+:::single-choice{#interfaces-config-owner} インターフェースの永続設定を変更する前に、何をすべきですか？
 
-**インターフェースの起動または停止：**
+::option[考えられるすべてのネットワーク設定ファイルを編集する。]{#interfaces-edit-all explanation="競合する定義を作ると、再適用時の動作が予測できなくなります。"}
+::option[どのネットワークマネージャーがインターフェースを管理しているか特定する。]{#interfaces-identify-owner .correct explanation="正しい設定元と適用方法は、その管理主体によって決まります。"}
+::option[確認前に現在の全ルートを削除する。]{#interfaces-delete-routes explanation="破壊的な操作であり、復旧用のアクセス経路まで失う可能性があります。"}
+:::
 
-```bash
-ip link set eth0 up
-ip link set eth0 down
-```
+## 変更を検証する
 
-**インターフェースに IP アドレスを追加：**
+リンク状態、割り当てアドレスと有効期間、選択されるルート、リゾルバー状態、近隣への到達性、実際のアプリケーションを確認します。永続変更の場合、復旧経路があるときに限り、制御されたサービス再起動または再起動でテストしてください。
 
-```bash
-ip address add 192.168.1.1/24 dev eth0
-```
+:::single-choice{#interfaces-change-verification} `ip address` に新しいアドレスが表示されることより、強い証拠になるのはどれですか？
 
-### ネットワーク設定ファイル
+::option[インターフェース名に数字が含まれていること。]{#interfaces-digit explanation="命名規則は、エンドツーエンドの検証にはなりません。"}
+::option[シェルプロンプトの色が変わっていないこと。]{#interfaces-prompt-color explanation="端末の外観はネットワーク動作と無関係です。"}
+::option[ルート、リゾルバー状態、目的のアプリケーションも機能すること。]{#interfaces-end-to-end .correct explanation="利用可能な設定には、経路全体とサービスの動作が必要です。"}
+:::
 
-`ip`や`ifconfig`のようなコマンドはインターフェースのライブ状態を設定しますが、これらの変更は永続的ではなく、再起動すると失われます。設定を永続化するには、設定ファイルを編集する必要があります。
+## まとめ
 
-これらのファイルの一般的な場所は`/etc/network/interfaces`です。`etc network interfaces`ファイルは、特に Ubuntu のような Debian ベースのシステムで普及しています。このファイルを介して**debian network interfaces**を管理することで、静的 IP アドレス、ゲートウェイ、および起動時に自動的に適用されるその他の設定を定義できます。`debian network/interfaces`内の構造は単純で、よく文書化されています。
+これで、実行時の状態と永続ポリシーを混同せず、インターフェースを調査・変更できます。
 
-## Exercise
-
-これらのハンズオンラボで知識を実践に移しましょう。これらは、ネットワークインターフェースと IP アドレス指定の理解を深めるのに役立ちます。
-
-1. **[Linux で MAC アドレスと IP アドレスを識別する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、Linux システム上の MAC アドレス、IPv4 アドレス、IPv6 アドレスを含むネットワークアドレッシング情報を識別する練習をします。
-2. **[Linux で IP アドレス指定を管理する](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip`コマンドを使用して、静的および動的 IP アドレスの設定、デフォルトゲートウェイの設定、ネットワーク構成の検証を学習します。
-3. **[Linux で IP アドレスタイプと到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - プライベート、パブリック、マルチキャストなどの異なる IP アドレスタイプを探索し、`ping`と`ip a`を使用してネットワーク到達性をテストします。
-
-これらのラボは、ネットワークインターフェースの識別と IP アドレス指定の概念を実際のシナリオに適用し、Linux ネットワーキングへの自信を構築するのに役立ちます。
-
-## Quiz Question
-
-Linux ネットワークインターフェースを設定するために使用されるレガシーコマンドは何ですか？回答は英語で、すべて小文字を使用してください。
-
-## Quiz Answer
-
-ifconfig
+1. 実際のインターフェース名とアドレスを検出する。
+2. 管理状態と運用上の接続性を区別する。
+3. 直接の `ip` 変更を現在のカーネル状態として扱う。
+4. 永続設定の変更前に、稼働中の設定管理主体を特定する。
+5. 変更後にルーティング、名前解決、アプリケーション動作を検証する。

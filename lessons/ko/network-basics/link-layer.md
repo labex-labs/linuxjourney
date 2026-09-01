@@ -1,57 +1,86 @@
 ---
-index: 8
+lesson_id: "link-layer"
+course_id: "network-basics"
 lang: "ko"
+order_index: 8
 title: "링크 계층"
+description: "Ethernet 프레임, 이웃 탐색, 스위치 및 라우터가 로컬 링크에서 패킷을 전달하는 방법을 알아봅니다."
 meta_title: "링크 계층 - 네트워크 기초"
-meta_description: "TCP/IP 링크 계층의 기본 사항을 탐구합니다. 링크 계층 헤더가 구성되는 방식, ARP 가 IP 주소를 MAC 주소로 확인하는 방법, 로컬 네트워크에서의 패킷 전송 프로세스를 학습합니다."
-meta_keywords: "링크 계층, 링크 계층 헤더, ARP, TCP/IP, MAC 주소, 네트워크 기초, 리눅스 네트워킹, 패킷 전송, 주소 결정 프로토콜"
+meta_description: "TCP/IP 링크 계층의 기초를 살펴봅니다. 링크 계층 헤더, ARP의 IP-MAC 주소 확인 및 로컬 네트워크의 패킷 이동을 알아봅니다."
+meta_keywords: "링크 계층, 링크 계층 헤더, ARP, TCP/IP, MAC 주소, 네트워크 기초, 리눅스 네트워킹"
 ---
 
-## Lesson Content
+링크 계층은 하나의 로컬 매체나 가상 링크를 가로질러 네트워크 계층 패킷을 운반합니다. Ethernet과 Wi-Fi는 프레이밍 세부 사항이 다르지만 모두 IP 아래에서 로컬 전송을 제공합니다.
 
-TCP/IP 모델의 기반 계층인 **링크 계층 (Link Layer)**은 로컬 네트워크 세그먼트에서의 통신을 담당합니다. 이 계층은 네트워크 인터페이스 카드 (NIC) 및 물리적 주소 지정과 직접적으로 관련되어 있어 하드웨어에 특화되어 있습니다.
+## Ethernet 프레임
 
-### 프레임과 링크 계층 헤더
+Ethernet 프레임에는 목적지 및 출발지 MAC 주소, EtherType 또는 길이 필드, 페이로드와 프레임 검사 시퀀스 트레일러가 들어 있습니다. 물리 전송에는 프리앰블과 시작 구분자도 사용됩니다. 프레임 검사 시퀀스는 링크의 손상을 감지하지만 손상된 프레임을 복구하거나 암호학적으로 보호하지는 않습니다.
 
-**링크 계층**에서는 네트워크 계층의 패킷이 프레임 (frame) 이라는 구조로 캡슐화됩니다. 이 과정의 핵심 부분은 **링크 계층 헤더**를 추가하는 것입니다. 이 헤더에는 호스트의 송신 및 수신 MAC 주소, 오류 감지를 위한 체크섬, 그리고 수신 장치가 프레임의 시작과 끝을 식별할 수 있도록 하는 패킷 구분자가 포함됩니다.
+:::single-choice{#link-layer-fcs-purpose} Ethernet 프레임 검사 시퀀스는 무엇에 사용됩니까?
 
-**링크 계층 헤더**를 구성하려면 송신 및 수신 MAC 주소가 모두 필요합니다. 송신 MAC 주소는 알려져 있지만, 동일한 로컬 네트워크 내의 IP 에 대한 수신 MAC 주소는 발견되어야 합니다. 이때 주소 결정 프로토콜 (ARP) 이 사용됩니다.
+::option[링크에서 프레임 손상을 감지합니다.]{#link-layer-detect-corruption .correct explanation="수신자는 무결성 검사를 통과하지 못한 프레임을 버릴 수 있습니다."}
+::option[라우팅되는 모든 홉에서 페이로드를 암호화합니다.]{#link-layer-fcs-encryption explanation="FCS는 오류 감지 코드이며 암호화나 인증이 아닙니다."}
+::option[TCP 포트로 애플리케이션을 선택합니다.]{#link-layer-fcs-port explanation="전송 포트는 IP 페이로드 안에 운반됩니다."}
+:::
 
-### ARP (주소 결정 프로토콜)
+## 스위치와 로컬 전송
 
-ARP 는 동일 네트워크 내에서 특정 IP 주소와 연결된 MAC 주소를 찾는 데 사용되는 **링크 계층** 프로토콜입니다. 목적지 호스트가 다른 네트워크에 있다면 패킷은 기본 게이트웨이 (라우터) 로 전송되며, ARP 는 라우터의 MAC 주소를 찾는 데 사용됩니다.
+Ethernet 스위치는 어느 포트에서 어떤 출발지 MAC 주소가 나타나는지 학습하고 알려진 유니캐스트 프레임을 학습한 목적지 포트로 전달합니다. 브로드캐스트와 일부 알 수 없는 목적지 트래픽은 브로드캐스트 도메인 안에서 플러딩됩니다. VLAN은 하나의 스위칭 시스템을 별도의 논리 링크 도메인으로 나눌 수 있습니다.
 
-시스템은 먼저 알려진 IP-MAC 주소 매핑을 캐시하는 ARP 조회 테이블을 확인합니다. 필요한 주소가 캐시에 없으면, 시스템은 전체 네트워크에 ARP 요청을 브로드캐스트합니다. 이 특수 메시지는 특정 IP 주소 (예: 10.10.1.4) 를 가진 호스트가 누구인지 묻습니다. 해당 IP 주소를 가진 호스트는 자신의 IP 및 MAC 주소를 포함하는 ARP 응답을 보냅니다.
+:::single-choice{#link-layer-switch-learning} Ethernet 스위치는 일반적으로 프레임에서 어떤 정보를 학습합니까?
 
-필요한 모든 IP 및 MAC 주소를 확보하면, **링크 계층**은 네트워크 인터페이스 카드를 통해 프레임을 전달할 수 있습니다. 패킷의 여정은 송신 및 수신 측에서 TCP/IP 스택을 오르내리며 캡슐화와 역캡슐화가 반복되는 다단계 프로세스입니다.
+::option[애플리케이션 암호와 HTTP 쿠키입니다.]{#link-layer-switch-passwords explanation="기본 전달 테이블은 응용 자격 증명이 아니라 링크 주소를 사용합니다."}
+::option[모든 라우터의 완전한 인터넷 라우팅 테이블입니다.]{#link-layer-switch-routing-table explanation="2계층 스위칭과 전역 경로 교환은 서로 다른 기능입니다."}
+::option[스위치 포트와 연결된 출발지 MAC 주소입니다.]{#link-layer-switch-source .correct explanation="이 학습으로 이후의 알려진 유니캐스트 트래픽에 사용할 전달 테이블을 만듭니다."}
+:::
 
-### 패킷 전달 과정
+## 다음 홉 주소 확인하기
 
-다음은 발신자 (Pete) 에서 수신자 (Patty) 로 패킷이 이동하는 단계별 분석입니다.
+Ethernet상의 IPv4에서 ARP(Address Resolution Protocol)는 링크상 IPv4 다음 홉 주소를 MAC 주소로 매핑합니다. 호스트는 먼저 이웃 캐시를 확인합니다. 필요하면 ARP 요청을 브로드캐스트하고 주소 소유자나 승인된 프록시가 응답합니다.
 
-1. Pete 가 Patty 에게 이메일을 보냅니다. 이 데이터는 전송 계층으로 전달됩니다.
-2. 전송 계층은 데이터를 TCP 또는 UDP 헤더로 캡슐화하여 세그먼트를 형성합니다. 목적지 및 송신 포트를 첨부한 후 세그먼트를 네트워크 계층으로 보냅니다.
-3. 네트워크 계층은 세그먼트를 IP 패킷 내에 캡슐화하고 송신 및 수신 IP 주소를 첨부합니다. 그런 다음 패킷을 **링크 계층**으로 라우팅합니다.
-4. 패킷이 **링크 계층**에 도달하면 프레임으로 캡슐화됩니다. 송신 및 수신 MAC 주소를 포함하는 **링크 계층 헤더**가 추가됩니다.
-5. Patty 는 물리 계층을 통해 이 데이터 프레임을 수신하고, 데이터 무결성을 확인한 후, 역캡슐화하여 IP 패킷을 네트워크 계층으로 보냅니다.
-6. 네트워크 계층은 패킷을 읽어 송신 및 수신 IP 주소를 확인합니다. 수신 IP 주소가 자신의 주소와 일치하는지 확인하고, 패킷을 역캡슐화하여 세그먼트를 전송 계층으로 보냅니다.
-7. 전송 계층은 세그먼트를 역캡슐화하고 TCP 또는 UDP 포트 번호를 확인한 후, 해당 포트를 기반으로 애플리케이션 계층에 연결합니다.
-8. 애플리케이션 계층은 지정된 포트에서 전송 계층으로부터 데이터를 수신하고 이를 Patty 에게 최종 이메일 메시지로 표시합니다.
+링크 밖의 IP 목적지에 대해서는 원격 목적지의 MAC 주소가 아니라 기본 또는 선택된 게이트웨이의 MAC 주소를 확인합니다. IPv6는 ARP 대신 ICMPv6 기반 Neighbor Discovery를 사용합니다.
 
-## Exercise
+:::single-choice{#link-layer-remote-destination-mac} 호스트는 링크 밖의 IPv4 목적지에 어떤 MAC 주소를 사용합니까?
 
-연습이 완벽을 만듭니다! 링크 계층, MAC 주소 및 ARP 에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
+::option[선택한 다음 홉 라우터의 MAC 주소입니다.]{#link-layer-gateway-mac .correct explanation="IP 패킷은 원격 호스트를 목적지로 유지하지만 로컬 프레임은 라우터로 향합니다."}
+::option[모든 라우터를 가로질러 원격 서버의 MAC 주소를 사용합니다.]{#link-layer-remote-mac explanation="MAC 주소는 로컬 링크 식별자이며 종단 간 운반되지 않습니다."}
+::option[TCP 목적지 포트에서 파생한 MAC 주소입니다.]{#link-layer-port-mac explanation="전송 포트는 링크 주소를 결정하지 않습니다."}
+:::
 
-1. **[Linux 에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령이 IP 주소를 MAC 주소로 확인하고 네트워크 계층 상호 작용을 이해하기 위해 어떻게 함께 작동하는지 알아봅니다.
-3. **[Linux 에서 tcpdump 를 사용하여 이더넷 프레임 분석](https://labex.io/ko/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - MAC 주소를 포함하여 이더넷 프레임을 캡처하고 검사하는 실습 경험을 통해 저수준 네트워크 통신을 이해합니다.
+## 이웃 상태 조사하기
 
-이 랩들은 실제 시나리오에서 개념을 적용하고 링크 계층의 네트워크 기본 사항에 대한 자신감을 키우는 데 도움이 될 것입니다.
+IPv4 ARP 및 IPv6 Neighbor Discovery 항목을 확인합니다.
 
-## Quiz Question
+```bash
+$ ip neighbor show
+```
 
-동일한 로컬 네트워크에 있는 호스트의 MAC 주소를 찾는 데 사용되는 프로토콜은 무엇입니까? (영어 약어로 대문자만 사용하여 답변하십시오).
+`REACHABLE`, `STALE`, `DELAY`, `PROBE` 및 `FAILED` 같은 상태는 이웃 연결 불가 감지 과정을 설명합니다. `STALE`이 고장을 뜻하지는 않습니다. 캐시된 연결 확인이 최근 상태가 아니며 사용할 때 테스트할 수 있다는 뜻입니다.
 
-## Quiz Answer
+:::single-choice{#link-layer-stale-neighbor} `STALE` 이웃 항목은 무엇을 나타냅니까?
 
-ARP
+::option[방화벽이 이웃을 영구적으로 차단했습니다.]{#link-layer-stale-blocked explanation="이 상태는 방화벽 정책을 설명하지 않습니다."}
+::option[MAC 주소가 백업으로 디스크에 기록됐습니다.]{#link-layer-stale-backup explanation="이웃 상태는 운영 캐시 정보입니다."}
+::option[캐시된 매핑에 최근 연결 확인이 없습니다.]{#link-layer-stale-confirmation .correct explanation="스택은 여전히 매핑을 사용하고 필요하면 연결 감지를 수행할 수 있습니다."}
+:::
+
+## 라우터를 가로지르는 캡슐화
+
+송신자는 IP 패킷을 다음 홉을 목적지로 하는 프레임 안에 넣습니다. 라우터는 수신 프레임을 검증하고 제거하고, IP 헤더를 처리하고, 출력 경로를 선택한 뒤 해당 링크에 맞는 새 프레임을 만듭니다. 수신자는 캡슐화를 역순으로 제거하고 전송 페이로드를 적절한 소켓에 전달합니다.
+
+:::single-choice{#link-layer-router-reframing} 라우터에서 Ethernet 프레이밍이 바뀌는 일반적인 전달 중 무엇이 그대로 유지됩니까?
+
+::option[NAT 같은 미들박스가 바꾸지 않는 한 IP 목적지가 유지됩니다.]{#link-layer-ip-destination .correct explanation="일반적인 라우터는 홉별 로컬 프레임을 교체하면서 최종 IP 목적지 방향으로 전달합니다."}
+::option[수신 프레임 검사 시퀀스가 유지됩니다.]{#link-layer-same-fcs explanation="새 출력 프레임에는 자체 링크 무결성 값이 생깁니다."}
+::option[모든 링크에서 목적지 MAC 주소가 유지됩니다.]{#link-layer-same-mac explanation="각 링크는 적절한 다음 홉 링크 주소를 사용합니다."}
+:::
+
+## 요약
+
+이제 하나의 로컬 링크 전송 단계를 거치는 IP 패킷을 추적할 수 있습니다.
+
+1. 주요 Ethernet 프레임 필드와 무결성 트레일러를 식별합니다.
+2. 스위치가 로컬 전달 위치를 학습하는 방법을 설명합니다.
+3. ARP로 IPv4 다음 홉을, NDP로 IPv6 이웃을 확인합니다.
+4. 실패를 과장하지 않고 이웃 캐시 상태를 해석합니다.
+5. 라우터가 각 출력 링크에 맞게 프레임을 다시 만드는 것을 이해합니다.

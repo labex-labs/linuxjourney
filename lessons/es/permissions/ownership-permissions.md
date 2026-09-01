@@ -1,59 +1,96 @@
 ---
-index: 3
+lesson_id: "ownership-permissions"
+course_id: "permissions"
 lang: "es"
-title: "Permisos de Propiedad"
-meta_title: "Permisos de Propiedad - Permisos"
-meta_description: "Domina la propiedad de archivos en Linux aprendiendo a usar los comandos chown y chgrp. Este tutorial de Linux explica cómo cambiar la propiedad de usuario y grupo de archivos, una habilidad clave para gestionar los permisos de Linux."
-meta_keywords: "chown, chgrp, propiedad de archivos linux, cambiar propietario archivo, cambiar grupo archivo, permisos linux, comandos linux, tutorial linux, guía linux, propiedad de usuario, propiedad de grupo"
+order_index: 3
+title: "Permisos de propiedad"
+description: "Aprende a consultar y cambiar el usuario y el grupo propietarios de objetos del sistema de archivos de Linux."
+meta_title: "Permisos de propiedad - Permisos"
+meta_description: "Domina la propiedad de archivos de Linux con las órdenes chown y chgrp. Aprende a cambiar el usuario y el grupo propietarios de forma segura."
+meta_keywords: "chown, chgrp, propiedad de archivos Linux, cambiar propietario archivo, cambiar grupo archivo, permisos Linux, órdenes Linux"
 ---
 
-## Lesson Content
+Cada objeto del sistema de archivos de Linux registra un usuario propietario y un grupo propietario. Estas identidades determinan qué triplete de permisos de propietario o grupo se aplica, pero no conceden por sí mismas un permiso concreto. Consulta la propiedad y el modo con `ls -l`.
 
-En un sistema Linux, cada archivo y directorio tiene asignado un propietario y un grupo. Gestionar la **propiedad de archivos en Linux** es una tarea fundamental para controlar el acceso y los permisos. Puede modificar tanto la propiedad de usuario como la de grupo de un archivo utilizando **comandos de Linux** específicos.
+## Cambiar el usuario propietario
 
-### Cambio de Propiedad de Usuario
-
-Para transferir la propiedad de un archivo a un usuario diferente, se utiliza el comando `chown` (change owner, cambiar propietario). Esto es útil cuando cambian las responsabilidades de un usuario o cuando necesita asignar el control del archivo a otra persona. Normalmente, necesita privilegios de superusuario (`sudo`) para cambiar el propietario de un archivo que no le pertenece.
+Usa `chown`, abreviatura de *change owner*, para asignar otro usuario propietario:
 
 ```bash
-sudo chown patty myfile
+$ sudo chown patty myfile
 ```
 
-Este comando cambia el propietario de usuario de `myfile` al usuario `patty`.
+Esto cambia a `patty` el usuario propietario de `myfile` y deja su grupo sin cambios. Modificar el usuario propietario de un archivo suele requerir los privilegios correspondientes, aunque seas su propietario actual. Esta restricción impide transferir archivos para eludir cuotas u otros controles basados en la propiedad.
 
-### Cambio de Propiedad de Grupo
+:::single-choice{#ownership-permissions-change-user} ¿Qué orden cambia el usuario propietario de `myfile` a `patty` y deja su grupo sin cambios?
 
-De manera similar, puede cambiar el grupo asociado a un archivo utilizando el comando `chgrp` (change group, cambiar grupo). Esto permite que todos los miembros del nuevo grupo tengan acceso según los **permisos de Linux** del grupo.
+::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="Un nombre de usuario sin grupo como operando de propiedad de `chown` cambia el usuario propietario y conserva el grupo."}
+::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` cambia el grupo propietario, no el usuario propietario."}
+::option[`chmod patty myfile`]{#ownership-permissions-user-with-chmod explanation="`chmod` cambia bits de modo y no acepta un nombre de usuario como nuevo propietario."}
+:::
+
+## Cambiar el grupo propietario
+
+Usa `chgrp` para asignar otro grupo propietario:
 
 ```bash
-sudo chgrp whales myfile
+$ chgrp whales myfile
 ```
 
-Este comando establece la propiedad de grupo de `myfile` al grupo `whales`.
-
-### Cambio de Usuario y Grupo
-
-Para mayor eficiencia, el comando `chown` le permite cambiar tanto la propiedad de usuario como la de grupo en un solo paso. Al separar el nombre de usuario y el de grupo con dos puntos (:), puede actualizar ambos atributos simultáneamente.
+En los sistemas habituales, un propietario sin privilegios solo puede cambiar el grupo de un archivo a otro al que pertenezca. Los procesos con privilegios pueden realizar cambios más amplios. La forma equivalente de `chown` comienza con dos puntos:
 
 ```bash
-sudo chown patty:whales myfile
+$ chown :whales myfile
 ```
 
-Este único comando asigna la propiedad de usuario a `patty` y la propiedad de grupo a `whales` para el archivo `myfile`. Este es el método más común para gestionar la **propiedad de archivos en Linux**.
+Después, los bits de modo del grupo se aplican cuando el kernel selecciona esa clase; cambiar el grupo no añade automáticamente bits de lectura, escritura o ejecución.
 
-## Exercise
+:::single-choice{#ownership-permissions-change-group} ¿Qué cambia `chgrp whales myfile`?
 
-Para solidificar su comprensión de la **propiedad de archivos en Linux**, le recomendamos practicar con estos laboratorios prácticos. Proporcionan escenarios del mundo real para aplicar los comandos `chown` y `chgrp`.
+::option[El usuario propietario registrado para `myfile`.]{#ownership-permissions-group-not-user explanation="El usuario propietario se cambia con `chown`, no con `chgrp`."}
+::option[Los miembros enumerados en el grupo `whales`.]{#ownership-permissions-group-members explanation="La orden cambia metadatos del archivo; no edita la base de datos de pertenencias a grupos del sistema."}
+::option[El grupo propietario registrado para `myfile`.]{#ownership-permissions-group-owner .correct explanation="`chgrp` asigna el grupo indicado como propietario de grupo del objeto del sistema de archivos."}
+:::
 
-1. **[Grupo de Usuarios y Permisos de Archivos de Linux](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceptos esenciales de gestión de usuarios y grupos de Linux, incluida la comprensión de los permisos de archivos y la manipulación de la propiedad de archivos. Este laboratorio proporciona experiencia práctica en la protección de un entorno Linux multiusuario.
-2. **[Añadir Nuevo Usuario y Grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - En este desafío, simulará la adición de nuevos miembros del equipo a un entorno de servidor creando nuevas cuentas de usuario, configurando grupos personalizados y gestionando las membresías de grupo. Esto pondrá a prueba sus habilidades en la administración de usuarios y grupos de Linux.
+## Cambiar conjuntamente usuario y grupo
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la gestión de la propiedad de archivos y los permisos en Linux.
+Proporciona `USER:GROUP` a `chown` para actualizar ambos campos en una operación:
 
-## Quiz Question
+```bash
+$ sudo chown patty:whales myfile
+```
 
-¿Qué comando se utiliza para cambiar la propiedad de usuario de un archivo? Por favor, proporcione solo el nombre del comando en letras minúsculas en inglés.
+La orden asigna `patty` como usuario propietario y `whales` como grupo propietario. Verifica el resultado en vez de dar por hecho que ha funcionado:
 
-## Quiz Answer
+```bash
+$ ls -l myfile
+```
 
-chown
+:::single-choice{#ownership-permissions-change-both} ¿Qué especificación de propiedad asigna el usuario `patty` y el grupo `whales` en una orden `chown`?
+
+::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="Los dos puntos separan los nombres de usuario y grupo en la especificación conjunta de propiedad."}
+::option[`patty/whales`]{#ownership-permissions-both-slash explanation="La barra no es el separador presentado para un operando de usuario y grupo de `chown`."}
+::option[`patty+whales`]{#ownership-permissions-both-plus explanation="El signo más no se usa para combinar los dos campos de propiedad de `chown`."}
+:::
+
+## Tratar con cuidado los cambios recursivos
+
+La opción `-R` cambia la propiedad recursivamente, pero una orden recursiva amplia puede atravesar árboles inesperados o afectar a datos de servicios. Confirma el destino exacto, comprende el comportamiento de tu implementación con enlaces simbólicos, previsualiza el árbol y verifica una muestra pequeña antes de cambiar una jerarquía grande. No copies órdenes de propiedad con privilegios de ejemplos a sistemas reales sin revisar su alcance.
+
+:::single-choice{#ownership-permissions-mode-separate} Después de cambiar el grupo propietario de un archivo, ¿qué ocurre con sus bits normales de permisos de grupo?
+
+::option[Siempre pasan automáticamente a lectura y escritura.]{#ownership-permissions-mode-read-write explanation="`chgrp` no selecciona automáticamente un modo de grupo fijo."}
+::option[Se copian del triplete de permisos del propietario.]{#ownership-permissions-mode-copied explanation="Los tripletes de propietario y grupo siguen siendo independientes cuando cambia la propiedad."}
+::option[Permanecen como estaban salvo que otra operación los cambie.]{#ownership-permissions-mode-unchanged .correct explanation="Los campos de propiedad y los bits de modo son metadatos separados; cambiar el grupo no concede por sí mismo bits nuevos al grupo."}
+:::
+
+Para practicar en un entorno aislado, el laboratorio [Usuarios, grupos y permisos de archivos en Linux](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002) explica cómo consultar y modificar la propiedad junto con los modos de archivo.
+
+## Resumen
+
+Ahora puedes distinguir los metadatos de propiedad de los bits de permisos y cambiarlos deliberadamente.
+
+1. Usa `chown USER FILE` para cambiar el usuario propietario.
+2. Usa `chgrp GROUP FILE` o `chown :GROUP FILE` para cambiar el grupo propietario.
+3. Usa `chown USER:GROUP FILE` para establecer ambos campos.
+4. Verifica los resultados y limita con cuidado los cambios recursivos.

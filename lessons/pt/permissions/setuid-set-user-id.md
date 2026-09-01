@@ -1,78 +1,95 @@
 ---
-index: 5
+lesson_id: "setuid-set-user-id"
+course_id: "permissions"
 lang: "pt"
+order_index: 5
 title: "Setuid"
+description: "Aprenda como o bit de modo set-user-ID afeta programas executáveis e por que ele exige uma revisão cuidadosa de segurança."
 meta_title: "Setuid - Permissões"
-meta_description: "Aprenda sobre as permissões Setuid (SUID) do Linux, como elas funcionam e como modificá-las. Entenda o SUID para acesso seguro a arquivos no Linux."
-meta_keywords: "Linux Setuid, SUID, permissões Linux, chmod, comando passwd, segurança Linux, Linux para iniciantes, tutorial Linux"
+meta_description: "Aprenda sobre as permissões Setuid (SUID) do Linux, como elas funcionam e como modificá-las. Entenda o SUID para o acesso seguro a arquivos no Linux."
+meta_keywords: "Setuid Linux, SUID, permissões Linux, chmod, comando passwd, segurança Linux, Linux para iniciantes, tutorial Linux"
 ---
 
-## Lesson Content
+Alguns programas precisam de um acesso rigorosamente controlado que seus solicitantes normalmente não possuem. Em um arquivo comum executável, o bit set-user-ID pode fazer com que um novo processo receba o ID de usuário do proprietário do arquivo como seu ID de usuário efetivo. O programa pode então realizar operações autorizadas para essa identidade enquanto mantém informações sobre o solicitante.
 
-Existem muitos casos em que usuários normais precisam de acesso elevado para realizar tarefas. O administrador do sistema nem sempre pode estar presente para digitar uma senha de root toda vez que um usuário precisa de acesso a um arquivo protegido, então existem bits de permissão de arquivo especiais para permitir esse comportamento. O Set User ID (SUID) permite que um usuário execute um programa como o proprietário do arquivo do programa, em vez de como ele mesmo.
+Setuid não é uma instrução geral para “executar como root”. Seu efeito depende do proprietário do executável, do sistema operacional, do sistema de arquivos e das opções de montagem, além da forma como o programa gerencia suas credenciais.
 
-Vamos ver um exemplo:
+## Reconhecimento do Setuid
 
-Digamos que eu queira mudar minha senha, simples, certo? Eu apenas uso o comando `passwd`:
-
-```bash
-passwd
-```
-
-O que o comando `passwd` está fazendo? Ele está modificando alguns arquivos, mas o mais importante é que ele está modificando o arquivo `/etc/shadow`. Vamos dar uma olhada nesse arquivo por um segundo:
-
-```bash
-$ ls -l /etc/shadow
-
--rw-r----- 1 root shadow 1134 Dec 1 11:45 /etc/shadow
-```
-
-Ah, espere um minuto, este arquivo pertence ao root? Como é possível que possamos modificar um arquivo que pertence ao root?
-
-Vamos olhar para outro conjunto de permissões, desta vez do comando que executamos:
+Em sistemas que usam um executável `passwd` com setuid, uma listagem longa pode se parecer com esta:
 
 ```bash
 $ ls -l /usr/bin/passwd
-
--rwsr-xr-x 1 root root 47032 Dec 1 11:45 /usr/bin/passwd
+-rwsr-xr-x 1 root root 68248 Jan 10 09:30 /usr/bin/passwd
 ```
 
-Você notará um novo bit de permissão aqui **s**. Este bit de permissão é o SUID. Quando um arquivo tem essa permissão definida, ele permite que os usuários que iniciaram o programa obtenham a permissão do proprietário do arquivo, bem como a permissão de execução, neste caso, root. Então, essencialmente, enquanto um usuário está executando o comando `passwd`, ele está executando como root.
+O `s` minúsculo na posição de execução do proprietário significa que tanto o setuid quanto a execução do proprietário estão definidos. Se o setuid estiver presente, mas a execução do proprietário estiver ausente, `ls -l` mostrará um `S` maiúsculo nessa posição.
 
-É por isso que somos capazes de acessar um arquivo protegido como `/etc/shadow` quando executamos o comando `passwd`. Agora, se você remover esse bit, verá que não poderá modificar `/etc/shadow` e, portanto, não poderá alterar sua senha.
+Não presuma que todas as distribuições tenham o mesmo modo ou projeto de autenticação. Inspecione o sistema real em vez de depender do exemplo.
 
-### Modificando SUID
+:::single-choice{#setuid-lowercase-s} O que um `s` minúsculo na posição de execução do proprietário indica?
 
-Assim como as permissões regulares, existem duas maneiras de modificar as permissões SUID.
+::option[O setuid está definido, mas a execução do proprietário está ausente.]{#setuid-s-without-execute explanation="Essa combinação é mostrada como `S` maiúsculo, não como `s` minúsculo."}
+::option[O arquivo possui um sticky bit e execução para o grupo.]{#setuid-sticky-group explanation="O sticky bit aparece na posição de execução dos outros, enquanto o setuid aparece na posição do proprietário."}
+::option[O setuid e a execução do proprietário estão definidos.]{#setuid-s-with-execute .correct explanation="O `s` minúsculo representa o bit setuid junto com o bit comum de execução do proprietário."}
+:::
 
-_Forma simbólica:_
+## Compreensão da Alteração de Credenciais
+
+Quando o kernel respeita o setuid durante a execução, o novo processo normalmente recebe um ID de usuário efetivo baseado no proprietário do executável. Para um programa pertencente ao root, isso pode fornecer acesso autorizado como root, mas apenas enquanto o programa é executado e somente por meio das operações realizadas por seu código.
+
+Esse mecanismo pode permitir que um programa cuidadosamente desenvolvido valide uma solicitação e faça uma alteração restrita em um estado protegido. Por exemplo, um utilitário local para alterar senhas pode precisar de acesso controlado a dados de autenticação que usuários comuns não podem editar diretamente. As implementações modernas também dependem do PAM, de bloqueio de arquivos, de políticas e de outras proteções; o setuid sozinho não explica todo o fluxo de trabalho.
+
+:::single-choice{#setuid-effective-identity} Quando um executável setuid é respeitado, qual identidade é obtida principalmente do proprietário do arquivo?
+
+::option[O nome de login armazenado em `/etc/passwd`.]{#setuid-login-name explanation="Executar um arquivo não reescreve o registro de conta nem o nome de login do solicitante."}
+::option[O ID de usuário efetivo do processo.]{#setuid-effective-user .correct explanation="O mecanismo de execução set-user-ID altera a identidade de usuário efetiva usada em muitas verificações de autorização."}
+::option[O grupo proprietário de todos os arquivos abertos.]{#setuid-opened-file-group explanation="O setuid afeta as credenciais do processo, não os metadados de propriedade de arquivos não relacionados."}
+:::
+
+## Definição e Remoção do Bit
+
+Defina o setuid simbolicamente com:
 
 ```bash
-sudo chmod u+s myfile
+$ sudo chmod u+s myfile
 ```
 
-_Forma numérica:_
+Na notação octal, o setuid contribui com `4` em um dígito inicial de bits especiais:
 
 ```bash
-sudo chmod 4755 myfile
+$ sudo chmod 4755 myfile
 ```
 
-Como você pode ver, o SUID é denotado por um 4 e é prefixado ao conjunto de permissões. Você pode ver o SUID denotado como um **S** maiúsculo. Isso significa que ele ainda faz a mesma coisa, mas não tem permissões de execução.
+Neste caso, o `4` inicial define o setuid e `755` define os bits comuns do proprietário, do grupo e dos outros. Remova o setuid sem alterar os demais modos com `chmod u-s myfile`.
 
-## Exercise
+:::single-choice{#setuid-octal-value} Qual valor octal inicial representa o bit especial setuid?
 
-Prática leva à perfeição! Entender como funcionam as permissões de arquivo, grupos de usuários e bits especiais como o SUID é crucial para gerenciar e proteger sistemas Linux. A experiência prática solidificará seu conhecimento.
+::option[`4`]{#setuid-octal-four .correct explanation="O setuid contribui com o valor `4` no dígito inicial de bits especiais."}
+::option[`1`]{#setuid-octal-one explanation="Um `1` inicial representa o sticky bit."}
+::option[`2`]{#setuid-octal-two explanation="Um `2` inicial representa o bit setgid."}
+:::
 
-Aqui está um laboratório prático para reforçar sua compreensão das permissões de arquivo e gerenciamento de usuários:
+## Tratamento do Setuid como Recurso Sensível à Segurança
 
-1. **[Grupo de Usuários Linux e Permissões de Arquivo](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Pratique a criação e o gerenciamento de usuários e grupos, a compreensão das permissões de arquivo e a manipulação da propriedade de arquivos. Este laboratório fornece o conhecimento fundamental necessário para entender como o SUID aproveita esses conceitos para acesso elevado.
+Uma falha em um programa setuid privilegiado pode se tornar um caminho de elevação de privilégios. Esses programas devem validar as entradas, controlar o ambiente e os caminhos de arquivos nos quais confiam, evitar comportamentos inseguros em subprocessos, minimizar o código privilegiado e descartar as credenciais elevadas assim que possível.
 
-Este laboratório o ajudará a aplicar os conceitos em um cenário real e a construir confiança com o gerenciamento de usuários e arquivos do Linux.
+Normalmente, o Linux não respeita o setuid em scripts interpretados, pois sua implementação segura apresenta problemas de condições de corrida e relacionados ao interpretador. Sistemas de arquivos montados com `nosuid` também suprimem os efeitos de setuid e setgid. Prefira mecanismos mais restritos, como operações intermediadas por serviços, uma política `sudo` cuidadosamente delimitada ou capacidades, quando forem adequados ao requisito.
 
-## Quiz Question
+Nunca adicione setuid a um shell, interpretador ou programa copiado arbitrariamente como experimento em um sistema compartilhado. Audite os arquivos setuid existentes e pratique apenas em um ambiente isolado e descartável.
 
-Qual número representa o SUID?
+:::single-choice{#setuid-nosuid-mount} Qual é a finalidade de montar um sistema de arquivos com `nosuid`?
 
-## Quiz Answer
+::option[Remover todos os bits de execução armazenados nos arquivos desse sistema de arquivos.]{#setuid-nosuid-remove-execute explanation="A opção não reescreve os bits comuns de execução nos metadados dos arquivos."}
+::option[Suprimir os efeitos de execução de setuid e setgid nesse sistema de arquivos.]{#setuid-nosuid-suppress .correct explanation="A opção de montagem `nosuid` impede que esses bits de modo especiais concedam seu comportamento normal de alteração de credenciais durante a execução."}
+::option[Tornar o root proprietário de todos os arquivos do sistema de arquivos.]{#setuid-nosuid-root-owner explanation="A montagem com `nosuid` não altera os campos de propriedade de usuário nem de grupo."}
+:::
 
-4
+## Resumo
+
+Agora você sabe reconhecer o setuid e explicar suas implicações de credenciais e segurança.
+
+1. Encontre `s` ou `S` na posição de execução do proprietário.
+2. Relacione a execução setuid à identidade de usuário efetiva do proprietário do executável.
+3. Defina ou remova o bit com os modos simbólico ou octal de `chmod`.
+4. Trate todo executável privilegiado como código sensível à segurança.

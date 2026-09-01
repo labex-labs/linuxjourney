@@ -1,42 +1,72 @@
 ---
-index: 4
+lesson_id: "routing-protocols"
+course_id: "routing"
 lang: "pt"
-title: "Protocolos de Roteamento"
-meta_title: "Protocolos de Roteamento - Roteamento"
-meta_description: "Explore os fundamentos dos protocolos de roteamento em redes Linux. Este guia abrange protocolos de vetor de distância e estado de enlace, convergência de rede e como os roteadores constroem e mantêm tabelas de roteamento. Um tutorial perfeito para iniciantes."
-meta_keywords: "protocolos de roteamento, convergência de rede, vetor de distância, estado de enlace, redes linux, tabela de roteamento, tutorial de rede, guia para iniciantes, comunicação de roteador"
+order_index: 4
+title: "Protocolos de roteamento"
+description: "Aprenda como protocolos de roteamento dinâmico trocam informações de acessibilidade e convergem para caminhos de encaminhamento utilizáveis."
+meta_title: "Protocolos de roteamento - Roteamento"
+meta_description: "Explore os fundamentos dos protocolos de roteamento em redes Linux. Este guia aborda protocolos de vetor de distância e estado de enlace, convergência de rede e como roteadores constroem e mantêm tabelas de roteamento. Um tutorial ideal para iniciantes."
+meta_keywords: "protocolos de roteamento, convergência de rede, vetor de distância, estado de enlace, redes linux, tabela de roteamento, tutorial de redes, guia para iniciantes, comunicação entre roteadores"
 ---
 
-## Lesson Content
+Rotas estáticas são configuradas diretamente, enquanto protocolos de roteamento dinâmico trocam informações de acessibilidade e topologia para que os roteadores possam se adaptar. O aprendizado dinâmico reduz o trabalho manual, mas introduz estados de protocolo, limites de confiança, temporizadores e modos de falha que precisam ser monitorados.
 
-Configurar rotas manualmente em uma tabela de roteamento para cada dispositivo em uma rede grande seria uma tarefa incrivelmente tediosa. Para automatizar esse processo, usamos **protocolos de roteamento** dinâmicos. Esses protocolos permitem que os roteadores se adaptem automaticamente às mudanças na rede, aprendendo diferentes rotas, construindo-as na tabela de roteamento e encaminhando pacotes de acordo. Existem dois tipos principais de protocolos de roteamento: vetor de distância e estado de enlace.
+## Plano de controle e plano de encaminhamento
 
-### Protocolos de Vetor de Distância
+Um protocolo de roteamento aprende candidatos em seu próprio banco de dados. O roteador seleciona rotas para uma base de informações de roteamento e instala próximos saltos utilizáveis em uma tabela de encaminhamento. O hardware ou o kernel então encaminha os pacotes a partir dessa tabela.
 
-Os protocolos de vetor de distância operam sob o princípio de "roteamento por boato". Cada roteador compartilha sua tabela de roteamento inteira com seus vizinhos diretamente conectados em intervalos regulares. Quando um roteador recebe uma tabela de roteamento de um vizinho, ele atualiza a sua própria tabela com quaisquer rotas novas ou melhores. A "distância" é tipicamente medida por uma métrica como contagem de saltos (hop count). Este método é simples, mas pode ser lento para convergir e é suscetível a loops de roteamento. Um exemplo de protocolo de vetor de distância é o Protocolo de Informações de Roteamento (RIP).
+Uma adjacência de protocolo estabelecida não comprova que o prefixo desejado foi aprendido, selecionado, instalado ou permitido pela política de encaminhamento.
 
-### Protocolos de Estado de Enlace
+:::single-choice{#routing-protocols-adjacency-limit} O que uma adjacência de roteamento estabelecida não consegue comprovar?
 
-Em contraste, os **protocolos de estado de enlace** fornecem a cada roteador um mapa completo da topologia da rede. Em vez de compartilhar toda a sua tabela de roteamento, os roteadores enviam informações sobre o estado de seus próprios enlaces (por exemplo, vizinhos conectados e o custo da conexão) para todos os outros roteadores na rede. Usando essas informações, cada roteador pode construir independentemente um mapa idêntico da rede e calcular o melhor caminho para cada destino. Essa abordagem leva a uma **convergência de rede** mais rápida e é mais escalável do que os protocolos de vetor de distância. Um exemplo é o protocolo Open Shortest Path First (OSPF).
+::option[Que todas as rotas desejadas estão instaladas e encaminhando com sucesso.]{#routing-protocols-not-full-proof .correct explanation="Anúncio, seleção, instalação e filtragem de rotas e operação do plano de dados são etapas separadas."}
+::option[Que dois participantes do protocolo trocaram alguma mensagem de controle.]{#routing-protocols-no-messages explanation="O estabelecimento de uma adjacência normalmente exige comunicação pelo protocolo."}
+::option[Que existe um plano de controle.]{#routing-protocols-no-control explanation="A própria adjacência é um estado do plano de controle."}
+:::
 
-### Convergência de Rede
+## Roteamento interior e exterior
 
-Antes de discutirmos os protocolos em mais detalhes, é importante entender um conceito chave em roteamento conhecido como **convergência de rede**. Ao usar protocolos de roteamento, os roteadores se comunicam para coletar e trocar informações. Convergência é o estado em que todos os roteadores têm uma visão consistente e precisa da topologia da rede. Quando cada tabela de roteamento mapeia corretamente toda a rede, a rede é considerada "convergida". Se ocorrer uma mudança, como um enlace cair, a convergência é temporariamente quebrada até que todos os roteadores aprendam sobre a mudança e atualizem suas tabelas de roteamento.
+Protocolos de gateway interior operam dentro de um domínio administrativo de roteamento. Alguns exemplos são RIP, OSPF e IS-IS. O BGP troca informações de acessibilidade controladas por política dentro e entre sistemas autônomos e é o protocolo de roteamento exterior da Internet.
 
-## Exercise
+As métricas possuem significados específicos de cada protocolo. Um custo OSPF, uma contagem de saltos RIP e um conjunto de atributos BGP não podem ser comparados como se compartilhassem uma escala numérica universal. As implementações usam preferência de rota ou distância administrativa para escolher entre origens antes ou em conjunto com a seleção específica do protocolo.
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de roteamento de rede e endereçamento IP:
+:::single-choice{#routing-protocols-metric-comparison} Uma contagem de saltos RIP pode ser comparada diretamente com um custo OSPF?
 
-1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique a configuração de endereços IP estáticos e dinâmicos, a definição de um gateway padrão e a verificação de configurações de rede, que são cruciais para entender como as tabelas de roteamento são construídas e utilizadas.
-2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os dispositivos interagem na camada de rede, observando o ARP e como o gateway padrão lida com tráfego remoto, fornecendo insights sobre os mecanismos que os protocolos de roteamento gerenciam.
-3. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use o Docker para simular nós de rede, atribuir endereços IP e testar a conectividade entre sub-redes, aplicando diretamente conceitos relacionados a mudanças de rede e decisões de roteamento.
+::option[Sim, porque todas as métricas de roteamento usam as mesmas unidades.]{#routing-protocols-universal-metric explanation="Cada protocolo define sua própria métrica e seu processo de seleção."}
+::option[Sim, mas apenas quando ambos os valores são zero.]{#routing-protocols-zero-metric explanation="Suas semânticas continuam diferentes independentemente do número exibido."}
+::option[Não; elas possuem significados específicos dos protocolos.]{#routing-protocols-specific-metric .correct explanation="A seleção entre origens usa a política da implementação, em vez de tratar métricas diferentes como uma única escala."}
+:::
 
-Esses laboratórios ajudarão você a aplicar os conceitos de configuração e conectividade de rede em cenários reais, aumentando a confiança nos elementos fundamentais que os protocolos de roteamento automatizam.
+## Vetor de distância e estado de enlace
 
-## Quiz Question
+Protocolos de vetor de distância anunciam acessibilidade e distância por meio de vizinhos, derivando caminhos dos relatórios deles. Protocolos de estado de enlace formam adjacências, inundam informações sobre o estado dos enlaces dentro de um escopo, constroem um banco de dados da topologia e calculam árvores de caminhos mais curtos. Protocolos modernos incluem refinamentos que tornam incompletos os resumos simples por categoria.
 
-What is the term for the state where all routing tables on a network agree on the network topology? (Please answer in English, paying attention to capitalization.)
+:::single-choice{#routing-protocols-link-state-input} O que um roteador de estado de enlace usa para calcular seus caminhos?
 
-## Quiz Answer
+::option[Apenas o nome de host de seu gateway padrão.]{#routing-protocols-hostname-only explanation="Um cálculo de topologia exige informações de enlaces e prefixos."}
+::option[Um banco de dados sincronizado que descreve os enlaces no escopo de roteamento.]{#routing-protocols-link-database .correct explanation="O roteador executa um algoritmo de caminho mais curto sobre a topologia aprendida."}
+::option[Senhas da camada de aplicação de todos os hosts.]{#routing-protocols-passwords explanation="A troca da topologia de roteamento não exige credenciais de usuários finais."}
+:::
 
-Convergence
+## Convergência
+
+Depois de uma mudança de topologia ou política, os roteadores a detectam, propagam informações de controle, calculam caminhos e atualizam o estado de encaminhamento. Convergência é o período e o resultado em que a rede alcança um roteamento estável e mutuamente utilizável para os destinos afetados. Ela não exige que todos os roteadores tenham uma tabela completa idêntica; funções e políticas podem diferir intencionalmente.
+
+Durante a convergência, podem ocorrer perdas transitórias, loops ou buracos negros. Meça separadamente detecção, propagação, cálculo e instalação e verifique com sondagens do plano de dados.
+
+:::single-choice{#routing-protocols-convergence} O que é convergência de roteamento?
+
+::option[O processo de alcançar um roteamento estável e utilizável depois de uma mudança.]{#routing-protocols-stable-routing .correct explanation="Ela inclui a propagação do controle e as atualizações de encaminhamento resultantes."}
+::option[Uma exigência de que todo roteador armazene uma tabela global idêntica.]{#routing-protocols-identical-table explanation="Política, área e função podem criar diferenças intencionais."}
+::option[A prevenção permanente de toda falha de roteamento possível.]{#routing-protocols-no-failure explanation="Uma rede convergida ainda pode ter problemas de política ou capacidade."}
+:::
+
+## Resumo
+
+Agora você pode posicionar as informações de roteamento dinâmico no caminho entre a troca de protocolos e o encaminhamento.
+
+1. Separe candidatos aprendidos, rotas selecionadas e entradas de encaminhamento.
+2. Diferencie o roteamento interior da troca de políticas do BGP.
+3. Compare métricas apenas dentro da semântica de seus protocolos.
+4. Verifique a convergência tanto no plano de controle quanto no plano de dados.

@@ -1,44 +1,78 @@
 ---
-index: 6
+lesson_id: "nat-network-address-translation"
+course_id: "subnetting"
 lang: "en"
+order_index: 6
 title: "NAT"
+description: "Learn how source, destination, and port translation modify IPv4 flows and connection state."
 meta_title: "NAT - Subnetting"
 meta_description: "Learn about NAT (Network Address Translation) in Linux, how it works, and its role in network security. Understand private vs. public IPs. Linux networking guide."
 meta_keywords: "NAT, Network Address Translation, Linux networking, private IP, public IP, Linux tutorial, beginner guide"
 ---
 
-## Lesson Content
+Network Address Translation rewrites address fields, and often transport ports, as packets cross a translating device. It is widely used to connect privately addressed IPv4 networks through a smaller set of externally routable addresses.
 
-We've brought up NAT (Network Address Translation) before but didn't touch upon it. When we are working on our network, does that mean the internet can see our IP address? Not quite.
+## Source Translation
 
-NAT makes a device like our router act as an intermediary between the internet and a private network. So, only a single, unique IP address is required to represent an entire group of computers.
+Source NAT replaces a packet's source address as it leaves a network. Many-to-one deployments also translate source ports so several internal flows can share one external address. This port-aware form is often called NAPT, PAT, or masquerading when the external address can change.
 
-Think of NAT as a receptionist in a large office. If someone wants to contact you, they only know the number to the whole office. The receptionist would then have to look for your extension number and forward the call to you.
+The translator tracks mappings so reply packets can be rewritten back to the original internal endpoint. It normally forwards the same transport flow; it does not have to open a separate proxy connection as an application proxy would.
 
-### How does it work?
+:::single-choice{#nat-source-translation} What does source NAT change on an outbound packet?
 
-A simple case would look like this:
+::option[Only the destination application's file permissions.]{#nat-file-permissions explanation="NAT operates on network and transport headers, not remote filesystems."}
+::option[The source address and, in many-to-one use, often the source port.]{#nat-source-fields .correct explanation="The mapping lets return traffic be associated with the original internal flow."}
+::option[The DNS name permanently stored by the client.]{#nat-dns-name explanation="Translation does not rewrite the client's name-service database."}
+:::
 
-1. Patty wants to connect to `www.google.com`, so her machine sends this request through the router.
-2. The router takes that request and opens its own connection to google.com, then it sends Patty's request once it makes a connection.
-3. The router is the intermediary between Patty and `www.google.com`. Google doesn't know about Patty; instead, all it can see is the router.
+## Destination Translation
 
-NAT and packet routing in general can get pretty ugly, but we won't dive into the specifics.
+Destination NAT rewrites the destination address or port, commonly to publish an internal service through an external endpoint. A port-forward rule might map an external TCP port to a different internal address and port. Return traffic needs consistent reverse translation.
 
-## Exercise
+:::single-choice{#nat-port-forward} Which NAT form commonly implements an inbound port forward?
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network addressing and connectivity, which are foundational to understanding concepts like NAT:
+::option[Source NAT only, before route lookup.]{#nat-snat-port-forward explanation="Publishing an internal destination requires destination-field translation."}
+::option[No address or port translation at all.]{#nat-no-translation explanation="A port-forward rule is a translation policy by definition."}
+::option[Destination NAT.]{#nat-dnat .correct explanation="DNAT maps the external destination to the selected internal service endpoint."}
+:::
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IPv4 and IPv6 addresses, on a Linux system.
-2. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to manage IP addressing by configuring static and dynamic IPs, and verifying network configuration, which helps in understanding how devices get their addresses.
-3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types (private, public, multicast) and test network reachability, providing a practical context for how NAT distinguishes between internal and external addresses.
+## NAT and Firewall Policy
 
-These labs will help you apply the concepts in real scenarios and build confidence with network configuration and troubleshooting in Linux.
+NAT is not a firewall. A stateful translator may lack a mapping for unsolicited inbound traffic, but explicit forwarding, destination translation, filtering, and application exposure determine what is reachable. Security policy should be expressed and audited with firewall rules, least-privilege services, and end-to-end controls rather than inferred from address rewriting.
 
-## Quiz Question
+:::single-choice{#nat-not-firewall} Why should NAT not be treated as a security policy by itself?
 
-What is used to represent a single private address to the internet?
+::option[NAT automatically encrypts every payload.]{#nat-encrypts explanation="Address translation provides no payload confidentiality."}
+::option[Translation rules and traffic-filtering rules have different purposes.]{#nat-filter-separate .correct explanation="Reachability and authorization require explicit filtering and service policy even when translation is present."}
+::option[NAT prevents administrators from defining firewall rules.]{#nat-prevents-firewall explanation="Translation and firewall policy commonly coexist."}
+:::
 
-## Quiz Answer
+## Operational Consequences
 
-NAT
+NAT can exhaust address-and-port mappings, complicate peer-to-peer protocols, obscure original sources from applications, and require special handling for protocols that embed addresses. Logs must preserve translation timestamps and mapping details if flows need to be traced.
+
+On Linux, modern policy is commonly configured with nftables and connection tracking. Inspect the actual ruleset before changing it:
+
+```bash
+$ sudo nft list ruleset
+$ sudo conntrack -L
+```
+
+The second command requires conntrack tooling and privileges. Ruleset changes can disconnect remote access, so use console recovery, atomic configuration, validation, and rollback.
+
+:::single-choice{#nat-trace-flow} What evidence is needed to trace a shared-address flow back to an internal client?
+
+::option[Only the external address, with no time or port.]{#nat-address-only explanation="Many clients and flows can share that address."}
+::option[Only the client's displayed hostname.]{#nat-hostname-only explanation="The translator maps packet tuples, not necessarily hostnames."}
+::option[Time-correlated translation mapping including protocol and ports.]{#nat-correlated-mapping .correct explanation="The complete tuple and timestamp distinguish concurrent translated flows."}
+:::
+
+## Summary
+
+You can now distinguish address translation from routing, proxying, and firewall policy.
+
+1. Identify source translation on outbound flows.
+2. Identify destination translation in published services.
+3. Understand how port mappings allow address sharing.
+4. Apply explicit filtering instead of treating NAT as security.
+5. Preserve mapping evidence and recovery access during changes.

@@ -1,46 +1,85 @@
 ---
-index: 1
+lesson_id: "kernel-overview"
+course_id: "kernel"
 lang: "es"
-title: "Visión general del Kernel"
-meta_title: "Visión general del Kernel - Kernel"
-meta_description: "Comience su viaje en Linux con una visión general del kernel de Linux. Comprenda su papel central en la gestión del hardware y el espacio de usuario, un concepto fundamental en linuxjourney.com."
-meta_keywords: "Kernel de Linux, sistema operativo, hardware, espacio de usuario, viaje linux, linuxjourney.com, linuxjourne.com, linuxviaje, visión general del kernel"
+order_index: 1
+title: "Descripción general del kernel"
+description: "Aprende cómo el kernel de Linux media entre el hardware, los recursos, el aislamiento y las solicitudes del espacio de usuario."
+meta_title: "Descripción general del kernel - Kernel"
+meta_description: "Comienza tu recorrido por Linux con una descripción general del kernel. Comprende su función esencial en la gestión del hardware y el espacio de usuario, un concepto fundamental de linuxjourney.com."
+meta_keywords: "kernel de Linux, sistema operativo, hardware, espacio de usuario, linux jorney, linux jorney.com, linux jouney.com, linux journe, descripción general del kernel"
 ---
 
-## Lesson Content
+Linux es el kernel del sistema operativo: el software privilegiado que gestiona los procesadores, la memoria, los dispositivos, los procesos y las abstracciones comunes de recursos. Un sistema Linux completo también incluye bibliotecas, utilidades, servicios, shells y programas gráficos del espacio de usuario, además de las políticas de la distribución.
 
-Como has aprendido, el kernel es el núcleo del sistema operativo. Para entender verdaderamente Linux, debemos ver cómo funcionan todas sus partes juntas. Esta lección proporciona una visión general de alto nivel, un primer paso crítico en tu linux jorney.
+## Recursos de hardware
 
-El sistema operativo Linux se puede organizar en tres niveles diferentes de abstracción.
+Los procesadores ejecutan instrucciones, la memoria almacena el estado activo y los controladores conectan el almacenamiento, las redes, las pantallas, los dispositivos de entrada y otros periféricos. El hardware expone mecanismos específicos de la arquitectura y del dispositivo, no una única interfaz segura para todas las aplicaciones.
 
-### El Hardware del Sistema
+El kernel inicializa y controla estos recursos mediante código de arquitectura y controladores de dispositivos. Gestiona las interrupciones, la coordinación de DMA, los temporizadores y los eventos de administración de energía, a la vez que impone límites de acceso entre las cargas de trabajo.
 
-El nivel más básico es el hardware. Esto incluye la CPU, la memoria (RAM), los discos duros, los puertos de red y otros dispositivos físicos. Esta capa es la base que realiza los cálculos y acciones reales para nuestra máquina.
+:::single-choice{#kernel-overview-hardware-manager} ¿Qué capa coordina normalmente los controladores de dispositivos y las interrupciones de hardware en Linux?
 
-### El Kernel de Linux
+::option[El archivo de historial del shell de cada usuario.]{#kernel-overview-shell-history explanation="El historial registra comandos y no gestiona la ejecución del hardware."}
+::option[El índice del repositorio de paquetes.]{#kernel-overview-repository-index explanation="Los metadatos del repositorio describen paquetes de software, no eventos activos del hardware."}
+::option[El kernel.]{#kernel-overview-kernel-layer .correct explanation="El código privilegiado del kernel conecta los eventos de hardware y las operaciones de los controladores con interfaces controladas del sistema."}
+:::
 
-El siguiente nivel es el kernel. El trabajo principal del kernel es actuar como un puente, comunicándose con el hardware para ejecutar las tareas solicitadas por nuestros procesos. Maneja la gestión de procesos y memoria, la comunicación con dispositivos, las llamadas al sistema y la configuración del sistema de archivos. Este es un tema central que explorarás en **[Linux Journey](https://labex.io/es/linuxjourney)**.
+## Responsabilidades del kernel
 
-### El Espacio de Usuario
+Entre sus principales responsabilidades se encuentran:
 
-El nivel con el que estás más familiarizado es el espacio de usuario. Esto incluye el shell, los programas que ejecutas, las interfaces gráficas y todas las demás aplicaciones. Estos programas interactúan con el kernel para realizar el trabajo, sin necesidad de conocer los detalles específicos del hardware subyacente.
+- programar los hilos ejecutables en las CPU
+- crear y aislar espacios de direcciones virtuales
+- aplicar credenciales de procesos, permisos y políticas de seguridad
+- proporcionar sistemas de archivos, redes, IPC e interfaces de dispositivos
+- gestionar señales, temporizadores y el ciclo de vida de los procesos
+- asignar, contabilizar y recuperar recursos
 
-En este curso, profundizaremos en el kernel, desmitificando sus complejidades. Esta parte de tu linux journey será desafiante pero gratificante.
+Linux suele describirse como un kernel monolítico porque los servicios esenciales y muchos controladores se ejecutan en un único espacio de direcciones privilegiado del kernel. También es modular: los componentes compatibles pueden cargarse y descargarse como módulos del kernel. Un error en código privilegiado del kernel puede comprometer todo el sistema, por lo que las actualizaciones del kernel y la procedencia de los módulos son esenciales para la seguridad.
 
-## Exercise
+:::single-choice{#kernel-overview-scheduler-role} ¿Qué gestiona el planificador del kernel?
 
-Para poner la teoría en práctica, prueba estos laboratorios prácticos. Reforzarán tu comprensión del kernel de Linux y su interacción con los componentes del sistema:
+::option[Qué página de documentación leerá un usuario a continuación.]{#kernel-overview-documentation explanation="La navegación del aprendizaje queda fuera de la planificación del kernel."}
+::option[Qué hilos ejecutables reciben tiempo de ejecución de CPU.]{#kernel-overview-thread-scheduling .correct explanation="El planificador selecciona contextos de ejecución según la política, la prioridad, la afinidad y la disponibilidad de CPU."}
+::option[En qué clave de firma de un repositorio debe confiar un administrador.]{#kernel-overview-repository-key explanation="La configuración de confianza pertenece a la política de gestión de paquetes."}
+:::
 
-1. **[Administrar Módulos del Kernel en Linux](https://labex.io/es/labs/comptia-manage-kernel-modules-in-linux-590865)** - Practica listar, inspeccionar, cargar y descargar módulos del kernel, y configurarlos para su carga automática al inicio.
-2. **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprende a identificar e inspeccionar dispositivos de hardware dentro de un entorno Linux usando utilidades de línea de comandos.
-3. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Adquiere experiencia práctica creando particiones, formateando sistemas de archivos, montándolos y configurando el montaje persistente, todo gestionado por el kernel.
+## Espacio de usuario
 
-Estos laboratorios te ayudarán a aplicar los conceptos de interacción del kernel con el hardware y los recursos del sistema en escenarios reales y a ganar confianza con la administración de Linux de bajo nivel.
+El espacio de usuario contiene los procesos ordinarios: el sistema de inicio y los servicios, las herramientas de línea de comandos, los entornos de ejecución de lenguajes, las bases de datos, los shells y las aplicaciones de escritorio. Los privilegios del hardware impiden que estos programas ejecuten directamente muchas instrucciones delicadas o accedan a memoria arbitraria del kernel.
 
-## Quiz Question
+Los procesos solicitan trabajo al kernel mediante llamadas al sistema e interactúan con interfaces expuestas como descriptores de archivo, sockets, nodos de dispositivo, procfs, sysfs, netlink y asignaciones de memoria. Las bibliotecas suelen envolver estas interfaces en API de mayor nivel.
 
-What level of the operating system manages devices? (Please answer in a single, lowercase English word.)
+El usuario root del espacio de usuario dispone de amplias autorizaciones según la política, pero normalmente sigue ejecutándose en el modo de usuario del procesador. La identidad del usuario y el modo de privilegio de la CPU son conceptos independientes.
 
-## Quiz Answer
+:::single-choice{#kernel-overview-root-user-mode} ¿Ejecuta una aplicación normal propiedad de root todas sus instrucciones en modo kernel?
 
-kernel
+::option[Sí; el UID 0 cambia permanentemente todas las instrucciones al anillo 0.]{#kernel-overview-root-ring-zero explanation="Un proceso root ordinario sigue siendo un proceso del espacio de usuario."}
+::option[Sí; las aplicaciones de root se convierten automáticamente en módulos cargables del kernel.]{#kernel-overview-root-module explanation="El UID de propietario no transforma un ejecutable de usuario en código del kernel."}
+::option[No; normalmente se ejecuta en modo de usuario y entra en el kernel mediante interfaces controladas.]{#kernel-overview-root-userspace .correct explanation="Las credenciales de root afectan a la autorización, mientras que el modo del procesador solo cambia al entrar y ejecutar código del kernel."}
+:::
+
+## Límites y abstracciones
+
+El kernel presenta procesos virtuales, archivos, sockets y espacios de direcciones en lugar de exponer directamente la maquinaria física en bruto. Estas abstracciones favorecen el aislamiento y la portabilidad, pero por sí solas no constituyen límites de seguridad perfectos. Los espacios de nombres, cgroups, capacidades, módulos de seguridad, seccomp y la virtualización añaden controles especializados.
+
+Al diagnosticar un problema, pregunta qué capa es responsable del comportamiento: la aplicación, la biblioteca, la interfaz de llamadas al sistema, el sistema de archivos, el controlador, el subsistema del kernel, el firmware o el hardware. Las pruebas procedentes de la capa equivocada pueden conducir a soluciones incorrectas.
+
+:::single-choice{#kernel-overview-system-call-boundary} ¿Qué es una llamada al sistema?
+
+::option[Una solicitud controlada del espacio de usuario para obtener un servicio del kernel.]{#kernel-overview-controlled-request .correct explanation="El procesador entra en modo kernel mediante una interfaz definida, donde el kernel valida y realiza la operación."}
+::option[Un comando directo que elude todos los controles de acceso.]{#kernel-overview-bypass-checks explanation="Las llamadas al sistema son precisamente el lugar donde se realizan muchas comprobaciones de validación y autorización."}
+::option[Un archivo de paquete que contiene un controlador de dispositivo.]{#kernel-overview-package-archive explanation="Los paquetes pueden proporcionar software, pero una llamada al sistema es una interfaz de ejecución."}
+:::
+
+Utiliza [Gestionar módulos del kernel en Linux](https://labex.io/labs/comptia-manage-kernel-modules-in-linux-590865) para observar una parte modular del kernel en un entorno controlado.
+
+## Resumen
+
+Ahora puedes situar el kernel entre los recursos físicos y los procesos aislados del espacio de usuario.
+
+1. Relaciona los controladores y el código de arquitectura con el control del hardware.
+2. Identifica las responsabilidades de planificación, memoria, seguridad, sistemas de archivos y redes.
+3. Trata las credenciales de root y el modo kernel del procesador como conceptos distintos.
+4. Sitúa la interacción entre el usuario y el kernel en interfaces controladas durante la ejecución.

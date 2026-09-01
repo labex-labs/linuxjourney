@@ -1,44 +1,64 @@
 ---
-index: 16
+lesson_id: "man-command"
+course_id: "command-line"
 lang: "de"
+order_index: 16
 title: "man"
+description: "Lerne, installierte Handbuchseiten zu öffnen, zu navigieren, zu durchsuchen und gezielt nach Abschnitt auszuwählen."
 meta_title: "man - Kommandozeile"
 meta_description: "Lernen Sie den Linux-Befehl man mit Beispielen zum Lesen von Handbuchseiten, Suchen in man-Seiten, Verständnis der Abschnitte und Finden von Befehlsoptionen."
 meta_keywords: "man Befehl, linux man Seiten, Befehlsanleitung, man ls, man Abschnitte, man Seite durchsuchen, Kommandozeilenhilfe"
 ---
 
-## Lesson Content
+Für viele Linux-Befehle, Schnittstellen, Konfigurationsdateien und Verwaltungswerkzeuge ist eine Referenzdokumentation in Form von Handbuchseiten, den sogenannten Manpages, installiert. Der Befehl `man` findet diese Seiten und zeigt sie an.
 
-In Linux verfügt fast jeder Befehl über ein eigenes Handbuch. Diese werden „man pages“ (kurz für manual pages) genannt und sind eine unverzichtbare Ressource, um das System effektiv zu nutzen.
+## Eine Handbuchseite öffnen
 
-### Verständnis von Man Pages
-
-Man pages sind die integrierte Dokumentation für Linux-Befehle, Dienstprogramme und Systemaufrufe. Sie bieten eine detaillierte Beschreibung dessen, was ein Befehl tut, welche Optionen (oder Flags) verfügbar sind und wie man ihn verwendet. Sie sind Ihre erste und beste Quelle für Hilfe in der Kommandozeile.
-
-### Zugriff auf ein Handbuch mit man
-
-Um das Handbuch für einen beliebigen Befehl anzuzeigen, verwenden Sie `man` gefolgt vom Namen des Befehls. Zum Beispiel, um das Handbuch für `ls` zu lesen, geben Sie ein:
+Übergib `man` den Namen eines Themas. Die Seite zu `ls` öffnest du beispielsweise so:
 
 ```bash
 $ man ls
 ```
 
-Dies öffnet die man-Seite von `ls`. Sie können mit den Pfeiltasten scrollen, mit `/` suchen und mit `q` beenden.
+Handbuchseiten enthalten häufig eine Übersicht der Syntax, eine Beschreibung, Optionen, zugehörige Dateien und Querverweise. Die genauen Abschnitte können jedoch variieren.
 
-### Details zu Befehlsoptionen finden
+:::single-choice{#open-ls-manual} Welcher Befehl öffnet die installierte Handbuchseite für `ls`?
 
-Man pages sind besonders nützlich, um Befehlsoptionen zu verstehen. Wenn Sie beispielsweise `ls -l` gesehen haben und wissen möchten, was `-l` bedeutet, öffnen Sie `man ls` und suchen Sie nach `-l`.
+::option[`help ls`]{#help-ls explanation="Bash `help` dokumentiert Shell-Builtins und öffnet normalerweise nicht die Handbuchseite des externen Programms `ls`."}
+::option[`man ls`]{#manual-ls-page .correct explanation="`man` sucht im Handbuchbestand nach dem Thema `ls` und zeigt die passende Seite an."}
+::option[`ls --help`]{#ls-usage explanation="Damit forderst du von `ls` eine eigene Nutzungsübersicht an. Die installierte Handbuchseite wird nicht geöffnet."}
+:::
 
-Innerhalb einer man-Seite:
+## Auf einer Seite navigieren und suchen
 
-- Drücken Sie `/` und geben Sie einen Suchbegriff ein, um vorwärts zu suchen.
-- Drücken Sie `n`, um zum nächsten Treffer zu springen.
-- Drücken Sie `N`, um zum vorherigen Treffer zu springen.
-- Drücken Sie `q`, um zu beenden.
+Auf vielen Systemen zeigt `man` Seiten über einen Pager wie `less` an. Bei geöffneter Seite kannst du mit Pfeil- oder Bildtasten scrollen und folgende Steuerungen verwenden:
 
-### Verständnis der Man Page Abschnitte
+Innerhalb einer Manpage:
 
-Handbuchseiten sind in nummerierte Abschnitte gegliedert. Häufige Abschnitte sind:
+- Gib `/pattern` ein und drücke Enter, um vorwärts zu suchen.
+- Drücke `n`, um die Suche in derselben Richtung zu wiederholen.
+- Drücke `N`, um sie in der Gegenrichtung zu wiederholen.
+- Drücke `q`, um die Ansicht zu beenden.
+
+Je nach System oder Umgebung kann ein anderer Pager zum Einsatz kommen. Die genannten Tasten gelten für die verbreitete Konfiguration mit `less`.
+
+:::single-choice{#search-man-page} Wie startest du in einer mit `less` geöffneten Manpage eine Vorwärtssuche nach `--recursive`?
+
+::option[Gib `?--recursive` ein und drücke Enter.]{#backward-man-search explanation="Ein Fragezeichen beginnt eine Rückwärtssuche und sucht damit in der entgegengesetzten Richtung."}
+::option[Gib `/--recursive` ein und drücke Enter.]{#forward-man-search .correct explanation="Ein Schrägstrich beginnt in `less` eine Vorwärtssuche; mit Enter sendest du das Muster ab."}
+::option[Gib `n--recursive` ein und drücke Enter.]{#repeat-man-search explanation="Die Taste `n` wiederholt eine vorhandene Suche. Auf diese Weise wird kein neues Suchmuster eingeführt."}
+:::
+
+:::single-choice{#leave-man-page} Welche Taste kehrt aus einer im üblichen Pager geöffneten Manpage zur Shell zurück?
+
+::option[`G`]{#man-page-end explanation="Das große `G` springt in `less` ans Seitenende. Der Pager bleibt geöffnet."}
+::option[`n`]{#next-man-match explanation="Die Taste `n` wiederholt die letzte Suche und lässt die Handbuchseite geöffnet."}
+::option[`q`]{#quit-man .correct explanation="Die Taste `q` beendet den üblichen Pager und gibt die Kontrolle an die Shell zurück."}
+:::
+
+## Einen Handbuchabschnitt auswählen
+
+Das Handbuch ist in nummerierte Abschnitte gegliedert. Häufige Abschnitte sind:
 
 - `1`: Benutzerbefehle.
 - `2`: Systemaufrufe.
@@ -46,35 +66,44 @@ Handbuchseiten sind in nummerierte Abschnitte gegliedert. Häufige Abschnitte si
 - `5`: Dateiformate.
 - `8`: Systemverwaltungsbefehle.
 
-Manchmal existiert derselbe Name in mehreren Abschnitten. Sie können die Abschnittsnummer angeben:
+Dasselbe Thema kann in mehreren Abschnitten vorkommen. Setze die Abschnittsnummer vor das Thema, um eine Seite ausdrücklich auszuwählen:
 
 ```bash
 $ man 5 passwd
 $ man 1 passwd
 ```
 
-### Häufige Fragen
+Der erste Befehl öffnet die Dateiformatseite zu `passwd` aus Abschnitt 5, der zweite die Benutzerbefehlsseite aus Abschnitt 1. Verweise wie `passwd(5)` verwenden dieselbe Schreibweise `topic(section)`.
 
-**Warum ist die Ausgabe von man so lang?** Man pages sind Referenzdokumentationen. Verwenden Sie die Suche innerhalb von `man`, um direkt zum benötigten Teil zu springen.
+:::single-choice{#open-passwd-file-format} Welcher Befehl öffnet die Seite aus Abschnitt 5, die das Dateiformat `passwd` dokumentiert?
 
-**Wie beende ich man?** Drücken Sie `q`.
+::option[`man passwd 5`]{#section-after-topic explanation="Bei dieser Befehlsform gehört der Abschnitt vor das Thema. Diese Reihenfolge fordert nicht `passwd(5)` an."}
+::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Wenn Abschnitt `5` vor `passwd` steht, wird gezielt die Dateiformatseite ausgewählt."}
+::option[`man 1 passwd`]{#passwd-command-page explanation="Abschnitt 1 enthält Benutzerbefehle. Dieser Befehl wählt daher die Befehlsseite zu `passwd` statt der Dateiformatseite aus."}
+:::
 
-**Was, wenn keine man-Seite existiert?** Versuchen Sie `COMMAND --help`, `help COMMAND` oder installieren Sie das Dokumentationspaket Ihrer Distribution.
+## Wenn eine Seite fehlt
 
-## Exercise
+Nicht für jeden Befehlsnamen ist eine eigene Handbuchseite installiert. Meldet `man`, dass kein Eintrag vorhanden ist:
 
-Übung ist der Schlüssel zur Beherrschung der Kommandozeile. Diese praktischen Labs helfen Ihnen, Ihre Fähigkeiten mit grundlegenden Befehlen zu festigen. Nach Abschluss verwenden Sie den Befehl `man`, um das volle Potenzial jedes Werkzeugs zu erkunden.
+- Führe `type NAME` aus, um die Namensauflösung durch Bash zu prüfen.
+- Verwende bei einem Bash-Builtin `help NAME`.
+- Probiere bei einem externen Programm `NAME --help`, sofern es diese Konvention unterstützt.
+- Prüfe, ob deine Distribution ein separates Dokumentationspaket anbietet.
 
-1. **[Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** – Üben Sie das Auflisten und Analysieren von Datei- und Verzeichnisinhalten und verwenden Sie dann `man ls`, um weitere Optionen zu entdecken.
-2. **[Linux pwd Command: Directory Displaying](https://labex.io/de/labs/linux-linux-pwd-command-directory-displaying-209734)** – Lernen Sie den Befehl `pwd` kennen, um Ihr aktuelles Verzeichnis anzuzeigen, und erkunden Sie dessen man-Seite für Details.
-3. **[Linux cd Command: Directory Changing](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** – Meistern Sie die Navigation im Dateisystem mit `cd` und verwenden Sie `man cd`, um verschiedene Techniken zu verstehen.
+:::single-choice{#missing-builtin-manual} `type cd` meldet, dass `cd` ein Bash-Builtin ist, und es ist keine eigene Manpage verfügbar. Welchen Befehl solltest du als Nächstes versuchen?
 
-Diese Labs helfen Ihnen, Kernkonzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit wichtigen Linux-Befehlen aufzubauen, damit Sie `man` effektiv nutzen können, um Ihr Wissen zu vertiefen.
+::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` fasst Einträge aus der Handbuchdatenbank zusammen. Eine fehlende eigene Seite für das Builtin kann es nicht bereitstellen."}
+::option[`file cd`]{#file-cd-name explanation="`file` klassifiziert Dateisystemobjekte; hier wird `cd` jedoch als Shell-Builtin und nicht als Pfad aufgelöst."}
+::option[`help cd`]{#builtin-cd-help .correct explanation="Das Bash-Builtin `help` stellt die eigene Dokumentation der Shell für `cd` bereit."}
+:::
 
-## Quiz Question
+## Zusammenfassung
 
-Wie sehen Sie das Handbuch für einen Befehl? (Bitte antworten Sie nur mit dem Befehlsnamen in Kleinbuchstaben auf Englisch).
+Du kannst nun installierte Handbuchdokumentation finden und darin navigieren.
 
-## Quiz Answer
-
-man
+1. Öffne eine Seite nach ihrem Themennamen.
+2. Suche und navigiere im üblichen Pager durch eine Seite.
+3. Beende den Pager und kehre zur Shell zurück.
+4. Wähle einen nummerierten Handbuchabschnitt aus.
+5. Nutze eine andere Hilfequelle, wenn keine Seite verfügbar ist.

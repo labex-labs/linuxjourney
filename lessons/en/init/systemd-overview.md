@@ -1,56 +1,104 @@
 ---
-index: 5
+lesson_id: "systemd-overview"
+course_id: "init"
 lang: "en"
+order_index: 5
 title: "Systemd Overview"
+description: "Learn how systemd loads units, resolves dependencies, activates targets, and manages system and user resources."
 meta_title: "Systemd Overview - Init"
 meta_description: "Learn the fundamentals of the systemd init system. This guide covers how systemd (or system d) uses units and targets to manage the Linux boot process and system services. Understand the core concepts of the modern standard for Linux initialization."
 meta_keywords: "systemd, system d, init system, systemd units, systemd targets, linux boot process, linux services, system management, beginner, tutorial"
 ---
 
-## Lesson Content
+Systemd is the PID 1 init and service manager used by many current Linux distributions. The systemd project also provides logging, device, login, network, time, and other components, but distributions can choose which parts to deploy.
 
-### What is Systemd?
+## Confirming the Running Manager
 
-Systemd is the default init system and service manager for most modern Linux distributions. It is responsible for initializing the system in the correct order after the kernel is loaded. A simple way to check if your system uses it is to see if the `/usr/lib/systemd` directory exists. If it does, you are likely running a system managed by **systemd**.
+Inspect live state rather than the existence of installed directories:
 
-### The Systemd Boot Process
+```bash
+$ ps -p 1 -o pid,comm,args=
+$ systemctl is-system-running
+```
 
-Instead of rigid sequential scripts, **systemd** uses the concept of "goals" to bring your system to a functional state. It identifies a primary goal, or `target`, and works to satisfy its dependencies. This approach allows for greater flexibility and parallelization during startup. A typical boot process managed by **systemd** follows these steps:
+`/usr/lib/systemd/` can exist on a system where another program is PID 1, and a container can expose its own PID namespace. `systemctl` also has user-manager and remote/container modes, so identify which manager an operation targets.
 
-1. **systemd** first loads its configuration files from directories like `/etc/systemd/system` and `/usr/lib/systemd/system`.
-2. It then identifies the default boot goal, which is typically a symbolic link named `default.target`.
-3. Finally, **systemd** resolves all dependencies for this target and activates the necessary units to achieve the desired system state.
+:::single-choice{#systemd-overview-detection} What most directly identifies systemd as the system init manager?
 
-### Understanding Systemd Targets
+::option[A directory named `/usr/lib/systemd` exists.]{#systemd-overview-directory explanation="Libraries and unit files can remain installed without systemd acting as PID 1."}
+::option[A user has executed one command named `systemctl`.]{#systemd-overview-command-executed explanation="A client binary can exist even when no system systemd manager is available."}
+::option[The host's PID 1 is systemd.]{#systemd-overview-pid-one .correct explanation="The running first process is stronger evidence than installed files or package names."}
+:::
 
-Targets in **systemd** are analogous to runlevels in the older SysV init system. They represent different states the system can be in. Common targets include:
+## Units as Managed Objects
 
-- `poweroff.target`: Shuts down the system.
-- `rescue.target`: Boots into a single-user shell for maintenance.
-- `multi-user.target`: A standard multi-user environment with networking but no graphical interface.
-- `graphical.target`: A full multi-user environment with networking and a graphical user interface (GUI).
-- `reboot.target`: Restarts the system.
+A unit is systemd's named model of a resource or activity. Common unit types include:
 
-The `default.target` is a symbolic link that points to the target the system will boot into by default, often `graphical.target` on desktop systems.
+- `.service` for processes and daemons
+- `.socket` for socket activation
+- `.mount` and `.automount` for filesystems
+- `.timer` and `.path` for event-driven activation
+- `.target` for grouping and synchronization
+- `.device`, `.swap`, `.slice`, and `.scope` for other managed resources
 
-### Core Concept: Systemd Units
+Unit state is not always “running.” A mount can be mounted, a timer waiting, a device present, and a target active after its dependencies are reached.
 
-The fundamental objects that **systemd** manages are called "units." A unit is a configuration file that describes a resource or service. The power of the **system d** architecture lies in its ability to manage various types of resources, not just services. Each unit type is identified by its file extension. The most common types are:
+:::single-choice{#systemd-overview-group-unit} Which unit type commonly groups other units and provides a synchronization point?
 
-- **Service units (`.service`):** These manage system daemons or services, such as a web server or a database.
-- **Mount units (`.mount`):** These control filesystem mount points.
-- **Target units (`.target`):** These are used to group other units together, creating synchronization points during boot-up.
+::option[`.socket`]{#systemd-overview-socket explanation="Socket units expose IPC or network endpoints and can activate services."}
+::option[`.target`]{#systemd-overview-target .correct explanation="Target units collect dependencies and represent boot or operational milestones."}
+::option[`.timer`]{#systemd-overview-timer explanation="Timer units schedule activation based on calendar or monotonic time."}
+:::
 
-For instance, when the system boots into `graphical.target`, that target unit ensures that all its dependencies, such as `multi-user.target` and various service units like `network.service`, are started first.
+## Unit Load Paths and Overrides
 
-## Exercise
+System units can be loaded from distribution and administrator paths such as:
 
-While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
+- `/usr/lib/systemd/system/` for package-provided units on many distributions
+- `/run/systemd/system/` for runtime-generated or transient configuration
+- `/etc/systemd/system/` for persistent local administrator configuration and overrides
 
-## Quiz Question
+Exact vendor paths can differ. Higher-priority local configuration overrides lower-priority files with the same unit name. Prefer drop-in overrides created with `systemctl edit UNIT` over copying and modifying a complete vendor file, so package updates remain visible.
 
-What unit is used to group together other units? Please answer in a single lowercase English word.
+:::single-choice{#systemd-overview-local-override} Where should persistent local system-unit overrides normally reside?
 
-## Quiz Answer
+::option[Inside `/proc/systemd/`.]{#systemd-overview-proc-systemd explanation="Procfs is a runtime kernel interface, not persistent unit configuration."}
+::option[Under `/etc/systemd/system/`.]{#systemd-overview-etc-system .correct explanation="The administrator configuration layer takes precedence over packaged vendor units."}
+::option[In the disk's MBR boot-code bytes.]{#systemd-overview-mbr-units explanation="Service units are user-space configuration files."}
+:::
 
-target
+## Dependencies and Ordering
+
+Systemd builds a transaction from dependency relationships. `Wants=` and `Requires=` pull other units into a transaction with different strength. `Before=` and `After=` specify ordering when both units are scheduled; they do not by themselves cause another unit to start.
+
+An `After=network.target` line does not prove that usable connectivity, DNS, or a specific remote endpoint is ready. Services must use the appropriate network-online integration or implement their own retry and readiness behavior.
+
+:::single-choice{#systemd-overview-after-semantics} What does `After=other.service` specify by itself?
+
+::option[A guarantee that the other service's application endpoint is healthy.]{#systemd-overview-after-health explanation="Ordering completion and application readiness are different concepts."}
+::option[Ordering if both units are part of the transaction.]{#systemd-overview-after-ordering .correct explanation="A separate requirement such as Wants or Requires is needed to pull the other unit in."}
+::option[Automatic enablement of both units at every future boot.]{#systemd-overview-after-enable explanation="Enablement is installation metadata and is not implied by ordering."}
+:::
+
+## Targets and the Default Boot Transaction
+
+`default.target` is commonly an alias to a target such as `multi-user.target` or `graphical.target`. Systemd starts a transaction for that target and its dependencies, allowing unrelated work to proceed concurrently while enforcing explicit ordering.
+
+Targets resemble runlevels only at a broad compatibility level. Multiple targets can be active simultaneously, custom targets can be created, and target activity does not mean every service on the machine is healthy.
+
+:::single-choice{#systemd-overview-default-target} What does `default.target` normally select?
+
+::option[The default block device that `mkfs` should erase.]{#systemd-overview-default-disk explanation="Targets describe unit activation, not destructive storage selection."}
+::option[The only target that can ever be active.]{#systemd-overview-only-target explanation="Targets are groupings, and many can be active in one boot."}
+::option[The target transaction used for a normal system boot.]{#systemd-overview-normal-boot .correct explanation="It is commonly an alias to the administrator-selected multiuser or graphical boot target."}
+:::
+
+## Summary
+
+You can now describe systemd in terms of live managers, units, and transactions.
+
+1. Confirm systemd through the relevant PID 1 and manager connection.
+2. Match resource types to unit suffixes.
+3. Place local overrides above vendor configuration.
+4. Separate dependency strength, ordering, and application readiness.
+5. Treat targets as groupings and milestones rather than exclusive states.

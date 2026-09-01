@@ -1,80 +1,113 @@
 ---
-index: 11
+lesson_id: "inodes"
+course_id: "filesystem"
 lang: "zh"
-title: "索引节点"
-meta_title: "索引节点 - 文件系统"
-meta_description: "探索 Linux 索引节点（inode）的概念。了解什么是 i 节点，Linux 中的 inode 如何管理文件元数据，以及如何使用 `df -i` 和 `ls -li` 检查 inode 使用情况。"
-meta_keywords: "linux inode, linux 索引节点，i 节点，inode, inode linux, 索引节点号，文件系统，df -i, ls -li, stat"
+order_index: 11
+title: "Inode"
+description: "了解 inode 编号如何把目录名称与文件系统对象的元数据和数据联系起来。"
+meta_title: "Inode - 文件系统"
+meta_description: "探索 Linux inode 的概念。了解 i-node 是什么、Linux 中的 inode 如何管理文件元数据，以及如何使用 `df -i` 和 `ls -li` 检查 inode 使用情况。"
+meta_keywords: "linux inode, linux 索引节点，i 节点，inode, inode linux, inode 编号，文件系统，df -i, ls -li, stat"
 ---
 
-## Lesson Content
+在基于 inode 的 Unix 文件系统中，目录会把每个条目名称映射到一个 inode 编号。Inode 表示文件系统对象，并记录定位和解释其数据所需的元数据。因此，路径名并不作为对象自身的主要身份存储。
 
-还记得我们的文件系统由所有实际文件和一个管理它们的数据库组成吗？这个数据库被称为 inode 表，是`inode in linux`工作原理的基础部分。
+## Inode 存储的元数据
 
-### 什么是 Linux Inode
+通常与 inode 关联的元数据包括：
 
-Inode（索引节点，index node 的缩写）是该表中的一个条目。每个文件和目录都有自己的`inode`。它描述了关于文件的所有信息，例如：
+- 对象类型和权限模式
+- 用户和组所有权
+- 逻辑大小与已分配数据块统计
+- 硬链接数
+- 访问、修改和状态变更时间戳
+- 指向文件数据或文件系统特定区段结构的引用
 
-- 文件类型（例如，常规文件、目录、字符设备）
-- 所有者
-- 组
-- 访问权限
-- 时间戳：mtime（最后修改时间）、ctime（最后属性更改时间）、atime（最后访问时间）
-- 对该文件的硬链接数
-- 文件大小
-- 分配给该文件的块数
-- 指向文件数据块的指针（最重要！）
+Inode 通常不存储目录条目名称。文件系统还可能通过特定格式的结构保存扩展属性、访问控制列表、创建时间、内联数据或其他信息。
 
-本质上，一个`i node`存储了关于文件的所有元数据，除了其名称和实际内容。
+`ctime` 是 inode 状态变更时间，不一定是文件创建时间。单独的出生或创建时间戳是可选的，可能并不存在。
 
-### Inode 的创建和分配
+:::single-choice{#inodes-name-location} 普通文件的路径名组成部分通常在哪里与其 inode 编号关联？
 
-创建文件系统时，也会分配 inode 的空间。算法会根据磁盘的容量和其他因素确定您需要的`inode`空间量。您可能以前见过“磁盘空间不足”的错误。inode 也可能发生这种情况，尽管不太常见。如果 inode 用尽，您将无法创建新文件。数据存储同时依赖于数据块和数据库（`inode`表）。
+::option[在进程调度器中。]{#inodes-scheduler-name explanation="CPU 调度状态并不实现文件系统路径名查找。"}
+::option[在目录条目中。]{#inodes-directory-entry .correct explanation="目录会把名称映射到同一文件系统中的 inode 编号。"}
+::option[在磁盘分区表中。]{#inodes-partition-name explanation="分区表映射存储区域，而不是单个文件名。"}
+:::
 
-要查看系统上还剩多少 inode，请使用`df -i`命令。对于管理大量小文件的系统管理员来说，这是一个至关重要的检查。
+## Inode 编号与文件系统范围
 
-### 查看 Inode 信息
-
-每个`linux inode`都由一个唯一的数字标识。创建文件时，会为其分配一个 inode 编号，通常是连续的。但是，您可能会注意到一个新文件获得了比旧文件更小的 inode 编号。这是因为被删除的 inode 编号可以被新文件重用。要查看 inode 编号，请运行`ls -li`：
+使用以下命令显示 inode 编号：
 
 ```bash
-pete@icebox:~$ ls -li
-140 drwxr-xr-x 2 pete pete 6 Jan 20 20:13 Desktop
-141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
+$ ls -li
 ```
 
-该命令输出中的第一个字段就是 inode 编号。您还可以使用`stat`命令查看文件`i node`的详细信息：
+第一个字段就是 inode 编号。可以用以下命令更详细地检查一个对象：
 
 ```bash
-pete@icebox:~$ stat ~/Desktop/
-  File: ‘/home/pete/Desktop/’
-  Size: 6               Blocks: 0          IO Block: 4096   directory
-Device: 806h/2054d      Inode: 140         Links: 2
-Access: (0755/drwxr-xr-x)  Uid: ( 1000/   pete)   Gid: ( 1000/   pete)
-Access: 2016-01-20 20:13:50.647435982 -0800
-Modify: 2016-01-20 20:13:06.191675843 -0800
-Change: 2016-01-20 20:13:06.191675843 -0800
- Birth: -
+$ stat path
 ```
 
-### I-Node 如何指向数据
+Inode 编号只在某个文件系统的特定时刻内唯一。另一个文件系统可以使用相同编号，inode 释放后也可能复用该编号。要稳健地标识对象，应同时使用文件系统身份和 inode 编号，而不能只看 inode 编号。
 
-我们知道数据存储在磁盘上，但它可能不是在一个连续的块中。这就是`inode linux`结构变得至关重要的地方。Inode 指向文件的实际数据块。在典型文件系统中（尽管实现各不相同），每个 inode 包含 15 个指针。前 12 个指针直接指向数据块。第 13 个指针指向一个包含更多指针的块。第 14 和第 15 个指针指向更深层次的指针块。这可能看起来很复杂，但这种结构允许`i node`保持固定大小，同时能够引用不同大小的文件。小文件可以使用直接指针快速访问，而大文件则通过嵌套指针定位。
+:::single-choice{#inodes-number-scope} Inode 编号在哪个范围内可以作为对象标识符？
 
-## Exercise
+::option[永久适用于世界上的每一台 Linux 系统。]{#inodes-global-forever explanation="Inode 分配局限于单个文件系统，而且标识符可以复用。"}
+::option[某个文件系统的某个特定时刻。]{#inodes-one-filesystem .correct explanation="其他文件系统可以使用相同编号，释放后的 inode 编号也可能再次使用。"}
+::option[只适用于创建文件的 shell 进程。]{#inodes-shell-scope explanation="Inode 身份由文件系统维护，而不是由某个 shell 维护。"}
+:::
 
-熟能生巧！这里有一些动手实验，以加强您对 Linux 文件系统和文件管理的理解：
+## 硬链接与打开引用
 
-1. **[在 Linux 中管理文件和目录](https://labex.io/zh/labs/comptia-manage-files-and-directories-in-linux-590835)** - 练习创建、删除、复制和移动文件和目录，并探索创建符号链接和硬链接，同时分析 inode。
-2. **[在 Linux 中导航文件系统](https://labex.io/zh/labs/comptia-navigate-the-filesystem-in-linux-590971)** - 学习使用`pwd`、`cd`和`ls`等基本 shell 命令来导航 Linux 文件系统的基本技能。
-3. **[在 Linux 中查找文件和命令](https://labex.io/zh/labs/comptia-find-files-and-commands-in-linux-590834)** - 掌握使用`find`、`locate`、`whereis`、`which`和`type`在 Linux 中定位文件和命令的基本技术。
+多个目录条目可以指向同一个 inode，这些条目称为硬链接。创建另一个硬链接会增加对象的链接数。只要仍有其他链接存在，移除一个名称只会减少链接数，不会删除数据。
 
-这些实验将帮助您在实际场景中应用这些概念，并建立对 Linux 文件系统管理的信心。
+即使最后一个目录条目已经删除，只要文件仍处于打开状态，它就会继续占用空间，直到最后一个进程引用关闭。其链接数可以为零，但文件描述符仍能访问它。这解释了为什么删除仍处于打开状态的大型日志后，`df` 用量可能不会立即下降。
 
-## Quiz Question
+:::single-choice{#inodes-unlinked-open-file} 已取消链接文件的资源通常在何时释放？
 
-如何查看系统上还剩下多少 inode？（请用英语回答，注意区分大小写。）
+::option[任意一个硬链接名称被移除后立即释放。]{#inodes-one-link-removed explanation="其他硬链接或打开引用仍可能让对象保持有效。"}
+::option[只有重新格式化整个文件系统后才释放。]{#inodes-reformat-only explanation="正常的取消链接和关闭操作会回收不再使用的 inode 与数据块。"}
+::option[链接数归零且最后一个打开引用关闭后。]{#inodes-zero-links-no-opens .correct explanation="目录名称和进程文件描述符是彼此独立的 inode 引用。"}
+:::
 
-## Quiz Answer
+## Inode 容量
 
-df -i
+对于 inode 池有限或能够报告 inode 容量的文件系统，数百万个小文件可能在数据块填满前耗尽元数据容量。使用以下命令检查已挂载文件系统的 inode 统计：
+
+```bash
+$ df -i
+```
+
+如果没有可用 inode，即使 `df -h` 显示还有可用数据块，创建文件也可能失败。分配策略有所不同：某些文件系统在创建时预分配 inode 结构，另一些动态管理元数据，并可能以不同方式报告 inode 容量。
+
+:::single-choice{#inodes-df-i-purpose} 对于提供 inode 统计的文件系统，`df -i` 报告什么？
+
+::option[按 inode 顺序显示每个文件的内容。]{#inodes-df-i-content explanation="Df 报告文件系统汇总统计，不会读取文件内容。"}
+::option[已用和可用的 inode 容量。]{#inodes-df-i-capacity .correct explanation="Inode 视图有助于独立于数据块诊断元数据对象耗尽。"}
+::option[磁盘固件版本。]{#inodes-df-i-firmware explanation="固件清单与 inode 用量无关。"}
+:::
+
+## 文件系统特有的数据映射
+
+不要假设每个 inode 都严格包含 12 个直接指针和 3 个间接指针。这可以描述某些经典文件系统布局，但现代 ext4 可以使用区段，XFS、Btrfs 和其他文件系统也采用不同结构。内联数据、压缩区段或写时复制区段会进一步改变这种关系。
+
+需要研究内部映射时，只能以只读模式或文档规定的模式使用文件系统专用诊断工具。对于普通管理，`stat`、`find -inum`、`df -i` 和能够识别链接的工具提供了更安全的抽象。
+
+:::single-choice{#inodes-layout-portability} 为什么不能假设每个 inode 都采用同一种固定指针布局？
+
+::option[Inode 从不以任何方式引用文件数据。]{#inodes-no-data-reference explanation="文件系统必须把对象与其内容关联，只是机制有所不同。"}
+::option[不同文件系统实现使用不同的区段、树和内联数据结构。]{#inodes-format-specific-layout .correct explanation="从 inode 到内容的磁盘映射属于各文件系统格式的一部分。"}
+::option[每个 inode 的布局都由文件所有者单独选择。]{#inodes-owner-layout explanation="元数据结构由文件系统实现和格式决定。"}
+:::
+
+可以在[在 Linux 中管理文件和目录](https://labex.io/zh/labs/comptia-manage-files-and-directories-in-linux-590835)实验中，使用可丢弃文件比较 inode 编号和链接数。
+
+## 总结
+
+现在，你可以理解路径名、inode、链接与文件系统容量之间的关系。
+
+1. 将目录条目视为从名称到 inode 编号的映射。
+2. 阅读元数据和时间戳时，不要把 ctime 误认为创建时间。
+3. 把 inode 编号限定在一个文件系统和某个时刻内。
+4. 同时考虑硬链接和打开的文件描述符。
+5. 使用文件系统特有模型，而不是套用一种通用指针布局。

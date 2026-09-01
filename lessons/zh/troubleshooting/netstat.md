@@ -1,87 +1,100 @@
 ---
-index: 4
+lesson_id: "netstat"
+course_id: "troubleshooting"
 lang: "zh"
-title: "netstat 命令"
-meta_title: "netstat 命令 - 网络故障排除"
-meta_description: "掌握 Linux netstat 命令以分析网络连接、端口和套接字。本指南涵盖 SYN_SENT 和 netstat close_wait 等常见状态，以实现有效的故障排除。"
-meta_keywords: "linux netstat, netstat, netstat 命令，syn_sent netstat, netstat close_wait, 网络连接，linux 网络，网络分析，linux 教程"
+order_index: 4
+title: "netstat"
+description: "了解如何使用 ss 检查 Linux 套接字、监听器、队列和 TCP 状态。"
+meta_title: "netstat - 故障排除"
+meta_description: "掌握 Linux netstat 命令，分析网络连接、端口和套接字。本指南介绍 SYN-SENT 和 CLOSE-WAIT 等常见状态，帮助你有效排查故障。"
+meta_keywords: "Linux netstat, netstat, netstat 命令, SYN-SENT netstat, netstat CLOSE-WAIT, 网络连接, Linux 网络, 网络分析, Linux 教程"
 ---
 
-## Lesson Content
+传统的 `netstat` 工具显示套接字、路由和接口统计信息。在现代 Linux 中，`ss` 是首选的套接字检查工具，因为它能高效显示内核套接字状态，并随 iproute2 持续维护。
 
-### 常用端口
+## 列出监听套接字
 
-我们已经讨论了数据如何通过我们机器上的端口传输。让我们来看看一些常见、广为人知的端口。您可以在 **/etc/services** 文件中找到这些端口的列表：
-
-```plaintext
-ftp             21/tcp
-ssh             22/tcp
-smtp            25/tcp
-domain          53/tcp  # DNS
-http            80/tcp
-https           443/tcp
-..etc..
-```
-
-第一列显示服务名称，后跟其分配的端口号和使用的传输层协议。
-
-### Linux netstat 简介
-
-一个用于收集详细网络信息的极其有用的工具是 **netstat**。`linux netstat` 命令显示了广泛的网络相关数据，包括活动的网络连接、路由表和接口统计信息。它通常被称为网络工具中的瑞士军刀。
-
-本课程将重点介绍使用 `netstat` 来检查网络连接的状态。在深入研究示例之前，让我们澄清套接字（socket）和端口（port）之间的区别。**端口** 是用于将数据导向特定应用程序的数字标识符。**套接字** 是通信的端点，允许程序发送和接收数据。套接字地址是 IP 地址和端口号的唯一组合。主机和目标之间的每次连接都需要一个唯一的套接字。例如，虽然 HTTP 服务运行在端口 80 上，但可以同时存在多个 HTTP 连接，并且每个连接都会创建一个唯一的套接字。
-
-让我们检查 `netstat -at` 的输出：
+以数字形式显示监听中的 TCP 和 UDP 套接字，并在权限允许时显示所属进程：
 
 ```bash
-pete@icebox:~$ netstat -at
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State
-tcp        0      0 icebox:domain           *:*                     LISTEN
-tcp        0      0 localhost:ipp           *:*                     LISTEN
-tcp        0      0 icebox.lan:44468        124.28.28.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34751        124.28.29.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34604        economy.canonical.:http TIME_WAIT
-tcp6       0      0 ip6-localhost:ipp       [::]:*                  LISTEN
-tcp6       1      0 ip6-localhost:35094     ip6-localhost:ipp       CLOSE_WAIT
-tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
+$ sudo ss -lntup
 ```
 
-`netstat -a` 命令显示所有正在监听和未在监听的套接字，而 `-t` 标志将输出过滤为仅显示 TCP 连接。
+`-l` 选择监听器，`-n` 避免名称查询，`-t` 和 `-u` 分别选择 TCP 与 UDP，`-p` 请求进程数据。UDP 是无连接协议，因此未连接但已绑定的 UDP 套接字没有 TCP 风格的 `LISTEN` 握手。
 
-这些列如下所示：
+:::single-choice{#netstat-ss-numeric} 排查套接字问题时为什么使用 `-n`？
 
-- **Proto**: 使用的协议（例如，TCP 或 UDP）。
-- **Recv-Q**: 等待接收的数据队列。
-- **Send-Q**: 等待发送的数据队列。
-- **Local Address**: 本地主机的地址。
-- **Foreign Address**: 远程主机的地址。
-- **State**: 套接字的当前状态。
+::option[它会创建新的网络命名空间。]{#netstat-new-namespace explanation="该选项控制输出中的名称解析。"}
+::option[它会阻止地址和端口名称查询。]{#netstat-numeric-output .correct explanation="数字输出避免把服务名映射与观察到的协议身份混淆。"}
+::option[它会关闭所有非监听套接字。]{#netstat-close-sockets explanation="检查操作不会终止套接字。"}
+:::
 
-### 理解连接状态
+## 端口、端点与服务
 
-**State** 列提供了有关连接状态的关键信息。以下是一些您会遇到的常见状态：
+本地套接字端点由地址、传输协议和端口组合而成。一个 TCP 连接由协议、源地址与端口以及目的地址与端口共同区分。`/etc/services` 把约定俗成的名称映射为数字，但不能证明当前由哪个进程占用某个端口，也不能证明该进程实际使用哪种应用层协议。
 
-- **LISTENING**: 套接字正在等待传入连接。对于 TCP 连接的建立，目标必须处于监听状态。
-- **SYN_SENT**: 当使用 `netstat` 时，`SYN_SENT` 状态表示套接字正在主动尝试建立连接。
-- **ESTABLISHED**: 套接字具有完全建立的连接。
-- **CLOSE_WAIT**: `netstat close_wait` 状态意味着远程主机已关闭，本地系统正在等待应用程序关闭套接字。
-- **TIME_WAIT**: 套接字在关闭后等待，以处理网络中可能仍然存在的任何数据包。
+:::single-choice{#netstat-services-file-limit} `/etc/services` 中的 `https 443/tcp` 条目能确定什么？
 
-You can see a full list of socket states in the `netstat` man page. (您可以在 `netstat` 手册页中看到套接字状态的完整列表。)
+::option[当前有一台健康的 HTTPS 服务器正在监听。]{#netstat-healthy-listener explanation="静态名称数据库无法证明运行时状态。"}
+::option[该端口约定俗成的服务名映射。]{#netstat-conventional-name .correct explanation="套接字所有者与实际协议行为需要运行时检查和测试。"}
+::option[所有 443 端口流量都已正确加密。]{#netstat-all-encrypted explanation="端口号无法验证 TLS 行为。"}
+:::
 
-## Exercise
+## 解读 TCP 状态
 
-练习造就完美！这是一个强化您对网络接口设置理解的动手实验：
+常见状态包括：
 
-1. **[在 Linux 中使用 ethtool 检查网络接口设置](https://labex.io/zh/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - 学习使用 `ethtool` 命令来检查和管理网络接口设置，包括查看和设置接口速度和双工模式，以及分析链路模式以解决物理层网络问题。
+- `SYN-SENT`：本地端点已发送连接请求，正在等待后续进展。
+- `ESTAB`：TCP 连接已经建立。
+- `CLOSE-WAIT`：对端已关闭其发送方向，但本地应用程序尚未关闭套接字。
+- `TIME-WAIT`：主动关闭连接的端点等待延迟报文段过期，并确保最终交换得到安全处理。
 
-此实验将帮助您在实际场景中应用这些概念，并建立管理网络接口的信心。
+大量或持续增长的 `CLOSE-WAIT` 往往指向本地应用程序的清理行为。`TIME-WAIT` 是正常的协议状态；其数量和资源影响决定它在运维上是否值得担忧。
 
-## Quiz Question
+:::single-choice{#netstat-close-wait-owner} 套接字处于 `CLOSE-WAIT` 时，哪一方仍需将其关闭？
 
-HTTPS 使用哪个端口？
+::option[互联网上的每一台路由器。]{#netstat-all-routers-close explanation="路由器并不拥有端点套接字。"}
+::option[DNS 权威服务器。]{#netstat-dns-close explanation="名称服务与本地 TCP 关闭处理无关。"}
+::option[本地应用程序。]{#netstat-local-close .correct explanation="TCP 已收到对端的 FIN，正在等待本地进程关闭己方套接字。"}
+:::
 
-## Quiz Answer
+## 解读队列
 
-443
+`Recv-Q` 和 `Send-Q` 的含义取决于状态与协议。在已建立的 TCP 套接字上，它们可以表示等待应用程序接收或等待确认传输的数据；在监听套接字上，队列字段描述的是连接积压状态，含义不同于应用程序载荷字节。
+
+单次快照无法证实泄漏或瓶颈。应持续采样，并结合进程行为、应用程序延迟、重传和资源限制进行分析。
+
+:::single-choice{#netstat-queue-snapshot} 为什么单次出现较大的套接字队列不足以完成诊断？
+
+::option[Linux 从不在套接字队列中存储数据。]{#netstat-no-queues explanation="内核网络功能依赖发送和接收队列。"}
+::option[每个队列值都是一种文件系统权限。]{#netstat-queue-permission explanation="这些字段描述网络状态。"}
+::option[评估队列影响需要状态、趋势和工作负载上下文。]{#netstat-queue-context .correct explanation="短暂突发不同于持续的应用程序或网络瓶颈。"}
+:::
+
+## 筛选调查范围
+
+将输出限制到相关协议、状态、端点或进程：
+
+```bash
+$ ss -tn state established
+$ ss -ltn 'sport = :443'
+```
+
+监听器只能证明本地传输层已经就绪，无法证明远程可达性或应用程序健康。随后应根据症状执行适当的路由、防火墙、数据包、TLS 和应用程序测试。
+
+:::single-choice{#netstat-listener-limit} 443 端口上的 TCP 监听器无法证明什么？
+
+::option[某个本地套接字成功执行了绑定和监听操作。]{#netstat-listen-local explanation="这正是所显示的本地状态。"}
+::option[远程客户端可以完成有效的 HTTPS 请求。]{#netstat-not-remote-proof .correct explanation="路径策略、TLS 和应用程序行为都尚未经过测试。"}
+::option[TCP 含有数字端口字段。]{#netstat-port-field explanation="监听器输出会直接显示该字段。"}
+:::
+
+## 总结
+
+现在，你可以使用 `ss` 检查套接字状态，而不会把端口与应用程序混为一谈。
+
+1. 以数字形式列出监听器及进程上下文。
+2. 区分约定俗成的服务名称与运行时所有者。
+3. 从本地端点视角解读 TCP 关闭状态。
+4. 结合工作负载上下文持续采样队列。
+5. 越过本地监听器，验证远程应用程序行为。

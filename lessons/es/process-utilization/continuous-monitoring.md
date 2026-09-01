@@ -1,64 +1,89 @@
 ---
-index: 7
+lesson_id: "continuous-monitoring"
+course_id: "process-utilization"
 lang: "es"
-title: "Monitoreo Continuo"
-meta_title: "Monitoreo Continuo - Utilización de Procesos"
-meta_description: "Aprende el monitoreo continuo de sistemas Linux con sar. Comprende la instalación, la recolección de datos y cómo analizar el uso histórico de recursos para el rendimiento. ¡Empieza ya!"
-meta_keywords: "sar, sysstat, monitoreo de Linux, rendimiento del sistema, monitoreo continuo, principiante, tutorial, guía"
+order_index: 7
+title: "Supervisión continua"
+description: "Aprende cómo la recopilación de sysstat y los informes de sar permiten analizar históricamente el rendimiento de Linux."
+meta_title: "Supervisión continua - Utilización de procesos"
+meta_description: "Aprende a supervisar continuamente sistemas Linux con sysstat y sar, y a analizar datos históricos de recursos."
+meta_keywords: "sar, sysstat, supervisión Linux, rendimiento del sistema, supervisión continua, datos históricos"
 ---
 
-## Lesson Content
+Las herramientas interactivas muestran lo que ocurre mientras las observas. Cuando una ralentización ya ha terminado, se necesita supervisión histórica. El conjunto `sysstat` recopila periódicamente contadores del sistema, y `sar` lee los contadores actuales o archivos de actividad guardados.
 
-Estas herramientas de monitoreo son buenas para revisar cuando tu máquina está teniendo problemas, pero ¿qué pasa con las máquinas que tienen problemas cuando no estás mirando? Para esos casos, necesitarás usar una herramienta de monitoreo continuo, algo que recolecte, reporte y guarde la información de actividad de tu sistema. En esta lección, revisaremos una gran herramienta para usar: **sar**.
+## Habilitar la recopilación de datos
 
-### Instalando sar
+Instala el paquete `sysstat` de la distribución y después confirma que su recopilador y su mecanismo de retención estén habilitados. Las rutas exactas de servicios, temporizadores y configuración varían según la distribución; instalar el paquete no garantiza que haya comenzado la recopilación.
 
-Sar es una herramienta que se utiliza para hacer análisis históricos en tu sistema. Primero, asegúrate de tenerla instalada instalando el paquete `sysstat`: `sudo apt install sysstat`.
-
-### Configurando la recolección de datos
-
-Usualmente, una vez que instalas `sysstat`, tu sistema comenzará automáticamente a recolectar datos. Si no lo hace, puedes habilitarlo modificando el campo `ENABLED` en `/etc/default/sysstat`.
-
-### Usando sar
+En un equipo con systemd, examina las unidades proporcionadas por el paquete en vez de adivinar sus nombres:
 
 ```bash
-sudo sar -q
+$ systemctl list-unit-files | grep sysstat
+$ systemctl list-timers --all | grep sysstat
 ```
 
-Este comando listará los detalles desde el inicio del día.
+Verifica que se estén creando archivos de actividad nuevos en el directorio de datos de sysstat de la distribución y revisa sus permisos y su política de retención.
+
+:::single-choice{#sar-installation-verification} ¿Qué debes verificar después de instalar `sysstat`?
+
+::option[Que la recopilación esté habilitada y los archivos de actividad se actualicen.]{#sar-collector-updating .correct explanation="La instalación del paquete y la recopilación periódica activa son condiciones independientes."}
+::option[Que todos los procesos se hayan reiniciado manualmente.]{#sar-restart-processes explanation="Instalar un recopilador de supervisión no exige reiniciar todas las cargas de trabajo."}
+::option[Que todos los archivos históricos permitan escribir a todo el mundo.]{#sar-world-writable explanation="Los datos de supervisión deben conservar controles de acceso apropiados."}
+:::
+
+## Leer muestras actuales
+
+Solicita a `sar` tres informes de CPU a intervalos de un segundo:
 
 ```bash
-sudo sar -r
+$ sar -u 1 3
 ```
 
-Esto listará los detalles del uso de memoria desde el inicio del día.
+Otros informes habituales incluyen la cola de ejecución y la carga (`-q`), la memoria (`-r`), la paginación (`-B`), los dispositivos de bloques (`-d`) y la actividad de cada CPU (`-P ALL`). Las opciones y los campos varían según la versión de sysstat, así que consulta `sar --help` o el manual local.
+
+:::single-choice{#sar-one-second-count} ¿Qué solicita `sar -u 1 3`?
+
+::option[Tres informes de CPU a intervalos de un segundo.]{#sar-three-cpu-samples .correct explanation="El primer número es el intervalo en segundos y el segundo es la cantidad de informes."}
+::option[Un informe que abarca exactamente tres días.]{#sar-three-days explanation="Los operandos indican el intervalo y el número de muestras, no un intervalo de fechas."}
+::option[La eliminación de tres archivos de CPU guardados.]{#sar-delete-files explanation="La orden lee contadores y no solicita ninguna eliminación."}
+:::
+
+## Leer archivos históricos
+
+Las ubicaciones y los nombres de los archivos guardados varían; suelen encontrarse bajo `/var/log/sysstat` o `/var/log/sa`. Pasa un archivo de actividad seleccionado mediante `-f`:
 
 ```bash
-sudo sar -P
+$ sar -q -f /var/log/sysstat/sa02
 ```
 
-Esto listará los detalles del uso de CPU.
+Confirma la fecha completa del archivo en los encabezados del informe; un sufijo de dos dígitos suele referirse al día del mes y puede ser ambiguo entre períodos de retención. Los formatos binarios guardados también pueden necesitar una versión compatible de sysstat.
 
-Para ver una vista de un día diferente, puedes ir a `/var/log/sysstat/saXX` donde `XX` es el día que quieres ver.
+:::single-choice{#sar-historical-file-option} ¿Qué opción indica a `sar` que lea un archivo de actividad determinado?
 
-```bash
-sar -q /var/log/sysstat/sa02
-```
+::option[`-P`]{#sar-option-p explanation="Esta opción selecciona informes de procesadores, no un archivo de entrada."}
+::option[`-q`]{#sar-option-q explanation="Esta opción selecciona informes de colas y carga."}
+::option[`-f`]{#sar-option-f .correct explanation="La opción de archivo selecciona los datos de actividad guardados que se deben leer."}
+:::
 
-## Exercise
+## Relacionar un incidente
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del monitoreo del sistema y el análisis de recursos:
+Establece la hora y la zona horaria del incidente y compara después varias señales durante el mismo intervalo. Busca cambios en la carga, la CPU, la cola de ejecución, la paginación, la actividad de dispositivos, el tráfico de red y la latencia de la aplicación. Los cambios de contadores muestran correlación, no necesariamente causalidad; los registros de despliegues y de aplicaciones pueden explicar el desencadenante.
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practica la interacción con procesos en primer y segundo plano, inspeccionándolos con `ps`, monitoreando recursos con `top`, y terminándolos con `kill`.
-2. **[Comando Linux top: Monitoreo del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprende a usar varias opciones con el comando `top` para ordenar procesos, ajustar intervalos de actualización, filtrar por usuario y enfocarse en procesos activos para monitorear eficazmente el rendimiento del sistema.
-3. **[Comando Linux df: Reporte de Espacio en Disco](https://labex.io/es/labs/linux-linux-df-command-disk-space-reporting-219188)** - Este laboratorio introduce el comando `df` en Linux, una utilidad que muestra información sobre el uso del espacio en disco en sistemas de archivos montados, lo cual es un aspecto clave del monitoreo del sistema.
+Los huecos pueden significar que el equipo estaba apagado, que falló el recopilador o que la retención eliminó datos. Supervisa la propia canalización de supervisión para que la ausencia de pruebas resulte visible antes de un incidente.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de monitoreo de recursos del sistema en escenarios reales y a desarrollar confianza al analizar la actividad del sistema.
+:::single-choice{#sar-incident-method} ¿Cómo deben utilizarse los datos históricos de `sar` al revisar un incidente?
 
-## Quiz Question
+::option[Tratar el contador individual más alto como causa raíz demostrada.]{#sar-single-root explanation="Una sola correlación no establece causalidad."}
+::option[Comparar varias métricas durante el mismo intervalo de tiempo verificado.]{#sar-correlate-window .correct explanation="Las señales alineadas ayudan a distinguir hipótesis y a conectar el comportamiento del sistema con el incidente."}
+::option[Ignorar los huecos porque la recopilación está garantizada después de instalar el paquete.]{#sar-ignore-gaps explanation="La recopilación puede fallar o estar deshabilitada, y los huecos necesitan una explicación."}
+:::
 
-¿Cuál es una buena herramienta para monitorear los recursos del sistema?
+## Resumen
 
-## Quiz Answer
+Ahora puedes utilizar `sar` para investigar el rendimiento fuera de una sesión interactiva.
 
-sar
+1. Verifica que la recopilación y la retención estén realmente activas.
+2. Solicita muestras actuales limitadas mediante un intervalo y una cantidad.
+3. Selecciona explícitamente archivos históricos de actividad.
+4. Alinea varias métricas con la hora del incidente y las pruebas de la carga de trabajo.

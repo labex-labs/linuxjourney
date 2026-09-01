@@ -1,56 +1,99 @@
 ---
-index: 10
+lesson_id: "proc-filesystem"
+course_id: "processes"
 lang: "en"
-title: "/proc filesystem"
+order_index: 10
+title: "/proc Filesystem"
+description: "Learn how Linux exposes live process and kernel information through the virtual `/proc` filesystem."
 meta_title: "/proc filesystem - Processes"
 meta_description: "Discover the Linux /proc filesystem, a virtual directory that provides a dashboard-like view into the kernel and running processes. Learn how to access extra process details beyond standard commands."
 meta_keywords: "/proc filesystem, linux proc, process information, linux proc extras, system dashboard, Linux processes, kernel information"
 ---
 
-## Lesson Content
+Linux commonly mounts `procfs` at `/proc`. This virtual filesystem presents kernel-generated interfaces as files and directories; its contents are not ordinary persistent files stored on disk. It exposes process state as well as selected system-wide kernel information.
 
-In Linux, a core principle is that everything is treated as a file. This concept extends to running processes, whose information is dynamically stored in a special virtual filesystem known as `/proc`.
+## Finding Process Directories
 
-### Exploring the /proc Directory
-
-The `/proc` filesystem is not a real filesystem on your hard drive; it's created in memory by the kernel. It provides a window into the kernel's internal data structures and the state of the system.
-
-To see its contents, you can list the files and directories within it:
+List the mount and top-level entries with:
 
 ```bash
-ls /proc
+$ findmnt /proc
+$ ls /proc
 ```
 
-You will see many numbered directories. Each number corresponds to the Process ID (PID) of a currently running process. You'll also find other files like `cpuinfo` and `meminfo` that provide system hardware information.
+Numeric directory names correspond to process IDs visible in the caller's PID namespace. For example, `/proc/12345` represents PID 12345 at the instant it exists. `/proc/self` is a symbolic link that resolves to the observing process's own directory, and `/proc/thread-self` identifies the current thread.
 
-### Accessing Specific Process Information
+Visibility and access depend on credentials, namespaces, security policy, and procfs mount options such as `hidepid`. A process can exit between listing a directory and opening one of its files, so disappearance is a normal race that inspection tools must handle.
 
-If you identify a PID using a command like `ps`, you can find its corresponding directory in `/proc` to get more detailed information. For example, to inspect a process with PID 12345, you can look inside its status file:
+:::single-choice{#proc-filesystem-numeric-directory} What does numeric directory `/proc/12345` normally represent?
+
+::option[The disk block numbered 12345.]{#proc-filesystem-disk-block explanation="`/proc` is a virtual kernel interface, not a directory of raw disk blocks."}
+::option[The process currently visible with PID 12345.]{#proc-filesystem-pid-directory .correct explanation="Per-process procfs data is grouped under a directory named for the visible PID."}
+::option[The user account whose UID is 12345.]{#proc-filesystem-user-directory explanation="The numeric top-level process directories are keyed by PID rather than UID."}
+:::
+
+## Reading Process Information
+
+Inspect a process status file when permissions allow:
 
 ```bash
-cat /proc/12345/status
+$ less /proc/12345/status
 ```
 
-This command will display detailed information about the process, including its state (e.g., sleeping, running), memory usage, and user ID. The `/proc` directory offers the kernel's direct view of the process, providing far more data than standard tools.
+It includes fields such as process name, state, IDs, credentials, memory counters, capabilities, and signal masks. Other useful entries include:
 
-### A Dashboard of System Data
+- `/proc/12345/cmdline`: command-line arguments separated by null bytes
+- `/proc/12345/environ`: environment entries, access-controlled and potentially sensitive
+- `/proc/12345/fd/`: symbolic links representing open file descriptors
+- `/proc/12345/maps`: current memory mappings
+- `/proc/12345/cwd`: symbolic link to the current working directory
 
-Think of the `/proc` filesystem as the raw data source for many system monitoring tools. Utilities like `top`, `ps`, and `htop` read from `/proc` to present information in a user-friendly format. It contains a wealth of **extra** details that these tools might not show by default.
+Treat these as changing observations. Fields can differ by kernel version, a process can change state during a multi-file read, and some counters have subtleties not captured by their names alone.
 
-By directly accessing files within `/proc`, you can gather specific metrics to build custom scripts or a monitoring **dashboard** tailored to your needs. It's a powerful interface for observing and understanding the inner workings of your Linux system.
+:::single-choice{#proc-filesystem-status-file} Which path contains a readable field-oriented summary for PID 12345?
 
-## Exercise
+::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="Per-process files live inside the PID-named directory, not under a top-level `status` directory."}
+::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="The per-process `status` interface presents identifiers, state, memory, signal, and credential fields."}
+::option[`/proc/cpuinfo/12345`]{#proc-filesystem-cpuinfo-pid explanation="`/proc/cpuinfo` is a system-wide interface and not a directory of per-PID status files."}
+:::
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux processes and system monitoring:
+## Reading System-Wide Interfaces
 
-1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - In this lab, you will learn essential skills for managing and monitoring processes on a Linux system. You will explore how to interact with foreground and background processes, inspect them with `ps`, monitor resources with `top`, adjust priority with `renice`, and terminate them with `kill`.
+Not every `/proc` entry belongs to a process. Examples include:
 
-These labs will help you apply the concepts in real scenarios and build confidence with process management and system observation.
+- `/proc/cpuinfo` for kernel-reported CPU information
+- `/proc/meminfo` for system memory counters
+- `/proc/mounts` for the current process's view of mounts
+- `/proc/loadavg` for load-average and runnable-task information
+- `/proc/sys/` for runtime kernel parameters
 
-## Quiz Question
+Some files, especially under `/proc/sys`, are writable configuration interfaces. Do not write to them merely because they look like regular files. Understand the parameter, scope, persistence mechanism, and rollback before making an authorized system change.
 
-What virtual filesystem stores process information? Please answer in English, paying attention to case sensitivity.
+:::single-choice{#proc-filesystem-system-interface} Which entry provides system-wide memory counters rather than one process's status?
 
-## Quiz Answer
+::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="This resolves to the observing process's own per-process status."}
+::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo` contains kernel-reported system memory statistics."}
+::option[`/proc/1/fd`]{#proc-filesystem-one-fd explanation="This directory represents file descriptors belonging to PID 1, subject to access controls."}
+:::
 
-/proc
+## Using `/proc` through Tools
+
+Linux implementations of tools such as `ps`, `top`, and `free` obtain much of their data from procfs and other kernel interfaces, then label, calculate, and format it. Prefer those tools for routine work when they provide the needed field; read `/proc` directly for specific details or scripting only after studying the interface documentation.
+
+Direct readers must parse formats correctly, tolerate missing processes, protect sensitive output, and avoid assuming one read is an atomic system snapshot.
+
+:::single-choice{#proc-filesystem-live-data} Why can `/proc/PID` disappear between two inspection commands?
+
+::option[Every procfs file is automatically renamed once per second.]{#proc-filesystem-renamed explanation="There is no periodic renaming rule for all procfs entries."}
+::option[Reading `status` deletes the process directory.]{#proc-filesystem-read-delete explanation="Status inspection is read-only and does not terminate or remove the process."}
+::option[The process can exit while it is being observed.]{#proc-filesystem-process-exit .correct explanation="Procfs reflects live state, so the kernel removes a per-process directory after that process is gone."}
+:::
+
+## Summary
+
+You can now use procfs as a live, access-controlled kernel interface.
+
+1. Associate numeric `/proc` directories with visible PIDs.
+2. Read selected per-process files while accounting for races and sensitivity.
+3. Distinguish process directories from system-wide interfaces.
+4. Prefer documented tools and formats for reliable routine inspection.

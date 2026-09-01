@@ -1,47 +1,74 @@
 ---
-index: 7
+lesson_id: "process-permissions"
+course_id: "permissions"
 lang: "fr"
-title: "Permissions de processus"
-meta_title: "Permissions de processus - Permissions"
-meta_description: "Découvrez les permissions de processus Linux, y compris les ID utilisateur réels, effectifs et sauvegardés. Comprenez comment les UID impactent la sécurité et l'exécution des commandes. Commencez à apprendre dès aujourd'hui !"
-meta_keywords: "permissions de processus Linux, UID réel, UID effectif, UID sauvegardé, sécurité Linux, commande passwd, tutoriel Linux, Linux pour débutants"
+order_index: 7
+title: "Permissions des processus"
+description: "Découvrez comment les identifiants utilisateur réel, effectif et sauvegardé aident les processus Linux à suivre les appelants et à gérer les privilèges."
+meta_title: "Permissions des processus - Permissions"
+meta_description: "Découvrez les permissions des processus Linux, notamment les UID réel, effectif et sauvegardé, et leur rôle dans la sécurité et l’exécution des commandes."
+meta_keywords: "permissions processus Linux, UID réel, UID effectif, UID sauvegardé, sécurité Linux, commande passwd, tutoriel Linux, Linux débutant"
 ---
 
-## Lesson Content
+Les contrôles d’autorisation de Linux agissent sur les identifiants des processus plutôt que directement sur un nom d’utilisateur saisi. Un processus possède plusieurs identifiants utilisateur et groupe liés, chacun remplissant un rôle différent. La plupart des programmes ordinaires démarrent avec des identités identiques, tandis que les programmes privilégiés peuvent délibérément employer des valeurs distinctes.
 
-Passons un instant aux permissions de processus. Vous souvenez-vous que je vous ai dit que lorsque vous exécutez la commande `passwd` avec le bit de permission SUID activé, vous exécuterez le programme en tant que root ? C'est vrai. Cependant, cela signifie-t-il que, puisque vous êtes temporairement root, vous pouvez modifier les mots de passe des autres utilisateurs ? Non, heureusement pas !
+## Identifiant utilisateur réel
 
-Ceci est dû aux nombreux UID que Linux implémente. Il y a trois UID associés à chaque processus :
+L’identifiant utilisateur réel désigne le compte qui a démarré le processus ou sa session de connexion ancêtre. Les programmes peuvent le consulter pour distinguer l’appelant d’une identité effective élevée.
 
-Lorsque vous lancez un processus, il s'exécute avec les mêmes permissions que l'utilisateur ou le groupe qui l'a lancé. C'est ce qu'on appelle un **ID utilisateur effectif**. Cet UID est utilisé pour accorder des droits d'accès à un processus. Donc, naturellement, si Bob a exécuté la commande `touch`, le processus s'exécuterait en tant que lui, et tous les fichiers qu'il a créés seraient sous sa propriété.
+Pour une commande ordinaire lancée par Bob, l’identifiant utilisateur réel correspond normalement à l’UID de Bob. La création d’un autre processus ne crée pas un nouveau compte et ne modifie pas à elle seule cette identité.
 
-Il existe un autre UID, appelé **ID utilisateur réel**. C'est l'ID de l'utilisateur qui a lancé le processus. Ceux-ci sont utilisés pour savoir qui est l'utilisateur qui a lancé le processus.
+:::single-choice{#process-permissions-real-uid} Qu’est-ce que l’identifiant utilisateur réel d’un processus désigne normalement ?
 
-Un dernier UID est l'**ID utilisateur sauvegardé**. Cela permet à un processus de basculer entre l'UID effectif et l'UID réel, et vice versa. C'est utile car nous ne voulons pas que notre processus s'exécute avec des privilèges élevés tout le temps ; c'est une bonne pratique d'utiliser des privilèges spéciaux à des moments spécifiques.
+::option[Le propriétaire du fichier ouvert le plus récemment.]{#process-permissions-real-opened-file explanation="L’ouverture d’un fichier ne remplace pas l’UID réel du processus par le propriétaire de ce fichier."}
+::option[Le compte associé à l’appelant d’origine du processus.]{#process-permissions-real-caller .correct explanation="L’UID réel enregistre l’identité de l’utilisateur appelant héritée lors du lancement du processus."}
+::option[Le groupe sélectionné pour chaque contrôle d’accès.]{#process-permissions-real-group explanation="Un UID est une identité utilisateur ; les contrôles de groupe emploient des identifiants de groupe distincts."}
+:::
 
-Maintenant, assemblons tout cela en examinant la commande `passwd` une fois de plus.
+## Identifiant utilisateur effectif
 
-Lors de l'exécution de la commande `passwd`, votre UID effectif est votre ID utilisateur ; disons que c'est 500 pour l'instant. Oh, mais attendez, rappelez-vous que la commande `passwd` a la permission SUID activée. Donc, lorsque vous l'exécutez, votre UID effectif est maintenant 0 (0 est l'UID de root). Maintenant, ce programme peut accéder aux fichiers en tant que root.
+L’identifiant utilisateur effectif est l’identifiant employé pour de nombreux contrôles de privilèges et du système de fichiers. Il correspond normalement à l’UID réel. L’exécution d’un programme setuid honoré peut au contraire l’initialiser à partir du propriétaire de l’exécutable.
 
-Disons que vous avez un petit goût de pouvoir, et que vous voulez modifier le mot de passe de Sally. Sally a un UID de 600. Eh bien, vous n'aurez pas de chance. Heureusement, le processus a aussi votre UID réel, dans ce cas 500. Il sait que votre UID est 500, et donc vous ne pouvez pas modifier le mot de passe de l'UID 600. (Ceci, bien sûr, est toujours contourné si vous êtes un superutilisateur sur une machine et pouvez tout contrôler et modifier).
+Par exemple, un utilitaire de mot de passe soigneusement conçu peut s’exécuter avec un UID effectif élevé afin de mettre à jour des données d’authentification protégées. Il doit néanmoins faire respecter la politique selon l’appelant, le compte demandé, les résultats de PAM et d’autres éléments de contexte. La possession d’un UID effectif ne rend pas automatiquement légitime chaque opération demandée.
 
-Puisque vous avez exécuté `passwd`, il démarrera le processus en utilisant votre UID réel, et il sauvegardera l'UID du propriétaire du fichier (UID effectif), afin que vous puissiez basculer entre les deux. Pas besoin de modifier tous les fichiers avec un accès root si ce n'est pas nécessaire.
+:::single-choice{#process-permissions-effective-uid} Quel identifiant utilisateur sert à de nombreuses décisions de contrôle d’accès prises pour un processus ?
 
-La plupart du temps, l'UID réel et l'UID effectif sont les mêmes, mais dans des cas comme la commande `passwd`, ils changeront.
+::option[L’identifiant utilisateur effectif.]{#process-permissions-effective-active .correct explanation="L’UID effectif est l’identifiant utilisateur actif consulté pour de nombreux contrôles d’autorisation."}
+::option[Uniquement l’identifiant utilisateur sauvegardé.]{#process-permissions-effective-saved-only explanation="L’identifiant sauvegardé permet des transitions d’identifiants, mais n’est généralement pas l’identité active des contrôles d’accès."}
+::option[L’UID enregistré sur le répertoire actuel.]{#process-permissions-effective-directory explanation="La propriété du système de fichiers est une métadonnée de l’objet, et non l’identifiant utilisateur actif du processus."}
+:::
 
-## Exercise
+## Identifiant set-user-ID sauvegardé
 
-La pratique rend parfait ! Comprendre les ID utilisateur et les permissions de processus est crucial pour la sécurité et l'administration de Linux. Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des utilisateurs et des groupes, qui constitue la base du fonctionnement des UID :
+L’identifiant set-user-ID sauvegardé permet à un programme de conserver une identité qu’il pourra restaurer ultérieurement, sous réserve des règles des appels système. Un programme privilégié peut temporairement attribuer à son UID effectif une valeur moins privilégiée, accomplir un travail ordinaire avec des droits réduits, puis ne restaurer l’identité sauvegardée que pour une opération précisément limitée.
 
-1. **[Groupes d'utilisateurs Linux et permissions de fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Apprenez les concepts essentiels de la gestion des utilisateurs et des groupes Linux, y compris la création et la gestion des utilisateurs, l'exploration des appartenances aux groupes, la compréhension des permissions de fichiers et la manipulation de la propriété des fichiers. Ce laboratoire offre une expérience pratique pour sécuriser un environnement Linux multi-utilisateur.
-2. **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi, vous simulerez l'ajout de nouveaux membres d'équipe à un environnement serveur en créant de nouveaux comptes utilisateur, en configurant des groupes personnalisés et en gérant les appartenances aux groupes. Cela testera vos compétences en administration des utilisateurs et des groupes Linux, essentielles pour les administrateurs système et les professionnels DevOps.
+Cette approche est plus sûre que le maintien d’une autorité élevée pendant toute l’exécution, mais seulement si elle est correctement mise en œuvre. Les programmes doivent abandonner définitivement les privilèges lorsqu’ils ne sont plus nécessaires et contrôler l’échec de chaque appel qui modifie les identifiants.
 
-Ces laboratoires vous aideront à appliquer les concepts de gestion des utilisateurs et des groupes dans des scénarios réels, en construisant une base solide pour comprendre comment les UID contrôlent l'accès et les permissions dans Linux.
+:::single-choice{#process-permissions-saved-uid} Pourquoi un programme privilégié peut-il conserver un identifiant set-user-ID sauvegardé ?
 
-## Quiz Question
+::option[Pour changer son identité effective pendant des phases privilégiées et non privilégiées contrôlées.]{#process-permissions-saved-switch .correct explanation="L’identité sauvegardée peut permettre une réduction temporaire des privilèges et une restauration ultérieure autorisée."}
+::option[Pour attribuer automatiquement cet UID à chaque fichier qu’il lit.]{#process-permissions-saved-file-owner explanation="La lecture d’un fichier ne lui attribue pas l’UID sauvegardé du processus."}
+::option[Pour remplacer la base des comptes système au sein du processus.]{#process-permissions-saved-database explanation="Les identifiants du processus ne remplacent ni les enregistrements de comptes ni les données des services de noms."}
+:::
 
-Quel UID décide quel accès accorder ?
+## Les identifiants utilisateur ne sont qu’une partie des identifiants du processus
 
-## Quiz Answer
+Les processus possèdent aussi des identifiants de groupe réels, effectifs, sauvegardés et supplémentaires. Les identifiants du système de fichiers, les capacités, les espaces de noms, les modules de sécurité, les ACL, les options de montage et les politiques des services peuvent encore influencer l’autorisation. Ainsi, « l’UID l’autorise » ne constitue souvent qu’une partie de l’explication complète.
 
-effective
+Employez des outils tels que `ps` et `/proc/PROCESS/status` pour examiner les identifiants sous Linux. La disponibilité des champs et leur format d’affichage varient ; consultez donc la documentation locale et ne modifiez pas les identifiants simplement pour expérimenter sur un système partagé.
+
+:::single-choice{#process-permissions-ordinary-identities} Pour la plupart des commandes ordinaires sans transition de privilèges, comment les UID réel et effectif se comparent-ils ?
+
+::option[L’UID effectif vaut toujours zéro.]{#process-permissions-effective-root explanation="Les commandes ordinaires ne reçoivent pas automatiquement l’UID de root."}
+::option[L’UID réel correspond toujours au propriétaire du fichier exécutable.]{#process-permissions-real-file-owner explanation="Le propriétaire de l’exécutable affecte le comportement setuid, et non l’UID réel ordinaire."}
+::option[Ils correspondent normalement à l’UID de l’utilisateur appelant.]{#process-permissions-uids-match .correct explanation="Sans setuid ni changement explicite des identifiants, les processus ordinaires s’exécutent généralement avec des identités réelle et effective identiques."}
+:::
+
+## Résumé
+
+Vous savez maintenant expliquer pourquoi un processus Linux peut porter plusieurs identités utilisateur.
+
+1. Employer l’UID réel pour identifier l’appelant d’origine.
+2. Relier l’UID effectif aux contrôles d’autorisation actifs.
+3. Employer l’identité sauvegardée pour comprendre les transitions de privilèges contrôlées.
+4. Considérer les identifiants de groupe et les mécanismes de sécurité supplémentaires dans la décision complète.

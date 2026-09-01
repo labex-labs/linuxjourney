@@ -1,44 +1,92 @@
 ---
-index: 5
+lesson_id: "udev"
+course_id: "devices"
 lang: "pt"
+order_index: 5
 title: "udev"
+description: "Aprenda como o udev processa eventos de dispositivos do kernel para aplicar políticas, permissões e links persistentes."
 meta_title: "udev - Dispositivos"
-meta_description: "Aprenda sobre udev, como ele gerencia dinamicamente arquivos de dispositivo Linux e use udevadm. Entenda a criação de nós de dispositivo para iniciantes."
-meta_keywords: "udev, udevadm, gerenciamento de dispositivos Linux, arquivos de dispositivo, tutorial Linux, Linux para iniciantes, regras udev, guia Linux"
+meta_description: "Aprenda sobre o udev, como ele gerencia dinamicamente os arquivos de dispositivos Linux e como usar udevadm. Entenda a criação de nós de dispositivos."
+meta_keywords: "udev, udevadm, gerenciamento de dispositivos Linux, arquivos de dispositivos, tutorial Linux, Linux para iniciantes, regras udev, guia Linux"
 ---
 
-## Lesson Content
+O kernel Linux informa alterações de dispositivos ao espaço do usuário por meio de uevents. Em muitas distribuições atuais, `systemd-udevd` processa esses eventos usando regras udev e um banco de dados de dispositivos. Junto com o `devtmpfs` preenchido pelo kernel, isso produz as propriedades, permissões, atributos e links simbólicos que as aplicações observam em `/dev`.
 
-Antigamente, e na verdade hoje, se você realmente quisesse, criaria nós de dispositivo usando um comando como:
+## Do Evento do Kernel à Política do Dispositivo
+
+Quando um dispositivo é adicionado, alterado, movido ou removido, o udev pode:
+
+- ler atributos do sysfs e propriedades do evento
+- aplicar políticas de proprietário, grupo e modo a um nó de dispositivo
+- adicionar links simbólicos estáveis, como `/dev/disk/by-id/...`
+- marcar dispositivos para outros serviços
+- executar um processamento auxiliar de escopo restrito
+
+O kernel continua responsável pelo dispositivo real e por seu driver. Excluir um nó de `/dev` não remove fisicamente o hardware, e criar manualmente um nó com `mknod` não faz um hardware sem suporte existir nem associa um driver a ele.
+
+:::single-choice{#udev-kernel-event-input} O que normalmente aciona o processamento do udev para uma alteração de dispositivo?
+
+::option[Uma atualização dos repositórios de pacotes realizada pelo APT.]{#udev-apt-refresh explanation="As atualizações dos metadados de pacotes não têm relação com o processamento de eventos ativos de dispositivos."}
+::option[Um usuário renomeando manualmente todos os arquivos em `/dev`.]{#udev-manual-renaming explanation="A política dinâmica é orientada por eventos do kernel e regras, não por uma renomeação manual em massa."}
+::option[Um uevent do kernel que descreve a ação do dispositivo.]{#udev-kernel-uevent .correct explanation="O udev recebe eventos de dispositivos do kernel e aplica as regras correspondentes no espaço do usuário."}
+:::
+
+## Locais e Precedência das Regras
+
+As regras normalmente ficam em:
+
+- `/usr/lib/udev/rules.d/` para regras fornecidas por fornecedores ou pacotes
+- `/run/udev/rules.d/` para regras voláteis em tempo de execução
+- `/etc/udev/rules.d/` para a política local do administrador
+
+Os arquivos são processados na ordem lexical dos nomes, e arquivos com o mesmo nome em diretórios de maior prioridade substituem versões de menor prioridade, conforme a implementação do udev instalada. As regras locais devem usar um nome de arquivo deliberado e corresponder a propriedades estáveis, não a nomes de enumeração.
+
+Uma regra pode afetar todos os dispositivos correspondentes, portanto teste seu escopo cuidadosamente. Não edite diretamente regras de pacotes quando uma substituição local ou uma regra suplementar for apropriada.
+
+:::single-choice{#udev-local-rules-directory} Qual diretório é destinado às regras udev locais persistentes do administrador?
+
+::option[`/proc/udev/rules.d/`]{#udev-proc-rules explanation="O procfs não fornece o diretório local persistente de regras."}
+::option[`/etc/udev/rules.d/`]{#udev-etc-rules .correct explanation="A política local pertence a `/etc`, separada das regras de fornecedores gerenciadas por pacotes."}
+::option[`/dev/udev/rules.d/`]{#udev-dev-rules explanation="`/dev` contém objetos voltados a dispositivos em tempo de execução, não configurações persistentes de regras."}
+:::
+
+## Inspeção de um Dispositivo com `udevadm`
+
+Consulte as propriedades do udev para um nó existente:
 
 ```bash
-mknod /dev/sdb1 b 8 3
+$ udevadm info --query=all --name=/dev/sda
 ```
 
-Este comando criará um nó de dispositivo `/dev/sdb1` e o tornará um dispositivo de bloco (b) com um número principal de 8 e um número secundário de 3.
+Use um nó que exista no sistema atual. `udevadm info --attribute-walk --name=...` pode exibir atributos ao longo da cadeia de pais no sysfs, o que ajuda a construir uma regra. `udevadm monitor --kernel --udev --property` observa eventos do kernel e eventos processados; ele pode expor identificadores de dispositivos, portanto trate adequadamente a saída capturada.
 
-Para remover um dispositivo, você simplesmente usaria o comando **rm** no arquivo do dispositivo no diretório `/dev`.
+:::single-choice{#udev-info-purpose} O que `udevadm info --query=all --name=/dev/sda` solicita?
 
-Felizmente, não precisamos mais fazer isso por causa do udev. O sistema udev cria e remove dinamicamente arquivos de dispositivo para nós, dependendo se eles estão conectados ou não. Existe um daemon `udevd` que está sendo executado no sistema e ele escuta as mensagens do kernel sobre os dispositivos conectados ao sistema. O `Udevd` analisará essas informações e corresponderá os dados às regras especificadas em `/etc/udev/rules.d`. Dependendo dessas regras, ele provavelmente criará nós de dispositivo e links simbólicos para os dispositivos. Você pode escrever suas próprias regras udev, mas isso está um pouco fora do escopo desta lição. Felizmente, seu sistema já vem com muitas regras udev, então você pode nunca precisar escrever as suas próprias.
+::option[Uma regravação destrutiva da tabela de partições do disco.]{#udev-info-partition-write explanation="A consulta é uma operação de inspeção e não formata nem reparticiona o armazenamento."}
+::option[A instalação pela Internet de um driver ausente do kernel.]{#udev-info-install-driver explanation="A inspeção com udevadm não funciona como um gerenciador de downloads de pacotes."}
+::option[As propriedades conhecidas pelo udev para o nó de dispositivo indicado.]{#udev-info-properties .correct explanation="O comando info consulta o banco de dados de dispositivos e as informações associadas do sysfs."}
+:::
 
-Você também pode visualizar o banco de dados udev e o sysfs usando o comando **udevadm**. Esta ferramenta é muito útil, mas às vezes pode ficar muito complicada. Um comando simples para visualizar informações de um dispositivo seria:
+## Aplicação Cuidadosa das Alterações de Regras
 
-```bash
-udevadm info --query=all --name=/dev/sda
-```
+Recarregar os arquivos de regras afeta o processamento dos eventos futuros; isso não reconstrói automaticamente o estado de todos os dispositivos existentes. Acionar eventos manualmente pode afetar muitos dispositivos e serviços, portanto restrinja o destino e consulte a documentação do `udevadm` instalado. Um comando de teste pode simular a avaliação de regras, mas talvez não reproduza todos os efeitos colaterais de um evento real.
 
-## Exercise
+Faça backup das regras locais, valide a sintaxe, observe um único dispositivo de teste conhecido e mantenha um caminho de recuperação antes de alterar permissões ou nomes. Evite trabalhos demorados diretamente no processamento de eventos do udev; delegue-os a um serviço apropriado.
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da interação de hardware e gerenciamento de dispositivos no Linux:
+:::single-choice{#udev-reload-effect} O que a recarga das regras udev altera principalmente?
 
-1. **[Explorar Dispositivos de Hardware no Linux](https://labex.io/pt/labs/comptia-explore-hardware-devices-in-linux-590861)** - Neste laboratório, você aprenderá as habilidades essenciais para explorar, identificar e inspecionar dispositivos de hardware em um ambiente Linux. Você ganhará experiência prática com poderosas utilidades de linha de comando para entender como o sistema operacional interage com os componentes físicos, o que é crucial para entender os nós de dispositivo e o papel do udev.
+::option[A forma como os eventos posteriores correspondentes de dispositivos são processados.]{#udev-future-events .correct explanation="A recarga atualiza as regras em memória; ainda é necessário que ocorra um evento ou que ele seja acionado deliberadamente para um dispositivo ser reavaliado."}
+::option[A conexão física de todos os dispositivos conectados.]{#udev-physical-wiring explanation="Carregar regras de software não pode alterar conexões de hardware."}
+::option[Todos os nós de dispositivos existentes, independentemente de eventos ou correspondências.]{#udev-all-existing explanation="Uma recarga por si só não garante a reavaliação imediata de todos os dispositivos atuais."}
+:::
 
-Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança com o gerenciamento de hardware Linux.
+Use o laboratório [Exploração de Dispositivos de Hardware no Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861) para relacionar propriedades de `udevadm`, caminhos do sysfs e links de `/dev` em um ambiente controlado.
 
-## Quiz Question
+## Resumo
 
-O que adiciona e remove dispositivos dinamicamente?
+Agora você sabe situar o udev entre os eventos do kernel e a política de dispositivos no espaço do usuário.
 
-## Quiz Answer
-
-udev
+1. Relacione uevents e atributos do sysfs à correspondência das regras udev.
+2. Diferencie os locais de regras de fornecedores, de tempo de execução e locais.
+3. Inspecione propriedades e o fluxo de eventos com `udevadm`.
+4. Recarregue e acione regras somente com um escopo restrito e testado.

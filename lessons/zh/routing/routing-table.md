@@ -1,68 +1,100 @@
 ---
-index: 2
+lesson_id: "routing-table"
+course_id: "routing"
 lang: "zh"
+order_index: 2
 title: "路由表"
+description: "学习如何读取 Linux 路由，并检查为某个目标选择的路由。"
 meta_title: "路由表 - 路由"
-meta_description: "理解 Linux 路由表的指南。学习如何解释 route 命令的输出，包括目标、网关、子网掩码 (genmask) 和 eth0 接口。掌握您的 Linux 路由表基础知识。"
-meta_keywords: "linux 路由表，linux 路由表，genmask, eth0, route 命令，网络路由，IP 路由，目标，网关，子网掩码，linux 网络"
+meta_description: "理解 Linux 路由表的指南。学习如何解读 route 命令输出中的目标、网关、genmask 和 eth0 接口，掌握 Linux 路由表基础。"
+meta_keywords: "Linux 路由表, genmask, eth0, route 命令, 网络路由, IP 路由, 目标, 网关, 子网掩码, Linux 网络"
 ---
 
-## Lesson Content
+Linux 路由状态决定对于某个 IP 目标，哪些下一跳、接口和源地址符合条件。旧式 `route -n` 视图仍然可见，但 `ip route` 能更直接地公开现代内核路由概念。
 
-**Linux 路由表** 包含决定网络数据包发送去向的规则。每当您的系统需要向一个 IP 地址发送数据包时，它都会查阅此表以找到合适的路径。要查看您机器的 **Linux 路由表**，您可以使用 `route` 命令。
+## 阅读 IPv4 路由
 
-```plaintext
-pete@icebox:~$ sudo route -n
-内核 IP 路由表
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         192.168.224.2   0.0.0.0         UG    0      0        0 eth0
-192.168.224.0   0.0.0.0         255.255.255.0   U     1      0        0 eth0
+示例输出如下：
+
+```text
+$ ip -4 route show
+default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
+192.168.224.0/24 dev eth0 proto kernel scope link src 192.168.224.10 metric 100
 ```
 
-### 理解列
+直连 `/24` 路由会将匹配的目标直接通过 `eth0` 发送。默认路由使用下一跳网关 `192.168.224.2`。`proto` 描述路由的安装方式，`src` 是匹配流量的首选源地址，度量值则帮助排列其他方面可比的路由。
 
-`route` 命令的输出被组织成几列，每列都提供有关特定网络路由的具体信息。
+:::single-choice{#routing-table-via-meaning} `via 192.168.224.2` 表示什么？
 
-### Destination (目标地址)
+::option[唯一允许使用该路由的应用程序。]{#routing-table-application explanation="via 关键字不编码应用程序授权。"}
+::option[该路由的下一跳网关。]{#routing-table-next-hop .correct explanation="数据包会装入发送给该链路内路由器的帧，同时保留其 IP 目标。"}
+::option[该路由的文件系统挂载点。]{#routing-table-mount explanation="路由条目涉及网络转发，而不是文件系统。"}
+:::
 
-Destination 列指定一个网络或主机。条目 `192.168.224.0` 指示所有发往该特定网络的数据包。如果数据包的目标地址在此网络内（例如，从 192.168.224.5 到 192.168.224.7），它将通过指定的接口（如 `eth0`）直接发送。
+## 直连路由与默认路由
 
-目标地址 `0.0.0.0` 是默认路由。如果路由表中没有针对数据包目标的更具体条目，则使用此路由。
+带有 `scope link` 且没有 `via` 下一跳的路由，会把该前缀视为可通过接口直接到达。默认路由匹配每个地址，但任何符合条件且更具体的路由都会优先于它。
 
-### Gateway (网关)
+:::single-choice{#routing-table-connected-route} 直连的 `scope link` 目标通常如何到达？
 
-Gateway 列显示数据包被发送到的路由器。如果数据包不在同一个本地网络上，它将被转发到此网关地址。对于默认路由，这是将您的本地网络连接到其他网络（如互联网）的路由器的 IP 地址。
+::option[即使匹配直连路由，也通过默认网关。]{#routing-table-connected-default explanation="直连前缀更具体，而且没有网关操作数。"}
+::option[把目标转换为 DNS 服务器。]{#routing-table-connected-dns explanation="名称服务不属于已经选定的 IP 路由。"}
+::option[完成邻居解析后，直接通过指定接口。]{#routing-table-direct .correct explanation="主机解析目标的链路内地址，并在本地构建帧。"}
+:::
 
-### Genmask (子网掩码)
+## 前缀长度与度量值
 
-`genmask`，即生成掩码，是目标网络的子网掩码。它与目标 IP 一起用于确定数据包是否属于该网络。例如，`genmask` 为 `255.255.255.0` 意味着 IP 地址的前三个八位字节必须与目标的​​前三个八位字节匹配。
+路由选择会考虑策略规则，并选择最长的合格前缀。度量值用于排列适当的可比路由；低度量值默认路由不会仅凭数字较小就覆盖匹配的 `/24`。
 
-### Flags (标志)
+:::single-choice{#routing-table-prefix-before-default} 哪条路由通常对 `192.168.224.50` 匹配得更具体？
 
-这些标志提供有关路由的附加信息：
+::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="在列出的路由中，24 位匹配前缀最长。"}
+::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="默认路由的前缀长度为零。"}
+::option[`192.168.0.0/16 via 192.168.224.3`]{#routing-table-sixteen explanation="它覆盖该地址，但固定的位数少于 /24。"}
+:::
 
-- **U**: 表示路由已启动并处于活动状态。
-- **G**: 表示路由指向一个网关（路由器）。
-- **UG**: 表示路由处于活动状态并指向一个网关。
+## 策略规则与多张路由表
 
-### Iface (接口)
+Linux 可以按照 `ip rule` 策略，根据源地址、标记、接口或其他选择条件查询多张路由表。因此，只查看主路由表可能会遗漏实际路径：
 
-此列指示数据包将通过哪个网络接口发送，例如 `eth0`。`eth0` 通常代表您系统上的第一个以太网适配器。
+```bash
+$ ip rule show
+$ ip route show table all
+```
 
-## Exercise
+网络命名空间和 VRF 也可以拥有独立状态。检查时应使用与受影响进程相同的上下文。
 
-熟能生巧！以下是一些实践实验，以加强您对网络路由和 IP 地址分配的理解：
+:::single-choice{#routing-table-policy-limit} 为什么仅运行 `ip route show` 可能无法解释应用程序路径？
 
-1. **[在 Linux 中识别 MAC 地址和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令来识别网络寻址信息，包括 IP 地址和网络接口，它们是路由表中的关键组成部分。
-2. **[在 Linux 中管理 IP 地址分配](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 学习管理 IP 地址分配、配置静态 IP、设置默认网关以及验证网络配置，这些都与路由表中找到的条目直接相关。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 地址分配和网络可达性，帮助您了解不同 IP 类型如何交互以及网络可达性是如何确定的，这反映在路由决策中。
+::option[策略规则或另一个网络命名空间可能选择不同的路由状态。]{#routing-table-policy-context .correct explanation="有效查找取决于数据包属性和进程的网络上下文。"}
+::option[Linux 路由表不包含目标前缀。]{#routing-table-no-prefixes explanation="目标前缀是基本路由键。"}
+::option[应用程序从不发送 IP 数据包。]{#routing-table-apps-never explanation="应用程序流量通过网络和传输协议承载。"}
+:::
 
-这些实验将帮助您在实际场景中应用概念，并建立对网络配置和故障排除的信心。
+## 查询生效路由
 
-## Quiz Question
+让内核评估目标和可选源地址：
 
-如果在路由表中找不到目标地址，数据包会被发送到哪里？请用一个英文单词回答，注意大小写。
+```bash
+$ ip route get 203.0.113.10
+$ ip route get 203.0.113.10 from 192.168.224.10
+```
 
-## Quiz Answer
+结果预测当前时刻的本地查找。它不会发送探测，也不能证明邻居、下游、防火墙或应用程序可达。
 
-Gateway
+:::single-choice{#routing-table-route-get-limit} `ip route get` 不会做什么？
+
+::option[显示所选本地接口和下一跳。]{#routing-table-get-does-interface explanation="这些是查找结果中的主要字段。"}
+::option[针对目标评估当前本地路由策略。]{#routing-table-get-does-policy explanation="该命令执行内核路由查找。"}
+::option[证明数据成功经过每个下游跳点送达。]{#routing-table-get-not-probe .correct explanation="它是本地决策查询，而不是端到端网络探测。"}
+:::
+
+## 总结
+
+现在，你可以读取 Linux 路由条目并查询实际生效的本地决策。
+
+1. 区分直连路由与经由网关的路由。
+2. 阅读前缀、接口、协议、源地址和度量值字段。
+3. 在比较相关度量值前应用最长前缀匹配。
+4. 考虑策略路由表、命名空间和 VRF。
+5. 将 `ip route get` 视为查找，而不是可达性测试。

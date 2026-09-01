@@ -1,50 +1,77 @@
 ---
-index: 5
+lesson_id: "arp-command"
+course_id: "network-config"
 lang: "es"
+order_index: 5
 title: "arp"
-meta_title: "arp - Configuración de red"
-meta_description: "Aprende sobre el comando ARP de Linux y cómo ver tu caché ARP. Comprende el papel de ARP en la comunicación de red. Una guía para principiantes de ARP."
-meta_keywords: "Linux ARP, caché ARP, ip neighbour show, comandos de red, redes Linux, Linux para principiantes, tutorial de Linux"
+description: "Aprende a inspeccionar e interpretar el estado de la caché de vecinos ARP de IPv4 y de vecinos IPv6 en Linux."
+meta_title: "arp - Network Config"
+meta_description: "Aprende sobre el comando ARP de Linux y cómo consultar la caché ARP. Comprende la función de ARP en la comunicación de red con esta guía para principiantes."
+meta_keywords: "ARP Linux, caché ARP, ip neighbour show, comandos de red, redes Linux, Linux para principiantes, tutorial Linux"
 ---
 
-## Lesson Content
+Linux almacena en la tabla de vecinos las direcciones de enlace de los siguientes saltos resueltas recientemente. Para IPv4 sobre Ethernet, las entradas se aprenden mediante ARP; IPv6 utiliza el descubrimiento de vecinos. El comando antiguo `arp` solo muestra una parte de este estado, mientras que `ip neighbor` gestiona ambas familias.
 
-Recuerda que cuando buscamos una dirección MAC con ARP, primero verifica la caché ARP almacenada localmente en nuestro sistema. De hecho, puedes ver esta caché:
+## Consultar entradas de vecinos
 
-```
-pete@icebox:~$ arp
-Address                  HWtype  HWaddress           Flags Mask            Iface
-192.168.22.1            ether   00:12:24:fc:12:cc   C                     eth0
-192.168.22.254          ether   00:12:45:f2:84:64   C                     eth0
-```
-
-La caché ARP está realmente vacía cuando una máquina arranca; se llena a medida que se envían paquetes a otros hosts. Si enviamos un paquete a un destino que no está en la caché ARP, sucede lo siguiente:
-
-1. El host de origen crea la trama Ethernet con un paquete de solicitud ARP.
-2. El host de origen transmite esta trama a toda la red.
-3. Si uno de los hosts de la red conoce la dirección MAC correcta, enviará un paquete de respuesta y una trama que contenga la dirección MAC.
-4. El host de origen agrega la asignación de IP a dirección MAC a la caché ARP y luego procede con el envío del paquete.
-
-También puedes ver tu caché ARP a través del comando `ip`:
+Inspecciona todas las entradas o las de una interfaz:
 
 ```bash
-ip neighbour show
+$ ip neighbor show
+$ ip neighbor show dev enp1s0
 ```
 
-## Exercise
+Una entrada incluye una dirección IP, una dirección de la capa de enlace, un dispositivo y un estado de accesibilidad. La tabla puede estar vacía después del arranque y llenarse a medida que el tráfico necesita siguientes saltos locales.
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de ARP y la interacción de la capa de red:
+:::single-choice{#arp-command-modern-view} ¿Qué comando muestra el estado moderno de la tabla de vecinos de Linux?
 
-1. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Usa los comandos `ping` y `arp` para observar cómo las direcciones IP se resuelven en direcciones MAC y cómo la puerta de enlace predeterminada maneja el tráfico.
-2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprende a usar el comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, que son fundamentales para comprender ARP.
-3. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practica la administración del direccionamiento IP usando el comando `ip` y verifica la configuración de red con `arp` y `traceroute`.
+::option[`pwd neighbor`]{#arp-command-pwd explanation="Pwd muestra el directorio de trabajo del shell."}
+::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="Informa tanto de las entradas derivadas de ARP para IPv4 como de las de descubrimiento de vecinos para IPv6."}
+::option[`route --passwords`]{#arp-command-route-passwords explanation="Ninguna inspección de rutas de este tipo debe exponer credenciales."}
+:::
 
-Estos laboratorios te ayudarán a aplicar los conceptos de ARP y direccionamiento de red en escenarios reales y a generar confianza con las redes Linux.
+## Resolver un vecino IPv4
 
-## Quiz Question
+Cuando falta una correspondencia IPv4 en el enlace, un host difunde una solicitud ARP para preguntar quién posee la dirección de destino. Responde el destino o un router que realice explícitamente proxy ARP. El emisor guarda la correspondencia en caché y transmite la trama que estaba esperando.
 
-¿Qué comando puedes usar para ver tu caché ARP?
+Para un destino IP remoto, el host resuelve la dirección de la puerta de enlace seleccionada, no la dirección MAC del host remoto.
 
-## Quiz Answer
+:::single-choice{#arp-command-remote-target} ¿Qué vecino IPv4 resuelve un host para un destino situado fuera del enlace?
 
-arp
+::option[El servidor remoto final a través de todos los routers.]{#arp-command-final-server explanation="Su dirección MAC no tiene significado en el enlace de origen."}
+::option[Todos los servidores DNS indicados en la configuración del resolver.]{#arp-command-all-dns explanation="La resolución de vecinos sigue la ruta seleccionada, no la lista del resolver."}
+::option[La puerta de enlace seleccionada que está en el enlace.]{#arp-command-gateway .correct explanation="La trama Ethernet local se dirige al router que reenvía el paquete IP."}
+:::
+
+## Interpretar los estados
+
+Entre los estados habituales se encuentran `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE` y `FAILED`. `STALE` significa que la confirmación reciente de accesibilidad ha caducado; la dirección en caché aún puede utilizarse mientras la pila realiza las comprobaciones necesarias. `FAILED` indica que la resolución o la detección de accesibilidad no tuvo éxito, pero las causas pueden incluir el enlace, la VLAN, la dirección, la ruta, el filtrado o que el par esté apagado.
+
+:::single-choice{#arp-command-stale-state} ¿Significa `STALE` que se sabe que el vecino es inaccesible?
+
+::option[No; carece de una confirmación reciente y puede comprobarse al utilizarlo.]{#arp-command-stale-probe .correct explanation="El estado no equivale a `FAILED`."}
+::option[Sí, y la entrada no puede volver a usarse nunca.]{#arp-command-stale-dead explanation="Las entradas obsoletas siguen siendo candidatas y pueden cambiar después de las comprobaciones de accesibilidad."}
+::option[Sí, porque su registro DNS ha caducado.]{#arp-command-stale-dns explanation="El estado de los vecinos y la caché DNS son aspectos independientes."}
+:::
+
+## Cambiar el estado de los vecinos con cuidado
+
+Las entradas estáticas y el vaciado de la caché modifican el estado y pueden interrumpir el tráfico activo u ocultar las pruebas originales. Captura primero las rutas, los contadores de paquetes y el estado de los vecinos actuales. Es preferible realizar una prueba dirigida y una captura de paquetes en una red de pruebas autorizada antes de vaciar toda una interfaz.
+
+ARP no dispone de autenticación integrada, por lo que las direcciones duplicadas o las respuestas falsificadas pueden contaminar las correspondencias. Las protecciones de los conmutadores, la segmentación, la supervisión y la autenticación de capas superiores ayudan a reducir el impacto.
+
+:::single-choice{#arp-command-flush-first} ¿Por qué no debes empezar un diagnóstico vaciando toda la tabla de vecinos?
+
+::option[Las entradas de vecinos solo se almacenan en servidores raíz DNS.]{#arp-command-neighbors-dns explanation="La pila de red local las mantiene."}
+::option[Un vaciado elimina permanentemente el hardware de la interfaz.]{#arp-command-flush-hardware explanation="Elimina entradas de la caché, no dispositivos físicos."}
+::option[Modifica las pruebas y puede interrumpir siguientes saltos que sí funcionaban.]{#arp-command-flush-disrupts .correct explanation="La inspección de solo lectura y las pruebas dirigidas conservan el estado necesario para diagnosticar la causa."}
+:::
+
+## Resumen
+
+Ahora puedes inspeccionar la resolución de vecinos sin tratar todos los estados de la caché como fallos.
+
+1. Usa `ip neighbor` para consultar el estado de IPv4 e IPv6.
+2. Resuelve el destino directamente solo cuando esté en el enlace.
+3. Resuelve una puerta de enlace para el tráfico IP dirigido fuera del enlace.
+4. Conserva las pruebas de la caché antes de realizar cambios de estado dirigidos.

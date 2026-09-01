@@ -1,42 +1,85 @@
 ---
-index: 4
+lesson_id: "network-addressing"
+course_id: "network-basics"
 lang: "es"
-title: "Direccionamiento de Red"
-meta_title: "Direccionamiento de Red - Fundamentos de Red"
-meta_description: "Descubra los fundamentos del direccionamiento de red. Esta guía explica las direcciones MAC, direcciones IP y nombres de host, conceptos clave para entender cómo se comunican los dispositivos en redes Linux."
-meta_keywords: "direccionamiento de red, dirección MAC, dirección IP, nombre de host, identificadores de red, redes Linux, fundamentos de red, principiante, tutorial, guía"
+order_index: 4
+title: "Direccionamiento de red"
+description: "Aprende cómo las direcciones de enlace, las direcciones IP y los nombres de host identifican distintas partes de la comunicación de red."
+meta_title: "Direccionamiento de red - Network Basics"
+meta_description: "Descubre los fundamentos del direccionamiento de red. Esta guía explica las direcciones MAC, las direcciones IP y los nombres de host, conceptos esenciales para comprender la comunicación en redes Linux."
+meta_keywords: "direccionamiento de red, dirección MAC, dirección IP, nombre de host, identificadores de red, redes Linux, conceptos básicos de redes, principiante, tutorial, guía"
 ---
 
-## Lesson Content
+La comunicación de red utiliza identificadores distintos en ámbitos diferentes. Las direcciones de la capa de enlace entregan tramas en un enlace local, las direcciones IP permiten la entrega enrutada y los nombres ayudan a las aplicaciones y a las personas a seleccionar servicios.
 
-Antes de explorar cómo viajan los paquetes de datos a través de una red, es esencial comprender algo de terminología central. Al igual que una carta física necesita una dirección de destino y de remitente, los paquetes de red requieren información similar para llegar a su objetivo. En redes informáticas, los dispositivos se identifican mediante direcciones MAC (Control de Acceso al Medio) y direcciones IP. Para simplificar las cosas para los humanos, también usamos nombres de host.
+## Direcciones de la capa de enlace
 
-### Direcciones MAC
+Una dirección MAC de Ethernet tiene 48 bits y suele escribirse como seis octetos hexadecimales, por ejemplo `00:c4:b5:45:b2:43`. Una dirección de origen identifica una interfaz en el enlace actual, mientras que un destino puede ser unicast, multicast o broadcast.
 
-Una dirección MAC es un identificador de hardware único y permanente asignado a una tarjeta de interfaz de red (NIC). Esta dirección se graba en el dispositivo durante la fabricación y no cambia. Cada dispositivo que se conecta a una red, como su computadora o teléfono inteligente, tiene una NIC con una dirección MAC distinta. Esta dirección de hardware es crucial para la comunicación en un segmento de red local. Una dirección MAC de Ethernet típicamente se ve así: `00:C4:B5:45:B2:43`. Los primeros tres bytes de la dirección forman el Identificador Único Organizacional (OUI), que identifica al fabricante. Por ejemplo, Dell utiliza el OUI `00-14-22`, por lo que una NIC de Dell podría tener una dirección MAC como `00-14-22-34-B2-C2`.
+No se garantiza que las direcciones MAC sean permanentes o globalmente únicas. El software puede asignar una dirección administrada localmente, las interfaces virtuales generan direcciones y las funciones de privacidad de Wi-Fi pueden aleatorizarlas. Normalmente, los routers sustituyen el encapsulado Ethernet en cada salto, por lo que un servidor remoto no recibe la dirección Ethernet de origen del enlace local inicial.
 
-### Direcciones IP
+:::single-choice{#network-addressing-mac-scope} ¿Cuál es el ámbito normal de una dirección MAC de Ethernet durante la entrega de paquetes?
 
-Una dirección IP es un identificador lógico para un dispositivo en una red, lo que lo hace accesible a través de diferentes redes, incluido Internet. A diferencia de una dirección MAC, una dirección IP no está ligada al hardware y puede asignarse dinámicamente. Nos centraremos en IPv4 por ahora, donde una dirección se parece a `10.24.12.4`. Las direcciones IP son fundamentales para el lado del software de las redes, ya que permiten el enrutamiento y la comunicación global. Si bien las direcciones IP públicas son únicas en todo Internet, pueden cambiar, y tecnologías como la Traducción de Direcciones de Red (NAT) permiten direcciones privadas no únicas dentro de una red local. Es importante recordar que tanto las direcciones MAC (hardware) como las IP (software) son necesarias para una comunicación de red exitosa.
+::option[El enlace local actual.]{#network-addressing-local-link .correct explanation="Los routers crean un encapsulado nuevo de la capa de enlace para los saltos posteriores."}
+::option[Todos los saltos enrutados hasta el servidor final de Internet.]{#network-addressing-all-hops explanation="La trama original no atraviesa los routers sin cambios."}
+::option[Únicamente la codificación de texto de la aplicación.]{#network-addressing-text-encoding explanation="Una dirección MAC pertenece al encapsulado de la capa de enlace."}
+:::
 
-### Nombres de Host
+## Direcciones IP y prefijos
 
-Aunque las direcciones IP son efectivas para las computadoras, son difíciles de recordar para los humanos. Los nombres de host resuelven este problema al mapear un nombre fácil de usar a una dirección IP. Por ejemplo, es mucho más fácil recordar `mihost.com` que su dirección IP correspondiente, como `192.12.41.4`. Este mapeo es manejado por el Sistema de Nombres de Dominio (DNS), que actúa como la guía telefónica de Internet, traduciendo nombres de host memorables a las direcciones IP numéricas requeridas para el enrutamiento de red.
+Las direcciones IPv4 tienen 32 bits, o cuatro octetos, mientras que las direcciones IPv6 tienen 128 bits. Una dirección IP se asigna normalmente a una interfaz y se interpreta con una longitud de prefijo como `192.0.2.10/24` o `2001:db8::10/64`. El prefijo identifica cuántos bits iniciales describen la red.
 
-## Exercise
+Una interfaz puede tener varias direcciones IP, y una dirección puede cambiar mediante DHCP, direccionamiento de privacidad, conmutación por error o administración. Las direcciones IPv4 privadas pueden reutilizarse en redes distintas; las políticas de enrutamiento público y NAT determinan la accesibilidad externa.
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de los identificadores de red como direcciones MAC, direcciones IP y nombres de host:
+:::single-choice{#network-addressing-ipv4-size} ¿Qué tamaño tiene una dirección IPv4?
 
-1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, en un sistema Linux.
-2. **[Explorar tipos de direcciones IP y alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP y pruebe la alcanzabilidad de la red usando `ping` e `ip a`.
-3. **[Administrar la resolución de nombres de host locales en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a administrar la resolución de nombres de host locales editando el archivo `/etc/hosts` y probando sus cambios.
+::option[32 bits en cuatro octetos.]{#network-addressing-thirty-two .correct explanation="Cada componente decimal mostrado representa ocho bits."}
+::option[4 bits en un único dígito hexadecimal.]{#network-addressing-four-bits explanation="Cuatro bits solo representan un dígito hexadecimal."}
+::option[128 bits en dieciséis octetos.]{#network-addressing-128-octets explanation="IPv6 tiene 128 bits, no 128 octetos."}
+:::
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con las redes fundamentales de Linux.
+## Nombres de host y resolución de nombres
 
-## Quiz Question
+Un nombre de host es un nombre, no una dirección. La resolución de nombres puede consultar `/etc/hosts`, DNS, sistemas multicast u otras fuentes según la configuración de servicios de nombres de la máquina. Un nombre puede resolverse en varias direcciones y varios nombres pueden hacer referencia a un mismo servicio.
 
-¿Cuántos bytes tiene una dirección IPv4?
+Utiliza la ruta del resolver del sistema cuando compruebes lo que probablemente verá una aplicación:
 
-## Quiz Answer
+```bash
+$ getent ahosts example.com
+```
 
-4
+Las respuestas DNS pueden cambiar o estar en caché, y que la resolución tenga éxito no demuestra que el servicio sea accesible.
+
+:::single-choice{#network-addressing-getent-purpose} ¿Por qué se utiliza `getent ahosts` durante una comprobación de resolución de nombres?
+
+::option[Asigna permanentemente la dirección devuelta a todas las interfaces.]{#network-addressing-getent-assign explanation="El comando consulta bases de datos y no configura interfaces."}
+::option[Solicita direcciones a la ruta de servicios de nombres configurada en el sistema.]{#network-addressing-system-resolver .correct explanation="Esta puede incluir archivos locales y DNS según la política de la máquina."}
+::option[Garantiza que una aplicación funcione correctamente en todos los hosts devueltos.]{#network-addressing-getent-health explanation="La búsqueda de nombres y la salud de la aplicación son pruebas independientes."}
+:::
+
+## Inspeccionar un host Linux
+
+Consulta por separado la configuración de enlace y la configuración IP:
+
+```bash
+$ ip -brief link
+$ ip -brief address
+```
+
+Después, inspecciona las rutas y el estado de los vecinos al diagnosticar la accesibilidad. Nunca deduzcas la interfaz o la dirección de origen correcta solo a partir de su nombre; la selección de rutas, las reglas de política, los espacios de nombres y los túneles pueden cambiar la trayectoria.
+
+:::single-choice{#network-addressing-ip-link-versus-address} ¿Qué vista de comandos se centra en las direcciones IP asignadas?
+
+::option[`ip -brief address`]{#network-addressing-address-view .correct explanation="El objeto address muestra las asignaciones IPv4 e IPv6 de las interfaces."}
+::option[Únicamente `ip -brief link`.]{#network-addressing-link-only explanation="La vista link se centra en el estado de las interfaces y de la capa de enlace."}
+::option[`pwd`]{#network-addressing-pwd explanation="Pwd muestra el directorio de trabajo del shell."}
+:::
+
+## Resumen
+
+Ahora puedes distinguir nombres y direcciones según su ámbito de red.
+
+1. Trata las direcciones MAC como identificadores del enlace local que pueden cambiar.
+2. Interpreta las direcciones IPv4 e IPv6 junto con sus longitudes de prefijo.
+3. Reconoce que las interfaces pueden contener varias direcciones lógicas.
+4. Consulta los nombres de host mediante el resolver del sistema configurado.

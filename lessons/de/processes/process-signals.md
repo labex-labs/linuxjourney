@@ -1,62 +1,85 @@
 ---
-index: 6
+lesson_id: "process-signals"
+course_id: "processes"
 lang: "de"
+order_index: 6
 title: "Signale"
-meta_title: "Signale - Prozesse"
-meta_description: "Erkunden Sie die Grundlagen von Linux-Signalen, einem Schlüsselmechanismus für die Prozessverwaltung. Erfahren Sie, wie Linux-Prozesssignale wie SIGTERM (Signal 15 Linux) und SIGKILL funktionieren, und verstehen Sie deren OS-Signalcodes."
-meta_keywords: "linux signale, linux prozesssignale, signal 15 linux, os sig code, SIGKILL, SIGTERM, SIGINT, prozessverwaltung, linux tutorial"
+description: "Erfahre, wie Linux Signale zur Prozesssteuerung und Ereignisbenachrichtigung erzeugt, blockiert, zustellt und behandelt."
+meta_title: "Signale – Prozesse"
+meta_description: "Erkunde die Grundlagen von Linux-Signalen, einem wichtigen Mechanismus zur Prozessverwaltung. Erfahre, wie Linux-Prozesssignale wie SIGTERM (Signal 15 unter Linux) und SIGKILL funktionieren, und verstehe ihre Betriebssystem-Signalcodes."
+meta_keywords: "Linux-Signale, Linux-Prozesssignale, Signal 15 Linux, Betriebssystem-Signalcode, SIGKILL, SIGTERM, SIGINT, Prozessverwaltung, Linux-Tutorial"
 ---
 
-## Lesson Content
+Ein Signal ist eine asynchrone Benachrichtigung, die einem Prozess oder einem bestimmten Thread zugestellt wird. Signale melden Ereignisse und fordern Aktionen an, übertragen aber im Vergleich zu datenorientierten Mechanismen der Interprozesskommunikation nur begrenzte Informationen.
 
-Unter Linux ist ein Signal eine Softwareunterbrechung, die an einen Prozess gesendet wird, um ihn über ein wichtiges Ereignis zu informieren. Das Verständnis von **Linux-Signalen** ist grundlegend für die effektive Verwaltung von Prozessen und Systemverhalten.
+## Woher Signale stammen
 
-### Der Zweck von Signalen
+Signale können aus mehreren Quellen stammen:
 
-Signale dienen als primäre Methode der Interprozesskommunikation (IPC). Sie haben viele Verwendungszwecke:
+- Ein Terminal kann bei `Ctrl-C` `SIGINT` oder bei `Ctrl-Z` `SIGTSTP` erzeugen und an die Vordergrundprozessgruppe richten.
+- Der Kernel kann ein synchrones Signal wie `SIGSEGV` erzeugen, wenn ein Thread auf eine ungültige Speicheradresse zugreift.
+- Ein Prozess kann ein autorisiertes Signal an einen anderen Prozess oder eine Prozessgruppe senden.
+- Zeitgeber, Änderungen des Kindprozesszustands und Terminal-Hangups können weitere Signale erzeugen.
 
-- **Benutzerinteraktion**: Ein Benutzer kann spezielle Terminalzeichen wie `Strg-C` (SIGINT) oder `Strg-Z` (SIGTSTP) eingeben, um Vordergrundprozesse zu unterbrechen oder anzuhalten.
-- **Kernel-Benachrichtigungen**: Der Kernel kann Signale an einen Prozess senden, um ihn über Hardware- oder Softwareprobleme zu informieren, wie z. B. einen ungültigen Speicherzugriff (SIGSEGV).
-- **Prozessverwaltung**: Systemadministratoren und andere Prozesse verwenden Signale, um den Lebenszyklus anderer Prozesse zu verwalten, z. B. das Anfordern einer Beendigung oder einer Neuladung der Konfiguration.
+Der Sender muss über die entsprechende Berechtigung verfügen, die gewöhnlich auf Zugangsdaten oder Capabilities beruht. Signale sind daher eine vom Kernel vermittelte Steuerungsschnittstelle und keine uneingeschränkten Nachrichten zwischen beliebigen Benutzern.
 
-### Der Signal-Lebenszyklus
+:::single-choice{#process-signals-ctrl-c} Welches Signal erzeugt ein Terminal gewöhnlich bei `Ctrl-C`?
 
-Wenn ein Ereignis ein Signal erzeugt, wird es zunächst an einen Zielprozess übermittelt. Das Signal bleibt in einem „ausstehenden“ Zustand, bis der Kernel den Prozess ausführt. Wenn der Prozess eingeplant wird, wird das Signal zugestellt. Prozesse verfügen jedoch über Signalmasken, die so konfiguriert werden können, dass die Zustellung bestimmter Signale blockiert wird.
+::option[`SIGTSTP`]{#process-signals-ctrl-c-tstp explanation="`SIGTSTP` ist gewöhnlich mit dem Terminalzeichen zum Anhalten wie `Ctrl-Z` verbunden."}
+::option[`SIGCONT`]{#process-signals-ctrl-c-cont explanation="`SIGCONT` setzt einen angehaltenen Prozess fort und steht nicht für eine Unterbrechung über die Tastatur."}
+::option[`SIGINT`]{#process-signals-ctrl-c-int .correct explanation="Das Unterbrechungszeichen des Terminals erzeugt gewöhnlich `SIGINT` für die Vordergrundprozessgruppe."}
+:::
 
-Wenn ein Signal zugestellt wird, kann der Prozess eine von mehreren Aktionen ausführen:
+## Behandlungen und Standardaktionen
 
-- **Das Signal ignorieren**: Der Prozess verwirft das Signal einfach und fährt mit der Ausführung fort.
-- **Das Signal abfangen**: Der Prozess führt eine benutzerdefinierte Funktion aus, die als Signal-Handler bezeichnet wird, um auf das Ereignis zu reagieren.
-- **Die Standardaktion ausführen**: Wenn das Signal nicht abgefangen oder ignoriert wird, wird die Standardaktion ausgeführt. Bei vielen Signalen bedeutet dies die Beendigung des Prozesses.
-- **Das Signal blockieren**: Wenn sich das Signal in der Signalmaske des Prozesses befindet, bleibt es ausstehend, bis es entsperrt wird.
+Die meisten Signale besitzen eine prozessweite Behandlung, die eine von drei Reaktionen auswählt:
 
-### Häufige Linux-Prozesssignale
+- die festgelegte Standardaktion des Signals ausführen
+- das Signal ignorieren
+- einen vom Benutzer eingerichteten Handler aufrufen
 
-Jedes Signal wird durch eine Ganzzahl definiert, aber sie werden fast immer anhand ihrer symbolischen Namen (dem **OS-Signalcode**) bezeichnet, die mit `SIG` beginnen. Obwohl die Zahlen zwischen den Architekturen leicht variieren können, sind die Namen konsistent. Hier sind einige der häufigsten **Linux-Prozesssignale**:
+Die Standardaktionen unterscheiden sich: Ein Signal kann beenden, beenden und einen Core-Dump erzeugen, anhalten, fortsetzen oder ignoriert werden. Das Abfangen von `SIGTERM` kann einem Programm ermöglichen, ein geordnetes Herunterfahren einzuleiten. Ein Handler muss jedoch strenge Regeln zur Async-Signal-Sicherheit einhalten, und das Programm kann seine Beendigung weiterhin verzögern oder ablehnen.
 
-- **SIGHUP (1)**: Auflegen. Wird oft verwendet, um einem Daemon mitzuteilen, seine Konfiguration neu zu laden.
-- **SIGINT (2)**: Unterbrechung. Gesendet durch `Strg-C`. Es ist eine Aufforderung zur Beendigung des Prozesses.
-- **SIGKILL (9)**: Töten. Dies ist eine sofortige, erzwungene Beendigung. Der Prozess kann dieses Signal nicht abfangen, ignorieren oder blockieren.
-- **SIGSEGV (11)**: Segmentierungsfehler. Zeigt an, dass der Prozess auf einen ungültigen Speicher zugegriffen hat.
-- **SIGTERM (15)**: Beendigung. Dies ist die Standardmethode, um einen Prozess höflich zur Beendigung aufzufordern. Es ist das Standardsignal, das vom `kill`-Befehl gesendet wird. Ein Prozess kann dieses Signal abfangen, um vor dem Beenden Aufräumarbeiten durchzuführen. Dies wird oft als **Signal 15 Linux** bezeichnet.
-- **SIGSTOP**: Anhalten. Pausiert den Prozess. Wie SIGKILL kann es nicht abgefangen oder ignoriert werden.
+Signalnamen sind portabler und lesbarer als Nummern. Obwohl verbreitete Linux-Architekturen `SIGTERM` als 15 verwenden, solltest du nicht annehmen, dass alle Signalenummern außer den vom jeweiligen Standard garantierten überall identisch sind. Verwende `kill -l`, um die lokale Zuordnung zu prüfen.
 
-The key difference between `SIGTERM` (**linux signal 15**) and `SIGKILL` is that `SIGTERM` is a request that can be handled, while `SIGKILL` is a command that destroys the process immediately.
+:::single-choice{#process-signals-term-behavior} Warum kann ein Prozess geordnet auf `SIGTERM` reagieren?
 
-Der Hauptunterschied zwischen `SIGTERM` (**Linux-Signal 15**) und `SIGKILL` besteht darin, dass `SIGTERM` eine Anfrage ist, die behandelt werden kann, während `SIGKILL` ein Befehl ist, der den Prozess sofort zerstört.
+::option[Er kann für dieses Signal einen Handler einrichten.]{#process-signals-term-handler .correct explanation="Anders als `SIGKILL` kann `SIGTERM` abgefangen werden, sodass ein Programm seine eigene Logik zum Herunterfahren einleiten kann."}
+::option[Der Kernel speichert automatisch jedes geöffnete Dokument.]{#process-signals-term-kernel-save explanation="Die Bereinigung durch eine Anwendung hängt von ihrem Programmcode ab; der Kernel versteht und speichert keinen beliebigen Dokumentzustand."}
+::option[`SIGTERM` kann standardmäßig keine Beendigung verursachen.]{#process-signals-term-no-default explanation="Seine Standardaktion ist die Beendigung, sofern der Prozess die Behandlung nicht geändert hat."}
+:::
 
-## Exercise
+## Blockierte und ausstehende Signale
 
-Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis von Prozessen und der Verwendung von Signalen zu ihrer Interaktion zu festigen:
+Threads besitzen Signalmasken, die die Zustellung ausgewählter Signale vorübergehend blockieren können. Ein erzeugtes blockiertes Signal bleibt ausstehend, bis es zugestellt werden kann, vorbehaltlich der Regeln für Standard- und Echtzeitsignale. Mehrere Standardsignale desselben Typs können zusammengefasst werden, statt jedes Auftreten einzeln in eine Warteschlange zu stellen.
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – In diesem Labor erlernen Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System. Sie werden untersuchen, wie man mit Vordergrund- und Hintergrundprozessen interagiert, sie mit `ps` inspiziert, Ressourcen mit `top` überwacht, die Priorität mit `renice` anpasst und sie mit `kill` beendet. Das Beenden von Prozessen mit `kill` ist eine direkte Anwendung des Sendens von Signalen.
+In einem Prozess mit mehreren Threads kann ein an den Prozess gerichtetes Signal einem geeigneten Thread zugestellt werden, der es nicht blockiert; ein an einen Thread gerichtetes Signal zielt auf den angegebenen Thread. Eine korrekte Signalgestaltung erfordert daher mehr als die Prüfung, ob „der Prozess es blockiert“.
 
-Dieses Labor hilft Ihnen, die Konzepte der Prozessverwaltung und die zugrunde liegende Verwendung von Signalen in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.
+:::single-choice{#process-signals-blocked-state} Was geschieht gewöhnlich, wenn ein blockierbares Signal erzeugt wird, während sein Ziel es blockiert?
 
-## Quiz Question
+::option[Es bleibt ausstehend, bis eine Zustellung möglich wird.]{#process-signals-pending .correct explanation="Die Blockierung verschiebt die Behandlung; das ausstehende Signal kann nach seiner Freigabe zugestellt werden."}
+::option[Es wird automatisch in `SIGKILL` umgewandelt.]{#process-signals-convert-kill explanation="Der Kernel eskaliert ein gewöhnliches blockiertes Signal nicht zu einem nicht abfangbaren Signal."}
+::option[Es ändert die Benutzer-ID des Zielprozesses.]{#process-signals-change-uid explanation="Signalmasken beeinflussen die Zustellung und ändern keine Prozesszugangsdaten."}
+:::
 
-Welches Signal kann nicht blockiert werden? Bitte antworten Sie auf Englisch und verwenden Sie den genauen Signalnamen unter Beachtung der Groß- und Kleinschreibung.
+## Signale, die nicht behandelt werden können
 
-## Quiz Answer
+`SIGKILL` beendet einen Prozess und `SIGSTOP` hält ihn an. Keines der beiden Signale kann abgefangen, ignoriert oder blockiert werden. Dadurch behält der Kernel die letztliche Kontrolle. Zugleich bedeutet dies, dass `SIGKILL` keine Gelegenheit zur Bereinigung auf Anwendungsebene bietet.
 
-SIGKILL
+Selbst `SIGKILL` lässt eine Aufgabe aus Sicht eines Beobachters möglicherweise nicht sofort verschwinden. Eine Aufgabe kann in einem nicht unterbrechbaren Kernelvorgang warten, und nach der Beendigung muss ihr Elternprozess den Status weiterhin aufräumen.
+
+:::single-choice{#process-signals-uncatchable-pair} Welches Paar kann weder abgefangen noch ignoriert oder blockiert werden?
+
+::option[`SIGKILL` und `SIGSTOP`]{#process-signals-kill-stop .correct explanation="Der Kernel behält diese beiden Signale vor, damit ein Prozess ihre grundlegenden Aktionen weder überschreiben noch aufschieben kann."}
+::option[`SIGINT` und `SIGTERM`]{#process-signals-int-term explanation="Für beide können benutzerdefinierte Handler eingerichtet werden, und beide lassen sich blockieren."}
+::option[`SIGHUP` und `SIGCONT`]{#process-signals-hup-cont explanation="Diese Signale besitzen besondere Semantik, sind aber nicht das nicht abfangbare Paar."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun die wichtigsten Phasen und Einschränkungen der Linux-Signalbehandlung erklären.
+
+1. Bestimme vom Terminal, Kernel und von Prozessen erzeugte Signale.
+2. Unterscheide Standardaktionen, ignorierte Signale und Handler.
+3. Setze Blockierung mit ausstehender Zustellung und Threadmasken in Beziehung.
+4. Denke daran, dass `SIGKILL` und `SIGSTOP` weder behandelt noch blockiert werden können.

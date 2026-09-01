@@ -1,112 +1,160 @@
 ---
-index: 6
+lesson_id: "systemd-goals"
+course_id: "init"
 lang: "es"
-title: "Objetivos de Systemd"
-meta_title: "Objetivos de Systemd - Init"
-meta_description: "Explore los objetivos de systemd y aprenda a gestionar servicios de Linux usando comandos esenciales de systemctl. Esta guía cubre los conceptos básicos de los archivos de unidad de systemd, cómo iniciar, detener y habilitar servicios, y ver su estado."
+order_index: 6
+title: "Objetivos de systemd"
+description: "Aprende a inspeccionar, ajustar, validar, iniciar, habilitar y diagnosticar unidades de servicio de systemd."
+meta_title: "Objetivos de systemd - Init"
+meta_description: "Explora los objetivos de systemd y aprende a gestionar servicios de Linux con comandos esenciales de systemctl. Esta guía explica los fundamentos de los archivos de unidad, cómo iniciar, detener y habilitar servicios, y cómo consultar su estado."
 meta_keywords: "systemd, systemctl, servicios Linux, archivos de unidad, objetivos systemd, gestión de servicios, unidades systemd, principiante, tutorial, guía, comandos Linux"
 ---
 
-## Lesson Content
+`systemctl` envía solicitudes a un gestor systemd. Esta lección se centra en las unidades de servicio del sistema. Confirma el nombre exacto de la unidad, el ámbito del gestor, las dependencias y el impacto operativo antes de cambiar su estado.
 
-Esta lección proporciona una visión general fundamental de los archivos de unidad de systemd y cómo administrarlos con `systemctl`, la herramienta principal para controlar el sistema init. Cubriremos la estructura básica de un archivo de unidad y los comandos esenciales para administrar servicios de Linux.
+## Interpretar una unidad de servicio
 
-### Entendiendo un Archivo de Unidad de Systemd
+Una unidad ilustrativa mínima puede tener este aspecto:
 
-Un archivo de unidad de systemd es un archivo de texto plano que describe un servicio, un punto de montaje, un dispositivo u otro recurso que systemd puede administrar. Aquí hay un ejemplo básico de un archivo de unidad de servicio llamado `foobar.service`:
-
-```
+```ini
 [Unit]
-Description=Mi Servicio Foobar
-After=network.target
+Description=Example worker
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/foobar
+Type=exec
+ExecStart=/usr/local/bin/example-worker
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-Este archivo de servicio simple se divide en secciones:
+- `[Unit]` contiene la descripción y las relaciones de dependencia.
+- `[Service]` define el ciclo de vida del proceso y el comportamiento específico del servicio.
+- `[Install]` indica a los comandos de habilitación qué alias o enlaces de dependencia deben crear; no constituye automáticamente una dependencia activa durante la ejecución.
 
-- **[Unit]**: Esta sección contiene metadatos e información de dependencia. La directiva `Description` proporciona un nombre legible por humanos para la unidad. Directivas como `After` y `Before` controlan el orden de inicio, asegurando que esta unidad comience después de que la red esté disponible.
-- **[Service]**: Esta sección define cómo administrar el servicio. La directiva `ExecStart` es crucial, ya que especifica el comando a ejecutar para iniciar el servicio. Otras directivas como `ExecStop` y `ExecReload` pueden definir cómo detener o recargar el servicio.
-- **[Install]**: Esta sección define el comportamiento de la unidad cuando se habilita o deshabilita con `systemctl`. La directiva `WantedBy` le indica a systemd que inicie este servicio como parte de un objetivo específico, como `multi-user.target` para un arranque estándar no gráfico.
+De forma predeterminada, `ExecStart=` no se ejecuta mediante un shell. Las tuberías, redirecciones, variables y comillas del shell no se comportan como en una línea de comandos interactiva, salvo que se invoque deliberadamente un shell explícito.
 
-Este es solo un vistazo a los archivos de unidad de systemd. Para configuraciones más avanzadas, se recomienda encarecidamente una lectura adicional sobre el tema.
+:::single-choice{#systemd-goals-install-section} ¿Cuál es el propósito principal de las directivas de `[Install]`, como `WantedBy=`?
 
-### Comandos Esenciales de Systemctl
+::option[Garantizar que el proceso del servicio ya está en ejecución.]{#systemd-goals-install-running explanation="La activación durante la ejecución requiere start u otra dependencia que la desencadene."}
+::option[Describir los enlaces o relaciones que se crean al habilitar la unidad.]{#systemd-goals-enable-links .correct explanation="Las operaciones de habilitación interpretan los metadatos de instalación, que son independientes del estado actual del proceso."}
+::option[Ejecutar todos los comandos mediante el shell interactivo del usuario.]{#systemd-goals-install-shell explanation="De forma predeterminada, el análisis de los comandos de una unidad no utiliza un shell interactivo."}
+:::
 
-Ahora, exploremos los comandos esenciales de `systemctl` que utilizará para interactuar con las unidades de systemd y administrar los servicios de Linux.
+## Inspeccionar la configuración efectiva
 
-### Listar Unidades de Systemd
-
-Para ver todas las unidades activas que systemd está administrando actualmente, use el comando `list-units`.
-
-```bash
-systemctl list-units
-```
-
-### Verificar el Estado de una Unidad
-
-Para ver el estado detallado de una unidad específica, incluyendo si está activa, habilitada y sus entradas de registro más recientes, use el comando `status`.
+Lista las unidades cargadas con:
 
 ```bash
-systemctl status networking.service
+$ systemctl list-units --type=service
 ```
 
-### Administrar Estados de Servicio
-
-Puede controlar el estado de tiempo de ejecución de un servicio usando `start`, `stop` y `restart`.
-
-Para iniciar un servicio inmediatamente:
+Lista los archivos de unidad instalados y sus estados de habilitación con:
 
 ```bash
-sudo systemctl start networking.service
+$ systemctl list-unit-files --type=service
 ```
 
-Para detener un servicio en ejecución:
+Son perspectivas distintas: un archivo de unidad puede estar habilitado pero inactivo, activo pero deshabilitado, ser estático, generado, transitorio o estar enmascarado, y puede no aparecer en uno de los listados. Inspecciona el contenido combinado del proveedor y de los ajustes parciales con:
 
 ```bash
-sudo systemctl stop networking.service
+$ systemctl cat UNIT.service
+$ systemctl show UNIT.service
 ```
 
-Para detener y luego iniciar el servicio nuevamente:
+:::single-choice{#systemd-goals-list-units-versus-files} ¿Qué muestra `list-unit-files` que no constituye el propósito principal de `list-units`?
+
+::option[Únicamente los procesos que más CPU consumen.]{#systemd-goals-cpu-processes explanation="La clasificación de procesos por consumo de recursos queda fuera de estos comandos de inventario de unidades."}
+::option[Los estados de habilitación de los archivos de unidad instalados.]{#systemd-goals-unit-file-state .correct explanation="Informa de si los archivos de unidad están habilitados, deshabilitados, son estáticos, están enmascarados y de otros estados de instalación relacionados."}
+::option[Todas las líneas que se hayan escrito alguna vez en el diario.]{#systemd-goals-all-journal explanation="Las consultas del diario se realizan con `journalctl`."}
+:::
+
+## Crear un ajuste local
+
+Usa un ajuste parcial en lugar de editar una unidad instalada por un paquete:
 
 ```bash
-sudo systemctl restart networking.service
+$ sudo systemctl edit UNIT.service
 ```
 
-### Habilitar y Deshabilitar Servicios
-
-Habilitar un servicio crea un enlace simbólico que lo conecta al proceso de arranque, asegurando que comience automáticamente. Deshabilitarlo elimina ese enlace.
-
-Para habilitar un servicio para que comience al arrancar:
+Después de guardar, en las implementaciones actuales systemctl normalmente pide al gestor que vuelva a cargar la configuración como parte de este flujo de edición. Sin embargo, cuando los archivos se modifican de otra forma, ejecuta:
 
 ```bash
-sudo systemctl enable networking.service
+$ sudo systemctl daemon-reload
 ```
 
-Para deshabilitar un servicio para que no comience al arrancar:
+`daemon-reload` vuelve a leer las definiciones de las unidades y reconstruye las dependencias. No recarga la configuración de las aplicaciones ni reinicia los servicios activos. Cuando corresponda, valida la sintaxis y las dependencias de la unidad con `systemd-analyze verify` y después revisa la unidad efectiva combinada.
+
+:::single-choice{#systemd-goals-daemon-reload} ¿Qué hace `systemctl daemon-reload`?
+
+::option[Obliga a todos los demonios a volver a leer la configuración de sus aplicaciones.]{#systemd-goals-reload-all-apps explanation="La recarga de una aplicación depende de cada servicio y es independiente de la configuración del gestor."}
+::option[Reinicia el kernel con una versión nueva.]{#systemd-goals-reload-kernel explanation="Activar otro kernel requiere un arranque, no una recarga de las definiciones de unidades."}
+::option[Vuelve a cargar las definiciones de unidades y la información de dependencias de systemd.]{#systemd-goals-reload-manager .correct explanation="Actualiza la vista de configuración del gestor sin reiniciar necesariamente los servicios."}
+:::
+
+## Estado del servicio durante la ejecución
+
+Después de validar la configuración del servicio y conservar una vía de recuperación:
 
 ```bash
-sudo systemctl disable networking.service
+$ sudo systemctl start peanut.service
+$ sudo systemctl stop peanut.service
+$ sudo systemctl restart peanut.service
+$ sudo systemctl reload peanut.service
 ```
 
-Estos comandos son los bloques de construcción para la administración de servicios en los sistemas Linux modernos. Dominarlos es un paso clave en su trayectoria en Linux.
+`reload` solo funciona cuando la unidad define o admite una acción de recarga. `restart` interrumpe el proceso y puede no conseguir restaurar el servicio. Para el acceso remoto, la red, el almacenamiento o la autenticación, conserva una vía independiente mediante la consola y valida la configuración antes de actuar.
 
-## Exercise
+Consulta el estado y los registros con:
 
-La práctica es clave para dominar nuevas habilidades. Este laboratorio práctico le ayudará a reforzar su comprensión de la administración de procesos, que a menudo son controlados por servicios systemd:
+```bash
+$ systemctl status peanut.service
+$ systemctl is-active peanut.service
+$ journalctl -u peanut.service -b
+```
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción con procesos en primer plano y en segundo plano, inspeccionándolos con `ps`, monitoreando recursos con `top`, ajustando la prioridad con `renice` y terminándolos con `kill`. Este laboratorio le brindará experiencia práctica con los efectos en tiempo de ejecución de la administración de unidades systemd.
+«Activo» es un estado del gestor, no una prueba de que todos los puntos de acceso de la aplicación funcionen correctamente.
 
-Este laboratorio le ayudará a aplicar estos conceptos en un escenario del mundo real y a ganar confianza con la administración de procesos en Linux.
+:::single-choice{#systemd-goals-start-peanut} ¿Qué comando inicia ahora `peanut.service` sin cambiar por sí solo su habilitación futura?
 
-## Quiz Question
+::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="Enable modifica los enlaces de instalación, pero no inicia el servicio salvo que se combine con `--now`."}
+::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="Start solicita la activación durante la ejecución actual y es independiente de la habilitación."}
+::option[`sudo systemctl daemon-reload peanut.service`]{#systemd-goals-daemon-reload-unit explanation="Daemon-reload no acepta como operando una unidad que activar y no inicia este servicio."}
+:::
 
-What is the command to start a service named peanut.service? Please answer in English. The answer is case-sensitive.
+## Habilitar, deshabilitar y enmascarar
 
-## Quiz Answer
+Gestiona los enlaces de dependencias futuros con:
 
-sudo systemctl start peanut.service
+```bash
+$ sudo systemctl enable peanut.service
+$ sudo systemctl disable peanut.service
+```
+
+Habilitar no inicia la unidad salvo que se añada `--now`. Deshabilitar no detiene una unidad en ejecución salvo que se añada `--now`. Una unidad estática puede carecer de metadatos de instalación y aun así activarse como dependencia de otra unidad.
+
+Enmascarar enlaza la unidad con `/dev/null` y bloquea su activación normal, incluida la activación como dependencia, hasta que se quite la máscara. Es una medida más fuerte que deshabilitar y puede romper las unidades dependientes; inspecciona las dependencias inversas antes de usarla.
+
+:::single-choice{#systemd-goals-disable-runtime} ¿Qué ocurre con un servicio que ya está en ejecución después de ejecutar `systemctl disable UNIT` sin `--now`?
+
+::option[Se termina inmediatamente con `SIGKILL`.]{#systemd-goals-disable-kills explanation="Deshabilitar por sí solo no solicita detener el servicio actual."}
+::option[Su ejecutable se elimina del sistema de archivos.]{#systemd-goals-disable-deletes explanation="Las operaciones de habilitación gestionan enlaces, no los archivos de programa instalados por paquetes."}
+::option[Normalmente sigue en ejecución mientras se eliminan los enlaces de habilitación futuros.]{#systemd-goals-disable-keeps-running .correct explanation="El estado durante la ejecución y el estado de instalación son dimensiones independientes."}
+:::
+
+## Comprobar el resultado del servicio
+
+Después de un cambio, comprueba el estado del proceso, los registros recientes, los puntos de acceso a la escucha, las unidades dependientes, la salud de la aplicación y el comportamiento tras un reinicio controlado si cambió la habilitación al arrancar. Utiliza `systemctl is-failed`, `systemctl list-dependencies` y las comprobaciones propias de la aplicación según corresponda.
+
+## Resumen
+
+Ahora puedes gestionar un servicio de systemd sin confundir la configuración, la ejecución y la habilitación.
+
+1. Interpreta `[Unit]`, `[Service]` y `[Install]` según sus funciones distintas.
+2. Compara el estado de las unidades cargadas con el estado de los archivos de unidad instalados.
+3. Usa ajustes parciales y vuelve a cargar el gestor después de modificar archivos externamente.
+4. Inicia, detén, recarga o reinicia solo después de revisar el impacto.
+5. Trata la habilitación, la deshabilitación y el enmascaramiento como controles de persistencia distintos.

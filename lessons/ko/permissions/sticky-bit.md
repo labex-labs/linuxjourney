@@ -1,62 +1,91 @@
 ---
-index: 8
+lesson_id: "sticky-bit"
+course_id: "permissions"
 lang: "ko"
-title: "끈적한 비트"
-meta_title: "끈적한 비트 - 권한"
-meta_description: "/tmp 와 같은 공유 디렉터리에서 끈적한 비트가 파일을 보호하는 방법과 chmod 를 사용하여 설정하는 방법을 알아보세요. Linux 및 Unix 파일 권한에서 끈적한 비트의 목적을 탐색합니다."
-meta_keywords: "끈적한 비트, 리눅스 끈적한 비트, 유닉스 파일 권한 끈적한 비트, chmod +t, /tmp 디렉터리, 파일 권한, 리눅스 보안"
+order_index: 8
+title: "Sticky 비트"
+description: "sticky 비트가 /tmp 같은 공유 쓰기 가능 디렉터리의 항목을 보호하는 방법을 배웁니다."
+meta_title: "Sticky 비트 - Permissions"
+meta_description: "Linux 및 Unix 파일 권한에서 sticky 비트의 목적을 알아봅니다. /tmp 같은 공유 디렉터리의 파일을 보호하고 chmod로 설정하는 방법을 배웁니다."
+meta_keywords: "sticky 비트, sticky bit linux, unix 파일 권한 sticky 비트, chmod +t, /tmp 디렉터리, 파일 권한, linux 보안"
 ---
 
-## Lesson Content
+쓰기 가능한 디렉터리는 일반적으로 권한 있는 사용자가 파일 자체를 소유하지 않아도 안의 항목을 제거하거나 이름을 바꿀 수 있게 합니다. sticky 비트는 소유권 제한을 추가하여 공유 쓰기 가능 디렉터리를 더 안전하게 만듭니다.
 
-표준 읽기, 쓰기, 실행 권한 외에도 Linux 는 고급 액세스 제어를 위한 특수 권한을 제공합니다. 우리가 다룰 마지막 특수 권한은 **스티키 비트 (sticky bit)**입니다.
+## Sticky 비트가 제거를 제한하는 방식
 
-### 스티키 비트란 무엇인가?
+디렉터리에 sticky 비트가 설정되면 Linux는 일반적으로 적절한 권한이 있는 프로세스, 디렉터리 소유자 또는 항목 소유자만 항목을 제거하거나 이름을 바꾸도록 허용합니다. 일반 디렉터리 쓰기 및 검색 권한도 여전히 필요합니다.
 
-스티키 비트는 디렉터리에 적용할 수 있는 권한 설정입니다. 디렉터리에 스티키 비트가 설정되면 해당 디렉터리 내의 파일은 파일 소유자, 디렉터리 소유자 또는 루트 사용자만 삭제하거나 이름을 바꿀 수 있습니다. 이는 여러 사용자가 서로 방해하지 않고 자신의 파일을 생성하고 관리해야 하는 공유 디렉터리에 특히 유용합니다. 이 개념은 **유닉스 파일 권한 스티키 비트** 관리의 핵심 부분입니다.
+이 제한은 디렉터리 항목을 다룹니다. 파일 권한이 허용한다면 파일 소유자가 파일 내용을 편집하는 일을 막지 않고 디렉터리를 비공개로 만들지도 않습니다.
 
-### 실제 예시: /tmp 디렉터리
+:::single-choice{#sticky-bit-removal-rule} Sticky가 설정된 공유 디렉터리에서 특정 항목을 일반적으로 제거할 수 있는 일반 사용자는 누구인가요?
 
-**Linux 에서 스티키 비트**의 일반적인 사용 사례는 임시 파일을 위한 전역 쓰기 가능 위치인 `/tmp` 디렉터리입니다. 권한을 살펴보겠습니다.
+::option[디렉터리 목록을 볼 수 있는 모든 사용자]{#sticky-bit-any-reader explanation="디렉터리 읽기 권한은 이름을 노출할 수 있지만 sticky 소유권 제한을 우회하지 않습니다."}
+::option[필요한 디렉터리 접근 권한을 가진 항목 소유자]{#sticky-bit-entry-owner .correct explanation="항목 소유자는 sticky 디렉터리 규칙에서 일반적으로 허용되는 신원 중 하나입니다."}
+::option[항목 그룹의 구성원만 가능]{#sticky-bit-entry-group explanation="그룹 멤버십만으로는 sticky 비트가 정의한 소유권 예외가 되지 않습니다."}
+:::
+
+## /tmp에서 비트 알아보기
+
+시스템 임시 디렉터리가 흔한 예입니다.
 
 ```bash
 $ ls -ld /tmp
 drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 ```
 
-권한 문자열 끝에 있는 `t`(`rwxrwxrwt`) 에 주목하십시오. 이 `t`는 스티키 비트가 설정되었음을 나타냅니다. 이로 인해 모든 사용자가 `/tmp`에 파일을 생성할 수는 있지만 다른 사용자가 만든 파일을 삭제하거나 이동할 수는 없습니다. 이는 이 공유 공간에서 한 사용자가 다른 사용자의 작업을 방해하는 것을 방지합니다.
+마지막 소문자 `t`는 기타 사용자 실행 위치에 있습니다. sticky 비트와 기타 사용자 실행 권한이 모두 있음을 뜻합니다. 대문자 `T`는 sticky 비트가 설정되었지만 기타 사용자 실행 권한은 없다는 뜻입니다.
 
-### 스티키 비트 설정 방법
+`/tmp`는 일반적으로 모두가 쓰고 검색할 수 있으므로 여러 사용자가 항목을 만들 수 있습니다. sticky 비트는 디렉터리가 모두에게 쓰기 가능하다는 이유만으로 일반 사용자가 다른 사용자의 항목을 제거하지 못하게 합니다. 예측 가능한 이름, 안전하지 않은 링크, 약한 파일 모드는 별도의 위험이므로 애플리케이션은 여전히 임시 객체를 안전하게 만들어야 합니다.
 
-`chmod` 명령을 사용하여 두 가지 방법으로 스티키 비트를 설정할 수 있습니다. 기호 모드 또는 8 진수 (숫자) 모드입니다.
+:::single-choice{#sticky-bit-lowercase-t} 디렉터리 모드 끝의 소문자 `t`는 무엇을 나타내나요?
 
-기호 모드를 사용하여 스티키 비트를 추가하려면:
+::option[Sticky와 기타 사용자 실행이 모두 설정되어 있습니다.]{#sticky-bit-t-with-execute .correct explanation="소문자 `t`는 sticky 특수 비트와 일반 기타 사용자 실행 비트를 결합합니다."}
+::option[Sticky는 설정되었지만 기타 사용자 실행은 없습니다.]{#sticky-bit-t-without-execute explanation="이 조합은 대문자 `T`로 표시됩니다."}
+::option[Setgid와 그룹 실행이 모두 설정되어 있습니다.]{#sticky-bit-setgid-position explanation="Setgid는 마지막 기타 사용자 위치가 아니라 그룹 실행 위치에 나타납니다."}
+:::
+
+## Sticky 비트 설정하고 제거하기
+
+기호 방식으로 비트를 설정합니다.
 
 ```bash
-chmod +t my_shared_dir
+$ chmod +t shared-directory
 ```
 
-8 진수 모드를 사용하여 권한을 설정하려면 표준 세 자리 권한 코드 앞에 `1`을 붙입니다. 스티키 비트에 대한 숫자 표현은 **1**입니다.
+선행 특수 비트 8진수 숫자에서 sticky는 `1`을 더합니다.
 
 ```bash
-# 스티키 비트와 함께 rwxr-xr-x 권한을 설정합니다
-chmod 1755 my_shared_dir
+$ chmod 1777 shared-directory
 ```
 
-스티키 비트를 이해하는 것은 다중 사용자 환경을 관리하고 공유 디렉터리를 효과적으로 보호하는 데 필수적입니다.
+선행 `1`은 sticky를 설정하고 `777`은 일반 모드를 제공합니다. 이 모드는 디렉터리를 모든 로컬 사용자가 의도적으로 공유할 때만 적절합니다. 팀 디렉터리에는 더 좁은 그룹 권한이 나을 수 있습니다. `chmod -t shared-directory`로 sticky 비트만 제거합니다.
 
-## Exercise
+:::single-choice{#sticky-bit-octal-value} Sticky 비트를 나타내는 선행 8진수 값은 무엇인가요?
 
-스티키 비트와 같은 특수 권한을 포함하여 파일 권한에 대한 이해를 공고히 하기 위해 다음 실습 랩을 시도해 보십시오. 이는 실제 시나리오에서 이러한 개념이 어떻게 적용되는지 확인하는 데 도움이 될 것입니다.
+::option[`2`]{#sticky-bit-value-two explanation="선행 `2`는 setgid를 나타냅니다."}
+::option[`1`]{#sticky-bit-value-one .correct explanation="Sticky 비트는 선행 특수 비트 숫자에 `1`을 더합니다."}
+::option[`4`]{#sticky-bit-value-four explanation="선행 `4`는 setuid를 나타냅니다."}
+:::
 
-1. **[Linux 사용자 그룹 및 파일 권한](https://labex.io/ko/labs/linux-linux-user-group-and-file-permissions-18002)** - 사용자 및 그룹 생성, 파일 소유권 및 권한 조작을 연습합니다. 이 랩은 특수 권한이 작동하는 방식에 대한 기초를 제공합니다.
-2. **[파일 삭제 및 이동](https://labex.io/ko/labs/linux-delete-and-move-files-7777)** - 파일 삭제 및 이동 방법을 배우고 디렉터리의 스티키 비트를 포함한 권한이 이러한 작업을 어떻게 제한할 수 있는지 확인합니다.
-3. **[파일 찾기](https://labex.io/ko/labs/linux-find-a-file-17993)** - 파일 찾기 및 액세스 제어 설정을 연습하여 파일 액세스 및 수정을 관리하는 데 있어 파일 권한의 중요성을 강화합니다.
+## 전체 디렉터리 정책 검증하기
 
-## Quiz Question
+Sticky는 쓰기나 검색 접근을 부여하지 않습니다. 일반 권한이 디렉터리 수정을 허용한 뒤 제거와 이름 변경을 제한할 뿐입니다. 디렉터리 소유자, 그룹, 일반 모드, ACL, 마운트 문맥을 함께 확인하세요. 작동 중인 시스템의 `/tmp`를 바꾸지 말고 격리된 환경의 비권한 계정으로 시험합니다.
 
-ls -l 과 같은 긴 디렉터리 목록에서 스티키 비트가 설정되었음을 나타내는 권한 문자열의 단일 문자는 무엇입니까? 단일 소문자 영어 문자로 답하십시오.
+:::single-choice{#sticky-bit-access-scope} Sticky 비트를 추가하면 쓰기 불가능한 디렉터리가 다른 사용자에게 쓰기 가능해지나요?
 
-## Quiz Answer
+::option[예. sticky는 모든 클래스에 쓰기를 자동으로 추가합니다.]{#sticky-bit-adds-write explanation="특수 비트는 소유자, 그룹, 기타 사용자 쓰기 비트를 다시 쓰지 않습니다."}
+::option[예. sticky는 디렉터리의 기타 사용자 권한 묶음을 비활성화합니다.]{#sticky-bit-disables-other explanation="기타 사용자 묶음은 일반 접근 검사에 계속 참여합니다."}
+::option[아니요. 일반 쓰기 및 검색 권한이 여전히 접근을 제어합니다.]{#sticky-bit-no-write-grant .correct explanation="Sticky는 일부 제거 및 이름 변경 작업을 제한하지만 없는 일반 권한을 추가하지 않습니다."}
+:::
 
-t
+연습하려면 일회용 공유 디렉터리를 만들고 적절한 일반 모드와 sticky 비트를 설정한 뒤 비권한 사용자 두 명으로 항목 제거를 시험하세요. [파일 삭제 및 이동](https://labex.io/ko/labs/linux-delete-and-move-files-7777) 실습으로 기본 이름 변경 및 삭제 작업을 강화할 수 있습니다.
+
+## 요약
+
+이제 공유 디렉터리의 sticky 비트를 설명하고 검증할 수 있습니다.
+
+1. Sticky를 제거 및 이름 변경의 소유권 제한과 연결할 수 있습니다.
+2. 긴 목록에서 소문자 `t`와 대문자 `T`를 알아볼 수 있습니다.
+3. 기호 방식이나 선행 8진수 값 `1`로 비트를 설정할 수 있습니다.
+4. Sticky를 일반 디렉터리 권한과 함께 평가할 수 있습니다.

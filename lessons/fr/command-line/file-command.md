@@ -1,28 +1,27 @@
 ---
-index: 6
+lesson_id: "file-command"
+course_id: "command-line"
 lang: "fr"
+order_index: 6
 title: "file"
+description: "Apprenez à identifier le type probable du contenu d'un fichier sans vous fier à son nom ou à son extension."
 meta_title: "file - Ligne de commande"
 meta_description: "Apprenez la commande Linux file avec des exemples pour identifier les fichiers texte, images, scripts, archives compressées, binaires et types MIME."
 meta_keywords: "commande linux file, commande file, identifier type fichier linux, type mime linux, fichier texte, fichier binaire, fichier archive"
 ---
 
-## Lesson Content
+Dans la leçon précédente, vous avez utilisé `touch` pour créer un fichier sans extension. Sous Linux, le nom d'un fichier ne doit pas nécessairement décrire son contenu : un fichier nommé `funny.gif` n'est pas forcément une image GIF.
 
-Dans la leçon précédente, nous avons appris à propos de `touch`. Revenons-y un instant. Avez-vous remarqué que le nom du fichier ne respectait pas les conventions de nommage standard, comme vous avez probablement vu avec d'autres systèmes d'exploitation tels que Windows ? Normalement, vous vous attendriez à ce qu'un fichier appelé `banana.jpeg` soit une image au format JPEG.
-
-Sous Linux, les noms de fichiers ne sont pas obligés de représenter le contenu du fichier. Vous pouvez créer un fichier appelé `funny.gif` qui n'est en réalité pas un GIF.
-
-Pour savoir quel type de fichier il s'agit, vous pouvez utiliser la commande `file`. Elle vous montrera une description du contenu du fichier.
+Utilisez la commande `file` pour inspecter un fichier et indiquer son type probable :
 
 ```bash
 $ file banana.jpg
 banana.jpg: JPEG image data
 ```
 
-### Pourquoi les extensions de fichiers ne suffisent pas
+## Pourquoi les extensions ne suffisent pas
 
-Les outils Linux n'ont généralement pas besoin d'une extension de fichier pour déterminer ce qu'est un fichier. Un script shell peut s'appeler `backup`, un fichier texte peut s'appeler `README`, et une image peut avoir une extension erronée. La commande `file` inspecte le contenu et les métadonnées du fichier pour faire une meilleure estimation.
+Les outils Linux n'ont généralement pas besoin d'une extension pour déterminer le type d'un fichier. Un script shell peut s'appeler `backup`, un fichier texte `README`, et une image porter une extension trompeuse. `file` examine des propriétés comme les métadonnées du système de fichiers et les motifs reconnaissables du contenu.
 
 ```bash
 $ file README
@@ -31,9 +30,18 @@ $ file /bin/ls
 /bin/ls: ELF 64-bit LSB executable
 ```
 
-### Vérification de plusieurs fichiers
+Le résultat est une classification et non une garantie. Un fichier inhabituel, incomplet ou endommagé peut recevoir une description générale comme `data` plutôt qu'un type précis.
 
-Vous pouvez vérifier plusieurs fichiers à la fois :
+:::single-choice{#identify-misleading-extension} Un fichier nommé `report.jpg` peut ne pas contenir d'image. Quelle commande vérifie son type de contenu probable ?
+
+::option[`ls report.jpg`]{#list-report explanation="`ls` confirme l'existence du nom et peut afficher ses métadonnées, mais ne classe pas le contenu du fichier."}
+::option[`file report.jpg`]{#inspect-report .correct explanation="`file` examine le fichier et indique un type probable sans se fier uniquement au suffixe `.jpg`."}
+::option[`touch report.jpg`]{#touch-report explanation="`touch` actualise les horodatages ou crée un fichier absent ; elle n'identifie pas le type du contenu."}
+:::
+
+## Vérifier plusieurs fichiers
+
+Vous pouvez contrôler plusieurs fichiers à la fois :
 
 ```bash
 $ file notes.txt image.png archive.tar.gz
@@ -42,27 +50,41 @@ image.png: PNG image data
 archive.tar.gz: gzip compressed data
 ```
 
-Les caractères génériques fonctionnent aussi :
+Vous pouvez aussi fournir un joker du shell. Le shell développe `*` en noms correspondants avant que `file` ne les examine :
 
 ```bash
 $ file *
 ```
 
-### Afficher les types MIME
+:::single-choice{#inspect-multiple-files} Quelle commande demande à `file` d'inspecter tous les noms non cachés auxquels `*` correspond dans le répertoire actuel ?
 
-L'option `-i` affiche les informations au format MIME, ce qui est utile lors du travail avec des fichiers web ou des scripts.
+::option[`file *`]{#file-wildcard .correct explanation="Le shell développe `*` en noms non cachés correspondants, puis `file` examine chaque opérande obtenu."}
+::option[`file .`]{#file-current-directory explanation="Un point désigne le répertoire actuel lui-même. Cette commande classe ce répertoire, pas chaque élément qu'il contient."}
+::option[`file -b`]{#file-brief-no-operand explanation="L'option `-b` modifie la présentation de la sortie, mais cette commande ne fournit aucun fichier à inspecter."}
+:::
+
+## Afficher les informations MIME
+
+L'option `-i` produit des informations au format MIME, notamment un type de média et, lorsqu'il est disponible, un jeu de caractères. Cette forme est utile lorsqu'un autre programme attend une valeur comme `text/html`.
 
 ```bash
 $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-### Options courantes de file
+:::single-choice{#show-mime-information} Quelle commande indique les informations au format MIME pour `index.html` ?
 
-- `-i` : Affiche les informations de type MIME.
-- `-b` : Mode bref, omet le nom du fichier dans la sortie.
-- `-L` : Suit les liens symboliques.
-- `-z` : Tente d'inspecter les fichiers compressés.
+::option[`file -b index.html`]{#brief-index explanation="L'option `-b` omet le nom du fichier dans la description habituelle ; elle ne demande pas spécialement un format MIME."}
+::option[`file -i index.html`]{#mime-index .correct explanation="L'option `-i` demande une sortie au format MIME, par exemple `text/html` avec des informations sur le jeu de caractères."}
+::option[`file -L index.html`]{#follow-index explanation="L'option `-L` contrôle le traitement des liens symboliques ; elle ne choisit pas le format MIME."}
+:::
+
+## Options utiles de file
+
+- `-i` : afficher les informations au format MIME ;
+- `-b` : utiliser le mode bref et omettre le nom du fichier ;
+- `-L` : suivre les liens symboliques et classer leur cible ;
+- `-z` : essayer d'examiner le contenu des fichiers compressés.
 
 Par exemple :
 
@@ -71,28 +93,18 @@ $ file -b notes.txt
 ASCII text
 ```
 
-### Questions fréquentes
+:::single-choice{#omit-filename-from-output} Quelle commande classe `notes.txt` en omettant son nom dans la sortie ?
 
-**La commande file se base-t-elle uniquement sur les extensions ?** Non. Elle inspecte principalement le contenu du fichier et les signatures connues.
+::option[`file -i notes.txt`]{#mime-notes explanation="L'option `-i` demande des informations au format MIME ; la sortie inclut normalement toujours le nom du fichier."}
+::option[`file -z notes.txt`]{#compressed-notes explanation="L'option `-z` demande à `file` d'examiner si possible les données compressées ; elle n'active pas le mode bref."}
+::option[`file -b notes.txt`]{#brief-notes .correct explanation="Le mode bref, sélectionné avec `-b`, affiche la classification sans le préfixe du nom de fichier."}
+:::
 
-**La commande file peut-elle se tromper ?** Oui. Elle fait une estimation éclairée, surtout pour les fichiers inhabituels ou endommagés.
+## Résumé
 
-**Pourquoi file affiche-t-elle "data" ?** Le fichier ne correspond pas à un type connu plus spécifique, ou il peut s'agir de données binaires sans signature reconnaissable.
+Vous savez maintenant utiliser `file` pour déterminer ce qu'un fichier contient probablement.
 
-## Exercise
-
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'inspection du contenu et des propriétés des fichiers :
-
-1. **[Commande Linux ls : Liste du contenu](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)** - Apprenez la commande Linux `ls` pour lister et analyser efficacement le contenu des fichiers et répertoires, ce qui précède ou suit souvent l'utilisation de la commande `file` pour comprendre ce qu'il y a dans vos répertoires.
-2. **[Commande Linux cat : Concaténation de fichiers](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)** - Entraînez-vous à visualiser et manipuler des fichiers texte, une tâche courante après avoir identifié le type d'un fichier.
-3. **[Commande Linux more : Défilement de fichiers](https://labex.io/fr/labs/linux-linux-more-command-file-scrolling-214299)** - Améliorez vos compétences en ligne de commande pour naviguer et explorer de grands fichiers texte, en vous appuyant sur la capacité à identifier les types de fichiers puis à en inspecter le contenu.
-
-Ces laboratoires vous aideront à appliquer les concepts d'inspection et de visualisation du contenu des fichiers dans des scénarios réels et à gagner en confiance dans la gestion des fichiers sous Linux.
-
-## Quiz Question
-
-Quelle commande pouvez-vous utiliser pour connaître le type d'un fichier ?
-
-## Quiz Answer
-
-file
+1. Classer un fichier sans faire confiance à son extension.
+2. Inspecter plusieurs chemins avec une seule commande.
+3. Demander des informations au format MIME.
+4. Adapter le traitement des liens, des données compressées et des libellés de sortie.

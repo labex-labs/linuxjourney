@@ -1,58 +1,81 @@
 ---
-index: 2
+lesson_id: "subnets"
+course_id: "subnetting"
 lang: "es"
+order_index: 2
 title: "Subredes"
-meta_title: "Subredes - Subneteo"
-meta_description: "Domina los fundamentos de la subred y máscara de subred en Linux. Esta guía explica el subneteo de subredes, prefijos de red y cómo gestionar la segmentación de red en un entorno Linux de subredes."
-meta_keywords: "subnet linux, subred linux, máscara de subred linux, subneteo de subredes, subredes, máscara de subred, prefijo de red, redes Linux, dirección IP"
+description: "Aprende cómo los prefijos definen subredes IPv4 e influyen en la entrega en el enlace, el enrutamiento y las políticas."
+meta_title: "Subredes - Subnetting"
+meta_description: "Domina los fundamentos de las subredes y máscaras de Linux. Esta guía explica los prefijos de red y cómo gestionar la segmentación en un entorno Linux."
+meta_keywords: "subred linux, subredes linux, máscara de subred linux, división en subredes, subredes, máscara de subred, prefijo de red, redes Linux, dirección IP"
 ---
 
-## Lesson Content
+Una subred es un intervalo de direcciones IP definido por un prefijo de red. Los hosts de una subred suelen estar en el mismo enlace local, pero la proximidad física no constituye la definición: las VLAN, los túneles, las redes superpuestas y los enlaces enrutados pueden cambiar la topología.
 
-¿Cómo puedes saber si dos computadoras están en la misma red? La respuesta radica en comprender la subred, abreviatura de sub-red. Una subred es una división lógica de una red IP, que agrupa hosts con direcciones IP similares. Estos hosts suelen estar en proximidad física cercana, lo que permite una transferencia de datos eficiente entre ellos. Piénsalo como enviar correo dentro del mismo código postal; es mucho más rápido y sencillo que enviarlo a un estado diferente.
+## Prefijos y máscaras
 
-Para que un host forme parte de una **subred linux**, su dirección IP se divide en dos partes: un prefijo de red y un identificador de host. Por ejemplo, si un host tiene una IP de 192.168.1.8 y otro tiene 192.168.1.9, es probable que compartan el mismo prefijo de red. La parte común identifica la red, mientras que los números únicos (8 y 9) identifican a los hosts individuales.
+IPv4 puede expresar un prefijo de 24 bits como `/24` o mediante la máscara `255.255.255.0`. En binario, una máscara de subred convencional válida contiene unos contiguos seguidos de ceros:
 
-### Comprensión de la Máscara de Subred de Linux
-
-Una **máscara de subred linux** es lo que determina qué parte de una dirección IP es la porción de red y cuál es la porción de host. Una máscara de subred típica se ve así:
-
-```plaintext
-255.255.255.0
+```text
+11111111.11111111.11111111.00000000
 ```
 
-Para entender esto, necesitamos pensar en binario. Cada número en una dirección IP o máscara de subred es un octeto, que representa 8 bits. En binario, un `1` significa "encendido" y un `0` significa "apagado". Si conviertes el número binario `11111111` a decimal, obtienes 255. Esto significa que un octeto puede variar de 0 (`00000000`) a 255 (`11111111`).
+Para la dirección `192.168.1.8/24`, el prefijo de red es `192.168.1.0/24`. Algunos contextos comprenden `192.168.1.0/255.255.255.0`, pero la notación de prefijo CIDR es la forma compacta estándar.
 
-Los `255` en la máscara "enmascaran" la porción de red de la dirección IP. Por lo tanto, con una máscara de `255.255.255.0` y una IP de `192.168.1.8`, la parte `192.168.1` es la red, y `8` es el host. A menudo denotamos una configuración de **subred linux** por su prefijo de red seguido de la máscara de subred, como `192.168.1.0/255.255.255.0`.
+:::single-choice{#subnets-mask-24} ¿Qué máscara decimal con puntos corresponde a `/24`?
 
-### El Propósito de Subnetting Subnets
+::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="Tres octetos completos contienen 24 bits uno iniciales."}
+::option[`255.255.0.255`]{#subnets-noncontiguous explanation="Esta máscara tiene bits de red no contiguos y no es la máscara convencional `/24`."}
+::option[`0.0.0.24`]{#subnets-prefix-as-octet explanation="Una longitud de prefijo no se coloca en el último octeto de la máscara."}
+:::
 
-¿Por qué creamos subredes? La práctica de **subnetting subnets** (subredes de subredes) es crucial para organizar y administrar redes de manera efectiva. Implica dividir una red más grande en segmentos más pequeños y manejables. Esto ofrece varios beneficios clave:
+## Decidir si un destino está en el enlace
 
-- **Rendimiento Mejorado:** Al segmentar una red, reduces el volumen de tráfico de difusión dentro de cada subred, lo que conduce a menos congestión y un mejor rendimiento general.
-- **Seguridad Mejorada:** Las subredes te permiten aislar diferentes partes de tu red. Un host en una subred no puede interactuar directamente con un host en otra sin un enrutador, creando un límite de seguridad. Puedes implementar reglas de acceso en el enrutador para controlar el flujo de tráfico entre subredes.
-- **Administración Simplificada:** Dividir una red grande en unidades lógicas más pequeñas facilita la administración, la solución de problemas y la aplicación de políticas de red.
+Linux instala rutas conectadas a partir de las direcciones y prefijos de las interfaces. Compara un destino con las rutas válidas en lugar de limitarse a comparar los tres primeros octetos decimales. En límites que no coinciden con octetos, como `/20`, la división se produce dentro de un octeto.
 
-### Conexión de Subredes
+Inspecciona las rutas conectadas y la decisión para una dirección:
 
-¿Qué pasa si necesitas conectarte a hosts en una red diferente, como yahoo.com? Para conectar diferentes subredes, necesitas un dispositivo que esté conectado a más de una subred: un enrutador.
+```bash
+$ ip route show
+$ ip route get 192.168.1.50
+```
 
-Por ejemplo, un host en `192.168.1.129` en una red con una máscara `255.255.255.0` puede alcanzar cualquier otro host en la red `192.168.1.0`. Para llegar a Internet, debe enviar tráfico a través de su puerta de enlace, que es el enrutador. En muchas redes domésticas, la dirección del enrutador suele ser `.1` de la subred (por ejemplo, `192.168.1.1`). Este enrutador tiene otra conexión a una subred diferente (como la red de tu ISP), lo que permite la comunicación con el resto de Internet.
+:::single-choice{#subnets-on-link-decision} ¿Cómo determina un host Linux si debe enviar directamente o a través de un router?
 
-## Exercise
+::option[Siempre supone que las direcciones terminadas en `.1` son locales.]{#subnets-dot-one explanation="Las convenciones de números de host no sustituyen los prefijos y las rutas configurados."}
+::option[Consulta los prefijos y la política de enrutamiento.]{#subnets-route-policy .correct explanation="La ruta seleccionada identifica si el destino está en el enlace y qué interfaz o siguiente salto utilizar."}
+::option[Pide a la aplicación de destino una máscara de subred después de conectarse.]{#subnets-ask-application explanation="La selección de ruta debe producirse antes de ese intercambio de la aplicación."}
+:::
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del direccionamiento IP y el subnetting:
+## Enrutamiento entre subredes
 
-1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practica el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IPv4, lo cual es fundamental para comprender las subredes.
-2. **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprende a explorar diferentes tipos de direcciones IP y a probar la alcanzabilidad de la red, lo que te ayudará a verificar si los hosts están en la misma red.
-3. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, aplicando directamente los conceptos de prefijo de red e identificación de host discutidos en la lección.
+Un router con interfaces y rutas apropiadas puede reenviar tráfico entre subredes. Una puerta de enlace predeterminada es simplemente un siguiente salto elegido por una ruta predeterminada; no tiene por qué utilizar la primera dirección disponible ni terminar en `.1`.
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con el direccionamiento de red y el subnetting.
+La separación en subredes crea un lugar donde aplicar políticas de enrutamiento y filtrado, pero no constituye automáticamente un límite de seguridad. Si se permite el reenvío sin una política restrictiva, los hosts de distintas subredes aún pueden comunicarse.
 
-## Quiz Question
+:::single-choice{#subnets-security-boundary} ¿Crear dos subredes bloquea automáticamente el tráfico entre ellas?
 
-Una subred se define por un prefijo de red y una máscara de subred. ¿Verdadero o Falso? (Por favor, responda con 'True' o 'False'. La respuesta distingue entre mayúsculas y minúsculas y debe estar en inglés.)
+::option[Sí, porque los routers no pueden conectar prefijos distintos.]{#subnets-never-route explanation="Conectar prefijos es la función principal del enrutamiento."}
+::option[No; las políticas de enrutamiento y filtrado determinan el tráfico permitido.]{#subnets-policy-required .correct explanation="La segmentación permite aplicar políticas, pero no las define por sí sola."}
+::option[Sí, salvo que ambas utilicen la dirección de host `.1`.]{#subnets-dot-one-security explanation="Una convención de números de host no controla el reenvío."}
+:::
 
-## Quiz Answer
+## Motivos para crear subredes
 
-True
+La división en subredes puede organizar la asignación de direcciones, limitar el ámbito de broadcast de la capa de enlace, separar dominios de fallo y proporcionar límites para las políticas. También puede añadir complejidad de enrutamiento, cortafuegos, DHCP, supervisión y documentación. Diseña los prefijos en función de los requisitos reales de escala, crecimiento, redundancia y seguridad, no suponiendo que una red más pequeña siempre sea más rápida.
+
+:::single-choice{#subnets-design-tradeoff} ¿Cuál es una verdadera contrapartida de dividir en subredes?
+
+::option[Los dominios de broadcast más pequeños no requieren enrutamiento ni documentación.]{#subnets-no-complexity explanation="Más límites suelen exigir gestionar más rutas, políticas, direcciones y servicios."}
+::option[La segmentación puede mejorar la organización y, a la vez, aumentar la complejidad de las políticas.]{#subnets-tradeoff .correct explanation="Los límites de las subredes pueden ayudar al control, pero añaden estado operativo que debe mantenerse."}
+::option[Todas las subredes garantizan la misma latencia hacia Internet.]{#subnets-equal-latency explanation="Las condiciones de la ruta y de la carga de trabajo determinan la latencia."}
+:::
+
+## Resumen
+
+Ahora puedes relacionar un prefijo IPv4 con la entrega local y las políticas de enrutamiento.
+
+1. Expresa máscaras contiguas mediante longitudes de prefijo CIDR.
+2. Calcula el prefijo de red a partir de los bits de la dirección y la máscara.
+3. Usa las rutas para determinar la entrega en el enlace o mediante un siguiente salto.
+4. Trata el aislamiento por subredes como una oportunidad para aplicar políticas, no como una garantía.

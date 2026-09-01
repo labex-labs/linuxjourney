@@ -1,58 +1,86 @@
 ---
-index: 2
+lesson_id: "ping"
+course_id: "troubleshooting"
 lang: "de"
-title: "Ping"
-meta_title: "Ping - Fehlerbehebung"
-meta_description: "Erfahren Sie, wie Sie den Linux-Ping-Befehl zur Überprüfung der Netzwerkverbindung verwenden. Diese Anleitung erklärt die Ping-Ausgabe, einschließlich der Bedeutung von icmp_seq, TTL und Roundtrip-Zeit. Verstehen Sie, wie Sie die Ping-Sequenz interpretieren, um Netzwerkprobleme zu diagnostizieren."
-meta_keywords: "Linux Ping, Netzwerkverbindung, ICMP, TTL, Ping-Befehl, icmp_seq, Ping Sequenz, icmp seq, icmp_seq Bedeutung, Ping icmp_seq, Linux Netzwerk"
+order_index: 2
+title: "ping"
+description: "Lerne, begrenzte Ping-Tests auszuführen und Antworten, Verlust, RTT, TTL sowie Einschränkungen zu interpretieren."
+meta_title: "ping – Fehlersuche"
+meta_description: "Lerne, mit dem Linux-Befehl ping Netzwerkkonnektivität zu testen. Diese Anleitung erklärt die Ausgabe einschließlich icmp_seq, TTL und Umlaufzeit."
+meta_keywords: "Linux ping, Netzwerkkonnektivität, ICMP, TTL, ping-Befehl, icmp_seq, ping seq, Bedeutung von icmp_seq, Linux-Vernetzung"
 ---
 
-## Lesson Content
+`ping` sendet ICMP Echo Requests und meldet beobachtete Antworten. Es testet einen Pfad für Steuernachrichten zu einer Adresse; es beweist nicht, dass TCP, UDP, DNS, Authentifizierung oder eine Anwendung funktioniert.
 
-Der Befehl **ping** ist eines der grundlegendsten Netzwerk-Tools, das verwendet wird, um zu testen, ob ein entfernter Host über ein IP-Netzwerk erreichbar ist. Er funktioniert, indem er ICMP ("Internet Control Message Protocol") "Echo Request"-Pakete an den Zielhost sendet und auf eine ICMP "Echo Reply" wartet. Ein erfolgreicher Ping tritt auf, wenn das Anforderungspaket gesendet und eine Antwort empfangen wird.
+## Einen begrenzten Test ausführen
 
-Betrachten wir einen typischen `ping`-Befehl in Aktion:
+Sende bei üblichen iputils-Implementierungen drei IPv4-Anfragen mit einem Zeitlimit von zwei Sekunden pro Paket:
 
-```plaintext
-pete@icebox:~$ ping -c 3 www.google.com
-PING www.google.com (74.125.239.112) 56(84) bytes of data.
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=1 ttl=128 time=29.0 ms
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=2 ttl=128 time=23.7 ms
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=3 ttl=128 time=15.1 ms
+```bash
+$ ping -4 -c 3 -W 2 example.com
 ```
 
-In diesem Beispiel verwenden wir `ping`, um die Konnektivität zu `www.google.com` zu überprüfen. Die Option `-c 3` weist `ping` an, genau drei Echo-Anforderungspakete zu senden und dann zu stoppen. Standardmäßig sendet `ping` ein Paket pro Sekunde.
+Verwende `-6`, um IPv6 auszuwählen. Erfasse die aufgelöste Adresse, weil ein Hostname mehrere Adressen zurückgeben kann und wiederholte Läufe unterschiedlich auswählen können.
 
-### Verständnis der Ping-Ausgabe
+:::single-choice{#ping-count-option} Was fordert `-c 3` an?
 
-Die Ausgabe des `ping icmp_seq`-Befehls liefert wertvolle Diagnoseinformationen. Lassen Sie uns die Schlüsselkomponenten aufschlüsseln.
+::option[Eine Paketnutzlast von genau drei Megabyte.]{#ping-three-megabytes explanation="Die Paketgröße verwendet eine andere Option."}
+::option[Drei dauerhafte Routen zum Ziel.]{#ping-three-routes explanation="Ping sendet Prüfdatenverkehr und installiert keine Routen."}
+::option[Drei Echo Requests, bevor der Befehl normal beendet wird.]{#ping-three-requests .correct explanation="Eine endliche Anzahl macht die Diagnose begrenzt und wiederholbar."}
+:::
 
-### ICMP-Sequenz (icmp_seq)
+## Sequenz und Verlust
 
-Das Feld `icmp_seq` zeigt die Sequenznummer jedes ICMP-Pakets an. In unserem Beispiel haben wir drei Pakete gesendet, und die Ausgabe zeigt, dass alle drei (`icmp_seq=1`, `icmp_seq=2`, `icmp_seq=3`) erfolgreich zurückgesendet wurden. Die `ping seq` ist entscheidend für die Diagnose von Paketverlusten. Wenn Sie fehlende Sequenznummern bemerken, deutet dies auf ein Verbindungsproblem hin, bei dem einige Pakete ihr Ziel nicht erreichen oder nicht zurückkehren. Wenn die `icmp seq`-Nummern außer der Reihe erscheinen, kann dies auf Netzwerküberlastung oder Latenz hindeuten, da die Pakete länger als das Standardintervall von einer Sekunde für den Roundtrip benötigen. Das Verständnis der `icmp_seq meaning` ist der Schlüssel zur Fehlerbehebung.
+`icmp_seq` identifiziert Anfragen innerhalb eines Laufs. Fehlende Antworten tragen zum beobachteten Verlust bei, während Antworten außerhalb der Reihenfolge unterschiedliche Verzögerungen widerspiegeln können. Kleine Stichproben sind unruhig; vergleiche mehrere begrenzte Intervalle und die eigene Fehlerrate der Anwendung.
 
-### Time To Live (TTL)
+Verlust kann in beiden Richtungen auftreten, und ICMP-Ratenbegrenzung kann dazu führen, dass Ping-Verlust vom Anwendungsverlust abweicht.
 
-Das Feld "Time To Live" (TTL) fungiert als Hop-Zähler für das Paket. Jedes Mal, wenn das Paket einen Router (einen "Hop") passiert, wird der TTL-Wert um eins dekrementiert. Wenn der Zähler Null erreicht, bevor das Paket sein Ziel erreicht, wird es verworfen. Dieser Mechanismus verhindert, dass Pakete endlos im Netzwerk zirkulieren.
+:::single-choice{#ping-sequence-gap} Worauf kann eine fehlende Antwort zu `icmp_seq` hindeuten?
 
-### Zeit (Time)
+::option[Das Ziel hat seine MAC-Adresse dauerhaft geändert.]{#ping-sequence-mac explanation="Eine Sequenzlücke allein erlaubt keine solche Schlussfolgerung auf Verbindungsschicht."}
+::option[Anfrage oder Antwort ging verloren, wurde gefiltert, über das Zeitlimit hinaus verzögert oder ratenbegrenzt.]{#ping-sequence-possibilities .correct explanation="Die Sequenzlücke bezeichnet eine ausgebliebene beobachtete Antwort, aber weder die genaue Richtung noch Ursache."}
+::option[Der Quelldatenträger besitzt keine freien Inodes.]{#ping-sequence-inodes explanation="Der Inode-Zustand des Dateisystems hat nichts mit einer ICMP-Sequenzantwort zu tun."}
+:::
 
-Das Feld `time` misst die Roundtrip-Zeit – die Dauer, die das Paket benötigte, um von Ihrem Gerät zum Zielhost zu gelangen und für die Echo-Antwort zurückzukehren. Dieser Wert wird typischerweise in Millisekunden (ms) gemessen und ist ein primärer Indikator für die Netzwerklatenz.
+## Umlaufzeit
 
-## Exercise
+Das Feld `time` ist die Umlaufzeit in Millisekunden vom Senden der Anfrage bis zum Empfang ihrer Antwort. Es verbindet ausgehende Verzögerung, entfernte Verarbeitung und Rückwegverzögerung. Ohne synchronisierte Messungen an den Endpunkten kann es keine Einweglatenz zeigen.
 
-Übung ist unerlässlich, um Netzwerkdiagnosen zu meistern. Diese praktischen Labs helfen, Ihr Verständnis des `ping`-Befehls zu festigen:
+:::single-choice{#ping-rtt-meaning} Was misst ein gemeldetes `time=23.7 ms`?
 
-1. **[Erkunden Sie die Interaktion auf der Netzwerkebene mit ping und arp unter Linux](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie `ping` und `arp`, um Interaktionen auf der Netzwerk- und Datenverbindungsschicht zu untersuchen und zu beobachten, wie das Standard-Gateway den Datenverkehr zu entfernten Zielen verarbeitet.
-2. **[Erkunden Sie IP-Adresstypen und Erreichbarkeit unter Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Nutzen Sie `ping` und `ip a`, um den lokalen TCP/IP-Stack zu testen, die öffentliche Internetverbindung zu überprüfen und die Netzwerkerreichbarkeit zu erkunden.
-3. **[Simulieren Sie die Konnektivität auf der Netzwerkebene unter Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Lernen Sie, statische IP-Adressen mit `ip addr` zuzuweisen und die Konnektivität mit `ping` im selben und in verschiedenen Subnetzen zu testen.
+::option[Nur die Einweglatenz des ausgehenden Pfads.]{#ping-outbound-only explanation="Ping misst das vollständige Anfrage-Antwort-Intervall."}
+::option[Die Betriebsdauer des Zielsystems.]{#ping-target-uptime explanation="Der Wert ist die Zeitmessung der Prüfung und keine Bootdauer."}
+::option[Die Umlaufzeit dieses Echos.]{#ping-round-trip .correct explanation="Sie umfasst beide Richtungen und die Verarbeitung am Endpunkt."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte der Netzwerkerreichbarkeit und des `ping`-Befehls in realen Szenarien anzuwenden und Ihr Vertrauen in die Netzwerkdiagnose unter Linux zu stärken.
+## TTL oder Hop Limit
 
-## Quiz Question
+Die angezeigte IPv4-TTL oder das IPv6-Hop-Limit ist der verbleibende Wert der empfangenen Antwort. Ohne den Anfangswert des Senders und die Rückroute zu kennen, ergibt seine Subtraktion keine genaue Hop-Anzahl. Eine Änderung kann einen anderen Antwortenden, Anfangswert oder Rückweg widerspiegeln.
 
-What is the roundtrip time unit of measurement? Please answer in English, paying attention to case sensitivity.
+:::single-choice{#ping-received-ttl} Was ist die bei einer IPv4 Echo Reply ausgegebene TTL?
 
-## Quiz Answer
+::option[Der verbleibende Wert, als die Antwort den lokalen Host erreichte.]{#ping-remaining-ttl .correct explanation="Jeder Router auf dem Rückweg verringerte den Anfangswert des Senders."}
+::option[Eine genaue Anzahl der Router in beiden Richtungen.]{#ping-exact-hop-count explanation="Die anfängliche TTL und der gerichtete Pfad werden durch dieses Feld allein nicht festgestellt."}
+::option[Die Cachelaufzeit des DNS-Datensatzes.]{#ping-dns-ttl explanation="DNS-TTL und IP-Paket-TTL sind unterschiedliche Felder."}
+:::
 
-ms
+## Die richtige Schicht testen
+
+Wenn Ping erfolgreich ist, aber ein Dienst fehlschlägt, teste den tatsächlichen Port, TLS, das Protokoll und die Anfrage. Wenn Ping fehlschlägt, untersuche Namensauflösung, `ip route get`, Nachbarzustand, Firewallrichtlinie und Aufzeichnungen, bevor du den Host für ausgefallen erklärst.
+
+:::single-choice{#ping-success-limit} Was beweist ein erfolgreicher Ping nicht?
+
+::option[Dass ein Pfad für eine ICMP-Anfrage und -Antwort funktioniert hat.]{#ping-icmp-worked explanation="Dies ist der unmittelbare Beleg der Antworten."}
+::option[Dass die Antwort eine Sequenznummer enthielt.]{#ping-sequence-present explanation="Die normale Ausgabe meldet die Antwortsequenz unmittelbar."}
+::option[Dass die beabsichtigte Anwendung Anfragen annimmt und abschließt.]{#ping-app-not-proven .correct explanation="Anwendungs- und Transportverhalten erfordern einen anwendungsgerechten Test."}
+:::
+
+## Zusammenfassung
+
+Du kannst Ping nun als begrenzte ICMP-Messung mit ausdrücklichen Einschränkungen verwenden.
+
+1. Wähle die Adressfamilie und erfasse die aufgelöste Adresse.
+2. Begrenze Anzahl und Wartezeit für wiederholbare Tests.
+3. Interpretiere Verlust, ohne Richtung oder Ursache anzunehmen.
+4. Behandle RTT als Umlaufzeit und TTL als verbleibenden Wert.
+5. Teste die tatsächliche Anwendung getrennt.

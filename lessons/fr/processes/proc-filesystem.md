@@ -1,56 +1,99 @@
 ---
-index: 10
+lesson_id: "proc-filesystem"
+course_id: "processes"
 lang: "fr"
+order_index: 10
 title: "Système de fichiers /proc"
+description: "Découvrez comment Linux expose les informations actives des processus et du noyau par le système de fichiers virtuel `/proc`."
 meta_title: "Système de fichiers /proc - Processus"
-meta_description: "Découvrez le système de fichiers /proc de Linux, un répertoire virtuel offrant une vue de type tableau de bord sur le noyau et les processus en cours d'exécution. Apprenez à accéder à des détails de processus supplémentaires au-delà des commandes standard."
-meta_keywords: "système de fichiers /proc, linux proc, informations processus, extras linux proc, tableau de bord système, processus Linux, informations noyau"
+meta_description: "Découvrez le système de fichiers virtuel /proc de Linux, qui fournit une vue du noyau et des processus en cours d’exécution."
+meta_keywords: "système fichiers /proc, proc Linux, informations processus, détails proc Linux, tableau système, processus Linux, informations noyau"
 ---
 
-## Lesson Content
+Linux monte couramment `procfs` sur `/proc`. Ce système de fichiers virtuel présente les interfaces produites par le noyau sous forme de fichiers et de répertoires ; son contenu n’est pas constitué de fichiers persistants ordinaires enregistrés sur disque. Il expose l’état des processus ainsi que certaines informations du noyau à l’échelle du système.
 
-Sous Linux, un principe fondamental est que tout est traité comme un fichier. Ce concept s'étend aux processus en cours d'exécution, dont les informations sont stockées dynamiquement dans un système de fichiers virtuel spécial connu sous le nom de `/proc`.
+## Trouver les répertoires des processus
 
-### Exploration du répertoire /proc
-
-Le système de fichiers `/proc` n'est pas un vrai système de fichiers sur votre disque dur ; il est créé en mémoire par le noyau. Il offre une fenêtre sur les structures de données internes du noyau et l'état du système.
-
-Pour voir son contenu, vous pouvez lister les fichiers et les répertoires qu'il contient :
+Affichez le montage et les entrées de premier niveau avec :
 
 ```bash
-ls /proc
+$ findmnt /proc
+$ ls /proc
 ```
 
-Vous verrez de nombreux répertoires numérotés. Chaque numéro correspond à l'ID de processus (PID) d'un processus en cours d'exécution. Vous trouverez également d'autres fichiers comme `cpuinfo` et `meminfo` qui fournissent des informations sur le matériel système.
+Les noms de répertoires numériques correspondent aux identifiants de processus visibles dans l’espace de noms de PID de l’appelant. Par exemple, `/proc/12345` représente le PID 12345 à l’instant où il existe. `/proc/self` est un lien symbolique qui se résout vers le propre répertoire du processus observateur, et `/proc/thread-self` identifie le thread actuel.
 
-### Accès aux informations spécifiques d'un processus
+La visibilité et l’accès dépendent des identifiants, des espaces de noms, de la politique de sécurité et des options de montage de procfs telles que `hidepid`. Un processus peut se terminer entre la liste d’un répertoire et l’ouverture de l’un de ses fichiers ; cette disparition est une condition de concurrence normale que les outils d’examen doivent gérer.
 
-Si vous identifiez un PID à l'aide d'une commande comme `ps`, vous pouvez trouver son répertoire correspondant dans `/proc` pour obtenir des informations plus détaillées. Par exemple, pour inspecter un processus avec le PID 12345, vous pouvez consulter son fichier status :
+:::single-choice{#proc-filesystem-numeric-directory} Que représente normalement le répertoire numérique `/proc/12345` ?
+
+::option[Le bloc de disque numéro 12345.]{#proc-filesystem-disk-block explanation="`/proc` est une interface virtuelle du noyau, et non un répertoire de blocs bruts du disque."}
+::option[Le processus actuellement visible dont le PID vaut 12345.]{#proc-filesystem-pid-directory .correct explanation="Les données procfs propres à un processus sont regroupées sous un répertoire portant le PID visible."}
+::option[Le compte utilisateur dont l’UID vaut 12345.]{#proc-filesystem-user-directory explanation="Les répertoires numériques de processus au premier niveau sont indexés par PID, et non par UID."}
+:::
+
+## Lire les informations d’un processus
+
+Examinez le fichier d’état d’un processus lorsque les permissions le permettent :
 
 ```bash
-cat /proc/12345/status
+$ less /proc/12345/status
 ```
 
-Cette commande affichera des informations détaillées sur le processus, y compris son état (par exemple, dormant, en cours d'exécution), l'utilisation de la mémoire et l'identifiant utilisateur. Le répertoire `/proc` offre la vue directe du noyau sur le processus, fournissant beaucoup plus de données que les outils standards.
+Il contient des champs tels que le nom du processus, son état, ses identifiants, ses compteurs mémoire, ses capacités et ses masques de signaux. Parmi les autres entrées utiles figurent :
 
-### Un tableau de bord des données système
+- `/proc/12345/cmdline` : arguments de la ligne de commande séparés par des octets nuls ;
+- `/proc/12345/environ` : entrées de l’environnement, soumises au contrôle d’accès et potentiellement sensibles ;
+- `/proc/12345/fd/` : liens symboliques représentant les descripteurs de fichiers ouverts ;
+- `/proc/12345/maps` : mappages mémoire actuels ;
+- `/proc/12345/cwd` : lien symbolique vers le répertoire de travail actuel.
 
-Pensez au système de fichiers `/proc` comme à la source de données brutes pour de nombreux outils de surveillance système. Des utilitaires comme `top`, `ps` et `htop` lisent depuis `/proc` pour présenter l'information dans un format convivial. Il contient une mine de détails **supplémentaires** que ces outils pourraient ne pas afficher par défaut.
+Considérez-les comme des observations évolutives. Les champs peuvent varier selon la version du noyau, un processus peut changer d’état pendant la lecture de plusieurs fichiers, et certains compteurs possèdent des subtilités que leur seul nom ne révèle pas.
 
-En accédant directement aux fichiers dans `/proc`, vous pouvez recueillir des métriques spécifiques pour créer des scripts personnalisés ou un **tableau de bord** de surveillance adapté à vos besoins. C'est une interface puissante pour observer et comprendre le fonctionnement interne de votre système Linux.
+:::single-choice{#proc-filesystem-status-file} Quel chemin contient un résumé lisible et organisé en champs pour le PID 12345 ?
 
-## Exercise
+::option[`/proc/status/12345`]{#proc-filesystem-status-reversed explanation="Les fichiers propres au processus se trouvent dans le répertoire nommé par le PID, et non sous un répertoire `status` de premier niveau."}
+::option[`/proc/12345/status`]{#proc-filesystem-process-status .correct explanation="L’interface `status` du processus présente ses identifiants, son état, sa mémoire, ses signaux et ses champs d’identification."}
+::option[`/proc/cpuinfo/12345`]{#proc-filesystem-cpuinfo-pid explanation="`/proc/cpuinfo` est une interface à l’échelle du système et non un répertoire de fichiers d’état par PID."}
+:::
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de la surveillance du système :
+## Lire les interfaces à l’échelle du système
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour gérer et surveiller les processus sur un système Linux. Vous explorerez comment interagir avec les processus au premier plan et en arrière-plan, les inspecter avec `ps`, surveiller les ressources avec `top`, ajuster la priorité avec `renice` et les terminer avec `kill`.
+Toutes les entrées de `/proc` n’appartiennent pas à un processus. Citons notamment :
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des processus et l'observation du système.
+- `/proc/cpuinfo` pour les informations sur le processeur indiquées par le noyau ;
+- `/proc/meminfo` pour les compteurs de mémoire du système ;
+- `/proc/mounts` pour la vue des montages du processus actuel ;
+- `/proc/loadavg` pour la charge moyenne et les informations sur les tâches exécutables ;
+- `/proc/sys/` pour les paramètres du noyau à l’exécution.
 
-## Quiz Question
+Certains fichiers, surtout sous `/proc/sys`, sont des interfaces de configuration accessibles en écriture. N’y écrivez pas simplement parce qu’ils ressemblent à des fichiers ordinaires. Comprenez le paramètre, sa portée, son mécanisme de persistance et le retour en arrière avant d’apporter une modification système autorisée.
 
-What virtual filesystem stores process information? Please answer in English, paying attention to case sensitivity.
+:::single-choice{#proc-filesystem-system-interface} Quelle entrée fournit des compteurs mémoire à l’échelle du système plutôt que l’état d’un processus ?
 
-## Quiz Answer
+::option[`/proc/self/status`]{#proc-filesystem-self-status explanation="Ce chemin se résout vers l’état propre au processus observateur."}
+::option[`/proc/meminfo`]{#proc-filesystem-memory-info .correct explanation="`meminfo` contient les statistiques de mémoire du système indiquées par le noyau."}
+::option[`/proc/1/fd`]{#proc-filesystem-one-fd explanation="Ce répertoire représente les descripteurs de fichiers du PID 1, sous réserve des contrôles d’accès."}
+:::
 
-/proc
+## Employer `/proc` par l’intermédiaire d’outils
+
+Les implémentations Linux d’outils tels que `ps`, `top` et `free` obtiennent une grande partie de leurs données depuis procfs et d’autres interfaces du noyau, puis les étiquettent, les calculent et les mettent en forme. Préférez ces outils pour le travail courant lorsqu’ils fournissent le champ nécessaire ; ne lisez directement `/proc` pour des détails précis ou des scripts qu’après avoir étudié la documentation de l’interface.
+
+Les lecteurs directs doivent analyser correctement les formats, tolérer les processus disparus, protéger les sorties sensibles et ne pas supposer qu’une lecture constitue un instantané atomique du système.
+
+:::single-choice{#proc-filesystem-live-data} Pourquoi `/proc/PID` peut-il disparaître entre deux commandes d’examen ?
+
+::option[Chaque fichier procfs est automatiquement renommé une fois par seconde.]{#proc-filesystem-renamed explanation="Il n’existe aucune règle de renommage périodique de toutes les entrées procfs."}
+::option[La lecture de `status` supprime le répertoire du processus.]{#proc-filesystem-read-delete explanation="L’examen de l’état se fait en lecture seule et ne termine ni ne supprime le processus."}
+::option[Le processus peut se terminer pendant son observation.]{#proc-filesystem-process-exit .correct explanation="Procfs reflète l’état actif ; le noyau retire donc le répertoire d’un processus après sa disparition."}
+:::
+
+## Résumé
+
+Vous savez maintenant employer procfs comme une interface active et soumise au contrôle d’accès du noyau.
+
+1. Associer les répertoires numériques de `/proc` aux PID visibles.
+2. Lire certains fichiers de processus tout en tenant compte des conditions de concurrence et de leur sensibilité.
+3. Distinguer les répertoires de processus des interfaces à l’échelle du système.
+4. Préférer les outils et formats documentés pour les examens courants fiables.

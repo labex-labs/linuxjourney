@@ -1,103 +1,107 @@
 ---
-index: 1
+lesson_id: "network-interfaces"
+course_id: "network-config"
 lang: "zh"
+order_index: 1
 title: "网络接口"
+description: "学习如何检查 Linux 接口状态、地址、统计信息和持久配置归属。"
 meta_title: "网络接口 - 网络配置"
-meta_description: "Linux 网络接口的综合指南。学习使用 ifconfig 和现代的 ip 命令，并了解/etc/network/interfaces 等配置文件，尤其是在 Debian 系统上。"
-meta_keywords: "linux 接口，linux 网络接口，etc network interfaces, debian 网络接口，ifconfig, ip 命令，网络配置，linux 网络"
+meta_description: "全面介绍 Linux 网络接口。学习使用 ifconfig 和现代 ip 命令，并了解 Debian 等系统上的 /etc/network/interfaces 配置文件。"
+meta_keywords: "Linux 接口, Linux 网络接口, etc network interfaces, Debian 网络接口, ifconfig, ip 命令, 网络配置, Linux 网络"
 ---
 
-## Lesson Content
+Linux 网络接口将网络命名空间连接到物理设备、环回路径、网桥、隧道、虚拟设备或其他链路。接口状态、地址、路由、DNS 和持久配置相互关联，但彼此不同。
 
-一个 **linux 网络接口** 是内核软件网络堆栈与物理网络硬件之间的关键连接点。它允许您的操作系统通过网络发送和接收数据。我们已经看到了一个已配置的 `linux 接口` 是什么样子的示例：
+## 发现接口
 
-```plaintext
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
-```
-
-### 理解网络接口
-
-当您查看网络设置时，您会看到名称如 `eth0`（第一个以太网卡）、`wlan0`（无线接口）或 `lo`（回环接口）的接口。回环接口是一个特殊的虚拟接口，代表您自己的计算机，允许您连接到本地运行的服务。
-
-接口可以处于“up”（启动）或“down”（关闭）状态。“up”状态意味着它处于活动状态并准备好传输数据，而“down”则停用了它。每个接口显示的关键信息包括 `HWaddr`（其唯一的 MAC 地址）、`inet` 地址（其 IPv4 地址）和 `inet6` 地址（其 IPv6 地址），以及子网掩码和广播地址。
-
-### 遗留的 ifconfig 命令
-
-**ifconfig** 命令是配置 `linux 网络接口` 的经典工具。在系统启动时，它通常会运行以根据配置文件设置接口。虽然它在许多系统上仍然可用，但现在被认为是一个遗留工具。
-
-您可以使用 `ifconfig` 手动分配 IP 地址并启动一个接口：
+使用现代 iproute2 工具：
 
 ```bash
-ifconfig eth0 192.168.2.1 netmask 255.255.255.0 up
+$ ip -brief link show
+$ ip -brief address show
 ```
 
-您还可以使用相关的 `ifup` 和 `ifdown` 命令轻松激活或停用接口：
+接口名称可能是 `enp1s0` 这样基于硬件的可预测名称、`eth0` 这样的传统名称，或管理员定义的名称。绝不要假定 `eth0` 一定存在或标识某个特定适配器。
+
+:::single-choice{#interfaces-name-assumption} 为什么脚本应该发现接口，而不是假定存在 `eth0`？
+
+::option[每个接口都必须命名为 `lo`。]{#interfaces-all-loopback explanation="环回是一个特殊接口，并非每条链路的名称。"}
+::option[Linux 系统可以使用多种接口命名方案。]{#interfaces-naming-varies .correct explanation="基于硬件、虚拟和自定义的名称使固定 eth0 假设不可靠。"}
+::option[接口名称始终是远程密码。]{#interfaces-name-password explanation="名称标识内核设备，不是凭据。"}
+:::
+
+## 管理状态与运行状态
+
+`UP` 表示接口在管理上已启用。`LOWER_UP` 通常表示较低层报告运行就绪，例如检测到以太网载波。任何一个标志都不能单独证明 IP 地址、路由、DNS、防火墙或应用程序路径正常。
 
 ```bash
-ifup eth0
-ifdown eth0
+$ ip -details link show dev enp1s0
+$ ip -s link show dev enp1s0
 ```
 
-### 现代的 ip 命令
+统计视图可以显示错误、丢弃和计数器，但只有结合时间区间和基线，计数器才有意义。
 
-**ip** 命令是 `ifconfig` 的现代且功能更强大的替代品。它是大多数当前 Linux 发行版中管理网络堆栈的首选方法。
+:::single-choice{#interfaces-up-limit} 管理状态 `UP` 无法证明什么？
 
-以下是一些常见的用法示例：
+::option[端到端连接正常。]{#interfaces-up-not-connectivity .correct explanation="较低层、寻址、路由、过滤、命名和服务故障仍可能存在。"}
+::option[管理员启用了该接口。]{#interfaces-up-does-prove explanation="这正是该状态的直接含义。"}
+::option[该接口拥有内核对象。]{#interfaces-up-kernel-object explanation="所显示的状态属于一个现有内核接口。"}
+:::
 
-**显示所有接口的信息：**
+## 更改运行时状态
+
+运行时命令包括：
 
 ```bash
-ip link show
+$ sudo ip link set dev enp1s0 up
+$ sudo ip address add 192.0.2.10/24 dev enp1s0
 ```
 
-**显示特定接口的详细统计信息：**
+这些更改影响当前内核状态，并可能与之后重新应用配置文件的网络管理器冲突。关闭远程管理接口可能立即中断访问。更改前应确认确切设备、保留控制台访问、记录当前状态，并准备定时或经过测试的回滚。
+
+:::single-choice{#interfaces-ip-address-add-persistence} `ip address add` 本身能保证重启后设置仍然存在吗？
+
+::option[不能；活动配置系统还必须保存该设置。]{#interfaces-manager-persistence .correct explanation="NetworkManager、systemd-networkd、ifupdown 或其他所有者负责应用持久策略。"}
+::option[能，因为每次内核更改都会编辑所有管理器配置文件。]{#interfaces-runtime-always-persistent explanation="内核运行时更改不会普遍更新持久配置。"}
+::option[只有地址是私有 IPv4 时才可以。]{#interfaces-private-persistent explanation="地址作用域不会让运行时命令变成持久配置。"}
+:::
+
+## 确定配置归属
+
+不同发行版和安装的持久配置路径各不相同，可能包括 NetworkManager 配置文件、systemd-networkd 单元、netplan 输入、`/etc/network/interfaces`、cloud-init 或编排系统。编辑文件前，应确定哪个服务管理该设备：
 
 ```bash
-ip -s link show eth0
+$ systemctl --type=service --state=running | grep -E 'NetworkManager|networkd|networking'
+$ networkctl status
+$ nmcli device status
 ```
 
-**显示分配给接口的 IP 地址：**
+只使用已确定管理器所提供的命令。两个管理器控制同一条链路时可能相互竞争，并覆盖对方的状态。
 
-```bash
-ip address show
-```
+:::single-choice{#interfaces-config-owner} 持久更改接口前应该做什么？
 
-**启动或关闭接口：**
+::option[编辑每个可能的网络配置文件。]{#interfaces-edit-all explanation="相互竞争的定义会造成冲突和不可预测的重新应用。"}
+::option[确定哪个网络管理器拥有该接口。]{#interfaces-identify-owner .correct explanation="正确的配置来源和应用方法取决于归属。"}
+::option[检查前删除所有当前路由。]{#interfaces-delete-routes explanation="这具有破坏性，可能移除恢复访问。"}
+:::
 
-```bash
-ip link set eth0 up
-ip link set eth0 down
-```
+## 验证更改
 
-**向接口添加 IP 地址：**
+应验证链路状态、分配的地址和有效期、所选路由、解析器状态、邻居可达性及实际应用程序。对于持久更改，只有存在恢复通道时，才能通过受控服务重启或系统重启进行测试。
 
-```bash
-ip address add 192.168.1.1/24 dev eth0
-```
+:::single-choice{#interfaces-change-verification} 什么比在 `ip address` 中看到新地址更能证明更改有效？
 
-### 网络配置文件
+::option[接口名称中包含数字。]{#interfaces-digit explanation="命名不能提供端到端验证。"}
+::option[shell 提示符颜色保持不变。]{#interfaces-prompt-color explanation="终端外观与网络运行无关。"}
+::option[路由、解析器状态和预期应用程序也都正常工作。]{#interfaces-end-to-end .correct explanation="可用配置取决于完整路径和服务行为。"}
+:::
 
-虽然像 `ip` 和 `ifconfig` 这样的命令配置了接口的实时状态，但这些更改不是永久性的，重启后会丢失。要使设置持久化，您必须编辑配置文件。
+## 总结
 
-这些文件的常见位置是 `/etc/network/interfaces`。`etc network interfaces` 文件在基于 Debian 的系统（如 Ubuntu）上尤其常见。通过此文件管理 **debian 网络接口** 允许您定义静态 IP 地址、网关和其他在启动时自动应用的设置。`debian network/interfaces` 中的结构简单且文档记录良好。
+现在，你可以检查和更改接口，而不会混淆运行时状态与持久策略。
 
-## Exercise
-
-通过这些实践实验将您的知识付诸实践。它们将帮助您巩固对网络接口和 IP 地址的理解。
-
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令来识别 Linux 系统上的网络寻址信息，包括 MAC 地址、IPv4 地址和 IPv6 地址。
-2. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 学习使用 `ip` 命令配置静态和动态 IP 地址、设置默认网关以及验证网络配置。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型（私有、公共、多播）并使用 `ping` 和 `ip a` 测试网络可达性。
-
-这些实验将帮助您在真实场景中应用网络接口识别和 IP 寻址的概念，并增强您对 Linux 网络的信心。
-
-## Quiz Question
-
-用于配置 Linux 网络接口的遗留命令是什么？请用英文回答，只使用小写字母。
-
-## Quiz Answer
-
-ifconfig
+1. 发现真实接口名称和地址。
+2. 区分管理状态与运行连接。
+3. 将直接 `ip` 更改视为当前内核状态。
+4. 持久更改前确定活动配置所有者。
+5. 之后验证路由、解析和应用程序行为。

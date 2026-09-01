@@ -1,52 +1,70 @@
 ---
-index: 5
+lesson_id: "application-layer"
+course_id: "network-basics"
 lang: "fr"
-title: "Couche Application"
-meta_title: "Couche Application - Bases du Réseau"
-meta_description: "Explorez la couche application, la couche supérieure du modèle TCP/IP. Apprenez ce qu'est un protocole de couche application, voyez un exemple avec SMTP, et comprenez comment l'en-tête de la couche application prépare les données pour la communication réseau."
-meta_keywords: "couche application, la couche application, protocole couche application, exemple de protocole couche application, en-tête couche application, modèle TCP/IP, SMTP, protocoles réseau"
+order_index: 5
+title: "Couche application"
+description: "Découvrez comment les protocoles applicatifs définissent les messages, l'état, le nommage et le comportement de sécurité des services."
+meta_title: "Couche application - Réseaux"
+meta_description: "Explorez la couche application du modèle TCP/IP, les protocoles HTTP, DNS, SSH et SMTP, les rôles client-serveur, ports et TLS."
+meta_keywords: "couche application, protocole applicatif, modèle TCP/IP, SMTP, HTTP, DNS, client serveur, TLS"
 ---
 
-## Lesson Content
+La couche application de TCP/IP contient les protocoles qu'emploient les applications pour demander et fournir des services réseau. Elle couvre de nombreuses fonctions que la terminologie OSI sépare dans les couches application, présentation et session.
 
-Dans le modèle TCP/IP, la communication réseau est divisée en différentes couches, et nous allons commencer par le sommet avec la **couche application**. C'est la couche avec laquelle vous interagissez le plus directement, car elle est responsable de la fourniture de services réseau aux applications utilisateur telles que les navigateurs web et les clients de messagerie.
+## Messages et sémantique des protocoles
 
-### Le Rôle de la Couche Application
+Un protocole applicatif définit la manière dont les pairs interprètent les messages et l'état. HTTP définit les requêtes, réponses, méthodes, codes d'état et champs. DNS définit les requêtes et enregistrements de ressources. SMTP définit les commandes et réponses du transfert de courrier.
 
-**La couche application** agit comme l'interface entre le logiciel d'un appareil et le réseau lui-même. Lorsque vous envoyez un e-mail, naviguez sur un site web ou transférez un fichier, c'est la couche application qui initie le processus. Sa tâche principale est de préparer les données utilisateur et de présenter les données entrantes dans un format convivial.
+Tous les protocoles applicatifs n'ajoutent pas un unique « en-tête applicatif » fixe. Certains emploient des champs textuels, d'autres des enregistrements binaires ou plusieurs formats imbriqués, et certains transportent une suite continue de messages sur une même connexion de transport.
 
-### Qu'est-ce qu'un Protocole de Couche Application
+:::single-choice{#application-layer-protocol-role} Que définit principalement un protocole applicatif ?
 
-Pour gérer la communication, la couche application utilise des protocoles spécifiques. Alors, **qu'est-ce qu'un protocole de couche application** ? C'est un ensemble de règles qui définit comment les applications échangent des données sur le réseau. Différentes tâches utilisent différents protocoles. Par exemple, la navigation web utilise HTTP ou HTTPS, les transferts de fichiers peuvent utiliser FTP, et l'envoi d'e-mails utilise généralement SMTP (Simple Mail Transfer Protocol). Chaque protocole garantit que l'expéditeur et le destinataire comprennent le format et la signification des messages.
+::option[Le sens et les règles d'échange des messages d'un service.]{#application-layer-message-semantics .correct explanation="Les pairs ont besoin d'une syntaxe, d'une sémantique et d'un comportement d'état communs pour interagir."}
+::option[La tension de chaque câble Ethernet.]{#application-layer-voltage explanation="La signalisation physique relève des technologies des couches inférieures."}
+::option[La route choisie indépendamment par chaque routeur d'Internet.]{#application-layer-router-choice explanation="Les décisions de routage relèvent de la couche réseau."}
+:::
 
-### Un Exemple de Protocole de Couche Application
+## Clients, serveurs et pairs
 
-Prenons un e-mail comme **exemple de protocole de couche application** en action. Imaginez que vous envoyez un e-mail à un ami.
+Un client initie une demande ou une connexion à un service ; un serveur écoute ou l'accepte d'une autre manière. Il s'agit de rôles dans une interaction, pas de catégories permanentes d'appareils. Un même hôte peut être client pour le DNS et serveur pour SSH simultanément, et certains protocoles emploient des rôles pair à pair.
 
-1. Vous rédigez votre message dans un client de messagerie.
-2. Lorsque vous cliquez sur « Envoyer », le client de messagerie (l'application) transmet les données à la couche application.
-3. La couche application utilise le protocole SMTP pour formater correctement l'e-mail.
+:::single-choice{#application-layer-client-role} Qu'est-ce qui fait d'un programme le client dans un échange demande-réponse typique ?
 
-### Encapsulation des Données et En-tête de Couche Application
+::option[Il initie une demande vers le service.]{#application-layer-client-initiates .correct explanation="Client et serveur décrivent des rôles d'interaction qu'un même hôte peut remplir simultanément pour différents services."}
+::option[Il doit s'exécuter sur un ordinateur portable plutôt que sur un serveur.]{#application-layer-client-laptop explanation="La catégorie du matériel ne détermine pas le rôle dans le protocole."}
+::option[Il possède le préfixe IP de destination.]{#application-layer-client-prefix explanation="La propriété du réseau est sans rapport avec l'initiation d'une demande applicative."}
+:::
 
-Avant que les données ne soient envoyées à la couche suivante (la Couche Transport), elles doivent être préparées. Ce processus s'appelle l'encapsulation. La couche application ajoute un **en-tête de couche application** aux données brutes. Cet en-tête contient des informations spécifiques au protocole dont l'application destinataire aura besoin pour comprendre les données.
+## Noms, ports et sélection des services
 
-La combinaison de l'en-tête et de vos données devient la charge utile pour la couche suivante. Au fur et à mesure que les données descendent dans la pile réseau, chaque couche ajoute son propre en-tête. Bien que nous utilisions souvent le terme général « paquet » pour décrire les données envoyées sur un réseau, différentes couches ont des noms spécifiques pour l'unité de données. Au niveau de la couche transport, c'est un « segment », et au niveau de la couche liaison, c'est une « trame ».
+Une application peut résoudre le nom d'un service vers une ou plusieurs adresses IP, puis choisir un terminal de transport. Les ports bien connus fournissent des valeurs par défaut, pas la preuve immuable d'un protocole. HTTP emploie couramment le port TCP 80 et HTTPS le port TCP 443, mais tous deux peuvent fonctionner ailleurs. SMTP utilise différents ports et règles pour le relais et la soumission des messages.
 
-Dans notre exemple d'e-mail, les données formatées SMTP sont transmises à la couche transport via un port spécifique (port 25 pour SMTP), où elles seront encapsulées davantage pour leur voyage à travers le réseau.
+:::single-choice{#application-layer-port-limit} Que prouve à lui seul un port TCP 443 ouvert ?
 
-## Exercise
+::option[Qu'un processus y a accepté un terminal TCP, mais que son comportement applicatif doit encore être testé.]{#application-layer-port-endpoint .correct explanation="L'échange du protocole et la validation TLS fournissent des preuves plus solides au niveau applicatif."}
+::option[Que le service est certainement une application HTTPS correctement configurée.]{#application-layer-port-proves-https explanation="Un numéro de port ne valide ni le comportement du protocole, ni l'identité, ni la santé."}
+::option[Que le DNS ne peut pas renvoyer d'adresse IPv6.]{#application-layer-port-dns explanation="Les ports de transport ne limitent pas les familles d'enregistrements DNS."}
+:::
 
-La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension des couches réseau et des ports :
+## Sécurité et tests de bout en bout
 
-1. **[Analyser les Ports et Sessions Réseau avec netstat sous Linux](https://labex.io/fr/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - Dans ce laboratoire, vous apprendrez à utiliser la commande `netstat` pour analyser l'activité réseau, en explorant des concepts fondamentaux tels que les ports réseau, les sockets et les connexions actives. Cela vous donnera un aperçu pratique de la manière dont les services communiquent sur le réseau, en lien direct avec les concepts de couche transport abordés.
+TLS peut ajouter confidentialité, intégrité et identité authentifiée du pair lorsque la validation du certificat et le nom du terminal sont corrects. Il n'autorise pas automatiquement chaque action de l'application. Testez le même nom, la même famille d'adresses, le même port, protocole, les mêmes identifiants et la même demande que le véritable client.
 
-Ce laboratoire vous aidera à appliquer les concepts de communication réseau et d'utilisation des ports dans un environnement Linux réel, renforçant votre confiance dans la compréhension de la manière dont les applications interagissent avec la pile réseau.
+Un diagnostic HTTPS peut par exemple contrôler séparément la résolution, la connexion TCP, le certificat et le nom TLS, la réponse HTTP et le contenu applicatif. La réussite d'une étape réduit le problème sans prouver toutes les suivantes.
 
-## Quiz Question
+:::single-choice{#application-layer-tls-limit} Qu'établit la validation réussie d'un certificat TLS ?
 
-What layer is used to present the packet data in a user-friendly format? (Please answer in English and pay attention to capitalization.)
+::option[Que chaque utilisateur est autorisé pour toutes les ressources.]{#application-layer-tls-all-users explanation="L'authentification du transport ne remplace pas les règles d'accès de l'application."}
+::option[L'identité du pair pour le nom validé et un canal sécurisé authentifié.]{#application-layer-tls-identity .correct explanation="L'autorisation applicative et la justesse du contenu exigent encore leurs propres contrôles."}
+::option[Qu'aucun routeur ne pourra jamais perdre un paquet ultérieur.]{#application-layer-tls-routing explanation="TLS ne peut pas garantir la livraison future par le réseau."}
+:::
 
-## Quiz Answer
+## Résumé
 
-Application
+Vous savez maintenant décrire le comportement de la couche application au-delà d'un numéro de port ou d'un nom de programme.
+
+1. Identifier la syntaxe, la sémantique et l'état des protocoles comme des préoccupations applicatives.
+2. Considérer client et serveur comme des rôles dans un échange.
+3. Employer les ports comme conventions de terminaux plutôt que comme preuves du protocole.
+4. Tester le nommage, la sécurité et les réponses applicatives de bout en bout.

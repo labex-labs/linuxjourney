@@ -1,53 +1,109 @@
 ---
-index: 12
+lesson_id: "emacs-editing"
+course_id: "advanced-text-fu"
 lang: "es"
+order_index: 12
 title: "Edición en Emacs"
-meta_title: "Edición en Emacs - Maestría Avanzada de Texto"
-meta_description: "Domina los fundamentos de la edición en Emacs con esta guía para principiantes. Aprende comandos esenciales de Emacs para navegación, corte y pegado de texto en este potente editor de texto para Linux."
-meta_keywords: "Emacs, tutorial Emacs, comandos Emacs, editor de texto, editor Linux, navegación Emacs, Emacs principiantes, guía Emacs"
+description: "Aprende a mover el punto, activar una región y usar las órdenes del anillo de eliminaciones de Emacs para editar texto."
+meta_title: "Edición en Emacs - Text-Fu avanzado"
+meta_description: "Domina los fundamentos de edición de Emacs: navegación por texto, regiones, corte, copia y pegado mediante el anillo de eliminaciones."
+meta_keywords: "Emacs, tutorial Emacs, órdenes Emacs, editor de texto, editor Linux, navegación Emacs, Emacs para principiantes"
 ---
 
-## Lesson Content
+Emacs llama **punto** a la posición actual del cursor. Las órdenes de movimiento cambian la posición del punto; las órdenes de edición insertan, eliminan, cortan, copian o pegan texto a su alrededor. En la notación siguiente, `C-` significa Control y `M-` significa Meta, normalmente Alt.
 
-Emacs es un editor de texto potente y extensible ampliamente utilizado en Linux y otros sistemas tipo Unix. Esta guía de Emacs para principiantes le presentará algunos comandos de edición fundamentales. En la terminología de Emacs, `C-` se refiere a la tecla `Ctrl` y `M-` se refiere a la tecla `Meta`, que suele ser la tecla `Alt`.
+## Desplazarse por caracteres y líneas
 
-### Navegación de Texto en Emacs
+Las flechas y otras teclas de navegación de la plataforma pueden funcionar, pero las órdenes estándar de movimiento de Emacs están disponibles tanto en sesiones gráficas como de terminal:
 
-Aunque las teclas de navegación estándar como Inicio, Fin y las flechas funcionan como se espera, Emacs ofrece comandos más eficientes para moverse por su texto, el cual Emacs almacena en un "buffer". Dominar la navegación de Emacs es un paso clave para volverse competente.
+- `C-f`: avanza un carácter.
+- `C-b`: retrocede un carácter.
+- `C-n`: va a la línea siguiente.
+- `C-p`: va a la línea anterior.
+- `C-a`: va al principio de la línea.
+- `C-e`: va al final de la línea.
 
-Aquí hay algunos comandos esenciales de Emacs para mover el cursor:
+:::single-choice{#emacs-edit-next-line} ¿Qué tecla de Emacs lleva el punto a la línea siguiente?
 
+::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` va a la línea anterior, en la dirección opuesta."}
+::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n`, de `next-line`, desplaza el punto hacia abajo hasta la posición de la línea de pantalla siguiente."}
+::option[`C-f`]{#emacs-edit-forward-character explanation="`C-f` avanza un carácter en vez de ir a la línea siguiente."}
+:::
+
+## Desplazarse por palabras y límites del búfer
+
+Las órdenes Meta se desplazan por unidades mayores:
+
+- `M-f`: avanza una palabra.
+- `M-b`: retrocede una palabra.
+- `M-<`: va al principio del búfer.
+- `M->`: va al final del búfer.
+
+En muchos teclados, Alt actúa como Meta. Cuando esa combinación no está disponible, pulsar `Esc` y después la tecla siguiente suele enviar la orden Meta equivalente.
+
+:::single-choice{#emacs-edit-buffer-end} ¿Qué tecla de Emacs lleva el punto al final del búfer?
+
+::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` va al final de la línea actual, no de todo el búfer."}
+::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` va al principio del búfer."}
+::option[`M->`]{#emacs-edit-buffer-end-answer .correct explanation="`M->` lleva el punto al final del búfer actual."}
+:::
+
+## Definir una región
+
+La **marca** es una posición guardada del búfer. El texto entre el punto y la marca es la **región**. Pulsa `C-SPC`, escrito como `C-space` en parte de la documentación, para ejecutar `set-mark-command`; después mueve el punto para ampliar la región activa.
+
+En una terminal, `C-SPC` puede codificarse como `C-@`. El resaltado depende de la configuración de marca transitoria, pero el punto y la marca siguen definiendo una región.
+
+:::single-choice{#emacs-edit-set-mark} ¿Qué tecla comienza a definir una región al establecer la marca en el punto?
+
+::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` elimina una región ya definida; no es la orden inicial para establecer la marca."}
+::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` inserta texto del anillo de eliminaciones y no inicia una selección."}
+::option[`C-SPC`]{#emacs-edit-control-space .correct explanation="`set-mark-command` coloca la marca; después, el movimiento cambia la región comprendida entre la marca y el punto."}
+:::
+
+## Eliminar o copiar una región
+
+Emacs almacena el texto eliminado y copiado en el **anillo de eliminaciones**:
+
+- `C-w`: elimina la región activa y la añade al anillo.
+- `M-w`: copia la región activa al anillo sin eliminarla.
+- `C-k`: elimina desde el punto hasta el final de la línea; el uso repetido puede incluir el salto de línea.
+
+Esta eliminación conserva el texto para insertarlo posteriormente, a diferencia de una eliminación normal.
+
+:::single-choice{#emacs-edit-copy-region} ¿Qué tecla copia la región activa al anillo de eliminaciones sin quitarla?
+
+::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`kill-ring-save`, asociado a `M-w`, copia la región sin eliminarla."}
+::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` elimina la región mientras la guarda en el anillo."}
+::option[`C-k`]{#emacs-edit-kill-line explanation="`C-k` elimina texto hacia el final de la línea en vez de copiar sin cambios la región seleccionada."}
+:::
+
+## Insertar desde el anillo de eliminaciones
+
+Usa `C-y` para insertar en el punto la entrada más reciente del anillo. Inmediatamente después de la inserción, `M-y` sustituye ese texto por una entrada anterior; repetir `M-y` recorre las entradas.
+
+```text
+C-y
+M-y
 ```
-C-flecha arriba: mover un párrafo hacia arriba
-C-flecha abajo: mover un párrafo hacia abajo
-C-flecha izquierda: mover una palabra a la izquierda
-C-flecha derecha: mover una palabra a la derecha
-M->: mover al final del buffer
-```
 
-### Cortar y Pegar
+Si después de `C-y` se ejecuta otra orden no relacionada, `M-y` deja de tener el mismo contexto para sustituir la inserción.
 
-En Emacs, cortar se llama "matar" (killing) y pegar se llama "yankear" (yanking). Para realizar estas acciones, primero debe seleccionar una región de texto.
+:::single-choice{#emacs-edit-yank-latest} ¿Qué tecla inserta en el punto la entrada más reciente del anillo de eliminaciones?
 
-Para comenzar a seleccionar texto, mueva el cursor al inicio de la región deseada y presione `C-espacio`. Esto establece la "marca" (mark). Luego, use cualquier comando de navegación para mover el cursor al final de la región que desea seleccionar. El área entre la marca y la posición actual del cursor se resaltará.
+::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="`yank`, asociado a `C-y`, inserta en el búfer actual el texto más reciente del anillo."}
+::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` suele sustituir una entrada recién insertada por otra anterior; depende del contexto de inserción precedente."}
+::option[`C-d`]{#emacs-edit-delete-character explanation="`C-d` elimina el carácter posterior al punto y no recupera texto del anillo."}
+:::
 
-Una vez que haya seleccionado una región, puede usar los siguientes comandos:
+Practica en `*scratch*` o en un archivo desechable: mueve el punto, establece la marca, copia una región, elimina otra y vuelve a insertar ambas. Guarda únicamente cuando merezca la pena conservar el archivo resultante.
 
-```
-C-w: matar (cortar) la región seleccionada
-C-y: yanquear (pegar) el último texto matado
-```
+## Resumen
 
-Estos comandos básicos forman la base de la edición en el editor de texto Emacs.
+Ahora puedes navegar y reorganizar texto de Emacs mediante el punto, la marca y el anillo de eliminaciones.
 
-## Exercise
-
-La mejor manera de aprender los comandos de Emacs es mediante la práctica. Abra un nuevo archivo de texto usando `emacs my_practice_file.txt` e intente usar los comandos de navegación, selección, corte y pegado cubiertos en esta lección. Acostúmbrese a moverse por el buffer y manipular el texto.
-
-## Quiz Question
-
-¿Cómo se mueve al final del buffer? Por favor, responda usando solo el formato de combinación de teclas mostrado en la lección (ejemplo: C-w). La respuesta distingue entre mayúsculas y minúsculas.
-
-## Quiz Answer
-
-M->
+1. Desplázate por caracteres o líneas con órdenes Control.
+2. Desplázate por palabras o límites del búfer con órdenes Meta.
+3. Establece la marca con `C-SPC` para definir una región.
+4. Elimina con `C-w` o copia con `M-w`.
+5. Inserta con `C-y` y recorre el anillo inmediatamente después con `M-y`.

@@ -1,50 +1,115 @@
 ---
-index: 8
+lesson_id: "head-command"
+course_id: "text-fu"
 lang: "fr"
+order_index: 8
 title: "head"
+description: "Apprenez à afficher un nombre contrôlé de lignes ou d'octets au début d'une entrée."
 meta_title: "head - Text-Fu"
-meta_description: "Un guide Linux pour débutants sur l'utilisation de la commande head pour afficher le début d'un fichier. Apprenez à utiliser l'option head -n pour contrôler le nombre de lignes, une compétence essentielle pour tout tutoriel Linux."
-meta_keywords: "commande head, Linux head, afficher début fichier, tutoriel Linux, commandes Linux, Linux débutant, head -n, guide Linux, fichiers texte, ligne de commande"
+meta_description: "Utilisez la commande Linux head et l'option head -n pour consulter le début d'un fichier."
+meta_keywords: "commande head, Linux head, début fichier, head -n, ligne de commande"
 ---
 
-## Lesson Content
+`head` affiche le début d'un fichier ou d'un flux. Il sert à vérifier des en-têtes, prévisualiser des données structurées ou échantillonner une sortie.
 
-Sous Linux, vous devez souvent inspecter le contenu de fichiers très volumineux, tels que les journaux système. Par exemple, si vous exécutez `cat /var/log/syslog`, vous verrez défiler des pages de texte, ce qui rend difficile d'avoir un aperçu rapide. Alors, que faire si vous voulez seulement **visualiser le début d'un fichier** ? La commande `head` est l'outil parfait pour cette tâche.
+## Afficher les dix premières lignes
 
-### Comportement par défaut de la commande head
-
-Par défaut, la commande `head` affiche les 10 premières lignes de tout fichier donné. C'est une partie fondamentale de notre **guide Linux pour débutants** sur la manipulation de texte. Pour la voir en action, fournissez simplement un nom de fichier comme argument :
+Sans option de comptage, `head` affiche les 10 premières lignes de chaque fichier :
 
 ```bash
-head /var/log/syslog
+$ head events.log
 ```
 
-Cette commande affichera les 10 premières lignes de `/var/log/syslog`, vous permettant de vérifier rapidement le contenu initial du fichier sans l'ouvrir dans un éditeur.
+Le fichier n'est pas modifié. S'il comporte moins de 10 lignes, elles sont toutes affichées.
 
-### Personnalisation du nombre de lignes
+:::single-choice{#head-default-lines} Que produit `head events.log` par défaut ?
 
-La commande **Linux head** est flexible. Vous pouvez facilement modifier le nombre de lignes affichées à l'aide de l'indicateur `-n`, qui signifie "nombre de lignes". Par exemple, si vous souhaitez voir les 15 premières lignes d'un fichier, vous utiliseriez l'option `head -n` comme suit :
+::option[Les 10 dernières lignes, ou toutes si le fichier est plus court.]{#head-last-ten explanation="La fin d'une entrée relève de `tail` ; `head` part du début."}
+::option[Les 10 premières lignes, ou toutes si le fichier est plus court.]{#head-first-ten .correct explanation="Sans option de comptage, `head` sélectionne au plus les dix premières lignes."}
+::option[Seulement la première ligne.]{#head-first-one explanation="Une seule ligne exige `-n 1` ; la valeur par défaut est dix."}
+:::
+
+## Choisir un nombre de lignes
+
+Utilisez `-n NUMBER` :
 
 ```bash
-head -n 15 /var/log/syslog
+$ head -n 15 events.log
 ```
 
-Cela fait de `head` l'une des **commandes Linux** les plus utiles pour inspecter rapidement les en-têtes de fichiers ou les entrées de journaux.
+GNU `head` accepte aussi `-15`, mais `-n 15` rend le sens plus explicite.
 
-## Exercise
+:::single-choice{#head-five-lines} Quelle commande affiche les cinq premières lignes de `report.txt` ?
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la visualisation du début des fichiers et de la manipulation générale des fichiers texte :
+::option[`head -c 5 report.txt`]{#head-five-bytes explanation="`-c` compte les octets et peut s'arrêter au milieu d'une ligne."}
+::option[`head -n 5 report.txt`]{#head-report-five .correct explanation="`-n` sélectionne un nombre de lignes, ici cinq."}
+::option[`tail -n 5 report.txt`]{#tail-five-lines explanation="Cette commande affiche les cinq dernières lignes."}
+:::
 
-1. **[Commande Linux head : Affichage du début de fichier](https://labex.io/fr/labs/linux-linux-head-command-file-beginning-display-214302)** - Ce laboratoire vous guidera dans l'utilisation de la commande `head` pour afficher les lignes initiales des fichiers texte, y compris la modification du nombre de lignes.
-2. **[Visualisation des fichiers journaux et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous aux compétences essentielles de la ligne de commande Linux pour visualiser et naviguer efficacement dans les fichiers texte, y compris les journaux système et les fichiers de configuration, qui nécessitent souvent des commandes comme `head`.
-3. **[Détection rapide des menaces](https://labex.io/fr/labs/linux-rapid-threat-detection-387930)** - Appliquez vos connaissances de `head` (et `tail`) pour extraire et analyser rapidement les entrées de journaux récentes, simulant une analyse de cybersécurité réelle.
+## Choisir un nombre d'octets
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la visualisation et l'analyse des fichiers texte sous Linux.
+Utilisez `-c NUMBER` pour compter des octets :
 
-## Quiz Question
+```bash
+$ head -c 20 archive.bin
+```
 
-Quel indicateur utiliseriez-vous avec la commande `head` pour modifier le nombre de lignes que vous souhaitez visualiser ? Veuillez répondre en utilisant uniquement l'indicateur anglais, en faisant attention à la casse.
+La sortie peut finir au milieu d'une ligne ou d'un caractère multioctet. Préférez les lignes pour le texte ordinaire.
 
-## Quiz Answer
+:::single-choice{#head-first-bytes} Quelle commande écrit les 100 premiers octets de `payload.bin` sur stdout ?
 
--n
+::option[`head -c 100 payload.bin`]{#head-hundred-bytes .correct explanation="`-c` sélectionne un nombre d'octets, ici les cent premiers disponibles."}
+::option[`head -n 100 payload.bin`]{#head-hundred-lines explanation="`-n` compte les lignes, pas les octets."}
+::option[`cut -c 100 payload.bin`]{#cut-hundredth-character explanation="Cette forme sélectionne la position 100 sur chaque ligne."}
+:::
+
+## Lire stdin et plusieurs fichiers
+
+Sans fichier, `head` lit stdin :
+
+```bash
+$ generate-report | head -n 5
+```
+
+Avec plusieurs fichiers, il ajoute normalement un en-tête :
+
+```bash
+$ head -n 2 january.txt february.txt
+==> january.txt <==
+...
+
+==> february.txt <==
+...
+```
+
+`-q` supprime ces en-têtes et `-v` en affiche un même pour un seul fichier.
+
+:::single-choice{#head-pipeline-preview} Dans `generate-report | head -n 5`, que lit `head` ?
+
+::option[Stdout de `generate-report` par stdin.]{#head-pipe-input .correct explanation="Le tube relie stdout du producteur à stdin de `head`, qui en choisit cinq lignes."}
+::option[Les cinq premiers noms du répertoire courant.]{#head-directory-names explanation="Aucune commande ne liste le répertoire."}
+::option[Cinq octets d'un fichier `generate-report`.]{#head-producer-file explanation="La partie gauche est une commande et `-n` compte les lignes."}
+:::
+
+:::single-choice{#head-suppress-filename-headers} Quelle option supprime les en-têtes de noms lorsque `head` lit plusieurs fichiers ?
+
+::option[`-v`]{#head-verbose explanation="`-v` force les en-têtes, même avec un fichier."}
+::option[`-c`]{#head-byte-option explanation="`-c` change l'unité en octets."}
+::option[`-q`]{#head-quiet .correct explanation="L'option quiet `-q` empêche l'affichage des libellés de fichiers."}
+:::
+
+Pour vous exercer :
+
+1. **[Commande Linux head : afficher le début d'un fichier](https://labex.io/fr/labs/linux-linux-head-command-file-beginning-display-214302)** - Affichez les premières lignes et modifiez leur nombre.
+2. **[Consulter les journaux et fichiers de configuration](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Naviguez efficacement dans des fichiers texte.
+3. **[Détection rapide des menaces](https://labex.io/fr/labs/linux-rapid-threat-detection-387930)** - Analysez rapidement des entrées de journaux.
+
+## Résumé
+
+Vous savez prévisualiser le début de fichiers et de sorties de commandes.
+
+1. Utiliser les dix premières lignes par défaut.
+2. Choisir un nombre de lignes avec `-n`.
+3. Choisir des octets avec `-c`.
+4. Lire stdin dans un pipeline.
+5. Contrôler les en-têtes pour plusieurs fichiers.

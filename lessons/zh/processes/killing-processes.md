@@ -1,66 +1,102 @@
 ---
-index: 7
+lesson_id: "killing-processes"
+course_id: "processes"
 lang: "zh"
-title: "kill (终止)"
-meta_title: "kill (终止) - 进程管理"
+order_index: 7
+title: "kill（终止进程）"
+description: "学习如何识别进程，并按照安全的升级顺序使用 `kill` 发送合适的信号。"
+meta_title: "kill（终止进程）- 进程管理"
 meta_description: "掌握 Linux kill 命令以管理和终止进程。本指南涵盖 kill 与 terminate 的区别，并解释了如 kill sigterm (SIGTERM)、SIGKILL 和 kill sighup (SIGHUP) 等信号。"
 meta_keywords: "kill 命令，kill sigterm, kill sighup, linux kill -0, kill 与 terminate, kill -15 linux, SIGTERM, SIGKILL, 进程管理，终止进程"
 ---
 
-## Lesson Content
+`kill` 命令用于向进程或进程组发送信号。它的名称源于历史原因：所请求的信号可能会终止、暂停或继续进程，也可能触发某种由应用程序定义的操作。发送信号前，务必确认目标完全正确，并了解该程序文档中说明的信号行为。
 
-在 Linux 中，您可以通过向进程发送信号来管理它们。主要的命令是 `kill`，尽管其名称如此，但它可以发送各种信号，而不仅仅是终止进程的信号。
+## 请求有序终止
 
-### 使用 kill sigterm 进行默认终止
-
-当您仅使用进程 ID (PID) 执行 `kill` 命令时，它默认发送一个 `TERM` 信号。这是请求程序终止的标准、优雅的方式。
+只提供 PID 时，`kill` 默认发送 `SIGTERM`：
 
 ```bash
-kill 12445
+$ kill 12445
 ```
 
-`kill sigterm` 信号（也称为 `SIGTERM` 或信号 15）请求进程干净地关闭。这给了进程一个机会来保存其进度并正确释放资源。您也可以明确使用信号编号，使 `kill -15 12445` 等同于上述命令。这解决了常见的 `kill -15 linux` 查询。
-
-### 使用 SIGKILL 强制终止
-
-有时进程会无响应，不会对 `SIGTERM` 信号作出反应。在这些情况下，您可以使用 `KILL` 信号强制停止它。
+显式指定信号时，建议使用符号名称：
 
 ```bash
-kill -9 12445
+$ kill -TERM 12445
 ```
 
-`SIGKILL` 信号（信号 9）会立即终止进程，不给它清理的机会。这是 `kill vs terminate` 争论中的一个关键区别；`SIGKILL` 是无条件终止，而 `SIGTERM` 是礼貌的请求。
+`SIGTERM` 的默认动作是终止进程，但程序可以捕获或忽略它。设计良好的服务可以通过信号处理程序停止接收新任务、保存适当的状态，并释放应用程序资源。不过，这只是一种可能性，并不保证清理工作一定能立即完成或成功完成。
 
-### 理解其他常见信号
+:::single-choice{#killing-processes-default-signal} `kill PID` 默认请求发送哪个信号？
 
-虽然 `SIGTERM` 和 `SIGKILL` 最常见，但其他信号对于进程管理也很有用。
+::option[`SIGKILL`]{#killing-processes-default-kill explanation="必须显式选择这个不可捕获的强制终止信号。"}
+::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="未提供其他信号操作数时，`kill` 会发送标准的终止请求。"}
+::option[`SIGSTOP`]{#killing-processes-default-stop explanation="暂停进程并不是 `kill` 默认请求的动作。"}
+:::
 
-- **SIGHUP**: `kill sighup` 信号（挂断，信号 1）传统上在控制终端关闭时发送给进程。它可以用来告诉守护进程重新加载其配置文件。
-- **SIGINT**: 当您按下 `Ctrl-C` 时，会发送中断信号（信号 2）。它请求进程中断当前操作。
-- **SIGSTOP**: 此信号（信号 19）在不终止进程的情况下暂停它。进程稍后可以用 `SIGCONT` 信号恢复。
+## 核实目标
 
-### 使用 kill -0 检查进程是否存在
-
-一个特殊的用例是 `linux kill -0`。此命令实际上不发送信号，而是检查具有指定 PID 的进程是否存在以及您是否有权限向其发送信号。
+PID 可以被重复使用，因此某个过时的 PID 之后可能会指向另一个进程。执行操作前，应立即检查当前活动的目标：
 
 ```bash
-kill -0 12445
+$ ps -p 12445 -o pid,ppid,user,lstart,stat,cmd
 ```
 
-如果命令成功执行（退出代码为 0），则进程存在。如果失败，则进程不存在或您没有权限。
+检查它的用户、启动时间、命令、父进程、所属服务以及实际职责。如果进程由服务管理器管理，应尽可能使用该管理器提供的停止或重新加载命令，使其能够维持正确状态，并避免立即重新启动子进程。
 
-## Exercise
+在凭据规则允许的范围内，你可以向自己拥有的进程发送信号。向其他用户的进程发送信号通常需要相应权限。在使用范围宽泛的按名称匹配命令前，必须先检查每一个匹配结果。
 
-为了应用所学知识，请尝试此动手实验，以加强您对进程管理和终止的理解：
+:::single-choice{#killing-processes-pid-reuse} 为什么应该在发送信号前立即检查 PID？
 
-1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 在此实验中，您将学习在 Linux 系统上管理和监控进程的基本技能。您将探索如何与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。
+::option[进程每读取一次文件，PID 就会改变。]{#killing-processes-pid-read explanation="一个活动进程在其整个生命周期中通常保持同一个 PID。"}
+::option[先前的进程退出后，内核可以重复使用它的 PID。]{#killing-processes-pid-reused .correct explanation="记住的数字 PID 之后可能会指向另一个活动进程。"}
+::option[`kill` 接受命令名称，但不接受数字标识符。]{#killing-processes-no-numeric explanation="数字 PID 是 `kill` 常规使用的目标操作数。"}
+:::
 
-此实验将帮助您在实际场景中应用进程控制和终止的概念，并增强管理 Linux 进程的信心。
+## 使用零号信号检查权限
 
-## Quiz Question
+零号信号只执行错误检查，并不会真正递送信号：
 
-默认 `kill` 命令的信号名称是什么？请用英文回答。请注意，答案区分大小写。
+```bash
+$ kill -0 12445
+```
 
-## Quiz Answer
+命令成功表示此刻存在使用该 PID 的进程，并且调用者有权向它发送信号。失败的含义并不唯一：进程可能不存在，也可能是调用者没有权限。应检查错误信息和退出状态，不要把每一次失败都理解成“进程未运行”。这也只是瞬时检查，无法消除之后发生 PID 复用竞态的可能性。
 
-SIGTERM
+:::single-choice{#killing-processes-signal-zero} `kill -0 PID` 成功时，能够确定当下的什么情况？
+
+::option[进程已完成全部清理并退出。]{#killing-processes-zero-exited explanation="成功表示存在可发送信号的活动目标，而不是进程已经终止。"}
+::option[该进程将永久保留这个 PID。]{#killing-processes-zero-permanent explanation="这项检查只反映瞬时状态，进程退出后 PID 仍可能被复用。"}
+::option[进程存在，并且调用者可以向它发送信号。]{#killing-processes-zero-permitted .correct explanation="零号信号会检查目标是否存在以及调用者是否有权限，但不会递送普通信号。"}
+:::
+
+## 仅在必要时升级手段
+
+如果已获授权的目标收到 `SIGTERM` 后仍未终止，应先等待与工作负载相适应的时限，并调查原因。确认有必要强制终止后，再发送：
+
+```bash
+$ kill -KILL 12445
+```
+
+`SIGKILL` 无法被捕获、忽略或阻塞，因此程序没有机会执行应用层清理。它可能留下未完成的事务、临时状态，或需要其他组件处理的恢复工作。应把它作为升级手段，而不是例行使用的第一步。
+
+其他信号的意义取决于接收程序的约定。`SIGHUP` 经常用于请求重新加载配置，但有些程序仍保留它默认的终止行为。`SIGSTOP` 会在不清理的情况下暂停进程，而 `SIGCONT` 会让已暂停的进程继续运行。
+
+:::single-choice{#killing-processes-kill-tradeoff} `SIGKILL` 在实际操作中的主要缺点是什么？
+
+::option[只有进程所有者才能处理它。]{#killing-processes-kill-owner-handler explanation="任何目标进程都无法为 `SIGKILL` 安装处理程序。"}
+::option[它只会暂停进程，永远不会终止进程。]{#killing-processes-kill-pauses explanation="`SIGSTOP` 用于暂停，而 `SIGKILL` 用于终止。"}
+::option[它不给程序执行应用层清理的机会。]{#killing-processes-kill-no-cleanup .correct explanation="内核会直接执行终止，不会调用用户空间的信号处理程序。"}
+:::
+
+只应在隔离环境中，对你自己启动的进程练习选择信号。[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)实验提供了一套受控的检查与终止流程。
+
+## 总结
+
+现在，你可以按照审慎且可验证的流程向进程发送信号。
+
+1. 执行操作前，确认活动目标及其管理程序。
+2. 使用 `SIGTERM` 发出常规终止请求。
+3. 将零号信号理解为瞬时的存在性与权限检查。
+4. 只有经过调查并确认需要升级时，才使用 `SIGKILL`。

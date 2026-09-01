@@ -1,52 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-a-router"
+course_id: "routing"
 lang: "de"
+order_index: 1
 title: "Was ist ein Router?"
-meta_title: "Was ist ein Router? - Routing"
-meta_description: "Ein Leitfaden für Anfänger, um zu verstehen, was ein Router im Netzwerkbereich ist. Erfahren Sie mehr über Routing, Paketvermittlung, Hops und wie Router Routing-Tabellen zur Weiterleitung von Daten über Netzwerke verwenden. Dieser Netzwerk-Guide ist essenziell für das Erlernen von Linux-Netzwerken."
-meta_keywords: "Router, Netzwerk, Routing, Hops, Paketvermittlung, Linux-Netzwerke, Anfänger-Tutorial, Netzwerk-Guide"
+description: "Lerne, wie Router nächste Hops auswählen und IP-Pakete zwischen Netzwerken weiterleiten."
+meta_title: "Was ist ein Router? – Routing"
+meta_description: "Eine Einführung in Router und Netzwerke. Lerne Routing, Paketvermittlung, Hops und die Verwendung von Routingtabellen zur Datenweiterleitung über Netzwerke kennen."
+meta_keywords: "Router, Vernetzung, Routing, Hops, Paketvermittlung, Linux-Vernetzung, Einsteiger-Tutorial, Netzwerk-Anleitung"
 ---
 
-## Lesson Content
+Ein Router verbindet Domänen der Netzwerkschicht und leitet IP-Pakete zwischen ihnen weiter. Ein Linux-Host kann als Router arbeiten, wenn die Weiterleitung aktiviert ist und seine Schnittstellen, Routen, Nachbarerkennung sowie Filterrichtlinie angemessen konfiguriert sind.
 
-Ein Router ist ein fundamentales Gerät in der Computervernetzung. Wahrscheinlich haben Sie einen zu Hause, der Sie mit dem Internet verbindet. Seine Hauptaufgabe besteht darin, Geräten in einem Netzwerk die Kommunikation untereinander und mit anderen Netzwerken zu ermöglichen. Dieser Prozess ist ein Kernbestandteil dessen, was das Internet und lokale Netzwerke funktionsfähig macht.
+## Routing und Weiterleitung
 
-### Die Kernfunktion eines Routers
+Routing erstellt oder wählt Informationen über erreichbare Präfixe aus. Die Weiterleitung wendet diese Informationen auf jedes Paket an: Ziel untersuchen, eine geeignete Route und den nächsten Hop auswählen, Hop-Limit verringern und über eine ausgehende Schnittstelle übertragen.
 
-Ein typischer Heimrouter verfügt über LAN-Anschlüsse (Local Area Network) zur Verbindung Ihrer Geräte mit einem lokalen Netzwerk und einen WAN-Anschluss (Wide Area Network), der eine Internetverbindung bereitstellt. Jedes Datenstück, oder „Paket“, das Sie bei Netzwerkaktivitäten senden oder empfangen, muss den Router passieren. Der Router untersucht diese Netzwerkpakete und entscheidet, wohin sie gesendet werden sollen. Er leitet den Verkehr effektiv zwischen mehreren Netzwerken und stellt sicher, dass jedes Paket von seiner Quelle zu seinem endgültigen Ziel gelangt.
+Dies sind getrennte Belange von Steuerungs- und Datenebene. Eine Route kann bestehen, während eine Firewallrichtlinie die Weiterleitung blockiert, oder eine Weiterleitungsschnittstelle kann aktiv sein, während keine gültige Route existiert.
 
-### Der Routing-Prozess
+:::single-choice{#router-forwarding-role} Was bewirkt die Paketweiterleitung?
 
-Stellen Sie sich den Routing-Prozess wie die Postzustellung vor. Wenn Sie einen Brief senden, ermittelt die Post das allgemeine Ziel (z. B. ein Bundesland oder eine Stadt) und sendet ihn dorthin. Von dort aus wird er in kleinere Regionen wie Postleitzahlen sortiert, bis er schließlich die spezifische Straßenadresse erreicht.
+::option[Sie wendet Routinginformationen an, um ein Paket zu seinem nächsten Hop zu senden.]{#router-apply-route .correct explanation="Weiterleitung ist die paketweise Aktion anhand der ausgewählten Route und Richtlinie."}
+::option[Sie erstellt für jedes Ziel eine dauerhafte Anwendungsanmeldung.]{#router-create-login explanation="Routing verwaltet keine entfernten Anwendungskonten."}
+::option[Sie kopiert jedes Paket auf alle Schnittstellen, wenn keine Route besteht.]{#router-flood-no-route explanation="Gewöhnliche IP-Weiterleitung verwirft ein nicht routbares Paket, statt ersatzweise Ethernet-artiges Fluten zu verwenden."}
+:::
 
-In der Netzwerktechnik verwendet ein Router eine **Routing-Tabelle**, um diese Entscheidungen zu treffen. Diese Tabelle enthält eine Reihe von Regeln oder Routen, die dem Router mitteilen, wie Pakete an ein bestimmtes Netzwerkziel weitergeleitet werden sollen. Eine Regel könnte beispielsweise lauten: „Um zu Netzwerk A zu gelangen, senden Sie Pakete an Router B.“ Wenn es keine spezifische Regel für ein Ziel gibt, verwendet der Router eine **Standardroute**, die den Verkehr normalerweise in Richtung Internet leitet. Dieses System ist sowohl in einfachen Heimnetzwerken als auch in komplexen **Linux-Netzwerkumgebungen** von entscheidender Bedeutung.
+## Routingtabellen und Standardrouten
 
-### Hops
+Eine Route verbindet ein Zielpräfix mit einer ausgehenden Schnittstelle, einem nächsten Hop, Messwert, einer Quellpräferenz oder weiteren Attributen. Die längste Präfixübereinstimmung bevorzugt eine spezifischere geeignete Route. Eine Standardroute, IPv4 `/0` oder IPv6 `::/0`, ist die unspezifischste Übereinstimmung und wird nur verwendet, wenn keine spezifischere Route gewinnt.
 
-Während Pakete Netzwerke durchqueren, wird ihre Reise in **Hops** gemessen. Ein Hop stellt einen Schritt der Reise dar, bei dem ein Paket ein Zwischengerät, wie einen Router, passiert. Wenn ein Paket beispielsweise zwei Router passieren muss, um von Host A zu Host B zu gelangen, sagen wir, der Pfad ist zwei Hops lang. Hops bieten eine einfache Metrik zur Messung der Entfernung zwischen einer Quelle und einem Ziel in einem Netzwerk.
+Wenn keine geeignete Route besteht, verwirft der Router das Paket und kann eine ICMP-Nichterreichbarkeitsmeldung erzeugen. Eine Standardroute ist optional und muss nicht unmittelbar in das öffentliche Internet zeigen.
 
-### Paketvermittlung, Routing und Flooding
+:::single-choice{#router-default-route} Wann wird eine Standardroute ausgewählt?
 
-Um zu verstehen, wie Daten übertragen werden, ist es hilfreich, diese verwandten Begriffe zu kennen:
+::option[Bevor zielspezifische Präfixe geprüft werden.]{#router-default-first explanation="Spezifischere geeignete Präfixe haben Vorrang."}
+::option[Nur, wenn das Paket ein Ethernet-Broadcast ist.]{#router-default-broadcast explanation="Die IP-Routenauswahl beruht auf Zielen der Netzwerkschicht."}
+::option[Wenn keine spezifischere geeignete Route passt.]{#router-default-fallback .correct explanation="Das Präfix mit Länge null ist die unspezifischste Route."}
+:::
 
-- **Paketvermittlung (Packet Switching)** ist die grundlegende Methode zum Empfangen, Verarbeiten und Weiterleiten von Datenpaketen an ihr Ziel. Dies ist das, was Router kontinuierlich tun.
-- **Routing** ist der intelligente Prozess des Erstellens und Pflegens der Routing-Tabelle. Effektives Routing ermöglicht eine effizientere und zuverlässigere Paketvermittlung.
-- **Flooding** ist eine ältere, weniger effiziente Methode, die verwendet wird, wenn ein Router nicht weiß, wohin er ein Paket senden soll. Er sendet das eingehende Paket über jede Verbindung außer der, über die es angekommen ist, in der Hoffnung, dass eines das Ziel erreicht. Moderne Netzwerke verlassen sich auf Routing, um diese Art von Ineffizienz zu vermeiden.
+## Lokaler und gerouteter Datenverkehr
 
-## Exercise
+Zwei Hosts im selben direkt erreichbaren Subnetz tauschen Frames gewöhnlich aus, ohne das IP-Paket durch einen Router zu senden. Ein Router wird beteiligt, wenn die Routenauswahl ihn als nächsten Hop bestimmt oder Topologie und Richtlinie die geroutete Durchquerung bewusst erzwingen.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerkverbindungen und Routing zu festigen:
+Ein Heim-„Router“ verbindet gewöhnlich IP-Router, Ethernet-Switch, WLAN-Access-Point, DHCP-Dienst, NAT und Firewall. Jede Funktion sollte getrennt diagnostiziert werden.
 
-1. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Üben Sie das Testen des lokalen TCP/IP-Stacks, das Identifizieren privater und öffentlicher IPs und das Überprüfen der Netzwerkerreichbarkeit, was entscheidend ist, um zu verstehen, wie ein Router die Kommunikation ermöglicht.
-2. **[Interaktion der Netzwerkschicht mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Lernen Sie, wie die Befehle `ping` und `arp` Ihnen helfen zu beobachten, wie die Netzwerk- und Datenverbindungsschichten interagieren und wie das Standard-Gateway (Router) den Verkehr zu entfernten Zielen verarbeitet.
-3. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Verwenden Sie Docker, um Netzwerkknoten zu simulieren und IP-Adressen zuzuweisen, und testen Sie dann die Konnektivität, um zu verstehen, wie IP-Subnetze und Routing die Netzwerkkommunikation steuern.
+:::single-choice{#router-same-subnet-path} Muss Datenverkehr zwischen zwei direkt erreichbaren Hosts ihren Standardrouter durchqueren?
 
-Diese Labs helfen Ihnen, die Konzepte der Netzwerkkommunikation, IP-Adressierung und die Rolle des Routings in realen Szenarien anzuwenden und Vertrauen in die Netzwerk-Grundlagen aufzubauen.
+::option[Ja, weil jedes Paket einen WAN-Port erreichen muss.]{#router-always-wan explanation="Lokale direkte Zustellung kann unmittelbar über die Verbindung erfolgen."}
+::option[Ja, sofern nicht beide Hosts öffentliche Adressen besitzen.]{#router-public-required explanation="Öffentlicher oder privater Bereich bestimmt nicht die grundlegende direkte Weiterleitung."}
+::option[Nein; der Sender kann das Ziel auf der lokalen Verbindung direkt adressieren.]{#router-direct-on-link .correct explanation="Die Routingtabelle kennzeichnet das verbundene Präfix als direkt erreichbar."}
+:::
 
-## Quiz Question
+## Hops und Schleifenvermeidung
 
-Wie wird die Entfernung von Paketen gemessen? (Bitte antworten Sie auf Englisch. Die Antwort ist groß- und kleingeschrieben.)
+Ein gerouteter Hop ist ein Weiterleitungsschritt auf Netzwerkschicht. IPv4-TTL und IPv6-Hop-Limit werden an jedem Router verringert und begrenzen dadurch Schleifen. Die Hop-Anzahl ist kein vollständiger Entfernungs- oder Qualitätsmesswert: Verbindungen unterscheiden sich in Bandbreite, Latenz, Verlust, Richtlinie und Überlastung.
 
-## Quiz Answer
+:::single-choice{#router-hop-count-limit} Was garantiert eine kleinere Hop-Anzahl nicht?
 
-Hops
+::option[Dass mindestens ein gerouteter Schritt besteht.]{#router-hop-exists explanation="Eine positive Hop-Anzahl zeigt unmittelbar geroutete Durchquerung an."}
+::option[Einen schnelleren oder besseren Anwendungspfad.]{#router-hop-not-quality .correct explanation="Weniger Router können dennoch langsamere, überlastete oder durch Richtlinien eingeschränkte Verbindungen durchqueren."}
+::option[Dass Hop-Limit-Felder endlich sind.]{#router-hop-limit-finite explanation="Diese Felder sind durch den Protokollentwurf endlich."}
+:::
+
+## Zusammenfassung
+
+Du kannst die Routenauswahl eines Routers nun von seiner Weiterleitungsaktion trennen.
+
+1. Definiere Router durch die Weiterleitung zwischen IP-Netzwerken.
+2. Unterscheide Routing auf der Steuerungsebene von Weiterleitung auf der Datenebene.
+3. Behandle die Standardroute als unspezifischste Ausweichroute.
+4. Erkenne, dass die Hop-Anzahl allein keine Pfadqualität misst.

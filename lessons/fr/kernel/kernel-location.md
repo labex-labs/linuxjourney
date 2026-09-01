@@ -1,45 +1,90 @@
 ---
-index: 5
+lesson_id: "kernel-location"
+course_id: "kernel"
 lang: "fr"
-title: "Emplacement du Noyau"
-meta_title: "Emplacement du Noyau Linux - Noyau"
-meta_description: "Découvrez où le noyau est stocké sous Linux. Ce guide explique l'emplacement du noyau Linux dans le répertoire /boot, détaillant les fichiers clés comme vmlinuz et initrd."
-meta_keywords: "emplacement noyau linux, où est le noyau, localisation noyau, où se trouve le noyau, où est stocké le noyau linux, vmlinuz, répertoire /boot"
+order_index: 5
+title: "Emplacement du noyau"
+description: "Découvrez où les distributions placent les images du noyau, fichiers initramfs, configurations, symboles et modules versionnés."
+meta_title: "Emplacement du noyau - Noyau"
+meta_description: "Découvrez où le noyau est stocké sous Linux, notamment les fichiers vmlinuz et initramfs dans /boot et les modules versionnés."
+meta_keywords: "emplacement noyau Linux, où se trouve noyau, vmlinuz, répertoire /boot, initramfs, modules noyau"
 ---
 
-## Lesson Content
+Les distributions Linux stockent couramment les artefacts amorçables du noyau sous `/boot`, mais les organisations UEFI et Boot Loader Specification peuvent aussi les placer sur une partition système EFI ou une partition de démarrage étendue, montée par exemple dans `/boot`, `/boot/efi` ou `/efi`. Examinez les montages et la configuration du chargeur plutôt que de supposer un chemin universel.
 
-Lorsque vous installez un nouveau noyau, votre système ajoute plusieurs fichiers importants dans un répertoire spécifique. Si vous vous êtes déjà demandé **où le noyau est stocké sous Linux**, la réponse est généralement le répertoire `/boot`. Ce répertoire est l'**emplacement standard du noyau Linux** sur la plupart des systèmes.
+## Fichiers versionnés sous `/boot`
 
-### Le Répertoire /boot
+Une organisation traditionnelle de distribution peut contenir :
 
-Le répertoire `/boot` contient tous les fichiers nécessaires pour démarrer le processus de démarrage. Lorsque vous regardez à l'intérieur, vous verrez souvent des fichiers correspondant à différentes versions du noyau, vous permettant de démarrer sur un ancien noyau si un nouveau pose problème. Comprendre cet **emplacement du noyau** est crucial pour la maintenance du système.
+- `vmlinuz-VERSION_DU_NOYAU` : une image amorçable du noyau Linux ;
+- `initrd.img-VERSION_DU_NOYAU` ou `initramfs-VERSION_DU_NOYAU.img` : une image de l'espace utilisateur précoce ;
+- `config-VERSION_DU_NOYAU` : la configuration employée pour construire le noyau empaqueté ;
+- `System.map-VERSION_DU_NOYAU` : la carte entre symboles et adresses issue de la construction du noyau.
 
-### Fichiers Clés du Noyau
+Les noms varient. Sur une distribution moderne, un fichier nommé `initrd` contient souvent une archive initramfs. La convention `vmlinuz` ne révèle ni la compression interne exacte, ni le format d'amorçage de la plateforme ; examinez-le avec les outils de la distribution.
 
-Alors, **où se situe le noyau** dans ce répertoire ? Il est accompagné de quelques autres fichiers critiques. Voici les principaux que vous rencontrerez :
+:::single-choice{#kernel-location-vmlinuz} Que contient normalement un fichier versionné `vmlinuz-*` ?
 
-- `vmlinuz`: C'est le noyau Linux exécutable et compressé. Le 'z' à la fin indique qu'il est compressé.
-- `initrd`: C'est le disque RAM initial. Comme nous l'avons mentionné, l'`initrd` est un système de fichiers racine temporaire chargé en mémoire au démarrage pour monter le véritable système de fichiers racine.
-- `System.map`: Ce fichier contient une table de symboles, qui mappe les noms de fonctions du noyau à leurs adresses mémoire. Il est principalement utilisé pour déboguer les paniques et les erreurs du noyau (oops).
-- `config`: Ce fichier stocke les paramètres de configuration qui ont été utilisés pour compiler cette version spécifique du noyau. Il détaille quels pilotes et fonctionnalités ont été inclus.
+::option[Une image amorçable du noyau Linux.]{#kernel-location-kernel-image .correct explanation="Le chargeur d'amorçage ou le micrologiciel charge cet artefact du noyau propre à l'architecture."}
+::option[Tous les modules chargeables de tous les noyaux installés.]{#kernel-location-all-modules explanation="Les modules sont stockés séparément dans une arborescence propre à chaque version."}
+::option[L'historique du shell de l'utilisateur lors du démarrage précédent.]{#kernel-location-shell-history explanation="Les images de noyau n'embarquent pas l'historique personnel des commandes."}
+:::
 
-### Gestion des Fichiers du Noyau
+## Système de fichiers RAM initial et métadonnées de construction
 
-Avec le temps, votre répertoire `/boot` peut se remplir de fichiers provenant d'anciens noyaux. Si vous manquez d'espace, vous pouvez supprimer les fichiers des anciennes versions inutilisées. La manière la plus sûre de le faire est d'utiliser le gestionnaire de paquets de votre distribution (comme `apt` ou `dnf`). Supprimer manuellement des fichiers peut être risqué, soyez donc extrêmement prudent de ne pas supprimer les fichiers du noyau que vous utilisez actuellement.
+L'initramfs doit contenir les modules et outils précoces requis par le noyau correspondant et la conception du stockage racine. La concordance du nom de fichier ne suffit pas : une génération obsolète ou défaillante peut tout de même produire une entrée impossible à démarrer.
 
-## Exercise
+`config-*` aide à déterminer les fonctionnalités intégrées, modulaires ou omises. `System.map-*` peut aider à la symbolisation et au débogage, mais la randomisation des adresses, les informations de débogage séparées et les outils de la distribution influencent son utilisation. Ces fichiers sont des artefacts auxiliaires, pas d'autres noyaux.
 
-Appliquez vos connaissances avec ce laboratoire pratique pour renforcer votre compréhension du processus de démarrage Linux et de la gestion du noyau :
+:::single-choice{#kernel-location-initramfs-match} Pourquoi un initramfs est-il lié à une version précise du noyau et à la configuration du système ?
 
-1. **[Personnaliser le menu de démarrage GRUB2 sous Linux](https://labex.io/fr/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Entraînez-vous à modifier la configuration GRUB2, ce qui a un impact direct sur la manière dont votre système Linux démarre et sélectionne les versions du noyau. Ce laboratoire vous aidera à comprendre les implications pratiques des fichiers discutés dans le répertoire `/boot`.
+::option[Il stocke définitivement le contenu de chaque système de fichiers monté.]{#kernel-location-all-filesystems explanation="Un initramfs est un petit environnement de démarrage précoce, pas une sauvegarde complète du système."}
+::option[Il attribue de nouveaux UID aux utilisateurs à chaque démarrage.]{#kernel-location-user-ids explanation="La gestion des identités de comptes ne relève pas de son rôle normal."}
+::option[Il contient les modules et outils précoces nécessaires à cette voie de démarrage.]{#kernel-location-early-modules .correct explanation="L'ABI des modules et les composants nécessaires à l'assemblage du stockage doivent correspondre au noyau sélectionné."}
+:::
 
-Ce laboratoire vous aidera à appliquer ces concepts dans un scénario réel et à gagner en confiance avec la gestion du noyau et du démarrage Linux.
+## Modules versionnés du noyau
 
-## Quiz Question
+Les modules chargeables de la version active résident couramment sous :
 
-Dans le répertoire `/boot`, quel est le nom typique du fichier image du noyau Linux compressé ? Veuillez répondre en anglais, en faisant attention à la sensibilité de la casse.
+```bash
+$ printf '/lib/modules/%s\n' "$(uname -r)"
+```
 
-## Quiz Answer
+Dans les organisations de systèmes de fichiers fusionnées, ce chemin peut se résoudre vers `/usr/lib/modules/VERSION_DU_NOYAU`. Chaque noyau installé a besoin d'une arborescence de modules compatible et d'index de dépendances. `modprobe` emploie des métadonnées propres à la version au lieu de rechercher des fichiers `.ko` arbitraires sur le disque.
 
-vmlinuz
+:::single-choice{#kernel-location-module-tree} Quel répertoire contient conventionnellement les modules de la version active du noyau ?
+
+::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="Les répertoires personnels ne sont pas l'arborescence standard des modules système."}
+::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="Le composant de version sépare l'ABI des modules et les données de dépendances de chaque noyau installé."}
+::option[`/proc/modules/files/`]{#kernel-location-proc-files explanation="`/proc/modules` signale les modules chargés et n'est pas un répertoire de binaires de modules."}
+:::
+
+## Images unifiées du noyau et chemins du micrologiciel
+
+Une Unified Kernel Image, ou UKI, est un seul exécutable EFI signé qui peut réunir un noyau, un initrd, une ligne de commande et des métadonnées. Les UKI sont généralement conservées dans un emplacement de démarrage accessible à EFI plutôt que représentées par des fichiers `vmlinuz` et initramfs séparés.
+
+Une organisation traditionnelle de `/boot` apparemment vide ne prouve donc pas qu'aucun noyau n'est installé. Employez `findmnt`, la base des paquets, les outils du gestionnaire de démarrage et la configuration du chargeur afin de cartographier les artefacts actifs.
+
+:::single-choice{#kernel-location-uki} Que peut réunir une Unified Kernel Image ?
+
+::option[Tous les répertoires personnels dans un en-tête GPT.]{#kernel-location-uki-homes explanation="Une UKI est un exécutable de démarrage, pas un conteneur de données utilisateur ni une table de partitions."}
+::option[Chaque paquet installé dans un unique script shell.]{#kernel-location-uki-packages explanation="Elle regroupe les composants de démarrage, pas tout le dépôt du système d'exploitation."}
+::option[Le noyau, l'initrd, la ligne de commande et des métadonnées dans un exécutable EFI.]{#kernel-location-uki-components .correct explanation="L'artefact combiné peut participer à une chaîne d'amorçage UEFI signée."}
+:::
+
+## Gérer l'espace sans risque
+
+Si le système de fichiers de démarrage est plein, cartographiez d'abord les chemins montés et déterminez par la base des paquets le propriétaire de chaque artefact. Employez la méthode de nettoyage des noyaux du gestionnaire de paquets, conservez le noyau actif et une solution de repli connue, régénérez ou examinez les entrées d'amorçage, puis vérifiez l'espace libre.
+
+Ne supprimez pas manuellement des fichiers `vmlinuz`, initramfs, UKI ou des arborescences de modules en vous fondant seulement sur leur ancienneté. Un fichier peut être la seule entrée de récupération amorçable même s'il n'est pas actuellement actif.
+
+## Résumé
+
+Vous savez maintenant relier un paquet de noyau à ses artefacts de démarrage et de modules.
+
+1. Examiner les montages réels de `/boot` et liés à EFI.
+2. Distinguer image du noyau, initramfs, configuration et carte des symboles.
+3. Faire correspondre les arborescences de modules à la version exacte du noyau.
+4. Tenir compte des Unified Kernel Images et des organisations propres aux distributions.
+5. Ne récupérer l'espace de démarrage qu'avec un plan vérifié de paquets et de repli.

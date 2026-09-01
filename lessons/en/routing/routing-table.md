@@ -1,68 +1,100 @@
 ---
-index: 2
+lesson_id: "routing-table"
+course_id: "routing"
 lang: "en"
+order_index: 2
 title: "Routing Table"
+description: "Learn how to read Linux routes and inspect the route selected for a destination."
 meta_title: "Routing Table - Routing"
 meta_description: "A guide to understanding the Linux routing table. Learn how to interpret the output of the route command, including destination, gateway, genmask, and the eth0 interface. Master the basics of your Linux route table."
 meta_keywords: "linux routing table, linux route table, genmask, eth0, route command, network routing, IP routing, destination, gateway, subnet mask, linux networking"
 ---
 
-## Lesson Content
+Linux routing state determines which next hop, interface, and source are eligible for an IP destination. The legacy `route -n` view is still encountered, but `ip route` exposes modern kernel routing concepts more directly.
 
-The **Linux routing table** holds the rules that determine where network packets are sent. Every time your system needs to send a packet to an IP address, it consults this table to find the appropriate path. To view your machine's **Linux route table**, you can use the `route` command.
+## Reading IPv4 Routes
 
-```plaintext
-pete@icebox:~$ sudo route -n
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         192.168.224.2   0.0.0.0         UG    0      0        0 eth0
-192.168.224.0   0.0.0.0         255.255.255.0   U     1      0        0 eth0
+Example output can look like:
+
+```text
+$ ip -4 route show
+default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
+192.168.224.0/24 dev eth0 proto kernel scope link src 192.168.224.10 metric 100
 ```
 
-### Understanding the Columns
+The connected `/24` route sends matching destinations directly through `eth0`. The default uses next-hop gateway `192.168.224.2`. `proto` describes how the route was installed, `src` is a preferred source for matching traffic, and a metric helps rank otherwise comparable routes.
 
-The output of the `route` command is organized into several columns, each providing specific information about a network route.
+:::single-choice{#routing-table-via-meaning} What does `via 192.168.224.2` indicate?
 
-### Destination
+::option[The only application allowed to use the route.]{#routing-table-application explanation="Application authorization is not encoded by the `via` keyword."}
+::option[The next-hop gateway for the route.]{#routing-table-next-hop .correct explanation="The packet is framed to that on-link router while retaining its IP destination."}
+::option[The route's filesystem mount point.]{#routing-table-mount explanation="Routing entries concern network forwarding, not filesystems."}
+:::
 
-The Destination column specifies a network or a host. The entry `192.168.224.0` directs all packets intended for that specific network. If a packet's destination is within this network (e.g., from 192.168.224.5 to 192.168.224.7), it is sent directly through the specified interface, such as `eth0`.
+## Connected and Default Routes
 
-The destination `0.0.0.0` is the default route. If the routing table does not have a more specific entry for a packet's destination, it uses this route.
+A route with `scope link` and no `via` next hop treats the prefix as directly reachable on the interface. A default route matches every address but loses to any eligible more-specific route.
 
-### Gateway
+:::single-choice{#routing-table-connected-route} How is a connected `scope link` destination normally reached?
 
-The Gateway column shows the router to which packets are sent. If a packet is not on the same local network, it is forwarded to this gateway address. For the default route, this is the IP address of the router that connects your local network to other networks, like the internet.
+::option[Through the default gateway even when a connected route matches.]{#routing-table-connected-default explanation="The connected prefix is more specific and has no gateway operand."}
+::option[By converting the destination into a DNS server.]{#routing-table-connected-dns explanation="Name service is not part of an already selected IP route."}
+::option[Directly through the named interface after neighbor resolution.]{#routing-table-direct .correct explanation="The host resolves the destination's on-link address and frames traffic locally."}
+:::
 
-### Genmask
+## Prefix Length and Metric
 
-The `genmask`, or generation mask, is the subnet mask for the destination network. It is used with the destination IP to determine if a packet belongs to that network. For example, a `genmask` of `255.255.255.0` means the first three octets of the IP address must match the destination's first three octets.
+Route selection considers policy rules and chooses the longest eligible prefix. Metrics rank routes within appropriate comparable sets; a low-metric default does not override a matching `/24` merely because its number is lower.
 
-### Flags
+:::single-choice{#routing-table-prefix-before-default} Which route normally matches `192.168.224.50` more specifically?
 
-These flags provide additional information about the route:
+::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="The 24-bit matching prefix is longest among the listed routes."}
+::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="The default has prefix length zero."}
+::option[`192.168.0.0/16 via 192.168.224.3`]{#routing-table-sixteen explanation="This covers the address but fixes fewer bits than `/24`."}
+:::
 
-- **U**: Indicates the route is up and active.
-- **G**: Signifies that the route is to a gateway (router).
-- **UG**: Means the route is active and points to a gateway.
+## Policy Rules and Multiple Tables
 
-### Iface
+Linux can consult several routing tables according to `ip rule` policy based on source, mark, interface, or other selectors. Viewing only the main table can therefore miss the actual path:
 
-This column indicates the network interface, like `eth0`, that packets for this route will be sent through. `eth0` typically represents the first Ethernet adapter on your system.
+```bash
+$ ip rule show
+$ ip route show table all
+```
 
-## Exercise
+Network namespaces and VRFs can hold separate state as well. Run inspection in the same context as the affected process.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and IP addressing:
+:::single-choice{#routing-table-policy-limit} Why might `ip route show` alone not explain an application's path?
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IP addresses and network interfaces, which are key components of a routing table.
-2. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to manage IP addressing, configure static IPs, set default gateways, and verify network configurations, directly relating to the entries found in a routing table.
-3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore IP addressing and network reachability using `ping` and `ip a`, helping you understand how different IP types interact and how network reachability is determined, which is reflected in routing decisions.
+::option[Policy rules or another network namespace can select different routing state.]{#routing-table-policy-context .correct explanation="The effective lookup depends on packet attributes and the process's network context."}
+::option[Linux routing tables contain no destination prefixes.]{#routing-table-no-prefixes explanation="Destination prefixes are fundamental route keys."}
+::option[Applications never send IP packets.]{#routing-table-apps-never explanation="Application traffic is carried through network and transport protocols."}
+:::
 
-These labs will help you apply the concepts in real scenarios and build confidence with network configuration and troubleshooting.
+## Querying an Effective Route
 
-## Quiz Question
+Ask the kernel to evaluate a destination and optional source:
 
-If a destination is not found in the routing table, where are the packets sent? Please answer with a single English word, paying attention to capitalization.
+```bash
+$ ip route get 203.0.113.10
+$ ip route get 203.0.113.10 from 192.168.224.10
+```
 
-## Quiz Answer
+The result predicts the local lookup at that moment. It does not send a probe or prove neighbor, downstream, firewall, or application reachability.
 
-Gateway
+:::single-choice{#routing-table-route-get-limit} What does `ip route get` not do?
+
+::option[Display the chosen local interface and next hop.]{#routing-table-get-does-interface explanation="Those are primary fields in the lookup result."}
+::option[Evaluate current local route policy for a destination.]{#routing-table-get-does-policy explanation="The command performs a kernel route lookup."}
+::option[Prove successful delivery through every downstream hop.]{#routing-table-get-not-probe .correct explanation="It is a local decision query rather than an end-to-end network probe."}
+:::
+
+## Summary
+
+You can now read Linux routing entries and query the effective local decision.
+
+1. Distinguish connected routes from routes through a gateway.
+2. Read prefix, interface, protocol, source, and metric fields.
+3. Apply longest-prefix matching before comparing relevant metrics.
+4. Account for policy tables, namespaces, and VRFs.
+5. Treat `ip route get` as a lookup, not a reachability test.

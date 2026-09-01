@@ -1,46 +1,80 @@
 ---
-index: 3
+lesson_id: "dns-process"
+course_id: "dns"
 lang: "es"
-title: "Proceso DNS"
-meta_title: "Proceso DNS - DNS"
-meta_description: "Explore el proceso de resolución DNS paso a paso, desde los servidores raíz hasta el servidor DNS autoritativo. Comprenda cómo un servidor Linux encuentra un dominio, un concepto crucial para entornos de producción y alojamiento de dominios."
-meta_keywords: "proceso DNS, búsqueda DNS, resolución de dominio, dns linux, servidor de producción, alojamiento de dominios, servidor dns, TLD, servidores raíz, dns autoritativo"
+order_index: 3
+title: "Proceso de DNS"
+description: "Aprende cómo un resolver stub y uno recursivo utilizan la caché, las referencias, los registros glue y la autoridad para responder una consulta DNS."
+meta_title: "Proceso de DNS - DNS"
+meta_description: "Explora paso a paso el proceso de resolución DNS, desde los servidores raíz hasta el servidor autoritativo. Comprende cómo encuentra un dominio un servidor Linux, un concepto esencial en producción."
+meta_keywords: "proceso DNS, consulta DNS, resolución de dominios, dns linux, servidor de producción, alojamiento de dominios, servidor dns, TLD, servidores raíz, dns autoritativo"
 ---
 
-## Lesson Content
+Una aplicación normal consulta el resolver stub del sistema operativo, que aplica la política local de servicios de nombres y envía una consulta recursiva a un resolver configurado. El resolver recursivo solo recorre la jerarquía cuando no existe una respuesta válida en caché.
 
-Exploremos cómo una computadora, como un `servidor Linux`, encuentra un `dominio` como `catzontheinterwebz.com` usando DNS. El proceso funciona como un embudo, reduciendo la búsqueda hasta que llegamos al `servidor DNS` específico que tiene la respuesta.
+## Comenzar por la política local y la caché
 
-### La Consulta Inicial
+El resolver del sistema puede consultar `/etc/hosts`, DNS y otras fuentes en el orden configurado. Los sufijos de búsqueda pueden transformar un nombre corto en varios nombres candidatos. Después, un resolver recursivo comprueba las entradas positivas y negativas de la caché antes de enviar tráfico hacia servidores superiores.
 
-Primero, su host le pregunta a su servidor DNS recursivo configurado: "¿Dónde está `catzontheinterwebz.com`?". Este servidor recursivo, a menudo proporcionado por su ISP, probablemente no conoce la respuesta directamente. Por lo tanto, comienza el proceso de resolución contactando a la autoridad más alta: los Servidores Raíz. Este paso inicial es el mismo si está navegando desde casa o si un `servidor de producción` se está comunicando con una API.
+:::single-choice{#dns-process-cache-first} ¿Por qué puede un resolver recursivo no contactar con ningún servidor autoritativo para una consulta?
 
-### Servidores Raíz
+::option[DNS exige que todas las consultas fallen primero de forma local.]{#dns-process-requires-failure explanation="Un resolver puede responder inmediatamente desde la caché."}
+::option[Tiene una respuesta en caché que sigue siendo válida.]{#dns-process-valid-cache .correct explanation="La caché evita repetir el recorrido de la jerarquía hasta que caduca la duración del registro."}
+::option[Los servidores autoritativos solo aceptan tramas Ethernet de los clientes.]{#dns-process-authoritative-ethernet explanation="DNS opera mediante transportes IP a través de redes enrutadas."}
+:::
 
-La jerarquía DNS de Internet comienza con 13 Servidores Raíz lógicos, que se replican en cientos de ubicaciones físicas en todo el mundo. Estos servidores no conocen la dirección IP de cada `dominio`, pero saben quién administra los Dominios de Nivel Superior (TLD) como `.com`, `.org` y `.net`. Cuando se le pregunta sobre `catzontheinterwebz.com`, un Servidor Raíz responderá: "No lo sé, pero deberías preguntarle al servidor TLD de `.com`", y proporcionará su dirección IP.
+## Consultar un servidor raíz
 
-### Servidores de Dominio de Nivel Superior
+Cuando no hay una entrada en caché, un resolver recursivo puede consultar un servidor raíz. La raíz DNS tiene 13 identidades de servidores con nombre, de la A a la M, atendidas por muchas instancias físicas mediante anycast y otras técnicas de implantación resistentes. La respuesta suele remitir al resolver a los servidores autoritativos del dominio de nivel superior pertinente en lugar de devolver la dirección final del host.
 
-A continuación, el servidor recursivo envía una nueva consulta al servidor TLD de `.com`, preguntando nuevamente por la ubicación de `catzontheinterwebz.com`. El trabajo del servidor TLD es señalar los servidores de nombres autoritativos correctos para ese `dominio` específico. No tiene la dirección IP final, pero sabe qué `servidor DNS` es responsable del `dominio`, un detalle a menudo configurado a través de su proveedor de `alojamiento de dominios`. El servidor TLD responde con la dirección IP de ese servidor de nombres autoritativo.
+:::single-choice{#dns-process-root-response} ¿Qué devuelve normalmente un servidor raíz para una consulta sin caché de `www.example.com`?
 
-### Servidor DNS Autoritativo
+::option[Una referencia hacia los servidores del dominio de nivel superior `com`.]{#dns-process-root-referral .correct explanation="La jerarquía delega la responsabilidad en lugar de almacenar todos los registros finales de hosts en la raíz."}
+::option[La página web alojada en `www.example.com`.]{#dns-process-root-webpage explanation="DNS devuelve datos de registros de recursos, no contenido de aplicaciones."}
+::option[La dirección MAC Ethernet del destino.]{#dns-process-root-mac explanation="Las direcciones MAC se resuelven en enlaces locales, no mediante la jerarquía DNS."}
+:::
 
-Finalmente, el servidor recursivo envía una última solicitud al `servidor DNS` autoritativo. Este es el servidor que contiene los registros DNS reales para el `dominio` `catzontheinterwebz.com`. Este servidor verifica sus registros, encuentra el registro 'A' para el host y devuelve la dirección IP final. Este es un paso crítico para cualquiera que ponga en línea un sitio web o aplicación, ya que este servidor proporciona el enlace definitivo entre el nombre de `dominio` y la dirección IP del `servidor de producción`. Con la dirección IP en mano, su computadora ahora puede conectarse y recuperar el contenido.
+## Seguir referencias TLD y autoritativas
 
-## Exercise
+El resolver consulta un servidor autoritativo de `com`, que devuelve los servidores de nombres autoritativos delegados para `example.com`. La referencia puede incluir registros de dirección glue cuando sean necesarios para llegar a un servidor cuyo nombre se encuentre dentro de la zona hija delegada. Después, el resolver consulta a un servidor autoritativo el registro solicitado.
 
-¡La práctica hace la perfección! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la resolución y gestión de DNS:
+:::single-choice{#dns-process-glue-purpose} ¿Qué problema ayudan a resolver los registros glue de DNS?
 
-1. **[Consultar Registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a consultar registros DNS como A, PTR y MX, e identifique su servidor DNS predeterminado, esencial para la solución de problemas de red.
-2. **[Configurar un Servidor DNS Autoritativo Local en Linux](https://labex.io/es/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Obtenga experiencia práctica instalando y configurando un servidor DNS autoritativo local, definiendo zonas y probando la resolución DNS.
-3. **[Administrar la Resolución de Nombres de Host Locales en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practique la gestión de la resolución de nombres de host locales editando el archivo `/etc/hosts`, una habilidad clave para el desarrollo web y las pruebas de red.
+::option[Cifrar las cargas útiles HTTP después de la resolución DNS.]{#dns-process-glue-http explanation="TLS u otros mecanismos de seguridad de aplicaciones se ocupan del cifrado de la carga útil."}
+::option[Elegir el puerto más rápido de un conmutador Ethernet.]{#dns-process-glue-switch explanation="Glue contiene datos de direcciones de delegación, no políticas de reenvío del enlace."}
+::option[Llegar a un servidor incluido en la propia zona sin una resolución circular.]{#dns-process-glue-reachability .correct explanation="El padre proporciona los datos de dirección necesarios para contactar con un servidor cuyo nombre está dentro de la zona hija."}
+:::
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con DNS.
+## Seguir alias y tipos de registros
 
-## Quiz Question
+Una respuesta puede contener un alias CNAME que exija consultar otro nombre o registros específicos de una aplicación que conduzcan a más consultas. Solicitar `A` solo devuelve registros de direcciones IPv4 y los datos relacionados de la cadena; una consulta independiente `AAAA` obtiene direcciones IPv6. La respuesta final contiene un estado como `NOERROR`, `NXDOMAIN` o `SERVFAIL`, cada uno con un significado distinto.
 
-¿Cuál es la abreviatura de los servidores de nombres donde se encuentran las direcciones .com, .net, .org, etc.? Responda usando solo letras mayúsculas en inglés.
+:::single-choice{#dns-process-nxdomain-meaning} ¿Qué informa `NXDOMAIN`?
 
-## Quiz Answer
+::option[Que el nombre de dominio consultado no existe según un resultado autoritativo.]{#dns-process-name-does-not-exist .correct explanation="Esto difiere de un nombre existente que simplemente carezca del tipo de registro solicitado."}
+::option[Que el nombre existe y siempre tiene un registro A vacío.]{#dns-process-empty-a explanation="Un nombre existente sin los datos solicitados normalmente produce una respuesta sin datos, no NXDOMAIN."}
+::option[Que el resolver alcanzó el tamaño máximo de una trama Ethernet.]{#dns-process-frame-size explanation="El estado se refiere a la existencia del nombre."}
+:::
 
-TLD
+## Validación, caché y uso por la aplicación
+
+Un resolver recursivo validador puede utilizar firmas DNSSEC y la cadena de confianza para comprobar una denegación autenticada o la integridad de los registros. DNSSEC no cifra las consultas ni demuestra que la aplicación de la dirección devuelta sea de confianza.
+
+El resolver almacena los resultados en caché según las reglas de TTL y los devuelve al stub. La aplicación elige después una dirección e intenta utilizar sus propios protocolos de red y seguridad.
+
+:::single-choice{#dns-process-dnssec-limit} ¿Qué no proporciona la validación DNSSEC?
+
+::option[Integridad y autenticación del origen de los datos DNS firmados.]{#dns-process-dnssec-does-integrity explanation="Esos son objetivos esenciales de DNSSEC."}
+::option[Denegación autenticada para datos inexistentes firmados.]{#dns-process-authenticated-denial explanation="Los mecanismos de denegación firmada pueden proporcionar esa validación."}
+::option[Confidencialidad para la consulta y la respuesta DNS.]{#dns-process-no-confidentiality .correct explanation="El cifrado requiere un transporte DNS protegido independiente, como DoT o DoH."}
+:::
+
+## Resumen
+
+Ahora puedes seguir una consulta DNS recursiva desde la política local hasta una respuesta final en caché.
+
+1. Comprueba primero las fuentes locales y la caché del resolver.
+2. Sigue las referencias de la raíz y del dominio de nivel superior.
+3. Utiliza glue para llegar a los servidores delegados apropiados.
+4. Distingue los alias, las respuestas sin datos y los nombres inexistentes.
+5. Separa la integridad DNSSEC de la confidencialidad del transporte.

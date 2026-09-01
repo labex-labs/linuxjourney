@@ -1,62 +1,91 @@
 ---
-index: 8
+lesson_id: "sticky-bit"
+course_id: "permissions"
 lang: "pt"
-title: "O Bit Pegajoso"
-meta_title: "O Bit Pegajoso - Permissões"
-meta_description: "Explore a finalidade do bit pegajoso nas permissões de arquivos Linux e Unix. Aprenda como o bit pegajoso protege arquivos em diretórios compartilhados como /tmp e como configurá-lo usando chmod."
-meta_keywords: "bit pegajoso, bit pegajoso linux, permissões de arquivo unix bit pegajoso, chmod +t, diretório /tmp, permissões de arquivo, segurança linux"
+order_index: 8
+title: "O Sticky Bit"
+description: "Aprenda como o sticky bit protege entradas em diretórios compartilhados com permissão de escrita, como `/tmp`."
+meta_title: "O Sticky Bit - Permissões"
+meta_description: "Conheça a finalidade do sticky bit nas permissões de arquivos Linux e Unix. Aprenda como ele protege arquivos em diretórios compartilhados, como /tmp, e como defini-lo com chmod."
+meta_keywords: "sticky bit, sticky bit Linux, sticky bit permissões de arquivos Unix, chmod +t, diretório /tmp, permissões de arquivos, segurança Linux"
 ---
 
-## Lesson Content
+Um diretório com permissão de escrita normalmente permite que um usuário autorizado remova ou renomeie as entradas contidas nele, mesmo quando esse usuário não é proprietário dos próprios arquivos. O sticky bit acrescenta uma restrição de propriedade que torna diretórios compartilhados com permissão de escrita mais seguros.
 
-Além das permissões padrão de leitura, gravação e execução, o Linux oferece permissões especiais para controle de acesso avançado. A última dessas permissões especiais que abordaremos é o **sticky bit** (bit pegajoso).
+## Como o Sticky Bit Restringe a Remoção
 
-### O que é o Sticky Bit?
+Quando um diretório possui o sticky bit, o Linux geralmente permite que uma entrada seja removida ou renomeada apenas por um processo com privilégios adequados, pelo proprietário do diretório ou pelo proprietário da entrada. As permissões comuns de escrita e busca no diretório ainda são necessárias.
 
-O sticky bit é uma configuração de permissão que pode ser aplicada a um diretório. Quando o sticky bit está definido em um diretório, os arquivos dentro desse diretório só podem ser excluídos ou renomeados pelo proprietário do arquivo, pelo proprietário do diretório ou pelo usuário root. Isso é particularmente útil para diretórios compartilhados onde vários usuários precisam criar e gerenciar seus próprios arquivos sem interferir nos outros. Este conceito é uma parte fundamental do gerenciamento de **permissões de arquivo Unix sticky bit**.
+A restrição diz respeito às entradas do diretório. Ela não impede que o proprietário de um arquivo edite seu conteúdo quando as permissões do arquivo permitem essa operação, nem torna o diretório privado.
 
-### Um Exemplo Prático: O Diretório /tmp
+:::single-choice{#sticky-bit-removal-rule} Em um diretório compartilhado com sticky bit, qual usuário comum normalmente pode remover uma determinada entrada?
 
-Um caso de uso comum para o **sticky bit no Linux** é o diretório `/tmp`, que é um local gravável por todos para arquivos temporários. Vamos examinar suas permissões:
+::option[Qualquer usuário que consiga listar o diretório.]{#sticky-bit-any-reader explanation="A permissão de leitura do diretório pode revelar nomes, mas não ignora a restrição de propriedade do sticky bit."}
+::option[O proprietário da entrada, com o acesso necessário ao diretório.]{#sticky-bit-entry-owner .correct explanation="O proprietário da entrada é uma das identidades normalmente permitidas pela regra do diretório com sticky bit."}
+::option[Somente um membro do grupo da entrada.]{#sticky-bit-entry-group explanation="A associação ao grupo, por si só, não é a exceção de propriedade definida pelo sticky bit."}
+:::
+
+## Reconhecimento do Bit em `/tmp`
+
+O diretório temporário do sistema é um exemplo comum:
 
 ```bash
 $ ls -ld /tmp
-drwxrwxrwt 17 root root 4096 Dez 15 11:45 /tmp
+drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 ```
 
-Note o `t` no final da string de permissão (`rwxrwxrwt`). Este `t` indica que o sticky bit está definido. Por causa disso, embora qualquer usuário possa criar arquivos em `/tmp`, eles não podem excluir ou mover arquivos criados por outros usuários. Isso impede que um usuário perturbe o trabalho de outro neste espaço compartilhado.
+O `t` minúsculo final ocupa a posição de execução dos outros. Ele significa que tanto o sticky bit quanto a permissão de execução dos outros estão presentes. Um `T` maiúsculo significa que o sticky bit está definido, mas a permissão de execução dos outros está ausente.
 
-### Como Definir o Sticky Bit
+Como `/tmp` normalmente permite escrita e busca para todos, vários usuários podem criar entradas nele. O sticky bit impede que um usuário comum remova as entradas de outro usuário apenas porque o diretório permite escrita para todos. As aplicações ainda devem criar objetos temporários com segurança, pois nomes previsíveis, links inseguros e modos de arquivos fracos geram riscos separados.
 
-Você pode definir o sticky bit usando o comando `chmod` de duas maneiras: modo simbólico ou modo octal (numérico).
+:::single-choice{#sticky-bit-lowercase-t} O que um `t` minúsculo no final do modo de um diretório indica?
 
-Para adicionar o sticky bit usando o modo simbólico:
+::option[O sticky bit e a execução dos outros estão definidos.]{#sticky-bit-t-with-execute .correct explanation="O `t` minúsculo combina o bit especial sticky com o bit comum de execução dos outros."}
+::option[O sticky bit está definido, mas a execução dos outros está ausente.]{#sticky-bit-t-without-execute explanation="Essa combinação é mostrada como `T` maiúsculo."}
+::option[O setgid e a execução do grupo estão definidos.]{#sticky-bit-setgid-position explanation="O setgid aparece na posição de execução do grupo, não na posição final dos outros."}
+:::
+
+## Definição e Remoção do Sticky Bit
+
+Defina o bit simbolicamente:
 
 ```bash
-chmod +t meu_dir_compartilhado
+$ chmod +t shared-directory
 ```
 
-Para definir permissões usando o modo octal, você antepõe um `1` ao código de permissão padrão de três dígitos. A representação numérica para o sticky bit é **1**.
+Em um dígito octal inicial de bits especiais, o sticky contribui com `1`:
 
 ```bash
-# Isso define as permissões como rwxr-xr-x com o sticky bit
-chmod 1755 meu_dir_compartilhado
+$ chmod 1777 shared-directory
 ```
 
-Compreender o sticky bit é essencial para gerenciar ambientes multiusuário e proteger diretórios compartilhados de forma eficaz.
+O `1` inicial define o sticky, enquanto `777` fornece o modo comum. Esse modo é apropriado somente quando o diretório é compartilhado intencionalmente por todos os usuários locais. Para um diretório de equipe, permissões de grupo mais restritas podem ser preferíveis. Remova somente o sticky bit com `chmod -t shared-directory`.
 
-## Exercise
+:::single-choice{#sticky-bit-octal-value} Qual valor octal inicial representa o sticky bit?
 
-Para solidificar sua compreensão das permissões de arquivo, incluindo permissões especiais como o sticky bit, experimente estes laboratórios práticos. Eles ajudarão você a ver como esses conceitos se aplicam em cenários do mundo real.
+::option[`2`]{#sticky-bit-value-two explanation="Um `2` inicial representa o setgid."}
+::option[`1`]{#sticky-bit-value-one .correct explanation="O sticky bit contribui com `1` para o dígito inicial de bits especiais."}
+::option[`4`]{#sticky-bit-value-four explanation="Um `4` inicial representa o setuid."}
+:::
 
-1. **[Grupo de Usuários Linux e Permissões de Arquivo](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Pratique a criação de usuários e grupos e a manipulação da propriedade e permissões de arquivos. Este laboratório fornece uma base para entender como as permissões especiais funcionam.
-2. **[Excluir e Mover Arquivos](https://labex.io/pt/labs/linux-delete-and-move-files-7777)** - Aprenda a excluir e mover arquivos e veja como as permissões, incluindo o sticky bit em um diretório, podem restringir essas ações.
-3. **[Encontrar um Arquivo](https://labex.io/pt/labs/linux-find-a-file-17993)** - Pratique a localização de arquivos e a definição de controles de acesso, reforçando a importância das permissões de arquivo no gerenciamento do acesso e modificação de arquivos.
+## Verificação da Política Completa do Diretório
 
-## Quiz Question
+O sticky não concede acesso de escrita nem de busca; ele apenas restringe a remoção e a renomeação depois que as permissões comuns permitem modificar o diretório. Verifique em conjunto o proprietário, o grupo, o modo comum, as ACLs e o contexto de montagem do diretório. Teste com contas sem privilégios em um ambiente isolado, em vez de alterar `/tmp` em um sistema em uso.
 
-Em uma listagem longa de diretório (ls -l), qual caractere único na string de permissões representa que o sticky bit está definido? Por favor, responda com uma única letra minúscula em inglês.
+:::single-choice{#sticky-bit-access-scope} Adicionar o sticky bit torna um diretório sem permissão de escrita gravável por outros usuários?
 
-## Quiz Answer
+::option[Sim; o sticky adiciona automaticamente a escrita para todas as classes.]{#sticky-bit-adds-write explanation="O bit especial não reescreve os bits de escrita do proprietário, do grupo nem dos outros."}
+::option[Sim; o sticky desabilita o trio de permissões dos outros no diretório.]{#sticky-bit-disables-other explanation="O trio dos outros continua participando das verificações normais de acesso."}
+::option[Não; as permissões comuns de escrita e busca ainda controlam o acesso.]{#sticky-bit-no-write-grant .correct explanation="O sticky restringe determinadas operações de remoção e renomeação, mas não adiciona permissões comuns ausentes."}
+:::
 
-t
+Para praticar, crie um diretório compartilhado descartável, defina um modo comum apropriado e o sticky bit e teste a remoção de entradas com dois usuários sem privilégios. O laboratório [Exclusão e Movimentação de Arquivos](https://labex.io/labs/linux-delete-and-move-files-7777) pode reforçar as operações básicas de renomeação e exclusão.
+
+## Resumo
+
+Agora você sabe explicar e verificar o sticky bit em diretórios compartilhados.
+
+1. Relacione o sticky às restrições de propriedade sobre remoções e renomeações.
+2. Reconheça `t` minúsculo e `T` maiúsculo em uma listagem longa.
+3. Defina o bit simbolicamente ou com o valor octal inicial `1`.
+4. Avalie o sticky junto com as permissões comuns do diretório.
