@@ -1,7 +1,7 @@
 id: packages
 category:
   id: grasshopper
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/packages.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/packages.png
 order_index: 7
 translations:
   en:

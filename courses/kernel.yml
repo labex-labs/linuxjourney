@@ -1,7 +1,7 @@
 id: kernel
 category:
   id: journeyman
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/kernel.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/kernel.png
 order_index: 3
 translations:
   en:

@@ -1,7 +1,7 @@
 id: network-sharing
 category:
   id: networking-nomad
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/network-sharing.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/network-sharing.png
 order_index: 0
 translations:
   en:

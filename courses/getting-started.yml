@@ -1,7 +1,7 @@
 id: getting-started
 category:
   id: grasshopper
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/getting-started.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/getting-started.png
 order_index: 0
 translations:
   en:

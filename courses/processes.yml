@@ -1,7 +1,7 @@
 id: processes
 category:
   id: grasshopper
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/processes.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/processes.png
 order_index: 6
 translations:
   en:

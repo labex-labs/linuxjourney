@@ -1,7 +1,7 @@
 id: troubleshooting
 category:
   id: networking-nomad
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/troubleshooting.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/troubleshooting.png
 order_index: 5
 translations:
   en:

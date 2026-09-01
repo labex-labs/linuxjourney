@@ -1,7 +1,7 @@
 id: devices
 category:
   id: journeyman
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/devices.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/devices.png
 order_index: 0
 translations:
   en:

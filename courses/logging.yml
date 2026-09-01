@@ -1,7 +1,7 @@
 id: logging
 category:
   id: journeyman
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/logging.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/logging.png
 order_index: 6
 translations:
   en:
