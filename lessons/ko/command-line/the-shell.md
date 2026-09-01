@@ -88,7 +88,7 @@ Hello from Bash
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="전체 줄을 따옴표로 묶으면 쉘은 `echo`를 실행하는 대신 그 전체 문자열을 명령어 이름으로 찾습니다."}
 :::
 
-이 기술을 연습하려면 종합적인 [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/ko/learn/shell)를 살펴보세요.
+이 기술을 연습하려면 종합적인 [Shell Learning Path](https://labex.io/ko/learn/shell)를 살펴보세요.
 
 ## 초보자를 위한 일반 팁
 

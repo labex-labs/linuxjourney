@@ -88,7 +88,7 @@ Hello from Bash
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="行全体を引用すると、`echo` とテキストに分けず、その全体を名前とするコマンドを探します。"}
 :::
 
-これらのスキルを練習するには、包括的な [![シェル学習パス](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)シェル学習パス](https://labex.io/ja/learn/shell) を利用してください。
+これらのスキルを練習するには、包括的な [シェル学習パス](https://labex.io/ja/learn/shell) を利用してください。
 
 ## 初心者向けのヒント
 

@@ -88,7 +88,7 @@ Anführungszeichen sind hilfreich, wenn die Shell mehrere Wörter als eine zusam
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="Wenn die gesamte Zeile in Anführungszeichen steht, sucht die Shell nach einem Befehl mit diesem vollständigen Namen, statt `echo` mit Text auszuführen."}
 :::
 
-Zum Üben dieser Fähigkeiten kannst du den umfassenden [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/de/learn/shell) durcharbeiten.
+Zum Üben dieser Fähigkeiten kannst du den umfassenden [Shell Learning Path](https://labex.io/de/learn/shell) durcharbeiten.
 
 ## Häufige Tipps für Einsteiger
 
