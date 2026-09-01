@@ -17,17 +17,6 @@ A structured learning path from beginner to advanced Linux administration with t
 - **Journeyman** - System internals
 - **Networking Nomad** - Network administration
 
-The repository is organized as follows:
-
-```plaintext
-├── i18n/          # Language files
-├── lessons/       # Course content by language
-│   ├── en/        # English lessons
-│   ├── zh/        # Chinese lessons
-│   └── ...        # Other languages
-└── README.md
-```
-
 ## Grasshopper
 
 ### Getting Started
