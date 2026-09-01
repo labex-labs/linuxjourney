@@ -1,21 +1,22 @@
-name: Sync Lessons to LabEx
+name: Sync Learning Content to LabEx
 
 on:
   push:
     branches: [master]
     paths:
       - "lessons/**/*.md"
+      - "courses/*.yml"
+      - "courses/*.yaml"
   workflow_dispatch:
     inputs:
       sync_path:
-        description: "Path to a lesson file; all existing language versions are synced. Leave empty to sync every lesson."
-        required: false
-        default: ""
+        description: "Lesson Markdown or course YAML file to sync"
+        required: true
         type: string
 
 jobs:
   sync-lessons:
-    name: Sync LabEx Lessons
+    name: Sync changed learning content
     runs-on: ubuntu-latest
 
     env:
@@ -47,11 +48,11 @@ jobs:
           path: labex-cli
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Checkout linuxjourney (for getting changed files)
+      - name: Checkout linuxjourney
         uses: actions/checkout@v4
         with:
           path: linuxjourney
-          fetch-depth: 2
+          fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
@@ -76,68 +77,75 @@ jobs:
           done
           echo "All required environment variables are set"
 
-      - name: Get changed lesson files
-        id: changed-files
+      - name: Sync changed content to LabEx
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+          SYNC_PATH: ${{ inputs.sync_path }}
         run: |
           cd linuxjourney
 
-          # Get list of changed files
-          if [[ "${{ github.event_name }}" == "push" ]]; then
-            # For push events, compare current commit with previous commit
-            if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
-              CHANGED_FILES=$(git diff --name-only HEAD~1..HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
-            else
-              # If HEAD~1 doesn't exist (first commit), get all lesson files
-              CHANGED_FILES=$(git diff --name-only --diff-filter=A HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
-            fi
-          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && [[ -n "${{ github.event.inputs.sync_path }}" ]]; then
-            # For manual trigger with specified path, use the specified path
-            SYNC_PATH="${{ github.event.inputs.sync_path }}"
-            if [[ -f "$SYNC_PATH" ]] && [[ "$SYNC_PATH" =~ ^lessons/.*\.md$ ]]; then
-              CHANGED_FILES="$SYNC_PATH"
-            else
-              echo "Error: Specified path does not exist or is not a valid lesson document: $SYNC_PATH"
-              echo "Path should start with 'lessons/' and end with '.md'"
+          CONTENT_PATHS=()
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            if [[ "$BASE_SHA" =~ ^0+$ ]]; then
+              echo "Error: Cannot determine an incremental diff for the initial push"
               exit 1
             fi
-          else
-            # For manual trigger without specified path, get all md files in lessons directory
-            CHANGED_FILES=$(find lessons -name "*.md" | tr '\n' ' ')
-          fi
 
-          echo "Changed files: $CHANGED_FILES"
-          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
-
-      - name: Sync changed lessons to LabEx
-        run: |
-          cd labex-cli
-
-          # Get list of changed files
-          CHANGED_FILES="${{ steps.changed-files.outputs.changed_files }}"
-
-          if [ -z "$CHANGED_FILES" ]; then
-            echo "No changed files, skipping sync"
-            exit 0
-          fi
-
-          echo "Starting sync of changed documents to LabEx..."
-          echo "Execution time: $(date)"
-
-          # Build command arguments for Journey v2 batch sync
-          FILE_ARGS=()
-          for file in $CHANGED_FILES; do
-            if [ -f "../linuxjourney/$file" ]; then
-              FILE_ARGS+=(--lessons-path "../linuxjourney/$file")
+            DELETED_PATHS=()
+            while IFS= read -r -d '' file; do
+              DELETED_PATHS+=("$file")
+            done < <(
+              git diff --name-only --diff-filter=D -z "$BASE_SHA" "$HEAD_SHA" -- \
+                'lessons/**/*.md' 'courses/*.yml' 'courses/*.yaml'
+            )
+            if (( ${#DELETED_PATHS[@]} > 0 )); then
+              echo "Error: The sync API does not support deleting content:"
+              printf '  %s\n' "${DELETED_PATHS[@]}"
+              exit 1
             fi
+
+            while IFS= read -r -d '' file; do
+              CONTENT_PATHS+=("$file")
+            done < <(
+              git diff --name-only --diff-filter=ACMRT -z "$BASE_SHA" "$HEAD_SHA" -- \
+                'lessons/**/*.md' 'courses/*.yml' 'courses/*.yaml'
+            )
+          else
+            if [[ ! -f "$SYNC_PATH" ]] || \
+              [[ ! "$SYNC_PATH" =~ ^(lessons/.+\.md|courses/.+\.ya?ml)$ ]]; then
+              echo "Error: Specify an existing Lesson Markdown or course YAML file"
+              exit 1
+            fi
+            CONTENT_PATHS+=("$SYNC_PATH")
+          fi
+
+          LESSON_ARGS=()
+          COURSE_ARGS=()
+          for file in "${CONTENT_PATHS[@]}"; do
+            case "$file" in
+              lessons/*.md)
+                LESSON_ARGS+=(--lessons-path "../linuxjourney/$file")
+                ;;
+              courses/*.yml|courses/*.yaml)
+                COURSE_ARGS+=(--courses-path "../linuxjourney/$file")
+                ;;
+            esac
           done
 
-          if [ ${#FILE_ARGS[@]} -eq 0 ]; then
-            echo "No valid files to sync, skipping"
+          if (( ${#LESSON_ARGS[@]} == 0 && ${#COURSE_ARGS[@]} == 0 )); then
+            echo "No changed Learning content, skipping sync"
             exit 0
           fi
 
-          # Sync changed lessons and every existing language version
-          labex lesson sync-v2 --all-langs "${FILE_ARGS[@]}"
+          cd ../labex-cli
+          SYNC_COMMAND=(labex lesson sync-v2)
+          SYNC_COMMAND+=("${COURSE_ARGS[@]}" "${LESSON_ARGS[@]}")
+          if (( ${#LESSON_ARGS[@]} > 0 )); then
+            SYNC_COMMAND+=(--all-langs)
+          fi
+          "${SYNC_COMMAND[@]}"
 
       - name: Notify completion
         run: |
