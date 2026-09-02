@@ -1,76 +1,76 @@
 ---
 lesson_id: "the-shell"
 course_id: "command-line"
-lang: "zh"
+lang: "en"
 order_index: 1
-title: "Shell 介绍"
-description: "了解 Linux shell 是什么，以及系统如何执行命令。"
-meta_title: "Shell - 命令行基础"
-meta_description: "了解什么是 Linux shell，Bash 提示符如何工作，以及如何使用适合初学者的命令行示例运行你的第一个命令。"
-meta_keywords: "linux shell, bash shell, 命令行，linux 终端，shell 提示符，echo 命令，基础 linux 命令"
+title: "The Shell"
+description: "Learn what the Linux shell is and how commands are executed."
+meta_title: "The Shell - Command Line"
+meta_description: "Learn what the Linux shell is, how the Bash prompt works, and how to run your first command with beginner-friendly command line examples."
+meta_keywords: "linux shell, bash shell, command line, linux terminal, shell prompt, echo command, basic linux commands"
 ---
 
-## 什么是 Linux Shell
+## What is the Linux Shell
 
-欢迎开始你的 Linux 之旅！第一步是了解 Linux shell。Shell 是一个程序，它接受你输入的命令，向操作系统请求执行这些命令，然后将结果打印回你的终端。
+Welcome to your Linux journey! The first step is understanding the Linux shell. A shell is a program that accepts commands you type, asks the operating system to run them, and then prints the result back to your terminal.
 
-如果你使用过图形用户界面，你习惯于点击窗口、菜单和按钮。而在命令行中，你输入精确的指令。名为“Terminal”、“Console”或“Konsole”的应用程序通常会为你打开一个 shell 会话。
+If you have used a graphical user interface, you are used to clicking windows, menus, and buttons. In the command line, you type precise instructions instead. Applications named "Terminal", "Console", or "Konsole" usually open a shell session for you.
 
-终端是供你输入内容的窗口或应用程序，而 shell 是运行在终端内部的程序。
+The terminal is the window or app you type into, while the shell is the program running inside it.
 
-Shell 很有用，因为它速度快、可编写脚本，并且几乎在所有 Linux 系统上都可用。随着你学习更多命令，你可以将它们组合起来检查文件、管理目录、搜索文本、安装软件以及自动化重复的工作。
+The shell is useful because it is fast, scriptable, and available on almost every Linux system. As you learn more commands, you can combine them to inspect files, manage directories, search text, install software, and automate repeated work.
 
-:::single-choice{#distinguish-shell-and-terminal} 以下哪项正确描述了终端与 shell 的关系？
+:::single-choice{#distinguish-shell-and-terminal} Which statement correctly describes the relationship between a terminal and a shell?
 
-::option[终端提供窗口，shell 在其中运行。]{#shell-runs-in-terminal .correct explanation="终端是你使用的界面，shell 则是在其中运行并处理命令的程序。"}
-::option[终端接受命令，shell 只显示命令输出。]{#terminal-accepts-commands explanation="这个说法颠倒了二者的职责；终端提供界面，shell 接受并执行命令。"}
-::option[终端和 shell 是同一个程序的两个名称。]{#terminal-equals-shell explanation="二者会协同工作，但并不是同一个程序；终端会打开一个运行 shell 的会话。"}
+::option[The terminal provides the window, while the shell runs inside it.]{#shell-runs-in-terminal .correct explanation="The terminal is the interface you use, and the shell is the command-processing program running inside it."}
+::option[The terminal accepts commands, while the shell only displays their output.]{#terminal-accepts-commands explanation="This reverses their roles. The terminal provides the interface, while the shell accepts and runs commands."}
+::option[The terminal and the shell are two names for the same program.]{#terminal-equals-shell explanation="They work together, but they are not the same program. A terminal opens a session in which a shell runs."}
 :::
 
-## 与 Bash Shell 交互
+## Interacting with the Bash Shell
 
-在本课程中，我们将重点介绍 Bash，全称 Bourne Again Shell。Bash 是最常见的 Linux shell 之一，即使你以后使用 `zsh`、`fish` 或其他 shell，学习 Bash 也是一个很好的基础。
+For this course, we will focus on Bash, short for Bourne Again Shell. Bash is one of the most common Linux shells and is a good foundation even if you later use `zsh`, `fish`, or another shell.
 
-当你打开终端时，会看到 shell 提示符。它的外观可能不同，但通常会显示你的用户名、主机名和当前目录。
+When you open a terminal, you will be greeted by the shell prompt. Its appearance can vary, but it often shows your username, host name, and current directory.
 
 ```plaintext
 pete@icebox:/home/pete $
 ```
 
-`$` 符号表示 shell 已准备好接受你作为普通用户的输入。输入命令时不需要输入这个符号；它是 shell 显示的。如果你看到 `#`，通常表示你以 root 用户身份工作，拥有更高权限但风险也更大。
+The `$` symbol indicates that the shell is ready to accept your input as a normal user. You do not type this symbol when entering commands; it is shown by the shell. If you see `#` instead, you are usually working as the root user, which has more power and more risk.
 
-:::single-choice{#interpret-dollar-prompt} 示例提示符末尾的 `$` 表示什么？
+:::single-choice{#interpret-dollar-prompt} What does the `$` at the end of the example prompt indicate?
 
-::option[shell 正以 root 用户权限运行。]{#root-user-ready explanation="root 提示符通常以 `#` 而不是 `$` 结尾；root 权限更大，风险也更高。"}
-::option[shell 正在等待普通用户输入。]{#normal-user-ready .correct explanation="`$` 表示普通用户提示符，说明 shell 已准备好接收命令。"}
-::option[下一条命令必须以美元符号开头。]{#type-dollar-first explanation="`$` 属于提示符；输入时只需键入其后的命令，不要复制这个符号。"}
+::option[The shell is running with the privileges of the root user.]{#root-user-ready explanation="A root prompt usually ends with `#`, not `$`. Root access carries additional power and risk."}
+::option[The shell is waiting for input from a normal user.]{#normal-user-ready .correct explanation="The `$` marks a normal user prompt and shows that the shell is ready for a command."}
+::option[The next command must begin with a dollar sign.]{#type-dollar-first explanation="The `$` belongs to the prompt. You type the command that follows it, without copying the symbol."}
 :::
 
-命令通常遵循以下模式：
+Commands often follow this pattern:
 
 ```bash
 command options arguments
 ```
 
-例如，在 `echo Hello World` 中，`echo` 是命令，`Hello World` 是传递给它的文本。
+For example, in `echo Hello World`, `echo` is the command and `Hello World` is the text passed to it.
 
-:::single-choice{#identify-command-name} 在 `echo Hello World` 中，哪一部分是命令名？
+:::single-choice{#identify-command-name} In `echo Hello World`, which part is the command name?
 
-::option[`Hello`]{#hello-command explanation="`Hello` 位于命令名之后，是传递给 `echo` 的文本之一。"}
-::option[`World`]{#world-command explanation="`World` 同样是传递给 `echo` 的文本，而不是所执行命令的名称。"}
-::option[`echo`]{#echo-command .correct explanation="`echo` 指定 shell 应运行的程序，后面的单词会作为参数传给它。"}
+::option[`Hello`]{#hello-command explanation="`Hello` comes after the command name, so it is part of the text passed to `echo`."}
+::option[`World`]{#world-command explanation="`World` is also text passed to `echo`, not the name of the command being run."}
+::option[`echo`]{#echo-command .correct explanation="`echo` names the program the shell should run. The words after it are passed to that program as arguments."}
 :::
 
-## 你的第一个 Linux 命令
+## Your First Linux Command
 
-让我们从初学者最基础的 Linux 命令之一开始：`echo`。这个命令会将你提供的文本显示回终端。
+Let's start with one of the most basic Linux commands for beginners: `echo`. This command displays the text you provide back to the terminal.
 
 ```bash
 $ echo Hello World
 Hello World
 ```
 
-试试更多示例：
+Try a few more examples:
 
 ```bash
 $ echo Linux is fun
@@ -79,29 +79,29 @@ $ echo "Hello from Bash"
 Hello from Bash
 ```
 
-当你希望 shell 将多个单词视为一段文本时，使用引号非常有用。
+Quotes are useful when you want the shell to treat several words as one piece of text.
 
-:::single-choice{#group-words-with-quotes} 哪个命令会让 shell 把 `Hello from Bash` 视为一段加引号的文本？
+:::single-choice{#group-words-with-quotes} Which command makes the shell treat `Hello from Bash` as one quoted piece of text?
 
-::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="引号把三个单词组合成一个参数，再传递给 `echo`。"}
-::option[`echo Hello from Bash`]{#unquoted-words explanation="它会显示相同的文字，但由于没有引号，shell 会把三个单词视为不同参数。"}
-::option[`"echo Hello from Bash"`]{#quoted-command explanation="给整行加引号会让 shell 查找具有这一完整名称的命令，而不是运行 `echo` 并向它传入文本。"}
+::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="The quotation marks group the three words into one argument passed to `echo`."}
+::option[`echo Hello from Bash`]{#unquoted-words explanation="This prints the same visible words, but the shell treats them as separate arguments because they are not quoted."}
+::option[`"echo Hello from Bash"`]{#quoted-command explanation="Quoting the entire line makes the shell look for a command with that full name instead of running `echo` with text."}
 :::
 
-要练习这些技能，可以探索完整的 [Shell 学习路径](https://labex.io/zh/learn/shell)。
+To practice these skills, explore the comprehensive [Shell Learning Path](https://labex.io/learn/shell).
 
-## 初学者常见提示
+## Common Beginner Tips
 
-- 按 `Enter` 键运行命令。
-- 使用 `上箭头` 键调出之前的命令。
-- Linux 中命令和文件名区分大小写。
-- 空格很重要。`echo hello` 和 `echohello` 是不同的命令。
-- 如果命令似乎卡住，通常按 `Ctrl-C` 可以取消。
+- Press `Enter` to run a command.
+- Use the `Up Arrow` key to recall a previous command.
+- Commands and filenames are case-sensitive in Linux.
+- Spaces matter. `echo hello` and `echohello` are different.
+- If a command seems stuck, `Ctrl-C` often cancels it.
 
-## 总结
+## Summary
 
-现在，你可以说明 shell 的作用，并与基本的 shell 提示符交互。
+You can now explain the role of a shell and interact with a basic shell prompt.
 
-1. 区分终端和 shell。
-2. 识别命令提示符。
-3. 使用 `echo` 运行简单命令。
+1. Distinguish between a terminal and a shell.
+2. Identify a command prompt.
+3. Run a simple command with `echo`.
