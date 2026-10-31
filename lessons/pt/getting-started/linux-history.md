@@ -16,7 +16,7 @@ Bem-vindo à sua **Jornada Linux**! Se você está pronto para mergulhar no pode
 
 Para entender como o Linux foi criado, precisamos voltar a 1969, quando Ken Thompson e Dennis Ritchie, dos Laboratórios Bell, desenvolveram o sistema operacional UNIX. Mais tarde, ele foi reescrito na linguagem de programação C, o que o tornou portátil e favoreceu sua ampla adoção.
 
-![Linha do tempo do Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+![Linha do tempo do Unix](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/linux-history-timeline.png)
 
 :::single-choice{#understand-unix-portability} Qual foi um resultado importante da reescrita do UNIX em C?
 
@@ -25,7 +25,7 @@ Para entender como o Linux foi criado, precisamos voltar a 1969, quando Ken Thom
 ::option[Ele se tornou um shell de comandos usado apenas nos Laboratórios Bell.]{#unix-became-shell explanation="O UNIX é um sistema operacional, não apenas um shell. Sua reescrita em C favoreceu a adoção fora dos Laboratórios Bell."}
 :::
 
-Mais de uma década depois, Richard Stallman iniciou o projeto GNU. GNU é um acrônimo recursivo de "GNU's Not UNIX", e seu objetivo era criar um sistema operacional semelhante ao UNIX, totalmente livre e de código aberto. O projeto produziu muitos componentes essenciais e a Licença Pública Geral GNU (GPL), mas seu próprio kernel, o GNU Hurd, ainda não estava pronto para uso geral quando o Linux surgiu.
+Em setembro de 1983, Richard Stallman anunciou o projeto GNU; o desenvolvimento começou em janeiro de 1984. GNU é um acrônimo recursivo de "GNU's Not UNIX", e seu objetivo era criar um sistema operacional semelhante ao UNIX, totalmente livre e de código aberto. O projeto produziu muitos componentes essenciais, e a versão 1 da Licença Pública Geral GNU (GPL) foi publicada em fevereiro de 1989. No entanto, seu próprio kernel, o GNU Hurd, ainda não estava pronto para uso geral quando o Linux surgiu.
 
 :::single-choice{#identify-gnu-missing-component} Qual componente importante do GNU ainda não estava pronto quando o Linux surgiu?
 
@@ -47,7 +47,7 @@ O kernel é o componente central de um sistema operacional. Ele atua como uma po
 
 ## O nascimento do kernel Linux
 
-Chegamos então a 1991, quando um estudante finlandês chamado Linus Torvalds começou a desenvolver um novo kernel como projeto pessoal. Esse kernel passou a ser conhecido como kernel Linux. Depois que o Linux foi lançado como software livre, em 1992, ele pôde ser combinado ao sistema GNU quase completo para formar um sistema operacional livre completo, comumente chamado GNU/Linux. Esse marco foi um momento decisivo na **história do Linux**.
+Chegamos então a 1991, quando um estudante finlandês chamado Linus Torvalds começou a desenvolver um novo kernel como projeto pessoal. Esse kernel passou a ser conhecido como kernel Linux. Depois que o Linux foi relançado sob a GNU GPL, em 1992, tornando-se software livre, ele pôde ser combinado ao sistema GNU quase completo para formar um sistema operacional livre completo, comumente chamado GNU/Linux. Esse marco foi um momento decisivo na **história do Linux**.
 
 ![Linus Torvalds em 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 

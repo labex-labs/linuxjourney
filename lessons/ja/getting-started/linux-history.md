@@ -16,7 +16,7 @@ meta_keywords: "Linux の歴史，Linux 入門，UNIX, GNU プロジェクト，
 
 Linux がどのように生まれたかを理解するには、ベル研究所の Ken Thompson と Dennis Ritchie が UNIX オペレーティングシステムを開発した1969年までさかのぼります。UNIX は後に C プログラミング言語で書き直され、移植性が高まったことで広く採用されました。
 
-![UNIX の系譜](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+![UNIX の系譜](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/linux-history-timeline.png)
 
 :::single-choice{#understand-unix-portability} UNIX を C で書き直した重要な結果は何ですか？
 
@@ -25,7 +25,7 @@ Linux がどのように生まれたかを理解するには、ベル研究所�
 ::option[ベル研究所だけで使うコマンドシェルになった。]{#unix-became-shell explanation="UNIX は単なるシェルではなくオペレーティングシステムです。C への書き直しにより、ベル研究所以外にも普及しました。"}
 :::
 
-それから10年以上後、Richard Stallman が GNU プロジェクトを始めました。GNU は「GNU's Not UNIX」の再帰的頭字語で、完全に自由でオープンソースな UNIX 風オペレーティングシステムを作ることが目標でした。プロジェクトは多くの必須コンポーネントと GNU General Public License（GPL）を生み出しましたが、独自のカーネル GNU Hurd は、Linux が利用可能になった時点で一般利用できる状態ではありませんでした。
+1983年9月、Richard Stallman が GNU プロジェクトを発表し、1984年1月に開発が始まりました。GNU は「GNU's Not UNIX」の再帰的頭字語で、完全に自由でオープンソースな UNIX 風オペレーティングシステムを作ることが目標でした。プロジェクトは多くの必須コンポーネントを開発し、1989年2月には GNU General Public License の第1版（GPLv1）が公開されました。しかし、独自のカーネル GNU Hurd は、Linux が利用可能になった時点で一般利用できる状態ではありませんでした。
 
 :::single-choice{#identify-gnu-missing-component} Linux が利用可能になった時点で、準備できていなかった GNU の主要コンポーネントはどれですか？
 
@@ -47,7 +47,7 @@ Linux がどのように生まれたかを理解するには、ベル研究所�
 
 ## Linux カーネルの誕生
 
-1991年、フィンランドの学生 Linus Torvalds が個人プロジェクトとして新しいカーネルの開発を始めました。これが Linux カーネルとなります。Linux が1992年に自由ソフトウェアとして公開されると、ほぼ完成していた GNU システムと組み合わせ、一般に GNU/Linux と呼ばれる完全で自由なオペレーティングシステムを構成できるようになりました。これは **Linux の歴史**における重要な転機です。
+1991年、フィンランドの学生 Linus Torvalds が個人プロジェクトとして新しいカーネルの開発を始めました。これが Linux カーネルとなります。Linux が1992年に GNU GPL の下で再公開され、自由ソフトウェアになると、ほぼ完成していた GNU システムと組み合わせ、一般に GNU/Linux と呼ばれる完全で自由なオペレーティングシステムを構成できるようになりました。これは **Linux の歴史**における重要な転機です。
 
 ![2018年の Linus Torvalds](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 

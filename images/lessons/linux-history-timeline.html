@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linux history timeline</title>
+  <!-- Render at 2100 × 540 CSS pixels with device scale factor 2.
+       Chrome headless example (from the repository root):
+       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+         --headless --disable-gpu --hide-scrollbars --no-pdf-header-footer \
+         --force-device-scale-factor=2 --window-size=2100,540 \
+         --screenshot="$PWD/images/lessons/linux-history-timeline.png" \
+         "file://$PWD/images/lessons/linux-history-timeline.html"
+       Sources by milestone:
+       1969: https://www.nokia.com/bell-labs/about/dennis-m-ritchie/hist.html
+       1973: https://www.nokia.com/bell-labs/about/dennis-m-ritchie/chist.html
+       1983-1984: https://www.gnu.org/gnu/initial-announcement.html
+       1989: https://www.gnu.org/licenses/old-licenses/gpl-1.0.html.en
+       1991: https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.01
+       1992: https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.12
+       Context (GNU components, Hurd, GNU/Linux):
+       https://www.gnu.org/gnu/gnu-history.html
+       https://www.gnu.org/licenses/old-licenses/gpl-1.0.html.en
+       https://www.gnu.org/gnu/linux-and-gnu.html
+  -->
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 2100px; height: 540px; }
+    body { background: #f7f9fc; color: #182537; font-family: Arial, Helvetica, sans-serif; }
+    main { padding: 48px 56px; }
+    header { display: flex; align-items: baseline; gap: 22px; }
+    h1 { margin: 0; font-size: 36px; letter-spacing: -1px; }
+    header p { margin: 0; color: #526174; font-size: 21px; }
+    ol { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; list-style: none; padding: 0; margin: 56px 0 0; }
+    ol::before { content: ""; position: absolute; top: 76px; left: 0; right: 0; height: 3px; background: #cad4e1; }
+    li { position: relative; min-width: 0; }
+    time { display: block; height: 58px; text-align: center; font-size: 29px; font-weight: 700; letter-spacing: -.5px; }
+    .dot { position: relative; display: block; width: 17px; height: 17px; margin: 11px auto 28px; background: #526781; border: 4px solid #f7f9fc; border-radius: 50%; box-shadow: 0 0 0 2px #526781; }
+    article { height: 230px; background: #fff; border: 1px solid #dce3ec; border-radius: 14px; padding: 26px 22px; }
+    h2 { margin: 0 0 14px; font-size: 23px; line-height: 1.25; letter-spacing: -.3px; }
+    article p { margin: 0; font-size: 21px; line-height: 1.45; color: #526174; }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>Linux history</h1><p>From UNIX to GNU/Linux</p></header>
+    <ol aria-label="Linux history timeline">
+      <li>
+        <time datetime="1969">1969</time><span class="dot" aria-hidden="true"></span>
+        <article><h2>UNIX is created</h2><p>Ken Thompson and Dennis Ritchie create UNIX at Bell Labs.</p></article>
+      </li>
+      <li>
+        <time datetime="1973">1973</time><span class="dot" aria-hidden="true"></span>
+        <article><h2>UNIX kernel<br>rewritten in C</h2><p>This lays the groundwork for later portability across hardware systems.</p></article>
+      </li>
+      <li>
+        <time>1983–1984</time><span class="dot" aria-hidden="true"></span>
+        <article><h2>The GNU Project</h2><p>Announced by Richard Stallman in September 1983; development begins in January 1984.</p></article>
+      </li>
+      <li>
+        <time datetime="1989-02">February 1989</time><span class="dot" aria-hidden="true"></span>
+        <article><h2>GNU GPL version 1<br>is published</h2><p>The first version of the GNU General Public License (GPLv1).</p></article>
+      </li>
+      <li>
+        <time datetime="1991">1991</time><span class="dot" aria-hidden="true"></span>
+        <article><h2>The Linux kernel</h2><p>Linus Torvalds starts developing the Linux kernel.</p></article>
+      </li>
+      <li>
+        <time datetime="1992">1992</time><span class="dot" aria-hidden="true"></span>
+        <article><h2>Linux adopts the GPL</h2><p>Together with GNU components, it forms a complete free operating system.</p></article>
+      </li>
+    </ol>
+  </main>
+</body>
+</html>

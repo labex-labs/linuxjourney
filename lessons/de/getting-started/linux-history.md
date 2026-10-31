@@ -16,7 +16,7 @@ Willkommen zu deiner **Linux-Reise**! Wenn du bereit bist, in die leistungsfähi
 
 Um die Entstehung von Linux zu verstehen, gehen wir zurück ins Jahr 1969. Damals entwickelten Ken Thompson und Dennis Ritchie von den Bell Laboratories das Betriebssystem UNIX. Es wurde später in der Programmiersprache C neu geschrieben, wodurch es portabel wurde und sich weit verbreiten konnte.
 
-![Zeitleiste von Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+![Zeitleiste von Unix](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/linux-history-timeline.png)
 
 :::single-choice{#understand-unix-portability} Was war eine wichtige Folge davon, UNIX in C neu zu schreiben?
 
@@ -25,7 +25,7 @@ Um die Entstehung von Linux zu verstehen, gehen wir zurück ins Jahr 1969. Damal
 ::option[Es wurde zu einer ausschließlich bei Bell Labs verwendeten Befehlsshell.]{#unix-became-shell explanation="UNIX ist ein Betriebssystem und nicht nur eine Shell. Die Umsetzung in C unterstützte die Verbreitung über Bell Labs hinaus."}
 :::
 
-Mehr als ein Jahrzehnt später startete Richard Stallman das GNU-Projekt. GNU ist ein rekursives Akronym für „GNU's Not UNIX“. Ziel war ein vollständig freies und quelloffenes UNIX-ähnliches Betriebssystem. Das Projekt schuf viele grundlegende Komponenten und die GNU General Public License (GPL). Sein eigener Kernel, GNU Hurd, war jedoch noch nicht allgemein einsatzbereit, als Linux verfügbar wurde.
+Im September 1983 kündigte Richard Stallman das GNU-Projekt an; die Entwicklung begann im Januar 1984. GNU ist ein rekursives Akronym für „GNU's Not UNIX“. Ziel war ein vollständig freies und quelloffenes UNIX-ähnliches Betriebssystem. Das Projekt schuf viele grundlegende Komponenten. Version 1 der GNU General Public License (GPL) wurde im Februar 1989 veröffentlicht. Sein eigener Kernel, GNU Hurd, war jedoch noch nicht allgemein einsatzbereit, als Linux verfügbar wurde.
 
 :::single-choice{#identify-gnu-missing-component} Welche wichtige GNU-Komponente war noch nicht fertig, als Linux verfügbar wurde?
 
@@ -47,7 +47,7 @@ Der Kernel ist die Kernkomponente eines Betriebssystems. Er bildet die Brücke f
 
 ## Die Geburt des Linux-Kernels
 
-Damit kommen wir ins Jahr 1991, als der finnische Student Linus Torvalds als persönliches Projekt mit der Entwicklung eines neuen Kernels begann. Dieser wurde als Linux-Kernel bekannt. Nachdem Linux 1992 als freie Software veröffentlicht worden war, ließ es sich mit dem nahezu vollständigen GNU-System zu einem vollständigen freien Betriebssystem verbinden, das häufig GNU/Linux genannt wird. Dieser Meilenstein war ein entscheidender Moment in der **Geschichte von Linux**.
+Damit kommen wir ins Jahr 1991, als der finnische Student Linus Torvalds als persönliches Projekt mit der Entwicklung eines neuen Kernels begann. Dieser wurde als Linux-Kernel bekannt. Nachdem Linux 1992 unter der GNU GPL neu veröffentlicht und damit zu freier Software geworden war, ließ es sich mit dem nahezu vollständigen GNU-System zu einem vollständigen freien Betriebssystem verbinden, das häufig GNU/Linux genannt wird. Dieser Meilenstein war ein entscheidender Moment in der **Geschichte von Linux**.
 
 ![Linus Torvalds im Jahr 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 

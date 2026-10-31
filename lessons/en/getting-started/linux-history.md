@@ -16,7 +16,7 @@ Welcome to your **Linux Journey**! If you're ready to dive into the powerful wor
 
 To understand how Linux was created, we must go back to 1969 when Ken Thompson and Dennis Ritchie of Bell Laboratories developed the UNIX operating system. It was later rewritten in the C programming language, which made it portable and led to its widespread adoption.
 
-![Timeline of Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+![Timeline of Unix](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/linux-history-timeline.png)
 
 :::single-choice{#understand-unix-portability} What was an important result of rewriting UNIX in C?
 
@@ -25,7 +25,7 @@ To understand how Linux was created, we must go back to 1969 when Ken Thompson a
 ::option[It became a command shell used only at Bell Labs.]{#unix-became-shell explanation="UNIX is an operating system rather than only a shell. Rewriting it in C helped adoption beyond Bell Labs."}
 :::
 
-Over a decade later, Richard Stallman initiated the GNU project. GNU is a recursive acronym for "GNU's Not UNIX," and its goal was to create a completely free and open-source UNIX-like operating system. The project produced many essential components and the GNU General Public License (GPL), but its own kernel, the GNU Hurd, was not ready for general use when Linux became available.
+In September 1983, Richard Stallman announced the GNU project; development began in January 1984. GNU is a recursive acronym for "GNU's Not UNIX," and its goal was to create a completely free and open-source UNIX-like operating system. The project produced many essential components, and version 1 of the GNU General Public License (GPL) was published in February 1989. However, GNU’s own kernel, the GNU Hurd, was not ready for general use when Linux became available.
 
 :::single-choice{#identify-gnu-missing-component} Which major GNU component was not ready when Linux became available?
 
@@ -47,7 +47,7 @@ The kernel is the core component of an operating system. It acts as a bridge, al
 
 ## The Birth of the Linux Kernel
 
-This brings us to 1991, when a Finnish student named Linus Torvalds began developing a new kernel as a personal project. This kernel became known as the Linux kernel. After Linux was released as free software in 1992, it could be combined with the nearly complete GNU system to form a complete free operating system, commonly called GNU/Linux. This milestone was a pivotal moment in the **history of Linux**.
+This brings us to 1991, when a Finnish student named Linus Torvalds began developing a new kernel as a personal project. This kernel became known as the Linux kernel. After Linux was rereleased under the GNU GPL in 1992, making it free software, it could be combined with the nearly complete GNU system to form a complete free operating system, commonly called GNU/Linux. This milestone was a pivotal moment in the **history of Linux**.
 
 ![Linus Torvalds in 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 

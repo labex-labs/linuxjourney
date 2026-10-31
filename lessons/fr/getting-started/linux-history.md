@@ -16,7 +16,7 @@ Bienvenue dans votre **parcours Linux** ! Si vous êtes prêt à découvrir le p
 
 Pour comprendre la création de Linux, remontons à 1969, lorsque Ken Thompson et Dennis Ritchie, des laboratoires Bell, ont développé le système d'exploitation UNIX. Celui-ci a ensuite été réécrit dans le langage de programmation C, ce qui l'a rendu portable et a favorisé sa large adoption.
 
-![Chronologie d'Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+![Chronologie d'Unix](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/linux-history-timeline.png)
 
 :::single-choice{#understand-unix-portability} Quel résultat important la réécriture d'UNIX en C a-t-elle produit ?
 
@@ -25,7 +25,7 @@ Pour comprendre la création de Linux, remontons à 1969, lorsque Ken Thompson e
 ::option[Il est devenu un shell de commandes utilisé uniquement aux laboratoires Bell.]{#unix-became-shell explanation="UNIX est un système d'exploitation, pas seulement un shell. Sa réécriture en C a favorisé son adoption hors des laboratoires Bell."}
 :::
 
-Plus de dix ans après, Richard Stallman a lancé le projet GNU. GNU est un acronyme récursif de « GNU's Not UNIX » et son objectif était de créer un système d'exploitation de type UNIX entièrement libre et open source. Le projet a produit de nombreux composants essentiels ainsi que la GNU General Public License (GPL), mais son propre noyau, GNU Hurd, n'était pas prêt pour un usage général lorsque Linux est devenu disponible.
+En septembre 1983, Richard Stallman a annoncé le projet GNU ; son développement a commencé en janvier 1984. GNU est un acronyme récursif de « GNU's Not UNIX » et son objectif était de créer un système d'exploitation de type UNIX entièrement libre et open source. Le projet a produit de nombreux composants essentiels, et la version 1 de la GNU General Public License (GPL) a été publiée en février 1989. Cependant, son propre noyau, GNU Hurd, n'était pas prêt pour un usage général lorsque Linux est devenu disponible.
 
 :::single-choice{#identify-gnu-missing-component} Quel composant majeur de GNU n'était pas prêt lorsque Linux est devenu disponible ?
 
@@ -47,7 +47,7 @@ Le noyau est le composant central d'un système d'exploitation. Il sert de pont 
 
 ## La naissance du noyau Linux
 
-Nous arrivons ainsi en 1991, lorsqu'un étudiant finlandais nommé Linus Torvalds commence à développer un nouveau noyau comme projet personnel. Ce noyau deviendra le noyau Linux. Après la publication de Linux comme logiciel libre en 1992, il a pu être associé au système GNU presque complet pour former un système d'exploitation libre complet, couramment appelé GNU/Linux. Cette étape a marqué un tournant dans l'**histoire de Linux**.
+Nous arrivons ainsi en 1991, lorsqu'un étudiant finlandais nommé Linus Torvalds commence à développer un nouveau noyau comme projet personnel. Ce noyau deviendra le noyau Linux. Après sa republication sous la GNU GPL en 1992, qui en a fait un logiciel libre, il a pu être associé au système GNU presque complet pour former un système d'exploitation libre complet, couramment appelé GNU/Linux. Cette étape a marqué un tournant dans l'**histoire de Linux**.
 
 ![Linus Torvalds en 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 

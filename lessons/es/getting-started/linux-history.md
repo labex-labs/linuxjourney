@@ -16,7 +16,7 @@ meta_keywords: "historia de linux, origen de linux, viaje en linux, UNIX, proyec
 
 Para entender cómo se creó Linux, debemos remontarnos a 1969, cuando Ken Thompson y Dennis Ritchie, de los Laboratorios Bell, desarrollaron el sistema operativo UNIX. Más tarde se reescribió en el lenguaje de programación C, lo que lo hizo portátil y favoreció su adopción generalizada.
 
-![Línea de tiempo de Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+![Línea de tiempo de Unix](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/linux-history-timeline.png)
 
 :::single-choice{#understand-unix-portability} ¿Cuál fue un resultado importante de reescribir UNIX en C?
 
@@ -25,7 +25,7 @@ Para entender cómo se creó Linux, debemos remontarnos a 1969, cuando Ken Thomp
 ::option[Se convirtió en un intérprete de órdenes utilizado únicamente en los Laboratorios Bell.]{#unix-became-shell explanation="UNIX es un sistema operativo, no solo un intérprete de órdenes. Reescribirlo en C favoreció su adopción fuera de los Laboratorios Bell."}
 :::
 
-Más de una década después, Richard Stallman inició el proyecto GNU. GNU es un acrónimo recursivo de «GNU's Not UNIX» y su objetivo era crear un sistema operativo tipo UNIX completamente libre y de código abierto. El proyecto produjo muchos componentes esenciales y la Licencia Pública General de GNU (GPL), pero su propio núcleo, GNU Hurd, no estaba listo para un uso general cuando Linux apareció.
+En septiembre de 1983, Richard Stallman anunció el proyecto GNU; su desarrollo comenzó en enero de 1984. GNU es un acrónimo recursivo de «GNU's Not UNIX» y su objetivo era crear un sistema operativo tipo UNIX completamente libre y de código abierto. El proyecto produjo muchos componentes esenciales, y la versión 1 de la Licencia Pública General de GNU (GPL) se publicó en febrero de 1989. Sin embargo, su propio núcleo, GNU Hurd, no estaba listo para un uso general cuando Linux apareció.
 
 :::single-choice{#identify-gnu-missing-component} ¿Qué componente principal de GNU no estaba listo cuando apareció Linux?
 
@@ -47,7 +47,7 @@ El núcleo es el componente central de un sistema operativo. Actúa como puente 
 
 ## El nacimiento del núcleo Linux
 
-Así llegamos a 1991, cuando un estudiante finlandés llamado Linus Torvalds comenzó a desarrollar un nuevo núcleo como proyecto personal. Este pasó a conocerse como el núcleo Linux. Después de que Linux se publicara como software libre en 1992, pudo combinarse con el sistema GNU, casi completo, para formar un sistema operativo libre completo, conocido habitualmente como GNU/Linux. Este hito fue un momento decisivo en la **historia de Linux**.
+Así llegamos a 1991, cuando un estudiante finlandés llamado Linus Torvalds comenzó a desarrollar un nuevo núcleo como proyecto personal. Este pasó a conocerse como el núcleo Linux. Después de que Linux se volviera a publicar bajo la GNU GPL en 1992, convirtiéndose en software libre, pudo combinarse con el sistema GNU, casi completo, para formar un sistema operativo libre completo, conocido habitualmente como GNU/Linux. Este hito fue un momento decisivo en la **historia de Linux**.
 
 ![Linus Torvalds en 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 

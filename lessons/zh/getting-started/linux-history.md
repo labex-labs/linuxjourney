@@ -16,7 +16,7 @@ meta_keywords: "Linux 历史，Linux 发展史，Linux 之旅，UNIX, GNU 项目
 
 要理解 Linux 如何诞生，需要回到 1969 年。当时，贝尔实验室的肯·汤普森（Ken Thompson）和丹尼斯·里奇（Dennis Ritchie）开发了 UNIX 操作系统。UNIX 后来用 C 语言重写，因此更容易移植到不同硬件上，并由此得到广泛采用。
 
-![Unix 时间轴](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+![Unix 时间轴](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/linux-history-timeline.png)
 
 :::single-choice{#understand-unix-portability} 用 C 语言重写 UNIX 带来了什么重要结果？
 
@@ -25,7 +25,7 @@ meta_keywords: "Linux 历史，Linux 发展史，Linux 之旅，UNIX, GNU 项目
 ::option[它成为了仅供贝尔实验室使用的命令 shell。]{#unix-became-shell explanation="UNIX 是操作系统，而不只是 shell；用 C 语言重写反而促进了它在贝尔实验室之外的采用。"}
 :::
 
-十多年后，理查德·斯托曼（Richard Stallman）发起了 GNU 项目。GNU 是“GNU's Not UNIX”的递归缩写，目标是创建一个完全自由且开源的类 UNIX 操作系统。该项目开发了许多关键组件，并制定了 GNU 通用公共许可证（GPL）；但当 Linux 出现时，GNU 自己的内核 GNU Hurd 还无法供人们普遍使用。
+1983 年 9 月，理查德·斯托曼（Richard Stallman）宣布了 GNU 项目，开发工作于 1984 年 1 月开始。GNU 是“GNU's Not UNIX”的递归缩写，目标是创建一个完全自由且开源的类 UNIX 操作系统。该项目开发了许多关键组件，GNU 通用公共许可证第一版（GPLv1）于 1989 年 2 月发布。但当 Linux 出现时，GNU 自己的内核 GNU Hurd 还无法供人们普遍使用。
 
 :::single-choice{#identify-gnu-missing-component} Linux 出现时，GNU 的哪个主要组件还没有准备就绪？
 
@@ -47,7 +47,7 @@ meta_keywords: "Linux 历史，Linux 发展史，Linux 之旅，UNIX, GNU 项目
 
 ## Linux 内核的诞生
 
-时间来到 1991 年，芬兰学生林纳斯·托瓦兹（Linus Torvalds）开始以个人项目的形式开发一种新内核，它后来被称为 Linux 内核。Linux 于 1992 年以自由软件形式发布后，便可以与接近完成的 GNU 系统结合，组成一套完整的自由操作系统，通常称为 GNU/Linux。这是 **Linux 历史**上的关键里程碑。
+时间来到 1991 年，芬兰学生林纳斯·托瓦兹（Linus Torvalds）开始以个人项目的形式开发一种新内核，它后来被称为 Linux 内核。Linux 于 1992 年改用 GNU GPL 发布、成为自由软件后，便可以与接近完成的 GNU 系统结合，组成一套完整的自由操作系统，通常称为 GNU/Linux。这是 **Linux 历史**上的关键里程碑。
 
 ![2018 年的林纳斯·托瓦兹](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 
