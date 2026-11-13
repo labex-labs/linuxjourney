@@ -58,7 +58,7 @@ My address is  Main Street
 ```
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -71,9 +71,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} 他の文字を変えず、stdin からすべての数字を削除するコマンドはどれですか？
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` は入力ストリームから数字クラスの全文字を削除します。"}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` は連続する数字を圧縮しますが、各並びから 1 文字は残します。"}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="通常の変換には第 2 集合が必要で、集合だけでは削除を要求しません。"}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="`-d` は入力ストリームから範囲 `0-9` のすべての数字を削除します。"}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="`-s` は連続する数字を圧縮しますが、各並びから 1 文字は残します。"}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="通常の変換には第 2 集合が必要で、集合だけでは削除を要求しません。"}
 :::
 
 ## 連続する文字を圧縮する
@@ -110,7 +110,7 @@ LINUX JOURNEY
 ```
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -128,7 +128,7 @@ userexamplecom
 処理を分けたほうが明確なら複数の `tr` を接続できます。
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -146,9 +146,9 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 :::single-choice{#tr-read-file-input} `tr` に `names.txt` を stdin として読ませ、小文字を大文字へ変換するコマンドはどれですか？
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` は通常の入力ファイル名をこの形で受け取らず、余分なオペランドで構文が不正になります。"}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="ファイルの読み方は正しいですが、小文字を変換せず削除します。"}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="シェルが `names.txt` を stdin で開き、`tr` が小文字クラスを大文字クラスへ対応付けます。"}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` は通常の入力ファイル名をこの形で受け取らず、余分なオペランドで構文が不正になります。"}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="ファイルの読み方は正しいですが、小文字を変換せず削除します。"}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="シェルが `names.txt` を stdin で開き、`tr` が小文字の範囲を大文字の範囲へ対応付けます。"}
 :::
 
 文字単位のストリーム変換を練習するには、次のラボを試してください。

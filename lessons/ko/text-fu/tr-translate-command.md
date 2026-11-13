@@ -66,7 +66,7 @@ My address is  Main Street
 문자 클래스는 현재 로캘에서 정의한 문자 그룹을 나타낼 수 있습니다.
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -79,9 +79,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} 다른 문자는 그대로 두고 표준 입력에서 모든 숫자를 제거하는 명령어는 무엇인가요?
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` 옵션은 입력 스트림에서 숫자 클래스에 속하는 모든 문자를 삭제합니다."}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` 옵션은 반복되는 숫자를 압축하지만 각 연속 구간에서 문자 하나는 남깁니다."}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="변환에는 보통 두 번째 집합이 필요합니다. 집합 하나만으로는 삭제를 요청하지 않습니다."}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="`-d` 옵션은 입력 스트림에서 `0-9` 범위의 모든 숫자를 삭제합니다."}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="`-s` 옵션은 반복되는 숫자를 압축하지만 각 연속 구간에서 문자 하나는 남깁니다."}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="변환에는 보통 두 번째 집합이 필요합니다. 집합 하나만으로는 삭제를 요청하지 않습니다."}
 :::
 
 ## 반복 문자 압축하기
@@ -132,7 +132,7 @@ LINUX JOURNEY
 `-c` 옵션은 `SET1`의 여집합, 즉 집합에 없는 모든 문자를 뜻합니다. 선택한 종류의 문자만 남기려면 `-d`와 함께 사용합니다.
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -150,7 +150,7 @@ userexamplecom
 여러 변환을 별도 단계로 표현하는 편이 명확하면 `tr` 프로세스 여러 개를 연결할 수 있습니다.
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -172,9 +172,9 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 :::single-choice{#tr-read-file-input} `tr`이 `names.txt`를 표준 입력으로 읽고 소문자를 대문자로 변환하게 하는 명령어는 무엇인가요?
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr`은 이런 방식으로 일반 입력 파일 이름을 받지 않으며 추가 피연산자로 인해 구문이 잘못됩니다."}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="파일은 올바르게 읽지만 소문자를 변환하지 않고 삭제합니다."}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="쉘이 `names.txt`를 표준 입력으로 열고 `tr`은 소문자 클래스를 대문자 클래스에 매핑합니다."}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr`은 이런 방식으로 일반 입력 파일 이름을 받지 않으며 추가 피연산자로 인해 구문이 잘못됩니다."}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="파일은 올바르게 읽지만 소문자를 변환하지 않고 삭제합니다."}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="셸이 `names.txt`를 표준 입력으로 열고 `tr`은 소문자 범위를 대문자 범위에 매핑합니다."}
 :::
 
 문자 단위 스트림 변환을 연습하려면 다음 실습을 진행해 보세요.

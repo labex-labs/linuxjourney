@@ -66,7 +66,7 @@ Cada dígito é removido independentemente; `tr` não identifica um número comp
 Classes de caracteres podem descrever grupos definidos pelo locale atual:
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -79,9 +79,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} Qual comando remove todos os dígitos de stdin e mantém os outros caracteres inalterados?
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="A opção `-d` exclui do fluxo todos os caracteres da classe de dígitos."}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="A opção `-s` agrupa dígitos repetidos, mas preserva um caractere de cada sequência."}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Uma tradução normalmente exige um segundo conjunto. Um conjunto sozinho não solicita uma exclusão."}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="A opção `-d` exclui do fluxo todos os dígitos do intervalo `0-9`."}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="A opção `-s` agrupa dígitos repetidos, mas preserva um caractere de cada sequência."}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="Uma tradução normalmente exige um segundo conjunto. Um conjunto sozinho não solicita uma exclusão."}
 :::
 
 ## Agrupamento de Caracteres Repetidos
@@ -132,7 +132,7 @@ LINUX JOURNEY
 A opção `-c` complementa `SET1`, ou seja, representa todos os caracteres que não pertencem ao conjunto. Combine-a com `-d` para manter apenas determinados tipos:
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -150,7 +150,7 @@ Isso também remove a nova linha, pois ela não é alfanumérica. Acrescente ou 
 Vários processos `tr` podem ser conectados quando as transformações ficam mais claras como etapas separadas:
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -172,9 +172,9 @@ Redirecione stdout para outro arquivo se precisar salvar o resultado. Não a red
 
 :::single-choice{#tr-read-file-input} Qual comando faz `tr` ler `names.txt` como stdin e converter caracteres minúsculos em maiúsculos?
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` não recebe um nome de arquivo comum dessa forma; o operando extra torna a sintaxe inválida."}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Essa forma lê o arquivo corretamente, mas exclui as letras minúsculas em vez de traduzi-las."}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="O shell abre `names.txt` em stdin, e `tr` mapeia a classe de minúsculas para a de maiúsculas."}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` não recebe um nome de arquivo comum dessa forma; o operando extra torna a sintaxe inválida."}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="Essa forma lê o arquivo corretamente, mas exclui as letras minúsculas em vez de traduzi-las."}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="O shell abre `names.txt` em stdin, e `tr` mapeia o intervalo de minúsculas para o de maiúsculas."}
 :::
 
 Para praticar transformações de fluxos no nível dos caracteres, experimente este laboratório:

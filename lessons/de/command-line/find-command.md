@@ -118,7 +118,7 @@ Bevor du eine destruktive Aktion wie `-delete` oder einen dateiverändernden `-e
 
 :::single-choice{#run-ls-for-each-match} Wofür steht `{}` in `find . -name "*.log" -exec ls -l {} \;`?
 
-::option[Für den aktuellen passenden Pfad, der an `ls -l` übergeben wird.]{#match-placeholder .correct explanation="Bei dieser `-exec`-Form ersetzt `find` `{}` vor dem Aufruf von `ls -l` durch den aktuellen Treffer."}
+::option[Für den aktuellen passenden Pfad, der an `ls -l` übergeben wird.]{#match-placeholder .correct explanation="Bei dieser `-exec`-Form ersetzt `find` den Platzhalter in geschweiften Klammern vor dem Aufruf von `ls -l` durch den aktuellen Treffer."}
 ::option[Für das Verzeichnis, in dem der `find`-Befehl gestartet wurde.]{#starting-placeholder explanation="Das Startverzeichnis ist der Punkt am Anfang des Befehls. Die geschweiften Klammern haben innerhalb von `-exec` eine andere Aufgabe."}
 ::option[Für das Semikolon, das den `-exec`-Ausdruck beendet.]{#terminator-placeholder explanation="Das maskierte Semikolon beendet die `-exec`-Aktion. Die geschweiften Klammern dienen als Pfadplatzhalter."}
 :::

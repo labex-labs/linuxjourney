@@ -66,7 +66,7 @@ Jede Ziffer wird unabhängig entfernt; `tr` erkennt dabei kein vollständiges Za
 Zeichenklassen können von der aktuellen Locale definierte Gruppen beschreiben:
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -79,9 +79,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} Welcher Befehl entfernt jede Ziffer aus stdin und lässt andere Zeichen unverändert?
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="Die Option `-d` löscht alle Zeichen der Ziffernklasse aus dem Eingabestrom."}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="Die Option `-s` komprimiert wiederholte Ziffern, lässt aber ein Zeichen jeder Folge bestehen."}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Für eine Übersetzung ist normalerweise ein zweiter Satz nötig. Ein Satz allein fordert keine Löschung an."}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="Die Option `-d` löscht alle Ziffern im Bereich `0-9` aus dem Eingabestrom."}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="Die Option `-s` komprimiert wiederholte Ziffern, lässt aber ein Zeichen jeder Folge bestehen."}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="Für eine Übersetzung ist normalerweise ein zweiter Satz nötig. Ein Satz allein fordert keine Löschung an."}
 :::
 
 ## Wiederholte Zeichen komprimieren
@@ -132,7 +132,7 @@ LINUX JOURNEY
 Die Option `-c` bildet das Komplement von `SET1`, also alle nicht darin enthaltenen Zeichen. Zusammen mit `-d` kannst du nur bestimmte Zeichenarten bewahren:
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -150,7 +150,7 @@ Auch der Zeilenumbruch wird entfernt, weil er nicht alphanumerisch ist. Ergänze
 Mehrere `tr`-Prozesse lassen sich verbinden, wenn getrennte Schritte verständlicher sind:
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -172,9 +172,9 @@ Leite stdout in eine andere Datei um, wenn du das Ergebnis speichern möchtest. 
 
 :::single-choice{#tr-read-file-input} Welcher Befehl lässt `tr` `names.txt` als stdin lesen und Kleinbuchstaben in Großbuchstaben umwandeln?
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` akzeptiert auf diese Weise keinen gewöhnlichen Eingabedateinamen; der zusätzliche Operand macht die Syntax ungültig."}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Dieser Befehl liest die Datei richtig, löscht Kleinbuchstaben aber, statt sie zu übersetzen."}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="Die Shell öffnet `names.txt` als stdin; `tr` bildet die Kleinbuchstabenklasse auf die Großbuchstabenklasse ab."}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` akzeptiert auf diese Weise keinen gewöhnlichen Eingabedateinamen; der zusätzliche Operand macht die Syntax ungültig."}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="Dieser Befehl liest die Datei richtig, löscht Kleinbuchstaben aber, statt sie zu übersetzen."}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="Die Shell öffnet `names.txt` als stdin; `tr` bildet den Kleinbuchstabenbereich auf den Großbuchstabenbereich ab."}
 :::
 
 Mit dieser Übung kannst du zeichenweise Stromtransformationen praktisch trainieren:

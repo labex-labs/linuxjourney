@@ -66,7 +66,7 @@ Every digit is removed independently; `tr` is not identifying a complete number 
 Character classes can describe groups defined by the current locale:
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -79,9 +79,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} Which command removes every digit from stdin while leaving other characters unchanged?
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="The `-d` option deletes all characters in the digit class from the input stream."}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="The `-s` option collapses repeated digits but leaves one character from each run."}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Translation normally needs a second set. A set alone does not request deletion."}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="The `-d` option deletes all digits in the range `0-9` from the input stream."}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="The `-s` option collapses repeated digits but leaves one character from each run."}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="Translation normally needs a second set. A set alone does not request deletion."}
 :::
 
 ## Squeezing Repeated Characters
@@ -132,7 +132,7 @@ LINUX JOURNEY
 The `-c` option complements `SET1`, meaning every character not in the set. Combine it with `-d` to retain only selected kinds of characters:
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -147,10 +147,10 @@ This also removes the newline because a newline is not alphanumeric. Add or pres
 
 ## Building Stream Transformations
 
-Several `tr` processes can be connected when transformations are clearer as separate stages:
+Several `tr` processes can be connected when transformations are clearer as separate stages. Use single quotes around literal text containing `!` to prevent history expansion in interactive shells:
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -172,9 +172,9 @@ Redirect stdout to a different file if you need to save the result. Do not redir
 
 :::single-choice{#tr-read-file-input} Which command makes `tr` read `names.txt` as stdin and convert lowercase characters to uppercase?
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` does not take an ordinary input filename this way; the extra operand makes the syntax invalid."}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="This reads the file correctly but deletes lowercase letters rather than translating them."}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="The shell opens `names.txt` on stdin, and `tr` maps the lowercase class to the uppercase class."}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` does not take an ordinary input filename this way; the extra operand makes the syntax invalid."}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="This reads the file correctly but deletes lowercase letters rather than translating them."}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="The shell opens `names.txt` on stdin, and `tr` maps the lowercase range to the uppercase range."}
 :::
 
 To practice character-level stream transformations, try this hands-on lab:

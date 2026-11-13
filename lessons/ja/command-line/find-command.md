@@ -118,7 +118,7 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 :::single-choice{#run-ls-for-each-match} `find . -name "*.log" -exec ls -l {} \;` で、`{}` は何を表しますか？
 
-::option[`ls -l` へ渡される現在の一致パス。]{#match-placeholder .correct explanation="この `-exec` 形式では、`ls -l` を呼び出す前に `find` が `{}` を現在の一致へ置き換えます。"}
+::option[`ls -l` へ渡される現在の一致パス。]{#match-placeholder .correct explanation="この `-exec` 形式では、`ls -l` を呼び出す前に `find` が波括弧のプレースホルダーを現在の一致へ置き換えます。"}
 ::option[`find` コマンドを開始したディレクトリ。]{#starting-placeholder explanation="開始ディレクトリはコマンド先頭付近のドットで、`-exec` 内の波括弧は別の役割を持ちます。"}
 ::option[`-exec` 式を終えるセミコロン。]{#terminator-placeholder explanation="エスケープされたセミコロンが `-exec` 操作を終了し、波括弧はパス名のプレースホルダーです。"}
 :::

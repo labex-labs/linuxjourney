@@ -118,7 +118,7 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 :::single-choice{#run-ls-for-each-match} 在 `find . -name "*.log" -exec ls -l {} \;` 中，`{}` 表示什么？
 
-::option[提供给 `ls -l` 的当前匹配路径。]{#match-placeholder .correct explanation="对于这种 `-exec` 形式，`find` 会在调用 `ls -l` 前用当前匹配项替换 `{}`。"}
+::option[提供给 `ls -l` 的当前匹配路径。]{#match-placeholder .correct explanation="对于这种 `-exec` 形式，`find` 会在调用 `ls -l` 前用当前匹配项替换花括号占位符。"}
 ::option[启动 `find` 命令时所在的目录。]{#starting-placeholder explanation="起始目录是命令开头附近的点号；花括号在 `-exec` 中承担不同职责。"}
 ::option[结束 `-exec` 表达式的分号。]{#terminator-placeholder explanation="转义的分号会终止 `-exec` 操作；花括号是路径占位符。"}
 :::

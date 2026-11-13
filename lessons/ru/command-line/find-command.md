@@ -116,7 +116,7 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 :::single-choice{#run-ls-for-each-match} Что обозначает `{}` в `find . -name "*.log" -exec ls -l {} \;`?
 
-::option[Текущий совпавший путь, передаваемый `ls -l`.]{#match-placeholder .correct explanation="В этой форме `-exec` команда `find` подставляет в `{}` текущее совпадение перед запуском `ls -l`."}
+::option[Текущий совпавший путь, передаваемый `ls -l`.]{#match-placeholder .correct explanation="В этой форме `-exec` команда `find` подставляет в заполнитель в фигурных скобках текущее совпадение перед запуском `ls -l`."}
 ::option[Каталог, из которого была запущена `find`.]{#starting-placeholder explanation="Начальный каталог обозначен точкой в начале, а фигурные скобки имеют другую роль внутри `-exec`."}
 ::option[Точку с запятой, завершающую выражение `-exec`.]{#terminator-placeholder explanation="Экранированная точка с запятой завершает действие, а скобки служат заполнителем пути."}
 :::

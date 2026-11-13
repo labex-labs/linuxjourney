@@ -118,7 +118,7 @@ Antes de usar uma ação destrutiva como `-delete` ou um comando `-exec` que alt
 
 :::single-choice{#run-ls-for-each-match} Em `find . -name "*.log" -exec ls -l {} \;`, o que `{}` representa?
 
-::option[O caminho correspondente atual fornecido a `ls -l`.]{#match-placeholder .correct explanation="Nessa forma de `-exec`, `find` substitui `{}` pela correspondência atual antes de invocar `ls -l`."}
+::option[O caminho correspondente atual fornecido a `ls -l`.]{#match-placeholder .correct explanation="Nessa forma de `-exec`, `find` substitui o marcador entre chaves pela correspondência atual antes de invocar `ls -l`."}
 ::option[O diretório em que o comando `find` foi iniciado.]{#starting-placeholder explanation="O diretório inicial é o ponto perto do começo do comando. As chaves têm outra função dentro de `-exec`."}
 ::option[O ponto e vírgula que encerra a expressão `-exec`.]{#terminator-placeholder explanation="O ponto e vírgula com escape encerra a ação `-exec`. As chaves são o marcador de posição do caminho."}
 :::

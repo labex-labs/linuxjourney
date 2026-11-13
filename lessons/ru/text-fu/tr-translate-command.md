@@ -66,7 +66,7 @@ My address is  Main Street
 Классы символов описывают группы, определяемые текущей локалью:
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -79,9 +79,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} Какая команда удаляет из stdin все цифры, оставляя другие символы без изменений?
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="Параметр `-d` удаляет из входного потока все символы класса цифр."}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="Параметр `-s` сжимает повторяющиеся цифры, но оставляет по одному символу из каждой последовательности."}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Для преобразования обычно нужен второй набор. Один набор не запрашивает удаление."}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="Параметр `-d` удаляет из входного потока все цифры диапазона `0-9`."}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="Параметр `-s` сжимает повторяющиеся цифры, но оставляет по одному символу из каждой последовательности."}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="Для преобразования обычно нужен второй набор. Один набор не запрашивает удаление."}
 :::
 
 ## Сжатие повторяющихся символов
@@ -132,7 +132,7 @@ LINUX JOURNEY
 Параметр `-c` дополняет `SET1`, то есть выбирает каждый символ, не входящий в набор. Объедините его с `-d`, чтобы оставить только выбранные виды символов:
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -150,7 +150,7 @@ userexamplecom
 Несколько процессов `tr` можно соединить, если преобразования понятнее как отдельные этапы:
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -172,9 +172,9 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 :::single-choice{#tr-read-file-input} Какая команда заставляет `tr` прочитать `names.txt` через stdin и преобразовать строчные символы в прописные?
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` не принимает обычное имя входного файла таким способом; лишний операнд делает синтаксис недопустимым."}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Файл читается правильно, но строчные буквы удаляются, а не преобразуются."}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="Оболочка открывает `names.txt` как stdin, а `tr` сопоставляет класс строчных букв классу прописных."}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` не принимает обычное имя входного файла таким способом; лишний операнд делает синтаксис недопустимым."}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="Файл читается правильно, но строчные буквы удаляются, а не преобразуются."}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="Оболочка открывает `names.txt` как stdin, а `tr` сопоставляет диапазон строчных букв диапазону прописных."}
 :::
 
 Чтобы попрактиковаться в посимвольных потоковых преобразованиях, выполните лабораторную работу:

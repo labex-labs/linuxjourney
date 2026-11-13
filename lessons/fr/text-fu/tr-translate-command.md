@@ -62,7 +62,7 @@ My address is  Main Street
 Les classes de caractères décrivent des groupes définis par la locale :
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -77,9 +77,9 @@ Les classes décrivent des groupes selon la locale. Supprimer les retours à la 
 
 :::single-choice{#tr-delete-digits} Quelle commande retire tous les chiffres de stdin sans toucher aux autres caractères ?
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` supprime tous les membres de la classe des chiffres."}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` réduit les répétitions mais conserve un caractère par série."}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Une traduction exige normalement un second ensemble ; cette forme ne demande pas une suppression."}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="`-d` supprime tous les chiffres de la plage `0-9`."}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="`-s` réduit les répétitions mais conserve un caractère par série."}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="Une traduction exige normalement un second ensemble ; cette forme ne demande pas une suppression."}
 :::
 
 ## Compresser les caractères répétés
@@ -120,7 +120,7 @@ LINUX JOURNEY
 `-c` complète le premier ensemble ; combiné à `-d`, il conserve seulement les catégories voulues :
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -136,7 +136,7 @@ userexamplecom
 ## Construire des transformations de flux
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -158,9 +158,9 @@ Enchaînez plusieurs `tr` lorsque les étapes sont plus claires séparément. Po
 
 :::single-choice{#tr-read-file-input} Quelle commande fait lire `names.txt` sur stdin et convertit les minuscules en majuscules ?
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` n'accepte pas ainsi un nom de fichier d'entrée ordinaire."}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Cette forme lit le fichier mais supprime les minuscules."}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="Le shell ouvre le fichier sur stdin et `tr` associe les classes de casse."}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` n'accepte pas ainsi un nom de fichier d'entrée ordinaire."}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="Cette forme lit le fichier mais supprime les minuscules."}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="Le shell ouvre le fichier sur stdin et `tr` associe la plage des minuscules à celle des majuscules."}
 :::
 
 Pour vous exercer :

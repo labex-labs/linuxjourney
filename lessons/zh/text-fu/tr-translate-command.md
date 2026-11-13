@@ -66,7 +66,7 @@ My address is  Main Street
 字符类可以描述由当前 locale 定义的字符组：
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -79,9 +79,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} 哪个命令会从 stdin 中删除每个数字，同时让其他字符保持不变？
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="`-d` 选项会从输入流中删除数字字符类里的所有字符。"}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="`-s` 会压缩重复数字，但每一连续组仍会保留一个字符。"}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="转换通常需要第二个集合；单独提供一个集合并不表示删除。"}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="`-d` 选项会从输入流中删除 `0-9` 范围内的所有数字。"}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="`-s` 会压缩重复数字，但每一连续组仍会保留一个字符。"}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="转换通常需要第二个集合；单独提供一个集合并不表示删除。"}
 :::
 
 ## 压缩重复字符
@@ -132,7 +132,7 @@ LINUX JOURNEY
 `-c` 选项会对 `SET1` 取补集，也就是集合之外的所有字符。将它与 `-d` 结合，可以只保留选定种类的字符：
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -150,7 +150,7 @@ userexamplecom
 如果把不同转换作为独立阶段更清楚，可以连接多个 `tr` 进程：
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -172,9 +172,9 @@ $ tr '[:lower:]' '[:upper:]' < names.txt
 
 :::single-choice{#tr-read-file-input} 哪个命令会让 `tr` 从 stdin 读取 `names.txt`，并把小写字符转换为大写？
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` 不以这种方式接受普通输入文件名；多出的操作数会使语法无效。"}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="这会正确读取文件，但会删除小写字母而不是转换它们。"}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="shell 会把 `names.txt` 打开为 stdin，`tr` 再把小写字符类映射到大写字符类。"}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` 不以这种方式接受普通输入文件名；多出的操作数会使语法无效。"}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="这会正确读取文件，但会删除小写字母而不是转换它们。"}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="shell 会把 `names.txt` 打开为 stdin，`tr` 再把小写字母范围映射到大写字母范围。"}
 :::
 
 要练习字符级的流转换，可以尝试以下动手实验：

@@ -66,7 +66,7 @@ Cada dígito se elimina de forma independiente; `tr` no identifica un token num�
 Las clases de caracteres pueden describir grupos definidos por la configuración regional actual:
 
 ```bash
-$ echo "Hello, world!" | tr -d '[:punct:]'
+$ echo 'Hello, world!' | tr -d '[:punct:]'
 Hello world
 ```
 
@@ -79,9 +79,9 @@ onetwothree
 
 :::single-choice{#tr-delete-digits} ¿Qué orden elimina todos los dígitos de la entrada estándar y deja sin cambios los demás caracteres?
 
-::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="La opción `-d` elimina del flujo de entrada todos los caracteres de la clase de dígitos."}
-::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="La opción `-s` comprime los dígitos repetidos, pero deja un carácter de cada secuencia."}
-::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="La traducción suele necesitar un segundo conjunto. Un conjunto por sí solo no solicita la eliminación."}
+::option[`tr -d '0-9'`]{#tr-delete-digit-class .correct explanation="La opción `-d` elimina del flujo de entrada todos los dígitos del rango `0-9`."}
+::option[`tr -s '0-9'`]{#tr-squeeze-digits explanation="La opción `-s` comprime los dígitos repetidos, pero deja un carácter de cada secuencia."}
+::option[`tr '0-9'`]{#tr-one-set-no-delete explanation="La traducción suele necesitar un segundo conjunto. Un conjunto por sí solo no solicita la eliminación."}
 :::
 
 ## Comprimir caracteres repetidos
@@ -132,7 +132,7 @@ LINUX JOURNEY
 La opción `-c` complementa `SET1`, es decir, representa todos los caracteres que no están en el conjunto. Combínala con `-d` para conservar solo ciertos tipos de caracteres:
 
 ```bash
-$ echo "user@example.com!" | tr -cd '[:alnum:]'
+$ echo 'user@example.com!' | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
@@ -150,7 +150,7 @@ Esto también elimina el salto de línea porque no es alfanumérico. Añade o co
 Se pueden conectar varios procesos `tr` cuando las transformaciones resulten más claras como etapas separadas:
 
 ```bash
-$ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
+$ echo 'Hello,,,     world!!!' | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
@@ -172,9 +172,9 @@ Redirige la salida estándar a otro archivo si necesitas guardar el resultado. N
 
 :::single-choice{#tr-read-file-input} ¿Qué orden hace que `tr` lea `names.txt` como entrada estándar y convierta los caracteres en minúsculas a mayúsculas?
 
-::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` no acepta un nombre de archivo de entrada normal de este modo; el operando adicional hace que la sintaxis no sea válida."}
-::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Esto lee el archivo correctamente, pero elimina las letras minúsculas en vez de traducirlas."}
-::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="El shell abre `names.txt` en la entrada estándar y `tr` asigna la clase de minúsculas a la de mayúsculas."}
+::option[`tr names.txt 'a-z' 'A-Z'`]{#tr-file-operand explanation="`tr` no acepta un nombre de archivo de entrada normal de este modo; el operando adicional hace que la sintaxis no sea válida."}
+::option[`tr -d 'a-z' < names.txt`]{#tr-delete-lowercase explanation="Esto lee el archivo correctamente, pero elimina las letras minúsculas en vez de traducirlas."}
+::option[`tr 'a-z' 'A-Z' < names.txt`]{#tr-input-redirection .correct explanation="El shell abre `names.txt` en la entrada estándar y `tr` asigna el rango de minúsculas al de mayúsculas."}
 :::
 
 Para practicar transformaciones de flujos carácter por carácter, prueba este laboratorio práctico:

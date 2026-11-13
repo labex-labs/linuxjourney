@@ -109,6 +109,8 @@ Each check must:
 
 Explain why the correct option fits and why each distractor does not, using concepts already taught. Keep feedback neutral, self-contained, and brief. Vary correct-answer positions.
 
+Avoid square brackets inside option labels, including inline code: the current learning-view parser treats the first `]` as the end of the label. For example, use `tr -d '0-9'` as an option rather than a command containing a bracketed character class. Character classes can still appear in question text, explanations, and ordinary lesson examples. Also avoid closing braces in explanation attributes: the parser treats the first `}` as the end of the attributes, even inside a quoted explanation. Refer to a brace placeholder in words instead.
+
 Options should use parallel grammar and comparable detail. The correct answer must not stand out because it is longer, more specific, or more qualified. Distractors should represent plausible beginner misunderstandings, and exactly one answer must be unambiguously correct.
 
 ### Summary

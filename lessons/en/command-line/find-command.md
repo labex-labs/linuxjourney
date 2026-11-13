@@ -118,7 +118,7 @@ Before using a destructive action such as `-delete` or an `-exec` command that c
 
 :::single-choice{#run-ls-for-each-match} In `find . -name "*.log" -exec ls -l {} \;`, what does `{}` represent?
 
-::option[The current matching pathname supplied to `ls -l`.]{#match-placeholder .correct explanation="For this `-exec` form, `find` substitutes the current match for `{}` before invoking `ls -l`."}
+::option[The current matching pathname supplied to `ls -l`.]{#match-placeholder .correct explanation="For this `-exec` form, `find` substitutes the current match for the brace placeholder before invoking `ls -l`."}
 ::option[The directory where the `find` command was started.]{#starting-placeholder explanation="The starting directory is the dot near the beginning of the command. The braces have a different role inside `-exec`."}
 ::option[The semicolon that ends the `-exec` expression.]{#terminator-placeholder explanation="The escaped semicolon terminates the `-exec` action. The braces are the pathname placeholder."}
 :::

@@ -118,7 +118,7 @@ Antes de usar una acción destructiva como `-delete` o una orden `-exec` que mod
 
 :::single-choice{#run-ls-for-each-match} En `find . -name "*.log" -exec ls -l {} \;`, ¿qué representa `{}`?
 
-::option[La ruta coincidente actual que se pasa a `ls -l`.]{#match-placeholder .correct explanation="En esta forma de `-exec`, `find` sustituye `{}` por la coincidencia actual antes de invocar `ls -l`."}
+::option[La ruta coincidente actual que se pasa a `ls -l`.]{#match-placeholder .correct explanation="En esta forma de `-exec`, `find` sustituye el marcador entre llaves por la coincidencia actual antes de invocar `ls -l`."}
 ::option[El directorio donde se inició la orden `find`.]{#starting-placeholder explanation="El directorio inicial es el punto situado cerca del principio de la orden. Las llaves cumplen otra función dentro de `-exec`."}
 ::option[El punto y coma que termina la expresión `-exec`.]{#terminator-placeholder explanation="El punto y coma escapado termina la acción `-exec`. Las llaves son el marcador de posición de la ruta."}
 :::

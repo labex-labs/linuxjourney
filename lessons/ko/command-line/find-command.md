@@ -118,7 +118,7 @@ $ find . -name "*.log" -exec ls -l {} \;
 
 :::single-choice{#run-ls-for-each-match} `find . -name "*.log" -exec ls -l {} \;`에서 `{}`는 무엇을 나타내나요?
 
-::option[`ls -l`에 전달되는 현재 일치 경로입니다.]{#match-placeholder .correct explanation="이 `-exec` 형식에서 `find`는 `ls -l`을 실행하기 전에 `{}`를 현재 일치 항목으로 바꿉니다."}
+::option[`ls -l`에 전달되는 현재 일치 경로입니다.]{#match-placeholder .correct explanation="이 `-exec` 형식에서 `find`는 `ls -l`을 실행하기 전에 중괄호 자리 표시자를 현재 일치 항목으로 바꿉니다."}
 ::option[`find` 명령어를 시작한 디렉터리입니다.]{#starting-placeholder explanation="시작 디렉터리는 명령 앞부분의 점이며 중괄호는 `-exec` 안에서 다른 역할을 합니다."}
 ::option[`-exec` 표현식을 끝내는 세미콜론입니다.]{#terminator-placeholder explanation="이스케이프된 세미콜론이 작업을 끝내며 중괄호는 경로 자리 표시자입니다."}
 :::
