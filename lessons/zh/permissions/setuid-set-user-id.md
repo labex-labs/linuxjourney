@@ -23,15 +23,15 @@ $ ls -l /usr/bin/passwd
 -rwsr-xr-x 1 root root 68248 Jan 10 09:30 /usr/bin/passwd
 ```
 
-所有者执行位置的小写 `s` 表示 setuid 和所有者执行都已设置。如果有 setuid 但没有所有者执行，`ls -l` 会在该位置显示大写 `S`。
+所有者执行权限位置的小写 `s` 表示 setuid 和所有者执行权限都已设置。如果有 setuid 但没有所有者执行权限，`ls -l` 会在该位置显示大写 `S`。
 
 不要假设每个发行版都有相同模式或认证设计。应检查实际系统，而不是依赖示例。
 
-:::single-choice{#setuid-lowercase-s} 所有者执行位置的小写 `s` 表示什么？
+:::single-choice{#setuid-lowercase-s} 所有者执行权限位置的小写 `s` 表示什么？
 
-::option[已设置 setuid，但没有所有者执行。]{#setuid-s-without-execute explanation="这种组合显示为大写 `S`，而不是小写 `s`。"}
+::option[已设置 setuid，但没有所有者执行权限。]{#setuid-s-without-execute explanation="这种组合显示为大写 `S`，而不是小写 `s`。"}
 ::option[文件有 sticky bit 和组执行。]{#setuid-sticky-group explanation="sticky bit 出现在其他执行位置，而 setuid 出现在所有者位置。"}
-::option[已设置 setuid，同时也设置了所有者执行。]{#setuid-s-with-execute .correct explanation="小写 `s` 表示 setuid 位与普通所有者执行位同时存在。"}
+::option[已设置 setuid，同时也设置了所有者执行权限。]{#setuid-s-with-execute .correct explanation="小写 `s` 表示 setuid 位与普通所有者执行权限位同时存在。"}
 :::
 
 ## 理解凭据变化
@@ -89,7 +89,7 @@ Linux 通常不会在解释型脚本上采用 setuid，因为安全实现会遇�
 
 现在，你可以识别 setuid，并说明它对凭据和安全性的影响。
 
-1. 在所有者执行位置查找 `s` 或 `S`。
+1. 在所有者执行权限位置查找 `s` 或 `S`。
 2. 把 setuid 执行与可执行文件所有者的有效用户身份联系起来。
 3. 使用符号或八进制 `chmod` 模式设置或移除该位。
 4. 把每个特权可执行文件都视为安全敏感代码。
