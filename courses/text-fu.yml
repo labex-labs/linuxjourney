@@ -2,6 +2,7 @@ id: text-fu
 category:
   id: grasshopper
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/text-fu.png
+video_url: https://www.youtube.com/watch?v=wIqVY8Opwzo
 order_index: 2
 translations:
   en:
