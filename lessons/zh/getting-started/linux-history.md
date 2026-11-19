@@ -49,9 +49,9 @@ meta_keywords: "Linux 历史，Linux 发展史，Linux 之旅，UNIX, GNU 项目
 
 时间来到 1991 年，芬兰学生林纳斯·托瓦兹（Linus Torvalds）开始以个人项目的形式开发一种新内核，它后来被称为 Linux 内核。Linux 于 1992 年改用 GNU GPL 发布、成为自由软件后，便可以与接近完成的 GNU 系统结合，组成一套完整的自由操作系统，通常称为 GNU/Linux。这是 **Linux 历史**上的关键里程碑。
 
-![2018 年的林纳斯·托瓦兹](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+![2018 年的林纳斯·托瓦兹](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/getting-started/linux-history/linus-torvalds-2018.jpg)
 
-_2018 年的林纳斯·托瓦兹（来源：[维基百科](https://en.wikipedia.org/wiki/Linus_Torvalds)）_
+_2018 年的林纳斯·托瓦兹。摄影：[Lf Asia](https://commons.wikimedia.org/wiki/File:Lc3_2018_%28263682303%29_%28cropped%29.jpeg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)（已裁剪和缩放）_
 
 :::single-choice{#identify-linux-kernel-creator} 1991 年是谁开始开发 Linux 内核？
 

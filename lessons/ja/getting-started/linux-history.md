@@ -49,9 +49,9 @@ Linux がどのように生まれたかを理解するには、ベル研究所�
 
 1991年、フィンランドの学生 Linus Torvalds が個人プロジェクトとして新しいカーネルの開発を始めました。これが Linux カーネルとなります。Linux が1992年に GNU GPL の下で再公開され、自由ソフトウェアになると、ほぼ完成していた GNU システムと組み合わせ、一般に GNU/Linux と呼ばれる完全で自由なオペレーティングシステムを構成できるようになりました。これは **Linux の歴史**における重要な転機です。
 
-![2018年の Linus Torvalds](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+![2018年の Linus Torvalds](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/getting-started/linux-history/linus-torvalds-2018.jpg)
 
-_2018年の Linus Torvalds（出典：[Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds)）_
+_2018年の Linus Torvalds。撮影：[Lf Asia](https://commons.wikimedia.org/wiki/File:Lc3_2018_%28263682303%29_%28cropped%29.jpeg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)（トリミング・縮小）_
 
 :::single-choice{#identify-linux-kernel-creator} 1991年に Linux カーネルの開発を始めたのは誰ですか？
 

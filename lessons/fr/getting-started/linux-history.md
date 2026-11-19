@@ -49,9 +49,9 @@ Le noyau est le composant central d'un système d'exploitation. Il sert de pont 
 
 Nous arrivons ainsi en 1991, lorsqu'un étudiant finlandais nommé Linus Torvalds commence à développer un nouveau noyau comme projet personnel. Ce noyau deviendra le noyau Linux. Après sa republication sous la GNU GPL en 1992, qui en a fait un logiciel libre, il a pu être associé au système GNU presque complet pour former un système d'exploitation libre complet, couramment appelé GNU/Linux. Cette étape a marqué un tournant dans l'**histoire de Linux**.
 
-![Linus Torvalds en 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+![Linus Torvalds en 2018](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/getting-started/linux-history/linus-torvalds-2018.jpg)
 
-_Linus Torvalds en 2018 (source : [Wikipédia](https://fr.wikipedia.org/wiki/Linus_Torvalds))_
+_Linus Torvalds en 2018. Photo de [Lf Asia](https://commons.wikimedia.org/wiki/File:Lc3_2018_%28263682303%29_%28cropped%29.jpeg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) (recadrée et redimensionnée)_
 
 :::single-choice{#identify-linux-kernel-creator} Qui a commencé à développer le noyau Linux en 1991 ?
 
