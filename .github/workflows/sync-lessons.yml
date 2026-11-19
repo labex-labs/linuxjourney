@@ -140,7 +140,7 @@ jobs:
           fi
 
           cd ../labex-cli
-          SYNC_COMMAND=(labex lesson sync-v2)
+          SYNC_COMMAND=(python ../linuxjourney/.github/scripts/sync-lessons.py)
           SYNC_COMMAND+=("${COURSE_ARGS[@]}" "${LESSON_ARGS[@]}")
           if (( ${#LESSON_ARGS[@]} > 0 )); then
             SYNC_COMMAND+=(--all-langs)
