@@ -11,19 +11,21 @@
 >
 > Official website: https://labex.io/linuxjourney (formerly https://linuxjourney.com)
 
-[Linux Journey](https://labex.io/linuxjourney) - Learn Linux fundamentals through interactive lessons.
+[Linux Journey](https://labex.io/linuxjourney) - Learn Linux, DevOps, and cybersecurity through interactive lessons.
 
-A structured learning path from beginner to advanced Linux administration with three levels:
+A structured learning path through Linux, DevOps, and cybersecurity:
 
 - **Grasshopper** - Learn the basics
 - **Journeyman** - System internals
 - **Networking Nomad** - Network administration
+- **DevOps** - Build, deploy, and troubleshoot services
+- **Cybersecurity** - Protect systems and interpret security evidence
 
 ## Grasshopper
 
 ### Getting Started
 
-![Getting Started](https://labex.io/images/linuxjourney/courses/getting-started.png)
+![Getting Started](images/courses/getting-started.png)
 
 What is Linux? Get started with choosing a distribution and installation.
 
@@ -41,7 +43,7 @@ What is Linux? Get started with choosing a distribution and installation.
 
 ### Command Line
 
-![Command Line](https://labex.io/images/linuxjourney/courses/command-line.png)
+![Command Line](images/courses/command-line.png)
 
 Learn the fundamentals of the command line, navigating files, directories, and more.
 
@@ -67,7 +69,7 @@ Learn the fundamentals of the command line, navigating files, directories, and m
 
 ### Text-Fu
 
-![Text-Fu](https://labex.io/images/linuxjourney/courses/text-fu.png)
+![Text-Fu](images/courses/text-fu.png)
 
 Learn basic text manipulation and navigation.
 
@@ -90,7 +92,7 @@ Learn basic text manipulation and navigation.
 
 ### Advanced Text-Fu
 
-![Advanced Text-Fu](https://labex.io/images/linuxjourney/courses/advanced-text-fu.png)
+![Advanced Text-Fu](images/courses/advanced-text-fu.png)
 
 Navigate text like a Linux spider monkey with Vim and Emacs.
 
@@ -110,7 +112,7 @@ Navigate text like a Linux spider monkey with Vim and Emacs.
 
 ### User Management
 
-![User Management](https://labex.io/images/linuxjourney/courses/user-management.png)
+![User Management](images/courses/user-management.png)
 
 Learn about user roles and management.
 
@@ -123,7 +125,7 @@ Learn about user roles and management.
 
 ### Permissions
 
-![Permissions](https://labex.io/images/linuxjourney/courses/permissions.png)
+![Permissions](images/courses/permissions.png)
 
 Learn about permission levels and modifying permissions.
 
@@ -138,7 +140,7 @@ Learn about permission levels and modifying permissions.
 
 ### Processes
 
-![Processes](https://labex.io/images/linuxjourney/courses/processes.png)
+![Processes](images/courses/processes.png)
 
 Learn about the running processes on the system.
 
@@ -156,7 +158,7 @@ Learn about the running processes on the system.
 
 ### Packages
 
-![Packages](https://labex.io/images/linuxjourney/courses/packages.png)
+![Packages](images/courses/packages.png)
 
 Learn all about the dpkg, apt-get, rpm, and yum package management tools.
 
@@ -172,7 +174,7 @@ Learn all about the dpkg, apt-get, rpm, and yum package management tools.
 
 ### Devices
 
-![Devices](https://labex.io/images/linuxjourney/courses/devices.png)
+![Devices](images/courses/devices.png)
 
 Learn about Linux devices and how they interact with the kernel and user space.
 
@@ -186,7 +188,7 @@ Learn about Linux devices and how they interact with the kernel and user space.
 
 ### The Filesystem
 
-![The Filesystem](https://labex.io/images/linuxjourney/courses/filesystem.png)
+![The Filesystem](images/courses/filesystem.png)
 
 Learn about the Linux filesystem, the different types of filesystems, partitioning, and more.
 
@@ -205,7 +207,7 @@ Learn about the Linux filesystem, the different types of filesystems, partitioni
 
 ### Boot the System
 
-![Boot the System](https://labex.io/images/linuxjourney/courses/boot-system.png)
+![Boot the System](images/courses/boot-system.png)
 
 Learn about the stages of the Linux boot process.
 
@@ -217,7 +219,7 @@ Learn about the stages of the Linux boot process.
 
 ### Kernel
 
-![Kernel](https://labex.io/images/linuxjourney/courses/kernel.png)
+![Kernel](images/courses/kernel.png)
 
 The most important part of the Linux system; learn about how it works and how to configure it.
 
@@ -230,7 +232,7 @@ The most important part of the Linux system; learn about how it works and how to
 
 ### Init
 
-![Init](https://labex.io/images/linuxjourney/courses/init.png)
+![Init](images/courses/init.png)
 
 Learn about the different init systems: SysV, Upstart, and systemd.
 
@@ -244,7 +246,7 @@ Learn about the different init systems: SysV, Upstart, and systemd.
 
 ### Process Utilization
 
-![Process Utilization](https://labex.io/images/linuxjourney/courses/process-utilization.png)
+![Process Utilization](images/courses/process-utilization.png)
 
 Learn resource monitoring with top, load averages, iostat, and more!
 
@@ -259,7 +261,7 @@ Learn resource monitoring with top, load averages, iostat, and more!
 
 ### Logging
 
-![Logging](https://labex.io/images/linuxjourney/courses/logging.png)
+![Logging](images/courses/logging.png)
 
 Learn about system logs and the /var/log directory.
 
@@ -274,7 +276,7 @@ Learn about system logs and the /var/log directory.
 
 ### Network Sharing
 
-![Network Sharing](https://labex.io/images/linuxjourney/courses/network-sharing.png)
+![Network Sharing](images/courses/network-sharing.png)
 
 Learn about network sharing with rsync, scp, nfs, and more.
 
@@ -286,7 +288,7 @@ Learn about network sharing with rsync, scp, nfs, and more.
 
 ### Network Basics
 
-![Network Basics](https://labex.io/images/linuxjourney/courses/network-basics.png)
+![Network Basics](images/courses/network-basics.png)
 
 Learn about networking basics and the TCP/IP model.
 
@@ -302,7 +304,7 @@ Learn about networking basics and the TCP/IP model.
 
 ### Subnetting
 
-![Subnetting](https://labex.io/images/linuxjourney/courses/subnetting.png)
+![Subnetting](images/courses/subnetting.png)
 
 Learn about subnets and how to do subnet arithmetic!
 
@@ -316,7 +318,7 @@ Learn about subnets and how to do subnet arithmetic!
 
 ### Routing
 
-![Routing](https://labex.io/images/linuxjourney/courses/routing.png)
+![Routing](images/courses/routing.png)
 
 Learn how packets are routed across networks!
 
@@ -330,7 +332,7 @@ Learn how packets are routed across networks!
 
 ### Network Config
 
-![Network Config](https://labex.io/images/linuxjourney/courses/network-config.png)
+![Network Config](images/courses/network-config.png)
 
 Learn about network configuration using Linux tools!
 
@@ -342,7 +344,7 @@ Learn about network configuration using Linux tools!
 
 ### Troubleshooting
 
-![Troubleshooting](https://labex.io/images/linuxjourney/courses/troubleshooting.png)
+![Troubleshooting](images/courses/troubleshooting.png)
 
 Learn about common networking tools to help you diagnose and troubleshoot issues!
 
@@ -354,7 +356,7 @@ Learn about common networking tools to help you diagnose and troubleshoot issues
 
 ### DNS
 
-![DNS](https://labex.io/images/linuxjourney/courses/dns.png)
+![DNS](images/courses/dns.png)
 
 Everything and more that you wanted to know about DNS.
 
@@ -364,6 +366,171 @@ Everything and more that you wanted to know about DNS.
 - [/etc/hosts](https://labex.io/lesson/etc-hosts)
 - [DNS Setup](https://labex.io/lesson/dns-setup)
 - [DNS Tools](https://labex.io/lesson/dns-tools)
+
+## DevOps
+
+### Docker
+
+![Docker course cover](images/courses/docker.png)
+
+Learn how Docker images and containers work, then run and inspect a small web service.
+
+- [Containers](lessons/en/docker/docker-containers.md)
+- [Images](lessons/en/docker/docker-images.md)
+- [docker run](lessons/en/docker/docker-run-command.md)
+- [docker ps](lessons/en/docker/docker-ps-command.md)
+- [Port Mapping](lessons/en/docker/docker-port-mapping.md)
+- [docker logs](lessons/en/docker/docker-logs-command.md)
+- [Dockerfile](lessons/en/docker/dockerfile.md)
+
+### Git
+
+![Git course cover](images/courses/git.png)
+
+Learn to track a small website from the working tree through commits, branches, and review.
+
+- [Repositories](lessons/en/git/git-repositories.md)
+- [git status](lessons/en/git/git-status-command.md)
+- [git diff](lessons/en/git/git-diff-command.md)
+- [Commits](lessons/en/git/git-commits.md)
+- [Branches](lessons/en/git/git-branches.md)
+- [Remotes](lessons/en/git/git-remotes.md)
+- [Pull Requests](lessons/en/git/git-pull-requests.md)
+- [git revert](lessons/en/git/git-revert-command.md)
+
+### Docker Compose
+
+![Docker Compose course cover](images/courses/docker-compose.png)
+
+Read a Compose file and use it to run a small service and its helper together.
+
+- [Compose Files](lessons/en/docker-compose/compose-files.md)
+- [Compose Services](lessons/en/docker-compose/compose-services.md)
+- [Service Discovery](lessons/en/docker-compose/compose-service-discovery.md)
+- [Volumes](lessons/en/docker-compose/compose-volumes.md)
+- [Environment Variables](lessons/en/docker-compose/compose-environment-variables.md)
+- [Service Dependencies](lessons/en/docker-compose/compose-service-dependencies.md)
+
+### Continuous Integration
+
+![Continuous Integration course cover](images/courses/continuous-integration.png)
+
+Learn how changes trigger repeatable checks and how to read a workflow result.
+
+- [Continuous Integration](lessons/en/continuous-integration/ci-overview.md)
+- [Workflow Triggers](lessons/en/continuous-integration/ci-workflow-triggers.md)
+- [Jobs, Steps, and Runners](lessons/en/continuous-integration/ci-jobs-steps-runners.md)
+- [Builds and Tests](lessons/en/continuous-integration/ci-builds-and-tests.md)
+- [Workflow Logs](lessons/en/continuous-integration/ci-workflow-logs.md)
+- [Build Artifacts](lessons/en/continuous-integration/ci-build-artifacts.md)
+- [Workflow Permissions](lessons/en/continuous-integration/ci-workflow-permissions.md)
+
+### Deployment
+
+![Deployment course cover](images/courses/deployment.png)
+
+Trace a build to the running version, verify a release, and reason about rollback.
+
+- [Build, Release, and Deploy](lessons/en/deployment/build-release-deploy.md)
+- [Image Versions](lessons/en/deployment/deployment-image-versions.md)
+- [Staging](lessons/en/deployment/deployment-staging.md)
+- [Health Checks](lessons/en/deployment/deployment-health-checks.md)
+- [Rollbacks](lessons/en/deployment/deployment-rollbacks.md)
+- [Deployment Records](lessons/en/deployment/deployment-records.md)
+
+### Service Monitoring
+
+![Service Monitoring course cover](images/courses/service-monitoring.png)
+
+Read logs, metrics, and alerts to decide what to check when a service changes.
+
+- [Monitoring Signals](lessons/en/service-monitoring/service-monitoring-signals.md)
+- [Service Logs](lessons/en/service-monitoring/service-logs.md)
+- [Availability and Errors](lessons/en/service-monitoring/service-availability-errors.md)
+- [Latency](lessons/en/service-monitoring/service-latency.md)
+- [Resource Saturation](lessons/en/service-monitoring/service-resource-saturation.md)
+- [Service Alerts](lessons/en/service-monitoring/service-alerts.md)
+- [Service Troubleshooting](lessons/en/service-monitoring/service-troubleshooting.md)
+
+## Cybersecurity
+
+### Security Logs
+
+![Security Logs course cover](images/courses/security-logs.png)
+
+Learn to read Linux security records and connect login, sudo, and session activity.
+
+- [Security Events](lessons/en/security-logs/security-events.md)
+- [SSH Login Events](lessons/en/security-logs/ssh-login-events.md)
+- [sudo Events](lessons/en/security-logs/sudo-events.md)
+- [Session Records](lessons/en/security-logs/security-session-records.md)
+- [Event Correlation](lessons/en/security-logs/security-event-correlation.md)
+
+### Linux Hardening
+
+![Linux Hardening course cover](images/courses/linux-hardening.png)
+
+Use a service inventory to reason about exposure, permissions, and protective settings.
+
+- [Attack Surface](lessons/en/linux-hardening/host-attack-surface.md)
+- [Service Accounts](lessons/en/linux-hardening/linux-service-accounts.md)
+- [Least Privilege](lessons/en/linux-hardening/linux-least-privilege.md)
+- [Listening Services](lessons/en/linux-hardening/linux-listening-services.md)
+- [Host Firewalls](lessons/en/linux-hardening/linux-host-firewalls.md)
+- [SSH Access](lessons/en/linux-hardening/linux-ssh-access.md)
+- [Security Updates](lessons/en/linux-hardening/linux-security-updates.md)
+
+### Web Security
+
+![Web Security course cover](images/courses/web-security.png)
+
+Learn what HTTPS, authentication, sessions, and authorization each protect.
+
+- [HTTP Requests and Responses](lessons/en/web-security/web-http-requests-responses.md)
+- [HTTPS](lessons/en/web-security/web-https.md)
+- [Certificates](lessons/en/web-security/web-certificates.md)
+- [Authentication](lessons/en/web-security/web-authentication.md)
+- [Sessions and Cookies](lessons/en/web-security/web-sessions-and-cookies.md)
+- [Authorization](lessons/en/web-security/web-authorization.md)
+- [Web Access Logs](lessons/en/web-security/web-access-logs.md)
+
+### Network Monitoring
+
+![Network Monitoring course cover](images/courses/network-monitoring.png)
+
+Compare flow summaries, DNS logs, and packet views to interpret a network alert.
+
+- [Network Records](lessons/en/network-monitoring/network-monitoring-records.md)
+- [Network Flows](lessons/en/network-monitoring/network-monitoring-flows.md)
+- [DNS Logs](lessons/en/network-monitoring/network-monitoring-dns-logs.md)
+- [Wireshark Display Filters](lessons/en/network-monitoring/wireshark-display-filters.md)
+- [Traffic Baselines](lessons/en/network-monitoring/network-traffic-baselines.md)
+- [Network Alerts](lessons/en/network-monitoring/network-monitoring-alerts.md)
+
+### System Auditing
+
+![System Auditing course cover](images/courses/system-auditing.png)
+
+Read Linux audit events and file integrity records to explain a configuration change.
+
+- [Audit Events](lessons/en/system-auditing/system-audit-events.md)
+- [Linux Audit Logs](lessons/en/system-auditing/linux-audit-logs.md)
+- [File Integrity](lessons/en/system-auditing/host-file-integrity.md)
+- [Integrity Baselines](lessons/en/system-auditing/file-integrity-baselines.md)
+- [Configuration Changes](lessons/en/system-auditing/auditing-configuration-changes.md)
+
+### Incident Response
+
+![Incident Response course cover](images/courses/incident-response.png)
+
+Review a simulated service incident and write a short report grounded in the available evidence.
+
+- [Incident Triage](lessons/en/incident-response/incident-triage.md)
+- [Evidence Preservation](lessons/en/incident-response/incident-evidence-preservation.md)
+- [Incident Timelines](lessons/en/incident-response/incident-timelines.md)
+- [Containment](lessons/en/incident-response/incident-containment.md)
+- [Recovery](lessons/en/incident-response/incident-recovery.md)
+- [Incident Reports](lessons/en/incident-response/incident-reports.md)
 
 ## Contributing
 

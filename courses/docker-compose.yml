@@ -1,0 +1,87 @@
+id: docker-compose
+category:
+  id: devops
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/docker-compose.png
+order_index: 2
+translations:
+  en:
+    title: "Docker Compose"
+    description: "Read a Compose file and use it to run a small service and its helper together."
+    faqs:
+      - question: "What should I know first?"
+        answer: "You should recognize a Docker image, a container, and a published port. The Docker course introduces those concepts."
+    meta_title: "Docker Compose Course for Beginners"
+    meta_description: "Read a Compose file and use it to run a small service and its helper together."
+    meta_keywords: "docker compose, Linux Journey, beginner course, devops"
+  de:
+    title: "Docker Compose"
+    description: "Lies eine Compose-Datei und starte damit einen kleinen Dienst zusammen mit einem Hilfscontainer."
+    faqs:
+      - question: "Was sollte ich vorher wissen?"
+        answer: "Du solltest Docker-Images und Container kennen und wissen, was ein veröffentlichter Port ist. Der Docker-Kurs führt diese Begriffe ein."
+    meta_title: "Docker Compose für Einsteiger"
+    meta_description: "Lies eine Compose-Datei, starte einen Dienst samt Hilfscontainer und lerne, wie Dienste, Volumes und Healthchecks zusammenspielen."
+    meta_keywords: "Docker Compose, Compose-Datei, Dienste, Volumes, Healthchecks, DevOps, Linux Journey"
+  es:
+    title: "Docker Compose"
+    description: "Lee un archivo de Compose y úsalo para ejecutar un pequeño servicio junto con su contenedor auxiliar."
+    faqs:
+      - question: "¿Qué debería saber antes de empezar?"
+        answer: "Conviene que sepas qué es una imagen de Docker, un contenedor y un puerto publicado. El curso de Docker presenta estos conceptos."
+    meta_title: "Curso de Docker Compose para principiantes"
+    meta_description: "Lee un archivo de Compose, inicia varios servicios y entiende cómo funcionan los volúmenes y las comprobaciones de estado."
+    meta_keywords: "Docker Compose, archivo de Compose, servicios, volúmenes, DevOps, Linux Journey"
+  fr:
+    title: "Docker Compose"
+    description: "Lisez un fichier Compose et utilisez-le pour exécuter un petit service et son conteneur utilitaire."
+    faqs:
+      - question: "Que dois-je savoir avant de commencer ?"
+        answer: "Vous devez savoir ce que sont une image Docker, un conteneur et un port publié. Le cours Docker présente ces trois notions."
+    meta_title: "Cours Docker Compose pour débutants"
+    meta_description: "Lisez un fichier Compose, lancez des services et découvrez le rôle des volumes et des contrôles d’état."
+    meta_keywords: "Docker Compose, fichier Compose, services, volumes, contrôles d’état, DevOps, Linux Journey"
+  ja:
+    title: "Docker Compose"
+    description: "Compose ファイルの読み方を学び、小さなサービスと補助コンテナを一緒に起動します。"
+    faqs:
+      - question: "先に何を知っておくとよいですか？"
+        answer: "Docker のイメージとコンテナ、ポートの公開を知っておくとスムーズです。いずれも Docker コースで扱います。"
+    meta_title: "Docker Compose 入門"
+    meta_description: "Compose ファイルからサービスを起動し、サービス名による接続、ボリューム、ヘルスチェックの仕組みを学びます。"
+    meta_keywords: "Docker Compose, Compose ファイル, サービス, ボリューム, ヘルスチェック, DevOps, Linux Journey"
+  ko:
+    title: "Docker Compose"
+    description: "Compose 파일을 읽고 작은 서비스와 보조 컨테이너를 함께 실행해 봅니다."
+    faqs:
+      - question: "먼저 무엇을 알아야 하나요?"
+        answer: "Docker 이미지와 컨테이너, 포트 공개 개념을 알고 있으면 좋습니다. Docker 과정에서 이 내용을 다룹니다."
+    meta_title: "Docker Compose 입문 과정"
+    meta_description: "Compose 파일로 서비스를 실행하고 서비스 이름으로 접속하는 법, 볼륨과 상태 점검의 역할을 배웁니다."
+    meta_keywords: "Docker Compose, Compose 파일, 서비스, 볼륨, 상태 점검, DevOps, Linux Journey"
+  pt:
+    title: "Docker Compose"
+    description: "Leia um arquivo do Compose e use-o para executar um pequeno serviço junto com seu contêiner auxiliar."
+    faqs:
+      - question: "O que preciso saber antes de começar?"
+        answer: "É bom saber o que são imagens e contêineres do Docker e como funciona uma porta publicada. O curso de Docker apresenta esses conceitos."
+    meta_title: "Curso de Docker Compose para iniciantes"
+    meta_description: "Leia um arquivo do Compose, inicie serviços e entenda o papel dos volumes e das verificações de integridade."
+    meta_keywords: "Docker Compose, arquivo Compose, serviços, volumes, verificações de integridade, DevOps, Linux Journey"
+  ru:
+    title: "Docker Compose"
+    description: "Научитесь читать файл Compose и запускать небольшой сервис вместе со вспомогательным контейнером."
+    faqs:
+      - question: "Что стоит изучить заранее?"
+        answer: "Полезно знать, что такое образ Docker и контейнер и как работает публикация порта. Эти темы объясняются в курсе Docker."
+    meta_title: "Курс Docker Compose для начинающих"
+    meta_description: "Прочитайте файл Compose, запустите сервисы и разберитесь, как работают имена сервисов, тома и проверки состояния."
+    meta_keywords: "Docker Compose, файл Compose, сервисы, тома, проверка состояния, DevOps, Linux Journey"
+  zh:
+    title: "Docker Compose"
+    description: "读懂 Compose 文件，并用它一起启动小型服务和配套工具。"
+    faqs:
+      - question: "需要先掌握哪些知识？"
+        answer: "建议先了解 Docker 镜像、容器，以及如何将容器端口发布到主机。这些内容都在 Docker 课程中介绍。"
+    meta_title: "Docker Compose 入门课程"
+    meta_description: "学习如何读懂 Compose 文件、启动服务、通过服务名访问容器，以及使用数据卷和健康检查。"
+    meta_keywords: "Docker Compose, Compose 文件, 容器服务, DevOps, Linux Journey"

@@ -16,11 +16,16 @@ Thank you for helping improve Linux Journey. This repository contains course met
 courses/<course-id>.yml
 images/courses/<course-id>.png
 lessons/<language-code>/<course-id>/<lesson-id>.md
+images/lessons/<course-id>/<lesson-id>/<image-name>.png
 ```
 
 Course and lesson IDs, directory names, and Markdown filenames use lowercase kebab-case. A lesson's path must agree with its `lesson_id`, `course_id`, and `lang` values. For example, `lessons/en/command-line/the-shell.md` belongs to the `command-line` course and uses the lesson ID `the-shell` and language `en`.
 
 The maintained language directories are `de`, `en`, `es`, `fr`, `ja`, `ko`, `pt`, `ru`, and `zh`. Contributions may correct or improve lesson content, translations, course metadata, or artwork. Keep revisions as small as possible while leaving the affected content accurate and coherent.
+
+## Lesson Images
+
+Store new lesson images under `images/lessons/<course-id>/<lesson-id>/`. Use a descriptive lowercase kebab-case filename and alt text that explains what the image shows. Use the repository CDN URL in lesson Markdown. Translations can reuse images whose content works across languages. Keep published image paths stable.
 
 ## Course Metadata
 
@@ -44,7 +49,7 @@ translations:
     meta_keywords: "Linux command line, shell basics, Linux commands"
 ```
 
-The filename and `id` must match. Use the category ID `grasshopper`, `journeyman`, or `networking-nomad`, and keep `order_index` unique within that category. When shared course facts change, update the affected translations consistently; do not add placeholder or machine-generated translations.
+The filename and `id` must match. Use one of the category IDs listed in the [Course Map](#course-map), and keep `order_index` unique within that category. When shared course facts change, update the affected translations consistently; do not add placeholder or machine-generated translations.
 
 ## Lesson Format
 
@@ -149,6 +154,8 @@ Keep the translation aligned with the English source. Preserve commands, code, l
 - **Grasshopper:** `getting-started`, `command-line`, `text-fu`, `advanced-text-fu`, `user-management`, `permissions`, `processes`, `packages`
 - **Journeyman:** `devices`, `filesystem`, `boot-system`, `kernel`, `init`, `process-utilization`, `logging`
 - **Networking Nomad:** `network-sharing`, `network-basics`, `subnetting`, `routing`, `network-config`, `troubleshooting`, `dns`
+- **DevOps** (`devops`): `docker`, `git`, `docker-compose`, `continuous-integration`, `deployment`, `service-monitoring`
+- **Cybersecurity** (`cybersecurity`): `security-logs`, `linux-hardening`, `web-security`, `network-monitoring`, `system-auditing`, `incident-response`
 
 ## Submit a Pull Request
 

@@ -1,0 +1,123 @@
+id: docker
+category:
+  id: devops
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/docker.png
+order_index: 0
+translations:
+  en:
+    title: "Docker"
+    description: "Learn how Docker images and containers work, then run and inspect a small web service."
+    faqs:
+      - question: "Do I need to install Docker to start this course?"
+        answer: "You can follow the lessons using the sample commands and output. When you are ready to try the commands, use a Docker environment or the linked LabEx lab."
+      - question: "What will I learn to check in a running container?"
+        answer: "You will learn to read the container state, find the published port, and use collected output to investigate a problem."
+      - question: "Will I build my own image?"
+        answer: "The final lesson shows how to build a web server image with a Dockerfile and run a container that serves your own page."
+    meta_title: "Docker Course for Beginners"
+    meta_description: "Learn Docker images and containers, docker run, docker ps, port mapping, docker logs, and how to build a web server image with a Dockerfile."
+    meta_keywords: "Docker basics, Docker images, Docker containers, docker run, docker ps, Docker ports, docker logs, Dockerfile"
+  de:
+    title: "Docker"
+    description: "Lerne, wie Docker-Images und Container funktionieren, und starte und überprüfe einen kleinen Webdienst."
+    faqs:
+      - question: "Muss ich Docker installieren, um mit dem Kurs zu beginnen?"
+        answer: "Du kannst den Lektionen anhand der Befehle und Beispielausgaben folgen. Zum Ausprobieren kannst du eine Docker-Umgebung oder die verlinkte LabEx-Übung nutzen."
+      - question: "Was lerne ich an einem laufenden Container zu überprüfen?"
+        answer: "Du liest den Containerstatus ab, findest den veröffentlichten Port und wertest die erfasste Ausgabe aus, um einem Problem nachzugehen."
+      - question: "Baue ich auch ein eigenes Image?"
+        answer: "In der letzten Lektion baust du mit einem Dockerfile ein Webserver-Image und startest einen Container, der deine eigene Seite ausliefert."
+    meta_title: "Docker für Einsteiger"
+    meta_description: "Lerne die Grundlagen zu Images, Containern, Portzuordnungen und Docker-Befehlen und baue mit einem Dockerfile ein Webserver-Image."
+    meta_keywords: "Docker-Grundlagen, Docker-Images, Docker-Container, docker run, docker ps, Portzuordnung, docker logs, Dockerfile"
+  es:
+    title: "Docker"
+    description: "Aprende cómo funcionan las imágenes y los contenedores de Docker. Después, pon en marcha un pequeño servicio web e inspecciónalo."
+    faqs:
+      - question: "¿Tengo que instalar Docker antes de empezar?"
+        answer: "Puedes seguir las lecciones con los comandos y las salidas de ejemplo. Cuando quieras probar los comandos, usa un entorno con Docker o el laboratorio de LabEx enlazado."
+      - question: "¿Qué aprenderé a comprobar en un contenedor en ejecución?"
+        answer: "Aprenderás a consultar el estado del contenedor, localizar el puerto publicado y usar la salida del programa para investigar un problema."
+      - question: "¿Crearé mi propia imagen?"
+        answer: "La última lección enseña a crear una imagen de servidor web con un Dockerfile y a iniciar un contenedor que sirva tu propia página."
+    meta_title: "Curso de Docker para principiantes"
+    meta_description: "Aprende a usar imágenes y contenedores de Docker, publicar puertos y crear una imagen de servidor web con un Dockerfile."
+    meta_keywords: "Docker básico, imágenes de Docker, contenedores de Docker, docker run, docker ps, publicación de puertos, docker logs, Dockerfile"
+  fr:
+    title: "Docker"
+    description: "Découvrez le fonctionnement des images et des conteneurs Docker, puis lancez et inspectez un petit service web."
+    faqs:
+      - question: "Dois-je installer Docker pour commencer ?"
+        answer: "Vous pouvez suivre les leçons à l’aide des commandes et des sorties fournies. Pour les essayer, utilisez un environnement Docker ou l’atelier LabEx indiqué."
+      - question: "Que vais-je apprendre à vérifier sur un conteneur en cours d’exécution ?"
+        answer: "Vous apprendrez à lire son état, à repérer le port publié et à exploiter les sorties du programme pour diagnostiquer un problème."
+      - question: "Vais-je construire ma propre image ?"
+        answer: "La dernière leçon explique comment construire une image de serveur web avec un Dockerfile et démarrer un conteneur qui sert votre propre page."
+    meta_title: "Cours Docker pour débutants"
+    meta_description: "Apprenez à gérer les images et les conteneurs Docker, à publier des ports et à construire une image de serveur web avec un Dockerfile."
+    meta_keywords: "bases de Docker, images Docker, conteneurs Docker, docker run, docker ps, publication de ports, docker logs, Dockerfile"
+  ja:
+    title: "Docker"
+    description: "Docker のイメージとコンテナの仕組みを学び、小さな Web サービスを起動して状態を確認します。"
+    faqs:
+      - question: "始める前に Docker をインストールする必要はありますか？"
+        answer: "レッスンに掲載したコマンドと出力例を読むだけでも進められます。実際にコマンドを試すときは、Docker 環境またはリンク先の LabEx ラボを使ってください。"
+      - question: "実行中のコンテナについて、何を確認できるようになりますか？"
+        answer: "コンテナの状態と公開ポートを確認し、記録された出力を手がかりに問題を調べる方法を学びます。"
+      - question: "自分でイメージを作りますか？"
+        answer: "最後のレッスンでは Dockerfile から Web サーバーのイメージを作り、自分のページを配信するコンテナを起動します。"
+    meta_title: "Docker 入門"
+    meta_description: "Docker のイメージとコンテナ、基本コマンド、ポートの公開を学び、Dockerfile から Web サーバーのイメージを作ります。"
+    meta_keywords: "Docker 入門, Docker イメージ, Docker コンテナ, docker run, docker ps, ポート公開, docker logs, Dockerfile"
+  ko:
+    title: "Docker"
+    description: "Docker 이미지와 컨테이너가 어떻게 동작하는지 배우고, 작은 웹 서비스를 실행해 상태를 확인합니다."
+    faqs:
+      - question: "시작하기 전에 Docker를 설치해야 하나요?"
+        answer: "예제 명령어와 출력만 읽어도 학습을 진행할 수 있습니다. 명령어를 직접 실행해 보고 싶다면 Docker 환경이나 연결된 LabEx 실습을 이용하세요."
+      - question: "실행 중인 컨테이너에서 무엇을 확인하게 되나요?"
+        answer: "컨테이너 상태를 읽고 공개된 포트를 찾으며, 프로그램의 출력을 바탕으로 문제를 조사하는 방법을 배웁니다."
+      - question: "직접 이미지를 만들어 보나요?"
+        answer: "마지막 레슨에서 Dockerfile로 웹 서버 이미지를 만들고, 직접 만든 페이지를 제공하는 컨테이너를 실행합니다."
+    meta_title: "Docker 입문 과정"
+    meta_description: "Docker 이미지, 컨테이너, 기본 명령어와 포트 매핑을 익히고 Dockerfile로 웹 서버 이미지를 만들어 봅니다."
+    meta_keywords: "Docker 기초, Docker 이미지, Docker 컨테이너, docker run, docker ps, 포트 매핑, docker logs, Dockerfile"
+  pt:
+    title: "Docker"
+    description: "Aprenda como funcionam as imagens e os contêineres do Docker. Depois, execute e inspecione um pequeno serviço web."
+    faqs:
+      - question: "Preciso instalar o Docker antes de começar?"
+        answer: "Você pode acompanhar as lições com os comandos e as saídas de exemplo. Para testar os comandos, use um ambiente com Docker ou o laboratório indicado da LabEx."
+      - question: "O que vou aprender a verificar em um contêiner em execução?"
+        answer: "Você vai aprender a consultar o estado do contêiner, localizar a porta publicada e usar a saída registrada para investigar um problema."
+      - question: "Vou criar minha própria imagem?"
+        answer: "A última lição ensina a criar uma imagem de servidor web com um Dockerfile e a iniciar um contêiner que sirva sua página."
+    meta_title: "Curso de Docker para iniciantes"
+    meta_description: "Use imagens e contêineres do Docker, publique portas e crie uma imagem de servidor web com um Dockerfile."
+    meta_keywords: "Docker básico, imagens Docker, contêineres Docker, docker run, docker ps, publicação de portas, docker logs, Dockerfile"
+  ru:
+    title: "Docker"
+    description: "Разберитесь, как работают образы и контейнеры Docker, а затем запустите небольшой веб-сервис и проверьте его состояние."
+    faqs:
+      - question: "Нужно ли устанавливать Docker перед началом курса?"
+        answer: "В уроках приведены команды и примеры вывода, поэтому сначала их можно просто прочитать. Чтобы попробовать команды, воспользуйтесь средой с Docker или лабораторной работой LabEx по ссылке."
+      - question: "Что я научусь проверять у запущенного контейнера?"
+        answer: "Вы научитесь определять состояние контейнера, находить опубликованный порт и разбирать собранный вывод программы, чтобы понять, в чём проблема."
+      - question: "Я соберу собственный образ?"
+        answer: "В последнем уроке вы соберёте из Dockerfile образ веб-сервера и запустите контейнер, который будет отдавать вашу страницу."
+    meta_title: "Курс Docker для начинающих"
+    meta_description: "Познакомьтесь с образами и контейнерами Docker, освойте основные команды и публикацию портов и соберите образ веб-сервера из Dockerfile."
+    meta_keywords: "основы Docker, образы Docker, контейнеры Docker, docker run, docker ps, публикация портов, docker logs, Dockerfile"
+  zh:
+    title: "Docker"
+    description: "了解 Docker 镜像和容器的工作方式，动手运行并检查一个小型 Web 服务。"
+    faqs:
+      - question: "开始学习前需要安装 Docker 吗？"
+        answer: "课文提供示例命令和输出，可以直接阅读。想亲手试一试时，可使用装有 Docker 的环境，或打开课文链接的 LabEx 实验。"
+      - question: "我会学习如何检查运行中的容器吗？"
+        answer: "你会学到如何查看容器状态、找出发布到主机的端口，以及如何根据容器输出排查问题。"
+      - question: "我会自己构建镜像吗？"
+        answer: "最后一课会介绍如何用 Dockerfile 构建 Web 服务器镜像，并启动容器来提供你自己的网页。"
+    meta_title: "Docker 入门课程"
+    meta_description: "学习 Docker 镜像、容器、端口映射和常用命令，并用 Dockerfile 构建 Web 服务器镜像。"
+    meta_keywords: "Docker 入门, Docker 镜像, Docker 容器, docker run, docker ps, 端口映射, docker logs, Dockerfile"

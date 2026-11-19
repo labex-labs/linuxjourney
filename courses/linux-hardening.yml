@@ -1,0 +1,87 @@
+id: linux-hardening
+category:
+  id: cybersecurity
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/linux-hardening.png
+order_index: 1
+translations:
+  en:
+    title: "Linux Hardening"
+    description: "Use a service inventory to reason about exposure, permissions, and protective settings."
+    faqs:
+      - question: "Will the examples change how I connect to my system?"
+        answer: "The lessons use read-only observations and practice settings to explain changes and verification."
+    meta_title: "Linux Hardening Course for Beginners"
+    meta_description: "Use a service inventory to reason about exposure, permissions, and protective settings."
+    meta_keywords: "linux hardening, Linux Journey, beginner course, cybersecurity"
+  de:
+    title: "Linux-Härtung"
+    description: "Nutze eine Dienstübersicht, um Erreichbarkeit, Berechtigungen und Schutzmaßnahmen einzuordnen."
+    faqs:
+      - question: "Ändern die Beispiele, wie ich auf mein System zugreife?"
+        answer: "Die Lektionen erklären Änderungen und deren Überprüfung anhand von Übungskonfigurationen und Abfragen, die das System nur auslesen."
+    meta_title: "Linux-Härtung für Einsteiger"
+    meta_description: "Lerne anhand einer Dienstübersicht, wie du Erreichbarkeit, minimale Rechte, Host-Firewalls, SSH und Sicherheitsupdates beurteilst."
+    meta_keywords: "Linux-Härtung, minimale Rechte, Überwachung von Ports, Host-Firewall, SSH, Cybersicherheit, Linux Journey"
+  es:
+    title: "Endurecimiento de Linux"
+    description: "Usa un inventario de servicios para analizar cuáles están expuestos, qué permisos necesitan y qué medidas los protegen."
+    faqs:
+      - question: "¿Los ejemplos cambiarán la forma en que me conecto a mi sistema?"
+        answer: "Las lecciones explican los cambios y cómo verificarlos mediante consultas de solo lectura y configuraciones de práctica."
+    meta_title: "Curso de endurecimiento de Linux para principiantes"
+    meta_description: "Aprende a evaluar la exposición de servicios, los permisos mínimos, el cortafuegos del equipo, SSH y las actualizaciones de seguridad."
+    meta_keywords: "endurecimiento de Linux, mínimo privilegio, cortafuegos, SSH, ciberseguridad, Linux Journey"
+  fr:
+    title: "Durcissement de Linux"
+    description: "Analysez un inventaire de services pour comprendre leur exposition, leurs privilèges et les mesures qui les protègent."
+    faqs:
+      - question: "Les exemples vont-ils changer la façon dont j’accède à mon système ?"
+        answer: "Les leçons utilisent des observations en lecture seule et des configurations d’exercice pour expliquer les changements et leur vérification."
+    meta_title: "Cours de durcissement de Linux pour débutants"
+    meta_description: "Évaluez l’exposition des services, les privilèges, les pare-feu, l’accès SSH et les mises à jour de sécurité sous Linux."
+    meta_keywords: "durcissement Linux, moindre privilège, pare-feu, SSH, cybersécurité, Linux Journey"
+  ja:
+    title: "Linux の堅牢化"
+    description: "サービスの一覧を手がかりに、公開範囲、権限、保護のための設定を考えます。"
+    faqs:
+      - question: "例の操作で自分のシステムへの接続方法が変わりますか？"
+        answer: "読み取り専用の確認や練習用の設定例を使って、設定変更の意味とその確認方法を学びます。"
+    meta_title: "Linux の堅牢化入門"
+    meta_description: "最小権限、待ち受けアドレス、ホストファイアウォール、SSH、セキュリティ更新の基本を学びます。"
+    meta_keywords: "Linux の堅牢化, 最小権限, ファイアウォール, SSH, セキュリティ更新, サイバーセキュリティ, Linux Journey"
+  ko:
+    title: "Linux 보안 강화"
+    description: "서비스 목록을 바탕으로 접근 가능한 범위와 권한, 서비스 보호에 필요한 설정을 판단합니다."
+    faqs:
+      - question: "예제를 따라 하면 시스템에 접속하는 방법이 바뀌나요?"
+        answer: "읽기 전용 확인과 연습용 설정 예제로 변경의 의미와 검증 방법을 설명합니다."
+    meta_title: "Linux 보안 강화 입문 과정"
+    meta_description: "최소 권한, 수신 주소, 호스트 방화벽, SSH와 보안 업데이트의 기초를 살펴봅니다."
+    meta_keywords: "Linux 보안 강화, 최소 권한, 방화벽, SSH, 보안 업데이트, 사이버 보안, Linux Journey"
+  pt:
+    title: "Hardening do Linux"
+    description: "Use um inventário de serviços para analisar a exposição, as permissões e as configurações de proteção de um sistema Linux."
+    faqs:
+      - question: "Os exemplos vão mudar a forma como eu acesso meu sistema?"
+        answer: "As lições usam consultas que não alteram o sistema e configurações de prática para explicar as mudanças e como verificá-las."
+    meta_title: "Curso de hardening do Linux para iniciantes"
+    meta_description: "Aprenda a avaliar a exposição de serviços, o privilégio mínimo, o firewall do host, o acesso via SSH e as atualizações de segurança."
+    meta_keywords: "hardening do Linux, privilégio mínimo, firewall, SSH, cibersegurança, Linux Journey"
+  ru:
+    title: "Укрепление безопасности Linux"
+    description: "Используйте список сервисов, чтобы оценить, откуда они доступны, какие права им нужны и какие настройки их защищают."
+    faqs:
+      - question: "Изменят ли примеры способ подключения к моей системе?"
+        answer: "Изменения и способы их проверки разбираются на учебных настройках и командах, которые только читают данные."
+    meta_title: "Курс по укреплению безопасности Linux для начинающих"
+    meta_description: "Оцените доступность сервисов, разберитесь с принципом наименьших привилегий, межсетевым экраном, SSH и обновлениями безопасности."
+    meta_keywords: "укрепление безопасности Linux, наименьшие привилегии, межсетевой экран, SSH, кибербезопасность, Linux Journey"
+  zh:
+    title: "Linux 安全加固"
+    description: "根据服务清单，判断哪些服务可以访问、需要哪些权限，以及应采用哪些保护措施。"
+    faqs:
+      - question: "示例会改变我连接系统的方式吗？"
+        answer: "课文通过只读观察和练习用配置讲解改动及其验证方法。"
+    meta_title: "Linux 安全加固入门课程"
+    meta_description: "从服务清单入手，理解最小权限、监听地址、主机防火墙、SSH 和安全更新。"
+    meta_keywords: "Linux 安全加固, 最小权限, 主机防火墙, SSH, 网络安全, Linux Journey"

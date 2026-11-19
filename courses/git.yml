@@ -1,0 +1,87 @@
+id: git
+category:
+  id: devops
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/git.png
+order_index: 1
+translations:
+  en:
+    title: "Git"
+    description: "Learn to track a small website from the working tree through commits, branches, and review."
+    faqs:
+      - question: "Can I practice without a GitHub account?"
+        answer: "Yes. The commands use a disposable local repository and a local bare remote. The pull request lesson uses a sample review."
+    meta_title: "Git Course for Beginners"
+    meta_description: "Learn to track a small website from the working tree through commits, branches, and review."
+    meta_keywords: "git, Linux Journey, beginner course, devops"
+  de:
+    title: "Git"
+    description: "Lerne, die Änderungen an einer kleinen Website zu verfolgen – vom Arbeitsbaum über Commits und Branches bis zum Code-Review."
+    faqs:
+      - question: "Kann ich ohne GitHub-Konto üben?"
+        answer: "Ja. Die Befehle verwenden ein lokales Übungsrepository und ein lokales Bare-Repository als Remote. In der Lektion zum Pull Request arbeitest du mit einem Beispiel für ein Review."
+    meta_title: "Git für Einsteiger"
+    meta_description: "Verfolge Änderungen an einer kleinen Website mit Git und lerne Arbeitsbaum, Commits, Branches und Code-Reviews kennen."
+    meta_keywords: "Git, Arbeitsbaum, Commits, Branches, Code-Review, DevOps, Linux Journey"
+  es:
+    title: "Git"
+    description: "Aprende a seguir los cambios de un pequeño sitio web desde el árbol de trabajo hasta las commits, las ramas y la revisión de código."
+    faqs:
+      - question: "¿Puedo practicar sin una cuenta de GitHub?"
+        answer: "Sí. Los comandos usan un repositorio local de práctica y un repositorio desnudo local como remoto. En la lección sobre pull requests se utiliza un ejemplo de revisión."
+    meta_title: "Curso de Git para principiantes"
+    meta_description: "Practica con un repositorio local, revisa los cambios, crea commits y ramas, y aprende a interpretar una revisión de código."
+    meta_keywords: "Git, árbol de trabajo, commits, ramas, revisión de código, DevOps, Linux Journey"
+  fr:
+    title: "Git"
+    description: "Apprenez à suivre les modifications d’un petit site web, de l’arbre de travail jusqu’aux commits, aux branches et à la revue de code."
+    faqs:
+      - question: "Puis-je m’exercer sans compte GitHub ?"
+        answer: "Oui. Les commandes utilisent un dépôt local d’exercice et un dépôt nu local comme distant. La leçon sur les pull requests s’appuie sur un exemple de revue."
+    meta_title: "Cours Git pour débutants"
+    meta_description: "Utilisez un dépôt local pour afficher les modifications d’un site web, créer des commits et des branches, puis comprendre une revue de code."
+    meta_keywords: "Git, arbre de travail, commits, branches, revue de code, DevOps, Linux Journey"
+  ja:
+    title: "Git"
+    description: "小さな Web サイトを題材に、作業ツリーの変更からコミット、ブランチ、コードレビューまでを学びます。"
+    faqs:
+      - question: "GitHub アカウントがなくても練習できますか？"
+        answer: "はい。コマンドの例では練習用のローカルリポジトリと、リモートの代わりになるローカルのベアリポジトリを使います。プルリクエストはレビューの例を使って学びます。"
+    meta_title: "Git 入門"
+    meta_description: "ローカルのリポジトリで変更を確認し、コミットとブランチを作成して、コードレビューの流れを読み解きます。"
+    meta_keywords: "Git 入門, 作業ツリー, コミット, ブランチ, コードレビュー, DevOps, Linux Journey"
+  ko:
+    title: "Git"
+    description: "작은 웹 사이트를 예로 들어 작업 트리의 변경 사항부터 커밋, 브랜치, 코드 리뷰까지 배웁니다."
+    faqs:
+      - question: "GitHub 계정 없이도 연습할 수 있나요?"
+        answer: "네. 명령어는 로컬 연습용 저장소와 원격 저장소 역할을 하는 로컬 베어 저장소에서 실행합니다. 풀 리퀘스트 레슨은 리뷰 예제를 사용합니다."
+    meta_title: "Git 입문 과정"
+    meta_description: "로컬 저장소에서 변경 사항을 확인하고 커밋과 브랜치를 만든 뒤 코드 리뷰의 흐름을 배웁니다."
+    meta_keywords: "Git 기초, 작업 트리, 커밋, 브랜치, 코드 리뷰, DevOps, Linux Journey"
+  pt:
+    title: "Git"
+    description: "Aprenda a acompanhar as mudanças em um pequeno site, da árvore de trabalho aos commits, às branches e à revisão de código."
+    faqs:
+      - question: "Posso praticar sem conta no GitHub?"
+        answer: "Sim. Os comandos usam um repositório local de prática e um repositório bare local como remoto. A lição sobre pull request usa um exemplo de revisão."
+    meta_title: "Curso de Git para iniciantes"
+    meta_description: "Use um repositório local para acompanhar mudanças em um site, criar commits e branches e acompanhar uma revisão de código."
+    meta_keywords: "Git, árvore de trabalho, commits, branches, revisão de código, DevOps, Linux Journey"
+  ru:
+    title: "Git"
+    description: "Научитесь отслеживать изменения небольшого сайта: от рабочего дерева до коммитов, веток и ревью кода."
+    faqs:
+      - question: "Можно ли практиковаться без аккаунта GitHub?"
+        answer: "Да. Для команд используются локальный учебный репозиторий и локальный bare-репозиторий в качестве удалённого. Урок о пул-реквестах опирается на пример ревью."
+    meta_title: "Курс Git для начинающих"
+    meta_description: "Просматривайте изменения сайта в локальном репозитории, создавайте коммиты и ветки и разбирайтесь в процессе ревью кода."
+    meta_keywords: "Git, рабочее дерево, коммиты, ветки, ревью кода, DevOps, Linux Journey"
+  zh:
+    title: "Git"
+    description: "从工作区入手，学习用提交、分支和代码审查管理一个小网站。"
+    faqs:
+      - question: "没有 GitHub 账户也能练习吗？"
+        answer: "可以。命令在临时的本地仓库和本地裸仓库中运行，拉取请求一课则使用审查示例。"
+    meta_title: "Git 入门课程"
+    meta_description: "在本地练习 Git，查看文件改动、创建提交和分支，并读懂一次代码审查。"
+    meta_keywords: "Git 入门, Git 提交, Git 分支, 代码审查, DevOps, Linux Journey"

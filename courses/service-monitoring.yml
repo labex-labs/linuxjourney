@@ -1,0 +1,87 @@
+id: service-monitoring
+category:
+  id: devops
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/service-monitoring.png
+order_index: 5
+translations:
+  en:
+    title: "Service Monitoring"
+    description: "Read logs, metrics, and alerts to decide what to check when a service changes."
+    faqs:
+      - question: "Do I need a monitoring stack?"
+        answer: "You can work through the lessons using the included request summaries, log excerpts, and small metric samples."
+    meta_title: "Service Monitoring Course for Beginners"
+    meta_description: "Read logs, metrics, and alerts to decide what to check when a service changes."
+    meta_keywords: "service monitoring, Linux Journey, beginner course, devops"
+  de:
+    title: "Dienstüberwachung"
+    description: "Lies Logs, Metriken und Warnmeldungen und entscheide, was du bei einer Veränderung am Dienst zuerst prüfen solltest."
+    faqs:
+      - question: "Brauche ich eine eigene Monitoring-Umgebung?"
+        answer: "Du kannst die Lektionen mit den enthaltenen Anfrageübersichten, Logauszügen und kurzen Metrikbeispielen durcharbeiten."
+    meta_title: "Dienstüberwachung für Einsteiger"
+    meta_description: "Lerne, Anfragelogs, Fehlerraten, Latenzen und Auslastung einzuordnen und Warnmeldungen als Ausgangspunkt für eine Untersuchung zu nutzen."
+    meta_keywords: "Dienstüberwachung, Logs, Metriken, Latenz, Fehlerrate, Warnmeldungen, DevOps, Linux Journey"
+  es:
+    title: "Monitorización de servicios"
+    description: "Lee registros, métricas y alertas para decidir qué comprobar cuando cambia el comportamiento de un servicio."
+    faqs:
+      - question: "¿Tengo que montar una plataforma de monitorización?"
+        answer: "Puedes seguir las lecciones con los resúmenes de solicitudes, extractos de registros y pequeñas muestras de métricas que incluye el curso."
+    meta_title: "Curso de monitorización de servicios para principiantes"
+    meta_description: "Usa registros, tasas de error, latencia y métricas de recursos para entender qué ocurre con un servicio y dónde investigar."
+    meta_keywords: "monitorización de servicios, registros, latencia, tasa de errores, alertas, DevOps, Linux Journey"
+  fr:
+    title: "Supervision des services"
+    description: "Lisez des journaux, des métriques et des alertes pour savoir quoi vérifier quand un service change de comportement."
+    faqs:
+      - question: "Dois-je installer une plateforme de supervision ?"
+        answer: "Vous pouvez suivre les leçons à partir des bilans de requêtes, des extraits de journaux et des exemples de métriques fournis."
+    meta_title: "Cours de supervision des services pour débutants"
+    meta_description: "Interprétez les journaux de requêtes, le taux d’erreur, la latence et les métriques de ressources pour examiner une alerte."
+    meta_keywords: "supervision des services, journaux, métriques, latence, taux d’erreur, alertes, DevOps, Linux Journey"
+  ja:
+    title: "サービス監視"
+    description: "ログ、メトリクス、アラートを読み、サービスの挙動に変化があったとき、何から確認するかを考えます。"
+    faqs:
+      - question: "監視システムを用意する必要はありますか？"
+        answer: "レッスンにあるリクエストの集計、ログの抜粋、短いメトリクスのサンプルを使って学べます。"
+    meta_title: "サービス監視入門"
+    meta_description: "リクエストログ、エラー率、応答時間、リソースの使用状況を読み取り、アラートを調査の手がかりにします。"
+    meta_keywords: "サービス監視, ログ, メトリクス, レイテンシ, エラー率, アラート, DevOps, Linux Journey"
+  ko:
+    title: "서비스 모니터링"
+    description: "로그, 지표, 경보를 읽고 서비스의 동작이 달라졌을 때 무엇부터 확인할지 판단합니다."
+    faqs:
+      - question: "모니터링 시스템을 직접 구성해야 하나요?"
+        answer: "레슨에 포함된 요청 요약, 로그 일부와 짧은 지표 예제를 이용해 학습할 수 있습니다."
+    meta_title: "서비스 모니터링 입문 과정"
+    meta_description: "요청 로그와 오류율, 응답 시간, 리소스 사용량을 살펴보고 경보를 조사 단서로 활용합니다."
+    meta_keywords: "서비스 모니터링, 로그, 지표, 응답 시간, 오류율, 경보, DevOps, Linux Journey"
+  pt:
+    title: "Monitoramento de serviços"
+    description: "Leia logs, métricas e alertas para decidir o que verificar quando um serviço muda de comportamento."
+    faqs:
+      - question: "Preciso montar um sistema de monitoramento?"
+        answer: "Você pode acompanhar as lições com os resumos de solicitações, trechos de logs e pequenas amostras de métricas que o curso fornece."
+    meta_title: "Curso de monitoramento de serviços para iniciantes"
+    meta_description: "Use logs de solicitações, taxas de erro, latência e métricas de recursos para investigar mudanças e alertas."
+    meta_keywords: "monitoramento de serviços, logs, métricas, latência, taxa de erros, alertas, DevOps, Linux Journey"
+  ru:
+    title: "Мониторинг сервисов"
+    description: "Читайте журналы, метрики и оповещения, чтобы понять, что проверить при изменении поведения сервиса."
+    faqs:
+      - question: "Нужно ли разворачивать систему мониторинга?"
+        answer: "Для уроков достаточно сводок по запросам, фрагментов журналов и коротких примеров метрик, приведённых в курсе."
+    meta_title: "Курс мониторинга сервисов для начинающих"
+    meta_description: "Используйте журналы запросов, долю ошибок, задержки и метрики ресурсов, чтобы расследовать изменения и оповещения."
+    meta_keywords: "мониторинг сервисов, журналы, метрики, задержка, доля ошибок, оповещения, DevOps, Linux Journey"
+  zh:
+    title: "服务监控"
+    description: "结合日志、指标和告警，判断服务出现变化时应先查什么。"
+    faqs:
+      - question: "需要搭建一套监控系统吗？"
+        answer: "课文提供请求汇总、日志片段和少量指标样本，可以直接用这些材料练习。"
+    meta_title: "服务监控入门课程"
+    meta_description: "学习用请求日志、错误率、延迟和资源指标分析服务问题，并从告警找到核查起点。"
+    meta_keywords: "服务监控, 服务日志, 延迟, 错误率, 告警, DevOps, Linux Journey"

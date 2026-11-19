@@ -1,0 +1,123 @@
+id: security-logs
+category:
+  id: cybersecurity
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/security-logs.png
+order_index: 0
+translations:
+  en:
+    title: "Security Logs"
+    description: "Learn to read Linux security records and connect login, sudo, and session activity."
+    faqs:
+      - question: "Do I need access to a Linux server?"
+        answer: "You can complete the lessons using short simulated log records included with the explanations and questions."
+      - question: "What kinds of records will I read?"
+        answer: "You will read SSH sign-in attempts, sudo permission decisions, and records that show when a login session opened or closed."
+      - question: "What will I learn about event correlation?"
+        answer: "You will compare timestamps, hosts, accounts, and session IDs to link related activity and identify what still needs checking."
+    meta_title: "Linux Security Logs Course"
+    meta_description: "Read SSH, sudo, and session records, understand security alerts, and correlate Linux log events using timestamps and session IDs."
+    meta_keywords: "Linux security logs, SSH login events, sudo logs, session records, security alerts, event correlation"
+  de:
+    title: "Sicherheitsprotokolle"
+    description: "Lerne, Linux-Sicherheitsprotokolle zu lesen und Anmeldungen, sudo-Ereignisse und Sitzungen einander zuzuordnen."
+    faqs:
+      - question: "Brauche ich Zugriff auf einen Linux-Server?"
+        answer: "Du kannst alle Lektionen mit den kurzen simulierten Protokolleinträgen durcharbeiten, die bei den Erklärungen und Fragen stehen."
+      - question: "Welche Protokolleinträge sehe ich mir an?"
+        answer: "Du liest SSH-Anmeldeversuche, Entscheidungen von sudo über Berechtigungen sowie Einträge zum Öffnen und Schließen von Sitzungen."
+      - question: "Was lerne ich über Ereigniskorrelation?"
+        answer: "Du vergleichst Zeitstempel, Hosts, Konten und Sitzungs-IDs, um zusammengehörige Aktivitäten zu erkennen und offene Fragen festzuhalten."
+    meta_title: "Linux-Sicherheitsprotokolle"
+    meta_description: "Lies SSH-, sudo- und Sitzungsprotokolle, ordne Warnmeldungen ein und verknüpfe Ereignisse anhand von Zeitstempeln und Sitzungs-IDs."
+    meta_keywords: "Linux-Sicherheitsprotokolle, SSH-Anmeldungen, sudo-Logs, Sitzungsprotokolle, Warnmeldungen, Ereigniskorrelation"
+  es:
+    title: "Registros de seguridad"
+    description: "Aprende a leer registros de seguridad de Linux y a relacionar inicios de sesión, solicitudes de sudo y sesiones."
+    faqs:
+      - question: "¿Necesito acceso a un servidor Linux?"
+        answer: "Puedes completar las lecciones con los breves registros simulados que acompañan las explicaciones y las preguntas."
+      - question: "¿Qué tipos de registros voy a leer?"
+        answer: "Leerás intentos de inicio de sesión por SSH, decisiones de autorización de sudo y registros que indican cuándo se abrió o se cerró una sesión."
+      - question: "¿Qué aprenderé sobre la correlación de eventos?"
+        answer: "Compararás marcas de tiempo, equipos, cuentas e identificadores de sesión para relacionar actividades y ver qué queda por comprobar."
+    meta_title: "Curso de registros de seguridad de Linux"
+    meta_description: "Lee registros de SSH, sudo y sesiones, interpreta alertas de seguridad y correlaciona eventos mediante marcas de tiempo e identificadores de sesión."
+    meta_keywords: "registros de seguridad de Linux, inicios de sesión SSH, registros de sudo, sesiones, alertas, correlación de eventos"
+  fr:
+    title: "Journaux de sécurité"
+    description: "Apprenez à lire les journaux de sécurité Linux et à relier les connexions, les événements sudo et les sessions."
+    faqs:
+      - question: "Ai-je besoin d’accéder à un serveur Linux ?"
+        answer: "Les leçons contiennent de courts journaux simulés qui accompagnent les explications et les questions."
+      - question: "Quels types d’entrées vais-je lire ?"
+        answer: "Vous lirez des tentatives de connexion SSH, des décisions d’autorisation de sudo et des entrées qui signalent l’ouverture ou la fermeture d’une session."
+      - question: "Qu’est-ce que je vais apprendre sur la corrélation d’événements ?"
+        answer: "Vous comparerez les horodatages, les hôtes, les comptes et les identifiants de session pour rapprocher des événements et préciser ce qui reste à vérifier."
+    meta_title: "Cours sur les journaux de sécurité Linux"
+    meta_description: "Lisez les traces SSH, sudo et les journaux de sessions, interprétez une alerte et rapprochez les événements à l’aide des horodatages et des identifiants de session."
+    meta_keywords: "journaux de sécurité Linux, connexions SSH, journaux sudo, sessions, alertes, corrélation d’événements"
+  ja:
+    title: "セキュリティログ"
+    description: "Linux のセキュリティログを読み、ログイン、sudo、セッションの記録を照合します。"
+    faqs:
+      - question: "Linux サーバーにアクセスする必要はありますか？"
+        answer: "解説と問題に添えた短い模擬ログを使えば、サーバーがなくてもレッスンを進められます。"
+      - question: "どのような記録を読みますか？"
+        answer: "SSH のログイン試行、sudo の許可や拒否、ログインセッションの開始と終了を示す記録を読みます。"
+      - question: "イベントの相関分析では何を学びますか？"
+        answer: "時刻、ホスト、アカウント、セッション ID を比較して関連する活動を見つけ、さらに何を確認すべきか判断します。"
+    meta_title: "Linux セキュリティログ入門"
+    meta_description: "SSH、sudo、セッションの記録を読み、時刻やセッション ID を照合してセキュリティアラートの背景を調べます。"
+    meta_keywords: "Linux セキュリティログ, SSH ログイン, sudo ログ, セッション, セキュリティアラート, イベントの相関分析"
+  ko:
+    title: "보안 로그"
+    description: "Linux 보안 로그를 읽고 로그인, sudo, 세션 기록을 서로 연결해 봅니다."
+    faqs:
+      - question: "Linux 서버에 접속해야 하나요?"
+        answer: "설명과 문제에 제공되는 짧은 모의 로그만으로도 레슨을 완료할 수 있습니다."
+      - question: "어떤 종류의 기록을 읽나요?"
+        answer: "SSH 로그인 시도, sudo의 권한 허용 및 거부, 로그인 세션의 시작과 종료를 보여 주는 기록을 읽습니다."
+      - question: "이벤트 상관관계에 대해 무엇을 배우나요?"
+        answer: "시간, 호스트, 계정과 세션 ID를 비교해 관련 활동을 찾고 어떤 정보를 더 확인해야 할지 판단합니다."
+    meta_title: "Linux 보안 로그 과정"
+    meta_description: "SSH, sudo, 세션 기록을 읽고 시간과 세션 ID를 비교해 보안 경보와 관련된 이벤트를 살펴봅니다."
+    meta_keywords: "Linux 보안 로그, SSH 로그인, sudo 로그, 세션 기록, 보안 경보, 이벤트 상관관계"
+  pt:
+    title: "Logs de segurança"
+    description: "Aprenda a ler logs de segurança no Linux e a relacionar logins, eventos do sudo e sessões."
+    faqs:
+      - question: "Preciso ter acesso a um servidor Linux?"
+        answer: "Você pode concluir as lições usando os registros simulados que acompanham as explicações e as perguntas."
+      - question: "Que tipos de registros vou ler?"
+        answer: "Você vai ler tentativas de login por SSH, decisões de autorização do sudo e registros de abertura e encerramento de sessões."
+      - question: "O que vou aprender sobre correlação de eventos?"
+        answer: "Você vai comparar horários, hosts, contas e IDs de sessão para relacionar atividades e descobrir o que ainda precisa verificar."
+    meta_title: "Curso de logs de segurança no Linux"
+    meta_description: "Leia registros de SSH, sudo e sessões, entenda alertas de segurança e relacione eventos pelo horário e pelo ID de sessão."
+    meta_keywords: "logs de segurança Linux, login SSH, logs do sudo, registros de sessões, alertas, correlação de eventos"
+  ru:
+    title: "Журналы безопасности"
+    description: "Научитесь читать журналы безопасности Linux и связывать записи о входах в систему, событиях sudo и сеансах."
+    faqs:
+      - question: "Нужен ли доступ к серверу Linux?"
+        answer: "Для прохождения уроков достаточно учебных записей журналов, которые приведены рядом с объяснениями и вопросами."
+      - question: "Какие записи я буду читать?"
+        answer: "Вы увидите попытки входа по SSH, решения sudo о разрешении команды и записи об открытии или закрытии сеанса."
+      - question: "Что я узнаю о корреляции событий?"
+        answer: "Вы будете сопоставлять время, узлы, учётные записи и идентификаторы сеансов, чтобы связывать события и понимать, что ещё предстоит проверить."
+    meta_title: "Курс по журналам безопасности Linux"
+    meta_description: "Читайте записи SSH, sudo и сеансов, разбирайте оповещения и сопоставляйте события по времени и идентификатору сеанса."
+    meta_keywords: "журналы безопасности Linux, вход по SSH, журналы sudo, записи о сеансах, оповещения, корреляция событий"
+  zh:
+    title: "安全日志"
+    description: "学习解读 Linux 安全日志，关联登录、sudo 和会话活动。"
+    faqs:
+      - question: "需要访问 Linux 服务器吗？"
+        answer: "课文提供简短的模拟日志，并配有讲解和互动题，直接阅读就能完成练习。"
+      - question: "课程会用到哪些记录？"
+        answer: "你会读到 SSH 登录尝试、sudo 权限判定，以及登录会话打开和关闭的记录。"
+      - question: "事件关联这一课会教什么？"
+        answer: "你会比较时间戳、主机、账户和会话 ID，把可能相关的活动联系起来，并找出还需要核实的信息。"
+    meta_title: "Linux 安全日志课程"
+    meta_description: "解读 SSH、sudo 和会话记录，理解安全告警，并根据时间与会话 ID 关联日志事件。"
+    meta_keywords: "Linux 安全日志, SSH 登录事件, sudo 日志, 会话记录, 安全告警, 事件关联"

@@ -1,0 +1,87 @@
+id: incident-response
+category:
+  id: cybersecurity
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/incident-response.png
+order_index: 5
+translations:
+  en:
+    title: "Incident Response"
+    description: "Review a simulated service incident and write a short report grounded in the available evidence."
+    faqs:
+      - question: "What will I do by the end?"
+        answer: "You will prioritize a report, order evidence, compare response options, and explain how to verify recovery."
+    meta_title: "Incident Response Course for Beginners"
+    meta_description: "Review a simulated service incident and write a short report grounded in the available evidence."
+    meta_keywords: "incident response, Linux Journey, beginner course, cybersecurity"
+  de:
+    title: "Reaktion auf Sicherheitsvorfälle"
+    description: "Untersuche einen simulierten Dienstvorfall und erstelle anhand der vorliegenden Belege einen kurzen Bericht."
+    faqs:
+      - question: "Was kann ich am Ende des Kurses?"
+        answer: "Du kannst die Dringlichkeit einer Meldung einschätzen, Belege zeitlich ordnen, mögliche Maßnahmen vergleichen und erklären, wie du die Wiederherstellung überprüfst."
+    meta_title: "Reaktion auf Sicherheitsvorfälle für Einsteiger"
+    meta_description: "Lerne, einen Vorfall einzuschätzen, Belege zu sichern, eine Zeitleiste zu erstellen und die Wiederherstellung eines Dienstes zu überprüfen."
+    meta_keywords: "Incident Response, Sicherheitsvorfall, Beweissicherung, Zeitleiste, Wiederherstellung, Cybersicherheit, Linux Journey"
+  es:
+    title: "Respuesta a incidentes"
+    description: "Analiza un incidente de servicio simulado y redacta un informe breve a partir de las pruebas disponibles."
+    faqs:
+      - question: "¿Qué podré hacer al terminar?"
+        answer: "Podrás determinar la urgencia de un aviso, ordenar las pruebas, comparar opciones de respuesta y explicar cómo verificar la recuperación."
+    meta_title: "Curso de respuesta a incidentes para principiantes"
+    meta_description: "Aprende a priorizar un incidente, preservar las pruebas, elaborar una cronología y verificar la recuperación del servicio."
+    meta_keywords: "respuesta a incidentes, triaje, preservación de pruebas, cronología, recuperación, ciberseguridad, Linux Journey"
+  fr:
+    title: "Réponse aux incidents"
+    description: "Analysez un incident de service simulé et rédigez un rapport court à partir des éléments disponibles."
+    faqs:
+      - question: "Que saurai-je faire à la fin ?"
+        answer: "Vous pourrez évaluer l’urgence d’un signalement, ordonner les éléments recueillis, comparer les mesures possibles et expliquer comment vérifier le rétablissement du service."
+    meta_title: "Cours de réponse aux incidents pour débutants"
+    meta_description: "Évaluez l’urgence d’un incident, préservez les preuves, établissez une chronologie et vérifiez le rétablissement du service."
+    meta_keywords: "réponse aux incidents, triage, conservation des preuves, chronologie, rétablissement, cybersécurité, Linux Journey"
+  ja:
+    title: "インシデント対応"
+    description: "サービスで起きた模擬インシデントを調べ、入手できた証拠に基づいて短い報告書を作ります。"
+    faqs:
+      - question: "学び終えると、どんなことができますか？"
+        answer: "報告の緊急度を判断し、証拠を時系列に並べ、対応策を比較して、復旧を確認する方法を説明できます。"
+    meta_title: "インシデント対応入門"
+    meta_description: "インシデントの優先度を決め、証拠を保全し、時系列を整理して、サービスの復旧を確認する方法を学びます。"
+    meta_keywords: "インシデント対応, 初動判断, 証拠保全, タイムライン, 復旧, サイバーセキュリティ, Linux Journey"
+  ko:
+    title: "사고 대응"
+    description: "서비스에서 일어난 모의 사고를 조사하고 주어진 증거를 바탕으로 짧은 보고서를 작성합니다."
+    faqs:
+      - question: "과정을 마치면 무엇을 할 수 있나요?"
+        answer: "신고의 긴급성을 판단하고 증거를 시간순으로 정리하며, 대응 방안을 비교하고 복구를 검증하는 방법을 설명할 수 있습니다."
+    meta_title: "사고 대응 입문 과정"
+    meta_description: "사고의 우선순위를 정하고 증거를 보존하며, 시간순으로 사건을 정리하고 서비스 복구를 검증하는 방법을 배웁니다."
+    meta_keywords: "사고 대응, 초기 평가, 증거 보존, 타임라인, 복구, 사이버 보안, Linux Journey"
+  pt:
+    title: "Resposta a incidentes"
+    description: "Analise um incidente simulado em um serviço e escreva um relatório breve com base nas evidências disponíveis."
+    faqs:
+      - question: "O que vou saber fazer no fim do curso?"
+        answer: "Você vai saber avaliar a urgência de um relato, ordenar as evidências, comparar opções de resposta e explicar como verificar a recuperação."
+    meta_title: "Curso de resposta a incidentes para iniciantes"
+    meta_description: "Aprenda a priorizar um incidente, preservar evidências, montar uma linha do tempo e verificar a recuperação do serviço."
+    meta_keywords: "resposta a incidentes, triagem, preservação de evidências, linha do tempo, recuperação, cibersegurança, Linux Journey"
+  ru:
+    title: "Реагирование на инциденты"
+    description: "Разберите учебный инцидент в работе сервиса и составьте короткий отчёт, опираясь на имеющиеся данные."
+    faqs:
+      - question: "Что я смогу делать после курса?"
+        answer: "Вы сможете оценить срочность сообщения, выстроить события по времени, сравнить меры реагирования и объяснить, как проверить восстановление."
+    meta_title: "Курс реагирования на инциденты для начинающих"
+    meta_description: "Научитесь оценивать срочность инцидента, сохранять доказательства, составлять хронологию и проверять восстановление сервиса."
+    meta_keywords: "реагирование на инциденты, приоритизация, сохранение доказательств, хронология, восстановление, кибербезопасность, Linux Journey"
+  zh:
+    title: "事件响应"
+    description: "分析一次模拟服务事件，并根据已有证据写一份简要报告。"
+    faqs:
+      - question: "学完后我能做什么？"
+        answer: "你可以判断事件报告的处理优先级、整理证据顺序、比较处置方案，并说明如何验证恢复结果。"
+    meta_title: "事件响应入门课程"
+    meta_description: "学习初步研判事件、保护证据、梳理时间线，并说明如何验证服务恢复。"
+    meta_keywords: "事件响应, 事件研判, 证据保全, 事件时间线, 服务恢复, 网络安全, Linux Journey"

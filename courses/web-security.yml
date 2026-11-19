@@ -1,0 +1,87 @@
+id: web-security
+category:
+  id: cybersecurity
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/web-security.png
+order_index: 2
+translations:
+  en:
+    title: "Web Security"
+    description: "Learn what HTTPS, authentication, sessions, and authorization each protect."
+    faqs:
+      - question: "Do I need to build a website?"
+        answer: "No. The lessons use example HTTP messages, trust checks, and application policies."
+    meta_title: "Web Security Course for Beginners"
+    meta_description: "Learn what HTTPS, authentication, sessions, and authorization each protect."
+    meta_keywords: "web security, Linux Journey, beginner course, cybersecurity"
+  de:
+    title: "Websicherheit"
+    description: "Lerne, was HTTPS, Authentifizierung, Sitzungen und Autorisierung jeweils schützen."
+    faqs:
+      - question: "Muss ich eine Website erstellen?"
+        answer: "Nein. Die Lektionen nutzen HTTP-Beispiele, Prüfungen der Vertrauenskette und einfache Berechtigungsregeln."
+    meta_title: "Websicherheit für Einsteiger"
+    meta_description: "Lies HTTP-Nachrichten und TLS-Zertifikate und verstehe, welche Aufgaben Authentifizierung, Sitzungen und Autorisierung übernehmen."
+    meta_keywords: "Websicherheit, HTTPS, TLS-Zertifikate, Authentifizierung, Autorisierung, Cybersicherheit, Linux Journey"
+  es:
+    title: "Seguridad web"
+    description: "Aprende qué protege HTTPS y qué función tienen la autenticación, las sesiones y la autorización."
+    faqs:
+      - question: "¿Tengo que crear un sitio web?"
+        answer: "No. Las lecciones utilizan mensajes HTTP de ejemplo, verificaciones de confianza y reglas de autorización de una aplicación."
+    meta_title: "Curso de seguridad web para principiantes"
+    meta_description: "Lee mensajes HTTP y certificados TLS, distingue la autenticación de la autorización y consulta registros de acceso."
+    meta_keywords: "seguridad web, HTTPS, TLS, certificados, autenticación, autorización, ciberseguridad, Linux Journey"
+  fr:
+    title: "Sécurité web"
+    description: "Découvrez ce que protège HTTPS et le rôle de l’authentification, des sessions et de l’autorisation."
+    faqs:
+      - question: "Faut-il créer un site web ?"
+        answer: "Non. Les leçons s’appuient sur des messages HTTP d’exemple, des vérifications de confiance et des règles d’autorisation."
+    meta_title: "Cours de sécurité web pour débutants"
+    meta_description: "Lisez des messages HTTP et des certificats TLS, distinguez l’authentification de l’autorisation et consultez des journaux d’accès."
+    meta_keywords: "sécurité web, HTTPS, certificats TLS, authentification, autorisation, cybersécurité, Linux Journey"
+  ja:
+    title: "Web セキュリティ"
+    description: "HTTPS、認証、セッション、認可がそれぞれ何を守るのかを学びます。"
+    faqs:
+      - question: "Web サイトを作る必要はありますか？"
+        answer: "いいえ。HTTP メッセージの例、証明書の信頼性を確認する例、アプリケーションの権限ルールを使います。"
+    meta_title: "Web セキュリティ入門"
+    meta_description: "HTTP メッセージや TLS 証明書を読み、認証と認可の違いや、アクセスログの見方を学びます。"
+    meta_keywords: "Web セキュリティ, HTTPS, TLS 証明書, 認証, 認可, サイバーセキュリティ, Linux Journey"
+  ko:
+    title: "웹 보안"
+    description: "HTTPS, 인증, 세션과 인가가 각각 무엇을 보호하는지 배웁니다."
+    faqs:
+      - question: "웹 사이트를 직접 만들어야 하나요?"
+        answer: "아니요. HTTP 메시지 예제, 인증서 신뢰 확인 사례와 애플리케이션 권한 규칙을 사용합니다."
+    meta_title: "웹 보안 입문 과정"
+    meta_description: "HTTP 메시지와 TLS 인증서를 읽고, 인증과 인가를 구분하며 접근 로그에서 요청 결과를 확인합니다."
+    meta_keywords: "웹 보안, HTTPS, TLS 인증서, 인증, 인가, 사이버 보안, Linux Journey"
+  pt:
+    title: "Segurança web"
+    description: "Aprenda o que o HTTPS protege e qual é o papel da autenticação, das sessões e da autorização."
+    faqs:
+      - question: "Preciso criar um site?"
+        answer: "Não. As lições usam exemplos de mensagens HTTP, verificações de confiança e regras de acesso de uma aplicação."
+    meta_title: "Curso de segurança web para iniciantes"
+    meta_description: "Leia mensagens HTTP e certificados TLS, diferencie autenticação de autorização e confira o resultado de solicitações em logs de acesso."
+    meta_keywords: "segurança web, HTTPS, TLS, certificados, autenticação, autorização, cibersegurança, Linux Journey"
+  ru:
+    title: "Веб-безопасность"
+    description: "Узнайте, что защищает HTTPS и какую роль играют аутентификация, сеансы и авторизация."
+    faqs:
+      - question: "Нужно ли создавать собственный сайт?"
+        answer: "Нет. В уроках используются примеры HTTP-сообщений, проверки доверия к сертификату и правила доступа в приложении."
+    meta_title: "Курс веб-безопасности для начинающих"
+    meta_description: "Научитесь читать HTTP-сообщения и сертификаты TLS, отличать аутентификацию от авторизации и проверять результаты запросов по журналу доступа."
+    meta_keywords: "веб-безопасность, HTTPS, сертификаты TLS, аутентификация, авторизация, кибербезопасность, Linux Journey"
+  zh:
+    title: "Web 安全"
+    description: "了解 HTTPS、身份验证、会话和授权各自保护什么。"
+    faqs:
+      - question: "需要自己搭建网站吗？"
+        answer: "课程使用 HTTP 消息示例、证书信任检查和应用权限规则来讲解。"
+    meta_title: "Web 安全入门课程"
+    meta_description: "解读 HTTP 消息与 TLS 证书，区分身份验证和授权，并从访问日志核对请求结果。"
+    meta_keywords: "Web 安全, HTTPS, TLS 证书, 身份验证, 授权, 网络安全, Linux Journey"
