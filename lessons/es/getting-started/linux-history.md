@@ -49,9 +49,9 @@ El núcleo es el componente central de un sistema operativo. Actúa como puente 
 
 Así llegamos a 1991, cuando un estudiante finlandés llamado Linus Torvalds comenzó a desarrollar un nuevo núcleo como proyecto personal. Este pasó a conocerse como el núcleo Linux. Después de que Linux se volviera a publicar bajo la GNU GPL en 1992, convirtiéndose en software libre, pudo combinarse con el sistema GNU, casi completo, para formar un sistema operativo libre completo, conocido habitualmente como GNU/Linux. Este hito fue un momento decisivo en la **historia de Linux**.
 
-![Linus Torvalds en 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+![Linus Torvalds en 2018](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/getting-started/linux-history/linus-torvalds-2018.jpg)
 
-_Linus Torvalds en 2018 (Fuente: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
+_Linus Torvalds en 2018. Foto de [Lf Asia](https://commons.wikimedia.org/wiki/File:Lc3_2018_%28263682303%29_%28cropped%29.jpeg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) (recortada y redimensionada)_
 
 :::single-choice{#identify-linux-kernel-creator} ¿Quién comenzó a desarrollar el núcleo Linux en 1991?
 

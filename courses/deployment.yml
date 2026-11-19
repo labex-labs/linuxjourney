@@ -1,0 +1,87 @@
+id: deployment
+category:
+  id: devops
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/deployment.png
+order_index: 4
+translations:
+  en:
+    title: "Deployment"
+    description: "Trace a build to the running version, verify a release, and reason about rollback."
+    faqs:
+      - question: "Does this require a cloud account?"
+        answer: "The course uses a sample web service and release records with local examples for checking outcomes."
+    meta_title: "Deployment Course for Beginners"
+    meta_description: "Trace a build to the running version, verify a release, and reason about rollback."
+    meta_keywords: "deployment, Linux Journey, beginner course, devops"
+  de:
+    title: "Bereitstellung"
+    description: "Verfolge einen Build bis zur laufenden Version, überprüfe eine Freigabe und beurteile, wann eine Rückkehr zur vorherigen Version sinnvoll ist."
+    faqs:
+      - question: "Brauche ich ein Cloud-Konto?"
+        answer: "Der Kurs verwendet einen Beispiel-Webdienst und Freigabeprotokolle. Die Überprüfungen kannst du mit lokalen Beispielen nachvollziehen."
+    meta_title: "Bereitstellung für Einsteiger"
+    meta_description: "Verfolge die laufende Version bis zum Build zurück, überprüfe eine Bereitstellung in der Staging-Umgebung und plane bei Bedarf einen Rollback."
+    meta_keywords: "Bereitstellung, Deployment, Staging, Rollback, DevOps, Linux Journey"
+  es:
+    title: "Despliegue"
+    description: "Sigue el resultado de una compilación hasta la versión en ejecución, verifica el despliegue y valora cuándo volver a una versión anterior."
+    faqs:
+      - question: "¿Necesito una cuenta en un servicio en la nube?"
+        answer: "El curso usa un servicio web de ejemplo y registros de despliegue. Puedes practicar las verificaciones con ejemplos locales."
+    meta_title: "Curso de despliegue para principiantes"
+    meta_description: "Identifica qué versión está en ejecución, comprueba un despliegue en preproducción y aprende a planificar una reversión."
+    meta_keywords: "despliegue, versión, preproducción, reversión, DevOps, Linux Journey"
+  fr:
+    title: "Déploiement"
+    description: "Reliez un build à la version en cours d’exécution, vérifiez une mise en service et déterminez quand revenir à la version précédente."
+    faqs:
+      - question: "Faut-il un compte chez un fournisseur cloud ?"
+        answer: "Le cours s’appuie sur un service web et des relevés de déploiement fictifs. Les vérifications peuvent être reproduites avec des exemples locaux."
+    meta_title: "Cours de déploiement pour débutants"
+    meta_description: "Identifiez la version en cours d’exécution, vérifiez un déploiement en préproduction et préparez un retour à une version précédente."
+    meta_keywords: "déploiement, version, préproduction, retour arrière, DevOps, Linux Journey"
+  ja:
+    title: "デプロイ"
+    description: "ビルドした成果物と実行中のバージョンを結び付け、リリースの結果やロールバックの判断材料を確認します。"
+    faqs:
+      - question: "クラウドのアカウントは必要ですか？"
+        answer: "コースではサンプルの Web サービスとリリース記録を使います。結果を確かめる手順は、手元の環境で試せます。"
+    meta_title: "デプロイ入門"
+    meta_description: "稼働中のバージョンを特定し、ステージング環境でデプロイを確認して、ロールバックの判断に必要な情報を整理します。"
+    meta_keywords: "デプロイ, リリース, ステージング, ロールバック, DevOps, Linux Journey"
+  ko:
+    title: "배포"
+    description: "빌드 결과물과 실행 중인 버전의 관계를 확인하고, 릴리스를 검증하고 롤백을 판단하는 방법을 배웁니다."
+    faqs:
+      - question: "클라우드 계정이 필요한가요?"
+        answer: "예제 웹 서비스와 릴리스 기록을 사용합니다. 결과를 확인하는 절차는 로컬 예제로 연습할 수 있습니다."
+    meta_title: "배포 입문 과정"
+    meta_description: "실행 중인 버전을 확인하고 스테이징 환경에서 배포 결과를 검증하며 롤백에 필요한 조건을 살펴봅니다."
+    meta_keywords: "배포, 릴리스, 스테이징, 롤백, DevOps, Linux Journey"
+  pt:
+    title: "Implantação"
+    description: "Relacione o resultado de um build à versão em execução, verifique uma implantação e avalie quando voltar à versão anterior."
+    faqs:
+      - question: "Preciso de uma conta em um serviço de nuvem?"
+        answer: "O curso usa um serviço web de exemplo e registros de implantação. Você pode fazer as verificações com exemplos locais."
+    meta_title: "Curso de implantação para iniciantes"
+    meta_description: "Identifique a versão em execução, verifique uma implantação em homologação e aprenda a planejar um rollback."
+    meta_keywords: "implantação, deploy, homologação, rollback, DevOps, Linux Journey"
+  ru:
+    title: "Развёртывание"
+    description: "Свяжите результат сборки с запущенной версией, проверьте релиз и определите, когда стоит вернуться к предыдущей версии."
+    faqs:
+      - question: "Понадобится ли аккаунт в облачном сервисе?"
+        answer: "В курсе используются пример веб-сервиса и записи о релизах. Выполнить проверки можно на локальных примерах."
+    meta_title: "Курс развёртывания для начинающих"
+    meta_description: "Определите, какая версия запущена, проверьте развёртывание в тестовой среде и разберитесь, что нужно учесть при откате."
+    meta_keywords: "развёртывание, релиз, тестовая среда, откат, DevOps, Linux Journey"
+  zh:
+    title: "部署"
+    description: "追踪构建产物与运行版本的关系，验证发布结果，并判断何时适合回滚。"
+    faqs:
+      - question: "需要云服务账户吗？"
+        answer: "课程使用示例 Web 服务和发布记录，验证步骤可通过本地示例练习。"
+    meta_title: "部署入门课程"
+    meta_description: "了解如何识别运行版本，在预发布环境验证结果，并判断回滚时要检查哪些条件。"
+    meta_keywords: "部署, 发布验证, 预发布环境, 回滚, DevOps, Linux Journey"

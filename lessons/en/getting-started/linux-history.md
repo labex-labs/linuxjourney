@@ -49,9 +49,9 @@ The kernel is the core component of an operating system. It acts as a bridge, al
 
 This brings us to 1991, when a Finnish student named Linus Torvalds began developing a new kernel as a personal project. This kernel became known as the Linux kernel. After Linux was rereleased under the GNU GPL in 1992, making it free software, it could be combined with the nearly complete GNU system to form a complete free operating system, commonly called GNU/Linux. This milestone was a pivotal moment in the **history of Linux**.
 
-![Linus Torvalds in 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+![Linus Torvalds in 2018](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/getting-started/linux-history/linus-torvalds-2018.jpg)
 
-_Linus Torvalds in 2018 (Source: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
+_Linus Torvalds in 2018. Photo by [Lf Asia](https://commons.wikimedia.org/wiki/File:Lc3_2018_%28263682303%29_%28cropped%29.jpeg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) (cropped and resized)_
 
 :::single-choice{#identify-linux-kernel-creator} Who began developing the Linux kernel in 1991?
 

@@ -49,9 +49,9 @@ meta_keywords: "리눅스 역사, 리눅스 연혁, 리눅스 입문, UNIX, GNU 
 
 1991년 핀란드 학생 리누스 토발즈는 개인 프로젝트로 새 커널을 개발하기 시작했습니다. 이 커널이 리눅스 커널이 되었습니다. 1992년에 리눅스가 GNU GPL에 따라 다시 공개되어 자유 소프트웨어가 된 뒤 거의 완성된 GNU 시스템과 결합해 흔히 GNU/Linux라고 부르는 완전한 자유 운영체제를 만들 수 있었습니다. 이는 **리눅스 역사**의 중요한 전환점이었습니다.
 
-![2018년의 리누스 토발즈](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+![2018년의 리누스 토발즈](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/getting-started/linux-history/linus-torvalds-2018.jpg)
 
-_2018년의 리누스 토발즈 (출처: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
+_2018년의 리누스 토발즈. 촬영: [Lf Asia](https://commons.wikimedia.org/wiki/File:Lc3_2018_%28263682303%29_%28cropped%29.jpeg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) (잘라내기 및 크기 조정)_
 
 :::single-choice{#identify-linux-kernel-creator} 1991년에 리눅스 커널 개발을 시작한 사람은 누구인가요?
 

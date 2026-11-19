@@ -49,9 +49,9 @@ meta_keywords: "история linux, знакомство с linux, UNIX, пр�
 
 Так мы приходим к 1991 году, когда финский студент Линус Торвальдс начал личный проект по разработке нового ядра. Оно стало известно как ядро Linux. После повторного выпуска Linux под GNU GPL в 1992 году, сделавшего его свободным ПО, его можно было объединить с почти завершённой системой GNU и получить полную свободную операционную систему, часто называемую GNU/Linux. Это событие стало поворотным моментом в **истории Linux**.
 
-![Линус Торвальдс в 2018 году](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+![Линус Торвальдс в 2018 году](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/getting-started/linux-history/linus-torvalds-2018.jpg)
 
-_Линус Торвальдс в 2018 году (источник: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
+_Линус Торвальдс в 2018 году. Фото: [Lf Asia](https://commons.wikimedia.org/wiki/File:Lc3_2018_%28263682303%29_%28cropped%29.jpeg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) (кадрировано и уменьшено)_
 
 :::single-choice{#identify-linux-kernel-creator} Кто начал разрабатывать ядро Linux в 1991 году?
 

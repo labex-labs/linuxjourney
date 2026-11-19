@@ -1,0 +1,87 @@
+id: continuous-integration
+category:
+  id: devops
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/continuous-integration.png
+order_index: 3
+translations:
+  en:
+    title: "Continuous Integration"
+    description: "Learn how changes trigger repeatable checks and how to read a workflow result."
+    faqs:
+      - question: "Do I need to run GitHub Actions to follow the lessons?"
+        answer: "The workflow examples can be read directly. The build and check commands can be tried in a local practice folder."
+    meta_title: "Continuous Integration Course for Beginners"
+    meta_description: "Learn how changes trigger repeatable checks and how to read a workflow result."
+    meta_keywords: "continuous integration, Linux Journey, beginner course, devops"
+  de:
+    title: "Kontinuierliche Integration"
+    description: "Lerne, wie Änderungen wiederholbare Prüfungen auslösen und wie du das Ergebnis eines Workflows auswertest."
+    faqs:
+      - question: "Muss ich GitHub Actions ausführen, um den Lektionen zu folgen?"
+        answer: "Du kannst die Workflow-Beispiele direkt lesen. Die Befehle zum Bauen und Prüfen kannst du in einem lokalen Übungsverzeichnis ausprobieren."
+    meta_title: "Kontinuierliche Integration für Einsteiger"
+    meta_description: "Verstehe anhand von GitHub Actions, wie Änderungen Prüfungen auslösen, und lies Workflow-Ergebnisse, Build-Artefakte und Berechtigungen."
+    meta_keywords: "kontinuierliche Integration, CI, GitHub Actions, Workflow, DevOps, Linux Journey"
+  es:
+    title: "Integración continua"
+    description: "Aprende cómo los cambios activan comprobaciones repetibles y cómo interpretar el resultado de un flujo de trabajo."
+    faqs:
+      - question: "¿Tengo que ejecutar GitHub Actions para seguir las lecciones?"
+        answer: "Puedes leer los ejemplos de flujos de trabajo directamente. Para probar los comandos de compilación y verificación, usa una carpeta local de práctica."
+    meta_title: "Curso de integración continua para principiantes"
+    meta_description: "Usa ejemplos de GitHub Actions para entender los eventos, los trabajos, los artefactos y los permisos de un flujo de trabajo."
+    meta_keywords: "integración continua, CI, GitHub Actions, flujo de trabajo, DevOps, Linux Journey"
+  fr:
+    title: "Intégration continue"
+    description: "Découvrez comment les modifications déclenchent des vérifications reproductibles et comment interpréter le résultat d’un workflow."
+    faqs:
+      - question: "Faut-il exécuter GitHub Actions pour suivre les leçons ?"
+        answer: "Vous pouvez lire directement les exemples de workflows. Les commandes de construction et de vérification peuvent être essayées dans un dossier d’exercice local."
+    meta_title: "Cours d’intégration continue pour débutants"
+    meta_description: "À partir d’exemples GitHub Actions, découvrez les déclencheurs, les tâches, les artefacts et les droits d’un workflow."
+    meta_keywords: "intégration continue, CI, GitHub Actions, workflow, DevOps, Linux Journey"
+  ja:
+    title: "継続的インテグレーション"
+    description: "変更をきっかけに同じチェックを繰り返し実行する仕組みと、ワークフローの実行結果の読み方を学びます。"
+    faqs:
+      - question: "GitHub Actions を実行しないと学べませんか？"
+        answer: "ワークフローの例はそのまま読めます。ビルドや確認のコマンドは、手元の練習用ディレクトリで試せます。"
+    meta_title: "継続的インテグレーション入門"
+    meta_description: "GitHub Actions の例を使って、イベント、ジョブ、成果物、ワークフローの権限を学びます。"
+    meta_keywords: "継続的インテグレーション, CI, GitHub Actions, ワークフロー, DevOps, Linux Journey"
+  ko:
+    title: "지속적 통합"
+    description: "변경 사항을 계기로 같은 검사를 반복하는 방법과 워크플로 실행 결과를 읽는 방법을 배웁니다."
+    faqs:
+      - question: "GitHub Actions를 직접 실행해야 하나요?"
+        answer: "워크플로 예제는 실행하지 않고 읽어도 됩니다. 빌드와 검사 명령어는 로컬 연습 폴더에서 실행해 볼 수 있습니다."
+    meta_title: "지속적 통합 입문 과정"
+    meta_description: "GitHub Actions 예제로 워크플로의 실행 조건, 작업, 빌드 결과물과 권한을 살펴봅니다."
+    meta_keywords: "지속적 통합, CI, GitHub Actions, 워크플로, DevOps, Linux Journey"
+  pt:
+    title: "Integração contínua"
+    description: "Veja como mudanças disparam verificações que podem ser repetidas e aprenda a interpretar o resultado de um fluxo de trabalho."
+    faqs:
+      - question: "Preciso executar o GitHub Actions para acompanhar as lições?"
+        answer: "Você pode ler os exemplos diretamente e testar os comandos de build e verificação em uma pasta de prática no seu computador."
+    meta_title: "Curso de integração contínua para iniciantes"
+    meta_description: "Use exemplos do GitHub Actions para entender gatilhos, jobs, artefatos e permissões de um fluxo de trabalho."
+    meta_keywords: "integração contínua, CI, GitHub Actions, fluxo de trabalho, DevOps, Linux Journey"
+  ru:
+    title: "Непрерывная интеграция"
+    description: "Узнайте, как изменения запускают повторяемые проверки и как читать результат выполнения рабочего процесса."
+    faqs:
+      - question: "Нужно ли запускать GitHub Actions для прохождения уроков?"
+        answer: "Примеры рабочих процессов можно просто читать. Команды сборки и проверки можно выполнить в локальном учебном каталоге."
+    meta_title: "Курс непрерывной интеграции для начинающих"
+    meta_description: "На примерах GitHub Actions разберитесь, как запускается рабочий процесс, из чего состоят задания, для чего нужны артефакты и какие права требуются."
+    meta_keywords: "непрерывная интеграция, CI, GitHub Actions, рабочий процесс, DevOps, Linux Journey"
+  zh:
+    title: "持续集成"
+    description: "了解代码变更如何触发可重复运行的检查，并学会解读工作流的执行结果。"
+    faqs:
+      - question: "需要运行 GitHub Actions 才能完成课程吗？"
+        answer: "工作流示例可以直接阅读，构建和检查命令可以在本地练习目录中运行。"
+    meta_title: "持续集成入门课程"
+    meta_description: "通过 GitHub Actions 示例了解触发条件、作业、构建产物和工作流权限。"
+    meta_keywords: "持续集成, CI, GitHub Actions, 工作流, DevOps, Linux Journey"

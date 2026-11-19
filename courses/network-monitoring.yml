@@ -1,0 +1,87 @@
+id: network-monitoring
+category:
+  id: cybersecurity
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/network-monitoring.png
+order_index: 3
+translations:
+  en:
+    title: "Network Monitoring"
+    description: "Compare flow summaries, DNS logs, and packet views to interpret a network alert."
+    faqs:
+      - question: "Do I need live network traffic?"
+        answer: "You can read the included samples and work with a small prepared capture."
+    meta_title: "Network Monitoring Course for Beginners"
+    meta_description: "Compare flow summaries, DNS logs, and packet views to interpret a network alert."
+    meta_keywords: "network monitoring, Linux Journey, beginner course, cybersecurity"
+  de:
+    title: "Netzwerküberwachung"
+    description: "Vergleiche Flow-Übersichten, DNS-Protokolle und Paketansichten, um eine Netzwerkwarnung einzuordnen."
+    faqs:
+      - question: "Brauche ich laufenden Netzwerkverkehr?"
+        answer: "Du kannst die enthaltenen Beispiele lesen und mit einem vorbereiteten kurzen Paketmitschnitt üben."
+    meta_title: "Netzwerküberwachung für Einsteiger"
+    meta_description: "Ordne DNS-Protokolle, Flow-Daten und Netzwerkalarme ein und übe mit einem vorbereiteten Paketmitschnitt in Wireshark."
+    meta_keywords: "Netzwerküberwachung, DNS-Protokolle, Wireshark, Paketmitschnitt, Cybersicherheit, Linux Journey"
+  es:
+    title: "Monitorización de redes"
+    description: "Compara resúmenes de flujos, registros DNS y capturas de paquetes para interpretar una alerta de red."
+    faqs:
+      - question: "¿Necesito tráfico de red en directo?"
+        answer: "Puedes leer los ejemplos incluidos y trabajar con una breve captura preparada para el curso."
+    meta_title: "Curso de monitorización de redes para principiantes"
+    meta_description: "Interpreta flujos de red y registros DNS, filtra una captura de ejemplo con Wireshark y contrasta alertas con el tráfico habitual."
+    meta_keywords: "monitorización de redes, flujos, registros DNS, Wireshark, ciberseguridad, Linux Journey"
+  fr:
+    title: "Supervision réseau"
+    description: "Comparez des résumés de flux, des journaux DNS et des vues de paquets pour interpréter une alerte réseau."
+    faqs:
+      - question: "Faut-il du trafic réseau en direct ?"
+        answer: "Vous pouvez utiliser les exemples inclus et travailler à partir d’une petite capture préparée pour le cours."
+    meta_title: "Cours de supervision réseau pour débutants"
+    meta_description: "Comparez les flux et les journaux DNS, filtrez une capture avec Wireshark et replacez une alerte dans le contexte du trafic habituel."
+    meta_keywords: "supervision réseau, flux, journaux DNS, Wireshark, cybersécurité, Linux Journey"
+  ja:
+    title: "ネットワーク監視"
+    description: "フローの集計、DNS ログ、パケットの表示を照らし合わせ、ネットワークのアラートを読み解きます。"
+    faqs:
+      - question: "実際に流れている通信が必要ですか？"
+        answer: "掲載したサンプルと、練習用に用意した小さなキャプチャファイルを使って学べます。"
+    meta_title: "ネットワーク監視入門"
+    meta_description: "DNS ログやフローの集計を読み、Wireshark で取得済みのパケットを絞り込んで、平常時の通信と比較します。"
+    meta_keywords: "ネットワーク監視, DNS ログ, Wireshark, パケットキャプチャ, サイバーセキュリティ, Linux Journey"
+  ko:
+    title: "네트워크 모니터링"
+    description: "흐름 요약, DNS 로그, 패킷 표시를 비교해 네트워크 경보가 무엇을 의미하는지 판단합니다."
+    faqs:
+      - question: "실시간 네트워크 트래픽이 필요한가요?"
+        answer: "제공된 예제를 읽고 연습용으로 준비한 작은 캡처 파일로 실습할 수 있습니다."
+    meta_title: "네트워크 모니터링 입문 과정"
+    meta_description: "DNS 로그와 네트워크 흐름을 비교하고 Wireshark에서 저장된 패킷을 필터링해 평소 트래픽과 대조합니다."
+    meta_keywords: "네트워크 모니터링, DNS 로그, Wireshark, 패킷 캡처, 사이버 보안, Linux Journey"
+  pt:
+    title: "Monitoramento de redes"
+    description: "Compare resumos de fluxos, logs de DNS e visualizações de pacotes para interpretar um alerta de rede."
+    faqs:
+      - question: "Preciso de tráfego de rede ao vivo?"
+        answer: "Você pode ler os exemplos incluídos e usar o pequeno arquivo de captura preparado para as lições."
+    meta_title: "Curso de monitoramento de redes para iniciantes"
+    meta_description: "Compare fluxos e logs de DNS, filtre uma captura com o Wireshark e confronte um alerta com o tráfego habitual."
+    meta_keywords: "monitoramento de redes, fluxos de rede, logs de DNS, Wireshark, cibersegurança, Linux Journey"
+  ru:
+    title: "Мониторинг сети"
+    description: "Сравнивайте сводки по потокам, журналы DNS и данные пакетов, чтобы разобраться в сетевом оповещении."
+    faqs:
+      - question: "Понадобится ли живой сетевой трафик?"
+        answer: "Можно работать с примерами из уроков и небольшим заранее подготовленным файлом захвата."
+    meta_title: "Курс мониторинга сети для начинающих"
+    meta_description: "Сопоставляйте потоки и журналы DNS, фильтруйте готовый захват в Wireshark и сравнивайте оповещения с обычным трафиком."
+    meta_keywords: "мониторинг сети, сетевые потоки, журналы DNS, Wireshark, захват пакетов, кибербезопасность, Linux Journey"
+  zh:
+    title: "网络监测"
+    description: "对照流量汇总、DNS 日志和数据包视图，解读网络告警。"
+    faqs:
+      - question: "需要实时网络流量吗？"
+        answer: "可以阅读课程中的样本，并使用准备好的小型抓包文件练习。"
+    meta_title: "网络监测入门课程"
+    meta_description: "学习如何比较流量与 DNS 记录、筛选离线抓包，并结合流量基线判断告警。"
+    meta_keywords: "网络监测, DNS 日志, Wireshark, 流量基线, 网络安全, Linux Journey"

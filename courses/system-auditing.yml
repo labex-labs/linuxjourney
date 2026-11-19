@@ -1,0 +1,87 @@
+id: system-auditing
+category:
+  id: cybersecurity
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/system-auditing.png
+order_index: 4
+translations:
+  en:
+    title: "System Auditing"
+    description: "Read Linux audit events and file integrity records to explain a configuration change."
+    faqs:
+      - question: "Do I need to install an audit service?"
+        answer: "The course uses sample audit records and safe file comparisons in a practice directory."
+    meta_title: "System Auditing Course for Beginners"
+    meta_description: "Read Linux audit events and file integrity records to explain a configuration change."
+    meta_keywords: "system auditing, Linux Journey, beginner course, cybersecurity"
+  de:
+    title: "Systemaudit"
+    description: "Werte Linux-Audit-Ereignisse und Integritätsberichte aus, um eine Konfigurationsänderung zu erklären."
+    faqs:
+      - question: "Muss ich einen Audit-Dienst installieren?"
+        answer: "Der Kurs verwendet Beispielprotokolle und einfache Dateivergleiche in einem Übungsverzeichnis."
+    meta_title: "Systemaudit für Einsteiger"
+    meta_description: "Lies Linux-Audit-Protokolle, überprüfe die Dateiintegrität und vergleiche Konfigurationsänderungen mit einem Referenzstand."
+    meta_keywords: "Systemaudit, Linux Audit, Dateiintegrität, Konfigurationsänderungen, Cybersicherheit, Linux Journey"
+  es:
+    title: "Auditoría de sistemas"
+    description: "Lee eventos de auditoría de Linux y registros de integridad de archivos para explicar un cambio de configuración."
+    faqs:
+      - question: "¿Tengo que instalar un servicio de auditoría?"
+        answer: "El curso utiliza registros de auditoría de ejemplo y comparaciones de archivos que puedes hacer en una carpeta de práctica."
+    meta_title: "Curso de auditoría de sistemas para principiantes"
+    meta_description: "Relaciona registros de auditoría, verifica la integridad de archivos y compara cambios de configuración con una referencia."
+    meta_keywords: "auditoría de sistemas, Linux Audit, integridad de archivos, ciberseguridad, Linux Journey"
+  fr:
+    title: "Audit système"
+    description: "Lisez des traces d’audit Linux et des relevés d’intégrité de fichiers pour expliquer une modification de configuration."
+    faqs:
+      - question: "Dois-je installer un service d’audit ?"
+        answer: "Le cours utilise des traces d’audit d’exemple et des comparaisons de fichiers dans un dossier d’exercice."
+    meta_title: "Cours d’audit système pour débutants"
+    meta_description: "Reliez les traces d’audit, comparez le contenu et les permissions de fichiers et examinez une modification à l’aide d’un état de référence."
+    meta_keywords: "audit système, audit Linux, intégrité des fichiers, configuration, cybersécurité, Linux Journey"
+  ja:
+    title: "システム監査"
+    description: "Linux の監査記録とファイルの整合性に関する記録を読み、設定変更を説明できるようになります。"
+    faqs:
+      - question: "監査サービスをインストールする必要はありますか？"
+        answer: "サンプルの監査記録を読み、練習用ディレクトリで安全にファイルを比較します。"
+    meta_title: "システム監査入門"
+    meta_description: "Linux の監査記録を照合し、ファイルの内容や権限を調べて、設定を基準となる状態と比較します。"
+    meta_keywords: "システム監査, Linux Audit, ファイル整合性, 設定変更, サイバーセキュリティ, Linux Journey"
+  ko:
+    title: "시스템 감사"
+    description: "Linux 감사 이벤트와 파일 무결성 기록을 읽고 설정 변경을 설명합니다."
+    faqs:
+      - question: "감사 서비스를 설치해야 하나요?"
+        answer: "감사 기록 예제를 읽고 연습 폴더에서 파일을 안전하게 비교합니다."
+    meta_title: "시스템 감사 입문 과정"
+    meta_description: "Linux 감사 기록을 대조하고 파일 내용과 권한을 비교해 설정 변경을 기준 상태와 비교합니다."
+    meta_keywords: "시스템 감사, Linux Audit, 파일 무결성, 설정 변경, 사이버 보안, Linux Journey"
+  pt:
+    title: "Auditoria de sistemas"
+    description: "Leia eventos de auditoria do Linux e registros de integridade de arquivos para explicar uma mudança de configuração."
+    faqs:
+      - question: "Preciso instalar um serviço de auditoria?"
+        answer: "O curso usa registros de auditoria de exemplo e comparações de arquivos que você pode fazer em uma pasta de prática."
+    meta_title: "Curso de auditoria de sistemas para iniciantes"
+    meta_description: "Relacione registros de auditoria, verifique a integridade de arquivos e compare uma configuração com seu estado de referência."
+    meta_keywords: "auditoria de sistemas, auditoria no Linux, integridade de arquivos, cibersegurança, Linux Journey"
+  ru:
+    title: "Аудит системы"
+    description: "Изучите события аудита Linux и записи о целостности файлов, чтобы объяснить изменение конфигурации."
+    faqs:
+      - question: "Нужно ли устанавливать службу аудита?"
+        answer: "В курсе приведены примеры записей аудита. Файлы можно безопасно сравнивать в учебном каталоге."
+    meta_title: "Курс аудита системы для начинающих"
+    meta_description: "Сопоставляйте записи аудита Linux, проверяйте целостность файлов и сравнивайте конфигурацию с эталонным состоянием."
+    meta_keywords: "аудит системы, Linux Audit, целостность файлов, конфигурация, кибербезопасность, Linux Journey"
+  zh:
+    title: "系统审计"
+    description: "阅读 Linux 审计事件和文件完整性记录，解释一次配置变更。"
+    faqs:
+      - question: "需要安装审计服务吗？"
+        answer: "课程提供审计记录样本，文件比较也可以在练习目录中完成。"
+    meta_title: "系统审计入门课程"
+    meta_description: "学习关联审计记录、比较文件内容与权限，并根据完整性基线核对配置变更。"
+    meta_keywords: "Linux 系统审计, Linux Audit, 文件完整性, 完整性基线, 网络安全, Linux Journey"
