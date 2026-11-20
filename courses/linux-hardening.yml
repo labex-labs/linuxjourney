@@ -1,7 +1,7 @@
 id: linux-hardening
 category:
   id: cybersecurity
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/linux-hardening.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/linux-hardening.png
 order_index: 1
 translations:
   en:

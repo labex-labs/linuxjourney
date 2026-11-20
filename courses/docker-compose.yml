@@ -1,7 +1,7 @@
 id: docker-compose
 category:
   id: devops
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/docker-compose.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/docker-compose.png
 order_index: 2
 translations:
   en:

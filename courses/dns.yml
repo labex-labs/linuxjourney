@@ -1,7 +1,7 @@
 id: dns
 category:
   id: networking-nomad
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/dns.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/dns.png
 order_index: 6
 translations:
   en:

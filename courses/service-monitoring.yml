@@ -1,7 +1,7 @@
 id: service-monitoring
 category:
   id: devops
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/service-monitoring.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/service-monitoring.png
 order_index: 5
 translations:
   en:

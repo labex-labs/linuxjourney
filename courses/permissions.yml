@@ -1,7 +1,7 @@
 id: permissions
 category:
   id: grasshopper
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/permissions.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/permissions.png
 video_url: https://www.youtube.com/watch?v=Ku2zRtVkaHw
 order_index: 5
 translations:

@@ -1,7 +1,7 @@
 id: network-monitoring
 category:
   id: cybersecurity
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/network-monitoring.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/network-monitoring.png
 order_index: 3
 translations:
   en:

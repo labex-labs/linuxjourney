@@ -1,7 +1,7 @@
 id: incident-response
 category:
   id: cybersecurity
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/incident-response.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/incident-response.png
 order_index: 5
 translations:
   en:

@@ -1,7 +1,7 @@
 id: web-security
 category:
   id: cybersecurity
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/web-security.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/web-security.png
 order_index: 2
 translations:
   en:

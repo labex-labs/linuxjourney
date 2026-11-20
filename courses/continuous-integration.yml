@@ -1,7 +1,7 @@
 id: continuous-integration
 category:
   id: devops
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/continuous-integration.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/continuous-integration.png
 order_index: 3
 translations:
   en:

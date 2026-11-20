@@ -1,7 +1,7 @@
 id: git
 category:
   id: devops
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/git.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/git.png
 order_index: 1
 translations:
   en:

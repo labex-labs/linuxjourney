@@ -1,7 +1,7 @@
 id: docker
 category:
   id: devops
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/docker.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/docker.png
 order_index: 0
 translations:
   en:

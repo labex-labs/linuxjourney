@@ -1,7 +1,7 @@
 id: deployment
 category:
   id: devops
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/deployment.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/deployment.png
 order_index: 4
 translations:
   en:

@@ -1,7 +1,7 @@
 id: system-auditing
 category:
   id: cybersecurity
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/system-auditing.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/system-auditing.png
 order_index: 4
 translations:
   en:

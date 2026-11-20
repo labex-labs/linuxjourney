@@ -1,7 +1,7 @@
 id: security-logs
 category:
   id: cybersecurity
-image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/security-logs.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/security-logs.png
 order_index: 0
 translations:
   en:
