@@ -2,6 +2,7 @@ id: boot-system
 category:
   id: journeyman
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/boot-system.png
+video_url: https://www.youtube.com/watch?v=H7SA1-Psah0
 order_index: 2
 translations:
   en:
