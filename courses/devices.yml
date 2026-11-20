@@ -2,6 +2,7 @@ id: devices
 category:
   id: journeyman
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/devices.png
+video_url: https://www.youtube.com/watch?v=LjIu4N9Wx6k
 order_index: 0
 translations:
   en:
