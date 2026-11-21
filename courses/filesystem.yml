@@ -2,7 +2,7 @@ id: filesystem
 category:
   id: journeyman
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/filesystem.png
-video_url: https://www.youtube.com/watch?v=nLUdiMb8P0U
+video_url: https://www.youtube.com/watch?v=TUXQqwNXFag
 order_index: 1
 translations:
   en:
