@@ -2,6 +2,7 @@ id: logging
 category:
   id: journeyman
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/logging.png
+video_url: https://www.youtube.com/watch?v=4DjcS3KT4xs
 order_index: 6
 translations:
   en:

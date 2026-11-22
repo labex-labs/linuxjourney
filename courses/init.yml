@@ -2,6 +2,7 @@ id: init
 category:
   id: journeyman
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/init.png
+video_url: https://www.youtube.com/watch?v=0veu6nbpJ7w
 order_index: 4
 translations:
   en:

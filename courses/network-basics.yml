@@ -2,6 +2,7 @@ id: network-basics
 category:
   id: networking-nomad
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/network-basics.png
+video_url: https://www.youtube.com/watch?v=Gd15xiN0yaY
 order_index: 1
 translations:
   en:

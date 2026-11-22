@@ -2,6 +2,7 @@ id: routing
 category:
   id: networking-nomad
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/routing.png
+video_url: https://www.youtube.com/watch?v=wLfkCssy3to
 order_index: 3
 translations:
   en:

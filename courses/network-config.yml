@@ -2,6 +2,7 @@ id: network-config
 category:
   id: networking-nomad
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/network-config.png
+video_url: https://www.youtube.com/watch?v=k8fH3Ok6Lhs
 order_index: 4
 translations:
   en:

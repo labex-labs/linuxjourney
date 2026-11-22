@@ -2,6 +2,7 @@ id: subnetting
 category:
   id: networking-nomad
 image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/courses/thumbnails/subnetting.png
+video_url: https://www.youtube.com/watch?v=7JeWtv9cwPE
 order_index: 2
 translations:
   en:
