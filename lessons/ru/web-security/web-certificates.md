@@ -24,9 +24,9 @@ $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName
 
 :::single-choice{#web-certificates-wrong-name} Указано только имя site.example. Какой URL ему соответствует?
 
-::option[https://site.example/.]{#web-certificates-wrong-name-b .correct explanation="Имя DNS в сертификате совпадает с именем хоста в URL."}
-::option[https://other.example/.]{#web-certificates-wrong-name-a explanation="В учебном сертификате указано другое имя."}
-::option[https://preview.site.example/.]{#web-certificates-wrong-name-c explanation="Поддомен — отдельное имя. Оно должно входить в область действия сертификата."}
+::option[`https://site.example/`.]{#web-certificates-wrong-name-b .correct explanation="Имя DNS в сертификате совпадает с именем хоста в URL."}
+::option[`https://other.example/`.]{#web-certificates-wrong-name-a explanation="В учебном сертификате указано другое имя."}
+::option[`https://preview.site.example/`.]{#web-certificates-wrong-name-c explanation="Поддомен — отдельное имя. Оно должно входить в область действия сертификата."}
 :::
 
 ![Сохранённый вывод OpenSSL показывает издателя, срок действия и имя DNS site.example в учебном сертификате](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

@@ -24,9 +24,9 @@ $ docker compose exec -T toolbox wget -q -O - http://web:80/
 
 :::single-choice{#compose-service-discovery-sibling-url} Какой адрес должен использовать другой сервис в той же сети Compose, чтобы обратиться к веб-контейнеру?
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="В общей сети имя web указывает на нужный сервис, который принимает запросы на порту 80."}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="Адрес обратной петли указывает на сетевое окружение самого сервиса, отправляющего запрос."}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="В этом примере веб-сервер принимает запросы на порту 80 внутри сети."}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="В общей сети имя web указывает на нужный сервис, который принимает запросы на порту 80."}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="Адрес обратной петли указывает на сетевое окружение самого сервиса, отправляющего запрос."}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="В этом примере веб-сервер принимает запросы на порту 80 внутри сети."}
 :::
 
 ![HTML в контейнере с инструментами после запроса по имени веб-сервиса](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

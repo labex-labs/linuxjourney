@@ -24,9 +24,9 @@ L’option `-T` désactive l’attribution d’un terminal interactif. L’URL i
 
 :::single-choice{#compose-service-discovery-sibling-url} Quelle adresse un autre service du même réseau Compose doit-il utiliser pour atteindre le conteneur web ?
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="Sur le réseau commun, web désigne le bon service, qui écoute sur le port 80."}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="Depuis cet autre service, l’adresse de bouclage renvoie à son propre environnement réseau."}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="Dans cet exemple, le serveur web écoute sur le port 80 à l’intérieur du réseau."}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="Sur le réseau commun, web désigne le bon service, qui écoute sur le port 80."}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="Depuis cet autre service, l’adresse de bouclage renvoie à son propre environnement réseau."}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="Dans cet exemple, le serveur web écoute sur le port 80 à l’intérieur du réseau."}
 :::
 
 ![Code HTML renvoyé dans le conteneur d’outils après une requête utilisant le nom du service web](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

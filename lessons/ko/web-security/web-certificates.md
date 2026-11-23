@@ -24,9 +24,9 @@ $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName
 
 :::single-choice{#web-certificates-wrong-name} 인증서에 나열된 이름이 site.example 하나뿐입니다. 어느 URL이 이 이름과 일치하나요?
 
-::option[https://site.example/]{#web-certificates-wrong-name-b .correct explanation="인증서의 DNS 이름과 URL의 호스트가 일치합니다."}
-::option[https://other.example/]{#web-certificates-wrong-name-a explanation="예시 인증서에는 다른 이름이 표시되어 있습니다."}
-::option[https://preview.site.example/]{#web-certificates-wrong-name-c explanation="인증서가 해당 하위 도메인을 포함하지 않으면 별개의 이름으로 처리합니다."}
+::option[`https://site.example/`]{#web-certificates-wrong-name-b .correct explanation="인증서의 DNS 이름과 URL의 호스트가 일치합니다."}
+::option[`https://other.example/`]{#web-certificates-wrong-name-a explanation="예시 인증서에는 다른 이름이 표시되어 있습니다."}
+::option[`https://preview.site.example/`]{#web-certificates-wrong-name-c explanation="인증서가 해당 하위 도메인을 포함하지 않으면 별개의 이름으로 처리합니다."}
 :::
 
 ![실습 인증서의 발급자, 유효 기간, DNS 이름 site.example을 보여 주는 OpenSSL 출력](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

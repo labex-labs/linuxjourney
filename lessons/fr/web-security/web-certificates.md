@@ -24,9 +24,9 @@ La section des **noms alternatifs du sujet** répertorie les noms DNS couverts p
 
 :::single-choice{#web-certificates-wrong-name} Le seul nom indiqué est site.example. Quelle URL correspond à ce nom ?
 
-::option[https://site.example/.]{#web-certificates-wrong-name-b .correct explanation="Le nom DNS du certificat correspond à l’hôte de l’URL."}
-::option[https://other.example/.]{#web-certificates-wrong-name-a explanation="Le certificat d’exercice indique un autre nom."}
-::option[https://preview.site.example/.]{#web-certificates-wrong-name-c explanation="Un sous-domaine constitue un nom distinct, sauf si le certificat le couvre."}
+::option[`https://site.example/`.]{#web-certificates-wrong-name-b .correct explanation="Le nom DNS du certificat correspond à l’hôte de l’URL."}
+::option[`https://other.example/`.]{#web-certificates-wrong-name-a explanation="Le certificat d’exercice indique un autre nom."}
+::option[`https://preview.site.example/`.]{#web-certificates-wrong-name-c explanation="Un sous-domaine constitue un nom distinct, sauf si le certificat le couvre."}
 :::
 
 ![Sortie enregistrée d’OpenSSL montrant l’émetteur du certificat d’exercice, ses dates de validité et le nom DNS site.example](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

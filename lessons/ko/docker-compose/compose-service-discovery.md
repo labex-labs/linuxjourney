@@ -24,9 +24,9 @@ $ docker compose exec -T toolbox wget -q -O - http://web:80/
 
 :::single-choice{#compose-service-discovery-sibling-url} 같은 Compose 네트워크를 쓰는 다른 서비스는 어떤 주소로 웹 컨테이너에 연결해야 하나요?
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="공용 네트워크에서 web은 대상 서비스를 가리키며, 프로그램은 80번 포트에서 요청을 받습니다."}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="이 루프백 주소는 요청을 보내는 서비스 자신의 네트워크 환경을 가리킵니다."}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="이 예시에서 웹 프로그램은 네트워크 안에서 80번 포트로 요청을 받습니다."}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="공용 네트워크에서 web은 대상 서비스를 가리키며, 프로그램은 80번 포트에서 요청을 받습니다."}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="이 루프백 주소는 요청을 보내는 서비스 자신의 네트워크 환경을 가리킵니다."}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="이 예시에서 웹 프로그램은 네트워크 안에서 80번 포트로 요청을 받습니다."}
 :::
 
 ![서비스 이름으로 웹 페이지를 요청한 뒤 도구 컨테이너에 반환된 HTML](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

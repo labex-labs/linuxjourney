@@ -24,9 +24,9 @@ $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName
 
 :::single-choice{#web-certificates-wrong-name} 列表里只有 site.example。哪个 URL 与这个名称匹配？
 
-::option[https://site.example/]{#web-certificates-wrong-name-b .correct explanation="证书中的 DNS 名称与 URL 的主机部分一致。"}
-::option[https://other.example/]{#web-certificates-wrong-name-a explanation="示例证书列出的是另一个名称。"}
-::option[https://preview.site.example/]{#web-certificates-wrong-name-c explanation="子域名是另一个名称，只有证书覆盖它时才匹配。"}
+::option[`https://site.example/`]{#web-certificates-wrong-name-b .correct explanation="证书中的 DNS 名称与 URL 的主机部分一致。"}
+::option[`https://other.example/`]{#web-certificates-wrong-name-a explanation="示例证书列出的是另一个名称。"}
+::option[`https://preview.site.example/`]{#web-certificates-wrong-name-c explanation="子域名是另一个名称，只有证书覆盖它时才匹配。"}
 :::
 
 ![OpenSSL 记录的输出显示练习证书的签发者、有效期和 DNS 名称 site.example](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

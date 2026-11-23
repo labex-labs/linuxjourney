@@ -24,9 +24,9 @@ $ docker compose exec -T toolbox wget -q -O - http://web:80/
 
 :::single-choice{#compose-service-discovery-sibling-url} 同じ Compose ネットワークにある別のサービスは、どのアドレスで Web コンテナに接続しますか？
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="共有ネットワークでは web が対象のサービスに解決され、ポート 80 で待ち受けるプログラムに届きます。"}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="リクエストを送る側から見たループバックアドレスは、そのサービス自身のネットワーク環境を指します。"}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="この例の Web サーバーがネットワーク内で待ち受けるのは、ポート 80 です。"}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="共有ネットワークでは web が対象のサービスに解決され、ポート 80 で待ち受けるプログラムに届きます。"}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="リクエストを送る側から見たループバックアドレスは、そのサービス自身のネットワーク環境を指します。"}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="この例の Web サーバーがネットワーク内で待ち受けるのは、ポート 80 です。"}
 :::
 
 ![サービス名で Web サービスにリクエストした結果、ツール用コンテナに返った HTML](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

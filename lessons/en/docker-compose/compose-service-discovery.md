@@ -24,9 +24,9 @@ The `-T` option disables allocation of an interactive terminal. The URL names th
 
 :::single-choice{#compose-service-discovery-sibling-url} Which address should another service on the same Compose network use for the web container?
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="The shared network resolves web to the intended service and port 80 reaches its listener."}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="A loopback address inside that service points to its own network environment."}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="In this example the web program listens on port 80 inside the network."}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="The shared network resolves web to the intended service and port 80 reaches its listener."}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="A loopback address inside that service points to its own network environment."}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="In this example the web program listens on port 80 inside the network."}
 :::
 
 ![HTML returned inside the toolbox after requesting the web service by name](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

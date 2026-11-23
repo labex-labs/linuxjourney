@@ -24,9 +24,9 @@ $ docker compose exec -T toolbox wget -q -O - http://web:80/
 
 :::single-choice{#compose-service-discovery-sibling-url} 位于同一 Compose 网络中的另一个服务，应该通过哪个地址访问 Web 容器？
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="共享网络把 web 解析到目标服务，80 端口对应服务监听的位置。"}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="从该服务内部使用回环地址，会指向它自己的网络环境。"}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="在这个示例中，Web 程序在网络内部监听的是 80 端口。"}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="共享网络把 web 解析到目标服务，80 端口对应服务监听的位置。"}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="从该服务内部使用回环地址，会指向它自己的网络环境。"}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="在这个示例中，Web 程序在网络内部监听的是 80 端口。"}
 :::
 
 ![在工具容器中用服务名请求 Web 服务后返回的 HTML](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

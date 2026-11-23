@@ -24,9 +24,9 @@ A seção de **nomes alternativos do titular** lista os nomes DNS que o exemplo 
 
 :::single-choice{#web-certificates-wrong-name} O único nome listado é site.example. Qual URL corresponde a esse nome?
 
-::option[https://site.example/.]{#web-certificates-wrong-name-b .correct explanation="O nome DNS do certificado corresponde ao host da URL."}
-::option[https://other.example/.]{#web-certificates-wrong-name-a explanation="O certificado de exemplo lista outro nome."}
-::option[https://preview.site.example/.]{#web-certificates-wrong-name-c explanation="Um subdomínio é um nome distinto, a menos que o certificado também o cubra."}
+::option[`https://site.example/`.]{#web-certificates-wrong-name-b .correct explanation="O nome DNS do certificado corresponde ao host da URL."}
+::option[`https://other.example/`.]{#web-certificates-wrong-name-a explanation="O certificado de exemplo lista outro nome."}
+::option[`https://preview.site.example/`.]{#web-certificates-wrong-name-c explanation="Um subdomínio é um nome distinto, a menos que o certificado também o cubra."}
 :::
 
 ![Saída do OpenSSL mostrando o emissor, as datas e o nome DNS site.example no certificado de prática](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

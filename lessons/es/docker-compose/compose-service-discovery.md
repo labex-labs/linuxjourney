@@ -24,9 +24,9 @@ La opción `-T` impide que se asigne un terminal interactivo. La URL indica el n
 
 :::single-choice{#compose-service-discovery-sibling-url} ¿Qué dirección debe usar otro servicio de la misma red de Compose para llegar al contenedor web?
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="En la red compartida, web se resuelve al servicio deseado. El puerto 80 llega al programa que está escuchando."}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="La dirección de bucle local apunta al entorno de red del propio servicio que hace la petición."}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="En este ejemplo, el programa web escucha en el puerto 80 dentro de la red."}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="En la red compartida, web se resuelve al servicio deseado. El puerto 80 llega al programa que está escuchando."}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="La dirección de bucle local apunta al entorno de red del propio servicio que hace la petición."}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="En este ejemplo, el programa web escucha en el puerto 80 dentro de la red."}
 :::
 
 ![HTML devuelto en el contenedor de herramientas después de solicitar el servicio web por nombre](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

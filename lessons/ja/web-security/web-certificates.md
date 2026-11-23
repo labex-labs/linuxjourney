@@ -24,9 +24,9 @@ $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName
 
 :::single-choice{#web-certificates-wrong-name} 記載された名前は site.example だけです。どの URL がこの名前に一致しますか？
 
-::option[https://site.example/]{#web-certificates-wrong-name-b .correct explanation="証明書の DNS 名が URL のホストと一致します。"}
-::option[https://other.example/]{#web-certificates-wrong-name-a explanation="練習用の証明書に記載されているのは別の名前です。"}
-::option[https://preview.site.example/]{#web-certificates-wrong-name-c explanation="証明書で対象となっていない限り、サブドメインは別の名前として扱われます。"}
+::option[`https://site.example/`]{#web-certificates-wrong-name-b .correct explanation="証明書の DNS 名が URL のホストと一致します。"}
+::option[`https://other.example/`]{#web-certificates-wrong-name-a explanation="練習用の証明書に記載されているのは別の名前です。"}
+::option[`https://preview.site.example/`]{#web-certificates-wrong-name-c explanation="証明書で対象となっていない限り、サブドメインは別の名前として扱われます。"}
 :::
 
 ![練習用証明書の発行者、有効期間、DNS 名 site.example を示す OpenSSL の出力](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

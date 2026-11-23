@@ -24,9 +24,9 @@ Die Option `-T` verhindert, dass Compose ein interaktives Terminal zuweist. Die 
 
 :::single-choice{#compose-service-discovery-sibling-url} Über welche Adresse sollte ein anderer Dienst im selben Compose-Netzwerk auf den Webcontainer zugreifen?
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="Das gemeinsame Netzwerk löst web zum gewünschten Dienst auf. Port 80 führt zu dem Programm, das dort auf Anfragen wartet."}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="Die Loopback-Adresse in diesem anderen Dienst verweist auf seine eigene Netzwerkumgebung."}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="Innerhalb des Netzwerks lauscht der Webdienst in diesem Beispiel an Port 80."}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="Das gemeinsame Netzwerk löst web zum gewünschten Dienst auf. Port 80 führt zu dem Programm, das dort auf Anfragen wartet."}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="Die Loopback-Adresse in diesem anderen Dienst verweist auf seine eigene Netzwerkumgebung."}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="Innerhalb des Netzwerks lauscht der Webdienst in diesem Beispiel an Port 80."}
 :::
 
 ![HTML-Ausgabe im Werkzeugcontainer nach einem Abruf des Webdienstes über seinen Namen](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

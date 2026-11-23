@@ -24,9 +24,9 @@ La sección de **nombres alternativos del sujeto** enumera los nombres DNS cubie
 
 :::single-choice{#web-certificates-wrong-name} El único nombre de la lista es site.example. ¿Qué URL coincide con ese nombre?
 
-::option[https://site.example/.]{#web-certificates-wrong-name-b .correct explanation="El nombre DNS del certificado coincide con el nombre del equipo en la URL."}
-::option[https://other.example/.]{#web-certificates-wrong-name-a explanation="El certificado de ejemplo indica un nombre distinto."}
-::option[https://preview.site.example/.]{#web-certificates-wrong-name-c explanation="Un subdominio es un nombre distinto, salvo que el certificado también lo cubra."}
+::option[`https://site.example/`.]{#web-certificates-wrong-name-b .correct explanation="El nombre DNS del certificado coincide con el nombre del equipo en la URL."}
+::option[`https://other.example/`.]{#web-certificates-wrong-name-a explanation="El certificado de ejemplo indica un nombre distinto."}
+::option[`https://preview.site.example/`.]{#web-certificates-wrong-name-c explanation="Un subdominio es un nombre distinto, salvo que el certificado también lo cubra."}
 :::
 
 ![Salida registrada de OpenSSL con el emisor, las fechas y el nombre DNS site.example del certificado de prácticas](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

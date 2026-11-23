@@ -24,9 +24,9 @@ A opção `-T` impede a alocação de um terminal interativo. A URL indica o nom
 
 :::single-choice{#compose-service-discovery-sibling-url} Que endereço outro serviço na mesma rede do Compose deve usar para chegar ao contêiner web?
 
-::option[http://web:80/]{#compose-service-discovery-sibling-url-c .correct explanation="Na rede compartilhada, web corresponde ao serviço indicado. A porta 80 chega ao programa que recebe as requisições."}
-::option[http://127.0.0.1:8080/]{#compose-service-discovery-sibling-url-a explanation="O endereço de loopback aponta para o ambiente de rede do próprio serviço que faz a requisição."}
-::option[http://web:8080/]{#compose-service-discovery-sibling-url-b explanation="Neste exemplo, o servidor web escuta na porta 80 dentro da rede."}
+::option[`http://web:80/`]{#compose-service-discovery-sibling-url-c .correct explanation="Na rede compartilhada, web corresponde ao serviço indicado. A porta 80 chega ao programa que recebe as requisições."}
+::option[`http://127.0.0.1:8080/`]{#compose-service-discovery-sibling-url-a explanation="O endereço de loopback aponta para o ambiente de rede do próprio serviço que faz a requisição."}
+::option[`http://web:8080/`]{#compose-service-discovery-sibling-url-b explanation="Neste exemplo, o servidor web escuta na porta 80 dentro da rede."}
 :::
 
 ![HTML exibido no contêiner de ferramentas após uma requisição pelo nome do serviço web](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/docker-compose/compose-service-discovery/internal-request.png)

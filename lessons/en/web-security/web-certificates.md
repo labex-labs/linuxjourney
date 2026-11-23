@@ -24,9 +24,9 @@ The **subject alternative name** section lists the DNS names covered by the samp
 
 :::single-choice{#web-certificates-wrong-name} The only listed name is site.example. Which URL matches this name?
 
-::option[https://site.example/.]{#web-certificates-wrong-name-b .correct explanation="The DNS name in the certificate matches the URL host."}
-::option[https://other.example/.]{#web-certificates-wrong-name-a explanation="The sample certificate lists a different name."}
-::option[https://preview.site.example/.]{#web-certificates-wrong-name-c explanation="A subdomain is a separate name unless the certificate covers it."}
+::option[`https://site.example/`.]{#web-certificates-wrong-name-b .correct explanation="The DNS name in the certificate matches the URL host."}
+::option[`https://other.example/`.]{#web-certificates-wrong-name-a explanation="The sample certificate lists a different name."}
+::option[`https://preview.site.example/`.]{#web-certificates-wrong-name-c explanation="A subdomain is a separate name unless the certificate covers it."}
 :::
 
 ![Recorded OpenSSL output showing the practice certificate issuer, dates, and site.example DNS name](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)

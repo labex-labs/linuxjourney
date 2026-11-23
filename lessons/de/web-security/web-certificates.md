@@ -24,9 +24,9 @@ Im Abschnitt **Subject Alternative Name** stehen die DNS-Namen, für die das Bei
 
 :::single-choice{#web-certificates-wrong-name} Der einzige aufgeführte Name ist site.example. Welche URL passt zu diesem Namen?
 
-::option[https://site.example/.]{#web-certificates-wrong-name-b .correct explanation="Der DNS-Name im Zertifikat stimmt mit dem Hostnamen in der URL überein."}
-::option[https://other.example/.]{#web-certificates-wrong-name-a explanation="Das Beispielzertifikat führt einen anderen Namen auf."}
-::option[https://preview.site.example/.]{#web-certificates-wrong-name-c explanation="Eine Subdomain gilt als eigener Name, falls das Zertifikat sie nicht abdeckt."}
+::option[`https://site.example/`.]{#web-certificates-wrong-name-b .correct explanation="Der DNS-Name im Zertifikat stimmt mit dem Hostnamen in der URL überein."}
+::option[`https://other.example/`.]{#web-certificates-wrong-name-a explanation="Das Beispielzertifikat führt einen anderen Namen auf."}
+::option[`https://preview.site.example/`.]{#web-certificates-wrong-name-c explanation="Eine Subdomain gilt als eigener Name, falls das Zertifikat sie nicht abdeckt."}
 :::
 
 ![Aufgezeichnete OpenSSL-Ausgabe mit dem Aussteller, dem Gültigkeitszeitraum und dem DNS-Namen site.example des Übungszertifikats](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/lessons/web-security/web-certificates/dns-name-and-validity.png)
