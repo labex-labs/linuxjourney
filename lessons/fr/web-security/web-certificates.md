@@ -14,7 +14,7 @@ Un navigateur a besoin de preuves qu’il a bien joint le site indiqué dans l�
 
 ## Examiner les noms
 
-Enregistrez le [certificat public d’exercice](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem) sous le nom `site-cert.pem`. C’est un exemple pédagogique autosigné. Utilisez OpenSSL pour afficher l’émetteur, les dates de validité et les autres noms du sujet. L’option `-noout` masque le certificat encodé.
+Ouvrez la page du [certificat public d’exercice](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem) sur GitHub et enregistrez le fichier sous le nom `site-cert.pem`. C’est un exemple pédagogique autosigné. Utilisez OpenSSL pour afficher l’émetteur, les dates de validité et les autres noms du sujet. L’option `-noout` masque le certificat encodé.
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

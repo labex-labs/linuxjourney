@@ -14,7 +14,7 @@ A browser needs evidence that it reached the website named in the URL. A TLS **c
 
 ## Looking at the Names
 
-Save the [public practice certificate](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem) as `site-cert.pem`. It is a self-signed teaching sample. Use OpenSSL to print the issuer, validity dates, and subject alternative names. The `-noout` option suppresses the encoded certificate.
+Open the [public practice certificate](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem) on GitHub and save the file as `site-cert.pem`. It is a self-signed teaching sample. Use OpenSSL to print the issuer, validity dates, and subject alternative names. The `-noout` option suppresses the encoded certificate.
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

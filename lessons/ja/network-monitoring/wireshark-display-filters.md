@@ -14,7 +14,7 @@ meta_keywords: "Wireshark, 表示フィルター, ネットワーク監視, サ�
 
 ## プロトコルを選ぶ
 
-[サンプルキャプチャ](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap)を `sample.pcap` として保存します。Wireshark で開いて、表示フィルター欄に `dns` と入力します。TShark が入っている Linux 端末では、次のコマンドで保存済みファイルに同じ表示フィルターを適用できます。この例のファイルには、安全な名前解決と、それとは別の練習用通信が含まれます。
+GitHub で[サンプルキャプチャ](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap)のページを開き、ファイルを `sample.pcap` として保存します。Wireshark で開いて、表示フィルター欄に `dns` と入力します。TShark が入っている Linux 端末では、次のコマンドで保存済みファイルに同じ表示フィルターを適用できます。この例のファイルには、安全な名前解決と、それとは別の練習用通信が含まれます。
 
 ```bash
 $ tshark -r sample.pcap -Y dns

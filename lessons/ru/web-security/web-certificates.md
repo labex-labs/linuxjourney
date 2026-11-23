@@ -14,7 +14,7 @@ meta_keywords: "сертификаты, TLS, веб-безопасность, к
 
 ## Как проверить имена
 
-Сохраните [открытый учебный сертификат](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem) как `site-cert.pem`. Это самоподписанный сертификат для упражнения. С помощью OpenSSL выведите издателя, срок действия и альтернативные имена субъекта. Параметр `-noout` отключает вывод сертификата в закодированном виде.
+Откройте страницу с [открытым учебным сертификатом](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem) на GitHub и сохраните файл как `site-cert.pem`. Это самоподписанный сертификат для упражнения. С помощью OpenSSL выведите издателя, срок действия и альтернативные имена субъекта. Параметр `-noout` отключает вывод сертификата в закодированном виде.
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

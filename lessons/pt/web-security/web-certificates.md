@@ -14,7 +14,7 @@ Um navegador precisa de evidências de que chegou ao site indicado na URL. Um **
 
 ## Examinando os nomes
 
-Salve o [certificado público de prática](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem) como `site-cert.pem`. Ele é um exemplo didático autoassinado. Use o OpenSSL para exibir o emissor, as datas de validade e os nomes alternativos do titular. A opção `-noout` omite o certificado codificado.
+Abra a página do [certificado público de prática](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem) no GitHub e salve o arquivo como `site-cert.pem`. Ele é um exemplo didático autoassinado. Use o OpenSSL para exibir o emissor, as datas de validade e os nomes alternativos do titular. A opção `-noout` omite o certificado codificado.
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

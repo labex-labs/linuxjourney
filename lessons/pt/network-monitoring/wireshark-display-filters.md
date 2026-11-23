@@ -14,7 +14,7 @@ Uma captura de pacotes pode incluir vários protocolos. Um **filtro de exibiçã
 
 ## Selecionando um protocolo
 
-Salve a [captura de exemplo](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap) como `sample.pcap`. Abra o arquivo no Wireshark e digite `dns` no campo de filtro de exibição. Em um terminal Linux com o TShark instalado, o comando abaixo aplica o mesmo filtro ao arquivo salvo. O arquivo contém uma consulta inofensiva e outro tráfego de exemplo.
+Abra a página da [captura de exemplo](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap) no GitHub e salve o arquivo como `sample.pcap`. Abra o arquivo no Wireshark e digite `dns` no campo de filtro de exibição. Em um terminal Linux com o TShark instalado, o comando abaixo aplica o mesmo filtro ao arquivo salvo. O arquivo contém uma consulta inofensiva e outro tráfego de exemplo.
 
 ```bash
 $ tshark -r sample.pcap -Y dns

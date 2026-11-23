@@ -14,7 +14,7 @@ Una captura de paquetes puede contener tráfico de muchos protocolos. Un **filtr
 
 ## Seleccionar un protocolo
 
-Guarda la [captura de ejemplo](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap) como `sample.pcap`. Ábrela en Wireshark y escribe `dns` en el cuadro del filtro de visualización. En un terminal de Linux con TShark instalado, este comando aplica el mismo filtro al archivo guardado. El archivo del ejemplo contiene una consulta inofensiva y otro tráfico de prácticas.
+Abre la página de la [captura de ejemplo](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap) en GitHub y guarda el archivo como `sample.pcap`. Ábrela en Wireshark y escribe `dns` en el cuadro del filtro de visualización. En un terminal de Linux con TShark instalado, este comando aplica el mismo filtro al archivo guardado. El archivo del ejemplo contiene una consulta inofensiva y otro tráfico de prácticas.
 
 ```bash
 $ tshark -r sample.pcap -Y dns

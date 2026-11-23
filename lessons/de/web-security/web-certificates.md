@@ -14,7 +14,7 @@ Ein Browser braucht einen Nachweis, dass er die in der URL genannte Website erre
 
 ## Die Namen ansehen
 
-Speichere das [öffentliche Übungszertifikat](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem) als `site-cert.pem`. Das Übungszertifikat ist selbstsigniert. Zeige mit OpenSSL den Aussteller, den Gültigkeitszeitraum und die alternativen Namen des Zertifikatsinhabers an. Die Option `-noout` unterdrückt die Ausgabe des kodierten Zertifikats.
+Öffne die GitHub-Dateiseite für das [öffentliche Übungszertifikat](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem) und speichere die Datei als `site-cert.pem`. Das Übungszertifikat ist selbstsigniert. Zeige mit OpenSSL den Aussteller, den Gültigkeitszeitraum und die alternativen Namen des Zertifikatsinhabers an. Die Option `-noout` unterdrückt die Ausgabe des kodierten Zertifikats.
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

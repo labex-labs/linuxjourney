@@ -14,7 +14,7 @@ meta_keywords: "인증서, 웹 보안, 사이버 보안, Linux Journey"
 
 ## 인증서에 포함된 이름 확인하기
 
-[공개 실습용 인증서](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem)를 `site-cert.pem`으로 저장하세요. 이 파일은 자체 서명한 교육용 샘플입니다. OpenSSL을 사용해 발급자, 유효 기간, 주체 대체 이름을 출력합니다. `-noout` 옵션은 인코딩된 인증서의 출력을 생략합니다.
+GitHub에서 [공개 실습용 인증서](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem) 페이지를 열고 파일을 `site-cert.pem`으로 저장하세요. 이 파일은 자체 서명한 교육용 샘플입니다. OpenSSL을 사용해 발급자, 유효 기간, 주체 대체 이름을 출력합니다. `-noout` 옵션은 인코딩된 인증서의 출력을 생략합니다.
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

@@ -14,7 +14,7 @@ meta_keywords: "фильтры отображения Wireshark, монитор�
 
 ## Как выбрать протокол
 
-Сохраните [учебный дамп](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap) под именем `sample.pcap`. Откройте его в Wireshark и введите `dns` в поле фильтра отображения. Если на Linux установлен TShark, следующая команда применит тот же фильтр к сохранённому файлу. Файл содержит безвредный запрос разрешения имени и отдельный учебный трафик.
+Откройте страницу с [учебным дампом](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap) на GitHub и сохраните файл как `sample.pcap`. Откройте его в Wireshark и введите `dns` в поле фильтра отображения. Если на Linux установлен TShark, следующая команда применит тот же фильтр к сохранённому файлу. Файл содержит безвредный запрос разрешения имени и отдельный учебный трафик.
 
 ```bash
 $ tshark -r sample.pcap -Y dns

@@ -14,7 +14,7 @@ Un navegador necesita confirmar que se ha conectado al sitio web indicado en la 
 
 ## Revisar los nombres
 
-Guarda el [certificado público de prácticas](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem) como `site-cert.pem`. Es un ejemplo autofirmado para aprender. Usa OpenSSL para mostrar el emisor, las fechas de validez y los nombres alternativos del sujeto. La opción `-noout` omite el certificado codificado.
+Abre la página del [certificado público de prácticas](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem) en GitHub y guarda el archivo como `site-cert.pem`. Es un ejemplo autofirmado para aprender. Usa OpenSSL para mostrar el emisor, las fechas de validez y los nombres alternativos del sujeto. La opción `-noout` omite el certificado codificado.
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

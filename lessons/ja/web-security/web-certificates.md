@@ -14,7 +14,7 @@ meta_keywords: "TLS 証明書, 有効期間, Web セキュリティ, サイバ�
 
 ## 証明書の名前を確認する
 
-[公開されている練習用証明書](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem)を `site-cert.pem` として保存します。これは学習用の自己署名証明書です。OpenSSL で発行者、有効期間、サブジェクト代替名を表示します。`-noout` オプションで、エンコードされた証明書本体の表示を省略できます。
+GitHub で[公開されている練習用証明書](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem)のページを開き、ファイルを `site-cert.pem` として保存します。これは学習用の自己署名証明書です。OpenSSL で発行者、有効期間、サブジェクト代替名を表示します。`-noout` オプションで、エンコードされた証明書本体の表示を省略できます。
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

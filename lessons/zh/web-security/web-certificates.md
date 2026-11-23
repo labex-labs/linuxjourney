@@ -14,7 +14,7 @@ meta_keywords: "TLS 证书, OpenSSL, 证书有效期, 信任链, Web 安全, Lin
 
 ## 查看证书中的名称
 
-将[练习用公开证书](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/web-security/site-cert.pem)保存为 `site-cert.pem`。这是一张自签名的教学证书。用 OpenSSL 输出签发者、有效期和使用者可选名称。`-noout` 选项会省略编码后的证书正文。
+在 GitHub 打开[练习用公开证书](https://github.com/labex-labs/linuxjourney/blob/master/examples/web-security/site-cert.pem)的文件页面，将文件保存为 `site-cert.pem`。这是一张自签名的教学证书。用 OpenSSL 输出签发者、有效期和使用者可选名称。`-noout` 选项会省略编码后的证书正文。
 
 ```bash
 $ openssl x509 -in site-cert.pem -noout -issuer -dates -ext subjectAltName

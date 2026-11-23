@@ -14,7 +14,7 @@ A packet capture can hold many protocols. A **display filter** tells Wireshark w
 
 ## Selecting a Protocol
 
-Save the [sample capture](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap) as `sample.pcap`. Open it in Wireshark and enter `dns` in the display filter box. On a Linux terminal with TShark installed, this command applies the same filter to the saved file. The file in this example contains a harmless lookup and separate sample traffic.
+Open the [sample capture](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap) on GitHub and save the file as `sample.pcap`. Open it in Wireshark and enter `dns` in the display filter box. On a Linux terminal with TShark installed, this command applies the same filter to the saved file. The file in this example contains a harmless lookup and separate sample traffic.
 
 ```bash
 $ tshark -r sample.pcap -Y dns

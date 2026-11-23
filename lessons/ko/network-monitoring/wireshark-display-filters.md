@@ -14,7 +14,7 @@ meta_keywords: "Wireshark 표시 필터, 네트워크 모니터링, 사이버 �
 
 ## 프로토콜 선택하기
 
-[예시 캡처](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap)를 `sample.pcap`으로 저장하세요. Wireshark에서 파일을 열고 표시 필터 입력란에 `dns`를 입력합니다. TShark가 설치된 Linux 터미널에서는 아래 명령으로 저장된 파일에 같은 필터를 적용할 수 있습니다. 이 파일에는 실습용 이름 조회와 별도의 예시 트래픽이 들어 있습니다.
+GitHub에서 [예시 캡처](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap) 페이지를 열고 파일을 `sample.pcap`으로 저장하세요. Wireshark에서 파일을 열고 표시 필터 입력란에 `dns`를 입력합니다. TShark가 설치된 Linux 터미널에서는 아래 명령으로 저장된 파일에 같은 필터를 적용할 수 있습니다. 이 파일에는 실습용 이름 조회와 별도의 예시 트래픽이 들어 있습니다.
 
 ```bash
 $ tshark -r sample.pcap -Y dns

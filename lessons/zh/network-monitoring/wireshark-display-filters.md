@@ -14,7 +14,7 @@ meta_keywords: "Wireshark, 显示过滤器, TShark, 抓包, 网络监测, Linux 
 
 ## 选择协议
 
-把[练习抓包文件](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap)保存为 `sample.pcap`。用 Wireshark 打开，在显示过滤器输入框中键入 `dns`。如果 Linux 终端里装有 TShark，下面的命令会对同一个文件应用相同的过滤器。示例文件包含一次无害的查询，以及另一些用于练习的流量。
+在 GitHub 打开[练习抓包文件](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap)的文件页面，将文件保存为 `sample.pcap`。用 Wireshark 打开，在显示过滤器输入框中键入 `dns`。如果 Linux 终端里装有 TShark，下面的命令会对同一个文件应用相同的过滤器。示例文件包含一次无害的查询，以及另一些用于练习的流量。
 
 ```bash
 $ tshark -r sample.pcap -Y dns

@@ -14,7 +14,7 @@ Ein Paketmitschnitt kann viele Protokolle enthalten. Ein **Anzeigefilter** legt 
 
 ## Ein Protokoll auswählen
 
-Speichere den [Beispielmitschnitt](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/examples/network-monitoring/sample.pcap) als `sample.pcap`. Öffne ihn in Wireshark und gib `dns` in das Feld für den Anzeigefilter ein. Ist TShark installiert, kannst du denselben Filter mit diesem Befehl im Linux-Terminal auf die gespeicherte Datei anwenden. Die Datei enthält eine harmlose Namensabfrage und weiteren Beispielverkehr.
+Öffne die GitHub-Dateiseite für den [Beispielmitschnitt](https://github.com/labex-labs/linuxjourney/blob/master/examples/network-monitoring/sample.pcap) und speichere die Datei als `sample.pcap`. Öffne ihn in Wireshark und gib `dns` in das Feld für den Anzeigefilter ein. Ist TShark installiert, kannst du denselben Filter mit diesem Befehl im Linux-Terminal auf die gespeicherte Datei anwenden. Die Datei enthält eine harmlose Namensabfrage und weiteren Beispielverkehr.
 
 ```bash
 $ tshark -r sample.pcap -Y dns
