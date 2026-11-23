@@ -85,7 +85,7 @@ For users who want a beginner-friendly Linux distro without giving up long-term 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Ubuntu release cycle](https://ubuntu.com/releaseendoflife)
-- [Ubuntu releases documentation](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Ubuntu releases documentation](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 To keep learning after this Ubuntu introduction, we recommend these LabEx courses:
 

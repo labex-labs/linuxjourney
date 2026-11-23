@@ -85,7 +85,7 @@ Für Nutzer, die eine einsteigerfreundliche Linux-Distribution suchen, ohne auf 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Ubuntu-Veröffentlichungszyklus](https://ubuntu.com/releaseendoflife)
-- [Dokumentation zu Ubuntu-Veröffentlichungen](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Dokumentation zu Ubuntu-Veröffentlichungen](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 Um nach dieser Einführung in Ubuntu weiterzulernen, empfehlen wir diese LabEx-Kurse:
 

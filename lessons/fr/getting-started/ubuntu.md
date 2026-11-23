@@ -85,7 +85,7 @@ Pour ceux qui veulent une distribution accessible sans renoncer à une flexibili
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Cycle de publication d'Ubuntu](https://ubuntu.com/releaseendoflife)
-- [Documentation des versions Ubuntu](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Documentation des versions Ubuntu](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 Pour poursuivre après cette introduction, nous recommandons ces cours LabEx :
 

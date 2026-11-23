@@ -85,7 +85,7 @@ Para utilizadores que desejam uma distribuição Linux amigável para iniciantes
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Ciclo de lançamento do Ubuntu](https://ubuntu.com/releaseendoflife)
-- [Documentação de lançamentos do Ubuntu](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Documentação de lançamentos do Ubuntu](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 Para continuar a aprender após esta introdução ao Ubuntu, recomendamos estes cursos LabEx:
 

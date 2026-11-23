@@ -85,7 +85,7 @@ meta_keywords: "우분투 리눅스, 우분투 배포판, 우분투란, 우분�
 - [우분투 데스크톱](https://ubuntu.com/desktop)
 - [우분투 서버](https://ubuntu.com/server)
 - [우분투 릴리스 주기](https://ubuntu.com/releaseendoflife)
-- [우분투 릴리스 문서](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [우분투 릴리스 문서](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 이 우분투 입문 과정을 마친 후에도 계속 학습하려면 다음 LabEx 과정을 추천합니다:
 

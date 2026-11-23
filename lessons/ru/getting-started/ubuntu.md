@@ -85,7 +85,7 @@ Ubuntu часто рекомендуют начинающим, поскольк�
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Цикл выпусков Ubuntu](https://ubuntu.com/releaseendoflife)
-- [Документация выпусков Ubuntu](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Документация выпусков Ubuntu](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 Для продолжения обучения рекомендуем курсы LabEx:
 

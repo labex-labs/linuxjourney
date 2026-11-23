@@ -85,7 +85,7 @@ Ubuntu 常被推荐给初学者，因为它比许多其他 Linux 发行版更容
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Ubuntu 发布周期](https://ubuntu.com/releaseendoflife)
-- [Ubuntu 发布文档](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Ubuntu 发布文档](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 为了在完成 Ubuntu 介绍后继续学习，我们推荐以下 LabEx 课程：
 

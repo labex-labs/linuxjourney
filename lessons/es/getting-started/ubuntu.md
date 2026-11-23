@@ -85,7 +85,7 @@ Para quienes desean una distribución de Linux accesible para principiantes sin 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Ciclo de lanzamiento de Ubuntu](https://ubuntu.com/releaseendoflife)
-- [Documentación de lanzamientos de Ubuntu](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Documentación de lanzamientos de Ubuntu](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 Para seguir aprendiendo después de esta introducción a Ubuntu, recomendamos estos cursos de LabEx:
 

@@ -81,7 +81,7 @@ Debian ベースの Ubuntu は `.deb` パッケージ形式と `apt` パッケ�
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
 - [Ubuntu のリリースサイクル](https://ubuntu.com/releaseendoflife)
-- [Ubuntu リリースの文書](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Ubuntu リリースの文書](https://ubuntu.com/project/docs/release-team/ubuntu-releases/)
 
 1. **[Linux クイックスタート](https://labex.io/courses/quick-start-with-linux)** - Linux とコマンドライン技能の実用的な基礎を築きます。
 2. **[初心者のための Linux](https://labex.io/courses/linux-for-noobs)** - 初心者向けの順序で Linux の基本を学びます。
